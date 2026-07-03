@@ -5,6 +5,35 @@
     "group": "forms",
     "status": "beta",
     "description": "Contact page inquiry panel with message and book-a-call tabs wrapping the editorial form.",
+    "dense": "Contact inquiry tabs (message vs book-a-call) wrapping the editorial contact form; parent owns submit state via the messagePanel slot.",
+    "keywords": [
+        "contact",
+        "inquiry",
+        "tabs",
+        "booking",
+        "form"
+    ],
+    "usage": {
+        "description": "ContactInquiryPanel is the contact page's inquiry column: a two-tab switcher between writing a message and booking a call. The parent owns the form and its submit state, passing it in as messagePanel (ContactPage passes ContactFormEditorial); packageId preselects a pricing package for booking CTAs deep-linked from /pricing. The message panel anchors at #contact-form for deep links and imperative scroll.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Let the parent own form submit state and pass the editorial form in via messagePanel; the panel only owns the tab chrome."
+            },
+            {
+                "guidance": true,
+                "description": "Deep-link the message tab through the #contact-form anchor; booking CTAs elsewhere can preselect a package with packageId."
+            },
+            {
+                "guidance": false,
+                "description": "Don't use it for a standalone form without tab chrome; mount ContactFormEditorial directly."
+            },
+            {
+                "guidance": false,
+                "description": "Don't rebuild pricing package cards inside the panel; that's PricingPageContent's job."
+            }
+        ]
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=664-33",
     "radixPrimitive": null,
     "element": "div",

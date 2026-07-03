@@ -5,6 +5,27 @@
     "group": "marketing",
     "status": "beta",
     "description": "Pricing page content assembly with packages, agency comparison, and deliverables.",
+    "dense": "Full /pricing route body: package tiers, agency comparison table, and deliverables; CTAs prefill contact booking via packageId.",
+    "keywords": [
+        "pricing",
+        "packages",
+        "comparison",
+        "page-content",
+        "marketing"
+    ],
+    "usage": {
+        "description": "PricingPageContent assembles the whole pricing page: package tiers, the agency comparison table (semantic table markup), and deliverables. Package CTAs deep-link to /contact with packageId query params that prefill the booking tab. Mount once per /pricing route; for a single inline pricing card elsewhere, compose atoms instead.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Let package CTAs carry packageId query params; ContactInquiryPanel picks them up to preselect the booking package."
+            },
+            {
+                "guidance": false,
+                "description": "Don't embed it for a single homepage pricing card; compose Card/Text/Button directly."
+            }
+        ]
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-pricing-page-content",
     "radixPrimitive": null,
     "element": "div",

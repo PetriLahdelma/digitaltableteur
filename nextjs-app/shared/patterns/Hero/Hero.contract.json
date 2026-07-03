@@ -5,6 +5,17 @@
     "group": "marketing",
     "status": "beta",
     "description": "Hero — production @dt component (Storybook beta).",
+    "dense": "General-purpose hero: title/subtitle/description, optional image and actions; layout variant, background, and align knobs.",
+    "keywords": [
+        "hero",
+        "header",
+        "marketing",
+        "title",
+        "actions"
+    ],
+    "usage": {
+        "description": "Hero is the configurable, general-purpose page hero: heading (with titleLevel control), subtitle/description, optional image, and an actions slot, across layout variants and backgrounds. The homepage uses the bespoke HomeHero instead; use Hero when a route needs a straightforward hero driven by props. For a bare full-bleed shell you fill yourself, use HeroSection."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-hero",
     "radixPrimitive": null,
     "element": "div",

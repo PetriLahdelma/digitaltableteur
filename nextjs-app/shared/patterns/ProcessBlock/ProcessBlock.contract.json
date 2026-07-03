@@ -5,6 +5,17 @@
     "group": "structure",
     "status": "beta",
     "description": "ProcessBlock — production @dt component (Storybook beta).",
+    "dense": "Case-study process section: titled phase cards in a grid with section title, description, and spacing/background knobs.",
+    "keywords": [
+        "process",
+        "phases",
+        "case-study",
+        "timeline",
+        "work"
+    ],
+    "usage": {
+        "description": "ProcessBlock presents a project's process as titled phase cards in a grid, under an optional section title and description. Work case-study pages use it to walk through discovery-to-delivery phases between StoryBlock sections. Phases are data props, so pages keep copy colocated with the page."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-process-block",
     "radixPrimitive": null,
     "element": "div",

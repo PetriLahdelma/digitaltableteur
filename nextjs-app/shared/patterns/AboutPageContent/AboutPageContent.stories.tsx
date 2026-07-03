@@ -9,7 +9,7 @@ const defaultArgs = {
 const meta = {
   title: "Patterns/AboutPageContent",
   component: AboutPageContent,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

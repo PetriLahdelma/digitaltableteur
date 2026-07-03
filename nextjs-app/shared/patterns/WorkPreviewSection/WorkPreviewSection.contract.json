@@ -5,6 +5,17 @@
     "group": "marketing",
     "status": "beta",
     "description": "Work index preview grid of project cards.",
+    "dense": "Plain project-card preview grid with title, layout options, and optional view-all link.",
+    "keywords": [
+        "work",
+        "projects",
+        "grid",
+        "preview",
+        "cards"
+    ],
+    "usage": {
+        "description": "WorkPreviewSection is the plain project-card grid: a titled section of project preview cards with layout options and an optional view-all link. WorkMagneticField layers the homepage's magnetic hover on top of it. Use it for straightforward work listings on landing or index pages."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-preview-section",
     "radixPrimitive": null,
     "element": "div",

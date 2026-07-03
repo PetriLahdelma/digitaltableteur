@@ -5,6 +5,17 @@
     "group": "structure",
     "status": "beta",
     "description": "StoryBlock — production @dt component (Storybook beta).",
+    "dense": "Case-study narrative section: subtitle/title, rich content, and images with selectable image layout.",
+    "keywords": [
+        "story",
+        "narrative",
+        "case-study",
+        "images",
+        "work"
+    ],
+    "usage": {
+        "description": "StoryBlock is the workhorse narrative section of Work case studies: a subtitle/title pair, rich text content, and images arranged by imageLayout, over background and spacing knobs. Chain several StoryBlocks (with GridBlock mosaics and ProcessBlock) to build a project page's spine."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-story-block",
     "radixPrimitive": null,
     "element": "div",

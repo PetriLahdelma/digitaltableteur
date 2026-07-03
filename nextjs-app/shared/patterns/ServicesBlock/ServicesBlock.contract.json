@@ -5,6 +5,17 @@
     "group": "marketing",
     "status": "beta",
     "description": "ServicesBlock — production @dt component (Storybook beta).",
+    "dense": "Case-study services overview: services list, duration, and tools columns with overview copy and section titles.",
+    "keywords": [
+        "services",
+        "overview",
+        "case-study",
+        "tools",
+        "duration"
+    ],
+    "usage": {
+        "description": "ServicesBlock summarizes an engagement at the top of a case study: overview copy plus services / duration / tools columns, each with its own title prop. All content arrives via props so pages keep copy local. Use ServicesSection for the marketing services grid on the homepage; ServicesBlock is the factual project-scope block."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-services-block",
     "radixPrimitive": null,
     "element": "div",

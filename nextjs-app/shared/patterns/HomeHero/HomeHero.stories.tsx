@@ -10,7 +10,7 @@ const defaultArgs = {
 const meta = {
   title: "Patterns/HomeHero",
   component: HomeHero,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
