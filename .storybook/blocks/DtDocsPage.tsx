@@ -71,7 +71,10 @@ export function DtDocsPage() {
     );
   }
 
-  const primary = stories[0] ?? null;
+  // Showcase the canonical Default story (spec 3.2 A item 2); fall back to
+  // the first story for components whose Default is an alias re-export.
+  const primary =
+    stories.find((story) => story.name === "Default") ?? stories[0] ?? null;
   const playground =
     stories.find((story) => story.name === "Playground") ?? null;
   const examples = stories.filter(

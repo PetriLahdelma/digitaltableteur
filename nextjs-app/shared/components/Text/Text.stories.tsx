@@ -88,7 +88,7 @@ const textComplianceRules: ComplianceRule[] = [
 export default {
   title: "Atoms/Text",
   component: Text,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -199,6 +199,12 @@ export const AllTags = () => {
   );
 };
 
+AllTags.tags = ["example"];
+AllTags.parameters = {
+  ...(AllTags as { parameters?: object }).parameters,
+  docs: { description: { story: "The polymorphic as surface: p, span, strong, em, cite, div and heading tags." } },
+};
+
 export const Sizes = () => {
   const { t } = useTranslation();
   return (
@@ -210,6 +216,12 @@ export const Sizes = () => {
   );
 };
 
+Sizes.tags = ["example"];
+Sizes.parameters = {
+  ...(Sizes as { parameters?: object }).parameters,
+  docs: { description: { story: "The xxs to xxl body ramp." } },
+};
+
 export const SerifAndSans = () => {
   const { t } = useTranslation();
   return (
@@ -218,6 +230,12 @@ export const SerifAndSans = () => {
       <Text terminals="serif">{t("storyTextSerif")}</Text>
     </>
   );
+};
+
+SerifAndSans.tags = ["example"];
+SerifAndSans.parameters = {
+  ...(SerifAndSans as { parameters?: object }).parameters,
+  docs: { description: { story: "Terminal families: serif for editorial weight, sans for product chrome." } },
 };
 
 export const LineHeights = () => {
@@ -260,6 +278,12 @@ export const LineHeights = () => {
       </div>
     </div>
   );
+};
+
+LineHeights.tags = ["example"];
+LineHeights.parameters = {
+  ...(LineHeights as { parameters?: object }).parameters,
+  docs: { description: { story: "tight to loose line-height ladder." } },
 };
 
 export const Example: Story = {

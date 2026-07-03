@@ -221,5 +221,54 @@
         "CodeSnippet",
         "Text",
         "HelperText"
-    ]
+    ],
+    "keywords": [
+        "icon",
+        "phosphor",
+        "glyph",
+        "decorative",
+        "aria-label",
+        "spin",
+        "status"
+    ],
+    "dense": "Phosphor icon wrapper; name by PascalCase or slug (FontAwesome aliases kept), 2xs-2xl size ladder, weight, rotate/flip/spin/pulse, decorative by default, ariaLabel switches to role=img",
+    "usage": {
+        "description": "Icon wraps the Phosphor icon set with the project's size ladder, motion affordances, and accessibility defaults. It accepts a Phosphor name (PascalCase like ShareNetwork or a slug like share-network) and stays decorative (aria-hidden) unless you pass ariaLabel, which switches it to role=img with an accessible name. Legacy FontAwesome-style names are aliased so older call sites keep working.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Keep icons decorative (no ariaLabel) inside labelled controls; the control's own label is the accessible name."
+            },
+            {
+                "guidance": true,
+                "description": "Pass ariaLabel when the icon is the only content of an interactive element, so the control has a name."
+            },
+            {
+                "guidance": true,
+                "description": "Use spin for loading and pulse for ambient activity; both stop under prefers-reduced-motion."
+            },
+            {
+                "guidance": true,
+                "description": "Pair semantic status icons with visible text; the icon reinforces, the text carries the meaning."
+            },
+            {
+                "guidance": false,
+                "description": "Do not build icon-only buttons from a bare Icon; use Button with icon and accessibleName so focus, hit target and keyboard activation are owned by the right component."
+            },
+            {
+                "guidance": false,
+                "description": "Do not pass both ariaLabel and decorative; they are mutually exclusive and ariaLabel wins."
+            },
+            {
+                "guidance": false,
+                "description": "Do not force brand marks through Icon; anything outside the Phosphor catalogue goes through the image pipeline."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "name": "share-network",
+            "size": "lg"
+        }
+    }
 }

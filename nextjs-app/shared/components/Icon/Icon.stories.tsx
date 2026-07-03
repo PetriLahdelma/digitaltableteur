@@ -14,7 +14,7 @@ const meta: Meta<typeof Icon> = {
   },
   title: "Atoms/Icon",
   component: Icon,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   args: {
     name: "circle-info",
     weight: "regular",
@@ -103,11 +103,17 @@ export const Default: Story = {
   ...Playground,
 };
 export const BrandIcon: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "Weight variants on a brand glyph." } } },
   args: { name: "github", size: "2xl", color: "#111", ariaLabel: "GitHub" },
 };
 
 export const Sizes: Story = {
-  parameters: { controls: { disable: true } },
+  tags: ["example"],
+  parameters: {
+    docs: { description: { story: "The 2xs to 2xl size ladder." } },
+    controls: { disable: true },
+  },
   render: () => (
     <div style={{ display: "flex", gap: "1.5rem", alignItems: "flex-end" }}>
       {(["2xs", "xs", "sm", "md", "lg", "xl", "2xl"] as const).map((size) => (
@@ -131,6 +137,8 @@ export const Sizes: Story = {
 };
 
 export const Animated: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "spin and pulse motion affordances; both stop under prefers-reduced-motion." } } },
   args: { name: "circle-notch", spin: true, ariaLabel: "Loading" },
 };
 
@@ -161,7 +169,9 @@ export const ColorShowcase: Story = {
 };
 
 export const Transformations: Story = {
+  tags: ["example"],
   parameters: {
+    docs: { description: { story: "rotate, flip and mirrored transforms." } },
     contractStatus: contract.status,
     a11y: { test: "error" }, // Disable WIP badge to prevent overlap
   },

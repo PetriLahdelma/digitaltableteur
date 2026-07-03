@@ -76,7 +76,7 @@ const labelComplianceRules: ComplianceRule[] = [
 export default {
   title: "Atoms/Label",
   component: Label,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -151,11 +151,23 @@ WithTooltip.args = {
   title: "storyLabelTooltip",
 };
 
+WithTooltip.tags = ["example"];
+WithTooltip.parameters = {
+  ...(WithTooltip as { parameters?: object }).parameters,
+  docs: { description: { story: "tooltipText maps to the native title attribute; keep critical guidance in HelperText." } },
+};
+
 export const Required = Template.bind({});
 Required.args = {
   htmlFor: "input-id",
   children: "storyLabelRequired",
   required: true,
+};
+
+Required.tags = ["example"];
+Required.parameters = {
+  ...(Required as { parameters?: object }).parameters,
+  docs: { description: { story: "required adds the aria-hidden asterisk plus screen-reader-only (required) text." } },
 };
 
 export const Disabled = Template.bind({});
@@ -186,6 +198,12 @@ Disabled.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const label = await canvas.findByText(/disabled label/i);
   // Optionally, check for disabled state if implemented
+};
+
+Disabled.tags = ["example"];
+Disabled.parameters = {
+  ...(Disabled as { parameters?: object }).parameters,
+  docs: { description: { story: "Visual mute for a disabled field; the input must also be disabled." } },
 };
 
 export const Example: Story = {

@@ -11,7 +11,7 @@ import schema from "./schema.json";
 const CardStoryMeta = {
   title: "Molecules/Card",
   component: Card,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -112,6 +112,8 @@ export const Default = {
 };
 
 export const Hoverable = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "hoverable lifts the surface on pointer hover; pair with interactive or link, never alone as the only affordance." } } },
   args: {
     title: "Hoverable Card",
     body: "This card responds to hover with subtle elevation and background changes.",
@@ -120,6 +122,8 @@ export const Hoverable = {
 };
 
 export const Loading = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "The loading skeleton replaces the body while data resolves." } } },
   args: {
     title: "Loading Card",
     loading: true,
@@ -185,6 +189,8 @@ export const DescriptionVariant = {
 
 // Layout and Content Examples
 export const WithCover = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "Cover media above the header and body." } } },
   args: {
     title: "Media Card",
     titleProps: { size: "l" },
@@ -202,6 +208,8 @@ export const WithCover = {
 };
 
 export const WithActions = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "Footer actions row; do not combine with link mode." } } },
   render: () => {
     const actions = [
       { key: "save", label: "Save Draft" },
@@ -222,6 +230,8 @@ export const WithActions = {
 };
 
 export const Interactive = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "interactive makes the surface focusable with Enter and Space activation, for non-navigation actions." } } },
   args: {
     title: "Interactive Card",
     icon: <Icon name="github-logo" ariaLabel="github-logo" />,
@@ -238,6 +248,8 @@ export const Interactive = {
 
 // Link Variant
 export const AsLink = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "Whole-card navigation; one anchor named by linkLabel or title." } } },
   args: {
     title: "Portfolio Project",
     icon: <Icon name="arrow-square-out" ariaLabel="arrow-square-out" />,
@@ -359,7 +371,9 @@ const TabbedStoryComponent = () => {
   );
 };
 
-export const Tabbed = { render: () => <TabbedStoryComponent /> };
+export const Tabbed = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "The tabs prop hosts alternating panels inside one card without re-mounting." } } }, render: () => <TabbedStoryComponent /> };
 
 // Real-world Use Cases (Matching current codebase patterns)
 export const ProjectCard = {

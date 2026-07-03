@@ -17,7 +17,7 @@ const TONE_ICON_MAP: Record<string, string> = {
 const meta: Meta<typeof Badge> = {
   title: "Atoms/Badge",
   component: Badge,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -139,7 +139,9 @@ const TonesContent: React.FC = () => {
   );
 };
 
-export const Tones: Story = { render: () => <TonesContent /> };
+export const Tones: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "Filled tones; a status icon is auto-resolved for every non-neutral tone." } } }, render: () => <TonesContent /> };
 
 const SecondaryContent: React.FC = () => {
   const { t } = useTranslation();
@@ -165,14 +167,20 @@ const SecondaryContent: React.FC = () => {
   );
 };
 
-export const SecondaryVariants: Story = { render: () => <SecondaryContent /> };
+export const SecondaryVariants: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "Outlined weight across the tone matrix, for surfaces where a filled badge would compete." } } }, render: () => <SecondaryContent /> };
 
 export const Removable: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "Filter-chip mode; the dismiss affordance is an internal Button with a translated accessible name." } } },
   render: Template,
   args: { removable: true, children: "badgeRemovable", variant: "primary" },
 };
 
 export const WithIcon: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "Custom icon next to the label via the icon slot." } } },
   render: Template,
   args: { variant: "primary", tone: "info", children: "badgeInfo", iconName: "info" },
 };
@@ -188,7 +196,9 @@ const SizesContent: React.FC = () => {
   );
 };
 
-export const Sizes: Story = { render: () => <SizesContent /> };
+export const Sizes: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "sm, md and lg badge sizes." } } }, render: () => <SizesContent /> };
 
 export const Example: Story = {
   globals: { forcedColors: "none" },

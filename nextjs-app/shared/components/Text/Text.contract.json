@@ -203,5 +203,54 @@
         "ProjectHero",
         "RelatedProjects",
         "GridBlock"
-    ]
+    ],
+    "keywords": [
+        "text",
+        "paragraph",
+        "body",
+        "typography",
+        "lede",
+        "caption",
+        "emphasis"
+    ],
+    "dense": "body/inline typography; p by default, polymorphic as (span/strong/em/cite/headings), size + terminals + lineHeight ladder shared with Title",
+    "usage": {
+        "description": "Text owns body and inline typography: paragraphs by default, with a polymorphic as prop for span, strong, em, cite, div and the heading tags when you need a heading shape at body weight. It shares the size, terminals and lineHeight ladder with Title, so editorial rhythm stays consistent across the site.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Default to the p element for body copy; switch to as=span for inline positions so paragraphs never nest."
+            },
+            {
+                "guidance": true,
+                "description": "Set a lede with size=l and lineHeight=snug directly under a hero Title."
+            },
+            {
+                "guidance": true,
+                "description": "Use as=strong or as=em for inline emphasis so screen readers announce the semantics."
+            },
+            {
+                "guidance": true,
+                "description": "Use size=xs with terminals=sans for captions and metadata."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Text for section headings; headings carry outline semantics Text does not, use Title."
+            },
+            {
+                "guidance": false,
+                "description": "Do not label form fields with Text; use Label (htmlFor) and HelperText (aria-describedby)."
+            },
+            {
+                "guidance": false,
+                "description": "Do not render code with Text; CodeSnippet and CodeBlockWindow own the monospace ramp."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "We design clarity for ambitious teams.",
+            "size": "m"
+        }
+    }
 }
