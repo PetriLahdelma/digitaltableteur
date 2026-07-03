@@ -50,10 +50,5 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ],
-    "composesWith": [
-        "Button",
-        "ChatWidget",
-        "Header"
     ]
 }

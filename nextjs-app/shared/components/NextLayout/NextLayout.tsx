@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import { SiteHeader, SiteFooter, SkipLink } from "../../patterns/navigation";
 import { PageTransition } from "../animations/PageTransition";
 import { DonnyActionProvider } from "../DonnyActionProvider";
-import styles from "../Layout/Layout.module.css";
+import styles from "./NextLayout.module.css";
 
 const ChatWidget = dynamic(() => import("../ChatWidget/ChatWidget"), {
   ssr: false,

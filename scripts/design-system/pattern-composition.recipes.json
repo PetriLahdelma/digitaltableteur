@@ -28,28 +28,6 @@
       "storybookId": "patterns-ctasection--default"
     },
     {
-      "name": "Header",
-      "publicImport": "@dt/Header",
-      "tier": "pattern",
-      "status": "deprecated",
-      "useWhen": [
-        "never in new work — deprecated; use SiteHeader"
-      ],
-      "avoidWhen": [
-        "all new work: replaced by SiteHeader (patterns/navigation) in production",
-        "Next.js app shell — SiteHeader owns it"
-      ],
-      "composesWith": [
-        "Link",
-        "Icon",
-        "MobileMenu"
-      ],
-      "variantNotes": {
-        "chrome": "Keep native <button> for language/theme controls unless explicitly redesigning header chrome."
-      },
-      "storybookId": "deprecated-header--default"
-    },
-    {
       "name": "HeroSection",
       "publicImport": "@dt/HeroSection",
       "tier": "pattern",
@@ -112,7 +90,6 @@
         "global navigation shell on marketing routes"
       ],
       "avoidWhen": [
-        "Storybook-only legacy Header pattern",
         "embedded header inside a card or modal",
         "replacing native header buttons without design sign-off"
       ],

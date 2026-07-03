@@ -51,7 +51,6 @@
                 "symbol",
                 "object",
                 "image",
-                "s",
                 "form",
                 "slot",
                 "style",
@@ -145,6 +144,7 @@
                 "rp",
                 "rt",
                 "ruby",
+                "s",
                 "samp",
                 "script",
                 "section",
@@ -232,5 +232,12 @@
     "forbiddenUse": [
         "Center large layout sections — use `Section` + `Container` instead.",
         "Rely on this to vertically center text inside a button or input — those already center via their own padding."
+    ],
+    "composesWith": [
+        "Badge",
+        "Checkbox",
+        "Link",
+        "TextInput",
+        "TextArea"
     ]
 }

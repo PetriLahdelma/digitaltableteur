@@ -11,7 +11,7 @@ Render a hierarchical sitemap as a collapsible navigation tree with branch folde
 ## Do / don't
 - Do: Use for documentation sitemaps, internal IA previews, or agent discovery trees.
 - Do: Pass pre-translated labels from the caller.
-- Don't: Use as the primary site header navigation — use `NavMenuList` / `NextHeader` instead.
+- Don't: Use as the primary site header navigation — use `NavMenuList` / `SiteHeader` instead.
 - Don't: Nest more than three levels without testing keyboard focus order.
 
 ## Design notes

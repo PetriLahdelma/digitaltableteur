@@ -37,7 +37,6 @@ export { default as Kbd } from "./Kbd/Kbd";
 export { default as StatusDot } from "./StatusDot/StatusDot";
 export { default as TextInput } from "./TextInput/TextInput";
 export { default as Label } from "./Label/Label";
-export { default as Layout } from "./Layout/Layout";
 export { default as Link } from "./Link/Link";
 export { default as List } from "./List/List";
 export { default as MacWindowFrame } from "./MacWindowFrame/MacWindowFrame";

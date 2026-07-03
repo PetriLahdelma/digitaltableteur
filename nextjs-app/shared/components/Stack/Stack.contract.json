@@ -119,7 +119,6 @@
                 "symbol",
                 "object",
                 "image",
-                "s",
                 "form",
                 "slot",
                 "style",
@@ -213,6 +212,7 @@
                 "rp",
                 "rt",
                 "ruby",
+                "s",
                 "samp",
                 "script",
                 "section",
@@ -299,5 +299,12 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
+    ],
+    "composesWith": [
+        "Container",
+        "Link",
+        "Badge",
+        "Checkbox",
+        "TextInput"
     ]
 }

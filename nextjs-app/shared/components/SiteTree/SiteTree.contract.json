@@ -67,7 +67,7 @@
         }
     },
     "forbiddenUse": [
-        "Use as the primary site header navigation — use `NavMenuList` / `NextHeader` instead.",
+        "Use as the primary site header navigation — use `NavMenuList` / `SiteHeader` instead.",
         "Nest more than three levels without testing keyboard focus order."
     ]
 }

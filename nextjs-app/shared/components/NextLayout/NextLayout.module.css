@@ -1,0 +1,17 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow-x: clip;
+}
+
+.main {
+  min-width: 0;
+  flex: 1;
+  overflow-x: clip;
+}
+
+.main:focus {
+  /* stylelint-disable-next-line a11y/no-outline-none -- main is not interactive; focus is only set programmatically as the skip-link scroll target */
+  outline: none;
+}
