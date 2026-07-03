@@ -70,6 +70,7 @@ export const Default: Story = {
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   args: {
     languages: LANGUAGES,
     currentLang: "en",

@@ -35,6 +35,8 @@ export interface TextInputProps
   value?: string | number;
   error?: string;
   helperText?: string;
+  /** Disables the input. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it. */
+  disabled?: boolean;
 
   // DEPRECATED PROPS
   /** @deprecated Use onValueChange instead. Will be removed in v2.0.0 */

@@ -102,6 +102,7 @@ export const Default: Story = {
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   args: {
     label: "Disciplines",
     options: OPTIONS,

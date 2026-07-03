@@ -50,6 +50,7 @@
     ],
     "composesWith": [
         "Link",
+        "Badge",
         "Checkbox",
         "TextInput",
         "TextArea"

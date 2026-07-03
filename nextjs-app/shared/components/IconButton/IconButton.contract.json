@@ -88,38 +88,71 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
-            "since": "2026-05-28"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
-            "since": "2026-05-28"
-        }
-    ],
+    "consumers": [],
     "schemaVersion": 2,
     "displayName": "IconButton",
-    "keywords": ["icon button", "icon-only", "toolbar", "close", "action", "compact", "menu trigger"],
+    "keywords": [
+        "icon button",
+        "icon-only",
+        "toolbar",
+        "close",
+        "action",
+        "compact",
+        "menu trigger"
+    ],
     "dense": "icon-only action button; wraps Button (rounded) so variant (weight) x tone x surface stay in lockstep, sm/md/lg, required accessible label, tooltip passthrough",
     "usage": {
         "description": "IconButton is an icon-only action for compact surfaces: toolbars, card corners, table rows, dialog close affordances. It wraps Button in its rounded icon-only form, so weight, tone, and surface behave exactly like Button; label is required and becomes the accessible name.",
         "bestPractices": [
-            { "guidance": true, "description": "Write label as the action, like Close dialog or Copy link, never the icon name like X or Clipboard." },
-            { "guidance": true, "description": "Stay on the default variant=tertiary in toolbars and chrome; reserve primary for the one dominant action of a compact surface." },
-            { "guidance": true, "description": "Pick an icon whose meaning survives without text (x, magnifying-glass, caret-*); if you have to explain the icon, use Button with a visible label instead." },
-            { "guidance": true, "description": "Add tooltip for sighted-user reassurance on ambiguous glyphs; the label still carries the accessible name." },
-            { "guidance": true, "description": "Use surface=onDark or onBrand when the control sits on a dark or brand band instead of overriding colors." },
-            { "guidance": false, "description": "Do not omit or auto-generate label; there is no fallback announcement and axe fails the render." },
-            { "guidance": false, "description": "Do not use IconButton for primary marketing CTAs; text plus icon is more discoverable, use Button with an icon prop." },
-            { "guidance": false, "description": "Do not stack more than about five icon-only actions in a row without grouping or labels; recognition drops sharply." }
+            {
+                "guidance": true,
+                "description": "Write label as the action, like Close dialog or Copy link, never the icon name like X or Clipboard."
+            },
+            {
+                "guidance": true,
+                "description": "Stay on the default variant=tertiary in toolbars and chrome; reserve primary for the one dominant action of a compact surface."
+            },
+            {
+                "guidance": true,
+                "description": "Pick an icon whose meaning survives without text (x, magnifying-glass, caret-*); if you have to explain the icon, use Button with a visible label instead."
+            },
+            {
+                "guidance": true,
+                "description": "Add tooltip for sighted-user reassurance on ambiguous glyphs; the label still carries the accessible name."
+            },
+            {
+                "guidance": true,
+                "description": "Use surface=onDark or onBrand when the control sits on a dark or brand band instead of overriding colors."
+            },
+            {
+                "guidance": false,
+                "description": "Do not omit or auto-generate label; there is no fallback announcement and axe fails the render."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use IconButton for primary marketing CTAs; text plus icon is more discoverable, use Button with an icon prop."
+            },
+            {
+                "guidance": false,
+                "description": "Do not stack more than about five icon-only actions in a row without grouping or labels; recognition drops sharply."
+            }
         ],
         "anatomy": [
-            { "name": "Icon", "required": true, "description": "The glyph, passed as an element or a Phosphor icon name string; always aria-hidden." },
-            { "name": "Label", "required": true, "description": "Invisible accessible name (aria-label) announcing the action to assistive tech." },
-            { "name": "Tooltip", "required": false, "description": "Native hover tooltip for sighted users; never the accessible name." }
+            {
+                "name": "Icon",
+                "required": true,
+                "description": "The glyph, passed as an element or a Phosphor icon name string; always aria-hidden."
+            },
+            {
+                "name": "Label",
+                "required": true,
+                "description": "Invisible accessible name (aria-label) announcing the action to assistive tech."
+            },
+            {
+                "name": "Tooltip",
+                "required": false,
+                "description": "Native hover tooltip for sighted users; never the accessible name."
+            }
         ]
     },
     "playground": {
@@ -133,7 +166,7 @@
     "props": {
         "icon": {
             "optional": false,
-            "type": "React.ReactNode | string"
+            "type": "ReactNode | string"
         },
         "label": {
             "optional": false,
@@ -150,23 +183,11 @@
         },
         "tone": {
             "optional": true,
-            "type": "union",
-            "values": [
-                "neutral",
-                "error",
-                "warning",
-                "success",
-                "info"
-            ]
+            "type": "ButtonProps[\"tone\"]"
         },
         "surface": {
             "optional": true,
-            "type": "union",
-            "values": [
-                "default",
-                "onDark",
-                "onBrand"
-            ]
+            "type": "ButtonProps[\"surface\"]"
         },
         "size": {
             "optional": true,

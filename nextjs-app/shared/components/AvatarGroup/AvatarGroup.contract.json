@@ -78,11 +78,7 @@
         },
         "children": {
             "optional": false,
-            "type": "ReactNode"
-        },
-        "className": {
-            "optional": true,
-            "type": "string"
+            "type": "React.ReactNode"
         }
     },
     "displayName": "AvatarGroup",

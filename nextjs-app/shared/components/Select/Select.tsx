@@ -26,6 +26,8 @@ export interface SelectProps
   size?: SizeUnified;
   /** Value change handler (recommended) */
   onValueChange?: (value: string) => void;
+  /** Disables the select. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it. */
+  disabled?: boolean;
 
   // DEPRECATED PROPS
   /** @deprecated Use onValueChange instead. Will be removed in v2.0.0 */

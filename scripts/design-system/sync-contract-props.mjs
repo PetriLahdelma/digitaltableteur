@@ -54,10 +54,19 @@ for (const base of roots) {
     if (!agent) continue;
 
     const contract = JSON.parse(readFileSync(contractPath, "utf8"));
+    // Doc-adopted contracts (usage authored) keep their curated semantic
+    // fields; only props stay machine-synced. Mirrors check-contract-props.
+    const docAdopted = Boolean(contract.usage?.description);
     const nextProps = agent.props ?? {};
-    const nextComposes = sanitizeComponentNames(agent.composesWith);
-    const nextPrefers = sanitizeStringList(agent.prefersOver);
-    const nextForbidden = sanitizeStringList(agent.forbiddenUse);
+    const nextComposes = docAdopted
+      ? sanitizeComponentNames(contract.composesWith)
+      : sanitizeComponentNames(agent.composesWith);
+    const nextPrefers = docAdopted
+      ? sanitizeStringList(contract.prefersOver)
+      : sanitizeStringList(agent.prefersOver);
+    const nextForbidden = docAdopted
+      ? sanitizeStringList(contract.forbiddenUse)
+      : sanitizeStringList(agent.forbiddenUse);
 
     const shouldSyncProps =
       contract.status === "beta" ||
@@ -88,12 +97,14 @@ for (const base of roots) {
     }
 
     contract.props = nextProps;
-    if (nextComposes.length) contract.composesWith = nextComposes;
-    else delete contract.composesWith;
-    if (nextPrefers.length) contract.prefersOver = nextPrefers;
-    else delete contract.prefersOver;
-    if (nextForbidden.length) contract.forbiddenUse = nextForbidden;
-    else delete contract.forbiddenUse;
+    if (!docAdopted) {
+      if (nextComposes.length) contract.composesWith = nextComposes;
+      else delete contract.composesWith;
+      if (nextPrefers.length) contract.prefersOver = nextPrefers;
+      else delete contract.prefersOver;
+      if (nextForbidden.length) contract.forbiddenUse = nextForbidden;
+      else delete contract.forbiddenUse;
+    }
 
     writeFileSync(contractPath, `${JSON.stringify(contract, null, 4)}\n`);
     updated += 1;

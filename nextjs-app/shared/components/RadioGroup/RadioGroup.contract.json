@@ -113,6 +113,10 @@
                 "L"
             ]
         },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
         "error": {
             "optional": true,
             "type": "string"
@@ -124,10 +128,6 @@
         "className": {
             "optional": true,
             "type": "string"
-        },
-        "disabled": {
-            "optional": true,
-            "type": "boolean"
         }
     },
     "forbiddenUse": [

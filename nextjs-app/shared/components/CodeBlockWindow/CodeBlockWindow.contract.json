@@ -67,8 +67,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "default",
-                "article"
+                "article",
+                "default"
             ]
         },
         "className": {

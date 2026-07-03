@@ -112,22 +112,22 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteFooter/index.ts",
             "since": "2026-06-04"
         }
     ],
@@ -146,9 +146,9 @@
             "optional": true,
             "type": "union",
             "values": [
+                "none",
                 "always",
-                "hover",
-                "none"
+                "hover"
             ]
         }
     },
