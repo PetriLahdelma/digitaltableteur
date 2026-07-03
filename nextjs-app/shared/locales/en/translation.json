@@ -564,7 +564,7 @@
   "monthDecember": "December",
   "blogArticlesTitle": "Latest Articles",
   "blogRead": "read",
-  "blogReadMore": "Read more",
+  "blogReadMore": "Read article",
   "workMetaTitle": "Work | Digitaltableteur",
   "workMetaDescription": "Selected projects and experiments by Digitaltableteur",
   "workTitle": "Selected projects",
@@ -1256,7 +1256,6 @@
   "blogNextPage": "Next",
   "blogPage": "Page",
   "scrollToContent": "Scroll",
-  "blogReadMore": "Read article",
   "articleTOCTitle": "Table of Contents",
   "articleShareTitle": "Share this article",
   "articleAboutAuthor": "About the author",
@@ -1337,5 +1336,8 @@
   "workCTATitle": "Interested in working together?",
   "workCTADescription": "Let's discuss how design systems, AI and thoughtful UX can elevate your product.",
   "workCTAPrimary": "Get in touch",
-  "workCTASecondary": "View all work"
+  "workCTASecondary": "View all work",
+  "splitButton": {
+    "moreOptions": "More options"
+  }
 }

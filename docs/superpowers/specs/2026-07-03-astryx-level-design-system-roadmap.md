@@ -160,7 +160,7 @@ Current-state flags below come from the 2026-07-02 audit matrix. "clean" = all a
 | **IconButton** | beta; no css, no test | Full D1-D10. Write `.module.css` (currently unstyled or inline?); square aspect, `label` prop as aria-label REQUIRED (Astryx pattern), tooltip integration. Examples: Variants, Sizes, WithTooltip, InToolbar. |
 | **AdaptiveLoadingButton** | beta, clean | Phase 0 decision: fold into Button as `clickAction`/`loading` behavior or keep and document the split in both components' bestPractices. If kept: Examples: AsyncSubmit, Interruptible, ErrorRecovery. |
 | **SplitButton** | stub | Build or delete (4.1). If built: primary action + menu, full D1-D10, anatomy: PrimaryAction / Divider / MenuTrigger / Menu. |
-| **Tag** | beta; no css, no test | D8 first. Clarify Tag vs Badge in both dense lines and bestPractices (Astryx: Badge = status count, Token = removable input chip; our Tag likely spans both, consider `removable` variant). Examples: Tones, Removable, AsFilter. |
+| **Tag** | ~~beta; no css, no test~~ **DELETED (Phase 3 batch 1, 2026-07-03)** | Resolution of the "clarify Tag vs Badge" question: platinum Badge already absorbed the whole surface (variant x tone, `removable` chip mode, auto status icons; keywords include "tag"/"chip"/"filter"). Tag was a legacy Tailwind duplicate with hardcoded colors and no catalog-surface consumers — deleted per the Phase 0 never-document-duplicates principle. Use Badge. |
 
 ### 5.2 Typography & content (10)
 

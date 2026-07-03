@@ -5,32 +5,30 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import Button from "@dt/Button";
+import Button, { type ButtonProps } from "@dt/Button";
 
 export interface IconButtonProps
   extends Omit<ComponentPropsWithoutRef<"button">, "children"> {
-  /** Pass a rendered icon element (e.g., <CaretRight />) */
-  icon: ReactNode;
+  /** Icon glyph: a rendered element (e.g. <CaretRight />) or a Phosphor icon name (e.g. "x"). */
+  icon: ReactNode | string;
   /** Accessible name when `aria-labelledby` is not set */
   label: string;
-  variant?: "default" | "ghost" | "outline";
+  /** Visual weight. @default "tertiary" */
+  variant?: "primary" | "secondary" | "tertiary";
+  /** Semantic colour, orthogonal to `variant`. @default "neutral" */
+  tone?: ButtonProps["tone"];
+  /** Surface the control sits on; prefer over color overrides on tinted bands. @default "default" */
+  surface?: ButtonProps["surface"];
   size?: "sm" | "md" | "lg";
+  /** Native tooltip text shown on hover; the `label` stays the accessible name. */
+  tooltip?: string;
 }
-
-const variantMap = {
-  default: "primary",
-  ghost: "tertiary",
-  outline: "secondary",
-} as const;
-
-const sizeMap = {
-  sm: "sm",
-  md: "md",
-  lg: "lg",
-} as const;
 
 /**
  * Icon-only action control; `label` is required and becomes the accessible name.
+ *
+ * Delegates all styling to @dt/Button (rounded, icon-only form) — css-less by
+ * design, so weight/tone/surface stay in lockstep with Button.
  *
  * `className` is applied on a wrapper span so Tailwind responsive utilities (e.g.
  * `lg:hidden`) are not overridden by @dt/Button CSS module `display: inline-flex`.
@@ -40,8 +38,11 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     {
       icon,
       label,
-      variant = "ghost",
+      variant = "tertiary",
+      tone = "neutral",
+      surface = "default",
       size = "md",
+      tooltip,
       className,
       type = "button",
       "aria-labelledby": ariaLabelledBy,
@@ -69,10 +70,13 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       <Button
         ref={ref}
         type={type}
-        variant={variantMap[variant]}
-        size={sizeMap[size]}
+        variant={variant}
+        tone={tone}
+        surface={surface}
+        size={size}
         accessibleName={ariaLabelledBy ? undefined : label}
         aria-labelledby={ariaLabelledBy}
+        tooltip={tooltip}
         rounded
         icon={icon}
         disabled={disabled}

@@ -1,5 +1,6 @@
 // Re-export Tailwind-first UI primitives
-export { Tag, type TagProps } from "../Tag";
+// Tag was deleted 2026-07-03 (Astryx Phase 3 batch 1): Badge covers the whole
+// surface (variant x tone, removable chip mode, auto status icons) — use @dt/Badge.
 export { Divider, type DividerProps } from "../Divider";
 export { IconButton, type IconButtonProps } from "../IconButton";
 export { VisuallyHidden, type VisuallyHiddenProps } from "../VisuallyHidden";

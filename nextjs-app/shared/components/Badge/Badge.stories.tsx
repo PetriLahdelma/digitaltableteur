@@ -5,6 +5,7 @@ import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 import Badge from "@dt/Badge";
+import Button from "@dt/Button";
 import schema from "./schema.json";
 
 const TONE_ICON_MAP: Record<string, string> = {
@@ -199,6 +200,57 @@ const SizesContent: React.FC = () => {
 export const Sizes: Story = {
   tags: ["example"],
   parameters: { docs: { description: { story: "sm, md and lg badge sizes." } } }, render: () => <SizesContent /> };
+
+const AsCountContent: React.FC = () => {
+  const [count, setCount] = React.useState(3);
+  return (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+      <Badge role="status" tone="info" size="sm">
+        {count} unread
+      </Badge>
+      <Button variant="secondary" size="sm" onClick={() => setCount((c) => c + 1)}>
+        Add message
+      </Button>
+    </div>
+  );
+};
+
+export const AsCount: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "role=status makes a runtime-updating counter announce politely via aria-live; reserve it for badges that actually change.",
+      },
+    },
+  },
+  render: () => <AsCountContent />,
+};
+
+export const InButtonEndSlot: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Composition in context: a Badge in Button's endIcon slot for count-carrying actions (cross-links Button).",
+      },
+    },
+  },
+  render: () => (
+    <Button
+      variant="secondary"
+      endIcon={
+        <Badge size="sm" tone="info">
+          3
+        </Badge>
+      }
+    >
+      Notifications
+    </Button>
+  ),
+};
 
 export const Example: Story = {
   globals: { forcedColors: "none" },

@@ -81,13 +81,13 @@ export const AllContexts: Story = {
       <MigrationDecisionBand title="IconButton — SiteHeader / MobileDrawer" className={board.bandLight}>
         <MigrationDecisionBlock
           variant="legacy"
-          title="Today — shadcn IconButton (ghost / outline, rounded-full)"
+          title="Today — IconButton wrapper (tertiary / secondary, rounded-full)"
         >
-          <ShadcnIconButton icon={<Share className="h-5 w-5" />} label="Share" variant="ghost" />
+          <ShadcnIconButton icon={<Share className="h-5 w-5" />} label="Share" variant="tertiary" />
           <ShadcnIconButton
             icon={<Share className="h-5 w-5" />}
             label="Share"
-            variant="outline"
+            variant="secondary"
           />
         </MigrationDecisionBlock>
         <MigrationDecisionBlock

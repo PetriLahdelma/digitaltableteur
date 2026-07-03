@@ -161,7 +161,7 @@ export function MobileDrawer({
             icon={<X weight="bold" className="size-5" />}
             label={t("navMenuClose")}
             onClick={onClose}
-            variant="ghost"
+            variant="tertiary"
           />
         </div>
 
@@ -223,7 +223,7 @@ export function MobileDrawer({
               icon={<ThemeIcon weight="bold" className="size-4" />}
               label={t("navMenuThemeToggle")}
               onClick={onThemeToggle}
-              variant="outline"
+              variant="secondary"
             />
           </div>
 
