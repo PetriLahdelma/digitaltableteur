@@ -29,7 +29,13 @@
         "forcedColorsVerified": true
     },
     "tokens": {
-        "colors": [],
+        "colors": [
+            "--color-error",
+            "--color-info",
+            "--color-primary",
+            "--color-success",
+            "--color-warning-contrast"
+        ],
         "spacing": []
     },
     "lightDarkVerified": true,
@@ -80,5 +86,48 @@
         "Label",
         "Icon",
         "Button"
-    ]
+    ],
+    "displayName": "HelperText",
+    "keywords": [
+        "helper text",
+        "hint",
+        "error message",
+        "validation",
+        "describedby"
+    ],
+    "dense": "semantic helper copy under a form control; neutral or error/warning/success/info with auto icon; error becomes role=alert; id feeds aria-describedby",
+    "usage": {
+        "description": "HelperText is the supporting line under a form control: a neutral hint, or a semantic error, warning, success, or info message with an auto-resolved icon. The system's inputs render it automatically via their helperText and error props; reach for it directly only when composing a custom field.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Prefer the built-in helperText and error props on TextInput, TextArea, Select, Checkbox, and Switch; they render HelperText and wire aria-describedby for you."
+            },
+            {
+                "guidance": true,
+                "description": "Pass an id and reference it from the control's aria-describedby when composing manually, so the hint is announced with the field."
+            },
+            {
+                "guidance": true,
+                "description": "Keep it to one short sentence; longer guidance belongs in surrounding copy, not under the field."
+            },
+            {
+                "guidance": true,
+                "description": "Use state=error for validation failures; the paragraph becomes role=alert and announces immediately."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put validation errors inside the Label; errors belong below the field, the label carries the field name."
+            },
+            {
+                "guidance": false,
+                "description": "Do not show a hint and an error at the same time; show the error, restore the hint when it clears."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "We never share this address."
+        }
+    }
 }

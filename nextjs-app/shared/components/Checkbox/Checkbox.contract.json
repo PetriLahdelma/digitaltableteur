@@ -42,8 +42,17 @@
         "forcedColorsVerified": true
     },
     "tokens": {
-        "colors": [],
-        "spacing": []
+        "colors": [
+            "--checkbox-checkmark-color",
+            "--color-light-bg",
+            "--color-muted-light",
+            "--color-primary",
+            "--focus-ring-color"
+        ],
+        "spacing": [],
+        "radii": [
+            "--radius-md"
+        ]
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
@@ -108,6 +117,14 @@
         "id": {
             "optional": true,
             "type": "string"
+        },
+        "error": {
+            "optional": true,
+            "type": "string"
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string"
         }
     },
     "forbiddenUse": [
@@ -121,5 +138,49 @@
         "Label",
         "Text",
         "Grid"
-    ]
+    ],
+    "displayName": "Checkbox",
+    "keywords": [
+        "checkbox",
+        "check",
+        "consent",
+        "multi-select",
+        "indeterminate"
+    ],
+    "dense": "native checkbox with label, sm/md/lg, indeterminate, own error + helperText; onCheckedChange(boolean); controlled or uncontrolled",
+    "usage": {
+        "description": "Checkbox is a labelled native input for an independent yes/no choice that takes effect when the form is submitted. It supports controlled and uncontrolled use, an indeterminate state for select-all parents, and carries its own error and helper text.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Write the label as the positive assertion being agreed to (Subscribe to the newsletter)."
+            },
+            {
+                "guidance": true,
+                "description": "Use indeterminate only on a select-all parent whose children are mixed; activating it resolves to checked."
+            },
+            {
+                "guidance": true,
+                "description": "Use the error prop for validation such as required consent; it wires aria-invalid and announces via role=alert."
+            },
+            {
+                "guidance": true,
+                "description": "Group related checkboxes with CheckboxGroup or FormField so a legend names the set."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use a Checkbox for an immediate on/off effect; that is Switch."
+            },
+            {
+                "guidance": false,
+                "description": "Do not hide the label with showLabel=false unless adjacent visible text names the control; the label is still the accessible name."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Subscribe to the newsletter",
+            "size": "md"
+        }
+    }
 }

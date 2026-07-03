@@ -26,8 +26,6 @@ export interface TextInputProps
   // NEW PROPS (v1.1.0)
   /** Size variant for input */
   size?: SizeUnified;
-  /** Disables the input */
-  isDisabled?: boolean;
   /** Value change handler (recommended) */
   onValueChange?: (value: string | number) => void;
   /** Initial value for uncontrolled component */
@@ -54,7 +52,6 @@ const TextInput: React.FC<TextInputProps> = ({
   helperText,
   // New props (v1.1.0)
   size = "md",
-  isDisabled,
   onValueChange,
   // Deprecated props
   onChange,
@@ -73,13 +70,8 @@ const TextInput: React.FC<TextInputProps> = ({
     if (onChange && !onValueChange) {
       warnPropRename("TextInput", "onChange", "onValueChange");
     }
-    if (disabled !== false && isDisabled === undefined) {
-      warnPropRename("TextInput", "disabled", "isDisabled");
-    }
   }
 
-  // Resolve effective values
-  const effectiveDisabled = isDisabled ?? disabled;
   const effectiveOnChange = onValueChange ?? onChange;
   const normalizedSize = normalizeSizeProp(size);
 
@@ -162,9 +154,8 @@ const TextInput: React.FC<TextInputProps> = ({
     <div className={styles.inputContainer}>
       <Label
         htmlFor={inputId}
-        required={hasError}
-        tooltipText={errorMessage}
-        disabled={effectiveDisabled}
+        required={!!rest.required}
+        disabled={disabled}
       >
         {label}
       </Label>
@@ -176,7 +167,7 @@ const TextInput: React.FC<TextInputProps> = ({
         placeholder={placeholder}
         value={inputValue}
         onChange={handleChange}
-        disabled={effectiveDisabled}
+        disabled={disabled}
         aria-invalid={hasError || undefined}
         aria-describedby={describedBy}
         {...rest}
@@ -192,5 +183,7 @@ const TextInput: React.FC<TextInputProps> = ({
     </div>
   );
 };
+
+TextInput.displayName = "TextInput";
 
 export default TextInput;

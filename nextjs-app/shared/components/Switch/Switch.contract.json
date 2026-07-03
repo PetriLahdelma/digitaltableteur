@@ -45,7 +45,14 @@
         "forcedColorsVerified": true
     },
     "tokens": {
-        "colors": [],
+        "colors": [
+            "--color-border-light",
+            "--color-primary",
+            "--focus-ring-color",
+            "--switch-handle-bg",
+            "--switch-track-off",
+            "--switch-track-on"
+        ],
         "spacing": []
     },
     "lightDarkVerified": true,
@@ -114,10 +121,80 @@
         "helperText": {
             "optional": true,
             "type": "string"
+        },
+        "error": {
+            "optional": true,
+            "type": "string"
         }
     },
     "forbiddenUse": [
         "use Switch inside a form whose values are submitted in a batch.",
         "rely on colour alone to convey state — the position of the"
-    ]
+    ],
+    "displayName": "Switch",
+    "keywords": [
+        "switch",
+        "toggle",
+        "on off",
+        "immediate",
+        "settings"
+    ],
+    "dense": "on/off toggle with immediate effect; label placement right/left/top, sm/md/lg, loading (aria-busy), own helperText + error; onCheckedChange(boolean)",
+    "usage": {
+        "description": "Switch is an on/off toggle whose effect applies immediately, like enabling dark mode or notifications. It renders a real button with role=switch, supports label placement, a loading state for async flips, and carries its own helper and error text.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use Switch only when flipping it takes effect immediately; a choice submitted later is a Checkbox."
+            },
+            {
+                "guidance": true,
+                "description": "Label the thing being controlled (Email notifications), never the current state (On)."
+            },
+            {
+                "guidance": true,
+                "description": "Use loading while an async toggle is in flight; it sets aria-busy and blocks double flips."
+            },
+            {
+                "guidance": true,
+                "description": "Use helperText for consequences worth knowing before flipping (Applies to all devices)."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use a Switch inside a submitted form for consent; that is Checkbox territory."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use negative labels (Disable sounds); keep the label positive so on means yes."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Track",
+                "required": true,
+                "description": "The pill background whose color communicates the on/off state."
+            },
+            {
+                "name": "Handle",
+                "required": true,
+                "description": "The sliding thumb; hosts the spinner while loading."
+            },
+            {
+                "name": "Label",
+                "required": false,
+                "description": "Visible Label wired via aria-labelledby; placement right, left, or top."
+            },
+            {
+                "name": "Helper / error text",
+                "required": false,
+                "description": "HelperText line under the control; error takes over and announces via role=alert."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Email notifications",
+            "size": "md"
+        }
+    }
 }

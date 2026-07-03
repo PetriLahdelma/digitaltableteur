@@ -78,7 +78,7 @@ const selectComplianceRules: ComplianceRule[] = [
 export default {
   title: "Forms/Select",
   component: Select,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -100,7 +100,7 @@ export default {
     options: {
       control: "object",
       description:
-        "Array of option objects with value, label, and optional isDisabled",
+        "Array of option objects with value, label, and optional disabled",
       table: { category: "Content", type: { summary: "SelectOptionItem[]" } },
     },
 
@@ -139,9 +139,9 @@ export default {
 
     // State
 
-    isDisabled: {
+    disabled: {
       control: "boolean",
-      description: "Disables the select (v1.1.0+)",
+      description: "Disables the select",
       table: { category: "State", type: { summary: "boolean" } },
     },
 
@@ -185,12 +185,6 @@ export default {
 
     // Deprecated
 
-    disabled: {
-      control: "boolean",
-      description:
-        "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
-      table: { category: "Deprecated", type: { summary: "boolean" } },
-    },
     onChange: {
       action: "changed",
       description:
@@ -263,6 +257,11 @@ Disabled.args = {
   disabled: true,
 };
 
+Disabled.tags = ["example"];
+Disabled.parameters = {
+  docs: { description: { story: "disabled turns off the whole control; per-option disabled lives on the options array." } },
+};
+
 export const WithCustomChildren: StoryFn<typeof Select> = () => {
   const { t } = useTranslation();
   return (
@@ -273,6 +272,16 @@ export const WithCustomChildren: StoryFn<typeof Select> = () => {
       <SelectOption value="option3" label={t("storyCheckboxOption3")} />
     </Select>
   );
+};
+
+WithCustomChildren.tags = ["example"];
+WithCustomChildren.parameters = {
+  docs: {
+    description: {
+      story:
+        "Pass SelectOption children when you need a placeholder or optgroup markup; the empty placeholder stays unselectable.",
+    },
+  },
 };
 
 export const Controlled: StoryFn<typeof Select> = () => {
@@ -292,6 +301,15 @@ export const Controlled: StoryFn<typeof Select> = () => {
   );
 };
 
+Controlled.tags = ["example"];
+Controlled.parameters = {
+  docs: {
+    description: {
+      story: "Controlled mode: pair value with onValueChange to own the selection.",
+    },
+  },
+};
+
 export const WithError = Template.bind({});
 WithError.args = {
   label: "storySelectLabel",
@@ -302,6 +320,15 @@ WithError.args = {
   ],
   value: "option1",
   error: "storySelectErrorRequired",
+};
+
+WithError.tags = ["example"];
+WithError.parameters = {
+  docs: {
+    description: {
+      story: "error replaces the helper line, sets aria-invalid, and announces via role=alert.",
+    },
+  },
 };
 
 export const SizeSmall = Template.bind({});

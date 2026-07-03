@@ -428,7 +428,7 @@ export default function TailwindTest() {
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
           <p className="font-body text-text-s">
-            <strong className="font-heading">Form Stack:</strong> FormField (single-control + group/fieldset mode), Checkbox. See <code>@dt/TextInput</code> and <code>@dt/TextArea</code> for the canonical text field components.
+            <strong className="font-heading">Form Stack:</strong> FormField (group/fieldset mode only; controls own their own label/error), Checkbox. See <code>@dt/TextInput</code> and <code>@dt/TextArea</code> for the canonical text field components.
           </p>
         </div>
       </div>

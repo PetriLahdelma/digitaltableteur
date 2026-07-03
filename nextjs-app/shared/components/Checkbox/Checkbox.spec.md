@@ -16,14 +16,15 @@ composition, the controlled/uncontrolled split, and the size ladder.
   mixed when indeterminate).
 
 ## Do / don't
-- Do: own state in the parent via `isChecked` + `onCheckedChange` for
-  any field that ships to a form submit. Uncontrolled is for ad-hoc UI.
-- Do: set `isIndeterminate` for "some children selected, not all"
+- Do: own state in the parent via `checked` + `onCheckedChange` for
+  any field that ships to a form submit. Uncontrolled (`defaultChecked`)
+  is for ad-hoc UI.
+- Do: set `indeterminate` for "some children selected, not all"
   parents. The visual and SR state match the semantic.
-- Don't: use `checked` directly. The prefixed `isChecked` name is the
-  contract; `checked` is a legacy alias that will be removed in v2.
+- Do: use the `error` prop for validation such as required consent; it
+  wires aria-invalid + aria-describedby and announces via role=alert.
 - Don't: rely on the native `indeterminate` HTML attribute — there is
-  no such serialised attribute. Use the prop.
+  no such serialised attribute. Use the prop (set as a DOM property).
 
 ## Design notes
 - Tokens: `--color-primary` drives the checked surface; `--color-surface-2`

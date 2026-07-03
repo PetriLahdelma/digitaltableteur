@@ -11,7 +11,7 @@ const OPTIONS = [
 const meta = {
   title: "Forms/RadioGroup",
   component: RadioGroup,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -69,7 +69,7 @@ const meta = {
       description: "Error message",
       table: { category: "Validation" },
     },
-    isDisabled: {
+    disabled: {
       control: "boolean",
       description: "Disable entire group",
       table: { category: "State", defaultValue: { summary: "false" } },
@@ -92,7 +92,7 @@ const meta = {
     orientation: "vertical",
     size: "md",
     helperText: "Choose the closest match.",
-    isDisabled: false,
+    disabled: false,
   },
 } satisfies Meta<typeof RadioGroup>;
 
@@ -109,14 +109,78 @@ export const Default: Story = {
   ...Playground,
 };
 
-export const Horizontal: Story = { args: { orientation: "horizontal" } };
+export const Basic: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The legend asks the question, the options answer it; defaultValue preselects the recommended choice.",
+      },
+    },
+  },
+  render: () => (
+    <RadioGroup
+      legend="Delivery speed"
+      options={[
+        { value: "standard", label: "Standard (3-5 days)" },
+        { value: "express", label: "Express (1-2 days)" },
+        { value: "pickup", label: "Pickup point" },
+      ]}
+      defaultValue="standard"
+    />
+  ),
+};
+
+export const Horizontal: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story: "Horizontal orientation for a few short options that fit one line on mobile.",
+      },
+    },
+  },
+  args: { orientation: "horizontal" },
+};
 
 export const WithError: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The group owns its error and helper text; the error announces via role=alert and sets aria-invalid on the fieldset.",
+      },
+    },
+  },
   args: {
     error: "Select an option to continue.",
     helperText: undefined,
     value: "",
   },
+};
+
+export const DisabledOption: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story: "Per-option disabled keeps the choice visible so the set reads complete.",
+      },
+    },
+  },
+  render: () => (
+    <RadioGroup
+      legend="Plan"
+      options={[
+        { value: "free", label: "Free" },
+        { value: "pro", label: "Pro" },
+        { value: "enterprise", label: "Enterprise (contact sales)", disabled: true },
+      ]}
+      defaultValue="free"
+    />
+  ),
 };
 
 export const Example: Story = {

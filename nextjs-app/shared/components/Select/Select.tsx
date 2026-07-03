@@ -10,25 +10,20 @@ import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalizati
 interface SelectOptionItem {
   value: string;
   label: string;
-  /** @deprecated Use isDisabled instead. Will be removed in v2.0.0 */
+  /** Disables this option. */
   disabled?: boolean;
-  /** Disables this option (v1.1.0+) */
-  isDisabled?: boolean;
 }
 
 export interface SelectProps
   extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "size"> {
   label: string;
   options?: SelectOptionItem[];
+  /** Supporting text under the control; suppressed while `error` is set. */
   helperText?: string;
-
-  // NEW PROPS (v1.1.0)
-  /** Error message to display (changes border color and shows error HelperText) */
+  /** Error message under the control; sets aria-invalid and aria-describedby. */
   error?: string;
   /** Size variant for select */
   size?: SizeUnified;
-  /** Disables the select */
-  isDisabled?: boolean;
   /** Value change handler (recommended) */
   onValueChange?: (value: string) => void;
 
@@ -47,7 +42,6 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       helperText,
       error,
       size = "md",
-      isDisabled,
       children,
       className,
       disabled = false,
@@ -68,10 +62,6 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         warnPropRename("Select", "onChange", "onValueChange");
       }
 
-      if (disabled !== false) {
-        warnPropRename("Select", "disabled", "isDisabled");
-      }
-
       if (value !== undefined && defaultValue !== undefined) {
         // eslint-disable-next-line no-console
         console.warn(
@@ -80,17 +70,19 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       }
     }
 
-    // Resolve effective disabled state (isDisabled takes precedence)
-    const effectiveDisabled = isDisabled ?? disabled;
-
     // Normalize size prop
     const normalizedSize = normalizeSizeProp(size);
 
-    // Process options with isDisabled fallback
-    const processedOptions = options.map((option) => ({
-      ...option,
-      disabled: option.isDisabled ?? option.disabled,
-    }));
+    const errorId = `${selectId}-error`;
+    const helperId = `${selectId}-helper`;
+    const describedBy =
+      [
+        error ? errorId : null,
+        helperText && !error ? helperId : null,
+        rest["aria-describedby"],
+      ]
+        .filter(Boolean)
+        .join(" ") || undefined;
 
     const combinedSelectClassName = [
       styles.select,
@@ -119,7 +111,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             id={selectId}
             ref={ref}
             className={combinedSelectClassName}
-            disabled={effectiveDisabled}
+            disabled={disabled}
             onChange={handleChange}
             {...(value !== undefined
               ? { value }
@@ -127,10 +119,12 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                 ? { defaultValue }
                 : {})}
             {...rest}
+            aria-describedby={describedBy}
+            aria-invalid={error ? true : rest["aria-invalid"]}
           >
             {children
               ? children
-              : processedOptions.map((option) => (
+              : options.map((option) => (
                   <SelectOption
                     key={option.value}
                     value={option.value}
@@ -145,8 +139,14 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             ariaLabel="Toggle options"
           />
         </div>
-        {error && <HelperText state="error">{error}</HelperText>}
-        {helperText && !error && <HelperText>{helperText}</HelperText>}
+        {error && (
+          <HelperText id={errorId} state="error">
+            {error}
+          </HelperText>
+        )}
+        {helperText && !error && (
+          <HelperText id={helperId}>{helperText}</HelperText>
+        )}
       </div>
     );
   },

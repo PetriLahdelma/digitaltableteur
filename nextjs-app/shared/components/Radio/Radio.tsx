@@ -8,9 +8,11 @@ export interface RadioProps
   label: string;
   value: string;
   name: string;
-  isChecked?: boolean;
+  /** Checked state (controlled); use inside RadioGroup for sets. */
+  checked?: boolean;
   defaultChecked?: boolean;
-  isDisabled?: boolean;
+  /** Disables interaction and dims the control. @default false */
+  disabled?: boolean;
   size?: SizeUnified;
   onCheckedChange?: (checked: boolean) => void;
   showLabel?: boolean;
@@ -22,9 +24,9 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     label,
     value,
     name,
-    isChecked,
+    checked,
     defaultChecked,
-    isDisabled = false,
+    disabled = false,
     size = "md",
     onCheckedChange,
     showLabel = true,
@@ -47,9 +49,9 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
         id={id}
         name={name}
         value={value}
-        checked={isChecked}
+        checked={checked}
         defaultChecked={defaultChecked}
-        disabled={isDisabled}
+        disabled={disabled}
         className={[styles.input, styles[`input--${normalizedSize}`]].join(" ")}
         onChange={(e) => onCheckedChange?.(e.target.checked)}
       />
