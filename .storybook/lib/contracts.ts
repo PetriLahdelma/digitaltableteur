@@ -151,10 +151,3 @@ export function storyIdFromTitle(title: string): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
-
-/** Docs-page href for a component, or null when its title is not mapped. */
-export function docsHrefForComponent(name: string): string | null {
-  const title = titleByComponentName[name];
-  if (!title) return null;
-  return `/?path=/docs/${storyIdFromTitle(title)}--docs`;
-}

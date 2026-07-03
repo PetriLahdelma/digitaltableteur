@@ -9,7 +9,7 @@ import schema from "./schema.json";
 export default {
   title: "Atoms/Button",
   component: Button,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -197,6 +197,16 @@ export const Tones = () => (
   </Row>
 );
 
+Tones.tags = ["example"];
+Tones.parameters = {
+  docs: {
+    description: {
+      story:
+        "The five semantic tones, orthogonal to variant; the label must carry the meaning, not the color alone.",
+    },
+  },
+};
+
 export const DestructiveActions = () => (
   <Row>
     <Button variant="primary" tone="error">
@@ -210,6 +220,16 @@ export const DestructiveActions = () => (
     </Button>
   </Row>
 );
+
+DestructiveActions.tags = ["example"];
+DestructiveActions.parameters = {
+  docs: {
+    description: {
+      story:
+        "tone=error across all three weights; pair with a confirmation step for irreversible actions.",
+    },
+  },
+};
 
 export const Sizes = () => (
   <Row>
@@ -225,11 +245,25 @@ export const Sizes = () => (
   </Row>
 );
 
+Sizes.tags = ["example"];
+Sizes.parameters = {
+  docs: { description: { story: "sm, md and lg control sizes." } },
+};
+
 export const IconLeft = Template.bind({});
 IconLeft.args = {
   variant: "primary",
   icon: "arrow-left",
   children: <Label tKey="buttonLeftIcon" />,
+};
+
+IconLeft.tags = ["example"];
+IconLeft.parameters = {
+  docs: {
+    description: {
+      story: "Leading icon by Phosphor name; it reinforces the label.",
+    },
+  },
 };
 
 export const IconRight = Template.bind({});
@@ -239,12 +273,29 @@ IconRight.args = {
   children: <Label tKey="buttonRightIcon" />,
 };
 
+IconRight.tags = ["example"];
+IconRight.parameters = {
+  docs: {
+    description: { story: "Trailing icon, for example a forward chevron." },
+  },
+};
+
 export const IconOnly = Template.bind({});
 IconOnly.args = {
   variant: "primary",
   icon: "magnifying-glass",
   accessibleName: "Search",
   tooltip: "Search",
+};
+
+IconOnly.tags = ["example"];
+IconOnly.parameters = {
+  docs: {
+    description: {
+      story:
+        "Icon-only buttons require accessibleName; tooltip alone is not an accessible name.",
+    },
+  },
 };
 
 export const States = () => (
@@ -261,6 +312,15 @@ export const States = () => (
     </Button>
   </Row>
 );
+
+States.tags = ["example"];
+States.parameters = {
+  docs: {
+    description: {
+      story: "Default, disabled, loading and rounded side by side.",
+    },
+  },
+};
 
 export const Loading = Template.bind({});
 Loading.args = { variant: "primary", loading: true, children: "Saving..." };
@@ -283,6 +343,15 @@ export const AsyncAction = () => (
     Save
   </Button>
 );
+AsyncAction.tags = ["example"];
+AsyncAction.parameters = {
+  docs: {
+    description: {
+      story:
+        "clickAction returns a promise; the button owns the busy state and dedupes repeat clicks.",
+    },
+  },
+};
 AsyncAction.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const button = canvas.getByRole("button");
@@ -302,6 +371,15 @@ export const LongLabel = () => (
     </Button>
   </div>
 );
+
+LongLabel.tags = ["example"];
+LongLabel.parameters = {
+  docs: {
+    description: {
+      story: "Long labels and long fi/sv locale strings must wrap, not break layout.",
+    },
+  },
+};
 
 export const Surfaces = () => (
   <div style={{ display: "grid", gap: "1rem" }}>
@@ -345,6 +423,16 @@ export const Surfaces = () => (
   </div>
 );
 
+Surfaces.tags = ["example"];
+Surfaces.parameters = {
+  docs: {
+    description: {
+      story:
+        "surface=onDark and surface=onBrand instead of color overrides on tinted bands.",
+    },
+  },
+};
+
 export const AsLink = () => (
   <Row>
     <Button href="/about" variant="primary">
@@ -358,6 +446,15 @@ export const AsLink = () => (
     </Button>
   </Row>
 );
+AsLink.tags = ["example"];
+AsLink.parameters = {
+  docs: {
+    description: {
+      story:
+        "With href the button renders an anchor; _blank targets get rel=noopener noreferrer automatically.",
+    },
+  },
+};
 AsLink.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const external = canvas.getByRole("link", { name: /external link/i });

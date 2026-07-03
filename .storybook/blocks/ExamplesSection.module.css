@@ -1,0 +1,44 @@
+.list {
+  display: grid;
+  gap: var(--space-layout-32);
+}
+
+.example {
+  margin: 0;
+}
+
+.exampleHeader {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-internal-12);
+  margin-block-end: var(--space-internal-8);
+}
+
+.exampleName {
+  margin: 0;
+  font-weight: 600;
+}
+
+.canvasLink {
+  margin-inline-start: auto;
+  font-size: var(--font-size-text-s);
+  color: var(--color-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.canvasLink:hover,
+.canvasLink:focus-visible {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.exampleDescription {
+  max-inline-size: 70ch;
+  margin-block-end: var(--space-internal-8);
+  color: var(--color-muted);
+}
+
+.exampleDescription p {
+  margin-block: 0 var(--space-internal-8);
+}

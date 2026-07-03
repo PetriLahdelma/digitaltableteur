@@ -68,7 +68,9 @@
         "ariaRequirements": [
             "accessible name",
             "aria-busy when loading",
-            "disabled state"
+            "disabled state",
+            "aria-disabled (not disabled) in link mode; anchors have no disabled attribute",
+            "focus-visible ring via --focus-ring-color; Highlight outline under forced colors"
         ],
         "reducedMotion": true,
         "reviewed": true,
@@ -205,7 +207,8 @@
             { "guidance": true, "description": "Use surface=onDark or onBrand when the button sits on a dark or brand background instead of overriding colors." },
             { "guidance": false, "description": "Do not place more than one primary button in the same view; it dilutes the hierarchy." },
             { "guidance": false, "description": "Do not use Button for pure navigation; if it only takes the user to another page, use Link (Button with href is for action-shaped navigation like Get started)." },
-            { "guidance": false, "description": "Do not encode meaning with tone alone; the label must carry the meaning for color-blind users." }
+            { "guidance": false, "description": "Do not encode meaning with tone alone; the label must carry the meaning for color-blind users." },
+            { "guidance": false, "description": "Do not use Button for an on/off state; use Switch. For multi-select within a group, use Checkbox or CheckboxGroup." }
         ],
         "anatomy": [
             { "name": "Icon", "required": false, "description": "Leading icon reinforcing the label, for example a trash icon on Delete." },
