@@ -267,15 +267,23 @@ const withFullscreenSafeArea: Decorator = (Story, context) => {
 
 
 const withWipBadge: Decorator = (Story, context) => {
+  // Docs pages carry status through their own affordances (DocHeader
+  // StatusPill on the frame, the sidebar lifecycle dots, the Status line on
+  // legacy MDX pages). Rendering the fixed-position badge inside docs would
+  // inject one per embedded canvas, where the Canvas block's transformed
+  // container traps `position: fixed` and clips the badge into a floating
+  // scrap over every story (seen on the LanguageSwitcher MDX page).
+  if (context.viewMode === "docs") {
+    return <Story />;
+  }
   const contractStatus =
     (context.parameters?.contractStatus as string | undefined) ??
     (context.parameters?.wip?.status as string | undefined) ??
     "alpha";
   const showBadge = contractStatus !== "stable" && context.parameters?.wip?.disabled !== true;
-  const isDocs = context.viewMode === "docs";
   return (
     <>
-      {showBadge ? <WipBadge status={contractStatus as "alpha" | "beta" | "stable" | "deprecated"} variant={isDocs ? "docs" : "canvas"} /> : null}
+      {showBadge ? <WipBadge status={contractStatus as "alpha" | "beta" | "stable" | "deprecated"} variant="canvas" /> : null}
       <Story />
     </>
   );
