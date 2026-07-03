@@ -7,7 +7,7 @@ import Icon from "@dt/Icon";
 const noop = () => {};
 
 const meta: Meta<typeof ChatHeader> = {
-  title: "Molecules/Chat/ChatHeader",
+  title: "Site/Chat/ChatHeader",
   component: ChatHeader,
   tags: ["autodocs"],
   args: {

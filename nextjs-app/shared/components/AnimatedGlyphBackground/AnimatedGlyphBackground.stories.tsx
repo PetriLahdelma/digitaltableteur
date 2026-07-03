@@ -9,7 +9,7 @@ import Text from "@dt/Text";
 import styles from "./AnimatedGlyphBackground.stories.module.css";
 
 const meta: Meta<typeof AnimatedGlyphBackground> = {
-  title: "Molecules/AnimatedGlyphBackground",
+  title: "Site/AnimatedGlyphBackground",
   component: AnimatedGlyphBackground,
   tags: ["beta", "!autodocs"],
   parameters: {

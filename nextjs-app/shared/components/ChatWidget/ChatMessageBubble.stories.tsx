@@ -45,7 +45,7 @@ const thinkingMessage: ProcessedMessage = {
 };
 
 const meta: Meta<typeof ChatMessageBubble> = {
-  title: "Molecules/Chat/ChatMessageBubble",
+  title: "Site/Chat/ChatMessageBubble",
   component: ChatMessageBubble,
   tags: ["autodocs"],
   parameters: {

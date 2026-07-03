@@ -63,7 +63,7 @@ const meta: Meta<typeof CodeSnippet> = {
       table: { defaultValue: { summary: "inline" } },
     },
   },
-  title: "Molecules/CodeSnippet",
+  title: "Content/CodeSnippet",
   component: CodeSnippet,
   tags: ["beta", "!autodocs"],
   parameters: {

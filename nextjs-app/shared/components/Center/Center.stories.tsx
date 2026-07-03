@@ -9,7 +9,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/Center",
+  title: "Layout/Center",
   component: Center,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -23,7 +23,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/FlexBox",
+  title: "Layout/FlexBox",
   component: FlexBox,
   tags: ["beta", "!autodocs"],
   parameters: {

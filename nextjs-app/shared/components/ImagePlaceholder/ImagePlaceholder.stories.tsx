@@ -15,7 +15,7 @@ import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 const meta: Meta<typeof ImagePlaceholder> = {
-  title: "Atoms/ImagePlaceholder",
+  title: "Site/ImagePlaceholder",
   component: ImagePlaceholder,
   tags: ["beta", "!autodocs"],
   parameters: {

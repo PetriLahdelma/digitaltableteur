@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import schema from "./schema.json";
 
 export default {
-  title: "Atoms/Button",
+  title: "Actions/Button",
   component: Button,
   tags: ["stable", "autodocs"],
   parameters: {

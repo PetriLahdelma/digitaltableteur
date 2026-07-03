@@ -86,7 +86,7 @@ const textComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Atoms/Text",
+  title: "Content/Text",
   component: Text,
   tags: ["stable", "autodocs"],
   parameters: {

@@ -5,7 +5,7 @@ import { expect, userEvent, waitFor, within } from "storybook/test";
 
 const meta: Meta<typeof TransformingActionInput> = {
   argTypes: {},
-  title: "Molecules/TransformingActionInput",
+  title: "Site/TransformingActionInput",
   component: TransformingActionInput,
   parameters: {
     design: {

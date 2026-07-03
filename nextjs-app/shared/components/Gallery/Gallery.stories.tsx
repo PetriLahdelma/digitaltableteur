@@ -25,7 +25,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Molecules/Gallery",
+  title: "Site/Gallery",
   component: Gallery,
   tags: ["beta", "!autodocs"],
   parameters: {

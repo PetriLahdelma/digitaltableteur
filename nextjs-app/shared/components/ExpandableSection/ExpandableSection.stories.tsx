@@ -25,7 +25,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Molecules/ExpandableSection",
+  title: "Layout/ExpandableSection",
   component: ExpandableSection,
   tags: ["beta", "!autodocs"],
   parameters: {

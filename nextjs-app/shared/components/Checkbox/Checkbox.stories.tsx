@@ -74,7 +74,7 @@ const checkboxComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Atoms/Checkbox",
+  title: "Forms/Checkbox",
   component: Checkbox,
   tags: ["beta", "!autodocs"],
   parameters: {

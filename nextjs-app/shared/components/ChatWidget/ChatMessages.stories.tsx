@@ -136,7 +136,7 @@ const chatMessagesComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof ChatMessages> = {
-  title: "Molecules/Chat/ChatMessages",
+  title: "Site/Chat/ChatMessages",
   component: ChatMessages,
   tags: ["autodocs"],
   args: { messages: SAMPLE_MESSAGES },

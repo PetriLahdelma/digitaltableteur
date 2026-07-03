@@ -79,7 +79,7 @@ const meta: Meta<typeof Skeleton> = {
       table: { defaultValue: { summary: "text" } },
     },
   },
-  title: "Atoms/Skeleton",
+  title: "Feedback/Skeleton",
   component: Skeleton,
   tags: ["beta", "!autodocs"],
   parameters: {

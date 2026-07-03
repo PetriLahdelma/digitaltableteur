@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import schema from "./schema.json";
 
 const meta: Meta<typeof Link> = {
-  title: "Atoms/Link",
+  title: "Navigation/Link",
   component: Link,
   tags: ["stable", "autodocs"],
   parameters: {

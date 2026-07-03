@@ -14,7 +14,7 @@ import { AskAI } from "./AskAI";
  */
 const meta: Meta<typeof AskAI> = {
   argTypes: {},
-  title: "Organisms/AskAI",
+  title: "Site/AskAI",
   component: AskAI,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -22,7 +22,7 @@ const sentrySummaryCardComplianceRules: ComplianceRule[] = [
 
 const meta: Meta<typeof SentrySummaryCard> = {
   argTypes: {},
-  title: "Molecules/SentrySummaryCard",
+  title: "Site/SentrySummaryCard",
   component: SentrySummaryCard,
   tags: ["beta", "!autodocs"],
   parameters: {

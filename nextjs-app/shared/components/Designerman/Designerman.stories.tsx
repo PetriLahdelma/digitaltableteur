@@ -5,7 +5,7 @@ import Designerman from "@dt/Designerman";
 
 const meta: Meta<typeof Designerman> = {
   argTypes: {},
-  title: "Molecules/Designerman",
+  title: "Site/Designerman",
   component: Designerman,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -72,7 +72,7 @@ const testimonialComplianceRules: ComplianceRule[] = [
 
 export default {
   argTypes: {},
-  title: "Molecules/Testimonial",
+  title: "Site/Testimonial",
   component: Testimonial,
   parameters: {
     design: {

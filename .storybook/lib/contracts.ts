@@ -134,14 +134,14 @@ export function componentNameFromDocsContext(
  * sidebar regroup regenerates these to the category taxonomy.
  */
 export const titleByComponentName: Record<string, string> = {
-  Button: "Atoms/Button",
-  Badge: "Atoms/Badge",
-  Icon: "Atoms/Icon",
-  Text: "Atoms/Text",
-  Title: "Atoms/Title",
-  Link: "Atoms/Link",
-  Label: "Atoms/Label",
-  Card: "Molecules/Card",
+  Button: "Actions/Button",
+  Badge: "Content/Badge",
+  Icon: "Content/Icon",
+  Text: "Content/Text",
+  Title: "Content/Title",
+  Link: "Navigation/Link",
+  Label: "Forms/Label",
+  Card: "Layout/Card",
 };
 
 /** Storybook's title -> id slug (mirrors @storybook/csf sanitize rules). */

@@ -15,7 +15,7 @@ const TONE_ICON_MAP: Record<string, string> = {
 };
 
 const meta: Meta<typeof Badge> = {
-  title: "Atoms/Badge",
+  title: "Content/Badge",
   component: Badge,
   tags: ["stable", "autodocs"],
   parameters: {

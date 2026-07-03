@@ -8,7 +8,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/Display",
+  title: "Content/Display",
   component: Display,
   tags: ["beta", "!autodocs"],
   parameters: {

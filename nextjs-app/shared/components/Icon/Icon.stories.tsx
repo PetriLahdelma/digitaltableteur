@@ -12,7 +12,7 @@ const meta: Meta<typeof Icon> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  title: "Atoms/Icon",
+  title: "Content/Icon",
   component: Icon,
   tags: ["stable", "autodocs"],
   args: {

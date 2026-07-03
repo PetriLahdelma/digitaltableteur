@@ -128,7 +128,7 @@ const ChatWidgetStoryDemo = () => {
 };
 
 const meta: Meta<typeof ChatWidget> = {
-  title: "Organisms/ChatWidget",
+  title: "Site/ChatWidget",
   component: ChatWidget,
   tags: ["beta", "!autodocs"],
   parameters: {

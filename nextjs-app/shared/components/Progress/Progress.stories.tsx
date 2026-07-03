@@ -3,7 +3,7 @@ import Progress from "./Progress";
 import contract from "./Progress.contract.json";
 
 const meta = {
-  title: "Atoms/Progress",
+  title: "Feedback/Progress",
   component: Progress,
   tags: ["beta", "!autodocs"],
   parameters: {

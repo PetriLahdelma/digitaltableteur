@@ -3,7 +3,7 @@ import Spinner from "./Spinner";
 import contract from "./Spinner.contract.json";
 
 const meta = {
-  title: "Atoms/Spinner",
+  title: "Feedback/Spinner",
   component: Spinner,
   tags: ["beta", "!autodocs"],
   parameters: {

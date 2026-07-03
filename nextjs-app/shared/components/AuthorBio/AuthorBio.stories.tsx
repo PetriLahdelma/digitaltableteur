@@ -9,7 +9,7 @@ import Icon from "@dt/Icon";
 
 const meta: Meta<typeof AuthorBio> = {
   argTypes: {},
-  title: "Molecules/AuthorBio",
+  title: "Site/AuthorBio",
   component: AuthorBio,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -14,7 +14,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/Section",
+  title: "Layout/Section",
   component: Section,
   tags: ["beta", "!autodocs"],
   parameters: {

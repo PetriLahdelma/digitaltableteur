@@ -6,7 +6,7 @@ import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 const meta: Meta<typeof HelperText> = {
-  title: "Atoms/HelperText",
+  title: "Forms/HelperText",
   component: HelperText,
   tags: ["beta", "!autodocs"],
   parameters: {

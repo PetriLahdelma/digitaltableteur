@@ -89,7 +89,7 @@ const titleComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Atoms/Title",
+  title: "Content/Title",
   component: Title,
   tags: ["stable", "autodocs"],
   parameters: {

@@ -14,7 +14,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/Container",
+  title: "Layout/Container",
   component: Container,
   tags: ["beta", "!autodocs"],
   parameters: {

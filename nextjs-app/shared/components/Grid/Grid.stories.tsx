@@ -33,7 +33,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/Grid",
+  title: "Layout/Grid",
   component: Grid,
   tags: ["beta", "!autodocs"],
   parameters: {

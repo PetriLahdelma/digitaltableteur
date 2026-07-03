@@ -73,7 +73,7 @@ const servicesGridComplianceRules: ComplianceRule[] = [
 
 const meta: Meta<typeof ServicesGrid> = {
   argTypes: {},
-  title: "Organisms/ServicesGrid",
+  title: "Site/ServicesGrid",
   component: ServicesGrid,
   tags: ["beta", "!autodocs"],
   parameters: {
