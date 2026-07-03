@@ -125,6 +125,7 @@
     "storybook:wait": "node scripts/wait-for-storybook.mjs",
     "apply:storybook-tiers": "node scripts/design-system/apply-storybook-tiers.mjs",
     "test:stories:smoke": "node scripts/design-system/smoke-stories.mjs",
+    "test:docs-smoke": "node scripts/design-system/docs-smoke.mjs",
     "build:zod-catalog": "tsx scripts/design-system/build-zod-catalog.ts",
     "agent:eval": "node scripts/design-system/agent-eval/run.mjs",
     "agent:eval:intents": "node scripts/design-system/agent-eval/intent-retrieval-eval.mjs",
