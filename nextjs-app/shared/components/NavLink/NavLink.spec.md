@@ -11,7 +11,7 @@ Single primitive for site-level navigation links. Owns active-route detection so
 ## Do / don't
 - Do: Use in `SiteHeader`, `Footer`, and breadcrumb-style in-page nav.
 - Do: Pass the route's canonical href — the active-route match is exact-path.
-- Don't: Use inside body prose — that is `TextLink`.
+- Don't: Use inside body prose — that is `Link`.
 - Don't: Use as a button — primary actions belong on `Button`.
 
 ## Design notes

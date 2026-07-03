@@ -41,7 +41,6 @@ import {
   AspectRatio,
 } from "@/nextjs-app/shared/components/Layout";
 import {
-  TextLink,
   Tag,
   Divider,
   IconButton,
@@ -52,6 +51,7 @@ import {
   TextArea,
   CheckboxField,
 } from "@/nextjs-app/shared/components/ui";
+import Link from "@dt/Link";
 import { useToast } from "@/nextjs-app/shared/components/interactive";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
 import { ArrowRight, Heart, Share, Star, MagnifyingGlass, EnvelopeSimple, Image as ImageIcon } from "@phosphor-icons/react";
@@ -336,16 +336,16 @@ export default function TailwindTest() {
             </Stack>
           </div>
 
-          {/* TextLink Variants */}
+          {/* Link Variants */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">TextLink Variants:</p>
+            <p className="font-body text-text-s text-muted-foreground mb-3">Link Variants:</p>
             <Stack direction="horizontal" gap="md" wrap>
-              <TextLink href="/about">Default Link</TextLink>
-              <TextLink href="/work" variant="muted">Muted Link</TextLink>
-              <TextLink href="/contact" variant="accent">Accent Link</TextLink>
-              <TextLink href="https://example.com" external>
+              <Link href="/about" size="sm">Default Link</Link>
+              <Link href="/work" size="md">Medium Link</Link>
+              <Link href="/contact" size="lg">Large Link</Link>
+              <Link href="https://example.com">
                 External Link <ArrowRight className="inline" weight="bold" />
-              </TextLink>
+              </Link>
             </Stack>
           </div>
 
@@ -402,7 +402,7 @@ export default function TailwindTest() {
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
           <p className="font-body text-text-s">
-            <strong className="font-heading">UI Components:</strong> Button (studio variants), TextLink, Tag, Divider, IconButton, VisuallyHidden, Prose
+            <strong className="font-heading">UI Components:</strong> Button (studio variants), Link, Tag, Divider, IconButton, VisuallyHidden, Prose
           </p>
         </div>
       </div>

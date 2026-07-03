@@ -1,5 +1,4 @@
 // Re-export Tailwind-first UI primitives
-export { TextLink, type TextLinkProps } from "../TextLink";
 export { Tag, type TagProps } from "../Tag";
 export { Divider, type DividerProps } from "../Divider";
 export { IconButton, type IconButtonProps } from "../IconButton";
