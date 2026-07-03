@@ -1,0 +1,125 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Kbd",
+    "tier": "atom",
+    "group": "display",
+    "status": "alpha",
+    "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "kbd",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "none — static text semantics via the kbd element"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-03 — static inline element; axe asserted in unit test and story gate.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-border",
+            "--color-surface",
+            "--color-text"
+        ],
+        "spacing": [
+            "--space-internal-2",
+            "--space-internal-6"
+        ],
+        "typography": [
+            "--font-mono"
+        ]
+    },
+    "lightDarkVerified": true,
+    "schemaVersion": 2,
+    "props": {
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "children": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "displayName": "Kbd",
+    "keywords": [
+        "keyboard",
+        "shortcut",
+        "keycap",
+        "hotkey",
+        "command",
+        "key"
+    ],
+    "dense": "semantic <kbd> keycap; sm/md/lg mono sizes; compose combos as sibling Kbds with literal separators",
+    "usage": {
+        "description": "Kbd marks keyboard input inline: a single keycap per component, composed into chords with literal separators between siblings. It is purely presentational text with correct kbd semantics, sized to sit inside prose, tooltips, and menu hints.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "One key per Kbd; write chords as <Kbd>⌘</Kbd> + <Kbd>K</Kbd> so screen readers hear the separator."
+            },
+            {
+                "guidance": true,
+                "description": "Match size to the surrounding text scale; sm inside Tooltip and menu hints, md in prose."
+            },
+            {
+                "guidance": true,
+                "description": "Use platform-correct symbols (⌘/Ctrl) from your own platform detection; Kbd renders what you pass."
+            },
+            {
+                "guidance": true,
+                "description": "Pair every shortcut hint with a clickable way to do the same action; the hint is an accelerator, not the affordance."
+            },
+            {
+                "guidance": false,
+                "description": "Do not make Kbd interactive; it is not a button and never receives focus."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put full words or phrases in one keycap except actual key names (Esc, Enter, Space)."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "⌘",
+            "size": "md"
+        }
+    },
+    "composesWith": [
+        "Text",
+        "Tooltip",
+        "CodeSnippet"
+    ]
+}

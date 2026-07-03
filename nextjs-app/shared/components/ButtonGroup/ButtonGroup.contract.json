@@ -1,0 +1,124 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "ButtonGroup",
+    "tier": "molecule",
+    "group": "actions",
+    "status": "alpha",
+    "description": "Groups related Buttons into one attached (segmented) or spaced row.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [
+        "children"
+    ],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab moves through each child button (no roving tabindex)"
+        ],
+        "ariaRequirements": [
+            "role=group with aria-label naming the cluster"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-03 — group semantics + labelled-group asserted in unit tests; axe clean; focus ring lift verified in Storybook.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": [
+            "--space-internal-8"
+        ],
+        "typography": []
+    },
+    "lightDarkVerified": true,
+    "schemaVersion": 2,
+    "props": {
+        "ariaLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "attached": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "displayName": "ButtonGroup",
+    "keywords": [
+        "button group",
+        "segmented",
+        "toolbar",
+        "actions",
+        "cluster",
+        "attached"
+    ],
+    "dense": "role=group row of Buttons/IconButtons; attached mode fuses seams (segmented look), attached=false spaces on the token gap",
+    "usage": {
+        "description": "ButtonGroup presents sibling actions as one surface. Attached (default) collapses inner radii and shares 1px seams for view switchers and compact toolbars; attached=false keeps the group semantics but spaces the buttons for form action rows. Children should share variant and size. It groups independent actions; it does not manage selection state.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use one variant and one size for every segment; mixed weights read as unrelated buttons touching."
+            },
+            {
+                "guidance": true,
+                "description": "Name the group with ariaLabel (\"Text alignment\", \"View\") so AT users get the context first."
+            },
+            {
+                "guidance": true,
+                "description": "Prefer secondary variant for attached segments; the outline makes the shared seams legible."
+            },
+            {
+                "guidance": true,
+                "description": "Use IconButtons for compact toolbar clusters; each still needs its own label."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it for exclusive selection (active segment state); that is a toggle-group pattern this component deliberately does not implement."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put a menu trigger inside; SplitButton owns primary-action + menu."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Group",
+                "required": true,
+                "description": "role=group wrapper carrying the accessible name and the seam styles."
+            },
+            {
+                "name": "Segments",
+                "required": true,
+                "description": "Two or more @dt Button / IconButton children; inner radii collapse in attached mode."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "ariaLabel": "View",
+            "attached": true
+        }
+    },
+    "composesWith": [
+        "Button",
+        "IconButton",
+        "SplitButton"
+    ]
+}

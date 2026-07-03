@@ -1,0 +1,157 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "AvatarGroup",
+    "tier": "molecule",
+    "group": "display",
+    "status": "alpha",
+    "description": "Overlapping stack of Avatars with a +N overflow bubble.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [
+        "children"
+    ],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab reaches clickable Avatars only; static stacks have no stops"
+        ],
+        "ariaRequirements": [
+            "role=group with aria-label naming the cluster",
+            "overflow bubble announces 'N more' via sr-only text"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-03 — group semantics, overflow sr text asserted in unit tests; axe clean.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-surface",
+            "--color-neutral-bg",
+            "--color-neutral-text"
+        ],
+        "spacing": [
+            "--space-internal-8"
+        ],
+        "typography": [
+            "--font-body",
+            "--font-size-text-xxs"
+        ]
+    },
+    "lightDarkVerified": true,
+    "schemaVersion": 2,
+    "props": {
+        "ariaLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "max": {
+            "optional": true,
+            "type": "number"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "displayName": "AvatarGroup",
+    "keywords": [
+        "avatar",
+        "group",
+        "stack",
+        "team",
+        "members",
+        "overflow",
+        "faces"
+    ],
+    "dense": "role=group overlapping Avatar stack; max collapses the rest into a +N bubble with sr-only 'N more'; sm/md/lg bubble sizes",
+    "usage": {
+        "description": "AvatarGroup answers \"who is on this?\" at a glance: the first max Avatars overlap into a stack and the remainder collapses into a +N bubble that also announces itself to screen readers. Pass same-size Avatars and set the matching group size (sm=2rem, md=2.5rem, lg=3rem) so the bubble lines up.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Keep max between 3 and 5; past that the stack stops being scannable and the +N carries the message."
+            },
+            {
+                "guidance": true,
+                "description": "Match children Avatar sizes to the group size so the overflow bubble aligns with the faces."
+            },
+            {
+                "guidance": true,
+                "description": "Name the cluster with ariaLabel (\"Project members\") — the group role reads it before the names."
+            },
+            {
+                "guidance": true,
+                "description": "Order children by relevance; the first faces are the ones people see."
+            },
+            {
+                "guidance": false,
+                "description": "Do not mix Avatar sizes in one stack; the overlap rhythm breaks."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use the +N bubble as a button; if the full roster matters, link to it separately."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Group",
+                "required": true,
+                "description": "role=group wrapper with the accessible name."
+            },
+            {
+                "name": "Items",
+                "required": true,
+                "description": "Overlapping Avatars, each ringed with the surface color so edges stay legible."
+            },
+            {
+                "name": "Overflow bubble",
+                "required": false,
+                "description": "Neutral +N circle sized by the size token; sr-only text reads 'N more'."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "ariaLabel": "Project members",
+            "max": 4,
+            "size": "md"
+        }
+    },
+    "composesWith": [
+        "Avatar",
+        "PersonCard",
+        "TeamBlock"
+    ]
+}
