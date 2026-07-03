@@ -74,9 +74,9 @@ const labelComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Atoms/Label",
+  title: "Forms/Label",
   component: Label,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

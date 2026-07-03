@@ -73,7 +73,7 @@ const fileUploadComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Molecules/FileUpload",
+  title: "Forms/FileUpload",
   component: FileUpload,
   tags: ["beta", "!autodocs"],
   parameters: {

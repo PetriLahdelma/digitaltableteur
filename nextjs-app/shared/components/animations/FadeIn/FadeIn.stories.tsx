@@ -13,7 +13,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/Animations/FadeIn",
+  title: "Site/Animations/FadeIn",
   component: FadeIn,
   tags: ["beta", "!autodocs"],
   parameters: {

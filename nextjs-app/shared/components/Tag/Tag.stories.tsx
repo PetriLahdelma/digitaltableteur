@@ -10,7 +10,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/Tag",
+  title: "Actions/Tag",
   component: Tag,
   tags: ["beta", "!autodocs"],
   parameters: {

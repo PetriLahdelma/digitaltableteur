@@ -77,7 +77,7 @@ const contactFormComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof ContactForm> = {
-  title: "Organisms/ContactForm",
+  title: "Site/ContactForm",
   component: ContactForm,
   tags: ["beta", "!autodocs"],
   parameters: {

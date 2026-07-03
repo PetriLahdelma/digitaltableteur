@@ -28,7 +28,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Organisms/SkillsGrid",
+  title: "Site/SkillsGrid",
   component: SkillsGrid,
   tags: ["beta", "!autodocs"],
   parameters: {

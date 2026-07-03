@@ -75,7 +75,7 @@ const modalComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Molecules/Modal",
+  title: "Feedback/Modal",
   component: Modal,
   tags: ["beta", "!autodocs"],
   parameters: {

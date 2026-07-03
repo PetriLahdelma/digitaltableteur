@@ -75,7 +75,7 @@ const toastComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof Toast> = {
-  title: "Molecules/Toast",
+  title: "Feedback/Toast",
   component: Toast,
   tags: ["beta", "!autodocs"],
   parameters: {

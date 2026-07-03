@@ -12,7 +12,7 @@ import schema from "./schema.json";
 import PropTypes from "prop-types";
 
 export default {
-  title: "Atoms/Avatar",
+  title: "Content/Avatar",
   component: Avatar,
   tags: ["beta", "!autodocs"],
   parameters: {

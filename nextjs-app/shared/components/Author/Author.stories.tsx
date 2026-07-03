@@ -15,7 +15,7 @@ import { getAuthors } from "../../data/authors";
  * - Design system compliant (Avatar component reuse)
  */
 const meta: Meta<typeof Author> = {
-  title: "Molecules/Author",
+  title: "Site/Author",
   component: Author,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -89,9 +89,9 @@ const titleComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Atoms/Title",
+  title: "Content/Title",
   component: Title,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

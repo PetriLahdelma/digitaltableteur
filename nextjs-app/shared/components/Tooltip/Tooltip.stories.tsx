@@ -8,7 +8,7 @@ import {
 import Button from "@dt/Button";
 
 const meta = {
-  title: "Molecules/Tooltip",
+  title: "Feedback/Tooltip",
   component: TooltipContent,
   parameters: {
     layout: "centered",

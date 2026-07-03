@@ -13,7 +13,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Molecules/ValueCard",
+  title: "Site/ValueCard",
   component: ValueCard,
   tags: ["beta", "!autodocs"],
   parameters: {

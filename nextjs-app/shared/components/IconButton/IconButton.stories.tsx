@@ -13,7 +13,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/IconButton",
+  title: "Actions/IconButton",
   component: IconButton,
   tags: ["beta", "!autodocs"],
   parameters: {

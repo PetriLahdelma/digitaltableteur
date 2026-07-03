@@ -4,7 +4,7 @@ import MCPActionButton from "@dt/MCPActionButton";
 
 const meta: Meta<typeof MCPActionButton> = {
   argTypes: {},
-  title: "Molecules/MCPActionButton",
+  title: "Site/MCPActionButton",
   component: MCPActionButton,
   parameters: {
     design: {

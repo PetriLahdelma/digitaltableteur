@@ -11,29 +11,46 @@
  * docs/CATALOG-POLICY.md ("do not add to manifest without an ADR"). Neither
  * has (or is expected to get) a `.contract.json`, so including them here
  * would make report-doc-coverage.mjs's WARNING cross-check fire permanently.
+ *
+ * The category names double as the Storybook sidebar groups (Astryx Phase 2
+ * regroup): `<Category>/<Name>` story titles, Tier 2 under `Site/`.
  */
-export const DOC_TIER_1 = [
-    // Actions
-    'Button', 'IconButton', 'SplitButton', 'Tag',
-    // Typography & content
-    'Text', 'Title', 'Display', 'List', 'Badge', 'Icon', 'Avatar',
-    'CodeSnippet', 'CodeBlockWindow',
-    // Forms
-    'TextInput', 'TextArea', 'Select', 'Checkbox', 'CheckboxGroup', 'Radio',
-    'RadioGroup', 'Switch', 'Combobox', 'MultiCombobox', 'PhoneInput',
-    'FileUpload', 'FormField', 'Label', 'HelperText', 'GroupLabel',
-    // Feedback & status
-    'AlertBanner', 'Toast', 'Progress', 'Spinner', 'BusyIndicator',
-    'Skeleton', 'Tooltip', 'Modal',
-    // Navigation
-    'Link', 'NavLink', 'Breadcrumb', 'Tabs', 'Pagination', 'SkipLink',
-    'LanguageSwitcher',
-    // Layout & structure
-    'Card', 'Container', 'Grid', 'FlexBox', 'Stack', 'Center', 'Spacer',
-    'Section', 'Divider', 'AspectRatio', 'Accordion', 'ExpandableSection',
-    'MacWindowFrame',
-];
+export const DOC_TIER_1_CATEGORIES = {
+    Actions: ['Button', 'IconButton', 'SplitButton', 'Tag'],
+    Content: [
+        'Text', 'Title', 'Display', 'List', 'Badge', 'Icon', 'Avatar',
+        'CodeSnippet', 'CodeBlockWindow',
+    ],
+    Forms: [
+        'TextInput', 'TextArea', 'Select', 'Checkbox', 'CheckboxGroup', 'Radio',
+        'RadioGroup', 'Switch', 'Combobox', 'MultiCombobox', 'PhoneInput',
+        'FileUpload', 'FormField', 'Label', 'HelperText', 'GroupLabel',
+    ],
+    Feedback: [
+        'AlertBanner', 'Toast', 'Progress', 'Spinner', 'BusyIndicator',
+        'Skeleton', 'Tooltip', 'Modal',
+    ],
+    Navigation: [
+        'Link', 'NavLink', 'Breadcrumb', 'Tabs', 'Pagination', 'SkipLink',
+        'LanguageSwitcher',
+    ],
+    Layout: [
+        'Card', 'Container', 'Grid', 'FlexBox', 'Stack', 'Center', 'Spacer',
+        'Section', 'Divider', 'AspectRatio', 'Accordion', 'ExpandableSection',
+        'MacWindowFrame',
+    ],
+};
+
+export const DOC_TIER_1 = Object.values(DOC_TIER_1_CATEGORIES).flat();
 
 export function docTierFor(name) {
     return DOC_TIER_1.includes(name) ? 1 : 2;
+}
+
+/** Sidebar category for a Tier 1 component, or null for Tier 2. */
+export function categoryFor(name) {
+    for (const [category, names] of Object.entries(DOC_TIER_1_CATEGORIES)) {
+        if (names.includes(name)) return category;
+    }
+    return null;
 }

@@ -6,7 +6,7 @@ import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 const meta: Meta<typeof Breadcrumb> = {
-  title: "Molecules/Breadcrumb",
+  title: "Navigation/Breadcrumb",
   component: Breadcrumb,
   tags: ["beta", "!autodocs"],
   parameters: {

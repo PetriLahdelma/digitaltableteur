@@ -4,7 +4,7 @@ import CookieConsent from "./CookieConsent";
 import contract from "./CookieConsent.contract.json";
 
 const meta = {
-  title: "Organisms/CookieConsent",
+  title: "Site/CookieConsent",
   component: CookieConsent,
   tags: ["beta", "!autodocs"],
   parameters: {

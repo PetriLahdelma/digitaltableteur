@@ -8,8 +8,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "../..");
 const COMPONENTS_ROOT = join(REPO_ROOT, "nextjs-app/shared/components");
 
+// "Feedback" was removed from this list on the Astryx Phase 2 sidebar
+// regroup: it is now a LIVE category prefix (Feedback/AlertBanner etc.), so
+// treating it as legacy would rewrite current titles back to the old scheme.
 const LEGACY_PREFIX =
-  /^\s*title:\s*["'](?:Components|Feedback|Foundation|Utility|Observability|Tools|Playground|Patterns\/Header\/MobileMenu)\//;
+  /^\s*title:\s*["'](?:Components|Foundation|Utility|Observability|Tools|Playground|Patterns\/Header\/MobileMenu)\//;
 
 function findContractPath(storyPath) {
   const dir = dirname(storyPath);

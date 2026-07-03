@@ -36,7 +36,7 @@ import AIProcessingState from "./AIProcessingState";
  * - Works with Server Actions and Route Handlers
  */
 const meta = {
-  title: "Molecules/Chat/AIProcessingState",
+  title: "Site/Chat/AIProcessingState",
   component: AIProcessingState,
   tags: ["autodocs"],
   parameters: {

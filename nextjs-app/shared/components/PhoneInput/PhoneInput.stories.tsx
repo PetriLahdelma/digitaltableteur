@@ -85,7 +85,7 @@ const phoneInputComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof PhoneInput> = {
-  title: "Molecules/PhoneInput",
+  title: "Forms/PhoneInput",
   component: PhoneInput,
   tags: ["beta", "!autodocs"],
   parameters: {

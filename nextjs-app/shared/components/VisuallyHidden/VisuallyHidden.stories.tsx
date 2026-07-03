@@ -3,7 +3,7 @@ import VisuallyHidden from "./VisuallyHidden";
 import contract from "./VisuallyHidden.contract.json";
 
 const meta = {
-  title: "Atoms/VisuallyHidden",
+  title: "Site/VisuallyHidden",
   component: VisuallyHidden,
   tags: ["beta", "!autodocs"],
   parameters: {

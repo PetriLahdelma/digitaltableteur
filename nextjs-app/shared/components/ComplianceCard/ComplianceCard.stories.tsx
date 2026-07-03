@@ -6,7 +6,7 @@ import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
 
 const meta = {
-  title: "Molecules/ComplianceCard",
+  title: "Site/ComplianceCard",
   component: ComplianceCard,
   parameters: {
     design: {

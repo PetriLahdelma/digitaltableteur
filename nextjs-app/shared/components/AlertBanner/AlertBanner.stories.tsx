@@ -4,7 +4,7 @@ import React from "react";
 import AlertBanner from "@dt/AlertBanner";
 
 const meta: Meta<typeof AlertBanner> = {
-  title: "Molecules/AlertBanner",
+  title: "Feedback/AlertBanner",
   component: AlertBanner,
   tags: ["beta", "!autodocs"],
   parameters: {

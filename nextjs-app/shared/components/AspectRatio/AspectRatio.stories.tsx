@@ -12,7 +12,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/AspectRatio",
+  title: "Layout/AspectRatio",
   component: AspectRatio,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -10,7 +10,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/NavLink",
+  title: "Navigation/NavLink",
   component: NavLink,
   tags: ["beta", "!autodocs"],
   parameters: {

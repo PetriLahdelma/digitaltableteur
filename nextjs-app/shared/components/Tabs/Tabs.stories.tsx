@@ -110,7 +110,7 @@ const tabsComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof Tabs> = {
-  title: "Molecules/Tabs",
+  title: "Navigation/Tabs",
   component: Tabs,
   tags: ["beta", "!autodocs"],
   parameters: {

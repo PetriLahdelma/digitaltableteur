@@ -74,7 +74,7 @@ const checkboxGroupComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Molecules/CheckboxGroup",
+  title: "Forms/CheckboxGroup",
   component: CheckboxGroup,
   tags: ["beta", "!autodocs"],
   parameters: {

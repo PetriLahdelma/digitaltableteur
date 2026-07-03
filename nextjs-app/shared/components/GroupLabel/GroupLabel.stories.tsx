@@ -10,7 +10,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/GroupLabel",
+  title: "Forms/GroupLabel",
   component: GroupLabel,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -74,7 +74,7 @@ const switchComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof Switch> = {
-  title: "Atoms/Switch",
+  title: "Forms/Switch",
   component: Switch,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -9,7 +9,7 @@ const OPTIONS = [
 ];
 
 const meta = {
-  title: "Molecules/RadioGroup",
+  title: "Forms/RadioGroup",
   component: RadioGroup,
   tags: ["beta", "!autodocs"],
   parameters: {
