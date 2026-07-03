@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import Input from "./Inputs";
+import Input from "./TextInput";
 
 // Mock i18next for testing
 vi.mock("react-i18next", () => ({

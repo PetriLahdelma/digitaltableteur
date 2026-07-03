@@ -2,7 +2,7 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import fieldStyles from "../Combobox/ComboboxField.module.css";
 import styles from "./FileUpload.module.css";
-import Inputs from "@dt/Inputs";
+import TextInput from "@dt/TextInput";
 import Button from "@dt/Button";
 import HelperText from "@dt/HelperText";
 
@@ -206,7 +206,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     <div className={cn(styles.container, className)}>
       {hiddenInput}
       <div className={styles.displayField}>
-        <Inputs
+        <TextInput
           label={label}
           type="text"
           placeholder={placeholder}

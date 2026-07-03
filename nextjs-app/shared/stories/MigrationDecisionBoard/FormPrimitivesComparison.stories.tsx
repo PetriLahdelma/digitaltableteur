@@ -3,7 +3,7 @@ import { Label as ShadcnLabel } from "@/components/ui/label";
 import { Checkbox as ShadcnCheckbox } from "@/components/ui/checkbox";
 import { Input as ShadcnInput } from "@/components/ui/input";
 import DtCheckbox from "@dt/Checkbox";
-import DtInputs from "@dt/Inputs";
+import DtTextInput from "@dt/TextInput";
 import DtLabel from "@dt/Label";
 import {
   MigrationDecisionBand,
@@ -29,7 +29,7 @@ export const FieldAndCheckbox: Story = {
         <>
           Decision: FormField uses <code>@dt/Label</code> + child control; CheckboxField
           collapses to <code>@dt/Checkbox</code> with <code>label</code> prop. Prefer{" "}
-          <code>@dt/Inputs</code> when label is built-in.
+          <code>@dt/TextInput</code> when label is built-in.
         </>
       }
     >
@@ -43,8 +43,8 @@ export const FieldAndCheckbox: Story = {
               <ShadcnInput id="legacy-email" type="email" placeholder="you@studio.com" />
             </div>
           </MigrationDecisionBlock>
-          <MigrationDecisionBlock variant="proposed" title="Proposed — @dt Inputs (label built-in)">
-            <DtInputs
+          <MigrationDecisionBlock variant="proposed" title="Proposed — @dt TextInput (label built-in)">
+            <DtTextInput
               id="dt-email"
               type="email"
               label="Email"

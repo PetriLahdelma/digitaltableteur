@@ -1,7 +1,0 @@
-- status: Work in progress (beta)
-- text: Message with validation (required)
-- textbox "Message with validation (required)":
-  - /placeholder: Share more details…
-- alert:
-  - img
-  - text: Please enter a short message.

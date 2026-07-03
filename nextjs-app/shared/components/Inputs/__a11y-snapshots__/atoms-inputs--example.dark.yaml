@@ -1,7 +1,0 @@
-- status: Work in progress (beta)
-- text: Input with Error (required)
-- textbox "Input with Error (required)" [invalid]:
-  - /placeholder: Enter text
-- alert:
-  - img
-  - text: This field is required

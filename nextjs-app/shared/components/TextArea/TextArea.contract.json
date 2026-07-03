@@ -3,26 +3,12 @@
     "name": "TextArea",
     "tier": "atom",
     "group": "form",
-    "status": "beta",
-    "description": "Multi-line text field with optional label, validation, and character count.",
+    "status": "alpha",
+    "description": "Multi-line text field with label, error/helper text, and optional animated auto-grow.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-17",
     "radixPrimitive": null,
     "element": "textarea",
-    "variants": {
-        "size": {
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "S",
-                "M",
-                "L"
-            ],
-            "default": "md",
-            "forwarded": true,
-            "forwardedTo": "normalizeSizeProp + CSS module size classes"
-        }
-    },
+    "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
@@ -32,86 +18,68 @@
         "Example",
         "ForcedColors"
     ],
-    "argTypesProxyExempt": [
-        "className",
-        "onValueChange",
-        "onChange"
-    ],
     "a11y": {
         "keyboard": [
             "Tab",
             "Shift+Tab"
         ],
         "ariaRequirements": [
-            "aria-label or associated label",
-            "aria-invalid when error"
+            "label association via htmlFor",
+            "error message surfaced through Label tooltipText + HelperText"
         ],
         "reducedMotion": true,
-        "reviewed": true,
-        "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "reviewed": false,
+        "forcedColorsVerified": false
     },
     "tokens": {
-        "colors": [
-            "--color-border",
-            "--color-primary",
-            "--color-error"
-        ],
-        "spacing": [
-            "--space-internal-8"
-        ]
+        "colors": [],
+        "spacing": []
     },
-    "lightDarkVerified": true,
+    "lightDarkVerified": false,
     "consumers": [],
     "schemaVersion": 2,
     "props": {
         "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "value": {
             "optional": true,
             "type": "string"
         },
         "error": {
             "optional": true,
-            "type": "string | boolean"
+            "type": "string"
         },
         "helperText": {
             "optional": true,
             "type": "string"
         },
-        "size": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "S",
-                "M",
-                "L"
-            ]
-        },
-        "isDisabled": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "showCount": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "onValueChange": {
+        "onChange": {
             "optional": true,
             "type": "(value: string) => void"
         },
-        "resize": {
+        "animateResize": {
             "optional": true,
-            "type": "union",
-            "values": [
-                "vertical",
-                "none",
-                "both"
-            ]
+            "type": "boolean"
+        },
+        "minRows": {
+            "optional": true,
+            "type": "number"
+        },
+        "maxRows": {
+            "optional": true,
+            "type": "number"
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "use TextArea for single-line text. Use **TextInput**, which shares the label + helper contract but carries single-line UX and format validation.",
+        "promote to beta without a real a11y.reviewed pass (keyboard, ARIA, focus, forced-colors) and honest forcedColorsVerified/lightDarkVerified flags — this contract was authored during a file move from Inputs/TextArea.tsx and has not had that review."
+    ],
+    "composesWith": [
+        "Label",
+        "HelperText",
+        "Button",
+        "ContactForm"
     ]
 }

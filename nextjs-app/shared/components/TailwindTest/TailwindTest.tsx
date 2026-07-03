@@ -46,14 +46,12 @@ import {
   IconButton,
   Prose,
   FormField,
-  TextInput,
-  TextArea,
 } from "@/nextjs-app/shared/components/ui";
 import Checkbox from "@dt/Checkbox";
 import Link from "@dt/Link";
 import { useToast } from "@/nextjs-app/shared/components/interactive";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
-import { ArrowRight, Heart, Share, Star, MagnifyingGlass, EnvelopeSimple, Image as ImageIcon } from "@phosphor-icons/react";
+import { ArrowRight, Heart, Share, Star, Image as ImageIcon } from "@phosphor-icons/react";
 import { NavLink } from "@/nextjs-app/shared/patterns/navigation";
 
 /**
@@ -413,40 +411,6 @@ export default function TailwindTest() {
         </h3>
 
         <Stack gap="lg">
-          {/* TextInput variants */}
-          <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">TextInput:</p>
-            <Stack gap="md">
-              <FormField label="Search" helperText="Type to search...">
-                <TextInput
-                  placeholder="Search..."
-                  startIcon={<MagnifyingGlass className="h-5 w-5" />}
-                  clearable
-                />
-              </FormField>
-              <FormField label="Email" required error="Please enter a valid email">
-                <TextInput
-                  type="email"
-                  placeholder="you@example.com"
-                  startIcon={<EnvelopeSimple className="h-5 w-5" />}
-                  error
-                />
-              </FormField>
-            </Stack>
-          </div>
-
-          {/* TextArea */}
-          <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">TextArea:</p>
-            <FormField label="Message" helperText="Max 280 characters">
-              <TextArea
-                placeholder="Write your message..."
-                showCount
-                maxLength={280}
-              />
-            </FormField>
-          </div>
-
           {/* FormField group mode (absorbs former FormGroup + CheckboxField) */}
           <div className="bg-muted/30 p-4 rounded-sm">
             <p className="font-body text-text-s text-muted-foreground mb-3">FormField (group mode):</p>
@@ -465,7 +429,7 @@ export default function TailwindTest() {
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
           <p className="font-body text-text-s">
-            <strong className="font-heading">Form Stack:</strong> FormField (single-control + group/fieldset mode), TextInput, TextArea, Checkbox
+            <strong className="font-heading">Form Stack:</strong> FormField (single-control + group/fieldset mode), Checkbox. See <code>@dt/TextInput</code> and <code>@dt/TextArea</code> for the canonical text field components.
           </p>
         </div>
       </div>

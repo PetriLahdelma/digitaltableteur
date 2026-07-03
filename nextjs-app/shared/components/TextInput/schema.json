@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0",
   "component": {
-    "name": "Inputs",
+    "name": "TextInput",
     "type": "input",
     "description": "Text input field with label, validation (email/phone), helper text, and error states.",
-    "source": "nextjs-app/shared/components/Inputs/Inputs.tsx",
+    "source": "nextjs-app/shared/components/TextInput/TextInput.tsx",
     "owners": ["design", "engineering"]
   },
   "anatomy": {

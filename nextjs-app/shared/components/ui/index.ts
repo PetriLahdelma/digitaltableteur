@@ -13,9 +13,10 @@ export { ProjectGallery, type ProjectGalleryProps, type GalleryImage } from "../
 export { ProjectNav, type ProjectNavProps } from "../ProjectNav";
 
 // Form components
+// TextInput/TextArea are the canonical CSS-Modules @dt components, not
+// Tailwind-first primitives — import them directly from @dt/TextInput and
+// @dt/TextArea instead of this Tailwind-primitives barrel.
 export { FormField, type FormFieldProps } from "../FormField";
-export { TextInput, type TextInputProps } from "../TextInput";
-export { TextArea, type TextAreaProps } from "../TextArea";
 
 // Contact page components
 export { LocationCard, type LocationCardProps } from "../LocationCard";

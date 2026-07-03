@@ -5,36 +5,105 @@ import * as Stories from './TextArea.stories.tsx';
 
 # TextArea
 
-**Status:** beta · **Tier:** atom · **Group:** form
+**Status:** alpha · **Tier:** atom · **Group:** form
 
-## In use
+Multi-line text field with a required `label`, unified `error` /
+`helperText` slot (matching **TextInput**), and optional smooth
+auto-grow via `animateResize` + `minRows` / `maxRows`. This is the
+canonical production textarea — it moved out of the combined
+`Inputs.tsx` file into its own `TextArea` component during the
+Inputs-dissolution refactor; a companion `ChatTextArea` (an
+unlabeled, always-animated variant used by the chat composer) now
+lives inside `ChatWidget` as an internal implementation detail, not a
+public export of this component.
 
-See the **Example** story for the canonical production composition.
+## Anatomy
+
+- **Label** — `@dt/Label`, bound via `htmlFor={label}`. Required prop;
+  there is no `aria-label`-only mode (unlike the chat-internal
+  `ChatTextArea`).
+- **Textarea** — native `<textarea>`, static `rows` by default or
+  animated height when `animateResize` is on.
+- **HelperText** — renders the `error` message (state="error") or the
+  `helperText` when there is no error. Mutually exclusive, error wins.
+
+## Variants
+
+- **Static (default).** `rows` controls a fixed height; no resize
+  animation.
+- **Animated auto-grow.** `animateResize` + `minRows` / `maxRows`
+  smoothly grows the field as content is typed, clamped to the row
+  range, with `overflow-y: auto` once `maxRows` is exceeded.
 
 ## How to use
 
 ```tsx
-import { TextArea } from '@dt/TextArea';
+import TextArea from '@dt/TextArea';
 
-<TextArea />
+<TextArea
+  label={t('contactMessage')}
+  value={message}
+  onChange={setMessage}
+  error={errors.message}
+  required
+/>
 ```
+
+## In use
+
+Production consumer: **ContactForm** (message field) and the
+**ChatWidget email workflow** (`FieldPrompt`, message-collection
+step). See the **Example** story for the canonical composition.
 
 ## When to use
 
-- When the **Example** story matches your layout or flow.
-- When design tokens and theme context from `ThemeProvider` are already mounted.
+- Multi-line free text: messages, descriptions, notes.
+- When the label + helper/error contract from **TextInput** should
+  carry over to a multi-line field.
 
 ## When not to use
 
-- When a smaller primitive (link, text, icon) covers the need without extra chrome.
-- When the composition is one-off and not worth standardising in the design system.
+- Single-line text — use **TextInput**.
+- The chat composer's borderless, always-animated field — that is
+  `ChatTextArea`, an internal `ChatWidget` component, not this one.
 
 ## Accessibility
 
-- Exercise keyboard, focus, and screen-reader behaviour in **Playground** and **Example**.
-- Confirm **ForcedColors** for high-contrast regressions; run `npm run test:stories:hc` before marking `forcedColorsVerified`.
+- **Label:** always rendered (label is a required prop) and bound via
+  native `htmlFor` / `id`, matching TextInput's association pattern.
+- **Error wiring:** `error` sets the Label's `required` visual flag,
+  passes the message as the Label `tooltipText`, and renders a
+  `<HelperText state="error">` below the field. There is no
+  `aria-describedby` wiring yet — tracked as promotion debt below.
+- **Reduced motion:** the animated-resize transition should respect
+  `prefers-reduced-motion` (verify before promoting to beta).
+
+## Keyboard
+
+- Tab / Shift+Tab move focus in and out of the field.
+- Enter inserts a newline (does not submit the surrounding form).
+- No component-specific keyboard shortcuts.
+
+## Common mistakes
+
+- Passing `resize` or `showCount` — those props belonged to a
+  previous, unused parallel implementation and are not supported by
+  the current component. Character counting is not implemented.
+- Omitting `label` — it is required; there is no bare/`aria-label`-only
+  mode on this component (use `ChatTextArea` inside ChatWidget for
+  that shape).
 
 ## Promotion notes
 
-- Beta: Example + ForcedColors stories, axe gate enabled, MDX headings complete.
-- Stable: documented production consumer, AT snapshots, and honest `lightDarkVerified` / `forcedColorsVerified` flags.
+- **Current status is alpha.** This component was moved from
+  `Inputs/TextArea.tsx` (previously undocumented as a standalone
+  contract) during the Inputs-dissolution refactor. It has real
+  production consumers (ContactForm, ChatWidget email workflow) but
+  has not had a dedicated code-level a11y review, forced-colors
+  verification, or light/dark verification as *this* standalone
+  component/contract.
+- Beta blockers: `a11y.reviewed=true` with a reviewedNote (keyboard,
+  ARIA, focus management, reduced motion), `forcedColorsVerified=true`
+  and `lightDarkVerified=true` after a real Storybook check, wiring
+  `aria-describedby` from the field to the error/helper text (parity
+  with TextInput), and documented `consumers`.

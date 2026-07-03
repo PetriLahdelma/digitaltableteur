@@ -4,7 +4,7 @@ import Button from "@dt/Button";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import Modal from "@dt/Modal";
-import Inputs from "@dt/Inputs";
+import TextInput from "@dt/TextInput";
 import styles from "./NewsletterWaitlist.module.css";
 
 export interface NewsletterWaitlistProps {
@@ -126,7 +126,7 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
             </Text>
           </div>
 
-          <Inputs
+          <TextInput
             label={t("newsletterWaitlist.inputLabel")}
             type="email"
             value={email}

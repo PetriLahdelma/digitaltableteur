@@ -1,6 +1,6 @@
 import React, { useImperativeHandle, useRef } from "react";
 import Button from "@dt/Button";
-import { ChatTextArea } from "@dt/Inputs/TextArea";
+import { ChatTextArea } from "./ChatTextArea";
 import Label from "@dt/Label";
 import HelperText from "@dt/HelperText";
 import styles from "./ChatWidget.module.css";

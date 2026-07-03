@@ -5,51 +5,142 @@ import * as Stories from './TextInput.stories.tsx';
 
 # TextInput
 
-**Status:** alpha · **Tier:** atom · **Group:** form
+**Status:** beta · **Tier:** atom · **Group:** form
 
-Single-line input atom used inside `FormField`. Owns the focus ring, error border, and icon slots so consumers do not restyle the native `<input>` per form.
+Labelled text input with built-in validation for email and telephone
+types, plus a unified `error` / `helperText` slot. TextInput is the
+canonical single-line text control. Driven by a `type` discriminator
+(`text` / `number` / `email` / `password` / `search` / `tel`); for
+email and tel the component runs format validation as the user types
+and surfaces typo suggestions.
 
 ## In use
 
-See the **Default** and **Playground** stories. Example and ForcedColors
-stories are added at the alpha → beta promotion (see Roadmap Phase 2).
+Used everywhere a form needs a text field: contact form (name, email,
+phone), newsletter waitlist (email), CV download (password),
+chat widget email composition. The phone-number formatter is shared
+with the standalone **PhoneInput** for the international call flow.
+
+Three compositions worth cribbing:
+
+- **Email with suggestion.** `type="email"` runs `suggestEmailCorrection`
+  on every keystroke. If the user types `gmial.com`, the helper
+  surfaces "Did you mean gmail.com?" via the i18n key
+  `contactValidationEmailSuggestion`.
+- **Phone with auto-format.** `type="tel"` uses libphonenumber-js to
+  format incomplete numbers as the user types. The component re-emits
+  the formatted value through `onValueChange`, so the consumer always
+  sees the formatted version (not the raw keystrokes).
+- **Controlled with error.** Pass `value` + `onValueChange` and the
+  `error` prop. The component sets `aria-invalid`, links the error
+  message via `aria-describedby`, and the Label's `required` flag
+  flips for visual prominence.
+
+Anti-pattern to avoid: relying on the built-in email validation to
+gate form submission. The validator is conservative — it accepts most
+RFC 5322 emails — but is not a replacement for server-side
+verification. Use the validation for user feedback; verify on the
+server.
 
 ## How to use
 
 ```tsx
-import { TextInput } from '@dt/TextInput';
+import TextInput from '@dt/TextInput';
 
-<TextInput />
+// Basic text input
+<TextInput
+  label={t('contactName')}
+  type="text"
+  value={name}
+  onValueChange={setName}
+  required
+/>
+
+// Email with helper text
+<TextInput
+  label={t('contactEmail')}
+  type="email"
+  value={email}
+  onValueChange={setEmail}
+  helperText={t('contactEmailHelper')}
+/>
+
+// Phone with auto-format
+<TextInput
+  label={t('contactPhone')}
+  type="tel"
+  value={phone}
+  onValueChange={setPhone}
+  placeholder="+358 40 123 4567"
+/>
+
+// With error message
+<TextInput
+  label={t('contactName')}
+  type="text"
+  value={name}
+  onValueChange={setName}
+  error={errors.name}
+/>
 ```
+
+Required consumer wiring: nothing. The label renders via the system
+`Label` primitive and is bound to the input via `htmlFor` / `id`.
+Helper and error text render via `HelperText`. The `name` attribute
+is derived from the label (`replace(/\s+/g, '-').toLowerCase()`) so
+form submission has a stable key without consumer plumbing.
+
+Theme & forced-colors notes: input surface uses `--color-surface`;
+border uses `--color-border` (default) or `--color-error-border`
+(error / phone-validation / email-validation states). Forced-colors
+mode keeps the native input affordance; the visual error border falls
+back to the system invalid styling.
 
 ## When to use
 
-- Every single-line text input on the site (search, email, name, …).
+- Any single-line text entry: name, email, phone, search, password.
+- Numeric entry where the consumer wants the spinner and arrow-key
+  bumping (`type="number"`).
+- A search input — `type="search"` enables the user-agent's clear-X
+  button on supporting browsers.
 
 ## When not to use
 
-- Phone numbers — use `PhoneInput` which owns formatting and validation.
-- Multi-line text — use `TextArea`.
+- Multi-line text — use **TextArea**.
+- A choice from a list — use **Select**.
+- A binary toggle — use **Switch** or **Checkbox**.
+- File selection — use **FileUpload**.
+- Inline editable text in a card — that pattern is not yet covered;
+  consumer should wrap Text + a visibility-toggled TextInput.
 
 ## Accessibility
 
-### Keyboard
-
-- Tab — focuses the input.
-- Esc when `clearable` and the input has a value — clears the value (when the clear button is the active element).
-
-### ARIA / semantics
-
-- Renders a native `<input>`; HTML autocomplete + form-association attributes pass through.
-- `error` is a visual state — the actual error message lives in the surrounding `FormField`'s helper text.
-- Clear button has `aria-label='Clear input'` and is hidden when the input is empty.
-
-### Reduced motion
-
-- No own motion.
+- **Label:** the `<Label>` primitive is rendered with `htmlFor` set to
+  the input id (`useId()` derived). The Label carries the
+  `tooltipText` (the error message) when the input is invalid, so the
+  AT user has a description on focus.
+- **Error wiring:** when `error` (or the validated `phoneError` /
+  `emailError`) is set, the component:
+  1. Sets `aria-invalid` on the input.
+  2. Renders a `<HelperText state="error">` with a stable `id`.
+  3. Sets `aria-describedby={errorId}` so the AT announces the error
+     when the field gets focus.
+- **Helper text:** when no error is present, `helperText` renders with
+  its own stable id and is linked via `aria-describedby` instead.
+  Error and helper text are mutually exclusive — error wins.
+- **Email suggestion:** typos surface as a friendly error rather than
+  a separate UI. The translation key `contactValidationEmailSuggestion`
+  receives the corrected domain as an interpolation parameter.
+- **Phone format:** the formatter runs purely on the visual value;
+  the underlying form value is what the user sees, so paste-and-edit
+  behaviour stays sensible.
 
 ## Promotion notes
 
-- Bucket-1 catalog-gap migration. Status is intentionally **alpha** until the
-  beta gates land: ForcedColors story, real-browser HC verification,
-  light/dark theme verification, a11y review notes, and a Figma node reference.
+- Stable promotion blockers: AT-tree snapshots for default / error /
+  email-suggestion / phone-format states, real-browser forced-colors
+  run, documented production consumers (contact form is the canonical
+  use with all three validating types active).
+- Known debt: the `onChange` and `disabled` props still emit
+  deprecation warnings; removal in v2.0.0 after consumers migrate to
+  `onValueChange` and `isDisabled`.

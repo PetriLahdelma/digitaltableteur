@@ -1,119 +1,196 @@
-"use client";
+import { cva } from "class-variance-authority";
 
-import { forwardRef, type ReactNode, useState } from "react";
-import { cn } from "@/lib/utils";
-import { X } from "@phosphor-icons/react";
+export const textInputVariants = cva("", {
+  variants: { size: { sm: "", md: "", lg: "" } },
+  defaultVariants: { size: "md" },
+});
+
+import React, { useEffect, useId, useState } from "react";
+import styles from "./TextInput.module.css";
+import Label from "@dt/Label";
+import HelperText from "@dt/HelperText";
+import { useTranslation } from "react-i18next";
+import {
+  parsePhoneNumber,
+  formatIncompletePhoneNumber,
+} from "libphonenumber-js";
+import { warnPropRename } from "../../utils/deprecationWarning";
+import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
+import { suggestEmailCorrection } from "../../utils/emailSuggestion";
 
 export interface TextInputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
-  size?: "sm" | "md" | "lg";
-  startIcon?: ReactNode;
-  endIcon?: ReactNode;
-  clearable?: boolean;
-  onClear?: () => void;
-  error?: boolean;
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "size"> {
+  label: string;
+  type: "text" | "number" | "email" | "password" | "search" | "tel";
+
+  // NEW PROPS (v1.1.0)
+  /** Size variant for input */
+  size?: SizeUnified;
+  /** Disables the input */
+  isDisabled?: boolean;
+  /** Value change handler (recommended) */
+  onValueChange?: (value: string | number) => void;
+  /** Initial value for uncontrolled component */
+  defaultValue?: string | number;
+
+  // EXISTING PROPS
+  value?: string | number;
+  error?: string;
+  helperText?: string;
+
+  // DEPRECATED PROPS
+  /** @deprecated Use onValueChange instead. Will be removed in v2.0.0 */
+  onChange?: (value: string | number) => void;
 }
 
-const sizeClasses = {
-  sm: "h-8 px-3 text-text-s",
-  md: "h-10 px-4 text-text-m",
-  lg: "h-12 px-5 text-text-l",
-} as const;
+/** Labeled text input with validation states and size tokens. */
+const TextInput: React.FC<TextInputProps> = ({
+  label,
+  type,
+  placeholder,
+  value,
+  defaultValue,
+  error,
+  helperText,
+  // New props (v1.1.0)
+  size = "md",
+  isDisabled,
+  onValueChange,
+  // Deprecated props
+  onChange,
+  disabled = false,
+  ...rest
+}) => {
+  const { t } = useTranslation();
 
-const iconSizeClasses = {
-  sm: "size-4",
-  md: "size-5",
-  lg: "size-6",
-} as const;
+  // Generate stable unique IDs for accessibility
+  const inputId = useId();
+  const errorId = `${inputId}-error`;
+  const helperId = `${inputId}-helper`;
 
-/**
- * Single-line text input with optional icons and clear affordance.
- */
-export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  (
-    {
-      size = "md",
-      startIcon,
-      endIcon,
-      clearable,
-      onClear,
-      error,
-      className,
-      value,
-      onChange,
-      ...props
-    },
-    ref
-  ) => {
-    const [internalValue, setInternalValue] = useState(value ?? "");
-    const displayValue = value ?? internalValue;
-    const hasValue = Boolean(displayValue);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInternalValue(e.target.value);
-      onChange?.(e);
-    };
-
-    const handleClear = () => {
-      setInternalValue("");
-      onClear?.();
-    };
-
-    return (
-      <div className="relative">
-        {startIcon && (
-          <span
-            className={cn(
-              "absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground",
-              iconSizeClasses[size]
-            )}
-          >
-            {startIcon}
-          </span>
-        )}
-
-        <input
-          ref={ref}
-          value={displayValue}
-          onChange={handleChange}
-          className={cn(
-            "w-full rounded-md border border-input bg-background font-body",
-            "transition-colors placeholder:text-muted-foreground",
-            "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
-            "disabled:cursor-not-allowed disabled:opacity-50",
-            error && "border-destructive focus:ring-destructive",
-            sizeClasses[size],
-            startIcon && "pl-10",
-            (endIcon || clearable) && "pr-10",
-            className
-          )}
-          {...props}
-        />
-
-        {(endIcon || (clearable && hasValue)) && (
-          <span
-            className={cn(
-              "absolute right-3 top-1/2 -translate-y-1/2",
-              iconSizeClasses[size]
-            )}
-          >
-            {clearable && hasValue ? (
-              <button
-                type="button"
-                onClick={handleClear}
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Clear input"
-              >
-                <X className={iconSizeClasses[size]} />
-              </button>
-            ) : (
-              <span className="text-muted-foreground">{endIcon}</span>
-            )}
-          </span>
-        )}
-      </div>
-    );
+  // Deprecation warnings (development only)
+  if (process.env.NODE_ENV !== "production") {
+    if (onChange && !onValueChange) {
+      warnPropRename("TextInput", "onChange", "onValueChange");
+    }
+    if (disabled !== false && isDisabled === undefined) {
+      warnPropRename("TextInput", "disabled", "isDisabled");
+    }
   }
-);
 
-TextInput.displayName = "TextInput";
+  // Resolve effective values
+  const effectiveDisabled = isDisabled ?? disabled;
+  const effectiveOnChange = onValueChange ?? onChange;
+  const normalizedSize = normalizeSizeProp(size);
+
+  const [inputValue, setInputValue] = useState<string | number>(
+    value ?? defaultValue ?? ""
+  );
+  const [phoneError, setPhoneError] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  // Compute error state for ARIA attributes
+  const hasError = !!(error || phoneError || emailError);
+  const errorMessage = error || phoneError || emailError;
+
+  // Compute aria-describedby - link to error or helper text
+  const describedBy = [
+    hasError && errorId,
+    helperText && !hasError && helperId,
+  ].filter(Boolean).join(' ') || undefined;
+
+  useEffect(() => {
+    setInputValue(value ?? "");
+  }, [value]);
+
+  const validatePhoneNumber = (phone: string) => {
+    try {
+      const phoneNumber = parsePhoneNumber(phone);
+      return phoneNumber?.isValid() ?? false;
+    } catch {
+      // If parsing fails, it's incomplete or invalid
+      return phone.length === 0; // Empty is valid (not required)
+    }
+  };
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let newValue: string | number;
+    newValue = type === "number" ? +e.target.value : e.target.value;
+
+    if (type === "tel") {
+      const formatted = formatIncompletePhoneNumber(e.target.value);
+      setInputValue(formatted);
+      if (effectiveOnChange) effectiveOnChange(formatted);
+
+      if (formatted && !validatePhoneNumber(formatted)) {
+        setPhoneError(t("inputValidationPhoneInvalid"));
+      } else {
+        setPhoneError("");
+      }
+    } else if (type === "email") {
+      setInputValue(e.target.value);
+      if (effectiveOnChange) effectiveOnChange(e.target.value);
+
+      // Validate email format if field is not empty
+      if (e.target.value.trim() !== "") {
+        if (validateEmail(e.target.value)) {
+          setEmailError("");
+        } else {
+          // Check for typo suggestion first (WCAG 3.3.3: Error Suggestion)
+          const suggestion = suggestEmailCorrection(e.target.value);
+          if (suggestion) {
+            setEmailError(t("contactValidationEmailSuggestion", { suggestion }));
+          } else {
+            setEmailError(t("inputValidationEmailInvalid"));
+          }
+        }
+      } else {
+        setEmailError("");
+      }
+    } else {
+      setInputValue(newValue);
+      if (effectiveOnChange) effectiveOnChange(newValue);
+    }
+  };
+
+  return (
+    <div className={styles["input-container"]}>
+      <Label
+        htmlFor={inputId}
+        required={hasError}
+        tooltipText={errorMessage}
+        disabled={effectiveDisabled}
+      >
+        {label}
+      </Label>
+      <input
+        id={inputId}
+        name={label.replace(/\s+/g, "-").toLowerCase()}
+        className={`${styles.input} ${styles[`input--${normalizedSize}`]} ${hasError ? styles.error : ""}`}
+        type={type}
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={handleChange}
+        disabled={effectiveDisabled}
+        aria-invalid={hasError || undefined}
+        aria-describedby={describedBy}
+        {...rest}
+      />
+      {hasError && (
+        <HelperText id={errorId} state="error">
+          {errorMessage}
+        </HelperText>
+      )}
+      {helperText && !hasError && (
+        <HelperText id={helperId}>{helperText}</HelperText>
+      )}
+    </div>
+  );
+};
+
+export default TextInput;

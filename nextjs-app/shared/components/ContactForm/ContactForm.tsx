@@ -1,11 +1,11 @@
 import React, { useReducer, useState } from "react";
 import styles from "./ContactForm.module.css";
-import Inputs from "@dt/Inputs";
+import TextInput from "@dt/TextInput";
 import Button from "@dt/Button";
 import CheckboxGroup from "@dt/CheckboxGroup";
 import Modal from "@dt/Modal";
 import Toast from "@dt/Toast";
-import TextArea from "@dt/Inputs/TextArea";
+import TextArea from "@dt/TextArea";
 import Select from "@dt/Select";
 import FileUpload from "@dt/FileUpload";
 import Text from "@dt/Text";
@@ -289,7 +289,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </div>
 
         <div className={styles["formGroup"]}>
-          <Inputs
+          <TextInput
             label={t("contactFullName")}
             type="text"
             placeholder={t("contactFullNamePlaceholder")}
@@ -301,7 +301,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </div>
 
         <div className={styles["formGroup"]}>
-          <Inputs
+          <TextInput
             label={t("contactEmail")}
             type="email"
             placeholder={t("contactEmailPlaceholder")}

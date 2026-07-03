@@ -127,7 +127,7 @@ Numbers refer to **failing test assertions**, not files. A file usually owns
 - `nextjs-app/shared/components/DonnyAvatar/DonnyAvatar.test.tsx` — 1 test
 - `nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.test.tsx` — 1 test
 - `nextjs-app/shared/components/Gallery/Gallery.test.tsx` — 1 test
-- `nextjs-app/shared/components/Inputs/TextArea.test.tsx` — 1 test
+- `nextjs-app/shared/components/TextArea/TextArea.test.tsx` — 1 test
 - `nextjs-app/shared/components/Modal/Modal.a11y.test.tsx` — 1 test
 - `nextjs-app/shared/components/Select/SelectOption.test.tsx` — 1 test
 - `nextjs-app/shared/components/Testimonial/Testimonial.test.tsx` — 1 test

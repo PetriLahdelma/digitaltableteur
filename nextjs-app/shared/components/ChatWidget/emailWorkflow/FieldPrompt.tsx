@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
-import Inputs from "@dt/Inputs";
-import TextArea from "@dt/Inputs/TextArea";
+import TextInput from "@dt/TextInput";
+import TextArea from "@dt/TextArea";
 import CheckboxGroup from "@dt/CheckboxGroup";
 import styles from "../ChatWidget.module.css";
 import { EmailWorkflowAction, EmailDraft } from "./types";
@@ -149,7 +149,7 @@ const FieldPrompt: React.FC<FieldPromptProps> = ({ step, draft, dispatch }) => {
           required
         />
       ) : (
-        <Inputs
+        <TextInput
           label={labelMap[step]}
           type={step === "collectingEmail" ? "email" : "text"}
           value={localValue}
