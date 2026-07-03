@@ -97,6 +97,10 @@
   --link-color: #041b23;
   --logo-text-color: var(--color-text); /* Logo wordmark text - theme-aware */
 
+  /* Chat composer keyboard hint. Was an undefined token whose #4b5563
+     fallback applied in every theme (2.31:1 on the dark background). */
+  --shortcut-hint-color: #4b5563;
+
   /* Accent colors */
   --accent-pink: #f205c5;
   --accent-purple: #812eff;
@@ -345,6 +349,7 @@
   --main-body-copy-color: #e0e0e0; /* Body copy, was #6fa8ff; accent blue now reserved for interactive */
   --secondary-text-color: #aaa;
   --inverted-text-color: #181a1b;
+  --shortcut-hint-color: #9ca3af; /* 6.7:1 on #181a1b */
   --link-color: #71efff;
   --color-primary: #6fa8ff;
   --color-primary-disabled: #6fa8ff50;
@@ -417,6 +422,7 @@
   --main-body-copy-color: #fff;
   --secondary-text-color: #fff;
   --inverted-text-color: #000;
+  --shortcut-hint-color: #fff;
   --link-color: #fff;
   --color-primary: #fff;
   --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
@@ -525,6 +531,7 @@
   --main-body-copy-color: #000;
   --secondary-text-color: #000;
   --inverted-text-color: #fff;
+  --shortcut-hint-color: #000;
   --link-color: #000;
   --color-primary: #000;
   --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
