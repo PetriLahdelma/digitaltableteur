@@ -115,7 +115,8 @@ const config: StorybookConfig = {
     ${head}
     <base href="${process.env.NODE_ENV === "production" ? "/storybook/" : "/"}">
   `,
-  viteFinal: async (config) => {
+  viteFinal: async (config, { configType }) => {
+    const isProductionBuild = configType === "PRODUCTION";
     const rootPath = fileURLToPath(new URL("..", import.meta.url));
     const componentsPath = fileURLToPath(
       new URL("../nextjs-app/shared/components", import.meta.url),
@@ -337,10 +338,13 @@ const config: StorybookConfig = {
         jsxDev: false,
       };
     } else {
-      // Add esbuild options to help with HMR
+      // jsxDev helps dev-server HMR, but it MUST stay off for `storybook
+      // build`: the transform emits jsxDEV() calls while the production
+      // react/jsx-dev-runtime stubs jsxDEV as undefined, so every page of
+      // storybook-static crashed at runtime with "e.jsxDEV is not a function".
       config.esbuild = {
         ...config.esbuild,
-        jsxDev: true,
+        jsxDev: !isProductionBuild,
       };
     }
 
