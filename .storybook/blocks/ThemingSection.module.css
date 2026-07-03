@@ -1,0 +1,30 @@
+.table {
+  border-collapse: collapse;
+  inline-size: 100%;
+  font-size: var(--font-size-text-s);
+}
+
+.table th,
+.table td {
+  text-align: start;
+  padding: var(--space-internal-8) var(--space-internal-12);
+  border-block-end: 1px solid var(--color-border-light);
+}
+
+.table thead th {
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.token {
+  font-size: var(--font-size-text-s);
+  background: var(--color-surface-elevated, var(--main-body-background-color));
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm, 4px);
+  padding: 0 var(--space-internal-4);
+  white-space: nowrap;
+}
+
+.detail {
+  color: var(--color-muted);
+}

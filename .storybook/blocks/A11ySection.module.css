@@ -1,0 +1,58 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-internal-24);
+}
+
+.subheading {
+  margin-block: 0 var(--space-internal-8);
+  font-weight: 600;
+}
+
+.keys {
+  display: flex;
+  gap: var(--space-internal-8);
+  flex-wrap: wrap;
+}
+
+.kbd {
+  font-family: inherit;
+  font-size: var(--font-size-text-s);
+  border: 1px solid var(--color-border-light);
+  border-block-end-width: 2px;
+  border-radius: var(--radius-sm, 4px);
+  padding: var(--space-internal-4) var(--space-internal-8);
+  background: var(--color-surface-elevated, var(--main-body-background-color));
+}
+
+.ariaList {
+  margin: 0;
+  padding-inline-start: var(--space-internal-16);
+  display: grid;
+  gap: var(--space-internal-4);
+}
+
+.verifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-internal-8);
+  margin-block-start: var(--space-internal-16);
+}
+
+.verification {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-4);
+  font-size: var(--font-size-text-s);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-pill, 999px);
+  padding: var(--space-internal-4) var(--space-internal-12);
+}
+
+.ok svg {
+  color: var(--color-success);
+}
+
+.pending {
+  color: var(--color-muted);
+}
