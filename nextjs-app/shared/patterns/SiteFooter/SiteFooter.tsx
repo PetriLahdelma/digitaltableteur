@@ -129,20 +129,20 @@ export function SiteFooter({ className }: SiteFooterProps) {
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerExploreTitle")}
             </p>
-            <Stack gap="xs">
-              <DtLink href="/work" size="sm">
+            <Stack gap="xs" align="start">
+              <DtLink underline="hover" href="/work" size="sm">
                 {t("navWork")}
               </DtLink>
-              <DtLink href="/about" size="sm">
+              <DtLink underline="hover" href="/about" size="sm">
                 {t("navAbout")}
               </DtLink>
-              <DtLink href="/blog" size="sm">
+              <DtLink underline="hover" href="/blog" size="sm">
                 {t("navBlog")}
               </DtLink>
-              <DtLink href="/pricing" size="sm">
+              <DtLink underline="hover" href="/pricing" size="sm">
                 {t("navPricing")}
               </DtLink>
-              <DtLink href="/contact" size="sm">
+              <DtLink underline="hover" href="/contact" size="sm">
                 {t("navContact")}
               </DtLink>
             </Stack>
@@ -153,20 +153,20 @@ export function SiteFooter({ className }: SiteFooterProps) {
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerLegalTitle")}
             </p>
-            <Stack gap="xs">
-              <DtLink href="/privacy-policy" size="sm">
+            <Stack gap="xs" align="start">
+              <DtLink underline="hover" href="/privacy-policy" size="sm">
                 {t("footerPrivacyPolicy")}
               </DtLink>
-              <DtLink href="/imprint" size="sm">
+              <DtLink underline="hover" href="/imprint" size="sm">
                 {t("footerImprint")}
               </DtLink>
-              <DtLink href="/ai-use" size="sm">
+              <DtLink underline="hover" href="/ai-use" size="sm">
                 {t("footerAiUse")}
               </DtLink>
-              <DtLink href="/accessibility" size="sm">
+              <DtLink underline="hover" href="/accessibility" size="sm">
                 {t("footerAccessibility")}
               </DtLink>
-              <DtLink href="/sitemap" size="sm">
+              <DtLink underline="hover" href="/sitemap" size="sm">
                 {t("footerSiteMap")}
               </DtLink>
             </Stack>

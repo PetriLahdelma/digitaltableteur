@@ -11,6 +11,35 @@ describe("Link", () => {
     expect(linkElement).toHaveAttribute("href", "#");
   });
 
+  it("shows the wavy underline by default", () => {
+    render(<Link href="/test">Test Link</Link>);
+    const linkElement = screen.getByRole("link");
+    expect(linkElement.className).toContain("wavyUnderline");
+    expect(linkElement.className).not.toContain("underlineHover");
+  });
+
+  it("adds the hover modifier for underline=\"hover\"", () => {
+    render(
+      <Link href="/test" underline="hover">
+        Test Link
+      </Link>,
+    );
+    const linkElement = screen.getByRole("link");
+    expect(linkElement.className).toContain("wavyUnderline");
+    expect(linkElement.className).toContain("underlineHover");
+  });
+
+  it("omits the underline classes for underline=\"none\"", () => {
+    render(
+      <Link href="/test" underline="none">
+        Test Link
+      </Link>,
+    );
+    const linkElement = screen.getByRole("link");
+    expect(linkElement.className).not.toContain("wavyUnderline");
+    expect(linkElement.className).not.toContain("underlineHover");
+  });
+
   it("renders with custom href", () => {
     render(<Link href="/test">Test Link</Link>);
     const linkElement = screen.getByRole("link");
