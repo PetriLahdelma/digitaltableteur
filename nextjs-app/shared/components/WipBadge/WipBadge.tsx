@@ -13,11 +13,17 @@ export function WipBadge({ status = "alpha", variant = "canvas" }: WipBadgeProps
   const { t } = useTranslation();
   if (status === "stable") return null;
   const containerClass = variant === "docs" ? styles.wipBadgeDocs : styles.wipBadgeContainer;
+  const deprecated = status === "deprecated";
   return (
     <div className={styles.wipWrapper} aria-hidden={false} data-axe-ignore>
       <div className={containerClass}>
-        <span className={`${styles.badge} badge`} role="status">
-          {t("storybookWipBadge")} ({status})
+        <span
+          className={`${styles.badge} ${deprecated ? styles.deprecated : ""} badge`.trim()}
+          role="status"
+        >
+          {deprecated
+            ? t("storybookDeprecatedBadge")
+            : `${t("storybookWipBadge")} (${status})`}
         </span>
       </div>
     </div>

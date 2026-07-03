@@ -58,6 +58,7 @@ export type DtContract = {
   name: string;
   displayName?: string;
   status: "alpha" | "beta" | "stable" | "deprecated";
+  deprecatedReason?: string;
   tier?: string;
   group?: string;
   description?: string;

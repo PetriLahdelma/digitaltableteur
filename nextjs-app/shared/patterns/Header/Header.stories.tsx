@@ -9,9 +9,9 @@ const cycleThemes = ["light", "dark", "hcb", "hcw"] as const;
 
 const meta: Meta<typeof Header> = {
   argTypes: {},
-  title: "Patterns/Header",
+  title: "Deprecated/Header",
   component: Header,
-  tags: ["beta", "!autodocs"],
+  tags: ["deprecated", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -33,7 +33,6 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"],
   render: () => <Header />,
 };
 
@@ -73,12 +72,10 @@ export const ThemeCycle: Story = {
 
 export const Playground = Default;
 export const Example = {
-  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   ...Default,
 };
 export const ForcedColors = {
-  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   ...Default,
 };
