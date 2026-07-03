@@ -136,6 +136,7 @@
   "contactAttachmentEmailLimitLabel": "{{size}} kt",
   "contactAttachmentEmailLimitReached": "Yli {{size}} kokoisia liitteitä ei voi liittää vahvistussähköpostiin, mutta tallennamme ne turvallisesti yhteydenottoosi.",
   "storybookWipBadge": "Työn alla",
+  "storybookDeprecatedBadge": "Vanhentunut",
   "contactHearAbout": "Mistä kuulit meistä?",
   "contactHearAboutPlaceholder": "Valitse vaihtoehto",
   "contactHearSocial": "Sosiaalinen media",

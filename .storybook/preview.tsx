@@ -551,6 +551,7 @@ const preview: Preview = {
           "Patterns",
           "Templates",
           "Testing",
+          "Deprecated",
         ],
         method: "alphabetical",
         locales: "en-US",

@@ -61,9 +61,13 @@ function renderLabel(item: API_HashEntry): React.ReactNode {
   const tags: string[] = (item as { tags?: string[] }).tags ?? [];
   const status = STATUS_TAGS.find((candidate) => tags.includes(candidate));
   if (!status) return item.name;
+  const labelClass =
+    status === "deprecated"
+      ? "dt-sidebar-label dt-sidebar-label--deprecated"
+      : "dt-sidebar-label";
   return React.createElement(
     "span",
-    { className: "dt-sidebar-label" },
+    { className: labelClass },
     item.name,
     React.createElement("span", {
       className: `dt-status-dot dt-status-dot--${status}`,

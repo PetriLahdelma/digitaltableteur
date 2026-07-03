@@ -51,3 +51,13 @@
   color: var(--color-text);
   pointer-events: auto;
 }
+
+/* Deprecated reads as a stop sign, not a WIP note: error-tinted surface and
+   text (mirrors the sidebar's struck red lifecycle dot). */
+
+.badge.deprecated {
+  background: var(--color-error-bg, rgb(239 68 68 / 12%));
+  box-shadow: 0 0 0 1px var(--color-error, #b91c1c);
+  text-decoration: line-through;
+  color: var(--color-error-text, #7a1f1f);
+}

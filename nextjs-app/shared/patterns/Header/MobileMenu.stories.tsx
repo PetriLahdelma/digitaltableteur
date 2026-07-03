@@ -4,9 +4,9 @@ import MobileMenu from "./MobileMenu";
 import Button from "@dt/Button";
 
 const meta: Meta<typeof MobileMenu> = {
-  title: "Patterns/Header/MobileMenu",
+  title: "Deprecated/Header/MobileMenu",
   component: MobileMenu,
-  tags: ["autodocs"],
+  tags: ["deprecated", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -56,7 +56,6 @@ const DemoScaffold: React.FC = () => {
 };
 
 export const Playground: Story = {
-  tags: ["beta-matrix"],
   render: () => <DemoScaffold />,
 };
 

@@ -17,6 +17,7 @@ import {
 } from "../lib/contracts";
 import type { PreparedDocsStory } from "./docsStories";
 import { managerHref } from "./managerHref";
+import AlertBanner from "@dt/AlertBanner";
 import { A11ySection } from "./A11ySection";
 import { AnatomySection } from "./AnatomySection";
 import { BestPractices } from "./BestPractices";
@@ -85,6 +86,16 @@ export function DtDocsPage() {
   return (
     <div className={styles.page}>
       <DocHeader contract={contract} />
+      {contract.status === "deprecated" ? (
+        <AlertBanner
+          tone="warning"
+          title="Deprecated"
+          description={
+            contract.deprecatedReason ??
+            "This component is deprecated; do not use it in new work."
+          }
+        />
+      ) : null}
       {primary ? (
         <ShowcaseStage>
           <DocsStory

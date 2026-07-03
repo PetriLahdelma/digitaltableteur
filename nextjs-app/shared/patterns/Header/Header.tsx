@@ -49,7 +49,14 @@ function getCookie(name: string) {
 }
 
 /**
- * Header component.
+ * Legacy site header pattern.
+ *
+ * @deprecated Replaced by the SiteHeader pattern
+ * (`nextjs-app/shared/patterns/SiteHeader`) — the production app-shell
+ * header. Do not use in new work. The component survives only because the
+ * legacy `Layout` still mounts it; `Header.module.css` / `MobileMenu.module.css`
+ * are separately still consumed by NextHeader / NextMobileMenu and are NOT
+ * deprecated with it.
  */
 export const Header: React.FC<HeaderProps> = ({
   navItems,
