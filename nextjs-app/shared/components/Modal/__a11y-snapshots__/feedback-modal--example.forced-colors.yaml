@@ -1,2 +1,7 @@
 - status: Work in progress (beta)
 - button "Open modal"
+- dialog "Confirm changes":
+  - heading "Confirm changes" [level=2]
+  - button "Close dialog"
+  - text: Your edits will be applied immediately.
+  - button "OK"

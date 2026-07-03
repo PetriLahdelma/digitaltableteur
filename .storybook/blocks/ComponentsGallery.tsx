@@ -36,7 +36,8 @@ function Monogram({ name }: { name: string }) {
   );
 }
 
-function GalleryCard({ name, category }: { name: string; category: string }) {
+/** Exported for tests: renders one gallery card; monograms when no preview is possible. */
+export function GalleryCard({ name, category }: { name: string; category: string }) {
   const contract = getContractByName(name);
   const href = managerHref(
     `/docs/${storyIdFromTitle(`${category}/${name}`)}--docs`,

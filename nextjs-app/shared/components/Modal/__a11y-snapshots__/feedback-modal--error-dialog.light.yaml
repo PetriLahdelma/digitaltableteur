@@ -1,6 +1,6 @@
 - status: Work in progress (beta)
 - button "Open modal"
-- alertdialog "Error":
-  - heading "Error" [level=2]
-  - paragraph: storyModalErrorBody
+- alertdialog "Something went wrong":
+  - heading "Something went wrong" [level=2]
+  - paragraph: We could not save your changes. Check your connection and try again.
   - button "OK"
