@@ -80,7 +80,7 @@ Coverage target: >80%. Include axe-core in component tests.
 ## Status lifecycle
 
 - **WIP** → Storybook badge; not production-ready
-- **beta** → contract + spec + MDX required; honest doc debt tracked in `agent-manifest.json`
+- **beta** → contract + spec required, plus docs: a Carbon-style MDX page or contract doc-field adoption (`usage`/`keywords`/`dense` + autodocs frame; colocated MDX must then be deleted); honest doc debt tracked in `agent-manifest.json`
 - **stable** → a11y snapshots, production consumer, review evidence in contract
 
 Do not promote to stable without running validation gates in skill `dt-design-system`.

@@ -5,6 +5,17 @@
     "group": "layout",
     "status": "beta",
     "description": "PageLayout — production @dt component (Storybook beta).",
+    "dense": "Page-level layout wrapper: max-width, optional grid columns, spacing scale, and default page margins.",
+    "keywords": [
+        "layout",
+        "page",
+        "wrapper",
+        "grid",
+        "spacing"
+    ],
+    "usage": {
+        "description": "PageLayout is the page-body wrapper: a max-width container with default page margins, an optional grid mode with columns, and a spacing scale. PSEO pages and several structure blocks (GridBlock, ProofBlock, ProjectMetaSection) build on it. Use it to open a page body or section shell; inside components prefer the Grid/FlexBox primitives."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-page-layout",
     "radixPrimitive": null,
     "element": "div",

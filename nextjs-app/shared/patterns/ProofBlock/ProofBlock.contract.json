@@ -5,6 +5,17 @@
     "group": "structure",
     "status": "beta",
     "description": "ProofBlock — production @dt component (Storybook beta).",
+    "dense": "Metrics proof band: headline metrics with captions under a title/subtitle; tight and dark variants.",
+    "keywords": [
+        "metrics",
+        "proof",
+        "stats",
+        "band",
+        "case-study"
+    ],
+    "usage": {
+        "description": "ProofBlock is the numbers band: a set of headline metrics with captions under an optional title and subtitle, with tight spacing and dark variants. Use it to evidence outcomes on case-study or marketing pages; metrics are data props so copy stays with the page."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-proof-block",
     "radixPrimitive": null,
     "element": "div",

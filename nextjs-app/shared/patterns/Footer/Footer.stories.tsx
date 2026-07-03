@@ -8,7 +8,7 @@ const meta: Meta<typeof Footer> = {
   argTypes: {},
   title: "Patterns/Footer",
   component: Footer,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

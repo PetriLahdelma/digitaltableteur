@@ -6,7 +6,7 @@ import contract from "./NewsBulletin.contract.json";
 const meta = {
   title: "Patterns/NewsBulletin",
   component: NewsBulletin,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "fullscreen",
     contractStatus: contract.status,

@@ -7,7 +7,7 @@ import Text from "@dt/Text";
 const meta: Meta<typeof StoryBlock> = {
   title: "Patterns/StoryBlock",
   component: StoryBlock,
-  tags: ["!autodocs"],
+  tags: ["autodocs"],
   parameters: {
     design: {
       type: "figma",

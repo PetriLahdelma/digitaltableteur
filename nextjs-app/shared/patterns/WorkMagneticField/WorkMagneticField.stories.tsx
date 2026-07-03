@@ -35,7 +35,7 @@ const defaultArgs = {
 const meta = {
   title: "Patterns/WorkMagneticField",
   component: WorkMagneticField,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

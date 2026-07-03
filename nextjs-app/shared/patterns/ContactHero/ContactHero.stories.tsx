@@ -12,7 +12,7 @@ const defaultArgs = {
 const meta = {
   title: "Patterns/ContactHero",
   component: ContactHero,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

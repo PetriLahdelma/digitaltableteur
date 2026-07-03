@@ -6,7 +6,7 @@ import contract from "./ContactInquiryPanel.contract.json";
 const meta = {
   title: "Patterns/ContactInquiryPanel",
   component: ContactInquiryPanel,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "padded",
     contractStatus: contract.status,

@@ -5,6 +5,17 @@
     "group": "marketing",
     "status": "beta",
     "description": "Homepage work grid with magnetic hover on project cards.",
+    "dense": "Homepage work showcase: project-card grid with magnetic hover, optional view-all link.",
+    "keywords": [
+        "work",
+        "portfolio",
+        "showcase",
+        "magnetic",
+        "homepage"
+    ],
+    "usage": {
+        "description": "WorkMagneticField is the homepage work showcase: a grid of project cards with the magnetic hover interaction, an optional view-all link, and homepage anchor wiring (id, donnyTarget). It wraps WorkPreviewSection's card grid in the animated treatment; use WorkPreviewSection directly when you need the plain grid without the effect."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-magnetic-field",
     "radixPrimitive": null,
     "element": "div",

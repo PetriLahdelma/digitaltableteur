@@ -8,7 +8,7 @@ import { t } from "i18next";
 const meta: Meta<typeof Hero> = {
   title: "Patterns/Hero",
   component: Hero,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
