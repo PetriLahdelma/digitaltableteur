@@ -4,16 +4,36 @@
     "tier": "atom",
     "group": "actions",
     "status": "beta",
-    "description": "Icon-only action button. Wraps the underlying shadcn `Button` with a circular shape, enforced `aria-label`, and the design-system size axis.",
+    "description": "Icon-only action button. Wraps @dt/Button in its rounded icon-only form with an enforced accessible label, sharing Button's variant (weight) x tone (semantic) matrix and surface awareness.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon-button",
     "radixPrimitive": null,
     "element": "button",
     "variants": {
         "variant": {
             "values": [
+                "primary",
+                "secondary",
+                "tertiary"
+            ],
+            "default": "tertiary",
+            "propSourced": true
+        },
+        "tone": {
+            "values": [
+                "neutral",
+                "error",
+                "warning",
+                "success",
+                "info"
+            ],
+            "default": "neutral",
+            "propSourced": true
+        },
+        "surface": {
+            "values": [
                 "default",
-                "ghost",
-                "outline"
+                "onDark",
+                "onBrand"
             ],
             "default": "default",
             "propSourced": true
@@ -24,7 +44,7 @@
                 "md",
                 "lg"
             ],
-            "default": "sm",
+            "default": "md",
             "propSourced": true
         }
     },
@@ -45,13 +65,14 @@
             "Enter / Space — activates."
         ],
         "ariaRequirements": [
-            "`label` prop is required and renders as `aria-label`; the icon glyph itself is `aria-hidden`.",
+            "`label` prop is required and renders as the accessible name; the icon glyph itself is `aria-hidden`.",
+            "`tooltip` is hover-only garnish; it never replaces `label` as the accessible name.",
             "Disabled state forwards `aria-disabled` and removes pointer events; focus remains routable so keyboard users can discover the disabled affordance."
         ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "reviewedNote": "2026-07-03 — Astryx Phase 3 batch 1: API aligned to platinum variant x tone conventions (ghost/outline/default removed), keyboard/ARIA contract re-reviewed, axe unit tests added."
     },
     "tokens": {
         "colors": [
@@ -67,12 +88,52 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
+            "since": "2026-05-28"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
+            "since": "2026-05-28"
+        }
+    ],
     "schemaVersion": 2,
+    "displayName": "IconButton",
+    "keywords": ["icon button", "icon-only", "toolbar", "close", "action", "compact", "menu trigger"],
+    "dense": "icon-only action button; wraps Button (rounded) so variant (weight) x tone x surface stay in lockstep, sm/md/lg, required accessible label, tooltip passthrough",
+    "usage": {
+        "description": "IconButton is an icon-only action for compact surfaces: toolbars, card corners, table rows, dialog close affordances. It wraps Button in its rounded icon-only form, so weight, tone, and surface behave exactly like Button; label is required and becomes the accessible name.",
+        "bestPractices": [
+            { "guidance": true, "description": "Write label as the action, like Close dialog or Copy link, never the icon name like X or Clipboard." },
+            { "guidance": true, "description": "Stay on the default variant=tertiary in toolbars and chrome; reserve primary for the one dominant action of a compact surface." },
+            { "guidance": true, "description": "Pick an icon whose meaning survives without text (x, magnifying-glass, caret-*); if you have to explain the icon, use Button with a visible label instead." },
+            { "guidance": true, "description": "Add tooltip for sighted-user reassurance on ambiguous glyphs; the label still carries the accessible name." },
+            { "guidance": true, "description": "Use surface=onDark or onBrand when the control sits on a dark or brand band instead of overriding colors." },
+            { "guidance": false, "description": "Do not omit or auto-generate label; there is no fallback announcement and axe fails the render." },
+            { "guidance": false, "description": "Do not use IconButton for primary marketing CTAs; text plus icon is more discoverable, use Button with an icon prop." },
+            { "guidance": false, "description": "Do not stack more than about five icon-only actions in a row without grouping or labels; recognition drops sharply." }
+        ],
+        "anatomy": [
+            { "name": "Icon", "required": true, "description": "The glyph, passed as an element or a Phosphor icon name string; always aria-hidden." },
+            { "name": "Label", "required": true, "description": "Invisible accessible name (aria-label) announcing the action to assistive tech." },
+            { "name": "Tooltip", "required": false, "description": "Native hover tooltip for sighted users; never the accessible name." }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "icon": "moon",
+            "label": "Toggle dark mode",
+            "variant": "tertiary",
+            "size": "md"
+        }
+    },
     "props": {
         "icon": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "React.ReactNode | string"
         },
         "label": {
             "optional": false,
@@ -82,9 +143,29 @@
             "optional": true,
             "type": "union",
             "values": [
+                "primary",
+                "secondary",
+                "tertiary"
+            ]
+        },
+        "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "neutral",
+                "error",
+                "warning",
+                "success",
+                "info"
+            ]
+        },
+        "surface": {
+            "optional": true,
+            "type": "union",
+            "values": [
                 "default",
-                "ghost",
-                "outline"
+                "onDark",
+                "onBrand"
             ]
         },
         "size": {
@@ -95,16 +176,24 @@
                 "md",
                 "lg"
             ]
+        },
+        "tooltip": {
+            "optional": true,
+            "type": "string"
         }
     },
     "forbiddenUse": [
         "Omit `label` — there is no fallback announcement.",
-        "Use for primary marketing CTAs — text + icon is more discoverable; use `Button` with an icon prop."
+        "Use for primary marketing CTAs — text + icon is more discoverable; use `Button` with an icon prop.",
+        "Rely on `tooltip` as the only accessible name."
+    ],
+    "prefersOver": [
+        "raw button with an svg child",
+        "Button with accessibleName for icon-only cases"
     ],
     "composesWith": [
-        "ThemeProvider",
-        "NavLink",
-        "Container",
-        "LanguageSwitcher"
+        "Button",
+        "Icon",
+        "Tooltip"
     ]
 }

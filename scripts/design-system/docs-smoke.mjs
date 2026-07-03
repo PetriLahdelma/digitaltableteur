@@ -22,6 +22,8 @@ const BASE = process.env.TARGET_URL || "http://localhost:6010";
 /** Components proven on the frame; grows with Phase 3 category batches. */
 const PROVEN = [
   { name: "Button", docsId: "actions-button--docs" },
+  { name: "IconButton", docsId: "actions-iconbutton--docs" },
+  { name: "SplitButton", docsId: "actions-splitbutton--docs" },
   { name: "Badge", docsId: "content-badge--docs" },
   { name: "Icon", docsId: "content-icon--docs" },
   { name: "Text", docsId: "content-text--docs" },

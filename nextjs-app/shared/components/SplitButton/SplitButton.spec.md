@@ -15,5 +15,6 @@ Primary action button paired with a dropdown toggle for related secondary action
 - Don't: promote past alpha without a11y review, forced-colors verification, and light/dark verification (see roadmap below).
 
 ## Design notes
-- Tokens: inherits from the composed Button and Icon components; menu chrome currently relies on unaudited local values pending token audit.
-- Status: alpha. This component was promoted out of `Button/` into its own directory as a structural move only (see `docs/superpowers/specs/2026-07-03-astryx-level-design-system-roadmap.md`); the a11y/token/promotion work tracked there has not yet run against it.
+- Tokens: inherits from the composed Button and Icon components; own menu chrome tokens are listed in the contract (colors --color-dark/muted/neutral-bg/primary/white, spacing --space-internal-4/6/8, radii --radius-sm/md).
+- i18n: the toggle's default accessible name is `t("splitButton.moreOptions")`; keys exist in en/fi/sv (added 2026-07-03 — they were missing, so the toggle used to announce the literal key).
+- Status: alpha. Doc data (usage, best practices, anatomy, playground) authored in the Astryx Phase 3 batch 1 sweep on 2026-07-03; forced-colors and light/dark verification still pending before beta.

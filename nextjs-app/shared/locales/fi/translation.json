@@ -514,7 +514,7 @@
   "contactHelsinkiOffice": "Digitaltableteur Helsingin HQ",
   "contactMapFallback": "Ladataan karttaa...",
   "studioMapAriaLabel": "Digitaltableteurin studion sijainti",
-  "studioMapLoading": "Ladataan karttaa\u2026",
+  "studioMapLoading": "Ladataan karttaa…",
   "studioMapDirections": "Reittiohjeet",
   "studioMapOpenMaps": "Avaa kartalla",
   "contactAddressHeading": "Kirjeitse",
@@ -564,7 +564,7 @@
   "monthDecember": "Joulukuu",
   "blogArticlesTitle": "Viimeisimmät Artikkelit",
   "blogRead": "lukuaika",
-  "blogReadMore": "Lue lisää",
+  "blogReadMore": "Lue artikkeli",
   "workMetaTitle": "Työt | Digitaltableteur",
   "workMetaDescription": "Valikoituja projekteja ja muita juttuja Digitaltableteurilta",
   "workTitle": "Valitut projektit",
@@ -1256,7 +1256,6 @@
   "blogNextPage": "Seuraava",
   "blogPage": "Sivu",
   "scrollToContent": "Vieritä",
-  "blogReadMore": "Lue artikkeli",
   "articleTOCTitle": "Sisällysluettelo",
   "articleShareTitle": "Jaa tämä artikkeli",
   "articleAboutAuthor": "Kirjoittajasta",
@@ -1337,5 +1336,8 @@
   "workCTATitle": "Kiinnostaako yhteistyö?",
   "workCTADescription": "Keskustellaan, miten designjärjestelmät, tekoäly ja harkittu käyttökokemus voivat nostaa tuotettasi.",
   "workCTAPrimary": "Ota yhteyttä",
-  "workCTASecondary": "Katso kaikki työt"
+  "workCTASecondary": "Katso kaikki työt",
+  "splitButton": {
+    "moreOptions": "Lisää vaihtoehtoja"
+  }
 }

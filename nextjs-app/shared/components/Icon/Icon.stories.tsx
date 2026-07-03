@@ -208,6 +208,28 @@ export const Transformations: Story = {
   ),
 };
 
+export const DecorativeVsInformative: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The two accessibility modes: decorative icons vanish from the accessibility tree (the surrounding label carries the meaning); informative icons carry ariaLabel because they are the only content.",
+      },
+    },
+    controls: { disable: true },
+  },
+  render: () => (
+    <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
+      <span style={{ display: "inline-flex", gap: "0.5rem", alignItems: "center" }}>
+        <Icon name="check" decorative />
+        Saved
+      </span>
+      <Icon name="arrow-square-out" ariaLabel="Opens in a new window" />
+    </div>
+  ),
+};
+
 export const Example: Story = {
   globals: { forcedColors: "none" },
   tags: ["beta-matrix"],

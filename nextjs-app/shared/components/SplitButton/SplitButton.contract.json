@@ -8,7 +8,35 @@
     "figma": null,
     "radixPrimitive": null,
     "element": "div",
-    "variants": {},
+    "variants": {
+        "variant": {
+            "values": [
+                "primary",
+                "secondary",
+                "tertiary"
+            ],
+            "default": "primary",
+            "propSourced": true
+        },
+        "surface": {
+            "values": [
+                "default",
+                "onDark",
+                "onBrand"
+            ],
+            "default": "default",
+            "propSourced": true
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+        }
+    },
     "slots": [
         "label",
         "options",
@@ -17,21 +45,170 @@
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Playground"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
-        "reducedMotion": false,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "keyboard": [
+            "Tab — both segments are focusable in sequence.",
+            "Enter / Space on the primary segment — fires onPrimaryClick.",
+            "Enter / Space / ArrowDown on the toggle — opens the menu and focuses the first enabled item.",
+            "ArrowDown / ArrowUp — move through enabled items (roving tabindex).",
+            "Home / End — jump to first / last enabled item.",
+            "ArrowRight — opens a submenu; ArrowLeft closes it.",
+            "Escape — closes the menu and returns focus to the toggle.",
+            "Tab inside the open menu is trapped and cycles items until Escape."
+        ],
+        "ariaRequirements": [
+            "Toggle carries aria-haspopup='menu', aria-expanded, aria-controls, and an accessible name (toggleLabel, default t('splitButton.moreOptions')).",
+            "Menu uses role='menu' with role='menuitem' buttons; submenu triggers add aria-haspopup and aria-expanded.",
+            "Option icons are decorative (aria-hidden); the option label is the announcement."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": false,
+        "reviewedNote": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). Forced-colors pass still pending, stays alpha."
     },
     "tokens": {
-        "colors": [],
-        "spacing": []
+        "colors": [
+            "--color-dark",
+            "--color-muted",
+            "--color-neutral-bg",
+            "--color-primary",
+            "--color-white"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-6",
+            "--space-internal-8"
+        ],
+        "radii": [
+            "--radius-sm",
+            "--radius-md"
+        ]
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
+    "displayName": "SplitButton",
+    "keywords": ["split button", "dropdown", "menu button", "secondary actions", "save as", "export", "combo action"],
+    "dense": "primary action + menu toggle for related actions; Button-matched variant/size/surface, collision-aware menu, nested submenus, roving-tabindex keyboard model",
+    "usage": {
+        "description": "SplitButton pairs one dominant action with a menu of close variants of that same action: Save with Save as / Save a copy, Export with format choices. Both segments share Button's weight, size, and surface so the pair reads as a single control.",
+        "bestPractices": [
+            { "guidance": true, "description": "Make the primary segment the safest, most common choice; the menu holds variants of it, not unrelated commands." },
+            { "guidance": true, "description": "Keep options parallel in wording (Save as, Save a copy, Save to cloud) so the menu scans as one family." },
+            { "guidance": true, "description": "Give every option an id; labels can be translated, ids anchor analytics and tests." },
+            { "guidance": true, "description": "Set usePortal when the trigger lives inside an overflow-hidden container, otherwise the menu clips." },
+            { "guidance": true, "description": "Provide toggleLabel when the menu is not generic more options, for example Choose export format." },
+            { "guidance": false, "description": "Do not use SplitButton as a general dropdown menu; if there is no dominant default action, use a plain menu trigger instead." },
+            { "guidance": false, "description": "Do not mix destructive options into a constructive menu; Delete does not belong under Save." },
+            { "guidance": false, "description": "Do not nest submenus more than one level; the component supports exactly one level by design." }
+        ],
+        "anatomy": [
+            { "name": "Primary action", "required": true, "description": "A full @dt/Button carrying label and onPrimaryClick; the default and most common choice." },
+            { "name": "Menu toggle", "required": true, "description": "The caret segment; opens the option menu, carries aria-haspopup/aria-expanded and the toggleLabel accessible name." },
+            { "name": "Menu", "required": true, "description": "role=menu list of options with roving tabindex, collision-aware placement, optional portal rendering." },
+            { "name": "Submenu", "required": false, "description": "One optional nested level per option via children; opens on hover, ArrowRight, or Enter." }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Save",
+            "variant": "primary",
+            "size": "md",
+            "options": [
+                { "id": "save-as", "label": "Save as", "icon": "pencil" },
+                { "id": "save-cloud", "label": "Save to cloud", "icon": "cloud-arrow-up" },
+                { "id": "save-copy", "label": "Save a copy", "icon": "copy" }
+            ]
+        }
+    },
+    "props": {
+        "label": {
+            "optional": false,
+            "type": "React.ReactNode"
+        },
+        "onPrimaryClick": {
+            "optional": true,
+            "type": "React.MouseEventHandler<HTMLButtonElement>"
+        },
+        "options": {
+            "optional": false,
+            "type": "SplitButtonOption[]",
+            "description": "Menu entries. Leaf options carry onSelect (sync or async); parent options carry children (one nested level) and cannot have onSelect — enforced by a discriminated union."
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "primary",
+                "secondary",
+                "tertiary"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "surface": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "onDark",
+                "onBrand"
+            ]
+        },
+        "rounded": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "tooltip": {
+            "optional": true,
+            "type": "string"
+        },
+        "accessibleName": {
+            "optional": true,
+            "type": "string"
+        },
+        "menuAlign": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "start",
+                "end"
+            ]
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "toggleLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "usePortal": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "General-purpose dropdown menus without a dominant default action.",
+        "Mixing destructive options into a constructive menu.",
+        "More than one submenu level."
+    ],
+    "prefersOver": [
+        "two adjacent Buttons for a primary action plus its variants"
+    ],
     "composesWith": [
         "Button",
         "Icon"
