@@ -100,7 +100,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   const textareaClassName = `${styles.input} ${error ? styles.error : ""} ${animateResize ? styles.animatedTextarea : ""}`;
 
   return (
-    <div className={styles["input-container"]}>
+    <div className={styles.inputContainer}>
       <Label
         htmlFor={label}
         required={!!error}
