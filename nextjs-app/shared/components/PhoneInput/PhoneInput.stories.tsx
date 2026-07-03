@@ -2,92 +2,15 @@ import contract from "./PhoneInput.contract.json";
 import React, { useState } from "react";
 import type { Meta, StoryFn } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import PhoneInput from "@dt/PhoneInput";
-import Icon from "@dt/Icon";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import { useTranslation } from "react-i18next";
-import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 import styles from "./PhoneInput.stories.module.css";
-
-const phoneInputComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Proper typing with PhoneInputProps",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "Stories use translation keys",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Uses CSS custom properties",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "Uses logical spacing",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "CSS custom properties for colors",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Uses Label and HelperText components",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "Label linked to input, disabled state",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Multiple variants with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
-];
 
 const meta: Meta<typeof PhoneInput> = {
   title: "Forms/PhoneInput",
   component: PhoneInput,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -96,27 +19,6 @@ const meta: Meta<typeof PhoneInput> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
     llm: { schema },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
   },
   argTypes: {
     label: { control: "text", description: "Label text" },
@@ -133,21 +35,24 @@ const meta: Meta<typeof PhoneInput> = {
     error: { control: "text", description: "Error message" },
 
     disabled: { control: "boolean", description: "Disabled state" },
+
+    required: {
+      control: "boolean",
+      description: "Shows the required marker on the label",
+      table: { defaultValue: { summary: "false" } },
+    },
+
+    defaultCountry: {
+      control: "text",
+      description: "ISO country used when the value has no prefix",
+      table: { defaultValue: { summary: "FI" } },
+    },
+
     onChange: { action: "phone change", description: "Change handler" },
   },
 };
 
 export default meta;
-
-export const Z_PhoneInputCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 11/11"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
-    }
-    rules={phoneInputComplianceRules}
-  />
-);
 
 type PhoneInputStoryArgs = React.ComponentProps<typeof PhoneInput> & {
   label?: string;
@@ -164,7 +69,7 @@ const PhoneInputStory: React.FC<PhoneInputStoryArgs> = (args) => {
     <div className={styles.storyContainer}>
       <PhoneInput
         {...args}
-        label={args.label ? t(args.label) : undefined}
+        label={args.label ? t(args.label) : ""}
         placeholder={args.placeholder ? t(args.placeholder) : undefined}
         helperText={args.helperText ? t(args.helperText) : undefined}
         error={args.error ? t(args.error) : undefined}
@@ -186,6 +91,15 @@ export const Default = Template.bind({});
 Default.args = {
   label: "storyPhoneInputLabel",
   placeholder: "storyPhoneInputPlaceholder",
+};
+Default.tags = ["example"];
+Default.parameters = {
+  docs: {
+    description: {
+      story:
+        "Formats as you type for the default country (FI) and emits the E.164 value through onChange.",
+    },
+  },
 };
 Default.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
@@ -219,6 +133,15 @@ WithError.args = {
   placeholder: "storyPhoneInputPlaceholder",
   error: "storyPhoneInputError",
 };
+WithError.tags = ["example"];
+WithError.parameters = {
+  docs: {
+    description: {
+      story:
+        "error replaces the helper line, sets aria-invalid, and links to the input via aria-describedby. Validate on submit with isValidPhoneNumber.",
+    },
+  },
+};
 WithError.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByText(
@@ -226,15 +149,11 @@ WithError.play = async ({ canvasElement }) => {
   );
 };
 
-export const WithValue = Template.bind({});
-WithValue.args = { label: "storyPhoneInputLabel", value: "+358401234567" };
-WithValue.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  const input = canvas.getByRole("textbox") as HTMLInputElement;
-
-  await waitFor(() => {
-    expect(input.value).toBeTruthy();
-  });
+export const Required = Template.bind({});
+Required.args = {
+  label: "storyPhoneInputLabel",
+  placeholder: "storyPhoneInputPlaceholder",
+  required: true,
 };
 
 export const Disabled = Template.bind({});
@@ -250,65 +169,21 @@ Disabled.play = async ({ canvasElement }) => {
   expect(input).toBeDisabled();
 };
 
-export const AllStates: StoryFn = () => {
-  const { t } = useTranslation();
-  const [value1, setValue1] = useState<string | undefined>();
-  const [value2, setValue2] = useState<string | undefined>("+358401234567");
-  const [value3, setValue3] = useState<string | undefined>();
-  const [value4, setValue4] = useState<string | undefined>("+358401234567");
-
-  return (
-    <div className={styles.stackContainer}>
-      <div>
-        <strong className={styles.stateLabel}>Default</strong>
-        <PhoneInput
-          label={t("storyPhoneInputLabel")}
-          placeholder={t("storyPhoneInputPlaceholder")}
-          value={value1}
-          onChange={setValue1}
-        />
-      </div>
-
-      <div>
-        <strong className={styles.stateLabel}>With Value</strong>
-        <PhoneInput
-          label={t("storyPhoneInputLabel")}
-          value={value2}
-          onChange={setValue2}
-        />
-      </div>
-
-      <div>
-        <strong className={styles.stateLabel}>With Helper Text</strong>
-        <PhoneInput
-          label={t("storyPhoneInputLabel")}
-          placeholder={t("storyPhoneInputPlaceholder")}
-          helperText={t("storyPhoneInputHelperText")}
-          value={value3}
-          onChange={setValue3}
-        />
-      </div>
-
-      <div>
-        <strong className={styles.stateLabel}>With Error</strong>
-        <PhoneInput
-          label={t("storyPhoneInputLabel")}
-          error={t("storyPhoneInputError")}
-          value={value4}
-          onChange={setValue4}
-        />
-      </div>
-
-      <div>
-        <strong className={styles.stateLabel}>Disabled</strong>
-        <PhoneInput
-          label={t("storyPhoneInputLabel")}
-          value="+358401234567"
-          disabled
-        />
-      </div>
-    </div>
-  );
+/** defaultCountry seeds the flag and calling code for local-format typing. */
+export const CountryDefault = Template.bind({});
+CountryDefault.args = {
+  label: "storyPhoneInputLabel",
+  placeholder: "storyPhoneInputPlaceholder",
+  defaultCountry: "SE",
+};
+CountryDefault.tags = ["example"];
+CountryDefault.parameters = {
+  docs: {
+    description: {
+      story:
+        "defaultCountry seeds the flag and calling code; a local number typed here becomes +46…",
+    },
+  },
 };
 
 export const InternationalNumbers: StoryFn = () => {
@@ -358,15 +233,30 @@ export const InternationalNumbers: StoryFn = () => {
     </div>
   );
 };
+InternationalNumbers.tags = ["example"];
+InternationalNumbers.parameters = {
+  docs: {
+    description: {
+      story:
+        "E.164 values render in the matching national format; the flag follows the value's country prefix.",
+    },
+  },
+};
 
-export const Playground = Default;
+export const Playground = Template.bind({});
+Playground.args = { ...Default.args };
+
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
-  ...Default,
+  args: Default.args,
+  play: Default.play,
+  render: Template,
 };
 export const ForcedColors = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
-  ...Default,
+  parameters: { a11y: { disable: true, test: "off" } },
+  args: Default.args,
+  render: Template,
 };

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useId } from "react";
 import PhoneInputLib from "react-phone-number-input";
-import type { Value } from "react-phone-number-input";
+import type { Country, Value } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import styles from "./PhoneInput.module.css";
 import Label from "@dt/Label/Label";
@@ -13,12 +13,14 @@ export interface PhoneInputProps {
   helperText?: string;
   placeholder?: string;
   disabled?: boolean;
+  required?: boolean;
+  id?: string;
+  /** ISO 3166-1 alpha-2 code used when the value has no country prefix. @default "FI" */
+  defaultCountry?: Country;
   onChange?: (value: string | undefined) => void;
 }
 
-/**
- * PhoneInput component.
- */
+/** International phone field: country selector + E.164-formatted input with field chrome. */
 export const PhoneInput: React.FC<PhoneInputProps> = ({
   label,
   value,
@@ -26,36 +28,52 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
   helperText,
   placeholder,
   disabled = false,
+  required = false,
+  id: providedId,
+  defaultCountry = "FI",
   onChange,
 }) => {
+  const generatedId = useId();
+  const fieldId = providedId ?? `phone-input-${generatedId}`;
+  const errorId = `${fieldId}-error`;
+  const helperId = `${fieldId}-helper`;
+  const describedBy = [error ? errorId : null, helperText && !error ? helperId : null]
+    .filter(Boolean)
+    .join(" ");
+
   const handleChange = (phoneValue: Value) => {
     onChange?.(phoneValue);
   };
 
   return (
     <div className={styles["phone-input-container"]}>
-      <Label
-        htmlFor={label}
-        required={!!error}
-        tooltipText={error}
-        disabled={disabled}
-      >
+      <Label htmlFor={fieldId} required={required} disabled={disabled}>
         {label}
       </Label>
       <PhoneInputLib
-        id={label}
+        id={fieldId}
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
         disabled={disabled}
+        required={required}
+        aria-describedby={describedBy || undefined}
+        aria-invalid={error ? true : undefined}
         className={`${styles["phone-input"]} ${error ? styles.error : ""}`}
         international
-        defaultCountry="FI"
+        defaultCountry={defaultCountry}
       />
-      {error && <span className={styles["errorMessage"]}>{error}</span>}
-      {helperText && !error && <HelperText>{helperText}</HelperText>}
+      {error ? (
+        <HelperText id={errorId} state="error">
+          {error}
+        </HelperText>
+      ) : helperText ? (
+        <HelperText id={helperId}>{helperText}</HelperText>
+      ) : null}
     </div>
   );
 };
+
+PhoneInput.displayName = "PhoneInput";
 
 export default PhoneInput;

@@ -3,7 +3,7 @@ import { Children, isValidElement, type ReactNode } from "react";
 export interface ComboboxOption {
   value: string;
   label: string;
-  isDisabled?: boolean;
+  disabled?: boolean;
 }
 
 function extractOptionLabel(node: ReactNode): string {
@@ -32,7 +32,7 @@ export function optionsFromSelectChildren(children: ReactNode): ComboboxOption[]
     options.push({
       value: String(props.value ?? ""),
       label: extractOptionLabel(props.children),
-      isDisabled: props.disabled,
+      disabled: props.disabled,
     });
   });
 

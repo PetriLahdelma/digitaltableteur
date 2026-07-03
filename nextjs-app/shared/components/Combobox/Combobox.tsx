@@ -19,7 +19,7 @@ import { useComboboxDropdown } from "./useComboboxDropdown";
 export interface ComboboxOption {
   value: string;
   label: string;
-  isDisabled?: boolean;
+  disabled?: boolean;
 }
 
 export interface ComboboxProps {
@@ -32,7 +32,7 @@ export interface ComboboxProps {
   helperText?: string;
   error?: string;
   required?: boolean;
-  isDisabled?: boolean;
+  disabled?: boolean;
   className?: string;
 }
 
@@ -49,7 +49,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
       helperText,
       error,
       required = false,
-      isDisabled = false,
+      disabled = false,
       className,
     },
     ref,
@@ -79,14 +79,14 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
     }, []);
 
     const openDropdown = useCallback(() => {
-      if (isDisabled) return;
+      if (disabled) return;
       setOpen(true);
-    }, [isDisabled]);
+    }, [disabled]);
 
     const toggleDropdown = useCallback(() => {
-      if (isDisabled) return;
+      if (disabled) return;
       setOpen((current) => !current);
-    }, [isDisabled]);
+    }, [disabled]);
 
     const selectOption = useCallback(
       (optionValue: string) => {
@@ -121,7 +121,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
     const handleTriggerKeyDown = (
       event: React.KeyboardEvent<HTMLButtonElement>,
     ) => {
-      if (isDisabled) return;
+      if (disabled) return;
 
       switch (event.key) {
         case "ArrowDown": {
@@ -154,7 +154,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
             return;
           }
           const option = options[highlightedIndex];
-          if (option && !option.isDisabled) {
+          if (option && !option.disabled) {
             selectOption(option.value);
           }
           break;
@@ -199,7 +199,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
         ) : (
           options.map((option, index) => {
             const selected = value === option.value;
-            const optionDisabled = isDisabled || option.isDisabled;
+            const optionDisabled = disabled || option.disabled;
             const optionId = `${fieldId}-option-${option.value}`;
 
             return (
@@ -257,7 +257,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
               styles.control,
               open && styles.controlOpen,
               error && styles.controlError,
-              isDisabled && styles.disabled,
+              disabled && styles.disabled,
             )}
             data-state={open ? "open" : "closed"}
           >
@@ -267,7 +267,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
               type="button"
               role="combobox"
               className={styles.trigger}
-              disabled={isDisabled}
+              disabled={disabled}
               aria-labelledby={`${fieldId}-label`}
               aria-describedby={describedBy || undefined}
               aria-invalid={error ? true : undefined}
@@ -295,7 +295,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
               className={styles.chevronButton}
               aria-label={t("multiComboboxToggleOptions", "Toggle options")}
               aria-expanded={open}
-              disabled={isDisabled}
+              disabled={disabled}
               tabIndex={-1}
               onMouseDown={(event) => {
                 event.preventDefault();

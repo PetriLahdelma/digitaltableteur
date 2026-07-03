@@ -28,7 +28,7 @@ function ComboboxDemo(props: Partial<React.ComponentProps<typeof Combobox>>) {
 const meta = {
   title: "Forms/Combobox",
   component: Combobox,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
@@ -77,7 +77,7 @@ const meta = {
       description: "Marks the field required",
       table: { category: "Validation" },
     },
-    isDisabled: {
+    disabled: {
       control: "boolean",
       description: "Disables the control",
       table: { category: "State" },
@@ -109,9 +109,17 @@ export const Playground: Story = {
 };
 
 export const Example: Story = {
-  tags: ["beta-matrix"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "none" },
-  parameters: { controls: { disable: true } },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "A preselected value with helper text; the helper is linked to the trigger via aria-describedby.",
+      },
+    },
+  },
   render: () => (
     <ComboboxDemo
       value="1-2-months"
@@ -120,9 +128,83 @@ export const Example: Story = {
   ),
 };
 
+export const WithError: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "error replaces the helper line, colors the control, and sets aria-invalid on the trigger.",
+      },
+    },
+  },
+  render: () => <ComboboxDemo required error="Pick a timeline to continue." />,
+};
+
+export const Disabled: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "disabled turns off the whole control; individual options can also carry their own disabled flag.",
+      },
+    },
+  },
+  render: () => (
+    <ComboboxDemo
+      value="asap"
+      disabled
+      helperText="Timeline is locked for this request."
+    />
+  ),
+};
+
+/** Options loaded after a delay — the pattern for API-backed lists. */
+export const AsyncOptions: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Load options into state and swap the array in; while empty, the open listbox shows the localized no-results row.",
+      },
+    },
+  },
+  render: function AsyncOptionsStory() {
+    const [options, setOptions] = useState<ComboboxOption[]>([]);
+    const [value, setValue] = useState("");
+    React.useEffect(() => {
+      const timer = setTimeout(() => setOptions(OPTIONS), 1200);
+      return () => clearTimeout(timer);
+    }, []);
+    return (
+      <Combobox
+        label="Timeline"
+        options={options}
+        placeholder={options.length === 0 ? "Loading…" : "Select…"}
+        value={value}
+        onValueChange={setValue}
+        helperText="Options arrive from the network after ~1 second."
+      />
+    );
+  },
+};
+
 /** Opens with ArrowDown, moves the highlight, selects with Enter — keyboard-only. */
 export const KeyboardSelection: Story = {
-  tags: ["beta-matrix"],
+  tags: ["beta-matrix", "example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The full APG keyboard model, driven by the play function: ArrowDown opens, arrows move aria-activedescendant, Enter selects, Escape closes.",
+      },
+    },
+  },
   render: () => <ComboboxDemo />,
   play: async ({ canvasElement }) => {
     const trigger = within(canvasElement).getByRole("combobox");

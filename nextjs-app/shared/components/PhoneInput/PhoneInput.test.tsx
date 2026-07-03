@@ -73,11 +73,41 @@ describe("PhoneInput", () => {
     expect(input).toHaveAttribute("id");
   });
 
-  it("shows label as required when error is present", () => {
-    render(<PhoneInput label="Phone" error="Required" />);
-    // Label component adds required styling when error is present
-    const label = screen.getByText("Phone");
-    expect(label).toBeInTheDocument();
+  it("shows the required marker only for the required prop, not for errors", () => {
+    const { rerender } = render(<PhoneInput label="Phone" required />);
+    expect(screen.getByText("*")).toBeInTheDocument();
+
+    rerender(<PhoneInput label="Phone" error="Invalid" />);
+    expect(screen.queryByText("*")).not.toBeInTheDocument();
+  });
+
+  it("links the error to the input via aria-describedby and sets aria-invalid", () => {
+    render(<PhoneInput label="Phone" error="Invalid phone number" />);
+    const input = screen.getByRole("textbox");
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    const describedBy = input.getAttribute("aria-describedby");
+    expect(describedBy).toBeTruthy();
+    const errorNode = document.getElementById(describedBy as string);
+    expect(errorNode).toHaveTextContent("Invalid phone number");
+  });
+
+  it("links helper text via aria-describedby when there is no error", () => {
+    render(<PhoneInput label="Phone" helperText="Include country code" />);
+    const input = screen.getByRole("textbox");
+    const describedBy = input.getAttribute("aria-describedby");
+    expect(describedBy).toBeTruthy();
+    const helperNode = document.getElementById(describedBy as string);
+    expect(helperNode).toHaveTextContent("Include country code");
+  });
+
+  it("respects the defaultCountry prop", async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(
+      <PhoneInput label="Phone" defaultCountry="SE" onChange={onChange} />,
+    );
+    await user.type(screen.getByRole("textbox"), "701234567");
+    expect(onChange).toHaveBeenLastCalledWith("+46701234567");
   });
 
   it("uses FI as default country", () => {

@@ -41,6 +41,10 @@ const PROVEN = [
   { name: "Radio", docsId: "forms-radio--docs" },
   { name: "RadioGroup", docsId: "forms-radiogroup--docs" },
   { name: "Switch", docsId: "forms-switch--docs" },
+  { name: "Combobox", docsId: "forms-combobox--docs" },
+  { name: "MultiCombobox", docsId: "forms-multicombobox--docs" },
+  { name: "PhoneInput", docsId: "forms-phoneinput--docs" },
+  { name: "FileUpload", docsId: "forms-fileupload--docs" },
   { name: "Card", docsId: "layout-card--docs" },
 ];
 

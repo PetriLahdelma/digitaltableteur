@@ -41,8 +41,27 @@
         "forcedColorsVerified": true
     },
     "tokens": {
-        "colors": [],
-        "spacing": []
+        "colors": [
+            "--color-border",
+            "--color-error",
+            "--color-muted",
+            "--color-primary",
+            "--color-surface",
+            "--color-text",
+            "--focus-ring-color"
+        ],
+        "spacing": [
+            "--space-internal-2",
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-32"
+        ],
+        "typography": [
+            "--font-body",
+            "--font-size-text"
+        ]
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
@@ -89,7 +108,7 @@
             "optional": true,
             "type": "boolean"
         },
-        "isDisabled": {
+        "disabled": {
             "optional": true,
             "type": "boolean"
         },
@@ -102,8 +121,107 @@
         "use for single-select — use `Combobox` instead."
     ],
     "composesWith": [
-        "Button",
-        "FileUpload",
-        "Checkbox"
-    ]
+        "Combobox",
+        "Badge",
+        "HelperText",
+        "Icon",
+        "ContactFormEditorial"
+    ],
+    "displayName": "MultiCombobox",
+    "keywords": [
+        "multi select",
+        "combobox",
+        "tags input",
+        "chips",
+        "tokenized selection",
+        "autocomplete",
+        "filter"
+    ],
+    "dense": "controlled multi-select combobox; selections render as removable Badge chips in the field, type-to-filter input, portaled listbox, Backspace removes the last chip; onValueChange(string[])",
+    "usage": {
+        "description": "MultiCombobox picks several options from a list: chosen values render as removable Badge chips inside the field, and the inline input filters the dropdown as you type. It is controlled (value: string[], onValueChange) and owns its label/error/helperText chrome. It shares field styling and dropdown mechanics with Combobox.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Always control it: keep the selected values in state and hand back the full next array from onValueChange."
+            },
+            {
+                "guidance": true,
+                "description": "Keep option labels short; each becomes a chip and long chips wrap the field awkwardly."
+            },
+            {
+                "guidance": true,
+                "description": "Tell users about Backspace-to-remove in helperText for keyboard-heavy audiences; it deletes the last chip when the filter is empty."
+            },
+            {
+                "guidance": true,
+                "description": "Cap the practical number of selections in your form validation and say so in helperText; the field grows with every chip."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it for exactly-one choice; Combobox and Select stay clearer and cheaper."
+            },
+            {
+                "guidance": false,
+                "description": "Do not repurpose the chips as free-form tag creation; values must exist in options (no create-on-enter)."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Label",
+                "required": true,
+                "description": "Visible label tied to the filter input via aria-labelledby."
+            },
+            {
+                "name": "Chips",
+                "required": false,
+                "description": "One removable Badge per selected value, rendered inside the control; remove buttons are disabled with the field."
+            },
+            {
+                "name": "Filter input",
+                "required": true,
+                "description": "role=combobox text input with aria-autocomplete=list; typing filters options, Backspace on empty removes the last chip."
+            },
+            {
+                "name": "Chevron",
+                "required": true,
+                "description": "Toggle button with the caret icon; opens or closes the listbox without stealing focus."
+            },
+            {
+                "name": "Listbox",
+                "required": true,
+                "description": "Portaled role=listbox with aria-multiselectable; selected options show a check icon, empty filter state is localized."
+            },
+            {
+                "name": "HelperText",
+                "required": false,
+                "description": "Helper or error line; error wins and sets aria-invalid plus aria-describedby."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Services",
+            "placeholder": "Pick services…",
+            "value": [],
+            "options": [
+                {
+                    "value": "design-systems",
+                    "label": "Design systems"
+                },
+                {
+                    "value": "ux-audit",
+                    "label": "UX audit"
+                },
+                {
+                    "value": "frontend",
+                    "label": "Frontend"
+                },
+                {
+                    "value": "workshops",
+                    "label": "Workshops"
+                }
+            ]
+        }
+    }
 }

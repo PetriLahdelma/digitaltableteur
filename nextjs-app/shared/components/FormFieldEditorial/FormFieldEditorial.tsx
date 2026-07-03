@@ -132,7 +132,7 @@ export const FormFieldEditorial = forwardRef<
         }}
         error={error}
         required={required}
-        isDisabled={disabled}
+        disabled={disabled}
         className={className}
       />
     );

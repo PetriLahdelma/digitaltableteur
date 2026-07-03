@@ -879,6 +879,7 @@
   "badgeRemove": "Remove badge",
   "multiComboboxNoResults": "No matching options",
   "multiComboboxToggleOptions": "Toggle options",
+  "fileUploadSizeError": "File is too large. Max {{maxSize}} MB. File removed.",
   "badgePrimary": "Primary",
   "badgeSecondary": "Secondary",
   "badgeSuccess": "Success",

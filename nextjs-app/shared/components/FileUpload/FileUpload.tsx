@@ -1,4 +1,5 @@
 import React, { useEffect, useId, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import fieldStyles from "../Combobox/ComboboxField.module.css";
 import styles from "./FileUpload.module.css";
@@ -53,6 +54,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
   appearance = "default",
   className,
 }) => {
+  const { t } = useTranslation();
   const hiddenInputRef = useRef<HTMLInputElement>(null);
   const fieldId = useId();
   const helperId = useId();
@@ -88,7 +90,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
       const maxSizeMB = (maxSizeInBytes / (1024 * 1024)).toFixed(1);
       const fallback =
         sizeErrorMessage ??
-        `File is too large. Max ${maxSizeMB} MB. File removed.`;
+        t("fileUploadSizeError", "File is too large. Max {{maxSize}} MB. File removed.", {
+          maxSize: maxSizeMB,
+        });
       setInternalError(fallback);
       event.target.value = "";
       setSelectedFile(null);
@@ -245,5 +249,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     </div>
   );
 };
+
+FileUpload.displayName = "FileUpload";
 
 export default FileUpload;
