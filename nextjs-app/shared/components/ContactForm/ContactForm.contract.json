@@ -60,6 +60,7 @@
         "TextInput",
         "Button",
         "Text",
+        "TextArea",
         "CheckboxGroup"
     ]
 }

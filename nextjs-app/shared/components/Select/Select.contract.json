@@ -115,9 +115,9 @@
     "composesWith": [
         "TextInput",
         "Button",
+        "CheckboxGroup",
         "Modal",
-        "FileUpload",
-        "PhoneInput",
-        "CheckboxGroup"
+        "Toast",
+        "TextArea"
     ]
 }

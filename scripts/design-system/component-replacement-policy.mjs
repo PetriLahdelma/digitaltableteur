@@ -35,15 +35,17 @@ export const REPLACEMENT_FOR = {
   Grid: ["manual CSS grid with arbitrary gap literals"],
   Container: ["max-width div without tokens"],
   FormField: ["label + input wired manually"],
-  Inputs: ["raw <input> without design-system field shell"],
+  TextInput: ["raw <input> without design-system field shell"],
 };
 
 /** @type {Record<string, string[]>} */
 export const COMPOSES_WITH = {
   AlertBanner: ["Button", "Icon"],
-  ContactForm: ["FormField", "Inputs", "Button", "Text"],
-  ChatWidget: ["Button", "Text", "Inputs", "DonnyAvatar"],
-  FormField: ["Label", "Inputs", "HelperText"],
+  ContactForm: ["FormField", "TextInput", "Button", "Text"],
+  ChatWidget: ["Button", "Text", "TextInput", "DonnyAvatar"],
+  // Canonical TextInput self-labels and must not sit inside FormField;
+  // Checkbox is the sanctioned wrapped control (see FormField contract).
+  FormField: ["Label", "Checkbox", "HelperText"],
   Card: ["Title", "Text", "Button"],
   Modal: ["Button", "Title", "Text"],
   CookieConsent: ["Button", "Text"],

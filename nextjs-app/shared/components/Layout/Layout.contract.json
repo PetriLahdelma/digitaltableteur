@@ -49,7 +49,9 @@
         "Use as a generic 'two-column with sidebar' wrapper — that is what a section pattern would be."
     ],
     "composesWith": [
-        "Divider",
-        "Link"
+        "Link",
+        "Checkbox",
+        "TextInput",
+        "TextArea"
     ]
 }

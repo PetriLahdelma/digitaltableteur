@@ -103,6 +103,7 @@
     ],
     "composesWith": [
         "Button",
-        "FileUpload"
+        "FileUpload",
+        "Checkbox"
     ]
 }

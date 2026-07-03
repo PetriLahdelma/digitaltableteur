@@ -335,11 +335,11 @@
         "Link for in-copy navigation"
     ],
     "composesWith": [
-        "Title",
         "Text",
-        "TextInput",
+        "Title",
         "Icon",
-        "Modal",
-        "CheckboxGroup"
+        "TextInput",
+        "CheckboxGroup",
+        "Modal"
     ]
 }
