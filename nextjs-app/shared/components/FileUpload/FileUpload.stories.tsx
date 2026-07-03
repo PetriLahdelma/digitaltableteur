@@ -1,81 +1,14 @@
 import contract from "./FileUpload.contract.json";
 import React, { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
-import Icon from "@dt/Icon";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import FileUpload from "@dt/FileUpload";
-import { userEvent, waitFor, within } from "storybook/test";
-import CodeSnippet from "@dt/CodeSnippet";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import schema from "./schema.json";
-const fileUploadComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Proper typing",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "Props accept localized strings",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles in component",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Uses CSS variables",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "CSS uses logical properties",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "CSS custom properties",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Uses Button, HelperText",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "Proper file input semantics",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Stories with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
-];
 
 export default {
   title: "Forms/FileUpload",
   component: FileUpload,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -151,16 +84,6 @@ const Template: StoryFn<typeof FileUpload> = (
   );
 };
 
-export const Z_FileUploadCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 11/11"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
-    }
-    rules={fileUploadComplianceRules}
-  />
-);
-
 export const Default = Template.bind({});
 Default.args = {
   label: "Attachment (optional)",
@@ -172,12 +95,110 @@ Default.args = {
   maxSizeInBytes: 5 * 1024 * 1024,
   sizeErrorMessage: "File exceeds the 5 MB limit.",
 };
+Default.tags = ["example"];
+Default.parameters = {
+  docs: {
+    description: {
+      story:
+        "The full recipe: accept filter, size cap, helper stating both, and a clear label so a wrong pick is undoable.",
+    },
+  },
+};
 Default.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
   // Test that upload button is present and clickable
   const uploadButton = canvas.getByRole("button", { name: /choose file/i });
   await userEvent.click(uploadButton);
+};
+
+/** Picks a file through the hidden input, then clears it. */
+export const SelectAndClear = Template.bind({});
+SelectAndClear.args = { ...Default.args };
+SelectAndClear.tags = ["example"];
+SelectAndClear.parameters = {
+  docs: {
+    description: {
+      story:
+        "After a pick, the readonly field shows \"name (size)\" and the Clear button appears; clearing emits onFileChange(null).",
+    },
+  },
+};
+SelectAndClear.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const hiddenInput =
+    canvasElement.querySelector<HTMLInputElement>("input[type='file']");
+  if (!hiddenInput) throw new Error("hidden file input not found");
+
+  const file = new File(["hello"], "brief.pdf", { type: "application/pdf" });
+  await userEvent.upload(hiddenInput, file);
+
+  // The readonly summary field (not the hidden file input) shows "name (size)".
+  const summary = canvas.getByRole("textbox") as HTMLInputElement;
+  await waitFor(() => expect(summary.value).toMatch(/brief\.pdf/));
+
+  const clearButton = await canvas.findByRole("button", {
+    name: /remove file/i,
+  });
+  await userEvent.click(clearButton);
+  await waitFor(() => expect(summary.value).not.toMatch(/brief\.pdf/));
+};
+
+/** A file over maxSizeInBytes is rejected and removed with an error. */
+export const SizeRejection = Template.bind({});
+SizeRejection.args = {
+  ...Default.args,
+  maxSizeInBytes: 10,
+  sizeErrorMessage: "File exceeds the 10 byte demo limit.",
+};
+SizeRejection.tags = ["example"];
+SizeRejection.parameters = {
+  docs: {
+    description: {
+      story:
+        "Rejection state: an oversized pick is dropped, the input resets, and sizeErrorMessage replaces the helper until the next pick.",
+    },
+  },
+};
+SizeRejection.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const hiddenInput =
+    canvasElement.querySelector<HTMLInputElement>("input[type='file']");
+  if (!hiddenInput) throw new Error("hidden file input not found");
+
+  const bigFile = new File(["x".repeat(64)], "too-big.pdf", {
+    type: "application/pdf",
+  });
+  await userEvent.upload(hiddenInput, bigFile);
+
+  await waitFor(() =>
+    expect(
+      canvas.getByText(/exceeds the 10 byte demo limit/i),
+    ).toBeInTheDocument(),
+  );
+  const summary = canvas.getByRole("textbox") as HTMLInputElement;
+  expect(summary.value).not.toMatch(/too-big\.pdf/);
+};
+
+export const Editorial = Template.bind({});
+Editorial.args = {
+  ...Default.args,
+  appearance: "editorial",
+};
+Editorial.tags = ["example"];
+Editorial.parameters = {
+  docs: {
+    description: {
+      story:
+        "appearance=editorial swaps the TextInput+Button pair for the Combobox-style field used on editorial forms.",
+    },
+  },
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...Default.args,
+  disabled: true,
 };
 
 export const Playground: Story = {

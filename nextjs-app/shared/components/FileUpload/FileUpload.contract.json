@@ -34,8 +34,18 @@
         "forcedColorsVerified": true
     },
     "tokens": {
-        "colors": [],
-        "spacing": []
+        "colors": [
+            "--color-border",
+            "--color-primary",
+            "--focus-ring-color"
+        ],
+        "spacing": [
+            "--space-internal-12",
+            "--space-internal-16"
+        ],
+        "typography": [
+            "--font-body"
+        ]
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
@@ -134,11 +144,91 @@
         "skip the Clear button. Users who picked the wrong file have"
     ],
     "composesWith": [
-        "Button",
         "TextInput",
-        "CheckboxGroup",
-        "Modal",
-        "Toast",
-        "TextArea"
-    ]
+        "Button",
+        "HelperText",
+        "ContactForm",
+        "ContactFormEditorial"
+    ],
+    "displayName": "FileUpload",
+    "keywords": [
+        "file",
+        "upload",
+        "attachment",
+        "browse",
+        "file picker",
+        "max size",
+        "clear"
+    ],
+    "dense": "single-file picker: readonly summary + Browse/Clear over a hidden input; accept filter, maxSizeInBytes rejection (localized), default/editorial looks; onFileChange(File | null)",
+    "usage": {
+        "description": "FileUpload is the single-file picker: a readonly summary field showing \"name (size)\" plus Browse and Clear buttons driving a hidden native input. It enforces maxSizeInBytes client-side (rejects, clears, and shows a localized error) and filters the picker via accept. Two appearances: default (TextInput + Button) and editorial (Combobox-style field for editorial forms).",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Always set accept and maxSizeInBytes; a picker without limits fails at the server instead of at the field."
+            },
+            {
+                "guidance": true,
+                "description": "Pass clearButtonLabel so users can undo a wrong pick without re-opening the OS dialog."
+            },
+            {
+                "guidance": true,
+                "description": "State the accepted formats and size cap in helperText; the accept filter is invisible until the dialog opens."
+            },
+            {
+                "guidance": true,
+                "description": "Treat onFileChange(null) as \"cleared\": reset your form state and any pending upload."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use value to represent an already-uploaded server file; it only mirrors a local File object."
+            },
+            {
+                "guidance": false,
+                "description": "Do not rely on the size check as security; it is UX-only and must be re-validated server-side."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it for multi-file needs; it holds exactly one file (last pick wins)."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Hidden input",
+                "required": true,
+                "description": "The native type=file input (aria-hidden, tabindex -1) that actually opens the OS picker and holds accept."
+            },
+            {
+                "name": "Summary field",
+                "required": true,
+                "description": "Readonly TextInput (default) or Combobox-style trigger (editorial) showing \"name (size)\" or the placeholder; clicking opens the picker."
+            },
+            {
+                "name": "Browse button",
+                "required": true,
+                "description": "Secondary @dt/Button (or editorial text button) labelled by uploadButtonLabel."
+            },
+            {
+                "name": "Clear button",
+                "required": false,
+                "description": "Appears once a file is chosen and clearButtonLabel is set; resets the input and emits onFileChange(null)."
+            },
+            {
+                "name": "HelperText",
+                "required": false,
+                "description": "Helper or error line; size-rejection errors replace helper text until the next pick."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Attachment",
+            "placeholder": "No file selected",
+            "uploadButtonLabel": "Browse…",
+            "clearButtonLabel": "Clear",
+            "accept": ".pdf,.png,.jpg",
+            "maxSizeInBytes": 5242880
+        }
+    }
 }

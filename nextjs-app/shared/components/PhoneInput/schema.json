@@ -5,19 +5,176 @@
     "type": "input",
     "description": "International phone number input with country selector and validation (react-phone-number-input).",
     "source": "nextjs-app/shared/components/PhoneInput/PhoneInput.tsx",
-    "owners": ["design", "engineering"]
+    "owners": [
+      "design",
+      "engineering"
+    ]
   },
-  "anatomy": {"container": "phone input container", "parts": [{"id": "label", "label": "input label", "role": "label", "description": "Label with optional required indicator and tooltip."}, {"id": "phoneInput", "label": "phone input", "role": "textbox", "description": "react-phone-number-input component with country selector."}, {"id": "errorMessage", "label": "error message", "role": "text", "description": "Error message (span element)."}, {"id": "helperText", "label": "helper text", "role": "text", "description": "Guidance text (HelperText component)."}]},
-  "semanticRole": {"container": "div", "label": "label (Label component)", "phoneInput": "input (PhoneInputLib component)", "errorMessage": "span", "helperText": "p (HelperText component)"},
-  "layout": {"direction": "vertical (label → phoneInput → error/helperText)", "width": "fills parent", "height": "content-driven", "spacing": {"labelMargin": "0.5rem (bottom)", "errorMargin": "0.5rem (top)"}},
-  "visualStyle": {"surface": "flat", "border": "inherited from react-phone-number-input", "radius": "inherited from react-phone-number-input", "backgrounds": {"default": "var(--color-surface)", "error": "var(--color-surface)"}, "typography": {"fontFamily": "var(--font-text)", "fontSize": "1rem"}, "color": {"text": "var(--color-text-primary)", "errorBorder": "var(--color-semantic-error)", "errorText": "var(--color-semantic-error)"}},
-  "tokens": {"base": {"color": ["color.surface", "color.text.primary", "color.semantic.error"], "typography": ["font.text"]}},
-  "behavior": {"map": "International phone input using react-phone-number-input library. Country selector dropdown. Default country: FI (Finland). International format. Controlled component (value prop + onChange callback).", "stateModel": "controlled (value prop + onChange callback)", "rendering": "Always renders label and phoneInput. Error message renders if error prop provided. Helper text renders if helperText provided and no error.", "defaultState": "Empty input, default country FI."},
-  "interaction": {"logic": [{"trigger": "Country selection", "effect": "Updates country code prefix."}, {"trigger": "Phone input change", "effect": "Formats phone number, calls onChange(phoneValue)."}], "feedback": {"hover": "Inherited from react-phone-number-input.", "focus": "Inherited from react-phone-number-input.", "disabled": "Reduced opacity, no interaction."}},
-  "states": {"default": "Empty input.", "error": "Error message shown, error border.", "disabled": "No interaction."},
-  "constraints": {"layout": ["Country selector dropdown positioned by react-phone-number-input."], "content": ["Label required."], "nesting": ["Should be used in forms."]},
-  "accessibility": {"roles": {"label": "label", "phoneInput": "textbox (combobox for country selector)", "errorMessage": "text"}, "aria": {"label": "htmlFor={label} associates with input id={label}."}, "keyboard": "Standard input + dropdown keyboard interactions.", "focus": "Visible focus ring.", "contrast": "Text meets WCAG AA."},
-  "responsiveness": {"rules": "Input fills parent width.", "breakpoints": []},
-  "generativeRules": {"contextInputs": ["error", "disabled"], "rules": [{"if": {"error": "present"}, "then": {"border": "error style", "errorMessage": "visible"}}, {"if": {"disabled": true}, "then": {"interactive": false}}]},
-  "usageNotes": ["Uses react-phone-number-input library.", "Default country: FI (Finland).", "International format enabled.", "Controlled component (value prop + onChange callback).", "onChange receives E.164 format (e.g., +358401234567).", "Label has tooltip support (error message shown in tooltip).", "Error message shown as span (not HelperText component).", "Helper text shown if helperText provided and no error.", "react-phone-number-input/style.css imported for default styles.", "Label required indicator shown if error present."]
+  "anatomy": {
+    "container": "phone input container",
+    "parts": [
+      {
+        "id": "label",
+        "label": "input label",
+        "role": "label",
+        "description": "Label with optional required indicator."
+      },
+      {
+        "id": "phoneInput",
+        "label": "phone input",
+        "role": "textbox",
+        "description": "react-phone-number-input component with country selector."
+      },
+      {
+        "id": "errorMessage",
+        "label": "error message",
+        "role": "text",
+        "description": "Error message (HelperText component, state=error)."
+      },
+      {
+        "id": "helperText",
+        "label": "helper text",
+        "role": "text",
+        "description": "Guidance text (HelperText component)."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "div",
+    "label": "label (Label component)",
+    "phoneInput": "input (PhoneInputLib component)",
+    "errorMessage": "p (HelperText component)",
+    "helperText": "p (HelperText component)"
+  },
+  "layout": {
+    "direction": "vertical (label → phoneInput → error/helperText)",
+    "width": "fills parent",
+    "height": "content-driven",
+    "spacing": {
+      "labelMargin": "0.5rem (bottom)",
+      "errorMargin": "0.5rem (top)"
+    }
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "border": "inherited from react-phone-number-input",
+    "radius": "inherited from react-phone-number-input",
+    "backgrounds": {
+      "default": "var(--color-surface)",
+      "error": "var(--color-surface)"
+    },
+    "typography": {
+      "fontFamily": "var(--font-text)",
+      "fontSize": "1rem"
+    },
+    "color": {
+      "text": "var(--color-text-primary)",
+      "errorBorder": "var(--color-semantic-error)",
+      "errorText": "var(--color-semantic-error)"
+    }
+  },
+  "tokens": {
+    "base": {
+      "color": [
+        "color.surface",
+        "color.text.primary",
+        "color.semantic.error"
+      ],
+      "typography": [
+        "font.text"
+      ]
+    }
+  },
+  "behavior": {
+    "map": "International phone input using react-phone-number-input library. Country selector dropdown. Default country: FI (Finland). International format. Controlled component (value prop + onChange callback).",
+    "stateModel": "controlled (value prop + onChange callback)",
+    "rendering": "Always renders label and phoneInput. Error message renders if error prop provided. Helper text renders if helperText provided and no error.",
+    "defaultState": "Empty input, default country FI."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "Country selection",
+        "effect": "Updates country code prefix."
+      },
+      {
+        "trigger": "Phone input change",
+        "effect": "Formats phone number, calls onChange(phoneValue)."
+      }
+    ],
+    "feedback": {
+      "hover": "Inherited from react-phone-number-input.",
+      "focus": "Inherited from react-phone-number-input.",
+      "disabled": "Reduced opacity, no interaction."
+    }
+  },
+  "states": {
+    "default": "Empty input.",
+    "error": "Error message shown, error border.",
+    "disabled": "No interaction."
+  },
+  "constraints": {
+    "layout": [
+      "Country selector dropdown positioned by react-phone-number-input."
+    ],
+    "content": [
+      "Label required."
+    ],
+    "nesting": [
+      "Should be used in forms."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "label": "label",
+      "phoneInput": "textbox (combobox for country selector)",
+      "errorMessage": "text"
+    },
+    "aria": {
+      "label": "Label htmlFor points at a useId-generated input id (or the id prop). Error/helper text linked via aria-describedby; aria-invalid set when error is present."
+    },
+    "keyboard": "Standard input + dropdown keyboard interactions.",
+    "focus": "Visible focus ring.",
+    "contrast": "Text meets WCAG AA."
+  },
+  "responsiveness": {
+    "rules": "Input fills parent width.",
+    "breakpoints": []
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "error",
+      "disabled"
+    ],
+    "rules": [
+      {
+        "if": {
+          "error": "present"
+        },
+        "then": {
+          "border": "error style",
+          "errorMessage": "visible"
+        }
+      },
+      {
+        "if": {
+          "disabled": true
+        },
+        "then": {
+          "interactive": false
+        }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Uses react-phone-number-input library.",
+    "Default country: FI (Finland); override via defaultCountry prop.",
+    "International format enabled.",
+    "Controlled component (value prop + onChange callback).",
+    "onChange receives E.164 format (e.g., +358401234567), or undefined while incomplete.",
+    "Error message rendered via HelperText state=error and linked with aria-describedby.",
+    "Helper text shown if helperText provided and no error.",
+    "react-phone-number-input/style.css imported for default styles.",
+    "Label required indicator reflects the required prop."
+  ]
 }

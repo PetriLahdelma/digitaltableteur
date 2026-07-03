@@ -18,9 +18,9 @@ control is an Inputs + two Buttons that delegate to it.
   helper text live region linked through `aria-describedby`.
 
 ## Do / don't
-- Do: pass `maxSizeInBytes` with a translated `sizeErrorMessage`. The
-  English fallback ("File is too large. Max X MB. File removed.")
-  is for development only.
+- Do: pass `maxSizeInBytes`. Omitting `sizeErrorMessage` falls back to
+  the localized `fileUploadSizeError` i18n key (en/fi/sv) with the
+  max size interpolated; pass the prop only for custom copy.
 - Do: server-side validate the type. `accept` is a UI hint, not a
   security boundary.
 - Don't: render two FileUploads in the same form without unique

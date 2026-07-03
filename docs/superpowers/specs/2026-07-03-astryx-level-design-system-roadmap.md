@@ -191,10 +191,10 @@ Family-level prerequisite: the field-wrapper convention (4.1). All form docs sha
 | **CheckboxGroup** | beta, clean | D2/D3. Examples: Vertical/Horizontal, SelectAll-indeterminate, Validation. |
 | **Radio / RadioGroup** | beta, clean | Document as one family page. Examples: Basic, WithDescriptions, Card-style (if supported), Validation. |
 | **Switch** | beta, clean (platinum set) | D2/D3. bestPractice: switch = immediate effect, checkbox = submitted choice. Examples: Basic, WithLabel, Loading (if supported). |
-| **Combobox** | beta; no css | D8, D2/D3. Examples: Async-options, FreeSolo (if supported), Keyboard-nav walkthrough in a11y section. |
-| **MultiCombobox** | beta, clean | D2/D3. Examples: TokenizedSelection, MaxItems, Overflow. Cross-link Tag. |
-| **PhoneInput** | beta, clean | D2/D3. Examples: CountryDefault, Validation, i18n formats. |
-| **FileUpload** | beta, clean | D2/D3. Examples: DragDrop, Multiple, Progress, Rejection states. |
+| **Combobox** | **DONE (Phase 3 batch 3, 2026-07-03)** | isDisabled -> disabled clean break (component + option + optionsFromSelectChildren). Examples shipped: AsyncOptions, WithError, Disabled, KeyboardSelection (FreeSolo not supported — documented as a don't). |
+| **MultiCombobox** | **DONE (Phase 3 batch 3, 2026-07-03)** | isDisabled -> disabled clean break. Examples shipped: TokenizedSelection (Example), MaxItems, Overflow, KeyboardMultiSelect. Cross-links Badge (Tag deleted in batch 1). |
+| **PhoneInput** | **DONE (Phase 3 batch 3, 2026-07-03)** | TextInput-parity fixes: useId ids (was label-text ids), required marker reflects required prop (was error), error no longer leaks into label tooltip, error via HelperText + aria-describedby/aria-invalid (was bare span). + required/id/defaultCountry props. Examples: CountryDefault, WithError, InternationalNumbers. |
+| **FileUpload** | **DONE (Phase 3 batch 3, 2026-07-03)** | Size-error fallback localized (fileUploadSizeError en/fi/sv). Examples: SelectAndClear, SizeRejection, Editorial. DragDrop/Multiple/Progress not supported by the component — feature backlog, not doc scope. |
 | **FormField** | beta; no css | Wrapper convention owner (4.1). Anatomy is the key deliverable: Label / Control / HelperText / ErrorText slots. |
 | **FormGroup** | beta; no css, no test | D8 or dissolve into FormField docs. |
 | **Label** | stable, clean | D2/D3 light (atom). bestPractice: always tie htmlFor; never placeholder-as-label. |
