@@ -36,11 +36,11 @@ const VIEWPORTS = [
 /** Storybook story ids for migrated surfaces */
 const STORIES = [
   { id: "patterns-siteheader--example", label: "SiteHeader", region: "#storybook-root header, #storybook-root [role=banner]" },
-  { id: "atoms-iconbutton--example", label: "IconButton" },
-  { id: "molecules-formfield--example", label: "FormField" },
-  { id: "organisms-contactformeditorial--example", label: "ContactFormEditorial" },
-  { id: "atoms-button-surface-comparison--cta-bands", label: "ButtonSurfaceCtaBands" },
-  { id: "atoms-button-surface-comparison--home-hero-band", label: "ButtonSurfaceHomeHero" },
+  { id: "actions-iconbutton--example", label: "IconButton" },
+  { id: "forms-formfield--example", label: "FormField" },
+  { id: "site-contactformeditorial--example", label: "ContactFormEditorial" },
+  { id: "actions-button-surface-comparison--cta-bands", label: "ButtonSurfaceCtaBands" },
+  { id: "actions-button-surface-comparison--home-hero-band", label: "ButtonSurfaceHomeHero" },
 ];
 
 const PAGES = [

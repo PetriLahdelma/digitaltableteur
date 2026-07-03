@@ -12,13 +12,13 @@ type Story = StoryObj<typeof meta>;
 const BOARDS = [
   {
     title: "Button surfaces — CTA bands",
-    storyId: "atoms-button-surface-comparison--cta-bands",
+    storyId: "actions-button-surface-comparison--cta-bands",
     note: "Approved — surface onDark / onBrand / default on tinted bands.",
     status: "approved" as const,
   },
   {
     title: "Button surfaces — Home hero (light)",
-    storyId: "atoms-button-surface-comparison--home-hero-band",
+    storyId: "actions-button-surface-comparison--home-hero-band",
     note: "Approved — surface=default only; not onDark.",
     status: "approved" as const,
   },
