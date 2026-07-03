@@ -1,0 +1,9 @@
+.section {
+  margin-block: var(--space-layout-32) 0;
+}
+
+.heading {
+  margin-block-end: var(--space-internal-16);
+  padding-block-end: var(--space-internal-8);
+  border-block-end: 1px solid var(--color-border-light);
+}

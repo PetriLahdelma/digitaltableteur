@@ -1,0 +1,33 @@
+.header {
+  margin-block-end: var(--space-layout-24);
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-internal-12);
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+}
+
+.group {
+  color: var(--color-muted);
+  text-transform: lowercase;
+}
+
+.figma {
+  margin-inline-start: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-4);
+  white-space: nowrap;
+}
+
+.standfirst {
+  margin-block: var(--space-internal-12) 0;
+  max-inline-size: 70ch;
+  color: var(--color-text);
+}
