@@ -148,6 +148,6 @@
         "Modal",
         "TextInput",
         "CheckboxGroup",
-        "Select"
+        "TextArea"
     ]
 }

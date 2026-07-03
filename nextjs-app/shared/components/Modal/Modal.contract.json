@@ -207,8 +207,8 @@
         "Title",
         "Text",
         "TextInput",
-        "Select",
-        "FileUpload",
-        "PhoneInput"
+        "Toast",
+        "CheckboxGroup",
+        "TextArea"
     ]
 }

@@ -161,10 +161,10 @@
     ],
     "composesWith": [
         "Button",
-        "Text",
         "Badge",
+        "Text",
         "Title",
-        "Grid",
-        "ArticleCard"
+        "Checkbox",
+        "TextInput"
     ]
 }

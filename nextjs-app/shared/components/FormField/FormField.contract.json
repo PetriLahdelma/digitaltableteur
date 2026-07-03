@@ -92,9 +92,9 @@
         }
     },
     "forbiddenUse": [
-        "Render a bare `<label>` + `<input>` next to a `FormField` in the same form — the visual rhythm desyncs.",
-        "Put two controls inside one `FormField` in single-control mode; wrap each in its own, or switch to group mode with `legend`.",
-        "Provide both `label` and `legend`; pick single-control mode (`label`) or group mode (`legend`), never both."
+        "Render a bare `<label>` + `<input>` next to a `FormField` in the same form; the visual rhythm desyncs.",
+        "Put two controls inside one `FormField` in single-control mode; wrap each in its own, or switch to group mode.",
+        "Provide both `label` and `legend`; pick one mode."
     ],
     "composesWith": [
         "Label",
