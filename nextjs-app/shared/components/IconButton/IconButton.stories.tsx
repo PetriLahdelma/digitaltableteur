@@ -1,21 +1,22 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { userEvent, within } from "storybook/test";
-import { List, Moon } from "@phosphor-icons/react";
+import { userEvent, within, expect, fn } from "storybook/test";
+import React from "react";
 import { IconButton } from "./IconButton";
 import contract from "./IconButton.contract.json";
 
 const defaultArgs = {
-  icon: <Moon weight="bold" className="size-5" aria-hidden />,
+  icon: "moon",
   label: "Toggle dark mode",
-  variant: "ghost" as const,
+  variant: "tertiary" as const,
   size: "md" as const,
   disabled: false,
+  onClick: fn(),
 };
 
 const meta = {
   title: "Actions/IconButton",
   component: IconButton,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -24,41 +25,80 @@ const meta = {
     layout: "centered",
     contractStatus: contract.status,
     a11y: { test: "error" },
-    docs: { description: { component: contract.description } },
   },
   argTypes: {
     icon: {
-      control: false,
-      description: "Decorative icon glyph (aria-hidden in component)",
+      control: "text",
+      description:
+        "Icon glyph: a React node or a Phosphor icon name (e.g. 'x'). Always aria-hidden.",
+      table: { category: "Content", type: { summary: "ReactNode | string" } },
     },
     label: {
       control: "text",
-      description: "Required accessible name (aria-label)",
+      description: "Required accessible name; announced instead of the icon.",
+      table: { category: "Accessibility", type: { summary: "string" } },
     },
     variant: {
-      control: "select",
-      options: ["default", "ghost", "outline"],
-      description: "Visual button variant",
-      table: { defaultValue: { summary: "ghost" } },
+      control: { type: "inline-radio" },
+      options: ["primary", "secondary", "tertiary"],
+      description: "Visual weight, same scale as Button.",
+      table: {
+        category: "Appearance",
+        type: { summary: "primary | secondary | tertiary" },
+        defaultValue: { summary: "tertiary" },
+      },
+    },
+    tone: {
+      control: { type: "inline-radio" },
+      options: ["neutral", "error", "warning", "success", "info"],
+      description: "Semantic color, orthogonal to variant.",
+      table: {
+        category: "Appearance",
+        type: { summary: "neutral | error | warning | success | info" },
+        defaultValue: { summary: "neutral" },
+      },
+    },
+    surface: {
+      control: { type: "inline-radio" },
+      options: ["default", "onDark", "onBrand"],
+      description: "Surface the control sits on; prefer over color overrides.",
+      table: {
+        category: "Appearance",
+        type: { summary: "default | onDark | onBrand" },
+        defaultValue: { summary: "default" },
+      },
     },
     size: {
-      control: "select",
+      control: { type: "inline-radio" },
       options: ["sm", "md", "lg"],
-      description: "Circular hit-target size",
-      table: { defaultValue: { summary: "md" } },
+      description: "Circular hit-target size.",
+      table: {
+        category: "Appearance",
+        type: { summary: "sm | md | lg" },
+        defaultValue: { summary: "md" },
+      },
     },
     disabled: {
       control: "boolean",
-      description: "Disabled state",
+      description: "Disables interaction and dims the control.",
+      table: { category: "State", type: { summary: "boolean" } },
+    },
+    tooltip: {
+      control: "text",
+      description:
+        "Native hover tooltip; reassurance for sighted users, never the accessible name.",
+      table: { category: "Accessibility", type: { summary: "string" } },
     },
     onClick: {
       action: "clicked",
-      description: "Click handler",
+      description: "Click handler.",
+      table: { category: "Behavior", type: { summary: "(e: MouseEvent) => void" } },
     },
     className: {
       control: "text",
-      description: "Additional CSS class names",
-      table: { disable: true },
+      description:
+        "Applied on a wrapper span so responsive utilities are not overridden.",
+      table: { category: "Advanced", type: { summary: "string" } },
     },
   },
   args: defaultArgs,
@@ -67,18 +107,140 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const Row = ({ children }: { children: React.ReactNode }) => (
+  <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+    {children}
+  </div>
+);
+
 export const Default: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
-};
-export const Playground: Story = {
-  tags: ["beta-matrix"],
-  globals: { forcedColors: "none" },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button", { name: "Toggle dark mode" });
+    await userEvent.click(button);
+    expect(args.onClick).toHaveBeenCalled();
+    expect(button).toHaveFocus();
+  },
 };
 
-Playground.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  await userEvent.tab();
+export const Variants: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The three weights, same scale as Button; tertiary is the default and the right choice for toolbars and chrome.",
+      },
+    },
+  },
+  render: () => (
+    <Row>
+      <IconButton icon="star" label="Favorite" variant="primary" />
+      <IconButton icon="share-network" label="Share" variant="secondary" />
+      <IconButton icon="dots-three" label="More actions" variant="tertiary" />
+    </Row>
+  ),
+};
+
+export const Sizes: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: { description: { story: "sm, md and lg circular hit targets." } },
+  },
+  render: () => (
+    <Row>
+      <IconButton icon="x" label="Close" size="sm" />
+      <IconButton icon="x" label="Close" size="md" />
+      <IconButton icon="x" label="Close" size="lg" />
+    </Row>
+  ),
+};
+
+export const DestructiveTone: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "tone=error for destructive row actions; the label, not the color, carries the meaning.",
+      },
+    },
+  },
+  render: () => (
+    <Row>
+      <IconButton icon="trash" label="Delete row" tone="error" variant="secondary" />
+      <IconButton icon="trash" label="Delete row" tone="error" variant="tertiary" />
+    </Row>
+  ),
+};
+
+export const WithTooltip: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "tooltip adds a native hover hint for ambiguous glyphs; label stays the accessible name.",
+      },
+    },
+  },
+  render: () => (
+    <Row>
+      <IconButton
+        icon="clipboard"
+        label="Copy link"
+        tooltip="Copy link to clipboard"
+        variant="secondary"
+      />
+    </Row>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button", { name: "Copy link" });
+    expect(button).toHaveAttribute("title", "Copy link to clipboard");
+  },
+};
+
+export const InToolbar: Story = {
+  tags: ["example"],
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        story:
+          "Composition in context: a toolbar row of tertiary icon actions, the IconButton home turf (this is the SiteHeader pattern).",
+      },
+    },
+  },
+  render: () => (
+    <div
+      role="toolbar"
+      aria-label="Article actions"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "0.25rem",
+        padding: "0.5rem",
+        border: "1px solid var(--color-border, currentColor)",
+        borderRadius: "var(--radius-lg)",
+        width: "fit-content",
+      }}
+    >
+      <IconButton icon="arrow-left" label="Back" />
+      <IconButton icon="magnifying-glass" label="Search" />
+      <IconButton icon="moon" label="Toggle dark mode" />
+      <IconButton icon="list" label="Open navigation menu" />
+    </div>
+  ),
+};
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+  args: defaultArgs,
 };
 
 export const Example: Story = {
@@ -95,13 +257,8 @@ export const Example: Story = {
         padding: "0.5rem",
       }}
     >
-      <IconButton {...defaultArgs} />
-      <IconButton
-        icon={<List weight="bold" className="size-5" aria-hidden />}
-        label="Open navigation menu"
-        variant="ghost"
-        size="md"
-      />
+      <IconButton icon="moon" label="Toggle dark mode" />
+      <IconButton icon="list" label="Open navigation menu" />
     </div>
   ),
 };

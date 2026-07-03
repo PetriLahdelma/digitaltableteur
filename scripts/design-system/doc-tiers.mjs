@@ -16,7 +16,9 @@
  * regroup): `<Category>/<Name>` story titles, Tier 2 under `Site/`.
  */
 export const DOC_TIER_1_CATEGORIES = {
-    Actions: ['Button', 'IconButton', 'SplitButton', 'Tag'],
+    // Tag was deleted in Phase 3 batch 1: Badge (Content) covers the whole
+    // surface (variant x tone, removable chip mode, auto status icons).
+    Actions: ['Button', 'IconButton', 'SplitButton'],
     Content: [
         'Text', 'Title', 'Display', 'List', 'Badge', 'Icon', 'Avatar',
         'CodeSnippet', 'CodeBlockWindow',

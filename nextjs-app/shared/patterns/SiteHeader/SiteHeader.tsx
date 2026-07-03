@@ -309,7 +309,7 @@ export function SiteHeader({
                 }
                 label={t("toggleDarkMode")}
                 onClick={handleThemeToggle}
-                variant="ghost"
+                variant="tertiary"
                 className="cursor-pointer"
               />
             </div>
@@ -321,7 +321,7 @@ export function SiteHeader({
             label={t("navMenuOpen", "Open navigation menu")}
             onClick={openMobileMenu}
             className="lg:hidden"
-            variant="ghost"
+            variant="tertiary"
           />
         </div>
       </Container>

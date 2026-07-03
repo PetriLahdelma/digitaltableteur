@@ -41,12 +41,12 @@ import {
   AspectRatio,
 } from "@/nextjs-app/shared/components/Layout";
 import {
-  Tag,
   Divider,
   IconButton,
   Prose,
   FormField,
 } from "@/nextjs-app/shared/components/ui";
+import Badge from "@dt/Badge";
 import Checkbox from "@dt/Checkbox";
 import Link from "@dt/Link";
 import { useToast } from "@/nextjs-app/shared/components/interactive";
@@ -346,18 +346,17 @@ export default function TailwindTest() {
             </Stack>
           </div>
 
-          {/* Tag Variants */}
+          {/* Badge Variants (Tag was folded into Badge) */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Tag Variants:</p>
+            <p className="font-body text-text-s text-muted-foreground mb-3">Badge Variants:</p>
             <Stack direction="horizontal" gap="sm" wrap>
-              <Tag>Default</Tag>
-              <Tag variant="secondary">Secondary</Tag>
-              <Tag variant="outline">Outline</Tag>
-              <Tag variant="success">Success</Tag>
-              <Tag variant="warning">Warning</Tag>
-              <Tag variant="error">Error</Tag>
-              <Tag variant="info">Info</Tag>
-              <Tag size="lg">Large Tag</Tag>
+              <Badge>Default</Badge>
+              <Badge variant="secondary">Secondary</Badge>
+              <Badge tone="success">Success</Badge>
+              <Badge tone="warning">Warning</Badge>
+              <Badge tone="error">Error</Badge>
+              <Badge tone="info">Info</Badge>
+              <Badge size="lg">Large Badge</Badge>
             </Stack>
           </div>
 
@@ -379,8 +378,8 @@ export default function TailwindTest() {
             <p className="font-body text-text-s text-muted-foreground mb-3">IconButton:</p>
             <Stack direction="horizontal" gap="sm">
               <IconButton icon={<Heart className="h-5 w-5" />} label="Like" />
-              <IconButton icon={<Share className="h-5 w-5" />} label="Share" variant="outline" />
-              <IconButton icon={<Star className="h-5 w-5" />} label="Favorite" variant="ghost" />
+              <IconButton icon={<Share className="h-5 w-5" />} label="Share" variant="secondary" />
+              <IconButton icon={<Star className="h-5 w-5" />} label="Favorite" variant="tertiary" />
               <IconButton icon={<ArrowRight className="h-6 w-6" />} label="Next" size="lg" />
             </Stack>
           </div>

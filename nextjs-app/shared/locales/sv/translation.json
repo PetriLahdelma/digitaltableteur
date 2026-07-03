@@ -514,9 +514,9 @@
   "contactHelsinkiOffice": "Digitaltableteur: Helsingfors HQ",
   "contactMapFallback": "Laddar karta...",
   "studioMapAriaLabel": "Digitaltableteurs studioplacering",
-  "studioMapLoading": "Laddar karta\u2026",
-  "studioMapDirections": "V\u00e4gbeskrivning",
-  "studioMapOpenMaps": "\u00d6ppna i kartor",
+  "studioMapLoading": "Laddar karta…",
+  "studioMapDirections": "Vägbeskrivning",
+  "studioMapOpenMaps": "Öppna i kartor",
   "contactAddressHeading": "Per post",
   "contactAddressLine1": "HKI HQ",
   "contactAddressLine2": "Tavastvägen 8",
@@ -564,7 +564,7 @@
   "monthDecember": "December",
   "blogArticlesTitle": "Senaste Artiklar",
   "blogRead": "lästid",
-  "blogReadMore": "Läs mer",
+  "blogReadMore": "Läs artikel",
   "workMetaTitle": "Arbete | Digitaltableteur",
   "workMetaDescription": "Utvalda projekt och experiment av Digitaltableteur",
   "workTitle": "Utvalda projekt",
@@ -1266,7 +1266,6 @@
   "blogNextPage": "Nästa",
   "blogPage": "Sida",
   "scrollToContent": "Rulla",
-  "blogReadMore": "Läs artikel",
   "articleTOCTitle": "Innehållsförteckning",
   "articleShareTitle": "Dela denna artikel",
   "articleAboutAuthor": "Om författaren",
@@ -1347,5 +1346,8 @@
   "workCTATitle": "Intresserad av samarbete?",
   "workCTADescription": "Låt oss diskutera hur designsystem, AI och genomtänkt UX kan lyfta din produkt.",
   "workCTAPrimary": "Kontakta oss",
-  "workCTASecondary": "Se alla arbeten"
+  "workCTASecondary": "Se alla arbeten",
+  "splitButton": {
+    "moreOptions": "Fler alternativ"
+  }
 }

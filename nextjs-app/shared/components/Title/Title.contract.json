@@ -130,6 +130,7 @@
         }
     ],
     "schemaVersion": 2,
+    "displayName": "Title",
     "props": {
         "children": {
             "optional": true,
