@@ -20,9 +20,7 @@ export { TextArea, type TextAreaProps } from "../TextArea";
 export { CheckboxField, type CheckboxFieldProps } from "../CheckboxField";
 
 // Contact page components
-export { EnhancedPersonCard, type EnhancedPersonCardProps } from "../EnhancedPersonCard";
 export { LocationCard, type LocationCardProps } from "../LocationCard";
-export { EnhancedContactForm, type EnhancedContactFormProps } from "../EnhancedContactForm";
 export { ContactFormSuccess, type ContactFormSuccessProps } from "../ContactFormSuccess";
 
 // Re-export shadcn/ui components for convenience

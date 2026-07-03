@@ -81,12 +81,12 @@ export const AlertAndDeferrals: Story = {
         <>
           <strong>Error alert approved</strong> — use @dt/Modal with{" "}
           <code>severity=&quot;error&quot;</code>, <code>description</code>, and{" "}
-          <code>isOpen</code>/<code>onClose</code>. Production overlays migrated: EnhancedContactForm,
-          Lightbox (portal), AnimatedDialog (GSAP + @dt/Modal). Defer composable DialogTrigger only.
+          <code>isOpen</code>/<code>onClose</code>. Production overlays migrated: Lightbox (portal),
+          AnimatedDialog (GSAP + @dt/Modal). Defer composable DialogTrigger only.
         </>
       }
     >
-      <MigrationDecisionBand title="Error dialog — EnhancedContactForm pattern" className={board.bandLight}>
+      <MigrationDecisionBand title="Error dialog — @dt/Modal pattern" className={board.bandLight}>
         <MigrationDecisionBlock variant="legacy" title="Today — shadcn Dialog">
           <ShadcnErrorDialog />
         </MigrationDecisionBlock>
