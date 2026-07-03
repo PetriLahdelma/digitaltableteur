@@ -76,7 +76,7 @@
         "Bypass design tokens or skip forced-colors verification at beta."
     ],
     "composesWith": [
-        "Inputs",
+        "TextInput",
         "Button",
         "Modal",
         "Select",

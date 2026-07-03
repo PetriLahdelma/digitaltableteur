@@ -54,7 +54,7 @@ const contactFormComplianceRules: ComplianceRule[] = [
     id: "composition",
     rule: "Component composition",
     status: "pass",
-    details: "Uses Inputs, Button, Modal, FileUpload",
+    details: "Uses TextInput, Button, Modal, FileUpload",
   },
   {
     id: "accessibility",

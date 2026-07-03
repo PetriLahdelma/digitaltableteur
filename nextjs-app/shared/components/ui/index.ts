@@ -1,5 +1,4 @@
 // Re-export Tailwind-first UI primitives
-export { TextLink, type TextLinkProps } from "../TextLink";
 export { Tag, type TagProps } from "../Tag";
 export { Divider, type DividerProps } from "../Divider";
 export { IconButton, type IconButtonProps } from "../IconButton";
@@ -14,16 +13,13 @@ export { ProjectGallery, type ProjectGalleryProps, type GalleryImage } from "../
 export { ProjectNav, type ProjectNavProps } from "../ProjectNav";
 
 // Form components
+// TextInput/TextArea are the canonical CSS-Modules @dt components, not
+// Tailwind-first primitives — import them directly from @dt/TextInput and
+// @dt/TextArea instead of this Tailwind-primitives barrel.
 export { FormField, type FormFieldProps } from "../FormField";
-export { FormGroup, type FormGroupProps } from "../FormGroup";
-export { TextInput, type TextInputProps } from "../TextInput";
-export { TextArea, type TextAreaProps } from "../TextArea";
-export { CheckboxField, type CheckboxFieldProps } from "../CheckboxField";
 
 // Contact page components
-export { EnhancedPersonCard, type EnhancedPersonCardProps } from "../EnhancedPersonCard";
 export { LocationCard, type LocationCardProps } from "../LocationCard";
-export { EnhancedContactForm, type EnhancedContactFormProps } from "../EnhancedContactForm";
 export { ContactFormSuccess, type ContactFormSuccessProps } from "../ContactFormSuccess";
 
 // Re-export shadcn/ui components for convenience

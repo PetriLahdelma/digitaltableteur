@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { Container } from "@/nextjs-app/shared/components/Layout";
 import { Stack } from "@/nextjs-app/shared/components/Layout";
-import { TextLink } from "@/nextjs-app/shared/components/TextLink";
+import DtLink from "@dt/Link";
 import { Divider } from "@dt/Divider";
 import {
   InstagramLogo,
@@ -130,21 +130,21 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {t("footerExploreTitle")}
             </p>
             <Stack gap="xs">
-              <TextLink href="/work" variant="muted" underline="hover">
+              <DtLink href="/work" size="sm">
                 {t("navWork")}
-              </TextLink>
-              <TextLink href="/about" variant="muted" underline="hover">
+              </DtLink>
+              <DtLink href="/about" size="sm">
                 {t("navAbout")}
-              </TextLink>
-              <TextLink href="/blog" variant="muted" underline="hover">
+              </DtLink>
+              <DtLink href="/blog" size="sm">
                 {t("navBlog")}
-              </TextLink>
-              <TextLink href="/pricing" variant="muted" underline="hover">
+              </DtLink>
+              <DtLink href="/pricing" size="sm">
                 {t("navPricing")}
-              </TextLink>
-              <TextLink href="/contact" variant="muted" underline="hover">
+              </DtLink>
+              <DtLink href="/contact" size="sm">
                 {t("navContact")}
-              </TextLink>
+              </DtLink>
             </Stack>
           </div>
 
@@ -154,21 +154,21 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {t("footerLegalTitle")}
             </p>
             <Stack gap="xs">
-              <TextLink href="/privacy-policy" variant="muted" underline="hover">
+              <DtLink href="/privacy-policy" size="sm">
                 {t("footerPrivacyPolicy")}
-              </TextLink>
-              <TextLink href="/imprint" variant="muted" underline="hover">
+              </DtLink>
+              <DtLink href="/imprint" size="sm">
                 {t("footerImprint")}
-              </TextLink>
-              <TextLink href="/ai-use" variant="muted" underline="hover">
+              </DtLink>
+              <DtLink href="/ai-use" size="sm">
                 {t("footerAiUse")}
-              </TextLink>
-              <TextLink href="/accessibility" variant="muted" underline="hover">
+              </DtLink>
+              <DtLink href="/accessibility" size="sm">
                 {t("footerAccessibility")}
-              </TextLink>
-              <TextLink href="/sitemap" variant="muted" underline="hover">
+              </DtLink>
+              <DtLink href="/sitemap" size="sm">
                 {t("footerSiteMap")}
-              </TextLink>
+              </DtLink>
             </Stack>
           </div>
         </div>

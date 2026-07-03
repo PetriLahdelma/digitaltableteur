@@ -1058,6 +1058,7 @@
   "storyModalOpenWarningV110": "Avaa varoitusdialogi (v1.1.0)",
   "storyModalOpenInfoV110": "Avaa infodialogi (v1.1.0)",
   "storyModalOpenLoadingV110": "Avaa latausdialogi (v1.1.0)",
+  "storyModalOpenAnimatedV110": "Avaa animoitu dialogi (v1.1.0)",
   "storyModalDefault": "Perusdialogi",
   "storyModalLoading": "Ladataan",
   "storyModalPleaseWait": "Odota, ole hyvä...",

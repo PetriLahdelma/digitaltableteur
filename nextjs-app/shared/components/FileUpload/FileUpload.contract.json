@@ -135,7 +135,7 @@
     ],
     "composesWith": [
         "Button",
-        "Inputs",
+        "TextInput",
         "Modal",
         "Select",
         "PhoneInput",

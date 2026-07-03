@@ -1,5 +1,6 @@
 import React, { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
+import { gsap } from "gsap";
 import styles from "./Modal.module.css";
 import Button from "@dt/Button";
 import Title from "@dt/Title";
@@ -8,6 +9,7 @@ import Icon, { type IconProps } from "@dt/Icon";
 import { normalizeTitleSize, type TitleSizeUnified } from "../../utils/sizeNormalization";
 
 export type ModalSeverity = "success" | "error" | "warning" | "info";
+export type ModalAnimation = "none" | "scale" | "slide" | "fade";
 
 export interface ModalProps {
   // v2.0.0 PROPS
@@ -45,6 +47,8 @@ export interface ModalProps {
   showFooter?: boolean;
   /** Ref on the dialog panel for animation hooks */
   panelRef?: React.Ref<HTMLDivElement>;
+  /** Entrance animation applied to the panel on open (respects prefers-reduced-motion) */
+  animation?: ModalAnimation;
   /** Show close icon button in header */
   showCloseIcon?: boolean;
   /** Custom close icon name (defaults to "x") */
@@ -84,6 +88,7 @@ const Modal: React.FC<ModalProps> = ({
   className,
   showFooter,
   panelRef,
+  animation = "none",
 }) => {
   const normalizedTitleSize = normalizeTitleSize(titleSize);
   const titleId = useId();
@@ -99,6 +104,43 @@ const Modal: React.FC<ModalProps> = ({
     }
     panelRef.current = modalRef.current;
   }, [isOpen, panelRef]);
+
+  // Entrance animation for the panel, gated on prefers-reduced-motion.
+  useEffect(() => {
+    if (!isOpen || animation === "none" || !modalRef.current) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      if (animation === "scale") {
+        gsap.from(modalRef.current, {
+          scale: 0.95,
+          opacity: 0,
+          duration: 0.2,
+          ease: "power2.out",
+        });
+      } else if (animation === "slide") {
+        gsap.from(modalRef.current, {
+          y: 20,
+          opacity: 0,
+          duration: 0.25,
+          ease: "power2.out",
+        });
+      } else if (animation === "fade") {
+        gsap.from(modalRef.current, {
+          opacity: 0,
+          duration: 0.2,
+          ease: "power2.out",
+        });
+      }
+    }, modalRef);
+
+    return () => ctx.revert();
+  }, [isOpen, animation]);
 
   // Apply inert attribute to main content when modal is open
   // This prevents focus from escaping the modal to background content
@@ -206,6 +248,7 @@ const Modal: React.FC<ModalProps> = ({
           .join(" ")}
         role={dialogRole}
         aria-modal="true"
+        data-animation={animation === "none" ? undefined : animation}
         {...(title
           ? { "aria-labelledby": titleId }
           : { "aria-label": "Dialog" })}

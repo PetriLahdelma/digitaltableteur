@@ -74,7 +74,7 @@
     "composesWith": [
         "Button",
         "Text",
-        "Inputs",
+        "TextInput",
         "DonnyAvatar",
         "Header",
         "Footer"

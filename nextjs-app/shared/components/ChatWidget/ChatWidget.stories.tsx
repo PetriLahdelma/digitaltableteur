@@ -2,7 +2,7 @@ import contract from "./ChatWidget.contract.json";
 import React, { useEffect, useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import ChatWidget from "./ChatWidget";
-import { ChatTextArea } from "@dt/Inputs/TextArea";
+import { ChatTextArea } from "./ChatTextArea";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
 import { expect, userEvent, waitFor, within } from "storybook/test"; // expect is available globally in Storybook browser tests

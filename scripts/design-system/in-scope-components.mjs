@@ -17,7 +17,7 @@ export const IN_SCOPE_COMPONENTS = [
   { name: "HelperText", tier: "atom", group: "form", root: "components", status: "beta" },
   { name: "Checkbox", tier: "atom", group: "form", root: "components", status: "beta" },
   { name: "Switch", tier: "atom", group: "form", root: "components", status: "beta" },
-  { name: "Inputs", tier: "atom", group: "form", root: "components", status: "beta" },
+  { name: "TextInput", tier: "atom", group: "form", root: "components", status: "beta" },
   { name: "Card", tier: "molecule", group: "structure", root: "components", status: "beta" },
   { name: "Modal", tier: "molecule", group: "overlay", root: "components", status: "beta" },
   { name: "Tabs", tier: "molecule", group: "navigation", root: "components", status: "beta" },

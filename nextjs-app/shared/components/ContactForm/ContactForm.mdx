@@ -10,7 +10,7 @@ import * as Stories from './ContactForm.stories.tsx';
 The shipping contact form on `/contact`. ContactForm orchestrates
 seven inputs (Inputs × name, email; PhoneInput; Select × interest and
 hear-about; TextArea × message; CheckboxGroup × channels), an optional
-FileUpload, an AdaptiveLoadingButton for submit, plus Toast and Modal
+FileUpload, a loading Button for submit, plus Toast and Modal
 for post-submit feedback. A honeypot field (`honeypot`, hidden via
 `tabIndex={-1}` and `aria-hidden`) catches non-human submissions, and
 the email field runs typo suggestions before submission is allowed.
@@ -62,7 +62,7 @@ handful of shared validation keys.
 
 Theme & forced-colors notes: every child component carries its own
 forced-colors contract; ContactForm adds no extra colour wiring. The
-submit button uses `AdaptiveLoadingButton` so the loading state has
+submit button uses `Button`'s `loading` prop so the loading state has
 the right ARIA wiring even on slow networks.
 
 ## When to use
@@ -93,9 +93,10 @@ the right ARIA wiring even on slow networks.
 - **Honeypot:** the hidden `honeypot` Inputs uses
   `aria-hidden="true"` and `tabIndex={-1}`. The field has a label
   but the label is hidden — AT users skip it; bots fill it.
-- **Submit state:** AdaptiveLoadingButton flips `aria-busy` during
-  submission and prevents double-submit by disabling itself. The
-  form is also rate-limited at `/api/contact` (1 req / 30s per IP).
+- **Submit state:** the submit Button's `loading` prop flips
+  `aria-busy` during submission and prevents double-submit by
+  disabling itself. The form is also rate-limited at `/api/contact`
+  (1 req / 30s per IP).
 - **Post-submit:** success surfaces in a Modal (focus moves to the
   modal, restores on close); errors surface in an inline Toast (no
   focus disruption).

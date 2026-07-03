@@ -12,6 +12,8 @@ import {
 } from 'ts-morph'
 import { VARIANT_PROP_NAMES } from './cva-sync-lib.mjs'
 import { validateContractSchema } from './contract-schema-lib.mjs'
+import { docFieldErrors } from './doc-fields-rules.mjs'
+import { docTierFor } from './doc-tiers.mjs'
 
 type VariantMap = Record<string, { values: string[]; default: string | null }>
 
@@ -499,6 +501,12 @@ export function validateComponentsDir(root: string): ValidationResult {
         if (manifest.name !== name) {
             errors.push(`${name}.contract.json: manifest.name "${manifest.name}" does not match folder "${name}"`)
         }
+
+        // Doc-fields ratchet (Task 10): silent until a contract adopts `usage`,
+        // then enforces the doc-tier field set. Status-agnostic — runs before
+        // the alpha early-continue below so alpha components that opt in to
+        // `usage` early are held to the same ratchet.
+        errors.push(...docFieldErrors(manifest, docTierFor(name)))
 
         if (manifest.status === 'alpha') {
             continue

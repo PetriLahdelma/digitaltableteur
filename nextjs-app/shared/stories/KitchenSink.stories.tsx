@@ -38,10 +38,10 @@ import { Default as CheckboxGroupDefaultStory } from "../components/CheckboxGrou
 import Checkbox from "@dt/Checkbox";
 import CheckboxGroup from "@dt/CheckboxGroup";
 import FlexBox from "@dt/FlexBox";
-import * as InputsStories from "../components/Inputs/Inputs.stories";
+import * as InputsStories from "../components/TextInput/TextInput.stories";
 import * as LabelStories from "../components/Label/Label.stories";
 import * as LinkStories from "../components/Link/Link.stories";
-import Input from "@dt/Inputs";
+import Input from "@dt/TextInput";
 import Label from "@dt/Label";
 import Link from "@dt/Link";
 import { useTranslation } from "react-i18next";
@@ -279,7 +279,7 @@ const FlexBoxGapVariants = () => (
 // Inputs wrappers
 const InputsText = () => {
   const { t } = useTranslation();
-  const args = InputsStories.TextInput.args || {};
+  const args = InputsStories.TextInputStory.args || {};
   return (
     <Input
       {...args}
@@ -293,7 +293,7 @@ const InputsText = () => {
           ? t(args.placeholder)
           : (args.placeholder ?? "Enter text")
       }
-      type={InputsStories.TextInput.args?.type ?? "text"}
+      type={InputsStories.TextInputStory.args?.type ?? "text"}
       error={
         typeof args.error === "string"
           ? t(args.error)

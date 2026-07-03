@@ -38,7 +38,6 @@ const STORIES = [
   { id: "patterns-siteheader--example", label: "SiteHeader", region: "#storybook-root header, #storybook-root [role=banner]" },
   { id: "atoms-iconbutton--example", label: "IconButton" },
   { id: "molecules-formfield--example", label: "FormField" },
-  { id: "molecules-checkboxfield--example", label: "CheckboxField" },
   { id: "organisms-contactformeditorial--example", label: "ContactFormEditorial" },
   { id: "atoms-button-surface-comparison--cta-bands", label: "ButtonSurfaceCtaBands" },
   { id: "atoms-button-surface-comparison--home-hero-band", label: "ButtonSurfaceHomeHero" },

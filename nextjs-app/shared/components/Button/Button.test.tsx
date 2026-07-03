@@ -1,5 +1,6 @@
 import React from "react";
-import { render, screen, fireEvent, createEvent } from "@testing-library/react";
+import { render, screen, fireEvent, createEvent, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import Button from "@dt/Button";
@@ -310,6 +311,52 @@ describe("Button", () => {
         render(<Button loading>Submit</Button>);
         expect(screen.getByRole("button")).toBeDisabled();
       });
+    });
+  });
+
+  describe("clickAction", () => {
+    it("shows loading while the promise is pending and clears after resolve", async () => {
+      let resolve!: () => void;
+      const pending = new Promise<void>((r) => (resolve = r));
+      render(<Button clickAction={() => pending}>Save</Button>);
+      const button = screen.getByRole("button", { name: "Save" });
+
+      await userEvent.click(button);
+      expect(button).toHaveAttribute("aria-busy", "true");
+      expect(button).toBeDisabled();
+
+      resolve();
+      await waitFor(() => expect(button).not.toHaveAttribute("aria-busy"));
+      expect(button).toBeEnabled();
+    });
+
+    it("dedupes clicks while pending", async () => {
+      let calls = 0;
+      let resolve!: () => void;
+      render(
+        <Button
+          clickAction={() => {
+            calls += 1;
+            return new Promise<void>((r) => (resolve = r));
+          }}
+        >
+          Save
+        </Button>,
+      );
+      const button = screen.getByRole("button", { name: "Save" });
+      await userEvent.click(button);
+      await userEvent.click(button);
+      expect(calls).toBe(1);
+      resolve();
+    });
+
+    it("clears loading when the promise rejects", async () => {
+      render(
+        <Button clickAction={() => Promise.reject(new Error("nope"))}>Save</Button>,
+      );
+      const button = screen.getByRole("button", { name: "Save" });
+      await userEvent.click(button);
+      await waitFor(() => expect(button).toBeEnabled());
     });
   });
 });

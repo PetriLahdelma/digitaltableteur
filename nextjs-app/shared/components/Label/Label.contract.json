@@ -135,7 +135,7 @@
         "use a Label as a section heading. Headings carry navigation"
     ],
     "composesWith": [
-        "Inputs",
+        "TextInput",
         "HelperText",
         "Button",
         "Checkbox",

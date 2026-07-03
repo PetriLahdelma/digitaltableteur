@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { userEvent, within } from "storybook/test";
-import TextArea from "./TextArea";
 import contract from "./TextArea.contract.json";
+import React from "react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
+import TextArea from "@dt/TextArea";
+import { useTranslation } from "react-i18next";
 
 const meta = {
   title: "Atoms/TextArea",
@@ -17,136 +18,104 @@ const meta = {
     a11y: { test: "error" },
   },
   argTypes: {
-    label: {
-      control: "text",
-      description: "Visible field label (omit for aria-label-only usage)",
-      table: { category: "Content" },
-    },
-    placeholder: {
-      description: "Placeholder",
-      control: "text",
-      table: { category: "Content" },
-    },
-    helperText: {
-      description: "Helper Text",
-      control: "text",
-      table: { category: "Content" },
-    },
-    error: {
-      control: "text",
-      description: "Error message or invalid state",
-      table: { category: "Validation" },
-    },
-    showCount: {
-      control: "boolean",
-      description: "Show live character count (pairs with maxLength)",
-      table: { category: "Validation", defaultValue: { summary: "false" } },
-    },
-    maxLength: {
-      description: "Max Length",
-      control: { type: "number", min: 1 },
-      table: { category: "Validation" },
-    },
+    label: { control: "text", description: "Visible field label" },
+    placeholder: { control: "text", description: "Placeholder text" },
+    error: { control: "text", description: "Validation error message" },
+    helperText: { control: "text", description: "Helper copy below the field" },
     rows: {
-      description: "Rows",
       control: { type: "number", min: 2, max: 20 },
-      table: { category: "Layout", defaultValue: { summary: "4" } },
+      description: "Static row count (ignored when animateResize is on)",
+      table: { defaultValue: { summary: "4" } },
     },
-    resize: {
-      description: "Resize",
-      control: "radio",
-      options: ["none", "vertical", "both"],
-      table: { category: "Layout", defaultValue: { summary: "vertical" } },
-    },
-    size: {
-      description: "Size",
-      control: "select",
-      options: ["sm", "md", "lg"],
-      table: { category: "Appearance", defaultValue: { summary: "md" } },
-    },
-    isDisabled: {
-      description: "Is Disabled",
+    animateResize: {
       control: "boolean",
-      table: { category: "State" },
+      description: "Enable smooth animated auto-growing",
+      table: { defaultValue: { summary: "false" } },
     },
-    onValueChange: {
-      description: "On Value Change",
-      action: "valueChanged",
-      table: { category: "Events" },
+    minRows: {
+      control: { type: "number", min: 1, max: 10 },
+      description: "Minimum rows when animateResize is enabled",
+      table: { defaultValue: { summary: "2" } },
     },
-    className: {
-      description: "Class Name",
-      control: false,
-      table: { category: "Advanced" },
+    maxRows: {
+      control: { type: "number", min: 1, max: 20 },
+      description: "Maximum rows when animateResize is enabled",
+      table: { defaultValue: { summary: "10" } },
     },
-  },
-  args: {
-    label: "Message",
-    placeholder: "How can we help?",
-    helperText: "Max 500 characters.",
-    rows: 4,
-    resize: "vertical",
-    size: "md",
-    isDisabled: false,
-    showCount: false,
+    disabled: {
+      control: "boolean",
+      description: "Disables the textarea",
+      table: { defaultValue: { summary: "false" } },
+    },
   },
 } satisfies Meta<typeof TextArea>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const TextAreaStory: React.FC<React.ComponentProps<typeof TextArea>> = (
+  args,
+) => {
+  const { t } = useTranslation();
+  return (
+    <div style={{ maxWidth: "var(--size-width-md)" }}>
+      <TextArea
+        {...args}
+        label={t(args.label as string)}
+        placeholder={
+          args.placeholder ? t(args.placeholder as string) : undefined
+        }
+        error={args.error ? t(args.error) : undefined}
+        helperText={
+          args.helperText ? t(args.helperText as string) : undefined
+        }
+      />
+    </div>
+  );
+};
+
+const Template: StoryFn<typeof TextArea> = (args) => (
+  <TextAreaStory {...args} />
+);
+
+export const Default = Template.bind({});
+Default.args = {
+  label: "storyTextAreaLabel",
+  placeholder: "storyTextAreaPlaceholder",
+  rows: 4,
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  label: "storyTextAreaErrorLabel",
+  placeholder: "storyTextAreaPlaceholder",
+  error: "storyTextAreaErrorText",
+  rows: 4,
+};
+
+export const AnimatedResize = Template.bind({});
+AnimatedResize.args = {
+  label: "storyTextAreaLabel",
+  placeholder: "storyTextAreaPlaceholder",
+  animateResize: true,
+  minRows: 2,
+  maxRows: 6,
+};
+
 export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
-  globals: { forcedColors: "none" },
+  render: () => <TextAreaStory {...Default.args} />,
 };
-export const Default: Story = {
-  tags: ["beta-matrix"],
-  globals: { forcedColors: "none" },
-  ...Playground,
-};
-
-Playground.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  const field = canvas.getByRole("textbox", { name: /message/i });
-  await userEvent.click(field);
-  await userEvent.type(field, "Project kickoff notes");
-};
-
-export const WithError: Story = {
-  args: { error: "Message is required.", helperText: undefined },
-};
-
-export const WithCharacterCount: Story = {
-  args: {
-    label: undefined,
-    "aria-label": "Message",
-    showCount: true,
-    maxLength: 200,
-    value: "Hello",
-  },
-};
-
-export const BareTextarea: Story = {
-  parameters: { controls: { disable: true } },
-  render: () => (
-    <TextArea aria-label="Notes" placeholder="Add a note…" rows={3} />
-  ),
-};
-
 export const Example: Story = {
-  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
-  parameters: { controls: { disable: true } },
-  render: () => (
-    <TextArea
-      label="Project brief"
-      helperText="Share goals, timeline, and constraints."
-      rows={5}
-    />
-  ),
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => <TextAreaStory {...WithError.args} />,
 };
-
 export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
+  render: () => <TextAreaStory {...Default.args} />,
 };

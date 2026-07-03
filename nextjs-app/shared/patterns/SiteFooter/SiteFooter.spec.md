@@ -47,8 +47,8 @@ not supported.
   `<Icon />`) because the footer's icon set is small and stable;
   importing them by name keeps the bundle minimal. Each icon is
   `className="size-5"` → 20px square.
-- Legal links use `<TextLink variant="muted" underline="hover">` so
-  the affordance is quiet but findable; the underline appears on
-  hover and the focus ring is the global focus-visible treatment.
+- Legal and explore links use `<Link size="sm">` (`@dt/Link`) so
+  the affordance is quiet but findable; Link's wavy underline and
+  focus ring are the global treatment for inline links.
 - Copyright year is computed at render. SSR + client both run in
   the same year (modulo midnight UTC edge cases, which we tolerate).

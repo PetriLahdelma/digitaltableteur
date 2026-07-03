@@ -28,8 +28,9 @@ import { FormField } from '@dt/FormField';
 
 ## When not to use
 
-- Multi-control groupings (checkbox set, radio set) — use `FormGroup` + `CheckboxGroup`.
 - Inputs inside a search bar / toolbar where the label is visually hidden — use `Label` with `VisuallyHidden`.
+
+For multi-control groupings (checkbox set, radio set), use `FormField` in **group mode**: pass `legend` instead of `label` and wrap the controls (e.g. `Checkbox`) as children. See the `CheckboxGroupComposition` story.
 
 ## Accessibility
 

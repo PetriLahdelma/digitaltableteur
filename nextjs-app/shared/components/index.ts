@@ -1,4 +1,3 @@
-export { default as AdaptiveLoadingButton } from "./AdaptiveLoadingButton/AdaptiveLoadingButton";
 export { default as AppLoading } from "./AppLoading/AppLoading";
 export { default as ArticleCard } from "./ArticleCard/ArticleCard";
 export { default as Author } from "./Author/Author";
@@ -32,7 +31,7 @@ export { default as Grid } from "./Grid/Grid";
 export { default as GroupLabel } from "./GroupLabel/GroupLabel";
 export { default as Icon } from "./Icon/Icon";
 export { default as HelsinkiClock } from "./HelsinkiClock/HelsinkiClock";
-export { default as Inputs } from "./Inputs/Inputs";
+export { default as TextInput } from "./TextInput/TextInput";
 export { default as Label } from "./Label/Label";
 export { default as Layout } from "./Layout/Layout";
 export { default as Link } from "./Link/Link";

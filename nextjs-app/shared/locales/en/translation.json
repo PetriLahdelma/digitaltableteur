@@ -1058,6 +1058,7 @@
   "storyModalOpenWarningV110": "Open Warning Modal (v1.1.0)",
   "storyModalOpenInfoV110": "Open Info Modal (v1.1.0)",
   "storyModalOpenLoadingV110": "Open Loading Modal (v1.1.0)",
+  "storyModalOpenAnimatedV110": "Open Animated Modal (v1.1.0)",
   "storyModalDefault": "Default Modal",
   "storyModalLoading": "Loading",
   "storyModalPleaseWait": "Please wait...",

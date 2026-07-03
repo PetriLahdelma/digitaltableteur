@@ -53,16 +53,6 @@ export {
 
 // Custom interactive components
 export {
-  AnimatedDialog,
-  DialogHeader as AnimatedDialogHeader,
-  DialogFooter as AnimatedDialogFooter,
-  DialogTitle as AnimatedDialogTitle,
-  DialogDescription as AnimatedDialogDescription,
-  DialogClose as AnimatedDialogClose,
-  type AnimatedDialogProps,
-} from "../AnimatedDialog";
-
-export {
   ToasterProvider,
   useToast,
   type ToastSeverity,

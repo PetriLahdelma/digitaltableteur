@@ -62,6 +62,14 @@ export interface ButtonAsButton
     Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseButtonProps> {
   /** When true, sets `type="submit"`. @default false */
   submits?: boolean;
+  /**
+   * Async click handler. `onClick` still fires first if both are provided.
+   * While the returned promise is pending, the button shows its `loading`
+   * state, sets `aria-busy`, and disables itself (deduping repeat clicks).
+   * Rejections are swallowed after clearing the pending state; callers own
+   * error UX (e.g. surface a toast from within `clickAction` itself).
+   */
+  clickAction?: (event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
   href?: never;
   target?: never;
   rel?: never;
@@ -74,6 +82,7 @@ export interface ButtonAsLink
   /** Destination URL. When provided, the button renders as an anchor. */
   href: string;
   submits?: never;
+  clickAction?: never;
 }
 
 /**
@@ -117,6 +126,12 @@ const Button = React.forwardRef<
     },
     ref,
   ) => {
+    // Declared unconditionally: both the button and link branches share this
+    // function body, so hooks must run on every render regardless of which
+    // branch ultimately executes.
+    const [actionPending, setActionPending] = React.useState(false);
+    const isLoading = loading || actionPending;
+
     const ariaLabelFromRest =
       typeof rest["aria-label"] === "string" ? rest["aria-label"].trim() : "";
 
@@ -191,7 +206,7 @@ const Button = React.forwardRef<
         surface !== "default" ? styles[surface] : "",
         iconOnly ? styles.iconOnly : "",
         rounded ? styles.rounded : "",
-        loading ? styles.loading : "",
+        isLoading ? styles.loading : "",
         className,
       ]
         .filter(Boolean)
@@ -199,7 +214,7 @@ const Button = React.forwardRef<
       "aria-label": effectiveAriaLabel,
       "aria-labelledby": accessibleNameRef,
       "aria-describedby": accessibleDescription,
-      "aria-busy": loading || undefined,
+      "aria-busy": isLoading || undefined,
       title: tooltip,
     };
 
@@ -228,7 +243,7 @@ const Button = React.forwardRef<
       // A disabled/loading link must not navigate: drop href (so there is no
       // target for mouse, keyboard, or programmatic activation), remove it from
       // the tab order, keep it announced as a disabled link, and swallow clicks.
-      const linkDisabled = disabled || loading;
+      const linkDisabled = disabled || isLoading;
       return (
         <a
           ref={ref as React.Ref<HTMLAnchorElement>}
@@ -258,14 +273,29 @@ const Button = React.forwardRef<
       );
     }
 
-    const { submits = false, type, ...buttonRest } = rest as ButtonAsButton;
+    const { submits = false, type, clickAction, onClick, ...buttonRest } =
+      rest as ButtonAsButton;
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      onClick?.(event);
+      if (!clickAction || event.defaultPrevented) return;
+      const result = clickAction(event);
+      if (result && typeof (result as Promise<void>).finally === "function") {
+        setActionPending(true);
+        void (result as Promise<void>)
+          .catch(() => {})
+          .finally(() => setActionPending(false));
+      }
+    };
+
     return (
       <button
         ref={ref as React.Ref<HTMLButtonElement>}
-        disabled={disabled || loading}
+        disabled={disabled || isLoading}
         type={submits ? "submit" : (type ?? "button")}
         {...commonProps}
         {...buttonRest}
+        onClick={handleClick}
       >
         {content}
       </button>

@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useId, useRef, useState } from "react";
 import Label from "@dt/Label";
 import styles from "./Checkbox.module.css";
 
@@ -46,6 +46,11 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     );
     const isControlled = checked !== undefined;
     const actualChecked = isControlled ? checked : internalChecked;
+    // Stable fallback id so multiple unlabeled-id Checkbox siblings (e.g. in
+    // FormField group mode) don't collide on a shared literal id, which would
+    // break label association for all but the first instance.
+    const generatedId = useId();
+    const id = props.id ?? generatedId;
     // Local ref so the component can reach the input element even when the
     // parent does not forward a ref.
     const innerRef = useRef<HTMLInputElement | null>(null);
@@ -95,7 +100,6 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <div className={styles["checkboxContainer"]}>
         <input
-          id={props.id || "checkbox"}
           type="checkbox"
           className={`${styles.checkbox} ${styles[`checkbox--${size}`]} ${actualChecked ? styles.checkedState : ""}`}
           ref={setRefs}
@@ -126,9 +130,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           }}
           disabled={disabled}
           {...props}
+          id={id}
         />
         <Label
-          htmlFor={props.id || "checkbox"}
+          htmlFor={id}
           disabled={disabled}
           className={styles.label}
         >

@@ -9,9 +9,11 @@ import {
 } from "react";
 import { cn } from "@/lib/utils";
 import Label from "@dt/Label";
+import styles from "./FormField.module.css";
 
 export interface FormFieldProps {
-  label: string;
+  /** Visible field label. Required in single-control mode; omit when `legend` is set. */
+  label?: string;
   children: ReactNode;
   error?: string;
   helperText?: string;
@@ -19,6 +21,15 @@ export interface FormFieldProps {
   disabled?: boolean;
   className?: string;
   id?: string;
+  /**
+   * Accessible name for a group of controls. Setting this switches FormField
+   * into group mode: it renders a `<fieldset>` + `<legend>` around `children`
+   * instead of the single-control label/aria-describedby wiring. Mutually
+   * exclusive with `label`.
+   */
+  legend?: string;
+  /** Helper text shown under the legend in group mode. */
+  groupDescription?: string;
 }
 
 export function FormField({
@@ -30,11 +41,50 @@ export function FormField({
   disabled,
   className,
   id: propId,
+  legend,
+  groupDescription,
 }: FormFieldProps) {
   const generatedId = useId();
   const id = propId ?? generatedId;
   const helperId = `${id}-helper`;
   const errorId = `${id}-error`;
+
+  if (process.env.NODE_ENV !== "production") {
+    if (label && legend) {
+      // eslint-disable-next-line no-console
+      console.error(
+        "FormField: both `label` and `legend` were provided. Pass only `label` for single-control mode or only `legend` for group mode, not both.",
+      );
+    } else if (!label && !legend) {
+      // eslint-disable-next-line no-console
+      console.error(
+        "FormField: neither `label` nor `legend` was provided. Pass `label` for single-control mode or `legend` for group mode.",
+      );
+    }
+  }
+
+  if (legend) {
+    return (
+      <fieldset
+        className={cn(styles.fieldset, className)}
+        disabled={disabled}
+      >
+        <legend className={styles.legend}>
+          {legend}
+          {required ? <span aria-hidden="true"> *</span> : null}
+        </legend>
+        {groupDescription ? (
+          <p className={styles.groupDescription}>{groupDescription}</p>
+        ) : null}
+        <div className={styles.groupControls}>{children}</div>
+        {error ? (
+          <p className={styles.error} role="alert">
+            {error}
+          </p>
+        ) : null}
+      </fieldset>
+    );
+  }
 
   // Wire description + validation state onto the actual control so assistive
   // tech announces the error/help text. The control keeps its own id when it

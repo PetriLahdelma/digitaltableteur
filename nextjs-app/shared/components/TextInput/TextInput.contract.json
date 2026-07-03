@@ -4,8 +4,8 @@
     "tier": "atom",
     "group": "form",
     "status": "beta",
-    "description": "Single-line text input primitive with optional start/end icon slots, an inline clear button, and an error state. Wraps a native `<input>` so HTML attributes pass through.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-text-input",
+    "description": "Labeled text input with validation, helper text, and size tokens.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-10",
     "radixPrimitive": null,
     "element": "input",
     "variants": {
@@ -15,14 +15,12 @@
                 "md",
                 "lg"
             ],
-            "default": "sm",
-            "propSourced": true
+            "default": "md",
+            "forwarded": true,
+            "forwardedTo": "CSS module size classes"
         }
     },
-    "slots": [
-        "startIcon",
-        "endIcon"
-    ],
+    "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
@@ -33,74 +31,114 @@
     ],
     "a11y": {
         "keyboard": [
-            "Tab — focuses the input.",
-            "Esc when `clearable` and the input has a value — clears the value (when the clear button is the active element)."
+            "Tab"
         ],
         "ariaRequirements": [
-            "Renders a native `<input>`; HTML autocomplete + form-association attributes pass through.",
-            "`error` is a visual state — the actual error message lives in the surrounding `FormField`'s helper text.",
-            "Clear button has `aria-label='Clear input'` and is hidden when the input is empty."
+            "label association",
+            "aria-describedby for error/helper"
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true
     },
     "tokens": {
-        "colors": [
-            "--color-text",
-            "--color-border-default",
-            "--color-accent"
-        ],
-        "spacing": [
-            "--space-internal-8",
-            "--space-internal-12"
-        ],
-        "radii": [
-            "--radius-md"
-        ],
-        "typography": [
-            "--font-size-sm",
-            "--font-size-md",
-            "--font-size-lg"
-        ]
+        "colors": [],
+        "spacing": []
     },
     "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "defaultValue",
+        "disabled",
+        "error",
+        "helperText",
+        "id",
+        "isDisabled",
+        "label",
+        "onChange",
+        "onValueChange",
+        "placeholder",
+        "ref",
+        "size",
+        "style",
+        "type",
+        "value"
+    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {
+        "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "type": {
+            "optional": false,
+            "type": "union",
+            "values": [
+                "number",
+                "search",
+                "text",
+                "tel",
+                "email",
+                "password"
+            ]
+        },
         "size": {
             "optional": true,
             "type": "union",
             "values": [
                 "sm",
                 "md",
-                "lg"
+                "lg",
+                "S",
+                "M",
+                "L"
             ]
         },
-        "startIcon": {
-            "optional": true,
-            "type": "ReactNode"
-        },
-        "endIcon": {
-            "optional": true,
-            "type": "ReactNode"
-        },
-        "clearable": {
+        "isDisabled": {
             "optional": true,
             "type": "boolean"
         },
-        "onClear": {
+        "onValueChange": {
             "optional": true,
-            "type": "() => void"
+            "type": "(value: string | number) => void"
+        },
+        "defaultValue": {
+            "optional": true,
+            "type": "string | number"
+        },
+        "value": {
+            "optional": true,
+            "type": "string | number"
         },
         "error": {
             "optional": true,
-            "type": "boolean"
+            "type": "string"
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string"
+        },
+        "onChange": {
+            "optional": true,
+            "type": "(value: string | number) => void"
         }
     },
     "forbiddenUse": [
-        "Use without a label — the input has no accessible name on its own.",
-        "Use for multi-line input — use `TextArea`."
+        "ship a form that relies on the email validator as the only",
+        "pass a `value` plus a `defaultValue`. The component treats",
+        "use TextInput for multi-line text. Use **TextArea**, which"
+    ],
+    "composesWith": [
+        "Button",
+        "Text",
+        "Modal",
+        "CheckboxGroup",
+        "Checkbox",
+        "Select"
     ]
 }

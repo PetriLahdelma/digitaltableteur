@@ -71,6 +71,6 @@
     ],
     "composesWith": [
         "Layout",
-        "TextLink"
+        "Link"
     ]
 }

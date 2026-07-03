@@ -68,4 +68,24 @@ describe("Modal", () => {
     expect(svg).toHaveAttribute("width", "48");
     expect(svg).toHaveAttribute("height", "48");
   });
+
+  describe("animation prop", () => {
+    it("applies the entrance animation data attribute when animation is set", () => {
+      render(
+        <Modal isOpen animation="scale" title="Animated" onClose={() => {}}>
+          content
+        </Modal>,
+      );
+      expect(screen.getByRole("dialog")).toHaveAttribute("data-animation", "scale");
+    });
+
+    it("defaults to no animation attribute", () => {
+      render(
+        <Modal isOpen title="Plain" onClose={() => {}}>
+          content
+        </Modal>,
+      );
+      expect(screen.getByRole("dialog")).not.toHaveAttribute("data-animation");
+    });
+  });
 });
