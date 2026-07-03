@@ -22,7 +22,9 @@ export const OpenHours: React.FC<OpenHoursProps> = ({
   date = new Date(),
 }) => {
   const { t } = useTranslation();
-  const todayIndex = date.getDay(); // 0 sunday
+  /* WEEKLY_HOURS is Monday-first; getDay() is Sunday-based (0 = Sunday).
+     Remap so the highlighted row is actually today (was off by one). */
+  const todayIndex = (date.getDay() + 6) % 7;
   const open = isOpenAt(date);
 
   return (

@@ -4134,27 +4134,27 @@
       "text": "Expected variable, function or keyword for \"none\" of \"forced-color-adjust\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::337::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::341::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 337,
+      "line": 341,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::411::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::416::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 411,
+      "line": 416,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::603::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"light\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::610::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"light\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 603,
+      "line": 610,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",

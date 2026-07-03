@@ -1,7 +1,7 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-03T02:39:12.318Z",
-  "tokenCount": 171,
+  "generatedAt": "2026-07-03T03:43:49.197Z",
+  "tokenCount": 172,
   "usageCoverage": 139,
   "themes": [
     {
@@ -1298,6 +1298,13 @@
         {
           "name": "--inverted-text-color",
           "value": "#fff",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--shortcut-hint-color",
+          "value": "#4b5563",
           "usage": "",
           "category": "other",
           "subgroup": "General"
