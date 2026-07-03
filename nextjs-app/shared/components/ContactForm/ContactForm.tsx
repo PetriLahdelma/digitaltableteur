@@ -8,7 +8,6 @@ import Toast from "@dt/Toast";
 import TextArea from "@dt/Inputs/TextArea";
 import Select from "@dt/Select";
 import FileUpload from "@dt/FileUpload";
-import AdaptiveLoadingButton from "@dt/AdaptiveLoadingButton";
 import Text from "@dt/Text";
 import PhoneInput from "@dt/PhoneInput";
 import { useTranslation } from "react-i18next";
@@ -433,16 +432,15 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             >
               {t("contactClear")}
             </Button>
-            <AdaptiveLoadingButton
+            <Button
               className={styles["submitButton"]}
-              type="submit"
+              submits
               variant="primary"
               loading={isSubmitting}
-              loadingLabelKey="busyIndicator.loading"
               disabled={isSubmitting || !isFormValid}
             >
-              {t("contactSubmit")}
-            </AdaptiveLoadingButton>
+              {isSubmitting ? t("busyIndicator.loading") : t("contactSubmit")}
+            </Button>
           </div>
         </div>
       </form>

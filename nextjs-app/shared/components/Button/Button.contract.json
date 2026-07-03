@@ -106,6 +106,7 @@
         "accessibleNameRef",
         "children",
         "className",
+        "clickAction",
         "disabled",
         "endIcon",
         "form",
@@ -253,6 +254,11 @@
         "loading": {
             "optional": true,
             "type": "boolean"
+        },
+        "clickAction": {
+            "optional": true,
+            "type": "(event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>",
+            "description": "Async click handler for the button form only. While the returned promise is pending, the button shows its loading state, sets aria-busy, and disables itself (deduping repeat clicks). Rejections are swallowed after clearing the pending state; callers own error UX."
         },
         "rounded": {
             "optional": true,

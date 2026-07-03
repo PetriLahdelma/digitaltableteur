@@ -1,4 +1,3 @@
-export { default as AdaptiveLoadingButton } from "./AdaptiveLoadingButton/AdaptiveLoadingButton";
 export { default as AppLoading } from "./AppLoading/AppLoading";
 export { default as ArticleCard } from "./ArticleCard/ArticleCard";
 export { default as Author } from "./Author/Author";

@@ -97,6 +97,15 @@ export default {
       description: "Click handler. On link buttons, fires alongside navigation.",
       table: { category: "Behavior", type: { summary: "(e: MouseEvent) => void" } },
     },
+    clickAction: {
+      action: "clickAction",
+      description:
+        "Async click handler (button form only). While the returned promise is pending, the button shows its loading state, sets aria-busy, and disables itself to dedupe repeat clicks. onClick still fires first if both are provided. Rejections are swallowed after clearing the pending state — callers own error UX.",
+      table: {
+        category: "Behavior",
+        type: { summary: "(e: MouseEvent<HTMLButtonElement>) => void | Promise<void>" },
+      },
+    },
     href: {
       control: "text",
       description: "When set, the button renders as an anchor.",
@@ -260,6 +269,26 @@ Loading.play = async ({ canvasElement }) => {
   const button = canvas.getByRole("button");
   expect(button).toBeDisabled();
   expect(button).toHaveAttribute("aria-busy", "true");
+};
+
+// Auto-loading driven entirely by the promise returned from clickAction: no
+// externally-managed `loading` state prop required.
+export const AsyncAction = () => (
+  <Button
+    variant="primary"
+    clickAction={() =>
+      new Promise<void>((resolve) => setTimeout(resolve, 1500))
+    }
+  >
+    Save
+  </Button>
+);
+AsyncAction.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const button = canvas.getByRole("button");
+  await userEvent.click(button);
+  expect(button).toHaveAttribute("aria-busy", "true");
+  expect(button).toBeDisabled();
 };
 
 // Edge case: long label and a long Finnish/Swedish locale string must not break layout.

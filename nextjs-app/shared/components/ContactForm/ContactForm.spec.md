@@ -12,8 +12,8 @@ pipeline per page. The component is intentionally not parameterised
   message, channels (master + each), attachment (Browse → Clear),
   hear-about, submit. Disabled / hidden fields are skipped. Enter
   inside a field submits the form (native behaviour).
-- Pointer: each field's own click behaviour applies. The
-  AdaptiveLoadingButton swallows clicks while loading.
+- Pointer: each field's own click behaviour applies. The submit
+  Button disables itself (swallowing clicks) while loading.
 - Screen readers: each field is announced via its own labelled
   child. The submit button announces "busy" during submission. On
   success, the Modal steals focus and announces the success title.

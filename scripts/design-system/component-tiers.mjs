@@ -6,7 +6,6 @@ import { TIER_PREFIX } from "./in-scope-components.mjs";
 /** @type {Record<string, { tier: string, storyPath?: string }>} */
 export const COMPONENT_TIERS = {
   Accordion: { tier: "molecule" },
-  AdaptiveLoadingButton: { tier: "molecule" },
   AlertBanner: { tier: "molecule" },
   AnimatedGlyphBackground: { tier: "molecule" },
   ArticleCard: { tier: "molecule" },

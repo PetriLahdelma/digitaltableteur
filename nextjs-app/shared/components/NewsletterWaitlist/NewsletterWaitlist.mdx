@@ -88,9 +88,10 @@ unchanged.
 - **Validation:** the component runs the same email regex as Inputs
   (`/^[^\s@]+@[^\s@]+\.[^\s@]+$/`) and surfaces the error via the
   Inputs' helper slot.
-- **Submit state:** AdaptiveLoadingButton flips `aria-busy` during
-  the request. On success the form resets and a Modal opens; the
-  Modal's focus trap takes over and restores focus on close.
+- **Submit state:** the submit Button's `loading` prop flips
+  `aria-busy` during the request. On success the form resets and a
+  Modal opens; the Modal's focus trap takes over and restores focus
+  on close.
 - **Cancel:** Cancel resets to the Button state. Focus does not
   return to the Cancel button (which no longer exists); it returns
   to the Button that started the flow.
