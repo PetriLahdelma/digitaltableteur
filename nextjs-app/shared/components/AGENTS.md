@@ -36,6 +36,7 @@ ComponentName/
 npm run new-component ComponentName
 npm run validate:components
 npm run build:tokens          # regenerates agent-manifest.json
+npm run check:contract-props && npm run check:consumers   # farm CI parity (pre-push enforces)
 ```
 
 ---

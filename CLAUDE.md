@@ -37,6 +37,7 @@ npm run dev              # Next.js dev (localhost:3000)
 npm run storybook        # Components (localhost:6010)
 npm test                 # Vitest
 npm run typecheck && npm run lint && npm test && npm run build   # Pre-PR
+npm run build:tokens && npm run check:contract-props && npm run check:consumers   # Pre-PR add-on when contracts/components changed (farm CI parity; also enforced by pre-push)
 npm run validate:agent-docs   # Agent doc integrity
 npm run sanity:publish   # Publish blog → refreshes manifest
 ```

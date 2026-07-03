@@ -52,6 +52,14 @@ npm test -- ComponentName
 
 If validation fails, halt and fix reported contract/spec/MDX issues before proceeding.
 
+**Before pushing contract or component changes**, also run the farm-parity contract gate (the pre-push hook enforces it too):
+
+```bash
+npm run build:tokens && npm run check:contract-props && npm run check:consumers
+```
+
+`check:contract-props` compares contracts against freshly built agent blocks. Contracts with authored `usage` (doc-adopted) own their `composesWith`/`prefersOver`/`forbiddenUse`; only props are machine-checked for them. Props must be declared locally on the `<Name>Props` interface — a prop that only arrives via a native attribute extension (e.g. `disabled`) is invisible to the extractor and will be flagged stale.
+
 ### Step 4: Promote (remove WIP badge)
 
 Only when ALL pass:
