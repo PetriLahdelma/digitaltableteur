@@ -62,10 +62,52 @@
         "Add padding or margin via className — children will overlap their own padding because the wrapper is `position: relative`."
     ],
     "composesWith": [
-        "Badge",
-        "Checkbox",
-        "Link",
-        "TextInput",
-        "TextArea"
-    ]
+        "Skeleton",
+        "Card"
+    ],
+    "displayName": "AspectRatio",
+    "keywords": [
+        "aspect ratio",
+        "ratio box",
+        "media",
+        "16:9",
+        "thumbnail",
+        "cls"
+    ],
+    "dense": "Ratio box (1:1|4:3|16:9 default|21:9|3:2|2:3) with absolutely-filled child and overflow hidden; media inside should fill (object-cover) — reserves space, prevents CLS",
+    "usage": {
+        "description": "AspectRatio reserves a proportional box and absolutely fills it with its child, clipping overflow. Wrap media — images, video embeds, map iframes — and let the child fill (width/height 100%, object-fit cover). Because the box takes its height from the ratio, it also works as a CLS-free placeholder while media loads. 16:9 is the default; 1:1 suits avatars and thumbnails.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Make the child fill: width/height 100% and object-fit cover for images."
+            },
+            {
+                "guidance": true,
+                "description": "Use 16:9 for video, 1:1 for square thumbnails, 3:2 for editorial photography."
+            },
+            {
+                "guidance": true,
+                "description": "Wrap lazy media in it so the page reserves space up front (no layout shift on load)."
+            },
+            {
+                "guidance": true,
+                "description": "Combine with Skeleton inside for a loading placeholder at the final footprint."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put text layouts inside — overflow hidden clips anything the ratio cannot fit."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest ratio boxes; one box defines the frame, the child just fills it."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "ratio": "16:9",
+            "children": "Media goes here"
+        }
+    }
 }

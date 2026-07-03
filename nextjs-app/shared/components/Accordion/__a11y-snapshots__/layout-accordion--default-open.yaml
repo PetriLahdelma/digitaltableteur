@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- button "How is the work priced?" [expanded]
+- region "How is the work priced?": Fixed-scope engagements with a written definition of done.
+- button "How long does an engagement take?"

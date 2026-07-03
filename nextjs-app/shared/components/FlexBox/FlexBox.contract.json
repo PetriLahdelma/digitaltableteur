@@ -135,11 +135,54 @@
         "Bypass design tokens or skip forced-colors verification at beta."
     ],
     "composesWith": [
-        "Badge",
-        "Title",
+        "Stack",
         "Grid",
-        "ArticleCard",
-        "Avatar",
-        "Checkbox"
-    ]
+        "Spacer"
+    ],
+    "displayName": "FlexBox",
+    "keywords": [
+        "flex",
+        "flexbox",
+        "row",
+        "alignment",
+        "justify",
+        "gap"
+    ],
+    "dense": "Style-prop flexbox (css-less by design): direction/wrap/justify/align/alignContent + gap|rowGap|columnGap (number=px, string=token); passes through div attributes",
+    "usage": {
+        "description": "FlexBox is the free-form single-axis primitive: every flexbox knob exposed as a prop, emitted as inline style — deliberately css-less. Numbers become px gaps; strings pass through, so prefer space tokens (\"var(--space-internal-16)\"). Use it for one-off arrangements where Stack's token scale is too coarse; when you just need vertical rhythm, Stack is the sharper tool.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Prefer Stack for standard token-gapped rows/columns; FlexBox is for the layouts Stack cannot express."
+            },
+            {
+                "guidance": true,
+                "description": "Pass string gaps as space tokens; numeric gaps are raw px and should stay rare."
+            },
+            {
+                "guidance": true,
+                "description": "Use align=\"center\" for mixed-height inline clusters (icon + text + badge)."
+            },
+            {
+                "guidance": true,
+                "description": "Lean on the div passthrough for aria roles when the flex row is semantically a group."
+            },
+            {
+                "guidance": false,
+                "description": "Do not rebuild Grid with wrap and width math — two-dimensional layouts belong to Grid."
+            },
+            {
+                "guidance": false,
+                "description": "Do not hardcode magic px strings when a space token exists; the rhythm gate will flag it."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "gap": 16,
+            "align": "center",
+            "children": "Flexed content"
+        }
+    }
 }

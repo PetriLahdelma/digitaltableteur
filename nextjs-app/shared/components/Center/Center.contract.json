@@ -234,10 +234,51 @@
         "Rely on this to vertically center text inside a button or input — those already center via their own padding."
     ],
     "composesWith": [
-        "Badge",
-        "Checkbox",
-        "Link",
-        "TextInput",
-        "TextArea"
-    ]
+        "Spinner",
+        "EmptyState"
+    ],
+    "displayName": "Center",
+    "keywords": [
+        "center",
+        "centering",
+        "alignment",
+        "focal",
+        "empty state"
+    ],
+    "dense": "Both-axis flex centering (items+justify center); needs a sized box (give height via className); polymorphic as",
+    "usage": {
+        "description": "Center puts one focal thing in the middle of a box — a spinner, an empty state, a logo. It only centers within the space it has, so give it a height (or place it in a sized parent). For text flows or multi-item layouts use Stack; Center is for a single focal point.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Give Center a box: a min-height class or a sized parent — centering inside an auto-height div is a no-op."
+            },
+            {
+                "guidance": true,
+                "description": "Use it for single focal content: Spinner, EmptyState, a logo lockup."
+            },
+            {
+                "guidance": true,
+                "description": "Compose EmptyState inside Center for the canonical empty view."
+            },
+            {
+                "guidance": true,
+                "description": "Use as to keep semantics when the centered block is a section or figure."
+            },
+            {
+                "guidance": false,
+                "description": "Do not center long prose — ragged both-side edges hurt reading; align text blocks left."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Center as a page layout root; that is Container + Section."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "Centered",
+            "className": "min-h-48"
+        }
+    }
 }

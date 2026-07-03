@@ -65,5 +65,82 @@
         "put primary navigation inside an accordion. AT users land on",
         "nest accordions more than one level deep. Two-level",
         "ship long, scrollable panels. If the content scrolls inside"
+    ],
+    "displayName": "Accordion",
+    "keywords": [
+        "accordion",
+        "disclosure",
+        "faq",
+        "expand",
+        "collapse",
+        "progressive disclosure"
+    ],
+    "dense": "Exclusive disclosure group: items {id,title,content}, one open at a time (click open item to close), optional defaultOpenId; trigger button wires aria-expanded/aria-controls to its region",
+    "usage": {
+        "description": "Accordion is the exclusive disclosure group: pass `items` ({id, title, content}) and at most one stays open — opening another closes the previous, clicking the open one closes it. Use it for FAQs and reference content where users need one answer at a time. For a single independent \"show more\" use ExpandableSection; if most readers need all the content, use plain headings instead of hiding it.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use it for scannable reference content (FAQs, specs) where one section at a time is the point."
+            },
+            {
+                "guidance": true,
+                "description": "Keep titles short questions or labels; the trigger is a button, not a heading replacement."
+            },
+            {
+                "guidance": true,
+                "description": "Set defaultOpenId to the question most visitors came for."
+            },
+            {
+                "guidance": true,
+                "description": "Keep ids stable — they key the open state and the trigger/region ARIA pairing."
+            },
+            {
+                "guidance": false,
+                "description": "Do not hide task-critical content in an accordion; required steps must be visible by default."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it when users need to compare sections side by side — exclusive open forbids that; use headings."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Item",
+                "required": true,
+                "description": "One id-keyed entry; open state derives from the id match."
+            },
+            {
+                "name": "Trigger",
+                "required": true,
+                "description": "Button with aria-expanded and aria-controls, keyboard operable, chevron reflects state."
+            },
+            {
+                "name": "Region",
+                "required": true,
+                "description": "The revealed content panel labelled by its trigger."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "items": [
+                {
+                    "id": "what",
+                    "title": "What does the design system cover?",
+                    "content": "Tokens, components, patterns, and the docs you are reading."
+                },
+                {
+                    "id": "how",
+                    "title": "How do I request a component?",
+                    "content": "Open an issue with the use case and two production consumers."
+                }
+            ],
+            "defaultOpenId": "what"
+        }
+    },
+    "composesWith": [
+        "Text",
+        "Icon"
     ]
 }

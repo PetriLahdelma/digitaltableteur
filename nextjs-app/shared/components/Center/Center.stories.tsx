@@ -11,7 +11,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/Center",
   component: Center,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -68,4 +68,54 @@ export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
+};
+
+/** The classic use: one focal element dead-center in a sized box. */
+export const FocalContent: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The classic use: one focal element dead-center in a sized box. Center only centers within the space it is given." } },
+  },
+  render: () => (
+    <Center className="min-h-48">
+      <div style={{ border: "1px dashed var(--color-border, #999)", borderRadius: "50%", width: "3rem", height: "3rem", display: "grid", placeItems: "center" }}>⟳</div>
+    </Center>
+  ),
+};
+
+/** Empty views compose a message inside Center so it sits in the region's optical middle. */
+export const EmptyView: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Empty views compose a message inside Center so it sits in the region's optical middle." } },
+  },
+  render: () => (
+    <Center className="min-h-48">
+      <div style={{ textAlign: "center" }}>
+        <strong>No results</strong>
+        <p style={{ margin: 0 }}>Try a broader search.</p>
+      </div>
+    </Center>
+  ),
+};
+
+/** Without a height Center collapses to its content — the two boxes show the difference a sized box makes. */
+export const NeedsABox: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Without a height Center collapses to its content — the two boxes show the difference a sized box makes." } },
+  },
+  render: () => (
+    <div style={{ display: "flex", gap: "1rem" }}>
+      <Center className="min-h-32">
+        <span style={{ border: "1px dashed var(--color-border, #999)", padding: "0.25rem" }}>sized: centered</span>
+      </Center>
+      <Center>
+        <span style={{ border: "1px dashed var(--color-border, #999)", padding: "0.25rem" }}>auto: no-op</span>
+      </Center>
+    </div>
+  ),
 };

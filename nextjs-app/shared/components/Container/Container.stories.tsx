@@ -16,7 +16,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/Container",
   component: Container,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -83,4 +83,60 @@ export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
+};
+
+/** Each size clamps to a fixed measure: sm 640 for prose, md 960, lg 1200 (the page default), xl 1440 for dashboard density. */
+export const SizeLadder: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Each size clamps to a fixed measure: sm 640 for prose, md 960, lg 1200 (the page default), xl 1440 for dashboard density. The dashed outline shows the clamp." } },
+  },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      {(["sm", "md", "lg"] as const).map((size) => (
+        <Container key={size} size={size}>
+          <div style={{ border: "1px dashed var(--color-border, #999)", padding: "0.5rem", textAlign: "center" }}>
+            size {size}
+          </div>
+        </Container>
+      ))}
+    </div>
+  ),
+};
+
+/** The as prop lets the container double as the landmark — one element serves both the clamp and the semantics, instead of a div wrapping a main. */
+export const AsLandmark: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The as prop lets the container double as the landmark — one element serves both the clamp and the semantics, instead of a div wrapping a main." } },
+  },
+  render: () => (
+    <Container as="main" size="md">
+      <div style={{ border: "1px dashed var(--color-border, #999)", padding: "0.5rem" }}>
+        This container IS the main landmark.
+      </div>
+    </Container>
+  ),
+};
+
+/** The canonical pairing: Section owns the vertical band (spacing, background), Container owns the horizontal clamp inside it. */
+export const WithSection: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The canonical pairing: Section owns the vertical band (spacing, background), Container owns the horizontal clamp inside it." } },
+  },
+  render: () => (
+    <div style={{ border: "1px dashed var(--color-border, #999)" }}>
+      <div style={{ paddingBlock: "2rem", background: "var(--color-light-bg, #f5f5f5)" }}>
+        <Container size="sm">
+          <div style={{ border: "1px dashed var(--color-border, #999)", padding: "0.5rem", textAlign: "center" }}>
+            Section band, Container clamp, content
+          </div>
+        </Container>
+      </div>
+    </div>
+  ),
 };

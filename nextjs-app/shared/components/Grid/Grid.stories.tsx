@@ -35,7 +35,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/Grid",
   component: Grid,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -130,4 +130,60 @@ export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
+};
+
+/** Numeric columns make equal tracks — the workhorse card-wall setup. */
+export const EqualTracks: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Numeric columns make equal tracks — the workhorse card-wall setup. Gaps take CSS strings; prefer space tokens." } },
+  },
+  render: () => (
+    <Grid columns={3} gap="1rem">
+      {Array.from({ length: 6 }, (_, i) => (
+        <div key={i} style={{ border: "1px dashed var(--color-border, #999)", padding: "1rem", textAlign: "center" }}>
+          Cell {i + 1}
+        </div>
+      ))}
+    </Grid>
+  ),
+};
+
+/** Grid. */
+export const SpannedFeature: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Grid.Item with span promotes one child to a feature slot without touching the column template." } },
+  },
+  render: () => (
+    <Grid columns={3} gap="1rem">
+      <Grid.Item span={2}>
+        <div style={{ border: "2px solid var(--color-border, #999)", padding: "1rem", textAlign: "center" }}>
+          Featured (span 2)
+        </div>
+      </Grid.Item>
+      {Array.from({ length: 4 }, (_, i) => (
+        <div key={i} style={{ border: "1px dashed var(--color-border, #999)", padding: "1rem", textAlign: "center" }}>
+          Cell
+        </div>
+      ))}
+    </Grid>
+  ),
+};
+
+/** A template string when tracks genuinely differ — sidebar plus content here. */
+export const CustomTemplate: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "A template string when tracks genuinely differ — sidebar plus content here. Numbers for equal tracks, strings for everything else." } },
+  },
+  render: () => (
+    <Grid columns="200px 1fr" gap="1rem">
+      <div style={{ border: "1px dashed var(--color-border, #999)", padding: "1rem" }}>Sidebar</div>
+      <div style={{ border: "1px dashed var(--color-border, #999)", padding: "1rem" }}>Content</div>
+    </Grid>
+  ),
 };

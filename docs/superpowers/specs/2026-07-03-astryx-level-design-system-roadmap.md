@@ -267,7 +267,7 @@ Batches sized to one PR each, ordered so shared conventions are settled before d
 4. Feedback: AlertBanner, Toast, Progress, Spinner, Skeleton, Tooltip. **DONE 2026-07-03** (+ Toaster and BusyIndicator deleted).
 5. Overlays: Modal family, Lightbox. **DONE 2026-07-04** (Modal doc-adopted; AnimatedDialog was folded in Phase 0, Lightbox is catalog-exempt).
 6. Navigation: Link family, Breadcrumb, Tabs, Pagination, SkipLink, LanguageSwitcher. **DONE 2026-07-04** (Link was already adopted; TableOfContents stays Tier 2 per the 5.5 recommendation).
-7. Layout: Card, Grid, Container, Stack/FlexBox/Center/Spacer, Accordion, Divider, AspectRatio, Section.
+7. Layout: Card, Grid, Container, Stack/FlexBox/Center/Spacer, Accordion, Divider, AspectRatio, Section. **DONE 2026-07-04** (12 components doc-adopted — Card was already adopted; 7 new test files: Container/Stack/Center/Spacer/Section/AspectRatio/ExpandableSection; the council-audit "Card split" remains an explicit owner decision, not folded into this doc batch).
 8. Content: Avatar, List, Prose, CodeSnippet, CodeBlockWindow, Display.
 9. Tier 2 D2-lite sweep (scriptable: backfill dense lines + keywords, one PR).
 

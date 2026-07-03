@@ -16,7 +16,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/Section",
   component: Section,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -87,4 +87,59 @@ export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
+};
+
+/** The spacing prop sets the responsive vertical band: sm for tight utility strips, md for standard content, lg and xl for showpiece sections. */
+export const SpacingBands: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The spacing prop sets the responsive vertical band: sm for tight utility strips, md for standard content, lg and xl for showpiece sections." } },
+  },
+  render: () => (
+    <div style={{ border: "1px dashed var(--color-border, #999)" }}>
+      {(["sm", "md", "lg"] as const).map((spacing) => (
+        <Section key={spacing} spacing={spacing}>
+          <div style={{ borderBlock: "1px dashed var(--color-border, #999)", textAlign: "center" }}>spacing {spacing}</div>
+        </Section>
+      ))}
+    </div>
+  ),
+};
+
+/** hero keeps a generous top and tight bottom; the next section takes follow (no top padding) so the page never double-gaps below the hero. */
+export const HeroFollowPair: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "hero keeps a generous top and tight bottom; the next section takes follow (no top padding) so the page never double-gaps below the hero." } },
+  },
+  render: () => (
+    <div style={{ border: "1px dashed var(--color-border, #999)" }}>
+      <Section spacing="hero">
+        <div style={{ textAlign: "center", fontWeight: 600 }}>Hero band (spacing hero)</div>
+      </Section>
+      <Section spacing="follow">
+        <div style={{ textAlign: "center" }}>First content band (spacing follow)</div>
+      </Section>
+    </div>
+  ),
+};
+
+/** The background prop swaps the band surface; inverse flips the text tokens with it. */
+export const Backgrounds: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The background prop swaps the band surface; inverse flips the text tokens with it. Alternate muted sparingly to group content." } },
+  },
+  render: () => (
+    <div>
+      {(["default", "muted", "inverse"] as const).map((background) => (
+        <Section key={background} spacing="sm" background={background}>
+          <div style={{ textAlign: "center" }}>background {background}</div>
+        </Section>
+      ))}
+    </div>
+  ),
 };

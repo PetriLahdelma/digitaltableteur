@@ -84,5 +84,53 @@
     "forbiddenUse": [
         "Stack two Spacers — collapse them into the larger size.",
         "Use as a 'push' element to right-align content — use flex `margin-inline-start: auto` instead."
+    ],
+    "displayName": "Spacer",
+    "keywords": [
+        "spacer",
+        "gap",
+        "whitespace",
+        "spacing",
+        "separator space"
+    ],
+    "dense": "Fixed aria-hidden gap block: size xs 8|sm 16|md 24 (default)|lg 32|xl 48|2xl 64px, axis vertical|horizontal; escape hatch when the parent's gap can't be changed",
+    "usage": {
+        "description": "Spacer inserts a fixed, aria-hidden gap where you cannot control the parent's layout — between blocks you don't own, or in markup that isn't a Stack. It is the escape hatch, not the default: prefer gap on Stack/FlexBox/Grid first. `axis=\"horizontal\"` makes it a width in inline rows.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Reach for parent gap first (Stack/FlexBox/Grid); use Spacer only where you cannot own the parent."
+            },
+            {
+                "guidance": true,
+                "description": "Use axis=\"horizontal\" inside flex rows; the default vertical axis is for block flow."
+            },
+            {
+                "guidance": true,
+                "description": "Pick the one size that matches the rhythm step you need — sizes map to the space scale."
+            },
+            {
+                "guidance": true,
+                "description": "Keep it aria-hidden (built in); it must never carry content or semantics."
+            },
+            {
+                "guidance": false,
+                "description": "Do not stack multiple Spacers to add up space — use the next size."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Spacer for page-band rhythm; Section's spacing prop owns that."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "size": "md",
+            "axis": "vertical"
+        }
+    },
+    "composesWith": [
+        "Stack",
+        "FlexBox"
     ]
 }

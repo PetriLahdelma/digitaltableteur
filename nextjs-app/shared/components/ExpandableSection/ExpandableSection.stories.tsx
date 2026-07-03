@@ -27,7 +27,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/ExpandableSection",
   component: ExpandableSection,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -146,4 +146,66 @@ export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
   args: defaultArgs,
   render: (args) => <ExpandableSectionDemo {...args} />,
+};
+
+/** The core use: an optional tail of content behind a trigger whose label flips to the inverse verb when open. */
+export const ShowMoreTail: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The core use: an optional tail of content behind a trigger whose label flips to the inverse verb when open." } },
+  },
+  render: () => (
+    <div style={{ maxWidth: "28rem" }}>
+      <p>The visible opening of the content stays outside the disclosure.</p>
+      <ExpandableSection collapsedLabel="Show more" expandedLabel="Show less">
+        <p>The optional tail: extended details most readers can skip.</p>
+        <p>Second paragraph staggers in after the first.</p>
+      </ExpandableSection>
+    </div>
+  ),
+};
+
+/** Controlled mode: the parent owns expanded and hears onExpandedChange — for URL state, analytics, or coordinating with other UI. */
+export const ControlledDisclosure: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Controlled mode: the parent owns expanded and hears onExpandedChange — for URL state, analytics, or coordinating with other UI." } },
+  },
+  render: function ControlledDemo() {
+    const [expanded, setExpanded] = useState(false);
+    return (
+      <div style={{ maxWidth: "28rem" }}>
+        <p style={{ fontSize: "0.85em" }}>State: {expanded ? "expanded" : "collapsed"}</p>
+        <ExpandableSection
+          collapsedLabel="Show changelog"
+          expandedLabel="Hide changelog"
+          expanded={expanded}
+          onExpandedChange={setExpanded}
+        >
+          <p>1.2.0 — Adds controlled mode.</p>
+        </ExpandableSection>
+      </div>
+    );
+  },
+};
+
+/** Independent disclosures do not know about each other — both can be open. */
+export const VersusAccordion: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Independent disclosures do not know about each other — both can be open. When opening one should close the other, use Accordion." } },
+  },
+  render: () => (
+    <div style={{ maxWidth: "28rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <ExpandableSection collapsedLabel="Details A">
+        <p>Content of A.</p>
+      </ExpandableSection>
+      <ExpandableSection collapsedLabel="Details B">
+        <p>Content of B — open both; nothing closes.</p>
+      </ExpandableSection>
+    </div>
+  ),
 };

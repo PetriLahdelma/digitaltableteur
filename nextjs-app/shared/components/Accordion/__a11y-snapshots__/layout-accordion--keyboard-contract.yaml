@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- button "First section"
+- button "Second section" [expanded]
+- region "Second section": Second content.

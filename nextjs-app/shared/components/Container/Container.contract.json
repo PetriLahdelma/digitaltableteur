@@ -270,9 +270,52 @@
     ],
     "composesWith": [
         "Section",
-        "Stack",
-        "Link",
-        "Badge",
-        "Checkbox"
-    ]
+        "Grid",
+        "Stack"
+    ],
+    "displayName": "Container",
+    "keywords": [
+        "container",
+        "max-width",
+        "page width",
+        "wrapper",
+        "gutter",
+        "layout"
+    ],
+    "dense": "Width clamp: size sm 640|md 960|lg 1200 (default)|xl 1440|full; center=true adds auto inline margins; polymorphic as for landmarks (main, section)",
+    "usage": {
+        "description": "Container clamps content to a readable page width and centers it. Pick `size` by the content's measure, not the viewport — `lg` (1200px) is the page default, `sm` suits prose. It renders a `div` unless you pass `as` (use `main`/`section` when the wrapper should also be the landmark). One container per page region; sections stack inside it, not around it.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Pick size by content measure: sm for prose, lg for standard pages, xl only for dashboard-density layouts."
+            },
+            {
+                "guidance": true,
+                "description": "Use as=\"main\" (or section) when the container doubles as the landmark, instead of nesting an extra wrapper."
+            },
+            {
+                "guidance": true,
+                "description": "Pair with Section: Section owns vertical rhythm and background, Container owns horizontal clamp."
+            },
+            {
+                "guidance": true,
+                "description": "Keep center on (default); opt out only for asymmetric editorial layouts."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest containers — you get compounding gutters and a narrowing measure."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use size=\"full\" plus a custom max-width class; pick the size that matches instead."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "Clamped content",
+            "size": "lg"
+        }
+    }
 }
