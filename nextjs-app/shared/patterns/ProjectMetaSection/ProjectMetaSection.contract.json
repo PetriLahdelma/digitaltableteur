@@ -57,9 +57,9 @@
             "optional": true,
             "type": "union",
             "values": [
-                "default",
                 "muted",
-                "accent"
+                "accent",
+                "default"
             ]
         },
         "maxWidth": {
@@ -69,8 +69,8 @@
                 "sm",
                 "md",
                 "lg",
-                "xl",
-                "full"
+                "full",
+                "xl"
             ]
         },
         "className": {

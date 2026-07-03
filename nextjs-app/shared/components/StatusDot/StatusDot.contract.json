@@ -74,11 +74,11 @@
             "optional": true,
             "type": "union",
             "values": [
-                "neutral",
+                "info",
                 "success",
                 "warning",
                 "error",
-                "info"
+                "neutral"
             ]
         },
         "size": {
@@ -100,11 +100,7 @@
         },
         "children": {
             "optional": true,
-            "type": "ReactNode"
-        },
-        "className": {
-            "optional": true,
-            "type": "string"
+            "type": "React.ReactNode"
         }
     },
     "displayName": "StatusDot",

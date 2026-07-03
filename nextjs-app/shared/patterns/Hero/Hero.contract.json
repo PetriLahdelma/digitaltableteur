@@ -119,8 +119,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "default",
                 "minimal",
+                "default",
                 "centered",
                 "split",
                 "stacked"
@@ -153,8 +153,8 @@
                 "sm",
                 "md",
                 "lg",
-                "xl",
-                "full"
+                "full",
+                "xl"
             ]
         },
         "spacing": {

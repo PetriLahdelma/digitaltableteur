@@ -62,14 +62,6 @@
                 "md",
                 "lg"
             ]
-        },
-        "children": {
-            "optional": true,
-            "type": "ReactNode"
-        },
-        "className": {
-            "optional": true,
-            "type": "string"
         }
     },
     "displayName": "Kbd",

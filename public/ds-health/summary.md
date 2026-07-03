@@ -1,6 +1,6 @@
 # Design system health
 
-Generated: 2026-06-11T11:38:56.769Z
+Generated: 2026-07-03T15:14:29.550Z
 
 ## Governance checks
 

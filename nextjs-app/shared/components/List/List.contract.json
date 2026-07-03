@@ -95,10 +95,10 @@
             "optional": true,
             "type": "union",
             "values": [
-                "xl",
                 "s",
                 "m",
                 "l",
+                "xl",
                 "xs",
                 "xxs",
                 "xxl"
