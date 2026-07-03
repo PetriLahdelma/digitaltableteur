@@ -141,5 +141,50 @@
         "Button",
         "Text",
         "Title"
-    ]
+    ],
+    "keywords": [
+        "label",
+        "form",
+        "htmlFor",
+        "required",
+        "field",
+        "accessibility"
+    ],
+    "dense": "native form label; htmlFor required, required marker (aria-hidden asterisk + SR-only text), disabled mute treatment, tooltipText via native title",
+    "usage": {
+        "description": "Label is the visible name of a form control. It requires htmlFor and renders a native label element, so click-to-focus and screen-reader name resolution are the browser's. required adds a visible asterisk (aria-hidden) plus screen-reader-only (required) text, disabled applies the muted treatment, and tooltipText maps to the native title attribute.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Always pass htmlFor with the input's id; the explicit association is grep-able and survives markup reordering."
+            },
+            {
+                "guidance": true,
+                "description": "Pair required on the Label with required on the input so the visual and ARIA states agree."
+            },
+            {
+                "guidance": true,
+                "description": "Pair disabled on the Label with disabled on the input; the prop is visual only and does not propagate."
+            },
+            {
+                "guidance": true,
+                "description": "Keep critical guidance in HelperText; native title tooltips do not fire on touch."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Label as a heading above multiple controls; use FormField's group mode or a fieldset legend."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put validation errors in the Label; errors belong to the input's error state and the form-level error region."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "Email",
+            "htmlFor": "email",
+            "required": true
+        }
+    }
 }

@@ -8,7 +8,7 @@ import schema from "./schema.json";
 const meta: Meta<typeof Link> = {
   title: "Atoms/Link",
   component: Link,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -74,7 +74,9 @@ const SizesContent: React.FC = () => {
   );
 };
 
-export const Sizes: Story = { render: () => <SizesContent /> };
+export const Sizes: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "sm, md and lg inline anchors." } } }, render: () => <SizesContent /> };
 
 const UnderlineModesContent: React.FC = () => (
   <div style={{ display: "flex", gap: "1.5rem", alignItems: "baseline" }}>
@@ -90,9 +92,13 @@ const UnderlineModesContent: React.FC = () => (
   </div>
 );
 
-export const UnderlineModes: Story = { render: () => <UnderlineModesContent /> };
+export const UnderlineModes: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "always, hover and none underline treatments; hover suits dense link collections." } } }, render: () => <UnderlineModesContent /> };
 
 export const External: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "Off-site href auto-detected; external icon appended and rel handled with target=_blank." } } },
   render: () => (
     <Link href="https://example.com" size="md">
       External example

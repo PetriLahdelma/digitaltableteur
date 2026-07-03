@@ -21,6 +21,8 @@ import sv from "@dt/../locales/sv/translation.json";
 import { WipBadge } from "@dt/WipBadge";
 import { CookieConsentProvider } from "../nextjs-app/shared/lib/cookieConsent/CookieConsentContext";
 import { resolveDesignParameters } from "./lib/resolve-figma-from-contract";
+import { DtDocsPage } from "./blocks/DtDocsPage";
+import { dtSourceTransform } from "./blocks/sourceTransform";
 
 // Import global styles - CRITICAL for design tokens and component styling
 import "@dt/../index.css";
@@ -449,6 +451,13 @@ const preview: Preview = {
   parameters: {
     // Built-in onboarding checklist adds weight on first paint; disable for faster dev UX.
     onboarding: { disable: true },
+    // Astryx-style docs frame (spec 3.2 A): contract-backed components render
+    // the 11-block DT template; others fall back to classic autodocs inside
+    // DtDocsPage. Source transform strips story scaffolding from code panels.
+    docs: {
+      page: DtDocsPage,
+      source: { transform: dtSourceTransform },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

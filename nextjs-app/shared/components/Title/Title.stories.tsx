@@ -91,7 +91,7 @@ const titleComplianceRules: ComplianceRule[] = [
 export default {
   title: "Atoms/Title",
   component: Title,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -168,6 +168,12 @@ export const AllSizes = () => {
   );
 };
 
+AllSizes.tags = ["example"];
+AllSizes.parameters = {
+  ...(AllSizes as { parameters?: object }).parameters,
+  docs: { description: { story: "The xxs to xxl heading scale, independent of the semantic level." } },
+};
+
 export const AllLevels = () => {
   const { t } = useTranslation();
   return (
@@ -180,6 +186,12 @@ export const AllLevels = () => {
       <Title level={6}>{t("storyHeading6")}</Title>
     </>
   );
+};
+
+AllLevels.tags = ["example"];
+AllLevels.parameters = {
+  ...(AllLevels as { parameters?: object }).parameters,
+  docs: { description: { story: "h1 to h6 via level, with the visual size held constant." } },
 };
 
 export const CustomTagAndClass = () => {
@@ -283,6 +295,12 @@ AllLevels.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   if (headings.length < 6) {
     throw new Error("Expected six heading levels to be rendered");
   }
+};
+
+LineHeights.tags = ["example"];
+LineHeights.parameters = {
+  ...(LineHeights as { parameters?: object }).parameters,
+  docs: { description: { story: "tight to loose line-height ladder on headings." } },
 };
 
 export const Z_TitleCompliance: React.FC = () => (

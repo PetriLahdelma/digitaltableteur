@@ -83,6 +83,9 @@ const unitTestProject = {
       // config/helper files don't accidentally get pulled into the unit
       // suite.
       ".storybook/lib/resolveElements.test.tsx",
+      // Docs-frame blocks (Astryx Phase 2): pure React components with unit
+      // tests, colocated under .storybook/blocks/.
+      ".storybook/blocks/**/*.test.{ts,tsx}",
     ],
     exclude: [
       "**/node_modules/**",

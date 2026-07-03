@@ -166,5 +166,50 @@
         "Title",
         "Checkbox",
         "TextInput"
-    ]
+    ],
+    "keywords": [
+        "link",
+        "anchor",
+        "navigation",
+        "external",
+        "mailto",
+        "underline",
+        "href"
+    ],
+    "dense": "inline anchor; href sanitised (http/https/mailto/tel/relative only), external auto-detect with icon and rel handling, underline always/hover/none, sm/md/lg",
+    "usage": {
+        "description": "Link is the inline navigation anchor. It sanitises the href (http, https, mailto, tel and relative paths only; javascript: and data: URLs are rewritten to #), auto-detects off-site destinations and appends an external-link icon, and adds rel=noopener noreferrer when target=_blank. Underline modes cover always, hover and none; sizes are sm, md and lg.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use Link for navigation in body copy, lists, breadcrumbs and footers; the wavy underline treatment is token-driven."
+            },
+            {
+                "guidance": true,
+                "description": "Let the component detect external destinations; the icon and rel handling are automatic."
+            },
+            {
+                "guidance": true,
+                "description": "Use underline=hover in dense link collections such as footer columns."
+            },
+            {
+                "guidance": false,
+                "description": "Do not build button-shaped CTAs from Link; use Button, with href when the destination is a page."
+            },
+            {
+                "guidance": false,
+                "description": "Do not compose raw anchors for dynamic hrefs to bypass the sanitiser; a pasted URL must never become an XSS surface."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use underline=none for links in running text; an undecorated inline link loses its affordance."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "See the work",
+            "href": "/work"
+        }
+    }
 }
