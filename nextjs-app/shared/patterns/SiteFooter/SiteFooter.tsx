@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
-import { Container } from "@/nextjs-app/shared/components/Layout";
-import { Stack } from "@/nextjs-app/shared/components/Layout";
+import { Container } from "@/nextjs-app/shared/components/Container";
+import { Stack } from "@/nextjs-app/shared/components/Stack";
 import DtLink from "@dt/Link";
 import { Divider } from "@dt/Divider";
 import {

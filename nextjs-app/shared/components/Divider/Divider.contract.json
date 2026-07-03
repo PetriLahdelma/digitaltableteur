@@ -71,6 +71,7 @@
     ],
     "composesWith": [
         "Link",
-        "Layout"
+        "Container",
+        "Stack"
     ]
 }

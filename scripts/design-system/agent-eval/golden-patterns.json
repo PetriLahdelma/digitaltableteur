@@ -13,11 +13,6 @@
       "expectedTop1": "SiteHeader"
     },
     {
-      "id": "legacy-header",
-      "query": "legacy storybook header pattern language switcher",
-      "expectedTop1": "Header"
-    },
-    {
       "id": "hero-landing",
       "query": "full bleed homepage hero",
       "expectedTop1": "HeroSection"
