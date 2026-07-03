@@ -35,12 +35,13 @@
     "a11y": {
         "keyboard": [],
         "ariaRequirements": [
-            "aria-label or aria-labelledby"
+            "aria-label or aria-labelledby",
+            "role=status announces the wait politely"
         ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-03 (batch 4) — BusyIndicator deleted (duplicate loading indicator with off-convention s/m/l sizes); its consumers migrated here."
     },
     "tokens": {
         "colors": [
@@ -72,6 +73,63 @@
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "leave a spinner running past a couple of seconds without escalating; long waits need Progress or a Skeleton layout.",
+        "render more than one spinner per region; wrap the whole region in a single status instead."
+    ],
+    "prefersOver": [
+        "Progress for measurable or long-running work",
+        "Skeleton for placeholder layouts"
+    ],
+    "displayName": "Spinner",
+    "keywords": [
+        "spinner",
+        "loading",
+        "loader",
+        "busy",
+        "indeterminate",
+        "wait",
+        "pending"
+    ],
+    "dense": "bare indeterminate ring (role=status, aria-label); sm/md/lg; for sub-second unknown waits — Progress for known/long work, Skeleton for layouts",
+    "usage": {
+        "description": "Spinner is the smallest loading primitive: a bare animated ring with role=status and an accessible label, sized to sit inline next to inputs, inside buttons, or centered in a small region. Use it for short waits of unknown duration (roughly a second or less). When completion is measurable or the wait is long, use Progress; when a layout is loading, mirror it with Skeleton. It renders no visible text — compose one alongside when sighted users also need the word.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Name the wait in the label prop (\"Validating password\", not \"Loading\") — it is the accessible name AT users hear."
+            },
+            {
+                "guidance": true,
+                "description": "Match size to the host control: sm inside inputs and buttons, md standalone, lg for region-level waits."
+            },
+            {
+                "guidance": true,
+                "description": "Compose a visible Text label alongside for waits sighted users watch (see AppLoading); mark the visible copy aria-hidden so the announcement is single."
+            },
+            {
+                "guidance": true,
+                "description": "Swap the spinner for a concrete outcome (success icon, error text) as soon as the wait resolves — do not leave it as the end state."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Spinner for waits you can measure or that routinely exceed a couple of seconds — that is Progress territory."
+            },
+            {
+                "guidance": false,
+                "description": "Do not scatter one spinner per element while a view loads; use a Skeleton layout or one region-level spinner."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Loading content",
+            "size": "md"
+        }
+    },
+    "composesWith": [
+        "Progress",
+        "Skeleton",
+        "Text",
+        "Button"
     ]
 }

@@ -1,12 +1,20 @@
 import React from "react";
 import styles from "./AppLoading.module.css";
-import BusyIndicator from "@dt/BusyIndicator/BusyIndicator";
+import Spinner from "@dt/Spinner";
+import { useTranslation } from "react-i18next";
 
 /** Full-screen application loading overlay used as Suspense fallback */
 const AppLoading: React.FC = () => {
+  const { t } = useTranslation();
+  const label = t("busyIndicator.loading", "Loading");
   return (
     <div className={styles.overlayRoot} data-testid="app-loading-overlay">
-      <BusyIndicator variant="overlay" />
+      <span className={styles.loading}>
+        <Spinner size="lg" label={label} />
+        <span aria-hidden="true" className={styles.label}>
+          {label}
+        </span>
+      </span>
     </div>
   );
 };

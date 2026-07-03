@@ -53,13 +53,6 @@ export {
 
 // Custom interactive components
 export {
-  ToasterProvider,
-  useToast,
-  type ToastSeverity,
-  type ToastPosition,
-} from "../Toaster";
-
-export {
   Lightbox,
   type LightboxProps,
   type LightboxImage,

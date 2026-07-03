@@ -39,7 +39,7 @@ anything that should stay until dismissed, AlertBanner.
   positions × four severities; size prop maps `sm` / `md` / `lg`.
 - Icons are direct Phosphor `weight="fill"` imports (not via the
   `<Icon />` component) to keep visual alignment tight with the
-  `Toaster` library used in the chat widget. The shared icon set is the
+  `ToastProvider` library used in the chat widget. The shared icon set is the
   one nailed-down constraint between the two.
 - The `<ToastProvider>` at the app root owns the live region; this
   component is the visual + ARIA implementation rendered on demand.

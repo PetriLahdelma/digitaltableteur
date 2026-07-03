@@ -14,7 +14,6 @@ import { ToastProvider } from "../providers/ToastProvider";
 import { AnimationProvider } from "../providers/AnimationProvider";
 import { SmoothScrollProvider } from "../providers/SmoothScrollProvider";
 import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent";
-import { ToasterProvider } from "@/nextjs-app/shared/components/interactive";
 import { NextLayout } from "@dt/NextLayout";
 import { WebMcpProvider } from "../providers/WebMcpProvider";
 import { HtmlLangSync } from "./components/HtmlLangSync";
@@ -158,11 +157,9 @@ export default function RootLayout({
               <AnimationProvider>
                 <SmoothScrollProvider>
                   <ToastProvider>
-                    <ToasterProvider position="bottom-right">
-                      <CookieConsentProvider autoShow={true}>
-                        <NextLayout>{children}</NextLayout>
-                      </CookieConsentProvider>
-                    </ToasterProvider>
+                    <CookieConsentProvider autoShow={true}>
+                      <NextLayout>{children}</NextLayout>
+                    </CookieConsentProvider>
                   </ToastProvider>
                 </SmoothScrollProvider>
               </AnimationProvider>

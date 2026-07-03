@@ -67,7 +67,6 @@ const BESPOKE_OR_INFRA = new Set([
   "StudioMap",
   "TableOfContents",
   "TailwindTest",
-  "Toaster",
 ]);
 
 const PAGE_LEVEL_PREFIX =
