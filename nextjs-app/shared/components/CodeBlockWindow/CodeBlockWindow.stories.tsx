@@ -25,7 +25,7 @@ const meta: Meta<typeof CodeBlockWindow> = {
     a11y: { test: "error" },
     layout: "padded",
   },
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
 };
 
 export default meta;
@@ -50,14 +50,29 @@ export const Default: Story = {
 };
 
 export const NoTitle: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Header collapses gracefully without a title; the language label still orients the reader." } },
+  },
   args: { language: "bash", children: fixture.bash },
 };
 
 export const JsonExample: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Filename in title plus the language label — readers orient by file, not grammar." } },
+  },
   args: { title: "payload.json", language: "json", children: fixture.json },
 };
 
 export const LongLine: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Long lines scroll horizontally inside the frame; in article context the block also caps its height." } },
+  },
   args: { title: "long-line.ts", language: "ts", children: fixture.longLine },
 };
 

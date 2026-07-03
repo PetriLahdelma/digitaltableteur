@@ -153,7 +153,74 @@
         "Bypass design tokens or skip forced-colors verification at beta."
     ],
     "composesWith": [
-        "Title",
-        "Text"
-    ]
+        "Text",
+        "Stack"
+    ],
+    "displayName": "List",
+    "keywords": [
+        "list",
+        "bullet",
+        "ordered",
+        "unordered",
+        "description list",
+        "items"
+    ],
+    "dense": "Typographic list: as ul|ol|dl, items ReactNode[], size on the text ladder, terminals serif|sans, listStyleType incl. none, spacing compact|normal|relaxed; component owns rhythm — no per-item margins",
+    "usage": {
+        "description": "List renders `items` as a typographic list on the text ladder: `as` picks ul/ol/dl semantics, `size` and `terminals` match the surrounding Text voice, `listStyleType` styles or removes markers, `spacing` sets the rhythm between items. It owns inter-item spacing — no margins on items. For custom marker treatments (like ProcessBlock's em dashes) pass `listStyleType=\"none\"` and style via className.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Pick as by meaning: ol when order matters, ul otherwise, dl for term-description pairs."
+            },
+            {
+                "guidance": true,
+                "description": "Match size/terminals to the surrounding Text so lists read as part of the prose voice."
+            },
+            {
+                "guidance": true,
+                "description": "Use spacing (compact|normal|relaxed) for rhythm instead of margins on items."
+            },
+            {
+                "guidance": true,
+                "description": "Use listStyleType none plus a class for custom markers; keep the semantic list element."
+            },
+            {
+                "guidance": false,
+                "description": "Do not pass pre-wrapped li elements in items — items are the contents; List renders the li."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use a list for a single item or for layout; Stack is layout, List is semantics."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "List element",
+                "required": true,
+                "description": "ul, ol, or dl chosen by as; carries size/terminals typography and spacing rhythm."
+            },
+            {
+                "name": "Item",
+                "required": true,
+                "description": "Rendered li (or dt/dd content) per entry in items; List owns the wrapper, callers pass contents only."
+            },
+            {
+                "name": "Marker",
+                "required": false,
+                "description": "listStyleType-driven bullet/number; none removes it for custom marker treatments."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "items": [
+                "Design tokens",
+                "Components",
+                "Patterns"
+            ],
+            "as": "ul",
+            "size": "s"
+        }
+    }
 }

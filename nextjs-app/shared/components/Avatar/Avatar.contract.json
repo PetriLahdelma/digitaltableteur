@@ -141,11 +141,53 @@
         "nest an Avatar inside a Button. Pick one — Avatar already owns"
     ],
     "composesWith": [
-        "Text",
-        "Title",
-        "Grid",
-        "ArticleCard",
-        "Checkbox",
-        "CheckboxGroup"
-    ]
+        "Card",
+        "PersonCard",
+        "Badge"
+    ],
+    "displayName": "Avatar",
+    "keywords": [
+        "avatar",
+        "profile",
+        "initials",
+        "user image",
+        "menu",
+        "identity"
+    ],
+    "dense": "Identity mark: image (srcSet/lazy) or initials from name; sm..xl sizes; optional link (clickable + destinationUrl) or dropdown menu (menuItems + menuLabel); variant forces image|initials",
+    "usage": {
+        "description": "Avatar renders a person or entity mark: the image when `imageUrl` resolves, otherwise initials derived from `name`. It scales through the size tokens and can act as a link (`clickable` + `destinationUrl`) or as a menu trigger (`menuItems` + `menuLabel`) with an in-place dropdown. Always pass `name` — it feeds both the initials fallback and the accessible naming.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Always provide name, even with an image — it is the initials fallback and the accessible name."
+            },
+            {
+                "guidance": true,
+                "description": "Provide srcSet/sizes for photographic avatars so dense grids do not ship desktop images to mobile."
+            },
+            {
+                "guidance": true,
+                "description": "Use menuLabel to say what the menu does (\"Account menu\"), not who the person is."
+            },
+            {
+                "guidance": true,
+                "description": "Keep loading lazy (default-friendly) in long lists; eager only above the fold."
+            },
+            {
+                "guidance": false,
+                "description": "Do not wrap Avatar in another link/button when clickable or menuItems already make it interactive — nested controls break AT."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use variant=\"initials\" to hide a broken image pipeline; fix the source, the fallback is for genuinely imageless users."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "name": "Petri Lahdelma",
+            "size": "md"
+        }
+    }
 }

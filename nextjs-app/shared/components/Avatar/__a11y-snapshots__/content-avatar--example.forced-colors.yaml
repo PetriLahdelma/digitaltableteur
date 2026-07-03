@@ -1,3 +1,4 @@
+- status: Work in progress (beta)
 - button "Open avatar menu":
   - img "Petri Lahdelma"
 - status: avatar.menuClosed

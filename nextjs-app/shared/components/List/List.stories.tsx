@@ -86,7 +86,7 @@ const listComplianceRules: ComplianceRule[] = [
 const meta: Meta<typeof List> = {
   title: "Content/List",
   component: List,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -204,6 +204,11 @@ const Template: StoryFn<typeof List> = (
 ) => <ListStory {...args} />;
 
 export const UnorderedList = Template.bind({});
+UnorderedList.tags = ["example"];
+UnorderedList.parameters = {
+  controls: { disable: true },
+  docs: { description: { story: "The default voice: ul semantics, text-ladder sizing, markers from listStyleType." } },
+};
 UnorderedList.args = {
   as: "ul",
   items: ["storyListItem1", "storyListItem2", "storyListItem3"],
@@ -215,6 +220,11 @@ UnorderedList.play = async ({ canvasElement }) => {
 };
 
 export const OrderedList = Template.bind({});
+OrderedList.tags = ["example"];
+OrderedList.parameters = {
+  controls: { disable: true },
+  docs: { description: { story: "as ol when sequence matters — steps, rankings, anything where number two depends on number one." } },
+};
 OrderedList.args = {
   as: "ol",
   items: ["storyListItem1", "storyListItem2", "storyListItem3"],
@@ -295,6 +305,11 @@ export const DifferentSpacing: StoryFn = () => {
     </div>
   );
 };
+DifferentSpacing.tags = ["example"];
+DifferentSpacing.parameters = {
+  controls: { disable: true },
+  docs: { description: { story: "spacing sets the rhythm between items: compact for dense reference, relaxed for scannable marketing lists. Never margins on items." } },
+};
 
 export const DifferentListStyles: StoryFn = () => {
   const { t } = useTranslation();
@@ -332,6 +347,11 @@ export const DifferentListStyles: StoryFn = () => {
       </div>
     </div>
   );
+};
+DifferentListStyles.tags = ["example"];
+DifferentListStyles.parameters = {
+  controls: { disable: true },
+  docs: { description: { story: "listStyleType styles or removes the marker; none plus a class is the hook for custom marker treatments while keeping list semantics." } },
 };
 
 export const SerifAndSans: StoryFn = () => {

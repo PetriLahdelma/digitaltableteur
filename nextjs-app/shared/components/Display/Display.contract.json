@@ -63,5 +63,55 @@
     "forbiddenUse": [
         "Use `Display` for in-page section headings — that is `Title`.",
         "Stack two `Display` headings in the same viewport — the marketing visual collapses."
+    ],
+    "displayName": "Display",
+    "keywords": [
+        "display",
+        "hero text",
+        "headline",
+        "large type",
+        "impact",
+        "tagline"
+    ],
+    "dense": "Hero-scale Satoshi display type: one size above the Title ladder for page heroes and taglines; polymorphic as h1|h2|p|span|div (h1 default) — semantics chosen by placement, scale is fixed",
+    "usage": {
+        "description": "Display is the hero-scale text voice — one deliberate step above the Title ladder, for the handful of moments a page leads with type: heroes, campaign taglines, big numbers. The scale is fixed; `as` picks the semantics (`h1` default; use `p`/`span` when the text is decorative rather than the document heading). If you are choosing between sizes, you want Title — Display has exactly one job.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Reserve it for one display moment per page — the hero; a page of Displays has no hero."
+            },
+            {
+                "guidance": true,
+                "description": "Match as to the document outline: h1 in the page hero, p or span for decorative taglines near an existing heading."
+            },
+            {
+                "guidance": true,
+                "description": "Constrain the measure (max-width) — display type past ~15 words per line collapses its impact."
+            },
+            {
+                "guidance": true,
+                "description": "Let it wrap naturally; never force line breaks for shape at one viewport."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Display for section headings — that is the Title ladder (levels decoupled from sizes)."
+            },
+            {
+                "guidance": false,
+                "description": "Do not stack Display lines to fake a type ladder; hierarchy below the hero belongs to Title and Text."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "Design systems, shipped.",
+            "as": "h1"
+        }
+    },
+    "composesWith": [
+        "Title",
+        "Text",
+        "Section"
     ]
 }

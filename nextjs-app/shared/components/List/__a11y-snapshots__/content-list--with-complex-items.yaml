@@ -1,0 +1,9 @@
+- status: Work in progress (beta)
+- list:
+  - listitem:
+    - strong: Bold text
+    - text: with additional content
+  - listitem:
+    - emphasis: Italic text
+    - text: with additional content
+  - listitem: List item with icon

@@ -1,0 +1,19 @@
+- status: Work in progress (beta)
+- paragraph: Compact Spacing
+- list:
+  - listitem: First list item
+  - listitem: Second list item
+  - listitem: Third list item
+  - listitem: Fourth list item
+- paragraph: Normal Spacing (Default)
+- list:
+  - listitem: First list item
+  - listitem: Second list item
+  - listitem: Third list item
+  - listitem: Fourth list item
+- paragraph: Relaxed Spacing
+- list:
+  - listitem: First list item
+  - listitem: Second list item
+  - listitem: Third list item
+  - listitem: Fourth list item

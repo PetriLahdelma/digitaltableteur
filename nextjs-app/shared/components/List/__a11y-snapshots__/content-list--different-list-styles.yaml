@@ -1,0 +1,36 @@
+- status: Work in progress (beta)
+- paragraph: Disc
+- list:
+  - listitem: First list item
+  - listitem: Second list item
+  - listitem: Third list item
+- paragraph: Circle
+- list:
+  - listitem: First list item
+  - listitem: Second list item
+  - listitem: Third list item
+- paragraph: Square
+- list:
+  - listitem: First list item
+  - listitem: Second list item
+  - listitem: Third list item
+- paragraph: Decimal
+- list:
+  - listitem: First list item
+  - listitem: Second list item
+  - listitem: Third list item
+- paragraph: Lower Alpha
+- list:
+  - listitem: First list item
+  - listitem: Second list item
+  - listitem: Third list item
+- paragraph: Upper Roman
+- list:
+  - listitem: First list item
+  - listitem: Second list item
+  - listitem: Third list item
+- paragraph: None
+- list:
+  - listitem: First list item
+  - listitem: Second list item
+  - listitem: Third list item

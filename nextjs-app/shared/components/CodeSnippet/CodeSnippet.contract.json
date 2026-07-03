@@ -115,9 +115,53 @@
         "Bypass design tokens or skip forced-colors verification at beta."
     ],
     "composesWith": [
-        "Icon",
-        "ComplianceCard",
-        "Button",
-        "Card"
-    ]
+        "CodeBlockWindow",
+        "MacWindowFrame"
+    ],
+    "displayName": "CodeSnippet",
+    "keywords": [
+        "code",
+        "syntax highlighting",
+        "snippet",
+        "copy",
+        "prism",
+        "developer"
+    ],
+    "dense": "Prism-highlighted code block: language set (ts/js/html/python/go/rust/json/bash/...), showLineNumbers, allowCopy button w/ onCopy hook, maxLines clamp, variant surface; aria-label for AT context",
+    "usage": {
+        "description": "CodeSnippet renders highlighted code from a `code` string: pick `language` from the supported set, toggle `showLineNumbers`, and keep `allowCopy` on for anything a reader might reuse (wire `onCopy` for analytics). `maxLines` clamps tall blocks behind a scroll. Give non-obvious blocks an `aria-label` naming what the code is. For a titled, framed presentation with captions, compose it inside CodeBlockWindow.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Set language explicitly; unhighlighted code reads as a rendering bug in docs."
+            },
+            {
+                "guidance": true,
+                "description": "Keep allowCopy on for reusable code; the copy affordance is the whole point of a snippet."
+            },
+            {
+                "guidance": true,
+                "description": "Use maxLines on long listings so surrounding prose stays reachable."
+            },
+            {
+                "guidance": true,
+                "description": "Give the block an aria-label describing what the code is (\"Install command\")."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it for one-word inline code in prose — that is an inline code element, not a block snippet."
+            },
+            {
+                "guidance": false,
+                "description": "Do not paste secrets or live tokens into examples; snippets get copied verbatim."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "code": "npm install @dt/tokens",
+            "language": "bash",
+            "allowCopy": true
+        }
+    }
 }
