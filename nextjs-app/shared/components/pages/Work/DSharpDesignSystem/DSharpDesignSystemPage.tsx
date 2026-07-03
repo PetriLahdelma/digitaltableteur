@@ -1857,7 +1857,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
       <ProcessBlock
         phases={[
           {
-            title: "1. Contracts & guardrails",
+            title: "Contracts",
             activities: [
               "Four files per component",
               "Scaffolder, never hand-written",
@@ -1866,7 +1866,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             ],
           },
           {
-            title: "2. Tokens",
+            title: "Tokens",
             activities: [
               "DTCG JSON as Layer 0",
               "Style Dictionary transforms",
@@ -1875,7 +1875,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             ],
           },
           {
-            title: "3. Atoms, molecules, organisms",
+            title: "Atomic structure",
             activities: [
               "Domain semantics as atoms",
               "Molecules combine atoms",
@@ -1884,7 +1884,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             ],
           },
           {
-            title: "4. Patterns & templates",
+            title: "Patterns & templates",
             activities: [
               "Layout primitives",
               "Product workflow templates",
