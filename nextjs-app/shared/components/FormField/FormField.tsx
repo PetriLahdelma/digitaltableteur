@@ -50,10 +50,15 @@ export function FormField({
   const errorId = `${id}-error`;
 
   if (process.env.NODE_ENV !== "production") {
-    if ((label && legend) || (!label && !legend)) {
+    if (label && legend) {
       // eslint-disable-next-line no-console
       console.error(
-        "FormField: provide exactly one of `label` (single-control mode) or `legend` (group mode).",
+        "FormField: both `label` and `legend` were provided. Pass only `label` for single-control mode or only `legend` for group mode, not both.",
+      );
+    } else if (!label && !legend) {
+      // eslint-disable-next-line no-console
+      console.error(
+        "FormField: neither `label` nor `legend` was provided. Pass `label` for single-control mode or `legend` for group mode.",
       );
     }
   }
