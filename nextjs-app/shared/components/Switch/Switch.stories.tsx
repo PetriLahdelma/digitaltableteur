@@ -76,7 +76,7 @@ const switchComplianceRules: ComplianceRule[] = [
 const meta: Meta<typeof Switch> = {
   title: "Forms/Switch",
   component: Switch,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -99,6 +99,12 @@ const meta: Meta<typeof Switch> = {
       control: "text",
       description: "Helper text displayed below the switch",
       table: { category: "Content", type: { summary: "string" } },
+    },
+
+    error: {
+      control: "text",
+      description: "Error message beneath the control; wires aria-invalid + role=alert.",
+      table: { category: "State", type: { summary: "string" } },
     },
 
     // State (v2.0.0)
@@ -235,11 +241,28 @@ export const Default: Story = {
 };
 
 export const Loading: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "loading blocks double flips and sets aria-busy while an async toggle is in flight.",
+      },
+    },
+  },
   args: { loading: true, checked: true },
   render: (args) => <ControlledTemplate {...args} />,
 };
 
 export const LabelOnTop: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story: "labelPlacement moves the visible label; the wiring via aria-labelledby is unchanged.",
+      },
+    },
+  },
   name: "Label on Top",
   args: { labelPlacement: "top", label: "Top aligned label" },
   render: (args) => <ControlledTemplate {...args} />,
@@ -262,6 +285,15 @@ export const LabelOnLeft: Story = {
 };
 
 export const WithHelperText: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "helperText states the consequence before flipping; it is linked via aria-describedby.",
+      },
+    },
+  },
   args: {
     label: "Enable email notifications",
     helperText: "You'll receive updates about your account activity",
@@ -295,6 +327,8 @@ export const SizeLarge: Story = {
 };
 
 export const AllSizes: Story = {
+  tags: ["example"],
+  parameters: { docs: { description: { story: "sm, md and lg control sizes." } } },
   name: "All Sizes (v2.0.0)",
   render: () => (
     <div className={styles.sizesContainer}>
@@ -304,6 +338,23 @@ export const AllSizes: Story = {
     </div>
   ),
 };
+export const WithError: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The control owns its error: it replaces the helper line, sets aria-invalid, and announces via role=alert. Useful when an immediate toggle fails server-side.",
+      },
+    },
+  },
+  args: {
+    label: "Email notifications",
+    error: "Could not update the setting. Try again.",
+  },
+  render: (args) => <ControlledTemplate {...args} />,
+};
+
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],

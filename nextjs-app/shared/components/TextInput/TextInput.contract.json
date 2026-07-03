@@ -43,8 +43,19 @@
         "forcedColorsVerified": true
     },
     "tokens": {
-        "colors": [],
-        "spacing": []
+        "colors": [
+            "--color-disabled-bg-light",
+            "--color-error",
+            "--color-error-bg",
+            "--color-error-text",
+            "--color-primary",
+            "--color-white",
+            "--focus-ring-color"
+        ],
+        "spacing": [],
+        "typography": [
+            "--font-text"
+        ]
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
@@ -99,10 +110,6 @@
                 "L"
             ]
         },
-        "isDisabled": {
-            "optional": true,
-            "type": "boolean"
-        },
         "onValueChange": {
             "optional": true,
             "type": "(value: string | number) => void"
@@ -126,6 +133,10 @@
         "onChange": {
             "optional": true,
             "type": "(value: string | number) => void"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
         }
     },
     "forbiddenUse": [
@@ -139,5 +150,51 @@
         "TextArea",
         "CheckboxGroup",
         "Checkbox"
-    ]
+    ],
+    "displayName": "TextInput",
+    "keywords": [
+        "text input",
+        "input",
+        "field",
+        "email",
+        "phone",
+        "validation"
+    ],
+    "dense": "labelled single-line field: text/number/email/password/search/tel, built-in email + phone validation, own error/helperText, sm/md/lg; onValueChange(value)",
+    "usage": {
+        "description": "TextInput is the standard single-line field: label, control, helper and error text in one component. The email and tel types add built-in validation (typo suggestions for common email domains, libphonenumber formatting for phone numbers); error overrides the helper line and wires aria-invalid.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Always pass a real label; placeholders vanish on focus and are not accessible names."
+            },
+            {
+                "guidance": true,
+                "description": "Read values through onValueChange; it hands you the typed value directly (onChange is deprecated)."
+            },
+            {
+                "guidance": true,
+                "description": "Pick the semantic type; email and tel get validation and the right mobile keyboard for free."
+            },
+            {
+                "guidance": true,
+                "description": "Use helperText for format hints before errors happen (We never share this address)."
+            },
+            {
+                "guidance": false,
+                "description": "Do not build multi-line entry with TextInput; use TextArea."
+            },
+            {
+                "guidance": false,
+                "description": "Do not layer your own live email/tel validation on top of the built-in one; two messages can disagree. Server-side truth belongs in error after submit."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Email address",
+            "type": "email",
+            "helperText": "We never share this address."
+        }
+    }
 }

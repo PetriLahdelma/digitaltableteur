@@ -65,15 +65,7 @@
             "optional": false,
             "type": "string"
         },
-        "isChecked": {
-            "optional": true,
-            "type": "boolean"
-        },
         "defaultChecked": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "isDisabled": {
             "optional": true,
             "type": "boolean"
         },
@@ -96,9 +88,61 @@
         "showLabel": {
             "optional": true,
             "type": "boolean"
+        },
+        "checked": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
         }
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "Radio",
+    "keywords": [
+        "radio",
+        "radio button",
+        "exclusive choice",
+        "option"
+    ],
+    "dense": "single native radio with label and sm/md/lg; controlled via checked + onCheckedChange; use RadioGroup for sets (legend, state, error)",
+    "usage": {
+        "description": "Radio is one labelled option of an exclusive set. It is a low-level atom: in almost every case reach for RadioGroup, which owns the fieldset legend, the shared name, and the selection state. Use Radio directly only when composing a custom exclusive control.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Give every radio in a set the same name so the browser enforces exclusivity."
+            },
+            {
+                "guidance": true,
+                "description": "Prefer RadioGroup for sets; it wires the legend, selection state, and error text."
+            },
+            {
+                "guidance": true,
+                "description": "Use defaultChecked for uncontrolled forms that read values on submit."
+            },
+            {
+                "guidance": true,
+                "description": "Keep labels short and parallel; the group's legend carries the question."
+            },
+            {
+                "guidance": false,
+                "description": "Do not render a lone radio; a choice with one option is a Checkbox."
+            },
+            {
+                "guidance": false,
+                "description": "Do not set checked without onCheckedChange; a controlled radio that cannot change traps keyboard users."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Standard delivery",
+            "value": "standard",
+            "name": "delivery"
+        }
+    }
 }

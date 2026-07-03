@@ -76,7 +76,7 @@ const checkboxGroupComplianceRules: ComplianceRule[] = [
 export default {
   title: "Forms/CheckboxGroup",
   component: CheckboxGroup,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -114,6 +114,7 @@ const CheckboxGroupStory: React.FC<CheckboxGroupProps> = (args) => {
     <CheckboxGroup
       {...args}
       label={t(args.label as string)}
+      masterLabel={args.masterLabel ? t(args.masterLabel) : undefined}
       options={translatedOptions}
     />
   );
@@ -147,6 +148,29 @@ Default.args = {
 };
 Default.parameters = {};
 
+export const WithMasterCheckbox = Template.bind({});
+WithMasterCheckbox.args = {
+  id: "channels",
+  label: "storyCheckboxGroupLabel",
+  showMasterCheckbox: true,
+  masterLabel: "storyCheckboxGroupMasterLabel",
+  options: [
+    { label: "storyCheckboxOption1", value: "option1" },
+    { label: "storyCheckboxOption2", value: "option2" },
+    { label: "storyCheckboxOption3", value: "option3" },
+    { label: "storyCheckboxOption4", value: "option4" },
+  ],
+};
+WithMasterCheckbox.tags = ["example"];
+WithMasterCheckbox.parameters = {
+  docs: {
+    description: {
+      story:
+        "The full pattern: fieldset legend, options, and a master select-all that goes indeterminate while the set is mixed.",
+    },
+  },
+};
+
 export const WithoutMasterCheckbox = Template.bind({});
 WithoutMasterCheckbox.args = {
   label: "storyCheckboxGroupLabel",
@@ -169,6 +193,15 @@ WithoutMasterCheckbox.play = async ({
   // Click first two checkboxes
   if (checkboxes[0]) await userEvent.click(checkboxes[0]);
   if (checkboxes[1]) await userEvent.click(checkboxes[1]);
+};
+
+WithoutMasterCheckbox.tags = ["example"];
+WithoutMasterCheckbox.parameters = {
+  docs: {
+    description: {
+      story: "Small sets usually skip the master checkbox; the legend still names every option.",
+    },
+  },
 };
 
 export const WithIndeterminateState = Template.bind({});
@@ -200,6 +233,16 @@ WithIndeterminateState.play = async ({
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findAllByRole("checkbox");
+};
+
+WithIndeterminateState.tags = ["example"];
+WithIndeterminateState.parameters = {
+  docs: {
+    description: {
+      story:
+        "Seeded via defaultSelected: the master checkbox reads indeterminate until the set is uniform.",
+    },
+  },
 };
 
 export const Playground: Story = {

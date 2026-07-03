@@ -12,7 +12,7 @@ const defaultArgs = {
 const meta = {
   title: "Forms/GroupLabel",
   component: GroupLabel,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -68,6 +68,54 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+};
+
+export const Basic: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The group heading pointing at its primary control via htmlFor; clicking the text focuses that control.",
+      },
+    },
+  },
+  args: { htmlFor: "delivery-street", children: "Delivery address" },
+};
+
+export const RequiredMarker: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story: "required appends the asterisk marker when the underlying group must be filled.",
+      },
+    },
+  },
+  args: { htmlFor: "billing-street", children: "Billing address", required: true },
+};
+
+export const AboveCompoundWidget: Story = {
+  tags: ["example"],
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        story:
+          "Composition in context: a heading over a compound widget that is not a fieldset. For true same-name sets (radios, checkbox clusters) use FormField or RadioGroup, whose legend announces on every control.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: "grid", gap: "0.5rem", maxWidth: 360 }}>
+      <GroupLabel htmlFor="price-min">Price range</GroupLabel>
+      <div style={{ display: "flex", gap: "0.5rem" }}>
+        <input id="price-min" aria-label="Minimum price" style={{ width: "6rem" }} />
+        <span aria-hidden>–</span>
+        <input id="price-max" aria-label="Maximum price" style={{ width: "6rem" }} />
+      </div>
+    </div>
+  ),
 };
 
 export const Example: Story = {

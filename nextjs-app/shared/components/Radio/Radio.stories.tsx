@@ -5,7 +5,7 @@ import contract from "./Radio.contract.json";
 const meta = {
   title: "Forms/Radio",
   component: Radio,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -31,12 +31,12 @@ const meta = {
       description: "Group name (must match siblings)",
       table: { category: "Form" },
     },
-    isChecked: {
+    checked: {
       control: "boolean",
       description: "Controlled checked state",
       table: { category: "State" },
     },
-    isDisabled: {
+    disabled: {
       control: "boolean",
       description: "Disable this option",
       table: { category: "State", defaultValue: { summary: "false" } },
@@ -72,9 +72,9 @@ const meta = {
     label: "Email updates",
     value: "email",
     name: "contact-pref",
-    isChecked: true,
+    checked: true,
     size: "md",
-    isDisabled: false,
+    disabled: false,
     showLabel: true,
   },
 } satisfies Meta<typeof Radio>;
@@ -90,6 +90,59 @@ export const Default: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   ...Playground,
+};
+
+export const InAnExclusiveSet: Story = {
+  tags: ["example"],
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        story:
+          "Radios sharing a name form the exclusive set; the browser enforces one selection. Prefer RadioGroup, which adds the legend and state handling.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: "grid", gap: "0.5rem" }}>
+      <Radio name="plan" value="starter" label="Starter" defaultChecked />
+      <Radio name="plan" value="pro" label="Pro" />
+      <Radio name="plan" value="enterprise" label="Enterprise" />
+    </div>
+  ),
+};
+
+export const Sizes: Story = {
+  tags: ["example"],
+  parameters: {
+    layout: "padded",
+    docs: { description: { story: "sm, md and lg control sizes." } },
+  },
+  render: () => (
+    <div style={{ display: "grid", gap: "0.5rem" }}>
+      <Radio name="size-demo-sm" value="sm" label="Small (sm)" size="sm" defaultChecked />
+      <Radio name="size-demo-md" value="md" label="Medium (md)" size="md" defaultChecked />
+      <Radio name="size-demo-lg" value="lg" label="Large (lg)" size="lg" defaultChecked />
+    </div>
+  ),
+};
+
+export const DisabledOptions: Story = {
+  tags: ["example"],
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        story: "Disabled options stay visible so the set reads complete, but cannot be picked.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: "grid", gap: "0.5rem" }}>
+      <Radio name="tier" value="free" label="Free" defaultChecked />
+      <Radio name="tier" value="team" label="Team (contact sales)" disabled />
+    </div>
+  ),
 };
 
 export const Example: Story = {

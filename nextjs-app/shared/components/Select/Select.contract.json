@@ -49,8 +49,17 @@
         "forcedColorsVerified": true
     },
     "tokens": {
-        "colors": [],
-        "spacing": []
+        "colors": [
+            "--color-disabled-bg",
+            "--color-error",
+            "--color-muted",
+            "--color-primary",
+            "--color-white"
+        ],
+        "spacing": [],
+        "typography": [
+            "--font-text"
+        ]
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
@@ -94,10 +103,6 @@
                 "L"
             ]
         },
-        "isDisabled": {
-            "optional": true,
-            "type": "boolean"
-        },
         "onValueChange": {
             "optional": true,
             "type": "(value: string) => void"
@@ -105,6 +110,10 @@
         "onChange": {
             "optional": true,
             "type": "(value: string) => void"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
         }
     },
     "forbiddenUse": [
@@ -119,5 +128,62 @@
         "Modal",
         "Toast",
         "TextArea"
-    ]
+    ],
+    "displayName": "Select",
+    "keywords": [
+        "select",
+        "dropdown",
+        "native select",
+        "options",
+        "picker"
+    ],
+    "dense": "native select with label, options array or option children, own error + helperText, sm/md/lg; onValueChange(value)",
+    "usage": {
+        "description": "Select wraps the native select element with the field chrome: label, chevron, helper and error text. Feed it an options array (or option children for grouped markup) and read changes via onValueChange. Native means built-in keyboard support, platform mobile pickers, and zero positioning code.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use Select for five or more exclusive options, or when space is tight; RadioGroup is better when all options should stay visible."
+            },
+            {
+                "guidance": true,
+                "description": "Lead with an empty placeholder option when there is no safe default, and validate it as unselected."
+            },
+            {
+                "guidance": true,
+                "description": "Use the options array for flat lists; pass children only when you need optgroups."
+            },
+            {
+                "guidance": true,
+                "description": "Keep option labels short; native pickers truncate long labels differently per platform."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Select for search-among-many; Combobox owns typeahead."
+            },
+            {
+                "guidance": false,
+                "description": "Do not silently preselect a consequential option (billing plans); make the user choose."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Country",
+            "options": [
+                {
+                    "value": "fi",
+                    "label": "Finland"
+                },
+                {
+                    "value": "se",
+                    "label": "Sweden"
+                },
+                {
+                    "value": "ee",
+                    "label": "Estonia"
+                }
+            ]
+        }
+    }
 }

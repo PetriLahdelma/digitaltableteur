@@ -1349,5 +1349,6 @@
   "workCTASecondary": "Se alla arbeten",
   "splitButton": {
     "moreOptions": "Fler alternativ"
-  }
+  },
+  "storyCheckboxGroupMasterLabel": "Välj alla"
 }

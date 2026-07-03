@@ -19,7 +19,8 @@ export interface RadioGroupProps {
   onValueChange?: (value: string) => void;
   orientation?: "vertical" | "horizontal";
   size?: SizeUnified;
-  isDisabled?: boolean;
+  /** Disables the whole set. @default false */
+  disabled?: boolean;
   error?: string;
   helperText?: string;
   className?: string;
@@ -35,7 +36,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
   onValueChange,
   orientation = "vertical",
   size = "md",
-  isDisabled = false,
+  disabled = false,
   error,
   helperText,
   className,
@@ -60,7 +61,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
         .filter(Boolean)
         .join(" ") || undefined}
       aria-invalid={error ? true : undefined}
-      disabled={isDisabled}
+      disabled={disabled}
     >
       <legend className={styles.legend}>{legend}</legend>
       <div
@@ -76,8 +77,8 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
             value={opt.value}
             label={opt.label}
             size={size}
-            isChecked={selected === opt.value}
-            isDisabled={isDisabled || opt.disabled}
+            checked={selected === opt.value}
+            disabled={disabled || opt.disabled}
             onCheckedChange={() => pick(opt.value)}
           />
         ))}
@@ -93,5 +94,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     </fieldset>
   );
 };
+
+RadioGroup.displayName = "RadioGroup";
 
 export default RadioGroup;

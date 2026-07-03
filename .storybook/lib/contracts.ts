@@ -121,11 +121,24 @@ export function componentNameFromDocsContext(
           .displayName ||
         (context.component as { name?: string }).name
       : null;
-  if (fromComponent && fromComponent !== "Component") return fromComponent;
-
   const title = context.title ?? "";
-  const segment = title.split("/").filter(Boolean).pop();
-  return segment ?? null;
+  const segment = title.split("/").filter(Boolean).pop() ?? null;
+
+  // Production Storybook builds minify function names, so `fn.name` is a
+  // mangled single letter unless the component sets an explicit displayName.
+  // Trust the component-derived name only when it resolves to a known
+  // contract; otherwise prefer the title segment when THAT resolves. Keeps
+  // non-contract components on the classic-autodocs fallback either way.
+  if (
+    fromComponent &&
+    fromComponent !== "Component" &&
+    contractByName.has(fromComponent)
+  ) {
+    return fromComponent;
+  }
+  if (segment && contractByName.has(segment)) return segment;
+  if (fromComponent && fromComponent !== "Component") return fromComponent;
+  return segment;
 }
 
 /**

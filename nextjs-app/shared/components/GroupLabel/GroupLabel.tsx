@@ -34,4 +34,6 @@ export const GroupLabel: React.FC<GroupLabelProps> = ({
   );
 };
 
+GroupLabel.displayName = "GroupLabel";
+
 export default GroupLabel;

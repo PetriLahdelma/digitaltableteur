@@ -54,10 +54,16 @@
     },
     "tokens": {
         "colors": [
-            "--color-border",
-            "--color-primary"
+            "--color-title"
         ],
-        "spacing": []
+        "spacing": [
+            "--space-internal-8",
+            "--space-layout-16"
+        ],
+        "typography": [
+            "--font-size-text-s",
+            "--font-text"
+        ]
     },
     "lightDarkVerified": true,
     "consumers": [],
@@ -107,10 +113,6 @@
                 "L"
             ]
         },
-        "isDisabled": {
-            "optional": true,
-            "type": "boolean"
-        },
         "error": {
             "optional": true,
             "type": "string"
@@ -122,9 +124,71 @@
         "className": {
             "optional": true,
             "type": "string"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
         }
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "RadioGroup",
+    "keywords": [
+        "radio group",
+        "exclusive",
+        "single choice",
+        "fieldset",
+        "options"
+    ],
+    "dense": "exclusive choice set: fieldset legend, vertical/horizontal, sm/md/lg, own error + helperText; controlled or uncontrolled via onValueChange(value)",
+    "usage": {
+        "description": "RadioGroup is the standard way to ask for an exclusive choice: it renders a fieldset legend, the labelled radios, helper and error text, and manages the selection in controlled or uncontrolled mode.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Write the legend as the question (Delivery speed); the options then read as answers."
+            },
+            {
+                "guidance": true,
+                "description": "Use it whenever all options should be visible at once; switch to Select when space is tight or options exceed about seven."
+            },
+            {
+                "guidance": true,
+                "description": "Preselect the safest common option with defaultValue when a recommendation exists."
+            },
+            {
+                "guidance": true,
+                "description": "Use orientation=horizontal only for a few short options that still fit one line on mobile."
+            },
+            {
+                "guidance": false,
+                "description": "Do not leave a required group unselected without a recovery plan; users cannot un-pick a radio once one is chosen."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use radios for actions or navigation; picking an option must not immediately commit anything."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "legend": "Delivery speed",
+            "options": [
+                {
+                    "value": "standard",
+                    "label": "Standard (3-5 days)"
+                },
+                {
+                    "value": "express",
+                    "label": "Express (1-2 days)"
+                },
+                {
+                    "value": "pickup",
+                    "label": "Pickup point"
+                }
+            ],
+            "defaultValue": "standard"
+        }
+    }
 }

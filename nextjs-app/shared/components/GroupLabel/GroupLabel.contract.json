@@ -67,5 +67,48 @@
     "forbiddenUse": [
         "Use as a label for a single input — that is `Label`.",
         "Style as a heading — screen readers will navigate to it as a heading and miss the group it labels."
-    ]
+    ],
+    "displayName": "GroupLabel",
+    "keywords": [
+        "group label",
+        "section label",
+        "form group",
+        "legend"
+    ],
+    "dense": "heading-style label for a cluster of related controls; htmlFor targets the primary control; for true same-name sets use FormField or RadioGroup (fieldset legend)",
+    "usage": {
+        "description": "GroupLabel is a heavier, heading-style label for a cluster of related controls, such as a filter row or a composite input. It renders a real label pointing at the primary control. For true groups of same-name controls, prefer FormField or RadioGroup, whose fieldset legend names every control at once.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Point htmlFor at the control that should receive focus when the text is clicked."
+            },
+            {
+                "guidance": true,
+                "description": "Use it as the visual header of a compound widget that is not a fieldset."
+            },
+            {
+                "guidance": true,
+                "description": "Pair with required to show the asterisk when the underlying group must be filled."
+            },
+            {
+                "guidance": true,
+                "description": "Keep the text a noun phrase (Delivery address), matching Label's tone."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use GroupLabel instead of a fieldset legend for radio or checkbox sets; assistive tech only announces a legend on every contained control."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest interactive elements inside it; it is a label, and clicks forward to the target control."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "Delivery address",
+            "htmlFor": "delivery-street"
+        }
+    }
 }

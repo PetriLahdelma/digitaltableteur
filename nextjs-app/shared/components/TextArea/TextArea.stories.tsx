@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 const meta = {
   title: "Forms/TextArea",
   component: TextArea,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -85,12 +85,37 @@ Default.args = {
   rows: 4,
 };
 
+export const WithHelperCopy = Template.bind({});
+WithHelperCopy.args = {
+  label: "storyTextAreaLabel",
+  placeholder: "storyTextAreaPlaceholder",
+  rows: 4,
+  helperText: "Keep it under 500 characters.",
+};
+WithHelperCopy.tags = ["example"];
+WithHelperCopy.parameters = {
+  docs: {
+    description: {
+      story: "Label, control, and helper text; rows sets the resting height and the hint states expectations up front.",
+    },
+  },
+};
+
 export const WithError = Template.bind({});
 WithError.args = {
   label: "storyTextAreaErrorLabel",
   placeholder: "storyTextAreaPlaceholder",
   error: "storyTextAreaErrorText",
   rows: 4,
+};
+
+WithError.tags = ["example"];
+WithError.parameters = {
+  docs: {
+    description: {
+      story: "error replaces the helper line, sets aria-invalid, and announces via role=alert.",
+    },
+  },
 };
 
 export const AnimatedResize = Template.bind({});
@@ -100,6 +125,15 @@ AnimatedResize.args = {
   animateResize: true,
   minRows: 2,
   maxRows: 6,
+};
+
+AnimatedResize.tags = ["example"];
+AnimatedResize.parameters = {
+  docs: {
+    description: {
+      story: "animateResize grows the field smoothly with content, bounded by minRows and maxRows.",
+    },
+  },
 };
 
 export const Playground: Story = {

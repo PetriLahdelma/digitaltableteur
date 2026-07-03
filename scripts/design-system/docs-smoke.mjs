@@ -30,6 +30,17 @@ const PROVEN = [
   { name: "Title", docsId: "content-title--docs" },
   { name: "Link", docsId: "navigation-link--docs" },
   { name: "Label", docsId: "forms-label--docs" },
+  { name: "HelperText", docsId: "forms-helpertext--docs" },
+  { name: "GroupLabel", docsId: "forms-grouplabel--docs" },
+  { name: "FormField", docsId: "forms-formfield--docs" },
+  { name: "TextInput", docsId: "forms-textinput--docs" },
+  { name: "TextArea", docsId: "forms-textarea--docs" },
+  { name: "Select", docsId: "forms-select--docs" },
+  { name: "Checkbox", docsId: "forms-checkbox--docs" },
+  { name: "CheckboxGroup", docsId: "forms-checkboxgroup--docs" },
+  { name: "Radio", docsId: "forms-radio--docs" },
+  { name: "RadioGroup", docsId: "forms-radiogroup--docs" },
+  { name: "Switch", docsId: "forms-switch--docs" },
   { name: "Card", docsId: "layout-card--docs" },
 ];
 
