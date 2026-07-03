@@ -4,8 +4,8 @@
   margin-block: var(--space-layout-24);
   margin-inline: 0;
   width: 100%;
-  max-width: 100%;
   min-width: 0;
+  max-width: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background-color: var(--main-body-background-color);
@@ -14,19 +14,20 @@
 }
 
 /* Article MDX — constrained footprint, vertical scroll only */
+
 .containerArticle {
-  width: 100%;
-  max-width: 80%;
   margin-block: var(--space-layout-48);
   margin-inline: auto;
+  width: 100%;
+  max-width: 80%;
 }
 
 .bodyArticle {
   max-height: 35vh;
   overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
   touch-action: pan-y;
-  -webkit-overflow-scrolling: touch;
 }
 
 .bodyArticle:focus-visible {
@@ -132,33 +133,33 @@
 
 .body {
   padding: var(--space-layout-16);
-  background-color: var(--main-body-background-color);
-  max-width: 100%;
   min-width: 0;
+  max-width: 100%;
+  background-color: var(--main-body-background-color);
   overflow-x: hidden;
 }
 
 .pre {
   margin: 0;
   padding: var(--space-layout-16);
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   border: none;
   border-radius: 0;
   background-color: transparent;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  overflow: hidden visible;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  overflow: hidden visible;
 }
 
 .code {
   display: grid;
   box-sizing: border-box;
   width: 100%;
-  max-width: 100%;
   min-width: 0;
+  max-width: 100%;
   font-family: var(--font-mono);
   font-size: var(--font-size-text-s);
   line-height: var(--line-height-relaxed);
@@ -175,8 +176,8 @@
 }
 
 .code :global(span) {
-  color: var(--shiki-light, inherit);
   white-space: inherit;
+  color: var(--shiki-light, inherit);
 }
 
 :global(.themeDark) .code :global(span) {
@@ -205,6 +206,7 @@
  * mapping under the emulation class so the ForcedColors story reflects real
  * forced-colors behavior. CanvasText resolves to a real color outside FC too.
  */
+
 :global(html.sb-forced-colors-active) .code :global(span) {
   color: CanvasText !important;
 }
@@ -213,14 +215,21 @@
   counter-reset: line;
 }
 
+/* Line-number gutter as a hanging indent. NOT a grid: a [data-line] holds
+   one span per syntax token, and display:grid would auto-place every token
+   span into its own cell (two per visual row, some inside the number
+   column), shredding each line into a scatter of fragments. Inline flow
+   keeps tokens on one line; wrapped continuations indent under the code
+   start. */
+
 .container[data-line-numbers="true"] .code :global([data-line]) {
-  display: grid;
-  grid-template-columns: minmax(2.5ch, auto) minmax(0, 1fr);
-  align-items: start;
-  column-gap: var(--space-layout-8);
+  padding-inline-start: calc(3ch + var(--space-layout-8));
 }
 
 .container[data-line-numbers="true"] .code :global([data-line])::before {
+  display: inline-block;
+  margin-inline: calc(-3ch - var(--space-layout-8)) var(--space-layout-8);
+  inline-size: 3ch;
   text-align: end;
   color: var(--code-toolbar-text, #2b3a45);
   content: counter(line);
