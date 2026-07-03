@@ -15,6 +15,9 @@
         - link "About":
           - /url: /about
       - listitem:
+        - link "Pricing":
+          - /url: /pricing
+      - listitem:
         - link "Blog":
           - /url: /blog
       - listitem:

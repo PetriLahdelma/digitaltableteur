@@ -1,6 +1,6 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-06-21T14:34:33.308Z",
+  "generatedAt": "2026-07-03T02:39:12.318Z",
   "tokenCount": 171,
   "usageCoverage": 139,
   "themes": [
@@ -653,7 +653,7 @@
         },
         {
           "name": "--color-muted",
-          "value": "#6c757d",
+          "value": "#626a72",
           "usage": "Color token (muted).",
           "category": "color",
           "subgroup": "Greyscale & borders"

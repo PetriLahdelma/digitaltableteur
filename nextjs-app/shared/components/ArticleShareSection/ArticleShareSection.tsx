@@ -158,9 +158,10 @@ export function ArticleShareSection({
         </button>
       </div>
 
-      {/* Copy feedback (visual) */}
+      {/* Copy feedback (visual). green-800 ink: green-600 is only ~3:1 on
+          white, below WCAG AA for small text. */}
       {copied && (
-        <span className="text-sm font-body text-green-600 dark:text-green-400">
+        <span className="text-sm font-body text-green-800 dark:text-green-400">
           {t("articleLinkCopied", "Link copied!")}
         </span>
       )}
