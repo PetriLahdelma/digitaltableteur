@@ -50,6 +50,6 @@
     ],
     "composesWith": [
         "Divider",
-        "TextLink"
+        "Link"
     ]
 }

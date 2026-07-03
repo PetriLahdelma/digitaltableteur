@@ -115,7 +115,7 @@
         "rely on the native `indeterminate` HTML attribute — there is"
     ],
     "composesWith": [
-        "Inputs",
+        "TextInput",
         "Button",
         "Label",
         "Text",

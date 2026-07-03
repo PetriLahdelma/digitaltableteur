@@ -206,7 +206,7 @@
         "Button",
         "Title",
         "Text",
-        "Inputs",
+        "TextInput",
         "Select",
         "FileUpload",
         "PhoneInput"

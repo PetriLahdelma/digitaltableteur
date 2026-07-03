@@ -10,7 +10,7 @@ import * as Stories from './TextArea.stories.tsx';
 Multi-line text field with a required `label`, unified `error` /
 `helperText` slot (matching **TextInput**), and optional smooth
 auto-grow via `animateResize` + `minRows` / `maxRows`. This is the
-canonical production textarea — it moved out of the combined
+canonical production textarea: it moved out of the combined
 `Inputs.tsx` file into its own `TextArea` component during the
 Inputs-dissolution refactor; a companion `ChatTextArea` (an
 unlabeled, always-animated variant used by the chat composer) now
@@ -19,12 +19,12 @@ public export of this component.
 
 ## Anatomy
 
-- **Label** — `@dt/Label`, bound via `htmlFor={label}`. Required prop;
+- **Label**: `@dt/Label`, bound via `htmlFor={label}`. Required prop;
   there is no `aria-label`-only mode (unlike the chat-internal
   `ChatTextArea`).
-- **Textarea** — native `<textarea>`, static `rows` by default or
+- **Textarea**: native `<textarea>`, static `rows` by default or
   animated height when `animateResize` is on.
-- **HelperText** — renders the `error` message (state="error") or the
+- **HelperText**: renders the `error` message (state="error") or the
   `helperText` when there is no error. Mutually exclusive, error wins.
 
 ## Variants
@@ -63,8 +63,8 @@ step). See the **Example** story for the canonical composition.
 
 ## When not to use
 
-- Single-line text — use **TextInput**.
-- The chat composer's borderless, always-animated field — that is
+- Single-line text: use **TextInput**.
+- The chat composer's borderless, always-animated field: that is
   `ChatTextArea`, an internal `ChatWidget` component, not this one.
 
 ## Accessibility
@@ -74,7 +74,7 @@ step). See the **Example** story for the canonical composition.
 - **Error wiring:** `error` sets the Label's `required` visual flag,
   passes the message as the Label `tooltipText`, and renders a
   `<HelperText state="error">` below the field. There is no
-  `aria-describedby` wiring yet — tracked as promotion debt below.
+  `aria-describedby` wiring yet; tracked as promotion debt below.
 - **Reduced motion:** the animated-resize transition should respect
   `prefers-reduced-motion` (verify before promoting to beta).
 
@@ -86,10 +86,10 @@ step). See the **Example** story for the canonical composition.
 
 ## Common mistakes
 
-- Passing `resize` or `showCount` — those props belonged to a
+- Passing `resize` or `showCount`: those props belonged to a
   previous, unused parallel implementation and are not supported by
   the current component. Character counting is not implemented.
-- Omitting `label` — it is required; there is no bare/`aria-label`-only
+- Omitting `label`: it is required; there is no bare/`aria-label`-only
   mode on this component (use `ChatTextArea` inside ChatWidget for
   that shape).
 

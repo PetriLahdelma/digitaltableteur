@@ -337,7 +337,7 @@
     "composesWith": [
         "Title",
         "Text",
-        "Inputs",
+        "TextInput",
         "Icon",
         "Modal",
         "CheckboxGroup"

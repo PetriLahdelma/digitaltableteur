@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FormField } from "./FormField";
-import { TextInput } from "../TextInput/TextInput";
+import { Input } from "@/components/ui/input";
 import Checkbox from "@dt/Checkbox";
 import contract from "./FormField.contract.json";
 
@@ -8,7 +8,7 @@ const defaultArgs = {
   label: "Email address",
   helperText: "We reply within two business days",
   required: true,
-  children: <TextInput type="email" placeholder="you@company.com" />,
+  children: <Input type="email" placeholder="you@company.com" />,
 };
 
 const meta = {
@@ -84,7 +84,7 @@ export const Example: Story = {
         required
         helperText="As on your business card"
       >
-        <TextInput placeholder="Alex Example" />
+        <Input placeholder="Alex Example" />
       </FormField>
     </div>
   ),

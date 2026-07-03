@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "form",
     "status": "beta",
-    "description": "Wrapper that owns the label + control + helper-text triplet for a single field. Wires `htmlFor`/`id`, `aria-describedby`, and the required-/error-state slots so consumers do not reimplement them per form. When `legend` is set instead of `label`, renders a `<fieldset>` + `<legend>` around multiple children — the single canonical wrapper for both single-control and grouped-control forms (absorbs the former `FormGroup`).",
+    "description": "Wrapper that owns the label + control + helper-text triplet for a single field. Wires `htmlFor`/`id`, `aria-describedby`, and the required-/error-state slots so consumers do not reimplement them per form. When `legend` is set instead of `label`, renders a `<fieldset>` + `<legend>` around multiple children: the single canonical wrapper for both single-control and grouped-control forms (absorbs the former `FormGroup`).",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-form-field",
     "radixPrimitive": null,
     "element": "div",
@@ -93,12 +93,12 @@
     },
     "forbiddenUse": [
         "Render a bare `<label>` + `<input>` next to a `FormField` in the same form — the visual rhythm desyncs.",
-        "Put two controls inside one `FormField` in single-control mode — wrap each in its own, or switch to group mode with `legend`.",
-        "Provide both `label` and `legend` — pick single-control mode (`label`) or group mode (`legend`), never both."
+        "Put two controls inside one `FormField` in single-control mode; wrap each in its own, or switch to group mode with `legend`.",
+        "Provide both `label` and `legend`; pick single-control mode (`label`) or group mode (`legend`), never both."
     ],
     "composesWith": [
         "Label",
-        "Inputs",
+        "Checkbox",
         "HelperText"
     ]
 }

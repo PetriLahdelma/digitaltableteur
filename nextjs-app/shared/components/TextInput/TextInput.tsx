@@ -159,7 +159,7 @@ const TextInput: React.FC<TextInputProps> = ({
   };
 
   return (
-    <div className={styles["input-container"]}>
+    <div className={styles.inputContainer}>
       <Label
         htmlFor={inputId}
         required={hasError}

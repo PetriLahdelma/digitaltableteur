@@ -11,7 +11,7 @@ Primary action button paired with a dropdown toggle for related secondary action
 ## Do / don't
 - Do: use for a primary action that has closely related alternate actions (Save / Save as, Export PDF / Export CSV).
 - Do: pass `usePortal` when the trigger sits inside an `overflow: hidden` container.
-- Don't: use for unrelated actions — prefer separate Buttons.
+- Don't: use for unrelated actions; prefer separate Buttons.
 - Don't: promote past alpha without a11y review, forced-colors verification, and light/dark verification (see roadmap below).
 
 ## Design notes

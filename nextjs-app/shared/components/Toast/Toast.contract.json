@@ -146,7 +146,7 @@
         "Button",
         "Text",
         "Modal",
-        "Inputs",
+        "TextInput",
         "CheckboxGroup",
         "Select"
     ]

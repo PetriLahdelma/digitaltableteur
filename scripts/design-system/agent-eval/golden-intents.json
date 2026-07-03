@@ -35,7 +35,7 @@
     {
       "id": "text-input",
       "query": "labeled text input",
-      "expectedInTop3": ["Inputs", "TextInput"]
+      "expectedInTop3": ["TextInput"]
     },
     {
       "id": "pagination",
@@ -75,7 +75,7 @@
     {
       "id": "checkbox",
       "query": "checkbox with label",
-      "expectedInTop3": ["Checkbox", "CheckboxField"]
+      "expectedInTop3": ["Checkbox"]
     },
     {
       "id": "switch",

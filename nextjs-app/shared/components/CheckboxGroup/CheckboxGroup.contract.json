@@ -94,7 +94,7 @@
         "rely on the master label translation key without testing the"
     ],
     "composesWith": [
-        "Inputs",
+        "TextInput",
         "Button",
         "Text",
         "Grid",

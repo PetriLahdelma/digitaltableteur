@@ -57,7 +57,7 @@
     ],
     "composesWith": [
         "FormField",
-        "Inputs",
+        "TextInput",
         "Button",
         "Text",
         "CheckboxGroup"

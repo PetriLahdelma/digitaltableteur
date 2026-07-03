@@ -20,7 +20,7 @@ import schema from "./schema.json";
 const meta: Meta<typeof SplitButton> = {
   title: "Molecules/SplitButton",
   component: SplitButton,
-  tags: ["autodocs"],
+  tags: ["alpha", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

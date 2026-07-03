@@ -74,7 +74,7 @@
     },
     "forbiddenUse": [
         "use TextArea for single-line text. Use **TextInput**, which shares the label + helper contract but carries single-line UX and format validation.",
-        "promote to beta without a real a11y.reviewed pass (keyboard, ARIA, focus, forced-colors) and honest forcedColorsVerified/lightDarkVerified flags — this contract was authored during a file move from Inputs/TextArea.tsx and has not had that review."
+        "promote to beta without a real a11y.reviewed pass (keyboard, ARIA, focus, forced-colors) and honest forcedColorsVerified/lightDarkVerified flags: this contract was authored during a file move from Inputs/TextArea.tsx and has not had that review."
     ],
     "composesWith": [
         "Label",
