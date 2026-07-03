@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-03T14:25:00.964Z",
+  "createdAt": "2026-07-03T14:57:10.919Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -193,6 +193,26 @@
       "value": "1rem"
     },
     {
+      "column": 11,
+      "file": "nextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css",
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css\u001f43\u001f11\u001f-1px\u001fUnexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 43,
+      "rule": "rhythmguard/use-scale",
+      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "type": "off-scale",
+      "value": "-1px"
+    },
+    {
+      "column": 11,
+      "file": "nextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/AvatarGroup/AvatarGroup.module.css\u001f43\u001f11\u001f-1px\u001fUnexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 43,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "-1px"
+    },
+    {
       "column": 24,
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
       "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Badge/Badge.module.css\u001f112\u001f24\u001f0.125rem\u001fUnexpected off-scale value \"0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
@@ -381,6 +401,26 @@
       "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
       "value": "0.5rem"
+    },
+    {
+      "column": 24,
+      "file": "nextjs-app/shared/components/ButtonGroup/ButtonGroup.module.css",
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/ButtonGroup/ButtonGroup.module.css\u001f14\u001f24\u001f-1px\u001fUnexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 14,
+      "rule": "rhythmguard/use-scale",
+      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "type": "off-scale",
+      "value": "-1px"
+    },
+    {
+      "column": 24,
+      "file": "nextjs-app/shared/components/ButtonGroup/ButtonGroup.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/ButtonGroup/ButtonGroup.module.css\u001f14\u001f24\u001f-1px\u001fUnexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 14,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "-1px"
     },
     {
       "column": 27,
@@ -4231,6 +4271,26 @@
       "text": "Unexpected raw scale value \"0.125rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
       "value": "0.125rem"
+    },
+    {
+      "column": 11,
+      "file": "nextjs-app/shared/components/StatusDot/StatusDot.module.css",
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/StatusDot/StatusDot.module.css\u001f73\u001f11\u001f-1px\u001fUnexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 73,
+      "rule": "rhythmguard/use-scale",
+      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "type": "off-scale",
+      "value": "-1px"
+    },
+    {
+      "column": 11,
+      "file": "nextjs-app/shared/components/StatusDot/StatusDot.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/StatusDot/StatusDot.module.css\u001f73\u001f11\u001f-1px\u001fUnexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 73,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "-1px"
     },
     {
       "column": 8,
@@ -8126,6 +8186,6 @@
   "formatVersion": 1,
   "summary": {
     "scaleCleanliness": 91,
-    "totalFindings": 812
+    "totalFindings": 818
   }
 }

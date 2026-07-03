@@ -1,0 +1,61 @@
+.group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.item {
+  display: inline-flex;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--color-surface);
+}
+
+.item:not(:first-child) {
+  margin-inline-start: calc(-1 * var(--space-internal-8));
+}
+
+.overflow {
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-neutral-bg);
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-xxs);
+  line-height: 1;
+  color: var(--color-neutral-text);
+}
+
+.sm .overflow {
+  block-size: 2rem;
+  inline-size: 2rem;
+}
+
+.md .overflow {
+  block-size: 2.5rem;
+  inline-size: 2.5rem;
+}
+
+.lg .overflow {
+  block-size: 3rem;
+  inline-size: 3rem;
+}
+
+.srOnly {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  block-size: 1px;
+  inline-size: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+@media (forced-colors: active) {
+  .item {
+    box-shadow: 0 0 0 2px Canvas;
+  }
+
+  .overflow {
+    border: 1px solid CanvasText;
+  }
+}

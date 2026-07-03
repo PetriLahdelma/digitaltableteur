@@ -271,6 +271,24 @@ Batches sized to one PR each, ordered so shared conventions are settled before d
 8. Content: Avatar, List, Prose, CodeSnippet, CodeBlockWindow, Display.
 9. Tier 2 D2-lite sweep (scriptable: backfill dense lines + keywords, one PR).
 
+## 6.5 Astryx catalog gap analysis (2026-07-03, from astryx.atmeta.com/components)
+
+Full diff of the Astryx public catalog against ours. Three buckets:
+
+**Added as new DT primitives (gap-fill PR, alpha + WIP badge, full artifact set):**
+
+| Astryx | DT component | Notes |
+|---|---|---|
+| Kbd | **Kbd** | Semantic `<kbd>` keycap, sm/md/lg on the text ladder. |
+| Status Dot | **StatusDot** | tone x size + pulse; label mandatory (visible or sr-only). |
+| Empty State | **EmptyState** | Composes Title/Text/Icon; sm/md/lg; action slot. |
+| Button Group | **ButtonGroup** | role=group; attached (segmented) or spaced. Action cluster only — no selection state. |
+| Avatar Group | **AvatarGroup** | Resolves the 5.2 backlog note; overlap stack + "+N" bubble. |
+
+**Already covered (no duplicate will be documented):** Selector→Select, Typeahead→Combobox, Tokenizer/Multi Selector→MultiCombobox, File Input→FileUpload, Field→FormField, Radio List→RadioGroup, Dialog→Modal, Banner→AlertBanner, Progress Bar→Progress, Outline→TableOfContents, Top Nav→SiteHeader, Tab List→Tabs, Breadcrumbs→Breadcrumb, Code/Code Block→CodeSnippet/CodeBlockWindow, Collapsible→ExpandableSection/Accordion, Markdown→MarkdownMessage, Heading→Title, App Shell→Layout, Clickable Card→Card (clickable pattern), Chat family→ChatWidget/Donny family, VisuallyHidden→VisuallyHidden.
+
+**Declined / backlog (each is a project, not a batch item; revisit only with a concrete consumer):** Table (+ its seven hooks), Calendar / Date / DateRange / DateTime / Time inputs, Number Input, Slider, Popover / Hover Card / Overlay primitives, Command Palette, Power Search, Carousel, Segmented Control (Toggle Button / Toggle Button Group — ButtonGroup deliberately excludes selection state), Toolbar, Dropdown Menu / More Menu (SplitButton menu covers current needs), Side Nav / Top Nav Mega Menu, Resize Handle, Tree List, Blockquote / Citation / Thumbnail / Timestamp / Token, Metadata List / Overflow List.
+
 ## 7. Risks and mitigations
 
 - **Content authoring is the real cost** (300+ bestPractices entries, 200+ examples). Mitigate: author in batches with the collaborative editorial process (per feedback memory: no isolated-subagent copywriting; draft in main thread, user reviews per batch).

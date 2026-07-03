@@ -1,0 +1,94 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-6);
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+.dot {
+  block-size: 0.5em;
+  inline-size: 0.5em;
+  flex: none;
+  border-radius: 50%;
+  background-color: currentcolor;
+}
+
+.sm {
+  font-size: var(--font-size-text-xxs);
+}
+
+.md {
+  font-size: var(--font-size-text-s);
+}
+
+.lg {
+  font-size: var(--font-size-text-m);
+}
+
+.dot.neutral {
+  background-color: var(--color-muted);
+}
+
+.dot.success {
+  background-color: var(--color-success);
+}
+
+.dot.warning {
+  background-color: var(--color-warning);
+}
+
+.dot.error {
+  background-color: var(--color-error);
+}
+
+.dot.info {
+  background-color: var(--color-info);
+}
+
+.pulse {
+  animation: statusdot-pulse 2s var(--ease-out-cubic) infinite;
+}
+
+@keyframes statusdot-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, currentcolor 45%, transparent);
+  }
+
+  70% {
+    box-shadow: 0 0 0 0.4em transparent;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.label {
+  line-height: 1.3;
+}
+
+.srOnly {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  block-size: 1px;
+  inline-size: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .dot {
+    border: 1px solid CanvasText;
+    background-color: CanvasText;
+  }
+}

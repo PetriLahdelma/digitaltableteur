@@ -46,6 +46,11 @@ const PROVEN = [
   { name: "PhoneInput", docsId: "forms-phoneinput--docs" },
   { name: "FileUpload", docsId: "forms-fileupload--docs" },
   { name: "Card", docsId: "layout-card--docs" },
+  { name: "Kbd", docsId: "content-kbd--docs" },
+  { name: "StatusDot", docsId: "feedback-statusdot--docs" },
+  { name: "EmptyState", docsId: "content-emptystate--docs" },
+  { name: "ButtonGroup", docsId: "actions-buttongroup--docs" },
+  { name: "AvatarGroup", docsId: "content-avatargroup--docs" },
 ];
 
 function contractFor(name) {
