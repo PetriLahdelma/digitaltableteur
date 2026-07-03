@@ -3,8 +3,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { useTranslation } from "react-i18next";
-import Button, { type ButtonProps } from "./Button";
-import buttonStyles from "./Button.module.css";
+import Button, { type ButtonProps } from "../Button";
+import buttonStyles from "../Button/Button.module.css";
 import Icon from "@dt/Icon";
 import styles from "./SplitButton.module.css";
 

@@ -10,12 +10,12 @@ import {
   Subtitle,
   Title,
 } from "@storybook/addon-docs/blocks";
-import { SplitButton } from "@dt/Button";
+import SplitButton from "@dt/SplitButton";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import CodeSnippet from "@dt/CodeSnippet";
-import schema from "./SplitButton.schema.json";
+import schema from "./schema.json";
 
 const meta: Meta<typeof SplitButton> = {
   title: "Molecules/SplitButton",

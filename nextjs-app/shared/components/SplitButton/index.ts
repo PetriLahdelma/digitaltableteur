@@ -1,2 +1,2 @@
-export { default } from "../Button/SplitButton";
-export type { SplitButtonOption, SplitButtonProps } from "../Button/SplitButton";
+export { default } from "./SplitButton";
+export type { SplitButtonOption, SplitButtonProps } from "./SplitButton";

@@ -4,7 +4,7 @@
     "name": "SplitButton",
     "type": "interaction",
     "description": "Primary action button with dropdown menu for related secondary actions, with collision detection and nested menu support.",
-    "source": "nextjs-app/shared/components/Button/SplitButton.tsx",
+    "source": "nextjs-app/shared/components/SplitButton/SplitButton.tsx",
     "owners": ["design", "engineering"]
   },
   "anatomy": {"container": "split button wrapper", "parts": [{"id": "primaryButton", "label": "primary action button", "role": "button", "description": "Main action segment (Button component)."}, {"id": "toggleButton", "label": "dropdown toggle", "role": "button", "description": "Caret segment that opens menu (Button component)."}, {"id": "menu", "label": "dropdown menu", "role": "menu", "description": "List of alternative actions."}, {"id": "menuItem", "label": "menu item", "role": "menuitem", "description": "Individual action in menu (can have children for nested menu)."}, {"id": "subMenu", "label": "nested submenu", "role": "menu", "description": "Second-level menu for items with children."}]},
