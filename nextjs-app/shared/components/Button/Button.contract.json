@@ -192,6 +192,36 @@
         }
     ],
     "schemaVersion": 2,
+    "displayName": "Button",
+    "keywords": ["button", "cta", "submit", "action", "loading", "async", "primary", "click"],
+    "dense": "action trigger; variant (weight) x tone (semantic) matrix, sm/md/lg, surface-aware, loading + async clickAction, polymorphic button/link",
+    "usage": {
+        "description": "Button triggers an action: submitting a form, confirming a choice, or starting a flow. It renders a real button, or an anchor when href is given, and carries the full variant (visual weight) by tone (semantic color) matrix.",
+        "bestPractices": [
+            { "guidance": true, "description": "Reserve variant=primary for the single most important action in the view; use secondary or tertiary for everything else." },
+            { "guidance": true, "description": "Write labels that name the action, like Save changes or Send message, never OK or Click here." },
+            { "guidance": true, "description": "Use clickAction for async work so the button shows its loading state and dedupes clicks automatically; if you need a progress readout (e.g. percent complete), render it yourself in children, the component only owns the busy/disabled state." },
+            { "guidance": true, "description": "Pair tone=error with a confirmation step for irreversible actions." },
+            { "guidance": true, "description": "Use surface=onDark or onBrand when the button sits on a dark or brand background instead of overriding colors." },
+            { "guidance": false, "description": "Do not place more than one primary button in the same view; it dilutes the hierarchy." },
+            { "guidance": false, "description": "Do not use Button for pure navigation; if it only takes the user to another page, use Link (Button with href is for action-shaped navigation like Get started)." },
+            { "guidance": false, "description": "Do not encode meaning with tone alone; the label must carry the meaning for color-blind users." }
+        ],
+        "anatomy": [
+            { "name": "Icon", "required": false, "description": "Leading icon reinforcing the label, for example a trash icon on Delete." },
+            { "name": "Label", "required": true, "description": "Visible text passed as children; doubles as the accessible name when no accessibleName or tooltip is set." },
+            { "name": "End icon", "required": false, "description": "Trailing icon rendered from the endIcon prop, for example a chevron on a menu trigger." },
+            { "name": "Loading state", "required": false, "description": "No spinner element; while loading or clickAction is pending, the whole button pulses (opacity animation), sets aria-busy, and disables interaction. Content is unchanged, so pair with a label that still reads sensibly mid-action." }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "Save changes",
+            "variant": "primary",
+            "tone": "neutral",
+            "size": "md"
+        }
+    },
     "props": {
         "submits": {
             "optional": true,
