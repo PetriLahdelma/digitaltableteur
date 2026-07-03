@@ -76,5 +76,17 @@
         "Text",
         "TextInput",
         "DonnyAvatar"
-    ]
+    ],
+    "displayName": "ChatWidget",
+    "keywords": [
+        "chat",
+        "assistant",
+        "donny",
+        "streaming",
+        "widget"
+    ],
+    "dense": "Collapsible site assistant (Donny) chat widget: streaming replies, tool actions, i18n, mobile sheet behavior",
+    "usage": {
+        "description": "The site's collapsible assistant widget: streaming chat with Donny, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
+    }
 }

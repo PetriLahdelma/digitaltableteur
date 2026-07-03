@@ -80,5 +80,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "FormFieldEditorial",
+    "keywords": [
+        "form field",
+        "editorial",
+        "uppercase label",
+        "contact"
+    ],
+    "dense": "Uppercase-label field wrapper for editorial contact flows; pairs with ContactFormEditorial",
+    "usage": {
+        "description": "Editorial-voice field wrapper (uppercase label treatment) used by ContactFormEditorial. For standard forms use the inputs' built-in labels; FormField covers group semantics."
+    }
 }

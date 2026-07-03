@@ -170,5 +170,17 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "DonnyAvatar",
+    "keywords": [
+        "donny",
+        "avatar",
+        "chatbot",
+        "mood",
+        "expression"
+    ],
+    "dense": "Donny assistant avatar with mood/action states (distinct eye expressions) used by the chat widget",
+    "usage": {
+        "description": "The assistant's animated avatar with mood states (thinking, speaking, idle) used inside ChatWidget and Donny marketing surfaces."
+    }
 }

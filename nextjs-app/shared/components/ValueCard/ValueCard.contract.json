@@ -93,5 +93,16 @@
     "forbiddenUse": [
         "Use for content with a primary CTA — that is `ServiceCard` or `Card`.",
         "Mix `ValueCard` with `Card` in the same grid row — the rhythm desyncs."
-    ]
+    ],
+    "displayName": "ValueCard",
+    "keywords": [
+        "values",
+        "principles",
+        "card",
+        "icon"
+    ],
+    "dense": "Values/principles card: icon + title + short description; grid unit for about/culture sections",
+    "usage": {
+        "description": "Card for one value or principle (icon, title, one-liner) in about/culture grids."
+    }
 }

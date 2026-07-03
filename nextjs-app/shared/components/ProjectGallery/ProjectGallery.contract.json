@@ -72,5 +72,16 @@
         "ProjectNav",
         "Container",
         "Section"
-    ]
+    ],
+    "displayName": "ProjectGallery",
+    "keywords": [
+        "case study",
+        "gallery",
+        "project",
+        "images"
+    ],
+    "dense": "Case-study image gallery arranging project shots within article layouts",
+    "usage": {
+        "description": "Case-study gallery for project imagery inside work articles. For lightbox behavior see Gallery."
+    }
 }

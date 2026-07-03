@@ -81,5 +81,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "Designerman",
+    "keywords": [
+        "sprite",
+        "mascot",
+        "animation",
+        "easter egg"
+    ],
+    "dense": "Sprite-sheet mascot animation (Designerman); decorative site personality element",
+    "usage": {
+        "description": "Sprite-sheet mascot animation — pure site personality. Decorative only; keep it out of task flows."
+    }
 }

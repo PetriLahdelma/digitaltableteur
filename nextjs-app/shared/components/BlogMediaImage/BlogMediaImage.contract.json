@@ -89,5 +89,16 @@
     "composesWith": [
         "Container",
         "Section"
-    ]
+    ],
+    "displayName": "BlogMediaImage",
+    "keywords": [
+        "blog",
+        "image",
+        "caption",
+        "responsive media"
+    ],
+    "dense": "Blog-optimized responsive image with optional caption; handles sizing presets for article layouts",
+    "usage": {
+        "description": "Responsive article image with optional caption, sized for the blog's prose measure. Use inside article bodies instead of raw img."
+    }
 }

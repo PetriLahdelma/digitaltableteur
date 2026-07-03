@@ -60,5 +60,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "SentrySummaryCard",
+    "keywords": [
+        "sentry",
+        "monitoring",
+        "errors",
+        "dashboard"
+    ],
+    "dense": "Sentry issue-summary card (counts/trends) for internal status surfaces",
+    "usage": {
+        "description": "Internal status card summarizing Sentry issues (counts and trends). Ops/dashboard surface, not marketing UI."
+    }
 }

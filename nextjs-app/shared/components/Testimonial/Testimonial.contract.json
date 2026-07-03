@@ -80,5 +80,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "Testimonial",
+    "keywords": [
+        "testimonial",
+        "quote",
+        "social proof",
+        "attribution"
+    ],
+    "dense": "Quote block with attribution (name, role, avatar) for social-proof sections",
+    "usage": {
+        "description": "Attributed quote block for social-proof sections: the quote, the person, their role. Use real, attributable quotes only."
+    }
 }

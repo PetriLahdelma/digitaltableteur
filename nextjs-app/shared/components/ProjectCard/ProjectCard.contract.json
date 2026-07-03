@@ -75,5 +75,16 @@
     "forbiddenUse": [
         "invent parallel primitives inside this folder",
         "promote to stable without production consumer evidence"
-    ]
+    ],
+    "displayName": "ProjectCard",
+    "keywords": [
+        "portfolio",
+        "project",
+        "card",
+        "work index"
+    ],
+    "dense": "Basic portfolio project card for the work grid (image, title, tags)",
+    "usage": {
+        "description": "The basic work-grid project card (image, title, tags). EnhancedProjectCard is the richer variant — pick one per surface."
+    }
 }

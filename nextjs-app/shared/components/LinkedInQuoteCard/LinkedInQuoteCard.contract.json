@@ -110,5 +110,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "LinkedInQuoteCard",
+    "keywords": [
+        "linkedin",
+        "quote",
+        "social card",
+        "post"
+    ],
+    "dense": "LinkedIn-post-styled quote card for embedding social posts as styled quotes in content",
+    "usage": {
+        "description": "Quote card styled like a LinkedIn post, for embedding social content in articles and marketing pages without an external embed."
+    }
 }

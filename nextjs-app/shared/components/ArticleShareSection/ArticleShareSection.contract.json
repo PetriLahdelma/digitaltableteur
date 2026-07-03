@@ -74,5 +74,16 @@
         "ArticleContent",
         "TableOfContents",
         "EnhancedAuthorCard"
-    ]
+    ],
+    "displayName": "ArticleShareSection",
+    "keywords": [
+        "share",
+        "article",
+        "social",
+        "blog footer"
+    ],
+    "dense": "Share-links section at the end of blog articles; composes SocialShare with a heading",
+    "usage": {
+        "description": "End-of-article share section composing SocialShare under a heading. Blog article template slot; not for arbitrary pages."
+    }
 }

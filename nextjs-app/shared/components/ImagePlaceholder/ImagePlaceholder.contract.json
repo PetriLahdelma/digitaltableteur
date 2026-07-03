@@ -111,5 +111,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "ImagePlaceholder",
+    "keywords": [
+        "placeholder",
+        "image",
+        "dimensions",
+        "mock"
+    ],
+    "dense": "Fixed-dimension placeholder block for missing/mock imagery in layouts and demos",
+    "usage": {
+        "description": "Dimension-labelled placeholder for imagery in layouts, demos, and drafts. Swap for real media before shipping."
+    }
 }

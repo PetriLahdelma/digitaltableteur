@@ -61,5 +61,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "VisuallyHidden",
+    "keywords": [
+        "visually hidden",
+        "screen reader",
+        "sr-only",
+        "accessibility"
+    ],
+    "dense": "Screen-reader-only text wrapper (visually hidden, focusable variants respected); the sr-only utility as a component",
+    "usage": {
+        "description": "Renders content only assistive tech perceives — the sr-only utility as a component. Use for context that sighted users get visually."
+    }
 }

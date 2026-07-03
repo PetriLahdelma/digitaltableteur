@@ -81,5 +81,16 @@
         "Icon",
         "CodeSnippet",
         "Button"
-    ]
+    ],
+    "displayName": "ComplianceCard",
+    "keywords": [
+        "compliance",
+        "checklist",
+        "audit",
+        "internal docs"
+    ],
+    "dense": "Internal audit checklist card (rule rows w/ pass/fail status + last-reviewed date); Storybook/docs tooling, not product UI",
+    "usage": {
+        "description": "Internal tooling card that renders an audit checklist with pass/fail rows and a last-reviewed date. Docs/Storybook surface, not a product component."
+    }
 }

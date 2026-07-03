@@ -66,5 +66,16 @@
         "Text",
         "Title",
         "Icon"
-    ]
+    ],
+    "displayName": "ContactFormEditorial",
+    "keywords": [
+        "contact",
+        "form",
+        "editorial",
+        "uppercase labels"
+    ],
+    "dense": "Editorial-styled contact form used on the live contact page (uppercase labels, tabbed Personal/Company message types)",
+    "usage": {
+        "description": "The production contact page's editorial-styled form (uppercase labels, Personal/Company tabs). Shares submission flow with ContactForm; differs in voice and layout."
+    }
 }

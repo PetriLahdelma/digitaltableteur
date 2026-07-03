@@ -189,5 +189,17 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "PersonCard",
+    "keywords": [
+        "person",
+        "profile",
+        "card",
+        "team",
+        "skeleton"
+    ],
+    "dense": "Person/team profile card (avatar, name, role, links) with built-in skeleton loading state",
+    "usage": {
+        "description": "Profile card for people: avatar, name, role, and links, with a skeleton state for loading rosters. Team and about-page module."
+    }
 }

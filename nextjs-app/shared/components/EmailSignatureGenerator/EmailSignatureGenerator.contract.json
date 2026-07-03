@@ -68,5 +68,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "EmailSignatureGenerator",
+    "keywords": [
+        "email signature",
+        "generator",
+        "html email",
+        "copy"
+    ],
+    "dense": "Interactive email-signature generator: form inputs to a copyable table-based HTML signature",
+    "usage": {
+        "description": "Interactive generator that turns form inputs into a copyable, email-client-safe HTML signature. Standalone tool page organism."
+    }
 }

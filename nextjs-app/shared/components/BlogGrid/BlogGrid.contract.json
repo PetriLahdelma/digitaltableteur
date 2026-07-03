@@ -79,5 +79,16 @@
         "BlogCategoryFilter",
         "Pagination",
         "EnhancedArticleCard"
-    ]
+    ],
+    "displayName": "BlogGrid",
+    "keywords": [
+        "blog",
+        "grid",
+        "index",
+        "cards"
+    ],
+    "dense": "Blog index grid laying out ArticleCards responsively",
+    "usage": {
+        "description": "Responsive grid of ArticleCards for blog index pages. Owns layout only; the cards own their content."
+    }
 }

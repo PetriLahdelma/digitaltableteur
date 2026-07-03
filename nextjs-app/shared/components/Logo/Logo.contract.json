@@ -69,5 +69,16 @@
             "optional": true,
             "type": "string"
         }
+    },
+    "displayName": "Logo",
+    "keywords": [
+        "logo",
+        "brand",
+        "mark",
+        "monochrome"
+    ],
+    "dense": "Digitaltableteur brand mark: monochrome currentColor, square footprint, optional link wrapper",
+    "usage": {
+        "description": "The brand mark. Monochrome via currentColor so it inherits the surface's ink; square footprint; optionally wraps itself in a home link."
     }
 }

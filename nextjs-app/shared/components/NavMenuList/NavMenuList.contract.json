@@ -71,5 +71,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "NavMenuList",
+    "keywords": [
+        "navigation",
+        "menu",
+        "mobile",
+        "active state"
+    ],
+    "dense": "Reusable nav link list for mobile/drawer menus; derives active state from the current location",
+    "usage": {
+        "description": "Navigation list for drawer and mobile menus: renders link items and derives the active item from the current route. Site chrome building block."
+    }
 }

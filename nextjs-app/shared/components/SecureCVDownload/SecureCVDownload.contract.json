@@ -74,5 +74,16 @@
     "composesWith": [
         "Section",
         "Container"
-    ]
+    ],
+    "displayName": "SecureCVDownload",
+    "keywords": [
+        "cv",
+        "download",
+        "gated",
+        "modal"
+    ],
+    "dense": "Gated CV download: trigger button opens a verification modal before serving the file",
+    "usage": {
+        "description": "Gated download control for the CV: a trigger button opens a verification modal before the file is served."
+    }
 }

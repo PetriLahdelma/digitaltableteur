@@ -69,5 +69,16 @@
         "Section",
         "WorkHero",
         "CategoryFilter"
-    ]
+    ],
+    "displayName": "WorkGrid",
+    "keywords": [
+        "work",
+        "portfolio",
+        "grid",
+        "index"
+    ],
+    "dense": "Portfolio index grid arranging project cards on the work page",
+    "usage": {
+        "description": "The work index grid arranging project cards. Layout owner for the portfolio listing."
+    }
 }

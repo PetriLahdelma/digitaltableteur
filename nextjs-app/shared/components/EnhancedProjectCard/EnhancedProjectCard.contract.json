@@ -115,5 +115,17 @@
     "composesWith": [
         "Container",
         "Section"
-    ]
+    ],
+    "displayName": "EnhancedProjectCard",
+    "keywords": [
+        "portfolio",
+        "project",
+        "card",
+        "video hover",
+        "work"
+    ],
+    "dense": "Portfolio project card w/ image, hover video preview, and metadata; the work-index upgrade of ProjectCard",
+    "usage": {
+        "description": "Work-index project card with image, hover video preview, and metadata. The richer sibling of ProjectCard; use one per index, not both."
+    }
 }
