@@ -60,6 +60,14 @@
       }
     }
   },
+  "shortcut": {
+    "hint": {
+      "color": {
+        "$value": "#4b5563",
+        "$description": "Production token --shortcut-hint-color"
+      }
+    }
+  },
   "wavy": {
     "underline": {
       "mask": {

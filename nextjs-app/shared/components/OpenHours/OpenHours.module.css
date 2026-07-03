@@ -65,7 +65,9 @@
 }
 
 .closed {
-  opacity: 0.7;
+  /* De-emphasis via italics only. The former opacity: 0.7 composited the
+     even-row cell over the card's primary background (dark theme: #181a1b
+     over #6fa8ff -> #32455f) and washed the ink below WCAG AA. */
   font-style: italic;
 }
 
