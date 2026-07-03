@@ -1,0 +1,23 @@
+.pill {
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  font-size: var(--font-size-text-s);
+}
+
+.stable {
+  /* Badge tone=success carries the color treatment; hook kept for smoke/tests. */
+  font-weight: 600;
+}
+
+.beta {
+  font-weight: 500;
+}
+
+.alpha {
+  font-weight: 500;
+}
+
+.deprecated {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
