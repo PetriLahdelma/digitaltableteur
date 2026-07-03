@@ -1,0 +1,46 @@
+/* Group mode: fieldset/legend wrapper absorbed from FormGroup. Single-control
+ * mode still uses Tailwind utility classes inline in FormField.tsx; these
+ * rules cover only the fieldset path. */
+
+.fieldset {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  gap: var(--space-internal-16);
+  border: 0;
+}
+
+.legend {
+  padding: 0;
+  font-family: var(--font-body);
+
+  /* Nearest ladder step: --font-size-text-l clamps from a 1.125rem base,
+     matching the previous literal at minimum viewport. */
+  font-size: var(--font-size-text-l);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.groupDescription {
+  margin: calc(var(--space-internal-8) * -1) 0 0;
+  font-family: var(--font-body);
+
+  /* Nearest ladder step: --font-size-text-s shares the 0.875rem floor of
+     the previous literal. */
+  font-size: var(--font-size-text-s);
+  color: var(--color-muted);
+}
+
+.groupControls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-16);
+}
+
+.error {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-s);
+  color: var(--color-error);
+}

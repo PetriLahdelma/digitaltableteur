@@ -11,7 +11,7 @@ import { ExpandableSection } from "../ExpandableSection";
 import { useToast } from "../Toaster/Toaster";
 import FileUpload from "@dt/FileUpload";
 import MultiCombobox from "@dt/MultiCombobox";
-import { CheckboxField } from "../CheckboxField";
+import Checkbox from "@dt/Checkbox";
 import styles from "./ContactFormEditorial.module.css";
 import {
   CONTACT_ACCEPTED_ATTACHMENT_TYPES,
@@ -455,18 +455,19 @@ export function ContactFormEditorial({
           autoComplete="email"
         />
 
-        <CheckboxField
-          id="contact-request-portfolio-materials"
-          className={styles.checkboxField}
-          label={t("contactRequestPortfolioMaterials")}
-          checked={formData.requestPortfolioMaterials}
-          onCheckedChange={(checked) =>
-            dispatchForm({
-              type: "UPDATE_BOOLEAN",
-              payload: { field: "requestPortfolioMaterials", value: checked },
-            })
-          }
-        />
+        <div className={styles.checkboxField}>
+          <Checkbox
+            id="contact-request-portfolio-materials"
+            label={t("contactRequestPortfolioMaterials")}
+            checked={formData.requestPortfolioMaterials}
+            onCheckedChange={(checked) =>
+              dispatchForm({
+                type: "UPDATE_BOOLEAN",
+                payload: { field: "requestPortfolioMaterials", value: checked },
+              })
+            }
+          />
+        </div>
 
         <FormFieldEditorial
           label={t("contactMessage")}

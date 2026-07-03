@@ -80,6 +80,6 @@
         "Label",
         "Icon",
         "Button",
-        "Inputs"
+        "TextInput"
     ]
 }

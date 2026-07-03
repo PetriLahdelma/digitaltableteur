@@ -1,11 +1,10 @@
 import React, { useState, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "@dt/Button";
-import AdaptiveLoadingButton from "@dt/AdaptiveLoadingButton";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import Modal from "@dt/Modal";
-import Inputs from "@dt/Inputs";
+import TextInput from "@dt/TextInput";
 import styles from "./NewsletterWaitlist.module.css";
 
 export interface NewsletterWaitlistProps {
@@ -127,7 +126,7 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
             </Text>
           </div>
 
-          <Inputs
+          <TextInput
             label={t("newsletterWaitlist.inputLabel")}
             type="email"
             value={email}
@@ -149,15 +148,16 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
             >
               {t("newsletterWaitlist.cancel")}
             </Button>
-            <AdaptiveLoadingButton
-              type="submit"
+            <Button
+              submits
               disabled={disabled || isSubmitting || !email.trim()}
               variant="primary"
               loading={isSubmitting}
-              loadingLabelKey="newsletterWaitlist.submitting"
             >
-              {t("newsletterWaitlist.submit")}
-            </AdaptiveLoadingButton>
+              {isSubmitting
+                ? t("newsletterWaitlist.submitting")
+                : t("newsletterWaitlist.submit")}
+            </Button>
           </div>
         </form>
       </div>

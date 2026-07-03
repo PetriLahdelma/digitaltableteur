@@ -1,0 +1,39 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "SplitButton",
+    "tier": "molecule",
+    "group": "interaction",
+    "status": "alpha",
+    "description": "Primary action button paired with a dropdown toggle for related secondary actions, with collision-aware menu placement and optional nested submenus.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [
+        "label",
+        "options",
+        "menu"
+    ],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": false,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "schemaVersion": 2,
+    "composesWith": [
+        "Button",
+        "Icon"
+    ]
+}

@@ -1,8 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { FormField } from "./FormField";
+import Checkbox from "@dt/Checkbox";
 
 expect.extend(toHaveNoViolations);
 
@@ -94,5 +95,87 @@ describe("FormField", () => {
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+});
+
+describe("group mode", () => {
+  it("renders a fieldset with legend when legend is provided", () => {
+    render(
+      <FormField legend="Notification channels" groupDescription="Pick at least one">
+        <Checkbox label="Email" />
+        <Checkbox label="SMS" />
+      </FormField>,
+    );
+    const group = screen.getByRole("group", { name: "Notification channels" });
+    expect(group.tagName).toBe("FIELDSET");
+    expect(screen.getByText("Pick at least one")).toBeInTheDocument();
+  });
+
+  it("gives label-only Checkbox siblings unique ids with correct label association", () => {
+    render(
+      <FormField legend="Notification channels">
+        <Checkbox label="Email" />
+        <Checkbox label="SMS" />
+      </FormField>,
+    );
+    const emailCheckbox = screen.getByRole("checkbox", { name: "Email" });
+    const smsCheckbox = screen.getByRole("checkbox", { name: "SMS" });
+
+    expect(emailCheckbox.id).toBeTruthy();
+    expect(smsCheckbox.id).toBeTruthy();
+    expect(emailCheckbox.id).not.toBe(smsCheckbox.id);
+
+    expect(emailCheckbox).toHaveAccessibleName("Email");
+    expect(smsCheckbox).toHaveAccessibleName("SMS");
+
+    const emailLabel = screen.getByText("Email");
+    const smsLabel = screen.getByText("SMS");
+    expect(emailLabel).toHaveAttribute("for", emailCheckbox.id);
+    expect(smsLabel).toHaveAttribute("for", smsCheckbox.id);
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <FormField legend="Notification channels" groupDescription="Pick at least one">
+        <Checkbox label="Email" />
+        <Checkbox label="SMS" />
+      </FormField>,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+});
+
+describe("dev-time invariant messages", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("errors with a message naming both label and legend when both are provided", () => {
+    const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
+    expect(() =>
+      render(
+        <FormField label="Email" legend="Email">
+          <input type="email" />
+        </FormField>,
+      ),
+    ).not.toThrow();
+    expect(consoleError).toHaveBeenCalledWith(
+      expect.stringContaining("both `label` and `legend` were provided"),
+    );
+  });
+
+  it("errors with a message naming the missing label/legend when neither is provided", () => {
+    const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
+    expect(() =>
+      render(
+        <FormField>
+          <input type="email" />
+        </FormField>,
+      ),
+    ).not.toThrow();
+    expect(consoleError).toHaveBeenCalledWith(
+      expect.stringContaining("neither `label` nor `legend` was provided"),
+    );
   });
 });

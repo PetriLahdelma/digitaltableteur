@@ -207,6 +207,18 @@ export default {
       },
     },
 
+    animation: {
+      control: { type: "select" },
+      options: ["none", "scale", "slide", "fade"],
+      description:
+        "Entrance animation applied to the panel on open (respects prefers-reduced-motion)",
+      table: {
+        category: "Appearance",
+        type: { summary: "ModalAnimation" },
+        defaultValue: { summary: "none" },
+      },
+    },
+
     // Behavior
     onClose: {
       action: "closed",
@@ -443,6 +455,26 @@ export const SeverityInfo: StoryFn = () => {
         severity="info"
       >
         {t("storyModalInfoBody")}
+      </Modal>
+    </>
+  );
+};
+
+export const AnimatedEntrance: StoryFn = () => {
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenAnimatedV110")}
+      </Button>
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        title={t("storyModalTitle")}
+        animation="scale"
+      >
+        {t("storyModalBody")}
       </Modal>
     </>
   );

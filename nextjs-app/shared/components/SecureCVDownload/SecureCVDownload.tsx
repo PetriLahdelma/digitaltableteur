@@ -4,8 +4,7 @@ import Modal from "@dt/Modal";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
 import styles from "./SecureCVDownload.module.css";
-import { Inputs } from "..";
-import Input from "@dt/Inputs";
+import Input from "@dt/TextInput";
 import BusyIndicator from "@dt/BusyIndicator";
 
 export interface SecureCVDownloadProps {

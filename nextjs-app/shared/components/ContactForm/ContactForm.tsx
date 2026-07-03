@@ -1,14 +1,13 @@
 import React, { useReducer, useState } from "react";
 import styles from "./ContactForm.module.css";
-import Inputs from "@dt/Inputs";
+import TextInput from "@dt/TextInput";
 import Button from "@dt/Button";
 import CheckboxGroup from "@dt/CheckboxGroup";
 import Modal from "@dt/Modal";
 import Toast from "@dt/Toast";
-import TextArea from "@dt/Inputs/TextArea";
+import TextArea from "@dt/TextArea";
 import Select from "@dt/Select";
 import FileUpload from "@dt/FileUpload";
-import AdaptiveLoadingButton from "@dt/AdaptiveLoadingButton";
 import Text from "@dt/Text";
 import PhoneInput from "@dt/PhoneInput";
 import { useTranslation } from "react-i18next";
@@ -290,7 +289,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </div>
 
         <div className={styles["formGroup"]}>
-          <Inputs
+          <TextInput
             label={t("contactFullName")}
             type="text"
             placeholder={t("contactFullNamePlaceholder")}
@@ -302,7 +301,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </div>
 
         <div className={styles["formGroup"]}>
-          <Inputs
+          <TextInput
             label={t("contactEmail")}
             type="email"
             placeholder={t("contactEmailPlaceholder")}
@@ -433,16 +432,15 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             >
               {t("contactClear")}
             </Button>
-            <AdaptiveLoadingButton
+            <Button
               className={styles["submitButton"]}
-              type="submit"
+              submits
               variant="primary"
               loading={isSubmitting}
-              loadingLabelKey="busyIndicator.loading"
               disabled={isSubmitting || !isFormValid}
             >
-              {t("contactSubmit")}
-            </AdaptiveLoadingButton>
+              {isSubmitting ? t("busyIndicator.loading") : t("contactSubmit")}
+            </Button>
           </div>
         </div>
       </form>

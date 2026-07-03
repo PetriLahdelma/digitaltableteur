@@ -41,20 +41,17 @@ import {
   AspectRatio,
 } from "@/nextjs-app/shared/components/Layout";
 import {
-  TextLink,
   Tag,
   Divider,
   IconButton,
   Prose,
   FormField,
-  FormGroup,
-  TextInput,
-  TextArea,
-  CheckboxField,
 } from "@/nextjs-app/shared/components/ui";
+import Checkbox from "@dt/Checkbox";
+import Link from "@dt/Link";
 import { useToast } from "@/nextjs-app/shared/components/interactive";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
-import { ArrowRight, Heart, Share, Star, MagnifyingGlass, EnvelopeSimple, Image as ImageIcon } from "@phosphor-icons/react";
+import { ArrowRight, Heart, Share, Star, Image as ImageIcon } from "@phosphor-icons/react";
 import { NavLink } from "@/nextjs-app/shared/patterns/navigation";
 
 /**
@@ -336,16 +333,16 @@ export default function TailwindTest() {
             </Stack>
           </div>
 
-          {/* TextLink Variants */}
+          {/* Link Variants */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">TextLink Variants:</p>
+            <p className="font-body text-text-s text-muted-foreground mb-3">Link Variants:</p>
             <Stack direction="horizontal" gap="md" wrap>
-              <TextLink href="/about">Default Link</TextLink>
-              <TextLink href="/work" variant="muted">Muted Link</TextLink>
-              <TextLink href="/contact" variant="accent">Accent Link</TextLink>
-              <TextLink href="https://example.com" external>
+              <Link href="/about" size="sm">Default Link</Link>
+              <Link href="/work" size="md">Medium Link</Link>
+              <Link href="/contact" size="lg">Large Link</Link>
+              <Link href="https://example.com">
                 External Link <ArrowRight className="inline" weight="bold" />
-              </TextLink>
+              </Link>
             </Stack>
           </div>
 
@@ -402,7 +399,7 @@ export default function TailwindTest() {
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
           <p className="font-body text-text-s">
-            <strong className="font-heading">UI Components:</strong> Button (studio variants), TextLink, Tag, Divider, IconButton, VisuallyHidden, Prose
+            <strong className="font-heading">UI Components:</strong> Button (studio variants), Link, Tag, Divider, IconButton, VisuallyHidden, Prose
           </p>
         </div>
       </div>
@@ -414,60 +411,25 @@ export default function TailwindTest() {
         </h3>
 
         <Stack gap="lg">
-          {/* TextInput variants */}
+          {/* FormField group mode (absorbs former FormGroup + CheckboxField) */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">TextInput:</p>
-            <Stack gap="md">
-              <FormField label="Search" helperText="Type to search...">
-                <TextInput
-                  placeholder="Search..."
-                  startIcon={<MagnifyingGlass className="h-5 w-5" />}
-                  clearable
-                />
-              </FormField>
-              <FormField label="Email" required error="Please enter a valid email">
-                <TextInput
-                  type="email"
-                  placeholder="you@example.com"
-                  startIcon={<EnvelopeSimple className="h-5 w-5" />}
-                  error
-                />
-              </FormField>
-            </Stack>
-          </div>
-
-          {/* TextArea */}
-          <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">TextArea:</p>
-            <FormField label="Message" helperText="Max 280 characters">
-              <TextArea
-                placeholder="Write your message..."
-                showCount
-                maxLength={280}
-              />
-            </FormField>
-          </div>
-
-          {/* CheckboxField */}
-          <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">CheckboxField:</p>
-            <FormGroup>
-              <CheckboxField
+            <p className="font-body text-text-s text-muted-foreground mb-3">FormField (group mode):</p>
+            <FormField
+              legend="Notification preferences"
+              groupDescription="Choose how you would like to hear from us"
+            >
+              <Checkbox
                 label="Accept terms and conditions"
-                description="By checking this box, you agree to our Terms of Service"
                 required
               />
-              <CheckboxField
-                label="Subscribe to newsletter"
-                description="Receive updates about new features and tips"
-              />
-            </FormGroup>
+              <Checkbox label="Subscribe to newsletter" />
+            </FormField>
           </div>
         </Stack>
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
           <p className="font-body text-text-s">
-            <strong className="font-heading">Form Stack:</strong> FormField, FormGroup, TextInput, TextArea, CheckboxField
+            <strong className="font-heading">Form Stack:</strong> FormField (single-control + group/fieldset mode), Checkbox. See <code>@dt/TextInput</code> and <code>@dt/TextArea</code> for the canonical text field components.
           </p>
         </div>
       </div>

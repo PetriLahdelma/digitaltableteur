@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-03T03:55:39.671Z",
+  "createdAt": "2026-07-03T06:31:34.357Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -21,36 +21,6 @@
       "text": "Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
       "value": "0.25rem"
-    },
-    {
-      "column": 8,
-      "file": "nextjs-app/shared/components/AnimatedDialog/AnimatedDialog.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/AnimatedDialog/AnimatedDialog.module.css\u001f4\u001f8\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 4,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.5rem"
-    },
-    {
-      "column": 8,
-      "file": "nextjs-app/shared/components/AnimatedDialog/AnimatedDialog.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/AnimatedDialog/AnimatedDialog.module.css\u001f11\u001f8\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 11,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.5rem"
-    },
-    {
-      "column": 15,
-      "file": "nextjs-app/shared/components/AnimatedDialog/AnimatedDialog.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/AnimatedDialog/AnimatedDialog.module.css\u001f12\u001f15\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 12,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1rem"
     },
     {
       "column": 18,
@@ -393,56 +363,6 @@
       "value": "0.5rem"
     },
     {
-      "column": 16,
-      "file": "nextjs-app/shared/components/Button/SplitButton.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Button/SplitButton.module.css\u001f112\u001f16\u001f0.125rem\u001fUnexpected off-scale value \"0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "line": 112,
-      "rule": "rhythmguard/use-scale",
-      "text": "Unexpected off-scale value \"0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "type": "off-scale",
-      "value": "0.125rem"
-    },
-    {
-      "column": 23,
-      "file": "nextjs-app/shared/components/Button/SplitButton.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Button/SplitButton.module.css\u001f61\u001f23\u001f100%\u001fUnexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 61,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "100%"
-    },
-    {
-      "column": 18,
-      "file": "nextjs-app/shared/components/Button/SplitButton.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Button/SplitButton.module.css\u001f68\u001f18\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 68,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.5rem"
-    },
-    {
-      "column": 19,
-      "file": "nextjs-app/shared/components/Button/SplitButton.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Button/SplitButton.module.css\u001f69\u001f19\u001f0.75rem\u001fUnexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 69,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.75rem"
-    },
-    {
-      "column": 16,
-      "file": "nextjs-app/shared/components/Button/SplitButton.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Button/SplitButton.module.css\u001f112\u001f16\u001f0.125rem\u001fUnexpected raw scale value \"0.125rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 112,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.125rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.125rem"
-    },
-    {
       "column": 27,
       "file": "nextjs-app/shared/components/Card/Card.module.css",
       "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Card/Card.module.css\u001f151\u001f27\u001f-2px\u001fUnexpected off-scale value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
@@ -771,6 +691,26 @@
       "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
       "type": "off-scale",
       "value": "0.375rem"
+    },
+    {
+      "column": 12,
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/ChatWidget/ChatWidget.module.css\u001f1032\u001f12\u001f0.76rem\u001fUnexpected off-scale value \"0.76rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "line": 1032,
+      "rule": "rhythmguard/use-scale",
+      "text": "Unexpected off-scale value \"0.76rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "type": "off-scale",
+      "value": "0.76rem"
+    },
+    {
+      "column": 20,
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/ChatWidget/ChatWidget.module.css\u001f1032\u001f20\u001f0.85rem\u001fUnexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "line": 1032,
+      "rule": "rhythmguard/use-scale",
+      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "type": "off-scale",
+      "value": "0.85rem"
     },
     {
       "column": 15,
@@ -1441,6 +1381,26 @@
       "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
       "value": "0.75rem"
+    },
+    {
+      "column": 12,
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/ChatWidget/ChatWidget.module.css\u001f1032\u001f12\u001f0.76rem\u001fUnexpected raw scale value \"0.76rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 1032,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.76rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.76rem"
+    },
+    {
+      "column": 20,
+      "file": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/ChatWidget/ChatWidget.module.css\u001f1032\u001f20\u001f0.85rem\u001fUnexpected raw scale value \"0.85rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 1032,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.85rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.85rem"
     },
     {
       "column": 8,
@@ -2933,146 +2893,6 @@
       "value": "1rem"
     },
     {
-      "column": 12,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f32\u001f12\u001f0.375rem\u001fUnexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "line": 32,
-      "rule": "rhythmguard/use-scale",
-      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "type": "off-scale",
-      "value": "0.375rem"
-    },
-    {
-      "column": 12,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f44\u001f12\u001f0.625rem\u001fUnexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "line": 44,
-      "rule": "rhythmguard/use-scale",
-      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "type": "off-scale",
-      "value": "0.625rem"
-    },
-    {
-      "column": 12,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f114\u001f12\u001f0.76rem\u001fUnexpected off-scale value \"0.76rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "line": 114,
-      "rule": "rhythmguard/use-scale",
-      "text": "Unexpected off-scale value \"0.76rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "type": "off-scale",
-      "value": "0.76rem"
-    },
-    {
-      "column": 20,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f114\u001f20\u001f0.85rem\u001fUnexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "line": 114,
-      "rule": "rhythmguard/use-scale",
-      "text": "Unexpected off-scale value \"0.85rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "type": "off-scale",
-      "value": "0.85rem"
-    },
-    {
-      "column": 18,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f5\u001f18\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 5,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1rem"
-    },
-    {
-      "column": 17,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f16\u001f17\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 16,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.5rem"
-    },
-    {
-      "column": 12,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f17\u001f12\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 17,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.5rem"
-    },
-    {
-      "column": 12,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f32\u001f12\u001f0.375rem\u001fUnexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 32,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.375rem"
-    },
-    {
-      "column": 12,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f38\u001f12\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 38,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.5rem"
-    },
-    {
-      "column": 12,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f44\u001f12\u001f0.625rem\u001fUnexpected raw scale value \"0.625rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 44,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.625rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.625rem"
-    },
-    {
-      "column": 15,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f53\u001f15\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 53,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.5rem"
-    },
-    {
-      "column": 17,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f103\u001f17\u001f1.5rem\u001fUnexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 103,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1.5rem"
-    },
-    {
-      "column": 12,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f114\u001f12\u001f0.76rem\u001fUnexpected raw scale value \"0.76rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 114,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.76rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.76rem"
-    },
-    {
-      "column": 20,
-      "file": "nextjs-app/shared/components/Inputs/Inputs.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Inputs/Inputs.module.css\u001f114\u001f20\u001f0.85rem\u001fUnexpected raw scale value \"0.85rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 114,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.85rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.85rem"
-    },
-    {
       "column": 11,
       "file": "nextjs-app/shared/components/Label/Label.module.css",
       "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Label/Label.module.css\u001f21\u001f11\u001f-1px\u001fUnexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
@@ -4373,6 +4193,56 @@
       "value": "-4rem"
     },
     {
+      "column": 16,
+      "file": "nextjs-app/shared/components/SplitButton/SplitButton.module.css",
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/SplitButton/SplitButton.module.css\u001f112\u001f16\u001f0.125rem\u001fUnexpected off-scale value \"0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 112,
+      "rule": "rhythmguard/use-scale",
+      "text": "Unexpected off-scale value \"0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "type": "off-scale",
+      "value": "0.125rem"
+    },
+    {
+      "column": 23,
+      "file": "nextjs-app/shared/components/SplitButton/SplitButton.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/SplitButton/SplitButton.module.css\u001f61\u001f23\u001f100%\u001fUnexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 61,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "100%"
+    },
+    {
+      "column": 18,
+      "file": "nextjs-app/shared/components/SplitButton/SplitButton.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/SplitButton/SplitButton.module.css\u001f68\u001f18\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 68,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.5rem"
+    },
+    {
+      "column": 19,
+      "file": "nextjs-app/shared/components/SplitButton/SplitButton.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/SplitButton/SplitButton.module.css\u001f69\u001f19\u001f0.75rem\u001fUnexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 69,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.75rem"
+    },
+    {
+      "column": 16,
+      "file": "nextjs-app/shared/components/SplitButton/SplitButton.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/SplitButton/SplitButton.module.css\u001f112\u001f16\u001f0.125rem\u001fUnexpected raw scale value \"0.125rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 112,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.125rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.125rem"
+    },
+    {
       "column": 8,
       "file": "nextjs-app/shared/components/Switch/Switch.module.css",
       "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Switch/Switch.module.css\u001f10\u001f8\u001f0.35rem\u001fUnexpected off-scale value \"0.35rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
@@ -4481,6 +4351,146 @@
       "text": "Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
       "value": "0.25rem"
+    },
+    {
+      "column": 18,
+      "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextArea/TextArea.module.css\u001f5\u001f18\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 5,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "1rem"
+    },
+    {
+      "column": 17,
+      "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextArea/TextArea.module.css\u001f16\u001f17\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 16,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.5rem"
+    },
+    {
+      "column": 12,
+      "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextArea/TextArea.module.css\u001f17\u001f12\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 17,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.5rem"
+    },
+    {
+      "column": 15,
+      "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextArea/TextArea.module.css\u001f33\u001f15\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 33,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.5rem"
+    },
+    {
+      "column": 12,
+      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/TextInput/TextInput.module.css\u001f32\u001f12\u001f0.375rem\u001fUnexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "line": 32,
+      "rule": "rhythmguard/use-scale",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "type": "off-scale",
+      "value": "0.375rem"
+    },
+    {
+      "column": 12,
+      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/TextInput/TextInput.module.css\u001f44\u001f12\u001f0.625rem\u001fUnexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
+      "line": 44,
+      "rule": "rhythmguard/use-scale",
+      "text": "Unexpected off-scale value \"0.625rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
+      "type": "off-scale",
+      "value": "0.625rem"
+    },
+    {
+      "column": 18,
+      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextInput/TextInput.module.css\u001f5\u001f18\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 5,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "1rem"
+    },
+    {
+      "column": 17,
+      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextInput/TextInput.module.css\u001f16\u001f17\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 16,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.5rem"
+    },
+    {
+      "column": 12,
+      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextInput/TextInput.module.css\u001f17\u001f12\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 17,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.5rem"
+    },
+    {
+      "column": 12,
+      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextInput/TextInput.module.css\u001f32\u001f12\u001f0.375rem\u001fUnexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 32,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.375rem"
+    },
+    {
+      "column": 12,
+      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextInput/TextInput.module.css\u001f38\u001f12\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 38,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.5rem"
+    },
+    {
+      "column": 12,
+      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextInput/TextInput.module.css\u001f44\u001f12\u001f0.625rem\u001fUnexpected raw scale value \"0.625rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 44,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.625rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.625rem"
+    },
+    {
+      "column": 15,
+      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextInput/TextInput.module.css\u001f53\u001f15\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 53,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "0.5rem"
+    },
+    {
+      "column": 17,
+      "file": "nextjs-app/shared/components/TextInput/TextInput.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextInput/TextInput.module.css\u001f103\u001f17\u001f1.5rem\u001fUnexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 103,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "1.5rem"
     },
     {
       "column": 25,
@@ -8121,17 +8131,6 @@
       "text": "Unexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
       "value": "6px"
-    },
-    {
-      "column": 34,
-      "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
-      "key": "rhythmguard-tailwind/tailwind-class-use-scale\u001ftailwind-arbitrary-spacing\u001fnextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx\u001f347\u001f34\u001f10000px\u001fUnexpected Tailwind arbitrary spacing value \"-left-[10000px]\". Use scale values.",
-      "line": 347,
-      "rule": "rhythmguard-tailwind/tailwind-class-use-scale",
-      "text": "Unexpected Tailwind arbitrary spacing value \"-left-[10000px]\". Use scale values.",
-      "token": "-left-[10000px]",
-      "type": "tailwind-arbitrary-spacing",
-      "value": "10000px"
     }
   ],
   "formatVersion": 1,

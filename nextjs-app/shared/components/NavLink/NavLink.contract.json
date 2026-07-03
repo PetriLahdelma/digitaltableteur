@@ -73,7 +73,7 @@
         }
     },
     "forbiddenUse": [
-        "Use inside body prose — that is `TextLink`.",
+        "Use inside body prose — that is `Link`.",
         "Use as a button — primary actions belong on `Button`."
     ],
     "composesWith": [

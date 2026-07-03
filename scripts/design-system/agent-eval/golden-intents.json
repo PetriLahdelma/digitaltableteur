@@ -10,7 +10,7 @@
     {
       "id": "button-primary",
       "query": "primary action button",
-      "expectedInTop3": ["Button", "AdaptiveLoadingButton", "MCPActionButton"]
+      "expectedInTop3": ["Button", "MCPActionButton"]
     },
     {
       "id": "title-semantic",
@@ -20,12 +20,12 @@
     {
       "id": "submit-loading",
       "query": "loading submit button",
-      "expectedInTop3": ["AdaptiveLoadingButton", "Button"]
+      "expectedInTop3": ["Button"]
     },
     {
       "id": "modal",
       "query": "modal dialog",
-      "expectedInTop3": ["Modal", "AnimatedDialog"]
+      "expectedInTop3": ["Modal"]
     },
     {
       "id": "cookie-consent",
@@ -35,7 +35,7 @@
     {
       "id": "text-input",
       "query": "labeled text input",
-      "expectedInTop3": ["Inputs", "TextInput"]
+      "expectedInTop3": ["TextInput"]
     },
     {
       "id": "pagination",
@@ -75,7 +75,7 @@
     {
       "id": "checkbox",
       "query": "checkbox with label",
-      "expectedInTop3": ["Checkbox", "CheckboxField"]
+      "expectedInTop3": ["Checkbox"]
     },
     {
       "id": "switch",

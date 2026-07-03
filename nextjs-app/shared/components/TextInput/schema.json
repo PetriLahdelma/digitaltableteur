@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "TextInput",
+    "type": "input",
+    "description": "Text input field with label, validation (email/phone), helper text, and error states.",
+    "source": "nextjs-app/shared/components/TextInput/TextInput.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "input container",
+    "parts": [
+      {
+        "id": "label",
+        "label": "input label",
+        "role": "label",
+        "description": "Label with optional required indicator and tooltip."
+      },
+      {
+        "id": "input",
+        "label": "text input",
+        "role": "textbox",
+        "description": "Native input element (text, number, email, password, search, tel)."
+      },
+      {
+        "id": "helperText",
+        "label": "helper text",
+        "role": "text",
+        "description": "Guidance or error message below input."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "div",
+    "label": "label (Label component)",
+    "input": "input[type=text|number|email|password|search|tel]",
+    "helperText": "p (HelperText component)"
+  },
+  "layout": {
+    "direction": "vertical (label → input → helperText)",
+    "width": "fills parent",
+    "height": "content-driven",
+    "spacing": {
+      "labelMargin": "0.5rem (bottom)",
+      "helperTextMargin": "0.5rem (top)"
+    }
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "border": "1px solid var(--color-border)",
+    "radius": "var(--radius-md)",
+    "backgrounds": {
+      "default": "var(--color-surface)",
+      "error": "var(--color-surface)"
+    },
+    "typography": {
+      "fontFamily": "var(--font-text)",
+      "fontSize": "1rem",
+      "lineHeight": "1.5"
+    },
+    "color": {
+      "text": "var(--color-text-primary)",
+      "border": "var(--color-border)",
+      "errorBorder": "var(--color-semantic-error)"
+    }
+  },
+  "tokens": {
+    "base": {
+      "color": ["color.surface", "color.border", "color.text.primary", "color.semantic.error"],
+      "typography": ["font.text"],
+      "spacing": ["space.internal.8"],
+      "radii": ["radius.md"]
+    }
+  },
+  "behavior": {
+    "map": "Text input with validation for email and phone number types. Email validation uses regex pattern. Phone validation uses libphonenumber-js (formatIncompletePhoneNumber, parsePhoneNumber). Auto-displays validation errors in real-time. Controlled component (value prop + onChange callback).",
+    "stateModel": "controlled (value prop + onChange callback)",
+    "rendering": "Always renders label, input, and helper text (if error or helperText provided). Validation errors auto-display for email/tel types.",
+    "defaultState": "Empty input, no validation errors."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "Input change (type=text|number|password|search)",
+        "effect": "Updates inputValue, calls onChange(value)."
+      },
+      {
+        "trigger": "Input change (type=tel)",
+        "effect": "Formats phone number, validates, updates inputValue, calls onChange, shows phoneError if invalid."
+      },
+      {
+        "trigger": "Input change (type=email)",
+        "effect": "Validates email regex, updates inputValue, calls onChange, shows emailError if invalid."
+      }
+    ],
+    "feedback": {
+      "hover": "Border color change (inherited from CSS).",
+      "focus": "Focus ring (inherited from CSS).",
+      "active": "Typing updates value in real-time.",
+      "disabled": "Reduced opacity, no interaction."
+    }
+  },
+  "states": {
+    "default": "No validation error.",
+    "emailError": "Invalid email format (shows i18n error message).",
+    "phoneError": "Invalid phone number (shows i18n error message).",
+    "disabled": "No interaction, reduced opacity."
+  },
+  "constraints": {
+    "layout": ["Input fills container width."],
+    "content": ["Label required.", "Placeholder optional."],
+    "nesting": ["Should be used in forms."]
+  },
+  "accessibility": {
+    "roles": {
+      "label": "label",
+      "input": "textbox",
+      "helperText": "text"
+    },
+    "aria": {
+      "label": "htmlFor={label} associates with input id={label}."
+    },
+    "keyboard": "Standard input keyboard interactions (Tab, Enter, etc.).",
+    "focus": "Visible focus ring.",
+    "contrast": "Text meets WCAG AA."
+  },
+  "responsiveness": {
+    "rules": "Input fills parent width on all screen sizes.",
+    "breakpoints": []
+  },
+  "generativeRules": {
+    "contextInputs": ["type", "error", "phoneError", "emailError", "disabled"],
+    "rules": [
+      {
+        "if": { "type": "tel" },
+        "then": { "format": "libphonenumber-js formatIncompletePhoneNumber", "validate": "parsePhoneNumber" }
+      },
+      {
+        "if": { "type": "email" },
+        "then": { "validate": "regex /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/" }
+      },
+      {
+        "if": { "error": "present" },
+        "then": { "border": "var(--color-semantic-error)", "helperText.state": "error" }
+      },
+      {
+        "if": { "disabled": true },
+        "then": { "interactive": false, "opacity": "reduced" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Supports types: text, number, email, password, search, tel.",
+    "Email validation: regex /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/.",
+    "Phone validation: libphonenumber-js (parsePhoneNumber, formatIncompletePhoneNumber).",
+    "Validation errors auto-display in real-time (no submit required).",
+    "Error prop takes precedence over phoneError/emailError.",
+    "Label used as input ID (label.replace(/\\s+/g, '-').toLowerCase() for name).",
+    "Helper text shown if helperText provided and no error.",
+    "Controlled component: parent manages value via onChange callback.",
+    "onChange receives string (text) or number (type=number).",
+    "Label has tooltip support (error message shown in tooltip).",
+    "i18n keys: inputValidationPhoneInvalid, inputValidationEmailInvalid."
+  ]
+}

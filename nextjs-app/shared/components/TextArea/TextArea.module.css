@@ -1,80 +1,94 @@
-.wrapper {
+.inputContainer {
   display: flex;
-  inline-size: 100%;
-  max-inline-size: var(--size-width-form);
+  box-sizing: border-box;
   flex-direction: column;
-  gap: var(--space-internal-4);
+  margin-bottom: 1rem;
 }
 
-.fieldWithCount {
-  position: relative;
-  inline-size: 100%;
-}
-
-.textarea {
-  padding-block: var(--space-internal-8);
-  padding-inline: var(--space-internal-12);
-  inline-size: 100%;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--main-body-background-color);
+.label {
+  align-items: flex-start;
   font-family: var(--font-text);
-  line-height: var(--line-height-normal);
-  color: var(--color-text);
-  transition: border-color var(--duration-fast) var(--ease-out-expo);
+  font-size: 1rem;
+  color: var(--color-primary);
 }
 
-.textarea:focus-visible {
+.input {
+  margin-block: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.5rem;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-white);
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--color-primary);
+  transition: border-color 0.3s;
+}
+
+.errorMessage {
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--color-error);
+  margin-top: 0.5rem;
+}
+
+.input::placeholder {
+  color: var(--color-primary);
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.input:focus,
+.input:focus-visible {
+  box-sizing: border-box;
+  border-width: 1px;
   border-color: var(--color-primary);
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
 }
 
-.textarea--sm {
-  min-block-size: 5rem;
-  font-size: var(--font-size-text-s);
-}
-
-.textarea--md {
-  min-block-size: 7.5rem;
-  font-size: var(--font-size-text-m);
-}
-
-.textarea--lg {
-  min-block-size: 10rem;
-  font-size: var(--font-size-text-l);
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .input:focus,
+  .input:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
 }
 
 .error {
   border-color: var(--color-error);
+  background-color: var(--color-error-bg);
 }
 
-.resize-none {
+.input.error::placeholder {
+  /* Placeholder still hints the error context but stays AA-contrast on the
+   * tinted error background. */
+  color: var(--color-error-text);
+}
+
+.input:disabled {
+  border-color: var(--color-primary-disabled);
+  background-color: var(--color-disabled-bg-light);
+  cursor: not-allowed;
+}
+
+.input:disabled::placeholder {
+  color: var(--color-disabled-placeholder);
+}
+
+/* Smooth animated textarea (v2.0.0) */
+
+.animatedTextarea {
+  transition: height 180ms ease;
+  overflow-y: hidden;
   resize: none;
 }
 
-.resize-vertical {
-  resize: vertical;
-}
-
-.resize-both {
-  resize: both;
-}
-
-.textareaWithCount {
-  padding-block-end: var(--space-layout-24);
-}
-
-.count {
-  position: absolute;
-  font-family: var(--font-text);
-  font-size: var(--font-size-text-s);
-  color: var(--color-gray);
-  pointer-events: none;
-  inset-block-end: var(--space-internal-8);
-  inset-inline-end: var(--space-internal-12);
-}
-
-.countAtLimit {
-  color: var(--color-error);
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animatedTextarea {
+    transition: none;
+  }
 }
