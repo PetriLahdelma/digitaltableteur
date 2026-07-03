@@ -5,6 +5,16 @@
     "group": "marketing",
     "status": "beta",
     "description": "Contact page hero with headline and supporting copy.",
+    "dense": "Contact page hero: headline plus supporting copy, background and compact variants.",
+    "keywords": [
+        "contact",
+        "hero",
+        "headline",
+        "marketing"
+    ],
+    "usage": {
+        "description": "ContactHero opens a contact page with a headline and supporting copy; compact tightens vertical rhythm for shorter pages. Copy arrives via props (title, subtitle), so route-level i18n stays in the page component. The current editorial contact layout owns its own heading, so check ContactPageContentEditorial before reaching for this."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-contact-hero",
     "radixPrimitive": null,
     "element": "div",

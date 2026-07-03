@@ -5,6 +5,31 @@
     "group": "marketing",
     "status": "beta",
     "description": "Homepage news bulletin strip with three topical slots above the footer.",
+    "dense": "Homepage news strip: up to three topical item cards above the footer, driven by a typed items list.",
+    "keywords": [
+        "news",
+        "bulletin",
+        "homepage",
+        "cards",
+        "strip"
+    ],
+    "usage": {
+        "description": "NewsBulletin renders the homepage's footer-adjacent news strip: up to three topical cards from a typed items array (the site feeds it NEWS_BULLETIN_ITEMS). Interactive cards are native links with per-item aria-labels. It is a curated editorial slot, not a feed.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Feed it from NEWS_BULLETIN_ITEMS (or an equivalent typed list) and keep it to three items; the strip is a curated slot, not a feed."
+            },
+            {
+                "guidance": false,
+                "description": "Don't use it for blog listings; BlogGrid owns article lists."
+            },
+            {
+                "guidance": false,
+                "description": "Don't use it for alert or status feedback; that's AlertBanner or Toast."
+            }
+        ]
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=503-20",
     "radixPrimitive": null,
     "element": "section",

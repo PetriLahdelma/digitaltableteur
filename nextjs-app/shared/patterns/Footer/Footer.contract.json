@@ -5,6 +5,16 @@
     "group": "navigation",
     "status": "beta",
     "description": "Footer — production @dt component (Storybook beta).",
+    "dense": "Legacy pattern-tier footer band with the ChatWidget slot; the production Next.js site chrome is SiteFooter.",
+    "keywords": [
+        "footer",
+        "legacy",
+        "navigation",
+        "site-chrome"
+    ],
+    "usage": {
+        "description": "Footer is the legacy pattern-tier footer that pairs with the deprecated Header pattern and hosts the ChatWidget slot. The production Next.js site mounts SiteFooter from app/layout.tsx instead. Keep Footer only for compositions that still reference it; new work should use SiteFooter."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-footer",
     "radixPrimitive": null,
     "element": "div",

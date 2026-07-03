@@ -5,6 +5,17 @@
     "group": "marketing",
     "status": "beta",
     "description": "Highlight band with variant backgrounds and CTA slots.",
+    "dense": "Highlight band: overline + title + description with CTA slot; visual variants and sizes for marketing emphasis.",
+    "keywords": [
+        "highlight",
+        "band",
+        "marketing",
+        "overline",
+        "cta"
+    ],
+    "usage": {
+        "description": "HighlightSection is the emphasized marketing band: overline, title, description, and a CTA slot over stronger visual variants and sm/md/lg sizes. The homepage uses it for the featured message between section bands. Use CTASection when the band's whole job is the closing call to action; HighlightSection is for mid-page emphasis."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-highlight-section",
     "radixPrimitive": null,
     "element": "div",

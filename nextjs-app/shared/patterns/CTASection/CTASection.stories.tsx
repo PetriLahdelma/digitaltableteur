@@ -15,7 +15,7 @@ const defaultArgs = {
 const meta = {
   title: "Patterns/CTASection",
   component: CTASection,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

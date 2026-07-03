@@ -7,7 +7,7 @@ const defaultArgs = {};
 const meta = {
   title: "Patterns/ContactPageContentEditorial",
   component: ContactPageContentEditorial,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

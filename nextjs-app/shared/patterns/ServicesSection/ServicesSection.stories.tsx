@@ -36,7 +36,7 @@ const defaultArgs = {
 const meta = {
   title: "Patterns/ServicesSection",
   component: ServicesSection,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

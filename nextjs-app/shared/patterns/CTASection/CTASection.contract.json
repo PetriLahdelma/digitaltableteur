@@ -5,6 +5,17 @@
     "group": "marketing",
     "status": "beta",
     "description": "Call-to-action band used on marketing pages.",
+    "dense": "Marketing call-to-action band: title, description, primary/secondary action slots; background and align variants.",
+    "keywords": [
+        "cta",
+        "call-to-action",
+        "band",
+        "conversion",
+        "marketing"
+    ],
+    "usage": {
+        "description": "CTASection is the closing call-to-action band for marketing pages: a title, supporting description, and primary/secondary action slots over a background variant. It sits between content sections and the footer (HomePage, AboutPageContent, and WorkCTA all mount it). For mid-page emphasis with an overline, use HighlightSection instead."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=502-20",
     "radixPrimitive": null,
     "element": "div",

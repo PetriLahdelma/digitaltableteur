@@ -74,6 +74,7 @@ const config: StorybookConfig = {
     "../nextjs-app/shared/components/**/*.mdx",
     "../nextjs-app/shared/components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../nextjs-app/shared/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../nextjs-app/shared/patterns/**/*.mdx",
     "../nextjs-app/shared/patterns/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../nextjs-app/shared/templates/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../nextjs-app/shared/foundations/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",

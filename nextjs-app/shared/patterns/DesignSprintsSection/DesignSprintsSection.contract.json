@@ -5,6 +5,17 @@
     "group": "marketing",
     "status": "beta",
     "description": "Homepage design-sprints band with animated CTA pills.",
+    "dense": "Homepage design-sprints band with animated CTA pills; slots between marketing sections via id/donnyTarget anchors.",
+    "keywords": [
+        "design-sprints",
+        "homepage",
+        "band",
+        "marketing",
+        "animation"
+    ],
+    "usage": {
+        "description": "DesignSprintsSection is the homepage band promoting design sprints, with animated CTA pills. It is copy-complete via i18n and takes only anchor wiring (id, donnyTarget) plus className. It composes with the other homepage bands (HomeHero, ServicesSection, WorkMagneticField, CTASection); it is not a generic reusable band, so for configurable content use HighlightSection or CTASection."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-design-sprints-section",
     "radixPrimitive": null,
     "element": "div",

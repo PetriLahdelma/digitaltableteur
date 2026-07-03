@@ -5,6 +5,17 @@
     "group": "marketing",
     "status": "beta",
     "description": "Homepage services grid with icons and copy.",
+    "dense": "Homepage services grid: icon + copy service cards, column count and card variant knobs.",
+    "keywords": [
+        "services",
+        "grid",
+        "homepage",
+        "cards",
+        "marketing"
+    ],
+    "usage": {
+        "description": "ServicesSection is the homepage services grid: icon-led service cards with title/description copy, configurable columns and card variant. It anchors into the homepage band flow (id, donnyTarget) alongside HomeHero, WorkMagneticField, and CTASection. For a case-study scope summary use ServicesBlock instead."
+    },
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-services-section",
     "radixPrimitive": null,
     "element": "div",
