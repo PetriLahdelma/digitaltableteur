@@ -86,7 +86,6 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
     const { t } = useTranslation();
     const defaultToggleLabel = toggleLabel ?? t("splitButton.moreOptions");
     const isSecondary = variant === "secondary";
-    const isTertiary = variant === "tertiary";
     const hasOptions = Array.isArray(options) && options.length > 0;
     const [open, setOpen] = React.useState(false);
     const wrapperRef = React.useRef<HTMLDivElement | null>(null);
@@ -451,7 +450,6 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
           disabled={disabled}
           className={[
             buttonStyles.splitMain,
-            isTertiary ? buttonStyles.splitTertiaryMain : "",
             isSecondary ? buttonStyles.splitSecondaryMain : "",
           ]
             .filter(Boolean)
@@ -495,13 +493,7 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
             }
           }}
           disabled={disabled || !hasOptions}
-          className={[
-            buttonStyles.splitToggle,
-            isTertiary ? buttonStyles.splitTertiaryToggle : "",
-            isSecondary ? buttonStyles.splitSecondaryToggle : "",
-          ]
-            .filter(Boolean)
-            .join(" ")}
+          className={buttonStyles.splitToggle}
           tooltip={toggleLabel}
           ref={toggleRef}
         >

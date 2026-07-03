@@ -343,6 +343,13 @@
   border-start-end-radius: 0;
 }
 
+/* Secondary segments both draw 2px outlines; overlap them fully so the
+   middle reads as one shared seam instead of a 3px bulge. */
+
+.button.splitSecondaryMain {
+  margin-inline-end: -2px;
+}
+
 .button.splitToggle {
   position: relative;
   padding-inline: var(--space-internal-12);
