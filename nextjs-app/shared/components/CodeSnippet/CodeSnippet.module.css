@@ -31,10 +31,17 @@
   background: rgb(255 255 255 / 15%);
 }
 
-/* Block variants - single and multi */
+/* Block variants - single and multi
+ *
+ * Window chrome mirrors CodeBlockWindow (container + header + body) without
+ * the traffic-light dots: hairline border, large radius, token surfaces. */
 
 .wrapper {
   margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--main-body-background-color);
+  overflow: hidden;
 }
 
 .single .pre {
@@ -49,39 +56,28 @@
 
 .toolbar {
   display: flex;
-  padding: 1rem;
+  padding-block: var(--space-layout-8);
+  padding-inline: var(--space-layout-16);
+  min-height: 44px;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-internal-12);
-  border: 2px solid var(--color-primary);
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  background: var(--color-neutral-bg);
-  text-transform: capitalize;
+  border-block-end: 1px solid var(--color-border);
+  background-color: var(--color-light-bg);
   color: var(--color-text);
-}
-
-/* Dark-theme toolbar surface
- *
- * The shared `--color-neutral-bg` token resolves to #3b3f5c in dark mode.
- * The toolbar hosts a `<Button variant="secondary">` whose text inherits
- * `--color-primary` (#6fa8ff in dark mode); on #3b3f5c that combination
- * lands at 4.25:1 — just below the 4.5:1 WCAG normal-text floor.
- * Darken the toolbar surface so the same secondary button now clears 7:1
- * without forcing every consumer of `--color-neutral-bg` darker. */
-
-:global(.themeDark) .toolbar,
-:global([data-theme="dark"]) .toolbar {
-  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value -- contrast-tuned surface, see comment above */
-  border-color: #2d2d2d;
-  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value -- contrast-tuned surface, see comment above */
-  background: #1e1e1e;
 }
 
 .language {
   margin-block: 0 !important;
   font-size: var(--font-size-text-xxs, 0.75rem);
+  line-height: 1;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--code-toolbar-text, #2b3a45);
+}
+
+:global(.themeDark) .language {
+  color: var(--code-toolbar-text-dark, #cbd5e0);
 }
 
 .actions {
@@ -123,15 +119,14 @@
   --code-token-important: #8a4c00;
 
   margin: 0;
-  padding: 1rem;
-  border: 2px solid var(--code-border);
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  padding: var(--space-layout-16);
+  border: none;
+  border-radius: 0;
   background: var(--code-bg);
   font-family: var(--font-mono);
   font-size: var(--font-size-text-s, 0.9375rem);
   line-height: 1.6;
   color: var(--code-text);
-  border-top: none;
   overflow: auto;
 }
 
@@ -316,13 +311,35 @@
 
 .expandControl {
   padding: var(--space-internal-12);
-  border: 2px solid var(--color-primary);
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  background: var(--color-neutral-bg);
+  border-block-start: 1px solid var(--color-border);
+  background-color: var(--color-light-bg);
   text-align: center;
-  border-top: none;
 }
 
 .expandControl button {
   width: 100%;
+}
+
+@media (width >= 768px) {
+  .toolbar {
+    padding-inline: var(--space-layout-24);
+  }
+
+  .pre {
+    padding: var(--space-layout-24);
+  }
+}
+
+/* Same soft elevation treatment as CodeBlockWindow's container. */
+@supports (color: color-mix(in srgb, black, white)) {
+  .wrapper {
+    box-shadow: 0 16px 40px
+      color-mix(in srgb, var(--color-border) 60%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wrapper {
+    box-shadow: none;
+  }
 }

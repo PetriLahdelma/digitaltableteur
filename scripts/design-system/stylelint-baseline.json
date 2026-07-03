@@ -462,22 +462,22 @@
       "text": "Expected \"min-width\" to come before \"max-width\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::81::19::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::71::19::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css",
-      "line": 81,
+      "line": 71,
       "column": 19,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::99::1::no-descending-specificity::Expected selector \".pre\" to come before selector \".single .pre\", at line 40 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::95::1::no-descending-specificity::Expected selector \".pre\" to come before selector \".single .pre\", at line 47 (no-descending-specificity)",
       "file": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css",
-      "line": 99,
+      "line": 95,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".pre\" to come before selector \".single .pre\", at line 40 (no-descending-specificity)"
+      "text": "Expected selector \".pre\" to come before selector \".single .pre\", at line 47 (no-descending-specificity)"
     },
     {
       "id": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css::135::22::declaration-no-important::Disallowed !important (declaration-no-important)",
