@@ -14,74 +14,10 @@ import {
 import List from "@dt/List";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import { useTranslation } from "react-i18next";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
-const listComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Proper typing with ListProps",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "Stories use translation keys",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles except listStyleType",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Uses CSS custom properties",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "Uses logical spacing",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "CSS custom properties throughout",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Polymorphic (ul/ol), size/spacing variants",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "Semantic HTML, optional role override",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Multiple variants with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
-];
 
 const meta: Meta<typeof List> = {
   title: "Content/List",
@@ -180,15 +116,6 @@ const meta: Meta<typeof List> = {
 
 export default meta;
 
-export const Z_ListCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 11/11"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
-    }
-    rules={listComplianceRules}
-  />
-);
 
 const ListStory: React.FC<React.ComponentProps<typeof List>> = (args) => {
   const { t } = useTranslation();
