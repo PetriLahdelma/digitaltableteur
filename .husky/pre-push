@@ -2,6 +2,13 @@
 . "$(dirname "$0")/_/husky.sh"
 changed=$(git diff --name-only HEAD @{push} 2>/dev/null || git diff --name-only --cached)
 echo "$changed" | grep -qE 'nextjs-app/shared/(components|patterns|foundations)|scripts/design-system' || exit 0
+# Contract gate: keep the local gate a superset of the farm's validate job for
+# contract-touching changes (2026-07-03 incident: ten red farm runs because
+# check:contract-props only existed in CI). build:tokens regenerates the dist
+# artifacts (relationship graph + agent blocks) the two checks compare against.
+npm run build:tokens
+npm run check:contract-props
+npm run check:consumers
 npm run validate:components
 npm run typecheck
 npm run lint
