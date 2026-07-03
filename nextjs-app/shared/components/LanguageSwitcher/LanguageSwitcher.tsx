@@ -111,6 +111,10 @@ export function LanguageSwitcher({
         className={styles.optionsTrayAnchor}
         data-open={isOpen ? "true" : "false"}
         aria-hidden={!isOpen}
+        /* aria-hidden flips at close while the exit animation still renders
+           the option buttons; inert keeps that fading window unfocusable so
+           keyboard focus can never land inside a hidden tray. */
+        inert={!isOpen}
       >
         <AnimatePresence initial={false}>
           {isOpen && (

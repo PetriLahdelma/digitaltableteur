@@ -121,7 +121,7 @@
   --color-dark: #222;
   --color-gray-dark: #333;
   --color-gray: #5e5e5e;
-  --color-muted: #6c757d;
+  --color-muted: #626a72; /* AA on #f5f6f6 field surfaces (5.07:1) AND their hover mix #ebeded (4.67:1), not just on white */
   --color-muted-light: #4949a7;
   --color-border: #c0c0c0;
   --color-border-light: #ccc;

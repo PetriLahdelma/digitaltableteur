@@ -15,10 +15,14 @@ const variantClasses = {
   default: "bg-primary text-primary-foreground",
   secondary: "bg-secondary text-secondary-foreground",
   outline: "border border-border bg-transparent text-foreground",
-  success: "bg-green-500/10 text-green-600 dark:text-green-400",
-  warning: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400",
-  error: "bg-red-500/10 text-red-600 dark:text-red-400",
-  info: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+  /* Semantic inks are one-two steps darker than the usual *-600: on the 10%
+     tinted backgrounds the 600 shades sit below WCAG AA (green-600 measured
+     2.95:1, yellow-600 2.75:1, red-600 4.14:1). These land at 5.5-6.6:1;
+     the dark-theme *-400 inks measure 5.6-9.2:1 on the dark tints. */
+  success: "bg-green-500/10 text-green-800 dark:text-green-400",
+  warning: "bg-yellow-500/10 text-yellow-800 dark:text-yellow-400",
+  error: "bg-red-500/10 text-red-700 dark:text-red-400",
+  info: "bg-blue-500/10 text-blue-700 dark:text-blue-400",
 } as const;
 
 const sizeClasses = {

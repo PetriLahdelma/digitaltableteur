@@ -10,7 +10,13 @@
       - /url: mailto:mail@digitaltableteur.com
       - text: mail@digitaltableteur.com
   - paragraph: Billing details
-  - paragraph: Digitaltableteur Hämeentie 8 C 00530 Helsinki VAT FI22644552
+  - paragraph:
+    - strong: E-invoice address
+    - text: "003722644552"
+    - strong: Operator
+    - text: APIX Messaging Oy
+    - strong: Operator ID
+    - text: "003723327487"
   - paragraph: Legal
   - paragraph:
     - link "Privacy Policy":
@@ -25,8 +31,6 @@
   - paragraph:
     - link "Design System Guides":
       - /url: /pseo
-    - link "Tools":
-      - /url: /tools/email-signature
   - link "Instagram":
     - /url: https://www.instagram.com/digitaltableteur/
     - img "Instagram"
