@@ -54,7 +54,7 @@
       }
     },
     "muted": {
-      "$value": "#6c757d",
+      "$value": "#626a72",
       "$description": "Color token (muted).",
       "$type": "color",
       "light": {

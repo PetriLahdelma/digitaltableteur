@@ -1,6 +1,6 @@
 import contract from "./LanguageSwitcher.contract.json";
 import { useState } from "react";
-import { expect, userEvent, within } from "storybook/test";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import {
@@ -94,11 +94,21 @@ export const KeyboardToggle: Story = {
       name: /show language options|english/i,
     });
     await userEvent.click(trigger);
-    expect(canvas.getByRole("button", { name: /^finnish$/i })).toBeVisible();
+    /* The option rail animates in/out (Framer Motion opacity); assert through
+       the transition, not against its first frame. */
+    await waitFor(() =>
+      expect(canvas.getByRole("button", { name: /^finnish$/i })).toBeVisible(),
+    );
     await userEvent.keyboard("{Escape}");
-    expect(
-      canvas.queryByRole("button", { name: /^finnish$/i }),
-    ).not.toBeInTheDocument();
+    /* hidden: true — the closed tray goes aria-hidden immediately, which
+       already satisfies a default role query while the exit animation still
+       renders the buttons. Track actual DOM removal so the post-play axe
+       audit runs against a settled tree. */
+    await waitFor(() =>
+      expect(
+        canvas.queryByRole("button", { name: /^finnish$/i, hidden: true }),
+      ).not.toBeInTheDocument(),
+    );
   },
 };
 
