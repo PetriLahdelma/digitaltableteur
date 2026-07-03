@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 462,
+  "warningCount": 450,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -255,211 +255,103 @@
       "text": "Expected selector \":global(.themeHCW) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 506 (no-descending-specificity)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::105::13::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::106::13::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 105,
+      "line": 106,
       "column": 13,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::106::46::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::107::46::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 106,
+      "line": 107,
       "column": 46,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::107::18::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::108::18::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 107,
+      "line": 108,
       "column": 18,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::128::1::no-descending-specificity::Expected selector \".status\" to come before selector \":global(.themeDark) .status\", at line 113 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::129::1::no-descending-specificity::Expected selector \".status\" to come before selector \":global(.themeDark) .status\", at line 114 (no-descending-specificity)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 128,
+      "line": 129,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".status\" to come before selector \":global(.themeDark) .status\", at line 113 (no-descending-specificity)"
+      "text": "Expected selector \".status\" to come before selector \":global(.themeDark) .status\", at line 114 (no-descending-specificity)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::136::3::order/properties-order::Expected \"max-width\" to come before \"background-color\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::184::37::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 136,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"max-width\" to come before \"background-color\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::137::3::order/properties-order::Expected \"min-width\" to come before \"max-width\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 137,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-width\" to come before \"max-width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::147::3::order/properties-order::Expected \"box-sizing\" to come before \"background-color\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 147,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"box-sizing\" to come before \"background-color\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::150::3::order/properties-order::Expected \"min-width\" to come before \"max-width\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 150,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-width\" to come before \"max-width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::152::3::order/properties-order::Expected \"white-space\" to come before \"overflow\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 152,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"white-space\" to come before \"overflow\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::161::3::order/properties-order::Expected \"min-width\" to come before \"max-width\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 161,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-width\" to come before \"max-width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::17::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 17,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::179::3::order/properties-order::Expected \"white-space\" to come before \"color\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 179,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"white-space\" to come before \"color\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::183::37::declaration-no-important::Disallowed !important (declaration-no-important)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 183,
+      "line": 184,
       "column": 37,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::187::36::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::188::36::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 187,
+      "line": 188,
       "column": 36,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::191::36::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::192::36::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 191,
+      "line": 192,
       "column": 36,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::196::23::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::197::23::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 196,
+      "line": 197,
       "column": 23,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::20::3::order/properties-order::Expected \"margin-block\" to come before \"max-width\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::211::21::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 20,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin-block\" to come before \"max-width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::208::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 208,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::209::21::declaration-no-important::Disallowed !important (declaration-no-important)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 209,
+      "line": 211,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::223::1::selector-max-specificity::Too high specificity in \".container[data-line-numbers=\"true\"] .code :global([data-line])::before\", maximum \"0,4,0\" (selector-max-specificity)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::229::1::selector-max-specificity::Too high specificity in \".container[data-line-numbers=\"true\"] .code :global([data-line])::before\", maximum \"0,4,0\" (selector-max-specificity)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 223,
+      "line": 229,
       "column": 1,
       "rule": "selector-max-specificity",
       "severity": "warning",
       "text": "Too high specificity in \".container[data-line-numbers=\"true\"] .code :global([data-line])::before\", maximum \"0,4,0\" (selector-max-specificity)"
     },
     {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::242::1::selector-max-specificity::Too high specificity in \":global(.themeDark) .container[data-line-numbers=\"true\"] .code :global([data-line])::before\", maximum \"0,4,0\" (selector-max-specificity)",
+      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::251::1::selector-max-specificity::Too high specificity in \":global(.themeDark) .container[data-line-numbers=\"true\"] .code :global([data-line])::before\", maximum \"0,4,0\" (selector-max-specificity)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 242,
+      "line": 251,
       "column": 1,
       "rule": "selector-max-specificity",
       "severity": "warning",
       "text": "Too high specificity in \":global(.themeDark) .container[data-line-numbers=\"true\"] .code :global([data-line])::before\", maximum \"0,4,0\" (selector-max-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::29::3::order/properties-order::Expected \"-webkit-overflow-scrolling\" to come before \"touch-action\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 29,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"-webkit-overflow-scrolling\" to come before \"touch-action\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::8::3::order/properties-order::Expected \"min-width\" to come before \"max-width\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
-      "line": 8,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-width\" to come before \"max-width\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.module.css::71::19::declaration-no-important::Disallowed !important (declaration-no-important)",
