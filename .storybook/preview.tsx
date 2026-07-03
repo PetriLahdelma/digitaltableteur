@@ -506,6 +506,7 @@ const preview: Preview = {
           "Overview",
           [
             "Welcome",
+            "Components",
             "Test Health Overview",
             "00-Overview",
             "01-Principles",

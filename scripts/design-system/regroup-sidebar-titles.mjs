@@ -12,40 +12,15 @@
 import { existsSync, readdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { DOC_TIER_1 } from "./doc-tiers.mjs";
+import { DOC_TIER_1, DOC_TIER_1_CATEGORIES } from "./doc-tiers.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const COMPONENTS = join(ROOT, "nextjs-app/shared/components");
 const WRITE = process.argv.includes("--write");
 
-/** Sidebar category per DOC_TIER_1 name (mirrors doc-tiers.mjs sections). */
+/** Sidebar category per DOC_TIER_1 name (single source: doc-tiers.mjs). */
 const CATEGORY = new Map();
-const CATEGORIES = {
-  Actions: ["Button", "IconButton", "SplitButton", "Tag"],
-  Content: [
-    "Text", "Title", "Display", "List", "Badge", "Icon", "Avatar",
-    "CodeSnippet", "CodeBlockWindow",
-  ],
-  Forms: [
-    "TextInput", "TextArea", "Select", "Checkbox", "CheckboxGroup", "Radio",
-    "RadioGroup", "Switch", "Combobox", "MultiCombobox", "PhoneInput",
-    "FileUpload", "FormField", "Label", "HelperText", "GroupLabel",
-  ],
-  Feedback: [
-    "AlertBanner", "Toast", "Progress", "Spinner", "BusyIndicator",
-    "Skeleton", "Tooltip", "Modal",
-  ],
-  Navigation: [
-    "Link", "NavLink", "Breadcrumb", "Tabs", "Pagination", "SkipLink",
-    "LanguageSwitcher",
-  ],
-  Layout: [
-    "Card", "Container", "Grid", "FlexBox", "Stack", "Center", "Spacer",
-    "Section", "Divider", "AspectRatio", "Accordion", "ExpandableSection",
-    "MacWindowFrame",
-  ],
-};
-for (const [category, names] of Object.entries(CATEGORIES)) {
+for (const [category, names] of Object.entries(DOC_TIER_1_CATEGORIES)) {
   for (const name of names) CATEGORY.set(name, category);
 }
 const missing = DOC_TIER_1.filter((name) => !CATEGORY.has(name));
