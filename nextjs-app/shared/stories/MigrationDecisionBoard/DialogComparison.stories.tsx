@@ -82,7 +82,8 @@ export const AlertAndDeferrals: Story = {
           <strong>Error alert approved</strong> — use @dt/Modal with{" "}
           <code>severity=&quot;error&quot;</code>, <code>description</code>, and{" "}
           <code>isOpen</code>/<code>onClose</code>. Production overlays migrated: Lightbox (portal),
-          AnimatedDialog (GSAP + @dt/Modal). Defer composable DialogTrigger only.
+          Modal <code>animation</code> prop (GSAP entrance, folded in from the retired AnimatedDialog).
+          Defer composable DialogTrigger only.
         </>
       }
     >

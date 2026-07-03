@@ -25,7 +25,7 @@
     {
       "id": "modal",
       "query": "modal dialog",
-      "expectedInTop3": ["Modal", "AnimatedDialog"]
+      "expectedInTop3": ["Modal"]
     },
     {
       "id": "cookie-consent",

@@ -1068,6 +1068,7 @@
   "storyModalOpenWarningV110": "Öppna varningsmodal (v1.1.0)",
   "storyModalOpenInfoV110": "Öppna infomodal (v1.1.0)",
   "storyModalOpenLoadingV110": "Öppna laddningsmodal (v1.1.0)",
+  "storyModalOpenAnimatedV110": "Öppna animerad modal (v1.1.0)",
   "storyModalDefault": "Standardmodal",
   "storyModalLoading": "Laddar",
   "storyModalPleaseWait": "Vänligen vänta...",

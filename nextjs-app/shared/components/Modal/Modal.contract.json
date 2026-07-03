@@ -171,6 +171,16 @@
             "optional": true,
             "type": "React.Ref<HTMLDivElement>"
         },
+        "animation": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "none",
+                "scale",
+                "slide",
+                "fade"
+            ]
+        },
         "showCloseIcon": {
             "optional": true,
             "type": "boolean"
