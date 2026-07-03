@@ -22,7 +22,7 @@ const meta: Meta<typeof MacWindowFrame> = {
     a11y: { test: "error" },
     layout: "padded",
   },
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
 };
 
 export default meta;
@@ -39,7 +39,33 @@ export const Default: Story = {
   args: { children: sampleContent },
 };
 
+/** Decorative chrome around demo content — the traffic lights are paint, not controls. */
+export const ShowcaseFrame: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Decorative chrome around demo content — the traffic lights are paint, not controls. Anything needing real window semantics (focus, dismissal) belongs in Modal.",
+      },
+    },
+  },
+  args: { children: sampleContent },
+};
+
+/** The action button renders only when onAction exists — wire it to something real or omit it. */
 export const WithAction: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "actionLabelKey + onAction add one real action to the title bar (Replay here). Without onAction the button hides itself.",
+      },
+    },
+  },
   args: {
     children: sampleContent,
     onAction: () => undefined,
@@ -47,7 +73,18 @@ export const WithAction: Story = {
   },
 };
 
+/** Compact density tightens the chrome for dense grids of demos. */
 export const Compact: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "density compact tightens the chrome for dense grids of demo windows.",
+      },
+    },
+  },
   args: { density: "compact", children: sampleContent },
 };
 

@@ -25,7 +25,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/FlexBox",
   component: FlexBox,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -133,4 +133,51 @@ export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
+};
+
+/** The bread-and-butter use: a mixed-height inline cluster aligned on center with a token gap. */
+export const InlineCluster: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The bread-and-butter use: a mixed-height inline cluster aligned on center with a token gap." } },
+  },
+  render: () => (
+    <FlexBox align="center" gap="var(--space-internal-8, 0.5rem)">
+      <span style={{ fontSize: "1.5rem" }}>★</span>
+      <span>Aligned label</span>
+      <span style={{ fontSize: "0.75rem", border: "1px solid var(--color-border, #999)", borderRadius: "999px", padding: "0 0.5rem" }}>badge</span>
+    </FlexBox>
+  ),
+};
+
+/** justify space-between pins the ends — toolbars, card headers, footer rows. */
+export const SpaceBetween: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "justify space-between pins the ends — toolbars, card headers, footer rows." } },
+  },
+  render: () => (
+    <FlexBox justify="space-between" align="center" style={{ border: "1px dashed var(--color-border, #999)", padding: "0.5rem" }}>
+      <strong>Left anchor</strong>
+      <span>Right anchor</span>
+    </FlexBox>
+  ),
+};
+
+/** Numbers are px; strings pass through — so token gaps are strings. */
+export const ColumnWithTokenGap: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Numbers are px; strings pass through — so token gaps are strings. When every gap is a token step, Stack is the sharper tool." } },
+  },
+  render: () => (
+    <FlexBox direction="column" gap="var(--space-internal-16, 1rem)">
+      {["First", "Second", "Third"].map((label) => (
+        <div key={label} style={{ border: "1px dashed var(--color-border, #999)", padding: "0.5rem" }}>{label}</div>
+      ))}
+    </FlexBox>
+  ),
 };

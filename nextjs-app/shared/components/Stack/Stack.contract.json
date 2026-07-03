@@ -301,10 +301,53 @@
         "Bypass design tokens or skip forced-colors verification at beta."
     ],
     "composesWith": [
-        "Container",
-        "Link",
-        "Badge",
-        "Checkbox",
-        "TextInput"
-    ]
+        "Card",
+        "Text",
+        "Button"
+    ],
+    "displayName": "Stack",
+    "keywords": [
+        "stack",
+        "vertical rhythm",
+        "spacing",
+        "flex column",
+        "gap",
+        "list layout"
+    ],
+    "dense": "Token-gapped flex: direction vertical|horizontal, gap none|xs 4|sm 8|md 16 (default)|lg 24|xl 32px, align/justify shorthands, wrap; polymorphic as (ul/ol for semantic lists)",
+    "usage": {
+        "description": "Stack is the default way to space siblings: a flex column (or row) whose `gap` comes from a fixed token scale, so vertical rhythm stays on the grid without margin fiddling. Use `as=\"ul\"` with `li` children when the stack is semantically a list. If items need individual offsets or non-token gaps, that's FlexBox; if both axes matter, Grid.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Default to gap=\"md\" (16px) for content rhythm; xs/sm for dense clusters, lg/xl between groups."
+            },
+            {
+                "guidance": true,
+                "description": "Use direction=\"horizontal\" with align=\"center\" for inline clusters like actions or metadata rows."
+            },
+            {
+                "guidance": true,
+                "description": "Set wrap for chip/tag rows so they reflow instead of overflowing."
+            },
+            {
+                "guidance": true,
+                "description": "Use as=\"ul\"/\"ol\" (with li children) when the group is semantically a list."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest Stacks purely to sum gaps — pick the right gap on one Stack."
+            },
+            {
+                "guidance": false,
+                "description": "Do not add margins to Stack children; the gap owns the spacing, margins fight it."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "gap": "md",
+            "children": "Stacked content"
+        }
+    }
 }

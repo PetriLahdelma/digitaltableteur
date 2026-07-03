@@ -2,13 +2,13 @@ import contract from "./Accordion.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import Accordion from "./Accordion";
-import { userEvent, waitFor, within } from "storybook/test";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 const meta: Meta<typeof Accordion> = {
   title: "Layout/Accordion",
   component: Accordion,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -104,4 +104,67 @@ export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: { items: defaultItems },
+};
+
+/** The canonical FAQ: one answer open at a time, opening the next closes the last, clicking the open item closes it. */
+export const Faq: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The canonical FAQ: one answer open at a time, opening the next closes the last, clicking the open item closes it." } },
+  },
+  render: () => (
+    <Accordion
+      items={[
+        { id: "coverage", title: "What does the design system cover?", content: "Tokens, components, patterns, and these docs." },
+        { id: "request", title: "How do I request a component?", content: "Open an issue with the use case and two production consumers." },
+        { id: "contribute", title: "Can I contribute a pattern?", content: "Yes — start from the pattern template and the contract schema." },
+      ]}
+    />
+  ),
+};
+
+/** defaultOpenId lands visitors on the entry most of them came for, with the rest one keypress away. */
+export const DefaultOpen: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "defaultOpenId lands visitors on the entry most of them came for, with the rest one keypress away." } },
+  },
+  render: () => (
+    <Accordion
+      defaultOpenId="pricing"
+      items={[
+        { id: "pricing", title: "How is the work priced?", content: "Fixed-scope engagements with a written definition of done." },
+        { id: "timeline", title: "How long does an engagement take?", content: "Typical system audits run two to four weeks." },
+      ]}
+    />
+  ),
+};
+
+/** Triggers are real buttons: Tab reaches them, Enter or Space toggles, aria-expanded and aria-controls wire each trigger to its region — asserted by the play function. */
+export const KeyboardContract: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Triggers are real buttons: Tab reaches them, Enter or Space toggles, aria-expanded and aria-controls wire each trigger to its region — asserted by the play function." } },
+  },
+  render: () => (
+    <Accordion
+      items={[
+        { id: "a", title: "First section", content: "First content." },
+        { id: "b", title: "Second section", content: "Second content." },
+      ]}
+    />
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const first = canvas.getByRole("button", { name: /first section/i });
+    await userEvent.click(first);
+    await expect(first).toHaveAttribute("aria-expanded", "true");
+    const second = canvas.getByRole("button", { name: /second section/i });
+    await userEvent.click(second);
+    await expect(second).toHaveAttribute("aria-expanded", "true");
+    await expect(first).toHaveAttribute("aria-expanded", "false");
+  },
 };

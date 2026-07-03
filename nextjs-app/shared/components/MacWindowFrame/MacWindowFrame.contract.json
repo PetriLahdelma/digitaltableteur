@@ -87,5 +87,55 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
+    ],
+    "displayName": "MacWindowFrame",
+    "keywords": [
+        "window frame",
+        "showcase",
+        "chrome",
+        "demo",
+        "macos",
+        "presentation"
+    ],
+    "dense": "Decorative macOS window chrome for showcase content: i18n titleKey, optional action button (actionLabelKey + onAction), density comfortable|compact. Presentation only — not a real window/dialog",
+    "usage": {
+        "description": "MacWindowFrame wraps showcase content — code demos, screenshots, portfolio pieces — in decorative macOS-style chrome. The title and optional action button come through i18n keys (`titleKey`, `actionLabelKey`). It is presentation, not a real window: the traffic lights are paint, and anything needing dialog semantics (focus trap, dismissal) belongs in Modal.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use it to frame demos and screenshots where the desktop-app look sells the context."
+            },
+            {
+                "guidance": true,
+                "description": "Pass titles through i18n keys (titleKey), matching how the site renders all user-facing copy."
+            },
+            {
+                "guidance": true,
+                "description": "Use density=\"compact\" inside dense grids of demos."
+            },
+            {
+                "guidance": true,
+                "description": "Provide onAction only when the button does something real; the button hides itself otherwise."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it as an actual window or dialog — Modal owns focus and dismissal semantics."
+            },
+            {
+                "guidance": false,
+                "description": "Do not rely on the traffic-light dots for any function; they are decoration and convey nothing to AT."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "titleKey": "storyMacWindowTitle",
+            "density": "comfortable",
+            "children": "Framed showcase content"
+        }
+    },
+    "composesWith": [
+        "CodeSnippet",
+        "CodeBlockWindow"
     ]
 }

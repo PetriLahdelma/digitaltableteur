@@ -90,9 +90,53 @@
     ],
     "composesWith": [
         "Container",
-        "BlogCategoryFilter",
-        "BlogGrid",
-        "Pagination",
-        "EnhancedArticleCard"
-    ]
+        "Title",
+        "Grid"
+    ],
+    "displayName": "Section",
+    "keywords": [
+        "section",
+        "page band",
+        "vertical rhythm",
+        "background",
+        "hero",
+        "landmark"
+    ],
+    "dense": "Page band: spacing none|sm|md (default)|lg|xl + hero/follow pair (hero = roomy top tight bottom, follow = no top), background default|muted|accent|inverse; id/donnyTarget anchors",
+    "usage": {
+        "description": "Section is the page-level band: it owns vertical rhythm (`spacing`, responsive paddings) and surface (`background`), while Container inside it owns the horizontal clamp. `hero` and `follow` are a pair — the hero band keeps a generous top and tight bottom, and the section right after uses `follow` to avoid a double gap. `inverse` flips to the dark surface with matching text tokens. Give sections an `id` when they are anchor or skip targets.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Pair spacing=\"hero\" on the page hero with spacing=\"follow\" on the next section — that is what kills the double gap."
+            },
+            {
+                "guidance": true,
+                "description": "Alternate background=\"muted\" sparingly to group related content; every-other-band zebra striping reads as noise."
+            },
+            {
+                "guidance": true,
+                "description": "Put a Container directly inside; Section handles vertical, Container horizontal."
+            },
+            {
+                "guidance": true,
+                "description": "Give anchor/deep-link targets an id (and donnyTarget only for whitelisted spotlight stops)."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest Sections — bands are siblings; nesting compounds paddings and backgrounds."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Section inside components or cards; it is page architecture, not component padding."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "spacing": "md",
+            "background": "default",
+            "children": "Band content"
+        }
+    }
 }

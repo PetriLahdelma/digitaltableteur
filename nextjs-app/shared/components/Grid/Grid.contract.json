@@ -154,11 +154,66 @@
         "Bypass design tokens or skip forced-colors verification at beta."
     ],
     "composesWith": [
-        "Link",
-        "ArticleCard",
-        "Avatar",
-        "Checkbox",
-        "CheckboxGroup",
-        "FlexBox"
-    ]
+        "Card",
+        "Container",
+        "AspectRatio"
+    ],
+    "displayName": "Grid",
+    "keywords": [
+        "grid",
+        "columns",
+        "layout",
+        "span",
+        "grid item",
+        "two dimensional"
+    ],
+    "dense": "CSS-grid wrapper: numeric columns for equal tracks or template strings; gap/rowGap/colGap strings; Grid.Item adds span/rowSpan; extra grid CSS props pass through via style",
+    "usage": {
+        "description": "Grid is the two-dimensional layout primitive: pass `columns` as a number for equal tracks or a template string for custom ones, gaps as CSS strings (prefer space tokens), and wrap children needing to span in `Grid.Item` with `span`/`rowSpan`. Reach for it when both axes matter — card walls, media mosaics, dashboard modules; single-axis flows are Stack/FlexBox territory.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use numeric columns for equal tracks and a template string (e.g. \"2fr 1fr\") only when tracks genuinely differ."
+            },
+            {
+                "guidance": true,
+                "description": "Wrap only the children that span in Grid.Item; plain children flow one per cell without a wrapper."
+            },
+            {
+                "guidance": true,
+                "description": "Set gaps with space tokens (\"var(--space-layout-24)\") so grid gutters follow the page rhythm."
+            },
+            {
+                "guidance": true,
+                "description": "Give featured cards span={2} instead of a wider one-off column template."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Grid for single-axis flows — Stack (token gaps) or FlexBox (free-form) read clearer and cost less."
+            },
+            {
+                "guidance": false,
+                "description": "Do not size cells by styling children with widths; spans and templates belong on the grid, not in the card."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Grid",
+                "required": true,
+                "description": "The display:grid container; columns/rows/gaps and any extra grid CSS via props."
+            },
+            {
+                "name": "Grid.Item",
+                "required": false,
+                "description": "Optional child wrapper adding span/rowSpan; unwrapped children occupy one cell each."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "columns": 3,
+            "gap": "1.5rem",
+            "children": "Add Grid.Item children in code"
+        }
+    }
 }

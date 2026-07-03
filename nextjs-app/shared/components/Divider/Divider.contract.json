@@ -70,8 +70,51 @@
         "Bypass design tokens or skip forced-colors verification at beta."
     ],
     "composesWith": [
-        "Link",
-        "Container",
-        "Stack"
-    ]
+        "Stack",
+        "List"
+    ],
+    "displayName": "Divider",
+    "keywords": [
+        "divider",
+        "separator",
+        "rule",
+        "hr",
+        "horizontal rule"
+    ],
+    "dense": "hr separator on border tokens: orientation horizontal|vertical; decorative=true (default) removes it from the AT tree (role=none), decorative=false announces role=separator + aria-orientation",
+    "usage": {
+        "description": "Divider draws a rule on the production border tokens. By default it is decorative — `role=\"none\"`, invisible to assistive tech — which is right when it only supports visual rhythm. Set `decorative={false}` when the rule conveys real structure (menu groups, toolbar clusters) so AT users get the same grouping. Vertical dividers need a height from their flex row.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Keep the decorative default when the rule is visual rhythm only."
+            },
+            {
+                "guidance": true,
+                "description": "Set decorative={false} where the split carries meaning (menu groups) so the separator role is announced."
+            },
+            {
+                "guidance": true,
+                "description": "Give vertical dividers a height via the parent row (align-self stretch or explicit class)."
+            },
+            {
+                "guidance": true,
+                "description": "Space it with the parent's gap or margin utilities on className, not wrapper divs."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put a divider between every list row — List's own rhythm and borders handle that."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use dividers as spacing; if you only need distance, use gap or Spacer."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "orientation": "horizontal",
+            "decorative": true
+        }
+    }
 }

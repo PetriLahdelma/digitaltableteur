@@ -14,7 +14,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/AspectRatio",
   component: AspectRatio,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -78,4 +78,62 @@ export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
+};
+
+/** The preset ratios: 16:9 for video, 1:1 for thumbnails, 3:2 for editorial photography. */
+export const RatioGallery: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The preset ratios: 16:9 for video, 1:1 for thumbnails, 3:2 for editorial photography. The child fills and clips." } },
+  },
+  render: () => (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+      {(["16:9", "1:1", "3:2"] as const).map((ratio) => (
+        <AspectRatio key={ratio} ratio={ratio}>
+          <div style={{ width: "100%", height: "100%", display: "grid", placeItems: "center", border: "1px dashed var(--color-border, #999)" }}>
+            {ratio}
+          </div>
+        </AspectRatio>
+      ))}
+    </div>
+  ),
+};
+
+/** Media inside should fill the box: width and height 100% with object-fit cover, so any source crops to the frame instead of distorting. */
+export const MediaFill: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Media inside should fill the box: width and height 100% with object-fit cover, so any source crops to the frame instead of distorting." } },
+  },
+  render: () => (
+    <div style={{ maxWidth: "20rem" }}>
+      <AspectRatio ratio="16:9">
+        <img
+          src="data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%23e2e8f0%27/%3E%3Ccircle cx=%27200%27 cy=%27120%27 r=%2760%27 fill=%27%2394a3b8%27/%3E%3C/svg%3E"
+          alt="Placeholder illustration cropped to a 16:9 frame"
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </AspectRatio>
+    </div>
+  ),
+};
+
+/** Because the height comes from the ratio, the frame reserves space before media loads — no layout shift; pair with Skeleton for the placeholder. */
+export const ReservedSpace: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Because the height comes from the ratio, the frame reserves space before media loads — no layout shift; pair with Skeleton for the placeholder." } },
+  },
+  render: () => (
+    <div style={{ maxWidth: "20rem" }}>
+      <AspectRatio ratio="16:9">
+        <div style={{ width: "100%", height: "100%", background: "var(--color-light-bg, #eee)", display: "grid", placeItems: "center" }}>
+          loading…
+        </div>
+      </AspectRatio>
+    </div>
+  ),
 };

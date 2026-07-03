@@ -5,7 +5,7 @@ import contract from "./Divider.contract.json";
 const meta = {
   title: "Layout/Divider",
   component: Divider,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -84,4 +84,55 @@ export const Vertical: Story = {
 export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
+};
+
+/** The default: a decorative rule (role none) that supports visual grouping without announcing anything to AT. */
+export const DecorativeRhythm: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The default: a decorative rule (role none) that supports visual grouping without announcing anything to AT." } },
+  },
+  render: () => (
+    <div style={{ maxWidth: "24rem" }}>
+      <p style={{ margin: "0 0 0.75rem" }}>Intro block of content.</p>
+      <Divider />
+      <p style={{ margin: "0.75rem 0 0" }}>The next thought, visually set apart.</p>
+    </div>
+  ),
+};
+
+/** Setting decorative false announces role separator with aria-orientation — for splits that carry structure, like menu groups. */
+export const MeaningfulSeparator: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Setting decorative false announces role separator with aria-orientation — for splits that carry structure, like menu groups." } },
+  },
+  render: () => (
+    <div role="menu" aria-label="Actions" style={{ maxWidth: "12rem", border: "1px dashed var(--color-border, #999)", padding: "0.5rem" }}>
+      <div role="menuitem">Rename</div>
+      <div role="menuitem">Duplicate</div>
+      <Divider decorative={false} />
+      <div role="menuitem">Delete</div>
+    </div>
+  ),
+};
+
+/** Vertical dividers take their height from the flex row — give the row an explicit alignment or height. */
+export const VerticalInRow: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Vertical dividers take their height from the flex row — give the row an explicit alignment or height." } },
+  },
+  render: () => (
+    <div style={{ display: "flex", alignItems: "stretch", gap: "0.75rem", height: "2rem" }}>
+      <span style={{ alignSelf: "center" }}>Docs</span>
+      <Divider orientation="vertical" />
+      <span style={{ alignSelf: "center" }}>API</span>
+      <Divider orientation="vertical" />
+      <span style={{ alignSelf: "center" }}>Support</span>
+    </div>
+  ),
 };

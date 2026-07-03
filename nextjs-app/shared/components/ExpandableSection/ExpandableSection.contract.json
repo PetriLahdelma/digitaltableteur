@@ -83,5 +83,54 @@
     "forbiddenUse": [
         "Use a sequence of `ExpandableSection`s instead of `Accordion` — accordion owns the focus management and single-open behaviour.",
         "Hide critical content (errors, primary CTA) behind a disclosure."
+    ],
+    "displayName": "ExpandableSection",
+    "keywords": [
+        "expandable",
+        "show more",
+        "disclosure",
+        "collapse",
+        "reveal"
+    ],
+    "dense": "Single disclosure: collapsedLabel/expandedLabel trigger, uncontrolled (defaultExpanded) or controlled (expanded + onExpandedChange); staggered reveal. One section = this; exclusive group = Accordion",
+    "usage": {
+        "description": "ExpandableSection is a single, independent disclosure: one trigger whose label can swap between states (`collapsedLabel`/`expandedLabel`), revealing its children with a small stagger. Use it for \"show more\" tails — extended bios, optional details, long changelogs. It has no group behavior: several ExpandableSections don't know about each other. When sections should be exclusive (open one, close the other), that is Accordion.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Give expandedLabel the inverse verb (\"Show less\") so the trigger always states what it will do."
+            },
+            {
+                "guidance": true,
+                "description": "Use it for optional tails of content, not for the content's opening."
+            },
+            {
+                "guidance": true,
+                "description": "Use controlled mode (expanded + onExpandedChange) when analytics or URL state care about the disclosure."
+            },
+            {
+                "guidance": true,
+                "description": "Keep the reveal short — a stagger over dozens of children reads as lag; tune staggerDelay down for long lists."
+            },
+            {
+                "guidance": false,
+                "description": "Do not build exclusive groups from several ExpandableSections — that is Accordion's contract."
+            },
+            {
+                "guidance": false,
+                "description": "Do not hide required form fields inside; validation errors in collapsed content are invisible."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "collapsedLabel": "Show more",
+            "expandedLabel": "Show less",
+            "children": "The optional tail of the content."
+        }
+    },
+    "composesWith": [
+        "Accordion",
+        "Text"
     ]
 }
