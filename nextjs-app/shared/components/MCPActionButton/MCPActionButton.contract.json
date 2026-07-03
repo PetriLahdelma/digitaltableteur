@@ -72,5 +72,17 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "MCPActionButton",
+    "keywords": [
+        "mcp",
+        "tool",
+        "action",
+        "chat",
+        "integration"
+    ],
+    "dense": "Button that invokes an MCP tool from chat/docs surfaces and reflects the invocation state",
+    "usage": {
+        "description": "Action button that triggers an MCP tool invocation (chat and docs surfaces) and reflects pending/success/error state."
+    }
 }

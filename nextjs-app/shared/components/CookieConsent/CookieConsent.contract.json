@@ -54,5 +54,17 @@
     "composesWith": [
         "Button",
         "Text"
-    ]
+    ],
+    "displayName": "CookieConsent",
+    "keywords": [
+        "cookies",
+        "consent",
+        "gdpr",
+        "banner",
+        "privacy"
+    ],
+    "dense": "GDPR consent banner + settings modal wired to site providers (analytics gating); persists choice",
+    "usage": {
+        "description": "GDPR cookie consent: banner plus settings modal, gating analytics providers until consent and persisting the choice. Mounted once by the app shell."
+    }
 }

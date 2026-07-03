@@ -107,5 +107,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "ServiceCard",
+    "keywords": [
+        "service",
+        "card",
+        "offering",
+        "icon"
+    ],
+    "dense": "Service tile: icon, title, description, optional link; services-grid unit",
+    "usage": {
+        "description": "Tile for one service offering — icon, title, short description, optional link. Renders inside ServicesGrid."
+    }
 }

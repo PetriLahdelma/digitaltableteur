@@ -109,5 +109,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "TransformingActionInput",
+    "keywords": [
+        "input",
+        "transform",
+        "cta",
+        "chat entry"
+    ],
+    "dense": "CTA input that transforms between surface modes (e.g. prompt bar to chat); marketing entry point for Donny",
+    "usage": {
+        "description": "Marketing entry-point input that morphs between surface modes (prompt bar into chat handoff). Pairs with ChatWidget."
+    }
 }

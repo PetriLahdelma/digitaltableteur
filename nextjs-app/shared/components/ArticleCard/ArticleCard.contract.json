@@ -78,5 +78,17 @@
         "CheckboxGroup",
         "FlexBox",
         "TextInput"
-    ]
+    ],
+    "displayName": "ArticleCard",
+    "keywords": [
+        "blog",
+        "article",
+        "teaser",
+        "card",
+        "read time"
+    ],
+    "dense": "Blog teaser card: title, lead, read time; links to the article; used on blog index and related-posts rails",
+    "usage": {
+        "description": "Teaser card for a blog article — title, lead, and read time linking to the post. Used on the blog index and related-article rails."
+    }
 }

@@ -50,5 +50,17 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "ClientLogoMarquee",
+    "keywords": [
+        "logos",
+        "marquee",
+        "clients",
+        "social proof",
+        "animation"
+    ],
+    "dense": "Animated client-logo marquee for the homepage; pauses under reduced motion; logos are linked images with alt text",
+    "usage": {
+        "description": "Homepage social-proof marquee of client logos; animation drops under prefers-reduced-motion. Keep logos monochrome and alt-texted."
+    }
 }

@@ -69,5 +69,16 @@
     "forbiddenUse": [
         "Use as the primary site header navigation — use `NavMenuList` / `SiteHeader` instead.",
         "Nest more than three levels without testing keyboard focus order."
-    ]
+    ],
+    "displayName": "SiteTree",
+    "keywords": [
+        "sitemap",
+        "tree",
+        "hierarchy",
+        "collapsible"
+    ],
+    "dense": "Hierarchical sitemap tree with collapsible folder branches and page leaves; sitemap page organism",
+    "usage": {
+        "description": "Collapsible sitemap tree (folders and page leaves) for the human-readable sitemap page."
+    }
 }

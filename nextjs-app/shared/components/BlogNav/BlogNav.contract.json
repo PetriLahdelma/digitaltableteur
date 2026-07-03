@@ -28,5 +28,16 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "composesWith": [],
+    "displayName": "BlogNav",
+    "keywords": [
+        "blog",
+        "navigation",
+        "section nav",
+        "links"
+    ],
+    "dense": "Blog section navigation links (index, categories, feeds)",
+    "usage": {
+        "description": "Blog section navigation link row. Blog chrome; for site-wide nav use SiteHeader/NavLink."
+    }
 }

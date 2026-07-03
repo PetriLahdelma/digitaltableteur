@@ -93,5 +93,17 @@
     "forbiddenUse": [
         "Use as a generic 'card with an icon and label' — that is `Card`.",
         "Stack two `LocationCard`s vertically with no spacing — they need rhythm via `Grid` or `Stack`."
-    ]
+    ],
+    "displayName": "LocationCard",
+    "keywords": [
+        "location",
+        "office",
+        "address",
+        "hours",
+        "map"
+    ],
+    "dense": "Office/location card: address, hours (OpenHours), contact links; contact-page module",
+    "usage": {
+        "description": "Contact-page card for a single location: address, open hours, and contact links. Composes OpenHours."
+    }
 }

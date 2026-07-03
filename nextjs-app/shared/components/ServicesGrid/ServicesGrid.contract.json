@@ -56,5 +56,16 @@
         "OpenHours",
         "StudioMap",
         "DonnyBookingEmbed"
-    ]
+    ],
+    "displayName": "ServicesGrid",
+    "keywords": [
+        "services",
+        "grid",
+        "offerings",
+        "homepage"
+    ],
+    "dense": "Responsive grid of ServiceCards for homepage/services sections",
+    "usage": {
+        "description": "Responsive grid composing ServiceCards on homepage and services sections. Layout owner; cards own content."
+    }
 }

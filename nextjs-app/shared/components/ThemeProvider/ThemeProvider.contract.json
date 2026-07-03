@@ -56,5 +56,16 @@
         "IconButton",
         "Container",
         "LanguageSwitcher"
-    ]
+    ],
+    "displayName": "ThemeProvider",
+    "keywords": [
+        "theme",
+        "dark mode",
+        "context",
+        "high contrast"
+    ],
+    "dense": "Theme context provider for light/dark/high-contrast modes; syncs class + storage; one per app",
+    "usage": {
+        "description": "Context provider owning the light/dark/high-contrast theme state, class application, and persistence. Mounted once by the app shell."
+    }
 }

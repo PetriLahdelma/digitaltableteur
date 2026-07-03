@@ -68,5 +68,17 @@
         "TableOfContents",
         "EnhancedAuthorCard",
         "ArticleShareSection"
-    ]
+    ],
+    "displayName": "ArticleContent",
+    "keywords": [
+        "article",
+        "prose",
+        "mdx",
+        "blog body",
+        "typography"
+    ],
+    "dense": "Article body wrapper applying MDX prose styling (headings, lists, code, media) to blog content",
+    "usage": {
+        "description": "Prose wrapper for blog article bodies: applies the MDX typography treatment (headings, lists, code blocks, media) so article markup stays unstyled."
+    }
 }

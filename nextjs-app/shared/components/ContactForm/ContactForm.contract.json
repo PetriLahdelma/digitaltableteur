@@ -62,5 +62,17 @@
         "Text",
         "TextArea",
         "CheckboxGroup"
-    ]
+    ],
+    "displayName": "ContactForm",
+    "keywords": [
+        "contact",
+        "form",
+        "validation",
+        "attachments",
+        "submission"
+    ],
+    "dense": "Full contact form: validated fields, attachment upload, submission flow wired to the contact API",
+    "usage": {
+        "description": "The full contact form with validation, attachments, and submission flow against the contact API. Page-level organism; for the live contact page's editorial styling see ContactFormEditorial."
+    }
 }

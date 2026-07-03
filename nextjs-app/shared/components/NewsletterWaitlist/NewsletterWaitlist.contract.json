@@ -73,5 +73,16 @@
         "mount more than one instance per page. The success Modal",
         "try to control the transformation state from outside. The",
         "bypass the validation. The regex catches obvious typos but"
-    ]
+    ],
+    "displayName": "NewsletterWaitlist",
+    "keywords": [
+        "newsletter",
+        "waitlist",
+        "signup",
+        "email capture"
+    ],
+    "dense": "Inline email-capture signup for the newsletter waitlist with validation + submission states",
+    "usage": {
+        "description": "Inline newsletter/waitlist signup: email capture with validation and submit feedback. Marketing-page module."
+    }
 }

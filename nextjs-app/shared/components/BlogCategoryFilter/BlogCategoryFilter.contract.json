@@ -101,5 +101,16 @@
         "BlogGrid",
         "Pagination",
         "EnhancedArticleCard"
-    ]
+    ],
+    "displayName": "BlogCategoryFilter",
+    "keywords": [
+        "blog",
+        "category",
+        "filter",
+        "taxonomy"
+    ],
+    "dense": "Blog-specific category filter control; wraps CategoryFilter conventions for the blog archive",
+    "usage": {
+        "description": "Category filter control for the blog archive. Blog-scoped variant; for generic list pages use CategoryFilter."
+    }
 }

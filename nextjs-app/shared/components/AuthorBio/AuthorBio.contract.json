@@ -68,5 +68,17 @@
         "TableOfContents",
         "EnhancedAuthorCard",
         "ArticleShareSection"
-    ]
+    ],
+    "displayName": "AuthorBio",
+    "keywords": [
+        "author",
+        "bio",
+        "avatar",
+        "blog",
+        "about the author"
+    ],
+    "dense": "About-the-author block: Avatar + name + biography paragraph; end-of-article slot",
+    "usage": {
+        "description": "About-the-author block with avatar, name, and short biography — the end-of-article companion to the Author byline."
+    }
 }

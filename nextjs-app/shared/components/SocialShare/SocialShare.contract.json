@@ -83,5 +83,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "SocialShare",
+    "keywords": [
+        "share",
+        "social",
+        "links",
+        "article"
+    ],
+    "dense": "Share-target row (ordered network list, defaults to all supported channels) with accessible labels",
+    "usage": {
+        "description": "Row of share targets with accessible labels; order and subset configurable. Composed by ArticleShareSection."
+    }
 }

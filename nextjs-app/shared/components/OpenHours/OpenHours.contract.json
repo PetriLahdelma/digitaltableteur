@@ -72,5 +72,16 @@
         "ServicesGrid",
         "StudioMap",
         "DonnyBookingEmbed"
-    ]
+    ],
+    "displayName": "OpenHours",
+    "keywords": [
+        "hours",
+        "schedule",
+        "open",
+        "contact"
+    ],
+    "dense": "Opening-hours table with localized day/time rows; used on contact/location surfaces",
+    "usage": {
+        "description": "Localized opening-hours listing for contact and location surfaces. Data in, formatted schedule out; composes into LocationCard."
+    }
 }

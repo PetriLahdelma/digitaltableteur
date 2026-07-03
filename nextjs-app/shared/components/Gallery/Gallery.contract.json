@@ -75,5 +75,17 @@
         "StoryBlock",
         "ProjectDetailLayout",
         "ProjectHero"
-    ]
+    ],
+    "displayName": "Gallery",
+    "keywords": [
+        "gallery",
+        "images",
+        "lightbox",
+        "grid",
+        "media"
+    ],
+    "dense": "Image gallery grid with click-to-expand lightbox and hover motion; used on work/case-study pages",
+    "usage": {
+        "description": "Image gallery grid with a click-to-expand lightbox and hover motion, used on case-study pages. Provide meaningful alt text per image."
+    }
 }

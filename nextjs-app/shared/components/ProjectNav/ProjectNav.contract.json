@@ -46,5 +46,16 @@
         "ProjectGallery",
         "Container",
         "Section"
-    ]
+    ],
+    "displayName": "ProjectNav",
+    "keywords": [
+        "case study",
+        "navigation",
+        "prev next",
+        "work"
+    ],
+    "dense": "Prev/next case-study navigation footer for work detail pages",
+    "usage": {
+        "description": "Previous/next navigation between case studies at the foot of work detail pages."
+    }
 }

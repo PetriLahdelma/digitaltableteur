@@ -28,5 +28,16 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "composesWith": [],
+    "displayName": "WorkNav",
+    "keywords": [
+        "work",
+        "navigation",
+        "sub nav",
+        "portfolio"
+    ],
+    "dense": "Work-section sub-navigation (filters/sections) for portfolio pages",
+    "usage": {
+        "description": "Sub-navigation for the work section. Portfolio chrome; site-wide nav lives in SiteHeader."
+    }
 }

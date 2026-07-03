@@ -80,5 +80,17 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "WipBadge",
+    "keywords": [
+        "wip",
+        "badge",
+        "storybook",
+        "maturity",
+        "status"
+    ],
+    "dense": "Storybook-only maturity badge (alpha/beta) rendered on non-stable component stories; not product UI",
+    "usage": {
+        "description": "The Storybook maturity badge shown on non-stable components' stories. Docs chrome — never ships in product UI."
+    }
 }

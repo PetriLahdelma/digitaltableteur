@@ -62,5 +62,16 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "Author",
+    "keywords": [
+        "author",
+        "byline",
+        "blog",
+        "attribution"
+    ],
+    "dense": "Article byline: author name/avatar attribution line for blog posts",
+    "usage": {
+        "description": "Compact byline attribution (author identity) for blog posts. For the fuller end-of-article treatment use AuthorBio."
+    }
 }

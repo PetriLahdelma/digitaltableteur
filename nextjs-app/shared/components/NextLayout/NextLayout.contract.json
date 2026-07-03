@@ -50,5 +50,17 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "displayName": "NextLayout",
+    "keywords": [
+        "layout",
+        "app shell",
+        "header",
+        "footer",
+        "landmarks"
+    ],
+    "dense": "Production app shell: SiteHeader, main landmark, footer, ChatWidget, CookieConsent, providers — one per app",
+    "usage": {
+        "description": "The production app shell: header, main landmark, footer, chat widget, consent, and providers in one component. Exactly one per app; pages render inside its main slot."
+    }
 }

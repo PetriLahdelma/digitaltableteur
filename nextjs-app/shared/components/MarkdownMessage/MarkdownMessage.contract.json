@@ -96,5 +96,16 @@
         "Title",
         "PageLayout",
         "OpenHours"
-    ]
+    ],
+    "displayName": "MarkdownMessage",
+    "keywords": [
+        "markdown",
+        "prose",
+        "chat message",
+        "rendering"
+    ],
+    "dense": "Renders markdown through DS components (Title/Text/Link/CodeSnippet) — chat replies + long-form content share one styling path",
+    "usage": {
+        "description": "Markdown renderer that maps elements onto design-system components (Title, Text, Link, code blocks), so chat replies and long-form content share one typographic path."
+    }
 }

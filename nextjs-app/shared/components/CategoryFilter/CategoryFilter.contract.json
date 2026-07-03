@@ -114,5 +114,17 @@
         "Section",
         "WorkHero",
         "WorkGrid"
-    ]
+    ],
+    "displayName": "CategoryFilter",
+    "keywords": [
+        "filter",
+        "pills",
+        "category",
+        "list pages",
+        "selection"
+    ],
+    "dense": "Filter pill row for list pages (blog archive, work index) with selected state and multiple visual treatments",
+    "usage": {
+        "description": "Pill-row filter for list pages: one selectable category set with visual treatments per surface (blog archive, work index). Selection state lives in the parent."
+    }
 }

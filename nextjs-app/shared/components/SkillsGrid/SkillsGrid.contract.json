@@ -63,5 +63,16 @@
     "forbiddenUse": [
         "Use for a small set of (≤ 4) capabilities — the grid rhythm collapses; use `Card` instead.",
         "Mix logos and text in the same grid — pick one visual language."
-    ]
+    ],
+    "displayName": "SkillsGrid",
+    "keywords": [
+        "skills",
+        "logos",
+        "grid",
+        "about"
+    ],
+    "dense": "Grid of skill/tech logos in 4/6/8 columns; about-page module",
+    "usage": {
+        "description": "Logo grid of skills and technologies (4/6/8 column presets) for the about page. Keep logos alt-texted and monochrome where possible."
+    }
 }
