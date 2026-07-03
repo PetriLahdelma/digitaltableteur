@@ -1,83 +1,16 @@
 import contract from "./Toast.contract.json";
 import React, { useState } from "react";
-import type { Meta, StoryFn } from "@storybook/react-vite";
-import Toast, { ToastProps } from "@dt/Toast";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import Toast, { type ToastTone, type ToastPosition } from "@dt/Toast";
 import Button from "@dt/Button";
-import Icon from "@dt/Icon";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
+import { ToastProvider, useToast } from "@/providers/ToastProvider";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-
-const toastComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Proper typing with ToastProps",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "Message as prop",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Replaced --primary-body-font with var(--font-text)",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "Uses transform for positioning",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "CSS custom properties for colors and spacing",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Auto-dismiss with configurable duration",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "role=status, aria-live=polite",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Multiple variants with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
-];
 
 const meta: Meta<typeof Toast> = {
   title: "Feedback/Toast",
   component: Toast,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -165,222 +98,185 @@ const meta: Meta<typeof Toast> = {
   },
 };
 export default meta;
+type Story = StoryObj<typeof Toast>;
 
-export const Z_ToastCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 11/11"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  render: function DefaultStory() {
+    const [open, setOpen] = useState(false);
+    return (
+      <>
+        <Button onClick={() => setOpen(true)}>Show Toast</Button>
+        <Toast
+          message="Toast notification!"
+          open={open}
+          onClose={() => setOpen(false)}
+        />
+      </>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const showButton = canvas.getByRole("button", { name: /show toast/i });
+    await userEvent.click(showButton);
+
+    await waitFor(() => {
+      expect(canvas.getByText(/toast notification/i)).toBeInTheDocument();
+    });
+    const toasts = canvas.getAllByRole("status");
+    const toast = toasts.find((el) =>
+      /toast notification/i.test(el.textContent ?? ""),
+    );
+    expect(toast).toBeDefined();
+  },
+};
+
+/** Buttons fire the same toast with each semantic tone. */
+export const Tones: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "One toast, four tones. The filled icon carries the meaning alongside color; error and warning announce assertively (role=alert), success and info stay polite.",
+      },
+    },
+  },
+  render: function TonesStory() {
+    const [tone, setTone] = useState<ToastTone | null>(null);
+    const messages: Record<ToastTone, string> = {
+      success: "Operation completed successfully.",
+      error: "An error occurred. Please try again.",
+      warning: "Your session will expire soon.",
+      info: "New features available.",
+    };
+    return (
+      <>
+        {(Object.keys(messages) as ToastTone[]).map((t) => (
+          <Button
+            key={t}
+            variant="secondary"
+            size="sm"
+            onClick={() => setTone(t)}
+          >
+            {t}
+          </Button>
+        ))}
+        <Toast
+          message={tone ? messages[tone] : ""}
+          open={tone !== null}
+          tone={tone ?? undefined}
+          onClose={() => setTone(null)}
+        />
+      </>
+    );
+  },
+};
+
+/** Six placements; the toast is position: fixed so it anchors to the viewport. */
+export const Placement: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.",
+      },
+    },
+  },
+  render: function PlacementStory() {
+    const positions: ToastPosition[] = [
+      "top-left",
+      "top-center",
+      "top-right",
+      "bottom-left",
+      "bottom-center",
+      "bottom-right",
+    ];
+    const [position, setPosition] = useState<ToastPosition | null>(null);
+    return (
+      <>
+        {positions.map((p) => (
+          <Button
+            key={p}
+            variant="secondary"
+            size="sm"
+            onClick={() => setPosition(p)}
+          >
+            {p}
+          </Button>
+        ))}
+        <Toast
+          message={position ? `Anchored ${position}.` : ""}
+          open={position !== null}
+          tone="info"
+          position={position ?? undefined}
+          onClose={() => setPosition(null)}
+        />
+      </>
+    );
+  },
+};
+
+/** The recommended integration: fire toasts through the app-root provider. */
+export const ProviderDriven: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "The imperative API most consumers use: ToastProvider mounts one live region at the app shell; useToast().showToast(message, { tone, duration, position }) fires it from anywhere below.",
+      },
+    },
+  },
+  render: function ProviderDrivenStory() {
+    function SaveButton() {
+      const { showToast } = useToast();
+      return (
+        <Button
+          onClick={() =>
+            showToast("Settings saved.", { tone: "success", duration: 4000 })
+          }
+        >
+          Save settings
+        </Button>
+      );
     }
-    rules={toastComplianceRules}
-  />
-);
-Z_ToastCompliance.parameters = { docs: { disable: true } };
-
-const Template: StoryFn<ToastProps> = () => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Show Toast</Button>
-      <Toast
-        message="Toast notification!"
-        open={open}
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
-};
-
-export const Default = Template.bind({});
-Default.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  const showButton = canvas.getByRole("button", { name: /show toast/i });
-  await userEvent.click(showButton);
-
-  await waitFor(() => {
-    expect(canvas.getByText(/toast notification/i)).toBeInTheDocument();
-  });
-  const toasts = canvas.getAllByRole("status");
-  const toast = toasts.find((el) =>
-    /toast notification/i.test(el.textContent ?? ""),
-  );
-  expect(toast).toBeDefined();
-};
-
-export const LongDuration = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Show Long Toast</Button>
-      <Toast
-        message="This toast will stay for 6 seconds"
-        open={open}
-        duration={6000}
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
-};
-LongDuration.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  const showButton = canvas.getByRole("button", { name: /show long toast/i });
-  await userEvent.click(showButton);
-
-  await waitFor(() => {
-    expect(canvas.getByText(/6 seconds/i)).toBeInTheDocument();
-  });
-  const toasts = canvas.getAllByRole("status");
-  const toast = toasts.find((el) => /6 seconds/i.test(el.textContent ?? ""));
-  expect(toast).toBeDefined();
-};
-
-// v1.1.0 Showcase Stories
-export const SeveritySuccess: StoryFn = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Show Success (v1.1.0)</Button>
-      <Toast
-        message="Operation completed successfully!"
-        open={open}
-        tone="success"
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
-};
-
-export const SeverityError: StoryFn = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Show Error (v1.1.0)</Button>
-      <Toast
-        message="An error occurred. Please try again."
-        open={open}
-        tone="error"
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
-};
-
-export const SeverityWarning: StoryFn = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Show Warning (v1.1.0)</Button>
-      <Toast
-        message="Your session will expire soon."
-        open={open}
-        tone="warning"
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
-};
-
-export const SeverityInfo: StoryFn = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Show Info (v1.1.0)</Button>
-      <Toast
-        message="New features available! Check them out."
-        open={open}
-        tone="info"
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
-};
-
-export const PositionTopLeft: StoryFn = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Top Left (v1.1.0)</Button>
-      <Toast
-        message="Top left toast"
-        open={open}
-        position="top-left"
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
-};
-
-export const PositionTopCenter: StoryFn = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Top Center (v1.1.0)</Button>
-      <Toast
-        message="Top center toast"
-        open={open}
-        position="top-center"
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
-};
-
-export const PositionTopRight: StoryFn = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Top Right (v1.1.0)</Button>
-      <Toast
-        message="Top right toast"
-        open={open}
-        position="top-right"
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
-};
-
-export const SizeSmall: StoryFn = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Small Toast (v1.1.0)</Button>
-      <Toast
-        message="Small size toast"
-        open={open}
-        size="sm"
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
-};
-
-export const SizeLarge: StoryFn = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Large Toast (v1.1.0)</Button>
-      <Toast
-        message="Large size toast"
-        open={open}
-        size="lg"
-        onClose={() => setOpen(false)}
-      />
-    </>
-  );
+    return (
+      <ToastProvider>
+        <SaveButton />
+      </ToastProvider>
+    );
+  },
 };
 
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
+  args: {
+    open: true,
+    message: "Saved successfully.",
+    tone: "success",
+  },
 };
 
 export const Example: Story = {
   globals: { forcedColors: "none" },
-  tags: ["beta-matrix"],
-  parameters: { a11y: { disable: true }, controls: { disable: true } },
-  render: () => {
+  tags: ["beta-matrix", "example"],
+  parameters: {
+    a11y: { disable: true },
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "The canonical post-action confirmation: success tone, default bottom-center placement, auto-dismiss after 3 seconds.",
+      },
+    },
+  },
+  render: function ExampleStory() {
     const [open, setOpen] = React.useState(true);
     return (
       <Toast

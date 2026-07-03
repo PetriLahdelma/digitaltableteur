@@ -5,7 +5,6 @@ export { default as AuthorBio } from "./AuthorBio/AuthorBio";
 export { default as Avatar } from "./Avatar/Avatar";
 export { default as AvatarGroup } from "./AvatarGroup/AvatarGroup";
 export { default as Badge } from "./Badge/Badge";
-export { default as BusyIndicator } from "./BusyIndicator/BusyIndicator";
 export { default as Button } from "./Button/Button";
 export { default as ButtonGroup } from "./ButtonGroup/ButtonGroup";
 export { default as Card } from "./Card/Card";

@@ -8,7 +8,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Button from "@dt/Button";
 import { FormFieldEditorial } from "../FormFieldEditorial";
 import { ExpandableSection } from "../ExpandableSection";
-import { useToast } from "../Toaster/Toaster";
+import { useToast } from "@/providers/ToastProvider";
 import FileUpload from "@dt/FileUpload";
 import MultiCombobox from "@dt/MultiCombobox";
 import Checkbox from "@dt/Checkbox";
@@ -171,7 +171,7 @@ export function ContactFormEditorial({
   className,
 }: ContactFormEditorialProps) {
   const { t } = useTranslation();
-  const { toast } = useToast();
+  const { showToast } = useToast();
   const searchParams = useSearchParams();
   // Honour reduced-motion: when set, skip the form's entrance animation entirely
   // so the rendered tree sits at its final visible state from frame 1. Without
@@ -388,8 +388,8 @@ export function ContactFormEditorial({
         throw new Error("Failed to submit form");
       }
 
-      toast(t("contactSuccessMessage"), {
-        severity: "success",
+      showToast(t("contactSuccessMessage"), {
+        tone: "success",
         duration: 5000,
       });
       resetFormState();

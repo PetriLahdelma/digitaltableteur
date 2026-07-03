@@ -1,10 +1,17 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from "react";
-import Toast from "@dt/Toast";
+import Toast, { type ToastTone, type ToastPosition } from "@dt/Toast";
+
+export interface ShowToastOptions {
+  duration?: number;
+  tone?: ToastTone;
+  position?: ToastPosition;
+}
 
 interface ToastContextType {
-  showToast: (message: string, duration?: number) => void;
+  /** Second argument accepts a bare duration (legacy) or an options object. */
+  showToast: (message: string, options?: number | ShowToastOptions) => void;
 }
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
@@ -26,12 +33,20 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [duration, setDuration] = useState(3000);
+  const [tone, setTone] = useState<ToastTone | undefined>(undefined);
+  const [position, setPosition] = useState<ToastPosition>("bottom-center");
 
-  const showToast = useCallback((msg: string, dur: number = 3000) => {
-    setMessage(msg);
-    setDuration(dur);
-    setIsOpen(true);
-  }, []);
+  const showToast = useCallback(
+    (msg: string, options?: number | ShowToastOptions) => {
+      const opts = typeof options === "number" ? { duration: options } : (options ?? {});
+      setMessage(msg);
+      setDuration(opts.duration ?? 3000);
+      setTone(opts.tone);
+      setPosition(opts.position ?? "bottom-center");
+      setIsOpen(true);
+    },
+    [],
+  );
 
   const handleClose = useCallback(() => {
     setIsOpen(false);
@@ -44,6 +59,8 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
         message={message}
         open={isOpen}
         duration={duration}
+        tone={tone}
+        position={position}
         onClose={handleClose}
       />
     </ToastContext.Provider>

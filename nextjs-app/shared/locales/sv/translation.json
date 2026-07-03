@@ -1160,6 +1160,8 @@
   "busyIndicator.loading": "Laddar",
   "busyIndicator.loadingPercent": "Laddar {{percent}}%",
   "busyIndicator.complete": "Klart",
+  "alertBanner.dismissLabel": "Stäng meddelandet",
+  "alertBanner.close": "Stäng",
   "observability.sentry.title": "Sentry-problem",
   "observability.sentry.unresolvedHeading": "Problem",
   "observability.sentry.empty": "Inga matchande problem",

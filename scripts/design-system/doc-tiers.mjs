@@ -29,7 +29,7 @@ export const DOC_TIER_1_CATEGORIES = {
         'FileUpload', 'FormField', 'Label', 'HelperText', 'GroupLabel',
     ],
     Feedback: [
-        'AlertBanner', 'Toast', 'Progress', 'Spinner', 'BusyIndicator',
+        'AlertBanner', 'Toast', 'Progress', 'Spinner',
         'Skeleton', 'Tooltip', 'Modal',
     ],
     Navigation: [

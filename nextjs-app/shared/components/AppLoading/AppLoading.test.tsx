@@ -10,10 +10,10 @@ describe("AppLoading", () => {
     expect(screen.getByTestId("app-loading-overlay")).toBeInTheDocument();
   });
 
-  it("contains BusyIndicator component", () => {
+  it("contains a status-role loading spinner", () => {
     render(<AppLoading />);
 
-    // BusyIndicator should render with overlay variant
+    // Spinner should render inside the overlay with role=status
     const overlay = screen.getByTestId("app-loading-overlay");
     expect(overlay).toContainElement(screen.getByRole("status"));
   });

@@ -14,7 +14,6 @@ export const COMPONENT_TIERS = {
   Avatar: { tier: "atom" },
   Badge: { tier: "atom" },
   Breadcrumb: { tier: "molecule" },
-  BusyIndicator: { tier: "atom" },
   Button: { tier: "atom" },
   Card: { tier: "molecule" },
   Checkbox: { tier: "atom" },

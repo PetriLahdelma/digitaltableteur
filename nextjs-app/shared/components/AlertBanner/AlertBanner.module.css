@@ -27,6 +27,10 @@
   color: inherit;
 }
 
+.action {
+  margin-block-start: var(--space-internal-4, 0.25rem);
+}
+
 .dismiss {
   margin-inline-start: auto;
 }

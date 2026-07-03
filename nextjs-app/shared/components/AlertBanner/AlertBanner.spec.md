@@ -47,3 +47,7 @@ quiet middle option.
 - Dismiss is a `Button variant="tertiary" size="s"` so it doesn't
   compete with primary actions on the page. The button is positioned
   trailing so the message reads "tone, title, description, dismiss".
+  Its strings are localized (`alertBanner.dismissLabel` / `alertBanner.close`).
+- The `action` slot renders one follow-up under the description (Astryx
+  Banner parity); the `icon` prop overrides the tone glyph without
+  changing the announced tone word.

@@ -215,8 +215,7 @@ const DesignSystemOverviewContent = () => {
             <h3>Feedback & Status</h3>
             <ul>
               <li>
-                <code>BusyIndicator</code> - Loading spinner with determinate
-                progress
+                <code>Spinner</code> - Indeterminate loading spinner
               </li>
               <li>
                 <code>Skeleton</code> - Placeholder loading states

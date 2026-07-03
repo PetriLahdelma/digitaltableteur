@@ -54,12 +54,14 @@
     "a11y": {
         "keyboard": [],
         "ariaRequirements": [
-            "role=status",
-            "aria-live polite"
+            "role=status + aria-live=polite for info/success",
+            "role=alert + aria-live=assertive for warning/error",
+            "aria-atomic=true so the full message is announced",
+            "stays mounted as a live region; message swaps in/out"
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components. 2026-07-03 (batch 4) — Toaster (Tailwind duplicate host) deleted; providers/ToastProvider is the single imperative host and now forwards tone/position.",
         "forcedColorsVerified": true
     },
     "tokens": {
@@ -135,13 +137,82 @@
         }
     },
     "forbiddenUse": [
-        "stack toasts. The provider queues them — calling `showToast`",
-        "rely on Toast for compliance acknowledgements (cookie consent,",
-        "use Toast for validation errors on a field. The visual is far"
+        "mount two <Toast /> instances side by side; the shared live region double-announces and the visuals go stale.",
+        "rely on Toast for compliance acknowledgements (cookie consent, legal notices); it auto-dismisses — use AlertBanner or Modal.",
+        "use Toast for validation errors on a field; the message detaches from the input — use the field's error prop."
     ],
     "prefersOver": [
         "AlertBanner for page-level persistent status"
     ],
+    "displayName": "Toast",
+    "keywords": [
+        "toast",
+        "notification",
+        "snackbar",
+        "transient message",
+        "confirmation",
+        "auto-dismiss",
+        "showToast",
+        "useToast"
+    ],
+    "dense": "transient auto-dismiss status (default 3000ms); tone success|error|warning|info, 6 positions, sm/md/lg; fire imperatively via useToast().showToast(message, {tone, duration, position})",
+    "usage": {
+        "description": "Toast is the transient \"confirmation after action\" surface: it appears, announces itself, and auto-dismisses. Most consumers never mount `<Toast />` directly — the app-root `ToastProvider` (`@/providers/ToastProvider`) owns the single live region and exposes the imperative API: `useToast()` returns `{ showToast }`, where `showToast(message: string, options?: number | { tone?: ToastTone; duration?: number; position?: ToastPosition })` accepts a bare duration in ms (legacy) or an options object (duration defaults to 3000). The element stays mounted as a live region and swaps the message in/out, so assistive tech reliably announces every toast; errors and warnings escalate to role=alert automatically.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Fire toasts via useToast().showToast — the provider is mounted once at the app shell and handles the live region, position, and dismissal."
+            },
+            {
+                "guidance": true,
+                "description": "Keep the message to one short sentence; the toast auto-dismisses and cannot be paused, so long copy will be cut off mid-read."
+            },
+            {
+                "guidance": true,
+                "description": "Pass tone so the filled icon carries the meaning alongside color (WCAG 1.4.1); error and warning announce assertively on their own."
+            },
+            {
+                "guidance": true,
+                "description": "Raise duration (e.g. 5000-6000ms) for messages the user may need to act on, like a network-retry notice."
+            },
+            {
+                "guidance": false,
+                "description": "Do not mount two <Toast /> instances side by side — the auto-dismiss timer is per instance but the announcement doubles in the AT queue."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Toast for persistent status, compliance acknowledgements, or anything the user must read — it disappears on its own. AlertBanner owns those."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put field validation errors in a toast; the message detaches from the field it describes — use the input's error prop."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "LiveRegion",
+                "required": true,
+                "description": "The permanently mounted wrapper (role=status or role=alert, aria-atomic); visibility animates via opacity so the region never unmounts."
+            },
+            {
+                "name": "Icon",
+                "required": false,
+                "description": "Filled tone glyph (aria-hidden; the tone is conveyed by the announcement role and message)."
+            },
+            {
+                "name": "Message",
+                "required": true,
+                "description": "Single-sentence status text; swapped in on show and cleared on hide to reset the live region."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "open": true,
+            "message": "Saved successfully.",
+            "tone": "success"
+        }
+    },
     "composesWith": [
         "Button",
         "Text",

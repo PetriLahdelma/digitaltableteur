@@ -2,6 +2,9 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import AlertBanner from "./AlertBanner";
 import styles from "./AlertBanner.module.css";
 
@@ -110,5 +113,40 @@ describe("AlertBanner", () => {
   it("renders without description", () => {
     render(<AlertBanner title="Only title" />);
     expect(screen.getByText("Only title")).toBeInTheDocument();
+  });
+
+  it("renders the action slot under the description", () => {
+    render(
+      <AlertBanner
+        title="Cookie preferences updated"
+        description="Analytics stays off."
+        action={<button type="button">Review settings</button>}
+      />,
+    );
+    expect(
+      screen.getByRole("button", { name: "Review settings" }),
+    ).toBeInTheDocument();
+  });
+
+  it("overrides the tone icon via the icon prop", () => {
+    render(<AlertBanner tone="info" title="Custom" icon="star" />);
+    // The accessible tone word stays even when the glyph changes.
+    expect(screen.getByRole("img", { name: "info" })).toBeInTheDocument();
+  });
+
+  it("every styles.x reference has a matching .x rule", () => {
+    // Static guard: the Vitest CSS proxy fabricates a class for any styles.x
+    // key, so a missing rule would render class="undefined" in production.
+    const here = dirname(fileURLToPath(import.meta.url));
+    const tsx = readFileSync(join(here, "AlertBanner.tsx"), "utf8");
+    const css = readFileSync(join(here, "AlertBanner.module.css"), "utf8");
+    const referenced = new Set<string>();
+    for (const match of tsx.matchAll(/\bstyles\.([A-Za-z_$][\w$]*)/g)) {
+      referenced.add(match[1]);
+    }
+    const missing = [...referenced].filter(
+      (cls) => !new RegExp(`\\.${cls}(?![\\w-])`).test(css),
+    );
+    expect(missing).toEqual([]);
   });
 });

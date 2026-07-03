@@ -51,6 +51,12 @@ const PROVEN = [
   { name: "EmptyState", docsId: "content-emptystate--docs" },
   { name: "ButtonGroup", docsId: "actions-buttongroup--docs" },
   { name: "AvatarGroup", docsId: "content-avatargroup--docs" },
+  { name: "AlertBanner", docsId: "feedback-alertbanner--docs" },
+  { name: "Toast", docsId: "feedback-toast--docs" },
+  { name: "Progress", docsId: "feedback-progress--docs" },
+  { name: "Spinner", docsId: "feedback-spinner--docs" },
+  { name: "Skeleton", docsId: "feedback-skeleton--docs" },
+  { name: "Tooltip", docsId: "feedback-tooltip--docs" },
 ];
 
 function contractFor(name) {

@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-03T14:57:10.919Z",
+  "createdAt": "2026-07-03T17:34:25.641Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -341,16 +341,6 @@
       "text": "Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
       "value": "0.25rem"
-    },
-    {
-      "column": 8,
-      "file": "nextjs-app/shared/components/BusyIndicator/BusyIndicator.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/BusyIndicator/BusyIndicator.module.css\u001f5\u001f8\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 5,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1rem"
     },
     {
       "column": 22,
@@ -3681,6 +3671,26 @@
       "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
       "value": "0.5rem"
+    },
+    {
+      "column": 27,
+      "file": "nextjs-app/shared/components/Progress/Progress.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Progress/Progress.module.css\u001f37\u001f27\u001f-100%\u001fUnexpected raw scale value \"-100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 37,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"-100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "-100%"
+    },
+    {
+      "column": 27,
+      "file": "nextjs-app/shared/components/Progress/Progress.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Progress/Progress.module.css\u001f41\u001f27\u001f250%\u001fUnexpected raw scale value \"250%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 41,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"250%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "250%"
     },
     {
       "column": 22,
@@ -8186,6 +8196,6 @@
   "formatVersion": 1,
   "summary": {
     "scaleCleanliness": 91,
-    "totalFindings": 818
+    "totalFindings": 819
   }
 }
