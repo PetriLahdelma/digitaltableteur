@@ -75,8 +75,6 @@
         "Button",
         "Text",
         "TextInput",
-        "DonnyAvatar",
-        "Header",
-        "Footer"
+        "DonnyAvatar"
     ]
 }

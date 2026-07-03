@@ -1,1 +1,0 @@
-export { NextMobileMenu } from "./NextMobileMenu";

@@ -1065,15 +1065,6 @@
       "text": "Expected empty line before rule (rule-empty-line-before)"
     },
     {
-      "id": "nextjs-app/shared/components/Layout/Layout.module.css::12::3::order/properties-order::Expected \"min-width\" to come before \"flex\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Layout/Layout.module.css",
-      "line": 12,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-width\" to come before \"flex\" (order/properties-order)"
-    },
-    {
       "id": "nextjs-app/shared/components/Lightbox/Lightbox.module.css::13::3::order/properties-order::Expected \"display\" to come before \"position\" (order/properties-order)",
       "file": "nextjs-app/shared/components/Lightbox/Lightbox.module.css",
       "line": 13,

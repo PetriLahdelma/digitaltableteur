@@ -34,12 +34,10 @@ import {
   TextReveal,
   Parallax,
 } from "@/nextjs-app/shared/components/animations";
-import {
-  Container,
-  Stack,
-  Center,
-  AspectRatio,
-} from "@/nextjs-app/shared/components/Layout";
+import { Container } from "@/nextjs-app/shared/components/Container";
+import { Stack } from "@/nextjs-app/shared/components/Stack";
+import { Center } from "@/nextjs-app/shared/components/Center";
+import { AspectRatio } from "@/nextjs-app/shared/components/AspectRatio";
 import {
   Divider,
   IconButton,

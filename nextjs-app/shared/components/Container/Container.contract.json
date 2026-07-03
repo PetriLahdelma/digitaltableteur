@@ -87,7 +87,6 @@
                 "symbol",
                 "object",
                 "image",
-                "s",
                 "form",
                 "slot",
                 "style",
@@ -181,6 +180,7 @@
                 "rp",
                 "rt",
                 "ruby",
+                "s",
                 "samp",
                 "script",
                 "section",
@@ -270,9 +270,9 @@
     ],
     "composesWith": [
         "Section",
-        "BlogCategoryFilter",
-        "BlogGrid",
-        "Pagination",
-        "EnhancedArticleCard"
+        "Stack",
+        "Link",
+        "Badge",
+        "Checkbox"
     ]
 }

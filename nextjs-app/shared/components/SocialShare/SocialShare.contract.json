@@ -68,8 +68,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "inline",
-                "article"
+                "article",
+                "inline"
             ]
         },
         "showHeading": {
