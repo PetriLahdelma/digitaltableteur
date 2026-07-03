@@ -126,10 +126,85 @@
         "hand-author `id=\"tab-<key>\"` / `id=\"tabpanel-<key>\"` on the"
     ],
     "composesWith": [
-        "Title",
-        "Text",
-        "Link",
-        "Button",
+        "Card",
         "Badge"
-    ]
+    ],
+    "displayName": "Tabs",
+    "keywords": [
+        "tabs",
+        "tablist",
+        "tab panel",
+        "segmented",
+        "pills",
+        "underline",
+        "keyboard navigation"
+    ],
+    "dense": "Tablist-only tabs (parent renders panels via getTabPanelProps); variant default|pills|underline, size sm|md|lg; controlled activeTab/onTabChange or defaultActiveTab; roving arrow-key focus",
+    "usage": {
+        "description": "Tabs renders the tablist only — the parent owns the panels, pairing each to its tab with the exported `getTabPanelProps(key, isActive)` helper (or matching id/aria-labelledby/hidden attributes by hand). Drive it controlled with `activeTab` + `onTabChange`, or uncontrolled with `defaultActiveTab`. Arrow keys move a roving focus through enabled tabs; `variant` picks the visual language (default, pills, underline) and `size` the density. Tabs switch views in place — they are not page navigation.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Render one tabpanel per tab and wire it with getTabPanelProps so aria-controls/aria-labelledby stay consistent."
+            },
+            {
+                "guidance": true,
+                "description": "Use controlled mode (activeTab + onTabChange) when the active tab should sync with URL or app state."
+            },
+            {
+                "guidance": true,
+                "description": "Keep tab labels to one or two words; tabs are a switch, not a table of contents."
+            },
+            {
+                "guidance": true,
+                "description": "Disable a tab with disabled on its item instead of removing it, so the set stays stable while unavailable."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use tabs for page navigation — that is NavLink in a nav landmark; tabs switch views inside one page."
+            },
+            {
+                "guidance": false,
+                "description": "Do not lazy-delete panel DOM for inactive tabs that hold form state; hide them (hidden attr) so user input survives switching."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Tablist",
+                "required": true,
+                "description": "role=tablist container owning roving arrow-key focus across enabled tabs."
+            },
+            {
+                "name": "Tab",
+                "required": true,
+                "description": "role=tab button with aria-selected and aria-controls pointing at its panel id."
+            },
+            {
+                "name": "Tabpanel",
+                "required": true,
+                "description": "Parent-rendered region paired via getTabPanelProps: id, aria-labelledby, hidden when inactive."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "tabs": [
+                {
+                    "key": "overview",
+                    "label": "Overview"
+                },
+                {
+                    "key": "activity",
+                    "label": "Activity"
+                },
+                {
+                    "key": "settings",
+                    "label": "Settings"
+                }
+            ],
+            "defaultActiveTab": "overview",
+            "variant": "default",
+            "size": "md"
+        }
+    }
 }

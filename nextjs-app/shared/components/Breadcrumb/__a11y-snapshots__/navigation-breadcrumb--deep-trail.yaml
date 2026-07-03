@@ -1,0 +1,16 @@
+- status: Work in progress (beta)
+- navigation "Breadcrumb":
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+      - text: /
+    - listitem:
+      - link "Work":
+        - /url: /work
+      - text: /
+    - listitem:
+      - link "Design systems":
+        - /url: /work/design-systems
+      - text: /
+    - listitem: DSharp case study

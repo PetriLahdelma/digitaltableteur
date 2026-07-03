@@ -85,9 +85,68 @@
         }
     },
     "composesWith": [
-        "ThemeProvider",
         "NavLink",
-        "Container",
-        "IconButton"
-    ]
+        "SkipLink"
+    ],
+    "displayName": "LanguageSwitcher",
+    "keywords": [
+        "language",
+        "locale",
+        "i18n",
+        "switcher",
+        "translation",
+        "multilingual"
+    ],
+    "dense": "Locale toggle: current-language button fans out a tray of other locales (spring motion, reduced-motion fade; closed tray inert); Escape/outside click close; controlled currentLang + onLanguageChange",
+    "usage": {
+        "description": "LanguageSwitcher is the site-chrome locale control: the current language shows as a compact button that fans out a tray of the other locales on demand. It is controlled — update your i18n instance in `onLanguageChange` and pass the new `currentLang` back. Each option carries its own `ariaLabel`, announced in the target language; the closed tray is `inert` so hidden options can never take focus, and Escape or an outside click closes it.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Write each option's ariaLabel in its target language (\"Vaihda kieli suomeksi\") so users who need that language understand it."
+            },
+            {
+                "guidance": true,
+                "description": "Keep it controlled: change the i18n language inside onLanguageChange and feed the new currentLang back down."
+            },
+            {
+                "guidance": true,
+                "description": "Use short locale labels (EN/FI/SV); the fan tray is chrome, not a settings page."
+            },
+            {
+                "guidance": true,
+                "description": "Trust the built-in Escape, outside-click close, and inert tray — do not wrap it in another disclosure."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use flags as the only label; flags name countries, not languages."
+            },
+            {
+                "guidance": false,
+                "description": "Do not bury language choice in a settings modal on public pages — it is a first-visit need and belongs in the header."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "languages": [
+                {
+                    "code": "en",
+                    "label": "EN",
+                    "ariaLabel": "Switch to English"
+                },
+                {
+                    "code": "fi",
+                    "label": "FI",
+                    "ariaLabel": "Vaihda kieli suomeksi"
+                },
+                {
+                    "code": "sv",
+                    "label": "SV",
+                    "ariaLabel": "Byt språk till svenska"
+                }
+            ],
+            "currentLang": "en"
+        }
+    }
 }

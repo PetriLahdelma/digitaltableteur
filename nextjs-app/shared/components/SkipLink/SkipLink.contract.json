@@ -62,5 +62,50 @@
     ],
     "composesWith": [
         "NavLink"
-    ]
+    ],
+    "displayName": "SkipLink",
+    "keywords": [
+        "skip link",
+        "skip to content",
+        "keyboard",
+        "accessibility",
+        "focus",
+        "landmark"
+    ],
+    "dense": "Visually hidden anchor that surfaces as a high-contrast pill on keyboard focus; jumps to #main-content (href overridable); belongs as the first focusable element of the page",
+    "usage": {
+        "description": "SkipLink lets keyboard and switch users bypass repeated chrome: visually hidden until focused, it surfaces as a high-contrast pill and jumps to the main content anchor (default `#main-content`). Render it as the first focusable element inside the layout so it is the very first Tab stop on every page, and keep the target id stable on the main wrapper.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Render it first inside the layout/body so the first Tab press reveals it on every page."
+            },
+            {
+                "guidance": true,
+                "description": "Keep the target id stable on the main wrapper and matching href (default #main-content)."
+            },
+            {
+                "guidance": true,
+                "description": "Keep the label an action phrase (\"Skip to main content\") — it is announced in isolation."
+            },
+            {
+                "guidance": true,
+                "description": "Re-test with Tab after layout changes; a skip link that never receives focus is dead code."
+            },
+            {
+                "guidance": false,
+                "description": "Do not hide it with display:none or visibility:hidden overrides — it must remain focusable; the component already handles visual hiding."
+            },
+            {
+                "guidance": false,
+                "description": "Do not add several skip links unless each targets a distinct landmark; one to main content is the baseline."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "href": "#main-content",
+            "children": "Skip to main content"
+        }
+    }
 }

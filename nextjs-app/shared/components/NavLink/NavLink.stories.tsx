@@ -12,7 +12,7 @@ const defaultArgs = {
 const meta = {
   title: "Navigation/NavLink",
   component: NavLink,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -110,4 +110,86 @@ export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
   args: defaultArgs,
   parameters: linkInTextBlockOverride,
+};
+
+/** The canonical placement: a labelled nav landmark in the site header. */
+export const PrimaryNav: Story = {
+  tags: ["example"],
+  globals: { forcedColors: "none" },
+  parameters: {
+    controls: { disable: true },
+    layout: "padded",
+    docs: {
+      description: {
+        story:
+          "NavLinks live inside a labelled <nav>. Each link derives its active state from the route and reflects it as aria-current=\"page\" — in this preview no route matches, so all render inactive.",
+      },
+    },
+  },
+  render: () => (
+    <nav aria-label="Primary" style={{ display: "flex", gap: "1.25rem" }}>
+      <NavLink href="/" exact>
+        Home
+      </NavLink>
+      <NavLink href="/work">Work</NavLink>
+      <NavLink href="/about">About</NavLink>
+      <NavLink href="/contact">Contact</NavLink>
+    </nav>
+  ),
+};
+
+/** exact opts a link out of prefix matching. */
+export const ExactMatching: Story = {
+  tags: ["example"],
+  globals: { forcedColors: "none" },
+  parameters: {
+    controls: { disable: true },
+    layout: "padded",
+    docs: {
+      description: {
+        story:
+          "Active state is a prefix match by default: /work also marks /work/case-study active. Short roots need exact — without it, href=\"/\" would be active on every page of the site.",
+      },
+    },
+  },
+  render: () => (
+    <nav aria-label="Docs" style={{ display: "flex", gap: "1.25rem" }}>
+      <NavLink href="/" exact>
+        Home (exact)
+      </NavLink>
+      <NavLink href="/work">Work (prefix)</NavLink>
+    </nav>
+  ),
+};
+
+/** Per-surface styling through the className contract. */
+export const CustomStyling: Story = {
+  tags: ["example"],
+  globals: { forcedColors: "none" },
+  parameters: {
+    controls: { disable: true },
+    layout: "padded",
+    docs: {
+      description: {
+        story:
+          "Styling is deliberately className-driven: each surface (header, drawer, footer) passes its own class trio while the route-tracking and aria-current contract stays shared.",
+      },
+    },
+  },
+  render: () => (
+    <nav aria-label="Footer" style={{ display: "flex", gap: "1.25rem" }}>
+      <NavLink
+        href="/privacy"
+        className="font-body text-text-s uppercase tracking-widest"
+      >
+        Privacy
+      </NavLink>
+      <NavLink
+        href="/terms"
+        className="font-body text-text-s uppercase tracking-widest"
+      >
+        Terms
+      </NavLink>
+    </nav>
+  ),
 };

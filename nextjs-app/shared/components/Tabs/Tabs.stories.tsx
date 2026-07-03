@@ -2,11 +2,7 @@ import contract from "./Tabs.contract.json";
 import React from "react";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
 import Tabs, { TabsProps, getTabPanelProps } from "@dt/Tabs";
-import Icon from "@dt/Icon";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 import styles from "./Tabs.stories.module.css";
 
@@ -45,74 +41,10 @@ function TabsWithPanels(args: TabsProps) {
   );
 }
 
-const tabsComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Proper typing with TabsProps",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "Uses i18n for labels",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "Replaced --font-sans with var(--font-text)",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "Uses gap for layout",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "CSS custom properties",
-  },
-  {
-    id: "composition",
-    rule: "Component composition",
-    status: "pass",
-    details: "Variant system (default, pills, underline), size options",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "role=tablist, aria-selected, keyboard navigation",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "Multiple variants with ComplianceCard",
-  },
-  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
-];
-
 const meta: Meta<typeof Tabs> = {
   title: "Navigation/Tabs",
   component: Tabs,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -207,17 +139,6 @@ const meta: Meta<typeof Tabs> = {
 };
 export default meta;
 
-export const Z_TabsCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Compliance: 11/11"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
-    }
-    rules={tabsComplianceRules}
-  />
-);
-Z_TabsCompliance.parameters = { docs: { disable: true } };
-
 const Template: StoryFn<TabsProps> = (args) => <TabsWithPanels {...args} />;
 
 export const Default = Template.bind({});
@@ -256,6 +177,16 @@ Pills.args = {
   ],
   variant: "pills",
 };
+Pills.tags = ["example"];
+Pills.parameters = {
+  controls: { disable: true },
+  docs: {
+    description: {
+      story:
+        "pills gives each tab a filled chip treatment — the strongest visual variant, best for top-of-card view switches.",
+    },
+  },
+};
 Pills.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const tabs = canvas.getAllByRole("tab");
@@ -272,6 +203,16 @@ Underline.args = {
   ],
   variant: "underline",
 };
+Underline.tags = ["example"];
+Underline.parameters = {
+  controls: { disable: true },
+  docs: {
+    description: {
+      story:
+        "underline is the quietest variant: a single accent rule under the active tab. Suits dense pages where pills would shout.",
+    },
+  },
+};
 Underline.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const tabs = canvas.getAllByRole("tab");
@@ -286,6 +227,16 @@ WithDisabled.args = {
     { key: "tab3", label: "Active" },
   ],
 };
+WithDisabled.tags = ["example"];
+WithDisabled.parameters = {
+  controls: { disable: true },
+  docs: {
+    description: {
+      story:
+        "Disable a tab with disabled on its item instead of removing it: the set stays stable, the tab is skipped by the roving arrow-key focus, and clicks are inert.",
+    },
+  },
+};
 WithDisabled.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const tabs = canvas.getAllByRole("tab");
@@ -298,38 +249,30 @@ WithDisabled.play = async ({ canvasElement }) => {
   await waitFor(() => expect(tabs[2]).toHaveAttribute("aria-selected", "true"));
 };
 
-// v1.1.0 Showcase Stories
-export const SizeSmall = Template.bind({});
-SizeSmall.args = {
-  tabs: [
-    { key: "tab1", label: "Small Tab 1" },
-    { key: "tab2", label: "Small Tab 2" },
-    { key: "tab3", label: "Small Tab 3" },
-  ],
-  size: "sm",
-  variant: "default",
-};
-
-export const SizeMedium = Template.bind({});
-SizeMedium.args = {
-  tabs: [
-    { key: "tab1", label: "Medium Tab 1" },
-    { key: "tab2", label: "Medium Tab 2" },
-    { key: "tab3", label: "Medium Tab 3" },
-  ],
-  size: "md",
-  variant: "default",
-};
-
-export const SizeLarge = Template.bind({});
-SizeLarge.args = {
-  tabs: [
-    { key: "tab1", label: "Large Tab 1" },
-    { key: "tab2", label: "Large Tab 2" },
-    { key: "tab3", label: "Large Tab 3" },
-  ],
-  size: "lg",
-  variant: "default",
+export const Sizes: StoryFn = () => (
+  <div className={styles.sizesColumn}>
+    {(["sm", "md", "lg"] as const).map((size) => (
+      <TabsWithPanels
+        key={size}
+        size={size}
+        tabs={[
+          { key: `${size}-one`, label: `Tab (${size})` },
+          { key: `${size}-two`, label: "Second" },
+          { key: `${size}-three`, label: "Third" },
+        ]}
+      />
+    ))}
+  </div>
+);
+Sizes.tags = ["example"];
+Sizes.parameters = {
+  controls: { disable: true },
+  docs: {
+    description: {
+      story:
+        "sm, md (default), and lg adjust label size and hit area together. Pick one per page; mixing densities inside one view reads as a bug.",
+    },
+  },
 };
 
 export const ControlledTabs: StoryFn = () => {
@@ -355,6 +298,17 @@ export const ControlledTabs: StoryFn = () => {
       ))}
     </div>
   );
+};
+
+ControlledTabs.tags = ["example"];
+ControlledTabs.parameters = {
+  controls: { disable: true },
+  docs: {
+    description: {
+      story:
+        "Controlled mode: pass activeTab + onTabChange and the parent owns selection — the pattern used by the contact form's Personal/Company switch and the CV page's rendered-vs-source toggle. Panels pair up via getTabPanelProps.",
+    },
+  },
 };
 
 export const Playground: Story = {

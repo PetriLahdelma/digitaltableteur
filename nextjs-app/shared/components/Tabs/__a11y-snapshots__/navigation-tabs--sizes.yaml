@@ -1,0 +1,19 @@
+- status: Work in progress (beta)
+- tablist "Navigate between tabs":
+  - tab "Tab (sm)" [selected]
+  - tab "Second"
+  - tab "Third"
+- tabpanel "Tab (sm)":
+  - paragraph: Tab (sm) content
+- tablist "Navigate between tabs":
+  - tab "Tab (md)" [selected]
+  - tab "Second"
+  - tab "Third"
+- tabpanel "Tab (md)":
+  - paragraph: Tab (md) content
+- tablist "Navigate between tabs":
+  - tab "Tab (lg)" [selected]
+  - tab "Second"
+  - tab "Third"
+- tabpanel "Tab (lg)":
+  - paragraph: Tab (lg) content

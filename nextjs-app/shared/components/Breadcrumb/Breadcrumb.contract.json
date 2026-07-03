@@ -65,5 +65,91 @@
         "include the home icon as a separate item. Use `label: 'Home'`",
         "skip levels to make the trail shorter. If the user is at",
         "render the breadcrumb above a hero — it gets lost. Place it"
+    ],
+    "displayName": "Breadcrumb",
+    "keywords": [
+        "breadcrumb",
+        "trail",
+        "navigation path",
+        "hierarchy",
+        "location",
+        "aria-current"
+    ],
+    "dense": "Location trail: nav[aria-label=Breadcrumb] > ol; items {label, href?} in root->current order; last (or href-less) item renders as plain current text, earlier ones as Link sm; '/' separators",
+    "usage": {
+        "description": "Breadcrumb renders the page's location trail as a labelled nav landmark containing an ordered list. Pass `items` in root-to-current order; entries with `href` render as links except the last, which always renders as the current page in plain text. Middle entries without `href` render as text too, so levels without landing pages stay honest. Keep labels short — a breadcrumb is orientation, not prose.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Order items root -> current; the last item is the page the user is standing on."
+            },
+            {
+                "guidance": true,
+                "description": "Keep the default aria-label (\"Breadcrumb\") unless a page carries two different trails."
+            },
+            {
+                "guidance": true,
+                "description": "Point hrefs at real route segments so every linked level is actually navigable."
+            },
+            {
+                "guidance": true,
+                "description": "Omit href on middle levels that have no landing page; they render as plain text instead of dead links."
+            },
+            {
+                "guidance": false,
+                "description": "Do not start every trail with the site name; begin at the section root (\"Home\" at most)."
+            },
+            {
+                "guidance": false,
+                "description": "Do not hand-author \"…\" items to fake a collapsed middle — collapsing is not supported; shorten labels or drop levels instead."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Nav landmark",
+                "required": true,
+                "description": "nav element with aria-label (default \"Breadcrumb\") so AT lists it among page landmarks."
+            },
+            {
+                "name": "List",
+                "required": true,
+                "description": "Ordered list conveying trail depth to assistive tech."
+            },
+            {
+                "name": "Link item",
+                "required": true,
+                "description": "Intermediate level with href, rendered as Link size sm."
+            },
+            {
+                "name": "Current item",
+                "required": true,
+                "description": "Last (or href-less) entry rendered as plain text — never a self-link."
+            },
+            {
+                "name": "Separator",
+                "required": true,
+                "description": "Visual \"/\" between items, hidden from the accessibility tree."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "items": [
+                {
+                    "label": "Home",
+                    "href": "/"
+                },
+                {
+                    "label": "Blog",
+                    "href": "/blog"
+                },
+                {
+                    "label": "Article"
+                }
+            ]
+        }
+    },
+    "composesWith": [
+        "Link"
     ]
 }

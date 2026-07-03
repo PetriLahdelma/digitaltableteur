@@ -3,3 +3,5 @@
   - tab "Overview"
   - tab "Details"
   - tab "Settings" [selected]
+- tabpanel "Settings":
+  - paragraph: Settings content

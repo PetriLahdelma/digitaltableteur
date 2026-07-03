@@ -3,3 +3,5 @@
   - tab "Tab 1" [selected]
   - tab "Tab 2"
   - tab "Tab 3"
+- tabpanel "Tab 1":
+  - paragraph: Tab 1 content

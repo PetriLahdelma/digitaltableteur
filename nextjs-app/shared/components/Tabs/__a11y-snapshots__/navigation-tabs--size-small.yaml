@@ -1,5 +1,0 @@
-- status: Work in progress (beta)
-- tablist "Navigate between tabs":
-  - tab "Small Tab 1" [selected]
-  - tab "Small Tab 2"
-  - tab "Small Tab 3"
