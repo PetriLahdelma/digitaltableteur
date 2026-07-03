@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FormField } from "./FormField";
 import { TextInput } from "../TextInput/TextInput";
+import Checkbox from "@dt/Checkbox";
 import contract from "./FormField.contract.json";
 
 const defaultArgs = {
@@ -47,6 +48,15 @@ const meta = {
       description: "Stable id override",
       table: { disable: true },
     },
+    legend: {
+      control: "text",
+      description:
+        "Accessible group name. Setting this switches to group mode: renders a fieldset + legend around children instead of the single-control label wiring. Mutually exclusive with label.",
+    },
+    groupDescription: {
+      control: "text",
+      description: "Helper text shown under the legend in group mode",
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof FormField>;
@@ -84,4 +94,22 @@ export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
+};
+
+export const CheckboxGroupComposition: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <div style={{ width: 360 }}>
+      <FormField
+        legend="Notification channels"
+        groupDescription="Pick at least one way to hear from us"
+      >
+        <Checkbox label="Email" defaultChecked />
+        <Checkbox label="SMS" />
+        <Checkbox label="Push notifications" />
+      </FormField>
+    </div>
+  ),
 };

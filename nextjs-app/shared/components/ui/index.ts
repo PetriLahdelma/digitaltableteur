@@ -14,10 +14,8 @@ export { ProjectNav, type ProjectNavProps } from "../ProjectNav";
 
 // Form components
 export { FormField, type FormFieldProps } from "../FormField";
-export { FormGroup, type FormGroupProps } from "../FormGroup";
 export { TextInput, type TextInputProps } from "../TextInput";
 export { TextArea, type TextAreaProps } from "../TextArea";
-export { CheckboxField, type CheckboxFieldProps } from "../CheckboxField";
 
 // Contact page components
 export { LocationCard, type LocationCardProps } from "../LocationCard";

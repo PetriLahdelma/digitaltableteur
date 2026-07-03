@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { FormField } from "./FormField";
+import Checkbox from "@dt/Checkbox";
 
 expect.extend(toHaveNoViolations);
 
@@ -94,5 +95,19 @@ describe("FormField", () => {
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+});
+
+describe("group mode", () => {
+  it("renders a fieldset with legend when legend is provided", () => {
+    render(
+      <FormField legend="Notification channels" groupDescription="Pick at least one">
+        <Checkbox label="Email" />
+        <Checkbox label="SMS" />
+      </FormField>,
+    );
+    const group = screen.getByRole("group", { name: "Notification channels" });
+    expect(group.tagName).toBe("FIELDSET");
+    expect(screen.getByText("Pick at least one")).toBeInTheDocument();
   });
 });

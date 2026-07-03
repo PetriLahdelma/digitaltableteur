@@ -46,11 +46,10 @@ import {
   IconButton,
   Prose,
   FormField,
-  FormGroup,
   TextInput,
   TextArea,
-  CheckboxField,
 } from "@/nextjs-app/shared/components/ui";
+import Checkbox from "@dt/Checkbox";
 import Link from "@dt/Link";
 import { useToast } from "@/nextjs-app/shared/components/interactive";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
@@ -448,26 +447,25 @@ export default function TailwindTest() {
             </FormField>
           </div>
 
-          {/* CheckboxField */}
+          {/* FormField group mode (absorbs former FormGroup + CheckboxField) */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">CheckboxField:</p>
-            <FormGroup>
-              <CheckboxField
+            <p className="font-body text-text-s text-muted-foreground mb-3">FormField (group mode):</p>
+            <FormField
+              legend="Notification preferences"
+              groupDescription="Choose how you would like to hear from us"
+            >
+              <Checkbox
                 label="Accept terms and conditions"
-                description="By checking this box, you agree to our Terms of Service"
                 required
               />
-              <CheckboxField
-                label="Subscribe to newsletter"
-                description="Receive updates about new features and tips"
-              />
-            </FormGroup>
+              <Checkbox label="Subscribe to newsletter" />
+            </FormField>
           </div>
         </Stack>
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
           <p className="font-body text-text-s">
-            <strong className="font-heading">Form Stack:</strong> FormField, FormGroup, TextInput, TextArea, CheckboxField
+            <strong className="font-heading">Form Stack:</strong> FormField (single-control + group/fieldset mode), TextInput, TextArea, Checkbox
           </p>
         </div>
       </div>

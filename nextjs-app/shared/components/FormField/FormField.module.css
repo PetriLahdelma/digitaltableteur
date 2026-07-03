@@ -1,0 +1,40 @@
+/* Group mode: fieldset/legend wrapper absorbed from FormGroup. Single-control
+ * mode still uses Tailwind utility classes inline in FormField.tsx; these
+ * rules cover only the fieldset path. */
+
+.fieldset {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  gap: var(--space-internal-16);
+  border: 0;
+}
+
+.legend {
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.groupDescription {
+  margin: calc(var(--space-internal-8) * -1) 0 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.groupControls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-16);
+}
+
+.error {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-error);
+}
