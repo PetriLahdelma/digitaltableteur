@@ -41,7 +41,11 @@ describe("SecureCVDownload", () => {
     const input = await screen.findByLabelText(/password/i);
     fireEvent.change(input, { target: { value: "secret" } });
 
-    await vi.runAllTimersAsync();
+    // Bounded advance past the 500ms validation debounce. runAllTimersAsync
+    // never drains here: the Modal keeps a rAF loop alive, and jsdom backs
+    // rAF with timers, so "run all" spins to vitest's 10k-timer abort on
+    // slow runners (farm-only flake).
+    await vi.advanceTimersByTimeAsync(600);
 
     await waitFor(() =>
       expect(screen.getByLabelText(/Valid/i)).toBeInTheDocument(),
@@ -63,7 +67,7 @@ describe("SecureCVDownload", () => {
     fireEvent.click(screen.getByRole("button", { name: /Download Resume/i }));
     const input = await screen.findByLabelText(/password/i);
     fireEvent.change(input, { target: { value: "bad" } });
-    await vi.runAllTimersAsync();
+    await vi.advanceTimersByTimeAsync(600);
 
     expect(await screen.findByText(/Incorrect password/i)).toBeInTheDocument();
   });
