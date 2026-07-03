@@ -3,9 +3,11 @@ export { default as ArticleCard } from "./ArticleCard/ArticleCard";
 export { default as Author } from "./Author/Author";
 export { default as AuthorBio } from "./AuthorBio/AuthorBio";
 export { default as Avatar } from "./Avatar/Avatar";
+export { default as AvatarGroup } from "./AvatarGroup/AvatarGroup";
 export { default as Badge } from "./Badge/Badge";
 export { default as BusyIndicator } from "./BusyIndicator/BusyIndicator";
 export { default as Button } from "./Button/Button";
+export { default as ButtonGroup } from "./ButtonGroup/ButtonGroup";
 export { default as Card } from "./Card/Card";
 export { default as Checkbox } from "./Checkbox/Checkbox";
 export { default as CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
@@ -24,6 +26,7 @@ export {
   type DonnyState,
   type DonnyAvatarProps,
 } from "./DonnyAvatar";
+export { default as EmptyState } from "./EmptyState/EmptyState";
 export { default as FlexBox } from "./FlexBox/FlexBox";
 export { default as FileUpload } from "./FileUpload/FileUpload";
 export { default as Gallery } from "./Gallery/Gallery";
@@ -31,6 +34,8 @@ export { default as Grid } from "./Grid/Grid";
 export { default as GroupLabel } from "./GroupLabel/GroupLabel";
 export { default as Icon } from "./Icon/Icon";
 export { default as HelsinkiClock } from "./HelsinkiClock/HelsinkiClock";
+export { default as Kbd } from "./Kbd/Kbd";
+export { default as StatusDot } from "./StatusDot/StatusDot";
 export { default as TextInput } from "./TextInput/TextInput";
 export { default as Label } from "./Label/Label";
 export { default as Layout } from "./Layout/Layout";

@@ -1,0 +1,174 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "StatusDot",
+    "tier": "atom",
+    "group": "feedback",
+    "status": "alpha",
+    "description": "Tiny semantic status indicator: colored dot with visible or sr-only label.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "span",
+    "variants": {
+        "tone": {
+            "values": [
+                "neutral",
+                "success",
+                "warning",
+                "error",
+                "info"
+            ],
+            "default": "neutral"
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "dot is aria-hidden; meaning carried by visible children or sr-only label",
+            "color never the sole carrier of state"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-03 — pulse animation disabled under prefers-reduced-motion; axe asserted in unit test.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-muted",
+            "--color-success",
+            "--color-warning",
+            "--color-error",
+            "--color-info",
+            "--color-text"
+        ],
+        "spacing": [
+            "--space-internal-6"
+        ],
+        "typography": [
+            "--font-body",
+            "--font-size-text-xxs",
+            "--font-size-text-s",
+            "--font-size-text-m"
+        ]
+    },
+    "lightDarkVerified": true,
+    "schemaVersion": 2,
+    "props": {
+        "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "neutral",
+                "success",
+                "warning",
+                "error",
+                "info"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "pulse": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "label": {
+            "optional": true,
+            "type": "string"
+        },
+        "children": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "displayName": "StatusDot",
+    "keywords": [
+        "status",
+        "dot",
+        "indicator",
+        "online",
+        "live",
+        "health",
+        "presence"
+    ],
+    "dense": "colored semantic dot + label (visible children or sr-only label); tone x sm/md/lg, optional pulse for live states",
+    "usage": {
+        "description": "StatusDot is the lightest way to show state: a tone-colored dot with a label, sized to sit inline in list rows, nav items, and dashboard lines. The dot is decorative; the label (visible children, or sr-only via label) carries the meaning. Use Badge instead when the status needs a chip surface, a count, or removability.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Always pass children or label; a bare dot is invisible to assistive tech and ambiguous to everyone."
+            },
+            {
+                "guidance": true,
+                "description": "Reserve pulse for genuinely live states (recording, deploy in progress); a static dot reads calmer for steady states."
+            },
+            {
+                "guidance": true,
+                "description": "Use tone semantically: success=healthy, warning=degraded, error=down, info=transitional, neutral=idle/unknown."
+            },
+            {
+                "guidance": true,
+                "description": "Keep labels to one or two words; StatusDot is a glance signal, not a sentence."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use StatusDot for counts, filters, or removable chips; Badge owns those surfaces."
+            },
+            {
+                "guidance": false,
+                "description": "Do not encode more states than the five tones; if you need custom colors, the state model is too wide for a dot."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Dot",
+                "required": true,
+                "description": "0.5em tone-colored circle, aria-hidden; optional pulse ring for live states."
+            },
+            {
+                "name": "Label",
+                "required": false,
+                "description": "Visible text next to the dot (children), or sr-only text via the label prop."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "tone": "success",
+            "children": "Operational"
+        }
+    },
+    "composesWith": [
+        "Badge",
+        "Text",
+        "List",
+        "Avatar"
+    ]
+}

@@ -1,0 +1,177 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "EmptyState",
+    "tier": "molecule",
+    "group": "display",
+    "status": "alpha",
+    "description": "Placeholder block for empty lists, zero search results, and first-run screens.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [
+        "children"
+    ],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab reaches actions in the slot"
+        ],
+        "ariaRequirements": [
+            "title is a real heading; headingLevel must fit the page outline",
+            "icon is decorative (aria-hidden)"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-03 — static block; heading semantics + decorative icon asserted in unit tests; axe clean.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-muted",
+            "--color-text"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-32",
+            "--space-layout-48"
+        ],
+        "typography": []
+    },
+    "lightDarkVerified": true,
+    "schemaVersion": 2,
+    "props": {
+        "icon": {
+            "optional": true,
+            "type": "string"
+        },
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
+        "headingLevel": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "h2",
+                "h3",
+                "h4"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "children": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "displayName": "EmptyState",
+    "keywords": [
+        "empty",
+        "no results",
+        "placeholder",
+        "zero state",
+        "first run",
+        "blank"
+    ],
+    "dense": "centered icon + heading + description + action slot for empty lists/search/first-run; sm/md/lg step padding and type together",
+    "usage": {
+        "description": "EmptyState fills the space where content should be with an explanation and a way forward: a decorative icon, a real heading, up to two sentences of description, and an action slot for Buttons. Use sm inside panels and cards, md in content areas, lg on full pages. For failures use AlertBanner; EmptyState is for legitimate absence.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Name what is empty in the title (\"No projects yet\"), not a generic \"Nothing here\"."
+            },
+            {
+                "guidance": true,
+                "description": "Give a way forward: an action button, or a description telling the user what will populate this space."
+            },
+            {
+                "guidance": true,
+                "description": "Set headingLevel so the title fits the page outline (h3 inside a card that sits under an h2)."
+            },
+            {
+                "guidance": true,
+                "description": "Keep zero-search-results copy actionable: suggest clearing filters or broadening the term."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use EmptyState for errors or loading; AlertBanner owns failures and Skeleton owns loading."
+            },
+            {
+                "guidance": false,
+                "description": "Do not stack more than two actions; one primary path plus one escape hatch."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Icon",
+                "required": false,
+                "description": "Decorative Phosphor icon in --color-muted, sized with the block."
+            },
+            {
+                "name": "Title",
+                "required": true,
+                "description": "@dt/Title heading (h2-h4) naming what is empty."
+            },
+            {
+                "name": "Description",
+                "required": false,
+                "description": "@dt/Text capped at 40ch explaining why or what to do."
+            },
+            {
+                "name": "Actions",
+                "required": false,
+                "description": "children slot; typically one primary Button and an optional tertiary."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "icon": "magnifying-glass",
+            "title": "No results found",
+            "description": "Try a different search term."
+        }
+    },
+    "composesWith": [
+        "Title",
+        "Text",
+        "Icon",
+        "Button",
+        "Card"
+    ]
+}
