@@ -343,6 +343,13 @@
   border-start-end-radius: 0;
 }
 
+/* Secondary segments both draw 2px outlines; overlap them fully so the
+   middle reads as one shared seam instead of a 3px bulge. */
+
+.button.splitSecondaryMain {
+  margin-inline-end: -2px;
+}
+
 .button.splitToggle {
   position: relative;
   padding-inline: var(--space-internal-12);
@@ -360,7 +367,14 @@
   inset-inline-start: 0;
 }
 
-.button.secondary.splitToggle::before,
+/* Secondary segments already meet at a shared 2px border (see
+   .splitSecondaryMain); a divider on top of it reads as two separators,
+   so secondary drops the ::before entirely. */
+
+.button.secondary.splitToggle::before {
+  content: none;
+}
+
 .button.tertiary.splitToggle::before {
   background-color: color-mix(in srgb, var(--btn-accent) 50%, transparent);
 }

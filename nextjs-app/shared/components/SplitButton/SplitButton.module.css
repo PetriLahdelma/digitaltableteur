@@ -12,15 +12,11 @@
   );
 }
 
-.splitWrapper[data-variant="secondary"] {
-  border: 2px solid var(--color-primary);
-  border-radius: var(--radius-sm, 0.25rem);
-}
-
-.splitWrapper[data-variant="tertiary"] {
-  border: none;
-  border-radius: var(--radius-sm, 0.25rem);
-}
+/* The wrapper draws no border of its own: secondary segments carry their
+   own 2px Button outlines (folded into one shared seam via
+   Button.module.css .splitSecondaryMain). A wrapper border double-framed
+   the control at a mismatched radius and collided with the Button
+   focus-visible ring (clipped corner notches around the ring). */
 
 .menu {
   position: absolute;
