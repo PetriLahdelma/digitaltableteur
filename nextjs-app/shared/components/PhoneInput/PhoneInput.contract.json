@@ -78,9 +78,9 @@
     "composesWith": [
         "TextInput",
         "Button",
+        "CheckboxGroup",
         "Modal",
-        "Select",
-        "FileUpload",
-        "CheckboxGroup"
+        "Toast",
+        "TextArea"
     ]
 }

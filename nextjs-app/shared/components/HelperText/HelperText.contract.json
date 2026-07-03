@@ -79,7 +79,6 @@
     "composesWith": [
         "Label",
         "Icon",
-        "Button",
-        "TextInput"
+        "Button"
     ]
 }

@@ -97,8 +97,8 @@
         "TextInput",
         "Button",
         "Text",
+        "TextArea",
         "Grid",
-        "ArticleCard",
-        "Avatar"
+        "ArticleCard"
     ]
 }
