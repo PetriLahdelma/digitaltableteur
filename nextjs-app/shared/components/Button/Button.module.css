@@ -367,7 +367,14 @@
   inset-inline-start: 0;
 }
 
-.button.secondary.splitToggle::before,
+/* Secondary segments already meet at a shared 2px border (see
+   .splitSecondaryMain); a divider on top of it reads as two separators,
+   so secondary drops the ::before entirely. */
+
+.button.secondary.splitToggle::before {
+  content: none;
+}
+
 .button.tertiary.splitToggle::before {
   background-color: color-mix(in srgb, var(--btn-accent) 50%, transparent);
 }
