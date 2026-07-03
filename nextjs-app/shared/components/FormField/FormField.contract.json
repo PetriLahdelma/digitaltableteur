@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "form",
     "status": "beta",
-    "description": "Wrapper that owns the label + control + helper-text triplet for a single field. Wires `htmlFor`/`id`, `aria-describedby`, and the required-/error-state slots so consumers do not reimplement them per form. When `legend` is set instead of `label`, renders a `<fieldset>` + `<legend>` around multiple children: the single canonical wrapper for both single-control and grouped-control forms (absorbs the former `FormGroup`).",
+    "description": "Fieldset/legend wrapper for a group of controls (radio sets, checkbox clusters, composite fields), with a group description and a group-level error. Individual controls own their own label, error, and helper text.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-form-field",
     "radixPrimitive": null,
     "element": "div",
@@ -20,7 +20,7 @@
     ],
     "a11y": {
         "keyboard": [
-            "Tab — moves focus to the wrapped control."
+            "Tab \u2014 moves focus to the wrapped control."
         ],
         "ariaRequirements": [
             "Generates a stable id and wires `htmlFor` on the label and `aria-describedby` on the control to the helper-text element.",
@@ -30,7 +30,7 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "reviewedNote": "2026-05-28 \u2014 Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [
@@ -50,19 +50,19 @@
     "consumers": [],
     "schemaVersion": 2,
     "props": {
-        "label": {
-            "optional": true,
+        "legend": {
+            "optional": false,
             "type": "string"
         },
         "children": {
             "optional": false,
             "type": "ReactNode"
         },
-        "error": {
+        "groupDescription": {
             "optional": true,
             "type": "string"
         },
-        "helperText": {
+        "error": {
             "optional": true,
             "type": "string"
         },
@@ -77,18 +77,6 @@
         "className": {
             "optional": true,
             "type": "string"
-        },
-        "id": {
-            "optional": true,
-            "type": "string"
-        },
-        "legend": {
-            "optional": true,
-            "type": "string"
-        },
-        "groupDescription": {
-            "optional": true,
-            "type": "string"
         }
     },
     "forbiddenUse": [
@@ -100,5 +88,71 @@
         "Label",
         "Checkbox",
         "HelperText"
-    ]
+    ],
+    "displayName": "FormField",
+    "keywords": [
+        "fieldset",
+        "legend",
+        "form group",
+        "field wrapper",
+        "group error"
+    ],
+    "dense": "fieldset/legend wrapper for a GROUP of controls with groupDescription + group-level error; single controls own their own label/error/helperText chrome",
+    "usage": {
+        "description": "FormField names a group of controls with a fieldset legend: radio sets, checkbox clusters, composite fields like a date range. Individual controls own their own label, error, and helperText (the field-wrapper convention), so FormField exists only for the group case, adding a legend, an optional description, and a group-level error.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use it whenever two or more controls answer one question (Notification channels, Opening hours)."
+            },
+            {
+                "guidance": true,
+                "description": "Write the legend as the question or category; each control's own label then reads as an answer."
+            },
+            {
+                "guidance": true,
+                "description": "Use groupDescription for guidance that applies to the whole set, like Pick at least one."
+            },
+            {
+                "guidance": true,
+                "description": "Put cross-control validation in the group error prop; per-control failures belong on the control's own error."
+            },
+            {
+                "guidance": false,
+                "description": "Do not wrap a single labeled control; TextInput, Select, Checkbox, and friends carry their own label, error, and helper text."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it as a layout box; it renders a real fieldset and its legend is announced on every control inside."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Legend",
+                "required": true,
+                "description": "The group's accessible name; announced by assistive tech on every control inside the fieldset."
+            },
+            {
+                "name": "Group description",
+                "required": false,
+                "description": "Guidance for the whole set, rendered under the legend."
+            },
+            {
+                "name": "Controls",
+                "required": true,
+                "description": "The child controls; each keeps its own label and per-control error."
+            },
+            {
+                "name": "Group error",
+                "required": false,
+                "description": "Cross-control validation message rendered after the controls with role=alert."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "legend": "Notification channels",
+            "groupDescription": "Pick at least one"
+        }
+    }
 }

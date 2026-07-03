@@ -1339,5 +1339,6 @@
   "workCTASecondary": "View all work",
   "splitButton": {
     "moreOptions": "More options"
-  }
+  },
+  "storyCheckboxGroupMasterLabel": "Select all"
 }

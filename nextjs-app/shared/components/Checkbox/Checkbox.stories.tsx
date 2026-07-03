@@ -4,6 +4,7 @@ import { Meta, StoryFn } from "@storybook/react-vite";
 import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
+import Button from "@dt/Button";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import Checkbox, { CheckboxProps } from "@dt/Checkbox";
@@ -76,7 +77,7 @@ const checkboxComplianceRules: ComplianceRule[] = [
 export default {
   title: "Forms/Checkbox",
   component: Checkbox,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -95,6 +96,16 @@ export default {
       table: { category: "Content", type: { summary: "string" } },
     },
 
+    error: {
+      control: "text",
+      description: "Error message under the control; wires aria-invalid + role=alert.",
+      table: { category: "State", type: { summary: "string" } },
+    },
+    helperText: {
+      control: "text",
+      description: "Supporting text under the control; suppressed while error is set.",
+      table: { category: "Content", type: { summary: "string" } },
+    },
     showLabel: {
       control: "boolean",
       description: "Whether to show the label text",
@@ -255,6 +266,16 @@ export const AllStates: StoryFn = () => (
 );
 
 // v1.1.0 Showcase Stories
+AllStates.tags = ["example"];
+AllStates.parameters = {
+  docs: {
+    description: {
+      story:
+        "Unchecked, checked, indeterminate, and the disabled pair. Indeterminate is for select-all parents whose children are mixed.",
+    },
+  },
+};
+
 export const SizeSmall = Template.bind({});
 SizeSmall.args = { label: "Small checkbox", checked: true, size: "sm" };
 
@@ -275,6 +296,76 @@ export const AllSizes: StoryFn = () => (
     <Checkbox label="Large (lg)" checked={true} size="lg" />
   </div>
 );
+
+AllSizes.tags = ["example"];
+AllSizes.parameters = {
+  docs: { description: { story: "sm, md and lg control sizes." } },
+};
+
+const ValidationContent: React.FC = () => {
+  const [accepted, setAccepted] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
+  return (
+    <div style={{ display: "grid", gap: "1rem", maxWidth: 420 }}>
+      <Checkbox
+        label="I accept the terms of service"
+        checked={accepted}
+        onCheckedChange={(next) => setAccepted(next)}
+        error={submitted && !accepted ? "You must accept the terms to continue" : undefined}
+        helperText="Required to create an account"
+      />
+      <div>
+        <Button variant="secondary" size="sm" clickAction={() => setSubmitted(true)}>
+          Continue
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export const Validation: StoryFn = () => <ValidationContent />;
+Validation.tags = ["example"];
+Validation.parameters = {
+  docs: {
+    description: {
+      story:
+        "The control owns its error and helper text: error wires aria-invalid and announces via role=alert, replacing the hint until it clears.",
+    },
+  },
+};
+
+const SelectAllContent: React.FC = () => {
+  const [picked, setPicked] = React.useState<string[]>(["email"]);
+  const all = ["email", "sms", "push"];
+  const toggle = (value: string) => (next: boolean) =>
+    setPicked((prev) => (next ? [...prev, value] : prev.filter((v) => v !== value)));
+  return (
+    <div style={{ display: "grid", gap: "0.5rem" }}>
+      <Checkbox
+        label="All channels"
+        checked={picked.length === all.length}
+        indeterminate={picked.length > 0 && picked.length < all.length}
+        onCheckedChange={(next) => setPicked(next ? all : [])}
+      />
+      <div style={{ display: "grid", gap: "0.5rem", paddingInlineStart: "1.5rem" }}>
+        <Checkbox label="Email" checked={picked.includes("email")} onCheckedChange={toggle("email")} />
+        <Checkbox label="SMS" checked={picked.includes("sms")} onCheckedChange={toggle("sms")} />
+        <Checkbox label="Push" checked={picked.includes("push")} onCheckedChange={toggle("push")} />
+      </div>
+    </div>
+  );
+};
+
+export const SelectAllParent: StoryFn = () => <SelectAllContent />;
+SelectAllParent.tags = ["example"];
+SelectAllParent.parameters = {
+  docs: {
+    description: {
+      story:
+        "Composition in context: a select-all parent showing indeterminate while the set is mixed (CheckboxGroup packages this pattern).",
+    },
+  },
+};
 
 export const Z_CheckboxCompliance: StoryFn = () => (
   <ComplianceCard

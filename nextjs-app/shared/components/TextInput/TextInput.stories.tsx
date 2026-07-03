@@ -8,7 +8,7 @@ import schema from "./schema.json";
 const meta = {
   title: "Forms/TextInput",
   component: TextInput,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -43,7 +43,7 @@ const meta = {
 
     helperText: { control: "text", description: "Helper copy below the field" },
 
-    isDisabled: {
+    disabled: {
       control: "boolean",
       description: "Disables the input",
       table: { defaultValue: { summary: "false" } },
@@ -92,11 +92,30 @@ NumberInput.args = {
   placeholder: "storyInputNumberPlaceholder",
 };
 
+TextInputStory.tags = ["example"];
+TextInputStory.parameters = {
+  docs: {
+    description: {
+      story: "The base field: label, control, and helper text in one component.",
+    },
+  },
+};
+
 export const EmailInput = Template.bind({});
 EmailInput.args = {
   label: "storyInputEmailLabel",
   type: "email",
   placeholder: "storyInputEmailPlaceholder",
+};
+
+EmailInput.tags = ["example"];
+EmailInput.parameters = {
+  docs: {
+    description: {
+      story:
+        "type=email validates as you type and suggests fixes for common domain typos (gamil.com and friends).",
+    },
+  },
 };
 
 export const PasswordInput = Template.bind({});
@@ -121,12 +140,22 @@ InputWithError.args = {
   error: "storyInputErrorText",
 };
 
+InputWithError.tags = ["example"];
+InputWithError.parameters = {
+  docs: {
+    description: {
+      story:
+        "error replaces the helper line, sets aria-invalid, and announces via role=alert.",
+    },
+  },
+};
+
 export const DisabledInput = Template.bind({});
 DisabledInput.args = {
   label: "storyInputDisabledLabel",
   type: "text",
   placeholder: "storyInputDisabledPlaceholder",
-  isDisabled: true,
+  disabled: true,
 };
 
 export const Default = TextInputStory;

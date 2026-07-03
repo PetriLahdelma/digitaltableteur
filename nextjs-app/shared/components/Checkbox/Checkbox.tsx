@@ -1,5 +1,6 @@
 import React, { forwardRef, useEffect, useId, useRef, useState } from "react";
 import Label from "@dt/Label";
+import HelperText from "@dt/HelperText";
 import styles from "./Checkbox.module.css";
 
 export interface CheckboxProps
@@ -22,6 +23,10 @@ export interface CheckboxProps
   /** Called with the next checked value when toggled. */
   onCheckedChange?: (checked: boolean) => void;
   id?: string;
+  /** Error message under the control; sets aria-invalid and aria-describedby. */
+  error?: string;
+  /** Supporting text under the control; suppressed while `error` is set. */
+  helperText?: string;
 }
 
 /** Accessible checkbox with label, sizes, and indeterminate state. */
@@ -36,6 +41,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       defaultChecked,
       size = "md",
       onCheckedChange,
+      error,
+      helperText,
       ...props
     },
     ref,
@@ -97,7 +104,19 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       }
     };
 
+    const errorId = `${id}-error`;
+    const helperId = `${id}-helper`;
+    const describedBy =
+      [
+        error ? errorId : null,
+        helperText && !error ? helperId : null,
+        props["aria-describedby"],
+      ]
+        .filter(Boolean)
+        .join(" ") || undefined;
+
     return (
+      <>
       <div className={styles["checkboxContainer"]}>
         <input
           type="checkbox"
@@ -131,6 +150,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           disabled={disabled}
           {...props}
           id={id}
+          aria-describedby={describedBy}
+          aria-invalid={error ? true : props["aria-invalid"]}
         />
         <Label
           htmlFor={id}
@@ -140,6 +161,14 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {showLabel && label}
         </Label>
       </div>
+      {error ? (
+        <HelperText id={errorId} state="error">
+          {error}
+        </HelperText>
+      ) : helperText ? (
+        <HelperText id={helperId}>{helperText}</HelperText>
+      ) : null}
+      </>
     );
   },
 );

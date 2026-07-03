@@ -8,7 +8,7 @@ import schema from "./schema.json";
 const meta: Meta<typeof HelperText> = {
   title: "Forms/HelperText",
   component: HelperText,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -75,6 +75,15 @@ export const Info: Story = {
 };
 
 export const AllStates: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The neutral hint plus the four semantic states; each state resolves its icon automatically and error adds role=alert.",
+      },
+    },
+  },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <div>
@@ -112,6 +121,15 @@ export const AllStates: Story = {
 };
 
 export const WithAriaDescribedby: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Manual composition: pass an id and reference it from the control's aria-describedby. The system inputs do this wiring automatically via their helperText/error props.",
+      },
+    },
+  },
   render: () => (
     <div>
       <label
@@ -138,6 +156,26 @@ export const WithAriaDescribedby: Story = {
     </div>
   ),
 };
+export const ErrorTakesOver: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Hint versus failure: the same field shows one line at a time; when error is set it replaces the hint and announces immediately.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", maxWidth: 360 }}>
+      <HelperText id="pw-hint">At least 8 characters.</HelperText>
+      <HelperText id="pw-error" state="error">
+        Password is too short.
+      </HelperText>
+    </div>
+  ),
+};
+
 export const Playground = Default;
 
 export const Example: Story = {

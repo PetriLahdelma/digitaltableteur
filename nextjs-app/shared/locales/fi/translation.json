@@ -1339,5 +1339,6 @@
   "workCTASecondary": "Katso kaikki työt",
   "splitButton": {
     "moreOptions": "Lisää vaihtoehtoja"
-  }
+  },
+  "storyCheckboxGroupMasterLabel": "Valitse kaikki"
 }

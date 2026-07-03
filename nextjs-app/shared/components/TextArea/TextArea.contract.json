@@ -32,8 +32,19 @@
         "forcedColorsVerified": false
     },
     "tokens": {
-        "colors": [],
-        "spacing": []
+        "colors": [
+            "--color-disabled-bg-light",
+            "--color-error",
+            "--color-error-bg",
+            "--color-error-text",
+            "--color-primary",
+            "--color-white",
+            "--focus-ring-color"
+        ],
+        "spacing": [],
+        "typography": [
+            "--font-text"
+        ]
     },
     "lightDarkVerified": false,
     "consumers": [],
@@ -81,5 +92,51 @@
         "HelperText",
         "Button",
         "ContactForm"
-    ]
+    ],
+    "displayName": "TextArea",
+    "keywords": [
+        "textarea",
+        "multi-line",
+        "message",
+        "auto-grow"
+    ],
+    "dense": "labelled multi-line field with optional animated auto-grow (minRows/maxRows), own error + helperText; onChange(value)",
+    "usage": {
+        "description": "TextArea is the multi-line counterpart to TextInput: label, control, helper and error text, plus an optional animated auto-grow mode bounded by minRows and maxRows.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Size the empty state honestly: rows or minRows should suggest the expected answer length."
+            },
+            {
+                "guidance": true,
+                "description": "Enable animateResize for chat-like and note fields; growth is smooth and stops at maxRows."
+            },
+            {
+                "guidance": true,
+                "description": "State length expectations in helperText up front instead of failing after submit."
+            },
+            {
+                "guidance": true,
+                "description": "Keep the label a noun phrase (Message), matching the other fields."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use TextArea for single-line values just to get more width; use TextInput and layout."
+            },
+            {
+                "guidance": false,
+                "description": "Do not rely on manual resize as the only escape hatch for long content when auto-grow is off; verify overflow scrolls."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Message",
+            "helperText": "Markdown is supported.",
+            "animateResize": true,
+            "minRows": 3,
+            "maxRows": 8
+        }
+    }
 }

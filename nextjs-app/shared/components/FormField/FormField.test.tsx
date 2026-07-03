@@ -1,105 +1,17 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { FormField } from "./FormField";
 import Checkbox from "@dt/Checkbox";
 
 expect.extend(toHaveNoViolations);
 
+// FormField is group-mode only (field-wrapper convention, 2026-07-03):
+// individual controls own their own label/error/helperText chrome; FormField
+// exists for the fieldset/legend group case.
 describe("FormField", () => {
-  it("associates the label with the control via a shared id", () => {
-    render(
-      <FormField label="Email">
-        <input type="email" />
-      </FormField>,
-    );
-    expect(screen.getByLabelText("Email")).toBeInTheDocument();
-  });
-
-  it("preserves a control's own id and points the label at it", () => {
-    render(
-      <FormField label="Email" id="field-wrapper">
-        <input id="custom-email" type="email" />
-      </FormField>,
-    );
-    expect(screen.getByLabelText("Email")).toHaveAttribute("id", "custom-email");
-  });
-
-  it("wires aria-describedby + aria-invalid onto the control when there is an error", () => {
-    render(
-      <FormField label="Email" error="Email is required">
-        <input type="email" />
-      </FormField>,
-    );
-    const input = screen.getByLabelText("Email");
-    const errorEl = screen.getByText("Email is required");
-    expect(errorEl).toHaveAttribute("role", "alert");
-    expect(input).toHaveAttribute("aria-invalid", "true");
-    expect(input.getAttribute("aria-describedby")?.split(" ")).toContain(
-      errorEl.id,
-    );
-  });
-
-  it("describes the control with helper text when there is no error", () => {
-    render(
-      <FormField label="Password" helperText="Use 8+ characters">
-        <input type="password" />
-      </FormField>,
-    );
-    const input = screen.getByLabelText("Password");
-    const helper = screen.getByText("Use 8+ characters");
-    expect(input).not.toHaveAttribute("aria-invalid");
-    expect(input.getAttribute("aria-describedby")?.split(" ")).toContain(
-      helper.id,
-    );
-  });
-
-  it("prefers the error over helper text for the description", () => {
-    render(
-      <FormField
-        label="Email"
-        helperText="We never share it"
-        error="Invalid email"
-      >
-        <input type="email" />
-      </FormField>,
-    );
-    expect(screen.queryByText("We never share it")).not.toBeInTheDocument();
-    const input = screen.getByLabelText("Email");
-    const errorEl = screen.getByText("Invalid email");
-    expect(input.getAttribute("aria-describedby")?.split(" ")).toContain(
-      errorEl.id,
-    );
-  });
-
-  it("merges an existing aria-describedby already on the control", () => {
-    render(
-      <FormField label="Email" error="Required">
-        <input type="email" aria-describedby="external-hint" />
-      </FormField>,
-    );
-    const tokens = screen
-      .getByLabelText("Email")
-      .getAttribute("aria-describedby")
-      ?.split(" ");
-    expect(tokens).toContain("external-hint");
-    expect(tokens?.length).toBeGreaterThan(1);
-  });
-
-  it("has no accessibility violations", async () => {
-    const { container } = render(
-      <FormField label="Email" error="Email is required">
-        <input type="email" />
-      </FormField>,
-    );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
-  });
-});
-
-describe("group mode", () => {
-  it("renders a fieldset with legend when legend is provided", () => {
+  it("renders a fieldset with the legend as the group name", () => {
     render(
       <FormField legend="Notification channels" groupDescription="Pick at least one">
         <Checkbox label="Email" />
@@ -134,6 +46,42 @@ describe("group mode", () => {
     expect(smsLabel).toHaveAttribute("for", smsCheckbox.id);
   });
 
+  it("shows a group-level error as an alert", () => {
+    render(
+      <FormField legend="Notification channels" error="Pick at least one channel">
+        <Checkbox label="Email" />
+        <Checkbox label="SMS" />
+      </FormField>,
+    );
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "Pick at least one channel",
+    );
+  });
+
+  it("marks the legend with a visual required asterisk hidden from AT", () => {
+    render(
+      <FormField legend="Contact preference" required>
+        <Checkbox label="Email" />
+      </FormField>,
+    );
+    expect(
+      screen.getByRole("group", { name: "Contact preference" }),
+    ).toBeInTheDocument();
+    const asterisk = screen.getByText("*");
+    expect(asterisk).toHaveAttribute("aria-hidden", "true");
+  });
+
+  it("disables every contained control via the fieldset", () => {
+    render(
+      <FormField legend="Notification channels" disabled>
+        <Checkbox label="Email" />
+        <Checkbox label="SMS" />
+      </FormField>,
+    );
+    expect(screen.getByRole("checkbox", { name: "Email" })).toBeDisabled();
+    expect(screen.getByRole("checkbox", { name: "SMS" })).toBeDisabled();
+  });
+
   it("has no accessibility violations", async () => {
     const { container } = render(
       <FormField legend="Notification channels" groupDescription="Pick at least one">
@@ -144,38 +92,14 @@ describe("group mode", () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
-});
 
-describe("dev-time invariant messages", () => {
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
-
-  it("errors with a message naming both label and legend when both are provided", () => {
-    const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
-    expect(() =>
-      render(
-        <FormField label="Email" legend="Email">
-          <input type="email" />
-        </FormField>,
-      ),
-    ).not.toThrow();
-    expect(consoleError).toHaveBeenCalledWith(
-      expect.stringContaining("both `label` and `legend` were provided"),
+  it("has no violations with a group error", async () => {
+    const { container } = render(
+      <FormField legend="Notification channels" error="Pick at least one channel">
+        <Checkbox label="Email" />
+      </FormField>,
     );
-  });
-
-  it("errors with a message naming the missing label/legend when neither is provided", () => {
-    const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
-    expect(() =>
-      render(
-        <FormField>
-          <input type="email" />
-        </FormField>,
-      ),
-    ).not.toThrow();
-    expect(consoleError).toHaveBeenCalledWith(
-      expect.stringContaining("neither `label` nor `legend` was provided"),
-    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

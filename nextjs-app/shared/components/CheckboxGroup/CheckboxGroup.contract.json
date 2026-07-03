@@ -100,5 +100,64 @@
         "TextArea",
         "Grid",
         "ArticleCard"
-    ]
+    ],
+    "displayName": "CheckboxGroup",
+    "keywords": [
+        "checkbox group",
+        "multi-select",
+        "select all",
+        "fieldset",
+        "options"
+    ],
+    "dense": "checkbox set with fieldset legend and optional select-all master (indeterminate while mixed); onChange reports the selected value array",
+    "usage": {
+        "description": "CheckboxGroup renders a set of related checkboxes under one fieldset legend, with an optional master select-all checkbox that shows the indeterminate state while the set is mixed. It reports the full selected-value array on every change.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use it when several checkboxes answer one question; the label becomes the fieldset legend every control announces."
+            },
+            {
+                "guidance": true,
+                "description": "Enable showMasterCheckbox for sets of four or more where select-all is a plausible intent."
+            },
+            {
+                "guidance": true,
+                "description": "Keep option labels parallel in wording so the set scans as one family."
+            },
+            {
+                "guidance": true,
+                "description": "Seed defaultSelected with the common case instead of forcing users to re-pick standard options."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it for exclusive choices; that is RadioGroup."
+            },
+            {
+                "guidance": false,
+                "description": "Do not mix unrelated decisions into one group; the legend must truthfully name every option."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Notification channels",
+            "options": [
+                {
+                    "label": "Email",
+                    "value": "email"
+                },
+                {
+                    "label": "SMS",
+                    "value": "sms"
+                },
+                {
+                    "label": "Push",
+                    "value": "push"
+                }
+            ],
+            "showMasterCheckbox": true,
+            "masterLabel": "All channels"
+        }
+    }
 }

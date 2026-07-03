@@ -21,8 +21,10 @@ export interface SwitchProps
   label?: React.ReactNode;
   /** Where the label sits relative to the control. @default "right" */
   labelPlacement?: "right" | "left" | "top";
-  /** Supporting text rendered beneath the control. */
+  /** Supporting text rendered beneath the control; suppressed while `error` is set. */
   helperText?: string;
+  /** Error message beneath the control; sets aria-invalid and aria-describedby. */
+  error?: string;
 }
 
 /** Toggle with label, helper text, and loading affordances. */
@@ -38,6 +40,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       label,
       labelPlacement = "right",
       helperText,
+      error,
       className = "",
       onClick,
       id,
@@ -56,6 +59,11 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
     const generatedId = React.useId();
     const switchId = id ?? generatedId;
     const labelId = label ? `${switchId}-label` : undefined;
+    const errorId = error ? `${switchId}-error` : undefined;
+    const helperId = helperText && !error ? `${switchId}-helper` : undefined;
+    const describedBy =
+      [errorId, helperId, rest["aria-describedby"]].filter(Boolean).join(" ") ||
+      undefined;
 
     const toggle = (event: React.MouseEvent<HTMLButtonElement>) => {
       if (effectiveDisabled) {
@@ -116,6 +124,8 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
                 : (rest["aria-label"] ??
                   (typeof label === "string" ? label : undefined))
             }
+            aria-describedby={describedBy}
+            aria-invalid={error ? true : rest["aria-invalid"]}
             className={[styles.switch, styles[`switch--${size}`], className]
               .filter(Boolean)
               .join(" ")}
@@ -135,7 +145,13 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
           </button>
           {shouldRenderLabelAfter ? renderLabel() : null}
         </span>
-        {helperText && <HelperText>{helperText}</HelperText>}
+        {error ? (
+          <HelperText id={errorId} state="error">
+            {error}
+          </HelperText>
+        ) : helperText ? (
+          <HelperText id={helperId}>{helperText}</HelperText>
+        ) : null}
       </>
     );
   },
