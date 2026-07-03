@@ -88,6 +88,7 @@
     "prose:fix-em-dashes": "node scripts/prose/fix-em-dashes.mjs --write",
     "validate:components": "tsx scripts/design-system/validate-components.ts",
     "validate:agent-docs": "node scripts/validate-agent-docs.mjs",
+    "report:doc-coverage": "node scripts/design-system/report-doc-coverage.mjs",
     "audit:catalog": "node scripts/design-system/audit-catalog-coverage.mjs",
     "new-component": "node scripts/design-system/scaffold-component.mjs",
     "bootstrap:contracts": "node scripts/design-system/bootstrap-contracts.mjs",
