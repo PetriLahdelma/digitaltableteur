@@ -12,7 +12,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Molecules/FormField",
+  title: "Forms/FormField",
   component: FormField,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -76,7 +76,7 @@ const selectComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Molecules/Select",
+  title: "Forms/Select",
   component: Select,
   tags: ["beta", "!autodocs"],
   parameters: {

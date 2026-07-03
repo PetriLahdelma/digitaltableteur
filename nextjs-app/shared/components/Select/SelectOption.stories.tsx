@@ -4,7 +4,7 @@ import Select from "@dt/Select";
 import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 export default {
-  title: "Atoms/SelectOption",
+  title: "Forms/SelectOption",
   component: SelectOption,
   parameters: {
     design: {

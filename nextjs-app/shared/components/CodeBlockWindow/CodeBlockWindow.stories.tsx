@@ -14,7 +14,7 @@ const meta: Meta<typeof CodeBlockWindow> = {
       table: { defaultValue: { summary: "default" } },
     },
   },
-  title: "Organisms/CodeBlockWindow",
+  title: "Content/CodeBlockWindow",
   component: CodeBlockWindow,
   parameters: {
     design: {

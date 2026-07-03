@@ -26,7 +26,7 @@ function ComboboxDemo(props: Partial<React.ComponentProps<typeof Combobox>>) {
 }
 
 const meta = {
-  title: "Molecules/Combobox",
+  title: "Forms/Combobox",
   component: Combobox,
   tags: ["beta", "!autodocs"],
   parameters: {

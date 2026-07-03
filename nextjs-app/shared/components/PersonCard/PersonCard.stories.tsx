@@ -73,7 +73,7 @@ const personCardComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Molecules/PersonCard",
+  title: "Site/PersonCard",
   component: PersonCard,
   args: {
     imageSrc: peteVaultBoy,

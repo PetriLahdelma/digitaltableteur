@@ -196,7 +196,7 @@ export default {
       table: { defaultValue: { summary: "muted" } },
     },
   },
-  title: "Molecules/LinkedInQuoteCard",
+  title: "Site/LinkedInQuoteCard",
   component: LinkedInQuoteCard,
   parameters: {
     design: {

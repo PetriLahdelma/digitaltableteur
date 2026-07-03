@@ -1,0 +1,97 @@
+.section {
+  margin-block-end: var(--space-layout-32);
+}
+
+.heading {
+  margin-block: 0 var(--space-internal-16);
+  padding-block-end: var(--space-internal-8);
+  border-block-end: 1px solid var(--color-border-light);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-internal-16);
+}
+
+/* .gallery prefix outguns the docs container's `.sbdocs a` link styling,
+   which otherwise paints its underline and link color into the cards. */
+.gallery .card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-text);
+  background: var(--main-body-background-color);
+  transition: border-color 120ms ease;
+}
+
+.gallery .card:hover,
+.gallery .card:focus-visible {
+  border-color: var(--color-primary);
+  text-decoration: none;
+}
+
+.gallery .card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.preview {
+  display: grid;
+  place-items: center;
+  block-size: 120px;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 1px 1px,
+      var(--color-border-light) 1px,
+      transparent 0
+    );
+  background-size: 16px 16px;
+  background-color: var(--main-body-background-color);
+  border-block-end: 1px solid var(--color-border-light);
+  padding: var(--space-internal-12);
+}
+
+.previewInner {
+  display: grid;
+  place-items: center;
+  max-inline-size: 100%;
+}
+
+.monogram {
+  font-size: var(--font-size-text-l, 1.25rem);
+  font-weight: 600;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-4);
+  padding: var(--space-internal-12);
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-internal-8);
+}
+
+.name {
+  font-weight: 600;
+}
+
+.dense {
+  color: var(--color-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

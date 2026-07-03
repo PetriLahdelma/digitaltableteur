@@ -86,9 +86,9 @@ const textComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Atoms/Text",
+  title: "Content/Text",
   component: Text,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

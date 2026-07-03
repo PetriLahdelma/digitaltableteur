@@ -29,7 +29,7 @@ function MultiComboboxDemo(
 }
 
 const meta = {
-  title: "Molecules/MultiCombobox",
+  title: "Forms/MultiCombobox",
   component: MultiCombobox,
   tags: ["beta", "!autodocs"],
   parameters: {

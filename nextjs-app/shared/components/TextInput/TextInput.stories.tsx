@@ -6,7 +6,7 @@ import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import schema from "./schema.json";
 const meta = {
-  title: "Atoms/TextInput",
+  title: "Forms/TextInput",
   component: TextInput,
   tags: ["beta", "!autodocs"],
   parameters: {

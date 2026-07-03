@@ -4,7 +4,7 @@ import React from "react";
 import NewsletterWaitlist from "@dt/NewsletterWaitlist";
 import { userEvent, waitFor, within } from "storybook/test";
 const meta: Meta<typeof NewsletterWaitlist> = {
-  title: "Organisms/NewsletterWaitlist",
+  title: "Site/NewsletterWaitlist",
   component: NewsletterWaitlist,
   tags: ["beta", "!autodocs"],
   parameters: {

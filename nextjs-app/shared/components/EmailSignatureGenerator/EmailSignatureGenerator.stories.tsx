@@ -6,7 +6,7 @@ import Badge from "@dt/Badge";
 
 const meta: Meta<typeof EmailSignatureGenerator> = {
   argTypes: {},
-  title: "Organisms/EmailSignatureGenerator",
+  title: "Site/EmailSignatureGenerator",
   component: EmailSignatureGenerator,
   tags: ["beta", "!autodocs"],
   parameters: {

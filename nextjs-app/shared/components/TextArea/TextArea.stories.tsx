@@ -5,7 +5,7 @@ import TextArea from "@dt/TextArea";
 import { useTranslation } from "react-i18next";
 
 const meta = {
-  title: "Atoms/TextArea",
+  title: "Forms/TextArea",
   component: TextArea,
   tags: ["beta", "!autodocs"],
   parameters: {

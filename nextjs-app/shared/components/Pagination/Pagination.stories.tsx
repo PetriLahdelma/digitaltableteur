@@ -26,7 +26,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Molecules/Pagination",
+  title: "Navigation/Pagination",
   component: Pagination,
   tags: ["beta", "!autodocs"],
   parameters: {

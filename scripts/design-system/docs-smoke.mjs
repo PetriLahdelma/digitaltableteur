@@ -21,14 +21,14 @@ const BASE = process.env.TARGET_URL || "http://localhost:6010";
 
 /** Components proven on the frame; grows with Phase 3 category batches. */
 const PROVEN = [
-  { name: "Button", docsId: "atoms-button--docs" },
-  { name: "Badge", docsId: "atoms-badge--docs" },
-  { name: "Icon", docsId: "atoms-icon--docs" },
-  { name: "Text", docsId: "atoms-text--docs" },
-  { name: "Title", docsId: "atoms-title--docs" },
-  { name: "Link", docsId: "atoms-link--docs" },
-  { name: "Label", docsId: "atoms-label--docs" },
-  { name: "Card", docsId: "molecules-card--docs" },
+  { name: "Button", docsId: "actions-button--docs" },
+  { name: "Badge", docsId: "content-badge--docs" },
+  { name: "Icon", docsId: "content-icon--docs" },
+  { name: "Text", docsId: "content-text--docs" },
+  { name: "Title", docsId: "content-title--docs" },
+  { name: "Link", docsId: "navigation-link--docs" },
+  { name: "Label", docsId: "forms-label--docs" },
+  { name: "Card", docsId: "layout-card--docs" },
 ];
 
 function contractFor(name) {

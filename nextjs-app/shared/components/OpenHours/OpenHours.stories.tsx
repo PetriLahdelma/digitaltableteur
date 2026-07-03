@@ -72,7 +72,7 @@ const openHoursComplianceRules: ComplianceRule[] = [
 
 const meta: Meta<typeof OpenHours> = {
   argTypes: {},
-  title: "Molecules/OpenHours",
+  title: "Site/OpenHours",
   component: OpenHours,
   tags: ["beta", "!autodocs"],
   args: {},

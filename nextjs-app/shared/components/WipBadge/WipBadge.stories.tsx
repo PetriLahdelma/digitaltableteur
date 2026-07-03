@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { WipBadge } from "./WipBadge";
 
 const meta: Meta<typeof WipBadge> = {
-  title: "Atoms/WipBadge",
+  title: "Site/WipBadge",
   component: WipBadge,
   parameters: {
     design: {

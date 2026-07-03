@@ -22,7 +22,7 @@ const navMenuListComplianceRules: ComplianceRule[] = [
 
 const meta: Meta<typeof NavMenuList> = {
   argTypes: {},
-  title: "Molecules/NavMenuList",
+  title: "Site/NavMenuList",
   component: NavMenuList,
   tags: ["beta", "!autodocs"],
   parameters: {

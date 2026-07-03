@@ -77,7 +77,7 @@ const socialShareComplianceRules: ComplianceRule[] = [
 ];
 
 const meta = {
-  title: "Molecules/SocialShare",
+  title: "Site/SocialShare",
   component: SocialShare,
   parameters: {
     design: {

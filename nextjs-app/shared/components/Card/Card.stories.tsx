@@ -9,9 +9,9 @@ import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 const CardStoryMeta = {
-  title: "Molecules/Card",
+  title: "Layout/Card",
   component: Card,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

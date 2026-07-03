@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import contract from "./Logo.contract.json";
 
 const meta = {
-  title: "Atoms/Logo",
+  title: "Site/Logo",
   component: Logo,
   tags: ["beta", "!autodocs"],
   parameters: {

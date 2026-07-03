@@ -53,7 +53,7 @@ const WorkflowHarness: React.FC<{ state: EmailWorkflowState }> = ({
 };
 
 const meta: Meta<typeof WorkflowHarness> = {
-  title: "Molecules/Chat/EmailWorkflow",
+  title: "Site/Chat/EmailWorkflow",
   component: WorkflowHarness,
   tags: ["autodocs"],
   parameters: {},

@@ -41,7 +41,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Molecules/CategoryFilter",
+  title: "Site/CategoryFilter",
   component: CategoryFilter,
   tags: ["beta", "!autodocs"],
   parameters: {

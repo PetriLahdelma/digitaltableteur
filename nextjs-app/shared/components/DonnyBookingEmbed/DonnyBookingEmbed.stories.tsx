@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DonnyBookingEmbed } from "./DonnyBookingEmbed";
 
 const meta = {
-  title: "Organisms/DonnyBookingEmbed",
+  title: "Site/DonnyBookingEmbed",
   component: DonnyBookingEmbed,
   parameters: {
     badges: ["wip"],

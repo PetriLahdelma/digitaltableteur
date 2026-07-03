@@ -6,7 +6,7 @@ import { userEvent, waitFor, within } from "storybook/test";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 const meta: Meta<typeof Accordion> = {
-  title: "Molecules/Accordion",
+  title: "Layout/Accordion",
   component: Accordion,
   tags: ["beta", "!autodocs"],
   parameters: {

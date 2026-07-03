@@ -7,7 +7,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Organisms/ClientLogoMarquee",
+  title: "Site/ClientLogoMarquee",
   component: ClientLogoMarquee,
   tags: ["beta", "!autodocs"],
   parameters: {

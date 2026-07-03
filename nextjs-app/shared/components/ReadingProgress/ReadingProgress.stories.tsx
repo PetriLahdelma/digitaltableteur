@@ -4,7 +4,7 @@ import ReadingProgress from "./ReadingProgress";
 import contract from "./ReadingProgress.contract.json";
 
 const meta = {
-  title: "Molecules/ReadingProgress",
+  title: "Site/ReadingProgress",
   component: ReadingProgress,
   tags: ["!autodocs"],
   parameters: {

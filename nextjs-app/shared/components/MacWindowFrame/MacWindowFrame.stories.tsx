@@ -11,7 +11,7 @@ const meta: Meta<typeof MacWindowFrame> = {
       table: { defaultValue: { summary: "compact" } },
     },
   },
-  title: "Molecules/MacWindowFrame",
+  title: "Layout/MacWindowFrame",
   component: MacWindowFrame,
   parameters: {
     design: {

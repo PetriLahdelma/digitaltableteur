@@ -71,7 +71,7 @@ const secureCVDownloadComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof SecureCVDownload> = {
-  title: "Molecules/SecureCVDownload",
+  title: "Site/SecureCVDownload",
   component: SecureCVDownload,
   tags: ["beta", "!autodocs"],
   parameters: {

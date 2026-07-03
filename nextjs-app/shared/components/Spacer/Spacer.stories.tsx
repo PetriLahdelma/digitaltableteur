@@ -8,7 +8,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/Spacer",
+  title: "Layout/Spacer",
   component: Spacer,
   tags: ["beta", "!autodocs"],
   parameters: {

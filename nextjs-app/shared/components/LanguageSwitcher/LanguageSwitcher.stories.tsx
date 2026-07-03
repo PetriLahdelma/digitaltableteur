@@ -27,7 +27,7 @@ function LanguageSwitcherDemo(props: { initialLang?: string }) {
 }
 
 const meta = {
-  title: "Molecules/LanguageSwitcher",
+  title: "Navigation/LanguageSwitcher",
   component: LanguageSwitcher,
   tags: ["beta", "!autodocs"],
   parameters: {

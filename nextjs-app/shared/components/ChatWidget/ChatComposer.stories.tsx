@@ -8,7 +8,7 @@ import { expect, userEvent, waitFor, within } from "storybook/test";
 const noop = () => {};
 
 const meta: Meta<typeof ChatComposer> = {
-  title: "Molecules/Chat/ChatComposer",
+  title: "Site/Chat/ChatComposer",
   component: ChatComposer,
   tags: ["autodocs"],
   args: {

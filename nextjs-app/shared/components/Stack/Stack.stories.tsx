@@ -19,7 +19,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/Stack",
+  title: "Layout/Stack",
   component: Stack,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -10,7 +10,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Molecules/LocationCard",
+  title: "Site/LocationCard",
   component: LocationCard,
   tags: ["beta", "!autodocs"],
   parameters: {

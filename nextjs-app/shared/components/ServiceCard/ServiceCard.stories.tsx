@@ -15,7 +15,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Molecules/ServiceCard",
+  title: "Site/ServiceCard",
   component: ServiceCard,
   tags: ["beta", "!autodocs"],
   parameters: {

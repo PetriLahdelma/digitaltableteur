@@ -3,7 +3,7 @@ import Radio from "./Radio";
 import contract from "./Radio.contract.json";
 
 const meta = {
-  title: "Atoms/Radio",
+  title: "Forms/Radio",
   component: Radio,
   tags: ["beta", "!autodocs"],
   parameters: {

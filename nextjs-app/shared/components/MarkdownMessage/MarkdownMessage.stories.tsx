@@ -13,7 +13,7 @@ const meta: Meta<typeof MarkdownMessage> = {
       table: { defaultValue: { summary: "default" } },
     },
   },
-  title: "Molecules/Chat/MarkdownMessage",
+  title: "Site/Chat/MarkdownMessage",
   component: MarkdownMessage,
   tags: ["beta", "!autodocs"],
   parameters: {

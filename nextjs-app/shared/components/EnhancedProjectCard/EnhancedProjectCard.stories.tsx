@@ -15,7 +15,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Molecules/EnhancedProjectCard",
+  title: "Site/EnhancedProjectCard",
   component: EnhancedProjectCard,
   tags: ["beta", "!autodocs"],
   parameters: {

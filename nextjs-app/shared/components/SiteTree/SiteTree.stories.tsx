@@ -5,7 +5,7 @@ import SiteTree from "@dt/SiteTree";
 import { sampleSiteTree } from "./siteTreeSample";
 
 const meta: Meta<typeof SiteTree> = {
-  title: "Molecules/SiteTree",
+  title: "Site/SiteTree",
   component: SiteTree,
   tags: ["beta", "!autodocs"],
   parameters: {

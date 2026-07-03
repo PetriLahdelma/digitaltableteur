@@ -6,7 +6,7 @@ import contract from "./ContactFormEditorial.contract.json";
 const defaultArgs = {};
 
 const meta = {
-  title: "Organisms/ContactFormEditorial",
+  title: "Site/ContactFormEditorial",
   component: ContactFormEditorial,
   tags: ["beta", "!autodocs"],
   parameters: {

@@ -35,7 +35,7 @@ const meta: Meta<typeof BusyIndicator> = {
       table: { defaultValue: { summary: "s" } },
     },
   },
-  title: "Atoms/BusyIndicator",
+  title: "Feedback/BusyIndicator",
   component: BusyIndicator,
   tags: ["beta", "!autodocs"],
   parameters: {

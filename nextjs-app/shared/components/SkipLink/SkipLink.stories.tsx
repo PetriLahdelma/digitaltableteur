@@ -9,7 +9,7 @@ const defaultArgs = {
 };
 
 const meta = {
-  title: "Atoms/SkipLink",
+  title: "Navigation/SkipLink",
   component: SkipLink,
   tags: ["beta", "!autodocs"],
   parameters: {

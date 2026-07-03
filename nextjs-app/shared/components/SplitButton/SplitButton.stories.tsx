@@ -18,7 +18,7 @@ import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 const meta: Meta<typeof SplitButton> = {
-  title: "Molecules/SplitButton",
+  title: "Actions/SplitButton",
   component: SplitButton,
   tags: ["alpha", "!autodocs"],
   parameters: {
