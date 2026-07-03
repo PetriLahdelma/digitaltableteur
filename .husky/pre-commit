@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
-# Local pre-commit quality gate. CI is quota-dead for this repo, so the design
-# system's checks must run locally. Cheapest checks first (fail fast). The
-# heavier per-push gate in .husky/pre-push still runs validate:components etc.
+# Local pre-commit quality gate. PR Validation runs on the self-hosted farm
+# (post-#795), but the merge discipline is still local-first: cheapest checks
+# here (fail fast); the heavier per-push gate in .husky/pre-push adds the
+# contract gate (build:tokens + check:contract-props + check:consumers) and
+# validate:components for design-system paths.
 # Bypass in a genuine emergency with: git commit --no-verify
 npm run check:contrast &&
 npm run lint:css &&
