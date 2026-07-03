@@ -8,7 +8,7 @@ import schema from "./schema.json";
 const meta: Meta<typeof Link> = {
   title: "Atoms/Link",
   component: Link,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

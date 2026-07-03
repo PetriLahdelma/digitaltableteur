@@ -11,7 +11,7 @@ import schema from "./schema.json";
 const CardStoryMeta = {
   title: "Molecules/Card",
   component: Card,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

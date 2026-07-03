@@ -14,7 +14,7 @@ const meta: Meta<typeof Icon> = {
   },
   title: "Atoms/Icon",
   component: Icon,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   args: {
     name: "circle-info",
     weight: "regular",

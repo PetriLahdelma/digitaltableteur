@@ -17,7 +17,7 @@ const TONE_ICON_MAP: Record<string, string> = {
 const meta: Meta<typeof Badge> = {
   title: "Atoms/Badge",
   component: Badge,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
