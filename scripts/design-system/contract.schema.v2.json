@@ -463,6 +463,125 @@
             "uniqueItems": true,
             "maxItems": 8,
             "description": "Agent-facing anti-patterns from spec Do/Don't and curated policy (v2 semantic)."
+        },
+        "displayName": {
+            "type": "string",
+            "minLength": 1
+        },
+        "keywords": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "minLength": 2
+            },
+            "uniqueItems": true
+        },
+        "usage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "description"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "minLength": 20
+                },
+                "bestPractices": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "guidance",
+                            "description"
+                        ],
+                        "properties": {
+                            "guidance": {
+                                "type": "boolean"
+                            },
+                            "description": {
+                                "type": "string",
+                                "minLength": 10
+                            }
+                        }
+                    }
+                },
+                "anatomy": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "name",
+                            "required",
+                            "description"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "required": {
+                                "type": "boolean"
+                            },
+                            "description": {
+                                "type": "string",
+                                "minLength": 10
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "playground": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "defaults"
+            ],
+            "properties": {
+                "defaults": {
+                    "type": "object"
+                }
+            }
+        },
+        "theming": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "vars": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "name",
+                            "description",
+                            "default"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "pattern": "^--"
+                            },
+                            "description": {
+                                "type": "string",
+                                "minLength": 5
+                            },
+                            "default": {
+                                "type": "string",
+                                "minLength": 1
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "dense": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 200
         }
     },
     "allOf": [
