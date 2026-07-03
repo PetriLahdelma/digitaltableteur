@@ -1,6 +1,6 @@
 - status: Work in progress (beta)
 - button "Open modal"
-- dialog "Information":
-  - heading "Information" [level=2]
-  - text: Here is some important information.
+- dialog "Heads up":
+  - heading "Heads up" [level=2]
+  - text: This workspace is read-only during maintenance.
   - button "OK"

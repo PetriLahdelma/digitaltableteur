@@ -1,6 +1,6 @@
 - status: Work in progress (beta)
 - button "Open modal"
-- dialog "Success":
-  - heading "Success" [level=2]
-  - text: Your operation was successful!
+- dialog "Changes saved":
+  - heading "Changes saved" [level=2]
+  - text: Your edits are live.
   - button "OK"

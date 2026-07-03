@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { DOC_TIER_1 } from "../../scripts/design-system/doc-tiers.mjs";
-import { ComponentsGallery } from "./ComponentsGallery";
+import { ComponentsGallery, GalleryCard } from "./ComponentsGallery";
 
 describe("ComponentsGallery", () => {
   it("renders one linked card per DOC_TIER_1 component", () => {
@@ -17,10 +17,11 @@ describe("ComponentsGallery", () => {
   });
 
   it("falls back to a monogram when a component has no playground defaults", () => {
-    const { container } = render(<ComponentsGallery />);
-    // Modal has no playground.defaults yet (Phase 3 overlays batch).
-    const modal = screen.getByText("Modal").closest("a");
-    expect(modal?.querySelector("[class*='monogram']")).not.toBeNull();
-    expect(container.querySelectorAll("[class*='monogram']").length).toBeGreaterThan(0);
+    // Synthetic name: no contract, no registry entry — the fallback path
+    // stays testable even once every real Tier 1 contract has defaults.
+    const { container } = render(
+      <GalleryCard name="NoSuchComponent" category="Actions" />,
+    );
+    expect(container.querySelector("[class*='monogram']")).not.toBeNull();
   });
 });

@@ -213,9 +213,9 @@ Family-level prerequisite: the field-wrapper convention (4.1). All form docs sha
 | **BusyIndicator** | **DELETED (Phase 3 batch 4, 2026-07-03)** | Dedup call resolved by deletion: off-convention s/m/l sizes, determinate dots duplicated Progress, 2 consumers. AppLoading -> Spinner lg + visible label; SecureCVDownload -> Spinner sm + Icon check-circle. Never documented (never-document-duplicates principle, same as Tag). |
 | **Skeleton** | **DONE (Phase 3 batch 4, 2026-07-03)** | Group moved structure -> feedback (loading family). Examples: TextLines, Card, Avatar, Shapes, ComposedPage (single labelled status wrapping aria-hidden composition), Static. |
 | **Tooltip** | **DONE (Phase 3 batch 4, 2026-07-03; stays alpha)** | Contract was alpha (audit matrix said beta). `side` prop exposed on TooltipContent; subParts + anatomy authored; keyboard contract (focus opens, Escape dismisses, aria-describedby) asserted in play + unit tests. Examples: Placements, WithIconButton, Delay, Example (keyboard play). lightDark/forcedColors verification pending before beta promotion. |
-| **Modal** | beta, clean | Overlay family owner (4.1). Examples: Sizes, Scrollable, Form-in-modal, Confirmation. a11y: focus trap, return focus, Escape. |
-| **AnimatedDialog** | beta; no test | Fold into Modal docs as motion variant, or document delta only. |
-| **Lightbox** | alpha; no stories/test | Full build-out under overlay family. Examples: ImageGallery, Zoom, Keyboard-nav. |
+| **Modal** | **DONE (Phase 3 batch 5, 2026-07-04)** | Overlay family owner. Doc-adopted contract (anatomy: Overlay/Panel/Header/Content/Footer); legacy stories cleaned (ComplianceCard + severity showcase dupes deleted, stale AT yamls removed, .mdx deleted). Examples: Confirmation (explicit footer), FormInModal, Scrollable (90vh cap), AnimatedEntrance. No Sizes example — Modal has no size prop (feature backlog, not doc scope). |
+| **AnimatedDialog** | **FOLDED into Modal (Phase 0, #802)** | Motion shipped as Modal's `animation` prop (none\|scale\|slide\|fade, reduced-motion gated); directory deleted. |
+| **Lightbox** | **EXEMPT (Phase 1 decision)** | `bucket: "exempt"` app infrastructure per non-agent-surfaces.json + docs/CATALOG-POLICY.md — no contract without an ADR. Not part of the Tier 1 catalog; revisit only with a concrete catalog consumer. |
 
 ### 5.5 Navigation (9)
 
@@ -265,7 +265,7 @@ Batches sized to one PR each, ordered so shared conventions are settled before d
 2. Forms family (after wrapper decision): Label, HelperText, FormField, TextInput, TextArea, Select, Checkbox*, Radio*, Switch.
 3. Advanced inputs: Combobox, MultiCombobox, PhoneInput, FileUpload.
 4. Feedback: AlertBanner, Toast, Progress, Spinner, Skeleton, Tooltip. **DONE 2026-07-03** (+ Toaster and BusyIndicator deleted).
-5. Overlays: Modal family, Lightbox.
+5. Overlays: Modal family, Lightbox. **DONE 2026-07-04** (Modal doc-adopted; AnimatedDialog was folded in Phase 0, Lightbox is catalog-exempt).
 6. Navigation: Link family, Breadcrumb, Tabs, Pagination, SkipLink, LanguageSwitcher.
 7. Layout: Card, Grid, Container, Stack/FlexBox/Center/Spacer, Accordion, Divider, AspectRatio, Section.
 8. Content: Avatar, List, Prose, CodeSnippet, CodeBlockWindow, Display.

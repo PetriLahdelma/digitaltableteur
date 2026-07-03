@@ -1,6 +1,6 @@
 - status: Work in progress (beta)
 - button "Open modal"
-- alertdialog "Warning":
-  - heading "Warning" [level=2]
-  - text: Please review this warning carefully.
+- alertdialog "Unsaved changes":
+  - heading "Unsaved changes" [level=2]
+  - text: Leaving now discards your edits.
   - button "OK"
