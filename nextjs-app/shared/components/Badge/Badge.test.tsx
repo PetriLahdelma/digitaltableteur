@@ -48,4 +48,27 @@ describe("Badge", () => {
     // Ensure no nested svg created for invalid icon
     expect(container.querySelector("svg")).not.toBeInTheDocument();
   });
+
+  it("renders a color-coded StatusDot instead of the semantic icon when dot is set", () => {
+    const { container } = render(
+      <Badge tone="success" dot>
+        Stable
+      </Badge>,
+    );
+    // StatusDot renders a styled dot span (tone-classed), not the semantic icon svg.
+    const dot = container.querySelector('[class*="dot"]');
+    expect(dot).not.toBeNull();
+    expect(dot?.className).toMatch(/success/);
+    expect(container.querySelector("svg")).not.toBeInTheDocument();
+  });
+
+  it("lets an explicit icon win over dot", () => {
+    const { container } = render(
+      <Badge tone="info" dot icon={<span data-testid="custom-icon" />}>
+        Beta
+      </Badge>,
+    );
+    expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
+    expect(container.querySelector('[class*="dot"]')).toBeNull();
+  });
 });

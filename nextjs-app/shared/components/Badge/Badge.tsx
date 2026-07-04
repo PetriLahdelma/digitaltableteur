@@ -14,6 +14,7 @@ export const badgeVariants = cva(styles.badge, {
 
 import React, { isValidElement, useState } from "react";
 import Icon from "@dt/Icon";
+import StatusDot from "@dt/StatusDot";
 import { useTranslation } from "react-i18next";
 import { type SemanticStatus, STATUS_ICON_NAMES } from "../../utils/semanticIcons";
 
@@ -48,6 +49,12 @@ export interface BadgeProps {
   onRemove?: () => void;
   /** Leading icon; a semantic icon is supplied automatically for non-neutral tones. */
   icon?: React.ReactNode;
+  /**
+   * Render a leading color-coded {@link StatusDot} (from `tone`) instead of the
+   * semantic icon — e.g. lifecycle badges (alpha/beta/stable/deprecated). An
+   * explicit `icon` still wins.
+   */
+  dot?: boolean;
   /** Square (non-pill) corners. */
   square?: boolean;
   /**
@@ -67,6 +74,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       removable = false,
       onRemove,
       icon,
+      dot = false,
       className,
       square = false,
       size = "md",
@@ -82,9 +90,15 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 
     // Icons track the badge's size step: sm 16px, md 24px, lg 32px.
     const badgeIconSize = { sm: "xs", md: "md", lg: "lg" } as const;
+    // StatusDot follows the badge size step so lifecycle dots scale with sm/md/lg.
+    const badgeDotSize = { sm: "sm", md: "md", lg: "lg" } as const;
 
     let resolvedIcon: React.ReactNode = icon;
-    if (resolvedIcon == null && tone && semanticStatus) {
+    if (resolvedIcon == null && dot) {
+      // Leading color-coded dot instead of the semantic icon (tone drives the
+      // color; undefined tone falls back to StatusDot's neutral).
+      resolvedIcon = <StatusDot tone={tone} size={badgeDotSize[size]} />;
+    } else if (resolvedIcon == null && tone && semanticStatus) {
       // The badge already sets a contrast-correct text color per variant×tone,
       // so the semantic icon inherits it via currentColor.
       resolvedIcon = (

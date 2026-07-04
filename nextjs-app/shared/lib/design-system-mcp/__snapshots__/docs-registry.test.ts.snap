@@ -8,6 +8,7 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
       "SecondaryVariants",
       "Removable",
       "WithIcon",
+      "LifecycleDots",
       "Sizes",
       "AsCount",
       "InButtonEndSlot",

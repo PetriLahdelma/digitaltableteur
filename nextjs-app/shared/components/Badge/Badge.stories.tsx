@@ -61,6 +61,13 @@ const meta: Meta<typeof Badge> = {
       },
     },
 
+    dot: {
+      control: "boolean",
+      description:
+        "Render a leading color-coded StatusDot (from tone) instead of the semantic icon — e.g. lifecycle badges.",
+      table: { category: "Content", defaultValue: { summary: "false" } },
+    },
+
     // Appearance
     variant: {
       control: { type: "inline-radio" },
@@ -242,6 +249,35 @@ export const WithIcon: Story = {
   parameters: { docs: { description: { story: "Custom icon next to the label via the icon slot." } } },
   render: Template,
   args: { variant: "primary", tone: "info", children: "badgeInfo", iconName: "info" },
+};
+
+/** `dot` swaps the semantic icon for a color-coded StatusDot — lifecycle labels. */
+export const LifecycleDots: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "dot renders a leading StatusDot colored by tone instead of the semantic icon — the pattern the docs-header status pill uses for alpha (warning), beta (info), stable (success), and deprecated (error).",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
+      <Badge variant="secondary" tone="warning" size="sm" dot>
+        alpha
+      </Badge>
+      <Badge variant="secondary" tone="info" size="sm" dot>
+        beta
+      </Badge>
+      <Badge variant="secondary" tone="success" size="sm" dot>
+        stable
+      </Badge>
+      <Badge variant="secondary" tone="error" size="sm" dot>
+        deprecated
+      </Badge>
+    </div>
+  ),
 };
 
 const SizesContent: React.FC = () => {

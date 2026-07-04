@@ -1,10 +1,19 @@
 .header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-internal-8);
   margin-block-end: var(--space-layout-24);
+}
+
+.group {
+  color: var(--color-muted);
+  text-transform: lowercase;
 }
 
 .titleRow {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: var(--space-internal-12);
   flex-wrap: wrap;
 }
@@ -13,21 +22,25 @@
   margin: 0;
 }
 
-.group {
-  color: var(--color-muted);
-  text-transform: lowercase;
+/* View in Figma sits on its own row; a touch more air above it than the
+   tight group -> title gap. Plain link, no wavy underline (underline="none"),
+   no icon. The doubled class (.figma.figma) raises specificity above
+   Storybook's global `.sbdocs a` rule, which otherwise bleeds a plain
+   text-decoration: underline onto the link. */
+.figma.figma {
+  margin-block-start: var(--space-internal-4);
+  white-space: nowrap;
+  text-decoration: none;
 }
 
-.figma {
-  margin-inline-start: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-internal-4);
-  white-space: nowrap;
+/* @dt/Link auto-appends an external-link arrow for external hrefs; the mock
+   wants a plain "View in Figma" text link, so hide it here. */
+.figma [class*="externalIcon"] {
+  display: none;
 }
 
 .standfirst {
-  margin-block: var(--space-internal-12) 0;
+  margin: 0;
   max-inline-size: 70ch;
   color: var(--color-text);
 }
