@@ -296,6 +296,48 @@ Full diff of the Astryx public catalog against ours. Three buckets:
 - **Contract schema change ripples** (sync:contract-props scope footgun noted in memory): schema fields are additive and optional at v2.1; validator tiers enforce presence, not schema.
 - **Storybook-only ceiling**: accepted consciously. If the public-frame ambition returns, the doc data layer (Phase 1) and content (Phase 3) transfer 1:1; only the frame (Phase 2) is Storybook-specific.
 
+## 7.5 Controls-operability workstream (added 2026-07-04, post-Phase-3)
+
+Phase 3 made the docs *content* complete; a review of the rendered Controls
+panels showed the *interaction* half was not: props shipped as dead "Set
+object"/"Set string" buttons or hidden rows, including on stable components.
+Static gates (vitest, build, validate:components) prove stories compile — they
+do not prove a human can operate a control. Work landed:
+
+- **#836-#837** Badge exemplar: every prop deliberate (real control /
+  action-pane / hidden ReactNode rows / seeded text inputs / categories).
+- **#838** Gate: stale `argTypesProxyExempt` entries and exempted variant axes
+  are `validate:components` errors; `prune-argtypes-exemptions.ts`;
+  `CONTROLS_PROXY_EXEMPT` metric.
+- **#839** Backfill: 695 muted props received deliberate argTypes entries from
+  type + JSDoc (codemod `backfill-argtypes.ts`); every exemption list deleted
+  (`CONTROLS_PROXY_EXEMPT=0`); Badge's confusing `title` passthrough removed.
+- **#840** Instrument: **`npm run audit:controls`** (Human-Simulated testing)
+  drives the real Controls panel per component in a headless browser and
+  classifies every value prop operable / dead / missing; `--min <pct>` is a CI
+  ratchet; emits `CONTROLS_OPERABLE_PCT`.
+
+**Baseline (2026-07-04): 5/125 components fully operable; 337/765 (44%) value
+props operable; 249 dead Set-buttons; 179 hidden.** Root causes: `control`
+paired with `table.disable` (81 conflicts / 46 components), and unseeded
+text/number/object controls. Seeding args changes rendered stories, so the fix
+requires per-component default args + AT snapshot re-capture — a batched
+sweep, not a codemod.
+
+**Remediation plan (next unit of work, before Phase 4):**
+
+1. Batch by category (Actions+Content core → Forms → Feedback → Navigation →
+   Layout → patterns), one PR per batch.
+2. Per component: seed real default `args` for text/number/object controls;
+   resolve control-vs-disable conflicts per the AGENTS.md treatment table;
+   decide operability per hidden prop; `audit:controls --only <Name>` → 100%.
+3. Re-capture AT snapshots per touched component (4 modes, attached workflow,
+   finish compare-mode); eyeball canvases.
+4. Ratchet `audit:controls --min <floor>` upward per PR; wire into the farm
+   (needs its running Storybook) in the first sweep PR.
+5. End state: 100% operable, `--min 100` on the farm, and Phase 5 promotion
+   requires per-component controls operability.
+
 ## 8. Success criteria
 
 - Every Tier 1 component page shows all 11 blocks with real content; zero placeholder prose.
@@ -303,3 +345,4 @@ Full diff of the Astryx public catalog against ours. Three buckets:
 - MCP `search("button")` returns a budgeted brief with import line and hint; `get("Button")` returns usage + examples source.
 - >=25 components stable (from 10) via release:gate.
 - Storybook sidebar mirrors the category taxonomy with status dots; landing gallery live.
+- `audit:controls` at 100%: every value prop on every catalog component operable by a human (select / toggle / radio / check / input / slide).
