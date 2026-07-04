@@ -1316,6 +1316,10 @@
           "optional": true,
           "type": "React.ReactNode"
         },
+        "dot": {
+          "optional": true,
+          "type": "boolean"
+        },
         "square": {
           "optional": true,
           "type": "boolean"
@@ -1414,7 +1418,12 @@
         {
           "story": "WithIcon",
           "description": "Custom icon next to the label via the icon slot.",
-          "source": "export const WithIcon: Story = {\n  tags: [\"example\"],\n  parameters: { docs: { description: { story: \"Custom icon next to the label via the icon slot.\" } } },\n  render: Template,\n  args: { variant: \"primary\", tone: \"info\", children: \"badgeInfo\", iconName: \"info\" },\n};\n\nconst SizesContent: React.FC = () => {\n  const { t } = useTranslation();\n  return (\n    <div style={{ display: \"flex\", gap: \"1rem\", alignItems: \"center\" }}>\n      <Badge size=\"sm\">{t(\"badgeSmall\")}</Badge>\n      <Badge size=\"md\">{t(\"badgeMedium\")}</Badge>\n      <Badge size=\"lg\">{t(\"badgeLarge\")}</Badge>\n    </div>\n  );\n};"
+          "source": "export const WithIcon: Story = {\n  tags: [\"example\"],\n  parameters: { docs: { description: { story: \"Custom icon next to the label via the icon slot.\" } } },\n  render: Template,\n  args: { variant: \"primary\", tone: \"info\", children: \"badgeInfo\", iconName: \"info\" },\n};\n\n/** `dot` swaps the semantic icon for a color-coded StatusDot — lifecycle labels. */"
+        },
+        {
+          "story": "LifecycleDots",
+          "description": "dot renders a leading StatusDot colored by tone instead of the semantic icon — the pattern the docs-header status pill uses for alpha (warning), beta (info), stable (success), and deprecated (error).",
+          "source": "export const LifecycleDots: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"dot renders a leading StatusDot colored by tone instead of the semantic icon — the pattern the docs-header status pill uses for alpha (warning), beta (info), stable (success), and deprecated (error).\",\n      },\n    },\n  },\n  render: () => (\n    <div style={{ display: \"flex\", gap: \"0.75rem\", alignItems: \"center\", flexWrap: \"wrap\" }}>\n      <Badge variant=\"secondary\" tone=\"warning\" size=\"sm\" dot>\n        alpha\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"info\" size=\"sm\" dot>\n        beta\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"success\" size=\"sm\" dot>\n        stable\n      </Badge>\n      <Badge variant=\"secondary\" tone=\"error\" size=\"sm\" dot>\n        deprecated\n      </Badge>\n    </div>\n  ),\n};\n\nconst SizesContent: React.FC = () => {\n  const { t } = useTranslation();\n  return (\n    <div style={{ display: \"flex\", gap: \"1rem\", alignItems: \"center\" }}>\n      <Badge size=\"sm\">{t(\"badgeSmall\")}</Badge>\n      <Badge size=\"md\">{t(\"badgeMedium\")}</Badge>\n      <Badge size=\"lg\">{t(\"badgeLarge\")}</Badge>\n    </div>\n  );\n};"
         },
         {
           "story": "Sizes",
