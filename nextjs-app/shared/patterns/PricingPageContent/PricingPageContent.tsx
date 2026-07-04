@@ -298,6 +298,7 @@ function PackageCard({
 }
 
 export interface PricingPageContentProps {
+  /** Optional wrapper class. */
   className?: string;
 }
 

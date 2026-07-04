@@ -20,50 +20,8 @@ const meta: Meta<typeof GridBlock> = {
       skip: true, // Skip Vitest tests for this complex pattern component
     },
   },
-  argTypes: {
-    cells: {
-      description: "Grid cell definitions (text or image)",
-      control: false,
-      table: { disable: true },
-    },
-
-    columns: {
-      control: { type: "select" },
-      options: [1, 2, 3, 4],
-      description: "Number of columns in the grid",
-    },
-
-    gap: {
-      control: { type: "select" },
-      options: ["none", "small", "medium", "large"],
-      description: "Gap between grid cells",
-    },
-
-    backgroundColor: {
-      control: { type: "select" },
-      options: ["light", "white", "transparent"],
-      description: "Background color variant",
-    },
-
-    maxWidth: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg", "xl", "full"],
-      description: "Maximum width constraint",
-    },
-
-    spacing: {
-      control: { type: "select" },
-      options: ["compact", "default", "comfortable", "spacious"],
-      description: "Spacing variant",
-    },
-      as: { control: { type: "inline-radio" }, options: ["section", "div", "article"], description: "Semantic HTML element to use", table: { category: "Advanced" } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS class", table: { category: "Advanced" } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // composite-slot mapping presets live on the Playground story below.
 };
 
 export default meta;
@@ -412,7 +370,26 @@ export const MixedContent: Story = {
   },
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    cells: {
+      control: { type: "select" },
+      options: ["two", "one"],
+      mapping: {
+        two: Default.args!.cells,
+        one: Default.args!.cells!.slice(0, 1),
+      },
+      description:
+        "Grid cells (type + content). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "GridCell[]" } },
+    },
+  },
+  args: {
+    ...Default.args,
+    cells: "two" as never,
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

@@ -28,49 +28,28 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite cta slot keeps a mapping preset.
   argTypes: {
-    title: { control: "text", description: "Headline" },
-    overline: { control: "text", description: "Optional eyebrow above title" },
-    description: { control: "text", description: "Supporting body copy" },
-    cta: { control: false, description: "Up to three CTA actions" },
-    variant: {
-      control: "select",
-      options: ["gradient", "pattern", "dots", "solid"],
-      description: "Background variant",
-      table: { defaultValue: { summary: "gradient" } },
+    cta: {
+      control: { type: "select" },
+      options: ["two", "one", "none"],
+      mapping: {
+        two: [
+          { label: "Download schema", href: "https://example.com/schema" },
+          { label: "Read article", href: "/blog" },
+        ],
+        one: [{ label: "Download schema", href: "https://example.com/schema" }],
+        none: undefined,
+      },
+      description:
+        "Up to three CTA actions. Pick a preset here; compose your own in code.",
+      table: {
+        category: "Content",
+        type: { summary: "HighlightSectionCTA | HighlightSectionCTA[]" },
+      },
     },
-    size: {
-      control: "select",
-      options: ["compact", "comfortable", "spacious"],
-      description: "Vertical rhythm scale",
-      table: { defaultValue: { summary: "comfortable" } },
-    },
-    className: {
-      control: "text",
-      description: "Section class names",
-      table: { disable: true },
-    },
-    ariaLabel: {
-      control: "text",
-      description: "Accessible section label override",
-      table: { disable: true },
-    },
-    id: {
-      control: "text",
-      description: "Section anchor id",
-      table: { disable: true },
-    },
-    donnyTarget: {
-      control: "text",
-      description: "Donny spotlight target id",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: defaultArgs,
 } satisfies Meta<typeof HighlightSection>;
 
@@ -82,6 +61,10 @@ export const Default: Story = {
 };
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  // cta arg is a mapping key resolved by the preset above.
+  args: {
+    cta: "two" as unknown as typeof defaultArgs.cta,
+  },
 };
 
 export const Example: Story = {

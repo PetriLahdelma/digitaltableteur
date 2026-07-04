@@ -35,81 +35,8 @@ const meta: Meta<typeof Hero> = {
       </ThemeProvider>
     ),
   ],
-  argTypes: {
-    title: { control: "text", description: "Hero title text (required)" },
-
-    titleLevel: {
-      control: { type: "select" },
-      options: [1, 2, 3, 4, 5, 6],
-      description: "Semantic heading level for title",
-    },
-
-    subtitle: { control: "text", description: "Optional subtitle text" },
-
-    description: { control: "text", description: "Optional body description" },
-
-    imageSrc: { control: "text", description: "Hero image source URL" },
-
-    imageAlt: {
-      control: "text",
-      description: "Image alt text for accessibility",
-    },
-
-    variant: {
-      control: { type: "select" },
-      options: ["default", "centered", "split", "minimal"],
-      description: "Layout variant",
-      table: { defaultValue: { summary: "default" } },
-    },
-
-    background: {
-      control: { type: "select" },
-      options: ["light", "dark", "gradient", "image"],
-      description: "Background style",
-    },
-
-    align: {
-      control: { type: "select" },
-      options: ["left", "center", "right"],
-      description: "Content alignment",
-      table: { defaultValue: { summary: "center" } },
-    },
-
-    maxWidth: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg", "xl", "full"],
-      description: "Maximum content width",
-    },
-
-    spacing: {
-      control: { type: "select" },
-      options: ["compact", "default", "comfortable", "spacious"],
-      description: "Vertical spacing",
-    },
-    actions: {
-      description: "CTA buttons configuration",
-      control: false,
-      table: { disable: true },
-    },
-    imageWidth: {
-      description: "Explicit image width (internal)",
-      control: false,
-      table: { disable: true },
-    },
-    imageHeight: {
-      description: "Explicit image height (internal)",
-      control: false,
-      table: { disable: true },
-    },
-      ariaLabel: { control: "text", description: "ARIA label for hero section", table: { category: "Accessibility" } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Custom CSS class for styling extensions", table: { category: "Advanced" } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // composite-slot mapping presets live on the Playground story below.
 };
 
 export default meta;
@@ -513,7 +440,36 @@ export const ServiceLanding: Story = {
   },
 };
 
-export const Playground = Default;
+// variant "split" + a seeded image so the image props have a live path;
+// actions preset gives the CTA slot an operable widget.
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    actions: {
+      control: { type: "select" },
+      options: ["none", "two"],
+      mapping: {
+        none: undefined,
+        two: [
+          { key: "start", label: "Start a Project", href: "/contact", variant: "secondary" },
+          { key: "work", label: "View Our Work", href: "/work", variant: "secondary" },
+        ],
+      },
+      description:
+        "CTA buttons configuration. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "HeroAction[]" } },
+    },
+  },
+  args: {
+    ...Default.args,
+    variant: "split",
+    imageSrc: "/placeholder.png",
+    imageAlt: "Design portfolio showcase",
+    imageWidth: 640,
+    imageHeight: 480,
+    actions: "two" as never,
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

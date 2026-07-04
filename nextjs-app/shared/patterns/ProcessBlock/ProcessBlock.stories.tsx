@@ -18,61 +18,8 @@ const meta: Meta<typeof ProcessBlock> = {
       skip: true, // Skip Vitest tests for this complex pattern component
     },
   },
-  argTypes: {
-    phases: {
-      description: "Array of process phases with titles and activities",
-      control: false,
-      table: { disable: true },
-    },
-    sectionTitle: {
-      description: "Main title for the process section",
-      control: { type: "text" },
-    },
-    description: {
-      description: "Optional description or introduction text",
-      control: { type: "text" },
-    },
-    backgroundColor: {
-      description: "Background color variant",
-      control: { type: "select" },
-      options: ["light", "white", "transparent"],
-    },
-    maxWidth: {
-      description: "Maximum width constraint",
-      control: { type: "select" },
-      options: ["sm", "md", "lg", "xl", "full"],
-    },
-    spacing: {
-      description: "Spacing variant",
-      control: { type: "select" },
-      options: ["compact", "default", "comfortable", "spacious"],
-    },
-    columns: {
-      description: "Number of columns (2, 3, or 4)",
-      control: { type: "select" },
-      options: [2, 3, 4],
-    },
-    as: {
-      description: "Semantic HTML element to use",
-      control: false,
-      table: { disable: true },
-    },
-    className: {
-      description: "Additional CSS class",
-      control: false,
-      table: { disable: true },
-    },
-    ariaLabel: {
-      description: "Accessible label for the section",
-      control: false,
-      table: { disable: true },
-    },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // composite-slot mapping presets live on the Playground story below.
 };
 
 export default meta;
@@ -406,7 +353,35 @@ export const ContentStrategy: Story = {
   },
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    phases: {
+      control: { type: "select" },
+      options: ["ux", "twoPhases"],
+      mapping: { ux: uxDesignPhases, twoPhases: uxDesignPhases.slice(0, 2) },
+      description:
+        "Process phases (title + activities). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ProcessPhase[]" } },
+    },
+    description: {
+      control: { type: "select" },
+      options: ["none", "intro"],
+      mapping: {
+        none: undefined,
+        intro: "How we run engagements from research to launch.",
+      },
+      description:
+        "Optional lead copy under the section title. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+  },
+  args: {
+    ...Default.args,
+    phases: "ux" as never,
+    description: "intro" as never,
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

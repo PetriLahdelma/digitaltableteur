@@ -51,7 +51,11 @@ export function HeroBackground({
         yoyo: true,
       });
     },
-    { scope: ref, dependencies: [shouldAnimate, variant] }
+    // revertOnUpdate matters: the provider resolves prefers-reduced-motion in
+    // a post-mount effect, so the gate flips AFTER this tween starts — without
+    // revert, the early return leaves the infinite loop running for
+    // reduced-motion users.
+    { scope: ref, dependencies: [shouldAnimate, variant], revertOnUpdate: true }
   );
 
   // Noise flicker animation
@@ -71,7 +75,7 @@ export function HeroBackground({
         yoyo: true,
       });
     },
-    { scope: ref, dependencies: [shouldAnimate, variant] }
+    { scope: ref, dependencies: [shouldAnimate, variant], revertOnUpdate: true }
   );
 
   const renderGradient = () => (

@@ -75,7 +75,10 @@ export function ScrollIndicator({
         ease: "power2.out",
       });
     },
-    { scope: ref, dependencies: [motionPreference] }
+    // revertOnUpdate matters: the provider resolves prefers-reduced-motion in
+    // a post-mount effect, so the reduced gate flips AFTER the bounce starts —
+    // without revert, the infinite yoyo keeps running for reduced-motion users.
+    { scope: ref, dependencies: [motionPreference], revertOnUpdate: true }
   );
 
   // Pause animation on hover

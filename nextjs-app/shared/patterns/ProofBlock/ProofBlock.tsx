@@ -11,13 +11,21 @@ export type ProofMetric = {
 };
 
 export interface ProofBlockProps {
+  /** Accessible name for the proof section landmark. */
   ariaLabel?: string;
+  /** Section heading. */
   title: string;
+  /** Supporting line under the title. */
   subTitle?: string;
+  /** Small print under the metrics (source, timeframe). */
   caption?: string;
+  /** Proof metrics: value + label pairs. */
   metrics: ProofMetric[];
+  /** Reduce the band vertical padding. */
   tight?: boolean;
+  /** Render on the dark band treatment. */
   dark?: boolean;
+  /** Additional CSS classes on the section. */
   className?: string;
 }
 

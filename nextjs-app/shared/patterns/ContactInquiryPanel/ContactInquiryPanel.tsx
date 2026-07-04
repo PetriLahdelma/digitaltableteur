@@ -22,9 +22,13 @@ import styles from "./ContactInquiryPanel.module.css";
 export type ContactInquiryMode = "message" | "book";
 
 export interface ContactInquiryPanelProps {
+  /** Initial tab selection. @default "message" */
   initialMode?: ContactInquiryMode;
+  /** Optional pricing package id for booking prefill. */
   packageId?: string;
+  /** Editorial contact form slot shown on the message tab. */
   messagePanel: React.ReactNode;
+  /** Optional booking override; defaults from packageId. */
   bookingConfig?: SiteBookingConfig;
 }
 

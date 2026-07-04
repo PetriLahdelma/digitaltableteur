@@ -23,28 +23,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    title: { control: "text", description: "Hero headline" },
-    subtitle: { control: "text", description: "Supporting line" },
-    background: {
-      control: "select",
-      options: ["gradient", "minimal"],
-      description: "Background treatment",
-      table: { defaultValue: { summary: "minimal" } },
-    },
-    compact: { control: "boolean", description: "Use shorter min-height" },
-    className: {
-      control: "text",
-      description: "Section class names",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof ContactHero>;
 

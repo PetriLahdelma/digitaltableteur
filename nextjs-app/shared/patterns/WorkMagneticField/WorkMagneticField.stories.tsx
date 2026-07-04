@@ -46,37 +46,21 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite projects slot keeps a mapping preset.
   argTypes: {
-    title: { control: "text", description: "Section heading" },
     projects: {
-      control: false,
-      description: "Portfolio cards with magnetic hover",
+      control: { type: "select" },
+      options: ["three", "two"],
+      mapping: {
+        three: sampleProjects,
+        two: sampleProjects.slice(0, 2),
+      },
+      description:
+        "Portfolio cards with magnetic hover. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ProjectItem[]" } },
     },
-    showViewAll: {
-      control: "boolean",
-      description: "Show link to full work index",
-    },
-    className: {
-      control: "text",
-      description: "Section class names",
-      table: { disable: true },
-    },
-    id: {
-      control: "text",
-      description: "Section id",
-      table: { defaultValue: { summary: "work" } },
-    },
-    donnyTarget: {
-      control: "text",
-      description: "Donny spotlight target id",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: defaultArgs,
 } satisfies Meta<typeof WorkMagneticField>;
 
@@ -90,6 +74,10 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  // projects arg is a mapping key resolved by the preset above.
+  args: {
+    projects: "three" as unknown as typeof sampleProjects,
+  },
 };
 
 export const Example: Story = {

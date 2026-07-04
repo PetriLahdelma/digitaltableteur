@@ -22,33 +22,19 @@ const meta: Meta<typeof PageLayout> = {
       skip: true, // Skip Vitest tests for this complex pattern component
     },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (content slot), `as` a semantic
+  // element radio (worth choosing even though plumbing-class props are
+  // otherwise hidden).
   argTypes: {
-    maxWidth: {
-      control: "select",
-      options: ["sm", "md", "lg", "xl", "full"],
-      description: "Maximum width constraint",
+    children: { control: "text", description: "Page content" },
+    as: {
+      control: { type: "inline-radio" },
+      options: ["div", "main", "section", "article"],
+      description: "Semantic HTML element to use for the container",
+      table: { category: "Advanced", defaultValue: { summary: "\"div\"" } },
     },
-
-    spacing: {
-      control: "select",
-      options: ["compact", "default", "comfortable", "spacious"],
-      description: "Vertical spacing",
-    },
-
-    grid: { control: "boolean", description: "Enable 12-column grid system" },
-
-    withMargins: { control: "boolean", description: "Apply page margins" },
-      ariaLabel: { control: "text", description: "ARIA label for accessibility", table: { category: "Accessibility" } },
-      as: { control: { type: "inline-radio" }, options: ["div", "main", "section", "article"], description: "Semantic HTML element to use for the container", table: { category: "Advanced", defaultValue: { summary: "\"div\"" } } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS class name", table: { category: "Advanced" } },
-      columns: { control: "number", description: "Number of columns for grid layout (only applies when grid=true) Automatically responsive: 4 cols mobile, 8 cols tablet, 12 cols desktop", table: { category: "Content" } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      role: { control: "text", description: "ARIA role for accessibility", table: { category: "Accessibility" } },
-      style: { table: { disable: true } }
-},
+  },
 };
 
 export default meta;
@@ -304,7 +290,19 @@ export const ResponsiveShowcase: Story = {
   ),
 };
 
-export const Playground = Default;
+// Args-driven children plus grid seeded ON so the columns knob has a live
+// path (columns only applies when grid=true).
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  args: {
+    maxWidth: "lg",
+    spacing: "default",
+    withMargins: true,
+    grid: true,
+    columns: 12,
+    children: "Content laid out inside the page container.",
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

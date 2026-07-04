@@ -47,49 +47,21 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite services slot keeps a mapping preset.
   argTypes: {
-    title: { control: "text", description: "Section heading" },
-    description: {
-      control: "text",
-      description: "Lead copy below the heading",
-    },
     services: {
-      control: false,
-      description: "Service tiles (icon, title, description)",
+      control: { type: "select" },
+      options: ["three", "two"],
+      mapping: {
+        three: sampleServices,
+        two: sampleServices.slice(0, 2),
+      },
+      description:
+        "Service tiles (icon, title, description). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ServiceItem[]" } },
     },
-    columns: {
-      control: "radio",
-      options: [2, 3, 4],
-      description: "Responsive column count",
-      table: { defaultValue: { summary: "3" } },
-    },
-    cardVariant: {
-      control: "select",
-      options: ["default", "bordered", "elevated", "minimal"],
-      description: "ServiceCard surface variant",
-      table: { defaultValue: { summary: "default" } },
-    },
-    className: {
-      control: "text",
-      description: "Section class names",
-      table: { disable: true },
-    },
-    id: {
-      control: "text",
-      description: "Section id",
-      table: { defaultValue: { summary: "services" } },
-    },
-    donnyTarget: {
-      control: "text",
-      description: "Donny spotlight target id",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: defaultArgs,
 } satisfies Meta<typeof ServicesSection>;
 
@@ -103,6 +75,10 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  // services arg is a mapping key resolved by the preset above.
+  args: {
+    services: "three" as unknown as typeof sampleServices,
+  },
 };
 
 export const Example: Story = {

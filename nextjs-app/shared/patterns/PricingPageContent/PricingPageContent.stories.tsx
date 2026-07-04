@@ -16,13 +16,7 @@ const meta = {
     },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    className: {
-      control: "text",
-      description: "Optional wrapper class",
-      table: { disable: true },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 } satisfies Meta<typeof PricingPageContent>;
 
 export default meta;
