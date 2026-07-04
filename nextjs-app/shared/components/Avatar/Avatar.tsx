@@ -347,9 +347,9 @@ const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>(
 
     const resolvedImageUrl = resolveImageUrl(imageUrl);
     const resolvedSrcSet =
-      srcSet ?? (resolvedImageUrl ? `${resolvedImageUrl} 1x` : undefined);
+      srcSet || (resolvedImageUrl ? `${resolvedImageUrl} 1x` : undefined);
     const defaultSizes = "(max-width: 600px) 56px, 40px";
-    const resolvedSizes = sizes ?? (size ? `${size}` : defaultSizes);
+    const resolvedSizes = sizes || (size ? `${size}` : defaultSizes);
 
     const handleClick = () => {
       if (clickable && destinationUrl) {
@@ -362,7 +362,7 @@ const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>(
       "--avatar-size": resolvedSize,
     } as React.CSSProperties;
     const avatarMenuLabel =
-      menuLabel ??
+      menuLabel ||
       (name ? t("avatar.menuLabel", { name }) : t("avatar.menuLabelGeneric"));
 
     const renderMenuItems = () => {

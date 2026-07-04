@@ -124,7 +124,7 @@ export default {
     className: {
       control: "text",
       description: "Additional CSS class names",
-      table: { disable: true },
+      table: { category: "Advanced" },
     },
 
     terminals: {
@@ -158,6 +158,12 @@ export default {
       ref: { table: { disable: true } },
       style: { table: { disable: true } }
 },
+  // Seeded to the component defaults so the text/boolean controls render
+  // operable widgets instead of Set-buttons.
+  args: {
+    className: "",
+    unstyled: false,
+  },
 } as Meta<typeof Title>;
 
 export const AllSizes = () => {

@@ -6,6 +6,11 @@ import contract from "./AvatarGroup.contract.json";
 
 const PEOPLE = ["Aino Virtanen", "Bo Lindqvist", "Carla Mendes", "Deniz Aydın", "Eero Salmi", "Freja Holm"];
 
+const avatars = (count: number, size: "2rem" | "2.5rem" | "3rem" = "2.5rem") =>
+  PEOPLE.slice(0, count).map((name) => (
+    <Avatar key={name} name={name} variant="initials" size={size} />
+  ));
+
 const meta = {
   title: "Content/AvatarGroup",
   component: AvatarGroup,
@@ -28,18 +33,22 @@ const meta = {
       description: "Overflow bubble size; children Avatars should match",
       table: { defaultValue: { summary: "md" } },
     },
-    children: { control: false, description: "@dt/Avatar elements" },
+    children: {
+      control: {
+        type: "select",
+        labels: { three: "3 members", six: "6 members (overflows at max 4)" },
+      },
+      options: ["three", "six"],
+      mapping: { three: avatars(3), six: avatars(6) },
+      description: "@dt/Avatar elements (member presets here; pass Avatars in code)",
+      table: { type: { summary: "ReactNode" } },
+    },
   },
-  args: { ariaLabel: "Project members", max: 4, size: "md" },
+  args: { ariaLabel: "Project members", max: 4, size: "md", children: "six" },
 } satisfies Meta<typeof AvatarGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-const avatars = (count: number, size: "2rem" | "2.5rem" | "3rem" = "2.5rem") =>
-  PEOPLE.slice(0, count).map((name) => (
-    <Avatar key={name} name={name} variant="initials" size={size} />
-  ));
 
 export const Default: Story = {
   tags: ["example"],
@@ -48,12 +57,9 @@ export const Default: Story = {
       description: { story: "Six members, max 4: the stack shows four and collapses the rest into +2." },
     },
   },
-  render: (args) => <AvatarGroup {...args}>{avatars(6)}</AvatarGroup>,
 };
 
-export const Playground: Story = {
-  render: (args) => <AvatarGroup {...args}>{avatars(6)}</AvatarGroup>,
-};
+export const Playground: Story = {};
 
 export const NoOverflow: Story = {
   tags: ["example"],

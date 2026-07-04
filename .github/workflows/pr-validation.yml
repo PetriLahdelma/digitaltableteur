@@ -47,6 +47,10 @@ jobs:
       # container each run — the same proven pattern as petritapanilahdelma's ci.yml on this farm.
       - run: npx playwright install chromium --with-deps
       - run: npm run test:stories:matrix:ci
+      # Controls-operability ratchet: drives the real Controls panel per component
+      # (Human-Simulated audit) against its own Storybook boot. Raise --min in
+      # audit:controls:ci as remediation batches land; end state is --min 100.
+      - run: npm run audit:controls:ci
       - run: npm run test:ci
       - run: npm run build
       - run: npm run check:drift

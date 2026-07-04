@@ -5,6 +5,32 @@ import SplitButton from "@dt/SplitButton";
 import contract from "./SplitButton.contract.json";
 import schema from "./schema.json";
 
+const saveOptions = [
+  {
+    id: "save-as",
+    label: "Save as",
+    title: "Choose a new name for this draft",
+    icon: "pencil",
+  },
+  {
+    id: "save-cloud",
+    label: "Save to cloud",
+    title: "Sync to shared workspace",
+    icon: "cloud-arrow-up",
+  },
+  {
+    id: "save-copy",
+    label: "Save a copy",
+    title: "Duplicate and keep editing",
+    icon: "copy",
+  },
+];
+
+const basicOptions = [
+  { id: "duplicate", label: "Duplicate" },
+  { id: "archive", label: "Archive" },
+];
+
 const meta: Meta<typeof SplitButton> = {
   title: "Actions/SplitButton",
   component: SplitButton,
@@ -26,9 +52,14 @@ const meta: Meta<typeof SplitButton> = {
       table: { category: "Content", type: { summary: "ReactNode" } },
     },
     options: {
-      control: "object",
+      control: {
+        type: "select",
+        labels: { save: "save menu (3 items, icons)", basic: "two plain actions" },
+      },
+      options: ["save", "basic"],
+      mapping: { save: saveOptions, basic: basicOptions },
       description:
-        "Menu entries; leaf options carry onSelect, parent options carry children (one nested level).",
+        "Menu entries; leaf options carry onSelect, parent options carry children (one nested level). Presets here; pass SplitButtonOption[] in code.",
       table: { category: "Content", type: { summary: "SplitButtonOption[]" } },
     },
     variant: {
@@ -115,38 +146,28 @@ const meta: Meta<typeof SplitButton> = {
       table: { category: "Advanced", type: { summary: "string" } },
     },
   },
+  // Seeded so every text/boolean control renders an operable widget; each
+  // value matches the component's no-op default.
+  args: {
+    disabled: false,
+    usePortal: false,
+    toggleLabel: "",
+    accessibleName: "",
+    tooltip: "",
+    className: "",
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof SplitButton>;
-
-const saveOptions = [
-  {
-    id: "save-as",
-    label: "Save as",
-    title: "Choose a new name for this draft",
-    icon: "pencil",
-  },
-  {
-    id: "save-cloud",
-    label: "Save to cloud",
-    title: "Sync to shared workspace",
-    icon: "cloud-arrow-up",
-  },
-  {
-    id: "save-copy",
-    label: "Save a copy",
-    title: "Duplicate and keep editing",
-    icon: "copy",
-  },
-];
 
 export const Default: Story = {
   tags: ["beta-matrix"],
   args: {
     label: "Save",
     variant: "primary",
-    options: saveOptions,
+    // "save" resolves through the options control mapping to saveOptions.
+    options: "save" as unknown as typeof saveOptions,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -300,7 +321,8 @@ export const Playground: Story = {
     label: "Save",
     variant: "primary",
     size: "md",
-    options: saveOptions,
+    // "save" resolves through the options control mapping to saveOptions.
+    options: "save" as unknown as typeof saveOptions,
   },
 };
 

@@ -153,7 +153,7 @@ const Button = React.forwardRef<
       }
     }
 
-    const isLink = "href" in rest && rest.href !== undefined;
+    const isLink = "href" in rest && rest.href !== undefined && rest.href !== "";
 
     // Icons are decorative (the button supplies the accessible name) and inherit
     // the button's resolved text color via currentColor. The icon's rendered
@@ -212,10 +212,10 @@ const Button = React.forwardRef<
         .filter(Boolean)
         .join(" "),
       "aria-label": effectiveAriaLabel,
-      "aria-labelledby": accessibleNameRef,
-      "aria-describedby": accessibleDescription,
+      "aria-labelledby": accessibleNameRef || undefined,
+      "aria-describedby": accessibleDescription || undefined,
       "aria-busy": isLoading || undefined,
-      title: tooltip,
+      title: tooltip || undefined,
     };
 
     const content = (
