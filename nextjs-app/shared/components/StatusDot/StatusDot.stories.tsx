@@ -12,28 +12,9 @@ const meta = {
     a11y: { test: "error" },
     contractStatus: contract.status,
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (label-like ReactNode slot).
   argTypes: {
-    tone: {
-      control: "select",
-      options: ["neutral", "success", "warning", "error", "info"],
-      description: "Semantic tone of the status",
-      table: { defaultValue: { summary: "neutral" } },
-    },
-    size: {
-      control: "radio",
-      options: ["sm", "md", "lg"],
-      description: "Size token",
-      table: { defaultValue: { summary: "md" } },
-    },
-    pulse: {
-      control: "boolean",
-      description: "Soft pulse for live states (off under reduced motion)",
-      table: { defaultValue: { summary: "false" } },
-    },
-    label: {
-      control: "text",
-      description: "Screen-reader label when no visible children",
-    },
     children: { control: "text", description: "Visible label text" },
   },
   args: { tone: "success", size: "md", children: "Operational" },
@@ -51,7 +32,11 @@ export const Default: Story = {
   },
 };
 
-export const Playground: Story = {};
+// children is seeded empty here so the sr-only label path is live in the
+// panel (children would otherwise mask label entirely).
+export const Playground: Story = {
+  args: { children: "", label: "Operational" },
+};
 
 export const Tones: Story = {
   tags: ["example"],

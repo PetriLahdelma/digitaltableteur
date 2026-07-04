@@ -86,6 +86,25 @@ describe("CodeSnippet", () => {
         expect(screen.getByText("Show more")).toBeInTheDocument();
       });
     });
+
+    // Regression: maxLines=0 (clamp disabled) made hasOverflow the NUMBER 0,
+    // which {hasOverflow && ...} rendered as a literal "0" in the figure.
+    it("does not leak a stray '0' when maxLines is 0", () => {
+      const { container } = render(
+        <CodeSnippet
+          code={code}
+          language="javascript"
+          variant="multi"
+          maxLines={0}
+        />,
+      );
+      const figure = container.querySelector("figure");
+      const strayText = Array.from(figure?.childNodes ?? []).filter(
+        (node) => node.nodeType === Node.TEXT_NODE,
+      );
+      expect(strayText).toHaveLength(0);
+      expect(screen.queryByText("Show more")).not.toBeInTheDocument();
+    });
   });
 
   describe("Single variant", () => {

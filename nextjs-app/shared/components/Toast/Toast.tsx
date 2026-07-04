@@ -29,9 +29,11 @@ export interface ToastProps {
   position?: ToastPosition;
   /** Size. @default "md" */
   size?: "sm" | "md" | "lg";
+  /** Message text displayed in the toast. */
   message: string;
   /** Auto-dismiss delay in ms. @default 3000 */
   duration?: number;
+  /** Called when the auto-dismiss timer fires. */
   onClose?: () => void;
 }
 

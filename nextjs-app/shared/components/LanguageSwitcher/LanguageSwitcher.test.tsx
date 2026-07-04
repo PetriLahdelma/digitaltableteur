@@ -44,6 +44,33 @@ describe("LanguageSwitcher", () => {
     expect(screen.getByText("SV")).toBeVisible();
   });
 
+  // Backs the audit:controls effect exemptions for the open-tray class props:
+  // both exist in the DOM only while the tray is expanded.
+  it("applies openTriggerClassName and floatedButtonClassName while open", async () => {
+    const onLanguageChange = vi.fn();
+    render(
+      <I18nextProvider i18n={i18n}>
+        <LanguageSwitcher
+          languages={languages}
+          currentLang="en"
+          onLanguageChange={onLanguageChange}
+          openTriggerClassName="open-trigger-probe"
+          floatedButtonClassName="floated-probe"
+        />
+      </I18nextProvider>,
+    );
+    const user = userEvent.setup();
+    const trigger = screen.getByRole("button", { name: /english/i });
+    expect(trigger.className).not.toContain("open-trigger-probe");
+
+    await user.click(trigger);
+
+    expect(trigger.className).toContain("open-trigger-probe");
+    expect(
+      screen.getByRole("button", { name: /^finnish$/i }).className,
+    ).toContain("floated-probe");
+  });
+
   it("changes language and collapses when an option is chosen", async () => {
     const { onLanguageChange } = renderSwitcher("en");
     const user = userEvent.setup();

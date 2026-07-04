@@ -10,7 +10,9 @@ export type BreadcrumbItem = {
 };
 
 export type BreadcrumbProps = {
+  /** Breadcrumb items in root-to-current order (label, optional href); the last renders as plain text. */
   items: BreadcrumbItem[];
+  /** Accessible name for the nav landmark. @default "Breadcrumb" */
   "aria-label"?: string;
 };
 

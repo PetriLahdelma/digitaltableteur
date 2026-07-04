@@ -28,13 +28,21 @@ const defaultFloatedButtonClassName =
   "font-semibold text-foreground/80 hover:text-foreground";
 
 export interface LanguageSwitcherProps {
+  /** Available languages (code, label, accessible name). */
   languages: LanguageSwitcherOption[];
+  /** Currently selected language code. */
   currentLang: string;
+  /** Called with the selected language code. */
   onLanguageChange: (code: string) => void;
+  /** Optional classes on the group wrapper. */
   className?: string;
+  /** Base class override applied to every language button. */
   buttonClassName?: string;
+  /** Class override for the current-language trigger. */
   activeButtonClassName?: string;
+  /** Class override for the trigger while the tray is open. */
   openTriggerClassName?: string;
+  /** Class override for the fanned-out tray options. */
   floatedButtonClassName?: string;
 }
 

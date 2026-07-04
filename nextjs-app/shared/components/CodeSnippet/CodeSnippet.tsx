@@ -104,8 +104,11 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   const codeRef = useRef<HTMLElement>(null);
 
   const lines = code.trimEnd().split("\n");
-  const hasOverflow =
-    maxLines && lines.length > maxLines && variant === "multi";
+  // Boolean() matters: maxLines=0 (clamp disabled) would otherwise make this
+  // the NUMBER 0, and {hasOverflow && ...} renders a literal "0" text node.
+  const hasOverflow = Boolean(
+    maxLines && lines.length > maxLines && variant === "multi",
+  );
   const displayedCode =
     hasOverflow && !isExpanded ? lines.slice(0, maxLines).join("\n") : code;
 

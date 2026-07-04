@@ -16,43 +16,17 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // value/max keep bespoke bounded knobs (range with sane limits beats a bare
+  // number field for a 0..max quantity).
   argTypes: {
     value: {
       control: { type: "range", min: 0, max: 100, step: 1 },
       description: "Current progress value",
-      table: { category: "Value", defaultValue: { summary: "0" } },
     },
     max: {
       control: { type: "number", min: 1 },
       description: "Maximum value",
-      table: { category: "Value", defaultValue: { summary: "100" } },
-    },
-    label: {
-      control: "text",
-      description: "Accessible name for progressbar",
-      table: { category: "Accessibility" },
-    },
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-      description: "Track height token",
-      table: { category: "Appearance", defaultValue: { summary: "md" } },
-    },
-    state: {
-      control: "select",
-      options: ["neutral", "success", "info", "warning", "error"],
-      description: "Semantic fill color",
-      table: { category: "Appearance", defaultValue: { summary: "neutral" } },
-    },
-    indeterminate: {
-      control: "boolean",
-      description: "Unknown duration: sweeping bar, aria-valuenow dropped",
-      table: { category: "Value", defaultValue: { summary: "false" } },
-    },
-    className: {
-      control: false,
-      description: "Optional utility classes on the root",
-      table: { category: "Advanced" },
     },
   },
   args: {

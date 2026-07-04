@@ -23,33 +23,14 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (label-like ReactNode slot).
+  // exact and activeClassName are effect-exempt in audit:controls (the stub
+  // pathname "/" keeps this link inactive; both are unit-tested).
   argTypes: {
-    href: {
-      control: "text",
-      description: "Route path for next/link",
-    },
     children: {
       control: "text",
       description: "Navigation link label",
-    },
-    exact: {
-      control: "boolean",
-      description: "Match href exactly for aria-current='page'",
-    },
-    className: {
-      control: "text",
-      description: "Base CSS class names",
-      table: { disable: true },
-    },
-    activeClassName: {
-      control: "text",
-      description: "Class when route is active",
-      table: { disable: true },
-    },
-    inactiveClassName: {
-      control: "text",
-      description: "Class when route is inactive",
-      table: { disable: true },
     },
   },
   args: defaultArgs,

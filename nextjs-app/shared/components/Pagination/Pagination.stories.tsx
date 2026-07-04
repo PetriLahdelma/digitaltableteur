@@ -6,6 +6,11 @@ import contract from "./Pagination.contract.json";
 
 function PaginationDemo(args: React.ComponentProps<typeof Pagination>) {
   const [page, setPage] = useState(args.currentPage ?? 1);
+  // Sync panel edits in: currentPage would otherwise be mount-only state and
+  // the Controls row would drive nothing.
+  React.useEffect(() => {
+    if (args.currentPage) setPage(args.currentPage);
+  }, [args.currentPage]);
   return (
     <Pagination
       {...args}
@@ -39,24 +44,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    currentPage: { control: "number", description: "Active page (1-indexed)" },
-    totalPages: { control: "number", description: "Total page count" },
-    onPageChange: {
-      action: "pageChange",
-      description: "Page change callback",
-    },
-    siblingCount: {
-      control: "number",
-      description: "Pages shown on each side of current",
-      table: { defaultValue: { summary: "1" } },
-    },
-    className: {
-      control: "text",
-      description: "Nav wrapper class names",
-      table: { disable: true },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof Pagination>;
 

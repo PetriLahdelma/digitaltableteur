@@ -4,26 +4,7 @@ import Skeleton from "@dt/Skeleton";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof Skeleton> = {
-  argTypes: {
-    variant: {
-      control: { type: "select" },
-      options: ["text", "circle", "rect", "avatar", "card"],
-      description: "Skeleton shape preset",
-      table: { defaultValue: { summary: "text" } },
-    },
-      animate: { control: "boolean", description: "Animate shimmer (disabled with prefers-reduced-motion)", table: { category: "Content" } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Optional className", table: { category: "Advanced" } },
-      height: { control: false, description: "Height (px)", table: { category: "Content" } },
-      id: { table: { disable: true } },
-      label: { control: "text", description: "ARIA label for screen readers (hidden visually)", table: { category: "Accessibility" } },
-      lines: { control: "number", description: "Number of lines for text variant", table: { category: "Content" } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      width: { control: false, description: "Width (px or %)", table: { category: "Content" } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Feedback/Skeleton",
   component: Skeleton,
   tags: ["beta", "autodocs"],
@@ -153,8 +134,17 @@ export const Static: Story = {
   args: { variant: "text", animate: false, lines: 3 },
 };
 
-export const Default = { tags: ["beta-matrix"] };
-export const Playground = { tags: ["beta-matrix"] };
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  args: { variant: "text", lines: 3 },
+};
+// width is seeded with a valid length so the panel edit measurably drives the
+// canvas; height applies to the non-text variants (see Shapes) and is
+// effect-exempt with a unit test backing it.
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  args: { variant: "text", lines: 3, width: "16rem" },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

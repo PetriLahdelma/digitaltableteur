@@ -271,14 +271,20 @@ const Modal: React.FC<ModalProps> = ({
                 {title}
               </Title>
             </div>
+            {/* Contract slot (.menu styles predate this wiring): contextual
+                menu or extra controls between the title and the close icon. */}
+            {menu && <div className={styles.menu}>{menu}</div>}
             {onClose && showCloseIcon && (
               <button
                 type="button"
                 className={styles["closeButton"]}
                 onClick={onClose}
-                aria-label={closeButtonLabel}
+                /* || not destructure defaults alone: "" (e.g. a cleared/seeded
+                   Controls text field) must fall back, never render an
+                   unnamed button or a nameless icon */
+                aria-label={closeButtonLabel || "Close dialog"}
               >
-                <Icon name={closeIconName} decorative />
+                <Icon name={closeIconName || "x"} decorative />
               </button>
             )}
           </div>

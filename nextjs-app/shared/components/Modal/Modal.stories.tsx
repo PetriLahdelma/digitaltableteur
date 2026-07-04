@@ -1,5 +1,6 @@
 import contract from "./Modal.contract.json";
 import React, { useState } from "react";
+import { useArgs } from "storybook/preview-api";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
 import { userEvent, waitFor, within } from "storybook/test";
 import Modal, { type ModalProps } from "@dt/Modal";
@@ -21,72 +22,15 @@ const meta = {
     a11y: { test: "error" },
     llm: { schema },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // authored entries cover what the contract cannot derive: children keeps a
+  // text control, iconSize's type is IconProps["size"] (options listed here),
+  // and the composite footer/icon/menu slots get mapping presets.
   argTypes: {
-    // Content
-    title: {
-      control: "text",
-      description: "Title shown in the header; becomes the accessible name",
-      table: { category: "Content", type: { summary: "string" } },
-    },
-    description: {
-      control: "text",
-      description: "Supporting text (aria-describedby; DialogDescription parity)",
-      table: { category: "Content", type: { summary: "string" } },
-    },
     children: {
       control: "text",
       description: "Modal content",
       table: { category: "Content", type: { summary: "React.ReactNode" } },
-    },
-    footer: {
-      control: false,
-      description: "Footer content (e.g. action buttons); defaults to a single OK button",
-      table: { category: "Content", type: { summary: "React.ReactNode" } },
-    },
-    icon: {
-      control: false,
-      description: "Custom header icon (severity derives one automatically)",
-      table: { category: "Content", type: { summary: "React.ReactNode" } },
-    },
-    menu: {
-      control: false,
-      description: "Optional contextual menu or extra controls",
-      table: { category: "Content", type: { summary: "React.ReactNode" } },
-    },
-
-    // State
-    isOpen: {
-      control: "boolean",
-      description: "Controls modal visibility",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-    severity: {
-      control: { type: "select" },
-      options: ["success", "error", "warning", "info"],
-      description:
-        "Semantic status: derives the header icon; error/warning render role=alertdialog",
-      table: {
-        category: "State",
-        type: { summary: "ModalSeverity" },
-        defaultValue: { summary: "info" },
-      },
-    },
-    isLoading: {
-      control: "boolean",
-      description: "Shows loading state with spinner",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    // Appearance
-    titleSize: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
-      description: "Title size",
-      table: {
-        category: "Appearance",
-        type: { summary: "TitleSizeUnified" },
-        defaultValue: { summary: "S" },
-      },
     },
     iconSize: {
       control: { type: "select" },
@@ -98,86 +42,49 @@ const meta = {
         defaultValue: { summary: "lg" },
       },
     },
-    titleTerminals: {
+    footer: {
       control: { type: "select" },
-      options: ["sans", "serif"],
-      description: "Title font terminals",
-      table: {
-        category: "Appearance",
-        type: { summary: "\"sans\" | \"serif\"" },
-        defaultValue: { summary: "serif" },
+      options: ["default", "cancelSave"],
+      mapping: {
+        default: undefined,
+        cancelSave: (
+          <>
+            <Button variant="secondary">Cancel</Button>
+            <Button>Save</Button>
+          </>
+        ),
       },
-    },
-    showCloseIcon: {
-      control: "boolean",
-      description: "Show close icon button in header",
-      table: {
-        category: "Appearance",
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-      },
-    },
-    closeIconName: {
-      control: "text",
-      description: "Custom close icon name",
-      table: {
-        category: "Appearance",
-        type: { summary: "string" },
-        defaultValue: { summary: "x" },
-      },
-    },
-    animation: {
-      control: { type: "select" },
-      options: ["none", "scale", "slide", "fade"],
       description:
-        "Entrance animation applied to the panel on open (respects prefers-reduced-motion)",
-      table: {
-        category: "Appearance",
-        type: { summary: "ModalAnimation" },
-        defaultValue: { summary: "none" },
+        "Footer content; defaults to a single OK button. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+    icon: {
+      control: { type: "select" },
+      options: ["derived", "sparkle"],
+      mapping: {
+        derived: undefined,
+        sparkle: <span aria-hidden="true">✦</span>,
       },
+      description:
+        "Custom header icon (severity derives one automatically). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
-
-    // Behavior
-    onClose: {
-      action: "closed",
-      description: "Close callback (Escape, overlay click, close icon, footer OK)",
-      table: { category: "Behavior", type: { summary: "() => void" } },
-    },
-
-    // Accessibility
-    closeButtonLabel: {
-      control: "text",
-      description: "Custom close button aria-label",
-      table: {
-        category: "Accessibility",
-        type: { summary: "string" },
-        defaultValue: { summary: "Close dialog" },
+    menu: {
+      control: { type: "select" },
+      options: ["none", "options"],
+      mapping: {
+        none: undefined,
+        options: (
+          <Button variant="tertiary" size="sm">
+            Options
+          </Button>
+        ),
       },
+      description:
+        "Optional contextual menu or extra controls in the header. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
-
-    // Advanced
-    className: {
-      control: false,
-      description: "Additional CSS classes on the panel",
-      table: { category: "Advanced" },
-    },
-    showFooter: {
-      control: false,
-      description: "Set false to omit the footer region for composed bodies",
-      table: { category: "Advanced" },
-    },
-    panelRef: {
-      control: false,
-      description: "Ref on the dialog panel for animation hooks",
-      table: { category: "Advanced" },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
 } satisfies Meta<typeof Modal>;
 
 export default meta;
@@ -452,11 +359,34 @@ export const AnimatedEntrance: Story = {
   },
 };
 
+/**
+ * Args-driven visibility so the isOpen control actually drives the canvas
+ * (the shared Template owns isOpen internally and would ignore the panel).
+ * Docs mode still renders closed — an auto-open portal would cover the page.
+ */
+const PlaygroundRender: StoryFn<ModalProps> = (args, context) => {
+  const [{ isOpen }, updateArgs] = useArgs();
+  const open = context.viewMode === "docs" ? false : Boolean(isOpen);
+  return (
+    <>
+      <Button onClick={() => updateArgs({ isOpen: true })}>Open modal</Button>
+      <Modal
+        {...args}
+        isOpen={open}
+        onClose={() => updateArgs({ isOpen: false })}
+      />
+    </>
+  );
+};
+
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
-  render: Template,
-  args: Default.args,
+  render: PlaygroundRender,
+  // severity seeded so the header icon exists (iconSize drives it); showFooter
+  // seeded true because the component treats undefined as true but the panel's
+  // boolean seed would otherwise read false and hide the whole footer region.
+  args: { ...Default.args, isOpen: true, severity: "info", showFooter: true },
 };
 
 export const Example = {
