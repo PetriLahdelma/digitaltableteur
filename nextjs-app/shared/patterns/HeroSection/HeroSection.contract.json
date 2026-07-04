@@ -53,17 +53,8 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "align",
-        "ariaLabel",
-        "as",
         "asChild",
-        "background",
-        "backgroundImage",
-        "children",
-        "className",
         "id",
-        "justify",
-        "minHeight",
         "ref",
         "style"
     ],

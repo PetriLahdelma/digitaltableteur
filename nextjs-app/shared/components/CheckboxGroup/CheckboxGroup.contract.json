@@ -43,13 +43,9 @@
         "children",
         "className",
         "defaultSelected",
-        "id",
-        "label",
         "masterLabel",
         "onChange",
-        "options",
         "ref",
-        "showMasterCheckbox",
         "style"
     ],
     "consumers": [],

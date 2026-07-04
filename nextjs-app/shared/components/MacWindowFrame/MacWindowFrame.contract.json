@@ -46,7 +46,6 @@
         "asChild",
         "children",
         "className",
-        "density",
         "id",
         "onAction",
         "ref",

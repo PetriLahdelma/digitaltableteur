@@ -44,14 +44,10 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "alignContent",
         "as",
         "asChild",
-        "children",
-        "className",
         "id",
-        "ref",
-        "style"
+        "ref"
     ],
     "consumers": [],
     "schemaVersion": 2,

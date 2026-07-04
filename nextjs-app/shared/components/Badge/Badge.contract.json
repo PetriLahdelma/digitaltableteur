@@ -73,20 +73,9 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "children",
-        "className",
-        "icon",
         "id",
-        "onRemove",
         "ref",
-        "removable",
-        "role",
-        "size",
-        "square",
-        "style",
-        "title",
-        "tone",
-        "variant"
+        "style"
     ],
     "consumers": [
         {

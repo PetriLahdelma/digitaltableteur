@@ -62,20 +62,11 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "ariaLabel",
         "as",
         "asChild",
         "children",
-        "className",
-        "cta",
-        "description",
-        "id",
-        "overline",
         "ref",
-        "size",
-        "style",
-        "title",
-        "variant"
+        "style"
     ],
     "consumers": [],
     "slots": [],

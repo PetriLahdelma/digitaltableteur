@@ -33,9 +33,6 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "children",
-        "className",
-        "href",
         "id",
         "ref",
         "style"

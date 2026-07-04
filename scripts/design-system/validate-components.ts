@@ -1098,6 +1098,25 @@ export function validateComponentsDir(root: string): ValidationResult {
                     const proxyExempt = new Set<string>(
                         (manifest.argTypesProxyExempt as string[] | undefined) ?? [],
                     )
+
+                    // Controls-quality gate: an exemption that mutes a prop
+                    // which HAS an argTypes entry is stale — it does nothing
+                    // except blind this gate to future regressions. Run
+                    // scripts/design-system/prune-argtypes-exemptions.ts.
+                    const staleExemptions = [...proxyExempt].filter((p) => argTypeKeys.has(p))
+                    if (staleExemptions.length > 0) {
+                        errors.push(
+                            `${name}.contract.json: argTypesProxyExempt contains ${staleExemptions.length} stale entr${staleExemptions.length === 1 ? 'y' : 'ies'} already covered by argTypes (${staleExemptions.join(', ')}). Run npx tsx scripts/design-system/prune-argtypes-exemptions.ts.`,
+                        )
+                    }
+                    // Variant axes are the component's public API surface —
+                    // they may never be exempted from the Controls panel.
+                    const exemptAxes = declaredVariants.filter((v) => proxyExempt.has(v))
+                    if (exemptAxes.length > 0) {
+                        errors.push(
+                            `${name}.contract.json: argTypesProxyExempt may not contain variant axes (${exemptAxes.join(', ')}); every axis needs a real control with description and default summary.`,
+                        )
+                    }
                     const componentForCoverage = extractComponent(tsxPath)
                     const propsRequiringCoverage = componentForCoverage.declaredPropNames.filter(
                         (p) => !SKIP_FROM_COVERAGE.has(p) && !proxyExempt.has(p) && !p.startsWith('aria-') && !p.startsWith('on') && !p.startsWith('data-'),
@@ -1159,6 +1178,25 @@ function main() {
     } else {
         console.log('HONEST_BETA_DOC_DEBT=0')
     }
+
+    // Controls-panel exemption debt: props muted from the coverage gate via
+    // argTypesProxyExempt. Stale entries (exempt + covered) are hard errors;
+    // this counts the legitimate remainder so blanket lists stay visible.
+    let exemptTotal = 0
+    for (const root of roots) {
+        if (!existsSync(root)) continue
+        for (const dir of readdirSync(root)) {
+            const contractPath = `${root}/${dir}/${dir}.contract.json`
+            if (!existsSync(contractPath)) continue
+            try {
+                const contract = JSON.parse(readFileSync(contractPath, 'utf8'))
+                exemptTotal += (contract.argTypesProxyExempt as string[] | undefined)?.length ?? 0
+            } catch {
+                // unreadable contracts are reported by the main validation pass
+            }
+        }
+    }
+    console.log(`CONTROLS_PROXY_EXEMPT=${exemptTotal}`)
 }
 
 // Run only when invoked directly, not when imported by tests

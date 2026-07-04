@@ -18,14 +18,6 @@
         "Example",
         "ForcedColors"
     ],
-    "argTypesProxyExempt": [
-        "animated",
-        "badge",
-        "className",
-        "decorative",
-        "size",
-        "title"
-    ],
     "a11y": {
         "keyboard": [],
         "ariaRequirements": [

@@ -49,14 +49,10 @@
         "children",
         "className",
         "columns",
-        "grid",
         "id",
-        "maxWidth",
         "ref",
         "role",
-        "spacing",
-        "style",
-        "withMargins"
+        "style"
     ],
     "consumers": [],
     "schemaVersion": 2,

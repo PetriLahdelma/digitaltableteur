@@ -59,11 +59,8 @@
         "proximitySelectors",
         "proximityThreshold",
         "ref",
-        "showLabel",
-        "size",
         "sleepDelay",
         "sleepyDelay",
-        "state",
         "style",
         "trackMouse"
     ],

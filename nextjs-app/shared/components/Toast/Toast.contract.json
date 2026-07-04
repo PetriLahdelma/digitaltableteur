@@ -74,16 +74,9 @@
         "asChild",
         "children",
         "className",
-        "duration",
         "id",
-        "message",
-        "onClose",
-        "open",
-        "position",
         "ref",
-        "size",
-        "style",
-        "tone"
+        "style"
     ],
     "consumers": [],
     "schemaVersion": 2,

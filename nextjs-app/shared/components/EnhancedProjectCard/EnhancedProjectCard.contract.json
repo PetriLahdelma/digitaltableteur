@@ -33,22 +33,10 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "aspectRatio",
-        "autoPlayVideo",
-        "category",
         "children",
-        "className",
-        "description",
         "id",
         "ref",
-        "showCategory",
-        "showDescription",
-        "slug",
-        "style",
-        "tags",
-        "thumbnail",
-        "title",
-        "videoThumbnail"
+        "style"
     ],
     "consumers": [],
     "slots": [],

@@ -41,8 +41,6 @@
         "as",
         "asChild",
         "children",
-        "className",
-        "disabled",
         "id",
         "onError",
         "onSuccess",

@@ -43,15 +43,10 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "background",
         "children",
-        "className",
-        "compact",
         "id",
         "ref",
-        "style",
-        "subtitle",
-        "title"
+        "style"
     ],
     "consumers": [],
     "slots": [],

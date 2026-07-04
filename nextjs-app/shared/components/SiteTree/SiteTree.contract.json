@@ -41,10 +41,7 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "aria-label",
-        "className",
-        "defaultExpandAll",
-        "nodes"
+        "className"
     ],
     "consumers": [],
     "schemaVersion": 2,

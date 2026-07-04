@@ -45,16 +45,9 @@
         "as",
         "asChild",
         "children",
-        "className",
-        "description",
-        "href",
-        "icon",
-        "iconPosition",
         "id",
         "ref",
-        "style",
-        "title",
-        "variant"
+        "style"
     ],
     "consumers": [],
     "slots": [

@@ -43,15 +43,12 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "animate",
         "as",
         "asChild",
         "children",
-        "className",
         "id",
         "ref",
-        "style",
-        "tone"
+        "style"
     ],
     "consumers": [],
     "schemaVersion": 2,

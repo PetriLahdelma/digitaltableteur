@@ -58,14 +58,12 @@
         "loading",
         "menuItems",
         "menuLabel",
-        "name",
         "placementRefreshKey",
         "ref",
         "size",
         "sizes",
         "srcSet",
-        "style",
-        "variant"
+        "style"
     ],
     "consumers": [],
     "schemaVersion": 2,

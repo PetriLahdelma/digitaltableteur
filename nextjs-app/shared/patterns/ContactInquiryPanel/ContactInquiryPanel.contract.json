@@ -73,9 +73,6 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "bookingConfig",
-        "messagePanel",
-        "packageId",
         "ref"
     ],
     "consumers": [],

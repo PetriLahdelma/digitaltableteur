@@ -62,21 +62,14 @@
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
         "activeKey",
-        "activeTab",
         "as",
         "asChild",
         "children",
-        "className",
         "defaultActiveKey",
-        "defaultActiveTab",
         "id",
         "onChange",
-        "onTabChange",
         "ref",
-        "size",
-        "style",
-        "tabs",
-        "variant"
+        "style"
     ],
     "consumers": [],
     "schemaVersion": 2,

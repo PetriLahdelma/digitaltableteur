@@ -55,8 +55,7 @@
         "onCopy",
         "ref",
         "showLineNumbers",
-        "style",
-        "variant"
+        "style"
     ],
     "consumers": [],
     "schemaVersion": 2,

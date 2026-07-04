@@ -64,9 +64,7 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "className",
-        "id",
-        "options"
+        "id"
     ],
     "consumers": [],
     "schemaVersion": 2,

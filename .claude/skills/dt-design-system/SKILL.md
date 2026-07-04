@@ -43,6 +43,10 @@ CRITICAL before finishing:
 - EN / FI / SV keys if user-facing strings
 - Design tokens from `variables.css` — no hardcoded colors
 
+### Step 2.5: Storybook Controls quality (every story, every prop)
+
+Every Controls-panel row must be deliberate — see the "Storybook Controls quality bar" table in [`nextjs-app/shared/components/AGENTS.md`](../../../nextjs-app/shared/components/AGENTS.md). Summary: real control + description + default summary for enums/booleans; `control: "text"` with a seeded `""` arg for free strings (no "Set string" buttons); `table: { disable: true }` for handlers (action pane covers them) and ReactNode/ref props (no "Set object" buttons); `table.category` groups (Content/Appearance/Behavior/Accessibility/Advanced). Never blanket-fill `argTypesProxyExempt` — the validator errors on stale or variant-axis exemptions.
+
 ### Step 3: Validate
 
 ```bash

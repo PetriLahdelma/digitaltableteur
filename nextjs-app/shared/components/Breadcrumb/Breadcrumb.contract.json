@@ -39,13 +39,11 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "aria-label",
         "as",
         "asChild",
         "children",
         "className",
         "id",
-        "items",
         "ref",
         "style"
     ],

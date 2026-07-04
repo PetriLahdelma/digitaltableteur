@@ -39,15 +39,10 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "children",
         "className",
-        "disabled",
-        "htmlFor",
         "id",
         "ref",
-        "required",
-        "style",
-        "tooltipText"
+        "style"
     ],
     "consumers": [
         {

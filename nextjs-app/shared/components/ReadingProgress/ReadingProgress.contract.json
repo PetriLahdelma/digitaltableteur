@@ -18,10 +18,6 @@
         "Example",
         "ForcedColors"
     ],
-    "argTypesProxyExempt": [
-        "targetRef",
-        "className"
-    ],
     "a11y": {
         "keyboard": [],
         "ariaRequirements": [
