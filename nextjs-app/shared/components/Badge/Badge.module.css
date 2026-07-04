@@ -156,9 +156,10 @@
   }
 }
 
+/* Spacing to the label comes from the badge's gap alone — no extra margin. */
+
 .icon {
   display: inline-flex;
-  margin-inline-end: 0.4em;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
