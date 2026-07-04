@@ -58,6 +58,8 @@ Group everything with `table.category`: Content / Appearance / Behavior / Access
 
 **Never** silence the coverage gate with blanket `argTypesProxyExempt` lists. Exemptions are only for props that genuinely cannot be controlled; `validate:components` errors on stale exemptions (exempt + covered) and on exempted variant axes, and reports remaining debt as `CONTROLS_PROXY_EXEMPT`. Prune mechanically with `npx tsx scripts/design-system/prune-argtypes-exemptions.ts`.
 
+**Static argTypes coverage is NOT proof the control works.** `validate:components` only checks that an argTypes entry exists with a description — it cannot see that the rendered Controls panel actually shows an operable widget. A prop can pass validation and still render as a dead "Set object"/"Set string" button (unseeded control) or a hidden row (`table.disable` beside a real `control`). The **`npm run audit:controls`** harness drives the real Storybook Controls panel in a headless browser and classifies every value prop as operable (text/number/range/checkbox/radio/select/textarea), dead (Set-button), or missing. A prop is only "done" when a human can select/toggle/check/input/slide it. Two rules that keep controls operable: (1) never pair a real `control` with `table: { disable: true }`; (2) seed a value in `args` for every text/number/object control so it renders an input, not a "Set X" button (enums/booleans render without seeding). Run `audit:controls --min <pct>` as a ratchet.
+
 ---
 
 ## Styling
