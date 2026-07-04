@@ -32,6 +32,23 @@
     "Spinner",
     "StatusDot",
     "Tabs",
-    "Toast"
+    "Toast",
+    "Accordion",
+    "AspectRatio",
+    "Card",
+    "Center",
+    "CodeBlockWindow",
+    "Container",
+    "Divider",
+    "ExpandableSection",
+    "FlexBox",
+    "Grid",
+    "MacWindowFrame",
+    "MarkdownMessage",
+    "NextLayout",
+    "Section",
+    "Spacer",
+    "Stack",
+    "ThemeProvider"
   ]
 }

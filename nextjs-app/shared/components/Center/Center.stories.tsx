@@ -22,20 +22,12 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (content slot).
   argTypes: {
     children: {
-      control: false,
+      control: "text",
       description: "Content to center inside the flex container",
-    },
-    className: {
-      control: "text",
-      description: "Additional CSS class names (often a height constraint)",
-      table: { disable: true },
-    },
-    as: {
-      control: "text",
-      description: "Polymorphic wrapper element",
-      table: { disable: true },
     },
   },
   args: defaultArgs,
@@ -51,6 +43,9 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  // Plain-text children so the panel's text control matches what renders;
+  // className seeded with a height so centering is visible.
+  args: { children: "Centered content", className: "min-h-32" },
 };
 
 export const Example: Story = {

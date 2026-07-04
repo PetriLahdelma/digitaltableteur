@@ -82,12 +82,24 @@ const EFFECT_EXEMPT = {
         floatedButtonClassName: 'open-tray only: the fanned option buttons exist only while the tray is open; verified by unit test (open tray applies the class)',
         openTriggerClassName: 'open-tray only: applied to the trigger while expanded; verified by unit test (open tray applies the class)',
     },
+    ExpandableSection: {
+        defaultExpanded: 'uncontrolled-only initial state, masked while the seeded controlled `expanded` arg drives the Playground; verified by unit test (respects defaultExpanded)',
+    },
+    MarkdownMessage: {
+        fallback: 'masked while content renders (shown only when content sanitizes to empty); verified by unit test (renders fallback when content empty)',
+    },
 }
 
 // Icon-name text knobs: appending characters makes an UNKNOWN icon (renders
 // nothing = false inert). Perturb them to a known registry icon instead.
 const ICON_NAME_PROP = /icon|^name$/i
 const TEXT_PROBE_ICON = 'check'
+
+// CSS-length text knobs (gap/width/etc.): appending characters makes an
+// INVALID value, and the CSSOM rejects invalid assignments while KEEPING the
+// previous value — a false inert. Perturb to a different valid length instead.
+const CSS_LENGTH = /^-?\d+(\.\d+)?(px|rem|em|%|ch|vw|vh|fr)$/
+const LENGTH_PROBE = (cur) => (cur === '17px' ? '23px' : '17px')
 
 const ROOTS = [
     resolve(__dirname, '../../nextjs-app/shared/components'),
@@ -156,7 +168,12 @@ const canvasHtml = async () => {
                 .filter((el) => el !== root && !/^(SCRIPT|STYLE|LINK)$/.test(el.tagName))
                 .map((el) => el.outerHTML)
                 .join('')
-            return root.innerHTML + portals
+            // Theme plumbing (ThemeProvider forcedTheme) writes classes and
+            // data attributes onto <html>/<body> — canvas-visible, but not in
+            // any innerHTML. Serialize their attributes into the fingerprint.
+            const attrs = (el) =>
+                el.getAttributeNames().sort().map((n) => `${n}=${el.getAttribute(n)}`).join(';')
+            return `${attrs(document.documentElement)}|${attrs(document.body)}|${root.innerHTML}${portals}`
         })
     } catch { return null }
 }
@@ -171,11 +188,19 @@ const rowFor = async (prop) => {
     return null
 }
 
+// Storybook's "unsaved changes" save-from-controls bar appears after the
+// first arg edit and INTERCEPTS pointer events over the panel's bottom rows —
+// the second click of a radio/checkbox probe times out and reads as a silent
+// skip. It is dev chrome, not a control; hide it for the probe session.
+const hideSaveBar = () =>
+    page.addStyleTag({ content: '#save-from-controls{display:none!important}' }).catch(() => {})
+
 // Perturb one operable widget and report whether the canvas DOM changed.
 // Returns 'effect' | 'inert' | 'skipped' | 'unstable'.
 async function testEffect(storyUrl, prop, kind) {
     await page.goto(storyUrl, { waitUntil: 'domcontentloaded' })
     await page.waitForSelector('tr td', { timeout: 9000 }).catch(() => {})
+    await hideSaveBar()
     await page.waitForTimeout(800)
     const before1 = await canvasHtml()
     await page.waitForTimeout(300)
@@ -224,7 +249,12 @@ async function testEffect(storyUrl, prop, kind) {
         } else if (kind === 'text' || kind === 'textarea') {
             const input = row.locator('input[type="text"], textarea').first()
             const cur = await input.inputValue()
-            await input.fill(ICON_NAME_PROP.test(prop) ? TEXT_PROBE_ICON : `${cur}zprobe`)
+            const next = ICON_NAME_PROP.test(prop)
+                ? TEXT_PROBE_ICON
+                : CSS_LENGTH.test(cur)
+                    ? LENGTH_PROBE(cur)
+                    : `${cur}zprobe`
+            await input.fill(next)
         } else if (kind === 'number' || kind === 'range') {
             const input = row.locator('input[type="number"], input[type="range"]').first()
             const cur = await input.inputValue()

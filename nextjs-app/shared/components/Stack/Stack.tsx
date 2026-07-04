@@ -2,13 +2,21 @@ import { type ReactNode, type ElementType } from "react";
 import { cn } from "@/lib/utils";
 
 export interface StackProps {
+  /** Stacked children. */
   children: ReactNode;
+  /** Stack axis. @default "vertical" */
   direction?: "vertical" | "horizontal";
+  /** Gap token between items. @default "md" */
   gap?: "none" | "xs" | "sm" | "md" | "lg" | "xl";
+  /** Cross-axis alignment. @default "center" */
   align?: "start" | "center" | "end" | "stretch";
+  /** Main-axis distribution. */
   justify?: "start" | "center" | "end" | "between" | "around";
+  /** Allow wrapping on horizontal stacks. */
   wrap?: boolean;
+  /** Stack class names. */
   className?: string;
+  /** Polymorphic element. @default "div" */
   as?: ElementType;
 }
 

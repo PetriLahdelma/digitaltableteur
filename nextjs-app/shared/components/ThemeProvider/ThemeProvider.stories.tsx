@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { ReactNode } from "react";
 import { userEvent, within } from "storybook/test";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
@@ -33,19 +34,22 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the children slot keeps a mapping preset so the theme-reading demo stays
+  // available in the panel.
   argTypes: {
-    className: {
-      control: "text",
-      description: "Provider wrapper class names",
-      table: { disable: true },
+    children: {
+      control: { type: "select" },
+      options: ["toggleDemo", "plainText"],
+      mapping: {
+        toggleDemo: <ThemeToggleDemo />,
+        plainText: "Themed subtree content",
+      },
+      description:
+        "Subtree that receives the theme context. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: {},
 } satisfies Meta<typeof ThemeProvider>;
 
@@ -60,9 +64,14 @@ export const Default: Story = {
     </ThemeProvider>
   ),
 };
+// Args-driven so forcedTheme and the children preset actually drive the
+// canvas (the shared render hardcodes its subtree).
 export const Playground: Story = {
   tags: ["beta-matrix"],
-  ...Default,
+  render: (args) => <ThemeProvider {...args} />,
+  args: {
+    children: "toggleDemo" as unknown as ReactNode,
+  },
 };
 
 Playground.play = async ({ canvasElement }) => {

@@ -1,26 +1,14 @@
 import contract from "./MacWindowFrame.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { fn } from "storybook/test";
 import MacWindowFrame from "@dt/MacWindowFrame";
 
 const meta: Meta<typeof MacWindowFrame> = {
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (content slot).
   argTypes: {
-    density: {
-      control: { type: "select" },
-      options: ["compact", "comfortable"],
-      description: "Chrome density inside the window frame",
-      table: { defaultValue: { summary: "compact" } },
-    },
-      actionLabelKey: { control: "text", description: "Optional label for the action button", table: { category: "Accessibility" } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Optional className passthrough", table: { category: "Advanced" } },
-      id: { table: { disable: true } },
-      onAction: { action: "onAction", table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      titleKey: { control: "text", description: "Translation key for the window title", table: { category: "Content" } }
-},
+    children: { control: "text", description: "Content to render inside the frame" },
+  },
   title: "Layout/MacWindowFrame",
   component: MacWindowFrame,
   parameters: {
@@ -98,7 +86,12 @@ export const Compact: Story = {
   args: { density: "compact", children: sampleContent },
 };
 
-export const Playground = Default;
+// onAction is seeded so the action button exists and actionLabelKey can
+// drive it from the panel (the button hides itself without a callback).
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  args: { children: sampleContent, onAction: fn() },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

@@ -9,7 +9,9 @@ import Link from "@dt/Link";
 type DesignSystemTextSize = NonNullable<TextProps["size"]>;
 
 export interface MarkdownMessageProps {
+  /** Markdown source rendered through DS typography. */
   content: string;
+  /** Plain text shown when content is empty or fails to parse. */
   fallback?: string;
   "data-role"?: string;
   /**

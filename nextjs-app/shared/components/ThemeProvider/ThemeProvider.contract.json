@@ -34,9 +34,14 @@
     "slots": [],
     "schemaVersion": 2,
     "props": {
-        "className": {
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+        },
+        "forcedTheme": {
             "optional": true,
-            "type": "string"
+            "type": "union",
+            "values": ["light", "dark", "hcb", "hcw"]
         }
     },
     "forbiddenUse": [

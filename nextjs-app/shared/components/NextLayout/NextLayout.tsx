@@ -19,17 +19,23 @@ const CookieConsentModal = dynamic(
 
 /** Props for NextLayout. */
 export interface NextLayoutProps {
+  /** Additional class names on the layout wrapper. */
   className?: string;
+  children: React.ReactNode;
 }
 
 /**
  * NextLayout component.
  */
-export function NextLayout({ children }: { children: React.ReactNode }) {
+export function NextLayout({ children, className }: NextLayoutProps) {
   return (
     <>
       <DonnyActionProvider>
-        <div className={styles.layout}>
+        <div
+          className={
+            className ? `${styles.layout} ${className}` : styles.layout
+          }
+        >
           <SkipLink href="#main-content" />
           <SiteHeader />
           <main id="main-content" className={styles.main}>

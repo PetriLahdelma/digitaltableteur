@@ -4,10 +4,15 @@ import { cn } from "@/lib/utils";
 import styles from "./Container.module.css";
 
 export interface ContainerProps {
+  /** Page content inside the width constraint. */
   children: ReactNode;
+  /** Max-width token. @default "lg" */
   size?: "sm" | "md" | "lg" | "xl" | "full";
+  /** Center the container horizontally. */
   center?: boolean;
+  /** Wrapper class names. */
   className?: string;
+  /** Polymorphic element. @default "div" */
   as?: ElementType;
 }
 

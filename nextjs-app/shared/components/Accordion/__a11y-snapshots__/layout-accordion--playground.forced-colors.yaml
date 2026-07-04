@@ -1,4 +1,5 @@
 - status: Work in progress (beta)
-- button "What is Digitaltableteur?"
+- button "What is Digitaltableteur?" [expanded]
+- region "What is Digitaltableteur?": We are a design and engineering studio.
 - button "Do you work with AI?"
 - button "How can I contact you?"

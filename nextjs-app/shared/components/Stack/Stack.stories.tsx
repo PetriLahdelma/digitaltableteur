@@ -32,50 +32,31 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite children slot keeps a mapping preset.
   argTypes: {
-    children: { control: false, description: "Stacked children" },
-    direction: {
-      control: "select",
-      options: ["vertical", "horizontal"],
-      description: "Stack axis",
-      table: { defaultValue: { summary: "vertical" } },
+    children: {
+      control: { type: "select" },
+      options: ["twoItems", "fourItems"],
+      mapping: {
+        twoItems: defaultArgs.children,
+        fourItems: (
+          <>
+            {["First item", "Second item", "Third item", "Fourth item"].map(
+              (label) => (
+                <Text key={label} as="p" terminals="sans">
+                  {label}
+                </Text>
+              ),
+            )}
+          </>
+        ),
+      },
+      description:
+        "Stacked children. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ReactNode" } },
     },
-    gap: {
-      control: "select",
-      options: ["none", "xs", "sm", "md", "lg", "xl"],
-      description: "Gap token between items",
-      table: { defaultValue: { summary: "md" } },
-    },
-    align: {
-      control: "select",
-      options: ["start", "center", "end", "stretch"],
-      description: "Cross-axis alignment",
-      table: { defaultValue: { summary: "center" } },
-    },
-    justify: {
-      control: "select",
-      options: ["start", "center", "end", "between", "around"],
-      description: "Main-axis distribution",
-    },
-    wrap: {
-      control: "boolean",
-      description: "Allow wrapping on horizontal stacks",
-    },
-    className: {
-      control: "text",
-      description: "Stack class names",
-      table: { disable: true },
-    },
-    as: {
-      control: "text",
-      description: "Polymorphic element",
-      table: { disable: true },
-    },
-      asChild: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: defaultArgs,
 } satisfies Meta<typeof Stack>;
 
@@ -87,6 +68,9 @@ export const Default: Story = {
 };
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  args: {
+    children: "twoItems" as unknown as typeof defaultArgs.children,
+  },
 };
 
 export const Example: Story = {

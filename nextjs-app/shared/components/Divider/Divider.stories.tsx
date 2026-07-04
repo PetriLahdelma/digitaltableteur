@@ -15,24 +15,7 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  argTypes: {
-    orientation: {
-      control: "radio",
-      options: ["horizontal", "vertical"],
-      description: "Layout axis of the separator",
-      table: { category: "Layout", defaultValue: { summary: "horizontal" } },
-    },
-    decorative: {
-      control: "boolean",
-      description: "When true, exposed as presentational only (role=none)",
-      table: { category: "Accessibility", defaultValue: { summary: "true" } },
-    },
-    className: {
-      control: false,
-      description: "Optional spacing/width utility classes",
-      table: { category: "Advanced" },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: { orientation: "horizontal", decorative: true },
 } satisfies Meta<typeof Divider>;
 

@@ -5423,10 +5423,6 @@
         "className": {
           "optional": true,
           "type": "string"
-        },
-        "staggerDelay": {
-          "optional": true,
-          "type": "number"
         }
       },
       "composesWith": [
@@ -5455,7 +5451,7 @@
           },
           {
             "guidance": true,
-            "description": "Keep the reveal short — a stagger over dozens of children reads as lag; tune staggerDelay down for long lists."
+            "description": "Keep the reveal short — dozens of children behind one disclosure read as lag; split long lists instead."
           },
           {
             "guidance": false,
@@ -8423,7 +8419,7 @@
         {
           "story": "Compact",
           "description": "density compact tightens the chrome for dense grids of demo windows.",
-          "source": "export const Compact: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"density compact tightens the chrome for dense grids of demo windows.\",\n      },\n    },\n  },\n  args: { density: \"compact\", children: sampleContent },\n};"
+          "source": "export const Compact: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"density compact tightens the chrome for dense grids of demo windows.\",\n      },\n    },\n  },\n  args: { density: \"compact\", children: sampleContent },\n};\n\n// onAction is seeded so the action button exists and actionLabelKey can\n// drive it from the panel (the button hides itself without a callback)."
         }
       ]
     },
@@ -9298,6 +9294,11 @@
       "importLine": "import { NextLayout } from \"@dt/NextLayout\";",
       "keyProps": [
         {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true
+        },
+        {
           "name": "className",
           "type": "string",
           "required": false
@@ -9307,6 +9308,10 @@
         "className": {
           "optional": true,
           "type": "string"
+        },
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode"
         }
       },
       "composesWith": [],
@@ -13992,15 +13997,30 @@
       "importLine": "import { ThemeProvider } from \"@dt/ThemeProvider\";",
       "keyProps": [
         {
-          "name": "className",
-          "type": "string",
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true
+        },
+        {
+          "name": "forcedTheme",
+          "type": "light | dark | hcb | hcw",
           "required": false
         }
       ],
       "props": {
-        "className": {
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode"
+        },
+        "forcedTheme": {
           "optional": true,
-          "type": "string"
+          "type": "union",
+          "values": [
+            "light",
+            "dark",
+            "hcb",
+            "hcw"
+          ]
         }
       },
       "composesWith": [

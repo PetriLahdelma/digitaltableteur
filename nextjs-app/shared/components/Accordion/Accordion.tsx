@@ -11,7 +11,9 @@ export type AccordionItem = {
 };
 
 export type AccordionProps = {
+  /** Accordion sections (id, title, content). */
   items: AccordionItem[];
+  /** Initially expanded item id. */
   defaultOpenId?: string;
 };
 

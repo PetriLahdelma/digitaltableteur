@@ -74,10 +74,6 @@
         "className": {
             "optional": true,
             "type": "string"
-        },
-        "staggerDelay": {
-            "optional": true,
-            "type": "number"
         }
     },
     "forbiddenUse": [
@@ -110,7 +106,7 @@
             },
             {
                 "guidance": true,
-                "description": "Keep the reveal short — a stagger over dozens of children reads as lag; tune staggerDelay down for long lists."
+                "description": "Keep the reveal short — dozens of children behind one disclosure read as lag; split long lists instead."
             },
             {
                 "guidance": false,

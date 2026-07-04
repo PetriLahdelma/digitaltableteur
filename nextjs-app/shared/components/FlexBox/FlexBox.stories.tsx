@@ -36,69 +36,30 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite children slot keeps a mapping preset.
   argTypes: {
-    children: { control: false, description: "Flex items" },
-    direction: {
-      control: "select",
-      options: ["row", "row-reverse", "column", "column-reverse"],
-      description: "flex-direction",
-      table: { defaultValue: { summary: "row" } },
+    children: {
+      control: { type: "select" },
+      options: ["threeLabels", "sixLabels"],
+      mapping: {
+        threeLabels: defaultArgs.children,
+        sixLabels: (
+          <>
+            {["Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta"].map(
+              (label) => (
+                <Text key={label} as="span" terminals="sans">
+                  {label}
+                </Text>
+              ),
+            )}
+          </>
+        ),
+      },
+      description: "Flex items. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
-    wrap: {
-      control: "select",
-      options: ["nowrap", "wrap", "wrap-reverse"],
-      description: "flex-wrap",
-      table: { defaultValue: { summary: "nowrap" } },
-    },
-    justify: {
-      control: "select",
-      options: [
-        "flex-start",
-        "flex-end",
-        "center",
-        "space-between",
-        "space-around",
-        "space-evenly",
-      ],
-      description: "justify-content",
-    },
-    align: {
-      control: "select",
-      options: ["stretch", "flex-start", "flex-end", "center", "baseline"],
-      description: "align-items",
-      table: { defaultValue: { summary: "stretch" } },
-    },
-    gap: { control: "text", description: "Shorthand gap" },
-    rowGap: {
-      control: "text",
-      description: "Row gap override",
-      table: { disable: true },
-    },
-    columnGap: {
-      control: "text",
-      description: "Column gap override",
-      table: { disable: true },
-    },
-    alignContent: {
-      control: "text",
-      description: "align-content",
-      table: { disable: true },
-    },
-    className: {
-      control: "text",
-      description: "Wrapper class names",
-      table: { disable: true },
-    },
-    style: {
-      control: "object",
-      description: "Inline style override",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } }
-},
+  },
   args: defaultArgs,
 } satisfies Meta<typeof FlexBox>;
 
@@ -108,8 +69,15 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ["beta-matrix"],
 };
+// Gap overrides seeded with valid lengths so the effects probe's appended
+// characters produce a measurable valid->invalid style change.
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  args: {
+    children: "threeLabels" as unknown as typeof defaultArgs.children,
+    rowGap: "1rem",
+    columnGap: "1rem",
+  },
 };
 
 export const Example: Story = {

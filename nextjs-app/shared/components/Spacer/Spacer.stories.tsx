@@ -21,25 +21,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    size: {
-      control: "select",
-      options: ["xs", "sm", "md", "lg", "xl", "2xl"],
-      description: "Tokenized gap size",
-      table: { defaultValue: { summary: "md" } },
-    },
-    axis: {
-      control: "select",
-      options: ["vertical", "horizontal"],
-      description: "Block (vertical) or inline (horizontal) axis",
-      table: { defaultValue: { summary: "vertical" } },
-    },
-    className: {
-      control: "text",
-      description: "Additional CSS class names",
-      table: { disable: true },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof Spacer>;
 
