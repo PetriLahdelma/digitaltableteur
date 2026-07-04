@@ -191,8 +191,6 @@ export function PseoLeafPageView({
                   className={styles.proofCard}
                   link={proof.href}
                   linkLabel={`View case study: ${proof.title}`}
-                  hoverable
-                  size="full"
                   title={proof.title}
                   titleProps={{
                     terminals: "sans",
@@ -274,8 +272,6 @@ export function PseoLeafPageView({
                 className={styles.relatedCard}
                 link={`/pseo/${item.page.slug}`}
                 linkLabel={`Open ${item.page.title}`}
-                hoverable
-                size="full"
                 title={item.page.title}
                 titleProps={{
                   terminals: "sans",

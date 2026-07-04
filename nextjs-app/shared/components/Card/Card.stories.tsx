@@ -1,14 +1,16 @@
 import contract from "./Card.contract.json";
 import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within } from "storybook/test";
 import Card from "@dt/Card";
-import Icon from "@dt/Icon";
-import ImagePlaceholder, {
-  ImagePlaceholderPresets,
-} from "@dt/ImagePlaceholder";
-import CodeSnippet from "@dt/CodeSnippet";
-import schema from "./schema.json";
+import Badge from "@dt/Badge";
+import Button from "@dt/Button";
+import Divider from "@dt/Divider";
+import FlexBox from "@dt/FlexBox";
+import Grid from "@dt/Grid";
+import Text from "@dt/Text";
 
-const CardStoryMeta = {
+const meta = {
   title: "Layout/Card",
   component: Card,
   tags: ["stable", "autodocs"],
@@ -17,547 +19,294 @@ const CardStoryMeta = {
       type: "figma",
       url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=377-26",
     },
+    layout: "centered",
     contractStatus: contract.status,
     a11y: { test: "error" },
-    llm: { schema },
   },
   argTypes: {
-    size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg", "full"],
-      description:
-        "Card size with max-width constraints: sm(320px), md(480px), lg(600px), full(100%)",
-      table: { defaultValue: { summary: "md" } },
-    },
-
     variant: {
       control: { type: "select" },
-      options: ["outlined", "filled", "elevated"],
-      description: "Card visual variant",
-      table: { defaultValue: { summary: "outlined" } },
+      options: ["default", "muted", "transparent"],
+      description:
+        "Background variant: default keeps the hairline border, muted recedes, transparent groups without weight",
+      table: { defaultValue: { summary: "default" } },
     },
-
-    badge: {
-      control: { type: "text" },
-      description: "Badge content (text/number) or custom React element",
-    },
-    "badgeProps.tone": {
+    padding: {
       control: { type: "select" },
-      options: ["success", "info", "error", "warning", "neutral"],
-      description: "Badge semantic tone",
+      options: ["none", "sm", "md", "lg"],
+      description: "Internal padding step on the space scale (12/16/24px)",
+      table: { defaultValue: { summary: "md" } },
     },
-    "badgeProps.position": {
+    as: {
       control: { type: "select" },
-      options: ["start", "end"],
-      description: "Badge position in header",
+      options: ["div", "article", "section", "aside", "li"],
+      description: "Semantic element for the card surface",
+      table: { defaultValue: { summary: "div" } },
     },
-
-    statusMessage: {
-      control: { type: "text" },
-      description: "Status/error message below header",
+    title: {
+      control: "text",
+      description: "Optional heading (Title xxs, real heading element)",
     },
-    "statusMessageProps.tone": {
-      control: { type: "select" },
-      options: ["success", "info", "error", "warning"],
-      description: "Status message tone",
+    titleProps: {
+      control: false,
+      description: "Heading configuration (level for the document outline)",
+      table: { category: "Advanced" },
     },
-    "iconProps.position": {
-      control: { type: "select" },
-      options: ["start", "end", "top"],
-      description: "Icon position relative to title",
+    description: {
+      control: "text",
+      description: "Supporting line under the title (Text s)",
     },
-    "iconProps.size": {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
-      description: "Icon size variant",
+    descriptionProps: {
+      control: false,
+      description: "Description configuration",
+      table: { category: "Advanced" },
     },
-
-    hoverable: {
-      control: { type: "boolean" },
-      description: "Enable hover elevation effect",
+    extra: {
+      control: false,
+      description: "Right-aligned header slot (badge, timestamp, small action)",
     },
-
+    link: {
+      control: "text",
+      description: "Makes the whole card one link to this href",
+    },
+    linkLabel: {
+      control: "text",
+      description: "Accessible name when the title alone is ambiguous",
+    },
     loading: {
-      control: { type: "boolean" },
-      description: "Show loading skeleton state",
+      control: "boolean",
+      description: "Skeleton loading state (role=status, aria-busy)",
+    },
+    children: { control: "text", description: "Card body content" },
+    className: {
+      control: false,
+      description: "Additional CSS classes on the card surface",
+      table: { category: "Advanced" },
     },
   },
-};
+  args: {
+    title: "Design tokens",
+    description: "Layer 0 of the system: DTCG JSON, transformed per platform.",
+    variant: "default" as const,
+    padding: "md" as const,
+  },
+} satisfies Meta<typeof Card>;
 
-export default CardStoryMeta;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-// Basic Examples
-export const Playground = {
+/**
+ * The surface at rest: hairline border, quiet background, xxs heading,
+ * body on the text ladder. The container adds nothing else.
+ */
+export const Default: Story = {
   tags: ["beta-matrix"],
-  args: {
-    title: "Card Playground",
-    subTitle: "Interactive testing",
-    body: "Use the controls panel to explore different Card configurations and features.",
-    icon: <Icon name="palette" ariaLabel="palette" />,
-    iconProps: { position: "start", size: "md" },
-    badge: "Demo",
-    badgeProps: { tone: "info", position: "end" },
-    variant: "outlined",
-    size: "md",
-    hoverable: true,
-  },
+  render: (args) => (
+    <Card {...args} style={{ maxWidth: "20rem" }}>
+      <Text size="s">
+        Colors, spacing, and type ship as platform-agnostic JSON before any
+        component exists.
+      </Text>
+    </Card>
+  ),
 };
 
-export const Default = {
+export const Playground: Story = {
   tags: ["beta-matrix"],
-  args: {
-    title: "Default Card",
-    body: "Simple card with basic content and default styling.",
-  },
+  render: (args) => (
+    <Card {...args} style={{ maxWidth: "20rem" }}>
+      <Text size="s">Body content flows in the card rhythm.</Text>
+    </Card>
+  ),
 };
 
-export const Hoverable = {
+/** Background swaps only — the border never moves. */
+export const Variants: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "hoverable lifts the surface on pointer hover; pair with interactive or link, never alone as the only affordance." } } },
-  args: {
-    title: "Hoverable Card",
-    body: "This card responds to hover with subtle elevation and background changes.",
-    hoverable: true,
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "variant swaps the background: default keeps the hairline, muted recedes for de-emphasised siblings, transparent groups content without visual weight. Every variant keeps a transparent border so switching never causes layout jitter.",
+      },
+    },
   },
+  render: () => (
+    <div style={{ display: "flex", gap: "1rem" }}>
+      {(["default", "muted", "transparent"] as const).map((variant) => (
+        <Card key={variant} variant={variant} style={{ width: "13rem" }}>
+          <Text size="s" as="strong">
+            {variant}
+          </Text>
+          <Text size="xs">The same surface, a different weight.</Text>
+        </Card>
+      ))}
+    </div>
+  ),
 };
 
-export const Loading = {
+/** One padding step per surface; siblings match. */
+export const PaddingScale: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "The loading skeleton replaces the body while data resolves." } } },
-  args: {
-    title: "Loading Card",
-    loading: true,
-    body: "Content hidden during loading state",
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "padding picks a step on the internal space scale: sm 12, md 16 (default), lg 24. Pick one per surface — sibling cards with mixed padding read as a bug.",
+      },
+    },
   },
+  render: () => (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+      {(["sm", "md", "lg"] as const).map((padding) => (
+        <Card key={padding} padding={padding} style={{ width: "12rem" }}>
+          <Text size="s">padding {padding}</Text>
+        </Card>
+      ))}
+    </div>
+  ),
 };
 
-// Icon Integration Examples
-export const WithIconStart = {
-  args: {
-    title: "Creative Development",
-    icon: <Icon name="palette" ariaLabel="palette" />,
-    iconProps: { position: "start", size: "md" },
-    body: "Digital experiences that combine aesthetic excellence with functional innovation.",
-    variant: "elevated",
-    hoverable: true,
-  },
-};
-
-export const WithIconEnd = {
-  args: {
-    title: "External Link",
-    icon: <Icon name="arrow-square-out" ariaLabel="arrow-square-out" />,
-    iconProps: { position: "end", size: "sm" },
-    body: "Card with trailing icon to indicate external navigation.",
-    variant: "outlined",
-  },
-};
-
-export const WithIconTop = {
-  args: {
-    title: "Strategy & Analytics",
-    icon: <Icon name="chart-line-up" ariaLabel="chart-line-up" />,
-    iconProps: { position: "top", size: "lg" },
-    body: "Strategic thinking meets data visualization to create meaningful insights.",
-    variant: "filled",
-  },
-};
-
-// Nested Props Configuration Examples
-export const CustomizedTypography = {
-  args: {
-    title: "Custom Typography",
-    titleProps: { size: "l" },
-    subTitle: "Subtitle with custom styling",
-    subTitleProps: { size: "m" },
-    body: "Body text with customized appearance through nested props.",
-    bodyProps: { size: "l" },
-    variant: "outlined",
-  },
-};
-
-export const DescriptionVariant = {
-  args: {
-    title: "With Description",
-    titleProps: { size: "m" },
-    description:
-      "This card uses the description prop instead of body for semantic clarity.",
-    descriptionProps: { size: "m" },
-    variant: "elevated",
-  },
-};
-
-// Layout and Content Examples
-export const WithCover = {
+/** Structure is composition: header row, divider, footer actions. */
+export const Structured: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "Cover media above the header and body." } } },
-  args: {
-    title: "Media Card",
-    titleProps: { size: "l" },
-    cover: (
-      <ImagePlaceholder
-        {...ImagePlaceholderPresets.cardCover}
-        alt="Placeholder content"
-        variant="medium"
-      />
-    ),
-    body: "Cards can display media content at the top with supporting text below.",
-    variant: "outlined",
-    hoverable: true,
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "The card contributes the surface; structure comes from composition. Here: the title/extra header row, a meaningful Divider, body text, and a FlexBox footer with actions — no card-specific props involved.",
+      },
+    },
   },
-};
-
-export const WithActions = {
-  tags: ["example"],
-  parameters: { docs: { description: { story: "Footer actions row; do not combine with link mode." } } },
-  render: () => {
-    const actions = [
-      { key: "save", label: "Save Draft" },
-      { key: "publish", label: "Publish" },
-      { key: "cancel", label: "Cancel" },
-    ];
-    return (
-      <Card
-        title="Document Editor"
-        icon={<Icon name="pencil" ariaLabel="pencil" />}
-        iconProps={{ position: "start" }}
-        body="Card with multiple footer actions for user interactions."
-        actions={actions}
-        variant="elevated"
-      />
-    );
-  },
-};
-
-export const Interactive = {
-  tags: ["example"],
-  parameters: { docs: { description: { story: "interactive makes the surface focusable with Enter and Space activation, for non-navigation actions." } } },
-  args: {
-    title: "Interactive Card",
-    icon: <Icon name="github-logo" ariaLabel="github-logo" />,
-    iconProps: { position: "start" },
-    subTitle: "Clickable surface",
-    description:
-      "Set `interactive` or `onClick` to make the card behave like a button without wrapping it in a link.",
-    interactive: true,
-    hoverable: true,
-    variant: "outlined",
-    onClick: () => alert("Card clicked!"),
-  },
-};
-
-// Link Variant
-export const AsLink = {
-  tags: ["example"],
-  parameters: { docs: { description: { story: "Whole-card navigation; one anchor named by linkLabel or title." } } },
-  args: {
-    title: "Portfolio Project",
-    icon: <Icon name="arrow-square-out" ariaLabel="arrow-square-out" />,
-    iconProps: { position: "end", size: "sm" },
-    body: "This entire card functions as a clickable link while maintaining semantic structure.",
-    link: "https://example.com",
-    linkLabel: "View portfolio project details",
-    variant: "elevated",
-    hoverable: true,
-  },
-};
-
-// Size Variants
-export const SmallSize = {
-  args: {
-    title: "Compact Card",
-    icon: <Icon name="star" ariaLabel="star" />,
-    iconProps: { position: "start", size: "sm" },
-    body: "Reduced padding for dense layouts.",
-    size: "sm",
-    variant: "filled",
-  },
-};
-
-export const LargeSize = {
-  args: {
-    title: "Spacious Card",
-    titleProps: { size: "xl" },
-    icon: <Icon name="heart" ariaLabel="heart" />,
-    iconProps: { position: "top", size: "lg" },
-    body: "Generous spacing for prominent content areas.",
-    bodyProps: { size: "l" },
-    size: "lg",
-    variant: "elevated",
-    hoverable: true,
-  },
-};
-
-// Complex Layout Examples
-export const ProfileCard = {
-  args: {
-    title: "Sarah Johnson",
-    titleProps: { size: "l" },
-    subTitle: "Senior Designer",
-    icon: <Icon name="user" ariaLabel="user" />,
-    iconProps: { position: "start" },
-    cover: (
-      <div
-        style={{
-          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-          height: "120px",
-        }}
-      />
-    ),
-    body: "Passionate about creating meaningful digital experiences with a focus on accessibility and user research.",
-    variant: "elevated",
-    hoverable: true,
-  },
-};
-
-export const MetricCard = {
-  args: {
-    title: "Page Views",
-    titleProps: { size: "m" },
-    body: "12,847",
-    bodyProps: { size: "l" },
-    description: "↗ 23% from last week",
-    descriptionProps: { size: "s" },
-    icon: <Icon name="eye" ariaLabel="eye" />,
-    iconProps: { position: "end", size: "sm" },
-    variant: "outlined",
-    size: "sm",
-  },
-};
-
-export const EventCard = {
-  args: {
-    title: "Design System Workshop",
-    titleProps: { size: "l" },
-    subTitle: "Online Event",
-    icon: <Icon name="calendar" ariaLabel="calendar" />,
-    iconProps: { position: "start" },
-    body: "Join us for an interactive session on building scalable design systems with modern tools and methodologies.",
-    variant: "filled",
-    hoverable: true,
-  },
-};
-
-// Tabbed Example
-const TabbedStoryComponent = () => {
-  const tabs = [
-    { key: "overview", label: "Overview" },
-    { key: "details", label: "Details" },
-    { key: "specs", label: "Specifications" },
-    { key: "disabled", label: "Disabled", disabled: true },
-  ];
-  const [active, setActive] = React.useState("overview");
-
-  const content = {
-    overview: "This is the overview tab with general information.",
-    details: "Detailed specifications and technical information.",
-    specs: "Complete technical specifications and requirements.",
-  };
-
-  return (
+  render: () => (
     <Card
-      title="Tabbed Interface"
-      icon={<Icon name="github-logo" ariaLabel="github-logo" />}
-      iconProps={{ position: "start" }}
-      tabs={tabs}
-      activeTabKey={active}
-      onTabChange={setActive}
-      body={
-        content[active as keyof typeof content] ||
-        "Select a tab to view content"
-      }
-      variant="outlined"
-    />
-  );
+      title="Quarterly review"
+      extra={<Badge tone="info">Draft</Badge>}
+      style={{ maxWidth: "22rem" }}
+    >
+      <Divider />
+      <Text size="s">
+        Q2 numbers are in: token adoption up 40%, three new consumers, zero
+        contract drift incidents.
+      </Text>
+      <FlexBox justify="space-between" align="center">
+        <Button variant="tertiary" size="sm">
+          Discard
+        </Button>
+        <Button size="sm">Publish</Button>
+      </FlexBox>
+    </Card>
+  ),
 };
 
-export const Tabbed = {
+/** The whole card is one link; the ring draws around the frame. */
+export const AsLink: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "The tabs prop hosts alternating panels inside one card without re-mounting." } } }, render: () => <TabbedStoryComponent /> };
-
-// Real-world Use Cases (Matching current codebase patterns)
-export const ProjectCard = {
-  args: {
-    title: "Digital Portfolio",
-    titleProps: { size: "l" },
-    icon: <Icon name="palette" ariaLabel="palette" />,
-    iconProps: { position: "start" },
-    cover: (
-      <ImagePlaceholder
-        {...ImagePlaceholderPresets.cardCover}
-        alt="Project screenshot"
-        variant="gradient"
-      />
-    ),
-    body: "A comprehensive portfolio showcasing creative development and strategic design thinking.",
-    link: "/portfolio",
-    linkLabel: "View full portfolio",
-    variant: "elevated",
-    hoverable: true,
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "link stretches the title's anchor across the surface — one link in the accessibility tree, named by linkLabel ?? title, focus ring around the card frame, hairline darkens on hover. Never nest other interactive controls inside; the play function asserts the single-anchor contract.",
+      },
+    },
+  },
+  render: () => (
+    <Card
+      title="DSharp design system"
+      description="AI-first component architecture for a multi-app suite."
+      link="/work/dsharp-design-system"
+      linkLabel="Read the DSharp design system case study"
+      style={{ maxWidth: "20rem" }}
+    />
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const links = canvas.getAllByRole("link");
+    await expect(links).toHaveLength(1);
+    await expect(links[0]).toHaveAccessibleName(
+      "Read the DSharp design system case study",
+    );
+    await userEvent.tab();
+    await expect(links[0]).toHaveFocus();
   },
 };
 
-export const ServiceHighlight = {
-  args: {
-    title: "Creative Development",
-    titleProps: { size: "l" },
-    icon: <Icon name="palette" ariaLabel="palette" />,
-    iconProps: { position: "top", size: "lg" },
-    description:
-      "Building digital experiences that combine aesthetic excellence with functional innovation.",
-    descriptionProps: { size: "m" },
-    variant: "elevated",
-    hoverable: true,
-    size: "lg",
+/** Loading is a quiet skeleton, announced once. */
+export const Loading: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "loading renders skeleton lines and announces via role=status + aria-busy. The card keeps its footprint, so content pops in without layout shift.",
+      },
+    },
   },
+  render: () => (
+    <Card loading style={{ width: "20rem" }}>
+      <Text size="s">Replaced by skeleton lines while loading.</Text>
+    </Card>
+  ),
 };
 
-// Badge Examples
-export const WithBadgeEnd = {
-  args: {
-    title: "New Feature",
-    badge: "Beta",
-    badgeProps: { tone: "info", position: "end" },
-    body: "This card demonstrates badge positioning at the end of the header.",
-    variant: "outlined",
+/** Cards in a Grid: consistent padding, equal surfaces. */
+export const CardGrid: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    layout: "padded",
+    docs: {
+      description: {
+        story:
+          "The natural habitat: a Grid of equal surfaces with one padding step and per-card links. Cards fill their grid cells — no size prop needed.",
+      },
+    },
   },
+  render: () => (
+    <Grid columns={3} gap="1rem">
+      {[
+        ["Design tokens", "DTCG JSON as the source of truth."],
+        ["Components", "Contract-driven, four files each."],
+        ["Patterns", "Composed surfaces for product flows."],
+      ].map(([title, blurb]) => (
+        <Card key={title} title={title} link={`#${title}`}>
+          <Text size="xs">{blurb}</Text>
+        </Card>
+      ))}
+    </Grid>
+  ),
 };
 
-export const WithBadgeStart = {
-  args: {
-    title: "Critical Issue",
-    badge: "3",
-    badgeProps: { tone: "error", position: "start", size: "sm" },
-    icon: <Icon name="bug" ariaLabel="bug" />,
-    iconProps: { position: "end", size: "sm" },
-    body: "Badge positioned at the start of the header with an icon at the end.",
-    variant: "elevated",
-  },
-};
-
-export const WithCustomBadge = {
-  args: {
-    title: "Premium Service",
-    badge: (
-      <Icon
-        name="star"
-        ariaLabel="star"
-        style={{ color: "var(--color-warning)" }}
-      />
-    ),
-    body: "Custom React element as badge content.",
-    variant: "filled",
-  },
-};
-
-// Status Message Examples
-export const WithSuccessMessage = {
-  args: {
-    title: "Form Submitted",
-    icon: <Icon name="check" ariaLabel="check" />,
-    iconProps: { position: "start", size: "md" },
-    statusMessage: "Your information has been successfully saved.",
-    statusMessageProps: { tone: "success" },
-    body: "Thank you for your submission. You will receive a confirmation email shortly.",
-    variant: "elevated",
-  },
-};
-
-export const WithErrorMessage = {
-  args: {
-    title: "Validation Error",
-    icon: <Icon name="warning" ariaLabel="warning" />,
-    iconProps: { position: "start", size: "md" },
-    statusMessage: "Please check the required fields and try again.",
-    statusMessageProps: { tone: "error" },
-    body: "Some fields contain invalid data that needs to be corrected.",
-    variant: "outlined",
-  },
-};
-
-export const WithWarningMessage = {
-  args: {
-    title: "Storage Almost Full",
-    statusMessage: "You have used 90% of your storage quota.",
-    statusMessageProps: { tone: "warning" },
-    body: "Consider upgrading your plan or removing unused files.",
-    variant: "filled",
-    hoverable: true,
-  },
-};
-
-// Size Comparison Examples
-export const SizeSmall = {
-  args: {
-    title: "Compact Card",
-    size: "sm",
-    badge: "New",
-    badgeProps: { tone: "success", size: "sm" },
-    body: "Small card with 320px max-width for dense layouts.",
-    variant: "outlined",
-  },
-};
-
-export const SizeMedium = {
-  args: {
-    title: "Medium Card",
-    size: "md",
-    icon: <Icon name="user" ariaLabel="user" />,
-    iconProps: { position: "start" },
-    body: "Medium card with 480px max-width for balanced content.",
-    variant: "elevated",
-  },
-};
-
-export const SizeLarge = {
-  args: {
-    title: "Large Card",
-    size: "lg",
-    icon: <Icon name="chart-line-up" ariaLabel="chart-line-up" />,
-    iconProps: { position: "top", size: "lg" },
-    body: "Large card with 600px max-width for detailed content and generous spacing.",
-    variant: "filled",
-    hoverable: true,
-  },
-};
-
-export const SizeFullWidth = {
-  args: {
-    title: "Full-Width Card",
-    size: "full",
-    statusMessage: "This card spans the full width of its container.",
-    statusMessageProps: { tone: "info" },
-    body: "Full-width cards adapt to their container and are useful for dashboard layouts.",
-    variant: "elevated",
-  },
-};
-
-// Complex Combination Examples
-export const ComplexExample = {
-  args: {
-    title: "Feature Request",
-    titleProps: { size: "l" },
-    icon: <Icon name="palette" ariaLabel="palette" />,
-    iconProps: { position: "start", size: "md" },
-    badge: "High Priority",
-    badgeProps: { tone: "warning", position: "end" },
-    statusMessage: "Waiting for product team review",
-    statusMessageProps: { tone: "info" },
-    body: "A comprehensive example showcasing multiple Card features working together.",
-    variant: "elevated",
-    hoverable: true,
-    size: "lg",
-  },
-};
-
-export const Example = {
+export const Example: Story = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
-  args: ComplexExample.args,
+  render: () => (
+    <Card
+      title="Design tokens"
+      description="Layer 0 of the system: DTCG JSON, transformed per platform."
+      extra={<Badge tone="success">Stable</Badge>}
+      style={{ maxWidth: "20rem" }}
+    >
+      <Text size="s">
+        Colors, spacing, and type ship as platform-agnostic JSON before any
+        component exists.
+      </Text>
+    </Card>
+  ),
 };
 
-export const ForcedColors = {
-  parameters: { a11y: { disable: true, test: "off" } },
+export const ForcedColors: Story = {
   tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true, test: "off" } },
   globals: { forcedColors: "active" },
+  render: (args) => (
+    <Card {...args} style={{ maxWidth: "20rem" }}>
+      <Text size="s">The physical border keeps the frame in forced colors.</Text>
+    </Card>
+  ),
 };

@@ -1,0 +1,3 @@
+- heading "Design tokens" [level=3]
+- paragraph: "Layer 0 of the system: DTCG JSON, transformed per platform."
+- paragraph: The physical border keeps the frame in forced colors.

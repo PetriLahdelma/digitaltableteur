@@ -4,37 +4,33 @@
     "tier": "molecule",
     "group": "structure",
     "status": "stable",
-    "description": "Composable surface for grouped content with header, body, media, and actions.",
+    "description": "Quiet bordered surface for discrete, self-contained content; structure by composition.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=377-26",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
         "variant": {
             "values": [
-                "elevated",
-                "filled",
-                "outlined"
+                "default",
+                "muted",
+                "transparent"
             ],
-            "default": "outlined",
+            "default": "default",
             "propSourced": true
         },
-        "size": {
+        "padding": {
             "values": [
+                "none",
                 "sm",
                 "md",
-                "lg",
-                "full"
+                "lg"
             ],
             "default": "md",
             "propSourced": true
         }
     },
     "slots": [
-        "extra",
-        "cover",
-        "icon",
-        "badge",
-        "footer"
+        "extra"
     ],
     "asChild": false,
     "subParts": [],
@@ -45,69 +41,40 @@
         "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
+        "keyboard": [
+            "Tab",
+            "Enter"
+        ],
         "ariaRequirements": [
-            "semantic heading for title",
-            "link/button actions need accessible names"
+            "title renders a real heading (level via titleProps.level, default 3)",
+            "link mode renders exactly one stretched anchor named by linkLabel ?? title; focus ring draws around the card frame",
+            "loading announces via role=status + aria-busy and renders skeleton lines",
+            "plain cards are not focusable and add no roles"
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — structure, hover/focus, forced-colors verified in Storybook.",
+        "reviewedNote": "2026-07-04 — Astryx-shaped simplification: hairline surface, stretched-anchor link mode (no nested interactives), loading via Skeleton; axe on Default/AsLink/Loading; forced-colors keeps the physical border.",
         "forcedColorsVerified": true,
         "accessibilityTreeVerified": true,
         "realBrowserForcedColorsVerified": true,
-        "axeTestExempt": "Complex molecule; axe on representative Default/Example stories."
+        "axeTestExempt": "Molecule; axe on representative Default/AsLink/Loading stories."
     },
     "tokens": {
-        "colors": [],
-        "spacing": []
+        "colors": [
+            "--color-surface",
+            "--color-light-bg",
+            "--color-border-light",
+            "--color-border"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24"
+        ]
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "actions",
-        "activeTabKey",
-        "as",
-        "asChild",
-        "badge",
-        "badgeProps",
-        "body",
-        "bodyProps",
-        "bodyStyle",
-        "bordered",
-        "children",
-        "className",
-        "cover",
-        "defaultActiveTabKey",
-        "description",
-        "descriptionProps",
-        "extra",
-        "footer",
-        "headStyle",
-        "hoverable",
-        "icon",
-        "iconProps",
-        "id",
-        "interactive",
-        "level",
-        "link",
-        "linkLabel",
-        "loading",
-        "onClick",
-        "onTabChange",
-        "position",
-        "ref",
-        "size",
-        "statusMessage",
-        "statusMessageProps",
-        "style",
-        "subTitle",
-        "subTitleProps",
-        "tabs",
-        "terminals",
-        "title",
-        "titleProps",
-        "variant"
-    ],
+    "schemaVersion": 2,
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
@@ -125,44 +92,44 @@
             "since": "2026-06-04"
         }
     ],
-    "schemaVersion": 2,
     "props": {
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "muted",
+                "transparent"
+            ]
+        },
+        "padding": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "none",
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "as": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "div",
+                "article",
+                "section",
+                "aside",
+                "li"
+            ]
+        },
         "title": {
             "optional": true,
             "type": "string"
         },
         "titleProps": {
             "optional": true,
-            "type": "union",
-            "values": [
-                "m",
-                "l",
-                "h2",
-                "h3",
-                "h4",
-                "h5"
-            ]
-        },
-        "subTitle": {
-            "optional": true,
-            "type": "string"
-        },
-        "subTitleProps": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "m",
-                "span",
-                "div",
-                "strong",
-                "em",
-                "cite",
-                "h1",
-                "h2",
-                "h3",
-                "h4",
-                "h5"
-            ]
+            "type": "CardTitleProps"
         },
         "description": {
             "optional": true,
@@ -170,258 +137,120 @@
         },
         "descriptionProps": {
             "optional": true,
-            "type": "union",
-            "values": [
-                "m",
-                "span",
-                "div",
-                "strong",
-                "em",
-                "cite",
-                "h1",
-                "h2",
-                "h3",
-                "h4",
-                "h5"
-            ]
-        },
-        "bodyProps": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "m",
-                "span",
-                "div",
-                "strong",
-                "em",
-                "cite",
-                "h1",
-                "h2",
-                "h3",
-                "h4",
-                "h5"
-            ]
+            "type": "CardDescriptionProps"
         },
         "extra": {
             "optional": true,
             "type": "React.ReactNode"
         },
-        "cover": {
-            "optional": true,
-            "type": "React.ReactNode"
-        },
-        "actions": {
-            "optional": true,
-            "type": "CardAction[]"
-        },
-        "loading": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "hoverable": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "bordered": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "size": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "full"
-            ]
-        },
-        "variant": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "elevated",
-                "filled",
-                "outlined"
-            ]
-        },
-        "tabs": {
-            "optional": true,
-            "type": "CardTab[]"
-        },
-        "activeTabKey": {
-            "optional": true,
-            "type": "string"
-        },
-        "defaultActiveTabKey": {
-            "optional": true,
-            "type": "string"
-        },
-        "onTabChange": {
-            "optional": true,
-            "type": "(key: string) => void"
-        },
-        "body": {
-            "optional": true,
-            "type": "string"
-        },
         "link": {
             "optional": true,
             "type": "string"
-        },
-        "icon": {
-            "optional": true,
-            "type": "React.ReactNode"
-        },
-        "iconProps": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "end",
-                "md"
-            ]
-        },
-        "badge": {
-            "optional": true,
-            "type": "React.ReactNode"
-        },
-        "badgeProps": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "error",
-                "warning",
-                "success",
-                "md"
-            ]
-        },
-        "statusMessage": {
-            "optional": true,
-            "type": "string"
-        },
-        "statusMessageProps": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "info",
-                "error",
-                "m"
-            ]
         },
         "linkLabel": {
             "optional": true,
             "type": "string"
         },
-        "className": {
-            "optional": true,
-            "type": "string"
-        },
-        "interactive": {
+        "loading": {
             "optional": true,
             "type": "boolean"
-        },
-        "onClick": {
-            "optional": true,
-            "type": "() => void"
-        },
-        "bodyStyle": {
-            "optional": true,
-            "type": "React.CSSProperties"
-        },
-        "headStyle": {
-            "optional": true,
-            "type": "React.CSSProperties"
-        },
-        "footer": {
-            "optional": true,
-            "type": "React.ReactNode"
         },
         "children": {
             "optional": true,
             "type": "React.ReactNode"
         }
     },
-    "forbiddenUse": [
-        "nest interactive controls inside a `link`-mode card. Use a",
-        "hide critical state in `extra`. Right-aligned slots are easy to",
-        "stretch the variant set to encode marketing themes. Compose"
-    ],
-    "composesWith": [
-        "Title",
-        "Text",
-        "Button",
-        "PageLayout",
-        "MarkdownMessage",
-        "Icon"
-    ],
+    "displayName": "Card",
     "keywords": [
         "card",
         "surface",
         "container",
-        "panel",
-        "cover",
-        "actions",
-        "linked",
-        "tabs"
+        "tile",
+        "grouping",
+        "bordered"
     ],
-    "dense": "grouped-content surface; header (title/subtitle/description/icon/badge/extra), cover, body, footer actions; elevated/filled/outlined, sm-full, hoverable/loading/interactive/link modes, optional tabs",
+    "dense": "Quiet bordered surface: variant default (hairline)|muted|transparent, padding none|sm|md|lg; title (xxs h3)/description/extra; link = ONE stretched anchor; loading = skeleton+status; compose the rest",
     "usage": {
-        "description": "Card is the composable surface for grouped content: an optional header (title, subtitle, description, icon, badge, extra), a body from either the body prop or children, a cover slot for media, and a footer for actions. Variants (elevated, filled, outlined), sizes (sm to full) and the hoverable, loading, interactive and link-rendered forms absorb the variation work so consumers do not fork the component.",
+        "description": "Card is the quiet surface for discrete, self-contained content — things that could be reordered, removed, or interacted with independently. The container owns background, hairline border, radius, and padding; `variant` only swaps the background (default with hairline, muted, transparent) and `padding` picks a step on the space scale. A thin content layer covers the common patterns: `title` (a real heading at xxs), `description`, and a right-aligned `extra` slot. Everything richer — dividers, footers, media, tabs — is composition with Divider, FlexBox, Stack, and friends. `link` turns the whole card into exactly one anchor with the focus ring on the frame.",
         "bestPractices": [
             {
                 "guidance": true,
-                "description": "Use link for whole-card navigation; the surface becomes a single anchor named by linkLabel or title."
+                "description": "Compose structure: Title/Text children, a Divider where the split carries meaning, a FlexBox row as the footer — the card is just the surface."
             },
             {
                 "guidance": true,
-                "description": "Use interactive (or onClick) when the action is not navigation, for example opening a modal; Enter and Space activate."
+                "description": "Keep padding consistent across sibling cards in a grid; pick one step per surface."
             },
             {
                 "guidance": true,
-                "description": "Use the loading prop for skeleton states instead of composing Skeleton by hand."
+                "description": "Set titleProps.level to keep the document outline honest — grids under a section heading typically use level 3."
             },
             {
                 "guidance": true,
-                "description": "Host alternating content with the tabs prop instead of re-mounting sibling cards."
+                "description": "Pass linkLabel on linked cards whose title is ambiguous out of context; \"Read more\" is the failure mode."
+            },
+            {
+                "guidance": true,
+                "description": "Use muted for de-emphasised siblings and transparent to group without visual weight — reach for spacing and headings before adding cards at all."
             },
             {
                 "guidance": false,
-                "description": "Do not combine link with actions; the anchor swallows the surface and footer buttons become unreachable. One affordance per card."
+                "description": "Do not nest interactive controls inside a link-mode card; use a plain card with a single Button instead."
             },
             {
                 "guidance": false,
-                "description": "Do not nest interactive controls inside a linked card; an anchor inside an anchor is invalid HTML."
+                "description": "Do not wrap page sections or whole forms in cards, and never nest cards in cards — that is Section/Stack territory."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use the muted variant to encode status; status belongs to AlertBanner or Badge."
             }
         ],
         "anatomy": [
             {
-                "name": "Header",
-                "required": false,
-                "description": "Title, subtitle and description plus the icon, badge and extra slots; omitted entirely when none are set."
+                "name": "Surface",
+                "required": true,
+                "description": "The container: background variant, 1px border (transparent on muted/transparent so variants never jitter), 12px radius, padded content column."
             },
             {
-                "name": "Cover",
+                "name": "Header row",
                 "required": false,
-                "description": "Media slot rendered above the header and body, typically an image or illustration."
+                "description": "Renders when title or extra is set: heading left (Title xxs, weight 600), extra slot right."
+            },
+            {
+                "name": "Description",
+                "required": false,
+                "description": "Supporting Text line under the header at size s."
             },
             {
                 "name": "Body",
-                "required": true,
-                "description": "Content area from the body prop or children; the loading skeleton replaces it while loading."
+                "required": false,
+                "description": "children, flowing in the card's 8px rhythm; all further structure is composition."
             },
             {
-                "name": "Footer",
+                "name": "Link overlay",
                 "required": false,
-                "description": "Actions row (or the footer slot); unreachable in link mode, so pick one affordance per card."
+                "description": "In link mode, the title's anchor stretches across the surface via an inset pseudo-element; the focus ring draws around the frame."
             }
         ]
     },
     "playground": {
         "defaults": {
-            "title": "Design sprint",
-            "subTitle": "One week, one prototype",
-            "description": "A focused engagement to validate a hypothesis before committing roadmap.",
-            "variant": "outlined"
+            "title": "Design tokens",
+            "description": "Layer 0 of the system: DTCG JSON, transformed per platform.",
+            "variant": "default",
+            "padding": "md"
         }
-    }
+    },
+    "composesWith": [
+        "Title",
+        "Text",
+        "Divider",
+        "FlexBox",
+        "Stack",
+        "Badge",
+        "Button",
+        "Grid",
+        "Skeleton"
+    ]
 }

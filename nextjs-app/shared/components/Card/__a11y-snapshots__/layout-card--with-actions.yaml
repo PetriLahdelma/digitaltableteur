@@ -1,6 +1,0 @@
-- img "pencil"
-- heading "Document Editor" [level=3]
-- paragraph: Card with multiple footer actions for user interactions.
-- button "Save Draft"
-- button "Publish"
-- button "Cancel"

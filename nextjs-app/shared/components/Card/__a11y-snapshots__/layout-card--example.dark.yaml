@@ -1,5 +1,4 @@
-- img "palette"
-- heading "Feature Request" [level=3]
-- text: High Priority
-- status: Waiting for product team review
-- paragraph: A comprehensive example showcasing multiple Card features working together.
+- heading "Design tokens" [level=3]
+- text: Stable
+- paragraph: "Layer 0 of the system: DTCG JSON, transformed per platform."
+- paragraph: Colors, spacing, and type ship as platform-agnostic JSON before any component exists.

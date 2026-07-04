@@ -1,0 +1,12 @@
+- heading "Design tokens" [level=3]:
+  - link "Design tokens":
+    - /url: "#Design tokens"
+- paragraph: DTCG JSON as the source of truth.
+- heading "Components" [level=3]:
+  - link "Components":
+    - /url: "#Components"
+- paragraph: Contract-driven, four files each.
+- heading "Patterns" [level=3]:
+  - link "Patterns":
+    - /url: "#Patterns"
+- paragraph: Composed surfaces for product flows.

@@ -1,2 +1,8 @@
-export { default } from "./Card";
-export type { CardProps, CardAction, CardTab } from "./Card";
+export { default, Card } from "./Card";
+export type {
+  CardProps,
+  CardVariant,
+  CardPadding,
+  CardTitleProps,
+  CardDescriptionProps,
+} from "./Card";
