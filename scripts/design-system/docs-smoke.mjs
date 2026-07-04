@@ -57,6 +57,7 @@ const PROVEN = [
   { name: "Spinner", docsId: "feedback-spinner--docs" },
   { name: "Skeleton", docsId: "feedback-skeleton--docs" },
   { name: "Tooltip", docsId: "feedback-tooltip--docs" },
+  { name: "Menu", docsId: "actions-menu--docs" },
 ];
 
 function contractFor(name) {
