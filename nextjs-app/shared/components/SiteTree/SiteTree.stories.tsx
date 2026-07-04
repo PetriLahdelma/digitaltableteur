@@ -26,7 +26,8 @@ const meta: Meta<typeof SiteTree> = {
       control: "boolean",
       description: "Expand every branch on first render",
     },
-  },
+      className: { control: "text", description: "Additional CSS classes on the tree.", table: { category: "Advanced" } }
+},
 };
 
 export default meta;

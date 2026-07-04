@@ -111,7 +111,12 @@ const meta: Meta<typeof List> = {
     className: { control: "text", description: "Custom class name" },
 
     role: { control: "text", description: "ARIA role override" },
-  },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

@@ -55,13 +55,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "id",
-        "ref",
-        "style"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

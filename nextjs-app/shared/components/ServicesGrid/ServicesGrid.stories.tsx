@@ -72,7 +72,15 @@ const servicesGridComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof ServicesGrid> = {
-  argTypes: {},
+  argTypes: {
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS classes on the grid.", table: { category: "Advanced" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
   title: "Site/ServicesGrid",
   component: ServicesGrid,
   tags: ["beta", "!autodocs"],

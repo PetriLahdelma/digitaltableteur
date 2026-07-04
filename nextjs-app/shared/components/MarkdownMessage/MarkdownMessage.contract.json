@@ -40,20 +40,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "\"data-role\"",
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "content",
-        "designSystemTextSize",
-        "fallback",
-        "id",
-        "ref",
-        "renderWithDesignSystem",
-        "style"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

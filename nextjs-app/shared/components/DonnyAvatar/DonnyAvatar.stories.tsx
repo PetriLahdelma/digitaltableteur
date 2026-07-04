@@ -98,7 +98,25 @@ When \`enableSleepDetection\` is true, Donny will:
       control: "boolean",
       table: { defaultValue: { summary: "false" } },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS class", table: { category: "Advanced" } },
+      enableIdleExpressions: { control: "boolean", description: "Enable random idle expressions to make Donny feel more alive", table: { category: "Content" } },
+      enableSleepDetection: { control: "boolean", description: "Enable sleep detection when mouse is idle (default false)", table: { category: "Content" } },
+      id: { table: { disable: true } },
+      idleExpressionInterval: { control: "number", description: "Base interval for idle expressions in ms (default 8000, randomized ±50%)", table: { category: "Content" } },
+      isSpeaking: { control: "boolean", description: "Animate mouth as if speaking (used during streaming responses)", table: { category: "Content" } },
+      onProximityChange: { action: "onProximityChange", table: { disable: true } },
+      onTransitionEnd: { action: "onTransitionEnd", table: { disable: true } },
+      proximitySelectors: { control: "object", description: "CSS selectors for elements to detect proximity to (triggers curious/playful states)", table: { category: "Content" } },
+      proximityThreshold: { control: "number", description: "Distance threshold for proximity detection (default 150px)", table: { category: "Content" } },
+      ref: { table: { disable: true } },
+      sleepDelay: { control: "number", description: "Time in ms before Donny falls asleep (default 150000 = 2.5 min)", table: { category: "Content" } },
+      sleepyDelay: { control: "number", description: "Time in ms before Donny gets sleepy (default 120000 = 2 min)", table: { category: "Content" } },
+      style: { table: { disable: true } },
+      trackMouse: { control: "boolean", description: "Enable eye tracking to follow mouse cursor", table: { category: "Content" } }
+},
 };
 
 export default meta;

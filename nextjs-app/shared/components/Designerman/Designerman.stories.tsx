@@ -4,7 +4,22 @@ import React from "react";
 import Designerman from "@dt/Designerman";
 
 const meta: Meta<typeof Designerman> = {
-  argTypes: {},
+  argTypes: {
+      animations: { control: "object", description: "Optional custom animations", table: { category: "Content" } },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      audioSrc: { control: "text", description: "Optional looping audio track", table: { category: "Content" } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      columns: { control: "number", description: "Number of columns in the sheet", table: { category: "Content" } },
+      frameHeight: { control: "number", description: "Frame height in px", table: { category: "Content" } },
+      frameWidth: { control: "number", description: "Frame width in px", table: { category: "Content" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      scale: { control: "number", description: "Scale multiplier for the sprite", table: { category: "Content" } },
+      spriteSheet: { control: "text", description: "Sprite sheet path (e.g. /sprites/designerman.png)", table: { category: "Content" } },
+      style: { table: { disable: true } }
+},
   title: "Site/Designerman",
   component: Designerman,
   tags: ["beta", "!autodocs"],

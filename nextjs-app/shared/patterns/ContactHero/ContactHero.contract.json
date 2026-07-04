@@ -40,14 +40,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "children",
-        "id",
-        "ref",
-        "style"
-    ],
     "consumers": [],
     "slots": [],
     "schemaVersion": 2,

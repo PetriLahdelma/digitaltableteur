@@ -41,22 +41,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "\"aria-label\"",
-        "allowCopy",
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "code",
-        "id",
-        "language",
-        "maxLines",
-        "onCopy",
-        "ref",
-        "showLineNumbers",
-        "style"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

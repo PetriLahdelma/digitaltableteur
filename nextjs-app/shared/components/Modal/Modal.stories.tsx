@@ -172,7 +172,12 @@ const meta = {
       description: "Ref on the dialog panel for animation hooks",
       table: { category: "Advanced" },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 } satisfies Meta<typeof Modal>;
 
 export default meta;

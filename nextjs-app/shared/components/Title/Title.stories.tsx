@@ -153,7 +153,11 @@ export default {
         "Render only the heading tag and className (no Title size/terminal tokens)",
       table: { defaultValue: { summary: "false" } },
     },
-  },
+      asChild: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 } as Meta<typeof Title>;
 
 export const AllSizes = () => {

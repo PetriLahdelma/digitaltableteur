@@ -71,7 +71,21 @@ const testimonialComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  argTypes: {},
+  argTypes: {
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      avatarUrl: { control: "text", description: "Avatar image URL (optional)", table: { category: "Content" } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS classes", table: { category: "Advanced" } },
+      company: { control: "text", description: "Company name", table: { category: "Content" } },
+      id: { table: { disable: true } },
+      linkedinUrl: { control: "text", description: "LinkedIn URL (optional)", table: { category: "Content" } },
+      name: { control: "text", description: "Name of the person giving the testimonial", table: { category: "Content" } },
+      quote: { control: "text", description: "The testimonial quote text", table: { category: "Content" } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } },
+      title: { control: "text", description: "Title/position of the person", table: { category: "Content" } }
+},
   title: "Site/Testimonial",
   component: Testimonial,
   parameters: {

@@ -63,9 +63,6 @@
         ]
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "id"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

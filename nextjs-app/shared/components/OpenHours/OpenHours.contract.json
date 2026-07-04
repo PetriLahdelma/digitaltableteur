@@ -31,19 +31,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "compact",
-        "date",
-        "highlightToday",
-        "id",
-        "ref",
-        "showAllDays",
-        "style"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

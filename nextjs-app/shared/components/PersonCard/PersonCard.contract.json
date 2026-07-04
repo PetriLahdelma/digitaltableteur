@@ -31,21 +31,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "children",
-        "id",
-        "imageDecoding",
-        "imageLoading",
-        "imageSizes",
-        "imageSrcSet",
-        "loading",
-        "ref",
-        "style",
-        "substackLabel",
-        "substackUrl"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

@@ -174,7 +174,16 @@ const meta: Meta<typeof Switch> = {
       description: "Custom ID for the switch element",
       table: { category: "Accessibility", type: { summary: "string" } },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      isChecked: { table: { disable: true } },
+      isDisabled: { table: { disable: true } },
+      isLoading: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
   args: {
     checked: false,
     loading: false,

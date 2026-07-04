@@ -55,19 +55,6 @@
         ]
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "isChecked",
-        "isDisabled",
-        "isIndeterminate",
-        "name",
-        "ref",
-        "style",
-        "value"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

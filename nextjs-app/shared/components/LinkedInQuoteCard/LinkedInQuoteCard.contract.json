@@ -41,23 +41,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "avatarUrl",
-        "children",
-        "className",
-        "company",
-        "companyLogoUrl",
-        "connectionDegree",
-        "id",
-        "linkedinUrl",
-        "name",
-        "quote",
-        "ref",
-        "style",
-        "title"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

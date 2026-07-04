@@ -46,20 +46,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "animate",
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "height",
-        "id",
-        "label",
-        "lines",
-        "ref",
-        "style",
-        "width"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

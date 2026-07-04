@@ -194,7 +194,11 @@ export default {
         type: { summary: "(value: string) => void" },
       },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 } as Meta;
 
 export const Z_SelectCompliance: StoryFn = () => (

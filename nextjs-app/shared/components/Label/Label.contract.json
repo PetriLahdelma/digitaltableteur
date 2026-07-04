@@ -36,14 +36,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "className",
-        "id",
-        "ref",
-        "style"
-    ],
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",

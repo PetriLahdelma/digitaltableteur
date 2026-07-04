@@ -25,7 +25,14 @@ const meta = {
       control: "text",
       description: "Accessible name for the logo region",
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS classes on the marquee.", table: { category: "Advanced" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
   args: defaultArgs,
 } satisfies Meta<typeof ClientLogoMarquee>;
 

@@ -31,26 +31,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "actionLabelKey",
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "defaultValue",
-        "disabled",
-        "helperTextKey",
-        "id",
-        "initialMode",
-        "inputLabelKey",
-        "onChange",
-        "onSubmit",
-        "placeholderKey",
-        "ref",
-        "stayInInputMode",
-        "style",
-        "value"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

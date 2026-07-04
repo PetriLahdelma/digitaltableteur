@@ -31,20 +31,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "activeClassName",
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "id",
-        "itemClassName",
-        "items",
-        "listClassName",
-        "onNavigate",
-        "ref",
-        "style"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

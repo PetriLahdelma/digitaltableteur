@@ -49,7 +49,14 @@ const meta: Meta<typeof PhoneInput> = {
     },
 
     onChange: { action: "phone change", description: "Change handler" },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      id: { control: "text", description: "Explicit control id (wires the label); auto-generated when omitted.", table: { category: "Advanced" } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

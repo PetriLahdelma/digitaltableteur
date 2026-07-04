@@ -60,17 +60,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "activeKey",
-        "as",
-        "asChild",
-        "children",
-        "defaultActiveKey",
-        "id",
-        "onChange",
-        "ref",
-        "style"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

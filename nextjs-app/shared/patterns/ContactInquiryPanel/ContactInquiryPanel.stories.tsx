@@ -38,7 +38,8 @@ const meta = {
       description: "Optional Donny booking override; defaults from packageId",
       table: { disable: true },
     },
-  },
+      ref: { table: { disable: true } }
+},
   args: {
     initialMode: "message",
     messagePanel: <ContactFormEditorial />,

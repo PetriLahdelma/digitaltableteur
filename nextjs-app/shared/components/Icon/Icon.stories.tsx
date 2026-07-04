@@ -85,7 +85,16 @@ const meta: Meta<typeof Icon> = {
       description:
         "Accessible name when the icon is meaningful (not decorative)",
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      id: { table: { disable: true } },
+      legacyStyle: { control: false, description: "Legacy FontAwesome-style weight string kept for backward compatibility.", table: { category: "Content" } },
+      mirrored: { control: "boolean", description: "Flip the glyph horizontally (RTL-aware icons).", table: { category: "Content" } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

@@ -5,7 +5,19 @@ import EmailSignatureGenerator from "./EmailSignatureGenerator";
 import Badge from "@dt/Badge";
 
 const meta: Meta<typeof EmailSignatureGenerator> = {
-  argTypes: {},
+  argTypes: {
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      companyName: { control: "text", description: "Company name for the signature", table: { category: "Content" } },
+      companyUrl: { control: "text", description: "Company website URL", table: { category: "Content" } },
+      id: { table: { disable: true } },
+      logoUrl: { control: "text", description: "Company logo URL for preview (relative path works)", table: { category: "Content" } },
+      logoUrlFull: { control: "text", description: "Full URL for the logo in generated HTML signature", table: { category: "Content" } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
   title: "Site/EmailSignatureGenerator",
   component: EmailSignatureGenerator,
   tags: ["beta", "!autodocs"],

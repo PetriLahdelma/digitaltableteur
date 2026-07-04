@@ -172,7 +172,18 @@ export default {
       description: "Custom ID for the checkbox element",
       table: { category: "Accessibility", type: { summary: "string" } },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      isChecked: { table: { disable: true } },
+      isDisabled: { table: { disable: true } },
+      isIndeterminate: { table: { disable: true } },
+      name: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } },
+      value: { table: { disable: true } }
+},
 } as Meta<CheckboxProps>;
 
 const StoryLabel = ({ tKey }: { tKey: string }) => {

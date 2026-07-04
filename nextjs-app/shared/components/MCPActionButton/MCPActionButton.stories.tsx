@@ -3,7 +3,17 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import MCPActionButton from "@dt/MCPActionButton";
 
 const meta: Meta<typeof MCPActionButton> = {
-  argTypes: {},
+  argTypes: {
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      id: { table: { disable: true } },
+      payload: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } },
+      toolId: { table: { disable: true } }
+},
   title: "Site/MCPActionButton",
   component: MCPActionButton,
   parameters: {

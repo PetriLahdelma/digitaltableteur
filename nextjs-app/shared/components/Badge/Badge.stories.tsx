@@ -91,12 +91,6 @@ const meta: Meta<typeof Badge> = {
         "ARIA role override; role=\"status\" makes badge updates announce politely (aria-live).",
       table: { category: "Accessibility", type: { summary: "string" } },
     },
-    title: {
-      control: "text",
-      description:
-        "Native title attribute (pointer-hover tooltip). Not a substitute for visible text.",
-      table: { category: "Accessibility" },
-    },
 
     // Advanced
     className: {
@@ -104,12 +98,16 @@ const meta: Meta<typeof Badge> = {
       description: "Additional CSS classes on the badge.",
       table: { category: "Advanced" },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
   args: {
     variant: "primary",
     children: "Badge",
     iconName: "",
-    title: "",
     className: "",
     removable: false,
     square: false,

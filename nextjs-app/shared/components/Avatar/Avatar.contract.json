@@ -45,26 +45,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "clickable",
-        "decoding",
-        "destinationUrl",
-        "id",
-        "imageUrl",
-        "loading",
-        "menuItems",
-        "menuLabel",
-        "placementRefreshKey",
-        "ref",
-        "size",
-        "sizes",
-        "srcSet",
-        "style"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

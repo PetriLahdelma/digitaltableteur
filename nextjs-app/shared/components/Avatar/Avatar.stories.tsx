@@ -37,7 +37,25 @@ export default {
       description:
         "Full name used for fallback initials (e.g., 'First Last' -> 'FL').",
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      clickable: { control: "boolean", description: "Wraps the avatar in a link to destinationUrl.", table: { category: "Content" } },
+      decoding: { control: { type: "inline-radio" }, options: ["auto", "sync", "async"], description: "Native img decoding hint for the photo.", table: { category: "Content" } },
+      destinationUrl: { control: "text", description: "Link target when clickable is set.", table: { category: "Content" } },
+      id: { table: { disable: true } },
+      imageUrl: { control: "text", description: "Photo source; falls back to initials from name when absent.", table: { category: "Content" } },
+      loading: { control: { type: "inline-radio" }, options: ["lazy", "eager"], description: "Native img loading strategy; keep lazy in lists, eager above the fold.", table: { category: "Content", defaultValue: { summary: "lazy" } } },
+      menuItems: { control: "object", description: "When provided, renders an in-place dropdown menu triggered by the avatar", table: { category: "Content" } },
+      menuLabel: { control: "text", description: "Accessible label announced for the avatar menu trigger", table: { category: "Accessibility" } },
+      placementRefreshKey: { control: "number", description: "Optional token that forces menu placement recalculation when changed", table: { category: "Content" } },
+      ref: { table: { disable: true } },
+      size: { control: { type: "inline-radio" }, options: ["sm", "md", "lg", "xl"], description: "Avatar size step.", table: { category: "Appearance", defaultValue: { summary: "md" } } },
+      sizes: { control: "text", description: "Native img sizes attribute for responsive photos.", table: { category: "Content" } },
+      srcSet: { control: "text", description: "Native img srcSet for responsive photo densities.", table: { category: "Content" } },
+      style: { table: { disable: true } }
+},
 } as Meta<typeof Avatar>;
 
 type AvatarStoryArgs = React.ComponentProps<typeof Avatar>;

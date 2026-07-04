@@ -113,7 +113,13 @@ export default {
       description: "Muted style when the labeled control is disabled",
       table: { defaultValue: { summary: "false" } },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      className: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 } as Meta;
 
 type Story = StoryObj<typeof Label>;

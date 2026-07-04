@@ -31,25 +31,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "culprit",
-        "environment",
-        "firstSeen",
-        "id",
-        "isUnhandled",
-        "lastSeen",
-        "level",
-        "permalink",
-        "ref",
-        "status",
-        "style",
-        "title",
-        "userCount"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

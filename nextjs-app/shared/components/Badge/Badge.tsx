@@ -50,8 +50,6 @@ export interface BadgeProps {
   icon?: React.ReactNode;
   /** Square (non-pill) corners. */
   square?: boolean;
-  /** Native tooltip text. */
-  title?: string;
   /**
    * ARIA role. `"status"` makes dynamic updates announce via `aria-live="polite"`
    * (e.g. a live notification count). Omit for static decorative badges.
@@ -72,7 +70,6 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       className,
       square = false,
       size = "md",
-      title,
       role,
       ...rest
     },
@@ -142,7 +139,6 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         ref={ref}
         role={role}
         aria-live={role === "status" ? "polite" : undefined}
-        title={title}
         {...rest}
         className={[
           badgeVariants({ size }),
