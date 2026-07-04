@@ -101,69 +101,9 @@ export default {
     a11y: { test: "error" },
     llm: { schema },
   },
-  argTypes: {
-    level: {
-      control: { type: "select" },
-      options: [1, 2, 3, 4, 5, 6],
-      description: "Semantic heading level (maps to h1–h6 when as is unset)",
-      table: { defaultValue: { summary: "2" } },
-    },
-
-    size: {
-      control: { type: "select" },
-      options: ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
-      description: "Display size token for the heading",
-      table: { defaultValue: { summary: "l" } },
-    },
-
-    children: {
-      control: "text",
-      description: "Heading text (translation key in stories)",
-    },
-
-    className: {
-      control: "text",
-      description: "Additional CSS class names",
-      table: { category: "Advanced" },
-    },
-
-    terminals: {
-      control: { type: "select" },
-      options: ["serif", "sans"],
-      description: "Type family: serif (display) or sans (UI)",
-      table: { defaultValue: { summary: "serif" } },
-    },
-
-    lineHeight: {
-      control: { type: "select" },
-      options: ["tight", "snug", "normal", "relaxed", "loose"],
-      description: "Line height variant",
-      table: { defaultValue: { summary: "normal" } },
-    },
-
-    as: {
-      control: "text",
-      description: "Override the rendered element (h1–h6)",
-      table: { disable: true },
-    },
-
-    unstyled: {
-      control: "boolean",
-      description:
-        "Render only the heading tag and className (no Title size/terminal tokens)",
-      table: { defaultValue: { summary: "false" } },
-    },
-      asChild: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
-  // Seeded to the component defaults so the text/boolean controls render
-  // operable widgets instead of Set-buttons.
-  args: {
-    className: "",
-    unstyled: false,
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts,
+  // registered in .storybook/controls-autogen.json). Author argTypes here only
+  // for bespoke knobs or mapping presets — authored entries win over autogen.
 } as Meta<typeof Title>;
 
 export const AllSizes = () => {

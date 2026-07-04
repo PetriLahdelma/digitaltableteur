@@ -21,6 +21,7 @@ import sv from "@dt/../locales/sv/translation.json";
 import { WipBadge } from "@dt/WipBadge";
 import { CookieConsentProvider } from "../nextjs-app/shared/lib/cookieConsent/CookieConsentContext";
 import { resolveDesignParameters } from "./lib/resolve-figma-from-contract";
+import { autogenArgTypes, autogenArgs } from "./lib/controls-autogen";
 import { DtDocsPage } from "./blocks/DtDocsPage";
 import { dtSourceTransform } from "./blocks/sourceTransform";
 
@@ -447,6 +448,10 @@ const detectVisualRegression = () => {
 const isVisualRegression = detectVisualRegression();
 
 const preview: Preview = {
+  // Contract-driven Controls for components registered in
+  // .storybook/controls-autogen.json — see lib/controls-autogen.ts.
+  argTypesEnhancers: [autogenArgTypes],
+  argsEnhancers: [autogenArgs],
   initialGlobals: {
     forcedColors: "none",
     // When the iframe boots under Playwright's `emulateMedia({ forcedColors: "active" })`,

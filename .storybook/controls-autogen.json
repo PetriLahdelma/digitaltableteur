@@ -1,0 +1,4 @@
+{
+  "$comment": "Components whose Controls panel is DERIVED at runtime from the contract + docgen by .storybook/lib/controls-autogen.ts instead of hand-written meta.argTypes. validate:components skips its static argTypes gate for these; the enforcing instruments are audit:controls (presence, --min on the farm) and audit:controls --effects (0 inert). Append per remediation batch AFTER audits pass.",
+  "components": ["Title", "ButtonGroup", "CodeSnippet"]
+}
