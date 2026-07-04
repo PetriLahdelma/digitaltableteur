@@ -17,9 +17,10 @@ const meta: Meta<typeof Icon> = {
   tags: ["stable", "autodocs"],
   // spin/pulse/mirrored/decorative seeded false (their effective defaults with
   // an ariaLabel set) so the boolean controls render toggles, not Set-buttons.
+  // weight is deliberately NOT seeded: a defined weight arg would permanently
+  // mask legacyStyle (weight ?? legacyStyle) and the select offers "default".
   args: {
     name: "circle-info",
-    weight: "regular",
     size: "lg",
     ariaLabel: "Information",
     spin: false,
@@ -35,9 +36,10 @@ const meta: Meta<typeof Icon> = {
     },
 
     weight: {
-      control: { type: "select" },
-      options: ["thin", "light", "regular", "bold", "fill", "duotone"],
-      description: "Phosphor stroke/fill weight",
+      control: { type: "select", labels: { undefined: "default (regular)" } },
+      options: [undefined, "thin", "light", "regular", "bold", "fill", "duotone"],
+      description:
+        "Phosphor stroke/fill weight. Leave on default to let legacyStyle apply; an explicit weight always wins.",
       table: { defaultValue: { summary: "regular" } },
     },
 
