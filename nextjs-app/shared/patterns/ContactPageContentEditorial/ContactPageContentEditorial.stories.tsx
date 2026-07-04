@@ -18,35 +18,31 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // bookingConfig keeps a labeled preset. bookingPackageId/bookingConfig are
+  // effect-exempt in audit:controls (observable only with a booking provider
+  // configured via env; Storybook runs providerless — resolution unit-tested
+  // in donny-booking).
   argTypes: {
-    className: {
-      control: "text",
-      description: "Page wrapper class names",
-      table: { disable: true },
-    },
-    initialInquiryMode: {
-      control: "select",
-      options: ["message", "book"],
-      description: "Deep-link tab from /contact?mode=book",
-      table: { disable: true },
-    },
-    bookingPackageId: {
-      control: "text",
-      description: "Package slug from /contact?package=…",
-      table: { disable: true },
-    },
     bookingConfig: {
-      control: false,
-      description: "Server-resolved Cal.com/Calendly embed config",
-      table: { disable: true },
+      control: { type: "select" },
+      options: ["resolved", "comingSoon"],
+      mapping: {
+        resolved: undefined,
+        comingSoon: {
+          configured: false,
+          provider: "none",
+          meetingLabel: "Intro call",
+          embedUrl: "",
+          fallbackUrl: "",
+          prefillApplied: false,
+        },
+      },
+      description:
+        "Server-resolved Cal.com/Calendly embed config. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "SiteBookingConfig" } },
     },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: defaultArgs,
 } satisfies Meta<typeof ContactPageContentEditorial>;
 

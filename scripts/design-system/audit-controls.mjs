@@ -88,6 +88,17 @@ const EFFECT_EXEMPT = {
     MarkdownMessage: {
         fallback: 'masked while content renders (shown only when content sanitizes to empty); verified by unit test (renders fallback when content empty)',
     },
+    ContactInquiryPanel: {
+        packageId: 'booking-provider prefill: observable only with a provider configured via env; Storybook runs providerless (coming-soon fallback); resolution verified by donny-booking unit tests',
+        bookingConfig: 'booking-provider override: observable only when the provider embed renders (book tab + configured provider); providerless Storybook shows the coming-soon fallback; verified by donny-booking unit tests',
+    },
+    ContactPageContentEditorial: {
+        bookingPackageId: 'booking-provider prefill: observable only with a provider configured via env; Storybook runs providerless; resolution verified by donny-booking unit tests',
+        bookingConfig: 'booking-provider override: observable only when the provider embed renders; providerless Storybook shows the coming-soon fallback; verified by donny-booking unit tests',
+    },
+    HomeHero: {
+        scrollTargetId: 'behavior-only: consumed by the scroll indicator click handler (scrollIntoView target), no DOM signature at rest; verified by ScrollIndicator unit test (click scrolls the target)',
+    },
 }
 
 // Icon-name text knobs: appending characters makes an UNKNOWN icon (renders
@@ -150,6 +161,11 @@ const FUNCTIONAL = new Set(['text', 'number', 'range', 'checkbox', 'radio-group'
 
 const browser = await chromium.launch()
 const page = await browser.newPage()
+// Looping hero/marquee animations mutate the DOM at rest and read as
+// "unstable canvas" (unprobed). DT components respect prefers-reduced-motion,
+// and a reduced-motion user is a real user — emulate it so those canvases
+// settle and their props get probed for real.
+await page.emulateMedia({ reducedMotion: 'reduce' })
 const results = []
 
 const canvasHtml = async () => {

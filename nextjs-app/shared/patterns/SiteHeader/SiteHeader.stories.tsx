@@ -15,25 +15,24 @@ const meta: Meta<typeof SiteHeader> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite navItems slot keeps a mapping preset.
   argTypes: {
-    className: {
-      control: "text",
-      description: "Optional wrapper class",
-      table: { disable: true },
-    },
-
     navItems: {
-      control: "object",
-      description: "Navigation items (href, label, exact)",
-      table: { disable: true },
+      control: { type: "select" },
+      options: ["site", "twoItems"],
+      mapping: {
+        site: undefined,
+        twoItems: [
+          { href: "/", label: "Home", exact: true },
+          { href: "/work", label: "Work" },
+        ],
+      },
+      description:
+        "Navigation items (href, label, exact); the site default when unset. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "NavItem[]" } },
     },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
 };
 
 export default meta;

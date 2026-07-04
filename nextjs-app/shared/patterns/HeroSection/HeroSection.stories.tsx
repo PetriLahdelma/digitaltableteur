@@ -36,55 +36,11 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (content slot).
   argTypes: {
-    children: { control: false, description: "Hero content slot" },
-    background: {
-      control: "select",
-      options: ["gradient", "solid", "image", "transparent"],
-      description: "Background treatment",
-      table: { defaultValue: { summary: "gradient" } },
-    },
-    backgroundImage: {
-      control: "text",
-      description: "Image URL when background is image",
-    },
-    minHeight: {
-      control: "select",
-      options: ["screen", "hero", "half", "auto"],
-      description: "Minimum block height",
-      table: { defaultValue: { summary: "hero" } },
-    },
-    align: {
-      control: "select",
-      options: ["start", "center", "end"],
-      description: "Vertical alignment of content",
-      table: { defaultValue: { summary: "center" } },
-    },
-    justify: {
-      control: "select",
-      options: ["start", "center", "end"],
-      description: "Horizontal alignment of content",
-    },
-    className: {
-      control: "text",
-      description: "Section class names",
-      table: { disable: true },
-    },
-    as: {
-      control: "text",
-      description: "Polymorphic element",
-      table: { disable: true },
-    },
-    ariaLabel: {
-      control: "text",
-      description: "Accessible name",
-      table: { disable: true },
-    },
-      asChild: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+    children: { control: "text", description: "Hero content slot" },
+  },
   args: defaultArgs,
 } satisfies Meta<typeof HeroSection>;
 
@@ -94,8 +50,15 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ["beta-matrix"],
 };
+// background seeded to "image" with a real URL so backgroundImage has a live
+// path; children seeded as text so the panel control matches what renders.
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  args: {
+    children: "Composable full-bleed marketing hero wrapper.",
+    background: "image",
+    backgroundImage: "/images/portfolio/helsinki-design-system/HDS_logo.png",
+  },
 };
 
 export const Example: Story = {

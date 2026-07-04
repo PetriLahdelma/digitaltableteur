@@ -23,7 +23,9 @@ export interface NavItem {
 }
 
 export interface SiteHeaderProps {
+  /** Navigation items (href, label, exact); the site default when unset. */
   navItems?: NavItem[];
+  /** Optional wrapper class. */
   className?: string;
 }
 

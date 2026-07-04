@@ -41,72 +41,8 @@ const meta: Meta<typeof ServicesBlock> = {
       skip: true, // Skip Vitest tests for this complex pattern component
     },
   },
-  argTypes: {
-    services: {
-      description: "List of services provided in the project",
-      control: false,
-      table: { disable: true },
-    },
-    duration: { description: "Project timeline or duration", control: "text" },
-    tools: {
-      description: "Array of tool icons with labels",
-      control: false,
-      table: { disable: true },
-    },
-    overview: {
-      description: "Overview content (string or React node)",
-      control: false,
-      table: { disable: true },
-    },
-    overviewTitle: {
-      description: "Title for overview section",
-      control: "text",
-      table: { defaultValue: { summary: "Overview" } },
-    },
-    servicesTitle: {
-      description: "Title for services section",
-      control: "text",
-      table: { defaultValue: { summary: "Services" } },
-    },
-    durationTitle: {
-      description: "Title for duration section",
-      control: "text",
-      table: { defaultValue: { summary: "Duration" } },
-    },
-    toolsTitle: {
-      description: "Title for tools section",
-      control: "text",
-      table: { defaultValue: { summary: "Tools" } },
-    },
-    maxWidth: {
-      description: "Maximum content width",
-      control: "select",
-      options: ["sm", "md", "lg", "xl", "full"],
-      table: { defaultValue: { summary: "md" } },
-    },
-    spacing: {
-      description: "Vertical spacing preset",
-      control: "select",
-      options: ["compact", "default", "comfortable", "spacious"],
-      table: { defaultValue: { summary: "comfortable" } },
-    },
-    as: {
-      description: "Semantic HTML element",
-      control: false,
-      table: { disable: true },
-    },
-    className: {
-      description: "Additional CSS class",
-      control: false,
-      table: { disable: true },
-    },
-      ariaLabel: { control: "text", description: "ARIA label for section", table: { category: "Accessibility" } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // composite-slot mapping presets live on the Playground story below.
 };
 
 export default meta;
@@ -386,7 +322,50 @@ export const ArticleVariant: Story = {
   },
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    services: {
+      control: { type: "select" },
+      options: ["six", "three"],
+      mapping: {
+        six: Default.args!.services,
+        three: Default.args!.services!.slice(0, 3),
+      },
+      description:
+        "List of services provided in the project. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ServiceItem[]" } },
+    },
+    tools: {
+      control: { type: "select" },
+      options: ["five", "two"],
+      mapping: {
+        five: Default.args!.tools,
+        two: Default.args!.tools!.slice(0, 2),
+      },
+      description:
+        "Array of tool icons with labels. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ToolIcon[]" } },
+    },
+    overview: {
+      control: { type: "select" },
+      options: ["helsinki", "short"],
+      mapping: {
+        helsinki: Default.args!.overview,
+        short: <Text size="s">A focused summary of the engagement.</Text>,
+      },
+      description:
+        "Overview content (string or React node). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+  },
+  args: {
+    ...Default.args,
+    services: "six" as never,
+    tools: "five" as never,
+    overview: "helsinki" as never,
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

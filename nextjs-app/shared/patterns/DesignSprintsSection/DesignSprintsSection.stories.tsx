@@ -20,28 +20,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    id: {
-      control: "text",
-      description: "Section anchor id",
-      table: { defaultValue: { summary: "design-sprints" } },
-    },
-    className: {
-      control: "text",
-      description: "Section class names",
-      table: { disable: true },
-    },
-    donnyTarget: {
-      control: "text",
-      description: "Donny spotlight target id",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof DesignSprintsSection>;
 

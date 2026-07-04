@@ -26,50 +26,32 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite action slots keep mapping presets.
   argTypes: {
-    title: { control: "text", description: "Main headline" },
-    description: { control: "text", description: "Supporting description" },
     primaryAction: {
-      control: "object",
-      description: "Primary CTA (label + href or onClick)",
+      control: { type: "select" },
+      options: ["bookCall", "letsTalk"],
+      mapping: {
+        bookCall: { label: "Book a call", href: "/contact" },
+        letsTalk: { label: "Let's talk", href: "/contact" },
+      },
+      description:
+        "Primary CTA (label + href or onClick). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ActionItem" } },
     },
     secondaryAction: {
-      control: "object",
-      description: "Optional secondary CTA",
+      control: { type: "select" },
+      options: ["none", "viewWork"],
+      mapping: {
+        none: undefined,
+        viewWork: { label: "View work", href: "/work" },
+      },
+      description:
+        "Optional secondary CTA. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ActionItem" } },
     },
-    background: {
-      control: "select",
-      options: ["primary", "gradient", "dark", "muted", "brand"],
-      description: "Band background treatment",
-      table: { defaultValue: { summary: "primary" } },
-    },
-    align: {
-      control: "radio",
-      options: ["left", "center"],
-      description: "Text alignment",
-      table: { defaultValue: { summary: "center" } },
-    },
-    className: {
-      control: "text",
-      description: "Wrapper class names",
-      table: { disable: true },
-    },
-    id: {
-      control: "text",
-      description: "Section id for in-page anchors",
-      table: { disable: true },
-    },
-    donnyTarget: {
-      control: "text",
-      description: "Donny spotlight target id",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: defaultArgs,
 } satisfies Meta<typeof CTASection>;
 
@@ -81,6 +63,11 @@ export const Default: Story = {
 };
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  // action args are mapping keys resolved by the presets above.
+  args: {
+    primaryAction: "bookCall" as unknown as typeof defaultArgs.primaryAction,
+    secondaryAction: "viewWork" as unknown as typeof defaultArgs.secondaryAction,
+  },
 };
 
 export const Example: Story = {

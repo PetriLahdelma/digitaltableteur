@@ -16,7 +16,9 @@ import styles from "./NewsBulletin.module.css";
 const TRACK_ID = "news-bulletin-track";
 
 export interface NewsBulletinProps {
+  /** Bulletin items; defaults to NEWS_BULLETIN_ITEMS. */
   items?: NewsBulletinItem[];
+  /** Optional wrapper class. */
   className?: string;
 }
 

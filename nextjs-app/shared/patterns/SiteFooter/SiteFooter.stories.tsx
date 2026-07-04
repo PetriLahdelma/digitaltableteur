@@ -15,19 +15,7 @@ const meta: Meta<typeof SiteFooter> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  argTypes: {
-    className: {
-      control: "text",
-      description: "Optional wrapper class",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 };
 
 export default meta;

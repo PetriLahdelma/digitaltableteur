@@ -4,22 +4,9 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import ProofBlock, { ProofMetric } from "./ProofBlock";
 
 const meta: Meta<typeof ProofBlock> = {
-  argTypes: {
-      ariaLabel: { control: "text", description: "Accessible name for the proof section landmark.", table: { category: "Accessibility" } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      caption: { control: "text", description: "Small print under the metrics (source, timeframe).", table: { category: "Content" } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS classes on the section.", table: { category: "Advanced" } },
-      dark: { control: "boolean", description: "Render on the dark band treatment.", table: { category: "Appearance" } },
-      id: { table: { disable: true } },
-      metrics: { control: "object", description: "Proof metrics: { value, label } pairs.", table: { category: "Content" } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      subTitle: { control: "text", description: "Supporting line under the title.", table: { category: "Content" } },
-      tight: { control: "boolean", description: "Reduce the band vertical padding.", table: { category: "Appearance" } },
-      title: { control: "text", description: "Section heading.", table: { category: "Content" } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite metrics slot keeps a mapping preset (defined on Playground
+  // below, after the sample data).
   title: "Patterns/ProofBlock",
   component: ProofBlock,
   tags: ["beta", "autodocs"],
@@ -65,7 +52,26 @@ export const TightDark: Story = {
   },
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    metrics: {
+      control: { type: "select" },
+      options: ["three", "two"],
+      mapping: {
+        three: sampleMetrics,
+        two: sampleMetrics.slice(0, 2),
+      },
+      description:
+        "Proof metrics: { value, label } pairs. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ProofMetric[]" } },
+    },
+  },
+  args: {
+    ...Default.args,
+    metrics: "three" as unknown as ProofMetric[],
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

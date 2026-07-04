@@ -134,6 +134,12 @@ export function ManifestoSection({
 
     // Animate in new active token
     const activeEl = tokenRefs.current.get(activeIdx);
+    // The pulse spawns at the END of an async onComplete chain (~0.8s in). A
+    // plain pulseRef cleanup misses it: when the reduced-motion preference
+    // flips right after mount, cleanup runs while pulseRef is still null and
+    // the pending chain creates the infinite pulse afterwards. Guard the chain
+    // with a cancelled flag and kill in-flight tweens in cleanup.
+    let cancelled = false;
     if (activeEl) {
       gsap.fromTo(
         activeEl,
@@ -144,6 +150,7 @@ export function ManifestoSection({
           duration: 0.5,
           ease: "elastic.out(1, 0.4)",
           onComplete: () => {
+            if (cancelled) return;
             // Settle back and start pulse
             gsap.to(activeEl, {
               scale: 1,
@@ -151,6 +158,7 @@ export function ManifestoSection({
               duration: 0.3,
               ease: "power2.out",
               onComplete: () => {
+                if (cancelled) return;
                 // Continuous gentle pulse on active token
                 pulseRef.current = gsap.to(activeEl, {
                   scale: 1.02,
@@ -166,8 +174,12 @@ export function ManifestoSection({
       );
     }
 
-    // Cleanup on unmount
+    // Cleanup on unmount and on preference/active changes
     return () => {
+      cancelled = true;
+      if (activeEl) {
+        gsap.killTweensOf(activeEl);
+      }
       if (pulseRef.current) {
         pulseRef.current.kill();
         pulseRef.current = null;

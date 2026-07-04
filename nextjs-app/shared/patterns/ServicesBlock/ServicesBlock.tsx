@@ -58,16 +58,24 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
   duration,
   tools = [],
   overview,
-  overviewTitle = "Overview",
-  servicesTitle = "Services",
-  durationTitle = "Duration",
-  toolsTitle = "Tools",
+  // || below, not just destructure defaults: a cleared/seeded Controls text
+  // field passes "" and must fall back the same way — an empty section
+  // heading fails axe (empty-heading).
+  overviewTitle: overviewTitleProp,
+  servicesTitle: servicesTitleProp,
+  durationTitle: durationTitleProp,
+  toolsTitle: toolsTitleProp,
   maxWidth = "md",
   spacing = "comfortable",
   className,
   as = "section",
   ariaLabel,
 }) => {
+  const overviewTitle = overviewTitleProp || "Overview";
+  const servicesTitle = servicesTitleProp || "Services";
+  const durationTitle = durationTitleProp || "Duration";
+  const toolsTitle = toolsTitleProp || "Tools";
+
   const hasServices = services.length > 0;
   const hasDuration = Boolean(duration);
   const hasTools = tools.length > 0;

@@ -64,6 +64,7 @@ const socialLinks: SocialLink[] = [
 ];
 
 export interface SiteFooterProps {
+  /** Optional wrapper class. */
   className?: string;
 }
 

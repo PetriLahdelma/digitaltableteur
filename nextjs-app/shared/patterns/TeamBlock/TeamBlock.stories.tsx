@@ -140,65 +140,8 @@ const meta: Meta<typeof TeamBlockForStorybook> = {
       skip: true,
     },
   },
-  argTypes: {
-    members: {
-      description: "Array of team members with names, titles, and images",
-      control: false,
-      table: { disable: true },
-    },
-    sectionTitle: {
-      description: "Main title for the team section",
-      control: { type: "text" },
-    },
-    description: {
-      description: "Optional description or introduction text",
-      control: { type: "text" },
-    },
-    columns: {
-      description: "Number of columns for desktop layout",
-      control: { type: "select" },
-      options: [2, 3, 4, 5, 6],
-    },
-    backgroundColor: {
-      description: "Background color variant",
-      control: { type: "select" },
-      options: ["light", "white", "transparent"],
-    },
-    maxWidth: {
-      description: "Maximum width constraint",
-      control: { type: "select" },
-      options: ["sm", "md", "lg", "xl", "full"],
-    },
-    spacing: {
-      description: "Spacing variant",
-      control: { type: "select" },
-      options: ["compact", "default", "comfortable", "spacious"],
-    },
-    as: {
-      description: "Semantic HTML element to use",
-      control: false,
-      table: { disable: true },
-    },
-    roundImages: {
-      description: "Show member images as circles",
-      control: { type: "boolean" },
-    },
-    className: {
-      description: "Additional CSS class",
-      control: false,
-      table: { disable: true },
-    },
-    ariaLabel: {
-      description: "Accessible label for the section",
-      control: false,
-      table: { disable: true },
-    },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // composite-slot mapping presets live on the Playground story below.
 };
 
 export default meta;
@@ -506,7 +449,35 @@ export const MinimalTeam: Story = {
   },
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    members: {
+      control: { type: "select" },
+      options: ["small", "large"],
+      mapping: { small: smallTeam, large: largeTeam },
+      description:
+        "Team members (name, role, image). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "TeamMember[]" } },
+    },
+    description: {
+      control: { type: "select" },
+      options: ["none", "intro"],
+      mapping: {
+        none: undefined,
+        intro: <Text size="s">The people behind the system.</Text>,
+      },
+      description:
+        "Optional lead copy under the section title. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+  },
+  args: {
+    ...Default.args,
+    members: "small" as never,
+    description: "intro" as never,
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

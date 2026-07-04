@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { ReactNode } from "react";
 import { ContactFormEditorial } from "@dt/ContactFormEditorial";
 import { ContactInquiryPanel } from "./ContactInquiryPanel";
 import contract from "./ContactInquiryPanel.contract.json";
@@ -17,32 +18,45 @@ const meta = {
     },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // messagePanel keeps a mapping preset. packageId/bookingConfig are
+  // effect-exempt in audit:controls (observable only with a booking provider
+  // configured via env; Storybook runs providerless and shows the coming-soon
+  // fallback — resolution is unit-tested in donny-booking).
   argTypes: {
-    initialMode: {
-      control: "radio",
-      options: ["message", "book"],
-      description: "Initial tab selection",
-    },
-    packageId: {
-      control: "text",
-      description: "Optional pricing package id for booking prefill",
-      table: { disable: true },
-    },
     messagePanel: {
-      control: false,
-      description: "Editorial contact form slot",
-      table: { disable: true },
+      control: { type: "select" },
+      options: ["editorialForm", "placeholder"],
+      mapping: {
+        editorialForm: <ContactFormEditorial />,
+        placeholder: <p>Message form slot</p>,
+      },
+      description:
+        "Editorial contact form slot. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
     bookingConfig: {
-      control: false,
-      description: "Optional Donny booking override; defaults from packageId",
-      table: { disable: true },
+      control: { type: "select" },
+      options: ["resolved", "comingSoon"],
+      mapping: {
+        resolved: undefined,
+        comingSoon: {
+          configured: false,
+          provider: "none",
+          meetingLabel: "Intro call",
+          embedUrl: "",
+          fallbackUrl: "",
+          prefillApplied: false,
+        },
+      },
+      description:
+        "Optional booking override; defaults from packageId. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "SiteBookingConfig" } },
     },
-      ref: { table: { disable: true } }
-},
+  },
   args: {
     initialMode: "message",
-    messagePanel: <ContactFormEditorial />,
+    messagePanel: "editorialForm" as unknown as ReactNode,
   },
 } satisfies Meta<typeof ContactInquiryPanel>;
 

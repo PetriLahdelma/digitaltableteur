@@ -17,52 +17,8 @@ const meta: Meta<typeof StoryBlock> = {
     a11y: { test: "error" },
     layout: "fullscreen",
   },
-  argTypes: {
-    content: {
-      description: "Narrative content paragraphs",
-      control: false,
-      table: { disable: true },
-    },
-    images: {
-      description: "Image or images to display",
-      control: false,
-      table: { disable: true },
-    },
-
-    imageLayout: {
-      control: { type: "select" },
-      options: ["single", "grid", "none"],
-      description: "Image layout: single (1 col), grid (2 col), or none",
-    },
-
-    backgroundColor: {
-      control: { type: "select" },
-      options: ["light", "white", "transparent"],
-      description: "Background color variant",
-    },
-
-    maxWidth: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg", "xl", "full"],
-      description: "Maximum width constraint",
-    },
-
-    spacing: {
-      control: { type: "select" },
-      options: ["compact", "default", "comfortable", "spacious"],
-      description: "Spacing variant",
-    },
-      ariaLabel: { control: "text", description: "Accessible label for the section", table: { category: "Accessibility" } },
-      as: { control: { type: "inline-radio" }, options: ["section", "article", "div"], description: "Semantic HTML element to use", table: { category: "Advanced" } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS class", table: { category: "Advanced" } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      subtitle: { control: "text", description: "Optional subtitle/category label", table: { category: "Content" } },
-      title: { control: "text", description: "Main title of the story section", table: { category: "Content" } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // composite-slot mapping presets live on the Playground story below.
 };
 
 export default meta;
@@ -367,7 +323,43 @@ export const RichContent: Story = {
   },
 };
 
-export const Playground = Default;
+// images seeded + imageLayout "single" so the image props have a live path.
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    content: {
+      control: { type: "select" },
+      options: ["twoParagraphs", "oneParagraph"],
+      mapping: {
+        twoParagraphs: Default.args!.content,
+        oneParagraph: Default.args!.content!.slice(0, 1),
+      },
+      description:
+        "Story paragraphs (React nodes). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode[]" } },
+    },
+    images: {
+      control: { type: "select" },
+      options: ["none", "single"],
+      mapping: {
+        none: undefined,
+        single: {
+          src: "/images/portfolio/helsinki-design-system/component-structure.png",
+          alt: "Component structure diagram",
+        },
+      },
+      description:
+        "Image or images to display. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "StoryImage | StoryImage[]" } },
+    },
+  },
+  args: {
+    ...Default.args,
+    content: "twoParagraphs" as never,
+    images: "single" as never,
+    imageLayout: "single",
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

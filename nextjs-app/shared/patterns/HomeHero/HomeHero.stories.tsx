@@ -21,24 +21,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    scrollTargetId: {
-      control: "text",
-      description: "ID of the section targeted by the scroll indicator",
-      table: { defaultValue: { summary: "services" } },
-    },
-    className: {
-      control: "text",
-      description: "Additional CSS class names",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof HomeHero>;
 

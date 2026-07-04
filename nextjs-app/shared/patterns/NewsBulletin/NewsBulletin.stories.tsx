@@ -17,16 +17,29 @@ const meta = {
     },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite items slot keeps a mapping preset.
   argTypes: {
-    className: {
-      control: "text",
-      description: "Optional wrapper class",
-      table: { disable: true },
-    },
     items: {
-      control: "object",
-      description: "Bulletin items (defaults to NEWS_BULLETIN_ITEMS)",
-      table: { disable: true },
+      control: { type: "select" },
+      options: ["site", "mixedLinks"],
+      mapping: {
+        site: NEWS_BULLETIN_ITEMS,
+        mixedLinks: [
+          {
+            ...NEWS_BULLETIN_ITEMS[0],
+            link: { kind: "internal", href: "/work" },
+          },
+          {
+            ...NEWS_BULLETIN_ITEMS[1],
+            link: { kind: "external", href: "https://www.grandone.fi/" },
+          },
+          NEWS_BULLETIN_ITEMS[2],
+        ],
+      },
+      description:
+        "Bulletin items (defaults to NEWS_BULLETIN_ITEMS). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "NewsBulletinItem[]" } },
     },
   },
 } satisfies Meta<typeof NewsBulletin>;
@@ -40,6 +53,10 @@ export const Default: Story = {
 
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  // items arg is a mapping key resolved by the preset above.
+  args: {
+    items: "site" as unknown as typeof NEWS_BULLETIN_ITEMS,
+  },
 };
 
 export const Example: Story = {

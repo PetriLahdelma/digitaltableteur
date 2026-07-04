@@ -1,0 +1,12 @@
+- status: Work in progress (beta)
+- region "Welcome to Digitaltableteur hero section":
+  - heading "Welcome to Digitaltableteur" [level=1]
+  - paragraph: Creative Development & Design
+  - paragraph: Building digital experiences that combine aesthetic excellence with functional innovation. We specialize in design systems, web development, and brand strategy.
+  - link "Start a Project":
+    - /url: /contact
+    - button "Start a Project"
+  - link "View Our Work":
+    - /url: /work
+    - button "View Our Work"
+  - img "Design portfolio showcase"

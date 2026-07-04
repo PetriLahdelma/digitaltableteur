@@ -1,5 +1,8 @@
 /** Props for Footer. */
-export interface FooterProps { className?: string }
+export interface FooterProps {
+  /** Additional CSS classes on the footer. */
+  className?: string;
+}
 
 import styles from "./Footer.module.css";
 import Grid from "@dt/Grid";
@@ -10,12 +13,14 @@ import Icon from "@dt/Icon";
 /**
  * Footer component.
  */
-export const Footer = () => {
+export const Footer = ({ className }: FooterProps = {}) => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={styles.footer}>
+    <footer
+      className={className ? `${styles.footer} ${className}` : styles.footer}
+    >
       <Grid columns={3} className={styles.footerGrid}>
         <div className={styles.companyInfo}>
           <h2>
