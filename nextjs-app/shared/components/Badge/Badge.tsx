@@ -83,16 +83,17 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     const semanticStatus =
       tone && tone !== "neutral" ? TONE_TO_STATUS[tone] : undefined;
 
+    // Icons track the badge's size step: sm 16px, md 24px, lg 32px.
+    const badgeIconSize = { sm: "xs", md: "md", lg: "lg" } as const;
+
     let resolvedIcon: React.ReactNode = icon;
     if (resolvedIcon == null && tone && semanticStatus) {
       // The badge already sets a contrast-correct text color per variant×tone,
-      // so the semantic icon inherits it via currentColor. The icon follows
-      // the badge's size step so it never inflates the pill height.
-      const statusIconSize = { sm: "2xs", md: "xs", lg: "sm" } as const;
+      // so the semantic icon inherits it via currentColor.
       resolvedIcon = (
         <Icon
           name={STATUS_ICON_NAMES[semanticStatus]}
-          size={statusIconSize[size]}
+          size={badgeIconSize[size]}
           color="currentColor"
           decorative
         />
@@ -119,6 +120,19 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         );
       }
       resolvedIcon = null;
+    }
+    // Custom DT Icons without an explicit size follow the size step too, so
+    // sm/md/lg badges scale their icons instead of all rendering Icon's 24px
+    // default. An explicit consumer size always wins.
+    if (
+      isValidElement(resolvedIcon) &&
+      resolvedIcon.type === Icon &&
+      (resolvedIcon.props as { size?: string }).size == null
+    ) {
+      resolvedIcon = React.cloneElement(
+        resolvedIcon as React.ReactElement<{ size?: string }>,
+        { size: badgeIconSize[size] },
+      );
     }
 
     if (!visible) return null;
