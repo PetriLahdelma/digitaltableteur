@@ -71,7 +71,11 @@ const meta = {
       description: "Polymorphic element",
       table: { disable: true },
     },
-  },
+      asChild: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
   args: defaultArgs,
 } satisfies Meta<typeof Stack>;
 

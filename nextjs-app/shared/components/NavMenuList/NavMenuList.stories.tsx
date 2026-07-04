@@ -21,7 +21,20 @@ const navMenuListComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof NavMenuList> = {
-  argTypes: {},
+  argTypes: {
+      activeClassName: { control: "text", description: "Class applied to the item matching the current route.", table: { category: "Content" } },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      id: { table: { disable: true } },
+      itemClassName: { control: "text", description: "Class applied to every menu item.", table: { category: "Content" } },
+      items: { control: "object", description: "Menu entries: { href, label }.", table: { category: "Content" } },
+      listClassName: { control: "text", description: "Class applied to the list element.", table: { category: "Content" } },
+      onNavigate: { action: "onNavigate", table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
   title: "Site/NavMenuList",
   component: NavMenuList,
   tags: ["beta", "!autodocs"],

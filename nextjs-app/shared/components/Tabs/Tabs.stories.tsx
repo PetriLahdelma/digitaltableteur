@@ -135,7 +135,16 @@ const meta: Meta<typeof Tabs> = {
         "⚠️ Deprecated: Use defaultActiveTab instead. Will be removed in v2.0.0",
       table: { category: "Deprecated", type: { summary: "string" } },
     },
-  },
+      activeKey: { table: { disable: true } },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      defaultActiveKey: { table: { disable: true } },
+      id: { table: { disable: true } },
+      onChange: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 export default meta;
 

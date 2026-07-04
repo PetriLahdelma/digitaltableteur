@@ -128,7 +128,11 @@ export default {
     className: { control: "text", description: "Custom class name" },
 
     children: { control: "text", description: "Text content" },
-  },
+      asChild: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 } as Meta;
 
 type Story = StoryObj<typeof Text>;

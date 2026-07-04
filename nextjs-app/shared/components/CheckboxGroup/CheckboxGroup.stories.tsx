@@ -101,7 +101,16 @@ export default {
       description: "Shows select-all master checkbox",
       table: { defaultValue: { summary: "true" } },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS classes on the group.", table: { category: "Advanced" } },
+      defaultSelected: { control: "object", description: "Initially selected option values (uncontrolled).", table: { category: "Content" } },
+      masterLabel: { control: "text", description: "Label for the select-all master checkbox.", table: { category: "Accessibility" } },
+      onChange: { action: "onChange", table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 } as Meta<CheckboxGroupProps>;
 
 const CheckboxGroupStory: React.FC<CheckboxGroupProps> = (args) => {

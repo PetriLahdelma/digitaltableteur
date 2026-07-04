@@ -44,26 +44,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "enableIdleExpressions",
-        "enableSleepDetection",
-        "id",
-        "idleExpressionInterval",
-        "isSpeaking",
-        "onProximityChange",
-        "onTransitionEnd",
-        "proximitySelectors",
-        "proximityThreshold",
-        "ref",
-        "sleepDelay",
-        "sleepyDelay",
-        "style",
-        "trackMouse"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

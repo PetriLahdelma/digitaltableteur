@@ -58,7 +58,11 @@ const meta = {
       description: "Optional classes on the group wrapper",
       table: { category: "Advanced" },
     },
-  },
+      activeButtonClassName: { control: false, description: "Class override for the current-language trigger.", table: { category: "Advanced" } },
+      buttonClassName: { control: false, description: "Base class override applied to every language button.", table: { category: "Advanced" } },
+      floatedButtonClassName: { control: false, description: "Class override for the fanned-out tray options.", table: { category: "Advanced" } },
+      openTriggerClassName: { control: false, description: "Class override for the trigger while the tray is open.", table: { category: "Advanced" } }
+},
 } satisfies Meta<typeof LanguageSwitcher>;
 
 export default meta;

@@ -71,7 +71,19 @@ const openHoursComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof OpenHours> = {
-  argTypes: {},
+  argTypes: {
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      compact: { control: "boolean", description: "Dense single-line layout for cards.", table: { category: "Content" } },
+      date: { control: false, description: "Reference date for the open-now calculation (defaults to now).", table: { category: "Content" } },
+      highlightToday: { control: "boolean", description: "Emphasize the current weekday row.", table: { category: "Content" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      showAllDays: { control: "boolean", description: "List all seven days instead of collapsing identical ranges.", table: { category: "Content" } },
+      style: { table: { disable: true } }
+},
   title: "Site/OpenHours",
   component: OpenHours,
   tags: ["beta", "!autodocs"],

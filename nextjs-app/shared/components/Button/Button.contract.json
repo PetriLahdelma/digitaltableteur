@@ -102,15 +102,6 @@
         ]
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "form",
-        "id",
-        "name",
-        "ref",
-        "rel",
-        "type",
-        "value"
-    ],
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",

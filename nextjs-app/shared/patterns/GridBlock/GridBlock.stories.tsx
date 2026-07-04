@@ -56,7 +56,14 @@ const meta: Meta<typeof GridBlock> = {
       options: ["compact", "default", "comfortable", "spacious"],
       description: "Spacing variant",
     },
-  },
+      as: { control: { type: "inline-radio" }, options: ["section", "div", "article"], description: "Semantic HTML element to use", table: { category: "Advanced" } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS class", table: { category: "Advanced" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

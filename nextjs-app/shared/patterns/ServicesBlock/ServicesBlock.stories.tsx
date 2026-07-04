@@ -100,7 +100,13 @@ const meta: Meta<typeof ServicesBlock> = {
       control: false,
       table: { disable: true },
     },
-  },
+      ariaLabel: { control: "text", description: "ARIA label for section", table: { category: "Accessibility" } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

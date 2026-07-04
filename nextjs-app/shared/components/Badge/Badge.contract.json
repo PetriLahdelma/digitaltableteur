@@ -53,11 +53,11 @@
         "keyboard": [],
         "ariaRequirements": [
             "meaningful text or aria-label when icon-only",
-            "do not rely on colour alone — pair tone with the icon"
+            "do not rely on colour alone \u2014 pair tone with the icon"
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-06-18 — platinum pass: variant/tone API, sm/md/lg sizes, contrast and forced-colors verified.",
+        "reviewedNote": "2026-06-18 \u2014 platinum pass: variant/tone API, sm/md/lg sizes, contrast and forced-colors verified.",
         "forcedColorsVerified": true,
         "accessibilityTreeVerified": true,
         "realBrowserForcedColorsVerified": true
@@ -70,13 +70,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "id",
-        "ref",
-        "style"
-    ],
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
@@ -189,17 +182,13 @@
             "optional": true,
             "type": "boolean"
         },
-        "title": {
-            "optional": true,
-            "type": "string"
-        },
         "role": {
             "optional": true,
             "type": "\"status\""
         }
     },
     "forbiddenUse": [
-        "rely on colour alone to convey tone — pair it with the icon or include",
+        "rely on colour alone to convey tone \u2014 pair it with the icon or include",
         "nest a Button inside a Badge beyond the built-in removable affordance."
     ],
     "composesWith": [

@@ -4,7 +4,26 @@ import TransformingActionInput from "@dt/TransformingActionInput";
 import { expect, userEvent, waitFor, within } from "storybook/test";
 
 const meta: Meta<typeof TransformingActionInput> = {
-  argTypes: {},
+  argTypes: {
+      actionLabelKey: { control: "text", description: "Translation key for the trigger label", table: { category: "Accessibility" } },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Optional className passthrough", table: { category: "Advanced" } },
+      defaultValue: { control: "text", description: "Default value when uncontrolled", table: { category: "Content" } },
+      disabled: { control: "boolean", description: "Disabled state for both button and input", table: { category: "Content" } },
+      helperTextKey: { control: "text", description: "Translation key for helper text below the input", table: { category: "Content" } },
+      id: { table: { disable: true } },
+      initialMode: { control: { type: "inline-radio" }, options: ["button", "input"], description: "Initial surface mode before transformation", table: { category: "Content" } },
+      inputLabelKey: { control: "text", description: "Translation key for the input label", table: { category: "Accessibility" } },
+      onChange: { action: "onChange", table: { disable: true } },
+      onSubmit: { action: "onSubmit", table: { disable: true } },
+      placeholderKey: { control: "text", description: "Translation key for the placeholder", table: { category: "Content" } },
+      ref: { table: { disable: true } },
+      stayInInputMode: { control: "boolean", description: "When true, retains the input after submit instead of returning to button mode", table: { category: "Content" } },
+      style: { table: { disable: true } },
+      value: { control: "text", description: "Optional controlled value", table: { category: "Content" } }
+},
   title: "Site/TransformingActionInput",
   component: TransformingActionInput,
   parameters: {

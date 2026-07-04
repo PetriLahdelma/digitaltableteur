@@ -48,7 +48,19 @@ const meta = {
       description: "Disables the input",
       table: { defaultValue: { summary: "false" } },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      defaultValue: { control: "text", description: "Initial value for uncontrolled component", table: { category: "Content" } },
+      id: { table: { disable: true } },
+      isDisabled: { table: { disable: true } },
+      onChange: { action: "onChange", table: { disable: true } },
+      onValueChange: { action: "onValueChange", table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } },
+      value: { control: "text", description: "Controlled value; pair with onChange.", table: { category: "State" } }
+},
 } satisfies Meta<typeof TextInput>;
 
 export default meta;

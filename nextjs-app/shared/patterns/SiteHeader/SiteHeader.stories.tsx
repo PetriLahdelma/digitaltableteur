@@ -27,7 +27,13 @@ const meta: Meta<typeof SiteHeader> = {
       description: "Navigation items (href, label, exact)",
       table: { disable: true },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

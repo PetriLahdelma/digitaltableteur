@@ -31,22 +31,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "animations",
-        "as",
-        "asChild",
-        "audioSrc",
-        "children",
-        "className",
-        "columns",
-        "frameHeight",
-        "frameWidth",
-        "id",
-        "ref",
-        "scale",
-        "spriteSheet",
-        "style"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

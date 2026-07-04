@@ -41,12 +41,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "activeButtonClassName",
-        "buttonClassName",
-        "floatedButtonClassName",
-        "openTriggerClassName"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

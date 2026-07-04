@@ -38,7 +38,14 @@ const meta: Meta<typeof Link> = {
     },
     children: { control: "text", description: "Link text." },
     className: { control: "text", description: "Additional CSS classes." },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      rel: { table: { disable: true } },
+      style: { table: { disable: true } },
+      target: { table: { disable: true } }
+},
 };
 
 export default meta;

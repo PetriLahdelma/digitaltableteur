@@ -4,7 +4,22 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import ProofBlock, { ProofMetric } from "./ProofBlock";
 
 const meta: Meta<typeof ProofBlock> = {
-  argTypes: {},
+  argTypes: {
+      ariaLabel: { control: "text", description: "Accessible name for the proof section landmark.", table: { category: "Accessibility" } },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      caption: { control: "text", description: "Small print under the metrics (source, timeframe).", table: { category: "Content" } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS classes on the section.", table: { category: "Advanced" } },
+      dark: { control: "boolean", description: "Render on the dark band treatment.", table: { category: "Appearance" } },
+      id: { table: { disable: true } },
+      metrics: { control: "object", description: "Proof metrics: { value, label } pairs.", table: { category: "Content" } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } },
+      subTitle: { control: "text", description: "Supporting line under the title.", table: { category: "Content" } },
+      tight: { control: "boolean", description: "Reduce the band vertical padding.", table: { category: "Appearance" } },
+      title: { control: "text", description: "Section heading.", table: { category: "Content" } }
+},
   title: "Patterns/ProofBlock",
   component: ProofBlock,
   tags: ["beta", "autodocs"],

@@ -110,7 +110,14 @@ const meta = {
       control: "object",
       description: "Ordered list of share channels",
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 } satisfies Meta<typeof SocialShare>;
 
 export default meta;

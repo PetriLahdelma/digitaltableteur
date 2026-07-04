@@ -5,7 +5,15 @@ import Footer from "./Footer";
 import { ThemeProvider } from "@dt/ThemeProvider";
 
 const meta: Meta<typeof Footer> = {
-  argTypes: {},
+  argTypes: {
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS classes on the footer.", table: { category: "Advanced" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
   title: "Patterns/Footer",
   component: Footer,
   tags: ["beta", "autodocs"],

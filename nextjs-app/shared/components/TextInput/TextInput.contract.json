@@ -58,20 +58,6 @@
         ]
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "defaultValue",
-        "id",
-        "isDisabled",
-        "onChange",
-        "onValueChange",
-        "ref",
-        "style",
-        "value"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

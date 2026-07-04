@@ -95,7 +95,14 @@ const meta: Meta<typeof Toast> = {
       description: "Close callback",
       table: { category: "Behavior", type: { summary: "() => void" } },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 export default meta;
 type Story = StoryObj<typeof Toast>;

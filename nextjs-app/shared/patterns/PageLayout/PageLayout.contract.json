@@ -42,18 +42,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "ariaLabel",
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "columns",
-        "id",
-        "ref",
-        "role",
-        "style"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

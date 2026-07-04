@@ -52,7 +52,17 @@ const meta: Meta<typeof StoryBlock> = {
       options: ["compact", "default", "comfortable", "spacious"],
       description: "Spacing variant",
     },
-  },
+      ariaLabel: { control: "text", description: "Accessible label for the section", table: { category: "Accessibility" } },
+      as: { control: { type: "inline-radio" }, options: ["section", "article", "div"], description: "Semantic HTML element to use", table: { category: "Advanced" } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS class", table: { category: "Advanced" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } },
+      subtitle: { control: "text", description: "Optional subtitle/category label", table: { category: "Content" } },
+      title: { control: "text", description: "Main title of the story section", table: { category: "Content" } }
+},
 };
 
 export default meta;

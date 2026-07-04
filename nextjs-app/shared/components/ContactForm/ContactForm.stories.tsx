@@ -89,7 +89,15 @@ const meta: Meta<typeof ContactForm> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  argTypes: {},
+  argTypes: {
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

@@ -38,7 +38,17 @@ const meta: Meta<typeof PageLayout> = {
     grid: { control: "boolean", description: "Enable 12-column grid system" },
 
     withMargins: { control: "boolean", description: "Apply page margins" },
-  },
+      ariaLabel: { control: "text", description: "ARIA label for accessibility", table: { category: "Accessibility" } },
+      as: { control: { type: "inline-radio" }, options: ["div", "main", "section", "article"], description: "Semantic HTML element to use for the container", table: { category: "Advanced", defaultValue: { summary: "\"div\"" } } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS class name", table: { category: "Advanced" } },
+      columns: { control: "number", description: "Number of columns for grid layout (only applies when grid=true) Automatically responsive: 4 cols mobile, 8 cols tablet, 12 cols desktop", table: { category: "Content" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      role: { control: "text", description: "ARIA role for accessibility", table: { category: "Accessibility" } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

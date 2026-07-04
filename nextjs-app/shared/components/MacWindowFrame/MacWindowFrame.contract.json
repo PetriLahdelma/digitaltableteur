@@ -40,18 +40,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "actionLabelKey",
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "id",
-        "onAction",
-        "ref",
-        "style",
-        "titleKey"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

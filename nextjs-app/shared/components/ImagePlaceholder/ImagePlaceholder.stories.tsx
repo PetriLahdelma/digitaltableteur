@@ -80,7 +80,15 @@ const meta: Meta<typeof ImagePlaceholder> = {
     text: { control: { type: "text" }, description: "Custom text to display" },
 
     caption: { control: { type: "text" }, description: "Caption below image" },
-  },
+      alt: { control: "text", description: "Alt text for accessibility", table: { category: "Content" } },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS class", table: { category: "Advanced" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

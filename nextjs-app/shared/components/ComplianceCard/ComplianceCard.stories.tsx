@@ -19,7 +19,19 @@ const meta = {
     controls: { disable: true },
   },
   tags: ["beta", "!autodocs"],
-  argTypes: {},
+  argTypes: {
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS classes on the card.", table: { category: "Advanced" } },
+      id: { table: { disable: true } },
+      lastReviewed: { control: "text", description: "Date when compliance was last reviewed (format: YYYY-MM-DD or Date object)", table: { category: "Content" } },
+      ref: { table: { disable: true } },
+      rules: { control: "object", description: "Checklist rows: { id, rule, status, details }.", table: { category: "Content" } },
+      style: { table: { disable: true } },
+      title: { control: "text", description: "Card heading (e.g. Compliance: 11/11).", table: { category: "Content" } },
+      titleIcon: { table: { disable: true } }
+},
 } satisfies Meta<typeof ComplianceCard>;
 
 export default meta;

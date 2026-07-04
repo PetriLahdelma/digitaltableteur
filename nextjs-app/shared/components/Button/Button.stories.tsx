@@ -146,7 +146,14 @@ export default {
       description: "Additional CSS classes merged onto the rendered element.",
       table: { category: "Advanced", type: { summary: "string" } },
     },
-  },
+      form: { table: { disable: true } },
+      id: { table: { disable: true } },
+      name: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      rel: { table: { disable: true } },
+      type: { table: { disable: true } },
+      value: { table: { disable: true } }
+},
 } as Meta;
 
 type Story = StoryObj<typeof Button>;

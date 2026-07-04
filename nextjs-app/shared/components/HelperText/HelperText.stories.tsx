@@ -33,7 +33,11 @@ const meta: Meta<typeof HelperText> = {
     },
 
     className: { control: "text", description: "Additional CSS class name" },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

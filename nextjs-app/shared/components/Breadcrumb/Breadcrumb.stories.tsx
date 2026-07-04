@@ -28,7 +28,14 @@ const meta: Meta<typeof Breadcrumb> = {
       description: "Accessible name for the nav landmark",
       table: { defaultValue: { summary: "Breadcrumb" } },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

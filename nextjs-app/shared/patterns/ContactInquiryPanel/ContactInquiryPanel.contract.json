@@ -72,9 +72,6 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "ref"
-    ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {

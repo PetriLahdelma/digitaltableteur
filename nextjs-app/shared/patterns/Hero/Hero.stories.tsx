@@ -101,7 +101,15 @@ const meta: Meta<typeof Hero> = {
       control: false,
       table: { disable: true },
     },
-  },
+      ariaLabel: { control: "text", description: "ARIA label for hero section", table: { category: "Accessibility" } },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Custom CSS class for styling extensions", table: { category: "Advanced" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

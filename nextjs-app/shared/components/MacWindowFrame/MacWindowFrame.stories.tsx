@@ -10,7 +10,17 @@ const meta: Meta<typeof MacWindowFrame> = {
       description: "Chrome density inside the window frame",
       table: { defaultValue: { summary: "compact" } },
     },
-  },
+      actionLabelKey: { control: "text", description: "Optional label for the action button", table: { category: "Accessibility" } },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Optional className passthrough", table: { category: "Advanced" } },
+      id: { table: { disable: true } },
+      onAction: { action: "onAction", table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } },
+      titleKey: { control: "text", description: "Translation key for the window title", table: { category: "Content" } }
+},
   title: "Layout/MacWindowFrame",
   component: MacWindowFrame,
   parameters: {

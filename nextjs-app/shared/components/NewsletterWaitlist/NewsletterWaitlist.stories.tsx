@@ -28,7 +28,15 @@ const meta: Meta<typeof NewsletterWaitlist> = {
       description: "Optional wrapper class",
       table: { disable: true },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      id: { table: { disable: true } },
+      onError: { action: "onError", table: { disable: true } },
+      onSuccess: { action: "onSuccess", table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 };
 
 export default meta;

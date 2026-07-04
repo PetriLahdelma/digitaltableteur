@@ -70,7 +70,14 @@ export default {
       action: "file change",
       description: "Called when a file is selected or cleared",
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      className: { control: "text", description: "Additional CSS classes on the field.", table: { category: "Advanced" } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
 } as Meta<typeof FileUpload>;
 
 const Template: StoryFn<typeof FileUpload> = (

@@ -197,7 +197,20 @@ export default {
       description: "Class Name",
       control: "text",
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      id: { table: { disable: true } },
+      imageDecoding: { control: { type: "inline-radio" }, options: ["auto", "sync", "async"], description: "Native img decoding hint for the portrait.", table: { category: "Content" } },
+      imageLoading: { control: { type: "inline-radio" }, options: ["lazy", "eager"], description: "Native img loading strategy for the portrait.", table: { category: "Content", defaultValue: { summary: "lazy" } } },
+      imageSizes: { control: "text", description: "Native img sizes attribute for the portrait.", table: { category: "Content" } },
+      imageSrcSet: { control: "text", description: "Native img srcSet for responsive portrait densities.", table: { category: "Content" } },
+      loading: { control: "boolean", description: "Show skeleton placeholders while content is loading", table: { category: "Content" } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } },
+      substackLabel: { control: "text", description: "Accessible name for the Substack link.", table: { category: "Accessibility" } },
+      substackUrl: { control: "text", description: "Substack profile URL; the link renders only when set.", table: { category: "Content" } }
+},
 } as Meta<typeof PersonCard>;
 
 export const Z_PersonCardCompliance: StoryFn = () => (

@@ -90,7 +90,8 @@ const meta = {
       description: "Classes on the field wrapper",
       table: { category: "Advanced" },
     },
-  },
+      id: { control: "text", description: "Explicit control id (wires the label); auto-generated when omitted.", table: { category: "Advanced" } }
+},
 } satisfies Meta<typeof MultiCombobox>;
 
 export default meta;

@@ -62,7 +62,13 @@ const meta = {
       description: "Card class names",
       table: { disable: true },
     },
-  },
+      as: { table: { disable: true } },
+      asChild: { table: { disable: true } },
+      children: { table: { disable: true } },
+      id: { table: { disable: true } },
+      ref: { table: { disable: true } },
+      style: { table: { disable: true } }
+},
   args: defaultArgs,
 } satisfies Meta<typeof EnhancedProjectCard>;
 
