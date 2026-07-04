@@ -1,9 +1,9 @@
 - status: Work in progress (beta)
-- text: Full Name
-- textbox "Full Name":
+- text: Full Name (required)
+- textbox "Full Name (required)":
   - /placeholder: Enter your full name
-- text: Email Address
-- textbox "Email Address":
+- text: Email Address (required)
+- textbox "Email Address (required)":
   - /placeholder: "@"
 - text: Phone Number
 - combobox "Phone number country":
@@ -266,8 +266,8 @@
 - checkbox "Digital products"
 - text: Digital products
 - checkbox "Help me choose"
-- text: Help me choose Your Message
-- textbox "Your Message":
+- text: Help me choose Your Message (required)
+- textbox "Your Message (required)":
   - /placeholder: Enter your message
 - text: Attachment (optional)
 - textbox "Attachment (optional)":

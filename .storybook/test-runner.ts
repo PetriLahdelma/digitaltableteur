@@ -216,6 +216,24 @@ const VIEWPORT = Number.parseInt(process.env.DT_VIEWPORT ?? "", 10);
 
 let storyPrefixToDir: Map<string, string> | null = null;
 
+/**
+ * Replicate Storybook's own id derivation (@storybook/csf `sanitize`). The
+ * story id's kind segment is `sanitize(title)`: lowercase, every non-alphanumeric
+ * run collapsed to a single "-", trimmed. It does NOT insert hyphens at camelCase
+ * boundaries — so `Forms/TextArea` → `forms-textarea`, not `forms-text-area`.
+ * The previous derivation split camelCase, so the prefix map never matched the
+ * real story id for any camelCase-titled component and their snapshot dirs were
+ * silently unresolved (dead snapshots, skipped enforcement).
+ */
+function sanitizeStorybookTitle(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[ ’–—―′¿'`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
+}
+
 function loadStoryPrefixMap(): Map<string, string> {
   if (storyPrefixToDir) return storyPrefixToDir;
   storyPrefixToDir = new Map();
@@ -235,16 +253,7 @@ function loadStoryPrefixMap(): Map<string, string> {
       const text = fs.readFileSync(storyPath, "utf8");
       const m = text.match(titleRe);
       if (!m) continue;
-      const prefix = m[1]
-        .split("/")
-        .map((segment) =>
-          segment
-            .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
-            .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
-            .toLowerCase(),
-        )
-        .join("-");
-      storyPrefixToDir.set(prefix, dir);
+      storyPrefixToDir.set(sanitizeStorybookTitle(m[1]), dir);
     }
   }
   return storyPrefixToDir;
@@ -264,6 +273,30 @@ function snapshotVariantSuffix(): string {
   return parts.length > 0 ? `.${parts.join(".")}` : "";
 }
 
+const MODE_SUFFIXES = [".light", ".dark", ".forced-colors"];
+
+/**
+ * Does this component already have at least one snapshot for the given mode?
+ * Plain mode (suffix "") = any `<id>.yaml` that carries no mode segment; a
+ * suffixed mode = any file ending in `<suffix>.yaml`. Used to decide whether a
+ * missing snapshot is an uncovered story in an established mode (hard error) or
+ * a mode that was never bootstrapped for this component (tracked debt).
+ */
+function modeHasEstablishedCoverage(dir: string, suffix: string): boolean {
+  let files: string[];
+  try {
+    files = fs.readdirSync(dir).filter((f) => f.endsWith(".yaml"));
+  } catch {
+    return false;
+  }
+  if (suffix === "") {
+    return files.some(
+      (f) => f.includes("--") && !MODE_SUFFIXES.some((s) => f.endsWith(`${s}.yaml`)),
+    );
+  }
+  return files.some((f) => f.endsWith(`${suffix}.yaml`));
+}
+
 async function captureAccessibilityTree(
   page: import("playwright").Page,
   storyId: string,
@@ -272,16 +305,25 @@ async function captureAccessibilityTree(
   const dir = componentSnapshotDir(storyId);
   if (!dir) return;
   fs.mkdirSync(dir, { recursive: true });
-  const file = path.join(dir, `${storyId}${snapshotVariantSuffix()}.yaml`);
+  const suffix = snapshotVariantSuffix();
+  const file = path.join(dir, `${storyId}${suffix}.yaml`);
   const content = await captureStoryAccessibilityTree(page);
   if (!fs.existsSync(file)) {
     if (UPDATE_AT || BOOTSTRAP_AT) {
       fs.writeFileSync(file, content);
       return;
     }
-    if (REQUIRE_AT && betaMatrix) {
+    // Only hard-require a missing snapshot when this component already has
+    // coverage for THIS mode — i.e. a sibling story's snapshot exists with the
+    // same suffix. That makes existing snapshots enforced (they were silently
+    // dead before the resolver fix) and keeps partial coverage graceful: a mode
+    // that was never bootstrapped is tracked backfill debt (audit:snapshot-debt),
+    // not a build break. Stable promotion is gated separately by
+    // validate-components, which hard-requires the files.
+    if (REQUIRE_AT && betaMatrix && modeHasEstablishedCoverage(dir, suffix)) {
       throw new Error(
-        `Missing AT snapshot for ${storyId}. Run DT_BOOTSTRAP_A11Y_SNAPSHOTS=1 npm run a11y-snapshot:bootstrap`,
+        `Missing AT snapshot for ${storyId}${suffix} (this component already has ${suffix || "plain"}-mode snapshots — a story is uncovered). ` +
+          `Run DT_UPDATE_A11Y_SNAPSHOTS=1 npm run test:stories:ci`,
       );
     }
     return;

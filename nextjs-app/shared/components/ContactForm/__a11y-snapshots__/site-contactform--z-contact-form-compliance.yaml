@@ -16,7 +16,7 @@
 - img "Pass"
 - text: CSS custom properties Component composition
 - img "Pass"
-- text: Uses Inputs, Button, Modal, FileUpload Accessibility
+- text: Uses TextInput, Button, Modal, FileUpload Accessibility
 - img "Pass"
 - text: Proper form semantics, labels Storybook stories
 - img "Pass"

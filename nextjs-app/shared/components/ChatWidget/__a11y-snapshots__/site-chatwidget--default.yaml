@@ -1,7 +1,4 @@
 - status: Work in progress (beta)
 - paragraph: Donny Preview
 - paragraph: Click the chat bubble in the bottom-right corner to open the demo. You can type a prompt and Donny will answer with a prerecorded reply so you can explore the flow without calling the real API.
-- button "Chat with Donny":
-  - img "Donny is idle":
-    - img
-  - text: Chat
+- button "Chat — Chat with Donny": Chat

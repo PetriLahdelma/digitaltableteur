@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - contentinfo:
   - paragraph: Visit
   - link "Digitaltableteur":
@@ -7,7 +6,18 @@
   - link "mail@digitaltableteur.com":
     - /url: mailto:mail@digitaltableteur.com
   - paragraph: Billing details
-  - text: Digitaltableteur Hämeentie 8 C 00530 Helsinki VAT FI22644552
+  - text: E-invoice address 003722644552 Operator APIX Messaging Oy Operator ID 003723327487
+  - paragraph: Explore
+  - link "Work":
+    - /url: /work
+  - link "About":
+    - /url: /about
+  - link "Blog":
+    - /url: /blog
+  - link "Pricing":
+    - /url: /pricing
+  - link "Contact":
+    - /url: /contact
   - paragraph: Legal
   - link "Privacy Policy":
     - /url: /privacy-policy
@@ -17,6 +27,8 @@
     - /url: /ai-use
   - link "Accessibility Statement":
     - /url: /accessibility
+  - link "Sitemap":
+    - /url: /sitemap
   - link "Instagram":
     - /url: https://www.instagram.com/digitaltableteur/
     - img
