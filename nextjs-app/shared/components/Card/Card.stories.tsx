@@ -184,7 +184,7 @@ export const Structured: Story = {
   render: () => (
     <Card
       title="Quarterly review"
-      extra={<Badge tone="info">Draft</Badge>}
+      extra={<Badge tone="info" size="sm">Draft</Badge>}
       style={{ maxWidth: "22rem" }}
     >
       <Divider />
@@ -289,7 +289,7 @@ export const Example: Story = {
     <Card
       title="Design tokens"
       description="Layer 0 of the system: DTCG JSON, transformed per platform."
-      extra={<Badge tone="success">Stable</Badge>}
+      extra={<Badge tone="success" size="sm">Stable</Badge>}
       style={{ maxWidth: "20rem" }}
     >
       <Text size="s">
