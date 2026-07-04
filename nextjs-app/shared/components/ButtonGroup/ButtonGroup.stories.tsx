@@ -5,6 +5,17 @@ import Button from "@dt/Button";
 import { IconButton } from "@dt/IconButton";
 import contract from "./ButtonGroup.contract.json";
 
+// Children presets are generated, not hand-written: the select maps a segment
+// count to that many secondary Buttons so the control drives the real prop.
+const SEGMENT_LABELS = ["Day", "Week", "Month", "Quarter", "Year"];
+const SEGMENT_COUNTS = [2, 3, 4, 5];
+const segments = (count: number) =>
+  SEGMENT_LABELS.slice(0, count).map((label) => (
+    <Button key={label} variant="secondary" size="md">
+      {label}
+    </Button>
+  ));
+
 const meta = {
   title: "Actions/ButtonGroup",
   component: ButtonGroup,
@@ -24,26 +35,16 @@ const meta = {
     children: {
       control: {
         type: "select",
-        labels: { two: "2 segments", three: "3 segments" },
+        labels: Object.fromEntries(SEGMENT_COUNTS.map((n) => [n, `${n} segments`])),
       },
-      options: ["two", "three"],
-      mapping: {
-        two: [
-          <Button key="one" variant="secondary" size="md">One</Button>,
-          <Button key="two" variant="secondary" size="md">Two</Button>,
-        ],
-        three: [
-          <Button key="one" variant="secondary" size="md">One</Button>,
-          <Button key="two" variant="secondary" size="md">Two</Button>,
-          <Button key="three" variant="secondary" size="md">Three</Button>,
-        ],
-      },
+      options: SEGMENT_COUNTS,
+      mapping: Object.fromEntries(SEGMENT_COUNTS.map((n) => [n, segments(n)])),
       description:
-        "Buttons / IconButtons (same variant + size). Segment presets here; compose your own in code.",
+        "Buttons / IconButtons (same variant + size). Pick a segment count here; compose your own in code.",
       table: { type: { summary: "ReactNode" } },
     },
   },
-  args: { ariaLabel: "Text alignment", attached: true, children: "three" },
+  args: { ariaLabel: "Text alignment", attached: true, children: 3 },
 } satisfies Meta<typeof ButtonGroup>;
 
 export default meta;
@@ -56,13 +57,6 @@ export const Default: Story = {
       description: { story: "Attached segments share seams; use one variant and size across the group." },
     },
   },
-  render: (args) => (
-    <ButtonGroup {...args}>
-      <Button variant="secondary" size="md">Day</Button>
-      <Button variant="secondary" size="md">Week</Button>
-      <Button variant="secondary" size="md">Month</Button>
-    </ButtonGroup>
-  ),
 };
 
 export const Playground: Story = {};
