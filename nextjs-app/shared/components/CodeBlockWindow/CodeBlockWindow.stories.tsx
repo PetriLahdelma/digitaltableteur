@@ -6,25 +6,10 @@ import { codeBlockFixtures } from "./codeBlockFixtures";
 import { renderCodeBlockFixtureNode } from "./CodeBlockFixtureRenderer";
 
 const meta: Meta<typeof CodeBlockWindow> = {
-  argTypes: {
-    context: {
-      control: "select",
-      options: ["default", "article"],
-      description: "Layout context for article vs default sizing",
-      table: { defaultValue: { summary: "default" } },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      caption: { control: "text", description: "Optional caption rendered below the code", table: { category: "Content" } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Optional className passthrough", table: { category: "Advanced" } },
-      id: { table: { disable: true } },
-      language: { control: "text", description: "Language label shown in the header", table: { category: "Content" } },
-      ref: { table: { disable: true } },
-      showLineNumbers: { control: "boolean", description: "Force line numbers on/off (defaults to presence in Shiki output)", table: { category: "Content" } },
-      style: { table: { disable: true } },
-      title: { control: "text", description: "Optional title or filename shown in the header", table: { category: "Content" } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite children slot (pre-rendered Shiki output) keeps a mapping
+  // preset — defined on Playground below because the fixtures are built after
+  // this meta literal.
   title: "Content/CodeBlockWindow",
   component: CodeBlockWindow,
   parameters: {
@@ -101,7 +86,23 @@ export const DarkPreview: Story = {
   },
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    children: {
+      control: { type: "select" },
+      options: ["tsx", "bash", "json", "longLine"],
+      mapping: fixture,
+      description:
+        "Pre-rendered Shiki code content. Pick a fixture here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+  },
+  args: {
+    ...Default.args,
+    children: "tsx" as unknown as React.ReactNode,
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

@@ -4,10 +4,15 @@ import { type ReactNode, forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
 export interface SectionProps {
+  /** Section content. */
   children: ReactNode;
+  /** Block padding scale. @default "md" */
   spacing?: "none" | "sm" | "md" | "lg" | "xl" | "hero" | "follow";
+  /** Surface background token. @default "default" */
   background?: "default" | "muted" | "accent" | "inverse";
+  /** Section class names. */
   className?: string;
+  /** Section id (anchor target). */
   id?: string;
   /** Whitelisted Donny spotlight / navigation target id */
   donnyTarget?: string;

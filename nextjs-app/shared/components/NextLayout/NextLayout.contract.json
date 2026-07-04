@@ -37,6 +37,10 @@
         "className": {
             "optional": true,
             "type": "string"
+        },
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
         }
     },
     "forbiddenUse": [

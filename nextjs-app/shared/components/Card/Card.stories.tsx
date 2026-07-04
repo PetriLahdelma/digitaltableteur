@@ -23,65 +23,48 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // authored entries cover judgment: children text control, mapping presets
+  // for the composite titleProps/descriptionProps/extra slots.
   argTypes: {
-    variant: {
-      control: { type: "select" },
-      options: ["default", "muted", "transparent"],
-      description:
-        "Background variant: default keeps the hairline border, muted recedes, transparent groups without weight",
-      table: { defaultValue: { summary: "default" } },
-    },
-    padding: {
-      control: { type: "select" },
-      options: ["none", "sm", "md", "lg"],
-      description: "Internal padding step on the space scale (12/16/24px)",
-      table: { defaultValue: { summary: "md" } },
-    },
-    as: {
-      control: { type: "select" },
-      options: ["div", "article", "section", "aside", "li"],
-      description: "Semantic element for the card surface",
-      table: { defaultValue: { summary: "div" } },
-    },
-    title: {
-      control: "text",
-      description: "Optional heading (Title xxs, real heading element)",
-    },
+    children: { control: "text", description: "Card body content" },
     titleProps: {
-      control: false,
-      description: "Heading configuration (level for the document outline)",
-      table: { category: "Advanced" },
-    },
-    description: {
-      control: "text",
-      description: "Supporting line under the title (Text s)",
+      control: { type: "select" },
+      options: ["default", "h2Outline", "largeSerif"],
+      mapping: {
+        default: undefined,
+        h2Outline: { level: 2 },
+        largeSerif: { size: "m", terminals: "serif" },
+      },
+      description:
+        "Heading configuration (level for the document outline). Pick a preset here; compose your own in code.",
+      table: { category: "Advanced", type: { summary: "CardTitleProps" } },
     },
     descriptionProps: {
-      control: false,
-      description: "Description configuration",
-      table: { category: "Advanced" },
+      control: { type: "select" },
+      options: ["default", "largeSpan"],
+      mapping: {
+        default: undefined,
+        largeSpan: { size: "m", as: "span" },
+      },
+      description:
+        "Description configuration. Pick a preset here; compose your own in code.",
+      table: { category: "Advanced", type: { summary: "CardDescriptionProps" } },
     },
     extra: {
-      control: false,
-      description: "Right-aligned header slot (badge, timestamp, small action)",
-    },
-    link: {
-      control: "text",
-      description: "Makes the whole card one link to this href",
-    },
-    linkLabel: {
-      control: "text",
-      description: "Accessible name when the title alone is ambiguous",
-    },
-    loading: {
-      control: "boolean",
-      description: "Skeleton loading state (role=status, aria-busy)",
-    },
-    children: { control: "text", description: "Card body content" },
-    className: {
-      control: false,
-      description: "Additional CSS classes on the card surface",
-      table: { category: "Advanced" },
+      control: { type: "select" },
+      options: ["none", "draftBadge"],
+      mapping: {
+        none: undefined,
+        draftBadge: (
+          <Badge tone="info" size="sm">
+            Draft
+          </Badge>
+        ),
+      },
+      description:
+        "Right-aligned header slot (badge, timestamp, small action). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
   },
   args: {
@@ -111,13 +94,16 @@ export const Default: Story = {
   ),
 };
 
+// No hardcoded JSX children: they would override args.children and turn the
+// panel's body control into a liar. link seeded so linkLabel has an anchor
+// to name.
 export const Playground: Story = {
   tags: ["beta-matrix"],
-  render: (args) => (
-    <Card {...args} style={{ maxWidth: "20rem" }}>
-      <Text size="s">Body content flows in the card rhythm.</Text>
-    </Card>
-  ),
+  render: (args) => <Card {...args} style={{ maxWidth: "20rem" }} />,
+  args: {
+    children: "Body content flows in the card rhythm.",
+    link: "/work/dsharp-design-system",
+  },
 };
 
 /** Background swaps only — the border never moves. */

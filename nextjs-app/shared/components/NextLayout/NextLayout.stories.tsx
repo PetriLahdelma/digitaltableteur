@@ -30,19 +30,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    className: {
-      control: "text",
-      description: "Layout wrapper class names",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: {},
 } satisfies Meta<typeof NextLayout>;
 
@@ -53,9 +41,14 @@ export const Default: Story = {
   tags: ["beta-matrix"],
   render: () => <NextLayout>{sampleMain}</NextLayout>,
 };
+// Args-driven children (no hardcoded JSX children, which would override the
+// panel's text control and turn it into a liar).
 export const Playground: Story = {
   tags: ["beta-matrix"],
-  ...Default,
+  render: (args) => <NextLayout {...args} />,
+  args: {
+    children: "Page content rendered inside the production shell.",
+  },
 };
 
 Playground.play = async ({ canvasElement }) => {

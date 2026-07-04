@@ -1,9 +1,4 @@
 
-/** Props for ThemeProvider. */
-export interface ThemeProviderProps {
-  className?: string;
-}
-
 import React, {
   createContext,
   useCallback,
@@ -14,6 +9,14 @@ import React, {
 } from "react";
 
 export type Theme = "light" | "dark" | "hcb" | "hcw";
+
+/** Props for ThemeProvider. */
+export interface ThemeProviderProps {
+  /** Subtree that receives the theme context. */
+  children: React.ReactNode;
+  /** Pin the theme regardless of stored/system preference (e.g. external embeds). */
+  forcedTheme?: Theme;
+}
 
 const THEME_SEQUENCE: Theme[] = ["light", "dark", "hcb", "hcw"];
 const DEFAULT_THEME: Theme = "light";
@@ -186,10 +189,10 @@ export const useTheme = () => useContext(ThemeContext);
 /**
  * ThemeProvider component.
  */
-export const ThemeProvider: React.FC<{
-  children: React.ReactNode;
-  forcedTheme?: Theme;
-}> = ({ children, forcedTheme }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
+  children,
+  forcedTheme,
+}) => {
   const [theme, setThemeState] = useState<Theme>(DEFAULT_THEME);
   const [systemPreference, setSystemPreference] = useState<"light" | "dark">(
     "light"

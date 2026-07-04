@@ -27,40 +27,11 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (content slot).
   argTypes: {
-    children: { control: false, description: "Section content" },
-    spacing: {
-      control: "select",
-      options: ["none", "sm", "md", "lg", "xl", "hero", "follow"],
-      description: "Block padding scale",
-      table: { defaultValue: { summary: "md" } },
-    },
-    background: {
-      control: "select",
-      options: ["default", "muted", "accent", "inverse"],
-      description: "Surface background token",
-      table: { defaultValue: { summary: "default" } },
-    },
-    className: {
-      control: "text",
-      description: "Section class names",
-      table: { disable: true },
-    },
-    id: {
-      control: "text",
-      description: "Section id",
-      table: { disable: true },
-    },
-    donnyTarget: {
-      control: "text",
-      description: "Donny spotlight target id",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+    children: { control: "text", description: "Section content" },
+  },
   args: defaultArgs,
 } satisfies Meta<typeof Section>;
 

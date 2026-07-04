@@ -74,16 +74,18 @@ export const MacWindowFrame: React.FC<MacWindowFrameProps> = ({
           <span className={`${styles.dot} ${styles.maximize}`} />
         </div>
         <Title as="h3" level={3} size="m" className={styles.title}>
-          {t(titleKey)}
+          {/* || not just the destructure defaults: a cleared/seeded Controls
+              text field passes "" and must fall back the same way */}
+          {t(titleKey || "macWindowFrame.title")}
         </Title>
         {hasAction ? (
           <Button
             variant="tertiary"
             className={styles.action}
             onClick={onAction}
-            accessibleName={t(actionLabelKey)}
+            accessibleName={t(actionLabelKey || "macWindowFrame.action")}
           >
-            {t(actionLabelKey)}
+            {t(actionLabelKey || "macWindowFrame.action")}
           </Button>
         ) : (
           <span className={styles.actionPlaceholder} aria-hidden="true" />

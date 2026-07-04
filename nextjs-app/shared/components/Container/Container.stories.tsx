@@ -27,36 +27,14 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (content slot).
   argTypes: {
     children: {
-      control: false,
+      control: "text",
       description: "Page content inside the width constraint",
     },
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg", "xl", "full"],
-      description: "Max-width token",
-      table: { defaultValue: { summary: "lg" } },
-    },
-    center: {
-      control: "boolean",
-      description: "Center the container horizontally",
-    },
-    className: {
-      control: "text",
-      description: "Wrapper class names",
-      table: { disable: true },
-    },
-    as: {
-      control: "text",
-      description: "Polymorphic element",
-      table: { disable: true },
-    },
-      asChild: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: defaultArgs,
 } satisfies Meta<typeof Container>;
 

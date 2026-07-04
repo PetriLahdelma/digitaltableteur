@@ -18,24 +18,46 @@ const meta: Meta<typeof Accordion> = {
     a11y: { test: "error" },
     llm: { schema },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // items keeps a mapping preset, defaultOpenId a radio over the preset's ids.
   argTypes: {
     items: {
-      control: "object",
-      description: "Accordion sections (id, title, content)",
+      control: { type: "select" },
+      options: ["faq", "twoItems"],
+      mapping: {
+        faq: [
+          {
+            id: "one",
+            title: "What is Digitaltableteur?",
+            content: "We are a design and engineering studio.",
+          },
+          {
+            id: "two",
+            title: "Do you work with AI?",
+            content: "Yes, responsibly—with human oversight.",
+          },
+          {
+            id: "three",
+            title: "How can I contact you?",
+            content: "Email mail@digitaltableteur.com.",
+          },
+        ],
+        twoItems: [
+          { id: "one", title: "First section", content: "First content." },
+          { id: "two", title: "Second section", content: "Second content." },
+        ],
+      },
+      description:
+        "Accordion sections (id, title, content). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "AccordionItem[]" } },
     },
-
     defaultOpenId: {
-      control: "text",
-      description: "Initially expanded item id",
+      control: { type: "inline-radio" },
+      options: ["one", "two", "three"],
+      description: "Initially expanded item id (preset ids: one/two/three)",
+      table: { category: "Content" },
     },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
 };
 
 export default meta;
@@ -94,9 +116,15 @@ Default.play = async ({ canvasElement }) => {
 
 const defaultItems = Default.args?.items ?? [];
 
+// defaultOpenId is mount-only state; keying the render on it remounts so the
+// radio actually drives the canvas. items arg is a mapping key.
 export const Playground: Story = {
   tags: ["beta-matrix"],
-  args: { items: defaultItems },
+  render: (args) => <Accordion key={`open-${args.defaultOpenId}`} {...args} />,
+  args: {
+    items: "faq" as unknown as typeof defaultItems,
+    defaultOpenId: "one",
+  },
 };
 
 export const Example: Story = {

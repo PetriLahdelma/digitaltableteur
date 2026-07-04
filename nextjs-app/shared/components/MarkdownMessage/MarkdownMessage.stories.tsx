@@ -4,27 +4,19 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import MarkdownMessage from "@dt/MarkdownMessage";
 
 const meta: Meta<typeof MarkdownMessage> = {
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // designSystemTextSize keeps an authored select (its type is an alias the
+  // contract cannot expand). fallback is effect-exempt (masked while content
+  // renders; unit-tested).
   argTypes: {
-    density: {
-      control: "select",
-      options: ["default", "chat"],
+    designSystemTextSize: {
+      control: { type: "select" },
+      options: ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
       description:
-        "Typography density for chat bubbles vs default markdown blocks",
-      table: { defaultValue: { summary: "default" } },
+        "When `renderWithDesignSystem` is enabled, use this as the base size for paragraph and inline emphasis text (e.g. `p`, `strong`, `em`).",
+      table: { category: "Content", type: { summary: "TextProps[\"size\"]" } },
     },
-      "data-role": { table: { disable: true } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      content: { control: "text", description: "Markdown source rendered through DS typography.", table: { category: "Content" } },
-      designSystemTextSize: { control: false, description: "When `renderWithDesignSystem` is enabled, use this as the base size for paragraph and inline emphasis text (e.g. `p`, `strong`, `em`).", table: { category: "Content" } },
-      fallback: { control: "text", description: "Plain text shown when content fails to parse.", table: { category: "Content" } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      renderWithDesignSystem: { control: "boolean", description: "Render markdown using the design system components (Title/Text/Link). Useful for long-form content pages to ensure consistent styling.", table: { category: "Content" } },
-      style: { table: { disable: true } }
-},
+  },
   title: "Site/Chat/MarkdownMessage",
   component: MarkdownMessage,
   tags: ["beta", "!autodocs"],
@@ -66,7 +58,12 @@ export const LinkAndImage: Story = {
   },
 };
 
-export const Playground = Default;
+// renderWithDesignSystem seeded true so designSystemTextSize has a live path.
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+  args: { renderWithDesignSystem: true, designSystemTextSize: "m" },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

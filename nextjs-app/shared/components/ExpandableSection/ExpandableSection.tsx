@@ -20,8 +20,6 @@ export interface ExpandableSectionProps {
   children: ReactNode;
   /** Additional className for the container */
   className?: string;
-  /** Stagger delay for child animations (ms) */
-  staggerDelay?: number;
 }
 
 export function ExpandableSection({
@@ -32,7 +30,6 @@ export function ExpandableSection({
   onExpandedChange,
   children,
   className,
-  staggerDelay = 60,
 }: ExpandableSectionProps) {
   const [internalExpanded, setInternalExpanded] = useState(defaultExpanded);
   const isControlled = controlledExpanded !== undefined;

@@ -25,21 +25,12 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (content slot).
   argTypes: {
     children: {
-      control: false,
-      description: "Media or placeholder content inside the ratio box",
-    },
-    ratio: {
-      control: "select",
-      options: ["1:1", "4:3", "16:9", "21:9", "3:2", "2:3"],
-      description: "Width-to-height ratio token",
-      table: { defaultValue: { summary: "16:9" } },
-    },
-    className: {
       control: "text",
-      description: "Additional CSS class names",
-      table: { disable: true },
+      description: "Media or placeholder content inside the ratio box",
     },
   },
   args: defaultArgs,

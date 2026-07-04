@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React, { useState } from "react";
-import { userEvent, within } from "storybook/test";
+import { useArgs } from "storybook/preview-api";
+import { expect, userEvent, within } from "storybook/test";
 import { ExpandableSection } from "./ExpandableSection";
 import contract from "./ExpandableSection.contract.json";
 
@@ -38,40 +39,12 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (content slot).
   argTypes: {
-    collapsedLabel: {
-      control: "text",
-      description: "Trigger label when collapsed",
-    },
-    expandedLabel: {
-      control: "text",
-      description: "Trigger label when expanded",
-    },
-    defaultExpanded: {
-      control: "boolean",
-      description: "Initial open state (uncontrolled)",
-    },
-    expanded: {
-      control: "boolean",
-      description: "Controlled open state",
-    },
-    onExpandedChange: {
-      action: "expandedChange",
-      description: "Open state change handler",
-    },
     children: {
-      control: false,
-      description: "Disclosed panel content",
-    },
-    className: {
       control: "text",
-      description: "Container class names",
-      table: { disable: true },
-    },
-    staggerDelay: {
-      control: "number",
-      description: "Child animation stagger in ms",
-      table: { defaultValue: { summary: "60" } },
+      description: "Disclosed panel content",
     },
   },
   args: defaultArgs,
@@ -83,15 +56,37 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ["beta-matrix"],
   render: (args) => <ExpandableSectionDemo {...args} />,
+  // Keyboard contract: the trigger is a real button — click toggles and
+  // aria-expanded follows. (Kept off Playground so its seeded expanded state
+  // stays untouched for the controls effects audit.)
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByRole("button");
+    await userEvent.click(trigger);
+    await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  },
 };
 export const Playground: Story = {
   tags: ["beta-matrix"],
-  render: (args) => <ExpandableSectionDemo {...args} />,
-};
-
-Playground.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  await userEvent.click(canvas.getByRole("button"));
+  /**
+   * Args-driven controlled state (useArgs writeback): the expanded toggle
+   * drives the canvas AND clicking the trigger updates the panel. useArgs must
+   * run in the story render itself, not a nested component. Seeded expanded so
+   * the content is visible; expandedLabel seeded "" so BOTH label props are
+   * live (a set expandedLabel would mask collapsedLabel entirely while open).
+   */
+  render: function PlaygroundRender(args) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- Storybook render context
+    const [{ expanded }, updateArgs] = useArgs();
+    return (
+      <ExpandableSection
+        {...args}
+        expanded={Boolean(expanded)}
+        onExpandedChange={(next) => updateArgs({ expanded: next })}
+      />
+    );
+  },
+  args: { ...defaultArgs, expanded: true, expandedLabel: "" },
 };
 
 export const Example: Story = {

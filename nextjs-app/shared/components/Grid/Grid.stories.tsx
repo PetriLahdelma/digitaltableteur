@@ -46,53 +46,33 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite children slot keeps a mapping preset, and columns keeps a
+  // bespoke number knob (number-or-template union derives as free text).
   argTypes: {
     children: {
-      control: false,
-      description: "Grid cells (supports span on child props)",
+      control: { type: "select" },
+      options: ["fourCells", "sixCells"],
+      mapping: {
+        fourCells: defaultArgs.children,
+        sixCells: (
+          <>
+            {["A", "B", "C", "D", "E", "F"].map((cell) => (
+              <div key={cell}>
+                <Text as="p" terminals="sans">
+                  Cell {cell}
+                </Text>
+              </div>
+            ))}
+          </>
+        ),
+      },
+      description:
+        "Grid cells (supports span on child props). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ReactNode" } },
     },
     columns: { control: "number", description: "Column count or template" },
-    rows: {
-      control: "text",
-      description: "Row count or template",
-      table: { disable: true },
-    },
-    gap: {
-      control: "text",
-      description: "Grid gap",
-      table: { defaultValue: { summary: "1rem" } },
-    },
-    rowGap: {
-      control: "text",
-      description: "Row gap override",
-      table: { disable: true },
-    },
-    colGap: {
-      control: "text",
-      description: "Column gap override",
-      table: { disable: true },
-    },
-    align: {
-      control: "text",
-      description: "align-items",
-      table: { disable: true, defaultValue: { summary: "inherit" } },
-    },
-    justify: {
-      control: "text",
-      description: "justify-items",
-      table: { disable: true },
-    },
-    className: {
-      control: "text",
-      description: "Grid class names",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: defaultArgs,
 } satisfies Meta<typeof Grid>;
 
@@ -102,8 +82,16 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ["beta-matrix"],
 };
+// Free-length props are seeded with VALID values: the effects probe appends
+// characters, and only a valid->invalid transition shows in the style attr.
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  args: {
+    children: "fourCells" as unknown as typeof defaultArgs.children,
+    rows: "2",
+    rowGap: "1rem",
+    colGap: "1rem",
+  },
 };
 
 export const Example: Story = {

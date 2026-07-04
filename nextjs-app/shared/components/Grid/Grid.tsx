@@ -8,15 +8,24 @@ import React, {
 import styles from "./Grid.module.css";
 
 export interface GridProps {
+  /** Grid cells (supports span on child props). */
   children: ReactNode;
+  /** Column count or grid-template-columns string. */
   columns?: number | string;
+  /** Row count or grid-template-rows string. */
   rows?: number | string;
+  /** Grid gap. @default "1rem" */
   gap?: string;
+  /** Row gap override. */
   rowGap?: string;
+  /** Column gap override. */
   colGap?: string;
+  /** align-items. */
   align?: CSSProperties["alignItems"];
+  /** justify-items. */
   justify?: CSSProperties["justifyItems"];
   style?: CSSProperties;
+  /** Grid class names. */
   className?: string;
   [key: string]: any; // Allow passing any grid CSS prop
 }
