@@ -273,8 +273,19 @@ const Button = React.forwardRef<
       );
     }
 
-    const { submits = false, type, clickAction, onClick, ...buttonRest } =
-      rest as ButtonAsButton;
+    // href/target/rel belong to the link form only; when the link branch was
+    // not taken (e.g. href="") they must not leak onto the <button> as raw
+    // DOM attributes.
+    const {
+      submits = false,
+      type,
+      clickAction,
+      onClick,
+      href: _href,
+      target: _target,
+      rel: _rel,
+      ...buttonRest
+    } = rest as ButtonAsButton & Partial<Pick<ButtonAsLink, "href" | "target" | "rel">>;
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(event);
