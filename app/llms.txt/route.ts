@@ -57,7 +57,7 @@ export async function GET() {
   body += `- MCP server card: ${baseUrl}/.well-known/mcp/server-card.json\n`;
   body += `- MCP endpoint (Streamable HTTP): ${baseUrl}/mcp\n`;
   body +=
-    "- Design system tools: list_components, find_component_for_intent, suggest_pattern_for_layout, get_component_contract, get_tokens, validate_component_usage\n";
+    "- Design system docs tools: search (budgeted component briefs by name/keyword/intent) and get (full usage, props, example story source) over the docs registry\n";
   body += `- Agent auth policy: ${baseUrl}/auth.md\n\n`;
 
   body += "## Services and capabilities\n\n";

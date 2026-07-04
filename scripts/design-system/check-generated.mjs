@@ -11,6 +11,7 @@ const required = [
   "nextjs-app/shared/foundations/dist/component-agent-blocks.json",
   "nextjs-app/shared/foundations/dist/tokens-manifest.json",
   "nextjs-app/shared/foundations/dist/component-catalog.zod.ts",
+  "nextjs-app/shared/foundations/dist/docs-registry.json",
 ];
 
 for (const rel of required) {

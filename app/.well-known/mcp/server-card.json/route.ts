@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { agentDiscoveryBaseUrl } from "@/app/lib/agent-discovery";
 import { CONSULTING_TOOL_NAMES } from "@/nextjs-app/shared/lib/consulting-tools/executors";
+import { DOCS_REGISTRY_TOOL_NAMES } from "@/nextjs-app/shared/lib/design-system-mcp/docs-registry-tools";
 import {
   MCP_SERVER_DESCRIPTION,
   MCP_SERVER_NAME,
@@ -26,7 +27,7 @@ export async function GET() {
     capabilities: {
       tools: true,
     },
-    tools: [...CONSULTING_TOOL_NAMES],
+    tools: [...CONSULTING_TOOL_NAMES, ...DOCS_REGISTRY_TOOL_NAMES],
     authentication: {
       required: false,
       documentation: `${baseUrl}/auth.md`,

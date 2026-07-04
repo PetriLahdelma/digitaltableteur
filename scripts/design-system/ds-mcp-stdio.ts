@@ -9,6 +9,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
+import { registerDocsRegistryMcpTools } from "../../nextjs-app/shared/lib/design-system-mcp/docs-registry-tools";
 import { registerDesignSystemMcpResources } from "../../nextjs-app/shared/lib/design-system-mcp/register-mcp-resources";
 import { registerDesignSystemMcpTools } from "../../nextjs-app/shared/lib/design-system-mcp/register-mcp-tools";
 
@@ -24,6 +25,7 @@ const server = new McpServer(
 );
 
 registerDesignSystemMcpTools(server);
+registerDocsRegistryMcpTools(server);
 registerDesignSystemMcpResources(server);
 
 const transport = new StdioServerTransport();
