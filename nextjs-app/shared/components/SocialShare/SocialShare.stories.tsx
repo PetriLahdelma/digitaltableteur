@@ -89,35 +89,7 @@ const meta = {
     layout: "centered",
   },
   tags: ["beta", "!autodocs"],
-  argTypes: {
-    url: { control: "text", description: "The URL to share" },
-    title: { control: "text", description: "The title to share" },
-    variant: {
-      control: "select",
-      options: ["inline", "article"],
-      description: "Layout variant",
-      table: { defaultValue: { summary: "inline" } },
-    },
-    showHeading: {
-      control: "boolean",
-      description: "Show share heading above channel row",
-    },
-    heading: {
-      control: "text",
-      description: "Custom share section heading (defaults to i18n shareHeading)",
-    },
-    channels: {
-      control: "object",
-      description: "Ordered list of share channels",
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 } satisfies Meta<typeof SocialShare>;
 
 export default meta;
@@ -209,7 +181,26 @@ export const WithNativeShare: Story = {
   },
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    channels: {
+      control: { type: "select" },
+      options: ["default", "two"],
+      mapping: {
+        default: undefined,
+        two: ["linkedin", "twitter"],
+      },
+      description:
+        "Share channels; the full default set when unset. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "SocialShareChannel[]" } },
+    },
+  },
+  args: {
+    ...Default.args,
+    channels: "two" as never,
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

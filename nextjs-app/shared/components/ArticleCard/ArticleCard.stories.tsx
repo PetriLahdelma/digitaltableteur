@@ -24,24 +24,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    title: { control: "text", description: "Article headline" },
-    lead: { control: "text", description: "Deck / summary line" },
-    link: { control: "text", description: "Article URL" },
-    readTime: { control: "text", description: "Estimated reading time label" },
-    loading: { control: "boolean", description: "Skeleton loading state" },
-    className: {
-      control: "text",
-      description: "Card class names",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof ArticleCard>;
 

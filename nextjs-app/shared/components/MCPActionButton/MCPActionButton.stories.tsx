@@ -3,17 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import MCPActionButton from "@dt/MCPActionButton";
 
 const meta: Meta<typeof MCPActionButton> = {
-  argTypes: {
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { table: { disable: true } },
-      payload: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      toolId: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/MCPActionButton",
   component: MCPActionButton,
   parameters: {
@@ -53,7 +43,14 @@ export const Disabled: Story = {
   args: { toolId: "disabled.tool", onExecute: mockExecute, disabled: true },
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  args: {
+    toolId: "sync.calendar",
+    onExecute: mockExecute,
+    children: "Run MCP action",
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

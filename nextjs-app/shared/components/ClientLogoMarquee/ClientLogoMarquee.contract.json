@@ -34,6 +34,10 @@
     "slots": [],
     "schemaVersion": 2,
     "props": {
+        "ariaLabel": {
+            "optional": false,
+            "type": "string"
+        },
         "className": {
             "optional": true,
             "type": "string"

@@ -12,22 +12,7 @@ const meta: Meta<typeof SiteTree> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  argTypes: {
-    nodes: {
-      control: "object",
-      description: "Hierarchical site map nodes",
-    },
-    "aria-label": {
-      control: "text",
-      description: "Accessible name for the navigation landmark",
-      table: { defaultValue: { summary: "Sitemap" } },
-    },
-    defaultExpandAll: {
-      control: "boolean",
-      description: "Expand every branch on first render",
-    },
-      className: { control: "text", description: "Additional CSS classes on the tree.", table: { category: "Advanced" } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 };
 
 export default meta;
@@ -43,8 +28,21 @@ export const Default: Story = {
 
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  argTypes: {
+    nodes: {
+      control: { type: "select" },
+      options: ["site", "firstBranch"],
+      mapping: {
+        site: sampleSiteTree,
+        firstBranch: sampleSiteTree.slice(0, 1),
+      },
+      description:
+        "Tree nodes (label, href, children). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "SiteTreeNode[]" } },
+    },
+  },
   args: {
-    nodes: sampleSiteTree,
+    nodes: "site" as never,
   },
 };
 

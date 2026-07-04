@@ -38,22 +38,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    images: {
-      control: false,
-      description: "Gallery items with alt text for lightbox names",
-    },
-    minColumnWidth: {
-      control: "number",
-      description: "Minimum column width in px",
-      table: { defaultValue: { summary: "320" } },
-    },
-    gutter: {
-      control: "number",
-      description: "Grid gutter in px",
-      table: { defaultValue: { summary: "32" } },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof Gallery>;
 
@@ -67,6 +52,22 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  argTypes: {
+    images: {
+      control: { type: "select" },
+      options: ["sample", "two"],
+      mapping: {
+        sample: sampleImages,
+        two: sampleImages.slice(0, 2),
+      },
+      description:
+        "Gallery images (src, alt). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "GalleryImage[]" } },
+    },
+  },
+  args: {
+    images: "sample" as never,
+  },
 };
 
 Playground.play = async ({ canvasElement }) => {

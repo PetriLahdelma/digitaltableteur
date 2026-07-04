@@ -8,17 +8,7 @@ import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
 
 const meta: Meta<typeof AuthorBio> = {
-  argTypes: {
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Optional CSS class for styling extension", table: { category: "Advanced" } },
-      heading: { control: "text", description: "Optional custom heading text (defaults to author.name)", table: { category: "Content" } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      slug: { control: "text", description: "Author slug to fetch data from authors.ts", table: { category: "Content" } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/AuthorBio",
   component: AuthorBio,
   tags: ["beta", "!autodocs"],

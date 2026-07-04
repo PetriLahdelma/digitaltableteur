@@ -288,10 +288,16 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
         ref={signatureRef}
         className={`${styles.signaturePreview} ${previewDarkMode ? styles.dark : ""}`}
       >
-        <a href={companyUrl} className={styles.logoLink}>
+        {/* || not the destructure defaults alone: cleared/seeded Controls text
+            fields pass "" and must fall back, never render an empty href or a
+            link with no discernible text (empty img alt). */}
+        <a
+          href={companyUrl || "https://digitaltableteur.com"}
+          className={styles.logoLink}
+        >
           <img
             src={logoUrl}
-            alt={companyName}
+            alt={companyName || "Digitaltableteur"}
             width={48}
             height={48}
             className={styles.logo}

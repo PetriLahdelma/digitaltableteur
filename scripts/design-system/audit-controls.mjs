@@ -99,6 +99,36 @@ const EFFECT_EXEMPT = {
     HomeHero: {
         scrollTargetId: 'behavior-only: consumed by the scroll indicator click handler (scrollIntoView target), no DOM signature at rest; verified by ScrollIndicator unit test (click scrolls the target)',
     },
+    ChatWidget: {
+        title: 'panel-only: rendered in the chat panel header, visible only after the bubble is clicked open; verified by the EmptyState play story (opens the panel, asserts the "Meet Donny" heading)',
+        description: 'panel-only: rendered in the chat panel header, visible only after the bubble is clicked open; verified by the EmptyState play story',
+        endpoint: 'behavior-only: the POST target used when a message is submitted, no DOM signature at rest; verified by the widget play stories (mock endpoint drives the reply flow)',
+    },
+    MCPActionButton: {
+        toolId: 'behavior-only: sent through onExecute when the button is clicked, no DOM signature at rest; verified by unit test (click invokes onExecute with { toolId, payload })',
+        payload: 'behavior-only: sent through onExecute when the button is clicked, no DOM signature at rest; verified by unit test (click invokes onExecute with { toolId, payload })',
+    },
+    TransformingActionInput: {
+        defaultValue: 'mount-only initial value, surfaced as the input value PROPERTY (not reflected to innerHTML); verified by the StartAsInput play story (seeds defaultValue and asserts input value)',
+        value: 'controlled value, surfaced as the input value PROPERTY (not reflected to innerHTML); verified by the StartAsInput play story (types into the input and asserts its value)',
+        actionLabelKey: 'button-branch only: the trigger label, rendered when mode="button"; the Playground rests in input mode so the button is not mounted (Default starts in button mode and shows it)',
+        stayInInputMode: 'behavior-only: keeps the field in input mode after submit instead of reverting to the button, observable only across a submit interaction; no DOM signature at rest',
+    },
+    DonnyAvatar: {
+        proximitySelectors: 'behavior-only: registers mouse-proximity listeners against these selectors; no DOM signature at rest, the eventual effect is a data-state change (state transitions unit-tested)',
+        proximityThreshold: 'behavior-only: distance threshold for the proximity listeners above; no DOM signature at rest',
+        enableIdleExpressions: 'behavior-only: opt-in timer that swaps expression after idle; effect appears only after idleExpressionInterval elapses, drives data-state (unit-tested)',
+        idleExpressionInterval: 'behavior-only: timing for the idle-expression timer above; no DOM signature at rest',
+        enableSleepDetection: 'behavior-only: opt-in timers that move the avatar to the sleeping state after inactivity; effect appears only after sleepyDelay/sleepDelay elapse, drives data-state (unit-tested)',
+        sleepyDelay: 'behavior-only: timing for the sleepy state above; no DOM signature at rest',
+        sleepDelay: 'behavior-only: timing for the sleeping state above; no DOM signature at rest',
+    },
+    EmailSignatureGenerator: {
+        logoUrlFull: 'output-only: written into the generated signature HTML that is copied to the clipboard (generateSignatureHTML), never rendered into the canvas; the visible preview uses logoUrl',
+    },
+    EnhancedProjectCard: {
+        autoPlayVideo: 'sets the <video> autoPlay attribute, gated by !prefers-reduced-motion; the audit emulates reduced-motion so it is always off here, and autoPlay is a media property not reflected to innerHTML',
+    },
 }
 
 // Icon-name text knobs: appending characters makes an UNKNOWN icon (renders
@@ -132,7 +162,7 @@ function contractProps(dir, root) {
         // as `ref` itself: contracts expose them, no human drives a canvas
         // from a ref field. Matches the HIDDEN fallthrough in the enhancer.
         const props = Object.keys(c.props ?? {}).filter(
-            (k) => !SKIP.has(k) && !/^React\.(Ref|RefObject|MutableRefObject)\b/.test(c.props[k]?.type ?? ''),
+            (k) => !SKIP.has(k) && !/^(React\.)?(Ref|RefObject|MutableRefObject)\b/.test(c.props[k]?.type ?? ''),
         )
         return { status: c.status, props }
     } catch { return null }

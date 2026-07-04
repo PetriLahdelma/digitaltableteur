@@ -96,121 +96,7 @@ export default {
     instagramUrl: "",
     instagramLabel: "Follow on Instagram",
   },
-  argTypes: {
-    imageSrc: {
-      control: "text",
-      description: "Portrait image URL",
-      table: { category: "Media" },
-    },
-
-    imageAlt: {
-      description: "Image Alt",
-      control: "text",
-    },
-
-    name: {
-      description: "Name",
-      control: "text",
-    },
-
-    title: {
-      description: "Title",
-      control: "text",
-    },
-
-    email: {
-      description: "Email",
-      control: "text",
-    },
-
-    linkedinUrl: {
-      description: "Linkedin URL",
-      control: "text",
-    },
-
-    linkedinLabel: {
-      description: "Linkedin Label",
-      control: "text",
-    },
-
-    githubUrl: {
-      description: "Github URL",
-      control: "text",
-    },
-
-    githubLabel: {
-      description: "Github Label",
-      control: "text",
-    },
-
-    facebookUrl: {
-      description: "Facebook URL",
-      control: "text",
-    },
-
-    facebookLabel: {
-      description: "Facebook Label",
-      control: "text",
-    },
-
-    twitterUrl: {
-      description: "Twitter URL",
-      control: "text",
-    },
-
-    twitterLabel: {
-      description: "Twitter Label",
-      control: "text",
-    },
-
-    dribbbleUrl: {
-      description: "Dribbble URL",
-      control: "text",
-    },
-
-    dribbbleLabel: {
-      description: "Dribbble Label",
-      control: "text",
-    },
-
-    mediumUrl: {
-      description: "Medium URL",
-      control: "text",
-    },
-
-    mediumLabel: {
-      description: "Medium Label",
-      control: "text",
-    },
-
-    instagramUrl: {
-      description: "Instagram URL",
-      control: "text",
-    },
-
-    instagramLabel: {
-      description: "Instagram Label",
-      control: "text",
-    },
-
-    className: {
-      description: "Class Name",
-      control: "text",
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      imageDecoding: { control: { type: "inline-radio" }, options: ["auto", "sync", "async"], description: "Native img decoding hint for the portrait.", table: { category: "Content" } },
-      imageLoading: { control: { type: "inline-radio" }, options: ["lazy", "eager"], description: "Native img loading strategy for the portrait.", table: { category: "Content", defaultValue: { summary: "lazy" } } },
-      imageSizes: { control: "text", description: "Native img sizes attribute for the portrait.", table: { category: "Content" } },
-      imageSrcSet: { control: "text", description: "Native img srcSet for responsive portrait densities.", table: { category: "Content" } },
-      loading: { control: "boolean", description: "Show skeleton placeholders while content is loading", table: { category: "Content" } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      substackLabel: { control: "text", description: "Accessible name for the Substack link.", table: { category: "Accessibility" } },
-      substackUrl: { control: "text", description: "Substack profile URL; the link renders only when set.", table: { category: "Content" } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 } as Meta<typeof PersonCard>;
 
 export const Z_PersonCardCompliance: StoryFn = () => (
@@ -362,7 +248,18 @@ LongTitle.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   });
 };
 
-export const Playground = Default;
+// Seed every social URL so the *Label controls (aria-labels on the social
+// links) are effective — a link renders only when its URL is set, so the
+// meta's empty facebook/dribbble/instagram + absent substack left those
+// labels inert.
+export const Playground = Template.bind({});
+Playground.tags = ["beta-matrix"];
+Playground.args = {
+  facebookUrl: "https://facebook.com/petrilahdelma",
+  dribbbleUrl: "https://dribbble.com/petrilahdelma",
+  instagramUrl: "https://instagram.com/petrilahdelma",
+  substackUrl: "https://petrilahdelma.substack.com",
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: {

@@ -56,7 +56,9 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }
         )}
         <div>
           <Title level={3} terminals="sans" className={styles.name}>
-            {heading ?? author.name}
+            {/* || not ??: a cleared/seeded Controls text field passes "" and
+                must fall back to the author name, never render an empty heading. */}
+            {heading || author.name}
           </Title>
         </div>
       </div>

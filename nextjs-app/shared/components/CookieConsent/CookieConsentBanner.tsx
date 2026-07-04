@@ -13,10 +13,13 @@ import styles from "./CookieConsentBanner.module.css";
 
 export interface CookieConsentBannerProps {
   onCustomize: () => void;
+  /** Additional CSS classes on the banner region. */
+  className?: string;
 }
 
 const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
   onCustomize,
+  className,
 }) => {
   const { t } = useTranslation();
   const { acceptAll, acceptEssentialOnly } = useCookieConsent();
@@ -55,7 +58,7 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
   return (
     <div
       ref={bannerRef}
-      className={styles.banner}
+      className={className ? `${styles.banner} ${className}` : styles.banner}
       role="region"
       aria-label={t("cookieConsent.bannerLabel")}
     >

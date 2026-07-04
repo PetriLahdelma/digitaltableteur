@@ -71,19 +71,7 @@ const openHoursComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof OpenHours> = {
-  argTypes: {
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      compact: { control: "boolean", description: "Dense single-line layout for cards.", table: { category: "Content" } },
-      date: { control: false, description: "Reference date for the open-now calculation (defaults to now).", table: { category: "Content" } },
-      highlightToday: { control: "boolean", description: "Emphasize the current weekday row.", table: { category: "Content" } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      showAllDays: { control: "boolean", description: "List all seven days instead of collapsing identical ranges.", table: { category: "Content" } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/OpenHours",
   component: OpenHours,
   tags: ["beta", "!autodocs"],
@@ -134,7 +122,28 @@ export const InjectedDate: Story = {
   },
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    date: {
+      control: { type: "select" },
+      // Two concrete dates on different weekdays so the highlighted-today row
+      // (and open/closed badge) visibly moves regardless of the real date;
+      // "now"→undefined would coincide with the machine date and read inert.
+      options: ["saturday", "monday"],
+      mapping: {
+        saturday: new Date("2025-11-01T10:30:00"),
+        monday: new Date("2025-11-03T10:30:00"),
+      },
+      description:
+        "Reference date for the open/closed state (defaults to now). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "Date" } },
+    },
+  },
+  args: {
+    date: "saturday" as never,
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

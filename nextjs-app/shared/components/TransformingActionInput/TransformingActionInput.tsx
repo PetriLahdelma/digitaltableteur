@@ -87,6 +87,15 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
   const [mode, setMode] = useState<"button" | "input">(initialMode);
   const [internalValue, setInternalValue] = useState<string>(defaultValue);
 
+  // || not the destructure defaults alone: cleared/seeded Controls text fields
+  // pass "" and must fall back, never render an empty button/input label
+  // (t("") returns "" → no accessible name).
+  const resolvedActionLabelKey =
+    actionLabelKey || "transformingActionInput.trigger";
+  const resolvedInputLabelKey = inputLabelKey || "transformingActionInput.label";
+  const resolvedPlaceholderKey =
+    placeholderKey || "transformingActionInput.placeholder";
+
   const resolvedValue = value ?? internalValue;
   const shouldShowHelper = Boolean(helperTextKey);
   const helperTextId = useMemo(
@@ -134,10 +143,10 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
           variant="primary"
           onClick={handleTransform}
           disabled={disabled}
-          accessibleName={t(actionLabelKey)}
+          accessibleName={t(resolvedActionLabelKey)}
           className={styles.trigger}
         >
-          {t(actionLabelKey)}
+          {t(resolvedActionLabelKey)}
         </Button>
       ) : (
         <form
@@ -145,17 +154,17 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
           onSubmit={handleSubmit}
           aria-live="polite"
         >
-          <Label htmlFor={inputId}>{t(inputLabelKey)}</Label>
+          <Label htmlFor={inputId}>{t(resolvedInputLabelKey)}</Label>
           <input
             id={inputId}
             name="transforming-action-input"
             className={styles.input}
             value={resolvedValue}
             onChange={(event) => handleChange(event.target.value)}
-            placeholder={t(placeholderKey)}
+            placeholder={t(resolvedPlaceholderKey)}
             disabled={disabled}
             aria-describedby={helperTextId}
-            aria-label={t(inputLabelKey)}
+            aria-label={t(resolvedInputLabelKey)}
           />
           {shouldShowHelper ? (
             <Text as="p" size="s" className={styles.helper} id={helperTextId}>

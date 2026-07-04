@@ -43,7 +43,9 @@ export const Logo = React.forwardRef<SVGSVGElement, LogoProps>(function Logo(
 
   const a11yProps = decorative
     ? ({ "aria-hidden": true, role: "presentation" } as const)
-    : ({ role: "img", "aria-label": title } as const);
+    : // || not the destructure default alone: a cleared/seeded Controls text
+      // field passes "" and must fall back, never render an empty aria-label.
+      ({ role: "img", "aria-label": title || "Digitaltableteur" } as const);
 
   // Badge mode pads the mark inside a square viewBox so a full-bleed circle can
   // sit behind it; mark color flips to the contrast token via `.badged`.

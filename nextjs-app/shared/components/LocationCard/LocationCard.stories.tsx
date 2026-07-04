@@ -23,26 +23,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    officeName: { control: "text", description: "Location title" },
-    address: {
-      control: "object",
-      description: "Address lines inside <address>",
-    },
-    email: { control: "text", description: "Contact email" },
-    phone: { control: "text", description: "Optional phone number" },
-    variant: {
-      control: "select",
-      options: ["default", "bordered", "elevated"],
-      description: "Card surface treatment",
-      table: { defaultValue: { summary: "default" } },
-    },
-    className: {
-      control: "text",
-      description: "Article wrapper class names",
-      table: { disable: true },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof LocationCard>;
 

@@ -82,41 +82,7 @@ const meta: Meta<typeof SecureCVDownload> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  argTypes: {
-    buttonText: {
-      control: "text",
-      description: "Download button label override",
-      table: { category: "Content" },
-    },
-
-    buttonVariant: {
-      description: "Button Variant",
-      control: {
-        type: "select",
-        options: [
-          "primary",
-          "secondary",
-          "tertiary",
-          "error",
-          "warning",
-          "success",
-          "info",
-        ],
-      },
-    },
-
-    inverse: {
-      description: "Inverse",
-      control: "boolean",
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 };
 export default meta;
 
@@ -202,7 +168,12 @@ Inverse.play = async ({ canvasElement }) => {
   await userEvent.click(downloadButton);
 };
 
-export const Playground = Default;
+// No play (Default's play opens the modal and its autofocused password input
+// blinks a caret, which reads as an unstable canvas in the effects audit).
+// Resting on the trigger button lets buttonVariant/buttonText/inverse be probed.
+export const Playground = Template.bind({});
+Playground.args = {};
+Playground.tags = ["beta-matrix"];
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

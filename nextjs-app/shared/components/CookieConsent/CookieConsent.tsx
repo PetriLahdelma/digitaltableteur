@@ -18,13 +18,14 @@ import styles from "./CookieConsent.module.css";
 
 /** Props for CookieConsent. */
 export interface CookieConsentProps {
+  /** Additional CSS classes on the consent banner region. */
   className?: string;
 }
 
 /**
  * CookieConsent component.
  */
-export const CookieConsent: React.FC<CookieConsentProps> = () => {
+export const CookieConsent: React.FC<CookieConsentProps> = ({ className }) => {
   const { t } = useTranslation();
   const {
     isBannerOpen,
@@ -90,7 +91,10 @@ export const CookieConsent: React.FC<CookieConsentProps> = () => {
 
   return (
     <>
-      <CookieConsentBanner onCustomize={() => setShowCustomize(true)} />
+      <CookieConsentBanner
+        onCustomize={() => setShowCustomize(true)}
+        className={className}
+      />
 
       {showCustomize ? (
         <Modal

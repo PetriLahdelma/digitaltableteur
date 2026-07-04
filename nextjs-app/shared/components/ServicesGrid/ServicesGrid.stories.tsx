@@ -72,15 +72,7 @@ const servicesGridComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof ServicesGrid> = {
-  argTypes: {
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS classes on the grid.", table: { category: "Advanced" } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/ServicesGrid",
   component: ServicesGrid,
   tags: ["beta", "!autodocs"],
@@ -117,7 +109,10 @@ export const Default: Story = {
   render: () => <ServicesGrid />,
 };
 
-export const Playground = Default;
+// Auto-render (the Default closure ignores args).
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

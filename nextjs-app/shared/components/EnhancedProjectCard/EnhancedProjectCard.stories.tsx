@@ -28,47 +28,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    title: { control: "text", description: "Project title" },
-    slug: { control: "text", description: "Detail page slug" },
-    thumbnail: { control: "text", description: "Poster image URL" },
-    videoThumbnail: {
-      control: "text",
-      description: "Optional hover video URL",
-    },
-    description: { control: "text", description: "Short description on hover" },
-    category: { control: "text", description: "Category label" },
-    tags: { control: "object", description: "Tag list" },
-    aspectRatio: {
-      control: "select",
-      options: ["square", "video", "portrait", "landscape"],
-      description: "Media aspect ratio",
-      table: { defaultValue: { summary: "video" } },
-    },
-    showCategory: {
-      control: "boolean",
-      description: "Show category in caption",
-    },
-    showDescription: {
-      control: "boolean",
-      description: "Reveal description on hover",
-    },
-    autoPlayVideo: {
-      control: "boolean",
-      description: "Autoplay video thumbnail loop",
-    },
-    className: {
-      control: "text",
-      description: "Card class names",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof EnhancedProjectCard>;
 
@@ -78,8 +38,17 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ["beta-matrix"],
 };
+// description seeded so showDescription has something to toggle. videoThumbnail
+// is left unset so the static thumbnail image (thumbnail prop) stays visible
+// and probeable; autoPlayVideo only sets the <video> autoPlay attribute, which
+// is gated by !prefers-reduced-motion (the audit emulates reduced-motion) —
+// effect-exempt.
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  args: {
+    description:
+      "An enterprise low-code design system spanning tokens, components, and governance.",
+  },
 };
 
 Playground.play = async ({ canvasElement }) => {
