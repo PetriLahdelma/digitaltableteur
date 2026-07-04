@@ -1,2 +1,2 @@
-- heading "Loading Card" [level=3]
-- status "Loading content"
+- status:
+  - status "Loading content"

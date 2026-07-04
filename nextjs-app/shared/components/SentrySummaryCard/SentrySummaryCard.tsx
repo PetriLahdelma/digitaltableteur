@@ -97,7 +97,6 @@ export const SentrySummaryCard: React.FC<Props> = ({
       <Card
         title={t("observability.sentry.title", "Sentry Issues")}
         loading
-        variant="elevated"
         className={className}
       />
     );
@@ -107,7 +106,6 @@ export const SentrySummaryCard: React.FC<Props> = ({
     return (
       <Card
         title={t("observability.sentry.title", "Sentry Issues")}
-        variant="outlined"
         className={className}
       >
         <p className={styles.error} role="alert">
@@ -122,7 +120,6 @@ export const SentrySummaryCard: React.FC<Props> = ({
       <Card
         title={t("observability.sentry.title", "Sentry Issues")}
         loading
-        variant="elevated"
         className={className}
       />
     );
@@ -132,7 +129,6 @@ export const SentrySummaryCard: React.FC<Props> = ({
     return (
       <Card
         title={t("observability.sentry.title", "Sentry Issues")}
-        variant="outlined"
         className={className}
       >
         <Text className={styles.error} role="alert">
@@ -158,7 +154,7 @@ export const SentrySummaryCard: React.FC<Props> = ({
       <Card
         title={t("observability.sentry.title", "Sentry Issues")}
         extra={extraContent}
-        variant={data?.stub ? "outlined" : "elevated"}
+        variant={data?.stub ? "muted" : "default"}
         className={className}
       >
         <Text>{t("observability.sentry.empty", "No matching issues")}</Text>
@@ -232,7 +228,7 @@ export const SentrySummaryCard: React.FC<Props> = ({
     <Card
       title={t("observability.sentry.title", "Sentry Issues")}
       extra={extraContent}
-      variant={data?.stub ? "outlined" : "elevated"}
+      variant={data?.stub ? "muted" : "default"}
       className={className}
     >
       {cardContent}

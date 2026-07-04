@@ -1,6 +1,5 @@
-- link "arrow-square-out Portfolio Project This entire card functions as a clickable link while maintaining semantic structure. External link":
-  - /url: https://example.com
-  - img "arrow-square-out"
-  - heading "Portfolio Project" [level=3]
-  - paragraph: This entire card functions as a clickable link while maintaining semantic structure.
-  - img "External link"
+- heading "Read the DSharp design system case study" [level=3]:
+  - link "Read the DSharp design system case study":
+    - /url: /work/dsharp-design-system
+    - text: DSharp design system
+- paragraph: AI-first component architecture for a multi-app suite.

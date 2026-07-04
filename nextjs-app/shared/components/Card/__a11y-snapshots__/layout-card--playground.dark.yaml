@@ -1,4 +1,3 @@
-- img "palette"
-- heading "Card Playground" [level=3]
-- text: Interactive testing Demo
-- paragraph: Use the controls panel to explore different Card configurations and features.
+- heading "Design tokens" [level=3]
+- paragraph: "Layer 0 of the system: DTCG JSON, transformed per platform."
+- paragraph: Body content flows in the card rhythm.

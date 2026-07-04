@@ -1,2 +1,3 @@
-- heading "Default Card" [level=3]
-- paragraph: Simple card with basic content and default styling.
+- heading "Design tokens" [level=3]
+- paragraph: "Layer 0 of the system: DTCG JSON, transformed per platform."
+- paragraph: Colors, spacing, and type ship as platform-agnostic JSON before any component exists.

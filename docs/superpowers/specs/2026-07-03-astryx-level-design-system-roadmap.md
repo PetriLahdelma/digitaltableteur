@@ -237,7 +237,7 @@ Layout primitives get a shared "Layout" foundation page with a composed example 
 
 | Component | Status | Deltas and specifics |
 |---|---|---|
-| **Card** | stable, clean | D2/D3. Examples: Variants, Clickable (whole-card link a11y pattern), Media, Composed. Council-audit "Card split" owner call lands here (Phase 0). |
+| **Card** | **REBUILT (2026-07-04, post-sweep)** | Astryx-shaped simplification, user-directed: the container owns background/hairline/radius/padding only (variant default\|muted\|transparent, padding none\|sm\|md\|lg); thin content layer (title at xxs, description, extra slot, link, loading); cover/tabs/actions/badges/statusMessage/interactive/hoverable/sizes DELETED (zero production consumers used them — the "Card split" owner call resolved by subtraction). Fixed en route: 48px default titles, 2px primary-ink outline, global link squiggle bleeding across link-mode cards, double link affordance. Consumers migrated same PR (Pseo ×3, SentrySummaryCard, ComplianceCard). |
 | **Container** | beta; no test | D7, D2 light. Examples: Widths, Bleed. |
 | **Grid** | beta, clean | D2/D3. Examples: Responsive-columns, AutoFit, WithCards. |
 | **FlexBox** | beta; no css | D2 light. Note: css-less by design (style props); verify and document that. |

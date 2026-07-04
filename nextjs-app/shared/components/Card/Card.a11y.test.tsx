@@ -1,36 +1,36 @@
-import { render, screen, fireEvent } from "@testing-library/react";
 import React from "react";
-import Card, { CardTab } from "@dt/Card";
+import { describe, expect, it } from "vitest";
+import { render } from "@testing-library/react";
+import { axe, toHaveNoViolations } from "jest-axe";
+import Card from "./Card";
 
-describe("Card accessibility - tabs", () => {
-  const tabs: CardTab[] = [
-    { key: "overview", label: "Overview" },
-    { key: "details", label: "Details" },
-    { key: "more", label: "More" },
-  ];
+expect.extend(toHaveNoViolations);
 
-  it("renders a tablist with one active tab", () => {
-    render(<Card title="Tabbed" tabs={tabs} defaultActiveTabKey="overview" />);
-    const tablist = screen.getByRole("tablist");
-    expect(tablist).toBeInTheDocument();
-    const allTabs = screen.getAllByRole("tab");
-    expect(allTabs.length).toBe(3);
-    const selected = allTabs.filter(
-      (t) => t.getAttribute("aria-selected") === "true",
+describe("Card accessibility", () => {
+  it("default surface with header content has no axe violations", async () => {
+    const { container } = render(
+      <Card title="Design tokens" description="Layer 0 of the system.">
+        <p>Body content.</p>
+      </Card>,
     );
-    expect(selected.length).toBe(1);
-    expect(selected[0]).toHaveTextContent("Overview");
+    expect(await axe(container)).toHaveNoViolations();
   });
 
-  it("updates aria-selected correctly when switching tabs (uncontrolled)", () => {
-    render(<Card title="Tabbed" tabs={tabs} defaultActiveTabKey="overview" />);
-    const detailsTab = screen.getByRole("tab", { name: /details/i });
-    fireEvent.click(detailsTab);
-    const allTabs = screen.getAllByRole("tab");
-    const selected = allTabs.filter(
-      (t) => t.getAttribute("aria-selected") === "true",
+  it("link mode has no axe violations and a single link", async () => {
+    const { container } = render(
+      <Card
+        title="Case study"
+        description="What we shipped."
+        link="/work/case-study"
+        linkLabel="Read the case study"
+      />,
     );
-    expect(selected.length).toBe(1);
-    expect(selected[0]).toHaveTextContent("Details");
+    expect(await axe(container)).toHaveNoViolations();
+    expect(container.querySelectorAll("a")).toHaveLength(1);
+  });
+
+  it("loading state has no axe violations", async () => {
+    const { container } = render(<Card loading>replaced</Card>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

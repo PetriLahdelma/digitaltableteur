@@ -60,8 +60,6 @@ export function PseoPillarPage({
               className={styles.card}
               link={`/pseo/${page.slug}`}
               linkLabel={`Open ${page.title}`}
-              hoverable
-              size="full"
               title={page.title}
               titleProps={{
                 terminals: "sans",

@@ -104,7 +104,6 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
   return (
     <Card
       className={[className, styles.fitContent].filter(Boolean).join(" ")}
-      size="full"
     >
       {/* Custom header with icon and title */}
       {(title || titleIcon) && (

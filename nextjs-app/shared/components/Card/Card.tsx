@@ -1,315 +1,156 @@
-"use client";
-
 import React from "react";
-import { useTranslation } from "react-i18next";
+import styles from "./Card.module.css";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
-import Link from "@dt/Link";
-import Button from "@dt/Button";
-import Badge from "@dt/Badge";
-import Tabs from "@dt/Tabs";
-import type { TabItem } from "@dt/Tabs";
-import styles from "./Card.module.css";
+import Skeleton from "@dt/Skeleton";
 
-export interface CardTab {
-  key: string;
-  label: string;
-  disabled?: boolean;
-}
+export type CardVariant = "default" | "muted" | "transparent";
+export type CardPadding = "none" | "sm" | "md" | "lg";
 
-export interface CardAction {
-  key: string;
-  label: React.ReactNode;
-  onClick?: (key: string) => void;
-  disabled?: boolean;
-  variant?: "primary" | "secondary" | "tertiary";
-}
-
-export interface CardProps {
-  /** Card title displayed in header */
-  title?: string;
-  /** Title configuration options */
-  titleProps?: {
-    level?: 1 | 2 | 3 | 4 | 5 | 6;
-    size?: "s" | "m" | "l" | "xl";
-    terminals?: "sans" | "serif";
-    as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-    className?: string;
-  };
-  /** Supporting subtitle text below title */
-  subTitle?: string;
-  /** Subtitle configuration options */
-  subTitleProps?: {
-    size?: "s" | "m" | "l";
-    as?: "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-    className?: string;
-  };
-  /** Descriptive text in header area */
-  description?: string;
-  /** Description configuration options */
-  descriptionProps?: {
-    size?: "s" | "m" | "l";
-    as?: "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-    className?: string;
-  };
-  /** Body text configuration options */
-  bodyProps?: {
-    size?: "s" | "m" | "l";
-    as?: "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-    className?: string;
-  };
-  /** Right-aligned header content (buttons, badges, etc.) */
-  extra?: React.ReactNode;
-  /** Media content at top of card (images, videos) */
-  cover?: React.ReactNode;
-  /** Footer action buttons */
-  actions?: CardAction[];
-  /** Loading skeleton state */
-  loading?: boolean;
-  /** Elevation on hover interaction */
-  hoverable?: boolean;
-  /** Toggle card border */
-  bordered?: boolean;
-  /** Card padding size. @default "md" */
-  size?: "sm" | "md" | "lg" | "full";
-  /** Card presentation variant */
-  variant?: "elevated" | "filled" | "outlined";
-  /** Tab navigation within card */
-  tabs?: CardTab[];
-  /** Controlled active tab key */
-  activeTabKey?: string;
-  /** Default tab when uncontrolled */
-  defaultActiveTabKey?: string;
-  /** Tab change callback */
-  onTabChange?: (key: string) => void;
-  /** Legacy body text support */
-  body?: string;
-  /** Make entire card clickable */
-  link?: string;
-  /** Leading icon in header - React element or icon component */
-  icon?: React.ReactNode;
-  /** Icon positioning and styling options */
-  iconProps?: {
-    position?: "start" | "end" | "top";
-    size?: "sm" | "md" | "lg";
-    className?: string;
-  };
-  /** Badge in header area */
-  badge?: React.ReactNode;
-  /** Badge configuration options */
-  badgeProps?: {
-    variant?: "primary" | "secondary";
-    tone?: "neutral" | "error" | "warning" | "success" | "info";
-    size?: "sm" | "md" | "lg";
-    position?: "start" | "end";
-  };
-  /** Status/error message displayed below header */
-  statusMessage?: string;
-  /** Status message configuration */
-  statusMessageProps?: {
-    tone?: "success" | "info" | "error" | "warning";
-    size?: "s" | "m" | "l";
-    className?: string;
-  };
-  /** Accessible label for link cards */
-  linkLabel?: string;
-  /** Additional CSS classes */
+export interface CardTitleProps {
+  /** Heading level for the document outline @default 3 */
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Rendered element (defaults to h{level}) */
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  /** Title size on the type ladder @default "xxs" */
+  size?: "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
+  /** Title terminals @default "sans" */
+  terminals?: "sans" | "serif";
   className?: string;
-  /** Enable interactive behavior without link */
-  interactive?: boolean;
-  /** Click handler for interactive cards */
-  onClick?: () => void;
-  /** Custom body styles */
-  bodyStyle?: React.CSSProperties;
-  /** Custom header styles */
-  headStyle?: React.CSSProperties;
-  /** Custom footer content */
-  footer?: React.ReactNode;
-  /** Main card content */
+}
+
+export interface CardDescriptionProps {
+  /** Text size on the text ladder @default "s" */
+  size?: "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
+  /** Rendered element for the description @default "p" */
+  as?: "p" | "span" | "div";
+  className?: string;
+}
+
+export interface CardProps
+  extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
+  /**
+   * Background variant. All variants keep a transparent border so
+   * switching never causes layout jitter.
+   * - default: surface background with a hairline border
+   * - muted: recessed light background, no visible border
+   * - transparent: no background, no border — grouping without weight
+   */
+  variant?: CardVariant;
+  /** Internal padding step on the space scale (12/16/24px) @default "md" */
+  padding?: CardPadding;
+  /** Semantic element for the card surface @default "div" */
+  as?: "div" | "article" | "section" | "aside" | "li";
+  /** Optional heading rendered at the top of the card */
+  title?: string;
+  /** Heading configuration */
+  titleProps?: CardTitleProps;
+  /** Optional supporting line under the title */
+  description?: string;
+  /** Description configuration */
+  descriptionProps?: CardDescriptionProps;
+  /** Right-aligned slot in the header row (badge, timestamp, action) */
+  extra?: React.ReactNode;
+  /** Makes the whole card one link to this href */
+  link?: string;
+  /** Accessible name for the link when title alone is ambiguous */
+  linkLabel?: string;
+  /** Skeleton loading state (role=status, aria-busy) */
+  loading?: boolean;
   children?: React.ReactNode;
 }
 
-/** Composable surface for grouped content with header, body, media, and actions. */
-const Card = React.forwardRef<HTMLDivElement | HTMLAnchorElement, CardProps>(function Card({
+const paddingClassMap: Record<CardPadding, string> = {
+  none: styles.paddingNone,
+  sm: styles.paddingSm,
+  md: "",
+  lg: styles.paddingLg,
+};
+
+const variantClassMap: Record<CardVariant, string> = {
+  default: styles.default,
+  muted: styles.muted,
+  transparent: styles.transparent,
+};
+
+/**
+ * A quiet, bordered surface for discrete content. The container owns
+ * background, hairline border, radius, and padding; structure comes from
+ * composition (Title/Text/Divider/Stack) or the thin title/description/
+ * extra layer. `link` stretches a single anchor across the card.
+ */
+export const Card: React.FC<CardProps> = ({
+  variant = "default",
+  padding = "md",
+  as: Tag = "div",
   title,
   titleProps = {},
-  subTitle,
-  subTitleProps = {},
   description,
   descriptionProps = {},
-  bodyProps = {},
   extra,
-  cover,
-  actions,
-  loading = false,
-  hoverable = false,
-  bordered = true,
-  size = "md",
-  variant = "outlined",
-  tabs,
-  activeTabKey,
-  defaultActiveTabKey,
-  onTabChange,
-  body,
   link,
-  icon,
-  iconProps = {},
-  badge,
-  badgeProps = {},
-  statusMessage,
-  statusMessageProps = {},
   linkLabel,
-  className = "",
-  interactive = false,
-  onClick,
-  bodyStyle,
-  headStyle,
-  footer,
+  loading = false,
+  className,
   children,
-}, ref) {
-  const { t } = useTranslation();
+  ...rest
+}) => {
+  const hasHeader = Boolean(title || extra);
+  const titleLevel = titleProps.level ?? 3;
 
-  // Tab state (uncontrolled fallback)
-  const [internalTab, setInternalTab] = React.useState(defaultActiveTabKey);
-  const effectiveActiveTab = activeTabKey ?? internalTab ?? tabs?.[0]?.key;
-
-  const handleTabClick = (key: string) => {
-    if (!activeTabKey) setInternalTab(key);
-    onTabChange?.(key);
-  };
-
-  // Card owns sm|md|lg|full; nested controls (Tabs, action Buttons) take sm|md|lg.
-  const controlSize = size === "full" ? "md" : size;
-
-  // Convert CardTab[] to TabItem[] for Tabs component
-  const tabItems: TabItem[] | undefined = tabs?.map((tab) => ({
-    key: tab.key,
-    label: tab.label,
-    disabled: tab.disabled,
-  }));
-
-  const tabSection = tabItems && tabItems.length > 0 && (
-    <Tabs
-      tabs={tabItems}
-      activeTab={effectiveActiveTab}
-      onTabChange={handleTabClick}
-      variant="underline"
-      size={controlSize}
-      className={styles.cardTabs}
-    />
-  );
-
-  const footerActions = actions && actions.length > 0 && (
-    <div className={styles.cardActions}>
-      {actions.map((action) => (
-        <Button
-          key={action.key}
-          variant={action.variant || "secondary"}
-          disabled={action.disabled}
-          onClick={() => action.onClick?.(action.key)}
-          size={controlSize}
+  const titleNode = title ? (
+    <Title
+      level={titleLevel}
+      as={titleProps.as ?? (`h${titleLevel}` as CardTitleProps["as"])}
+      size={titleProps.size ?? "xxs"}
+      terminals={titleProps.terminals ?? "sans"}
+      lineHeight="snug"
+      className={[styles.title, titleProps.className]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      {link ? (
+        <a
+          href={link}
+          className={styles.cardLink}
+          aria-label={linkLabel && linkLabel !== title ? linkLabel : undefined}
         >
-          {action.label}
-        </Button>
-      ))}
-    </div>
-  );
-
-  const stateClasses = [
-    hoverable ? styles.hoverable : "",
-    bordered ? styles.bordered : styles.unbordered,
-    styles[size],
-    loading ? styles.loading : "",
-    styles[variant],
-  ].filter(Boolean);
-
-  const isInteractive = interactive || Boolean(onClick);
-
-  const hasHeader = Boolean(title || subTitle || description || extra || icon || badge);
-  const hasBodyContent = Boolean(body || children);
-  const hasFooter = Boolean(footer || (actions && actions.length > 0));
-
-  // Create badge element if badge prop exists
-  const badgeElement = badge && (
-    <div className={styles.badgeContainer}>
-      {typeof badge === "string" || typeof badge === "number" ? (
-        <Badge
-          variant={badgeProps.variant}
-          tone={badgeProps.tone}
-          size={badgeProps.size}
-        >
-          {badge}
-        </Badge>
+          {title}
+        </a>
       ) : (
-        badge
+        title
       )}
-    </div>
-  );
+    </Title>
+  ) : null;
 
-  const headerBlock = hasHeader && (
-    <div className={styles.cardHeader} style={headStyle}>
-      <div className={styles.headerMain}>
-        {icon && iconProps.position !== "top" && (
-          <span
-            className={[
-              styles.icon,
-              styles[
-                `icon${iconProps.size ? iconProps.size.charAt(0).toUpperCase() + iconProps.size.slice(1) : "Md"}`
-              ],
-              iconProps.position === "end" ? styles.iconEnd : styles.iconStart,
-              iconProps.className,
-            ]
-              .filter(Boolean)
-              .join(" ")}
-          >
-            {icon}
-          </span>
-        )}
-        <div className={styles.headerText}>
-          {iconProps.position === "top" && icon && (
-            <span
-              className={[
-                styles.icon,
-                styles[
-                  `icon${iconProps.size ? iconProps.size.charAt(0).toUpperCase() + iconProps.size.slice(1) : "Md"}`
-                ],
-                styles.iconTop,
-                iconProps.className,
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              {icon}
-            </span>
-          )}
-          {title && (
-            <Title
-              level={titleProps.level || 3}
-              size={titleProps.size || "m"}
-              terminals={titleProps.terminals || "serif"}
-              as={titleProps.as || "h3"}
-              className={[styles.title, titleProps.className]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              {title}
-            </Title>
-          )}
-          {subTitle && (
-            <Text
-              as={subTitleProps.as || "span"}
-              size={subTitleProps.size || "s"}
-              className={[styles.subTitle, subTitleProps.className]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              {subTitle}
-            </Text>
+  return (
+    <Tag
+      className={[
+        styles.card,
+        variantClassMap[variant],
+        paddingClassMap[padding],
+        link ? styles.linked : "",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      {...(loading ? { role: "status", "aria-busy": true } : {})}
+      {...rest}
+    >
+      {loading ? (
+        <Skeleton variant="text" lines={3} />
+      ) : (
+        <>
+          {hasHeader && (
+            <div className={styles.header}>
+              {titleNode}
+              {extra && <div className={styles.extra}>{extra}</div>}
+            </div>
           )}
           {description && (
             <Text
-              size={descriptionProps.size || "s"}
-              as={descriptionProps.as || "p"}
+              as={descriptionProps.as ?? "p"}
+              size={descriptionProps.size ?? "s"}
               className={[styles.description, descriptionProps.className]
                 .filter(Boolean)
                 .join(" ")}
@@ -317,143 +158,14 @@ const Card = React.forwardRef<HTMLDivElement | HTMLAnchorElement, CardProps>(fun
               {description}
             </Text>
           )}
-        </div>
-        {badgeProps.position === "start" && badgeElement}
-      </div>
-      {(extra || (badge && badgeProps.position !== "start")) && (
-        <div className={styles.extra}>
-          {badge && badgeProps.position !== "start" && badgeElement}
-          {extra}
-        </div>
+          {children}
+          {link && !title && (
+            <a href={link} className={styles.cardLink} aria-label={linkLabel ?? link} />
+          )}
+        </>
       )}
-    </div>
+    </Tag>
   );
-
-  // Status message block (between header and content)
-  const statusMessageBlock = statusMessage && (
-    <div className={styles.statusMessage}>
-      <div
-        className={[
-          styles.statusText,
-          statusMessageProps.tone &&
-            styles[
-              `status${statusMessageProps.tone.charAt(0).toUpperCase() + statusMessageProps.tone.slice(1)}`
-            ],
-          statusMessageProps.className,
-        ]
-          .filter(Boolean)
-          .join(" ")}
-        role={statusMessageProps.tone === "error" ? "alert" : "status"}
-      >
-        <Text size={statusMessageProps.size || "s"} as="span">
-          {statusMessage}
-        </Text>
-      </div>
-    </div>
-  );
-
-  const hasTabs = Boolean(tabItems && tabItems.length > 0 && effectiveActiveTab);
-  const tabPanelProps = hasTabs
-    ? {
-        id: `tabpanel-${effectiveActiveTab}`,
-        role: "tabpanel" as const,
-        "aria-labelledby": `tab-${effectiveActiveTab}`,
-        tabIndex: 0,
-      }
-    : {};
-
-  const bodyBlock = !loading && hasBodyContent && (
-    <div
-      className={styles.cardContent}
-      style={bodyStyle}
-      {...tabPanelProps}
-    >
-      {body && (
-        <Text
-          size={bodyProps.size || "m"}
-          as={bodyProps.as || "p"}
-          className={[styles.bodyText, bodyProps.className]
-            .filter(Boolean)
-            .join(" ")}
-        >
-          {body}
-        </Text>
-      )}
-      {children}
-    </div>
-  );
-
-  const footerBlock = hasFooter && (
-    <div className={styles.cardFooter}>
-      {footer}
-      {footerActions}
-    </div>
-  );
-
-  const skeleton = (
-    <div
-      className={styles.skeleton}
-      aria-busy="true"
-      aria-label={t("card.loading")}
-      role="status"
-    />
-  );
-
-  const innerContent = (
-    <>
-      {cover && <div className={styles.cardMedia}>{cover}</div>}
-      {headerBlock}
-      {statusMessageBlock}
-      {tabSection}
-      {loading ? skeleton : bodyBlock}
-      {footerBlock}
-    </>
-  );
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!isInteractive || !onClick) return;
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      onClick();
-    }
-  };
-
-  const baseClasses = [
-    styles.card,
-    ...stateClasses,
-    isInteractive ? styles.interactive : "",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  const hasVisibleLinkText = Boolean(description || body || subTitle || children);
-  const linkAccessibleName = hasVisibleLinkText ? undefined : linkLabel || title;
-
-  return link ? (
-    <Link
-      ref={ref as React.Ref<HTMLAnchorElement>}
-      href={link}
-      className={baseClasses}
-      aria-label={linkAccessibleName}
-      title={linkLabel || title}
-    >
-      {innerContent}
-    </Link>
-  ) : (
-    <div
-      ref={ref as React.Ref<HTMLDivElement>}
-      className={baseClasses}
-      tabIndex={isInteractive ? 0 : undefined}
-      role={isInteractive ? "button" : undefined}
-      onClick={onClick}
-      onKeyDown={handleKeyDown}
-    >
-      {innerContent}
-    </div>
-  );
-});
-
-Card.displayName = "Card";
+};
 
 export default Card;

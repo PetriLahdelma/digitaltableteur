@@ -1,111 +1,110 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
-import { I18nextProvider } from "react-i18next";
-import i18n from "../../i18n";
-import Card, { CardAction, CardTab } from "@dt/Card";
-
-function withI18n(ui: React.ReactElement) {
-  return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
-}
+import { describe, expect, it } from "vitest";
+import { render, screen } from "@testing-library/react";
+import Card from "./Card";
 
 describe("Card", () => {
-  it("renders title correctly", () => {
-    render(<Card title="Test Card" />);
-    expect(screen.getByText("Test Card")).toBeInTheDocument();
+  it("renders children on the default surface", () => {
+    const { container } = render(<Card>Body</Card>);
+    const el = container.firstChild as HTMLElement;
+    expect(el.className).toContain("card");
+    expect(el.className).toContain("default");
+    expect(screen.getByText("Body")).toBeInTheDocument();
   });
 
-  it("renders body when provided", () => {
-    render(<Card title="Test Card" body="Test body content" />);
-    expect(screen.getByText("Test body content")).toBeInTheDocument();
-  });
-
-  it("renders children when provided", () => {
-    render(
-      <Card title="Test Card">
-        <p>Child content</p>
+  it("maps variant and padding to classes", () => {
+    const { container } = render(
+      <Card variant="muted" padding="lg">
+        x
       </Card>,
     );
-    expect(screen.getByText("Child content")).toBeInTheDocument();
+    const el = container.firstChild as HTMLElement;
+    expect(el.className).toContain("muted");
+    expect(el.className).toContain("paddingLg");
+    expect(el.className).not.toContain("default");
   });
 
-  it("renders icon when provided", () => {
-    const TestIcon = () => <span data-testid="test-icon">Icon</span>;
-    render(<Card title="Test Card" icon={<TestIcon />} />);
-    expect(screen.getByTestId("test-icon")).toBeInTheDocument();
+  it("renders the title as a level-3 heading by default", () => {
+    render(<Card title="Design tokens">x</Card>);
+    expect(
+      screen.getByRole("heading", { level: 3, name: "Design tokens" }),
+    ).toBeInTheDocument();
   });
 
-  it("renders as link when link prop is provided", () => {
+  it("honors titleProps.level for the document outline", () => {
+    render(<Card title="Hero card" titleProps={{ level: 2 }}>x</Card>);
+    expect(screen.getByRole("heading", { level: 2 })).toBeInTheDocument();
+  });
+
+  it("renders description and the extra slot", () => {
     render(
-      <Card
-        title="Test Card"
-        link="/test"
-        linkLabel="Test Link"
-        body="Test body"
-      />,
+      <Card title="T" description="Supporting line" extra={<span>Meta</span>}>
+        x
+      </Card>,
     );
-
-    const linkElement = screen.getByRole("link");
-    expect(linkElement).toHaveAttribute("href", "/test");
-    // Note: Card component doesn't use aria-label, just check basic link functionality
+    expect(screen.getByText("Supporting line")).toBeInTheDocument();
+    expect(screen.getByText("Meta")).toBeInTheDocument();
   });
 
-  it("applies custom className (div variant)", () => {
-    const { container } = render(
-      <Card title="Test Card" className="custom-class" />,
-    );
-    const cardElement = container.querySelector(".custom-class");
-    expect(cardElement).toBeInTheDocument();
-  });
-  it("applies custom className (query selector)", () => {
-    const { container } = render(
-      <Card title="Test Card" className="custom-class" />,
-    );
-    // The custom class is applied to the top-level card div
-    const cardElement = container.querySelector(".custom-class");
-    expect(cardElement).toBeInTheDocument();
+  it("renders the semantic element from as", () => {
+    const { container } = render(<Card as="article">x</Card>);
+    expect((container.firstChild as HTMLElement).tagName).toBe("ARTICLE");
   });
 
-  it("renders actions", () => {
-    const actions: CardAction[] = [
-      { key: "a", label: "First" },
-      { key: "b", label: "Second" },
-    ];
-    render(<Card title="Action Card" actions={actions} />);
-    expect(screen.getByText("First")).toBeInTheDocument();
-    expect(screen.getByText("Second")).toBeInTheDocument();
-  });
-
-  it("renders loading skeleton", () => {
-    render(withI18n(<Card title="Loading Card" loading body="Hidden" />));
-    const skeleton = screen.getByRole("status", { name: /loading content/i });
-    expect(skeleton).toHaveAttribute("aria-busy", "true");
-  });
-
-  it("forwards ref to the card element (div mode)", () => {
-    const ref = React.createRef<HTMLDivElement>();
-    render(<Card title="Ref Card" ref={ref} />);
-    expect(ref.current).toBeInstanceOf(HTMLDivElement);
-  });
-
-  it("forwards ref to the anchor in link mode", () => {
-    const ref = React.createRef<HTMLAnchorElement>();
+  it("link mode renders exactly one anchor named by the title", () => {
     render(
-      withI18n(<Card title="Linked" link="/x" linkLabel="Linked" ref={ref} />),
+      <Card title="Case study" link="/work/case-study">
+        body
+      </Card>,
     );
-    expect(ref.current).toBeInstanceOf(HTMLAnchorElement);
+    const links = screen.getAllByRole("link");
+    expect(links).toHaveLength(1);
+    expect(links[0]).toHaveAccessibleName("Case study");
+    expect(links[0]).toHaveAttribute("href", "/work/case-study");
   });
 
-  it("renders tabs and switches active (uncontrolled)", () => {
-    const tabs: CardTab[] = [
-      { key: "one", label: "One" },
-      { key: "two", label: "Two" },
-    ];
-    render(<Card title="Tabbed" tabs={tabs} body="Content" />);
-    const tabOne = screen.getByRole("tab", { name: /One/i });
-    const tabTwo = screen.getByRole("tab", { name: /Two/i });
-    expect(tabOne).toHaveAttribute("aria-selected", "true");
-    fireEvent.click(tabTwo);
-    expect(tabTwo).toHaveAttribute("aria-selected", "true");
+  it("linkLabel overrides an ambiguous title as the accessible name", () => {
+    render(
+      <Card title="Read more" link="/blog/post" linkLabel="Read the launch post">
+        body
+      </Card>,
+    );
+    expect(screen.getByRole("link")).toHaveAccessibleName(
+      "Read the launch post",
+    );
+  });
+
+  it("link mode without a title still exposes one named anchor", () => {
+    render(<Card link="/somewhere" linkLabel="Open somewhere">body</Card>);
+    expect(screen.getByRole("link")).toHaveAccessibleName("Open somewhere");
+  });
+
+  it("does not decorate the card link with an underline (no site squiggle)", () => {
+    render(
+      <Card title="Case study" link="/work/x">
+        body
+      </Card>,
+    );
+    expect(screen.getByRole("link").className).toContain("cardLink");
+  });
+
+  it("loading replaces content with a skeleton and announces status", () => {
+    const { container } = render(
+      <Card loading title="Hidden while loading">
+        Hidden body
+      </Card>,
+    );
+    const el = container.firstChild as HTMLElement;
+    expect(el).toHaveAttribute("role", "status");
+    expect(el).toHaveAttribute("aria-busy", "true");
+    expect(screen.queryByText("Hidden body")).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading")).not.toBeInTheDocument();
+  });
+
+  it("plain cards add no role and are not focusable", () => {
+    const { container } = render(<Card>x</Card>);
+    const el = container.firstChild as HTMLElement;
+    expect(el).not.toHaveAttribute("role");
+    expect(el).not.toHaveAttribute("tabindex");
   });
 });

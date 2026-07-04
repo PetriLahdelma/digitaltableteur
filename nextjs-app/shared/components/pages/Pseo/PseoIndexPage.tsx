@@ -39,8 +39,6 @@ export function PseoIndexPage({
                 className={styles.card}
                 link={`/pseo/services/${service.slug}`}
                 linkLabel={`Open ${service.name}`}
-                hoverable
-                size="full"
                 title={service.name}
                 titleProps={{
                   terminals: "sans",
@@ -70,8 +68,6 @@ export function PseoIndexPage({
                 className={styles.card}
                 link={`/pseo/stacks/${stack.slug}`}
                 linkLabel={`Open ${getStackDisplayName(stack)}`}
-                hoverable
-                size="full"
                 title={getStackDisplayName(stack)}
                 titleProps={{
                   terminals: "sans",
@@ -101,8 +97,6 @@ export function PseoIndexPage({
                 className={styles.card}
                 link={`/pseo/audiences/${audience.slug}`}
                 linkLabel={`Open ${audience.name}`}
-                hoverable
-                size="full"
                 title={audience.name}
                 titleProps={{
                   terminals: "sans",
