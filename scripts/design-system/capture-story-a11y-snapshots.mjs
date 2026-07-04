@@ -41,15 +41,15 @@ function loadStoryPrefixMap() {
       const text = readFileSync(storyPath, "utf8");
       const m = text.match(titleRe);
       if (!m) continue;
+      // Match Storybook's own @storybook/csf `sanitize`: lowercase, collapse
+      // every non-alphanumeric run to a single "-", trim. No camelCase splitting,
+      // so `Forms/TextArea` → `forms-textarea` (the real story-id prefix).
       const prefix = m[1]
-        .split("/")
-        .map((segment) =>
-          segment
-            .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
-            .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
-            .toLowerCase(),
-        )
-        .join("-");
+        .toLowerCase()
+        .replace(/[ ’–—―′¿'`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/]/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+/, "")
+        .replace(/-+$/, "");
       storyPrefixToDir.set(prefix, dir);
     }
   }

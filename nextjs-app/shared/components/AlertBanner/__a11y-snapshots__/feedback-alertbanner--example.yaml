@@ -1,6 +1,5 @@
 - status: Work in progress (beta)
 - status:
-  - img "success"
   - heading "Saved" [level=1]
   - paragraph: Your changes have been stored.
   - button "Dismiss alert": Close
