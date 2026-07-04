@@ -42,10 +42,8 @@ const meta: Meta<typeof Badge> = {
       table: { category: "Content" },
     },
     icon: {
-      control: false,
-      description:
-        "Custom icon element; un-sized DT Icons follow the badge's size step (16/24/32px). Prefer the iconName knob here in Storybook.",
-      table: { category: "Content", type: { summary: "React.ReactNode" } },
+      // ReactNode — nothing useful to control; documented in the contract.
+      table: { disable: true },
     },
 
     // Appearance
@@ -82,8 +80,7 @@ const meta: Meta<typeof Badge> = {
     },
     onRemove: {
       action: "removed",
-      description: "Called after the badge is dismissed.",
-      table: { category: "Behavior", type: { summary: "() => void" } },
+      table: { disable: true },
     },
 
     // Accessibility
@@ -102,7 +99,7 @@ const meta: Meta<typeof Badge> = {
 
     // Advanced
     className: {
-      control: false,
+      control: "text",
       description: "Additional CSS classes on the badge.",
       table: { category: "Advanced" },
     },
@@ -111,6 +108,8 @@ const meta: Meta<typeof Badge> = {
     variant: "primary",
     children: "Badge",
     iconName: "",
+    title: "",
+    className: "",
     removable: false,
     square: false,
     size: "md",
