@@ -29,39 +29,82 @@ const meta: Meta<typeof Badge> = {
     llm: { schema },
   },
   argTypes: {
+    // Content
+    children: {
+      control: "text",
+      description: "Badge label text.",
+      table: { category: "Content" },
+    },
+    iconName: {
+      control: { type: "text" },
+      description:
+        "Phosphor icon name (story knob); a semantic icon is supplied automatically for non-neutral tones when empty.",
+      table: { category: "Content" },
+    },
+    icon: {
+      control: false,
+      description:
+        "Custom icon element; un-sized DT Icons follow the badge's size step (16/24/32px). Prefer the iconName knob here in Storybook.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+
+    // Appearance
     variant: {
       control: { type: "inline-radio" },
       options: ["primary", "secondary"],
       description: "Visual weight (filled vs outlined).",
-      table: { defaultValue: { summary: "primary" } },
+      table: { category: "Appearance", defaultValue: { summary: "primary" } },
     },
     tone: {
       control: { type: "inline-radio" },
       options: ["neutral", "error", "warning", "success", "info"],
-      description: "Semantic colour, orthogonal to variant. Matches design tokens.",
-      table: { defaultValue: { summary: "neutral" } },
+      description:
+        "Semantic colour, orthogonal to variant. Matches design tokens.",
+      table: { category: "Appearance", defaultValue: { summary: "neutral" } },
     },
     size: {
       control: { type: "inline-radio" },
       options: ["sm", "md", "lg"],
-      description: "Size.",
-      table: { defaultValue: { summary: "md" } },
-    },
-    children: { control: "text", description: "Badge content." },
-    className: { control: "text", description: "Additional CSS classes." },
-    removable: {
-      control: "boolean",
-      description: "Show a dismiss control that removes the badge.",
+      description: "Size step: 32/40/56px tall with 12/16/20px labels.",
+      table: { category: "Appearance", defaultValue: { summary: "md" } },
     },
     square: {
       control: "boolean",
       description: "Square (non-pill) corners.",
+      table: { category: "Appearance", defaultValue: { summary: "false" } },
     },
-    onRemove: { action: "removed", description: "Called after the badge is dismissed." },
-    iconName: {
-      control: { type: "text" },
+
+    // Behavior
+    removable: {
+      control: "boolean",
+      description: "Show a dismiss control that removes the badge.",
+      table: { category: "Behavior", defaultValue: { summary: "false" } },
+    },
+    onRemove: {
+      action: "removed",
+      description: "Called after the badge is dismissed.",
+      table: { category: "Behavior", type: { summary: "() => void" } },
+    },
+
+    // Accessibility
+    role: {
+      control: false,
       description:
-        "Phosphor icon name; a semantic icon is supplied automatically for non-neutral tones when empty.",
+        "ARIA role override; role=\"status\" makes badge updates announce politely (aria-live).",
+      table: { category: "Accessibility", type: { summary: "string" } },
+    },
+    title: {
+      control: "text",
+      description:
+        "Native title attribute (pointer-hover tooltip). Not a substitute for visible text.",
+      table: { category: "Accessibility" },
+    },
+
+    // Advanced
+    className: {
+      control: false,
+      description: "Additional CSS classes on the badge.",
+      table: { category: "Advanced" },
     },
   },
   args: {
