@@ -1,8 +1,8 @@
 import { createMcpHandler } from "mcp-handler";
 
 import { registerConsultingMcpTools } from "@/nextjs-app/shared/lib/consulting-tools/register-mcp-tools";
+import { registerDocsRegistryMcpTools } from "@/nextjs-app/shared/lib/design-system-mcp/docs-registry-tools";
 import { registerDesignSystemMcpResources } from "@/nextjs-app/shared/lib/design-system-mcp/register-mcp-resources";
-import { registerDesignSystemMcpTools } from "@/nextjs-app/shared/lib/design-system-mcp/register-mcp-tools";
 import {
   MCP_SERVER_DESCRIPTION,
   MCP_SERVER_NAME,
@@ -39,7 +39,10 @@ export function createConsultingMcpHandler(options: { basePath: string }) {
   const mcpHandler = createMcpHandler(
     (server) => {
       registerConsultingMcpTools(server);
-      registerDesignSystemMcpTools(server);
+      // Astryx roadmap 3.3: the public docs surface is exactly two tools
+      // (search + get) served from docs-registry.json. The six discovery
+      // tools remain on the repo-internal stdio server (npm run ds:mcp).
+      registerDocsRegistryMcpTools(server);
       registerDesignSystemMcpResources(server);
     },
     {

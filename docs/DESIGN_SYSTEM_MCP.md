@@ -6,20 +6,35 @@ Agents can discover `@dt/*` components, tokens, and import policy through MCP â€
 
 | Surface | URL / command | Tools |
 |---------|----------------|-------|
-| **Production HTTP** | `https://www.digitaltableteur.com/mcp` | Consulting + design system (6 tools) + 4 resources |
-| **Local stdio** | `npm run ds:mcp` | Design system only (6 tools + 4 resources) |
+| **Production HTTP** | `https://www.digitaltableteur.com/mcp` | Consulting + docs registry (`search`/`get`) + 4 resources |
+| **Local stdio** | `npm run ds:mcp` | Design system: 6 discovery tools + `search`/`get` + 4 resources |
 
 Discovery card: `/.well-known/mcp/server-card.json`
 
 ## Prerequisites
 
 ```bash
-npm run build:tokens   # agent-manifest.json, relationship graph, token catalog
+npm run build:tokens   # agent-manifest.json, relationship graph, token catalog, docs-registry.json
 ```
 
 If manifest is missing, tools return an error with this hint.
 
-## Tools
+## Docs-registry tools (public surface, Astryx roadmap 3.3)
+
+The public route serves exactly two docs tools fed from the git-tracked build
+artifact `nextjs-app/shared/foundations/dist/docs-registry.json` (contracts +
+example story source, extracted at build time â€” same data as the Storybook
+docs pages, so the AI surface cannot drift):
+
+| Tool | Purpose |
+|------|---------|
+| `search(query, limit=8)` | Budgeted briefs: name, group, dense description, import line, up to 6 key props, related, follow-up hint. Scoring: name exact 100 / prefix 90 / keyword 90 / substring 85 / all-words 75; sub-components demoted. |
+| `get(name, section?)` | Full entry: usage guidance, props, example story source, theming tokens. Sections: `all` (default), `usage`, `props`, `examples`, `theming`. |
+
+Drift guard: `nextjs-app/shared/lib/design-system-mcp/docs-registry.test.ts`
+(Tier 1 completeness, search ranking, per-stable-component get shape snapshot).
+
+## Discovery tools (repo-internal stdio only)
 
 | Tool | Purpose |
 |------|---------|
