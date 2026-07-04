@@ -893,7 +893,7 @@
       "name": "Avatar",
       "group": "display",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Profile image, initials, link, or menu trigger.",
       "dense": "Identity mark: image (srcSet/lazy) or initials from name; sm..xl sizes; optional link (clickable + destinationUrl) or dropdown menu (menuItems + menuLabel); variant forces image|initials",
       "keywords": [
