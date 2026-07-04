@@ -17,6 +17,18 @@ import { docTierFor } from './doc-tiers.mjs'
 
 type VariantMap = Record<string, { values: string[]; default: string | null }>
 
+// Components whose Controls panel is derived at runtime by the preview-level
+// enhancers (.storybook/lib/controls-autogen.ts). The static argTypes gate
+// does not apply to them; audit:controls (+ --effects) enforces the surface.
+const CONTROLS_AUTOGEN: Set<string> = (() => {
+    try {
+        const p = resolve(dirname(fileURLToPath(import.meta.url)), '../../.storybook/controls-autogen.json')
+        return new Set(JSON.parse(readFileSync(p, 'utf8')).components as string[])
+    } catch {
+        return new Set()
+    }
+})()
+
 function normalizeVariantToken(value: string | null | undefined): string | null {
     if (value == null) return null
     return String(value).replace(/^["']+|["']+$/g, '')
@@ -1074,7 +1086,14 @@ export function validateComponentsDir(root: string): ValidationResult {
             // 3. Each control needs `description`; variant axes need table.defaultValue.summary.
             //
             // Alpha components may ship before the Controls/docs surface is complete.
-            if (manifest.status === 'beta' || manifest.status === 'stable') {
+            //
+            // Components registered in .storybook/controls-autogen.json derive
+            // argTypes at runtime from the contract + docgen
+            // (.storybook/lib/controls-autogen.ts) — there is no static
+            // meta.argTypes block to parse. Their Controls surface is enforced
+            // by the STRONGER runtime instruments instead: audit:controls
+            // (presence, farm --min ratchet) and --effects (0 inert props).
+            if ((manifest.status === 'beta' || manifest.status === 'stable') && !CONTROLS_AUTOGEN.has(name)) {
                 const declaredVariants = Object.keys(manifest.variants ?? {})
                 const metaObj = extractMetaObject(storiesSf)
                 const argTypesObj = metaObj ? extractArgTypesObject(metaObj) : null

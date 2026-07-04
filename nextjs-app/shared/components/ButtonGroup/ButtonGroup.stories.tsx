@@ -25,13 +25,9 @@ const meta = {
     a11y: { test: "error" },
     contractStatus: contract.status,
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // only the composite children slot needs an authored mapping preset.
   argTypes: {
-    ariaLabel: { control: "text", description: "Accessible group name" },
-    attached: {
-      control: "boolean",
-      description: "Fuse children into one segmented surface",
-      table: { defaultValue: { summary: "true" } },
-    },
     children: {
       control: {
         type: "select",

@@ -55,27 +55,11 @@ export function DemoComponent({ title, description }: DemoProps) { const [count,
 }`;
 
 const meta: Meta<typeof CodeSnippet> = {
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // non-contract passthroughs that docgen would otherwise surface stay hidden.
   argTypes: {
-    variant: {
-      control: { type: "select" },
-      options: ["inline", "single", "multi"],
-      description: "Code snippet layout variant",
-      table: { defaultValue: { summary: "inline" } },
-    },
-      "aria-label": { table: { disable: true } },
-      allowCopy: { control: "boolean", description: "Show the copy button; keep on for reusable code.", table: { category: "Content" } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
       children: { table: { disable: true } },
       className: { table: { disable: true } },
-      code: { control: "text", description: "The code string to highlight.", table: { category: "Content" } },
-      id: { table: { disable: true } },
-      language: { control: "text", description: "Highlighting grammar (typescript, bash, python, ...).", table: { category: "Content" } },
-      maxLines: { control: { type: "number", min: 0 }, description: "Clamp height to this many lines; longer code scrolls. 0 disables the clamp.", table: { category: "Content", defaultValue: { summary: "0" } } },
-      onCopy: { action: "onCopy", table: { disable: true } },
-      ref: { table: { disable: true } },
-      showLineNumbers: { control: "boolean", description: "Render a line-number gutter.", table: { category: "Content" } },
-      style: { table: { disable: true } }
 },
   title: "Content/CodeSnippet",
   component: CodeSnippet,
