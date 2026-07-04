@@ -86,10 +86,13 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     let resolvedIcon: React.ReactNode = icon;
     if (resolvedIcon == null && tone && semanticStatus) {
       // The badge already sets a contrast-correct text color per variant×tone,
-      // so the semantic icon inherits it via currentColor.
+      // so the semantic icon inherits it via currentColor. The icon follows
+      // the badge's size step so it never inflates the pill height.
+      const statusIconSize = { sm: "2xs", md: "xs", lg: "sm" } as const;
       resolvedIcon = (
         <Icon
           name={STATUS_ICON_NAMES[semanticStatus]}
+          size={statusIconSize[size]}
           color="currentColor"
           decorative
         />
