@@ -3,7 +3,7 @@
     "name": "Tooltip",
     "tier": "molecule",
     "group": "overlay",
-    "status": "alpha",
+    "status": "beta",
     "description": "Radix tooltip primitive set (Provider, Trigger, Content) for icon hints.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-tooltip",
     "radixPrimitive": "@radix-ui/react-tooltip",
@@ -48,15 +48,39 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-03 (batch 4) — hover+focus trigger, Escape dismiss, and aria-describedby wiring asserted in the play function and unit tests; axe clean on Default/Placements/WithIconButton. lightDark/forcedColors verification still pending before beta.",
-        "forcedColorsVerified": false
+        "reviewedNote": "2026-07-03 (batch 4) — hover+focus trigger, Escape dismiss, and aria-describedby wiring asserted in the play function and unit tests; axe clean on Default/Placements/WithIconButton. 2026-07-05 (alpha→beta) — the pending light/dark + forced-colors verification is now done: axe-clean on Default/Example/ForcedColors via test-storybook; light + dark eyeballed (bubble uses --color-primary and inverts correctly, arrow tracks the bubble); emulated forced-colors shows a CanvasText-bordered Canvas bubble with readable CanvasText, no reliance on a background that disappears; enter/exit animation drops under reduced-motion (CSS @media).",
+        "forcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "schemaVersion": 2,
+    "props": {
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "side": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "left",
+                "right",
+                "top",
+                "bottom"
+            ]
+        },
+        "sideOffset": {
+            "optional": true,
+            "type": "number"
+        },
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        }
+    },
     "forbiddenUse": [
         "put interactive content (links, buttons) inside a tooltip; it cannot be reached by keyboard or touch — use a Modal or disclosure instead.",
         "use a tooltip as the only label of a control; give the control a real accessible name and let the tooltip add detail.",

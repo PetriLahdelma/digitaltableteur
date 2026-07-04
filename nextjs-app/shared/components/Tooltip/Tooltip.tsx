@@ -56,18 +56,27 @@ export function TooltipTrigger({
   );
 }
 
+/**
+ * Props for `TooltipContent`, the content bubble and the tooltip's primary
+ * documented control surface.
+ */
+export interface TooltipProps {
+  /** Extra class on the content bubble. */
+  className?: string;
+  /** Preferred placement relative to the trigger; flips when out of room. */
+  side?: "top" | "right" | "bottom" | "left";
+  /** Gap in px between the trigger and the bubble. */
+  sideOffset?: number;
+  /** Hint content — a short phrase, never interactive. */
+  children: ReactNode;
+}
+
 export function TooltipContent({
   className,
   side = "top",
   sideOffset = 4,
   children,
-}: {
-  className?: string;
-  /** Preferred placement relative to the trigger; flips when out of room. */
-  side?: "top" | "right" | "bottom" | "left";
-  sideOffset?: number;
-  children: ReactNode;
-}) {
+}: TooltipProps) {
   const mergedClassName = [styles.content, className].filter(Boolean).join(" ");
   return (
     <TooltipPrimitive.Portal>

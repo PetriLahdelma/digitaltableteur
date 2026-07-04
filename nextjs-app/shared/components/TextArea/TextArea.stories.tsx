@@ -3,6 +3,7 @@ import React from "react";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
 import TextArea from "@dt/TextArea";
 import { useTranslation } from "react-i18next";
+import { expect, userEvent, within } from "storybook/test";
 
 const meta = {
   title: "Forms/TextArea",
@@ -111,6 +112,31 @@ AnimatedResize.parameters = {
     description: {
       story: "animateResize grows the field smoothly with content, bounded by minRows and maxRows.",
     },
+  },
+};
+
+/**
+ * Keyboard contract, asserted by the play function: Tab moves focus into the
+ * field and typed characters land in the value.
+ */
+export const KeyboardEntry: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "The field is a native textarea: Tab focuses it and typing updates the value; onChange receives the raw string.",
+      },
+    },
+  },
+  render: () => <TextAreaStory {...Default.args} />,
+  play: async ({ canvasElement }) => {
+    const textbox = within(canvasElement).getByRole("textbox");
+    await userEvent.tab();
+    await expect(textbox).toHaveFocus();
+    await userEvent.type(textbox, "Hello from the keyboard");
+    await expect(textbox).toHaveValue("Hello from the keyboard");
   },
 };
 
