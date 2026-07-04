@@ -40,6 +40,16 @@ export { default as Label } from "./Label/Label";
 export { default as Link } from "./Link/Link";
 export { default as List } from "./List/List";
 export { default as MacWindowFrame } from "./MacWindowFrame/MacWindowFrame";
+export {
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  MenuSeparator,
+  MenuSub,
+  MenuSubTrigger,
+  MenuSubContent,
+} from "./Menu";
 export { default as MCPActionButton } from "./MCPActionButton/MCPActionButton";
 export { default as NavMenuList } from "./NavMenuList/NavMenuList";
 export { default as MarkdownMessage } from "./MarkdownMessage/MarkdownMessage";

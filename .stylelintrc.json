@@ -120,7 +120,8 @@
               "HighlightText",
               "ButtonText",
               "ButtonFace",
-              "LinkText"
+              "LinkText",
+              "GrayText"
             ],
             "ignoreValues": [
               "/^rgb/",

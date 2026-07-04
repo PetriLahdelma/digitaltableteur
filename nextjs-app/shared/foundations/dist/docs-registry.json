@@ -8538,6 +8538,203 @@
       },
       "examples": []
     },
+    "Menu": {
+      "name": "Menu",
+      "group": "overlay",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Radix dropdown-menu primitive set (Menu, Trigger, Content, Item, Sub) shared by Avatar and SplitButton.",
+      "dense": "Radix dropdown-menu set: Menu > MenuTrigger asChild > MenuContent (side/align) with MenuItem (icon/trailing/disabled/onSelect/href), MenuSeparator, MenuSub; Radix owns focus, arrows, typeahead, Escape",
+      "keywords": [
+        "menu",
+        "dropdown",
+        "dropdown menu",
+        "actions menu",
+        "context menu",
+        "overflow menu",
+        "radix"
+      ],
+      "importLine": "import { Menu } from \"@dt/Menu\";",
+      "keyProps": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true
+        },
+        {
+          "name": "side",
+          "type": "top | right | bottom | left",
+          "required": false
+        },
+        {
+          "name": "align",
+          "type": "start | center | end",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "sideOffset",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "props": {
+        "children": {
+          "optional": false,
+          "type": "ReactNode"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        },
+        "side": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ]
+        },
+        "align": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "start",
+            "center",
+            "end"
+          ]
+        },
+        "sideOffset": {
+          "optional": true,
+          "type": "number"
+        }
+      },
+      "composesWith": [
+        "Button",
+        "IconButton",
+        "Avatar",
+        "SplitButton",
+        "Icon",
+        "Kbd"
+      ],
+      "prefersOver": [
+        "hand-rolled role=menu markup with manual arrow-key, typeahead, and collision logic"
+      ],
+      "forbiddenUse": [
+        "reach for Menu to build primary site navigation; navigation is a list of links (NavMenuList), not an actions menu — forcing role=menu onto nav is an a11y regression.",
+        "put a Menu trigger inside another interactive control; give the menu its own focusable trigger via MenuTrigger asChild.",
+        "hand-roll dropdown positioning or keyboard handling around Menu; Radix owns collision, roving focus, typeahead, and Escape."
+      ],
+      "usage": {
+        "description": "Menu is the shared dropdown-menu primitive: a focusable trigger opens a portaled list of actions. It is built on @radix-ui/react-dropdown-menu, so roving focus, arrow-key navigation, typeahead, Escape, focus return, and collision-aware positioning all come from Radix — this layer owns only the visual treatment. Compose it from parts: wrap your control in MenuTrigger asChild, list MenuItems inside MenuContent, group with MenuSeparator, and nest a MenuSub for second-level menus. Items take a leading icon (rendered in a fixed gutter so labels align), a muted trailing hint, a disabled flag, and either an onSelect handler or an href to render as a link. It is the dogfooded engine behind Avatar's account menu and SplitButton's options; NavMenuList stays a navigation list, not a menu.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Wrap your real Button or Avatar in MenuTrigger asChild so it receives the trigger wiring instead of a nested extra button."
+          },
+          {
+            "guidance": true,
+            "description": "Give each MenuItem a short verb label; put the icon in the icon slot so labels align in a column regardless of glyph width."
+          },
+          {
+            "guidance": true,
+            "description": "Use href for navigation items (renders an anchor, so open-in-new-tab and middle-click work) and onSelect for actions."
+          },
+          {
+            "guidance": true,
+            "description": "Group related actions with MenuSeparator and reserve MenuSub for genuinely nested choices; a flat menu is faster to scan."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use Menu for primary navigation; a list of page links belongs in NavMenuList with aria-current, not a role=menu."
+          },
+          {
+            "guidance": false,
+            "description": "Do not re-implement positioning or keyboard handling around Menu; Radix already provides collision, roving focus, typeahead, and Escape."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Menu",
+            "required": true,
+            "description": "Radix root owning open state; non-modal by default (open/defaultOpen/onOpenChange, modal to trap focus)."
+          },
+          {
+            "name": "MenuTrigger",
+            "required": true,
+            "description": "Wraps the focusable control (use asChild); Radix adds aria-haspopup and aria-expanded."
+          },
+          {
+            "name": "MenuContent",
+            "required": true,
+            "description": "Portaled surface; side/align/sideOffset set placement, collision flips it when out of room."
+          },
+          {
+            "name": "MenuItem",
+            "required": true,
+            "description": "role=menuitem with icon/trailing/disabled and onSelect or href; the menu closes after select."
+          },
+          {
+            "name": "MenuSeparator",
+            "required": false,
+            "description": "Decorative divider grouping related items."
+          },
+          {
+            "name": "MenuSub",
+            "required": false,
+            "description": "MenuSub + MenuSubTrigger + MenuSubContent build a second-level menu opened with ArrowRight/hover."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--color-white",
+          "--color-border",
+          "--color-neutral-bg",
+          "--color-dark",
+          "--color-muted",
+          "--color-primary"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-8",
+          "--space-internal-12"
+        ]
+      },
+      "examples": [
+        {
+          "story": "WithIcons",
+          "description": "Each item's glyph goes in the icon slot (a fixed 1.25rem gutter) so labels line up in a column. The trailing slot carries a muted shortcut hint or metadata.",
+          "source": "export const WithIcons: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Each item's glyph goes in the icon slot (a fixed 1.25rem gutter) so labels line up in a column. The trailing slot carries a muted shortcut hint or metadata.\",\n      },\n    },\n  },\n  render: (_args, { viewMode }) => (\n    <Menu defaultOpen={viewMode !== \"docs\"}>\n      <MenuTrigger asChild>\n        <Button variant=\"secondary\">File</Button>\n      </MenuTrigger>\n      <MenuContent>\n        <MenuItem\n          icon={<Icon name=\"pencil-simple\" ariaLabel=\"\" size=\"sm\" />}\n          trailing=\"⌘E\"\n          onSelect={() => {}}\n        >\n          Edit\n        </MenuItem>\n        <MenuItem\n          icon={<Icon name=\"copy\" ariaLabel=\"\" size=\"sm\" />}\n          trailing=\"⌘D\"\n          onSelect={() => {}}\n        >\n          Duplicate\n        </MenuItem>\n        <MenuSeparator />\n        <MenuItem\n          icon={<Icon name=\"trash\" ariaLabel=\"\" size=\"sm\" />}\n          onSelect={() => {}}\n        >\n          Delete\n        </MenuItem>\n      </MenuContent>\n    </Menu>\n  ),\n};\n\n/** Nested choices open in a second-level menu via MenuSub (ArrowRight / hover). */"
+        },
+        {
+          "story": "WithSubmenu",
+          "description": "MenuSub nests a second-level menu. The MenuSubTrigger shows a trailing caret and opens on ArrowRight or hover; ArrowLeft/Escape closes it. Reserve submenus for genuinely nested choices.",
+          "source": "export const WithSubmenu: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"MenuSub nests a second-level menu. The MenuSubTrigger shows a trailing caret and opens on ArrowRight or hover; ArrowLeft/Escape closes it. Reserve submenus for genuinely nested choices.\",\n      },\n    },\n  },\n  render: (_args, { viewMode }) => (\n    <Menu defaultOpen={viewMode !== \"docs\"}>\n      <MenuTrigger asChild>\n        <Button variant=\"secondary\">Share</Button>\n      </MenuTrigger>\n      <MenuContent>\n        <MenuItem onSelect={() => {}}>Copy link</MenuItem>\n        <MenuSub>\n          <MenuSubTrigger\n            icon={<Icon name=\"users\" ariaLabel=\"\" size=\"sm\" />}\n          >\n            Invite people\n          </MenuSubTrigger>\n          <MenuSubContent>\n            <MenuItem onSelect={() => {}}>By email</MenuItem>\n            <MenuItem onSelect={() => {}}>By link</MenuItem>\n          </MenuSubContent>\n        </MenuSub>\n        <MenuSeparator />\n        <MenuItem onSelect={() => {}}>Export</MenuItem>\n      </MenuContent>\n    </Menu>\n  ),\n};\n\n/** Disabled items are dimmed, announced disabled, and skipped by keyboard navigation. */"
+        },
+        {
+          "story": "Disabled",
+          "description": "A disabled MenuItem is dimmed, exposes the disabled state to assistive tech, and is skipped when arrowing through the menu.",
+          "source": "export const Disabled: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"A disabled MenuItem is dimmed, exposes the disabled state to assistive tech, and is skipped when arrowing through the menu.\",\n      },\n    },\n  },\n  render: (_args, { viewMode }) => (\n    <Menu defaultOpen={viewMode !== \"docs\"}>\n      <MenuTrigger asChild>\n        <Button variant=\"secondary\">Actions</Button>\n      </MenuTrigger>\n      <MenuContent>\n        <MenuItem onSelect={() => {}}>Rename</MenuItem>\n        <MenuItem disabled onSelect={() => {}}>\n          Archive (unavailable)\n        </MenuItem>\n        <MenuItem onSelect={() => {}}>Delete</MenuItem>\n      </MenuContent>\n    </Menu>\n  ),\n};\n\n/** Navigation items use href, so they render as anchors: middle-click and open-in-new-tab work. */"
+        },
+        {
+          "story": "AsLinks",
+          "description": "Items with an href render as real anchors, so they support middle-click, open-in-new-tab, and copy-link — use them for navigation and onSelect for actions.",
+          "source": "export const AsLinks: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Items with an href render as real anchors, so they support middle-click, open-in-new-tab, and copy-link — use them for navigation and onSelect for actions.\",\n      },\n    },\n  },\n  render: (_args, { viewMode }) => (\n    <Menu defaultOpen={viewMode !== \"docs\"}>\n      <MenuTrigger asChild>\n        <Button variant=\"secondary\">Account</Button>\n      </MenuTrigger>\n      <MenuContent>\n        <MenuItem\n          icon={<Icon name=\"user\" ariaLabel=\"\" size=\"sm\" />}\n          href=\"/profile\"\n        >\n          Profile\n        </MenuItem>\n        <MenuItem\n          icon={<Icon name=\"gear\" ariaLabel=\"\" size=\"sm\" />}\n          href=\"/settings\"\n        >\n          Settings\n        </MenuItem>\n        <MenuSeparator />\n        <MenuItem\n          icon={<Icon name=\"sign-out\" ariaLabel=\"\" size=\"sm\" />}\n          onSelect={() => {}}\n        >\n          Sign out\n        </MenuItem>\n      </MenuContent>\n    </Menu>\n  ),\n};\n\n/** Keyboard contract driven end to end: open, arrow to an item, select, Escape. */"
+        },
+        {
+          "story": "Example",
+          "description": "The a11y contract, asserted by the play function in a real browser: the trigger exposes aria-haspopup, keyboard opens the menu, ArrowDown moves the roving focus, Enter selects and closes, and focus returns to the trigger.",
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The a11y contract, asserted by the play function in a real browser: the trigger exposes aria-haspopup, keyboard opens the menu, ArrowDown moves the roving focus, Enter selects and closes, and focus returns to the trigger.\",\n      },\n    },\n  },\n  render: () => {\n    return (\n      <Menu>\n        <MenuTrigger asChild>\n          <Button variant=\"secondary\">Open menu</Button>\n        </MenuTrigger>\n        <MenuContent>\n          <MenuItem onSelect={() => {}}>First</MenuItem>\n          <MenuItem onSelect={() => {}}>Second</MenuItem>\n          <MenuItem onSelect={() => {}}>Third</MenuItem>\n        </MenuContent>\n      </Menu>\n    );\n  },\n  play: async ({ canvasElement }) => {\n    const trigger = canvasElement.querySelector(\n      \"button\",\n    ) as HTMLButtonElement;\n    expect(trigger).toHaveAttribute(\"aria-haspopup\", \"menu\");\n    expect(trigger).toHaveAttribute(\"aria-expanded\", \"false\");\n\n    // Keyboard opens the menu — no pointer involved.\n    trigger.focus();\n    await userEvent.keyboard(\"{Enter}\");\n    await waitFor(() =>\n      expect(screen.getByRole(\"menu\")).toBeInTheDocument(),\n    );\n    expect(trigger).toHaveAttribute(\"aria-expanded\", \"true\");\n\n    const items = screen.getAllByRole(\"menuitem\");\n    expect(items).toHaveLength(3);\n\n    // Roving focus moves down through the items.\n    await userEvent.keyboard(\"{ArrowDown}\");\n    await waitFor(() =>\n      expect(items[0]).toHaveAttribute(\"data-highlighted\"),\n    );\n\n    // Enter selects and closes, returning focus to the trigger.\n    await userEvent.keyboard(\"{Enter}\");\n    await waitFor(() =>\n      expect(screen.queryByRole(\"menu\")).not.toBeInTheDocument(),\n    );\n    expect(trigger).toHaveFocus();\n  },\n};"
+        }
+      ]
+    },
     "Modal": {
       "name": "Modal",
       "group": "overlay",

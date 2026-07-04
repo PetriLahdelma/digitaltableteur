@@ -1,0 +1,177 @@
+.content {
+  z-index: 6000;
+  padding-block: var(--space-internal-4);
+  padding-inline: var(--space-internal-4);
+  min-inline-size: 11rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 15%);
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+}
+
+.subContent {
+  transform-origin: var(--radix-dropdown-menu-sub-content-transform-origin);
+}
+
+/* Enter / exit motion driven by Radix data-state */
+
+.content[data-state="open"] {
+  animation: menuIn var(--duration-fast) var(--ease-out-cubic);
+}
+
+.content[data-state="closed"] {
+  animation: menuOut var(--duration-instant) var(--ease-out-cubic);
+}
+
+@keyframes menuIn {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes menuOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.item {
+  display: flex;
+  padding-block: var(--space-internal-8);
+  padding-inline: var(--space-internal-12);
+  min-block-size: 2.5rem;
+  align-items: center;
+  gap: var(--space-internal-8);
+  border: none;
+  border-radius: var(--radius-md);
+  outline: none;
+  background: none;
+  font-family: var(--font-text, system-ui, sans-serif);
+  font-size: var(--font-size-text-s);
+  line-height: var(--line-height-normal);
+  text-align: left;
+  text-decoration: none;
+  color: var(--color-dark);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Radix drives highlight via [data-highlighted] (pointer + keyboard roving). */
+
+.item[data-highlighted] {
+  background-color: var(--color-neutral-bg);
+  color: var(--color-dark);
+}
+
+.item[data-disabled] {
+  color: var(--color-muted);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.itemIcon {
+  display: inline-flex;
+  flex: 0 0 1.25rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+/* Clamp any consumer-supplied glyph to the 16px in-menu size so labels align
+   in a column regardless of the icon (or its size prop) that was passed. */
+
+.itemIcon svg {
+  block-size: 1rem;
+  inline-size: 1rem;
+}
+
+.itemLabel {
+  min-inline-size: 0;
+  flex: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.itemTrailing {
+  display: inline-flex;
+  margin-inline-start: auto;
+  align-items: center;
+  font-size: var(--font-size-text-xs, 0.75rem);
+  color: var(--color-muted);
+}
+
+.subTrigger[data-state="open"] {
+  background-color: var(--color-neutral-bg);
+}
+
+.separator {
+  margin-block: var(--space-internal-4);
+  margin-inline: calc(-1 * var(--space-internal-4));
+  block-size: 1px;
+  background-color: var(--color-border);
+}
+
+/* Reduced motion: keep the menu, drop the enter/exit animation. */
+@media (prefers-reduced-motion: reduce) {
+  .content[data-state="open"],
+  .content[data-state="closed"] {
+    animation: none;
+  }
+}
+
+/* Forced colors: draw a real border and use system keywords for the highlight
+   so the surface and selection survive when author colors are dropped. */
+@media (forced-colors: active) {
+  .content {
+    border: 1px solid CanvasText;
+    background-color: Canvas;
+    forced-color-adjust: none;
+  }
+
+  .item {
+    color: CanvasText;
+  }
+
+  .item[data-highlighted] {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .item[data-highlighted] .itemIcon,
+  .item[data-highlighted] .itemTrailing {
+    color: HighlightText;
+  }
+
+  .item[data-disabled] {
+    color: GrayText;
+  }
+
+  .separator {
+    background-color: CanvasText;
+  }
+}
+
+:global(html.sb-forced-colors-active) .content {
+  border: 1px solid CanvasText;
+  background-color: Canvas;
+  forced-color-adjust: none;
+}
+
+:global(html.sb-forced-colors-active) .item[data-highlighted] {
+  background-color: Highlight;
+  color: HighlightText;
+}

@@ -1,0 +1,217 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Menu",
+    "tier": "molecule",
+    "group": "overlay",
+    "status": "alpha",
+    "description": "Radix dropdown-menu primitive set (Menu, Trigger, Content, Item, Sub) shared by Avatar and SplitButton.",
+    "figma": null,
+    "radixPrimitive": "@radix-ui/react-dropdown-menu",
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [
+        {
+            "name": "Menu",
+            "element": "none"
+        },
+        {
+            "name": "MenuTrigger",
+            "element": "button"
+        },
+        {
+            "name": "MenuContent",
+            "element": "div"
+        },
+        {
+            "name": "MenuItem",
+            "element": "div"
+        },
+        {
+            "name": "MenuSeparator",
+            "element": "div"
+        },
+        {
+            "name": "MenuSub",
+            "element": "none"
+        },
+        {
+            "name": "MenuSubTrigger",
+            "element": "div"
+        },
+        {
+            "name": "MenuSubContent",
+            "element": "div"
+        }
+    ],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "ArrowDown",
+            "ArrowUp",
+            "Home",
+            "End",
+            "Enter",
+            "Escape",
+            "ArrowRight",
+            "ArrowLeft",
+            "Tab"
+        ],
+        "ariaRequirements": [
+            "trigger exposes aria-haspopup=menu and aria-expanded (Radix)",
+            "content is role=menu; items are role=menuitem with roving tabindex",
+            "ArrowUp/Down move between items, Home/End jump, typeahead focuses by label",
+            "Escape closes and returns focus to the trigger; Tab closes (non-modal menu-button pattern)",
+            "submenus open with ArrowRight/Enter and close with ArrowLeft/Escape",
+            "disabled items are announced disabled and are not selectable"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-05 (alpha) — keyboard open/arrow/Home/End/typeahead/Escape/focus-return and item select are provided by Radix DropdownMenu and asserted end to end in the Storybook Example play (real browser via test-storybook); item select + disabled + href-as-anchor + axe-clean-while-open covered in unit tests. Light + dark eyeballed in Storybook (white/near-black surface tracks the theme, --color-neutral-bg highlight reads in both); emulated forced-colors shows a CanvasText-bordered Canvas surface with Highlight/HighlightText selection and GrayText disabled items; open/close animation drops under prefers-reduced-motion.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-white",
+            "--color-border",
+            "--color-neutral-bg",
+            "--color-dark",
+            "--color-muted",
+            "--color-primary"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12"
+        ]
+    },
+    "lightDarkVerified": true,
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "side": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "top",
+                "right",
+                "bottom",
+                "left"
+            ]
+        },
+        "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "start",
+                "center",
+                "end"
+            ]
+        },
+        "sideOffset": {
+            "optional": true,
+            "type": "number"
+        }
+    },
+    "forbiddenUse": [
+        "reach for Menu to build primary site navigation; navigation is a list of links (NavMenuList), not an actions menu — forcing role=menu onto nav is an a11y regression.",
+        "put a Menu trigger inside another interactive control; give the menu its own focusable trigger via MenuTrigger asChild.",
+        "hand-roll dropdown positioning or keyboard handling around Menu; Radix owns collision, roving focus, typeahead, and Escape."
+    ],
+    "prefersOver": [
+        "hand-rolled role=menu markup with manual arrow-key, typeahead, and collision logic"
+    ],
+    "displayName": "Menu",
+    "keywords": [
+        "menu",
+        "dropdown",
+        "dropdown menu",
+        "actions menu",
+        "context menu",
+        "overflow menu",
+        "radix"
+    ],
+    "dense": "Radix dropdown-menu set: Menu > MenuTrigger asChild > MenuContent (side/align) with MenuItem (icon/trailing/disabled/onSelect/href), MenuSeparator, MenuSub; Radix owns focus, arrows, typeahead, Escape",
+    "usage": {
+        "description": "Menu is the shared dropdown-menu primitive: a focusable trigger opens a portaled list of actions. It is built on @radix-ui/react-dropdown-menu, so roving focus, arrow-key navigation, typeahead, Escape, focus return, and collision-aware positioning all come from Radix — this layer owns only the visual treatment. Compose it from parts: wrap your control in MenuTrigger asChild, list MenuItems inside MenuContent, group with MenuSeparator, and nest a MenuSub for second-level menus. Items take a leading icon (rendered in a fixed gutter so labels align), a muted trailing hint, a disabled flag, and either an onSelect handler or an href to render as a link. It is the dogfooded engine behind Avatar's account menu and SplitButton's options; NavMenuList stays a navigation list, not a menu.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Wrap your real Button or Avatar in MenuTrigger asChild so it receives the trigger wiring instead of a nested extra button."
+            },
+            {
+                "guidance": true,
+                "description": "Give each MenuItem a short verb label; put the icon in the icon slot so labels align in a column regardless of glyph width."
+            },
+            {
+                "guidance": true,
+                "description": "Use href for navigation items (renders an anchor, so open-in-new-tab and middle-click work) and onSelect for actions."
+            },
+            {
+                "guidance": true,
+                "description": "Group related actions with MenuSeparator and reserve MenuSub for genuinely nested choices; a flat menu is faster to scan."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Menu for primary navigation; a list of page links belongs in NavMenuList with aria-current, not a role=menu."
+            },
+            {
+                "guidance": false,
+                "description": "Do not re-implement positioning or keyboard handling around Menu; Radix already provides collision, roving focus, typeahead, and Escape."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Menu",
+                "required": true,
+                "description": "Radix root owning open state; non-modal by default (open/defaultOpen/onOpenChange, modal to trap focus)."
+            },
+            {
+                "name": "MenuTrigger",
+                "required": true,
+                "description": "Wraps the focusable control (use asChild); Radix adds aria-haspopup and aria-expanded."
+            },
+            {
+                "name": "MenuContent",
+                "required": true,
+                "description": "Portaled surface; side/align/sideOffset set placement, collision flips it when out of room."
+            },
+            {
+                "name": "MenuItem",
+                "required": true,
+                "description": "role=menuitem with icon/trailing/disabled and onSelect or href; the menu closes after select."
+            },
+            {
+                "name": "MenuSeparator",
+                "required": false,
+                "description": "Decorative divider grouping related items."
+            },
+            {
+                "name": "MenuSub",
+                "required": false,
+                "description": "MenuSub + MenuSubTrigger + MenuSubContent build a second-level menu opened with ArrowRight/hover."
+            }
+        ]
+    },
+    "composesWith": [
+        "Button",
+        "IconButton",
+        "Avatar",
+        "SplitButton",
+        "Icon",
+        "Kbd"
+    ]
+}
