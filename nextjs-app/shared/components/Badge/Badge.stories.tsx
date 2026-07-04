@@ -85,7 +85,8 @@ const meta: Meta<typeof Badge> = {
 
     // Accessibility
     role: {
-      control: false,
+      control: { type: "inline-radio", labels: { undefined: "none" } },
+      options: [undefined, "status"],
       description:
         "ARIA role override; role=\"status\" makes badge updates announce politely (aria-live).",
       table: { category: "Accessibility", type: { summary: "string" } },

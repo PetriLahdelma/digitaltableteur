@@ -34,12 +34,7 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "background",
-        "children",
-        "className",
-        "id",
         "ref",
-        "spacing",
         "style"
     ],
     "consumers": [],

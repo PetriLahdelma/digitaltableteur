@@ -43,9 +43,7 @@
         "asChild",
         "children",
         "className",
-        "defaultOpenId",
         "id",
-        "items",
         "ref",
         "style"
     ],

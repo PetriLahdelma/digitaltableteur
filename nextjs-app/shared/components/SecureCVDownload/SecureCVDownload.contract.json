@@ -34,12 +34,9 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "buttonText",
-        "buttonVariant",
         "children",
         "className",
         "id",
-        "inverse",
         "ref",
         "style"
     ],

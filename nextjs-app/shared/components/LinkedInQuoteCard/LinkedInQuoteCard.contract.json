@@ -56,8 +56,7 @@
         "quote",
         "ref",
         "style",
-        "title",
-        "variant"
+        "title"
     ],
     "consumers": [],
     "schemaVersion": 2,

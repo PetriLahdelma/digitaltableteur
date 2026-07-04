@@ -49,9 +49,7 @@
         "as",
         "asChild",
         "children",
-        "className",
         "id",
-        "navItems",
         "ref",
         "style"
     ],

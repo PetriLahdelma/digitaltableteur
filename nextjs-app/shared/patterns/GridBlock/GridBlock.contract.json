@@ -48,16 +48,10 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "backgroundColor",
-        "cells",
         "children",
         "className",
-        "columns",
-        "gap",
         "id",
-        "maxWidth",
         "ref",
-        "spacing",
         "style"
     ],
     "consumers": [],

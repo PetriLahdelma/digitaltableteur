@@ -58,11 +58,8 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "children",
-        "className",
         "id",
         "ref",
-        "rows",
         "style"
     ],
     "consumers": [],

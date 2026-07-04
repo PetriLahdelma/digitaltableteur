@@ -41,6 +41,25 @@ npm run check:contract-props && npm run check:consumers   # farm CI parity (pre-
 
 ---
 
+## Storybook Controls quality bar
+
+Every row a dev sees in the Controls panel / docs props table must be **deliberate**. Judge each prop and pick exactly one treatment:
+
+| Prop kind | Treatment |
+|---|---|
+| Enum / boolean / number | Real control (`inline-radio`/`select`/`boolean`/`number`) + `description` + `table.defaultValue.summary` |
+| Free string (`title`, labels) | `control: "text"` + seed `""` in `meta.args` so it renders an input box, not a "Set string" button |
+| Constrained ARIA (e.g. `role="status"`) | `inline-radio` with `options: [undefined, ...]` and `labels: { undefined: "none" }` |
+| Event handler | `action: "..."` + `table: { disable: true }` (the Actions pane covers it; a dead `-` row is noise) |
+| ReactNode / ref / DOM passthrough | `table: { disable: true }` — a "Set object" button helps nobody; document it in the contract instead |
+| Story-only knob (e.g. `iconName`) | Real control + description saying it is a story knob |
+
+Group everything with `table.category`: Content / Appearance / Behavior / Accessibility / Advanced.
+
+**Never** silence the coverage gate with blanket `argTypesProxyExempt` lists. Exemptions are only for props that genuinely cannot be controlled; `validate:components` errors on stale exemptions (exempt + covered) and on exempted variant axes, and reports remaining debt as `CONTROLS_PROXY_EXEMPT`. Prune mechanically with `npx tsx scripts/design-system/prune-argtypes-exemptions.ts`.
+
+---
+
 ## Styling
 
 - CSS Modules only (never inline except dynamic `backgroundImage`)

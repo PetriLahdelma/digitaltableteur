@@ -45,8 +45,6 @@
         "as",
         "asChild",
         "children",
-        "className",
-        "id",
         "ref",
         "style"
     ],

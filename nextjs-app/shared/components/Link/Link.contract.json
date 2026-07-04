@@ -60,9 +60,6 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "children",
-        "className",
-        "href",
         "id",
         "ref",
         "rel",

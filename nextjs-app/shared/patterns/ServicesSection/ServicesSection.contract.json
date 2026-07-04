@@ -44,16 +44,9 @@
     "argTypesProxyExempt": [
         "as",
         "asChild",
-        "cardVariant",
         "children",
-        "className",
-        "columns",
-        "description",
-        "id",
         "ref",
-        "services",
-        "style",
-        "title"
+        "style"
     ],
     "consumers": [],
     "slots": [],

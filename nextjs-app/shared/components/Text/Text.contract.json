@@ -59,16 +59,10 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "as",
         "asChild",
-        "children",
-        "className",
         "id",
-        "lineHeight",
         "ref",
-        "size",
-        "style",
-        "terminals"
+        "style"
     ],
     "consumers": [
         {

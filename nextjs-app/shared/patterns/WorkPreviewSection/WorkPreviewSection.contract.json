@@ -55,14 +55,8 @@
         "as",
         "asChild",
         "children",
-        "className",
-        "id",
-        "layout",
-        "projects",
         "ref",
-        "showViewAll",
-        "style",
-        "title"
+        "style"
     ],
     "consumers": [],
     "slots": [],

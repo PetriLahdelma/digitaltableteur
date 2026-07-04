@@ -53,19 +53,11 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "align",
         "as",
         "asChild",
-        "background",
         "children",
-        "className",
-        "description",
-        "id",
-        "primaryAction",
         "ref",
-        "secondaryAction",
-        "style",
-        "title"
+        "style"
     ],
     "consumers": [],
     "slots": [],

@@ -44,7 +44,6 @@
     "argTypesProxyExempt": [
         "activeButtonClassName",
         "buttonClassName",
-        "className",
         "floatedButtonClassName",
         "openTriggerClassName"
     ],

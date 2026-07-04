@@ -34,9 +34,6 @@
         "as",
         "asChild",
         "children",
-        "className",
-        "error",
-        "id",
         "ref",
         "style"
     ],
