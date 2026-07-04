@@ -10,6 +10,7 @@ const defaultArgs = {
   variant: "tertiary" as const,
   size: "md" as const,
   disabled: false,
+  tooltip: "",
   onClick: fn(),
 };
 

@@ -15,11 +15,17 @@ const meta: Meta<typeof Icon> = {
   title: "Content/Icon",
   component: Icon,
   tags: ["stable", "autodocs"],
+  // spin/pulse/mirrored/decorative seeded false (their effective defaults with
+  // an ariaLabel set) so the boolean controls render toggles, not Set-buttons.
   args: {
     name: "circle-info",
     weight: "regular",
     size: "lg",
     ariaLabel: "Information",
+    spin: false,
+    pulse: false,
+    mirrored: false,
+    decorative: false,
   },
   argTypes: {
     name: {
@@ -29,19 +35,15 @@ const meta: Meta<typeof Icon> = {
     },
 
     weight: {
-      control: {
-        type: "select",
-        options: ["thin", "light", "regular", "bold", "fill", "duotone"],
-      },
+      control: { type: "select" },
+      options: ["thin", "light", "regular", "bold", "fill", "duotone"],
       description: "Phosphor stroke/fill weight",
       table: { defaultValue: { summary: "regular" } },
     },
 
     size: {
-      control: {
-        type: "select",
-        options: ["2xs", "xs", "sm", "md", "lg", "xl", "2xl"],
-      },
+      control: { type: "select" },
+      options: ["2xs", "xs", "sm", "md", "lg", "xl", "2xl"],
       description: "Tokenized icon size",
       table: { defaultValue: { summary: "lg" } },
     },
@@ -52,14 +54,17 @@ const meta: Meta<typeof Icon> = {
     },
 
     rotate: {
-      control: { type: "select", options: [0, 90, 180, 270] },
+      control: { type: "select" },
+      options: [0, 90, 180, 270],
       description: "Rotation in degrees",
       table: { defaultValue: { summary: "0" } },
     },
 
     flip: {
-      control: { type: "select", options: ["horizontal", "vertical", "both"] },
+      control: { type: "select", labels: { undefined: "none" } },
+      options: [undefined, "horizontal", "vertical", "both"],
       description: "Mirror the icon along an axis",
+      table: { defaultValue: { summary: "undefined" } },
     },
 
     spin: {
@@ -90,7 +95,12 @@ const meta: Meta<typeof Icon> = {
       children: { table: { disable: true } },
       className: { table: { disable: true } },
       id: { table: { disable: true } },
-      legacyStyle: { control: false, description: "Legacy FontAwesome-style weight string kept for backward compatibility.", table: { category: "Content" } },
+      legacyStyle: {
+        control: { type: "select", labels: { undefined: "none" } },
+        options: [undefined, "solid", "regular", "light", "thin", "duotone", "brands"],
+        description: "Legacy FontAwesome-style weight string kept for backward compatibility; weight wins when both are set.",
+        table: { category: "Content", defaultValue: { summary: "undefined" } },
+      },
       mirrored: { control: "boolean", description: "Flip the glyph horizontally (RTL-aware icons).", table: { category: "Content" } },
       ref: { table: { disable: true } },
       style: { table: { disable: true } }

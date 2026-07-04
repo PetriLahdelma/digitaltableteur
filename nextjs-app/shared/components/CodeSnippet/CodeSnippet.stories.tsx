@@ -71,7 +71,7 @@ const meta: Meta<typeof CodeSnippet> = {
       code: { control: "text", description: "The code string to highlight.", table: { category: "Content" } },
       id: { table: { disable: true } },
       language: { control: "text", description: "Highlighting grammar (typescript, bash, python, ...).", table: { category: "Content" } },
-      maxLines: { control: "number", description: "Clamp height to this many lines; longer code scrolls.", table: { category: "Content" } },
+      maxLines: { control: { type: "number", min: 0 }, description: "Clamp height to this many lines; longer code scrolls. 0 disables the clamp.", table: { category: "Content", defaultValue: { summary: "0" } } },
       onCopy: { action: "onCopy", table: { disable: true } },
       ref: { table: { disable: true } },
       showLineNumbers: { control: "boolean", description: "Render a line-number gutter.", table: { category: "Content" } },
@@ -116,6 +116,7 @@ const meta: Meta<typeof CodeSnippet> = {
     showLineNumbers: true,
     allowCopy: true,
     variant: "multi",
+    maxLines: 0,
   },
 };
 

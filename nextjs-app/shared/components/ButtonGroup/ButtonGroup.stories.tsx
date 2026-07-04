@@ -21,9 +21,29 @@ const meta = {
       description: "Fuse children into one segmented surface",
       table: { defaultValue: { summary: "true" } },
     },
-    children: { control: false, description: "Buttons / IconButtons (same variant + size)" },
+    children: {
+      control: {
+        type: "select",
+        labels: { two: "2 segments", three: "3 segments" },
+      },
+      options: ["two", "three"],
+      mapping: {
+        two: [
+          <Button key="one" variant="secondary" size="md">One</Button>,
+          <Button key="two" variant="secondary" size="md">Two</Button>,
+        ],
+        three: [
+          <Button key="one" variant="secondary" size="md">One</Button>,
+          <Button key="two" variant="secondary" size="md">Two</Button>,
+          <Button key="three" variant="secondary" size="md">Three</Button>,
+        ],
+      },
+      description:
+        "Buttons / IconButtons (same variant + size). Segment presets here; compose your own in code.",
+      table: { type: { summary: "ReactNode" } },
+    },
   },
-  args: { ariaLabel: "Text alignment" },
+  args: { ariaLabel: "Text alignment", attached: true, children: "three" },
 } satisfies Meta<typeof ButtonGroup>;
 
 export default meta;
@@ -45,15 +65,7 @@ export const Default: Story = {
   ),
 };
 
-export const Playground: Story = {
-  render: (args) => (
-    <ButtonGroup {...args}>
-      <Button variant="secondary" size="md">One</Button>
-      <Button variant="secondary" size="md">Two</Button>
-      <Button variant="secondary" size="md">Three</Button>
-    </ButtonGroup>
-  ),
-};
+export const Playground: Story = {};
 
 export const Spaced: Story = {
   tags: ["example"],

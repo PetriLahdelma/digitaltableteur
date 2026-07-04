@@ -47,7 +47,18 @@ export default {
       id: { table: { disable: true } },
       imageUrl: { control: "text", description: "Photo source; falls back to initials from name when absent.", table: { category: "Content" } },
       loading: { control: { type: "inline-radio" }, options: ["lazy", "eager"], description: "Native img loading strategy; keep lazy in lists, eager above the fold.", table: { category: "Content", defaultValue: { summary: "lazy" } } },
-      menuItems: { control: "object", description: "When provided, renders an in-place dropdown menu triggered by the avatar", table: { category: "Content" } },
+      menuItems: {
+        control: { type: "select", labels: { none: "none", profile: "profile menu (2 items)", admin: "admin menu (3 items)" } },
+        options: ["none", "profile", "admin"],
+        mapping: {
+          none: undefined,
+          profile: [{ label: "Profile" }, { label: "Sign out" }],
+          admin: [{ label: "Profile" }, { label: "Settings" }, { label: "Sign out" }],
+        },
+        description:
+          "When provided, renders an in-place dropdown menu triggered by the avatar. Pick a preset to try it; pass your own AvatarMenuItem[] in code.",
+        table: { category: "Content", type: { summary: "AvatarMenuItem[]" }, defaultValue: { summary: "undefined" } },
+      },
       menuLabel: { control: "text", description: "Accessible label announced for the avatar menu trigger", table: { category: "Accessibility" } },
       placementRefreshKey: { control: "number", description: "Optional token that forces menu placement recalculation when changed", table: { category: "Content" } },
       ref: { table: { disable: true } },
@@ -56,6 +67,16 @@ export default {
       srcSet: { control: "text", description: "Native img srcSet for responsive photo densities.", table: { category: "Content" } },
       style: { table: { disable: true } }
 },
+  // Seeded so every text/boolean/number/object control renders an operable
+  // widget; each value matches the component's no-op default.
+  args: {
+    clickable: false,
+    destinationUrl: "",
+    srcSet: "",
+    sizes: "",
+    menuLabel: "",
+    placementRefreshKey: 0,
+  },
 } as Meta<typeof Avatar>;
 
 type AvatarStoryArgs = React.ComponentProps<typeof Avatar>;
@@ -297,7 +318,9 @@ export const Playground = DefaultVariant;
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
-  render: (args: AvatarStoryArgs) => <Avatar {...WithMenu.args} {...args} />,
+  // WithMenu.args last: controls are disabled here, and the meta-level seeded
+  // args (menuLabel: "" etc.) must not override the curated example props.
+  render: (args: AvatarStoryArgs) => <Avatar {...args} {...WithMenu.args} />,
 };
 
 export const ForcedColors = {

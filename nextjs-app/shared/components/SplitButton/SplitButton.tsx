@@ -84,7 +84,7 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
     ref,
   ) => {
     const { t } = useTranslation();
-    const defaultToggleLabel = toggleLabel ?? t("splitButton.moreOptions");
+    const defaultToggleLabel = toggleLabel || t("splitButton.moreOptions");
     const isSecondary = variant === "secondary";
     const hasOptions = Array.isArray(options) && options.length > 0;
     const [open, setOpen] = React.useState(false);

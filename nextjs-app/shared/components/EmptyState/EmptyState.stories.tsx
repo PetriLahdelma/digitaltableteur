@@ -32,13 +32,36 @@ const meta = {
       description: "Size token",
       table: { defaultValue: { summary: "md" } },
     },
-    children: { control: false, description: "Action slot (Buttons)" },
+    children: {
+      control: {
+        type: "select",
+        labels: {
+          none: "none",
+          primary: "primary action",
+          pair: "primary + tertiary actions",
+        },
+      },
+      options: ["none", "primary", "pair"],
+      mapping: {
+        none: undefined,
+        primary: [
+          <Button key="new" variant="primary" size="md">New project</Button>,
+        ],
+        pair: [
+          <Button key="new" variant="primary" size="md">New project</Button>,
+          <Button key="import" variant="tertiary" size="md">Import</Button>,
+        ],
+      },
+      description: "Action slot (Buttons). Presets here; compose your own in code.",
+      table: { type: { summary: "ReactNode" } },
+    },
   },
   args: {
     icon: "magnifying-glass",
     title: "No results found",
     description: "Try a different search term, or clear the filters to see everything.",
     size: "md",
+    children: "none",
   },
 } satisfies Meta<typeof EmptyState>;
 

@@ -1,10 +1,33 @@
 import contract from "./Button.contract.json";
+import { action } from "storybook/actions";
 import { userEvent, within, expect } from "storybook/test";
 import React from "react";
 import { Meta, StoryFn, type StoryObj } from "@storybook/react-vite";
 import Button from "@dt/Button";
 import { useTranslation } from "react-i18next";
 import schema from "./schema.json";
+
+// Selectable async behaviors for the clickAction control: picking one and
+// clicking the button demonstrates the pending/dedupe handling live.
+const clickActionPresets: Record<
+  string,
+  ((e: React.MouseEvent<HTMLButtonElement>) => Promise<void>) | undefined
+> = {
+  none: undefined,
+  resolve: (e) => {
+    action("clickAction (resolves in 1.2s)")(e);
+    return new Promise((resolve) => setTimeout(resolve, 1200));
+  },
+  reject: (e) => {
+    action("clickAction (rejects in 1.2s)")(e);
+    return new Promise((_, reject) => setTimeout(reject, 1200));
+  },
+};
+const clickActionLabels = {
+  none: "none",
+  resolve: "async success (1.2s)",
+  reject: "async failure (1.2s)",
+};
 
 export default {
   title: "Actions/Button",
@@ -98,12 +121,15 @@ export default {
       table: { category: "Behavior", type: { summary: "(e: MouseEvent) => void" } },
     },
     clickAction: {
-      action: "clickAction",
+      control: { type: "select", labels: clickActionLabels },
+      options: Object.keys(clickActionPresets),
+      mapping: clickActionPresets,
       description:
-        "Async click handler (button form only). While the returned promise is pending, the button shows its loading state, sets aria-busy, and disables itself to dedupe repeat clicks. onClick still fires first if both are provided. Rejections are swallowed after clearing the pending state — callers own error UX.",
+        "Async click handler (button form only). While the returned promise is pending, the button shows its loading state, sets aria-busy, and disables itself to dedupe repeat clicks. onClick still fires first if both are provided. Rejections are swallowed after clearing the pending state — callers own error UX. The presets here let you click and watch the pending state live.",
       table: {
         category: "Behavior",
         type: { summary: "(e: MouseEvent<HTMLButtonElement>) => void | Promise<void>" },
+        defaultValue: { summary: "undefined" },
       },
     },
     href: {
@@ -146,14 +172,37 @@ export default {
       description: "Additional CSS classes merged onto the rendered element.",
       table: { category: "Advanced", type: { summary: "string" } },
     },
+    rel: {
+      control: "text",
+      description:
+        "Anchor rel (link buttons only). Left empty, _blank targets auto-add 'noopener noreferrer'.",
+      table: { category: "Behavior", type: { summary: "string" } },
+    },
       form: { table: { disable: true } },
       id: { table: { disable: true } },
       name: { table: { disable: true } },
       ref: { table: { disable: true } },
-      rel: { table: { disable: true } },
       type: { table: { disable: true } },
       value: { table: { disable: true } }
 },
+  // Seeded so every text/boolean control renders an operable widget instead of
+  // a "Set string" button; each value matches the component's no-op default.
+  args: {
+    icon: "",
+    endIcon: "",
+    href: "",
+    target: "",
+    rel: "",
+    submits: false,
+    disabled: false,
+    loading: false,
+    rounded: false,
+    accessibleName: "",
+    accessibleNameRef: "",
+    accessibleDescription: "",
+    tooltip: "",
+    className: "",
+  },
 } as Meta;
 
 type Story = StoryObj<typeof Button>;

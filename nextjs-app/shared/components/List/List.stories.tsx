@@ -55,8 +55,18 @@ const meta: Meta<typeof List> = {
   },
   argTypes: {
     items: {
-      control: "object",
-      description: "Array of list items (strings or React nodes)",
+      control: {
+        type: "select",
+        labels: { three: "3 items", four: "4 items" },
+      },
+      options: ["three", "four"],
+      mapping: {
+        three: ["storyListItem1", "storyListItem2", "storyListItem3"],
+        four: ["storyListItem1", "storyListItem2", "storyListItem3", "storyListItem4"],
+      },
+      description:
+        "Array of list items (strings or React nodes). Presets here; pass your own array in code.",
+      table: { type: { summary: "ReactNode[]" } },
     },
 
     as: {
@@ -110,7 +120,12 @@ const meta: Meta<typeof List> = {
 
     className: { control: "text", description: "Custom class name" },
 
-    role: { control: "text", description: "ARIA role override" },
+    role: {
+      control: { type: "inline-radio", labels: { undefined: "none" } },
+      options: [undefined, "list", "menu", "listbox", "presentation"],
+      description: "ARIA role override",
+      table: { type: { summary: "string" }, defaultValue: { summary: "undefined" } },
+    },
       asChild: { table: { disable: true } },
       children: { table: { disable: true } },
       id: { table: { disable: true } },
@@ -358,7 +373,9 @@ export const WithLineHeights: StoryFn = () => {
 
 const defaultListArgs = {
   as: "ul" as const,
-  items: ["storyListItem1", "storyListItem2", "storyListItem3"],
+  // "three" resolves through the items control mapping to three list items.
+  items: "three" as unknown as React.ReactNode[],
+  className: "",
 };
 
 export const Default = {

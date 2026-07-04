@@ -42,8 +42,23 @@ const meta: Meta<typeof Badge> = {
       table: { category: "Content" },
     },
     icon: {
-      // ReactNode — nothing useful to control; documented in the contract.
-      table: { disable: true },
+      control: {
+        type: "select",
+        labels: { none: "none", check: "check icon", sparkle: "sparkle icon" },
+      },
+      options: ["none", "check", "sparkle"],
+      mapping: {
+        none: undefined,
+        check: <Icon name="check" ariaLabel="check" />,
+        sparkle: <Icon name="sparkle" ariaLabel="sparkle" />,
+      },
+      description:
+        "Custom leading icon node (presets here; pass any ReactNode in code). The iconName knob and semantic tone icons take precedence when set.",
+      table: {
+        category: "Content",
+        type: { summary: "ReactNode" },
+        defaultValue: { summary: "undefined" },
+      },
     },
 
     // Appearance
@@ -122,7 +137,7 @@ type BadgeProps = React.ComponentProps<typeof Badge>;
 
 const BadgeStoryTemplate: React.FC<BadgeProps & { iconName?: string }> = (args) => {
   const { t } = useTranslation();
-  const { iconName, children, tone, ...rest } = args;
+  const { iconName, children, tone, icon, ...rest } = args;
   let content = children;
   if (typeof children === "string" && children.startsWith("badge")) {
     content = t(children);
@@ -131,7 +146,9 @@ const BadgeStoryTemplate: React.FC<BadgeProps & { iconName?: string }> = (args) 
     iconName && iconName.trim() ? iconName.trim() : tone && TONE_ICON_MAP[tone];
   const resolvedIcon = resolvedName ? (
     <Icon name={resolvedName} ariaLabel={resolvedName} />
-  ) : undefined;
+  ) : (
+    icon
+  );
   return (
     <Badge {...rest} tone={tone} icon={resolvedIcon}>
       {content}
