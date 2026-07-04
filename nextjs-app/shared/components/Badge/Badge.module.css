@@ -1,8 +1,12 @@
 .badge {
   display: inline-flex;
-  padding: var(--space-internal-8) var(--space-internal-16);
+  padding: 0 var(--space-internal-16);
+
+  /* Fixed heights per size step (sm 32 / md 40 / lg 56); vertical centering
+     comes from the flex row, not padding. */
   box-sizing: border-box;
   width: fit-content;
+  height: 40px;
   align-items: center;
   gap: 0.25em;
   border: 2px solid transparent;
@@ -20,17 +24,33 @@
 }
 
 .sm {
-  padding: var(--space-internal-4) var(--space-internal-12);
+  padding: 0 var(--space-internal-12);
+  height: 32px;
   font-size: 0.75rem;
 }
 
 .lg {
-  padding: var(--space-internal-12) var(--space-internal-16);
+  padding: 0 var(--space-internal-16);
+  height: 56px;
   font-size: 1.25rem;
 }
 
 .square {
   border-radius: 0;
+}
+
+/* The text string carries its own horizontal breathing room per size step. */
+
+.label {
+  padding-inline: var(--space-internal-4);
+}
+
+.sm .label {
+  padding-inline: var(--space-internal-2);
+}
+
+.lg .label {
+  padding-inline: var(--space-internal-6);
 }
 
 .primary {
@@ -167,18 +187,18 @@
 }
 
 .removable.sm {
-  padding: var(--space-internal-2) var(--space-internal-12);
+  padding: 0 var(--space-internal-12);
   padding-inline-end: var(--space-internal-2);
   font-size: 0.75rem;
 }
 
 .removable.md {
-  padding: var(--space-internal-6) var(--space-internal-16);
+  padding: 0 var(--space-internal-16);
   padding-inline-end: var(--space-internal-4);
   font-size: 1rem;
 }
 
 .removable.lg {
-  padding: var(--space-internal-12) var(--space-internal-16);
+  padding: 0 var(--space-internal-16);
   font-size: 1.25rem;
 }
