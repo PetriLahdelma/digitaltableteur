@@ -1,10 +1,3 @@
-import { cva } from "class-variance-authority";
-
-export const avatarVariants = cva("", {
-  variants: { size: { sm: "", md: "", lg: "" } },
-  defaultVariants: { size: "md" },
-});
-
 import React from "react";
 import { useTranslation } from "react-i18next";
 import type { StaticImageData } from "next/image";
