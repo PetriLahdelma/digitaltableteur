@@ -1,7 +1,15 @@
-.pill {
+/* Doubled .pill.pill raises specificity above Storybook's global `.sbdocs`
+   font-size so the docs pill fully matches a <Badge size="sm">. The label is
+   targeted explicitly because `.sbdocs :where(span)` sets 16px directly on the
+   label span (overriding inheritance from the pill root's 0.75rem). */
+.pill.pill {
   text-transform: lowercase;
   letter-spacing: 0.02em;
-  font-size: var(--font-size-text-s);
+  font-size: 0.75rem;
+}
+
+.pill.pill :global(.badge__content) {
+  font-size: 0.75rem;
 }
 
 .stable {
