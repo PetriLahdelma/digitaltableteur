@@ -18,7 +18,7 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  tags: ["autodocs"],
+  tags: ["beta", "autodocs"],
   argTypes: {
     side: {
       control: { type: "select" },
@@ -35,12 +35,17 @@ const meta = {
       control: "text",
       description: "Hint text (short phrase, never interactive content)",
     },
-    className: { control: false, table: { category: "Advanced" } },
+    className: {
+      control: "text",
+      description: "Extra class on the content bubble",
+      table: { category: "Advanced" },
+    },
   },
   args: {
     side: "top" as const,
     sideOffset: 4,
     children: "Helpful hint about this action.",
+    className: "",
   },
 } satisfies Meta<typeof TooltipContent>;
 
@@ -55,6 +60,7 @@ type Story = StoryObj<typeof meta>;
  * so the content is visible without a pointer; in use it opens on hover/focus.
  */
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: (args) => (
     <TooltipProvider>
       <Tooltip defaultOpen>
@@ -68,6 +74,7 @@ export const Default: Story = {
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: (args) => (
     <TooltipProvider>
       <Tooltip defaultOpen>
@@ -185,7 +192,7 @@ export const Delay: Story = {
 
 /** Keyboard contract driven end to end: focus opens, Escape dismisses. */
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     controls: { disable: true },
     docs: {
@@ -225,6 +232,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   parameters: { a11y: { disable: true, test: "off" } },
   globals: { forcedColors: "active" },
   render: () => (

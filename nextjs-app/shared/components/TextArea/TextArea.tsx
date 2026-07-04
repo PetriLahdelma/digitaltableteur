@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import styles from "./TextArea.module.css";
 import Label from "@dt/Label";
 import HelperText from "@dt/HelperText";
@@ -23,6 +23,7 @@ export interface TextAreaProps
   maxRows?: number;
 }
 
+/** Labeled multi-line text field with error/helper text and optional animated auto-grow. */
 const TextArea: React.FC<TextAreaProps> = ({
   label,
   placeholder,
@@ -39,6 +40,19 @@ const TextArea: React.FC<TextAreaProps> = ({
 }) => {
   const [textValue, setTextValue] = useState(value);
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  // Stable unique ids so the label association and error/helper wiring never
+  // collide when two TextAreas share a label (the raw label string was used as
+  // the DOM id before, which produced duplicate ids and broke on spaces).
+  const inputId = useId();
+  const errorId = `${inputId}-error`;
+  const helperId = `${inputId}-helper`;
+
+  const hasError = !!error;
+  const describedBy =
+    [hasError && errorId, helperText && !hasError && helperId]
+      .filter(Boolean)
+      .join(" ") || undefined;
 
   useEffect(() => {
     setTextValue(value);
@@ -106,27 +120,30 @@ const TextArea: React.FC<TextAreaProps> = ({
 
   return (
     <div className={styles.inputContainer}>
-      <Label
-        htmlFor={label}
-        required={!!error}
-        tooltipText={error}
-        disabled={disabled}
-      >
+      <Label htmlFor={inputId} required={!!rest.required} disabled={disabled}>
         {label}
       </Label>
       <textarea
         ref={textAreaRef}
-        id={label}
+        id={inputId}
         className={textareaClassName}
         placeholder={placeholder}
         value={textValue}
         onChange={handleChange}
         disabled={disabled}
         rows={animateResize ? minRows : rows}
+        aria-invalid={hasError || undefined}
+        aria-describedby={describedBy}
         {...rest}
       />
-      {error && <HelperText state="error">{error}</HelperText>}
-      {helperText && !error && <HelperText>{helperText}</HelperText>}
+      {hasError && (
+        <HelperText id={errorId} state="error">
+          {error}
+        </HelperText>
+      )}
+      {helperText && !hasError && (
+        <HelperText id={helperId}>{helperText}</HelperText>
+      )}
     </div>
   );
 };

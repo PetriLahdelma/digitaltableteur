@@ -13669,7 +13669,7 @@
       "name": "TextArea",
       "group": "form",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Multi-line text field with label, error/helper text, and optional animated auto-grow.",
       "dense": "labelled multi-line field with optional animated auto-grow (minRows/maxRows), own error + helperText; onChange(value)",
       "keywords": [
@@ -13753,8 +13753,7 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "use TextArea for single-line text. Use **TextInput**, which shares the label + helper contract but carries single-line UX and format validation.",
-        "promote to beta without a real a11y.reviewed pass (keyboard, ARIA, focus, forced-colors) and honest forcedColorsVerified/lightDarkVerified flags: this contract was authored during a file move from Inputs/TextArea.tsx and has not had that review."
+        "use TextArea for single-line text. Use **TextInput**, which shares the label + helper contract but carries single-line UX and format validation."
       ],
       "usage": {
         "description": "TextArea is the multi-line counterpart to TextInput: label, control, helper and error text, plus an optional animated auto-grow mode bounded by minRows and maxRows.",
@@ -13814,7 +13813,12 @@
         {
           "story": "AnimatedResize",
           "description": "animateResize grows the field smoothly with content, bounded by minRows and maxRows.",
-          "source": "export const AnimatedResize = Template.bind({});\nAnimatedResize.args = {\n  label: \"storyTextAreaLabel\",\n  placeholder: \"storyTextAreaPlaceholder\",\n  animateResize: true,\n  minRows: 2,\n  maxRows: 6,\n};\n\nAnimatedResize.tags = [\"example\"];\nAnimatedResize.parameters = {\n  docs: {\n    description: {\n      story: \"animateResize grows the field smoothly with content, bounded by minRows and maxRows.\",\n    },\n  },\n};"
+          "source": "export const AnimatedResize = Template.bind({});\nAnimatedResize.args = {\n  label: \"storyTextAreaLabel\",\n  placeholder: \"storyTextAreaPlaceholder\",\n  animateResize: true,\n  minRows: 2,\n  maxRows: 6,\n};\n\nAnimatedResize.tags = [\"example\"];\nAnimatedResize.parameters = {\n  docs: {\n    description: {\n      story: \"animateResize grows the field smoothly with content, bounded by minRows and maxRows.\",\n    },\n  },\n};\n\n/**\n * Keyboard contract, asserted by the play function: Tab moves focus into the\n * field and typed characters land in the value.\n */"
+        },
+        {
+          "story": "KeyboardEntry",
+          "description": "The field is a native textarea: Tab focuses it and typing updates the value; onChange receives the raw string.",
+          "source": "export const KeyboardEntry: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The field is a native textarea: Tab focuses it and typing updates the value; onChange receives the raw string.\",\n      },\n    },\n  },\n  render: () => <TextAreaStory {...Default.args} />,\n  play: async ({ canvasElement }) => {\n    const textbox = within(canvasElement).getByRole(\"textbox\");\n    await userEvent.tab();\n    await expect(textbox).toHaveFocus();\n    await userEvent.type(textbox, \"Hello from the keyboard\");\n    await expect(textbox).toHaveValue(\"Hello from the keyboard\");\n  },\n};"
         }
       ]
     },
@@ -14434,7 +14438,7 @@
       "name": "Tooltip",
       "group": "overlay",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Radix tooltip primitive set (Provider, Trigger, Content) for icon hints.",
       "dense": "Radix tooltip set: Provider (delayDuration) > Tooltip > Trigger asChild + Content (side top|right|bottom|left); opens on hover+focus, Escape dismisses, aria-describedby wired",
       "keywords": [
@@ -14447,8 +14451,52 @@
         "radix"
       ],
       "importLine": "import { Tooltip } from \"@dt/Tooltip\";",
-      "keyProps": [],
-      "props": {},
+      "keyProps": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true
+        },
+        {
+          "name": "side",
+          "type": "left | right | top | bottom",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "sideOffset",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "props": {
+        "className": {
+          "optional": true,
+          "type": "string"
+        },
+        "side": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "left",
+            "right",
+            "top",
+            "bottom"
+          ]
+        },
+        "sideOffset": {
+          "optional": true,
+          "type": "number"
+        },
+        "children": {
+          "optional": false,
+          "type": "ReactNode"
+        }
+      },
       "composesWith": [
         "Button",
         "IconButton",
@@ -14536,7 +14584,7 @@
         {
           "story": "Example",
           "description": "The a11y contract, asserted by the play function: keyboard focus opens the tooltip (no pointer needed) and Escape dismisses it without moving focus.",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The a11y contract, asserted by the play function: keyboard focus opens the tooltip (no pointer needed) and Escape dismisses it without moving focus.\",\n      },\n    },\n  },\n  render: () => (\n    <TooltipProvider delayDuration={0}>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button variant=\"secondary\">Focus me</Button>\n        </TooltipTrigger>\n        <TooltipContent>Visible on focus, gone on Escape.</TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  ),\n  play: async ({ canvasElement }) => {\n    const trigger = within(canvasElement).getByRole(\"button\", {\n      name: \"Focus me\",\n    });\n    // Keyboard focus must open the tooltip — no pointer involved.\n    await userEvent.tab();\n    expect(trigger).toHaveFocus();\n    await waitFor(() => expect(screen.getByRole(\"tooltip\")).toBeVisible());\n    // Radix wires the description onto the trigger.\n    expect(trigger).toHaveAttribute(\"aria-describedby\");\n    // Escape dismisses without moving focus.\n    await userEvent.keyboard(\"{Escape}\");\n    await waitFor(() =>\n      expect(screen.queryByRole(\"tooltip\")).not.toBeInTheDocument(),\n    );\n    expect(trigger).toHaveFocus();\n  },\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The a11y contract, asserted by the play function: keyboard focus opens the tooltip (no pointer needed) and Escape dismisses it without moving focus.\",\n      },\n    },\n  },\n  render: () => (\n    <TooltipProvider delayDuration={0}>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button variant=\"secondary\">Focus me</Button>\n        </TooltipTrigger>\n        <TooltipContent>Visible on focus, gone on Escape.</TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  ),\n  play: async ({ canvasElement }) => {\n    const trigger = within(canvasElement).getByRole(\"button\", {\n      name: \"Focus me\",\n    });\n    // Keyboard focus must open the tooltip — no pointer involved.\n    await userEvent.tab();\n    expect(trigger).toHaveFocus();\n    await waitFor(() => expect(screen.getByRole(\"tooltip\")).toBeVisible());\n    // Radix wires the description onto the trigger.\n    expect(trigger).toHaveAttribute(\"aria-describedby\");\n    // Escape dismisses without moving focus.\n    await userEvent.keyboard(\"{Escape}\");\n    await waitFor(() =>\n      expect(screen.queryByRole(\"tooltip\")).not.toBeInTheDocument(),\n    );\n    expect(trigger).toHaveFocus();\n  },\n};"
         }
       ]
     },

@@ -88,4 +88,50 @@ describe("TextArea", () => {
     const textarea = screen.getByRole("textbox");
     expect(textarea.className).toContain(styles.error);
   });
+
+  it("wires aria-invalid and aria-describedby to the error message", () => {
+    render(<TextArea label="Description" error="This field is required" />);
+    const textarea = screen.getByRole("textbox");
+    expect(textarea).toHaveAttribute("aria-invalid", "true");
+    const describedBy = textarea.getAttribute("aria-describedby");
+    expect(describedBy).toBeTruthy();
+    const message = document.getElementById(describedBy as string);
+    expect(message).toHaveTextContent("This field is required");
+    expect(message).toHaveAttribute("role", "alert");
+  });
+
+  it("links aria-describedby to the helper text when there is no error", () => {
+    render(<TextArea label="Description" helperText="Maximum 500 characters" />);
+    const textarea = screen.getByRole("textbox");
+    expect(textarea).not.toHaveAttribute("aria-invalid");
+    const describedBy = textarea.getAttribute("aria-describedby");
+    expect(document.getElementById(describedBy as string)).toHaveTextContent(
+      "Maximum 500 characters",
+    );
+  });
+
+  it("shows the required marker from the required prop, not the error state", () => {
+    const { rerender } = render(<TextArea label="Description" />);
+    expect(screen.queryByText("(required)")).not.toBeInTheDocument();
+
+    // Error alone must NOT imply required.
+    rerender(<TextArea label="Description" error="Bad value" />);
+    expect(screen.queryByText("(required)")).not.toBeInTheDocument();
+
+    rerender(<TextArea label="Description" required />);
+    expect(screen.getByText("(required)")).toBeInTheDocument();
+  });
+
+  it("gives two same-labelled fields distinct ids (no duplicate-id collision)", () => {
+    render(
+      <>
+        <TextArea label="Message" />
+        <TextArea label="Message" />
+      </>,
+    );
+    const [first, second] = screen.getAllByRole("textbox");
+    expect(first.id).toBeTruthy();
+    expect(second.id).toBeTruthy();
+    expect(first.id).not.toBe(second.id);
+  });
 });
