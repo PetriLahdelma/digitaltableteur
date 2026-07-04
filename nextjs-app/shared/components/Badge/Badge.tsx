@@ -160,7 +160,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
             {resolvedIcon}
           </span>
         )}
-        <span className="badge__content">
+        <span className={["badge__content", styles.label].join(" ")}>
           {typeof children === "string" ? t(children) : children}
         </span>
         {removable && (
