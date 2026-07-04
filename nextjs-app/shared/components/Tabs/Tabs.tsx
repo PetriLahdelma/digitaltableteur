@@ -10,17 +10,21 @@ export interface TabItem {
 
 export interface TabsProps {
   // v2.0.0 PROPS
-  /** Active tab shorthand */
+  /** Active tab key (controlled mode); "" is treated as absent. */
   activeTab?: string;
-  /** Default active tab shorthand */
+  /** Initially active tab key (uncontrolled mode). */
   defaultActiveTab?: string;
   /** Size. @default "md" */
   size?: "sm" | "md" | "lg";
 
   // EXISTING PROPS
+  /** Array of tab items with key, label, and optional disabled state. */
   tabs: TabItem[];
+  /** Called with the clicked tab's key. */
   onTabChange?: (key: string) => void;
+  /** Optional utility classes on the tablist. */
   className?: string;
+  /** Visual style variant. @default "default" */
   variant?: "default" | "pills" | "underline";
 }
 
@@ -71,7 +75,9 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
     defaultActiveTab || tabs[0]?.key || "",
   );
 
-  const effectiveActiveTab = activeTab ?? internalTab;
+  // "" is treated as absent (tab keys are never empty): a seeded/cleared
+  // activeTab control must not freeze the tablist into controlled-nothing.
+  const effectiveActiveTab = activeTab || internalTab;
 
   const handleTabClick = (key: string, disabled?: boolean) => {
     if (disabled) return;

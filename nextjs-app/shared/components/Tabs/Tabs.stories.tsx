@@ -14,8 +14,10 @@ type Story = StoryObj<typeof Tabs>;
  * `aria-valid-attr-value`), so every story must render panels too.
  */
 function TabsWithPanels(args: TabsProps) {
+  // The Controls panel seeds free strings as "" — treat that as absent so the
+  // seeded Playground still has an active tab.
   const initial =
-    args.activeTab ?? args.defaultActiveTab ?? args.tabs[0]?.key ?? "";
+    args.activeTab || args.defaultActiveTab || args.tabs[0]?.key || "";
   const [active, setActive] = React.useState(initial);
   React.useEffect(() => {
     if (args.activeTab) {
@@ -26,7 +28,7 @@ function TabsWithPanels(args: TabsProps) {
     <div>
       <Tabs
         {...args}
-        activeTab={args.activeTab ?? active}
+        activeTab={args.activeTab || active}
         onTabChange={(key) => {
           if (!args.activeTab) setActive(key);
           args.onTabChange?.(key);
@@ -54,97 +56,29 @@ const meta: Meta<typeof Tabs> = {
     a11y: { test: "error" },
     llm: { schema },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite tabs slot keeps an authored mapping preset.
   argTypes: {
-    // Content
-
     tabs: {
-      control: "object",
+      control: { type: "select" },
+      options: ["basic", "withDisabled"],
+      mapping: {
+        basic: [
+          { key: "tab1", label: "Tab 1" },
+          { key: "tab2", label: "Tab 2" },
+          { key: "tab3", label: "Tab 3" },
+        ],
+        withDisabled: [
+          { key: "tab1", label: "Active" },
+          { key: "tab2", label: "Disabled", disabled: true },
+          { key: "tab3", label: "Active" },
+        ],
+      },
       description:
-        "Array of tab items with key, label, and optional disabled state",
+        "Array of tab items with key, label, and optional disabled state. Pick a preset here; compose your own in code.",
       table: { category: "Content", type: { summary: "TabItem[]" } },
     },
-
-    // State (v1.1.0)
-
-    activeTab: {
-      control: "text",
-      description: "Active tab shorthand (v1.1.0+)",
-      table: { category: "State", type: { summary: "string" } },
-    },
-
-    defaultActiveTab: {
-      control: "text",
-      description: "Default active tab shorthand (v1.1.0+)",
-      table: { category: "State", type: { summary: "string" } },
-    },
-
-    // Appearance
-
-    variant: {
-      control: { type: "select" },
-      options: ["default", "pills", "underline"],
-      description: "Visual style variant",
-      table: {
-        category: "Appearance",
-        type: { summary: "\"default\" | \"pills\" | \"underline\"" },
-        defaultValue: { summary: "default" },
-      },
-    },
-
-    size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
-      description: "Tablist size.",
-      table: {
-        category: "Appearance",
-        type: { summary: "\"sm\" | \"md\" | \"lg\"" },
-        defaultValue: { summary: "md" },
-      },
-    },
-
-    // Behavior
-    onTabChange: {
-      action: "tabChanged",
-      description: "Tab change handler",
-      table: {
-        category: "Behavior",
-        type: { summary: "(key: string) => void" },
-      },
-    },
-
-    // Advanced
-
-    className: {
-      control: "text",
-      description: "Additional CSS classes",
-      table: { category: "Advanced", type: { summary: "string" } },
-    },
-
-    // Deprecated
-
-    activeTabKey: {
-      control: "text",
-      description:
-        "⚠️ Deprecated: Use activeTab instead. Will be removed in v2.0.0",
-      table: { category: "Deprecated", type: { summary: "string" } },
-    },
-
-    defaultActiveTabKey: {
-      control: "text",
-      description:
-        "⚠️ Deprecated: Use defaultActiveTab instead. Will be removed in v2.0.0",
-      table: { category: "Deprecated", type: { summary: "string" } },
-    },
-      activeKey: { table: { disable: true } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      defaultActiveKey: { table: { disable: true } },
-      id: { table: { disable: true } },
-      onChange: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
 };
 export default meta;
 
@@ -323,8 +257,15 @@ ControlledTabs.parameters = {
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
-  render: Template,
-  args: Default.args,
+  // defaultActiveTab is mount-only state; keying the wrapper on it remounts so
+  // panel edits actually drive the canvas. tabs arg is a mapping key.
+  render: (args) => (
+    <TabsWithPanels key={`default-${args.defaultActiveTab}`} {...args} />
+  ),
+  args: {
+    ...Default.args,
+    tabs: "basic" as unknown as TabsProps["tabs"],
+  },
 };
 
 export const Example = {

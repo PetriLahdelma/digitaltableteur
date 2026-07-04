@@ -15,28 +15,7 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  argTypes: {
-    label: {
-      control: "text",
-      description:
-        "Accessible name for the loading indicator (required when standalone)",
-      table: {
-        category: "Accessibility",
-        defaultValue: { summary: "Loading" },
-      },
-    },
-    size: {
-      description: "Size",
-      control: "select",
-      options: ["sm", "md", "lg"],
-      table: { category: "Appearance", defaultValue: { summary: "md" } },
-    },
-    className: {
-      description: "Class Name",
-      control: false,
-      table: { category: "Advanced" },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: { label: "Loading content", size: "md" },
 } satisfies Meta<typeof Spinner>;
 

@@ -16,6 +16,34 @@ describe("Modal", () => {
     ).toBeInTheDocument();
   });
 
+  it("keeps the close button named when closeButtonLabel is an empty string", () => {
+    render(
+      <Modal
+        isOpen
+        title="Test Modal"
+        showCloseIcon
+        closeButtonLabel=""
+        onClose={() => {}}
+      >
+        <div>Modal Content</div>
+      </Modal>,
+    );
+    expect(
+      within(document.body).getByRole("button", { name: "Close dialog" }),
+    ).toBeInTheDocument();
+  });
+
+  it("renders the menu slot in the header", () => {
+    render(
+      <Modal isOpen title="Test Modal" menu={<button type="button">Options</button>}>
+        <div>Modal Content</div>
+      </Modal>,
+    );
+    expect(
+      within(document.body).getByRole("button", { name: "Options" }),
+    ).toBeInTheDocument();
+  });
+
   it("does not render children when closed", () => {
     const { queryByText } = render(
       <Modal isOpen={false} title="Test Modal">

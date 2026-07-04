@@ -68,6 +68,20 @@ const EFFECT_EXEMPT = {
         maxSizeInBytes: 'validation-time only: applied when a file is picked, no DOM signature at rest; verified by oversize-pick unit test',
         sizeErrorMessage: 'validation-time only: rendered when a picked file exceeds maxSizeInBytes; verified by oversize-pick unit test',
     },
+    Skeleton: {
+        height: 'non-text variants only: the text variant sizes by line count and applies width alone; verified by unit test (rect variant height style)',
+    },
+    Toast: {
+        duration: 'timer-only: sets the auto-dismiss delay, no DOM signature at rest; verified by unit tests (default and custom duration fire onClose)',
+    },
+    NavLink: {
+        exact: 'route-matching semantic: at the Storybook stub pathname "/" prefix and exact matching coincide for every href; verified by unit tests (exact vs prefix)',
+        activeClassName: 'active-route only: applied when pathname matches href, and the Playground link is deliberately inactive; verified by unit test (activeClassName under matching pathname)',
+    },
+    LanguageSwitcher: {
+        floatedButtonClassName: 'open-tray only: the fanned option buttons exist only while the tray is open; verified by unit test (open tray applies the class)',
+        openTriggerClassName: 'open-tray only: applied to the trigger while expanded; verified by unit test (open tray applies the class)',
+    },
 }
 
 // Icon-name text knobs: appending characters makes an UNKNOWN icon (renders
@@ -91,7 +105,13 @@ function contractProps(dir, root) {
     if (!existsSync(p)) return null
     try {
         const c = JSON.parse(readFileSync(p, 'utf8'))
-        return { status: c.status, props: Object.keys(c.props ?? {}).filter((k) => !SKIP.has(k)) }
+        // Ref-typed props (e.g. Modal panelRef) are plumbing of the same class
+        // as `ref` itself: contracts expose them, no human drives a canvas
+        // from a ref field. Matches the HIDDEN fallthrough in the enhancer.
+        const props = Object.keys(c.props ?? {}).filter(
+            (k) => !SKIP.has(k) && !/^React\.(Ref|RefObject|MutableRefObject)\b/.test(c.props[k]?.type ?? ''),
+        )
+        return { status: c.status, props }
     } catch { return null }
 }
 
@@ -123,7 +143,22 @@ const results = []
 const canvasHtml = async () => {
     const frame = page.frames().find((f) => f.url().includes('iframe.html'))
     if (!frame) return null
-    try { return await frame.$eval('#storybook-root', (el) => el.innerHTML) } catch { return null }
+    try {
+        return await frame.evaluate(() => {
+            const root = document.getElementById('storybook-root')
+            if (!root) return null
+            // Portaled UI (Modal overlays, dropdown trays) is canvas a human
+            // sees, but it mounts as a body-level sibling of #storybook-root.
+            // Include those element siblings so portal-driven props measure as
+            // effects instead of false inerts. Script/style/link tags are
+            // builder plumbing, not canvas.
+            const portals = Array.from(document.body.children)
+                .filter((el) => el !== root && !/^(SCRIPT|STYLE|LINK)$/.test(el.tagName))
+                .map((el) => el.outerHTML)
+                .join('')
+            return root.innerHTML + portals
+        })
+    } catch { return null }
 }
 
 const rowFor = async (prop) => {

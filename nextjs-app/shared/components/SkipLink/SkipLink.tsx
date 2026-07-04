@@ -5,8 +5,11 @@ import { cn } from "@/lib/utils";
 import styles from "./SkipLink.module.css";
 
 export interface SkipLinkProps {
+  /** Target fragment for the main content region. @default "#main-content" */
   href?: string;
+  /** Visible link text on focus. @default "Skip to main content" */
   children?: React.ReactNode;
+  /** Optional utility classes on the link. */
   className?: string;
 }
 

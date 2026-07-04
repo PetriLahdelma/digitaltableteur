@@ -35,34 +35,32 @@ const meta = {
     a11y: { test: "error" },
     layout: "centered",
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite languages slot keeps a mapping preset, and currentLang is a
+  // select over the preset's codes (free text would just deselect everything).
+  // floatedButtonClassName/openTriggerClassName are effect-exempt in
+  // audit:controls (open-tray only; unit-tested).
   argTypes: {
     languages: {
-      control: "object",
-      description: "Available languages (code, label, accessible name)",
-      table: { category: "Content" },
+      control: { type: "select" },
+      options: ["all", "finnishSwedish"],
+      mapping: {
+        all: LANGUAGES,
+        // No "en" entry: with currentLang=en the trigger falls back to the
+        // first language, so the preset change is visible with the tray closed.
+        finnishSwedish: LANGUAGES.slice(1),
+      },
+      description:
+        "Available languages (code, label, accessible name). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "LanguageSwitcherOption[]" } },
     },
     currentLang: {
-      control: "text",
+      control: { type: "inline-radio" },
+      options: LANGUAGES.map((lang) => lang.code),
       description: "Currently selected language code",
       table: { category: "State" },
     },
-    onLanguageChange: {
-      description: "Called with the selected language code",
-      table: {
-        category: "Events",
-        type: { summary: "(code: string) => void" },
-      },
-    },
-    className: {
-      control: false,
-      description: "Optional classes on the group wrapper",
-      table: { category: "Advanced" },
-    },
-      activeButtonClassName: { control: false, description: "Class override for the current-language trigger.", table: { category: "Advanced" } },
-      buttonClassName: { control: false, description: "Base class override applied to every language button.", table: { category: "Advanced" } },
-      floatedButtonClassName: { control: false, description: "Class override for the fanned-out tray options.", table: { category: "Advanced" } },
-      openTriggerClassName: { control: false, description: "Class override for the trigger while the tray is open.", table: { category: "Advanced" } }
-},
+  },
 } satisfies Meta<typeof LanguageSwitcher>;
 
 export default meta;
@@ -75,8 +73,9 @@ export const Default: Story = {
 
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  // languages arg is a mapping key resolved by the preset above.
   args: {
-    languages: LANGUAGES,
+    languages: "all" as unknown as LanguageSwitcherOption[],
     currentLang: "en",
     onLanguageChange: () => {},
   },

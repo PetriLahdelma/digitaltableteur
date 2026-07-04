@@ -18,24 +18,36 @@ const meta: Meta<typeof Breadcrumb> = {
     a11y: { test: "error" },
     llm: { schema },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // items is the one composite slot and keeps an authored mapping preset.
   argTypes: {
     items: {
-      control: "object",
-      description: "Breadcrumb items (label, optional href)",
+      control: { type: "select" },
+      options: ["site", "deep", "linklessMiddle"],
+      mapping: {
+        site: [
+          { label: "Home", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: "Article" },
+        ],
+        deep: [
+          { label: "Home", href: "/" },
+          { label: "Work", href: "/work" },
+          { label: "Design systems", href: "/work/design-systems" },
+          { label: "DSharp case study" },
+        ],
+        linklessMiddle: [
+          { label: "Home", href: "/" },
+          { label: "2026" },
+          { label: "July" },
+          { label: "Weekly notes" },
+        ],
+      },
+      description:
+        "Breadcrumb items in root-to-current order (label, optional href). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "BreadcrumbItem[]" } },
     },
-    "aria-label": {
-      control: "text",
-      description: "Accessible name for the nav landmark",
-      table: { defaultValue: { summary: "Breadcrumb" } },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
 };
 
 export default meta;
@@ -56,6 +68,12 @@ export const Default: Story = {
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
+  // items arg is a mapping key resolved by the preset above.
+  args: {
+    items: "site" as unknown as React.ComponentProps<
+      typeof Breadcrumb
+    >["items"],
+  },
 };
 
 export const Example: Story = {

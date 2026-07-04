@@ -17,48 +17,27 @@ const meta: Meta<typeof AlertBanner> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite slots keep authored treatments: description is prose in
+  // practice (text control), action is a real element slot (mapping preset).
   argTypes: {
-    tone: {
-      control: { type: "select" },
-      options: ["info", "success", "warning", "error"],
-      description: "Semantic tone controlling icon and surface colors",
-      table: { defaultValue: { summary: "info" } },
-    },
-
-    title: { control: "text", description: "Alert heading text" },
-
     description: { control: "text", description: "Supporting body copy" },
-
-    icon: {
-      control: "text",
-      description: "Icon name override; falls back to the tone icon",
-    },
-
-    dismissible: {
-      control: "boolean",
-      description: "Shows a dismiss control when true",
-      table: { defaultValue: { summary: "false" } },
-    },
-    onDismiss: {
-      action: "dismissed",
-      description: "Called when the user dismisses the banner",
-      table: { disable: true },
-    },
-    "aria-live": {
+    action: {
       control: { type: "select" },
-      options: ["polite", "assertive", "off"],
-      description: "Live region politeness for assistive tech",
-      table: { defaultValue: { summary: "polite" }, disable: true },
+      options: ["none", "reviewSettings"],
+      mapping: {
+        none: undefined,
+        reviewSettings: (
+          <Button variant="tertiary" size="sm">
+            Review settings
+          </Button>
+        ),
+      },
+      description:
+        "One follow-up rendered under the description (e.g. a tertiary Button). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
-      action: { table: { disable: true } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
 };
 
 export default meta;

@@ -35,4 +35,20 @@ describe("Skeleton", () => {
     expect(status.className).toContain("text");
     expect(status.className).toContain("animate");
   });
+
+  // Backs the audit:controls effect exemption for height: the text variant
+  // sizes by line count, so height must prove itself on the block variants.
+  it("applies width and height styles on the rect variant", () => {
+    render(<Skeleton variant="rect" width="16rem" height={100} />);
+    const status = screen.getByRole("status");
+    expect(status.style.width).toBe("16rem");
+    expect(status.style.height).toBe("100px");
+  });
+
+  it("applies width but not height on the text variant", () => {
+    render(<Skeleton variant="text" lines={2} width="12rem" height={100} />);
+    const status = screen.getByRole("status");
+    expect(status.style.width).toBe("12rem");
+    expect(status.style.height).toBe("");
+  });
 });

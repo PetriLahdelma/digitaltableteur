@@ -3,4 +3,3 @@
 - alertdialog "Something went wrong":
   - heading "Something went wrong" [level=2]
   - paragraph: We could not save your changes. Check your connection and try again.
-  - button "OK"

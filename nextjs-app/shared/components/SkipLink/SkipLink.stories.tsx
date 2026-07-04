@@ -22,24 +22,11 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children keeps an authored text control (label-like ReactNode slot).
   argTypes: {
-    href: {
-      control: "text",
-      description: "Target fragment for main content",
-      table: { defaultValue: { summary: "#main-content" } },
-    },
     children: { control: "text", description: "Visible link text on focus" },
-    className: {
-      control: "text",
-      description: "Link class names",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: defaultArgs,
 } satisfies Meta<typeof SkipLink>;
 
