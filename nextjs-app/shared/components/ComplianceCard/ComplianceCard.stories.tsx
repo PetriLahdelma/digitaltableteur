@@ -16,22 +16,10 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
     layout: "padded",
-    controls: { disable: true },
   },
   tags: ["beta", "!autodocs"],
-  argTypes: {
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS classes on the card.", table: { category: "Advanced" } },
-      id: { table: { disable: true } },
-      lastReviewed: { control: "text", description: "Date when compliance was last reviewed (format: YYYY-MM-DD or Date object)", table: { category: "Content" } },
-      ref: { table: { disable: true } },
-      rules: { control: "object", description: "Checklist rows: { id, rule, status, details }.", table: { category: "Content" } },
-      style: { table: { disable: true } },
-      title: { control: "text", description: "Card heading (e.g. Compliance: 11/11).", table: { category: "Content" } },
-      titleIcon: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // composite-slot presets live on the Playground story below.
 } satisfies Meta<typeof ComplianceCard>;
 
 export default meta;
@@ -210,7 +198,36 @@ export const Default: Story = {
 };
 export const Playground: Story = {
   tags: ["beta-matrix"],
-  args: defaultStoryArgs,
+  argTypes: {
+    rules: {
+      control: { type: "select" },
+      options: ["twelve", "three"],
+      mapping: {
+        twelve: badgeComplianceRules,
+        three: badgeComplianceRules.slice(0, 3),
+      },
+      description:
+        "Compliance rules (rule, status, details). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ComplianceRule[]" } },
+    },
+    titleIcon: {
+      control: { type: "select" },
+      options: ["check", "none"],
+      mapping: {
+        check: defaultStoryArgs.titleIcon,
+        none: undefined,
+      },
+      description:
+        "Icon beside the title. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+  },
+  args: {
+    ...defaultStoryArgs,
+    rules: "twelve" as unknown as ComplianceRule[],
+    titleIcon: "check" as unknown as React.ReactNode,
+    lastReviewed: "2026-07-01",
+  },
 };
 export const Example: Story = {
   tags: ["beta-matrix"],

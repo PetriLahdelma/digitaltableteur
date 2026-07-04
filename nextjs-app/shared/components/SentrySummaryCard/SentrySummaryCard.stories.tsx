@@ -21,25 +21,7 @@ const sentrySummaryCardComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof SentrySummaryCard> = {
-  argTypes: {
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS classes on the card.", table: { category: "Advanced" } },
-      culprit: { table: { disable: true } },
-      environment: { table: { disable: true } },
-      firstSeen: { table: { disable: true } },
-      id: { table: { disable: true } },
-      isUnhandled: { table: { disable: true } },
-      lastSeen: { table: { disable: true } },
-      level: { table: { disable: true } },
-      permalink: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      status: { table: { disable: true } },
-      style: { table: { disable: true } },
-      title: { table: { disable: true } },
-      userCount: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/SentrySummaryCard",
   component: SentrySummaryCard,
   tags: ["beta", "!autodocs"],

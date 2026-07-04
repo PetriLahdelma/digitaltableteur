@@ -24,33 +24,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    label: { control: "text", description: "Uppercase field label" },
-    type: {
-      control: "select",
-      options: ["text", "email", "tel", "textarea", "select"],
-      description: "Control type",
-      table: { defaultValue: { summary: "text" } },
-    },
-    error: { control: "text", description: "Error message (role=alert)" },
-    required: { control: "boolean", description: "Required indicator" },
-    placeholder: { control: "text", description: "Input placeholder" },
-    className: {
-      control: "text",
-      description: "Field wrapper class names",
-      table: { disable: true },
-    },
-    id: {
-      control: "text",
-      description: "Stable id override",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof FormFieldEditorial>;
 
@@ -60,8 +34,41 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ["beta-matrix"],
 };
+// FormFieldEditorial is a discriminated union: it renders its own control from
+// `type`, and only type="select" consumes `children` (the <option> list). The
+// Playground rests in select mode so the children slot is genuine and operable.
 export const Playground: Story = {
   tags: ["beta-matrix"],
+  argTypes: {
+    children: {
+      control: { type: "select" },
+      options: ["threeOptions", "twoOptions"],
+      mapping: {
+        threeOptions: (
+          <>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </>
+        ),
+        twoOptions: (
+          <>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+          </>
+        ),
+      },
+      description:
+        "Options for the select control (type=\"select\"). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ReactNode" } },
+    },
+  },
+  args: {
+    label: "Preferred contact",
+    type: "select" as const,
+    required: true,
+    children: "threeOptions" as never,
+  },
 };
 
 Playground.play = async ({ canvasElement }) => {

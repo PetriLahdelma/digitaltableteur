@@ -41,24 +41,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    skills: { control: false, description: "Skill logos with alt names" },
-    showCategories: {
-      control: "boolean",
-      description: "Group skills under category headings",
-    },
-    columns: {
-      control: "select",
-      options: [4, 6, 8],
-      description: "Grid column count",
-      table: { defaultValue: { summary: "6" } },
-    },
-    className: {
-      control: "text",
-      description: "Section wrapper class names",
-      table: { disable: true },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof SkillsGrid>;
 
@@ -72,6 +55,22 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  argTypes: {
+    skills: {
+      control: { type: "select" },
+      options: ["sample", "few"],
+      mapping: {
+        sample: sampleSkills,
+        few: sampleSkills.slice(0, 2),
+      },
+      description:
+        "Skills (name, category). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "Skill[]" } },
+    },
+  },
+  args: {
+    skills: "sample" as never,
+  },
 };
 
 export const Example: Story = {

@@ -26,27 +26,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    icon: { control: false, description: "Decorative leading icon" },
-    title: { control: "text", description: "Card heading" },
-    description: { control: "text", description: "Supporting copy" },
-    iconClassName: {
-      control: "text",
-      description: "Icon wrapper class names",
-      table: { disable: true },
-    },
-    variant: {
-      control: "select",
-      options: ["default", "bordered", "elevated"],
-      description: "Card surface treatment",
-      table: { defaultValue: { summary: "default" } },
-    },
-    className: {
-      control: "text",
-      description: "Article wrapper class names",
-      table: { disable: true },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof ValueCard>;
 
@@ -60,6 +40,22 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  argTypes: {
+    icon: {
+      control: { type: "select" },
+      options: ["sparkle", "diamond"],
+      mapping: {
+        sparkle: defaultArgs.icon,
+        diamond: <span aria-hidden="true">◆</span>,
+      },
+      description:
+        "Icon slot (required). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ReactNode" } },
+    },
+  },
+  args: {
+    icon: "sparkle" as never,
+  },
 };
 
 export const Example: Story = {

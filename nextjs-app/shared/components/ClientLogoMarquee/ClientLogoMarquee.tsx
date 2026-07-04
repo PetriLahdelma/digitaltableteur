@@ -177,17 +177,16 @@ function LogoMarqueeTrack({ laneLogos }: { laneLogos: ClientLogo[] }) {
 
 /** Props for ClientLogoMarquee. */
 export interface ClientLogoMarqueeProps {
+  /** Accessible name for the marquee section. */
+  ariaLabel: string;
+  /** Additional CSS classes on the marquee section. */
   className?: string;
 }
 
 /**
  * ClientLogoMarquee component.
  */
-export function ClientLogoMarquee({
-  ariaLabel,
-}: {
-  ariaLabel: string;
-}) {
+export function ClientLogoMarquee({ ariaLabel, className }: ClientLogoMarqueeProps) {
   const { motionPreference, isReady } = useAnimationContext();
 
   // Render the animated marquee by DEFAULT. The animation is pure CSS
@@ -200,7 +199,10 @@ export function ClientLogoMarquee({
   // was stuck on the static grid.
   if (isReady && motionPreference === "reduced") {
     return (
-      <section aria-label={ariaLabel} className="py-3">
+      <section
+        aria-label={ariaLabel}
+        className={className ? `py-3 ${className}` : "py-3"}
+      >
         <ClientLogoSemanticList />
         <div className="grid grid-cols-3 items-center justify-items-center gap-4 md:grid-cols-6 md:gap-6 lg:grid-cols-9">
           {logos.map((logo) => (
@@ -214,7 +216,11 @@ export function ClientLogoMarquee({
   return (
     <section
       aria-label={ariaLabel}
-      className="client-logo-marquee-container relative overflow-hidden"
+      className={
+        className
+          ? `client-logo-marquee-container relative overflow-hidden ${className}`
+          : "client-logo-marquee-container relative overflow-hidden"
+      }
     >
       <ClientLogoSemanticList />
       <LogoMarqueeTrack laneLogos={logos} />

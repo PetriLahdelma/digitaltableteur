@@ -71,21 +71,7 @@ const testimonialComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  argTypes: {
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      avatarUrl: { control: "text", description: "Avatar image URL (optional)", table: { category: "Content" } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS classes", table: { category: "Advanced" } },
-      company: { control: "text", description: "Company name", table: { category: "Content" } },
-      id: { table: { disable: true } },
-      linkedinUrl: { control: "text", description: "LinkedIn URL (optional)", table: { category: "Content" } },
-      name: { control: "text", description: "Name of the person giving the testimonial", table: { category: "Content" } },
-      quote: { control: "text", description: "The testimonial quote text", table: { category: "Content" } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      title: { control: "text", description: "Title/position of the person", table: { category: "Content" } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/Testimonial",
   component: Testimonial,
   parameters: {
@@ -149,7 +135,18 @@ export const WithoutLinkedIn = () => (
   />
 );
 
-export const Playground = Default;
+// Args-driven (Default is a fixed showcase closure that ignores the panel).
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  args: {
+    quote:
+      "Working with Digitaltableteur was an exceptional experience. Petri delivered exactly what we needed with incredible attention to detail and professionalism.",
+    name: "Sarah Johnson",
+    title: "Product Manager",
+    company: "TechCorp",
+    linkedinUrl: "https://linkedin.com/in/sarahjohnson",
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

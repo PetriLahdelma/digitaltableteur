@@ -21,20 +21,7 @@ const navMenuListComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof NavMenuList> = {
-  argTypes: {
-      activeClassName: { control: "text", description: "Class applied to the item matching the current route.", table: { category: "Content" } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { table: { disable: true } },
-      itemClassName: { control: "text", description: "Class applied to every menu item.", table: { category: "Content" } },
-      items: { control: "object", description: "Menu entries: { href, label }.", table: { category: "Content" } },
-      listClassName: { control: "text", description: "Class applied to the list element.", table: { category: "Content" } },
-      onNavigate: { action: "onNavigate", table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/NavMenuList",
   component: NavMenuList,
   tags: ["beta", "!autodocs"],
@@ -100,7 +87,35 @@ export const Z_NavMenuListCompliance: Story = {
   ),
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    items: {
+      control: { type: "select" },
+      options: ["site", "three"],
+      mapping: {
+        site: [
+          { to: "/", label: "Home", exact: true },
+          { to: "/work", label: "Work" },
+          { to: "/about", label: "About" },
+          { to: "/blog", label: "Blog" },
+          { to: "/contact", label: "Contact" },
+        ],
+        three: [
+          { to: "/", label: "Home", exact: true },
+          { to: "/work", label: "Work" },
+          { to: "/contact", label: "Contact" },
+        ],
+      },
+      description:
+        "Navigation items (to, label, exact). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "NavMenuItem[]" } },
+    },
+  },
+  args: {
+    items: "site" as never,
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

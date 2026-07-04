@@ -49,46 +49,7 @@ const meta: Meta<typeof ImagePlaceholder> = {
       ),
     },
   },
-  argTypes: {
-    width: {
-      control: { type: "number", min: 100, max: 4000, step: 50 },
-      description: "Width in pixels",
-    },
-
-    height: {
-      control: { type: "number", min: 100, max: 2000, step: 50 },
-      description: "Height in pixels",
-    },
-
-    variant: {
-      control: { type: "select" },
-      options: ["light", "medium", "dark", "gradient"],
-      description: "Background color variant",
-      table: { defaultValue: { summary: "light" } },
-    },
-
-    showDimensions: {
-      control: { type: "boolean" },
-      description: "Display dimensions on placeholder",
-    },
-
-    showIcon: {
-      control: { type: "boolean" },
-      description: "Display image icon",
-    },
-
-    text: { control: { type: "text" }, description: "Custom text to display" },
-
-    caption: { control: { type: "text" }, description: "Caption below image" },
-      alt: { control: "text", description: "Alt text for accessibility", table: { category: "Content" } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS class", table: { category: "Advanced" } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 };
 
 export default meta;

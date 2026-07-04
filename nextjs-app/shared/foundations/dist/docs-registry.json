@@ -3390,12 +3390,21 @@
       "importLine": "import { ClientLogoMarquee } from \"@dt/ClientLogoMarquee\";",
       "keyProps": [
         {
+          "name": "ariaLabel",
+          "type": "string",
+          "required": true
+        },
+        {
           "name": "className",
           "type": "string",
           "required": false
         }
       ],
       "props": {
+        "ariaLabel": {
+          "optional": false,
+          "type": "string"
+        },
         "className": {
           "optional": true,
           "type": "string"

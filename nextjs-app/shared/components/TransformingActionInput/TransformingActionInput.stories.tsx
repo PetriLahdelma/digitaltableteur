@@ -4,26 +4,7 @@ import TransformingActionInput from "@dt/TransformingActionInput";
 import { expect, userEvent, waitFor, within } from "storybook/test";
 
 const meta: Meta<typeof TransformingActionInput> = {
-  argTypes: {
-      actionLabelKey: { control: "text", description: "Translation key for the trigger label", table: { category: "Accessibility" } },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Optional className passthrough", table: { category: "Advanced" } },
-      defaultValue: { control: "text", description: "Default value when uncontrolled", table: { category: "Content" } },
-      disabled: { control: "boolean", description: "Disabled state for both button and input", table: { category: "Content" } },
-      helperTextKey: { control: "text", description: "Translation key for helper text below the input", table: { category: "Content" } },
-      id: { table: { disable: true } },
-      initialMode: { control: { type: "inline-radio" }, options: ["button", "input"], description: "Initial surface mode before transformation", table: { category: "Content" } },
-      inputLabelKey: { control: "text", description: "Translation key for the input label", table: { category: "Accessibility" } },
-      onChange: { action: "onChange", table: { disable: true } },
-      onSubmit: { action: "onSubmit", table: { disable: true } },
-      placeholderKey: { control: "text", description: "Translation key for the placeholder", table: { category: "Content" } },
-      ref: { table: { disable: true } },
-      stayInInputMode: { control: "boolean", description: "When true, retains the input after submit instead of returning to button mode", table: { category: "Content" } },
-      style: { table: { disable: true } },
-      value: { control: "text", description: "Optional controlled value", table: { category: "Content" } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/TransformingActionInput",
   component: TransformingActionInput,
   parameters: {
@@ -75,7 +56,29 @@ export const WithHelper: Story = {
 
 export const Disabled: Story = { args: { disabled: true } };
 
-export const Playground = Default;
+// Args-driven with a remount key: initialMode and defaultValue seed useState,
+// so keying the render on them makes those controls drive the canvas. Seeded
+// into INPUT mode so the richer branch (label + placeholder + helper) renders
+// and those *Key text controls are effective. Real i18n keys seeded so they
+// show meaningful labels (a perturbed missing key falls back to the raw key
+// string — a visible change). actionLabelKey renders only in the button branch
+// and value/defaultValue are the input value PROPERTY — all effect-exempt.
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  render: (args) => (
+    <TransformingActionInput
+      key={`${args.initialMode}-${args.defaultValue}`}
+      {...args}
+    />
+  ),
+  args: {
+    initialMode: "input",
+    actionLabelKey: "transformingActionInput.trigger",
+    inputLabelKey: "transformingActionInput.inputLabel",
+    placeholderKey: "transformingActionInput.placeholder",
+    helperTextKey: "transformingActionInput.helper",
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

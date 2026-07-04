@@ -21,24 +21,7 @@ const meta: Meta<typeof AnimatedGlyphBackground> = {
     a11y: { test: "error" },
     layout: "fullscreen",
   },
-  argTypes: {
-    tone: {
-      control: { type: "select" },
-      options: ["muted", "primary", "accent", "contrast"],
-      description: "Color tone for the animated glyph",
-      table: { defaultValue: { summary: "muted" } },
-    },
-
-    animate: { control: "boolean", description: "Toggle frame animation" },
-
-    className: { control: "text", description: "Optional className override" },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: { tone: "muted", animate: true },
 };
 

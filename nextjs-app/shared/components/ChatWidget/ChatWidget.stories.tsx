@@ -94,7 +94,9 @@ const useMockChat = () => {
   return isMounted;
 };
 
-const ChatWidgetStoryDemo = () => {
+const ChatWidgetStoryDemo = (
+  args?: Partial<React.ComponentProps<typeof ChatWidget>>,
+) => {
   const ready = useMockChat();
   if (!ready) {
     return null;
@@ -122,6 +124,7 @@ const ChatWidgetStoryDemo = () => {
         endpoint={FAKE_ENDPOINT}
         title="Meet Donny"
         description="This Storybook preview simulates the chat flow."
+        {...args}
       />
     </div>
   );
@@ -146,27 +149,7 @@ const meta: Meta<typeof ChatWidget> = {
       },
     },
   },
-  argTypes: {
-    title: { control: "text", description: "Panel title when chat is open" },
-
-    description: {
-      control: "text",
-      description: "Intro copy shown in the chat header",
-    },
-
-    endpoint: {
-      control: "text",
-      description: "Chat API endpoint override",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 };
 
 export default meta;
@@ -176,7 +159,11 @@ type Story = StoryObj<typeof ChatWidget>;
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
-  render: () => <ChatWidgetStoryDemo />,
+  // title/description render inside the chat panel (visible only once the
+  // bubble is clicked open) and endpoint is behavior-only — all three are
+  // effect-exempt in audit:controls; the EmptyState play story opens the
+  // panel and asserts the title heading renders.
+  render: (args) => <ChatWidgetStoryDemo {...args} />,
 };
 
 export const Default = Playground;

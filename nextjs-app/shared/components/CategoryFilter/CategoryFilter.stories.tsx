@@ -20,6 +20,11 @@ function CategoryFilterDemo(
   },
 ) {
   const [active, setActive] = useState(args.activeCategory ?? "all");
+  // Sync panel edits in: activeCategory would otherwise be mount-only state
+  // and its Controls row would drive nothing.
+  React.useEffect(() => {
+    if (args.activeCategory) setActive(args.activeCategory);
+  }, [args.activeCategory]);
   return (
     <CategoryFilter
       {...args}
@@ -54,37 +59,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    categories: {
-      control: false,
-      description: "Filter options (value + label)",
-    },
-    activeCategory: {
-      control: "text",
-      description: "Currently selected category value",
-    },
-    onCategoryChange: {
-      action: "categoryChange",
-      description: "Selection change handler",
-    },
-    variant: {
-      control: "select",
-      options: ["pills", "underline", "minimal"],
-      description: "Visual treatment",
-      table: { defaultValue: { summary: "pills" } },
-    },
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-      description: "Control size",
-      table: { defaultValue: { summary: "md" } },
-    },
-    className: {
-      control: "text",
-      description: "Nav wrapper class names",
-      table: { disable: true },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof CategoryFilter>;
 
@@ -98,6 +73,23 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   render: (args) => <CategoryFilterDemo {...args} />,
+  argTypes: {
+    categories: {
+      control: { type: "select" },
+      options: ["all", "few"],
+      mapping: {
+        all: categories,
+        few: categories.slice(0, 3),
+      },
+      description:
+        "Filter categories (value, label). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "CategoryOption[]" } },
+    },
+  },
+  args: {
+    ...defaultArgs,
+    categories: "all" as never,
+  },
 };
 
 Playground.play = async ({ canvasElement }) => {

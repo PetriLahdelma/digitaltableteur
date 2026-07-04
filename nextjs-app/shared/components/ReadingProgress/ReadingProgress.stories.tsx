@@ -16,34 +16,28 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  argTypes: {
-    showPercentage: {
-      control: "boolean",
-      description: "Show numeric percentage below the bar",
-      table: { category: "Display", defaultValue: { summary: "false" } },
-    },
-    targetRef: {
-      description: "Target Ref",
-      control: false,
-      table: { category: "Advanced" },
-    },
-    className: {
-      description: "Class Name",
-      control: false,
-      table: { category: "Advanced" },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: { showPercentage: false },
 } satisfies Meta<typeof ReadingProgress>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-function Demo({ showPercentage }: { showPercentage?: boolean }) {
+function Demo({
+  showPercentage,
+  className,
+}: {
+  showPercentage?: boolean;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   return (
     <>
-      <ReadingProgress targetRef={ref} showPercentage={showPercentage} />
+      <ReadingProgress
+        targetRef={ref}
+        showPercentage={showPercentage}
+        className={className}
+      />
       <div
         ref={ref}
         style={{
@@ -68,7 +62,9 @@ function Demo({ showPercentage }: { showPercentage?: boolean }) {
 
 export const Playground: Story = {
   tags: ["beta-matrix"],
-  render: (args) => <Demo showPercentage={args.showPercentage} />,
+  render: (args) => (
+    <Demo showPercentage={args.showPercentage} className={args.className} />
+  ),
 };
 export const Default: Story = {
   tags: ["beta-matrix"],

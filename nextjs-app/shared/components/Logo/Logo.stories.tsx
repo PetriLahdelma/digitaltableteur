@@ -15,42 +15,7 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  argTypes: {
-    size: {
-      control: { type: "number", min: 16, max: 256, step: 4 },
-      description: "Square render box in pixels",
-      table: { category: "Layout", defaultValue: { summary: "24" } },
-    },
-    animated: {
-      control: "boolean",
-      description:
-        "Pulse the leading bars on hover (disabled under reduced motion)",
-      table: { category: "Motion", defaultValue: { summary: "false" } },
-    },
-    badge: {
-      control: "boolean",
-      description: "Wrap the mark in the brand lime circle",
-      table: { category: "Appearance", defaultValue: { summary: "false" } },
-    },
-    title: {
-      control: "text",
-      description: "Accessible name (ignored when decorative)",
-      table: {
-        category: "Accessibility",
-        defaultValue: { summary: "Digitaltableteur" },
-      },
-    },
-    decorative: {
-      control: "boolean",
-      description: "Remove the mark from the accessibility tree",
-      table: { category: "Accessibility", defaultValue: { summary: "false" } },
-    },
-    className: {
-      control: false,
-      description: "Optional utility/spacing classes applied to the root svg",
-      table: { category: "Advanced" },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: { size: 24, animated: false, badge: false, decorative: false },
 } satisfies Meta<typeof Logo>;
 

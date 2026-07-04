@@ -28,40 +28,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    icon: { control: false, description: "Leading service icon" },
-    title: { control: "text", description: "Card title" },
-    description: { control: "text", description: "Supporting copy" },
-    href: { control: "text", description: "Optional link destination" },
-    variant: {
-      control: "select",
-      options: ["default", "bordered", "elevated", "minimal"],
-      description: "Surface treatment",
-      table: { defaultValue: { summary: "default" } },
-    },
-    iconPosition: {
-      control: "select",
-      options: ["top", "left"],
-      description: "Icon placement",
-      table: { defaultValue: { summary: "top" } },
-    },
-    className: {
-      control: "text",
-      description: "Card class names",
-      table: { disable: true },
-    },
-    donnyTarget: {
-      control: "text",
-      description: "Donny spotlight target id",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: defaultArgs,
 } satisfies Meta<typeof ServiceCard>;
 
@@ -75,6 +42,22 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  argTypes: {
+    icon: {
+      control: { type: "select" },
+      options: ["sparkle", "none"],
+      mapping: {
+        sparkle: defaultArgs.icon,
+        none: undefined,
+      },
+      description:
+        "Icon slot. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "ReactNode" } },
+    },
+  },
+  args: {
+    icon: "sparkle" as never,
+  },
 };
 
 Playground.play = async ({ canvasElement }) => {

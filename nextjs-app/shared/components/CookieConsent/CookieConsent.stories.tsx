@@ -1,7 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { ComponentType } from "react";
 import { userEvent, within } from "storybook/test";
 import CookieConsent from "./CookieConsent";
+import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent/CookieConsentContext";
 import contract from "./CookieConsent.contract.json";
+
+// The global preview decorator wraps stories with autoShow={false}, so the
+// banner never mounts and its className control would be inert. This nested
+// provider force-shows the banner (fresh Storybook iframe has no stored
+// consent) so the derived className control actually drives the canvas.
+const withOpenBanner = (Story: ComponentType) => (
+  <CookieConsentProvider autoShow>
+    <Story />
+  </CookieConsentProvider>
+);
 
 const meta = {
   title: "Site/CookieConsent",
@@ -17,19 +29,7 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
-  argTypes: {
-    className: {
-      control: "text",
-      description: "Banner class names",
-      table: { disable: true },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: {},
 } satisfies Meta<typeof CookieConsent>;
 
@@ -43,6 +43,7 @@ export const Default: Story = {
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  decorators: [withOpenBanner],
 };
 
 Playground.play = async ({ canvasElement }) => {

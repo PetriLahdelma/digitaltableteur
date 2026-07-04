@@ -188,29 +188,7 @@ const ScreenshotWrapper: React.FC<ScreenshotWrapperProps> = ({
 };
 
 export default {
-  argTypes: {
-    variant: {
-      control: { type: "select" },
-      options: ["muted", "light", "dark"],
-      description: "Surface treatment for the quote card",
-      table: { defaultValue: { summary: "muted" } },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      avatarUrl: { control: "text", description: "Avatar image URL (optional)", table: { category: "Content" } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS classes", table: { category: "Advanced" } },
-      company: { control: "text", description: "Company name", table: { category: "Content" } },
-      companyLogoUrl: { control: "text", description: "Company logo URL (optional, displayed at bottom)", table: { category: "Content" } },
-      connectionDegree: { control: "text", description: "Connection degree (e.g., \"1st\", \"2nd\", \"3rd\")", table: { category: "Content" } },
-      id: { table: { disable: true } },
-      linkedinUrl: { control: "text", description: "LinkedIn profile URL (optional)", table: { category: "Content" } },
-      name: { control: "text", description: "Name of the person", table: { category: "Content" } },
-      quote: { control: "text", description: "The quote/post text", table: { category: "Content" } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      title: { control: "text", description: "Title/position of the person", table: { category: "Content" } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/LinkedInQuoteCard",
   component: LinkedInQuoteCard,
   parameters: {
@@ -484,7 +462,19 @@ export const ScreenshotDark = () => (
   </ScreenshotWrapper>
 );
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  args: {
+    quote: "Systems protect consistency. People protect meaning.",
+    name: "Petri Lahdelma",
+    title: "Founder",
+    company: "Digitaltableteur",
+    connectionDegree: "1st",
+    avatarUrl: "/images/portfolio/helsinki-design-system/team/petri.png",
+    companyLogoUrl: "/dt-logo.svg",
+    variant: "muted",
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },

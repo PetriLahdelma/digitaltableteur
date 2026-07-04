@@ -15,24 +15,7 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  argTypes: {
-    children: {
-      control: "text",
-      description: "Text announced to assistive technology only",
-      table: { category: "Content" },
-    },
-    as: {
-      control: "select",
-      options: ["span", "div", "p", "h2"],
-      description: "Semantic element wrapper",
-      table: { category: "Structure", defaultValue: { summary: "span" } },
-    },
-    className: {
-      description: "Class Name",
-      control: false,
-      table: { category: "Advanced" },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: { children: "Additional context for screen readers", as: "span" },
 } satisfies Meta<typeof VisuallyHidden>;
 

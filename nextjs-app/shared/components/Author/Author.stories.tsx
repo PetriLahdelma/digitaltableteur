@@ -27,29 +27,7 @@ const meta: Meta<typeof Author> = {
     a11y: { test: "error" },
     layout: "centered",
   },
-  argTypes: {
-    name: { description: "Author's display name", control: "text" },
-    imageUrl: {
-      description: "Author avatar image URL (string or imported module)",
-      control: "text",
-    },
-    size: {
-      description: "Avatar size (CSS unit or preset)",
-      control: "text",
-      table: { defaultValue: { summary: "2.5rem" } },
-    },
-    profileUrl: {
-      description: "Optional link to author's profile page",
-      control: "text",
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 };
 
 export default meta;
@@ -270,7 +248,21 @@ export const InArticleContext: Story = {
   },
 };
 
-export const Playground = Default;
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  argTypes: {
+    size: {
+      control: { type: "select" },
+      options: ["2rem", "2.5rem", "3rem", "4rem", "5rem"],
+      description: "Avatar size token (any CSS length works in code)",
+      table: { category: "Appearance", type: { summary: "AvatarSize" } },
+    },
+  },
+  args: {
+    ...Default.args,
+    size: "3rem",
+  },
+};
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
