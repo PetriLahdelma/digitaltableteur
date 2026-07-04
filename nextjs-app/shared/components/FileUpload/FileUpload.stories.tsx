@@ -18,75 +18,46 @@ export default {
     a11y: { test: "error" },
     llm: { schema },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the File-typed value slot keeps an authored mapping preset.
   argTypes: {
-    label: { control: "text", description: "Field label" },
-
-    placeholder: {
-      control: "text",
-      description: "Placeholder when no file selected",
-    },
-
-    helperText: {
-      control: "text",
-      description: "Helper copy below the control",
-    },
-
-    uploadButtonLabel: { control: "text", description: "Upload button label" },
-
-    clearButtonLabel: {
-      control: "text",
-      description: "Clear/remove button label",
-    },
-
-    accept: { control: "text", description: "Accepted file extensions/MIME" },
-
-    maxSizeInBytes: {
-      control: "number",
-      description: "Maximum file size in bytes",
-    },
-
-    sizeErrorMessage: {
-      control: "text",
-      description: "Error when file exceeds max size",
-    },
-
-    error: { control: "text", description: "External error message" },
-
-    disabled: { control: "boolean", description: "Disables the control" },
-
-    required: { control: "boolean", description: "Marks field as required" },
-
-    appearance: {
-      control: "select",
-      options: ["default", "editorial"],
-      description:
-        "Visual variant — editorial matches FormFieldEditorial / Combobox",
-    },
     value: {
-      table: { disable: true },
-      description: "Controlled File value (managed in stories)",
+      control: { type: "select" },
+      options: ["none", "samplePdf", "largePng"],
+      mapping: {
+        none: null,
+        samplePdf: new File([new Uint8Array(48 * 1024)], "project-brief.pdf", {
+          type: "application/pdf",
+        }),
+        largePng: new File([new Uint8Array(160 * 1024)], "moodboard.png", {
+          type: "image/png",
+        }),
+      },
+      description:
+        "Controlled File value. Pick a preset here; real picks use the button.",
+      table: { category: "Content" },
     },
-    onFileChange: {
-      action: "file change",
-      description: "Called when a file is selected or cleared",
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS classes on the field.", table: { category: "Advanced" } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
 } as Meta<typeof FileUpload>;
 
 const Template: StoryFn<typeof FileUpload> = (
   args: React.ComponentProps<typeof FileUpload>,
 ) => {
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(args.value ?? null);
+  // Panel edits to the value arg drive the canvas; button picks still work.
+  React.useEffect(() => {
+    setFile(args.value ?? null);
+  }, [args.value]);
   return (
     <div style={{ maxWidth: "28rem" }}>
-      <FileUpload {...args} value={file} onFileChange={setFile} />
+      <FileUpload
+        {...args}
+        value={file}
+        onFileChange={(next) => {
+          args.onFileChange?.(next);
+          setFile(next);
+        }}
+      />
     </div>
   );
 };
@@ -212,7 +183,11 @@ export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
   render: Template,
-  args: Default.args,
+  // value arg is a mapping key; a preset file keeps the clear button visible.
+  args: {
+    ...Default.args,
+    value: "samplePdf" as unknown as File,
+  },
 };
 
 export const Example: Story = {

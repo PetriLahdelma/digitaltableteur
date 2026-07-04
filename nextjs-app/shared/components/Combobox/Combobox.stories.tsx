@@ -1,5 +1,6 @@
 import contract from "./Combobox.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useArgs } from "storybook/preview-api";
 import React, { useState } from "react";
 import { expect, screen, userEvent, waitFor, within } from "storybook/test";
 import Combobox, { type ComboboxOption } from "./Combobox";
@@ -34,61 +35,32 @@ const meta = {
     a11y: { test: "error" },
     layout: "padded",
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // options keeps a mapping preset and value a select of valid option values
+  // (a free-text value would match no option and read as a no-op).
   argTypes: {
-    label: {
-      control: "text",
-      description: "Field label (associates the trigger)",
-      table: { category: "Content" },
-    },
     options: {
-      control: "object",
-      description: "Selectable options",
+      control: { type: "select" },
+      options: ["timeline", "twoOptions", "withDisabled"],
+      mapping: {
+        timeline: OPTIONS,
+        twoOptions: OPTIONS.slice(0, 2),
+        withDisabled: [
+          ...OPTIONS.slice(0, 2),
+          { value: "later", label: "Later this year", disabled: true },
+        ],
+      },
+      description:
+        "Selectable options. Pick a preset here; compose your own in code.",
       table: { category: "Content" },
     },
     value: {
-      control: "text",
-      description: "Selected option value (controlled)",
+      control: { type: "select" },
+      options: ["", ...OPTIONS.map((o) => o.value)],
+      description: "Selected option value (controlled); \"\" shows the placeholder",
       table: { category: "State" },
     },
-    onValueChange: {
-      description: "Called with the chosen value",
-      table: {
-        category: "Events",
-        type: { summary: "(value: string) => void" },
-      },
-    },
-    placeholder: {
-      control: "text",
-      description: "Shown when no value is selected",
-      table: { category: "Content" },
-    },
-    helperText: {
-      control: "text",
-      description: "Assistive text below the field",
-      table: { category: "Content" },
-    },
-    error: {
-      control: "text",
-      description: "Error message; sets aria-invalid",
-      table: { category: "Validation" },
-    },
-    required: {
-      control: "boolean",
-      description: "Marks the field required",
-      table: { category: "Validation" },
-    },
-    disabled: {
-      control: "boolean",
-      description: "Disables the control",
-      table: { category: "State" },
-    },
-    className: {
-      control: false,
-      description: "Classes on the field wrapper",
-      table: { category: "Advanced" },
-    },
-      id: { control: "text", description: "Explicit control id (wires the label); auto-generated when omitted.", table: { category: "Advanced" } }
-},
+  },
 } satisfies Meta<typeof Combobox>;
 
 export default meta;
@@ -99,14 +71,28 @@ export const Default: Story = {
   render: () => <ComboboxDemo />,
 };
 
+// Playground keeps the canvas interactive while `value` is seeded (controlled):
+// choosing in the canvas writes the arg back so panel and canvas stay in sync.
 export const Playground: Story = {
   tags: ["beta-matrix"],
   args: {
     label: "Timeline",
-    options: OPTIONS,
+    options: "timeline" as unknown as ComboboxOption[],
     value: "",
     placeholder: "Select…",
     onValueChange: () => {},
+  },
+  render: function PlaygroundStory(args) {
+    const [, updateArgs] = useArgs();
+    return (
+      <Combobox
+        {...args}
+        onValueChange={(next) => {
+          args.onValueChange?.(next);
+          updateArgs({ value: next });
+        }}
+      />
+    );
   },
 };
 

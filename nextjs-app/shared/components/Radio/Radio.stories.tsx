@@ -15,59 +15,7 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  argTypes: {
-    label: {
-      control: "text",
-      description: "Option label",
-      table: { category: "Content" },
-    },
-    value: {
-      control: "text",
-      description: "Submitted value when selected",
-      table: { category: "Value" },
-    },
-    name: {
-      control: "text",
-      description: "Group name (must match siblings)",
-      table: { category: "Form" },
-    },
-    checked: {
-      control: "boolean",
-      description: "Controlled checked state",
-      table: { category: "State" },
-    },
-    disabled: {
-      control: "boolean",
-      description: "Disable this option",
-      table: { category: "State", defaultValue: { summary: "false" } },
-    },
-    defaultChecked: {
-      control: false,
-      description: "Initial checked state (uncontrolled mode only)",
-      table: { category: "State", disable: true },
-    },
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-      description: "Control hit area",
-      table: { category: "Appearance", defaultValue: { summary: "md" } },
-    },
-    showLabel: {
-      control: "boolean",
-      description: "Render visible label",
-      table: { category: "Content", defaultValue: { summary: "true" } },
-    },
-    onCheckedChange: {
-      description: "Fired when selection changes",
-      action: "checkedChange",
-      table: { category: "Events" },
-    },
-    className: {
-      control: false,
-      description: "Optional utility classes",
-      table: { category: "Advanced" },
-    },
-  },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: {
     label: "Email updates",
     value: "email",

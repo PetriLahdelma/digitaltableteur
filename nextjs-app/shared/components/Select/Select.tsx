@@ -16,7 +16,9 @@ interface SelectOptionItem {
 
 export interface SelectProps
   extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "size"> {
+  /** Label text displayed above the select dropdown */
   label: string;
+  /** Option objects with value, label, and optional disabled; children override this */
   options?: SelectOptionItem[];
   /** Supporting text under the control; suppressed while `error` is set. */
   helperText?: string;

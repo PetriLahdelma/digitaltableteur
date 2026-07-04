@@ -88,117 +88,33 @@ export default {
     a11y: { test: "error" },
     llm: { schema },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // only the composite options slot needs an authored mapping preset.
   argTypes: {
-    // Content
-
-    label: {
-      control: "text",
-      description: "Label text displayed above the select dropdown",
-      table: { category: "Content", type: { summary: "string" } },
-    },
-
     options: {
-      control: "object",
+      control: { type: "select" },
+      options: ["basic", "withDisabled", "many"],
+      mapping: {
+        basic: [
+          { value: "option1", label: "storyCheckboxOption1" },
+          { value: "option2", label: "storyCheckboxOption2" },
+          { value: "option3", label: "storyCheckboxOption3" },
+        ],
+        withDisabled: [
+          { value: "option1", label: "storyCheckboxOption1" },
+          { value: "option2", label: "storyCheckboxOption2", disabled: true },
+          { value: "option3", label: "storyCheckboxOption3" },
+        ],
+        many: Array.from({ length: 8 }, (_, i) => ({
+          value: `option${i + 1}`,
+          label: `Option ${i + 1}`,
+        })),
+      },
       description:
-        "Array of option objects with value, label, and optional disabled",
+        "Array of option objects with value, label, and optional disabled. Pick a preset here; compose your own in code.",
       table: { category: "Content", type: { summary: "SelectOptionItem[]" } },
     },
-
-    helperText: {
-      control: "text",
-      description:
-        "Helper text displayed below the select (hidden if error is set)",
-      table: { category: "Content", type: { summary: "string" } },
-    },
-
-    children: {
-      control: false,
-      description: "Custom SelectOption children (overrides options prop)",
-      table: { category: "Content", type: { summary: "ReactNode" } },
-    },
-
-    // Appearance
-
-    size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
-      description: "Size variant (v1.1.0+)",
-      table: {
-        category: "Appearance",
-        type: { summary: "SizeUnified" },
-        defaultValue: { summary: "md" },
-      },
-    },
-
-    error: {
-      control: "text",
-      description:
-        "Error message to display (changes border color and shows error HelperText)",
-      table: { category: "Appearance", type: { summary: "string" } },
-    },
-
-    // State
-
-    disabled: {
-      control: "boolean",
-      description: "Disables the select",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    value: {
-      control: "text",
-      description: "Controlled value (requires onValueChange)",
-      table: { category: "State", type: { summary: "string" } },
-    },
-
-    defaultValue: {
-      control: "text",
-      description: "Initial value for uncontrolled component",
-      table: { category: "State", type: { summary: "string" } },
-    },
-
-    // Behavior
-    onValueChange: {
-      action: "valueChanged",
-      description: "Value change handler (v1.1.0+)",
-      table: {
-        category: "Behavior",
-        type: { summary: "(value: string) => void" },
-      },
-    },
-
-    // Accessibility
-
-    id: {
-      control: "text",
-      description: "Custom ID for the select element",
-      table: { category: "Accessibility", type: { summary: "string" } },
-    },
-
-    // Advanced
-
-    className: {
-      control: "text",
-      description: "Additional CSS classes",
-      table: { category: "Advanced", type: { summary: "string" } },
-    },
-
-    // Deprecated
-
-    onChange: {
-      action: "changed",
-      description:
-        "⚠️ Deprecated: Use onValueChange instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "(value: string) => void" },
-      },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
 } as Meta;
 
 export const Z_SelectCompliance: StoryFn = () => (
@@ -401,6 +317,14 @@ Disabled.play = async ({ canvasElement }) => {
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
+  // options arg is a mapping key; uncontrolled (no value) so the canvas select stays interactive.
+  args: {
+    label: "storySelectLabel",
+    options: "basic" as unknown as React.ComponentProps<
+      typeof Select
+    >["options"],
+  },
+  render: (args) => <SelectStory {...args} />,
 };
 
 export const Example: Story = {

@@ -23,16 +23,27 @@ export interface ComboboxOption {
 }
 
 export interface ComboboxProps {
+  /** Field label; associates the trigger */
   label: string;
+  /** Selectable options */
   options: ComboboxOption[];
+  /** Selected option value (controlled); "" shows the placeholder */
   value: string;
+  /** Called with the chosen value */
   onValueChange: (value: string) => void;
+  /** Explicit control id (wires the label); auto-generated when omitted */
   id?: string;
+  /** Shown when no value is selected */
   placeholder?: string;
+  /** Assistive text below the field */
   helperText?: string;
+  /** Error message; replaces the helper line and sets aria-invalid */
   error?: string;
+  /** Marks the field required. @default false */
   required?: boolean;
+  /** Disables the control. @default false */
   disabled?: boolean;
+  /** Classes on the field wrapper */
   className?: string;
 }
 

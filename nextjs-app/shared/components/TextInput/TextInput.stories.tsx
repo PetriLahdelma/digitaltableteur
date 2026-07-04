@@ -18,49 +18,7 @@ const meta = {
     a11y: { test: "error" },
     llm: { schema },
   },
-  argTypes: {
-    size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
-      description: "Input size token (v1.1.0+)",
-      table: { defaultValue: { summary: "md" } },
-    },
-
-    type: {
-      control: {
-        type: "select",
-        options: ["text", "number", "email", "password", "search", "tel"],
-      },
-      description: "HTML input type",
-      table: { defaultValue: { summary: "text" } },
-    },
-
-    label: { control: "text", description: "Visible field label" },
-
-    placeholder: { control: "text", description: "Placeholder text" },
-
-    error: { control: "text", description: "Validation error message" },
-
-    helperText: { control: "text", description: "Helper copy below the field" },
-
-    disabled: {
-      control: "boolean",
-      description: "Disables the input",
-      table: { defaultValue: { summary: "false" } },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      defaultValue: { control: "text", description: "Initial value for uncontrolled component", table: { category: "Content" } },
-      id: { table: { disable: true } },
-      isDisabled: { table: { disable: true } },
-      onChange: { action: "onChange", table: { disable: true } },
-      onValueChange: { action: "onValueChange", table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      value: { control: "text", description: "Controlled value; pair with onChange.", table: { category: "State" } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 } satisfies Meta<typeof TextInput>;
 
 export default meta;
@@ -174,7 +132,15 @@ export const Default = TextInputStory;
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
-  render: () => <InputStory {...TextInputStory.args} />,
+  args: {
+    label: "storyInputTextLabel",
+    type: "text",
+    placeholder: "storyInputTextPlaceholder",
+  },
+  // defaultValue is consumed once at mount — remount on change so the control drives the canvas.
+  render: (args) => (
+    <InputStory key={`remount-${args.defaultValue ?? ""}`} {...args} />
+  ),
 };
 export const Example: Story = {
   globals: { forcedColors: "none" },

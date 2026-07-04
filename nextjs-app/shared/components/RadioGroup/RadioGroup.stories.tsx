@@ -21,68 +21,28 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // only the composite options slot needs an authored mapping preset.
   argTypes: {
-    legend: {
-      control: "text",
-      description: "Group label (fieldset legend)",
-      table: { category: "Content" },
-    },
     options: {
-      control: false,
-      description: "Radio options array",
+      control: { type: "select" },
+      options: ["expertise", "delivery", "plans"],
+      mapping: {
+        expertise: OPTIONS,
+        delivery: [
+          { value: "standard", label: "Standard (3-5 days)" },
+          { value: "express", label: "Express (1-2 days)" },
+          { value: "pickup", label: "Pickup point" },
+        ],
+        plans: [
+          { value: "free", label: "Free" },
+          { value: "pro", label: "Pro" },
+          { value: "enterprise", label: "Enterprise (contact sales)", disabled: true },
+        ],
+      },
+      description:
+        "Radio options array. Pick a preset here; compose your own in code.",
       table: { category: "Content" },
-    },
-    value: {
-      control: "text",
-      description: "Controlled selected value",
-      table: { category: "Value" },
-    },
-    name: {
-      control: "text",
-      description: "Native form field name for the group",
-      table: { category: "Form" },
-    },
-    defaultValue: {
-      control: "text",
-      description: "Initial value when uncontrolled",
-      table: { category: "Value" },
-    },
-    orientation: {
-      control: "radio",
-      options: ["vertical", "horizontal"],
-      description: "Stack direction",
-      table: { category: "Layout", defaultValue: { summary: "vertical" } },
-    },
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-      description: "Radio control size",
-      table: { category: "Appearance", defaultValue: { summary: "md" } },
-    },
-    helperText: {
-      control: "text",
-      description: "Helper copy below the group",
-      table: { category: "Content" },
-    },
-    error: {
-      control: "text",
-      description: "Error message",
-      table: { category: "Validation" },
-    },
-    disabled: {
-      control: "boolean",
-      description: "Disable entire group",
-      table: { category: "State", defaultValue: { summary: "false" } },
-    },
-    onValueChange: {
-      description: "On Value Change",
-      action: "valueChanged",
-      table: { category: "Events" },
-    },
-    className: {
-      description: "Class Name",
-      control: false,
-      table: { category: "Advanced" },
     },
   },
   args: {
@@ -102,6 +62,13 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  args: {
+    options: "expertise" as unknown as typeof OPTIONS,
+  },
+  // defaultValue is consumed once at mount — remount on change so the control drives the canvas.
+  render: (args) => (
+    <RadioGroup key={`remount-${args.defaultValue ?? ""}`} {...args} />
+  ),
 };
 export const Default: Story = {
   tags: ["beta-matrix"],

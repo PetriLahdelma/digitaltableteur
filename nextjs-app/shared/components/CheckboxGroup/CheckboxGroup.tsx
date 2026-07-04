@@ -5,13 +5,19 @@ import GroupLabel from "@dt/GroupLabel/GroupLabel";
 import styles from "./CheckboxGroup.module.css";
 
 export interface CheckboxGroupProps {
+  /** Base id for the checkbox inputs */
   id?: string;
+  /** Legend text for the group */
   label: string;
+  /** Additional CSS classes on the group */
   className?: string;
+  /** Checkbox options (label, value) */
   options: { label: string; value: string }[];
+  /** Shows the select-all master checkbox. @default true */
   showMasterCheckbox?: boolean;
+  /** Label for the select-all master checkbox */
   masterLabel?: string;
-  // initial selected option values
+  /** Initially selected option values (uncontrolled) */
   defaultSelected?: string[];
   // eslint-disable-next-line no-unused-vars
   onChange?: (selectedOptions: string[]) => void;

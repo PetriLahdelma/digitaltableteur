@@ -86,31 +86,47 @@ export default {
     a11y: { test: "error" },
     llm: { schema },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite options and defaultSelected slots keep authored mapping presets.
   argTypes: {
-    label: { control: "text", description: "Legend text for the group" },
-
     options: {
-      control: "object",
-      description: "Checkbox options (label, value)",
+      control: { type: "select" },
+      options: ["five", "four", "two"],
+      mapping: {
+        five: [
+          { label: "storyCheckboxOption1", value: "option1" },
+          { label: "storyCheckboxOption2", value: "option2" },
+          { label: "storyCheckboxOption3", value: "option3" },
+          { label: "storyCheckboxOption4", value: "option4" },
+          { label: "storyCheckboxOption5", value: "option5" },
+        ],
+        four: [
+          { label: "storyCheckboxOption1", value: "option1" },
+          { label: "storyCheckboxOption2", value: "option2" },
+          { label: "storyCheckboxOption3", value: "option3" },
+          { label: "storyCheckboxOption4", value: "option4" },
+        ],
+        two: [
+          { label: "storyCheckboxOption1", value: "option1" },
+          { label: "storyCheckboxOption2", value: "option2" },
+        ],
+      },
+      description:
+        "Checkbox options (label, value). Pick a preset here; compose your own in code.",
+      table: { category: "Content" },
     },
-
-    id: { control: "text", description: "Base id for checkbox inputs" },
-
-    showMasterCheckbox: {
-      control: "boolean",
-      description: "Shows select-all master checkbox",
-      table: { defaultValue: { summary: "true" } },
+    defaultSelected: {
+      control: { type: "select" },
+      options: ["none", "firstTwo", "first"],
+      mapping: {
+        none: [],
+        firstTwo: ["option1", "option2"],
+        first: ["option1"],
+      },
+      description: "Initially selected option values (uncontrolled).",
+      table: { category: "Content" },
     },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { control: "text", description: "Additional CSS classes on the group.", table: { category: "Advanced" } },
-      defaultSelected: { control: "object", description: "Initially selected option values (uncontrolled).", table: { category: "Content" } },
-      masterLabel: { control: "text", description: "Label for the select-all master checkbox.", table: { category: "Accessibility" } },
-      onChange: { action: "onChange", table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
 } as Meta<CheckboxGroupProps>;
 
 const CheckboxGroupStory: React.FC<CheckboxGroupProps> = (args) => {
@@ -257,6 +273,16 @@ WithIndeterminateState.parameters = {
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
+  // options/defaultSelected args are mapping keys resolved by the presets above.
+  args: {
+    id: "interests",
+    label: "storyCheckboxGroupLabel",
+    masterLabel: "storyCheckboxGroupMasterLabel",
+    showMasterCheckbox: true,
+    options: "five" as unknown as CheckboxGroupProps["options"],
+    defaultSelected: "firstTwo" as unknown as CheckboxGroupProps["defaultSelected"],
+  },
+  render: (args) => <CheckboxGroupStory {...args} />,
 };
 
 export const Example: Story = {

@@ -1,5 +1,6 @@
 import contract from "./MultiCombobox.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useArgs } from "storybook/preview-api";
 import React, { useState } from "react";
 import { expect, screen, userEvent, waitFor, within } from "storybook/test";
 import { MultiCombobox, type MultiComboboxOption } from "./MultiCombobox";
@@ -37,61 +38,36 @@ const meta = {
     a11y: { test: "error" },
     layout: "padded",
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // the composite options and value slots keep authored mapping presets.
   argTypes: {
-    label: {
-      control: "text",
-      description: "Field label (associates the input)",
-      table: { category: "Content" },
-    },
     options: {
-      control: "object",
-      description: "Selectable options",
+      control: { type: "select" },
+      options: ["disciplines", "twoOptions", "withDisabled"],
+      mapping: {
+        disciplines: OPTIONS,
+        twoOptions: OPTIONS.slice(0, 2),
+        withDisabled: [
+          ...OPTIONS.slice(0, 2),
+          { value: "ops", label: "DesignOps", disabled: true },
+        ],
+      },
+      description:
+        "Selectable options. Pick a preset here; compose your own in code.",
       table: { category: "Content" },
     },
     value: {
-      control: "object",
+      control: { type: "select" },
+      options: ["none", "one", "two"],
+      mapping: {
+        none: [],
+        one: ["research"],
+        two: ["research", "design"],
+      },
       description: "Selected values (controlled string[])",
       table: { category: "State" },
     },
-    onValueChange: {
-      description: "Called with the next selected values",
-      table: {
-        category: "Events",
-        type: { summary: "(value: string[]) => void" },
-      },
-    },
-    placeholder: {
-      control: "text",
-      description: "Shown when nothing is selected",
-      table: { category: "Content" },
-    },
-    helperText: {
-      control: "text",
-      description: "Assistive text below the field",
-      table: { category: "Content" },
-    },
-    error: {
-      control: "text",
-      description: "Error message; sets aria-invalid",
-      table: { category: "Validation" },
-    },
-    required: {
-      control: "boolean",
-      description: "Marks the field required",
-      table: { category: "Validation" },
-    },
-    disabled: {
-      control: "boolean",
-      description: "Disables the control",
-      table: { category: "State" },
-    },
-    className: {
-      control: false,
-      description: "Classes on the field wrapper",
-      table: { category: "Advanced" },
-    },
-      id: { control: "text", description: "Explicit control id (wires the label); auto-generated when omitted.", table: { category: "Advanced" } }
-},
+  },
 } satisfies Meta<typeof MultiCombobox>;
 
 export default meta;
@@ -102,14 +78,28 @@ export const Default: Story = {
   render: () => <MultiComboboxDemo />,
 };
 
+// Playground keeps the canvas interactive while `value` is seeded (controlled):
+// picking in the canvas writes the arg back so panel and canvas stay in sync.
 export const Playground: Story = {
   tags: ["beta-matrix"],
   args: {
     label: "Disciplines",
-    options: OPTIONS,
-    value: [],
+    options: "disciplines" as unknown as MultiComboboxOption[],
+    value: "none" as unknown as string[],
     placeholder: "Add disciplines…",
     onValueChange: () => {},
+  },
+  render: function PlaygroundStory(args) {
+    const [, updateArgs] = useArgs();
+    return (
+      <MultiCombobox
+        {...args}
+        onValueChange={(next) => {
+          args.onValueChange?.(next);
+          updateArgs({ value: next });
+        }}
+      />
+    );
   },
 };
 

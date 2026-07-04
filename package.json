@@ -91,7 +91,7 @@
     "report:doc-coverage": "node scripts/design-system/report-doc-coverage.mjs",
     "audit:catalog": "node scripts/design-system/audit-catalog-coverage.mjs",
     "audit:controls": "node scripts/design-system/audit-controls.mjs",
-    "audit:controls:ci": "concurrently -k -s first -n SB,AUDIT \"npm run storybook -- --ci --no-open --quiet\" \"npm run storybook:wait && node scripts/design-system/audit-controls.mjs --min 50\"",
+    "audit:controls:ci": "concurrently -k -s first -n SB,AUDIT \"npm run storybook -- --ci --no-open --quiet\" \"npm run storybook:wait && node scripts/design-system/audit-controls.mjs --min 60\"",
     "new-component": "node scripts/design-system/scaffold-component.mjs",
     "bootstrap:contracts": "node scripts/design-system/bootstrap-contracts.mjs",
     "elevate:storybook": "python3 scripts/design-system/elevate_storybook_beta.py",

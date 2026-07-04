@@ -86,40 +86,15 @@ export default {
     a11y: { test: "error" },
     llm: { schema },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children is not on the contract (native passthrough) so it keeps a text knob.
   argTypes: {
-    htmlFor: {
-      control: "text",
-      description: "ID of the associated form control (for/id pairing)",
-    },
-
     children: {
-      control: "text",
+      control: { type: "text" },
       description: "Visible label text (translation key in stories)",
+      table: { category: "Content" },
     },
-
-    tooltipText: {
-      control: "text",
-      description: "Optional tooltip content beside the label",
-    },
-
-    required: {
-      control: "boolean",
-      description: "Shows the required indicator when true",
-      table: { defaultValue: { summary: "false" } },
-    },
-
-    disabled: {
-      control: "boolean",
-      description: "Muted style when the labeled control is disabled",
-      table: { defaultValue: { summary: "false" } },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
 } as Meta;
 
 type Story = StoryObj<typeof Label>;
@@ -144,11 +119,13 @@ export const Z_LabelCompliance: StoryFn = () => (
 );
 
 export const Default = Template.bind({});
-export const Playground = Template.bind({});
-Playground.args = Default.args;
-
 Default.args = { htmlFor: "field", children: "storyLabelDefault" };
 Default.parameters = {};
+
+// NOTE: assigned after Default.args — the previous ordering copied `undefined`
+// and left the Playground with no seeded args (every control rendered dead).
+export const Playground = Template.bind({});
+Playground.args = Default.args;
 
 export const WithTooltip = Template.bind({});
 WithTooltip.args = {

@@ -20,43 +20,8 @@ const meta: Meta<typeof PhoneInput> = {
     a11y: { test: "error" },
     llm: { schema },
   },
-  argTypes: {
-    label: { control: "text", description: "Label text" },
-
-    value: {
-      control: "text",
-      description: "Phone number value (E.164 format)",
-    },
-
-    placeholder: { control: "text", description: "Placeholder text" },
-
-    helperText: { control: "text", description: "Helper text below input" },
-
-    error: { control: "text", description: "Error message" },
-
-    disabled: { control: "boolean", description: "Disabled state" },
-
-    required: {
-      control: "boolean",
-      description: "Shows the required marker on the label",
-      table: { defaultValue: { summary: "false" } },
-    },
-
-    defaultCountry: {
-      control: "text",
-      description: "ISO country used when the value has no prefix",
-      table: { defaultValue: { summary: "FI" } },
-    },
-
-    onChange: { action: "phone change", description: "Change handler" },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      id: { control: "text", description: "Explicit control id (wires the label); auto-generated when omitted.", table: { category: "Advanced" } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // defaultCountry renders a select from the contract's ISO-code union.
 };
 
 export default meta;
@@ -71,6 +36,11 @@ type PhoneInputStoryArgs = React.ComponentProps<typeof PhoneInput> & {
 const PhoneInputStory: React.FC<PhoneInputStoryArgs> = (args) => {
   const { t } = useTranslation();
   const [value, setValue] = useState<string | undefined>(args.value);
+
+  // Panel edits to the value arg drive the canvas; typing still updates local state.
+  React.useEffect(() => {
+    if (args.value) setValue(args.value);
+  }, [args.value]);
 
   return (
     <div className={styles.storyContainer}>
