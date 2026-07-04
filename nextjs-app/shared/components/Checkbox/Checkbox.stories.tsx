@@ -1,6 +1,7 @@
 import contract from "./Checkbox.contract.json";
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
+import { useArgs } from "storybook/preview-api";
 import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
@@ -87,103 +88,7 @@ export default {
     a11y: { test: "error" },
     llm: { schema },
   },
-  argTypes: {
-    // Content
-
-    label: {
-      control: "text",
-      description: "Label text displayed next to the checkbox",
-      table: { category: "Content", type: { summary: "string" } },
-    },
-
-    error: {
-      control: "text",
-      description: "Error message under the control; wires aria-invalid + role=alert.",
-      table: { category: "State", type: { summary: "string" } },
-    },
-    helperText: {
-      control: "text",
-      description: "Supporting text under the control; suppressed while error is set.",
-      table: { category: "Content", type: { summary: "string" } },
-    },
-    showLabel: {
-      control: "boolean",
-      description: "Whether to show the label text",
-      table: {
-        category: "Content",
-        type: { summary: "boolean" },
-        defaultValue: { summary: "true" },
-      },
-    },
-
-    // State (v1.1.0)
-
-    checked: {
-      control: "boolean",
-      description: "Checked state (controlled) (v1.1.0+)",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    indeterminate: {
-      control: "boolean",
-      description: "Indeterminate state (v1.1.0+)",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    disabled: {
-      control: "boolean",
-      description: "Disables the checkbox (v1.1.0+)",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    defaultChecked: {
-      control: "boolean",
-      description: "Initial checked state for uncontrolled component (v1.1.0+)",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    // Appearance
-
-    size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
-      description: "Size variant (v1.1.0+)",
-      table: {
-        category: "Appearance",
-        type: { summary: "sm | md | lg" },
-        defaultValue: { summary: "md" },
-      },
-    },
-
-    // Behavior
-    onCheckedChange: {
-      action: "checkedChanged",
-      description: "Checked change handler (v1.1.0+)",
-      table: {
-        category: "Behavior",
-        type: { summary: "(checked: boolean) => void" },
-      },
-    },
-
-    // Accessibility
-
-    id: {
-      control: "text",
-      description: "Custom ID for the checkbox element",
-      table: { category: "Accessibility", type: { summary: "string" } },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      isChecked: { table: { disable: true } },
-      isDisabled: { table: { disable: true } },
-      isIndeterminate: { table: { disable: true } },
-      name: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } },
-      value: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 } as Meta<CheckboxProps>;
 
 const StoryLabel = ({ tKey }: { tKey: string }) => {
@@ -388,7 +293,29 @@ export const Z_CheckboxCompliance: StoryFn = () => (
   />
 );
 Z_CheckboxCompliance.parameters = { docs: { disable: true } };
-export const Playground = Default;
+// Playground keeps the canvas interactive while `checked` is seeded (controlled):
+// toggling in the canvas writes the arg back so panel and canvas stay in sync.
+const PlaygroundRender: StoryFn<CheckboxProps> = (args) => {
+  const [, updateArgs] = useArgs();
+  const label =
+    typeof args.label === "string" ? (
+      <StoryLabel tKey={args.label} />
+    ) : (
+      args.label
+    );
+  return (
+    <Checkbox
+      {...args}
+      label={label as any}
+      onCheckedChange={(next) => {
+        args.onCheckedChange?.(next);
+        updateArgs({ checked: next });
+      }}
+    />
+  );
+};
+export const Playground = PlaygroundRender.bind({});
+Playground.args = { id: "newsletter", label: "storyCheckboxLabel" };
 
 export const Example: Story = {
   globals: { forcedColors: "none" },

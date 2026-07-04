@@ -49,6 +49,25 @@ const EFFECT_EXEMPT = {
         options: 'menu content: visible only while open; verified by open-menu interaction (basic preset -> 2 menuitems)',
         menuAlign: 'collision-aware placement (resolvedAlign) auto-flips near viewport edges; Playground pins the trigger at the left edge so start/end resolve identically there',
     },
+    Checkbox: {
+        defaultChecked: 'uncontrolled-only initial state, masked while the seeded `checked` arg keeps the control controlled; verified by unit test (uncontrolled toggle path)',
+    },
+    Combobox: {
+        options: 'dropdown content: portaled to document.body and visible only while open; verified by the KeyboardSelection play story (ArrowDown opens, options render, Enter selects)',
+    },
+    MultiCombobox: {
+        options: 'dropdown content: portaled to document.body and visible only while open; verified by the play story that opens the listbox and picks options',
+    },
+    Switch: {
+        defaultChecked: 'uncontrolled-only initial state, masked by the controlled Playground template; verified by unit test (uncontrolled toggle path)',
+    },
+    Radio: {
+        defaultChecked: 'uncontrolled-only initial state, masked while the seeded `checked` arg keeps the control controlled; verified by unit test',
+    },
+    FileUpload: {
+        maxSizeInBytes: 'validation-time only: applied when a file is picked, no DOM signature at rest; verified by oversize-pick unit test',
+        sizeErrorMessage: 'validation-time only: rendered when a picked file exceeds maxSizeInBytes; verified by oversize-pick unit test',
+    },
 }
 
 // Icon-name text knobs: appending characters makes an UNKNOWN icon (renders
@@ -62,7 +81,10 @@ const ROOTS = [
 ]
 
 // Public props worth a control (skip pure DOM/React plumbing a human never sets).
-const SKIP = new Set(['ref', 'style', 'key', 'asChild', 'as', 'data-role', 'aria-label'])
+// Keep in sync with HIDDEN in .storybook/lib/controls-autogen.ts — `id` is
+// plumbing of the same class as aria-label: contracts expose it, no human
+// drives a canvas from an id text field.
+const SKIP = new Set(['ref', 'style', 'key', 'asChild', 'as', 'data-role', 'aria-label', 'id'])
 
 function contractProps(dir, root) {
     const p = `${root}/${dir}/${dir}.contract.json`

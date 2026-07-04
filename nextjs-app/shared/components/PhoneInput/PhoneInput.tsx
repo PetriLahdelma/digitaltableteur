@@ -7,13 +7,21 @@ import Label from "@dt/Label/Label";
 import HelperText from "@dt/HelperText/HelperText";
 
 export interface PhoneInputProps {
+  /** Label text */
   label: string;
+  /** Phone number value (E.164 format) */
   value?: string;
+  /** Error message; replaces the helper line */
   error?: string;
+  /** Helper text below the input */
   helperText?: string;
+  /** Placeholder text */
   placeholder?: string;
+  /** Disabled state. @default false */
   disabled?: boolean;
+  /** Shows the required marker on the label. @default false */
   required?: boolean;
+  /** Explicit control id (wires the label); auto-generated when omitted */
   id?: string;
   /** ISO 3166-1 alpha-2 code used when the value has no country prefix. @default "FI" */
   defaultCountry?: Country;

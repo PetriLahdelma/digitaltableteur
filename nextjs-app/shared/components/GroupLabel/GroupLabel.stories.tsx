@@ -23,36 +23,13 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // children is not on the contract (native passthrough) so it keeps a text knob.
   argTypes: {
-    htmlFor: {
-      control: "text",
-      description: "ID of the grouped control for label association",
-    },
     children: {
-      control: "text",
+      control: { type: "text" },
       description: "Group legend text",
-    },
-    tooltipText: {
-      control: "text",
-      description: "Optional browser tooltip",
-    },
-    required: {
-      control: "boolean",
-      description: "Shows required asterisk",
-    },
-    disabled: {
-      control: "boolean",
-      description: "Muted disabled styling",
-    },
-    title: {
-      control: "text",
-      description: "Native title attribute override",
-      table: { disable: true },
-    },
-    className: {
-      control: "text",
-      description: "Additional CSS class names",
-      table: { disable: true },
+      table: { category: "Content" },
     },
   },
   args: defaultArgs,

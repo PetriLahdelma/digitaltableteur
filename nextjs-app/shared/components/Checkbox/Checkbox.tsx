@@ -8,7 +8,9 @@ export interface CheckboxProps
     React.InputHTMLAttributes<HTMLInputElement>,
     "onChange" | "checked" | "size"
   > {
+  /** Label text displayed next to the checkbox */
   label?: string;
+  /** Whether to show the label text. @default true */
   showLabel?: boolean;
   /** Checked state (controlled). */
   checked?: boolean;
@@ -22,6 +24,7 @@ export interface CheckboxProps
   size?: "sm" | "md" | "lg";
   /** Called with the next checked value when toggled. */
   onCheckedChange?: (checked: boolean) => void;
+  /** Custom ID for the checkbox element; auto-generated when omitted */
   id?: string;
   /** Error message under the control; sets aria-invalid and aria-describedby. */
   error?: string;

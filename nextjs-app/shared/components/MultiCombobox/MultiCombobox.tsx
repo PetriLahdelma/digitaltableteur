@@ -24,16 +24,27 @@ export interface MultiComboboxOption {
 }
 
 export interface MultiComboboxProps {
+  /** Field label; associates the input */
   label: string;
+  /** Selectable options */
   options: MultiComboboxOption[];
+  /** Selected values (controlled) */
   value: string[];
+  /** Called with the next selected values */
   onValueChange: (value: string[]) => void;
+  /** Explicit control id (wires the label); auto-generated when omitted */
   id?: string;
+  /** Shown when nothing is selected */
   placeholder?: string;
+  /** Assistive text below the field */
   helperText?: string;
+  /** Error message; replaces the helper line and sets aria-invalid */
   error?: string;
+  /** Marks the field required. @default false */
   required?: boolean;
+  /** Disables the control. @default false */
   disabled?: boolean;
+  /** Classes on the field wrapper */
   className?: string;
 }
 

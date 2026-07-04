@@ -10,13 +10,17 @@ export interface FormFieldProps {
    * `<legend>`.
    */
   legend: string;
+  /** The grouped controls; each keeps its own label. */
   children: ReactNode;
   /** Helper text shown under the legend. */
   groupDescription?: string;
   /** Group-level error message shown after the controls. */
   error?: string;
+  /** Appends a visual asterisk to the legend. */
   required?: boolean;
+  /** Disables every contained control via the fieldset. */
   disabled?: boolean;
+  /** Merged onto the fieldset. */
   className?: string;
 }
 

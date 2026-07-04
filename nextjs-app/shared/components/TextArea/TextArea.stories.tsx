@@ -17,35 +17,13 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // rows is a native passthrough (not on the contract) so it keeps a bespoke knob.
   argTypes: {
-    label: { control: "text", description: "Visible field label" },
-    placeholder: { control: "text", description: "Placeholder text" },
-    error: { control: "text", description: "Validation error message" },
-    helperText: { control: "text", description: "Helper copy below the field" },
     rows: {
       control: { type: "number", min: 2, max: 20 },
       description: "Static row count (ignored when animateResize is on)",
-      table: { defaultValue: { summary: "4" } },
-    },
-    animateResize: {
-      control: "boolean",
-      description: "Enable smooth animated auto-growing",
-      table: { defaultValue: { summary: "false" } },
-    },
-    minRows: {
-      control: { type: "number", min: 1, max: 10 },
-      description: "Minimum rows when animateResize is enabled",
-      table: { defaultValue: { summary: "2" } },
-    },
-    maxRows: {
-      control: { type: "number", min: 1, max: 20 },
-      description: "Maximum rows when animateResize is enabled",
-      table: { defaultValue: { summary: "10" } },
-    },
-    disabled: {
-      control: "boolean",
-      description: "Disables the textarea",
-      table: { defaultValue: { summary: "false" } },
+      table: { defaultValue: { summary: "4" }, category: "Appearance" },
     },
   },
 } satisfies Meta<typeof TextArea>;
@@ -139,7 +117,17 @@ AnimatedResize.parameters = {
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
-  render: () => <TextAreaStory {...Default.args} />,
+  // Animated defaults with overflowing content so minRows/maxRows visibly
+  // drive the canvas (they only apply while animateResize is on).
+  args: {
+    label: "storyTextAreaLabel",
+    placeholder: "storyTextAreaPlaceholder",
+    animateResize: true,
+    minRows: 3,
+    maxRows: 6,
+    value: Array.from({ length: 10 }, (_, i) => `Line ${i + 1}`).join("\n"),
+  },
+  render: (args) => <TextAreaStory {...args} />,
 };
 export const Example: Story = {
   globals: { forcedColors: "none" },

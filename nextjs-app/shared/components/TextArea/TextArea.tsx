@@ -5,10 +5,15 @@ import HelperText from "@dt/HelperText";
 
 export interface TextAreaProps
   extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange"> {
+  /** Visible field label */
   label: string;
+  /** Value synced into the field; typing still works after it is set */
   value?: string;
+  /** Validation error message; replaces the helper line */
   error?: string;
+  /** Helper copy below the field */
   helperText?: string;
+  /** Change handler receiving the raw string value */
   onChange?: (value: string) => void;
   /** Enable smooth animated auto-growing (default: false) */
   animateResize?: boolean;

@@ -5,7 +5,7 @@ export const textInputVariants = cva("", {
   defaultVariants: { size: "md" },
 });
 
-import React, { useEffect, useId, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import styles from "./TextInput.module.css";
 import Label from "@dt/Label";
 import HelperText from "@dt/HelperText";
@@ -20,7 +20,9 @@ import { suggestEmailCorrection } from "../../utils/emailSuggestion";
 
 export interface TextInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "size"> {
+  /** Visible field label; also feeds the input name */
   label: string;
+  /** HTML input type; tel formats and email validates as you type */
   type: "text" | "number" | "email" | "password" | "search" | "tel";
 
   // NEW PROPS (v1.1.0)
@@ -32,8 +34,11 @@ export interface TextInputProps
   defaultValue?: string | number;
 
   // EXISTING PROPS
+  /** Controlled value; an initial "" is treated as absent (uncontrolled), later changes always sync in */
   value?: string | number;
+  /** Validation error message; replaces the helper line and sets aria-invalid */
   error?: string;
+  /** Helper copy below the field */
   helperText?: string;
   /** Disables the input. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it. */
   disabled?: boolean;
@@ -77,9 +82,14 @@ const TextInput: React.FC<TextInputProps> = ({
   const effectiveOnChange = onValueChange ?? onChange;
   const normalizedSize = normalizeSizeProp(size);
 
+  // Controls convention: "" means absent AT MOUNT — an initial empty string
+  // yields the uncontrolled path so defaultValue and canvas typing keep
+  // working. Later value changes (including back to "") still sync in, so
+  // consumers that clear a field by setting value="" keep that behavior.
   const [inputValue, setInputValue] = useState<string | number>(
-    value ?? defaultValue ?? ""
+    (value === "" ? undefined : value) ?? defaultValue ?? ""
   );
+  const syncedOnce = useRef(false);
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
 
@@ -94,7 +104,12 @@ const TextInput: React.FC<TextInputProps> = ({
   ].filter(Boolean).join(' ') || undefined;
 
   useEffect(() => {
-    setInputValue(value ?? "");
+    // Skip the mount run so an initial "" doesn't clobber defaultValue.
+    if (!syncedOnce.current) {
+      syncedOnce.current = true;
+      return;
+    }
+    if (value !== undefined) setInputValue(value);
   }, [value]);
 
   const validatePhoneNumber = (phone: string) => {

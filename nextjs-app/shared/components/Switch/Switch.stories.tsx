@@ -86,104 +86,16 @@ const meta: Meta<typeof Switch> = {
     a11y: { test: "error" },
     llm: { schema },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // label is ReactNode on the contract (autogen hides those) but accepts plain
+  // text, so it keeps an authored text control.
   argTypes: {
-    // Content
-
     label: {
-      control: "text",
+      control: { type: "text" },
       description: "Label text displayed next to the switch",
       table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
-
-    helperText: {
-      control: "text",
-      description: "Helper text displayed below the switch",
-      table: { category: "Content", type: { summary: "string" } },
-    },
-
-    error: {
-      control: "text",
-      description: "Error message beneath the control; wires aria-invalid + role=alert.",
-      table: { category: "State", type: { summary: "string" } },
-    },
-
-    // State (v2.0.0)
-
-    checked: {
-      control: "boolean",
-      description: "Checked state (controlled) (v2.0.0+)",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    disabled: {
-      control: "boolean",
-      description: "Disables the switch (v2.0.0+)",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    loading: {
-      control: "boolean",
-      description: "Shows loading state with spinner (v2.0.0+)",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    defaultChecked: {
-      control: "boolean",
-      description: "Initial checked state for uncontrolled component (v2.0.0+)",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    // Appearance
-
-    size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
-      description: "Size variant",
-      table: {
-        category: "Appearance",
-        type: { summary: "sm | md | lg" },
-        defaultValue: { summary: "md" },
-      },
-    },
-
-    labelPlacement: {
-      control: { type: "select" },
-      options: ["right", "left", "top"],
-      description: "Label position relative to switch",
-      table: {
-        category: "Appearance",
-        type: { summary: "\"right\" | \"left\" | \"top\"" },
-        defaultValue: { summary: "right" },
-      },
-    },
-
-    // Behavior
-    onCheckedChange: {
-      action: "checkedChanged",
-      description: "Checked change handler (v2.0.0+)",
-      table: {
-        category: "Behavior",
-        type: { summary: "(checked: boolean) => void" },
-      },
-    },
-
-    // Accessibility
-
-    id: {
-      control: "text",
-      description: "Custom ID for the switch element",
-      table: { category: "Accessibility", type: { summary: "string" } },
-    },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      children: { table: { disable: true } },
-      className: { table: { disable: true } },
-      isChecked: { table: { disable: true } },
-      isDisabled: { table: { disable: true } },
-      isLoading: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  },
   args: {
     checked: false,
     loading: false,

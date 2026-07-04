@@ -18,26 +18,7 @@ const meta: Meta<typeof HelperText> = {
     a11y: { test: "error" },
     llm: { schema },
   },
-  argTypes: {
-    state: {
-      control: "select",
-      options: ["error", "warning", "success", "info", undefined],
-      description: "Semantic state of the helper text",
-    },
-
-    children: { control: "text", description: "The helper text content" },
-
-    id: {
-      control: "text",
-      description: "Optional ID for aria-describedby association",
-    },
-
-    className: { control: "text", description: "Additional CSS class name" },
-      as: { table: { disable: true } },
-      asChild: { table: { disable: true } },
-      ref: { table: { disable: true } },
-      style: { table: { disable: true } }
-},
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 };
 
 export default meta;

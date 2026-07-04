@@ -6,6 +6,28 @@ import Radio from "@dt/Radio";
 import TextInput from "@dt/TextInput";
 import contract from "./FormField.contract.json";
 
+const channels = (
+  <>
+    <Checkbox label="Email" defaultChecked />
+    <Checkbox label="SMS" />
+    <Checkbox label="Push" />
+  </>
+);
+
+const radioSet = (
+  <>
+    <Radio name="pref" value="email" label="Email" defaultChecked />
+    <Radio name="pref" value="phone" label="Phone" />
+  </>
+);
+
+const textPair = (
+  <div style={{ display: "flex", gap: "1rem", alignItems: "flex-end" }}>
+    <TextInput label="Opens" type="text" placeholder="09:00" />
+    <TextInput label="Closes" type="text" placeholder="17:00" />
+  </div>
+);
+
 const meta = {
   title: "Forms/FormField",
   component: FormField,
@@ -19,64 +41,31 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
+  // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
+  // only the composite children slot needs an authored mapping preset.
   argTypes: {
-    legend: {
-      control: "text",
-      description: "Accessible name for the group; rendered as the fieldset legend.",
-      table: { category: "Content", type: { summary: "string" } },
-    },
     children: {
-      control: false,
-      description: "The grouped controls; each keeps its own label.",
+      control: { type: "select" },
+      options: ["checkboxCluster", "radioSet", "textPair"],
+      mapping: { checkboxCluster: channels, radioSet, textPair },
+      description:
+        "The grouped controls; each keeps its own label. Pick a preset here; compose your own in code.",
       table: { category: "Content", type: { summary: "ReactNode" } },
-    },
-    groupDescription: {
-      control: "text",
-      description: "Helper text for the whole set, shown under the legend.",
-      table: { category: "Content", type: { summary: "string" } },
-    },
-    error: {
-      control: "text",
-      description: "Group-level error shown after the controls with role=alert.",
-      table: { category: "State", type: { summary: "string" } },
-    },
-    required: {
-      control: "boolean",
-      description: "Appends a visual asterisk to the legend.",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-    disabled: {
-      control: "boolean",
-      description: "Disables every contained control via the fieldset.",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-    className: {
-      control: "text",
-      description: "Merged onto the fieldset.",
-      table: { category: "Advanced", type: { summary: "string" } },
     },
   },
   args: {
     legend: "Notification channels",
     groupDescription: "Pick at least one",
+    children: "checkboxCluster",
   },
 } satisfies Meta<typeof FormField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const channels = (
-  <>
-    <Checkbox label="Email" defaultChecked />
-    <Checkbox label="SMS" />
-    <Checkbox label="Push" />
-  </>
-);
-
 export const Default: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
-  render: (args) => <FormField {...args}>{channels}</FormField>,
 };
 
 export const CheckboxCluster: Story = {
@@ -159,7 +148,6 @@ export const CustomRadioSet: Story = {
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
-  render: (args) => <FormField {...args}>{channels}</FormField>,
 };
 
 export const Example: Story = {
@@ -176,5 +164,4 @@ export const Example: Story = {
 export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
-  render: (args) => <FormField {...args}>{channels}</FormField>,
 };

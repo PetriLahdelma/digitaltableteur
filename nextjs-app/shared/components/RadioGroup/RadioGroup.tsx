@@ -11,18 +11,29 @@ export type RadioGroupOption = {
 };
 
 export interface RadioGroupProps {
+  /** Native form field name shared by the set; auto-generated when omitted */
   name?: string;
+  /** Group label rendered as the fieldset legend */
   legend: string;
+  /** Radio options; per-option disabled keeps the choice visible */
   options: RadioGroupOption[];
+  /** Controlled selected value; "" is treated as absent (uncontrolled) */
   value?: string;
+  /** Initial value when uncontrolled */
   defaultValue?: string;
+  /** Fired with the next value when selection changes */
   onValueChange?: (value: string) => void;
+  /** Stack direction. @default "vertical" */
   orientation?: "vertical" | "horizontal";
+  /** Radio control size. @default "md" */
   size?: SizeUnified;
   /** Disables the whole set. @default false */
   disabled?: boolean;
+  /** Error message; announces via role=alert and sets aria-invalid */
   error?: string;
+  /** Helper copy below the group; suppressed while error is set */
   helperText?: string;
+  /** Merged onto the fieldset */
   className?: string;
 }
 
@@ -42,10 +53,13 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
   className,
 }) => {
   const autoName = useId();
-  const name = nameProp ?? `radio-group-${autoName}`;
+  // Controls convention: "" means absent — empty name falls back to the
+  // generated one, empty value keeps the group uncontrolled and clickable.
+  const name = nameProp || `radio-group-${autoName}`;
+  const controlledValue = value === "" ? undefined : value;
   const [internal, setInternal] = useState(defaultValue ?? "");
-  const isControlled = value !== undefined;
-  const selected = isControlled ? value : internal;
+  const isControlled = controlledValue !== undefined;
+  const selected = isControlled ? controlledValue : internal;
   const helperId = `${name}-helper`;
   const errorId = `${name}-error`;
 
