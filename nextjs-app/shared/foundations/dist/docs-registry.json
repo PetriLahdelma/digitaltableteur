@@ -7581,7 +7581,7 @@
       "name": "LanguageSwitcher",
       "group": "navigation",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Compact language selector: a current-language trigger that fans out the other locales as a button group.",
       "dense": "Locale toggle: current-language button fans out a tray of other locales (spring motion, reduced-motion fade; closed tray inert); Escape/outside click close; controlled currentLang + onLanguageChange",
       "keywords": [

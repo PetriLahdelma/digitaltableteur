@@ -13,7 +13,7 @@ export type LanguageSwitcherOption = {
 };
 
 const defaultButtonClassName =
-  "shrink-0 whitespace-nowrap px-2.5 py-1.5 text-sm font-heading font-semibold uppercase tracking-widest transition-colors cursor-pointer rounded-sm border border-transparent bg-transparent text-muted-foreground hover:text-foreground hover:bg-foreground/5 hover:border-border";
+  "shrink-0 whitespace-nowrap px-2.5 py-1.5 text-sm font-heading font-semibold uppercase tracking-widest transition-colors motion-reduce:transition-none cursor-pointer rounded-sm border border-transparent bg-transparent text-muted-foreground hover:text-foreground hover:bg-foreground/5 hover:border-border";
 
 const defaultActiveButtonClassName =
   "font-bold text-foreground hover:text-foreground";

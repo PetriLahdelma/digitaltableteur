@@ -29,7 +29,7 @@ function LanguageSwitcherDemo(props: { initialLang?: string }) {
 const meta = {
   title: "Navigation/LanguageSwitcher",
   component: LanguageSwitcher,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

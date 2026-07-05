@@ -3,7 +3,7 @@
     "name": "LanguageSwitcher",
     "tier": "molecule",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Compact language selector: a current-language trigger that fans out the other locales as a button group.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-language-switcher",
     "radixPrimitive": null,
@@ -33,15 +33,53 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "Verified 2026-06-02: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label. Escape and outside-click close; reduced motion swaps the fan for a fade. KeyboardToggle play function drives open-via-trigger / close-via-Escape and passes axe; Default/Example/Playground pass axe with test:error; light + dark verified in Storybook.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-05 — beta→stable (fleet #14): the fan animation is reduced-motion-guarded via framer useReducedMotion (spring→plain fade); the button color transition now also carries motion-reduce:transition-none (unit-tested), so a11y.reducedMotion is fully honest. State-conditional className props (openTriggerClassName, floatedButtonClassName) are EFFECT_EXEMPT in audit:controls (only apply while the tray is open) with the KeyboardToggle play + unit tests exercising both states. Re-verified: axe + KeyboardToggle play green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes — KeyboardToggle drives open→Escape and settles closed (so its snapshot is the closed group), while the FanOpen example snapshots the open fan (all locales + expanded trigger). 2026-06-02 origin: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label; Escape + outside-click close.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "languages": {
