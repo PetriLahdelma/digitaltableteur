@@ -1,5 +1,5 @@
-- status: Work in progress (beta)
 - button "Open modal"
 - alertdialog "Unsaved changes":
   - heading "Unsaved changes" [level=2]
   - text: Leaving now discards your edits.
+  - button "OK"

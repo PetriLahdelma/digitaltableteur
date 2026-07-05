@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - button "Open modal"
 - dialog "Confirm changes":
   - heading "Confirm changes" [level=2]

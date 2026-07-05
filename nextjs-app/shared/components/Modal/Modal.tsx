@@ -83,7 +83,7 @@ const Modal: React.FC<ModalProps> = ({
   closeIconName = "x",
   closeButtonLabel = "Close dialog",
   className,
-  showFooter,
+  showFooter = true,
   panelRef,
   animation = "none",
 }) => {

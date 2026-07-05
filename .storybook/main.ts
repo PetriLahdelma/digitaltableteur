@@ -66,6 +66,7 @@ const STORYBOOK_WATCH_IGNORED = [
   "**/docs/**",
   "**/tests/**",
   "**/__visual__/**",
+  "**/__a11y-snapshots__/**",
   "**/playwright-report/**",
 ];
 

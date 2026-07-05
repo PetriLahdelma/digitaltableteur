@@ -12,7 +12,7 @@ import schema from "./schema.json";
 const meta = {
   title: "Feedback/Modal",
   component: Modal,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -383,10 +383,10 @@ export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
   render: PlaygroundRender,
-  // severity seeded so the header icon exists (iconSize drives it); showFooter
-  // seeded true because the component treats undefined as true but the panel's
-  // boolean seed would otherwise read false and hide the whole footer region.
-  args: { ...Default.args, isOpen: true, severity: "info", showFooter: true },
+  // severity seeded so the header icon exists (iconSize drives it). showFooter
+  // defaults true on the component, so the autogen boolean seed reads true and
+  // the footer region renders without an explicit arg here.
+  args: { ...Default.args, isOpen: true, severity: "info" },
 };
 
 export const Example = {
