@@ -37,7 +37,6 @@ const EFFECT_EXEMPT = {
         clickable: 'behavior-only: wires onClick navigation, no DOM signature; verified by click->URL navigation probe',
         destinationUrl: 'behavior-only: consumed by the clickable click handler; verified by click->URL navigation probe',
         menuLabel: 'labels the menu trigger, which only exists when menuItems is set; verified with menuItems preset + aria-label probe',
-        placementRefreshKey: 'recalc token: recomputes placement only while a menu is open',
     },
     Button: {
         clickAction: 'function preset: effect appears after click (pending state); verified via click -> aria-busy probe',
