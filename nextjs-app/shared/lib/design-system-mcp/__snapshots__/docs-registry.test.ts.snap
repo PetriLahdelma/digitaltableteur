@@ -220,6 +220,31 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "group": "navigation",
     "import": "import Link from "@dt/Link";",
   },
+  "Section": {
+    "exampleStories": [
+      "SpacingBands",
+      "HeroFollowPair",
+      "Backgrounds",
+    ],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "layout",
+    "import": "import { Section } from "@dt/Section";",
+  },
   "SiteFooter": {
     "exampleStories": [],
     "fields": [

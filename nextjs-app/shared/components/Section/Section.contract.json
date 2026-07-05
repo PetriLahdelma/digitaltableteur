@@ -3,12 +3,36 @@
     "name": "Section",
     "tier": "atom",
     "group": "layout",
-    "status": "beta",
+    "status": "stable",
     "description": "Semantic section wrapper with spacing and background tokens.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-section",
     "radixPrimitive": null,
-    "element": "div",
-    "variants": {},
+    "element": "section",
+    "variants": {
+        "spacing": {
+            "values": [
+                "none",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "hero",
+                "follow"
+            ],
+            "default": "md",
+            "propSourced": true
+        },
+        "background": {
+            "values": [
+                "default",
+                "muted",
+                "accent",
+                "inverse"
+            ],
+            "default": "default",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
@@ -24,14 +48,77 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories in all four modes (plain/light/dark/forced-colors); AT snapshots refreshed compare-clean; Controls 100% operable + 0 inert. Unlike a pure wrapper, Section owns a real surface (background=inverse flips bg-foreground/text-background) — eyeballed the Backgrounds story in light and dark: default/muted/inverse track the theme and inverse contrast holds both ways. Fixed two contract defects: element was \"div\" (renders <section>) and variants was empty (spacing + background are the styling axes)."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "children": {
@@ -75,7 +162,8 @@
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Nest Sections — bands are siblings; nesting compounds paddings and backgrounds.",
+        "Use Section inside a component or card; it is page architecture, not component padding."
     ],
     "composesWith": [
         "Container",
