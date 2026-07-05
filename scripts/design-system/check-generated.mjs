@@ -32,6 +32,7 @@ const trackedDistFiles = execSync(
 const pathsToCheck = [
   "app/tailwind.css",
   "nextjs-app/shared/foundations/token-catalog.json",
+  "nextjs-app/shared/components/Icon/iconRegistry.discovered.ts",
 ];
 if (trackedDistFiles) {
   pathsToCheck.push("nextjs-app/shared/foundations/dist");
