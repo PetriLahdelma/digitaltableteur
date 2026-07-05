@@ -49,7 +49,11 @@ export interface CardProps
   description?: string;
   /** Description configuration */
   descriptionProps?: CardDescriptionProps;
-  /** Right-aligned slot in the header row (badge, timestamp, action) */
+  /** Leading header region. Defaults to the `title` heading block when omitted. */
+  headerStart?: React.ReactNode;
+  /** Trailing header region (badge, metadata, menu). Canonical replacement for `extra`. */
+  headerEnd?: React.ReactNode;
+  /** @deprecated Use `headerEnd`. Legacy alias feeding the trailing header region. */
   extra?: React.ReactNode;
   /** Makes the whole card one link to this href */
   link?: string;
@@ -87,6 +91,8 @@ export const Card: React.FC<CardProps> = ({
   titleProps = {},
   description,
   descriptionProps = {},
+  headerStart,
+  headerEnd,
   extra,
   link,
   linkLabel,
@@ -95,7 +101,6 @@ export const Card: React.FC<CardProps> = ({
   children,
   ...rest
 }) => {
-  const hasHeader = Boolean(title || extra);
   const titleLevel = titleProps.level ?? 3;
 
   const titleNode = title ? (
@@ -123,6 +128,10 @@ export const Card: React.FC<CardProps> = ({
     </Title>
   ) : null;
 
+  const leadingHeader = headerStart ?? titleNode;
+  const trailingHeader = headerEnd ?? extra;
+  const hasHeader = Boolean(leadingHeader || trailingHeader);
+
   return (
     <Tag
       className={[
@@ -143,8 +152,12 @@ export const Card: React.FC<CardProps> = ({
         <>
           {hasHeader && (
             <div className={styles.header}>
-              {titleNode}
-              {extra && <div className={styles.extra}>{extra}</div>}
+              {leadingHeader && (
+                <div className={styles.headerStart}>{leadingHeader}</div>
+              )}
+              {trailingHeader && (
+                <div className={styles.headerEnd}>{trailingHeader}</div>
+              )}
             </div>
           )}
           {description && (

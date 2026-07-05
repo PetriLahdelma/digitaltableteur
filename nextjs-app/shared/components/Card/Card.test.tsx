@@ -107,4 +107,38 @@ describe("Card", () => {
     expect(el).not.toHaveAttribute("role");
     expect(el).not.toHaveAttribute("tabindex");
   });
+
+  it("defaults the header-start region to the title heading", () => {
+    render(<Card title="Card title" />);
+    expect(
+      screen.getByRole("heading", { name: "Card title" }),
+    ).toBeInTheDocument();
+  });
+
+  it("renders custom headerStart instead of the title block", () => {
+    render(<Card headerStart={<span>Custom lead</span>} title="Ignored" />);
+    expect(screen.getByText("Custom lead")).toBeInTheDocument();
+    expect(screen.queryByText("Ignored")).not.toBeInTheDocument();
+  });
+
+  it("renders headerEnd content in the trailing region", () => {
+    const { container } = render(
+      <Card title="T" headerEnd={<span>badge-slot</span>} />,
+    );
+    expect(screen.getByText("badge-slot")).toBeInTheDocument();
+    expect(container.querySelector('[class*="headerEnd"]')).toBeTruthy();
+  });
+
+  it("keeps the deprecated extra prop working as a headerEnd alias", () => {
+    render(<Card title="T" extra={<span>legacy-extra</span>} />);
+    expect(screen.getByText("legacy-extra")).toBeInTheDocument();
+  });
+
+  it("prefers headerEnd over extra when both are set", () => {
+    render(
+      <Card title="T" headerEnd={<span>new-end</span>} extra={<span>old-extra</span>} />,
+    );
+    expect(screen.getByText("new-end")).toBeInTheDocument();
+    expect(screen.queryByText("old-extra")).not.toBeInTheDocument();
+  });
 });
