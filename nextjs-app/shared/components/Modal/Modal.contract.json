@@ -106,14 +106,6 @@
             "optional": true,
             "type": "string"
         },
-        "titleTerminals": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "serif",
-                "sans"
-            ]
-        },
         "menu": {
             "optional": true,
             "type": "React.ReactNode"
