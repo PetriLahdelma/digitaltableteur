@@ -1835,6 +1835,11 @@
           "name": "collapseLabel",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "homeIcon",
+          "type": "boolean",
+          "required": false
         }
       ],
       "props": {
@@ -1862,6 +1867,10 @@
         "collapseLabel": {
           "optional": true,
           "type": "string"
+        },
+        "homeIcon": {
+          "optional": true,
+          "type": "boolean"
         }
       },
       "composesWith": [
@@ -1937,7 +1946,12 @@
         {
           "story": "UnderlineModes",
           "description": "The underline prop is forwarded straight to each Link, so the trail behaves exactly like a Link: `always` keeps the wavy underline on, `hover` reveals it on hover and keyboard focus, and `none` omits it. There is no separate breadcrumb underline — Link owns it entirely.",
-          "source": "export const UnderlineModes: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The underline prop is forwarded straight to each Link, so the trail behaves exactly like a Link: `always` keeps the wavy underline on, `hover` reveals it on hover and keyboard focus, and `none` omits it. There is no separate breadcrumb underline — Link owns it entirely.\",\n      },\n    },\n  },\n  render: () => {\n    const items = [\n      { label: \"Home\", href: \"/\" },\n      { label: \"Blog\", href: \"/blog\" },\n      { label: \"Article\" },\n    ];\n    return (\n      <div style={{ display: \"flex\", flexDirection: \"column\", gap: \"1rem\" }}>\n        <Breadcrumb items={items} underline=\"always\" aria-label=\"Always\" />\n        <Breadcrumb items={items} underline=\"hover\" aria-label=\"Hover\" />\n        <Breadcrumb items={items} underline=\"none\" aria-label=\"None\" />\n      </div>\n    );\n  },\n};\n\nconst longTrail = [\n  { label: \"Home\", href: \"/\" },\n  { label: \"Components\", href: \"/components\" },\n  { label: \"Overlays\", href: \"/components/overlays\" },\n  { label: \"Menu\", href: \"/components/overlays/menu\" },\n  { label: \"Dropdown\", href: \"/components/overlays/menu/dropdown\" },\n  { label: \"Button\" },\n];\n\n/** Static collapse: maxItems caps the trail without measuring. */"
+          "source": "export const UnderlineModes: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The underline prop is forwarded straight to each Link, so the trail behaves exactly like a Link: `always` keeps the wavy underline on, `hover` reveals it on hover and keyboard focus, and `none` omits it. There is no separate breadcrumb underline — Link owns it entirely.\",\n      },\n    },\n  },\n  render: () => {\n    const items = [\n      { label: \"Home\", href: \"/\" },\n      { label: \"Blog\", href: \"/blog\" },\n      { label: \"Article\" },\n    ];\n    return (\n      <div style={{ display: \"flex\", flexDirection: \"column\", gap: \"1rem\" }}>\n        <Breadcrumb items={items} underline=\"always\" aria-label=\"Always\" />\n        <Breadcrumb items={items} underline=\"hover\" aria-label=\"Hover\" />\n        <Breadcrumb items={items} underline=\"none\" aria-label=\"None\" />\n      </div>\n    );\n  },\n};\n\nconst longTrail = [\n  { label: \"Home\", href: \"/\" },\n  { label: \"Components\", href: \"/components\" },\n  { label: \"Overlays\", href: \"/components/overlays\" },\n  { label: \"Menu\", href: \"/components/overlays/menu\" },\n  { label: \"Dropdown\", href: \"/components/overlays/menu/dropdown\" },\n  { label: \"Button\" },\n];\n\n/** The first item can render as a house icon instead of its text label. */"
+        },
+        {
+          "story": "HomeIcon",
+          "description": "Set homeIcon to render the first item as a house icon instead of a text label. The item's label stays the icon's accessible name, so screen readers still announce it; the icon carries no wavy underline.",
+          "source": "export const HomeIcon: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Set homeIcon to render the first item as a house icon instead of a text label. The item's label stays the icon's accessible name, so screen readers still announce it; the icon carries no wavy underline.\",\n      },\n    },\n  },\n  args: {\n    homeIcon: true,\n    items: [\n      { label: \"Home\", href: \"/\" },\n      { label: \"Blog\", href: \"/blog\" },\n      { label: \"Article\" },\n    ],\n  },\n};\n\n/** Static collapse: maxItems caps the trail without measuring. */"
         },
         {
           "story": "Collapsed",

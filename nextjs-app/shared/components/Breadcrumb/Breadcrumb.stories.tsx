@@ -138,6 +138,28 @@ const longTrail = [
   { label: "Button" },
 ];
 
+/** The first item can render as a house icon instead of its text label. */
+export const HomeIcon: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Set homeIcon to render the first item as a house icon instead of a text label. The item's label stays the icon's accessible name, so screen readers still announce it; the icon carries no wavy underline.",
+      },
+    },
+  },
+  args: {
+    homeIcon: true,
+    items: [
+      { label: "Home", href: "/" },
+      { label: "Blog", href: "/blog" },
+      { label: "Article" },
+    ],
+  },
+};
+
 /** Static collapse: maxItems caps the trail without measuring. */
 export const Collapsed: Story = {
   tags: ["example"],
