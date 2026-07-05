@@ -30,6 +30,10 @@
         }
     },
     "slots": [
+        "headerStart",
+        "headerEnd",
+        "footerStart",
+        "footerEnd",
         "extra"
     ],
     "asChild": false,
@@ -143,6 +147,22 @@
             "optional": true,
             "type": "React.ReactNode"
         },
+        "headerStart": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "headerEnd": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "footerStart": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "footerEnd": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
         "link": {
             "optional": true,
             "type": "string"
@@ -204,6 +224,18 @@
             {
                 "guidance": false,
                 "description": "Do not use the muted variant to encode status; status belongs to AlertBanner or Badge."
+            },
+            {
+                "guidance": true,
+                "description": "Put the destructive/special action in footerStart and the confirm/cancel buttons in footerEnd; footerEnd hugs the right even when footerStart is empty."
+            },
+            {
+                "guidance": true,
+                "description": "When you replace the title with custom headerStart content, keep a real heading inside it so the document outline stays honest."
+            },
+            {
+                "guidance": false,
+                "description": "Do not combine link mode with the action footer or an interactive menu — a stretched anchor cannot wrap buttons; Card drops the link and warns in dev."
             }
         ],
         "anatomy": [
@@ -215,7 +247,7 @@
             {
                 "name": "Header row",
                 "required": false,
-                "description": "Renders when title or extra is set: heading left (Title xxs, weight 600), extra slot right."
+                "description": "Two regions: headerStart (leading — the title heading by default, or custom content) and headerEnd (trailing — badge/metadata/menu), right-aligned."
             },
             {
                 "name": "Description",
@@ -226,6 +258,11 @@
                 "name": "Body",
                 "required": false,
                 "description": "children, flowing in the card's 8px rhythm; all further structure is composition."
+            },
+            {
+                "name": "Footer row",
+                "required": false,
+                "description": "Renders when footerStart or footerEnd is set: footerStart (special/destructive action) left, footerEnd (1–2 action buttons) right; wraps on narrow cards. No divider."
             },
             {
                 "name": "Link overlay",
