@@ -383,7 +383,7 @@ export const ActionCard: Story = {
             <MenuTrigger asChild>
               <Button
                 variant="tertiary"
-                icon={<Icon name="gear" ariaLabel="" />}
+                icon={<Icon name="dots-three-vertical" ariaLabel="" />}
                 accessibleName="More options"
               />
             </MenuTrigger>
