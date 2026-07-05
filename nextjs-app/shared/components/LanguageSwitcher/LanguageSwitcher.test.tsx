@@ -80,4 +80,14 @@ describe("LanguageSwitcher", () => {
     expect(onLanguageChange).toHaveBeenCalledWith("fi");
     expect(screen.queryByRole("button", { name: /^swedish$/i })).not.toBeInTheDocument();
   });
+
+  it("guards the button color transition under prefers-reduced-motion", () => {
+    // The fan animation is reduced-motion-guarded via framer useReducedMotion;
+    // the button color fade carries motion-reduce:transition-none so
+    // a11y.reducedMotion is literally honest (matches NavLink / Pagination).
+    renderSwitcher("en");
+    expect(
+      screen.getByRole("button", { name: /english/i }).className,
+    ).toContain("motion-reduce:transition-none");
+  });
 });
