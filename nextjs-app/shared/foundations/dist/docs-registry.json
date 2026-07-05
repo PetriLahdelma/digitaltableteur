@@ -11675,7 +11675,7 @@
       "name": "ServiceCard",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Service tile with icon, title, description, and optional link.",
       "dense": "Service tile: icon, title, description, optional link; services-grid unit",
       "keywords": [
@@ -11764,7 +11764,8 @@
       "composesWith": [],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Use for a value or principle without a link/CTA — that is ValueCard.",
+        "Place outside a ServicesGrid; the tile is sized and gapped by that grid."
       ],
       "usage": {
         "description": "Tile for one service offering — icon, title, short description, optional link. Renders inside ServicesGrid."

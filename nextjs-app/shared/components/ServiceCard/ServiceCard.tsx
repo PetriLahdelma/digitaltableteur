@@ -55,7 +55,7 @@ export function ServiceCard({
       {icon && (
         <div
           className={cn(
-            "flex-shrink-0 text-primary transition-all duration-500 ease-out",
+            "flex-shrink-0 text-primary transition-all duration-500 ease-out motion-reduce:transition-none",
             iconPosition === "top" ? "mb-6" : "mr-6",
             "[&>svg]:size-10 lg:[&>svg]:size-12 [&>svg]:stroke-[1.25]",
             // Premium hover: subtle scale + lift + enhanced color vibrancy
@@ -78,7 +78,10 @@ export function ServiceCard({
   );
 
   const baseClasses = cn(
-    "group flex h-full rounded-lg p-8 lg:p-10 transition-all duration-500",
+    // motion-reduce guard: reducedMotion is claimed in the contract but the
+    // global reset only covers the logo marquee; kill the animated hover
+    // transitions (scale/lift) for reduced-motion users.
+    "group flex h-full rounded-lg p-8 lg:p-10 transition-all duration-500 motion-reduce:transition-none",
     iconPosition === "top" ? "flex-col" : "flex-row items-start",
     variantClasses[variant],
     hoverVariantClasses[variant],
