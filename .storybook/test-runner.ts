@@ -241,7 +241,7 @@ function loadStoryPrefixMap(): Map<string, string> {
     path.join(ROOT_DIR, "nextjs-app/shared/components"),
     path.join(ROOT_DIR, "nextjs-app/shared/patterns"),
   ];
-  const titleRe = /title:\s*["']([^"']+)["']/;
+  const titleRe = /title:\s*["']([^"']+)["']/g;
 
   for (const base of roots) {
     if (!fs.existsSync(base)) continue;
@@ -251,9 +251,15 @@ function loadStoryPrefixMap(): Map<string, string> {
       const storyPath = path.join(dir, `${name}.stories.tsx`);
       if (!fs.existsSync(contractPath) || !fs.existsSync(storyPath)) continue;
       const text = fs.readFileSync(storyPath, "utf8");
-      const m = text.match(titleRe);
-      if (!m) continue;
-      storyPrefixToDir.set(sanitizeStorybookTitle(m[1]), dir);
+      // The meta title is the story-path one ("Category/Name"). A component whose
+      // stories seed a `title:` ARG (e.g. ValueCard's defaultArgs.title "Clarity
+      // first") would otherwise hijack the first match and the snapshot dir would
+      // never resolve. Pick the first title: value shaped like a story path.
+      const metaTitle = [...text.matchAll(titleRe)]
+        .map((mt) => mt[1])
+        .find((t) => t.includes("/"));
+      if (!metaTitle) continue;
+      storyPrefixToDir.set(sanitizeStorybookTitle(metaTitle), dir);
     }
   }
   return storyPrefixToDir;
