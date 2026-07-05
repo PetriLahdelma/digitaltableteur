@@ -11243,7 +11243,7 @@
       "name": "Section",
       "group": "layout",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Semantic section wrapper with spacing and background tokens.",
       "dense": "Page band: spacing none|sm|md (default)|lg|xl + hero/follow pair (hero = roomy top tight bottom, follow = no top), background default|muted|accent|inverse; id/donnyTarget anchors",
       "keywords": [
@@ -11335,7 +11335,8 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Nest Sections — bands are siblings; nesting compounds paddings and backgrounds.",
+        "Use Section inside a component or card; it is page architecture, not component padding."
       ],
       "usage": {
         "description": "Section is the page-level band: it owns vertical rhythm (`spacing`, responsive paddings) and surface (`background`), while Container inside it owns the horizontal clamp. `hero` and `follow` are a pair — the hero band keeps a generous top and tight bottom, and the section right after uses `follow` to avoid a double gap. `inverse` flips to the dark surface with matching text tokens. Give sections an `id` when they are anchor or skip targets.",
