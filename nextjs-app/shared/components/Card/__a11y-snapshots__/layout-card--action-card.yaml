@@ -1,0 +1,7 @@
+- heading "Card title" [level=3]
+- text: Badge
+- button "More options"
+- paragraph: Supporting copy that explains the card's content in a sentence or two.
+- button "Destructive"
+- button "No"
+- button "Yes"

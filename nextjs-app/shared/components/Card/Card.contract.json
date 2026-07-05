@@ -235,7 +235,7 @@
             },
             {
                 "guidance": false,
-                "description": "Do not combine link mode with the action footer or an interactive menu — a stretched anchor cannot wrap buttons; Card drops the link and warns in dev."
+                "description": "Do not combine link mode with the action footer: a stretched anchor cannot wrap buttons, so Card drops the link and warns in dev when footerStart/footerEnd are set. Likewise keep interactive content (a menu) out of a linked card's header — Card cannot detect a ReactNode's interactivity there, so that case is the consumer's responsibility."
             }
         ],
         "anatomy": [
