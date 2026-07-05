@@ -49,8 +49,16 @@ export interface CardProps
   description?: string;
   /** Description configuration */
   descriptionProps?: CardDescriptionProps;
-  /** Right-aligned slot in the header row (badge, timestamp, action) */
+  /** Leading header region. Defaults to the `title` heading block when omitted. */
+  headerStart?: React.ReactNode;
+  /** Trailing header region (badge, metadata, menu). Canonical replacement for `extra`. */
+  headerEnd?: React.ReactNode;
+  /** @deprecated Use `headerEnd`. Legacy alias feeding the trailing header region. */
   extra?: React.ReactNode;
+  /** Leading footer region — the special/destructive action, pinned left. */
+  footerStart?: React.ReactNode;
+  /** Trailing footer region — 1–2 action buttons, pinned right. */
+  footerEnd?: React.ReactNode;
   /** Makes the whole card one link to this href */
   link?: string;
   /** Accessible name for the link when title alone is ambiguous */
@@ -87,7 +95,11 @@ export const Card: React.FC<CardProps> = ({
   titleProps = {},
   description,
   descriptionProps = {},
+  headerStart,
+  headerEnd,
   extra,
+  footerStart,
+  footerEnd,
   link,
   linkLabel,
   loading = false,
@@ -95,8 +107,18 @@ export const Card: React.FC<CardProps> = ({
   children,
   ...rest
 }) => {
-  const hasHeader = Boolean(title || extra);
   const titleLevel = titleProps.level ?? 3;
+
+  // Compute effective link early: a stretched anchor cannot wrap interactive
+  // footer controls, so link mode and the action footer are mutually exclusive.
+  const hasFooter = Boolean(footerStart || footerEnd);
+  const linkSuppressed = Boolean(link) && hasFooter;
+  if (process.env.NODE_ENV !== "production" && linkSuppressed) {
+    console.warn(
+      "Card: `link` is ignored when `footerStart`/`footerEnd` are set — a stretched anchor cannot wrap interactive footer controls. Use a plain card with buttons instead.",
+    );
+  }
+  const effectiveLink = linkSuppressed ? undefined : link;
 
   const titleNode = title ? (
     <Title
@@ -109,9 +131,9 @@ export const Card: React.FC<CardProps> = ({
         .filter(Boolean)
         .join(" ")}
     >
-      {link ? (
+      {effectiveLink ? (
         <a
-          href={link}
+          href={effectiveLink}
           className={styles.cardLink}
           aria-label={linkLabel && linkLabel !== title ? linkLabel : undefined}
         >
@@ -123,13 +145,17 @@ export const Card: React.FC<CardProps> = ({
     </Title>
   ) : null;
 
+  const leadingHeader = headerStart ?? titleNode;
+  const trailingHeader = headerEnd ?? extra;
+  const hasHeader = Boolean(leadingHeader || trailingHeader);
+
   return (
     <Tag
       className={[
         styles.card,
         variantClassMap[variant],
         paddingClassMap[padding],
-        link ? styles.linked : "",
+        effectiveLink ? styles.linked : "",
         className,
       ]
         .filter(Boolean)
@@ -143,8 +169,12 @@ export const Card: React.FC<CardProps> = ({
         <>
           {hasHeader && (
             <div className={styles.header}>
-              {titleNode}
-              {extra && <div className={styles.extra}>{extra}</div>}
+              {leadingHeader && (
+                <div className={styles.headerStart}>{leadingHeader}</div>
+              )}
+              {trailingHeader && (
+                <div className={styles.headerEnd}>{trailingHeader}</div>
+              )}
             </div>
           )}
           {description && (
@@ -159,8 +189,18 @@ export const Card: React.FC<CardProps> = ({
             </Text>
           )}
           {children}
-          {link && !title && (
-            <a href={link} className={styles.cardLink} aria-label={linkLabel ?? link} />
+          {hasFooter && (
+            <div className={styles.footer}>
+              {footerStart && (
+                <div className={styles.footerStart}>{footerStart}</div>
+              )}
+              {footerEnd && (
+                <div className={styles.footerEnd}>{footerEnd}</div>
+              )}
+            </div>
+          )}
+          {effectiveLink && !title && (
+            <a href={effectiveLink} className={styles.cardLink} aria-label={linkLabel ?? effectiveLink} />
           )}
         </>
       )}

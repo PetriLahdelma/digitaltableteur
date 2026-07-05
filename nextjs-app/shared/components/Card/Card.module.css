@@ -60,8 +60,16 @@
   font-weight: 600;
 }
 
-.extra {
+.headerStart {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.headerEnd {
+  display: flex;
   flex-shrink: 0;
+  align-items: center;
+  gap: var(--space-internal-8);
 }
 
 .description {
@@ -95,4 +103,27 @@
 
 .linked:hover {
   border-color: var(--color-border);
+}
+
+/* Footer row: special/destructive action left, action buttons right */
+
+.footer {
+  display: flex;
+  margin-block-start: var(--space-internal-16);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-internal-8);
+}
+
+.footerStart {
+  display: flex;
+  align-items: center;
+  gap: var(--space-internal-8);
+}
+
+.footerEnd {
+  display: flex;
+  margin-inline-start: auto;
+  align-items: center;
+  gap: var(--space-internal-8);
 }

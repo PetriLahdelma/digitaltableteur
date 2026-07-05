@@ -9,6 +9,8 @@ import Divider from "@dt/Divider";
 import FlexBox from "@dt/FlexBox";
 import Grid from "@dt/Grid";
 import Text from "@dt/Text";
+import Icon from "@dt/Icon";
+import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from "@dt/Menu";
 
 const meta = {
   title: "Layout/Card",
@@ -64,6 +66,65 @@ const meta = {
       },
       description:
         "Right-aligned header slot (badge, timestamp, small action). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+    headerStart: {
+      control: { type: "select" },
+      options: ["default", "customLead"],
+      mapping: {
+        default: undefined,
+        customLead: <Text as="span">Custom lead</Text>,
+      },
+      description:
+        "Leading header region (defaults to the title heading). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+    headerEnd: {
+      control: { type: "select" },
+      options: ["none", "badgeAndMenu"],
+      mapping: {
+        none: undefined,
+        badgeAndMenu: (
+          <>
+            <Badge tone="info" size="sm">
+              Badge
+            </Badge>
+          </>
+        ),
+      },
+      description:
+        "Trailing header region (badge, metadata, menu). Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+    footerStart: {
+      control: { type: "select" },
+      options: ["none", "destructive"],
+      mapping: {
+        none: undefined,
+        destructive: (
+          <Button variant="primary" tone="error">
+            Destructive
+          </Button>
+        ),
+      },
+      description:
+        "Leading footer region — the special/destructive action. Pick a preset here; compose your own in code.",
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
+    },
+    footerEnd: {
+      control: { type: "select" },
+      options: ["none", "confirmCancel"],
+      mapping: {
+        none: undefined,
+        confirmCancel: (
+          <>
+            <Button variant="secondary">No</Button>
+            <Button variant="primary">Yes</Button>
+          </>
+        ),
+      },
+      description:
+        "Trailing footer region — 1–2 action buttons. Pick a preset here; compose your own in code.",
       table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
   },
@@ -294,5 +355,63 @@ export const ForcedColors: Story = {
     <Card {...args} style={{ maxWidth: "20rem" }}>
       <Text size="s">The physical border keeps the frame in forced colors.</Text>
     </Card>
+  ),
+};
+
+/** The action card: title + info Badge + overflow Menu in the header, body copy,
+ *  and a footer with a destructive action left of the confirm/cancel buttons. */
+export const ActionCard: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Header regions carry the badge and the overflow menu; the footer pins a destructive action left and the confirm/cancel buttons right.",
+      },
+    },
+  },
+  render: () => (
+    <Card
+      title="Card title"
+      headerEnd={
+        <>
+          <Badge tone="info" size="sm" icon={<Icon name="info" ariaLabel="" size="sm" />}>
+            Badge
+          </Badge>
+          <Menu>
+            <MenuTrigger asChild>
+              <Button
+                variant="tertiary"
+                icon={<Icon name="dots-three-vertical" ariaLabel="" />}
+                accessibleName="More options"
+              />
+            </MenuTrigger>
+            <MenuContent>
+              <MenuItem onSelect={() => {}}>Edit</MenuItem>
+              <MenuItem onSelect={() => {}}>Duplicate</MenuItem>
+              <MenuSeparator />
+              <MenuItem onSelect={() => {}}>Delete</MenuItem>
+            </MenuContent>
+          </Menu>
+        </>
+      }
+      description="Supporting copy that explains the card's content in a sentence or two."
+      footerStart={
+        <Button
+          variant="primary"
+          tone="error"
+          icon={<Icon name="x-circle" ariaLabel="" />}
+        >
+          Destructive
+        </Button>
+      }
+      footerEnd={
+        <>
+          <Button variant="secondary">No</Button>
+          <Button variant="primary">Yes</Button>
+        </>
+      }
+    />
   ),
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Card from "./Card";
 
@@ -106,5 +106,91 @@ describe("Card", () => {
     const el = container.firstChild as HTMLElement;
     expect(el).not.toHaveAttribute("role");
     expect(el).not.toHaveAttribute("tabindex");
+  });
+
+  it("defaults the header-start region to the title heading", () => {
+    render(<Card title="Card title" />);
+    expect(
+      screen.getByRole("heading", { name: "Card title" }),
+    ).toBeInTheDocument();
+  });
+
+  it("renders custom headerStart instead of the title block", () => {
+    render(<Card headerStart={<span>Custom lead</span>} title="Ignored" />);
+    expect(screen.getByText("Custom lead")).toBeInTheDocument();
+    expect(screen.queryByText("Ignored")).not.toBeInTheDocument();
+  });
+
+  it("renders headerEnd content in the trailing region", () => {
+    const { container } = render(
+      <Card title="T" headerEnd={<span>badge-slot</span>} />,
+    );
+    expect(screen.getByText("badge-slot")).toBeInTheDocument();
+    expect(container.querySelector('[class*="headerEnd"]')).toBeTruthy();
+  });
+
+  it("keeps the deprecated extra prop working as a headerEnd alias", () => {
+    render(<Card title="T" extra={<span>legacy-extra</span>} />);
+    expect(screen.getByText("legacy-extra")).toBeInTheDocument();
+  });
+
+  it("prefers headerEnd over extra when both are set", () => {
+    render(
+      <Card title="T" headerEnd={<span>new-end</span>} extra={<span>old-extra</span>} />,
+    );
+    expect(screen.getByText("new-end")).toBeInTheDocument();
+    expect(screen.queryByText("old-extra")).not.toBeInTheDocument();
+  });
+
+  it("renders footerStart and footerEnd regions", () => {
+    const { container } = render(
+      <Card
+        title="T"
+        footerStart={<button type="button">Destroy</button>}
+        footerEnd={<button type="button">Yes</button>}
+      />,
+    );
+    expect(screen.getByRole("button", { name: "Destroy" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Yes" })).toBeInTheDocument();
+    expect(container.querySelector('[class*="footerStart"]')).toBeTruthy();
+    expect(container.querySelector('[class*="footerEnd"]')).toBeTruthy();
+  });
+
+  it("renders no footer when neither footer slot is set", () => {
+    const { container } = render(<Card title="T">body</Card>);
+    expect(container.querySelector('[class*="footer"]')).toBeNull();
+  });
+
+  it("renders footerEnd alone (buttons-only footer)", () => {
+    const { container } = render(
+      <Card title="T" footerEnd={<button type="button">Only</button>} />,
+    );
+    expect(container.querySelector('[class*="footerEnd"]')).toBeTruthy();
+    expect(container.querySelector('[class*="footerStart"]')).toBeNull();
+  });
+
+  it("suppresses the stretched link and warns when a footer slot is present", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    render(
+      <Card
+        title="T"
+        link="/somewhere"
+        footerEnd={<button type="button">Go</button>}
+      />,
+    );
+    // Title is plain text, not a link.
+    expect(screen.queryByRole("link")).toBeNull();
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining("`link` is ignored"),
+    );
+    warn.mockRestore();
+  });
+
+  it("still renders the stretched link when there is no footer", () => {
+    render(<Card title="T" link="/somewhere" />);
+    expect(screen.getByRole("link", { name: "T" })).toHaveAttribute(
+      "href",
+      "/somewhere",
+    );
   });
 });
