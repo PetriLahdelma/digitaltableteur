@@ -6329,7 +6329,7 @@
       "name": "Grid",
       "group": "layout",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "CSS grid layout primitive with tokenized gaps.",
       "dense": "CSS-grid wrapper: numeric columns for equal tracks or template strings; gap/rowGap/colGap strings; Grid.Item adds span/rowSpan; extra grid CSS props pass through via style",
       "keywords": [
@@ -6463,7 +6463,8 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Use Grid for single-axis flows — Stack (token gaps) or FlexBox (free-form) read clearer and cost less.",
+        "Size cells by styling children with widths; spans and templates belong on the grid, not in the card."
       ],
       "usage": {
         "description": "Grid is the two-dimensional layout primitive: pass `columns` as a number for equal tracks or a template string for custom ones, gaps as CSS strings (prefer space tokens), and wrap children needing to span in `Grid.Item` with `span`/`rowSpan`. Reach for it when both axes matter — card walls, media mosaics, dashboard modules; single-axis flows are Stack/FlexBox territory.",

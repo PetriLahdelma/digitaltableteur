@@ -3,7 +3,7 @@
     "name": "Grid",
     "tier": "atom",
     "group": "layout",
-    "status": "beta",
+    "status": "stable",
     "description": "CSS grid layout primitive with tokenized gaps.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-grid",
     "radixPrimitive": null,
@@ -48,14 +48,22 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed compare-clean in all four modes (plain/light/dark/forced-colors); Controls 9/9 operable + 0 inert. Pure two-dimensional layout primitive with no color surface of its own (tokens.colors empty), so light/dark is a structural no-op. The GridProps `[key: string]: any` passthrough is the intentional, documented escape hatch for arbitrary grid CSS props — kept as-is."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "children": {
@@ -141,7 +149,8 @@
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Use Grid for single-axis flows — Stack (token gaps) or FlexBox (free-form) read clearer and cost less.",
+        "Size cells by styling children with widths; spans and templates belong on the grid, not in the card."
     ],
     "composesWith": [
         "Card",
