@@ -12267,8 +12267,8 @@
       "name": "SocialShare",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
-      "description": "SocialShare — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Row of social share targets: per-network deep links plus a native-share or copy-link button, with an optional labelled article-footer variant.",
       "dense": "Share-target row (ordered network list, defaults to all supported channels) with accessible labels",
       "keywords": [
         "share",
@@ -12342,7 +12342,8 @@
       "composesWith": [],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Label channels by icon alone — each share link needs an aria-label naming the network.",
+        "Drop the copy-link fallback on browsers without the native share API — the component already handles both paths."
       ],
       "usage": {
         "description": "Row of share targets with accessible labels; order and subset configurable. Composed by ArticleShareSection."

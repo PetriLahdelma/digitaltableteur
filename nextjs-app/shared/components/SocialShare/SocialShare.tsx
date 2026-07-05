@@ -211,14 +211,17 @@ export const SocialShare = ({
     .filter(Boolean)
     .join(" ");
 
+  // `||` (not `??`) so an empty-string `heading` — including the "" the
+  // Storybook controls-autogen args-enhancer seeds for free-string props —
+  // falls back to the localized default instead of rendering an empty
+  // section label / heading (which drops the region role entirely).
+  const resolvedHeading = heading || t("shareHeading");
+
   return (
-    <section
-      className={rootClassName}
-      aria-label={heading ?? t("shareHeading")}
-    >
+    <section className={rootClassName} aria-label={resolvedHeading}>
       {(showHeading || variant === "article") && (
         <Text as="p" className={styles.heading}>
-          {heading ?? t("shareHeading")}
+          {resolvedHeading}
         </Text>
       )}
 

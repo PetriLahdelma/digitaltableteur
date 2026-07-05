@@ -1,0 +1,11 @@
+- region "Share":
+  - group "Share":
+    - link "Share on LinkedIn":
+      - /url: https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdigitaltableteur.com
+      - img "Share on LinkedIn"
+    - link "Share on Twitter":
+      - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fdigitaltableteur.com&text=Digital%20Tableteur%20-%20Portfolio
+      - img "Share on Twitter"
+    - button "Share":
+      - img "Share"
+  - status

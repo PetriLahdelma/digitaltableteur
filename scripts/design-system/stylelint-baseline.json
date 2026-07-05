@@ -2433,9 +2433,9 @@
       "text": "Expected \"padding-block\" to come before \"gap\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/SocialShare/SocialShare.module.css::91::5::order/properties-order::Expected \"padding\" to come before \"min-height\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/SocialShare/SocialShare.module.css::99::5::order/properties-order::Expected \"padding\" to come before \"min-height\" (order/properties-order)",
       "file": "nextjs-app/shared/components/SocialShare/SocialShare.module.css",
-      "line": 91,
+      "line": 99,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
