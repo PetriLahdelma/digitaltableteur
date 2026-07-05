@@ -145,7 +145,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
     // First item optionally renders as a house icon; its label is the icon's
     // accessible name. Icons carry no wavy underline.
     if (homeIcon && idx === 0) {
-      const icon = <Icon name="house" ariaLabel={item.label} size="sm" />;
+      const icon = (
+        <Icon name="house" ariaLabel={item.label} size="sm" weight="bold" />
+      );
       return isLink ? (
         <Link
           href={item.href as string}
