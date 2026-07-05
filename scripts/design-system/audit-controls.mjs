@@ -33,6 +33,10 @@ const EFFECTS = process.argv.includes('--effects')
 // story's default state — every entry carries its justification and how the
 // effect was verified instead.
 const EFFECT_EXEMPT = {
+    Breadcrumb: {
+        maxItems: 'static collapse cap — only changes layout when items.length exceeds it, and the Playground trail is short; verified by the static-collapse unit tests and the Collapsed story',
+        collapseLabel: 'labels the ellipsis trigger, which only exists once the trail collapses; verified by the custom-collapseLabel unit test and the Collapsed story',
+    },
     Avatar: {
         clickable: 'behavior-only: wires onClick navigation, no DOM signature; verified by click->URL navigation probe',
         destinationUrl: 'behavior-only: consumed by the clickable click handler; verified by click->URL navigation probe',
