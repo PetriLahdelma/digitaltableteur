@@ -44,7 +44,9 @@ export function NavLink({
       className={cn(
         // rounded-sm matches the LanguageSwitcher buttons so the global
         // :focus-visible outline renders with the same corner rounding.
-        "font-body text-text-m transition-colors rounded-sm",
+        // motion-reduce guard keeps a11y.reducedMotion honest (matches the
+        // Pagination / ValueCard color-transition treatment).
+        "font-body text-text-m transition-colors motion-reduce:transition-none rounded-sm",
         className,
         isActive ? activeClassName : inactiveClassName
       )}

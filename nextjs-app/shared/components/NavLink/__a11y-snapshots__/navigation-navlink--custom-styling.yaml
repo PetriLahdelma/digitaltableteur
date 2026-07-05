@@ -1,0 +1,5 @@
+- navigation "Footer":
+  - link "Privacy":
+    - /url: /privacy
+  - link "Terms":
+    - /url: /terms

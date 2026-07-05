@@ -9308,7 +9308,7 @@
       "name": "NavLink",
       "group": "navigation",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Navigation anchor primitive used inside `SiteHeader`, `Footer`, and in-page navs. Renders an underlying `next/link` and applies the `aria-current='page'` token when the active route matches.",
       "dense": "Next.js nav link deriving active state from usePathname (prefix match, exact opt-in); sets aria-current=page; styled via className/activeClassName/inactiveClassName (Tailwind-token defaults by design)",
       "keywords": [
