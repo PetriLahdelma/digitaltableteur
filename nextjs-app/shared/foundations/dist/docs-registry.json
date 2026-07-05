@@ -12797,7 +12797,7 @@
       "name": "Stack",
       "group": "layout",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Flex stack primitive for vertical and horizontal rhythm.",
       "dense": "Token-gapped flex: direction vertical|horizontal, gap none|xs 4|sm 8|md 16 (default)|lg 24|xl 32px, align/justify shorthands, wrap; polymorphic as (ul/ol for semantic lists)",
       "keywords": [
@@ -12827,7 +12827,7 @@
         },
         {
           "name": "align",
-          "type": "center | stretch | end | start",
+          "type": "stretch | start | center | end",
           "required": false
         },
         {
@@ -12870,10 +12870,10 @@
           "optional": true,
           "type": "union",
           "values": [
-            "center",
             "stretch",
-            "end",
-            "start"
+            "start",
+            "center",
+            "end"
           ]
         },
         "justify": {
@@ -13087,7 +13087,9 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Nest Stacks purely to sum gaps — pick the right gap token on one Stack instead.",
+        "Add margins to Stack children — the gap owns the spacing and margins fight it.",
+        "Use it when items need individual offsets or a non-token gap (that's FlexBox) or when both axes matter (that's Grid)."
       ],
       "usage": {
         "description": "Stack is the default way to space siblings: a flex column (or row) whose `gap` comes from a fixed token scale, so vertical rhythm stays on the grid without margin fiddling. Use `as=\"ul\"` with `li` children when the stack is semantically a list. If items need individual offsets or non-token gaps, that's FlexBox; if both axes matter, Grid.",
