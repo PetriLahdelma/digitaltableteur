@@ -1,0 +1,3 @@
+- article:
+  - heading "Clarity first" [level=3]
+  - paragraph: Interfaces should explain themselves before they decorate.

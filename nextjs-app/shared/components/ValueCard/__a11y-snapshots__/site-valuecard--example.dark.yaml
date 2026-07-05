@@ -1,0 +1,6 @@
+- article:
+  - heading "Clarity first" [level=3]
+  - paragraph: Interfaces should explain themselves before they decorate.
+- article:
+  - heading "Accessible by default" [level=3]
+  - paragraph: Keyboard, contrast, and semantics are part of the definition of done.
