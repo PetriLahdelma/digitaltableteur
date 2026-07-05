@@ -4821,7 +4821,7 @@
       "name": "Divider",
       "group": "structure",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Visual separator between sections (horizontal or vertical).",
       "dense": "hr separator on border tokens: orientation horizontal|vertical; decorative=true (default) removes it from the AT tree (role=none), decorative=false announces role=separator + aria-orientation",
       "keywords": [
@@ -4873,7 +4873,8 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Use a divider as spacing — reach for gap or Spacer when you only need distance.",
+        "Put a divider between every list row — List's own rhythm and borders handle that."
       ],
       "usage": {
         "description": "Divider draws a rule on the production border tokens. By default it is decorative — `role=\"none\"`, invisible to assistive tech — which is right when it only supports visual rhythm. Set `decorative={false}` when the rule conveys real structure (menu groups, toolbar clusters) so AT users get the same grouping. Vertical dividers need a height from their flex row.",

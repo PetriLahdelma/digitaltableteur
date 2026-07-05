@@ -3,11 +3,11 @@
     "name": "Divider",
     "tier": "atom",
     "group": "structure",
-    "status": "beta",
+    "status": "stable",
     "description": "Visual separator between sections (horizontal or vertical).",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=368-6",
     "radixPrimitive": null,
-    "element": "div",
+    "element": "hr",
     "variants": {
         "orientation": {
             "values": [
@@ -33,7 +33,9 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-07-05 — beta→stable (fleet #12): renders a real <hr> (contract element corrected div→hr). decorative default role=none; decorative={false} announces role=separator + aria-orientation. No motion; single hairline on --color-border. Re-verified independently: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots refreshed 4 modes. 2026-05-28 origin: promoted from alpha with Example + ForcedColors stories and the Storybook axe gate."
     },
     "tokens": {
         "colors": [
@@ -43,7 +45,38 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteFooter/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "orientation": {
@@ -64,7 +97,8 @@
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Use a divider as spacing — reach for gap or Spacer when you only need distance.",
+        "Put a divider between every list row — List's own rhythm and borders handle that."
     ],
     "composesWith": [
         "Stack",

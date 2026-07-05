@@ -5,7 +5,7 @@ import contract from "./Divider.contract.json";
 const meta = {
   title: "Layout/Divider",
   component: Divider,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
