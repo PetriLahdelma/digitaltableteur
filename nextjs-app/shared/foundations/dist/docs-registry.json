@@ -8862,11 +8862,6 @@
           "required": false
         },
         {
-          "name": "titleTerminals",
-          "type": "serif | sans",
-          "required": false
-        },
-        {
           "name": "animation",
           "type": "none | scale | slide | fade",
           "required": false
@@ -8874,6 +8869,11 @@
         {
           "name": "isLoading",
           "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "iconSize",
+          "type": "IconProps[\"size\"]",
           "required": false
         }
       ],
@@ -8927,14 +8927,6 @@
         "description": {
           "optional": true,
           "type": "string"
-        },
-        "titleTerminals": {
-          "optional": true,
-          "type": "union",
-          "values": [
-            "serif",
-            "sans"
-          ]
         },
         "menu": {
           "optional": true,
