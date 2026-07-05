@@ -29,7 +29,7 @@ function loadStoryPrefixMap() {
     join(ROOT, "nextjs-app/shared/components"),
     join(ROOT, "nextjs-app/shared/patterns"),
   ];
-  const titleRe = /title:\s*["']([^"']+)["']/;
+  const titleRe = /title:\s*["']([^"']+)["']/g;
 
   for (const base of roots) {
     if (!existsSync(base)) continue;
@@ -39,12 +39,18 @@ function loadStoryPrefixMap() {
       const storyPath = join(dir, `${name}.stories.tsx`);
       if (!existsSync(contractPath) || !existsSync(storyPath)) continue;
       const text = readFileSync(storyPath, "utf8");
-      const m = text.match(titleRe);
-      if (!m) continue;
+      // The meta title is the story-path one ("Category/Name"). A component whose
+      // stories seed a `title:` ARG (e.g. ValueCard's defaultArgs.title "Clarity
+      // first") would otherwise hijack the first match and the snapshot dir would
+      // never resolve. Pick the first title: value shaped like a story path.
+      const metaTitle = [...text.matchAll(titleRe)]
+        .map((mt) => mt[1])
+        .find((t) => t.includes("/"));
+      if (!metaTitle) continue;
       // Match Storybook's own @storybook/csf `sanitize`: lowercase, collapse
       // every non-alphanumeric run to a single "-", trim. No camelCase splitting,
       // so `Forms/TextArea` → `forms-textarea` (the real story-id prefix).
-      const prefix = m[1]
+      const prefix = metaTitle
         .toLowerCase()
         .replace(/[ ’–—―′¿'`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/]/g, "-")
         .replace(/-+/g, "-")
