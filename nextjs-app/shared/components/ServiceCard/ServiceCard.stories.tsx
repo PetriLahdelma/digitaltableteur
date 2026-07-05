@@ -17,7 +17,7 @@ const defaultArgs = {
 const meta = {
   title: "Site/ServiceCard",
   component: ServiceCard,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

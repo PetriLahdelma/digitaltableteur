@@ -295,6 +295,27 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "group": "layout",
     "import": "import { Section } from "@dt/Section";",
   },
+  "ServiceCard": {
+    "exampleStories": [],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "marketing",
+    "import": "import { ServiceCard } from "@dt/ServiceCard";",
+  },
   "SiteFooter": {
     "exampleStories": [],
     "fields": [
