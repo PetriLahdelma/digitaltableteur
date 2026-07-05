@@ -4221,7 +4221,7 @@
       "name": "Container",
       "group": "layout",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Max-width content wrapper with responsive horizontal padding.",
       "dense": "Width clamp: size sm 640|md 960|lg 1200 (default)|xl 1440|full; center=true adds auto inline margins; polymorphic as for landmarks (main, section)",
       "keywords": [
@@ -4476,7 +4476,8 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Nest a Container inside another Container — gutters compound and the measure narrows.",
+        "Use size=\"full\" together with a custom max-width class; pick the size that matches instead."
       ],
       "usage": {
         "description": "Container clamps content to a readable page width and centers it. Pick `size` by the content's measure, not the viewport — `lg` (1200px) is the page default, `sm` suits prose. It renders a `div` unless you pass `as` (use `main`/`section` when the wrapper should also be the landmark). One container per page region; sections stack inside it, not around it.",
