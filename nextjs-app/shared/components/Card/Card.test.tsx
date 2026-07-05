@@ -1,5 +1,5 @@
 import React from "react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Card from "./Card";
 
@@ -167,5 +167,30 @@ describe("Card", () => {
     );
     expect(container.querySelector('[class*="footerEnd"]')).toBeTruthy();
     expect(container.querySelector('[class*="footerStart"]')).toBeNull();
+  });
+
+  it("suppresses the stretched link and warns when a footer slot is present", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    render(
+      <Card
+        title="T"
+        link="/somewhere"
+        footerEnd={<button type="button">Go</button>}
+      />,
+    );
+    // Title is plain text, not a link.
+    expect(screen.queryByRole("link")).toBeNull();
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining("`link` is ignored"),
+    );
+    warn.mockRestore();
+  });
+
+  it("still renders the stretched link when there is no footer", () => {
+    render(<Card title="T" link="/somewhere" />);
+    expect(screen.getByRole("link", { name: "T" })).toHaveAttribute(
+      "href",
+      "/somewhere",
+    );
   });
 });

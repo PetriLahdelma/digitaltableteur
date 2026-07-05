@@ -109,6 +109,17 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   const titleLevel = titleProps.level ?? 3;
 
+  // Compute effective link early: a stretched anchor cannot wrap interactive
+  // footer controls, so link mode and the action footer are mutually exclusive.
+  const hasFooter = Boolean(footerStart || footerEnd);
+  const linkSuppressed = Boolean(link) && hasFooter;
+  if (process.env.NODE_ENV !== "production" && linkSuppressed) {
+    console.warn(
+      "Card: `link` is ignored when `footerStart`/`footerEnd` are set — a stretched anchor cannot wrap interactive footer controls. Use a plain card with buttons instead.",
+    );
+  }
+  const effectiveLink = linkSuppressed ? undefined : link;
+
   const titleNode = title ? (
     <Title
       level={titleLevel}
@@ -120,9 +131,9 @@ export const Card: React.FC<CardProps> = ({
         .filter(Boolean)
         .join(" ")}
     >
-      {link ? (
+      {effectiveLink ? (
         <a
-          href={link}
+          href={effectiveLink}
           className={styles.cardLink}
           aria-label={linkLabel && linkLabel !== title ? linkLabel : undefined}
         >
@@ -138,15 +149,13 @@ export const Card: React.FC<CardProps> = ({
   const trailingHeader = headerEnd ?? extra;
   const hasHeader = Boolean(leadingHeader || trailingHeader);
 
-  const hasFooter = Boolean(footerStart || footerEnd);
-
   return (
     <Tag
       className={[
         styles.card,
         variantClassMap[variant],
         paddingClassMap[padding],
-        link ? styles.linked : "",
+        effectiveLink ? styles.linked : "",
         className,
       ]
         .filter(Boolean)
@@ -190,8 +199,8 @@ export const Card: React.FC<CardProps> = ({
               )}
             </div>
           )}
-          {link && !title && (
-            <a href={link} className={styles.cardLink} aria-label={linkLabel ?? link} />
+          {effectiveLink && !title && (
+            <a href={effectiveLink} className={styles.cardLink} aria-label={linkLabel ?? effectiveLink} />
           )}
         </>
       )}
