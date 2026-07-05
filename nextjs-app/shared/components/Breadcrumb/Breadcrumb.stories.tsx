@@ -94,6 +94,34 @@ export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
 };
 
+/** Underline follows the Link contract: always, hover, or none. */
+export const UnderlineModes: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "The underline prop is forwarded straight to each Link, so the trail behaves exactly like a Link: `always` keeps the wavy underline on, `hover` reveals it on hover and keyboard focus, and `none` omits it. There is no separate breadcrumb underline — Link owns it entirely.",
+      },
+    },
+  },
+  render: () => {
+    const items = [
+      { label: "Home", href: "/" },
+      { label: "Blog", href: "/blog" },
+      { label: "Article" },
+    ];
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <Breadcrumb items={items} underline="always" aria-label="Always" />
+        <Breadcrumb items={items} underline="hover" aria-label="Hover" />
+        <Breadcrumb items={items} underline="none" aria-label="None" />
+      </div>
+    );
+  },
+};
+
 /** A four-level trail: every level except the current one is a link. */
 export const DeepTrail: Story = {
   tags: ["example"],

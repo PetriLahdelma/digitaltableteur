@@ -48,6 +48,15 @@
         "aria-label": {
             "optional": true,
             "type": "string"
+        },
+        "underline": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "always",
+                "hover",
+                "none"
+            ]
         }
     },
     "forbiddenUse": [

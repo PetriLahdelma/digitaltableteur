@@ -58,6 +58,29 @@ describe("Breadcrumb", () => {
     expect(screen.getByLabelText("Breadcrumb")).toBeInTheDocument();
   });
 
+  it("forwards the underline prop to each link (default always → wavy underline)", () => {
+    const items: BreadcrumbItem[] = [
+      { label: "Home", href: "/" },
+      { label: "Current" },
+    ];
+    render(<Breadcrumb items={items} />);
+    // Link owns the wavy underline via its underline="always" default.
+    expect(screen.getByRole("link", { name: "Home" }).className).toContain(
+      "wavyUnderline",
+    );
+  });
+
+  it("omits the underline entirely when underline is none", () => {
+    const items: BreadcrumbItem[] = [
+      { label: "Home", href: "/" },
+      { label: "Current" },
+    ];
+    render(<Breadcrumb items={items} underline="none" />);
+    expect(
+      screen.getByRole("link", { name: "Home" }).className,
+    ).not.toContain("wavyUnderline");
+  });
+
   it("renders last item as current page without href", () => {
     const items: BreadcrumbItem[] = [
       { label: "Home", href: "/" },
