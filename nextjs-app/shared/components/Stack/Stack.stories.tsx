@@ -21,7 +21,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/Stack",
   component: Stack,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

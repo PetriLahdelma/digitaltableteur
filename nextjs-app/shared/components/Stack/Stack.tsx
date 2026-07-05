@@ -8,8 +8,8 @@ export interface StackProps {
   direction?: "vertical" | "horizontal";
   /** Gap token between items. @default "md" */
   gap?: "none" | "xs" | "sm" | "md" | "lg" | "xl";
-  /** Cross-axis alignment. @default "center" */
-  align?: "start" | "center" | "end" | "stretch";
+  /** Cross-axis alignment. @default "stretch" */
+  align?: "stretch" | "start" | "center" | "end";
   /** Main-axis distribution. */
   justify?: "start" | "center" | "end" | "between" | "around";
   /** Allow wrapping on horizontal stacks. */

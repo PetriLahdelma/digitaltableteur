@@ -3,7 +3,7 @@
     "name": "Stack",
     "tier": "atom",
     "group": "layout",
-    "status": "beta",
+    "status": "stable",
     "description": "Flex stack primitive for vertical and horizontal rhythm.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-stack",
     "radixPrimitive": null,
@@ -11,12 +11,12 @@
     "variants": {
         "align": {
             "values": [
-                "center",
                 "stretch",
-                "end",
-                "start"
+                "start",
+                "center",
+                "end"
             ],
-            "default": "center",
+            "default": "stretch",
             "propSourced": true
         }
     },
@@ -31,18 +31,68 @@
     ],
     "a11y": {
         "keyboard": [],
-        "ariaRequirements": [],
+        "ariaRequirements": [
+            "Stack is a presentational flex container with no role of its own; it inherits the semantics of its `as` element (default `div`). Use `as=\"ul\"`/`\"ol\"` with `li` children when the group is semantically a list so assistive tech announces list role and item count."
+        ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes (plain/light/dark/forced); AT snapshots refreshed compare-clean (only change is the dropped Work-in-progress badge line); Controls operable + 0 inert; no motion in the CSS so reducedMotion is trivially honest. Fixed real defect: `align` claimed `@default \"center\"` in the JSDoc and `variants.align.default`/order in the contract, but the component defaults to `stretch` (matching sibling FlexBox); corrected the JSDoc, union order (stretch first), and contract so the derived default is honest and sync-stable — zero render change since the runtime default was already `stretch`."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/HomeHero/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteFooter/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "children": {
@@ -73,10 +123,10 @@
             "optional": true,
             "type": "union",
             "values": [
-                "center",
                 "stretch",
-                "end",
-                "start"
+                "start",
+                "center",
+                "end"
             ]
         },
         "justify": {
@@ -284,7 +334,9 @@
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Nest Stacks purely to sum gaps — pick the right gap token on one Stack instead.",
+        "Add margins to Stack children — the gap owns the spacing and margins fight it.",
+        "Use it when items need individual offsets or a non-token gap (that's FlexBox) or when both axes matter (that's Grid)."
     ],
     "composesWith": [
         "Card",
