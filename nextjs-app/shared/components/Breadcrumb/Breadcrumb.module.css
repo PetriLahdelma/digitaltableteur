@@ -34,12 +34,26 @@
   color: var(--color-border);
 }
 
-/* Link owns all color + underline behavior (color, wavy underline, focus ring)
-   via the underline prop; Breadcrumb must not re-decorate it. */
+/* Link owns underline behavior (wavy underline, focus ring) via the underline
+   prop; Breadcrumb must not re-decorate it. It DOES set the trail emphasis:
+   clickable levels are primary + medium weight, the current level is muted +
+   regular. .item .link outranks Link's own single-class .link. */
+
+.item .link {
+  font-weight: 500;
+  color: var(--color-primary);
+}
 
 .current {
-  font-weight: 600;
-  color: var(--primary-text-color);
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+/* Home icon: centered on the line box rather than baseline-aligned, so it sits
+   optically level with the adjacent text (an icon has no text baseline). */
+
+.homeLink {
+  align-self: center;
 }
 
 /* Ellipsis trigger: an unstyled button that reads like the trail text and
