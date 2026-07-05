@@ -147,15 +147,25 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
     if (homeIcon && idx === 0) {
       const icon = <Icon name="house" ariaLabel={item.label} size="sm" />;
       return isLink ? (
-        <Link href={item.href as string} size="sm" underline="none">
+        <Link
+          href={item.href as string}
+          size="sm"
+          underline="none"
+          className={`${styles.link} ${styles.homeLink}`}
+        >
           {icon}
         </Link>
       ) : (
-        <span className={styles.current}>{icon}</span>
+        <span className={`${styles.current} ${styles.homeLink}`}>{icon}</span>
       );
     }
     return isLink ? (
-      <Link href={item.href as string} size="sm" underline={underline}>
+      <Link
+        href={item.href as string}
+        size="sm"
+        underline={underline}
+        className={styles.link}
+      >
         {item.label}
       </Link>
     ) : (
