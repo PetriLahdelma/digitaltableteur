@@ -11,7 +11,7 @@ import schema from "./schema.json";
 export default {
   title: "Content/Avatar",
   component: Avatar,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
