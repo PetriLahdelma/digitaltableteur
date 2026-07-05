@@ -5797,7 +5797,7 @@
       "name": "FlexBox",
       "group": "layout",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Flexbox layout primitive for stacks and rows.",
       "dense": "Style-prop flexbox (css-less by design): direction/wrap/justify/align/alignContent + gap|rowGap|columnGap (number=px, string=token); passes through div attributes",
       "keywords": [
@@ -5924,7 +5924,8 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Rebuild Grid with wrap and width math — two-dimensional layouts belong to Grid.",
+        "Hardcode magic px strings when a space token exists; the rhythm gate will flag it."
       ],
       "usage": {
         "description": "FlexBox is the free-form single-axis primitive: every flexbox knob exposed as a prop, emitted as inline style — deliberately css-less. Numbers become px gaps; strings pass through, so prefer space tokens (\"var(--space-internal-16)\"). Use it for one-off arrangements where Stack's token scale is too coarse; when you just need vertical rhythm, Stack is the sharper tool.",
