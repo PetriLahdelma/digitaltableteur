@@ -27,7 +27,9 @@ const variantClasses: Record<NonNullable<ValueCardProps["variant"]>, string> = {
 const hoverClasses: Record<NonNullable<ValueCardProps["variant"]>, string> = {
   default: "hover:bg-muted/50",
   bordered: "hover:border-primary/50 hover:shadow-sm",
-  elevated: "hover:shadow-xl hover:-translate-y-1",
+  // motion-reduce keeps the lift's end position flat so reduced-motion users
+  // get no positional jump (the global reset only covers the logo marquee).
+  elevated: "hover:shadow-xl hover:-translate-y-1 motion-reduce:hover:translate-y-0",
 };
 
 export function ValueCard({
@@ -42,7 +44,7 @@ export function ValueCard({
     <article
       className={cn(
         "group relative overflow-hidden p-6 rounded-lg",
-        "transition-all duration-300 ease-out",
+        "transition-all duration-300 ease-out motion-reduce:transition-none",
         variantClasses[variant],
         hoverClasses[variant],
         className,
@@ -55,7 +57,7 @@ export function ValueCard({
             "flex items-center justify-center",
             "w-12 h-12 rounded-lg mb-4",
             "bg-primary/10 text-primary",
-            "transition-colors duration-300",
+            "transition-colors duration-300 motion-reduce:transition-none",
             "group-hover:bg-primary/20",
             iconClassName,
           )}

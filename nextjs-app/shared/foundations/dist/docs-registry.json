@@ -14962,7 +14962,7 @@
       "name": "ValueCard",
       "group": "display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Card variant for values / principles grids — icon + title + short description, with the same three visual treatments as `LocationCard`.",
       "dense": "Values/principles card: icon + title + short description; grid unit for about/culture sections",
       "keywords": [

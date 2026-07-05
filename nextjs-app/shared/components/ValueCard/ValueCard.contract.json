@@ -3,7 +3,7 @@
     "name": "ValueCard",
     "tier": "molecule",
     "group": "display",
-    "status": "beta",
+    "status": "stable",
     "description": "Card variant for values / principles grids — icon + title + short description, with the same three visual treatments as `LocationCard`.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-value-card",
     "radixPrimitive": null,
@@ -39,7 +39,9 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots bootstrapped (had none) compare-clean; Controls 6/6 operable + 0 inert; eyeballed the elevated card surface in light and dark. Fixed a real reduced-motion gap: the elevated hover lift (hover:-translate-y-1) and the color/shadow transitions had no motion-reduce guard, yet reducedMotion claimed true — the global reset only covers the logo marquee. Added motion-reduce:transition-none + motion-reduce:hover:translate-y-0. Also added the missing unit test (axe + variant surface + reduced-motion guard)."
     },
     "tokens": {
         "colors": [
@@ -57,7 +59,43 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/AboutPageContent/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ValuesSection/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ValuesSection/ValuesSection.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "icon": {
