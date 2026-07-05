@@ -3,11 +3,11 @@
     "name": "SocialShare",
     "tier": "molecule",
     "group": "structure",
-    "status": "beta",
-    "description": "SocialShare — production @dt component (Storybook beta).",
+    "status": "stable",
+    "description": "Row of social share targets: per-network deep links plus a native-share or copy-link button, with an optional labelled article-footer variant.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-social-share",
     "radixPrimitive": null,
-    "element": "div",
+    "element": "section",
     "variants": {
         "variant": {
             "values": [
@@ -28,19 +28,49 @@
         "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
+        "keyboard": [
+            "Tab — moves through each channel link then the native-share/copy button.",
+            "Enter — activates the focused share link or button."
+        ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "ariaRequirements": [],
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "ariaRequirements": [
+            "Root is a labelled `<section aria-label>`; the action row is a `role=group` with its own label.",
+            "Each channel is a real `<a target=_blank rel=noopener>` with an aria-label naming the network; the icon is decorative.",
+            "Copy-link confirmation is announced via the shared Toast."
+        ],
+        "reviewedNote": "2026-07-05 — beta→stable (fleet #17): renders a real <section> (contract element corrected div→section). Root-caused + fixed a PRE-EXISTING BlogPost story failure: the section label used `heading ?? t('shareHeading')`, and the controls-autogen args-enhancer seeds `heading=''` for the free-string prop, so `??` passed the empty string through and dropped the section's accessible name (and the region role). Switched to `||` at the use site (the #852 seeded-'' leak class). Also added a prefers-reduced-motion guard to the .channelLink colour transition and removed a stale hardcoded '11/11' compliance story. Re-verified: axe + plays green in light/dark/forced-colors (incl. BlogPost), 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: promoted from alpha with Example + ForcedColors stories and the Storybook axe gate."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleShare.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "url": {
@@ -73,7 +103,8 @@
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Label channels by icon alone — each share link needs an aria-label naming the network.",
+        "Drop the copy-link fallback on browsers without the native share API — the component already handles both paths."
     ],
     "displayName": "SocialShare",
     "keywords": [

@@ -1,0 +1,24 @@
+- region "Share":
+  - paragraph: Share
+  - group "Share":
+    - link "Share on LinkedIn":
+      - /url: https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdigitaltableteur.com%2Fblog%2Fworkflow-tips
+      - img "Share on LinkedIn"
+    - link "Share on Twitter":
+      - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fdigitaltableteur.com%2Fblog%2Fworkflow-tips&text=Workflow%20Tips%20for%20Developers
+      - img "Share on Twitter"
+    - link "Share on Facebook":
+      - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdigitaltableteur.com%2Fblog%2Fworkflow-tips
+      - img "Share on Facebook"
+    - link "Share on Reddit":
+      - /url: https://reddit.com/submit?url=https%3A%2F%2Fdigitaltableteur.com%2Fblog%2Fworkflow-tips&title=Workflow%20Tips%20for%20Developers
+      - img "Share on Reddit"
+    - link "Share on WhatsApp":
+      - /url: https://wa.me/?text=Workflow%20Tips%20for%20Developers%20https%3A%2F%2Fdigitaltableteur.com%2Fblog%2Fworkflow-tips
+      - img "Share on WhatsApp"
+    - link "Share on Instagram":
+      - /url: https://www.instagram.com/digitaltableteur/
+      - img "Share on Instagram"
+    - button "Copy to clipboard":
+      - img "Copy to clipboard"
+  - status

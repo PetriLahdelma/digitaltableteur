@@ -88,6 +88,16 @@ describe("SocialShare", () => {
     expect(screen.getByRole("button", { name: /share/i })).toBeInTheDocument();
   });
 
+  it("falls back to the localized heading when heading is an empty string", () => {
+    // `heading || t("shareHeading")` (not `??`) — an empty-string heading, incl.
+    // the "" the Storybook controls args-enhancer seeds, must not drop the
+    // section's accessible name. With `??` the label was "" and the <section>
+    // lost its region role entirely; with `||` it falls back to t("shareHeading").
+    renderSocialShare({ ...defaultProps, heading: "", variant: "article" });
+    const region = screen.getByRole("region");
+    expect(region.getAttribute("aria-label")).toBeTruthy();
+  });
+
   test("renders copy link button when native share is not supported", () => {
     // Mock navigator to not have share property
     const originalNavigator = global.navigator;
