@@ -3,6 +3,13 @@ import React from "react";
 import ButtonGroup from "./ButtonGroup";
 import Button from "@dt/Button";
 import { IconButton } from "@dt/IconButton";
+import {
+  CaretLeft,
+  CaretRight,
+  TextB,
+  TextItalic,
+  TextUnderline,
+} from "@phosphor-icons/react";
 import contract from "./ButtonGroup.contract.json";
 
 // Children presets are generated, not hand-written: the select maps a segment
@@ -83,9 +90,24 @@ export const WithIconButtons: Story = {
   },
   render: () => (
     <ButtonGroup ariaLabel="Text formatting">
-      <IconButton variant="secondary" size="md" icon="text-b" label="Bold" />
-      <IconButton variant="secondary" size="md" icon="text-italic" label="Italic" />
-      <IconButton variant="secondary" size="md" icon="text-underline" label="Underline" />
+      <IconButton
+        variant="secondary"
+        size="md"
+        icon={<TextB weight="bold" style={{ width: 16, height: 16 }} />}
+        label="Bold"
+      />
+      <IconButton
+        variant="secondary"
+        size="md"
+        icon={<TextItalic weight="bold" style={{ width: 16, height: 16 }} />}
+        label="Italic"
+      />
+      <IconButton
+        variant="secondary"
+        size="md"
+        icon={<TextUnderline weight="bold" style={{ width: 16, height: 16 }} />}
+        label="Underline"
+      />
     </ButtonGroup>
   ),
 };
@@ -100,8 +122,18 @@ export const Pager: Story = {
   },
   render: () => (
     <ButtonGroup ariaLabel="Pagination">
-      <IconButton variant="secondary" size="md" icon="caret-left" label="Previous page" />
-      <IconButton variant="secondary" size="md" icon="caret-right" label="Next page" />
+      <IconButton
+        variant="secondary"
+        size="md"
+        icon={<CaretLeft weight="bold" style={{ width: 16, height: 16 }} />}
+        label="Previous page"
+      />
+      <IconButton
+        variant="secondary"
+        size="md"
+        icon={<CaretRight weight="bold" style={{ width: 16, height: 16 }} />}
+        label="Next page"
+      />
     </ButtonGroup>
   ),
 };
