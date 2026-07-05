@@ -3,11 +3,11 @@
     "name": "SkipLink",
     "tier": "atom",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Skip-to-main link shown on keyboard focus.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skip-link",
     "radixPrimitive": null,
-    "element": "div",
+    "element": "a",
     "variants": {},
     "asChild": false,
     "subParts": [],
@@ -18,19 +18,48 @@
         "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
+        "keyboard": [
+            "Tab — first focusable element on the page; reveals the link.",
+            "Enter — jumps focus to the main content target."
+        ],
+        "ariaRequirements": [
+            "Renders a real `<a href=\"#main-content\">` so the browser moves focus to the target region natively; no ARIA needed.",
+            "Visually hidden off-screen until focused, then revealed as a high-contrast pill — never `display:none` (which would drop it from the tab order)."
+        ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-07-05 — beta→stable (fleet #15): renders a real <a> (contract element corrected div→a). The reveal slide (transition: inset-block-start) is already guarded by a prefers-reduced-motion:reduce { transition:none } block, so reducedMotion is honest. --color-primary/--color-white token pairing holds contrast across all 4 themes. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: Breadth beta port, keyboard/ARIA reviewed, ForcedColors story + Storybook axe gate."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "slots": [],
     "schemaVersion": 2,
     "props": {
@@ -48,7 +77,8 @@
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Hide it with display:none or visibility:hidden — it must stay in the tab order; the component already handles visual hiding.",
+        "Render it anywhere but first in the layout — it must be the first focusable element to be reachable."
     ],
     "composesWith": [
         "NavLink"

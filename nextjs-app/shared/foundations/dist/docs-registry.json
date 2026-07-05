@@ -12161,7 +12161,7 @@
       "name": "SkipLink",
       "group": "navigation",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Skip-to-main link shown on keyboard focus.",
       "dense": "Visually hidden anchor that surfaces as a high-contrast pill on keyboard focus; jumps to #main-content (href overridable); belongs as the first focusable element of the page",
       "keywords": [

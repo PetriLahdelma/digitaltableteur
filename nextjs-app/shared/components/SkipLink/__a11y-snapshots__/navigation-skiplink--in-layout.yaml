@@ -1,0 +1,10 @@
+- link "Skip to main content":
+  - /url: "#demo-main"
+- navigation "Primary":
+  - link "Home":
+    - /url: "#one"
+  - link "Work":
+    - /url: "#two"
+  - link "Contact":
+    - /url: "#three"
+- main: Main content starts here.

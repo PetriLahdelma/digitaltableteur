@@ -11,7 +11,7 @@ const defaultArgs = {
 const meta = {
   title: "Navigation/SkipLink",
   component: SkipLink,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
