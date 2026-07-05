@@ -1,0 +1,5 @@
+- toolbar "Article actions":
+  - button "Back"
+  - button "Search"
+  - button "Toggle dark mode"
+  - button "Open navigation menu"

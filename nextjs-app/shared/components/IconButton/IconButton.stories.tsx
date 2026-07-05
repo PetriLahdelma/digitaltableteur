@@ -17,7 +17,7 @@ const defaultArgs = {
 const meta = {
   title: "Actions/IconButton",
   component: IconButton,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

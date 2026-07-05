@@ -7047,7 +7047,7 @@
       "name": "IconButton",
       "group": "actions",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Icon-only action button. Wraps @dt/Button in its rounded icon-only form with an enforced accessible label, sharing Button's variant (weight) x tone (semantic) matrix and surface awareness.",
       "dense": "icon-only action button; wraps Button (rounded) so variant (weight) x tone x surface stay in lockstep, sm/md/lg, required accessible label, tooltip passthrough",
       "keywords": [
