@@ -5347,7 +5347,7 @@
       "name": "EnhancedProjectCard",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Portfolio project card with image, video hover, and metadata.",
       "dense": "Portfolio project card w/ image, hover video preview, and metadata; the work-index upgrade of ProjectCard",
       "keywords": [
@@ -5452,7 +5452,8 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Render both EnhancedProjectCard and ProjectCard in the same index — pick one per grid.",
+        "Pass a non-decorative thumbnail without also passing a description (the sr-only span is the only accessible name)."
       ],
       "usage": {
         "description": "Work-index project card with image, hover video preview, and metadata. The richer sibling of ProjectCard; use one per index, not both."

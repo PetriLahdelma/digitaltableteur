@@ -3,12 +3,23 @@
     "name": "EnhancedProjectCard",
     "tier": "molecule",
     "group": "marketing",
-    "status": "beta",
+    "status": "stable",
     "description": "Portfolio project card with image, video hover, and metadata.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-enhanced-project-card",
     "radixPrimitive": null,
-    "element": "div",
-    "variants": {},
+    "element": "a",
+    "variants": {
+        "aspectRatio": {
+            "values": [
+                "video",
+                "square",
+                "portrait",
+                "landscape"
+            ],
+            "default": "video",
+            "propSourced": true
+        }
+    },
     "asChild": false,
     "subParts": [],
     "requiredStories": [
@@ -18,19 +29,88 @@
         "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
+        "keyboard": [
+            "The whole card is a single link (`<a>` via next/link); Tab focuses it, Enter activates it.",
+            "Hover-only affordances (video preview, revealed tags) also fire on `:focus-visible` so keyboard users get parity."
+        ],
+        "ariaRequirements": [
+            "Root is a stretched `<a>`; a visually-hidden `<span>` carries category + description + tags as the accessible name via `aria-describedby`.",
+            "The thumbnail image `alt` is empty and the hover `<video>` is `aria-hidden` (decorative; the sr-only span is the source of truth)."
+        ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots bootstrapped (had none) compare-clean; Controls operable + 0 inert; eyeballed the card surface in light and dark. Fixed a real defect: `element` was \"div\" but the root render is an `<a>` (next/link). Declared the `aspectRatio` styling axis as a propSourced variant. Reduced-motion is already fully guarded (a `@media (prefers-reduced-motion: reduce)` block neutralises every transition/animation/transform, and the hover-video autoplay is JS-gated on the reduced-motion media query). Added the missing unit test (axe + link semantics + aspect-ratio class + reduced-motion guard)."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "slots": [],
     "schemaVersion": 2,
     "props": {
@@ -90,7 +170,8 @@
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Render both EnhancedProjectCard and ProjectCard in the same index — pick one per grid.",
+        "Pass a non-decorative thumbnail without also passing a description (the sr-only span is the only accessible name)."
     ],
     "composesWith": [
         "Container",
