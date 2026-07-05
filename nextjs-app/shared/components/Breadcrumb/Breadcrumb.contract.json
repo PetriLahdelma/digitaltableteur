@@ -65,6 +65,10 @@
         "collapseLabel": {
             "optional": true,
             "type": "string"
+        },
+        "homeIcon": {
+            "optional": true,
+            "type": "boolean"
         }
     },
     "forbiddenUse": [

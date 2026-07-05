@@ -31,6 +31,12 @@ export type BreadcrumbProps = {
   maxItems?: number;
   /** Accessible name for the ellipsis menu trigger. @default "Show N hidden breadcrumbs" */
   collapseLabel?: string;
+  /**
+   * Render the first item as a house icon instead of its text label. The
+   * item's label becomes the icon's accessible name, so screen readers still
+   * announce it (e.g. "Home"). @default false
+   */
+  homeIcon?: boolean;
 };
 
 const useIsomorphicLayoutEffect =
@@ -84,6 +90,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
   underline = "always",
   maxItems,
   collapseLabel,
+  homeIcon = false,
 }) => {
   const isStatic = typeof maxItems === "number" && maxItems > 0;
   const navRef = React.useRef<HTMLElement | null>(null);
@@ -129,11 +136,32 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
   const leadingCount = isStatic ? staticLeading : autoLeading;
   const isCollapsed = leadingCount != null;
 
-  const renderLink = (item: BreadcrumbItem) => (
-    <Link href={item.href as string} size="sm" underline={underline}>
-      {item.label}
-    </Link>
-  );
+  const renderItemContent = (
+    item: BreadcrumbItem,
+    idx: number,
+    isLast: boolean,
+  ) => {
+    const isLink = Boolean(item.href) && !isLast;
+    // First item optionally renders as a house icon; its label is the icon's
+    // accessible name. Icons carry no wavy underline.
+    if (homeIcon && idx === 0) {
+      const icon = <Icon name="house" ariaLabel={item.label} size="sm" />;
+      return isLink ? (
+        <Link href={item.href as string} size="sm" underline="none">
+          {icon}
+        </Link>
+      ) : (
+        <span className={styles.current}>{icon}</span>
+      );
+    }
+    return isLink ? (
+      <Link href={item.href as string} size="sm" underline={underline}>
+        {item.label}
+      </Link>
+    ) : (
+      <span className={styles.current}>{item.label}</span>
+    );
+  };
 
   const renderEllipsis = (hidden: BreadcrumbItem[]) => (
     <Menu>
@@ -185,11 +213,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
           <>
             {collapsed.leading.map((item, idx) => (
               <li key={`${item.label}-${idx}`} className={styles.item}>
-                {item.href ? (
-                  renderLink(item)
-                ) : (
-                  <span className={styles.current}>{item.label}</span>
-                )}
+                {renderItemContent(item, idx, false)}
                 <span className={styles.separator}>/</span>
               </li>
             ))}
@@ -206,11 +230,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
             const isLast = idx === lastIndex;
             return (
               <li key={`${item.label}-${idx}`} className={styles.item}>
-                {item.href && !isLast ? (
-                  renderLink(item)
-                ) : (
-                  <span className={styles.current}>{item.label}</span>
-                )}
+                {renderItemContent(item, idx, isLast)}
                 {!isLast && <span className={styles.separator}>/</span>}
               </li>
             );
@@ -234,11 +254,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
                 className={styles.item}
                 data-measure-item
               >
-                {item.href && !isLast ? (
-                  renderLink(item)
-                ) : (
-                  <span className={styles.current}>{item.label}</span>
-                )}
+                {renderItemContent(item, idx, isLast)}
                 {!isLast && <span className={styles.separator}>/</span>}
               </li>
             );

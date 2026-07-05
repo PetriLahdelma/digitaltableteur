@@ -214,6 +214,28 @@ describe("Breadcrumb collapse (static maxItems)", () => {
     ).toHaveAttribute("href", "/components/overlays/menu");
   });
 
+  it("renders the first item as a house icon while keeping its accessible name", () => {
+    render(
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: "Article" },
+        ]}
+        homeIcon
+      />,
+    );
+    // The first link is announced by its label (the icon's accessible name)
+    // but shows no text label.
+    const first = screen.getByRole("link", { name: "Home" });
+    expect(first).toHaveAttribute("href", "/");
+    expect(first).not.toHaveTextContent("Home");
+    // Other items are unaffected.
+    expect(screen.getByRole("link", { name: "Blog" })).toHaveTextContent(
+      "Blog",
+    );
+  });
+
   it("uses a custom collapseLabel when provided", () => {
     render(
       <Breadcrumb

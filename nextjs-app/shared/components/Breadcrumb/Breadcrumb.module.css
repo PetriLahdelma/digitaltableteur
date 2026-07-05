@@ -11,7 +11,13 @@
   display: inline-flex;
   margin: 0;
   padding: 0;
-  align-items: center;
+
+  /* Align by baseline, not center: underlined links reserve 6px padding-bottom
+     for the wavy underline (global .wavyUnderline), so they are taller than the
+     plain current span. Centering would drop the current text below the link
+     baseline; baseline alignment keeps all text on one line in every underline
+     mode. */
+  align-items: baseline;
   gap: 0.25rem;
   list-style: none;
   list-style-type: " ";
@@ -19,7 +25,7 @@
 
 .item {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 0.25rem;
 }
 
@@ -57,15 +63,22 @@
   outline-offset: 2px;
 }
 
+/* Dots and caret occupy the same fixed width so swapping them when the menu
+   opens/closes does not shift the row. */
+
 .ellipsisDots {
+  display: inline-flex;
+  inline-size: 1.25rem;
+  justify-content: center;
   font-size: 1.1em;
-  letter-spacing: 0.05em;
 }
 
 /* The glyph flips to a chevron while the menu is open (Radix data-state). */
 
 .ellipsisCaret {
   display: none;
+  inline-size: 1.25rem;
+  justify-content: center;
 }
 
 .ellipsis[data-state="open"] .ellipsisDots {

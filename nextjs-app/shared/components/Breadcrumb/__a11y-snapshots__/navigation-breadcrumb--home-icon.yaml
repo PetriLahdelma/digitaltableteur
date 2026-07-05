@@ -1,0 +1,13 @@
+- status: Work in progress (beta)
+- navigation "Breadcrumb":
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+        - img "Home"
+      - text: /
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+      - text: /
+    - listitem: Article
