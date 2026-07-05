@@ -12588,15 +12588,12 @@
         "className": {
           "optional": true,
           "type": "string"
-        },
-        "usePortal": {
-          "optional": true,
-          "type": "boolean"
         }
       },
       "composesWith": [
         "Button",
-        "Icon"
+        "Icon",
+        "Menu"
       ],
       "prefersOver": [
         "two adjacent Buttons for a primary action plus its variants"
@@ -12623,7 +12620,7 @@
           },
           {
             "guidance": true,
-            "description": "Set usePortal when the trigger lives inside an overflow-hidden container, otherwise the menu clips."
+            "description": "The dropdown always portals (shared Menu primitive), so it never clips even inside an overflow-hidden container."
           },
           {
             "guidance": true,
@@ -12692,12 +12689,12 @@
         {
           "story": "ExportFormats",
           "description": "A menu of parallel format choices with one disabled entry; disabled options are skipped by keyboard navigation.",
-          "source": "export const ExportFormats: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"A menu of parallel format choices with one disabled entry; disabled options are skipped by keyboard navigation.\",\n      },\n    },\n  },\n  args: {\n    label: \"Export\",\n    variant: \"secondary\",\n    toggleLabel: \"Choose export format\",\n    options: [\n      { id: \"pdf\", label: \"Export as PDF\", trailingIcon: \"file-pdf\" },\n      { id: \"csv\", label: \"Export CSV\", trailingIcon: \"file-csv\" },\n      {\n        id: \"xlsx\",\n        label: \"Export Excel\",\n        disabled: true,\n        trailingIcon: \"file-xls\",\n      },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const menuTrigger = canvas.getByRole(\"button\", {\n      name: /choose export format/i,\n    });\n    await userEvent.click(menuTrigger);\n    await waitFor(() => {\n      expect(canvas.getByRole(\"menu\")).toBeInTheDocument();\n    });\n    expect(\n      canvas.getByRole(\"menuitem\", { name: /export excel/i }),\n    ).toBeDisabled();\n    await userEvent.click(\n      canvas.getByRole(\"menuitem\", { name: /export as pdf/i }),\n    );\n  },\n};"
+          "source": "export const ExportFormats: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"A menu of parallel format choices with one disabled entry; disabled options are skipped by keyboard navigation.\",\n      },\n    },\n  },\n  args: {\n    label: \"Export\",\n    variant: \"secondary\",\n    toggleLabel: \"Choose export format\",\n    options: [\n      { id: \"pdf\", label: \"Export as PDF\", trailingIcon: \"file-text\" },\n      { id: \"csv\", label: \"Export CSV\", trailingIcon: \"download\" },\n      {\n        id: \"xlsx\",\n        label: \"Export Excel\",\n        disabled: true,\n        trailingIcon: \"file-text\",\n      },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const menuTrigger = canvas.getByRole(\"button\", {\n      name: /choose export format/i,\n    });\n    await userEvent.click(menuTrigger);\n    await waitFor(() => {\n      expect(screen.getByRole(\"menu\")).toBeInTheDocument();\n    });\n    expect(\n      screen.getByRole(\"menuitem\", { name: /export excel/i }),\n    ).toHaveAttribute(\"data-disabled\");\n    await userEvent.click(\n      screen.getByRole(\"menuitem\", { name: /export as pdf/i }),\n    );\n  },\n};"
         },
         {
           "story": "NestedSubmenus",
           "description": "One optional submenu level via children; opens on hover, ArrowRight, or Enter. Parent options cannot carry onSelect (compile-time enforced).",
-          "source": "export const NestedSubmenus: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"One optional submenu level via children; opens on hover, ArrowRight, or Enter. Parent options cannot carry onSelect (compile-time enforced).\",\n      },\n    },\n  },\n  args: {\n    label: \"Publish\",\n    options: [\n      {\n        id: \"environment\",\n        label: \"Environment\",\n        children: [\n          { id: \"prod\", label: \"Production\", trailingIcon: \"check\" },\n          { id: \"staging\", label: \"Staging\" },\n        ],\n      },\n      {\n        id: \"notify\",\n        label: \"Notify\",\n        children: [\n          { id: \"slack\", label: \"Slack channel\", trailingIcon: \"bell\" },\n          { id: \"email\", label: \"Email subscribers\" },\n        ],\n      },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const menuTrigger = canvas.getByRole(\"button\", {\n      name: /moreOptions|more options/i,\n    });\n    await userEvent.click(menuTrigger);\n    await waitFor(() => {\n      expect(canvas.getByRole(\"menu\")).toBeInTheDocument();\n    });\n    const envOption = canvas.getByRole(\"menuitem\", { name: /environment/i });\n    await userEvent.hover(envOption);\n    await waitFor(() => {\n      expect(\n        canvas.getByRole(\"menuitem\", { name: /production/i }),\n      ).toBeInTheDocument();\n    });\n    await userEvent.click(\n      canvas.getByRole(\"menuitem\", { name: /production/i }),\n    );\n  },\n};"
+          "source": "export const NestedSubmenus: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"One optional submenu level via children; opens on hover, ArrowRight, or Enter. Parent options cannot carry onSelect (compile-time enforced).\",\n      },\n    },\n  },\n  args: {\n    label: \"Publish\",\n    options: [\n      {\n        id: \"environment\",\n        label: \"Environment\",\n        children: [\n          { id: \"prod\", label: \"Production\", trailingIcon: \"check\" },\n          { id: \"staging\", label: \"Staging\" },\n        ],\n      },\n      {\n        id: \"notify\",\n        label: \"Notify\",\n        children: [\n          { id: \"slack\", label: \"Slack channel\", trailingIcon: \"share-network\" },\n          { id: \"email\", label: \"Email subscribers\" },\n        ],\n      },\n    ],\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const menuTrigger = canvas.getByRole(\"button\", {\n      name: /more options/i,\n    });\n    await userEvent.click(menuTrigger);\n    await waitFor(() => {\n      expect(screen.getByRole(\"menu\")).toBeInTheDocument();\n    });\n    // Hover opens the submenu (Radix Sub).\n    await userEvent.hover(\n      screen.getByRole(\"menuitem\", { name: /environment/i }),\n    );\n    await waitFor(() => {\n      expect(\n        screen.getByRole(\"menuitem\", { name: /production/i }),\n      ).toBeInTheDocument();\n    });\n  },\n};"
         },
         {
           "story": "DisabledState",

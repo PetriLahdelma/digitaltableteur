@@ -114,6 +114,13 @@
   color: var(--color-muted);
 }
 
+/* Clamp a trailing glyph to the compact hint size, mirroring the leading icon. */
+
+.itemTrailing svg {
+  block-size: 0.875rem;
+  inline-size: 0.875rem;
+}
+
 .subTrigger[data-state="open"] {
   background-color: var(--color-neutral-bg);
 }
