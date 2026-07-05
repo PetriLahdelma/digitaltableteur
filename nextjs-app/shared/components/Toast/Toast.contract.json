@@ -3,7 +3,7 @@
     "name": "Toast",
     "tier": "molecule",
     "group": "feedback",
-    "status": "beta",
+    "status": "stable",
     "description": "Transient status message with tone, position, and auto-dismiss.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=393-35",
     "radixPrimitive": null,
@@ -61,15 +61,48 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components. 2026-07-03 (batch 4) — Toaster (Tailwind duplicate host) deleted; providers/ToastProvider is the single imperative host and now forwards tone/position.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-05 — beta→stable (fleet #16): renders a real <div role=status|alert> with aria-live/aria-atomic; role/politeness derive from tone (error/warning=assertive, else polite). Slide-in animation is guarded by @media (prefers-reduced-motion:reduce){ transition:none }, so reducedMotion is honest. tone is optional at runtime (untinted, polite when omitted); the enum default 'info' is the nominal semantic default. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert (duration EFFECT_EXEMPT — timing prop), AT snapshots refreshed 4 modes. 2026-05-26 origin: production behavior verified; required stories aligned with validate:components. 2026-07-03 (batch 4): Toaster (Tailwind duplicate host) deleted; providers/ToastProvider is the single imperative host forwarding tone/position.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleShare.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/page.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "open": {
