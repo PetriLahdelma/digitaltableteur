@@ -204,7 +204,11 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   // Single and Multi variants
   return (
     <figure
-      className={`${styles.wrapper} ${styles[variant]}`}
+      // `sb-unstyled` opts the whole snippet out of Storybook's docs-container
+      // typography reset. Without it, `.css-1xxktr1 :where(pre:not(...)):not(.prismjs)`
+      // (specificity 0,2,0) zeroes the `.pre` padding (0,1,0) in docs pages, so the
+      // line-number gutter collapses flush to the left edge. Inert outside Storybook.
+      className={`${styles.wrapper} ${styles[variant]} sb-unstyled`}
       data-variant={variant}
     >
       <div className={styles.toolbar} aria-hidden={!allowCopy}>
