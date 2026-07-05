@@ -12,7 +12,7 @@ const defaultArgs = {
 const meta = {
   title: "Navigation/NavLink",
   component: NavLink,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

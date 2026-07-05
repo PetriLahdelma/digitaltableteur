@@ -1,0 +1,5 @@
+- navigation "Docs":
+  - link "Home (exact)":
+    - /url: /
+  - link "Work (prefix)":
+    - /url: /work

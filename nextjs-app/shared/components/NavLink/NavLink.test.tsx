@@ -77,6 +77,16 @@ describe("NavLink", () => {
     expect(link.className).not.toContain("is-idle");
   });
 
+  it("guards its color transition under prefers-reduced-motion", () => {
+    usePathnameMock.mockReturnValue("/work");
+    render(<NavLink href="/work">Work</NavLink>);
+    // reducedMotion:true must be literally honest — the transition-colors
+    // fade is neutralised via motion-reduce (matches Pagination / ValueCard).
+    expect(screen.getByRole("link", { name: "Work" }).className).toContain(
+      "motion-reduce:transition-none",
+    );
+  });
+
   it("has no axe violations inside a labelled nav", async () => {
     usePathnameMock.mockReturnValue("/work");
     const { container } = render(

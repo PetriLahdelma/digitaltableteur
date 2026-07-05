@@ -1,0 +1,9 @@
+- navigation "Primary":
+  - link "Home":
+    - /url: /
+  - link "Work":
+    - /url: /work
+  - link "About":
+    - /url: /about
+  - link "Contact":
+    - /url: /contact
