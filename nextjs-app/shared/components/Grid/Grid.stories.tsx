@@ -35,7 +35,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/Grid",
   component: Grid,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
