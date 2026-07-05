@@ -93,8 +93,7 @@ export function Pagination({
 
   return (
     <nav
-      role="navigation"
-      aria-label={t("blogPage", "Page navigation")}
+      aria-label={t("blogPageNavigation", "Page navigation")}
       className={cn("flex items-center justify-center gap-1", className)}
     >
       {/* Previous button */}
@@ -107,7 +106,7 @@ export function Pagination({
           "inline-flex items-center justify-center",
           "w-10 h-10 rounded-lg",
           "font-body text-sm",
-          "transition-colors duration-200",
+          "transition-colors duration-200 motion-reduce:transition-none",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           canGoPrev
             ? "text-foreground hover:bg-accent hover:text-accent-foreground"
@@ -145,7 +144,7 @@ export function Pagination({
                 "inline-flex items-center justify-center",
                 "w-10 h-10 rounded-lg",
                 "font-body text-sm",
-                "transition-colors duration-200",
+                "transition-colors duration-200 motion-reduce:transition-none",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                 isActive
                   ? "bg-foreground text-background"
@@ -168,7 +167,7 @@ export function Pagination({
           "inline-flex items-center justify-center",
           "w-10 h-10 rounded-lg",
           "font-body text-sm",
-          "transition-colors duration-200",
+          "transition-colors duration-200 motion-reduce:transition-none",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           canGoNext
             ? "text-foreground hover:bg-accent hover:text-accent-foreground"

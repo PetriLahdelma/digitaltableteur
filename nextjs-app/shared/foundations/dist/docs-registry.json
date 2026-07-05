@@ -9720,7 +9720,7 @@
       "name": "Pagination",
       "group": "navigation",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Pagination controls for paged lists (article archive, search results). Renders a `<nav>` landmark with previous/next buttons and a numbered list; supports ellipsis truncation for long page ranges.",
       "dense": "Numbered pager: prev/next chevrons + sibling window w/ ellipsis; controlled (1-indexed currentPage + onPageChange); aria-current=page on active; labels en/fi/sv; null when totalPages<=1",
       "keywords": [
@@ -9781,7 +9781,7 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Remove Previous/Next on edges — use `aria-disabled` so the visual stays stable.",
+        "Remove Previous/Next on edges — keep them as disabled buttons so the visual stays stable.",
         "Render more than ~10 page numbers inline — switch to a 'Page X of Y' label with prev/next only."
       ],
       "usage": {

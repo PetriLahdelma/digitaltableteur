@@ -33,7 +33,7 @@ const defaultArgs = {
 const meta = {
   title: "Navigation/Pagination",
   component: Pagination,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

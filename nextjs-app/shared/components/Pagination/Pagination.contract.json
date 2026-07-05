@@ -3,7 +3,7 @@
     "name": "Pagination",
     "tier": "molecule",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Pagination controls for paged lists (article archive, search results). Renders a `<nav>` landmark with previous/next buttons and a numbered list; supports ellipsis truncation for long page ranges.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-pagination",
     "radixPrimitive": null,
@@ -24,14 +24,17 @@
             "Enter / Space — activates the focused control."
         ],
         "ariaRequirements": [
-            "Renders a `<nav>` element with `aria-label='Pagination'` (overridable).",
+            "Renders a `<nav>` landmark labelled from i18n (`blogPageNavigation` → 'Page navigation' / 'Sivunavigointi' / 'Sidnavigering').",
             "Current page sets `aria-current='page'`.",
-            "Previous/next buttons that are unavailable use `aria-disabled='true'` instead of being removed, so the visual structure does not jump."
+            "Previous/next are `<button disabled>` on the edges (still in the DOM) so the visual structure does not jump.",
+            "Chevrons and the ellipsis are `aria-hidden`; each page button carries its own `Page N` accessible name."
         ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots refreshed compare-clean; Controls operable + 0 inert; eyeballed the pager in light and dark. Fixed two real defects: (1) the `<nav>` landmark reused the `blogPage` i18n key, so its accessible name resolved to 'Page' / 'Sivu' instead of a navigation label — added a dedicated `blogPageNavigation` key (en/fi/sv) and dropped the redundant explicit `role='navigation'`; (2) the color transitions had no `prefers-reduced-motion` guard yet reducedMotion claimed true — added `motion-reduce:transition-none`."
     },
     "tokens": {
         "colors": [
@@ -49,7 +52,33 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "currentPage": {
@@ -74,7 +103,7 @@
         }
     },
     "forbiddenUse": [
-        "Remove Previous/Next on edges — use `aria-disabled` so the visual stays stable.",
+        "Remove Previous/Next on edges — keep them as disabled buttons so the visual stays stable.",
         "Render more than ~10 page numbers inline — switch to a 'Page X of Y' label with prev/next only."
     ],
     "composesWith": [
