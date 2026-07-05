@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - menu "Actions":
   - menuitem "Rename"
   - menuitem "Duplicate"
