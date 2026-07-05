@@ -22,7 +22,7 @@ import schema from "./schema.json";
 const meta: Meta<typeof List> = {
   title: "Content/List",
   component: List,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

@@ -7941,9 +7941,9 @@
       "name": "List",
       "group": "structure",
       "tier": 1,
-      "status": "beta",
-      "description": "List — production @dt component (Storybook beta).",
-      "dense": "Typographic list: as ul|ol|dl, items ReactNode[], size on the text ladder, terminals serif|sans, listStyleType incl. none, spacing compact|normal|relaxed; component owns rhythm — no per-item margins",
+      "status": "stable",
+      "description": "Typographic list (ul or ol) that renders `items` on the text ladder — size and terminals match the surrounding Text voice, listStyleType styles or removes markers, and spacing owns the inter-item rhythm.",
+      "dense": "Typographic list: as ul|ol, items ReactNode[], size on the text ladder, terminals serif|sans, listStyleType incl. none, spacing compact|normal|relaxed; component owns rhythm — no per-item margins",
       "keywords": [
         "list",
         "bullet",
@@ -8074,14 +8074,15 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Pass pre-wrapped `<li>` elements in items — items are the contents; List renders the li.",
+        "Use it for a single item or for layout — Stack is layout, List is list semantics."
       ],
       "usage": {
-        "description": "List renders `items` as a typographic list on the text ladder: `as` picks ul/ol/dl semantics, `size` and `terminals` match the surrounding Text voice, `listStyleType` styles or removes markers, `spacing` sets the rhythm between items. It owns inter-item spacing — no margins on items. For custom marker treatments (like ProcessBlock's em dashes) pass `listStyleType=\"none\"` and style via className.",
+        "description": "List renders `items` as a typographic list on the text ladder: `as` picks ul/ol semantics, `size` and `terminals` match the surrounding Text voice, `listStyleType` styles or removes markers, `spacing` sets the rhythm between items. It owns inter-item spacing — no margins on items. For custom marker treatments (like ProcessBlock's em dashes) pass `listStyleType=\"none\"` and style via className.",
         "bestPractices": [
           {
             "guidance": true,
-            "description": "Pick as by meaning: ol when order matters, ul otherwise, dl for term-description pairs."
+            "description": "Pick as by meaning: ol when order matters, ul otherwise."
           },
           {
             "guidance": true,
@@ -8108,12 +8109,12 @@
           {
             "name": "List element",
             "required": true,
-            "description": "ul, ol, or dl chosen by as; carries size/terminals typography and spacing rhythm."
+            "description": "ul or ol chosen by as; carries size/terminals typography and spacing rhythm."
           },
           {
             "name": "Item",
             "required": true,
-            "description": "Rendered li (or dt/dd content) per entry in items; List owns the wrapper, callers pass contents only."
+            "description": "Rendered `<li>` per entry in items; List owns the wrapper, callers pass the contents only."
           },
           {
             "name": "Marker",
