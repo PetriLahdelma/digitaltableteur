@@ -3,11 +3,11 @@
     "name": "List",
     "tier": "molecule",
     "group": "structure",
-    "status": "beta",
-    "description": "List — production @dt component (Storybook beta).",
+    "status": "stable",
+    "description": "Typographic list (ul or ol) that renders `items` on the text ladder — size and terminals match the surrounding Text voice, listStyleType styles or removes markers, and spacing owns the inter-item rhythm.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-list",
     "radixPrimitive": null,
-    "element": "div",
+    "element": "ul",
     "variants": {
         "size": {
             "values": [
@@ -27,7 +27,7 @@
                 "serif",
                 "sans"
             ],
-            "default": "serif",
+            "default": "sans",
             "propSourced": true
         }
     },
@@ -47,15 +47,81 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "ariaRequirements": [],
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "ariaRequirements": [
+            "Renders a real `<ul>`/`<ol>` with one `<li>` per entry, so assistive tech announces list role and item count.",
+            "`listStyleType=\"none\"` maps to a single-space marker (`\" \"`) rather than CSS `none`, which preserves list semantics in Safari/VoiceOver where `list-style:none` silences them."
+        ],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes; AT snapshots refreshed compare-clean; Controls operable + 0 inert; no motion in the CSS so reducedMotion is trivially honest. Fixed real defects: `element` was \"div\" but the root render is a `<ul>`/`<ol>`; the placeholder description was replaced with an honest one; `variants.terminals.default` said \"serif\" but the component defaults to \"sans\"; and the docs overclaimed `dl` support (the `as` prop is only ul|ol and children are always `<li>`)."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "items": {
@@ -141,7 +207,8 @@
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Pass pre-wrapped `<li>` elements in items — items are the contents; List renders the li.",
+        "Use it for a single item or for layout — Stack is layout, List is list semantics."
     ],
     "composesWith": [
         "Text",
@@ -156,13 +223,13 @@
         "description list",
         "items"
     ],
-    "dense": "Typographic list: as ul|ol|dl, items ReactNode[], size on the text ladder, terminals serif|sans, listStyleType incl. none, spacing compact|normal|relaxed; component owns rhythm — no per-item margins",
+    "dense": "Typographic list: as ul|ol, items ReactNode[], size on the text ladder, terminals serif|sans, listStyleType incl. none, spacing compact|normal|relaxed; component owns rhythm — no per-item margins",
     "usage": {
-        "description": "List renders `items` as a typographic list on the text ladder: `as` picks ul/ol/dl semantics, `size` and `terminals` match the surrounding Text voice, `listStyleType` styles or removes markers, `spacing` sets the rhythm between items. It owns inter-item spacing — no margins on items. For custom marker treatments (like ProcessBlock's em dashes) pass `listStyleType=\"none\"` and style via className.",
+        "description": "List renders `items` as a typographic list on the text ladder: `as` picks ul/ol semantics, `size` and `terminals` match the surrounding Text voice, `listStyleType` styles or removes markers, `spacing` sets the rhythm between items. It owns inter-item spacing — no margins on items. For custom marker treatments (like ProcessBlock's em dashes) pass `listStyleType=\"none\"` and style via className.",
         "bestPractices": [
             {
                 "guidance": true,
-                "description": "Pick as by meaning: ol when order matters, ul otherwise, dl for term-description pairs."
+                "description": "Pick as by meaning: ol when order matters, ul otherwise."
             },
             {
                 "guidance": true,
@@ -189,12 +256,12 @@
             {
                 "name": "List element",
                 "required": true,
-                "description": "ul, ol, or dl chosen by as; carries size/terminals typography and spacing rhythm."
+                "description": "ul or ol chosen by as; carries size/terminals typography and spacing rhythm."
             },
             {
                 "name": "Item",
                 "required": true,
-                "description": "Rendered li (or dt/dd content) per entry in items; List owns the wrapper, callers pass contents only."
+                "description": "Rendered `<li>` per entry in items; List owns the wrapper, callers pass the contents only."
             },
             {
                 "name": "Marker",
