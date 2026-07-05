@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - button "Open modal"
 - dialog "Saving changes":
   - heading "Saving changes" [level=2]

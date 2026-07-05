@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - button "Open modal"
 - alertdialog "Something went wrong":
   - heading "Something went wrong" [level=2]

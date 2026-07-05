@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - button "Open modal"
 - dialog "Heads up":
   - heading "Heads up" [level=2]

@@ -1,5 +1,5 @@
-- status: Work in progress (beta)
 - button "Open modal"
 - dialog "Heads up":
   - heading "Heads up" [level=2]
   - text: This workspace is read-only during maintenance.
+  - button "OK"

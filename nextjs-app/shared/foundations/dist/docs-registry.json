@@ -8833,7 +8833,7 @@
       "name": "Modal",
       "group": "overlay",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Modal dialog for confirmations, forms, and focused tasks.",
       "dense": "Portal dialog w/ focus trap + inert bg; severity info|success|warning|error (error/warning => alertdialog); title/description ARIA-wired; menu/footer/icon slots; animation scale|slide|fade",
       "keywords": [

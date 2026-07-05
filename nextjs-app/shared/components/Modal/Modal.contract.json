@@ -3,7 +3,7 @@
     "name": "Modal",
     "tier": "molecule",
     "group": "overlay",
-    "status": "beta",
+    "status": "stable",
     "description": "Modal dialog for confirmations, forms, and focused tasks.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=384-13",
     "radixPrimitive": null,
@@ -45,15 +45,43 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-06-05 — portal-aware AT snapshots, severity polish, forced-colors story; focus trap + Escape reviewed in plays.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-06 — beta→stable: portal-aware AT snapshots regenerated across base/light/dark/forced-colors (all 9 beta-matrix stories green), severity color axis verified per value via getComputedStyle, footer default fixed; focus trap + Escape reviewed in plays.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "severity": {
