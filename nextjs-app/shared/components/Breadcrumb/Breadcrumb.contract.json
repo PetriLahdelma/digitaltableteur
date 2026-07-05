@@ -57,6 +57,14 @@
                 "hover",
                 "none"
             ]
+        },
+        "maxItems": {
+            "optional": true,
+            "type": "number"
+        },
+        "collapseLabel": {
+            "optional": true,
+            "type": "string"
         }
     },
     "forbiddenUse": [

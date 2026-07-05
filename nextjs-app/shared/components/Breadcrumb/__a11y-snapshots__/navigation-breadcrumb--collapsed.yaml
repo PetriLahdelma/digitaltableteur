@@ -6,7 +6,10 @@
         - /url: /
       - text: /
     - listitem:
-      - link "Blog":
-        - /url: /blog
+      - link "Components":
+        - /url: /components
       - text: /
-    - listitem: Article
+    - listitem:
+      - button "Show 3 hidden breadcrumbs"
+      - text: /
+    - listitem: Button

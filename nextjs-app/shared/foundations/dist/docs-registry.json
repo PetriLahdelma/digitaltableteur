@@ -1825,6 +1825,16 @@
           "name": "aria-label",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "maxItems",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "collapseLabel",
+          "type": "string",
+          "required": false
         }
       ],
       "props": {
@@ -1844,6 +1854,14 @@
             "hover",
             "none"
           ]
+        },
+        "maxItems": {
+          "optional": true,
+          "type": "number"
+        },
+        "collapseLabel": {
+          "optional": true,
+          "type": "string"
         }
       },
       "composesWith": [
@@ -1919,7 +1937,17 @@
         {
           "story": "UnderlineModes",
           "description": "The underline prop is forwarded straight to each Link, so the trail behaves exactly like a Link: `always` keeps the wavy underline on, `hover` reveals it on hover and keyboard focus, and `none` omits it. There is no separate breadcrumb underline — Link owns it entirely.",
-          "source": "export const UnderlineModes: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The underline prop is forwarded straight to each Link, so the trail behaves exactly like a Link: `always` keeps the wavy underline on, `hover` reveals it on hover and keyboard focus, and `none` omits it. There is no separate breadcrumb underline — Link owns it entirely.\",\n      },\n    },\n  },\n  render: () => {\n    const items = [\n      { label: \"Home\", href: \"/\" },\n      { label: \"Blog\", href: \"/blog\" },\n      { label: \"Article\" },\n    ];\n    return (\n      <div style={{ display: \"flex\", flexDirection: \"column\", gap: \"1rem\" }}>\n        <Breadcrumb items={items} underline=\"always\" aria-label=\"Always\" />\n        <Breadcrumb items={items} underline=\"hover\" aria-label=\"Hover\" />\n        <Breadcrumb items={items} underline=\"none\" aria-label=\"None\" />\n      </div>\n    );\n  },\n};\n\n/** A four-level trail: every level except the current one is a link. */"
+          "source": "export const UnderlineModes: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The underline prop is forwarded straight to each Link, so the trail behaves exactly like a Link: `always` keeps the wavy underline on, `hover` reveals it on hover and keyboard focus, and `none` omits it. There is no separate breadcrumb underline — Link owns it entirely.\",\n      },\n    },\n  },\n  render: () => {\n    const items = [\n      { label: \"Home\", href: \"/\" },\n      { label: \"Blog\", href: \"/blog\" },\n      { label: \"Article\" },\n    ];\n    return (\n      <div style={{ display: \"flex\", flexDirection: \"column\", gap: \"1rem\" }}>\n        <Breadcrumb items={items} underline=\"always\" aria-label=\"Always\" />\n        <Breadcrumb items={items} underline=\"hover\" aria-label=\"Hover\" />\n        <Breadcrumb items={items} underline=\"none\" aria-label=\"None\" />\n      </div>\n    );\n  },\n};\n\nconst longTrail = [\n  { label: \"Home\", href: \"/\" },\n  { label: \"Components\", href: \"/components\" },\n  { label: \"Overlays\", href: \"/components/overlays\" },\n  { label: \"Menu\", href: \"/components/overlays/menu\" },\n  { label: \"Dropdown\", href: \"/components/overlays/menu/dropdown\" },\n  { label: \"Button\" },\n];\n\n/** Static collapse: maxItems caps the trail without measuring. */"
+        },
+        {
+          "story": "Collapsed",
+          "description": "Pass maxItems to collapse a long trail deterministically (no measuring): the first maxItems − 2 leading items and the current item stay visible, and the middle levels move into an ellipsis menu (the shared Menu primitive). The current page is always shown. The ellipsis glyph flips to a chevron while the menu is open.",
+          "source": "export const Collapsed: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Pass maxItems to collapse a long trail deterministically (no measuring): the first maxItems − 2 leading items and the current item stay visible, and the middle levels move into an ellipsis menu (the shared Menu primitive). The current page is always shown. The ellipsis glyph flips to a chevron while the menu is open.\",\n      },\n    },\n  },\n  args: {\n    items: longTrail,\n    maxItems: 4,\n  },\n};\n\n/** Automatic collapse: the trail measures itself and collapses only when it overflows its container. */"
+        },
+        {
+          "story": "Responsive",
+          "description": "With no maxItems, the trail measures itself against its container and collapses only when it cannot fit, keeping as many leading items as possible plus the current page, and re-expands on resize. Shown in a narrow 340px container so the overflow collapses; widen it and the hidden levels return.",
+          "source": "export const Responsive: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"With no maxItems, the trail measures itself against its container and collapses only when it cannot fit, keeping as many leading items as possible plus the current page, and re-expands on resize. Shown in a narrow 340px container so the overflow collapses; widen it and the hidden levels return.\",\n      },\n    },\n  },\n  render: (args) => (\n    <div style={{ maxWidth: 340, border: \"1px dashed var(--color-border)\", padding: \"0.75rem\", resize: \"horizontal\", overflow: \"auto\" }}>\n      <Breadcrumb {...args} items={longTrail} />\n    </div>\n  ),\n};\n\n/** A four-level trail: every level except the current one is a link. */"
         },
         {
           "story": "DeepTrail",

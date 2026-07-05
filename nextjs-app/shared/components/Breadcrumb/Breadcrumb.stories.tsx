@@ -92,6 +92,13 @@ export const ForcedColors: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
+  args: {
+    items: [
+      { label: "Home", href: "/" },
+      { label: "Blog", href: "/blog" },
+      { label: "Article" },
+    ],
+  },
 };
 
 /** Underline follows the Link contract: always, hover, or none. */
@@ -120,6 +127,52 @@ export const UnderlineModes: Story = {
       </div>
     );
   },
+};
+
+const longTrail = [
+  { label: "Home", href: "/" },
+  { label: "Components", href: "/components" },
+  { label: "Overlays", href: "/components/overlays" },
+  { label: "Menu", href: "/components/overlays/menu" },
+  { label: "Dropdown", href: "/components/overlays/menu/dropdown" },
+  { label: "Button" },
+];
+
+/** Static collapse: maxItems caps the trail without measuring. */
+export const Collapsed: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Pass maxItems to collapse a long trail deterministically (no measuring): the first maxItems − 2 leading items and the current item stay visible, and the middle levels move into an ellipsis menu (the shared Menu primitive). The current page is always shown. The ellipsis glyph flips to a chevron while the menu is open.",
+      },
+    },
+  },
+  args: {
+    items: longTrail,
+    maxItems: 4,
+  },
+};
+
+/** Automatic collapse: the trail measures itself and collapses only when it overflows its container. */
+export const Responsive: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "With no maxItems, the trail measures itself against its container and collapses only when it cannot fit, keeping as many leading items as possible plus the current page, and re-expands on resize. Shown in a narrow 340px container so the overflow collapses; widen it and the hidden levels return.",
+      },
+    },
+  },
+  render: (args) => (
+    <div style={{ maxWidth: 340, border: "1px dashed var(--color-border)", padding: "0.75rem", resize: "horizontal", overflow: "auto" }}>
+      <Breadcrumb {...args} items={longTrail} />
+    </div>
+  ),
 };
 
 /** A four-level trail: every level except the current one is a link. */

@@ -35,3 +35,56 @@
   font-weight: 600;
   color: var(--primary-text-color);
 }
+
+/* Ellipsis trigger: an unstyled button that reads like the trail text and
+   opens the shared Menu holding the collapsed levels. */
+
+.ellipsis {
+  display: inline-flex;
+  padding: 0;
+  align-items: center;
+  border: none;
+  background: none;
+  font: inherit;
+  line-height: 1;
+  color: var(--link-color);
+  cursor: pointer;
+}
+
+.ellipsis:focus-visible {
+  border-radius: var(--radius-md);
+  outline: 2px solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: 2px;
+}
+
+.ellipsisDots {
+  font-size: 1.1em;
+  letter-spacing: 0.05em;
+}
+
+/* The glyph flips to a chevron while the menu is open (Radix data-state). */
+
+.ellipsisCaret {
+  display: none;
+}
+
+.ellipsis[data-state="open"] .ellipsisDots {
+  display: none;
+}
+
+.ellipsis[data-state="open"] .ellipsisCaret {
+  display: inline-flex;
+}
+
+/* Off-screen clone used only to measure natural item widths for the
+   automatic (width-based) collapse; inert + aria-hidden keeps it out of the
+   a11y tree and the tab order. */
+
+.measurer {
+  position: absolute;
+  white-space: nowrap;
+  pointer-events: none;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  visibility: hidden;
+}

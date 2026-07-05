@@ -1,0 +1,34 @@
+- status: Work in progress (beta)
+- navigation "Always":
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+      - text: /
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+      - text: /
+    - listitem: Article
+- navigation "Hover":
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+      - text: /
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+      - text: /
+    - listitem: Article
+- navigation "None":
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+      - text: /
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+      - text: /
+    - listitem: Article
