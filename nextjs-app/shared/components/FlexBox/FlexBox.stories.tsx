@@ -9,13 +9,13 @@ const defaultArgs = {
   align: "center" as const,
   children: (
     <>
-      <Text as="span" terminals="sans">
+      <Text as="span">
         Alpha
       </Text>
-      <Text as="span" terminals="sans">
+      <Text as="span">
         Beta
       </Text>
-      <Text as="span" terminals="sans">
+      <Text as="span">
         Gamma
       </Text>
     </>
@@ -48,7 +48,7 @@ const meta = {
           <>
             {["Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta"].map(
               (label) => (
-                <Text key={label} as="span" terminals="sans">
+                <Text key={label} as="span">
                   {label}
                 </Text>
               ),
@@ -91,10 +91,10 @@ export const Example: Story = {
       align="stretch"
       style={{ maxWidth: 320 }}
     >
-      <Text as="p" terminals="sans">
+      <Text as="p">
         Stacked editorial row
       </Text>
-      <Text as="p" terminals="sans">
+      <Text as="p">
         Second line with deliberate rhythm
       </Text>
     </FlexBox>

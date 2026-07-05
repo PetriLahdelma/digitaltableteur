@@ -39,7 +39,7 @@ export function ImprintPage() {
 
   return (
     <div className={styles.page}>
-      <Title level={1} terminals="sans" size="xs">
+      <Title level={1} size="xs">
         {t("imprintHeading")}
       </Title>
       <p>{t("imprintIntro")}</p>

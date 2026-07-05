@@ -166,7 +166,6 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
                 />
                 <Title
                   level={4}
-                  terminals="sans"
                   size="xs"
                   className={styles.memberName}
                 >

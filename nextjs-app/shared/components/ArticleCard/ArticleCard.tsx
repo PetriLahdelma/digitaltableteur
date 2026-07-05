@@ -74,21 +74,21 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   }
   return (
     <a href={link} className={`${styles.card} ${className}`.trim()}>
-      <Title level={2} size="s" terminals="serif" className={styles.title}>
+      <Title level={2} size="s" className={styles.title}>
         {title}
       </Title>
       {lead ? (
-        <Text as="p" terminals="sans" className={styles.lead}>
+        <Text as="p" className={styles.lead}>
           {lead}
         </Text>
       ) : null}
       <div className={styles.meta}>
         {readTimeDisplay && (
-          <Text as="span" terminals="sans" className={styles.readTime}>
+          <Text as="span" className={styles.readTime}>
             {readTimeDisplay}
           </Text>
         )}
-        <Text as="span" terminals="sans" className={styles.readMore}>
+        <Text as="span" className={styles.readMore}>
           {t("blogReadMore")}
         </Text>
       </div>

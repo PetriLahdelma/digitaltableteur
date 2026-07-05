@@ -49,14 +49,6 @@
   font-size: var(--font-size-title-xxl);
 }
 
-.fontSerif {
-  font-family: var(--font-heading), system-ui, sans-serif;
-}
-
-.fontSans {
-  font-family: var(--font-body), system-ui, sans-serif;
-}
-
 /* Line height utility classes */
 .lineHeightTight {
   line-height: var(--line-height-tight);
@@ -79,9 +71,7 @@
 }
 
 @supports (font-optical-sizing: auto) {
-  .title,
-  .fontSerif,
-  .fontSans {
+  .title {
     font-optical-sizing: auto;
   }
 }

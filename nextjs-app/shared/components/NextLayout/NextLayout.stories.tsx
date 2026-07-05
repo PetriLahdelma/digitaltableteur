@@ -7,10 +7,10 @@ import contract from "./NextLayout.contract.json";
 
 const sampleMain = (
   <div style={{ padding: "var(--space-layout-24)" }}>
-    <Title level={1} terminals="sans">
+    <Title level={1}>
       Page content
     </Title>
-    <Text as="p" terminals="sans">
+    <Text as="p">
       Production shell: skip link, header, main landmark, footer, chat, consent.
     </Text>
   </div>

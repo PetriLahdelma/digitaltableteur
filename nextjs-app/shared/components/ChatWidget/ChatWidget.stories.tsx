@@ -111,7 +111,7 @@ const ChatWidgetStoryDemo = (
       }}
     >
       <div style={{ maxWidth: "32rem", marginBottom: "6rem" }}>
-        <Text size="m" terminals="sans">
+        <Text size="m">
           Donny Preview
         </Text>
         <Text size="s">

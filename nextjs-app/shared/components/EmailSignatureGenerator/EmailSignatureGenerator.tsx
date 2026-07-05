@@ -328,7 +328,7 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
     <div className={styles.container}>
       <div className={styles.content}>
         <header className={styles.header}>
-          <Title level={1} size="m" terminals="sans" className={styles.title}>
+          <Title level={1} size="m" className={styles.title}>
             {t("emailSig.title", {
               defaultValue: `Create your ${companyName} email signature`,
             })}
@@ -650,7 +650,6 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
         title={t("emailSig.modalTitle", {
           defaultValue: "How to Import Your Signature",
         })}
-        titleTerminals="sans"
         footer={
           <Button variant="primary" onClick={() => setIsModalOpen(false)}>
             {t("emailSig.modalClose", { defaultValue: "Got it" })}
@@ -659,7 +658,7 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
       >
         <div className={styles.modalContent}>
           <div className={styles.instructionBlock}>
-            <Title level={3} size="s" terminals="sans">
+            <Title level={3} size="s">
               {t("emailSig.gmailTitle", { defaultValue: "Gmail" })}
             </Title>
             <ol className={styles.instructionList}>
@@ -692,7 +691,7 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
           </div>
 
           <div className={styles.instructionBlock}>
-            <Title level={3} size="s" terminals="sans">
+            <Title level={3} size="s">
               {t("emailSig.macMailTitle", { defaultValue: "macOS Mail" })}
             </Title>
             <ol className={styles.instructionList}>
@@ -721,7 +720,7 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
           </div>
 
           <div className={styles.instructionBlock}>
-            <Title level={3} size="s" terminals="sans">
+            <Title level={3} size="s">
               {t("emailSig.iosMailTitle", { defaultValue: "iOS Mail" })}
             </Title>
             <ol className={styles.instructionList}>
@@ -750,7 +749,7 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
           </div>
 
           <div className={styles.instructionBlock}>
-            <Title level={3} size="s" terminals="sans">
+            <Title level={3} size="s">
               {t("emailSig.imageTipsTitle", { defaultValue: "Image Tips" })}
             </Title>
             <ul className={styles.tipsList}>

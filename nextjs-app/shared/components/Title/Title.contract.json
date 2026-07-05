@@ -21,14 +21,6 @@
             ],
             "default": "l",
             "propSourced": true
-        },
-        "terminals": {
-            "values": [
-                "sans",
-                "serif"
-            ],
-            "default": "serif",
-            "propSourced": true
         }
     },
     "slots": [],
@@ -164,14 +156,6 @@
             "optional": true,
             "type": "1 | 2 | 3 | 4 | 5 | 6"
         },
-        "terminals": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "serif",
-                "sans"
-            ]
-        },
         "lineHeight": {
             "optional": true,
             "type": "union",
@@ -209,9 +193,9 @@
         "section",
         "outline"
     ],
-    "dense": "page/section headings; semantic level (h1-h6 via level/as) decoupled from visual size (xxs-xxl) and terminals (serif/sans); lineHeight ladder shared with Text",
+    "dense": "page/section headings; semantic level (h1-h6 via level/as) decoupled from visual size (xxs-xxl); lineHeight ladder shared with Text",
     "usage": {
-        "description": "Title renders page and section headings with the semantic level decoupled from the visual scale: pick the h1 to h6 tag with level or as, then choose size (xxs to xxl) and terminal family (serif for editorial weight, sans for product chrome) independently, so the document outline stays honest while the layout gets the right optics.",
+        "description": "Title renders page and section headings with the semantic level decoupled from the visual scale: pick the h1 to h6 tag with level or as, then choose the size (xxs to xxl) independently, so the document outline stays honest while the layout gets the right optics.",
         "bestPractices": [
             {
                 "guidance": true,
@@ -223,11 +207,11 @@
             },
             {
                 "guidance": true,
-                "description": "Use the serif terminal at size xl or xxl for hero headlines; the serif/sans alternation is the site's editorial signature."
+                "description": "Use size m or s for section headers in product chrome, and as=span for display text with no place in the outline."
             },
             {
                 "guidance": true,
-                "description": "Use terminals=sans at size m or s for section headers in product chrome, and as=span for display text with no place in the outline."
+                "description": "Reach for size xl or xxl on hero headlines; the visual size scales the optics independently of the semantic level."
             },
             {
                 "guidance": false,

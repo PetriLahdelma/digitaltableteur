@@ -7,7 +7,7 @@ const defaultArgs = {
   size: "lg" as const,
   center: true,
   children: (
-    <Text as="p" terminals="sans">
+    <Text as="p">
       Content constrained to the production max-width with responsive padding.
     </Text>
   ),
@@ -54,7 +54,7 @@ export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Container size="lg">
-      <Text as="p" terminals="sans">
+      <Text as="p">
         Canonical page gutter — matches marketing and app shells.
       </Text>
     </Container>

@@ -17,7 +17,7 @@ export default function CodeWindowDemoPage() {
   return (
     <Container size="lg" className={styles.page}>
       <header className={styles.header}>
-        <Title level={1} size="l" terminals="serif">
+        <Title level={1} size="l">
           Code Window Demo
         </Title>
         <Text as="p" size="m">
@@ -27,7 +27,7 @@ export default function CodeWindowDemoPage() {
       </header>
 
       <section className={styles.section}>
-        <Title level={2} size="m" terminals="serif">
+        <Title level={2} size="m">
           TypeScript + Title
         </Title>
         <CodeBlockWindow
@@ -40,14 +40,14 @@ export default function CodeWindowDemoPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} size="m" terminals="serif">
+        <Title level={2} size="m">
           Bash / Curl
         </Title>
         <CodeBlockWindow language="bash">{fixture.bash}</CodeBlockWindow>
       </section>
 
       <section className={styles.section}>
-        <Title level={2} size="m" terminals="serif">
+        <Title level={2} size="m">
           JSON Payload
         </Title>
         <CodeBlockWindow title="payload.json" language="json">
@@ -56,7 +56,7 @@ export default function CodeWindowDemoPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} size="m" terminals="serif">
+        <Title level={2} size="m">
           Long Line (Scroll)
         </Title>
         <CodeBlockWindow title="long-line.ts" language="ts">
@@ -65,7 +65,7 @@ export default function CodeWindowDemoPage() {
       </section>
 
       <section className={`${styles.section} ${styles.darkPreview} themeDark`}>
-        <Title level={2} size="m" terminals="serif">
+        <Title level={2} size="m">
           Dark Mode Preview
         </Title>
         <CodeBlockWindow

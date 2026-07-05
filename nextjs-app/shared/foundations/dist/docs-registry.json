@@ -7942,8 +7942,8 @@
       "group": "structure",
       "tier": 1,
       "status": "stable",
-      "description": "Typographic list (ul or ol) that renders `items` on the text ladder — size and terminals match the surrounding Text voice, listStyleType styles or removes markers, and spacing owns the inter-item rhythm.",
-      "dense": "Typographic list: as ul|ol, items ReactNode[], size on the text ladder, terminals serif|sans, listStyleType incl. none, spacing compact|normal|relaxed; component owns rhythm — no per-item margins",
+      "description": "Typographic list (ul or ol) that renders `items` on the text ladder — size matches the surrounding Text voice, listStyleType styles or removes markers, and spacing owns the inter-item rhythm.",
+      "dense": "Typographic list: as ul|ol, items ReactNode[], size on the text ladder, listStyleType incl. none, spacing compact|normal|relaxed; component owns rhythm — no per-item margins",
       "keywords": [
         "list",
         "bullet",
@@ -7965,11 +7965,6 @@
           "required": false
         },
         {
-          "name": "terminals",
-          "type": "serif | sans",
-          "required": false
-        },
-        {
           "name": "size",
           "type": "s | xl | xs | xxs | m | l | xxl",
           "required": false
@@ -7982,6 +7977,11 @@
         {
           "name": "listStyleType",
           "type": "none | decimal | circle | square | disc | decimal-leading-zero | lower-alpha | upper-alpha | lower-roman | upper-roman",
+          "required": false
+        },
+        {
+          "name": "spacing",
+          "type": "normal | relaxed | compact",
           "required": false
         }
       ],
@@ -8001,14 +8001,6 @@
         "className": {
           "optional": true,
           "type": "string"
-        },
-        "terminals": {
-          "optional": true,
-          "type": "union",
-          "values": [
-            "serif",
-            "sans"
-          ]
         },
         "size": {
           "optional": true,
@@ -8078,7 +8070,7 @@
         "Use it for a single item or for layout — Stack is layout, List is list semantics."
       ],
       "usage": {
-        "description": "List renders `items` as a typographic list on the text ladder: `as` picks ul/ol semantics, `size` and `terminals` match the surrounding Text voice, `listStyleType` styles or removes markers, `spacing` sets the rhythm between items. It owns inter-item spacing — no margins on items. For custom marker treatments (like ProcessBlock's em dashes) pass `listStyleType=\"none\"` and style via className.",
+        "description": "List renders `items` as a typographic list on the text ladder: `as` picks ul/ol semantics, `size` matches the surrounding Text voice, `listStyleType` styles or removes markers, `spacing` sets the rhythm between items. It owns inter-item spacing — no margins on items. For custom marker treatments (like ProcessBlock's em dashes) pass `listStyleType=\"none\"` and style via className.",
         "bestPractices": [
           {
             "guidance": true,
@@ -8086,7 +8078,7 @@
           },
           {
             "guidance": true,
-            "description": "Match size/terminals to the surrounding Text so lists read as part of the prose voice."
+            "description": "Match size to the surrounding Text so lists read as part of the prose voice."
           },
           {
             "guidance": true,
@@ -8109,7 +8101,7 @@
           {
             "name": "List element",
             "required": true,
-            "description": "ul or ol chosen by as; carries size/terminals typography and spacing rhythm."
+            "description": "ul or ol chosen by as; carries size typography and spacing rhythm."
           },
           {
             "name": "Item",
@@ -10614,7 +10606,7 @@
         {
           "story": "WithLabel",
           "description": "When precision matters, compose a visible Text label and value above the bar; the label prop still names the work for assistive tech.",
-          "source": "export const WithLabel: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"When precision matters, compose a visible Text label and value above the bar; the label prop still names the work for assistive tech.\",\n      },\n    },\n  },\n  render: () => (\n    <div style={{ inlineSize: \"min(20rem, 100%)\" }}>\n      <div\n        style={{\n          display: \"flex\",\n          justifyContent: \"space-between\",\n          marginBlockEnd: \"0.25rem\",\n        }}\n      >\n        <Text size=\"s\" terminals=\"sans\">\n          Uploading portfolio.pdf\n        </Text>\n        <Text size=\"s\" terminals=\"sans\">\n          72%\n        </Text>\n      </div>\n      <Progress value={72} label=\"Uploading portfolio.pdf\" />\n    </div>\n  ),\n};\n\n/** Track heights: sm, md, lg. */"
+          "source": "export const WithLabel: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"When precision matters, compose a visible Text label and value above the bar; the label prop still names the work for assistive tech.\",\n      },\n    },\n  },\n  render: () => (\n    <div style={{ inlineSize: \"min(20rem, 100%)\" }}>\n      <div\n        style={{\n          display: \"flex\",\n          justifyContent: \"space-between\",\n          marginBlockEnd: \"0.25rem\",\n        }}\n      >\n        <Text size=\"s\">\n          Uploading portfolio.pdf\n        </Text>\n        <Text size=\"s\">\n          72%\n        </Text>\n      </div>\n      <Progress value={72} label=\"Uploading portfolio.pdf\" />\n    </div>\n  ),\n};\n\n/** Track heights: sm, md, lg. */"
         },
         {
           "story": "Sizes",
@@ -13793,7 +13785,7 @@
       "tier": 1,
       "status": "stable",
       "description": "Body and inline typography with size, terminal, and line-height tokens.",
-      "dense": "body/inline typography; p by default, polymorphic as (span/strong/em/cite/headings), size + terminals + lineHeight ladder shared with Title",
+      "dense": "body/inline typography; p by default, polymorphic as (span/strong/em/cite/headings), size + lineHeight ladder shared with Title",
       "keywords": [
         "text",
         "paragraph",
@@ -13808,11 +13800,6 @@
         {
           "name": "as",
           "type": "cite | div | em | h1 | h2 | h3 | h4 | h5 | h6 | p | span | strong",
-          "required": false
-        },
-        {
-          "name": "terminals",
-          "type": "serif | sans",
           "required": false
         },
         {
@@ -13852,14 +13839,6 @@
             "p",
             "span",
             "strong"
-          ]
-        },
-        "terminals": {
-          "optional": true,
-          "type": "union",
-          "values": [
-            "serif",
-            "sans"
           ]
         },
         "size": {
@@ -13903,7 +13882,7 @@
         "override font-size via inline `style`. The ladder is the contract;"
       ],
       "usage": {
-        "description": "Text owns body and inline typography: paragraphs by default, with a polymorphic as prop for span, strong, em, cite, div and the heading tags when you need a heading shape at body weight. It shares the size, terminals and lineHeight ladder with Title, so editorial rhythm stays consistent across the site.",
+        "description": "Text owns body and inline typography: paragraphs by default, with a polymorphic as prop for span, strong, em, cite, div and the heading tags when you need a heading shape at body weight. It shares the size and lineHeight ladder with Title, so editorial rhythm stays consistent across the site.",
         "bestPractices": [
           {
             "guidance": true,
@@ -13919,7 +13898,7 @@
           },
           {
             "guidance": true,
-            "description": "Use size=xs with terminals=sans for captions and metadata."
+            "description": "Use size=xs for captions and metadata."
           },
           {
             "guidance": false,
@@ -13949,11 +13928,6 @@
           "story": "Sizes",
           "description": "The xxs to xxl body ramp.",
           "source": "export const Sizes = () => {\n  const { t } = useTranslation();\n  return (\n    <>\n      <Text size=\"s\">{t(\"storyTextSmall\")}</Text>\n      <Text size=\"m\">{t(\"storyTextMedium\")}</Text>\n      <Text size=\"l\">{t(\"storyTextLarge\")}</Text>\n    </>\n  );\n};\n\nSizes.tags = [\"example\"];\nSizes.parameters = {\n  ...(Sizes as { parameters?: object }).parameters,\n  docs: { description: { story: \"The xxs to xxl body ramp.\" } },\n};"
-        },
-        {
-          "story": "SerifAndSans",
-          "description": "Terminal families: serif for editorial weight, sans for product chrome.",
-          "source": "export const SerifAndSans = () => {\n  const { t } = useTranslation();\n  return (\n    <>\n      <Text terminals=\"sans\">{t(\"storyTextSans\")}</Text>\n      <Text terminals=\"serif\">{t(\"storyTextSerif\")}</Text>\n    </>\n  );\n};\n\nSerifAndSans.tags = [\"example\"];\nSerifAndSans.parameters = {\n  ...(SerifAndSans as { parameters?: object }).parameters,\n  docs: { description: { story: \"Terminal families: serif for editorial weight, sans for product chrome.\" } },\n};"
         },
         {
           "story": "LineHeights",
@@ -14367,7 +14341,7 @@
       "tier": 1,
       "status": "stable",
       "description": "Semantic heading with size and terminal (serif/sans) variants.",
-      "dense": "page/section headings; semantic level (h1-h6 via level/as) decoupled from visual size (xxs-xxl) and terminals (serif/sans); lineHeight ladder shared with Text",
+      "dense": "page/section headings; semantic level (h1-h6 via level/as) decoupled from visual size (xxs-xxl); lineHeight ladder shared with Text",
       "keywords": [
         "title",
         "heading",
@@ -14390,11 +14364,6 @@
           "required": false
         },
         {
-          "name": "terminals",
-          "type": "serif | sans",
-          "required": false
-        },
-        {
           "name": "lineHeight",
           "type": "normal | tight | snug | relaxed | loose",
           "required": false
@@ -14407,6 +14376,11 @@
         {
           "name": "className",
           "type": "string | undefined",
+          "required": false
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
           "required": false
         }
       ],
@@ -14452,14 +14426,6 @@
           "optional": true,
           "type": "1 | 2 | 3 | 4 | 5 | 6"
         },
-        "terminals": {
-          "optional": true,
-          "type": "union",
-          "values": [
-            "serif",
-            "sans"
-          ]
-        },
         "lineHeight": {
           "optional": true,
           "type": "union",
@@ -14489,7 +14455,7 @@
         "nest a Title inside a Button. Use the Button's text slot directly."
       ],
       "usage": {
-        "description": "Title renders page and section headings with the semantic level decoupled from the visual scale: pick the h1 to h6 tag with level or as, then choose size (xxs to xxl) and terminal family (serif for editorial weight, sans for product chrome) independently, so the document outline stays honest while the layout gets the right optics.",
+        "description": "Title renders page and section headings with the semantic level decoupled from the visual scale: pick the h1 to h6 tag with level or as, then choose the size (xxs to xxl) independently, so the document outline stays honest while the layout gets the right optics.",
         "bestPractices": [
           {
             "guidance": true,
@@ -14501,11 +14467,11 @@
           },
           {
             "guidance": true,
-            "description": "Use the serif terminal at size xl or xxl for hero headlines; the serif/sans alternation is the site's editorial signature."
+            "description": "Use size m or s for section headers in product chrome, and as=span for display text with no place in the outline."
           },
           {
             "guidance": true,
-            "description": "Use terminals=sans at size m or s for section headers in product chrome, and as=span for display text with no place in the outline."
+            "description": "Reach for size xl or xxl on hero headlines; the visual size scales the optics independently of the semantic level."
           },
           {
             "guidance": false,

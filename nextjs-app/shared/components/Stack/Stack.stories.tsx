@@ -8,10 +8,10 @@ const defaultArgs = {
   gap: "md" as const,
   children: (
     <>
-      <Text as="p" terminals="sans">
+      <Text as="p">
         First item
       </Text>
-      <Text as="p" terminals="sans">
+      <Text as="p">
         Second item
       </Text>
     </>
@@ -44,7 +44,7 @@ const meta = {
           <>
             {["First item", "Second item", "Third item", "Fourth item"].map(
               (label) => (
-                <Text key={label} as="p" terminals="sans">
+                <Text key={label} as="p">
                   {label}
                 </Text>
               ),
@@ -79,10 +79,10 @@ export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Stack direction="vertical" gap="sm">
-      <Text as="p" terminals="sans">
+      <Text as="p">
         Hero copy block
       </Text>
-      <Text as="p" terminals="sans">
+      <Text as="p">
         Supporting line with consistent spacing
       </Text>
     </Stack>

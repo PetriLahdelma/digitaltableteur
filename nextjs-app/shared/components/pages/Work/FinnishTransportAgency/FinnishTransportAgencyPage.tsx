@@ -293,7 +293,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       {/* Color System */}
       <section className={styles.colorSection}>
         <div className={styles.colorContent}>
-          <Title level={3} terminals="sans">Color System</Title>
+          <Title level={3}>Color System</Title>
           <Text size="s" className={styles.colorIntro}>
             Four primary blues form the wordmark, supported by warm grays and
             accent colors. The palette was specified for Pantone (print), CMYK
@@ -306,7 +306,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       {/* Typography */}
       <section className={styles.typographySection}>
         <div className={styles.typographyContent}>
-          <Title level={3} terminals="sans">Typography</Title>
+          <Title level={3}>Typography</Title>
           <Text size="s" className={styles.typographyIntro}>
             The identity uses Agfa Monotype Felbridge Pro, designed by Robin
             Nicholas in 2003 specifically for electronic display. Its letter
@@ -376,7 +376,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       {/* Applications Grid */}
       <section className={styles.applicationsSection}>
         <div className={styles.applicationsHeader}>
-          <Title level={3} terminals="sans">Applications</Title>
+          <Title level={3}>Applications</Title>
         </div>
         <div className={styles.applicationsGrid}>
           <figure className={styles.appItem}>
@@ -474,7 +474,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       {/* Key Results */}
       <section className={styles.resultsSection}>
         <div className={styles.resultsContent}>
-          <Title level={3} terminals="sans">Key Results</Title>
+          <Title level={3}>Key Results</Title>
           <div className={styles.resultsGrid}>
             <div className={styles.resultItem}>
               <span className={styles.resultValue}>3</span>

@@ -38,14 +38,6 @@
   font-size: var(--font-size-text-xxl);
 }
 
-.serif {
-  font-family: var(--font-heading), system-ui, sans-serif;
-}
-
-.sans {
-  font-family: var(--font-body), system-ui, sans-serif;
-}
-
 /* Line height utility classes */
 .lineHeightTight {
   line-height: var(--line-height-tight);
@@ -68,9 +60,7 @@
 }
 
 @supports (font-optical-sizing: auto) {
-  .text,
-  .serif,
-  .sans {
+  .text {
     font-optical-sizing: auto;
   }
 }

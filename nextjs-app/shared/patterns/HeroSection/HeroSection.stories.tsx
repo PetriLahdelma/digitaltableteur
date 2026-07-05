@@ -12,10 +12,10 @@ const defaultArgs = {
   justify: "center" as const,
   children: (
     <Container size="lg">
-      <Title level={1} terminals="sans">
+      <Title level={1}>
         Hero shell
       </Title>
-      <Text as="p" terminals="sans">
+      <Text as="p">
         Composable full-bleed marketing hero wrapper.
       </Text>
     </Container>
@@ -73,7 +73,7 @@ export const Example: Story = {
       justify="center"
     >
       <Container size="lg">
-        <Title level={1} terminals="sans">
+        <Title level={1}>
           Marketing hero frame
         </Title>
       </Container>

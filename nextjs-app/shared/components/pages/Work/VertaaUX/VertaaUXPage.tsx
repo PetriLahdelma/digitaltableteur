@@ -612,7 +612,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
       {/* Key Metrics */}
       <section className={styles.metricsSection}>
         <div className={styles.metricsContent}>
-          <Title level={3} terminals="sans">Key Metrics</Title>
+          <Title level={3}>Key Metrics</Title>
           <div className={styles.metricsGrid}>
             <div className={styles.metricItem}>
               <span className={styles.metricValue}>91+</span>

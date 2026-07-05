@@ -6,7 +6,7 @@ import contract from "./FadeIn.contract.json";
 const defaultArgs = {
   direction: "up" as const,
   children: (
-    <Text as="p" terminals="sans">
+    <Text as="p">
       Fades in on scroll
     </Text>
   ),
@@ -70,7 +70,7 @@ export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <FadeIn direction="up">
-      <Text as="p" terminals="sans">
+      <Text as="p">
         Production scroll reveal used across marketing sections.
       </Text>
     </FadeIn>

@@ -62,12 +62,12 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
       <Icon name={icon ?? toneIcon[tone]} ariaLabel={tone} size="md" />
       <div className={styles.content}>
         {title && (
-          <Title size="s" terminals="sans" className={styles.title}>
+          <Title size="s" className={styles.title}>
             {title}
           </Title>
         )}
         {description && (
-          <Text size="m" terminals="sans" className={styles.description}>
+          <Text size="m" className={styles.description}>
             {description}
           </Text>
         )}

@@ -40,10 +40,10 @@ export function PseoPillarPage({
   return (
     <PageLayout as="main" maxWidth="lg" spacing="comfortable">
       <div className={styles.root}>
-        <Title terminals="sans" level={1} size="l">
+        <Title level={1} size="l">
           {item.name}
         </Title>
-        <Text terminals="sans" size="l">
+        <Text size="l">
           {item.shortDescription}
         </Text>
 
@@ -62,7 +62,6 @@ export function PseoPillarPage({
               linkLabel={`Open ${page.title}`}
               title={page.title}
               titleProps={{
-                terminals: "sans",
                 level: 3,
                 size: "s",
                 as: "h3",

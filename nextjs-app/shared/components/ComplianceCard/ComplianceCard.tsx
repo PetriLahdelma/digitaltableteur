@@ -110,13 +110,12 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
         <div className={styles.header}>
           {titleIcon && <span className={styles.headerIcon}>{titleIcon}</span>}
           <div className={styles.headerContent}>
-            <Title level={2} terminals="sans" className={styles.headerTitle}>
+            <Title level={2} className={styles.headerTitle}>
               {title}
             </Title>
             {formattedDate && (
               <Text
                 as="div"
-                terminals="sans"
                 size="s"
                 className={styles.headerDate}
               >
@@ -138,7 +137,6 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
               <div className={styles.ruleHeader}>
                 <Text
                   as="span"
-                  terminals="sans"
                   size="s"
                   className={styles.ruleLabel}
                 >
@@ -153,7 +151,6 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
               </div>
               <Text
                 as="div"
-                terminals="sans"
                 size="s"
                 className={styles.ruleDetails}
               >

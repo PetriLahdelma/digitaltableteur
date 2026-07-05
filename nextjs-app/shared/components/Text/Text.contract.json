@@ -21,14 +21,6 @@
             ],
             "default": "m",
             "propSourced": true
-        },
-        "terminals": {
-            "values": [
-                "sans",
-                "serif"
-            ],
-            "default": "sans",
-            "propSourced": true
         }
     },
     "slots": [],
@@ -145,14 +137,6 @@
                 "strong"
             ]
         },
-        "terminals": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "serif",
-                "sans"
-            ]
-        },
         "size": {
             "optional": true,
             "type": "union",
@@ -202,9 +186,9 @@
         "caption",
         "emphasis"
     ],
-    "dense": "body/inline typography; p by default, polymorphic as (span/strong/em/cite/headings), size + terminals + lineHeight ladder shared with Title",
+    "dense": "body/inline typography; p by default, polymorphic as (span/strong/em/cite/headings), size + lineHeight ladder shared with Title",
     "usage": {
-        "description": "Text owns body and inline typography: paragraphs by default, with a polymorphic as prop for span, strong, em, cite, div and the heading tags when you need a heading shape at body weight. It shares the size, terminals and lineHeight ladder with Title, so editorial rhythm stays consistent across the site.",
+        "description": "Text owns body and inline typography: paragraphs by default, with a polymorphic as prop for span, strong, em, cite, div and the heading tags when you need a heading shape at body weight. It shares the size and lineHeight ladder with Title, so editorial rhythm stays consistent across the site.",
         "bestPractices": [
             {
                 "guidance": true,
@@ -220,7 +204,7 @@
             },
             {
                 "guidance": true,
-                "description": "Use size=xs with terminals=sans for captions and metadata."
+                "description": "Use size=xs for captions and metadata."
             },
             {
                 "guidance": false,

@@ -127,13 +127,12 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
               <Title
                 level={4}
                 size="xs"
-                terminals="sans"
                 className={styles.subtitle}
               >
                 {subtitle}
               </Title>
             )}
-            <Title level={4} size="s" terminals="sans" className={styles.title}>
+            <Title level={4} size="s" className={styles.title}>
               {title}
             </Title>
             {content.map((paragraph, index) => (

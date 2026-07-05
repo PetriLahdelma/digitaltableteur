@@ -226,7 +226,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
       {/* Color Palette */}
       <section className={styles.colorSection}>
         <div className={styles.colorContent}>
-          <Title level={3} terminals="sans">Color Palette</Title>
+          <Title level={3}>Color Palette</Title>
           <Text size="s">
             High contrast colors optimized for club environments and social media.
           </Text>
@@ -301,7 +301,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
       {/* Applications Section */}
       <section className={styles.applicationsSection}>
         <div className={styles.applicationsHeader}>
-          <Title level={3} terminals="sans">Applications</Title>
+          <Title level={3}>Applications</Title>
         </div>
         <div className={styles.applicationsGrid}>
           <figure className={styles.appItem}>
@@ -371,7 +371,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
       {/* Results Section */}
       <section className={styles.resultsSection}>
         <div className={styles.resultsContent}>
-          <Title level={3} terminals="sans">Key Results</Title>
+          <Title level={3}>Key Results</Title>
           <div className={styles.resultsGrid}>
             <div className={styles.resultItem}>
               <span className={styles.resultValue}>Merikerho</span>

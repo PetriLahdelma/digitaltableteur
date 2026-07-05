@@ -21,7 +21,6 @@ export interface ListProps {
   items: React.ReactNode[];
   as?: ListType;
   className?: string;
-  terminals?: "serif" | "sans";
   size?: TextSize;
   lineHeight?: LineHeight;
   style?: React.CSSProperties;
@@ -65,7 +64,6 @@ export const List = React.forwardRef<
     items,
     as = "ul",
     className = "",
-    terminals = "sans",
     size = "m",
     lineHeight,
     style,
@@ -78,7 +76,6 @@ export const List = React.forwardRef<
   // Polymorphic tag (ul/ol): widen to ElementType so the forwarded ref types
   // cleanly against both list elements.
   const Tag = as as React.ElementType;
-  const terminalClass = terminals === "serif" ? styles.serif : styles.sans;
   const sizeClass = sizeClassMap[size] || "";
   const lineHeightClass = lineHeight
     ? lineHeightClassMap[lineHeight] || ""
@@ -96,7 +93,7 @@ export const List = React.forwardRef<
   return (
     <Tag
       ref={ref}
-      className={`${styles.list} ${terminalClass} ${sizeClass} ${lineHeightClass} ${spacingClass} ${className}`.trim()}
+      className={`${styles.list} ${sizeClass} ${lineHeightClass} ${spacingClass} ${className}`.trim()}
       style={combinedStyle}
       role={role}
     >

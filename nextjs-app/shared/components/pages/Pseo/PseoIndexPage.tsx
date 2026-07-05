@@ -19,17 +19,17 @@ export function PseoIndexPage({
   return (
     <PageLayout as="main" maxWidth="lg" spacing="comfortable">
       <div className={styles.root}>
-        <Title terminals="sans" level={1} size="l">
+        <Title level={1} size="l">
           Design system playbooks
         </Title>
-        <Text className={styles.lead} size="l" terminals="sans">
+        <Text className={styles.lead} size="l">
           Practical guides for design systems and DesignOps—organized by
           service, stack, and team context. Each playbook includes a situation
           brief, failure modes, checklist, and links to relevant case work.
         </Text>
 
         <section className={styles.section}>
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             Start by service
           </Title>
           <div className={`${styles.grid} ${styles.gridTwo}`.trim()}>
@@ -41,7 +41,6 @@ export function PseoIndexPage({
                 linkLabel={`Open ${service.name}`}
                 title={service.name}
                 titleProps={{
-                  terminals: "sans",
                   level: 3,
                   size: "s",
                   as: "h3",
@@ -58,7 +57,7 @@ export function PseoIndexPage({
         </section>
 
         <section className={styles.section}>
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             Browse by stack
           </Title>
           <div className={`${styles.grid} ${styles.gridTwo}`.trim()}>
@@ -70,7 +69,6 @@ export function PseoIndexPage({
                 linkLabel={`Open ${getStackDisplayName(stack)}`}
                 title={getStackDisplayName(stack)}
                 titleProps={{
-                  terminals: "sans",
                   level: 3,
                   size: "s",
                   as: "h3",
@@ -87,7 +85,7 @@ export function PseoIndexPage({
         </section>
 
         <section className={styles.section}>
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             Browse by audience
           </Title>
           <div className={`${styles.grid} ${styles.gridThree}`.trim()}>
@@ -99,7 +97,6 @@ export function PseoIndexPage({
                 linkLabel={`Open ${audience.name}`}
                 title={audience.name}
                 titleProps={{
-                  terminals: "sans",
                   level: 3,
                   size: "s",
                   as: "h3",
@@ -116,10 +113,10 @@ export function PseoIndexPage({
         </section>
 
         <section className={styles.section}>
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             Featured playbooks
           </Title>
-          <Text terminals="sans">
+          <Text>
             A sample from the full library—pick a service and stack that matches
             your team:
           </Text>

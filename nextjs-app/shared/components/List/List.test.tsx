@@ -31,16 +31,6 @@ describe("List", () => {
     expect(container.firstChild).toHaveClass("custom-class");
   });
 
-  it("applies serif terminals class", () => {
-    const { container } = render(<List items={items} terminals="serif" />);
-    expect(container.firstChild).toHaveClass(styles.serif);
-  });
-
-  it("applies sans terminals class by default", () => {
-    const { container } = render(<List items={items} />);
-    expect(container.firstChild).toHaveClass(styles.sans);
-  });
-
   it("applies size class", () => {
     const { container } = render(<List items={items} size="l" />);
     expect(container.firstChild).toHaveClass(styles.textL);

@@ -9,7 +9,6 @@ type TextTag = "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "
 export type TextProps = {
   children: React.ReactNode;
   as?: TextTag;
-  terminals?: "serif" | "sans";
   size?: TextSize;
   lineHeight?: LineHeight;
 } & React.HTMLAttributes<HTMLElement>;
@@ -32,13 +31,12 @@ const lineHeightClassMap: Record<LineHeight, string> = {
   loose: styles["lineHeightLoose"] || "",
 };
 
-/** Body and inline typography with size, terminal, and line-height tokens. */
+/** Body and inline typography with size and line-height tokens. */
 const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
   {
     children,
     as = "p",
     className = "",
-    terminals = "sans",
     size = "m",
     lineHeight,
     style,
@@ -49,7 +47,6 @@ const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
   // Polymorphic tag: widen to ElementType so the single forwarded ref types
   // against every allowed element (p/span/div/headings) without per-tag casts.
   const Tag = as as React.ElementType;
-  const terminalClass = terminals === "serif" ? styles.serif : styles.sans;
   const sizeClass = sizeClassMap[size] || "";
   const lineHeightClass = lineHeight
     ? lineHeightClassMap[lineHeight] || ""
@@ -57,7 +54,7 @@ const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
   return (
     <Tag
       ref={ref}
-      className={`${styles.text} ${terminalClass} ${sizeClass} ${lineHeightClass} ${className}`.trim()}
+      className={`${styles.text} ${sizeClass} ${lineHeightClass} ${className}`.trim()}
       style={style}
       {...rest}
     >

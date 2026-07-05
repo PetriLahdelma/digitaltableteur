@@ -102,7 +102,6 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
             {hasServices && (
               <div className={styles.section}>
                 <Title
-                  terminals="sans"
                   size="xs"
                   level={3}
                   className={styles.sectionTitle}
@@ -112,7 +111,6 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
                 <List
                   items={services.map((s) => s.label)}
                   size="s"
-                  terminals="sans"
                 />
               </div>
             )}
@@ -120,7 +118,6 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
             {hasDuration && (
               <div className={styles.section}>
                 <Title
-                  terminals="sans"
                   size="xs"
                   level={3}
                   className={styles.sectionTitle}
@@ -134,7 +131,6 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
             {hasTools && (
               <div className={styles.section}>
                 <Title
-                  terminals="sans"
                   size="xs"
                   level={3}
                   className={styles.sectionTitle}
@@ -171,7 +167,6 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
 
         <div className={styles.overview}>
           <Title
-            terminals="sans"
             size="xs"
             level={3}
             className={styles.sectionTitle}

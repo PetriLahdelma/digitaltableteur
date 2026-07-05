@@ -82,13 +82,6 @@ const meta: Meta<typeof List> = {
       table: { defaultValue: { summary: "s" } },
     },
 
-    terminals: {
-      control: { type: "radio" },
-      options: ["sans", "serif"],
-      description: "Font family",
-      table: { defaultValue: { summary: "serif" } },
-    },
-
     lineHeight: {
       control: { type: "select" },
       options: ["tight", "snug", "normal", "relaxed", "loose"],
@@ -299,26 +292,6 @@ DifferentListStyles.tags = ["example"];
 DifferentListStyles.parameters = {
   controls: { disable: true },
   docs: { description: { story: "listStyleType styles or removes the marker; none plus a class is the hook for custom marker treatments while keeping list semantics." } },
-};
-
-export const SerifAndSans: StoryFn = () => {
-  const { t } = useTranslation();
-  const items = [t("storyListItem1"), t("storyListItem2"), t("storyListItem3")];
-
-  return (
-    <div style={{ display: "grid", gap: "2rem" }}>
-      <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "600" }}>
-          Sans (Default)
-        </p>
-        <List items={items} terminals="sans" />
-      </div>
-      <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "600" }}>Serif</p>
-        <List items={items} terminals="serif" />
-      </div>
-    </div>
-  );
 };
 
 export const WithComplexItems: StoryFn = () => {
