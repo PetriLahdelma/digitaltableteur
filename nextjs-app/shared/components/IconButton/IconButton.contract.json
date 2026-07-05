@@ -3,7 +3,7 @@
     "name": "IconButton",
     "tier": "atom",
     "group": "actions",
-    "status": "beta",
+    "status": "stable",
     "description": "Icon-only action button. Wraps @dt/Button in its rounded icon-only form with an enforced accessible label, sharing Button's variant (weight) x tone (semantic) matrix and surface awareness.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon-button",
     "radixPrimitive": null,
@@ -72,7 +72,9 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-07-03 — Astryx Phase 3 batch 1: API aligned to platinum variant x tone conventions (ghost/outline/default removed), keyboard/ARIA contract re-reviewed, axe unit tests added."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-07-05 — beta→stable (fleet #11): re-verified independently. Delegates all styling to stable @dt/Button, so reduced-motion (Button.module.css prefers-reduced-motion guard), variant/tone/surface matrix, and forced-colors inherit from Button. axe + plays green on all 9 stories in light/dark/forced-colors; 100% controls operable, 0 inert; AT snapshots captured for the four beta-matrix stories in all four modes. 2026-07-03 origin: API aligned to platinum variant x tone conventions (ghost/outline/default removed), keyboard/ARIA contract reviewed, axe unit tests added."
     },
     "tokens": {
         "colors": [
@@ -88,7 +90,43 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "displayName": "IconButton",
     "keywords": [
