@@ -10,7 +10,7 @@ import schema from "./schema.json";
 const meta: Meta<typeof Toast> = {
   title: "Feedback/Toast",
   component: Toast,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

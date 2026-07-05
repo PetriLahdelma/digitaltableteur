@@ -12209,7 +12209,8 @@
       ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Hide it with display:none or visibility:hidden — it must stay in the tab order; the component already handles visual hiding.",
+        "Render it anywhere but first in the layout — it must be the first focusable element to be reachable."
       ],
       "usage": {
         "description": "SkipLink lets keyboard and switch users bypass repeated chrome: visually hidden until focused, it surfaces as a high-contrast pill and jumps to the main content anchor (default `#main-content`). Render it as the first focusable element inside the layout so it is the very first Tab stop on every page, and keep the target id stable on the main wrapper.",
@@ -14504,7 +14505,7 @@
       "name": "Toast",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Transient status message with tone, position, and auto-dismiss.",
       "dense": "transient auto-dismiss status (default 3000ms); tone success|error|warning|info, 6 positions, sm/md/lg; fire imperatively via useToast().showToast(message, {tone, duration, position})",
       "keywords": [
