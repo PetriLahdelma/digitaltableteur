@@ -141,4 +141,31 @@ describe("Card", () => {
     expect(screen.getByText("new-end")).toBeInTheDocument();
     expect(screen.queryByText("old-extra")).not.toBeInTheDocument();
   });
+
+  it("renders footerStart and footerEnd regions", () => {
+    const { container } = render(
+      <Card
+        title="T"
+        footerStart={<button type="button">Destroy</button>}
+        footerEnd={<button type="button">Yes</button>}
+      />,
+    );
+    expect(screen.getByRole("button", { name: "Destroy" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Yes" })).toBeInTheDocument();
+    expect(container.querySelector('[class*="footerStart"]')).toBeTruthy();
+    expect(container.querySelector('[class*="footerEnd"]')).toBeTruthy();
+  });
+
+  it("renders no footer when neither footer slot is set", () => {
+    const { container } = render(<Card title="T">body</Card>);
+    expect(container.querySelector('[class*="footer"]')).toBeNull();
+  });
+
+  it("renders footerEnd alone (buttons-only footer)", () => {
+    const { container } = render(
+      <Card title="T" footerEnd={<button type="button">Only</button>} />,
+    );
+    expect(container.querySelector('[class*="footerEnd"]')).toBeTruthy();
+    expect(container.querySelector('[class*="footerStart"]')).toBeNull();
+  });
 });

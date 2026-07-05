@@ -55,6 +55,10 @@ export interface CardProps
   headerEnd?: React.ReactNode;
   /** @deprecated Use `headerEnd`. Legacy alias feeding the trailing header region. */
   extra?: React.ReactNode;
+  /** Leading footer region — the special/destructive action, pinned left. */
+  footerStart?: React.ReactNode;
+  /** Trailing footer region — 1–2 action buttons, pinned right. */
+  footerEnd?: React.ReactNode;
   /** Makes the whole card one link to this href */
   link?: string;
   /** Accessible name for the link when title alone is ambiguous */
@@ -94,6 +98,8 @@ export const Card: React.FC<CardProps> = ({
   headerStart,
   headerEnd,
   extra,
+  footerStart,
+  footerEnd,
   link,
   linkLabel,
   loading = false,
@@ -131,6 +137,8 @@ export const Card: React.FC<CardProps> = ({
   const leadingHeader = headerStart ?? titleNode;
   const trailingHeader = headerEnd ?? extra;
   const hasHeader = Boolean(leadingHeader || trailingHeader);
+
+  const hasFooter = Boolean(footerStart || footerEnd);
 
   return (
     <Tag
@@ -172,6 +180,16 @@ export const Card: React.FC<CardProps> = ({
             </Text>
           )}
           {children}
+          {hasFooter && (
+            <div className={styles.footer}>
+              {footerStart && (
+                <div className={styles.footerStart}>{footerStart}</div>
+              )}
+              {footerEnd && (
+                <div className={styles.footerEnd}>{footerEnd}</div>
+              )}
+            </div>
+          )}
           {link && !title && (
             <a href={link} className={styles.cardLink} aria-label={linkLabel ?? link} />
           )}
