@@ -14,12 +14,19 @@ export type BreadcrumbProps = {
   items: BreadcrumbItem[];
   /** Accessible name for the nav landmark. @default "Breadcrumb" */
   "aria-label"?: string;
+  /**
+   * Underline mode forwarded to the Link for each trail item — the same
+   * contract as Link: "always" shows the wavy underline permanently, "hover"
+   * reveals it on hover and keyboard focus, "none" omits it. @default "always"
+   */
+  underline?: "always" | "hover" | "none";
 };
 
 /** Breadcrumb navigation trail with current page indication. */
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
   items,
   "aria-label": ariaLabel = "Breadcrumb",
+  underline = "always",
 }) => {
   if (!items?.length) return null;
   const lastIndex = items.length - 1;
@@ -32,7 +39,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
           return (
             <li key={`${item.label}-${idx}`} className={styles.item}>
               {item.href && !isLast ? (
-                <Link href={item.href} size="sm" className={styles.link}>
+                <Link href={item.href} size="sm" underline={underline}>
                   {item.label}
                 </Link>
               ) : (

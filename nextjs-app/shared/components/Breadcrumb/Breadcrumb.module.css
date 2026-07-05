@@ -28,15 +28,8 @@
   color: var(--color-border);
 }
 
-.link {
-  text-decoration: none;
-  color: var(--link-color);
-}
-
-.link:hover,
-.link:focus-visible {
-  text-decoration: underline;
-}
+/* Link owns all color + underline behavior (color, wavy underline, focus ring)
+   via the underline prop; Breadcrumb must not re-decorate it. */
 
 .current {
   font-weight: 600;
