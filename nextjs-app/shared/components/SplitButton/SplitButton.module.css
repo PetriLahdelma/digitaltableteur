@@ -16,119 +16,12 @@
    own 2px Button outlines (folded into one shared seam via
    Button.module.css .splitSecondaryMain). A wrapper border double-framed
    the control at a mismatched radius and collided with the Button
-   focus-visible ring (clipped corner notches around the ring). */
+   focus-visible ring (clipped corner notches around the ring).
 
-.menu {
-  position: absolute;
-  top: calc(100% + var(--space-internal-8));
-  z-index: 20;
-  margin: 0;
-  padding-block: var(--space-internal-4);
-  padding-inline: var(--space-internal-4);
-  inline-size: max(12rem, 100%);
-  min-inline-size: 12rem;
-  border-radius: var(--radius-md, 0.5rem);
-  background: var(--color-white);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
-  inset-inline-start: 0;
-  list-style: none;
-  list-style-type: " ";
-}
-
-.menu[data-align="end"] {
-  inset-inline: auto 0;
-}
-
-.menuItemWrapper {
-  position: relative;
-}
-
-.subMenu {
-  position: absolute;
-  top: calc(-0.55 * var(--space-internal-6, 0.25rem));
-  margin-inline-start: var(--space-internal-4);
-  padding-block: var(--space-internal-4);
-  padding-inline: var(--space-internal-4);
-  inline-size: max(12rem, 100%);
-  min-inline-size: 12rem;
-  border-radius: var(--radius-md, 0.5rem);
-  background: var(--color-white);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
-  inset-inline-start: 100%;
-  list-style: none;
-  list-style-type: " ";
-}
-
-.menuItem {
-  display: flex;
-  padding-block: 0.5rem;
-  padding-inline: 0.75rem;
-  inline-size: 100%;
-  min-block-size: 2.5rem;
-  align-items: center;
-  gap: var(--space-internal-8);
-  border: none;
-  border-radius: var(--radius-sm, 0.25rem);
-  background: none;
-  font: inherit;
-  text-align: left;
-  color: var(--color-dark);
-  cursor: pointer;
-}
-
-.menuItem:hover,
-.menuItem:focus-visible {
-  position: relative;
-  z-index: 1;
-  outline: none;
-  background: color-mix(
-    in srgb,
-    var(--color-neutral-bg) 35%,
-    var(--color-white) 65%
-  );
-  box-shadow: none;
-}
-
-.menuItem:focus-visible {
-  z-index: 2;
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-primary);
-}
-
-.menuItem:disabled {
-  background: transparent;
-  box-shadow: none;
-  color: var(--color-muted);
-  cursor: not-allowed;
-}
-
-.menuIcon {
-  display: inline-flex;
-  color: var(--color-primary);
-  padding-top: 0.125rem;
-}
-
-.menuText {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: var(--space-internal-4);
-  font-family: var(--font-text, system-ui, sans-serif);
-}
-
-.menuDescription {
-  font-size: var(--font-size-text-s, 0.875rem);
-  line-height: 1.4;
-  color: var(--color-muted);
-}
+   The dropdown itself is the shared Menu primitive (Radix), so menu, item,
+   submenu, and placement styles live in Menu.module.css. */
 
 .caret {
   display: inline-flex;
   color: currentcolor;
-}
-
-.trailing {
-  display: inline-flex;
-  margin-inline-start: auto;
-  align-items: center;
 }

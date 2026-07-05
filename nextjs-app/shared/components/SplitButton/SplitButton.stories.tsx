@@ -1,6 +1,5 @@
-import React from "react";
 import { type Meta, type StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, waitFor, within } from "storybook/test";
+import { expect, screen, userEvent, waitFor, within } from "storybook/test";
 import SplitButton from "@dt/SplitButton";
 import contract from "./SplitButton.contract.json";
 import schema from "./schema.json";
@@ -9,20 +8,17 @@ const saveOptions = [
   {
     id: "save-as",
     label: "Save as",
-    title: "Choose a new name for this draft",
     icon: "pencil",
   },
   {
     id: "save-cloud",
     label: "Save to cloud",
-    title: "Sync to shared workspace",
-    icon: "cloud-arrow-up",
+    icon: "download",
   },
   {
     id: "save-copy",
     label: "Save a copy",
-    title: "Duplicate and keep editing",
-    icon: "copy",
+    icon: "copy-simple",
   },
 ];
 
@@ -106,18 +102,12 @@ const meta: Meta<typeof SplitButton> = {
       control: { type: "inline-radio" },
       options: ["start", "end"],
       description:
-        "Preferred menu alignment; collision detection may flip it near viewport edges.",
+        "Preferred menu alignment; Radix collision detection flips it near viewport edges.",
       table: {
         category: "Behavior",
         type: { summary: "start | end" },
         defaultValue: { summary: "end" },
       },
-    },
-    usePortal: {
-      control: "boolean",
-      description:
-        "Render the menu in a document.body portal to escape overflow-hidden containers.",
-      table: { category: "Behavior", type: { summary: "boolean" } },
     },
     onPrimaryClick: {
       action: "primaryClick",
@@ -150,7 +140,6 @@ const meta: Meta<typeof SplitButton> = {
   // value matches the component's no-op default.
   args: {
     disabled: false,
-    usePortal: false,
     toggleLabel: "",
     accessibleName: "",
     tooltip: "",
@@ -171,15 +160,18 @@ export const Default: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    // Trigger lives in the canvas; the menu portals to the document body.
     const menuTrigger = canvas.getByRole("button", {
-      name: /moreOptions|more options/i,
+      name: /more options/i,
     });
     await userEvent.click(menuTrigger);
     await waitFor(() => {
-      expect(canvas.getByRole("menu")).toBeInTheDocument();
+      expect(screen.getByRole("menu")).toBeInTheDocument();
     });
-    const saveAsOption = canvas.getByRole("menuitem", { name: /save as/i });
-    await userEvent.click(saveAsOption);
+    await userEvent.click(screen.getByRole("menuitem", { name: /save as/i }));
+    await waitFor(() => {
+      expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    });
   },
 };
 
@@ -217,13 +209,13 @@ export const ExportFormats: Story = {
     variant: "secondary",
     toggleLabel: "Choose export format",
     options: [
-      { id: "pdf", label: "Export as PDF", trailingIcon: "file-pdf" },
-      { id: "csv", label: "Export CSV", trailingIcon: "file-csv" },
+      { id: "pdf", label: "Export as PDF", trailingIcon: "file-text" },
+      { id: "csv", label: "Export CSV", trailingIcon: "download" },
       {
         id: "xlsx",
         label: "Export Excel",
         disabled: true,
-        trailingIcon: "file-xls",
+        trailingIcon: "file-text",
       },
     ],
   },
@@ -234,13 +226,13 @@ export const ExportFormats: Story = {
     });
     await userEvent.click(menuTrigger);
     await waitFor(() => {
-      expect(canvas.getByRole("menu")).toBeInTheDocument();
+      expect(screen.getByRole("menu")).toBeInTheDocument();
     });
     expect(
-      canvas.getByRole("menuitem", { name: /export excel/i }),
-    ).toBeDisabled();
+      screen.getByRole("menuitem", { name: /export excel/i }),
+    ).toHaveAttribute("data-disabled");
     await userEvent.click(
-      canvas.getByRole("menuitem", { name: /export as pdf/i }),
+      screen.getByRole("menuitem", { name: /export as pdf/i }),
     );
   },
 };
@@ -270,7 +262,7 @@ export const NestedSubmenus: Story = {
         id: "notify",
         label: "Notify",
         children: [
-          { id: "slack", label: "Slack channel", trailingIcon: "bell" },
+          { id: "slack", label: "Slack channel", trailingIcon: "share-network" },
           { id: "email", label: "Email subscribers" },
         ],
       },
@@ -279,22 +271,21 @@ export const NestedSubmenus: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const menuTrigger = canvas.getByRole("button", {
-      name: /moreOptions|more options/i,
+      name: /more options/i,
     });
     await userEvent.click(menuTrigger);
     await waitFor(() => {
-      expect(canvas.getByRole("menu")).toBeInTheDocument();
+      expect(screen.getByRole("menu")).toBeInTheDocument();
     });
-    const envOption = canvas.getByRole("menuitem", { name: /environment/i });
-    await userEvent.hover(envOption);
+    // Hover opens the submenu (Radix Sub).
+    await userEvent.hover(
+      screen.getByRole("menuitem", { name: /environment/i }),
+    );
     await waitFor(() => {
       expect(
-        canvas.getByRole("menuitem", { name: /production/i }),
+        screen.getByRole("menuitem", { name: /production/i }),
       ).toBeInTheDocument();
     });
-    await userEvent.click(
-      canvas.getByRole("menuitem", { name: /production/i }),
-    );
   },
 };
 
@@ -323,120 +314,5 @@ export const Playground: Story = {
     size: "md",
     // "save" resolves through the options control mapping to saveOptions.
     options: "save" as unknown as typeof saveOptions,
-  },
-};
-
-type EdgeDetectionProps = React.ComponentProps<typeof SplitButton> & {
-  previewPlacement?: "left" | "right" | "top" | "bottom";
-};
-
-/**
- * Dev QA harness (not an example): moves the trigger near a viewport edge to
- * verify the collision-aware menu placement flips correctly.
- */
-const EdgeDetectionPreview = ({
-  previewPlacement = "right",
-  ...splitArgs
-}: EdgeDetectionProps) => {
-  const PREVIEW_MARGIN = 24;
-  const MIN_BLOCK_SIZE = 220;
-  const MIN_INLINE_SIZE = 220;
-  const areaRef = React.useRef<HTMLDivElement | null>(null);
-  const [previewSize, setPreviewSize] = React.useState({ width: 0, height: 0 });
-
-  React.useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-    const parent = areaRef.current?.parentElement;
-    if (!parent) return;
-
-    const updateSize = () => {
-      const rect = parent.getBoundingClientRect();
-      setPreviewSize({ width: rect.width, height: rect.height });
-    };
-
-    updateSize();
-
-    if (typeof ResizeObserver !== "undefined") {
-      const observer = new ResizeObserver(() => updateSize());
-      observer.observe(parent);
-      return () => observer.disconnect();
-    }
-
-    window.addEventListener("resize", updateSize);
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
-  const justifyContent =
-    previewPlacement === "left"
-      ? "flex-start"
-      : previewPlacement === "right"
-        ? "flex-end"
-        : "center";
-  const alignItems =
-    previewPlacement === "top"
-      ? "flex-start"
-      : previewPlacement === "bottom"
-        ? "flex-end"
-        : "center";
-
-  const computedWidth =
-    previewSize.width > 0
-      ? Math.max(previewSize.width - PREVIEW_MARGIN * 2, MIN_INLINE_SIZE)
-      : undefined;
-
-  const computedHeight =
-    previewSize.height > 0
-      ? Math.max(previewSize.height - PREVIEW_MARGIN * 2, MIN_BLOCK_SIZE)
-      : undefined;
-
-  return (
-    <div
-      ref={areaRef}
-      style={{
-        display: "flex",
-        width: previewSize.width > 0 ? `${previewSize.width}px` : "100%",
-        blockSize: previewSize.height > 0 ? `${previewSize.height}px` : "100%",
-        minBlockSize: "95vh",
-        padding: `${PREVIEW_MARGIN}px`,
-        boxSizing: "border-box",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent,
-          alignItems,
-          minHeight: `${MIN_BLOCK_SIZE}px`,
-          padding: "1.5rem",
-          inlineSize: computedWidth ? `${computedWidth}px` : "100%",
-          blockSize: computedHeight ? `${computedHeight}px` : undefined,
-          border: "1px dashed var(--color-border)",
-          boxSizing: "border-box",
-        }}
-      >
-        <SplitButton
-          label="Copy"
-          variant="secondary"
-          options={[
-            { id: "copy", label: "Copy" },
-            { id: "copy-no-comments", label: "Copy w/o comments" },
-          ]}
-          {...splitArgs}
-        />
-      </div>
-    </div>
-  );
-};
-
-export const EdgeDetection: StoryObj<EdgeDetectionProps> = {
-  render: (args) => <EdgeDetectionPreview {...args} />,
-  args: { previewPlacement: "right" },
-  argTypes: {
-    previewPlacement: {
-      options: ["left", "right", "top", "bottom"],
-      control: { type: "inline-radio" },
-      description:
-        "Moves the trigger near an edge to verify automatic menu alignment.",
-    },
   },
 };

@@ -67,7 +67,7 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": false,
-        "reviewedNote": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). Forced-colors pass still pending, stays alpha."
+        "reviewedNote": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). Forced-colors pass still pending, stays alpha. 2026-07-05 — dropdown now consumes the shared Menu primitive (Radix dropdown-menu) incl. MenuSub submenus: hand-rolled role=menu markup, openSubIndex state, manual placement math, and focus-trap removed. Public options API unchanged; obsolete usePortal prop removed (Menu always portals). Re-verified: hover + ArrowRight/Left submenu parity and keyboard select via test-storybook play, axe-clean open, Controls 100% + 0 inert. Forced-colors + light/dark of the OPEN menu still to eyeball before beta."
     },
     "tokens": {
         "colors": [
@@ -117,7 +117,7 @@
             },
             {
                 "guidance": true,
-                "description": "Set usePortal when the trigger lives inside an overflow-hidden container, otherwise the menu clips."
+                "description": "The dropdown always portals (shared Menu primitive), so it never clips even inside an overflow-hidden container."
             },
             {
                 "guidance": true,
@@ -215,10 +215,6 @@
         "className": {
             "optional": true,
             "type": "string"
-        },
-        "usePortal": {
-            "optional": true,
-            "type": "boolean"
         }
     },
     "forbiddenUse": [
@@ -231,6 +227,7 @@
     ],
     "composesWith": [
         "Button",
-        "Icon"
+        "Icon",
+        "Menu"
     ]
 }
