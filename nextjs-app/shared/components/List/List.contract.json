@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "structure",
     "status": "stable",
-    "description": "Typographic list (ul or ol) that renders `items` on the text ladder — size and terminals match the surrounding Text voice, listStyleType styles or removes markers, and spacing owns the inter-item rhythm.",
+    "description": "Typographic list (ul or ol) that renders `items` on the text ladder — size matches the surrounding Text voice, listStyleType styles or removes markers, and spacing owns the inter-item rhythm.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-list",
     "radixPrimitive": null,
     "element": "ul",
@@ -20,14 +20,6 @@
                 "xxl"
             ],
             "default": "m",
-            "propSourced": true
-        },
-        "terminals": {
-            "values": [
-                "serif",
-                "sans"
-            ],
-            "default": "sans",
             "propSourced": true
         }
     },
@@ -140,14 +132,6 @@
             "optional": true,
             "type": "string"
         },
-        "terminals": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "serif",
-                "sans"
-            ]
-        },
         "size": {
             "optional": true,
             "type": "union",
@@ -223,9 +207,9 @@
         "description list",
         "items"
     ],
-    "dense": "Typographic list: as ul|ol, items ReactNode[], size on the text ladder, terminals serif|sans, listStyleType incl. none, spacing compact|normal|relaxed; component owns rhythm — no per-item margins",
+    "dense": "Typographic list: as ul|ol, items ReactNode[], size on the text ladder, listStyleType incl. none, spacing compact|normal|relaxed; component owns rhythm — no per-item margins",
     "usage": {
-        "description": "List renders `items` as a typographic list on the text ladder: `as` picks ul/ol semantics, `size` and `terminals` match the surrounding Text voice, `listStyleType` styles or removes markers, `spacing` sets the rhythm between items. It owns inter-item spacing — no margins on items. For custom marker treatments (like ProcessBlock's em dashes) pass `listStyleType=\"none\"` and style via className.",
+        "description": "List renders `items` as a typographic list on the text ladder: `as` picks ul/ol semantics, `size` matches the surrounding Text voice, `listStyleType` styles or removes markers, `spacing` sets the rhythm between items. It owns inter-item spacing — no margins on items. For custom marker treatments (like ProcessBlock's em dashes) pass `listStyleType=\"none\"` and style via className.",
         "bestPractices": [
             {
                 "guidance": true,
@@ -233,7 +217,7 @@
             },
             {
                 "guidance": true,
-                "description": "Match size/terminals to the surrounding Text so lists read as part of the prose voice."
+                "description": "Match size to the surrounding Text so lists read as part of the prose voice."
             },
             {
                 "guidance": true,
@@ -256,7 +240,7 @@
             {
                 "name": "List element",
                 "required": true,
-                "description": "ul or ol chosen by as; carries size/terminals typography and spacing rhythm."
+                "description": "ul or ol chosen by as; carries size typography and spacing rhythm."
             },
             {
                 "name": "Item",

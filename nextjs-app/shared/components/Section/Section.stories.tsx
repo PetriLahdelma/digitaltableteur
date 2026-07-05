@@ -7,7 +7,7 @@ const defaultArgs = {
   spacing: "md" as const,
   background: "default" as const,
   children: (
-    <Text as="p" terminals="sans">
+    <Text as="p">
       Semantic section with tokenized vertical spacing.
     </Text>
   ),
@@ -51,7 +51,7 @@ export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Section spacing="lg" background="muted" id="example-section">
-      <Text as="p" terminals="sans">
+      <Text as="p">
         Used across marketing patterns for vertical rhythm.
       </Text>
     </Section>

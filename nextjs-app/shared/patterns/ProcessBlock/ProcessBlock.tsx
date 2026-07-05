@@ -101,7 +101,6 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
           <Title
             level={2}
             size="m"
-            terminals="sans"
             className={styles.sectionTitle}
             data-process-title
           >
@@ -124,7 +123,6 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
             <div key={phase.title || index} className={styles.col}>
               <Title
                 size="xxs"
-                terminals="sans"
                 level={3}
                 className={styles.phaseTitle}
               >
@@ -133,7 +131,6 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
               <List
                 items={phase.activities}
                 size="s"
-                terminals="sans"
                 className={styles.activityList}
                 listStyleType="none"
               />

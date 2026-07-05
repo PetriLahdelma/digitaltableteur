@@ -76,10 +76,10 @@ function MyComponent() { const { t, i18n } = useTranslation();
 
   return (
     <div>
-      <Title level={1} terminals="sans">
+      <Title level={1}>
         {t("pageTitle")}
       </Title>
-      <Text as="p" terminals="sans">
+      <Text as="p">
         {t("pageDescription")}
       </Text>
       <Button onClick={() => i18n.changeLanguage("fi")}>
@@ -358,10 +358,10 @@ function GoodComponent() { const { t } = useTranslation();
   
   return (
     <div>
-      <Title level={1} terminals="sans">
+      <Title level={1}>
         {t("welcome.title")}
       </Title>
-      <Text as="p" terminals="sans">
+      <Text as="p">
         {t("welcome.description")}
       </Text>
       <Button variant="primary">

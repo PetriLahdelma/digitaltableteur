@@ -3,7 +3,6 @@ import styles from "./Title.module.css";
 import "../../styles/variables.css";
 
 type TitleSize = "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
-type TitleTerminals = "sans" | "serif";
 type LineHeight = "tight" | "snug" | "normal" | "relaxed" | "loose";
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
@@ -20,8 +19,6 @@ export type TitleProps = {
   size?: TitleSize;
   /** Semantic heading level (maps to h1-h6 when as is unset). */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  /** Type family: serif (display) or sans (UI). */
-  terminals?: TitleTerminals;
   /** Line height variant. */
   lineHeight?: LineHeight;
 } & React.HTMLAttributes<HTMLHeadingElement>;
@@ -36,11 +33,6 @@ const sizeClassMap: Record<TitleSize, string> = {
   xxl: styles["titleXXL"] || "",
 };
 
-const terminalsClassMap: Record<TitleTerminals, string> = {
-  sans: styles["fontSans"] || "",
-  serif: styles["fontSerif"] || "",
-};
-
 const lineHeightClassMap: Record<LineHeight, string> = {
   tight: styles["lineHeightTight"] || "",
   snug: styles["lineHeightSnug"] || "",
@@ -49,7 +41,7 @@ const lineHeightClassMap: Record<LineHeight, string> = {
   loose: styles["lineHeightLoose"] || "",
 };
 
-/** Page and section headings with size and terminal (serif/sans) variants. */
+/** Page and section headings with size and line-height variants. */
 const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(function Title(
   {
     children,
@@ -58,7 +50,6 @@ const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(function Title(
     unstyled = false,
     size = "l",
     level,
-    terminals = "serif",
     lineHeight,
     ...rest
   },
@@ -73,14 +64,13 @@ const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(function Title(
     );
   }
   const sizeClass = sizeClassMap[size] || "";
-  const terminalsClass = terminalsClassMap[terminals] || "";
   const lineHeightClass = lineHeight
     ? lineHeightClassMap[lineHeight] || ""
     : "";
   return (
     <Tag
       ref={ref}
-      className={`${styles.title} ${sizeClass} ${terminalsClass} ${lineHeightClass} ${className}`.trim()}
+      className={`${styles.title} ${sizeClass} ${lineHeightClass} ${className}`.trim()}
       {...rest}
     >
       {children}

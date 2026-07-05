@@ -481,10 +481,10 @@ function MyComponent() { const { t } = useTranslation();
 
   return (
     <Card title={t("cardTitle")} hoverable>
-      <Title level={2} terminals="sans">
+      <Title level={2}>
         {t("heading")}
       </Title>
-      <Text as="p" terminals="sans">
+      <Text as="p">
         {t("description")}
       </Text>
       <Button variant="primary" onClick={cycleTheme}>

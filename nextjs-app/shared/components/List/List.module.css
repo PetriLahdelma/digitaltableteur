@@ -4,6 +4,7 @@
 .list {
   margin: 0;
   padding-inline-start: var(--space-internal-16);
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 .list li {
@@ -30,14 +31,6 @@
 .spacingNormal li:last-child,
 .spacingRelaxed li:last-child {
   margin-block-end: 0;
-}
-
-/* Typography */
-.serif {
-  font-family: var(--font-heading, sans-serif);
-}
-.sans {
-  font-family: var(--font-body, sans-serif);
 }
 
 /* Size classes */

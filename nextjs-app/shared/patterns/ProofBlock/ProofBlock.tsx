@@ -56,13 +56,13 @@ export const ProofBlock: React.FC<ProofBlockProps> = ({
               {title}
             </Title>
             {subTitle && (
-              <Text size="m" terminals="sans" className={styles.metricsSubtitle}>
+              <Text size="m" className={styles.metricsSubtitle}>
                 {subTitle}
               </Text>
             )}
           </div>
           {caption && (
-            <Text size="s" terminals="sans" className={styles.metricsCaption}>
+            <Text size="s" className={styles.metricsCaption}>
               {caption}
             </Text>
           )}

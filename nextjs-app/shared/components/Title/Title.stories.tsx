@@ -270,7 +270,7 @@ export const Example: Story = {
   render: () => {
     const { t } = useTranslation();
     return (
-      <Title terminals="sans" level={1} size="l">
+      <Title level={1} size="l">
         {t("storyTitlePlayground")}
       </Title>
     );
@@ -285,6 +285,5 @@ export const ForcedColors: Story = {
     children: "Heading under forced-colors",
     level: 2,
     size: "m",
-    terminals: "sans",
   },
 };

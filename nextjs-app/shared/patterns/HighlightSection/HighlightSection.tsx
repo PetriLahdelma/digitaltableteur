@@ -141,7 +141,6 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
             <Text
               as="span"
               size="s"
-              terminals="sans"
               className={styles.overline}
             >
               {overline}
@@ -150,7 +149,6 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
           <Title
             level={2}
             size="l"
-            terminals="sans"
             lineHeight="tight"
             className={styles.title}
           >
@@ -159,7 +157,6 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
           <Text
             as="p"
             size="l"
-            terminals="sans"
             lineHeight="relaxed"
             className={styles.description}
           >

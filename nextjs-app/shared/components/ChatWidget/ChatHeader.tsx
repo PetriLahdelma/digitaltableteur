@@ -120,7 +120,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         enableSleepDetection={enableSleepDetection}
       />
       <div className={styles.headerCopy}>
-        <Text as="p" terminals="sans" className={styles.tagline}>
+        <Text as="p" className={styles.tagline}>
           {tagline}
           <span
             className={
@@ -142,7 +142,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
             </span>
           )}
         </Text>
-        <Title level={2} terminals="sans" size="s" className={styles.title}>
+        <Title level={2} size="s" className={styles.title}>
           {title}
         </Title>
       </div>

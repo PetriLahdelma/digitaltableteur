@@ -49,7 +49,6 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
         {sectionTitle && (
           <Title
             level={2}
-            terminals="sans"
             size="xl"
             className={styles.sectionTitle}
           >
@@ -104,7 +103,6 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
                 </div>
                 <Title
                   level={3}
-                  terminals="sans"
                   size="xs"
                   className={styles.memberName}
                 >

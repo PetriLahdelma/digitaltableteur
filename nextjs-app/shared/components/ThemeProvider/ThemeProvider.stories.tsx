@@ -10,7 +10,7 @@ function ThemeToggleDemo() {
   const { theme, toggleTheme } = useTheme();
   return (
     <div style={{ display: "grid", gap: "1rem", padding: "1.5rem" }}>
-      <Text as="p" terminals="sans">
+      <Text as="p">
         Active theme: <strong>{theme}</strong>
       </Text>
       <Button variant="primary" onClick={toggleTheme}>

@@ -110,10 +110,10 @@ export const WithLabel: Story = {
           marginBlockEnd: "0.25rem",
         }}
       >
-        <Text size="s" terminals="sans">
+        <Text size="s">
           Uploading portfolio.pdf
         </Text>
-        <Text size="s" terminals="sans">
+        <Text size="s">
           72%
         </Text>
       </div>

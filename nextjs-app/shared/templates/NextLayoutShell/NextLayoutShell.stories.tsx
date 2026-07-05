@@ -31,10 +31,10 @@ type Story = StoryObj;
 const shellContent = (
   <NextLayout>
     <div style={{ padding: "var(--space-layout-24)", maxWidth: "48rem" }}>
-      <Title level={1} size="l" terminals="serif">
+      <Title level={1} size="l">
         Page content
       </Title>
-      <Text as="p" size="m" terminals="sans">
+      <Text as="p" size="m">
         Same shell as app/layout.tsx — verify chrome and main landmark together.
       </Text>
     </div>

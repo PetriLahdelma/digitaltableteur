@@ -239,7 +239,6 @@ export function ContactPageContentEditorial({
                 <Title
                   level={2}
                   size="m"
-                  terminals="sans"
                   lineHeight="tight"
                   className={styles.newBusinessHeading}
                 >
@@ -253,7 +252,6 @@ export function ContactPageContentEditorial({
                       <Text
                         as="p"
                         size="m"
-                        terminals="sans"
                         className={styles.newBusinessLine}
                       >
                         {t("contactNewBusinessName", "Petri Lahdelma")}
@@ -261,7 +259,6 @@ export function ContactPageContentEditorial({
                       <Text
                         as="p"
                         size="s"
-                        terminals="sans"
                         lineHeight="normal"
                         className={styles.newBusinessLineMuted}
                       >
@@ -303,7 +300,6 @@ export function ContactPageContentEditorial({
                 as="p"
                 size="l"
                 lineHeight="relaxed"
-                terminals="serif"
                 className={styles.pullQuoteText}
               >
                 {t(

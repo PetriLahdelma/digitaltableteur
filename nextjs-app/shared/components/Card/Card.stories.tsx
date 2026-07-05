@@ -36,7 +36,7 @@ const meta = {
       mapping: {
         default: undefined,
         h2Outline: { level: 2 },
-        largeSerif: { size: "m", terminals: "serif" },
+        largeSerif: { size: "m", },
       },
       description:
         "Heading configuration (level for the document outline). Pick a preset here; compose your own in code.",

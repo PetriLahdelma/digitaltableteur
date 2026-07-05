@@ -112,13 +112,6 @@ export default {
       table: { defaultValue: { summary: "m" } },
     },
 
-    terminals: {
-      control: { type: "radio" },
-      options: ["sans", "serif"],
-      description: "Font family (sans or serif)",
-      table: { defaultValue: { summary: "sans" } },
-    },
-
     lineHeight: {
       control: { type: "select" },
       options: ["tight", "snug", "normal", "relaxed", "loose"],
@@ -159,7 +152,6 @@ Playground.args = {
   children: "storyTextPlayground",
   as: "p",
   size: "m",
-  terminals: "sans",
   className: "",
 };
 
@@ -226,22 +218,6 @@ Sizes.parameters = {
   docs: { description: { story: "The xxs to xxl body ramp." } },
 };
 
-export const SerifAndSans = () => {
-  const { t } = useTranslation();
-  return (
-    <>
-      <Text terminals="sans">{t("storyTextSans")}</Text>
-      <Text terminals="serif">{t("storyTextSerif")}</Text>
-    </>
-  );
-};
-
-SerifAndSans.tags = ["example"];
-SerifAndSans.parameters = {
-  ...(SerifAndSans as { parameters?: object }).parameters,
-  docs: { description: { story: "Terminal families: serif for editorial weight, sans for product chrome." } },
-};
-
 export const LineHeights = () => {
   const { t } = useTranslation();
   const sampleText =
@@ -298,10 +274,10 @@ export const Example: Story = {
     const { t } = useTranslation();
     return (
       <>
-        <Title terminals="sans" level={1} size="l">
+        <Title level={1} size="l">
           {t("storyTitlePlayground")}
         </Title>
-        <Text terminals="sans" size="l" as="p">
+        <Text size="l" as="p">
           {t("storyTextDefault")}
         </Text>
       </>
@@ -316,6 +292,5 @@ export const ForcedColors: Story = {
   args: {
     children: "Body copy under forced-colors",
     as: "p",
-    terminals: "sans",
   },
 };

@@ -23,10 +23,10 @@
   },
   "tokens": {"base": {"color": ["color.text.primary"], "typography": ["font.text", "font.headings"], "spacing": ["space.internal.4", "space.internal.8", "space.internal.16"]}},
   "behavior": {
-    "map": "Renders list from items array. Supports ul (unordered) or ol (ordered) via as prop. Customizable size, line height, spacing, listStyleType, and terminals (serif/sans).",
+    "map": "Renders list from items array. Supports ul (unordered) or ol (ordered) via as prop. Customizable size, line height, spacing, and listStyleType.",
     "stateModel": "stateless",
     "rendering": "Renders list items from items array (React.ReactNode[]).",
-    "defaultState": "ul, medium size, normal spacing, sans-serif."
+    "defaultState": "ul, medium size, normal spacing."
   },
   "interaction": {"logic": [], "feedback": {}},
   "states": {"default": "Rendered list with configured styles."},
@@ -34,12 +34,10 @@
   "accessibility": {"roles": {"container": "list (ul/ol)", "items": "listitem"}, "aria": {"role": "Optional role prop for custom role."}, "keyboard": "Non-interactive (unless list items contain interactive elements).", "focus": "Non-focusable (unless list items contain focusable elements).", "contrast": "Text meets WCAG AA."},
   "responsiveness": {"rules": "List items wrap text if constrained.", "breakpoints": []},
   "generativeRules": {
-    "contextInputs": ["as", "size", "lineHeight", "spacing", "terminals", "listStyleType"],
+    "contextInputs": ["as", "size", "lineHeight", "spacing", "listStyleType"],
     "rules": [
       {"if": {"as": "ul"}, "then": {"element": "ul"}},
       {"if": {"as": "ol"}, "then": {"element": "ol"}},
-      {"if": {"terminals": "serif"}, "then": {"fontFamily": "var(--font-headings)"}},
-      {"if": {"terminals": "sans"}, "then": {"fontFamily": "var(--font-text)"}},
       {"if": {"spacing": "compact"}, "then": {"gap": "0.25rem"}},
       {"if": {"spacing": "normal"}, "then": {"gap": "0.5rem"}},
       {"if": {"spacing": "relaxed"}, "then": {"gap": "1rem"}}
@@ -52,7 +50,6 @@
     "Line height variants: tight, snug, normal, relaxed, loose.",
     "Spacing variants: compact, normal (default), relaxed.",
     "listStyleType: disc, circle, square, decimal, lower-alpha, upper-alpha, lower-roman, upper-roman, none.",
-    "terminals: serif or sans (default).",
     "Supports custom role prop for ARIA roles.",
     "Items indexed by array index (key={index})."
   ]

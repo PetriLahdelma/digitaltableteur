@@ -387,7 +387,6 @@ const ContactForm: React.FC<ContactFormProps> = () => {
           {isAttachmentTooLargeForEmail && (
             <Text
               as="p"
-              terminals="sans"
               size="xs"
               className={styles["attachmentNotice"]}
             >
@@ -415,7 +414,6 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         <div className={styles["formGroup"]}>
           <Text
             as="p"
-            terminals="sans"
             size="xs"
             className={styles["privacyPolicy"]}
           >

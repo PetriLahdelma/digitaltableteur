@@ -9,22 +9,22 @@ const defaultArgs = {
   children: (
     <>
       <div>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           Cell A
         </Text>
       </div>
       <div>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           Cell B
         </Text>
       </div>
       <div>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           Cell C
         </Text>
       </div>
       <div>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           Cell D
         </Text>
       </div>
@@ -59,7 +59,7 @@ const meta = {
           <>
             {["A", "B", "C", "D", "E", "F"].map((cell) => (
               <div key={cell}>
-                <Text as="p" terminals="sans">
+                <Text as="p">
                   Cell {cell}
                 </Text>
               </div>
@@ -101,17 +101,17 @@ export const Example: Story = {
   render: () => (
     <Grid columns={3} gap="1.5rem" style={{ maxWidth: 720 }}>
       <div>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           Services
         </Text>
       </div>
       <div>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           Work
         </Text>
       </div>
       <div>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           About
         </Text>
       </div>

@@ -76,7 +76,7 @@ function MarkdownMessage({
             pre: ({ children }) => <pre tabIndex={0}>{children}</pre>,
             p: ({ children }) =>
               renderWithDesignSystem ? (
-                <Text terminals="sans" size={resolvedDesignSystemTextSize}>
+                <Text size={resolvedDesignSystemTextSize}>
                   {children}
                 </Text>
               ) : (
@@ -84,7 +84,7 @@ function MarkdownMessage({
               ),
             h1: ({ children }) =>
               renderWithDesignSystem ? (
-                <Title terminals="sans" level={1} size="l">
+                <Title level={1} size="l">
                   {children}
                 </Title>
               ) : (
@@ -92,7 +92,7 @@ function MarkdownMessage({
               ),
             h2: ({ children }) =>
               renderWithDesignSystem ? (
-                <Title terminals="sans" level={2} size="s">
+                <Title level={2} size="s">
                   {children}
                 </Title>
               ) : (
@@ -100,7 +100,7 @@ function MarkdownMessage({
               ),
             h3: ({ children }) =>
               renderWithDesignSystem ? (
-                <Title terminals="sans" level={3} size="xs">
+                <Title level={3} size="xs">
                   {children}
                 </Title>
               ) : (
@@ -117,7 +117,7 @@ function MarkdownMessage({
                 },
             strong: ({ children }) =>
               renderWithDesignSystem ? (
-                <Text as="strong" terminals="sans" size={resolvedDesignSystemTextSize}>
+                <Text as="strong" size={resolvedDesignSystemTextSize}>
                   {children}
                 </Text>
               ) : (
@@ -125,7 +125,7 @@ function MarkdownMessage({
               ),
             em: ({ children }) =>
               renderWithDesignSystem ? (
-                <Text as="em" terminals="sans" size={resolvedDesignSystemTextSize}>
+                <Text as="em" size={resolvedDesignSystemTextSize}>
                   {children}
                 </Text>
               ) : (

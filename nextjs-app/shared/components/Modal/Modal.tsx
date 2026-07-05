@@ -29,8 +29,6 @@ export interface ModalProps {
   title?: string;
   /** Supporting text — wired to aria-describedby (DialogDescription parity) */
   description?: string;
-  /** Title terminals (sans or serif) */
-  titleTerminals?: "sans" | "serif";
   /** Optional contextual menu or extra controls */
   menu?: React.ReactNode;
   /** Modal content */
@@ -76,7 +74,6 @@ const Modal: React.FC<ModalProps> = ({
   isOpen,
   title,
   description,
-  titleTerminals = "serif",
   menu,
   children,
   footer,
@@ -266,7 +263,6 @@ const Modal: React.FC<ModalProps> = ({
                 lineHeight="tight"
                 id={titleId}
                 className={styles.title}
-                terminals={titleTerminals}
               >
                 {title}
               </Title>

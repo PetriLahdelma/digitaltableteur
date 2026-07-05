@@ -97,7 +97,6 @@ export const Hero: React.FC<HeroProps> = ({
         <Title
           level={titleLevel}
           size="xl"
-          terminals="sans"
           className={styles.heroTitle}
         >
           {title}
@@ -106,7 +105,6 @@ export const Hero: React.FC<HeroProps> = ({
         {subtitle && (
           <Text
             size="l"
-            terminals="sans"
             className={styles.heroSubtitle}
             as="p"
           >
@@ -195,7 +193,6 @@ export const Hero: React.FC<HeroProps> = ({
             <Title
               level={titleLevel}
               size="xl"
-              terminals="sans"
               className={styles.heroTitle}
             >
               {title}
@@ -204,7 +201,6 @@ export const Hero: React.FC<HeroProps> = ({
             {subtitle && (
               <Text
                 size="l"
-                terminals="sans"
                 className={styles.heroSubtitle}
                 as="p"
               >

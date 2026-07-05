@@ -435,7 +435,6 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "exampleStories": [
       "AllTags",
       "Sizes",
-      "SerifAndSans",
       "LineHeights",
     ],
     "fields": [

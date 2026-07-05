@@ -301,7 +301,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
       {/* Applications Section */}
       <section className={styles.applicationsSection}>
         <div className={styles.applicationsHeader}>
-          <Title level={3} terminals="sans">Applications</Title>
+          <Title level={3}>Applications</Title>
         </div>
         <div className={styles.applicationsGrid}>
           <figure className={styles.appItem}>
@@ -346,7 +346,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
       {/* Gallery - Extended Assets */}
       <section className={styles.gallerySection}>
         <div className={styles.galleryHeader}>
-          <Title level={3} terminals="sans">Culture & Merch</Title>
+          <Title level={3}>Culture & Merch</Title>
           <Text size="s">
             Internal culture assets including apparel, event materials, and office
             decorations helped build team identity and employer brand.
@@ -421,7 +421,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
       {/* Results Section */}
       <section className={styles.resultsSection}>
         <div className={styles.resultsContent}>
-          <Title level={3} terminals="sans">Key Results</Title>
+          <Title level={3}>Key Results</Title>
           <div className={styles.resultsGrid}>
             <div className={styles.resultItem}>
               <span className={styles.resultValue}>16</span>

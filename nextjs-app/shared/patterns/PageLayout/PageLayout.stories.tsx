@@ -65,11 +65,10 @@ export const Default: Story = {
   args: { maxWidth: "lg", spacing: "default", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
-      <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
+      <Title style={{ marginBlockEnd: "1rem" }}>
         Page Title
       </Title>
       <Text
-        terminals="sans"
         style={{ lineHeight: "var(--line-height-relaxed)" }}
       >
         This is a default page layout with standard spacing and a large
@@ -84,11 +83,10 @@ export const SmallContainer: Story = {
   args: { maxWidth: "sm", spacing: "default", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
-      <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
+      <Title style={{ marginBlockEnd: "1rem" }}>
         Small Container (640px max)
       </Title>
       <Text
-        terminals="sans"
         style={{ lineHeight: "var(--line-height-relaxed)" }}
       >
         Ideal for focused content like blog posts or forms. The narrow width
@@ -102,11 +100,10 @@ export const MediumContainer: Story = {
   args: { maxWidth: "md", spacing: "comfortable", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
-      <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
+      <Title style={{ marginBlockEnd: "1rem" }}>
         Medium Container (960px max)
       </Title>
       <Text
-        terminals="sans"
         style={{ lineHeight: "var(--line-height-relaxed)" }}
       >
         Perfect for documentation, articles, and standard content pages.
@@ -120,11 +117,10 @@ export const LargeContainer: Story = {
   args: { maxWidth: "lg", spacing: "spacious", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
-      <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
+      <Title style={{ marginBlockEnd: "1rem" }}>
         Large Container (1200px max)
       </Title>
       <Text
-        terminals="sans"
         style={{ lineHeight: "var(--line-height-relaxed)" }}
       >
         Suitable for dashboards, product showcases, and multi-column layouts.
@@ -138,11 +134,10 @@ export const ExtraLargeContainer: Story = {
   args: { maxWidth: "xl", spacing: "default", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
-      <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
+      <Title style={{ marginBlockEnd: "1rem" }}>
         Extra Large Container (1440px max)
       </Title>
       <Text
-        terminals="sans"
         style={{ lineHeight: "var(--line-height-relaxed)" }}
       >
         For wide desktop displays and complex layouts requiring more horizontal
@@ -157,11 +152,10 @@ export const FullWidth: Story = {
   render: (args) => (
     <PageLayout {...args}>
       <div style={{ padding: "var(--space-layout-32)" }}>
-        <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
+        <Title style={{ marginBlockEnd: "1rem" }}>
           Full Width Layout
         </Title>
         <Text
-          terminals="sans"
           style={{ lineHeight: "var(--line-height-relaxed)" }}
         >
           Spans the entire viewport width. Useful for hero sections, image
@@ -176,11 +170,10 @@ export const CompactSpacing: Story = {
   args: { maxWidth: "md", spacing: "compact", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
-      <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
+      <Title style={{ marginBlockEnd: "1rem" }}>
         Compact Spacing
       </Title>
       <Text
-        terminals="sans"
         style={{ lineHeight: "var(--line-height-normal)" }}
       >
         Minimal vertical padding for dense interfaces or components that manage
@@ -271,7 +264,7 @@ export const ResponsiveShowcase: Story = {
           borderRadius: "8px",
         }}
       >
-        <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
+        <Title style={{ marginBlockEnd: "1rem" }}>
           Responsive Grid System
         </Title>
         <Text style={{ lineHeight: "var(--line-height-relaxed)" }}>

@@ -45,10 +45,10 @@ export function SitemapPage() {
 
   return (
     <main className={styles.page}>
-      <Title level={1} terminals="sans">
+      <Title level={1}>
         {t("sitemapPageTitle")}
       </Title>
-      <Text as="p" terminals="sans" className={styles.intro}>
+      <Text as="p" className={styles.intro}>
         {t("sitemapPageIntro")}
       </Text>
       <SiteTree

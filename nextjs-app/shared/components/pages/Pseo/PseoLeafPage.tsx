@@ -93,10 +93,10 @@ export function PseoLeafPageView({
           <span>{page.audience.name}</span>
         </nav>
 
-        <Title terminals="sans" level={1} size="l">
+        <Title level={1} size="l">
           {page.title}
         </Title>
-        <Text terminals="sans" size="l">
+        <Text size="l">
           {page.description}
         </Text>
 
@@ -120,7 +120,7 @@ export function PseoLeafPageView({
         </section>
 
         <aside className={styles.toc} aria-label="Table of contents">
-          <Title terminals="sans" level={2} size="xs">
+          <Title level={2} size="xs">
             Table of contents
           </Title>
           <ol className={styles.tocList}>
@@ -136,7 +136,7 @@ export function PseoLeafPageView({
         </aside>
 
         <section id="situation" className={styles.section}>
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             Situation
           </Title>
           <MarkdownMessage
@@ -147,7 +147,7 @@ export function PseoLeafPageView({
         </section>
 
         <section id="failure-modes" className={styles.section}>
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             What goes wrong
           </Title>
           <MarkdownMessage
@@ -158,7 +158,7 @@ export function PseoLeafPageView({
         </section>
 
         <section id="playbook" className={styles.section}>
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             Playbook
           </Title>
           <MarkdownMessage
@@ -169,7 +169,7 @@ export function PseoLeafPageView({
         </section>
 
         <section id="deliverables" className={styles.section}>
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             Deliverables checklist
           </Title>
           <MarkdownMessage
@@ -181,7 +181,7 @@ export function PseoLeafPageView({
 
         {blocks.proofLinks.length > 0 ? (
           <section id="proof" className={styles.section}>
-            <Title terminals="sans" level={2} size="s">
+            <Title level={2} size="s">
               Proof
             </Title>
             <div className={styles.proofGrid}>
@@ -193,7 +193,6 @@ export function PseoLeafPageView({
                   linkLabel={`View case study: ${proof.title}`}
                   title={proof.title}
                   titleProps={{
-                    terminals: "sans",
                     level: 3,
                     size: "s",
                     as: "h3",
@@ -212,11 +211,11 @@ export function PseoLeafPageView({
 
         {blocks.packageFit ? (
           <section id="package" className={styles.callout}>
-            <Title terminals="sans" level={2} size="s">
+            <Title level={2} size="s">
               Package fit
             </Title>
-            <Text terminals="sans">{blocks.packageFit.reason}</Text>
-            <Text terminals="sans" size="s">
+            <Text>{blocks.packageFit.reason}</Text>
+            <Text size="s">
               {blocks.packageFit.name} · {blocks.packageFit.duration} ·{" "}
               {blocks.packageFit.priceRangeEur}
             </Text>
@@ -242,13 +241,13 @@ export function PseoLeafPageView({
         ) : null}
 
         <section id="faq" className={styles.section}>
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             FAQ
           </Title>
           <div className={styles.faqList}>
             {blocks.faqs.map((faq) => (
               <div key={faq.question} className={styles.faqItem}>
-                <Title terminals="sans" level={3} size="xs" as="h3">
+                <Title level={3} size="xs" as="h3">
                   {faq.question}
                 </Title>
                 <MarkdownMessage
@@ -262,7 +261,7 @@ export function PseoLeafPageView({
         </section>
 
         <section id="related" className={styles.section}>
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             Related guides
           </Title>
           <div className={styles.relatedGrid}>
@@ -274,7 +273,6 @@ export function PseoLeafPageView({
                 linkLabel={`Open ${item.page.title}`}
                 title={item.page.title}
                 titleProps={{
-                  terminals: "sans",
                   level: 3,
                   size: "s",
                   as: "h3",
@@ -293,10 +291,10 @@ export function PseoLeafPageView({
         </section>
 
         <section className={styles.cta} aria-label="Call to action">
-          <Title terminals="sans" level={2} size="s">
+          <Title level={2} size="s">
             Want help implementing this?
           </Title>
-          <Text terminals="sans">
+          <Text>
             Describe your stack, team size, and timeline—we will suggest a
             scoped engagement or point you to the right playbook next step.
           </Text>

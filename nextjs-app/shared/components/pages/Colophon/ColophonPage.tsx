@@ -12,10 +12,10 @@ export function ColophonPage() {
   return (
     <main className={styles.page}>
       <header className={styles.header}>
-        <Title level={1} terminals="sans">
+        <Title level={1}>
           Colophon
         </Title>
-        <Text as="p" terminals="sans" className={styles.intro}>
+        <Text as="p" className={styles.intro}>
           This site is its own case study — a production portfolio, content
           platform, and agent-aware design system in one codebase. Twelve case
           studies, a crawlable blog, a hundred programmatic SEO guides,
@@ -25,7 +25,7 @@ export function ColophonPage() {
       </header>
 
       <section className={styles.section}>
-        <Title level={2} terminals="sans" className={styles.sectionTitle}>
+        <Title level={2} className={styles.sectionTitle}>
           By the numbers
         </Title>
         <div className={styles.statGrid}>
@@ -65,7 +65,7 @@ export function ColophonPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} terminals="sans" className={styles.sectionTitle}>
+        <Title level={2} className={styles.sectionTitle}>
           Architecture
         </Title>
         <div className={styles.grid}>
@@ -108,7 +108,7 @@ export function ColophonPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} terminals="sans" className={styles.sectionTitle}>
+        <Title level={2} className={styles.sectionTitle}>
           Content & discovery
         </Title>
         <div className={styles.grid}>
@@ -152,7 +152,7 @@ export function ColophonPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} terminals="sans" className={styles.sectionTitle}>
+        <Title level={2} className={styles.sectionTitle}>
           Design system
         </Title>
         <div className={styles.grid}>
@@ -193,10 +193,10 @@ export function ColophonPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} terminals="sans" className={styles.sectionTitle}>
+        <Title level={2} className={styles.sectionTitle}>
           Component architecture
         </Title>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           Every component ships as a folder: functional component, CSS Module,
           Storybook story, Vitest test (including axe-core where applicable),
           contract.json, spec.md, and barrel export.
@@ -237,7 +237,7 @@ export function ColophonPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} terminals="sans" className={styles.sectionTitle}>
+        <Title level={2} className={styles.sectionTitle}>
           Animation
         </Title>
         <div className={styles.grid}>
@@ -268,10 +268,10 @@ export function ColophonPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} terminals="sans" className={styles.sectionTitle}>
+        <Title level={2} className={styles.sectionTitle}>
           Internationalization
         </Title>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           English, Finnish, and Swedish — full coverage across UI strings, form
           labels, error messages, and cookie consent. Powered by i18next and
           react-i18next with browser language detection and cookie persistence.
@@ -280,7 +280,7 @@ export function ColophonPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} terminals="sans" className={styles.sectionTitle}>
+        <Title level={2} className={styles.sectionTitle}>
           AI & agent integration
         </Title>
         <div className={styles.grid}>
@@ -319,10 +319,10 @@ export function ColophonPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} terminals="sans" className={styles.sectionTitle}>
+        <Title level={2} className={styles.sectionTitle}>
           Security
         </Title>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           Strict Content Security Policy in production. HSTS with two-year
           max-age and preload. Input sanitized via mongo-sanitize and
           isomorphic-dompurify. Rate limiting on AI chat and contact endpoints.
@@ -332,10 +332,10 @@ export function ColophonPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} terminals="sans" className={styles.sectionTitle}>
+        <Title level={2} className={styles.sectionTitle}>
           Open-source tools built here
         </Title>
-        <Text as="p" terminals="sans">
+        <Text as="p">
           Rhythmguard enforces design tokens at lint time. Project Spine
           bootstraps agent-native operating context. LLM Component Schema
           publishes structured component contracts for AI consumption — all

@@ -14,8 +14,6 @@ export interface CardTitleProps {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   /** Title size on the type ladder @default "xxs" */
   size?: "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
-  /** Title terminals @default "sans" */
-  terminals?: "sans" | "serif";
   className?: string;
 }
 
@@ -125,7 +123,6 @@ export const Card: React.FC<CardProps> = ({
       level={titleLevel}
       as={titleProps.as ?? (`h${titleLevel}` as CardTitleProps["as"])}
       size={titleProps.size ?? "xxs"}
-      terminals={titleProps.terminals ?? "sans"}
       lineHeight="snug"
       className={[styles.title, titleProps.className]
         .filter(Boolean)
