@@ -16,7 +16,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/Container",
   component: Container,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
