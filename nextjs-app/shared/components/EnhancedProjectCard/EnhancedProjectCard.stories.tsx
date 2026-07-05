@@ -17,7 +17,7 @@ const defaultArgs = {
 const meta = {
   title: "Site/EnhancedProjectCard",
   component: EnhancedProjectCard,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",
