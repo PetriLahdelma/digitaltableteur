@@ -20,10 +20,8 @@
   color: var(--color-white);
 }
 
-.avatarMenuWrapper {
-  display: inline-flex;
-  position: relative;
-}
+/* Menu trigger: the avatar visual is the button; positioning, focus return,
+   and the popover come from the shared Menu (Radix). */
 
 .avatarMenuTrigger {
   display: inline-flex;
@@ -37,75 +35,4 @@
 .avatarMenuTrigger:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-}
-
-.avatarMenu {
-  position: absolute;
-  inset-inline: 0 auto;
-  z-index: 10;
-  margin: 0;
-  padding: var(--space-internal-8) 0;
-  min-inline-size: 11rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-white);
-  box-shadow: 0 12px 32px rgb(0 0 0 / 15%);
-  list-style: none;
-  list-style-type: " ";
-}
-
-.avatarMenu[data-horizontal="right"] {
-  inset-inline: auto 0;
-}
-
-.avatarMenu[data-horizontal="left"] {
-  inset-inline: 0 auto;
-}
-
-.avatarMenu[data-vertical="bottom"] {
-  top: calc(100% + 0.5rem);
-  bottom: auto;
-}
-
-.avatarMenu[data-vertical="top"] {
-  top: auto;
-  bottom: calc(100% + 0.5rem);
-}
-
-.avatarMenuItemWrapper {
-  display: block;
-}
-
-.avatarMenuItem {
-  display: flex;
-  padding: var(--space-internal-8) var(--space-internal-16);
-  inline-size: 100%;
-  align-items: center;
-  gap: var(--space-internal-8);
-  border: none;
-  background: none;
-  font-size: var(--font-size-text-s);
-  text-decoration: none;
-  color: var(--color-dark);
-  cursor: pointer;
-}
-
-.avatarMenuItem:hover,
-.avatarMenuItem:focus-visible {
-  outline: none;
-  background-color: var(--color-neutral-bg);
-  color: var(--color-dark);
-}
-
-.avatarMenuIcon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  color: var(--color-primary);
-}
-
-.avatarMenuText {
-  flex: 1;
-  text-align: left;
 }

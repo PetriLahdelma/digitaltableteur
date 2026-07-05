@@ -49,7 +49,7 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook. 2026-07-05 (beta→stable) — re-verified independently: axe-clean, light + dark eyeballed (image ring + initials contrast), AT snapshots refreshed and compare-clean in all four modes (plain/light/dark/forced-colors), Controls 100% operable + 0 inert. Removed the dead avatarVariants cva stub and fixed the playground size default (was the non-length value \"md\", which produced an invalid --avatar-size).",
+        "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook. 2026-07-05 (beta→stable) — re-verified independently: axe-clean, light + dark eyeballed, AT snapshots refreshed and compare-clean in all four modes, Controls 100% operable + 0 inert; removed the dead avatarVariants cva stub and fixed the invalid \"md\" playground size default. 2026-07-05 (menu on shared Menu) — the account menu now consumes the Menu primitive (Radix dropdown-menu) instead of hand-rolled markup: public API (menuItems/menuLabel) unchanged, obsolete placementRefreshKey removed (Radix owns collision). Re-verified: open-menu axe-clean + keyboard select via test-storybook play, aligned ~40px rows eyeballed open in light/dark/forced-colors, Controls 100% + 0 inert, AT snapshots refreshed compare-clean.",
         "forcedColorsVerified": true,
         "accessibilityTreeVerified": true,
         "realBrowserForcedColorsVerified": true
@@ -173,10 +173,6 @@
                 "image",
                 "initials"
             ]
-        },
-        "placementRefreshKey": {
-            "optional": true,
-            "type": "number"
         }
     },
     "forbiddenUse": [
@@ -186,7 +182,8 @@
     "composesWith": [
         "Card",
         "PersonCard",
-        "Badge"
+        "Badge",
+        "Menu"
     ],
     "displayName": "Avatar",
     "keywords": [

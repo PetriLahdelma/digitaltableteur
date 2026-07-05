@@ -1,3 +1,2 @@
 - button "Open avatar menu":
   - img "Petri Lahdelma"
-- status: avatar.menuClosed
