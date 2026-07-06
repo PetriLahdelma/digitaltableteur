@@ -18,8 +18,8 @@ export type AlertBannerProps = {
   description?: React.ReactNode;
   /** Optional action slot rendered under the description (e.g. a tertiary Button). */
   action?: React.ReactNode;
-  /** Override the tone icon with another registered icon name. */
-  icon?: string;
+  /** Show the semantic tone icon. The icon is derived from `tone`; set false for a text-only banner. @default true */
+  showIcon?: boolean;
   /** Shows a localized dismiss control when true. @default false */
   dismissible?: boolean;
   /** Called when the user dismisses the banner. */
@@ -41,7 +41,7 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
   title,
   description,
   action,
-  icon,
+  showIcon = true,
   dismissible = false,
   onDismiss,
   "aria-live": ariaLive,
@@ -58,10 +58,11 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
       role={role}
       aria-live={liveRegion}
     >
-      {/* `||` not `??`: an empty-string icon (Storybook controls-autogen seeds
-          "" on every story) must fall through to the semantic tone icon, not
-          resolve to a nameless, missing glyph. */}
-      <Icon name={icon || toneIcon[tone]} ariaLabel={tone} size="md" />
+      {/* The icon is always the semantic tone icon; showIcon only toggles its
+          presence (there is no per-instance icon override — the tone owns it). */}
+      {showIcon && (
+        <Icon name={toneIcon[tone]} ariaLabel={tone} size="md" />
+      )}
       <div className={styles.content}>
         {title && (
           // A status/alert label, not a document heading: rendering it as a
