@@ -89,6 +89,21 @@ describe("AuthorBio", () => {
       expect(screen.queryByRole("img")).not.toBeInTheDocument();
     });
 
+    test("renders role under the name when provided", () => {
+      vi.mocked(authorsData.getAuthorBySlug).mockReturnValue({
+        ...mockAuthor,
+        role: "Founder, CEO",
+      });
+      render(<AuthorBio slug="john-doe" />);
+      expect(screen.getByText("Founder, CEO")).toBeInTheDocument();
+    });
+
+    test("does not render role when absent", () => {
+      vi.mocked(authorsData.getAuthorBySlug).mockReturnValue(mockAuthor);
+      const { container } = render(<AuthorBio slug="john-doe" />);
+      expect(container.querySelector("[class*='role']")).not.toBeInTheDocument();
+    });
+
     test("renders lead paragraph as tagline", () => {
       vi.mocked(authorsData.getAuthorBySlug).mockReturnValue(mockAuthor);
       render(<AuthorBio slug="john-doe" />);

@@ -68,6 +68,11 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({
                 must fall back to the author name, never render an empty heading. */}
             {heading || author.name}
           </Title>
+          {author.role && (
+            <Text size="s" className={styles.role}>
+              {author.role}
+            </Text>
+          )}
         </div>
       </div>
       {leadText && <Text className={styles.tagline}>{leadText}</Text>}
