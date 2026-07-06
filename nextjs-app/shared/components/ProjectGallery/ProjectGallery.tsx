@@ -53,6 +53,12 @@ const aspectClasses: Record<"square" | "video", string> = {
   video: "aspect-video",
 };
 
+/**
+ * Responsive image grid for a project case study. Renders each image as a
+ * figure in a labelled `role="list"` grid; when `enableLightbox` is set (the
+ * default) each thumbnail is a button that opens the shared Lightbox. Items
+ * stagger in on scroll via GSAP, gated behind a reduced-motion check.
+ */
 export function ProjectGallery({
   images,
   columns = 3,
