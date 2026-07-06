@@ -7,7 +7,6 @@ import { TIER_PREFIX } from "./in-scope-components.mjs";
 export const COMPONENT_TIERS = {
   Accordion: { tier: "molecule" },
   AlertBanner: { tier: "molecule" },
-  AnimatedGlyphBackground: { tier: "molecule" },
   ArticleCard: { tier: "molecule" },
   Author: { tier: "molecule" },
   AuthorBio: { tier: "molecule" },
