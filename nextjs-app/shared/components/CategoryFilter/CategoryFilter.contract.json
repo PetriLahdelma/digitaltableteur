@@ -3,11 +3,11 @@
     "name": "CategoryFilter",
     "tier": "molecule",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Filter pill row for list pages (blog archive, work index). Multiple visual treatments (pills, underline, minimal) for different surface densities.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-category-filter",
     "radixPrimitive": null,
-    "element": "nav",
+    "element": "div",
     "variants": {
         "variant": {
             "values": [
@@ -24,7 +24,7 @@
                 "md",
                 "lg"
             ],
-            "default": "sm",
+            "default": "md",
             "propSourced": true
         }
     },
@@ -43,13 +43,15 @@
             "Enter / Space — activates the focused filter."
         ],
         "ariaRequirements": [
-            "Renders a `<nav>` landmark with an accessible name describing the filter dimension ('Filter by category').",
-            "The active filter sets `aria-pressed='true'` on a toggle button (not `aria-current`) because the filter is a UI control, not a navigation target."
+            "Renders a `role=group` with an accessible name describing the filter dimension ('Filter projects by category').",
+            "The active filter sets `aria-pressed='true'` on a toggle button (not `aria-current`) because the filter is a UI control, not a navigation target; exactly one is pressed at a time (single-select)."
         ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-07 beta->stable: fixed the code/contract a11y mismatch — the component had drifted to role=tablist + role=tab + aria-selected (a tablist without tab panels), contradicting this contract's stated toggle-button intent. Reconciled BOTH this and BlogCategoryFilter to role=group + aria-pressed toggle buttons (a filter is a UI control, not a set of tab panels). Also fixed element nav->div and variants.size default sm->md. Added a unit test (group/aria-pressed/axe across all three variants). Independently re-verified light/dark + forced-colors in a real browser."
     },
     "tokens": {
         "colors": [
@@ -67,7 +69,23 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "categories": {

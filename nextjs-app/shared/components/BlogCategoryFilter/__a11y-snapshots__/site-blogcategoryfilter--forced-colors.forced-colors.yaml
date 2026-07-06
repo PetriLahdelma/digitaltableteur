@@ -1,7 +1,7 @@
 - status: Work in progress (beta)
-- tablist "Filter by topic":
-  - tab "All Posts(15)"
-  - tab "Design(6)" [selected]
-  - tab "Tooling(3)"
-  - tab "Process(4)"
-  - tab "Branding(2)"
+- group "Filter by topic":
+  - button "All Posts(15)"
+  - button "Design(6)" [pressed]
+  - button "Tooling(3)"
+  - button "Process(4)"
+  - button "Branding(2)"

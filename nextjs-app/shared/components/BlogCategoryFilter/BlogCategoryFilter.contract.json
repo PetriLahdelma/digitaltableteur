@@ -38,17 +38,16 @@
     ],
     "a11y": {
         "keyboard": [
-            "Arrow Left/Right (and Up/Down) move between tabs with automatic activation",
-            "Home/End jump to the first/last tab",
-            "Enter/Space or click activates the focused tab"
+            "Tab moves to and through the filter buttons",
+            "Enter/Space or click activates the focused filter"
         ],
         "ariaRequirements": [
-            "role=tablist labelled via blogFilterByTag; each filter is a role=tab with aria-selected",
-            "Roving tabindex: only the active tab is in the tab order"
+            "role=group labelled via blogFilterByTag; each filter is a toggle button with aria-pressed",
+            "Single-select: exactly one filter has aria-pressed=true at a time (visual + aria-pressed convey the active filter)"
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories and all three variants; 4-mode AT snapshots captured and compare-clean. Added roving-tabindex + arrow/Home/End keyboard navigation with automatic activation to make the role=tablist honest (previously buttons-only); covered by new unit tests. Tailwind className styling retained as an intentional per-surface owner call.",
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories and all three variants; 4-mode AT snapshots captured and compare-clean. 2026-07-07: reconciled the a11y model with CategoryFilter to role=group + aria-pressed toggle buttons. A filter that re-renders a results grid is a set of UI controls, not a tablist (a tablist implies tab panels it does not have), so the earlier role=tablist + roving-tabindex was dropped in favour of independently focusable toggle buttons. Tailwind className styling retained as an intentional per-surface owner call.",
         "forcedColorsVerified": true
     },
     "tokens": {

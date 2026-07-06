@@ -72,7 +72,7 @@ const meta: Meta<typeof BlogCategoryFilter> = {
     },
     className: {
       control: "text",
-      description: "Extra class names merged onto the tablist.",
+      description: "Extra class names merged onto the filter group.",
       table: { category: "Appearance" },
     },
     onTagChange: { table: { disable: true } },
@@ -102,16 +102,16 @@ export default meta;
 
 type Story = StoryObj<typeof BlogCategoryFilter>;
 
-/** Pill-style filter with post counts; clicking a tab updates the selection. */
+/** Pill-style filter with post counts; clicking a filter updates the selection. */
 export const Default: Story = {
   tags: ["beta-matrix"],
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const tab = canvas.getByRole("tab", { name: /Design/ });
-    await userEvent.click(tab);
+    const filter = canvas.getByRole("button", { name: /Design/ });
+    await userEvent.click(filter);
     // Selection is written back through Storybook args (async channel).
     await waitFor(() =>
-      expect(tab).toHaveAttribute("aria-selected", "true"),
+      expect(filter).toHaveAttribute("aria-pressed", "true"),
     );
   },
 };
