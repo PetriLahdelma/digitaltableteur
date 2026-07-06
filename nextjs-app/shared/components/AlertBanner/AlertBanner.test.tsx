@@ -42,6 +42,25 @@ describe("AlertBanner", () => {
     expect(container.querySelector(`.${styles.error}`)).toBeInTheDocument();
   });
 
+  it("renders the tone icon by default", () => {
+    const { container } = render(<AlertBanner tone="info" title="Info" />);
+    expect(
+      container.querySelector('[data-icon-name="info"]'),
+    ).toBeInTheDocument();
+  });
+
+  it("falls back to the tone icon when icon is an empty string", () => {
+    // Storybook's controls-autogen seeds icon="" on every story; an empty
+    // string must be treated as absent (|| not ??) so the tone icon still
+    // renders instead of resolving to a nameless, missing glyph.
+    const { container } = render(
+      <AlertBanner tone="success" title="Saved" icon="" />,
+    );
+    expect(
+      container.querySelector('[data-icon-name="check-circle"]'),
+    ).toBeInTheDocument();
+  });
+
   it("renders dismiss button when dismissible", () => {
     render(<AlertBanner title="Message" dismissible />);
     expect(
