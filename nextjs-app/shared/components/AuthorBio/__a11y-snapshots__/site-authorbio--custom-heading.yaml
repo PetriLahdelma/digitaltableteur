@@ -1,11 +1,7 @@
 - region "About Petri Lahdelma":
   - img "Petri Lahdelma"
   - heading "Meet the author" [level=3]
-  - paragraph:
-    - text: TLDr; Creating GenAI UX, design, products & experiences. Founder
-    - link "@":
-      - /url: https://digitaltableteur.com
-    - text: digitaltableteur. Expert | Design Systems | UX Strategy & Design Ops | AI-Assisted Workflows | React, TypeScript & Next.JS Enthusiast | Entrepreneur
+  - paragraph: TLDr; Creating GenAI UX, design, products & experiences. Founder @digitaltableteur. Expert | Design Systems | UX Strategy & Design Ops | AI-Assisted Workflows | React, TypeScript & Next.JS Enthusiast | Entrepreneur
   - paragraph: With +15 yrs XP years, I specialize in platform agnostic solutions and have a track record in building and scaling Design Systems, DesignOps, AI Solutions and User-Centric Design.
   - paragraph: My expertise spans UX/UI, Branding, Visual Communication, Typography, DS component design & development and crafting solutions for diverse sectors including software, consultancies, publications, and government agencies. I excel in Figma and related UX/UI tooling, driving cross-functional collaboration with an accessibility and inclusive design mindset.
   - paragraph: Currently, I lead Design Systems and AI-integration initiatives for both B2B and B2C markets, focusing on strategic governance and adoption.

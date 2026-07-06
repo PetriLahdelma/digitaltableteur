@@ -55,14 +55,3 @@
 .bioContent p {
   margin: 0 0 1rem;
 }
-
-/* The card carries `not-prose`, so markdown links inherit no typography link
- * styling and would be indistinguishable from body text (WCAG 1.4.1). Give
- * them an underline affordance while keeping the text color for contrast. */
-
-.tagline a,
-.bioContent a {
-  text-decoration: underline;
-  color: inherit;
-  text-underline-offset: 0.15em;
-}
