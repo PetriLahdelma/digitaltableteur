@@ -5412,7 +5412,7 @@
       "name": "ExpandableSection",
       "group": "structure",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Collapsible content region with a trigger header. Lighter than `Accordion` (which manages a group of expandables) — used standalone for a single 'show more' or detail-disclosure section.",
       "dense": "Single disclosure: collapsedLabel/expandedLabel trigger, uncontrolled (defaultExpanded) or controlled (expanded + onExpandedChange); staggered reveal. One section = this; exclusive group = Accordion",
       "keywords": [
@@ -5525,12 +5525,12 @@
       },
       "tokens": {
         "colors": [
-          "--color-text",
-          "--color-surface-elevated"
+          "--color-muted",
+          "--color-primary"
         ],
         "spacing": [
           "--space-internal-8",
-          "--space-internal-12"
+          "--space-layout-24"
         ]
       },
       "examples": [

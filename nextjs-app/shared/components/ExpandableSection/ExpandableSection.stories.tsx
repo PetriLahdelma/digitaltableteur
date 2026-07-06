@@ -28,7 +28,7 @@ const defaultArgs = {
 const meta = {
   title: "Layout/ExpandableSection",
   component: ExpandableSection,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -76,7 +76,6 @@ export const Playground: Story = {
    * live (a set expandedLabel would mask collapsedLabel entirely while open).
    */
   render: function PlaygroundRender(args) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks -- Storybook render context
     const [{ expanded }, updateArgs] = useArgs();
     return (
       <ExpandableSection

@@ -236,6 +236,31 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "group": "marketing",
     "import": "import { EnhancedProjectCard } from "@dt/EnhancedProjectCard";",
   },
+  "ExpandableSection": {
+    "exampleStories": [
+      "ShowMoreTail",
+      "ControlledDisclosure",
+      "VersusAccordion",
+    ],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "structure",
+    "import": "import { ExpandableSection } from "@dt/ExpandableSection";",
+  },
   "FlexBox": {
     "exampleStories": [
       "InlineCluster",
