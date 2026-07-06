@@ -2,6 +2,27 @@
 
 exports[`get > snapshot: get() shape per stable component (fields + example story names) 1`] = `
 {
+  "AuthorBio": {
+    "exampleStories": [],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "structure",
+    "import": "import AuthorBio from "@dt/AuthorBio";",
+  },
   "Avatar": {
     "exampleStories": [
       "WithImage",

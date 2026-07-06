@@ -826,8 +826,8 @@
       "name": "AuthorBio",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
-      "description": "AuthorBio — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Author byline card for blog articles: avatar, name, and markdown bio, resolved from the authors data by slug.",
       "dense": "About-the-author block: Avatar + name + biography paragraph; end-of-article slot",
       "keywords": [
         "author",
