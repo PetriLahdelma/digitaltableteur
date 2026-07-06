@@ -2,7 +2,7 @@
   display: flex;
   padding: var(--space-internal-12, 0.75rem) var(--space-internal-16, 1rem);
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: var(--space-internal-8, 0.5rem);
   border-radius: var(--radius-md, 8px);
   font-family: var(--font-text);
 }
@@ -11,19 +11,30 @@
   display: flex;
   min-width: 0;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--space-internal-4, 0.25rem);
 }
 
-.title {
+/* Title/description sizing is scoped under .content so it beats the Title and
+   Text base size classes: a bare `.title` (0,1,0) only ties the component's own
+   size class and loses on source order (the module loads last), which is why
+   the heading was rendering at the 36px Title-s scale. The parent scope raises
+   specificity to (0,2,0) and wins. Hierarchy is a size + weight step at the
+   same tone colour (compact-banner pattern): 16/600 heading over 14/400 body,
+   holding the 14px text floor. */
+
+.content .title {
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.35;
   color: inherit;
 }
 
-.description {
+.content .description {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.45;
   color: inherit;
 }
 
