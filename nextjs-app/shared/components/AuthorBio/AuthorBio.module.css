@@ -15,15 +15,26 @@
   gap: 1rem;
 }
 
-.header img,
 .article img {
   margin-block: 1rem 0.5rem;
 }
 
-.name {
-  margin: 0.25rem 0 0;
-  font-size: 1.5rem;
+/*
+ * Scoped under .header so these beat the Title/Text base classes (equal
+ * single-class specificity, base wins on source order otherwise). Sizing is
+ * left to the Title/Text size props; these only reset margin and set ink so
+ * the name and role read as one tight unit.
+ */
+
+.header .name {
+  margin: 0;
   color: var(--color-text);
+}
+
+.header .role {
+  margin-block: var(--space-internal-4) 0;
+  font-weight: 400;
+  color: var(--color-muted);
 }
 
 .tagline {

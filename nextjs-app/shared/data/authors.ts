@@ -23,6 +23,8 @@ export type AuthorEntry = {
   description?: string;
   /** Public contact email; rendered as a mailto link on the author page. */
   email?: string;
+  /** Role/title shown under the name in the byline (e.g. "Founder, CEO"). */
+  role?: string;
   bio?: string;
 };
 
