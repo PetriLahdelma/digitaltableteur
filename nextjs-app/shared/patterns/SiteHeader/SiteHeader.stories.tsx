@@ -5,7 +5,7 @@ import { SiteHeader } from "./SiteHeader";
 const meta: Meta<typeof SiteHeader> = {
   title: "Patterns/SiteHeader",
   component: SiteHeader,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",
