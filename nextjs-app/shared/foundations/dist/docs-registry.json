@@ -8594,7 +8594,7 @@
       "name": "Menu",
       "group": "overlay",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Radix dropdown-menu primitive set (Menu, Trigger, Content, Item, Sub) shared by Avatar and SplitButton.",
       "dense": "Radix dropdown-menu set: Menu > MenuTrigger asChild > MenuContent (side/align) with MenuItem (icon/trailing/disabled/onSelect/href), MenuSeparator, MenuSub; Radix owns focus, arrows, typeahead, Escape",
       "keywords": [

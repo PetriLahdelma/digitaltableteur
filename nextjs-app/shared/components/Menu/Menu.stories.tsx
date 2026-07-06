@@ -74,7 +74,7 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   argTypes: {
     side: {
       control: { type: "select" },
