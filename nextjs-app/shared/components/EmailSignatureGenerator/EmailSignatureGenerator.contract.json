@@ -4,7 +4,7 @@
     "tier": "organism",
     "group": "structure",
     "status": "beta",
-    "description": "EmailSignatureGenerator — production @dt component (Storybook beta).",
+    "description": "Interactive tool that turns form inputs into a copyable, email-client-safe HTML signature.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-email-signature-generator",
     "radixPrimitive": null,
     "element": "div",

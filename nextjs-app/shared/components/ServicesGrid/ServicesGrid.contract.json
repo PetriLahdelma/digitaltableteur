@@ -4,7 +4,7 @@
     "tier": "organism",
     "group": "marketing",
     "status": "beta",
-    "description": "ServicesGrid — production @dt component (Storybook beta).",
+    "description": "Responsive grid that composes ServiceCards for homepage and services sections; it owns layout while the cards own content.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-services-grid",
     "radixPrimitive": null,
     "element": "div",

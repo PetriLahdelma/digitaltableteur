@@ -4,7 +4,7 @@
     "tier": "pattern",
     "group": "structure",
     "status": "beta",
-    "description": "ProofBlock — production @dt component (Storybook beta).",
+    "description": "Metrics band that presents headline numbers with captions under an optional title and subtitle, with tight and dark variants.",
     "dense": "Metrics proof band: headline metrics with captions under a title/subtitle; tight and dark variants.",
     "keywords": [
         "metrics",

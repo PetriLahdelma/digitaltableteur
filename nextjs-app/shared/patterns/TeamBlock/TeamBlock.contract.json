@@ -4,7 +4,7 @@
     "tier": "pattern",
     "group": "structure",
     "status": "beta",
-    "description": "TeamBlock — production @dt component (Storybook beta).",
+    "description": "Team grid of member cards with photo, name, and role, plus round-image, column, and spacing knobs.",
     "dense": "Team member grid: photo, name, and role cards with round-image option, column and spacing knobs.",
     "keywords": [
         "team",

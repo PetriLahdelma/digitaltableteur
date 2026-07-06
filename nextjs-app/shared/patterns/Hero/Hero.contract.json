@@ -4,7 +4,7 @@
     "tier": "pattern",
     "group": "marketing",
     "status": "beta",
-    "description": "Hero — production @dt component (Storybook beta).",
+    "description": "Configurable general-purpose page hero with heading, subtitle, optional image, and an actions slot across layout and background variants.",
     "dense": "General-purpose hero: title/subtitle/description, optional image and actions; layout variant, background, and align knobs.",
     "keywords": [
         "hero",

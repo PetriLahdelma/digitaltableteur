@@ -4,7 +4,7 @@
     "tier": "pattern",
     "group": "structure",
     "status": "beta",
-    "description": "StoryBlock — production @dt component (Storybook beta).",
+    "description": "Narrative section for Work case studies with a subtitle and title, rich text, and images arranged by a selectable layout.",
     "dense": "Case-study narrative section: subtitle/title, rich content, and images with selectable image layout.",
     "keywords": [
         "story",

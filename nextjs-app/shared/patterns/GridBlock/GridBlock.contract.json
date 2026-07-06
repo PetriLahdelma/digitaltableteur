@@ -4,7 +4,7 @@
     "tier": "pattern",
     "group": "layout",
     "status": "beta",
-    "description": "GridBlock — production @dt component (Storybook beta).",
+    "description": "Responsive grid of case-study content cells with column, gap, spacing, and background knobs, used across Work project pages.",
     "dense": "Case-study grid of content cells: columns, gap, background, and spacing knobs; used across Work project pages.",
     "keywords": [
         "grid",

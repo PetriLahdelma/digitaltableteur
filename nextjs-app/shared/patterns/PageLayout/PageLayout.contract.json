@@ -4,7 +4,7 @@
     "tier": "pattern",
     "group": "layout",
     "status": "beta",
-    "description": "PageLayout — production @dt component (Storybook beta).",
+    "description": "Page-body wrapper with a max-width container, default page margins, an optional grid mode, and a spacing scale.",
     "dense": "Page-level layout wrapper: max-width, optional grid columns, spacing scale, and default page margins.",
     "keywords": [
         "layout",
