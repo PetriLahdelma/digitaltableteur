@@ -21,6 +21,8 @@ export type AuthorEntry = {
   imageUrl?: string;
   /** Purpose-written meta/page description; falls back to a truncated bio. */
   description?: string;
+  /** Public contact email; rendered as a mailto link on the author page. */
+  email?: string;
   bio?: string;
 };
 
