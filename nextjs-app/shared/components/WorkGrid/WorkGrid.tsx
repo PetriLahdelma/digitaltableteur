@@ -31,6 +31,12 @@ const columnClasses = {
   4: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
 } as const;
 
+/**
+ * Responsive grid of portfolio projects, one EnhancedProjectCard per item, in
+ * a labelled `role="list"`. Items stagger in on scroll via GSAP (gated by the
+ * AnimationProvider's motion preference), and an empty project set renders a
+ * friendly empty state instead of a blank grid.
+ */
 export function WorkGrid({
   projects,
   columns = 3,
