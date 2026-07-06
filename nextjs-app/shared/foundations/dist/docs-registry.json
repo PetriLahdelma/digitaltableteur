@@ -5109,7 +5109,7 @@
       "name": "EmptyState",
       "group": "display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Placeholder block for empty lists, zero search results, and first-run screens.",
       "dense": "centered icon + heading + description + action slot for empty lists/search/first-run; sm/md/lg step padding and type together",
       "keywords": [
@@ -5268,7 +5268,7 @@
         {
           "story": "Default",
           "description": "Search empty state: icon, headline, and a way forward in the description.",
-          "source": "export const Default: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Search empty state: icon, headline, and a way forward in the description.\" },\n    },\n  },\n};"
+          "source": "export const Default: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Search empty state: icon, headline, and a way forward in the description.\" },\n    },\n  },\n};"
         },
         {
           "story": "WithAction",

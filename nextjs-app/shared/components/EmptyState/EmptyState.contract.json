@@ -3,9 +3,9 @@
     "name": "EmptyState",
     "tier": "molecule",
     "group": "display",
-    "status": "alpha",
+    "status": "beta",
     "description": "Placeholder block for empty lists, zero search results, and first-run screens.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1014-192",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
@@ -15,12 +15,11 @@
                 "md",
                 "lg"
             ],
-            "default": "md"
+            "default": "md",
+            "propSourced": true
         }
     },
-    "slots": [
-        "children"
-    ],
+    "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
