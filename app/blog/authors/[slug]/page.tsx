@@ -21,6 +21,7 @@ export async function generateMetadata({
 
   const title = `${author.name} | Digitaltableteur`;
   const description =
+    author.description ||
     author.bio?.slice(0, 160) ||
     "Learn more about this Digitaltableteur author.";
   const url = toAbsoluteSiteUrl(`/blog/authors/${slug}`);
