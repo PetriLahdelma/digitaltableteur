@@ -1117,6 +1117,7 @@
   "storyTitleLineHeightNormal": "Normaali (1.5) - Leipäteksti",
   "storyTitleLineHeightRelaxed": "Rento (1.625) - Pitkät tekstit",
   "storyTitleLineHeightLoose": "Väljä (1.75) - Paras luettavuus",
+  "blogNavLabel": "Blogiartikkelien navigointi",
   "blogNavBackToArticles": "Artikkeleihin",
   "blogNavPrev": "Edellinen",
   "blogNavNext": "Seuraava",
