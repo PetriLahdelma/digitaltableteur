@@ -1595,9 +1595,9 @@
       "name": "BlogMediaImage",
       "group": "media",
       "tier": 2,
-      "status": "alpha",
-      "description": "Blog-optimized responsive image with caption.",
-      "dense": "Blog-optimized responsive image with optional caption; handles sizing presets for article layouts",
+      "status": "beta",
+      "description": "Blog-optimized responsive image: renders raster sources through next/image and SVG sources as a plain img, with fill, cover/contain fit and a fluid full-bleed mode.",
+      "dense": "Blog-optimized responsive image; raster via next/image, SVG via plain img, with fill/cover/contain/fluid modes",
       "keywords": [
         "blog",
         "image",
@@ -1701,7 +1701,7 @@
         "promote to stable without production consumer evidence"
       ],
       "usage": {
-        "description": "Responsive article image with optional caption, sized for the blog's prose measure. Use inside article bodies instead of raw img."
+        "description": "Responsive article image sized for the blog's prose measure. Renders raster sources through next/image and SVG sources as a plain img. Use inside article bodies instead of a raw img."
       },
       "tokens": {
         "colors": [],

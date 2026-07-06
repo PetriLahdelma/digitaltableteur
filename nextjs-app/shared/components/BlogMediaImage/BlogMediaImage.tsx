@@ -21,6 +21,13 @@ export interface BlogMediaImageProps {
   fluid?: boolean;
 }
 
+/**
+ * Responsive article image for blog prose. Renders raster sources through
+ * `next/image` (external URLs unoptimised) and SVG sources as a plain `img`
+ * (next/image renders SVG unreliably), and supports fill, `cover`/`contain`
+ * fit and a fluid full-bleed mode. Use inside article bodies instead of a raw
+ * `img`.
+ */
 export function BlogMediaImage({
   src,
   alt,
@@ -110,3 +117,5 @@ export function BlogMediaImage({
     />
   );
 }
+
+BlogMediaImage.displayName = "BlogMediaImage";
