@@ -1009,7 +1009,7 @@
       "name": "AvatarGroup",
       "group": "display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Overlapping stack of Avatars with a +N overflow bubble.",
       "dense": "role=group overlapping Avatar stack; max collapses the rest into a +N bubble with sr-only 'N more'; sm/md/lg bubble sizes",
       "keywords": [
@@ -1138,7 +1138,7 @@
         {
           "story": "Default",
           "description": "Six members, max 4: the stack shows four and collapses the rest into +2.",
-          "source": "export const Default: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Six members, max 4: the stack shows four and collapses the rest into +2.\" },\n    },\n  },\n};"
+          "source": "export const Default: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Six members, max 4: the stack shows four and collapses the rest into +2.\" },\n    },\n  },\n};"
         },
         {
           "story": "NoOverflow",
