@@ -1,19 +1,19 @@
 # WorkNav
 
 ## Intent
-Work section sub-navigation.
+Work section sub-navigation: a back-to-index action plus previous/next controls for stepping through the portfolio case studies.
 
 ## Interaction contract
-- Keyboard: inherit from composed @dt/* primitives
-- Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Keyboard: inherit from composed @dt/Button primitives (native button focus/activation)
+- Pointer: standard button targets; disabled at the sequence edges
+- Screen readers: rendered inside a `nav` landmark labelled via `aria-label` (workNavLabel)
 
 ## Do / don't
 - Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface
-- Do: treat this as a page assembly reference when matching production routes
+- Do: pass `currentPath` in stories/tests to drive the prev/next disabled state
 - Don't: invent parallel primitives inside this folder
-- Don't: promote to stable without production consumer evidence
+- Don't: use this for site-wide navigation (that is SiteHeader)
 
 ## Design notes
-- Tokens: inherit from child components
-- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-nav
+- Tokens: inherit from child components (Button, Icon)
+- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1027-2672

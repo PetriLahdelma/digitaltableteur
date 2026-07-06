@@ -15253,23 +15253,38 @@
       "name": "WorkNav",
       "group": "navigation",
       "tier": 2,
-      "status": "alpha",
-      "description": "Work section sub-navigation.",
-      "dense": "Work-section sub-navigation (filters/sections) for portfolio pages",
+      "status": "beta",
+      "description": "Work section sub-navigation: a back-to-index action plus previous/next controls for stepping through the portfolio case studies.",
+      "dense": "Work-section sub-navigation: back-to-index plus prev/next stepping for portfolio case-study pages",
       "keywords": [
         "work",
         "navigation",
         "sub nav",
-        "portfolio"
+        "portfolio",
+        "prev next"
       ],
       "importLine": "import WorkNav from \"@dt/WorkNav\";",
-      "keyProps": [],
-      "props": {},
-      "composesWith": [],
+      "keyProps": [
+        {
+          "name": "currentPath",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "currentPath": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "composesWith": [
+        "Button",
+        "Icon"
+      ],
       "prefersOver": [],
       "forbiddenUse": [],
       "usage": {
-        "description": "Sub-navigation for the work section. Portfolio chrome; site-wide nav lives in SiteHeader."
+        "description": "Sub-navigation for the work section. Renders a back-to-work action and previous/next controls that step through the case-study sequence, disabling the edges. Portfolio chrome; site-wide nav lives in SiteHeader."
       },
       "tokens": {
         "colors": [],
