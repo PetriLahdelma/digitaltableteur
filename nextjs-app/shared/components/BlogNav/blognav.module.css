@@ -20,9 +20,3 @@
     display: inline;
   }
 }
-
-.hrLine {
-  margin: 1.5rem 0 2rem;
-  border: none;
-  border-top: 2px solid var(--color-primary);
-}

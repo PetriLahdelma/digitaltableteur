@@ -1117,6 +1117,7 @@
   "storyTitleLineHeightNormal": "Normal (1.5) - Body text",
   "storyTitleLineHeightRelaxed": "Relaxed (1.625) - Long-form",
   "storyTitleLineHeightLoose": "Loose (1.75) - Max readability",
+  "blogNavLabel": "Blog article navigation",
   "blogNavBackToArticles": "Articles",
   "blogNavPrev": "Prev",
   "blogNavNext": "Next",

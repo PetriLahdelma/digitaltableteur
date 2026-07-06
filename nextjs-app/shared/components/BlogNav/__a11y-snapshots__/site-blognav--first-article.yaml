@@ -1,0 +1,11 @@
+- status: Work in progress (beta)
+- navigation "Blog article navigation":
+  - button "Articles Articles":
+    - img "Articles"
+    - text: Articles
+  - button "Prev Prev" [disabled]:
+    - img "Prev"
+    - text: Prev
+  - button "Next Next":
+    - text: Next
+    - img "Next"

@@ -1,11 +1,15 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe, toHaveNoViolations } from "jest-axe";
 import BlogNav from "@dt/BlogNav";
 import { vi, beforeEach, describe, it, expect } from "vitest";
+
+expect.extend(toHaveNoViolations);
 
 // Mock react-i18next
 const mockT = vi.fn((key: string) => {
   const translations: { [key: string]: string } = {
+    blogNavLabel: "Blog article navigation",
     blogNavBackToArticles: "Back to Articles",
     blogNavPrev: "Previous",
     blogNavNext: "Next",
@@ -112,5 +116,29 @@ describe("BlogNav", () => {
     // Should handle gracefully without errors
     expect(prevButton).toBeInTheDocument();
     expect(nextButton).toBeInTheDocument();
+  });
+
+  it("exposes a labelled navigation landmark", () => {
+    renderWithRouter();
+    expect(
+      screen.getByRole("navigation", { name: "Blog article navigation" }),
+    ).toBeInTheDocument();
+  });
+
+  it("prefers the currentPath prop over the router pathname", () => {
+    // Router is on the first article; the prop points at a middle article.
+    mockUsePathname.mockReturnValue("/blog/petri-lahdelma-bio");
+    render(<BlogNav currentPath="/blog/digital-craftsmanship" />);
+    expect(
+      screen.getByRole("button", { name: /previous/i }),
+    ).not.toBeDisabled();
+    expect(screen.getByRole("button", { name: /next/i })).not.toBeDisabled();
+  });
+
+  it("has no axe violations", async () => {
+    const { container } = render(
+      <BlogNav currentPath="/blog/digital-craftsmanship" />,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

@@ -1127,6 +1127,7 @@
   "storyTitleLineHeightNormal": "Normal (1.5) - Brödtext",
   "storyTitleLineHeightRelaxed": "Avslappnad (1.625) - Långform",
   "storyTitleLineHeightLoose": "Lös (1.75) - Maximal läsbarhet",
+  "blogNavLabel": "Navigering för bloggartiklar",
   "blogNavBackToArticles": "Artiklar",
   "blogNavPrev": "Föregående",
   "blogNavNext": "Nästa",

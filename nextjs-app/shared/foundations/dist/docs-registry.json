@@ -1713,23 +1713,38 @@
       "name": "BlogNav",
       "group": "navigation",
       "tier": 2,
-      "status": "alpha",
-      "description": "Blog section navigation links.",
-      "dense": "Blog section navigation links (index, categories, feeds)",
+      "status": "beta",
+      "description": "Blog article sub-navigation: a back-to-articles action plus previous/next controls for stepping through the article sequence.",
+      "dense": "Blog article sub-navigation: back-to-articles plus prev/next stepping for article pages",
       "keywords": [
         "blog",
         "navigation",
-        "section nav",
-        "links"
+        "sub nav",
+        "article",
+        "prev next"
       ],
       "importLine": "import BlogNav from \"@dt/BlogNav\";",
-      "keyProps": [],
-      "props": {},
-      "composesWith": [],
+      "keyProps": [
+        {
+          "name": "currentPath",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "currentPath": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "composesWith": [
+        "Button",
+        "Icon"
+      ],
       "prefersOver": [],
       "forbiddenUse": [],
       "usage": {
-        "description": "Blog section navigation link row. Blog chrome; for site-wide nav use SiteHeader/NavLink."
+        "description": "Sub-navigation for blog articles. Renders a back-to-articles action and previous/next controls that step through the article sequence, disabling the edges (and both when the route is not an article). Blog chrome; for site-wide nav use SiteHeader/NavLink."
       },
       "tokens": {
         "colors": [],
