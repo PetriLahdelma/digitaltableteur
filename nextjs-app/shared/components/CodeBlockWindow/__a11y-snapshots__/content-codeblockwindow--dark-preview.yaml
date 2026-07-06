@@ -1,0 +1,5 @@
+- figure:
+  - text: theme-dark.tsx
+  - button "Copy code to clipboard": Copy
+  - group "Code block in TSX":
+    - code: "type Props = { label: string; }; export function DemoButton({ label }: Props) { return ( <button type=\"button\" aria-label={label}> {label} </button> ); }"

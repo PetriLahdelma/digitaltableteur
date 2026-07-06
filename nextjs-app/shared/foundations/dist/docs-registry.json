@@ -3533,8 +3533,8 @@
       "name": "CodeBlockWindow",
       "group": "structure",
       "tier": 1,
-      "status": "beta",
-      "description": "CodeBlockWindow — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Framed code block with a title bar, language label, optional line numbers, and copy button; renders pre-highlighted Shiki output with theme-aware syntax colors.",
       "dense": "Framed code: header w/ title (filename) + language label, caption below, context default|article (prose width, 35vh scroll); children expect highlighted pre/code (Shiki), not raw strings",
       "keywords": [
         "code window",

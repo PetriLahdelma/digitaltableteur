@@ -1,0 +1,5 @@
+- figure:
+  - text: long-line.ts
+  - button "Copy code to clipboard": Copy
+  - group "Code block in TS":
+    - code: const longLine = 'This is an intentionally long line to verify horizontal scrolling within the code window without wrapping.';

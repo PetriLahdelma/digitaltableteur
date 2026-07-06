@@ -1,0 +1,5 @@
+- figure:
+  - text: payload.json
+  - button "Copy code to clipboard": Copy
+  - group "Code block in JSON":
+    - code: "{\"service\":\"digitaltableteur\",\"mode\":\"active\",\"regions\":[\"eu\",\"us\"]}"
