@@ -59,7 +59,10 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
       role={role}
       aria-live={liveRegion}
     >
-      <Icon name={icon ?? toneIcon[tone]} ariaLabel={tone} size="md" />
+      {/* `||` not `??`: an empty-string icon (Storybook controls-autogen seeds
+          "" on every story) must fall through to the semantic tone icon, not
+          resolve to a nameless, missing glyph. */}
+      <Icon name={icon || toneIcon[tone]} ariaLabel={tone} size="md" />
       <div className={styles.content}>
         {title && (
           <Title size="s" className={styles.title}>
