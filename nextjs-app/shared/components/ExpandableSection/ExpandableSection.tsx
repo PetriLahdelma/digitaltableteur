@@ -86,7 +86,7 @@ export function ExpandableSection({
             ref={contentRef}
             initial={prefersReducedMotion ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
-            exit={prefersReducedMotion ? { height: 0, opacity: 0 } : { height: 0, opacity: 0 }}
+            exit={{ height: 0, opacity: 0 }}
             transition={morphTransition}
             className={styles.content}
           >

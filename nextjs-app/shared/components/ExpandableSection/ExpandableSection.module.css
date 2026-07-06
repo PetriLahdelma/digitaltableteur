@@ -63,3 +63,13 @@
 .inner {
   padding-block-start: var(--space-layout-24);
 }
+
+/* The framer-motion morph is duration-zeroed under reduced motion (see tsx);
+   these CSS transitions (trigger color, +/× icon rotation) need the same
+   guard so nothing animates for reduced-motion users. */
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .icon {
+    transition: none;
+  }
+}

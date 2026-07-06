@@ -1,3 +1,6 @@
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -67,5 +70,23 @@ describe("ExpandableSection", () => {
       </ExpandableSection>,
     );
     expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it("neutralises the trigger and icon transitions under reduced motion", () => {
+    // The framer-motion morph is duration-zeroed in the component; these two
+    // CSS transitions need a media guard so nothing animates for reduced-motion
+    // users. Assert the guard exists (jsdom can't evaluate media-scoped styles).
+    const css = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "ExpandableSection.module.css"),
+      "utf8",
+    );
+    const guard = css.match(
+      /@media \(prefers-reduced-motion: reduce\) \{([\s\S]*?)\}\s*\}/,
+    );
+    expect(guard, "reduced-motion @media block").not.toBeNull();
+    const body = guard![1];
+    expect(body).toMatch(/\.trigger/);
+    expect(body).toMatch(/\.icon/);
+    expect(body).toMatch(/transition:\s*none/);
   });
 });
