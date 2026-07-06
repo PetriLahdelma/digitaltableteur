@@ -823,6 +823,37 @@ export function validateComponentsDir(root: string): ValidationResult {
             }
         }
 
+        // Status source-of-truth consistency: the Docs-page StatusPill
+        // (.storybook/blocks/DocHeader) reads `contract.status`, while the
+        // sidebar lifecycle dot (.storybook/manager.ts renderLabel) reads the
+        // story meta `tags` status. These are two independent copies of the
+        // same fact; when they drift the docs badge and the sidebar dot show
+        // different lifecycles for the same component (e.g. Docs "Beta" but an
+        // alpha dot). Enforce that the meta status tag, when present, equals
+        // contract.status so a promotion must update both.
+        {
+            const storiesPath = join(dir, `${name}.stories.tsx`)
+            if (existsSync(storiesPath)) {
+                const storiesText = readFileSync(storiesPath, 'utf-8')
+                const metaCut = storiesText.indexOf('export default meta')
+                const metaRegion = metaCut > 0 ? storiesText.slice(0, metaCut) : storiesText
+                const tagsMatch = metaRegion.match(/tags:\s*\[([^\]]*)\]/)
+                if (tagsMatch) {
+                    const metaTags = tagsMatch[1]
+                        .split(',')
+                        .map(entry => entry.trim().replace(/["'!]/g, ''))
+                    const metaStatus = (['stable', 'beta', 'alpha', 'deprecated'] as const).find(
+                        candidate => metaTags.includes(candidate),
+                    )
+                    if (metaStatus && metaStatus !== manifest.status) {
+                        errors.push(
+                            `${name}.stories.tsx: meta tags status "${metaStatus}" disagrees with ${name}.contract.json status "${manifest.status}". The sidebar lifecycle dot reads the meta tag and the Docs StatusPill reads contract.status, so they would show different lifecycles for the same component. Update the meta tags status to "${manifest.status}".`,
+                        )
+                    }
+                }
+            }
+        }
+
         const strictLifecycle = manifest.status === 'beta' || manifest.status === 'stable'
 
         // AST checks via ts-morph

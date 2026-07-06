@@ -5,7 +5,7 @@ import { SiteFooter } from "./SiteFooter";
 const meta: Meta<typeof SiteFooter> = {
   title: "Patterns/SiteFooter",
   component: SiteFooter,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",
