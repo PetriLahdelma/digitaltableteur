@@ -2238,7 +2238,7 @@
       "name": "ButtonGroup",
       "group": "actions",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Groups related Buttons into one attached (segmented) or spaced row.",
       "dense": "role=group row of Buttons/IconButtons; attached mode fuses seams (segmented look), attached=false spaces on the token gap",
       "keywords": [
@@ -2340,7 +2340,7 @@
         {
           "story": "Default",
           "description": "Attached segments share seams; use one variant and size across the group.",
-          "source": "export const Default: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Attached segments share seams; use one variant and size across the group.\" },\n    },\n  },\n};"
+          "source": "export const Default: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Attached segments share seams; use one variant and size across the group.\" },\n    },\n  },\n};"
         },
         {
           "story": "Spaced",

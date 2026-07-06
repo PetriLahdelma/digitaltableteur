@@ -3,15 +3,13 @@
     "name": "ButtonGroup",
     "tier": "molecule",
     "group": "actions",
-    "status": "alpha",
+    "status": "beta",
     "description": "Groups related Buttons into one attached (segmented) or spaced row.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1012-176",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
-    "slots": [
-        "children"
-    ],
+    "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [

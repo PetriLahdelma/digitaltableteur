@@ -1,0 +1,6 @@
+- status: Work in progress (beta)
+- group "Pagination":
+  - button "Previous page":
+    - img
+  - button "Next page":
+    - img
