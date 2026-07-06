@@ -1386,8 +1386,8 @@
       "name": "BlogCategoryFilter",
       "group": "navigation",
       "tier": 2,
-      "status": "alpha",
-      "description": "Blog category filter control.",
+      "status": "beta",
+      "description": "Single-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.",
       "dense": "Blog-specific category filter control; wraps CategoryFilter conventions for the blog archive",
       "keywords": [
         "blog",

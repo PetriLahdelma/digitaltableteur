@@ -3,9 +3,9 @@
     "name": "BlogCategoryFilter",
     "tier": "molecule",
     "group": "navigation",
-    "status": "alpha",
-    "description": "Blog category filter control.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-blog-category-filter",
+    "status": "beta",
+    "description": "Single-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1035-110",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
@@ -24,7 +24,7 @@
                 "md",
                 "lg"
             ],
-            "default": "sm",
+            "default": "md",
             "propSourced": true
         }
     },
@@ -32,20 +32,30 @@
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
+        "keyboard": [
+            "Arrow Left/Right (and Up/Down) move between tabs with automatic activation",
+            "Home/End jump to the first/last tab",
+            "Enter/Space or click activates the focused tab"
+        ],
+        "ariaRequirements": [
+            "role=tablist labelled via blogFilterByTag; each filter is a role=tab with aria-selected",
+            "Roving tabindex: only the active tab is in the tab order"
+        ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories and all three variants; 4-mode AT snapshots captured and compare-clean. Added roving-tabindex + arrow/Home/End keyboard navigation with automatic activation to make the role=tablist honest (previously buttons-only); covered by new unit tests. Tailwind className styling retained as an intentional per-surface owner call.",
+        "forcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "schemaVersion": 2,
     "props": {
         "tags": {
