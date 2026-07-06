@@ -11,7 +11,7 @@ const meta: Meta<typeof WorkGrid> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/WorkGrid",
   component: WorkGrid,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",
