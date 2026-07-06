@@ -1,19 +1,19 @@
 # ArticleShareSection
 
 ## Intent
-Share links section for blog articles.
+End-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading.
 
 ## Interaction contract
-- Keyboard: inherit from composed @dt/* primitives
-- Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Keyboard: Tab reaches each share link and the copy-link button; Enter/Space activates them
+- Pointer: social links open the platform share dialog in a new tab; the copy button writes the URL to the clipboard
+- Screen readers: every icon-only control has an aria-label; icons are aria-hidden; the copy button's label switches to "Link copied!" on success
 
 ## Do / don't
-- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface
-- Do: treat this as a page assembly reference when matching production routes
+- Do: pass the article `url` and `title`; choose `layout` (horizontal | vertical)
+- Do: hide the heading with `showTitle={false}` for compact rails
 - Don't: invent parallel primitives inside this folder
-- Don't: promote to stable without production consumer evidence
+- Don't: use for arbitrary pages — this is the blog article template slot
 
 ## Design notes
-- Tokens: inherit from child components
-- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-article-share-section
+- Tokens: Tailwind utilities mapped to theme tokens; the copied confirmation uses green-800 ink for AA
+- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1043-110

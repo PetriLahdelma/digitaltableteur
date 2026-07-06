@@ -488,9 +488,9 @@
       "name": "ArticleShareSection",
       "group": "content",
       "tier": 2,
-      "status": "alpha",
-      "description": "Share links section for blog articles.",
-      "dense": "Share-links section at the end of blog articles; composes SocialShare with a heading",
+      "status": "beta",
+      "description": "End-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading.",
+      "dense": "End-of-article share section: X/LinkedIn/Facebook share links plus a copy-link button under an optional heading",
       "keywords": [
         "share",
         "article",
@@ -565,7 +565,7 @@
         "promote to stable without production consumer evidence"
       ],
       "usage": {
-        "description": "End-of-article share section composing SocialShare under a heading. Blog article template slot; not for arbitrary pages."
+        "description": "End-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading. Blog article template slot; not for arbitrary pages."
       },
       "tokens": {
         "colors": [],

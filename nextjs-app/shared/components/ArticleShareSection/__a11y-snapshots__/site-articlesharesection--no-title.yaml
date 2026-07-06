@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- link "Share on Twitter":
+  - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fdigitaltableteur.com%2Fblog%2Fdesigning-in-2025&text=Designing%20in%202025
+- link "Share on LinkedIn":
+  - /url: https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fdigitaltableteur.com%2Fblog%2Fdesigning-in-2025&title=Designing%20in%202025
+- link "Share on Facebook":
+  - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdigitaltableteur.com%2Fblog%2Fdesigning-in-2025
+- button "Copy link"
