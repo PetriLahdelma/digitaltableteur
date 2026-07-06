@@ -16,21 +16,21 @@ vi.mock("react-i18next", () => ({
 const tags = ["Design", "Tooling", "Process"];
 
 describe("BlogCategoryFilter", () => {
-  it("renders an All tab plus one tab per tag inside a labelled tablist", () => {
+  it("renders an All filter plus one per tag inside a labelled group", () => {
     render(
       <BlogCategoryFilter tags={tags} selectedTag={null} onTagChange={vi.fn()} />,
     );
     expect(
-      screen.getByRole("tablist", { name: "Filter by topic" }),
+      screen.getByRole("group", { name: "Filter by topic" }),
     ).toBeInTheDocument();
-    expect(screen.getAllByRole("tab")).toHaveLength(tags.length + 1);
-    expect(screen.getByRole("tab", { name: "All Posts" })).toHaveAttribute(
-      "aria-selected",
+    expect(screen.getAllByRole("button")).toHaveLength(tags.length + 1);
+    expect(screen.getByRole("button", { name: "All Posts" })).toHaveAttribute(
+      "aria-pressed",
       "true",
     );
   });
 
-  it("marks the selected tag as active", () => {
+  it("marks the selected tag as pressed", () => {
     render(
       <BlogCategoryFilter
         tags={tags}
@@ -38,14 +38,25 @@ describe("BlogCategoryFilter", () => {
         onTagChange={vi.fn()}
       />,
     );
-    expect(screen.getByRole("tab", { name: "Tooling" })).toHaveAttribute(
-      "aria-selected",
+    expect(screen.getByRole("button", { name: "Tooling" })).toHaveAttribute(
+      "aria-pressed",
       "true",
     );
-    expect(screen.getByRole("tab", { name: "All Posts" })).toHaveAttribute(
-      "aria-selected",
+    expect(screen.getByRole("button", { name: "All Posts" })).toHaveAttribute(
+      "aria-pressed",
       "false",
     );
+  });
+
+  it("keeps exactly one filter pressed at a time (single-select)", () => {
+    render(
+      <BlogCategoryFilter tags={tags} selectedTag="Design" onTagChange={vi.fn()} />,
+    );
+    const pressed = screen
+      .getAllByRole("button")
+      .filter((b) => b.getAttribute("aria-pressed") === "true");
+    expect(pressed).toHaveLength(1);
+    expect(pressed[0]).toHaveAccessibleName("Design");
   });
 
   it("calls onTagChange with the tag or null", async () => {
@@ -53,9 +64,9 @@ describe("BlogCategoryFilter", () => {
     render(
       <BlogCategoryFilter tags={tags} selectedTag={null} onTagChange={onTagChange} />,
     );
-    await userEvent.click(screen.getByRole("tab", { name: "Design" }));
+    await userEvent.click(screen.getByRole("button", { name: "Design" }));
     expect(onTagChange).toHaveBeenLastCalledWith("Design");
-    await userEvent.click(screen.getByRole("tab", { name: "All Posts" }));
+    await userEvent.click(screen.getByRole("button", { name: "All Posts" }));
     expect(onTagChange).toHaveBeenLastCalledWith(null);
   });
 
@@ -69,39 +80,12 @@ describe("BlogCategoryFilter", () => {
         tagCounts={{ Design: 4, Tooling: 2, Process: 1 }}
       />,
     );
-    // "All Posts" total = 4 + 2 + 1 = 7; each tab shows its own count.
+    // "All Posts" total = 4 + 2 + 1 = 7; each filter shows its own count.
     expect(screen.getByText("(7)")).toBeInTheDocument();
     expect(screen.getByText("(4)")).toBeInTheDocument();
-    expect(screen.getByRole("tab", { name: /All Posts/ })).toBeInTheDocument();
-  });
-
-  it("moves between tabs with arrow keys (automatic activation)", async () => {
-    const onTagChange = vi.fn();
-    render(
-      <BlogCategoryFilter tags={tags} selectedTag={null} onTagChange={onTagChange} />,
-    );
-    const allTab = screen.getByRole("tab", { name: "All Posts" });
-    allTab.focus();
-    await userEvent.keyboard("{ArrowRight}");
-    expect(onTagChange).toHaveBeenLastCalledWith("Design");
-    await userEvent.keyboard("{ArrowLeft}");
-    expect(onTagChange).toHaveBeenLastCalledWith(null);
-    await userEvent.keyboard("{End}");
-    expect(onTagChange).toHaveBeenLastCalledWith("Process");
-  });
-
-  it("uses roving tabindex so only the active tab is in the tab order", () => {
-    render(
-      <BlogCategoryFilter tags={tags} selectedTag="Design" onTagChange={vi.fn()} />,
-    );
-    expect(screen.getByRole("tab", { name: "Design" })).toHaveAttribute(
-      "tabindex",
-      "0",
-    );
-    expect(screen.getByRole("tab", { name: "All Posts" })).toHaveAttribute(
-      "tabindex",
-      "-1",
-    );
+    expect(
+      screen.getByRole("button", { name: /All Posts/ }),
+    ).toBeInTheDocument();
   });
 
   it.each(["pills", "underline", "minimal"] as const)(

@@ -40,7 +40,7 @@ export function CategoryFilter({
 }: CategoryFilterProps) {
   const renderPills = () => (
     <div
-      role="tablist"
+      role="group"
       aria-label="Filter projects by category"
       className={cn(
         "flex flex-wrap gap-2",
@@ -55,8 +55,7 @@ export function CategoryFilter({
         return (
           <button
             key={category.value}
-            role="tab"
-            aria-selected={isActive}
+            aria-pressed={isActive}
             onClick={() => onCategoryChange(category.value)}
             className={cn(
               "font-body whitespace-nowrap rounded-full",
@@ -77,7 +76,7 @@ export function CategoryFilter({
 
   const renderUnderline = () => (
     <div
-      role="tablist"
+      role="group"
       aria-label="Filter projects by category"
       className={cn(
         "flex gap-6 border-b border-border",
@@ -92,8 +91,7 @@ export function CategoryFilter({
         return (
           <button
             key={category.value}
-            role="tab"
-            aria-selected={isActive}
+            aria-pressed={isActive}
             onClick={() => onCategoryChange(category.value)}
             className={cn(
               "font-body whitespace-nowrap pb-3",
@@ -114,7 +112,7 @@ export function CategoryFilter({
 
   const renderMinimal = () => (
     <div
-      role="tablist"
+      role="group"
       aria-label="Filter projects by category"
       className={cn(
         "flex flex-wrap gap-4",
@@ -129,8 +127,7 @@ export function CategoryFilter({
         return (
           <button
             key={category.value}
-            role="tab"
-            aria-selected={isActive}
+            aria-pressed={isActive}
             onClick={() => onCategoryChange(category.value)}
             className={cn(
               "font-body whitespace-nowrap transition-colors duration-200",
