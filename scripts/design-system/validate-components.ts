@@ -851,6 +851,20 @@ export function validateComponentsDir(root: string): ValidationResult {
                         )
                     }
                 }
+
+                // Docs-frame consistency: the global autodocs page is the DT
+                // frame (.storybook/preview.tsx -> DtDocsPage), which renders
+                // the DocHeader masthead (group, name + StatusPill, description,
+                // Figma link) plus the contract-driven Usage/Anatomy/Props/etc.
+                // A contract-backed component that overrides `parameters.docs.page`
+                // in its meta shadows that frame with a bespoke page, dropping the
+                // masthead and every authored contract doc section. Forbid it so
+                // every contract component keeps the same docs shell.
+                if (/docs:\s*\{[\s\S]*?\bpage:/.test(metaRegion)) {
+                    errors.push(
+                        `${name}.stories.tsx: meta overrides parameters.docs.page, which shadows the DtDocsPage autodocs frame and drops the DocHeader masthead + contract doc sections for a contract-backed component. Remove the docs.page override so ${name} uses the shared frame (see .storybook/preview.tsx / DtDocsPage).`,
+                    )
+                }
             }
         }
 

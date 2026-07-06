@@ -2,20 +2,10 @@ import contract from "./List.contract.json";
 import React from "react";
 import type { Meta, StoryFn } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import List from "@dt/List";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import { useTranslation } from "react-i18next";
-import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 
@@ -31,27 +21,6 @@ const meta: Meta<typeof List> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
     llm: { schema },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
   },
   argTypes: {
     items: {
