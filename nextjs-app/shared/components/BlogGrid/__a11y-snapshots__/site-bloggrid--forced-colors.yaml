@@ -1,0 +1,52 @@
+- status: Work in progress (beta)
+- 'link "Read article: Designing in 2025"':
+  - /url: /blog/designing-in-2025
+  - img "Abstract gradient"
+  - text: Design
+  - heading "Designing in 2025" [level=3]
+  - paragraph: Where craft meets systems.
+  - text: Petri Lahdelma
+  - time: Jan 15, 2025
+  - text: 5 min read Read article
+- 'link "Read article: Figma MCP and design systems"':
+  - /url: /blog/figma-mcp-design-systems
+  - img "Abstract gradient"
+  - text: Tooling
+  - heading "Figma MCP and design systems" [level=3]
+  - paragraph: Bridging design and code.
+  - text: Petri Lahdelma
+  - time: Feb 10, 2025
+  - text: 8 min read Read article
+- 'link "Read article: Workflow tips"':
+  - /url: /blog/workflow-tips
+  - img "Abstract gradient"
+  - text: Process
+  - heading "Workflow tips" [level=3]
+  - paragraph: Small habits, big output.
+  - text: Petri Lahdelma
+  - time: Mar 1, 2025
+  - text: 4 min read Read article
+- 'link "Read article: In search of impact"':
+  - /url: /blog/in-search-of-impact
+  - text: Strategy
+  - heading "In search of impact" [level=3]
+  - paragraph: Designing for outcomes.
+  - text: Petri Lahdelma
+  - time: Mar 20, 2025
+  - text: 6 min read Read article
+- 'link "Read article: Digital craftsmanship"':
+  - /url: /blog/digital-craftsmanship
+  - text: Craft
+  - heading "Digital craftsmanship" [level=3]
+  - paragraph: Sweating the details.
+  - text: Petri Lahdelma
+  - time: Apr 5, 2025
+  - text: 7 min read Read article
+- 'link "Read article: Thoughts on future branding"':
+  - /url: /blog/thoughts-on-future-branding
+  - text: Branding
+  - heading "Thoughts on future branding" [level=3]
+  - paragraph: Brands as living systems.
+  - text: Petri Lahdelma
+  - time: Apr 22, 2025
+  - text: 5 min read Read article

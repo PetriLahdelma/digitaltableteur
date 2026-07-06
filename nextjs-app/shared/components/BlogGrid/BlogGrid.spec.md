@@ -1,19 +1,20 @@
 # BlogGrid
 
 ## Intent
-Blog post card grid for index pages.
+Responsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.
 
 ## Interaction contract
-- Keyboard: inherit from composed @dt/* primitives
-- Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Keyboard: focus flows through each article card link in order
+- Pointer: each card is an EnhancedArticleCard linking to its article
+- Screen readers: articles render as self-labelled cards; the empty state is a labelled message
+- Reduced motion: the FadeIn entrance is skipped when the AnimationProvider reports a reduced motion preference
 
 ## Do / don't
-- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface
-- Do: treat this as a page assembly reference when matching production routes
+- Do: pass an `articles` array; choose `layout`, `columns`, `featuredSlug`
+- Do: rely on the built-in empty state when a filter yields no articles
 - Don't: invent parallel primitives inside this folder
-- Don't: promote to stable without production consumer evidence
+- Don't: hand-roll cards — BlogGrid owns the EnhancedArticleCard composition
 
 ## Design notes
-- Tokens: inherit from child components
-- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-blog-grid
+- Tokens: Tailwind grid utilities mapped to theme spacing
+- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1034-110

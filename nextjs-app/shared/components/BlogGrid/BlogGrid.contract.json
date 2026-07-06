@@ -3,9 +3,9 @@
     "name": "BlogGrid",
     "tier": "organism",
     "group": "content",
-    "status": "alpha",
-    "description": "Blog post card grid for index pages.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-blog-grid",
+    "status": "beta",
+    "description": "Responsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1034-110",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
@@ -23,20 +23,26 @@
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [],
-        "ariaRequirements": [],
+        "ariaRequirements": [
+            "Each article renders as an EnhancedArticleCard; the empty state is a labelled message, not an empty grid"
+        ],
+        "motion": true,
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (standard + featured-first, populated + empty); 4-mode AT snapshots captured and compare-clean. Cards fade in via FadeIn, which is gated by the AnimationProvider motion preference. Composes the prod EnhancedArticleCard. Tailwind className styling retained as an intentional per-surface owner call.",
+        "forcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "schemaVersion": 2,
     "props": {
         "articles": {

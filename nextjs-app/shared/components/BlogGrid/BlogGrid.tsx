@@ -27,6 +27,12 @@ export interface BlogGridProps {
   className?: string;
 }
 
+/**
+ * Responsive grid of blog articles, one EnhancedArticleCard per item. Supports
+ * a standard grid, a featured-first layout that promotes one article to a
+ * full-width card, and a friendly empty state. Cards fade in on mount via
+ * FadeIn.
+ */
 export function BlogGrid({
   articles,
   featuredSlug,
