@@ -78,9 +78,9 @@
             "optional": true,
             "type": "React.ReactNode"
         },
-        "icon": {
+        "showIcon": {
             "optional": true,
-            "type": "string"
+            "type": "boolean"
         },
         "dismissible": {
             "optional": true,

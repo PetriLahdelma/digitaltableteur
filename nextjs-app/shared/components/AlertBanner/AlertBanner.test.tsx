@@ -49,16 +49,11 @@ describe("AlertBanner", () => {
     ).toBeInTheDocument();
   });
 
-  it("falls back to the tone icon when icon is an empty string", () => {
-    // Storybook's controls-autogen seeds icon="" on every story; an empty
-    // string must be treated as absent (|| not ??) so the tone icon still
-    // renders instead of resolving to a nameless, missing glyph.
+  it("hides the icon when showIcon is false", () => {
     const { container } = render(
-      <AlertBanner tone="success" title="Saved" icon="" />,
+      <AlertBanner tone="success" title="Saved" showIcon={false} />,
     );
-    expect(
-      container.querySelector('[data-icon-name="check-circle"]'),
-    ).toBeInTheDocument();
+    expect(container.querySelector("[data-icon-name]")).not.toBeInTheDocument();
   });
 
   it("renders dismiss button when dismissible", () => {
@@ -145,12 +140,6 @@ describe("AlertBanner", () => {
     expect(
       screen.getByRole("button", { name: "Review settings" }),
     ).toBeInTheDocument();
-  });
-
-  it("overrides the tone icon via the icon prop", () => {
-    render(<AlertBanner tone="info" title="Custom" icon="star" />);
-    // The accessible tone word stays even when the glyph changes.
-    expect(screen.getByRole("img", { name: "info" })).toBeInTheDocument();
   });
 
   it("every styles.x reference has a matching .x rule", () => {
