@@ -36,6 +36,9 @@ const EFFECT_EXEMPT = {
     WorkGrid: {
         animateItems: 'scroll-triggered GSAP entrance stagger — only fires on scroll into view, so it has no stable DOM signature in the static effect probe (and is gated by the AnimationProvider motion preference); stories seed it off for a settled, deterministic grid, verified by the reduced-motion guard in the component',
     },
+    BlogGrid: {
+        featuredSlug: 'only affects the featured-first layout (selects which article is promoted to the full-width slot); inert in the default standard layout the Playground probes; verified by the FeaturedFirst story and the featured-first unit test',
+    },
     Breadcrumb: {
         maxItems: 'static collapse cap — only changes layout when items.length exceeds it, and the Playground trail is short; verified by the static-collapse unit tests and the Collapsed story',
         collapseLabel: 'labels the ellipsis trigger, which only exists once the trail collapses; verified by the custom-collapseLabel unit test and the Collapsed story',

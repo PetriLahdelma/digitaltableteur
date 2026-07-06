@@ -1497,8 +1497,8 @@
       "name": "BlogGrid",
       "group": "content",
       "tier": 2,
-      "status": "alpha",
-      "description": "Blog post card grid for index pages.",
+      "status": "beta",
+      "description": "Responsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.",
       "dense": "Blog index grid laying out ArticleCards responsively",
       "keywords": [
         "blog",
