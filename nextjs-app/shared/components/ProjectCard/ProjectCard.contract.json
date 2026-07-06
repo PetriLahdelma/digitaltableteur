@@ -3,7 +3,7 @@
     "name": "ProjectCard",
     "tier": "molecule",
     "group": "content",
-    "status": "beta",
+    "status": "stable",
     "description": "Basic portfolio project card for the work grid: a clickable thumbnail with title, optional category eyebrow and up to three tags.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1031-109",
     "radixPrimitive": null,
@@ -44,8 +44,10 @@
         "motion": true,
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories, both overlay and below title positions; 4-mode AT snapshots captured and compare-clean. Card is one Link with the title as image alt. Hover scale/translate/opacity transitions are decorative and now gated behind motion-reduce: utilities (the global reset only covers focus rings). Tailwind className styling retained as an intentional per-surface owner call.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories, both overlay and below title positions; 4-mode AT snapshots captured and compare-clean. Card is one Link with the title as image alt. Hover scale/translate/opacity transitions are decorative and now gated behind motion-reduce: utilities (the global reset only covers focus rings). Tailwind className styling retained as an intentional per-surface owner call. 2026-07-06 beta->stable: independently re-verified light/dark + forced-colors of both title positions in a real browser; closed the last reduced-motion gap (the below-title hover color transition now carries motion-reduce:transition-none, matching the ValueCard/ServiceCard family). realBrowserForcedColorsVerified + accessibilityTreeVerified set true.",
+        "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [],
@@ -111,5 +113,37 @@
     "dense": "Basic portfolio project card for the work grid (image, title, tags)",
     "usage": {
         "description": "The basic work-grid project card (image, title, tags). EnhancedProjectCard is the richer variant — pick one per surface."
-    }
+    },
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/WorkMagneticField/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/WorkPreviewSection/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/WorkPreviewSection/WorkPreviewSection.tsx",
+            "since": "2026-06-04"
+        }
+    ]
 }

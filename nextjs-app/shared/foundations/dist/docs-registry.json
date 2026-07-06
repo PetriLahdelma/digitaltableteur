@@ -10575,7 +10575,7 @@
       "name": "ProjectCard",
       "group": "content",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Basic portfolio project card for the work grid: a clickable thumbnail with title, optional category eyebrow and up to three tags.",
       "dense": "Basic portfolio project card for the work grid (image, title, tags)",
       "keywords": [

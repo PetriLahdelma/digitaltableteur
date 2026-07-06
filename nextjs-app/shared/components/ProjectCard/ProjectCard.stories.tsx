@@ -14,7 +14,7 @@ const meta: Meta<typeof ProjectCard> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/ProjectCard",
   component: ProjectCard,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

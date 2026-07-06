@@ -133,7 +133,7 @@ export function ProjectCard({
               {category}
             </span>
           )}
-          <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
+          <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors motion-reduce:transition-none">
             {title}
           </h3>
           {tags && tags.length > 0 && (
