@@ -6,7 +6,7 @@ import contract from "./ReadingProgress.contract.json";
 const meta = {
   title: "Site/ReadingProgress",
   component: ReadingProgress,
-  tags: ["!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",
