@@ -1,17 +1,7 @@
 import contract from "./ImagePlaceholder.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import ImagePlaceholder, { ImagePlaceholderPresets } from "./ImagePlaceholder";
-import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 const meta: Meta<typeof ImagePlaceholder> = {
@@ -27,27 +17,6 @@ const meta: Meta<typeof ImagePlaceholder> = {
     a11y: { test: "error" },
     layout: "centered",
     llm: { schema },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
   },
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 };

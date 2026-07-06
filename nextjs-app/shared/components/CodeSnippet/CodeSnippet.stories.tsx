@@ -2,15 +2,6 @@ import contract from "./CodeSnippet.contract.json";
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { userEvent, within } from "storybook/test";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import CodeSnippet from "@dt/CodeSnippet";
 import Text from "@dt/Text";
 import schema from "./schema.json";
@@ -72,27 +63,6 @@ const meta: Meta<typeof CodeSnippet> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
     llm: { schema },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
   },
   args: {
     code: sampleTs,
