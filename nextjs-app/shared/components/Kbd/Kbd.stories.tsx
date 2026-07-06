@@ -6,7 +6,7 @@ import contract from "./Kbd.contract.json";
 const meta = {
   title: "Content/Kbd",
   component: Kbd,
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "centered",
     a11y: { test: "error" },
@@ -31,7 +31,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     docs: {
       description: { story: "A single keycap; the element is a semantic <kbd>." },
@@ -40,10 +40,10 @@ export const Default: Story = {
   args: { children: "Esc" },
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     controls: { disable: true },
     docs: {
@@ -90,6 +90,7 @@ export const KeyNames: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   parameters: { a11y: { disable: true, test: "off" } },
   args: { children: "Enter" },

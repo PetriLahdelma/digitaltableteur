@@ -7297,7 +7297,7 @@
       "name": "Kbd",
       "group": "display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
       "dense": "semantic <kbd> keycap; sm/md/lg mono sizes; compose combos as sibling Kbds with literal separators",
       "keywords": [
@@ -7381,12 +7381,12 @@
         {
           "story": "Default",
           "description": "A single keycap; the element is a semantic <kbd>.",
-          "source": "export const Default: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"A single keycap; the element is a semantic <kbd>.\" },\n    },\n  },\n  args: { children: \"Esc\" },\n};"
+          "source": "export const Default: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"A single keycap; the element is a semantic <kbd>.\" },\n    },\n  },\n  args: { children: \"Esc\" },\n};"
         },
         {
           "story": "Example",
           "description": "Shortcut combinations read naturally inline: compose several Kbds with + between them.",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story: \"Shortcut combinations read naturally inline: compose several Kbds with + between them.\",\n      },\n    },\n  },\n  render: () => (\n    <span>\n      <Kbd>⌘</Kbd> + <Kbd>K</Kbd>\n    </span>\n  ),\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story: \"Shortcut combinations read naturally inline: compose several Kbds with + between them.\",\n      },\n    },\n  },\n  render: () => (\n    <span>\n      <Kbd>⌘</Kbd> + <Kbd>K</Kbd>\n    </span>\n  ),\n};"
         },
         {
           "story": "Sizes",
@@ -13092,7 +13092,7 @@
       "name": "StatusDot",
       "group": "feedback",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Tiny semantic status indicator: colored dot with visible or sr-only label.",
       "dense": "colored semantic dot + label (visible children or sr-only label); tone x sm/md/lg, optional pulse for live states",
       "keywords": [
@@ -13238,7 +13238,7 @@
         {
           "story": "Default",
           "description": "Dot + visible label; the dot itself is decorative (aria-hidden).",
-          "source": "export const Default: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Dot + visible label; the dot itself is decorative (aria-hidden).\" },\n    },\n  },\n};\n\n// children is seeded empty here so the sr-only label path is live in the\n// panel (children would otherwise mask label entirely)."
+          "source": "export const Default: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Dot + visible label; the dot itself is decorative (aria-hidden).\" },\n    },\n  },\n};\n\n// children is seeded empty here so the sr-only label path is live in the\n// panel (children would otherwise mask label entirely)."
         },
         {
           "story": "Tones",

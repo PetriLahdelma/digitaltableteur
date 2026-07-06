@@ -6,7 +6,7 @@ import contract from "./StatusDot.contract.json";
 const meta = {
   title: "Feedback/StatusDot",
   component: StatusDot,
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "centered",
     a11y: { test: "error" },
@@ -24,7 +24,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     docs: {
       description: { story: "Dot + visible label; the dot itself is decorative (aria-hidden)." },
@@ -35,6 +35,7 @@ export const Default: Story = {
 // children is seeded empty here so the sr-only label path is live in the
 // panel (children would otherwise mask label entirely).
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   args: { children: "", label: "Operational" },
 };
 
@@ -86,11 +87,13 @@ export const SrOnlyLabel: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   render: () => <StatusDot tone="success">Operational</StatusDot>,
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   parameters: { a11y: { disable: true, test: "off" } },
 };

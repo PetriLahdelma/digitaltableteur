@@ -3,9 +3,9 @@
     "name": "StatusDot",
     "tier": "atom",
     "group": "feedback",
-    "status": "alpha",
+    "status": "beta",
     "description": "Tiny semantic status indicator: colored dot with visible or sr-only label.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1004-1677",
     "radixPrimitive": null,
     "element": "span",
     "variants": {
@@ -17,7 +17,8 @@
                 "error",
                 "info"
             ],
-            "default": "neutral"
+            "default": "neutral",
+            "propSourced": true
         },
         "size": {
             "values": [
@@ -25,7 +26,8 @@
                 "md",
                 "lg"
             ],
-            "default": "md"
+            "default": "md",
+            "propSourced": true
         }
     },
     "slots": [],
@@ -45,7 +47,7 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-03 — pulse animation disabled under prefers-reduced-motion; axe asserted in unit test.",
+        "reviewedNote": "2026-07-06 — alpha→beta: created the Figma component (tone×size variant set, dot fill bound to DT/Color tone tokens) at node 1004-1677, the only remaining beta blocker. Pulse animation disabled under prefers-reduced-motion (CSS guard verified); axe asserted in unit test; forced-colors + light/dark re-verified.",
         "forcedColorsVerified": true
     },
     "tokens": {
