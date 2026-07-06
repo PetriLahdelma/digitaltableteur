@@ -1,7 +1,10 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
+import { axe, toHaveNoViolations } from "jest-axe";
 import WorkNav from "@dt/WorkNav";
+
+expect.extend(toHaveNoViolations);
 
 const { mockPush, mockUsePathname } = vi.hoisted(() => ({
   mockPush: vi.fn(),
@@ -20,6 +23,7 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key: string) => {
       const translations: Record<string, string> = {
+        workNavLabel: "Work project navigation",
         workNavBackToWork: "Work",
         workNavPrev: "Prev",
         workNavNext: "Next",
@@ -141,5 +145,29 @@ describe("WorkNav", () => {
     // When currentIndex is -1 (not found), prev should be disabled, next should be enabled
     expect(prevButton).toBeDisabled();
     expect(nextButton).not.toBeDisabled();
+  });
+
+  it("exposes a labelled navigation landmark", () => {
+    renderWorkNav();
+
+    expect(
+      screen.getByRole("navigation", { name: "Work project navigation" }),
+    ).toBeInTheDocument();
+  });
+
+  it("prefers the currentPath prop over the router pathname", () => {
+    // Router is on the last page, but the prop points at the first page.
+    mockUsePathname.mockReturnValue("/work/garage-junction");
+    render(<WorkNav currentPath="/work/helsinki-design-system" />);
+
+    expect(screen.getByText("Prev").closest("button")).toBeDisabled();
+    expect(screen.getByText("Next").closest("button")).not.toBeDisabled();
+  });
+
+  it("has no axe violations", async () => {
+    const { container } = render(
+      <WorkNav currentPath="/work/new-things-co" />,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
