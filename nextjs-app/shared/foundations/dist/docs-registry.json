@@ -12561,7 +12561,7 @@
       "name": "SplitButton",
       "group": "interaction",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Primary action button paired with a dropdown toggle for related secondary actions, with collision-aware menu placement and optional nested submenus.",
       "dense": "primary action + menu toggle for related actions; Button-matched variant/size/surface, collision-aware menu, nested submenus, roving-tabindex keyboard model",
       "keywords": [
