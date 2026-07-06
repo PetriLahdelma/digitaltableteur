@@ -786,6 +786,11 @@
           "name": "heading",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "showContact",
+          "type": "boolean",
+          "required": false
         }
       ],
       "props": {
@@ -800,6 +805,10 @@
         "heading": {
           "optional": true,
           "type": "string"
+        },
+        "showContact": {
+          "optional": true,
+          "type": "boolean"
         }
       },
       "composesWith": [

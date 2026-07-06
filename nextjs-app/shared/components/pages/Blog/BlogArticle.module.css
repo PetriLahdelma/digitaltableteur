@@ -10,15 +10,10 @@
   line-height: 1.6;
 }
 
-/* Author page: back control above the heading, contact line below the bio. */
+/* Author page: back control above the heading. */
 
 .authorBack {
   margin-block-end: var(--space-layout-24);
-}
-
-.authorContact {
-  display: block;
-  margin-block-start: var(--space-layout-24);
 }
 
 .article h1 {

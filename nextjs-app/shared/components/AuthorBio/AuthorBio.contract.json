@@ -101,6 +101,10 @@
         "heading": {
             "optional": true,
             "type": "string"
+        },
+        "showContact": {
+            "optional": true,
+            "type": "boolean"
         }
     },
     "forbiddenUse": [

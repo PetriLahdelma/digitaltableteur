@@ -2,6 +2,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { useTranslation } from "react-i18next";
 import Avatar from "@dt/Avatar";
+import Link from "@dt/Link";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "./AuthorBio.module.css";
@@ -23,12 +24,19 @@ export interface AuthorBioProps {
   className?: string;
   /** Optional custom heading text (defaults to author.name) */
   heading?: string;
+  /** Render the author's contact email (mailto) after the bio, if the author has one. */
+  showContact?: boolean;
 }
 
 /**
  * AuthorBio component.
  */
-export const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }) => {
+export const AuthorBio: React.FC<AuthorBioProps> = ({
+  slug,
+  className,
+  heading,
+  showContact = false,
+}) => {
   const { t } = useTranslation();
   const author = getAuthorBySlug(slug);
 
@@ -67,6 +75,12 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }
         <div className={styles.bioContent}>
           <ReactMarkdown>{remainder}</ReactMarkdown>
         </div>
+      )}
+      {showContact && author.email && (
+        <Text className={styles.contact}>
+          {t("authorGetInTouch")}:{" "}
+          <Link href={`mailto:${author.email}`}>{author.email}</Link>
+        </Text>
       )}
     </section>
   );

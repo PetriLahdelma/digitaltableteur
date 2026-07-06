@@ -38,6 +38,14 @@ export const CustomHeading: Story = {
   },
 };
 
+/** showContact renders the author's email as a mailto link after the bio. */
+export const WithContact: Story = {
+  args: {
+    slug: defaultAuthor?.slug ?? "petri-lahdelma",
+    showContact: true,
+  },
+};
+
 export const Playground = Default;
 export const Example = {
   tags: ["beta-matrix"],

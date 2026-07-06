@@ -55,3 +55,12 @@
 .bioContent p {
   margin: 0 0 1rem;
 }
+
+.contact {
+  display: block;
+  margin-block-start: 1.5rem;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
