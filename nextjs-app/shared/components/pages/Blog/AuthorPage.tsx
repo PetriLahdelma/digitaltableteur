@@ -25,7 +25,7 @@ export function AuthorPage({ slug }: { slug: string }) {
   if (!author) return null;
 
   const metaTitle = `${author.name} | Digitaltableteur`;
-  const metaDescription = buildDescription(author.bio);
+  const metaDescription = author.description ?? buildDescription(author.bio);
 
   return (
     <article className={styles.article}>

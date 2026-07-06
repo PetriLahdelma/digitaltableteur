@@ -19,6 +19,8 @@ export type AuthorEntry = {
   name: string;
   slug: string;
   imageUrl?: string;
+  /** Purpose-written meta/page description; falls back to a truncated bio. */
+  description?: string;
   bio?: string;
 };
 
