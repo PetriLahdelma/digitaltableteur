@@ -415,8 +415,8 @@
       "name": "ArticleContent",
       "group": "content",
       "tier": 2,
-      "status": "alpha",
-      "description": "Article body prose wrapper with MDX styling.",
+      "status": "beta",
+      "description": "Article body prose wrapper: constrains blog article markup to a reading measure and applies the MDX typography treatment.",
       "dense": "Article body wrapper applying MDX prose styling (headings, lists, code, media) to blog content",
       "keywords": [
         "article",

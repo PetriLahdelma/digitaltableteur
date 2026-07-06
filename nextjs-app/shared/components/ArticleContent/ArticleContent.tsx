@@ -21,6 +21,12 @@ export function ArticleProse({ children, className }: ArticleProseProps) {
   return <div className={cn(articleProseClassName, className)}>{children}</div>;
 }
 
+/**
+ * Reading column for blog article bodies: constrains MDX/article markup to a
+ * `size` reading measure via Container and vertical rhythm. Wrap the body in
+ * `ArticleProse` for the prose typography; forwards a ref to the inner content
+ * wrapper for scroll/measure needs.
+ */
 export const ArticleContent = forwardRef<HTMLDivElement, ArticleContentProps>(
   function ArticleContent({ children, size = "md", className }, ref) {
     return (
