@@ -1,0 +1,12 @@
+- status: Work in progress (beta)
+- navigation "Project navigation":
+  - link "Back to work":
+    - /url: /work
+    - img
+    - text: Back to work
+  - 'link "Previous project: Illustrations"':
+    - /url: /work/illustrations
+    - img
+    - text: Prev
+  - text: Next
+  - img

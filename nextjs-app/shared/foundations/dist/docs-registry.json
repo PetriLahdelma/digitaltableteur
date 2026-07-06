@@ -10766,14 +10766,15 @@
       "name": "ProjectNav",
       "group": "navigation",
       "tier": 2,
-      "status": "alpha",
-      "description": "Prev/next navigation for case studies.",
-      "dense": "Prev/next case-study navigation footer for work detail pages",
+      "status": "beta",
+      "description": "Previous/next navigation between case studies, with a back-to-work action, for the foot of work detail pages.",
+      "dense": "Prev/next case-study navigation with back-to-work action for work detail pages",
       "keywords": [
         "case study",
         "navigation",
         "prev next",
-        "work"
+        "work",
+        "project"
       ],
       "importLine": "import { ProjectNav } from \"@dt/ProjectNav\";",
       "keyProps": [
@@ -10799,17 +10800,15 @@
         }
       },
       "composesWith": [
-        "ProjectGallery",
-        "Container",
-        "Section"
+        "Container"
       ],
       "prefersOver": [],
       "forbiddenUse": [
         "invent parallel primitives inside this folder",
-        "promote to stable without production consumer evidence"
+        "use for site-wide navigation (that is SiteHeader)"
       ],
       "usage": {
-        "description": "Previous/next navigation between case studies at the foot of work detail pages."
+        "description": "Previous/next navigation between case studies at the foot of work detail pages, plus a back-to-work action. Targets are derived from the project ordering; the control at each sequence edge is disabled."
       },
       "tokens": {
         "colors": [],

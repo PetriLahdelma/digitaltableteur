@@ -1,0 +1,14 @@
+- status: Work in progress (beta)
+- navigation "Project navigation":
+  - link "Back to work":
+    - /url: /work
+    - img
+    - text: Back to work
+  - 'link "Previous project: DSharp Design System"':
+    - /url: /work/dsharp-design-system
+    - img
+    - text: Prev
+  - 'link "Next project: KnobSmith Audio"':
+    - /url: /work/knobsmith-audio
+    - text: Next
+    - img

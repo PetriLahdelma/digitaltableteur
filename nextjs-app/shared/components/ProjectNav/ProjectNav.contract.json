@@ -3,30 +3,36 @@
     "name": "ProjectNav",
     "tier": "molecule",
     "group": "navigation",
-    "status": "alpha",
-    "description": "Prev/next navigation for case studies.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-nav",
+    "status": "beta",
+    "description": "Previous/next navigation between case studies, with a back-to-work action, for the foot of work detail pages.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1028-89",
     "radixPrimitive": null,
-    "element": "div",
+    "element": "nav",
     "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [],
-        "ariaRequirements": [],
+        "ariaRequirements": [
+            "Wrapped in a nav landmark labelled via aria-label (projectNavLabel)",
+            "Disabled edge control announced via aria-disabled"
+        ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories; 4-mode AT snapshots captured and compare-clean. nav landmark labelled via projectNavLabel; prev/next targets from getProjectNavigation, disabled edges use aria-disabled. Tailwind className styling retained as an intentional per-surface owner call (same as NavLink/Pagination). No own animation.",
+        "forcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "schemaVersion": 2,
     "props": {
         "currentSlug": {
@@ -40,22 +46,21 @@
     },
     "forbiddenUse": [
         "invent parallel primitives inside this folder",
-        "promote to stable without production consumer evidence"
+        "use for site-wide navigation (that is SiteHeader)"
     ],
     "composesWith": [
-        "ProjectGallery",
-        "Container",
-        "Section"
+        "Container"
     ],
     "displayName": "ProjectNav",
     "keywords": [
         "case study",
         "navigation",
         "prev next",
-        "work"
+        "work",
+        "project"
     ],
-    "dense": "Prev/next case-study navigation footer for work detail pages",
+    "dense": "Prev/next case-study navigation with back-to-work action for work detail pages",
     "usage": {
-        "description": "Previous/next navigation between case studies at the foot of work detail pages."
+        "description": "Previous/next navigation between case studies at the foot of work detail pages, plus a back-to-work action. Targets are derived from the project ordering; the control at each sequence edge is disabled."
     }
 }

@@ -1,19 +1,19 @@
 # ProjectNav
 
 ## Intent
-Prev/next navigation for case studies.
+Previous/next navigation between case studies, with a back-to-work action, for the foot of work detail pages.
 
 ## Interaction contract
-- Keyboard: inherit from composed @dt/* primitives
-- Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Keyboard: native link focus/activation on the back, previous and next links
+- Pointer: standard link targets; the control at each sequence edge is a disabled span
+- Screen readers: rendered inside a `nav` landmark labelled via `aria-label` (projectNavLabel); the disabled edge uses `aria-disabled`
 
 ## Do / don't
-- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface
-- Do: treat this as a page assembly reference when matching production routes
+- Do: pass the current project `currentSlug`; prev/next targets derive from the project ordering
+- Do: keep the Tailwind className styling (intentional per-surface owner call, as with NavLink/Pagination)
 - Don't: invent parallel primitives inside this folder
-- Don't: promote to stable without production consumer evidence
+- Don't: use this for site-wide navigation (that is SiteHeader)
 
 ## Design notes
-- Tokens: inherit from child components
-- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-nav
+- Tokens: Tailwind utility classes mapped to the theme tokens (muted-foreground/foreground/primary)
+- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1028-89
