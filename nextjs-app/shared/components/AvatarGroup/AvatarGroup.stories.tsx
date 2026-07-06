@@ -14,7 +14,7 @@ const avatars = (count: number, size: "2rem" | "2.5rem" | "3rem" = "2.5rem") =>
 const meta = {
   title: "Content/AvatarGroup",
   component: AvatarGroup,
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "centered",
     a11y: { test: "error" },
@@ -51,7 +51,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     docs: {
       description: { story: "Six members, max 4: the stack shows four and collapses the rest into +2." },
@@ -59,7 +59,7 @@ export const Default: Story = {
   },
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const NoOverflow: Story = {
   tags: ["example"],
@@ -114,6 +114,7 @@ export const WithLabel: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   render: () => (
     <AvatarGroup ariaLabel="Project members" max={4}>
@@ -123,6 +124,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   parameters: { a11y: { disable: true, test: "off" } },
   render: () => <AvatarGroup ariaLabel="Project members">{avatars(5)}</AvatarGroup>,
