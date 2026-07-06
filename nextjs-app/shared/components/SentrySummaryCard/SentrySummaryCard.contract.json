@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "structure",
     "status": "beta",
-    "description": "SentrySummaryCard — production @dt component (Storybook beta).",
+    "description": "Internal status card summarizing Sentry issue counts and trends; an ops dashboard surface, not marketing UI.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-sentry-summary-card",
     "radixPrimitive": null,
     "element": "div",

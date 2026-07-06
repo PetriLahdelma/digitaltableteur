@@ -4,7 +4,7 @@
     "tier": "pattern",
     "group": "structure",
     "status": "beta",
-    "description": "ProcessBlock — production @dt component (Storybook beta).",
+    "description": "Case-study process section that arranges titled phase cards in a grid under an optional title and description.",
     "dense": "Case-study process section: titled phase cards in a grid with section title, description, and spacing/background knobs.",
     "keywords": [
         "process",

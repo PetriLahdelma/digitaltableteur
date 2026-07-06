@@ -868,6 +868,34 @@ export function validateComponentsDir(root: string): ValidationResult {
             }
         }
 
+        // Description quality: contract.description is the Docs-page masthead
+        // standfirst (DocHeader) and the component's one-line summary everywhere
+        // it is listed. It must be a real sentence describing what the component
+        // is or does, never a scaffolder stub, a TODO, or just the name. Sound
+        // the alarm on the placeholder shapes the `new-component` scaffolder and
+        // the Tier-2 sweep left behind ("<Name> — production @dt component
+        // (Storybook beta)."). Note: the word "placeholder" is allowed — some
+        // components (Skeleton, EmptyState, ImagePlaceholder) legitimately ARE
+        // placeholders — so key on stub SHAPES, not that word.
+        {
+            const desc = typeof manifest.description === 'string' ? manifest.description.trim() : ''
+            const stubReasons: string[] = []
+            if (!desc) {
+                stubReasons.push('empty')
+            } else {
+                if (desc.length < 20) stubReasons.push('too short (<20 chars)')
+                if (/production @dt component/i.test(desc)) stubReasons.push("scaffolder stub 'production @dt component'")
+                if (/\(Storybook (?:alpha|beta|stable)\)/i.test(desc)) stubReasons.push("'(Storybook <status>)' placeholder")
+                if (/\b(?:TODO|FIXME|lorem ipsum)\b/i.test(desc)) stubReasons.push('TODO/FIXME/lorem placeholder')
+                if (new RegExp(`^${name}(?: component)?\\.?$`, 'i').test(desc)) stubReasons.push('name-only (no real description)')
+            }
+            if (stubReasons.length > 0) {
+                errors.push(
+                    `${name}.contract.json: description is a placeholder (${stubReasons.join(', ')}): "${desc.slice(0, 60)}". Write a concrete one-sentence description of what ${name} is or does — it renders as the Docs masthead standfirst and the component's summary. Distil it from usage.description / dense; no em dashes.`,
+                )
+            }
+        }
+
         const strictLifecycle = manifest.status === 'beta' || manifest.status === 'stable'
 
         // AST checks via ts-morph

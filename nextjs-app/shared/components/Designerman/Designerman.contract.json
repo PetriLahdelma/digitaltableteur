@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "marketing",
     "status": "beta",
-    "description": "Designerman — production @dt component (Storybook beta).",
+    "description": "Decorative sprite-sheet mascot animation that adds site personality; not for use inside task flows.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-designerman",
     "radixPrimitive": null,
     "element": "div",

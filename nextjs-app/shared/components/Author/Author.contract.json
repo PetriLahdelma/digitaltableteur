@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "structure",
     "status": "beta",
-    "description": "Author — production @dt component (Storybook beta).",
+    "description": "Compact byline that attributes a blog post to its author with name and avatar; the fuller end-of-article treatment is AuthorBio.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-author",
     "radixPrimitive": null,
     "element": "div",

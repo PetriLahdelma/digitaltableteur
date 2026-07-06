@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "structure",
     "status": "beta",
-    "description": "SecureCVDownload — production @dt component (Storybook beta).",
+    "description": "Gated CV download whose trigger opens a verification modal before the file is served.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-secure-cvdownload",
     "radixPrimitive": null,
     "element": "div",

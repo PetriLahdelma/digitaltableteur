@@ -4,7 +4,7 @@
     "tier": "pattern",
     "group": "navigation",
     "status": "beta",
-    "description": "Footer — production @dt component (Storybook beta).",
+    "description": "Legacy pattern-tier footer that hosts the ChatWidget slot; the production Next.js site chrome is SiteFooter.",
     "dense": "Legacy pattern-tier footer band with the ChatWidget slot; the production Next.js site chrome is SiteFooter.",
     "keywords": [
         "footer",

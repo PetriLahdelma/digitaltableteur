@@ -693,7 +693,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "Author — production @dt component (Storybook beta).",
+      "description": "Compact byline that attributes a blog post to its author with name and avatar; the fuller end-of-article treatment is AuthorBio.",
       "dense": "Article byline: author name/avatar attribution line for blog posts",
       "keywords": [
         "author",
@@ -3640,7 +3640,7 @@
       "group": "structure",
       "tier": 1,
       "status": "beta",
-      "description": "CodeSnippet — production @dt component (Storybook beta).",
+      "description": "Syntax-highlighted code block with a language picker, optional line numbers, and a copy button.",
       "dense": "Prism-highlighted code block: language set (ts/js/html/python/go/rust/json/bash/...), showLineNumbers, allowCopy button w/ onCopy hook, maxLines clamp, variant surface; aria-label for AT context",
       "keywords": [
         "code",
@@ -4024,7 +4024,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "ComplianceCard — production @dt component (Storybook beta).",
+      "description": "Internal audit-checklist card with pass/fail rows and a last-reviewed date; a Storybook and docs tooling surface, not product UI.",
       "dense": "Internal audit checklist card (rule rows w/ pass/fail status + last-reviewed date); Storybook/docs tooling, not product UI",
       "keywords": [
         "compliance",
@@ -4561,7 +4561,7 @@
       "group": "marketing",
       "tier": 2,
       "status": "beta",
-      "description": "Designerman — production @dt component (Storybook beta).",
+      "description": "Decorative sprite-sheet mascot animation that adds site personality; not for use inside task flows.",
       "dense": "Sprite-sheet mascot animation (Designerman); decorative site personality element",
       "keywords": [
         "sprite",
@@ -4878,7 +4878,7 @@
       "group": "display",
       "tier": 2,
       "status": "beta",
-      "description": "DonnyAvatar — production @dt component (Storybook beta).",
+      "description": "The assistant's animated avatar with thinking, speaking, and idle mood states, used inside ChatWidget and Donny surfaces.",
       "dense": "Donny assistant avatar with mood/action states (distinct eye expressions) used by the chat widget",
       "keywords": [
         "donny",
@@ -5040,7 +5040,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "EmailSignatureGenerator — production @dt component (Storybook beta).",
+      "description": "Interactive tool that turns form inputs into a copyable, email-client-safe HTML signature.",
       "dense": "Interactive email-signature generator: form inputs to a copyable table-based HTML signature",
       "keywords": [
         "email signature",
@@ -7190,7 +7190,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "ImagePlaceholder — production @dt component (Storybook beta).",
+      "description": "Dimension-labelled placeholder for imagery in layouts, demos, and drafts; swap for real media before shipping.",
       "dense": "Fixed-dimension placeholder block for missing/mock imagery in layouts and demos",
       "keywords": [
         "placeholder",
@@ -7779,7 +7779,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "LinkedInQuoteCard — production @dt component (Storybook beta).",
+      "description": "Quote card styled like a LinkedIn post for embedding social content in articles without an external embed.",
       "dense": "LinkedIn-post-styled quote card for embedding social posts as styled quotes in content",
       "keywords": [
         "linkedin",
@@ -8279,7 +8279,7 @@
       "group": "interaction",
       "tier": 2,
       "status": "beta",
-      "description": "MCPActionButton — production @dt component (Storybook beta).",
+      "description": "Button that invokes an MCP tool from chat and docs surfaces and reflects its pending, success, and error state.",
       "dense": "Button that invokes an MCP tool from chat/docs surfaces and reflects the invocation state",
       "keywords": [
         "mcp",
@@ -8351,7 +8351,7 @@
       "group": "structure",
       "tier": 1,
       "status": "beta",
-      "description": "MacWindowFrame — production @dt component (Storybook beta).",
+      "description": "Decorative macOS-style window chrome that wraps showcase content such as code demos, screenshots, and portfolio pieces.",
       "dense": "Decorative macOS window chrome for showcase content: i18n titleKey, optional action button (actionLabelKey + onAction), density comfortable|compact. Presentation only — not a real window/dialog",
       "keywords": [
         "window frame",
@@ -8483,7 +8483,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "MarkdownMessage — production @dt component (Storybook beta).",
+      "description": "Markdown renderer that maps elements onto design-system components so chat replies and long-form content share one typographic path.",
       "dense": "Renders markdown through DS components (Title/Text/Link/CodeSnippet) — chat replies + long-form content share one styling path",
       "keywords": [
         "markdown",
@@ -9394,7 +9394,7 @@
       "group": "navigation",
       "tier": 2,
       "status": "beta",
-      "description": "NavMenuList — production @dt component (Storybook beta).",
+      "description": "Navigation list for drawer and mobile menus that renders link items and marks the active one from the current route.",
       "dense": "Reusable nav link list for mobile/drawer menus; derives active state from the current location",
       "keywords": [
         "navigation",
@@ -9577,7 +9577,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "OpenHours — production @dt component (Storybook beta).",
+      "description": "Localized opening-hours listing for contact and location surfaces; composes into LocationCard.",
       "dense": "Opening-hours table with localized day/time rows; used on contact/location surfaces",
       "keywords": [
         "hours",
@@ -9780,7 +9780,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "PersonCard — production @dt component (Storybook beta).",
+      "description": "Profile card for a person with avatar, name, role, and links, plus a skeleton loading state for rosters.",
       "dense": "Person/team profile card (avatar, name, role, links) with built-in skeleton loading state",
       "keywords": [
         "person",
@@ -11364,7 +11364,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "SecureCVDownload — production @dt component (Storybook beta).",
+      "description": "Gated CV download whose trigger opens a verification modal before the file is served.",
       "dense": "Gated CV download: trigger button opens a verification modal before serving the file",
       "keywords": [
         "cv",
@@ -11603,7 +11603,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "SentrySummaryCard — production @dt component (Storybook beta).",
+      "description": "Internal status card summarizing Sentry issue counts and trends; an ops dashboard surface, not marketing UI.",
       "dense": "Sentry issue-summary card (counts/trends) for internal status surfaces",
       "keywords": [
         "sentry",
@@ -11749,7 +11749,7 @@
       "group": "marketing",
       "tier": 2,
       "status": "beta",
-      "description": "ServicesGrid — production @dt component (Storybook beta).",
+      "description": "Responsive grid that composes ServiceCards for homepage and services sections; it owns layout while the cards own content.",
       "dense": "Responsive grid of ServiceCards for homepage/services sections",
       "keywords": [
         "services",
@@ -13634,7 +13634,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "Testimonial — production @dt component (Storybook beta).",
+      "description": "Attributed quote block for social-proof sections, pairing a quote with the person and their role.",
       "dense": "Quote block with attribution (name, role, avatar) for social-proof sections",
       "keywords": [
         "testimonial",
@@ -14796,7 +14796,7 @@
       "group": "form",
       "tier": 2,
       "status": "beta",
-      "description": "TransformingActionInput — production @dt component (Storybook beta).",
+      "description": "Marketing entry-point input that morphs between surface modes, from a prompt bar into a chat handoff; pairs with ChatWidget.",
       "dense": "CTA input that transforms between surface modes (e.g. prompt bar to chat); marketing entry point for Donny",
       "keywords": [
         "input",
@@ -15687,7 +15687,7 @@
       "group": "marketing",
       "tier": 2,
       "status": "alpha",
-      "description": "Blog index hero section.",
+      "description": "Hero section for the blog index with a title, subtitle, and optional scroll indicator in full or compact variants.",
       "dense": "",
       "keywords": [],
       "importLine": "import { BlogHero } from \"@dt/BlogHero\";",
@@ -16491,7 +16491,7 @@
       "group": "navigation",
       "tier": 2,
       "status": "beta",
-      "description": "Footer — production @dt component (Storybook beta).",
+      "description": "Legacy pattern-tier footer that hosts the ChatWidget slot; the production Next.js site chrome is SiteFooter.",
       "dense": "Legacy pattern-tier footer band with the ChatWidget slot; the production Next.js site chrome is SiteFooter.",
       "keywords": [
         "footer",
@@ -16532,7 +16532,7 @@
       "group": "layout",
       "tier": 2,
       "status": "beta",
-      "description": "GridBlock — production @dt component (Storybook beta).",
+      "description": "Responsive grid of case-study content cells with column, gap, spacing, and background knobs, used across Work project pages.",
       "dense": "Case-study grid of content cells: columns, gap, background, and spacing knobs; used across Work project pages.",
       "keywords": [
         "grid",
@@ -16666,7 +16666,7 @@
       "group": "marketing",
       "tier": 2,
       "status": "beta",
-      "description": "Hero — production @dt component (Storybook beta).",
+      "description": "Configurable general-purpose page hero with heading, subtitle, optional image, and an actions slot across layout and background variants.",
       "dense": "General-purpose hero: title/subtitle/description, optional image and actions; layout variant, background, and align knobs.",
       "keywords": [
         "hero",
@@ -17463,7 +17463,7 @@
       "group": "layout",
       "tier": 2,
       "status": "beta",
-      "description": "PageLayout — production @dt component (Storybook beta).",
+      "description": "Page-body wrapper with a max-width container, default page margins, an optional grid mode, and a spacing scale.",
       "dense": "Page-level layout wrapper: max-width, optional grid columns, spacing scale, and default page margins.",
       "keywords": [
         "layout",
@@ -17651,7 +17651,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "ProcessBlock — production @dt component (Storybook beta).",
+      "description": "Case-study process section that arranges titled phase cards in a grid under an optional title and description.",
       "dense": "Case-study process section: titled phase cards in a grid with section title, description, and spacing/background knobs.",
       "keywords": [
         "process",
@@ -18199,7 +18199,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "ProofBlock — production @dt component (Storybook beta).",
+      "description": "Metrics band that presents headline numbers with captions under an optional title and subtitle, with tight and dark variants.",
       "dense": "Metrics proof band: headline metrics with captions under a title/subtitle; tight and dark variants.",
       "keywords": [
         "metrics",
@@ -18425,7 +18425,7 @@
       "group": "marketing",
       "tier": 2,
       "status": "beta",
-      "description": "ServicesBlock — production @dt component (Storybook beta).",
+      "description": "Case-study engagement overview with services, duration, and tools columns alongside overview copy.",
       "dense": "Case-study services overview: services list, duration, and tools columns with overview copy and section titles.",
       "keywords": [
         "services",
@@ -18819,7 +18819,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "StoryBlock — production @dt component (Storybook beta).",
+      "description": "Narrative section for Work case studies with a subtitle and title, rich text, and images arranged by a selectable layout.",
       "dense": "Case-study narrative section: subtitle/title, rich content, and images with selectable image layout.",
       "keywords": [
         "story",
@@ -18965,7 +18965,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "TeamBlock — production @dt component (Storybook beta).",
+      "description": "Team grid of member cards with photo, name, and role, plus round-image, column, and spacing knobs.",
       "dense": "Team member grid: photo, name, and role cards with round-image option, column and spacing knobs.",
       "keywords": [
         "team",
