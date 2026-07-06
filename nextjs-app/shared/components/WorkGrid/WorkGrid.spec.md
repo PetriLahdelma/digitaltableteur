@@ -1,19 +1,20 @@
 # WorkGrid
 
 ## Intent
-Portfolio work index grid.
+Responsive portfolio work-index grid: one EnhancedProjectCard per project, with a friendly empty state.
 
 ## Interaction contract
-- Keyboard: inherit from composed @dt/* primitives
-- Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Keyboard: focus flows through each card link in order
+- Pointer: each card is an EnhancedProjectCard linking to its project
+- Screen readers: grid is `role="list"` labelled via workGalleryLabel; each project is a listitem; the empty state is a labelled heading + description
+- Reduced motion: the GSAP scroll-stagger is skipped when the AnimationProvider reports a reduced motion preference
 
 ## Do / don't
-- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface
-- Do: treat this as a page assembly reference when matching production routes
+- Do: pass a `projects` array; tune `columns`, `aspectRatio`, `showCategory`
+- Do: rely on the built-in empty state when a filter yields no results
 - Don't: invent parallel primitives inside this folder
-- Don't: promote to stable without production consumer evidence
+- Don't: hand-roll the card — WorkGrid owns the EnhancedProjectCard composition
 
 ## Design notes
-- Tokens: inherit from child components
-- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-grid
+- Tokens: Tailwind grid utilities mapped to theme spacing
+- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1033-110

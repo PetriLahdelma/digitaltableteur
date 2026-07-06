@@ -33,6 +33,9 @@ const EFFECTS = process.argv.includes('--effects')
 // story's default state — every entry carries its justification and how the
 // effect was verified instead.
 const EFFECT_EXEMPT = {
+    WorkGrid: {
+        animateItems: 'scroll-triggered GSAP entrance stagger — only fires on scroll into view, so it has no stable DOM signature in the static effect probe (and is gated by the AnimationProvider motion preference); stories seed it off for a settled, deterministic grid, verified by the reduced-motion guard in the component',
+    },
     Breadcrumb: {
         maxItems: 'static collapse cap — only changes layout when items.length exceeds it, and the Playground trail is short; verified by the static-collapse unit tests and the Collapsed story',
         collapseLabel: 'labels the ellipsis trigger, which only exists once the trail collapses; verified by the custom-collapseLabel unit test and the Collapsed story',

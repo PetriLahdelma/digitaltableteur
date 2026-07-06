@@ -15169,8 +15169,8 @@
       "name": "WorkGrid",
       "group": "content",
       "tier": 2,
-      "status": "alpha",
-      "description": "Portfolio work index grid.",
+      "status": "beta",
+      "description": "Responsive portfolio work-index grid: one EnhancedProjectCard per project, with a friendly empty state.",
       "dense": "Portfolio index grid arranging project cards on the work page",
       "keywords": [
         "work",
@@ -15244,9 +15244,7 @@
         }
       },
       "composesWith": [
-        "Container",
-        "Section",
-        "WorkHero",
+        "EnhancedProjectCard",
         "CategoryFilter"
       ],
       "prefersOver": [],
