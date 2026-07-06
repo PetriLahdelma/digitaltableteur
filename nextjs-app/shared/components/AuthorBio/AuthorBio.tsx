@@ -43,6 +43,11 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }
   const bioContent = author.bio ?? "";
   const [lead = "", ...rest] = bioContent.split(/\n{2,}/);
   const leadText = lead.trim();
+  // The lead can still hold markdown-significant blank lines that the \n{2,}
+  // split misses (whitespace-only lines). Collapse internal whitespace so the
+  // tagline renders as a single inline paragraph — matching the pre-markdown
+  // Text rendering while still resolving inline links.
+  const leadInline = leadText.replace(/\s+/g, " ");
   const remainder = rest.join("\n\n").trim();
 
   return (
@@ -63,9 +68,19 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }
         </div>
       </div>
       {leadText && (
-        <Text className={styles.tagline}>
-          {leadText}
-        </Text>
+        // The lead is markdown like the rest of the bio, so render it through
+        // ReactMarkdown too — otherwise inline syntax (e.g. Founder
+        // [@](https://digitaltableteur.com)) shows up as raw text. Mapping the
+        // paragraph back to Text keeps the tagline typography and divider.
+        <ReactMarkdown
+          components={{
+            p: ({ children }) => (
+              <Text className={styles.tagline}>{children}</Text>
+            ),
+          }}
+        >
+          {leadInline}
+        </ReactMarkdown>
       )}
       {remainder && (
         <div className={styles.bioContent}>
