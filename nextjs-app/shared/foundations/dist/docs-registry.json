@@ -11208,7 +11208,7 @@
       "name": "ReadingProgress",
       "group": "feedback",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Scroll-linked reading progress indicator for long content.",
       "dense": "Scroll-linked reading progress bar for long articles; decorative for AT (content position is conveyed by scroll)",
       "keywords": [

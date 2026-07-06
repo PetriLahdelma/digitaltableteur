@@ -37,3 +37,13 @@
   inset-block-start: 100%;
   inset-inline-end: var(--space-internal-8);
 }
+
+/* The bar fill tracks scroll and the root fades in; both animate for everyone
+ * by default. Drop the tweens under reduced-motion so the fill and the
+ * appearance snap instead of easing. */
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .bar {
+    transition: none;
+  }
+}

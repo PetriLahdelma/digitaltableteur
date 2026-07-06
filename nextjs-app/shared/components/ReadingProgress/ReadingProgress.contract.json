@@ -3,7 +3,7 @@
     "name": "ReadingProgress",
     "tier": "molecule",
     "group": "feedback",
-    "status": "beta",
+    "status": "stable",
     "description": "Scroll-linked reading progress indicator for long content.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-reading-progress",
     "radixPrimitive": null,
@@ -25,8 +25,10 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-28 — Beta promotion review: progressbar role with aria-valuenow/min/max + aria-label is set; passive scroll listener avoids jank; transition is decorative (transform-only) and respected by reduced motion. ForcedColors story verifies the bar/percentage remain visible in CanvasText/Highlight. Light/dark verified via matrix CI.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-06 — beta→stable: progressbar role with aria-valuenow/min/max + aria-label; passive scroll listener avoids jank. Added the missing prefers-reduced-motion guard (the bar-fill + root-fade transitions now actually drop under reduced motion, matching the prior claim). AT snapshots bootstrapped across base/light/dark/forced-colors; percentage uses --secondary-text-color (theme-aware, CanvasText in forced-colors).",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -36,7 +38,68 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ClientArticleShell.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticleLayout/ArticleLayout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticleLayout/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "targetRef": {
