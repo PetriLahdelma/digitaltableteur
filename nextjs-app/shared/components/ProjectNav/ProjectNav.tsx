@@ -14,6 +14,12 @@ export interface ProjectNavProps {
   className?: string;
 }
 
+/**
+ * Previous/next navigation between case studies for the foot of work detail
+ * pages, with a back-to-work action. Targets come from the project ordering
+ * via `getProjectNavigation`; the control at each sequence edge is disabled.
+ * Rendered inside a labelled `nav` landmark.
+ */
 export function ProjectNav({ currentSlug, className }: ProjectNavProps) {
   const { t } = useTranslation();
   const { previous, next } = getProjectNavigation(currentSlug);
