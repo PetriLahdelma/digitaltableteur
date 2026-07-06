@@ -3,7 +3,7 @@
     "name": "WorkGrid",
     "tier": "organism",
     "group": "content",
-    "status": "beta",
+    "status": "stable",
     "description": "Responsive portfolio work-index grid: one EnhancedProjectCard per project, with a friendly empty state.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1033-110",
     "radixPrimitive": null,
@@ -46,8 +46,10 @@
         "motion": true,
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (2/3 columns, populated + empty state); 4-mode AT snapshots captured and compare-clean. Grid is role=list; the GSAP scroll-stagger is gated by the AnimationProvider motion preference and seeded off in stories for determinism. Composes the stable EnhancedProjectCard. Tailwind className styling retained as an intentional per-surface owner call.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (2/3 columns, populated + empty state); 4-mode AT snapshots captured and compare-clean. Grid is role=list; the GSAP scroll-stagger is gated by the AnimationProvider motion preference and seeded off in stories for determinism. Composes the stable EnhancedProjectCard. Tailwind className styling retained as an intentional per-surface owner call. 2026-07-07 beta->stable: independently re-verified light/dark + forced-colors of the populated grid and the empty state in a real browser (cards + empty-state copy/icon track the theme; forced-colors stays legible). The scroll-stagger is a one-shot ScrollTrigger gated on motionPreference (resolves before the grid scrolls into view) and delegates card visuals to the stable EnhancedProjectCard, so reducedMotion holds. realBrowserForcedColorsVerified + accessibilityTreeVerified set true.",
+        "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [],
@@ -105,5 +107,22 @@
     "dense": "Portfolio index grid arranging project cards on the work page",
     "usage": {
         "description": "The work index grid arranging project cards. Layout owner for the portfolio listing."
-    }
+    },
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
+            "since": "2026-06-04"
+        }
+    ]
 }
