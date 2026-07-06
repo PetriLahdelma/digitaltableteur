@@ -1,0 +1,4 @@
+- paragraph: At least 8 characters.
+- alert:
+  - img
+  - text: Password is too short.
