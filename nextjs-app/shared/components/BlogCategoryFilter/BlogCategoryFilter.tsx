@@ -28,6 +28,12 @@ const sizeClasses = {
   lg: "text-base px-5 py-2.5",
 } as const;
 
+/**
+ * Single-select tag filter for the blog archive, rendered as a labelled
+ * `role="tablist"` with an implicit "All" tab. Controlled via `selectedTag` /
+ * `onTagChange`; ships pills, underline and minimal treatments and optional
+ * per-tag counts. Arrow keys move between tabs with automatic activation.
+ */
 export function BlogCategoryFilter({
   tags,
   selectedTag,
@@ -57,6 +63,32 @@ export function BlogCategoryFilter({
 
   const options = [allOption, ...tagOptions];
 
+  // Roving-tabindex keyboard support for the tablist: arrows move focus and
+  // activate (automatic activation), Home/End jump to the ends.
+  const handleTabKeyDown = (
+    e: React.KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
+    let next = index;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      next = (index + 1) % options.length;
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      next = (index - 1 + options.length) % options.length;
+    } else if (e.key === "Home") {
+      next = 0;
+    } else if (e.key === "End") {
+      next = options.length - 1;
+    } else {
+      return;
+    }
+    e.preventDefault();
+    onTagChange(options[next].value);
+    const tabs = e.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>(
+      '[role="tab"]',
+    );
+    tabs?.[next]?.focus();
+  };
+
   const renderPills = () => (
     <div
       role="tablist"
@@ -68,7 +100,7 @@ export function BlogCategoryFilter({
         className
       )}
     >
-      {options.map((option) => {
+      {options.map((option, index) => {
         const isActive =
           option.value === selectedTag ||
           (option.value === null && selectedTag === null);
@@ -78,7 +110,9 @@ export function BlogCategoryFilter({
             key={option.value ?? "all"}
             role="tab"
             aria-selected={isActive}
+            tabIndex={isActive ? 0 : -1}
             onClick={() => onTagChange(option.value)}
+            onKeyDown={(e) => handleTabKeyDown(e, index)}
             className={cn(
               "font-body whitespace-nowrap rounded-full",
               "border transition-all duration-200",
@@ -117,7 +151,7 @@ export function BlogCategoryFilter({
         className
       )}
     >
-      {options.map((option) => {
+      {options.map((option, index) => {
         const isActive =
           option.value === selectedTag ||
           (option.value === null && selectedTag === null);
@@ -127,7 +161,9 @@ export function BlogCategoryFilter({
             key={option.value ?? "all"}
             role="tab"
             aria-selected={isActive}
+            tabIndex={isActive ? 0 : -1}
             onClick={() => onTagChange(option.value)}
+            onKeyDown={(e) => handleTabKeyDown(e, index)}
             className={cn(
               "font-body whitespace-nowrap pb-3",
               "border-b-2 -mb-px transition-colors duration-200",
@@ -161,7 +197,7 @@ export function BlogCategoryFilter({
         className
       )}
     >
-      {options.map((option) => {
+      {options.map((option, index) => {
         const isActive =
           option.value === selectedTag ||
           (option.value === null && selectedTag === null);
@@ -171,7 +207,9 @@ export function BlogCategoryFilter({
             key={option.value ?? "all"}
             role="tab"
             aria-selected={isActive}
+            tabIndex={isActive ? 0 : -1}
             onClick={() => onTagChange(option.value)}
+            onKeyDown={(e) => handleTabKeyDown(e, index)}
             className={cn(
               "font-body whitespace-nowrap transition-colors duration-200",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded",
