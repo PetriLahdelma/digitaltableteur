@@ -3,7 +3,7 @@
     "name": "ProjectGallery",
     "tier": "organism",
     "group": "media",
-    "status": "beta",
+    "status": "stable",
     "description": "Responsive case-study image gallery: a labelled grid of figures where each thumbnail opens a shared lightbox.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1032-110",
     "radixPrimitive": null,
@@ -56,8 +56,10 @@
         "motion": true,
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (3/4 columns, mixed/square, lightbox on/off); 4-mode AT snapshots captured and compare-clean. Grid is role=list; thumbnails are keyboard-activatable buttons naming the fullscreen action. GSAP scroll-stagger is already gated behind a prefers-reduced-motion check in the component. Tailwind className styling retained as an intentional per-surface owner call.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (3/4 columns, mixed/square, lightbox on/off); 4-mode AT snapshots captured and compare-clean. Grid is role=list; thumbnails are keyboard-activatable buttons naming the fullscreen action. GSAP scroll-stagger is already gated behind a prefers-reduced-motion check in the component. Tailwind className styling retained as an intentional per-surface owner call. 2026-07-07 beta->stable: independently re-verified light/dark + forced-colors of the grid (with and without lightbox) in a real browser. Closed a reduced-motion gap the alpha note missed: the thumbnail hover scale + overlay transitions now carry motion-reduce guards (the GSAP stagger was already gated, but the CSS hover transforms were not). realBrowserForcedColorsVerified + accessibilityTreeVerified set true.",
+        "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [],
@@ -120,5 +122,27 @@
     "dense": "Case-study image gallery arranging project shots within article layouts",
     "usage": {
         "description": "Case-study gallery for project imagery inside work articles. For lightbox behavior see Gallery."
-    }
+    },
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ProjectDetailTemplate/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ProjectDetailTemplate/ProjectDetailTemplate.tsx",
+            "since": "2026-06-04"
+        }
+    ]
 }

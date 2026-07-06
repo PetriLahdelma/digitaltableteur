@@ -32,7 +32,7 @@ const meta: Meta<typeof ProjectGallery> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/ProjectGallery",
   component: ProjectGallery,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",
