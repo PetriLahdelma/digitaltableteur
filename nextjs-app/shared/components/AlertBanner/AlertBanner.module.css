@@ -5,6 +5,12 @@
   gap: var(--space-internal-8, 0.5rem);
   border-radius: var(--radius-md, 8px);
   font-family: var(--font-text);
+
+  /* Body copy uses the theme foreground, which is AA on every theme's surface
+     by design. The tone is carried by the tinted surface + border below, so
+     the text stays legible in all four themes instead of the old hardcoded
+     light-only ink. */
+  color: var(--color-text);
 }
 
 .content {
@@ -46,28 +52,27 @@
   margin-inline-start: auto;
 }
 
-.info {
-  border: 1px solid rgb(15 98 254 / 25%);
-  background: rgb(15 98 254 / 12%);
+/* Tone = an opaque tint of the semantic colour mixed over the page surface
+   (predictable contrast, unlike a translucent overlay on an unknown backdrop)
+   plus a tone border. Every token here is theme-adaptive, so the tint tracks
+   light, dark, and both high-contrast themes automatically. */
 
-  /* Darkened teal lifts AA contrast above 4.5:1 on the tinted bg. */
-  color: var(--alert-info-text, #054956);
+.info {
+  border: 1px solid color-mix(in srgb, var(--color-info) 40%, var(--color-surface));
+  background: color-mix(in srgb, var(--color-info) 12%, var(--color-surface));
 }
 
 .success {
-  border: 1px solid rgb(34 197 94 / 25%);
-  background: rgb(34 197 94 / 12%);
-  color: var(--alert-success-text, #045924);
+  border: 1px solid color-mix(in srgb, var(--color-success) 40%, var(--color-surface));
+  background: color-mix(in srgb, var(--color-success) 12%, var(--color-surface));
 }
 
 .warning {
-  border: 1px solid rgb(234 179 8 / 25%);
-  background: rgb(234 179 8 / 12%);
-  color: var(--color-dark);
+  border: 1px solid color-mix(in srgb, var(--color-warning) 46%, var(--color-surface));
+  background: color-mix(in srgb, var(--color-warning) 16%, var(--color-surface));
 }
 
 .error {
-  border: 1px solid rgb(239 68 68 / 25%);
-  background: rgb(239 68 68 / 12%);
-  color: var(--alert-error-text, #8b1010);
+  border: 1px solid color-mix(in srgb, var(--color-error) 40%, var(--color-surface));
+  background: color-mix(in srgb, var(--color-error) 12%, var(--color-surface));
 }
