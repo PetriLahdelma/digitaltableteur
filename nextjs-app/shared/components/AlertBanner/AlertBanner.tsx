@@ -6,7 +6,6 @@ import styles from "./AlertBanner.module.css";
 import Icon from "@dt/Icon";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
-import Title from "@dt/Title";
 
 type Tone = "info" | "success" | "warning" | "error";
 
@@ -65,9 +64,13 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
       <Icon name={icon || toneIcon[tone]} ariaLabel={tone} size="md" />
       <div className={styles.content}>
         {title && (
-          <Title size="s" className={styles.title}>
+          // A status/alert label, not a document heading: rendering it as a
+          // heading (Title is always h1-h6) injects a stray heading into the
+          // page outline wherever a banner appears. `strong` carries the
+          // emphasis without the heading semantics (cf. Radix Toast.Title).
+          <Text as="strong" className={styles.title}>
             {title}
-          </Title>
+          </Text>
         )}
         {description && (
           <Text size="m" className={styles.description}>
