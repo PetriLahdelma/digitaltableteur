@@ -26,7 +26,7 @@ const segments = (count: number) =>
 const meta = {
   title: "Actions/ButtonGroup",
   component: ButtonGroup,
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "centered",
     a11y: { test: "error" },
@@ -54,7 +54,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     docs: {
       description: { story: "Attached segments share seams; use one variant and size across the group." },
@@ -62,7 +62,7 @@ export const Default: Story = {
   },
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Spaced: Story = {
   tags: ["example"],
@@ -139,6 +139,7 @@ export const Pager: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   render: () => (
     <ButtonGroup ariaLabel="View">
@@ -149,6 +150,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   parameters: { a11y: { disable: true, test: "off" } },
   render: () => (
