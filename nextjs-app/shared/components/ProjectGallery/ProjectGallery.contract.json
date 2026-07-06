@@ -3,30 +3,67 @@
     "name": "ProjectGallery",
     "tier": "organism",
     "group": "media",
-    "status": "alpha",
-    "description": "Case study image gallery.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-gallery",
+    "status": "beta",
+    "description": "Responsive case-study image gallery: a labelled grid of figures where each thumbnail opens a shared lightbox.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1032-110",
     "radixPrimitive": null,
     "element": "div",
-    "variants": {},
+    "variants": {
+        "columns": {
+            "values": [
+                "2",
+                "3",
+                "4"
+            ],
+            "default": "3",
+            "propSourced": true
+        },
+        "gap": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+        },
+        "aspectRatio": {
+            "values": [
+                "square",
+                "video",
+                "mixed"
+            ],
+            "default": "mixed",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
+        "keyboard": [
+            "Enter/Space on a thumbnail opens the lightbox"
+        ],
+        "ariaRequirements": [
+            "Grid is role=list labelled \"Project gallery\"; each image is a listitem figure",
+            "Each thumbnail button names itself \"View {alt} in fullscreen\" when the lightbox is enabled"
+        ],
+        "motion": true,
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (3/4 columns, mixed/square, lightbox on/off); 4-mode AT snapshots captured and compare-clean. Grid is role=list; thumbnails are keyboard-activatable buttons naming the fullscreen action. GSAP scroll-stagger is already gated behind a prefers-reduced-motion check in the component. Tailwind className styling retained as an intentional per-surface owner call.",
+        "forcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "schemaVersion": 2,
     "props": {
         "images": {

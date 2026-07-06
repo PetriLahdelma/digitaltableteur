@@ -10680,8 +10680,8 @@
       "name": "ProjectGallery",
       "group": "media",
       "tier": 2,
-      "status": "alpha",
-      "description": "Case study image gallery.",
+      "status": "beta",
+      "description": "Responsive case-study image gallery: a labelled grid of figures where each thumbnail opens a shared lightbox.",
       "dense": "Case-study image gallery arranging project shots within article layouts",
       "keywords": [
         "case study",
