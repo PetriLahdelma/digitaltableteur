@@ -29,7 +29,7 @@
             "region role via aria-label",
             "heading level 3 for author name"
         ],
-        "reviewedNote": "2026-07-06 — beta→stable: AT snapshots bootstrapped across base/light/dark/forced-colors (all beta-matrix stories green, deterministic); axe color-contrast passed in light+dark+forced for the bordered color surface; stale compliance story removed."
+        "reviewedNote": "2026-07-06 — beta→stable: AT snapshots bootstrapped across base/light/dark/forced-colors (all beta-matrix stories green, deterministic); axe color-contrast passed in light+dark+forced for the bordered color surface; stale compliance story removed. Follow-up: lead/tagline now renders through ReactMarkdown (internal whitespace collapsed to keep one paragraph) so inline links resolve instead of showing raw markdown; markdown links get an underline affordance (card is not-prose) for WCAG 1.4.1."
     },
     "tokens": {
         "colors": [],
