@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 468,
+  "warningCount": 469,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -1101,54 +1101,63 @@
       "text": "Expected \"display\" to come before \"position\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::53::3::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::41::3::order/properties-order::Expected \"font-weight\" to come before \"white-space\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 53,
+      "line": 41,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"font-weight\" to come before \"white-space\" (order/properties-order)"
+    },
+    {
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::57::3::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
+      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
+      "line": 57,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::54::3::order/properties-order::Expected \"padding\" to come before \"block-size\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::58::3::order/properties-order::Expected \"padding\" to come before \"block-size\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 54,
+      "line": 58,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"padding\" to come before \"block-size\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::55::3::order/properties-order::Expected \"margin\" to come before \"padding\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::59::3::order/properties-order::Expected \"margin\" to come before \"padding\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 55,
+      "line": 59,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"margin\" to come before \"padding\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::57::3::order/properties-order::Expected \"clip-path\" to come before \"overflow\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::61::3::order/properties-order::Expected \"clip-path\" to come before \"overflow\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 57,
+      "line": 61,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"clip-path\" to come before \"overflow\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::58::3::order/properties-order::Expected \"white-space\" to come before \"clip-path\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::62::3::order/properties-order::Expected \"white-space\" to come before \"clip-path\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 58,
+      "line": 62,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"white-space\" to come before \"clip-path\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::59::3::order/properties-order::Expected \"border\" to come before \"white-space\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::63::3::order/properties-order::Expected \"border\" to come before \"white-space\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 59,
+      "line": 63,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -4188,27 +4197,27 @@
       "text": "Expected variable, function or keyword for \"none\" of \"forced-color-adjust\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::345::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::346::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 345,
+      "line": 346,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::420::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::421::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 420,
+      "line": 421,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::614::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"light\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::615::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"light\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 614,
+      "line": 615,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",

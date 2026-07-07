@@ -116,6 +116,11 @@
         "$description": "Production token --font-weight-title",
         "$type": "fontFamily"
       },
+      "medium": {
+        "$value": "500",
+        "$description": "Production token --font-weight-medium",
+        "$type": "fontFamily"
+      },
       "text": {
         "$value": "400",
         "$description": "Production token --font-weight-text",
