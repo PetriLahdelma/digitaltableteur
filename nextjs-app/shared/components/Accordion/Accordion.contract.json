@@ -4,11 +4,29 @@
     "tier": "molecule",
     "group": "structure",
     "status": "beta",
-    "description": "Expandable sections with keyboard-operable triggers.",
+    "description": "Coordinated disclosure group: single or multiple open sections, animated reveal, keyboard-operable triggers.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-17",
     "radixPrimitive": null,
     "element": "div",
-    "variants": {},
+    "variants": {
+        "type": {
+            "values": [
+                "single",
+                "multiple"
+            ],
+            "default": "single",
+            "propSourced": true
+        },
+        "variant": {
+            "values": [
+                "contained",
+                "enclosed",
+                "divided"
+            ],
+            "default": "contained",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
@@ -45,7 +63,39 @@
             "optional": false,
             "type": "AccordionItem[]"
         },
+        "type": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "single",
+                "multiple"
+            ]
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "contained",
+                "divided"
+            ]
+        },
         "defaultOpenId": {
+            "optional": true,
+            "type": "string"
+        },
+        "defaultOpenIds": {
+            "optional": true,
+            "type": "string[]"
+        },
+        "openIds": {
+            "optional": true,
+            "type": "string[]"
+        },
+        "onOpenChange": {
+            "optional": true,
+            "type": "(openIds: string[]) => void"
+        },
+        "className": {
             "optional": true,
             "type": "string"
         }
@@ -62,11 +112,14 @@
         "faq",
         "expand",
         "collapse",
-        "progressive disclosure"
+        "progressive disclosure",
+        "single",
+        "multiple",
+        "controlled"
     ],
-    "dense": "Exclusive disclosure group: items {id,title,content}, one open at a time (click open item to close), optional defaultOpenId; trigger button wires aria-expanded/aria-controls to its region",
+    "dense": "Disclosure group: items {id,title,content}; type single|multiple; variant contained|enclosed|divided; controlled openIds or defaultOpenId(s); animated grid-rows reveal; aria per region",
     "usage": {
-        "description": "Accordion is the exclusive disclosure group: pass `items` ({id, title, content}) and at most one stays open — opening another closes the previous, clicking the open one closes it. Use it for FAQs and reference content where users need one answer at a time. For a single independent \"show more\" use ExpandableSection; if most readers need all the content, use plain headings instead of hiding it.",
+        "description": "Accordion coordinates a set of disclosure sections. In the default `type=\"single\"` at most one stays open (opening another closes the previous); `type=\"multiple\"` lets any number stay open for side-by-side reading. Pass `items` ({id, title, content}); drive it uncontrolled with `defaultOpenId`/`defaultOpenIds` or controlled with `openIds` + `onOpenChange`. `variant` switches between a bordered card group (contained) and flush hairlines (divided). For a single independent \"show more\" use ExpandableSection; if most readers need all the content, use plain headings instead of hiding it.",
         "bestPractices": [
             {
                 "guidance": true,
@@ -89,8 +142,12 @@
                 "description": "Do not hide task-critical content in an accordion; required steps must be visible by default."
             },
             {
+                "guidance": true,
+                "description": "Use type=\"multiple\" when users compare sections side by side (feature lists, pricing tiers); keep the default type=\"single\" for FAQs and settings where one at a time is the point."
+            },
+            {
                 "guidance": false,
-                "description": "Do not use it when users need to compare sections side by side — exclusive open forbids that; use headings."
+                "description": "Do not put a single short paragraph behind a section — the click costs more than it saves; show the text directly."
             }
         ],
         "anatomy": [
