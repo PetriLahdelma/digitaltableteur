@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - heading "Designing with systems" [level=2]
 - paragraph: A design system is only as good as the decisions it makes easy. The goal is not to constrain, but to remove the thousand small choices that slow a team down and let people focus on the problem in front of them.
 - heading "Start from the tokens" [level=3]

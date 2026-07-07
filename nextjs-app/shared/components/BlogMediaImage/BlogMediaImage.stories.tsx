@@ -8,7 +8,7 @@ const meta: Meta<typeof BlogMediaImage> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/BlogMediaImage",
   component: BlogMediaImage,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

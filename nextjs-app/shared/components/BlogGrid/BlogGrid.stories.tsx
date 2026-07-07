@@ -30,7 +30,7 @@ const meta: Meta<typeof BlogGrid> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/BlogGrid",
   component: BlogGrid,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

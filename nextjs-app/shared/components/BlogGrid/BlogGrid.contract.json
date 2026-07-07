@@ -3,7 +3,7 @@
     "name": "BlogGrid",
     "tier": "organism",
     "group": "content",
-    "status": "beta",
+    "status": "stable",
     "description": "Responsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1034-110",
     "radixPrimitive": null,
@@ -35,8 +35,10 @@
         "motion": true,
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (standard + featured-first, populated + empty); 4-mode AT snapshots captured and compare-clean. Cards fade in via FadeIn, which is gated by the AnimationProvider motion preference. Composes the prod EnhancedArticleCard. Tailwind className styling retained as an intentional per-surface owner call.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (standard + featured-first, populated + empty); 4-mode AT snapshots captured and compare-clean. Cards fade in via FadeIn, which is gated by the AnimationProvider motion preference. Composes the prod EnhancedArticleCard. Tailwind className styling retained as an intentional per-surface owner call. 2026-07-08 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
@@ -96,5 +98,32 @@
     "dense": "Blog index grid laying out ArticleCards responsively",
     "usage": {
         "description": "Responsive grid of ArticleCards for blog index pages. Owns layout only; the cards own their content."
-    }
+    },
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ]
 }

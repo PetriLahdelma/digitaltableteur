@@ -21,7 +21,7 @@ const meta: Meta<typeof BlogCategoryFilter> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/BlogCategoryFilter",
   component: BlogCategoryFilter,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",
