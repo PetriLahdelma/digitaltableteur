@@ -1,0 +1,19 @@
+/**
+ * Shared form-field chrome — the single source of truth for the resting shell
+ * (border, radius, surface, transition) of DS input controls. TextInput,
+ * TextArea, Select and PhoneInput all `composes: field from` this rule so the
+ * field treatment can never drift between them again.
+ *
+ * Only the resting chrome lives here. Focus / error / disabled states stay in
+ * each component because their selectors differ (`:focus` on a single control
+ * vs `:focus-within` on PhoneInput's composite container), but they reference
+ * the same tokens (--color-primary focus, --color-error error).
+ */
+
+.field {
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  transition: border-color 0.3s;
+}
