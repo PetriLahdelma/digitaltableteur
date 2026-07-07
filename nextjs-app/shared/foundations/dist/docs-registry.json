@@ -14185,7 +14185,7 @@
       "name": "TextInput",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Labeled text input with validation, helper text, and size tokens.",
       "dense": "labelled single-line field: text/number/email/password/search/tel, built-in email + phone validation, own error/helperText, sm/md/lg; onValueChange(value)",
       "keywords": [
