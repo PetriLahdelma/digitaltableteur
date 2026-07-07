@@ -3906,7 +3906,7 @@
       "name": "Combobox",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Single-select combobox with portaled dropdown, shared with MultiCombobox.",
       "dense": "controlled single-select combobox; button trigger + portaled listbox, full APG keyboard model, own label/error/helperText; options support per-option disabled; onValueChange(value)",
       "keywords": [

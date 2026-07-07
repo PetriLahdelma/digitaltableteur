@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- text: Disciplines Design
+- button "Remove badge"
+- combobox "Disciplines"
+- button "Toggle options"

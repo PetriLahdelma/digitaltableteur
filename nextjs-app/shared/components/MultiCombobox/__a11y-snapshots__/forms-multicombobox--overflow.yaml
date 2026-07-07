@@ -1,0 +1,12 @@
+- status: Work in progress (beta)
+- text: Disciplines Research
+- button "Remove badge"
+- text: Design
+- button "Remove badge"
+- text: Frontend
+- button "Remove badge"
+- text: Accessibility
+- button "Remove badge"
+- combobox "Disciplines"
+- button "Toggle options"
+- paragraph: The field grows with every chip.
