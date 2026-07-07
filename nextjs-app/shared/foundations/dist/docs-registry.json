@@ -3207,7 +3207,7 @@
       "name": "Checkbox",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Accessible checkbox with label, indeterminate, and size variants.",
       "dense": "native checkbox with label, sm/md/lg, indeterminate, own error + helperText; onCheckedChange(boolean); controlled or uncontrolled",
       "keywords": [
