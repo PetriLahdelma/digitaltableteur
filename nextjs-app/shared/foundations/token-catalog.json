@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-03T03:43:49.197Z",
-  "tokenCount": 172,
-  "usageCoverage": 139,
+  "generatedAt": "2026-07-07T15:57:51.697Z",
+  "tokenCount": 173,
+  "usageCoverage": 140,
   "themes": [
     {
       "id": "light",
@@ -1425,6 +1425,13 @@
           "name": "--radius-lg",
           "value": "8px",
           "usage": "Border radius (lg).",
+          "category": "radius",
+          "subgroup": "General"
+        },
+        {
+          "name": "--radius-full",
+          "value": "9999px",
+          "usage": "Border radius (full).",
           "category": "radius",
           "subgroup": "General"
         }

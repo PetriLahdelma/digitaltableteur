@@ -12,6 +12,10 @@
     "lg": {
       "$value": "8px",
       "$description": "Border radius (lg)."
+    },
+    "full": {
+      "$value": "9999px",
+      "$description": "Border radius (full)."
     }
   }
 }
