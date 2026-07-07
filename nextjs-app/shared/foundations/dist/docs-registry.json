@@ -13227,7 +13227,7 @@
       "name": "StatusDot",
       "group": "feedback",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Tiny semantic status indicator: colored dot with visible or sr-only label.",
       "dense": "colored semantic dot + label (visible children or sr-only label); tone x sm/md/lg, optional pulse for live states",
       "keywords": [
