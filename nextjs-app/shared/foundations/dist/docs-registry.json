@@ -5659,7 +5659,7 @@
       "name": "FileUpload",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "File picker with size validation and clear control.",
       "dense": "single-file picker: readonly summary + Browse/Clear over a hidden input; accept filter, maxSizeInBytes rejection (localized), default/editorial looks; onFileChange(File | null)",
       "keywords": [

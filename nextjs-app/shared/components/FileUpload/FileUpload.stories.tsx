@@ -8,7 +8,7 @@ import schema from "./schema.json";
 export default {
   title: "Forms/FileUpload",
   component: FileUpload,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
