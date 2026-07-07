@@ -13508,8 +13508,8 @@
       "group": "navigation",
       "tier": 1,
       "status": "beta",
-      "description": "Tablist navigation with keyboard support and variant styles.",
-      "dense": "Tablist-only tabs (parent renders panels via getTabPanelProps); variant default|pills|underline, size sm|md|lg; controlled activeTab/onTabChange or defaultActiveTab; roving arrow-key focus",
+      "description": "Tablist navigation with keyboard support, a sliding selection indicator, and per-item icon/count.",
+      "dense": "Tablist-only tabs (panels via getTabPanelProps); variant default|pills|underline + sliding indicator; per-item icon+count; size sm|md|lg; controlled/uncontrolled; roving arrow-key focus",
       "keywords": [
         "tabs",
         "tablist",
@@ -13517,7 +13517,10 @@
         "segmented",
         "pills",
         "underline",
-        "keyboard navigation"
+        "keyboard navigation",
+        "icon",
+        "count",
+        "sliding indicator"
       ],
       "importLine": "import Tabs from \"@dt/Tabs\";",
       "keyProps": [
@@ -13639,7 +13642,12 @@
           {
             "name": "Tab",
             "required": true,
-            "description": "role=tab button with aria-selected and aria-controls pointing at its panel id."
+            "description": "role=tab button with aria-selected and aria-controls pointing at its panel id; may carry an optional leading icon and trailing count pill."
+          },
+          {
+            "name": "Indicator",
+            "required": true,
+            "description": "Single aria-hidden element per tablist that slides to the selected tab (2px rail bar for underline, raised thumb for pills, filled segment for default)."
           },
           {
             "name": "Tabpanel",
@@ -13655,18 +13663,23 @@
       "examples": [
         {
           "story": "Pills",
-          "description": "pills gives each tab a filled chip treatment — the strongest visual variant, best for top-of-card view switches.",
-          "source": "export const Pills = Template.bind({});\nPills.args = {\n  tabs: [\n    { key: \"tab1\", label: \"Overview\" },\n    { key: \"tab2\", label: \"Details\" },\n    { key: \"tab3\", label: \"Settings\" },\n  ],\n  variant: \"pills\",\n};\nPills.tags = [\"example\"];\nPills.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"pills gives each tab a filled chip treatment — the strongest visual variant, best for top-of-card view switches.\",\n    },\n  },\n};\nPills.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n  await userEvent.click(tabs[1]);\n  await userEvent.click(tabs[2]);\n};"
+          "description": "pills is a soft segmented group: a raised thumb slides behind the selected tab on a tinted track. Best for top-of-card view switches.",
+          "source": "export const Pills = Template.bind({});\nPills.args = {\n  tabs: [\n    { key: \"tab1\", label: \"Overview\" },\n    { key: \"tab2\", label: \"Details\" },\n    { key: \"tab3\", label: \"Settings\" },\n  ],\n  variant: \"pills\",\n};\nPills.tags = [\"example\"];\nPills.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"pills is a soft segmented group: a raised thumb slides behind the selected tab on a tinted track. Best for top-of-card view switches.\",\n    },\n  },\n};\nPills.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n  await userEvent.click(tabs[1]);\n  await userEvent.click(tabs[2]);\n};"
         },
         {
           "story": "Underline",
-          "description": "underline is the quietest variant: a single accent rule under the active tab. Suits dense pages where pills would shout.",
-          "source": "export const Underline = Template.bind({});\nUnderline.args = {\n  tabs: [\n    { key: \"tab1\", label: \"Home\" },\n    { key: \"tab2\", label: \"Profile\" },\n    { key: \"tab3\", label: \"Messages\" },\n  ],\n  variant: \"underline\",\n};\nUnderline.tags = [\"example\"];\nUnderline.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"underline is the quietest variant: a single accent rule under the active tab. Suits dense pages where pills would shout.\",\n    },\n  },\n};\nUnderline.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n  await userEvent.click(tabs[2]);\n};"
+          "description": "underline is the quietest variant: a 2px indicator slides along the bottom rail as selection moves. Suits dense pages where pills would shout.",
+          "source": "export const Underline = Template.bind({});\nUnderline.args = {\n  tabs: [\n    { key: \"tab1\", label: \"Home\" },\n    { key: \"tab2\", label: \"Profile\" },\n    { key: \"tab3\", label: \"Messages\" },\n  ],\n  variant: \"underline\",\n};\nUnderline.tags = [\"example\"];\nUnderline.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"underline is the quietest variant: a 2px indicator slides along the bottom rail as selection moves. Suits dense pages where pills would shout.\",\n    },\n  },\n};\nUnderline.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n  await userEvent.click(tabs[2]);\n};"
         },
         {
           "story": "WithDisabled",
           "description": "Disable a tab with disabled on its item instead of removing it: the set stays stable, the tab is skipped by the roving arrow-key focus, and clicks are inert.",
           "source": "export const WithDisabled = Template.bind({});\nWithDisabled.args = {\n  tabs: [\n    { key: \"tab1\", label: \"Active\" },\n    { key: \"tab2\", label: \"Disabled\", disabled: true },\n    { key: \"tab3\", label: \"Active\" },\n  ],\n};\nWithDisabled.tags = [\"example\"];\nWithDisabled.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"Disable a tab with disabled on its item instead of removing it: the set stays stable, the tab is skipped by the roving arrow-key focus, and clicks are inert.\",\n    },\n  },\n};\nWithDisabled.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n\n  // Try clicking disabled tab (should not activate)\n  await userEvent.click(tabs[1]);\n\n  // Click active tab\n  await userEvent.click(tabs[2]);\n  await waitFor(() => expect(tabs[2]).toHaveAttribute(\"aria-selected\", \"true\"));\n};"
+        },
+        {
+          "story": "IconsAndCount",
+          "description": "Each tab item takes an optional leading icon (Phosphor name or node) and a trailing count pill. The icon is decorative; the count joins the tab's accessible name (e.g. “Inbox 3”).",
+          "source": "export const IconsAndCount = Template.bind({});\nIconsAndCount.args = {\n  variant: \"underline\",\n  tabs: [\n    { key: \"inbox\", label: \"Inbox\", icon: \"tray\", count: 3 },\n    { key: \"starred\", label: \"Starred\", icon: \"star\" },\n    { key: \"sent\", label: \"Sent\", icon: \"paper-plane-tilt\" },\n    { key: \"drafts\", label: \"Drafts\", icon: \"folder\", disabled: true },\n  ],\n};\nIconsAndCount.tags = [\"example\"];\nIconsAndCount.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"Each tab item takes an optional leading icon (Phosphor name or node) and a trailing count pill. The icon is decorative; the count joins the tab's accessible name (e.g. “Inbox 3”).\",\n    },\n  },\n};\nIconsAndCount.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n  await userEvent.click(tabs[1]);\n};"
         },
         {
           "story": "Sizes",
