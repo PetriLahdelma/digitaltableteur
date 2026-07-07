@@ -38,7 +38,7 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 \u2014 production behavior, keyboard, and forced-colors verified in Storybook.",
+        "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
         "forcedColorsVerified": true,
         "accessibilityTreeVerified": true,
         "realBrowserForcedColorsVerified": true
@@ -61,6 +61,11 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
         },
         {
@@ -148,7 +153,7 @@
     },
     "forbiddenUse": [
         "use `checked` directly. The prefixed `isChecked` name is the",
-        "rely on the native `indeterminate` HTML attribute \u2014 there is"
+        "rely on the native `indeterminate` HTML attribute — there is"
     ],
     "composesWith": [
         "TextInput",

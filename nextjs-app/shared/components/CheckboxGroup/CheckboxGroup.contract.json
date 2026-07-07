@@ -3,7 +3,7 @@
     "name": "CheckboxGroup",
     "tier": "molecule",
     "group": "form",
-    "status": "beta",
+    "status": "stable",
     "description": "Grouped checkboxes with optional master checkbox.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=383-24",
     "radixPrimitive": null,
@@ -29,15 +29,23 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-07 — production behavior, keyboard, forced-colors, and light/dark accessibility tree verified in Storybook for beta→stable promotion.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "id": {
