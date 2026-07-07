@@ -6069,7 +6069,7 @@
       "name": "FormField",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Fieldset/legend wrapper for a group of controls (radio sets, checkbox clusters, composite fields), with a group description and a group-level error. Individual controls own their own label, error, and helper text.",
       "dense": "fieldset/legend wrapper for a GROUP of controls with groupDescription + group-level error; single controls own their own label/error/helperText chrome",
       "keywords": [
