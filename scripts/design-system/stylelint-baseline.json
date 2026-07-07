@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 463,
+  "warningCount": 465,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -2575,6 +2575,24 @@
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"padding\" to come before \"min-height\" (order/properties-order)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Switch/Switch.module.css::66::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "nextjs-app/shared/components/Switch/Switch.module.css",
+      "line": 66,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Switch/Switch.module.css::68::3::order/properties-order::Expected \"background-color\" to come before \"cursor\" (order/properties-order)",
+      "file": "nextjs-app/shared/components/Switch/Switch.module.css",
+      "line": 68,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"background-color\" to come before \"cursor\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/components/Tooltip/Tooltip.module.css::11::3::order/properties-order::Expected \"box-shadow\" to come before \"line-height\" (order/properties-order)",
