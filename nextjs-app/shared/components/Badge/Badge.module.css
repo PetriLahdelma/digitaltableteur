@@ -186,19 +186,25 @@
   line-height: 0;
 }
 
+/* The close button is a fixed 18px at every size, so the trailing padding after
+   it is constant (sm was 2px = visually no gap); only the leading/label side
+   scales. Set on the .removable base so it also covers the default md badge,
+   which carries no size class — so .removable.md never matched it. */
+.removable {
+  padding-inline-end: var(--space-internal-6);
+}
+
 .removable.sm {
-  padding: 0 var(--space-internal-12);
-  padding-inline-end: var(--space-internal-2);
+  padding-inline-start: var(--space-internal-12);
   font-size: 0.75rem;
 }
 
 .removable.md {
-  padding: 0 var(--space-internal-16);
-  padding-inline-end: var(--space-internal-4);
+  padding-inline-start: var(--space-internal-16);
   font-size: 1rem;
 }
 
 .removable.lg {
-  padding: 0 var(--space-internal-16);
+  padding-inline-start: var(--space-internal-16);
   font-size: 1.25rem;
 }
