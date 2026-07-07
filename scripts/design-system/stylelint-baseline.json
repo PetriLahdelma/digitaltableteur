@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 448,
+  "warningCount": 454,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -2397,6 +2397,60 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::123::1::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 123,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::133::1::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 133,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::160::3::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 160,
+      "column": 3,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::161::3::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 161,
+      "column": 3,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::75::1::no-descending-specificity::Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 75,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::87::1::no-descending-specificity::Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 87,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)"
+    },
+    {
       "id": "nextjs-app/shared/components/SiteTree/SiteTree.module.css::42::3::order/properties-order::Expected \"padding-block\" to come before \"gap\" (order/properties-order)",
       "file": "nextjs-app/shared/components/SiteTree/SiteTree.module.css",
       "line": 42,
@@ -4008,27 +4062,27 @@
       "text": "Expected variable, function or keyword for \"none\" of \"forced-color-adjust\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::341::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::345::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 341,
+      "line": 345,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::416::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::420::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 416,
+      "line": 420,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::610::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"light\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::614::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"light\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 610,
+      "line": 614,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
