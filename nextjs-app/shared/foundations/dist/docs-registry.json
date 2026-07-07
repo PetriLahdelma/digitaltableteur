@@ -11998,7 +11998,7 @@
       "name": "Skeleton",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Loading placeholder that mirrors the layout of incoming content.",
       "dense": "layout-mirroring loading placeholder; variant text|circle|rect|avatar|card, text takes lines, free width/height; role=status, shimmer respects reduced motion",
       "keywords": [
