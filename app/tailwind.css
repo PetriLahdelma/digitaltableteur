@@ -179,6 +179,7 @@
   --text-dt-title-xxl: var(--font-size-title-xxl);
   --text-dt-title-xxs: var(--font-size-title-xxs);
   --color-dt-link: var(--link-color);
+  --radius-dt-full: var(--radius-full);
   --radius-dt-lg: var(--radius-lg);
   --radius-dt-md: var(--radius-md);
   --radius-dt-sm: var(--radius-sm);

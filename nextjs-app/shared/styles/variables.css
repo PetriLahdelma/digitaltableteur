@@ -196,6 +196,10 @@
   --radius-md: 0.25rem;
   --radius-lg: 8px;
 
+  /* Pill / full radius: clamps to half the smaller dimension, so ends stay
+     fully rounded at any height (progress tracks, pills, toggles). */
+  --radius-full: 9999px;
+
   /* Sizing */
 
   --size-width-md: 320px;
