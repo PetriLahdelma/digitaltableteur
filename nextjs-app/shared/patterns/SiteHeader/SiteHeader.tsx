@@ -306,7 +306,7 @@ export function SiteHeader({
                     )}
                     aria-hidden
                   >
-                    <ThemeIcon weight="fill" className="size-4" />
+                    <ThemeIcon weight="bold" className="size-4" />
                   </span>
                 }
                 label={t("toggleDarkMode")}
