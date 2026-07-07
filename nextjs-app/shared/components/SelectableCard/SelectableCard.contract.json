@@ -1,0 +1,47 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "SelectableCard",
+    "tier": "molecule",
+    "group": "form",
+    "status": "alpha",
+    "description": "A Card that is one selectable option; grouped into single (radio) or multiple (checkbox) sets via SelectableCardGroup.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "label",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "a11y": {
+        "keyboard": [
+            "Tab moves focus into the group",
+            "Arrow keys move within a single-select set (native radio)",
+            "Space toggles the focused option"
+        ],
+        "ariaRequirements": [
+            "Group renders a fieldset with a legend for the accessible name",
+            "Each card is a label wrapping a native radio/checkbox input",
+            "Error announces via role=alert and sets aria-invalid on the group"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-primary",
+            "--color-focus-ring",
+            "--color-border",
+            "--color-border-light",
+            "--color-surface"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24"
+        ]
+    },
+    "lightDarkVerified": false
+}

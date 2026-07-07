@@ -160,8 +160,8 @@
           "required": false
         },
         {
-          "name": "icon",
-          "type": "string",
+          "name": "showIcon",
+          "type": "boolean",
           "required": false
         }
       ],
@@ -188,9 +188,9 @@
           "optional": true,
           "type": "React.ReactNode"
         },
-        "icon": {
+        "showIcon": {
           "optional": true,
-          "type": "string"
+          "type": "boolean"
         },
         "dismissible": {
           "optional": true,
@@ -309,6 +309,11 @@
           "story": "WithAction",
           "description": "The action slot carries one follow-up under the description — a tertiary Button, not a link buried in prose.",
           "source": "export const WithAction: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The action slot carries one follow-up under the description — a tertiary Button, not a link buried in prose.\",\n      },\n    },\n  },\n  args: {\n    tone: \"info\",\n    title: \"Cookie preferences updated\",\n    description: \"Analytics stays off until you opt back in.\",\n    action: (\n      <Button variant=\"tertiary\" size=\"sm\">\n        Review settings\n      </Button>\n    ),\n  },\n};"
+        },
+        {
+          "story": "TextOnly",
+          "description": "showIcon={false} drops the tone icon for a compact, text-only banner. The icon is always the semantic tone glyph — there is no per-instance icon override, so this boolean is the only icon control.",
+          "source": "export const TextOnly: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"showIcon={false} drops the tone icon for a compact, text-only banner. The icon is always the semantic tone glyph — there is no per-instance icon override, so this boolean is the only icon control.\",\n      },\n    },\n  },\n  args: {\n    tone: \"info\",\n    title: \"Heads up\",\n    description: \"This is an informational message.\",\n    showIcon: false,\n  },\n};"
         },
         {
           "story": "Example",
@@ -2656,7 +2661,7 @@
       "name": "CategoryFilter",
       "group": "navigation",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Filter pill row for list pages (blog archive, work index). Multiple visual treatments (pills, underline, minimal) for different surface densities.",
       "dense": "Filter pill row for list pages (blog archive, work index) with selected state and multiple visual treatments",
       "keywords": [
@@ -6659,7 +6664,7 @@
       "name": "HelperText",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Semantic helper or validation copy below form controls.",
       "dense": "semantic helper copy under a form control; neutral or error/warning/success/info with auto icon; error becomes role=alert; id feeds aria-describedby",
       "keywords": [
@@ -10680,7 +10685,7 @@
       "name": "ProjectGallery",
       "group": "media",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Responsive case-study image gallery: a labelled grid of figures where each thumbnail opens a shared lightbox.",
       "dense": "Case-study image gallery arranging project shots within article layouts",
       "keywords": [
@@ -10781,7 +10786,7 @@
       "name": "ProjectNav",
       "group": "navigation",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Previous/next navigation between case studies, with a back-to-work action, for the foot of work detail pages.",
       "dense": "Prev/next case-study navigation with back-to-work action for work detail pages",
       "keywords": [
@@ -11611,6 +11616,38 @@
           "source": "export const WithError = Template.bind({});\nWithError.args = {\n  label: \"storySelectLabel\",\n  options: [\n    { value: \"option1\", label: \"storyCheckboxOption1\" },\n    { value: \"option2\", label: \"storyCheckboxOption2\" },\n    { value: \"option3\", label: \"storyCheckboxOption3\" },\n  ],\n  value: \"option1\",\n  error: \"storySelectErrorRequired\",\n};\n\nWithError.tags = [\"example\"];\nWithError.parameters = {\n  docs: {\n    description: {\n      story: \"error replaces the helper line, sets aria-invalid, and announces via role=alert.\",\n    },\n  },\n};"
         }
       ]
+    },
+    "SelectableCard": {
+      "name": "SelectableCard",
+      "group": "form",
+      "tier": 2,
+      "status": "alpha",
+      "description": "A Card that is one selectable option; grouped into single (radio) or multiple (checkbox) sets via SelectableCardGroup.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { SelectableCard } from \"@dt/SelectableCard\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-primary",
+          "--color-focus-ring",
+          "--color-border",
+          "--color-border-light",
+          "--color-surface"
+        ],
+        "spacing": [
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24"
+        ]
+      },
+      "examples": []
     },
     "SentrySummaryCard": {
       "name": "SentrySummaryCard",
@@ -15169,7 +15206,7 @@
       "name": "WorkGrid",
       "group": "content",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Responsive portfolio work-index grid: one EnhancedProjectCard per project, with a friendly empty state.",
       "dense": "Portfolio index grid arranging project cards on the work page",
       "keywords": [
