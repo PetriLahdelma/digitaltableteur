@@ -3,7 +3,7 @@
     "name": "Checkbox",
     "tier": "atom",
     "group": "form",
-    "status": "beta",
+    "status": "stable",
     "description": "Accessible checkbox with label, indeterminate, and size variants.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=372-14",
     "radixPrimitive": null,
@@ -38,8 +38,10 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-05-26 \u2014 production behavior, keyboard, and forced-colors verified in Storybook.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -55,7 +57,43 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "label": {
@@ -110,7 +148,7 @@
     },
     "forbiddenUse": [
         "use `checked` directly. The prefixed `isChecked` name is the",
-        "rely on the native `indeterminate` HTML attribute — there is"
+        "rely on the native `indeterminate` HTML attribute \u2014 there is"
     ],
     "composesWith": [
         "TextInput",
