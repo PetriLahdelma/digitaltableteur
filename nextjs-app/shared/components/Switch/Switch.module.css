@@ -60,9 +60,16 @@
   background-color: var(--switch-track-on, var(--color-primary));
 }
 
+/* Disabled — dedicated-token pattern (no opacity). Mute the track per state so
+   on/off stays distinguishable: off → --color-disabled-bg, on → muted primary.
+   Matches Checkbox / Radio / inputs. */
 .switch[data-disabled="true"] {
   cursor: not-allowed;
-  opacity: 0.6;
+  background-color: var(--color-disabled-bg);
+}
+
+.switch[data-disabled="true"][data-checked="true"] {
+  background-color: var(--color-primary-disabled);
 }
 
 .switch:focus-visible {
