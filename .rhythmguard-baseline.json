@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-07T20:05:25.910Z",
+  "createdAt": "2026-07-07T21:07:49.376Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -4255,8 +4255,8 @@
     {
       "column": 15,
       "file": "nextjs-app/shared/components/TextArea/TextArea.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextArea/TextArea.module.css\u001f33\u001f15\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 33,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/TextArea/TextArea.module.css\u001f34\u001f15\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 34,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
