@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "navigation",
     "status": "beta",
-    "description": "Tablist navigation with keyboard support and variant styles.",
+    "description": "Tablist navigation with keyboard support, a sliding selection indicator, and per-item icon/count.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-5",
     "radixPrimitive": null,
     "element": "div",
@@ -119,9 +119,12 @@
         "segmented",
         "pills",
         "underline",
-        "keyboard navigation"
+        "keyboard navigation",
+        "icon",
+        "count",
+        "sliding indicator"
     ],
-    "dense": "Tablist-only tabs (parent renders panels via getTabPanelProps); variant default|pills|underline, size sm|md|lg; controlled activeTab/onTabChange or defaultActiveTab; roving arrow-key focus",
+    "dense": "Tablist-only tabs (panels via getTabPanelProps); variant default|pills|underline + sliding indicator; per-item icon+count; size sm|md|lg; controlled/uncontrolled; roving arrow-key focus",
     "usage": {
         "description": "Tabs renders the tablist only — the parent owns the panels, pairing each to its tab with the exported `getTabPanelProps(key, isActive)` helper (or matching id/aria-labelledby/hidden attributes by hand). Drive it controlled with `activeTab` + `onTabChange`, or uncontrolled with `defaultActiveTab`. Arrow keys move a roving focus through enabled tabs; `variant` picks the visual language (default, pills, underline) and `size` the density. Tabs switch views in place — they are not page navigation.",
         "bestPractices": [
@@ -159,7 +162,12 @@
             {
                 "name": "Tab",
                 "required": true,
-                "description": "role=tab button with aria-selected and aria-controls pointing at its panel id."
+                "description": "role=tab button with aria-selected and aria-controls pointing at its panel id; may carry an optional leading icon and trailing count pill."
+            },
+            {
+                "name": "Indicator",
+                "required": true,
+                "description": "Single aria-hidden element per tablist that slides to the selected tab (2px rail bar for underline, raised thumb for pills, filled segment for default)."
             },
             {
                 "name": "Tabpanel",
