@@ -58,7 +58,7 @@
       "$description": "Color token (muted).",
       "$type": "color",
       "light": {
-        "$value": "#4949a7",
+        "$value": "#909090",
         "$description": "Color token (muted-light).",
         "$type": "color"
       }
