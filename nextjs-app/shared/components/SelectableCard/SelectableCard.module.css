@@ -1,0 +1,169 @@
+/* SelectableCard — a Card that is one selectable option. The label wraps a
+   visually-hidden native input; the Card is the visual, an indicator shows the
+   selected state, and the whole surface is the hit area. */
+
+/* Group (fieldset) reset + legend */
+
+.group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+}
+
+.legend {
+  margin: 0 0 var(--space-internal-8);
+  padding: 0;
+  color: var(--color-title, var(--color-primary));
+  font-weight: 600;
+}
+
+.options {
+  display: flex;
+  gap: var(--space-internal-12);
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Card as label */
+
+.card {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.card.disabled {
+  cursor: not-allowed;
+}
+
+/* Visually-hidden native input — stays in the DOM and focusable so keyboard,
+   focus, and form submission come from the platform. */
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Surface — the Card visual. Reserve room on the trailing edge for the
+   indicator so content never sits under it. */
+
+.surface {
+  padding-inline-end: calc(var(--space-internal-24) + 20px);
+  border-color: var(--color-border-light);
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.card:hover:not(.disabled) .surface {
+  border-color: var(--color-border);
+}
+
+.card[data-selected="true"] .surface {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+}
+
+/* Focus ring travels from the hidden input to the visible surface. */
+
+.card:has(.input:focus-visible) .surface {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.card.disabled .surface {
+  opacity: 0.55;
+}
+
+/* Selection indicator — outline dot (radio) or check (checkbox), always drawn
+   in --color-primary so it stays legible in every theme without a fill. */
+
+.indicator {
+  position: absolute;
+  inset-block-start: var(--space-internal-16);
+  inset-inline-end: var(--space-internal-16);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-surface);
+  transition: border-color 120ms ease;
+}
+
+.indicator[data-type="radio"] {
+  border-radius: 50%;
+}
+
+.indicator[data-type="checkbox"] {
+  border-radius: 6px;
+}
+
+.card[data-selected="true"] .indicator {
+  border-color: var(--color-primary);
+}
+
+/* Radio: filled inner dot */
+.card[data-selected="true"] .indicator[data-type="radio"]::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+/* Checkbox: check glyph drawn as two strokes in --color-primary */
+.card[data-selected="true"] .indicator[data-type="checkbox"]::after {
+  content: "";
+  width: 5px;
+  height: 10px;
+  margin-block-start: -2px;
+  border: solid var(--color-primary);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface,
+  .indicator {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .card[data-selected="true"] .surface {
+    border-color: Highlight;
+    box-shadow: inset 0 0 0 1px Highlight;
+  }
+
+  .card[data-selected="true"] .indicator {
+    border-color: Highlight;
+  }
+
+  .card[data-selected="true"] .indicator[data-type="radio"]::after,
+  .card[data-selected="true"] .indicator[data-type="checkbox"]::after {
+    background-color: Highlight;
+    border-color: Highlight;
+  }
+
+  .card.disabled .surface {
+    opacity: 1;
+    color: GrayText;
+  }
+}
