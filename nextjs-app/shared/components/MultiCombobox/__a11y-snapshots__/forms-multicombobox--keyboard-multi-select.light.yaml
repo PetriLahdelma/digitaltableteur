@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- text: Disciplines Accessibility
+- button "Remove badge"
+- combobox "Disciplines" [expanded]: acc
+- button "Toggle options" [expanded]
