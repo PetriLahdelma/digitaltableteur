@@ -9142,7 +9142,7 @@
       "name": "MultiCombobox",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Multi-select combobox with inline chips, type-to-filter dropdown, label, error, and helper text.",
       "dense": "controlled multi-select combobox; selections render as removable Badge chips in the field, type-to-filter input, portaled listbox, Backspace removes the last chip; onValueChange(string[])",
       "keywords": [

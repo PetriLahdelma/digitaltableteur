@@ -1,6 +1,0 @@
-- status: Work in progress (beta)
-- text: Disciplines (max 2) Research
-- button "Remove badge"
-- combobox "Disciplines (max 2)"
-- button "Toggle options"
-- paragraph: Pick up to two.
