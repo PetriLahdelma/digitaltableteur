@@ -1,11 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Spacer } from "./Spacer";
+import { Spacer, type SpacerProps } from "./Spacer";
 import contract from "./Spacer.contract.json";
+import styles from "./Spacer.stories.module.css";
 
 const defaultArgs = {
   size: "md" as const,
   axis: "vertical" as const,
 };
+
+// Spacer is invisible by design; the control-driven previews tint the spacer
+// box inside a container that supplies cross-axis extent so size/axis are legible.
+const renderVisualized = (args: SpacerProps) => (
+  <div className={styles.viz} data-axis={args.axis ?? "vertical"}>
+    <Spacer {...args} className={styles.gap} />
+  </div>
+);
 
 const meta = {
   title: "Layout/Spacer",
@@ -31,10 +40,12 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  render: renderVisualized,
 };
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  render: renderVisualized,
 };
 
 export const Example: Story = {
