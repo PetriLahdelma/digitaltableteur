@@ -16,12 +16,7 @@ describe("IconButton", () => {
   });
 
   it("accepts a rendered icon element and keeps it hidden from AT", () => {
-    render(
-      <IconButton
-        icon={<svg data-testid="glyph" />}
-        label="Share"
-      />,
-    );
+    render(<IconButton icon={<svg data-testid="glyph" />} label="Share" />);
     const button = screen.getByRole("button", { name: "Share" });
     expect(button).toBeInTheDocument();
     // the accessible name comes from label, never from the glyph
@@ -61,10 +56,36 @@ describe("IconButton", () => {
 
   it("exposes tooltip as a native title without changing the accessible name", () => {
     render(
-      <IconButton icon="clipboard" label="Copy link" tooltip="Copy link to clipboard" />,
+      <IconButton
+        icon="clipboard"
+        label="Copy link"
+        tooltip="Copy link to clipboard"
+      />,
     );
     const button = screen.getByRole("button", { name: "Copy link" });
     expect(button).toHaveAttribute("title", "Copy link to clipboard");
+  });
+
+  it("forwards arbitrary props to the underlying button (asChild/Slot composition)", async () => {
+    // Radix Slot (e.g. Tooltip/Popover asChild) injects handlers and
+    // data-/aria- attributes onto the child; IconButton must pass them through
+    // or hover-driven tooltips never open.
+    const user = userEvent.setup();
+    const onPointerEnter = vi.fn();
+    render(
+      <IconButton
+        icon="star"
+        label="Favorite"
+        onPointerEnter={onPointerEnter}
+        aria-describedby="hint-1"
+        data-state="closed"
+      />,
+    );
+    const button = screen.getByRole("button", { name: "Favorite" });
+    expect(button).toHaveAttribute("aria-describedby", "hint-1");
+    expect(button).toHaveAttribute("data-state", "closed");
+    await user.hover(button);
+    expect(onPointerEnter).toHaveBeenCalled();
   });
 
   it("wraps in a span only when className is given", () => {
@@ -92,7 +113,12 @@ describe("IconButton", () => {
       const { container } = render(
         <>
           <IconButton icon="x" label="Close" disabled />
-          <IconButton icon="trash" label="Delete row" tone="error" variant="secondary" />
+          <IconButton
+            icon="trash"
+            label="Delete row"
+            tone="error"
+            variant="secondary"
+          />
         </>,
       );
       expect(await axe(container)).toHaveNoViolations();
