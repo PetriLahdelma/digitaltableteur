@@ -3383,7 +3383,7 @@
       "name": "CheckboxGroup",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Grouped checkboxes with optional master checkbox.",
       "dense": "checkbox set with fieldset legend and optional select-all master (indeterminate while mixed); onChange reports the selected value array",
       "keywords": [

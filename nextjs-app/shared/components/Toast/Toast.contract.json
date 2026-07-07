@@ -94,6 +94,11 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
         },

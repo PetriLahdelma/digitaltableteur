@@ -146,6 +146,16 @@ function parseImportSpecs(content) {
   while ((match = re.exec(content)) !== null) {
     specs.add(match[1]);
   }
+  // Dynamic imports (next/dynamic, React.lazy, bare `import("…")`) are real
+  // production dependencies — they ship to the client, just code-split/lazy.
+  // Follow them so components reached only through a dynamic boundary (e.g.
+  // ChatWidget/CookieConsent mounted via next/dynamic in NextLayout) are not
+  // undercounted to zero consumers.
+  const dyn = /\bimport\s*\(\s*["']([^"']+)["']/g;
+  let dm;
+  while ((dm = dyn.exec(content)) !== null) {
+    specs.add(dm[1]);
+  }
   return specs;
 }
 
