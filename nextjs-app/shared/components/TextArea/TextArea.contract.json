@@ -3,7 +3,7 @@
     "name": "TextArea",
     "tier": "atom",
     "group": "form",
-    "status": "beta",
+    "status": "stable",
     "description": "Multi-line text field with label, error/helper text, and optional animated auto-grow.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-17",
     "radixPrimitive": null,
@@ -30,7 +30,9 @@
         "reducedMotion": true,
         "reviewed": true,
         "reviewedNote": "2026-07-05 — alpha→beta a11y review (Petri/Claude). Brought to TextInput/PhoneInput parity: label association now uses useId() (was the raw label string → duplicate-id + broke on spaces); error wired through aria-invalid + aria-describedby to a role=alert HelperText (was unassociated, and the story falsely claimed aria-invalid); required marker now driven by the required prop, not the error state; error no longer leaks into the label title tooltip. Keyboard = native textarea Tab/Shift+Tab. Verified axe-clean on Default/WithHelperCopy/WithError via test-storybook; light + dark + emulated forced-colors eyeballed in a real browser (visible CanvasText border, readable label/placeholder/error). reduced-motion drops the auto-grow height transition (CSS @media). Unit tests assert the aria wiring, required-from-prop, and unique-id behavior.",
-        "forcedColorsVerified": true
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -48,7 +50,18 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "label": {
