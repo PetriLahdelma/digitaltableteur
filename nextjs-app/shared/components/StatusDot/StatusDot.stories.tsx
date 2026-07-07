@@ -6,7 +6,7 @@ import contract from "./StatusDot.contract.json";
 const meta = {
   title: "Feedback/StatusDot",
   component: StatusDot,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     layout: "centered",
     a11y: { test: "error" },
