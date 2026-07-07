@@ -14028,7 +14028,7 @@
       "name": "TextArea",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Multi-line text field with label, error/helper text, and optional animated auto-grow.",
       "dense": "labelled multi-line field with optional animated auto-grow (minRows/maxRows), own error + helperText; onChange(value)",
       "keywords": [
