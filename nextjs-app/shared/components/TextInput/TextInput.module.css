@@ -13,18 +13,14 @@
 }
 
 .input {
+  composes: field from "../../styles/field.module.css";
   margin-block: 0.5rem;
   padding: 0.5rem;
-  box-sizing: border-box;
   width: 100%;
   min-height: 2.5rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  background-color: var(--color-white);
   font-family: var(--font-text);
   font-size: 1rem;
   color: var(--color-primary);
-  transition: border-color 0.3s;
 }
 
 /* Size variants (v1.1.0) */
