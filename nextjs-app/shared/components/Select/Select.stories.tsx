@@ -78,7 +78,7 @@ const selectComplianceRules: ComplianceRule[] = [
 export default {
   title: "Forms/Select",
   component: Select,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

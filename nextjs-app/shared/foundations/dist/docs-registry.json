@@ -11537,7 +11537,7 @@
       "name": "Select",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Native select with label, options, error state, and size tokens.",
       "dense": "native select with label, options array or option children, own error + helperText, sm/md/lg; onValueChange(value)",
       "keywords": [
