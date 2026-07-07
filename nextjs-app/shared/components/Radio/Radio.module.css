@@ -25,9 +25,16 @@
   box-shadow: inset 0 0 0 4px var(--color-primary);
 }
 
+/* Disabled — dedicated-token pattern (no opacity), matching Checkbox / inputs:
+   muted surface + edge; the checked dot stays visible in the muted foreground. */
 .input:disabled {
+  border-color: var(--color-primary-disabled);
+  background: var(--color-disabled-bg);
   cursor: not-allowed;
-  opacity: 0.5;
+}
+
+.input:disabled:checked {
+  box-shadow: inset 0 0 0 4px var(--color-disabled-placeholder);
 }
 
 .input--sm {
