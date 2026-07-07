@@ -10063,7 +10063,7 @@
       "name": "PhoneInput",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "International phone field: country selector + formatted number input with field chrome.",
       "dense": "international phone field wrapping react-phone-number-input; flag + country select + formatted input, own label/error/helperText, defaultCountry FI, emits E.164 via onChange(value)",
       "keywords": [

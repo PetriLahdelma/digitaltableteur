@@ -745,6 +745,32 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "group": "navigation",
     "import": "import { Pagination } from "@dt/Pagination";",
   },
+  "PhoneInput": {
+    "exampleStories": [
+      "Default",
+      "WithError",
+      "CountryDefault",
+      "InternationalNumbers",
+    ],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "form",
+    "import": "import PhoneInput from "@dt/PhoneInput";",
+  },
   "ProjectCard": {
     "exampleStories": [],
     "fields": [
