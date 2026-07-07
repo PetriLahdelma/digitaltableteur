@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- text: Email*
+- textbox "Email*":
+  - /placeholder: you@company.com

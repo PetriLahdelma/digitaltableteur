@@ -3,7 +3,7 @@
     "name": "FormField",
     "tier": "molecule",
     "group": "form",
-    "status": "beta",
+    "status": "stable",
     "description": "Fieldset/legend wrapper for a group of controls (radio sets, checkbox clusters, composite fields), with a group description and a group-level error. Individual controls own their own label, error, and helper text.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-form-field",
     "radixPrimitive": null,
@@ -20,7 +20,7 @@
     ],
     "a11y": {
         "keyboard": [
-            "Tab \u2014 moves focus to the wrapped control."
+            "Tab — moves focus to the wrapped control."
         ],
         "ariaRequirements": [
             "Generates a stable id and wires `htmlFor` on the label and `aria-describedby` on the control to the helper-text element.",
@@ -30,7 +30,9 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 \u2014 Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed."
     },
     "tokens": {
         "colors": [
@@ -47,7 +49,13 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "legend": {
