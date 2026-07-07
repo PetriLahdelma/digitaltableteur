@@ -15,8 +15,7 @@ export type LanguageSwitcherOption = {
 const defaultButtonClassName =
   "shrink-0 whitespace-nowrap px-2.5 py-1.5 text-sm font-heading font-semibold uppercase tracking-widest transition-colors motion-reduce:transition-none cursor-pointer rounded-sm border border-transparent bg-transparent text-muted-foreground hover:text-foreground hover:bg-foreground/5";
 
-const defaultActiveButtonClassName =
-  "font-bold text-foreground hover:text-foreground";
+const defaultActiveButtonClassName = "text-foreground hover:text-foreground";
 
 /** Selected language when the menu is expanded (focused control). */
 const defaultOpenTriggerClassName =

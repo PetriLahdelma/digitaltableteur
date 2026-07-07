@@ -1,7 +1,7 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-07T17:41:16.939Z",
-  "tokenCount": 173,
+  "generatedAt": "2026-07-07T19:15:21.900Z",
+  "tokenCount": 174,
   "usageCoverage": 140,
   "themes": [
     {
@@ -1893,6 +1893,13 @@
         {
           "name": "--font-weight-title",
           "value": "700",
+          "usage": "",
+          "category": "typography",
+          "subgroup": "Weight"
+        },
+        {
+          "name": "--font-weight-medium",
+          "value": "500",
           "usage": "",
           "category": "typography",
           "subgroup": "Weight"
