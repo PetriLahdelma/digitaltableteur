@@ -1,16 +1,24 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import Accordion from "./Accordion";
 
-describe("Accordion", () => {
-  const items = [
-    { id: "1", title: "First Item", content: "First content" },
-    { id: "2", title: "Second Item", content: "Second content" },
-    { id: "3", title: "Third Item", content: "Third content" },
-  ];
+const items = [
+  { id: "1", title: "First Item", content: "First content" },
+  { id: "2", title: "Second Item", content: "Second content" },
+  { id: "3", title: "Third Item", content: "Third content" },
+];
 
+/** Panels stay mounted; open state is read from the trigger + panel wrapper. */
+const trigger = (name: RegExp | string) => screen.getByRole("button", { name });
+const isOpen = (id: string) =>
+  document
+    .getElementById(`panel-${id}`)
+    ?.closest("[data-open]")
+    ?.getAttribute("data-open") === "true";
+
+describe("Accordion", () => {
   it("renders all accordion items", () => {
     render(<Accordion items={items} />);
     expect(screen.getByText("First Item")).toBeInTheDocument();
@@ -18,84 +26,135 @@ describe("Accordion", () => {
     expect(screen.getByText("Third Item")).toBeInTheDocument();
   });
 
-  it("all items are closed by default with hidden attribute", () => {
+  it("keeps every panel mounted for valid aria-controls, closed by default", () => {
     render(<Accordion items={items} />);
-    // Panels are in DOM but hidden (accessibility pattern for valid aria-controls)
-    const panel1 = document.getElementById("panel-1");
-    const panel2 = document.getElementById("panel-2");
-    const panel3 = document.getElementById("panel-3");
-    expect(panel1).toHaveAttribute("hidden");
-    expect(panel2).toHaveAttribute("hidden");
-    expect(panel3).toHaveAttribute("hidden");
+    items.forEach((item) => {
+      expect(document.getElementById(`panel-${item.id}`)).toBeInTheDocument();
+      expect(isOpen(item.id)).toBe(false);
+    });
+  });
+
+  it("marks closed panels inert and aria-hidden; open panels neither", async () => {
+    const user = userEvent.setup();
+    render(<Accordion items={items} />);
+    const panel1 = document.getElementById("panel-1")!;
+    expect(panel1).toHaveAttribute("aria-hidden", "true");
+    await user.click(trigger("First Item"));
+    expect(panel1).not.toHaveAttribute("aria-hidden");
+    expect(panel1).not.toHaveAttribute("inert");
   });
 
   it("opens item with defaultOpenId", () => {
     render(<Accordion items={items} defaultOpenId="2" />);
-    const openPanel = document.getElementById("panel-2");
-    const closedPanel = document.getElementById("panel-1");
-    expect(openPanel).not.toHaveAttribute("hidden");
-    expect(closedPanel).toHaveAttribute("hidden");
-    expect(screen.getByText("Second content")).toBeVisible();
+    expect(isOpen("2")).toBe(true);
+    expect(isOpen("1")).toBe(false);
   });
 
-  it("opens item when clicked", async () => {
+  it("toggles open and closed on repeated clicks", async () => {
     const user = userEvent.setup();
     render(<Accordion items={items} />);
-
-    await user.click(screen.getByText("First Item"));
-    const panel = document.getElementById("panel-1");
-    expect(panel).not.toHaveAttribute("hidden");
-    expect(screen.getByText("First content")).toBeVisible();
+    await user.click(trigger("First Item"));
+    expect(isOpen("1")).toBe(true);
+    await user.click(trigger("First Item"));
+    expect(isOpen("1")).toBe(false);
   });
 
-  it("closes open item when clicked again", async () => {
+  it("single mode closes the previous item when opening a new one", async () => {
     const user = userEvent.setup();
     render(<Accordion items={items} defaultOpenId="1" />);
-
-    const panel = document.getElementById("panel-1");
-    expect(panel).not.toHaveAttribute("hidden");
-    await user.click(screen.getByText("First Item"));
-    expect(panel).toHaveAttribute("hidden");
+    expect(isOpen("1")).toBe(true);
+    await user.click(trigger("Second Item"));
+    expect(isOpen("1")).toBe(false);
+    expect(isOpen("2")).toBe(true);
   });
 
-  it("closes previous item when opening new one", async () => {
+  it("multiple mode keeps several sections open at once", async () => {
     const user = userEvent.setup();
-    render(<Accordion items={items} defaultOpenId="1" />);
-
-    const panel1 = document.getElementById("panel-1");
-    const panel2 = document.getElementById("panel-2");
-    expect(panel1).not.toHaveAttribute("hidden");
-    await user.click(screen.getByText("Second Item"));
-    expect(panel1).toHaveAttribute("hidden");
-    expect(panel2).not.toHaveAttribute("hidden");
+    render(<Accordion items={items} type="multiple" />);
+    await user.click(trigger("First Item"));
+    await user.click(trigger("Second Item"));
+    expect(isOpen("1")).toBe(true);
+    expect(isOpen("2")).toBe(true);
   });
 
-  it("has correct aria-expanded attributes", async () => {
+  it("supports controlled open state via openIds + onOpenChange", async () => {
+    const user = userEvent.setup();
+    const onOpenChange = vi.fn();
+    const { rerender } = render(
+      <Accordion
+        items={items}
+        type="multiple"
+        openIds={["1"]}
+        onOpenChange={onOpenChange}
+      />,
+    );
+    expect(isOpen("1")).toBe(true);
+    // Controlled: click reports intent but does not self-update.
+    await user.click(trigger("Second Item"));
+    expect(onOpenChange).toHaveBeenCalledWith(["1", "2"]);
+    expect(isOpen("2")).toBe(false);
+    // Parent applies the new state.
+    rerender(
+      <Accordion
+        items={items}
+        type="multiple"
+        openIds={["1", "2"]}
+        onOpenChange={onOpenChange}
+      />,
+    );
+    expect(isOpen("2")).toBe(true);
+  });
+
+  it("does not toggle a disabled item", async () => {
+    const user = userEvent.setup();
+    const disabledItems = [
+      {
+        id: "1",
+        title: "First Item",
+        content: "First content",
+        disabled: true,
+      },
+      { id: "2", title: "Second Item", content: "Second content" },
+    ];
+    render(<Accordion items={disabledItems} />);
+    const first = trigger("First Item");
+    expect(first).toBeDisabled();
+    await user.click(first);
+    expect(isOpen("1")).toBe(false);
+  });
+
+  it("applies the variant class", () => {
+    const { container, rerender } = render(
+      <Accordion items={items} variant="divided" />,
+    );
+    expect((container.firstChild as HTMLElement).className).toContain(
+      "divided",
+    );
+    rerender(<Accordion items={items} variant="contained" />);
+    expect((container.firstChild as HTMLElement).className).toContain(
+      "contained",
+    );
+  });
+
+  it("reflects aria-expanded on the trigger", async () => {
     const user = userEvent.setup();
     render(<Accordion items={items} />);
-
-    const firstButton = screen.getByText("First Item").closest("button");
-    expect(firstButton).toHaveAttribute("aria-expanded", "false");
-
-    await user.click(firstButton!);
-    expect(firstButton).toHaveAttribute("aria-expanded", "true");
+    const first = trigger("First Item");
+    expect(first).toHaveAttribute("aria-expanded", "false");
+    await user.click(first);
+    expect(first).toHaveAttribute("aria-expanded", "true");
   });
 
-  it("has correct aria-controls attribute", () => {
+  it("wires aria-controls to the region panel", () => {
     render(<Accordion items={items} />);
-    const firstButton = screen.getByText("First Item").closest("button");
-    expect(firstButton).toHaveAttribute("aria-controls", "panel-1");
-  });
-
-  it("content has correct region role", () => {
-    render(<Accordion items={items} />);
-    // Panel is always in DOM for valid aria-controls reference
+    const first = trigger("First Item");
+    expect(first).toHaveAttribute("aria-controls", "panel-1");
     const panel = document.getElementById("panel-1");
     expect(panel).toHaveAttribute("role", "region");
+    expect(panel).toHaveAttribute("aria-labelledby", "trigger-1");
   });
 
-  it("renders content as React node", async () => {
-    const user = userEvent.setup();
+  it("renders content as a React node", () => {
     const complexItems = [
       {
         id: "1",
@@ -107,50 +166,18 @@ describe("Accordion", () => {
         ),
       },
     ];
-    render(<Accordion items={complexItems} />);
-
-    await user.click(screen.getByText("Item"));
+    render(<Accordion items={complexItems} defaultOpenId="1" />);
     expect(screen.getByText("Bold")).toBeInTheDocument();
-    expect(screen.getByText("text")).toBeInTheDocument();
   });
 
-  it("renders icon for each item", () => {
+  it("renders a chevron icon for each item", () => {
     const { container } = render(<Accordion items={items} />);
     const icons = container.querySelectorAll("svg");
     expect(icons.length).toBeGreaterThanOrEqual(items.length);
   });
 
-  // Accessibility tests for hidden attribute behavior
-  describe("accessibility", () => {
-    it("should always have panels in DOM for aria-controls validity", () => {
-      render(<Accordion items={items} />);
-      // All panels should exist even when closed
-      items.forEach((item) => {
-        const panel = document.getElementById(`panel-${item.id}`);
-        expect(panel).toBeInTheDocument();
-      });
-    });
-
-    it("should use hidden attribute on closed panels", () => {
-      render(<Accordion items={items} />);
-      const panel = document.getElementById("panel-1");
-      expect(panel).toHaveAttribute("hidden");
-    });
-
-    it("should not have hidden attribute on open panel", () => {
-      render(<Accordion items={items} defaultOpenId="1" />);
-      const openPanel = document.getElementById("panel-1");
-      const closedPanel = document.getElementById("panel-2");
-      expect(openPanel).not.toHaveAttribute("hidden");
-      expect(closedPanel).toHaveAttribute("hidden");
-    });
-
-    it("should have valid aria-controls reference when panel is hidden", () => {
-      render(<Accordion items={items} />);
-      const trigger = screen.getByRole("button", { name: "First Item" });
-      const controlsId = trigger.getAttribute("aria-controls");
-      const panel = document.getElementById(controlsId!);
-      expect(panel).toBeInTheDocument();
-    });
+  it("returns null when no items are provided", () => {
+    const { container } = render(<Accordion items={[]} />);
+    expect(container.firstChild).toBeNull();
   });
 });

@@ -3,15 +3,15 @@
   "component": {
     "name": "Accordion",
     "type": "interaction",
-    "description": "Stacked disclosure list where only one panel is open at a time.",
+    "description": "Coordinated disclosure list: single (one open) or multiple (any number open) mode, with an animated reveal.",
     "source": "nextjs-app/shared/components/Accordion/Accordion.tsx"
   },
   "anatomy": {
     "container": "accordion",
     "item": "accordion item",
     "trigger": "button with title text",
-    "icon": "caret-right icon",
-    "panel": "content region"
+    "icon": "caret-right icon (rotates on open)",
+    "panel": "content region (mounted always; inert + aria-hidden when closed)"
   },
   "semanticRole": {
     "container": "div",
@@ -21,57 +21,63 @@
   "layout": {
     "direction": "vertical stack",
     "width": "fills parent width",
-    "height": "content-driven; no fixed min-height",
+    "height": "content-driven; panel height animates via grid-template-rows",
     "spacing": {
       "triggerPadding": "var(--space-internal-12) var(--space-internal-16)",
-      "panelPadding": "var(--space-internal-12) var(--space-internal-16)",
-      "itemSeparator": "border-top 1px solid var(--color-primary)",
-      "iconMarginInlineStart": "var(--space-internal-12)"
+      "panelPadding": "0 var(--space-internal-16) var(--space-internal-16)",
+      "itemSeparator": "border-block-start 1px solid var(--color-border)"
     }
   },
   "visualStyle": {
     "surface": "flat",
-    "border": "1px solid var(--color-primary)",
-    "radius": "var(--radius-md)",
+    "variants": {
+      "contained": "bordered, rounded card group (1px var(--color-border), var(--radius-lg)) with hairline dividers between rows",
+      "enclosed": "same outer border and radius as contained but seamless inside — no dividers between rows",
+      "divided": "flush with hairline separators between items; no container border"
+    },
     "backgrounds": {
-      "trigger": "transparent",
-      "panel": "var(--color-light-bg)"
+      "trigger": "transparent; var(--color-light-bg) on hover",
+      "panel": "transparent"
     },
     "typography": {
       "fontFamily": "var(--font-text)",
-      "fontSize": "1rem",
-      "color": "var(--color-primary)"
+      "title": "var(--primary-text-color), weight 500",
+      "content": "var(--secondary-text-color)"
     },
-    "iconMotion": "rotate 90deg on open; transition 0.2s ease"
+    "iconMotion": "rotate 90deg on open; transition var(--duration-fast)"
   },
   "behavior": {
-    "interaction": "Clicking a trigger toggles its panel. Opening one item closes any other open item.",
-    "defaultOpen": "defaultOpenId opens the matching item on initial render.",
-    "stateModel": "uncontrolled; internal openId state",
-    "rendering": "Panels render only when open (unmounted when closed).",
-    "animation": "Icon rotates on open; no panel height animation."
+    "interaction": "Clicking a trigger toggles its panel. In type=single, opening one closes any other; in type=multiple, sections toggle independently.",
+    "defaultOpen": "defaultOpenId / defaultOpenIds set the initially open section(s) on mount.",
+    "stateModel": "uncontrolled (internal Set) or controlled (openIds + onOpenChange)",
+    "rendering": "Panels stay mounted so aria-controls always resolves; closed panels are inert + aria-hidden and collapsed to 0 height.",
+    "animation": "Icon rotates and panel height animates via grid-template-rows 0fr->1fr; disabled under prefers-reduced-motion."
   },
   "accessibility": {
     "trigger": {
       "ariaExpanded": "true when open",
-      "ariaControls": "panel-id"
+      "ariaControls": "panel-id",
+      "disabled": "item.disabled renders the trigger disabled"
     },
     "panel": {
       "role": "region",
-      "ariaLabelledBy": "trigger-id"
+      "ariaLabelledBy": "trigger-id",
+      "ariaHidden": "true when closed",
+      "inert": "true when closed"
     },
     "keyboard": "native button behavior (Enter/Space toggles)"
   },
   "states": {
-    "default": "all items closed unless defaultOpenId matches",
-    "open": "single open item at a time",
-    "disabled": "not supported (no disabled prop or styles)"
+    "default": "closed unless defaultOpenId / defaultOpenIds match",
+    "open": "one section (single) or any number (multiple)",
+    "disabled": "per item via item.disabled; trigger is dimmed and inert"
   },
   "responsiveness": {
     "rules": "Responsive by container width; text wraps; no fixed breakpoints."
   },
   "usageNotes": [
-    "Provide unique, stable item ids.",
-    "Provide concise titles; content can be any React node."
+    "Provide unique, stable item ids — they key open state and the trigger/region ARIA pairing.",
+    "Provide concise titles; content can be any React node.",
+    "Use type=multiple for side-by-side comparison; keep the default single for FAQs and settings."
   ]
 }

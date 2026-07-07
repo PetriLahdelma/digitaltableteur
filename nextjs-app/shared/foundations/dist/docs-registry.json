@@ -5,15 +5,18 @@
       "group": "structure",
       "tier": 1,
       "status": "beta",
-      "description": "Expandable sections with keyboard-operable triggers.",
-      "dense": "Exclusive disclosure group: items {id,title,content}, one open at a time (click open item to close), optional defaultOpenId; trigger button wires aria-expanded/aria-controls to its region",
+      "description": "Coordinated disclosure group: single or multiple open sections, animated reveal, keyboard-operable triggers.",
+      "dense": "Disclosure group: items {id,title,content}; type single|multiple; variant contained|enclosed|divided; controlled openIds or defaultOpenId(s); animated grid-rows reveal; aria per region",
       "keywords": [
         "accordion",
         "disclosure",
         "faq",
         "expand",
         "collapse",
-        "progressive disclosure"
+        "progressive disclosure",
+        "single",
+        "multiple",
+        "controlled"
       ],
       "importLine": "import Accordion from \"@dt/Accordion\";",
       "keyProps": [
@@ -23,8 +26,28 @@
           "required": true
         },
         {
+          "name": "type",
+          "type": "single | multiple",
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "contained | divided",
+          "required": false
+        },
+        {
           "name": "defaultOpenId",
           "type": "string",
+          "required": false
+        },
+        {
+          "name": "defaultOpenIds",
+          "type": "string[]",
+          "required": false
+        },
+        {
+          "name": "openIds",
+          "type": "string[]",
           "required": false
         }
       ],
@@ -33,7 +56,39 @@
           "optional": false,
           "type": "AccordionItem[]"
         },
+        "type": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "single",
+            "multiple"
+          ]
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "contained",
+            "divided"
+          ]
+        },
         "defaultOpenId": {
+          "optional": true,
+          "type": "string"
+        },
+        "defaultOpenIds": {
+          "optional": true,
+          "type": "string[]"
+        },
+        "openIds": {
+          "optional": true,
+          "type": "string[]"
+        },
+        "onOpenChange": {
+          "optional": true,
+          "type": "(openIds: string[]) => void"
+        },
+        "className": {
           "optional": true,
           "type": "string"
         }
@@ -49,7 +104,7 @@
         "ship long, scrollable panels. If the content scrolls inside"
       ],
       "usage": {
-        "description": "Accordion is the exclusive disclosure group: pass `items` ({id, title, content}) and at most one stays open — opening another closes the previous, clicking the open one closes it. Use it for FAQs and reference content where users need one answer at a time. For a single independent \"show more\" use ExpandableSection; if most readers need all the content, use plain headings instead of hiding it.",
+        "description": "Accordion coordinates a set of disclosure sections. In the default `type=\"single\"` at most one stays open (opening another closes the previous); `type=\"multiple\"` lets any number stay open for side-by-side reading. Pass `items` ({id, title, content}); drive it uncontrolled with `defaultOpenId`/`defaultOpenIds` or controlled with `openIds` + `onOpenChange`. `variant` switches between a bordered card group (contained) and flush hairlines (divided). For a single independent \"show more\" use ExpandableSection; if most readers need all the content, use plain headings instead of hiding it.",
         "bestPractices": [
           {
             "guidance": true,
@@ -72,8 +127,12 @@
             "description": "Do not hide task-critical content in an accordion; required steps must be visible by default."
           },
           {
+            "guidance": true,
+            "description": "Use type=\"multiple\" when users compare sections side by side (feature lists, pricing tiers); keep the default type=\"single\" for FAQs and settings where one at a time is the point."
+          },
+          {
             "guidance": false,
-            "description": "Do not use it when users need to compare sections side by side — exclusive open forbids that; use headings."
+            "description": "Do not put a single short paragraph behind a section — the click costs more than it saves; show the text directly."
           }
         ],
         "anatomy": [
@@ -107,7 +166,32 @@
         {
           "story": "DefaultOpen",
           "description": "defaultOpenId lands visitors on the entry most of them came for, with the rest one keypress away.",
-          "source": "export const DefaultOpen: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"defaultOpenId lands visitors on the entry most of them came for, with the rest one keypress away.\" } },\n  },\n  render: () => (\n    <Accordion\n      defaultOpenId=\"pricing\"\n      items={[\n        { id: \"pricing\", title: \"How is the work priced?\", content: \"Fixed-scope engagements with a written definition of done.\" },\n        { id: \"timeline\", title: \"How long does an engagement take?\", content: \"Typical system audits run two to four weeks.\" },\n      ]}\n    />\n  ),\n};\n\n/** Triggers are real buttons: Tab reaches them, Enter or Space toggles, aria-expanded and aria-controls wire each trigger to its region — asserted by the play function. */"
+          "source": "export const DefaultOpen: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"defaultOpenId lands visitors on the entry most of them came for, with the rest one keypress away.\" } },\n  },\n  render: () => (\n    <Accordion\n      defaultOpenId=\"pricing\"\n      items={[\n        { id: \"pricing\", title: \"How is the work priced?\", content: \"Fixed-scope engagements with a written definition of done.\" },\n        { id: \"timeline\", title: \"How long does an engagement take?\", content: \"Typical system audits run two to four weeks.\" },\n      ]}\n    />\n  ),\n};\n\n/** type=\"multiple\" lets several sections stay open so users can compare content. */"
+        },
+        {
+          "story": "Multiple",
+          "description": "type=\\\"multiple\\\" keeps any number of sections open at once — use it when readers compare content across sections, like feature lists or pricing tiers.",
+          "source": "export const Multiple: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"type=\\\"multiple\\\" keeps any number of sections open at once — use it when readers compare content across sections, like feature lists or pricing tiers.\" } },\n  },\n  render: () => (\n    <Accordion\n      type=\"multiple\"\n      defaultOpenIds={[\"features\", \"pricing\"]}\n      items={[\n        { id: \"features\", title: \"Features\", content: \"Real-time collaboration, version history, and granular permissions.\" },\n        { id: \"pricing\", title: \"Pricing\", content: \"Free for up to 5 users. Pro starts at €12/user/month billed annually.\" },\n        { id: \"integrations\", title: \"Integrations\", content: \"Connects to the tools your team already uses.\" },\n      ]}\n    />\n  ),\n};\n\n/** Controlled: the parent owns open state via openIds + onOpenChange. */"
+        },
+        {
+          "story": "Controlled",
+          "description": "Pass openIds + onOpenChange to drive the accordion from parent state — when open sections should sync with a URL param, form, or external control.",
+          "source": "export const Controlled: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Pass openIds + onOpenChange to drive the accordion from parent state — when open sections should sync with a URL param, form, or external control.\" } },\n  },\n  render: () => {\n    const ControlledDemo = () => {\n      const [openIds, setOpenIds] = React.useState<string[]>([\"shipping\"]);\n      return (\n        <Accordion\n          type=\"multiple\"\n          openIds={openIds}\n          onOpenChange={setOpenIds}\n          items={[\n            { id: \"shipping\", title: \"Shipping\", content: \"Standard shipping takes 3–5 business days.\" },\n            { id: \"returns\", title: \"Returns\", content: \"Free returns within 30 days of delivery.\" },\n            { id: \"warranty\", title: \"Warranty\", content: \"Two-year limited warranty on all hardware.\" },\n          ]}\n        />\n      );\n    };\n    return <ControlledDemo />;\n  },\n};\n\n/** variant=\"enclosed\" keeps the outer border but drops the between-row dividers. */"
+        },
+        {
+          "story": "Enclosed",
+          "description": "variant=\\\"enclosed\\\" wraps the group in a single rounded border with no dividers between rows — a seamless card. Row separation comes from spacing and the open/closed state.",
+          "source": "export const Enclosed: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"variant=\\\"enclosed\\\" wraps the group in a single rounded border with no dividers between rows — a seamless card. Row separation comes from spacing and the open/closed state.\" } },\n  },\n  render: () => (\n    <Accordion\n      variant=\"enclosed\"\n      defaultOpenId=\"notifications\"\n      items={[\n        { id: \"general\", title: \"General settings\", content: \"Language, timezone, and display options.\" },\n        { id: \"notifications\", title: \"Notifications\", content: \"Choose which email and push notifications you want to receive.\" },\n        { id: \"privacy\", title: \"Privacy\", content: \"Control who can see your profile and activity.\" },\n      ]}\n    />\n  ),\n};\n\n/** variant=\"divided\" drops the card border for flush hairline separators. */"
+        },
+        {
+          "story": "Divided",
+          "description": "variant=\\\"divided\\\" removes the container border for flush hairline separators — lighter weight for inline disclosure in sidebars or detail panels.",
+          "source": "export const Divided: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"variant=\\\"divided\\\" removes the container border for flush hairline separators — lighter weight for inline disclosure in sidebars or detail panels.\" } },\n  },\n  render: () => (\n    <Accordion\n      variant=\"divided\"\n      items={[\n        { id: \"deploy\", title: \"Deployment details\", content: \"Last deployed April 18, 2026 at 3:42 PM. Build duration 2m 14s.\" },\n        { id: \"env\", title: \"Environment variables\", content: \"12 variables configured across 3 environments.\" },\n        { id: \"logs\", title: \"Build logs\", content: \"No warnings. All checks passed.\" },\n      ]}\n    />\n  ),\n};\n\n/** A disabled item stays visible but its trigger is inert. */"
+        },
+        {
+          "story": "Disabled",
+          "description": "Mark an item disabled to show it in the set while its trigger is inert — for sections that are not yet available.",
+          "source": "export const Disabled: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Mark an item disabled to show it in the set while its trigger is inert — for sections that are not yet available.\" } },\n  },\n  render: () => (\n    <Accordion\n      items={[\n        { id: \"available\", title: \"Available section\", content: \"This one opens normally.\" },\n        { id: \"soon\", title: \"Coming soon\", content: \"Not reachable yet.\", disabled: true },\n        { id: \"also\", title: \"Another section\", content: \"This one opens too.\" },\n      ]}\n    />\n  ),\n};\n\n/** Triggers are real buttons: Tab reaches them, Enter or Space toggles, aria-expanded and aria-controls wire each trigger to its region — asserted by the play function. */"
         },
         {
           "story": "KeyboardContract",
