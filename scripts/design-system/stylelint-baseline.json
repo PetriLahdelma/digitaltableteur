@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 466,
+  "warningCount": 467,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -451,6 +451,15 @@
       "rule": "no-descending-specificity",
       "severity": "warning",
       "text": "Expected selector \".pre\" to come before selector \".single .pre\", at line 47 (no-descending-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::236::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
+      "line": 236,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)"
     },
     {
       "id": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css::135::22::declaration-no-important::Disallowed !important (declaration-no-important)",
