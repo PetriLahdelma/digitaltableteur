@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 465,
+  "warningCount": 466,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -87,6 +87,15 @@
       "id": "nextjs-app/shared/components/AskAI/AskAI.module.css::415::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
       "file": "nextjs-app/shared/components/AskAI/AskAI.module.css",
       "line": 415,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Button/Button.module.css::146::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "nextjs-app/shared/components/Button/Button.module.css",
+      "line": 146,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
