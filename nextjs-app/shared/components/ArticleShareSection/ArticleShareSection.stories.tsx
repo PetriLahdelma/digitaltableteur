@@ -7,7 +7,7 @@ const meta: Meta<typeof ArticleShareSection> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/ArticleShareSection",
   component: ArticleShareSection,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

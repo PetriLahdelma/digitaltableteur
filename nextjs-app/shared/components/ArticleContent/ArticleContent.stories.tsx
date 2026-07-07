@@ -35,7 +35,7 @@ const meta: Meta<typeof ArticleContent> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/ArticleContent",
   component: ArticleContent,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

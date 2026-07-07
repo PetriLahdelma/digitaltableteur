@@ -504,7 +504,7 @@
       "name": "ArticleContent",
       "group": "content",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Article body prose wrapper: constrains blog article markup to a reading measure and applies the MDX typography treatment.",
       "dense": "Article body wrapper applying MDX prose styling (headings, lists, code, media) to blog content",
       "keywords": [
@@ -577,7 +577,7 @@
       "name": "ArticleShareSection",
       "group": "content",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "End-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading.",
       "dense": "End-of-article share section: X/LinkedIn/Facebook share links plus a copy-link button under an optional heading",
       "keywords": [
@@ -1475,7 +1475,7 @@
       "name": "BlogCategoryFilter",
       "group": "navigation",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Single-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.",
       "dense": "Blog-specific category filter control; wraps CategoryFilter conventions for the blog archive",
       "keywords": [
@@ -1586,7 +1586,7 @@
       "name": "BlogGrid",
       "group": "content",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Responsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.",
       "dense": "Blog index grid laying out ArticleCards responsively",
       "keywords": [
@@ -1684,7 +1684,7 @@
       "name": "BlogMediaImage",
       "group": "media",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Blog-optimized responsive image: renders raster sources through next/image and SVG sources as a plain img, with fill, cover/contain fit and a fluid full-bleed mode.",
       "dense": "Blog-optimized responsive image; raster via next/image, SVG via plain img, with fill/cover/contain/fluid modes",
       "keywords": [

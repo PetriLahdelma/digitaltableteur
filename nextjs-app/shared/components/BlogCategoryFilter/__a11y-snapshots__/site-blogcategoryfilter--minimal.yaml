@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - group "Filter by topic":
   - button "All Posts"
   - button "Design"
