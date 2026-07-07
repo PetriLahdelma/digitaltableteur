@@ -1,6 +1,6 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-07T15:57:51.697Z",
+  "generatedAt": "2026-07-07T17:41:16.939Z",
   "tokenCount": 173,
   "usageCoverage": 140,
   "themes": [
@@ -660,7 +660,7 @@
         },
         {
           "name": "--color-muted-light",
-          "value": "#4949a7",
+          "value": "#909090",
           "usage": "Color token (muted-light).",
           "category": "color",
           "subgroup": "Greyscale & borders"
@@ -695,7 +695,7 @@
         },
         {
           "name": "--color-primary-disabled",
-          "value": "#0000ff50",
+          "value": "#041b2350",
           "usage": "Color token (primary-disabled).",
           "category": "color",
           "subgroup": "Greyscale & borders"
