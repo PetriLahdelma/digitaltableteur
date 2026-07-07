@@ -12561,7 +12561,7 @@
       "name": "Spinner",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Indeterminate loading spinner for async UI.",
       "dense": "bare indeterminate ring (role=status, aria-label); sm/md/lg; for sub-second unknown waits — Progress for known/long work, Skeleton for layouts",
       "keywords": [
