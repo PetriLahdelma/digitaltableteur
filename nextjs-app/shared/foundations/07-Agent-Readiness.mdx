@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/07-Agent-Readiness" />
+
+# Agent readiness
+
+The design system is built to be consumed by coding agents, not just humans:
+every component is discoverable and machine-described from both a CLI and an MCP
+server, and generation is verified against the [governance](?path=/docs/overview-06-governance--docs)
+gates.
+
+## Generated artifacts
+
+`npm run build:tokens` regenerates the agent inputs into
+`nextjs-app/shared/foundations/dist/`:
+
+| Artifact | What it is |
+|---|---|
+| `agent-manifest.json` | Every catalog component (158) with tokens, coverage, and the relationship graph |
+| `component-agent-blocks.json` | Per-component agent block (props, variants, usage, examples) |
+| `docs-registry.json` | Rendered doc blocks + example sources per component |
+| `component-catalog.zod.ts` | Zod schema of the catalog for typed consumption |
+| `tokens-manifest.json` | Design tokens as data |
+
+## CLI discovery
+
+```bash
+npm run find-component -- "button"
+```
+
+Returns intent-ranked matches with status, tier, `@dt/*` import, description, and
+real production-usage counts, so an agent can pick the right existing component
+before writing anything.
+
+## MCP server
+
+```bash
+npm run ds:mcp
+```
+
+Starts the `digitaltableteur-design-system` stdio MCP server (for Cursor / Claude
+Desktop), exposing design-system tools, resources, and docs-registry tools backed
+by the artifacts above. Run `build:tokens` first if the manifest is missing.
+
+## Eval harness
+
+The retrieval and composition quality is measured, not assumed:
+
+```bash
+npm run agent:eval            # full agent eval
+npm run agent:eval:intents    # intent -> component retrieval
+npm run agent:eval:patterns   # pattern composition
+```
+
+## The loop
+
+An agent discovers via CLI or MCP, reads the contract + docs, generates against
+the [contract schema](?path=/docs/overview-06-governance--docs), and the
+drift-as-build-failure gates verify the result. Discovery, specification, and
+verification are all machine-readable.
