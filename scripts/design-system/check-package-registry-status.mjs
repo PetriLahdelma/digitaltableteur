@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Verify external npm registry state before React package publication.
+ * Verify external npm registry state for the design-system packages.
  *
- * The token packages are intentionally published as the private registry smoke.
- * The React package must stay unpublished at the prepared version until the
- * human 1.5 / 1.6 / 5.1 clearance checkpoints are recorded.
+ * The token packages are published and consumed from the private registry. The
+ * React package can be checked in either post-publish mode (current version
+ * must exist) or next-publish mode (prepared next version must be unpublished).
  */
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -37,7 +37,7 @@ const PACKAGE_DEFS = [
 
 function readExpectedReactState() {
   const arg = process.argv.find((item) => item.startsWith("--expect-react="));
-  const value = arg?.split("=")[1] ?? process.env.DT_EXPECT_REACT_REGISTRY_STATE ?? "unpublished";
+  const value = arg?.split("=")[1] ?? process.env.DT_EXPECT_REACT_REGISTRY_STATE ?? "published";
   if (!["published", "unpublished"].includes(value)) {
     console.error(`Invalid --expect-react value: ${value}. Use published or unpublished.`);
     process.exit(2);
@@ -55,7 +55,7 @@ function relativePath(path) {
 
 function runNpm(args) {
   try {
-    const stdout = execFileSync("npm", ["--registry", REGISTRY, ...args], {
+    const stdout = execFileSync("npm", ["--registry", REGISTRY, ...userconfigArgs, ...args], {
       cwd: ROOT,
       encoding: "utf8",
       stdio: ["ignore", "pipe", "pipe"],
@@ -99,6 +99,14 @@ function npmAccessValue(report, packageName) {
   return typeof value === "string" ? value : null;
 }
 
+const userconfig = execFileSync("npm", ["config", "get", "userconfig"], {
+  cwd: ROOT,
+  encoding: "utf8",
+  stdio: ["ignore", "pipe", "pipe"],
+}).trim();
+const userconfigArgs =
+  userconfig && userconfig !== "undefined" ? ["--userconfig", userconfig] : [];
+
 function checkPublishedPackage(row, exactView, orgAccess, errors) {
   if (!exactView.ok) {
     errors.push(
@@ -119,7 +127,9 @@ function checkPublishedPackage(row, exactView, orgAccess, errors) {
 
 function checkUnpublishedPackage(row, exactView, errors) {
   if (exactView.ok) {
-    errors.push(`${row.name}@${row.expectedVersion} is already published; expected unpublished before clearance.`);
+    errors.push(
+      `${row.name}@${row.expectedVersion} is already published; bump the package version before the next OIDC publish.`,
+    );
   } else if (!exactView.notFound) {
     errors.push(`${row.name}@${row.expectedVersion} registry status is unknown; npm view did not return E404.`);
   }

@@ -28,6 +28,7 @@ const PACKAGES = [
 ];
 const WORKFLOW_RELATIVE = ".github/workflows/ds-publish.yml";
 const REQUIRED_REPOSITORY_PATHS = [
+  ".github/scripts/write-npm-read-config.sh",
   ".github/workflows/ds-publish.yml",
   "nextjs-app/shared/components/AlertBanner/AlertBanner.module.css",
   "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
@@ -254,6 +255,7 @@ const REQUIRED_REPOSITORY_PATHS = [
   "scripts/design-system/build-tokens.mjs",
   "scripts/design-system/check-npm-consumer-install.mjs",
   "scripts/design-system/check-package-publish-dry-run.mjs",
+  "scripts/design-system/check-package-registry-resolution.mjs",
   "scripts/design-system/check-package-registry-status.mjs",
   "scripts/design-system/check-package-release-notes.mjs",
   "scripts/design-system/check-package-tarball-contents.mjs",
@@ -374,8 +376,9 @@ After reviewing the pathspec and diffs, the intended staging shape is:
 git add --pathspec-from-file=${report.publishPathspecPath}
 ~~~
 
-Do not stage \`.npm-userconfig\`, generated \`.omx/state\` files, or unrelated
-local work as part of the publish transport commit.
+Do not stage token-bearing \`.npm-userconfig\` values, generated \`.omx/state\`
+files, or unrelated local work as part of the publish transport commit. The
+tracked \`.npm-userconfig\` must remain non-secret.
 
 ## Dirty paths outside publish scope
 
@@ -392,7 +395,10 @@ ${formatPackageRows(report.packages)}
 ## Publish controls
 
 - Keep the workflow manual-only through \`workflow_dispatch\`.
-- Keep \`id-token: write\` and do not add \`NPM_TOKEN\` or \`NODE_AUTH_TOKEN\`.
+- Keep \`id-token: write\`. The workflow may use \`secrets.NPM_READ_TOKEN\`
+  only for private package install/registry smoke reads; publish steps must stay
+  OIDC-only and must not receive \`NPM_TOKEN\`, \`NODE_AUTH_TOKEN\`, or
+  \`NPM_READ_TOKEN\`.
 - Keep npm publish commands restricted: \`npm publish --access restricted\`.
 - Keep \`@digitaltableteur/react\` behind \`check:react-publish-clearance\` and \`check:react-public-surface -- --require-publishable\`.
 - Local machines remain the CI-quality authority; GitHub Actions is only the npm OIDC transport.
@@ -533,10 +539,14 @@ if (!existsSync(WORKFLOW)) {
     "registry-url: https://registry.npmjs.org",
     "package-manager-cache: false",
     "npm install -g npm@latest",
+    "NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}",
+    "bash .github/scripts/write-npm-read-config.sh",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-read.npmrc\" npm ci",
     "npm run check:trusted-publisher",
     "npm run check:token-packages",
     "npm run check:react-package",
     "npm run check:package-release-notes",
+    "npm run check:package-registry-resolution",
     "npm run check:package-tarballs",
     "npm run check:package-publish-dry-run",
     "npm run check:npm-consumer-install",
@@ -546,6 +556,7 @@ if (!existsSync(WORKFLOW)) {
     "npm run check:react-public-surface -- --require-publishable",
     "npm publish --dry-run --access restricted",
     "npm publish --access restricted",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-read.npmrc\" npm run check:react-registry-install",
     "packages/tokens",
     "packages/tokens-css",
     "packages/react",
