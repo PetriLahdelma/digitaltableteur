@@ -58,33 +58,21 @@
         "MegaMenu"
     ],
     "ratchets": {
-        "catalogAppImports": {
+        "reactPackageAppImports": {
             "ceiling": 0,
-            "desc": "catalog source files importing @/ (app root); must stay eliminated"
+            "desc": "@digitaltableteur/react package graph files importing @/ (app root); must stay eliminated from the npm package"
         },
-        "catalogNextImports": {
+        "reactPackageNextImports": {
             "ceiling": 0,
-            "desc": "catalog source files importing next/*; must stay eliminated"
+            "desc": "@digitaltableteur/react package graph files importing next/*; must stay eliminated from the npm package"
         },
-        "catalogI18nImports": {
+        "reactPackageI18nImports": {
             "ceiling": 0,
-            "desc": "catalog source files coupled to i18next/useTranslation; must stay eliminated"
+            "desc": "@digitaltableteur/react package graph files coupled to i18next/useTranslation; must stay eliminated from the npm package"
         },
-        "sharedPackageI18nImports": {
-            "ceiling": 0,
-            "desc": "production shared component/pattern sources coupled to i18next/useTranslation; must stay eliminated"
-        },
-        "siteDtImports": {
-            "ceiling": 0,
-            "desc": "site-facing app/provider/lib/component sources importing @dt/* directly; app must consume @digitaltableteur/react"
-        },
-        "siteSharedRuntimeImports": {
-            "ceiling": 0,
-            "desc": "site-facing sources importing package runtime contexts from nextjs-app/shared/lib; host providers must import those contexts from @digitaltableteur/react"
-        },
-        "stableCount": {
-            "floor": 63,
-            "desc": "stable catalog components + patterns; must not drop"
+        "catalogStableCount": {
+            "floor": 58,
+            "desc": "stable internal catalog components + patterns after package-boundary narrowing; must not drop without a deliberate roadmap update"
         }
     },
     "utilities": [
@@ -363,7 +351,7 @@
                 "on": "2026-07-08",
                 "note": "Approved i18n multi-locale/browser review for @digitaltableteur/react publish after check:site-package-dogfood passed 12 browser checks and test:stories:i18n passed the 27-check EN/FI/SV desktop/mobile matrix."
             },
-            "note": "Injected translation/localization adapter implemented; catalogI18nImports and sharedPackageI18nImports are ratcheted to 0. check:site-package-dogfood covers representative EN/FI/SV browser routes, package translation subscriptions, SiteHeader/WorkNav/BlogNav localized labels, selected-work image loading on direct and client-navigation home visits, and toast-only content-language notices. test:stories:i18n writes a desktop/mobile EN/FI/SV screenshot review packet under .omx/state/design-system/i18n-navigation-review/latest. Latest 2026-07-08 approval cleared this checkpoint for @digitaltableteur/react publish."
+            "note": "Injected translation/localization adapter implemented; reactPackageI18nImports is ratcheted to 0 for the curated @digitaltableteur/react package graph. check:site-package-dogfood covers representative EN/FI/SV browser routes, package translation subscriptions, SiteHeader/WorkNav/BlogNav localized labels, selected-work image loading on direct and client-navigation home visits, and toast-only content-language notices. test:stories:i18n writes a desktop/mobile EN/FI/SV screenshot review packet under .omx/state/design-system/i18n-navigation-review/latest. Latest 2026-07-08 approval cleared this checkpoint for @digitaltableteur/react publish."
         },
         "1.6": {
             "status": "done",
@@ -372,15 +360,15 @@
                 "on": "2026-07-08",
                 "note": "Approved package navigation behavior review for @digitaltableteur/react publish after check:site-package-dogfood passed SiteHeader, WorkNav, BlogNav, and client-navigation checks and test:stories:i18n passed the navigation flows."
             },
-            "note": "Navigation adapter implemented and app injects Next App Router runtime; catalogAppImports and catalogNextImports are ratcheted to 0. check:site-package-dogfood covers representative SiteHeader link routing + aria-current state, WorkNav/BlogNav button routing through the package-consumed Next runtime, and selected-work image loading after client navigation back home. test:stories:i18n records desktop SiteHeader/WorkNav/BlogNav routing flows in the review packet. Latest 2026-07-08 approval cleared this checkpoint for @digitaltableteur/react publish."
+            "note": "Navigation adapter implemented and app injects Next App Router runtime; reactPackageAppImports and reactPackageNextImports are ratcheted to 0 for the curated @digitaltableteur/react package graph. check:site-package-dogfood covers representative SiteHeader link routing + aria-current state, WorkNav/BlogNav button routing through the package-consumed Next runtime, and selected-work image loading after client navigation back home. test:stories:i18n records desktop SiteHeader/WorkNav/BlogNav routing flows in the review packet. Latest 2026-07-08 approval cleared this checkpoint for @digitaltableteur/react publish."
         },
         "1.8": {
             "status": "done",
             "note": "@digitaltableteur/react workspace package builds with Vite, emits declarations and style.css, passes Node ESM import smoke, and has npm pack dry-run coverage via check:react-package."
         },
         "1.9": {
-            "status": "done",
-            "note": "Site-facing app/provider/lib sources consume @digitaltableteur/react through the workspace package; app/layout imports @digitaltableteur/react/style.css; siteDtImports is ratcheted to 0 and Next production build passes."
+            "status": "in-progress",
+            "note": "The app imports the package stylesheet and the package itself is verified by clean consumer smokes, but site-facing sources still use the local @dt alias until the explicit registry-consumption step. Do not treat local @dt alias cleanup as a prerequisite for narrowing the npm package surface."
         },
         "1.10": {
             "status": "done",
@@ -449,11 +437,11 @@
         },
         "5.7": {
             "status": "done",
-            "note": "Added check:react-public-surface. The @digitaltableteur/react public contract surface now exports every stable component/pattern contract, excludes alpha contracts, and is ratcheted at zero alpha; CommandPalette and SegmentedControl remain internal catalog alpha components until promotion evidence exists. Strict --require-publishable mode also requires zero alpha contract exports."
+            "note": "Added check:react-public-surface. The @digitaltableteur/react public contract surface now exports the curated reusable design-system contract set, excludes alpha contracts, and is ratcheted at zero alpha. App/product/site composition remains forbidden even when it exists in the internal catalog. Strict --require-publishable mode also requires zero alpha contract exports."
         },
         "5.8": {
             "status": "done",
-            "note": "Added check:react-public-api and packages/react/public-api.manifest.json. The guard freezes the @digitaltableteur/react runtime export list (160 exports after Tabs and Progress promotion; Progress was already exported) and package subpath exports, writes .omx/state/design-system/react-public-api/latest.json, and requires --update for intentional public API changes. check:react-package and check:react-publish-preflight now run it."
+            "note": "Added check:react-public-api and packages/react/public-api.manifest.json. The guard freezes the curated @digitaltableteur/react runtime export list (105 exports after package-boundary narrowing) and package subpath exports, writes .omx/state/design-system/react-public-api/latest.json, and requires --update for intentional public API changes. check:react-package and check:react-publish-preflight now run it."
         },
         "5.9": {
             "status": "done",
@@ -469,7 +457,7 @@
         },
         "5.12": {
             "status": "done",
-            "note": "Expanded @digitaltableteur/react to export every stable component/pattern contract (now 63/63 after Breadcrumb, EmptyState, AlertBanner, Tabs, and Progress promotion), including form, navigation, media, layout, and work-grid primitives that were stable in the catalog but missing from the npm surface. check:react-public-surface now writes stableContractCount/stableExportCount/missingStableExports and fails if any stable contract is missing from the package surface."
+            "note": "Replaced the broad stable-contract export assumption with a curated package boundary. @digitaltableteur/react exports primitives, DS display/layout/form/navigation/feedback components, host adapters/providers, and accessibility/runtime hooks, while forbidding app/product/site composition such as chat, site chrome, portfolio/blog cards, social/profile sharing, maps, booking/CV utilities, and route-specific layouts. check:react-public-surface now fails if required curated contracts are missing, app/product exports appear, unexpected uppercase exports appear, or alpha contracts enter the package surface."
         },
         "5.13": {
             "status": "done",

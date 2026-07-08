@@ -96,9 +96,7 @@ describe("Input", () => {
     fireEvent.change(input, { target: { value: "invalid-email" } });
     fireEvent.blur(input);
 
-    expect(
-      screen.getByText("Please enter a valid email address"),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/valid email address/i)).toBeInTheDocument();
   });
 
   it("validates phone format", () => {

@@ -1,15 +1,11 @@
 import React from "react";
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import NavMenuList, { NavMenuItem } from "@dt/NavMenuList";
-
-const { mockUsePathname } = vi.hoisted(() => ({
-  mockUsePathname: vi.fn(() => "/"),
-}));
-
-vi.mock("next/navigation", () => ({
-  usePathname: mockUsePathname,
-}));
+import {
+  NavigationProvider,
+  type NavigationRuntime,
+} from "../../lib/navigation";
 
 const items: NavMenuItem[] = [
   { to: "/", label: "Home", exact: true },
@@ -18,13 +14,18 @@ const items: NavMenuItem[] = [
 ];
 
 describe("NavMenuList", () => {
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
-
   const renderNav = (pathname: string) => {
-    mockUsePathname.mockReturnValue(pathname);
-    return render(<NavMenuList items={items} />);
+    const runtime: NavigationRuntime = {
+      pathname,
+      searchParams: new URLSearchParams(),
+      push: () => undefined,
+      replace: () => undefined,
+    };
+    return render(
+      <NavigationProvider runtime={runtime}>
+        <NavMenuList items={items} />
+      </NavigationProvider>,
+    );
   };
 
   it("renders all items", () => {

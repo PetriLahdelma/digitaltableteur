@@ -69,13 +69,13 @@ describe("CodeBlockWindow", () => {
     );
 
     const button = screen.getByRole("button", {
-      name: "codeBlockWindow.copyAriaLabel",
+      name: "Copy code to clipboard",
     });
 
     await user.click(button);
 
     await waitFor(() => {
-      expect(screen.getByText("codeBlockWindow.copied")).toBeInTheDocument();
+      expect(screen.getByText("Copied")).toBeInTheDocument();
     });
   });
 

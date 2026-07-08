@@ -60,6 +60,7 @@
   "donnyBookingOpenContact": "Avaa yhteydenottolomake",
   "donnyBookingOpenExternal": "Avaa palvelussa {{provider}}",
   "donnyBookingFrameTitle": "Varaa puhelu Digitaltableteurin kanssa",
+  "donnyBookingLoading": "Ladataan ajanvarauskalenteria",
   "donnyBookingProviderCalcom": "Cal.com",
   "donnyBookingProviderCalendly": "Calendly",
   "donnyBookingProviderNone": "Yhteydenottolomake",
@@ -124,6 +125,8 @@
   "contactMessage": "Viestisi",
   "contactMessagePlaceholder": "Kirjoita viestisi",
   "contactRequestPortfolioMaterials": "Pyydä suosituksia tai työnäytteitä",
+  "contactFollowUpPreferencesLabel": "Jatkoyhteydenoton toiveet",
+  "contactFollowUpCallPrep": "Sisällytä puhelun valmisteluehdotukset",
   "contactAttachmentLabel": "Liite (valinnainen)",
   "contactAttachmentPlaceholder": "Ei tiedostoa valittu",
   "contactAttachmentHelper": "Enintään {{size}}. Tiedostotyypit: {{types}}.",
@@ -1348,5 +1351,6 @@
   "splitButton": {
     "moreOptions": "Lisää vaihtoehtoja"
   },
+  "mermaidErrorTitle": "Kaaviovirhe",
   "storyCheckboxGroupMasterLabel": "Valitse kaikki"
 }

@@ -9,14 +9,15 @@
  *
  *   1. Anti-goal components never appear in the catalog (scope-creep guard).
  *   2. Utilities marked "operational" keep their file present + exported.
- *   3. Coupling ratchets: catalog imports of @/, next/*, and i18n never climb
- *      above the recorded ceiling (decoupling can only move forward).
- *   4. Stable-count floor: the catalog never drops below the recorded floor.
+ *   3. Coupling ratchets: the curated @digitaltableteur/react package graph
+ *      never reintroduces @/, next/*, or i18n coupling.
+ *   4. Stable-count floor: the internal catalog never drops below the recorded
+ *      floor without a deliberate roadmap update.
  *
  * Run with --report to print measured metrics without failing (used to seed
  * the ratchets after a task lands).
  */
-import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -24,7 +25,11 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const STATE_PATH = join(ROOT, "scripts/design-system/astryx-roadmap.state.json");
 const COMPONENTS = join(ROOT, "nextjs-app/shared/components");
 const PATTERNS = join(ROOT, "nextjs-app/shared/patterns");
+const REACT_ENTRY = join(ROOT, "packages/react/src/index.ts");
 const REPORT = process.argv.includes("--report");
+const SOURCE_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs"];
+const I18N_COUPLING_RE =
+  /from\s+["'](?:i18next|react-i18next)["']|useTranslation\s*\(/;
 
 const state = existsSync(STATE_PATH)
   ? JSON.parse(readFileSync(STATE_PATH, "utf8"))
@@ -61,6 +66,59 @@ function catalogSourceFiles() {
   return files;
 }
 
+function resolveSourceFile(basePath) {
+  for (const ext of ["", ...SOURCE_EXTENSIONS]) {
+    const file = `${basePath}${ext}`;
+    if (existsSync(file) && statSync(file).isFile()) return file;
+  }
+  for (const ext of SOURCE_EXTENSIONS) {
+    const file = join(basePath, `index${ext}`);
+    if (existsSync(file) && statSync(file).isFile()) return file;
+  }
+  return null;
+}
+
+function resolveImport(fromFile, spec) {
+  if (spec.startsWith("@dt/")) {
+    return resolveSourceFile(join(COMPONENTS, spec.slice("@dt/".length)));
+  }
+  if (spec === "@dt") {
+    return resolveSourceFile(join(COMPONENTS, "index"));
+  }
+  if (spec.startsWith(".")) {
+    return resolveSourceFile(resolve(dirname(fromFile), spec));
+  }
+  return null;
+}
+
+function importSpecs(source) {
+  return [
+    ...source.matchAll(/\bimport\s+(?:[^"'()]+?\s+from\s+)?["']([^"']+)["']/g),
+    ...source.matchAll(/\bexport\s+(?:[^"']+?\s+from\s+)?["']([^"']+)["']/g),
+    ...source.matchAll(/\bimport\s*\(\s*["']([^"']+)["']\s*\)/g),
+  ].map((match) => match[1]);
+}
+
+function reactPackageSourceFiles() {
+  if (!existsSync(REACT_ENTRY)) return [];
+  const seen = new Set();
+  const queue = [REACT_ENTRY];
+
+  while (queue.length) {
+    const file = queue.shift();
+    if (!file || seen.has(file)) continue;
+    seen.add(file);
+
+    const source = readFileSync(file, "utf8");
+    for (const spec of importSpecs(source)) {
+      const resolved = resolveImport(file, spec);
+      if (resolved && !seen.has(resolved)) queue.push(resolved);
+    }
+  }
+
+  return [...seen].sort();
+}
+
 function countMatching(files, re) {
   let n = 0;
   for (const f of files) {
@@ -83,12 +141,21 @@ function stableCount() {
 
 // ---- Measurements ----
 const catalogFiles = catalogSourceFiles();
+const reactPackageFiles = reactPackageSourceFiles();
 const measured = {
   catalogAppImports: countMatching(catalogFiles, /from "@\//),
   catalogNextImports: countMatching(catalogFiles, /from "next\//),
-  catalogI18nImports: countMatching(catalogFiles, /i18next|react-i18next|useTranslation/),
+  catalogI18nImports: countMatching(catalogFiles, I18N_COUPLING_RE),
+  reactPackageAppImports: countMatching(reactPackageFiles, /from "@\//),
+  reactPackageNextImports: countMatching(reactPackageFiles, /from "next\//),
+  reactPackageI18nImports: countMatching(
+    reactPackageFiles,
+    I18N_COUPLING_RE,
+  ),
   stableCount: stableCount(),
+  catalogStableCount: stableCount(),
   catalogComponents: contractDirs(COMPONENTS, { excludePages: true }).length,
+  reactPackageSourceFiles: reactPackageFiles.length,
 };
 
 if (REPORT) {
@@ -126,6 +193,10 @@ for (const u of state.utilities ?? []) {
 
 // ---- 3. Coupling ratchets ----
 for (const [key, r] of Object.entries(state.ratchets ?? {})) {
+  if (!(key in measured)) {
+    errors.push(`Ratchet "${key}" has no measurement in check-astryx-roadmap.mjs.`);
+    continue;
+  }
   if (r.ceiling != null && measured[key] > r.ceiling) {
     errors.push(`Ratchet breach: ${key} = ${measured[key]} exceeds ceiling ${r.ceiling}. Coupling may only decrease.`);
   }

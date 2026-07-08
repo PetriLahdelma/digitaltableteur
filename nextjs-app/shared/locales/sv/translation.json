@@ -60,6 +60,7 @@
   "donnyBookingOpenContact": "Öppna kontaktformulär",
   "donnyBookingOpenExternal": "Öppna i {{provider}}",
   "donnyBookingFrameTitle": "Boka ett samtal med Digitaltableteur",
+  "donnyBookingLoading": "Laddar bokningskalendern",
   "donnyBookingProviderCalcom": "Cal.com",
   "donnyBookingProviderCalendly": "Calendly",
   "donnyBookingProviderNone": "Kontaktformulär",
@@ -126,6 +127,8 @@
   "contactMessage": "Ditt meddelande",
   "contactMessagePlaceholder": "Ange ditt meddelande",
   "contactRequestPortfolioMaterials": "Begär referenser eller arbetsprover",
+  "contactFollowUpPreferencesLabel": "Uppföljningspreferenser",
+  "contactFollowUpCallPrep": "Inkludera förslag inför samtalet",
   "contactAttachmentLabel": "Bilaga (valfritt)",
   "contactAttachmentPlaceholder": "Ingen fil vald",
   "contactAttachmentHelper": "Max {{size}}. Godkända format: {{types}}.",
@@ -1358,5 +1361,6 @@
   "splitButton": {
     "moreOptions": "Fler alternativ"
   },
+  "mermaidErrorTitle": "Diagramfel",
   "storyCheckboxGroupMasterLabel": "Välj alla"
 }
