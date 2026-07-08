@@ -19,6 +19,65 @@ const PACKAGE_DIRS = new Map([
 
 const packageName = process.argv[2] ?? "@digitaltableteur/react";
 const packageDir = PACKAGE_DIRS.get(packageName);
+const registry = process.env.npm_config_registry ?? process.env.NPM_CONFIG_REGISTRY ?? "https://registry.npmjs.org/";
+
+function redact(line) {
+  return line
+    .replace(/Bearer\s+[-._~+/=A-Za-z0-9]+/g, "Bearer [redacted]")
+    .replace(/[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}/g, "[jwt-redacted]");
+}
+
+function decodeJwtPayload(token) {
+  const [, payloadB64] = token.split(".");
+  if (!payloadB64) return {};
+  const padded = payloadB64.padEnd(payloadB64.length + ((4 - (payloadB64.length % 4)) % 4), "=");
+  return JSON.parse(Buffer.from(padded, "base64url").toString("utf8"));
+}
+
+function formatClaimValue(value) {
+  if (value === undefined || value === null || value === "") return "(missing)";
+  if (Array.isArray(value)) return value.join(", ");
+  return String(value);
+}
+
+async function getGitHubIdToken() {
+  const audience = `npm:${new URL(registry).hostname}`;
+  const url = new URL(process.env.ACTIONS_ID_TOKEN_REQUEST_URL);
+  url.searchParams.append("audience", audience);
+  const response = await fetch(url.href, {
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}`,
+    },
+  });
+  const json = await response.json();
+  if (!response.ok || !json.value) {
+    throw new Error(`GitHub OIDC token request failed with status ${response.status}`);
+  }
+  return json.value;
+}
+
+async function verifyExchangeEndpoint(idToken) {
+  const exchangeUrl = new URL(
+    `/-/npm/v1/oidc/token/exchange/package/${encodeURIComponent(packageName)}`,
+    registry,
+  );
+  const response = await fetch(exchangeUrl.href, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${idToken}`,
+    },
+  });
+  const text = await response.text();
+  let body;
+  try {
+    body = JSON.parse(text);
+  } catch {
+    body = { message: text };
+  }
+  return { ok: response.ok, status: response.status, body };
+}
 
 if (!packageDir) {
   console.error(
@@ -45,13 +104,46 @@ if (missingGitHubOidcEnv.length) {
   process.exit(1);
 }
 
+const idToken = await getGitHubIdToken();
+const claims = decodeJwtPayload(idToken);
+const claimKeys = [
+  "iss",
+  "aud",
+  "sub",
+  "repository",
+  "repository_owner",
+  "repository_visibility",
+  "workflow",
+  "workflow_ref",
+  "job_workflow_ref",
+  "ref",
+  "event_name",
+  "environment",
+];
+const claimSummary = claimKeys.map((key) => `${key}: ${formatClaimValue(claims[key])}`);
+
+const exchange = await verifyExchangeEndpoint(idToken);
+
+if (!exchange.ok || !exchange.body?.token) {
+  console.error(
+    `npm OIDC token exchange endpoint rejected ${packageName} with HTTP ${exchange.status}.`,
+  );
+  console.error(`Registry response: ${redact(exchange.body?.message ?? JSON.stringify(exchange.body))}`);
+  console.error("GitHub OIDC claim summary:");
+  for (const line of claimSummary) console.error(`  ${line}`);
+  console.error(
+    "Check the npm Trusted Publisher fields against these claims: GitHub owner/repository, workflow filename ds-publish.yml, blank environment unless an environment claim is present, and Allow npm publish enabled.",
+  );
+  process.exit(1);
+}
+
 const result = spawnSync(
   "npm",
   ["publish", "--dry-run", "--access", "restricted", "--loglevel", "silly"],
   {
     cwd: join(ROOT, packageDir),
     encoding: "utf8",
-    env: process.env,
+    env: { ...process.env, NPM_ID_TOKEN: idToken },
   },
 );
 
@@ -59,11 +151,7 @@ const combinedOutput = `${result.stdout ?? ""}\n${result.stderr ?? ""}`;
 const diagnosticLines = combinedOutput
   .split(/\r?\n/)
   .filter((line) => /oidc|id_token|need auth|ENEEDAUTH|auth/i.test(line))
-  .map((line) =>
-    line
-      .replace(/Bearer\s+[-._~+/=A-Za-z0-9]+/g, "Bearer [redacted]")
-      .replace(/[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g, "[jwt-redacted]"),
-  );
+  .map(redact);
 
 const hasOidcSuccess = diagnosticLines.some((line) =>
   /oidc.*Successfully retrieved and set token/i.test(line),
