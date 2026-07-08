@@ -12,6 +12,7 @@ import { I18nProvider } from "../providers/I18nProvider";
 import { NextThemeProvider } from "../providers/ThemeProvider";
 import { ToastProvider } from "../providers/ToastProvider";
 import { AnimationProvider } from "../providers/AnimationProvider";
+import { NextLinkProvider } from "../providers/NextLinkProvider";
 import { SmoothScrollProvider } from "../providers/SmoothScrollProvider";
 import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent";
 import { NextLayout } from "@dt/NextLayout";
@@ -152,7 +153,8 @@ export default function RootLayout({
         <DeferredAnalytics gaMeasurementId={gaMeasurementId} />
         <WebMcpProvider>
           <NextThemeProvider>
-            <I18nProvider>
+            <NextLinkProvider>
+              <I18nProvider>
               <HtmlLangSync />
               <AnimationProvider>
                 <SmoothScrollProvider>
@@ -163,7 +165,8 @@ export default function RootLayout({
                   </ToastProvider>
                 </SmoothScrollProvider>
               </AnimationProvider>
-            </I18nProvider>
+              </I18nProvider>
+            </NextLinkProvider>
           </NextThemeProvider>
         </WebMcpProvider>
       </body>

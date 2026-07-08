@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode } from "react";
-import Link from "next/link";
+import { Link } from "../../lib/linkComponent";
 import { cn } from "../../lib/cn";
 
 export interface ServiceCardProps {

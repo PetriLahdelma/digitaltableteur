@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { Link } from "../../lib/linkComponent";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { cn } from "../../lib/cn";

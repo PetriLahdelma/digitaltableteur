@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "../../lib/linkComponent";
 import { useTranslation } from "react-i18next";
 import { cn } from "../../lib/cn";
 import { ArrowLeft, ArrowRight, Briefcase } from "@phosphor-icons/react";

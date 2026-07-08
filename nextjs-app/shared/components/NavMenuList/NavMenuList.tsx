@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import { Link } from "../../lib/linkComponent";
 import { usePathname } from "next/navigation";
 import styles from "./NavMenuList.module.css";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import Link from "next/link";
+import { Link } from "../../lib/linkComponent";
 import Image from "next/image";
 import { cn } from "../../../../lib/utils";
 import styles from "./EnhancedProjectCard.module.css";
