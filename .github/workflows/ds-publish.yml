@@ -34,7 +34,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-          registry-url: https://registry.npmjs.org
           package-manager-cache: false
 
       - name: Verify npm Trusted Publisher CLI support
@@ -78,7 +77,7 @@ jobs:
         run: npm run check:package-tarballs
 
       - name: Verify publish dry run
-        run: npm run check:package-publish-dry-run
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm run check:package-publish-dry-run
 
       - name: Verify local npm consumer install
         run: npm run check:npm-consumer-install
@@ -102,9 +101,9 @@ jobs:
         working-directory: packages/tokens
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
-            npm publish --dry-run --access restricted
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
           else
-            npm publish --access restricted
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --access restricted
           fi
 
       - name: Publish @digitaltableteur/tokens-css
@@ -112,9 +111,9 @@ jobs:
         working-directory: packages/tokens-css
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
-            npm publish --dry-run --access restricted
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
           else
-            npm publish --access restricted
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --access restricted
           fi
 
       - name: Publish @digitaltableteur/react
@@ -122,9 +121,9 @@ jobs:
         working-directory: packages/react
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
-            npm publish --dry-run --access restricted
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
           else
-            npm publish --access restricted
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --access restricted
           fi
 
       - name: Verify @digitaltableteur/react registry install
