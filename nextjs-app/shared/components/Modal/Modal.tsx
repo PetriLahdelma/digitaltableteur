@@ -8,6 +8,7 @@ import { getSemanticIcon } from "../../utils/semanticIcons";
 import Icon, { type IconProps } from "@dt/Icon";
 import { normalizeTitleSize, type TitleSizeUnified } from "../../utils/sizeNormalization";
 import { useFocusTrap } from "../../hooks/useFocusTrap";
+import { useScrollLock } from "../../hooks/useScrollLock";
 
 export type ModalSeverity = "success" | "error" | "warning" | "info";
 export type ModalAnimation = "none" | "scale" | "slide" | "fade";
@@ -141,6 +142,8 @@ const Modal: React.FC<ModalProps> = ({
 
   // Focus trap: inert the background, focus first focusable, restore on close.
   useFocusTrap(modalRef, isOpen);
+  // Lock background scroll while the modal is open.
+  useScrollLock(isOpen);
 
   useEffect(() => {
     if (!isOpen || !onClose || typeof document === "undefined") return;

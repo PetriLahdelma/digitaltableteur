@@ -27,7 +27,7 @@
         },
         {
             "key": "accessibility",
-            "current": 80,
+            "current": 81,
             "target": 90
         },
         {
@@ -96,8 +96,8 @@
         },
         {
             "name": "useScrollLock",
-            "status": "planned",
-            "file": null,
+            "status": "operational",
+            "file": "nextjs-app/shared/hooks/useScrollLock.ts",
             "note": "body scroll lock for custom overlays"
         }
     ],
