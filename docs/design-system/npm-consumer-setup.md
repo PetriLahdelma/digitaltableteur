@@ -35,6 +35,40 @@ root app dogfoods private registry packages, that workflow also needs a
 read-only `NPM_READ_TOKEN` secret for `npm ci` and post-publish registry smoke
 reads. Do not use that token for publish steps.
 
+Current publish transport status:
+
+- `@digitaltableteur/tokens@0.1.0` and `@digitaltableteur/tokens-css@0.1.0` are published and verified from the private registry.
+- `@digitaltableteur/react@0.1.1` is published and dogfooded by the app from the private registry.
+- `@digitaltableteur/react@0.1.2` is prepared for the next patch, but the GitHub Actions OIDC transport is not yet proven end to end.
+
+The latest real OIDC run, `28981076948`, passed every repository/package gate
+before publish and failed only at npm's token exchange with:
+
+```text
+OIDC token exchange error - package not found
+```
+
+The GitHub OIDC claims in that run were:
+
+```text
+repository: PetriLahdelma/digitaltableteur
+workflow_ref: PetriLahdelma/digitaltableteur/.github/workflows/ds-publish.yml@refs/heads/codex/react-oidc-publish
+environment: (missing)
+```
+
+That means the next action is npm-side trust-record verification for the
+package access page, not another package-boundary change. The trusted publisher
+record must be attached to `@digitaltableteur/react` with:
+
+```text
+Publisher: GitHub Actions
+Organization or user: PetriLahdelma
+Repository: digitaltableteur
+Workflow filename: ds-publish.yml
+Environment name: leave blank
+Allowed action: Allow npm publish
+```
+
 This monorepo follows the same shape. The root `package.json` depends on the
 published packages and intentionally does not declare `packages/*` as npm
 workspaces. The source package directories are still used by package build,
@@ -94,6 +128,13 @@ npm run check:react-registry-install
 `@digitaltableteur/react`, `@digitaltableteur/tokens`, and
 `@digitaltableteur/tokens-css` from registry `node_modules` entries, not local
 workspace symlinks.
+
+Storybook currently documents and exercises local source stories through the
+`@dt/*` alias. Do not alias Storybook wholesale to `@digitaltableteur/react`
+until the stories import the package root API or the package intentionally adds
+subpath exports. Registry consumption is verified through the app dogfood,
+package resolution guard, tarball consumer smoke, and React registry install
+smoke.
 
 ## Next Package Split
 
