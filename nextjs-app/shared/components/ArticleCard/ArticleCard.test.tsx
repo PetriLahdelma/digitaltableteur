@@ -1,23 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import ArticleCard from "@dt/ArticleCard";
 
 expect.extend(toHaveNoViolations);
-
-// Mock translations
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string) => {
-      const translations: Record<string, string> = {
-        blogRead: "read",
-        blogReadMore: "Read more",
-      };
-      return translations[key] || key;
-    },
-  }),
-}));
 
 describe("ArticleCard", () => {
   const defaultProps = {
@@ -82,13 +69,13 @@ describe("ArticleCard", () => {
   it("shows read more text", () => {
     render(<ArticleCard {...defaultProps} />);
 
-    expect(screen.getByText("Read more")).toBeInTheDocument();
+    expect(screen.getByText("Read article")).toBeInTheDocument();
   });
 
   it("renders skeletons when loading", () => {
     render(<ArticleCard {...defaultProps} loading />);
     expect(
-      screen.getByRole("status", { name: /articleCard.loadingTitle/ }),
+      screen.getByRole("status", { name: /loading article title/i }),
     ).toBeInTheDocument();
     expect(screen.queryByRole("link")).not.toBeInTheDocument();
   });

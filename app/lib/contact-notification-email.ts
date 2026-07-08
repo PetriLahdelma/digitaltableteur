@@ -16,6 +16,7 @@ export type ContactNotificationPayload = {
   attachmentData?: string | null;
   attachmentSize?: number | null;
   attachmentNotice?: string | null;
+  followUpPreferences?: string | null;
   requestPortfolioMaterials?: boolean | null;
 };
 
@@ -129,7 +130,12 @@ function buildTextFields(payload: ContactNotificationPayload): TextField[] {
   if (payload.inspiration?.trim()) {
     fields.push({ label: "References", value: payload.inspiration.trim() });
   }
-  if (payload.requestPortfolioMaterials) {
+  if (payload.followUpPreferences?.trim()) {
+    fields.push({
+      label: "Follow-up",
+      value: payload.followUpPreferences.trim(),
+    });
+  } else if (payload.requestPortfolioMaterials) {
     fields.push({
       label: "Follow-up",
       value: WORK_SAMPLES_FOLLOW_UP_LINE,

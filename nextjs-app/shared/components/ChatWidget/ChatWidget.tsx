@@ -26,7 +26,7 @@ import ReviewSummary from "./emailWorkflow/ReviewSummary";
 import SendStatus from "./emailWorkflow/SendStatus";
 const RESEND_CONTACT_ENDPOINT = "/api/contact";
 import ChatToggle from "./ChatToggle";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { resolveChatAvatarState } from "./chatAvatarState";
 import { useDonnyChatNavigation } from "./useDonnyChatNavigation";
 import { useDonnyChatLead } from "./useDonnyChatLead";
@@ -432,7 +432,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   description,
   endpoint,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const greetingText = t("chatGreeting", DEFAULT_GREETING_TEXT);
   const [emailWorkflow, dispatchEmailWorkflow] = useReducer(
     emailWorkflowReducer,

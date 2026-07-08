@@ -1,12 +1,12 @@
 "use client";
 
 import { useRef, useState, useEffect, useMemo, useCallback } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
-import { gsap } from "@/nextjs-app/shared/lib/gsap";
-import { useAnimationContext } from "@/providers/AnimationProvider";
+import { gsap } from "../../lib/gsap";
+import { useAnimationContext } from "../../lib/animation";
 
 export interface ManifestoToken {
   /** Token text content */

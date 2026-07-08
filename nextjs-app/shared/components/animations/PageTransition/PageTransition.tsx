@@ -1,10 +1,10 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { useNavigationPathname } from "../../../lib/navigation";
 import { cn } from "../../../lib/cn";
-import { gsap } from "@/nextjs-app/shared/lib/gsap";
-import { useAnimationContext } from "@/providers/AnimationProvider";
+import { gsap } from "../../../lib/gsap";
+import { useAnimationContext } from "../../../lib/animation";
 import styles from "./PageTransition.module.css";
 
 interface PageTransitionProps {
@@ -13,7 +13,7 @@ interface PageTransitionProps {
 }
 
 export function PageTransition({ children, className }: PageTransitionProps) {
-  const pathname = usePathname() ?? "";
+  const pathname = useNavigationPathname() ?? "";
   const containerRef = useRef<HTMLDivElement>(null);
   const { motionPreference } = useAnimationContext();
   const isFirstRender = useRef(true);

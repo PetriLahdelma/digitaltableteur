@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { ChevronDown } from "lucide-react";
 import { cn } from "../../lib/cn";
 
@@ -43,7 +43,7 @@ export function TableOfContents({
   onItemClick,
   className,
 }: TableOfContentsProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Don't render if no items

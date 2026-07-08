@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
@@ -25,7 +25,7 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
   onError,
   disabled = false,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [mode, setMode] = useState<"button" | "input">("button");
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);

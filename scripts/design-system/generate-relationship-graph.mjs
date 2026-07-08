@@ -74,6 +74,30 @@ function mergeUnique(...lists) {
   return [...new Set(lists.flat().filter(Boolean))];
 }
 
+function withoutGeneratedAt(payload) {
+  const { generatedAt: _generatedAt, ...rest } = payload;
+  return rest;
+}
+
+function resolveGeneratedAt(nextPayload) {
+  if (!existsSync(OUT)) return new Date().toISOString();
+
+  try {
+    const previous = JSON.parse(readFileSync(OUT, "utf8"));
+    if (
+      previous.generatedAt &&
+      JSON.stringify(withoutGeneratedAt(previous)) ===
+        JSON.stringify(withoutGeneratedAt(nextPayload))
+    ) {
+      return previous.generatedAt;
+    }
+  } catch {
+    // Fall through to a fresh timestamp if the existing graph is unreadable.
+  }
+
+  return new Date().toISOString();
+}
+
 function main() {
   const catalogNames = loadCatalogNames(ROOT);
   const { byComponent } = scanComponentUsage({ root: ROOT, catalogNames });
@@ -91,12 +115,13 @@ function main() {
   }
 
   const payload = {
-    generatedAt: new Date().toISOString(),
+    generatedAt: null,
     description:
       "Agent relationship graph: static policy merged with co-import evidence (min 3 shared files).",
     coImportMinFiles: CO_IMPORT_MIN,
     components,
   };
+  payload.generatedAt = resolveGeneratedAt(payload);
 
   mkdirSync(dirname(OUT), { recursive: true });
   writeFileSync(OUT, `${JSON.stringify(payload, null, 2)}\n`);

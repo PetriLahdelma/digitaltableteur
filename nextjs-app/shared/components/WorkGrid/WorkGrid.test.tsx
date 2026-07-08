@@ -7,11 +7,19 @@ import { projects } from "../../data/projects";
 
 expect.extend(toHaveNoViolations);
 
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string, fallback?: string) => fallback ?? key,
-  }),
-}));
+vi.mock("../../lib/translation", () => {
+  const t = (key: string, fallback?: string) => fallback ?? key;
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 const sample = projects.slice(0, 3);
 

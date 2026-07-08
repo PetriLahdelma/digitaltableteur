@@ -9,6 +9,7 @@ import {
   useSyncExternalStore,
   type ReactNode,
 } from "react";
+import englishTranslations from "../locales/en/translation.json";
 
 export type TranslationOptions = Record<string, unknown> & {
   defaultValue?: unknown;
@@ -33,78 +34,7 @@ export interface TranslationRuntime {
   ) => TranslationResourceBundle | undefined;
 }
 
-const defaultTranslations: Record<string, unknown> = {
-  "alertBanner.close": "Close",
-  "alertBanner.dismissLabel": "Dismiss alert",
-  "avatar.altTextGeneric": "Avatar",
-  "avatar.menuLabel": "Open profile menu for {{name}}",
-  "avatar.menuLabelGeneric": "Open profile menu",
-  badgeRemove: "Remove",
-  blogNextPage: "Next page",
-  blogPage: "Page",
-  blogPageNavigation: "Page navigation",
-  blogPrevPage: "Previous page",
-  codeBlockWindow: {
-    copied: "Copied",
-    copy: "Copy",
-    copyAriaLabel: "Copy code to clipboard",
-    copyFailed: "Copy failed",
-    languageFallback: "Code",
-    regionLabel: "{{language}} code block",
-  },
-  contactAll: "All",
-  contactValidationEmailSuggestion: "Did you mean {{suggestion}}?",
-  cookieConsent: {
-    acceptAllButton: "Accept all",
-    acceptEssentialButton: "Only essential",
-    bannerLabel: "Cookie preferences",
-    bannerSummary: "We use cookies to improve your experience.",
-    categories: {
-      analytics: {
-        description: "Helps us understand how people use the experience.",
-        title: "Analytics",
-        toggleLabel: "Toggle analytics cookies",
-      },
-      essential: {
-        description: "Required for core functionality.",
-        title: "Essential",
-        toggleLabel: "Essential cookies are required",
-      },
-      functional: {
-        description: "Remembers preferences that improve the experience.",
-        title: "Functional",
-        toggleLabel: "Toggle functional cookies",
-      },
-      marketing: {
-        description: "Supports measurement and personalized outreach.",
-        title: "Marketing",
-        toggleLabel: "Toggle marketing cookies",
-      },
-    },
-    customizeButton: "Customize settings",
-    detailedDescription: "Choose which optional cookies can be stored.",
-    policyLinkText: "cookie policy",
-    readOur: "Read our",
-    required: "Required",
-    saveButton: "Save preferences",
-    title: "Cookie preferences",
-    viewFullPolicy: "View full policy",
-  },
-  fileUploadSizeError: "File is too large. Max {{maxSize}} MB. File removed.",
-  inputValidationEmailInvalid: "Enter a valid email address.",
-  inputValidationPhoneInvalid: "Enter a valid phone number.",
-  languageSwitcherCollapse: "Hide language options",
-  languageSwitcherExpand: "Show language options",
-  macWindowFrame: {
-    action: "Replay",
-    bodyLabel: "Window content",
-    title: "Preview",
-  },
-  multiComboboxNoResults: "No matching options",
-  multiComboboxToggleOptions: "Toggle options",
-  navMenuLanguages: "Language",
-  "tabs.navigation": "Navigate between tabs",
-};
+const defaultTranslations = englishTranslations as Record<string, unknown>;
 
 function lookupDefaultTranslation(key: string): unknown {
   if (Object.prototype.hasOwnProperty.call(defaultTranslations, key)) {

@@ -8,10 +8,10 @@ import {
   useRef,
 } from "react";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
-import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
-import { useAnimationContext } from "@/providers/AnimationProvider";
+import { useTranslate } from "../../lib/translation";
+import { cn } from "../../lib/cn";
+import { gsap, useGSAP } from "../../lib/gsap";
+import { useAnimationContext } from "../../lib/animation";
 import PageLayout from "../PageLayout";
 import { FadeIn } from "../../components/animations/FadeIn";
 import styles from "./ProjectMetaSection.module.css";
@@ -82,7 +82,7 @@ export function ProjectMetaSection({
   className,
   donnyTarget,
 }: ProjectMetaSectionProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const servicesRef = useRef<HTMLUListElement>(null);
   const { motionPreference } = useAnimationContext();

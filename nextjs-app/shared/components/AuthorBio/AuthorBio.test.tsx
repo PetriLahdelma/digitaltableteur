@@ -12,17 +12,25 @@ vi.mock("../../data/authors", () => ({
   getAuthorBySlug: vi.fn(),
 }));
 
-// Mock react-i18next
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string, params?: Record<string, unknown>) => {
-      if (key === "authorBio.ariaLabel" && params?.name) {
-        return `About ${params.name}`;
-      }
-      return key;
-    },
-  }),
-}));
+// Mock the package translation adapter.
+vi.mock("../../lib/translation", () => {
+  const t = (key: string, params?: Record<string, unknown>) => {
+    if (key === "authorBio.ariaLabel" && params?.name) {
+      return `About ${params.name}`;
+    }
+    return key;
+  };
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 const mockAuthor = {
   name: "John Doe",

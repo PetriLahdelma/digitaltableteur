@@ -1,30 +1,18 @@
 .root {
-  box-sizing: border-box;
   margin: 0 auto;
+  box-sizing: border-box;
   min-width: 0;
   max-width: 100%;
   font-family: var(--primary-body-font);
-  font-size: 1rem;
+  font-size: var(--font-size-text-m);
   line-height: 1.6;
-}
-
-.breadcrumbs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  opacity: 0.85;
-  margin-bottom: 1.25rem;
-}
-
-.breadcrumbs a {
-  text-decoration: none;
 }
 
 .badgeRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  gap: var(--space-internal-12);
+  margin-top: var(--space-layout-16);
 }
 
 .badgeLink {
@@ -33,27 +21,27 @@
 }
 
 .toc {
-  padding: 1.25rem;
+  padding: var(--space-layout-24);
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 16px;
   background: rgb(255 255 255 / 2%);
-  margin-top: 2rem;
+  margin-top: var(--space-layout-32);
 }
 
 .tocList {
-  margin: 0.75rem 0 0;
-  padding-left: 1.25rem;
+  margin: var(--space-internal-12) 0 0;
+  padding-left: var(--space-layout-24);
 }
 
 .section {
-  margin-top: 2.5rem;
+  margin-top: var(--space-layout-40);
 }
 
 .proofGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: var(--space-layout-16);
+  margin-top: var(--space-layout-16);
 }
 
 .proofCard {
@@ -66,30 +54,30 @@
 }
 
 .callout {
-  padding: 1.5rem;
+  padding: var(--space-layout-24);
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 16px;
   background: rgb(255 255 255 / 2%);
-  margin-top: 2.5rem;
+  margin-top: var(--space-layout-40);
 }
 
 .faqList {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  gap: var(--space-layout-24);
+  margin-top: var(--space-layout-16);
 }
 
 .faqItem {
-  padding-bottom: 1rem;
   border-bottom: 1px solid rgb(255 255 255 / 8%);
+  padding-bottom: var(--space-layout-16);
 }
 
 .relatedGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: var(--space-layout-16);
+  margin-top: var(--space-layout-16);
 }
 
 .relatedCard {
@@ -112,16 +100,16 @@
 }
 
 .cta {
-  padding: 1.5rem;
+  padding: var(--space-layout-24);
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 16px;
   background: rgb(255 255 255 / 2%);
-  margin-top: 2.5rem;
+  margin-top: var(--space-layout-40);
 }
 
 .ctaActions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  gap: var(--space-internal-12);
+  margin-top: var(--space-layout-16);
 }

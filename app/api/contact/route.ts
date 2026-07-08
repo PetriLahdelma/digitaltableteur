@@ -30,6 +30,7 @@ const contactSchema = z.object({
   attachmentSize: z.number().int().nonnegative().optional().nullable(),
   attachmentData: z.string().max(5_000_000).optional().nullable(), // base64 payload if included
   attachmentNotice: z.string().max(2000).optional().nullable(),
+  followUpPreferences: z.string().max(500).optional().nullable(),
   requestPortfolioMaterials: z.boolean().optional().nullable(),
   time: z.string().max(200).optional().nullable(),
 });
@@ -145,6 +146,9 @@ export async function POST(req: NextRequest) {
       typeof parsed.attachmentSize === "number" ? parsed.attachmentSize : null,
     attachmentNotice: parsed.attachmentNotice
       ? sanitize(parsed.attachmentNotice)
+      : null,
+    followUpPreferences: parsed.followUpPreferences
+      ? sanitize(parsed.followUpPreferences)
       : null,
     requestPortfolioMaterials: parsed.requestPortfolioMaterials === true,
   };

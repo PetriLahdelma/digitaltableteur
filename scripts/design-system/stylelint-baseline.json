@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 469,
+  "warningCount": 448,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -676,87 +676,6 @@
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::31::3::order/properties-order::Expected \"border\" to come before \"overflow\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 31,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border\" to come before \"overflow\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::39::3::order/properties-order::Expected \"min-block-size\" to come before \"width\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 39,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-block-size\" to come before \"width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::46::3::order/properties-order::Expected \"min-block-size\" to come before \"width\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 46,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-block-size\" to come before \"width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::47::3::order/properties-order::Expected \"block-size\" to come before \"min-block-size\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 47,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"min-block-size\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::5::3::order/properties-order::Expected \"width\" to come before \"gap\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 5,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"width\" to come before \"gap\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::54::5::order/properties-order::Expected \"block-size\" to come before \"min-block-size\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 54,
-      "column": 5,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"min-block-size\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::62::3::order/properties-order::Expected \"padding\" to come before \"gap\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 62,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"gap\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::86::3::order/properties-order::Expected \"text-decoration\" to come before \"color\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 86,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"text-decoration\" to come before \"color\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::91::3::order/properties-order::Expected \"text-decoration\" to come before \"color\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 91,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"text-decoration\" to come before \"color\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::316::43::declaration-no-important::Disallowed !important (declaration-no-important)",
@@ -1641,31 +1560,13 @@
       "text": "Disallowed property \"padding-left\" (property-disallowed-list)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css::3::3::order/properties-order::Expected \"margin\" to come before \"box-sizing\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css::33::3::property-disallowed-list::Disallowed property \"padding-left\" (property-disallowed-list)",
       "file": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css",
-      "line": 3,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin\" to come before \"box-sizing\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css::45::3::property-disallowed-list::Disallowed property \"padding-left\" (property-disallowed-list)",
-      "file": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css",
-      "line": 45,
+      "line": 33,
       "column": 3,
       "rule": "property-disallowed-list",
       "severity": "warning",
       "text": "Disallowed property \"padding-left\" (property-disallowed-list)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css::85::3::order/properties-order::Expected \"border-bottom\" to come before \"padding-bottom\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css",
-      "line": 85,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border-bottom\" to come before \"padding-bottom\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.module.css::3::3::order/properties-order::Expected \"margin\" to come before \"box-sizing\" (order/properties-order)",
@@ -2755,96 +2656,6 @@
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"font-family\" to come before \"text-align\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::15::3::order/properties-order::Expected \"padding\" to come before \"width\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 15,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::19::3::order/properties-order::Expected \"gap\" to come before \"background\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 19,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"gap\" to come before \"background\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::24::3::order/properties-order::Expected \"min-block-size\" to come before \"flex\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 24,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-block-size\" to come before \"flex\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::25::3::order/properties-order::Expected \"padding-block\" to come before \"min-block-size\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 25,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding-block\" to come before \"min-block-size\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::52::3::order/properties-order::Expected \"box-shadow\" to come before \"color\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 52,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"box-shadow\" to come before \"color\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::57::3::order/properties-order::Expected \"display\" to come before \"position\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 57,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"display\" to come before \"position\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::67::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 67,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::71::3::order/properties-order::Expected \"transform\" to come before \"inset-inline-end\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 71,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"transform\" to come before \"inset-inline-end\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::72::3::order/properties-order::Expected \"padding-block\" to come before \"transform\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 72,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding-block\" to come before \"transform\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::94::3::order/properties-order::Expected \"padding\" to come before \"gap\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 94,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"gap\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css::114::3::order/properties-order::Expected \"align-self\" to come before \"gap\" (order/properties-order)",

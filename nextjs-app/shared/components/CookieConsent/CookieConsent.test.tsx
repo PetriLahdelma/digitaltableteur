@@ -57,7 +57,7 @@ describe("CookieConsent", () => {
       screen.getByRole("region", { name: /cookie preferences/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/we use cookies to improve your experience/i),
+      screen.getByText(/cookies improve your experience/i),
     ).toBeInTheDocument();
     expect(
       screen.queryByRole("heading", { name: /cookie preferences/i }),
@@ -110,7 +110,7 @@ describe("CookieConsent", () => {
       screen.getByRole("button", { name: /customize settings/i }),
     );
     expect(
-      screen.getByRole("heading", { name: /cookie preferences/i }),
+      screen.getByRole("heading", { name: /cookie consent/i }),
     ).toBeInTheDocument();
   });
 

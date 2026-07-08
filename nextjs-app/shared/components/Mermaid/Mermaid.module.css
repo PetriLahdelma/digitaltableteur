@@ -127,12 +127,3 @@
     transform: rotate(360deg);
   }
 }
-
-.error {
-  padding: var(--space-internal-12);
-  border: 1px solid var(--color-error);
-  border-radius: var(--radius-200);
-  background-color: var(--color-error-bg);
-  font-size: 0.875rem;
-  color: var(--color-error);
-}

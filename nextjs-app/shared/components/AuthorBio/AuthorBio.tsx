@@ -1,6 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Avatar from "@dt/Avatar";
 import Link from "@dt/Link";
 import Text from "@dt/Text";
@@ -37,7 +37,7 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({
   heading,
   showContact = false,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const author = getAuthorBySlug(slug);
 
   if (!author) {

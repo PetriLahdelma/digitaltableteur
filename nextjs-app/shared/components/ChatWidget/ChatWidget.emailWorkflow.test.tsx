@@ -6,12 +6,19 @@ import ChatWidget from "@dt/ChatWidget";
 
 const mockSetMessages = vi.fn((updater: any) => updater([]));
 
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (_k: string, fallback?: string) => fallback || _k,
-    i18n: { language: "en" },
-  }),
-}));
+vi.mock("../../lib/translation", () => {
+  const t = (_k: string, fallback?: string) => fallback || _k;
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 vi.mock("@ai-sdk/react", () => {
   const messages = [

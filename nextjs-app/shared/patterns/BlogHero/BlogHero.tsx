@@ -1,12 +1,12 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { TextReveal } from "../../components/animations/TextReveal";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { ScrollIndicator } from "../../components/ScrollIndicator";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface BlogHeroProps {
   /** Hero title - uses i18n key "blogHeroTitle" if not provided */
@@ -34,7 +34,7 @@ export function BlogHero({
   id = "blog-hero",
   className,
 }: BlogHeroProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const displayTitle = title || t("blogHeroTitle", "Blog");
   const displaySubtitle =

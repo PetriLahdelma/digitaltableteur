@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import Button from "@dt/Button";
 import styles from "./ContactFormSuccessEditorial.module.css";
@@ -26,7 +26,7 @@ export function ContactFormSuccessEditorial({
   sendAnotherLabel = "Send another message",
   className,
 }: ContactFormSuccessEditorialProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const prefersReducedMotion = useReducedMotion();
   const motionEase = [0.16, 1, 0.3, 1] as const;
 

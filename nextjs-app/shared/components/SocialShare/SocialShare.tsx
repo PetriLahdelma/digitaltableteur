@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import styles from "./SocialShare.module.css";
 import Button from "@dt/Button";
 import Toast from "@dt/Toast/Toast";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
 import Text from "@dt/Text";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -143,7 +143,7 @@ export const SocialShare = ({
   showHeading = false,
   heading,
 }: SocialShareProps) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
   const [toastOpen, setToastOpen] = useState(false);

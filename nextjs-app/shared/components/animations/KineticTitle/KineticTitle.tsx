@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useMemo, type ElementType } from "react";
-import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
-import { useAnimationContext } from "@/providers/AnimationProvider";
+import { gsap, useGSAP } from "../../../lib/gsap";
+import { useAnimationContext } from "../../../lib/animation";
 import { cn } from "../../../lib/cn";
 
 type SplitType = "chars" | "words" | "lines";

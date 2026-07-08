@@ -3,8 +3,11 @@
 import React from "react";
 import Button from "@dt/Button";
 import styles from "./worknav.module.css";
-import { usePathname, useRouter } from "next/navigation";
-import { useTranslation } from "react-i18next";
+import {
+  useNavigationPathname,
+  useNavigationRouter,
+} from "../../lib/navigation";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
 
 const workPages = [
@@ -29,11 +32,11 @@ export interface WorkNavProps {
  * button at each edge. Rendered inside a labelled `nav` landmark.
  */
 const WorkNav: React.FC<WorkNavProps> = ({ currentPath: currentPathProp }) => {
-  const { t } = useTranslation();
-  const pathname = usePathname() ?? "/";
+  const t = useTranslate();
+  const pathname = useNavigationPathname() ?? "/";
   const currentPath = currentPathProp ?? pathname;
   const currentIndex = workPages.findIndex((p) => p.path === currentPath);
-  const router = useRouter();
+  const router = useNavigationRouter();
   return (
     <nav className={styles.workNavBar} aria-label={t("workNavLabel")}>
       <Button

@@ -46,7 +46,7 @@ function TabsWithPanels(args: TabsProps) {
 const meta: Meta<typeof Tabs> = {
   title: "Navigation/Tabs",
   component: Tabs,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

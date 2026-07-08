@@ -2,10 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useHydrationSafeMotion } from "../../hooks/useHydrationSafeMotion";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import Icon from "@dt/Icon";
@@ -45,7 +45,7 @@ export function ContactPageContentEditorial({
   bookingPackageId,
   bookingConfig,
 }: ContactPageContentEditorialProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const inquiryPanelRef = useRef<ContactInquiryPanelHandle>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   // Skip entrance animations under reduced-motion so axe never samples

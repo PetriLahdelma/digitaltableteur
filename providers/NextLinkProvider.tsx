@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import {
   LinkProvider,
   type LinkComponentProps,
-} from "@/nextjs-app/shared/lib/linkComponent";
+} from "@digitaltableteur/react";
 
 /** Adapts next/link to the design-system LinkComponent contract. */
 function NextLinkAdapter({ href, children, ...rest }: LinkComponentProps) {

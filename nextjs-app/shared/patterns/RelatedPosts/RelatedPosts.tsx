@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { useTranslate } from "../../lib/translation";
+import { cn } from "../../lib/cn";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { EnhancedArticleCard } from "../../components/EnhancedArticleCard";
@@ -29,7 +29,7 @@ export function RelatedPosts({
   title,
   className,
 }: RelatedPostsProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const displayTitle = title || t("articleRelatedTitle", "Related Articles");
 
   // Get related posts based on shared tags

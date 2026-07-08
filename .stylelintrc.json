@@ -12,6 +12,7 @@
     "vite-app/**/*.css",
     "nextjs-app/src/**/*.css",
     "nextjs-app/shared/foundations/dist/**/*.css",
+    "packages/*/dist/**/*.css",
     "coverage/**/*.css",
     "node_modules/**",
     "dist/**",

@@ -18,7 +18,7 @@ import AuthorBio from "@dt/AuthorBio/AuthorBio";
 import CodeBlockWindow from "@dt/CodeBlockWindow";
 import { DashLeadList } from "@dt/DashLeadList";
 import { MdxImage } from "../../components/MdxImage";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import React from "react";
 import figureStyles from "./ArticleFigure.module.css";
 

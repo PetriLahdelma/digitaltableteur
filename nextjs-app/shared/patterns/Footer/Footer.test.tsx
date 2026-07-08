@@ -6,8 +6,15 @@ import Footer from "./Footer";
 
 const mockT = vi.fn((key: string) => key);
 
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: mockT }),
+vi.mock("../../lib/translation", () => ({
+  useTranslate: () => mockT,
+  useLocalization: () => ({
+    translate: mockT,
+    language: "en",
+    resolvedLanguage: "en",
+    changeLanguage: vi.fn(),
+    getResourceBundle: vi.fn(),
+  }),
 }));
 
 describe("Footer", () => {

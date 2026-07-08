@@ -16,7 +16,7 @@ const commands: CommandPaletteItem[] = [
 ];
 
 const meta = {
-  title: "Organisms/CommandPalette",
+  title: "Navigation/CommandPalette",
   component: CommandPalette,
   tags: ["alpha", "!autodocs"],
   parameters: {

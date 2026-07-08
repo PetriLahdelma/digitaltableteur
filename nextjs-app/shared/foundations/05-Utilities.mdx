@@ -33,6 +33,15 @@ scheme use the theme provider below.
 DT's overlays (e.g. `Modal`) are custom rather than Radix-backed, so they own
 their focus and scroll behaviour through these hooks.
 
+### `LayerProvider` + `useLayer(options)`
+
+`LayerProvider` lets a host app choose the DOM node used for design-system
+portals. Without a provider, layered UI uses `document.body`, matching the
+pre-package behaviour. `useLayer()` returns the resolved container plus the
+standard z-index tier for `modal`, `popover`, `toast`, or `tooltip` layers.
+
+`Modal` consumes `useLayer({ role: 'modal' })` for its portal container.
+
 ### `useFocusTrap(ref, active)`
 
 While `active`, records the focused element, marks the page's main content
@@ -43,6 +52,20 @@ restores focus on release. Being effect-based it composes with any overlay.
 
 Locks body scroll while `active`, restoring the previous `overflow` value on
 release so nested locks compose. `Modal` uses both hooks together.
+
+## Overflow
+
+### `useOverflow(ref, options)`
+
+Reports whether an element overflows on the `x` or `y` axis. It observes
+element resizing and window resizing, and exposes `refresh()` for content changes
+that do not resize the container.
+
+### `useScrollOverflow(ref, options)`
+
+Extends `useOverflow` with `canScrollStart` and `canScrollEnd`, kept current on
+scroll. `NewsBulletin` uses it for previous/next affordances on the horizontal
+highlight track.
 
 ## Navigation
 
@@ -76,5 +99,6 @@ in **Overview/03-Theming**.
 App-platform utilities that DT does not build (they exist to power a Table
 engine, Tree, grid focus, or media-scoped theming DT has declared out of scope):
 `useGridFocus`, `useTreeFocus`, `Media Theme`, `useImageMode`. Others are
-deferred until a consuming component needs them (`LayerProvider`, `useOverflow`,
-`useClickableContainer`, `useListFocus`, `useKeyboardHint`, `useStreamingText`).
+deferred until a consuming component needs them (`Syntax Theme`,
+`useClickableContainer`, `useEntryAnimation`, `useInputContainer`,
+`useListFocus`, `useKeyboardHint`, `useStreamingText`).

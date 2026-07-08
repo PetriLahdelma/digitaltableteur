@@ -2,7 +2,7 @@
 
 import { Image } from "../../lib/imageComponent";
 import { cn } from "../../lib/cn";
-import { isSvgSrc } from "@/lib/media/imageSrc";
+import { isSvgSrc } from "../../lib/imageSrc";
 
 export interface BlogMediaImageProps {
   src: string;

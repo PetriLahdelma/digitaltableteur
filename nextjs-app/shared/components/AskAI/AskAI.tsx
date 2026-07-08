@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import type { ReactElement } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Checkbox from "@dt/Checkbox";
 import { cn } from "../../lib/cn";
 import {
@@ -72,7 +72,7 @@ export interface AskAIProps {
 }
 
 export function AskAI({ className }: AskAIProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [subject, setSubject] = useState<Subject>("company");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [personalizeContext, setPersonalizeContext] = useState(false);

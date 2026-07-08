@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import {
   EnhancedArticleCard,
   type EnhancedArticleCardProps,
@@ -41,7 +41,7 @@ export function BlogGrid({
   hideImages = false,
   className,
 }: BlogGridProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   // Empty state
   if (!articles || articles.length === 0) {

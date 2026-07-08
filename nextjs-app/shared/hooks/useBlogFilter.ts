@@ -1,7 +1,11 @@
 "use client";
 
 import { useState, useMemo, useCallback, useEffect } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import {
+  useNavigationPathname,
+  useNavigationRouter,
+  useNavigationSearchParams,
+} from "../lib/navigation";
 import type { BlogPostEntry } from "../data/blogPosts";
 
 export interface UseBlogFilterOptions {
@@ -31,9 +35,9 @@ export function useBlogFilter({
   posts,
   tagParam = "tag",
 }: UseBlogFilterOptions): UseBlogFilterReturn {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname() ?? "";
+  const searchParams = useNavigationSearchParams();
+  const router = useNavigationRouter();
+  const pathname = useNavigationPathname() ?? "";
 
   // Get initial tag from URL
   const urlTag = searchParams.get(tagParam);

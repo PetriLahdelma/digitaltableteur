@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState, useMemo, useId } from "react";
+import AlertBanner from "@dt/AlertBanner";
+import { useTranslate } from "../../lib/translation";
 import styles from "./Mermaid.module.css";
 
 export interface MermaidThemeColors {
@@ -76,6 +78,7 @@ export const Mermaid: React.FC<MermaidProps> = ({
   className,
   themeColors,
 }) => {
+  const t = useTranslate();
   const rawId = useId();
   const renderId = useMemo(
     () => `mermaid-${rawId.replace(/[:]/g, "")}`,
@@ -131,9 +134,11 @@ export const Mermaid: React.FC<MermaidProps> = ({
         </div>
       )}
       {error && (
-        <div className={styles.error} role="alert">
-          <strong>Diagram Error:</strong> {error}
-        </div>
+        <AlertBanner
+          tone="error"
+          title={t("mermaidErrorTitle", "Diagram Error")}
+          description={error}
+        />
       )}
       {svg && (
         <div

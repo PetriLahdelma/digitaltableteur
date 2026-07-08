@@ -78,7 +78,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/dev/tailwind-test/page.tsx",
             "since": "2026-06-04"
         },
         {

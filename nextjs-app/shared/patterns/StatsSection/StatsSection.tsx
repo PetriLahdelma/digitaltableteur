@@ -8,7 +8,7 @@ import {
   type AnimatedCounterProps,
 } from "../../components/animations/AnimatedCounter";
 import { FadeIn } from "../../components/animations/FadeIn";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface StatItem extends Omit<AnimatedCounterProps, "className"> {}
 

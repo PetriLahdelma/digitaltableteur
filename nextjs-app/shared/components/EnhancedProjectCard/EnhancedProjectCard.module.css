@@ -43,14 +43,6 @@
   aspect-ratio: 4 / 3;
 }
 
-.skeleton {
-  position: absolute;
-  inset: 0;
-  background: color-mix(in srgb, var(--color-border) 20%, transparent);
-  animation: card-skeleton-pulse var(--duration-slowest) var(--ease-in-out-quart)
-    infinite;
-}
-
 .asset {
   position: absolute;
   inset: 0;
@@ -61,10 +53,6 @@
     transform var(--duration-slow) var(--ease-out-expo);
   transform: scale(1.001);
   object-fit: cover;
-}
-
-.assetLoading {
-  opacity: 0;
 }
 
 .caption {
@@ -209,7 +197,6 @@
   .category,
   .description,
   .media,
-  .skeleton,
   .tag,
   .tags,
   .title {
@@ -224,16 +211,5 @@
   .card:active .media,
   .tags {
     transform: none;
-  }
-}
-
-@keyframes card-skeleton-pulse {
-  0%,
-  100% {
-    opacity: 0.44;
-  }
-
-  50% {
-    opacity: 0.82;
   }
 }
