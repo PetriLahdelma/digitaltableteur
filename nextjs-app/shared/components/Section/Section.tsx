@@ -1,9 +1,9 @@
 "use client";
 
-import { type ReactNode, forwardRef } from "react";
+import { type HTMLAttributes, type ReactNode, forwardRef } from "react";
 import { cn } from "../../lib/cn";
 
-export interface SectionProps {
+export interface SectionProps extends HTMLAttributes<HTMLElement> {
   /** Section content. */
   children: ReactNode;
   /** Block padding scale. @default "md" */
@@ -42,7 +42,15 @@ const backgroundClasses = {
  */
 export const Section = forwardRef<HTMLElement, SectionProps>(
   (
-    { children, spacing = "md", background = "default", className, id, spotlightTarget },
+    {
+      children,
+      spacing = "md",
+      background = "default",
+      className,
+      id,
+      spotlightTarget,
+      ...rest
+    },
     ref,
   ) => {
     return (
@@ -50,6 +58,7 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
         ref={ref}
         id={id}
         data-spotlight-target={spotlightTarget}
+        {...rest}
         className={cn(
           spacingClasses[spacing],
           backgroundClasses[background],

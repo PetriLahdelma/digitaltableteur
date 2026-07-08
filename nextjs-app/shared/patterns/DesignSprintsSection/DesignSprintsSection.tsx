@@ -85,7 +85,7 @@ export function DesignSprintsSection({
   return (
     <Section
       id={id}
-      donnyTarget={donnyTarget}
+      data-donny-target={donnyTarget}
       spacing="lg"
       background="accent"
       className={className}

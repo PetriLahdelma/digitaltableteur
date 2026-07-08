@@ -72,7 +72,7 @@ export function ContentSection({
     <Section
       spacing="lg"
       background="default"
-      donnyTarget={donnyTarget}
+      data-donny-target={donnyTarget}
       className={cn(backgroundClasses[background], className)}
     >
       <Container size="md">
