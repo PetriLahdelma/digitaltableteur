@@ -11533,6 +11533,44 @@
       },
       "examples": []
     },
+    "SegmentedControl": {
+      "name": "SegmentedControl",
+      "group": "form",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Single-select segmented control: a compact row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { SegmentedControl } from \"@dt/SegmentedControl\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-muted",
+          "--color-muted-light",
+          "--color-text",
+          "--color-surface",
+          "--focus-ring-color"
+        ],
+        "spacing": [
+          "--space-internal-2",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24"
+        ],
+        "typography": [
+          "--font-body",
+          "--font-size-text-xs",
+          "--font-size-text-s",
+          "--font-size-text-m"
+        ]
+      },
+      "examples": []
+    },
     "Select": {
       "name": "Select",
       "group": "form",

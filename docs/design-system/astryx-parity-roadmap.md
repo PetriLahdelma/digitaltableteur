@@ -96,7 +96,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 
 ### Phase 3: Targeted breadth → Breadth (rescoped)
 - [ ] 3.1 Command Palette (site/docs search + agent story).
-- [ ] 3.2 Segmented Control.
+- [x] 3.2 SegmentedControl (new, **alpha**): single-select `role=radiogroup` with roving-tabindex arrow/Home/End nav, sm/md/lg, CSS Modules + tokens (light/dark/HC/forced-colors/reduced-motion), full 5-file contract + spec + stories + test (render/click/keyboard/disabled/axe). Closes a hard breadth gap. breadth 66 → 70. stableCount untouched (alpha).
 - [ ] 3.3 Close any intended-surface gaps found in 0.5; promote the whole checklist to `stable`.
 
 ### Phase 4: Governance + agent-readiness + theming → those three to 90

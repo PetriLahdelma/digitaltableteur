@@ -58,6 +58,11 @@ export { default as OpenHours } from "./OpenHours/OpenHours";
 export { default as PersonCard } from "./PersonCard/PersonCard";
 export { default as PhoneInput } from "./PhoneInput/PhoneInput";
 export { default as SecureCVDownload } from "./SecureCVDownload/SecureCVDownload";
+export {
+  SegmentedControl,
+  type SegmentedControlProps,
+  type SegmentedControlItem,
+} from "./SegmentedControl";
 export { default as Select } from "./Select/Select";
 export { default as SelectOption } from "./Select/SelectOption";
 export { default as ServicesGrid } from "./ServicesGrid/ServicesGrid";

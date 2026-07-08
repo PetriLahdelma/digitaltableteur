@@ -1,0 +1,81 @@
+.root {
+  display: inline-flex;
+  padding: var(--space-internal-2);
+  gap: var(--space-internal-2);
+  border-radius: var(--radius-md);
+  background-color: color-mix(in srgb, var(--color-muted) 14%, transparent);
+}
+
+.segment {
+  padding-block: var(--space-internal-2);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  font-family: var(--font-body);
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition:
+    color 0.15s var(--ease-out-cubic),
+    background-color 0.15s var(--ease-out-cubic),
+    box-shadow 0.15s var(--ease-out-cubic);
+  appearance: none;
+}
+
+.segment[data-selected] {
+  background-color: var(--color-surface);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--color-text) 16%, transparent);
+  color: var(--color-text);
+}
+
+.segment:disabled {
+  color: var(--color-muted-light);
+  cursor: not-allowed;
+}
+
+.segment:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Sizes */
+
+.sm .segment {
+  padding-inline: var(--space-internal-12);
+  min-block-size: 1.75rem;
+  font-size: var(--font-size-text-xs);
+}
+
+.md .segment {
+  padding-inline: var(--space-internal-16);
+  min-block-size: 2.25rem;
+  font-size: var(--font-size-text-s);
+}
+
+.lg .segment {
+  padding-inline: var(--space-internal-24);
+  min-block-size: 2.75rem;
+  font-size: var(--font-size-text-m);
+}
+
+.segment:hover:not([data-selected], :disabled) {
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .segment {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    border: 1px solid CanvasText;
+  }
+
+  .segment[data-selected] {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
