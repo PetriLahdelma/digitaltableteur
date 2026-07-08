@@ -37,12 +37,12 @@
         },
         {
             "key": "agentReadiness",
-            "current": 80,
+            "current": 81,
             "target": 90
         },
         {
             "key": "theming",
-            "current": 67,
+            "current": 68,
             "target": 90
         },
         {
@@ -99,6 +99,12 @@
             "status": "operational",
             "file": "nextjs-app/shared/hooks/useScrollLock.ts",
             "note": "body scroll lock for custom overlays"
+        },
+        {
+            "name": "useTheme",
+            "status": "operational",
+            "file": "nextjs-app/shared/components/ThemeProvider/ThemeProvider.tsx",
+            "note": "already existed; exposed + documented"
         }
     ],
     "checkpoints": [

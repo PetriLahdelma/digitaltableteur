@@ -85,8 +85,8 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 - [x] 2.2 `useFocusTrap` — extracted Modal's inert-background + focus-first + restore logic into `nextjs-app/shared/hooks/useFocusTrap.ts` (+ test); Modal consumes it (behavior-identical, 40 Modal tests green). Operational.
 - [x] 2.3 `useScrollLock` — `nextjs-app/shared/hooks/useScrollLock.ts` (+ test), restores previous overflow so nested locks compose. Wired into Modal (closed a real gap: Modal did not lock background scroll). Operational.
 - [x] 2.4 `LinkProvider` operational (built in 1.3); documented in the Utilities Storybook page as part of 2.6.
-- [ ] 2.5 Expose `useTheme` / `ThemeProvider` as public Utilities (already exist).
-- [ ] 2.6 Document the Utilities category in Storybook Foundations.
+- [x] 2.5 `useTheme` / `ThemeProvider` confirmed public (exported from the `@dt` barrel) and locked in state.
+- [x] 2.6 Utilities documented in Storybook: `nextjs-app/shared/foundations/05-Utilities.mdx` (`Overview/05-Utilities`) covering useMediaQuery / useFocusTrap / useScrollLock / LinkProvider / useTheme, plus the not-adopted rationale.
 - Deferred (adopt only when a trigger component needs them): LayerProvider/useLayer, Syntax Theme, useOverflow/useScrollOverflow, useClickableContainer, useListFocus, useKeyboardHint, useStreamingText. Skipped (app-platform only): useGridFocus, useTreeFocus, Media Theme, useImageMode.
 
 ### Phase 3: Targeted breadth → Breadth (rescoped)
