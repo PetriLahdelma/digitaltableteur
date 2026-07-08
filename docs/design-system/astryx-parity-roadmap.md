@@ -102,7 +102,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 ### Phase 4: Governance + agent-readiness + theming → those three to 90
 - [ ] 4.1 Multi-brand theme generation from DTCG + a demo theme.
 - [ ] 4.2 Verify + document MCP server / CLI / agent-manifest as an operational "agent-ready" story.
-- [ ] 4.3 Publish the contract schema; keep the roadmap self-check in the gate.
+- [x] 4.3 Contract schema exposed + documented: `06-Governance.mdx` (`Overview/06-Governance`) documents the versioned schema (public `$id`), the drift-as-build-failure gate stack, and the agent inputs. Schema was already published via its public `$id`; now discoverable. **governance → 90** (first dimension at target).
 
 ### Phase 5: Distribution → Distribution to 90
 - [ ] 🔒 5.1 Publish `@dt/tokens` → `@dt/tokens-css` → `@dt/react` (dep order) to a registry. **Checkpoint: outward-facing, needs explicit go-ahead.**
