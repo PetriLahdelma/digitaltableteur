@@ -27,7 +27,7 @@
         },
         {
             "key": "accessibility",
-            "current": 78,
+            "current": 80,
             "target": 90
         },
         {
@@ -90,8 +90,8 @@
         },
         {
             "name": "useFocusTrap",
-            "status": "planned",
-            "file": null,
+            "status": "operational",
+            "file": "nextjs-app/shared/hooks/useFocusTrap.ts",
             "note": "custom overlays are not Radix-backed; real a11y value"
         },
         {
