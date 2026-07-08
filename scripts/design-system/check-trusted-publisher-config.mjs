@@ -342,6 +342,13 @@ non-secret npm Trusted Publisher setup values for the private
 - Environment name: ${report.npmEnvironmentName ?? "leave blank"}
 - Allowed action: ${report.allowedActions.join(", ")}
 
+These values are case-sensitive and must match the GitHub OIDC claims exactly:
+\`repository: ${report.githubOwner}/${report.githubRepository}\`,
+\`workflow_ref: ${report.githubOwner}/${report.githubRepository}/${report.workflowPath}\`.
+Configure them on each package access page, for example
+\`https://www.npmjs.com/package/@digitaltableteur/react/access\`. Do not use the
+npm organization name as the GitHub owner.
+
 ## GitHub workflow state
 
 - Workflow path: \`${report.workflowPath}\`

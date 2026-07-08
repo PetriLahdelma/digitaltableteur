@@ -40,6 +40,20 @@ function formatClaimValue(value) {
   return String(value);
 }
 
+function printTrustedPublisherChecklist() {
+  console.error("Expected npm Trusted Publisher fields for this workflow:");
+  console.error(`  Package access page: https://www.npmjs.com/package/${packageName}/access`);
+  console.error("  Publisher: GitHub Actions");
+  console.error("  Organization or user: PetriLahdelma");
+  console.error("  Repository: digitaltableteur");
+  console.error("  Workflow filename: ds-publish.yml");
+  console.error("  Environment name: leave blank");
+  console.error("  Allowed action: Allow npm publish");
+  console.error(
+    "These values are case-sensitive and must match the GitHub OIDC claims exactly; do not use the npm org name as the GitHub owner.",
+  );
+}
+
 async function getGitHubIdToken() {
   const audience = `npm:${new URL(registry).hostname}`;
   const url = new URL(process.env.ACTIONS_ID_TOKEN_REQUEST_URL);
@@ -131,9 +145,7 @@ if (!exchange.ok || !exchange.body?.token) {
   console.error(`Registry response: ${redact(exchange.body?.message ?? JSON.stringify(exchange.body))}`);
   console.error("GitHub OIDC claim summary:");
   for (const line of claimSummary) console.error(`  ${line}`);
-  console.error(
-    "Check the npm Trusted Publisher fields against these claims: GitHub owner/repository, workflow filename ds-publish.yml, blank environment unless an environment claim is present, and Allow npm publish enabled.",
-  );
+  printTrustedPublisherChecklist();
   process.exit(1);
 }
 
@@ -165,9 +177,7 @@ if (!hasOidcSuccess) {
   } else {
     console.error("No npm OIDC diagnostics were emitted.");
   }
-  console.error(
-    "Check the npm Trusted Publisher fields: GitHub owner PetriLahdelma, repository digitaltableteur, workflow filename ds-publish.yml, blank environment unless the workflow sets one, and Allow npm publish enabled.",
-  );
+  printTrustedPublisherChecklist();
   process.exit(1);
 }
 
