@@ -40,8 +40,21 @@ jobs:
       - name: Use npm with Trusted Publisher support
         run: npm install -g npm@latest
 
+      - name: Prepare private npm read config
+        env:
+          NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
+        run: |
+          if [ -z "${NPM_READ_TOKEN:-}" ]; then
+            echo "::error::NPM_READ_TOKEN secret is required to install private @digitaltableteur packages. It must be read-only; publishing uses OIDC Trusted Publisher."
+            exit 1
+          fi
+          {
+            echo "registry=https://registry.npmjs.org/"
+            echo "//registry.npmjs.org/:_authToken=${NPM_READ_TOKEN}"
+          } > "$RUNNER_TEMP/npm-read.npmrc"
+
       - name: Install workspace dependencies
-        run: npm ci
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci
 
       - name: Verify Trusted Publisher configuration
         run: npm run check:trusted-publisher
@@ -54,6 +67,9 @@ jobs:
 
       - name: Verify package metadata
         run: npm run check:package-release-notes
+
+      - name: Verify registry package resolution
+        run: npm run check:package-registry-resolution
 
       - name: Verify tarball contents
         run: npm run check:package-tarballs
@@ -110,4 +126,4 @@ jobs:
 
       - name: Verify @digitaltableteur/react registry install
         if: ${{ (inputs.package == 'react' || inputs.package == 'all') && inputs.dry_run == false }}
-        run: npm run check:react-registry-install
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm run check:react-registry-install

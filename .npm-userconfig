@@ -1,2 +1,3 @@
-; Intentionally empty. digitaltableteur installs only from the public npm registry.
-; Do not add DSharp/Azure feed settings here.
+; Intentionally empty. digitaltableteur installs only from the public npm registry
+; unless a caller provides a private read userconfig through NPM_CONFIG_USERCONFIG.
+; Do not add token values here.

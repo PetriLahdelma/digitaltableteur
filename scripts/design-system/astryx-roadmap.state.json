@@ -47,7 +47,7 @@
         },
         {
             "key": "distribution",
-            "current": 80,
+            "current": 84,
             "target": 90
         }
     ],
@@ -413,7 +413,7 @@
                 "on": "2026-07-08",
                 "note": "Approved publishing @digitaltableteur/react to the private npm registry through the GitHub Actions OIDC Trusted Publisher workflow after strict local readiness gates pass."
             },
-            "note": "@digitaltableteur/tokens@0.1.0 and @digitaltableteur/tokens-css@0.1.0 published successfully with restricted access on 2026-07-08. check:registry-token-install now verifies npm reports both packages as private with org read-write access, then installs them into a clean private-registry consumer and verifies the token exports from node_modules. @digitaltableteur/react publish is explicitly approved for the private npm registry, gated by check:react-publish-ready, the committed Trusted Publisher workflow, and the post-publish registry install smoke."
+            "note": "@digitaltableteur/tokens@0.1.0, @digitaltableteur/tokens-css@0.1.0, and @digitaltableteur/react@0.1.1 are published as private/restricted npm packages. check:registry-token-install verifies token package registry access/installability, check:package-registry-status verifies current package registry state, and check:react-registry-install verifies the published React package from npm. Remaining roadmap work: publish the next React patch through the committed GitHub Actions OIDC Trusted Publisher path rather than manual npm publish."
         },
         "5.2": {
             "status": "done",
@@ -421,7 +421,7 @@
         },
         "5.3": {
             "status": "done",
-            "note": "The site dogfoods the workspace @digitaltableteur/react package import path and package stylesheet. Published-registry dogfood remains pending on 5.1."
+            "note": "The site dogfoods the registry @digitaltableteur/react package import path and package stylesheet. The root install now also consumes @digitaltableteur/tokens and @digitaltableteur/tokens-css from npm while runtime CSS continues to load variables.css for exact visual continuity."
         },
         "5.4": {
             "status": "done",
@@ -433,7 +433,7 @@
         },
         "5.6": {
             "status": "done",
-            "note": "Added check:react-publish-preflight and check:react-publish-ready. The preflight aggregates lint, typecheck, full Vitest, Storybook static build, Next production build, roadmap ratchets, package release metadata, Trusted Publisher readiness, private token registry install, React registry-smoke waiting state, local tarball consumer install, package tarball contents guard, package publish dry-run guard, React public surface guard, React public API guard, package dogfood browser checks, the i18n/navigation visual review packet, and the consolidated React publish review packet, then writes .omx/state/design-system/react-publish-preflight/latest.json; strict mode fails fast until 1.5, 1.6, and explicit @digitaltableteur/react publish clearance are recorded. The approval handoff lives at .omx/state/design-system/react-publish-clearance/handoff.md and includes a local evidence snapshot for the latest i18n/navigation matrix plus package dogfood report."
+            "note": "check:react-publish-preflight aggregates lint, typecheck, full Vitest, Storybook static build, Next production build, roadmap ratchets, package release metadata, Trusted Publisher readiness, registry package resolution, private token registry install, current React registry install, local tarball consumer install, package tarball contents guard, package publish dry-run guard, React public surface guard, React public API guard, package dogfood browser checks, the i18n/navigation visual review packet, and the consolidated React publish review packet. Strict check:react-publish-ready keeps the next React patch publish-only path honest by requiring the prepared next React version to be unpublished before OIDC publish."
         },
         "5.7": {
             "status": "done",
@@ -465,15 +465,19 @@
         },
         "5.14": {
             "status": "done",
-            "note": "Added check:package-publish-dry-run. It runs npm publish --workspace <package> --dry-run --access restricted --json for @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react, verifies publish id, integrity, shasum, and required package files, writes .omx/state/design-system/package-publish-dry-run/latest.json, and is wired into the manual GitHub Actions OIDC workflow before any dry-run or real publish."
+            "note": "Added check:package-publish-dry-run. It runs npm publish --dry-run --access restricted --json from each package directory for @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react, verifies publish id, integrity, shasum, and required package files, writes .omx/state/design-system/package-publish-dry-run/latest.json, and is wired into the manual GitHub Actions OIDC workflow before any dry-run or real publish."
         },
         "5.15": {
             "status": "done",
-            "note": "Added check:package-registry-status. It verifies the current npm registry state matches the pre-publish plan: @digitaltableteur/tokens and @digitaltableteur/tokens-css are published at the prepared versions with private package status and org read-write access, while the exact prepared @digitaltableteur/react version remains unpublished until 1.5/1.6/5.1 clearance. check:react-publish-preflight and check:react-publish-review both validate this report."
+            "note": "check:package-registry-status verifies the current external npm state: @digitaltableteur/tokens, @digitaltableteur/tokens-css, and the current @digitaltableteur/react package version are published with private package status and org read-write access. Strict publish-ready mode passes --expect-react=unpublished so duplicate React publishes fail until the next package version is prepared."
         },
         "5.16": {
             "status": "done",
-            "note": "Added check:react-registry-install as the post-publish registry smoke for @digitaltableteur/react. After a real non-dry-run React publish, the GitHub OIDC workflow installs the exact private registry version into a clean consumer, resolves @digitaltableteur/react/style.css and token CSS from node_modules, SSR-renders representative stable components, compiles a strict TypeScript consumer, and writes .omx/state/design-system/react-registry-install/latest.json. Local pre-publish verification uses --expect-unpublished while React intentionally remains unpublished."
+            "note": "check:react-registry-install installs the exact private @digitaltableteur/react version from npm into a clean consumer, resolves @digitaltableteur/react/style.css and token CSS from node_modules, SSR-renders representative stable components, compiles a strict TypeScript consumer, and writes .omx/state/design-system/react-registry-install/latest.json. Strict pre-publish verification uses --expect-unpublished for the next React patch version."
+        },
+        "5.17": {
+            "status": "done",
+            "note": "Root package.json no longer declares design-system package workspaces. The app/root install now depends on @digitaltableteur/react, @digitaltableteur/tokens, and @digitaltableteur/tokens-css from npm, while local package sources remain under packages/* for build/pack/publish checks. Added check:package-registry-resolution and wired it into the OIDC workflow, Trusted Publisher guard, and React publish preflight; it fails on package-lock workspace links, local packages/* resolution, or symlinked node_modules entries."
         }
     },
     "approvalFormat": "To clear a checkpoint: set tasks.<id>.status=done AND tasks.<id>.approval={clearedBy:<name>,on:<YYYY-MM-DD>,note?}. The guard rejects done without this."

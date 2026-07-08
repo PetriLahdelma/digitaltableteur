@@ -11355,7 +11355,7 @@
       "tier": 1,
       "status": "stable",
       "description": "Semantic section wrapper with spacing and background tokens.",
-      "dense": "Page band: spacing none|sm|md (default)|lg|xl + hero/follow pair (hero = roomy top tight bottom, follow = no top), background default|muted|accent|inverse; id/donnyTarget anchors",
+      "dense": "Page band: spacing none|sm|md (default)|lg|xl + hero/follow pair (hero = roomy top tight bottom, follow = no top), background default|muted|accent|inverse; id/spotlightTarget anchors",
       "keywords": [
         "section",
         "page band",
@@ -11392,7 +11392,7 @@
           "required": false
         },
         {
-          "name": "donnyTarget",
+          "name": "spotlightTarget",
           "type": "string",
           "required": false
         }
@@ -11433,7 +11433,7 @@
           "optional": true,
           "type": "string"
         },
-        "donnyTarget": {
+        "spotlightTarget": {
           "optional": true,
           "type": "string"
         }
@@ -11465,7 +11465,7 @@
           },
           {
             "guidance": true,
-            "description": "Give anchor/deep-link targets an id (and donnyTarget only for whitelisted spotlight stops)."
+            "description": "Give anchor/deep-link targets an id, and use spotlightTarget only when the host app needs stable guided-navigation selectors."
           },
           {
             "guidance": false,
