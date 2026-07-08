@@ -40,6 +40,11 @@ function formatClaimValue(value) {
   return String(value);
 }
 
+function npmOidcEscapedPackageName(name) {
+  // Match npm-package-arg's escapedName shape used by npm CLI OIDC publish.
+  return name.startsWith("@") ? name.replace("/", "%2f") : encodeURIComponent(name);
+}
+
 function printTrustedPublisherChecklist() {
   console.error("Expected npm Trusted Publisher fields for this workflow:");
   console.error(`  Package access page: https://www.npmjs.com/package/${packageName}/access`);
@@ -73,7 +78,7 @@ async function getGitHubIdToken() {
 
 async function verifyExchangeEndpoint(idToken) {
   const exchangeUrl = new URL(
-    `/-/npm/v1/oidc/token/exchange/package/${encodeURIComponent(packageName)}`,
+    `/-/npm/v1/oidc/token/exchange/package/${npmOidcEscapedPackageName(packageName)}`,
     registry,
   );
   const response = await fetch(exchangeUrl.href, {
