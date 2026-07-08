@@ -101,6 +101,7 @@
     "build:icons": "tsx scripts/design-system/build-icon-registry.ts",
     "build:tokens": "npm run build:icons && node scripts/design-system/extract-variables-catalog.mjs && node scripts/design-system/export-dtcg-from-css.mjs && node scripts/design-system/build-tokens.mjs && node scripts/design-system/sync-tailwind-theme.mjs && node scripts/design-system/generate-relationship-graph.mjs && npm run build:agent-blocks && node scripts/design-system/generate-agent-manifest.mjs && node scripts/design-system/build-docs-registry.mjs",
     "build:agent-blocks": "tsx scripts/design-system/build-component-agent-blocks.ts",
+    "generate:theme": "node scripts/design-system/generate-theme.mjs",
     "build:relationship-graph": "node scripts/design-system/generate-relationship-graph.mjs",
     "build:figma-variables": "node scripts/design-system/build-figma-variables-payload.mjs && node scripts/design-system/generate-figma-phase-scripts.mjs",
     "figma:apply-variables": "node scripts/design-system/apply-figma-variables-local.mjs",
