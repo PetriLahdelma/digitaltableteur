@@ -146,6 +146,7 @@
     "sync:figma-contracts": "node scripts/design-system/sync-figma-contract-urls.mjs",
     "audit:consumers": "node scripts/design-system/audit-consumers.mjs",
     "check:consumers": "node scripts/design-system/check-consumers.mjs",
+    "check:astryx-roadmap": "node scripts/design-system/check-astryx-roadmap.mjs",
     "check:tokens": "node scripts/design-system/semantic-token-codemod.mjs --check",
     "audit:usage": "node scripts/design-system/audit-usage.mjs",
     "find-component": "node scripts/design-system/find-component.mjs",

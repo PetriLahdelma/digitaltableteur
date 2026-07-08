@@ -1,0 +1,104 @@
+{
+    "version": 1,
+    "goal": "At least 90/100 on every rescoped Astryx-comparison dimension, plus the selected utilities operational.",
+    "rubric": "Mission-rescoped (portfolio design-system-of-record). 90 is measured against DT's intended surface and a published/dogfooded package, NOT app-platform breadth or raw OSS adoption. Anti-goals stay in force.",
+    "humanRoadmap": "docs/design-system/astryx-parity-roadmap.md",
+    "seededOn": "2026-07-08",
+    "dimensions": [
+        {
+            "key": "maturity",
+            "current": 62,
+            "target": 90
+        },
+        {
+            "key": "breadth",
+            "current": 44,
+            "target": 90
+        },
+        {
+            "key": "scalability",
+            "current": 54,
+            "target": 90
+        },
+        {
+            "key": "futureproofness",
+            "current": 61,
+            "target": 90
+        },
+        {
+            "key": "accessibility",
+            "current": 78,
+            "target": 90
+        },
+        {
+            "key": "governance",
+            "current": 88,
+            "target": 90
+        },
+        {
+            "key": "agentReadiness",
+            "current": 80,
+            "target": 90
+        },
+        {
+            "key": "theming",
+            "current": 67,
+            "target": 90
+        },
+        {
+            "key": "distribution",
+            "current": 20,
+            "target": 90
+        }
+    ],
+    "antiGoalComponents": [
+        "AppShell",
+        "TreeList",
+        "DataGrid",
+        "MegaMenu"
+    ],
+    "ratchets": {
+        "catalogAppImports": {
+            "ceiling": 41,
+            "desc": "catalog source files importing @/ (app root); must only decrease"
+        },
+        "catalogNextImports": {
+            "ceiling": 15,
+            "desc": "catalog source files importing next/*; must only decrease"
+        },
+        "catalogI18nImports": {
+            "ceiling": 46,
+            "desc": "catalog source files coupled to i18next/useTranslation; must only decrease"
+        },
+        "stableCount": {
+            "floor": 58,
+            "desc": "stable catalog components + patterns; must not drop"
+        }
+    },
+    "utilities": [
+        {
+            "name": "LinkProvider",
+            "status": "planned",
+            "file": null,
+            "note": "decouples next/link from the catalog; part of Phase 1"
+        },
+        {
+            "name": "useMediaQuery",
+            "status": "planned",
+            "file": null,
+            "note": "consolidates 17 ad-hoc matchMedia call sites"
+        },
+        {
+            "name": "useFocusTrap",
+            "status": "planned",
+            "file": null,
+            "note": "custom overlays are not Radix-backed; real a11y value"
+        },
+        {
+            "name": "useScrollLock",
+            "status": "planned",
+            "file": null,
+            "note": "body scroll lock for custom overlays"
+        }
+    ]
+}
