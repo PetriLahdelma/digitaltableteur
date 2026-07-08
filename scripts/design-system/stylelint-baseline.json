@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 448,
+  "warningCount": 446,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -1608,24 +1608,6 @@
       "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::392::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
       "line": 392,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::402::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
-      "line": 402,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::436::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
-      "line": 436,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",

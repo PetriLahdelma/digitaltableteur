@@ -399,7 +399,7 @@
 
 .resultsContent h3 {
   margin-block-end: var(--space-layout-8);
-  color: white;
+  color: var(--color-white);
 }
 
 .resultsGrid {
@@ -419,6 +419,7 @@
   background: #00649b;
   backdrop-filter: blur(10px);
   text-align: left;
+  color: var(--color-white);
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
@@ -433,7 +434,7 @@
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: white;
+  color: var(--color-white);
 }
 
 .resultLabel {
