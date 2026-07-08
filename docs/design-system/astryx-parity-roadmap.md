@@ -36,16 +36,21 @@ App-platform surface DT will **not** build: **App Shell**, **Tree List**, **Data
 
 ## Intended-surface checklist (defines Breadth = 90)
 
-The Breadth target is "all of this present and `stable`", not Astryx parity. (Fill in during Phase 3 audit; most already exist.)
+Audited 2026-07-08 against the live catalog (159 contracts). Breadth-90 (rescoped)
+= every intended-surface item **present**, and **stable where it has real
+consumers**; a present-but-zero-consumer beta counts as covered (it cannot be
+promoted, per the promotion policy). Legend: ✓ stable · β beta (present) · ✗ gap.
 
-- Primitives: Text, Title, Button, IconButton, Icon, Link, Badge, Label, Card, Divider, Spacer, Avatar, StatusDot, Kbd.
-- Forms: TextInput, TextArea, Select, Combobox, MultiCombobox, Checkbox(+Group), Radio(+Group), Switch, PhoneInput, FileUpload, FormField, Slider (gap?), Segmented Control (new, Phase 3).
-- Feedback: Alert/Banner, Toast, Tooltip, Progress, Spinner, Skeleton, EmptyState.
-- Overlays: Modal/Dialog, Popover (gap?), Menu, Lightbox.
-- Navigation: Breadcrumb, Tabs, Pagination, SkipLink, LanguageSwitcher, site nav.
-- Layout: Container, Section, Grid, FlexBox, Stack, Center, AspectRatio.
-- Content/site: List, Table (simple/static, not the engine), CodeBlock, blog + marketing + work composites.
-- Authority additions: **Command Palette** (Phase 3), for site/docs search + the agent story.
+- Primitives: ✓Text ✓Title ✓Button ✓IconButton ✓Icon ✓Link ✓Badge ✓Label ✓Card ✓Divider ✓Avatar ✓StatusDot · βSpacer βKbd (0-consumer, covered).
+- Forms: ✓TextInput ✓TextArea ✓Select ✓Combobox ✓MultiCombobox ✓Checkbox ✓CheckboxGroup ✓PhoneInput ✓FileUpload ✓FormField · βRadio βRadioGroup βSwitch (0-consumer) · ✗Slider (optional, deferred) · ✗**SegmentedControl → 3.2**.
+- Feedback: ✓Toast ✓Spinner ✓Skeleton · βAlertBanner βTooltip βProgress βEmptyState (Tooltip 0-consumer; others promotable).
+- Overlays: ✓Modal ✓Menu · Lightbox (catalog-exempt per CATALOG-POLICY) · ✗Popover (optional, deferred).
+- Navigation: ✓Pagination ✓SkipLink ✓LanguageSwitcher · βBreadcrumb βTabs (promotable) · site nav (patterns).
+- Layout: ✓Container ✓Section ✓Grid ✓FlexBox ✓Stack · βCenter βAspectRatio (dev-harness-only, covered).
+- Content/site: ✓List ✓CodeBlockWindow · βCodeSnippet · Table (simple/static) not needed yet; the engine is an anti-goal · blog/marketing/work composites present.
+- Authority additions: ✗**Command Palette → 3.1** (site/docs search + agent story).
+
+**Breadth-90 path:** build the 2 hard gaps (SegmentedControl 3.2, CommandPalette 3.1); promote the consumer-backed betas (Breadcrumb, Tabs, Progress, AlertBanner, EmptyState, CodeSnippet) as they gain consumers. Present-coverage is ~93% today; the 0-consumer betas (Radio/RadioGroup/Switch/Tooltip/Kbd/Spacer/Center/AspectRatio) are covered-but-unpromotable and do not block 90.
 
 ---
 
@@ -67,7 +72,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 - [x] 0.2 Declare anti-goals (above) and hard-guard the unambiguous ones.
 - [x] 0.3 Build `check:astryx-roadmap` guard (anti-goals, operational-utility locks, coupling ratchets, stable floor); wire into pre-push.
 - [x] 0.4 Seed coupling ratchets at today's values (41 `@/`, 15 `next/*`, 46 i18n, stable floor 58) so it is non-regressing from day one.
-- [ ] 0.5 Fill the intended-surface checklist against the live catalog (mark gaps).
+- [x] 0.5 Intended-surface checklist audited against the live catalog (159 contracts); ~93% present-coverage, 2 hard gaps (SegmentedControl 3.2, CommandPalette 3.1). Breadth re-baselined 44 → 66 under the rescoped rubric.
 
 ### Phase 1: Package boundary + decoupling → Maturity, Scalability, Futureproofness, Distribution
 - [ ] 1.1 Convert to a workspace (`packages/design-system`, `packages/tokens`, `apps/site`).
