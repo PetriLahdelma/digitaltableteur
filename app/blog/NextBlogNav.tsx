@@ -4,8 +4,7 @@ import { useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
+import { Button, Icon } from "@digitaltableteur/react";
 import { getVisiblePosts } from "./postMetadata";
 
 import styles from "./NextBlogNav.module.css";

@@ -16,11 +16,12 @@ import { NextLinkProvider } from "../providers/NextLinkProvider";
 import { NextImageProvider } from "../providers/NextImageProvider";
 import { NextNavigationProvider } from "../providers/NextNavigationProvider";
 import { SmoothScrollProvider } from "../providers/SmoothScrollProvider";
-import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent";
+import { CookieConsentProvider } from "@digitaltableteur/react";
 import { NextLayout } from "@dt/NextLayout";
 import { WebMcpProvider } from "../providers/WebMcpProvider";
 import { HtmlLangSync } from "./components/HtmlLangSync";
 import { DeferredAnalytics } from "./components/DeferredAnalytics";
+import "@digitaltableteur/react/style.css";
 import "./globals.css";
 
 const siteUrl =

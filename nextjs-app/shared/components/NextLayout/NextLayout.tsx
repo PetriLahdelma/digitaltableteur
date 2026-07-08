@@ -12,7 +12,7 @@ const ChatWidget = dynamic(() => import("../ChatWidget/ChatWidget"), {
   ssr: false,
 });
 const CookieConsentModal = dynamic(
-  () => import("../CookieConsent/CookieConsent"),
+  () => import("@digitaltableteur/react").then((module) => module.CookieConsent),
   { ssr: false },
 );
 

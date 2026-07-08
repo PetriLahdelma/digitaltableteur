@@ -2,7 +2,7 @@
 /**
  * Registry-shape consumer install smoke.
  *
- * Builds/verifies the workspace packages, packs their npm tarballs, installs
+ * Builds/verifies the local package sources, packs their npm tarballs, installs
  * those tarballs into a clean temporary consumer, and imports the public
  * package surface from node_modules. This is the closest local substitute for
  * post-publish registry dogfooding while npm auth is unavailable.
@@ -40,15 +40,27 @@ function writeReport(report) {
   writeFileSync(OUT_JSON, `${JSON.stringify(report, null, 2)}\n`);
 }
 
-function pack(workspace, destination) {
+const PACKAGE_DIRS = {
+  "@digitaltableteur/tokens": "packages/tokens",
+  "@digitaltableteur/tokens-css": "packages/tokens-css",
+  "@digitaltableteur/react": "packages/react",
+};
+
+function packageDir(packageName) {
+  const dir = PACKAGE_DIRS[packageName];
+  if (!dir) throw new Error(`Unknown package for consumer smoke: ${packageName}`);
+  return join(ROOT, dir);
+}
+
+function pack(packageName, destination) {
   const result = run(
     "npm",
-    ["pack", "--workspace", workspace, "--pack-destination", destination, "--json"],
-    { capture: true },
+    ["pack", "--pack-destination", destination, "--json"],
+    { cwd: packageDir(packageName), capture: true },
   );
   const [packed] = JSON.parse(result);
   if (!packed?.filename) {
-    throw new Error(`npm pack did not return a filename for ${workspace}`);
+    throw new Error(`npm pack did not return a filename for ${packageName}`);
   }
   return join(destination, packed.filename);
 }
@@ -59,8 +71,9 @@ function assertPackedFile(pack, file) {
   }
 }
 
-function inspectPack(workspace) {
-  const result = run("npm", ["pack", "--workspace", workspace, "--dry-run", "--json"], {
+function inspectPack(packageName) {
+  const result = run("npm", ["pack", "--dry-run", "--json"], {
+    cwd: packageDir(packageName),
     capture: true,
   });
   return JSON.parse(result)[0];

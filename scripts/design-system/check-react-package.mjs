@@ -2,6 +2,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
+import { pathToFileURL } from "node:url";
 
 const root = resolve(new URL("../..", import.meta.url).pathname);
 const reactPackage = join(root, "packages/react");
@@ -25,7 +26,7 @@ function assertFile(path, label) {
   }
 }
 
-run("npm", ["run", "build", "--workspace", "@digitaltableteur/react"]);
+run("npm", ["--prefix", "packages/react", "run", "build"]);
 
 assertFile(join(dist, "index.js"), "React package JS entry");
 assertFile(join(dist, "index.d.ts"), "React package type entry");
@@ -44,7 +45,7 @@ const smoke = run(
     "--input-type=module",
     "-e",
     [
-      "const m = await import('@digitaltableteur/react');",
+      `const m = await import(${JSON.stringify(pathToFileURL(join(dist, "index.js")).href)});`,
       "for (const key of ['AlertBanner','Breadcrumb','Button','Card','Container','CookieConsentProvider','ImageProvider','LayerProvider','LinkProvider','NavigationProvider','Progress','Tabs','TranslationProvider','useCookieConsent','useFocusTrap','useLayer','useMediaQuery','useOverflow','useScrollLock','useScrollOverflow','useToast','useTranslate']) { if (!m[key]) throw new Error(`missing public export: ${key}`); }",
       `for (const key of ${JSON.stringify(forbiddenExports)}) { if (m[key]) throw new Error(\`forbidden app/product export leaked: \${key}\`); }`,
       "console.log(Object.keys(m).length);",
@@ -55,7 +56,7 @@ const smoke = run(
 
 const packJson = run(
   "npm",
-  ["pack", "--workspace", "@digitaltableteur/react", "--dry-run", "--json"],
+  ["pack", "./packages/react", "--dry-run", "--json"],
   { capture: true },
 );
 const [pack] = JSON.parse(packJson);

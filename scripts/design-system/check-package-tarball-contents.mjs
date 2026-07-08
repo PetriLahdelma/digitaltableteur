@@ -17,6 +17,7 @@ const OUT_JSON = join(OUT_DIR, "latest.json");
 
 const PACKAGE_DEFINITIONS = [
   {
+    dir: "packages/tokens",
     name: "@digitaltableteur/tokens",
     maxEntryCount: 20,
     maxTarballSize: 40_000,
@@ -34,6 +35,7 @@ const PACKAGE_DEFINITIONS = [
     ],
   },
   {
+    dir: "packages/tokens-css",
     name: "@digitaltableteur/tokens-css",
     maxEntryCount: 12,
     maxTarballSize: 20_000,
@@ -47,6 +49,7 @@ const PACKAGE_DEFINITIONS = [
     ],
   },
   {
+    dir: "packages/react",
     name: "@digitaltableteur/react",
     maxEntryCount: 1_100,
     maxTarballSize: 900_000,
@@ -95,17 +98,17 @@ function parsePackJson(stdout, packageName) {
   return parsed[0];
 }
 
-function packWorkspace(packageName) {
+function packPackage(definition) {
   const stdout = execFileSync(
     "npm",
-    ["pack", "--workspace", packageName, "--dry-run", "--json"],
+    ["pack", "--dry-run", "--json"],
     {
-      cwd: ROOT,
+      cwd: join(ROOT, definition.dir),
       encoding: "utf8",
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
-  return parsePackJson(stdout, packageName);
+  return parsePackJson(stdout, definition.name);
 }
 
 function isAllowedPath(path) {
@@ -189,7 +192,7 @@ const rows = [];
 const errors = [];
 
 for (const definition of PACKAGE_DEFINITIONS) {
-  const pack = packWorkspace(definition.name);
+  const pack = packPackage(definition);
   const row = validatePack(definition, pack);
   rows.push(row);
   for (const error of row.errors) {

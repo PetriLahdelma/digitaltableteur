@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/tokens",
+    "packages/tokens-css"
   ],
   "engines": {
     "node": ">=22.12.0"
@@ -188,7 +189,7 @@
     "@ai-sdk/openai": "^3.0.71",
     "@ai-sdk/react": "^3.0.207",
     "@calcom/embed-react": "^1.5.3",
-    "@digitaltableteur/react": "^0.1.0",
+    "@digitaltableteur/react": "^0.1.1",
     "@emailjs/browser": "^4.4.1",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",

@@ -5,9 +5,10 @@ import { useCallback, useMemo, type ReactNode } from "react";
 
 import {
   NavigationProvider,
-  type NavigationOptions,
   type NavigationRuntime,
-} from "@/nextjs-app/shared/lib/navigation";
+} from "@digitaltableteur/react";
+
+type NavigationOptions = Parameters<NavigationRuntime["push"]>[1];
 
 /** Adapts Next App Router navigation to the design-system navigation runtime. */
 export function NextNavigationProvider({ children }: { children: ReactNode }) {

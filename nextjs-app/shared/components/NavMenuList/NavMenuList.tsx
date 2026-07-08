@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Link } from "../../lib/linkComponent";
-import { useNavigationPathname } from "../../lib/navigation";
+import { useNavigationPathname } from "@digitaltableteur/react";
 import styles from "./NavMenuList.module.css";
 
 export type NavMenuItem = {

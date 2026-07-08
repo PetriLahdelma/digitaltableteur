@@ -15,9 +15,9 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const OUT_DIR = join(ROOT, ".omx/state/design-system/package-publish-dry-run");
 const OUT_JSON = join(OUT_DIR, "latest.json");
 const PACKAGES = [
-  { name: "@digitaltableteur/tokens", requiredFiles: ["package.json", "dist/index.js"] },
-  { name: "@digitaltableteur/tokens-css", requiredFiles: ["package.json", "dist/tokens.css"] },
-  { name: "@digitaltableteur/react", requiredFiles: ["package.json", "dist/index.js", "dist/style.css"] },
+  { dir: "packages/tokens", name: "@digitaltableteur/tokens", requiredFiles: ["package.json", "dist/index.js"] },
+  { dir: "packages/tokens-css", name: "@digitaltableteur/tokens-css", requiredFiles: ["package.json", "dist/tokens.css"] },
+  { dir: "packages/react", name: "@digitaltableteur/react", requiredFiles: ["package.json", "dist/index.js", "dist/style.css"] },
 ];
 
 function relativePath(path) {
@@ -31,31 +31,31 @@ function parsePublishJson(stdout, packageName) {
     throw new Error(`npm publish dry-run for ${packageName} did not return JSON.`);
   }
   const parsed = JSON.parse(stdout.slice(start, end + 1));
-  const row = parsed[packageName];
-  if (!row) {
+  const row = parsed[packageName] ?? parsed;
+  if (!row || (row.name !== packageName && !row.id?.startsWith(`${packageName}@`))) {
     throw new Error(`npm publish dry-run JSON did not include ${packageName}.`);
   }
   return row;
 }
 
-function publishDryRun(packageName) {
+function publishDryRun(definition) {
   const stdout = execFileSync(
     "npm",
-    ["publish", "--workspace", packageName, "--dry-run", "--access", "restricted", "--json"],
+    ["publish", "--dry-run", "--access", "restricted", "--json"],
     {
-      cwd: ROOT,
+      cwd: join(ROOT, definition.dir),
       encoding: "utf8",
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
-  return parsePublishJson(stdout, packageName);
+  return parsePublishJson(stdout, definition.name);
 }
 
 const rows = [];
 const errors = [];
 
 for (const definition of PACKAGES) {
-  const row = publishDryRun(definition.name);
+  const row = publishDryRun(definition);
   const files = new Set((row.files ?? []).map((file) => file.path));
   const packageRow = {
     name: row.name,
@@ -96,7 +96,7 @@ for (const definition of PACKAGES) {
 mkdirSync(OUT_DIR, { recursive: true });
 const report = {
   generatedAt: new Date().toISOString(),
-  commandShape: "npm publish --workspace <package> --dry-run --access restricted --json",
+  commandShape: "npm publish --dry-run --access restricted --json from package directory",
   packages: rows,
   errors,
 };

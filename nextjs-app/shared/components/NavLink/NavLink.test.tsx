@@ -5,7 +5,7 @@ import { NavLink } from "./NavLink";
 import {
   NavigationProvider,
   type NavigationRuntime,
-} from "../../lib/navigation";
+} from "@digitaltableteur/react";
 
 expect.extend(toHaveNoViolations);
 

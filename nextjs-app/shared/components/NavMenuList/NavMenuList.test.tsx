@@ -5,7 +5,7 @@ import NavMenuList, { NavMenuItem } from "@dt/NavMenuList";
 import {
   NavigationProvider,
   type NavigationRuntime,
-} from "../../lib/navigation";
+} from "@digitaltableteur/react";
 
 const items: NavMenuItem[] = [
   { to: "/", label: "Home", exact: true },

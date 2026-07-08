@@ -5,13 +5,9 @@ import type {
   PseoRelatedLinkCopy,
 } from "@/lib/pseo/types";
 
-import Card from "@dt/Card";
-import Breadcrumb from "@dt/Breadcrumb";
-import Button from "@dt/Button";
+import { Breadcrumb, Button, Card, Text, Title } from "@digitaltableteur/react";
 import MarkdownMessage from "@dt/MarkdownMessage";
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
 import { PseoClusterBadges } from "./PseoClusterBadges";
 import styles from "./PseoLeafPage.module.css";
 
