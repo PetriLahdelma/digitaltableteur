@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import Icon from "@dt/Icon";
 import Text from "@dt/Text";
 import Title from "@dt/Title";

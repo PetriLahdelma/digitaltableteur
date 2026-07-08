@@ -3,7 +3,7 @@
 import { useRef, useMemo, type ElementType } from "react";
 import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../lib/cn";
 
 type SplitType = "chars" | "words" | "lines";
 type AnimationType = "fade" | "slide" | "wave" | "scramble";

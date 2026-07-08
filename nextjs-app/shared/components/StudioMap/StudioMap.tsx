@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { Icon, Map as LeafletMap } from "leaflet";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import Button from "@dt/Button";
 import { ExternalLink, MapPin } from "lucide-react";
 

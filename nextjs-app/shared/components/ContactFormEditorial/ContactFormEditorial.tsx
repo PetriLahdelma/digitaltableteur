@@ -3,7 +3,7 @@
 import { useEffect, useReducer, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import { motion, useReducedMotion } from "framer-motion";
 import Button from "@dt/Button";
 import { FormFieldEditorial } from "../FormFieldEditorial";

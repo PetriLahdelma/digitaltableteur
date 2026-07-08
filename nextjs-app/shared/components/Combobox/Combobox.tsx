@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import HelperText from "@dt/HelperText";
 import Icon from "@dt/Icon";
 import styles from "./ComboboxField.module.css";

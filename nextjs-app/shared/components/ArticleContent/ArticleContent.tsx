@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, type ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import { Container } from "../Container";
 import { articleProseClassName } from "./articleProseClasses";
 

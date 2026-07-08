@@ -2,7 +2,7 @@
 
 import { type ReactNode } from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface ServiceCardProps {
   /** Icon element displayed at the top */

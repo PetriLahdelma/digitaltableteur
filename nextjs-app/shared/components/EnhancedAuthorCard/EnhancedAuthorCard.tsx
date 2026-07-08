@@ -4,7 +4,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "@phosphor-icons/react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface AuthorSocial {
   platform: string;

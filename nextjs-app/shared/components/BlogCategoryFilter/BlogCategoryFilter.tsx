@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface BlogCategoryFilterProps {
   /** Array of unique tags */

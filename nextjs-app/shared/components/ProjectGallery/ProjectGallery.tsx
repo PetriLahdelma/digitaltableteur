@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

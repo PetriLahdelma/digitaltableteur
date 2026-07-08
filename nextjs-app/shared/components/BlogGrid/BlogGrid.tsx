@@ -6,7 +6,7 @@ import {
   type EnhancedArticleCardProps,
 } from "../EnhancedArticleCard";
 import { FadeIn } from "../animations/FadeIn";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface BlogGridProps {
   /** Array of articles to display */

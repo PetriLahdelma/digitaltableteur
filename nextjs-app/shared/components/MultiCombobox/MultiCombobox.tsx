@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import Badge from "@dt/Badge";
 import HelperText from "@dt/HelperText";
 import Icon from "@dt/Icon";

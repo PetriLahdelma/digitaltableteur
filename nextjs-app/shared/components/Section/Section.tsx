@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode, forwardRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface SectionProps {
   /** Section content. */

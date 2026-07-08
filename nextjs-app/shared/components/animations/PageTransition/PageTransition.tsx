@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../lib/cn";
 import { gsap } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
 import styles from "./PageTransition.module.css";
