@@ -7,6 +7,7 @@ import Title from "@dt/Title";
 import { getSemanticIcon } from "../../utils/semanticIcons";
 import Icon, { type IconProps } from "@dt/Icon";
 import { normalizeTitleSize, type TitleSizeUnified } from "../../utils/sizeNormalization";
+import { useFocusTrap } from "../../hooks/useFocusTrap";
 
 export type ModalSeverity = "success" | "error" | "warning" | "info";
 export type ModalAnimation = "none" | "scale" | "slide" | "fade";
@@ -90,7 +91,6 @@ const Modal: React.FC<ModalProps> = ({
   const normalizedTitleSize = normalizeTitleSize(titleSize);
   const titleId = useId();
   const descriptionId = useId();
-  const previousActiveElement = useRef<HTMLElement | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -139,46 +139,8 @@ const Modal: React.FC<ModalProps> = ({
     return () => ctx.revert();
   }, [isOpen, animation]);
 
-  // Apply inert attribute to main content when modal is open
-  // This prevents focus from escaping the modal to background content
-  useEffect(() => {
-    if (!isOpen || typeof document === "undefined") return;
-
-    // Store the currently focused element to restore focus on close
-    previousActiveElement.current = document.activeElement as HTMLElement;
-
-    // Find the main content container (try common IDs)
-    const mainContent =
-      document.getElementById("main-content") ||
-      document.getElementById("__next") ||
-      document.querySelector("main") ||
-      document.body.firstElementChild;
-
-    if (mainContent && mainContent !== document.body) {
-      // Set inert on main content to prevent focus escape
-      mainContent.setAttribute("inert", "");
-    }
-
-    // Focus the modal or first focusable element
-    const focusFirst = () => {
-      if (!modalRef.current) return;
-      const focusable = modalRef.current.querySelector<HTMLElement>(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      );
-      focusable?.focus();
-    };
-
-    // Use requestAnimationFrame to ensure DOM is ready
-    requestAnimationFrame(focusFirst);
-
-    return () => {
-      if (mainContent && mainContent !== document.body) {
-        mainContent.removeAttribute("inert");
-      }
-      // Restore focus to previously focused element
-      previousActiveElement.current?.focus();
-    };
-  }, [isOpen]);
+  // Focus trap: inert the background, focus first focusable, restore on close.
+  useFocusTrap(modalRef, isOpen);
 
   useEffect(() => {
     if (!isOpen || !onClose || typeof document === "undefined") return;
