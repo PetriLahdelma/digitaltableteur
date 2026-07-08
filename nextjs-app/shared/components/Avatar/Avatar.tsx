@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import type { StaticImageData } from "next/image";
+import type { ImageSource as StaticImageData } from "../../lib/imageComponent";
 import styles from "./avatar.module.css";
 import { Menu, MenuContent, MenuItem, MenuTrigger } from "@dt/Menu";
 

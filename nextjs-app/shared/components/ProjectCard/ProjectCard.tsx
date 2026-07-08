@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "../../lib/linkComponent";
-import Image from "next/image";
+import { Image } from "../../lib/imageComponent";
 import { cn } from "../../lib/cn";
 
 export interface ProjectCardProps {

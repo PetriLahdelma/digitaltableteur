@@ -13,6 +13,7 @@ import { NextThemeProvider } from "../providers/ThemeProvider";
 import { ToastProvider } from "../providers/ToastProvider";
 import { AnimationProvider } from "../providers/AnimationProvider";
 import { NextLinkProvider } from "../providers/NextLinkProvider";
+import { NextImageProvider } from "../providers/NextImageProvider";
 import { SmoothScrollProvider } from "../providers/SmoothScrollProvider";
 import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent";
 import { NextLayout } from "@dt/NextLayout";
@@ -154,6 +155,7 @@ export default function RootLayout({
         <WebMcpProvider>
           <NextThemeProvider>
             <NextLinkProvider>
+              <NextImageProvider>
               <I18nProvider>
               <HtmlLangSync />
               <AnimationProvider>
@@ -166,6 +168,7 @@ export default function RootLayout({
                 </SmoothScrollProvider>
               </AnimationProvider>
               </I18nProvider>
+              </NextImageProvider>
             </NextLinkProvider>
           </NextThemeProvider>
         </WebMcpProvider>

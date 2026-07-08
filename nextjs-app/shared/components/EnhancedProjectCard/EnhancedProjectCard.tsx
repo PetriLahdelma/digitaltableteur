@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { Link } from "../../lib/linkComponent";
-import Image from "next/image";
+import { Image } from "../../lib/imageComponent";
 import { cn } from "../../../../lib/utils";
 import styles from "./EnhancedProjectCard.module.css";
 

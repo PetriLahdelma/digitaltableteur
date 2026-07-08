@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import { Image } from "../../lib/imageComponent";
 import Text from "@dt/Text";
 import styles from "./ColorPalette.module.css";
 
