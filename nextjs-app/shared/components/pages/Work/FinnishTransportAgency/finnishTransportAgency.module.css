@@ -443,7 +443,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: inherit;
+  color: var(--color-white);
 }
 
 .resultDetail {
@@ -451,7 +451,7 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
   line-height: 1.5;
-  color: rgb(255 255 255 / 90%);
+  color: var(--color-white);
 }
 
 /* Responsive */
