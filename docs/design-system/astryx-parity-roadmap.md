@@ -72,7 +72,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 ### Phase 1: Package boundary + decoupling → Maturity, Scalability, Futureproofness, Distribution
 - [ ] 1.1 Convert to a workspace (`packages/design-system`, `packages/tokens`, `apps/site`).
 - [x] 1.2 Internalize `cn` / `@/lib/utils` into the DS boundary (moved to `nextjs-app/shared/lib/cn`, 55 imports repointed, app re-exports for back-compat); `catalogAppImports` 41 → 5.
-- [ ] 1.3 **Link Provider** utility → decouple `next/link` (falls back to `<a>`); ratchet `catalogNextImports` down. (Also a utility deliverable.)
+- [x] 1.3 **Link Provider** → `nextjs-app/shared/lib/linkComponent.tsx` (context + `LinkProvider` + DS `Link` component that renders the injected link, default `<a>`); app injects next/link via `providers/NextLinkProvider`. All 9 catalog `next/link` sites swapped (pure import swap; the one server component works because `Link` is a client component, not a hook). `catalogNextImports` 15 → 13 (rest are next/image + next/navigation). Build-verified RSC boundary.
 - [ ] 1.4 Image slot/provider → decouple `next/image`.
 - [ ] 🔒 1.5 i18n decoupling: injected translator / prop-driven copy with English defaults (46 files); ratchet `catalogI18nImports` down. **Checkpoint: multi-locale + browser review before merge.**
 - [ ] 🔒 1.6 Remove remaining `@/` and `next/navigation` from the catalog (ratchets to 0). **Checkpoint: navigation behavior review before merge.**
@@ -84,7 +84,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 - [x] 2.1 `useMediaQuery` — SSR-safe canonical primitive at `nextjs-app/shared/hooks/useMediaQuery.ts` (+ test); operational. Migrated the one genuine responsive-breakpoint site (SocialShare `(width < 768px)`). The other `matchMedia` sites are `prefers-reduced-motion` (owned by `useHydrationSafeMotion`/`motion-safe`) and `prefers-color-scheme` (ThemeProvider), left intentionally; new responsive checks use this hook.
 - [x] 2.2 `useFocusTrap` — extracted Modal's inert-background + focus-first + restore logic into `nextjs-app/shared/hooks/useFocusTrap.ts` (+ test); Modal consumes it (behavior-identical, 40 Modal tests green). Operational.
 - [x] 2.3 `useScrollLock` — `nextjs-app/shared/hooks/useScrollLock.ts` (+ test), restores previous overflow so nested locks compose. Wired into Modal (closed a real gap: Modal did not lock background scroll). Operational.
-- [ ] 2.4 `LinkProvider` formalized in the Utilities surface (from 1.3); flip to operational.
+- [x] 2.4 `LinkProvider` operational (built in 1.3); documented in the Utilities Storybook page as part of 2.6.
 - [ ] 2.5 Expose `useTheme` / `ThemeProvider` as public Utilities (already exist).
 - [ ] 2.6 Document the Utilities category in Storybook Foundations.
 - Deferred (adopt only when a trigger component needs them): LayerProvider/useLayer, Syntax Theme, useOverflow/useScrollOverflow, useClickableContainer, useListFocus, useKeyboardHint, useStreamingText. Skipped (app-platform only): useGridFocus, useTreeFocus, Media Theme, useImageMode.

@@ -17,12 +17,12 @@
         },
         {
             "key": "scalability",
-            "current": 56,
+            "current": 58,
             "target": 90
         },
         {
             "key": "futureproofness",
-            "current": 63,
+            "current": 65,
             "target": 90
         },
         {
@@ -63,7 +63,7 @@
             "desc": "catalog source files importing @/ (app root); must only decrease"
         },
         "catalogNextImports": {
-            "ceiling": 15,
+            "ceiling": 13,
             "desc": "catalog source files importing next/*; must only decrease"
         },
         "catalogI18nImports": {
@@ -78,8 +78,8 @@
     "utilities": [
         {
             "name": "LinkProvider",
-            "status": "planned",
-            "file": null,
+            "status": "operational",
+            "file": "nextjs-app/shared/lib/linkComponent.tsx",
             "note": "decouples next/link from the catalog; part of Phase 1"
         },
         {

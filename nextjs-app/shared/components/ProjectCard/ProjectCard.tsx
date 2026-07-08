@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "../../lib/linkComponent";
 import Image from "next/image";
 import { cn } from "../../lib/cn";
 
