@@ -28,6 +28,7 @@ const PACKAGES = [
 ];
 const WORKFLOW_RELATIVE = ".github/workflows/ds-publish.yml";
 const REQUIRED_REPOSITORY_PATHS = [
+  ".github/scripts/write-npm-read-config.sh",
   ".github/workflows/ds-publish.yml",
   "nextjs-app/shared/components/AlertBanner/AlertBanner.module.css",
   "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
@@ -539,7 +540,7 @@ if (!existsSync(WORKFLOW)) {
     "package-manager-cache: false",
     "npm install -g npm@latest",
     "NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}",
-    "NPM_READ_TOKEN secret is required to install private @digitaltableteur packages",
+    "bash .github/scripts/write-npm-read-config.sh",
     "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-read.npmrc\" npm ci",
     "npm run check:trusted-publisher",
     "npm run check:token-packages",
