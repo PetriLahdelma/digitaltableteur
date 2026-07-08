@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
 import { cn } from "../../lib/cn";
@@ -177,7 +177,7 @@ export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
   children,
 }) => {
   const isArticleContext = context === "article";
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">(
     "idle",
   );

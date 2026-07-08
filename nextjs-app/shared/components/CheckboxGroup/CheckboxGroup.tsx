@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Checkbox from "@dt/Checkbox/Checkbox";
 import GroupLabel from "@dt/GroupLabel/GroupLabel";
 import styles from "./CheckboxGroup.module.css";
@@ -34,7 +34,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   masterLabel,
   onChange,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [checkedStates, setCheckedStates] = useState(options.map(() => false));
   // Track previous option values to avoid resetting when only labels change
   const prevOptionValuesRef = useRef<string[] | null>(null);
@@ -106,7 +106,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
         <Checkbox
           label={(() => {
             const translated = t("contactAll");
-            // If i18n isn't initialized in tests, t may return the key itself.
+            // If no translator is injected in tests, t may return the key itself.
             // In that case fall back to the literal "All" to keep tests stable.
             if (masterLabel) return masterLabel;
             if (!translated || translated === "contactAll") return "All";

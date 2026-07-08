@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "../../lib/cn";
 
@@ -76,7 +76,7 @@ export function Pagination({
   siblingCount = 1,
   className,
 }: PaginationProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const pages = useMemo(
     () => generatePageRange(currentPage, totalPages, siblingCount),

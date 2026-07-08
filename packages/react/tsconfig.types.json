@@ -1,0 +1,35 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "incremental": false,
+    "noEmit": false,
+    "outDir": "dist/types",
+    "rootDir": "../..",
+    "types": [
+      "react",
+      "react-dom"
+    ],
+    "tsBuildInfoFile": "dist/.tsbuildinfo"
+  },
+  "include": [
+    "src/**/*.d.ts",
+    "src/index.ts",
+    "../../nextjs-app/shared/custom.d.ts",
+    "../../nextjs-app/shared/types/**/*.d.ts"
+  ],
+  "exclude": [
+    "../../nextjs-app/shared/components/pages/**",
+    "../../nextjs-app/shared/components/__templates__/**",
+    "../../nextjs-app/shared/**/*.test.ts",
+    "../../nextjs-app/shared/**/*.test.tsx",
+    "../../nextjs-app/shared/**/*.stories.ts",
+    "../../nextjs-app/shared/**/*.stories.tsx",
+    "../../nextjs-app/shared/**/__a11y-snapshots__/**",
+    "../../nextjs-app/shared/**/__tests__/**",
+    "dist"
+  ]
+}

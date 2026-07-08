@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
 import styles from "./Tabs.module.css";
 
@@ -29,6 +29,8 @@ export interface TabsProps {
   onTabChange?: (key: string) => void;
   /** Optional utility classes on the tablist. */
   className?: string;
+  /** Accessible label for the tablist. @default "Navigate between tabs" */
+  ariaLabel?: string;
   /** Visual style variant. @default "default" */
   variant?: "default" | "pills" | "underline";
 }
@@ -94,11 +96,12 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
     tabs,
     onTabChange,
     className = "",
+    ariaLabel,
     variant = "default",
   },
   ref,
 ) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   // Tab state (uncontrolled fallback)
   const [internalTab, setInternalTab] = React.useState(
@@ -226,7 +229,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         .filter(Boolean)
         .join(" ")}
       role="tablist"
-      aria-label={t("tabs.navigation", "Navigate between tabs")}
+      aria-label={ariaLabel ?? t("tabs.navigation", "Navigate between tabs")}
       data-indicator-ready={indicator.ready ? "true" : "false"}
       style={
         {

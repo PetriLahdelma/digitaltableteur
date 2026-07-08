@@ -1,0 +1,465 @@
+#!/usr/bin/env node
+/**
+ * Registry-shape consumer install smoke.
+ *
+ * Builds/verifies the workspace packages, packs their npm tarballs, installs
+ * those tarballs into a clean temporary consumer, and imports the public
+ * package surface from node_modules. This is the closest local substitute for
+ * post-publish registry dogfooding while npm auth is unavailable.
+ */
+import { execFileSync } from "node:child_process";
+import { mkdtempSync, rmSync, writeFileSync, mkdirSync, readFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { dirname, join, relative, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
+const OUT_DIR = join(ROOT, ".omx/state/design-system/npm-consumer-install");
+const OUT_JSON = join(OUT_DIR, "latest.json");
+const KEEP = process.env.DT_KEEP_NPM_CONSUMER_SMOKE === "1";
+
+function run(command, args, options = {}) {
+  return execFileSync(command, args, {
+    cwd: options.cwd ?? ROOT,
+    encoding: "utf8",
+    stdio: options.capture ? ["ignore", "pipe", "pipe"] : "inherit",
+    env: { ...process.env, ...(options.env ?? {}) },
+  });
+}
+
+function readJson(path) {
+  return JSON.parse(readFileSync(path, "utf8"));
+}
+
+function relativePath(path) {
+  return relative(ROOT, path);
+}
+
+function writeReport(report) {
+  mkdirSync(OUT_DIR, { recursive: true });
+  writeFileSync(OUT_JSON, `${JSON.stringify(report, null, 2)}\n`);
+}
+
+function pack(workspace, destination) {
+  const result = run(
+    "npm",
+    ["pack", "--workspace", workspace, "--pack-destination", destination, "--json"],
+    { capture: true },
+  );
+  const [packed] = JSON.parse(result);
+  if (!packed?.filename) {
+    throw new Error(`npm pack did not return a filename for ${workspace}`);
+  }
+  return join(destination, packed.filename);
+}
+
+function assertPackedFile(pack, file) {
+  if (!pack.files.some((entry) => entry.path === file)) {
+    throw new Error(`${pack.name} tarball is missing ${file}`);
+  }
+}
+
+function inspectPack(workspace) {
+  const result = run("npm", ["pack", "--workspace", workspace, "--dry-run", "--json"], {
+    capture: true,
+  });
+  return JSON.parse(result)[0];
+}
+
+const rootPackage = readJson(join(ROOT, "package.json"));
+const roadmapState = readJson(join(ROOT, "scripts/design-system/astryx-roadmap.state.json"));
+const forbiddenReactExports = roadmapState.reactPublicSurface?.forbiddenExports ?? [];
+const reactVersion = rootPackage.dependencies?.react ?? rootPackage.devDependencies?.react;
+const reactDomVersion =
+  rootPackage.dependencies?.["react-dom"] ?? rootPackage.devDependencies?.["react-dom"];
+const typescriptVersion =
+  rootPackage.dependencies?.typescript ?? rootPackage.devDependencies?.typescript;
+const reactTypesVersion =
+  rootPackage.dependencies?.["@types/react"] ?? rootPackage.devDependencies?.["@types/react"];
+const reactDomTypesVersion =
+  rootPackage.dependencies?.["@types/react-dom"] ?? rootPackage.devDependencies?.["@types/react-dom"];
+
+if (!reactVersion || !reactDomVersion || !typescriptVersion || !reactTypesVersion || !reactDomTypesVersion) {
+  throw new Error(
+    "Root package.json must declare react, react-dom, typescript, @types/react, and @types/react-dom for the consumer smoke.",
+  );
+}
+
+const scratch = mkdtempSync(join(tmpdir(), "dt-npm-consumer-"));
+const artifacts = join(scratch, "artifacts");
+const consumer = join(scratch, "consumer");
+mkdirSync(artifacts);
+mkdirSync(consumer);
+
+const report = {
+  generatedAt: new Date().toISOString(),
+  status: "running",
+  scratchKept: KEEP,
+  packages: [],
+  consumer: null,
+  errors: [],
+};
+
+try {
+  run("npm", ["run", "check:token-packages"]);
+  run("npm", ["run", "check:react-package"]);
+
+  const tokenPack = inspectPack("@digitaltableteur/tokens");
+  const tokenCssPack = inspectPack("@digitaltableteur/tokens-css");
+  const reactPack = inspectPack("@digitaltableteur/react");
+  assertPackedFile(tokenPack, "dist/index.js");
+  assertPackedFile(tokenPack, "dist/tokens.dtcg.json");
+  assertPackedFile(tokenPack, "dist/tailwind.tokens.js");
+  assertPackedFile(tokenCssPack, "dist/tokens.css");
+  assertPackedFile(tokenCssPack, "dist/themes/acme.css");
+  assertPackedFile(reactPack, "dist/index.js");
+  assertPackedFile(reactPack, "dist/index.d.ts");
+  assertPackedFile(reactPack, "dist/style.css");
+  report.packages = [tokenPack, tokenCssPack, reactPack].map((row) => ({
+    name: row.name,
+    version: row.version,
+    filename: row.filename,
+    entryCount: row.entryCount,
+    unpackedSize: row.unpackedSize,
+    requiredFilesPresent: true,
+  }));
+
+  const tarballs = [
+    pack("@digitaltableteur/tokens", artifacts),
+    pack("@digitaltableteur/tokens-css", artifacts),
+    pack("@digitaltableteur/react", artifacts),
+  ];
+
+  writeFileSync(
+    join(consumer, "package.json"),
+    JSON.stringify(
+      {
+        name: "digitaltableteur-npm-consumer-smoke",
+        private: true,
+        type: "module",
+        scripts: {
+          smoke: "node smoke.mjs",
+          typecheck: "tsc --noEmit -p tsconfig.json",
+        },
+      },
+      null,
+      2,
+    ),
+  );
+
+  writeFileSync(
+    join(consumer, "smoke.mjs"),
+    `
+import { createRequire } from "node:module";
+import React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { tokenCount, tokenNames } from "@digitaltableteur/tokens";
+import dtcg from "@digitaltableteur/tokens/dtcg" with { type: "json" };
+import manifest from "@digitaltableteur/tokens/manifest" with { type: "json" };
+import { tailwindThemeRefs } from "@digitaltableteur/tokens/tailwind";
+import * as DS from "@digitaltableteur/react";
+
+const require = createRequire(import.meta.url);
+const tokenCss = require.resolve("@digitaltableteur/tokens-css/tokens.css");
+const tokenCssRoot = require.resolve("@digitaltableteur/tokens-css");
+const acmeTheme = require.resolve("@digitaltableteur/tokens-css/themes/acme");
+const acmeThemeWithExt = require.resolve("@digitaltableteur/tokens-css/themes/acme.css");
+const reactCss = require.resolve("@digitaltableteur/react/style.css");
+
+if (tokenCount < 180 || tokenNames.length !== tokenCount) {
+  throw new Error("Token package export count is incomplete");
+}
+if (manifest.tokenCount !== tokenCount || !dtcg.$schema) {
+  throw new Error("Token JSON exports are incomplete");
+}
+if (!tailwindThemeRefs["color-dt-primary"]) {
+  throw new Error("Tailwind token export missing color-dt-primary");
+}
+
+for (const key of [
+  "AlertBanner",
+  "AnimationRuntimeProvider",
+  "Breadcrumb",
+  "Button",
+  "Card",
+  "EmptyState",
+  "ImageProvider",
+  "LayerProvider",
+  "LinkProvider",
+  "NavigationProvider",
+  "Progress",
+  "Tabs",
+  "ToastRuntimeProvider",
+  "TranslationProvider",
+  "useFocusTrap",
+  "useLayer",
+  "useMediaQuery",
+  "useOverflow",
+  "useScrollLock",
+  "useScrollOverflow",
+  "useToast",
+  "useTranslate",
+]) {
+  if (!DS[key]) throw new Error("Missing @digitaltableteur/react export: " + key);
+}
+for (const key of ${JSON.stringify(forbiddenReactExports)}) {
+  if (DS[key]) throw new Error("Forbidden app/product export leaked from @digitaltableteur/react: " + key);
+}
+
+const markup = renderToStaticMarkup(
+  React.createElement(
+    DS.TranslationProvider,
+    {
+      translate: (key, fallbackOrOptions) =>
+        typeof fallbackOrOptions === "string"
+          ? fallbackOrOptions
+          : fallbackOrOptions?.defaultValue ?? key,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: () => undefined,
+      getResourceBundle: () => ({}),
+    },
+    React.createElement(
+      DS.LinkProvider,
+      {
+        component: ({ href, children, ...rest }) =>
+          React.createElement("a", { href, ...rest }, children),
+      },
+      React.createElement(DS.Breadcrumb, {
+        items: [
+          { label: "Home", href: "/" },
+          { label: "Install smoke" },
+        ],
+      }),
+      React.createElement(DS.EmptyState, {
+        title: "No package items",
+        description: "The installed package rendered EmptyState.",
+        headingLevel: "h3",
+      }),
+      React.createElement(DS.AlertBanner, {
+        tone: "error",
+        title: "Package alert",
+        description: "The installed package rendered AlertBanner.",
+      }),
+      React.createElement(DS.Tabs, {
+        tabs: [
+          { key: "install", label: "Install tab" },
+          { key: "verify", label: "Verify tab" },
+        ],
+        activeTab: "install",
+        ariaLabel: "Package tabs",
+      }),
+      React.createElement(DS.Progress, {
+        indeterminate: true,
+        label: "Package progress",
+        size: "sm",
+        state: "info",
+      }),
+      React.createElement(DS.Button, { variant: "primary" }, "Install smoke"),
+    ),
+  ),
+);
+
+if (
+  !markup.includes("Install smoke") ||
+  !markup.includes("Install tab") ||
+  !markup.includes("Package progress") ||
+  !markup.includes("Package alert") ||
+  !markup.includes("Breadcrumb") ||
+  !markup.includes("No package items")
+) {
+  throw new Error("React package SSR smoke did not render the Button, Breadcrumb, AlertBanner, EmptyState, Progress, and Tabs children");
+}
+
+console.log(JSON.stringify({
+  tokenCount,
+  tokenCss,
+  tokenCssRoot,
+  acmeTheme,
+  acmeThemeWithExt,
+  reactCss,
+  reactExports: Object.keys(DS).length,
+}));
+`.trimStart(),
+  );
+  writeFileSync(
+    join(consumer, "smoke.tsx"),
+    `
+import * as React from "react";
+import {
+  AlertBanner,
+  Breadcrumb,
+  Button,
+  EmptyState,
+  LayerProvider,
+  LinkProvider,
+  NavigationProvider,
+  Progress,
+  Tabs,
+  TranslationProvider,
+  type BreadcrumbItem,
+  type LinkComponentProps,
+  type NavigationRuntime,
+  type TabItem,
+  type Translate,
+  getTabPanelProps,
+  useLayer,
+  useOverflow,
+  useScrollOverflow,
+} from "@digitaltableteur/react";
+
+const translate: Translate = (key, fallbackOrOptions) => {
+  if (typeof fallbackOrOptions === "string") return fallbackOrOptions;
+  return String(fallbackOrOptions?.defaultValue ?? key);
+};
+
+const LinkAdapter = ({ href, children, ...rest }: LinkComponentProps) => (
+  <a href={href} {...rest}>
+    {children}
+  </a>
+);
+
+const navigationRuntime: NavigationRuntime = {
+  pathname: "/",
+  searchParams: new URLSearchParams(),
+  push: () => undefined,
+  replace: () => undefined,
+};
+
+const breadcrumbItems: BreadcrumbItem[] = [
+  { label: "Home", href: "/" },
+  { label: "Package smoke" },
+];
+const tabs: TabItem[] = [
+  { key: "install", label: "Install" },
+  { key: "verify", label: "Verify" },
+];
+
+function UtilityProbe() {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const layer = useLayer({ role: "popover" });
+  const overflow = useOverflow(ref);
+  const scrollOverflow = useScrollOverflow(ref);
+
+  return (
+    <div
+      ref={ref}
+      data-layer-role={layer.role}
+      data-overflow={String(overflow.isOverflowing)}
+      data-scroll-end={String(scrollOverflow.canScrollEnd)}
+    />
+  );
+}
+
+const tree: React.ReactElement = (
+  <TranslationProvider
+    translate={translate}
+    language="en"
+    resolvedLanguage="en"
+    changeLanguage={() => undefined}
+    getResourceBundle={() => ({})}
+  >
+    <LayerProvider>
+      <NavigationProvider runtime={navigationRuntime}>
+        <LinkProvider component={LinkAdapter}>
+          <Breadcrumb items={breadcrumbItems} />
+          <AlertBanner
+            tone="error"
+            title="Package alert"
+            description="The installed package rendered AlertBanner."
+          />
+          <EmptyState title="No package items" headingLevel="h3" />
+          <Tabs tabs={tabs} activeTab="install" ariaLabel="Package tabs" />
+          <div {...getTabPanelProps("install", true)}>Install panel</div>
+          <Progress indeterminate label="Package progress" size="sm" state="info" />
+          <UtilityProbe />
+          <Button variant="primary" size="md" onClick={() => undefined}>
+            Typed Button
+          </Button>
+        </LinkProvider>
+      </NavigationProvider>
+    </LayerProvider>
+  </TranslationProvider>
+);
+
+void tree;
+`.trimStart(),
+  );
+  writeFileSync(
+    join(consumer, "tsconfig.json"),
+    JSON.stringify(
+      {
+        compilerOptions: {
+          strict: true,
+          jsx: "react-jsx",
+          module: "ESNext",
+          moduleResolution: "Bundler",
+          target: "ES2022",
+          lib: ["ES2022", "DOM", "DOM.Iterable"],
+          allowSyntheticDefaultImports: true,
+          esModuleInterop: true,
+          skipLibCheck: false,
+          noEmit: true,
+        },
+        include: ["smoke.tsx"],
+      },
+      null,
+      2,
+    ),
+  );
+
+  run(
+    "npm",
+    [
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "--package-lock=false",
+      "--prefer-offline",
+      `react@${reactVersion}`,
+      `react-dom@${reactDomVersion}`,
+      `typescript@${typescriptVersion}`,
+      `@types/react@${reactTypesVersion}`,
+      `@types/react-dom@${reactDomTypesVersion}`,
+      ...tarballs,
+    ],
+    { cwd: consumer },
+  );
+
+  const output = run("npm", ["run", "smoke", "--silent"], {
+    cwd: consumer,
+    capture: true,
+  }).trim();
+  const smoke = JSON.parse(output);
+  run("npm", ["run", "typecheck", "--silent"], { cwd: consumer });
+  report.status = "passed";
+  report.generatedAt = new Date().toISOString();
+  report.consumer = {
+    tokenCount: smoke.tokenCount,
+    reactExports: smoke.reactExports,
+    tokenCssResolved: Boolean(smoke.tokenCss),
+    tokenCssRootResolved: Boolean(smoke.tokenCssRoot),
+    acmeThemeResolved: Boolean(smoke.acmeTheme),
+    acmeThemeWithExtResolved: Boolean(smoke.acmeThemeWithExt),
+    reactCssResolved: Boolean(smoke.reactCss),
+    typecheck: "passed",
+  };
+  writeReport(report);
+  console.log(
+    `\u2713 npm consumer install verified (${smoke.tokenCount} tokens, ${smoke.reactExports} react exports, runtime + types, temp ${scratch})`,
+  );
+  console.log(`  Report: ${relativePath(OUT_JSON)}`);
+} catch (error) {
+  report.status = "failed";
+  report.generatedAt = new Date().toISOString();
+  report.errors = [error instanceof Error ? error.message : String(error)];
+  writeReport(report);
+  throw error;
+} finally {
+  if (!KEEP) {
+    rmSync(scratch, { recursive: true, force: true });
+  } else {
+    console.log(`kept npm consumer smoke workspace: ${scratch}`);
+  }
+}

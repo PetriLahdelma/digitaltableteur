@@ -4,213 +4,524 @@
     "pink": {
       "$value": "#f205c5",
       "$description": "Brand/marketing accent — not default UI chrome.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--accent-pink",
+          "category": "color",
+          "subgroup": "Brand accents"
+        }
+      }
     },
     "purple": {
       "$value": "#812eff",
       "$description": "Brand/marketing accent — not default UI chrome.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--accent-purple",
+          "category": "color",
+          "subgroup": "Brand accents"
+        }
+      }
     },
     "teal": {
       "$value": "#85b5bd",
       "$description": "Brand/marketing accent — not default UI chrome.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--accent-teal",
+          "category": "color",
+          "subgroup": "Brand accents"
+        }
+      }
     },
     "violet": {
       "$value": "#bc6dff",
       "$description": "Brand/marketing accent — not default UI chrome.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--accent-violet",
+          "category": "color",
+          "subgroup": "Brand accents"
+        }
+      }
     },
     "cyan": {
       "$value": "#71efff",
       "$description": "Brand/marketing accent — not default UI chrome.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--accent-cyan",
+          "category": "color",
+          "subgroup": "Brand accents"
+        }
+      }
     },
     "yellow": {
       "$value": "#f2e274",
       "$description": "Brand/marketing accent — not default UI chrome.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--accent-yellow",
+          "category": "color",
+          "subgroup": "Brand accents"
+        }
+      }
     }
   },
   "color": {
     "black": {
       "$value": "#000",
       "$description": "Color token (black).",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--color-black",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        }
+      }
     },
     "white": {
       "$value": "#fff",
       "$description": "Color token (white).",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--color-white",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        }
+      }
     },
     "gray": {
-      "$value": "#5e5e5e",
-      "$description": "Color token (gray).",
-      "$type": "color",
+      "dark": {
+        "$value": "#333",
+        "$description": "Color token (gray-dark).",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-gray-dark",
+            "category": "color",
+            "subgroup": "Greyscale & borders"
+          }
+        }
+      },
+      "DEFAULT": {
+        "$value": "#5e5e5e",
+        "$description": "Color token (gray).",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-gray",
+            "category": "color",
+            "subgroup": "Greyscale & borders"
+          }
+        }
+      },
       "medium": {
         "$value": "#666",
         "$description": "Color token (gray-medium).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-gray-medium",
+            "category": "color",
+            "subgroup": "Greyscale & borders"
+          }
+        }
       }
     },
     "muted": {
-      "$value": "#626a72",
-      "$description": "Color token (muted).",
-      "$type": "color",
+      "DEFAULT": {
+        "$value": "#626a72",
+        "$description": "Color token (muted).",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-muted",
+            "category": "color",
+            "subgroup": "Greyscale & borders"
+          }
+        }
+      },
       "light": {
         "$value": "#909090",
         "$description": "Color token (muted-light).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-muted-light",
+            "category": "color",
+            "subgroup": "Greyscale & borders"
+          }
+        }
       }
     },
     "disabled": {
       "bg": {
-        "$value": "#e0e0e0",
-        "$description": "Color token (disabled-bg).",
-        "$type": "color",
+        "DEFAULT": {
+          "$value": "#e0e0e0",
+          "$description": "Color token (disabled-bg).",
+          "$type": "color",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--color-disabled-bg",
+              "category": "color",
+              "subgroup": "Greyscale & borders"
+            }
+          }
+        },
         "light": {
           "$value": "#d8d8d8",
           "$description": "Color token (disabled-bg-light).",
-          "$type": "color"
+          "$type": "color",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--color-disabled-bg-light",
+              "category": "color",
+              "subgroup": "Greyscale & borders"
+            }
+          }
         }
       },
       "placeholder": {
         "$value": "#858585",
         "$description": "Color token (disabled-placeholder).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-disabled-placeholder",
+            "category": "color",
+            "subgroup": "Greyscale & borders"
+          }
+        }
       }
     },
     "primary": {
-      "$value": "#041b23",
-      "$description": "Primary actions, links, focus rings, and key UI chrome.",
-      "$type": "color"
+      "disabled": {
+        "$value": "#041b2350",
+        "$description": "Color token (primary-disabled).",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-primary-disabled",
+            "category": "color",
+            "subgroup": "Greyscale & borders"
+          }
+        }
+      },
+      "DEFAULT": {
+        "$value": "#041b23",
+        "$description": "Primary actions, links, focus rings, and key UI chrome.",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-primary",
+            "category": "color",
+            "subgroup": "Semantic"
+          }
+        }
+      }
     },
     "title": {
       "$value": "var(--primary-text-color, #041b23)",
       "$description": "Heading color; usually aligned with primary text.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--color-title",
+          "category": "color",
+          "subgroup": "Semantic"
+        }
+      }
     },
     "text": {
       "$value": "var(--primary-text-color, #041b23)",
       "$description": "Default body copy color.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--color-text",
+          "category": "color",
+          "subgroup": "Semantic"
+        }
+      }
     },
     "focus": {
       "ring": {
         "$value": "var(--color-primary)",
         "$description": "Color token (focus-ring).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-focus-ring",
+            "category": "color",
+            "subgroup": "Semantic"
+          }
+        }
       }
     },
     "dark": {
       "$value": "#222",
       "$description": "Color token (dark).",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--color-dark",
+          "category": "color",
+          "subgroup": "Semantic"
+        }
+      }
     },
     "border": {
-      "$value": "#c0c0c0",
-      "$description": "Default 1px borders on inputs, cards, and dividers.",
-      "$type": "color",
+      "DEFAULT": {
+        "$value": "#c0c0c0",
+        "$description": "Default 1px borders on inputs, cards, and dividers.",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-border",
+            "category": "color",
+            "subgroup": "Semantic"
+          }
+        }
+      },
       "light": {
         "$value": "#ccc",
         "$description": "Color token (border-light).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-border-light",
+            "category": "color",
+            "subgroup": "Semantic"
+          }
+        }
       }
     },
     "light": {
       "bg": {
         "$value": "#f9f9f9",
         "$description": "Color token (light-bg).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-light-bg",
+            "category": "color",
+            "subgroup": "Semantic"
+          }
+        }
       }
     },
     "react": {
       "$value": "#61dafb",
       "$description": "Color token (react).",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--color-react",
+          "category": "color",
+          "subgroup": "Semantic"
+        }
+      }
     },
     "header": {
       "bg": {
         "$value": "#282c34",
         "$description": "Color token (header-bg).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-header-bg",
+            "category": "color",
+            "subgroup": "Semantic"
+          }
+        }
       }
     },
     "success": {
       "$value": "#068338",
       "$description": "Success feedback, positive badges, and confirmations.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--color-success",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        }
+      }
     },
     "info": {
       "$value": "#0c7a8b",
       "$description": "Informational alerts and neutral-positive emphasis.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--color-info",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        }
+      }
     },
     "error": {
-      "$value": "#dc3545",
-      "$description": "Errors, destructive actions, and critical alerts.",
-      "$type": "color",
+      "DEFAULT": {
+        "$value": "#dc3545",
+        "$description": "Errors, destructive actions, and critical alerts.",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-error",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
+        }
+      },
       "bg": {
         "$value": "#dfbdbc",
         "$description": "Color token (error-bg).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-error-bg",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
+        }
       },
       "text": {
         "$value": "#7a1f1f",
         "$description": "Color token (error-text).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-error-text",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
+        }
       }
     },
     "warning": {
-      "$value": "#ffc107",
-      "$description": "Warning surfaces; pair with --color-warning-text.",
-      "$type": "color",
+      "DEFAULT": {
+        "$value": "#ffc107",
+        "$description": "Warning surfaces; pair with --color-warning-text.",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-warning",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
+        }
+      },
       "contrast": {
         "$value": "#8d5a00",
         "$description": "Color token (warning-contrast).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-warning-contrast",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
+        }
       },
       "text": {
         "$value": "#041b23",
         "$description": "Color token (warning-text).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-warning-text",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
+        }
       }
     },
     "neutral": {
       "bg": {
         "$value": "#e2e8f0",
         "$description": "Color token (neutral-bg).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-neutral-bg",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
+        }
       },
       "text": {
         "$value": "#1a1d26",
         "$description": "Color token (neutral-text).",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-neutral-text",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
+        }
       }
     },
     "surface": {
       "$value": "var(--main-body-background-color)",
       "$description": "Color token (surface).",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--color-surface",
+          "category": "color",
+          "subgroup": "Surfaces"
+        }
+      }
     }
   },
   "selection": {
     "color": {
       "$value": "var(--color-white)",
       "$description": "Text selection foreground.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--selection-color",
+          "category": "color",
+          "subgroup": "Semantic"
+        }
+      }
     },
     "background": {
       "$value": "var(--color-primary)",
       "$description": "Text selection highlight background.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--selection-background",
+          "category": "color",
+          "subgroup": "Surfaces"
+        }
+      }
     }
   },
   "link": {
     "color": {
       "$value": "#041b23",
       "$description": "Hyperlink color in prose and inline links.",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--link-color",
+          "category": "color",
+          "subgroup": "Semantic"
+        }
+      }
     }
   },
   "logo": {
@@ -218,18 +529,53 @@
       "color": {
         "$value": "var(--color-text)",
         "$description": "Production token --logo-text-color",
-        "$type": "color"
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--logo-text-color",
+            "category": "color",
+            "subgroup": "Semantic"
+          }
+        }
       }
     },
     "color": {
       "$value": "#000",
       "$description": "Production token --logo-color",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--logo-color",
+          "category": "color",
+          "subgroup": "Semantic"
+        }
+      }
     },
     "background": {
       "$value": "#dfff00",
       "$description": "Production token --logo-background",
-      "$type": "color"
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--logo-background",
+          "category": "color",
+          "subgroup": "Surfaces"
+        }
+      }
+    }
+  },
+  "home": {
+    "gradient": {
+      "$value": "linear-gradient(\n    120deg,\n    #007cf0 0%,\n    #ff0080 50%,\n    #fff200 100%\n  )",
+      "$description": "Brand gradient used for expressive homepage and marketing treatments.",
+      "$type": "gradient",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--home-gradient",
+          "category": "color",
+          "subgroup": "Semantic"
+        }
+      }
     }
   },
   "main": {
@@ -238,14 +584,28 @@
         "color": {
           "$value": "#041b23",
           "$description": "Production token --main-body-copy-color",
-          "$type": "color"
+          "$type": "color",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--main-body-copy-color",
+              "category": "color",
+              "subgroup": "Surfaces"
+            }
+          }
         }
       },
       "background": {
         "color": {
           "$value": "#fff",
           "$description": "Page canvas / body background.",
-          "$type": "color"
+          "$type": "color",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--main-body-background-color",
+              "category": "color",
+              "subgroup": "Surfaces"
+            }
+          }
         }
       }
     }

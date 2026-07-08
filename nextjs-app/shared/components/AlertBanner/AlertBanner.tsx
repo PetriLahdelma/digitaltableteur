@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import styles from "./AlertBanner.module.css";
 import Icon from "@dt/Icon";
 import Button from "@dt/Button";
@@ -46,7 +46,7 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
   onDismiss,
   "aria-live": ariaLive,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   // Error banners must interrupt assistive tech (role=alert / assertive);
   // other tones are polite status updates. An explicit aria-live prop wins.
   const isError = tone === "error";

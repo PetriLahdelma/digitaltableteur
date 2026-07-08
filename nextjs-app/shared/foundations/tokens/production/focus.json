@@ -4,15 +4,39 @@
     "ring": {
       "color": {
         "$value": "var(--color-primary)",
-        "$description": "Keyboard focus outline color (WCAG focus appearance)."
+        "$description": "Keyboard focus outline color (WCAG focus appearance).",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--focus-ring-color",
+            "category": "focus",
+            "subgroup": "General"
+          }
+        }
       },
       "width": {
         "$value": "2px",
-        "$description": "Focus ring token for keyboard accessibility."
+        "$description": "Focus ring token for keyboard accessibility.",
+        "$type": "dimension",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--focus-ring-width",
+            "category": "focus",
+            "subgroup": "General"
+          }
+        }
       },
       "offset": {
         "$value": "2px",
-        "$description": "Focus ring token for keyboard accessibility."
+        "$description": "Focus ring token for keyboard accessibility.",
+        "$type": "dimension",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--focus-ring-offset",
+            "category": "focus",
+            "subgroup": "General"
+          }
+        }
       }
     }
   }

@@ -5,7 +5,7 @@
   position: fixed;
   inset-inline: 0;
 
-  /* Below chat widget (1000+) so Donny stays reachable on first visit */
+  /* Below high-priority floating host UI so first-visit controls stay reachable. */
   z-index: 900;
   padding-block: var(--space-layout-16);
   padding-block-end: max(

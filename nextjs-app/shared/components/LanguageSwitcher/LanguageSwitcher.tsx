@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import styles from "./LanguageSwitcher.module.css";
 
@@ -61,7 +61,7 @@ export function LanguageSwitcher({
   openTriggerClassName = defaultOpenTriggerClassName,
   floatedButtonClassName = defaultFloatedButtonClassName,
 }: LanguageSwitcherProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const optionsId = useId();

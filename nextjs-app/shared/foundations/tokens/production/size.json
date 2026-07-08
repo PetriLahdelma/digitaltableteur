@@ -4,15 +4,39 @@
     "width": {
       "md": {
         "$value": "320px",
-        "$description": "Production token --size-width-md"
+        "$description": "Production token --size-width-md",
+        "$type": "dimension",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--size-width-md",
+            "category": "size",
+            "subgroup": "General"
+          }
+        }
       },
       "lg": {
         "$value": "900px",
-        "$description": "Production token --size-width-lg"
+        "$description": "Production token --size-width-lg",
+        "$type": "dimension",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--size-width-lg",
+            "category": "size",
+            "subgroup": "General"
+          }
+        }
       },
       "form": {
         "$value": "600px",
-        "$description": "Production token --size-width-form"
+        "$description": "Production token --size-width-form",
+        "$type": "dimension",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--size-width-form",
+            "category": "size",
+            "subgroup": "General"
+          }
+        }
       }
     }
   }

@@ -9,6 +9,7 @@ import Icon, { type IconProps } from "@dt/Icon";
 import { normalizeTitleSize, type TitleSizeUnified } from "../../utils/sizeNormalization";
 import { useFocusTrap } from "../../hooks/useFocusTrap";
 import { useScrollLock } from "../../hooks/useScrollLock";
+import { useLayer } from "../../lib/layer";
 
 export type ModalSeverity = "success" | "error" | "warning" | "info";
 export type ModalAnimation = "none" | "scale" | "slide" | "fade";
@@ -93,6 +94,7 @@ const Modal: React.FC<ModalProps> = ({
   const titleId = useId();
   const descriptionId = useId();
   const modalRef = useRef<HTMLDivElement>(null);
+  const { container: layerContainer } = useLayer({ role: "modal" });
 
   useEffect(() => {
     if (!panelRef || !modalRef.current) return;
@@ -269,8 +271,8 @@ const Modal: React.FC<ModalProps> = ({
   );
 
   // Use portal if available (client-side), otherwise render directly
-  if (typeof document !== "undefined") {
-    return createPortal(modalContent, document.body);
+  if (layerContainer) {
+    return createPortal(modalContent, layerContainer);
   }
 
   return modalContent;

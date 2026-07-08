@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import fieldStyles from "../Combobox/ComboboxField.module.css";
 import styles from "./FileUpload.module.css";
@@ -67,7 +67,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
   appearance = "default",
   className,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const hiddenInputRef = useRef<HTMLInputElement>(null);
   const fieldId = useId();
   const helperId = useId();

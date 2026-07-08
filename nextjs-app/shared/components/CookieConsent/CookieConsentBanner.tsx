@@ -5,7 +5,7 @@
  */
 
 import React, { useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Button from "@dt/Button";
 import Link from "@dt/Link";
 import { useCookieConsent } from "../../lib/cookieConsent";
@@ -21,16 +21,13 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
   onCustomize,
   className,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const { acceptAll, acceptEssentialOnly } = useCookieConsent();
   const bannerRef = useRef<HTMLDivElement>(null);
 
   // While the banner is mounted, flag it on <body> and publish its measured
-  // height so the floating chat toggle can lift clear of the banner's CTAs
-  // (the toggle keys off body[data-cookie-banner-open] in ChatWidget.module.css,
-  // mirroring the existing data-mobile-menu-open pattern). Measuring the height
-  // keeps the lift correct across locales and wrapped buttons. The banner is
-  // conditionally mounted, so set-on-mount / clean-on-unmount tracks visibility.
+  // height so host-app floating UI can avoid covering the banner's CTAs.
+  // Measuring keeps the offset correct across locales and wrapped buttons.
   useEffect(() => {
     const el = bannerRef.current;
     if (!el || typeof document === "undefined") return;

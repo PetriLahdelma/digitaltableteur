@@ -9,7 +9,7 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import styles from "./TextInput.module.css";
 import Label from "@dt/Label";
 import HelperText from "@dt/HelperText";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import {
   parsePhoneNumber,
   formatIncompletePhoneNumber,
@@ -65,7 +65,7 @@ const TextInput: React.FC<TextInputProps> = ({
   disabled = false,
   ...rest
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   // Generate stable unique IDs for accessibility
   const inputId = useId();

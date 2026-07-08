@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "../../lib/linkComponent";
-import { usePathname } from "next/navigation";
+import { useNavigationPathname } from "../../lib/navigation";
 import { type ReactNode } from "react";
 import { cn } from "../../lib/cn";
 
@@ -31,7 +31,7 @@ export function NavLink({
   // usePathname() returns string | null per Next.js typing — null occurs in
   // SSR fallback and outside the app router (e.g. Storybook). Treat null as
   // "no current pathname" → never active.
-  const pathname = usePathname();
+  const pathname = useNavigationPathname();
   const isActive = pathname === null
     ? false
     : exact

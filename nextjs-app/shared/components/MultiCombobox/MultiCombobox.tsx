@@ -8,7 +8,7 @@ import React, {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import Badge from "@dt/Badge";
 import HelperText from "@dt/HelperText";
@@ -62,7 +62,7 @@ export function MultiCombobox({
   disabled = false,
   className,
 }: MultiComboboxProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const generatedId = useId();
   const fieldId = providedId ?? `multicombobox-${generatedId}`;
   const listboxId = `${fieldId}-listbox`;
