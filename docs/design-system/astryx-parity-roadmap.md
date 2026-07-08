@@ -81,7 +81,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 - [ ] 1.9 Site consumes `@dt/react` via the workspace; full gate green.
 
 ### Phase 2: Curated utilities operational → Accessibility, Futureproofness ("selected utilities operational")
-- [ ] 2.1 `useMediaQuery` (consolidate 17 `matchMedia`); flip state to operational.
+- [x] 2.1 `useMediaQuery` — SSR-safe canonical primitive at `nextjs-app/shared/hooks/useMediaQuery.ts` (+ test); operational. Migrated the one genuine responsive-breakpoint site (SocialShare `(width < 768px)`). The other `matchMedia` sites are `prefers-reduced-motion` (owned by `useHydrationSafeMotion`/`motion-safe`) and `prefers-color-scheme` (ThemeProvider), left intentionally; new responsive checks use this hook.
 - [ ] 2.2 `useFocusTrap` (custom overlays); flip to operational.
 - [ ] 2.3 `useScrollLock` (custom overlays); flip to operational.
 - [ ] 2.4 `LinkProvider` formalized in the Utilities surface (from 1.3); flip to operational.
