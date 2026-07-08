@@ -96,6 +96,10 @@ jobs:
         if: ${{ inputs.package == 'react' || inputs.package == 'all' }}
         run: npm run check:react-public-surface -- --require-publishable
 
+      - name: Verify @digitaltableteur/react OIDC publish auth
+        if: ${{ (inputs.package == 'react' || inputs.package == 'all') && inputs.dry_run == false }}
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react
+
       - name: Publish @digitaltableteur/tokens
         if: ${{ inputs.package == 'tokens' || inputs.package == 'all' }}
         working-directory: packages/tokens

@@ -253,6 +253,7 @@ const REQUIRED_REPOSITORY_PATHS = [
   "scripts/design-system/astryx-roadmap.state.json",
   "scripts/design-system/build-token-css.mjs",
   "scripts/design-system/build-tokens.mjs",
+  "scripts/design-system/check-npm-oidc-publish-auth.mjs",
   "scripts/design-system/check-npm-consumer-install.mjs",
   "scripts/design-system/check-package-publish-dry-run.mjs",
   "scripts/design-system/check-package-registry-resolution.mjs",
@@ -400,6 +401,9 @@ ${formatPackageRows(report.packages)}
   OIDC-only and must not receive \`NPM_TOKEN\`, \`NODE_AUTH_TOKEN\`, or
   \`NPM_READ_TOKEN\`.
 - Keep npm publish commands restricted: \`npm publish --access restricted\`.
+- Keep the workflow-only OIDC auth guard immediately before real React publishes
+  so failed trust exchanges report npm's redacted OIDC diagnostic instead of
+  falling through to \`ENEEDAUTH\`.
 - Keep \`@digitaltableteur/react\` behind \`check:react-publish-clearance\` and \`check:react-public-surface -- --require-publishable\`.
 - Local machines remain the CI-quality authority; GitHub Actions is only the npm OIDC transport.
 
@@ -555,6 +559,8 @@ if (!existsSync(WORKFLOW)) {
     "npm run check:react-public-api",
     "npm run check:react-publish-clearance",
     "npm run check:react-public-surface -- --require-publishable",
+    "Verify @digitaltableteur/react OIDC publish auth",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" node scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react",
     "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" npm publish --dry-run --access restricted",
     "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" npm publish --access restricted",
     "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-read.npmrc\" npm run check:react-registry-install",
