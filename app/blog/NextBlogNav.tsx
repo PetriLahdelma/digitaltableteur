@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
@@ -13,6 +14,7 @@ const normalizePath = (path: string) =>
   path === "/" ? path : path.replace(/\/+$/, "");
 
 export function NextBlogNav() {
+  const { t } = useTranslation();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -35,16 +37,23 @@ export function NextBlogNav() {
         <Button
           variant="tertiary"
           size="md"
-          icon={<Icon name="text-align-left" ariaLabel="Articles" />}
+          icon={
+            <Icon
+              name="text-align-left"
+              ariaLabel={t("blogNavBackToArticles")}
+            />
+          }
           onClick={() => router.push("/blog")}
         >
-          <span className={styles.buttonLabel}>Articles</span>
+          <span className={styles.buttonLabel}>
+            {t("blogNavBackToArticles")}
+          </span>
         </Button>
         <div className={styles.navButtons}>
           <Button
             variant="tertiary"
             size="md"
-            icon={<Icon name="arrow-left" ariaLabel="Previous article" />}
+            icon={<Icon name="arrow-left" ariaLabel={t("blogNavPrev")} />}
             disabled={!isArticleRoute || currentIndex <= 0}
             onClick={() => {
               if (!isArticleRoute) return;
@@ -52,12 +61,12 @@ export function NextBlogNav() {
                 router.push(blogPages[currentIndex - 1].path);
             }}
           >
-            <span className={styles.buttonLabel}>Previous</span>
+            <span className={styles.buttonLabel}>{t("blogNavPrev")}</span>
           </Button>
           <Button
             variant="tertiary"
             size="md"
-            endIcon={<Icon name="arrow-right" ariaLabel="Next article" />}
+            endIcon={<Icon name="arrow-right" ariaLabel={t("blogNavNext")} />}
             disabled={
               !isArticleRoute || currentIndex === blogPages.length - 1
             }
@@ -67,7 +76,7 @@ export function NextBlogNav() {
                 router.push(blogPages[currentIndex + 1].path);
             }}
           >
-            <span className={styles.buttonLabel}>Next</span>
+            <span className={styles.buttonLabel}>{t("blogNavNext")}</span>
           </Button>
         </div>
       </div>

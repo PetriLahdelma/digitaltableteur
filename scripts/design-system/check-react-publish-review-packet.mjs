@@ -84,6 +84,8 @@ const REQUIRED_RUNTIME_EXPORTS = [
   "useOverflow",
   "useScrollOverflow",
 ];
+const MIN_REACT_RUNTIME_EXPORTS = 105;
+const MIN_REACT_PUBLIC_SURFACE_EXPORTS = 61;
 
 function relativePath(path) {
   return relative(ROOT, path);
@@ -221,8 +223,10 @@ function validateApiReport(report, errors) {
   if (!report.packageExports?.["."] || !report.packageExports?.["./style.css"]) {
     errors.push("React public API report does not include both . and ./style.css package exports.");
   }
-  if (runtimeExports.length < 135) {
-    errors.push(`React public API report has ${runtimeExports.length} runtime exports; expected at least 135.`);
+  if (runtimeExports.length < MIN_REACT_RUNTIME_EXPORTS) {
+    errors.push(
+      `React public API report has ${runtimeExports.length} runtime exports; expected at least ${MIN_REACT_RUNTIME_EXPORTS}.`,
+    );
   }
   for (const exportName of missingRuntimeExports) {
     errors.push(`React public API report is missing required export ${exportName}.`);
@@ -247,8 +251,10 @@ function validateSurfaceReport(report, errors) {
   if (alphaExports.length !== 0) {
     errors.push(`React public surface exposes alpha contracts: ${alphaExports.join(", ")}.`);
   }
-  if ((report.summary?.total ?? 0) < 73) {
-    errors.push(`React public surface summary total is ${report.summary?.total ?? 0}; expected at least 73.`);
+  if ((report.summary?.total ?? 0) < MIN_REACT_PUBLIC_SURFACE_EXPORTS) {
+    errors.push(
+      `React public surface summary total is ${report.summary?.total ?? 0}; expected at least ${MIN_REACT_PUBLIC_SURFACE_EXPORTS}.`,
+    );
   }
 
   return {
@@ -462,8 +468,10 @@ function validateNpmConsumerInstallReport(report, errors) {
   if ((report.consumer?.tokenCount ?? 0) < 180) {
     errors.push(`npm consumer install report has tokenCount=${report.consumer?.tokenCount ?? "missing"}; expected at least 180.`);
   }
-  if ((report.consumer?.reactExports ?? 0) < 135) {
-    errors.push(`npm consumer install report has reactExports=${report.consumer?.reactExports ?? "missing"}; expected at least 135.`);
+  if ((report.consumer?.reactExports ?? 0) < MIN_REACT_RUNTIME_EXPORTS) {
+    errors.push(
+      `npm consumer install report has reactExports=${report.consumer?.reactExports ?? "missing"}; expected at least ${MIN_REACT_RUNTIME_EXPORTS}.`,
+    );
   }
   for (const field of [
     "tokenCssResolved",

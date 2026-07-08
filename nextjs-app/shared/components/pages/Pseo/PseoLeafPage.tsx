@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { mergeLeafCopy } from "@/lib/pseo/leaf-blocks";
 import type {
   PseoLeafPage,
@@ -8,6 +6,7 @@ import type {
 } from "@/lib/pseo/types";
 
 import Card from "@dt/Card";
+import Breadcrumb from "@dt/Breadcrumb";
 import Button from "@dt/Button";
 import MarkdownMessage from "@dt/MarkdownMessage";
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
@@ -79,19 +78,22 @@ export function PseoLeafPageView({
   return (
     <PageLayout as="main" maxWidth="md" spacing="comfortable">
       <div className={styles.root}>
-        <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
-          <Link href="/pseo">Playbooks</Link>
-          <span aria-hidden="true">/</span>
-          <Link href={`/pseo/services/${page.service.slug}`}>
-            {page.service.name}
-          </Link>
-          <span aria-hidden="true">/</span>
-          <Link href={`/pseo/stacks/${page.stack.slug}`}>
-            {page.stack.displayName ?? page.stack.name}
-          </Link>
-          <span aria-hidden="true">/</span>
-          <span>{page.audience.name}</span>
-        </nav>
+        <div className={styles.breadcrumbs}>
+          <Breadcrumb
+            items={[
+              { label: "Playbooks", href: "/pseo" },
+              {
+                label: page.service.name,
+                href: `/pseo/services/${page.service.slug}`,
+              },
+              {
+                label: page.stack.displayName ?? page.stack.name,
+                href: `/pseo/stacks/${page.stack.slug}`,
+              },
+              { label: page.audience.name },
+            ]}
+          />
+        </div>
 
         <Title level={1} size="l">
           {page.title}

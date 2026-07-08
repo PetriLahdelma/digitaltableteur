@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import styles from "./LanguageNotice.module.css";
+import { useToast } from "@/providers/ToastProvider";
 
 interface LanguageNoticeProps {
   /** The language code of the content (e.g., "en") */
@@ -16,30 +17,31 @@ interface LanguageNoticeProps {
  */
 export function LanguageNotice({
   contentLanguage,
-  className,
 }: LanguageNoticeProps) {
   const { i18n, t } = useTranslation();
+  const { showToast } = useToast();
+  const lastNoticeRef = useRef<string | null>(null);
 
   // Normalize to 2-letter code
   const currentLang = (i18n.language?.split("-")[0] || "en").toLowerCase();
   const contentLang = contentLanguage.toLowerCase();
 
-  // Don't show if current UI language matches content language
-  if (currentLang === contentLang) {
-    return null;
-  }
-
-  // Get the language name in the current UI language
   const languageName = t(`languageName.${contentLang}`, {
     defaultValue: "English",
   });
+  const notice = t("contentLanguageNotice", { language: languageName });
 
-  return (
-    <p
-      className={`${styles.notice} ${className || ""}`.trim()}
-      lang={currentLang} // Notice text is in UI language
-    >
-      {t("contentLanguageNotice", { language: languageName })}
-    </p>
-  );
+  useEffect(() => {
+    if (currentLang === contentLang) return;
+    const noticeKey = `${currentLang}:${contentLang}:${notice}`;
+    if (lastNoticeRef.current === noticeKey) return;
+    lastNoticeRef.current = noticeKey;
+    showToast(notice, {
+      duration: 5000,
+      tone: "info",
+      position: "bottom-center",
+    });
+  }, [contentLang, currentLang, notice, showToast]);
+
+  return null;
 }
