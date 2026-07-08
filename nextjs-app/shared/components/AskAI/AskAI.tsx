@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import type { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import Checkbox from "@dt/Checkbox";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import {
   ChatGPTIcon,
   ClaudeIcon,

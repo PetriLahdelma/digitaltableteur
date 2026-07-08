@@ -71,7 +71,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 
 ### Phase 1: Package boundary + decoupling → Maturity, Scalability, Futureproofness, Distribution
 - [ ] 1.1 Convert to a workspace (`packages/design-system`, `packages/tokens`, `apps/site`).
-- [ ] 1.2 Internalize `cn` / `@/lib/utils` into the DS boundary (38 files); ratchet `catalogAppImports` down.
+- [x] 1.2 Internalize `cn` / `@/lib/utils` into the DS boundary (moved to `nextjs-app/shared/lib/cn`, 55 imports repointed, app re-exports for back-compat); `catalogAppImports` 41 → 5.
 - [ ] 1.3 **Link Provider** utility → decouple `next/link` (falls back to `<a>`); ratchet `catalogNextImports` down. (Also a utility deliverable.)
 - [ ] 1.4 Image slot/provider → decouple `next/image`.
 - [ ] 🔒 1.5 i18n decoupling: injected translator / prop-driven copy with English defaults (46 files); ratchet `catalogI18nImports` down. **Checkpoint: multi-locale + browser review before merge.**

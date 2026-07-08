@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import styles from "./Kbd.module.css";
 
 export type KbdSize = "sm" | "md" | "lg";

@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import Button from "@dt/Button";
 import styles from "./ContactFormSuccessEditorial.module.css";
 

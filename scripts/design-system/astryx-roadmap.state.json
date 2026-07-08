@@ -17,7 +17,7 @@
         },
         {
             "key": "scalability",
-            "current": 54,
+            "current": 56,
             "target": 90
         },
         {
@@ -59,7 +59,7 @@
     ],
     "ratchets": {
         "catalogAppImports": {
-            "ceiling": 41,
+            "ceiling": 5,
             "desc": "catalog source files importing @/ (app root); must only decrease"
         },
         "catalogNextImports": {

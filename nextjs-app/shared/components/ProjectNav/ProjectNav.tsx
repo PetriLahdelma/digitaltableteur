@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import { ArrowLeft, ArrowRight, Briefcase } from "@phosphor-icons/react";
 import { getProjectNavigation } from "../../data/projects";
 import { Container } from "../Container";

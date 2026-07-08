@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import fieldStyles from "../Combobox/ComboboxField.module.css";
 import styles from "./FileUpload.module.css";
 import TextInput from "@dt/TextInput";

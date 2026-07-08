@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface HeroBackgroundProps {
   /** Background style variant */

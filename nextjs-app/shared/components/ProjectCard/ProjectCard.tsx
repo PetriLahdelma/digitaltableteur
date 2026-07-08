@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface ProjectCardProps {
   /** Project title */

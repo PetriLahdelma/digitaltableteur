@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import { BlogMediaImage } from "@dt/BlogMediaImage";
 import { isSvgSrc } from "@/lib/media/imageSrc";
 import styles from "./EnhancedArticleCard.module.css";
