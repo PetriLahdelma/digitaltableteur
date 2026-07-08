@@ -16,7 +16,7 @@ import { NextLinkProvider } from "../providers/NextLinkProvider";
 import { NextImageProvider } from "../providers/NextImageProvider";
 import { NextNavigationProvider } from "../providers/NextNavigationProvider";
 import { SmoothScrollProvider } from "../providers/SmoothScrollProvider";
-import { CookieConsentProvider } from "@digitaltableteur/react";
+import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent";
 import { NextLayout } from "@dt/NextLayout";
 import { WebMcpProvider } from "../providers/WebMcpProvider";
 import { HtmlLangSync } from "./components/HtmlLangSync";
