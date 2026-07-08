@@ -96,7 +96,11 @@ function parsePackJson(stdout, packageName) {
   for (const candidate of candidates) {
     try {
       const parsed = JSON.parse(candidate);
-      const rows = Array.isArray(parsed) ? parsed : [parsed];
+      const rows = Array.isArray(parsed)
+        ? parsed
+        : parsed?.[packageName]
+          ? [parsed[packageName]]
+          : [parsed];
       if (rows.length !== 1) {
         throw new Error(`npm pack for ${packageName} returned ${rows.length} package rows.`);
       }
