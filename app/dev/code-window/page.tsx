@@ -1,7 +1,9 @@
-import CodeBlockWindow from "@dt/CodeBlockWindow";
-import { Container } from "@dt/Container";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
+import {
+  CodeBlockWindow,
+  Container,
+  Text,
+  Title,
+} from "@digitaltableteur/react";
 import { codeBlockFixtures } from "@dt/CodeBlockWindow/codeBlockFixtures";
 import { renderCodeBlockFixtureNode } from "@dt/CodeBlockWindow/CodeBlockFixtureRenderer";
 import styles from "./page.module.css";

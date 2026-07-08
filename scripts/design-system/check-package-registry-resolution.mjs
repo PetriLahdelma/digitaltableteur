@@ -53,6 +53,9 @@ const RUNTIME_SCAN_EXTENSIONS = new Set([
   ".tsx",
 ]);
 const FORBIDDEN_LOCAL_PACKAGE_IMPORT = /from\s+["'][^"']*packages\/(?:react|tokens|tokens-css)(?:\/package\.json)?["']|import\s*\(\s*["'][^"']*packages\/(?:react|tokens|tokens-css)(?:\/package\.json)?["']\s*\)|require\s*\(\s*["'][^"']*packages\/(?:react|tokens|tokens-css)(?:\/package\.json)?["']\s*\)/;
+const CONTEXT_SCAN_ROOTS = ["app", "providers"];
+const FORBIDDEN_LOCAL_CONTEXT_IMPORT =
+  /from\s+["'](?:@dt\/(?:ThemeProvider|Toast(?:\/Toast)?|CookieConsent(?:\/[^"']*)?|NavigationProvider|NavLink|NavMenuList|LinkProvider|ImageProvider|LayerProvider|useFocusTrap|useMediaQuery|useOverflow|useScrollLock)|@\/nextjs-app\/shared\/(?:lib\/(?:toast|cookieConsent|navigation|linkComponent|imageComponent|layer)(?:\/[^"']*)?|hooks\/(?:useFocusTrap|useMediaQuery|useOverflow|useScrollLock)|components\/(?:ThemeProvider|Toast|CookieConsent|NavLink|NavMenuList)(?:\/[^"']*)?))["']/;
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
@@ -103,6 +106,7 @@ const workspaces = packageJson.workspaces ?? [];
 const errors = [];
 const rows = [];
 const forbiddenRuntimeImports = [];
+const forbiddenLocalContextImports = [];
 
 if (Array.isArray(workspaces) && workspaces.length > 0) {
   errors.push(
@@ -192,12 +196,29 @@ for (const root of RUNTIME_SCAN_ROOTS) {
   }
 }
 
+for (const root of CONTEXT_SCAN_ROOTS) {
+  const rootDir = join(ROOT, root);
+  if (!existsSync(rootDir) || !statSync(rootDir).isDirectory()) continue;
+  for (const file of sourceFiles(rootDir)) {
+    const source = readFileSync(file, "utf8");
+    if (FORBIDDEN_LOCAL_CONTEXT_IMPORT.test(source)) {
+      const relativeFile = relativePath(file);
+      forbiddenLocalContextImports.push(relativeFile);
+      errors.push(
+        `${relativeFile} imports local design-system provider/hook context; app consumers must import shared providers/hooks from @digitaltableteur/react so registry and local React contexts cannot diverge.`,
+      );
+    }
+  }
+}
+
 const report = {
   generatedAt: new Date().toISOString(),
   status: errors.length ? "failed" : "passed",
   rows,
   runtimeScanRoots: RUNTIME_SCAN_ROOTS,
+  contextScanRoots: CONTEXT_SCAN_ROOTS,
   forbiddenRuntimeImports,
+  forbiddenLocalContextImports,
   errors,
 };
 

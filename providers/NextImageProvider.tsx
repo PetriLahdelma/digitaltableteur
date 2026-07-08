@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import {
   ImageProvider,
   type ImageComponentProps,
-} from "@/nextjs-app/shared/lib/imageComponent";
+} from "@digitaltableteur/react";
 
 /** Adapts next/image to the design-system ImageComponent contract. */
 function NextImageAdapter({ src, alt, ...rest }: ImageComponentProps) {

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Container } from "@digitaltableteur/react";
 
 import { getPostMetaBySlug } from "@/app/blog/postMetadata";
 import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
-import { Container } from "@/nextjs-app/shared/components/Container";
 
 function formatPublishedDate(iso?: string): string {
   if (!iso) return "";
