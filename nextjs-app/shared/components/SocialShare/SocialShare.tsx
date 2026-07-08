@@ -217,17 +217,19 @@ export const SocialShare = ({
           const meta = CHANNEL_META[channel];
           const href = meta.buildHref(encodedUrl, encodedTitle);
           return (
-            <a
+            <Button
               key={channel}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
+              variant="tertiary"
+              size={isMobile ? "sm" : "md"}
+              rounded
+              icon={meta.icon}
               className={styles.channelLink}
-              aria-label={t(meta.labelKey)}
+              accessibleName={t(meta.labelKey)}
               {...(meta.isProfile ? { "aria-describedby": undefined } : {})}
-            >
-              <Icon name={meta.icon} ariaLabel={t(meta.labelKey)} />
-            </a>
+            />
           );
         })}
 

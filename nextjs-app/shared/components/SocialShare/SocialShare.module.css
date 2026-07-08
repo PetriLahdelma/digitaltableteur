@@ -28,42 +28,7 @@
 }
 
 .channelLink {
-  display: flex;
-  width: 2.5rem;
-  height: 2.5rem;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background-color: var(--main-body-background-color, var(--color-white));
-  text-decoration: none;
-  color: var(--color-primary);
-  transition:
-    border-color var(--duration-fast) var(--ease-out-cubic),
-    background-color var(--duration-fast) var(--ease-out-cubic);
-}
-
-.channelLink:hover {
-  border-color: var(--color-primary);
-  background-color: var(--color-light-bg);
-}
-
-.channelLink:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Keep a11y.reducedMotion honest: neutralise the hover colour transition
-   for users who ask for reduced motion (matches NavLink / LanguageSwitcher). */
-@media (prefers-reduced-motion: reduce) {
-  .channelLink {
-    transition: none;
-  }
-}
-
-.channelLink svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  flex-shrink: 0;
 }
 
 .copyButton {
@@ -88,30 +53,10 @@
     gap: var(--space-internal-8);
   }
 
-  .channelLink {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
-
   .copyButton {
     min-width: 2.25rem;
     min-height: 2.25rem;
     padding: 0;
     justify-content: center;
   }
-}
-
-@media (forced-colors: active) {
-  .channelLink {
-    border: 1px solid CanvasText;
-    forced-color-adjust: none;
-  }
-
-  .channelLink:focus-visible {
-    outline: 2px solid Highlight;
-  }
-}
-
-:global(html.sb-forced-colors-active) .channelLink {
-  border: 1px solid CanvasText;
 }
