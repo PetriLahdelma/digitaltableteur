@@ -1,0 +1,10 @@
+{
+  "name": "acme",
+  "selector": "[data-brand=\"acme\"]",
+  "description": "Demo alternate brand: re-points a handful of semantic tokens to show multi-brand theming from the same catalog.",
+  "tokens": {
+    "--color-primary": "#5b21b6",
+    "--color-info": "#0ea5e9",
+    "--color-focus-ring": "#5b21b6"
+  }
+}

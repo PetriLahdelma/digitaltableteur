@@ -25,3 +25,23 @@ High-contrast themes widen focus rings (`--focus-ring-width: 3px`) and adjust se
 
 See **Foundations/Themes** for a side-by-side semantic matrix.
 
+## Multi-brand theming
+
+A brand is an override layer over the same catalog, exactly like `.themeDark`. To
+generate one, write a brand file that re-points semantic tokens:
+
+```json
+{ "name": "acme", "selector": "[data-brand=\"acme\"]",
+  "tokens": { "--color-primary": "#5b21b6", "--color-info": "#0ea5e9" } }
+```
+
+```bash
+npm run generate:theme scripts/design-system/themes/acme.brand.json
+```
+
+This validates every token against the production catalog (an unknown token is a
+hard error, never a silent no-op) and emits a scoped block to
+`foundations/dist/themes/<name>.css`. Load it and set `data-brand="acme"` on a
+subtree; the light / dark / high-contrast overrides still apply on top. A demo
+`acme` brand ships as the worked example.
+

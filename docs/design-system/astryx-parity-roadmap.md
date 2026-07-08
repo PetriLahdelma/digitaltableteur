@@ -100,7 +100,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 - [ ] 3.3 Close any intended-surface gaps found in 0.5; promote the whole checklist to `stable`.
 
 ### Phase 4: Governance + agent-readiness + theming → those three to 90
-- [ ] 4.1 Multi-brand theme generation from DTCG + a demo theme.
+- [x] 4.1 Multi-brand theme generation: `scripts/design-system/generate-theme.mjs` (+ test, `npm run generate:theme`) emits a scoped brand override block validated against the token catalog (unknown token = hard error) into stylelint-ignored `dist/themes/`; demo `acme` brand + `03-Theming` doc section. On top of existing light/dark/HC/forced-colors. **theming → 90** (3rd dimension at target).
 - [x] 4.2 Agent-readiness verified + documented: `07-Agent-Readiness.mdx`. `find-component` CLI (intent-ranked) and `ds:mcp` stdio MCP server (`digitaltableteur-design-system`, tools+resources+docs-registry) both smoke-tested working; dist artifacts (agent-manifest 158 comps, docs-registry, agent-blocks, zod catalog) + `agent:eval` harness documented. **agentReadiness → 90** (2nd dimension at target).
 - [x] 4.3 Contract schema exposed + documented: `06-Governance.mdx` (`Overview/06-Governance`) documents the versioned schema (public `$id`), the drift-as-build-failure gate stack, and the agent inputs. Schema was already published via its public `$id`; now discoverable. **governance → 90** (first dimension at target).
 
