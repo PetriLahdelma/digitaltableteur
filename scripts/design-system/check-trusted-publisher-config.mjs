@@ -35,6 +35,7 @@ const REQUIRED_REPOSITORY_PATHS = [
   ".github/workflows/security-scanning.yml",
   ".npm-userconfig",
   ".npmrc",
+  ".nvmrc",
   "nextjs-app/shared/components/AlertBanner/AlertBanner.module.css",
   "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
   "nextjs-app/shared/components/Avatar/Avatar.tsx",
@@ -514,6 +515,21 @@ for (const row of repositoryPaths) {
   }
 }
 
+const nvmrcPath = join(ROOT, ".nvmrc");
+if (existsSync(nvmrcPath)) {
+  const nvmrcVersion = readFileSync(nvmrcPath, "utf8").trim();
+  const match = /^(\d+)\.(\d+)\.(\d+)$/.exec(nvmrcVersion);
+  if (!match) {
+    errors.push(".nvmrc must pin an exact Node version such as 22.22.3.");
+  } else {
+    const major = Number(match[1]);
+    const minor = Number(match[2]);
+    if (major < 22 || (major === 22 && minor < 14)) {
+      errors.push(".nvmrc must be Node 22.14.0 or newer for npm Trusted Publisher support.");
+    }
+  }
+}
+
 if (!existsSync(WORKFLOW)) {
   errors.push("Trusted Publisher workflow is missing: .github/workflows/ds-publish.yml");
 } else {
@@ -536,7 +552,7 @@ if (!existsSync(WORKFLOW)) {
     "id-token: write",
     "contents: read",
     "runs-on: ubuntu-latest",
-    "node-version: 24",
+    "node-version-file: .nvmrc",
     "registry-url: https://registry.npmjs.org",
     "package-manager-cache: false",
     "npm install -g npm@latest",
