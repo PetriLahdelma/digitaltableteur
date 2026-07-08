@@ -134,6 +134,25 @@ for (const [key, r] of Object.entries(state.ratchets ?? {})) {
   }
 }
 
+// ---- 4. Checkpoint tasks cannot be "done" without recorded human clearance ----
+// Structural enforcement of the stopping contract: publishing (authorization)
+// and the i18n / navigation decoupling (unverifiable-regression) may not be
+// auto-completed by an autonomous loop. Marking one done requires an explicit
+// approval record, which forces a stop-and-ask before it can pass this gate.
+const tasks = state.tasks ?? {};
+for (const cp of state.checkpoints ?? []) {
+  const t = tasks[cp.id];
+  if (t && t.status === "done") {
+    const a = t.approval;
+    if (!a || !a.clearedBy || !a.on) {
+      errors.push(
+        `Checkpoint task ${cp.id} (${cp.type}) is marked done without a recorded approval {clearedBy, on}. ` +
+          `It requires explicit human clearance before it can pass: ${cp.reason}`,
+      );
+    }
+  }
+}
+
 // ---- Report ----
 if (errors.length) {
   console.error("✗ Astryx-roadmap guard FAILED:\n");
