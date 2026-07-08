@@ -52,6 +52,7 @@ const PACKAGE_DEFINITIONS = [
     maxTarballSize: 900_000,
     maxUnpackedSize: 3_500_000,
     requiredFiles: [
+      "README.md",
       "dist/index.d.ts",
       "dist/index.js",
       "dist/package-globals.d.ts",

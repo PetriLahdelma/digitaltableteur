@@ -55,6 +55,7 @@ for (const definition of PACKAGES) {
   const packageDir = join(ROOT, definition.dir);
   const packageJsonPath = join(packageDir, "package.json");
   const changelogPath = join(packageDir, "CHANGELOG.md");
+  const readmePath = join(packageDir, "README.md");
 
   if (!existsSync(packageJsonPath)) {
     errors.push(`${definition.dir} is missing package.json`);
@@ -68,6 +69,7 @@ for (const definition of PACKAGES) {
     dir: definition.dir,
     packageJson: relativePath(packageJsonPath),
     changelog: relativePath(changelogPath),
+    readme: relativePath(readmePath),
     packageExports: Object.keys(pkg.exports ?? {}).sort(),
     repository: pkg.repository ?? null,
   };
@@ -114,6 +116,17 @@ for (const definition of PACKAGES) {
   if (!existsSync(changelogPath)) {
     errors.push(`${pkg.name} is missing CHANGELOG.md.`);
     continue;
+  }
+  if (!existsSync(readmePath)) {
+    errors.push(`${pkg.name} is missing README.md.`);
+  } else {
+    const readme = readFileSync(readmePath, "utf8");
+    if (!readme.startsWith(`# ${pkg.name}`)) {
+      errors.push(`${pkg.name} README.md must start with "# ${pkg.name}".`);
+    }
+    if (pkg.name === "@digitaltableteur/react" && !readme.includes("npm install")) {
+      errors.push(`${pkg.name} README.md must include an install example.`);
+    }
   }
 
   const changelog = readFileSync(changelogPath, "utf8");

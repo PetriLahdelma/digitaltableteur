@@ -232,6 +232,7 @@ const REQUIRED_REPOSITORY_PATHS = [
   "package-lock.json",
   "package.json",
   "packages/react/CHANGELOG.md",
+  "packages/react/README.md",
   "packages/react/package.json",
   "packages/react/public-api.manifest.json",
   "packages/react/src/index.ts",
