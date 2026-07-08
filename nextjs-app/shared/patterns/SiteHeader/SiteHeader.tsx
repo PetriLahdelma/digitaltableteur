@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
-import { NavLink } from "@/nextjs-app/shared/components/NavLink";
+import { NavLink } from "@digitaltableteur/react";
 import { Container } from "@/nextjs-app/shared/components/Container";
 import { useNavigation } from "@/nextjs-app/shared/hooks/useNavigation";
 import { usePersistentTheme } from "@/nextjs-app/shared/hooks/usePersistentTheme";

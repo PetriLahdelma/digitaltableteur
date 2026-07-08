@@ -6,7 +6,7 @@ export { MobileDrawer } from "../SiteHeader";
 export { SiteFooter, type SiteFooterProps } from "../SiteFooter";
 
 // Navigation primitives
-export { NavLink, type NavLinkProps } from "@/nextjs-app/shared/components/NavLink";
+export { NavLink, type NavLinkProps } from "@digitaltableteur/react";
 export { SkipLink, type SkipLinkProps } from "@/nextjs-app/shared/components/SkipLink";
 
 // Navigation hooks

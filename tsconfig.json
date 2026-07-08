@@ -70,6 +70,7 @@
     "storybook-static",
     "coverage",
     "dist",
+    "packages/*/dist",
     "__visual__",
     "e2e",
     "scripts/design-system/**/*.ts"

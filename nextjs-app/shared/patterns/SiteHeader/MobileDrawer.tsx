@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { gsap } from "gsap";
 import { cn } from "@/lib/utils";
-import { NavLink } from "@/nextjs-app/shared/components/NavLink";
+import { NavLink } from "@digitaltableteur/react";
 import { IconButton } from "@/nextjs-app/shared/components/IconButton";
 import { X, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
 import type { NavItem } from "./SiteHeader";

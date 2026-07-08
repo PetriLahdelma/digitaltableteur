@@ -5,10 +5,8 @@ export interface FooterProps {
 }
 
 import styles from "./Footer.module.css";
-import Grid from "@dt/Grid";
-import Link from "@dt/Link";
+import { Grid, Icon, Link } from "@digitaltableteur/react";
 import { useTranslation } from "react-i18next";
-import Icon from "@dt/Icon";
 
 /**
  * Footer component.

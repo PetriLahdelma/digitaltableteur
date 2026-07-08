@@ -2,9 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
-import Gallery from "@dt/Gallery";
+import { Gallery, Text, Title } from "@digitaltableteur/react";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";

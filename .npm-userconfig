@@ -1,2 +1,8 @@
-; Intentionally empty. digitaltableteur installs only from the public npm registry.
-; Do not add DSharp/Azure feed settings here.
+; Isolated npm auth for this repo. Keep machine-wide ~/.npmrc out of the build
+; so DSharp/Azure feed settings cannot leak into Digitaltableteur installs.
+;
+; Private @digitaltableteur/* packages require registry read auth on clean
+; installs. Provide a read-only npm token through NPM_TOKEN locally, or map the
+; GitHub secret NPM_READ_TOKEN/NPM_TOKEN to the NPM_TOKEN environment variable
+; in workflows. Never commit a concrete token value here.
+//registry.npmjs.org/:_authToken=${NPM_TOKEN}

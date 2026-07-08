@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "../../lib/linkComponent";
-import { useNavigationPathname } from "@digitaltableteur/react";
+import { useNavigationPathname } from "../../lib/navigation";
 import { type ReactNode } from "react";
 import { cn } from "../../lib/cn";
 

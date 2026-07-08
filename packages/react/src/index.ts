@@ -9,6 +9,13 @@ export type {
   BreadcrumbProps,
 } from "../../../nextjs-app/shared/components/Breadcrumb/Breadcrumb";
 export { default as Button } from "../../../nextjs-app/shared/components/Button/Button";
+export type {
+  ButtonProps,
+  ButtonSize,
+  ButtonSurface,
+  ButtonTone,
+  ButtonVariant,
+} from "../../../nextjs-app/shared/components/Button/Button";
 export { default as ButtonGroup } from "../../../nextjs-app/shared/components/ButtonGroup/ButtonGroup";
 export { default as Card } from "../../../nextjs-app/shared/components/Card/Card";
 export {

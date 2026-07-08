@@ -44,9 +44,7 @@ import {
   Prose,
   FormField,
 } from "@/nextjs-app/shared/components/ui";
-import Badge from "@dt/Badge";
-import Checkbox from "@dt/Checkbox";
-import Link from "@dt/Link";
+import { Badge, Checkbox, Link } from "@digitaltableteur/react";
 import { useToast } from "@/providers/ToastProvider";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
 import { ArrowRight, Heart, Share, Star, Image as ImageIcon } from "@phosphor-icons/react";

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2 - 2026-07-08
+
+- Adds public Button type exports (`ButtonProps`, `ButtonSize`, `ButtonSurface`, `ButtonTone`, and `ButtonVariant`) so registry consumers can type CTA and button composition without importing local source aliases.
+- Keeps the public runtime API unchanged from 0.1.1.
+- Keeps app/product/site composition outside the package boundary.
+- Verified by `check:react-package`, `check:react-public-api`, `check:react-public-surface`, `check:package-tarballs`, and `check:package-publish-dry-run`.
+
 ## 0.1.1 - 2026-07-08
 
 - Adds the package README used by the private npm package page.

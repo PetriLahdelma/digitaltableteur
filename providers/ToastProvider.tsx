@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from "react";
-import Toast, { type ToastTone, type ToastPosition } from "@dt/Toast";
+import { Toast, type ToastPosition, type ToastTone } from "@digitaltableteur/react";
 
 export interface ShowToastOptions {
   duration?: number;

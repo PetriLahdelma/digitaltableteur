@@ -2,10 +2,6 @@
   "name": "nextjs-app",
   "version": "2.0.0",
   "private": true,
-  "workspaces": [
-    "packages/tokens",
-    "packages/tokens-css"
-  ],
   "engines": {
     "node": ">=22.12.0"
   },
@@ -149,6 +145,7 @@
     "check:beta-promotion-readiness": "node scripts/design-system/check-beta-promotion-readiness.mjs",
     "check:package-release-notes": "node scripts/design-system/check-package-release-notes.mjs",
     "check:package-registry-status": "node scripts/design-system/check-package-registry-status.mjs",
+    "check:package-consumption-boundaries": "node scripts/design-system/check-package-consumption-boundaries.mjs",
     "check:package-tarballs": "node scripts/design-system/check-package-tarball-contents.mjs",
     "check:package-publish-dry-run": "node scripts/design-system/check-package-publish-dry-run.mjs",
     "check:token-packages": "node scripts/design-system/check-token-packages.mjs",
@@ -190,6 +187,8 @@
     "@ai-sdk/react": "^3.0.207",
     "@calcom/embed-react": "^1.5.3",
     "@digitaltableteur/react": "^0.1.1",
+    "@digitaltableteur/tokens": "^0.1.0",
+    "@digitaltableteur/tokens-css": "^0.1.0",
     "@emailjs/browser": "^4.4.1",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",

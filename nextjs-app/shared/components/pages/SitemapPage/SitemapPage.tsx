@@ -4,8 +4,7 @@ import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import SiteTree from "@dt/SiteTree";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
+import { Text, Title } from "@digitaltableteur/react";
 import { buildSiteTree } from "@/app/lib/siteStructure";
 
 import styles from "./SitemapPage.module.css";

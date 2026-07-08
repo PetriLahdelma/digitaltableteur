@@ -1,6 +1,7 @@
 "use client";
 
-import Button, { type ButtonSurface } from "@dt/Button";
+import { Button } from "@digitaltableteur/react";
+import type { ButtonSurface } from "@dt/Button";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";

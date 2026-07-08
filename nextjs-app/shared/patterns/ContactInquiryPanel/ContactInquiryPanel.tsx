@@ -11,7 +11,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import { useTranslation } from "react-i18next";
-import Button from "@dt/Button";
+import { Button } from "@digitaltableteur/react";
 import DonnyBookingEmbed from "@dt/DonnyBookingEmbed";
 import {
   resolveSiteBookingConfig,

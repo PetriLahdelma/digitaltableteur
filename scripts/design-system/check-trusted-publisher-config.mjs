@@ -28,7 +28,13 @@ const PACKAGES = [
 ];
 const WORKFLOW_RELATIVE = ".github/workflows/ds-publish.yml";
 const REQUIRED_REPOSITORY_PATHS = [
+  ".github/workflows/ds-migration-visual.yml",
   ".github/workflows/ds-publish.yml",
+  ".github/workflows/ds-release-gate-full.yml",
+  ".github/workflows/pr-validation.yml",
+  ".github/workflows/security-scanning.yml",
+  ".npm-userconfig",
+  ".npmrc",
   "nextjs-app/shared/components/AlertBanner/AlertBanner.module.css",
   "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
   "nextjs-app/shared/components/Avatar/Avatar.tsx",
@@ -392,7 +398,8 @@ ${formatPackageRows(report.packages)}
 ## Publish controls
 
 - Keep the workflow manual-only through \`workflow_dispatch\`.
-- Keep \`id-token: write\` and do not add \`NPM_TOKEN\` or \`NODE_AUTH_TOKEN\`.
+- Keep \`id-token: write\`; use \`NPM_TOKEN\` only for private-package
+  \`npm ci\` read auth, never on publish steps.
 - Keep npm publish commands restricted: \`npm publish --access restricted\`.
 - Keep \`@digitaltableteur/react\` behind \`check:react-publish-clearance\` and \`check:react-public-surface -- --require-publishable\`.
 - Local machines remain the CI-quality authority; GitHub Actions is only the npm OIDC transport.
@@ -533,6 +540,7 @@ if (!existsSync(WORKFLOW)) {
     "registry-url: https://registry.npmjs.org",
     "package-manager-cache: false",
     "npm install -g npm@latest",
+    "NPM_TOKEN: ${{ secrets.NPM_READ_TOKEN || secrets.NPM_TOKEN }}",
     "npm run check:trusted-publisher",
     "npm run check:token-packages",
     "npm run check:react-package",
@@ -559,8 +567,16 @@ if (!existsSync(WORKFLOW)) {
   if (/self-hosted/.test(workflow)) {
     errors.push("ds-publish.yml must use GitHub-hosted runners for npm Trusted Publisher OIDC.");
   }
-  if (/NPM_TOKEN|NODE_AUTH_TOKEN/.test(workflow)) {
-    errors.push("ds-publish.yml must use OIDC Trusted Publisher auth, not npm tokens.");
+  if (/NODE_AUTH_TOKEN/.test(workflow)) {
+    errors.push("ds-publish.yml must not use NODE_AUTH_TOKEN; npm publish must use OIDC Trusted Publisher auth.");
+  }
+  const publishBlocks = workflow
+    .split(/\n\s+- name: /)
+    .filter((block) => /Publish @digitaltableteur\//.test(block));
+  for (const block of publishBlocks) {
+    if (/NPM_TOKEN|NODE_AUTH_TOKEN/.test(block)) {
+      errors.push("Publish steps must not receive npm token env; npm publish must use OIDC Trusted Publisher auth.");
+    }
   }
 }
 

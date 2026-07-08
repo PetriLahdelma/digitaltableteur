@@ -42,6 +42,10 @@ jobs:
 
       - name: Install workspace dependencies
         run: npm ci
+        env:
+          # Read-only registry auth for private @digitaltableteur/* installs.
+          # Publish steps intentionally do not receive this token; npm uses OIDC.
+          NPM_TOKEN: ${{ secrets.NPM_READ_TOKEN || secrets.NPM_TOKEN }}
 
       - name: Verify Trusted Publisher configuration
         run: npm run check:trusted-publisher

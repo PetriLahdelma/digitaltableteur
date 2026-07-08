@@ -3,9 +3,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
-import Title from "@dt/Title";
+import { Button, Icon, Title } from "@digitaltableteur/react";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
 
 const renderEmailLink = (text: string, email: string) => {

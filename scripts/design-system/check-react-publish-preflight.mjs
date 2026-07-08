@@ -74,6 +74,11 @@ const automatedChecks = [
     reason: "published private token packages install from npm",
   },
   {
+    name: "package-consumption-boundaries",
+    command: ["run", "check:package-consumption-boundaries"],
+    reason: "the root app consumes @digitaltableteur/* from npm and app-facing shared contexts do not split",
+  },
+  {
     name: "package-registry-status",
     command: ["run", "check:package-registry-status"],
     reason: "npm registry state matches the pre-publish plan: tokens published, React unpublished",

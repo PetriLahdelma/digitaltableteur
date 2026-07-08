@@ -6,7 +6,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { assertTokenCssProjection, collectTokenCssEntries } from "./build-token-css.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -51,7 +51,7 @@ async function main() {
 
   const catalog = readJson(CATALOG);
   const catalogNames = new Set(catalog.groups.flatMap((group) => group.tokens.map((token) => token.name)));
-  const pkg = await import(resolve(TOKENS_DIST, "index.js"));
+  const pkg = await import(pathToFileURL(join(TOKENS_DIST, "index.js")).href);
   if (pkg.tokenCount !== catalog.tokenCount || pkg.tokenNames.length !== catalog.tokenCount) {
     throw new Error(
       `@digitaltableteur/tokens count mismatch: package=${pkg.tokenNames.length}, catalog=${catalog.tokenCount}`,
@@ -63,7 +63,9 @@ async function main() {
   }
 
   const dtcg = readJson(join(TOKENS_DIST, "tokens.dtcg.json"));
-  const dtcgExport = await import("@digitaltableteur/tokens/dtcg", { with: { type: "json" } });
+  const dtcgExport = await import(pathToFileURL(join(TOKENS_DIST, "tokens.dtcg.json")).href, {
+    with: { type: "json" },
+  });
   if (!dtcgExport.default?.$schema) {
     throw new Error("Workspace DTCG JSON export did not resolve with an import attribute");
   }
@@ -91,18 +93,21 @@ async function main() {
     throw new Error(`Token CSS declaration count mismatch: source=${sourceEntryCount}, package=${packageEntryCount}`);
   }
 
-  // Workspace export smoke. If this fails after package.json changes, run npm install.
-  const workspacePkg = await import("@digitaltableteur/tokens");
-  if (workspacePkg.tokenCount !== catalog.tokenCount) {
-    throw new Error(`Workspace import count mismatch: ${workspacePkg.tokenCount} !== ${catalog.tokenCount}`);
+  // Local package export smoke. Root consumes the registry package, so local
+  // package verification must read the generated dist files directly.
+  const localPkg = await import(pathToFileURL(join(TOKENS_DIST, "index.js")).href);
+  if (localPkg.tokenCount !== catalog.tokenCount) {
+    throw new Error(`Local package import count mismatch: ${localPkg.tokenCount} !== ${catalog.tokenCount}`);
   }
-  const manifestPkg = await import("@digitaltableteur/tokens/manifest", { with: { type: "json" } });
+  const manifestPkg = await import(pathToFileURL(join(TOKENS_DIST, "tokens-manifest.json")).href, {
+    with: { type: "json" },
+  });
   if (manifestPkg.default?.tokenCount !== catalog.tokenCount) {
-    throw new Error(`Workspace manifest export mismatch: ${manifestPkg.default?.tokenCount} !== ${catalog.tokenCount}`);
+    throw new Error(`Local package manifest export mismatch: ${manifestPkg.default?.tokenCount} !== ${catalog.tokenCount}`);
   }
-  const tailwindPkg = await import("@digitaltableteur/tokens/tailwind");
+  const tailwindPkg = await import(pathToFileURL(join(TOKENS_DIST, "tailwind.tokens.js")).href);
   if (!tailwindPkg.tailwindThemeRefs || !tailwindPkg.tailwindThemeRefs["color-dt-primary"]) {
-    throw new Error("Workspace tailwind export is missing color-dt-primary");
+    throw new Error("Local package tailwind export is missing color-dt-primary");
   }
 
   console.log(

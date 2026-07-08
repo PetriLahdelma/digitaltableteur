@@ -1,9 +1,7 @@
 import type { PseoCatalogItem, PseoLeafPage } from "@/lib/pseo/types";
 
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
-import Card from "@dt/Card";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
+import { Card, Text, Title } from "@digitaltableteur/react";
 import { PseoPillarMetaBadgeLinks } from "./PseoPillarMetaBadgeLinks";
 import styles from "./PseoPillarPage.module.css";
 

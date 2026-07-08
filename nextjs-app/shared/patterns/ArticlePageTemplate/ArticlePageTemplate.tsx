@@ -15,7 +15,7 @@ import type { BlogPostEntry } from "../../data/blogPosts";
 
 // MDX component imports preserved from original
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
-import CodeBlockWindow from "@dt/CodeBlockWindow";
+import { CodeBlockWindow } from "@digitaltableteur/react";
 import { DashLeadList } from "@dt/DashLeadList";
 import { MdxImage } from "../../components/MdxImage";
 import { cn } from "@/lib/utils";

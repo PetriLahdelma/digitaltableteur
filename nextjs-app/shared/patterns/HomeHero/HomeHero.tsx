@@ -10,7 +10,7 @@ import { FadeIn } from "../../components/animations/FadeIn";
 import { ScrollIndicator } from "../../components/ScrollIndicator";
 import { Container } from "../../components/Container";
 import { Stack } from "../../components/Stack";
-import Button from "@dt/Button";
+import { Button } from "@digitaltableteur/react";
 import { cn } from "@/lib/utils";
 
 function pickRandomIndex(length: number): number {

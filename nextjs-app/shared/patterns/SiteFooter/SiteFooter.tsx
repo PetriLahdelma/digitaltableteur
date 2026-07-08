@@ -5,8 +5,7 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { Container } from "@/nextjs-app/shared/components/Container";
 import { Stack } from "@/nextjs-app/shared/components/Stack";
-import DtLink from "@dt/Link";
-import { Divider } from "@dt/Divider";
+import { Divider, Link as DtLink } from "@digitaltableteur/react";
 import {
   InstagramLogo,
   FacebookLogo,

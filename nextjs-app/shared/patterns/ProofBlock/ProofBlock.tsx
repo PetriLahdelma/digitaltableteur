@@ -1,7 +1,6 @@
 import React from "react";
 import PageLayout from "../PageLayout";
-import Title from "@dt/Title";
-import Text from "@dt/Text";
+import { Text, Title } from "@digitaltableteur/react";
 import styles from "./ProofBlock.module.css";
 
 export type ProofMetric = {

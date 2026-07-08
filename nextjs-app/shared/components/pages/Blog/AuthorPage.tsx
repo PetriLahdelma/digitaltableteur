@@ -5,8 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
-import Button from "@dt/Button";
-import Title from "@dt/Title";
+import { Button, Title } from "@digitaltableteur/react";
 
 import { getAuthorBySlug } from "../../../data/authors";
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
