@@ -1,6 +1,6 @@
-import reactPackage from "../../../packages/react/package.json";
-import tokensPackage from "../../../packages/tokens/package.json";
-import tokensCssPackage from "../../../packages/tokens-css/package.json";
+import reactPackage from "../../../node_modules/@digitaltableteur/react/package.json";
+import tokensPackage from "../../../node_modules/@digitaltableteur/tokens/package.json";
+import tokensCssPackage from "../../../node_modules/@digitaltableteur/tokens-css/package.json";
 
 export const DESIGN_SYSTEM_PACKAGE_VERSIONS = {
   react: reactPackage.version,

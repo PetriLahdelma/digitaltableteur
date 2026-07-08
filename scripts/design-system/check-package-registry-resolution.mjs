@@ -8,8 +8,16 @@
  * token exports can silently resolve through symlinks instead of the same
  * registry artifacts consumers receive.
  */
-import { existsSync, lstatSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join, relative, resolve, sep } from "node:path";
+import {
+  existsSync,
+  lstatSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
+import { dirname, extname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -33,6 +41,18 @@ const PACKAGE_CHECKS = [
     packageDir: "packages/tokens-css",
   },
 ];
+const RUNTIME_SCAN_ROOTS = ["app", "providers", "nextjs-app", ".storybook"];
+const RUNTIME_SCAN_EXTENSIONS = new Set([
+  ".cjs",
+  ".js",
+  ".jsx",
+  ".mjs",
+  ".mts",
+  ".cts",
+  ".ts",
+  ".tsx",
+]);
+const FORBIDDEN_LOCAL_PACKAGE_IMPORT = /from\s+["'][^"']*packages\/(?:react|tokens|tokens-css)(?:\/package\.json)?["']|import\s*\(\s*["'][^"']*packages\/(?:react|tokens|tokens-css)(?:\/package\.json)?["']\s*\)|require\s*\(\s*["'][^"']*packages\/(?:react|tokens|tokens-css)(?:\/package\.json)?["']\s*\)/;
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
@@ -60,11 +80,29 @@ function nodeModulesPath(packageName) {
   return join(ROOT, "node_modules", scope, name);
 }
 
+function* sourceFiles(dir) {
+  if (!existsSync(dir)) return;
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const path = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      if (entry.name === "node_modules" || entry.name === ".next" || entry.name === "storybook-static") {
+        continue;
+      }
+      yield* sourceFiles(path);
+      continue;
+    }
+    if (entry.isFile() && RUNTIME_SCAN_EXTENSIONS.has(extname(path))) {
+      yield path;
+    }
+  }
+}
+
 const packageJson = readJson(join(ROOT, "package.json"));
 const packageLock = readJson(join(ROOT, "package-lock.json"));
 const workspaces = packageJson.workspaces ?? [];
 const errors = [];
 const rows = [];
+const forbiddenRuntimeImports = [];
 
 if (Array.isArray(workspaces) && workspaces.length > 0) {
   errors.push(
@@ -139,10 +177,27 @@ for (const check of PACKAGE_CHECKS) {
   });
 }
 
+for (const root of RUNTIME_SCAN_ROOTS) {
+  const rootDir = join(ROOT, root);
+  if (!existsSync(rootDir) || !statSync(rootDir).isDirectory()) continue;
+  for (const file of sourceFiles(rootDir)) {
+    const source = readFileSync(file, "utf8");
+    if (FORBIDDEN_LOCAL_PACKAGE_IMPORT.test(source)) {
+      const relativeFile = relativePath(file);
+      forbiddenRuntimeImports.push(relativeFile);
+      errors.push(
+        `${relativeFile} imports local packages/* design-system source; runtime and Storybook code must consume installed @digitaltableteur/* packages from node_modules.`,
+      );
+    }
+  }
+}
+
 const report = {
   generatedAt: new Date().toISOString(),
   status: errors.length ? "failed" : "passed",
   rows,
+  runtimeScanRoots: RUNTIME_SCAN_ROOTS,
+  forbiddenRuntimeImports,
   errors,
 };
 
