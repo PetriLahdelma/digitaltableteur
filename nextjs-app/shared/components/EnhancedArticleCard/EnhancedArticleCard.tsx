@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Link } from "../../lib/linkComponent";
-import Image from "next/image";
+import { Image } from "../../lib/imageComponent";
 import { useTranslation } from "react-i18next";
 import { cn } from "../../lib/cn";
 import { BlogMediaImage } from "@dt/BlogMediaImage";

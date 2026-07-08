@@ -1,5 +1,5 @@
 import React from "react";
-import type { StaticImageData } from "next/image";
+import type { ImageSource as StaticImageData } from "../../lib/imageComponent";
 import Avatar, { type AvatarSize } from "@dt/Avatar";
 import styles from "./Author.module.css";
 

@@ -17,12 +17,12 @@
         },
         {
             "key": "scalability",
-            "current": 58,
+            "current": 60,
             "target": 90
         },
         {
             "key": "futureproofness",
-            "current": 65,
+            "current": 67,
             "target": 90
         },
         {
@@ -63,7 +63,7 @@
             "desc": "catalog source files importing @/ (app root); must only decrease"
         },
         "catalogNextImports": {
-            "ceiling": 13,
+            "ceiling": 6,
             "desc": "catalog source files importing next/*; must only decrease"
         },
         "catalogI18nImports": {

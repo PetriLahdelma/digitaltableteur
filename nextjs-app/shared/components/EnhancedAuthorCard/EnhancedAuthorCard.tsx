@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Image } from "../../lib/imageComponent";
 import { Link as NextLink } from "../../lib/linkComponent";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "@phosphor-icons/react";

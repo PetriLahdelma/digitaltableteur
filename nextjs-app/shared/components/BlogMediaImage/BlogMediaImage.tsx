@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Image } from "../../lib/imageComponent";
 import { cn } from "../../lib/cn";
 import { isSvgSrc } from "@/lib/media/imageSrc";
 

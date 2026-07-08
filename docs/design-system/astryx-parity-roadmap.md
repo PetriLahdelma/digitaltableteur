@@ -73,7 +73,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 - [ ] 1.1 Convert to a workspace (`packages/design-system`, `packages/tokens`, `apps/site`).
 - [x] 1.2 Internalize `cn` / `@/lib/utils` into the DS boundary (moved to `nextjs-app/shared/lib/cn`, 55 imports repointed, app re-exports for back-compat); `catalogAppImports` 41 → 5.
 - [x] 1.3 **Link Provider** → `nextjs-app/shared/lib/linkComponent.tsx` (context + `LinkProvider` + DS `Link` component that renders the injected link, default `<a>`); app injects next/link via `providers/NextLinkProvider`. All 9 catalog `next/link` sites swapped (pure import swap; the one server component works because `Link` is a client component, not a hook). `catalogNextImports` 15 → 13 (rest are next/image + next/navigation). Build-verified RSC boundary.
-- [ ] 1.4 Image slot/provider → decouple `next/image`.
+- [x] 1.4 Image provider → `nextjs-app/shared/lib/imageComponent.tsx` (context + `ImageProvider` + DS `Image` + `ImageSource` type; default `<img>` maps fill/priority/sizes, drops next-only props); app injects next/image via `providers/NextImageProvider`. All 12 catalog `next/image` sites swapped (10 render + 2 type-only). `catalogNextImports` 13 → 6 (remainder is next/navigation, 1.6 checkpoint). In-app is a pass-through; a11y tree unchanged (img role + alt).
 - [ ] 🔒 1.5 i18n decoupling: injected translator / prop-driven copy with English defaults (46 files); ratchet `catalogI18nImports` down. **Checkpoint: multi-locale + browser review before merge.**
 - [ ] 🔒 1.6 Remove remaining `@/` and `next/navigation` from the catalog (ratchets to 0). **Checkpoint: navigation behavior review before merge.**
 - [ ] 1.7 `@dt/tokens` + `@dt/tokens-css` packages from the existing token pipeline.
