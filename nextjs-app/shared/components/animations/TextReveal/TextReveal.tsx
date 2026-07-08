@@ -7,7 +7,7 @@ import {
   type CSSProperties,
   type ElementType,
 } from "react";
-import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
 import styles from "./TextReveal.module.css";
 
@@ -77,6 +77,20 @@ export function TextReveal({
       const targets = ref.current.querySelectorAll("[data-reveal-item]");
       if (targets.length === 0) return;
 
+      const setFinalState = () => {
+        gsap.set(targets, {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          scale: 1,
+          rotationX: 0,
+          clearProps: "opacity,transform",
+        });
+        gsap.set(ref.current, { opacity: 1, clearProps: "opacity" });
+      };
+
+      setFinalState();
+
       // For reduced motion, snap targets to their final visible state instead
       // of running any tween. Partial-opacity frames otherwise misreport as
       // color-contrast failures in the matrix axe runs (axe samples once,
@@ -88,30 +102,61 @@ export function TextReveal({
         (typeof window !== "undefined" &&
           window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
       if (prefersReduced) {
-        gsap.set(targets, { opacity: 1, x: 0, y: 0, scale: 1, rotationX: 0 });
-        gsap.set(ref.current, { opacity: 1 });
+        setFinalState();
         return;
       }
 
-      // Animation variants
+      // Animation variants intentionally avoid opacity. Production page titles
+      // must fail open: if GSAP, ScrollTrigger, hydration, or route changes
+      // interrupt the tween, text remains fully readable instead of getting
+      // stranded at a transparent "from" state.
       const animations: Record<Animation, gsap.TweenVars> = {
-        fade: { opacity: 0, y: 20 },
-        slide: { opacity: 0, y: 50, rotationX: -20 },
-        wave: { opacity: 0, y: 30, scale: 0.9 },
+        fade: { y: 0 },
+        slide: { y: 50, rotationX: -20 },
+        wave: { y: 30, scale: 0.96 },
       };
 
-      gsap.from(targets, {
-        ...animations[animation],
-        duration,
-        stagger,
-        delay,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ref.current,
-          start: threshold,
-          toggleActions: "play none none none",
-        },
+      let hasAnimated = false;
+      const playReveal = () => {
+        if (hasAnimated) return;
+        hasAnimated = true;
+
+        gsap.fromTo(targets, { opacity: 1, ...animations[animation] }, {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          scale: 1,
+          rotationX: 0,
+          clearProps: "opacity,transform",
+          overwrite: "auto",
+          onInterrupt: setFinalState,
+          onComplete: setFinalState,
+          duration,
+          stagger,
+          delay,
+          ease: "power2.out",
+        });
+      };
+
+      const rect = ref.current.getBoundingClientRect();
+      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+
+      if (isInViewport) {
+        playReveal();
+        return;
+      }
+
+      const trigger = ScrollTrigger.create({
+        trigger: ref.current,
+        start: threshold,
+        once: true,
+        onEnter: playReveal,
       });
+
+      return () => {
+        trigger.kill();
+        setFinalState();
+      };
     },
     { scope: ref, dependencies: [children, type, animation, motionPreference] }
   );
