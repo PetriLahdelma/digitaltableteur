@@ -100,5 +100,37 @@
             "file": null,
             "note": "body scroll lock for custom overlays"
         }
-    ]
+    ],
+    "checkpoints": [
+        {
+            "id": "1.5",
+            "type": "unverifiable-regression",
+            "reason": "i18n decoupling: EN/FI/SV correctness is not provable by the gates (English-only snapshots, no multi-locale/visual suite). Needs browser + multi-locale review.",
+            "requiresApproval": true
+        },
+        {
+            "id": "1.6",
+            "type": "unverifiable-regression",
+            "reason": "navigation decoupling: routing/active-link behavior is not exercised by unit tests or a11y snapshots. Needs browser review.",
+            "requiresApproval": true
+        },
+        {
+            "id": "5.1",
+            "type": "authorization",
+            "reason": "publishing to a registry is outward-facing and irreversible.",
+            "requiresApproval": true
+        }
+    ],
+    "tasks": {
+        "1.5": {
+            "status": "todo"
+        },
+        "1.6": {
+            "status": "todo"
+        },
+        "5.1": {
+            "status": "todo"
+        }
+    },
+    "approvalFormat": "To clear a checkpoint: set tasks.<id>.status=done AND tasks.<id>.approval={clearedBy:<name>,on:<YYYY-MM-DD>,note?}. The guard rejects done without this."
 }

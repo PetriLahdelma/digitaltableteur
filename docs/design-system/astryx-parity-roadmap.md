@@ -49,9 +49,18 @@ The Breadth target is "all of this present and `stable`", not Astryx parity. (Fi
 
 ---
 
+## Stopping contract (enforced by the guard)
+
+An autonomous loop may drive this roadmap, but three tasks are **checkpoints** that require explicit human clearance and are marked 🔒 below. They are listed in `state.json` under `checkpoints`, and the guard **hard-fails** if any checkpoint task is marked `done` in `state.tasks` without an `approval: { clearedBy, on }` record. So the loop structurally cannot auto-complete them; it must stop, ask, and record the clearance.
+
+- 🔒 **1.5 i18n decoupling** and **1.6 navigation decoupling** (`unverifiable-regression`): correctness across EN/FI/SV and routing/active-link behavior is not provable by the gates (English-only snapshots, no visual/multi-locale suite, CSS-module proxy hides mis-scoped classes). Needs browser + multi-locale review before merge.
+- 🔒 **5.1 publish** (`authorization`): outward-facing and irreversible.
+
+Everything else the loop may chain autonomously (branch, gate, PR, admin-merge, tick box, tighten ratchet) until all boxes are checked and all nine dimensions reach ≥90.
+
 ## Phased tasks
 
-Legend: `[ ]` todo, `[~]` in progress, `[x]` done. Check the box AND update the state file when a task lands.
+Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs recorded clearance). Check the box AND update the state file when a task lands.
 
 ### Phase 0: Foundation & guardrails (the non-regression spine)
 - [x] 0.1 Commit this roadmap + machine state as the durable source of truth.
@@ -65,8 +74,8 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done. Check the box AND update the 
 - [ ] 1.2 Internalize `cn` / `@/lib/utils` into the DS boundary (38 files); ratchet `catalogAppImports` down.
 - [ ] 1.3 **Link Provider** utility → decouple `next/link` (falls back to `<a>`); ratchet `catalogNextImports` down. (Also a utility deliverable.)
 - [ ] 1.4 Image slot/provider → decouple `next/image`.
-- [ ] 1.5 i18n decoupling: injected translator / prop-driven copy with English defaults (46 files); ratchet `catalogI18nImports` down. **Needs multi-locale review; not fully autonomous.**
-- [ ] 1.6 Remove remaining `@/` and `next/navigation` from the catalog (ratchets to 0).
+- [ ] 🔒 1.5 i18n decoupling: injected translator / prop-driven copy with English defaults (46 files); ratchet `catalogI18nImports` down. **Checkpoint: multi-locale + browser review before merge.**
+- [ ] 🔒 1.6 Remove remaining `@/` and `next/navigation` from the catalog (ratchets to 0). **Checkpoint: navigation behavior review before merge.**
 - [ ] 1.7 `@dt/tokens` + `@dt/tokens-css` packages from the existing token pipeline.
 - [ ] 1.8 Library build (tsup/Vite) compiling TS + CSS Modules; `exports`/`types`; react/react-dom (+ next adapter) as peer deps.
 - [ ] 1.9 Site consumes `@dt/react` via the workspace; full gate green.
@@ -91,7 +100,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done. Check the box AND update the 
 - [ ] 4.3 Publish the contract schema; keep the roadmap self-check in the gate.
 
 ### Phase 5: Distribution → Distribution to 90
-- [ ] 5.1 Publish `@dt/tokens` → `@dt/tokens-css` → `@dt/react` (dep order) to a registry. **Outward-facing; needs explicit go-ahead.**
+- [ ] 🔒 5.1 Publish `@dt/tokens` → `@dt/tokens-css` → `@dt/react` (dep order) to a registry. **Checkpoint: outward-facing, needs explicit go-ahead.**
 - [ ] 5.2 Consumer-setup docs + documented second-consumer path.
 - [ ] 5.3 Site dogfoods the published (or workspace) package.
 
