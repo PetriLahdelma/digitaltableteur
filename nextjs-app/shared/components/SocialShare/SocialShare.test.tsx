@@ -7,8 +7,9 @@ import {
   act,
 } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { I18nextProvider } from "react-i18next";
 import { SocialShare } from "@dt/SocialShare";
-import { TranslationProvider } from "../../lib/translation";
+import i18n from "../../i18n";
 
 // Mock clipboard API
 Object.assign(navigator, {
@@ -18,19 +19,6 @@ Object.assign(navigator, {
   share: vi.fn().mockResolvedValue(undefined),
 });
 
-const translations: Record<string, string> = {
-  share: "Share",
-  shareHeading: "Share",
-  shareOnInstagram: "Share on Instagram",
-  shareLinkedIn: "Share on LinkedIn",
-  shareOnTwitter: "Share on Twitter",
-  shareOnFacebook: "Share on Facebook",
-  shareOnReddit: "Share on Reddit",
-  shareOnWhatsapp: "Share on WhatsApp",
-  copyLinkToClipboard: "Copy to clipboard",
-  linkCopied: "Link copied!",
-};
-
 describe("SocialShare", () => {
   const defaultProps = {
     url: "https://example.com/test",
@@ -39,14 +27,15 @@ describe("SocialShare", () => {
 
   const renderSocialShare = (props = defaultProps) => {
     return render(
-      <TranslationProvider translate={(key) => translations[key] ?? key}>
+      <I18nextProvider i18n={i18n}>
         <SocialShare {...props} />
-      </TranslationProvider>,
+      </I18nextProvider>,
     );
   };
 
-  beforeEach(() => {
+  beforeEach(async () => {
     vi.clearAllMocks();
+    await i18n.changeLanguage("en");
   });
 
   it("renders all social media links", () => {
