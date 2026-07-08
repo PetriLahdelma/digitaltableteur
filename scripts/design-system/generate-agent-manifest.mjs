@@ -61,6 +61,33 @@ const RELATIONSHIP_GRAPH_PATH = join(
   ROOT,
   "nextjs-app/shared/foundations/dist/relationship-graph.json",
 );
+
+function withoutGeneratedAtField(payload) {
+  if (!payload || typeof payload !== "object") return payload;
+  const { generatedAt: _generatedAt, ...rest } = payload;
+  return rest;
+}
+
+function preserveManifestSectionGeneratedAt(sectionName, nextSection) {
+  if (!existsSync(OUT) || !nextSection) return nextSection?.generatedAt ?? null;
+
+  try {
+    const previousManifest = JSON.parse(readFileSync(OUT, "utf8"));
+    const previousSection = previousManifest?.[sectionName];
+    if (
+      previousSection?.generatedAt &&
+      JSON.stringify(withoutGeneratedAtField(previousSection)) ===
+        JSON.stringify(withoutGeneratedAtField(nextSection))
+    ) {
+      return previousSection.generatedAt;
+    }
+  } catch {
+    // Fall through to the generated section timestamp.
+  }
+
+  return nextSection.generatedAt ?? null;
+}
+
 let relationshipGraph = null;
 if (existsSync(RELATIONSHIP_GRAPH_PATH)) {
   try {
@@ -77,6 +104,10 @@ if (existsSync(RELATIONSHIP_GRAPH_PATH)) {
       regenerate: "npm run build:relationship-graph or npm run build:tokens",
       path: "nextjs-app/shared/foundations/dist/relationship-graph.json",
     };
+    relationshipGraph.generatedAt = preserveManifestSectionGeneratedAt(
+      "relationshipGraph",
+      relationshipGraph,
+    );
   } catch (err) {
     console.warn("⚠  Could not parse relationship-graph.json:", err.message);
   }
