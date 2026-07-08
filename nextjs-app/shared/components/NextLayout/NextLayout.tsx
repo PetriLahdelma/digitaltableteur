@@ -1,20 +1,32 @@
 "use client";
 
-import React from "react";
-import dynamic from "next/dynamic";
+import React, {
+  lazy,
+  Suspense,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 
 import { SiteHeader, SiteFooter, SkipLink } from "../../patterns/navigation";
 import { PageTransition } from "../animations/PageTransition";
 import { DonnyActionProvider } from "../DonnyActionProvider";
 import styles from "./NextLayout.module.css";
 
-const ChatWidget = dynamic(() => import("../ChatWidget/ChatWidget"), {
-  ssr: false,
-});
-const CookieConsentModal = dynamic(
-  () => import("../CookieConsent/CookieConsent"),
-  { ssr: false },
-);
+const ChatWidget = lazy(() => import("../ChatWidget/ChatWidget"));
+const CookieConsentModal = lazy(() => import("../CookieConsent/CookieConsent"));
+
+function ClientOnly({ children }: { children: ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return <Suspense fallback={null}>{children}</Suspense>;
+}
 
 
 /** Props for NextLayout. */
@@ -42,10 +54,14 @@ export function NextLayout({ children, className }: NextLayoutProps) {
             <PageTransition>{children}</PageTransition>
           </main>
           <SiteFooter />
-          <ChatWidget />
+          <ClientOnly>
+            <ChatWidget />
+          </ClientOnly>
         </div>
       </DonnyActionProvider>
-      <CookieConsentModal />
+      <ClientOnly>
+        <CookieConsentModal />
+      </ClientOnly>
     </>
   );
 }

@@ -204,7 +204,7 @@
       "name": "AlertBanner",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Inline alert for info, warning, success, and error feedback.",
       "dense": "persistent inline status banner; tone info|success|warning|error drives icon + live-region politeness; title/description/action slots; opt-in dismissible with localized control",
       "keywords": [
@@ -297,7 +297,6 @@
       "composesWith": [
         "Button",
         "Icon",
-        "Title",
         "Text"
       ],
       "prefersOver": [
@@ -350,7 +349,7 @@
           {
             "name": "Title",
             "required": false,
-            "description": "Bold heading line (Title size=s) for scannable banners."
+            "description": "Bold title line rendered without document-heading semantics so inline banners do not alter the page outline."
           },
           {
             "name": "Description",
@@ -1845,7 +1844,7 @@
       "name": "Breadcrumb",
       "group": "navigation",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Navigation trail with current page indication.",
       "dense": "Location trail: nav[aria-label=Breadcrumb] > ol; items {label, href?} in root->current order; last (or href-less) item renders as plain current text, earlier ones as Link sm; '/' separators",
       "keywords": [
@@ -5250,7 +5249,7 @@
       "name": "EmptyState",
       "group": "display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Placeholder block for empty lists, zero search results, and first-run screens.",
       "dense": "centered icon + heading + description + action slot for empty lists/search/first-run; sm/md/lg step padding and type together",
       "keywords": [
@@ -10534,7 +10533,7 @@
       "name": "Progress",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Linear progress indicator with determinate and indeterminate modes.",
       "dense": "linear progressbar; determinate value/max or indeterminate sweep; sm/md/lg track, semantic state fill; aria-valuenow dropped when indeterminate",
       "keywords": [
@@ -13666,7 +13665,7 @@
       "name": "Tabs",
       "group": "navigation",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Tablist navigation with keyboard support, a sliding selection indicator, and per-item icon/count.",
       "dense": "Tablist-only tabs (panels via getTabPanelProps); variant default|pills|underline + sliding indicator; per-item icon+count; size sm|md|lg; controlled/uncontrolled; roving arrow-key focus",
       "keywords": [
@@ -13741,6 +13740,10 @@
           "type": "(key: string) => void"
         },
         "className": {
+          "optional": true,
+          "type": "string"
+        },
+        "ariaLabel": {
           "optional": true,
           "type": "string"
         },
@@ -15454,7 +15457,8 @@
       },
       "composesWith": [
         "EnhancedProjectCard",
-        "CategoryFilter"
+        "CategoryFilter",
+        "EmptyState"
       ],
       "prefersOver": [],
       "forbiddenUse": [

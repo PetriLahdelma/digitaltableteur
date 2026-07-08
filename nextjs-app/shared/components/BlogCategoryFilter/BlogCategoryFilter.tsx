@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 
 export interface BlogCategoryFilterProps {
@@ -46,7 +46,7 @@ export function BlogCategoryFilter({
   size = "md",
   className,
 }: BlogCategoryFilterProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   // Add "All" option at the beginning
   const allOption = {

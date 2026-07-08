@@ -39,12 +39,19 @@ vi.mock("ai", () => ({
   },
 }));
 
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string, fallback?: string) => fallback || key,
-    i18n: { language: "en" },
-  }),
-}));
+vi.mock("../../lib/translation", () => {
+  const t = (key: string, fallback?: string) => fallback || key;
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 describe("ChatWidget behaviors", () => {
   beforeEach(() => {

@@ -223,56 +223,78 @@ const dsharpParity = {
   },
 };
 
+function withoutGeneratedAt(payload) {
+  const { generatedAt: _generatedAt, ...rest } = payload;
+  return rest;
+}
+
+function resolveGeneratedAt(nextPayload) {
+  if (!existsSync(OUT)) return new Date().toISOString();
+
+  try {
+    const previous = JSON.parse(readFileSync(OUT, "utf8"));
+    if (
+      previous.generatedAt &&
+      JSON.stringify(withoutGeneratedAt(previous)) ===
+        JSON.stringify(withoutGeneratedAt(nextPayload))
+    ) {
+      return previous.generatedAt;
+    }
+  } catch {
+    // Fall through to a fresh timestamp if the existing manifest is unreadable.
+  }
+
+  return new Date().toISOString();
+}
+
 mkdirSync(dirname(OUT), { recursive: true });
+const payload = {
+  schemaVersion: "1.5",
+  generatedAt: null,
+  summary: {
+    componentCount: components.length,
+    statusCounts,
+    honestBetaDocDebt: documentationDebt.length,
+    catalogCompletenessPercent:
+      catalogCoverage?.catalogCompletenessPercent ?? null,
+    codebaseComponentCount:
+      catalogCoverage?.totalComponentsInCodebase ?? null,
+    usageCoveragePercent:
+      usageCoverage.catalogedComponents > 0
+        ? Math.round(
+            (usageCoverage.withAnyUsage / usageCoverage.catalogedComponents) *
+              1000,
+          ) / 10
+        : null,
+    componentsWithProductionUsage: usageCoverage.withProductionUsage,
+    notReadyForStablePromotion:
+      (statusCounts.stable ?? 0) < 10 ||
+      (catalogCoverage?.catalogCompletenessPercent ?? 0) < 85 ||
+      (catalogCoverage?.outOfCatalogByBucket?.["catalog-gap"] ?? 0) > 0,
+  },
+  exportPolicy: {
+    importSurface: "@dt/<ComponentName>",
+    npmPackage: null,
+    semverDoc: "docs/PUBLIC_API.md",
+    stableCount: statusCounts.stable ?? 0,
+    releaseGate: "npm run release:gate",
+  },
+  tokens,
+  catalogCoverage,
+  usageCoverage,
+  relationshipGraph,
+  honestBeta: {
+    description:
+      "Components carrying scaffolder boilerplate at beta+. Each entry disappears automatically when its MDX + spec.md are rewritten with real prose.",
+    documentationDebt,
+  },
+  dsharpParity,
+  components: componentsWithUsage,
+};
+payload.generatedAt = resolveGeneratedAt(payload);
 writeFileSync(
   OUT,
-  JSON.stringify(
-    {
-      schemaVersion: "1.5",
-      generatedAt: new Date().toISOString(),
-      summary: {
-        componentCount: components.length,
-        statusCounts,
-        honestBetaDocDebt: documentationDebt.length,
-        catalogCompletenessPercent:
-          catalogCoverage?.catalogCompletenessPercent ?? null,
-        codebaseComponentCount:
-          catalogCoverage?.totalComponentsInCodebase ?? null,
-        usageCoveragePercent:
-          usageCoverage.catalogedComponents > 0
-            ? Math.round(
-                (usageCoverage.withAnyUsage / usageCoverage.catalogedComponents) *
-                  1000,
-              ) / 10
-            : null,
-        componentsWithProductionUsage: usageCoverage.withProductionUsage,
-        notReadyForStablePromotion:
-          (statusCounts.stable ?? 0) < 10 ||
-          (catalogCoverage?.catalogCompletenessPercent ?? 0) < 85 ||
-          (catalogCoverage?.outOfCatalogByBucket?.["catalog-gap"] ?? 0) > 0,
-      },
-      exportPolicy: {
-        importSurface: "@dt/<ComponentName>",
-        npmPackage: null,
-        semverDoc: "docs/PUBLIC_API.md",
-        stableCount: statusCounts.stable ?? 0,
-        releaseGate: "npm run release:gate",
-      },
-      tokens,
-      catalogCoverage,
-      usageCoverage,
-      relationshipGraph,
-      honestBeta: {
-        description:
-          "Components carrying scaffolder boilerplate at beta+. Each entry disappears automatically when its MDX + spec.md are rewritten with real prose.",
-        documentationDebt,
-      },
-      dsharpParity,
-      components: componentsWithUsage,
-    },
-    null,
-    2,
-  ),
+  JSON.stringify(payload, null, 2),
 );
 console.log(
   `✓ agent-manifest.json (${components.length} components${tokens ? `, ${tokens.tokenCount} tokens` : ""}, ${documentationDebt.length} doc-debt)`,

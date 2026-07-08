@@ -3,6 +3,7 @@
 import React from "react";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
+import CodeSnippet from "@dt/CodeSnippet";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
@@ -14,6 +15,15 @@ import { getProjectBySlug } from "../../../../data/projects";
 import { SiNodedotjs, SiTypescript, SiNpm } from "react-icons/si";
 
 import styles from "./rhythmguard.module.css";
+
+const RHYTHMGUARD_STRICT_CONFIG_SNIPPET = `npm i -D stylelint stylelint-plugin-rhythmguard
+
+# .stylelintrc.json
+{
+  "extends": ["stylelint-plugin-rhythmguard/configs/strict"]
+}
+
+npx stylelint "src/**/*.css"`;
 
 export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("rhythmguard");
@@ -141,11 +151,21 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
         title="Install and extend the strict config"
         content={[
           <Text key="1" size="s">
-            <span style={{ fontWeight: 600 }}>One install, one extends line.</span> <code>npm i -D stylelint stylelint-plugin-rhythmguard</code>, then extend <code>stylelint-plugin-rhythmguard/configs/strict</code> from <code>.stylelintrc.json</code>. Running <code>npx stylelint &quot;src/**/*.css&quot;</code> immediately enforces the three rules across the codebase.
+            <span style={{ fontWeight: 600 }}>One install, one extends line.</span> The strict config turns Rhythmguard on immediately across the codebase, so off-scale spacing and raw token bypasses fail before review.
           </Text>,
           <Text key="2" size="s">
             Shared config replaces ad-hoc spacing rules spread across files. The strict preset ships with sensible defaults; <code>init</code> and <code>doctor</code> pick up from there when the team wants stack-specific configuration.
           </Text>,
+          <CodeSnippet
+            key="strict-config-snippet"
+            code={RHYTHMGUARD_STRICT_CONFIG_SNIPPET}
+            language="bash"
+            variant="multi"
+            allowCopy
+            showLineNumbers={false}
+            maxLines={0}
+            aria-label="Rhythmguard strict config install commands"
+          />,
         ]}
         images={{
           src: "/images/portfolio/rhythmguard/scene-1.png",

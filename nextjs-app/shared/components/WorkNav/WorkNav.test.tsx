@@ -11,30 +11,38 @@ const { mockPush, mockUsePathname } = vi.hoisted(() => ({
   mockUsePathname: vi.fn(() => "/work/new-things-co"),
 }));
 
-vi.mock("next/navigation", () => {
+vi.mock("../../lib/navigation", () => {
   return {
-    usePathname: mockUsePathname,
-    useRouter: () => ({ push: mockPush }),
+    useNavigationPathname: mockUsePathname,
+    useNavigationRouter: () => ({ push: mockPush, replace: vi.fn() }),
   };
 });
 
-// Mock translations
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string) => {
-      const translations: Record<string, string> = {
-        workNavLabel: "Work project navigation",
-        workNavBackToWork: "Work",
-        workNavPrev: "Prev",
-        workNavNext: "Next",
-        workNavNewThingsCo: "New Things Co",
-        workNavIllustrations: "Illustrations",
-        workNavGarageJunction: "Garage Junction",
-      };
-      return translations[key] || key;
-    },
-  }),
-}));
+// Mock translations through the package adapter.
+vi.mock("../../lib/translation", () => {
+  const t = (key: string) => {
+    const translations: Record<string, string> = {
+      workNavLabel: "Work project navigation",
+      workNavBackToWork: "Work",
+      workNavPrev: "Prev",
+      workNavNext: "Next",
+      workNavNewThingsCo: "New Things Co",
+      workNavIllustrations: "Illustrations",
+      workNavGarageJunction: "Garage Junction",
+    };
+    return translations[key] || key;
+  };
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 const renderWorkNav = (initialPath = "/work/new-things-co") => {
   mockUsePathname.mockReturnValue(initialPath);

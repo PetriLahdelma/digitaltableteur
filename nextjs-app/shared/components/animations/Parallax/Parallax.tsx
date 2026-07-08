@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, type ReactNode } from "react";
-import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
-import { useAnimationContext } from "@/providers/AnimationProvider";
+import { gsap, useGSAP } from "../../../lib/gsap";
+import { useAnimationContext } from "../../../lib/animation";
 import styles from "./Parallax.module.css";
 
 export interface ParallaxProps {

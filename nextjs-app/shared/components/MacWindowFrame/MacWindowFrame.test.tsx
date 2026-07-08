@@ -19,7 +19,7 @@ describe("MacWindowFrame", () => {
     render(<MacWindowFrame>Content</MacWindowFrame>);
     expect(screen.getByText(/Content/)).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
-      "Preview",
+      "Using Early LLMs",
     );
   });
 

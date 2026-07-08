@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import Card from "@dt/Card";
 import Text from "@dt/Text";
 import styles from "./SentrySummaryCard.module.css";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 
 export type SentryIssue = {
   id: string;
@@ -59,7 +59,7 @@ export const SentrySummaryCard: React.FC<Props> = ({
   forceLoading = false,
   forceError = false,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [data, setData] = useState<SentrySummaryData | null>(
     dataOverride ?? null,
   );

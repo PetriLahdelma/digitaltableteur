@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../../lib/translation";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
 import TextInput from "@dt/TextInput";
@@ -18,7 +18,7 @@ interface FieldPromptProps {
 type EmailWorkflowState = any; // avoid circular import complexity for this scaffold
 
 const FieldPrompt: React.FC<FieldPromptProps> = ({ step, draft, dispatch }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [localValue, setLocalValue] = useState("");
   const [errors, setErrors] = useState<{
     fullName?: string;

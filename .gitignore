@@ -11,7 +11,13 @@ node_modules/
 # production
 /build
 /dist
-nextjs-app/shared/foundations/dist/
+nextjs-app/shared/foundations/dist/*
+!nextjs-app/shared/foundations/dist/agent-manifest.json
+!nextjs-app/shared/foundations/dist/component-agent-blocks.json
+!nextjs-app/shared/foundations/dist/component-catalog.zod.ts
+!nextjs-app/shared/foundations/dist/docs-registry.json
+!nextjs-app/shared/foundations/dist/tokens-manifest.json
+packages/*/dist/
 
 # misc
 .DS_Store

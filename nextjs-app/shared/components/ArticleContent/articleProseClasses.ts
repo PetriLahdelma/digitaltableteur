@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 /** Shared MDX article typography — safe for server and client components. */
 export const articleProseClassName = cn(

@@ -2,12 +2,12 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { NextLayout } from "./NextLayout";
 
-// Mock dynamic imports
-vi.mock("next/dynamic", () => ({
-  default: () => {
-    const Component = () => <div>Mocked Component</div>;
-    return Component;
-  },
+vi.mock("../ChatWidget/ChatWidget", () => ({
+  default: () => <div>Mocked chat</div>,
+}));
+
+vi.mock("../CookieConsent/CookieConsent", () => ({
+  default: () => <div>Mocked cookie consent</div>,
 }));
 
 describe("NextLayout", () => {

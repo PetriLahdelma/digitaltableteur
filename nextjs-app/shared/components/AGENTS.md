@@ -84,6 +84,7 @@ Group everything with `table.category`: Content / Appearance / Behavior / Access
 ## i18n
 
 - Keys in `nextjs-app/shared/locales/{en,fi,sv}/translation.json`
+- Shared components use `useTranslate()` / `useLocalization()` from `nextjs-app/shared/lib/translation`; do not import `react-i18next` directly in package source.
 - 100% coverage across EN / FI / SV before removing WIP badge
 
 ---

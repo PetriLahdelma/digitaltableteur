@@ -464,19 +464,17 @@ Button.displayName = "Button"; // Required for debugging
 **EVERY user-facing text MUST be internationalized:**
 
 **Supported languages:** English (default), Finnish, Swedish  
-**Location:** `src/locales/{en,fi,sv}/translation.json`
+**Location:** `nextjs-app/shared/locales/{en,fi,sv}/translation.json`
 
 **MANDATORY for all components:**
 
 ```typescript
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 
 const Component = () => {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
-  return (
-    <button>{t("componentName.action")}</button>
-  );
+  return <button>{t("componentName.action", "Action")}</button>;
 };
 ```
 
@@ -573,10 +571,10 @@ const count = 5;
 **All Storybook stories MUST demonstrate translations:**
 
 ```typescript
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 
 export const Default = () => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   return <Component title={t("component.title")} />;
 };
 ```
@@ -757,7 +755,7 @@ const Component = () => {
 "use client";
 
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import styles from "./Component.module.css";
 
 interface ComponentProps {
@@ -765,13 +763,13 @@ interface ComponentProps {
 }
 
 const Component: React.FC<ComponentProps> = ({ initialValue = "" }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [value, setValue] = useState(initialValue);
 
   return (
     <div className={styles.component}>
       <button onClick={() => setValue("clicked")}>
-        {t("component.action")}
+        {t("component.action", "Action")}
       </button>
     </div>
   );
@@ -1345,10 +1343,14 @@ await waitFor(() => {
 
 ```typescript
 // 1. Translation mocks
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string) => key,
-    i18n: { language: "en" },
+vi.mock("@/nextjs-app/shared/lib/translation", () => ({
+  useTranslate: () => (key: string, fallback?: string) => fallback ?? key,
+  useLocalization: () => ({
+    translate: (key: string, fallback?: string) => fallback ?? key,
+    language: "en",
+    resolvedLanguage: "en",
+    changeLanguage: vi.fn(),
+    getResourceBundle: vi.fn(),
   }),
 }));
 
@@ -1883,7 +1885,7 @@ npm run test:visual        # Run visual regression tests
 - TypeScript with strict typing
 - Functional component or forwardRef
 - Exported interface ComponentNameProps
-- Translation support (useTranslation)
+- Translation support (`useTranslate` / `useLocalization`)
 - Proper imports (@dt/ aliases)
 
 **✅ ComponentName/ComponentName.module.css**
@@ -1957,7 +1959,7 @@ Requirements:
 - Include [specific features]
 
 Must include:
-1. ComponentName.tsx (TypeScript, strict mode, useTranslation)
+1. ComponentName.tsx (TypeScript, strict mode, `useTranslate`)
 2. ComponentName.module.css (CSS Modules, logical properties, design tokens)
 3. ComponentName.stories.tsx (all variants, WIP badge enabled)
 4. ComponentName.test.tsx (Vitest, >80% coverage, a11y tests)

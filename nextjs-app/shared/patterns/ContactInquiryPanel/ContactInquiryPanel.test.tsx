@@ -44,10 +44,14 @@ describe("ContactInquiryPanel", () => {
   it("links tabs to tabpanels with matching ids", () => {
     renderPanel("message");
 
+    expect(screen.getByRole("tablist")).toHaveAttribute(
+      "aria-label",
+      "Contact options",
+    );
     expect(
       screen.getByRole("tab", { name: /Send a message/i }),
-    ).toHaveAttribute("aria-controls", "contact-panel-message");
-    expect(document.getElementById("contact-panel-message")).toBeTruthy();
+    ).toHaveAttribute("aria-controls", "tabpanel-message");
+    expect(document.getElementById("tabpanel-message")).toBeTruthy();
     expect(document.getElementById("contact-form")).toBeTruthy();
   });
 

@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useAnimationContext } from "@/providers/AnimationProvider";
+import { useAnimationContext } from "../../lib/animation";
 
 type ClientLogo = {
   src: string;

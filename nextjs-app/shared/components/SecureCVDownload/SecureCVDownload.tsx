@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Modal from "@dt/Modal";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
@@ -32,7 +32,7 @@ export const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
   buttonVariant = "primary",
   inverse = false,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [showModal, setShowModal] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

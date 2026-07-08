@@ -2,14 +2,14 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { StatsSection } from "./StatsSection";
 
-vi.mock("@/providers/AnimationProvider", () => ({
+vi.mock("../../lib/animation", () => ({
   useAnimationContext: () => ({
     motionPreference: "full",
     isReady: true,
   }),
 }));
 
-vi.mock("@/nextjs-app/shared/lib/gsap", () => ({
+vi.mock("../../lib/gsap", () => ({
   gsap: {
     fromTo: vi.fn(),
   },

@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { Link } from "../../lib/linkComponent";
 import { Image } from "../../lib/imageComponent";
-import { useTranslation } from "react-i18next";
+import { useLocalization } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import { BlogMediaImage } from "@dt/BlogMediaImage";
-import { isSvgSrc } from "@/lib/media/imageSrc";
+import { isSvgSrc } from "../../lib/imageSrc";
 import styles from "./EnhancedArticleCard.module.css";
 
 export interface EnhancedArticleCardProps {
@@ -72,7 +72,7 @@ export function EnhancedArticleCard({
   showReadMore = true,
   className,
 }: EnhancedArticleCardProps) {
-  const { i18n, t } = useTranslation();
+  const { translate: t, language } = useLocalization();
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const isFeatured = variant === "featured";
@@ -80,7 +80,7 @@ export function EnhancedArticleCard({
   const showImage = image && !hideImage;
 
   const formattedDate = publishedAt
-    ? formatDate(publishedAt, i18n.language)
+    ? formatDate(publishedAt, language)
     : "";
 
   // Default avatar fallback

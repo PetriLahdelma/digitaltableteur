@@ -8,7 +8,7 @@ import Button from "@dt/Button";
 const meta: Meta<typeof AlertBanner> = {
   title: "Feedback/AlertBanner",
   component: AlertBanner,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

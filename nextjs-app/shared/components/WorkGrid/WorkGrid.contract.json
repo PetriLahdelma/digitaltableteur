@@ -95,7 +95,8 @@
     ],
     "composesWith": [
         "EnhancedProjectCard",
-        "CategoryFilter"
+        "CategoryFilter",
+        "EmptyState"
     ],
     "displayName": "WorkGrid",
     "keywords": [

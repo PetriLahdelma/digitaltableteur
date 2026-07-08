@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../../lib/translation";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
 import styles from "../ChatWidget.module.css";
@@ -10,7 +10,7 @@ interface ComposePromptProps {
 }
 
 const ComposePrompt: React.FC<ComposePromptProps> = ({ dispatch }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   return (
     <div className={styles.root}>
       <Text>{t("emailWorkflow.promptAddress")}</Text>

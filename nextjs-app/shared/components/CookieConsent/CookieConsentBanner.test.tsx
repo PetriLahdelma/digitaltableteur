@@ -4,21 +4,29 @@ import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import CookieConsentBanner from "./CookieConsentBanner";
 
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string) => {
-      const translations: Record<string, string> = {
-        "cookieConsent.bannerLabel": "Cookie preferences",
-        "cookieConsent.bannerSummary": "We use cookies to improve your experience.",
-        "cookieConsent.policyLinkText": "cookie policy",
-        "cookieConsent.customizeButton": "Customize settings",
-        "cookieConsent.acceptEssentialButton": "Only essential",
-        "cookieConsent.acceptAllButton": "Accept all",
-      };
-      return translations[key] || key;
-    },
-  }),
-}));
+vi.mock("../../lib/translation", () => {
+  const t = (key: string) => {
+    const translations: Record<string, string> = {
+      "cookieConsent.bannerLabel": "Cookie preferences",
+      "cookieConsent.bannerSummary": "We use cookies to improve your experience.",
+      "cookieConsent.policyLinkText": "cookie policy",
+      "cookieConsent.customizeButton": "Customize settings",
+      "cookieConsent.acceptEssentialButton": "Only essential",
+      "cookieConsent.acceptAllButton": "Accept all",
+    };
+    return translations[key] || key;
+  };
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 vi.mock("../../lib/cookieConsent", () => ({
   useCookieConsent: () => ({

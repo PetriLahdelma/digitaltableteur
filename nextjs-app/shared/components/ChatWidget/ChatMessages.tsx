@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import type { UIMessage } from "ai";
 import Text from "@dt/Text";
 import styles from "./ChatWidget.module.css";
@@ -34,7 +34,7 @@ const isSupportedRole = (role: UIMessage["role"]) =>
 
 const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
   ({ messages, isStreaming, emailWorkflow, dispatchEmailWorkflow }, ref) => {
-    const { t } = useTranslation();
+    const t = useTranslate();
     const processed = processConversation(
       messages.filter((m) => isSupportedRole(m.role)),
     );

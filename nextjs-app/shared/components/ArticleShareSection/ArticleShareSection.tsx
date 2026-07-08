@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import {
   XLogo,
   LinkedinLogo,
@@ -34,7 +34,7 @@ export function ArticleShareSection({
   showTitle = true,
   className,
 }: ArticleShareSectionProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [copied, setCopied] = useState(false);
 
   const encodedUrl = encodeURIComponent(url);

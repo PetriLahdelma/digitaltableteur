@@ -21,7 +21,7 @@ import {
   vi,
   type MockInstance,
 } from "vitest";
-import { ThemeProvider, useTheme } from "@dt/ThemeProvider";
+import { ThemeProvider, useTheme } from "@digitaltableteur/react";
 
 // Mock localStorage
 const createMockLocalStorage = () => {

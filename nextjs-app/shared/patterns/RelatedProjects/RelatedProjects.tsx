@@ -1,7 +1,7 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { useTranslate } from "../../lib/translation";
+import { cn } from "../../lib/cn";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";
@@ -25,7 +25,7 @@ export function RelatedProjects({
   title,
   className,
 }: RelatedProjectsProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const relatedProjects = getRelatedProjects(currentSlug, maxItems);
 
   // If no related projects found, show a fallback CTA

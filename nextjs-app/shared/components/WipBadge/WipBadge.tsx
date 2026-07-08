@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import styles from "./WipBadge.module.css";
 
 export type WipBadgeProps = {
@@ -10,7 +10,7 @@ export type WipBadgeProps = {
 };
 
 export function WipBadge({ status = "alpha", variant = "canvas" }: WipBadgeProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   if (status === "stable") return null;
   const containerClass = variant === "docs" ? styles.wipBadgeDocs : styles.wipBadgeContainer;
   const deprecated = status === "deprecated";

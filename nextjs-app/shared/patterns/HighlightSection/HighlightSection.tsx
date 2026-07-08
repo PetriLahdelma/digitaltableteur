@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Button from "@dt/Button";
@@ -106,7 +106,7 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
   id = "component-schema",
   donnyTarget = "home.componentSchema",
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const ctaItems = Array.isArray(cta) ? cta : cta ? [cta] : [];
   const cappedCtas = ctaItems.slice(0, 3);
   const primaryCtas = cappedCtas.slice(0, 2);

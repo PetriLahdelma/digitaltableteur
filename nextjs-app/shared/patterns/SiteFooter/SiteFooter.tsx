@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
-import { Container } from "@/nextjs-app/shared/components/Container";
-import { Stack } from "@/nextjs-app/shared/components/Stack";
-import DtLink from "@dt/Link";
-import { Divider } from "@dt/Divider";
+import { useTranslate } from "../../lib/translation";
+import { cn } from "../../lib/cn";
+import { Link as RouterLink } from "../../lib/linkComponent";
+import { Container } from "../../components/Container";
+import { Stack } from "../../components/Stack";
+import DtLink from "../../components/Link";
+import { Divider } from "../../components/Divider";
 import {
   InstagramLogo,
   FacebookLogo,
@@ -70,7 +70,7 @@ export interface SiteFooterProps {
 
 /** Production site footer with social and legal links. */
 export function SiteFooter({ className }: SiteFooterProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -85,12 +85,12 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {t("footerAddressTitle")}
             </p>
             <address className="font-body text-text-m text-muted-foreground not-italic leading-relaxed">
-              <Link
+              <RouterLink
                 href="/"
                 className="font-medium text-foreground hover:underline rounded-sm"
               >
                 Digitaltableteur
-              </Link>
+              </RouterLink>
               <br />
               {t("footerAddress1")}
               <br />

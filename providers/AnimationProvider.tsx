@@ -2,8 +2,6 @@
 
 import {
   useEffect,
-  createContext,
-  useContext,
   useState,
   type ReactNode,
 } from "react";
@@ -12,23 +10,10 @@ import {
   type MotionPreference,
   getMotionPreference,
 } from "@/nextjs-app/shared/lib/gsap/motion-safe";
+import { AnimationRuntimeProvider } from "@digitaltableteur/react";
 
 // Import GSAP to ensure plugins are registered
 import "@/nextjs-app/shared/lib/gsap";
-
-interface AnimationContextValue {
-  motionPreference: MotionPreference;
-  isReady: boolean;
-}
-
-const AnimationContext = createContext<AnimationContextValue>({
-  motionPreference: "full",
-  isReady: false,
-});
-
-export function useAnimationContext() {
-  return useContext(AnimationContext);
-}
 
 interface AnimationProviderProps {
   children: ReactNode;
@@ -57,8 +42,10 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
   }, []);
 
   return (
-    <AnimationContext.Provider value={{ motionPreference, isReady }}>
+    <AnimationRuntimeProvider value={{ motionPreference, isReady }}>
       {children}
-    </AnimationContext.Provider>
+    </AnimationRuntimeProvider>
   );
 }
+
+export { useAnimationContext } from "@digitaltableteur/react";

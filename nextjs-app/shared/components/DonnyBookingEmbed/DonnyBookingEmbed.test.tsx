@@ -5,11 +5,10 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
 import { DonnyBookingEmbed } from "./DonnyBookingEmbed";
 
-vi.mock("next/dynamic", () => ({
-  default: () =>
-    function MockCal({ calLink }: { calLink: string }) {
-      return <div data-testid="cal-com-embed">{calLink}</div>;
-    },
+vi.mock("@calcom/embed-react", () => ({
+  default: function MockCal({ calLink }: { calLink: string }) {
+    return <div data-testid="cal-com-embed">{calLink}</div>;
+  },
 }));
 
 function renderEmbed(props: React.ComponentProps<typeof DonnyBookingEmbed>) {
@@ -21,7 +20,7 @@ function renderEmbed(props: React.ComponentProps<typeof DonnyBookingEmbed>) {
 }
 
 describe("DonnyBookingEmbed", () => {
-  it("renders Cal.com embed react for EU accounts", () => {
+  it("renders Cal.com embed react for EU accounts", async () => {
     renderEmbed({
       configured: true,
       provider: "calcom",
@@ -33,7 +32,10 @@ describe("DonnyBookingEmbed", () => {
       embedJsUrl: "https://app.cal.eu/embed/embed.js",
     });
 
-    expect(screen.getByTestId("cal-com-embed")).toHaveTextContent(
+    expect(
+      screen.getByRole("progressbar", { name: /Loading booking calendar/i }),
+    ).toBeInTheDocument();
+    expect(await screen.findByTestId("cal-com-embed")).toHaveTextContent(
       "digitaltableteur/30min",
     );
   });

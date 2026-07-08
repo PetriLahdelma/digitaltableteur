@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode, type ElementType } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface HeroSectionProps {
   /** Hero content */

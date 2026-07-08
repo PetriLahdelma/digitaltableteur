@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, useRef } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import styles from "./EmailSignatureGenerator.module.css";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
@@ -42,7 +42,7 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
   logoUrl = "/round.png",
   logoUrlFull = "https://digitaltableteur.com/round.png",
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const [formData, setFormData] = useState<SignatureData>({
     name: "",

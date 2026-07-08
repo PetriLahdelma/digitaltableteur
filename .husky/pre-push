@@ -7,6 +7,7 @@ echo "$changed" | grep -qE 'nextjs-app/shared/(components|patterns|foundations)|
 # check:contract-props only existed in CI). build:tokens regenerates the dist
 # artifacts (relationship graph + agent blocks) the two checks compare against.
 npm run build:tokens
+npm run check:token-packages
 npm run check:contract-props
 npm run check:consumers
 npm run check:astryx-roadmap

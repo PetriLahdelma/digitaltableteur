@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { ProjectCard } from "../../components/ProjectCard";
 import { EnhancedProjectCard } from "../../components/EnhancedProjectCard";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface ProjectItem {
   /** Project title */
@@ -49,7 +49,7 @@ export function WorkPreviewSection({
   className,
   id = "work",
 }: WorkPreviewSectionProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const renderGrid = () => (
     <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-6">

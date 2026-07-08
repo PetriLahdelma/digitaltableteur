@@ -1,13 +1,38 @@
 "use client";
 
-import React, { useMemo } from "react";
-import dynamic from "next/dynamic";
-import { useTranslation } from "react-i18next";
+import React, {
+  lazy,
+  Suspense,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 import Button from "@dt/Button";
+import Progress from "@dt/Progress";
 import { isAllowedDonnyBookingEmbedUrl } from "../../lib/donny-booking";
+import { useLocalization } from "../../lib/translation";
 import styles from "./DonnyBookingEmbed.module.css";
 
-const Cal = dynamic(() => import("@calcom/embed-react"), { ssr: false });
+const Cal = lazy(() => import("@calcom/embed-react"));
+
+function ClientOnly({
+  children,
+  fallback,
+}: {
+  children: ReactNode;
+  fallback?: ReactNode;
+}) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return fallback ?? null;
+
+  return <Suspense fallback={fallback ?? null}>{children}</Suspense>;
+}
 
 export interface DonnyBookingEmbedProps {
   configured: boolean;
@@ -19,6 +44,7 @@ export interface DonnyBookingEmbedProps {
   calLink?: string;
   calOrigin?: string;
   embedJsUrl?: string;
+  loadingFallback?: ReactNode;
 }
 
 const SUPPORTED_CAL_LOCALES = ["en", "fi", "sv"] as const;
@@ -54,11 +80,12 @@ export function DonnyBookingEmbed({
   calLink,
   calOrigin,
   embedJsUrl,
+  loadingFallback,
 }: DonnyBookingEmbedProps) {
-  const { t, i18n } = useTranslation();
+  const { translate: t, language, resolvedLanguage } = useLocalization();
   const calLocale = useMemo(
-    () => resolveCalEmbedLocale(i18n.resolvedLanguage || i18n.language),
-    [i18n.language, i18n.resolvedLanguage],
+    () => resolveCalEmbedLocale(resolvedLanguage || language),
+    [language, resolvedLanguage],
   );
   const safeCalLink =
     configured &&
@@ -80,6 +107,16 @@ export function DonnyBookingEmbed({
       : provider === "calendly"
         ? t("donnyBookingProviderCalendly", "Calendly")
         : t("donnyBookingProviderNone", "Contact form");
+  const defaultLoadingFallback = (
+    <div className={styles.loadingProgress}>
+      <Progress
+        indeterminate
+        size="sm"
+        state="info"
+        label={t("donnyBookingLoading", "Loading booking calendar")}
+      />
+    </div>
+  );
 
   if (!safeCalLink && !safeEmbedUrl) {
     const contactHref = fallbackUrl.startsWith("/") ? fallbackUrl : "/contact";
@@ -127,19 +164,21 @@ export function DonnyBookingEmbed({
       </div>
       <div className={styles.frameWrap}>
         {safeCalLink ? (
-          <Cal
-            key={`${safeCalLink}-${calLocale}`}
-            calLink={safeCalLink}
-            calOrigin={calOrigin}
-            embedJsUrl={embedJsUrl}
-            config={{
-              layout: "month_view",
-              useSlotsViewOnSmallScreen: "true",
-              theme: "auto",
-              lang: calLocale,
-            }}
-            className={styles.calEmbed}
-          />
+          <ClientOnly fallback={loadingFallback ?? defaultLoadingFallback}>
+            <Cal
+              key={`${safeCalLink}-${calLocale}`}
+              calLink={safeCalLink}
+              calOrigin={calOrigin}
+              embedJsUrl={embedJsUrl}
+              config={{
+                layout: "month_view",
+                useSlotsViewOnSmallScreen: "true",
+                theme: "auto",
+                lang: calLocale,
+              }}
+              className={styles.calEmbed}
+            />
+          </ClientOnly>
         ) : (
           <iframe
             title={t(

@@ -1,6 +1,6 @@
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 
-// Hook-based wrapper to access i18n inside validation; for pure functions we pass t in.
+// Hook-based wrapper to access translations inside validation; pure functions accept t.
 export interface ContactValidators {
   validateEmail: (email: string) => boolean;
   validateFullName: (name: string) => boolean;
@@ -44,7 +44,7 @@ export const generateErrors = (
 
 // Provide a convenience React hook for existing ContactForm if refactoring later
 export const useContactValidation = () => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   return {
     t,
     generateErrors: (data: {

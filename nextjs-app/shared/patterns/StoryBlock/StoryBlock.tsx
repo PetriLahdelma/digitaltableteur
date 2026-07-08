@@ -150,9 +150,9 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  layout="responsive"
                   width={image.width}
                   height={image.height}
+                  sizes="(max-width: 768px) 100vw, 768px"
                   style={{
                     width: "100%",
                     height: "auto",
