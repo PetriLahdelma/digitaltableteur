@@ -22,7 +22,7 @@
         },
         {
             "key": "futureproofness",
-            "current": 61,
+            "current": 63,
             "target": 90
         },
         {
@@ -84,8 +84,8 @@
         },
         {
             "name": "useMediaQuery",
-            "status": "planned",
-            "file": null,
+            "status": "operational",
+            "file": "nextjs-app/shared/hooks/useMediaQuery.ts",
             "note": "consolidates 17 ad-hoc matchMedia call sites"
         },
         {
