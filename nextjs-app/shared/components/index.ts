@@ -11,6 +11,11 @@ export { default as Card } from "./Card/Card";
 export { default as Checkbox } from "./Checkbox/Checkbox";
 export { default as CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
 export { default as ChunkErrorBoundary } from "./ChunkErrorBoundary/ChunkErrorBoundary";
+export {
+  CommandPalette,
+  type CommandPaletteProps,
+  type CommandPaletteItem,
+} from "./CommandPalette";
 export { default as ComplianceCard } from "./ComplianceCard/ComplianceCard";
 export { default as ContactForm } from "./ContactForm/ContactForm";
 export { default as ChatWidget } from "./ChatWidget/ChatWidget";

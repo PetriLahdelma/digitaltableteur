@@ -95,9 +95,9 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, 🔒 checkpoint (needs record
 - Deferred (adopt only when a trigger component needs them): LayerProvider/useLayer, Syntax Theme, useOverflow/useScrollOverflow, useClickableContainer, useListFocus, useKeyboardHint, useStreamingText. Skipped (app-platform only): useGridFocus, useTreeFocus, Media Theme, useImageMode.
 
 ### Phase 3: Targeted breadth → Breadth (rescoped)
-- [ ] 3.1 Command Palette (site/docs search + agent story).
+- [x] 3.1 CommandPalette (new, **alpha**): portal `role=dialog aria-modal` with a `role=combobox` filter input (aria-controls + aria-activedescendant) over a `role=listbox`; Arrow/Enter/Escape keyboard, focus trap + scroll lock (reuses `useFocusTrap`/`useScrollLock`), label/placeholder/emptyText as props (English defaults, no i18n coupling). Full 5-file set + 8-test suite (render/filter/keyword/keyboard/enter/escape/click/axe). Closes the last hard breadth gap. breadth 70 → 74. stableCount untouched (alpha).
 - [x] 3.2 SegmentedControl (new, **alpha**): single-select `role=radiogroup` with roving-tabindex arrow/Home/End nav, sm/md/lg, CSS Modules + tokens (light/dark/HC/forced-colors/reduced-motion), full 5-file contract + spec + stories + test (render/click/keyboard/disabled/axe). Closes a hard breadth gap. breadth 66 → 70. stableCount untouched (alpha).
-- [ ] 3.3 Close any intended-surface gaps found in 0.5; promote the whole checklist to `stable`.
+- [~] 3.3 Intended-surface gaps closed (SegmentedControl, CommandPalette built). Remaining lift to Breadth-90 = promoting the consumer-backed betas (Breadcrumb, Tabs, Progress, AlertBanner, EmptyState, CodeSnippet) to `stable` via the promotion recipe; 0-consumer betas are covered-but-unpromotable by policy. Needs real consumers/AT snapshots → deferred with the supervised block.
 
 ### Phase 4: Governance + agent-readiness + theming → those three to 90
 - [x] 4.1 Multi-brand theme generation: `scripts/design-system/generate-theme.mjs` (+ test, `npm run generate:theme`) emits a scoped brand override block validated against the token catalog (unknown token = hard error) into stylelint-ignored `dist/themes/`; demo `acme` brand + `03-Theming` doc section. On top of existing light/dark/HC/forced-colors. **theming → 90** (3rd dimension at target).
