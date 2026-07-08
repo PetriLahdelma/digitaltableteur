@@ -26,6 +26,15 @@ function assertFile(path, label) {
   }
 }
 
+function parsePackJson(stdout, packageName) {
+  const parsed = JSON.parse(stdout);
+  const rows = Array.isArray(parsed) ? parsed : [parsed];
+  if (rows.length !== 1) {
+    throw new Error(`npm pack for ${packageName} returned ${rows.length} package rows.`);
+  }
+  return rows[0];
+}
+
 run("npm", ["--prefix", "packages/react", "run", "build"]);
 
 assertFile(join(dist, "index.js"), "React package JS entry");
@@ -59,7 +68,7 @@ const packJson = run(
   ["pack", "./packages/react", "--dry-run", "--json"],
   { capture: true },
 );
-const [pack] = JSON.parse(packJson);
+const pack = parsePackJson(packJson, "@digitaltableteur/react");
 const files = new Set(pack.files.map((file) => file.path));
 for (const required of ["dist/index.js", "dist/index.d.ts", "dist/style.css"]) {
   if (!files.has(required)) {

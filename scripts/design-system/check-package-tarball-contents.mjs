@@ -86,16 +86,27 @@ function relativePath(path) {
 }
 
 function parsePackJson(stdout, packageName) {
-  const start = stdout.indexOf("[");
-  const end = stdout.lastIndexOf("]");
-  if (start === -1 || end === -1 || end < start) {
-    throw new Error(`npm pack for ${packageName} did not return JSON.`);
+  const trimmed = stdout.trim();
+  const candidates = [
+    trimmed,
+    stdout.slice(stdout.indexOf("["), stdout.lastIndexOf("]") + 1),
+    stdout.slice(stdout.indexOf("{"), stdout.lastIndexOf("}") + 1),
+  ].filter(Boolean);
+
+  for (const candidate of candidates) {
+    try {
+      const parsed = JSON.parse(candidate);
+      const rows = Array.isArray(parsed) ? parsed : [parsed];
+      if (rows.length !== 1) {
+        throw new Error(`npm pack for ${packageName} returned ${rows.length} package rows.`);
+      }
+      return rows[0];
+    } catch {
+      // Try the next candidate. npm may wrap JSON in notice output.
+    }
   }
-  const parsed = JSON.parse(stdout.slice(start, end + 1));
-  if (!Array.isArray(parsed) || parsed.length !== 1) {
-    throw new Error(`npm pack for ${packageName} returned ${parsed.length} package rows.`);
-  }
-  return parsed[0];
+
+  throw new Error(`npm pack for ${packageName} did not return parseable JSON.`);
 }
 
 function packPackage(definition) {

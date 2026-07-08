@@ -52,13 +52,22 @@ function packageDir(packageName) {
   return join(ROOT, dir);
 }
 
+function parsePackJson(stdout, packageName) {
+  const parsed = JSON.parse(stdout);
+  const rows = Array.isArray(parsed) ? parsed : [parsed];
+  if (rows.length !== 1) {
+    throw new Error(`npm pack for ${packageName} returned ${rows.length} package rows.`);
+  }
+  return rows[0];
+}
+
 function pack(packageName, destination) {
   const result = run(
     "npm",
     ["pack", "--pack-destination", destination, "--json"],
     { cwd: packageDir(packageName), capture: true },
   );
-  const [packed] = JSON.parse(result);
+  const packed = parsePackJson(result, packageName);
   if (!packed?.filename) {
     throw new Error(`npm pack did not return a filename for ${packageName}`);
   }
@@ -76,7 +85,7 @@ function inspectPack(packageName) {
     cwd: packageDir(packageName),
     capture: true,
   });
-  return JSON.parse(result)[0];
+  return parsePackJson(result, packageName);
 }
 
 const rootPackage = readJson(join(ROOT, "package.json"));
