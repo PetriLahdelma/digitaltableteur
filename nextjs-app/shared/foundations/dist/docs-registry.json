@@ -4123,6 +4123,43 @@
         }
       ]
     },
+    "CommandPalette": {
+      "name": "CommandPalette",
+      "group": "navigation",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Modal, keyboard-driven command launcher: a search input filters a listbox of commands (matched on label + keywords); Arrow keys move the active option, Enter runs it, Escape closes. Focus is trapped and background scroll locked while open.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { CommandPalette } from \"@dt/CommandPalette\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-black",
+          "--color-border",
+          "--color-surface",
+          "--color-text",
+          "--color-muted"
+        ],
+        "spacing": [
+          "--space-internal-2",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24"
+        ],
+        "typography": [
+          "--font-body",
+          "--font-size-text-s",
+          "--font-size-text-m"
+        ]
+      },
+      "examples": []
+    },
     "ComplianceCard": {
       "name": "ComplianceCard",
       "group": "structure",
