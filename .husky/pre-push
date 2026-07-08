@@ -9,6 +9,7 @@ echo "$changed" | grep -qE 'nextjs-app/shared/(components|patterns|foundations)|
 npm run build:tokens
 npm run check:contract-props
 npm run check:consumers
+npm run check:astryx-roadmap
 npm run validate:components
 npm run typecheck
 npm run lint
