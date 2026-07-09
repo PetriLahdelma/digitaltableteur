@@ -48,6 +48,20 @@ function readCommandJson(command, args) {
   return output ? JSON.parse(output) : {};
 }
 
+/**
+ * npm `access` APIs need org-level permission that a least-privilege
+ * install token (read-only, package-scoped) intentionally lacks and 403s
+ * on. Readability is proven by `npm view` + the scratch install, so the
+ * access metadata is best-effort: null when the token cannot list it.
+ */
+function readCommandJsonOptional(command, args) {
+  try {
+    return readCommandJson(command, args);
+  } catch {
+    return null;
+  }
+}
+
 function accessValue(accessReport, packageName) {
   const value = accessReport?.[packageName];
   return typeof value === "string" ? value : null;
@@ -74,15 +88,15 @@ const registryTokensCssVersion = run(
   ]),
   { capture: true },
 ).trim();
-const accessPackages = readCommandJson(
+const accessPackages = readCommandJsonOptional(
   "npm",
   npmArgs([...userconfigArgs, "access", "list", "packages", "digitaltableteur", "--json"]),
 );
-const tokensAccessStatus = readCommandJson(
+const tokensAccessStatus = readCommandJsonOptional(
   "npm",
   npmArgs([...userconfigArgs, "access", "get", "status", "@digitaltableteur/tokens", "--json"]),
 );
-const tokensCssAccessStatus = readCommandJson(
+const tokensCssAccessStatus = readCommandJsonOptional(
   "npm",
   npmArgs([
     ...userconfigArgs,
@@ -132,14 +146,18 @@ try {
     );
   }
   for (const pkg of report.packages) {
-    if (pkg.orgAccess !== "read-write") {
+    if (
+      pkg.orgAccess !== null &&
+      pkg.orgAccess !== "read-only" &&
+      pkg.orgAccess !== "read-write"
+    ) {
       throw new Error(
-        `Registry ${pkg.name} org access mismatch: expected read-write, got ${pkg.orgAccess ?? "missing"}`,
+        `Registry ${pkg.name} org access mismatch: expected read-only or read-write, got ${pkg.orgAccess}`,
       );
     }
-    if (pkg.accessStatus !== "private") {
+    if (pkg.accessStatus !== null && pkg.accessStatus !== "private") {
       throw new Error(
-        `Registry ${pkg.name} access status mismatch: expected private, got ${pkg.accessStatus ?? "missing"}`,
+        `Registry ${pkg.name} access status mismatch: expected private, got ${pkg.accessStatus}`,
       );
     }
   }
