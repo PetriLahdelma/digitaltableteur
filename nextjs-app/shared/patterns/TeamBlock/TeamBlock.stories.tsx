@@ -123,8 +123,7 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
 const meta: Meta<typeof TeamBlockForStorybook> = {
   title: "Patterns/TeamBlock",
   component: TeamBlockForStorybook,
-  // Exclude from Vitest tests
-  tags: ["beta", "autodocs", "!test"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

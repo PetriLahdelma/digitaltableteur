@@ -66,7 +66,7 @@ export function ProjectCard({
       >
         <Image
           src={thumbnail}
-          alt={title}
+          alt="" // Decorative — the card always renders the title as text
           fill
           className={cn(
             "object-cover",
