@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-09T18:41:29.281Z",
+  "generatedAt": "2026-07-09T18:56:21.051Z",
   "summary": {
     "componentCount": 161,
     "statusCounts": {
-      "beta": 65,
-      "stable": 73,
+      "beta": 58,
+      "stable": 80,
       "alpha": 23
     },
     "honestBetaDocDebt": 0,
@@ -19,7 +19,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 73,
+    "stableCount": 80,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -62,7 +62,7 @@
     "catalogCompletenessPercent": 87.5,
     "artifactCoverage": {
       "stories": 145,
-      "tests": 137,
+      "tests": 141,
       "mdx": 3,
       "spec": 161
     },
@@ -106,8 +106,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 65,
-        "stable": 73,
+        "beta": 58,
+        "stable": 80,
         "alpha": 23
       },
       "dsharp": {
@@ -34643,7 +34643,7 @@
         "name": "ContactPageContentEditorial",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Editorial contact page layout with form and success state.",
         "dense": "Editorial /contact route body: intro copy, inquiry panel with form, and submit success state.",
         "keywords": [
@@ -34674,14 +34674,32 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
@@ -34974,7 +34992,7 @@
         "name": "DesignSprintsSection",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Homepage design-sprints band with animated CTA pills.",
         "dense": "Homepage design-sprints band with animated CTA pills; slots between marketing sections via id/donnyTarget anchors.",
         "keywords": [
@@ -35005,14 +35023,32 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/DesignSprintsSection/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
@@ -36552,7 +36588,7 @@
         "name": "HighlightSection",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Highlight band with variant backgrounds and CTA slots.",
         "dense": "Highlight band: overline + title + description with CTA slot; visual variants and sizes for marketing emphasis.",
         "keywords": [
@@ -36603,14 +36639,32 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/HighlightSection/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
@@ -36810,7 +36864,7 @@
         "name": "HomeHero",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Homepage hero with kinetic title, background, and primary CTA.",
         "dense": "Bespoke homepage hero: kinetic per-visit headline, background treatment, primary CTA scrolling to scrollTargetId.",
         "keywords": [
@@ -36841,14 +36895,32 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/HomeHero/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
@@ -37102,7 +37174,7 @@
         "name": "NewsBulletin",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Homepage news bulletin strip with three topical slots above the footer.",
         "dense": "Homepage news strip: up to three topical item cards above the footer, driven by a typed items list.",
         "keywords": [
@@ -37154,16 +37226,34 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-06-06 — card labels, link targets, and ForcedColors story verified in Storybook.",
+          "reviewedNote": "2026-06-06 — card labels, link targets, and ForcedColors story verified in Storybook. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
           "forcedColorsVerified": true,
-          "playFunctionExempt": "Marquee animation defers to CSS; keyboard order follows DOM link sequence."
+          "playFunctionExempt": "Marquee animation defers to CSS; keyboard order follows DOM link sequence.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/NewsBulletin/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "items": {
@@ -37635,7 +37725,7 @@
         "name": "PricingPageContent",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Pricing page content assembly with packages, agency comparison, and deliverables.",
         "dense": "Full /pricing route body: package tiers, agency comparison table, and deliverables; CTAs prefill contact booking via packageId.",
         "keywords": [
@@ -37683,9 +37773,11 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-06-06 — package cards, comparison table, and ForcedColors story verified in Storybook.",
+          "reviewedNote": "2026-06-06 — package cards, comparison table, and ForcedColors story verified in Storybook. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
           "forcedColorsVerified": true,
-          "playFunctionExempt": "Page assembly; interactive CTAs inherit Button and Link primitives."
+          "playFunctionExempt": "Page assembly; interactive CTAs inherit Button and Link primitives.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -37694,7 +37786,23 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "className": {
@@ -39812,7 +39920,7 @@
         "name": "ServicesSection",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Homepage services grid with icons and copy.",
         "dense": "Homepage services grid: icon + copy service cards, column count and card variant knobs.",
         "keywords": [
@@ -39843,14 +39951,32 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ServicesSection/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {

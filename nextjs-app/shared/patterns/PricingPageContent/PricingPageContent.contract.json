@@ -3,7 +3,7 @@
     "name": "PricingPageContent",
     "tier": "pattern",
     "group": "marketing",
-    "status": "beta",
+    "status": "stable",
     "description": "Pricing page content assembly with packages, agency comparison, and deliverables.",
     "dense": "Full /pricing route body: package tiers, agency comparison table, and deliverables; CTAs prefill contact booking via packageId.",
     "keywords": [
@@ -51,9 +51,11 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-06-06 — package cards, comparison table, and ForcedColors story verified in Storybook.",
+        "reviewedNote": "2026-06-06 — package cards, comparison table, and ForcedColors story verified in Storybook. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
         "forcedColorsVerified": true,
-        "playFunctionExempt": "Page assembly; interactive CTAs inherit Button and Link primitives."
+        "playFunctionExempt": "Page assembly; interactive CTAs inherit Button and Link primitives.",
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -62,7 +64,23 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "className": {
