@@ -104,10 +104,21 @@ const reactTypesVersion =
   rootPackage.dependencies?.["@types/react"] ?? rootPackage.devDependencies?.["@types/react"];
 const reactDomTypesVersion =
   rootPackage.dependencies?.["@types/react-dom"] ?? rootPackage.devDependencies?.["@types/react-dom"];
+// framer-motion is a package peerDependency; the repo installs with
+// legacy-peer-deps so the consumer must install it explicitly like react.
+const framerMotionVersion =
+  rootPackage.dependencies?.["framer-motion"] ?? rootPackage.devDependencies?.["framer-motion"];
 
-if (!reactVersion || !reactDomVersion || !typescriptVersion || !reactTypesVersion || !reactDomTypesVersion) {
+if (
+  !reactVersion ||
+  !reactDomVersion ||
+  !typescriptVersion ||
+  !reactTypesVersion ||
+  !reactDomTypesVersion ||
+  !framerMotionVersion
+) {
   throw new Error(
-    "Root package.json must declare react, react-dom, typescript, @types/react, and @types/react-dom for the consumer smoke.",
+    "Root package.json must declare react, react-dom, framer-motion, typescript, @types/react, and @types/react-dom for the consumer smoke.",
   );
 }
 
@@ -445,6 +456,7 @@ void tree;
       "--prefer-offline",
       `react@${reactVersion}`,
       `react-dom@${reactDomVersion}`,
+      `framer-motion@${framerMotionVersion}`,
       `typescript@${typescriptVersion}`,
       `@types/react@${reactTypesVersion}`,
       `@types/react-dom@${reactDomTypesVersion}`,
