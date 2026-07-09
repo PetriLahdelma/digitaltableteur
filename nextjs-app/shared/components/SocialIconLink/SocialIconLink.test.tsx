@@ -44,6 +44,17 @@ describe("SocialIconLink", () => {
     expect(link).not.toHaveAttribute("rel");
   });
 
+  it("applies the chip variant class", () => {
+    const { container } = render(
+      <SocialIconLink href="https://example.com" label="P" variant="chip">
+        <Glyph />
+      </SocialIconLink>,
+    );
+    expect((container.firstElementChild as HTMLElement).className).toMatch(
+      /chip/,
+    );
+  });
+
   it("applies the size class", () => {
     const { container } = render(
       <SocialIconLink href="https://example.com" label="P" size="lg">

@@ -3,6 +3,7 @@ import styles from "./SocialIconLink.module.css";
 import { cn } from "../../lib/cn";
 
 type SocialIconLinkSize = "sm" | "md" | "lg";
+type SocialIconLinkVariant = "plain" | "chip";
 
 export interface SocialIconLinkProps
   extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "children"> {
@@ -12,6 +13,8 @@ export interface SocialIconLinkProps
   label: string;
   /** The icon. Rendered inside an aria-hidden wrapper so only `label` names the link. */
   children: React.ReactNode;
+  /** Visual treatment: bare glyph (footers) or bordered circular chip (share rows). @default "plain" */
+  variant?: SocialIconLinkVariant;
   /** Hit-target size token. @default "md" */
   size?: SocialIconLinkSize;
   /** Open in a new tab with rel="noopener noreferrer". @default true */
@@ -36,7 +39,16 @@ export const SocialIconLink = React.forwardRef<
   HTMLAnchorElement,
   SocialIconLinkProps
 >(function SocialIconLink(
-  { href, label, children, size = "md", external = true, className, ...rest },
+  {
+    href,
+    label,
+    children,
+    variant = "plain",
+    size = "md",
+    external = true,
+    className,
+    ...rest
+  },
   ref,
 ) {
   return (
@@ -47,7 +59,12 @@ export const SocialIconLink = React.forwardRef<
       title={label}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className={cn(styles.root, sizeClassMap[size], className)}
+      className={cn(
+        styles.root,
+        variant === "chip" && styles.chip,
+        sizeClassMap[size],
+        className,
+      )}
       {...rest}
     >
       <span className={styles.icon} aria-hidden="true">

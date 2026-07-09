@@ -18,6 +18,13 @@
     "radixPrimitive": null,
     "element": "a",
     "variants": {
+        "variant": {
+            "values": [
+                "plain",
+                "chip"
+            ],
+            "default": "plain"
+        },
         "size": {
             "values": [
                 "sm",
@@ -55,7 +62,8 @@
         "colors": [
             "--color-muted",
             "--color-text",
-            "--focus-ring-color"
+            "--focus-ring-color",
+            "--color-border"
         ],
         "spacing": [
             "--space-internal-4",

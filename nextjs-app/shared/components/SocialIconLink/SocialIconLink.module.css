@@ -53,9 +53,41 @@
   inline-size: 1.5rem;
 }
 
+/* Chip: bordered circular tile for share rows (ArticleShareSection idiom). */
+
+.chip {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full, 9999px);
+  background-color: transparent;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.chip:hover {
+  border-color: var(--color-text);
+  background-color: var(--color-text);
+  color: var(--main-body-background-color, var(--color-white));
+}
+
+/* Chip hit target is fixed 2.5rem regardless of size token paddings. */
+
+.chip.sm,
+.chip.md,
+.chip.lg {
+  padding: 0;
+  block-size: 2.5rem;
+  inline-size: 2.5rem;
+}
+
 @media (forced-colors: active) {
   .root {
     color: LinkText;
+  }
+
+  .chip {
+    border-color: CanvasText;
   }
 
   .root:focus-visible {
