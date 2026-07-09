@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.3 - 2026-07-09
+
+- Stops the package from bundling a stale copy of itself: shared source no longer imports `@digitaltableteur/react` internally (NavLink, NavMenuList, PseoLeafPage now use local modules), which had compounded tarball growth each publish and tripped the 3.5 MB ceiling.
+- Externalizes `framer-motion` (new peer dependency, `>=12.0.0`) and the declared runtime dependencies (`@phosphor-icons/react`, `class-variance-authority`, `clsx`, `react-phone-number-input`) instead of inlining them, so consumers get single module instances and the dependency map is honest.
+- Removes the unused `zod` dependency.
+- Keeps the public runtime API unchanged from 0.1.1/0.1.2.
+- Verified by `check:react-package`, `check:package-tarballs`, `check:react-public-api`, `check:react-public-surface`, `check:npm-consumer-install`, and the full local gate.
+
 ## 0.1.2 - 2026-07-09
 
 - Prepares the React package for publication through the GitHub Actions Trusted Publisher path.

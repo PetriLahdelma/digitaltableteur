@@ -122,6 +122,10 @@ const reactTypesVersion =
   rootPackage.dependencies?.["@types/react"] ?? rootPackage.devDependencies?.["@types/react"];
 const reactDomTypesVersion =
   rootPackage.dependencies?.["@types/react-dom"] ?? rootPackage.devDependencies?.["@types/react-dom"];
+// framer-motion is a package peerDependency; the repo installs with
+// legacy-peer-deps so the scratch consumer must install it explicitly.
+const framerMotionVersion =
+  rootPackage.dependencies?.["framer-motion"] ?? rootPackage.devDependencies?.["framer-motion"];
 const forbiddenReactExports = roadmapState.reactPublicSurface?.forbiddenExports ?? [];
 
 if (
@@ -129,10 +133,11 @@ if (
   !reactDomDependencyVersion ||
   !typescriptVersion ||
   !reactTypesVersion ||
-  !reactDomTypesVersion
+  !reactDomTypesVersion ||
+  !framerMotionVersion
 ) {
   throw new Error(
-    "Root package.json must declare react, react-dom, typescript, @types/react, and @types/react-dom for the registry smoke.",
+    "Root package.json must declare react, react-dom, framer-motion, typescript, @types/react, and @types/react-dom for the registry smoke.",
   );
 }
 
@@ -490,6 +495,7 @@ void tree;
       "--package-lock=false",
       `react@${reactDependencyVersion}`,
       `react-dom@${reactDomDependencyVersion}`,
+      `framer-motion@${framerMotionVersion}`,
       `typescript@${typescriptVersion}`,
       `@types/react@${reactTypesVersion}`,
       `@types/react-dom@${reactDomTypesVersion}`,
