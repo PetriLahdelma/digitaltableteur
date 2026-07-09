@@ -1,0 +1,64 @@
+.stack {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-internal-8);
+  pointer-events: none;
+}
+
+/* Children stay interactive even though the wrapper ignores events */
+
+.stack > * {
+  pointer-events: auto;
+}
+
+/*
+ * Bottom positions grow upward: newest toast is appended last and
+ * column-reverse keeps it nearest the docked edge.
+ */
+
+.stack--bottom-left,
+.stack--bottom-center,
+.stack--bottom-right {
+  flex-direction: column-reverse;
+}
+
+.stack--top-left {
+  top: var(--space-layout-24);
+  left: var(--space-layout-24);
+  align-items: flex-start;
+}
+
+.stack--top-center {
+  inset-inline: 0;
+  top: var(--space-layout-24);
+  margin-inline: auto;
+  width: fit-content;
+}
+
+.stack--top-right {
+  top: var(--space-layout-24);
+  right: var(--space-layout-24);
+  align-items: flex-end;
+}
+
+.stack--bottom-left {
+  bottom: var(--space-layout-24);
+  left: var(--space-layout-24);
+  align-items: flex-start;
+}
+
+.stack--bottom-center {
+  inset-inline: 0;
+  bottom: var(--space-layout-24);
+  margin-inline: auto;
+  width: fit-content;
+}
+
+.stack--bottom-right {
+  right: var(--space-layout-24);
+  bottom: var(--space-layout-24);
+  align-items: flex-end;
+}

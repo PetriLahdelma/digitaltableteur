@@ -161,10 +161,14 @@
         "onClose": {
             "optional": true,
             "type": "() => void"
+        },
+        "inline": {
+            "optional": true,
+            "type": "boolean"
         }
     },
     "forbiddenUse": [
-        "mount two <Toast /> instances side by side; the shared live region double-announces and the visuals go stale.",
+        "mount two overlapping fixed <Toast /> instances yourself; use ToastStack (or the app ToastProvider) so concurrent messages stack instead of replacing each other.",
         "rely on Toast for compliance acknowledgements (cookie consent, legal notices); it auto-dismisses — use AlertBanner or Modal.",
         "use Toast for validation errors on a field; the message detaches from the input — use the field's error prop."
     ],
@@ -242,10 +246,11 @@
     },
     "composesWith": [
         "Button",
-        "Text",
-        "Modal",
-        "TextInput",
         "CheckboxGroup",
-        "TextArea"
+        "Modal",
+        "Text",
+        "TextArea",
+        "TextInput",
+        "ToastStack"
     ]
 }

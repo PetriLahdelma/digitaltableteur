@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T23:37:18.867Z",
+  "generatedAt": "2026-07-09T16:16:15.779Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -1306,7 +1306,14 @@
         "skip levels to make the trail shorter. If the user is at",
         "render the breadcrumb above a hero — it gets lost. Place it"
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Button",
+        "Card",
+        "Text",
+        "Title",
+        "MarkdownMessage",
+        "PageLayout"
+      ],
       "prefersOver": [],
       "declaredPropCount": 6
     },
@@ -1694,8 +1701,8 @@
         "Text",
         "Button",
         "PageLayout",
-        "Icon",
-        "Badge"
+        "Breadcrumb",
+        "MarkdownMessage"
       ],
       "prefersOver": [],
       "declaredPropCount": 16
@@ -3046,8 +3053,8 @@
         "animations",
         "Stack",
         "Link",
-        "ScrollIndicator",
-        "Badge"
+        "Badge",
+        "Checkbox"
       ],
       "prefersOver": [],
       "declaredPropCount": 5
@@ -5507,10 +5514,12 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "OpenHours",
-        "ServicesGrid",
-        "StudioMap",
-        "DonnyBookingEmbed"
+        "Breadcrumb",
+        "Button",
+        "Card",
+        "Text",
+        "Title",
+        "PageLayout"
       ],
       "prefersOver": [],
       "declaredPropCount": 6
@@ -9492,6 +9501,10 @@
         "onClose": {
           "optional": true,
           "type": "() => void"
+        },
+        "inline": {
+          "optional": true,
+          "type": "boolean"
         }
       },
       "variants": {
@@ -9520,7 +9533,7 @@
         "pair `tone=\"error\"` with an actionable next step (\"Retry\" in"
       ],
       "avoidWhen": [
-        "stack toasts. The provider queues them — calling `showToast`",
+        "hand-roll overlapping fixed toasts. Concurrent messages stack via",
         "rely on Toast for compliance acknowledgements (cookie consent,",
         "use Toast for validation errors on a field. The visual is far"
       ],
@@ -9532,7 +9545,7 @@
       ],
       "keyboard": [],
       "compositionRules": [
-        "stack toasts. The provider queues them — calling `showToast`"
+        "hand-roll overlapping fixed toasts. Concurrent messages stack via"
       ],
       "canonicalExamples": [
         "Default",
@@ -9545,7 +9558,7 @@
         "window.alert"
       ],
       "forbiddenUse": [
-        "stack toasts. The provider queues them — calling `showToast`",
+        "hand-roll overlapping fixed toasts. Concurrent messages stack via",
         "rely on Toast for compliance acknowledgements (cookie consent,",
         "use Toast for validation errors on a field. The visual is far"
       ],
@@ -9560,7 +9573,74 @@
       "prefersOver": [
         "AlertBanner for page-level persistent status"
       ],
-      "declaredPropCount": 7
+      "declaredPropCount": 8
+    },
+    "ToastStack": {
+      "preferredImport": "@dt/ToastStack",
+      "intent": "Keep concurrent transient messages visible together instead of letting the newest replace the rest. The motivating case: switching UI language on an English-only article fires both \"language changed\" and the content-lan…",
+      "props": {
+        "toasts": {
+          "optional": false,
+          "type": "ToastStackItem[]"
+        },
+        "position": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "top-left",
+            "top-center",
+            "top-right",
+            "bottom-left",
+            "bottom-center",
+            "bottom-right"
+          ]
+        },
+        "onDismiss": {
+          "optional": true,
+          "type": "(id: string) => void"
+        },
+        "max": {
+          "optional": true,
+          "type": "number"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "drive it from the app `ToastProvider` — `showToast` appends and the",
+        "give every toast a stable `id`; dismissal and list identity depend on it."
+      ],
+      "avoidWhen": [
+        "mount more than one ToastStack at the same position; their fixed",
+        "use it for persistent or compliance-critical messaging — toasts"
+      ],
+      "requiredA11y": [
+        "each stacked Toast keeps its own live region (role=status or role=alert per tone) so concurrent messages announce independently",
+        "the stack wrapper is presentational: no role, pointer-events none with interactive children restored"
+      ],
+      "keyboard": [],
+      "compositionRules": [
+        "mount more than one ToastStack at the same position; their fixed"
+      ],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "mount more than one ToastStack at the same position; their fixed",
+        "use it for persistent or compliance-critical messaging — toasts"
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 5
     },
     "Tooltip": {
       "preferredImport": "@dt/Tooltip",
@@ -11831,8 +11911,9 @@
         "Title",
         "Card",
         "Text",
-        "AuthorBio",
-        "Button"
+        "Button",
+        "Breadcrumb",
+        "MarkdownMessage"
       ],
       "prefersOver": [],
       "declaredPropCount": 11

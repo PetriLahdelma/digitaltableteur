@@ -5,19 +5,21 @@ import React, {
   useCallback,
   useContext,
   useMemo,
+  useRef,
   useState,
 } from "react";
-import {
-  Toast,
-  type ToastTone,
-  type ToastPosition,
-} from "@digitaltableteur/react";
+import type { ToastTone, ToastPosition } from "@digitaltableteur/react";
+import ToastStack, { type ToastStackItem } from "@dt/ToastStack";
 import { ToastRuntimeProvider } from "../nextjs-app/shared/lib/toast";
 
 export interface ShowToastOptions {
   duration?: number;
   tone?: ToastTone;
   position?: ToastPosition;
+}
+
+interface StackedToast extends ToastStackItem {
+  position: ToastPosition;
 }
 
 interface ToastContextType {
@@ -41,42 +43,51 @@ export const useToast = () => {
 export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [message, setMessage] = useState("");
-  const [duration, setDuration] = useState(3000);
-  const [tone, setTone] = useState<ToastTone | undefined>(undefined);
-  const [position, setPosition] = useState<ToastPosition>("bottom-center");
+  const [toasts, setToasts] = useState<StackedToast[]>([]);
+  const nextIdRef = useRef(0);
 
   const showToast = useCallback(
-    (msg: string, options?: number | ShowToastOptions) => {
-      const opts = typeof options === "number" ? { duration: options } : (options ?? {});
-      setMessage(msg);
-      setDuration(opts.duration ?? 3000);
-      setTone(opts.tone);
-      setPosition(opts.position ?? "bottom-center");
-      setIsOpen(true);
+    (message: string, options?: number | ShowToastOptions) => {
+      const opts =
+        typeof options === "number" ? { duration: options } : (options ?? {});
+      nextIdRef.current += 1;
+      setToasts((current) => [
+        ...current,
+        {
+          id: `toast-${nextIdRef.current}`,
+          message,
+          duration: opts.duration ?? 3000,
+          tone: opts.tone,
+          position: opts.position ?? "bottom-center",
+        },
+      ]);
     },
     [],
   );
 
-  const handleClose = useCallback(() => {
-    setIsOpen(false);
+  const dismissToast = useCallback((id: string) => {
+    setToasts((current) => current.filter((toast) => toast.id !== id));
   }, []);
 
   const toastRuntime = useMemo(() => ({ showToast }), [showToast]);
+
+  const positions = useMemo(
+    () => [...new Set(toasts.map((toast) => toast.position))],
+    [toasts],
+  );
 
   return (
     <ToastContext.Provider value={toastRuntime}>
       <ToastRuntimeProvider value={toastRuntime}>
         {children}
-        <Toast
-          message={message}
-          open={isOpen}
-          duration={duration}
-          tone={tone}
-          position={position}
-          onClose={handleClose}
-        />
+        {positions.map((position) => (
+          <ToastStack
+            key={position}
+            position={position}
+            toasts={toasts.filter((toast) => toast.position === position)}
+            onDismiss={dismissToast}
+          />
+        ))}
       </ToastRuntimeProvider>
     </ToastContext.Provider>
   );

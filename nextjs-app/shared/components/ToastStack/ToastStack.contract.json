@@ -1,0 +1,111 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "ToastStack",
+  "tier": "molecule",
+  "group": "feedback",
+  "status": "alpha",
+  "description": "Docked stack of transient toasts: renders Toast children inline and owns the fixed placement, newest toast nearest the docked edge, so concurrent messages stay visible instead of replacing each other.",
+  "figma": null,
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {
+    "position": {
+      "values": [
+        "top-left",
+        "top-center",
+        "top-right",
+        "bottom-left",
+        "bottom-center",
+        "bottom-right"
+      ],
+      "default": "bottom-center",
+      "forwarded": false
+    }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [
+      "each stacked Toast keeps its own live region (role=status or role=alert per tone) so concurrent messages announce independently",
+      "the stack wrapper is presentational: no role, pointer-events none with interactive children restored"
+    ],
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "reducedMotion": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": [
+      "--space-internal-8",
+      "--space-layout-24"
+    ]
+  },
+  "lightDarkVerified": false,
+  "consumers": [],
+  "schemaVersion": 2,
+  "props": {
+    "toasts": {
+      "optional": false,
+      "type": "ToastStackItem[]"
+    },
+    "position": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "top-left",
+        "top-center",
+        "top-right",
+        "bottom-left",
+        "bottom-center",
+        "bottom-right"
+      ]
+    },
+    "onDismiss": {
+      "optional": true,
+      "type": "(id: string) => void"
+    },
+    "max": {
+      "optional": true,
+      "type": "number"
+    },
+    "className": {
+      "optional": true,
+      "type": "string"
+    }
+  },
+  "forbiddenUse": [
+    "mounting more than one ToastStack per position; group toasts by position and render one stack per active position instead",
+    "persistent or compliance-critical messaging; toasts auto-dismiss (use AlertBanner)"
+  ],
+  "prefersOver": [
+    "multiple sibling <Toast /> mounts, whose fixed positions overlap and whose messages replace each other"
+  ],
+  "displayName": "ToastStack",
+  "keywords": [
+    "toast stack",
+    "notification stack",
+    "snackbar queue",
+    "stacked toasts",
+    "concurrent notifications"
+  ],
+  "dense": "docked flex stack of Toast (inline mode); toasts: {id,message,tone?,duration?,size?}[], 6 dock positions, max visible (default 5, oldest wait), onDismiss(id) on per-toast auto-dismiss",
+  "usage": {
+    "description": "ToastStack is the multi-toast surface behind the app ToastProvider: showToast calls append items and each renders as an inline Toast laid out by the stack, newest nearest the docked edge. Use it (or the provider) whenever more than one transient message can be alive at once; a bare Toast stays correct for single, fully controlled cases."
+  },
+  "playground": {
+    "defaults": {
+      "position": "bottom-center"
+    }
+  },
+  "composesWith": [
+    "Toast"
+  ]
+}

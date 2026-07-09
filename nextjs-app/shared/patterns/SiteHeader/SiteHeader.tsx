@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import { cn } from "../../lib/cn";
-import { getContentLanguageNoticeMessage } from "../../lib/contentLanguageNotice";
 import { Link as RouterLink } from "../../lib/linkComponent";
 import { useLocalization } from "../../lib/translation";
 import { NavLink } from "../../components/NavLink";
@@ -143,20 +142,16 @@ export function SiteHeader({
     const labelKey = langLabel?.announcementKey ?? `languageName.${code}`;
     const label =
       typeof bundle?.[labelKey] === "string" ? bundle[labelKey] : code;
-    const contentLanguageNotice = getContentLanguageNoticeMessage({
-      targetLanguage: code,
-      getResourceBundle,
-    });
-    const languageChangedMessage = t("languageChanged", {
-      lng: code,
-      language: label,
-    });
 
+    // Only the change confirmation: toasts stack now (ToastStack), so
+    // LanguageNotice's own content-language toast shows alongside instead of
+    // replacing this one — appending it here would read twice.
     showToast(
-      contentLanguageNotice
-        ? `${languageChangedMessage}. ${contentLanguageNotice}`
-        : languageChangedMessage,
-      contentLanguageNotice ? 5000 : 3000,
+      t("languageChanged", {
+        lng: code,
+        language: label,
+      }),
+      3000,
     );
   };
 
