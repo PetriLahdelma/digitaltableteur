@@ -39,7 +39,12 @@ export function LanguageNotice({
       getResourceBundle,
     });
 
-    if (!message) return;
+    if (!message) {
+      // Language matches the content again; clear the marker so a later
+      // switch back to a mismatching language re-announces (fi -> en -> fi).
+      announcedKeyRef.current = null;
+      return;
+    }
 
     const announcementKey = `${contentLanguage}:${targetLanguage}`;
     if (announcedKeyRef.current === announcementKey) return;
