@@ -445,7 +445,7 @@
         },
         "5.9": {
             "status": "done",
-            "note": "Added package CHANGELOG coverage for all npm packages plus check:package-release-notes. The guard verifies @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react use semver, restricted npm publish metadata, GitHub repository metadata for npm Trusted Publisher matching, dist package files, required exports, and version-matched changelog entries. check:react-publish-preflight now runs it before registry/package install checks."
+            "note": "Added package CHANGELOG coverage for all npm packages plus check:package-release-notes. The guard verifies @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react use semver, restricted npm publish metadata, GitHub repository metadata for npm Trusted Publisher matching, dist package files, required exports, version-matched changelog entries, and current npm-served public API/consumer docs. check:react-publish-preflight now runs it before registry/package install checks."
         },
         "5.10": {
             "status": "done",
