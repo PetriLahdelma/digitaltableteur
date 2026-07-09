@@ -3,7 +3,10 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import i18n from "../i18n/config";
-import { useLocalization } from "../nextjs-app/shared/lib/translation";
+import {
+  useLocalization,
+  useTranslate,
+} from "../nextjs-app/shared/lib/translation";
 import { I18nProvider } from "./I18nProvider";
 
 function clearLanguageCookie() {
@@ -46,6 +49,35 @@ describe("I18nProvider", () => {
     clearLanguageCookie();
     window.localStorage.clear();
     await i18n.changeLanguage("en");
+  });
+
+  it("returns arrays structurally for returnObjects lookups (hero randomization)", async () => {
+    // Regression: the translate wrapper String()-coerced non-string i18next
+    // results, so HomeHero's homeHeroGradientTitleOptions array arrived as
+    // joined text and per-visit title randomization silently died.
+    let captured: unknown;
+    function ReturnObjectsProbe() {
+      const t = useTranslate();
+      captured = t("homeHeroGradientTitleOptions", {
+        returnObjects: true,
+        defaultValue: [],
+      }) as unknown;
+      return null;
+    }
+
+    render(
+      <I18nProvider>
+        <ReturnObjectsProbe />
+      </I18nProvider>,
+    );
+
+    await waitFor(() => {
+      expect(Array.isArray(captured)).toBe(true);
+    });
+    expect((captured as string[]).length).toBeGreaterThan(1);
+    for (const entry of captured as unknown[]) {
+      expect(typeof entry).toBe("string");
+    }
   });
 
   it("persists a user language switch across provider remounts", async () => {
