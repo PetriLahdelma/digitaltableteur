@@ -1,4 +1,5 @@
 - button "Open modal"
 - dialog "Saving changes":
   - heading "Saving changes" [level=2]
+  - status "Loading"
   - paragraph: Please wait while we save your edits.

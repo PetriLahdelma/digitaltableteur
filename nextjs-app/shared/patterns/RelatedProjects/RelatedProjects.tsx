@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
+import Title from "../../components/Title";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";
@@ -33,15 +35,19 @@ export function RelatedProjects({
     return (
       <Section spacing="lg" background="default" className={className}>
         <Container size="lg" className="text-center">
-          <h2 className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-4">
+          <Title
+            level={2}
+            unstyled
+            className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-4"
+          >
             {t("projectRelatedTitle", "Related Projects")}
-          </h2>
-          <a
+          </Title>
+          <Link
             href="/work"
             className="inline-flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors font-medium"
           >
             {t("projectBrowseAll", "Browse all projects")} &rarr;
-          </a>
+          </Link>
         </Container>
       </Section>
     );
@@ -57,9 +63,13 @@ export function RelatedProjects({
     >
       <Container size="lg">
         <FadeIn direction="up" delay={0} distance={20}>
-          <h2 className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-8">
+          <Title
+            level={2}
+            unstyled
+            className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-8"
+          >
             {displayTitle}
-          </h2>
+          </Title>
         </FadeIn>
 
         <div
