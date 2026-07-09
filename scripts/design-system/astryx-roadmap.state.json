@@ -478,6 +478,10 @@
         "5.17": {
             "status": "done",
             "note": "Root package.json no longer declares design-system package workspaces. The app/root install now depends on @digitaltableteur/react, @digitaltableteur/tokens, and @digitaltableteur/tokens-css from npm, while local package sources remain under packages/* for build/pack/publish checks. Added check:package-registry-resolution and wired it into the OIDC workflow, Trusted Publisher guard, and React publish preflight; it fails on package-lock workspace links, local packages/* resolution, or symlinked node_modules entries."
+        },
+        "5.18": {
+            "status": "done",
+            "note": "Added check:storybook-registry-package plus a Registry/Package smoke story. The guard verifies Storybook resolves @digitaltableteur/react, @digitaltableteur/react/style.css, @digitaltableteur/tokens, and @digitaltableteur/tokens-css/tokens.css from registry node_modules paths and rejects Storybook aliases that point @digitaltableteur/* back at local packages/*. check:react-publish-preflight now runs it after storybook:build."
         }
     },
     "approvalFormat": "To clear a checkpoint: set tasks.<id>.status=done AND tasks.<id>.approval={clearedBy:<name>,on:<YYYY-MM-DD>,note?}. The guard rejects done without this."
