@@ -253,6 +253,7 @@ const REQUIRED_REPOSITORY_PATHS = [
   "scripts/design-system/astryx-roadmap.state.json",
   "scripts/design-system/build-token-css.mjs",
   "scripts/design-system/build-tokens.mjs",
+  "scripts/design-system/check-npm-oidc-publish-auth.mjs",
   "scripts/design-system/check-npm-consumer-install.mjs",
   "scripts/design-system/check-package-publish-dry-run.mjs",
   "scripts/design-system/check-package-registry-resolution.mjs",
@@ -341,6 +342,13 @@ non-secret npm Trusted Publisher setup values for the private
 - Environment name: ${report.npmEnvironmentName ?? "leave blank"}
 - Allowed action: ${report.allowedActions.join(", ")}
 
+These values are case-sensitive and must match the GitHub OIDC claims exactly:
+\`repository: ${report.githubOwner}/${report.githubRepository}\`,
+\`workflow_ref: ${report.githubOwner}/${report.githubRepository}/${report.workflowPath}\`.
+Configure them on each package access page, for example
+\`https://www.npmjs.com/package/@digitaltableteur/react/access\`. Do not use the
+npm organization name as the GitHub owner.
+
 ## GitHub workflow state
 
 - Workflow path: \`${report.workflowPath}\`
@@ -400,6 +408,9 @@ ${formatPackageRows(report.packages)}
   OIDC-only and must not receive \`NPM_TOKEN\`, \`NODE_AUTH_TOKEN\`, or
   \`NPM_READ_TOKEN\`.
 - Keep npm publish commands restricted: \`npm publish --access restricted\`.
+- Keep the workflow-only OIDC auth guard immediately before real React publishes
+  so failed trust exchanges report npm's redacted OIDC diagnostic instead of
+  falling through to \`ENEEDAUTH\`.
 - Keep \`@digitaltableteur/react\` behind \`check:react-publish-clearance\` and \`check:react-public-surface -- --require-publishable\`.
 - Local machines remain the CI-quality authority; GitHub Actions is only the npm OIDC transport.
 
@@ -536,9 +547,10 @@ if (!existsSync(WORKFLOW)) {
     "contents: read",
     "runs-on: ubuntu-latest",
     "node-version: 24",
-    "registry-url: https://registry.npmjs.org",
     "package-manager-cache: false",
-    "npm install -g npm@latest",
+    "Verify npm Trusted Publisher CLI support",
+    "npm ${version} supports Trusted Publisher OIDC",
+    ">=11.5.1",
     "NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}",
     "bash .github/scripts/write-npm-read-config.sh",
     "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-read.npmrc\" npm ci",
@@ -548,14 +560,16 @@ if (!existsSync(WORKFLOW)) {
     "npm run check:package-release-notes",
     "npm run check:package-registry-resolution",
     "npm run check:package-tarballs",
-    "npm run check:package-publish-dry-run",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" npm run check:package-publish-dry-run",
     "npm run check:npm-consumer-install",
     "npm run check:react-public-surface",
     "npm run check:react-public-api",
     "npm run check:react-publish-clearance",
     "npm run check:react-public-surface -- --require-publishable",
-    "npm publish --dry-run --access restricted",
-    "npm publish --access restricted",
+    "Verify @digitaltableteur/react OIDC publish auth",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" node scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" npm publish --dry-run --access restricted",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" npm publish --access restricted",
     "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-read.npmrc\" npm run check:react-registry-install",
     "packages/tokens",
     "packages/tokens-css",
