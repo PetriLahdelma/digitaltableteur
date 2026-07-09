@@ -17,3 +17,7 @@ cat > "$RUNNER_TEMP/npm-read.npmrc" <<EOF
 registry=https://registry.npmjs.org/
 //registry.npmjs.org/:_authToken=${NPM_READ_TOKEN}
 EOF
+
+cat > "$RUNNER_TEMP/npm-publish.npmrc" <<EOF
+registry=https://registry.npmjs.org/
+EOF

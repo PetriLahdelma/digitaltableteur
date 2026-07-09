@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2 - 2026-07-09
+
+- Prepares the React package for publication through the GitHub Actions Trusted Publisher path.
+- Keeps the public runtime API unchanged from 0.1.1.
+- Adds workflow diagnostics for npm OIDC token exchange failures before the real publish step.
+- Hardens npm pack parsing for current npm JSON output shapes.
+- Verified by `check:trusted-publisher`, `check:package-release-notes`, `check:package-tarballs`, `check:react-package`, `check:react-public-api`, `check:react-public-surface`, and `check:react-publish-preflight -- --strict`.
+
 ## 0.1.1 - 2026-07-08
 
 - Adds the package README used by the private npm package page.
