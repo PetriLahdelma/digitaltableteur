@@ -17,7 +17,7 @@ const defaultArgs = {
 const meta = {
   title: "Patterns/HighlightSection",
   component: HighlightSection,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
