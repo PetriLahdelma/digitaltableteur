@@ -21,14 +21,14 @@ describe("ProjectCard", () => {
     );
   });
 
-  it("renders the title as a heading and the thumbnail alt text", () => {
+  it("renders the title as a heading and the thumbnail as decorative", () => {
     render(<ProjectCard {...baseProps} />);
     expect(
       screen.getByRole("heading", { name: "Helsinki Design System" }),
     ).toBeInTheDocument();
-    expect(
-      screen.getByRole("img", { name: "Helsinki Design System" }),
-    ).toBeInTheDocument();
+    // alt="" — a named image would duplicate the visible title in the
+    // accessible name (axe image-redundant-alt).
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 
   it("renders category and up to three tags", () => {

@@ -1,0 +1,14 @@
+- region "Selected work":
+  - heading "Selected work" [level=2]
+  - link "View all work":
+    - /url: /work
+  - link "Design Systems SAP Build Apps Design System Enterprise":
+    - /url: /work/sap-build-apps
+    - text: Design Systems
+    - heading "SAP Build Apps Design System" [level=3]
+    - text: Enterprise
+  - link "Design Systems Helsinki Design System Accessibility":
+    - /url: /work/helsinki-design-system
+    - text: Design Systems
+    - heading "Helsinki Design System" [level=3]
+    - text: Accessibility

@@ -2,6 +2,27 @@
 
 exports[`get > snapshot: get() shape per stable component (fields + example story names) 1`] = `
 {
+  "AboutPageContent": {
+    "exampleStories": [],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "marketing",
+    "import": "import { AboutPageContent } from "@dt/AboutPageContent";",
+  },
   "AlertBanner": {
     "exampleStories": [
       "Info",
@@ -447,6 +468,27 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "group": "form",
     "import": "import Combobox from "@dt/Combobox";",
   },
+  "ContactInquiryPanel": {
+    "exampleStories": [],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "forms",
+    "import": "import ContactInquiryPanel from "@dt/ContactInquiryPanel";",
+  },
   "Container": {
     "exampleStories": [
       "SizeLadder",
@@ -716,6 +758,27 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     ],
     "group": "form",
     "import": "import HelperText from "@dt/HelperText";",
+  },
+  "HeroSection": {
+    "exampleStories": [],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "marketing",
+    "import": "import { HeroSection } from "@dt/HeroSection";",
   },
   "Icon": {
     "exampleStories": [
@@ -1493,6 +1556,27 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "group": "navigation",
     "import": "import Tabs from "@dt/Tabs";",
   },
+  "TeamBlock": {
+    "exampleStories": [],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "structure",
+    "import": "import TeamBlock from "@dt/TeamBlock";",
+  },
   "Text": {
     "exampleStories": [
       "AllTags",
@@ -1662,6 +1746,27 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     ],
     "group": "content",
     "import": "import { WorkGrid } from "@dt/WorkGrid";",
+  },
+  "WorkPreviewSection": {
+    "exampleStories": [],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "marketing",
+    "import": "import { WorkPreviewSection } from "@dt/WorkPreviewSection";",
   },
 }
 `;

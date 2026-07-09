@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-09T16:54:01.021Z",
+  "generatedAt": "2026-07-09T18:41:29.281Z",
   "summary": {
     "componentCount": 161,
     "statusCounts": {
-      "beta": 70,
-      "stable": 68,
+      "beta": 65,
+      "stable": 73,
       "alpha": 23
     },
     "honestBetaDocDebt": 0,
@@ -19,7 +19,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 68,
+    "stableCount": 73,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -62,7 +62,7 @@
     "catalogCompletenessPercent": 87.5,
     "artifactCoverage": {
       "stories": 145,
-      "tests": 134,
+      "tests": 137,
       "mdx": 3,
       "spec": 161
     },
@@ -106,8 +106,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 70,
-        "stable": 68,
+        "beta": 65,
+        "stable": 73,
         "alpha": 23
       },
       "dsharp": {
@@ -32791,7 +32791,7 @@
         "name": "AboutPageContent",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "About page narrative sections and team highlights.",
         "dense": "Full /about route body: narrative sections, values, and team highlights; optional closing CTA via showCTA.",
         "keywords": [
@@ -32822,14 +32822,37 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/AboutPageContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
@@ -34398,7 +34421,7 @@
         "name": "ContactInquiryPanel",
         "tier": "pattern",
         "group": "forms",
-        "status": "beta",
+        "status": "stable",
         "description": "Contact page inquiry panel with message and book-a-call tabs wrapping the editorial form.",
         "dense": "Contact inquiry tabs (message vs book-a-call) wrapping the editorial contact form; parent owns submit state via the messagePanel slot.",
         "keywords": [
@@ -34458,16 +34481,44 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-06-06 — tab keyboard pattern, panel visibility, and ForcedColors story verified in Storybook.",
+          "reviewedNote": "2026-06-06 — tab keyboard pattern, panel visibility, and ForcedColors story verified in Storybook. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
           "forcedColorsVerified": true,
-          "playFunctionExempt": "Tab switching defers to native button focus; booking embed is third-party when configured."
+          "playFunctionExempt": "Tab switching defers to native button focus; booking embed is third-party when configured.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactInquiryPanel/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "initialMode": {
@@ -35869,7 +35920,7 @@
         "name": "HeroSection",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Full-bleed hero shell with min-height, alignment, and background variants.",
         "dense": "Full-bleed hero shell: min-height, align/justify, background or backgroundImage; renders children as a labelled landmark section.",
         "keywords": [
@@ -35911,14 +35962,42 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/HeroSection/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/HomeHero/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "children": {
@@ -40793,7 +40872,7 @@
         "name": "TeamBlock",
         "tier": "pattern",
         "group": "structure",
-        "status": "beta",
+        "status": "stable",
         "description": "Team grid of member cards with photo, name, and role, plus round-image, column, and spacing knobs.",
         "dense": "Team member grid: photo, name, and role cards with round-image option, column and spacing knobs.",
         "keywords": [
@@ -40827,7 +40906,9 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -40837,7 +40918,28 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/TeamBlock/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "members": {
@@ -41657,7 +41759,7 @@
         "name": "WorkPreviewSection",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Work index preview grid of project cards.",
         "dense": "Plain project-card preview grid with title, layout options, and optional view-all link.",
         "keywords": [
@@ -41698,14 +41800,42 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/WorkMagneticField/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/WorkPreviewSection/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {

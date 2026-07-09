@@ -15705,7 +15705,7 @@
       "name": "AboutPageContent",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "About page narrative sections and team highlights.",
       "dense": "Full /about route body: narrative sections, values, and team highlights; optional closing CTA via showCTA.",
       "keywords": [
@@ -16494,7 +16494,7 @@
       "name": "ContactInquiryPanel",
       "group": "forms",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Contact page inquiry panel with message and book-a-call tabs wrapping the editorial form.",
       "dense": "Contact inquiry tabs (message vs book-a-call) wrapping the editorial contact form; parent owns submit state via the messagePanel slot.",
       "keywords": [
@@ -17163,7 +17163,7 @@
       "name": "HeroSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Full-bleed hero shell with min-height, alignment, and background variants.",
       "dense": "Full-bleed hero shell: min-height, align/justify, background or backgroundImage; renders children as a labelled landmark section.",
       "keywords": [
@@ -19303,7 +19303,7 @@
       "name": "TeamBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Team grid of member cards with photo, name, and role, plus round-image, column, and spacing knobs.",
       "dense": "Team member grid: photo, name, and role cards with round-image option, column and spacing knobs.",
       "keywords": [
@@ -19755,7 +19755,7 @@
       "name": "WorkPreviewSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Work index preview grid of project cards.",
       "dense": "Plain project-card preview grid with title, layout options, and optional view-all link.",
       "keywords": [
