@@ -35,6 +35,20 @@ root app dogfoods private registry packages, that workflow also needs a
 read-only `NPM_READ_TOKEN` secret for `npm ci` and post-publish registry smoke
 reads. Do not use that token for publish steps.
 
+If the OIDC exchange fails with `OIDC token exchange error - package not found`
+while `npm view @digitaltableteur/react` can still read the package, treat it as
+an npm Trusted Publisher match failure, not as a missing package or missing npm
+token. The npm package access page must match the GitHub claims exactly:
+
+```text
+Publisher: GitHub Actions
+Organization or user: PetriLahdelma
+Repository: digitaltableteur
+Workflow filename: ds-publish.yml
+Environment name: leave blank
+Allowed actions: Allow npm publish
+```
+
 This monorepo follows the same shape. The root `package.json` depends on the
 published packages and intentionally does not declare `packages/*` as npm
 workspaces. The source package directories are still used by package build,

@@ -33,6 +33,8 @@ const SEMVER_RE =
   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/;
 const EXPECTED_REPOSITORY_URL =
   "git+https://github.com/PetriLahdelma/digitaltableteur.git";
+const PUBLIC_API_DOC = join(ROOT, "docs/PUBLIC_API.md");
+const CONSUMER_SETUP_DOC = join(ROOT, "docs/design-system/npm-consumer-setup.md");
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
@@ -50,6 +52,51 @@ function relativePath(path) {
 
 const errors = [];
 const rows = [];
+
+function assertDocIncludes(path, label, required) {
+  if (!existsSync(path)) {
+    errors.push(`${label} is missing.`);
+    return null;
+  }
+  const source = readFileSync(path, "utf8");
+  for (const needle of required) {
+    if (!source.includes(needle)) {
+      errors.push(`${label} must include ${needle}.`);
+    }
+  }
+  return source;
+}
+
+const publicApiDoc = assertDocIncludes(PUBLIC_API_DOC, "docs/PUBLIC_API.md", [
+  "@digitaltableteur/react",
+  "@digitaltableteur/tokens",
+  "@digitaltableteur/tokens-css",
+  "check:package-registry-resolution",
+  "check:storybook-registry-package",
+]);
+
+if (publicApiDoc) {
+  for (const stalePhrase of [
+    "does **not** publish the design system as a standalone npm package yet",
+    "@digitaltableteur/ds",
+    "Future npm export",
+  ]) {
+    if (publicApiDoc.includes(stalePhrase)) {
+      errors.push(`docs/PUBLIC_API.md contains stale pre-npm wording: ${stalePhrase}`);
+    }
+  }
+}
+
+assertDocIncludes(
+  CONSUMER_SETUP_DOC,
+  "docs/design-system/npm-consumer-setup.md",
+  [
+    "Publisher: GitHub Actions",
+    "Organization or user: PetriLahdelma",
+    "Repository: digitaltableteur",
+    "Workflow filename: ds-publish.yml",
+  ],
+);
 
 for (const definition of PACKAGES) {
   const packageDir = join(ROOT, definition.dir);
