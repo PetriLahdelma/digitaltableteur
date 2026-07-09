@@ -1,0 +1,3 @@
+- text: Your name*
+- textbox "Your name*":
+  - /placeholder: Alex Example

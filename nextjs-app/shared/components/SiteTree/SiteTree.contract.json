@@ -3,7 +3,7 @@
     "name": "SiteTree",
     "tier": "molecule",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Hierarchical sitemap with collapsible folder branches and page leaves.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-site-tree",
     "radixPrimitive": null,
@@ -32,15 +32,33 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "Verified 2026-06-02: nav landmark + aria-label; native details/summary disclosure (keyboard/SR-native). Fixed two real axe findings surfaced by enabling axe on the stories — nested-interactive (link inside summary; branch index now a separate leaf) and listitem (removed role=group from ul). Default/Playground/Example pass axe with test:error; dark theme verified in Storybook. Forced colors: links/icons inherit currentColor via Icon/Link primitives → CanvasText; ForcedColors story present.",
-        "playFunctionExempt": "Static navigation tree; expand/collapse follows native details/summary keyboard behavior, no custom handlers to drive."
+        "reviewedNote": "Verified 2026-06-02: nav landmark + aria-label; native details/summary disclosure (keyboard/SR-native). Fixed two real axe findings surfaced by enabling axe on the stories — nested-interactive (link inside summary; branch index now a separate leaf) and listitem (removed role=group from ul). Default/Playground/Example pass axe with test:error; dark theme verified in Storybook. Forced colors: links/icons inherit currentColor via Icon/Link primitives → CanvasText; ForcedColors story present. 2026-07-09 — Promoted beta→stable: 4-mode AT snapshots captured for all required stories, forced-colors re-verified in a real browser, consumers audited.",
+        "playFunctionExempt": "Static navigation tree; expand/collapse follows native details/summary keyboard behavior, no custom handlers to drive.",
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/lib/siteStructure.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/SitemapPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "nodes": {
