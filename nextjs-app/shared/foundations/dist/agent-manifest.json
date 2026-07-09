@@ -1,12 +1,13 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-09T19:56:25.834Z",
+  "generatedAt": "2026-07-09T20:13:58.357Z",
   "summary": {
     "componentCount": 161,
     "statusCounts": {
-      "beta": 50,
+      "beta": 49,
       "stable": 88,
-      "alpha": 23
+      "alpha": 23,
+      "deprecated": 1
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 87.5,
@@ -106,9 +107,10 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 50,
+        "beta": 49,
         "stable": 88,
-        "alpha": 23
+        "alpha": 23,
+        "deprecated": 1
       },
       "dsharp": {
         "beta": 110,
@@ -35718,7 +35720,7 @@
         "name": "Hero",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "deprecated",
         "description": "Configurable general-purpose page hero with heading, subtitle, optional image, and an actions slot across layout and background variants.",
         "dense": "General-purpose hero: title/subtitle/description, optional image and actions; layout variant, background, and align knobs.",
         "keywords": [
@@ -35771,7 +35773,7 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-10 — Deprecated: no production consumers (barrel re-exports only, verified via computeConsumersForComponent); compose HeroSection or use a specialized hero instead."
         },
         "tokens": {
           "colors": [],
@@ -35880,7 +35882,8 @@
         },
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
-        ]
+        ],
+        "deprecatedReason": "Zero production consumers; superseded by HeroSection (layout primitive) and the specialized heroes (HomeHero, ProjectHero, ContactHero, AboutHero, ArticleHero, BlogHero). Also carries a nested-interactive defect (raw <a> wrapping <Button>) — use <Button href> in any successor."
       },
       "spec": "# Hero\n\n## Intent\nDocuments how **Hero** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on Hero pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
