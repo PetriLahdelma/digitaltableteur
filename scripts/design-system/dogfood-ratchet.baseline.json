@@ -349,6 +349,10 @@
       "rawElements": 1,
       "utilityLines": 2
     },
+    "nextjs-app/shared/components/SocialIconLink/SocialIconLink.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
     "nextjs-app/shared/components/SocialShare/SocialShare.tsx": {
       "rawElements": 1,
       "utilityLines": 0

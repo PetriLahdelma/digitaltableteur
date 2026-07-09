@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T22:05:35.555Z",
+  "generatedAt": "2026-07-09T22:38:45.950Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -8024,6 +8024,86 @@
       ],
       "prefersOver": [],
       "declaredPropCount": 3
+    },
+    "SocialIconLink": {
+      "preferredImport": "@dt/SocialIconLink",
+      "intent": "Give icon-only social/profile links one accessible, external-safe implementation. Every hand-rolled `<a aria-label><Icon/></a>` in SiteFooter, ArticleShareSection, and SocialShare repeats the same four obligations (acce…",
+      "props": {
+        "href": {
+          "optional": false,
+          "type": "string"
+        },
+        "label": {
+          "optional": false,
+          "type": "string"
+        },
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode"
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "external": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "variants": {
+        "size": {
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "sm"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "pass a human label (\"Digitaltableteur on LinkedIn\"), not the platform name alone when context needs it.",
+        "size the hit target with `size` (sm/md/lg paddings), not custom CSS."
+      ],
+      "avoidWhen": [
+        "put text children inside — this is icon-only; use Link for labeled links.",
+        "disable `external` for social profiles; same-tab is for internal routes only."
+      ],
+      "requiredA11y": [
+        "label prop is the accessible name (aria-label); the icon child is aria-hidden",
+        "external links carry rel=noopener noreferrer"
+      ],
+      "keyboard": [
+        "Tab",
+        "Enter"
+      ],
+      "compositionRules": [
+        "put text children inside — this is icon-only; use Link for labeled links."
+      ],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "put text children inside — this is icon-only; use Link for labeled links.",
+        "disable `external` for social profiles; same-tab is for internal routes only."
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 6
     },
     "SocialShare": {
       "preferredImport": "@dt/SocialShare",
