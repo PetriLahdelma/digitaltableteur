@@ -3,7 +3,7 @@
  * Run npm publish dry-runs for the design-system packages.
  *
  * `npm pack --dry-run` verifies tarball contents. This guard verifies the
- * actual publish command shape used by the GitHub OIDC workflow:
+ * dry-run publish command shape used by the GitHub OIDC workflow:
  * `npm publish --dry-run --access restricted`.
  */
 import { execFileSync } from "node:child_process";

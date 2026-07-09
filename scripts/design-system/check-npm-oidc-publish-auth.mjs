@@ -7,6 +7,8 @@
  * explicit before the real publish step.
  */
 import { spawnSync } from "node:child_process";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -17,8 +19,11 @@ const PACKAGE_DIRS = new Map([
   ["@digitaltableteur/react", "packages/react"],
 ]);
 
-const packageName = process.argv[2] ?? "@digitaltableteur/react";
+const args = process.argv.slice(2);
+const packageName =
+  args.find((arg) => PACKAGE_DIRS.has(arg)) ?? "@digitaltableteur/react";
 const packageDir = PACKAGE_DIRS.get(packageName);
+const shouldPublish = args.includes("--publish");
 const registry =
   process.env.npm_config_registry ??
   process.env.NPM_CONFIG_REGISTRY ??
@@ -27,6 +32,7 @@ const registry =
 function redact(line) {
   return line
     .replace(/Bearer\s+[-._~+/=A-Za-z0-9]+/g, "Bearer [redacted]")
+    .replace(/npm_[A-Za-z0-9]{20,}/g, "npm_[redacted]")
     .replace(/[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}/g, "[jwt-redacted]");
 }
 
@@ -46,9 +52,32 @@ function formatClaimValue(value) {
   return String(value);
 }
 
-function npmOidcEscapedPackageName(name) {
-  // Match npm-package-arg's escapedName shape used by npm CLI OIDC publish.
-  return name.startsWith("@") ? name.replace("/", "%2f") : encodeURIComponent(name);
+function uniqueRows(rows) {
+  const seen = new Set();
+  return rows.filter((row) => {
+    if (seen.has(row.path)) return false;
+    seen.add(row.path);
+    return true;
+  });
+}
+
+function npmOidcExchangePaths(name) {
+  return uniqueRows([
+    {
+      label: "fully-url-encoded",
+      path: encodeURIComponent(name),
+    },
+    {
+      label: "npm-cli-escaped",
+      path: name.startsWith("@") ? name.replace("/", "%2f") : encodeURIComponent(name),
+    },
+  ]);
+}
+
+function registryAuthConfigLine(token) {
+  const url = new URL(registry);
+  const path = url.pathname.endsWith("/") ? url.pathname : `${url.pathname}/`;
+  return `//${url.host}${path}:_authToken=${token}`;
 }
 
 function printTrustedPublisherChecklist() {
@@ -82,9 +111,9 @@ async function getGitHubIdToken() {
   return json.value;
 }
 
-async function verifyExchangeEndpoint(idToken) {
+async function verifyExchangeEndpoint(idToken, exchangePath) {
   const exchangeUrl = new URL(
-    `/-/npm/v1/oidc/token/exchange/package/${npmOidcEscapedPackageName(packageName)}`,
+    `/-/npm/v1/oidc/token/exchange/package/${exchangePath}`,
     registry,
   );
   const response = await fetch(exchangeUrl.href, {
@@ -102,6 +131,44 @@ async function verifyExchangeEndpoint(idToken) {
     body = { message: text };
   }
   return { ok: response.ok, status: response.status, body };
+}
+
+async function exchangeForPublishToken(idToken) {
+  const attempts = [];
+  for (const candidate of npmOidcExchangePaths(packageName)) {
+    const exchange = await verifyExchangeEndpoint(idToken, candidate.path);
+    attempts.push({ ...exchange, ...candidate });
+    if (exchange.ok && exchange.body?.token) {
+      return { token: exchange.body.token, attempts, selected: candidate };
+    }
+  }
+  return { token: null, attempts, selected: null };
+}
+
+function runNpmPublishWithToken(token, dryRun) {
+  const tempDir = mkdtempSync(join(tmpdir(), "dt-npm-oidc-"));
+  const userconfig = join(tempDir, "npmrc");
+  writeFileSync(
+    userconfig,
+    `registry=${registry}\n${registryAuthConfigLine(token)}\n`,
+    "utf8",
+  );
+
+  const publishArgs = ["publish", "--access", "restricted", "--loglevel", "silly"];
+  if (dryRun) publishArgs.splice(1, 0, "--dry-run");
+
+  try {
+    return spawnSync("npm", publishArgs, {
+      cwd: join(ROOT, packageDir),
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        NPM_CONFIG_USERCONFIG: userconfig,
+      },
+    });
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
 }
 
 if (!packageDir) {
@@ -147,30 +214,28 @@ const claimKeys = [
 ];
 const claimSummary = claimKeys.map((key) => `${key}: ${formatClaimValue(claims[key])}`);
 
-const exchange = await verifyExchangeEndpoint(idToken);
+const exchangeResult = await exchangeForPublishToken(idToken);
 
-if (!exchange.ok || !exchange.body?.token) {
+if (!exchangeResult.token) {
+  const lastAttempt = exchangeResult.attempts.at(-1);
   console.error(
-    `npm OIDC token exchange endpoint rejected ${packageName} with HTTP ${exchange.status}.`,
+    `npm OIDC token exchange endpoint rejected ${packageName} with HTTP ${lastAttempt?.status ?? "unknown"}.`,
   );
-  console.error(
-    `Registry response: ${redact(exchange.body?.message ?? JSON.stringify(exchange.body))}`,
-  );
+  console.error("Exchange attempts:");
+  for (const attempt of exchangeResult.attempts) {
+    console.error(
+      `  ${attempt.label} (${attempt.path}): HTTP ${attempt.status} ${redact(
+        attempt.body?.message ?? JSON.stringify(attempt.body),
+      )}`,
+    );
+  }
   console.error("GitHub OIDC claim summary:");
   for (const line of claimSummary) console.error(`  ${line}`);
   printTrustedPublisherChecklist();
   process.exit(1);
 }
 
-const result = spawnSync(
-  "npm",
-  ["publish", "--dry-run", "--access", "restricted", "--loglevel", "silly"],
-  {
-    cwd: join(ROOT, packageDir),
-    encoding: "utf8",
-    env: { ...process.env, NPM_ID_TOKEN: idToken },
-  },
-);
+const result = runNpmPublishWithToken(exchangeResult.token, !shouldPublish);
 
 const combinedOutput = `${result.stdout ?? ""}\n${result.stderr ?? ""}`;
 const diagnosticLines = combinedOutput
@@ -178,30 +243,17 @@ const diagnosticLines = combinedOutput
   .filter((line) => /oidc|id_token|need auth|ENEEDAUTH|auth/i.test(line))
   .map(redact);
 
-const hasOidcSuccess = diagnosticLines.some((line) =>
-  /oidc.*Successfully retrieved and set token/i.test(line),
-);
-
-if (!hasOidcSuccess) {
-  console.error(`npm did not exchange GitHub OIDC for a publish token for ${packageName}.`);
-  if (diagnosticLines.length) {
-    console.error("Relevant npm diagnostics:");
-    for (const line of diagnosticLines) console.error(`  ${line}`);
-  } else {
-    console.error("No npm OIDC diagnostics were emitted.");
-  }
-  printTrustedPublisherChecklist();
-  process.exit(1);
-}
-
 if (result.status !== 0) {
   console.error(
-    `npm OIDC token exchange succeeded for ${packageName}, but publish dry-run exited ${result.status}.`,
+    `npm OIDC token exchange succeeded for ${packageName} via ${exchangeResult.selected.label}, but npm publish${shouldPublish ? "" : " dry-run"} exited ${result.status}.`,
   );
   for (const line of diagnosticLines) console.error(`  ${line}`);
+  if (!diagnosticLines.length) {
+    console.error(redact(combinedOutput.trim()));
+  }
   process.exit(result.status ?? 1);
 }
 
 console.log(
-  `✓ npm OIDC publish auth verified for ${packageName} (${relative(ROOT, join(ROOT, packageDir))})`,
+  `✓ npm OIDC ${shouldPublish ? "publish completed" : "publish auth verified"} for ${packageName} via ${exchangeResult.selected.label} (${relative(ROOT, join(ROOT, packageDir))})`,
 );
