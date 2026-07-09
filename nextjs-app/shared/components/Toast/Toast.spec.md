@@ -22,8 +22,10 @@ anything that should stay until dismissed, AlertBanner.
 - Do: pair `tone="error"` with an actionable next step ("Retry" in
   the message text) so the user knows what to do. Use AlertBanner for
   persistent errors that can't be auto-resolved.
-- Don't: stack toasts. The provider queues them — calling `showToast`
-  three times in a frame shows the last one only, which is intentional.
+- Don't: hand-roll overlapping fixed toasts. Concurrent messages stack via
+  ToastStack — the app provider renders one stack per position, so calling
+  `showToast` repeatedly shows every message (decision 2026-07-09; the old
+  last-one-wins behavior hid the "language changed" confirmation).
 - Don't: rely on Toast for compliance acknowledgements (cookie consent,
   GDPR). Those need persistent acknowledgement; use Modal +
   CookieConsent.

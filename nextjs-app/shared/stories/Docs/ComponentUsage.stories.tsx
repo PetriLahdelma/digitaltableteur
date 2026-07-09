@@ -43,12 +43,38 @@ const ComponentUsageContent = () => {
         <p className={styles.lead}>
           Real adoption data from the production codebase: how many source
           files import each component (statically or via dynamic import), and
-          how many production pages transitively render it. Regenerate with{" "}
-          <code>npm run report:component-usage</code>. Generated{" "}
-          {new Date(generatedAt).toLocaleString("en-GB")}. {rows.length}{" "}
-          components, {unusedCount} without any importer.
+          how many production pages transitively render it.
         </p>
       </header>
+
+      <section className={styles.section}>
+        <div className={styles.principleGrid}>
+          <div className={styles.principle}>
+            <h3>{rows.length}</h3>
+            <p>Components in the catalog</p>
+          </div>
+          <div className={styles.principle}>
+            <h3>{unusedCount}</h3>
+            <p>Without any importer</p>
+          </div>
+          <div className={styles.principle}>
+            <h3>{new Date(generatedAt).toLocaleDateString("en-GB")}</h3>
+            <p>
+              Generated{" "}
+              {new Date(generatedAt).toLocaleTimeString("en-GB", {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </p>
+          </div>
+          <div className={styles.principle}>
+            <h3>Regenerate</h3>
+            <p>
+              <code>npm run report:component-usage</code>
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className={styles.section}>
         <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>

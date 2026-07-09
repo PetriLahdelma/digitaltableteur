@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-08T23:37:19.274Z",
+  "generatedAt": "2026-07-09T16:24:37.980Z",
   "summary": {
-    "componentCount": 160,
+    "componentCount": 161,
     "statusCounts": {
       "beta": 75,
       "stable": 63,
-      "alpha": 22
+      "alpha": 23
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 87.4,
-    "codebaseComponentCount": 183,
-    "usageCoveragePercent": 93.1,
-    "componentsWithProductionUsage": 45,
+    "catalogCompletenessPercent": 87.5,
+    "codebaseComponentCount": 184,
+    "usageCoveragePercent": 92.5,
+    "componentsWithProductionUsage": 46,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -56,15 +56,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 183,
-    "inCatalog": 160,
+    "totalComponentsInCodebase": 184,
+    "inCatalog": 161,
     "outOfCatalog": 23,
-    "catalogCompletenessPercent": 87.4,
+    "catalogCompletenessPercent": 87.5,
     "artifactCoverage": {
-      "stories": 144,
-      "tests": 132,
+      "stories": 145,
+      "tests": 133,
       "mdx": 3,
-      "spec": 160
+      "spec": 161
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -76,21 +76,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 160,
+    "catalogedComponents": 161,
     "withAnyUsage": 149,
-    "withProductionUsage": 45,
+    "withProductionUsage": 46,
     "uniqueImportedComponents": 149,
-    "totalEvidenceRows": 839,
-    "aliasImportFiles": 464,
-    "relativeImportFiles": 383,
+    "totalEvidenceRows": 845,
+    "aliasImportFiles": 469,
+    "relativeImportFiles": 384,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-08T23:37:14.681Z",
+    "generatedAt": "2026-07-09T16:24:34.507Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 85,
+    "nodesWithComposesWith": 86,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -101,14 +101,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 160,
+      "digitaltableteur": 161,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 75,
         "stable": 63,
-        "alpha": 22
+        "alpha": 23
       },
       "dsharp": {
         "beta": 110,
@@ -4292,11 +4292,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Breadcrumb",
-        "importCount": 1,
-        "productionImportCount": 0,
+        "importCount": 2,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Breadcrumb",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -4372,7 +4378,14 @@
           "skip levels to make the trail shorter. If the user is at",
           "render the breadcrumb above a hero — it gets lost. Place it"
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Button",
+          "Card",
+          "Text",
+          "Title",
+          "MarkdownMessage",
+          "PageLayout"
+        ],
         "prefersOver": [],
         "declaredPropCount": 6
       }
@@ -4753,8 +4766,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 66,
-        "productionImportCount": 7,
+        "importCount": 67,
+        "productionImportCount": 8,
         "patternImportCount": 6,
         "componentImportCount": 32,
         "evidence": [
@@ -4801,6 +4814,12 @@
             "context": "production"
           },
           {
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "production"
+          },
+          {
             "path": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx",
             "importKind": "alias",
             "importPath": "@dt/Button",
@@ -4820,12 +4839,6 @@
           },
           {
             "path": "nextjs-app/shared/patterns/HighlightSection/HighlightSection.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
             "importKind": "alias",
             "importPath": "@dt/Button",
             "context": "pattern"
@@ -5510,13 +5523,19 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Card",
-        "importCount": 7,
-        "productionImportCount": 2,
+        "importCount": 8,
+        "productionImportCount": 3,
         "patternImportCount": 0,
         "componentImportCount": 4,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Card",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Card",
             "context": "production"
@@ -5703,8 +5722,8 @@
           "Text",
           "Button",
           "PageLayout",
-          "Icon",
-          "Badge"
+          "Breadcrumb",
+          "MarkdownMessage"
         ],
         "prefersOver": [],
         "declaredPropCount": 16
@@ -9818,8 +9837,8 @@
           "animations",
           "Stack",
           "Link",
-          "ScrollIndicator",
-          "Badge"
+          "Badge",
+          "Checkbox"
         ],
         "prefersOver": [],
         "declaredPropCount": 5
@@ -17956,10 +17975,12 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "OpenHours",
-          "ServicesGrid",
-          "StudioMap",
-          "DonnyBookingEmbed"
+          "Breadcrumb",
+          "Button",
+          "Card",
+          "Text",
+          "Title",
+          "PageLayout"
         ],
         "prefersOver": [],
         "declaredPropCount": 6
@@ -28966,8 +28987,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 79,
-        "productionImportCount": 18,
+        "importCount": 80,
+        "productionImportCount": 19,
         "patternImportCount": 10,
         "componentImportCount": 27,
         "evidence": [
@@ -28979,6 +29000,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Text",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
             "context": "production"
@@ -29033,12 +29060,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Text",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
             "context": "production"
@@ -30290,8 +30311,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 56,
-        "productionImportCount": 23,
+        "importCount": 57,
+        "productionImportCount": 24,
         "patternImportCount": 9,
         "componentImportCount": 15,
         "evidence": [
@@ -30362,7 +30383,7 @@
             "context": "production"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
             "context": "production"
@@ -30653,10 +30674,14 @@
           "onClose": {
             "optional": true,
             "type": "() => void"
+          },
+          "inline": {
+            "optional": true,
+            "type": "boolean"
           }
         },
         "forbiddenUse": [
-          "mount two <Toast /> instances side by side; the shared live region double-announces and the visuals go stale.",
+          "mount two overlapping fixed <Toast /> instances yourself; use ToastStack (or the app ToastProvider) so concurrent messages stack instead of replacing each other.",
           "rely on Toast for compliance acknowledgements (cookie consent, legal notices); it auto-dismisses — use AlertBanner or Modal.",
           "use Toast for validation errors on a field; the message detaches from the input — use the field's error prop."
         ],
@@ -30734,21 +30759,22 @@
         },
         "composesWith": [
           "Button",
-          "Text",
-          "Modal",
-          "TextInput",
           "CheckboxGroup",
-          "TextArea"
+          "Modal",
+          "Text",
+          "TextArea",
+          "TextInput",
+          "ToastStack"
         ]
       },
-      "spec": "# Toast\n\n## Intent\nAcknowledge a user-initiated action without blocking the flow. Toast is\ndeliberately transient — the user is not expected to read it twice.\nFor anything that demands a response, the right primitive is Modal; for\nanything that should stay until dismissed, AlertBanner.\n\n## Interaction contract\n- Keyboard: Toast does not capture focus. There is no dismiss button\n  by default — the toast disappears on its own timer.\n- Pointer: the surface does not respond to clicks. (Click-to-dismiss is\n  a future affordance; tabling until a consumer needs it.)\n- Screen readers: announced via `aria-live`. `polite` for info and\n  success; `assertive` for warning and error so the announcement\n  interrupts. `aria-atomic=\"true\"` makes the full message announce on\n  every update, not just the changed words.\n\n## Do / don't\n- Do: keep the message ≤ 60 characters so it fits on a single line.\n  Two-line toasts get cropped at the bottom of mobile viewports.\n- Do: pair `tone=\"error\"` with an actionable next step (\"Retry\" in\n  the message text) so the user knows what to do. Use AlertBanner for\n  persistent errors that can't be auto-resolved.\n- Don't: stack toasts. The provider queues them — calling `showToast`\n  three times in a frame shows the last one only, which is intentional.\n- Don't: rely on Toast for compliance acknowledgements (cookie consent,\n  GDPR). Those need persistent acknowledgement; use Modal +\n  CookieConsent.\n- Don't: use Toast for validation errors on a field. The visual is far\n  from the error source; use HelperText.\n\n## Design notes\n- Tokens: tone surfaces use the same `--color-<tone>-surface`\n  tokens as AlertBanner so the visual language is consistent. Radius is\n  `--radius-md`; elevation is `--shadow-lg` since Toast floats above\n  content.\n- Figma: https://www.figma.com/design/digitaltableteur/toast — six\n  positions × four severities; size prop maps `sm` / `md` / `lg`.\n- Icons are direct Phosphor `weight=\"fill\"` imports (not via the\n  `<Icon />` component) to keep visual alignment tight with the\n  `ToastProvider` library used in the chat widget. The shared icon set is the\n  one nailed-down constraint between the two.\n- The `<ToastProvider>` at the app root owns the live region; this\n  component is the visual + ARIA implementation rendered on demand.\n  Direct `<Toast />` mounting is supported but discouraged.\n",
+      "spec": "# Toast\n\n## Intent\nAcknowledge a user-initiated action without blocking the flow. Toast is\ndeliberately transient — the user is not expected to read it twice.\nFor anything that demands a response, the right primitive is Modal; for\nanything that should stay until dismissed, AlertBanner.\n\n## Interaction contract\n- Keyboard: Toast does not capture focus. There is no dismiss button\n  by default — the toast disappears on its own timer.\n- Pointer: the surface does not respond to clicks. (Click-to-dismiss is\n  a future affordance; tabling until a consumer needs it.)\n- Screen readers: announced via `aria-live`. `polite` for info and\n  success; `assertive` for warning and error so the announcement\n  interrupts. `aria-atomic=\"true\"` makes the full message announce on\n  every update, not just the changed words.\n\n## Do / don't\n- Do: keep the message ≤ 60 characters so it fits on a single line.\n  Two-line toasts get cropped at the bottom of mobile viewports.\n- Do: pair `tone=\"error\"` with an actionable next step (\"Retry\" in\n  the message text) so the user knows what to do. Use AlertBanner for\n  persistent errors that can't be auto-resolved.\n- Don't: hand-roll overlapping fixed toasts. Concurrent messages stack via\n  ToastStack — the app provider renders one stack per position, so calling\n  `showToast` repeatedly shows every message (decision 2026-07-09; the old\n  last-one-wins behavior hid the \"language changed\" confirmation).\n- Don't: rely on Toast for compliance acknowledgements (cookie consent,\n  GDPR). Those need persistent acknowledgement; use Modal +\n  CookieConsent.\n- Don't: use Toast for validation errors on a field. The visual is far\n  from the error source; use HelperText.\n\n## Design notes\n- Tokens: tone surfaces use the same `--color-<tone>-surface`\n  tokens as AlertBanner so the visual language is consistent. Radius is\n  `--radius-md`; elevation is `--shadow-lg` since Toast floats above\n  content.\n- Figma: https://www.figma.com/design/digitaltableteur/toast — six\n  positions × four severities; size prop maps `sm` / `md` / `lg`.\n- Icons are direct Phosphor `weight=\"fill\"` imports (not via the\n  `<Icon />` component) to keep visual alignment tight with the\n  `ToastProvider` library used in the chat widget. The shared icon set is the\n  one nailed-down constraint between the two.\n- The `<ToastProvider>` at the app root owns the live region; this\n  component is the visual + ARIA implementation rendered on demand.\n  Direct `<Toast />` mounting is supported but discouraged.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Toast",
-        "importCount": 7,
+        "importCount": 8,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 5,
+        "componentImportCount": 6,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.tsx",
@@ -30778,6 +30804,12 @@
             "path": "nextjs-app/shared/components/SocialShare/SocialShare.tsx",
             "importKind": "alias",
             "importPath": "@dt/Toast/Toast",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ToastStack/ToastStack.tsx",
+            "importKind": "relative",
+            "importPath": "../Toast/Toast",
             "context": "component"
           },
           {
@@ -30844,6 +30876,10 @@
           "onClose": {
             "optional": true,
             "type": "() => void"
+          },
+          "inline": {
+            "optional": true,
+            "type": "boolean"
           }
         },
         "variants": {
@@ -30872,7 +30908,7 @@
           "pair `tone=\"error\"` with an actionable next step (\"Retry\" in"
         ],
         "avoidWhen": [
-          "stack toasts. The provider queues them — calling `showToast`",
+          "hand-roll overlapping fixed toasts. Concurrent messages stack via",
           "rely on Toast for compliance acknowledgements (cookie consent,",
           "use Toast for validation errors on a field. The visual is far"
         ],
@@ -30884,7 +30920,7 @@
         ],
         "keyboard": [],
         "compositionRules": [
-          "stack toasts. The provider queues them — calling `showToast`"
+          "hand-roll overlapping fixed toasts. Concurrent messages stack via"
         ],
         "canonicalExamples": [
           "Default",
@@ -30897,7 +30933,7 @@
           "window.alert"
         ],
         "forbiddenUse": [
-          "stack toasts. The provider queues them — calling `showToast`",
+          "hand-roll overlapping fixed toasts. Concurrent messages stack via",
           "rely on Toast for compliance acknowledgements (cookie consent,",
           "use Toast for validation errors on a field. The visual is far"
         ],
@@ -30912,7 +30948,198 @@
         "prefersOver": [
           "AlertBanner for page-level persistent status"
         ],
-        "declaredPropCount": 7
+        "declaredPropCount": 8
+      }
+    },
+    {
+      "name": "ToastStack",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "name": "ToastStack",
+        "tier": "molecule",
+        "group": "feedback",
+        "status": "alpha",
+        "description": "Docked stack of transient toasts: renders Toast children inline and owns the fixed placement, newest toast nearest the docked edge, so concurrent messages stay visible instead of replacing each other.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "div",
+        "variants": {
+          "position": {
+            "values": [
+              "top-left",
+              "top-center",
+              "top-right",
+              "bottom-left",
+              "bottom-center",
+              "bottom-right"
+            ],
+            "default": "bottom-center",
+            "forwarded": false
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [],
+          "ariaRequirements": [
+            "each stacked Toast keeps its own live region (role=status or role=alert per tone) so concurrent messages announce independently",
+            "the stack wrapper is presentational: no role, pointer-events none with interactive children restored"
+          ],
+          "reviewed": false,
+          "forcedColorsVerified": false,
+          "reducedMotion": true
+        },
+        "tokens": {
+          "colors": [],
+          "spacing": [
+            "--space-internal-8",
+            "--space-layout-24"
+          ]
+        },
+        "lightDarkVerified": false,
+        "consumers": [],
+        "schemaVersion": 2,
+        "props": {
+          "toasts": {
+            "optional": false,
+            "type": "ToastStackItem[]"
+          },
+          "position": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "top-left",
+              "top-center",
+              "top-right",
+              "bottom-left",
+              "bottom-center",
+              "bottom-right"
+            ]
+          },
+          "onDismiss": {
+            "optional": true,
+            "type": "(id: string) => void"
+          },
+          "max": {
+            "optional": true,
+            "type": "number"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "forbiddenUse": [
+          "mounting more than one ToastStack per position; group toasts by position and render one stack per active position instead",
+          "persistent or compliance-critical messaging; toasts auto-dismiss (use AlertBanner)"
+        ],
+        "prefersOver": [
+          "multiple sibling <Toast /> mounts, whose fixed positions overlap and whose messages replace each other"
+        ],
+        "displayName": "ToastStack",
+        "keywords": [
+          "toast stack",
+          "notification stack",
+          "snackbar queue",
+          "stacked toasts",
+          "concurrent notifications"
+        ],
+        "dense": "docked flex stack of Toast (inline mode); toasts: {id,message,tone?,duration?,size?}[], 6 dock positions, max visible (default 5, oldest wait), onDismiss(id) on per-toast auto-dismiss",
+        "usage": {
+          "description": "ToastStack is the multi-toast surface behind the app ToastProvider: showToast calls append items and each renders as an inline Toast laid out by the stack, newest nearest the docked edge. Use it (or the provider) whenever more than one transient message can be alive at once; a bare Toast stays correct for single, fully controlled cases."
+        },
+        "playground": {
+          "defaults": {
+            "position": "bottom-center"
+          }
+        },
+        "composesWith": [
+          "Toast"
+        ]
+      },
+      "spec": "# ToastStack\n\n## Intent\nKeep concurrent transient messages visible together instead of letting the\nnewest replace the rest. The motivating case: switching UI language on an\nEnglish-only article fires both \"language changed\" and the content-language\nnotice — with a single Toast slot the confirmation was never seen. ToastStack\nowns the fixed docking that a lone Toast handles itself and lays the toasts\nout with the newest nearest the docked edge.\n\n## Interaction contract\n- Keyboard: the stack never captures focus; individual toasts follow the\n  Toast contract (no dismiss button, timer-driven).\n- Pointer: the wrapper is `pointer-events: none` so it never blocks the page;\n  children restore `pointer-events: auto`.\n- Screen readers: each toast keeps its own live region (`status` or `alert`\n  per tone), so concurrent messages announce independently — the reason the\n  stack renders multiple Toast instances rather than swapping one message.\n- Overflow: at most `max` (default 5) toasts render; older ones wait\n  unrendered, and because a Toast's timer only runs while rendered, bursts\n  drain oldest-first instead of being dropped.\n\n## Do / don't\n- Do: drive it from the app `ToastProvider` — `showToast` appends and the\n  provider renders one stack per active position.\n- Do: give every toast a stable `id`; dismissal and list identity depend on it.\n- Don't: mount more than one ToastStack at the same position; their fixed\n  wrappers would overlap. Group by position instead.\n- Don't: use it for persistent or compliance-critical messaging — toasts\n  auto-dismiss (AlertBanner or Modal own those cases).\n\n## Design notes\n- The stack owns fixed placement; toasts render with the `inline` prop so\n  their own position classes never fight the wrapper. Bottom docks use\n  `column-reverse` so appending keeps the newest toast nearest the edge.\n- Spacing uses `--space-internal-8` between toasts and the same\n  `--space-layout-24` screen-edge offset a lone Toast uses, so a single-item\n  stack is visually identical to a bare Toast.\n- No entry/exit animation beyond Toast's own opacity/translate transition;\n  reduced-motion inherits Toast's handling.\n\n## Status\nAlpha. Not yet a `@digitaltableteur/react` export; the app imports it via\n`@dt/ToastStack` (allowlisted in the registry-resolution guard) until it is\npromoted onto the published surface.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/ToastStack",
+        "importCount": 0,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 0,
+        "evidence": []
+      },
+      "agent": {
+        "preferredImport": "@dt/ToastStack",
+        "intent": "Keep concurrent transient messages visible together instead of letting the newest replace the rest. The motivating case: switching UI language on an English-only article fires both \"language changed\" and the content-lan…",
+        "props": {
+          "toasts": {
+            "optional": false,
+            "type": "ToastStackItem[]"
+          },
+          "position": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "top-left",
+              "top-center",
+              "top-right",
+              "bottom-left",
+              "bottom-center",
+              "bottom-right"
+            ]
+          },
+          "onDismiss": {
+            "optional": true,
+            "type": "(id: string) => void"
+          },
+          "max": {
+            "optional": true,
+            "type": "number"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "drive it from the app `ToastProvider` — `showToast` appends and the",
+          "give every toast a stable `id`; dismissal and list identity depend on it."
+        ],
+        "avoidWhen": [
+          "mount more than one ToastStack at the same position; their fixed",
+          "use it for persistent or compliance-critical messaging — toasts"
+        ],
+        "requiredA11y": [
+          "each stacked Toast keeps its own live region (role=status or role=alert per tone) so concurrent messages announce independently",
+          "the stack wrapper is presentational: no role, pointer-events none with interactive children restored"
+        ],
+        "keyboard": [],
+        "compositionRules": [
+          "mount more than one ToastStack at the same position; their fixed"
+        ],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "mount more than one ToastStack at the same position; their fixed",
+          "use it for persistent or compliance-critical messaging — toasts"
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 5
       }
     },
     {
@@ -37023,8 +37250,9 @@
           "Title",
           "Card",
           "Text",
-          "AuthorBio",
-          "Button"
+          "Button",
+          "Breadcrumb",
+          "MarkdownMessage"
         ],
         "prefersOver": [],
         "declaredPropCount": 11

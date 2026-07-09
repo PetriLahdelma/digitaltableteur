@@ -52,6 +52,10 @@ const ALLOWED_APP_LOCAL_IMPORTS = new Map([
   ["@dt/NextLayout", "site shell surface; intentionally outside @digitaltableteur/react"],
   ["@dt/SiteTree", "site structure type; intentionally outside @digitaltableteur/react"],
   ["@dt/SocialShare", "blog/social sharing surface; intentionally outside @digitaltableteur/react"],
+  [
+    "@dt/ToastStack",
+    "alpha component, not yet a package export; migrate this import to @digitaltableteur/react when ToastStack reaches the published surface",
+  ],
 ]);
 
 function readJson(path) {
