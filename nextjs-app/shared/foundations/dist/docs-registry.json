@@ -16413,7 +16413,7 @@
       "name": "ContactHero",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Contact page hero with headline and supporting copy.",
       "dense": "Contact page hero: headline plus supporting copy, background and compact variants.",
       "keywords": [
@@ -18537,7 +18537,7 @@
       "name": "ProofBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Metrics band that presents headline numbers with captions under an optional title and subtitle, with tight and dark variants.",
       "dense": "Metrics proof band: headline metrics with captions under a title/subtitle; tight and dark variants.",
       "keywords": [
@@ -18763,7 +18763,7 @@
       "name": "ServicesBlock",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Case-study engagement overview with services, duration, and tools columns alongside overview copy.",
       "dense": "Case-study services overview: services list, duration, and tools columns with overview copy and section titles.",
       "keywords": [
@@ -19661,7 +19661,7 @@
       "name": "WorkMagneticField",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage work grid with magnetic hover on project cards.",
       "dense": "Homepage work showcase: project-card grid with magnetic hover, optional view-all link.",
       "keywords": [

@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-09T19:47:55.844Z",
+  "generatedAt": "2026-07-09T19:56:25.834Z",
   "summary": {
     "componentCount": 161,
     "statusCounts": {
-      "beta": 54,
-      "stable": 84,
+      "beta": 50,
+      "stable": 88,
       "alpha": 23
     },
     "honestBetaDocDebt": 0,
@@ -19,7 +19,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 84,
+    "stableCount": 88,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -62,7 +62,7 @@
     "catalogCompletenessPercent": 87.5,
     "artifactCoverage": {
       "stories": 145,
-      "tests": 143,
+      "tests": 144,
       "mdx": 3,
       "spec": 161
     },
@@ -106,8 +106,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 54,
-        "stable": 84,
+        "beta": 50,
+        "stable": 88,
         "alpha": 23
       },
       "dsharp": {
@@ -34353,7 +34353,7 @@
         "name": "ContactHero",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Contact page hero with headline and supporting copy.",
         "dense": "Contact page hero: headline plus supporting copy, background and compact variants.",
         "keywords": [
@@ -34383,14 +34383,27 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactHero/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
@@ -39261,7 +39274,7 @@
         "name": "ProofBlock",
         "tier": "pattern",
         "group": "structure",
-        "status": "beta",
+        "status": "stable",
         "description": "Metrics band that presents headline numbers with captions under an optional title and subtitle, with tight and dark variants.",
         "dense": "Metrics proof band: headline metrics with captions under a title/subtitle; tight and dark variants.",
         "keywords": [
@@ -39293,14 +39306,27 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ProofBlock/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "ariaLabel": {
@@ -39759,7 +39785,7 @@
         "name": "ServicesBlock",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Case-study engagement overview with services, duration, and tools columns alongside overview copy.",
         "dense": "Case-study services overview: services list, duration, and tools columns with overview copy and section titles.",
         "keywords": [
@@ -39793,14 +39819,27 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ServicesBlock/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "services": {
@@ -41801,7 +41840,7 @@
         "name": "WorkMagneticField",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Homepage work grid with magnetic hover on project cards.",
         "dense": "Homepage work showcase: project-card grid with magnetic hover, optional view-all link.",
         "keywords": [
@@ -41832,14 +41871,27 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/WorkMagneticField/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
