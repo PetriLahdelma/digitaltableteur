@@ -92,6 +92,18 @@ function printTrustedPublisherChecklist() {
   console.error(
     "These values are case-sensitive and must match the GitHub OIDC claims exactly; do not use the npm org name as the GitHub owner.",
   );
+  console.error("Official npm trust CLI repair path:");
+  console.error(
+    "  NPM_CONFIG_USERCONFIG=/path/to/private-npmrc npx npm@11.18.0 trust list " +
+      `${packageName} --json`,
+  );
+  console.error(
+    "  NPM_CONFIG_USERCONFIG=/path/to/private-npmrc npx npm@11.18.0 trust github " +
+      `${packageName} --repo PetriLahdelma/digitaltableteur --file ds-publish.yml --allow-publish --yes`,
+  );
+  console.error(
+    "If npm trust returns 403 for /-/package/<package>/trust while normal package access is read-write, the npm token/session cannot manage Trusted Publisher records.",
+  );
 }
 
 async function getGitHubIdToken() {

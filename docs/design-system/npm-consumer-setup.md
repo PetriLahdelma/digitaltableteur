@@ -49,6 +49,23 @@ Environment name: leave blank
 Allowed actions: Allow npm publish
 ```
 
+The same configuration can be inspected and repaired through npm's official
+Trusted Publisher CLI when the npm auth session is allowed to manage trust
+relationships:
+
+```bash
+NPM_CONFIG_USERCONFIG=/path/to/private-npmrc npx npm@11.18.0 trust list @digitaltableteur/react --json
+NPM_CONFIG_USERCONFIG=/path/to/private-npmrc npx npm@11.18.0 trust github @digitaltableteur/react --repo PetriLahdelma/digitaltableteur --file ds-publish.yml --allow-publish --dry-run --json
+NPM_CONFIG_USERCONFIG=/path/to/private-npmrc npx npm@11.18.0 trust github @digitaltableteur/react --repo PetriLahdelma/digitaltableteur --file ds-publish.yml --allow-publish --yes
+```
+
+If normal package access is `read-write` but `npm trust list` or
+`npm trust github` returns `403 Forbidden` for
+`/-/package/@digitaltableteur%2freact/trust`, the token/session cannot manage
+Trusted Publisher records. Use an npm auth session that satisfies npm trust
+requirements: npm 11.15.0 or newer, write access to the package, account-level
+2FA, and a supported auth method.
+
 This monorepo follows the same shape. The root `package.json` depends on the
 published packages and intentionally does not declare `packages/*` as npm
 workspaces. The source package directories are still used by package build,
