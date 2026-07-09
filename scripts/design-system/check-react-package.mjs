@@ -52,6 +52,24 @@ if (!jsEntry.startsWith('"use client";')) {
   );
 }
 
+// Design tokens ship ONCE, via @digitaltableteur/tokens-css. A variables.css
+// side-effect import anywhere in the package module graph snapshots the whole
+// token sheet into dist/style.css at publish time — a stale duplicate that
+// fights the app's live variables.css on cascade order (fixed for 0.1.4).
+// The only allowed :root custom-prop definitions are the bundled third-party
+// react-phone-number-input sheet (--PhoneInput* namespace).
+const cssEntry = readFileSync(join(dist, "style.css"), "utf8");
+for (const match of cssEntry.matchAll(/:root\s*{([^}]*)}/g)) {
+  const foreign = [...match[1].matchAll(/--([\w-]+)\s*:/g)]
+    .map((def) => def[1])
+    .filter((name) => !name.startsWith("PhoneInput"));
+  if (foreign.length > 0) {
+    throw new Error(
+      `dist/style.css defines design tokens at :root (${foreign.slice(0, 5).join(", ")}${foreign.length > 5 ? ", …" : ""}); tokens must ship only via @digitaltableteur/tokens-css — remove the variables.css side-effect import from the package module graph.`,
+    );
+  }
+}
+
 const smoke = run(
   "node",
   [

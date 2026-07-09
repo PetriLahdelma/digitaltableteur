@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./List.module.css";
-import "../../styles/variables.css";
 
 type TextSize = "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
 type LineHeight = "tight" | "snug" | "normal" | "relaxed" | "loose";

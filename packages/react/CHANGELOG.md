@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.4 - 2026-07-09
+
+- Stops shipping a publish-time snapshot of the design-token sheet inside `dist/style.css`: Title, Text, Link, and List no longer side-effect-import `variables.css`, so tokens ship once, via `@digitaltableteur/tokens-css/tokens.css` as the install docs already instruct. Consumers who skipped `tokens-css` and relied on the embedded snapshot must add it now.
+- Adds a `check:react-package` tripwire: any non-vendor `:root` custom-property definitions in `dist/style.css` fail the package check, so the snapshot cannot creep back.
+- style.css 108.9 kB → 94.3 kB; public runtime API unchanged from 0.1.3.
+- Verified by `check:react-package`, `check:react-public-api`, and the full local gate.
+
 ## 0.1.3 - 2026-07-09
 
 - Stops the package from bundling a stale copy of itself: shared source no longer imports `@digitaltableteur/react` internally (NavLink, NavMenuList, PseoLeafPage now use local modules), which had compounded tarball growth each publish and tripped the 3.5 MB ceiling.
