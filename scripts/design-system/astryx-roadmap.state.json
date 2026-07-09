@@ -477,7 +477,7 @@
         },
         "5.17": {
             "status": "done",
-            "note": "Root package.json no longer declares design-system package workspaces. The app/root install now depends on @digitaltableteur/react, @digitaltableteur/tokens, and @digitaltableteur/tokens-css from npm, while local package sources remain under packages/* for build/pack/publish checks. Added check:package-registry-resolution and wired it into the OIDC workflow, Trusted Publisher guard, and React publish preflight; it fails on package-lock workspace links, local packages/* resolution, or symlinked node_modules entries."
+            "note": "Root package.json no longer declares design-system package workspaces. The app/root install now depends on @digitaltableteur/react, @digitaltableteur/tokens, and @digitaltableteur/tokens-css from npm, while local package sources remain under packages/* for build/pack/publish checks. Added check:package-registry-resolution and wired it into the OIDC workflow, Trusted Publisher guard, and React publish preflight; it fails on package-lock workspace links, local packages/* resolution, symlinked node_modules entries, or app/provider imports that locally consume exports already available from @digitaltableteur/react. Remaining app/provider @dt imports must be explicitly classified as non-package app/product/site surfaces."
         },
         "5.18": {
             "status": "done",

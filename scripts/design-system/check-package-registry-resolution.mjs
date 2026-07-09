@@ -8,13 +8,22 @@
  * token exports can silently resolve through symlinks instead of the same
  * registry artifacts consumers receive.
  */
-import { existsSync, lstatSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  lstatSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const OUT_DIR = join(ROOT, ".omx/state/design-system/package-registry-resolution");
 const OUT_JSON = join(OUT_DIR, "latest.json");
+const REACT_PUBLIC_API_MANIFEST = join(ROOT, "packages/react/public-api.manifest.json");
 
 const PACKAGE_CHECKS = [
   {
@@ -33,6 +42,17 @@ const PACKAGE_CHECKS = [
     packageDir: "packages/tokens-css",
   },
 ];
+
+const APP_LOCAL_IMPORT_ROOTS = ["app", "providers"];
+const ALLOWED_APP_LOCAL_IMPORTS = new Map([
+  [
+    "@dt/EmailSignatureGenerator",
+    "product tool surface; intentionally outside @digitaltableteur/react",
+  ],
+  ["@dt/NextLayout", "site shell surface; intentionally outside @digitaltableteur/react"],
+  ["@dt/SiteTree", "site structure type; intentionally outside @digitaltableteur/react"],
+  ["@dt/SocialShare", "blog/social sharing surface; intentionally outside @digitaltableteur/react"],
+]);
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
@@ -60,8 +80,55 @@ function nodeModulesPath(packageName) {
   return join(ROOT, "node_modules", scope, name);
 }
 
+function sourceFiles(root) {
+  const absoluteRoot = join(ROOT, root);
+  if (!existsSync(absoluteRoot)) return [];
+  const entries = [];
+  const visit = (path) => {
+    const stat = statSync(path);
+    if (stat.isDirectory()) {
+      for (const entry of readdirSync(path)) {
+        if (entry === "node_modules" || entry.startsWith(".")) continue;
+        visit(join(path, entry));
+      }
+      return;
+    }
+    if (/\.(?:ts|tsx|js|jsx|mjs|cjs)$/.test(path)) {
+      entries.push(path);
+    }
+  };
+  visit(absoluteRoot);
+  return entries.sort((a, b) => a.localeCompare(b));
+}
+
+function findAppLocalImports(publicExports) {
+  const imports = [];
+  const importRe = /\bfrom\s+["'](@dt\/([^"']+))["']/g;
+  for (const root of APP_LOCAL_IMPORT_ROOTS) {
+    for (const file of sourceFiles(root)) {
+      const source = readFileSync(file, "utf8");
+      for (const match of source.matchAll(importRe)) {
+        const importPath = match[1];
+        const exportName = match[2].split("/")[0];
+        const publicExport = publicExports.has(exportName);
+        const allowedReason = ALLOWED_APP_LOCAL_IMPORTS.get(importPath) ?? null;
+        imports.push({
+          file: relativePath(file),
+          importPath,
+          exportName,
+          publicExport,
+          allowedReason,
+        });
+      }
+    }
+  }
+  return imports;
+}
+
 const packageJson = readJson(join(ROOT, "package.json"));
 const packageLock = readJson(join(ROOT, "package-lock.json"));
+const reactPublicApi = readJson(REACT_PUBLIC_API_MANIFEST);
+const reactPublicExports = new Set(reactPublicApi.runtimeExports ?? []);
 const workspaces = packageJson.workspaces ?? [];
 const errors = [];
 const rows = [];
@@ -139,10 +206,25 @@ for (const check of PACKAGE_CHECKS) {
   });
 }
 
+const appLocalImports = findAppLocalImports(reactPublicExports);
+for (const row of appLocalImports) {
+  if (row.publicExport) {
+    errors.push(
+      `${row.file} imports ${row.importPath} locally, but ${row.exportName} is exported from @digitaltableteur/react; use the registry package instead.`,
+    );
+  }
+  if (!row.allowedReason) {
+    errors.push(
+      `${row.file} imports ${row.importPath}; app/provider @dt imports must be explicitly classified as non-package app/product/site surfaces.`,
+    );
+  }
+}
+
 const report = {
   generatedAt: new Date().toISOString(),
   status: errors.length ? "failed" : "passed",
   rows,
+  appLocalImports,
   errors,
 };
 
@@ -159,4 +241,9 @@ if (errors.length) {
 console.log(
   `✓ package registry resolution verified (${rows.map((row) => `${row.name}@${row.lockVersion}`).join(", ")})`,
 );
+if (appLocalImports.length) {
+  console.log(
+    `  App/provider @dt imports classified (${appLocalImports.length} non-package surface${appLocalImports.length === 1 ? "" : "s"})`,
+  );
+}
 console.log(`  Report: ${relativePath(OUT_JSON)}`);
