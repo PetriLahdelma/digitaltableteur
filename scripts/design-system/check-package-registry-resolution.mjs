@@ -43,7 +43,7 @@ const PACKAGE_CHECKS = [
   },
 ];
 
-const APP_LOCAL_IMPORT_ROOTS = ["app", "providers"];
+const APP_LOCAL_IMPORT_ROOTS = ["app", "providers", "lib", "components", "i18n"];
 const ALLOWED_APP_LOCAL_IMPORTS = new Map([
   [
     "@dt/EmailSignatureGenerator",
@@ -57,6 +57,94 @@ const ALLOWED_APP_LOCAL_IMPORTS = new Map([
     "alpha component, not yet a package export; migrate this import to @digitaltableteur/react when ToastStack reaches the published surface",
   ],
 ]);
+
+// Local shared-source imports of package-exported symbols. Each entry must
+// explain why the LOCAL module instance is required instead of the registry
+// package (the #1019 context split came from exactly this pattern going
+// unclassified). Keyed `file :: importPath`, both exact.
+const ALLOWED_LOCAL_SHARED_IMPORTS = new Map([
+  [
+    "providers/NextLinkProvider.tsx :: @/nextjs-app/shared/lib/linkComponent",
+    "dual-provides the LOCAL LinkProvider instance alongside the package one (#1019)",
+  ],
+  [
+    "providers/NextImageProvider.tsx :: @/nextjs-app/shared/lib/imageComponent",
+    "dual-provides the LOCAL ImageProvider instance alongside the package one (#1019)",
+  ],
+  [
+    "providers/NextNavigationProvider.tsx :: @/nextjs-app/shared/lib/navigation",
+    "dual-provides the LOCAL NavigationProvider instance alongside the package one (#1019)",
+  ],
+  [
+    "providers/AnimationProvider.tsx :: @/nextjs-app/shared/lib/animation",
+    "dual-provides the LOCAL AnimationRuntimeProvider instance alongside the package one (#1019)",
+  ],
+  [
+    "app/layout.tsx :: @/nextjs-app/shared/lib/cookieConsent",
+    "local shell (NextLayout -> CookieConsent) provides and consumes the LOCAL consent context end-to-end; the package instance is unused",
+  ],
+  [
+    "providers/ToastProvider.tsx :: ../nextjs-app/shared/lib/toast",
+    "toast runtime is LOCAL end-to-end (ToastStack + LanguageNotice read this instance); dual-provide if a package component ever calls useToast",
+  ],
+  [
+    "app/components/LanguageNotice/LanguageNotice.tsx :: @/nextjs-app/shared/lib/toast",
+    "reads the LOCAL toast instance mounted by providers/ToastProvider",
+  ],
+  [
+    "app/components/LanguageNotice/LanguageNotice.tsx :: @/nextjs-app/shared/lib/translation",
+    "translation runtime is globalThis-bridged; kept local to match the toast import in the same file",
+  ],
+  [
+    "providers/ThemeProvider.tsx :: ../nextjs-app/shared/components/ThemeProvider/ThemeProvider",
+    "theme runtime is globalThis-bridged; the local wrapper is the canonical mount",
+  ],
+  [
+    "providers/I18nProvider.tsx :: ../nextjs-app/shared/lib/translation",
+    "translation runtime is globalThis-bridged; the local provider is the canonical mount",
+  ],
+  [
+    "app/blog/[slug]/ServerArticleHero.tsx :: @/nextjs-app/shared/components/Container",
+    "React Server Component; the package dist is 'use client' so the local import keeps this subtree server-rendered",
+  ],
+  [
+    "app/blog/[slug]/ServerRelatedPosts.tsx :: @/nextjs-app/shared/components/Container",
+    "React Server Component; the package dist is 'use client' so the local import keeps this subtree server-rendered",
+  ],
+]);
+
+function installedReactExports() {
+  const distPath = join(
+    ROOT,
+    "node_modules/@digitaltableteur/react/dist/index.js",
+  );
+  const source = readFileSync(distPath, "utf8");
+  const blocks = [...source.matchAll(/export\s*\{([^}]*)\}/g)];
+  if (blocks.length === 0) {
+    throw new Error(
+      `no export block found in ${relativePath(distPath)}; cannot derive the installed export surface`,
+    );
+  }
+  const names = new Set();
+  for (const block of blocks) {
+    for (const entry of block[1].split(",")) {
+      const parts = entry.trim().split(/\s+as\s+/);
+      const publicName = (parts[1] ?? parts[0]).trim();
+      if (/^[A-Za-z_$][\w$]*$/.test(publicName)) names.add(publicName);
+    }
+  }
+  return names;
+}
+
+function namedSpecifiers(clause) {
+  if (!clause) return [];
+  const braced = clause.match(/\{([^}]*)\}/);
+  if (!braced) return [];
+  return braced[1]
+    .split(",")
+    .map((entry) => entry.trim().replace(/^type\s+/, "").split(/\s+as\s+/)[0].trim())
+    .filter((name) => /^[A-Za-z_$][\w$]*$/.test(name));
+}
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
@@ -97,7 +185,12 @@ function sourceFiles(root) {
       }
       return;
     }
-    if (/\.(?:ts|tsx|js|jsx|mjs|cjs)$/.test(path)) {
+    if (
+      /\.(?:ts|tsx|js|jsx|mjs|cjs)$/.test(path) &&
+      !/\.(?:test|spec|stories)\.|__tests__|__mocks__/.test(path)
+    ) {
+      // Test/story files mount whichever module instance the code under test
+      // reads; they are not part of the app runtime bundle.
       entries.push(path);
     }
   };
@@ -105,24 +198,69 @@ function sourceFiles(root) {
   return entries.sort((a, b) => a.localeCompare(b));
 }
 
+// Matches every module-specifier form that can pull local shared source into
+// the app bundle: static import/export-from (incl. `import type`), dynamic
+// import(), and bare side-effect import. The original guard only matched
+// `from "..."` and missed dynamic import() (the ChatWidget/next-dynamic class)
+// and `export ... from` re-export shims.
+const MODULE_SPECIFIER_RE =
+  /(?:import|export)\s+(?:type\s+)?([\w*$][\w*$]*|[\w*{},\s$]+?)\s+from\s+["']([^"']+)["']|import\s*\(\s*["']([^"']+)["']\s*\)|import\s+["']([^"']+)["']/g;
+
 function findAppLocalImports(publicExports) {
   const imports = [];
-  const importRe = /\bfrom\s+["'](@dt\/([^"']+))["']/g;
   for (const root of APP_LOCAL_IMPORT_ROOTS) {
     for (const file of sourceFiles(root)) {
       const source = readFileSync(file, "utf8");
-      for (const match of source.matchAll(importRe)) {
-        const importPath = match[1];
-        const exportName = match[2].split("/")[0];
-        const publicExport = publicExports.has(exportName);
-        const allowedReason = ALLOWED_APP_LOCAL_IMPORTS.get(importPath) ?? null;
-        imports.push({
-          file: relativePath(file),
-          importPath,
-          exportName,
-          publicExport,
-          allowedReason,
-        });
+      for (const match of source.matchAll(MODULE_SPECIFIER_RE)) {
+        const clause = match[1] ?? null;
+        const importPath = match[2] ?? match[3] ?? match[4];
+        const form = match[2] ? "static" : match[3] ? "dynamic" : "bare";
+        if (importPath.startsWith("@dt/")) {
+          const exportName = importPath.slice("@dt/".length).split("/")[0];
+          imports.push({
+            kind: "dt-alias",
+            form,
+            file: relativePath(file),
+            importPath,
+            exportName,
+            publicExport: publicExports.has(exportName),
+            allowedReason: ALLOWED_APP_LOCAL_IMPORTS.get(importPath) ?? null,
+          });
+          continue;
+        }
+        if (importPath.includes("nextjs-app/shared/")) {
+          // Package-exported symbols reached through local shared source
+          // create a second module instance (the #1019 context split).
+          const specifiers = namedSpecifiers(clause);
+          const pathTail = importPath.split("/").filter(Boolean);
+          const componentCandidate =
+            importPath.includes("/shared/components/") ||
+            importPath.includes("/shared/patterns/")
+              ? pathTail[pathTail.indexOf("shared") + 2]
+              : null;
+          const packageHits = new Set(
+            specifiers.filter((name) => publicExports.has(name)),
+          );
+          if (
+            specifiers.length === 0 &&
+            componentCandidate &&
+            publicExports.has(componentCandidate)
+          ) {
+            // default / dynamic / bare import of an exported component dir
+            packageHits.add(componentCandidate);
+          }
+          if (packageHits.size === 0) continue;
+          const allowKey = `${relativePath(file)} :: ${importPath}`;
+          imports.push({
+            kind: "local-shared",
+            form,
+            file: relativePath(file),
+            importPath,
+            exportName: [...packageHits].join(", "),
+            publicExport: true,
+            allowedReason: ALLOWED_LOCAL_SHARED_IMPORTS.get(allowKey) ?? null,
+          });
+        }
       }
     }
   }
@@ -132,7 +270,17 @@ function findAppLocalImports(publicExports) {
 const packageJson = readJson(join(ROOT, "package.json"));
 const packageLock = readJson(join(ROOT, "package-lock.json"));
 const reactPublicApi = readJson(REACT_PUBLIC_API_MANIFEST);
-const reactPublicExports = new Set(reactPublicApi.runtimeExports ?? []);
+const manifestExports = new Set(reactPublicApi.runtimeExports ?? []);
+// Validate app imports against what the INSTALLED package actually exports,
+// not the source-HEAD manifest: a symbol added to shared source but not yet
+// published must keep resolving locally until it ships.
+const reactPublicExports = installedReactExports();
+const manifestOnlyExports = [...manifestExports].filter(
+  (name) => !reactPublicExports.has(name),
+);
+const installedOnlyExports = [...reactPublicExports].filter(
+  (name) => !manifestExports.has(name),
+);
 const workspaces = packageJson.workspaces ?? [];
 const errors = [];
 const rows = [];
@@ -212,14 +360,22 @@ for (const check of PACKAGE_CHECKS) {
 
 const appLocalImports = findAppLocalImports(reactPublicExports);
 for (const row of appLocalImports) {
-  if (row.publicExport) {
-    errors.push(
-      `${row.file} imports ${row.importPath} locally, but ${row.exportName} is exported from @digitaltableteur/react; use the registry package instead.`,
-    );
+  if (row.kind === "dt-alias") {
+    if (row.publicExport) {
+      errors.push(
+        `${row.file} imports ${row.importPath} locally (${row.form}), but ${row.exportName} is exported from the installed @digitaltableteur/react; use the registry package instead.`,
+      );
+    }
+    if (!row.allowedReason) {
+      errors.push(
+        `${row.file} imports ${row.importPath} (${row.form}); app @dt imports must be explicitly classified as non-package app/product/site surfaces.`,
+      );
+    }
+    continue;
   }
   if (!row.allowedReason) {
     errors.push(
-      `${row.file} imports ${row.importPath}; app/provider @dt imports must be explicitly classified as non-package app/product/site surfaces.`,
+      `${row.file} imports ${row.exportName} from ${row.importPath} (${row.form}); these symbols are exported from the installed @digitaltableteur/react — import from the registry package, or classify the local-instance requirement in ALLOWED_LOCAL_SHARED_IMPORTS.`,
     );
   }
 }
@@ -229,6 +385,10 @@ const report = {
   status: errors.length ? "failed" : "passed",
   rows,
   appLocalImports,
+  exportDrift: {
+    manifestOnly: manifestOnlyExports,
+    installedOnly: installedOnlyExports,
+  },
   errors,
 };
 
@@ -247,7 +407,17 @@ console.log(
 );
 if (appLocalImports.length) {
   console.log(
-    `  App/provider @dt imports classified (${appLocalImports.length} non-package surface${appLocalImports.length === 1 ? "" : "s"})`,
+    `  App-local imports of package territory classified (${appLocalImports.length})`,
+  );
+}
+if (manifestOnlyExports.length) {
+  console.log(
+    `  ⓘ ${manifestOnlyExports.length} manifest export(s) not yet in the installed package (pending publish): ${manifestOnlyExports.join(", ")}`,
+  );
+}
+if (installedOnlyExports.length) {
+  console.log(
+    `  ⓘ ${installedOnlyExports.length} installed export(s) missing from the source manifest: ${installedOnlyExports.join(", ")}`,
   );
 }
 console.log(`  Report: ${relativePath(OUT_JSON)}`);

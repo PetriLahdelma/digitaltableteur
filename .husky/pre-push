@@ -1,6 +1,11 @@
 #!/usr/bin/env sh
 . "$(dirname "$0")/_/husky.sh"
 changed=$(git diff --name-only HEAD @{push} 2>/dev/null || git diff --name-only --cached)
+# Registry dogfood gate: app-side imports of package territory must resolve
+# from the npm registry (two-module-instance context splits, #1019).
+if echo "$changed" | grep -qE '^(app|providers|lib|components|i18n)/|^package(-lock)?\.json$|^packages/|check-package-registry-resolution'; then
+  npm run check:package-registry-resolution
+fi
 echo "$changed" | grep -qE 'nextjs-app/shared/(components|patterns|foundations)|scripts/design-system' || exit 0
 # Contract gate: keep the local gate a superset of the farm's validate job for
 # contract-touching changes (2026-07-03 incident: ten red farm runs because
