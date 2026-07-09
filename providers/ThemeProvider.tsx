@@ -4,15 +4,15 @@ import {
   ThemeProvider,
   useTheme,
   type Theme,
-} from "@digitaltableteur/react";
+} from "../nextjs-app/shared/components/ThemeProvider/ThemeProvider";
 
 /**
- * App compatibility wrapper around the package theme runtime.
+ * App compatibility wrapper around the shared theme runtime.
  *
- * The previous next-themes wrapper rendered a client-side script tag and split
- * the app theme context from the package context. The design-system provider
- * already handles stored/system theme state and applies the expected html/body
- * classes, so the app should inject that package runtime directly.
+ * This mounts the source provider until the next @digitaltableteur/react patch
+ * containing the theme bridge is published. Local app components still import
+ * the source hook, so using the currently published package provider here would
+ * split the context and make the site header theme toggle inert.
  */
 export function NextThemeProvider({
   children,

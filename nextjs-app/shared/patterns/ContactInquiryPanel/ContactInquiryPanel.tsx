@@ -10,7 +10,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { useTranslate } from "../../lib/translation";
+import { useLocalization } from "../../lib/translation";
 import Button from "@dt/Button";
 import DonnyBookingEmbed from "@dt/DonnyBookingEmbed";
 import Progress from "@dt/Progress";
@@ -47,7 +47,12 @@ export const ContactInquiryPanel = forwardRef<
   { initialMode = "message", packageId, messagePanel, bookingConfig },
   ref,
 ) {
-  const t = useTranslate();
+  const {
+    translate: t,
+    language,
+    resolvedLanguage,
+  } = useLocalization();
+  const activeLanguage = resolvedLanguage || language;
   const [mode, setMode] = useState<ContactInquiryMode>(initialMode);
 
   useEffect(() => {
@@ -73,7 +78,7 @@ export const ContactInquiryPanel = forwardRef<
         />
       </div>
     ),
-    [t],
+    [activeLanguage, t],
   );
 
   const tabs = useMemo<TabItem[]>(
@@ -87,7 +92,7 @@ export const ContactInquiryPanel = forwardRef<
         label: t("contactInquiryBookTab", "Book a call"),
       },
     ],
-    [t],
+    [activeLanguage, t],
   );
 
   const handleSelectMessage = useCallback(() => {
@@ -129,8 +134,8 @@ export const ContactInquiryPanel = forwardRef<
           activeTab={mode}
           onTabChange={handleModeChange}
           ariaLabel={t("contactInquiryModeLabel", "Contact options")}
-          variant="pills"
-          size="lg"
+          variant="underline"
+          size="sm"
           className={styles.modeTabs}
         />
         <span className={styles.newBadge} aria-hidden="true">

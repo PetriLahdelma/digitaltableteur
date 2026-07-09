@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, act } from "@testing-library/react";
+import { render, screen, act, waitFor } from "@testing-library/react";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { ThemeProvider, useTheme } from "@dt/ThemeProvider";
 
@@ -44,6 +44,11 @@ const TestComponent = () => {
       </button>
     </div>
   );
+};
+
+const ExternalBridgeThemeProbe = () => {
+  const { theme } = useTheme();
+  return <span data-testid="bridge-theme">{theme}</span>;
 };
 
 describe("ThemeProvider", () => {
@@ -201,5 +206,29 @@ describe("ThemeProvider", () => {
     const invalidButton = screen.getByTestId("set-invalid");
     act(() => invalidButton.click());
     expect(screen.getByTestId("current-theme")).toHaveTextContent("light");
+  });
+
+  it("bridges theme updates to consumers outside the provider tree", async () => {
+    const provider = render(
+      <ThemeProvider forcedTheme="dark">
+        <span />
+      </ThemeProvider>,
+    );
+
+    render(<ExternalBridgeThemeProbe />);
+
+    await waitFor(() => {
+      expect(screen.getByTestId("bridge-theme")).toHaveTextContent("dark");
+    });
+
+    provider.rerender(
+      <ThemeProvider forcedTheme="hcb">
+        <span />
+      </ThemeProvider>,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId("bridge-theme")).toHaveTextContent("hcb");
+    });
   });
 });

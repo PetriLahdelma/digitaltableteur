@@ -126,4 +126,36 @@ describe("translation", () => {
       );
     });
   });
+
+  it("re-renders translate consumers when only the language changes", async () => {
+    let label = "English label";
+    const translate: Translate = () => label;
+
+    const view = render(
+      <TranslationProvider
+        translate={translate}
+        language="en"
+        resolvedLanguage="en"
+      >
+        <TranslationProbe />
+      </TranslationProvider>,
+    );
+
+    expect(screen.getByText("English label")).toBeInTheDocument();
+
+    label = "Suomi label";
+    view.rerender(
+      <TranslationProvider
+        translate={translate}
+        language="fi"
+        resolvedLanguage="fi"
+      >
+        <TranslationProbe />
+      </TranslationProvider>,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText("Suomi label")).toBeInTheDocument();
+    });
+  });
 });

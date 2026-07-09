@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  useCallback,
   createContext,
   useEffect,
   useContext,
@@ -156,15 +157,26 @@ export function TranslationProvider({
   changeLanguage?: TranslationRuntime["changeLanguage"];
   getResourceBundle?: TranslationRuntime["getResourceBundle"];
 }) {
+  const runtimeTranslate = useCallback<Translate>(
+    (key, fallbackOrOptions, options) =>
+      translate(key, fallbackOrOptions, options),
+    [language, resolvedLanguage, translate],
+  );
   const runtime = useMemo<TranslationRuntime>(
     () => ({
-      translate,
+      translate: runtimeTranslate,
       language,
       resolvedLanguage,
       changeLanguage: changeLanguage ?? (() => undefined),
       getResourceBundle: getResourceBundle ?? (() => undefined),
     }),
-    [changeLanguage, getResourceBundle, language, resolvedLanguage, translate],
+    [
+      changeLanguage,
+      getResourceBundle,
+      language,
+      resolvedLanguage,
+      runtimeTranslate,
+    ],
   );
   const previousBridgeRuntimeRef = useRef<TranslationRuntime | null | undefined>(
     undefined,
@@ -195,7 +207,7 @@ export function TranslationProvider({
 
   return (
     <TranslationRuntimeContext.Provider value={runtime}>
-      <TranslationContext.Provider value={translate}>
+      <TranslationContext.Provider value={runtimeTranslate}>
         {children}
       </TranslationContext.Provider>
     </TranslationRuntimeContext.Provider>
@@ -203,14 +215,7 @@ export function TranslationProvider({
 }
 
 export function useTranslate(): Translate {
-  const translate = useContext(TranslationContext);
-  const bridgedRuntime = useSyncExternalStore(
-    subscribeTranslationBridge,
-    getTranslationBridgeSnapshot,
-    getTranslationBridgeSnapshot,
-  );
-
-  return translate ?? bridgedRuntime.translate;
+  return useLocalization().translate;
 }
 
 export function useLocalization(): TranslationRuntime {
