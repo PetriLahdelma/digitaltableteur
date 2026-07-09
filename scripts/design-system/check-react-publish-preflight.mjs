@@ -44,6 +44,11 @@ const automatedChecks = [
     reason: "Vite dependency scan and static Storybook bundle still compile",
   },
   {
+    name: "storybook-registry-package",
+    command: ["run", "check:storybook-registry-package"],
+    reason: "Storybook compiles a registry-package smoke story and does not alias @digitaltableteur/* to local package sources",
+  },
+  {
     name: "build",
     command: ["run", "build"],
     reason: "Next production build still compiles and renders route data",
