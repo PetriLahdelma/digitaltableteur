@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { gsap } from "gsap";
 import styles from "./Modal.module.css";
 import Button from "@dt/Button";
+import Spinner from "@dt/Spinner";
 import Title from "@dt/Title";
 import { getSemanticIcon } from "../../utils/semanticIcons";
 import Icon, { type IconProps } from "@dt/Icon";
@@ -253,9 +254,7 @@ const Modal: React.FC<ModalProps> = ({
           </div>
         )}
         <div className={styles.content}>
-          {isLoading && (
-            <div className={styles.spinner} aria-hidden="true" />
-          )}
+          {isLoading && <Spinner size="lg" />}
           {description && (
             <p id={descriptionId} className={styles.description}>
               {description}

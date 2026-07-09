@@ -530,7 +530,7 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/patterns/ContentSection/ContentSection.tsx": {
-      "rawElements": 1,
+      "rawElements": 0,
       "utilityLines": 14
     },
     "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx": {
@@ -586,7 +586,7 @@
       "utilityLines": 5
     },
     "nextjs-app/shared/patterns/RelatedProjects/RelatedProjects.tsx": {
-      "rawElements": 3,
+      "rawElements": 0,
       "utilityLines": 4
     },
     "nextjs-app/shared/patterns/ServicesSection/ServicesSection.tsx": {
@@ -606,7 +606,7 @@
       "utilityLines": 14
     },
     "nextjs-app/shared/patterns/StatsSection/StatsSection.tsx": {
-      "rawElements": 2,
+      "rawElements": 1,
       "utilityLines": 4
     },
     "nextjs-app/shared/patterns/ValuesSection/ValuesSection.tsx": {

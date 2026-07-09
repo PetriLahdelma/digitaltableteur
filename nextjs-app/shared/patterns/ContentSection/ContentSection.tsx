@@ -5,6 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
+import Title from "../../components/Title";
 import { FadeIn } from "../../components/animations/FadeIn";
 
 export interface ContentImage {
@@ -88,9 +89,13 @@ export function ContentSection({
 
           {/* Title */}
           <FadeIn direction="up" delay={0.1} distance={20}>
-            <h2 className="font-display font-bold text-2xl tablet:text-3xl desktop:text-4xl text-foreground leading-tight">
+            <Title
+              level={2}
+              unstyled
+              className="font-display font-bold text-2xl tablet:text-3xl desktop:text-4xl text-foreground leading-tight"
+            >
               {title}
-            </h2>
+            </Title>
           </FadeIn>
 
           {/* Content */}

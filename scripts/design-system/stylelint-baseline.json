@@ -1416,9 +1416,9 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/Modal/Modal.module.css::232::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "id": "nextjs-app/shared/components/Modal/Modal.module.css::212::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
       "file": "nextjs-app/shared/components/Modal/Modal.module.css",
-      "line": 232,
+      "line": 212,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",

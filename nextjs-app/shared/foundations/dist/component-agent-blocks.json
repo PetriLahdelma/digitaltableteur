@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T16:16:15.779Z",
+  "generatedAt": "2026-07-09T22:05:35.555Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -8231,11 +8231,11 @@
         "bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "Modal",
         "Button",
+        "Icon",
+        "Modal",
         "Text",
-        "TextInput",
-        "Icon"
+        "TextInput"
       ],
       "prefersOver": [],
       "declaredPropCount": 3

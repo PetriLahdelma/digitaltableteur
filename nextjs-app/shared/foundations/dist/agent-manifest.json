@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-09T20:13:58.357Z",
+  "generatedAt": "2026-07-09T22:05:35.935Z",
   "summary": {
     "componentCount": 161,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 150,
     "withProductionUsage": 46,
     "uniqueImportedComponents": 150,
-    "totalEvidenceRows": 846,
-    "aliasImportFiles": 470,
-    "relativeImportFiles": 384,
+    "totalEvidenceRows": 850,
+    "aliasImportFiles": 471,
+    "relativeImportFiles": 387,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -26593,10 +26593,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Spinner",
-        "importCount": 3,
+        "importCount": 4,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 3,
+        "componentImportCount": 4,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/AppLoading/AppLoading.tsx",
@@ -26608,6 +26608,12 @@
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
             "importPath": "./Spinner",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Modal/Modal.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Spinner",
             "context": "component"
           },
           {
@@ -26678,11 +26684,11 @@
           "bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "Modal",
           "Button",
+          "Icon",
+          "Modal",
           "Text",
-          "TextInput",
-          "Icon"
+          "TextInput"
         ],
         "prefersOver": [],
         "declaredPropCount": 3
@@ -30485,9 +30491,9 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 57,
+        "importCount": 60,
         "productionImportCount": 24,
-        "patternImportCount": 9,
+        "patternImportCount": 12,
         "componentImportCount": 15,
         "evidence": [
           {
