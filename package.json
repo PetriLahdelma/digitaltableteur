@@ -89,6 +89,7 @@
     "validate:components": "tsx scripts/design-system/validate-components.ts",
     "validate:agent-docs": "node scripts/validate-agent-docs.mjs",
     "report:doc-coverage": "node scripts/design-system/report-doc-coverage.mjs",
+    "report:component-usage": "node scripts/design-system/report-component-usage.mjs",
     "audit:catalog": "node scripts/design-system/audit-catalog-coverage.mjs",
     "audit:controls": "node scripts/design-system/audit-controls.mjs",
     "audit:snapshot-debt": "node scripts/design-system/audit-snapshot-debt.mjs",
