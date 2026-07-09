@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-09T22:06:32.727Z",
+  "createdAt": "2026-07-09T23:09:42.284Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -2571,6 +2571,26 @@
       "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
       "value": "0.5rem"
+    },
+    {
+      "column": 21,
+      "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/FilterChip/FilterChip.module.css\u001f66\u001f21\u001f-1px\u001fUnexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 66,
+      "rule": "rhythmguard/use-scale",
+      "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "type": "off-scale",
+      "value": "-1px"
+    },
+    {
+      "column": 21,
+      "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/FilterChip/FilterChip.module.css\u001f66\u001f21\u001f-1px\u001fUnexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 66,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "-1px"
     },
     {
       "column": 8,
@@ -7396,6 +7416,6 @@
   "formatVersion": 1,
   "summary": {
     "scaleCleanliness": 92,
-    "totalFindings": 739
+    "totalFindings": 741
   }
 }

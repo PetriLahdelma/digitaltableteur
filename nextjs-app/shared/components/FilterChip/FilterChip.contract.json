@@ -1,0 +1,82 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "FilterChip",
+    "tier": "atom",
+    "group": "controls",
+    "status": "alpha",
+    "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "button",
+    "variants": {
+        "variant": {
+            "values": [
+                "pill",
+                "underline",
+                "minimal"
+            ],
+            "default": "pill"
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [
+        "children"
+    ],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Enter",
+            "Space"
+        ],
+        "ariaRequirements": [
+            "aria-pressed reflects the pressed prop (toggle button, not tab)",
+            "parents wrap chips in a labelled role=group"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-muted",
+            "--color-text",
+            "--color-border",
+            "--focus-ring-color"
+        ],
+        "spacing": [
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24"
+        ]
+    },
+    "lightDarkVerified": false,
+    "schemaVersion": 2,
+    "displayName": "FilterChip",
+    "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
+    "keywords": [
+        "filter",
+        "chip",
+        "toggle",
+        "category",
+        "tag",
+        "pressed"
+    ],
+    "consumers": []
+}

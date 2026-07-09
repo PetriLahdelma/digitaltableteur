@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T22:38:45.950Z",
+  "generatedAt": "2026-07-09T23:04:19.514Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -3807,6 +3807,100 @@
       ],
       "prefersOver": [],
       "declaredPropCount": 15
+    },
+    "FilterChip": {
+      "preferredImport": "@dt/FilterChip",
+      "intent": "One toggle-chip implementation for single-select filters. CategoryFilter and BlogCategoryFilter each hand-rolled the same aria-pressed button in three visual treatments; FilterChip collapses the six copies into one cont…",
+      "props": {
+        "pressed": {
+          "optional": false,
+          "type": "boolean"
+        },
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode"
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "underline",
+            "minimal",
+            "pill"
+          ]
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "count": {
+          "optional": true,
+          "type": "number"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "variants": {
+        "variant": {
+          "values": [
+            "underline",
+            "minimal",
+            "pill"
+          ],
+          "default": "underline"
+        },
+        "size": {
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "sm"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "keep exactly one chip pressed per group (single-select filters).",
+        "pass counts via the count prop so the \"(n)\" suffix stays in the accessible name."
+      ],
+      "avoidWhen": [
+        "use for navigation between panels (that is Tabs).",
+        "nest interactive content inside the label."
+      ],
+      "requiredA11y": [
+        "aria-pressed reflects the pressed prop (toggle button, not tab)",
+        "parents wrap chips in a labelled role=group"
+      ],
+      "keyboard": [
+        "Tab",
+        "Enter",
+        "Space"
+      ],
+      "compositionRules": [
+        "nest interactive content inside the label."
+      ],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "use for navigation between panels (that is Tabs).",
+        "nest interactive content inside the label."
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 6
     },
     "FlexBox": {
       "preferredImport": "@dt/FlexBox",
@@ -8041,6 +8135,14 @@
           "optional": false,
           "type": "React.ReactNode"
         },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "plain",
+            "chip"
+          ]
+        },
         "size": {
           "optional": true,
           "type": "union",
@@ -8060,6 +8162,13 @@
         }
       },
       "variants": {
+        "variant": {
+          "values": [
+            "plain",
+            "chip"
+          ],
+          "default": "plain"
+        },
         "size": {
           "values": [
             "sm",
@@ -8101,9 +8210,14 @@
         "put text children inside — this is icon-only; use Link for labeled links.",
         "disable `external` for social profiles; same-tab is for internal routes only."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Container",
+        "Stack",
+        "Link",
+        "Divider"
+      ],
       "prefersOver": [],
-      "declaredPropCount": 6
+      "declaredPropCount": 7
     },
     "SocialShare": {
       "preferredImport": "@dt/SocialShare",
