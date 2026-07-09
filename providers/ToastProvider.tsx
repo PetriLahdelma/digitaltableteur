@@ -1,11 +1,18 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import {
   Toast,
   type ToastTone,
   type ToastPosition,
 } from "@digitaltableteur/react";
+import { ToastRuntimeProvider } from "../nextjs-app/shared/lib/toast";
 
 export interface ShowToastOptions {
   duration?: number;
@@ -56,17 +63,21 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsOpen(false);
   }, []);
 
+  const toastRuntime = useMemo(() => ({ showToast }), [showToast]);
+
   return (
-    <ToastContext.Provider value={{ showToast }}>
-      {children}
-      <Toast
-        message={message}
-        open={isOpen}
-        duration={duration}
-        tone={tone}
-        position={position}
-        onClose={handleClose}
-      />
+    <ToastContext.Provider value={toastRuntime}>
+      <ToastRuntimeProvider value={toastRuntime}>
+        {children}
+        <Toast
+          message={message}
+          open={isOpen}
+          duration={duration}
+          tone={tone}
+          position={position}
+          onClose={handleClose}
+        />
+      </ToastRuntimeProvider>
     </ToastContext.Provider>
   );
 };

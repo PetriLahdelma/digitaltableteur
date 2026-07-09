@@ -15,13 +15,14 @@
 
 .modeTabs {
   width: 100%;
-  border-radius: var(--radius-full);
-  background: var(--color-surface-muted);
 }
 
 .modeTabs > button {
   min-block-size: 2.75rem;
   flex: 1 1 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-button-s);
+  font-weight: var(--font-weight-medium);
 }
 
 .newBadge {

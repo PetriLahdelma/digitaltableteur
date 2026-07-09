@@ -5,7 +5,9 @@ import React, {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
+  useSyncExternalStore,
 } from "react";
 
 export type Theme = "light" | "dark" | "hcb" | "hcw";
@@ -175,16 +177,70 @@ interface ThemeContextProps {
   resetToSystemPreference: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextProps>({
+const defaultThemeContext: ThemeContextProps = {
   theme: "light",
   toggleTheme: () => {},
   setTheme: () => {},
   systemPreference: "light",
   isExplicitChoice: false,
   resetToSystemPreference: () => {},
-});
+};
 
-export const useTheme = () => useContext(ThemeContext);
+const ThemeContext = createContext<ThemeContextProps | null>(null);
+
+const BRIDGE_KEY = "__digitaltableteurThemeRuntime";
+
+type ThemeBridge = {
+  runtime: ThemeContextProps | null;
+  version: number;
+  listeners: Set<() => void>;
+};
+
+function getThemeBridge(): ThemeBridge | null {
+  if (typeof globalThis === "undefined") return null;
+
+  const globalStore = globalThis as typeof globalThis & {
+    [BRIDGE_KEY]?: Partial<ThemeBridge>;
+  };
+
+  globalStore[BRIDGE_KEY] ??= {};
+  const bridge = globalStore[BRIDGE_KEY];
+  bridge.runtime ??= null;
+  bridge.version ??= 0;
+  bridge.listeners ??= new Set<() => void>();
+
+  return bridge as ThemeBridge;
+}
+
+function getBridgedThemeRuntime(): ThemeContextProps {
+  return getThemeBridge()?.runtime ?? defaultThemeContext;
+}
+
+function notifyThemeBridge(bridge: ThemeBridge): void {
+  bridge.version += 1;
+  bridge.listeners.forEach((listener) => listener());
+}
+
+function subscribeThemeBridge(listener: () => void): () => void {
+  const bridge = getThemeBridge();
+  if (!bridge) return () => undefined;
+
+  bridge.listeners.add(listener);
+  return () => {
+    bridge.listeners.delete(listener);
+  };
+}
+
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  const bridgedRuntime = useSyncExternalStore(
+    subscribeThemeBridge,
+    getBridgedThemeRuntime,
+    getBridgedThemeRuntime,
+  );
+
+  return context ?? bridgedRuntime;
+};
 
 /**
  * ThemeProvider component.
@@ -298,6 +354,32 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       resetToSystemPreference,
     ]
   );
+  const previousBridgeRuntimeRef = useRef<
+    ThemeContextProps | null | undefined
+  >(undefined);
+
+  const bridge = getThemeBridge();
+  if (bridge) {
+    if (previousBridgeRuntimeRef.current === undefined) {
+      previousBridgeRuntimeRef.current = bridge.runtime;
+    }
+    bridge.runtime = contextValue;
+  }
+
+  useEffect(() => {
+    const activeBridge = getThemeBridge();
+    if (activeBridge) {
+      activeBridge.runtime = contextValue;
+      notifyThemeBridge(activeBridge);
+    }
+
+    return () => {
+      if (activeBridge?.runtime === contextValue) {
+        activeBridge.runtime = previousBridgeRuntimeRef.current ?? null;
+        notifyThemeBridge(activeBridge);
+      }
+    };
+  }, [contextValue]);
 
   return (
     <ThemeContext.Provider value={contextValue}>
