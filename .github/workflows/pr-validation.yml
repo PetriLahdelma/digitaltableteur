@@ -39,6 +39,7 @@ jobs:
       - run: npm run check:token-descriptions
       - run: npm run validate:components
       - run: npm run check:package-registry-resolution
+      - run: npm run check:dogfood-ratchet
       - run: npm run check:consumers
       - run: npm run validate:agent-docs
       - run: npm run validate:translations
