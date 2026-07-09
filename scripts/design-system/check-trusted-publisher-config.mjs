@@ -416,8 +416,9 @@ git add --pathspec-from-file=${report.publishPathspecPath}
 ~~~
 
 Do not stage token-bearing \`.npm-userconfig\` values, generated \`.omx/state\`
-files, or unrelated local work as part of the publish transport commit. The
-tracked \`.npm-userconfig\` must remain non-secret.
+files, or unrelated local work as part of the publish transport commit.
+\`.npm-userconfig\` is untracked and gitignored on purpose (it may hold a live
+read token); copy \`.npm-userconfig.example\` to recreate it locally.
 
 ## Dirty paths outside publish scope
 

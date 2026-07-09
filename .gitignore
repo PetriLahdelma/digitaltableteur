@@ -101,3 +101,7 @@ public/visual-diff/report.json
 
 # Personal / tax documents — never commit
 **/Verokortti*.pdf
+
+# Project-local npm userconfig (.npmrc redirects userconfig here) — may hold a
+# live read token for private @digitaltableteur installs; never track it.
+.npm-userconfig
