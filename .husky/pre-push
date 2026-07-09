@@ -6,6 +6,11 @@ changed=$(git diff --name-only HEAD @{push} 2>/dev/null || git diff --name-only 
 if echo "$changed" | grep -qE '^(app|providers|lib|components|i18n)/|^package(-lock)?\.json$|^packages/|check-package-registry-resolution'; then
   npm run check:package-registry-resolution
 fi
+# Dogfood ratchet: raw HTML / Tailwind debt can only decrease
+# (docs/design-system/dogfooding-plan.md Phase 0).
+if echo "$changed" | grep -qE '^app/|^nextjs-app/shared/(patterns|components)/|dogfood-ratchet'; then
+  npm run check:dogfood-ratchet
+fi
 echo "$changed" | grep -qE 'nextjs-app/shared/(components|patterns|foundations)|scripts/design-system' || exit 0
 # Contract gate: keep the local gate a superset of the farm's validate job for
 # contract-touching changes (2026-07-03 incident: ten red farm runs because

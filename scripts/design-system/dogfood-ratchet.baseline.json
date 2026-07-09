@@ -1,0 +1,629 @@
+{
+  "note": "Per-file dogfood debt. Counts may only decrease; tighten with npm run check:dogfood-ratchet -- --update. See docs/design-system/dogfooding-plan.md.",
+  "files": {
+    "app/blog/DraftPreviewBanner.tsx": {
+      "rawElements": 1,
+      "utilityLines": 4
+    },
+    "app/blog/[slug]/ServerArticleContent.tsx": {
+      "rawElements": 0,
+      "utilityLines": 2
+    },
+    "app/blog/[slug]/ServerArticleHero.tsx": {
+      "rawElements": 1,
+      "utilityLines": 11
+    },
+    "app/blog/[slug]/ServerArticleMain.tsx": {
+      "rawElements": 0,
+      "utilityLines": 5
+    },
+    "app/blog/[slug]/ServerRelatedPosts.tsx": {
+      "rawElements": 2,
+      "utilityLines": 6
+    },
+    "app/blog/page.tsx": {
+      "rawElements": 3,
+      "utilityLines": 0
+    },
+    "app/design-system/agent/page.tsx": {
+      "rawElements": 11,
+      "utilityLines": 20
+    },
+    "app/error.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "app/global-error.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "app/pricing/page.tsx": {
+      "rawElements": 0,
+      "utilityLines": 4
+    },
+    "app/work/new-things-co/page.tsx": {
+      "rawElements": 0,
+      "utilityLines": 3
+    },
+    "nextjs-app/shared/components/Accordion/Accordion.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ArticleCard/ArticleCard.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ArticleContent/ArticleContent.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/ArticleShareSection/ArticleShareSection.tsx": {
+      "rawElements": 5,
+      "utilityLines": 11
+    },
+    "nextjs-app/shared/components/AskAI/AskAI.tsx": {
+      "rawElements": 6,
+      "utilityLines": 2
+    },
+    "nextjs-app/shared/components/AspectRatio/AspectRatio.tsx": {
+      "rawElements": 0,
+      "utilityLines": 2
+    },
+    "nextjs-app/shared/components/Author/Author.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Avatar/Avatar.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Badge/Badge.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/BlogCategoryFilter/BlogCategoryFilter.tsx": {
+      "rawElements": 3,
+      "utilityLines": 22
+    },
+    "nextjs-app/shared/components/BlogGrid/BlogGrid.tsx": {
+      "rawElements": 0,
+      "utilityLines": 5
+    },
+    "nextjs-app/shared/components/BlogMediaImage/BlogMediaImage.tsx": {
+      "rawElements": 2,
+      "utilityLines": 2
+    },
+    "nextjs-app/shared/components/Breadcrumb/Breadcrumb.tsx": {
+      "rawElements": 3,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Button/Button.tsx": {
+      "rawElements": 5,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/Card/Card.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/CategoryFilter/CategoryFilter.tsx": {
+      "rawElements": 3,
+      "utilityLines": 22
+    },
+    "nextjs-app/shared/components/Center/Center.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/ChatWidget/ChatComposer.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ChatWidget/ChatMessageBubble.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ChatWidget/ChatTextArea.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ChatWidget/ChatToolResultSection.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Checkbox/Checkbox.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ChunkErrorBoundary/ChunkErrorBoundary.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ClientLogoMarquee/ClientLogoMarquee.tsx": {
+      "rawElements": 2,
+      "utilityLines": 7
+    },
+    "nextjs-app/shared/components/Combobox/Combobox.tsx": {
+      "rawElements": 4,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/CommandPalette/CommandPalette.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ContactForm/ContactForm.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ContactFormSuccess/ContactFormSuccess.tsx": {
+      "rawElements": 1,
+      "utilityLines": 11
+    },
+    "nextjs-app/shared/components/ContactFormSuccessEditorial/ContactFormSuccessEditorial.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/DashLeadList/DashLeadList.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Designerman/Designerman.tsx": {
+      "rawElements": 1,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/Display/Display.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.tsx": {
+      "rawElements": 44,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.tsx": {
+      "rawElements": 2,
+      "utilityLines": 31
+    },
+    "nextjs-app/shared/components/EnhancedAuthorCard/EnhancedAuthorCard.tsx": {
+      "rawElements": 1,
+      "utilityLines": 27
+    },
+    "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ExpandableSection/ExpandableSection.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/FileUpload/FileUpload.tsx": {
+      "rawElements": 4,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/FinnishTransportAgency/ColorPalette.tsx": {
+      "rawElements": 4,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Gallery/Gallery.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/HeroBackground/HeroBackground.tsx": {
+      "rawElements": 0,
+      "utilityLines": 12
+    },
+    "nextjs-app/shared/components/Icon/Icon.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.tsx": {
+      "rawElements": 2,
+      "utilityLines": 4
+    },
+    "nextjs-app/shared/components/Lightbox/Lightbox.tsx": {
+      "rawElements": 4,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Link/Link.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/LinkedInQuoteCard/LinkedInQuoteCard.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/LocationCard/LocationCard.tsx": {
+      "rawElements": 3,
+      "utilityLines": 16
+    },
+    "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.tsx": {
+      "rawElements": 5,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/MdxImage/MdxImage.tsx": {
+      "rawElements": 1,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/Menu/Menu.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Modal/Modal.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/MultiCombobox/MultiCombobox.tsx": {
+      "rawElements": 4,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/NavLink/NavLink.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/NavMenuList/NavMenuList.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/OpenHours/OpenHours.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Pagination/Pagination.tsx": {
+      "rawElements": 3,
+      "utilityLines": 24
+    },
+    "nextjs-app/shared/components/PersonCard/PersonCard.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ProjectCard/ProjectCard.tsx": {
+      "rawElements": 2,
+      "utilityLines": 19
+    },
+    "nextjs-app/shared/components/ProjectGallery/ProjectGallery.tsx": {
+      "rawElements": 1,
+      "utilityLines": 8
+    },
+    "nextjs-app/shared/components/ProjectNav/ProjectNav.tsx": {
+      "rawElements": 0,
+      "utilityLines": 23
+    },
+    "nextjs-app/shared/components/Prose/Prose.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/Radio/Radio.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ScrollIndicator/ScrollIndicator.tsx": {
+      "rawElements": 1,
+      "utilityLines": 6
+    },
+    "nextjs-app/shared/components/Section/Section.tsx": {
+      "rawElements": 0,
+      "utilityLines": 7
+    },
+    "nextjs-app/shared/components/SegmentedControl/SegmentedControl.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Select/Select.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/SelectableCard/SelectableCard.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/SentrySummaryCard/SentrySummaryCard.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ServiceCard/ServiceCard.tsx": {
+      "rawElements": 1,
+      "utilityLines": 12
+    },
+    "nextjs-app/shared/components/SiteTree/SiteTree.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/SkillsGrid/SkillsGrid.tsx": {
+      "rawElements": 1,
+      "utilityLines": 13
+    },
+    "nextjs-app/shared/components/SkipLink/SkipLink.tsx": {
+      "rawElements": 1,
+      "utilityLines": 2
+    },
+    "nextjs-app/shared/components/SocialShare/SocialShare.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/StudioMap/StudioMap.tsx": {
+      "rawElements": 1,
+      "utilityLines": 10
+    },
+    "nextjs-app/shared/components/Switch/Switch.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/TableOfContents/TableOfContents.tsx": {
+      "rawElements": 4,
+      "utilityLines": 12
+    },
+    "nextjs-app/shared/components/Tabs/Tabs.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Testimonial/Testimonial.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/TextArea/TextArea.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/TextInput/TextInput.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/TransformingActionInput/TransformingActionInput.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/ValueCard/ValueCard.tsx": {
+      "rawElements": 1,
+      "utilityLines": 14
+    },
+    "nextjs-app/shared/components/WorkGrid/WorkGrid.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/animations/KineticTitle/KineticTitle.tsx": {
+      "rawElements": 0,
+      "utilityLines": 2
+    },
+    "nextjs-app/shared/components/animations/Parallax/Parallax.tsx": {
+      "rawElements": 0,
+      "utilityLines": 2
+    },
+    "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx": {
+      "rawElements": 8,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx": {
+      "rawElements": 10,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx": {
+      "rawElements": 4,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyPage.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/Home/HomePage.tsx": {
+      "rawElements": 0,
+      "utilityLines": 4
+    },
+    "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx": {
+      "rawElements": 10,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx": {
+      "rawElements": 3,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx": {
+      "rawElements": 1,
+      "utilityLines": 3
+    },
+    "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx": {
+      "rawElements": 0,
+      "utilityLines": 3
+    },
+    "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx": {
+      "rawElements": 1,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx": {
+      "rawElements": 3,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/pages/Work/ProjectSpine/ProjectSpinePage.tsx": {
+      "rawElements": 2,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx": {
+      "rawElements": 2,
+      "utilityLines": 2
+    },
+    "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx": {
+      "rawElements": 0,
+      "utilityLines": 2
+    },
+    "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx": {
+      "rawElements": 14,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/patterns/AboutHero/AboutHero.tsx": {
+      "rawElements": 0,
+      "utilityLines": 11
+    },
+    "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx": {
+      "rawElements": 2,
+      "utilityLines": 35
+    },
+    "nextjs-app/shared/patterns/ArticleHero/ArticleHero.tsx": {
+      "rawElements": 0,
+      "utilityLines": 23
+    },
+    "nextjs-app/shared/patterns/ArticleLayout/ArticleLayout.tsx": {
+      "rawElements": 0,
+      "utilityLines": 5
+    },
+    "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx": {
+      "rawElements": 2,
+      "utilityLines": 5
+    },
+    "nextjs-app/shared/patterns/BlogHero/BlogHero.tsx": {
+      "rawElements": 0,
+      "utilityLines": 6
+    },
+    "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx": {
+      "rawElements": 0,
+      "utilityLines": 6
+    },
+    "nextjs-app/shared/patterns/CTASection/CTASection.tsx": {
+      "rawElements": 1,
+      "utilityLines": 10
+    },
+    "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx": {
+      "rawElements": 1,
+      "utilityLines": 8
+    },
+    "nextjs-app/shared/patterns/ContactHero/ContactHero.tsx": {
+      "rawElements": 0,
+      "utilityLines": 9
+    },
+    "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/patterns/ContentSection/ContentSection.tsx": {
+      "rawElements": 1,
+      "utilityLines": 14
+    },
+    "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx": {
+      "rawElements": 2,
+      "utilityLines": 13
+    },
+    "nextjs-app/shared/patterns/Footer/Footer.tsx": {
+      "rawElements": 16,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/patterns/Hero/Hero.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/patterns/HeroSection/HeroSection.tsx": {
+      "rawElements": 0,
+      "utilityLines": 3
+    },
+    "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx": {
+      "rawElements": 0,
+      "utilityLines": 5
+    },
+    "nextjs-app/shared/patterns/ManifestoSection/ManifestoSection.tsx": {
+      "rawElements": 1,
+      "utilityLines": 10
+    },
+    "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx": {
+      "rawElements": 3,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/patterns/PageLayout/PageLayout.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx": {
+      "rawElements": 4,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/patterns/ProjectDetailLayout/ProjectDetailLayout.tsx": {
+      "rawElements": 0,
+      "utilityLines": 4
+    },
+    "nextjs-app/shared/patterns/ProjectHero/ProjectHero.tsx": {
+      "rawElements": 2,
+      "utilityLines": 38
+    },
+    "nextjs-app/shared/patterns/ProjectMetaSection/ProjectMetaSection.tsx": {
+      "rawElements": 8,
+      "utilityLines": 23
+    },
+    "nextjs-app/shared/patterns/RelatedPosts/RelatedPosts.tsx": {
+      "rawElements": 1,
+      "utilityLines": 5
+    },
+    "nextjs-app/shared/patterns/RelatedProjects/RelatedProjects.tsx": {
+      "rawElements": 3,
+      "utilityLines": 4
+    },
+    "nextjs-app/shared/patterns/ServicesSection/ServicesSection.tsx": {
+      "rawElements": 1,
+      "utilityLines": 5
+    },
+    "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx": {
+      "rawElements": 2,
+      "utilityLines": 15
+    },
+    "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx": {
+      "rawElements": 2,
+      "utilityLines": 17
+    },
+    "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx": {
+      "rawElements": 0,
+      "utilityLines": 14
+    },
+    "nextjs-app/shared/patterns/StatsSection/StatsSection.tsx": {
+      "rawElements": 2,
+      "utilityLines": 4
+    },
+    "nextjs-app/shared/patterns/ValuesSection/ValuesSection.tsx": {
+      "rawElements": 1,
+      "utilityLines": 7
+    },
+    "nextjs-app/shared/patterns/WorkHero/WorkHero.tsx": {
+      "rawElements": 0,
+      "utilityLines": 6
+    },
+    "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.tsx": {
+      "rawElements": 1,
+      "utilityLines": 1
+    },
+    "nextjs-app/shared/patterns/WorkPreviewSection/WorkPreviewSection.tsx": {
+      "rawElements": 1,
+      "utilityLines": 15
+    }
+  }
+}
