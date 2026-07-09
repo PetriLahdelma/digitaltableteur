@@ -14859,7 +14859,12 @@
         {
           "story": "ProviderDriven",
           "description": "The imperative API most consumers use: ToastProvider mounts one live region at the app shell; useToast().showToast(message, { tone, duration, position }) fires it from anywhere below.",
-          "source": "export const ProviderDriven: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The imperative API most consumers use: ToastProvider mounts one live region at the app shell; useToast().showToast(message, { tone, duration, position }) fires it from anywhere below.\",\n      },\n    },\n  },\n  render: function ProviderDrivenStory() {\n    function SaveButton() {\n      const { showToast } = useToast();\n      return (\n        <Button\n          onClick={() =>\n            showToast(\"Settings saved.\", { tone: \"success\", duration: 4000 })\n          }\n        >\n          Save settings\n        </Button>\n      );\n    }\n    return (\n      <ToastProvider>\n        <SaveButton />\n      </ToastProvider>\n    );\n  },\n};"
+          "source": "export const ProviderDriven: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The imperative API most consumers use: ToastProvider mounts one live region at the app shell; useToast().showToast(message, { tone, duration, position }) fires it from anywhere below.\",\n      },\n    },\n  },\n  render: function ProviderDrivenStory() {\n    function SaveButton() {\n      const { showToast } = useToast();\n      return (\n        <Button\n          onClick={() =>\n            showToast(\"Settings saved.\", { tone: \"success\", duration: 4000 })\n          }\n        >\n          Save settings\n        </Button>\n      );\n    }\n    return (\n      <ToastProvider>\n        <SaveButton />\n      </ToastProvider>\n    );\n  },\n};\n\n/** Concurrent toasts stack via ToastStack instead of replacing each other. */"
+        },
+        {
+          "story": "Stacked",
+          "description": "Concurrent messages stack (newest nearest the docked edge) via ToastStack — the app ToastProvider renders one stack per position, so firing showToast repeatedly shows every message.",
+          "source": "export const Stacked: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Concurrent messages stack (newest nearest the docked edge) via ToastStack — the app ToastProvider renders one stack per position, so firing showToast repeatedly shows every message.\",\n      },\n      // Same iframe treatment as Placement: fixed positioning needs a real\n      // viewport in docs.\n      story: { inline: false, iframeHeight: 360 },\n    },\n  },\n  render: function StackedStory() {\n    return (\n      <ToastStack\n        toasts={[\n          { id: \"saved\", message: \"Settings saved.\", tone: \"success\", duration: 600000 },\n          { id: \"lang\", message: \"Language changed to English\", duration: 600000 },\n          {\n            id: \"notice\",\n            message: \"This content is only available in English\",\n            tone: \"info\",\n            duration: 600000,\n          },\n        ]}\n        position=\"bottom-center\"\n      />\n    );\n  },\n};"
         },
         {
           "story": "Example",
@@ -16213,7 +16218,7 @@
       "name": "CTASection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Call-to-action band used on marketing pages.",
       "dense": "Marketing call-to-action band: title, description, primary/secondary action slots; background and align variants.",
       "keywords": [
@@ -16865,7 +16870,7 @@
       "name": "GridBlock",
       "group": "layout",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Responsive grid of case-study content cells with column, gap, spacing, and background knobs, used across Work project pages.",
       "dense": "Case-study grid of content cells: columns, gap, background, and spacing knobs; used across Work project pages.",
       "keywords": [
@@ -17796,7 +17801,7 @@
       "name": "PageLayout",
       "group": "layout",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Page-body wrapper with a max-width container, default page margins, an optional grid mode, and a spacing scale.",
       "dense": "Page-level layout wrapper: max-width, optional grid columns, spacing scale, and default page margins.",
       "keywords": [
@@ -17984,7 +17989,7 @@
       "name": "ProcessBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Case-study process section that arranges titled phase cards in a grid under an optional title and description.",
       "dense": "Case-study process section: titled phase cards in a grid with section title, description, and spacing/background knobs.",
       "keywords": [
@@ -19152,7 +19157,7 @@
       "name": "StoryBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Narrative section for Work case studies with a subtitle and title, rich text, and images arranged by a selectable layout.",
       "dense": "Case-study narrative section: subtitle/title, rich content, and images with selectable image layout.",
       "keywords": [

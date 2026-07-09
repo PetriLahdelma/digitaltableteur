@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-09T16:24:37.980Z",
+  "generatedAt": "2026-07-09T16:54:01.021Z",
   "summary": {
     "componentCount": 161,
     "statusCounts": {
-      "beta": 75,
-      "stable": 63,
+      "beta": 70,
+      "stable": 68,
       "alpha": 23
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 87.5,
     "codebaseComponentCount": 184,
-    "usageCoveragePercent": 92.5,
+    "usageCoveragePercent": 93.2,
     "componentsWithProductionUsage": 46,
     "notReadyForStablePromotion": false
   },
@@ -19,7 +19,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 63,
+    "stableCount": 68,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -62,7 +62,7 @@
     "catalogCompletenessPercent": 87.5,
     "artifactCoverage": {
       "stories": 145,
-      "tests": 133,
+      "tests": 134,
       "mdx": 3,
       "spec": 161
     },
@@ -77,11 +77,11 @@
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 161,
-    "withAnyUsage": 149,
+    "withAnyUsage": 150,
     "withProductionUsage": 46,
-    "uniqueImportedComponents": 149,
-    "totalEvidenceRows": 845,
-    "aliasImportFiles": 469,
+    "uniqueImportedComponents": 150,
+    "totalEvidenceRows": 846,
+    "aliasImportFiles": 470,
     "relativeImportFiles": 384,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -106,8 +106,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 75,
-        "stable": 63,
+        "beta": 70,
+        "stable": 68,
         "alpha": 23
       },
       "dsharp": {
@@ -2747,6 +2747,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
             "since": "2026-06-04"
           },
@@ -4534,6 +4539,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
@@ -4550,11 +4560,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -6771,6 +6776,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
             "since": "2026-06-04"
           },
@@ -7114,6 +7124,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
@@ -9223,17 +9238,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -10349,6 +10364,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -11966,6 +11986,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
@@ -13908,6 +13933,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
             "since": "2026-06-04"
           },
@@ -14278,6 +14308,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/lib/siteStructure.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
@@ -14289,16 +14329,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -14783,6 +14813,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -15545,6 +15580,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
             "since": "2026-06-04"
           },
@@ -15864,6 +15904,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           },
@@ -16168,6 +16213,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/lib/siteStructure.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
             "since": "2026-06-04"
           },
@@ -16189,16 +16244,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/SitemapPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -18483,6 +18528,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
@@ -19354,6 +19404,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -20777,6 +20832,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
@@ -24178,6 +24238,11 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
             "since": "2026-06-04"
           },
@@ -25695,6 +25760,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           },
@@ -26924,6 +26994,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
             "since": "2026-06-04"
           },
@@ -27754,6 +27829,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -28844,6 +28924,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
@@ -28860,11 +28945,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -29233,6 +29313,11 @@
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
             "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
           }
         ],
         "schemaVersion": 2,
@@ -29502,6 +29587,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -30159,6 +30249,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/tools/email-signature/EmailSignatureContent.tsx",
             "since": "2026-06-04"
           },
@@ -30180,11 +30275,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -30603,6 +30693,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -31068,11 +31163,18 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ToastStack",
-        "importCount": 0,
+        "importCount": 1,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 0,
-        "evidence": []
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/Toast/Toast.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/ToastStack",
+            "context": "story"
+          }
+        ]
       },
       "agent": {
         "preferredImport": "@dt/ToastStack",
@@ -33696,7 +33798,7 @@
         "name": "CTASection",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Call-to-action band used on marketing pages.",
         "dense": "Marketing call-to-action band: title, description, primary/secondary action slots; background and align variants.",
         "keywords": [
@@ -33736,7 +33838,9 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -33745,7 +33849,68 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
@@ -35001,7 +35166,7 @@
         "name": "GridBlock",
         "tier": "pattern",
         "group": "layout",
-        "status": "beta",
+        "status": "stable",
         "description": "Responsive grid of case-study content cells with column, gap, spacing, and background knobs, used across Work project pages.",
         "dense": "Case-study grid of content cells: columns, gap, background, and spacing knobs; used across Work project pages.",
         "keywords": [
@@ -35033,7 +35198,9 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -35043,7 +35210,68 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "cells": {
@@ -36957,7 +37185,7 @@
         "name": "PageLayout",
         "tier": "pattern",
         "group": "layout",
-        "status": "beta",
+        "status": "stable",
         "description": "Page-body wrapper with a max-width container, default page margins, an optional grid mode, and a spacing scale.",
         "dense": "Page-level layout wrapper: max-width, optional grid columns, spacing scale, and default page margins.",
         "keywords": [
@@ -36989,14 +37217,77 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "children": {
@@ -37407,7 +37698,7 @@
         "name": "ProcessBlock",
         "tier": "pattern",
         "group": "structure",
-        "status": "beta",
+        "status": "stable",
         "description": "Case-study process section that arranges titled phase cards in a grid under an optional title and description.",
         "dense": "Case-study process section: titled phase cards in a grid with section title, description, and spacing/background knobs.",
         "keywords": [
@@ -37441,7 +37732,9 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -37451,7 +37744,68 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "phases": {
@@ -39623,6 +39977,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           },
@@ -39772,6 +40131,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
@@ -40033,7 +40397,7 @@
         "name": "StoryBlock",
         "tier": "pattern",
         "group": "structure",
-        "status": "beta",
+        "status": "stable",
         "description": "Narrative section for Work case studies with a subtitle and title, rich text, and images arranged by a selectable layout.",
         "dense": "Case-study narrative section: subtitle/title, rich content, and images with selectable image layout.",
         "keywords": [
@@ -40067,7 +40431,9 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -40077,7 +40443,68 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "subtitle": {

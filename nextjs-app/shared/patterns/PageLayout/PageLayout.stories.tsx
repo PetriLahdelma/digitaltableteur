@@ -9,7 +9,7 @@ import TitleStories from "@dt/Title/Title.stories";
 const meta: Meta<typeof PageLayout> = {
   title: "Patterns/PageLayout",
   component: PageLayout,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
