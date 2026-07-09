@@ -5,6 +5,16 @@
 # contract gate (build:tokens + check:contract-props + check:consumers) and
 # validate:components for design-system paths.
 # Bypass in a genuine emergency with: git commit --no-verify
+
+# Secret tripwire (2026-07-04 purge incident): block staged npm auth token
+# VALUES before anything else. Matches added lines only (+++ headers excluded);
+# env interpolations like _authToken=${token} and doc placeholders stay legal —
+# only literal npm_ granular tokens and UUID-shaped classic tokens trip it.
+if git diff --cached -U0 | grep -qE '^\+[^+].*_authToken[^=]*=.*(npm_[A-Za-z0-9]{20,}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})'; then
+  echo "pre-commit: staged content contains a literal npm auth token — unstage it (tokens belong in the gitignored .npm-userconfig, never in git)." >&2
+  exit 1
+fi
+
 npm run check:contrast &&
 npm run lint:css &&
 npm run audit:rhythm:check &&
