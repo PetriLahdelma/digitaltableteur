@@ -106,7 +106,15 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
           ? { ...options, defaultValue: fallbackOrOptions }
           : fallbackOrOptions;
       const translated = i18n.t(key, translationOptions);
-      return typeof translated === "string" ? translated : String(translated);
+      if (typeof translated === "string") return translated;
+      // `returnObjects: true` lookups (e.g. HomeHero's title/subtext option
+      // arrays) must pass through structurally, matching the shared lib's
+      // fallbackTranslate; String() here turned arrays into joined text and
+      // silently killed the per-visit hero randomization.
+      if (translated !== null && typeof translated === "object") {
+        return translated as unknown as string;
+      }
+      return String(translated);
     },
     [],
   );
