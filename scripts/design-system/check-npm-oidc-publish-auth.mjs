@@ -110,17 +110,33 @@ async function getGitHubIdToken() {
   const audience = `npm:${new URL(registry).hostname}`;
   const url = new URL(process.env.ACTIONS_ID_TOKEN_REQUEST_URL);
   url.searchParams.append("audience", audience);
-  const response = await fetch(url.href, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}`,
-    },
-  });
-  const json = await response.json();
-  if (!response.ok || !json.value) {
-    throw new Error(`GitHub OIDC token request failed with status ${response.status}`);
+  // The runner-local token endpoint intermittently answers through a proxy
+  // with plain-text errors ("upstream connect error ... reset reason: overflow"),
+  // so parse defensively and retry instead of crashing on non-JSON bodies.
+  let lastFailure = "";
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    const response = await fetch(url.href, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}`,
+      },
+    });
+    const text = await response.text();
+    let json;
+    try {
+      json = JSON.parse(text);
+    } catch {
+      json = null;
+    }
+    if (response.ok && json?.value) return json.value;
+    lastFailure = `status ${response.status}: ${redact(text).slice(0, 200)}`;
+    if (attempt < 3) {
+      await new Promise((resolve) => setTimeout(resolve, attempt * 2000));
+    }
   }
-  return json.value;
+  throw new Error(
+    `GitHub OIDC token request failed after 3 attempts (${lastFailure})`,
+  );
 }
 
 async function verifyExchangeEndpoint(idToken, exchangePath) {
