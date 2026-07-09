@@ -6,6 +6,7 @@ import { Link as RouterLink } from "../../lib/linkComponent";
 import { Container } from "../../components/Container";
 import { Stack } from "../../components/Stack";
 import DtLink from "../../components/Link";
+import { SocialIconLink } from "../../components/SocialIconLink";
 import { Divider } from "../../components/Divider";
 import {
   InstagramLogo,
@@ -180,16 +181,9 @@ export function SiteFooter({ className }: SiteFooterProps) {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <Stack direction="horizontal" gap="sm">
             {socialLinks.map(({ href, icon: Icon, label }) => (
-              <a
-                key={href}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-sm"
-                aria-label={t(label)}
-              >
-                <Icon className="size-5" />
-              </a>
+              <SocialIconLink key={href} href={href} label={t(label)}>
+                <Icon />
+              </SocialIconLink>
             ))}
           </Stack>
 

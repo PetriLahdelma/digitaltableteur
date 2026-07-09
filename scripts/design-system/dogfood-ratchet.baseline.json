@@ -58,7 +58,7 @@
       "utilityLines": 1
     },
     "nextjs-app/shared/components/ArticleShareSection/ArticleShareSection.tsx": {
-      "rawElements": 5,
+      "rawElements": 2,
       "utilityLines": 11
     },
     "nextjs-app/shared/components/AskAI/AskAI.tsx": {
@@ -598,8 +598,8 @@
       "utilityLines": 5
     },
     "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx": {
-      "rawElements": 2,
-      "utilityLines": 15
+      "rawElements": 1,
+      "utilityLines": 14
     },
     "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx": {
       "rawElements": 2,

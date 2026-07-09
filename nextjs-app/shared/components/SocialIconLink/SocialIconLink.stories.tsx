@@ -25,10 +25,16 @@ const meta = {
   // or Storybook will treat it as conflicting sources of truth for the docs page.
   tags: ["!autodocs"],
   argTypes: {
+    variant: {
+      control: "radio",
+      options: ["plain", "chip"],
+      description: "Bare glyph (footers) or bordered circular chip (share rows).",
+      table: { defaultValue: { summary: "plain" }, category: "Appearance" },
+    },
     size: {
       control: "radio",
       options: ["sm", "md", "lg"],
-      description: "Hit-target size token.",
+      description: "Hit-target size token (chip is a fixed 2.5rem tile).",
       table: { defaultValue: { summary: "md" }, category: "Appearance" },
     },
     external: {
@@ -51,6 +57,7 @@ const meta = {
   args: {
     href: "https://www.linkedin.com/company/digitaltableteur/",
     label: "Digitaltableteur on LinkedIn",
+    variant: "plain" as const,
     size: "md" as const,
     external: true,
     children: <LinkedinLogo aria-hidden="true" />,
