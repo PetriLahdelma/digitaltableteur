@@ -107,7 +107,7 @@ jobs:
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
           else
-            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --access restricted
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/tokens --publish
           fi
 
       - name: Publish @digitaltableteur/tokens-css
@@ -117,7 +117,7 @@ jobs:
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
           else
-            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --access restricted
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/tokens-css --publish
           fi
 
       - name: Publish @digitaltableteur/react
@@ -127,7 +127,7 @@ jobs:
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
           else
-            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --access restricted
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react --publish
           fi
 
       - name: Verify @digitaltableteur/react registry install
