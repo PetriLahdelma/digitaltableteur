@@ -7,6 +7,7 @@ import {
   NavigationProvider,
   type NavigationRuntime,
 } from "@digitaltableteur/react";
+import { NavigationProvider as LocalNavigationProvider } from "@/nextjs-app/shared/lib/navigation";
 
 type NavigationOptions = Parameters<NavigationRuntime["push"]>[1];
 
@@ -46,5 +47,15 @@ export function NextNavigationProvider({ children }: { children: ReactNode }) {
     [pathname, push, replace, searchParams],
   );
 
-  return <NavigationProvider runtime={runtime}>{children}</NavigationProvider>;
+  // Two module instances (npm package + local shared source) hold separate
+  // NavigationContexts; provide the runtime into both so local consumers
+  // (PageTransition, useNavigation, Donny chat navigation, blog filters) get
+  // real client-side routing instead of the window.location fallback.
+  return (
+    <NavigationProvider runtime={runtime}>
+      <LocalNavigationProvider runtime={runtime}>
+        {children}
+      </LocalNavigationProvider>
+    </NavigationProvider>
+  );
 }

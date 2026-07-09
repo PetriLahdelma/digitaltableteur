@@ -11,6 +11,7 @@ import {
   getMotionPreference,
 } from "@/nextjs-app/shared/lib/gsap/motion-safe";
 import { AnimationRuntimeProvider } from "@digitaltableteur/react";
+import { AnimationRuntimeProvider as LocalAnimationRuntimeProvider } from "@/nextjs-app/shared/lib/animation";
 
 // Import GSAP to ensure plugins are registered
 import "@/nextjs-app/shared/lib/gsap";
@@ -41,9 +42,15 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
     };
   }, []);
 
+  // Two module instances (npm package + local shared source) hold separate
+  // AnimationContexts; provide into both so local animation components
+  // (Parallax, PageTransition, ScrollIndicator, marquees) honor
+  // prefers-reduced-motion instead of reading the "full" default.
   return (
     <AnimationRuntimeProvider value={{ motionPreference, isReady }}>
-      {children}
+      <LocalAnimationRuntimeProvider value={{ motionPreference, isReady }}>
+        {children}
+      </LocalAnimationRuntimeProvider>
     </AnimationRuntimeProvider>
   );
 }
