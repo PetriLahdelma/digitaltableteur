@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import {
   useNavigationPathname,
   useNavigationRouter,
@@ -45,13 +45,20 @@ export function useBlogFilter({
     urlTag || null
   );
 
-  // Sync state with URL on mount and URL changes
+  // One-way URL → state sync for deep links and back/forward. Only reacts
+  // when the URL value ACTUALLY changes; comparing against selectedTag (the
+  // old deps) reverted fresh clicks whenever searchParams lagged the push —
+  // permanently so on statically-rendered production pages, where the
+  // navigation adapter's searchParams never updates after a client push
+  // (Codex-migration regression #6).
+  const lastUrlTag = useRef<string | null>(urlTag || null);
   useEffect(() => {
     const currentUrlTag = searchParams.get(tagParam);
-    if (currentUrlTag !== selectedTag) {
+    if (currentUrlTag !== lastUrlTag.current) {
+      lastUrlTag.current = currentUrlTag;
       setSelectedTagState(currentUrlTag);
     }
-  }, [searchParams, tagParam, selectedTag]);
+  }, [searchParams, tagParam]);
 
   // Extract all unique tags from posts
   const allTags = useMemo(() => {
@@ -102,6 +109,7 @@ export function useBlogFilter({
   // Update URL and state when tag changes
   const setSelectedTag = useCallback(
     (tag: string | null) => {
+      lastUrlTag.current = tag;
       setSelectedTagState(tag);
 
       // Update URL
