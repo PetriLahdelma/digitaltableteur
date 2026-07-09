@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 446,
+  "warningCount": 445,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -3619,15 +3619,6 @@
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"white-space\" to come before \"color\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::420::3::order/properties-order::Expected \"padding-block\" to come before \"flex-shrink\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 420,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding-block\" to come before \"flex-shrink\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::64::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#041b23\" of \"color\" (scale-unlimited/declaration-strict-value)",
