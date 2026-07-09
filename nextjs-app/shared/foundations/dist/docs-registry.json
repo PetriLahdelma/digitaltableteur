@@ -4288,7 +4288,7 @@
       "name": "ContactFormEditorial",
       "group": "form",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Editorial contact form used on the live contact page.",
       "dense": "Editorial-styled contact form used on the live contact page (uppercase labels, tabbed Personal/Company message types)",
       "keywords": [
@@ -6281,7 +6281,7 @@
       "name": "FormFieldEditorial",
       "group": "form",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Uppercase-label form field for editorial contact flows.",
       "dense": "Uppercase-label field wrapper for editorial contact flows; pairs with ContactFormEditorial",
       "keywords": [
@@ -11502,7 +11502,7 @@
       "name": "SecureCVDownload",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Gated CV download whose trigger opens a verification modal before the file is served.",
       "dense": "Gated CV download: trigger button opens a verification modal before serving the file",
       "keywords": [
@@ -12003,7 +12003,7 @@
       "name": "SiteTree",
       "group": "navigation",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Hierarchical sitemap with collapsible folder branches and page leaves.",
       "dense": "Hierarchical sitemap tree with collapsible folder branches and page leaves; sitemap page organism",
       "keywords": [

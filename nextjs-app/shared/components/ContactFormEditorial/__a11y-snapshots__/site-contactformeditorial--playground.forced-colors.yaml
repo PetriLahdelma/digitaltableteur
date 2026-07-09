@@ -1,0 +1,14 @@
+- text: Full Name*
+- textbox "Full Name*"
+- text: Email Address*
+- textbox "Email Address*"
+- text: Your Message*
+- textbox "Your Message*":
+  - /placeholder: Enter your message
+- button "Add project details"
+- paragraph:
+  - text: By pressing submit you agree for your information to be processed according to our
+  - link "privacy policy":
+    - /url: /privacy-policy
+  - text: .
+- button "Submit" [disabled]

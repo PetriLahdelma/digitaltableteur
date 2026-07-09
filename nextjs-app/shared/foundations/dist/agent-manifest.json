@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-09T18:56:21.051Z",
+  "generatedAt": "2026-07-09T19:47:55.844Z",
   "summary": {
     "componentCount": 161,
     "statusCounts": {
-      "beta": 58,
-      "stable": 80,
+      "beta": 54,
+      "stable": 84,
       "alpha": 23
     },
     "honestBetaDocDebt": 0,
@@ -19,7 +19,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 80,
+    "stableCount": 84,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -62,7 +62,7 @@
     "catalogCompletenessPercent": 87.5,
     "artifactCoverage": {
       "stories": 145,
-      "tests": 141,
+      "tests": 143,
       "mdx": 3,
       "spec": 161
     },
@@ -106,8 +106,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 58,
-        "stable": 80,
+        "beta": 54,
+        "stable": 84,
         "alpha": 23
       },
       "dsharp": {
@@ -8998,7 +8998,7 @@
         "name": "ContactFormEditorial",
         "tier": "organism",
         "group": "form",
-        "status": "beta",
+        "status": "stable",
         "description": "Editorial contact form used on the live contact page.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-contact-form-editorial",
         "radixPrimitive": null,
@@ -9018,14 +9018,37 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: 4-mode AT snapshots captured for all required stories, forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
@@ -12936,7 +12959,7 @@
         "name": "FormFieldEditorial",
         "tier": "molecule",
         "group": "form",
-        "status": "beta",
+        "status": "stable",
         "description": "Uppercase-label form field for editorial contact flows.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-form-field-editorial",
         "radixPrimitive": null,
@@ -12956,14 +12979,37 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: 4-mode AT snapshots captured for all required stories, forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "slots": [],
         "schemaVersion": 2,
         "props": {
@@ -23850,7 +23896,7 @@
         "name": "SecureCVDownload",
         "tier": "molecule",
         "group": "structure",
-        "status": "beta",
+        "status": "stable",
         "description": "Gated CV download whose trigger opens a verification modal before the file is served.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-secure-cvdownload",
         "radixPrimitive": null,
@@ -23871,14 +23917,32 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: 4-mode AT snapshots captured for all required stories, forced-colors re-verified in a real browser, consumers audited.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "buttonText": {
@@ -25108,7 +25172,7 @@
         "name": "SiteTree",
         "tier": "molecule",
         "group": "navigation",
-        "status": "beta",
+        "status": "stable",
         "description": "Hierarchical sitemap with collapsible folder branches and page leaves.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-site-tree",
         "radixPrimitive": null,
@@ -25137,15 +25201,33 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "Verified 2026-06-02: nav landmark + aria-label; native details/summary disclosure (keyboard/SR-native). Fixed two real axe findings surfaced by enabling axe on the stories — nested-interactive (link inside summary; branch index now a separate leaf) and listitem (removed role=group from ul). Default/Playground/Example pass axe with test:error; dark theme verified in Storybook. Forced colors: links/icons inherit currentColor via Icon/Link primitives → CanvasText; ForcedColors story present.",
-          "playFunctionExempt": "Static navigation tree; expand/collapse follows native details/summary keyboard behavior, no custom handlers to drive."
+          "reviewedNote": "Verified 2026-06-02: nav landmark + aria-label; native details/summary disclosure (keyboard/SR-native). Fixed two real axe findings surfaced by enabling axe on the stories — nested-interactive (link inside summary; branch index now a separate leaf) and listitem (removed role=group from ul). Default/Playground/Example pass axe with test:error; dark theme verified in Storybook. Forced colors: links/icons inherit currentColor via Icon/Link primitives → CanvasText; ForcedColors story present. 2026-07-09 — Promoted beta→stable: 4-mode AT snapshots captured for all required stories, forced-colors re-verified in a real browser, consumers audited.",
+          "playFunctionExempt": "Static navigation tree; expand/collapse follows native details/summary keyboard behavior, no custom handlers to drive.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/lib/siteStructure.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/SitemapPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "nodes": {
