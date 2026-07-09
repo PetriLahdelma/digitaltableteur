@@ -5,7 +5,7 @@ import ProcessBlock from "./ProcessBlock";
 const meta: Meta<typeof ProcessBlock> = {
   title: "Patterns/ProcessBlock",
   component: ProcessBlock,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
