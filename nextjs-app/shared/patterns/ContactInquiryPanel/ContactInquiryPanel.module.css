@@ -28,12 +28,12 @@
 .newBadge {
   position: absolute;
   z-index: 2;
-  padding-block: var(--space-internal-2);
-  padding-inline: var(--space-internal-4);
+  padding-block: var(--space-internal-4);
+  padding-inline: var(--space-internal-8);
   border-radius: var(--radius-full);
   background-color: var(--logo-background);
   font-family: var(--font-sans);
-  font-size: var(--font-size-text-xxs);
+  font-size: var(--space-internal-12);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.04em;
