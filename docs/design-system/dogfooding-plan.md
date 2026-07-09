@@ -43,12 +43,15 @@ edit).
 Result: dogfooding debt can only go down, and AI-generated PRs that hand-roll
 a button fail locally before review.
 
-## Phase 1: Hero fix (a11y defect + promotion unblock)
+## Phase 1: Generic Hero — RESOLVED by deprecation (2026-07-10)
 
-`patterns/Hero/Hero.tsx:126-135, 222-236`: raw `<a>` wrapping `<Button>` is a
-nested-interactive a11y bug in production. Pass `href` to Button directly.
-This also unblocks Hero, the last consumer-backed beta pattern, for promotion
-(2 prod consumers; every other consumer-backed pattern is stable as of #1041).
+The audit flagged `patterns/Hero/Hero.tsx:126-135, 222-236` (raw `<a>`
+wrapping `<Button>`, a nested-interactive defect). Re-verification showed the
+generic Hero has **zero production consumers** (barrel re-exports only; the
+front page uses HomeHero, and HeroSection plus the six specialized heroes
+cover every real page). Owner decision: deprecate instead of fix. The
+contract's `deprecatedReason` documents the successor components and warns
+against the anchor-wrap pattern; any future hero work composes HeroSection.
 
 ## Phase 2: Quick-win sweep
 

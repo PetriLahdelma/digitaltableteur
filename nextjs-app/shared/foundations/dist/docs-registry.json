@@ -17004,7 +17004,7 @@
       "name": "Hero",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "deprecated",
       "description": "Configurable general-purpose page hero with heading, subtitle, optional image, and an actions slot across layout and background variants.",
       "dense": "General-purpose hero: title/subtitle/description, optional image and actions; layout variant, background, and align knobs.",
       "keywords": [
