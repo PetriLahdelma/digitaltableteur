@@ -95,6 +95,9 @@ assertDocIncludes(
     "Organization or user: PetriLahdelma",
     "Repository: digitaltableteur",
     "Workflow filename: ds-publish.yml",
+    "npx npm@11.18.0 trust list @digitaltableteur/react --json",
+    "npx npm@11.18.0 trust github @digitaltableteur/react --repo PetriLahdelma/digitaltableteur --file ds-publish.yml --allow-publish --yes",
+    "/-/package/@digitaltableteur%2freact/trust",
   ],
 );
 

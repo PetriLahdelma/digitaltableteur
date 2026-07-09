@@ -21,6 +21,7 @@ const OUT_EXCLUDED_DIRTY = join(OUT_DIR, "excluded-dirty-paths.txt");
 const REPORT = process.argv.includes("--report");
 const EXPECTED_REPOSITORY_URL =
   "git+https://github.com/PetriLahdelma/digitaltableteur.git";
+const NPM_TRUST_CLI_VERSION = "11.18.0";
 const PACKAGES = [
   { dir: "packages/tokens", name: "@digitaltableteur/tokens" },
   { dir: "packages/tokens-css", name: "@digitaltableteur/tokens-css" },
@@ -323,7 +324,17 @@ function formatExcludedDirtyRows(paths) {
   return paths.map((path) => `| \`${path}\` |`).join("\n");
 }
 
+function formatTrustCliCommands(report) {
+  const base = `NPM_CONFIG_USERCONFIG=/path/to/private-npmrc npx npm@${report.npmTrustCliVersion}`;
+  return {
+    list: `${base} trust list @digitaltableteur/react --json`,
+    configure: `${base} trust github @digitaltableteur/react --repo ${report.githubOwner}/${report.githubRepository} --file ${report.workflowFilename} --allow-publish --yes`,
+    dryRun: `${base} trust github @digitaltableteur/react --repo ${report.githubOwner}/${report.githubRepository} --file ${report.workflowFilename} --allow-publish --dry-run --json`,
+  };
+}
+
 function writeHandoff(report) {
+  const trustCli = formatTrustCliCommands(report);
   const markdown = `# Trusted Publisher handoff
 
 Generated: ${report.generatedAt}
@@ -348,6 +359,26 @@ These values are case-sensitive and must match the GitHub OIDC claims exactly:
 Configure them on each package access page, for example
 \`https://www.npmjs.com/package/@digitaltableteur/react/access\`. Do not use the
 npm organization name as the GitHub owner.
+
+## npm trust CLI
+
+npm exposes Trusted Publisher management through \`npm trust\`. Prefer this
+official CLI path when the available npm authentication can manage trust
+relationships:
+
+~~~bash
+${trustCli.list}
+${trustCli.dryRun}
+${trustCli.configure}
+~~~
+
+If \`npm access list packages digitaltableteur --json\` reports
+\`@digitaltableteur/react\` as \`read-write\` but \`npm trust list\` or
+\`npm trust github\` returns \`403 Forbidden\` for
+\`/-/package/@digitaltableteur%2freact/trust\`, the token/session can publish or
+manage package access but cannot manage Trusted Publisher records. Use an npm
+auth session that satisfies npm trust requirements, including npm 11.15.0+,
+package write access, account-level 2FA, and a supported auth method.
 
 ## GitHub workflow state
 
@@ -637,6 +668,8 @@ const report = {
   excludedDirtyPathsPath: relativePath(OUT_EXCLUDED_DIRTY),
   workflowTrackedByGit,
   workflowCommittedInHead,
+  npmTrustCliVersion: NPM_TRUST_CLI_VERSION,
+  npmTrustCliCommands: null,
   repositoryPaths,
   repositoryPathCount: repositoryPaths.length,
   repositoryReadyPathCount: repositoryPaths.filter((row) => row.ready).length,
@@ -648,6 +681,7 @@ const report = {
   packages: packageRows,
   errors,
 };
+report.npmTrustCliCommands = formatTrustCliCommands(report);
 writeFileSync(OUT_JSON, `${JSON.stringify(report, null, 2)}\n`);
 writeHandoff(report);
 
