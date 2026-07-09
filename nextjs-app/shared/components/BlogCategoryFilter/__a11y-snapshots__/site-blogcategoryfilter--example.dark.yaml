@@ -1,6 +1,6 @@
 - group "Filter by topic":
-  - button "All Posts(15)"
-  - button "Design(6)" [pressed]
-  - button "Tooling(3)"
-  - button "Process(4)"
-  - button "Branding(2)"
+  - button "All Posts (15)"
+  - button "Design (6)" [pressed]
+  - button "Tooling (3)"
+  - button "Process (4)"
+  - button "Branding (2)"

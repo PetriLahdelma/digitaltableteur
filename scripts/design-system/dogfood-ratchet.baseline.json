@@ -82,8 +82,8 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/components/BlogCategoryFilter/BlogCategoryFilter.tsx": {
-      "rawElements": 3,
-      "utilityLines": 22
+      "rawElements": 0,
+      "utilityLines": 6
     },
     "nextjs-app/shared/components/BlogGrid/BlogGrid.tsx": {
       "rawElements": 0,
@@ -106,8 +106,8 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/components/CategoryFilter/CategoryFilter.tsx": {
-      "rawElements": 3,
-      "utilityLines": 22
+      "rawElements": 0,
+      "utilityLines": 6
     },
     "nextjs-app/shared/components/Center/Center.tsx": {
       "rawElements": 0,
@@ -207,6 +207,10 @@
     },
     "nextjs-app/shared/components/FileUpload/FileUpload.tsx": {
       "rawElements": 4,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/FilterChip/FilterChip.tsx": {
+      "rawElements": 1,
       "utilityLines": 0
     },
     "nextjs-app/shared/components/FinnishTransportAgency/ColorPalette.tsx": {

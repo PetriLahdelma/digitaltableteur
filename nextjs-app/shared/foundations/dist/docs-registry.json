@@ -5916,6 +5916,45 @@
         }
       ]
     },
+    "FilterChip": {
+      "name": "FilterChip",
+      "group": "controls",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
+      "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
+      "keywords": [
+        "filter",
+        "chip",
+        "toggle",
+        "category",
+        "tag",
+        "pressed"
+      ],
+      "importLine": "import { FilterChip } from \"@dt/FilterChip\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-muted",
+          "--color-text",
+          "--color-border",
+          "--focus-ring-color"
+        ],
+        "spacing": [
+          "--space-internal-6",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24"
+        ]
+      },
+      "examples": []
+    },
     "FlexBox": {
       "name": "FlexBox",
       "group": "layout",
@@ -12441,7 +12480,8 @@
         "colors": [
           "--color-muted",
           "--color-text",
-          "--focus-ring-color"
+          "--focus-ring-color",
+          "--color-border"
         ],
         "spacing": [
           "--space-internal-4",

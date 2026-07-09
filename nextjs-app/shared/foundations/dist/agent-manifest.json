@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-09T22:38:46.231Z",
+  "generatedAt": "2026-07-09T23:04:19.839Z",
   "summary": {
-    "componentCount": 162,
+    "componentCount": 163,
     "statusCounts": {
       "beta": 49,
       "stable": 88,
-      "alpha": 24,
+      "alpha": 25,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 87.6,
-    "codebaseComponentCount": 185,
-    "usageCoveragePercent": 92.6,
+    "codebaseComponentCount": 186,
+    "usageCoveragePercent": 93.3,
     "componentsWithProductionUsage": 46,
     "notReadyForStablePromotion": false
   },
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 185,
-    "inCatalog": 162,
+    "totalComponentsInCodebase": 186,
+    "inCatalog": 163,
     "outOfCatalog": 23,
     "catalogCompletenessPercent": 87.6,
     "artifactCoverage": {
-      "stories": 146,
-      "tests": 145,
-      "mdx": 4,
-      "spec": 162
+      "stories": 147,
+      "tests": 146,
+      "mdx": 5,
+      "spec": 163
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 162,
-    "withAnyUsage": 150,
+    "catalogedComponents": 163,
+    "withAnyUsage": 152,
     "withProductionUsage": 46,
-    "uniqueImportedComponents": 150,
-    "totalEvidenceRows": 850,
+    "uniqueImportedComponents": 152,
+    "totalEvidenceRows": 854,
     "aliasImportFiles": 471,
-    "relativeImportFiles": 387,
+    "relativeImportFiles": 391,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-09T16:24:34.507Z",
+    "generatedAt": "2026-07-09T23:04:16.149Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 86,
+    "nodesWithComposesWith": 87,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 162,
+      "digitaltableteur": 163,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 49,
         "stable": 88,
-        "alpha": 24,
+        "alpha": 25,
         "deprecated": 1
       },
       "dsharp": {
@@ -12339,6 +12339,208 @@
         ],
         "prefersOver": [],
         "declaredPropCount": 15
+      }
+    },
+    {
+      "name": "FilterChip",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "name": "FilterChip",
+        "tier": "atom",
+        "group": "controls",
+        "status": "alpha",
+        "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "button",
+        "variants": {
+          "variant": {
+            "values": [
+              "pill",
+              "underline",
+              "minimal"
+            ],
+            "default": "pill"
+          },
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md"
+          }
+        },
+        "slots": [
+          "children"
+        ],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab",
+            "Enter",
+            "Space"
+          ],
+          "ariaRequirements": [
+            "aria-pressed reflects the pressed prop (toggle button, not tab)",
+            "parents wrap chips in a labelled role=group"
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-muted",
+            "--color-text",
+            "--color-border",
+            "--focus-ring-color"
+          ],
+          "spacing": [
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24"
+          ]
+        },
+        "lightDarkVerified": false,
+        "schemaVersion": 2,
+        "displayName": "FilterChip",
+        "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
+        "keywords": [
+          "filter",
+          "chip",
+          "toggle",
+          "category",
+          "tag",
+          "pressed"
+        ],
+        "consumers": []
+      },
+      "spec": "# FilterChip\n\n## Intent\nOne toggle-chip implementation for single-select filters. CategoryFilter and BlogCategoryFilter each hand-rolled the same aria-pressed button in three visual treatments; FilterChip collapses the six copies into one control.\n\n## Interaction contract\n- Keyboard: Tab focuses each chip; Enter/Space toggles (native button).\n- Pointer: click toggles; hover shifts muted → text ink.\n- Screen readers: announced as a toggle button with pressed state; a filter is a UI control, not a tablist, so parents wrap chips in a labelled role=\"group\".\n\n## Do / don't\n- Do: keep exactly one chip pressed per group (single-select filters).\n- Do: pass counts via the count prop so the \"(n)\" suffix stays in the accessible name.\n- Don't: use for navigation between panels (that is Tabs).\n- Don't: nest interactive content inside the label.\n\n## Design notes\n- Tokens: --color-muted/-text/-border ink+chrome, --focus-ring-color, --space-internal-{6,8,12,16,24} paddings, --font-size-text-{xs,s,m}.\n- Pressed pill inverts (text bg / canvas ink); underline variant sits on the group border (-1px margin); forced colors use Highlight/HighlightText.\n- Figma: pending (alpha); create in DT-Site-stuff Atoms before beta.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/FilterChip",
+        "importCount": 2,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 2,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/BlogCategoryFilter/BlogCategoryFilter.tsx",
+            "importKind": "relative",
+            "importPath": "../FilterChip",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/CategoryFilter/CategoryFilter.tsx",
+            "importKind": "relative",
+            "importPath": "../FilterChip",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/FilterChip",
+        "intent": "One toggle-chip implementation for single-select filters. CategoryFilter and BlogCategoryFilter each hand-rolled the same aria-pressed button in three visual treatments; FilterChip collapses the six copies into one cont…",
+        "props": {
+          "pressed": {
+            "optional": false,
+            "type": "boolean"
+          },
+          "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "underline",
+              "minimal",
+              "pill"
+            ]
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ]
+          },
+          "count": {
+            "optional": true,
+            "type": "number"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "variants": {
+          "variant": {
+            "values": [
+              "underline",
+              "minimal",
+              "pill"
+            ],
+            "default": "underline"
+          },
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "sm"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "keep exactly one chip pressed per group (single-select filters).",
+          "pass counts via the count prop so the \"(n)\" suffix stays in the accessible name."
+        ],
+        "avoidWhen": [
+          "use for navigation between panels (that is Tabs).",
+          "nest interactive content inside the label."
+        ],
+        "requiredA11y": [
+          "aria-pressed reflects the pressed prop (toggle button, not tab)",
+          "parents wrap chips in a labelled role=group"
+        ],
+        "keyboard": [
+          "Tab",
+          "Enter",
+          "Space"
+        ],
+        "compositionRules": [
+          "nest interactive content inside the label."
+        ],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "use for navigation between panels (that is Tabs).",
+          "nest interactive content inside the label."
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 6
       }
     },
     {
@@ -26018,6 +26220,13 @@
         "radixPrimitive": null,
         "element": "a",
         "variants": {
+          "variant": {
+            "values": [
+              "plain",
+              "chip"
+            ],
+            "default": "plain"
+          },
           "size": {
             "values": [
               "sm",
@@ -26055,7 +26264,8 @@
           "colors": [
             "--color-muted",
             "--color-text",
-            "--focus-ring-color"
+            "--focus-ring-color",
+            "--color-border"
           ],
           "spacing": [
             "--space-internal-4",
@@ -26072,11 +26282,24 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/SocialIconLink",
-        "importCount": 0,
+        "importCount": 2,
         "productionImportCount": 0,
-        "patternImportCount": 0,
-        "componentImportCount": 0,
-        "evidence": []
+        "patternImportCount": 1,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/SocialIconLink",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/components/ArticleShareSection/ArticleShareSection.tsx",
+            "importKind": "relative",
+            "importPath": "../SocialIconLink",
+            "context": "component"
+          }
+        ]
       },
       "agent": {
         "preferredImport": "@dt/SocialIconLink",
@@ -26093,6 +26316,14 @@
           "children": {
             "optional": false,
             "type": "React.ReactNode"
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "plain",
+              "chip"
+            ]
           },
           "size": {
             "optional": true,
@@ -26113,6 +26344,13 @@
           }
         },
         "variants": {
+          "variant": {
+            "values": [
+              "plain",
+              "chip"
+            ],
+            "default": "plain"
+          },
           "size": {
             "values": [
               "sm",
@@ -26154,9 +26392,14 @@
           "put text children inside — this is icon-only; use Link for labeled links.",
           "disable `external` for social profiles; same-tab is for internal routes only."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Container",
+          "Stack",
+          "Link",
+          "Divider"
+        ],
         "prefersOver": [],
-        "declaredPropCount": 6
+        "declaredPropCount": 7
       }
     },
     {

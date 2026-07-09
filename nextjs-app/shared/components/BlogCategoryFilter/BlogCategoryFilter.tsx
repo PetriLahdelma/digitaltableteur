@@ -2,6 +2,7 @@
 
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
+import { FilterChip } from "../FilterChip";
 
 export interface BlogCategoryFilterProps {
   /** Array of unique tags */
@@ -22,15 +23,34 @@ export interface BlogCategoryFilterProps {
   className?: string;
 }
 
-const sizeClasses = {
-  sm: "text-xs px-3 py-1.5",
-  md: "text-sm px-4 py-2",
-  lg: "text-base px-5 py-2.5",
+/** BlogCategoryFilter variant names predate FilterChip's; map plural → singular. */
+const chipVariantMap = {
+  pills: "pill",
+  underline: "underline",
+  minimal: "minimal",
+} as const;
+
+const groupClassMap = {
+  pills: cn(
+    "flex flex-wrap gap-2",
+    "overflow-x-auto scrollbar-hide",
+    "-mx-4 px-4 tablet:mx-0 tablet:px-0",
+  ),
+  underline: cn(
+    "flex gap-6 border-b border-border",
+    "overflow-x-auto scrollbar-hide",
+    "-mx-4 px-4 tablet:mx-0 tablet:px-0",
+  ),
+  minimal: cn(
+    "flex flex-wrap gap-4",
+    "overflow-x-auto scrollbar-hide",
+    "-mx-4 px-4 tablet:mx-0 tablet:px-0",
+  ),
 } as const;
 
 /**
  * Single-select tag filter for the blog archive, rendered as a labelled
- * `role="group"` of `aria-pressed` toggle buttons (with an implicit "All").
+ * `role="group"` of FilterChip toggle buttons (with an implicit "All").
  * A filter is a UI control, not a set of tab panels, so it is a group of
  * toggle buttons rather than a tablist. Controlled via `selectedTag` /
  * `onTagChange`; ships pills, underline and minimal treatments and optional
@@ -65,147 +85,29 @@ export function BlogCategoryFilter({
 
   const options = [allOption, ...tagOptions];
 
-  const renderPills = () => (
+  return (
     <div
       role="group"
       aria-label={t("blogFilterByTag", "Filter by topic")}
-      className={cn(
-        "flex flex-wrap gap-2",
-        "overflow-x-auto scrollbar-hide",
-        "-mx-4 px-4 tablet:mx-0 tablet:px-0",
-        className
-      )}
+      className={cn(groupClassMap[variant], className)}
     >
-      {options.map((option) => {
-        const isActive =
-          option.value === selectedTag ||
-          (option.value === null && selectedTag === null);
-
-        return (
-          <button
-            key={option.value ?? "all"}
-            aria-pressed={isActive}
-            onClick={() => onTagChange(option.value)}
-            className={cn(
-              "font-body whitespace-nowrap rounded-full",
-              "border transition-all duration-200",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-              sizeClasses[size],
-              isActive
-                ? "bg-foreground text-background border-foreground"
-                : "bg-transparent text-muted-foreground border-border hover:border-foreground hover:text-foreground"
-            )}
-          >
-            {option.label}
-            {option.count !== undefined && (
-              <span
-                className={cn(
-                  "ml-1.5",
-                  isActive ? "text-background" : "text-muted-foreground"
-                )}
-              >
-                ({option.count})
-              </span>
-            )}
-          </button>
-        );
-      })}
+      {options.map((option) => (
+        <FilterChip
+          key={option.value ?? "all"}
+          pressed={
+            option.value === selectedTag ||
+            (option.value === null && selectedTag === null)
+          }
+          onClick={() => onTagChange(option.value)}
+          variant={chipVariantMap[variant]}
+          size={size}
+          count={option.count}
+        >
+          {option.label}
+        </FilterChip>
+      ))}
     </div>
   );
-
-  const renderUnderline = () => (
-    <div
-      role="group"
-      aria-label={t("blogFilterByTag", "Filter by topic")}
-      className={cn(
-        "flex gap-6 border-b border-border",
-        "overflow-x-auto scrollbar-hide",
-        "-mx-4 px-4 tablet:mx-0 tablet:px-0",
-        className
-      )}
-    >
-      {options.map((option) => {
-        const isActive =
-          option.value === selectedTag ||
-          (option.value === null && selectedTag === null);
-
-        return (
-          <button
-            key={option.value ?? "all"}
-            aria-pressed={isActive}
-            onClick={() => onTagChange(option.value)}
-            className={cn(
-              "font-body whitespace-nowrap pb-3",
-              "border-b-2 -mb-px transition-colors duration-200",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-              sizeClasses[size],
-              isActive
-                ? "border-foreground text-foreground"
-                : "border-transparent text-muted-foreground hover:text-foreground"
-            )}
-          >
-            {option.label}
-            {option.count !== undefined && (
-              <span className="ml-1.5 text-muted-foreground">
-                ({option.count})
-              </span>
-            )}
-          </button>
-        );
-      })}
-    </div>
-  );
-
-  const renderMinimal = () => (
-    <div
-      role="group"
-      aria-label={t("blogFilterByTag", "Filter by topic")}
-      className={cn(
-        "flex flex-wrap gap-4",
-        "overflow-x-auto scrollbar-hide",
-        "-mx-4 px-4 tablet:mx-0 tablet:px-0",
-        className
-      )}
-    >
-      {options.map((option) => {
-        const isActive =
-          option.value === selectedTag ||
-          (option.value === null && selectedTag === null);
-
-        return (
-          <button
-            key={option.value ?? "all"}
-            aria-pressed={isActive}
-            onClick={() => onTagChange(option.value)}
-            className={cn(
-              "font-body whitespace-nowrap transition-colors duration-200",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded",
-              sizeClasses[size],
-              isActive
-                ? "text-foreground font-medium"
-                : "text-muted-foreground hover:text-foreground"
-            )}
-          >
-            {option.label}
-            {option.count !== undefined && (
-              <span className="ml-1.5 text-muted-foreground">
-                ({option.count})
-              </span>
-            )}
-          </button>
-        );
-      })}
-    </div>
-  );
-
-  switch (variant) {
-    case "underline":
-      return renderUnderline();
-    case "minimal":
-      return renderMinimal();
-    default:
-      return renderPills();
-  }
 }
 
 BlogCategoryFilter.displayName = "BlogCategoryFilter";
