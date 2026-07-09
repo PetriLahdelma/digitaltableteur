@@ -14768,21 +14768,26 @@
         "onClose": {
           "optional": true,
           "type": "() => void"
+        },
+        "inline": {
+          "optional": true,
+          "type": "boolean"
         }
       },
       "composesWith": [
         "Button",
-        "Text",
-        "Modal",
-        "TextInput",
         "CheckboxGroup",
-        "TextArea"
+        "Modal",
+        "Text",
+        "TextArea",
+        "TextInput",
+        "ToastStack"
       ],
       "prefersOver": [
         "AlertBanner for page-level persistent status"
       ],
       "forbiddenUse": [
-        "mount two <Toast /> instances side by side; the shared live region double-announces and the visuals go stale.",
+        "mount two overlapping fixed <Toast /> instances yourself; use ToastStack (or the app ToastProvider) so concurrent messages stack instead of replacing each other.",
         "rely on Toast for compliance acknowledgements (cookie consent, legal notices); it auto-dismisses — use AlertBanner or Modal.",
         "use Toast for validation errors on a field; the message detaches from the input — use the field's error prop."
       ],
@@ -14849,7 +14854,7 @@
         {
           "story": "Placement",
           "description": "position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.",
-          "source": "export const Placement: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.\",\n      },\n    },\n  },\n  render: function PlacementStory() {\n    const positions: ToastPosition[] = [\n      \"top-left\",\n      \"top-center\",\n      \"top-right\",\n      \"bottom-left\",\n      \"bottom-center\",\n      \"bottom-right\",\n    ];\n    const [position, setPosition] = useState<ToastPosition | null>(null);\n    return (\n      <>\n        {positions.map((p) => (\n          <Button\n            key={p}\n            variant=\"secondary\"\n            size=\"sm\"\n            onClick={() => setPosition(p)}\n          >\n            {p}\n          </Button>\n        ))}\n        <Toast\n          message={position ? `Anchored ${position}.` : \"\"}\n          open={position !== null}\n          tone=\"info\"\n          position={position ?? undefined}\n          onClose={() => setPosition(null)}\n        />\n      </>\n    );\n  },\n};\n\n/** The recommended integration: fire toasts through the app-root provider. */"
+          "source": "export const Placement: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.\",\n      },\n      // Inline docs previews transform their container, which hijacks\n      // position: fixed; an iframe gives the toast a real viewport so each\n      // placement lands where the trigger says.\n      story: { inline: false, iframeHeight: 360 },\n    },\n  },\n  render: function PlacementStory() {\n    const positions: ToastPosition[] = [\n      \"top-left\",\n      \"top-center\",\n      \"top-right\",\n      \"bottom-left\",\n      \"bottom-center\",\n      \"bottom-right\",\n    ];\n    const [position, setPosition] = useState<ToastPosition | null>(null);\n    return (\n      <>\n        {positions.map((p) => (\n          <Button\n            key={p}\n            variant=\"secondary\"\n            size=\"sm\"\n            onClick={() => setPosition(p)}\n          >\n            {p}\n          </Button>\n        ))}\n        <Toast\n          message={position ? `Anchored ${position}.` : \"\"}\n          open={position !== null}\n          tone=\"info\"\n          position={position ?? undefined}\n          onClose={() => setPosition(null)}\n        />\n      </>\n    );\n  },\n};\n\n/** The recommended integration: fire toasts through the app-root provider. */"
         },
         {
           "story": "ProviderDriven",
@@ -14862,6 +14867,95 @@
           "source": "export const Example: Story = {\n  globals: { forcedColors: \"none\" },\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    a11y: { disable: true },\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The canonical post-action confirmation: success tone, default bottom-center placement, auto-dismiss after 3 seconds.\",\n      },\n    },\n  },\n  render: function ExampleStory() {\n    const [open, setOpen] = React.useState(true);\n    return (\n      <Toast\n        message=\"Saved successfully.\"\n        open={open}\n        tone=\"success\"\n        onClose={() => setOpen(false)}\n      />\n    );\n  },\n};"
         }
       ]
+    },
+    "ToastStack": {
+      "name": "ToastStack",
+      "group": "feedback",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Docked stack of transient toasts: renders Toast children inline and owns the fixed placement, newest toast nearest the docked edge, so concurrent messages stay visible instead of replacing each other.",
+      "dense": "docked flex stack of Toast (inline mode); toasts: {id,message,tone?,duration?,size?}[], 6 dock positions, max visible (default 5, oldest wait), onDismiss(id) on per-toast auto-dismiss",
+      "keywords": [
+        "toast stack",
+        "notification stack",
+        "snackbar queue",
+        "stacked toasts",
+        "concurrent notifications"
+      ],
+      "importLine": "import ToastStack from \"@dt/ToastStack\";",
+      "keyProps": [
+        {
+          "name": "toasts",
+          "type": "ToastStackItem[]",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "top-left | top-center | top-right | bottom-left | bottom-center | bottom-right",
+          "required": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "toasts": {
+          "optional": false,
+          "type": "ToastStackItem[]"
+        },
+        "position": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "top-left",
+            "top-center",
+            "top-right",
+            "bottom-left",
+            "bottom-center",
+            "bottom-right"
+          ]
+        },
+        "onDismiss": {
+          "optional": true,
+          "type": "(id: string) => void"
+        },
+        "max": {
+          "optional": true,
+          "type": "number"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "composesWith": [
+        "Toast"
+      ],
+      "prefersOver": [
+        "multiple sibling <Toast /> mounts, whose fixed positions overlap and whose messages replace each other"
+      ],
+      "forbiddenUse": [
+        "mounting more than one ToastStack per position; group toasts by position and render one stack per active position instead",
+        "persistent or compliance-critical messaging; toasts auto-dismiss (use AlertBanner)"
+      ],
+      "usage": {
+        "description": "ToastStack is the multi-toast surface behind the app ToastProvider: showToast calls append items and each renders as an inline Toast laid out by the stack, newest nearest the docked edge. Use it (or the provider) whenever more than one transient message can be alive at once; a bare Toast stays correct for single, fully controlled cases."
+      },
+      "tokens": {
+        "colors": [],
+        "spacing": [
+          "--space-internal-8",
+          "--space-layout-24"
+        ]
+      },
+      "examples": []
     },
     "Tooltip": {
       "name": "Tooltip",

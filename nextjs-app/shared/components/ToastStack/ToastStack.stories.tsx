@@ -7,7 +7,8 @@ import ToastStack, {
 import contract from "./ToastStack.contract.json";
 
 const seedToasts: ToastStackItem[] = [
-  { id: "changed", message: "Language changed", tone: "success", duration: 60000 },
+  { id: "saved", message: "Settings saved.", tone: "success", duration: 60000 },
+  { id: "changed", message: "Language changed to English", duration: 60000 },
   {
     id: "notice",
     message: "This content is only available in English",

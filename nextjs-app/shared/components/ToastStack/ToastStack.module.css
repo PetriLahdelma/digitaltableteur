@@ -15,13 +15,14 @@
 }
 
 /*
- * Bottom positions grow upward: newest toast is appended last and
- * column-reverse keeps it nearest the docked edge.
+ * Newest toast stays nearest the docked edge. Bottom docks grow upward from
+ * their anchor, so plain column order already puts the appended-last toast at
+ * the edge; top docks need column-reverse for the same effect.
  */
 
-.stack--bottom-left,
-.stack--bottom-center,
-.stack--bottom-right {
+.stack--top-left,
+.stack--top-center,
+.stack--top-right {
   flex-direction: column-reverse;
 }
 
