@@ -355,7 +355,7 @@
   --secondary-text-color: #aaa;
   --inverted-text-color: #181a1b;
   --shortcut-hint-color: #9ca3af; /* 6.7:1 on #181a1b */
-  --link-color: #71efff;
+  --link-color: var(--color-primary); /* links use the interactive accent, not info-cyan; matches light theme where link == primary */
   --color-primary: #6fa8ff;
   --color-primary-disabled: #6fa8ff50;
   --color-success: #4fd18b;

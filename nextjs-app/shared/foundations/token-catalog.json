@@ -1,6 +1,6 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-08T07:56:57.223Z",
+  "generatedAt": "2026-07-09T23:20:08.148Z",
   "tokenCount": 184,
   "usageCoverage": 150,
   "themes": [
@@ -283,9 +283,9 @@
         "label": "Link on canvas",
         "largeText": false,
         "themeId": "dark",
-        "fgRaw": "#71efff",
+        "fgRaw": "#6fa8ff",
         "bgRaw": "#181a1b",
-        "ratio": 12.88,
+        "ratio": 7.25,
         "level": "AAA",
         "pass": true
       },
