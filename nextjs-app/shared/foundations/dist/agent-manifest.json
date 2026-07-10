@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-10T13:30:37.574Z",
+  "generatedAt": "2026-07-10T14:38:15.719Z",
   "summary": {
     "componentCount": 163,
     "statusCounts": {
@@ -7506,7 +7506,7 @@
         "group": "structure",
         "status": "stable",
         "description": "Framed code block with a title bar, language label, optional line numbers, and copy button; renders pre-highlighted Shiki output with theme-aware syntax colors.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-code-block-window",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1164-257",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -7525,7 +7525,7 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-07-06 — beta→stable: AT snapshots bootstrapped across base/light/dark/forced-colors (all beta-matrix stories green, deterministic); shiki dual-theme (--shiki-light/--shiki-dark) syntax colors + forced-colors CanvasText mapping verified.",
+          "reviewedNote": "2026-07-06 — beta→stable: AT snapshots bootstrapped across base/light/dark/forced-colors (all beta-matrix stories green, deterministic); shiki dual-theme (--shiki-light/--shiki-dark) syntax colors + forced-colors CanvasText mapping verified. 2026-07-10 — Figma component built (Molecules, node 1164-257): traffic-light chrome on DT tokens, Shiki body bound to the new code/shiki/* per-theme variables (values extracted from codeBlockFixtures.ts), header/caption on code/toolbar-text.",
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true
         },

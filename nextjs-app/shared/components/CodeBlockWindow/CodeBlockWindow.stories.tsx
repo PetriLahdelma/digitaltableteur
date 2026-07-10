@@ -15,7 +15,7 @@ const meta: Meta<typeof CodeBlockWindow> = {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-code-block-window",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1164-257",
     },
     contractStatus: contract.status,
     a11y: { test: "error" },

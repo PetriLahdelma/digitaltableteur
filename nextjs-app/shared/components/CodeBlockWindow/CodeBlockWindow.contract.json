@@ -1,198 +1,198 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-    "name": "CodeBlockWindow",
-    "tier": "organism",
-    "group": "structure",
-    "status": "stable",
-    "description": "Framed code block with a title bar, language label, optional line numbers, and copy button; renders pre-highlighted Shiki output with theme-aware syntax colors.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-code-block-window",
-    "radixPrimitive": null,
-    "element": "div",
-    "variants": {},
-    "slots": [],
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-    ],
-    "a11y": {
-        "keyboard": [],
-        "reducedMotion": true,
-        "reviewed": true,
-        "forcedColorsVerified": true,
-        "ariaRequirements": [],
-        "reviewedNote": "2026-07-06 — beta→stable: AT snapshots bootstrapped across base/light/dark/forced-colors (all beta-matrix stories green, deterministic); shiki dual-theme (--shiki-light/--shiki-dark) syntax colors + forced-colors CanvasText mapping verified.",
-        "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "CodeBlockWindow",
+  "tier": "organism",
+  "group": "structure",
+  "status": "stable",
+  "description": "Framed code block with a title bar, language label, optional line numbers, and copy button; renders pre-highlighted Shiki output with theme-aware syntax colors.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1164-257",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "ariaRequirements": [],
+    "reviewedNote": "2026-07-06 — beta→stable: AT snapshots bootstrapped across base/light/dark/forced-colors (all beta-matrix stories green, deterministic); shiki dual-theme (--shiki-light/--shiki-dark) syntax colors + forced-colors CanvasText mapping verified. 2026-07-10 — Figma component built (Molecules, node 1164-257): traffic-light chrome on DT tokens, Shiki body bound to the new code/shiki/* per-theme variables (values extracted from codeBlockFixtures.ts), header/caption on code/toolbar-text.",
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+      "since": "2026-06-04"
     },
-    "tokens": {
-        "colors": [],
-        "spacing": []
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/page.tsx",
+      "since": "2026-06-04"
     },
-    "lightDarkVerified": true,
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleContent.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleMain.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/code-window/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
-            "since": "2026-06-04"
-        }
-    ],
-    "schemaVersion": 2,
-    "props": {
-        "title": {
-            "optional": true,
-            "type": "string"
-        },
-        "caption": {
-            "optional": true,
-            "type": "string"
-        },
-        "language": {
-            "optional": true,
-            "type": "string"
-        },
-        "showLineNumbers": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "context": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "article",
-                "default"
-            ]
-        },
-        "className": {
-            "optional": true,
-            "type": "string"
-        },
-        "children": {
-            "optional": false,
-            "type": "React.ReactNode"
-        }
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/ServerArticleContent.tsx",
+      "since": "2026-06-04"
     },
-    "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
-    ],
-    "composesWith": [
-        "CodeSnippet",
-        "Prose"
-    ],
-    "displayName": "CodeBlockWindow",
-    "keywords": [
-        "code window",
-        "code frame",
-        "filename",
-        "caption",
-        "shiki",
-        "article code"
-    ],
-    "dense": "Framed code: header w/ title (filename) + language label, caption below, context default|article (prose width, 35vh scroll); children expect highlighted pre/code (Shiki), not raw strings",
-    "usage": {
-        "description": "CodeBlockWindow is the presentation frame around highlighted code: a header with `title` (usually the filename) and `language` label, an optional `caption` below, and a `context` switch where `article` fits prose width and caps height for long listings. It wraps already-highlighted markup (Shiki `pre`/`code` from the blog pipeline) — the anatomy is the value: frame, header, code region, caption. For raw strings with a copy button, use CodeSnippet directly.",
-        "bestPractices": [
-            {
-                "guidance": true,
-                "description": "Use title for the filename — readers orient by file, not by language."
-            },
-            {
-                "guidance": true,
-                "description": "Use context=\"article\" inside prose so long listings scroll instead of dominating the page."
-            },
-            {
-                "guidance": true,
-                "description": "Put the point of the example in caption; the code shows how, the caption says why."
-            },
-            {
-                "guidance": true,
-                "description": "Let line numbers follow the Shiki output; override showLineNumbers only when the source pipeline gets it wrong."
-            },
-            {
-                "guidance": false,
-                "description": "Do not pass raw code strings as children — it expects highlighted pre/code markup; raw strings belong in CodeSnippet."
-            },
-            {
-                "guidance": false,
-                "description": "Do not nest it inside MacWindowFrame — two chromes compete; pick the one that matches the context."
-            }
-        ],
-        "anatomy": [
-            {
-                "name": "Frame",
-                "required": true,
-                "description": "The window surface and border carrying the code presentation."
-            },
-            {
-                "name": "Header",
-                "required": false,
-                "description": "title (filename) left, language label right; renders when either is set."
-            },
-            {
-                "name": "Code region",
-                "required": true,
-                "description": "The highlighted pre/code children; article context adds width/height constraints."
-            },
-            {
-                "name": "Caption",
-                "required": false,
-                "description": "Prose line under the code explaining why the example matters."
-            }
-        ]
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/ServerArticleMain.tsx",
+      "since": "2026-06-04"
     },
-    "playground": {
-        "defaults": {
-            "title": "tokens.config.ts",
-            "language": "ts",
-            "caption": "Layer 0: DTCG source of truth."
-        }
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/dev/code-window/page.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/index.ts",
+      "since": "2026-06-04"
     }
+  ],
+  "schemaVersion": 2,
+  "props": {
+    "title": {
+      "optional": true,
+      "type": "string"
+    },
+    "caption": {
+      "optional": true,
+      "type": "string"
+    },
+    "language": {
+      "optional": true,
+      "type": "string"
+    },
+    "showLineNumbers": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "context": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "article",
+        "default"
+      ]
+    },
+    "className": {
+      "optional": true,
+      "type": "string"
+    },
+    "children": {
+      "optional": false,
+      "type": "React.ReactNode"
+    }
+  },
+  "forbiddenUse": [
+    "Bypass design tokens or skip forced-colors verification at beta."
+  ],
+  "composesWith": [
+    "CodeSnippet",
+    "Prose"
+  ],
+  "displayName": "CodeBlockWindow",
+  "keywords": [
+    "code window",
+    "code frame",
+    "filename",
+    "caption",
+    "shiki",
+    "article code"
+  ],
+  "dense": "Framed code: header w/ title (filename) + language label, caption below, context default|article (prose width, 35vh scroll); children expect highlighted pre/code (Shiki), not raw strings",
+  "usage": {
+    "description": "CodeBlockWindow is the presentation frame around highlighted code: a header with `title` (usually the filename) and `language` label, an optional `caption` below, and a `context` switch where `article` fits prose width and caps height for long listings. It wraps already-highlighted markup (Shiki `pre`/`code` from the blog pipeline) — the anatomy is the value: frame, header, code region, caption. For raw strings with a copy button, use CodeSnippet directly.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Use title for the filename — readers orient by file, not by language."
+      },
+      {
+        "guidance": true,
+        "description": "Use context=\"article\" inside prose so long listings scroll instead of dominating the page."
+      },
+      {
+        "guidance": true,
+        "description": "Put the point of the example in caption; the code shows how, the caption says why."
+      },
+      {
+        "guidance": true,
+        "description": "Let line numbers follow the Shiki output; override showLineNumbers only when the source pipeline gets it wrong."
+      },
+      {
+        "guidance": false,
+        "description": "Do not pass raw code strings as children — it expects highlighted pre/code markup; raw strings belong in CodeSnippet."
+      },
+      {
+        "guidance": false,
+        "description": "Do not nest it inside MacWindowFrame — two chromes compete; pick the one that matches the context."
+      }
+    ],
+    "anatomy": [
+      {
+        "name": "Frame",
+        "required": true,
+        "description": "The window surface and border carrying the code presentation."
+      },
+      {
+        "name": "Header",
+        "required": false,
+        "description": "title (filename) left, language label right; renders when either is set."
+      },
+      {
+        "name": "Code region",
+        "required": true,
+        "description": "The highlighted pre/code children; article context adds width/height constraints."
+      },
+      {
+        "name": "Caption",
+        "required": false,
+        "description": "Prose line under the code explaining why the example matters."
+      }
+    ]
+  },
+  "playground": {
+    "defaults": {
+      "title": "tokens.config.ts",
+      "language": "ts",
+      "caption": "Layer 0: DTCG source of truth."
+    }
+  }
 }
