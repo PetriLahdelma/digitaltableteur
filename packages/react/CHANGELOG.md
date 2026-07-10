@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.6 - 2026-07-10
+
+- Exports `CodeSnippet` (stable since #1067) with its prop types; public-api manifest now lists 106 exports.
+- Fixes a hydration mismatch in `CodeBlockWindow` when its children cross a server→client component boundary (#1074): React Flight delivers such children as lazy nodes during hydration, which fail `React.isValidElement`, so the component skipped its `pre`/`code` class enhancement and disabled the copy button on the client only. Fulfilled lazy nodes are now unwrapped before any children introspection; unresolved nodes degrade identically on server and client. Reproduced and verified in-browser plus a unit regression with a synthetic Flight-lazy child.
+- No other public runtime API changes from 0.1.5.
+- Verified by the full local gate plus `check:react-package` and `check:react-public-api`.
+
 ## 0.1.5 - 2026-07-10
 
 - TextInput gains three additive props (#1054): `clearable` renders a labelled ×-button inside the field chrome while the field has a value (never while disabled); activating it empties the field, clears built-in validation errors, fires `onValueChange("")` then `onClear()`, and returns focus to the input. `hideLabel` visually hides the label while keeping it in the accessibility tree (sr-only). The clear button's accessible name interpolates the field label via the new `inputClearField` i18n key (EN/FI/SV).

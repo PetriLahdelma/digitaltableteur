@@ -6,15 +6,7 @@ import Text from "@dt/Text";
 import Button from "@dt/Button";
 import SplitButton from "@dt/SplitButton";
 import Toast from "@dt/Toast";
-import Prism from "prismjs";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-python";
-import "prismjs/components/prism-go";
-import "prismjs/components/prism-rust";
-import "prismjs/components/prism-json";
-import "prismjs/components/prism-bash";
-import "prismjs/components/prism-markup";
+import Prism from "./prismSetup";
 
 export type SupportedLanguage =
   | "javascript"
