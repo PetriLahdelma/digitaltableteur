@@ -1,0 +1,6 @@
+- figure:
+  - text: bash
+  - button "Copy code to clipboard": Copy
+  - region "Code snippet in bash":
+    - code: npm install @digitaltableteur/components --save
+  - status

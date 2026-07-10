@@ -19,6 +19,12 @@ export {
 export { default as Checkbox } from "../../../nextjs-app/shared/components/Checkbox/Checkbox";
 export { default as CheckboxGroup } from "../../../nextjs-app/shared/components/CheckboxGroup/CheckboxGroup";
 export { default as CodeBlockWindow } from "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow";
+export { default as CodeSnippet } from "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet";
+export type {
+  CodeSnippetProps,
+  CodeSnippetVariant,
+  SupportedLanguage,
+} from "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet";
 export {
   Combobox,
   type ComboboxOption,

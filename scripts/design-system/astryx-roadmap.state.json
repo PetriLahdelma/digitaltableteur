@@ -1,488 +1,488 @@
 {
-    "version": 1,
-    "goal": "At least 90/100 on every rescoped Astryx-comparison dimension, plus the selected utilities operational.",
-    "rubric": "Mission-rescoped (portfolio design-system-of-record). 90 is measured against DT's intended surface and a published/dogfooded package, NOT app-platform breadth or raw OSS adoption. Anti-goals stay in force.",
-    "humanRoadmap": "docs/design-system/astryx-parity-roadmap.md",
-    "seededOn": "2026-07-08",
-    "dimensions": [
-        {
-            "key": "maturity",
-            "current": 82,
-            "target": 90
-        },
-        {
-            "key": "breadth",
-            "current": 74,
-            "target": 90
-        },
-        {
-            "key": "scalability",
-            "current": 86,
-            "target": 90
-        },
-        {
-            "key": "futureproofness",
-            "current": 88,
-            "target": 90
-        },
-        {
-            "key": "accessibility",
-            "current": 81,
-            "target": 90
-        },
-        {
-            "key": "governance",
-            "current": 90,
-            "target": 90
-        },
-        {
-            "key": "agentReadiness",
-            "current": 90,
-            "target": 90
-        },
-        {
-            "key": "theming",
-            "current": 90,
-            "target": 90
-        },
-        {
-            "key": "distribution",
-            "current": 84,
-            "target": 90
-        }
-    ],
-    "antiGoalComponents": [
-        "AppShell",
-        "TreeList",
-        "DataGrid",
-        "MegaMenu"
-    ],
-    "ratchets": {
-        "reactPackageAppImports": {
-            "ceiling": 0,
-            "desc": "@digitaltableteur/react package graph files importing @/ (app root); must stay eliminated from the npm package"
-        },
-        "reactPackageNextImports": {
-            "ceiling": 0,
-            "desc": "@digitaltableteur/react package graph files importing next/*; must stay eliminated from the npm package"
-        },
-        "reactPackageI18nImports": {
-            "ceiling": 0,
-            "desc": "@digitaltableteur/react package graph files coupled to i18next/useTranslation; must stay eliminated from the npm package"
-        },
-        "catalogStableCount": {
-            "floor": 58,
-            "desc": "stable internal catalog components + patterns after package-boundary narrowing; must not drop without a deliberate roadmap update"
-        }
+  "version": 1,
+  "goal": "At least 90/100 on every rescoped Astryx-comparison dimension, plus the selected utilities operational.",
+  "rubric": "Mission-rescoped (portfolio design-system-of-record). 90 is measured against DT's intended surface and a published/dogfooded package, NOT app-platform breadth or raw OSS adoption. Anti-goals stay in force.",
+  "humanRoadmap": "docs/design-system/astryx-parity-roadmap.md",
+  "seededOn": "2026-07-08",
+  "dimensions": [
+    {
+      "key": "maturity",
+      "current": 82,
+      "target": 90
     },
-    "utilities": [
-        {
-            "name": "LinkProvider",
-            "status": "operational",
-            "file": "nextjs-app/shared/lib/linkComponent.tsx",
-            "note": "decouples next/link from the catalog; part of Phase 1"
-        },
-        {
-            "name": "useMediaQuery",
-            "status": "operational",
-            "file": "nextjs-app/shared/hooks/useMediaQuery.ts",
-            "note": "consolidates 17 ad-hoc matchMedia call sites"
-        },
-        {
-            "name": "useFocusTrap",
-            "status": "operational",
-            "file": "nextjs-app/shared/hooks/useFocusTrap.ts",
-            "note": "custom overlays are not Radix-backed; real a11y value"
-        },
-        {
-            "name": "useScrollLock",
-            "status": "operational",
-            "file": "nextjs-app/shared/hooks/useScrollLock.ts",
-            "note": "body scroll lock for custom overlays"
-        },
-        {
-            "name": "useTheme",
-            "status": "operational",
-            "file": "nextjs-app/shared/components/ThemeProvider/ThemeProvider.tsx",
-            "note": "already existed; exposed + documented"
-        },
-        {
-            "name": "LayerProvider",
-            "status": "operational",
-            "file": "nextjs-app/shared/lib/layer.tsx",
-            "note": "host-injected portal root with default document.body behavior"
-        },
-        {
-            "name": "useLayer",
-            "status": "operational",
-            "file": "nextjs-app/shared/lib/layer.tsx",
-            "note": "resolves portal container and standard z-index tier for layered UI"
-        },
-        {
-            "name": "useOverflow",
-            "status": "operational",
-            "file": "nextjs-app/shared/hooks/useOverflow.ts",
-            "note": "element overflow detection for reusable scroll affordance logic"
-        },
-        {
-            "name": "useScrollOverflow",
-            "status": "operational",
-            "file": "nextjs-app/shared/hooks/useOverflow.ts",
-            "note": "scroll-position affordances for overflowing x/y containers"
-        }
-    ],
-    "checkpoints": [
-        {
-            "id": "1.5",
-            "type": "unverifiable-regression",
-            "reason": "i18n decoupling: EN/FI/SV correctness is not provable by the gates (English-only snapshots, no multi-locale/visual suite). Needs browser + multi-locale review.",
-            "requiresApproval": true
-        },
-        {
-            "id": "1.6",
-            "type": "unverifiable-regression",
-            "reason": "navigation decoupling: routing/active-link behavior is not exercised by unit tests or a11y snapshots. Needs browser review.",
-            "requiresApproval": true
-        },
-        {
-            "id": "5.1",
-            "type": "authorization",
-            "reason": "publishing to a registry is outward-facing and irreversible.",
-            "requiresApproval": true
-        }
-    ],
-    "reactPublicSurface": {
-        "alphaCeiling": 0,
-        "allowedAlphaExports": [],
-        "stableContractCount": 58,
-        "stableExportCount": 43,
-        "requiredContractExports": [
-            "AlertBanner",
-            "Avatar",
-            "AvatarGroup",
-            "Badge",
-            "Breadcrumb",
-            "Button",
-            "ButtonGroup",
-            "Card",
-            "CategoryFilter",
-            "Checkbox",
-            "CheckboxGroup",
-            "CodeBlockWindow",
-            "Combobox",
-            "Container",
-            "CookieConsent",
-            "Divider",
-            "EmptyState",
-            "ExpandableSection",
-            "FileUpload",
-            "FlexBox",
-            "FormField",
-            "Gallery",
-            "Grid",
-            "GroupLabel",
-            "HelperText",
-            "Icon",
-            "IconButton",
-            "Kbd",
-            "Label",
-            "LanguageSwitcher",
-            "Link",
-            "List",
-            "MacWindowFrame",
-            "Menu",
-            "Modal",
-            "MultiCombobox",
-            "NavLink",
-            "NavMenuList",
-            "Pagination",
-            "PhoneInput",
-            "Progress",
-            "Radio",
-            "RadioGroup",
-            "ReadingProgress",
-            "Section",
-            "Select",
-            "Skeleton",
-            "SkipLink",
-            "Spinner",
-            "Stack",
-            "StatusDot",
-            "Switch",
-            "Tabs",
-            "Text",
-            "TextArea",
-            "TextInput",
-            "ThemeProvider",
-            "Title",
-            "Toast",
-            "ValueCard",
-            "VisuallyHidden"
-        ],
-        "forbiddenExports": [
-            "AppLoading",
-            "ArticleCard",
-            "ArticleContent",
-            "ArticleProse",
-            "ArticleShareSection",
-            "Author",
-            "AuthorBio",
-            "AuthorSocial",
-            "BlogCategoryFilter",
-            "BlogGrid",
-            "BlogMediaImage",
-            "ChatComposer",
-            "ChatHeader",
-            "ChatMessages",
-            "ChatToggle",
-            "ChatWidget",
-            "ChunkErrorBoundary",
-            "ComplianceCard",
-            "ContactForm",
-            "DonnyAvatar",
-            "DonnyState",
-            "EmailSignatureGenerator",
-            "EnhancedArticleCard",
-            "EnhancedAuthorCard",
-            "EnhancedProjectCard",
-            "GalleryImage",
-            "HelsinkiClock",
-            "MCPActionButton",
-            "MarkdownMessage",
-            "MobileDrawer",
-            "NavItem",
-            "NextLayout",
-            "OpenHours",
-            "PersonCard",
-            "ProjectCard",
-            "ProjectGallery",
-            "ProjectNav",
-            "SecureCVDownload",
-            "ServiceCard",
-            "ServicesGrid",
-            "SiteFooter",
-            "SiteFooterProps",
-            "SiteHeader",
-            "SiteHeaderProps",
-            "SiteTree",
-            "SiteTreeNode",
-            "Skill",
-            "SkillsGrid",
-            "SocialShare",
-            "SocialShareChannel",
-            "SocialShareProps",
-            "SocialShareVariant",
-            "StudioMap",
-            "TOCItem",
-            "TableOfContents",
-            "Testimonial",
-            "TransformingActionInput",
-            "WorkGrid",
-            "WorkNav"
-        ],
-        "allowedUnmappedExports": [
-            "AnimationRuntime",
-            "AnimationRuntimeProviderProps",
-            "CategoryFilterProps",
-            "CategoryOption",
-            "ComboboxOption",
-            "ComboboxProps",
-            "ContainerProps",
-            "CookieCategory",
-            "CookieConsentContextValue",
-            "CookieConsentProviderProps",
-            "CookieConsentState",
-            "DEFAULT_CONSENTS",
-            "DividerProps",
-            "ExpandableSectionProps",
-            "FormFieldProps",
-            "IconButtonProps",
-            "Image",
-            "ImageComponentProps",
-            "LanguageSwitcherOption",
-            "LanguageSwitcherProps",
-            "LayerProviderProps",
-            "LayerRole",
-            "LayerRuntime",
-            "LayerState",
-            "LinkComponentProps",
-            "MenuContent",
-            "MenuItem",
-            "MenuSeparator",
-            "MenuSub",
-            "MenuSubContent",
-            "MenuSubTrigger",
-            "MenuTrigger",
-            "MotionPreference",
-            "MultiComboboxOption",
-            "MultiComboboxProps",
-            "NavLinkProps",
-            "NavigationRuntime",
-            "NavigationRuntimeProviderProps",
-            "OverflowState",
-            "PaginationProps",
-            "ReadingProgressProps",
-            "ScrollOverflowState",
-            "SectionProps",
-            "SelectOption",
-            "SkipLinkProps",
-            "SpinnerProps",
-            "StackProps",
-            "TextAreaProps",
-            "ToastRuntime",
-            "ToastRuntimeProviderProps",
-            "Translate",
-            "TranslationOptions",
-            "TranslationResourceBundle",
-            "TranslationRuntime",
-            "ValueCardProps",
-            "VisuallyHiddenProps"
-        ],
-        "note": "Pre-publish package-boundary ratchet. @digitaltableteur/react is a curated design-system package surface: primitives, DS display/layout/form/navigation/feedback components, host adapters/providers, and accessibility/runtime hooks. It intentionally does not export Digitaltableteur app/product/site composition such as chat, site chrome, portfolio/blog cards, social/profile sharing, maps, booking/CV utilities, or route-specific layouts, even when those contracts are stable in the internal catalog. Normal mode fails if required curated contracts are missing, any forbidden app/product export appears, any unexpected unmapped uppercase export appears, or any alpha contract enters the surface. Strict publish-ready mode also requires zero alpha contract exports."
+    {
+      "key": "breadth",
+      "current": 90,
+      "target": 90
     },
-    "tasks": {
-        "1.7": {
-            "status": "done"
-        },
-        "1.5": {
-            "status": "done",
-            "approval": {
-                "clearedBy": "Petri Lahdelma",
-                "on": "2026-07-08",
-                "note": "Approved i18n multi-locale/browser review for @digitaltableteur/react publish after check:site-package-dogfood passed 12 browser checks and test:stories:i18n passed the 27-check EN/FI/SV desktop/mobile matrix."
-            },
-            "note": "Injected translation/localization adapter implemented; reactPackageI18nImports is ratcheted to 0 for the curated @digitaltableteur/react package graph. check:site-package-dogfood covers representative EN/FI/SV browser routes, package translation subscriptions, SiteHeader/WorkNav/BlogNav localized labels, selected-work image loading on direct and client-navigation home visits, and toast-only content-language notices. test:stories:i18n writes a desktop/mobile EN/FI/SV screenshot review packet under .omx/state/design-system/i18n-navigation-review/latest. Latest 2026-07-08 approval cleared this checkpoint for @digitaltableteur/react publish."
-        },
-        "1.6": {
-            "status": "done",
-            "approval": {
-                "clearedBy": "Petri Lahdelma",
-                "on": "2026-07-08",
-                "note": "Approved package navigation behavior review for @digitaltableteur/react publish after check:site-package-dogfood passed SiteHeader, WorkNav, BlogNav, and client-navigation checks and test:stories:i18n passed the navigation flows."
-            },
-            "note": "Navigation adapter implemented and app injects Next App Router runtime; reactPackageAppImports and reactPackageNextImports are ratcheted to 0 for the curated @digitaltableteur/react package graph. check:site-package-dogfood covers representative SiteHeader link routing + aria-current state, WorkNav/BlogNav button routing through the package-consumed Next runtime, and selected-work image loading after client navigation back home. test:stories:i18n records desktop SiteHeader/WorkNav/BlogNav routing flows in the review packet. Latest 2026-07-08 approval cleared this checkpoint for @digitaltableteur/react publish."
-        },
-        "1.8": {
-            "status": "done",
-            "note": "@digitaltableteur/react workspace package builds with Vite, emits declarations and style.css, passes Node ESM import smoke, and has npm pack dry-run coverage via check:react-package."
-        },
-        "1.9": {
-            "status": "in-progress",
-            "note": "The app imports the package stylesheet and the package itself is verified by clean consumer smokes, but site-facing sources still use the local @dt alias until the explicit registry-consumption step. Do not treat local @dt alias cleanup as a prerequisite for narrowing the npm package surface."
-        },
-        "1.10": {
-            "status": "done",
-            "note": "Added check:site-package-dogfood, a Playwright smoke for representative package-consumed app routes across EN/FI/SV: contact/home copy, WorkNav/BlogNav translations, SiteHeader link routing + active state, WorkNav/BlogNav button routing, selected-work image loading on direct home load and client navigation back home, toast-only English content-language notices, and the EN PSEO Breadcrumb production consumer. It writes .omx/state/design-system/site-package-dogfood/latest.json for the React publish review packet."
-        },
-        "3.4": {
-            "status": "done",
-            "note": "Breadcrumb has a real production consumer and is now stable: PseoLeafPageView renders the package Breadcrumb instead of hand-authored next/link breadcrumb markup, check:site-package-dogfood verifies the EN PSEO leaf trail labels/link hrefs/current item, and check:beta-promotion-readiness verifies production consumer, a11y snapshots, forced colors, and real Figma evidence."
-        },
-        "3.3": {
-            "status": "in-progress",
-            "note": "Added check:beta-promotion-readiness for the named Breadth-90 beta candidates (Breadcrumb, Tabs, Progress, AlertBanner, EmptyState, CodeSnippet). Breadcrumb, Tabs, Progress, AlertBanner, and EmptyState are now stable and exported from @digitaltableteur/react after clearing the evidence bar. CodeSnippet now has a real RhythmguardPage production consumer plus Default, Example, and real Playwright forced-colors accessibility snapshots, but remains beta and unexported because its Figma URL still points at a placeholder rather than a real numeric node id. The guard writes .omx/state/design-system/beta-promotion-readiness/latest.json, reports blockers such as missing production consumers/Figma/snapshots, and fails if any candidate is marked stable before the evidence bar is met."
-        },
-        "3.5": {
-            "status": "done",
-            "note": "EmptyState now has a real production consumer and is stable: WorkGrid renders the package EmptyState for the no-projects fallback using existing workNoResults translations, check:beta-promotion-readiness verifies production consumer, a11y snapshots, forced colors, and real Figma evidence, and the clean npm consumer smoke imports/types/renders EmptyState from @digitaltableteur/react."
-        },
-        "3.6": {
-            "status": "done",
-            "note": "AlertBanner now has real production consumers and is stable: Mermaid renders the package AlertBanner for persistent diagram-render errors using EN/FI/SV mermaidErrorTitle translations while leaving successful diagram output unchanged. check:beta-promotion-readiness verifies production consumers, a11y snapshots, forced colors, and real Figma evidence, and the clean npm consumer smoke imports/types/renders AlertBanner from @digitaltableteur/react."
-        },
-        "3.7": {
-            "status": "done",
-            "note": "Tabs now has real production consumers and is stable: ContactInquiryPanel renders the package Tabs for the contact message/book switcher using ariaLabel for the contactInquiryModeLabel accessible name and getTabPanelProps for paired panels. check:beta-promotion-readiness verifies production consumers, a11y snapshots, forced colors, and real Figma evidence, and the clean npm consumer smoke imports/types/renders Tabs plus getTabPanelProps from @digitaltableteur/react."
-        },
-        "3.8": {
-            "status": "done",
-            "note": "Progress now has real production consumers and is stable: ContactInquiryPanel renders the package Progress as the indeterminate booking-calendar loading fallback passed into DonnyBookingEmbed, with EN/FI/SV donnyBookingLoading translations and a default embed fallback for direct consumers. check:beta-promotion-readiness verifies production consumers, a11y snapshots, forced colors, and real Figma evidence, and the clean npm consumer smoke imports/types/renders Progress from @digitaltableteur/react."
-        },
-        "3.9": {
-            "status": "done",
-            "note": "CodeSnippet now has a real production consumer and honest a11y evidence but is intentionally still beta: RhythmguardPage renders CodeSnippet for the copyable Rhythmguard strict-config install snippet, Storybook Vite prebundles CodeSnippet's Prism modules so the iframe does not hang on first render, and CodeSnippet/__a11y-snapshots__ contains Default, Example, and real Playwright forced-colors snapshots. check:beta-promotion-readiness now reports CodeSnippet blocked only by realFigmaNode; do not promote or export it until the contract has a real numeric Figma node id."
-        },
-        "1.11": {
-            "status": "done",
-            "note": "Implemented test:stories:i18n as a real Playwright i18n/navigation visual matrix. It captures EN/FI/SV desktop+mobile screenshots for home/contact/work/blog and desktop SiteHeader, WorkNav, and BlogNav routing flows into .omx/state/design-system/i18n-navigation-review/latest/{report.json,review.md,screenshots/}. Latest run passed 27 checks."
-        },
-        "5.1": {
-            "status": "done",
-            "approval": {
-                "clearedBy": "Petri Lahdelma",
-                "on": "2026-07-08",
-                "note": "Approved publishing @digitaltableteur/react to the private npm registry through the GitHub Actions OIDC Trusted Publisher workflow after strict local readiness gates pass."
-            },
-            "note": "@digitaltableteur/tokens@0.1.0, @digitaltableteur/tokens-css@0.1.0, and @digitaltableteur/react@0.1.1 are published as private/restricted npm packages. check:registry-token-install verifies token package registry access/installability, check:package-registry-status verifies current package registry state, and check:react-registry-install verifies the published React package from npm. Remaining roadmap work: publish the next React patch through the committed GitHub Actions OIDC Trusted Publisher path rather than manual npm publish."
-        },
-        "5.2": {
-            "status": "done",
-            "note": "Consumer setup docs and second-consumer path documented in docs/design-system/npm-consumer-setup.md, including install order, CSS imports, host adapters, i18n bridge, and package/site guard commands."
-        },
-        "5.3": {
-            "status": "done",
-            "note": "The site dogfoods the registry @digitaltableteur/react package import path and package stylesheet. The root install now also consumes @digitaltableteur/tokens and @digitaltableteur/tokens-css from npm while runtime CSS continues to load variables.css for exact visual continuity."
-        },
-        "5.4": {
-            "status": "done",
-            "note": "Added check:npm-consumer-install. It packs @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react, installs those tarballs into a clean temporary consumer, resolves token JS/JSON/CSS/theme exports plus React package CSS, imports public adapters/chrome patterns, SSR-renders an installed Button, compiles a strict TypeScript consumer against the emitted declarations, and writes .omx/state/design-system/npm-consumer-install/latest.json."
-        },
-        "5.5": {
-            "status": "done",
-            "note": "Added check:registry-token-install. It installs @digitaltableteur/tokens@0.1.0 and @digitaltableteur/tokens-css@0.1.0 from the private npm registry into a clean temporary consumer, verifies token JS/JSON/Tailwind/CSS/theme exports from node_modules, and writes .omx/state/design-system/registry-token-install/latest.json."
-        },
-        "5.6": {
-            "status": "done",
-            "note": "check:react-publish-preflight aggregates lint, typecheck, full Vitest, Storybook static build, Next production build, roadmap ratchets, package release metadata, Trusted Publisher readiness, registry package resolution, private token registry install, current React registry install, local tarball consumer install, package tarball contents guard, package publish dry-run guard, React public surface guard, React public API guard, package dogfood browser checks, the i18n/navigation visual review packet, and the consolidated React publish review packet. Strict check:react-publish-ready keeps the next React patch publish-only path honest by requiring the prepared next React version to be unpublished before OIDC publish."
-        },
-        "5.7": {
-            "status": "done",
-            "note": "Added check:react-public-surface. The @digitaltableteur/react public contract surface now exports the curated reusable design-system contract set, excludes alpha contracts, and is ratcheted at zero alpha. App/product/site composition remains forbidden even when it exists in the internal catalog. Strict --require-publishable mode also requires zero alpha contract exports."
-        },
-        "5.8": {
-            "status": "done",
-            "note": "Added check:react-public-api and packages/react/public-api.manifest.json. The guard freezes the curated @digitaltableteur/react runtime export list (105 exports after package-boundary narrowing) and package subpath exports, writes .omx/state/design-system/react-public-api/latest.json, and requires --update for intentional public API changes. check:react-package and check:react-publish-preflight now run it."
-        },
-        "5.9": {
-            "status": "done",
-            "note": "Added package CHANGELOG coverage for all npm packages plus check:package-release-notes. The guard verifies @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react use semver, restricted npm publish metadata, GitHub repository metadata for npm Trusted Publisher matching, dist package files, required exports, version-matched changelog entries, and current npm-served public API/consumer docs. check:react-publish-preflight now runs it before registry/package install checks."
-        },
-        "5.10": {
-            "status": "done",
-            "note": "Added check:react-publish-review. It validates the latest i18n/navigation review report and screenshots, package-consumed app dogfood report, React public API report, public-surface maturity report, package release metadata, package tarball contents, package publish dry-runs, Trusted Publisher readiness, local tarball consumer install evidence, published-token registry install evidence, and React registry install smoke state, then writes .omx/state/design-system/react-publish-review/latest.{md,json,html}; the HTML contact sheet lays out EN/FI/SV screenshots, navigation checks, browser dogfood checks, and package publish readiness evidence for human review without clearing 1.5, 1.6, or 5.1 approvals."
-        },
-        "5.11": {
-            "status": "done",
-            "note": "Added check:package-tarballs. It runs npm pack --dry-run --json for @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react, verifies required files and size/file-count ceilings, writes .omx/state/design-system/package-tarball-contents/latest.json, and fails on source/config/test/story/env/media leakage outside the intended dist plus package metadata payload."
-        },
-        "5.12": {
-            "status": "done",
-            "note": "Replaced the broad stable-contract export assumption with a curated package boundary. @digitaltableteur/react exports primitives, DS display/layout/form/navigation/feedback components, host adapters/providers, and accessibility/runtime hooks, while forbidding app/product/site composition such as chat, site chrome, portfolio/blog cards, social/profile sharing, maps, booking/CV utilities, and route-specific layouts. check:react-public-surface now fails if required curated contracts are missing, app/product exports appear, unexpected uppercase exports appear, or alpha contracts enter the package surface."
-        },
-        "5.13": {
-            "status": "done",
-            "note": "Added Trusted Publisher readiness for npm OIDC publishing. Package manifests now carry repository.url git+https://github.com/PetriLahdelma/digitaltableteur.git plus workspace repository.directory values, .github/workflows/ds-publish.yml is a manual-only GitHub Actions publish transport with id-token: write and npm@latest on Node 24, check:trusted-publisher verifies the workflow/package metadata, writes .omx/state/design-system/trusted-publisher/handoff.md with the exact npm form values, official npm trust CLI list/dry-run/configure commands, npm trust 403 troubleshooting, and a repository commit-scope table, and writes publish-pathspec.txt plus excluded-dirty-paths.txt so the eventual publish transport commit can be staged from a precise path list without sweeping in unrelated local work. The commit scope includes package manifests, publish guards, token build scripts, token catalog/DTCG inputs, variables.css, React package sources, public navigation pattern sources, and host adapter utilities, because GitHub Actions rebuilds token and React packages from repository source. check:react-publish-clearance lets the publish transport confirm recorded React approvals without replacing local-machine CI quality gates. The clearance handoff now records local review-evidence summaries and warnings for the i18n/navigation matrix, package dogfood report, React review packet, Trusted Publisher handoff, and preflight report."
-        },
-        "5.14": {
-            "status": "done",
-            "note": "Added check:package-publish-dry-run. It runs npm publish --dry-run --access restricted --json from each package directory for @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react, verifies publish id, integrity, shasum, and required package files, writes .omx/state/design-system/package-publish-dry-run/latest.json, and is wired into the manual GitHub Actions OIDC workflow before any dry-run or real publish."
-        },
-        "5.15": {
-            "status": "done",
-            "note": "check:package-registry-status verifies the current external npm state: @digitaltableteur/tokens, @digitaltableteur/tokens-css, and the current @digitaltableteur/react package version are published with private package status and org read-write access. Strict publish-ready mode passes --expect-react=unpublished so duplicate React publishes fail until the next package version is prepared."
-        },
-        "5.16": {
-            "status": "done",
-            "note": "check:react-registry-install installs the exact private @digitaltableteur/react version from npm into a clean consumer, resolves @digitaltableteur/react/style.css and token CSS from node_modules, SSR-renders representative stable components, compiles a strict TypeScript consumer, and writes .omx/state/design-system/react-registry-install/latest.json. Strict pre-publish verification uses --expect-unpublished for the next React patch version."
-        },
-        "5.17": {
-            "status": "done",
-            "note": "Root package.json no longer declares design-system package workspaces. The app/root install now depends on @digitaltableteur/react, @digitaltableteur/tokens, and @digitaltableteur/tokens-css from npm, while local package sources remain under packages/* for build/pack/publish checks. Added check:package-registry-resolution and wired it into the OIDC workflow, Trusted Publisher guard, and React publish preflight; it fails on package-lock workspace links, local packages/* resolution, symlinked node_modules entries, or app/provider imports that locally consume exports already available from @digitaltableteur/react. Remaining app/provider @dt imports must be explicitly classified as non-package app/product/site surfaces."
-        },
-        "5.18": {
-            "status": "done",
-            "note": "Added check:storybook-registry-package plus a Registry/Package smoke story. The guard verifies Storybook resolves @digitaltableteur/react, @digitaltableteur/react/style.css, @digitaltableteur/tokens, and @digitaltableteur/tokens-css/tokens.css from registry node_modules paths and rejects Storybook aliases that point @digitaltableteur/* back at local packages/*. check:react-publish-preflight now runs it after storybook:build."
-        }
+    {
+      "key": "scalability",
+      "current": 86,
+      "target": 90
     },
-    "approvalFormat": "To clear a checkpoint: set tasks.<id>.status=done AND tasks.<id>.approval={clearedBy:<name>,on:<YYYY-MM-DD>,note?}. The guard rejects done without this."
+    {
+      "key": "futureproofness",
+      "current": 88,
+      "target": 90
+    },
+    {
+      "key": "accessibility",
+      "current": 81,
+      "target": 90
+    },
+    {
+      "key": "governance",
+      "current": 90,
+      "target": 90
+    },
+    {
+      "key": "agentReadiness",
+      "current": 90,
+      "target": 90
+    },
+    {
+      "key": "theming",
+      "current": 90,
+      "target": 90
+    },
+    {
+      "key": "distribution",
+      "current": 84,
+      "target": 90
+    }
+  ],
+  "antiGoalComponents": [
+    "AppShell",
+    "TreeList",
+    "DataGrid",
+    "MegaMenu"
+  ],
+  "ratchets": {
+    "reactPackageAppImports": {
+      "ceiling": 0,
+      "desc": "@digitaltableteur/react package graph files importing @/ (app root); must stay eliminated from the npm package"
+    },
+    "reactPackageNextImports": {
+      "ceiling": 0,
+      "desc": "@digitaltableteur/react package graph files importing next/*; must stay eliminated from the npm package"
+    },
+    "reactPackageI18nImports": {
+      "ceiling": 0,
+      "desc": "@digitaltableteur/react package graph files coupled to i18next/useTranslation; must stay eliminated from the npm package"
+    },
+    "catalogStableCount": {
+      "floor": 58,
+      "desc": "stable internal catalog components + patterns after package-boundary narrowing; must not drop without a deliberate roadmap update"
+    }
+  },
+  "utilities": [
+    {
+      "name": "LinkProvider",
+      "status": "operational",
+      "file": "nextjs-app/shared/lib/linkComponent.tsx",
+      "note": "decouples next/link from the catalog; part of Phase 1"
+    },
+    {
+      "name": "useMediaQuery",
+      "status": "operational",
+      "file": "nextjs-app/shared/hooks/useMediaQuery.ts",
+      "note": "consolidates 17 ad-hoc matchMedia call sites"
+    },
+    {
+      "name": "useFocusTrap",
+      "status": "operational",
+      "file": "nextjs-app/shared/hooks/useFocusTrap.ts",
+      "note": "custom overlays are not Radix-backed; real a11y value"
+    },
+    {
+      "name": "useScrollLock",
+      "status": "operational",
+      "file": "nextjs-app/shared/hooks/useScrollLock.ts",
+      "note": "body scroll lock for custom overlays"
+    },
+    {
+      "name": "useTheme",
+      "status": "operational",
+      "file": "nextjs-app/shared/components/ThemeProvider/ThemeProvider.tsx",
+      "note": "already existed; exposed + documented"
+    },
+    {
+      "name": "LayerProvider",
+      "status": "operational",
+      "file": "nextjs-app/shared/lib/layer.tsx",
+      "note": "host-injected portal root with default document.body behavior"
+    },
+    {
+      "name": "useLayer",
+      "status": "operational",
+      "file": "nextjs-app/shared/lib/layer.tsx",
+      "note": "resolves portal container and standard z-index tier for layered UI"
+    },
+    {
+      "name": "useOverflow",
+      "status": "operational",
+      "file": "nextjs-app/shared/hooks/useOverflow.ts",
+      "note": "element overflow detection for reusable scroll affordance logic"
+    },
+    {
+      "name": "useScrollOverflow",
+      "status": "operational",
+      "file": "nextjs-app/shared/hooks/useOverflow.ts",
+      "note": "scroll-position affordances for overflowing x/y containers"
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "1.5",
+      "type": "unverifiable-regression",
+      "reason": "i18n decoupling: EN/FI/SV correctness is not provable by the gates (English-only snapshots, no multi-locale/visual suite). Needs browser + multi-locale review.",
+      "requiresApproval": true
+    },
+    {
+      "id": "1.6",
+      "type": "unverifiable-regression",
+      "reason": "navigation decoupling: routing/active-link behavior is not exercised by unit tests or a11y snapshots. Needs browser review.",
+      "requiresApproval": true
+    },
+    {
+      "id": "5.1",
+      "type": "authorization",
+      "reason": "publishing to a registry is outward-facing and irreversible.",
+      "requiresApproval": true
+    }
+  ],
+  "reactPublicSurface": {
+    "alphaCeiling": 0,
+    "allowedAlphaExports": [],
+    "stableContractCount": 58,
+    "stableExportCount": 43,
+    "requiredContractExports": [
+      "AlertBanner",
+      "Avatar",
+      "AvatarGroup",
+      "Badge",
+      "Breadcrumb",
+      "Button",
+      "ButtonGroup",
+      "Card",
+      "CategoryFilter",
+      "Checkbox",
+      "CheckboxGroup",
+      "CodeBlockWindow",
+      "Combobox",
+      "Container",
+      "CookieConsent",
+      "Divider",
+      "EmptyState",
+      "ExpandableSection",
+      "FileUpload",
+      "FlexBox",
+      "FormField",
+      "Gallery",
+      "Grid",
+      "GroupLabel",
+      "HelperText",
+      "Icon",
+      "IconButton",
+      "Kbd",
+      "Label",
+      "LanguageSwitcher",
+      "Link",
+      "List",
+      "MacWindowFrame",
+      "Menu",
+      "Modal",
+      "MultiCombobox",
+      "NavLink",
+      "NavMenuList",
+      "Pagination",
+      "PhoneInput",
+      "Progress",
+      "Radio",
+      "RadioGroup",
+      "ReadingProgress",
+      "Section",
+      "Select",
+      "Skeleton",
+      "SkipLink",
+      "Spinner",
+      "Stack",
+      "StatusDot",
+      "Switch",
+      "Tabs",
+      "Text",
+      "TextArea",
+      "TextInput",
+      "ThemeProvider",
+      "Title",
+      "Toast",
+      "ValueCard",
+      "VisuallyHidden"
+    ],
+    "forbiddenExports": [
+      "AppLoading",
+      "ArticleCard",
+      "ArticleContent",
+      "ArticleProse",
+      "ArticleShareSection",
+      "Author",
+      "AuthorBio",
+      "AuthorSocial",
+      "BlogCategoryFilter",
+      "BlogGrid",
+      "BlogMediaImage",
+      "ChatComposer",
+      "ChatHeader",
+      "ChatMessages",
+      "ChatToggle",
+      "ChatWidget",
+      "ChunkErrorBoundary",
+      "ComplianceCard",
+      "ContactForm",
+      "DonnyAvatar",
+      "DonnyState",
+      "EmailSignatureGenerator",
+      "EnhancedArticleCard",
+      "EnhancedAuthorCard",
+      "EnhancedProjectCard",
+      "GalleryImage",
+      "HelsinkiClock",
+      "MCPActionButton",
+      "MarkdownMessage",
+      "MobileDrawer",
+      "NavItem",
+      "NextLayout",
+      "OpenHours",
+      "PersonCard",
+      "ProjectCard",
+      "ProjectGallery",
+      "ProjectNav",
+      "SecureCVDownload",
+      "ServiceCard",
+      "ServicesGrid",
+      "SiteFooter",
+      "SiteFooterProps",
+      "SiteHeader",
+      "SiteHeaderProps",
+      "SiteTree",
+      "SiteTreeNode",
+      "Skill",
+      "SkillsGrid",
+      "SocialShare",
+      "SocialShareChannel",
+      "SocialShareProps",
+      "SocialShareVariant",
+      "StudioMap",
+      "TOCItem",
+      "TableOfContents",
+      "Testimonial",
+      "TransformingActionInput",
+      "WorkGrid",
+      "WorkNav"
+    ],
+    "allowedUnmappedExports": [
+      "AnimationRuntime",
+      "AnimationRuntimeProviderProps",
+      "CategoryFilterProps",
+      "CategoryOption",
+      "ComboboxOption",
+      "ComboboxProps",
+      "ContainerProps",
+      "CookieCategory",
+      "CookieConsentContextValue",
+      "CookieConsentProviderProps",
+      "CookieConsentState",
+      "DEFAULT_CONSENTS",
+      "DividerProps",
+      "ExpandableSectionProps",
+      "FormFieldProps",
+      "IconButtonProps",
+      "Image",
+      "ImageComponentProps",
+      "LanguageSwitcherOption",
+      "LanguageSwitcherProps",
+      "LayerProviderProps",
+      "LayerRole",
+      "LayerRuntime",
+      "LayerState",
+      "LinkComponentProps",
+      "MenuContent",
+      "MenuItem",
+      "MenuSeparator",
+      "MenuSub",
+      "MenuSubContent",
+      "MenuSubTrigger",
+      "MenuTrigger",
+      "MotionPreference",
+      "MultiComboboxOption",
+      "MultiComboboxProps",
+      "NavLinkProps",
+      "NavigationRuntime",
+      "NavigationRuntimeProviderProps",
+      "OverflowState",
+      "PaginationProps",
+      "ReadingProgressProps",
+      "ScrollOverflowState",
+      "SectionProps",
+      "SelectOption",
+      "SkipLinkProps",
+      "SpinnerProps",
+      "StackProps",
+      "TextAreaProps",
+      "ToastRuntime",
+      "ToastRuntimeProviderProps",
+      "Translate",
+      "TranslationOptions",
+      "TranslationResourceBundle",
+      "TranslationRuntime",
+      "ValueCardProps",
+      "VisuallyHiddenProps"
+    ],
+    "note": "Pre-publish package-boundary ratchet. @digitaltableteur/react is a curated design-system package surface: primitives, DS display/layout/form/navigation/feedback components, host adapters/providers, and accessibility/runtime hooks. It intentionally does not export Digitaltableteur app/product/site composition such as chat, site chrome, portfolio/blog cards, social/profile sharing, maps, booking/CV utilities, or route-specific layouts, even when those contracts are stable in the internal catalog. Normal mode fails if required curated contracts are missing, any forbidden app/product export appears, any unexpected unmapped uppercase export appears, or any alpha contract enters the surface. Strict publish-ready mode also requires zero alpha contract exports."
+  },
+  "tasks": {
+    "1.7": {
+      "status": "done"
+    },
+    "1.5": {
+      "status": "done",
+      "approval": {
+        "clearedBy": "Petri Lahdelma",
+        "on": "2026-07-08",
+        "note": "Approved i18n multi-locale/browser review for @digitaltableteur/react publish after check:site-package-dogfood passed 12 browser checks and test:stories:i18n passed the 27-check EN/FI/SV desktop/mobile matrix."
+      },
+      "note": "Injected translation/localization adapter implemented; reactPackageI18nImports is ratcheted to 0 for the curated @digitaltableteur/react package graph. check:site-package-dogfood covers representative EN/FI/SV browser routes, package translation subscriptions, SiteHeader/WorkNav/BlogNav localized labels, selected-work image loading on direct and client-navigation home visits, and toast-only content-language notices. test:stories:i18n writes a desktop/mobile EN/FI/SV screenshot review packet under .omx/state/design-system/i18n-navigation-review/latest. Latest 2026-07-08 approval cleared this checkpoint for @digitaltableteur/react publish."
+    },
+    "1.6": {
+      "status": "done",
+      "approval": {
+        "clearedBy": "Petri Lahdelma",
+        "on": "2026-07-08",
+        "note": "Approved package navigation behavior review for @digitaltableteur/react publish after check:site-package-dogfood passed SiteHeader, WorkNav, BlogNav, and client-navigation checks and test:stories:i18n passed the navigation flows."
+      },
+      "note": "Navigation adapter implemented and app injects Next App Router runtime; reactPackageAppImports and reactPackageNextImports are ratcheted to 0 for the curated @digitaltableteur/react package graph. check:site-package-dogfood covers representative SiteHeader link routing + aria-current state, WorkNav/BlogNav button routing through the package-consumed Next runtime, and selected-work image loading after client navigation back home. test:stories:i18n records desktop SiteHeader/WorkNav/BlogNav routing flows in the review packet. Latest 2026-07-08 approval cleared this checkpoint for @digitaltableteur/react publish."
+    },
+    "1.8": {
+      "status": "done",
+      "note": "@digitaltableteur/react workspace package builds with Vite, emits declarations and style.css, passes Node ESM import smoke, and has npm pack dry-run coverage via check:react-package."
+    },
+    "1.9": {
+      "status": "in-progress",
+      "note": "The app imports the package stylesheet and the package itself is verified by clean consumer smokes, but site-facing sources still use the local @dt alias until the explicit registry-consumption step. Do not treat local @dt alias cleanup as a prerequisite for narrowing the npm package surface."
+    },
+    "1.10": {
+      "status": "done",
+      "note": "Added check:site-package-dogfood, a Playwright smoke for representative package-consumed app routes across EN/FI/SV: contact/home copy, WorkNav/BlogNav translations, SiteHeader link routing + active state, WorkNav/BlogNav button routing, selected-work image loading on direct home load and client navigation back home, toast-only English content-language notices, and the EN PSEO Breadcrumb production consumer. It writes .omx/state/design-system/site-package-dogfood/latest.json for the React publish review packet."
+    },
+    "3.4": {
+      "status": "done",
+      "note": "Breadcrumb has a real production consumer and is now stable: PseoLeafPageView renders the package Breadcrumb instead of hand-authored next/link breadcrumb markup, check:site-package-dogfood verifies the EN PSEO leaf trail labels/link hrefs/current item, and check:beta-promotion-readiness verifies production consumer, a11y snapshots, forced colors, and real Figma evidence."
+    },
+    "3.3": {
+      "status": "done",
+      "note": "Added check:beta-promotion-readiness for the named Breadth-90 beta candidates (Breadcrumb, Tabs, Progress, AlertBanner, EmptyState, CodeSnippet). Breadcrumb, Tabs, Progress, AlertBanner, and EmptyState are now stable and exported from @digitaltableteur/react after clearing the evidence bar. CodeSnippet now has a real RhythmguardPage production consumer plus Default, Example, and real Playwright forced-colors accessibility snapshots, but remains beta and unexported because its Figma URL still points at a placeholder rather than a real numeric node id. The guard writes .omx/state/design-system/beta-promotion-readiness/latest.json, reports blockers such as missing production consumers/Figma/snapshots, and fails if any candidate is marked stable before the evidence bar is met. 2026-07-10: CodeSnippet Figma component set built in DT-Site-stuff (Molecules, node 1161-2809, Inline/Single/Multi variants with DT token bindings), contract flipped to stable with full 4-mode AT snapshots matching the StatusDot convention, and CodeSnippet + its prop types exported from @digitaltableteur/react (public API manifest updated). Every intended-surface item is now present and stable where it has real consumers; 0-consumer betas remain covered-but-unpromotable by policy. Breadth 74 -> 90."
+    },
+    "3.5": {
+      "status": "done",
+      "note": "EmptyState now has a real production consumer and is stable: WorkGrid renders the package EmptyState for the no-projects fallback using existing workNoResults translations, check:beta-promotion-readiness verifies production consumer, a11y snapshots, forced colors, and real Figma evidence, and the clean npm consumer smoke imports/types/renders EmptyState from @digitaltableteur/react."
+    },
+    "3.6": {
+      "status": "done",
+      "note": "AlertBanner now has real production consumers and is stable: Mermaid renders the package AlertBanner for persistent diagram-render errors using EN/FI/SV mermaidErrorTitle translations while leaving successful diagram output unchanged. check:beta-promotion-readiness verifies production consumers, a11y snapshots, forced colors, and real Figma evidence, and the clean npm consumer smoke imports/types/renders AlertBanner from @digitaltableteur/react."
+    },
+    "3.7": {
+      "status": "done",
+      "note": "Tabs now has real production consumers and is stable: ContactInquiryPanel renders the package Tabs for the contact message/book switcher using ariaLabel for the contactInquiryModeLabel accessible name and getTabPanelProps for paired panels. check:beta-promotion-readiness verifies production consumers, a11y snapshots, forced colors, and real Figma evidence, and the clean npm consumer smoke imports/types/renders Tabs plus getTabPanelProps from @digitaltableteur/react."
+    },
+    "3.8": {
+      "status": "done",
+      "note": "Progress now has real production consumers and is stable: ContactInquiryPanel renders the package Progress as the indeterminate booking-calendar loading fallback passed into DonnyBookingEmbed, with EN/FI/SV donnyBookingLoading translations and a default embed fallback for direct consumers. check:beta-promotion-readiness verifies production consumers, a11y snapshots, forced colors, and real Figma evidence, and the clean npm consumer smoke imports/types/renders Progress from @digitaltableteur/react."
+    },
+    "3.9": {
+      "status": "done",
+      "note": "CodeSnippet now has a real production consumer and honest a11y evidence but is intentionally still beta: RhythmguardPage renders CodeSnippet for the copyable Rhythmguard strict-config install snippet, Storybook Vite prebundles CodeSnippet's Prism modules so the iframe does not hang on first render, and CodeSnippet/__a11y-snapshots__ contains Default, Example, and real Playwright forced-colors snapshots. check:beta-promotion-readiness now reports CodeSnippet blocked only by realFigmaNode; do not promote or export it until the contract has a real numeric Figma node id."
+    },
+    "1.11": {
+      "status": "done",
+      "note": "Implemented test:stories:i18n as a real Playwright i18n/navigation visual matrix. It captures EN/FI/SV desktop+mobile screenshots for home/contact/work/blog and desktop SiteHeader, WorkNav, and BlogNav routing flows into .omx/state/design-system/i18n-navigation-review/latest/{report.json,review.md,screenshots/}. Latest run passed 27 checks."
+    },
+    "5.1": {
+      "status": "done",
+      "approval": {
+        "clearedBy": "Petri Lahdelma",
+        "on": "2026-07-08",
+        "note": "Approved publishing @digitaltableteur/react to the private npm registry through the GitHub Actions OIDC Trusted Publisher workflow after strict local readiness gates pass."
+      },
+      "note": "@digitaltableteur/tokens@0.1.0, @digitaltableteur/tokens-css@0.1.0, and @digitaltableteur/react@0.1.1 are published as private/restricted npm packages. check:registry-token-install verifies token package registry access/installability, check:package-registry-status verifies current package registry state, and check:react-registry-install verifies the published React package from npm. Remaining roadmap work: publish the next React patch through the committed GitHub Actions OIDC Trusted Publisher path rather than manual npm publish."
+    },
+    "5.2": {
+      "status": "done",
+      "note": "Consumer setup docs and second-consumer path documented in docs/design-system/npm-consumer-setup.md, including install order, CSS imports, host adapters, i18n bridge, and package/site guard commands."
+    },
+    "5.3": {
+      "status": "done",
+      "note": "The site dogfoods the registry @digitaltableteur/react package import path and package stylesheet. The root install now also consumes @digitaltableteur/tokens and @digitaltableteur/tokens-css from npm while runtime CSS continues to load variables.css for exact visual continuity."
+    },
+    "5.4": {
+      "status": "done",
+      "note": "Added check:npm-consumer-install. It packs @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react, installs those tarballs into a clean temporary consumer, resolves token JS/JSON/CSS/theme exports plus React package CSS, imports public adapters/chrome patterns, SSR-renders an installed Button, compiles a strict TypeScript consumer against the emitted declarations, and writes .omx/state/design-system/npm-consumer-install/latest.json."
+    },
+    "5.5": {
+      "status": "done",
+      "note": "Added check:registry-token-install. It installs @digitaltableteur/tokens@0.1.0 and @digitaltableteur/tokens-css@0.1.0 from the private npm registry into a clean temporary consumer, verifies token JS/JSON/Tailwind/CSS/theme exports from node_modules, and writes .omx/state/design-system/registry-token-install/latest.json."
+    },
+    "5.6": {
+      "status": "done",
+      "note": "check:react-publish-preflight aggregates lint, typecheck, full Vitest, Storybook static build, Next production build, roadmap ratchets, package release metadata, Trusted Publisher readiness, registry package resolution, private token registry install, current React registry install, local tarball consumer install, package tarball contents guard, package publish dry-run guard, React public surface guard, React public API guard, package dogfood browser checks, the i18n/navigation visual review packet, and the consolidated React publish review packet. Strict check:react-publish-ready keeps the next React patch publish-only path honest by requiring the prepared next React version to be unpublished before OIDC publish."
+    },
+    "5.7": {
+      "status": "done",
+      "note": "Added check:react-public-surface. The @digitaltableteur/react public contract surface now exports the curated reusable design-system contract set, excludes alpha contracts, and is ratcheted at zero alpha. App/product/site composition remains forbidden even when it exists in the internal catalog. Strict --require-publishable mode also requires zero alpha contract exports."
+    },
+    "5.8": {
+      "status": "done",
+      "note": "Added check:react-public-api and packages/react/public-api.manifest.json. The guard freezes the curated @digitaltableteur/react runtime export list (105 exports after package-boundary narrowing) and package subpath exports, writes .omx/state/design-system/react-public-api/latest.json, and requires --update for intentional public API changes. check:react-package and check:react-publish-preflight now run it."
+    },
+    "5.9": {
+      "status": "done",
+      "note": "Added package CHANGELOG coverage for all npm packages plus check:package-release-notes. The guard verifies @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react use semver, restricted npm publish metadata, GitHub repository metadata for npm Trusted Publisher matching, dist package files, required exports, version-matched changelog entries, and current npm-served public API/consumer docs. check:react-publish-preflight now runs it before registry/package install checks."
+    },
+    "5.10": {
+      "status": "done",
+      "note": "Added check:react-publish-review. It validates the latest i18n/navigation review report and screenshots, package-consumed app dogfood report, React public API report, public-surface maturity report, package release metadata, package tarball contents, package publish dry-runs, Trusted Publisher readiness, local tarball consumer install evidence, published-token registry install evidence, and React registry install smoke state, then writes .omx/state/design-system/react-publish-review/latest.{md,json,html}; the HTML contact sheet lays out EN/FI/SV screenshots, navigation checks, browser dogfood checks, and package publish readiness evidence for human review without clearing 1.5, 1.6, or 5.1 approvals."
+    },
+    "5.11": {
+      "status": "done",
+      "note": "Added check:package-tarballs. It runs npm pack --dry-run --json for @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react, verifies required files and size/file-count ceilings, writes .omx/state/design-system/package-tarball-contents/latest.json, and fails on source/config/test/story/env/media leakage outside the intended dist plus package metadata payload."
+    },
+    "5.12": {
+      "status": "done",
+      "note": "Replaced the broad stable-contract export assumption with a curated package boundary. @digitaltableteur/react exports primitives, DS display/layout/form/navigation/feedback components, host adapters/providers, and accessibility/runtime hooks, while forbidding app/product/site composition such as chat, site chrome, portfolio/blog cards, social/profile sharing, maps, booking/CV utilities, and route-specific layouts. check:react-public-surface now fails if required curated contracts are missing, app/product exports appear, unexpected uppercase exports appear, or alpha contracts enter the package surface."
+    },
+    "5.13": {
+      "status": "done",
+      "note": "Added Trusted Publisher readiness for npm OIDC publishing. Package manifests now carry repository.url git+https://github.com/PetriLahdelma/digitaltableteur.git plus workspace repository.directory values, .github/workflows/ds-publish.yml is a manual-only GitHub Actions publish transport with id-token: write and npm@latest on Node 24, check:trusted-publisher verifies the workflow/package metadata, writes .omx/state/design-system/trusted-publisher/handoff.md with the exact npm form values, official npm trust CLI list/dry-run/configure commands, npm trust 403 troubleshooting, and a repository commit-scope table, and writes publish-pathspec.txt plus excluded-dirty-paths.txt so the eventual publish transport commit can be staged from a precise path list without sweeping in unrelated local work. The commit scope includes package manifests, publish guards, token build scripts, token catalog/DTCG inputs, variables.css, React package sources, public navigation pattern sources, and host adapter utilities, because GitHub Actions rebuilds token and React packages from repository source. check:react-publish-clearance lets the publish transport confirm recorded React approvals without replacing local-machine CI quality gates. The clearance handoff now records local review-evidence summaries and warnings for the i18n/navigation matrix, package dogfood report, React review packet, Trusted Publisher handoff, and preflight report."
+    },
+    "5.14": {
+      "status": "done",
+      "note": "Added check:package-publish-dry-run. It runs npm publish --dry-run --access restricted --json from each package directory for @digitaltableteur/tokens, @digitaltableteur/tokens-css, and @digitaltableteur/react, verifies publish id, integrity, shasum, and required package files, writes .omx/state/design-system/package-publish-dry-run/latest.json, and is wired into the manual GitHub Actions OIDC workflow before any dry-run or real publish."
+    },
+    "5.15": {
+      "status": "done",
+      "note": "check:package-registry-status verifies the current external npm state: @digitaltableteur/tokens, @digitaltableteur/tokens-css, and the current @digitaltableteur/react package version are published with private package status and org read-write access. Strict publish-ready mode passes --expect-react=unpublished so duplicate React publishes fail until the next package version is prepared."
+    },
+    "5.16": {
+      "status": "done",
+      "note": "check:react-registry-install installs the exact private @digitaltableteur/react version from npm into a clean consumer, resolves @digitaltableteur/react/style.css and token CSS from node_modules, SSR-renders representative stable components, compiles a strict TypeScript consumer, and writes .omx/state/design-system/react-registry-install/latest.json. Strict pre-publish verification uses --expect-unpublished for the next React patch version."
+    },
+    "5.17": {
+      "status": "done",
+      "note": "Root package.json no longer declares design-system package workspaces. The app/root install now depends on @digitaltableteur/react, @digitaltableteur/tokens, and @digitaltableteur/tokens-css from npm, while local package sources remain under packages/* for build/pack/publish checks. Added check:package-registry-resolution and wired it into the OIDC workflow, Trusted Publisher guard, and React publish preflight; it fails on package-lock workspace links, local packages/* resolution, symlinked node_modules entries, or app/provider imports that locally consume exports already available from @digitaltableteur/react. Remaining app/provider @dt imports must be explicitly classified as non-package app/product/site surfaces."
+    },
+    "5.18": {
+      "status": "done",
+      "note": "Added check:storybook-registry-package plus a Registry/Package smoke story. The guard verifies Storybook resolves @digitaltableteur/react, @digitaltableteur/react/style.css, @digitaltableteur/tokens, and @digitaltableteur/tokens-css/tokens.css from registry node_modules paths and rejects Storybook aliases that point @digitaltableteur/* back at local packages/*. check:react-publish-preflight now runs it after storybook:build."
+    }
+  },
+  "approvalFormat": "To clear a checkpoint: set tasks.<id>.status=done AND tasks.<id>.approval={clearedBy:<name>,on:<YYYY-MM-DD>,note?}. The guard rejects done without this."
 }
