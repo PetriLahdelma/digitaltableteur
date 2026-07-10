@@ -128,6 +128,33 @@ DisabledInput.args = {
   disabled: true,
 };
 
+export const Clearable: Story = {
+  tags: ["beta-matrix"],
+  args: {
+    label: "storyInputTextLabel",
+    type: "text",
+    placeholder: "storyInputTextPlaceholder",
+    clearable: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "clearable renders a labelled ×-button inside the field while it has a value; activating it empties the field, fires onValueChange('') + onClear, and returns focus to the input.",
+      },
+    },
+  },
+  render: (args) => <InputStory {...args} />,
+  // Play types but never clears: the settled state must keep the clear
+  // button visible so AT capture records it in the accessibility tree.
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = await canvas.findByLabelText(/text input/i);
+    await userEvent.type(input, "Hello");
+    await canvas.findByRole("button", { name: /clear/i });
+  },
+};
+
 export const Default = TextInputStory;
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },

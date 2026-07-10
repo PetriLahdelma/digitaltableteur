@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T23:04:19.514Z",
+  "generatedAt": "2026-07-10T07:47:59.697Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -9399,6 +9399,18 @@
           "optional": true,
           "type": "boolean"
         },
+        "clearable": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "onClear": {
+          "optional": true,
+          "type": "() => void"
+        },
+        "hideLabel": {
+          "optional": true,
+          "type": "boolean"
+        },
         "onChange": {
           "optional": true,
           "type": "(value: string | number) => void"
@@ -9438,16 +9450,19 @@
       "variantsFnName": "textInputVariants",
       "useWhen": [
         "use `onValueChange` (the new contract). The legacy `onChange`",
-        "pair `type=\"email\"` and `type=\"tel\"` with the built-in"
+        "pair `type=\"email\"` and `type=\"tel\"` with the built-in",
+        "use `clearable` on fields users iterate on (search, filters,"
       ],
       "avoidWhen": [
         "ship a form that relies on the email validator as the only",
         "pass a `value` plus a `defaultValue`. The component treats",
-        "use TextInput for multi-line text. Use **TextArea**, which"
+        "use TextInput for multi-line text. Use **TextArea**, which",
+        "treat `hideLabel` as permission to skip the label. The label"
       ],
       "requiredA11y": [
         "label association",
-        "aria-describedby for error/helper"
+        "aria-describedby for error/helper",
+        "clear button carries a per-field accessible name and returns focus to the input"
       ],
       "keyboard": [
         "Tab"
@@ -9464,7 +9479,8 @@
       "forbiddenUse": [
         "ship a form that relies on the email validator as the only",
         "pass a `value` plus a `defaultValue`. The component treats",
-        "use TextInput for multi-line text. Use **TextArea**, which"
+        "use TextInput for multi-line text. Use **TextArea**, which",
+        "treat `hideLabel` as permission to skip the label. The label"
       ],
       "composesWith": [
         "Text",
@@ -9475,7 +9491,7 @@
         "CheckboxGroup"
       ],
       "prefersOver": [],
-      "declaredPropCount": 10
+      "declaredPropCount": 13
     },
     "ThemeProvider": {
       "preferredImport": "@dt/ThemeProvider",

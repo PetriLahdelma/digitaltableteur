@@ -263,6 +263,7 @@
   "contactValidationMessageRequired": "Message is required",
   "inputValidationEmailInvalid": "Please enter a valid email address",
   "inputValidationPhoneInvalid": "Invalid phone number format",
+  "inputClearField": "Clear {{field}}",
   "shareOnInstagram": "Share on Instagram",
   "shareOnTwitter": "Share on Twitter",
   "shareOnFacebook": "Share on Facebook",

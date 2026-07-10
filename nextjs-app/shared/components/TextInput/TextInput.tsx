@@ -9,6 +9,7 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import styles from "./TextInput.module.css";
 import Label from "@dt/Label";
 import HelperText from "@dt/HelperText";
+import Icon from "@dt/Icon";
 import { useTranslate } from "../../lib/translation";
 import {
   parsePhoneNumber,
@@ -43,6 +44,14 @@ export interface TextInputProps
   /** Disables the input. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it. */
   disabled?: boolean;
 
+  // NEW PROPS (v1.2.0)
+  /** Shows a labelled ×-button inside the field chrome while the field has a value; clearing returns focus to the input */
+  clearable?: boolean;
+  /** Called after the clear button empties the field (onValueChange also fires with "") */
+  onClear?: () => void;
+  /** Visually hides the label (kept in the accessibility tree); use where surrounding design carries the affordance */
+  hideLabel?: boolean;
+
   // DEPRECATED PROPS
   /** @deprecated Use onValueChange instead. Will be removed in v2.0.0 */
   onChange?: (value: string | number) => void;
@@ -60,6 +69,9 @@ const TextInput: React.FC<TextInputProps> = ({
   // New props (v1.1.0)
   size = "md",
   onValueChange,
+  clearable = false,
+  onClear,
+  hideLabel = false,
   // Deprecated props
   onChange,
   disabled = false,
@@ -90,6 +102,7 @@ const TextInput: React.FC<TextInputProps> = ({
     (value === "" ? undefined : value) ?? defaultValue ?? ""
   );
   const syncedOnce = useRef(false);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
 
@@ -167,28 +180,62 @@ const TextInput: React.FC<TextInputProps> = ({
     }
   };
 
+  const handleClear = () => {
+    setInputValue("");
+    setPhoneError("");
+    setEmailError("");
+    if (effectiveOnChange) effectiveOnChange("");
+    if (onClear) onClear();
+    inputRef.current?.focus();
+  };
+
+  const showClearButton = clearable && !disabled && inputValue !== "";
+
+  const inputElement = (
+    <input
+      ref={inputRef}
+      id={inputId}
+      name={label.replace(/\s+/g, "-").toLowerCase()}
+      className={`${styles.input} ${styles[`input--${normalizedSize}`]} ${clearable ? styles.inputClearable : ""} ${hasError ? styles.error : ""}`}
+      type={type}
+      placeholder={placeholder}
+      value={inputValue}
+      onChange={handleChange}
+      disabled={disabled}
+      aria-invalid={hasError || undefined}
+      aria-describedby={describedBy}
+      {...rest}
+    />
+  );
+
   return (
     <div className={styles.inputContainer}>
       <Label
         htmlFor={inputId}
         required={!!rest.required}
         disabled={disabled}
+        className={hideLabel ? styles.srOnly : undefined}
       >
         {label}
       </Label>
-      <input
-        id={inputId}
-        name={label.replace(/\s+/g, "-").toLowerCase()}
-        className={`${styles.input} ${styles[`input--${normalizedSize}`]} ${hasError ? styles.error : ""}`}
-        type={type}
-        placeholder={placeholder}
-        value={inputValue}
-        onChange={handleChange}
-        disabled={disabled}
-        aria-invalid={hasError || undefined}
-        aria-describedby={describedBy}
-        {...rest}
-      />
+      {/* Non-clearable consumers keep the exact previous DOM (no wrapper). */}
+      {clearable ? (
+        <div className={styles.inputShell}>
+          {inputElement}
+          {showClearButton && (
+            <button
+              type="button"
+              className={styles.clearButton}
+              onClick={handleClear}
+              aria-label={t("inputClearField", { field: label })}
+            >
+              <Icon name="x" size={16} decorative />
+            </button>
+          )}
+        </div>
+      ) : (
+        inputElement
+      )}
       {hasError && (
         <HelperText id={errorId} state="error">
           {errorMessage}
