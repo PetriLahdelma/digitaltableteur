@@ -27,6 +27,26 @@ const GDPR_IP_RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
 const GDPR_IP_RATE_LIMIT_MAX = 10; // requests per window per IP
 
 /**
+ * Audit-trail retention. The deletion_requests record exists to demonstrate
+ * that an erasure request was honoured (GDPR Art. 5(2) accountability and
+ * Art. 17(3)(e) legal-claims defence), so it keeps the requested email but is
+ * data-minimised: no user agent, IP truncated to network granularity, and the
+ * whole record expires via a TTL index after 12 months.
+ */
+const DELETION_AUDIT_TTL_SECONDS = 60 * 60 * 24 * 365;
+
+/** Truncate an IP to network granularity (IPv4 /24, IPv6 /48-ish). */
+const anonymizeIp = (ip: string): string => {
+  if (ip.includes(":")) {
+    return `${ip.split(":").slice(0, 3).join(":")}::`;
+  }
+  const parts = ip.split(".");
+  return parts.length === 4 ? `${parts.slice(0, 3).join(".")}.0` : "unknown";
+};
+
+let auditTtlIndexEnsured: Promise<unknown> | null = null;
+
+/**
  * POST /api/gdpr/delete-data
  * Request deletion of user data from the database
  */
@@ -124,13 +144,23 @@ export async function POST(request: NextRequest) {
       // addresses are stored. The actual count goes to the audit trail only.
       const deletionResult = await contacts.deleteMany({ email });
 
-      // Log the request for the audit trail
-      await db.collection("deletion_requests").insertOne({
+      // Data-minimised audit trail (see DELETION_AUDIT_TTL_SECONDS note).
+      const deletionRequests = db.collection("deletion_requests");
+      auditTtlIndexEnsured ??= deletionRequests
+        .createIndex(
+          { requestedAt: 1 },
+          { expireAfterSeconds: DELETION_AUDIT_TTL_SECONDS },
+        )
+        .catch((indexError) => {
+          console.error("deletion_requests TTL index error:", indexError);
+          auditTtlIndexEnsured = null;
+        });
+      await auditTtlIndexEnsured;
+      await deletionRequests.insertOne({
         email,
         reason: reason || "User request",
         requestedAt: new Date(),
-        requestIp: ip,
-        requestUserAgent: userAgent,
+        requestIp: anonymizeIp(ip),
         deletedCount: deletionResult.deletedCount,
         status: "completed",
       });

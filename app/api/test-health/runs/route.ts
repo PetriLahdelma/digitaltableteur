@@ -187,13 +187,15 @@ export async function POST(request: NextRequest) {
       ? payload.branch
       : (request.headers.get("x-ci-branch") ?? undefined);
 
-  await saveRun({
+  const persisted = await saveRun({
     ...stored,
     branch,
   });
 
+  // Still 200 so CI ingestion never blocks a pipeline, but the response is
+  // honest about whether the run actually reached the database.
   return NextResponse.json(
-    { status: "ok", runId },
+    { status: persisted ? "ok" : "accepted-not-persisted", runId, persisted },
     {
       status: 200,
       headers: corsHeaders,
