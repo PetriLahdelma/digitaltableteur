@@ -1,6 +1,6 @@
 {
   "name": "@digitaltableteur/tokens-css",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "Theme-complete Digitaltableteur token CSS generated from production variables.css.",
   "type": "module",
