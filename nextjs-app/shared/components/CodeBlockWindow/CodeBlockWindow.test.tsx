@@ -79,6 +79,40 @@ describe("CodeBlockWindow", () => {
     });
   });
 
+  it("introspects children wrapped in React Flight lazy nodes (RSC boundary)", async () => {
+    // Children passed from a server component arrive on the client as
+    // $$typeof react.lazy nodes during hydration; React renders them but
+    // isValidElement returns false, which used to skip the module classes
+    // and disable the copy button only on the client (hydration mismatch).
+    const wrapInFlightLazy = (value: React.ReactNode): React.ReactNode =>
+      ({
+        $$typeof: Symbol.for("react.lazy"),
+        _payload: { status: "fulfilled", value },
+        _init: (payload: { value: React.ReactNode }) => payload.value,
+      }) as unknown as React.ReactNode;
+
+    const user = userEvent.setup();
+    const { container } = render(
+      <CodeBlockWindow title="demo.tsx" language="tsx">
+        {wrapInFlightLazy(buildCodeBlock(sampleCode, "tsx"))}
+      </CodeBlockWindow>,
+    );
+
+    const pre = container.querySelector("pre");
+    const code = container.querySelector("pre code");
+    expect(pre?.className).toMatch(/pre/);
+    expect(code?.className).toMatch(/code/);
+
+    const button = screen.getByRole("button", {
+      name: "Copy code to clipboard",
+    });
+    expect(button).toBeEnabled();
+    await user.click(button);
+    await waitFor(() => {
+      expect(screen.getByText("Copied")).toBeInTheDocument();
+    });
+  });
+
   it("has no accessibility violations", async () => {
     const { container } = render(
       <CodeBlockWindow title="demo.tsx" language="tsx">

@@ -25,6 +25,8 @@ export const CONSULTING_TOOL_NAMES = [
 export type ConsultingToolName = (typeof CONSULTING_TOOL_NAMES)[number];
 
 export interface ConsultingToolTextResult {
+  // Index signature required by the MCP SDK's CallToolResult shape.
+  [key: string]: unknown;
   content: [{ type: "text"; text: string }];
   isError?: boolean;
 }
