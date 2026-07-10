@@ -1,19 +1,19 @@
 # BlogMediaImage
 
 ## Intent
-Blog-optimized responsive image with caption.
+Blog-optimized responsive image: renders raster sources through next/image and SVG sources as a plain img, with fill, cover/contain fit and a fluid full-bleed mode.
 
 ## Interaction contract
-- Keyboard: inherit from composed @dt/* primitives
-- Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Keyboard: none (non-interactive image)
+- Pointer: none (wrap in a link if the image should be actionable)
+- Screen readers: exposes the required `alt` text; pass an empty `alt` for decorative images
 
 ## Do / don't
-- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface
-- Do: treat this as a page assembly reference when matching production routes
+- Do: pass meaningful `alt`; choose `fit` (contain for diagrams, cover for photos)
+- Do: use `fill` inside a positioned container, or `fluid` for full-bleed prose images
 - Don't: invent parallel primitives inside this folder
-- Don't: promote to stable without production consumer evidence
+- Don't: use a raw `<img>` in article bodies — this handles SVG, external and sizing concerns
 
 ## Design notes
-- Tokens: inherit from child components
-- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-blog-media-image
+- Tokens: none of its own; sizing driven by width/height/fill/fluid props
+- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1036-109

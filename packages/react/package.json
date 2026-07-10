@@ -1,0 +1,44 @@
+{
+  "name": "@digitaltableteur/react",
+  "version": "0.1.4",
+  "private": false,
+  "description": "React components and host adapters for the Digitaltableteur design system.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetriLahdelma/digitaltableteur.git",
+    "directory": "packages/react"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "peerDependencies": {
+    "framer-motion": ">=12.0.0",
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "react-phone-number-input": "^3.4.17"
+  },
+  "scripts": {
+    "build": "vite build --config vite.config.ts && tsc -p tsconfig.types.json && node ../../scripts/design-system/assemble-react-package-types.mjs"
+  }
+}

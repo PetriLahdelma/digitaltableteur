@@ -22,6 +22,7 @@ for (const rel of required) {
 }
 
 execSync("npm run build:tokens", { cwd: ROOT, stdio: "pipe" });
+execSync("npm run check:token-packages", { cwd: ROOT, stdio: "pipe" });
 execSync("npm run build:zod-catalog", { cwd: ROOT, stdio: "pipe" });
 
 const trackedDistFiles = execSync(

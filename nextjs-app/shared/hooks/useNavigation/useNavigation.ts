@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { useNavigationPathname } from "../../lib/navigation";
 
 export interface UseNavigationReturn {
   isMobileMenuOpen: boolean;
@@ -12,7 +12,7 @@ export interface UseNavigationReturn {
 
 export function useNavigation(): UseNavigationReturn {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname() ?? "";
+  const pathname = useNavigationPathname() ?? "";
 
   // Close mobile menu on route change
   useEffect(() => {

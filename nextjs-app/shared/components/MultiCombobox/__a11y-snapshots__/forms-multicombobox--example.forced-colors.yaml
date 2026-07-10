@@ -1,0 +1,7 @@
+- text: Disciplines Design
+- button "Remove badge"
+- text: Accessibility
+- button "Remove badge"
+- combobox "Disciplines"
+- button "Toggle options"
+- paragraph: Pick all that apply

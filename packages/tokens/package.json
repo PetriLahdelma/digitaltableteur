@@ -1,0 +1,33 @@
+{
+  "name": "@digitaltableteur/tokens",
+  "version": "0.1.0",
+  "private": false,
+  "description": "CSS-sourced Digitaltableteur design tokens generated from production variables.css.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetriLahdelma/digitaltableteur.git",
+    "directory": "packages/tokens"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./dtcg": "./dist/tokens.dtcg.json",
+    "./tailwind": {
+      "types": "./dist/tailwind.tokens.d.ts",
+      "default": "./dist/tailwind.tokens.js"
+    },
+    "./manifest": "./dist/tokens-manifest.json"
+  },
+  "sideEffects": false
+}

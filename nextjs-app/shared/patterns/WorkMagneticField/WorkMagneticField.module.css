@@ -72,28 +72,16 @@
 /* Card wrapper — receives GSAP transforms */
 
 .cardWrapper {
-  opacity: 0;
+  opacity: 1;
   transform-style: preserve-3d;
   will-change: transform;
-}
-
-/* Fallback: show cards if JS fails */
-@media (prefers-reduced-motion: reduce) {
-  .cardWrapper {
-    opacity: 1;
-  }
-}
-
-noscript ~ .cardWrapper,
-.cardWrapper:target {
-  opacity: 1;
 }
 
 /* Card container styling — static shadow, rounded, padded */
 
 .cardContainer {
-  padding-block-end: 1rem;
-  padding-inline: 0.75rem;
+  padding-block-end: var(--space-internal-16);
+  padding-inline: var(--space-internal-12);
   border-radius: var(--radius-xl, 0.75rem);
   background: hsl(var(--card));
   box-shadow:
@@ -135,7 +123,7 @@ noscript ~ .cardWrapper,
   margin-block-start: var(--space-layout-32, 2rem);
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-internal-8);
   font-family: var(--font-body);
   font-size: var(--text-sm, 0.875rem);
   color: hsl(var(--muted-foreground));

@@ -15,7 +15,7 @@ export const badgeVariants = cva(styles.badge, {
 import React, { isValidElement, useState } from "react";
 import Icon from "@dt/Icon";
 import StatusDot from "@dt/StatusDot";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { type SemanticStatus, STATUS_ICON_NAMES } from "../../utils/semanticIcons";
 
 /** Visual weight. */
@@ -83,7 +83,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     },
     ref,
   ) => {
-    const { t } = useTranslation();
+    const t = useTranslate();
     const [visible, setVisible] = useState(true);
     const semanticStatus =
       tone && tone !== "neutral" ? TONE_TO_STATUS[tone] : undefined;

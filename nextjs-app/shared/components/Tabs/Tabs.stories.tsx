@@ -46,7 +46,7 @@ function TabsWithPanels(args: TabsProps) {
 const meta: Meta<typeof Tabs> = {
   title: "Navigation/Tabs",
   component: Tabs,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -126,7 +126,7 @@ Pills.parameters = {
   docs: {
     description: {
       story:
-        "pills gives each tab a filled chip treatment — the strongest visual variant, best for top-of-card view switches.",
+        "pills is a soft segmented group: a raised thumb slides behind the selected tab on a tinted track. Best for top-of-card view switches.",
     },
   },
 };
@@ -152,7 +152,7 @@ Underline.parameters = {
   docs: {
     description: {
       story:
-        "underline is the quietest variant: a single accent rule under the active tab. Suits dense pages where pills would shout.",
+        "underline is the quietest variant: a 2px indicator slides along the bottom rail as selection moves. Suits dense pages where pills would shout.",
     },
   },
 };
@@ -190,6 +190,32 @@ WithDisabled.play = async ({ canvasElement }) => {
   // Click active tab
   await userEvent.click(tabs[2]);
   await waitFor(() => expect(tabs[2]).toHaveAttribute("aria-selected", "true"));
+};
+
+export const IconsAndCount = Template.bind({});
+IconsAndCount.args = {
+  variant: "underline",
+  tabs: [
+    { key: "inbox", label: "Inbox", icon: "tray", count: 3 },
+    { key: "starred", label: "Starred", icon: "star" },
+    { key: "sent", label: "Sent", icon: "paper-plane-tilt" },
+    { key: "drafts", label: "Drafts", icon: "folder", disabled: true },
+  ],
+};
+IconsAndCount.tags = ["example"];
+IconsAndCount.parameters = {
+  controls: { disable: true },
+  docs: {
+    description: {
+      story:
+        "Each tab item takes an optional leading icon (Phosphor name or node) and a trailing count pill. The icon is decorative; the count joins the tab's accessible name (e.g. “Inbox 3”).",
+    },
+  },
+};
+IconsAndCount.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const tabs = canvas.getAllByRole("tab");
+  await userEvent.click(tabs[1]);
 };
 
 export const Sizes: StoryFn = () => (

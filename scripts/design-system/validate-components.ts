@@ -561,6 +561,17 @@ export function validateComponentsDir(root: string): ValidationResult {
             errors.push(`${name}.contract.json: stable requires a11y.reviewed to be true`)
         }
 
+        // Deprecation gate (docs/design-system/deprecation-policy.md R2): the
+        // tombstone text is mandatory — it outlives the code in the policy log.
+        if (manifest.status === 'deprecated') {
+            const reason = (manifest as { deprecatedReason?: unknown }).deprecatedReason
+            if (typeof reason !== 'string' || reason.trim().length < 20) {
+                errors.push(
+                    `${name}.contract.json: deprecated requires a substantive deprecatedReason naming the successor component(s) (see docs/design-system/deprecation-policy.md)`,
+                )
+            }
+        }
+
         // Stable promotion gate: accessibility-tree snapshot evidence
         // (replaced the manual screenReaderVerified gate on 2026-05-03 —
         // automating real SR audio is infeasible without paid SaaS, but
@@ -820,6 +831,79 @@ export function validateComponentsDir(root: string): ValidationResult {
                         }
                     }
                 }
+            }
+        }
+
+        // Status source-of-truth consistency: the Docs-page StatusPill
+        // (.storybook/blocks/DocHeader) reads `contract.status`, while the
+        // sidebar lifecycle dot (.storybook/manager.ts renderLabel) reads the
+        // story meta `tags` status. These are two independent copies of the
+        // same fact; when they drift the docs badge and the sidebar dot show
+        // different lifecycles for the same component (e.g. Docs "Beta" but an
+        // alpha dot). Enforce that the meta status tag, when present, equals
+        // contract.status so a promotion must update both.
+        {
+            const storiesPath = join(dir, `${name}.stories.tsx`)
+            if (existsSync(storiesPath)) {
+                const storiesText = readFileSync(storiesPath, 'utf-8')
+                const metaCut = storiesText.indexOf('export default meta')
+                const metaRegion = metaCut > 0 ? storiesText.slice(0, metaCut) : storiesText
+                const tagsMatch = metaRegion.match(/tags:\s*\[([^\]]*)\]/)
+                if (tagsMatch) {
+                    const metaTags = tagsMatch[1]
+                        .split(',')
+                        .map(entry => entry.trim().replace(/["'!]/g, ''))
+                    const metaStatus = (['stable', 'beta', 'alpha', 'deprecated'] as const).find(
+                        candidate => metaTags.includes(candidate),
+                    )
+                    if (metaStatus && metaStatus !== manifest.status) {
+                        errors.push(
+                            `${name}.stories.tsx: meta tags status "${metaStatus}" disagrees with ${name}.contract.json status "${manifest.status}". The sidebar lifecycle dot reads the meta tag and the Docs StatusPill reads contract.status, so they would show different lifecycles for the same component. Update the meta tags status to "${manifest.status}".`,
+                        )
+                    }
+                }
+
+                // Docs-frame consistency: the global autodocs page is the DT
+                // frame (.storybook/preview.tsx -> DtDocsPage), which renders
+                // the DocHeader masthead (group, name + StatusPill, description,
+                // Figma link) plus the contract-driven Usage/Anatomy/Props/etc.
+                // A contract-backed component that overrides `parameters.docs.page`
+                // in its meta shadows that frame with a bespoke page, dropping the
+                // masthead and every authored contract doc section. Forbid it so
+                // every contract component keeps the same docs shell.
+                if (/docs:\s*\{[\s\S]*?\bpage:/.test(metaRegion)) {
+                    errors.push(
+                        `${name}.stories.tsx: meta overrides parameters.docs.page, which shadows the DtDocsPage autodocs frame and drops the DocHeader masthead + contract doc sections for a contract-backed component. Remove the docs.page override so ${name} uses the shared frame (see .storybook/preview.tsx / DtDocsPage).`,
+                    )
+                }
+            }
+        }
+
+        // Description quality: contract.description is the Docs-page masthead
+        // standfirst (DocHeader) and the component's one-line summary everywhere
+        // it is listed. It must be a real sentence describing what the component
+        // is or does, never a scaffolder stub, a TODO, or just the name. Sound
+        // the alarm on the placeholder shapes the `new-component` scaffolder and
+        // the Tier-2 sweep left behind ("<Name> — production @dt component
+        // (Storybook beta)."). Note: the word "placeholder" is allowed — some
+        // components (Skeleton, EmptyState, ImagePlaceholder) legitimately ARE
+        // placeholders — so key on stub SHAPES, not that word.
+        {
+            const desc = typeof manifest.description === 'string' ? manifest.description.trim() : ''
+            const stubReasons: string[] = []
+            if (!desc) {
+                stubReasons.push('empty')
+            } else {
+                if (desc.length < 20) stubReasons.push('too short (<20 chars)')
+                if (/production @dt component/i.test(desc)) stubReasons.push("scaffolder stub 'production @dt component'")
+                if (/\(Storybook (?:alpha|beta|stable)\)/i.test(desc)) stubReasons.push("'(Storybook <status>)' placeholder")
+                if (/\b(?:TODO|FIXME|lorem ipsum)\b/i.test(desc)) stubReasons.push('TODO/FIXME/lorem placeholder')
+                if (new RegExp(`^${name}(?: component)?\\.?$`, 'i').test(desc)) stubReasons.push('name-only (no real description)')
+            }
+            if (stubReasons.length > 0) {
+                errors.push(
+                    `${name}.contract.json: description is a placeholder (${stubReasons.join(', ')}): "${desc.slice(0, 60)}". Write a concrete one-sentence description of what ${name} is or does — it renders as the Docs masthead standfirst and the component's summary. Distil it from usage.description / dense; no em dashes.`,
+                )
             }
         }
 

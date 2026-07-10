@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useTheme } from "@/nextjs-app/shared/components/ThemeProvider";
-import Image from "next/image";
+import { Image } from "../../lib/imageComponent";
 import styles from "./Logo.module.css";
 
 interface LogoProps {

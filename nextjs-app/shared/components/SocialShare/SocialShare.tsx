@@ -4,9 +4,10 @@ import React, { useState, useEffect, useMemo } from "react";
 import styles from "./SocialShare.module.css";
 import Button from "@dt/Button";
 import Toast from "@dt/Toast/Toast";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
 import Text from "@dt/Text";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export type SocialShareChannel =
   | "linkedin"
@@ -142,31 +143,17 @@ export const SocialShare = ({
   showHeading = false,
   heading,
 }: SocialShareProps) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
   const [toastOpen, setToastOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [supportsNativeShare, setSupportsNativeShare] = useState(false);
+  const isMobile = useMediaQuery("(width < 768px)");
 
   const resolvedChannels = useMemo(
     () => channels.filter((channel) => CHANNEL_META[channel]),
     [channels],
   );
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.matchMedia) {
-      const mediaQuery = window.matchMedia("(width < 768px)");
-      setIsMobile(mediaQuery.matches);
-
-      const handleChange = (e: MediaQueryListEvent) => {
-        setIsMobile(e.matches);
-      };
-
-      mediaQuery.addEventListener("change", handleChange);
-      return () => mediaQuery.removeEventListener("change", handleChange);
-    }
-  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined" && "share" in navigator) {

@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-03T03:43:49.197Z",
-  "tokenCount": 172,
-  "usageCoverage": 139,
+  "generatedAt": "2026-07-09T23:20:08.148Z",
+  "tokenCount": 184,
+  "usageCoverage": 150,
   "themes": [
     {
       "id": "light",
@@ -283,9 +283,9 @@
         "label": "Link on canvas",
         "largeText": false,
         "themeId": "dark",
-        "fgRaw": "#71efff",
+        "fgRaw": "#6fa8ff",
         "bgRaw": "#181a1b",
-        "ratio": 12.88,
+        "ratio": 7.25,
         "level": "AAA",
         "pass": true
       },
@@ -660,7 +660,7 @@
         },
         {
           "name": "--color-muted-light",
-          "value": "#4949a7",
+          "value": "#909090",
           "usage": "Color token (muted-light).",
           "category": "color",
           "subgroup": "Greyscale & borders"
@@ -695,7 +695,7 @@
         },
         {
           "name": "--color-primary-disabled",
-          "value": "#0000ff50",
+          "value": "#041b2350",
           "usage": "Color token (primary-disabled).",
           "category": "color",
           "subgroup": "Greyscale & borders"
@@ -802,6 +802,13 @@
           "name": "--color-header-bg",
           "value": "#282c34",
           "usage": "Color token (header-bg).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--home-gradient",
+          "value": "linear-gradient(\n    120deg,\n    #007cf0 0%,\n    #ff0080 50%,\n    #fff200 100%\n  )",
+          "usage": "Brand gradient used for expressive homepage and marketing treatments.",
           "category": "color",
           "subgroup": "Semantic"
         }
@@ -1142,6 +1149,48 @@
       "title": "General",
       "tokens": [
         {
+          "name": "--ease-out-expo",
+          "value": "cubic-bezier(\n    0.16,\n    1,\n    0.3,\n    1\n  )",
+          "usage": "Cubic-bezier easing curve (out-expo).",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--ease-out-quart",
+          "value": "cubic-bezier(\n    0.25,\n    1,\n    0.5,\n    1\n  )",
+          "usage": "Cubic-bezier easing curve (out-quart).",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--ease-out-cubic",
+          "value": "cubic-bezier(\n    0.33,\n    1,\n    0.68,\n    1\n  )",
+          "usage": "Cubic-bezier easing curve (out-cubic).",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--ease-in-out-quart",
+          "value": "cubic-bezier(\n    0.76,\n    0,\n    0.24,\n    1\n  )",
+          "usage": "Cubic-bezier easing curve (in-out-quart).",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--ease-in-out-expo",
+          "value": "cubic-bezier(\n    0.87,\n    0,\n    0.13,\n    1\n  )",
+          "usage": "Cubic-bezier easing curve (in-out-expo).",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--ease-spring",
+          "value": "cubic-bezier(\n    0.34,\n    1.56,\n    0.64,\n    1\n  )",
+          "usage": "Cubic-bezier easing curve (spring).",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
           "name": "--duration-instant",
           "value": "100ms",
           "usage": "Motion duration for instant transitions.",
@@ -1427,6 +1476,13 @@
           "usage": "Border radius (lg).",
           "category": "radius",
           "subgroup": "General"
+        },
+        {
+          "name": "--radius-full",
+          "value": "9999px",
+          "usage": "Border radius (full).",
+          "category": "radius",
+          "subgroup": "General"
         }
       ]
     },
@@ -1651,6 +1707,13 @@
           "usage": "Body/UI font stack (Satoshi via next/font).",
           "category": "typography",
           "subgroup": "Families & aliases"
+        },
+        {
+          "name": "--font-mono",
+          "value": "source-code-pro, menlo, monaco, consolas, \"Courier New\", monospace",
+          "usage": "Monospace font stack for code and technical UI.",
+          "category": "typography",
+          "subgroup": "Families & aliases"
         }
       ]
     },
@@ -1856,6 +1919,20 @@
           "subgroup": "Type scale"
         },
         {
+          "name": "--font-size-display",
+          "value": "clamp(\n    5rem,\n    10vw + 3rem,\n    8rem\n  )",
+          "usage": "Fluid type size token (display); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-display-xl",
+          "value": "clamp(\n    6rem,\n    14vw + 3rem,\n    12rem\n  )",
+          "usage": "Fluid type size token (display-xl); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
           "name": "--font-size-button-s",
           "value": "clamp(0.875rem, 0.3vw + 0.8rem, 1rem)",
           "usage": "Fluid type size token (button-s); uses clamp().",
@@ -1886,6 +1963,13 @@
         {
           "name": "--font-weight-title",
           "value": "700",
+          "usage": "",
+          "category": "typography",
+          "subgroup": "Weight"
+        },
+        {
+          "name": "--font-weight-medium",
+          "value": "500",
           "usage": "",
           "category": "typography",
           "subgroup": "Weight"

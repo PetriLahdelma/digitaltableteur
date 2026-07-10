@@ -27,13 +27,15 @@ describe("Section", () => {
     expect(el.className).toContain("text-background");
   });
 
-  it("exposes id and donnyTarget anchors", () => {
+  it("exposes id and spotlightTarget anchors", () => {
     const { container } = render(
-      <Section id="pricing" donnyTarget="pricing-spot">x</Section>,
+      <Section id="pricing" spotlightTarget="pricing-spot">
+        x
+      </Section>,
     );
     const el = container.firstChild as HTMLElement;
     expect(el.id).toBe("pricing");
-    expect(el.getAttribute("data-donny-target")).toBe("pricing-spot");
+    expect(el.getAttribute("data-spotlight-target")).toBe("pricing-spot");
   });
 
   it("has no axe violations", async () => {

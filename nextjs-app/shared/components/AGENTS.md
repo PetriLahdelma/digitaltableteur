@@ -84,6 +84,7 @@ Group everything with `table.category`: Content / Appearance / Behavior / Access
 ## i18n
 
 - Keys in `nextjs-app/shared/locales/{en,fi,sv}/translation.json`
+- Shared components use `useTranslate()` / `useLocalization()` from `nextjs-app/shared/lib/translation`; do not import `react-i18next` directly in package source.
 - 100% coverage across EN / FI / SV before removing WIP badge
 
 ---
@@ -105,8 +106,9 @@ Coverage target: >80%. Include axe-core in component tests.
 - **WIP** → Storybook badge; not production-ready
 - **beta** → contract + spec required, plus docs: a Carbon-style MDX page or contract doc-field adoption (`usage`/`keywords`/`dense` + autodocs frame; colocated MDX must then be deleted); honest doc debt tracked in `agent-manifest.json`
 - **stable** → a11y snapshots, production consumer, review evidence in contract
+- **deprecated** → zero consumers (or migrated first) + required `deprecatedReason` naming successors; hidden from `find-component` by default; removal rules + log in [`docs/design-system/deprecation-policy.md`](../../../docs/design-system/deprecation-policy.md)
 
-Do not promote to stable without running validation gates in skill `dt-design-system`.
+Do not promote to stable without running validation gates in skill `dt-design-system`. Never build on a deprecated component; its `deprecatedReason` names the successor.
 
 ---
 

@@ -156,12 +156,20 @@
   --duration-dt-slow: var(--duration-slow);
   --duration-dt-slower: var(--duration-slower);
   --duration-dt-slowest: var(--duration-slowest);
+  --ease-dt-in-out-expo: var(--ease-in-out-expo);
+  --ease-dt-in-out-quart: var(--ease-in-out-quart);
+  --ease-dt-out-cubic: var(--ease-out-cubic);
+  --ease-dt-out-expo: var(--ease-out-expo);
+  --ease-dt-out-quart: var(--ease-out-quart);
+  --ease-dt-spring: var(--ease-spring);
   --focus-dt-color: var(--focus-ring-color);
   --focus-dt-offset: var(--focus-ring-offset);
   --focus-dt-width: var(--focus-ring-width);
   --text-dt-button-l: var(--font-size-button-l);
   --text-dt-button-m: var(--font-size-button-m);
   --text-dt-button-s: var(--font-size-button-s);
+  --text-dt-display: var(--font-size-display);
+  --text-dt-display-xl: var(--font-size-display-xl);
   --text-dt-text: var(--font-size-text);
   --text-dt-text-l: var(--font-size-text-l);
   --text-dt-text-m: var(--font-size-text-m);
@@ -179,6 +187,7 @@
   --text-dt-title-xxl: var(--font-size-title-xxl);
   --text-dt-title-xxs: var(--font-size-title-xxs);
   --color-dt-link: var(--link-color);
+  --radius-dt-full: var(--radius-full);
   --radius-dt-lg: var(--radius-lg);
   --radius-dt-md: var(--radius-md);
   --radius-dt-sm: var(--radius-sm);

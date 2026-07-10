@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import styles from "./StatusDot.module.css";
 
 export type StatusDotTone = "neutral" | "success" | "warning" | "error" | "info";

@@ -1,0 +1,32 @@
+- heading "Let's talk." [level=1]
+- separator
+- paragraph: We'd love to hear about your project, idea or you can just say hello.
+- text: HKI HQ Hämeentie 8 C 00530 Helsinki
+- link "mail@digitaltableteur.com":
+  - /url: mailto:mail@digitaltableteur.com
+- tablist "Contact options":
+  - tab "Send a message" [selected]
+  - tab "Book a call"
+- tabpanel "Send a message":
+  - text: Full Name*
+  - textbox "Full Name*"
+  - text: Email Address*
+  - textbox "Email Address*"
+  - text: Your Message*
+  - textbox "Your Message*":
+    - /placeholder: Enter your message
+  - button "Add project details"
+  - paragraph:
+    - text: By pressing submit you agree for your information to be processed according to our
+    - link "privacy policy":
+      - /url: /privacy-policy
+    - text: .
+  - button "Submit" [disabled]
+- img "Portrait of Petri Lahdelma"
+- heading "New Business Inquiries" [level=2]
+- paragraph: Petri Lahdelma
+- paragraph: Founder, Head of Design
+- link "Book a call":
+  - /url: "#contact-form"
+- blockquote:
+  - paragraph: “ We help ambitious teams turn what they do into products with clarity and conviction. Bring us your vision and we'll shape how it shows up in the world.”

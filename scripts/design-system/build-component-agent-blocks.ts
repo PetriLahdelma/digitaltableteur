@@ -45,6 +45,30 @@ const roots = [
   join(ROOT, "nextjs-app/shared/patterns"),
 ];
 
+function withoutGeneratedAt(payload: { generatedAt?: string | null }) {
+  const { generatedAt: _generatedAt, ...rest } = payload;
+  return rest;
+}
+
+function resolveGeneratedAt(nextPayload: { generatedAt?: string | null }) {
+  if (!existsSync(OUT)) return new Date().toISOString();
+
+  try {
+    const previous = JSON.parse(readFileSync(OUT, "utf8"));
+    if (
+      previous.generatedAt &&
+      JSON.stringify(withoutGeneratedAt(previous)) ===
+        JSON.stringify(withoutGeneratedAt(nextPayload))
+    ) {
+      return previous.generatedAt;
+    }
+  } catch {
+    // Fall through to a fresh timestamp if the existing artifact is unreadable.
+  }
+
+  return new Date().toISOString();
+}
+
 const VARIANT_PROP_NAMES = new Set([
   "variant",
   "size",
@@ -273,10 +297,9 @@ function main() {
   }
 
   mkdirSync(dirname(OUT), { recursive: true });
-  writeFileSync(
-    OUT,
-    `${JSON.stringify({ generatedAt: new Date().toISOString(), components: blocks }, null, 2)}\n`,
-  );
+  const payload = { generatedAt: null as string | null, components: blocks };
+  payload.generatedAt = resolveGeneratedAt(payload);
+  writeFileSync(OUT, `${JSON.stringify(payload, null, 2)}\n`);
   console.log(`✓ component-agent-blocks.json (${Object.keys(blocks).length} components)`);
 }
 

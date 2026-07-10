@@ -4,25 +4,57 @@
     "body": {
       "font": {
         "$value": "var(--font-body), system-ui, sans-serif",
-        "$description": "Production token --primary-body-font"
+        "$description": "Production token --primary-body-font",
+        "$type": "fontFamily",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--primary-body-font",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     },
     "bold": {
       "font": {
         "$value": "var(--font-body), system-ui, sans-serif",
-        "$description": "Production token --primary-bold-font"
+        "$description": "Production token --primary-bold-font",
+        "$type": "fontFamily",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--primary-bold-font",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     },
     "heading": {
       "font": {
         "$value": "var(--font-heading), system-ui, sans-serif",
-        "$description": "Production token --primary-heading-font"
+        "$description": "Production token --primary-heading-font",
+        "$type": "fontFamily",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--primary-heading-font",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     },
     "text": {
       "color": {
         "$value": "#041b23",
-        "$description": "Production token --primary-text-color"
+        "$description": "Production token --primary-text-color",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--primary-text-color",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     }
   },
@@ -30,25 +62,57 @@
     "body": {
       "font": {
         "$value": "var(--font-heading), system-ui, sans-serif",
-        "$description": "Production token --secondary-body-font"
+        "$description": "Production token --secondary-body-font",
+        "$type": "fontFamily",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--secondary-body-font",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     },
     "bold": {
       "font": {
         "$value": "var(--font-heading), system-ui, sans-serif",
-        "$description": "Production token --secondary-bold-font"
+        "$description": "Production token --secondary-bold-font",
+        "$type": "fontFamily",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--secondary-bold-font",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     },
     "heading": {
       "font": {
         "$value": "var(--font-body), system-ui, sans-serif",
-        "$description": "Production token --secondary-heading-font"
+        "$description": "Production token --secondary-heading-font",
+        "$type": "fontFamily",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--secondary-heading-font",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     },
     "text": {
       "color": {
         "$value": "#041b23",
-        "$description": "Production token --secondary-text-color"
+        "$description": "Production token --secondary-text-color",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--secondary-text-color",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     }
   },
@@ -56,7 +120,15 @@
     "text": {
       "color": {
         "$value": "#fff",
-        "$description": "Production token --inverted-text-color"
+        "$description": "Production token --inverted-text-color",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--inverted-text-color",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     }
   },
@@ -64,7 +136,15 @@
     "hint": {
       "color": {
         "$value": "#4b5563",
-        "$description": "Production token --shortcut-hint-color"
+        "$description": "Production token --shortcut-hint-color",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--shortcut-hint-color",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     }
   },
@@ -72,63 +152,167 @@
     "underline": {
       "mask": {
         "$value": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' viewBox='0 0 16 6'%3E%3Cpath d='M0 3 Q4 0 8 3 T16 3' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E\")",
-        "$description": "Production token --wavy-underline-mask"
+        "$description": "Production token --wavy-underline-mask",
+        "$type": "string",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--wavy-underline-mask",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     }
   },
   "storybook": {
     "blue": {
       "$value": "#041b23",
-      "$description": "Production token --storybook-blue"
+      "$description": "Production token --storybook-blue",
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--storybook-blue",
+          "category": "other",
+          "subgroup": "General"
+        }
+      }
     },
     "cyan": {
       "$value": "#71efff",
-      "$description": "Production token --storybook-cyan"
+      "$description": "Production token --storybook-cyan",
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--storybook-cyan",
+          "category": "other",
+          "subgroup": "General"
+        }
+      }
     },
     "pink": {
       "$value": "#f0f",
-      "$description": "Production token --storybook-pink"
+      "$description": "Production token --storybook-pink",
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--storybook-pink",
+          "category": "other",
+          "subgroup": "General"
+        }
+      }
     },
     "purple": {
       "$value": "#812eff",
-      "$description": "Production token --storybook-purple"
+      "$description": "Production token --storybook-purple",
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--storybook-purple",
+          "category": "other",
+          "subgroup": "General"
+        }
+      }
     },
     "violet": {
       "$value": "#bc6dff",
-      "$description": "Production token --storybook-violet"
+      "$description": "Production token --storybook-violet",
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--storybook-violet",
+          "category": "other",
+          "subgroup": "General"
+        }
+      }
     },
     "bg": {
       "$value": "#f9f9f9",
-      "$description": "Production token --storybook-bg"
+      "$description": "Production token --storybook-bg",
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--storybook-bg",
+          "category": "other",
+          "subgroup": "General"
+        }
+      }
     },
     "dark": {
       "$value": "#222",
-      "$description": "Production token --storybook-dark"
+      "$description": "Production token --storybook-dark",
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--storybook-dark",
+          "category": "other",
+          "subgroup": "General"
+        }
+      }
     },
     "yellow": {
       "$value": "#ff0",
-      "$description": "Production token --storybook-yellow"
+      "$description": "Production token --storybook-yellow",
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--storybook-yellow",
+          "category": "other",
+          "subgroup": "General"
+        }
+      }
     },
     "white": {
       "$value": "#fff",
-      "$description": "Production token --storybook-white"
+      "$description": "Production token --storybook-white",
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--storybook-white",
+          "category": "other",
+          "subgroup": "General"
+        }
+      }
     },
     "gray": {
       "$value": "#707070",
-      "$description": "Production token --storybook-gray"
+      "$description": "Production token --storybook-gray",
+      "$type": "color",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--storybook-gray",
+          "category": "other",
+          "subgroup": "General"
+        }
+      }
     }
   },
   "checkbox": {
     "checkmark": {
       "color": {
         "$value": "#fff",
-        "$description": "Production token --checkbox-checkmark-color"
+        "$description": "Production token --checkbox-checkmark-color",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--checkbox-checkmark-color",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     },
     "background": {
       "color": {
         "$value": "#fff",
-        "$description": "Production token --checkbox-background-color"
+        "$description": "Production token --checkbox-background-color",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--checkbox-background-color",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
       }
     }
   }

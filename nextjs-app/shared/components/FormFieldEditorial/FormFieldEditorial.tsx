@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, type InputHTMLAttributes, type TextareaHTMLAttributes, type SelectHTMLAttributes, type ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import Combobox, {
   optionsFromSelectChildren,
   splitPlaceholderOption,

@@ -2,6 +2,7 @@ import contract from "./Toast.contract.json";
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import Toast, { type ToastTone, type ToastPosition } from "@dt/Toast";
+import ToastStack from "@dt/ToastStack";
 import Button from "@dt/Button";
 import { ToastProvider, useToast } from "@/providers/ToastProvider";
 import { expect, userEvent, waitFor, within } from "storybook/test";
@@ -110,6 +111,10 @@ export const Placement: Story = {
         story:
           "position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.",
       },
+      // Inline docs previews transform their container, which hijacks
+      // position: fixed; an iframe gives the toast a real viewport so each
+      // placement lands where the trigger says.
+      story: { inline: false, iframeHeight: 360 },
     },
   },
   render: function PlacementStory() {
@@ -175,6 +180,40 @@ export const ProviderDriven: Story = {
       <ToastProvider>
         <SaveButton />
       </ToastProvider>
+    );
+  },
+};
+
+/** Concurrent toasts stack via ToastStack instead of replacing each other. */
+export const Stacked: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Concurrent messages stack (newest nearest the docked edge) via ToastStack — the app ToastProvider renders one stack per position, so firing showToast repeatedly shows every message.",
+      },
+      // Same iframe treatment as Placement: fixed positioning needs a real
+      // viewport in docs.
+      story: { inline: false, iframeHeight: 360 },
+    },
+  },
+  render: function StackedStory() {
+    return (
+      <ToastStack
+        toasts={[
+          { id: "saved", message: "Settings saved.", tone: "success", duration: 600000 },
+          { id: "lang", message: "Language changed to English", duration: 600000 },
+          {
+            id: "notice",
+            message: "This content is only available in English",
+            tone: "info",
+            duration: 600000,
+          },
+        ]}
+        position="bottom-center"
+      />
     );
   },
 };

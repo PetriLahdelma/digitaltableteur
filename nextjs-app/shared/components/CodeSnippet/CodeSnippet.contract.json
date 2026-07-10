@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "structure",
     "status": "beta",
-    "description": "CodeSnippet — production @dt component (Storybook beta).",
+    "description": "Syntax-highlighted code block with a language picker, optional line numbers, and a copy button.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-code-snippet",
     "radixPrimitive": null,
     "element": "div",
@@ -33,8 +33,10 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
         "ariaRequirements": [],
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-08 — captured Default and Example accessibility-tree snapshots plus a real Playwright forced-colors snapshot; stable remains blocked until the Figma URL points at a real numeric node id."
     },
     "tokens": {
         "colors": [],

@@ -9,9 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { usePathname, useRouter } from "next/navigation";
 import { useLenis } from "lenis/react";
-import { useTranslation } from "react-i18next";
 import {
   getDonnyTarget,
   isDonnyTargetId,
@@ -19,6 +17,11 @@ import {
   type DonnyHighlightMode,
   type DonnyTargetId,
 } from "../../data/donny-site-actions";
+import {
+  useNavigationPathname,
+  useNavigationRouter,
+} from "../../lib/navigation";
+import { useLocalization } from "../../lib/translation";
 import {
   applyDonnyHighlightAttributes,
   clearDonnyHighlightAttributes,
@@ -82,10 +85,10 @@ function usePrefersReducedMotion(): boolean {
 }
 
 export function useDonnyActionsState(): DonnyActionsContextValue {
-  const router = useRouter();
-  const pathname = usePathname() ?? "/";
+  const router = useNavigationRouter();
+  const pathname = useNavigationPathname() ?? "/";
   const lenis = useLenis();
-  const { t, i18n } = useTranslation();
+  const { translate: t, language } = useLocalization();
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const [activeHighlight, setActiveHighlight] =
@@ -387,11 +390,11 @@ export function useDonnyActionsState(): DonnyActionsContextValue {
   const capturePageContext = useCallback((): CapturePageContextOutput => {
     return {
       path: pathname,
-      locale: resolveLocale(i18n.language),
+      locale: resolveLocale(language),
       visibleTargetIds: getVisibleDonnyTargetIds(),
       lastInterest: getLastDonnyInterest(),
     };
-  }, [i18n.language, pathname]);
+  }, [language, pathname]);
 
   const isFirstPathRef = useRef(true);
 

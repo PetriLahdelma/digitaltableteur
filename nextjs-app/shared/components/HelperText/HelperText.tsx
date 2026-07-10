@@ -1,10 +1,3 @@
-import { cva } from "class-variance-authority";
-
-export const helperTextVariants = cva("", {
-  variants: { size: { sm: "", md: "", lg: "" } },
-  defaultVariants: { size: "md" },
-});
-
 import React from "react";
 import {
   CheckCircle,

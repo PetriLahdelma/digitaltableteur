@@ -10,76 +10,29 @@
 }
 
 .modeSwitch {
-  display: inline-flex;
-  width: 100%;
-  padding: var(--space-internal-4);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-full);
-  background: var(--color-surface-muted);
-  gap: var(--space-internal-4);
-}
-
-.modeButton {
-  flex: 1;
-  min-block-size: 2.75rem;
-  padding-block: var(--space-layout-12);
-  padding-inline: var(--space-layout-16);
-  border: none;
-  border-radius: var(--radius-full);
-  background: transparent;
-  font-family: var(--font-sans);
-  font-size: var(--font-size-body-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-muted);
-  cursor: pointer;
-  transition:
-    background-color var(--duration-fast) var(--ease-out-cubic),
-    color var(--duration-fast) var(--ease-out-cubic);
-}
-
-.modeButton:hover {
-  color: var(--color-text);
-}
-
-.modeButton:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-
-.modeButtonActive {
-  background: var(--color-surface);
-  color: var(--color-text);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
-}
-
-.modeButtonContent {
   position: relative;
-  display: inline-flex;
-  align-items: center;
 }
 
-.modeButtonLabel {
-  display: inline-block;
-  white-space: nowrap;
+.modeTabs {
+  width: 100%;
 }
 
-/* Badge perches above the label's top-right so "Book a call" stays on one line. */
-.newBadge {
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-end: 0;
-  transform: translate(45%, -55%);
-  padding-block: 1px;
-  padding-inline: var(--space-internal-4);
-  border-radius: var(--radius-full);
-  background-color: var(--logo-background);
+.modeTabs > button {
+  min-block-size: 2.75rem;
+  flex: 1 1 0;
   font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.04em;
-  color: var(--logo-color);
+  font-size: var(--font-size-button-s);
+  font-weight: var(--font-weight-medium);
+}
+
+.newBadge {
+  composes: brandchip from "../../styles/brand-chip.module.css";
+  position: absolute;
+  z-index: 2;
   pointer-events: none;
+  transform: none;
+  inset-block-start: calc(-1 * var(--space-internal-8));
+  inset-inline-end: var(--space-layout-16);
 }
 
 .panelBody {
@@ -87,11 +40,15 @@
   min-width: 0;
 }
 
+.bookingLoading {
+  padding: var(--space-layout-16);
+}
+
 .unconfigured {
   display: flex;
+  padding: var(--space-layout-24);
   flex-direction: column;
   gap: var(--space-layout-16);
-  padding: var(--space-layout-24);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
   background: var(--color-surface-muted);

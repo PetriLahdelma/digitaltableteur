@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigationRouter } from "../../lib/navigation";
 import type { UIMessage } from "ai";
 import { useOptionalDonnyActions } from "../DonnyActionProvider";
 import {
@@ -21,7 +21,7 @@ export function useDonnyChatNavigation(
   messages: UIMessage[],
   status: "submitted" | "streaming" | "ready" | "error",
 ): void {
-  const router = useRouter();
+  const router = useNavigationRouter();
   const donnyActions = useOptionalDonnyActions();
   const executedToolCallIdsRef = useRef(new Set<string>());
   const previousStatusRef = useRef(status);

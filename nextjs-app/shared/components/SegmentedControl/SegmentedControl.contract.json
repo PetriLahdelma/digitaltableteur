@@ -1,0 +1,59 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "SegmentedControl",
+    "tier": "molecule",
+    "group": "form",
+    "status": "alpha",
+    "description": "Single-select segmented control: a compact row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": {
+            "values": ["sm", "md", "lg"],
+            "default": "md",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "a11y": {
+        "keyboard": [
+            "Tab moves focus to the selected segment (roving tabindex)",
+            "Arrow Left/Up and Right/Down move selection to the previous/next enabled segment",
+            "Home/End select the first/last enabled segment"
+        ],
+        "ariaRequirements": [
+            "Container is role=radiogroup with a required aria-label",
+            "Each segment is role=radio with aria-checked reflecting selection",
+            "Disabled segments are skipped by keyboard navigation"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-muted",
+            "--color-muted-light",
+            "--color-text",
+            "--color-surface",
+            "--focus-ring-color"
+        ],
+        "spacing": [
+            "--space-internal-2",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24"
+        ],
+        "typography": [
+            "--font-body",
+            "--font-size-text-xs",
+            "--font-size-text-s",
+            "--font-size-text-m"
+        ]
+    },
+    "lightDarkVerified": false
+}

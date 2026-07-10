@@ -42,6 +42,20 @@ describe("AlertBanner", () => {
     expect(container.querySelector(`.${styles.error}`)).toBeInTheDocument();
   });
 
+  it("renders the tone icon by default", () => {
+    const { container } = render(<AlertBanner tone="info" title="Info" />);
+    expect(
+      container.querySelector('[data-icon-name="info"]'),
+    ).toBeInTheDocument();
+  });
+
+  it("hides the icon when showIcon is false", () => {
+    const { container } = render(
+      <AlertBanner tone="success" title="Saved" showIcon={false} />,
+    );
+    expect(container.querySelector("[data-icon-name]")).not.toBeInTheDocument();
+  });
+
   it("renders dismiss button when dismissible", () => {
     render(<AlertBanner title="Message" dismissible />);
     expect(
@@ -126,12 +140,6 @@ describe("AlertBanner", () => {
     expect(
       screen.getByRole("button", { name: "Review settings" }),
     ).toBeInTheDocument();
-  });
-
-  it("overrides the tone icon via the icon prop", () => {
-    render(<AlertBanner tone="info" title="Custom" icon="star" />);
-    // The accessible tone word stays even when the glyph changes.
-    expect(screen.getByRole("img", { name: "info" })).toBeInTheDocument();
   });
 
   it("every styles.x reference has a matching .x rule", () => {

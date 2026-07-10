@@ -7,8 +7,10 @@ import {
 } from "react";
 import Button, { type ButtonProps } from "@dt/Button";
 
-export interface IconButtonProps
-  extends Omit<ComponentPropsWithoutRef<"button">, "children"> {
+export interface IconButtonProps extends Omit<
+  ComponentPropsWithoutRef<"button">,
+  "children"
+> {
   /** Icon glyph: a rendered element (e.g. <CaretRight />) or a Phosphor icon name (e.g. "x"). */
   icon: ReactNode | string;
   /** Accessible name when `aria-labelledby` is not set */
@@ -46,26 +48,16 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       className,
       type = "button",
       "aria-labelledby": ariaLabelledBy,
-      disabled,
-      onClick,
-      onBlur,
-      onFocus,
-      onKeyDown,
-      onKeyUp,
-      onMouseDown,
-      onMouseUp,
-      "aria-expanded": ariaExpanded,
-      "aria-controls": ariaControls,
-      "aria-haspopup": ariaHaspopup,
-      "aria-pressed": ariaPressed,
-      tabIndex,
-      id,
-      name,
-      value,
-      form,
+      ...rest
     },
     ref,
   ) => {
+    // Spread every remaining prop onto Button (which forwards unknown props to
+    // the DOM node). This keeps IconButton transparent to composition wrappers
+    // like Radix Slot (Tooltip/Popover `asChild`), which inject pointer
+    // handlers and data-/aria- attributes that must reach the button — an
+    // earlier fixed allowlist silently dropped them, so hover tooltips never
+    // opened.
     const button = (
       <Button
         ref={ref}
@@ -79,23 +71,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         tooltip={tooltip}
         rounded
         icon={icon}
-        disabled={disabled}
-        onClick={onClick}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
-        aria-expanded={ariaExpanded}
-        aria-controls={ariaControls}
-        aria-haspopup={ariaHaspopup}
-        aria-pressed={ariaPressed}
-        tabIndex={tabIndex}
-        id={id}
-        name={name}
-        value={value}
-        form={form}
+        {...(rest as ButtonProps)}
       />
     );
 

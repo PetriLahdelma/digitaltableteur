@@ -1,0 +1,5 @@
+- text: Text Input
+- textbox "Text Input":
+  - /placeholder: Enter text
+  - text: Hello
+- button "Clear Text Input"

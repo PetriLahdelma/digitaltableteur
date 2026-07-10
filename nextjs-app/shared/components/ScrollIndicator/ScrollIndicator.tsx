@@ -2,9 +2,9 @@
 
 import { useRef, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
-import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
-import { useAnimationContext } from "@/providers/AnimationProvider";
-import { cn } from "@/lib/utils";
+import { gsap, useGSAP } from "../../lib/gsap";
+import { useAnimationContext } from "../../lib/animation";
+import { cn } from "../../lib/cn";
 
 export interface ScrollIndicatorProps {
   /** ID of the target element to scroll to */

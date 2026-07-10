@@ -75,6 +75,7 @@
   --line-height-relaxed: 1.625; /* For long-form content */
   --line-height-loose: 1.75; /* For maximum readability */
   --font-weight-title: 700;
+  --font-weight-medium: 500;
   --font-weight-text: 400;
   --color-title: var(--primary-text-color, #041b23);
   --color-text: var(--primary-text-color, #041b23);
@@ -126,7 +127,7 @@
   --color-gray-dark: #333;
   --color-gray: #5e5e5e;
   --color-muted: #626a72; /* AA on #f5f6f6 field surfaces (5.07:1) AND their hover mix #ebeded (4.67:1), not just on white */
-  --color-muted-light: #4949a7;
+  --color-muted-light: #909090;
   --color-border: #c0c0c0;
   --color-border-light: #ccc;
   --color-disabled-bg: #e0e0e0;
@@ -141,7 +142,7 @@
   /* Functional colors */
   --main-body-background-color: #fff;
   --color-primary: #041b23;
-  --color-primary-disabled: #0000ff50;
+  --color-primary-disabled: #041b2350;
   --color-success: #068338;
   --color-info: #0c7a8b;
   --color-error: #dc3545;
@@ -195,6 +196,10 @@
   --radius-sm: 2px;
   --radius-md: 0.25rem;
   --radius-lg: 8px;
+
+  /* Pill / full radius: clamps to half the smaller dimension, so ends stay
+     fully rounded at any height (progress tracks, pills, toggles). */
+  --radius-full: 9999px;
 
   /* Sizing */
 
@@ -350,7 +355,7 @@
   --secondary-text-color: #aaa;
   --inverted-text-color: #181a1b;
   --shortcut-hint-color: #9ca3af; /* 6.7:1 on #181a1b */
-  --link-color: #71efff;
+  --link-color: var(--color-primary); /* links use the interactive accent, not info-cyan; matches light theme where link == primary */
   --color-primary: #6fa8ff;
   --color-primary-disabled: #6fa8ff50;
   --color-success: #4fd18b;

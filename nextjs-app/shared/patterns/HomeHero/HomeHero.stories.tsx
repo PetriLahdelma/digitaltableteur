@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { userEvent, within } from "storybook/test";
 import { HomeHero } from "./HomeHero";
 import type { Meta, StoryObj } from "@storybook/react-vite";
@@ -7,10 +8,23 @@ const defaultArgs = {
   scrollTargetId: "services",
 };
 
+// HomeHero picks its title/subtext at random on mount (per-visit-random is a
+// product decision). AT snapshots must be deterministic, so stories pin
+// Math.random to always select the first option; restored on unmount.
+const trueRandom = Math.random;
+function PinnedRandomDecorator(Story: React.ComponentType) {
+  Math.random = () => 0;
+  useEffect(() => () => {
+    Math.random = trueRandom;
+  }, []);
+  return <Story />;
+}
+
 const meta = {
   title: "Patterns/HomeHero",
   component: HomeHero,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
+  decorators: [PinnedRandomDecorator],
   parameters: {
     design: {
       type: "figma",

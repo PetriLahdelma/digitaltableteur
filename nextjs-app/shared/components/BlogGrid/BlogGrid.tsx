@@ -1,12 +1,12 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import {
   EnhancedArticleCard,
   type EnhancedArticleCardProps,
 } from "../EnhancedArticleCard";
 import { FadeIn } from "../animations/FadeIn";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface BlogGridProps {
   /** Array of articles to display */
@@ -27,6 +27,12 @@ export interface BlogGridProps {
   className?: string;
 }
 
+/**
+ * Responsive grid of blog articles, one EnhancedArticleCard per item. Supports
+ * a standard grid, a featured-first layout that promotes one article to a
+ * full-width card, and a friendly empty state. Cards fade in on mount via
+ * FadeIn.
+ */
 export function BlogGrid({
   articles,
   featuredSlug,
@@ -35,7 +41,7 @@ export function BlogGrid({
   hideImages = false,
   className,
 }: BlogGridProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   // Empty state
   if (!articles || articles.length === 0) {

@@ -1,0 +1,20 @@
+/* Brand "NEW!" chip: the single source for the logo-colored micro-badge used
+ * by ContactInquiryPanel (Book a call tab) and PricingPageContent (AaaS
+ * accordion). Compose it (`composes: brandchip from
+ * "../../styles/brand-chip.module.css"`) and add only positioning locally —
+ * never re-roll the chrome (same rule as field.module.css, #978).
+ * Too small for DS Badge (sm is a 32px control; this is an 18px decoration);
+ * revisit as a Badge tone only if Badge ever grows a micro size. */
+
+.brandchip {
+  padding-block: var(--space-internal-4);
+  padding-inline: var(--space-internal-8);
+  border-radius: var(--radius-full);
+  background-color: var(--logo-background);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--logo-color);
+}

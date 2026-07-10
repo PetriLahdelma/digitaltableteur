@@ -54,11 +54,13 @@ describe("CookieConsent", () => {
       </CookieConsentProvider>,
     );
     expect(
-      screen.getByRole("region", { name: /cookieConsent.bannerLabel/i }),
+      screen.getByRole("region", { name: /cookie preferences/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/cookieConsent.bannerSummary/i)).toBeInTheDocument();
     expect(
-      screen.queryByRole("heading", { name: /cookieConsent.title/i }),
+      screen.getByText(/cookies improve your experience/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: /cookie preferences/i }),
     ).not.toBeInTheDocument();
   });
 
@@ -74,7 +76,7 @@ describe("CookieConsent", () => {
     );
     await waitFor(() => {
       expect(
-        screen.queryByRole("region", { name: /cookieConsent.bannerLabel/i }),
+        screen.queryByRole("region", { name: /cookie preferences/i }),
       ).not.toBeInTheDocument();
     });
   });
@@ -86,15 +88,15 @@ describe("CookieConsent", () => {
       </CookieConsentProvider>,
     );
     expect(
-      screen.getByRole("button", { name: /cookieConsent.customizeButton/i }),
+      screen.getByRole("button", { name: /customize settings/i }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("button", {
-        name: /cookieConsent.acceptEssentialButton/i,
+        name: /only essential/i,
       }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /cookieConsent.acceptAllButton/i }),
+      screen.getByRole("button", { name: /accept all/i }),
     ).toBeInTheDocument();
   });
 
@@ -105,10 +107,10 @@ describe("CookieConsent", () => {
       </CookieConsentProvider>,
     );
     fireEvent.click(
-      screen.getByRole("button", { name: /cookieConsent.customizeButton/i }),
+      screen.getByRole("button", { name: /customize settings/i }),
     );
     expect(
-      screen.getByRole("heading", { name: /cookieConsent.title/i }),
+      screen.getByRole("heading", { name: /cookie consent/i }),
     ).toBeInTheDocument();
   });
 
@@ -119,7 +121,7 @@ describe("CookieConsent", () => {
       </CookieConsentProvider>,
     );
     fireEvent.click(
-      screen.getByRole("button", { name: /cookieConsent.acceptAllButton/i }),
+      screen.getByRole("button", { name: /accept all/i }),
     );
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
       "dt-cookie-consent",
@@ -135,7 +137,7 @@ describe("CookieConsent", () => {
     );
     fireEvent.click(
       screen.getByRole("button", {
-        name: /cookieConsent.acceptEssentialButton/i,
+        name: /only essential/i,
       }),
     );
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
@@ -151,7 +153,7 @@ describe("CookieConsent", () => {
       </CookieConsentProvider>,
     );
     const policyLink = screen.getByRole("link", {
-      name: /cookieConsent.policyLinkText/i,
+      name: /cookie policy/i,
     });
     expect(policyLink).toHaveAttribute("href", "/privacy-policy");
   });

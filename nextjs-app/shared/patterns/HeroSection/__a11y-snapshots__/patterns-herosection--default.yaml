@@ -1,0 +1,3 @@
+- region:
+  - heading "Hero shell" [level=1]
+  - paragraph: Composable full-bleed marketing hero wrapper.

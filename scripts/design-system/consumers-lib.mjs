@@ -1,6 +1,7 @@
 /**
  * Compute production consumers[] for stable component contracts.
- * Follows @dt/, @/, and relative imports from app / patterns / pages (transitive).
+ * Follows @dt/, @digitaltableteur/react, @/, and relative imports from app /
+ * patterns / pages (transitive).
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, resolve, dirname, relative, extname } from "node:path";
@@ -73,6 +74,10 @@ function resolveToFile(basePath) {
 function resolveDtImport(spec) {
   if (!spec.startsWith("@dt/")) return null;
   const name = spec.slice(4).split("/")[0];
+  return resolveComponentByName(name);
+}
+
+function resolveComponentByName(name) {
   for (const base of COMPONENT_ROOTS) {
     const dir = join(base, name);
     const contract = join(dir, `${name}.contract.json`);
@@ -135,6 +140,31 @@ function parseDtComponents(content) {
   return names;
 }
 
+function parsePackageComponents(content) {
+  const names = new Set();
+  const re =
+    /\bimport\s+(type\s+)?([\s\S]*?)\s+from\s+["']@digitaltableteur\/react["']/g;
+  let match;
+  while ((match = re.exec(content)) !== null) {
+    const isTypeOnly = Boolean(match[1]);
+    if (isTypeOnly) continue;
+    const clause = match[2];
+    const named = clause.match(/\{([\s\S]*?)\}/);
+    if (!named) continue;
+    for (const raw of named[1].split(",")) {
+      const local = raw
+        .trim()
+        .replace(/^type\s+/, "")
+        .split(/\s+as\s+/)[0]
+        .trim();
+      if (!/^[A-Z][A-Za-z0-9]*$/.test(local)) continue;
+      if (!resolveComponentByName(local)) continue;
+      names.add(local);
+    }
+  }
+  return names;
+}
+
 /**
  * @param {string} content
  */
@@ -145,6 +175,16 @@ function parseImportSpecs(content) {
   let match;
   while ((match = re.exec(content)) !== null) {
     specs.add(match[1]);
+  }
+  // Dynamic imports (next/dynamic, React.lazy, bare `import("…")`) are real
+  // production dependencies — they ship to the client, just code-split/lazy.
+  // Follow them so components reached only through a dynamic boundary (e.g.
+  // ChatWidget/CookieConsent mounted via next/dynamic in NextLayout) are not
+  // undercounted to zero consumers.
+  const dyn = /\bimport\s*\(\s*["']([^"']+)["']/g;
+  let dm;
+  while ((dm = dyn.exec(content)) !== null) {
+    specs.add(dm[1]);
   }
   return specs;
 }
@@ -176,6 +216,11 @@ function buildModuleGraph() {
     const content = readFileSync(file, "utf8");
     const dt = parseDtComponents(content);
     const deps = new Set();
+    for (const name of parsePackageComponents(content)) {
+      dt.add(name);
+      const resolved = resolveComponentByName(name);
+      if (resolved) deps.add(resolved);
+    }
     for (const spec of parseImportSpecs(content)) {
       const resolved = resolveImport(file, spec);
       if (!resolved) continue;

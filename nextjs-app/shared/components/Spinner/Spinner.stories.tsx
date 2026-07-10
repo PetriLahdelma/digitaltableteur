@@ -5,7 +5,7 @@ import contract from "./Spinner.contract.json";
 const meta = {
   title: "Feedback/Spinner",
   component: Spinner,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

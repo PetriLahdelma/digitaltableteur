@@ -1,17 +1,19 @@
 "use client";
 
 import { useEffect, useReducer, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { useNavigationSearchParams } from "../../lib/navigation";
+import { useTranslate } from "../../lib/translation";
+import { cn } from "../../lib/cn";
 import { motion, useReducedMotion } from "framer-motion";
 import Button from "@dt/Button";
 import { FormFieldEditorial } from "../FormFieldEditorial";
 import { ExpandableSection } from "../ExpandableSection";
-import { useToast } from "@/providers/ToastProvider";
+import { useToast } from "../../lib/toast";
 import FileUpload from "@dt/FileUpload";
 import MultiCombobox from "@dt/MultiCombobox";
-import Checkbox from "@dt/Checkbox";
+import CheckboxGroup from "@dt/CheckboxGroup";
+import PhoneInput from "@dt/PhoneInput";
+import Select from "@dt/Select";
 import styles from "./ContactFormEditorial.module.css";
 import {
   CONTACT_ACCEPTED_ATTACHMENT_TYPES,
@@ -36,13 +38,14 @@ const ACCEPTED_ATTACHMENT_TYPES = CONTACT_ACCEPTED_ATTACHMENT_TYPES;
 const getInitialFormState = () => ({
   name: "",
   email: "",
+  phone: "",
   message: "",
   budget: "",
   timeline: "",
   projectType: [] as string[],
+  followUpPreferences: [] as string[],
   hearAbout: "",
   inspiration: "",
-  requestPortfolioMaterials: false,
   honeypot: "",
 });
 
@@ -59,19 +62,13 @@ type FormAction =
   | {
       type: "UPDATE_FIELD";
       payload: {
-        field: Exclude<keyof FormState, "projectType">;
+        field: Exclude<keyof FormState, "projectType" | "followUpPreferences">;
         value: string;
       };
     }
   | { type: "UPDATE_PROJECT_TYPES"; payload: string[] }
+  | { type: "UPDATE_FOLLOW_UP_PREFERENCES"; payload: string[] }
   | { type: "ADD_PROJECT_TYPE"; payload: string }
-  | {
-      type: "UPDATE_BOOLEAN";
-      payload: {
-        field: "requestPortfolioMaterials";
-        value: boolean;
-      };
-    }
   | { type: "RESET" };
 
 const mergeProjectType = (current: string[], next: string): string[] => {
@@ -85,13 +82,16 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
       return { ...state, [action.payload.field]: action.payload.value };
     case "UPDATE_PROJECT_TYPES":
       return { ...state, projectType: action.payload };
+    case "UPDATE_FOLLOW_UP_PREFERENCES":
+      return {
+        ...state,
+        followUpPreferences: action.payload,
+      };
     case "ADD_PROJECT_TYPE":
       return {
         ...state,
         projectType: mergeProjectType(state.projectType, action.payload),
       };
-    case "UPDATE_BOOLEAN":
-      return { ...state, [action.payload.field]: action.payload.value };
     case "RESET":
       return getInitialFormState();
     default:
@@ -156,6 +156,23 @@ const HEAR_ABOUT_OPTIONS = [
   { value: "other", labelKey: "contactHearOther" },
 ];
 
+const FOLLOW_UP_OPTIONS = [
+  { value: "portfolio-materials", labelKey: "contactRequestPortfolioMaterials" },
+  { value: "call-prep", labelKey: "contactFollowUpCallPrep" },
+];
+
+const formatOptionsForSubmit = (
+  values: string[],
+  options: { value: string; labelKey: string }[],
+  t: (key: string) => string,
+): string =>
+  values
+    .map((value) => {
+      const option = options.find((entry) => entry.value === value);
+      return option ? t(option.labelKey) : value;
+    })
+    .join(", ");
+
 export interface ContactFormEditorialProps {
   onSuccess?: () => void;
   onError?: (error: Error) => void;
@@ -170,9 +187,9 @@ export function ContactFormEditorial({
   onError,
   className,
 }: ContactFormEditorialProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const { showToast } = useToast();
-  const searchParams = useSearchParams();
+  const searchParams = useNavigationSearchParams();
   // Honour reduced-motion: when set, skip the form's entrance animation entirely
   // so the rendered tree sits at its final visible state from frame 1. Without
   // this, axe samples the form mid-fade (opacity ~0.7) and reports the
@@ -267,7 +284,7 @@ export function ContactFormEditorial({
 
   // === HANDLERS ===
   const updateField =
-    (field: Exclude<keyof FormState, "projectType">) =>
+    (field: Exclude<keyof FormState, "projectType" | "followUpPreferences">) =>
     (
       e: React.ChangeEvent<
         HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -278,6 +295,21 @@ export function ContactFormEditorial({
         payload: { field, value: e.target.value },
       });
     };
+
+  const updateSelectField =
+    (field: "budget" | "timeline" | "hearAbout") => (value: string) => {
+      dispatchForm({
+        type: "UPDATE_FIELD",
+        payload: { field, value },
+      });
+    };
+
+  const handlePhoneChange = (value: string | undefined) => {
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "phone", value: value ?? "" },
+    });
+  };
 
   const handleAttachmentChange = (file: File | null) => {
     setAttachmentError("");
@@ -364,14 +396,20 @@ export function ContactFormEditorial({
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          phone: "", // Not collected in editorial form
+          phone: formData.phone,
           interest: formatProjectTypesForSubmit(formData.projectType, t),
           message: formData.message,
           hearAbout: formData.hearAbout,
           budget: formData.budget,
           timeline: formData.timeline,
           inspiration: formData.inspiration,
-          requestPortfolioMaterials: formData.requestPortfolioMaterials,
+          followUpPreferences: formatOptionsForSubmit(
+            formData.followUpPreferences,
+            FOLLOW_UP_OPTIONS,
+            t,
+          ),
+          requestPortfolioMaterials:
+            formData.followUpPreferences.includes("portfolio-materials"),
           attachmentName: attachmentFile?.name ?? null,
           attachmentType: attachmentFile?.type ?? null,
           attachmentSize: attachmentFile?.size ?? null,
@@ -455,20 +493,6 @@ export function ContactFormEditorial({
           autoComplete="email"
         />
 
-        <div className={styles.checkboxField}>
-          <Checkbox
-            id="contact-request-portfolio-materials"
-            label={t("contactRequestPortfolioMaterials")}
-            checked={formData.requestPortfolioMaterials}
-            onCheckedChange={(checked) =>
-              dispatchForm({
-                type: "UPDATE_BOOLEAN",
-                payload: { field: "requestPortfolioMaterials", value: checked },
-              })
-            }
-          />
-        </div>
-
         <FormFieldEditorial
           label={t("contactMessage")}
           type="textarea"
@@ -490,11 +514,10 @@ export function ContactFormEditorial({
         className={styles.expandable}
       >
         <div className={styles.fields}>
-          <FormFieldEditorial
+          <Select
             label={t("contactBudgetLabel", "Budget range")}
-            type="select"
             value={formData.budget}
-            onChange={updateField("budget")}
+            onValueChange={updateSelectField("budget")}
           >
             <option value="">
               {t("contactSelectPlaceholder", "Select...")}
@@ -504,13 +527,12 @@ export function ContactFormEditorial({
                 {t(opt.labelKey)}
               </option>
             ))}
-          </FormFieldEditorial>
+          </Select>
 
-          <FormFieldEditorial
+          <Select
             label={t("contactTimelineLabel", "Timeline")}
-            type="select"
             value={formData.timeline}
-            onChange={updateField("timeline")}
+            onValueChange={updateSelectField("timeline")}
           >
             <option value="">
               {t("contactSelectPlaceholder", "Select...")}
@@ -520,7 +542,7 @@ export function ContactFormEditorial({
                 {t(opt.labelKey)}
               </option>
             ))}
-          </FormFieldEditorial>
+          </Select>
 
           <MultiCombobox
             label={t("contactProjectTypeLabel", "Project type")}
@@ -548,11 +570,34 @@ export function ContactFormEditorial({
           className={styles.expandable}
         >
           <div className={styles.fields}>
-            <FormFieldEditorial
+            <PhoneInput
+              label={t("contactPhone")}
+              placeholder={t("contactPhonePlaceholder")}
+              value={formData.phone}
+              onChange={handlePhoneChange}
+            />
+
+            <CheckboxGroup
+              id="contact-follow-up-preferences"
+              label={t("contactFollowUpPreferencesLabel")}
+              showMasterCheckbox={false}
+              options={FOLLOW_UP_OPTIONS.map((opt) => ({
+                value: opt.value,
+                label: t(opt.labelKey),
+              }))}
+              defaultSelected={formData.followUpPreferences}
+              onChange={(values) =>
+                dispatchForm({
+                  type: "UPDATE_FOLLOW_UP_PREFERENCES",
+                  payload: values,
+                })
+              }
+            />
+
+            <Select
               label={t("contactHearAbout")}
-              type="select"
               value={formData.hearAbout}
-              onChange={updateField("hearAbout")}
+              onValueChange={updateSelectField("hearAbout")}
             >
               <option value="">
                 {t("contactSelectPlaceholder", "Select...")}
@@ -562,7 +607,7 @@ export function ContactFormEditorial({
                   {t(opt.labelKey)}
                 </option>
               ))}
-            </FormFieldEditorial>
+            </Select>
 
             <div className={styles.fileUploadWrapper}>
               <FileUpload

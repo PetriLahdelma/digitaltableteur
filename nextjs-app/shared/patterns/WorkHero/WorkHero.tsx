@@ -1,11 +1,11 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { TextReveal } from "../../components/animations/TextReveal";
 import { FadeIn } from "../../components/animations/FadeIn";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface WorkHeroProps {
   /** Hero title - uses i18n key "workTitle" if not provided */
@@ -24,7 +24,7 @@ export function WorkHero({
   id = "work-hero",
   className,
 }: WorkHeroProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const displayTitle = title || t("workTitle", "Work");
   const displayDescription = description || t("workDescription", "Explore our portfolio of design systems, UX design and creative projects.");

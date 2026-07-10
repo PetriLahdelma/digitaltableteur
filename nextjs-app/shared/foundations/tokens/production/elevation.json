@@ -4,19 +4,43 @@
     "overlay": {
       "bg": {
         "$value": "rgb(0 0 0 / 50%)",
-        "$description": "Overlay or elevation token."
+        "$description": "Overlay or elevation token.",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--modal-overlay-bg",
+            "category": "elevation",
+            "subgroup": "General"
+          }
+        }
       }
     },
     "shadow": {
       "$value": "0 4px 8px rgb(0 0 0 / 20%)",
-      "$description": "Overlay or elevation token."
+      "$description": "Overlay or elevation token.",
+      "$type": "shadow",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--modal-shadow",
+          "category": "elevation",
+          "subgroup": "General"
+        }
+      }
     }
   },
   "gallery": {
     "caption": {
       "bg": {
         "$value": "rgb(0 0 0 / 55%)",
-        "$description": "Overlay or elevation token."
+        "$description": "Overlay or elevation token.",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--gallery-caption-bg",
+            "category": "elevation",
+            "subgroup": "General"
+          }
+        }
       }
     }
   }

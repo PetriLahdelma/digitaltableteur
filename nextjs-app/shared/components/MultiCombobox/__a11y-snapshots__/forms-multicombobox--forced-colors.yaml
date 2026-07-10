@@ -1,0 +1,4 @@
+- text: Disciplines Design
+- button "Remove badge"
+- combobox "Disciplines"
+- button "Toggle options"

@@ -4,19 +4,27 @@ import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi, beforeAll } from "vitest";
 import Avatar from "@dt/Avatar";
 
-// Mock react-i18next
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string, params?: Record<string, unknown>) => {
-      if (key === "avatar.menuLabel" && params?.name) {
-        return `${params.name} menu`;
-      }
-      if (key === "avatar.menuLabelGeneric") return "Avatar menu";
-      if (key === "avatar.altTextGeneric") return "Avatar";
-      return key;
-    },
-  }),
-}));
+// Mock the package translation adapter.
+vi.mock("../../lib/translation", () => {
+  const t = (key: string, params?: Record<string, unknown>) => {
+    if (key === "avatar.menuLabel" && params?.name) {
+      return `${params.name} menu`;
+    }
+    if (key === "avatar.menuLabelGeneric") return "Avatar menu";
+    if (key === "avatar.altTextGeneric") return "Avatar";
+    return key;
+  };
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 // The avatar menu is the Radix-backed Menu primitive, which relies on
 // pointer-capture and scrollIntoView (absent in jsdom).

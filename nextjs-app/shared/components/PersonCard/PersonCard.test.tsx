@@ -6,12 +6,19 @@ import PersonCard from "@dt/PersonCard";
 
 expect.extend(toHaveNoViolations);
 
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string) => key,
-    i18n: { language: "en" },
-  }),
-}));
+vi.mock("../../lib/translation", () => {
+  const t = (key: string) => key;
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 const baseProps = {
   imageSrc: "/portrait.jpg",

@@ -1,0 +1,43 @@
+- list "Project gallery":
+  - listitem:
+    - 'link "Category: Design Systems. Fully AI-powered and guardrailed design-system architecture for enterprise data products: tokens, contracts, Storybook, MCP, CLI, and Rhythmguard enforcement.. Tags: Design Systems, AI Architecture, Data Science, MCP, React Design Systems DSharp Design System Fully AI-powered and guardrailed design-system architecture for enterprise data products: tokens, contracts, Storybook, MCP, CLI, and Rhythmguard enforcement. Design Systems AI Architecture Data Science"':
+      - /url: /work/dsharp-design-system
+      - text: "Category: Design Systems. Fully AI-powered and guardrailed design-system architecture for enterprise data products: tokens, contracts, Storybook, MCP, CLI, and Rhythmguard enforcement.. Tags: Design Systems, AI Architecture, Data Science, MCP, React Design Systems"
+      - heading "DSharp Design System" [level=3]
+      - paragraph: "Fully AI-powered and guardrailed design-system architecture for enterprise data products: tokens, contracts, Storybook, MCP, CLI, and Rhythmguard enforcement."
+      - text: Design Systems AI Architecture Data Science
+  - listitem:
+    - 'link "Category: Design Systems. Enterprise design system for the City of Helsinki, serving hundreds of digital services with accessible, consistent UI components.. Tags: Design System, UX Design, Accessibility, React Design Systems Helsinki Design System Enterprise design system for the City of Helsinki, serving hundreds of digital services with accessible, consistent UI components. Design System UX Design Accessibility"':
+      - /url: /work/helsinki-design-system
+      - text: "Category: Design Systems. Enterprise design system for the City of Helsinki, serving hundreds of digital services with accessible, consistent UI components.. Tags: Design System, UX Design, Accessibility, React Design Systems"
+      - heading "Helsinki Design System" [level=3]
+      - paragraph: Enterprise design system for the City of Helsinki, serving hundreds of digital services with accessible, consistent UI components.
+      - text: Design System UX Design Accessibility
+  - listitem:
+    - 'link "Category: Branding. Brand identity and digital presence for a digital transformation consultancy based in Helsinki.. Tags: Branding, Web Design, Identity Branding New Things Co Brand identity and digital presence for a digital transformation consultancy based in Helsinki. Branding Web Design Identity"':
+      - /url: /work/new-things-co
+      - text: "Category: Branding. Brand identity and digital presence for a digital transformation consultancy based in Helsinki.. Tags: Branding, Web Design, Identity Branding"
+      - heading "New Things Co" [level=3]
+      - paragraph: Brand identity and digital presence for a digital transformation consultancy based in Helsinki.
+      - text: Branding Web Design Identity
+  - listitem:
+    - 'link "Category: Ux Design. Web and social assets for a creative underground music outing.. Tags: Web Design, Animation, Branding Ux Design Garage Junction Web and social assets for a creative underground music outing. Web Design Animation Branding"':
+      - /url: /work/garage-junction
+      - text: "Category: Ux Design. Web and social assets for a creative underground music outing.. Tags: Web Design, Animation, Branding Ux Design"
+      - heading "Garage Junction" [level=3]
+      - paragraph: Web and social assets for a creative underground music outing.
+      - text: Web Design Animation Branding
+  - listitem:
+    - 'link "Category: Illustration. Collection of editorial illustrations, character designs, and visual storytelling for various clients.. Tags: Illustration, Character Design, Editorial Illustration Illustrations Collection of editorial illustrations, character designs, and visual storytelling for various clients. Illustration Character Design Editorial"':
+      - /url: /work/illustrations
+      - text: "Category: Illustration. Collection of editorial illustrations, character designs, and visual storytelling for various clients.. Tags: Illustration, Character Design, Editorial Illustration"
+      - heading "Illustrations" [level=3]
+      - paragraph: Collection of editorial illustrations, character designs, and visual storytelling for various clients.
+      - text: Illustration Character Design Editorial
+  - listitem:
+    - 'link "Category: Design Systems. Led the design system for SAP''s flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide.. Tags: Design Systems, Enterprise, Low-Code Platform, SAP BTP Design Systems SAP Build Apps Design System Led the design system for SAP''s flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide. Design Systems Enterprise Low-Code Platform"':
+      - /url: /work/sap-build-apps
+      - text: "Category: Design Systems. Led the design system for SAP's flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide.. Tags: Design Systems, Enterprise, Low-Code Platform, SAP BTP Design Systems"
+      - heading "SAP Build Apps Design System" [level=3]
+      - paragraph: Led the design system for SAP's flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide.
+      - text: Design Systems Enterprise Low-Code Platform

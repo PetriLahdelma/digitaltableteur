@@ -29,7 +29,7 @@ function ComboboxDemo(props: Partial<React.ComponentProps<typeof Combobox>>) {
 const meta = {
   title: "Forms/Combobox",
   component: Combobox,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

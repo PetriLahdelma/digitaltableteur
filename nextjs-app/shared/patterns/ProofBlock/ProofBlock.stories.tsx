@@ -9,7 +9,7 @@ const meta: Meta<typeof ProofBlock> = {
   // below, after the sample data).
   title: "Patterns/ProofBlock",
   component: ProofBlock,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     layout: "fullscreen",
     design: {

@@ -63,7 +63,7 @@ export function ServicesSection({
   return (
     <Section
       id={id}
-      donnyTarget={donnyTarget}
+      data-donny-target={donnyTarget}
       className={cn("py-24 desktop:py-32", className)}
       aria-labelledby={title ? `${id}-title` : undefined}
     >

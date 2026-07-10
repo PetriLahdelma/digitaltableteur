@@ -1,18 +1,42 @@
-/* Tabs Container */
+/* ==========================================================================
+   Tabs — Astryx-inspired tablist with a single sliding selection indicator.
+   The indicator is one element; each variant reshapes it (2px rail bar, raised
+   pill thumb, filled segment). Its position/width arrive as CSS custom
+   properties (--tab-ind-x / --tab-ind-w) measured from the selected tab.
+   ========================================================================== */
 
 .tabs {
-  display: flex;
+  display: inline-flex;
   position: relative;
+  max-inline-size: 100%;
   gap: 0;
-  border-radius: var(--radius-lg);
-  background: transparent;
+  font-family: var(--font-text);
 }
 
-/* Tab Variants */
+/* Shared indicator: positioned by the measured custom properties, styled per
+   variant below. Hidden until the first measure lands to avoid a 0,0 flash. */
+
+.indicator {
+  position: absolute;
+  left: 0;
+  z-index: 0;
+  inline-size: var(--tab-ind-w, 0);
+  pointer-events: none;
+  transition:
+    transform var(--duration-fast) var(--ease-out-cubic),
+    inline-size var(--duration-fast) var(--ease-out-cubic);
+  transform: translateX(var(--tab-ind-x, 0));
+  opacity: 0;
+  inset-block-end: 0;
+}
+
+/* ---- Variant containers --------------------------------------------------- */
 
 .default {
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   background: var(--color-light-bg);
+  overflow: hidden;
 }
 
 .pills {
@@ -23,11 +47,51 @@
 }
 
 .underline {
-  gap: var(--space-internal-8);
+  gap: var(--space-internal-4);
   border-bottom: 1px solid var(--color-border);
 }
 
-/* Tab Sizes */
+/* ---- Tab base ------------------------------------------------------------- */
+
+.tab {
+  display: inline-flex;
+  position: relative;
+  z-index: 1; /* above the indicator thumb for pills/default */
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+
+  /* Muted resting label (theme-aware) so selection reads as a step up to ink /
+     primary. --secondary-text-color is NOT used: it collapses to the ink colour
+     in the light theme, which would erase the muted → selected contrast. */
+  color: var(--color-muted);
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-out-cubic),
+    transform var(--duration-instant) var(--ease-out-cubic);
+}
+
+.tab:focus-visible {
+  z-index: 2;
+  border-radius: var(--radius-md);
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+/* Press feedback. Disabled tabs set the `disabled` attribute and are inert,
+   so a plain :active never fires on them. */
+
+.tab:active {
+  transform: scale(0.97);
+}
+
+/* ---- Sizes ---------------------------------------------------------------- */
 
 .tabs--sm {
   font-size: var(--font-size-button-s);
@@ -41,164 +105,166 @@
   font-size: var(--font-size-button-l);
 }
 
-/* Individual Tab Base Styles */
+.tabs--sm .tab {
+  padding: var(--space-internal-4) var(--space-internal-8);
+  gap: var(--space-internal-6);
+}
 
-.tab {
-  display: flex;
-  position: relative;
+.tabs--md .tab {
+  padding: var(--space-internal-6) var(--space-internal-12);
+  gap: var(--space-internal-6);
+}
+
+.tabs--lg .tab {
   padding: var(--space-internal-8) var(--space-internal-16);
-  flex: 0 0 auto;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  background: transparent;
-  font-family: var(--font-text);
-  font-weight: 500;
-  line-height: 1.2;
-  cursor: pointer;
-  transition:
-    color var(--duration-fast) var(--ease-out-cubic),
-    background-color var(--duration-fast) var(--ease-out-cubic),
-    border-color var(--duration-fast) var(--ease-out-cubic),
-    box-shadow var(--duration-fast) var(--ease-out-cubic),
-    transform var(--duration-instant) var(--ease-out-cubic);
+  gap: var(--space-internal-8);
 }
 
-.tab:focus-visible {
-  z-index: 1;
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+/* Divider between segments in the enclosed default variant. */
+
+.default .tab + .tab {
+  box-shadow: inset 1px 0 0 var(--color-border);
 }
 
-/* Press feedback. Disabled tabs set the `disabled` attribute and are inert,
-   so a plain :active never fires on them — no :not(:disabled) needed (which
-   would out-rank later pseudo rules and trip no-descending-specificity). */
+/* ---- Hover (pointer devices only) ----------------------------------------- */
 
-.tab:active {
-  transform: scale(0.97);
-}
-
-/* Base variant styles - must come before specific variants */
-
-.default .tab {
-  border-inline-end: 1px solid var(--color-border);
-  color: var(--color-text, var(--primary-text-color));
-}
-
-.pills .tab {
-  border-radius: var(--radius-md);
-  color: var(--color-text, var(--primary-text-color));
-}
-
-.underline .tab {
-  color: var(--secondary-text-color);
-  border-bottom: 2px solid transparent;
-}
-
-/* Special modifier states */
-
-.default .tab:last-child {
-  border-inline-end: none;
-}
-
-/* Hover states (pointer devices only) */
+/* Only resting tabs shift toward the accent on hover. The active tab keeps its
+   selected colour — in the default variant that is white on the primary thumb,
+   which the accent hover would turn dark-on-dark (invisible). */
 @media (hover: hover) and (pointer: fine) {
-  .default .tab:hover:not(:disabled) {
-    background: var(--color-white);
+  .tab:not(.tabActive):hover:not(:disabled) {
     color: var(--color-primary);
-  }
-
-  .pills .tab:hover:not(:disabled) {
-    background: var(--color-white);
-    color: var(--color-primary);
-  }
-
-  .underline .tab:hover:not(:disabled) {
-    color: var(--color-primary);
-    border-bottom-color: color-mix(
-      in srgb,
-      var(--color-primary) 30%,
-      transparent
-    );
   }
 }
 
-/* Active states */
+/* ---- Selected text colour per variant ------------------------------------- */
 
-.default .tabActive {
-  background: var(--color-primary);
-  font-weight: 600;
-  color: var(--color-white);
-}
-
+.underline .tabActive,
 .pills .tabActive {
-  background: var(--color-primary);
-  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
-  font-weight: 600;
-  color: var(--color-white);
-}
-
-.underline .tabActive {
   font-weight: 600;
   color: var(--color-primary);
-  border-bottom-color: var(--color-primary);
 }
 
-.underline .tabIndicator {
-  position: absolute;
-  inset: auto 0 -2px;
-  height: 2px;
+.default .tabActive {
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+/* ---- Indicator per variant ------------------------------------------------ */
+
+.underline .indicator {
+  block-size: 2px;
   border-radius: 1px;
   background: var(--color-primary);
-  transition:
-    opacity var(--duration-fast) var(--ease-out-cubic),
-    transform var(--duration-fast) var(--ease-out-cubic);
-  transform: scaleX(0);
-  opacity: 0;
+  inset-block-end: -1px; /* sit on the 1px rail */
 }
 
-.underline .tabActive .tabIndicator {
-  transform: scaleX(1);
+.pills .indicator {
+  inset-block: var(--space-internal-4);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 8%),
+    0 1px 3px rgb(0 0 0 / 6%);
+}
+
+.default .indicator {
+  inset-block: 0;
+  background: var(--color-primary);
+}
+
+/* Reveal once the first measure lands. Kept after the variant indicator rules
+   so its higher specificity does not precede them (no-descending-specificity). */
+
+.tabs[data-indicator-ready="true"] .indicator {
   opacity: 1;
 }
 
-/* Disabled state */
+/* ---- Count pill ----------------------------------------------------------- */
 
-.tabDisabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+.count {
+  display: inline-flex;
+  padding-inline: 0.4em;
+  min-inline-size: 1.5em;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-muted) 18%, transparent);
+  font-size: 0.78em;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-muted);
+  transition:
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    color var(--duration-fast) var(--ease-out-cubic);
+  font-variant-numeric: tabular-nums;
 }
 
-.tabDisabled:hover {
-  background: transparent;
-  color: inherit;
-  border-bottom-color: transparent;
+/* On the underline/pills active tab the label turns primary — tint the count
+   to match. On the default variant the thumb is already primary, so invert. */
+
+.underline .tabActive .count,
+.pills .tabActive .count {
+  background: var(--color-primary);
+  color: var(--color-white);
 }
 
-/* Tab label */
+.default .tabActive .count {
+  background: color-mix(in srgb, var(--color-white) 24%, transparent);
+  color: var(--color-white);
+}
+
+/* ---- Icon ----------------------------------------------------------------- */
+
+.tabIcon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+/* ---- Label ---------------------------------------------------------------- */
 
 .tabLabel {
   display: block;
-  line-height: 1;
   letter-spacing: 0.01em;
 }
 
-/* Responsive adjustments */
-@media (width <= 768px) {
-  .tab {
-    padding: var(--space-internal-6) var(--space-internal-12);
-    font-size: 0.9em;
+/* ---- Disabled ------------------------------------------------------------- */
+
+.tabDisabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* ---- Forced colours: keep the selection legible in HCM -------------------- */
+@media (forced-colors: active) {
+  .indicator {
+    background: Highlight;
+    forced-color-adjust: none;
+  }
+
+  .tabActive {
+    color: Highlight;
+  }
+
+  .default .tabActive {
+    color: HighlightText;
+  }
+
+  .count {
+    border: 1px solid CanvasText;
   }
 }
 
-/* Reduced motion: keep color changes, drop movement */
+/* ---- Reduced motion: keep colour changes, drop movement ------------------- */
 @media (prefers-reduced-motion: reduce) {
   .tab,
-  .tabIndicator {
+  .indicator,
+  .count {
     transition: none;
   }
 
   .tab:active {
-    transform: none;
+    transform: scale(1);
   }
 }

@@ -35,6 +35,10 @@
   z-index: 1;
   flex-shrink: 0;
   white-space: nowrap;
+
+  /* Active/current language weight — set here (not a Tailwind utility, which
+     isn't generated for this component) via the medium weight token. */
+  font-weight: var(--font-weight-medium);
 }
 
 .option {

@@ -1,0 +1,41 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './SocialIconLink.stories.tsx';
+
+<Meta of={Stories} />
+
+# SocialIconLink
+
+**Status:** alpha · **Tier:** atom · **Group:** navigation
+
+## In use
+See the **Example (footer social row)** story for the canonical production composition.
+
+## How to use
+
+```tsx
+import { SocialIconLink } from '@dt/SocialIconLink';
+import { LinkedinLogo } from '@phosphor-icons/react';
+
+<SocialIconLink
+  href="https://www.linkedin.com/company/digitaltableteur/"
+  label="Digitaltableteur on LinkedIn"
+>
+  <LinkedinLogo aria-hidden="true" />
+</SocialIconLink>
+```
+
+## When to use
+- Icon-only links to social profiles or share targets (footers, article share rows).
+- Any icon-only anchor that must be external-safe and named for assistive tech.
+
+## When not to use
+- Labeled text links: use `Link`.
+- Icon-only *actions* (no navigation): use `IconButton`.
+
+## Accessibility
+- `label` is required and becomes the accessible name; the icon child is wrapped `aria-hidden`.
+- External by default: `target="_blank"` always pairs with `rel="noopener noreferrer"`.
+- Token focus ring on `:focus-visible`; `LinkText`/`Highlight` in forced colors; hover transition disabled under reduced motion.
+
+## Promotion notes
+- Promote to beta after the Figma atom exists (DT-Site-stuff Atoms); consumers land with the swap PR.

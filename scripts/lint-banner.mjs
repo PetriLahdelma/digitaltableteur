@@ -69,13 +69,16 @@ const eslint = spawn(localEslintBin, eslintTargets, {
   shell: false,
 });
 
-eslint.on("close", (code) => {
+eslint.on("close", (code, signal) => {
   if (code === 0) {
     console.log(successBanner);
   } else {
+    if (signal) {
+      console.error(`ESLint exited after receiving ${signal}.`);
+    }
     console.log(errorBanner);
   }
-  process.exit(code);
+  process.exit(code ?? 1);
 });
 
 eslint.on("error", (err) => {

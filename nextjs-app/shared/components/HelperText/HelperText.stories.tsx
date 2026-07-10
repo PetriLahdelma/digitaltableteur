@@ -8,7 +8,7 @@ import schema from "./schema.json";
 const meta: Meta<typeof HelperText> = {
   title: "Forms/HelperText",
   component: HelperText,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

@@ -12,12 +12,16 @@ import { I18nProvider } from "../providers/I18nProvider";
 import { NextThemeProvider } from "../providers/ThemeProvider";
 import { ToastProvider } from "../providers/ToastProvider";
 import { AnimationProvider } from "../providers/AnimationProvider";
+import { NextLinkProvider } from "../providers/NextLinkProvider";
+import { NextImageProvider } from "../providers/NextImageProvider";
+import { NextNavigationProvider } from "../providers/NextNavigationProvider";
 import { SmoothScrollProvider } from "../providers/SmoothScrollProvider";
 import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent";
 import { NextLayout } from "@dt/NextLayout";
 import { WebMcpProvider } from "../providers/WebMcpProvider";
 import { HtmlLangSync } from "./components/HtmlLangSync";
 import { DeferredAnalytics } from "./components/DeferredAnalytics";
+import "@digitaltableteur/react/style.css";
 import "./globals.css";
 
 const siteUrl =
@@ -152,18 +156,24 @@ export default function RootLayout({
         <DeferredAnalytics gaMeasurementId={gaMeasurementId} />
         <WebMcpProvider>
           <NextThemeProvider>
-            <I18nProvider>
-              <HtmlLangSync />
-              <AnimationProvider>
-                <SmoothScrollProvider>
-                  <ToastProvider>
-                    <CookieConsentProvider autoShow={true}>
-                      <NextLayout>{children}</NextLayout>
-                    </CookieConsentProvider>
-                  </ToastProvider>
-                </SmoothScrollProvider>
-              </AnimationProvider>
-            </I18nProvider>
+            <NextLinkProvider>
+              <NextImageProvider>
+                <NextNavigationProvider>
+                  <I18nProvider>
+                    <HtmlLangSync />
+                    <AnimationProvider>
+                      <SmoothScrollProvider>
+                        <ToastProvider>
+                          <CookieConsentProvider autoShow={true}>
+                            <NextLayout>{children}</NextLayout>
+                          </CookieConsentProvider>
+                        </ToastProvider>
+                      </SmoothScrollProvider>
+                    </AnimationProvider>
+                  </I18nProvider>
+                </NextNavigationProvider>
+              </NextImageProvider>
+            </NextLinkProvider>
           </NextThemeProvider>
         </WebMcpProvider>
       </body>

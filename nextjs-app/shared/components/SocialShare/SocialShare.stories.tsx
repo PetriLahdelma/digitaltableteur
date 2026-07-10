@@ -27,7 +27,7 @@ export const Default: Story = {
   tags: ["beta-matrix"],
   args: {
     url: "https://digitaltableteur.com",
-    title: "Digital Tableteur - Portfolio",
+    title: "Digitaltableteur - Portfolio",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

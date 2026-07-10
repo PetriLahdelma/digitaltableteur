@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { Link } from "../../lib/linkComponent";
+import { useTranslate } from "../../lib/translation";
+import { cn } from "../../lib/cn";
 import { ArrowLeft, ArrowRight, Briefcase } from "@phosphor-icons/react";
 import { getProjectNavigation } from "../../data/projects";
 import { Container } from "../Container";
@@ -14,8 +14,14 @@ export interface ProjectNavProps {
   className?: string;
 }
 
+/**
+ * Previous/next navigation between case studies for the foot of work detail
+ * pages, with a back-to-work action. Targets come from the project ordering
+ * via `getProjectNavigation`; the control at each sequence edge is disabled.
+ * Rendered inside a labelled `nav` landmark.
+ */
 export function ProjectNav({ currentSlug, className }: ProjectNavProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const { previous, next } = getProjectNavigation(currentSlug);
 
   return (

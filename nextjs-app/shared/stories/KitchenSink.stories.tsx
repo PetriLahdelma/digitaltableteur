@@ -15,7 +15,7 @@ import {
   CustomClass as TextCustomClass,
   AllTags as TextAllTags,
   Sizes as TextSizes,
-  SerifAndSans as TextSerifAndSans,
+  LineHeights as TextLineHeights,
 } from "../components/Text/Text.stories";
 import {
   AllSizes as TitleSizes,
@@ -584,7 +584,7 @@ const COMPONENTS = [
   { name: "Text as Span", Variants: TextAsSpan },
   { name: "Text Custom Class", Variants: TextCustomClass },
   { name: "Text Default", Variants: TextDefault },
-  { name: "Text Serif and Sans", Variants: TextSerifAndSans },
+  { name: "Text Line Heights", Variants: TextLineHeights },
   { name: "Text Sizes", Variants: TextSizes },
   { name: "Title Custom Tag and Class", Variants: TitleCustomTag },
   { name: "Title Levels", Variants: TitleLevels },

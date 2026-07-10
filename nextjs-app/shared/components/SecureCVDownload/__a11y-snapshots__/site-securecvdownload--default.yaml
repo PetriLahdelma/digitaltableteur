@@ -1,0 +1,10 @@
+- button "Download Resume"
+- dialog "Restricted Content":
+  - heading "Restricted Content" [level=2]
+  - button "Close dialog"
+  - paragraph: Please enter a password to download the resume.
+  - text: The password given to you
+  - textbox "The password given to you":
+    - /placeholder: Enter password
+  - button "Cancel"
+  - button "Download" [disabled]

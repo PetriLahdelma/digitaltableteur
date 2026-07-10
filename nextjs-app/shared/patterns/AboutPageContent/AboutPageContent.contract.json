@@ -3,7 +3,7 @@
     "name": "AboutPageContent",
     "tier": "pattern",
     "group": "marketing",
-    "status": "beta",
+    "status": "stable",
     "description": "About page narrative sections and team highlights.",
     "dense": "Full /about route body: narrative sections, values, and team highlights; optional closing CTA via showCTA.",
     "keywords": [
@@ -34,14 +34,37 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/AboutPageContent/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "slots": [],
     "schemaVersion": 2,
     "props": {

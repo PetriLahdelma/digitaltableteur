@@ -1,20 +1,20 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
-import { NavLink } from "@/nextjs-app/shared/components/NavLink";
-import { Container } from "@/nextjs-app/shared/components/Container";
-import { useNavigation } from "@/nextjs-app/shared/hooks/useNavigation";
-import { usePersistentTheme } from "@/nextjs-app/shared/hooks/usePersistentTheme";
-import { useToast } from "@/providers/ToastProvider";
-import { IconButton } from "@/nextjs-app/shared/components/IconButton";
-import { LanguageSwitcher } from "@/nextjs-app/shared/components/LanguageSwitcher";
+import { cn } from "../../lib/cn";
+import { Link as RouterLink } from "../../lib/linkComponent";
+import { useLocalization } from "../../lib/translation";
+import { NavLink } from "../../components/NavLink";
+import { Container } from "../../components/Container";
+import { useNavigation } from "../../hooks/useNavigation";
+import { usePersistentTheme } from "../../hooks/usePersistentTheme";
+import { useToast } from "../../lib/toast";
+import { IconButton } from "../../components/IconButton";
+import { LanguageSwitcher } from "../../components/LanguageSwitcher";
 import { List, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
 import { MobileDrawer } from "./MobileDrawer";
 import styles from "./SiteHeader.module.css";
-import type { Theme } from "@dt/ThemeProvider";
+import type { Theme } from "../../components/ThemeProvider";
 
 export interface NavItem {
   href: string;
@@ -80,7 +80,12 @@ export function SiteHeader({
   navItems = defaultNavItems,
   className,
 }: SiteHeaderProps) {
-  const { t, i18n } = useTranslation();
+  const {
+    translate: t,
+    resolvedLanguage,
+    changeLanguage,
+    getResourceBundle,
+  } = useLocalization();
   const { theme, cycleTheme } = usePersistentTheme();
   const { showToast } = useToast();
   const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useNavigation();
@@ -111,7 +116,7 @@ export function SiteHeader({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const currentLang = i18n?.resolvedLanguage?.split("-")[0] ?? "en";
+  const currentLang = resolvedLanguage.split("-")[0] ?? "en";
   const ThemeIcon = themeIcons[theme];
 
   const handleThemeToggle = () => {
@@ -128,17 +133,26 @@ export function SiteHeader({
   };
 
   const handleLanguageChange = (code: string) => {
-    i18n.changeLanguage(code);
-    document.cookie = `i18next=${code}; path=/; max-age=31536000`;
-    localStorage.setItem("i18nextLng", code);
+    void changeLanguage(code);
 
     const langLabel = languages.find((lang) => lang.code === code);
-    const bundle = i18n.getResourceBundle(code, "translation") as
-      | Record<string, string>
+    const bundle = getResourceBundle(code, "translation") as
+      | Record<string, unknown>
       | undefined;
     const labelKey = langLabel?.announcementKey ?? `languageName.${code}`;
-    const label = bundle?.[labelKey] ?? code;
-    showToast(i18n.t("languageChanged", { lng: code, language: label }), 3000);
+    const label =
+      typeof bundle?.[labelKey] === "string" ? bundle[labelKey] : code;
+
+    // Only the change confirmation: toasts stack now (ToastStack), so
+    // LanguageNotice's own content-language toast shows alongside instead of
+    // replacing this one — appending it here would read twice.
+    showToast(
+      t("languageChanged", {
+        lng: code,
+        language: label,
+      }),
+      3000,
+    );
   };
 
   return (
@@ -154,7 +168,7 @@ export function SiteHeader({
       >
       <Container size="lg" className="flex h-20 items-center justify-between">
         {/* Logo */}
-        <Link
+        <RouterLink
           href="/"
           // rounded-sm matches the LanguageSwitcher so the focus outline
           // renders with the same corner rounding as the other header controls.
@@ -261,7 +275,7 @@ export function SiteHeader({
           <span className="font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors text-[var(--logo-text-color)] group-hover:text-primary">
             Digitaltableteur
           </span>
-        </Link>
+        </RouterLink>
 
         {/* Desktop Navigation */}
         <nav

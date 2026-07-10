@@ -1,0 +1,106 @@
+.versioningSection {
+  padding-block: var(--space-layout-24) var(--space-layout-64);
+  padding-inline: var(--space-layout-24);
+  background: var(--main-body-background-color);
+  color: var(--color-text);
+}
+
+.versioningInner {
+  display: grid;
+  margin-inline: auto;
+  max-width: min(100%, 42rem);
+  justify-items: center;
+  gap: var(--space-layout-16);
+  text-align: center;
+}
+
+.visuallyHidden {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+.stackLogos {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-layout-16);
+  list-style: none;
+}
+
+.stackLogo {
+  display: inline-grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  place-items: center;
+  color: color-mix(in srgb, var(--color-text) 32%, transparent);
+  opacity: 0.8;
+}
+
+.stackLogo svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.packageList {
+  display: flex;
+  margin: 0;
+  padding-block-start: var(--space-layout-16);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-layout-16) var(--space-layout-32);
+  border-block-start: 1px solid
+    color-mix(in srgb, var(--color-text) 7%, transparent);
+}
+
+.packageItem {
+  display: inline-flex;
+  padding-inline: var(--space-layout-4);
+  min-width: 0;
+  align-items: center;
+  gap: var(--space-layout-4);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.packageLabel {
+  margin: 0;
+  font-size: var(--font-size-text-xs);
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: lowercase;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}
+
+.packageVersionWrapper {
+  display: inline-flex;
+  margin: 0;
+  align-items: center;
+}
+
+.packageVersion {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-text-xs);
+  font-weight: 400;
+  line-height: 1.2;
+  color: color-mix(in srgb, var(--color-text) 56%, transparent);
+}
+
+@media (width <= 640px) {
+  .versioningSection {
+    padding-block: var(--space-layout-24) var(--space-layout-48);
+    padding-inline: var(--space-layout-16);
+  }
+}

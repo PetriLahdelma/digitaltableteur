@@ -13,6 +13,13 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const STORYBOOK_URL = process.env.STORYBOOK_URL ?? "http://127.0.0.1:6010";
 const THEME = process.env.DT_THEME ?? "";
 const FORCED_COLORS = (process.env.DT_FORCED_COLORS ?? "").toLowerCase();
+const NAVIGATION_WAIT_UNTIL = resolveNavigationWaitUntil(
+  process.env.STORYBOOK_WAIT_UNTIL,
+);
+const NAVIGATION_TIMEOUT_MS = Number.parseInt(
+  process.env.STORYBOOK_NAVIGATION_TIMEOUT_MS ?? "120000",
+  10,
+);
 
 const storyIds = process.argv.slice(2);
 if (!storyIds.length) {
@@ -21,6 +28,18 @@ if (!storyIds.length) {
 }
 
 let storyPrefixToDir = null;
+
+function resolveNavigationWaitUntil(value) {
+  if (
+    value === "commit" ||
+    value === "domcontentloaded" ||
+    value === "load" ||
+    value === "networkidle"
+  ) {
+    return value;
+  }
+  return "load";
+}
 
 function loadStoryPrefixMap() {
   if (storyPrefixToDir) return storyPrefixToDir;
@@ -97,7 +116,12 @@ if (THEME) {
 
 for (const storyId of storyIds) {
   const url = `${STORYBOOK_URL}/iframe.html?id=${storyId}&viewMode=story`;
-  await page.goto(url, { waitUntil: "networkidle" });
+  await page.goto(url, {
+    waitUntil: NAVIGATION_WAIT_UNTIL,
+    timeout: Number.isFinite(NAVIGATION_TIMEOUT_MS)
+      ? NAVIGATION_TIMEOUT_MS
+      : 120000,
+  });
   await page.waitForTimeout(800);
 
   const dir = componentSnapshotDir(storyId);

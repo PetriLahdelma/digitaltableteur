@@ -7,9 +7,8 @@ import {
   act,
 } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { I18nextProvider } from "react-i18next";
-import i18n from "../../i18n";
 import { SocialShare } from "@dt/SocialShare";
+import { TranslationProvider } from "../../lib/translation";
 
 // Mock clipboard API
 Object.assign(navigator, {
@@ -19,28 +18,18 @@ Object.assign(navigator, {
   share: vi.fn().mockResolvedValue(undefined),
 });
 
-// Mock i18next for testing
-vi.mock("react-i18next", async () => {
-  const actual = await vi.importActual("react-i18next");
-  return {
-    ...actual,
-    useTranslation: () => ({
-      t: (key: string) => {
-        const translations: Record<string, string> = {
-          shareOnInstagram: "Share on Instagram",
-          shareLinkedIn: "Share on LinkedIn",
-          shareOnTwitter: "Share on Twitter",
-          shareOnFacebook: "Share on Facebook",
-          shareOnReddit: "Share on Reddit",
-          shareOnWhatsapp: "Share on WhatsApp",
-          copyLinkToClipboard: "Copy to clipboard",
-          linkCopied: "Link copied!",
-        };
-        return translations[key] || key;
-      },
-    }),
-  };
-});
+const translations: Record<string, string> = {
+  share: "Share",
+  shareHeading: "Share",
+  shareOnInstagram: "Share on Instagram",
+  shareLinkedIn: "Share on LinkedIn",
+  shareOnTwitter: "Share on Twitter",
+  shareOnFacebook: "Share on Facebook",
+  shareOnReddit: "Share on Reddit",
+  shareOnWhatsapp: "Share on WhatsApp",
+  copyLinkToClipboard: "Copy to clipboard",
+  linkCopied: "Link copied!",
+};
 
 describe("SocialShare", () => {
   const defaultProps = {
@@ -50,9 +39,9 @@ describe("SocialShare", () => {
 
   const renderSocialShare = (props = defaultProps) => {
     return render(
-      <I18nextProvider i18n={i18n}>
+      <TranslationProvider translate={(key) => translations[key] ?? key}>
         <SocialShare {...props} />
-      </I18nextProvider>,
+      </TranslationProvider>,
     );
   };
 

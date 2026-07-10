@@ -25,7 +25,7 @@ const defaultArgs = {
 const meta = {
   title: "Patterns/HeroSection",
   component: HeroSection,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

@@ -7,7 +7,7 @@ const useAnimationContextMock = vi.fn(() => ({
   isReady: true,
 }));
 
-vi.mock("@/providers/AnimationProvider", () => ({
+vi.mock("../../lib/animation", () => ({
   useAnimationContext: () => useAnimationContextMock(),
 }));
 

@@ -29,7 +29,7 @@ const defaultArgs = {
 const meta = {
   title: "Patterns/WorkPreviewSection",
   component: WorkPreviewSection,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

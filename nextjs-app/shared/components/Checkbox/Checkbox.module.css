@@ -255,16 +255,36 @@ input.checkbox:checked::after {
   color: var(--color-primary);
 }
 
-/* Disabled state */
-
-.checkbox:disabled {
-  border-color: var(--color-muted-light);
-  background-color: var(--color-muted-light);
+/* Disabled state — canonical dedicated-token pattern (no opacity): one muted
+   surface for every state. Unchecked and checked/indeterminate all sit on
+   --color-disabled-bg with a --color-primary-disabled edge; the checked mark
+   stays visible in the muted disabled foreground. Matches the text inputs. */
+.checkbox:disabled,
+.checkbox:disabled:checked,
+.checkbox:disabled:indeterminate,
+.checkbox:disabled.checkedState,
+.checkbox:disabled.indeterminateState,
+.checkboxContainer input.checkbox:disabled:checked,
+.checkboxContainer input.checkbox:disabled:indeterminate,
+.checkboxContainer .checkbox:disabled.checkedState,
+.checkboxContainer .checkbox:disabled.indeterminateState {
+  border-color: var(--color-primary-disabled);
+  background-color: var(--color-disabled-bg);
   cursor: not-allowed;
-  opacity: 0.6;
 }
 
 .checkbox:disabled:hover {
   box-shadow: none;
-  border-color: var(--color-muted-light);
+  border-color: var(--color-primary-disabled);
+}
+
+/* Muted mark on the disabled surface (white would vanish on the grey fill). */
+.checkboxContainer input.checkbox:disabled:checked::after,
+.checkboxContainer .checkbox:disabled.checkedState::after {
+  border-color: var(--color-disabled-placeholder);
+}
+
+.checkboxContainer input.checkbox:disabled:indeterminate::before,
+.checkboxContainer .checkbox:disabled.indeterminateState::before {
+  background-color: var(--color-disabled-placeholder);
 }

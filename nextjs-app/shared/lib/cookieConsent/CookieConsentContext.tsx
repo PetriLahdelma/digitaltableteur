@@ -12,7 +12,7 @@ import React, {
   useEffect,
   useCallback,
 } from "react";
-import { useTranslation } from "react-i18next";
+import { useLocalization } from "../translation";
 import type {
   CookieConsentContextValue,
   CookieConsentProviderProps,
@@ -56,7 +56,7 @@ export function CookieConsentProvider({
   onChange,
   autoShow = true,
 }: CookieConsentProviderProps) {
-  const { i18n } = useTranslation();
+  const { language, resolvedLanguage } = useLocalization();
   const [isReady, setIsReady] = useState(false);
   const [isBannerOpen, setIsBannerOpen] = useState(false);
   const [consents, setConsents] = useState<CategoryConsent[]>([]);
@@ -96,14 +96,14 @@ export function CookieConsentProvider({
       categories: Record<CookieCategory, boolean>,
       eventType: ConsentChangeEvent["type"],
     ) => {
-      saveConsentState(categories, i18n.language);
+      saveConsentState(categories, resolvedLanguage || language || "en");
       clearMinimizedState(); // Clear minimized state when consent is given
       const newConsents = stateToConsents(loadConsentState());
       setConsents(newConsents);
       emitChange(eventType, newConsents);
       setIsBannerOpen(false);
     },
-    [i18n.language, emitChange],
+    [emitChange, language, resolvedLanguage],
   );
 
   /**

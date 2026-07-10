@@ -78,7 +78,7 @@ const checkboxComplianceRules: ComplianceRule[] = [
 export default {
   title: "Forms/Checkbox",
   component: Checkbox,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

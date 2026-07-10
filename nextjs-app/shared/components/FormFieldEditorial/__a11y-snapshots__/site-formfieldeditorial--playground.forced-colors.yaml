@@ -1,0 +1,3 @@
+- text: Preferred contact (required)
+- combobox "Preferred contact (required)"
+- button "Toggle options"

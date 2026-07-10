@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -20,19 +20,44 @@ function flatten(obj, path = []) {
     if (k.startsWith("$")) continue;
     const next = [...path, k];
     if (v && typeof v === "object" && "$value" in v) {
-      const cssVar = "--" + next.join("-").replace(/_/g, "-");
+      const metadata = v.$extensions?.digitaltableteur ?? {};
+      const cssVar = metadata.cssVar ?? "--" + next.join("-").replace(/_/g, "-");
       out.push({
         cssVar,
         value: v.$value,
         path: next.join("."),
         description: v.$description ?? "",
-        category: path[0] ?? "other",
+        category: metadata.category ?? path[0] ?? "other",
       });
+      out.push(...flatten(Object.fromEntries(Object.entries(v).filter(([key]) => !key.startsWith("$"))), next));
     } else if (v && typeof v === "object") {
       out.push(...flatten(v, next));
     }
   }
   return out;
+}
+
+function withoutGeneratedAt(manifest) {
+  const { generatedAt: _generatedAt, ...rest } = manifest;
+  return rest;
+}
+
+function resolveGeneratedAt(path, nextManifest) {
+  if (!existsSync(path)) return new Date().toISOString();
+
+  try {
+    const previous = JSON.parse(readFileSync(path, "utf8"));
+    if (
+      previous.generatedAt &&
+      JSON.stringify(withoutGeneratedAt(previous)) === JSON.stringify(withoutGeneratedAt(nextManifest))
+    ) {
+      return previous.generatedAt;
+    }
+  } catch {
+    // Fall through to a fresh timestamp if the existing manifest is unreadable.
+  }
+
+  return new Date().toISOString();
 }
 
 function main() {
@@ -86,18 +111,22 @@ function main() {
     ].join("\n"),
   );
 
+  const manifestPath = join(OUT_DIR, "tokens-manifest.json");
+  const manifest = {
+    schemaVersion: "1.0",
+    source: catalog.source,
+    tokenCount: catalog.tokenCount,
+    usageCoverage: catalog.usageCoverage,
+    dtcgFiles: files.map((f) => `tokens/production/${f}`),
+    categories: Object.keys(byCategory).sort(),
+    tokenNames,
+  };
   writeFileSync(
-    join(OUT_DIR, "tokens-manifest.json"),
+    manifestPath,
     JSON.stringify(
       {
-        schemaVersion: "1.0",
-        source: catalog.source,
-        generatedAt: new Date().toISOString(),
-        tokenCount: catalog.tokenCount,
-        usageCoverage: catalog.usageCoverage,
-        dtcgFiles: files.map((f) => `tokens/production/${f}`),
-        categories: Object.keys(byCategory).sort(),
-        tokenNames,
+        ...manifest,
+        generatedAt: resolveGeneratedAt(manifestPath, manifest),
       },
       null,
       2,

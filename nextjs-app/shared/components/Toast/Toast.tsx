@@ -35,6 +35,11 @@ export interface ToastProps {
   duration?: number;
   /** Called when the auto-dismiss timer fires. */
   onClose?: () => void;
+  /**
+   * Render in normal document flow instead of fixed-positioning itself; a
+   * parent (ToastStack) owns placement. `position` is ignored when set.
+   */
+  inline?: boolean;
 }
 
 /**
@@ -44,7 +49,7 @@ export interface ToastProps {
  * AnimatePresence mount/unmount, which would defeat the live region.
  */
 const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
-  { open, tone, position = "bottom-center", size = "md", message, duration = 3000, onClose },
+  { open, tone, position = "bottom-center", size = "md", message, duration = 3000, onClose, inline },
   ref,
 ) {
   useEffect(() => {
@@ -70,7 +75,7 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
         styles.toast,
         styles[`toast--${size}`],
         tone ? styles[`toast--${tone}`] : "",
-        styles[`toast--${position}`],
+        inline ? styles["toast--inline"] : styles[`toast--${position}`],
         !isVisible ? styles["toast--hidden"] : "",
       ]
         .filter(Boolean)

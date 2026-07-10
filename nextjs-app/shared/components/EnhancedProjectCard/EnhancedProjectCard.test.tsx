@@ -48,6 +48,21 @@ describe("EnhancedProjectCard", () => {
     expect(img).toHaveAttribute("alt", "");
   });
 
+  it("does not hide image assets behind load-state opacity", () => {
+    const here = dirname(fileURLToPath(import.meta.url));
+    const source = readFileSync(join(here, "EnhancedProjectCard.tsx"), "utf8");
+    const css = readFileSync(
+      join(here, "EnhancedProjectCard.module.css"),
+      "utf8",
+    );
+
+    expect(source).not.toContain("assetLoading");
+    expect(source).not.toContain("imageLoaded");
+    expect(source).not.toContain("styles.skeleton");
+    expect(css).not.toMatch(/\.assetLoading\b/);
+    expect(css).not.toMatch(/\.skeleton\b/);
+  });
+
   it("ships an aspect-ratio class per variant and guards motion under reduced-motion", () => {
     // The CSS Module carries the styling axes and a full reduced-motion guard.
     // Assert the source so neither can silently rot behind the vitest CSS proxy.

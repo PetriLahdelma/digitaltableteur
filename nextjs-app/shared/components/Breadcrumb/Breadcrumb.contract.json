@@ -3,7 +3,7 @@
     "name": "Breadcrumb",
     "tier": "molecule",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Navigation trail with current page indication.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-31",
     "radixPrimitive": null,
@@ -31,6 +31,8 @@
         "reviewed": true,
         "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
         "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
         "playFunctionExempt": "Static navigation landmark; Tab order only."
     },
     "tokens": {
@@ -38,7 +40,13 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "items": {

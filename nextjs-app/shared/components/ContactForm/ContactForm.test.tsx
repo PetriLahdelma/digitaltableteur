@@ -1,13 +1,12 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
-import { I18nextProvider } from "react-i18next";
-import i18n from "../../i18n";
+import { I18nProvider } from "../../../../providers/I18nProvider";
 
 import ContactForm from "@dt/ContactForm";
 
 function withI18n(ui: React.ReactElement) {
-  return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
+  return <I18nProvider>{ui}</I18nProvider>;
 }
 
 describe("ContactForm integration", () => {

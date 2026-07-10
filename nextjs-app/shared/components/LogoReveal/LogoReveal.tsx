@@ -3,7 +3,7 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import Image from "next/image";
+import { Image } from "../../lib/imageComponent";
 import { cn } from "../../../../lib/utils";
 import styles from "./LogoReveal.module.css";
 

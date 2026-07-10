@@ -1,108 +1,118 @@
-# Public API — `@dt/*` workspace alias
+# Public API - npm-served design system
 
-Digitaltableteur does **not** publish the design system as a standalone npm package yet. Production and Storybook import components via the TypeScript path alias:
+Digitaltableteur serves its design-system runtime through private npm packages
+under the `@digitaltableteur` scope. The local `@dt/*` alias remains an internal
+source-authoring convenience for this monorepo; package consumers should import
+from the published package entrypoints.
+
+## Packages
+
+| Package | Purpose | Current role |
+|---|---|---|
+| `@digitaltableteur/react` | React components, stable patterns, hooks, host adapters, package CSS | Runtime package for app and Storybook consumers |
+| `@digitaltableteur/tokens` | DTCG JSON, JS token map, Tailwind refs, manifest | Machine-readable token package |
+| `@digitaltableteur/tokens-css` | Token CSS and generated brand theme CSS | Runtime CSS token package for second consumers |
+
+The site/root install depends on these packages from npm. The local
+`packages/*` folders remain the source used by build, pack, dry-run, and publish
+checks, but they are not npm workspaces for the app install.
+
+## Import Surface
+
+External consumers:
 
 ```ts
-import { Button } from "@dt/Button";
-import { Title } from "@dt/Title";
+import { Button, Card, Stack, Text, Title } from "@digitaltableteur/react";
+import "@digitaltableteur/tokens-css/tokens.css";
+import "@digitaltableteur/react/style.css";
 ```
 
----
-
-## Import surface
+Local source files may still use direct `@dt/<Name>` imports when composing
+components inside the monorepo. App/provider code that is intentionally testing
+the package boundary should import from `@digitaltableteur/react`.
 
 | Rule | Detail |
-|------|--------|
-| **Path** | `@dt/<ComponentName>` → `nextjs-app/shared/components/<ComponentName>/` or `patterns/<ComponentName>/` |
-| **Barrel** | Avoid `nextjs-app/shared/components/index.ts` in new code — prefer direct `@dt/*` imports |
-| **Tokens** | Runtime: `nextjs-app/shared/styles/variables.css`; machine export: `npm run build:tokens` |
-| **Agent manifest** | `nextjs-app/shared/foundations/dist/agent-manifest.json` (regenerated with tokens) |
-| **Non-catalog surfaces** | `non-agent-surfaces.json` — page assemblies and exempt infra; see [CATALOG-POLICY.md](./CATALOG-POLICY.md) |
+|---|---|
+| Package entrypoint | `@digitaltableteur/react` plus `@digitaltableteur/react/style.css` |
+| Token entrypoints | `@digitaltableteur/tokens`, token JSON subpaths, and `@digitaltableteur/tokens-css/tokens.css` |
+| Internal alias | `@dt/<ComponentName>` maps to local shared source only |
+| Agent manifest | `nextjs-app/shared/foundations/dist/agent-manifest.json` |
+| Non-catalog surfaces | `non-agent-surfaces.json` - page assemblies and exempt infra; see [CATALOG-POLICY.md](./CATALOG-POLICY.md) |
 
----
+## Package Boundary
 
-## Stability tiers (semver policy)
+`@digitaltableteur/react` is deliberately narrow. It exports true design-system
+primitives, stable reusable patterns, framework adapters, and runtime hooks.
 
-Contract `status` in `<Component>.contract.json` is the **public API semver boundary** until a standalone npm export ships.
+Do not put product/page code, portfolio case-study content, chat workflows,
+booking utilities, maps, CV/download utilities, or docs-only Storybook metadata
+into the React package. Those remain app or documentation surfaces.
 
-| Status | Semver | Breaking changes | Promotion gate |
-|--------|--------|------------------|----------------|
-| **alpha** | `0.x` | Allowed | Contract + spec only; not in agent manifest |
-| **beta** | `0.x` | Additive only; deprecate with `deprecated` prop flags | Stories, MDX, axe gate, ForcedColors story |
-| **stable** | `1.x` per component family | Breaking props/layout require ADR + consumer update | AT snapshots, production `consumers[]`, Figma node-id |
-| **deprecated** | frozen | Remove only after migration window | Listed in manifest with `replacementFor` |
+If another package split becomes necessary, the next candidate is a separate
+docs/metadata package for Storybook registry data and agent-facing manifests.
+That package should be downstream of the runtime packages and must not become a
+back door for app-specific code.
 
-### What counts as breaking (stable)
+## Stability Tiers
 
-- Removing or renaming exported props
-- Changing default variant semantics visible in production
-- Removing sub-components or slots documented in the contract
-- Changing required child composition (`composesWith` / `forbiddenUse`)
+Contract `status` in `<Component>.contract.json` remains the semantic boundary
+for package eligibility.
 
-### Non-breaking (beta+)
+| Status | Package policy | Breaking changes | Promotion gate |
+|---|---|---|---|
+| `alpha` | Internal catalog only; not exported from `@digitaltableteur/react` | Allowed | Contract + spec only |
+| `beta` | Export only when specifically curated and consumer-safe | Additive only; deprecate with explicit flags | Stories, MDX, axe gate, forced-colors story |
+| `stable` | Required package surface | Breaking props/layout require ADR + consumer update | AT snapshots, production `consumers[]`, Figma node-id |
+| `deprecated` | Frozen until removal window closes | No new use | Listed with replacement metadata |
 
-- New optional props
-- New variant enum values with safe defaults
-- Token binding fixes that preserve computed appearance
-- Additional stories and agent-block metadata
+`check:react-public-surface` enforces the curated package surface and keeps
+alpha exposure at zero. `check:react-public-api` freezes the runtime exports and
+package subpath entrypoints in `packages/react/public-api.manifest.json`.
 
-### Future npm export
+## Registry Guards
 
-When `@digitaltableteur/ds` ships:
-
-- Component names match `@dt/<Name>` one-to-one
-- Package semver follows **stable fleet** cadence (minor = new stable components; patch = fixes)
-- Alpha/beta components remain workspace-only until promoted
-- `agent-manifest.json` → `exportPolicy.version` will track the package semver
-
----
-
-## Stable fleet (promoted)
-
-**Atoms / molecules:** `Title`, `Text`, `Icon`, `Badge`, `Button`, `Card`, `Link`, `Label`, `Container`
-
-**Patterns:** `SiteHeader`, `SiteFooter`
-
-Promote with:
+Use these before claiming the app or Storybook is consuming registry packages:
 
 ```bash
-node scripts/design-system/promote-stable-atoms.mjs   # first atoms
-node scripts/design-system/promote-stable-fleet.mjs     # production fleet
-npm run audit:consumers                               # refresh consumers[]
+npm run check:package-registry-resolution
+npm run check:storybook-registry-package
+npm run check:registry-token-install
+npm run check:react-registry-install
 ```
 
-All stable components require committed `__a11y-snapshots__/` and verified Figma `node-id` (except `Icon` — Phosphor library exception).
+`check:package-registry-resolution` fails if root installs resolve
+`@digitaltableteur/react`, `@digitaltableteur/tokens`, or
+`@digitaltableteur/tokens-css` from local `packages/*` paths or workspace
+symlinks. `check:storybook-registry-package` applies the same principle to the
+Storybook smoke story and package CSS imports.
 
----
+## Publish Gate
 
-## Release gate
+The React package publish path is intentionally split:
 
-Single command before DS-facing releases:
+1. Local machines remain the CI-quality authority.
+2. `npm run check:react-publish-ready` runs the full local publish readiness gate.
+3. `.github/workflows/ds-publish.yml` is the GitHub Actions OIDC transport for
+   npm Trusted Publisher publishing.
+4. A successful non-dry-run React publish must be followed by
+   `npm run check:react-registry-install` and package-boundary dogfood checks.
+
+The workflow must stay OIDC-only. Do not add `NPM_TOKEN` or `NODE_AUTH_TOKEN` to
+publish steps. The read-only `NPM_READ_TOKEN` secret is only for installing
+private packages during `npm ci` and post-publish registry smoke checks.
+
+## Verification Commands
 
 ```bash
-npm run release:gate           # fast: tokens, agent:eval, bundle, catalog ≥85%
-npm run release:gate -- --full # + test:ci, visual baselines, Playwright a11y pages
+npm run check:astryx-roadmap
+npm run check:react-public-surface
+npm run check:react-public-api
+npm run check:package-release-notes
+npm run check:package-tarballs
+npm run check:package-publish-dry-run
+npm run check:site-package-dogfood
+npm run check:react-publish-ready
 ```
 
-See [AGENTIC_DS_AUDIT_PLAYBOOK.md](./AGENTIC_DS_AUDIT_PLAYBOOK.md).
-
----
-
-## Verification commands
-
-```bash
-npm run validate:components   # contract + story gates
-npm run build:tokens          # tokens + agent manifest (includes usage evidence)
-npm run build:zod-catalog     # Zod catalog for agents
-npm run agent:eval            # manifest schema + MCP + golden intent/pattern evals
-npm run audit:usage           # import evidence for cataloged components
-npm run audit:catalog         # catalog completeness (target ≥85%)
-npm run build:agent-blocks    # TS + spec → component-agent-blocks.json
-npm run find-component -- "your intent"
-npm run lint:dt-usage         # shadcn imports in app/ only
-npm run check:contract-drift -- --strict
-npm run check:bundle-budgets  # stable atom source-size budgets
-npm run ds:mcp                # local stdio MCP
-```
-
-HTTP MCP: `https://www.digitaltableteur.com/mcp` — see [DESIGN_SYSTEM_MCP.md](./DESIGN_SYSTEM_MCP.md).
+For package consumption details, see
+[npm-consumer-setup.md](./design-system/npm-consumer-setup.md).

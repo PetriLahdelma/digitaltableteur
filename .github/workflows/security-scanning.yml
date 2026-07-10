@@ -2,7 +2,11 @@ name: Security Scanning
 
 on:
   push:
-    branches: [main, develop, "DT-*"]
+    # DT-* branches are covered by the pull_request trigger below. Scanning them on push
+    # too races the agentic merge-and-delete: the push run finishes CodeQL/Snyk after the
+    # branch is deleted, and the SARIF upload then fails with "ref not found". Keep push
+    # scanning to the long-lived branches only.
+    branches: [main, develop]
   pull_request:
     branches: [main, develop]
   workflow_dispatch:
@@ -26,8 +30,13 @@ jobs:
           node-version: "22.12.0"
           cache: "npm"
 
+      - name: Prepare private npm read config
+        env:
+          NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
+        run: bash .github/scripts/write-npm-read-config.sh
+
       - name: Install dependencies
-        run: npm ci
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci
 
       - name: Run npm audit
         run: |
@@ -71,8 +80,13 @@ jobs:
           node-version: "22.12.0"
           cache: "npm"
 
+      - name: Prepare private npm read config
+        env:
+          NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
+        run: bash .github/scripts/write-npm-read-config.sh
+
       - name: Install dependencies
-        run: npm ci
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci
 
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
@@ -240,8 +254,13 @@ jobs:
           node-version: "22.12.0"
           cache: "npm"
 
+      - name: Prepare private npm read config
+        env:
+          NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
+        run: bash .github/scripts/write-npm-read-config.sh
+
       - name: Install dependencies
-        run: npm ci
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci
 
       - name: TypeScript strict checks
         run: npx tsc --noEmit --strict || echo "TypeScript errors found, review manually"

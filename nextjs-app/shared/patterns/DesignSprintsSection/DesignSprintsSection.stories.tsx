@@ -9,7 +9,7 @@ const defaultArgs = {
 const meta = {
   title: "Patterns/DesignSprintsSection",
   component: DesignSprintsSection,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

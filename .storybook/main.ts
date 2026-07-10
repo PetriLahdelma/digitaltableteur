@@ -223,6 +223,15 @@ const config: StorybookConfig = {
       "@gsap/react",
       "gsap",
       "@phosphor-icons/react",
+      "prismjs",
+      "prismjs/components/prism-bash",
+      "prismjs/components/prism-go",
+      "prismjs/components/prism-javascript",
+      "prismjs/components/prism-json",
+      "prismjs/components/prism-markup",
+      "prismjs/components/prism-python",
+      "prismjs/components/prism-rust",
+      "prismjs/components/prism-typescript",
       // The JSX runtime is injected by the esbuild/SWC transform, not written as
       // an import, so optimizeDeps.entries scanning never sees it — pin it so it
       // is pre-bundled at boot instead of discovered (and reloaded) on first

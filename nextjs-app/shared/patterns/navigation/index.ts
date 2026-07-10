@@ -6,11 +6,11 @@ export { MobileDrawer } from "../SiteHeader";
 export { SiteFooter, type SiteFooterProps } from "../SiteFooter";
 
 // Navigation primitives
-export { NavLink, type NavLinkProps } from "@/nextjs-app/shared/components/NavLink";
-export { SkipLink, type SkipLinkProps } from "@/nextjs-app/shared/components/SkipLink";
+export { NavLink, type NavLinkProps } from "../../components/NavLink";
+export { SkipLink, type SkipLinkProps } from "../../components/SkipLink";
 
 // Navigation hooks
 export {
   useNavigation,
   type UseNavigationReturn,
-} from "@/nextjs-app/shared/hooks/useNavigation";
+} from "../../hooks/useNavigation";

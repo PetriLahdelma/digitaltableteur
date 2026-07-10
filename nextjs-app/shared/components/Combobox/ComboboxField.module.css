@@ -228,7 +228,14 @@
 .disabled {
   cursor: not-allowed;
   pointer-events: none;
-  opacity: 0.6;
+}
+
+/* Dedicated-token disabled surface (no opacity), matching the text inputs. The
+   border/background live on the parent .wrapper, so mute it when it holds a
+   disabled control. */
+.wrapper:has(.disabled) {
+  border-color: var(--color-primary-disabled);
+  background: var(--color-disabled-bg-light);
 }
 
 @keyframes dropdown-enter {

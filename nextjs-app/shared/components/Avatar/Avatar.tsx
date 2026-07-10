@@ -1,6 +1,6 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
-import type { StaticImageData } from "next/image";
+import { useTranslate } from "../../lib/translation";
+import type { ImageSource as StaticImageData } from "../../lib/imageComponent";
 import styles from "./avatar.module.css";
 import { Menu, MenuContent, MenuItem, MenuTrigger } from "@dt/Menu";
 
@@ -86,7 +86,7 @@ const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>(
     },
     ref,
   ) => {
-    const { t } = useTranslation();
+    const t = useTranslate();
     const menuEnabled = Boolean(menuItems?.length);
 
     const resolvedImageUrl = resolveImageUrl(imageUrl);

@@ -12,6 +12,7 @@
     "vite-app/**/*.css",
     "nextjs-app/src/**/*.css",
     "nextjs-app/shared/foundations/dist/**/*.css",
+    "packages/*/dist/**/*.css",
     "coverage/**/*.css",
     "node_modules/**",
     "dist/**",
@@ -88,6 +89,14 @@
               "global",
               "local",
               "export"
+            ]
+          }
+        ],
+        "property-no-unknown": [
+          true,
+          {
+            "ignoreProperties": [
+              "composes"
             ]
           }
         ],
@@ -183,6 +192,7 @@
     ],
     "order/properties-order": [
       [
+        "composes",
         "display",
         "position",
         "inset",

@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- heading "No projects yet" [level=2]
+- paragraph: Projects you create will show up here.
+- button "New project"
+- button "Import"

@@ -1,6 +1,6 @@
 import { userEvent, within } from "storybook/test";
 import { SkipLink } from "./SkipLink";
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
 import contract from "./SkipLink.contract.json";
 
 const defaultArgs = {
@@ -8,16 +8,48 @@ const defaultArgs = {
   children: "Skip to main content",
 };
 
+/**
+ * SkipLink is `position: absolute` and visually hidden off the top of its
+ * containing block until focused. In a Docs page every story renders into a
+ * small, clipping preview block and — because autodocs stacks them all in one
+ * document where only a single element can hold `:focus` — the pill would sit
+ * offscreen and render clipped. This stage gives each preview a sized,
+ * relatively-positioned containing block and pins the pill to its revealed
+ * position so the static previews show it in full. Docs-only: in the story
+ * canvas the component keeps its real hidden-until-focus behaviour, which the
+ * play functions and manual keyboard testing rely on.
+ */
+const withStage: Decorator = (Story, context) =>
+  context.viewMode === "docs" ? (
+    <div className="sb-skiplink-stage">
+      <style>{`
+        .sb-skiplink-stage {
+          position: relative;
+          inline-size: 100%;
+          min-block-size: 4.5rem;
+          overflow: visible;
+        }
+        .sb-skiplink-stage a[class*="skipLink"] {
+          inset-block-start: 0.75rem;
+        }
+      `}</style>
+      <Story />
+    </div>
+  ) : (
+    <Story />
+  );
+
 const meta = {
   title: "Navigation/SkipLink",
   component: SkipLink,
   tags: ["stable", "autodocs"],
+  decorators: [withStage],
   parameters: {
     design: {
       type: "figma",
       url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skip-link",
     },
-    layout: "centered",
+    layout: "padded",
     contractStatus: contract.status,
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },

@@ -4,6 +4,12 @@
   gap: 0.5rem;
   font-family: var(--font-text);
   font-size: 0.95rem;
+
+  /* The trail is a single line of orientation text: labels must never wrap to a
+     second row (even mid-word). When the container is narrower than the
+     auto-collapse floor (first / … / current), the row overflows horizontally
+     rather than stacking. Cascades to links, the current span, and separators. */
+  white-space: nowrap;
   color: var(--secondary-text-color);
 }
 

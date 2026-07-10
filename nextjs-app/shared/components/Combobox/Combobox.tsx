@@ -9,8 +9,8 @@ import React, {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { useTranslate } from "../../lib/translation";
+import { cn } from "../../lib/cn";
 import HelperText from "@dt/HelperText";
 import Icon from "@dt/Icon";
 import styles from "./ComboboxField.module.css";
@@ -65,7 +65,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
     },
     ref,
   ) {
-    const { t } = useTranslation();
+    const t = useTranslate();
     const generatedId = useId();
     const fieldId = providedId ?? `combobox-${generatedId}`;
     const listboxId = `${fieldId}-listbox`;

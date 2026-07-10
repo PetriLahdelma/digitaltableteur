@@ -2,7 +2,7 @@ import React from "react";
 import type { IconWeight } from "@phosphor-icons/react";
 import styles from "./Icon.module.css";
 import { cva } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import { resolvePhosphorIcon } from "./iconRegistry";
 
 export const iconVariants = cva(styles.base, {

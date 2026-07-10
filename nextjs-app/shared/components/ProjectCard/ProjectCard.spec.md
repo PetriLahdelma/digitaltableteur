@@ -1,19 +1,20 @@
 # ProjectCard
 
 ## Intent
-Portfolio project card for work grid.
+Basic portfolio project card for the work grid: a clickable thumbnail with title, optional category eyebrow and up to three tags.
 
 ## Interaction contract
-- Keyboard: inherit from composed @dt/* primitives
-- Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Keyboard: the whole card is a single focusable link to the project detail page
+- Pointer: click anywhere on the card to open the project; hover scales the thumbnail
+- Screen readers: one link; the thumbnail carries the project title as alt text
+- Reduced motion: hover scale/translate/opacity transitions are gated behind `motion-reduce:` utilities
 
 ## Do / don't
-- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface
-- Do: treat this as a page assembly reference when matching production routes
+- Do: pass `title`, `slug` and `thumbnail`; add `category`/`tags` for richer cards
+- Do: choose `titlePosition` (overlay | below) and `aspectRatio` per surface
 - Don't: invent parallel primitives inside this folder
-- Don't: promote to stable without production consumer evidence
+- Don't: reach for this when EnhancedProjectCard's richer surface is needed — pick one per surface
 
 ## Design notes
-- Tokens: inherit from child components
-- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-card
+- Tokens: Tailwind utility classes mapped to theme tokens; thumbnail radius uses rounded-lg
+- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1031-109

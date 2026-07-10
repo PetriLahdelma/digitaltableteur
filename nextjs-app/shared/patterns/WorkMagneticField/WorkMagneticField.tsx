@@ -204,7 +204,7 @@ export function WorkMagneticField({
     <Section
       ref={sectionRef}
       id={id}
-      donnyTarget={donnyTarget}
+      data-donny-target={donnyTarget}
       className={cn(styles.section, className)}
       spacing="none"
       aria-labelledby={title ? `${id}-title` : undefined}

@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import Button from "@dt/Button";
 import { DonnyAvatar, type DonnyState } from "@dt/DonnyAvatar";
 import styles from "./ChatWidget.module.css";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
 
 interface ChatToggleProps {
@@ -23,7 +23,7 @@ const CURIOSITY_SELECTORS = [
 
 const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
   ({ isOpen, onToggle, controlsId }, ref) => {
-    const { t } = useTranslation();
+    const t = useTranslate();
     const toggleLabel = t("chatToggleLabel", "Chat");
     const ariaLabel = isOpen
       ? `${toggleLabel} — ${t("chatToggleClose", "Hide chat")}`

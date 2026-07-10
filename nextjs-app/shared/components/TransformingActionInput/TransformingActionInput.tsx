@@ -1,5 +1,5 @@
 import React, { useId, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Button from "@dt/Button";
 import Label from "@dt/Label";
 import Text from "@dt/Text";
@@ -82,7 +82,7 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
   stayInInputMode = false,
   className = "",
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const inputId = useId();
   const [mode, setMode] = useState<"button" | "input">(initialMode);
   const [internalValue, setInternalValue] = useState<string>(defaultValue);

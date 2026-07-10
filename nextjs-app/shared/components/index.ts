@@ -4,13 +4,25 @@ export { default as Author } from "./Author/Author";
 export { default as AuthorBio } from "./AuthorBio/AuthorBio";
 export { default as Avatar } from "./Avatar/Avatar";
 export { default as AvatarGroup } from "./AvatarGroup/AvatarGroup";
+export { default as AlertBanner } from "./AlertBanner/AlertBanner";
+export type { AlertBannerProps } from "./AlertBanner/AlertBanner";
 export { default as Badge } from "./Badge/Badge";
+export { default as Breadcrumb } from "./Breadcrumb/Breadcrumb";
+export type {
+  BreadcrumbItem,
+  BreadcrumbProps,
+} from "./Breadcrumb/Breadcrumb";
 export { default as Button } from "./Button/Button";
 export { default as ButtonGroup } from "./ButtonGroup/ButtonGroup";
 export { default as Card } from "./Card/Card";
 export { default as Checkbox } from "./Checkbox/Checkbox";
 export { default as CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
 export { default as ChunkErrorBoundary } from "./ChunkErrorBoundary/ChunkErrorBoundary";
+export {
+  CommandPalette,
+  type CommandPaletteProps,
+  type CommandPaletteItem,
+} from "./CommandPalette";
 export { default as ComplianceCard } from "./ComplianceCard/ComplianceCard";
 export { default as ContactForm } from "./ContactForm/ContactForm";
 export { default as ChatWidget } from "./ChatWidget/ChatWidget";
@@ -20,12 +32,14 @@ export { default as ChatComposer } from "./ChatWidget/ChatComposer";
 export { default as ChatToggle } from "./ChatWidget/ChatToggle";
 export { default as CookieConsent } from "./CookieConsent/CookieConsent";
 export { default as CodeBlockWindow } from "./CodeBlockWindow/CodeBlockWindow";
+export { Container, type ContainerProps } from "./Container";
 export {
   DonnyAvatar,
   type DonnyState,
   type DonnyAvatarProps,
 } from "./DonnyAvatar";
 export { default as EmptyState } from "./EmptyState/EmptyState";
+export { default as EmailSignatureGenerator } from "./EmailSignatureGenerator";
 export { default as FlexBox } from "./FlexBox/FlexBox";
 export { default as FileUpload } from "./FileUpload/FileUpload";
 export { default as Gallery } from "./Gallery/Gallery";
@@ -54,23 +68,35 @@ export { default as MCPActionButton } from "./MCPActionButton/MCPActionButton";
 export { default as NavMenuList } from "./NavMenuList/NavMenuList";
 export { default as MarkdownMessage } from "./MarkdownMessage/MarkdownMessage";
 export { default as Modal } from "./Modal/Modal";
+export { NextLayout } from "./NextLayout";
 export { default as OpenHours } from "./OpenHours/OpenHours";
 export { default as PersonCard } from "./PersonCard/PersonCard";
 export { default as PhoneInput } from "./PhoneInput/PhoneInput";
 export { default as SecureCVDownload } from "./SecureCVDownload/SecureCVDownload";
+export {
+  SegmentedControl,
+  type SegmentedControlProps,
+  type SegmentedControlItem,
+} from "./SegmentedControl";
 export { default as Select } from "./Select/Select";
 export { default as SelectOption } from "./Select/SelectOption";
 export { default as ServicesGrid } from "./ServicesGrid/ServicesGrid";
+export { default as SiteTree } from "./SiteTree";
+export type { SiteTreeNode, SiteTreeProps } from "./SiteTree";
 export { default as Skeleton } from "./Skeleton/Skeleton";
 export { SkillsGrid, type SkillsGridProps, type Skill } from "./SkillsGrid";
 export { default as StudioMap } from "./StudioMap/StudioMap";
 export { default as Switch } from "./Switch/Switch";
 export { SocialShare } from "./SocialShare/SocialShare";
+export { default as Tabs, getTabPanelProps } from "./Tabs";
+export type { TabItem, TabsProps } from "./Tabs";
 export { default as Testimonial } from "./Testimonial/Testimonial";
 export { default as Text } from "./Text/Text";
 export { ThemeProvider, useTheme } from "./ThemeProvider/ThemeProvider";
+export type { Theme, ThemeProviderProps } from "./ThemeProvider/ThemeProvider";
 export { default as Title } from "./Title/Title";
 export { default as Toast } from "./Toast/Toast";
+export type { ToastPosition, ToastTone } from "./Toast/Toast";
 export { default as TransformingActionInput } from "./TransformingActionInput/TransformingActionInput";
 export { ValueCard, type ValueCardProps } from "./ValueCard";
 export { default as WorkNav } from "./WorkNav/WorkNav";

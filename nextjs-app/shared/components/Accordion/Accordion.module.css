@@ -1,36 +1,107 @@
+/* ==========================================================================
+   Accordion — coordinated disclosure group. One shared reveal animation
+   (grid-template-rows 0fr → 1fr) keeps every panel mounted so aria-controls
+   always resolves; closed panels are inert + aria-hidden.
+   ========================================================================== */
+
 .accordion {
-  border: 1px solid var(--color-primary);
-  border-radius: var(--radius-md, 8px);
+  font-family: var(--font-text);
+  color: var(--primary-text-color);
+}
+
+/* ---- Variants ------------------------------------------------------------- */
+
+/* contained + enclosed share the outer border; only contained (and divided)
+   draw hairlines between rows. enclosed is seamless inside. */
+
+.contained,
+.enclosed {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
-.item + .item {
-  border-top: 1px solid var(--color-primary);
+.contained .item + .item,
+.divided .item + .item {
+  border-block-start: 1px solid var(--color-border);
 }
+
+/* ---- Trigger -------------------------------------------------------------- */
 
 .trigger {
   display: flex;
-  padding: var(--space-internal-12, 0.75rem) var(--space-internal-16, 1rem);
-  width: 100%;
+  padding: var(--space-internal-12) var(--space-internal-16);
+  inline-size: 100%;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-internal-12);
   border: none;
   background: transparent;
-  font-family: var(--font-text);
-  font-size: 1rem;
-  text-align: left;
-  color: var(--color-primary);
+  font: inherit;
+  font-weight: 500;
+  text-align: start;
+  color: inherit;
   cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out-cubic);
 }
 
-/* Focus states for accessibility (WCAG 2.4.7 Focus Visible) */
+@media (hover: hover) and (pointer: fine) {
+  .trigger:hover:not(:disabled) {
+    background: var(--color-light-bg);
+  }
+}
 
 .trigger:focus-visible {
-  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
-  outline-offset: var(--focus-ring-offset, 2px);
+  outline: 2px solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: -2px;
 }
 
-/* Windows High Contrast Mode support */
+.trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.title {
+  min-inline-size: 0;
+}
+
+/* ---- Chevron -------------------------------------------------------------- */
+
+.icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--color-muted);
+  transition: transform var(--duration-fast) var(--ease-out-cubic);
+}
+
+.open .icon {
+  transform: rotate(90deg);
+}
+
+/* ---- Panel (animated) ----------------------------------------------------- */
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-normal) var(--ease-out-cubic);
+}
+
+.panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+}
+
+.content {
+  /* Symmetric block padding so the revealed text is vertically centred within
+     the content container (not pinned to the top). */
+  padding: var(--space-internal-12) var(--space-internal-16);
+  color: var(--secondary-text-color);
+}
+
+/* ---- Forced colours ------------------------------------------------------- */
 @media (forced-colors: active) {
   .trigger:focus-visible {
     outline: 3px solid Highlight;
@@ -39,22 +110,11 @@
   }
 }
 
-.content {
-  padding: var(--space-internal-12, 0.75rem) var(--space-internal-16, 1rem);
-  background: var(--color-light-bg);
-  font-family: var(--font-text);
-  color: var(--color-primary);
-}
-
-.content[hidden] {
-  display: none;
-}
-
-.icon {
-  margin-inline-start: var(--space-internal-12, 0.75rem);
-  transition: transform 0.2s ease;
-}
-
-.open .icon {
-  transform: rotate(90deg);
+/* ---- Reduced motion ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .icon,
+  .trigger {
+    transition: none;
+  }
 }

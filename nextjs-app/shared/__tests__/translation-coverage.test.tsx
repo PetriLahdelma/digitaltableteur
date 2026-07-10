@@ -239,7 +239,7 @@ describe("Translation Coverage", () => {
         "Helsinki",
         "Privacy Policy",
         "Petri Lahdelma",
-        "Digital Tableteur",
+        "Digitaltableteur",
       ];
 
       const nonCommonValues = values.filter(

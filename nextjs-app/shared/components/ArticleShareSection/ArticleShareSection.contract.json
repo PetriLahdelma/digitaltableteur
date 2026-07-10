@@ -3,9 +3,9 @@
     "name": "ArticleShareSection",
     "tier": "organism",
     "group": "content",
-    "status": "alpha",
-    "description": "Share links section for blog articles.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-article-share-section",
+    "status": "stable",
+    "description": "End-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1043-110",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
@@ -22,20 +22,30 @@
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
+        "keyboard": [
+            "Tab reaches each share link and the copy-link button; Enter/Space activates them"
+        ],
+        "ariaRequirements": [
+            "Each share control is labelled (aria-label): Share on X/LinkedIn/Facebook and Copy link",
+            "Icons are aria-hidden; the copy button's label switches to \"Link copied!\" on success"
+        ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (horizontal + vertical, with/without heading); 4-mode AT snapshots captured and compare-clean. Every icon-only control carries an aria-label; the copied-state confirmation uses green-800 ink (green-600 is only ~3:1 on white, below AA). Figma composes cloned on-page Phosphor icon instances. Tailwind className styling retained as an intentional per-surface owner call. 2026-07-08 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "schemaVersion": 2,
     "props": {
         "url": {
@@ -82,8 +92,55 @@
         "social",
         "blog footer"
     ],
-    "dense": "Share-links section at the end of blog articles; composes SocialShare with a heading",
+    "dense": "End-of-article share section: X/LinkedIn/Facebook share links plus a copy-link button under an optional heading",
     "usage": {
-        "description": "End-of-article share section composing SocialShare under a heading. Blog article template slot; not for arbitrary pages."
-    }
+        "description": "End-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading. Blog article template slot; not for arbitrary pages."
+    },
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ]
 }

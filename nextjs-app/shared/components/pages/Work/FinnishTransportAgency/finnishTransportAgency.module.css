@@ -390,6 +390,10 @@
   padding-block: var(--space-layout-64);
   padding-inline: var(--cs-page-inset);
   background-color: #0088CE;
+
+  --fta-result-card-text-color: var(--color-white);
+
+  color: var(--fta-result-card-text-color);
 }
 
 .resultsContent {
@@ -399,7 +403,7 @@
 
 .resultsContent h3 {
   margin-block-end: var(--space-layout-8);
-  color: white;
+  color: var(--color-white);
 }
 
 .resultsGrid {
@@ -419,12 +423,7 @@
   background: #00649b;
   backdrop-filter: blur(10px);
   text-align: left;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.resultItem:hover {
-  background: #005b8c;
-  transform: translateY(-4px);
+  color: var(--fta-result-card-text-color);
 }
 
 .resultValue {
@@ -433,7 +432,7 @@
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: white;
+  color: var(--fta-result-card-text-color);
 }
 
 .resultLabel {
@@ -443,7 +442,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: inherit;
+  color: var(--fta-result-card-text-color);
 }
 
 .resultDetail {
@@ -451,7 +450,7 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
   line-height: 1.5;
-  color: rgb(255 255 255 / 90%);
+  color: var(--fta-result-card-text-color);
 }
 
 /* Responsive */

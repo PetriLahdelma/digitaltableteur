@@ -57,6 +57,19 @@ const meta: Meta<typeof Accordion> = {
       description: "Initially expanded item id (preset ids: one/two/three)",
       table: { category: "Content" },
     },
+    type: {
+      control: { type: "inline-radio" },
+      options: ["single", "multiple"],
+      description: "single keeps one section open; multiple allows several",
+      table: { category: "Behavior", defaultValue: { summary: "single" } },
+    },
+    variant: {
+      control: { type: "inline-radio" },
+      options: ["contained", "enclosed", "divided"],
+      description:
+        "contained: border + dividers; enclosed: outer border only, seamless inside; divided: flush hairlines, no border",
+      table: { category: "Appearance", defaultValue: { summary: "contained" } },
+    },
   },
 };
 
@@ -172,6 +185,110 @@ export const DefaultOpen: Story = {
       items={[
         { id: "pricing", title: "How is the work priced?", content: "Fixed-scope engagements with a written definition of done." },
         { id: "timeline", title: "How long does an engagement take?", content: "Typical system audits run two to four weeks." },
+      ]}
+    />
+  ),
+};
+
+/** type="multiple" lets several sections stay open so users can compare content. */
+export const Multiple: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "type=\"multiple\" keeps any number of sections open at once — use it when readers compare content across sections, like feature lists or pricing tiers." } },
+  },
+  render: () => (
+    <Accordion
+      type="multiple"
+      defaultOpenIds={["features", "pricing"]}
+      items={[
+        { id: "features", title: "Features", content: "Real-time collaboration, version history, and granular permissions." },
+        { id: "pricing", title: "Pricing", content: "Free for up to 5 users. Pro starts at €12/user/month billed annually." },
+        { id: "integrations", title: "Integrations", content: "Connects to the tools your team already uses." },
+      ]}
+    />
+  ),
+};
+
+/** Controlled: the parent owns open state via openIds + onOpenChange. */
+export const Controlled: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Pass openIds + onOpenChange to drive the accordion from parent state — when open sections should sync with a URL param, form, or external control." } },
+  },
+  render: () => {
+    const ControlledDemo = () => {
+      const [openIds, setOpenIds] = React.useState<string[]>(["shipping"]);
+      return (
+        <Accordion
+          type="multiple"
+          openIds={openIds}
+          onOpenChange={setOpenIds}
+          items={[
+            { id: "shipping", title: "Shipping", content: "Standard shipping takes 3–5 business days." },
+            { id: "returns", title: "Returns", content: "Free returns within 30 days of delivery." },
+            { id: "warranty", title: "Warranty", content: "Two-year limited warranty on all hardware." },
+          ]}
+        />
+      );
+    };
+    return <ControlledDemo />;
+  },
+};
+
+/** variant="enclosed" keeps the outer border but drops the between-row dividers. */
+export const Enclosed: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "variant=\"enclosed\" wraps the group in a single rounded border with no dividers between rows — a seamless card. Row separation comes from spacing and the open/closed state." } },
+  },
+  render: () => (
+    <Accordion
+      variant="enclosed"
+      defaultOpenId="notifications"
+      items={[
+        { id: "general", title: "General settings", content: "Language, timezone, and display options." },
+        { id: "notifications", title: "Notifications", content: "Choose which email and push notifications you want to receive." },
+        { id: "privacy", title: "Privacy", content: "Control who can see your profile and activity." },
+      ]}
+    />
+  ),
+};
+
+/** variant="divided" drops the card border for flush hairline separators. */
+export const Divided: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "variant=\"divided\" removes the container border for flush hairline separators — lighter weight for inline disclosure in sidebars or detail panels." } },
+  },
+  render: () => (
+    <Accordion
+      variant="divided"
+      items={[
+        { id: "deploy", title: "Deployment details", content: "Last deployed April 18, 2026 at 3:42 PM. Build duration 2m 14s." },
+        { id: "env", title: "Environment variables", content: "12 variables configured across 3 environments." },
+        { id: "logs", title: "Build logs", content: "No warnings. All checks passed." },
+      ]}
+    />
+  ),
+};
+
+/** A disabled item stays visible but its trigger is inert. */
+export const Disabled: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Mark an item disabled to show it in the set while its trigger is inert — for sections that are not yet available." } },
+  },
+  render: () => (
+    <Accordion
+      items={[
+        { id: "available", title: "Available section", content: "This one opens normally." },
+        { id: "soon", title: "Coming soon", content: "Not reachable yet.", disabled: true },
+        { id: "also", title: "Another section", content: "This one opens too." },
       ]}
     />
   ),

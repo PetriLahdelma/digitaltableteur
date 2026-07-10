@@ -1,0 +1,28 @@
+/* Story-only visualization: Spacer renders nothing on its own, so the Default
+   and Playground previews tint the spacer box and give it cross-axis extent so
+   the size/axis controls drive a visible gap. */
+
+.viz {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  align-items: stretch;
+  border: 1px dashed var(--color-border);
+  border-radius: 8px;
+}
+
+.viz[data-axis="vertical"] {
+  inline-size: 16rem;
+  flex-direction: column;
+}
+
+.viz[data-axis="horizontal"] {
+  block-size: 5rem;
+  flex-direction: row;
+}
+
+.gap {
+  outline: 1px dashed color-mix(in srgb, var(--color-info) 55%, transparent);
+  outline-offset: -1px;
+  background-color: color-mix(in srgb, var(--color-info) 16%, transparent);
+}

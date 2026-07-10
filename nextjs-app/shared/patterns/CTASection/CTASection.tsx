@@ -100,7 +100,7 @@ export function CTASection({
   return (
     <Section
       id={id}
-      donnyTarget={donnyTarget}
+      data-donny-target={donnyTarget}
       className={cn(
         "py-24 desktop:py-32 relative overflow-hidden",
         backgroundClasses[background],

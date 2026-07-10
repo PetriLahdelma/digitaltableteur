@@ -5,7 +5,7 @@
  */
 
 import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Modal from "@dt/Modal";
 import Button from "@dt/Button";
 import Link from "@dt/Link";
@@ -26,7 +26,7 @@ export interface CookieConsentProps {
  * CookieConsent component.
  */
 export const CookieConsent: React.FC<CookieConsentProps> = ({ className }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const {
     isBannerOpen,
     acceptAll,
