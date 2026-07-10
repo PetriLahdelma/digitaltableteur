@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-10T14:38:15.719Z",
+  "generatedAt": "2026-07-10T15:00:33.839Z",
   "summary": {
     "componentCount": 163,
     "statusCounts": {
@@ -10607,7 +10607,7 @@
         "group": "display",
         "status": "beta",
         "description": "The assistant's animated avatar with thinking, speaking, and idle mood states, used inside ChatWidget and Donny surfaces.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-donny-avatar",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=492-1578",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -10637,7 +10637,7 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-10 — Figma link wired to the existing DonnyAvatar component (Atoms page, node 492-1578)."
         },
         "tokens": {
           "colors": [
@@ -19630,7 +19630,7 @@
         "group": "navigation",
         "status": "stable",
         "description": "Navigation anchor primitive used inside `SiteHeader`, `Footer`, and in-page navs. Renders an underlying `next/link` and applies the `aria-current='page'` token when the active route matches.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-nav-link",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=516-3146",
         "radixPrimitive": null,
         "element": "a",
         "variants": {},
@@ -19657,7 +19657,7 @@
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true,
-          "reviewedNote": "2026-07-05 — beta→stable (fleet #13): renders a real next/link <a>, aria-current='page' on the active route. Fixed a reduced-motion gap — the transition-colors fade now carries motion-reduce:transition-none so a11y.reducedMotion is literally honest (matches Pagination / ValueCard); unit-tested. Styling is a deliberate className contract (active/inactiveClassName), so exact + activeClassName are EFFECT_EXEMPT in audit:controls with unit tests covering the active/inactive class swap. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: Bucket-1 beta port, keyboard/ARIA reviewed, ForcedColors story + Storybook axe gate."
+          "reviewedNote": "2026-07-05 — beta→stable (fleet #13): renders a real next/link <a>, aria-current='page' on the active route. Fixed a reduced-motion gap — the transition-colors fade now carries motion-reduce:transition-none so a11y.reducedMotion is literally honest (matches Pagination / ValueCard); unit-tested. Styling is a deliberate className contract (active/inactiveClassName), so exact + activeClassName are EFFECT_EXEMPT in audit:controls with unit tests covering the active/inactive class swap. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: Bucket-1 beta port, keyboard/ARIA reviewed, ForcedColors story + Storybook axe gate. 2026-07-10 — Figma link wired to the existing NavLink component set (Patterns page, node 516-3146); parity uplift tracked in docs/design-system/figma-parity-audit.md B5."
         },
         "tokens": {
           "colors": [
