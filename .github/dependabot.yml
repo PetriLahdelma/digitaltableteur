@@ -35,6 +35,11 @@ updates:
           - "patch"
     # Security updates always get individual PRs
     versioning-strategy: "increase"
+    ignore:
+      # Pinned exact at 5.5.0: react-icons 5.6+ drops the Simple Icons
+      # subpackage (react-icons/si) used on Work pages. Do not bump without
+      # re-verifying those imports (see CLAUDE.md gotchas).
+      - dependency-name: "react-icons"
 
   # Sanity CMS studio (still used via npm run sanity:dev)
   - package-ecosystem: "npm"
