@@ -219,7 +219,7 @@
     "@sentry/nextjs": "^10.63.0",
     "@storybook/addon-vitest": "^10.4.6",
     "@swc/helpers": "^0.5.23",
-    "@vercel/analytics": "^1.6.1",
+    "@vercel/analytics": "^2.0.1",
     "@vitest/browser-playwright": "^4.1.10",
     "ai": "^6.0.205",
     "class-variance-authority": "^0.7.1",
