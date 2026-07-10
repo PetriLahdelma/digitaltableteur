@@ -168,15 +168,39 @@ mockups) — out of scope, leave as-is.
 
 ## Batch plan (each batch = Figma work + contract URL updates + gate + PR)
 
-- [ ] **B0 Typography foundation** — new Satoshi text styles from code tokens, retire Syne styles,
-  fix Title/Modal/EmptyState internals, cap/* + page-label sweep, Kbd/NewsBulletin mono fix.
-  Do first: every later batch inherits it.
-- [ ] **B1 Quick wires + hygiene** — NavLink + DonnyAvatar contract URLs, canvas junk cleanup,
-  rename Inputs→TextInput, extend the placeholder-link guard to all stable contracts (ratchet:
-  count can only fall).
-- [ ] **B2 Atoms parity** — drifted atoms to full parity (Title, Text, Link, Label, HelperText,
-  Divider, Avatar, Button surface axis, Menu, Kbd) + missing stable atoms (Container, Icon,
-  Section, Stack, IconButton, SkipLink, Skeleton, FlexBox, Grid).
+> **Resuming in a fresh session:** read this section top to bottom, then the "FIGMA PARITY"
+> entries in the session memory (MEMORY.md → project_promotion_workflow.md) for the build
+> recipe, exemplar nodes (CodeSnippet 1161-2809, CodeBlockWindow 1164-257), and the Figma API
+> gotchas. Load the `figma:figma-use` + `figma:figma-generate-library` skills before any
+> `use_figma` call. Every PR that wires nodes must lower the `check:figma-links` ceiling in
+> `scripts/design-system/figma-links.baseline.json`. Captions are `cap/<Name>` **Satoshi**
+> Bold 22 (the old Syne caption convention is retired).
+
+- [x] **B0 Typography foundation** — DONE #1070 (2026-07-10). All 7 Syne text styles migrated
+  in place to Satoshi Bold + 120% line-height (in-place style edits propagate to styled nodes);
+  3 missing heading styles added (title-xxl 112 / title-xs 28 / title-xxs 22 from token maxima);
+  Syne swept from Foundations/Atoms/Molecules/Patterns canvases; Kbd DM Mono and NewsBulletin
+  Red Hat Mono → Source Code Pro. Views + Design WIP are non-DS scratch, deliberately skipped.
+- [x] **B1 Quick wires + hygiene** — DONE #1070. NavLink → 516-3146, DonnyAvatar → 492-1578
+  (contracts + story links), Figma set `Inputs` renamed TextInput, `check:figma-links` ratchet
+  wired into pre-push (stable-placeholder ceiling; lower it in every wiring PR). Canvas junk
+  deletion deferred to tier batches (instances must be checked first).
+- [x] **B2a Atoms parity (except Button/IconButton)** — DONE #1071. Remodeled: Title/Text (7-size
+  contract ramp, clamp-maxima px, color/title + copy-color bound), Link (size × underline 3×3),
+  Avatar (16 = image/initials × 8 rem sizes; legacy 56px LG rescaled to 3rem/48),
+  Label/HelperText/Divider rebound to CSS tokens. Built + wired: Container 1178-1654,
+  Icon 1176-1658, Section 1178-1712 (28 variants), Stack 1176-1676, FlexBox 1176-1698,
+  Skeleton 1177-1652, SkipLink 1177-1644, Grid 1177-1654 (align modelled as prop). Ceiling
+  46 → 38. Figma API gotchas (resize resets hug sizing; variable-bound paints drop paint
+  opacity — use a node-opacity wash layer; shared TEXT property propagates characters) are
+  recorded in the session memory (project_promotion_workflow.md).
+- [ ] **B2b Button remodel + IconButton** — Button set 406:1569 from legacy axes
+  (Variant(9) × Size × State × Inverse, 108 variants) to contract variant × tone × surface ×
+  size; decide state-axis modelling and record it in the component description (candidate: keep
+  State as an extra Figma-only axis, or split surface into sub-sets per the >30-variant rule).
+  Build IconButton to the same matrix. Own session — largest single work unit.
+- [ ] **B2c Menu (molecule-tier leftover listed under atoms drift)** — Menu align:3 variants;
+  fold into B3.
 - [ ] **B3 Molecules parity** — drifted (Tabs, Modal, Card, Select, Toast, AlertBanner, Accordion,
   RadioGroup, SplitButton, EmptyState) + missing stable molecules (EnhancedProjectCard, List,
   ReadingProgress, AuthorBio, LanguageSwitcher, ValueCard, Pagination, PhoneInput, Combobox,
