@@ -15,6 +15,15 @@ if git diff --cached -U0 | grep -qE '^\+[^+].*_authToken[^=]*=.*(npm_[A-Za-z0-9]
   exit 1
 fi
 
+# Second net (2026-07-10): a bare npm_ granular token pasted ANYWHERE (env
+# file, script constant, doc) — not just on an _authToken line. The npm_
+# prefix + 30+ char run is specific enough that false positives are unlikely;
+# write docs placeholders as npm_XXXX... if one is ever needed.
+if git diff --cached -U0 | grep -qE '^\+[^+].*npm_[A-Za-z0-9]{30,}'; then
+  echo "pre-commit: staged content contains an npm_ granular token literal — unstage it (tokens belong in the gitignored .npm-userconfig, never in git)." >&2
+  exit 1
+fi
+
 npm run check:contrast &&
 npm run lint:css &&
 npm run audit:rhythm:check &&
