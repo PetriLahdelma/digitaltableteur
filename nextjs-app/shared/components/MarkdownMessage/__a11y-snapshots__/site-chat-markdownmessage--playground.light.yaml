@@ -1,0 +1,29 @@
+- status: Work in progress (beta)
+- heading "Heading" [level=1]
+- paragraph:
+  - text: Some
+  - strong: bold
+  - text: text,
+  - emphasis: italics
+  - text: ", and a list:"
+- list:
+  - listitem: Item one
+  - listitem: Item two
+- paragraph:
+  - code: inline code
+- code: console.log('block code');
+- blockquote:
+  - paragraph: Blockquote example
+- paragraph: "A table:"
+- table:
+  - rowgroup:
+    - row "Col A Col B":
+      - columnheader "Col A"
+      - columnheader "Col B"
+  - rowgroup:
+    - row "1 2":
+      - cell "1"
+      - cell "2"
+    - row "3 4":
+      - cell "3"
+      - cell "4"

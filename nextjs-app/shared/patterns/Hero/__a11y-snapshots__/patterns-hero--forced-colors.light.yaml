@@ -1,4 +1,4 @@
-- status: Work in progress (beta)
+- status: Deprecated
 - region "Welcome to Digitaltableteur hero section":
   - heading "Welcome to Digitaltableteur" [level=1]
   - paragraph: Creative Development & Design

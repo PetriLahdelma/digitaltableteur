@@ -1,2 +1,4 @@
-- link "Playground Link":
+- link "Playground Link External link":
   - /url: https://www.digitaltableteur.com
+  - text: Playground Link
+  - img "External link"

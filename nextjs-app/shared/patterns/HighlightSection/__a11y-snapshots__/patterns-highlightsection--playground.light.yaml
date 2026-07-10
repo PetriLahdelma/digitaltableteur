@@ -1,0 +1,7 @@
+- region "Call to action section":
+  - heading "Component schema for GenAI design systems" [level=2]
+  - paragraph: Keep AI-generated UI consistent with shared prop structures, naming, and token bindings.
+  - link "Download schema":
+    - /url: https://example.com/schema
+  - link "Read article":
+    - /url: /blog

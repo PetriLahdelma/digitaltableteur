@@ -232,7 +232,7 @@ export const InArticleContext: Story = {
           profileUrl="/authors/petri-lahdelma"
         />
       </div>
-      <p style={{ color: "#666", lineHeight: "1.6" }}>
+      <p style={{ color: "var(--color-gray-medium)", lineHeight: "1.6" }}>
         This article explores the latest features in Next.js and how they enable
         developers to build fast, scalable web applications...
       </p>

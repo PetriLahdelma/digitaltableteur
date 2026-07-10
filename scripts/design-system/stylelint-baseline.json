@@ -3081,117 +3081,117 @@
       "text": "Expected variable, function or keyword for \"#000\" of \"background-color\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::103::5::selector-max-universal::Too many universal selectors in \".variant-split .heroContent > * + *\", maximum 1 (selector-max-universal)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::106::5::selector-max-universal::Too many universal selectors in \".variant-split .heroContent > * + *\", maximum 1 (selector-max-universal)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 103,
+      "line": 106,
       "column": 5,
       "rule": "selector-max-universal",
       "severity": "warning",
       "text": "Too many universal selectors in \".variant-split .heroContent > * + *\", maximum 1 (selector-max-universal)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::117::3::selector-max-universal::Too many universal selectors in \".variant-minimal .heroContent > * + *\", maximum 1 (selector-max-universal)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::120::3::selector-max-universal::Too many universal selectors in \".variant-minimal .heroContent > * + *\", maximum 1 (selector-max-universal)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 117,
+      "line": 120,
       "column": 3,
       "rule": "selector-max-universal",
       "severity": "warning",
       "text": "Too many universal selectors in \".variant-minimal .heroContent > * + *\", maximum 1 (selector-max-universal)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::146::1::no-descending-specificity::Expected selector \".heroContent\" to come before selector \".background-image .heroContent\", at line 55 (no-descending-specificity)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::149::1::no-descending-specificity::Expected selector \".heroContent\" to come before selector \".background-image .heroContent\", at line 58 (no-descending-specificity)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 146,
+      "line": 149,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".heroContent\" to come before selector \".background-image .heroContent\", at line 55 (no-descending-specificity)"
+      "text": "Expected selector \".heroContent\" to come before selector \".background-image .heroContent\", at line 58 (no-descending-specificity)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::157::3::selector-max-universal::Too many universal selectors in \".heroText > * + *\", maximum 1 (selector-max-universal)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::160::3::selector-max-universal::Too many universal selectors in \".heroText > * + *\", maximum 1 (selector-max-universal)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 157,
+      "line": 160,
       "column": 3,
       "rule": "selector-max-universal",
       "severity": "warning",
       "text": "Too many universal selectors in \".heroText > * + *\", maximum 1 (selector-max-universal)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::164::1::no-descending-specificity::Expected selector \".heroTitle\" to come before selector \".background-transparent .heroTitle\", at line 35 (no-descending-specificity)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::167::1::no-descending-specificity::Expected selector \".heroTitle\" to come before selector \".background-transparent .heroTitle\", at line 38 (no-descending-specificity)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 164,
+      "line": 167,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".heroTitle\" to come before selector \".background-transparent .heroTitle\", at line 35 (no-descending-specificity)"
+      "text": "Expected selector \".heroTitle\" to come before selector \".background-transparent .heroTitle\", at line 38 (no-descending-specificity)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::171::1::no-descending-specificity::Expected selector \".heroSubtitle\" to come before selector \".background-transparent .heroSubtitle\", at line 35 (no-descending-specificity)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::174::1::no-descending-specificity::Expected selector \".heroSubtitle\" to come before selector \".background-transparent .heroSubtitle\", at line 38 (no-descending-specificity)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 171,
+      "line": 174,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".heroSubtitle\" to come before selector \".background-transparent .heroSubtitle\", at line 35 (no-descending-specificity)"
+      "text": "Expected selector \".heroSubtitle\" to come before selector \".background-transparent .heroSubtitle\", at line 38 (no-descending-specificity)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::184::1::no-descending-specificity::Expected selector \".heroDescription\" to come before selector \".background-transparent .heroDescription\", at line 35 (no-descending-specificity)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::187::1::no-descending-specificity::Expected selector \".heroDescription\" to come before selector \".background-transparent .heroDescription\", at line 38 (no-descending-specificity)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 184,
+      "line": 187,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".heroDescription\" to come before selector \".background-transparent .heroDescription\", at line 35 (no-descending-specificity)"
+      "text": "Expected selector \".heroDescription\" to come before selector \".background-transparent .heroDescription\", at line 38 (no-descending-specificity)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::275::33::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::278::33::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 275,
+      "line": 278,
       "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::276::32::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::279::32::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 276,
+      "line": 279,
       "column": 32,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::277::34::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::280::34::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 277,
+      "line": 280,
       "column": 34,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::83::3::selector-max-universal::Too many universal selectors in \".variant-default .heroContent > * + *\", maximum 1 (selector-max-universal)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::86::3::selector-max-universal::Too many universal selectors in \".variant-default .heroContent > * + *\", maximum 1 (selector-max-universal)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 83,
+      "line": 86,
       "column": 3,
       "rule": "selector-max-universal",
       "severity": "warning",
       "text": "Too many universal selectors in \".variant-default .heroContent > * + *\", maximum 1 (selector-max-universal)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::87::3::selector-max-universal::Too many universal selectors in \".variant-centered .heroContent > * + *\", maximum 1 (selector-max-universal)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::90::3::selector-max-universal::Too many universal selectors in \".variant-centered .heroContent > * + *\", maximum 1 (selector-max-universal)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 87,
+      "line": 90,
       "column": 3,
       "rule": "selector-max-universal",
       "severity": "warning",
       "text": "Too many universal selectors in \".variant-centered .heroContent > * + *\", maximum 1 (selector-max-universal)"
     },
     {
-      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::91::3::selector-max-universal::Too many universal selectors in \".variant-split .heroContent > * + *\", maximum 1 (selector-max-universal)",
+      "id": "nextjs-app/shared/patterns/Hero/Hero.module.css::94::3::selector-max-universal::Too many universal selectors in \".variant-split .heroContent > * + *\", maximum 1 (selector-max-universal)",
       "file": "nextjs-app/shared/patterns/Hero/Hero.module.css",
-      "line": 91,
+      "line": 94,
       "column": 3,
       "rule": "selector-max-universal",
       "severity": "warning",

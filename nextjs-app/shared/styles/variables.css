@@ -381,7 +381,7 @@
   --color-dark: #e0e0e0;
   --color-gray-dark: #bbb;
   --color-gray: #aaa;
-  --color-muted: #888;
+  --color-muted: #949494; /* AA on the #23272a tab/field surface (4.96:1) and the #181a1b body (5.74:1); #888 was 4.24:1 on #23272a */
   --color-muted-light: #555;
   --color-border: #333;
   --color-border-light: #444;

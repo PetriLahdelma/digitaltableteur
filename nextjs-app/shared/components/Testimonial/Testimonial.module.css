@@ -71,21 +71,7 @@
   color: var(--color-gray-medium);
 }
 
-/* Dark theme support */
-
-[data-theme="dark"] .testimonial {
-  border-color: var(--color-gray-medium);
-  background: var(--color-gray-dark);
-}
-
-[data-theme="dark"] .quote {
-  color: var(--color-white);
-}
-
-[data-theme="dark"] .name {
-  color: var(--color-white);
-}
-
-[data-theme="dark"] .titleCompany {
-  color: var(--color-gray-light);
-}
+/* No dark-theme overrides: the base rules are token-driven and theme-aware.
+ * The old [data-theme="dark"] block predated the theme token flip and
+ * composed a light-gray card (--color-gray-dark resolves LIGHT in themeDark)
+ * under near-white text at 1.45:1. */

@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- figure:
+  - text: typescript
+  - button "Copy"
+  - button "More options"
+  - region "Code snippet in typescript":
+    - code: "import { createGatewayProvider } from \"@ai-sdk/gateway\"; const provider = createGatewayProvider({ baseURL: process.env.AI_GATEWAY_URL, apiKey: process.env.AI_GATEWAY_API_KEY, }); export async function ask(question: string) { const model = provider(\"openai/gpt-4o-mini\"); const result = await model.doStuff({ prompt: question }); return result.text; }"
+  - status
