@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- paragraph:
+  - text: "Active theme:"
+  - strong: light
+- button "Cycle theme"

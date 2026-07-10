@@ -2,9 +2,9 @@
   "fileKey": "PC2UPdYwm8qGt6ZTg0AakF",
   "fileSlug": "DT-Site-stuff",
   "fileUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff",
-  "generatedAt": "2026-07-09T23:22:05.650Z",
+  "generatedAt": "2026-07-10T10:01:12.718Z",
   "source": "nextjs-app/shared/styles/variables.css",
-  "runId": "dt-dsb-2026-07-09",
+  "runId": "dt-dsb-2026-07-10",
   "figmaApplied": {
     "appliedAt": "2026-06-05T11:45:00.000Z",
     "verifiedAt": "2026-06-05T11:45:00.000Z",
@@ -513,7 +513,7 @@
           "type": "COLOR",
           "values": {
             "Light": "#626a72",
-            "Dark": "#888",
+            "Dark": "#949494",
             "HCB": "#888",
             "HCW": "#333"
           },

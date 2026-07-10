@@ -1,0 +1,38 @@
+- status: Work in progress (alpha)
+- strong: Open Hours
+- text: Open now
+- table:
+  - rowgroup:
+    - row "Day Opens Closes":
+      - columnheader "Day"
+      - columnheader "Opens"
+      - columnheader "Closes"
+  - rowgroup:
+    - row "Monday 9:00 17:00":
+      - cell "Monday"
+      - cell "9:00"
+      - cell "17:00"
+    - row "Tuesday 9:00 17:00":
+      - cell "Tuesday"
+      - cell "9:00"
+      - cell "17:00"
+    - row "Wednesday 9:00 17:00":
+      - cell "Wednesday"
+      - cell "9:00"
+      - cell "17:00"
+    - row "Thursday 9:00 17:00":
+      - cell "Thursday"
+      - cell "9:00"
+      - cell "17:00"
+    - row "Friday 9:00 17:00":
+      - cell "Friday"
+      - cell "9:00"
+      - cell "17:00"
+    - row "Saturday Closed Closed":
+      - cell "Saturday"
+      - cell "Closed"
+      - cell "Closed"
+    - row "Sunday Closed Closed":
+      - cell "Sunday"
+      - cell "Closed"
+      - cell "Closed"

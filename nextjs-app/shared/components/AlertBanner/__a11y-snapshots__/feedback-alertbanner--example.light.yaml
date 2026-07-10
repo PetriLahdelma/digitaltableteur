@@ -1,0 +1,5 @@
+- status:
+  - img "success"
+  - strong: Saved
+  - paragraph: Your changes have been stored.
+  - button "Dismiss alert": Close

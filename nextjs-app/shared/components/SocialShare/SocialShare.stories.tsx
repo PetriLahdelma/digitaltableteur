@@ -4,9 +4,38 @@ import { SocialShare } from "@dt/SocialShare";
 import React from "react";
 import { expect, userEvent, within } from "storybook/test";
 
+/**
+ * navigator.share availability differs between browsers, headless contexts,
+ * and farm runner OSes, and SocialShare branches its rendered tree on it
+ * (native Share button vs Copy to clipboard). AT snapshots need ONE
+ * deterministic branch, so stories pin the capability OFF (the fallback is
+ * also the more common real-world path) and restore it on unmount — same
+ * recipe as HomeHero's Math.random pin.
+ */
+const NAVIGATOR_PROTO = Object.getPrototypeOf(navigator) as { share?: unknown };
+const NATIVE_SHARE_DESCRIPTOR = Object.getOwnPropertyDescriptor(
+  NAVIGATOR_PROTO,
+  "share",
+);
+
+const withoutNativeShare = (Story: React.ComponentType) => {
+  // The component's `"share" in navigator` check walks the prototype chain,
+  // so the pin must remove the prototype member, not shadow the instance.
+  if (NATIVE_SHARE_DESCRIPTOR) delete NAVIGATOR_PROTO.share;
+  React.useEffect(
+    () => () => {
+      if (NATIVE_SHARE_DESCRIPTOR)
+        Object.defineProperty(NAVIGATOR_PROTO, "share", NATIVE_SHARE_DESCRIPTOR);
+    },
+    [],
+  );
+  return <Story />;
+};
+
 const meta = {
   title: "Site/SocialShare",
   component: SocialShare,
+  decorators: [withoutNativeShare],
   parameters: {
     design: {
       type: "figma",
@@ -29,13 +58,16 @@ export const Default: Story = {
     url: "https://digitaltableteur.com",
     title: "Digitaltableteur - Portfolio",
   },
+  // Keyboard-drive only: clicking would open the copy Toast, a TIMED live
+  // region — AT capture then races the toast lifecycle (the settled tree
+  // depends on machine speed). Plays on AT-captured stories must never arm
+  // timed state; click behavior is covered in unit tests.
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const buttons = canvas.getAllByRole("button");
-    expect(buttons.length).toBeGreaterThan(0);
-
-    // Click first social share button
-    await userEvent.click(buttons[0]);
+    const links = canvas.getAllByRole("link");
+    expect(links.length).toBeGreaterThan(0);
+    await userEvent.tab();
+    expect(links[0]).toHaveFocus();
   },
 };
 
@@ -88,11 +120,21 @@ export const WithNativeShare: Story = {
     },
   },
   beforeEach: () => {
-    // Mock native share support for this story
+    // Mock native share support for this story ONLY. configurable is
+    // mandatory: without it the own-property can never be deleted and the
+    // mock leaks into every later story in the same page session (this
+    // poisoned Playground/Example/ForcedColors AT captures in scoped runs
+    // while tag-filtered farm runs skipped this story — permanent mismatch).
+    const previous = Object.getOwnPropertyDescriptor(navigator, "share");
     Object.defineProperty(navigator, "share", {
+      configurable: true,
       writable: true,
       value: () => Promise.resolve(),
     });
+    return () => {
+      if (previous) Object.defineProperty(navigator, "share", previous);
+      else delete (navigator as { share?: unknown }).share;
+    };
   },
 };
 

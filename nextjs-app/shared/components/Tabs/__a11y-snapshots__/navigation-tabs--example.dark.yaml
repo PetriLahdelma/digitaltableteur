@@ -1,5 +1,4 @@
-- status: Work in progress (beta)
-- tablist "Navigate between tabs":
+- tablist:
   - tab "Tab 1" [selected]
   - tab "Tab 2"
   - tab "Tab 3"

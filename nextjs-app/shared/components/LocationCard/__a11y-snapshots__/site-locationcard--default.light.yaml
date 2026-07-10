@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- heading "Digitaltableteur Helsinki" [level=3]
+- paragraph: Mannerheimintie 20 B
+- paragraph: 00100 Helsinki
+- paragraph: Finland
+- link "mail@digitaltableteur.com":
+  - /url: mailto:mail@digitaltableteur.com

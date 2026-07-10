@@ -1,0 +1,4 @@
+- status:
+  - img "info"
+  - strong: Heads up
+  - paragraph: This is an informational message.

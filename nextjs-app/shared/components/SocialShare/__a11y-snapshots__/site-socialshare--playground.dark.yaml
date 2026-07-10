@@ -4,8 +4,8 @@
       - /url: https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdigitaltableteur.com
       - img "Share on LinkedIn"
     - link "Share on Twitter":
-      - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fdigitaltableteur.com&text=Digital%20Tableteur%20-%20Portfolio
+      - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fdigitaltableteur.com&text=Digitaltableteur%20-%20Portfolio
       - img "Share on Twitter"
-    - button "Share":
-      - img "Share"
+    - button "Copy to clipboard":
+      - img "Copy to clipboard"
   - status

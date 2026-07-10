@@ -95,7 +95,10 @@
   font-size: var(--font-size-text-xs);
   font-weight: 400;
   line-height: 1.2;
-  color: color-mix(in srgb, var(--color-text) 56%, transparent);
+
+  /* --color-muted, not a color-mix: the 56% mix compositing to ~#727f84 on
+   * white was 4.13:1, under the 4.5:1 AA floor for this xs text. */
+  color: var(--color-muted);
 }
 
 @media (width <= 640px) {

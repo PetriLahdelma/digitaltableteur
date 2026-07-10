@@ -9,7 +9,10 @@
 /* Background Variants */
 
 .background-light {
-  background: var(--color-background-light, #fff);
+  /* --color-surface, not the undefined --color-background-light: its #fff
+   * fallback stayed white in dark theme and put dark-theme text colors on a
+   * white hero (secondary Button text hit 2.4:1). */
+  background: var(--color-surface);
   color: var(--color-primary);
 }
 

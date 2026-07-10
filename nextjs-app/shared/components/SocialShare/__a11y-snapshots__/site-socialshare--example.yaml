@@ -4,20 +4,20 @@
       - /url: https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdigitaltableteur.com
       - img "Share on LinkedIn"
     - link "Share on Twitter":
-      - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fdigitaltableteur.com&text=Digital%20Tableteur%20-%20Portfolio
+      - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fdigitaltableteur.com&text=Digitaltableteur%20-%20Portfolio
       - img "Share on Twitter"
     - link "Share on Facebook":
       - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdigitaltableteur.com
       - img "Share on Facebook"
     - link "Share on Reddit":
-      - /url: https://reddit.com/submit?url=https%3A%2F%2Fdigitaltableteur.com&title=Digital%20Tableteur%20-%20Portfolio
+      - /url: https://reddit.com/submit?url=https%3A%2F%2Fdigitaltableteur.com&title=Digitaltableteur%20-%20Portfolio
       - img "Share on Reddit"
     - link "Share on WhatsApp":
-      - /url: https://wa.me/?text=Digital%20Tableteur%20-%20Portfolio%20https%3A%2F%2Fdigitaltableteur.com
+      - /url: https://wa.me/?text=Digitaltableteur%20-%20Portfolio%20https%3A%2F%2Fdigitaltableteur.com
       - img "Share on WhatsApp"
     - link "Share on Instagram":
       - /url: https://www.instagram.com/digitaltableteur/
       - img "Share on Instagram"
-    - button "Share":
-      - img "Share"
+    - button "Copy to clipboard":
+      - img "Copy to clipboard"
   - status
