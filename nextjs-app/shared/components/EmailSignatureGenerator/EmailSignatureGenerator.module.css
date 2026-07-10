@@ -14,11 +14,8 @@
   --esg-text-secondary: #4b5563;
   --esg-text-muted: #6b7280;
   --esg-text-faint: #9ca3af;
-  --esg-border: #e5e7eb;
-  --esg-border-strong: #d1d5db;
   --esg-surface: #fff;
   --esg-surface-dim: #f3f4f6;
-  --esg-surface-hover: #e5e7eb;
   --esg-toggle-active-bg: #fff;
   --esg-import-border: #9ca3af;
   --esg-import-hover-bg: #f9fafb;
@@ -73,89 +70,20 @@
 
 /* Form Grid - 2 columns */
 
+/* Field rows are DS TextInput (clearable + hideLabel); the component brings
+   its own vertical margins, so the grid only spaces columns. */
+
 .formGrid {
   display: grid;
   margin-block-end: var(--space-layout-24);
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-internal-16);
+  gap: 0 var(--space-internal-16);
 }
 
 @media (width <= 600px) {
   .formGrid {
     grid-template-columns: 1fr;
   }
-}
-
-.inputGroup {
-  display: flex;
-  flex-direction: column;
-}
-
-.inputWrapper {
-  display: flex;
-  position: relative;
-  align-items: center;
-}
-
-.input {
-  padding-block: var(--space-internal-16);
-  padding-inline: var(--space-internal-24);
-  padding-inline-end: var(--space-internal-48);
-  width: 100%;
-  border: 1px solid var(--esg-border);
-  border-radius: 100px;
-  background-color: var(--esg-surface);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
-  font-family: var(--font-text);
-  font-size: 1rem;
-  color: var(--esg-ink);
-  transition:
-    box-shadow var(--duration-fast) ease,
-    border-color var(--duration-fast) ease,
-    background-color var(--duration-fast) ease;
-}
-
-.input::placeholder {
-  color: var(--esg-text-faint);
-}
-
-.input:hover {
-  border-color: var(--esg-border-strong);
-  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
-}
-
-.input:focus {
-  outline: 2px solid var(--esg-ink);
-  outline-offset: 2px;
-}
-
-.clearButton {
-  display: flex;
-  position: absolute;
-  padding: 0;
-  width: 24px;
-  height: 24px;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--esg-text-faint);
-  cursor: pointer;
-  transition:
-    color var(--duration-fast) ease,
-    background-color var(--duration-fast) ease;
-  inset-inline-end: var(--space-internal-16);
-}
-
-.clearButton:hover {
-  background-color: var(--esg-surface-hover);
-  color: var(--esg-ink-soft);
-}
-
-.clearButton:focus-visible {
-  outline: 2px solid var(--esg-ink);
-  outline-offset: 2px;
 }
 
 /* Preview Section */
@@ -432,19 +360,7 @@
   }
 
   .formGrid {
-    gap: var(--space-internal-12);
-  }
-
-  .input {
-    padding-block: var(--space-internal-16);
-    padding-inline: var(--space-internal-16);
-    padding-inline-end: var(--space-internal-40);
-    border-radius: 12px;
-    font-size: 1rem;
-  }
-
-  .clearButton {
-    inset-inline-end: var(--space-internal-12);
+    gap: 0 var(--space-internal-12);
   }
 }
 
@@ -455,6 +371,7 @@
 
 /* Specificity bump: the Title component's own color rule outranks a single
    class, so the heading needs a theme-scoped override like the original had. */
+
 :global(.themeDark) .title {
   color: var(--esg-ink);
 }
@@ -463,8 +380,6 @@
   --esg-page-bg: #1a1a1a;
   --esg-ink: #f9fafb;
   --esg-text-secondary: #9ca3af;
-  --esg-border: #4b5563;
-  --esg-border-strong: #6b7280;
   --esg-text-faint: #6b7280;
   --esg-surface: #2d2d2d;
   --esg-surface-dim: #374151;

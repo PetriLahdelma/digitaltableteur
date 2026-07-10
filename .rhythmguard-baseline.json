@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-10T07:59:31.059Z",
+  "createdAt": "2026-07-10T08:09:34.774Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -2395,8 +2395,8 @@
     {
       "column": 27,
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f41\u001f27\u001f20px\u001fUnexpected off-scale value \"20px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "line": 41,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f38\u001f27\u001f20px\u001fUnexpected off-scale value \"20px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "line": 38,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"20px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -2405,8 +2405,8 @@
     {
       "column": 23,
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f225\u001f23\u001f2px\u001fUnexpected off-scale value \"2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "line": 225,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f153\u001f23\u001f2px\u001fUnexpected off-scale value \"2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 153,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -2415,8 +2415,8 @@
     {
       "column": 8,
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f262\u001f8\u001f2px\u001fUnexpected off-scale value \"2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "line": 262,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f190\u001f8\u001f2px\u001fUnexpected off-scale value \"2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 190,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -2425,8 +2425,8 @@
     {
       "column": 27,
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f41\u001f27\u001f20px\u001fUnexpected raw scale value \"20px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 41,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f38\u001f27\u001f20px\u001fUnexpected raw scale value \"20px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 38,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"20px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -2435,8 +2435,8 @@
     {
       "column": 23,
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f225\u001f23\u001f2px\u001fUnexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 225,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f153\u001f23\u001f2px\u001fUnexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 153,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -2445,8 +2445,8 @@
     {
       "column": 12,
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f261\u001f12\u001f4px\u001fUnexpected raw scale value \"4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 261,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f189\u001f12\u001f4px\u001fUnexpected raw scale value \"4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 189,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -2455,8 +2455,8 @@
     {
       "column": 8,
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f262\u001f8\u001f2px\u001fUnexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 262,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css\u001f190\u001f8\u001f2px\u001fUnexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 190,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",

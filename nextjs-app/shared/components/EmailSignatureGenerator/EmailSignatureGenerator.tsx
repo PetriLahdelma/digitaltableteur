@@ -9,6 +9,7 @@ import Button from "@dt/Button";
 import Modal from "@dt/Modal";
 import Toast from "@dt/Toast";
 import Icon from "@dt/Icon";
+import TextInput from "@dt/TextInput";
 
 interface SignatureData {
   name: string;
@@ -21,6 +22,25 @@ interface SignatureData {
   instagram: string;
   tiktok: string;
 }
+
+const SIGNATURE_FIELDS: Array<{
+  field: keyof SignatureData;
+  labelKey: string;
+  labelDefault: string;
+  placeholderKey: string;
+  placeholderDefault: string;
+  type: "text" | "tel";
+}> = [
+  { field: "name", labelKey: "emailSig.nameLabel", labelDefault: "Name", placeholderKey: "emailSig.namePlaceholder", placeholderDefault: "Name", type: "text" },
+  { field: "title", labelKey: "emailSig.titleLabel", labelDefault: "Title", placeholderKey: "emailSig.titlePlaceholder", placeholderDefault: "Position", type: "text" },
+  { field: "phone", labelKey: "emailSig.phoneLabel", labelDefault: "Phone", placeholderKey: "emailSig.phonePlaceholder", placeholderDefault: "Phone nr (optional)", type: "tel" },
+  { field: "linkedin", labelKey: "emailSig.linkedinLabel", labelDefault: "LinkedIn", placeholderKey: "emailSig.linkedinPlaceholder", placeholderDefault: "LinkedIn username", type: "text" },
+  { field: "github", labelKey: "emailSig.githubLabel", labelDefault: "GitHub", placeholderKey: "emailSig.githubPlaceholder", placeholderDefault: "GitHub username", type: "text" },
+  { field: "twitter", labelKey: "emailSig.twitterLabel", labelDefault: "Twitter/X", placeholderKey: "emailSig.twitterPlaceholder", placeholderDefault: "@ Twitter/X handle", type: "text" },
+  { field: "bluesky", labelKey: "emailSig.blueskyLabel", labelDefault: "Bluesky", placeholderKey: "emailSig.blueskyPlaceholder", placeholderDefault: "@ Bluesky handle", type: "text" },
+  { field: "instagram", labelKey: "emailSig.instagramLabel", labelDefault: "Instagram", placeholderKey: "emailSig.instagramPlaceholder", placeholderDefault: "@ Instagram handle", type: "text" },
+  { field: "tiktok", labelKey: "emailSig.tiktokLabel", labelDefault: "TikTok", placeholderKey: "emailSig.tiktokPlaceholder", placeholderDefault: "@ TikTok handle", type: "text" },
+];
 
 export interface EmailSignatureGeneratorProps {
   /** Company name for the signature */
@@ -66,17 +86,12 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
 
   const signatureRef = useRef<HTMLDivElement>(null);
 
-  const handleInputChange = useCallback(
-    (field: keyof SignatureData) =>
-      (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData((prev) => ({ ...prev, [field]: e.target.value }));
-      },
+  const handleValueChange = useCallback(
+    (field: keyof SignatureData) => (value: string | number) => {
+      setFormData((prev) => ({ ...prev, [field]: String(value) }));
+    },
     []
   );
-
-  const handleClearField = useCallback((field: keyof SignatureData) => {
-    setFormData((prev) => ({ ...prev, [field]: "" }));
-  }, []);
 
   const generateSignatureHTML = useCallback((): string => {
     const { name, title, phone, twitter, linkedin, github, bluesky, instagram, tiktok } = formData;
@@ -342,248 +357,22 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
 
         {/* Form Grid - 2 columns */}
         <div className={styles.formGrid}>
-          <div className={styles.inputGroup}>
-            <div className={styles.inputWrapper}>
-              <input
-                id="name"
-                type="text"
-                value={formData.name}
-                onChange={handleInputChange("name")}
-                placeholder={t("emailSig.namePlaceholder", {
-                  defaultValue: "Name",
+          {SIGNATURE_FIELDS.map(
+            ({ field, labelKey, labelDefault, placeholderKey, placeholderDefault, type }) => (
+              <TextInput
+                key={field}
+                label={t(labelKey, { defaultValue: labelDefault })}
+                hideLabel
+                clearable
+                type={type}
+                value={formData[field]}
+                onValueChange={handleValueChange(field)}
+                placeholder={t(placeholderKey, {
+                  defaultValue: placeholderDefault,
                 })}
-                className={styles.input}
               />
-              {formData.name && (
-                <button
-                  type="button"
-                  onClick={() => handleClearField("name")}
-                  className={styles.clearButton}
-                  aria-label={t("emailSig.clearField", {
-                    defaultValue: "Clear field",
-                  })}
-                >
-                  <Icon name="x" size={16} decorative />
-                </button>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.inputGroup}>
-            <div className={styles.inputWrapper}>
-              <input
-                id="title"
-                type="text"
-                value={formData.title}
-                onChange={handleInputChange("title")}
-                placeholder={t("emailSig.titlePlaceholder", {
-                  defaultValue: "Position",
-                })}
-                className={styles.input}
-              />
-              {formData.title && (
-                <button
-                  type="button"
-                  onClick={() => handleClearField("title")}
-                  className={styles.clearButton}
-                  aria-label={t("emailSig.clearField", {
-                    defaultValue: "Clear field",
-                  })}
-                >
-                  <Icon name="x" size={16} decorative />
-                </button>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.inputGroup}>
-            <div className={styles.inputWrapper}>
-              <input
-                id="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleInputChange("phone")}
-                placeholder={t("emailSig.phonePlaceholder", {
-                  defaultValue: "Phone nr (optional)",
-                })}
-                className={styles.input}
-              />
-              {formData.phone && (
-                <button
-                  type="button"
-                  onClick={() => handleClearField("phone")}
-                  className={styles.clearButton}
-                  aria-label={t("emailSig.clearField", {
-                    defaultValue: "Clear field",
-                  })}
-                >
-                  <Icon name="x" size={16} decorative />
-                </button>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.inputGroup}>
-            <div className={styles.inputWrapper}>
-              <input
-                id="linkedin"
-                type="text"
-                value={formData.linkedin}
-                onChange={handleInputChange("linkedin")}
-                placeholder={t("emailSig.linkedinPlaceholder", {
-                  defaultValue: "LinkedIn username",
-                })}
-                className={styles.input}
-              />
-              {formData.linkedin && (
-                <button
-                  type="button"
-                  onClick={() => handleClearField("linkedin")}
-                  className={styles.clearButton}
-                  aria-label={t("emailSig.clearField", {
-                    defaultValue: "Clear field",
-                  })}
-                >
-                  <Icon name="x" size={16} decorative />
-                </button>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.inputGroup}>
-            <div className={styles.inputWrapper}>
-              <input
-                id="github"
-                type="text"
-                value={formData.github}
-                onChange={handleInputChange("github")}
-                placeholder={t("emailSig.githubPlaceholder", {
-                  defaultValue: "GitHub username",
-                })}
-                className={styles.input}
-              />
-              {formData.github && (
-                <button
-                  type="button"
-                  onClick={() => handleClearField("github")}
-                  className={styles.clearButton}
-                  aria-label={t("emailSig.clearField", {
-                    defaultValue: "Clear field",
-                  })}
-                >
-                  <Icon name="x" size={16} decorative />
-                </button>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.inputGroup}>
-            <div className={styles.inputWrapper}>
-              <input
-                id="twitter"
-                type="text"
-                value={formData.twitter}
-                onChange={handleInputChange("twitter")}
-                placeholder={t("emailSig.twitterPlaceholder", {
-                  defaultValue: "@ Twitter/X handle",
-                })}
-                className={styles.input}
-              />
-              {formData.twitter && (
-                <button
-                  type="button"
-                  onClick={() => handleClearField("twitter")}
-                  className={styles.clearButton}
-                  aria-label={t("emailSig.clearField", {
-                    defaultValue: "Clear field",
-                  })}
-                >
-                  <Icon name="x" size={16} decorative />
-                </button>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.inputGroup}>
-            <div className={styles.inputWrapper}>
-              <input
-                id="bluesky"
-                type="text"
-                value={formData.bluesky}
-                onChange={handleInputChange("bluesky")}
-                placeholder={t("emailSig.blueskyPlaceholder", {
-                  defaultValue: "@ Bluesky handle",
-                })}
-                className={styles.input}
-              />
-              {formData.bluesky && (
-                <button
-                  type="button"
-                  onClick={() => handleClearField("bluesky")}
-                  className={styles.clearButton}
-                  aria-label={t("emailSig.clearField", {
-                    defaultValue: "Clear field",
-                  })}
-                >
-                  <Icon name="x" size={16} decorative />
-                </button>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.inputGroup}>
-            <div className={styles.inputWrapper}>
-              <input
-                id="instagram"
-                type="text"
-                value={formData.instagram}
-                onChange={handleInputChange("instagram")}
-                placeholder={t("emailSig.instagramPlaceholder", {
-                  defaultValue: "@ Instagram handle",
-                })}
-                className={styles.input}
-              />
-              {formData.instagram && (
-                <button
-                  type="button"
-                  onClick={() => handleClearField("instagram")}
-                  className={styles.clearButton}
-                  aria-label={t("emailSig.clearField", {
-                    defaultValue: "Clear field",
-                  })}
-                >
-                  <Icon name="x" size={16} decorative />
-                </button>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.inputGroup}>
-            <div className={styles.inputWrapper}>
-              <input
-                id="tiktok"
-                type="text"
-                value={formData.tiktok}
-                onChange={handleInputChange("tiktok")}
-                placeholder={t("emailSig.tiktokPlaceholder", {
-                  defaultValue: "@ TikTok handle",
-                })}
-                className={styles.input}
-              />
-              {formData.tiktok && (
-                <button
-                  type="button"
-                  onClick={() => handleClearField("tiktok")}
-                  className={styles.clearButton}
-                  aria-label={t("emailSig.clearField", {
-                    defaultValue: "Clear field",
-                  })}
-                >
-                  <Icon name="x" size={16} decorative />
-                </button>
-              )}
-            </div>
-          </div>
+            )
+          )}
         </div>
 
         {/* Preview Section */}

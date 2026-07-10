@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T07:47:59.697Z",
+  "generatedAt": "2026-07-10T08:10:01.682Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -9775,8 +9775,8 @@
       "composesWith": [
         "Button",
         "Text",
-        "Modal",
         "TextInput",
+        "Modal",
         "CheckboxGroup",
         "TextArea"
       ],

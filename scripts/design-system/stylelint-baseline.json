@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 445,
+  "warningCount": 444,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -678,148 +678,139 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::316::43::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::244::43::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 316,
+      "line": 244,
       "column": 43,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::317::24::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::245::24::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 317,
+      "line": 245,
       "column": 24,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::318::42::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::246::42::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 318,
+      "line": 246,
       "column": 42,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::319::20::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::247::20::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 319,
+      "line": 247,
       "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::320::31::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::248::31::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 320,
+      "line": 248,
       "column": 31,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::324::48::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::252::48::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 324,
+      "line": 252,
       "column": 48,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::328::43::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::256::43::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 328,
+      "line": 256,
       "column": 43,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::329::46::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::257::46::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 329,
+      "line": 257,
       "column": 46,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::330::24::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::258::24::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 330,
+      "line": 258,
       "column": 24,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::331::33::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::259::33::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 331,
+      "line": 259,
       "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::332::20::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::260::20::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 332,
+      "line": 260,
       "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::333::25::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::261::25::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 333,
+      "line": 261,
       "column": 25,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::337::42::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::265::42::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 337,
+      "line": 265,
       "column": 42,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::338::48::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::266::48::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 338,
+      "line": 266,
       "column": 48,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::415::1::no-descending-specificity::Expected selector \".tipsList li\" to come before selector \".instructionList li:last-child\", at line 401 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::343::1::no-descending-specificity::Expected selector \".tipsList li\" to come before selector \".instructionList li:last-child\", at line 329 (no-descending-specificity)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 415,
+      "line": 343,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".tipsList li\" to come before selector \".instructionList li:last-child\", at line 401 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::458::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
-      "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 458,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)"
+      "text": "Expected selector \".tipsList li\" to come before selector \".instructionList li:last-child\", at line 329 (no-descending-specificity)"
     },
     {
       "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::18::3::order/properties-order::Expected \"border-color\" to come before \"background-color\" (order/properties-order)",

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-10T07:49:56.044Z",
+  "generatedAt": "2026-07-10T08:10:01.976Z",
   "summary": {
     "componentCount": 163,
     "statusCounts": {
@@ -81,8 +81,8 @@
     "withAnyUsage": 152,
     "withProductionUsage": 46,
     "uniqueImportedComponents": 152,
-    "totalEvidenceRows": 855,
-    "aliasImportFiles": 472,
+    "totalEvidenceRows": 856,
+    "aliasImportFiles": 473,
     "relativeImportFiles": 391,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -14188,6 +14188,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
             "since": "2026-06-04"
           },
@@ -14224,11 +14234,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -15835,6 +15840,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
             "since": "2026-06-04"
           },
@@ -15871,11 +15886,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -30109,6 +30119,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
             "since": "2026-06-04"
           },
@@ -30285,10 +30305,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TextInput",
-        "importCount": 10,
+        "importCount": 11,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 6,
+        "componentImportCount": 7,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/FieldPrompt.tsx",
@@ -30298,6 +30318,12 @@
           },
           {
             "path": "nextjs-app/shared/components/ContactForm/ContactForm.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TextInput",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.tsx",
             "importKind": "alias",
             "importPath": "@dt/TextInput",
             "context": "component"
@@ -31584,8 +31610,8 @@
         "composesWith": [
           "Button",
           "Text",
-          "Modal",
           "TextInput",
+          "Modal",
           "CheckboxGroup",
           "TextArea"
         ],
