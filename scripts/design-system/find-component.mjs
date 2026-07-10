@@ -4,6 +4,10 @@
  *
  *   npm run find-component -- "dismissible warning banner"
  *   npm run find-component -- --json "primary action button"
+ *   npm run find-component -- --include-deprecated "legacy hero"
+ *
+ * Deprecated components are excluded by default so agents are never steered
+ * toward them (docs/design-system/deprecation-policy.md R3).
  */
 import { readFileSync, existsSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
@@ -17,7 +21,12 @@ import {
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const MANIFEST = join(ROOT, "nextjs-app/shared/foundations/dist/agent-manifest.json");
 const jsonMode = process.argv.includes("--json");
-const query = process.argv.slice(2).filter((arg) => arg !== "--json").join(" ").trim();
+const includeDeprecated = process.argv.includes("--include-deprecated");
+const query = process.argv
+  .slice(2)
+  .filter((arg) => arg !== "--json" && arg !== "--include-deprecated")
+  .join(" ")
+  .trim();
 
 if (!query) {
   console.error("Usage: npm run find-component -- [--json] \"your intent\"");
@@ -43,6 +52,15 @@ if (existsSync(MANIFEST)) {
       : { name, description: "", status: "alpha" };
     return { name, contract, usage: byComponent.get(name) };
   });
+}
+
+const deprecatedCount = components.filter(
+  (component) => component.contract?.status === "deprecated",
+).length;
+if (!includeDeprecated) {
+  components = components.filter(
+    (component) => component.contract?.status !== "deprecated",
+  );
 }
 
 const ranked = rankComponentsForIntent(query, components, 8);
@@ -97,4 +115,9 @@ for (const { name, score, entry } of ranked) {
       `    production usage: ${usage.productionImportCount} file(s); e.g. ${usage.evidence.find((e) => e.context === "production")?.path ?? usage.evidence[0]?.path}`,
     );
   }
+}
+if (!includeDeprecated && deprecatedCount > 0) {
+  console.log(
+    `  (${deprecatedCount} deprecated component(s) hidden — pass --include-deprecated to see them)`,
+  );
 }

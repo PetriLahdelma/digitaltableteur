@@ -4,109 +4,298 @@
     "title": {
       "$value": "var(--font-heading), system-ui, sans-serif",
       "$description": "Heading font stack (Satoshi via next/font).",
-      "$type": "fontFamily"
+      "$type": "fontFamily",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--font-title",
+          "category": "typography",
+          "subgroup": "Families & aliases"
+        }
+      }
     },
     "text": {
       "$value": "var(--font-body), system-ui, sans-serif",
       "$description": "Body/UI font stack (Satoshi via next/font).",
-      "$type": "fontFamily"
+      "$type": "fontFamily",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--font-text",
+          "category": "typography",
+          "subgroup": "Families & aliases"
+        }
+      }
+    },
+    "mono": {
+      "$value": "source-code-pro, menlo, monaco, consolas, \"Courier New\", monospace",
+      "$description": "Monospace font stack for code and technical UI.",
+      "$type": "fontFamily",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--font-mono",
+          "category": "typography",
+          "subgroup": "Families & aliases"
+        }
+      }
     },
     "size": {
       "text": {
-        "$value": "clamp(1rem, 0.6vw + 0.9rem, 1.25rem)",
-        "$description": "Fluid type size token (text); uses clamp().",
-        "$type": "fontFamily",
+        "DEFAULT": {
+          "$value": "clamp(1rem, 0.6vw + 0.9rem, 1.25rem)",
+          "$description": "Fluid type size token (text); uses clamp().",
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-text",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
+        },
         "xxs": {
           "$value": "clamp(0.875rem, 0.1vw + 0.85rem, 0.9375rem)",
           "$description": "Fluid type size token (text-xxs); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-text-xxs",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "xs": {
           "$value": "clamp(0.875rem, 0.2vw + 0.83rem, 1rem)",
           "$description": "Fluid type size token (text-xs); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-text-xs",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "s": {
           "$value": "clamp(0.875rem, 0.35vw + 0.8rem, 1.05rem)",
           "$description": "Fluid type size token (text-s); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-text-s",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "m": {
           "$value": "clamp(1rem, 0.6vw + 0.9rem, 1.25rem)",
           "$description": "Fluid type size token (text-m); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-text-m",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "l": {
           "$value": "clamp(1.125rem, 0.8vw + 1rem, 1.5rem)",
           "$description": "Fluid type size token (text-l); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-text-l",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "xl": {
           "$value": "clamp(1.375rem, 1vw + 1.15rem, 1.875rem)",
           "$description": "Fluid type size token (text-xl); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-text-xl",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "xxl": {
           "$value": "clamp(1.625rem, 1.4vw + 1.35rem, 2.25rem)",
           "$description": "Fluid type size token (text-xxl); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-text-xxl",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         }
       },
       "title": {
-        "$value": "clamp(2.25rem, 3.5vw + 1.5rem, 3.75rem)",
-        "$description": "Fluid type size token (title); uses clamp().",
-        "$type": "fontFamily",
+        "DEFAULT": {
+          "$value": "clamp(2.25rem, 3.5vw + 1.5rem, 3.75rem)",
+          "$description": "Fluid type size token (title); uses clamp().",
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-title",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
+        },
         "xxs": {
           "$value": "clamp(1.125rem, 0.4vw + 1.05rem, 1.375rem)",
           "$description": "Fluid type size token (title-xxs); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-title-xxs",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "xs": {
           "$value": "clamp(1.25rem, 0.9vw + 1.1rem, 1.75rem)",
           "$description": "Fluid type size token (title-xs); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-title-xs",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "s": {
           "$value": "clamp(1.5rem, 2vw + 1.1rem, 2.25rem)",
           "$description": "Fluid type size token (title-s); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-title-s",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "m": {
           "$value": "clamp(2rem, 2.8vw + 1.3rem, 3rem)",
           "$description": "Fluid type size token (title-m); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-title-m",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "l": {
           "$value": "clamp(2.75rem, 4vw + 1.75rem, 4.25rem)",
           "$description": "Fluid type size token (title-l); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-title-l",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "xl": {
           "$value": "clamp(3.5rem, 6vw + 2.5rem, 5.5rem)",
           "$description": "Fluid type size token (title-xl); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-title-xl",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "xxl": {
           "$value": "clamp(4.5rem, 8vw + 3rem, 7rem)",
           "$description": "Fluid type size token (title-xxl); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-title-xxl",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
+        }
+      },
+      "display": {
+        "DEFAULT": {
+          "$value": "clamp(\n    5rem,\n    10vw + 3rem,\n    8rem\n  )",
+          "$description": "Fluid type size token (display); uses clamp().",
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-display",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
+        },
+        "xl": {
+          "$value": "clamp(\n    6rem,\n    14vw + 3rem,\n    12rem\n  )",
+          "$description": "Fluid type size token (display-xl); uses clamp().",
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-display-xl",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         }
       },
       "button": {
         "s": {
           "$value": "clamp(0.875rem, 0.3vw + 0.8rem, 1rem)",
           "$description": "Fluid type size token (button-s); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-button-s",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "m": {
           "$value": "clamp(1rem, 0.35vw + 0.9rem, 1.125rem)",
           "$description": "Fluid type size token (button-m); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-button-m",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         },
         "l": {
           "$value": "clamp(1.125rem, 0.45vw + 1rem, 1.25rem)",
           "$description": "Fluid type size token (button-l); uses clamp().",
-          "$type": "fontFamily"
+          "$type": "dimension",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--font-size-button-l",
+              "category": "typography",
+              "subgroup": "Type scale"
+            }
+          }
         }
       }
     },
@@ -114,12 +303,38 @@
       "title": {
         "$value": "700",
         "$description": "Production token --font-weight-title",
-        "$type": "fontFamily"
+        "$type": "fontWeight",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--font-weight-title",
+            "category": "typography",
+            "subgroup": "Weight"
+          }
+        }
+      },
+      "medium": {
+        "$value": "500",
+        "$description": "Production token --font-weight-medium",
+        "$type": "fontWeight",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--font-weight-medium",
+            "category": "typography",
+            "subgroup": "Weight"
+          }
+        }
       },
       "text": {
         "$value": "400",
         "$description": "Production token --font-weight-text",
-        "$type": "fontFamily"
+        "$type": "fontWeight",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--font-weight-text",
+            "category": "typography",
+            "subgroup": "Weight"
+          }
+        }
       }
     }
   },
@@ -127,32 +342,74 @@
     "tighter": {
       "$value": "-0.05em",
       "$description": "Letter-spacing for tighter display/heading styles.",
-      "$type": "fontFamily"
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--tracking-tighter",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        }
+      }
     },
     "tight": {
       "$value": "-0.025em",
       "$description": "Letter-spacing for tight display/heading styles.",
-      "$type": "fontFamily"
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--tracking-tight",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        }
+      }
     },
     "normal": {
       "$value": "0",
       "$description": "Letter-spacing for normal display/heading styles.",
-      "$type": "fontFamily"
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--tracking-normal",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        }
+      }
     },
     "wide": {
       "$value": "0.025em",
       "$description": "Letter-spacing for wide display/heading styles.",
-      "$type": "fontFamily"
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--tracking-wide",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        }
+      }
     },
     "wider": {
       "$value": "0.05em",
       "$description": "Letter-spacing for wider display/heading styles.",
-      "$type": "fontFamily"
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--tracking-wider",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        }
+      }
     },
     "widest": {
       "$value": "0.1em",
       "$description": "Letter-spacing for widest display/heading styles.",
-      "$type": "fontFamily"
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--tracking-widest",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        }
+      }
     }
   },
   "line": {
@@ -160,27 +417,62 @@
       "tight": {
         "$value": "1.2",
         "$description": "Line-height for tight typography rhythm.",
-        "$type": "fontFamily"
+        "$type": "number",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--line-height-tight",
+            "category": "typography",
+            "subgroup": "Rhythm"
+          }
+        }
       },
       "snug": {
         "$value": "1.375",
         "$description": "Line-height for snug typography rhythm.",
-        "$type": "fontFamily"
+        "$type": "number",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--line-height-snug",
+            "category": "typography",
+            "subgroup": "Rhythm"
+          }
+        }
       },
       "normal": {
         "$value": "1.5",
         "$description": "Line-height for normal typography rhythm.",
-        "$type": "fontFamily"
+        "$type": "number",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--line-height-normal",
+            "category": "typography",
+            "subgroup": "Rhythm"
+          }
+        }
       },
       "relaxed": {
         "$value": "1.625",
         "$description": "Line-height for relaxed typography rhythm.",
-        "$type": "fontFamily"
+        "$type": "number",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--line-height-relaxed",
+            "category": "typography",
+            "subgroup": "Rhythm"
+          }
+        }
       },
       "loose": {
         "$value": "1.75",
         "$description": "Line-height for loose typography rhythm.",
-        "$type": "fontFamily"
+        "$type": "number",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--line-height-loose",
+            "category": "typography",
+            "subgroup": "Rhythm"
+          }
+        }
       }
     }
   }

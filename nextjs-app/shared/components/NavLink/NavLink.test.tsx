@@ -1,24 +1,30 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { NavLink } from "./NavLink";
+import {
+  NavigationProvider,
+  type NavigationRuntime,
+} from "../../lib/navigation";
 
 expect.extend(toHaveNoViolations);
 
-const usePathnameMock = vi.hoisted(() => vi.fn<() => string | null>());
-
-vi.mock("next/navigation", () => ({
-  usePathname: usePathnameMock,
-}));
+const renderWithPathname = (
+  pathname: string | null,
+  ui: React.ReactElement,
+) => {
+  const runtime: NavigationRuntime = {
+    pathname,
+    searchParams: new URLSearchParams(),
+    push: () => undefined,
+    replace: () => undefined,
+  };
+  return render(<NavigationProvider runtime={runtime}>{ui}</NavigationProvider>);
+};
 
 describe("NavLink", () => {
-  beforeEach(() => {
-    usePathnameMock.mockReset();
-  });
-
   it("marks a prefix-matched route active via aria-current", () => {
-    usePathnameMock.mockReturnValue("/work/case-study");
-    render(<NavLink href="/work">Work</NavLink>);
+    renderWithPathname("/work/case-study", <NavLink href="/work">Work</NavLink>);
     expect(screen.getByRole("link", { name: "Work" })).toHaveAttribute(
       "aria-current",
       "page",
@@ -26,16 +32,15 @@ describe("NavLink", () => {
   });
 
   it("does not mark a different route active", () => {
-    usePathnameMock.mockReturnValue("/about");
-    render(<NavLink href="/work">Work</NavLink>);
+    renderWithPathname("/about", <NavLink href="/work">Work</NavLink>);
     expect(screen.getByRole("link", { name: "Work" })).not.toHaveAttribute(
       "aria-current",
     );
   });
 
   it("exact requires the full pathname to match", () => {
-    usePathnameMock.mockReturnValue("/work/case-study");
-    render(
+    renderWithPathname(
+      "/work/case-study",
       <NavLink href="/work" exact>
         Work
       </NavLink>,
@@ -46,8 +51,8 @@ describe("NavLink", () => {
   });
 
   it("prefix matching would mark root active everywhere; exact prevents it", () => {
-    usePathnameMock.mockReturnValue("/contact");
-    render(
+    renderWithPathname(
+      "/contact",
       <NavLink href="/" exact>
         Home
       </NavLink>,
@@ -58,17 +63,20 @@ describe("NavLink", () => {
   });
 
   it("treats a null pathname (SSR/outside app router) as inactive", () => {
-    usePathnameMock.mockReturnValue(null);
-    render(<NavLink href="/work">Work</NavLink>);
+    renderWithPathname(null, <NavLink href="/work">Work</NavLink>);
     expect(screen.getByRole("link", { name: "Work" })).not.toHaveAttribute(
       "aria-current",
     );
   });
 
   it("applies the active class pair by route state", () => {
-    usePathnameMock.mockReturnValue("/work");
-    render(
-      <NavLink href="/work" activeClassName="is-active" inactiveClassName="is-idle">
+    renderWithPathname(
+      "/work",
+      <NavLink
+        href="/work"
+        activeClassName="is-active"
+        inactiveClassName="is-idle"
+      >
         Work
       </NavLink>,
     );
@@ -78,8 +86,7 @@ describe("NavLink", () => {
   });
 
   it("guards its color transition under prefers-reduced-motion", () => {
-    usePathnameMock.mockReturnValue("/work");
-    render(<NavLink href="/work">Work</NavLink>);
+    renderWithPathname("/work", <NavLink href="/work">Work</NavLink>);
     // reducedMotion:true must be literally honest — the transition-colors
     // fade is neutralised via motion-reduce (matches Pagination / ValueCard).
     expect(screen.getByRole("link", { name: "Work" }).className).toContain(
@@ -88,8 +95,8 @@ describe("NavLink", () => {
   });
 
   it("has no axe violations inside a labelled nav", async () => {
-    usePathnameMock.mockReturnValue("/work");
-    const { container } = render(
+    const { container } = renderWithPathname(
+      "/work",
       <nav aria-label="Primary">
         <NavLink href="/work">Work</NavLink>
         <NavLink href="/about">About</NavLink>

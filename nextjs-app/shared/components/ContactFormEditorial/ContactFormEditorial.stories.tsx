@@ -8,7 +8,7 @@ const defaultArgs = {};
 const meta = {
   title: "Site/ContactFormEditorial",
   component: ContactFormEditorial,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

@@ -3,7 +3,7 @@
     "name": "AlertBanner",
     "tier": "molecule",
     "group": "feedback",
-    "status": "beta",
+    "status": "stable",
     "description": "Inline alert for info, warning, success, and error feedback.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=394-41",
     "radixPrimitive": null,
@@ -45,15 +45,38 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — tones and dismiss control reviewed in Storybook. 2026-07-03 (batch 4) — action slot + icon override added; dismiss strings moved to i18next (en/fi/sv, EN output unchanged).",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-05-26 — tones and dismiss control reviewed in Storybook. 2026-07-03 (batch 4) — action slot + icon override added; dismiss strings moved to i18next (en/fi/sv, EN output unchanged). 2026-07-08 — promoted after Mermaid adopted AlertBanner for persistent diagram errors; check:beta-promotion-readiness verifies production consumers, snapshots, forced colors, and real Figma evidence.",
+        "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/VertaaUX/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "tone": {
@@ -78,9 +101,9 @@
             "optional": true,
             "type": "React.ReactNode"
         },
-        "icon": {
+        "showIcon": {
             "optional": true,
-            "type": "string"
+            "type": "boolean"
         },
         "dismissible": {
             "optional": true,
@@ -161,7 +184,7 @@
             {
                 "name": "Title",
                 "required": false,
-                "description": "Bold heading line (Title size=s) for scannable banners."
+                "description": "Bold title line rendered without document-heading semantics so inline banners do not alter the page outline."
             },
             {
                 "name": "Description",
@@ -190,7 +213,6 @@
     "composesWith": [
         "Button",
         "Icon",
-        "Title",
         "Text"
     ]
 }

@@ -3,7 +3,7 @@
     "name": "NewsBulletin",
     "tier": "pattern",
     "group": "marketing",
-    "status": "beta",
+    "status": "stable",
     "description": "Homepage news bulletin strip with three topical slots above the footer.",
     "dense": "Homepage news strip: up to three topical item cards above the footer, driven by a typed items list.",
     "keywords": [
@@ -55,16 +55,34 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-06-06 — card labels, link targets, and ForcedColors story verified in Storybook.",
+        "reviewedNote": "2026-06-06 — card labels, link targets, and ForcedColors story verified in Storybook. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, pattern-tier convention), forced-colors re-verified in a real browser, consumers audited.",
         "forcedColorsVerified": true,
-        "playFunctionExempt": "Marquee animation defers to CSS; keyboard order follows DOM link sequence."
+        "playFunctionExempt": "Marquee animation defers to CSS; keyboard order follows DOM link sequence.",
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/NewsBulletin/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "items": {

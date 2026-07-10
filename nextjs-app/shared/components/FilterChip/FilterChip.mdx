@@ -1,0 +1,36 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './FilterChip.stories.tsx';
+
+<Meta of={Stories} />
+
+# FilterChip
+
+**Status:** alpha · **Tier:** atom · **Group:** controls
+
+## In use
+See the **Example (filter group)** story: an "All" chip plus tag chips inside a labelled `role="group"`.
+
+## How to use
+
+```tsx
+import { FilterChip } from '@dt/FilterChip';
+
+<div role="group" aria-label="Filter by topic">
+  <FilterChip pressed={active === null} onClick={() => setActive(null)}>All</FilterChip>
+  <FilterChip pressed={active === 'ds'} onClick={() => setActive('ds')} count={3}>Design systems</FilterChip>
+</div>
+```
+
+## When to use
+- Single-select filtering of a visible collection (work grid, blog archive).
+
+## When not to use
+- Switching between content panels: use `Tabs`.
+- Multi-select token input: use `MultiCombobox`.
+
+## Accessibility
+- `aria-pressed` toggle buttons inside a labelled group; counts render inside the accessible name.
+- Token focus ring; Highlight/HighlightText pressed state in forced colors; transitions off under reduced motion.
+
+## Promotion notes
+- Promote to beta after the Figma atom exists; CategoryFilter/BlogCategoryFilter consume it internally.

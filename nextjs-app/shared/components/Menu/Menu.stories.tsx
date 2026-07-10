@@ -74,7 +74,7 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  tags: ["alpha", "autodocs"],
+  tags: ["stable", "autodocs"],
   argTypes: {
     side: {
       control: { type: "select" },
@@ -135,10 +135,12 @@ const PlaygroundRender: Story["render"] = (args, { viewMode }) => (
 );
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: PlaygroundRender,
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: PlaygroundRender,
 };
 
@@ -295,7 +297,7 @@ export const AsLinks: Story = {
 
 /** Keyboard contract driven end to end: open, arrow to an item, select, Escape. */
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     controls: { disable: true },
     docs: {
@@ -355,7 +357,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
-  tags: ["forced-colors"],
+  tags: ["beta-matrix", "forced-colors"],
   parameters: { a11y: { disable: true, test: "off" } },
   globals: { forcedColors: "active" },
   render: () => (

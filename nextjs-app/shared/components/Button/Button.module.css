@@ -141,11 +141,14 @@
   filter: none;
 }
 
+/* Outline/ghost have no fill to swap, so mute their edge + text with the
+   disabled tokens instead of opacity (matches primary + the form controls). */
 .button.secondary:disabled,
 .button.secondary[aria-disabled="true"],
 .button.tertiary:disabled,
 .button.tertiary[aria-disabled="true"] {
-  opacity: 0.5;
+  border-color: var(--color-primary-disabled);
+  color: var(--color-muted);
 }
 
 /* Loading: gentle pulse, suppressed under reduced motion (see above). */

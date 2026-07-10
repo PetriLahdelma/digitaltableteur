@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
-import { useAnimationContext } from "@/providers/AnimationProvider";
-import { cn } from "@/lib/utils";
+import { gsap, useGSAP } from "../../../lib/gsap";
+import { useAnimationContext } from "../../../lib/animation";
+import { cn } from "../../../lib/cn";
 import styles from "./AnimatedCounter.module.css";
 
 export interface AnimatedCounterProps {

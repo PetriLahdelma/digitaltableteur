@@ -1,12 +1,11 @@
 "use client";
 
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import styles from "./AlertBanner.module.css";
 import Icon from "@dt/Icon";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
-import Title from "@dt/Title";
 
 type Tone = "info" | "success" | "warning" | "error";
 
@@ -19,8 +18,8 @@ export type AlertBannerProps = {
   description?: React.ReactNode;
   /** Optional action slot rendered under the description (e.g. a tertiary Button). */
   action?: React.ReactNode;
-  /** Override the tone icon with another registered icon name. */
-  icon?: string;
+  /** Show the semantic tone icon. The icon is derived from `tone`; set false for a text-only banner. @default true */
+  showIcon?: boolean;
   /** Shows a localized dismiss control when true. @default false */
   dismissible?: boolean;
   /** Called when the user dismisses the banner. */
@@ -42,12 +41,12 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
   title,
   description,
   action,
-  icon,
+  showIcon = true,
   dismissible = false,
   onDismiss,
   "aria-live": ariaLive,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   // Error banners must interrupt assistive tech (role=alert / assertive);
   // other tones are polite status updates. An explicit aria-live prop wins.
   const isError = tone === "error";
@@ -59,12 +58,20 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
       role={role}
       aria-live={liveRegion}
     >
-      <Icon name={icon ?? toneIcon[tone]} ariaLabel={tone} size="md" />
+      {/* The icon is always the semantic tone icon; showIcon only toggles its
+          presence (there is no per-instance icon override — the tone owns it). */}
+      {showIcon && (
+        <Icon name={toneIcon[tone]} ariaLabel={tone} size="md" />
+      )}
       <div className={styles.content}>
         {title && (
-          <Title size="s" className={styles.title}>
+          // A status/alert label, not a document heading: rendering it as a
+          // heading (Title is always h1-h6) injects a stray heading into the
+          // page outline wherever a banner appears. `strong` carries the
+          // emphasis without the heading semantics (cf. Radix Toast.Title).
+          <Text as="strong" className={styles.title}>
             {title}
-          </Title>
+          </Text>
         )}
         {description && (
           <Text size="m" className={styles.description}>

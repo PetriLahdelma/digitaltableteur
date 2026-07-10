@@ -32,7 +32,7 @@ function MultiComboboxDemo(
 const meta = {
   title: "Forms/MultiCombobox",
   component: MultiCombobox,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

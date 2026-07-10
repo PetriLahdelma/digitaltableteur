@@ -1,0 +1,102 @@
+.root {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-sm, 4px);
+  text-decoration: none;
+  color: var(--color-muted);
+  transition: color 0.2s ease;
+}
+
+.root:hover {
+  color: var(--color-text);
+}
+
+.root:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid
+    var(--focus-ring-color, var(--color-primary));
+  outline-offset: 2px;
+}
+
+.icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hit targets: padding grows the interactive area beyond the glyph. */
+
+.sm {
+  padding: var(--space-internal-4);
+}
+
+.sm .icon > * {
+  block-size: 1rem;
+  inline-size: 1rem;
+}
+
+.md {
+  padding: var(--space-internal-8);
+}
+
+.md .icon > * {
+  block-size: 1.25rem;
+  inline-size: 1.25rem;
+}
+
+.lg {
+  padding: var(--space-internal-12);
+}
+
+.lg .icon > * {
+  block-size: 1.5rem;
+  inline-size: 1.5rem;
+}
+
+/* Chip: bordered circular tile for share rows (ArticleShareSection idiom). */
+
+.chip {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full, 9999px);
+  background-color: transparent;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.chip:hover {
+  border-color: var(--color-text);
+  background-color: var(--color-text);
+  color: var(--main-body-background-color, var(--color-white));
+}
+
+/* Chip hit target is fixed 2.5rem regardless of size token paddings. */
+
+.chip.sm,
+.chip.md,
+.chip.lg {
+  padding: 0;
+  block-size: 2.5rem;
+  inline-size: 2.5rem;
+}
+
+@media (forced-colors: active) {
+  .root {
+    color: LinkText;
+  }
+
+  .chip {
+    border-color: CanvasText;
+  }
+
+  .root:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+}

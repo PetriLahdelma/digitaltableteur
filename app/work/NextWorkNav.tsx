@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useRef, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
+import { Button, Icon } from "@digitaltableteur/react";
 import { sortedProjects } from "@/nextjs-app/shared/data/projects";
 
 import styles from "./NextWorkNav.module.css";
@@ -15,6 +15,7 @@ const workPages = sortedProjects.map((p) => ({
 }));
 
 export function NextWorkNav() {
+  const { t } = useTranslation();
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -56,34 +57,34 @@ export function NextWorkNav() {
         <Button
           variant="tertiary"
           size="md"
-          icon={<Icon name="briefcase" ariaLabel="Back to work" />}
+          icon={<Icon name="briefcase" ariaLabel={t("projectBackToWork")} />}
           disabled={isPending}
           onClick={() => navigate("/work")}
         >
-          <span className={styles.buttonLabel}>Back to work</span>
+          <span className={styles.buttonLabel}>{t("projectBackToWork")}</span>
         </Button>
         <div className={styles.navButtons}>
           <Button
             variant="tertiary"
             size="md"
-            icon={<Icon name="arrow-left" ariaLabel="Previous" />}
+            icon={<Icon name="arrow-left" ariaLabel={t("workNavPrev")} />}
             disabled={navDisabled || currentIndex <= 0}
             onClick={() => {
               if (prevPath) navigate(prevPath);
             }}
           >
-            <span className={styles.buttonLabel}>Previous</span>
+            <span className={styles.buttonLabel}>{t("workNavPrev")}</span>
           </Button>
           <Button
             variant="tertiary"
             size="md"
-            endIcon={<Icon name="arrow-right" ariaLabel="Next" />}
+            endIcon={<Icon name="arrow-right" ariaLabel={t("workNavNext")} />}
             disabled={navDisabled || currentIndex === workPages.length - 1}
             onClick={() => {
               if (nextPath) navigate(nextPath);
             }}
           >
-            <span className={styles.buttonLabel}>Next</span>
+            <span className={styles.buttonLabel}>{t("workNavNext")}</span>
           </Button>
         </div>
       </div>

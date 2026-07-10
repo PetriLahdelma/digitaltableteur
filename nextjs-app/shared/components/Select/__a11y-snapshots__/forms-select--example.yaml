@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - text: Select an option
 - combobox "Select an option":
   - option "Option 1" [selected]

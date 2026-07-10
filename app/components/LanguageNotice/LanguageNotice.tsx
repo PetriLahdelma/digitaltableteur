@@ -1,7 +1,12 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
-import styles from "./LanguageNotice.module.css";
+import { useEffect, useId, useRef } from "react";
+import {
+  getContentLanguageNoticeMessage,
+  registerContentLanguageNotice,
+} from "@/nextjs-app/shared/lib/contentLanguageNotice";
+import { useToast } from "@/nextjs-app/shared/lib/toast";
+import { useLocalization } from "@/nextjs-app/shared/lib/translation";
 
 interface LanguageNoticeProps {
   /** The language code of the content (e.g., "en") */
@@ -16,30 +21,37 @@ interface LanguageNoticeProps {
  */
 export function LanguageNotice({
   contentLanguage,
-  className,
 }: LanguageNoticeProps) {
-  const { i18n, t } = useTranslation();
+  const id = useId();
+  const announcedKeyRef = useRef<string | null>(null);
+  const { resolvedLanguage, getResourceBundle } = useLocalization();
+  const { showToast } = useToast();
 
-  // Normalize to 2-letter code
-  const currentLang = (i18n.language?.split("-")[0] || "en").toLowerCase();
-  const contentLang = contentLanguage.toLowerCase();
-
-  // Don't show if current UI language matches content language
-  if (currentLang === contentLang) {
-    return null;
-  }
-
-  // Get the language name in the current UI language
-  const languageName = t(`languageName.${contentLang}`, {
-    defaultValue: "English",
-  });
-
-  return (
-    <p
-      className={`${styles.notice} ${className || ""}`.trim()}
-      lang={currentLang} // Notice text is in UI language
-    >
-      {t("contentLanguageNotice", { language: languageName })}
-    </p>
+  useEffect(
+    () => registerContentLanguageNotice({ id, contentLanguage }),
+    [contentLanguage, id],
   );
+
+  useEffect(() => {
+    const targetLanguage = resolvedLanguage.split("-")[0] || "en";
+    const message = getContentLanguageNoticeMessage({
+      targetLanguage,
+      getResourceBundle,
+    });
+
+    if (!message) {
+      // Language matches the content again; clear the marker so a later
+      // switch back to a mismatching language re-announces (fi -> en -> fi).
+      announcedKeyRef.current = null;
+      return;
+    }
+
+    const announcementKey = `${contentLanguage}:${targetLanguage}`;
+    if (announcedKeyRef.current === announcementKey) return;
+
+    announcedKeyRef.current = announcementKey;
+    showToast(message, { duration: 5000 });
+  }, [contentLanguage, getResourceBundle, resolvedLanguage, showToast]);
+
+  return null;
 }

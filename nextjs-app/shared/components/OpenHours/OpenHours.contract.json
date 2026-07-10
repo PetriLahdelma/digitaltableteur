@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "structure",
     "status": "beta",
-    "description": "OpenHours — production @dt component (Storybook beta).",
+    "description": "Localized opening-hours listing for contact and location surfaces; composes into LocationCard.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-open-hours",
     "radixPrimitive": null,
     "element": "div",

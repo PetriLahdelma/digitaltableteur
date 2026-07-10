@@ -1,0 +1,6 @@
+- status: Work in progress (beta)
+- status:
+  - img "info"
+  - strong: Cookie preferences updated
+  - paragraph: Analytics stays off until you opt back in.
+  - button "Review settings"

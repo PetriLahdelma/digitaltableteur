@@ -1,0 +1,11 @@
+- status: Work in progress (beta)
+- navigation "Work project navigation":
+  - button "Work Work":
+    - img "Work"
+    - text: Work
+  - button "Prev Prev":
+    - img "Prev"
+    - text: Prev
+  - button "Next Next":
+    - text: Next
+    - img "Next"

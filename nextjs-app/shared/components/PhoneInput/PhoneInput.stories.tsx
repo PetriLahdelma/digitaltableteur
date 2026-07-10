@@ -10,7 +10,7 @@ import styles from "./PhoneInput.stories.module.css";
 const meta: Meta<typeof PhoneInput> = {
   title: "Forms/PhoneInput",
   component: PhoneInput,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

@@ -8,7 +8,7 @@ import { expect, userEvent, within } from "storybook/test";
 const meta = {
   title: "Forms/TextArea",
   component: TextArea,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

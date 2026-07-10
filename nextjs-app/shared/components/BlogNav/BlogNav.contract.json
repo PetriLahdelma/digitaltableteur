@@ -3,41 +3,56 @@
     "name": "BlogNav",
     "tier": "molecule",
     "group": "navigation",
-    "status": "alpha",
-    "description": "Blog section navigation links.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-blog-nav",
+    "status": "beta",
+    "description": "Blog article sub-navigation: a back-to-articles action plus previous/next controls for stepping through the article sequence.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1029-101",
     "radixPrimitive": null,
-    "element": "div",
+    "element": "nav",
+    "props": {
+        "currentPath": {
+            "optional": true,
+            "type": "string"
+        }
+    },
     "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [],
-        "ariaRequirements": [],
+        "ariaRequirements": [
+            "Wrapped in a nav landmark labelled via aria-label (blogNavLabel)"
+        ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories; 4-mode AT snapshots captured and compare-clean. Rendered in a nav landmark labelled via blogNavLabel (en/fi/sv); labels collapse below 768px but each button keeps its Icon aria-label. Composes verified beta Button/Icon primitives; no own animation.",
+        "forcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "schemaVersion": 2,
-    "composesWith": [],
+    "composesWith": [
+        "Button",
+        "Icon"
+    ],
     "displayName": "BlogNav",
     "keywords": [
         "blog",
         "navigation",
-        "section nav",
-        "links"
+        "sub nav",
+        "article",
+        "prev next"
     ],
-    "dense": "Blog section navigation links (index, categories, feeds)",
+    "dense": "Blog article sub-navigation: back-to-articles plus prev/next stepping for article pages",
     "usage": {
-        "description": "Blog section navigation link row. Blog chrome; for site-wide nav use SiteHeader/NavLink."
+        "description": "Sub-navigation for blog articles. Renders a back-to-articles action and previous/next controls that step through the article sequence, disabling the edges (and both when the route is not an article). Blog chrome; for site-wide nav use SiteHeader/NavLink."
     }
 }

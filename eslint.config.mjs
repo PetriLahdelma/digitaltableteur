@@ -35,6 +35,7 @@ export default [
       "nextjs-app/shared/foundations/figma/phases/",
       "nextjs-app/digitaltableteur-blog/",
       "dist/",
+      "packages/*/dist/",
       "storybook-static/",
       "coverage/",
       ".vercel/",

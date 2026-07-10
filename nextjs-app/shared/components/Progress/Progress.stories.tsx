@@ -6,7 +6,7 @@ import contract from "./Progress.contract.json";
 const meta = {
   title: "Feedback/Progress",
   component: Progress,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

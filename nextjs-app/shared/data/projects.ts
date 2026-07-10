@@ -29,6 +29,8 @@ export interface Project {
   autoPlayVideo?: boolean;
   /** Primary category */
   category: Exclude<ProjectCategory, "all">;
+  /** Additional categories the project also appears under when filtering */
+  secondaryCategories?: Exclude<ProjectCategory, "all">[];
   /** Tags for filtering and display */
   tags: string[];
   /** Featured project flag */
@@ -113,6 +115,7 @@ export const projects: Project[] = [
     thumbnailVideo: "/images/portfolio/garage_junction/GJ_loop.mov",
     autoPlayVideo: true,
     category: "ux-design",
+    secondaryCategories: ["branding"],
     tags: ["Web Design", "Animation", "Branding"],
     featured: false,
     order: 8,
@@ -264,8 +267,12 @@ export const categories: CategoryOption[] = [
   { value: "tools", labelKey: "workFilterTools" },
 ];
 
+function projectCategories(project: Project): Exclude<ProjectCategory, "all">[] {
+  return [project.category, ...(project.secondaryCategories ?? [])];
+}
+
 /**
- * Filter projects by category
+ * Filter projects by category (primary or secondary)
  */
 export function filterProjects(
   projectList: Project[],
@@ -275,7 +282,7 @@ export function filterProjects(
     return [...projectList].sort(compareProjects);
   }
   return [...projectList]
-    .filter((project) => project.category === category)
+    .filter((project) => projectCategories(project).includes(category))
     .sort(compareProjects);
 }
 
@@ -296,9 +303,11 @@ export function getRelatedProjects(
   const current = getProjectBySlug(currentSlug);
   if (!current) return [];
 
+  const currentCategories = projectCategories(current);
   const sameCategory = projects.filter(
     (project) =>
-      project.slug !== currentSlug && project.category === current.category,
+      project.slug !== currentSlug &&
+      projectCategories(project).some((cat) => currentCategories.includes(cat)),
   );
 
   if (sameCategory.length >= maxItems) {
@@ -307,7 +316,8 @@ export function getRelatedProjects(
 
   const otherProjects = projects.filter(
     (project) =>
-      project.slug !== currentSlug && project.category !== current.category,
+      project.slug !== currentSlug &&
+      !projectCategories(project).some((cat) => currentCategories.includes(cat)),
   );
 
   return [...sameCategory, ...otherProjects].slice(0, maxItems);

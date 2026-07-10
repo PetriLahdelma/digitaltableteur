@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Skeleton from "@dt/Skeleton";
@@ -26,7 +26,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   className = "",
   loading = false,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   if (loading) {
     return (

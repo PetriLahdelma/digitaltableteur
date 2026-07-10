@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/06-Governance" />
+
+# Governance
+
+Every catalog component is defined by a machine-readable **contract**, and drift
+between a contract, its code, and its docs is a **build failure**, not a warning.
+This is what lets agents generate components *to spec* rather than by eyeballing.
+
+## The contract schema
+
+Each component ships `<Name>.contract.json`, validated against the versioned
+schema:
+
+- **Schema:** `scripts/design-system/contract.schema.v2.json`
+- **`$id`:** `https://raw.githubusercontent.com/PetriLahdelma/digitaltableteur/main/scripts/design-system/contract.schema.v2.json`
+- **Draft:** JSON Schema 2020-12. `additionalProperties: false` (unknown keys are
+  errors). Each contract also carries `schemaVersion` for forward migration.
+
+A contract declares tier, group, status, variants, slots, `asChild`, required
+stories, a11y metadata, declared tokens, usage docs, and (for stable) consumers.
+
+## Drift-as-build-failure gates
+
+| Gate | Enforces |
+|---|---|
+| `validate:components` | contract ↔ code ↔ story parity; a11y + doc-field completeness; status-lifecycle rules |
+| `check:contract-props` | contract props/semantic fields match the generated agent blocks |
+| `check:contract-drift` | contracts stay in sync with their `spec.md` derivation |
+| `check:consumers` | stable components' `consumers[]` match the real import graph |
+| `audit:controls` | every Storybook control is human-operable and effective (`--effects`) |
+| rhythmguard (`audit:rhythm`) | spacing/motion use `--space-*` tokens, never raw literals |
+| `audit:snapshot-debt` | stable components have 4-mode accessibility-tree snapshots |
+| `check:astryx-roadmap` | the parity roadmap's invariants (coupling ratchets, anti-goals, operational utilities) never regress |
+
+Most run in `pre-push` and CI, so a contract that diverges from its
+implementation cannot merge.
+
+## For agents
+
+The contract schema plus the generated `agent-manifest.json` /
+`docs-registry.json` (in `nextjs-app/shared/foundations/dist/`) are the
+authoritative inputs for generating or modifying components. Generate against the
+schema; the gates above verify the result.

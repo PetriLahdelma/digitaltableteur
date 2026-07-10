@@ -3,7 +3,7 @@
     "name": "TextInput",
     "tier": "atom",
     "group": "form",
-    "status": "beta",
+    "status": "stable",
     "description": "Labeled text input with validation, helper text, and size tokens.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-10",
     "radixPrimitive": null,
@@ -27,7 +27,8 @@
         "Default",
         "Playground",
         "Example",
-        "ForcedColors"
+        "ForcedColors",
+        "Clearable"
     ],
     "a11y": {
         "keyboard": [
@@ -35,12 +36,15 @@
         ],
         "ariaRequirements": [
             "label association",
-            "aria-describedby for error/helper"
+            "aria-describedby for error/helper",
+            "clear button carries a per-field accessible name and returns focus to the input"
         ],
         "reducedMotion": true,
         "reviewed": true,
         "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-        "forcedColorsVerified": true
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -58,7 +62,63 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "label": {
@@ -113,6 +173,18 @@
             "optional": true,
             "type": "boolean"
         },
+        "clearable": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onClear": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "hideLabel": {
+            "optional": true,
+            "type": "boolean"
+        },
         "onChange": {
             "optional": true,
             "type": "(value: string | number) => void"
@@ -139,7 +211,7 @@
         "phone",
         "validation"
     ],
-    "dense": "labelled single-line field: text/number/email/password/search/tel, built-in email + phone validation, own error/helperText, sm/md/lg; onValueChange(value)",
+    "dense": "labelled single-line field: text/number/email/tel/password/search, built-in email+phone validation, error/helperText, sm/md/lg; onValueChange(value); clearable ×-button (onClear); hideLabel",
     "usage": {
         "description": "TextInput is the standard single-line field: label, control, helper and error text in one component. The email and tel types add built-in validation (typo suggestions for common email domains, libphonenumber formatting for phone numbers); error overrides the helper line and wires aria-invalid.",
         "bestPractices": [
@@ -158,6 +230,14 @@
             {
                 "guidance": true,
                 "description": "Use helperText for format hints before errors happen (We never share this address)."
+            },
+            {
+                "guidance": true,
+                "description": "Use clearable for fields users iterate on (search boxes, filters, generators); the ×-button appears only while there is a value and hands focus back to the input."
+            },
+            {
+                "guidance": true,
+                "description": "Reserve hideLabel for dense compositions where surrounding design carries the affordance; the label stays in the accessibility tree, so still write a real one."
             },
             {
                 "guidance": false,

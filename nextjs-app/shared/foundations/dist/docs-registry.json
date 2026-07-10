@@ -5,15 +5,18 @@
       "group": "structure",
       "tier": 1,
       "status": "beta",
-      "description": "Expandable sections with keyboard-operable triggers.",
-      "dense": "Exclusive disclosure group: items {id,title,content}, one open at a time (click open item to close), optional defaultOpenId; trigger button wires aria-expanded/aria-controls to its region",
+      "description": "Coordinated disclosure group: single or multiple open sections, animated reveal, keyboard-operable triggers.",
+      "dense": "Disclosure group: items {id,title,content}; type single|multiple; variant contained|enclosed|divided; controlled openIds or defaultOpenId(s); animated grid-rows reveal; aria per region",
       "keywords": [
         "accordion",
         "disclosure",
         "faq",
         "expand",
         "collapse",
-        "progressive disclosure"
+        "progressive disclosure",
+        "single",
+        "multiple",
+        "controlled"
       ],
       "importLine": "import Accordion from \"@dt/Accordion\";",
       "keyProps": [
@@ -23,8 +26,28 @@
           "required": true
         },
         {
+          "name": "type",
+          "type": "single | multiple",
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "contained | divided",
+          "required": false
+        },
+        {
           "name": "defaultOpenId",
           "type": "string",
+          "required": false
+        },
+        {
+          "name": "defaultOpenIds",
+          "type": "string[]",
+          "required": false
+        },
+        {
+          "name": "openIds",
+          "type": "string[]",
           "required": false
         }
       ],
@@ -33,7 +56,39 @@
           "optional": false,
           "type": "AccordionItem[]"
         },
+        "type": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "single",
+            "multiple"
+          ]
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "contained",
+            "divided"
+          ]
+        },
         "defaultOpenId": {
+          "optional": true,
+          "type": "string"
+        },
+        "defaultOpenIds": {
+          "optional": true,
+          "type": "string[]"
+        },
+        "openIds": {
+          "optional": true,
+          "type": "string[]"
+        },
+        "onOpenChange": {
+          "optional": true,
+          "type": "(openIds: string[]) => void"
+        },
+        "className": {
           "optional": true,
           "type": "string"
         }
@@ -49,7 +104,7 @@
         "ship long, scrollable panels. If the content scrolls inside"
       ],
       "usage": {
-        "description": "Accordion is the exclusive disclosure group: pass `items` ({id, title, content}) and at most one stays open — opening another closes the previous, clicking the open one closes it. Use it for FAQs and reference content where users need one answer at a time. For a single independent \"show more\" use ExpandableSection; if most readers need all the content, use plain headings instead of hiding it.",
+        "description": "Accordion coordinates a set of disclosure sections. In the default `type=\"single\"` at most one stays open (opening another closes the previous); `type=\"multiple\"` lets any number stay open for side-by-side reading. Pass `items` ({id, title, content}); drive it uncontrolled with `defaultOpenId`/`defaultOpenIds` or controlled with `openIds` + `onOpenChange`. `variant` switches between a bordered card group (contained) and flush hairlines (divided). For a single independent \"show more\" use ExpandableSection; if most readers need all the content, use plain headings instead of hiding it.",
         "bestPractices": [
           {
             "guidance": true,
@@ -72,8 +127,12 @@
             "description": "Do not hide task-critical content in an accordion; required steps must be visible by default."
           },
           {
+            "guidance": true,
+            "description": "Use type=\"multiple\" when users compare sections side by side (feature lists, pricing tiers); keep the default type=\"single\" for FAQs and settings where one at a time is the point."
+          },
+          {
             "guidance": false,
-            "description": "Do not use it when users need to compare sections side by side — exclusive open forbids that; use headings."
+            "description": "Do not put a single short paragraph behind a section — the click costs more than it saves; show the text directly."
           }
         ],
         "anatomy": [
@@ -107,7 +166,32 @@
         {
           "story": "DefaultOpen",
           "description": "defaultOpenId lands visitors on the entry most of them came for, with the rest one keypress away.",
-          "source": "export const DefaultOpen: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"defaultOpenId lands visitors on the entry most of them came for, with the rest one keypress away.\" } },\n  },\n  render: () => (\n    <Accordion\n      defaultOpenId=\"pricing\"\n      items={[\n        { id: \"pricing\", title: \"How is the work priced?\", content: \"Fixed-scope engagements with a written definition of done.\" },\n        { id: \"timeline\", title: \"How long does an engagement take?\", content: \"Typical system audits run two to four weeks.\" },\n      ]}\n    />\n  ),\n};\n\n/** Triggers are real buttons: Tab reaches them, Enter or Space toggles, aria-expanded and aria-controls wire each trigger to its region — asserted by the play function. */"
+          "source": "export const DefaultOpen: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"defaultOpenId lands visitors on the entry most of them came for, with the rest one keypress away.\" } },\n  },\n  render: () => (\n    <Accordion\n      defaultOpenId=\"pricing\"\n      items={[\n        { id: \"pricing\", title: \"How is the work priced?\", content: \"Fixed-scope engagements with a written definition of done.\" },\n        { id: \"timeline\", title: \"How long does an engagement take?\", content: \"Typical system audits run two to four weeks.\" },\n      ]}\n    />\n  ),\n};\n\n/** type=\"multiple\" lets several sections stay open so users can compare content. */"
+        },
+        {
+          "story": "Multiple",
+          "description": "type=\\\"multiple\\\" keeps any number of sections open at once — use it when readers compare content across sections, like feature lists or pricing tiers.",
+          "source": "export const Multiple: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"type=\\\"multiple\\\" keeps any number of sections open at once — use it when readers compare content across sections, like feature lists or pricing tiers.\" } },\n  },\n  render: () => (\n    <Accordion\n      type=\"multiple\"\n      defaultOpenIds={[\"features\", \"pricing\"]}\n      items={[\n        { id: \"features\", title: \"Features\", content: \"Real-time collaboration, version history, and granular permissions.\" },\n        { id: \"pricing\", title: \"Pricing\", content: \"Free for up to 5 users. Pro starts at €12/user/month billed annually.\" },\n        { id: \"integrations\", title: \"Integrations\", content: \"Connects to the tools your team already uses.\" },\n      ]}\n    />\n  ),\n};\n\n/** Controlled: the parent owns open state via openIds + onOpenChange. */"
+        },
+        {
+          "story": "Controlled",
+          "description": "Pass openIds + onOpenChange to drive the accordion from parent state — when open sections should sync with a URL param, form, or external control.",
+          "source": "export const Controlled: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Pass openIds + onOpenChange to drive the accordion from parent state — when open sections should sync with a URL param, form, or external control.\" } },\n  },\n  render: () => {\n    const ControlledDemo = () => {\n      const [openIds, setOpenIds] = React.useState<string[]>([\"shipping\"]);\n      return (\n        <Accordion\n          type=\"multiple\"\n          openIds={openIds}\n          onOpenChange={setOpenIds}\n          items={[\n            { id: \"shipping\", title: \"Shipping\", content: \"Standard shipping takes 3–5 business days.\" },\n            { id: \"returns\", title: \"Returns\", content: \"Free returns within 30 days of delivery.\" },\n            { id: \"warranty\", title: \"Warranty\", content: \"Two-year limited warranty on all hardware.\" },\n          ]}\n        />\n      );\n    };\n    return <ControlledDemo />;\n  },\n};\n\n/** variant=\"enclosed\" keeps the outer border but drops the between-row dividers. */"
+        },
+        {
+          "story": "Enclosed",
+          "description": "variant=\\\"enclosed\\\" wraps the group in a single rounded border with no dividers between rows — a seamless card. Row separation comes from spacing and the open/closed state.",
+          "source": "export const Enclosed: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"variant=\\\"enclosed\\\" wraps the group in a single rounded border with no dividers between rows — a seamless card. Row separation comes from spacing and the open/closed state.\" } },\n  },\n  render: () => (\n    <Accordion\n      variant=\"enclosed\"\n      defaultOpenId=\"notifications\"\n      items={[\n        { id: \"general\", title: \"General settings\", content: \"Language, timezone, and display options.\" },\n        { id: \"notifications\", title: \"Notifications\", content: \"Choose which email and push notifications you want to receive.\" },\n        { id: \"privacy\", title: \"Privacy\", content: \"Control who can see your profile and activity.\" },\n      ]}\n    />\n  ),\n};\n\n/** variant=\"divided\" drops the card border for flush hairline separators. */"
+        },
+        {
+          "story": "Divided",
+          "description": "variant=\\\"divided\\\" removes the container border for flush hairline separators — lighter weight for inline disclosure in sidebars or detail panels.",
+          "source": "export const Divided: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"variant=\\\"divided\\\" removes the container border for flush hairline separators — lighter weight for inline disclosure in sidebars or detail panels.\" } },\n  },\n  render: () => (\n    <Accordion\n      variant=\"divided\"\n      items={[\n        { id: \"deploy\", title: \"Deployment details\", content: \"Last deployed April 18, 2026 at 3:42 PM. Build duration 2m 14s.\" },\n        { id: \"env\", title: \"Environment variables\", content: \"12 variables configured across 3 environments.\" },\n        { id: \"logs\", title: \"Build logs\", content: \"No warnings. All checks passed.\" },\n      ]}\n    />\n  ),\n};\n\n/** A disabled item stays visible but its trigger is inert. */"
+        },
+        {
+          "story": "Disabled",
+          "description": "Mark an item disabled to show it in the set while its trigger is inert — for sections that are not yet available.",
+          "source": "export const Disabled: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Mark an item disabled to show it in the set while its trigger is inert — for sections that are not yet available.\" } },\n  },\n  render: () => (\n    <Accordion\n      items={[\n        { id: \"available\", title: \"Available section\", content: \"This one opens normally.\" },\n        { id: \"soon\", title: \"Coming soon\", content: \"Not reachable yet.\", disabled: true },\n        { id: \"also\", title: \"Another section\", content: \"This one opens too.\" },\n      ]}\n    />\n  ),\n};\n\n/** Triggers are real buttons: Tab reaches them, Enter or Space toggles, aria-expanded and aria-controls wire each trigger to its region — asserted by the play function. */"
         },
         {
           "story": "KeyboardContract",
@@ -120,7 +204,7 @@
       "name": "AlertBanner",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Inline alert for info, warning, success, and error feedback.",
       "dense": "persistent inline status banner; tone info|success|warning|error drives icon + live-region politeness; title/description/action slots; opt-in dismissible with localized control",
       "keywords": [
@@ -160,8 +244,8 @@
           "required": false
         },
         {
-          "name": "icon",
-          "type": "string",
+          "name": "showIcon",
+          "type": "boolean",
           "required": false
         }
       ],
@@ -188,9 +272,9 @@
           "optional": true,
           "type": "React.ReactNode"
         },
-        "icon": {
+        "showIcon": {
           "optional": true,
-          "type": "string"
+          "type": "boolean"
         },
         "dismissible": {
           "optional": true,
@@ -213,7 +297,6 @@
       "composesWith": [
         "Button",
         "Icon",
-        "Title",
         "Text"
       ],
       "prefersOver": [
@@ -266,7 +349,7 @@
           {
             "name": "Title",
             "required": false,
-            "description": "Bold heading line (Title size=s) for scannable banners."
+            "description": "Bold title line rendered without document-heading semantics so inline banners do not alter the page outline."
           },
           {
             "name": "Description",
@@ -309,6 +392,11 @@
           "story": "WithAction",
           "description": "The action slot carries one follow-up under the description — a tertiary Button, not a link buried in prose.",
           "source": "export const WithAction: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The action slot carries one follow-up under the description — a tertiary Button, not a link buried in prose.\",\n      },\n    },\n  },\n  args: {\n    tone: \"info\",\n    title: \"Cookie preferences updated\",\n    description: \"Analytics stays off until you opt back in.\",\n    action: (\n      <Button variant=\"tertiary\" size=\"sm\">\n        Review settings\n      </Button>\n    ),\n  },\n};"
+        },
+        {
+          "story": "TextOnly",
+          "description": "showIcon={false} drops the tone icon for a compact, text-only banner. The icon is always the semantic tone glyph — there is no per-instance icon override, so this boolean is the only icon control.",
+          "source": "export const TextOnly: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"showIcon={false} drops the tone icon for a compact, text-only banner. The icon is always the semantic tone glyph — there is no per-instance icon override, so this boolean is the only icon control.\",\n      },\n    },\n  },\n  args: {\n    tone: \"info\",\n    title: \"Heads up\",\n    description: \"This is an informational message.\",\n    showIcon: false,\n  },\n};"
         },
         {
           "story": "Example",
@@ -415,8 +503,8 @@
       "name": "ArticleContent",
       "group": "content",
       "tier": 2,
-      "status": "alpha",
-      "description": "Article body prose wrapper with MDX styling.",
+      "status": "stable",
+      "description": "Article body prose wrapper: constrains blog article markup to a reading measure and applies the MDX typography treatment.",
       "dense": "Article body wrapper applying MDX prose styling (headings, lists, code, media) to blog content",
       "keywords": [
         "article",
@@ -488,9 +576,9 @@
       "name": "ArticleShareSection",
       "group": "content",
       "tier": 2,
-      "status": "alpha",
-      "description": "Share links section for blog articles.",
-      "dense": "Share-links section at the end of blog articles; composes SocialShare with a heading",
+      "status": "stable",
+      "description": "End-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading.",
+      "dense": "End-of-article share section: X/LinkedIn/Facebook share links plus a copy-link button under an optional heading",
       "keywords": [
         "share",
         "article",
@@ -565,7 +653,7 @@
         "promote to stable without production consumer evidence"
       ],
       "usage": {
-        "description": "End-of-article share section composing SocialShare under a heading. Blog article template slot; not for arbitrary pages."
+        "description": "End-of-article share section: X, LinkedIn and Facebook share links plus a copy-link button, under an optional heading. Blog article template slot; not for arbitrary pages."
       },
       "tokens": {
         "colors": [],
@@ -674,12 +762,12 @@
         {
           "story": "RatioGallery",
           "description": "The preset ratios: 16:9 for video, 1:1 for thumbnails, 3:2 for editorial photography. The child fills and clips.",
-          "source": "export const RatioGallery: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"The preset ratios: 16:9 for video, 1:1 for thumbnails, 3:2 for editorial photography. The child fills and clips.\" } },\n  },\n  render: () => (\n    <div style={{ display: \"grid\", gridTemplateColumns: \"repeat(3, 1fr)\", gap: \"1rem\" }}>\n      {([\"16:9\", \"1:1\", \"3:2\"] as const).map((ratio) => (\n        <AspectRatio key={ratio} ratio={ratio}>\n          <div style={{ width: \"100%\", height: \"100%\", display: \"grid\", placeItems: \"center\", border: \"1px dashed var(--color-border, #999)\" }}>\n            {ratio}\n          </div>\n        </AspectRatio>\n      ))}\n    </div>\n  ),\n};\n\n/** Media inside should fill the box: width and height 100% with object-fit cover, so any source crops to the frame instead of distorting. */"
+          "source": "export const RatioGallery: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"The preset ratios: 16:9 for video, 1:1 for thumbnails, 3:2 for editorial photography. The child fills and clips.\" } },\n  },\n  render: () => (\n    <div style={{ display: \"grid\", gridTemplateColumns: \"repeat(3, 1fr)\", gap: \"1rem\" }}>\n      {([\"16:9\", \"1:1\", \"3:2\"] as const).map((ratio) => (\n        <AspectRatio key={ratio} ratio={ratio}>\n          <div style={{ width: \"100%\", height: \"100%\", display: \"grid\", placeItems: \"center\", border: \"1px dashed var(--color-border, #999)\" }}>\n            {ratio}\n          </div>\n        </AspectRatio>\n      ))}\n    </div>\n  ),\n};\n\n/** Media fills the frame with width/height 100% and object-fit cover, so a source of any ratio crops to the frame instead of distorting. The same 1:1 source is shown letterboxed (contain) then cropped (cover) in identical 16:9 frames so the clipped top/bottom edges are visible. */"
         },
         {
           "story": "MediaFill",
-          "description": "Media inside should fill the box: width and height 100% with object-fit cover, so any source crops to the frame instead of distorting.",
-          "source": "export const MediaFill: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Media inside should fill the box: width and height 100% with object-fit cover, so any source crops to the frame instead of distorting.\" } },\n  },\n  render: () => (\n    <div style={{ maxWidth: \"20rem\" }}>\n      <AspectRatio ratio=\"16:9\">\n        <img\n          src=\"data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%23e2e8f0%27/%3E%3Ccircle cx=%27200%27 cy=%27120%27 r=%2760%27 fill=%27%2394a3b8%27/%3E%3C/svg%3E\"\n          alt=\"Placeholder illustration cropped to a 16:9 frame\"\n          style={{ width: \"100%\", height: \"100%\", objectFit: \"cover\" }}\n        />\n      </AspectRatio>\n    </div>\n  ),\n};\n\n/** Because the height comes from the ratio, the frame reserves space before media loads — no layout shift; pair with Skeleton for the placeholder. */"
+          "description": "Media fills the frame with width/height 100% and object-fit cover, so a source of any ratio crops to the frame instead of distorting. The same square (1:1) source is shown two ways in identical 16:9 frames — contain reveals the whole source (note the top/bottom bands), cover fills the frame and clips those bands away.",
+          "source": "export const MediaFill: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Media fills the frame with width/height 100% and object-fit cover, so a source of any ratio crops to the frame instead of distorting. The same square (1:1) source is shown two ways in identical 16:9 frames — contain reveals the whole source (note the top/bottom bands), cover fills the frame and clips those bands away.\" } },\n  },\n  render: () => {\n    // 1:1 source with labeled top/bottom bands, so the crop is visible when the\n    // square is fitted into a 16:9 frame. Data URI keeps it network-free and\n    // deterministic for snapshots.\n    const src =\n      \"data:image/svg+xml;utf8,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27240%27%20height=%27240%27%3E%3Crect%20width=%27240%27%20height=%27240%27%20fill=%27%23e2e8f0%27/%3E%3Crect%20width=%27240%27%20height=%2736%27%20fill=%27%2364748b%27/%3E%3Crect%20y=%27204%27%20width=%27240%27%20height=%2736%27%20fill=%27%2364748b%27/%3E%3Ccircle%20cx=%27120%27%20cy=%27120%27%20r=%2756%27%20fill=%27%2394a3b8%27/%3E%3Ctext%20x=%27120%27%20y=%2725%27%20fill=%27%23ffffff%27%20font-family=%27sans-serif%27%20font-size=%2716%27%20text-anchor=%27middle%27%3Etop%20edge%3C/text%3E%3Ctext%20x=%27120%27%20y=%27226%27%20fill=%27%23ffffff%27%20font-family=%27sans-serif%27%20font-size=%2716%27%20text-anchor=%27middle%27%3Ebottom%20edge%3C/text%3E%3C/svg%3E\";\n    const caption = {\n      margin: \"0 0 0.375rem\",\n      fontSize: \"0.75rem\",\n      color: \"var(--color-muted, #64748b)\",\n    } as const;\n    return (\n      <div style={{ display: \"flex\", flexDirection: \"column\", gap: \"1.25rem\" }}>\n        <figure style={{ margin: 0 }}>\n          <figcaption style={caption}>object-fit: contain — whole 1:1 source, letterboxed</figcaption>\n          <AspectRatio ratio=\"16:9\">\n            <div style={{ width: \"100%\", height: \"100%\", background: \"var(--color-light-bg, #f1f5f9)\" }}>\n              <img\n                src={src}\n                alt=\"Square source shown whole inside a 16:9 frame, with visible top and bottom bands\"\n                style={{ width: \"100%\", height: \"100%\", objectFit: \"contain\" }}\n              />\n            </div>\n          </AspectRatio>\n        </figure>\n        <figure style={{ margin: 0 }}>\n          <figcaption style={caption}>object-fit: cover — fills the frame, top and bottom cropped</figcaption>\n          <AspectRatio ratio=\"16:9\">\n            <img\n              src={src}\n              alt=\"Square source cropped to fill a 16:9 frame; the top and bottom bands are clipped\"\n              style={{ width: \"100%\", height: \"100%\", objectFit: \"cover\" }}\n            />\n          </AspectRatio>\n        </figure>\n      </div>\n    );\n  },\n};\n\n/** Because the height comes from the ratio, the frame reserves space before media loads — no layout shift; pair with Skeleton for the placeholder. */"
         },
         {
           "story": "ReservedSpace",
@@ -693,7 +781,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "Author — production @dt component (Storybook beta).",
+      "description": "Compact byline that attributes a blog post to its author with name and avatar; the fuller end-of-article treatment is AuthorBio.",
       "dense": "Article byline: author name/avatar attribution line for blog posts",
       "keywords": [
         "author",
@@ -1386,8 +1474,8 @@
       "name": "BlogCategoryFilter",
       "group": "navigation",
       "tier": 2,
-      "status": "alpha",
-      "description": "Blog category filter control.",
+      "status": "stable",
+      "description": "Single-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.",
       "dense": "Blog-specific category filter control; wraps CategoryFilter conventions for the blog archive",
       "keywords": [
         "blog",
@@ -1497,8 +1585,8 @@
       "name": "BlogGrid",
       "group": "content",
       "tier": 2,
-      "status": "alpha",
-      "description": "Blog post card grid for index pages.",
+      "status": "stable",
+      "description": "Responsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.",
       "dense": "Blog index grid laying out ArticleCards responsively",
       "keywords": [
         "blog",
@@ -1595,9 +1683,9 @@
       "name": "BlogMediaImage",
       "group": "media",
       "tier": 2,
-      "status": "alpha",
-      "description": "Blog-optimized responsive image with caption.",
-      "dense": "Blog-optimized responsive image with optional caption; handles sizing presets for article layouts",
+      "status": "stable",
+      "description": "Blog-optimized responsive image: renders raster sources through next/image and SVG sources as a plain img, with fill, cover/contain fit and a fluid full-bleed mode.",
+      "dense": "Blog-optimized responsive image; raster via next/image, SVG via plain img, with fill/cover/contain/fluid modes",
       "keywords": [
         "blog",
         "image",
@@ -1701,7 +1789,7 @@
         "promote to stable without production consumer evidence"
       ],
       "usage": {
-        "description": "Responsive article image with optional caption, sized for the blog's prose measure. Use inside article bodies instead of raw img."
+        "description": "Responsive article image sized for the blog's prose measure. Renders raster sources through next/image and SVG sources as a plain img. Use inside article bodies instead of a raw img."
       },
       "tokens": {
         "colors": [],
@@ -1713,23 +1801,38 @@
       "name": "BlogNav",
       "group": "navigation",
       "tier": 2,
-      "status": "alpha",
-      "description": "Blog section navigation links.",
-      "dense": "Blog section navigation links (index, categories, feeds)",
+      "status": "beta",
+      "description": "Blog article sub-navigation: a back-to-articles action plus previous/next controls for stepping through the article sequence.",
+      "dense": "Blog article sub-navigation: back-to-articles plus prev/next stepping for article pages",
       "keywords": [
         "blog",
         "navigation",
-        "section nav",
-        "links"
+        "sub nav",
+        "article",
+        "prev next"
       ],
       "importLine": "import BlogNav from \"@dt/BlogNav\";",
-      "keyProps": [],
-      "props": {},
-      "composesWith": [],
+      "keyProps": [
+        {
+          "name": "currentPath",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "currentPath": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "composesWith": [
+        "Button",
+        "Icon"
+      ],
       "prefersOver": [],
       "forbiddenUse": [],
       "usage": {
-        "description": "Blog section navigation link row. Blog chrome; for site-wide nav use SiteHeader/NavLink."
+        "description": "Sub-navigation for blog articles. Renders a back-to-articles action and previous/next controls that step through the article sequence, disabling the edges (and both when the route is not an article). Blog chrome; for site-wide nav use SiteHeader/NavLink."
       },
       "tokens": {
         "colors": [],
@@ -1741,7 +1844,7 @@
       "name": "Breadcrumb",
       "group": "navigation",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Navigation trail with current page indication.",
       "dense": "Location trail: nav[aria-label=Breadcrumb] > ol; items {label, href?} in root->current order; last (or href-less) item renders as plain current text, earlier ones as Link sm; '/' separators",
       "keywords": [
@@ -2238,7 +2341,7 @@
       "name": "ButtonGroup",
       "group": "actions",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Groups related Buttons into one attached (segmented) or spaced row.",
       "dense": "role=group row of Buttons/IconButtons; attached mode fuses seams (segmented look), attached=false spaces on the token gap",
       "keywords": [
@@ -2340,7 +2443,7 @@
         {
           "story": "Default",
           "description": "Attached segments share seams; use one variant and size across the group.",
-          "source": "export const Default: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Attached segments share seams; use one variant and size across the group.\" },\n    },\n  },\n};"
+          "source": "export const Default: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Attached segments share seams; use one variant and size across the group.\" },\n    },\n  },\n};"
         },
         {
           "story": "Spaced",
@@ -2641,7 +2744,7 @@
       "name": "CategoryFilter",
       "group": "navigation",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Filter pill row for list pages (blog archive, work index). Multiple visual treatments (pills, underline, minimal) for different surface densities.",
       "dense": "Filter pill row for list pages (blog archive, work index) with selected state and multiple visual treatments",
       "keywords": [
@@ -3103,7 +3206,7 @@
       "name": "Checkbox",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Accessible checkbox with label, indeterminate, and size variants.",
       "dense": "native checkbox with label, sm/md/lg, indeterminate, own error + helperText; onCheckedChange(boolean); controlled or uncontrolled",
       "keywords": [
@@ -3279,7 +3382,7 @@
       "name": "CheckboxGroup",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Grouped checkboxes with optional master checkbox.",
       "dense": "checkbox set with fieldset legend and optional select-all master (indeterminate while mixed); onChange reports the selected value array",
       "keywords": [
@@ -3640,7 +3743,7 @@
       "group": "structure",
       "tier": 1,
       "status": "beta",
-      "description": "CodeSnippet — production @dt component (Storybook beta).",
+      "description": "Syntax-highlighted code block with a language picker, optional line numbers, and a copy button.",
       "dense": "Prism-highlighted code block: language set (ts/js/html/python/go/rust/json/bash/...), showLineNumbers, allowCopy button w/ onCopy hook, maxLines clamp, variant surface; aria-label for AT context",
       "keywords": [
         "code",
@@ -3802,7 +3905,7 @@
       "name": "Combobox",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Single-select combobox with portaled dropdown, shared with MultiCombobox.",
       "dense": "controlled single-select combobox; button trigger + portaled listbox, full APG keyboard model, own label/error/helperText; options support per-option disabled; onValueChange(value)",
       "keywords": [
@@ -4019,12 +4122,49 @@
         }
       ]
     },
+    "CommandPalette": {
+      "name": "CommandPalette",
+      "group": "navigation",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Modal, keyboard-driven command launcher: a search input filters a listbox of commands (matched on label + keywords); Arrow keys move the active option, Enter runs it, Escape closes. Focus is trapped and background scroll locked while open.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { CommandPalette } from \"@dt/CommandPalette\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-black",
+          "--color-border",
+          "--color-surface",
+          "--color-text",
+          "--color-muted"
+        ],
+        "spacing": [
+          "--space-internal-2",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24"
+        ],
+        "typography": [
+          "--font-body",
+          "--font-size-text-s",
+          "--font-size-text-m"
+        ]
+      },
+      "examples": []
+    },
     "ComplianceCard": {
       "name": "ComplianceCard",
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "ComplianceCard — production @dt component (Storybook beta).",
+      "description": "Internal audit-checklist card with pass/fail rows and a last-reviewed date; a Storybook and docs tooling surface, not product UI.",
       "dense": "Internal audit checklist card (rule rows w/ pass/fail status + last-reviewed date); Storybook/docs tooling, not product UI",
       "keywords": [
         "compliance",
@@ -4148,7 +4288,7 @@
       "name": "ContactFormEditorial",
       "group": "form",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Editorial contact form used on the live contact page.",
       "dense": "Editorial-styled contact form used on the live contact page (uppercase labels, tabbed Personal/Company message types)",
       "keywords": [
@@ -4561,7 +4701,7 @@
       "group": "marketing",
       "tier": 2,
       "status": "beta",
-      "description": "Designerman — production @dt component (Storybook beta).",
+      "description": "Decorative sprite-sheet mascot animation that adds site personality; not for use inside task flows.",
       "dense": "Sprite-sheet mascot animation (Designerman); decorative site personality element",
       "keywords": [
         "sprite",
@@ -4878,7 +5018,7 @@
       "group": "display",
       "tier": 2,
       "status": "beta",
-      "description": "DonnyAvatar — production @dt component (Storybook beta).",
+      "description": "The assistant's animated avatar with thinking, speaking, and idle mood states, used inside ChatWidget and Donny surfaces.",
       "dense": "Donny assistant avatar with mood/action states (distinct eye expressions) used by the chat widget",
       "keywords": [
         "donny",
@@ -5040,7 +5180,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "EmailSignatureGenerator — production @dt component (Storybook beta).",
+      "description": "Interactive tool that turns form inputs into a copyable, email-client-safe HTML signature.",
       "dense": "Interactive email-signature generator: form inputs to a copyable table-based HTML signature",
       "keywords": [
         "email signature",
@@ -5109,7 +5249,7 @@
       "name": "EmptyState",
       "group": "display",
       "tier": 2,
-      "status": "alpha",
+      "status": "stable",
       "description": "Placeholder block for empty lists, zero search results, and first-run screens.",
       "dense": "centered icon + heading + description + action slot for empty lists/search/first-run; sm/md/lg step padding and type together",
       "keywords": [
@@ -5268,7 +5408,7 @@
         {
           "story": "Default",
           "description": "Search empty state: icon, headline, and a way forward in the description.",
-          "source": "export const Default: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Search empty state: icon, headline, and a way forward in the description.\" },\n    },\n  },\n};"
+          "source": "export const Default: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: { story: \"Search empty state: icon, headline, and a way forward in the description.\" },\n    },\n  },\n};"
         },
         {
           "story": "WithAction",
@@ -5555,7 +5695,7 @@
       "name": "FileUpload",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "File picker with size validation and clear control.",
       "dense": "single-file picker: readonly summary + Browse/Clear over a hidden input; accept filter, maxSizeInBytes rejection (localized), default/editorial looks; onFileChange(File | null)",
       "keywords": [
@@ -5776,6 +5916,45 @@
         }
       ]
     },
+    "FilterChip": {
+      "name": "FilterChip",
+      "group": "controls",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
+      "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
+      "keywords": [
+        "filter",
+        "chip",
+        "toggle",
+        "category",
+        "tag",
+        "pressed"
+      ],
+      "importLine": "import { FilterChip } from \"@dt/FilterChip\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-muted",
+          "--color-text",
+          "--color-border",
+          "--focus-ring-color"
+        ],
+        "spacing": [
+          "--space-internal-6",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24"
+        ]
+      },
+      "examples": []
+    },
     "FlexBox": {
       "name": "FlexBox",
       "group": "layout",
@@ -5965,7 +6144,7 @@
       "name": "FormField",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Fieldset/legend wrapper for a group of controls (radio sets, checkbox clusters, composite fields), with a group description and a group-level error. Individual controls own their own label, error, and helper text.",
       "dense": "fieldset/legend wrapper for a GROUP of controls with groupDescription + group-level error; single controls own their own label/error/helperText chrome",
       "keywords": [
@@ -6141,7 +6320,7 @@
       "name": "FormFieldEditorial",
       "group": "form",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Uppercase-label form field for editorial contact flows.",
       "dense": "Uppercase-label field wrapper for editorial contact flows; pairs with ContactFormEditorial",
       "keywords": [
@@ -6644,7 +6823,7 @@
       "name": "HelperText",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Semantic helper or validation copy below form controls.",
       "dense": "semantic helper copy under a form control; neutral or error/warning/success/info with auto icon; error becomes role=alert; id feeds aria-describedby",
       "keywords": [
@@ -7190,7 +7369,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "ImagePlaceholder — production @dt component (Storybook beta).",
+      "description": "Dimension-labelled placeholder for imagery in layouts, demos, and drafts; swap for real media before shipping.",
       "dense": "Fixed-dimension placeholder block for missing/mock imagery in layouts and demos",
       "keywords": [
         "placeholder",
@@ -7779,7 +7958,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "LinkedInQuoteCard — production @dt component (Storybook beta).",
+      "description": "Quote card styled like a LinkedIn post for embedding social content in articles without an external embed.",
       "dense": "LinkedIn-post-styled quote card for embedding social posts as styled quotes in content",
       "keywords": [
         "linkedin",
@@ -8279,7 +8458,7 @@
       "group": "interaction",
       "tier": 2,
       "status": "beta",
-      "description": "MCPActionButton — production @dt component (Storybook beta).",
+      "description": "Button that invokes an MCP tool from chat and docs surfaces and reflects its pending, success, and error state.",
       "dense": "Button that invokes an MCP tool from chat/docs surfaces and reflects the invocation state",
       "keywords": [
         "mcp",
@@ -8351,7 +8530,7 @@
       "group": "structure",
       "tier": 1,
       "status": "beta",
-      "description": "MacWindowFrame — production @dt component (Storybook beta).",
+      "description": "Decorative macOS-style window chrome that wraps showcase content such as code demos, screenshots, and portfolio pieces.",
       "dense": "Decorative macOS window chrome for showcase content: i18n titleKey, optional action button (actionLabelKey + onAction), density comfortable|compact. Presentation only — not a real window/dialog",
       "keywords": [
         "window frame",
@@ -8483,7 +8662,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "MarkdownMessage — production @dt component (Storybook beta).",
+      "description": "Markdown renderer that maps elements onto design-system components so chat replies and long-form content share one typographic path.",
       "dense": "Renders markdown through DS components (Title/Text/Link/CodeSnippet) — chat replies + long-form content share one styling path",
       "keywords": [
         "markdown",
@@ -8579,7 +8758,7 @@
       "name": "Menu",
       "group": "overlay",
       "tier": 2,
-      "status": "alpha",
+      "status": "stable",
       "description": "Radix dropdown-menu primitive set (Menu, Trigger, Content, Item, Sub) shared by Avatar and SplitButton.",
       "dense": "Radix dropdown-menu set: Menu > MenuTrigger asChild > MenuContent (side/align) with MenuItem (icon/trailing/disabled/onSelect/href), MenuSeparator, MenuSub; Radix owns focus, arrows, typeahead, Escape",
       "keywords": [
@@ -8768,7 +8947,7 @@
         {
           "story": "Example",
           "description": "The a11y contract, asserted by the play function in a real browser: the trigger exposes aria-haspopup, keyboard opens the menu, ArrowDown moves the roving focus, Enter selects and closes, and focus returns to the trigger.",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The a11y contract, asserted by the play function in a real browser: the trigger exposes aria-haspopup, keyboard opens the menu, ArrowDown moves the roving focus, Enter selects and closes, and focus returns to the trigger.\",\n      },\n    },\n  },\n  render: () => {\n    return (\n      <Menu>\n        <MenuTrigger asChild>\n          <Button variant=\"secondary\">Open menu</Button>\n        </MenuTrigger>\n        <MenuContent>\n          <MenuItem onSelect={() => {}}>First</MenuItem>\n          <MenuItem onSelect={() => {}}>Second</MenuItem>\n          <MenuItem onSelect={() => {}}>Third</MenuItem>\n        </MenuContent>\n      </Menu>\n    );\n  },\n  play: async ({ canvasElement }) => {\n    const trigger = canvasElement.querySelector(\n      \"button\",\n    ) as HTMLButtonElement;\n    expect(trigger).toHaveAttribute(\"aria-haspopup\", \"menu\");\n    expect(trigger).toHaveAttribute(\"aria-expanded\", \"false\");\n\n    // Keyboard opens the menu — no pointer involved.\n    trigger.focus();\n    await userEvent.keyboard(\"{Enter}\");\n    await waitFor(() =>\n      expect(screen.getByRole(\"menu\")).toBeInTheDocument(),\n    );\n    expect(trigger).toHaveAttribute(\"aria-expanded\", \"true\");\n\n    const items = screen.getAllByRole(\"menuitem\");\n    expect(items).toHaveLength(3);\n\n    // Roving focus lands on an item as we arrow through the menu.\n    await userEvent.keyboard(\"{ArrowDown}\");\n    await waitFor(() =>\n      expect(items.some((item) => item.hasAttribute(\"data-highlighted\"))).toBe(\n        true,\n      ),\n    );\n\n    // Enter selects and closes, returning focus to the trigger.\n    await userEvent.keyboard(\"{Enter}\");\n    await waitFor(() =>\n      expect(screen.queryByRole(\"menu\")).not.toBeInTheDocument(),\n    );\n    expect(trigger).toHaveFocus();\n  },\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The a11y contract, asserted by the play function in a real browser: the trigger exposes aria-haspopup, keyboard opens the menu, ArrowDown moves the roving focus, Enter selects and closes, and focus returns to the trigger.\",\n      },\n    },\n  },\n  render: () => {\n    return (\n      <Menu>\n        <MenuTrigger asChild>\n          <Button variant=\"secondary\">Open menu</Button>\n        </MenuTrigger>\n        <MenuContent>\n          <MenuItem onSelect={() => {}}>First</MenuItem>\n          <MenuItem onSelect={() => {}}>Second</MenuItem>\n          <MenuItem onSelect={() => {}}>Third</MenuItem>\n        </MenuContent>\n      </Menu>\n    );\n  },\n  play: async ({ canvasElement }) => {\n    const trigger = canvasElement.querySelector(\n      \"button\",\n    ) as HTMLButtonElement;\n    expect(trigger).toHaveAttribute(\"aria-haspopup\", \"menu\");\n    expect(trigger).toHaveAttribute(\"aria-expanded\", \"false\");\n\n    // Keyboard opens the menu — no pointer involved.\n    trigger.focus();\n    await userEvent.keyboard(\"{Enter}\");\n    await waitFor(() =>\n      expect(screen.getByRole(\"menu\")).toBeInTheDocument(),\n    );\n    expect(trigger).toHaveAttribute(\"aria-expanded\", \"true\");\n\n    const items = screen.getAllByRole(\"menuitem\");\n    expect(items).toHaveLength(3);\n\n    // Roving focus lands on an item as we arrow through the menu.\n    await userEvent.keyboard(\"{ArrowDown}\");\n    await waitFor(() =>\n      expect(items.some((item) => item.hasAttribute(\"data-highlighted\"))).toBe(\n        true,\n      ),\n    );\n\n    // Enter selects and closes, returning focus to the trigger.\n    await userEvent.keyboard(\"{Enter}\");\n    await waitFor(() =>\n      expect(screen.queryByRole(\"menu\")).not.toBeInTheDocument(),\n    );\n    expect(trigger).toHaveFocus();\n  },\n};"
         }
       ]
     },
@@ -9038,7 +9217,7 @@
       "name": "MultiCombobox",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Multi-select combobox with inline chips, type-to-filter dropdown, label, error, and helper text.",
       "dense": "controlled multi-select combobox; selections render as removable Badge chips in the field, type-to-filter input, portaled listbox, Backspace removes the last chip; onValueChange(string[])",
       "keywords": [
@@ -9394,7 +9573,7 @@
       "group": "navigation",
       "tier": 2,
       "status": "beta",
-      "description": "NavMenuList — production @dt component (Storybook beta).",
+      "description": "Navigation list for drawer and mobile menus that renders link items and marks the active one from the current route.",
       "dense": "Reusable nav link list for mobile/drawer menus; derives active state from the current location",
       "keywords": [
         "navigation",
@@ -9577,7 +9756,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "OpenHours — production @dt component (Storybook beta).",
+      "description": "Localized opening-hours listing for contact and location surfaces; composes into LocationCard.",
       "dense": "Opening-hours table with localized day/time rows; used on contact/location surfaces",
       "keywords": [
         "hours",
@@ -9780,7 +9959,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "PersonCard — production @dt component (Storybook beta).",
+      "description": "Profile card for a person with avatar, name, role, and links, plus a skeleton loading state for rosters.",
       "dense": "Person/team profile card (avatar, name, role, links) with built-in skeleton loading state",
       "keywords": [
         "person",
@@ -9959,7 +10138,7 @@
       "name": "PhoneInput",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "International phone field: country selector + formatted number input with field chrome.",
       "dense": "international phone field wrapping react-phone-number-input; flag + country select + formatted input, own label/error/helperText, defaultCountry FI, emits E.164 via onChange(value)",
       "keywords": [
@@ -10393,7 +10572,7 @@
       "name": "Progress",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Linear progress indicator with determinate and indeterminate modes.",
       "dense": "linear progressbar; determinate value/max or indeterminate sweep; sm/md/lg track, semantic state fill; aria-valuenow dropped when indeterminate",
       "keywords": [
@@ -10560,8 +10739,8 @@
       "name": "ProjectCard",
       "group": "content",
       "tier": 2,
-      "status": "alpha",
-      "description": "Portfolio project card for work grid.",
+      "status": "stable",
+      "description": "Basic portfolio project card for the work grid: a clickable thumbnail with title, optional category eyebrow and up to three tags.",
       "dense": "Basic portfolio project card for the work grid (image, title, tags)",
       "keywords": [
         "portfolio",
@@ -10665,8 +10844,8 @@
       "name": "ProjectGallery",
       "group": "media",
       "tier": 2,
-      "status": "alpha",
-      "description": "Case study image gallery.",
+      "status": "stable",
+      "description": "Responsive case-study image gallery: a labelled grid of figures where each thumbnail opens a shared lightbox.",
       "dense": "Case-study image gallery arranging project shots within article layouts",
       "keywords": [
         "case study",
@@ -10766,14 +10945,15 @@
       "name": "ProjectNav",
       "group": "navigation",
       "tier": 2,
-      "status": "alpha",
-      "description": "Prev/next navigation for case studies.",
-      "dense": "Prev/next case-study navigation footer for work detail pages",
+      "status": "stable",
+      "description": "Previous/next navigation between case studies, with a back-to-work action, for the foot of work detail pages.",
+      "dense": "Prev/next case-study navigation with back-to-work action for work detail pages",
       "keywords": [
         "case study",
         "navigation",
         "prev next",
-        "work"
+        "work",
+        "project"
       ],
       "importLine": "import { ProjectNav } from \"@dt/ProjectNav\";",
       "keyProps": [
@@ -10799,17 +10979,15 @@
         }
       },
       "composesWith": [
-        "ProjectGallery",
-        "Container",
-        "Section"
+        "Container"
       ],
       "prefersOver": [],
       "forbiddenUse": [
         "invent parallel primitives inside this folder",
-        "promote to stable without production consumer evidence"
+        "use for site-wide navigation (that is SiteHeader)"
       ],
       "usage": {
-        "description": "Previous/next navigation between case studies at the foot of work detail pages."
+        "description": "Previous/next navigation between case studies at the foot of work detail pages, plus a back-to-work action. Targets are derived from the project ordering; the control at each sequence edge is disabled."
       },
       "tokens": {
         "colors": [],
@@ -11215,7 +11393,7 @@
       "tier": 1,
       "status": "stable",
       "description": "Semantic section wrapper with spacing and background tokens.",
-      "dense": "Page band: spacing none|sm|md (default)|lg|xl + hero/follow pair (hero = roomy top tight bottom, follow = no top), background default|muted|accent|inverse; id/donnyTarget anchors",
+      "dense": "Page band: spacing none|sm|md (default)|lg|xl + hero/follow pair (hero = roomy top tight bottom, follow = no top), background default|muted|accent|inverse; id/spotlightTarget anchors",
       "keywords": [
         "section",
         "page band",
@@ -11252,7 +11430,7 @@
           "required": false
         },
         {
-          "name": "donnyTarget",
+          "name": "spotlightTarget",
           "type": "string",
           "required": false
         }
@@ -11293,7 +11471,7 @@
           "optional": true,
           "type": "string"
         },
-        "donnyTarget": {
+        "spotlightTarget": {
           "optional": true,
           "type": "string"
         }
@@ -11325,7 +11503,7 @@
           },
           {
             "guidance": true,
-            "description": "Give anchor/deep-link targets an id (and donnyTarget only for whitelisted spotlight stops)."
+            "description": "Give anchor/deep-link targets an id, and use spotlightTarget only when the host app needs stable guided-navigation selectors."
           },
           {
             "guidance": false,
@@ -11363,8 +11541,8 @@
       "name": "SecureCVDownload",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
-      "description": "SecureCVDownload — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Gated CV download whose trigger opens a verification modal before the file is served.",
       "dense": "Gated CV download: trigger button opens a verification modal before serving the file",
       "keywords": [
         "cv",
@@ -11430,11 +11608,49 @@
       },
       "examples": []
     },
+    "SegmentedControl": {
+      "name": "SegmentedControl",
+      "group": "form",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Single-select segmented control: a compact row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { SegmentedControl } from \"@dt/SegmentedControl\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-muted",
+          "--color-muted-light",
+          "--color-text",
+          "--color-surface",
+          "--focus-ring-color"
+        ],
+        "spacing": [
+          "--space-internal-2",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24"
+        ],
+        "typography": [
+          "--font-body",
+          "--font-size-text-xs",
+          "--font-size-text-s",
+          "--font-size-text-m"
+        ]
+      },
+      "examples": []
+    },
     "Select": {
       "name": "Select",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Native select with label, options, error state, and size tokens.",
       "dense": "native select with label, options array or option children, own error + helperText, sm/md/lg; onValueChange(value)",
       "keywords": [
@@ -11598,12 +11814,44 @@
         }
       ]
     },
+    "SelectableCard": {
+      "name": "SelectableCard",
+      "group": "form",
+      "tier": 2,
+      "status": "alpha",
+      "description": "A Card that is one selectable option; grouped into single (radio) or multiple (checkbox) sets via SelectableCardGroup.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { SelectableCard } from \"@dt/SelectableCard\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-primary",
+          "--color-focus-ring",
+          "--color-border",
+          "--color-border-light",
+          "--color-surface"
+        ],
+        "spacing": [
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24"
+        ]
+      },
+      "examples": []
+    },
     "SentrySummaryCard": {
       "name": "SentrySummaryCard",
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "SentrySummaryCard — production @dt component (Storybook beta).",
+      "description": "Internal status card summarizing Sentry issue counts and trends; an ops dashboard surface, not marketing UI.",
       "dense": "Sentry issue-summary card (counts/trends) for internal status surfaces",
       "keywords": [
         "sentry",
@@ -11749,7 +11997,7 @@
       "group": "marketing",
       "tier": 2,
       "status": "beta",
-      "description": "ServicesGrid — production @dt component (Storybook beta).",
+      "description": "Responsive grid that composes ServiceCards for homepage and services sections; it owns layout while the cards own content.",
       "dense": "Responsive grid of ServiceCards for homepage/services sections",
       "keywords": [
         "services",
@@ -11794,7 +12042,7 @@
       "name": "SiteTree",
       "group": "navigation",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Hierarchical sitemap with collapsible folder branches and page leaves.",
       "dense": "Hierarchical sitemap tree with collapsible folder branches and page leaves; sitemap page organism",
       "keywords": [
@@ -11863,7 +12111,7 @@
       "name": "Skeleton",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Loading placeholder that mirrors the layout of incoming content.",
       "dense": "layout-mirroring loading placeholder; variant text|circle|rect|avatar|card, text takes lines, free width/height; role=status, shimmer respects reduced motion",
       "keywords": [
@@ -12206,6 +12454,43 @@
         }
       ]
     },
+    "SocialIconLink": {
+      "name": "SocialIconLink",
+      "group": "navigation",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Icon-only social or profile link with enforced accessible name and external-safety (target=_blank + rel) by default.",
+      "dense": "Icon-only anchor: required label, external-safe, token hover/focus, sm/md/lg hit targets.",
+      "keywords": [
+        "social",
+        "icon",
+        "link",
+        "external",
+        "profile",
+        "share"
+      ],
+      "importLine": "import { SocialIconLink } from \"@dt/SocialIconLink\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-muted",
+          "--color-text",
+          "--focus-ring-color",
+          "--color-border"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-8",
+          "--space-internal-12"
+        ]
+      },
+      "examples": []
+    },
     "SocialShare": {
       "name": "SocialShare",
       "group": "structure",
@@ -12426,7 +12711,7 @@
       "name": "Spinner",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Indeterminate loading spinner for async UI.",
       "dense": "bare indeterminate ring (role=status, aria-label); sm/md/lg; for sub-second unknown waits — Progress for known/long work, Skeleton for layouts",
       "keywords": [
@@ -12547,7 +12832,7 @@
       "name": "SplitButton",
       "group": "interaction",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Primary action button paired with a dropdown toggle for related secondary actions, with collision-aware menu placement and optional nested submenus.",
       "dense": "primary action + menu toggle for related actions; Button-matched variant/size/surface, collision-aware menu, nested submenus, roving-tabindex keyboard model",
       "keywords": [
@@ -13092,7 +13377,7 @@
       "name": "StatusDot",
       "group": "feedback",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Tiny semantic status indicator: colored dot with visible or sr-only label.",
       "dense": "colored semantic dot + label (visible children or sr-only label); tone x sm/md/lg, optional pulse for live states",
       "keywords": [
@@ -13456,9 +13741,9 @@
       "name": "Tabs",
       "group": "navigation",
       "tier": 1,
-      "status": "beta",
-      "description": "Tablist navigation with keyboard support and variant styles.",
-      "dense": "Tablist-only tabs (parent renders panels via getTabPanelProps); variant default|pills|underline, size sm|md|lg; controlled activeTab/onTabChange or defaultActiveTab; roving arrow-key focus",
+      "status": "stable",
+      "description": "Tablist navigation with keyboard support, a sliding selection indicator, and per-item icon/count.",
+      "dense": "Tablist-only tabs (panels via getTabPanelProps); variant default|pills|underline + sliding indicator; per-item icon+count; size sm|md|lg; controlled/uncontrolled; roving arrow-key focus",
       "keywords": [
         "tabs",
         "tablist",
@@ -13466,7 +13751,10 @@
         "segmented",
         "pills",
         "underline",
-        "keyboard navigation"
+        "keyboard navigation",
+        "icon",
+        "count",
+        "sliding indicator"
       ],
       "importLine": "import Tabs from \"@dt/Tabs\";",
       "keyProps": [
@@ -13531,6 +13819,10 @@
           "optional": true,
           "type": "string"
         },
+        "ariaLabel": {
+          "optional": true,
+          "type": "string"
+        },
         "variant": {
           "optional": true,
           "type": "union",
@@ -13588,7 +13880,12 @@
           {
             "name": "Tab",
             "required": true,
-            "description": "role=tab button with aria-selected and aria-controls pointing at its panel id."
+            "description": "role=tab button with aria-selected and aria-controls pointing at its panel id; may carry an optional leading icon and trailing count pill."
+          },
+          {
+            "name": "Indicator",
+            "required": true,
+            "description": "Single aria-hidden element per tablist that slides to the selected tab (2px rail bar for underline, raised thumb for pills, filled segment for default)."
           },
           {
             "name": "Tabpanel",
@@ -13604,18 +13901,23 @@
       "examples": [
         {
           "story": "Pills",
-          "description": "pills gives each tab a filled chip treatment — the strongest visual variant, best for top-of-card view switches.",
-          "source": "export const Pills = Template.bind({});\nPills.args = {\n  tabs: [\n    { key: \"tab1\", label: \"Overview\" },\n    { key: \"tab2\", label: \"Details\" },\n    { key: \"tab3\", label: \"Settings\" },\n  ],\n  variant: \"pills\",\n};\nPills.tags = [\"example\"];\nPills.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"pills gives each tab a filled chip treatment — the strongest visual variant, best for top-of-card view switches.\",\n    },\n  },\n};\nPills.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n  await userEvent.click(tabs[1]);\n  await userEvent.click(tabs[2]);\n};"
+          "description": "pills is a soft segmented group: a raised thumb slides behind the selected tab on a tinted track. Best for top-of-card view switches.",
+          "source": "export const Pills = Template.bind({});\nPills.args = {\n  tabs: [\n    { key: \"tab1\", label: \"Overview\" },\n    { key: \"tab2\", label: \"Details\" },\n    { key: \"tab3\", label: \"Settings\" },\n  ],\n  variant: \"pills\",\n};\nPills.tags = [\"example\"];\nPills.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"pills is a soft segmented group: a raised thumb slides behind the selected tab on a tinted track. Best for top-of-card view switches.\",\n    },\n  },\n};\nPills.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n  await userEvent.click(tabs[1]);\n  await userEvent.click(tabs[2]);\n};"
         },
         {
           "story": "Underline",
-          "description": "underline is the quietest variant: a single accent rule under the active tab. Suits dense pages where pills would shout.",
-          "source": "export const Underline = Template.bind({});\nUnderline.args = {\n  tabs: [\n    { key: \"tab1\", label: \"Home\" },\n    { key: \"tab2\", label: \"Profile\" },\n    { key: \"tab3\", label: \"Messages\" },\n  ],\n  variant: \"underline\",\n};\nUnderline.tags = [\"example\"];\nUnderline.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"underline is the quietest variant: a single accent rule under the active tab. Suits dense pages where pills would shout.\",\n    },\n  },\n};\nUnderline.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n  await userEvent.click(tabs[2]);\n};"
+          "description": "underline is the quietest variant: a 2px indicator slides along the bottom rail as selection moves. Suits dense pages where pills would shout.",
+          "source": "export const Underline = Template.bind({});\nUnderline.args = {\n  tabs: [\n    { key: \"tab1\", label: \"Home\" },\n    { key: \"tab2\", label: \"Profile\" },\n    { key: \"tab3\", label: \"Messages\" },\n  ],\n  variant: \"underline\",\n};\nUnderline.tags = [\"example\"];\nUnderline.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"underline is the quietest variant: a 2px indicator slides along the bottom rail as selection moves. Suits dense pages where pills would shout.\",\n    },\n  },\n};\nUnderline.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n  await userEvent.click(tabs[2]);\n};"
         },
         {
           "story": "WithDisabled",
           "description": "Disable a tab with disabled on its item instead of removing it: the set stays stable, the tab is skipped by the roving arrow-key focus, and clicks are inert.",
           "source": "export const WithDisabled = Template.bind({});\nWithDisabled.args = {\n  tabs: [\n    { key: \"tab1\", label: \"Active\" },\n    { key: \"tab2\", label: \"Disabled\", disabled: true },\n    { key: \"tab3\", label: \"Active\" },\n  ],\n};\nWithDisabled.tags = [\"example\"];\nWithDisabled.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"Disable a tab with disabled on its item instead of removing it: the set stays stable, the tab is skipped by the roving arrow-key focus, and clicks are inert.\",\n    },\n  },\n};\nWithDisabled.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n\n  // Try clicking disabled tab (should not activate)\n  await userEvent.click(tabs[1]);\n\n  // Click active tab\n  await userEvent.click(tabs[2]);\n  await waitFor(() => expect(tabs[2]).toHaveAttribute(\"aria-selected\", \"true\"));\n};"
+        },
+        {
+          "story": "IconsAndCount",
+          "description": "Each tab item takes an optional leading icon (Phosphor name or node) and a trailing count pill. The icon is decorative; the count joins the tab's accessible name (e.g. “Inbox 3”).",
+          "source": "export const IconsAndCount = Template.bind({});\nIconsAndCount.args = {\n  variant: \"underline\",\n  tabs: [\n    { key: \"inbox\", label: \"Inbox\", icon: \"tray\", count: 3 },\n    { key: \"starred\", label: \"Starred\", icon: \"star\" },\n    { key: \"sent\", label: \"Sent\", icon: \"paper-plane-tilt\" },\n    { key: \"drafts\", label: \"Drafts\", icon: \"folder\", disabled: true },\n  ],\n};\nIconsAndCount.tags = [\"example\"];\nIconsAndCount.parameters = {\n  controls: { disable: true },\n  docs: {\n    description: {\n      story:\n        \"Each tab item takes an optional leading icon (Phosphor name or node) and a trailing count pill. The icon is decorative; the count joins the tab's accessible name (e.g. “Inbox 3”).\",\n    },\n  },\n};\nIconsAndCount.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const tabs = canvas.getAllByRole(\"tab\");\n  await userEvent.click(tabs[1]);\n};"
         },
         {
           "story": "Sizes",
@@ -13634,7 +13936,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "Testimonial — production @dt component (Storybook beta).",
+      "description": "Attributed quote block for social-proof sections, pairing a quote with the person and their role.",
       "dense": "Quote block with attribution (name, role, avatar) for social-proof sections",
       "keywords": [
         "testimonial",
@@ -13880,7 +14182,7 @@
       "name": "TextArea",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Multi-line text field with label, error/helper text, and optional animated auto-grow.",
       "dense": "labelled multi-line field with optional animated auto-grow (minRows/maxRows), own error + helperText; onChange(value)",
       "keywords": [
@@ -14037,9 +14339,9 @@
       "name": "TextInput",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Labeled text input with validation, helper text, and size tokens.",
-      "dense": "labelled single-line field: text/number/email/password/search/tel, built-in email + phone validation, own error/helperText, sm/md/lg; onValueChange(value)",
+      "dense": "labelled single-line field: text/number/email/tel/password/search, built-in email+phone validation, error/helperText, sm/md/lg; onValueChange(value); clearable ×-button (onClear); hideLabel",
       "keywords": [
         "text input",
         "input",
@@ -14134,6 +14436,18 @@
           "optional": true,
           "type": "boolean"
         },
+        "clearable": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "onClear": {
+          "optional": true,
+          "type": "() => void"
+        },
+        "hideLabel": {
+          "optional": true,
+          "type": "boolean"
+        },
         "onChange": {
           "optional": true,
           "type": "(value: string | number) => void"
@@ -14170,6 +14484,14 @@
           {
             "guidance": true,
             "description": "Use helperText for format hints before errors happen (We never share this address)."
+          },
+          {
+            "guidance": true,
+            "description": "Use clearable for fields users iterate on (search boxes, filters, generators); the ×-button appears only while there is a value and hands focus back to the input."
+          },
+          {
+            "guidance": true,
+            "description": "Reserve hideLabel for dense compositions where surrounding design carries the affordance; the label stays in the accessibility tree, so still write a real one."
           },
           {
             "guidance": false,
@@ -14542,21 +14864,26 @@
         "onClose": {
           "optional": true,
           "type": "() => void"
+        },
+        "inline": {
+          "optional": true,
+          "type": "boolean"
         }
       },
       "composesWith": [
         "Button",
-        "Text",
-        "Modal",
-        "TextInput",
         "CheckboxGroup",
-        "TextArea"
+        "Modal",
+        "Text",
+        "TextArea",
+        "TextInput",
+        "ToastStack"
       ],
       "prefersOver": [
         "AlertBanner for page-level persistent status"
       ],
       "forbiddenUse": [
-        "mount two <Toast /> instances side by side; the shared live region double-announces and the visuals go stale.",
+        "mount two overlapping fixed <Toast /> instances yourself; use ToastStack (or the app ToastProvider) so concurrent messages stack instead of replacing each other.",
         "rely on Toast for compliance acknowledgements (cookie consent, legal notices); it auto-dismisses — use AlertBanner or Modal.",
         "use Toast for validation errors on a field; the message detaches from the input — use the field's error prop."
       ],
@@ -14623,12 +14950,17 @@
         {
           "story": "Placement",
           "description": "position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.",
-          "source": "export const Placement: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.\",\n      },\n    },\n  },\n  render: function PlacementStory() {\n    const positions: ToastPosition[] = [\n      \"top-left\",\n      \"top-center\",\n      \"top-right\",\n      \"bottom-left\",\n      \"bottom-center\",\n      \"bottom-right\",\n    ];\n    const [position, setPosition] = useState<ToastPosition | null>(null);\n    return (\n      <>\n        {positions.map((p) => (\n          <Button\n            key={p}\n            variant=\"secondary\"\n            size=\"sm\"\n            onClick={() => setPosition(p)}\n          >\n            {p}\n          </Button>\n        ))}\n        <Toast\n          message={position ? `Anchored ${position}.` : \"\"}\n          open={position !== null}\n          tone=\"info\"\n          position={position ?? undefined}\n          onClose={() => setPosition(null)}\n        />\n      </>\n    );\n  },\n};\n\n/** The recommended integration: fire toasts through the app-root provider. */"
+          "source": "export const Placement: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.\",\n      },\n      // Inline docs previews transform their container, which hijacks\n      // position: fixed; an iframe gives the toast a real viewport so each\n      // placement lands where the trigger says.\n      story: { inline: false, iframeHeight: 360 },\n    },\n  },\n  render: function PlacementStory() {\n    const positions: ToastPosition[] = [\n      \"top-left\",\n      \"top-center\",\n      \"top-right\",\n      \"bottom-left\",\n      \"bottom-center\",\n      \"bottom-right\",\n    ];\n    const [position, setPosition] = useState<ToastPosition | null>(null);\n    return (\n      <>\n        {positions.map((p) => (\n          <Button\n            key={p}\n            variant=\"secondary\"\n            size=\"sm\"\n            onClick={() => setPosition(p)}\n          >\n            {p}\n          </Button>\n        ))}\n        <Toast\n          message={position ? `Anchored ${position}.` : \"\"}\n          open={position !== null}\n          tone=\"info\"\n          position={position ?? undefined}\n          onClose={() => setPosition(null)}\n        />\n      </>\n    );\n  },\n};\n\n/** The recommended integration: fire toasts through the app-root provider. */"
         },
         {
           "story": "ProviderDriven",
           "description": "The imperative API most consumers use: ToastProvider mounts one live region at the app shell; useToast().showToast(message, { tone, duration, position }) fires it from anywhere below.",
-          "source": "export const ProviderDriven: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The imperative API most consumers use: ToastProvider mounts one live region at the app shell; useToast().showToast(message, { tone, duration, position }) fires it from anywhere below.\",\n      },\n    },\n  },\n  render: function ProviderDrivenStory() {\n    function SaveButton() {\n      const { showToast } = useToast();\n      return (\n        <Button\n          onClick={() =>\n            showToast(\"Settings saved.\", { tone: \"success\", duration: 4000 })\n          }\n        >\n          Save settings\n        </Button>\n      );\n    }\n    return (\n      <ToastProvider>\n        <SaveButton />\n      </ToastProvider>\n    );\n  },\n};"
+          "source": "export const ProviderDriven: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The imperative API most consumers use: ToastProvider mounts one live region at the app shell; useToast().showToast(message, { tone, duration, position }) fires it from anywhere below.\",\n      },\n    },\n  },\n  render: function ProviderDrivenStory() {\n    function SaveButton() {\n      const { showToast } = useToast();\n      return (\n        <Button\n          onClick={() =>\n            showToast(\"Settings saved.\", { tone: \"success\", duration: 4000 })\n          }\n        >\n          Save settings\n        </Button>\n      );\n    }\n    return (\n      <ToastProvider>\n        <SaveButton />\n      </ToastProvider>\n    );\n  },\n};\n\n/** Concurrent toasts stack via ToastStack instead of replacing each other. */"
+        },
+        {
+          "story": "Stacked",
+          "description": "Concurrent messages stack (newest nearest the docked edge) via ToastStack — the app ToastProvider renders one stack per position, so firing showToast repeatedly shows every message.",
+          "source": "export const Stacked: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Concurrent messages stack (newest nearest the docked edge) via ToastStack — the app ToastProvider renders one stack per position, so firing showToast repeatedly shows every message.\",\n      },\n      // Same iframe treatment as Placement: fixed positioning needs a real\n      // viewport in docs.\n      story: { inline: false, iframeHeight: 360 },\n    },\n  },\n  render: function StackedStory() {\n    return (\n      <ToastStack\n        toasts={[\n          { id: \"saved\", message: \"Settings saved.\", tone: \"success\", duration: 600000 },\n          { id: \"lang\", message: \"Language changed to English\", duration: 600000 },\n          {\n            id: \"notice\",\n            message: \"This content is only available in English\",\n            tone: \"info\",\n            duration: 600000,\n          },\n        ]}\n        position=\"bottom-center\"\n      />\n    );\n  },\n};"
         },
         {
           "story": "Example",
@@ -14636,6 +14968,95 @@
           "source": "export const Example: Story = {\n  globals: { forcedColors: \"none\" },\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    a11y: { disable: true },\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The canonical post-action confirmation: success tone, default bottom-center placement, auto-dismiss after 3 seconds.\",\n      },\n    },\n  },\n  render: function ExampleStory() {\n    const [open, setOpen] = React.useState(true);\n    return (\n      <Toast\n        message=\"Saved successfully.\"\n        open={open}\n        tone=\"success\"\n        onClose={() => setOpen(false)}\n      />\n    );\n  },\n};"
         }
       ]
+    },
+    "ToastStack": {
+      "name": "ToastStack",
+      "group": "feedback",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Docked stack of transient toasts: renders Toast children inline and owns the fixed placement, newest toast nearest the docked edge, so concurrent messages stay visible instead of replacing each other.",
+      "dense": "docked flex stack of Toast (inline mode); toasts: {id,message,tone?,duration?,size?}[], 6 dock positions, max visible (default 5, oldest wait), onDismiss(id) on per-toast auto-dismiss",
+      "keywords": [
+        "toast stack",
+        "notification stack",
+        "snackbar queue",
+        "stacked toasts",
+        "concurrent notifications"
+      ],
+      "importLine": "import ToastStack from \"@dt/ToastStack\";",
+      "keyProps": [
+        {
+          "name": "toasts",
+          "type": "ToastStackItem[]",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "top-left | top-center | top-right | bottom-left | bottom-center | bottom-right",
+          "required": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "toasts": {
+          "optional": false,
+          "type": "ToastStackItem[]"
+        },
+        "position": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "top-left",
+            "top-center",
+            "top-right",
+            "bottom-left",
+            "bottom-center",
+            "bottom-right"
+          ]
+        },
+        "onDismiss": {
+          "optional": true,
+          "type": "(id: string) => void"
+        },
+        "max": {
+          "optional": true,
+          "type": "number"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "composesWith": [
+        "Toast"
+      ],
+      "prefersOver": [
+        "multiple sibling <Toast /> mounts, whose fixed positions overlap and whose messages replace each other"
+      ],
+      "forbiddenUse": [
+        "mounting more than one ToastStack per position; group toasts by position and render one stack per active position instead",
+        "persistent or compliance-critical messaging; toasts auto-dismiss (use AlertBanner)"
+      ],
+      "usage": {
+        "description": "ToastStack is the multi-toast surface behind the app ToastProvider: showToast calls append items and each renders as an inline Toast laid out by the stack, newest nearest the docked edge. Use it (or the provider) whenever more than one transient message can be alive at once; a bare Toast stays correct for single, fully controlled cases."
+      },
+      "tokens": {
+        "colors": [],
+        "spacing": [
+          "--space-internal-8",
+          "--space-layout-24"
+        ]
+      },
+      "examples": []
     },
     "Tooltip": {
       "name": "Tooltip",
@@ -14796,7 +15217,7 @@
       "group": "form",
       "tier": 2,
       "status": "beta",
-      "description": "TransformingActionInput — production @dt component (Storybook beta).",
+      "description": "Marketing entry-point input that morphs between surface modes, from a prompt bar into a chat handoff; pairs with ChatWidget.",
       "dense": "CTA input that transforms between surface modes (e.g. prompt bar to chat); marketing entry point for Donny",
       "keywords": [
         "input",
@@ -15155,8 +15576,8 @@
       "name": "WorkGrid",
       "group": "content",
       "tier": 2,
-      "status": "alpha",
-      "description": "Portfolio work index grid.",
+      "status": "stable",
+      "description": "Responsive portfolio work-index grid: one EnhancedProjectCard per project, with a friendly empty state.",
       "dense": "Portfolio index grid arranging project cards on the work page",
       "keywords": [
         "work",
@@ -15230,10 +15651,9 @@
         }
       },
       "composesWith": [
-        "Container",
-        "Section",
-        "WorkHero",
-        "CategoryFilter"
+        "EnhancedProjectCard",
+        "CategoryFilter",
+        "EmptyState"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -15253,23 +15673,38 @@
       "name": "WorkNav",
       "group": "navigation",
       "tier": 2,
-      "status": "alpha",
-      "description": "Work section sub-navigation.",
-      "dense": "Work-section sub-navigation (filters/sections) for portfolio pages",
+      "status": "beta",
+      "description": "Work section sub-navigation: a back-to-index action plus previous/next controls for stepping through the portfolio case studies.",
+      "dense": "Work-section sub-navigation: back-to-index plus prev/next stepping for portfolio case-study pages",
       "keywords": [
         "work",
         "navigation",
         "sub nav",
-        "portfolio"
+        "portfolio",
+        "prev next"
       ],
       "importLine": "import WorkNav from \"@dt/WorkNav\";",
-      "keyProps": [],
-      "props": {},
-      "composesWith": [],
+      "keyProps": [
+        {
+          "name": "currentPath",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "currentPath": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "composesWith": [
+        "Button",
+        "Icon"
+      ],
       "prefersOver": [],
       "forbiddenUse": [],
       "usage": {
-        "description": "Sub-navigation for the work section. Portfolio chrome; site-wide nav lives in SiteHeader."
+        "description": "Sub-navigation for the work section. Renders a back-to-work action and previous/next controls that step through the case-study sequence, disabling the edges. Portfolio chrome; site-wide nav lives in SiteHeader."
       },
       "tokens": {
         "colors": [],
@@ -15366,7 +15801,7 @@
       "name": "AboutPageContent",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "About page narrative sections and team highlights.",
       "dense": "Full /about route body: narrative sections, values, and team highlights; optional closing CTA via showCTA.",
       "keywords": [
@@ -15687,7 +16122,7 @@
       "group": "marketing",
       "tier": 2,
       "status": "alpha",
-      "description": "Blog index hero section.",
+      "description": "Hero section for the blog index with a title, subtitle, and optional scroll indicator in full or compact variants.",
       "dense": "",
       "keywords": [],
       "importLine": "import { BlogHero } from \"@dt/BlogHero\";",
@@ -15879,7 +16314,7 @@
       "name": "CTASection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Call-to-action band used on marketing pages.",
       "dense": "Marketing call-to-action band: title, description, primary/secondary action slots; background and align variants.",
       "keywords": [
@@ -16074,7 +16509,7 @@
       "name": "ContactHero",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Contact page hero with headline and supporting copy.",
       "dense": "Contact page hero: headline plus supporting copy, background and compact variants.",
       "keywords": [
@@ -16155,7 +16590,7 @@
       "name": "ContactInquiryPanel",
       "group": "forms",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Contact page inquiry panel with message and book-a-call tabs wrapping the editorial form.",
       "dense": "Contact inquiry tabs (message vs book-a-call) wrapping the editorial contact form; parent owns submit state via the messagePanel slot.",
       "keywords": [
@@ -16247,7 +16682,7 @@
       "name": "ContactPageContentEditorial",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Editorial contact page layout with form and success state.",
       "dense": "Editorial /contact route body: intro copy, inquiry panel with form, and submit success state.",
       "keywords": [
@@ -16423,7 +16858,7 @@
       "name": "DesignSprintsSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage design-sprints band with animated CTA pills.",
       "dense": "Homepage design-sprints band with animated CTA pills; slots between marketing sections via id/donnyTarget anchors.",
       "keywords": [
@@ -16491,7 +16926,7 @@
       "group": "navigation",
       "tier": 2,
       "status": "beta",
-      "description": "Footer — production @dt component (Storybook beta).",
+      "description": "Legacy pattern-tier footer that hosts the ChatWidget slot; the production Next.js site chrome is SiteFooter.",
       "dense": "Legacy pattern-tier footer band with the ChatWidget slot; the production Next.js site chrome is SiteFooter.",
       "keywords": [
         "footer",
@@ -16531,8 +16966,8 @@
       "name": "GridBlock",
       "group": "layout",
       "tier": 2,
-      "status": "beta",
-      "description": "GridBlock — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Responsive grid of case-study content cells with column, gap, spacing, and background knobs, used across Work project pages.",
       "dense": "Case-study grid of content cells: columns, gap, background, and spacing knobs; used across Work project pages.",
       "keywords": [
         "grid",
@@ -16665,8 +17100,8 @@
       "name": "Hero",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
-      "description": "Hero — production @dt component (Storybook beta).",
+      "status": "deprecated",
+      "description": "Configurable general-purpose page hero with heading, subtitle, optional image, and an actions slot across layout and background variants.",
       "dense": "General-purpose hero: title/subtitle/description, optional image and actions; layout variant, background, and align knobs.",
       "keywords": [
         "hero",
@@ -16824,7 +17259,7 @@
       "name": "HeroSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Full-bleed hero shell with min-height, alignment, and background variants.",
       "dense": "Full-bleed hero shell: min-height, align/justify, background or backgroundImage; renders children as a labelled landmark section.",
       "keywords": [
@@ -17125,7 +17560,7 @@
       "name": "HighlightSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Highlight band with variant backgrounds and CTA slots.",
       "dense": "Highlight band: overline + title + description with CTA slot; visual variants and sizes for marketing emphasis.",
       "keywords": [
@@ -17246,7 +17681,7 @@
       "name": "HomeHero",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage hero with kinetic title, background, and primary CTA.",
       "dense": "Bespoke homepage hero: kinetic per-visit headline, background treatment, primary CTA scrolling to scrollTargetId.",
       "keywords": [
@@ -17389,7 +17824,7 @@
       "name": "NewsBulletin",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage news bulletin strip with three topical slots above the footer.",
       "dense": "Homepage news strip: up to three topical item cards above the footer, driven by a typed items list.",
       "keywords": [
@@ -17462,8 +17897,8 @@
       "name": "PageLayout",
       "group": "layout",
       "tier": 2,
-      "status": "beta",
-      "description": "PageLayout — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Page-body wrapper with a max-width container, default page margins, an optional grid mode, and a spacing scale.",
       "dense": "Page-level layout wrapper: max-width, optional grid columns, spacing scale, and default page margins.",
       "keywords": [
         "layout",
@@ -17595,7 +18030,7 @@
       "name": "PricingPageContent",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Pricing page content assembly with packages, agency comparison, and deliverables.",
       "dense": "Full /pricing route body: package tiers, agency comparison table, and deliverables; CTAs prefill contact booking via packageId.",
       "keywords": [
@@ -17650,8 +18085,8 @@
       "name": "ProcessBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
-      "description": "ProcessBlock — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Case-study process section that arranges titled phase cards in a grid under an optional title and description.",
       "dense": "Case-study process section: titled phase cards in a grid with section title, description, and spacing/background knobs.",
       "keywords": [
         "process",
@@ -18198,8 +18633,8 @@
       "name": "ProofBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
-      "description": "ProofBlock — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Metrics band that presents headline numbers with captions under an optional title and subtitle, with tight and dark variants.",
       "dense": "Metrics proof band: headline metrics with captions under a title/subtitle; tight and dark variants.",
       "keywords": [
         "metrics",
@@ -18424,8 +18859,8 @@
       "name": "ServicesBlock",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
-      "description": "ServicesBlock — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Case-study engagement overview with services, duration, and tools columns alongside overview copy.",
       "dense": "Case-study services overview: services list, duration, and tools columns with overview copy and section titles.",
       "keywords": [
         "services",
@@ -18557,7 +18992,7 @@
       "name": "ServicesSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage services grid with icons and copy.",
       "dense": "Homepage services grid: icon + copy service cards, column count and card variant knobs.",
       "keywords": [
@@ -18818,8 +19253,8 @@
       "name": "StoryBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
-      "description": "StoryBlock — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Narrative section for Work case studies with a subtitle and title, rich text, and images arranged by a selectable layout.",
       "dense": "Case-study narrative section: subtitle/title, rich content, and images with selectable image layout.",
       "keywords": [
         "story",
@@ -18964,8 +19399,8 @@
       "name": "TeamBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
-      "description": "TeamBlock — production @dt component (Storybook beta).",
+      "status": "stable",
+      "description": "Team grid of member cards with photo, name, and role, plus round-image, column, and spacing knobs.",
       "dense": "Team member grid: photo, name, and role cards with round-image option, column and spacing knobs.",
       "keywords": [
         "team",
@@ -19322,7 +19757,7 @@
       "name": "WorkMagneticField",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage work grid with magnetic hover on project cards.",
       "dense": "Homepage work showcase: project-card grid with magnetic hover, optional view-all link.",
       "keywords": [
@@ -19416,7 +19851,7 @@
       "name": "WorkPreviewSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Work index preview grid of project cards.",
       "dense": "Plain project-card preview grid with title, layout options, and optional view-all link.",
       "keywords": [

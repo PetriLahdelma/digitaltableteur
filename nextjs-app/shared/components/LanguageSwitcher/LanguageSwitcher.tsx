@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { useTranslate } from "../../lib/translation";
+import { cn } from "../../lib/cn";
 import styles from "./LanguageSwitcher.module.css";
 
 export type LanguageSwitcherOption = {
@@ -13,10 +13,9 @@ export type LanguageSwitcherOption = {
 };
 
 const defaultButtonClassName =
-  "shrink-0 whitespace-nowrap px-2.5 py-1.5 text-sm font-heading font-semibold uppercase tracking-widest transition-colors motion-reduce:transition-none cursor-pointer rounded-sm border border-transparent bg-transparent text-muted-foreground hover:text-foreground hover:bg-foreground/5 hover:border-border";
+  "shrink-0 whitespace-nowrap px-2.5 py-1.5 text-sm font-heading font-semibold uppercase tracking-widest transition-colors motion-reduce:transition-none cursor-pointer rounded-sm border border-transparent bg-transparent text-muted-foreground hover:text-foreground hover:bg-foreground/5";
 
-const defaultActiveButtonClassName =
-  "font-bold text-foreground hover:text-foreground";
+const defaultActiveButtonClassName = "text-foreground hover:text-foreground";
 
 /** Selected language when the menu is expanded (focused control). */
 const defaultOpenTriggerClassName =
@@ -62,7 +61,7 @@ export function LanguageSwitcher({
   openTriggerClassName = defaultOpenTriggerClassName,
   floatedButtonClassName = defaultFloatedButtonClassName,
 }: LanguageSwitcherProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const optionsId = useId();

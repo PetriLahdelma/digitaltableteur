@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - text: Group Label
 - checkbox "Option 1" [checked]
 - text: Option 1

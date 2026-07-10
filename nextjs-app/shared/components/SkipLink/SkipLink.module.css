@@ -17,6 +17,10 @@
   font-weight: 500;
   line-height: var(--line-height-snug, 1.3);
   text-decoration: none;
+
+  /* A skip-link label is a single action phrase; never let it wrap (which, in a
+     width-constrained container, degrades into a clipped vertical column). */
+  white-space: nowrap;
   color: var(--color-white);
   transition: inset-block-start 0.2s ease;
   inset-block-start: -4rem;

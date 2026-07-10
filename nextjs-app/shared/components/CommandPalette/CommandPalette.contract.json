@@ -1,0 +1,53 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "CommandPalette",
+    "tier": "organism",
+    "group": "navigation",
+    "status": "alpha",
+    "description": "Modal, keyboard-driven command launcher: a search input filters a listbox of commands (matched on label + keywords); Arrow keys move the active option, Enter runs it, Escape closes. Focus is trapped and background scroll locked while open.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "a11y": {
+        "keyboard": [
+            "Arrow Down / Up move the active option (wrapping)",
+            "Enter runs the active command and closes",
+            "Escape closes the palette",
+            "Focus is trapped within the dialog while open"
+        ],
+        "ariaRequirements": [
+            "Overlay dialog is role=dialog aria-modal with an accessible label",
+            "Input is role=combobox with aria-controls + aria-activedescendant onto the listbox",
+            "Each command is role=option with aria-selected reflecting the active item"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-black",
+            "--color-border",
+            "--color-surface",
+            "--color-text",
+            "--color-muted"
+        ],
+        "spacing": [
+            "--space-internal-2",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24"
+        ],
+        "typography": [
+            "--font-body",
+            "--font-size-text-s",
+            "--font-size-text-m"
+        ]
+    },
+    "lightDarkVerified": false
+}

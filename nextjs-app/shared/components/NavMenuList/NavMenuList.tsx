@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link } from "../../lib/linkComponent";
+import { useNavigationPathname } from "../../lib/navigation";
 import styles from "./NavMenuList.module.css";
 
 export type NavMenuItem = {
@@ -30,7 +30,7 @@ const NavMenuList: React.FC<NavMenuListProps> = ({
   listClassName,
   itemClassName,
 }) => {
-  const pathname = usePathname() ?? "/";
+  const pathname = useNavigationPathname() ?? "/";
   return (
     <ul className={listClassName ?? styles.nav}>
       {items.map((item) => {

@@ -3,15 +3,51 @@
   "radius": {
     "sm": {
       "$value": "2px",
-      "$description": "Border radius (sm)."
+      "$description": "Border radius (sm).",
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--radius-sm",
+          "category": "radius",
+          "subgroup": "General"
+        }
+      }
     },
     "md": {
       "$value": "0.25rem",
-      "$description": "Border radius (md)."
+      "$description": "Border radius (md).",
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--radius-md",
+          "category": "radius",
+          "subgroup": "General"
+        }
+      }
     },
     "lg": {
       "$value": "8px",
-      "$description": "Border radius (lg)."
+      "$description": "Border radius (lg).",
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--radius-lg",
+          "category": "radius",
+          "subgroup": "General"
+        }
+      }
+    },
+    "full": {
+      "$value": "9999px",
+      "$description": "Border radius (full).",
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--radius-full",
+          "category": "radius",
+          "subgroup": "General"
+        }
+      }
     }
   }
 }

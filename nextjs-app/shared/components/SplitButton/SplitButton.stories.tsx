@@ -30,11 +30,11 @@ const basicOptions = [
 const meta: Meta<typeof SplitButton> = {
   title: "Actions/SplitButton",
   component: SplitButton,
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=406-1569",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1052-2084",
     },
     layout: "padded",
     contractStatus: contract.status,
@@ -302,6 +302,49 @@ export const DisabledState: Story = {
     label: "Save",
     options: saveOptions,
     disabled: true,
+  },
+};
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+  name: "Example (document toolbar)",
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "0.75rem",
+        padding: "0.5rem",
+      }}
+    >
+      <SplitButton
+        label="Save"
+        variant="primary"
+        onPrimaryClick={() => {}}
+        options={saveOptions}
+      />
+      <SplitButton
+        label="Export"
+        variant="secondary"
+        toggleLabel="Choose export format"
+        options={[
+          { id: "pdf", label: "Export as PDF", trailingIcon: "file-text" },
+          { id: "csv", label: "Export CSV", trailingIcon: "download" },
+        ]}
+      />
+    </div>
+  ),
+};
+
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: {
+    label: "Save",
+    variant: "primary",
+    options: "save" as unknown as typeof saveOptions,
   },
 };
 

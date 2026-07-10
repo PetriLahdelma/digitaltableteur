@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useId, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { useTranslate } from "../../lib/translation";
+import { cn } from "../../lib/cn";
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
 import Text from "@dt/Text";
@@ -196,7 +196,7 @@ function ComparisonList({
   title: string;
   rows: ComparisonRow[];
 }) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const isUs = variant === "us";
 
   return (
@@ -256,7 +256,7 @@ function PackageCard({
   className?: string;
   donnyTarget?: string;
 }) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const hasProof = "proofKey" in pkg;
 
   return (
@@ -305,7 +305,7 @@ export interface PricingPageContentProps {
  * PricingPageContent — productized offers, agency comparison, and deliverables.
  */
 export function PricingPageContent({ className }: PricingPageContentProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const aaasPanelId = useId();
   const aaasHeadingId = useId();
   const [aaasOpen, setAaasOpen] = useState(false);

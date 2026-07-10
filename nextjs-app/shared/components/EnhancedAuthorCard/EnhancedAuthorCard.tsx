@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import NextLink from "next/link";
-import { useTranslation } from "react-i18next";
+import { Image } from "../../lib/imageComponent";
+import { Link as NextLink } from "../../lib/linkComponent";
+import { useTranslate } from "../../lib/translation";
 import { ArrowRight } from "@phosphor-icons/react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface AuthorSocial {
   platform: string;
@@ -48,7 +48,7 @@ export function EnhancedAuthorCard({
   variant = "card",
   className,
 }: EnhancedAuthorCardProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   // Default avatar fallback
   const avatarSrc = imageUrl || "/images/default-avatar.png";

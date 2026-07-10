@@ -1,0 +1,8 @@
+- region "Homepage hero section":
+  - heading "Design intelligence, not decoration." [level=1]
+  - paragraph: From concept to code, we craft human-centered GenAI experiences.
+  - link "Get in touch":
+    - /url: /contact
+  - link "About us":
+    - /url: /about
+  - button "Scroll"

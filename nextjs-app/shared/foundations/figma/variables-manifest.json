@@ -2,9 +2,9 @@
   "fileKey": "PC2UPdYwm8qGt6ZTg0AakF",
   "fileSlug": "DT-Site-stuff",
   "fileUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff",
-  "generatedAt": "2026-06-05T10:52:33.836Z",
+  "generatedAt": "2026-07-09T23:22:05.650Z",
   "source": "nextjs-app/shared/styles/variables.css",
-  "runId": "dt-dsb-2026-06-05",
+  "runId": "dt-dsb-2026-07-09",
   "figmaApplied": {
     "appliedAt": "2026-06-05T11:45:00.000Z",
     "verifiedAt": "2026-06-05T11:45:00.000Z",
@@ -368,6 +368,26 @@
           }
         },
         {
+          "name": "color/focus/ring",
+          "cssVar": "--color-focus-ring",
+          "type": "COLOR",
+          "values": {
+            "Light": "#041b23",
+            "Dark": "#6fa8ff",
+            "HCB": "#fff",
+            "HCW": "#000"
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL",
+            "STROKE_COLOR",
+            "TEXT_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-focus-ring)"
+          }
+        },
+        {
           "name": "color/gray",
           "cssVar": "--color-gray",
           "type": "COLOR",
@@ -492,10 +512,10 @@
           "cssVar": "--color-muted",
           "type": "COLOR",
           "values": {
-            "Light": "#6c757d",
+            "Light": "#626a72",
             "Dark": "#888",
             "HCB": "#888",
-            "HCW": "#888"
+            "HCW": "#333"
           },
           "scopes": [
             "FRAME_FILL",
@@ -512,7 +532,7 @@
           "cssVar": "--color-muted-light",
           "type": "COLOR",
           "values": {
-            "Light": "#4949a7",
+            "Light": "#909090",
             "Dark": "#555",
             "HCB": "#555",
             "HCW": "#555"
@@ -673,7 +693,7 @@
           "type": "COLOR",
           "values": {
             "Light": "#041b23",
-            "Dark": "#6fa8ff",
+            "Dark": "#f5f7f8",
             "HCB": "#fff",
             "HCW": "#000"
           },
@@ -735,7 +755,7 @@
             "Light": "#041b23",
             "Dark": "#181a1b",
             "HCB": "#000",
-            "HCW": "#041b23"
+            "HCW": "#fff"
           },
           "scopes": [
             "FRAME_FILL",
@@ -773,7 +793,7 @@
           "type": "COLOR",
           "values": {
             "Light": "#041b23",
-            "Dark": "#71efff",
+            "Dark": "#6fa8ff",
             "HCB": "#fff",
             "HCW": "#000"
           },
@@ -873,7 +893,7 @@
           "type": "COLOR",
           "values": {
             "Light": "#041b23",
-            "Dark": "#6fa8ff",
+            "Dark": "#e0e0e0",
             "HCB": "#fff",
             "HCW": "#000"
           },
@@ -935,6 +955,20 @@
         "Value"
       ],
       "tokens": [
+        {
+          "name": "radius/full",
+          "cssVar": "--radius-full",
+          "type": "FLOAT",
+          "values": {
+            "Value": 9999
+          },
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--radius-full)"
+          }
+        },
         {
           "name": "radius/lg",
           "cssVar": "--radius-lg",
@@ -1391,6 +1425,18 @@
           }
         },
         {
+          "name": "font/weight/medium",
+          "cssVar": "--font-weight-medium",
+          "type": "STRING",
+          "values": {
+            "Value": "500"
+          },
+          "scopes": [],
+          "codeSyntax": {
+            "WEB": "var(--font-weight-medium)"
+          }
+        },
+        {
           "name": "font/weight/text",
           "cssVar": "--font-weight-text",
           "type": "STRING",
@@ -1418,10 +1464,10 @@
     }
   },
   "stats": {
-    "color": 44,
-    "dimension": 29,
-    "string": 4,
-    "skipped": 86
+    "color": 45,
+    "dimension": 30,
+    "string": 5,
+    "skipped": 94
   },
   "skipped": [
     {
@@ -1470,7 +1516,7 @@
       "name": "--color-primary-disabled",
       "category": "color",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
-      "sample": "#0000ff50"
+      "sample": "#041b2350"
     },
     {
       "name": "--container-full",
@@ -1596,7 +1642,31 @@
       "name": "--font-size-text-s",
       "category": "typography",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
-      "sample": "clamp(0.75rem, 0.4vw + 0.8rem, 1.05rem)"
+      "sample": "clamp(0.875rem, 0.35vw + 0.8rem, 1.05rem)"
+    },
+    {
+      "name": "--font-size-text-xl",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "clamp(1.375rem, 1vw + 1.15rem, 1.875rem)"
+    },
+    {
+      "name": "--font-size-text-xs",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "clamp(0.875rem, 0.2vw + 0.83rem, 1rem)"
+    },
+    {
+      "name": "--font-size-text-xxl",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "clamp(1.625rem, 1.4vw + 1.35rem, 2.25rem)"
+    },
+    {
+      "name": "--font-size-text-xxs",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "clamp(0.875rem, 0.1vw + 0.85rem, 0.9375rem)"
     },
     {
       "name": "--font-size-title",
@@ -1627,6 +1697,24 @@
       "category": "typography",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
       "sample": "clamp(3.5rem, 6vw + 2.5rem, 5.5rem)"
+    },
+    {
+      "name": "--font-size-title-xs",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "clamp(1.25rem, 0.9vw + 1.1rem, 1.75rem)"
+    },
+    {
+      "name": "--font-size-title-xxl",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "clamp(4.5rem, 8vw + 3rem, 7rem)"
+    },
+    {
+      "name": "--font-size-title-xxs",
+      "category": "typography",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "clamp(1.125rem, 0.4vw + 1.05rem, 1.375rem)"
     },
     {
       "name": "--gallery-caption-bg",
@@ -1819,6 +1907,12 @@
       "category": "other",
       "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
       "sample": "#041b23"
+    },
+    {
+      "name": "--shortcut-hint-color",
+      "category": "other",
+      "reason": "non-figma-value (clamp, color-mix, or unresolved var)",
+      "sample": "#4b5563"
     },
     {
       "name": "--stagger-fast",

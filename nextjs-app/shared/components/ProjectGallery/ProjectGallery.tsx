@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { Image } from "../../lib/imageComponent";
+import { cn } from "../../lib/cn";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -53,6 +53,12 @@ const aspectClasses: Record<"square" | "video", string> = {
   video: "aspect-video",
 };
 
+/**
+ * Responsive image grid for a project case study. Renders each image as a
+ * figure in a labelled `role="list"` grid; when `enableLightbox` is set (the
+ * default) each thumbnail is a button that opens the shared Lightbox. Items
+ * stagger in on scroll via GSAP, gated behind a reduced-motion check.
+ */
 export function ProjectGallery({
   images,
   columns = 3,
@@ -165,8 +171,9 @@ export function ProjectGallery({
                 width={image.width}
                 height={image.height}
                 className={cn(
-                  "object-cover transition-transform duration-300",
-                  enableLightbox && "group-hover:scale-105",
+                  "object-cover transition-transform duration-300 motion-reduce:transition-none",
+                  enableLightbox &&
+                    "group-hover:scale-105 motion-reduce:group-hover:scale-100",
                   aspectRatio === "mixed" ? "w-full h-auto" : "w-full h-full"
                 )}
                 sizes={`(max-width: 768px) 100vw, (max-width: 1200px) ${100 / (columns === 4 ? 3 : columns === 3 ? 2 : 2)}vw, ${100 / columns}vw`}
@@ -175,7 +182,7 @@ export function ProjectGallery({
               {enableLightbox && (
                 <div
                   className={cn(
-                    "absolute inset-0 bg-black/0 transition-colors duration-300",
+                    "absolute inset-0 bg-black/0 transition-colors duration-300 motion-reduce:transition-none",
                     "group-hover:bg-black/20"
                   )}
                 />

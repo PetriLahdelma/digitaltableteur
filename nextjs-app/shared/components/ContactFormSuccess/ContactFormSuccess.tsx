@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckCircle } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import Button from "@dt/Button";
 import { FadeIn } from "../animations/FadeIn";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../../lib/translation";
 import Button from "@dt/Button";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
@@ -18,7 +18,7 @@ const SendStatus: React.FC<SendStatusProps> = ({
   dispatch,
   errorCode,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   if (step === "sending") {
     return (
       <div className={styles.sending} role="status" aria-busy="true">

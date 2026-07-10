@@ -3,9 +3,9 @@
     "name": "BlogCategoryFilter",
     "tier": "molecule",
     "group": "navigation",
-    "status": "alpha",
-    "description": "Blog category filter control.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-blog-category-filter",
+    "status": "stable",
+    "description": "Single-select tag filter for the blog archive: a labelled tablist with an implicit All tab, three visual treatments and optional per-tag counts.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1035-110",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
@@ -24,7 +24,7 @@
                 "md",
                 "lg"
             ],
-            "default": "sm",
+            "default": "md",
             "propSourced": true
         }
     },
@@ -32,20 +32,31 @@
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
+        "keyboard": [
+            "Tab moves to and through the filter buttons",
+            "Enter/Space or click activates the focused filter"
+        ],
+        "ariaRequirements": [
+            "role=group labelled via blogFilterByTag; each filter is a toggle button with aria-pressed",
+            "Single-select: exactly one filter has aria-pressed=true at a time (visual + aria-pressed convey the active filter)"
+        ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories and all three variants; 4-mode AT snapshots captured and compare-clean. 2026-07-07: reconciled the a11y model with CategoryFilter to role=group + aria-pressed toggle buttons. A filter that re-renders a results grid is a set of UI controls, not a tablist (a tablist implies tab panels it does not have), so the earlier role=tablist + roving-tabindex was dropped in favour of independently focusable toggle buttons. Tailwind className styling retained as an intentional per-surface owner call. 2026-07-08 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "schemaVersion": 2,
     "props": {
         "tags": {
@@ -112,5 +123,32 @@
     "dense": "Blog-specific category filter control; wraps CategoryFilter conventions for the blog archive",
     "usage": {
         "description": "Category filter control for the blog archive. Blog-scoped variant; for generic list pages use CategoryFilter."
-    }
+    },
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ]
 }

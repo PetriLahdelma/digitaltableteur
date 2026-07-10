@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Button, { type ButtonProps } from "../Button";
 import buttonStyles from "../Button/Button.module.css";
 import Icon from "@dt/Icon";
@@ -99,7 +99,7 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
     },
     ref,
   ) => {
-    const { t } = useTranslation();
+    const t = useTranslate();
     const defaultToggleLabel = toggleLabel || t("splitButton.moreOptions");
     const isSecondary = variant === "secondary";
     const hasOptions = Array.isArray(options) && options.length > 0;

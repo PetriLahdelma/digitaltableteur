@@ -1,0 +1,6 @@
+- text: Input with Error
+- textbox "Input with Error" [invalid]:
+  - /placeholder: Enter text
+- alert:
+  - img
+  - text: This field is required

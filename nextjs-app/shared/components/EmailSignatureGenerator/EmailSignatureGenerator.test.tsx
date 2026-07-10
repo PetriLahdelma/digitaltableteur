@@ -92,7 +92,8 @@ describe("EmailSignatureGenerator", () => {
       const phoneInput = screen.getByPlaceholderText(/\+358|\+46|phone/i);
       fireEvent.change(phoneInput, { target: { value: "+358 45 123 4567" } });
 
-      expect(phoneInput).toHaveValue("+358 45 123 4567");
+      // DS TextInput type="tel" runs libphonenumber's as-you-type formatter.
+      expect(phoneInput).toHaveValue("+358 45 1234567");
     });
   });
 
@@ -198,8 +199,11 @@ describe("EmailSignatureGenerator", () => {
       const linkedinInput = screen.getByPlaceholderText(/linkedin/i);
       fireEvent.change(linkedinInput, { target: { value: "johndoe" } });
 
-      // Should show LinkedIn label in preview
-      expect(screen.getByText("LinkedIn")).toBeInTheDocument();
+      // Should show LinkedIn link in preview ("LinkedIn" text alone also
+      // matches the field's hidden label now).
+      expect(
+        screen.getByRole("link", { name: "LinkedIn" })
+      ).toBeInTheDocument();
     });
   });
 
@@ -274,9 +278,8 @@ describe("EmailSignatureGenerator", () => {
     it("displays instagram link with correct URL", () => {
       render(withI18n(<EmailSignatureGenerator />));
 
-      // Find instagram input (has @username or similar placeholder)
-      const instagramInput = document.getElementById(
-        "instagram",
+      const instagramInput = screen.getByLabelText(
+        "Instagram",
       ) as HTMLInputElement;
       expect(instagramInput).toBeTruthy();
       fireEvent.change(instagramInput, { target: { value: "myinsta" } });

@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../../lib/translation";
 import Button from "@dt/Button";
 import Title from "@dt/Title";
 import styles from "../ChatWidget.module.css";
@@ -11,7 +11,7 @@ interface ReviewSummaryProps {
 }
 
 const ReviewSummary: React.FC<ReviewSummaryProps> = ({ draft, dispatch }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   return (
     <div className={styles.summary}>
       <Title level={4}>{t("emailWorkflow.review.title")}</Title>

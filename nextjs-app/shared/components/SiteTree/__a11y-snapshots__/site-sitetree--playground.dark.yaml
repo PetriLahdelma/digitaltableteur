@@ -1,0 +1,51 @@
+- navigation "Sitemap":
+  - list:
+    - listitem:
+      - group:
+        - text: Main
+        - list:
+          - listitem:
+            - link "Home":
+              - /url: /
+          - listitem:
+            - link "About":
+              - /url: /about
+          - listitem:
+            - link "Pricing":
+              - /url: /pricing
+          - listitem:
+            - link "Contact":
+              - /url: /contact
+    - listitem:
+      - group:
+        - text: Work
+        - list:
+          - listitem:
+            - link "Work overview":
+              - /url: /work
+          - listitem:
+            - link "Helsinki Design System":
+              - /url: /work/helsinki-design-system
+          - listitem:
+            - link "SAP Build Apps":
+              - /url: /work/sap-build-apps
+          - listitem:
+            - link "VertaaUX":
+              - /url: /work/vertaaux
+    - listitem:
+      - group:
+        - text: Blog
+        - list:
+          - listitem:
+            - link "Blog home":
+              - /url: /blog
+          - listitem:
+            - link "Digital craftsmanship":
+              - /url: /blog/digital-craftsmanship
+          - listitem:
+            - group: Authors
+          - listitem:
+            - link "RSS feed":
+              - /url: /blog/feed.xml
+    - listitem:
+      - group: Legal & info

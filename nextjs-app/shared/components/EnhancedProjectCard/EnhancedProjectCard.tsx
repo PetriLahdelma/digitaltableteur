@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { cn } from "../../../../lib/utils";
+import { Link } from "../../lib/linkComponent";
+import { Image } from "../../lib/imageComponent";
+import { cn } from "../../lib/cn";
 import styles from "./EnhancedProjectCard.module.css";
 
 export interface EnhancedProjectCardProps {
@@ -61,7 +61,6 @@ export function EnhancedProjectCard({
   className,
 }: EnhancedProjectCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   // Check for reduced motion preference
@@ -98,7 +97,7 @@ export function EnhancedProjectCard({
   };
 
   const isVideoThumbnail =
-    videoThumbnail ||
+    Boolean(videoThumbnail) ||
     thumbnail.endsWith(".mov") ||
     thumbnail.endsWith(".mp4") ||
     thumbnail.endsWith(".webm");
@@ -134,11 +133,6 @@ export function EnhancedProjectCard({
         )}
         data-project-card-media=""
       >
-        {/* Skeleton loading state */}
-        {!imageLoaded && !isVideoThumbnail && (
-          <div className={styles.skeleton} />
-        )}
-
         {/* Video thumbnail */}
         {isVideoThumbnail && videoSrc ? (
           <video
@@ -158,13 +152,9 @@ export function EnhancedProjectCard({
             src={thumbnail}
             alt="" // Decorative - full description in sr-only span
             fill
-            className={cn(
-              styles.asset,
-              !imageLoaded && styles.assetLoading,
-            )}
+            className={styles.asset}
             data-project-card-asset=""
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            onLoad={() => setImageLoaded(true)}
           />
         )}
       </div>

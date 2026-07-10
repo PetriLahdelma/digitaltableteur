@@ -1,0 +1,26 @@
+- region "Overview":
+  - heading "Services" [level=3]
+  - list:
+    - listitem: UX Design
+    - listitem: UI Design
+    - listitem: Service Design
+    - listitem: Design System
+    - listitem: Frontend Development
+    - listitem: Documentation
+  - heading "Duration" [level=3]
+  - paragraph: January 2020–March 2022
+  - heading "Tools" [level=3]
+  - list "Tools":
+    - listitem "Slack"
+    - listitem "Figma"
+    - listitem "Sketch"
+    - listitem "Adobe Illustrator":
+      - img "Adobe Illustrator": Ai
+    - listitem "Adobe Photoshop":
+      - img "Adobe Photoshop": Ps
+  - heading "Overview" [level=3]
+  - paragraph:
+    - strong: The city of Helsinki
+    - text: offers hundreds of disparate digital services, from daycare applications to cultural services. Without a unified design system, each service risked looking and functioning differently, leading to user confusion.
+    - strong: "The goal:"
+    - text: In a multivendor environment, provide a shared design foundation so that all services share a consistent visual identity, accessible UI, and predictable user experience.

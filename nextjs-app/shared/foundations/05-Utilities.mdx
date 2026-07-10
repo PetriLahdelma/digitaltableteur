@@ -1,0 +1,104 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/05-Utilities" />
+
+# Utilities
+
+A small, curated set of hooks and providers that the catalog composes. It is
+deliberately a fraction of an app-platform utility layer: DT adopts only the
+primitives that serve components it actually ships or that keep the design
+system framework-agnostic. See the [Astryx-parity roadmap](https://github.com/PetriLahdelma/digitaltableteur/blob/main/docs/design-system/astryx-parity-roadmap.md)
+for the adopt / defer / skip rationale.
+
+## Responsive
+
+### `useMediaQuery(query)`
+
+SSR-safe subscription to a CSS media query. Returns `false` on the server and
+the first client render (so hydration never mismatches), then syncs to the real
+match and updates on change. The sanctioned primitive for responsive breakpoint
+checks.
+
+```tsx
+import { useMediaQuery } from '@/nextjs-app/shared/hooks/useMediaQuery';
+
+const isMobile = useMediaQuery('(width < 768px)');
+```
+
+For `prefers-reduced-motion` use `useHydrationSafeMotion`; for system colour
+scheme use the theme provider below.
+
+## Overlays
+
+DT's overlays (e.g. `Modal`) are custom rather than Radix-backed, so they own
+their focus and scroll behaviour through these hooks.
+
+### `LayerProvider` + `useLayer(options)`
+
+`LayerProvider` lets a host app choose the DOM node used for design-system
+portals. Without a provider, layered UI uses `document.body`, matching the
+pre-package behaviour. `useLayer()` returns the resolved container plus the
+standard z-index tier for `modal`, `popover`, `toast`, or `tooltip` layers.
+
+`Modal` consumes `useLayer({ role: 'modal' })` for its portal container.
+
+### `useFocusTrap(ref, active)`
+
+While `active`, records the focused element, marks the page's main content
+`inert` so Tab cannot escape, focuses the first focusable element in `ref`, and
+restores focus on release. Being effect-based it composes with any overlay.
+
+### `useScrollLock(active)`
+
+Locks body scroll while `active`, restoring the previous `overflow` value on
+release so nested locks compose. `Modal` uses both hooks together.
+
+## Overflow
+
+### `useOverflow(ref, options)`
+
+Reports whether an element overflows on the `x` or `y` axis. It observes
+element resizing and window resizing, and exposes `refresh()` for content changes
+that do not resize the container.
+
+### `useScrollOverflow(ref, options)`
+
+Extends `useOverflow` with `canScrollStart` and `canScrollEnd`, kept current on
+scroll. `NewsBulletin` uses it for previous/next affordances on the horizontal
+highlight track.
+
+## Navigation
+
+### `LinkProvider` + `Link`
+
+The DS `Link` renders an injected link implementation, defaulting to a plain
+`<a>` when no provider is present. The host app injects its router link (e.g.
+next/link) via `LinkProvider`, so catalog components never import a framework
+link directly and the design system stays portable.
+
+```tsx
+import { Link, LinkProvider } from '@/nextjs-app/shared/lib/linkComponent';
+
+// app root
+<LinkProvider component={NextLinkAdapter}>{children}</LinkProvider>;
+
+// anywhere in the catalog
+<Link href="/work">Work</Link>;
+```
+
+## Theming
+
+### `ThemeProvider` + `useTheme`
+
+`useTheme()` reads the current theme (light / dark / high-contrast) from
+`ThemeProvider`. Both are exported from `@dt` and back the token themes described
+in **Overview/03-Theming**.
+
+## Not adopted
+
+App-platform utilities that DT does not build (they exist to power a Table
+engine, Tree, grid focus, or media-scoped theming DT has declared out of scope):
+`useGridFocus`, `useTreeFocus`, `Media Theme`, `useImageMode`. Others are
+deferred until a consuming component needs them (`Syntax Theme`,
+`useClickableContainer`, `useEntryAnimation`, `useInputContainer`,
+`useListFocus`, `useKeyboardHint`, `useStreamingText`).

@@ -3,8 +3,8 @@
     "name": "Hero",
     "tier": "pattern",
     "group": "marketing",
-    "status": "beta",
-    "description": "Hero — production @dt component (Storybook beta).",
+    "status": "deprecated",
+    "description": "Configurable general-purpose page hero with heading, subtitle, optional image, and an actions slot across layout and background variants.",
     "dense": "General-purpose hero: title/subtitle/description, optional image and actions; layout variant, background, and align knobs.",
     "keywords": [
         "hero",
@@ -56,7 +56,7 @@
         "reviewed": true,
         "forcedColorsVerified": true,
         "ariaRequirements": [],
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-10 — Deprecated: no production consumers (barrel re-exports only, verified via computeConsumersForComponent); compose HeroSection or use a specialized hero instead."
     },
     "tokens": {
         "colors": [],
@@ -165,5 +165,6 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
-    ]
+    ],
+    "deprecatedReason": "Zero production consumers; superseded by HeroSection (layout primitive) and the specialized heroes (HomeHero, ProjectHero, ContactHero, AboutHero, ArticleHero, BlogHero). Also carries a nested-interactive defect (raw <a> wrapping <Button>) — use <Button href> in any successor."
 }

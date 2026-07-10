@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "display",
     "status": "beta",
-    "description": "DonnyAvatar — production @dt component (Storybook beta).",
+    "description": "The assistant's animated avatar with thinking, speaking, and idle mood states, used inside ChatWidget and Donny surfaces.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-donny-avatar",
     "radixPrimitive": null,
     "element": "div",

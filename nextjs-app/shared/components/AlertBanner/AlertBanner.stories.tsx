@@ -8,7 +8,7 @@ import Button from "@dt/Button";
 const meta: Meta<typeof AlertBanner> = {
   title: "Feedback/AlertBanner",
   component: AlertBanner,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -125,6 +125,24 @@ export const WithAction: Story = {
         Review settings
       </Button>
     ),
+  },
+};
+
+export const TextOnly: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "showIcon={false} drops the tone icon for a compact, text-only banner. The icon is always the semantic tone glyph — there is no per-instance icon override, so this boolean is the only icon control.",
+      },
+    },
+  },
+  args: {
+    tone: "info",
+    title: "Heads up",
+    description: "This is an informational message.",
+    showIcon: false,
   },
 };
 

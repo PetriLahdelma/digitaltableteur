@@ -1,0 +1,3 @@
+- text: Text Input
+- textbox "Text Input":
+  - /placeholder: Enter text

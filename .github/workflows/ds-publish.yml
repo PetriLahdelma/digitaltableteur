@@ -1,0 +1,135 @@
+name: DS npm Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Package to publish
+        required: true
+        type: choice
+        default: react
+        options:
+          - tokens
+          - tokens-css
+          - react
+          - all
+      dry_run:
+        description: Run npm publish --dry-run instead of publishing
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish selected design-system package
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Verify npm Trusted Publisher CLI support
+        run: |
+          node <<'NODE'
+          const { execFileSync } = require("node:child_process");
+          const version = execFileSync("npm", ["--version"], { encoding: "utf8" }).trim();
+          const [major, minor, patch] = version.split(".").map(Number);
+          const supported =
+            major > 11 || (major === 11 && (minor > 5 || (minor === 5 && patch >= 1)));
+          if (!supported) {
+            throw new Error(`npm ${version} is too old for Trusted Publisher OIDC; need >=11.5.1`);
+          }
+          console.log(`npm ${version} supports Trusted Publisher OIDC`);
+          NODE
+
+      - name: Prepare private npm read config
+        env:
+          NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
+        run: bash .github/scripts/write-npm-read-config.sh
+
+      - name: Install workspace dependencies
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci
+
+      - name: Verify Trusted Publisher configuration
+        run: npm run check:trusted-publisher
+
+      - name: Build and verify token packages
+        run: npm run check:token-packages
+
+      - name: Build and verify React package
+        run: npm run check:react-package
+
+      - name: Verify package metadata
+        run: npm run check:package-release-notes
+
+      - name: Verify registry package resolution
+        run: npm run check:package-registry-resolution
+
+      - name: Verify tarball contents
+        run: npm run check:package-tarballs
+
+      - name: Verify publish dry run
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm run check:package-publish-dry-run
+
+      - name: Verify local npm consumer install
+        run: npm run check:npm-consumer-install
+
+      - name: Verify React public surface
+        run: npm run check:react-public-surface
+
+      - name: Verify React public API
+        run: npm run check:react-public-api
+
+      - name: Verify React publish clearance record
+        if: ${{ inputs.package == 'react' || inputs.package == 'all' }}
+        run: npm run check:react-publish-clearance
+
+      - name: Verify React publishable public surface
+        if: ${{ inputs.package == 'react' || inputs.package == 'all' }}
+        run: npm run check:react-public-surface -- --require-publishable
+
+      - name: Verify @digitaltableteur/react OIDC publish auth
+        if: ${{ (inputs.package == 'react' || inputs.package == 'all') && inputs.dry_run == false }}
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react
+
+      - name: Publish @digitaltableteur/tokens
+        if: ${{ inputs.package == 'tokens' || inputs.package == 'all' }}
+        working-directory: packages/tokens
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
+          else
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/tokens --publish
+          fi
+
+      - name: Publish @digitaltableteur/tokens-css
+        if: ${{ inputs.package == 'tokens-css' || inputs.package == 'all' }}
+        working-directory: packages/tokens-css
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
+          else
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/tokens-css --publish
+          fi
+
+      - name: Publish @digitaltableteur/react
+        if: ${{ inputs.package == 'react' || inputs.package == 'all' }}
+        working-directory: packages/react
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
+          else
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react --publish
+          fi
+
+      - name: Verify @digitaltableteur/react registry install
+        if: ${{ (inputs.package == 'react' || inputs.package == 'all') && inputs.dry_run == false }}
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm run check:react-registry-install

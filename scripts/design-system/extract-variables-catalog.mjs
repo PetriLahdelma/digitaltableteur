@@ -5,6 +5,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import postcss from "postcss";
 import {
   SEMANTIC_CONTRAST_PAIRS,
   colorToRgb,
@@ -46,6 +47,7 @@ function inferUsage(name) {
     return `Internal spacing step ${step}: padding inside components.`;
   }
   if (name.startsWith("--font-size-")) return `Fluid type size token (${name.replace("--font-size-", "")}); uses clamp().`;
+  if (name === "--font-mono") return "Monospace font stack for code and technical UI.";
   if (name.startsWith("--line-height-")) return `Line-height for ${name.replace("--line-height-", "")} typography rhythm.`;
   if (name.startsWith("--tracking-")) return `Letter-spacing for ${name.replace("--tracking-", "")} display/heading styles.`;
   if (name.startsWith("--duration-")) return `Motion duration for ${name.replace("--duration-", "")} transitions.`;
@@ -60,6 +62,7 @@ function inferUsage(name) {
   if (name.startsWith("--focus-ring-")) return "Focus ring token for keyboard accessibility.";
   if (name.startsWith("--modal-") || name.startsWith("--gallery-")) return "Overlay or elevation token.";
   if (name.startsWith("--color-")) return `Color token (${name.replace("--color-", "")}).`;
+  if (name === "--home-gradient") return "Brand gradient used for expressive homepage and marketing treatments.";
   return "";
 }
 
@@ -89,36 +92,50 @@ function resolveGeneratedAt(nextCatalog) {
   return new Date().toISOString();
 }
 
-function parseProps(block) {
+function parsePropsFromRule(rule) {
   const props = {};
-  for (const line of block.split("\n")) {
-    const m = line.match(/^\s*(--[\w-]+)\s*:\s*([^;]+);/);
-    if (m) props[m[1]] = m[2].trim();
+  for (const node of rule?.nodes ?? []) {
+    if (node.type === "decl" && node.prop.startsWith("--")) {
+      props[node.prop] = node.value.trim();
+    }
   }
   return props;
 }
 
-function extractBlock(css, marker) {
-  const i = css.indexOf(marker);
-  if (i < 0) return "";
-  const brace = css.indexOf("{", i);
-  if (brace < 0) return "";
-  let depth = 0;
-  for (let j = brace; j < css.length; j++) {
-    const c = css[j];
-    if (c === "{") depth++;
-    else if (c === "}") {
-      depth--;
-      if (depth === 0) return css.slice(brace + 1, j);
-    }
-  }
-  return "";
+function selectorsFor(rule) {
+  return rule.selector.split(",").map((selector) => selector.trim());
 }
 
-function parseRootTokens(css) {
-  const chunks = css.split(":root {");
-  const body = (chunks.length >= 3 ? chunks[2] : chunks[1]).split("\n}")[0];
-  return parseProps(body);
+function parseStylesheet(css) {
+  return postcss.parse(css, { from: VARIABLES_CSS });
+}
+
+function findProductionRootRule(root) {
+  for (const node of root.nodes ?? []) {
+    if (node.type === "rule" && node.selector.trim() === ":root") {
+      return node;
+    }
+  }
+  throw new Error("Could not find top-level :root token block in variables.css");
+}
+
+function findThemeRule(root, className) {
+  for (const node of root.nodes ?? []) {
+    if (node.type !== "rule") continue;
+    const selectors = selectorsFor(node);
+    if (selectors.includes(`.${className}`) || selectors.includes(`.${className} :root`)) {
+      return node;
+    }
+  }
+  return null;
+}
+
+function parseRootTokens(root) {
+  return parsePropsFromRule(findProductionRootRule(root));
+}
+
+function parseThemeTokens(root, className) {
+  return parsePropsFromRule(findThemeRule(root, className));
 }
 
 function resolveToken(map, value, depth = 0) {
@@ -156,6 +173,7 @@ function auditContrast(themeMap, themeId) {
 function categorize(name) {
   if (name.startsWith("--color-") || name.startsWith("--accent-") || name.startsWith("--main-body") || name.startsWith("--link-") || name.startsWith("--logo-") || name.startsWith("--selection-"))
     return "color";
+  if (name === "--home-gradient") return "color";
   if (name.startsWith("--font-") || name.startsWith("--line-height") || name.startsWith("--tracking-") || name.startsWith("--font-weight"))
     return "typography";
   if (name.startsWith("--space-")) return "space";
@@ -192,7 +210,8 @@ const SUBGROUP = {
 
 function main() {
   const css = readFileSync(VARIABLES_CSS, "utf8");
-  const rootProps = parseRootTokens(css);
+  const root = parseStylesheet(css);
+  const rootProps = parseRootTokens(root);
   const baseEntries = Object.entries(rootProps);
 
   const themes = [
@@ -204,7 +223,7 @@ function main() {
 
   const contrastByTheme = {};
   for (const theme of themes) {
-    const overrides = theme.marker ? parseProps(extractBlock(css, theme.marker)) : {};
+    const overrides = theme.className ? parseThemeTokens(root, theme.className) : {};
     const map = buildThemeMap(rootProps, overrides);
     contrastByTheme[theme.id] = auditContrast(map, theme.id);
   }

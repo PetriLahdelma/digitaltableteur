@@ -1,0 +1,29 @@
+{
+  "name": "@digitaltableteur/tokens-css",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Theme-complete Digitaltableteur token CSS generated from production variables.css.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetriLahdelma/digitaltableteur.git",
+    "directory": "packages/tokens-css"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": "./dist/tokens.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./themes/*.css": "./dist/themes/*.css",
+    "./themes/*": "./dist/themes/*.css"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ]
+}

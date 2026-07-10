@@ -25,6 +25,17 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  // AspectRatio derives its height from its width via `aspect-ratio`; it has no
+  // intrinsic width. Storybook's `layout: "centered"` wrapper is shrink-to-fit,
+  // so without a definite-width ancestor the box collapses to 0x0 and nothing
+  // renders. This decorator gives every story a real width to size against.
+  decorators: [
+    (Story) => (
+      <div style={{ width: 400, maxWidth: "100%" }}>
+        <Story />
+      </div>
+    ),
+  ],
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts);
   // children keeps an authored text control (content slot).
   argTypes: {
@@ -91,24 +102,51 @@ export const RatioGallery: Story = {
   ),
 };
 
-/** Media inside should fill the box: width and height 100% with object-fit cover, so any source crops to the frame instead of distorting. */
+/** Media fills the frame with width/height 100% and object-fit cover, so a source of any ratio crops to the frame instead of distorting. The same 1:1 source is shown letterboxed (contain) then cropped (cover) in identical 16:9 frames so the clipped top/bottom edges are visible. */
 export const MediaFill: Story = {
   tags: ["example"],
   parameters: {
     controls: { disable: true },
-    docs: { description: { story: "Media inside should fill the box: width and height 100% with object-fit cover, so any source crops to the frame instead of distorting." } },
+    docs: { description: { story: "Media fills the frame with width/height 100% and object-fit cover, so a source of any ratio crops to the frame instead of distorting. The same square (1:1) source is shown two ways in identical 16:9 frames — contain reveals the whole source (note the top/bottom bands), cover fills the frame and clips those bands away." } },
   },
-  render: () => (
-    <div style={{ maxWidth: "20rem" }}>
-      <AspectRatio ratio="16:9">
-        <img
-          src="data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%23e2e8f0%27/%3E%3Ccircle cx=%27200%27 cy=%27120%27 r=%2760%27 fill=%27%2394a3b8%27/%3E%3C/svg%3E"
-          alt="Placeholder illustration cropped to a 16:9 frame"
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
-      </AspectRatio>
-    </div>
-  ),
+  render: () => {
+    // 1:1 source with labeled top/bottom bands, so the crop is visible when the
+    // square is fitted into a 16:9 frame. Data URI keeps it network-free and
+    // deterministic for snapshots.
+    const src =
+      "data:image/svg+xml;utf8,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27240%27%20height=%27240%27%3E%3Crect%20width=%27240%27%20height=%27240%27%20fill=%27%23e2e8f0%27/%3E%3Crect%20width=%27240%27%20height=%2736%27%20fill=%27%2364748b%27/%3E%3Crect%20y=%27204%27%20width=%27240%27%20height=%2736%27%20fill=%27%2364748b%27/%3E%3Ccircle%20cx=%27120%27%20cy=%27120%27%20r=%2756%27%20fill=%27%2394a3b8%27/%3E%3Ctext%20x=%27120%27%20y=%2725%27%20fill=%27%23ffffff%27%20font-family=%27sans-serif%27%20font-size=%2716%27%20text-anchor=%27middle%27%3Etop%20edge%3C/text%3E%3Ctext%20x=%27120%27%20y=%27226%27%20fill=%27%23ffffff%27%20font-family=%27sans-serif%27%20font-size=%2716%27%20text-anchor=%27middle%27%3Ebottom%20edge%3C/text%3E%3C/svg%3E";
+    const caption = {
+      margin: "0 0 0.375rem",
+      fontSize: "0.75rem",
+      color: "var(--color-muted, #64748b)",
+    } as const;
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+        <figure style={{ margin: 0 }}>
+          <figcaption style={caption}>object-fit: contain — whole 1:1 source, letterboxed</figcaption>
+          <AspectRatio ratio="16:9">
+            <div style={{ width: "100%", height: "100%", background: "var(--color-light-bg, #f1f5f9)" }}>
+              <img
+                src={src}
+                alt="Square source shown whole inside a 16:9 frame, with visible top and bottom bands"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
+            </div>
+          </AspectRatio>
+        </figure>
+        <figure style={{ margin: 0 }}>
+          <figcaption style={caption}>object-fit: cover — fills the frame, top and bottom cropped</figcaption>
+          <AspectRatio ratio="16:9">
+            <img
+              src={src}
+              alt="Square source cropped to fill a 16:9 frame; the top and bottom bands are clipped"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </AspectRatio>
+        </figure>
+      </div>
+    );
+  },
 };
 
 /** Because the height comes from the ratio, the frame reserves space before media loads — no layout shift; pair with Skeleton for the placeholder. */

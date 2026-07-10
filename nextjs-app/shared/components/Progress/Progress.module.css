@@ -1,7 +1,10 @@
 .root {
   position: relative;
   inline-size: 100%;
-  border-radius: var(--radius-md);
+
+  /* Pill radius (not a fixed px) so the track ends stay fully rounded at every
+     height — a fixed radius under-rounds the taller lg track. */
+  border-radius: var(--radius-full);
   background: var(--color-neutral-bg);
   overflow: hidden;
 }

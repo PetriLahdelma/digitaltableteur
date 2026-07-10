@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - text: Disabled Select
 - combobox "Disabled Select" [disabled]:
   - option "Option 1" [selected]

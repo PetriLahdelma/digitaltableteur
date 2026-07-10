@@ -10,12 +10,47 @@ import {
   RefreshCw,
   KeyRound,
 } from "lucide-react";
+import {
+  SiNextdotjs,
+  SiNpm,
+  SiReact,
+  SiStorybook,
+  SiTypescript,
+} from "react-icons/si";
 
+import { DESIGN_SYSTEM_PACKAGE_VERSIONS } from "@/nextjs-app/shared/data/designSystemPackageVersions";
 import { AboutHero } from "../AboutHero";
 import { ValuesSection, type ValueItem } from "../ValuesSection";
 import { StatsSection } from "../../patterns/StatsSection/StatsSection";
 import { ManifestoSection, type ManifestoToken } from "../ManifestoSection";
 import { CTASection } from "../CTASection";
+import styles from "./AboutPageContent.module.css";
+
+const TECH_STACK = [
+  { label: "React 19", Icon: SiReact },
+  { label: "TypeScript", Icon: SiTypescript },
+  { label: "Next.js 16", Icon: SiNextdotjs },
+  { label: "Storybook 10", Icon: SiStorybook },
+  { label: "npm", Icon: SiNpm },
+] as const;
+
+const DESIGN_SYSTEM_PACKAGES = [
+  {
+    name: "@digitaltableteur/react",
+    shortName: "react",
+    version: DESIGN_SYSTEM_PACKAGE_VERSIONS.react,
+  },
+  {
+    name: "@digitaltableteur/tokens",
+    shortName: "tokens",
+    version: DESIGN_SYSTEM_PACKAGE_VERSIONS.tokens,
+  },
+  {
+    name: "@digitaltableteur/tokens-css",
+    shortName: "tokens-css",
+    version: DESIGN_SYSTEM_PACKAGE_VERSIONS["tokens-css"],
+  },
+] as const;
 
 export interface AboutPageContentProps {
   /** Show CTA section at bottom */
@@ -332,6 +367,49 @@ export function AboutPageContent({
         separator="✕"
         background="transparent"
       />
+
+      <section
+        className={styles.versioningSection}
+        aria-labelledby="about-versioning-title"
+      >
+        <div className={styles.versioningInner}>
+          <h2 id="about-versioning-title" className={styles.visuallyHidden}>
+            {t("aboutVersioningTitle")}
+          </h2>
+
+          <ul
+            className={styles.stackLogos}
+            aria-label={t("aboutVersioningStackLabel")}
+          >
+            {TECH_STACK.map(({ label, Icon }) => (
+              <li
+                key={label}
+                className={styles.stackLogo}
+                title={label}
+                aria-label={label}
+              >
+                <Icon aria-hidden="true" />
+              </li>
+            ))}
+          </ul>
+
+          <dl className={styles.packageList}>
+            {DESIGN_SYSTEM_PACKAGES.map((pkg) => (
+              <div
+                key={pkg.name}
+                className={styles.packageItem}
+                aria-label={`${pkg.name} ${pkg.version}`}
+                title={`${pkg.name} ${pkg.version}`}
+              >
+                <dt className={styles.packageLabel}>{pkg.shortName}</dt>
+                <dd className={styles.packageVersionWrapper}>
+                  <pre className={styles.packageVersion}>{pkg.version}</pre>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
       {/* CTA Section */}
       {showCTA && (

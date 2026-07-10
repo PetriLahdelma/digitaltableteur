@@ -1,8 +1,8 @@
 .donnyBookingEmbed {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: var(--space-internal-12);
-  width: 100%;
 }
 
 .header {
@@ -27,39 +27,43 @@
 }
 
 .frameWrap {
-  overflow: auto;
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   background: var(--color-surface);
+  overflow: auto;
+}
+
+.loadingProgress {
+  padding: var(--space-layout-16);
 }
 
 .calEmbed {
   display: block;
-  width: 100%;
   min-block-size: 42rem;
+  width: 100%;
   overflow: auto;
 }
 
 .frame {
   display: block;
-  width: 100%;
-  min-block-size: 42rem;
   block-size: 42rem;
+  min-block-size: 42rem;
+  width: 100%;
   border: 0;
 }
 
 @media (width >= 768px) {
   .frame {
-    min-block-size: 36rem;
     block-size: 36rem;
+    min-block-size: 36rem;
   }
 }
 
 .fallback {
   display: flex;
+  padding: var(--space-layout-16);
   flex-direction: column;
   gap: var(--space-layout-8);
-  padding: var(--space-layout-16);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   background: var(--color-light-bg);
@@ -82,13 +86,13 @@
   align-self: flex-start;
   font-family: var(--font-sans);
   font-size: var(--font-size-body-xs);
-  color: var(--color-gray);
   text-decoration: none;
+  color: var(--color-gray);
 }
 
 .externalLink:hover {
-  color: var(--color-link);
   text-decoration: underline;
+  color: var(--color-link);
 }
 
 .externalLink:focus-visible {

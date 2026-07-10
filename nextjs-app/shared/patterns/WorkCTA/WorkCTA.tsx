@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { CTASection } from "../CTASection/CTASection";
 
 export interface WorkCTAProps {
@@ -13,7 +13,7 @@ export interface WorkCTAProps {
 }
 
 export function WorkCTA({ title, description, className }: WorkCTAProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   return (
     <CTASection

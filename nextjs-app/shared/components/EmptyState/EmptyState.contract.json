@@ -3,9 +3,9 @@
     "name": "EmptyState",
     "tier": "molecule",
     "group": "display",
-    "status": "alpha",
+    "status": "stable",
     "description": "Placeholder block for empty lists, zero search results, and first-run screens.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1014-192",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
@@ -15,12 +15,11 @@
                 "md",
                 "lg"
             ],
-            "default": "md"
+            "default": "md",
+            "propSourced": true
         }
     },
-    "slots": [
-        "children"
-    ],
+    "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
@@ -40,7 +39,9 @@
         "reducedMotion": true,
         "reviewed": true,
         "reviewedNote": "2026-07-03 — static block; heading semantics + decorative icon asserted in unit tests; axe clean.",
-        "forcedColorsVerified": true
+        "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [
@@ -169,5 +170,22 @@
         "Icon",
         "Button",
         "Card"
+    ],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
+            "since": "2026-06-04"
+        }
     ]
 }

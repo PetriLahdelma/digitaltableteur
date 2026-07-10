@@ -1,0 +1,78 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "SocialIconLink",
+    "tier": "atom",
+    "group": "navigation",
+    "status": "alpha",
+    "description": "Icon-only social or profile link with enforced accessible name and external-safety (target=_blank + rel) by default.",
+    "dense": "Icon-only anchor: required label, external-safe, token hover/focus, sm/md/lg hit targets.",
+    "keywords": [
+        "social",
+        "icon",
+        "link",
+        "external",
+        "profile",
+        "share"
+    ],
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "a",
+    "variants": {
+        "variant": {
+            "values": [
+                "plain",
+                "chip"
+            ],
+            "default": "plain"
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [
+        "children"
+    ],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Enter"
+        ],
+        "ariaRequirements": [
+            "label prop is the accessible name (aria-label); the icon child is aria-hidden",
+            "external links carry rel=noopener noreferrer"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-muted",
+            "--color-text",
+            "--focus-ring-color",
+            "--color-border"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12"
+        ]
+    },
+    "lightDarkVerified": false,
+    "schemaVersion": 2,
+    "displayName": "SocialIconLink",
+    "consumers": []
+}

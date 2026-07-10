@@ -7,7 +7,7 @@ import contract from "./EmptyState.contract.json";
 const meta = {
   title: "Content/EmptyState",
   component: EmptyState,
-  tags: ["alpha", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     layout: "padded",
     a11y: { test: "error" },
@@ -69,7 +69,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     docs: {
       description: { story: "Search empty state: icon, headline, and a way forward in the description." },
@@ -77,7 +77,7 @@ export const Default: Story = {
   },
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const WithAction: Story = {
   tags: ["example"],
@@ -149,6 +149,7 @@ export const ClearedFilters: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   render: () => (
     <EmptyState
@@ -160,6 +161,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   parameters: { a11y: { disable: true, test: "off" } },
 };

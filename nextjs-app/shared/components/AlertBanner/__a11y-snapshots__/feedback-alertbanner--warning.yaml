@@ -1,4 +1,5 @@
 - status: Work in progress (beta)
 - status:
-  - heading "Check details" [level=1]
+  - img "warning"
+  - strong: Check details
   - paragraph: There might be something you need to review.

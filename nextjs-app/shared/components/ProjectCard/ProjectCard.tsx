@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { Link } from "../../lib/linkComponent";
+import { Image } from "../../lib/imageComponent";
+import { cn } from "../../lib/cn";
 
 export interface ProjectCardProps {
   /** Project title */
@@ -30,6 +30,13 @@ const aspectRatioClasses: Record<NonNullable<ProjectCardProps["aspectRatio"]>, s
   landscape: "aspect-[4/3]",
 };
 
+/**
+ * Basic portfolio project card for the work grid: a clickable thumbnail with
+ * the project title, optional category eyebrow and up to three tags. The title
+ * can sit over the image (`overlay`) or beneath it (`below`), and the thumbnail
+ * frame follows the chosen `aspectRatio`. EnhancedProjectCard is the richer
+ * variant — pick one per surface.
+ */
 export function ProjectCard({
   title,
   slug,
@@ -59,12 +66,13 @@ export function ProjectCard({
       >
         <Image
           src={thumbnail}
-          alt={title}
+          alt="" // Decorative — the card always renders the title as text
           fill
           className={cn(
             "object-cover",
             "transition-transform duration-500 ease-out",
-            "group-hover:scale-105"
+            "group-hover:scale-105",
+            "motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           )}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
@@ -76,7 +84,8 @@ export function ProjectCard({
               "absolute inset-0",
               "bg-gradient-to-t from-black/80 via-black/20 to-transparent",
               "opacity-60 group-hover:opacity-90",
-              "transition-opacity duration-300"
+              "transition-opacity duration-300",
+              "motion-reduce:transition-none"
             )}
           />
         )}
@@ -88,7 +97,8 @@ export function ProjectCard({
               "absolute inset-x-0 bottom-0 p-6",
               "translate-y-2 group-hover:translate-y-0",
               "opacity-90 group-hover:opacity-100",
-              "transition-all duration-300"
+              "transition-all duration-300",
+              "motion-reduce:transition-none motion-reduce:translate-y-0"
             )}
           >
             {category && (
@@ -123,7 +133,7 @@ export function ProjectCard({
               {category}
             </span>
           )}
-          <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
+          <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors motion-reduce:transition-none">
             {title}
           </h3>
           {tags && tags.length > 0 && (

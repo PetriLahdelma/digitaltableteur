@@ -7,7 +7,7 @@ import { sampleSiteTree } from "./siteTreeSample";
 const meta: Meta<typeof SiteTree> = {
   title: "Site/SiteTree",
   component: SiteTree,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

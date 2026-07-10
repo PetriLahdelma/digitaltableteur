@@ -37,7 +37,7 @@
   - Design system MCP tools, resources, local stdio setup
 
 - **`PUBLIC_API.md`**
-  - `@dt/*` import policy and verification commands
+  - npm-served design-system public API, package boundary, and verification commands
 
 - **[`../AGENT_INDEX.md`](../AGENT_INDEX.md)**
   - Master index of areas, skills, and deep references

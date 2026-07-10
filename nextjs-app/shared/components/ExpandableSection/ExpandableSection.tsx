@@ -2,7 +2,7 @@
 
 import { useState, useRef, type ReactNode } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import styles from "./ExpandableSection.module.css";
 
 export interface ExpandableSectionProps {

@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 448,
+  "warningCount": 444,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -87,6 +87,24 @@
       "id": "nextjs-app/shared/components/AskAI/AskAI.module.css::415::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
       "file": "nextjs-app/shared/components/AskAI/AskAI.module.css",
       "line": 415,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Badge/Badge.module.css::193::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
+      "line": 193,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Button/Button.module.css::146::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "nextjs-app/shared/components/Button/Button.module.css",
+      "line": 146,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -255,6 +273,78 @@
       "text": "Expected selector \":global(.themeHCW) .toggleAvatar\" to come before selector \".toggle:hover .toggleAvatar\", at line 506 (no-descending-specificity)"
     },
     {
+      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::262::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
+      "line": 262,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::267::1::selector-max-specificity::Too high specificity in \".checkboxContainer input.checkbox:disabled:checked\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
+      "line": 267,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".checkboxContainer input.checkbox:disabled:checked\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::268::1::selector-max-specificity::Too high specificity in \".checkboxContainer input.checkbox:disabled:indeterminate\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
+      "line": 268,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".checkboxContainer input.checkbox:disabled:indeterminate\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::282::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
+      "line": 282,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::282::1::selector-max-specificity::Too high specificity in \".checkboxContainer input.checkbox:disabled:checked::after\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
+      "line": 282,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".checkboxContainer input.checkbox:disabled:checked::after\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::283::1::selector-max-specificity::Too high specificity in \".checkboxContainer .checkbox:disabled.checkedState::after\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
+      "line": 283,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".checkboxContainer .checkbox:disabled.checkedState::after\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::287::1::selector-max-specificity::Too high specificity in \".checkboxContainer input.checkbox:disabled:indeterminate::before\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
+      "line": 287,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".checkboxContainer input.checkbox:disabled:indeterminate::before\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::288::1::selector-max-specificity::Too high specificity in \".checkboxContainer .checkbox:disabled.indeterminateState::before\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
+      "line": 288,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".checkboxContainer .checkbox:disabled.indeterminateState::before\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
       "id": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css::106::13::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.module.css",
       "line": 106,
@@ -370,6 +460,15 @@
       "rule": "no-descending-specificity",
       "severity": "warning",
       "text": "Expected selector \".pre\" to come before selector \".single .pre\", at line 47 (no-descending-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::236::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
+      "line": 236,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)"
     },
     {
       "id": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css::135::22::declaration-no-important::Disallowed !important (declaration-no-important)",
@@ -579,229 +678,139 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::31::3::order/properties-order::Expected \"border\" to come before \"overflow\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 31,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border\" to come before \"overflow\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::39::3::order/properties-order::Expected \"min-block-size\" to come before \"width\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 39,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-block-size\" to come before \"width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::46::3::order/properties-order::Expected \"min-block-size\" to come before \"width\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 46,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-block-size\" to come before \"width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::47::3::order/properties-order::Expected \"block-size\" to come before \"min-block-size\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 47,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"min-block-size\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::5::3::order/properties-order::Expected \"width\" to come before \"gap\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 5,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"width\" to come before \"gap\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::54::5::order/properties-order::Expected \"block-size\" to come before \"min-block-size\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 54,
-      "column": 5,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"min-block-size\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::62::3::order/properties-order::Expected \"padding\" to come before \"gap\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 62,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"gap\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::86::3::order/properties-order::Expected \"text-decoration\" to come before \"color\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 86,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"text-decoration\" to come before \"color\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css::91::3::order/properties-order::Expected \"text-decoration\" to come before \"color\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.module.css",
-      "line": 91,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"text-decoration\" to come before \"color\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::316::43::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::244::43::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 316,
+      "line": 244,
       "column": 43,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::317::24::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::245::24::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 317,
+      "line": 245,
       "column": 24,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::318::42::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::246::42::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 318,
+      "line": 246,
       "column": 42,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::319::20::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::247::20::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 319,
+      "line": 247,
       "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::320::31::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::248::31::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 320,
+      "line": 248,
       "column": 31,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::324::48::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::252::48::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 324,
+      "line": 252,
       "column": 48,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::328::43::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::256::43::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 328,
+      "line": 256,
       "column": 43,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::329::46::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::257::46::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 329,
+      "line": 257,
       "column": 46,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::330::24::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::258::24::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 330,
+      "line": 258,
       "column": 24,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::331::33::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::259::33::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 331,
+      "line": 259,
       "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::332::20::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::260::20::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 332,
+      "line": 260,
       "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::333::25::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::261::25::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 333,
+      "line": 261,
       "column": 25,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::337::42::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::265::42::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 337,
+      "line": 265,
       "column": 42,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::338::48::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::266::48::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 338,
+      "line": 266,
       "column": 48,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::415::1::no-descending-specificity::Expected selector \".tipsList li\" to come before selector \".instructionList li:last-child\", at line 401 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::343::1::no-descending-specificity::Expected selector \".tipsList li\" to come before selector \".instructionList li:last-child\", at line 329 (no-descending-specificity)",
       "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 415,
+      "line": 343,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".tipsList li\" to come before selector \".instructionList li:last-child\", at line 401 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css::458::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
-      "file": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.module.css",
-      "line": 458,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)"
+      "text": "Expected selector \".tipsList li\" to come before selector \".instructionList li:last-child\", at line 329 (no-descending-specificity)"
     },
     {
       "id": "nextjs-app/shared/components/EnhancedArticleCard/EnhancedArticleCard.module.css::18::3::order/properties-order::Expected \"border-color\" to come before \"background-color\" (order/properties-order)",
@@ -1002,54 +1011,63 @@
       "text": "Expected \"display\" to come before \"position\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::53::3::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::41::3::order/properties-order::Expected \"font-weight\" to come before \"white-space\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 53,
+      "line": 41,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"font-weight\" to come before \"white-space\" (order/properties-order)"
+    },
+    {
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::57::3::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
+      "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
+      "line": 57,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::54::3::order/properties-order::Expected \"padding\" to come before \"block-size\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::58::3::order/properties-order::Expected \"padding\" to come before \"block-size\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 54,
+      "line": 58,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"padding\" to come before \"block-size\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::55::3::order/properties-order::Expected \"margin\" to come before \"padding\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::59::3::order/properties-order::Expected \"margin\" to come before \"padding\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 55,
+      "line": 59,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"margin\" to come before \"padding\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::57::3::order/properties-order::Expected \"clip-path\" to come before \"overflow\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::61::3::order/properties-order::Expected \"clip-path\" to come before \"overflow\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 57,
+      "line": 61,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"clip-path\" to come before \"overflow\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::58::3::order/properties-order::Expected \"white-space\" to come before \"clip-path\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::62::3::order/properties-order::Expected \"white-space\" to come before \"clip-path\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 58,
+      "line": 62,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"white-space\" to come before \"clip-path\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::59::3::order/properties-order::Expected \"border\" to come before \"white-space\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::63::3::order/properties-order::Expected \"border\" to come before \"white-space\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
-      "line": 59,
+      "line": 63,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -1389,9 +1407,9 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/Modal/Modal.module.css::232::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "id": "nextjs-app/shared/components/Modal/Modal.module.css::212::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
       "file": "nextjs-app/shared/components/Modal/Modal.module.css",
-      "line": 232,
+      "line": 212,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -1533,31 +1551,13 @@
       "text": "Disallowed property \"padding-left\" (property-disallowed-list)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css::3::3::order/properties-order::Expected \"margin\" to come before \"box-sizing\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css::33::3::property-disallowed-list::Disallowed property \"padding-left\" (property-disallowed-list)",
       "file": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css",
-      "line": 3,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin\" to come before \"box-sizing\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css::45::3::property-disallowed-list::Disallowed property \"padding-left\" (property-disallowed-list)",
-      "file": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css",
-      "line": 45,
+      "line": 33,
       "column": 3,
       "rule": "property-disallowed-list",
       "severity": "warning",
       "text": "Disallowed property \"padding-left\" (property-disallowed-list)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css::85::3::order/properties-order::Expected \"border-bottom\" to come before \"padding-bottom\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.module.css",
-      "line": 85,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border-bottom\" to come before \"padding-bottom\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.module.css::3::3::order/properties-order::Expected \"margin\" to come before \"box-sizing\" (order/properties-order)",
@@ -1599,24 +1599,6 @@
       "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::392::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
       "line": 392,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::402::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
-      "line": 402,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::436::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
-      "line": 436,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2397,6 +2379,69 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
+      "id": "nextjs-app/shared/components/Radio/Radio.module.css::30::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "nextjs-app/shared/components/Radio/Radio.module.css",
+      "line": 30,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::123::1::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 123,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::133::1::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 133,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::160::3::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 160,
+      "column": 3,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::161::3::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 161,
+      "column": 3,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::75::1::no-descending-specificity::Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 75,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::87::1::no-descending-specificity::Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 87,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)"
+    },
+    {
       "id": "nextjs-app/shared/components/SiteTree/SiteTree.module.css::42::3::order/properties-order::Expected \"padding-block\" to come before \"gap\" (order/properties-order)",
       "file": "nextjs-app/shared/components/SiteTree/SiteTree.module.css",
       "line": 42,
@@ -2440,6 +2485,24 @@
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"padding\" to come before \"min-height\" (order/properties-order)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Switch/Switch.module.css::66::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "nextjs-app/shared/components/Switch/Switch.module.css",
+      "line": 66,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)"
+    },
+    {
+      "id": "nextjs-app/shared/components/Switch/Switch.module.css::68::3::order/properties-order::Expected \"background-color\" to come before \"cursor\" (order/properties-order)",
+      "file": "nextjs-app/shared/components/Switch/Switch.module.css",
+      "line": 68,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"background-color\" to come before \"cursor\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/components/Tooltip/Tooltip.module.css::11::3::order/properties-order::Expected \"box-shadow\" to come before \"line-height\" (order/properties-order)",
@@ -2566,96 +2629,6 @@
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"font-family\" to come before \"text-align\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::15::3::order/properties-order::Expected \"padding\" to come before \"width\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 15,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::19::3::order/properties-order::Expected \"gap\" to come before \"background\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 19,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"gap\" to come before \"background\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::24::3::order/properties-order::Expected \"min-block-size\" to come before \"flex\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 24,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-block-size\" to come before \"flex\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::25::3::order/properties-order::Expected \"padding-block\" to come before \"min-block-size\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 25,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding-block\" to come before \"min-block-size\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::52::3::order/properties-order::Expected \"box-shadow\" to come before \"color\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 52,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"box-shadow\" to come before \"color\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::57::3::order/properties-order::Expected \"display\" to come before \"position\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 57,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"display\" to come before \"position\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::67::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 67,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::71::3::order/properties-order::Expected \"transform\" to come before \"inset-inline-end\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 71,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"transform\" to come before \"inset-inline-end\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::72::3::order/properties-order::Expected \"padding-block\" to come before \"transform\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 72,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding-block\" to come before \"transform\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css::94::3::order/properties-order::Expected \"padding\" to come before \"gap\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.module.css",
-      "line": 94,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"gap\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.module.css::114::3::order/properties-order::Expected \"align-self\" to come before \"gap\" (order/properties-order)",
@@ -3639,15 +3612,6 @@
       "text": "Expected \"white-space\" to come before \"color\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::420::3::order/properties-order::Expected \"padding-block\" to come before \"flex-shrink\" (order/properties-order)",
-      "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
-      "line": 420,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding-block\" to come before \"flex-shrink\" (order/properties-order)"
-    },
-    {
       "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::64::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#041b23\" of \"color\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
       "line": 64,
@@ -4008,27 +3972,27 @@
       "text": "Expected variable, function or keyword for \"none\" of \"forced-color-adjust\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::341::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::346::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 341,
+      "line": 346,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::416::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::421::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 416,
+      "line": 421,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"dark\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/styles/variables.css::610::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"light\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/styles/variables.css::615::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"light\" of \"color-scheme\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/styles/variables.css",
-      "line": 610,
+      "line": 615,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",

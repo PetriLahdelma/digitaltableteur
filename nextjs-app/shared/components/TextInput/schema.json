@@ -27,6 +27,12 @@
         "label": "helper text",
         "role": "text",
         "description": "Guidance or error message below input."
+      },
+      {
+        "id": "clearButton",
+        "label": "clear button",
+        "role": "button",
+        "description": "Optional ×-button (clearable prop) inside the field chrome; rendered only while the field has a value and is not disabled. Accessible name interpolates the field label (i18n key inputClearField)."
       }
     ]
   },
@@ -91,6 +97,10 @@
       {
         "trigger": "Input change (type=email)",
         "effect": "Validates email regex, updates inputValue, calls onChange, shows emailError if invalid."
+      },
+      {
+        "trigger": "Clear button click (clearable)",
+        "effect": "Empties the field, clears built-in validation errors, calls onValueChange('') and onClear(), returns focus to the input."
       }
     ],
     "feedback": {
@@ -160,6 +170,8 @@
     "Controlled component: parent manages value via onChange callback.",
     "onChange receives string (text) or number (type=number).",
     "Label has tooltip support (error message shown in tooltip).",
-    "i18n keys: inputValidationPhoneInvalid, inputValidationEmailInvalid."
+    "clearable renders a ×-button while the field has a value; onClear fires after clearing; focus returns to the input.",
+    "hideLabel visually hides the label but keeps it in the accessibility tree.",
+    "i18n keys: inputValidationPhoneInvalid, inputValidationEmailInvalid, inputClearField."
   ]
 }

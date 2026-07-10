@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BlogMediaImage } from "@dt/BlogMediaImage";
-import { isSvgSrc } from "@/lib/media/imageSrc";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
+import { isSvgSrc } from "../../lib/imageSrc";
+import { useLocalization } from "../../lib/translation";
+import { cn } from "../../lib/cn";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { TextReveal } from "../../components/animations/TextReveal";
@@ -60,12 +60,12 @@ export function ArticleHero({
   variant = "contained",
   className,
 }: ArticleHeroProps) {
-  const { i18n } = useTranslation();
+  const { language } = useLocalization();
   const isFullWidth = variant === "full-width";
   const isMinimal = variant === "minimal";
 
   const formattedDate = publishedAt
-    ? formatDate(publishedAt, i18n.language)
+    ? formatDate(publishedAt, language)
     : "";
 
   // Default avatar fallback

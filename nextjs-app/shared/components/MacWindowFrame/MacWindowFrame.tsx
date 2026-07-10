@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
@@ -59,7 +59,7 @@ export const MacWindowFrame: React.FC<MacWindowFrameProps> = ({
   children,
   className = "",
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const hasAction = Boolean(onAction);
 
   return (

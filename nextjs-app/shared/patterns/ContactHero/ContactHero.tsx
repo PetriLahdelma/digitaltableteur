@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { TextReveal } from "../../components/animations/TextReveal";

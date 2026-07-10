@@ -19,7 +19,7 @@ See [`docs/adr/0005-dsharp-parity-baseline.md`](../../../../docs/adr/0005-dsharp
 
 Draft JSON from early parity work was **not** extracted from production (e.g. invented `--color-accent: #e85d04`). It must not be imported at runtime.
 
-Future: export *from* `variables.css` into DTCG JSON, review in PR, then optionally publish.
+Current package-boundary work exports *from* `variables.css` into DTCG JSON and private workspace packages for review. Publishing stays behind the roadmap publish checkpoint.
 
 ## Build
 
@@ -40,3 +40,5 @@ Future: export *from* `variables.css` into DTCG JSON, review in PR, then optiona
 | `foundations/dist/tokens-manifest.json` | Compact manifest for agents |
 | `foundations/dist/agent-manifest.json` | Components + token summary |
 | `app/tailwind.css` (DT-THEME block) | Tailwind `dt-*` utilities |
+| `packages/tokens/dist/` | Private `@digitaltableteur/tokens` workspace package output |
+| `packages/tokens-css/dist/` | Private `@digitaltableteur/tokens-css` token/theme CSS projection |

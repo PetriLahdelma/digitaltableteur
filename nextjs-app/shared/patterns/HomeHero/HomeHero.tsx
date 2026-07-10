@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { HeroSection } from "../HeroSection";
 import { HeroBackground } from "../../components/HeroBackground";
 import { KineticTitle } from "../../components/animations/KineticTitle";
@@ -11,7 +11,7 @@ import { ScrollIndicator } from "../../components/ScrollIndicator";
 import { Container } from "../../components/Container";
 import { Stack } from "../../components/Stack";
 import Button from "@dt/Button";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 function pickRandomIndex(length: number): number {
   if (length <= 1) return 0;
@@ -39,7 +39,7 @@ export function HomeHero({
   scrollTargetId = "services",
   className,
 }: HomeHeroProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const titleOptions = useMemo(
     () =>
@@ -47,7 +47,7 @@ export function HomeHero({
         t("homeHeroGradientTitleOptions", {
           returnObjects: true,
           defaultValue: [],
-        }),
+        }) as unknown,
       ),
     [t],
   );
@@ -58,7 +58,7 @@ export function HomeHero({
         t("homeHeroSubtextOptions", {
           returnObjects: true,
           defaultValue: [],
-        }),
+        }) as unknown,
       ),
     [t],
   );

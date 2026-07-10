@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./PersonCard.module.css";
 import Text from "@dt/Text";
 import Link from "@dt/Link";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
 import Skeleton from "@dt/Skeleton";
 
@@ -69,7 +69,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
   imageDecoding = "async",
   loading = false,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const resolvedSizes =
     imageSizes ?? "(max-width: 768px) 240px, (max-width: 1024px) 180px, 96px";
 

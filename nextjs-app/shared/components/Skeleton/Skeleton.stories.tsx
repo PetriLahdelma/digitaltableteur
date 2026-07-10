@@ -7,7 +7,7 @@ const meta: Meta<typeof Skeleton> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Feedback/Skeleton",
   component: Skeleton,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

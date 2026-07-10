@@ -4,7 +4,7 @@ import Title from "@dt/Title";
 import Text from "@dt/Text";
 import { DonnyAvatar, type DonnyState } from "@dt/DonnyAvatar";
 import styles from "./ChatWidget.module.css";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
 
 /**
@@ -61,7 +61,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   enableSleepDetection = false,
   currentDate,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const tagline = t("chatTagline", "DT Donny");
   const minimizeAriaLabel = t("chatMinimizeAria", "Minimize chat");
 

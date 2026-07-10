@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import type { Icon, Map as LeafletMap } from "leaflet";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import Button from "@dt/Button";
 import { ExternalLink, MapPin } from "lucide-react";
 
@@ -28,7 +28,7 @@ export interface StudioMapProps {
  * - Lightweight lazy loading of Leaflet
  */
 export function StudioMap({ compact = true, className }: StudioMapProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [isMapReady, setIsMapReady] = useState(false);
   const mapRef = useRef<LeafletMap | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);

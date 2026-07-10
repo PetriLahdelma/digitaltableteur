@@ -1,15 +1,15 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import Link from "next/link";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
+import { Link as RouterLink } from "../../lib/linkComponent";
 import { gsap } from "gsap";
-import { cn } from "@/lib/utils";
-import { NavLink } from "@/nextjs-app/shared/components/NavLink";
-import { IconButton } from "@/nextjs-app/shared/components/IconButton";
+import { cn } from "../../lib/cn";
+import { NavLink } from "../../components/NavLink";
+import { IconButton } from "../../components/IconButton";
 import { X, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
 import type { NavItem } from "./SiteHeader";
-import type { Theme } from "@dt/ThemeProvider";
+import type { Theme } from "../../components/ThemeProvider";
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -37,7 +37,7 @@ export function MobileDrawer({
   onThemeToggle,
   theme,
 }: MobileDrawerProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const backdropRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
@@ -229,18 +229,18 @@ export function MobileDrawer({
 
           {/* Legal Links */}
           <div className="flex gap-4 pt-2">
-            <Link
+            <RouterLink
               href="/privacy-policy"
               className="font-body text-text-s text-muted-foreground hover:text-foreground"
             >
               {t("navMenuCookiePolicy")}
-            </Link>
-            <Link
+            </RouterLink>
+            <RouterLink
               href="/ai-use"
               className="font-body text-text-s text-muted-foreground hover:text-foreground"
             >
               {t("navMenuAiUsage")}
-            </Link>
+            </RouterLink>
           </div>
         </div>
       </div>

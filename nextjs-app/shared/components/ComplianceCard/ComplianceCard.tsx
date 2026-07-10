@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Card from "@dt/Card";
 import Icon from "@dt/Icon";
 import Title from "@dt/Title";
@@ -46,7 +46,7 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
   className,
   lastReviewed,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const formattedDate = React.useMemo(() => {
     if (!lastReviewed) return null;

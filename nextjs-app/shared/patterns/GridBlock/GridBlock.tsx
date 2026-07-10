@@ -129,9 +129,9 @@ function GridBlock({
                   <Image
                     src={cell.src}
                     alt={altText}
-                    layout="responsive"
                     width={cell.width || 1184}
                     height={cell.height || 500}
+                    sizes="(max-width: 768px) 100vw, 1184px"
                     style={{
                       width: "100%",
                       height: "auto",

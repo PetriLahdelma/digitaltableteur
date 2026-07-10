@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useLocalization } from "../../lib/translation";
 import styles from "./HelsinkiClock.module.css";
 
 type DateParts = {
@@ -84,7 +84,7 @@ const getHelsinkiTimeZoneLabel = (date: Date) => {
 }
 
 const HelsinkiClock: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { translate: t, language, resolvedLanguage } = useLocalization();
   const [helsinki, setHelsinki] = useState<{
     dateParts: DateParts;
     time: string;
@@ -108,11 +108,7 @@ const HelsinkiClock: React.FC = () => {
 
   // Use translation key for Helsinki (helsinki, helsinkiFI, helsinkiSV)
   let helsinkiKey = "helsinki";
-  const languageCode = (
-    i18n.resolvedLanguage ||
-    i18n.language ||
-    "en"
-  ).split("-")[0];
+  const languageCode = (resolvedLanguage || language || "en").split("-")[0];
   if (languageCode === "fi") helsinkiKey = "helsinkiFI";
   if (languageCode === "sv") helsinkiKey = "helsinkiSV";
 

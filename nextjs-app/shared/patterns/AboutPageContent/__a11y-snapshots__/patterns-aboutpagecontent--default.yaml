@@ -1,0 +1,83 @@
+- heading "Our approach" [level=1]
+- paragraph: Design-led AI consultancy helping product leaders build complex SaaS
+- button "Scroll to content"
+- heading "What we bring" [level=2]
+- paragraph: Expertise shaped by years of building products that matter
+- article:
+  - heading "Design Excellence" [level=3]
+  - paragraph: From strategy to identity and interface, we focus on clarity and expression so every product has personality.
+- article:
+  - heading "Technical Craft" [level=3]
+  - paragraph: We build websites and digital tools with care, combining modern technology and a deep attention to craft.
+- article:
+  - heading "True Partnership" [level=3]
+  - paragraph: Working closely with clients, we turn ideas into memorable products that shape culture and create impact.
+- article:
+  - heading "AI Integration" [level=3]
+  - paragraph: We craft bespoke AI solutions that responsibly accelerate innovation and deliver long-term value.
+- article:
+  - heading "Design Systems" [level=3]
+  - paragraph: We build scalable design systems that ensure consistency, speed up development and grow with your product.
+- article:
+  - heading "Attention to Detail" [level=3]
+  - paragraph: Every pixel, every interaction matters. We obsess over the details that make products feel effortless.
+- term: Years of experience
+- definition: 20+
+- term: Design system components built
+- definition: 8K+
+- term: Projects delivered
+- definition: 300+
+- heading "How we deliver at scale" [level=2]
+- paragraph: Senior-led, networked and built to outlast the engagement.
+- article:
+  - heading "Senior-led Delivery" [level=3]
+  - paragraph: Every engagement is led hands-on by senior practitioners. You work with the people who do the work, not a layer of account managers.
+- article:
+  - heading "Vast Network" [level=3]
+  - paragraph: A trusted network of specialists scales the team up or down to match your program without compromising on craft.
+- article:
+  - heading "Governance & Adoption Playbooks" [level=3]
+  - paragraph: Co-governance models, contribution guidelines and structured onboarding so the system keeps delivering long after launch.
+- article:
+  - heading "Continuity by Design" [level=3]
+  - paragraph: Documentation, versioning and clean handover mean delivery never depends on a single person being available.
+- article:
+  - heading "You Own the IP" [level=3]
+  - paragraph: You keep full ownership of the code, design and tokens we build together. No lock-in, no licensing games.
+- heading "Strategy to scale" [level=2]
+- paragraph: A compact operating model for teams that need direction, delivery and a system that keeps working after launch.
+- article:
+  - heading "Diagnose" [level=3]
+  - paragraph: Audit the product, system and delivery model. Find the friction before writing the brief.
+- article:
+  - heading "Shape" [level=3]
+  - paragraph: "Turn the opportunity into a product spine: buyer context, flows, principles, scope and proof points."
+- article:
+  - heading "Build" [level=3]
+  - paragraph: Design and implement the working surface. Components, content, prototypes and code move together.
+- article:
+  - heading "Scale" [level=3]
+  - paragraph: "Leave governance behind: tokens, Storybook, adoption notes, release habits and backlog logic your team can run."
+- heading "Manifesto" [level=2]
+- paragraph: Digitaltableteur is No-Fluff Thinking AI-Powered Craft Design Systems Done Right Standards So High They Hurt Creativity With Structure Structure With Freedom Technology With Taste Human Insight Over Hype Pushing Boundaries Staying Curious Making Products Feel Effortless.
+- region "Design system packages":
+  - heading "Design system packages" [level=2]
+  - list "Current Digitaltableteur technology stack":
+    - listitem "React 19"
+    - listitem "TypeScript"
+    - listitem "Next.js 16"
+    - listitem "Storybook 10"
+    - listitem "npm"
+  - term: react
+  - definition: 0.1.4
+  - term: tokens
+  - definition: 0.1.0
+  - term: tokens-css
+  - definition: 0.1.0
+- region "Ready to build something great?":
+  - heading "Ready to build something great?" [level=2]
+  - paragraph: Let's discuss your next project and explore how we can help bring your vision to life.
+  - link "Get in touch":
+    - /url: /contact
+  - link "See our work":
+    - /url: /work

@@ -3,7 +3,7 @@
     "name": "Skeleton",
     "tier": "atom",
     "group": "feedback",
-    "status": "beta",
+    "status": "stable",
     "description": "Loading placeholder that mirrors the layout of incoming content.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skeleton",
     "radixPrimitive": null,
@@ -39,14 +39,32 @@
             "role=status with aria-label naming what is loading",
             "shimmer suppressed under prefers-reduced-motion"
         ],
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "reviewedNote": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified; accessibility tree and real-browser forced-colors confirmed in Storybook.",
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "variant": {

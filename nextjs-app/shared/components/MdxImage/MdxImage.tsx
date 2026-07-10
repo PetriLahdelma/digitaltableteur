@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { isSvgSrc } from "@/lib/media/imageSrc";
+import { cn } from "../../lib/cn";
+import { isSvgSrc } from "../../lib/imageSrc";
 import { BlogMediaImage } from "@dt/BlogMediaImage";
 
 export interface MdxImageProps {

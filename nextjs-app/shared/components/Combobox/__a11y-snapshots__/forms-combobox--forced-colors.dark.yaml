@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - text: Timeline
 - combobox "Timeline": ASAP
 - button "Toggle options"

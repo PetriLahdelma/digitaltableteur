@@ -6,13 +6,20 @@ import HighlightSection from "./HighlightSection";
 
 expect.extend(toHaveNoViolations);
 
-// Mock i18next
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string) => key,
-    i18n: { language: "en" },
-  }),
-}));
+// Mock the package translation adapter, not the app's i18next runtime.
+vi.mock("../../lib/translation", () => {
+  const t = (key: string) => key;
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 describe("HighlightSection", () => {
   describe("Rendering", () => {

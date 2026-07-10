@@ -7,11 +7,11 @@ const useAnimationContextMock = vi.fn(() => ({
   isReady: true,
 }));
 
-vi.mock("@/providers/AnimationProvider", () => ({
+vi.mock("../../../lib/animation", () => ({
   useAnimationContext: () => useAnimationContextMock(),
 }));
 
-vi.mock("@/nextjs-app/shared/lib/gsap", () => ({
+vi.mock("../../../lib/gsap", () => ({
   gsap: {
     fromTo: vi.fn(),
   },

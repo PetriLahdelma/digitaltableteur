@@ -11,7 +11,7 @@ import { useBlogFilter } from "../../hooks/useBlogFilter";
 import { getBlogPosts, type BlogPostEntry } from "../../data/blogPosts";
 import { getAuthorBySlug } from "../../data/authors";
 import type { EnhancedArticleCardProps } from "../../components/EnhancedArticleCard";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 
 export interface BlogIndexContentProps {
   /** Number of posts per page */

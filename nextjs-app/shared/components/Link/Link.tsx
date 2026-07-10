@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Link.module.css";
-import "../../styles/variables.css";
 import Icon from "@dt/Icon";
 
 export interface LinkProps
@@ -15,12 +14,17 @@ export interface LinkProps
   underline?: "always" | "hover" | "none";
 }
 
-const INTERNAL_HOST = "digitaltableteur.com";
 const ALLOWED_PROTOCOLS = new Set(["http:", "https:", "mailto:", "tel:"]);
-const INTERNAL_URL_BASE = "https://www.digitaltableteur.com";
+const URL_PARSE_BASE = "https://example.invalid";
 
-function isInternalHostname(hostname: string): boolean {
-  return hostname === INTERNAL_HOST || hostname.endsWith(`.${INTERNAL_HOST}`);
+function getCurrentOrigin(): string | null {
+  return typeof window !== "undefined" && window.location.origin
+    ? window.location.origin
+    : null;
+}
+
+function getUrlParseBase(): string {
+  return getCurrentOrigin() ?? URL_PARSE_BASE;
 }
 
 function normalizeHref(href: string): string {
@@ -41,7 +45,7 @@ function normalizeHref(href: string): string {
   }
 
   try {
-    const parsed = new URL(trimmedHref, INTERNAL_URL_BASE);
+    const parsed = new URL(trimmedHref, getUrlParseBase());
 
     if (!ALLOWED_PROTOCOLS.has(parsed.protocol)) {
       return "#";
@@ -69,7 +73,7 @@ function isExternalHref(href: string): boolean {
   }
 
   try {
-    const parsed = new URL(href, INTERNAL_URL_BASE);
+    const parsed = new URL(href, getUrlParseBase());
 
     if (!ALLOWED_PROTOCOLS.has(parsed.protocol)) {
       return false;
@@ -79,7 +83,8 @@ function isExternalHref(href: string): boolean {
       return false;
     }
 
-    return !isInternalHostname(parsed.hostname);
+    const currentOrigin = getCurrentOrigin();
+    return currentOrigin ? parsed.origin !== currentOrigin : true;
   } catch {
     return false;
   }

@@ -3,12 +3,22 @@
     "name": "Menu",
     "tier": "molecule",
     "group": "overlay",
-    "status": "alpha",
+    "status": "stable",
     "description": "Radix dropdown-menu primitive set (Menu, Trigger, Content, Item, Sub) shared by Avatar and SplitButton.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1015-180",
     "radixPrimitive": "@radix-ui/react-dropdown-menu",
     "element": "div",
-    "variants": {},
+    "variants": {
+        "align": {
+            "values": [
+                "start",
+                "center",
+                "end"
+            ],
+            "default": "start",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [
@@ -73,8 +83,10 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-05 (alpha) — keyboard open/arrow/Home/End/typeahead/Escape/focus-return and item select are provided by Radix DropdownMenu and asserted end to end in the Storybook Example play (real browser via test-storybook); item select + disabled + href-as-anchor + axe-clean-while-open covered in unit tests. Light + dark eyeballed in Storybook (white/near-black surface tracks the theme, --color-neutral-bg highlight reads in both); emulated forced-colors shows a CanvasText-bordered Canvas surface with Highlight/HighlightText selection and GrayText disabled items; open/close animation drops under prefers-reduced-motion.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-05 (alpha) — keyboard open/arrow/Home/End/typeahead/Escape/focus-return and item select are provided by Radix DropdownMenu and asserted end to end in the Storybook Example play (real browser via test-storybook); item select + disabled + href-as-anchor + axe-clean-while-open covered in unit tests. Light + dark eyeballed in Storybook (white/near-black surface tracks the theme, --color-neutral-bg highlight reads in both); emulated forced-colors shows a CanvasText-bordered Canvas surface with Highlight/HighlightText selection and GrayText disabled items; open/close animation drops under prefers-reduced-motion. 2026-07-06 (beta→stable) — independently re-verified the OPEN menu (Default + WithSubmenu) in a real browser via Playwright: light/dark flip both the trigger and the portaled surface, and forced-colors draws a visible CanvasText border with a real separator (not shadow-only). 4-mode AT snapshots refreshed and compare-clean; realBrowserForcedColorsVerified + accessibilityTreeVerified set true.",
+        "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [
@@ -213,5 +225,67 @@
         "SplitButton",
         "Icon",
         "Kbd"
+    ],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
+            "since": "2026-06-04"
+        }
     ]
 }

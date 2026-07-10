@@ -1,11 +1,16 @@
 import React, { forwardRef } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
+import Icon from "@dt/Icon";
 import styles from "./Tabs.module.css";
 
 export interface TabItem {
   key: string;
   label: string;
   disabled?: boolean;
+  /** Leading glyph: a Phosphor icon name (e.g. "house") or a rendered node. Decorative. */
+  icon?: React.ReactNode | string;
+  /** Trailing count pill (e.g. unread total). Part of the tab's accessible name. */
+  count?: number;
 }
 
 export interface TabsProps {
@@ -18,14 +23,41 @@ export interface TabsProps {
   size?: "sm" | "md" | "lg";
 
   // EXISTING PROPS
-  /** Array of tab items with key, label, and optional disabled state. */
+  /** Array of tab items with key, label, optional disabled/icon/count. */
   tabs: TabItem[];
   /** Called with the clicked tab's key. */
   onTabChange?: (key: string) => void;
   /** Optional utility classes on the tablist. */
   className?: string;
+  /** Accessible label for the tablist. @default "Navigate between tabs" */
+  ariaLabel?: string;
   /** Visual style variant. @default "default" */
   variant?: "default" | "pills" | "underline";
+}
+
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
+
+const ICON_PX: Record<NonNullable<TabsProps["size"]>, number> = {
+  sm: 16,
+  md: 18,
+  lg: 20,
+};
+
+/** Leading icon: Phosphor name → <Icon>, otherwise render the node as-is. */
+function renderTabIcon(
+  icon: React.ReactNode | string,
+  size: NonNullable<TabsProps["size"]>,
+): React.ReactNode {
+  if (icon == null || icon === false) return null;
+  if (typeof icon === "string") {
+    const trimmed = icon.trim();
+    if (!trimmed) return null;
+    return (
+      <Icon name={trimmed} size={ICON_PX[size]} decorative color="currentColor" />
+    );
+  }
+  return icon;
 }
 
 /**
@@ -55,7 +87,7 @@ export interface TabsProps {
  * ```
  */
 
-/** Tablist navigation with keyboard support and visual variants. */
+/** Tablist navigation with keyboard support and a sliding selection indicator. */
 const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
   {
     activeTab,
@@ -64,11 +96,12 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
     tabs,
     onTabChange,
     className = "",
+    ariaLabel,
     variant = "default",
   },
   ref,
 ) {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   // Tab state (uncontrolled fallback)
   const [internalTab, setInternalTab] = React.useState(
@@ -78,6 +111,56 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
   // "" is treated as absent (tab keys are never empty): a seeded/cleared
   // activeTab control must not freeze the tablist into controlled-nothing.
   const effectiveActiveTab = activeTab || internalTab;
+
+  // Sliding indicator geometry, measured from the selected tab. Bridged into
+  // CSS via custom properties so all visual styling stays in the module.
+  const listRef = React.useRef<HTMLDivElement | null>(null);
+  const tabRefs = React.useRef<Record<string, HTMLButtonElement | null>>({});
+  const [indicator, setIndicator] = React.useState({ x: 0, w: 0, ready: false });
+
+  const setListRef = React.useCallback(
+    (node: HTMLDivElement | null) => {
+      listRef.current = node;
+      if (typeof ref === "function") ref(node);
+      else if (ref) ref.current = node;
+    },
+    [ref],
+  );
+
+  const measure = React.useCallback(() => {
+    const active = tabRefs.current[effectiveActiveTab];
+    if (!listRef.current || !active) return;
+    // offsetLeft/offsetWidth are relative to the positioned tablist and are
+    // unaffected by the indicator's own transform — stable across animations.
+    setIndicator({ x: active.offsetLeft, w: active.offsetWidth, ready: true });
+  }, [effectiveActiveTab]);
+
+  useIsomorphicLayoutEffect(() => {
+    measure();
+  }, [measure, tabs, size, variant]);
+
+  React.useEffect(() => {
+    const list = listRef.current;
+    if (!list || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(() => measure());
+    observer.observe(list);
+    return () => observer.disconnect();
+  }, [measure]);
+
+  React.useEffect(() => {
+    // Label widths shift once the web font swaps in — re-measure then.
+    const fonts = (
+      document as Document & { fonts?: { ready: Promise<unknown> } }
+    ).fonts;
+    if (!fonts?.ready) return;
+    let cancelled = false;
+    fonts.ready.then(() => {
+      if (!cancelled) measure();
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [measure]);
 
   const handleTabClick = (key: string, disabled?: boolean) => {
     if (disabled) return;
@@ -126,10 +209,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
     // Focus the target tab
     const targetTab = tabs[targetIndex];
     if (targetTab && !targetTab.disabled) {
-      const tabElement = document.querySelector(
-        `[data-tab-key="${targetTab.key}"]`,
-      ) as HTMLButtonElement;
-      tabElement?.focus();
+      tabRefs.current[targetTab.key]?.focus();
     }
   };
 
@@ -139,7 +219,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
 
   return (
     <div
-      ref={ref}
+      ref={setListRef}
       className={[
         styles.tabs,
         styles[variant],
@@ -149,16 +229,27 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         .filter(Boolean)
         .join(" ")}
       role="tablist"
-      aria-label={t("tabs.navigation", "Navigate between tabs")}
+      aria-label={ariaLabel ?? t("tabs.navigation", "Navigate between tabs")}
+      data-indicator-ready={indicator.ready ? "true" : "false"}
+      style={
+        {
+          "--tab-ind-x": `${indicator.x}px`,
+          "--tab-ind-w": `${indicator.w}px`,
+        } as React.CSSProperties
+      }
     >
       {tabs.map((tab, index) => {
         const isActive = tab.key === effectiveActiveTab;
         const isDisabled = tab.disabled;
+        const icon = renderTabIcon(tab.icon, size);
 
         return (
           <button
             key={tab.key}
             id={`tab-${tab.key}`}
+            ref={(el) => {
+              tabRefs.current[tab.key] = el;
+            }}
             data-tab-key={tab.key}
             role="tab"
             type="button"
@@ -176,13 +267,23 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
             onClick={() => handleTabClick(tab.key, isDisabled)}
             onKeyDown={(e) => handleKeyDown(e, tab.key, index, isDisabled)}
           >
+            {icon && (
+              <span className={styles.tabIcon} aria-hidden="true">
+                {icon}
+              </span>
+            )}
             <span className={styles.tabLabel}>{tab.label}</span>
-            {variant === "underline" && (
-              <span className={styles.tabIndicator} aria-hidden="true" />
+            {typeof tab.count === "number" && (
+              <span className={styles.count}>{tab.count}</span>
             )}
           </button>
         );
       })}
+      <span
+        className={styles.indicator}
+        data-tab-indicator
+        aria-hidden="true"
+      />
     </div>
   );
 });

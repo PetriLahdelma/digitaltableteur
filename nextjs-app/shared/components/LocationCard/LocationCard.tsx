@@ -1,7 +1,7 @@
 "use client";
 
 import { MapPin, Mail, Phone } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
 import { FadeIn } from "../animations/FadeIn";
 
 export interface LocationCardProps {
