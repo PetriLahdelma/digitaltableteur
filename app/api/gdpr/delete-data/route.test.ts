@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { NextRequest } from "next/server";
 
 import { checkRateLimit } from "../../../lib/rate-limit";
+import { getDatabase } from "../../../lib/mongodb";
 import { POST } from "./route";
 
 vi.mock("../../../lib/rate-limit", () => ({
@@ -82,5 +83,40 @@ describe("GDPR deletion route rate limits", () => {
     expect(checkRateLimitMock.mock.calls[1]?.[0]).toEqual(
       expect.objectContaining({ scope: "gdpr:email" }),
     );
+  });
+});
+
+describe("GDPR deletion audit trail", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("stores a data-minimised audit record (no user agent, truncated IP, TTL index)", async () => {
+    checkRateLimitMock.mockResolvedValue({
+      limited: false,
+      retryAfterSeconds: 0,
+      remaining: 9,
+      source: "mongodb",
+    });
+
+    const insertOne = vi.fn().mockResolvedValue({ insertedId: "x" });
+    const createIndex = vi.fn().mockResolvedValue("requestedAt_1");
+    const deleteMany = vi.fn().mockResolvedValue({ deletedCount: 2 });
+    vi.mocked(getDatabase).mockResolvedValue({
+      collection: (name: string) =>
+        name === "contacts" ? { deleteMany } : { insertOne, createIndex },
+    } as unknown as Awaited<ReturnType<typeof getDatabase>>);
+
+    const response = await POST(createDeletionRequest());
+
+    expect(response.status).toBe(200);
+    expect(createIndex).toHaveBeenCalledWith(
+      { requestedAt: 1 },
+      expect.objectContaining({ expireAfterSeconds: expect.any(Number) }),
+    );
+    const record = insertOne.mock.calls[0]?.[0];
+    expect(record.email).toBe("person@example.com");
+    expect(record.requestIp).toBe("203.0.113.0");
+    expect(record).not.toHaveProperty("requestUserAgent");
   });
 });
