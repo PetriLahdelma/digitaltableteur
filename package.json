@@ -351,7 +351,7 @@
     "storybook": "^10.4.6",
     "style-dictionary": "^4.4.0",
     "stylelint": "^17.14.0",
-    "stylelint-config-standard": "^39.0.1",
+    "stylelint-config-standard": "^40.0.0",
     "stylelint-declaration-strict-value": "^1.11.1",
     "stylelint-order": "^8.1.1",
     "stylelint-plugin-rhythmguard": "^2.0.1",
