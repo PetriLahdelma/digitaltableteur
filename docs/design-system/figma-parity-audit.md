@@ -194,11 +194,19 @@ mockups) — out of scope, leave as-is.
   46 → 38. Figma API gotchas (resize resets hug sizing; variable-bound paints drop paint
   opacity — use a node-opacity wash layer; shared TEXT property propagates characters) are
   recorded in the session memory (project_promotion_workflow.md).
-- [ ] **B2b Button remodel + IconButton** — Button set 406:1569 from legacy axes
-  (Variant(9) × Size × State × Inverse, 108 variants) to contract variant × tone × surface ×
-  size; decide state-axis modelling and record it in the component description (candidate: keep
-  State as an extra Figma-only axis, or split surface into sub-sets per the >30-variant rule).
-  Build IconButton to the same matrix. Own session — largest single work unit.
+- [x] **B2b Button remodel + IconButton** — DONE (2026-07-10). Button 406:1569 remodeled in
+  place to the full contract product variant × tone × surface × size = 135 variants (single set,
+  not sub-sets: instances can toggle surface, and the audit gap metric counts the axis product).
+  State/Inverse axes REMOVED — the 72 State=Disabled/Loading variants had zero dependent
+  instances (verified by whole-file scan; all 48 deps incl. SplitButton/CodeSnippet/ContactForm
+  are State=Default and follow node ids through renames); disabled/loading are boolean props,
+  not contract axes; Inverse=True mapped to Surface=onDark. Tone visually collapses on
+  onDark/onBrand (code truth: Button.module.css surface overrides ignore the accent) — recorded
+  in the set description. Master icon slots hidden uniformly (Has Icon default false). IconButton
+  built new (Atoms, node 1194-1733, own section): 135 circle variants, radius/full variable
+  MINTED (DT / Dimension 9999, CORNER_RADIUS, var(--radius-full)), sizes 32/40/48 with 20/24/28
+  icons, Icon INSTANCE_SWAP wired to all variants. Both sets verified Light + forced-Dark.
+  Ceiling 38 → 37.
 - [ ] **B2c Menu (molecule-tier leftover listed under atoms drift)** — Menu align:3 variants;
   fold into B3.
 - [ ] **B3 Molecules parity** — drifted (Tabs, Modal, Card, Select, Toast, AlertBanner, Accordion,
