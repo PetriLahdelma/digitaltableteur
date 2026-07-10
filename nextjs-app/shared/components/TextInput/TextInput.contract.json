@@ -75,6 +75,16 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/tools/email-signature/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
             "since": "2026-06-04"
         },
