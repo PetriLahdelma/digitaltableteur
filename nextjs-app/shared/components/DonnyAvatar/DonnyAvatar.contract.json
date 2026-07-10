@@ -1,163 +1,163 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-    "name": "DonnyAvatar",
-    "tier": "molecule",
-    "group": "display",
-    "status": "beta",
-    "description": "The assistant's animated avatar with thinking, speaking, and idle mood states, used inside ChatWidget and Donny surfaces.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-donny-avatar",
-    "radixPrimitive": null,
-    "element": "div",
-    "variants": {
-        "size": {
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "xl"
-            ],
-            "default": "sm",
-            "propSourced": true
-        }
-    },
-    "slots": [],
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-    ],
-    "a11y": {
-        "keyboard": [],
-        "reducedMotion": true,
-        "reviewed": true,
-        "forcedColorsVerified": true,
-        "ariaRequirements": [],
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-    },
-    "tokens": {
-        "colors": [
-            "--color-text"
-        ],
-        "spacing": []
-    },
-    "lightDarkVerified": true,
-    "consumers": [],
-    "schemaVersion": 2,
-    "props": {
-        "state": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "success",
-                "error",
-                "loading",
-                "idle",
-                "listening",
-                "thinking",
-                "searching",
-                "confused",
-                "handoff",
-                "greeting",
-                "acknowledging",
-                "suggesting",
-                "confident",
-                "curious",
-                "celebrating",
-                "apologetic",
-                "typing",
-                "waving",
-                "remembering",
-                "focused",
-                "playful",
-                "impressed",
-                "skeptical",
-                "sleepy",
-                "sleeping"
-            ]
-        },
-        "size": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "xl"
-            ]
-        },
-        "className": {
-            "optional": true,
-            "type": "string"
-        },
-        "onTransitionEnd": {
-            "optional": true,
-            "type": "() => void"
-        },
-        "showLabel": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "trackMouse": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "proximitySelectors": {
-            "optional": true,
-            "type": "string[]"
-        },
-        "onProximityChange": {
-            "optional": true,
-            "type": "(isNearTarget: boolean, targetSelector?: string) => void"
-        },
-        "proximityThreshold": {
-            "optional": true,
-            "type": "number"
-        },
-        "enableIdleExpressions": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "idleExpressionInterval": {
-            "optional": true,
-            "type": "number"
-        },
-        "isSpeaking": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "enableSleepDetection": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "sleepyDelay": {
-            "optional": true,
-            "type": "number"
-        },
-        "sleepDelay": {
-            "optional": true,
-            "type": "number"
-        },
-        "decorative": {
-            "optional": true,
-            "type": "boolean"
-        }
-    },
-    "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
-    ],
-    "displayName": "DonnyAvatar",
-    "keywords": [
-        "donny",
-        "avatar",
-        "chatbot",
-        "mood",
-        "expression"
-    ],
-    "dense": "Donny assistant avatar with mood/action states (distinct eye expressions) used by the chat widget",
-    "usage": {
-        "description": "The assistant's animated avatar with mood states (thinking, speaking, idle) used inside ChatWidget and Donny marketing surfaces."
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "DonnyAvatar",
+  "tier": "molecule",
+  "group": "display",
+  "status": "beta",
+  "description": "The assistant's animated avatar with thinking, speaking, and idle mood states, used inside ChatWidget and Donny surfaces.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=492-1578",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {
+    "size": {
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "sm",
+      "propSourced": true
     }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "ariaRequirements": [],
+    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-10 — Figma link wired to the existing DonnyAvatar component (Atoms page, node 492-1578)."
+  },
+  "tokens": {
+    "colors": [
+      "--color-text"
+    ],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "consumers": [],
+  "schemaVersion": 2,
+  "props": {
+    "state": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "success",
+        "error",
+        "loading",
+        "idle",
+        "listening",
+        "thinking",
+        "searching",
+        "confused",
+        "handoff",
+        "greeting",
+        "acknowledging",
+        "suggesting",
+        "confident",
+        "curious",
+        "celebrating",
+        "apologetic",
+        "typing",
+        "waving",
+        "remembering",
+        "focused",
+        "playful",
+        "impressed",
+        "skeptical",
+        "sleepy",
+        "sleeping"
+      ]
+    },
+    "size": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "className": {
+      "optional": true,
+      "type": "string"
+    },
+    "onTransitionEnd": {
+      "optional": true,
+      "type": "() => void"
+    },
+    "showLabel": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "trackMouse": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "proximitySelectors": {
+      "optional": true,
+      "type": "string[]"
+    },
+    "onProximityChange": {
+      "optional": true,
+      "type": "(isNearTarget: boolean, targetSelector?: string) => void"
+    },
+    "proximityThreshold": {
+      "optional": true,
+      "type": "number"
+    },
+    "enableIdleExpressions": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "idleExpressionInterval": {
+      "optional": true,
+      "type": "number"
+    },
+    "isSpeaking": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "enableSleepDetection": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "sleepyDelay": {
+      "optional": true,
+      "type": "number"
+    },
+    "sleepDelay": {
+      "optional": true,
+      "type": "number"
+    },
+    "decorative": {
+      "optional": true,
+      "type": "boolean"
+    }
+  },
+  "forbiddenUse": [
+    "Bypass design tokens or skip forced-colors verification at beta."
+  ],
+  "displayName": "DonnyAvatar",
+  "keywords": [
+    "donny",
+    "avatar",
+    "chatbot",
+    "mood",
+    "expression"
+  ],
+  "dense": "Donny assistant avatar with mood/action states (distinct eye expressions) used by the chat widget",
+  "usage": {
+    "description": "The assistant's animated avatar with mood states (thinking, speaking, idle) used inside ChatWidget and Donny marketing surfaces."
+  }
 }

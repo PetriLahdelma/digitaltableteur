@@ -1,0 +1,4 @@
+{
+  "stablePlaceholderCeiling": 46,
+  "note": "Ratchet: lower this in the PR that wires real Figma nodes; see docs/design-system/figma-parity-audit.md"
+}

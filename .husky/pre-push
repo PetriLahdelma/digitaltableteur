@@ -21,6 +21,7 @@ npm run check:token-packages
 npm run check:contract-props
 npm run check:consumers
 npm run check:astryx-roadmap
+npm run check:figma-links
 npm run validate:components
 npm run typecheck
 npm run lint
