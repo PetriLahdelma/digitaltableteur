@@ -5,7 +5,7 @@
     "group": "actions",
     "status": "stable",
     "description": "Icon-only action button. Wraps @dt/Button in its rounded icon-only form with an enforced accessible label, sharing Button's variant (weight) x tone (semantic) matrix and surface awareness.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon-button",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1194-1733",
     "radixPrimitive": null,
     "element": "button",
     "variants": {
