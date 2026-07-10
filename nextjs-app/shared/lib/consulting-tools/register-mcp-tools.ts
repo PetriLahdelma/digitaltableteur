@@ -1,4 +1,5 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
 
 import {
   CONSULTING_TOOL_NAMES,
@@ -11,103 +12,106 @@ import {
   executeListExpertiseStacks,
   executeListPricingPackages,
   executeListServices,
-  type ConsultingToolTextResult,
 } from "./executors";
 
 const READ_ONLY = { readOnlyHint: true } as const;
 
-type UntypedToolServer = {
-  tool: (
-    name: string,
-    description: string,
-    schema: Record<string, never>,
-    annotations: typeof READ_ONLY,
-    handler: (args: Record<string, unknown>) => ConsultingToolTextResult,
-  ) => void;
-};
-
-function bindToolServer(server: McpServer): UntypedToolServer {
-  return server as unknown as UntypedToolServer;
-}
-
-/** Register read-only consulting tools on an MCP server instance. */
+/**
+ * Register read-only consulting tools on an MCP server instance.
+ *
+ * Tools that take arguments MUST declare real zod shapes: the SDK parses
+ * arguments against the shape, and an empty shape STRIPS every argument
+ * before the handler sees it (see docs-registry-tools.ts, which learned
+ * this the hard way). Argument-less tools keep an empty shape.
+ */
 export function registerConsultingMcpTools(server: McpServer): number {
-  const tools = bindToolServer(server);
-  const emptySchema = {} as Record<string, never>;
-
-  tools.tool(
+  server.tool(
     "list_case_studies",
     "List Digitaltableteur portfolio case studies with slug, title, category, tags, and URLs.",
-    emptySchema,
+    {
+      featuredOnly: z
+        .boolean()
+        .optional()
+        .describe("Only return featured case studies (default false)"),
+    },
     READ_ONLY,
-    (args) =>
-      executeListCaseStudies({
-        featuredOnly: Boolean(args.featuredOnly),
-      }),
+    async (args) => executeListCaseStudies(args),
   );
 
-  tools.tool(
+  server.tool(
     "get_case_study",
     "Get one case study by URL slug (e.g. dsharp-design-system, helsinki-design-system).",
-    emptySchema,
+    {
+      slug: z
+        .string()
+        .describe(
+          "Case study URL slug from list_case_studies, e.g. \"dsharp-design-system\"",
+        ),
+    },
     READ_ONLY,
-    (args) => executeGetCaseStudy({ slug: String(args.slug ?? "") }),
+    async (args) => executeGetCaseStudy(args),
   );
 
-  tools.tool(
+  server.tool(
     "list_pricing_packages",
     "List fixed consulting packages with EUR price ranges and duration (preferred over hourly for defined outcomes).",
-    emptySchema,
+    {},
     READ_ONLY,
-    () => executeListPricingPackages(),
+    async () => executeListPricingPackages(),
   );
 
-  tools.tool(
+  server.tool(
     "get_hourly_rate",
     "Get typical and range hourly consulting rates in EUR (€90/h typical, €90–150/h depending on scope).",
-    emptySchema,
+    {},
     READ_ONLY,
-    () => executeGetHourlyRate(),
+    async () => executeGetHourlyRate(),
   );
 
-  tools.tool(
+  server.tool(
     "list_services",
     "List core consulting services (design system audit, component library, tokens, AI DesignOps).",
-    emptySchema,
+    {},
     READ_ONLY,
-    () => executeListServices(),
+    async () => executeListServices(),
   );
 
-  tools.tool(
+  server.tool(
     "list_expertise_stacks",
     "List technology and practice areas (React, Next.js, Storybook, Figma, TypeScript, etc.).",
-    emptySchema,
+    {},
     READ_ONLY,
-    () => executeListExpertiseStacks(),
+    async () => executeListExpertiseStacks(),
   );
 
-  tools.tool(
+  server.tool(
     "list_audiences",
     "List client audiences Digitaltableteur serves (startups, scaleups, enterprise, etc.).",
-    emptySchema,
+    {},
     READ_ONLY,
-    () => executeListAudiences(),
+    async () => executeListAudiences(),
   );
 
-  tools.tool(
+  server.tool(
     "get_open_hours",
     "Get Digitaltableteur office hours in Europe/Helsinki timezone.",
-    emptySchema,
+    {},
     READ_ONLY,
-    () => executeGetOpenHours(),
+    async () => executeGetOpenHours(),
   );
 
-  tools.tool(
+  server.tool(
     "get_consulting_fit",
     "Map a visitor problem statement to the best-matching consulting service.",
-    emptySchema,
+    {
+      problem: z
+        .string()
+        .describe(
+          "The visitor's problem statement, e.g. \"our design system has drifted from the product\"",
+        ),
+    },
     READ_ONLY,
-    (args) => executeGetConsultingFit({ problem: String(args.problem ?? "") }),
+    async (args) => executeGetConsultingFit(args),
   );
 
   return CONSULTING_TOOL_NAMES.length;

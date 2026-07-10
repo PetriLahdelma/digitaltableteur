@@ -34,7 +34,42 @@ type DataProps = {
 const hasDataAttribute = (props: DataProps, attr: string) =>
   Object.prototype.hasOwnProperty.call(props, attr);
 
+/**
+ * Children that cross a server→client component boundary arrive on the client
+ * as React Flight "lazy" nodes ($$typeof react.lazy) during hydration, NOT as
+ * plain elements — React renders them fine, but React.isValidElement returns
+ * false, so every children introspection below silently fails on the client
+ * while succeeding in SSR, producing a hydration mismatch (missing module
+ * classes, copy button disabled). Unwrap fulfilled lazy nodes before
+ * inspecting; unresolved ones are left alone (introspection then degrades the
+ * same way on both passes).
+ */
+const REACT_LAZY_TYPE = Symbol.for("react.lazy");
+
+type FlightLazyNode = {
+  $$typeof: symbol;
+  _payload?: { status?: string; value?: React.ReactNode };
+};
+
+const isFlightLazyNode = (node: unknown): node is FlightLazyNode =>
+  typeof node === "object" &&
+  node !== null &&
+  (node as FlightLazyNode).$$typeof === REACT_LAZY_TYPE;
+
+const resolveFlightNode = (node: React.ReactNode): React.ReactNode => {
+  let current = node;
+  for (let hops = 0; hops < 10 && isFlightLazyNode(current); hops += 1) {
+    const payload = current._payload;
+    if (!payload || payload.status !== "fulfilled") {
+      return current;
+    }
+    current = payload.value as React.ReactNode;
+  }
+  return current;
+};
+
 const extractCodeText = (value: React.ReactNode): string => {
+  value = resolveFlightNode(value);
   if (typeof value === "string" || typeof value === "number") {
     return String(value);
   }
@@ -54,6 +89,7 @@ const extractCodeText = (value: React.ReactNode): string => {
 };
 
 const hasLineNumbers = (value: React.ReactNode): boolean => {
+  value = resolveFlightNode(value);
   if (Array.isArray(value)) {
     return value.some(hasLineNumbers);
   }
@@ -77,9 +113,10 @@ const isCodeElement = (
 ): node is React.ReactElement<React.ComponentPropsWithoutRef<"code">> =>
   React.isValidElement(node) && node.type === "code";
 
-const enhancePreElement = (preNode: React.ReactNode) => {
+const enhancePreElement = (rawPreNode: React.ReactNode) => {
+  const preNode = resolveFlightNode(rawPreNode);
   if (!isPreElement(preNode)) {
-    return preNode;
+    return rawPreNode;
   }
 
   const preProps = preNode.props;
@@ -87,9 +124,10 @@ const enhancePreElement = (preNode: React.ReactNode) => {
     .filter(Boolean)
     .join(" ");
 
-  const enhancedChildren = React.Children.map(preProps.children, (child) => {
+  const enhancedChildren = React.Children.map(preProps.children, (rawChild) => {
+    const child = resolveFlightNode(rawChild);
     if (!isCodeElement(child)) {
-      return child;
+      return rawChild;
     }
 
     const codeProps = child.props;
