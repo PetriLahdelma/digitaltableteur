@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "../../lib/linkComponent";
 import { Image } from "../../lib/imageComponent";
-import { useTranslation } from "react-i18next";
-import type { TFunction } from "i18next";
+import { useTranslate, type Translate } from "../../lib/translation";
 import styles from "./ChatWidget.module.css";
 import MarkdownMessage from "@dt/MarkdownMessage";
 import OpenHours from "@dt/OpenHours/OpenHours";
@@ -65,7 +64,7 @@ function renderProjectCard(project: ProjectCardData) {
 function renderComponentPart(
   part: Extract<ProcessedPart, { kind: "component" }>,
   idx: number,
-  t: TFunction,
+  t: Translate,
 ): React.ReactNode {
   const wrap = (children: React.ReactNode) => (
     <ChatToolResultSection key={idx} meta={part.meta}>
@@ -210,7 +209,7 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
   isStreaming,
   workflowUI,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const isAssistant = message.role === "assistant";
   const thinking = t("chatThinking", "Thinking…");
   const fallback = isAssistant ? (isStreaming ? thinking : "") : "";

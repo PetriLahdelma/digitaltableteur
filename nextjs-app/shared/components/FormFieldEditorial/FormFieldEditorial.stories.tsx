@@ -13,7 +13,7 @@ const defaultArgs = {
 const meta = {
   title: "Site/FormFieldEditorial",
   component: FormFieldEditorial,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

@@ -3,7 +3,7 @@
     "name": "SecureCVDownload",
     "tier": "molecule",
     "group": "structure",
-    "status": "beta",
+    "status": "stable",
     "description": "Gated CV download whose trigger opens a verification modal before the file is served.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-secure-cvdownload",
     "radixPrimitive": null,
@@ -24,14 +24,32 @@
         "reviewed": true,
         "forcedColorsVerified": true,
         "ariaRequirements": [],
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: 4-mode AT snapshots captured for all required stories, forced-colors re-verified in a real browser, consumers audited.",
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "buttonText": {

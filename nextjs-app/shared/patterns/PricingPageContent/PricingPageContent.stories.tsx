@@ -5,7 +5,7 @@ import contract from "./PricingPageContent.contract.json";
 const meta = {
   title: "Patterns/PricingPageContent",
   component: PricingPageContent,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     layout: "fullscreen",
     contractStatus: contract.status,

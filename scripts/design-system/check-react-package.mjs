@@ -2,6 +2,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
+import { pathToFileURL } from "node:url";
 
 const root = resolve(new URL("../..", import.meta.url).pathname);
 const reactPackage = join(root, "packages/react");
@@ -25,7 +26,20 @@ function assertFile(path, label) {
   }
 }
 
-run("npm", ["run", "build", "--workspace", "@digitaltableteur/react"]);
+function parsePackJson(stdout, packageName) {
+  const parsed = JSON.parse(stdout);
+  const rows = Array.isArray(parsed)
+    ? parsed
+    : parsed?.[packageName]
+      ? [parsed[packageName]]
+      : [parsed];
+  if (rows.length !== 1) {
+    throw new Error(`npm pack for ${packageName} returned ${rows.length} package rows.`);
+  }
+  return rows[0];
+}
+
+run("npm", ["--prefix", "packages/react", "run", "build"]);
 
 assertFile(join(dist, "index.js"), "React package JS entry");
 assertFile(join(dist, "index.d.ts"), "React package type entry");
@@ -38,13 +52,31 @@ if (!jsEntry.startsWith('"use client";')) {
   );
 }
 
+// Design tokens ship ONCE, via @digitaltableteur/tokens-css. A variables.css
+// side-effect import anywhere in the package module graph snapshots the whole
+// token sheet into dist/style.css at publish time — a stale duplicate that
+// fights the app's live variables.css on cascade order (fixed for 0.1.4).
+// The only allowed :root custom-prop definitions are the bundled third-party
+// react-phone-number-input sheet (--PhoneInput* namespace).
+const cssEntry = readFileSync(join(dist, "style.css"), "utf8");
+for (const match of cssEntry.matchAll(/:root\s*{([^}]*)}/g)) {
+  const foreign = [...match[1].matchAll(/--([\w-]+)\s*:/g)]
+    .map((def) => def[1])
+    .filter((name) => !name.startsWith("PhoneInput"));
+  if (foreign.length > 0) {
+    throw new Error(
+      `dist/style.css defines design tokens at :root (${foreign.slice(0, 5).join(", ")}${foreign.length > 5 ? ", …" : ""}); tokens must ship only via @digitaltableteur/tokens-css — remove the variables.css side-effect import from the package module graph.`,
+    );
+  }
+}
+
 const smoke = run(
   "node",
   [
     "--input-type=module",
     "-e",
     [
-      "const m = await import('@digitaltableteur/react');",
+      `const m = await import(${JSON.stringify(pathToFileURL(join(dist, "index.js")).href)});`,
       "for (const key of ['AlertBanner','Breadcrumb','Button','Card','Container','CookieConsentProvider','ImageProvider','LayerProvider','LinkProvider','NavigationProvider','Progress','Tabs','TranslationProvider','useCookieConsent','useFocusTrap','useLayer','useMediaQuery','useOverflow','useScrollLock','useScrollOverflow','useToast','useTranslate']) { if (!m[key]) throw new Error(`missing public export: ${key}`); }",
       `for (const key of ${JSON.stringify(forbiddenExports)}) { if (m[key]) throw new Error(\`forbidden app/product export leaked: \${key}\`); }`,
       "console.log(Object.keys(m).length);",
@@ -55,10 +87,10 @@ const smoke = run(
 
 const packJson = run(
   "npm",
-  ["pack", "--workspace", "@digitaltableteur/react", "--dry-run", "--json"],
+  ["pack", "./packages/react", "--dry-run", "--json"],
   { capture: true },
 );
-const [pack] = JSON.parse(packJson);
+const pack = parsePackJson(packJson, "@digitaltableteur/react");
 const files = new Set(pack.files.map((file) => file.path));
 for (const required of ["dist/index.js", "dist/index.d.ts", "dist/style.css"]) {
   if (!files.has(required)) {

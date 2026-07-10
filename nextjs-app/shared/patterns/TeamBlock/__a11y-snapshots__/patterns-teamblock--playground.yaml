@@ -1,0 +1,15 @@
+- region "Team":
+  - heading "Team" [level=2]
+  - paragraph: The people behind the system.
+  - figure:
+    - img "Sarah Johnson, Product Designer": 112 × 112
+  - heading "Sarah Johnson" [level=3]
+  - paragraph: Product Designer
+  - figure:
+    - img "Michael Chen, Frontend Developer": 112 × 112
+  - heading "Michael Chen" [level=3]
+  - paragraph: Frontend Developer
+  - figure:
+    - img "Emma Davis, UX Researcher": 112 × 112
+  - heading "Emma Davis" [level=3]
+  - paragraph: UX Researcher

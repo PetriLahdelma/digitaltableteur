@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "../../lib/linkComponent";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import { ArrowLeft, ArrowRight, Briefcase } from "@phosphor-icons/react";
 import { getProjectNavigation } from "../../data/projects";
@@ -21,7 +21,7 @@ export interface ProjectNavProps {
  * Rendered inside a labelled `nav` landmark.
  */
 export function ProjectNav({ currentSlug, className }: ProjectNavProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const { previous, next } = getProjectNavigation(currentSlug);
 
   return (

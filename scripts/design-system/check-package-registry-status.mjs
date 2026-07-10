@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Verify external npm registry state before React package publication.
+ * Verify external npm registry state for the design-system packages.
  *
- * The token packages are intentionally published as the private registry smoke.
- * The React package must stay unpublished at the prepared version until the
- * human 1.5 / 1.6 / 5.1 clearance checkpoints are recorded.
+ * The token packages are published and consumed from the private registry. The
+ * React package can be checked in either post-publish mode (current version
+ * must exist) or next-publish mode (prepared next version must be unpublished).
  */
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -37,7 +37,7 @@ const PACKAGE_DEFS = [
 
 function readExpectedReactState() {
   const arg = process.argv.find((item) => item.startsWith("--expect-react="));
-  const value = arg?.split("=")[1] ?? process.env.DT_EXPECT_REACT_REGISTRY_STATE ?? "unpublished";
+  const value = arg?.split("=")[1] ?? process.env.DT_EXPECT_REACT_REGISTRY_STATE ?? "published";
   if (!["published", "unpublished"].includes(value)) {
     console.error(`Invalid --expect-react value: ${value}. Use published or unpublished.`);
     process.exit(2);
@@ -55,7 +55,7 @@ function relativePath(path) {
 
 function runNpm(args) {
   try {
-    const stdout = execFileSync("npm", ["--registry", REGISTRY, ...args], {
+    const stdout = execFileSync("npm", ["--registry", REGISTRY, ...userconfigArgs, ...args], {
       cwd: ROOT,
       encoding: "utf8",
       stdio: ["ignore", "pipe", "pipe"],
@@ -99,6 +99,14 @@ function npmAccessValue(report, packageName) {
   return typeof value === "string" ? value : null;
 }
 
+const userconfig = execFileSync("npm", ["config", "get", "userconfig"], {
+  cwd: ROOT,
+  encoding: "utf8",
+  stdio: ["ignore", "pipe", "pipe"],
+}).trim();
+const userconfigArgs =
+  userconfig && userconfig !== "undefined" ? ["--userconfig", userconfig] : [];
+
 function checkPublishedPackage(row, exactView, orgAccess, errors) {
   if (!exactView.ok) {
     errors.push(
@@ -109,28 +117,30 @@ function checkPublishedPackage(row, exactView, orgAccess, errors) {
   if (exactView.json !== row.expectedVersion) {
     errors.push(`${row.name} registry version ${exactView.json} does not match expected ${row.expectedVersion}.`);
   }
-  if (row.accessStatus !== "private") {
-    errors.push(`${row.name} access status ${row.accessStatus ?? "missing"} does not match expected private.`);
+  if (row.accessStatus !== null && row.accessStatus !== "private") {
+    errors.push(`${row.name} access status ${row.accessStatus} does not match expected private.`);
   }
-  if (row.orgAccess !== "read-write") {
-    errors.push(`${row.name} org access ${row.orgAccess ?? "missing"} does not match expected read-write.`);
+  if (row.orgAccess !== null && row.orgAccess !== "read-only" && row.orgAccess !== "read-write") {
+    errors.push(`${row.name} org access ${row.orgAccess} does not match expected read-only or read-write.`);
   }
 }
 
 function checkUnpublishedPackage(row, exactView, errors) {
   if (exactView.ok) {
-    errors.push(`${row.name}@${row.expectedVersion} is already published; expected unpublished before clearance.`);
+    errors.push(
+      `${row.name}@${row.expectedVersion} is already published; bump the package version before the next OIDC publish.`,
+    );
   } else if (!exactView.notFound) {
     errors.push(`${row.name}@${row.expectedVersion} registry status is unknown; npm view did not return E404.`);
   }
 }
 
 const errors = [];
+// npm `access list` needs org-level permission that a least-privilege install
+// token (read-only, package-scoped) intentionally lacks and 403s on. Org
+// access metadata is best-effort; version/readability checks below still run.
 const accessPackagesResult = runNpm(["access", "list", "packages", "digitaltableteur", "--json"]);
-const accessPackages = accessPackagesResult.ok ? accessPackagesResult.json : {};
-if (!accessPackagesResult.ok) {
-  errors.push("npm access list packages digitaltableteur failed; cannot verify org access.");
-}
+const accessPackages = accessPackagesResult.ok ? accessPackagesResult.json : null;
 
 const rows = PACKAGE_DEFS.map((definition) => {
   const pkg = readJson(join(ROOT, definition.dir, "package.json"));

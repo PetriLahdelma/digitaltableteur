@@ -1,6 +1,9 @@
 "use client";
 
 import { Link } from "../../lib/linkComponent";
+// Same-module-instance rule: shared source must not import its own published
+// package name — the package build would inline the PREVIOUS npm version of
+// itself (compounding tarball growth) and read a context no host provides.
 import { useNavigationPathname } from "../../lib/navigation";
 import { type ReactNode } from "react";
 import { cn } from "../../lib/cn";

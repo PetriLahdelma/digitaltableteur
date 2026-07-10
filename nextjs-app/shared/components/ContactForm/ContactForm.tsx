@@ -10,7 +10,7 @@ import Select from "@dt/Select";
 import FileUpload from "@dt/FileUpload";
 import Text from "@dt/Text";
 import PhoneInput from "@dt/PhoneInput";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import {
   CONTACT_ACCEPTED_ATTACHMENT_TYPES,
   CONTACT_ATTACHMENT_MAX_BYTES,
@@ -58,7 +58,7 @@ export type ContactFormProps = Record<string, never>;
 
 /** Contact form organism with validation and file attachment support. */
 const ContactForm: React.FC<ContactFormProps> = () => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [formData, dispatchForm] = useReducer(
     formReducer,
     undefined,

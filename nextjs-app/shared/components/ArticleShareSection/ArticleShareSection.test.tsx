@@ -7,11 +7,19 @@ import { ArticleShareSection } from "./ArticleShareSection";
 
 expect.extend(toHaveNoViolations);
 
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string, fallback?: string) => fallback ?? key,
-  }),
-}));
+vi.mock("../../lib/translation", () => {
+  const t = (key: string, fallback?: string) => fallback ?? key;
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 const props = {
   url: "https://digitaltableteur.com/blog/designing-in-2025",

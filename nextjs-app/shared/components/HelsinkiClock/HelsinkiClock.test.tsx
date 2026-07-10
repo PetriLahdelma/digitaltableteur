@@ -2,8 +2,8 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { vi, beforeEach, afterEach, describe, it, expect } from "vitest";
 import HelsinkiClock from "@dt/HelsinkiClock";
+import { TranslationProvider } from "../../lib/translation";
 
-// Mock react-i18next
 const mockT = vi.fn((key: string) => {
   const translations: { [key: string]: string } = {
     weekdayMonday: "Monday",
@@ -32,13 +32,19 @@ const mockT = vi.fn((key: string) => {
   return translations[key] || key;
 });
 
-const mockI18n = {
-  language: "en",
-};
+let mockLanguage = "en";
 
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: mockT, i18n: mockI18n }),
-}));
+function renderClock() {
+  return render(
+    <TranslationProvider
+      translate={mockT}
+      language={mockLanguage}
+      resolvedLanguage={mockLanguage}
+    >
+      <HelsinkiClock />
+    </TranslationProvider>,
+  );
+}
 
 describe("HelsinkiClock", () => {
   let mockDate: Date;
@@ -49,7 +55,7 @@ describe("HelsinkiClock", () => {
     mockDate = new Date("2024-03-15T14:30:45");
     vi.useFakeTimers();
     vi.setSystemTime(mockDate);
-    mockI18n.language = "en";
+    mockLanguage = "en";
   });
 
   afterEach(() => {
@@ -57,41 +63,41 @@ describe("HelsinkiClock", () => {
   });
 
   it("renders Helsinki clock container", () => {
-    render(<HelsinkiClock />);
+    renderClock();
     expect(screen.getByText(/Helsinki \(GMT\+2\)/)).toBeInTheDocument();
   });
 
   it("displays current date with translated weekday and month", () => {
-    render(<HelsinkiClock />);
+    renderClock();
     expect(screen.getByText("Friday 15. March")).toBeInTheDocument();
   });
 
   it("displays Helsinki time with GMT+2 timezone", () => {
-    render(<HelsinkiClock />);
+    renderClock();
     expect(screen.getByText(/Helsinki \(GMT\+2\)/)).toBeInTheDocument();
   });
 
   it("shows time in HH:MM:SS format", () => {
-    render(<HelsinkiClock />);
+    renderClock();
     // The time should be displayed somewhere in the component
     const timeElement = screen.getByText(/\d{2}:\d{2}:\d{2}/);
     expect(timeElement).toBeInTheDocument();
   });
 
   it("uses Finnish Helsinki translation when language is fi", () => {
-    mockI18n.language = "fi";
-    render(<HelsinkiClock />);
+    mockLanguage = "fi";
+    renderClock();
     expect(screen.getByText(/Helsinki \(GMT\+2\)/)).toBeInTheDocument();
   });
 
   it("uses Swedish Helsinki translation when language is sv", () => {
-    mockI18n.language = "sv";
-    render(<HelsinkiClock />);
+    mockLanguage = "sv";
+    renderClock();
     expect(screen.getByText(/Helsingfors \(GMT\+2\)/)).toBeInTheDocument();
   });
 
   it("updates time every second", () => {
-    render(<HelsinkiClock />);
+    renderClock();
 
     // Initial time
     expect(screen.getByText(/\d{2}:\d{2}:\d{2}/)).toBeInTheDocument();
@@ -109,7 +115,7 @@ describe("HelsinkiClock", () => {
     // Test Sunday
     const sundayDate = new Date("2024-03-17T14:30:45"); // Sunday
     vi.setSystemTime(sundayDate);
-    render(<HelsinkiClock />);
+    renderClock();
     expect(screen.getByText("Sunday 17. March")).toBeInTheDocument();
   });
 
@@ -117,7 +123,7 @@ describe("HelsinkiClock", () => {
     // Test different month
     const januaryDate = new Date("2024-01-15T14:30:45");
     vi.setSystemTime(januaryDate);
-    render(<HelsinkiClock />);
+    renderClock();
     expect(screen.getByText("Monday 15. January")).toBeInTheDocument();
   });
 });

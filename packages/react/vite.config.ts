@@ -7,14 +7,26 @@ const packageRoot = fileURLToPath(new URL(".", import.meta.url));
 const repoRoot = resolve(packageRoot, "../..");
 const sharedRoot = resolve(repoRoot, "nextjs-app/shared");
 const componentsRoot = resolve(sharedRoot, "components");
+// Everything here must be a peerDependency or dependency in package.json:
+// inlining a declared dependency ships two copies (bundle + registry install)
+// with independent module state (framer AnimatePresence, phosphor registry).
 const externalPackages = [
   "react",
   "react-dom",
   "react/jsx-runtime",
   "react/jsx-dev-runtime",
+  "framer-motion",
+  "@phosphor-icons/react",
+  "class-variance-authority",
+  "clsx",
+  "react-phone-number-input",
 ];
 
 function isExternal(id: string): boolean {
+  // Stylesheets stay bundled into dist/style.css even when their package is
+  // external (react-phone-number-input/style.css) — a bare CSS import in the
+  // emitted JS would break non-bundler consumers.
+  if (id.endsWith(".css")) return false;
   return externalPackages.some(
     (pkg) => id === pkg || id.startsWith(`${pkg}/`),
   );

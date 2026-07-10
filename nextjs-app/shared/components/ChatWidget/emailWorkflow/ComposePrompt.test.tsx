@@ -3,12 +3,20 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ComposePrompt from "./ComposePrompt";
 
-// Mock i18n
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string) => key,
-  }),
-}));
+// Mock the package translation adapter.
+vi.mock("../../../lib/translation", () => {
+  const t = (key: string) => key;
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 describe("ComposePrompt", () => {
   it("renders prompt text", () => {

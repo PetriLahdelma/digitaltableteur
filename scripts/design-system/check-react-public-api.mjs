@@ -40,7 +40,7 @@ function normalizePackageExports(exportsMap) {
 
 function runBuildIfNeeded() {
   if (existsSync(DIST_ENTRY)) return;
-  execFileSync("npm", ["run", "build", "--workspace", "@digitaltableteur/react"], {
+  execFileSync("npm", ["--prefix", "packages/react", "run", "build"], {
     cwd: ROOT,
     stdio: "inherit",
     env: process.env,

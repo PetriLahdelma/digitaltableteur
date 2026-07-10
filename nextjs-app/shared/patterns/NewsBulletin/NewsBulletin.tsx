@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useCallback, useEffect, useRef } from "react";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@/nextjs-app/shared/components/Icon";
 import {
   NEWS_BULLETIN_ITEMS,
   type NewsBulletinItem,
   type NewsBulletinLink,
 } from "@/nextjs-app/shared/data/news-bulletin";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/cn";
+import { useScrollOverflow } from "../../hooks/useOverflow";
 import { NewsBulletinBadgeMark, badgeAccessibleLabel } from "./NewsBulletinBadge";
 import styles from "./NewsBulletin.module.css";
 
@@ -85,39 +86,18 @@ export function NewsBulletin({
   items = NEWS_BULLETIN_ITEMS,
   className,
 }: NewsBulletinProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const trackRef = useRef<HTMLDivElement>(null);
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
-  const [isOverflowing, setIsOverflowing] = useState(false);
-
-  const updateScrollAffordance = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const epsilon = 2;
-    const overflowing = track.scrollWidth > track.clientWidth + epsilon;
-    setIsOverflowing(overflowing);
-    setCanScrollPrev(track.scrollLeft > epsilon);
-    setCanScrollNext(
-      track.scrollLeft + track.clientWidth < track.scrollWidth - epsilon,
-    );
-  }, []);
+  const {
+    isOverflowing,
+    canScrollStart: canScrollPrev,
+    canScrollEnd: canScrollNext,
+    refresh: refreshScrollOverflow,
+  } = useScrollOverflow(trackRef, { axis: "x", epsilon: 2 });
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    updateScrollAffordance();
-
-    const observer = new ResizeObserver(updateScrollAffordance);
-    observer.observe(track);
-    track.addEventListener("scroll", updateScrollAffordance, { passive: true });
-
-    return () => {
-      observer.disconnect();
-      track.removeEventListener("scroll", updateScrollAffordance);
-    };
-  }, [items, updateScrollAffordance]);
+    refreshScrollOverflow();
+  }, [items, refreshScrollOverflow]);
 
   const scrollTrack = useCallback((direction: -1 | 1) => {
     const track = trackRef.current;

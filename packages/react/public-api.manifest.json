@@ -1,6 +1,6 @@
 {
   "packageName": "@digitaltableteur/react",
-  "packageVersion": "0.1.0",
+  "packageVersion": "0.1.3",
   "packageExports": {
     ".": {
       "types": "./dist/index.d.ts",

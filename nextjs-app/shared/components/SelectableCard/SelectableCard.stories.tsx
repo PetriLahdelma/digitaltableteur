@@ -4,7 +4,7 @@ import { SelectableCard, SelectableCardGroup } from "./SelectableCard";
 import contract from "./SelectableCard.contract.json";
 
 const meta = {
-  title: "Molecules/SelectableCard",
+  title: "Layout/SelectableCard",
   component: SelectableCard,
   parameters: {
     layout: "padded",

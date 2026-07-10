@@ -1,14 +1,12 @@
 import React from "react";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { renderHook, act } from "@testing-library/react";
-import { NextThemeProvider } from "@/providers/ThemeProvider";
-
-vi.unmock("@/providers/ThemeProvider");
+import { ThemeProvider } from "../components/ThemeProvider";
 
 import { usePersistentTheme } from "./usePersistentTheme";
 
 const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <NextThemeProvider>{children}</NextThemeProvider>
+  <ThemeProvider>{children}</ThemeProvider>
 );
 
 describe("usePersistentTheme", () => {
@@ -25,16 +23,16 @@ describe("usePersistentTheme", () => {
     });
   });
 
-  it("cycles theme and persists cookie", () => {
+  it("cycles theme and persists through the package provider", () => {
     const { result } = renderHook(() => usePersistentTheme(), { wrapper });
     act(() => result.current.setPersistentTheme("dark"));
-    expect(document.cookie).toContain("dt_theme=dark");
+    expect(localStorage.getItem("theme")).toBe("dark");
 
     let next: string | undefined;
     act(() => {
       next = result.current.cycleTheme();
     });
     expect(next).toBe("hcb");
-    expect(document.cookie).toContain("dt_theme=hcb");
+    expect(localStorage.getItem("theme")).toBe("hcb");
   });
 });

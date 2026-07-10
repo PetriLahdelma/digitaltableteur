@@ -2,7 +2,7 @@
 /**
  * Registry-shape consumer install smoke.
  *
- * Builds/verifies the workspace packages, packs their npm tarballs, installs
+ * Builds/verifies the local package sources, packs their npm tarballs, installs
  * those tarballs into a clean temporary consumer, and imports the public
  * package surface from node_modules. This is the closest local substitute for
  * post-publish registry dogfooding while npm auth is unavailable.
@@ -40,15 +40,40 @@ function writeReport(report) {
   writeFileSync(OUT_JSON, `${JSON.stringify(report, null, 2)}\n`);
 }
 
-function pack(workspace, destination) {
+const PACKAGE_DIRS = {
+  "@digitaltableteur/tokens": "packages/tokens",
+  "@digitaltableteur/tokens-css": "packages/tokens-css",
+  "@digitaltableteur/react": "packages/react",
+};
+
+function packageDir(packageName) {
+  const dir = PACKAGE_DIRS[packageName];
+  if (!dir) throw new Error(`Unknown package for consumer smoke: ${packageName}`);
+  return join(ROOT, dir);
+}
+
+function parsePackJson(stdout, packageName) {
+  const parsed = JSON.parse(stdout);
+  const rows = Array.isArray(parsed)
+    ? parsed
+    : parsed?.[packageName]
+      ? [parsed[packageName]]
+      : [parsed];
+  if (rows.length !== 1) {
+    throw new Error(`npm pack for ${packageName} returned ${rows.length} package rows.`);
+  }
+  return rows[0];
+}
+
+function pack(packageName, destination) {
   const result = run(
     "npm",
-    ["pack", "--workspace", workspace, "--pack-destination", destination, "--json"],
-    { capture: true },
+    ["pack", "--pack-destination", destination, "--json"],
+    { cwd: packageDir(packageName), capture: true },
   );
-  const [packed] = JSON.parse(result);
+  const packed = parsePackJson(result, packageName);
   if (!packed?.filename) {
-    throw new Error(`npm pack did not return a filename for ${workspace}`);
+    throw new Error(`npm pack did not return a filename for ${packageName}`);
   }
   return join(destination, packed.filename);
 }
@@ -59,11 +84,12 @@ function assertPackedFile(pack, file) {
   }
 }
 
-function inspectPack(workspace) {
-  const result = run("npm", ["pack", "--workspace", workspace, "--dry-run", "--json"], {
+function inspectPack(packageName) {
+  const result = run("npm", ["pack", "--dry-run", "--json"], {
+    cwd: packageDir(packageName),
     capture: true,
   });
-  return JSON.parse(result)[0];
+  return parsePackJson(result, packageName);
 }
 
 const rootPackage = readJson(join(ROOT, "package.json"));
@@ -78,10 +104,21 @@ const reactTypesVersion =
   rootPackage.dependencies?.["@types/react"] ?? rootPackage.devDependencies?.["@types/react"];
 const reactDomTypesVersion =
   rootPackage.dependencies?.["@types/react-dom"] ?? rootPackage.devDependencies?.["@types/react-dom"];
+// framer-motion is a package peerDependency; the repo installs with
+// legacy-peer-deps so the consumer must install it explicitly like react.
+const framerMotionVersion =
+  rootPackage.dependencies?.["framer-motion"] ?? rootPackage.devDependencies?.["framer-motion"];
 
-if (!reactVersion || !reactDomVersion || !typescriptVersion || !reactTypesVersion || !reactDomTypesVersion) {
+if (
+  !reactVersion ||
+  !reactDomVersion ||
+  !typescriptVersion ||
+  !reactTypesVersion ||
+  !reactDomTypesVersion ||
+  !framerMotionVersion
+) {
   throw new Error(
-    "Root package.json must declare react, react-dom, typescript, @types/react, and @types/react-dom for the consumer smoke.",
+    "Root package.json must declare react, react-dom, framer-motion, typescript, @types/react, and @types/react-dom for the consumer smoke.",
   );
 }
 
@@ -419,6 +456,7 @@ void tree;
       "--prefer-offline",
       `react@${reactVersion}`,
       `react-dom@${reactDomVersion}`,
+      `framer-motion@${framerMotionVersion}`,
       `typescript@${typescriptVersion}`,
       `@types/react@${reactTypesVersion}`,
       `@types/react-dom@${reactDomTypesVersion}`,

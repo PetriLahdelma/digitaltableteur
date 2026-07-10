@@ -5,18 +5,26 @@ import { describe, it, expect, vi } from "vitest";
 import ChatToggle from "./ChatToggle";
 
 // Mock dependencies
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string, fallback?: string) => {
-      const translations: Record<string, string> = {
-        chatToggleLabel: "Chat",
-        chatToggleClose: "Hide chat",
-        chatToggleOpen: "Chat with Donny",
-      };
-      return translations[key] || fallback || key;
-    },
-  }),
-}));
+vi.mock("../../lib/translation", () => {
+  const t = (key: string, fallback?: string) => {
+    const translations: Record<string, string> = {
+      chatToggleLabel: "Chat",
+      chatToggleClose: "Hide chat",
+      chatToggleOpen: "Chat with Donny",
+    };
+    return translations[key] || fallback || key;
+  };
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 describe("ChatToggle", () => {
   it("renders toggle button", () => {

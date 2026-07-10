@@ -1,4 +1,5 @@
 {
+  "installCommand": "bash scripts/vercel-install.sh",
   "headers": [
     {
       "source": "/api/(.*)",

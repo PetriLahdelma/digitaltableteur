@@ -13,10 +13,18 @@ error wiring so the consumer's form code is a sequence of
   submit handler). ArrowUp / ArrowDown bumps `type="number"`
   values.
 - Pointer: click focuses; selection works as native.
+- Clearable: with `clearable`, a ×-button renders inside the field
+  chrome while the field has a value (never while disabled). It is
+  the next Tab stop after the input; activating it empties the
+  field, clears any built-in validation error, fires
+  `onValueChange("")` then `onClear()`, and returns focus to the
+  input. Its accessible name interpolates the field label
+  (`inputClearField`: "Clear {{field}}", EN/FI/SV).
 - Screen readers: the label is announced first via the native
-  `<label htmlFor>` binding. On invalid state the description
-  (linked via `aria-describedby` to the error helper) is announced
-  on focus.
+  `<label htmlFor>` binding. With `hideLabel` the label is
+  visually hidden but stays in the accessibility tree. On invalid
+  state the description (linked via `aria-describedby` to the error
+  helper) is announced on focus.
 
 ## Do / don't
 - Do: use `onValueChange` (the new contract). The legacy `onChange`
@@ -31,6 +39,11 @@ error wiring so the consumer's form code is a sequence of
   `value` as controlled; mixing them produces drift.
 - Don't: use TextInput for multi-line text. Use **TextArea**, which
   shares the label + helper contract but carries multi-line UX.
+- Do: use `clearable` on fields users iterate on (search, filters,
+  generators) instead of hand-rolling an adjacent ×-button.
+- Don't: treat `hideLabel` as permission to skip the label. The label
+  is still required and still read by assistive tech; `hideLabel`
+  only removes it visually for dense compositions.
 
 ## Design notes
 - Tokens: control surface uses `--color-surface`; border uses

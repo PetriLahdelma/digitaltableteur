@@ -33,8 +33,10 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
         "ariaRequirements": [],
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-08 — captured Default and Example accessibility-tree snapshots plus a real Playwright forced-colors snapshot; stable remains blocked until the Figma URL points at a real numeric node id."
     },
     "tokens": {
         "colors": [],

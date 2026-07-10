@@ -44,6 +44,11 @@ const automatedChecks = [
     reason: "Vite dependency scan and static Storybook bundle still compile",
   },
   {
+    name: "storybook-registry-package",
+    command: ["run", "check:storybook-registry-package"],
+    reason: "Storybook compiles a registry-package smoke story and does not alias @digitaltableteur/* to local package sources",
+  },
+  {
     name: "build",
     command: ["run", "build"],
     reason: "Next production build still compiles and renders route data",
@@ -74,14 +79,27 @@ const automatedChecks = [
     reason: "published private token packages install from npm",
   },
   {
-    name: "package-registry-status",
-    command: ["run", "check:package-registry-status"],
-    reason: "npm registry state matches the pre-publish plan: tokens published, React unpublished",
+    name: "package-registry-resolution",
+    command: ["run", "check:package-registry-resolution"],
+    reason: "the app/root install resolves design-system packages from registry node_modules, not local package source symlinks",
   },
   {
-    name: "react-registry-install-waiting",
-    command: ["run", "check:react-registry-install", "--", "--expect-unpublished"],
-    reason: "writes the post-publish React registry-smoke readiness report while React is still unpublished",
+    name: "package-registry-status",
+    command: REQUIRE_CLEARANCE
+      ? ["run", "check:package-registry-status", "--", "--expect-react=unpublished"]
+      : ["run", "check:package-registry-status"],
+    reason: REQUIRE_CLEARANCE
+      ? "npm registry state is ready for the next React publish: tokens published, prepared React version unpublished"
+      : "npm registry state matches the current consumed package versions",
+  },
+  {
+    name: REQUIRE_CLEARANCE ? "react-registry-install-waiting" : "react-registry-install",
+    command: REQUIRE_CLEARANCE
+      ? ["run", "check:react-registry-install", "--", "--expect-unpublished"]
+      : ["run", "check:react-registry-install"],
+    reason: REQUIRE_CLEARANCE
+      ? "writes the post-publish React registry-smoke readiness report while the prepared next React version is still unpublished"
+      : "installs the published React package from npm and verifies runtime plus types",
   },
   {
     name: "npm-consumer-install",

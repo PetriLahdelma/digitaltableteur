@@ -1,9 +1,11 @@
-import CodeBlockWindow from "@dt/CodeBlockWindow";
-import { Container } from "@dt/Container";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
-import { codeBlockFixtures } from "@dt/CodeBlockWindow/codeBlockFixtures";
-import { renderCodeBlockFixtureNode } from "@dt/CodeBlockWindow/CodeBlockFixtureRenderer";
+import {
+  CodeBlockWindow,
+  Container,
+  Text,
+  Title,
+} from "@digitaltableteur/react";
+import { codeBlockFixtures } from "../../../nextjs-app/shared/components/CodeBlockWindow/codeBlockFixtures";
+import { renderCodeBlockFixtureNode } from "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockFixtureRenderer";
 import styles from "./page.module.css";
 
 const fixture = {

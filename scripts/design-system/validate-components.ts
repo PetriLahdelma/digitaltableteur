@@ -561,6 +561,17 @@ export function validateComponentsDir(root: string): ValidationResult {
             errors.push(`${name}.contract.json: stable requires a11y.reviewed to be true`)
         }
 
+        // Deprecation gate (docs/design-system/deprecation-policy.md R2): the
+        // tombstone text is mandatory — it outlives the code in the policy log.
+        if (manifest.status === 'deprecated') {
+            const reason = (manifest as { deprecatedReason?: unknown }).deprecatedReason
+            if (typeof reason !== 'string' || reason.trim().length < 20) {
+                errors.push(
+                    `${name}.contract.json: deprecated requires a substantive deprecatedReason naming the successor component(s) (see docs/design-system/deprecation-policy.md)`,
+                )
+            }
+        }
+
         // Stable promotion gate: accessibility-tree snapshot evidence
         // (replaced the manual screenReaderVerified gate on 2026-05-03 —
         // automating real SR audio is infeasible without paid SaaS, but

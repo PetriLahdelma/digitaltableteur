@@ -1,19 +1,34 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe, toHaveNoViolations } from "jest-axe";
 import { describe, it, expect, vi } from "vitest";
 import Input from "./TextInput";
+
+expect.extend(toHaveNoViolations);
 
 // Mock i18next for testing
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
-    t: (key: string) => {
+    t: (key: string, options?: Record<string, unknown>) => {
       const translations: Record<string, string> = {
         inputValidationEmailInvalid: "Please enter a valid email address",
         inputValidationPhoneInvalid: "Invalid phone number format",
+        inputClearField: "Clear {{field}}",
       };
-      return translations[key] || key;
+      const template = translations[key] || key;
+      return template.replace(/\{\{(\w+)\}\}/g, (_, name) =>
+        String(options?.[name] ?? "")
+      );
     },
   }),
+}));
+
+// The clear button's Icon is decorative; a stub keeps the registry (and its
+// full @phosphor-icons/react surface) out of this suite's partial mock.
+vi.mock("@dt/Icon", () => ({
+  default: ({ name }: { name: string }) => (
+    <span data-testid={`icon-${name}`} aria-hidden="true" />
+  ),
 }));
 
 // Mock Phosphor icons to avoid React context issues in tests
@@ -176,6 +191,118 @@ describe("Input", () => {
       });
       const errorElement = screen.getByRole("alert");
       expect(errorElement).toHaveTextContent("Invalid email");
+    });
+  });
+
+  describe("clearable", () => {
+    it("shows no clear button while the field is empty", () => {
+      renderInput({ label: "Name", type: "text", clearable: true });
+      expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    });
+
+    it("shows a clear button named after the field once there is a value", () => {
+      renderInput({ label: "Name", type: "text", clearable: true });
+      fireEvent.change(screen.getByLabelText("Name"), {
+        target: { value: "Ada" },
+      });
+      expect(
+        screen.getByRole("button", { name: "Clear Name" })
+      ).toBeInTheDocument();
+    });
+
+    it("clears the value, fires onValueChange('') + onClear, and refocuses the input", () => {
+      const onValueChange = vi.fn();
+      const onClear = vi.fn();
+      renderInput({
+        label: "Name",
+        type: "text",
+        clearable: true,
+        onValueChange,
+        onClear,
+      });
+      const input = screen.getByLabelText("Name");
+      fireEvent.change(input, { target: { value: "Ada" } });
+      fireEvent.click(screen.getByRole("button", { name: "Clear Name" }));
+
+      expect(input).toHaveValue("");
+      expect(onValueChange).toHaveBeenLastCalledWith("");
+      expect(onClear).toHaveBeenCalledTimes(1);
+      expect(input).toHaveFocus();
+      expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    });
+
+    it("clears a controlled value back through onValueChange", () => {
+      const onValueChange = vi.fn();
+      renderInput({
+        label: "Name",
+        type: "text",
+        clearable: true,
+        value: "Ada",
+        onValueChange,
+      });
+      fireEvent.click(screen.getByRole("button", { name: "Clear Name" }));
+      expect(onValueChange).toHaveBeenLastCalledWith("");
+    });
+
+    it("clears a built-in validation error along with the value", () => {
+      renderInput({ label: "Email", type: "email", clearable: true });
+      const input = screen.getByLabelText("Email");
+      fireEvent.change(input, { target: { value: "not-an-email" } });
+      expect(screen.getByRole("alert")).toBeInTheDocument();
+      fireEvent.click(screen.getByRole("button", { name: "Clear Email" }));
+      expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+    });
+
+    it("hides the clear button while disabled", () => {
+      renderInput({
+        label: "Name",
+        type: "text",
+        clearable: true,
+        value: "Ada",
+        disabled: true,
+      });
+      expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    });
+
+    it("uses a non-submitting button", () => {
+      renderInput({ label: "Name", type: "text", clearable: true, value: "Ada" });
+      expect(screen.getByRole("button")).toHaveAttribute("type", "button");
+    });
+  });
+
+  describe("hideLabel", () => {
+    it("keeps the label associated and accessible", () => {
+      renderInput({ label: "Name", type: "text", hideLabel: true });
+      expect(screen.getByLabelText("Name")).toBeInTheDocument();
+    });
+
+    it("applies the visually-hidden class to the label", () => {
+      renderInput({ label: "Name", type: "text", hideLabel: true });
+      const label = screen.getByText("Name");
+      expect(label.className).toMatch(/srOnly/);
+    });
+  });
+
+  describe("axe", () => {
+    it("has no violations with a populated clearable field and hidden label", async () => {
+      const { container } = render(
+        <Input
+          label="Name"
+          type="text"
+          clearable
+          hideLabel
+          value="Ada"
+          helperText="As it should appear in the signature"
+        />
+      );
+      expect(await axe(container)).toHaveNoViolations();
+    });
+
+    it("has no violations in the error state", async () => {
+      const { container } = render(
+        <Input label="Email" type="email" clearable value="x" error="Invalid email" />
+      );
+      expect(await axe(container)).toHaveNoViolations();
     });
   });
 });

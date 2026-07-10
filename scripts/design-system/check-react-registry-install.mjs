@@ -92,6 +92,20 @@ function accessValue(accessReport, packageName) {
   return typeof value === "string" ? value : null;
 }
 
+/**
+ * npm `access` APIs need org-level permission that a least-privilege
+ * install token (read-only, package-scoped) intentionally lacks and 403s
+ * on. Readability is proven by `npm view` + the scratch install, so the
+ * access metadata is best-effort: null when the token cannot list it.
+ */
+function readCommandJsonOptional(command, args) {
+  try {
+    return readCommandJson(command, args);
+  } catch {
+    return null;
+  }
+}
+
 const rootPackage = readJson(join(ROOT, "package.json"));
 const roadmapState = readJson(join(ROOT, "scripts/design-system/astryx-roadmap.state.json"));
 const reactPackage = readJson(join(ROOT, "packages/react/package.json"));
@@ -108,6 +122,10 @@ const reactTypesVersion =
   rootPackage.dependencies?.["@types/react"] ?? rootPackage.devDependencies?.["@types/react"];
 const reactDomTypesVersion =
   rootPackage.dependencies?.["@types/react-dom"] ?? rootPackage.devDependencies?.["@types/react-dom"];
+// framer-motion is a package peerDependency; the repo installs with
+// legacy-peer-deps so the scratch consumer must install it explicitly.
+const framerMotionVersion =
+  rootPackage.dependencies?.["framer-motion"] ?? rootPackage.devDependencies?.["framer-motion"];
 const forbiddenReactExports = roadmapState.reactPublicSurface?.forbiddenExports ?? [];
 
 if (
@@ -115,10 +133,11 @@ if (
   !reactDomDependencyVersion ||
   !typescriptVersion ||
   !reactTypesVersion ||
-  !reactDomTypesVersion
+  !reactDomTypesVersion ||
+  !framerMotionVersion
 ) {
   throw new Error(
-    "Root package.json must declare react, react-dom, typescript, @types/react, and @types/react-dom for the registry smoke.",
+    "Root package.json must declare react, react-dom, framer-motion, typescript, @types/react, and @types/react-dom for the registry smoke.",
   );
 }
 
@@ -155,7 +174,7 @@ function readReactViewWithRetry() {
 }
 
 const reactView = readReactViewWithRetry();
-const accessPackages = readCommandJson(
+const accessPackages = readCommandJsonOptional(
   "npm",
   npmArgs([...userconfigArgs, "access", "list", "packages", "digitaltableteur", "--json"]),
 );
@@ -218,9 +237,13 @@ try {
       `Registry @digitaltableteur/react version mismatch: expected ${reactVersion}, got ${reactView.ok ? reactView.json : "unpublished"}`,
     );
   }
-  if (report.packages[2].orgAccess !== "read-write") {
+  if (
+    report.packages[2].orgAccess !== null &&
+    report.packages[2].orgAccess !== "read-only" &&
+    report.packages[2].orgAccess !== "read-write"
+  ) {
     throw new Error(
-      `Registry @digitaltableteur/react org access mismatch: expected read-write, got ${report.packages[2].orgAccess ?? "missing"}`,
+      `Registry @digitaltableteur/react org access mismatch: expected read-only or read-write, got ${report.packages[2].orgAccess}`,
     );
   }
 
@@ -472,6 +495,7 @@ void tree;
       "--package-lock=false",
       `react@${reactDependencyVersion}`,
       `react-dom@${reactDomDependencyVersion}`,
+      `framer-motion@${framerMotionVersion}`,
       `typescript@${typescriptVersion}`,
       `@types/react@${reactTypesVersion}`,
       `@types/react-dom@${reactDomTypesVersion}`,

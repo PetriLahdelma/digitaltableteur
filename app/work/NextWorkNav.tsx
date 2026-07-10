@@ -4,8 +4,7 @@ import { useCallback, useEffect, useRef, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
+import { Button, Icon } from "@digitaltableteur/react";
 import { sortedProjects } from "@/nextjs-app/shared/data/projects";
 
 import styles from "./NextWorkNav.module.css";

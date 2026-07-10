@@ -2,9 +2,6 @@
   "name": "nextjs-app",
   "version": "2.0.0",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "engines": {
     "node": ">=22.12.0"
   },
@@ -92,6 +89,7 @@
     "validate:components": "tsx scripts/design-system/validate-components.ts",
     "validate:agent-docs": "node scripts/validate-agent-docs.mjs",
     "report:doc-coverage": "node scripts/design-system/report-doc-coverage.mjs",
+    "report:component-usage": "node scripts/design-system/report-component-usage.mjs",
     "audit:catalog": "node scripts/design-system/audit-catalog-coverage.mjs",
     "audit:controls": "node scripts/design-system/audit-controls.mjs",
     "audit:snapshot-debt": "node scripts/design-system/audit-snapshot-debt.mjs",
@@ -148,6 +146,7 @@
     "check:beta-promotion-readiness": "node scripts/design-system/check-beta-promotion-readiness.mjs",
     "check:package-release-notes": "node scripts/design-system/check-package-release-notes.mjs",
     "check:package-registry-status": "node scripts/design-system/check-package-registry-status.mjs",
+    "check:package-registry-resolution": "node scripts/design-system/check-package-registry-resolution.mjs",
     "check:package-tarballs": "node scripts/design-system/check-package-tarball-contents.mjs",
     "check:package-publish-dry-run": "node scripts/design-system/check-package-publish-dry-run.mjs",
     "check:token-packages": "node scripts/design-system/check-token-packages.mjs",
@@ -157,6 +156,7 @@
     "check:npm-consumer-install": "node scripts/design-system/check-npm-consumer-install.mjs",
     "check:registry-token-install": "node scripts/design-system/check-registry-token-install.mjs",
     "check:react-registry-install": "node scripts/design-system/check-react-registry-install.mjs",
+    "check:storybook-registry-package": "node scripts/design-system/check-storybook-registry-package.mjs",
     "check:site-package-dogfood": "node scripts/design-system/check-site-package-dogfood.mjs",
     "check:react-publish-preflight": "node scripts/design-system/check-react-publish-preflight.mjs",
     "check:react-publish-clearance": "node scripts/design-system/check-react-publish-clearance.mjs",
@@ -181,14 +181,17 @@
     "lint:composition": "node scripts/design-system/lint-composition.mjs --strict",
     "capture:a11y-snapshots": "node scripts/design-system/capture-story-a11y-snapshots.mjs",
     "promote:stable-atoms": "node scripts/design-system/promote-stable-atoms.mjs",
-    "check:bundle-budgets": "node scripts/design-system/check-bundle-budgets.mjs"
+    "check:bundle-budgets": "node scripts/design-system/check-bundle-budgets.mjs",
+    "check:dogfood-ratchet": "node scripts/design-system/check-dogfood-ratchet.mjs"
   },
   "dependencies": {
     "@ai-sdk/mcp": "^1.0.51",
     "@ai-sdk/openai": "^3.0.71",
     "@ai-sdk/react": "^3.0.207",
     "@calcom/embed-react": "^1.5.3",
-    "@digitaltableteur/react": "^0.1.0",
+    "@digitaltableteur/react": "^0.1.4",
+    "@digitaltableteur/tokens": "^0.1.0",
+    "@digitaltableteur/tokens-css": "^0.1.0",
     "@emailjs/browser": "^4.4.1",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",

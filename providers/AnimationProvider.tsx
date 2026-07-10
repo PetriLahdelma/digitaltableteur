@@ -2,8 +2,6 @@
 
 import {
   useEffect,
-  createContext,
-  useContext,
   useState,
   type ReactNode,
 } from "react";
@@ -12,23 +10,11 @@ import {
   type MotionPreference,
   getMotionPreference,
 } from "@/nextjs-app/shared/lib/gsap/motion-safe";
+import { AnimationRuntimeProvider } from "@digitaltableteur/react";
+import { AnimationRuntimeProvider as LocalAnimationRuntimeProvider } from "@/nextjs-app/shared/lib/animation";
 
 // Import GSAP to ensure plugins are registered
 import "@/nextjs-app/shared/lib/gsap";
-
-interface AnimationContextValue {
-  motionPreference: MotionPreference;
-  isReady: boolean;
-}
-
-const AnimationContext = createContext<AnimationContextValue>({
-  motionPreference: "full",
-  isReady: false,
-});
-
-export function useAnimationContext() {
-  return useContext(AnimationContext);
-}
 
 interface AnimationProviderProps {
   children: ReactNode;
@@ -56,9 +42,17 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
     };
   }, []);
 
+  // Two module instances (npm package + local shared source) hold separate
+  // AnimationContexts; provide into both so local animation components
+  // (Parallax, PageTransition, ScrollIndicator, marquees) honor
+  // prefers-reduced-motion instead of reading the "full" default.
   return (
-    <AnimationContext.Provider value={{ motionPreference, isReady }}>
-      {children}
-    </AnimationContext.Provider>
+    <AnimationRuntimeProvider value={{ motionPreference, isReady }}>
+      <LocalAnimationRuntimeProvider value={{ motionPreference, isReady }}>
+        {children}
+      </LocalAnimationRuntimeProvider>
+    </AnimationRuntimeProvider>
   );
 }
+
+export { useAnimationContext } from "@digitaltableteur/react";

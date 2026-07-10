@@ -124,6 +124,15 @@
   transform: none;
 }
 
+/* Inline mode: a parent (ToastStack) owns placement */
+
+.toast--inline {
+  position: static;
+  inset: auto;
+  z-index: auto;
+  transform: none;
+}
+
 /* Reduced motion: keep the toast, drop the fade/slide */
 @media (prefers-reduced-motion: reduce) {
   .toast {

@@ -58,6 +58,10 @@ const PACKAGE_REGISTRY_STATUS_REPORT_PATH = join(
   ROOT,
   ".omx/state/design-system/package-registry-status/latest.json",
 );
+const PACKAGE_REGISTRY_RESOLUTION_REPORT_PATH = join(
+  ROOT,
+  ".omx/state/design-system/package-registry-resolution/latest.json",
+);
 const SITE_PACKAGE_DOGFOOD_REPORT_PATH = join(
   ROOT,
   ".omx/state/design-system/site-package-dogfood/latest.json",
@@ -89,6 +93,20 @@ const MIN_REACT_PUBLIC_SURFACE_EXPORTS = 61;
 
 function relativePath(path) {
   return relative(ROOT, path);
+}
+
+/**
+ * Org access metadata is best-effort: npm `access` org APIs 403 for
+ * least-privilege install tokens (read-only, package-scoped), which the
+ * upstream reports record as null. Readability is proven by npm view and
+ * the scratch installs, so null is acceptable here.
+ */
+function isAcceptableOrgAccess(value) {
+  return value == null || value === "read-only" || value === "read-write";
+}
+
+function isAcceptableAccessStatus(value) {
+  return value == null || value === "private";
 }
 
 function resolveRootPath(path) {
@@ -525,11 +543,11 @@ function validateRegistryTokenInstallReport(report, errors) {
     if (row.expectedVersion !== row.registryVersion) {
       errors.push(`${row.name} registry version ${row.registryVersion} does not match expected ${row.expectedVersion}.`);
     }
-    if (row.orgAccess !== "read-write") {
-      errors.push(`${row.name} org access ${row.orgAccess ?? "missing"} does not match expected read-write.`);
+    if (!isAcceptableOrgAccess(row.orgAccess)) {
+      errors.push(`${row.name} org access ${row.orgAccess} does not match expected read-only or read-write.`);
     }
-    if (row.accessStatus !== "private") {
-      errors.push(`${row.name} access status ${row.accessStatus ?? "missing"} does not match expected private.`);
+    if (!isAcceptableAccessStatus(row.accessStatus)) {
+      errors.push(`${row.name} access status ${row.accessStatus} does not match expected private.`);
     }
   }
   if ((report.consumer?.tokenCount ?? 0) < 180) {
@@ -567,13 +585,14 @@ function validateReactRegistryInstallReport(report, errors) {
   const reportErrors = Array.isArray(report.errors) ? report.errors : [];
   const packages = Array.isArray(report.packages) ? report.packages : [];
   const reactRow = packages.find((row) => row.name === "@digitaltableteur/react");
+  const expectedState = report.expectedReactState ?? "unknown";
 
   if (report.registry !== "https://registry.npmjs.org/") {
     errors.push(`react registry install report uses ${report.registry}; expected https://registry.npmjs.org/.`);
   }
-  if (report.expectedReactState !== "unpublished") {
+  if (!["published", "unpublished"].includes(expectedState)) {
     errors.push(
-      `react registry install report expectedReactState is ${report.expectedReactState}; expected unpublished before the publish workflow runs.`,
+      `react registry install report expectedReactState is ${expectedState}; expected published or unpublished.`,
     );
   }
   if (reportErrors.length) {
@@ -581,7 +600,7 @@ function validateReactRegistryInstallReport(report, errors) {
   }
   if (!reactRow) {
     errors.push("react registry install report does not include @digitaltableteur/react.");
-  } else {
+  } else if (expectedState === "unpublished") {
     if (report.status !== "expected-unpublished") {
       errors.push(
         `react registry install report status is ${report.status}; expected expected-unpublished before React publish clearance.`,
@@ -591,6 +610,34 @@ function validateReactRegistryInstallReport(report, errors) {
       errors.push(
         `@digitaltableteur/react registry smoke saw ${reactRow.actualState}@${reactRow.registryVersion}; expected unpublished before clearance.`,
       );
+    }
+  } else if (expectedState === "published") {
+    if (report.status !== "passed") {
+      errors.push(`react registry install report status is ${report.status}; expected passed for registry dogfood.`);
+    }
+    if (reactRow.actualState !== "published" || reactRow.registryVersion !== reactRow.expectedVersion) {
+      errors.push(
+        `@digitaltableteur/react registry smoke saw ${reactRow.actualState}@${reactRow.registryVersion}; expected published@${reactRow.expectedVersion}.`,
+      );
+    }
+    if (!isAcceptableOrgAccess(reactRow.orgAccess)) {
+      errors.push(
+        `@digitaltableteur/react registry access is ${reactRow.orgAccess}; expected read-only or read-write.`,
+      );
+    }
+    if ((report.consumer?.reactExports ?? 0) < MIN_REACT_RUNTIME_EXPORTS) {
+      errors.push(
+        `react registry install smoke saw ${report.consumer?.reactExports ?? 0} exports; expected at least ${MIN_REACT_RUNTIME_EXPORTS}.`,
+      );
+    }
+    if (report.consumer?.reactCssResolvedFromNodeModules !== true) {
+      errors.push("react registry install smoke did not resolve @digitaltableteur/react/style.css from node_modules.");
+    }
+    if (report.consumer?.tokenCssResolvedFromNodeModules !== true) {
+      errors.push("react registry install smoke did not resolve @digitaltableteur/tokens-css/tokens.css from node_modules.");
+    }
+    if (report.consumer?.typecheck !== "passed") {
+      errors.push(`react registry install smoke typecheck is ${report.consumer?.typecheck ?? "missing"}; expected passed.`);
     }
   }
 
@@ -624,6 +671,7 @@ function validatePackageRegistryStatusReport(report, errors) {
     ["@digitaltableteur/tokens", "@digitaltableteur/tokens-css"].includes(row.name),
   );
   const reactRow = packages.find((row) => row.name === "@digitaltableteur/react");
+  const expectedState = report.expectedReactState ?? "unknown";
 
   if (report.status !== "passed") {
     errors.push(`package registry status report status is ${report.status}; expected passed.`);
@@ -634,8 +682,8 @@ function validatePackageRegistryStatusReport(report, errors) {
   if (reportErrors.length) {
     errors.push(`package registry status report has errors: ${reportErrors.join("; ")}`);
   }
-  if (report.expectedReactState !== "unpublished") {
-    errors.push(`package registry status expectedReactState is ${report.expectedReactState}; expected unpublished before clearance.`);
+  if (!["published", "unpublished"].includes(expectedState)) {
+    errors.push(`package registry status expectedReactState is ${expectedState}; expected published or unpublished.`);
   }
   for (const packageName of ["@digitaltableteur/tokens", "@digitaltableteur/tokens-css"]) {
     const row = tokenRows.find((item) => item.name === packageName);
@@ -646,14 +694,29 @@ function validatePackageRegistryStatusReport(report, errors) {
     if (row.actualState !== "published" || row.registryVersion !== row.expectedVersion) {
       errors.push(`${packageName} registry state is ${row.actualState}@${row.registryVersion}; expected published@${row.expectedVersion}.`);
     }
-    if (row.accessStatus !== "private" || row.orgAccess !== "read-write") {
-      errors.push(`${packageName} registry access is ${row.accessStatus ?? "missing"}/${row.orgAccess ?? "missing"}; expected private/read-write.`);
+    if (!isAcceptableAccessStatus(row.accessStatus) || !isAcceptableOrgAccess(row.orgAccess)) {
+      errors.push(`${packageName} registry access is ${row.accessStatus}/${row.orgAccess}; expected private/read-only-or-better.`);
     }
   }
   if (!reactRow) {
     errors.push("package registry status report does not include @digitaltableteur/react.");
-  } else if (reactRow.actualState !== "unpublished" || reactRow.exactVersionPublished !== false) {
+  } else if (expectedState === "unpublished" && (reactRow.actualState !== "unpublished" || reactRow.exactVersionPublished !== false)) {
     errors.push(`@digitaltableteur/react@${reactRow.expectedVersion} registry state is ${reactRow.actualState}; expected unpublished before clearance.`);
+  } else if (expectedState === "published") {
+    if (
+      reactRow.actualState !== "published" ||
+      reactRow.exactVersionPublished !== true ||
+      reactRow.registryVersion !== reactRow.expectedVersion
+    ) {
+      errors.push(
+        `@digitaltableteur/react@${reactRow.expectedVersion} registry state is ${reactRow.actualState}@${reactRow.registryVersion}; expected published@${reactRow.expectedVersion}.`,
+      );
+    }
+    if (!isAcceptableAccessStatus(reactRow.accessStatus) || !isAcceptableOrgAccess(reactRow.orgAccess)) {
+      errors.push(
+        `@digitaltableteur/react registry access is ${reactRow.accessStatus}/${reactRow.orgAccess}; expected private/read-only-or-better.`,
+      );
+    }
   }
 
   return {
@@ -669,6 +732,57 @@ function validatePackageRegistryStatusReport(report, errors) {
       latestVersion: row.latestVersion,
       accessStatus: row.accessStatus,
       orgAccess: row.orgAccess,
+    })),
+    errorCount: reportErrors.length,
+  };
+}
+
+function validatePackageRegistryResolutionReport(report, errors) {
+  if (!report) return null;
+
+  const reportErrors = Array.isArray(report.errors) ? report.errors : [];
+  const rows = Array.isArray(report.rows) ? report.rows : [];
+
+  if (report.status !== "passed") {
+    errors.push(`package registry resolution report status is ${report.status}; expected passed.`);
+  }
+  if (reportErrors.length) {
+    errors.push(`package registry resolution report has errors: ${reportErrors.join("; ")}`);
+  }
+
+  for (const packageName of REQUIRED_PACKAGES) {
+    const row = rows.find((item) => item.name === packageName);
+    if (!row) {
+      errors.push(`package registry resolution report does not include ${packageName}.`);
+      continue;
+    }
+    if (!row.dependencyRange) {
+      errors.push(`${packageName} is missing a root dependency range in the registry resolution report.`);
+    }
+    if (row.installedIsSymlink !== false) {
+      errors.push(`${packageName} install is ${row.installedIsSymlink === true ? "a symlink" : "missing"}; expected registry package directory.`);
+    }
+    if (row.lockHasSourceWorkspaceEntry !== false) {
+      errors.push(`${packageName} still has a package-lock source workspace entry.`);
+    }
+    if (typeof row.lockResolved !== "string" || !row.lockResolved.startsWith(`https://registry.npmjs.org/${packageName}/-/`)) {
+      errors.push(`${packageName} lockfile entry does not resolve from npm registry.`);
+    }
+    if (typeof row.resolved !== "string" || !row.resolved.startsWith(`node_modules/${packageName}/`)) {
+      errors.push(`${packageName} resolves from ${row.resolved ?? "missing"}; expected node_modules/${packageName}.`);
+    }
+  }
+
+  return {
+    generatedAt: report.generatedAt,
+    status: report.status,
+    packages: rows.map((row) => ({
+      name: row.name,
+      dependencyRange: row.dependencyRange,
+      lockVersion: row.lockVersion,
+      resolved: row.resolved,
+      installedIsSymlink: row.installedIsSymlink,
+      lockHasSourceWorkspaceEntry: row.lockHasSourceWorkspaceEntry,
     })),
     errorCount: reportErrors.length,
   };
@@ -769,6 +883,10 @@ function buildHtml(report, i18nReport) {
         const access = row.accessStatus && row.orgAccess ? ` ${row.accessStatus}/${row.orgAccess}` : "";
         return `${row.name}@${version} ${row.actualState}${access}`;
       })
+      .join(", ") ?? "missing";
+  const registryResolutionSummary =
+    report.evidence.packageRegistryResolution?.packages
+      ?.map((row) => `${row.name}@${row.lockVersion ?? "unknown"} -> ${row.resolved ?? "missing"}`)
       .join(", ") ?? "missing";
 
   const screenshotCards = screenshotRows
@@ -931,6 +1049,7 @@ function buildHtml(report, i18nReport) {
       <div class="metric"><strong>${escapeHtml(report.evidence.trustedPublisher?.repositoryReadyPathCount ?? 0)}/${escapeHtml(report.evidence.trustedPublisher?.repositoryPathCount ?? 0)}</strong>publish paths commit-ready</div>
       <div class="metric"><strong>${escapeHtml(report.evidence.npmConsumerInstall?.reactExports ?? 0)}</strong>exports consumed from packed tarballs</div>
       <div class="metric"><strong>${escapeHtml(report.evidence.registryTokenInstall?.tokenCount ?? 0)}</strong>published-registry tokens consumed</div>
+      <div class="metric"><strong>${escapeHtml(report.evidence.packageRegistryResolution?.packages?.length ?? 0)}</strong>root registry packages resolved</div>
       <div class="metric"><strong>${escapeHtml(report.evidence.reactRegistryInstall?.status ?? "missing")}</strong>React registry smoke state</div>
       <div class="metric"><strong>${escapeHtml(report.evidence.sitePackageDogfood?.summary?.passed ?? 0)}/${escapeHtml(report.evidence.sitePackageDogfood?.summary?.total ?? 0)}</strong>package dogfood browser checks passed</div>
     </section>
@@ -949,6 +1068,7 @@ function buildHtml(report, i18nReport) {
       <p>Command shape: <code>${escapeHtml(report.evidence.packagePublishDryRun?.commandShape ?? "missing")}</code></p>
       <p>Trusted Publisher: ${escapeHtml(report.evidence.trustedPublisher?.githubOwner ?? "missing")}/${escapeHtml(report.evidence.trustedPublisher?.githubRepository ?? "missing")} via <code>${escapeHtml(report.evidence.trustedPublisher?.workflowFilename ?? "missing")}</code>. Handoff: <code>${escapeHtml(report.evidence.trustedPublisher?.handoffPath ?? "missing")}</code>. Commit-ready paths: ${escapeHtml(report.evidence.trustedPublisher?.repositoryReadyPathCount ?? 0)}/${escapeHtml(report.evidence.trustedPublisher?.repositoryPathCount ?? 0)}.</p>
       <p>Registry status: ${escapeHtml(registryStatusSummary)}.</p>
+      <p>Root registry resolution: ${escapeHtml(registryResolutionSummary)}.</p>
       <p>Local tarball consumer: ${escapeHtml(report.evidence.npmConsumerInstall?.packageCount ?? 0)} packages installed, strict TypeScript ${escapeHtml(report.evidence.npmConsumerInstall?.typecheck ?? "missing")}.</p>
       <p>Published-token registry consumer: ${escapeHtml(registryAccessSummary)} from ${escapeHtml(report.evidence.registryTokenInstall?.registry ?? "missing")}.</p>
       <p>React registry consumer: ${escapeHtml(report.evidence.reactRegistryInstall?.status ?? "missing")} for expected state ${escapeHtml(report.evidence.reactRegistryInstall?.expectedReactState ?? "missing")}; React package ${escapeHtml(report.evidence.reactRegistryInstall?.reactPackage?.actualState ?? "missing")}@${escapeHtml(report.evidence.reactRegistryInstall?.reactPackage?.registryVersion ?? report.evidence.reactRegistryInstall?.reactPackage?.expectedVersion ?? "unknown")}.</p>
@@ -985,6 +1105,10 @@ function buildMarkdown(report) {
         return `${row.name}@${version} ${row.actualState}${access}`;
       })
       .join(", ") ?? "unknown";
+  const registryResolutionSummary =
+    report.evidence.packageRegistryResolution?.packages
+      ?.map((row) => `${row.name}@${row.lockVersion ?? "unknown"} -> ${row.resolved ?? "missing"}`)
+      .join(", ") ?? "unknown";
 
   return `# React publish review packet
 
@@ -1006,6 +1130,7 @@ This packet does not clear approvals and does not publish packages. It only cons
 - Publish dry-run: \`${report.evidence.packagePublishDryRun?.commandShape ?? "missing"}\`; packages ${report.evidence.packagePublishDryRun?.packageNames?.join(", ") ?? "unknown"}; errors ${report.evidence.packagePublishDryRun?.errorCount ?? "unknown"}.
 - Trusted Publisher: ${report.evidence.trustedPublisher?.publisher ?? "unknown"} for ${report.evidence.trustedPublisher?.githubOwner ?? "unknown"}/${report.evidence.trustedPublisher?.githubRepository ?? "unknown"} via \`${report.evidence.trustedPublisher?.workflowFilename ?? "unknown"}\`; handoff \`${report.evidence.trustedPublisher?.handoffPath ?? "missing"}\`; commit-ready paths ${report.evidence.trustedPublisher?.repositoryReadyPathCount ?? 0}/${report.evidence.trustedPublisher?.repositoryPathCount ?? 0}; allowed actions ${(report.evidence.trustedPublisher?.allowedActions ?? []).join(", ") || "unknown"}.
 - Package registry status: ${registryStatusSummary}; expected React state ${report.evidence.packageRegistryStatus?.expectedReactState ?? "unknown"}; errors ${report.evidence.packageRegistryStatus?.errorCount ?? "unknown"}.
+- Root registry resolution: ${registryResolutionSummary}; errors ${report.evidence.packageRegistryResolution?.errorCount ?? "unknown"}.
 - Local tarball consumer install: ${report.evidence.npmConsumerInstall?.packageNames?.join(", ") ?? "unknown"}; ${report.evidence.npmConsumerInstall?.reactExports ?? "unknown"} React exports consumed; strict TypeScript ${report.evidence.npmConsumerInstall?.typecheck ?? "unknown"}; errors ${report.evidence.npmConsumerInstall?.errorCount ?? "unknown"}.
 - Published-token registry install: ${registryAccessSummary} from ${report.evidence.registryTokenInstall?.registry ?? "unknown"}; token count ${report.evidence.registryTokenInstall?.tokenCount ?? "unknown"}; errors ${report.evidence.registryTokenInstall?.errorCount ?? "unknown"}.
 - React registry install smoke: status ${report.evidence.reactRegistryInstall?.status ?? "unknown"}; expected React state ${report.evidence.reactRegistryInstall?.expectedReactState ?? "unknown"}; package state ${report.evidence.reactRegistryInstall?.reactPackage?.actualState ?? "unknown"}@${report.evidence.reactRegistryInstall?.reactPackage?.registryVersion ?? report.evidence.reactRegistryInstall?.reactPackage?.expectedVersion ?? "unknown"}; React exports ${report.evidence.reactRegistryInstall?.reactExports ?? "not-run"}; strict TypeScript ${report.evidence.reactRegistryInstall?.typecheck ?? "not-run"}; errors ${report.evidence.reactRegistryInstall?.errorCount ?? "unknown"}.
@@ -1074,6 +1199,11 @@ const packageRegistryStatusReport = readJson(
   "package registry status report",
   errors,
 );
+const packageRegistryResolutionReport = readJson(
+  PACKAGE_REGISTRY_RESOLUTION_REPORT_PATH,
+  "package registry resolution report",
+  errors,
+);
 const sitePackageDogfoodReport = readJson(
   SITE_PACKAGE_DOGFOOD_REPORT_PATH,
   "site package dogfood report",
@@ -1103,6 +1233,10 @@ const evidence = {
     errors,
   ),
   packageRegistryStatus: validatePackageRegistryStatusReport(packageRegistryStatusReport, errors),
+  packageRegistryResolution: validatePackageRegistryResolutionReport(
+    packageRegistryResolutionReport,
+    errors,
+  ),
   sitePackageDogfood: validateSitePackageDogfoodReport(sitePackageDogfoodReport, errors),
 };
 
@@ -1146,6 +1280,7 @@ const report = {
     registryTokenInstall: relativePath(REGISTRY_TOKEN_INSTALL_REPORT_PATH),
     reactRegistryInstall: relativePath(REACT_REGISTRY_INSTALL_REPORT_PATH),
     packageRegistryStatus: relativePath(PACKAGE_REGISTRY_STATUS_REPORT_PATH),
+    packageRegistryResolution: relativePath(PACKAGE_REGISTRY_RESOLUTION_REPORT_PATH),
     sitePackageDogfood: relativePath(SITE_PACKAGE_DOGFOOD_REPORT_PATH),
   },
   outputs: {

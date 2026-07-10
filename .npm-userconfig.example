@@ -1,0 +1,5 @@
+; Template for the project-local npm userconfig (.npmrc sets userconfig=.npm-userconfig).
+; Copy to .npm-userconfig (gitignored) and add a granular READ token only when
+; installing private @digitaltableteur packages locally:
+;   //registry.npmjs.org/:_authToken=<npm read token>
+; Never commit token values; .npm-userconfig is untracked on purpose.

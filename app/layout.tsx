@@ -21,6 +21,7 @@ import { NextLayout } from "@dt/NextLayout";
 import { WebMcpProvider } from "../providers/WebMcpProvider";
 import { HtmlLangSync } from "./components/HtmlLangSync";
 import { DeferredAnalytics } from "./components/DeferredAnalytics";
+import "@digitaltableteur/react/style.css";
 import "./globals.css";
 
 const siteUrl =

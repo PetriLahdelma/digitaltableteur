@@ -17,6 +17,7 @@ const OUT_JSON = join(OUT_DIR, "latest.json");
 
 const PACKAGE_DEFINITIONS = [
   {
+    dir: "packages/tokens",
     name: "@digitaltableteur/tokens",
     maxEntryCount: 20,
     maxTarballSize: 40_000,
@@ -34,6 +35,7 @@ const PACKAGE_DEFINITIONS = [
     ],
   },
   {
+    dir: "packages/tokens-css",
     name: "@digitaltableteur/tokens-css",
     maxEntryCount: 12,
     maxTarballSize: 20_000,
@@ -47,11 +49,13 @@ const PACKAGE_DEFINITIONS = [
     ],
   },
   {
+    dir: "packages/react",
     name: "@digitaltableteur/react",
     maxEntryCount: 1_100,
     maxTarballSize: 900_000,
     maxUnpackedSize: 3_500_000,
     requiredFiles: [
+      "README.md",
       "dist/index.d.ts",
       "dist/index.js",
       "dist/package-globals.d.ts",
@@ -82,29 +86,44 @@ function relativePath(path) {
 }
 
 function parsePackJson(stdout, packageName) {
-  const start = stdout.indexOf("[");
-  const end = stdout.lastIndexOf("]");
-  if (start === -1 || end === -1 || end < start) {
-    throw new Error(`npm pack for ${packageName} did not return JSON.`);
+  const trimmed = stdout.trim();
+  const candidates = [
+    trimmed,
+    stdout.slice(stdout.indexOf("["), stdout.lastIndexOf("]") + 1),
+    stdout.slice(stdout.indexOf("{"), stdout.lastIndexOf("}") + 1),
+  ].filter(Boolean);
+
+  for (const candidate of candidates) {
+    try {
+      const parsed = JSON.parse(candidate);
+      const rows = Array.isArray(parsed)
+        ? parsed
+        : parsed?.[packageName]
+          ? [parsed[packageName]]
+          : [parsed];
+      if (rows.length !== 1) {
+        throw new Error(`npm pack for ${packageName} returned ${rows.length} package rows.`);
+      }
+      return rows[0];
+    } catch {
+      // Try the next candidate. npm may wrap JSON in notice output.
+    }
   }
-  const parsed = JSON.parse(stdout.slice(start, end + 1));
-  if (!Array.isArray(parsed) || parsed.length !== 1) {
-    throw new Error(`npm pack for ${packageName} returned ${parsed.length} package rows.`);
-  }
-  return parsed[0];
+
+  throw new Error(`npm pack for ${packageName} did not return parseable JSON.`);
 }
 
-function packWorkspace(packageName) {
+function packPackage(definition) {
   const stdout = execFileSync(
     "npm",
-    ["pack", "--workspace", packageName, "--dry-run", "--json"],
+    ["pack", "--dry-run", "--json"],
     {
-      cwd: ROOT,
+      cwd: join(ROOT, definition.dir),
       encoding: "utf8",
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
-  return parsePackJson(stdout, packageName);
+  return parsePackJson(stdout, definition.name);
 }
 
 function isAllowedPath(path) {
@@ -188,7 +207,7 @@ const rows = [];
 const errors = [];
 
 for (const definition of PACKAGE_DEFINITIONS) {
-  const pack = packWorkspace(definition.name);
+  const pack = packPackage(definition);
   const row = validatePack(definition, pack);
   rows.push(row);
   for (const error of row.errors) {

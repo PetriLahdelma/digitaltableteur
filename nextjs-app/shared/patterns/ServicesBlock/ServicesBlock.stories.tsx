@@ -28,7 +28,7 @@ import { AdobeToolIcon } from "../../components/pages/Work/AdobeToolIcon";
 const meta: Meta<typeof ServicesBlock> = {
   title: "Patterns/ServicesBlock",
   component: ServicesBlock,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

@@ -1,0 +1,118 @@
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { FilterChip } from "./FilterChip";
+import contract from "./FilterChip.contract.json";
+
+const meta = {
+  title: "Atoms/FilterChip",
+  component: FilterChip,
+  parameters: {
+    layout: "centered",
+    a11y: { test: "error" },
+    contractStatus: contract.status,
+    docs: {
+      description: {
+        component: contract.description,
+      },
+    },
+  },
+  // Custom MDX docs pages exist for all catalog entries; do not also enable autodocs
+  // or Storybook will treat it as conflicting sources of truth for the docs page.
+  tags: ["!autodocs"],
+  argTypes: {
+    pressed: {
+      control: "boolean",
+      description: "Whether this chip's filter is active (aria-pressed).",
+      table: { category: "Behavior" },
+    },
+    variant: {
+      control: "radio",
+      options: ["pill", "underline", "minimal"],
+      description: "Visual treatment.",
+      table: { defaultValue: { summary: "pill" }, category: "Appearance" },
+    },
+    size: {
+      control: "radio",
+      options: ["sm", "md", "lg"],
+      description: "Size token.",
+      table: { defaultValue: { summary: "md" }, category: "Appearance" },
+    },
+    count: {
+      control: "number",
+      description: "Optional count suffix, rendered as (n).",
+      table: { category: "Content" },
+    },
+    children: {
+      control: "text",
+      description: "Chip label.",
+      table: { category: "Content" },
+    },
+    onClick: { table: { disable: true } },
+  },
+  args: {
+    pressed: false,
+    variant: "pill" as const,
+    size: "md" as const,
+    children: "Design systems",
+  },
+} satisfies Meta<typeof FilterChip>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+};
+
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+};
+
+function ExampleGroup() {
+  const [active, setActive] = useState<string | null>(null);
+  const tags = ["Design systems", "Accessibility", "AI", "Branding"];
+  return (
+    <div
+      role="group"
+      aria-label="Filter by topic"
+      style={{ display: "flex", gap: "var(--space-internal-8)", flexWrap: "wrap" }}
+    >
+      <FilterChip pressed={active === null} onClick={() => setActive(null)} count={12}>
+        All
+      </FilterChip>
+      {tags.map((tag) => (
+        <FilterChip
+          key={tag}
+          pressed={active === tag}
+          onClick={() => setActive(tag)}
+          count={3}
+        >
+          {tag}
+        </FilterChip>
+      ))}
+    </div>
+  );
+}
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+  name: "Example (filter group)",
+  parameters: { controls: { disable: true } },
+  render: () => <ExampleGroup />,
+};
+
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: { pressed: true },
+  parameters: {
+    docs: {
+      description: {
+        story: "Forced-colors verification story.",
+      },
+    },
+  },
+};

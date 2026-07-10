@@ -3,7 +3,7 @@
     "name": "Tabs",
     "tier": "molecule",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Tablist navigation with keyboard support, a sliding selection indicator, and per-item icon/count.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-5",
     "radixPrimitive": null,
@@ -52,15 +52,48 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — arrow-key navigation and selection verified in Storybook.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-05-26 — arrow-key navigation and selection verified in Storybook. 2026-07-08 — promoted after ContactInquiryPanel adopted Tabs for the production contact message/book switcher; check:beta-promotion-readiness verifies production consumers, snapshots, forced colors, and real Figma evidence.",
+        "forcedColorsVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactInquiryPanel/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "activeTab": {
@@ -89,6 +122,10 @@
             "type": "(key: string) => void"
         },
         "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "ariaLabel": {
             "optional": true,
             "type": "string"
         },

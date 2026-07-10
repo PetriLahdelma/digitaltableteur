@@ -12,4 +12,8 @@ This package is published as a restricted private npm package for the Digitaltab
 - `@digitaltableteur/tokens-css/tokens.css`
 - `@digitaltableteur/tokens-css/themes/<brand>.css`
 
-The live app still imports `nextjs-app/shared/styles/variables.css` directly until the npm dogfood step is complete.
+The live app still imports `nextjs-app/shared/styles/variables.css` for runtime
+CSS continuity, while registry consumers import this package's CSS directly.
+The root install resolves this package from npm rather than from a local
+workspace symlink; `npm run check:package-registry-resolution` guards that
+boundary.

@@ -13,7 +13,7 @@ const items: SegmentedControlItem[] = [
 ];
 
 const meta = {
-  title: "Molecules/SegmentedControl",
+  title: "Navigation/SegmentedControl",
   component: SegmentedControl,
   tags: ["alpha", "!autodocs"],
   parameters: {

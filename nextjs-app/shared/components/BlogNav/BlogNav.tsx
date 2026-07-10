@@ -3,8 +3,11 @@
 import React from "react";
 import Button from "@dt/Button";
 import styles from "./blognav.module.css";
-import { usePathname, useRouter } from "next/navigation";
-import { useTranslation } from "react-i18next";
+import {
+  useNavigationPathname,
+  useNavigationRouter,
+} from "../../lib/navigation";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
 
 const blogPages = [
@@ -41,13 +44,14 @@ export interface BlogNavProps {
  * labelled `nav` landmark.
  */
 const BlogNav: React.FC<BlogNavProps> = ({ currentPath: currentPathProp }) => {
-  const { t } = useTranslation();
-  const currentPath = normalizePath(currentPathProp ?? usePathname() ?? "/");
+  const t = useTranslate();
+  const pathname = useNavigationPathname();
+  const currentPath = normalizePath(currentPathProp ?? pathname ?? "/");
   const currentIndex = blogPages.findIndex(
     (p) => normalizePath(p.path) === currentPath,
   );
   const isArticleRoute = currentIndex >= 0;
-  const router = useRouter();
+  const router = useNavigationRouter();
   return (
     <nav className={styles.blogNavBar} aria-label={t("blogNavLabel")}>
       <Button

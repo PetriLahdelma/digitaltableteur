@@ -5,13 +5,13 @@ import type {
   PseoRelatedLinkCopy,
 } from "@/lib/pseo/types";
 
-import Card from "@dt/Card";
 import Breadcrumb from "@dt/Breadcrumb";
 import Button from "@dt/Button";
-import MarkdownMessage from "@dt/MarkdownMessage";
-import PageLayout from "../../../patterns/PageLayout/PageLayout";
+import Card from "@dt/Card";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
+import MarkdownMessage from "@dt/MarkdownMessage";
+import PageLayout from "../../../patterns/PageLayout/PageLayout";
 import { PseoClusterBadges } from "./PseoClusterBadges";
 import styles from "./PseoLeafPage.module.css";
 

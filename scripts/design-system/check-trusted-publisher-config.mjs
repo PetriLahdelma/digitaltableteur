@@ -21,6 +21,7 @@ const OUT_EXCLUDED_DIRTY = join(OUT_DIR, "excluded-dirty-paths.txt");
 const REPORT = process.argv.includes("--report");
 const EXPECTED_REPOSITORY_URL =
   "git+https://github.com/PetriLahdelma/digitaltableteur.git";
+const NPM_TRUST_CLI_VERSION = "11.18.0";
 const PACKAGES = [
   { dir: "packages/tokens", name: "@digitaltableteur/tokens" },
   { dir: "packages/tokens-css", name: "@digitaltableteur/tokens-css" },
@@ -28,6 +29,7 @@ const PACKAGES = [
 ];
 const WORKFLOW_RELATIVE = ".github/workflows/ds-publish.yml";
 const REQUIRED_REPOSITORY_PATHS = [
+  ".github/scripts/write-npm-read-config.sh",
   ".github/workflows/ds-publish.yml",
   "nextjs-app/shared/components/AlertBanner/AlertBanner.module.css",
   "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
@@ -232,6 +234,7 @@ const REQUIRED_REPOSITORY_PATHS = [
   "package-lock.json",
   "package.json",
   "packages/react/CHANGELOG.md",
+  "packages/react/README.md",
   "packages/react/package.json",
   "packages/react/public-api.manifest.json",
   "packages/react/src/index.ts",
@@ -251,8 +254,10 @@ const REQUIRED_REPOSITORY_PATHS = [
   "scripts/design-system/astryx-roadmap.state.json",
   "scripts/design-system/build-token-css.mjs",
   "scripts/design-system/build-tokens.mjs",
+  "scripts/design-system/check-npm-oidc-publish-auth.mjs",
   "scripts/design-system/check-npm-consumer-install.mjs",
   "scripts/design-system/check-package-publish-dry-run.mjs",
+  "scripts/design-system/check-package-registry-resolution.mjs",
   "scripts/design-system/check-package-registry-status.mjs",
   "scripts/design-system/check-package-release-notes.mjs",
   "scripts/design-system/check-package-tarball-contents.mjs",
@@ -319,7 +324,17 @@ function formatExcludedDirtyRows(paths) {
   return paths.map((path) => `| \`${path}\` |`).join("\n");
 }
 
+function formatTrustCliCommands(report) {
+  const base = `NPM_CONFIG_USERCONFIG=/path/to/private-npmrc npx npm@${report.npmTrustCliVersion}`;
+  return {
+    list: `${base} trust list @digitaltableteur/react --json`,
+    configure: `${base} trust github @digitaltableteur/react --repo ${report.githubOwner}/${report.githubRepository} --file ${report.workflowFilename} --allow-publish --yes`,
+    dryRun: `${base} trust github @digitaltableteur/react --repo ${report.githubOwner}/${report.githubRepository} --file ${report.workflowFilename} --allow-publish --dry-run --json`,
+  };
+}
+
 function writeHandoff(report) {
+  const trustCli = formatTrustCliCommands(report);
   const markdown = `# Trusted Publisher handoff
 
 Generated: ${report.generatedAt}
@@ -337,6 +352,33 @@ non-secret npm Trusted Publisher setup values for the private
 - Workflow filename: \`${report.workflowFilename}\`
 - Environment name: ${report.npmEnvironmentName ?? "leave blank"}
 - Allowed action: ${report.allowedActions.join(", ")}
+
+These values are case-sensitive and must match the GitHub OIDC claims exactly:
+\`repository: ${report.githubOwner}/${report.githubRepository}\`,
+\`workflow_ref: ${report.githubOwner}/${report.githubRepository}/${report.workflowPath}\`.
+Configure them on each package access page, for example
+\`https://www.npmjs.com/package/@digitaltableteur/react/access\`. Do not use the
+npm organization name as the GitHub owner.
+
+## npm trust CLI
+
+npm exposes Trusted Publisher management through \`npm trust\`. Prefer this
+official CLI path when the available npm authentication can manage trust
+relationships:
+
+~~~bash
+${trustCli.list}
+${trustCli.dryRun}
+${trustCli.configure}
+~~~
+
+If \`npm access list packages digitaltableteur --json\` reports
+\`@digitaltableteur/react\` as \`read-write\` but \`npm trust list\` or
+\`npm trust github\` returns \`403 Forbidden\` for
+\`/-/package/@digitaltableteur%2freact/trust\`, the token/session can publish or
+manage package access but cannot manage Trusted Publisher records. Use an npm
+auth session that satisfies npm trust requirements, including npm 11.15.0+,
+package write access, account-level 2FA, and a supported auth method.
 
 ## GitHub workflow state
 
@@ -373,8 +415,10 @@ After reviewing the pathspec and diffs, the intended staging shape is:
 git add --pathspec-from-file=${report.publishPathspecPath}
 ~~~
 
-Do not stage \`.npm-userconfig\`, generated \`.omx/state\` files, or unrelated
-local work as part of the publish transport commit.
+Do not stage token-bearing \`.npm-userconfig\` values, generated \`.omx/state\`
+files, or unrelated local work as part of the publish transport commit.
+\`.npm-userconfig\` is untracked and gitignored on purpose (it may hold a live
+read token); copy \`.npm-userconfig.example\` to recreate it locally.
 
 ## Dirty paths outside publish scope
 
@@ -391,8 +435,14 @@ ${formatPackageRows(report.packages)}
 ## Publish controls
 
 - Keep the workflow manual-only through \`workflow_dispatch\`.
-- Keep \`id-token: write\` and do not add \`NPM_TOKEN\` or \`NODE_AUTH_TOKEN\`.
+- Keep \`id-token: write\`. The workflow may use \`secrets.NPM_READ_TOKEN\`
+  only for private package install/registry smoke reads; publish steps must stay
+  OIDC-only and must not receive \`NPM_TOKEN\`, \`NODE_AUTH_TOKEN\`, or
+  \`NPM_READ_TOKEN\`.
 - Keep npm publish commands restricted: \`npm publish --access restricted\`.
+- Keep the workflow-only OIDC auth guard immediately before real React publishes
+  so failed trust exchanges report npm's redacted OIDC diagnostic instead of
+  falling through to \`ENEEDAUTH\`.
 - Keep \`@digitaltableteur/react\` behind \`check:react-publish-clearance\` and \`check:react-public-surface -- --require-publishable\`.
 - Local machines remain the CI-quality authority; GitHub Actions is only the npm OIDC transport.
 
@@ -529,22 +579,32 @@ if (!existsSync(WORKFLOW)) {
     "contents: read",
     "runs-on: ubuntu-latest",
     "node-version: 24",
-    "registry-url: https://registry.npmjs.org",
     "package-manager-cache: false",
-    "npm install -g npm@latest",
+    "Verify npm Trusted Publisher CLI support",
+    "npm ${version} supports Trusted Publisher OIDC",
+    ">=11.5.1",
+    "NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}",
+    "bash .github/scripts/write-npm-read-config.sh",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-read.npmrc\" npm ci",
     "npm run check:trusted-publisher",
     "npm run check:token-packages",
     "npm run check:react-package",
     "npm run check:package-release-notes",
+    "npm run check:package-registry-resolution",
     "npm run check:package-tarballs",
-    "npm run check:package-publish-dry-run",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" npm run check:package-publish-dry-run",
     "npm run check:npm-consumer-install",
     "npm run check:react-public-surface",
     "npm run check:react-public-api",
     "npm run check:react-publish-clearance",
     "npm run check:react-public-surface -- --require-publishable",
-    "npm publish --dry-run --access restricted",
-    "npm publish --access restricted",
+    "Verify @digitaltableteur/react OIDC publish auth",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" node scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" npm publish --dry-run --access restricted",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/tokens --publish",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/tokens-css --publish",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-publish.npmrc\" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react --publish",
+    "NPM_CONFIG_USERCONFIG=\"$RUNNER_TEMP/npm-read.npmrc\" npm run check:react-registry-install",
     "packages/tokens",
     "packages/tokens-css",
     "packages/react",
@@ -609,6 +669,8 @@ const report = {
   excludedDirtyPathsPath: relativePath(OUT_EXCLUDED_DIRTY),
   workflowTrackedByGit,
   workflowCommittedInHead,
+  npmTrustCliVersion: NPM_TRUST_CLI_VERSION,
+  npmTrustCliCommands: null,
   repositoryPaths,
   repositoryPathCount: repositoryPaths.length,
   repositoryReadyPathCount: repositoryPaths.filter((row) => row.ready).length,
@@ -620,6 +682,7 @@ const report = {
   packages: packageRows,
   errors,
 };
+report.npmTrustCliCommands = formatTrustCliCommands(report);
 writeFileSync(OUT_JSON, `${JSON.stringify(report, null, 2)}\n`);
 writeHandoff(report);
 

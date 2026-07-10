@@ -6,12 +6,20 @@ import { ProjectNav } from "./ProjectNav";
 
 expect.extend(toHaveNoViolations);
 
-// t(key, fallback) → return the fallback so labels are readable.
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string, fallback?: string) => fallback ?? key,
-  }),
-}));
+// t(key, fallback) -> return the fallback so labels are readable.
+vi.mock("../../lib/translation", () => {
+  const t = (key: string, fallback?: string) => fallback ?? key;
+  return {
+    useTranslate: () => t,
+    useLocalization: () => ({
+      translate: t,
+      language: "en",
+      resolvedLanguage: "en",
+      changeLanguage: vi.fn(),
+      getResourceBundle: vi.fn(),
+    }),
+  };
+});
 
 describe("ProjectNav", () => {
   it("renders a labelled navigation landmark with a back-to-work link", () => {

@@ -204,7 +204,7 @@
       "name": "AlertBanner",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Inline alert for info, warning, success, and error feedback.",
       "dense": "persistent inline status banner; tone info|success|warning|error drives icon + live-region politeness; title/description/action slots; opt-in dismissible with localized control",
       "keywords": [
@@ -297,7 +297,6 @@
       "composesWith": [
         "Button",
         "Icon",
-        "Title",
         "Text"
       ],
       "prefersOver": [
@@ -350,7 +349,7 @@
           {
             "name": "Title",
             "required": false,
-            "description": "Bold heading line (Title size=s) for scannable banners."
+            "description": "Bold title line rendered without document-heading semantics so inline banners do not alter the page outline."
           },
           {
             "name": "Description",
@@ -1845,7 +1844,7 @@
       "name": "Breadcrumb",
       "group": "navigation",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Navigation trail with current page indication.",
       "dense": "Location trail: nav[aria-label=Breadcrumb] > ol; items {label, href?} in root->current order; last (or href-less) item renders as plain current text, earlier ones as Link sm; '/' separators",
       "keywords": [
@@ -4289,7 +4288,7 @@
       "name": "ContactFormEditorial",
       "group": "form",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Editorial contact form used on the live contact page.",
       "dense": "Editorial-styled contact form used on the live contact page (uppercase labels, tabbed Personal/Company message types)",
       "keywords": [
@@ -5250,7 +5249,7 @@
       "name": "EmptyState",
       "group": "display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Placeholder block for empty lists, zero search results, and first-run screens.",
       "dense": "centered icon + heading + description + action slot for empty lists/search/first-run; sm/md/lg step padding and type together",
       "keywords": [
@@ -5917,6 +5916,45 @@
         }
       ]
     },
+    "FilterChip": {
+      "name": "FilterChip",
+      "group": "controls",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
+      "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
+      "keywords": [
+        "filter",
+        "chip",
+        "toggle",
+        "category",
+        "tag",
+        "pressed"
+      ],
+      "importLine": "import { FilterChip } from \"@dt/FilterChip\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-muted",
+          "--color-text",
+          "--color-border",
+          "--focus-ring-color"
+        ],
+        "spacing": [
+          "--space-internal-6",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-internal-24"
+        ]
+      },
+      "examples": []
+    },
     "FlexBox": {
       "name": "FlexBox",
       "group": "layout",
@@ -6282,7 +6320,7 @@
       "name": "FormFieldEditorial",
       "group": "form",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Uppercase-label form field for editorial contact flows.",
       "dense": "Uppercase-label field wrapper for editorial contact flows; pairs with ContactFormEditorial",
       "keywords": [
@@ -10534,7 +10572,7 @@
       "name": "Progress",
       "group": "feedback",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Linear progress indicator with determinate and indeterminate modes.",
       "dense": "linear progressbar; determinate value/max or indeterminate sweep; sm/md/lg track, semantic state fill; aria-valuenow dropped when indeterminate",
       "keywords": [
@@ -11355,7 +11393,7 @@
       "tier": 1,
       "status": "stable",
       "description": "Semantic section wrapper with spacing and background tokens.",
-      "dense": "Page band: spacing none|sm|md (default)|lg|xl + hero/follow pair (hero = roomy top tight bottom, follow = no top), background default|muted|accent|inverse; id/donnyTarget anchors",
+      "dense": "Page band: spacing none|sm|md (default)|lg|xl + hero/follow pair (hero = roomy top tight bottom, follow = no top), background default|muted|accent|inverse; id/spotlightTarget anchors",
       "keywords": [
         "section",
         "page band",
@@ -11392,7 +11430,7 @@
           "required": false
         },
         {
-          "name": "donnyTarget",
+          "name": "spotlightTarget",
           "type": "string",
           "required": false
         }
@@ -11433,7 +11471,7 @@
           "optional": true,
           "type": "string"
         },
-        "donnyTarget": {
+        "spotlightTarget": {
           "optional": true,
           "type": "string"
         }
@@ -11465,7 +11503,7 @@
           },
           {
             "guidance": true,
-            "description": "Give anchor/deep-link targets an id (and donnyTarget only for whitelisted spotlight stops)."
+            "description": "Give anchor/deep-link targets an id, and use spotlightTarget only when the host app needs stable guided-navigation selectors."
           },
           {
             "guidance": false,
@@ -11503,7 +11541,7 @@
       "name": "SecureCVDownload",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Gated CV download whose trigger opens a verification modal before the file is served.",
       "dense": "Gated CV download: trigger button opens a verification modal before serving the file",
       "keywords": [
@@ -12004,7 +12042,7 @@
       "name": "SiteTree",
       "group": "navigation",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Hierarchical sitemap with collapsible folder branches and page leaves.",
       "dense": "Hierarchical sitemap tree with collapsible folder branches and page leaves; sitemap page organism",
       "keywords": [
@@ -12415,6 +12453,43 @@
           "source": "export const CustomTarget: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    layout: \"padded\",\n    docs: {\n      description: {\n        story:\n          \"href points anywhere with a stable id — a search results region, a data table. Keep the label explicit about the destination.\",\n      },\n    },\n  },\n  args: {\n    href: \"#results\",\n    children: \"Skip to search results\",\n  },\n  play: async ({ canvasElement }) => {\n    within(canvasElement);\n    await userEvent.tab();\n  },\n};"
         }
       ]
+    },
+    "SocialIconLink": {
+      "name": "SocialIconLink",
+      "group": "navigation",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Icon-only social or profile link with enforced accessible name and external-safety (target=_blank + rel) by default.",
+      "dense": "Icon-only anchor: required label, external-safe, token hover/focus, sm/md/lg hit targets.",
+      "keywords": [
+        "social",
+        "icon",
+        "link",
+        "external",
+        "profile",
+        "share"
+      ],
+      "importLine": "import { SocialIconLink } from \"@dt/SocialIconLink\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-muted",
+          "--color-text",
+          "--focus-ring-color",
+          "--color-border"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-8",
+          "--space-internal-12"
+        ]
+      },
+      "examples": []
     },
     "SocialShare": {
       "name": "SocialShare",
@@ -13666,7 +13741,7 @@
       "name": "Tabs",
       "group": "navigation",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Tablist navigation with keyboard support, a sliding selection indicator, and per-item icon/count.",
       "dense": "Tablist-only tabs (panels via getTabPanelProps); variant default|pills|underline + sliding indicator; per-item icon+count; size sm|md|lg; controlled/uncontrolled; roving arrow-key focus",
       "keywords": [
@@ -13741,6 +13816,10 @@
           "type": "(key: string) => void"
         },
         "className": {
+          "optional": true,
+          "type": "string"
+        },
+        "ariaLabel": {
           "optional": true,
           "type": "string"
         },
@@ -14262,7 +14341,7 @@
       "tier": 1,
       "status": "stable",
       "description": "Labeled text input with validation, helper text, and size tokens.",
-      "dense": "labelled single-line field: text/number/email/password/search/tel, built-in email + phone validation, own error/helperText, sm/md/lg; onValueChange(value)",
+      "dense": "labelled single-line field: text/number/email/tel/password/search, built-in email+phone validation, error/helperText, sm/md/lg; onValueChange(value); clearable ×-button (onClear); hideLabel",
       "keywords": [
         "text input",
         "input",
@@ -14357,6 +14436,18 @@
           "optional": true,
           "type": "boolean"
         },
+        "clearable": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "onClear": {
+          "optional": true,
+          "type": "() => void"
+        },
+        "hideLabel": {
+          "optional": true,
+          "type": "boolean"
+        },
         "onChange": {
           "optional": true,
           "type": "(value: string | number) => void"
@@ -14393,6 +14484,14 @@
           {
             "guidance": true,
             "description": "Use helperText for format hints before errors happen (We never share this address)."
+          },
+          {
+            "guidance": true,
+            "description": "Use clearable for fields users iterate on (search boxes, filters, generators); the ×-button appears only while there is a value and hands focus back to the input."
+          },
+          {
+            "guidance": true,
+            "description": "Reserve hideLabel for dense compositions where surrounding design carries the affordance; the label stays in the accessibility tree, so still write a real one."
           },
           {
             "guidance": false,
@@ -14765,21 +14864,26 @@
         "onClose": {
           "optional": true,
           "type": "() => void"
+        },
+        "inline": {
+          "optional": true,
+          "type": "boolean"
         }
       },
       "composesWith": [
         "Button",
-        "Text",
-        "Modal",
-        "TextInput",
         "CheckboxGroup",
-        "TextArea"
+        "Modal",
+        "Text",
+        "TextArea",
+        "TextInput",
+        "ToastStack"
       ],
       "prefersOver": [
         "AlertBanner for page-level persistent status"
       ],
       "forbiddenUse": [
-        "mount two <Toast /> instances side by side; the shared live region double-announces and the visuals go stale.",
+        "mount two overlapping fixed <Toast /> instances yourself; use ToastStack (or the app ToastProvider) so concurrent messages stack instead of replacing each other.",
         "rely on Toast for compliance acknowledgements (cookie consent, legal notices); it auto-dismisses — use AlertBanner or Modal.",
         "use Toast for validation errors on a field; the message detaches from the input — use the field's error prop."
       ],
@@ -14846,12 +14950,17 @@
         {
           "story": "Placement",
           "description": "position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.",
-          "source": "export const Placement: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.\",\n      },\n    },\n  },\n  render: function PlacementStory() {\n    const positions: ToastPosition[] = [\n      \"top-left\",\n      \"top-center\",\n      \"top-right\",\n      \"bottom-left\",\n      \"bottom-center\",\n      \"bottom-right\",\n    ];\n    const [position, setPosition] = useState<ToastPosition | null>(null);\n    return (\n      <>\n        {positions.map((p) => (\n          <Button\n            key={p}\n            variant=\"secondary\"\n            size=\"sm\"\n            onClick={() => setPosition(p)}\n          >\n            {p}\n          </Button>\n        ))}\n        <Toast\n          message={position ? `Anchored ${position}.` : \"\"}\n          open={position !== null}\n          tone=\"info\"\n          position={position ?? undefined}\n          onClose={() => setPosition(null)}\n        />\n      </>\n    );\n  },\n};\n\n/** The recommended integration: fire toasts through the app-root provider. */"
+          "source": "export const Placement: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"position anchors the toast to a viewport corner or edge center. The app default is bottom-center; keep one placement per app so toasts are predictable.\",\n      },\n      // Inline docs previews transform their container, which hijacks\n      // position: fixed; an iframe gives the toast a real viewport so each\n      // placement lands where the trigger says.\n      story: { inline: false, iframeHeight: 360 },\n    },\n  },\n  render: function PlacementStory() {\n    const positions: ToastPosition[] = [\n      \"top-left\",\n      \"top-center\",\n      \"top-right\",\n      \"bottom-left\",\n      \"bottom-center\",\n      \"bottom-right\",\n    ];\n    const [position, setPosition] = useState<ToastPosition | null>(null);\n    return (\n      <>\n        {positions.map((p) => (\n          <Button\n            key={p}\n            variant=\"secondary\"\n            size=\"sm\"\n            onClick={() => setPosition(p)}\n          >\n            {p}\n          </Button>\n        ))}\n        <Toast\n          message={position ? `Anchored ${position}.` : \"\"}\n          open={position !== null}\n          tone=\"info\"\n          position={position ?? undefined}\n          onClose={() => setPosition(null)}\n        />\n      </>\n    );\n  },\n};\n\n/** The recommended integration: fire toasts through the app-root provider. */"
         },
         {
           "story": "ProviderDriven",
           "description": "The imperative API most consumers use: ToastProvider mounts one live region at the app shell; useToast().showToast(message, { tone, duration, position }) fires it from anywhere below.",
-          "source": "export const ProviderDriven: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The imperative API most consumers use: ToastProvider mounts one live region at the app shell; useToast().showToast(message, { tone, duration, position }) fires it from anywhere below.\",\n      },\n    },\n  },\n  render: function ProviderDrivenStory() {\n    function SaveButton() {\n      const { showToast } = useToast();\n      return (\n        <Button\n          onClick={() =>\n            showToast(\"Settings saved.\", { tone: \"success\", duration: 4000 })\n          }\n        >\n          Save settings\n        </Button>\n      );\n    }\n    return (\n      <ToastProvider>\n        <SaveButton />\n      </ToastProvider>\n    );\n  },\n};"
+          "source": "export const ProviderDriven: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The imperative API most consumers use: ToastProvider mounts one live region at the app shell; useToast().showToast(message, { tone, duration, position }) fires it from anywhere below.\",\n      },\n    },\n  },\n  render: function ProviderDrivenStory() {\n    function SaveButton() {\n      const { showToast } = useToast();\n      return (\n        <Button\n          onClick={() =>\n            showToast(\"Settings saved.\", { tone: \"success\", duration: 4000 })\n          }\n        >\n          Save settings\n        </Button>\n      );\n    }\n    return (\n      <ToastProvider>\n        <SaveButton />\n      </ToastProvider>\n    );\n  },\n};\n\n/** Concurrent toasts stack via ToastStack instead of replacing each other. */"
+        },
+        {
+          "story": "Stacked",
+          "description": "Concurrent messages stack (newest nearest the docked edge) via ToastStack — the app ToastProvider renders one stack per position, so firing showToast repeatedly shows every message.",
+          "source": "export const Stacked: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Concurrent messages stack (newest nearest the docked edge) via ToastStack — the app ToastProvider renders one stack per position, so firing showToast repeatedly shows every message.\",\n      },\n      // Same iframe treatment as Placement: fixed positioning needs a real\n      // viewport in docs.\n      story: { inline: false, iframeHeight: 360 },\n    },\n  },\n  render: function StackedStory() {\n    return (\n      <ToastStack\n        toasts={[\n          { id: \"saved\", message: \"Settings saved.\", tone: \"success\", duration: 600000 },\n          { id: \"lang\", message: \"Language changed to English\", duration: 600000 },\n          {\n            id: \"notice\",\n            message: \"This content is only available in English\",\n            tone: \"info\",\n            duration: 600000,\n          },\n        ]}\n        position=\"bottom-center\"\n      />\n    );\n  },\n};"
         },
         {
           "story": "Example",
@@ -14859,6 +14968,95 @@
           "source": "export const Example: Story = {\n  globals: { forcedColors: \"none\" },\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    a11y: { disable: true },\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"The canonical post-action confirmation: success tone, default bottom-center placement, auto-dismiss after 3 seconds.\",\n      },\n    },\n  },\n  render: function ExampleStory() {\n    const [open, setOpen] = React.useState(true);\n    return (\n      <Toast\n        message=\"Saved successfully.\"\n        open={open}\n        tone=\"success\"\n        onClose={() => setOpen(false)}\n      />\n    );\n  },\n};"
         }
       ]
+    },
+    "ToastStack": {
+      "name": "ToastStack",
+      "group": "feedback",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Docked stack of transient toasts: renders Toast children inline and owns the fixed placement, newest toast nearest the docked edge, so concurrent messages stay visible instead of replacing each other.",
+      "dense": "docked flex stack of Toast (inline mode); toasts: {id,message,tone?,duration?,size?}[], 6 dock positions, max visible (default 5, oldest wait), onDismiss(id) on per-toast auto-dismiss",
+      "keywords": [
+        "toast stack",
+        "notification stack",
+        "snackbar queue",
+        "stacked toasts",
+        "concurrent notifications"
+      ],
+      "importLine": "import ToastStack from \"@dt/ToastStack\";",
+      "keyProps": [
+        {
+          "name": "toasts",
+          "type": "ToastStackItem[]",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "top-left | top-center | top-right | bottom-left | bottom-center | bottom-right",
+          "required": false
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "toasts": {
+          "optional": false,
+          "type": "ToastStackItem[]"
+        },
+        "position": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "top-left",
+            "top-center",
+            "top-right",
+            "bottom-left",
+            "bottom-center",
+            "bottom-right"
+          ]
+        },
+        "onDismiss": {
+          "optional": true,
+          "type": "(id: string) => void"
+        },
+        "max": {
+          "optional": true,
+          "type": "number"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "composesWith": [
+        "Toast"
+      ],
+      "prefersOver": [
+        "multiple sibling <Toast /> mounts, whose fixed positions overlap and whose messages replace each other"
+      ],
+      "forbiddenUse": [
+        "mounting more than one ToastStack per position; group toasts by position and render one stack per active position instead",
+        "persistent or compliance-critical messaging; toasts auto-dismiss (use AlertBanner)"
+      ],
+      "usage": {
+        "description": "ToastStack is the multi-toast surface behind the app ToastProvider: showToast calls append items and each renders as an inline Toast laid out by the stack, newest nearest the docked edge. Use it (or the provider) whenever more than one transient message can be alive at once; a bare Toast stays correct for single, fully controlled cases."
+      },
+      "tokens": {
+        "colors": [],
+        "spacing": [
+          "--space-internal-8",
+          "--space-layout-24"
+        ]
+      },
+      "examples": []
     },
     "Tooltip": {
       "name": "Tooltip",
@@ -15454,7 +15652,8 @@
       },
       "composesWith": [
         "EnhancedProjectCard",
-        "CategoryFilter"
+        "CategoryFilter",
+        "EmptyState"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -15602,7 +15801,7 @@
       "name": "AboutPageContent",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "About page narrative sections and team highlights.",
       "dense": "Full /about route body: narrative sections, values, and team highlights; optional closing CTA via showCTA.",
       "keywords": [
@@ -16115,7 +16314,7 @@
       "name": "CTASection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Call-to-action band used on marketing pages.",
       "dense": "Marketing call-to-action band: title, description, primary/secondary action slots; background and align variants.",
       "keywords": [
@@ -16310,7 +16509,7 @@
       "name": "ContactHero",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Contact page hero with headline and supporting copy.",
       "dense": "Contact page hero: headline plus supporting copy, background and compact variants.",
       "keywords": [
@@ -16391,7 +16590,7 @@
       "name": "ContactInquiryPanel",
       "group": "forms",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Contact page inquiry panel with message and book-a-call tabs wrapping the editorial form.",
       "dense": "Contact inquiry tabs (message vs book-a-call) wrapping the editorial contact form; parent owns submit state via the messagePanel slot.",
       "keywords": [
@@ -16483,7 +16682,7 @@
       "name": "ContactPageContentEditorial",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Editorial contact page layout with form and success state.",
       "dense": "Editorial /contact route body: intro copy, inquiry panel with form, and submit success state.",
       "keywords": [
@@ -16659,7 +16858,7 @@
       "name": "DesignSprintsSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage design-sprints band with animated CTA pills.",
       "dense": "Homepage design-sprints band with animated CTA pills; slots between marketing sections via id/donnyTarget anchors.",
       "keywords": [
@@ -16767,7 +16966,7 @@
       "name": "GridBlock",
       "group": "layout",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Responsive grid of case-study content cells with column, gap, spacing, and background knobs, used across Work project pages.",
       "dense": "Case-study grid of content cells: columns, gap, background, and spacing knobs; used across Work project pages.",
       "keywords": [
@@ -16901,7 +17100,7 @@
       "name": "Hero",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "deprecated",
       "description": "Configurable general-purpose page hero with heading, subtitle, optional image, and an actions slot across layout and background variants.",
       "dense": "General-purpose hero: title/subtitle/description, optional image and actions; layout variant, background, and align knobs.",
       "keywords": [
@@ -17060,7 +17259,7 @@
       "name": "HeroSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Full-bleed hero shell with min-height, alignment, and background variants.",
       "dense": "Full-bleed hero shell: min-height, align/justify, background or backgroundImage; renders children as a labelled landmark section.",
       "keywords": [
@@ -17361,7 +17560,7 @@
       "name": "HighlightSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Highlight band with variant backgrounds and CTA slots.",
       "dense": "Highlight band: overline + title + description with CTA slot; visual variants and sizes for marketing emphasis.",
       "keywords": [
@@ -17482,7 +17681,7 @@
       "name": "HomeHero",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage hero with kinetic title, background, and primary CTA.",
       "dense": "Bespoke homepage hero: kinetic per-visit headline, background treatment, primary CTA scrolling to scrollTargetId.",
       "keywords": [
@@ -17625,7 +17824,7 @@
       "name": "NewsBulletin",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage news bulletin strip with three topical slots above the footer.",
       "dense": "Homepage news strip: up to three topical item cards above the footer, driven by a typed items list.",
       "keywords": [
@@ -17698,7 +17897,7 @@
       "name": "PageLayout",
       "group": "layout",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Page-body wrapper with a max-width container, default page margins, an optional grid mode, and a spacing scale.",
       "dense": "Page-level layout wrapper: max-width, optional grid columns, spacing scale, and default page margins.",
       "keywords": [
@@ -17831,7 +18030,7 @@
       "name": "PricingPageContent",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Pricing page content assembly with packages, agency comparison, and deliverables.",
       "dense": "Full /pricing route body: package tiers, agency comparison table, and deliverables; CTAs prefill contact booking via packageId.",
       "keywords": [
@@ -17886,7 +18085,7 @@
       "name": "ProcessBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Case-study process section that arranges titled phase cards in a grid under an optional title and description.",
       "dense": "Case-study process section: titled phase cards in a grid with section title, description, and spacing/background knobs.",
       "keywords": [
@@ -18434,7 +18633,7 @@
       "name": "ProofBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Metrics band that presents headline numbers with captions under an optional title and subtitle, with tight and dark variants.",
       "dense": "Metrics proof band: headline metrics with captions under a title/subtitle; tight and dark variants.",
       "keywords": [
@@ -18660,7 +18859,7 @@
       "name": "ServicesBlock",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Case-study engagement overview with services, duration, and tools columns alongside overview copy.",
       "dense": "Case-study services overview: services list, duration, and tools columns with overview copy and section titles.",
       "keywords": [
@@ -18793,7 +18992,7 @@
       "name": "ServicesSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage services grid with icons and copy.",
       "dense": "Homepage services grid: icon + copy service cards, column count and card variant knobs.",
       "keywords": [
@@ -19054,7 +19253,7 @@
       "name": "StoryBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Narrative section for Work case studies with a subtitle and title, rich text, and images arranged by a selectable layout.",
       "dense": "Case-study narrative section: subtitle/title, rich content, and images with selectable image layout.",
       "keywords": [
@@ -19200,7 +19399,7 @@
       "name": "TeamBlock",
       "group": "structure",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Team grid of member cards with photo, name, and role, plus round-image, column, and spacing knobs.",
       "dense": "Team member grid: photo, name, and role cards with round-image option, column and spacing knobs.",
       "keywords": [
@@ -19558,7 +19757,7 @@
       "name": "WorkMagneticField",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Homepage work grid with magnetic hover on project cards.",
       "dense": "Homepage work showcase: project-card grid with magnetic hover, optional view-all link.",
       "keywords": [
@@ -19652,7 +19851,7 @@
       "name": "WorkPreviewSection",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Work index preview grid of project cards.",
       "dense": "Plain project-card preview grid with title, layout options, and optional view-all link.",
       "keywords": [

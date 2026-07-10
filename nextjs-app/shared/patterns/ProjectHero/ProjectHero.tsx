@@ -2,9 +2,9 @@
 
 import { useRef, useEffect } from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
-import { useAnimationContext } from "@/providers/AnimationProvider";
+import { cn } from "../../lib/cn";
+import { gsap, useGSAP } from "../../lib/gsap";
+import { useAnimationContext } from "../../lib/animation";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { TextReveal } from "../../components/animations/TextReveal";

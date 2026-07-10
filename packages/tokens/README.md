@@ -11,7 +11,10 @@ This package is published as a restricted private npm package for the Digitaltab
 - `@digitaltableteur/tokens/tailwind` - Tailwind reference map for `var(--token)` usage.
 - `@digitaltableteur/tokens/manifest` - generated token manifest. In Node ESM, import with JSON attributes.
 
-The live app still imports `nextjs-app/shared/styles/variables.css` directly until the npm dogfood step is complete.
+The live app still imports `nextjs-app/shared/styles/variables.css` for runtime
+CSS continuity, but the root install resolves this package from npm rather than
+from a local workspace symlink. `npm run check:package-registry-resolution`
+guards that boundary.
 
 ## DTCG portability note
 

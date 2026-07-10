@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import styles from "./AIProcessingState.module.css";
 
 /**
@@ -61,7 +61,7 @@ const AIProcessingState: React.FC<AIProcessingStateProps> = ({
   customMessage,
   className = "",
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   // Get localized message based on mode
   const getMessage = (): string => {

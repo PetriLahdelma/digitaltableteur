@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, type ReactNode, type ElementType } from "react";
-import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
-import { useAnimationContext } from "@/providers/AnimationProvider";
+import { gsap, useGSAP } from "../../../lib/gsap";
+import { useAnimationContext } from "../../../lib/animation";
 import styles from "./FadeIn.module.css";
 
 type Direction = "up" | "down" | "left" | "right" | "none";

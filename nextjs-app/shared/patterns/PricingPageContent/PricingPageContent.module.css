@@ -416,17 +416,8 @@
 }
 
 .newBadge {
+  composes: brandchip from "../../styles/brand-chip.module.css";
   flex-shrink: 0;
-  padding-block: 1px;
-  padding-inline: var(--space-internal-4);
-  border-radius: var(--radius-full);
-  background-color: var(--logo-background);
-  font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.04em;
-  color: var(--logo-color);
 }
 
 .aaasPanel {

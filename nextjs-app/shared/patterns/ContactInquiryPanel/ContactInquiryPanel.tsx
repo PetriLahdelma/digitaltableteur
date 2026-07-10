@@ -8,11 +8,13 @@ import {
   useMemo,
   useRef,
   useState,
-  type KeyboardEvent,
+  type ReactNode,
 } from "react";
-import { useTranslation } from "react-i18next";
+import { useLocalization } from "../../lib/translation";
 import Button from "@dt/Button";
 import DonnyBookingEmbed from "@dt/DonnyBookingEmbed";
+import Progress from "@dt/Progress";
+import Tabs, { getTabPanelProps, type TabItem } from "@dt/Tabs";
 import {
   resolveSiteBookingConfig,
   type SiteBookingConfig,
@@ -27,7 +29,7 @@ export interface ContactInquiryPanelProps {
   /** Optional pricing package id for booking prefill. */
   packageId?: string;
   /** Editorial contact form slot shown on the message tab. */
-  messagePanel: React.ReactNode;
+  messagePanel: ReactNode;
   /** Optional booking override; defaults from packageId. */
   bookingConfig?: SiteBookingConfig;
 }
@@ -45,10 +47,13 @@ export const ContactInquiryPanel = forwardRef<
   { initialMode = "message", packageId, messagePanel, bookingConfig },
   ref,
 ) {
-  const { t } = useTranslation();
+  const {
+    translate: t,
+    language,
+    resolvedLanguage,
+  } = useLocalization();
+  const activeLanguage = resolvedLanguage || language;
   const [mode, setMode] = useState<ContactInquiryMode>(initialMode);
-  const messageTabRef = useRef<HTMLButtonElement>(null);
-  const bookTabRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (initialMode === "book" || initialMode === "message") {
@@ -62,9 +67,42 @@ export const ContactInquiryPanel = forwardRef<
     }
     return bookingConfig ?? resolveSiteBookingConfig({});
   }, [bookingConfig, packageId]);
+  const bookingLoadingFallback = useMemo(
+    () => (
+      <div className={styles.bookingLoading}>
+        <Progress
+          indeterminate
+          size="sm"
+          state="info"
+          label={t("donnyBookingLoading", "Loading booking calendar")}
+        />
+      </div>
+    ),
+    [activeLanguage, t],
+  );
+
+  const tabs = useMemo<TabItem[]>(
+    () => [
+      {
+        key: "message",
+        label: t("contactInquiryMessageTab", "Send a message"),
+      },
+      {
+        key: "book",
+        label: t("contactInquiryBookTab", "Book a call"),
+      },
+    ],
+    [activeLanguage, t],
+  );
 
   const handleSelectMessage = useCallback(() => {
     setMode("message");
+  }, []);
+
+  const handleModeChange = useCallback((key: string) => {
+    if (key === "message" || key === "book") {
+      setMode(key);
+    }
   }, []);
 
   const scrollToMessageForm = useCallback(() => {
@@ -84,74 +122,30 @@ export const ContactInquiryPanel = forwardRef<
 
   useImperativeHandle(ref, () => ({ scrollToMessageForm }), [scrollToMessageForm]);
 
-  const handleTabKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLButtonElement>) => {
-      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
-        return;
-      }
-      event.preventDefault();
-      const nextMode: ContactInquiryMode =
-        mode === "message" ? "book" : "message";
-      setMode(nextMode);
-      (nextMode === "message" ? messageTabRef : bookTabRef).current?.focus();
-    },
-    [mode],
-  );
-
   return (
     <div
       className={styles.inquiryPanel}
       id="contact-inquiry"
       data-donny-target="contact.inquiry"
     >
-      <div
-        className={styles.modeSwitch}
-        role="tablist"
-        aria-label={t("contactInquiryModeLabel", "Contact options")}
-      >
-        <button
-          ref={messageTabRef}
-          type="button"
-          role="tab"
-          id="contact-tab-message"
-          aria-selected={mode === "message"}
-          aria-controls="contact-panel-message"
-          tabIndex={mode === "message" ? 0 : -1}
-          className={`${styles.modeButton}${mode === "message" ? ` ${styles.modeButtonActive}` : ""}`}
-          onClick={handleSelectMessage}
-          onKeyDown={handleTabKeyDown}
-        >
-          {t("contactInquiryMessageTab", "Send a message")}
-        </button>
-        <button
-          ref={bookTabRef}
-          type="button"
-          role="tab"
-          id="contact-tab-book"
-          aria-selected={mode === "book"}
-          aria-controls="contact-panel-book"
-          tabIndex={mode === "book" ? 0 : -1}
-          className={`${styles.modeButton}${mode === "book" ? ` ${styles.modeButtonActive}` : ""}`}
-          onClick={() => setMode("book")}
-          onKeyDown={handleTabKeyDown}
-        >
-          <span className={styles.modeButtonContent}>
-            <span className={styles.modeButtonLabel}>
-              {t("contactInquiryBookTab", "Book a call")}
-            </span>
-            <span className={styles.newBadge} aria-hidden="true">
-              {t("contactInquiryBookTabNew", "NEW!")}
-            </span>
-          </span>
-        </button>
+      <div className={styles.modeSwitch}>
+        <Tabs
+          tabs={tabs}
+          activeTab={mode}
+          onTabChange={handleModeChange}
+          ariaLabel={t("contactInquiryModeLabel", "Contact options")}
+          variant="underline"
+          size="sm"
+          className={styles.modeTabs}
+        />
+        <span className={styles.newBadge} aria-hidden="true">
+          {t("contactInquiryBookTabNew", "NEW!")}
+        </span>
       </div>
 
       <div className={styles.panelBody}>
         <div
-          id="contact-panel-message"
-          role="tabpanel"
-          aria-labelledby="contact-tab-message"
-          hidden={mode !== "message"}
+          {...getTabPanelProps("message", mode === "message")}
           data-donny-target="contact.form"
         >
           <div id="contact-form" className={styles.contactFormAnchor}>
@@ -159,15 +153,15 @@ export const ContactInquiryPanel = forwardRef<
           </div>
         </div>
         <div
-          id="contact-panel-book"
-          role="tabpanel"
-          aria-labelledby="contact-tab-book"
-          hidden={mode !== "book"}
+          {...getTabPanelProps("book", mode === "book")}
           data-donny-target="contact.booking"
         >
           <div id="contact-booking">
             {booking.configured ? (
-              <DonnyBookingEmbed {...booking} />
+              <DonnyBookingEmbed
+                {...booking}
+                loadingFallback={bookingLoadingFallback}
+              />
             ) : (
               <div className={styles.unconfigured}>
                 <p className={styles.unconfiguredText}>

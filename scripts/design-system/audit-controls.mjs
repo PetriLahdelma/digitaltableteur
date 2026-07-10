@@ -33,6 +33,9 @@ const EFFECTS = process.argv.includes('--effects')
 // story's default state — every entry carries its justification and how the
 // effect was verified instead.
 const EFFECT_EXEMPT = {
+    FormFieldEditorial: {
+        children: 'the <option> list feeds the select-mode Combobox popover, which is closed in the static canvas — swapping the preset changes options that only render once the popover opens; verified by the select-variant unit test (open popover → pick option → onChange payload) and the Playground mapping presets',
+    },
     WorkGrid: {
         animateItems: 'scroll-triggered GSAP entrance stagger — only fires on scroll into view, so it has no stable DOM signature in the static effect probe (and is gated by the AnimationProvider motion preference); stories seed it off for a settled, deterministic grid, verified by the reduced-motion guard in the component',
     },

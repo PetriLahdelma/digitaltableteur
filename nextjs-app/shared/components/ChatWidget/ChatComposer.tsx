@@ -4,7 +4,7 @@ import { ChatTextArea } from "./ChatTextArea";
 import Label from "@dt/Label";
 import HelperText from "@dt/HelperText";
 import styles from "./ChatWidget.module.css";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
 
 /**
@@ -68,7 +68,7 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
     },
     ref,
   ) => {
-    const { t } = useTranslation();
+    const t = useTranslate();
     const resolvedPlaceholder =
       placeholder ??
       t("chatPlaceholder", "Ask about a project, service, or approach…");

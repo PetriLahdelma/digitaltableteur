@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ServicesGrid.module.css";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
 
 export interface ServicesGridProps {
@@ -14,7 +14,7 @@ const ICONS = ["palette", "code", "strategy", "robot"] as const;
  * ServicesGrid component.
  */
 export const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const ariaLabel = t("servicesGrid.ariaLabel");
   const titles = [
     t("servicesGrid.titles.design"),

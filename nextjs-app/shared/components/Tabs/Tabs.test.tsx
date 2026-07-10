@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { vi, beforeEach, describe, it, expect } from "vitest";
 import Tabs, { TabItem, getTabPanelProps } from "@dt/Tabs";
 
-// Mock react-i18next
+// Mock the package translation adapter.
 const mockT = vi.fn((key: string, defaultValue: string = key) => {
   const translations: { [key: string]: string } = {
     "tabs.navigation": "Navigate between tabs",
@@ -11,8 +11,15 @@ const mockT = vi.fn((key: string, defaultValue: string = key) => {
   return translations[key] || defaultValue;
 });
 
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: mockT }),
+vi.mock("../../lib/translation", () => ({
+  useTranslate: () => mockT,
+  useLocalization: () => ({
+    translate: mockT,
+    language: "en",
+    resolvedLanguage: "en",
+    changeLanguage: vi.fn(),
+    getResourceBundle: vi.fn(),
+  }),
 }));
 
 describe("Tabs", () => {
@@ -40,6 +47,15 @@ describe("Tabs", () => {
     expect(tabs[0]).toHaveTextContent("Tab 1");
     expect(tabs[1]).toHaveTextContent("Tab 2");
     expect(tabs[2]).toHaveTextContent("Tab 3");
+  });
+
+  it("uses a caller-provided tablist label when supplied", () => {
+    render(<Tabs tabs={defaultTabs} ariaLabel="Contact options" />);
+
+    expect(screen.getByRole("tablist")).toHaveAttribute(
+      "aria-label",
+      "Contact options",
+    );
   });
 
   it("activates first tab by default when no default is provided", () => {

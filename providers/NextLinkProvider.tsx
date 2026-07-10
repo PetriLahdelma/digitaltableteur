@@ -5,7 +5,8 @@ import type { ReactNode } from "react";
 import {
   LinkProvider,
   type LinkComponentProps,
-} from "@/nextjs-app/shared/lib/linkComponent";
+} from "@digitaltableteur/react";
+import { LinkProvider as LocalLinkProvider } from "@/nextjs-app/shared/lib/linkComponent";
 
 /** Adapts next/link to the design-system LinkComponent contract. */
 function NextLinkAdapter({ href, children, ...rest }: LinkComponentProps) {
@@ -22,5 +23,16 @@ function NextLinkAdapter({ href, children, ...rest }: LinkComponentProps) {
  * framework-agnostic DS `Link`.
  */
 export function NextLinkProvider({ children }: { children: ReactNode }) {
-  return <LinkProvider component={NextLinkAdapter}>{children}</LinkProvider>;
+  // The npm package and the locally compiled shared source are two module
+  // instances with two distinct LinkComponentContexts; provide the adapter
+  // into BOTH, or the side left out silently degrades to plain <a> full-page
+  // navigation (package side: catalog components; local side: NextLayout ->
+  // SiteHeader/SiteFooter/cards).
+  return (
+    <LinkProvider component={NextLinkAdapter}>
+      <LocalLinkProvider component={NextLinkAdapter}>
+        {children}
+      </LocalLinkProvider>
+    </LinkProvider>
+  );
 }

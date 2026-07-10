@@ -6,30 +6,15 @@ import { vi, beforeEach, describe, it, expect } from "vitest";
 
 expect.extend(toHaveNoViolations);
 
-// Mock react-i18next
-const mockT = vi.fn((key: string) => {
-  const translations: { [key: string]: string } = {
-    blogNavLabel: "Blog article navigation",
-    blogNavBackToArticles: "Back to Articles",
-    blogNavPrev: "Previous",
-    blogNavNext: "Next",
-  };
-  return translations[key] || key;
-});
-
-vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: mockT }),
-}));
-
 const { mockPush, mockUsePathname } = vi.hoisted(() => ({
   mockPush: vi.fn(),
   mockUsePathname: vi.fn(() => "/blog/petri-lahdelma-bio"),
 }));
 
-vi.mock("next/navigation", () => {
+vi.mock("../../lib/navigation", () => {
   return {
-    usePathname: mockUsePathname,
-    useRouter: () => ({ push: mockPush }),
+    useNavigationPathname: mockUsePathname,
+    useNavigationRouter: () => ({ push: mockPush, replace: vi.fn() }),
   };
 });
 
@@ -46,22 +31,20 @@ describe("BlogNav", () => {
   it("renders back to articles button", () => {
     renderWithRouter();
     expect(
-      screen.getByRole("button", { name: /back to articles/i }),
+      screen.getByRole("button", { name: /articles/i }),
     ).toBeInTheDocument();
   });
 
   it("renders previous and next buttons", () => {
     renderWithRouter();
-    expect(
-      screen.getByRole("button", { name: /previous/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /prev/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /next/i })).toBeInTheDocument();
   });
 
   it("navigates to blog index when back to articles clicked", () => {
     renderWithRouter();
     const backButton = screen.getByRole("button", {
-      name: /back to articles/i,
+      name: /articles/i,
     });
     fireEvent.click(backButton);
     expect(mockPush).toHaveBeenCalledWith("/blog");
@@ -70,7 +53,7 @@ describe("BlogNav", () => {
   it("disables previous button when on first article", () => {
     mockUsePathname.mockReturnValue("/blog/petri-lahdelma-bio");
     renderWithRouter();
-    const prevButton = screen.getByRole("button", { name: /previous/i });
+    const prevButton = screen.getByRole("button", { name: /prev/i });
     expect(prevButton).toBeDisabled();
   });
 
@@ -86,7 +69,7 @@ describe("BlogNav", () => {
   it("enables both navigation buttons when on middle article", () => {
     mockUsePathname.mockReturnValue("/blog/digital-craftsmanship");
     renderWithRouter();
-    const prevButton = screen.getByRole("button", { name: /previous/i });
+    const prevButton = screen.getByRole("button", { name: /prev/i });
     const nextButton = screen.getByRole("button", { name: /next/i });
     expect(prevButton).not.toBeDisabled();
     expect(nextButton).not.toBeDisabled();
@@ -95,7 +78,7 @@ describe("BlogNav", () => {
   it("navigates to previous article when previous button clicked", () => {
     mockUsePathname.mockReturnValue("/blog/digital-craftsmanship");
     renderWithRouter();
-    const prevButton = screen.getByRole("button", { name: /previous/i });
+    const prevButton = screen.getByRole("button", { name: /prev/i });
     fireEvent.click(prevButton);
     expect(mockPush).toHaveBeenCalledWith("/blog/petri-lahdelma-bio");
   });
@@ -111,7 +94,7 @@ describe("BlogNav", () => {
   it("handles unknown path gracefully", () => {
     mockUsePathname.mockReturnValue("/blog/unknown-article");
     renderWithRouter();
-    const prevButton = screen.getByRole("button", { name: /previous/i });
+    const prevButton = screen.getByRole("button", { name: /prev/i });
     const nextButton = screen.getByRole("button", { name: /next/i });
     // Should handle gracefully without errors
     expect(prevButton).toBeInTheDocument();
@@ -129,9 +112,7 @@ describe("BlogNav", () => {
     // Router is on the first article; the prop points at a middle article.
     mockUsePathname.mockReturnValue("/blog/petri-lahdelma-bio");
     render(<BlogNav currentPath="/blog/digital-craftsmanship" />);
-    expect(
-      screen.getByRole("button", { name: /previous/i }),
-    ).not.toBeDisabled();
+    expect(screen.getByRole("button", { name: /prev/i })).not.toBeDisabled();
     expect(screen.getByRole("button", { name: /next/i })).not.toBeDisabled();
   });
 

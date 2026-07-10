@@ -152,26 +152,6 @@
   text-align: center;
 }
 
-.spinner {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-  border: 4px solid transparent;
-  border-radius: 50%;
-  background-color: var(--main-body-background-color, var(--color-white));
-  animation: spin 1s linear infinite;
-  border-top-color: var(--color-info);
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 /* Mobile responsive styles */
 @media (width <= 768px) {

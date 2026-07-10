@@ -106,3 +106,61 @@
     accent-color: var(--color-primary);
   }
 }
+
+/* Clearable affordance (v1.2.0) */
+
+.inputShell {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.inputClearable {
+  padding-inline-end: 2.5rem;
+}
+
+.clearButton {
+  display: flex;
+  position: absolute;
+  padding: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  inset-inline-end: 0.5rem;
+}
+
+.clearButton:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
+}
+
+@media (forced-colors: active) {
+  .clearButton {
+    color: ButtonText;
+  }
+
+  .clearButton:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+/* Visually hidden label (hideLabel) — stays in the accessibility tree. */
+
+.srOnly {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}

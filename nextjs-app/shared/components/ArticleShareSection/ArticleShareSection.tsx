@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import {
   XLogo,
   LinkedinLogo,
@@ -10,6 +10,7 @@ import {
   Check,
 } from "@phosphor-icons/react";
 import { cn } from "../../lib/cn";
+import { SocialIconLink } from "../SocialIconLink";
 
 export interface ArticleShareSectionProps {
   /** Article URL to share */
@@ -34,7 +35,7 @@ export function ArticleShareSection({
   showTitle = true,
   className,
 }: ArticleShareSectionProps) {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [copied, setCopied] = useState(false);
 
   const encodedUrl = encodeURIComponent(url);
@@ -103,41 +104,32 @@ export function ArticleShareSection({
 
       {/* Buttons */}
       <div className={cn("flex gap-3", isVertical && "flex-col")}>
-        {/* Twitter/X */}
-        <a
+        <SocialIconLink
           href={shareLinks.twitter}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={buttonBaseClass}
-          aria-label={twitterLabel}
-          title={twitterLabel}
+          label={twitterLabel}
+          variant="chip"
+          size="sm"
         >
-          <XLogo size={16} aria-hidden="true" />
-        </a>
+          <XLogo />
+        </SocialIconLink>
 
-        {/* LinkedIn */}
-        <a
+        <SocialIconLink
           href={shareLinks.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={buttonBaseClass}
-          aria-label={linkedinLabel}
-          title={linkedinLabel}
+          label={linkedinLabel}
+          variant="chip"
+          size="sm"
         >
-          <LinkedinLogo size={16} aria-hidden="true" />
-        </a>
+          <LinkedinLogo />
+        </SocialIconLink>
 
-        {/* Facebook */}
-        <a
+        <SocialIconLink
           href={shareLinks.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={buttonBaseClass}
-          aria-label={facebookLabel}
-          title={facebookLabel}
+          label={facebookLabel}
+          variant="chip"
+          size="sm"
         >
-          <FacebookLogo size={16} aria-hidden="true" />
-        </a>
+          <FacebookLogo />
+        </SocialIconLink>
 
         {/* Copy link */}
         <button

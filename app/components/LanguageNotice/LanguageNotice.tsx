@@ -1,8 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
-import { useToast } from "@/providers/ToastProvider";
+import { useEffect, useId, useRef } from "react";
+import {
+  getContentLanguageNoticeMessage,
+  registerContentLanguageNotice,
+} from "@/nextjs-app/shared/lib/contentLanguageNotice";
+import { useToast } from "@/nextjs-app/shared/lib/toast";
+import { useLocalization } from "@/nextjs-app/shared/lib/translation";
 
 interface LanguageNoticeProps {
   /** The language code of the content (e.g., "en") */
@@ -18,30 +22,36 @@ interface LanguageNoticeProps {
 export function LanguageNotice({
   contentLanguage,
 }: LanguageNoticeProps) {
-  const { i18n, t } = useTranslation();
+  const id = useId();
+  const announcedKeyRef = useRef<string | null>(null);
+  const { resolvedLanguage, getResourceBundle } = useLocalization();
   const { showToast } = useToast();
-  const lastNoticeRef = useRef<string | null>(null);
 
-  // Normalize to 2-letter code
-  const currentLang = (i18n.language?.split("-")[0] || "en").toLowerCase();
-  const contentLang = contentLanguage.toLowerCase();
-
-  const languageName = t(`languageName.${contentLang}`, {
-    defaultValue: "English",
-  });
-  const notice = t("contentLanguageNotice", { language: languageName });
+  useEffect(
+    () => registerContentLanguageNotice({ id, contentLanguage }),
+    [contentLanguage, id],
+  );
 
   useEffect(() => {
-    if (currentLang === contentLang) return;
-    const noticeKey = `${currentLang}:${contentLang}:${notice}`;
-    if (lastNoticeRef.current === noticeKey) return;
-    lastNoticeRef.current = noticeKey;
-    showToast(notice, {
-      duration: 5000,
-      tone: "info",
-      position: "bottom-center",
+    const targetLanguage = resolvedLanguage.split("-")[0] || "en";
+    const message = getContentLanguageNoticeMessage({
+      targetLanguage,
+      getResourceBundle,
     });
-  }, [contentLang, currentLang, notice, showToast]);
+
+    if (!message) {
+      // Language matches the content again; clear the marker so a later
+      // switch back to a mismatching language re-announces (fi -> en -> fi).
+      announcedKeyRef.current = null;
+      return;
+    }
+
+    const announcementKey = `${contentLanguage}:${targetLanguage}`;
+    if (announcedKeyRef.current === announcementKey) return;
+
+    announcedKeyRef.current = announcementKey;
+    showToast(message, { duration: 5000 });
+  }, [contentLanguage, getResourceBundle, resolvedLanguage, showToast]);
 
   return null;
 }

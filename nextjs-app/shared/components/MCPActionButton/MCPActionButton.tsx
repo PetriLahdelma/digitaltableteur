@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Button, { type ButtonAsButton, type ButtonAsLink } from "@dt/Button";
 import Text from "@dt/Text";
 import styles from "./MCPActionButton.module.css";
@@ -72,7 +72,7 @@ const STATUS_TO_KEY: Record<Status, string> = {
  * MCPActionButton component.
  */
 export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [status, setStatus] = useState<Status>("idle");
   const {
     toolId,

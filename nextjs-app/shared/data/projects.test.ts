@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { resolveProjectNavigationPath } from "./projects";
+import {
+  filterProjects,
+  projects,
+  resolveProjectNavigationPath,
+} from "./projects";
 
 describe("resolveProjectNavigationPath", () => {
   it("resolves slug aliases", () => {
@@ -40,5 +44,19 @@ describe("resolveProjectNavigationPath", () => {
     expect(resolveProjectNavigationPath("design system")).toBeNull();
     expect(resolveProjectNavigationPath("unknown client")).toBeNull();
     expect(resolveProjectNavigationPath("/contact")).toBeNull();
+  });
+});
+
+describe("filterProjects", () => {
+  it("includes secondary-category projects in the category filter", () => {
+    const branding = filterProjects(projects, "branding").map((p) => p.slug);
+    const uxDesign = filterProjects(projects, "ux-design").map((p) => p.slug);
+    // Garage Junction is primarily ux-design and also branding
+    expect(branding).toContain("garage-junction");
+    expect(uxDesign).toContain("garage-junction");
+  });
+
+  it("returns every project for 'all'", () => {
+    expect(filterProjects(projects, "all")).toHaveLength(projects.length);
   });
 });

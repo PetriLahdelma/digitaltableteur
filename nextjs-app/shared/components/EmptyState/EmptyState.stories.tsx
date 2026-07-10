@@ -7,7 +7,7 @@ import contract from "./EmptyState.contract.json";
 const meta = {
   title: "Content/EmptyState",
   component: EmptyState,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     layout: "padded",
     a11y: { test: "error" },

@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Link.module.css";
-import "../../styles/variables.css";
 import Icon from "@dt/Icon";
 
 export interface LinkProps

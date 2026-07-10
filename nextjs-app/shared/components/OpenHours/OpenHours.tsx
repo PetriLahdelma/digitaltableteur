@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./OpenHours.module.css";
 import { WEEKLY_HOURS, isOpenAt } from "../../data/openHours";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "../../lib/translation";
 import Badge from "@dt/Badge";
 import Icon from "@dt/Icon";
 
@@ -21,7 +21,7 @@ export const OpenHours: React.FC<OpenHoursProps> = ({
   highlightToday = true,
   date = new Date(),
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslate();
   /* WEEKLY_HOURS is Monday-first; getDay() is Sunday-based (0 = Sunday).
      Remap so the highlighted row is actually today (was off by one). */
   const todayIndex = (date.getDay() + 6) % 7;

@@ -13,14 +13,71 @@ import {
 const supportedLanguages = ["en", "fi", "sv"] as const;
 type SupportedLanguage = (typeof supportedLanguages)[number];
 
-const normalizeLanguage = (
+const LANGUAGE_COOKIE_NAME = "i18next";
+const LANGUAGE_STORAGE_KEY = "i18nextLng";
+const LANGUAGE_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;
+
+const getSupportedLanguage = (
   value: string | null | undefined,
-): SupportedLanguage => {
-  if (!value) return "en";
+): SupportedLanguage | null => {
+  if (!value) return null;
   const base = value.split("-")[0];
   return supportedLanguages.includes(base as SupportedLanguage)
     ? (base as SupportedLanguage)
-    : "en";
+    : null;
+};
+
+const normalizeLanguage = (
+  value: string | null | undefined,
+): SupportedLanguage => {
+  return getSupportedLanguage(value) ?? "en";
+};
+
+const getLanguageCookie = (): SupportedLanguage | null => {
+  if (typeof document === "undefined") return null;
+
+  const rawCookie = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith(`${LANGUAGE_COOKIE_NAME}=`))
+    ?.slice(LANGUAGE_COOKIE_NAME.length + 1);
+
+  return getSupportedLanguage(
+    rawCookie ? decodeURIComponent(rawCookie) : null,
+  );
+};
+
+const getStoredLanguage = (): SupportedLanguage | null => {
+  if (typeof window === "undefined") return null;
+
+  try {
+    return getSupportedLanguage(
+      window.localStorage.getItem(LANGUAGE_STORAGE_KEY),
+    );
+  } catch {
+    return null;
+  }
+};
+
+const getPersistedLanguage = (): SupportedLanguage | null =>
+  getStoredLanguage() ?? getLanguageCookie();
+
+const persistLanguagePreference = (language: SupportedLanguage): void => {
+  if (typeof document !== "undefined") {
+    document.cookie = [
+      `${LANGUAGE_COOKIE_NAME}=${encodeURIComponent(language)}`,
+      "path=/",
+      `max-age=${LANGUAGE_COOKIE_MAX_AGE_SECONDS}`,
+      "SameSite=Lax",
+    ].join("; ");
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+    } catch {
+      // Cookies keep the preference when localStorage is unavailable.
+    }
+  }
 };
 
 /**
@@ -49,7 +106,15 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
           ? { ...options, defaultValue: fallbackOrOptions }
           : fallbackOrOptions;
       const translated = i18n.t(key, translationOptions);
-      return typeof translated === "string" ? translated : String(translated);
+      if (typeof translated === "string") return translated;
+      // `returnObjects: true` lookups (e.g. HomeHero's title/subtext option
+      // arrays) must pass through structurally, matching the shared lib's
+      // fallbackTranslate; String() here turned arrays into joined text and
+      // silently killed the per-visit hero randomization.
+      if (translated !== null && typeof translated === "object") {
+        return translated as unknown as string;
+      }
+      return String(translated);
     },
     [],
   );
@@ -66,23 +131,28 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     [],
   );
 
+  const changeLanguage = useCallback(async (language: string) => {
+    const targetLanguage = normalizeLanguage(language);
+    persistLanguagePreference(targetLanguage);
+
+    try {
+      return await i18n.changeLanguage(targetLanguage);
+    } catch {
+      persistLanguagePreference("en");
+      return i18n.changeLanguage("en");
+    }
+  }, []);
+
   // Sync language preference client-side after hydration (non-blocking)
   useEffect(() => {
     // Skip if running on server
     if (typeof window === "undefined") return;
 
     const syncLanguage = () => {
-      // Detect language from cookie or localStorage
-      const cookieLang = decodeURIComponent(
-        document.cookie
-          .split("; ")
-          .find((row) => row.startsWith("i18next="))
-          ?.slice(8) ?? "",
-      );
+      const persistedLanguage = getPersistedLanguage();
+      if (!persistedLanguage) return;
 
-      const targetLanguage = normalizeLanguage(
-        cookieLang || localStorage.getItem("i18nextLng"),
-      );
+      const targetLanguage = persistedLanguage;
       const currentLanguage = normalizeLanguage(
         i18n.resolvedLanguage || i18n.language,
       );
@@ -91,6 +161,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       if (currentLanguage !== targetLanguage) {
         i18n.changeLanguage(targetLanguage).catch(() => {
           // Fallback to English on error
+          persistLanguagePreference("en");
           i18n.changeLanguage("en").catch(console.error);
         });
       }
@@ -133,7 +204,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
         translate={translate}
         language={runtimeLanguage.language}
         resolvedLanguage={runtimeLanguage.resolvedLanguage}
-        changeLanguage={i18n.changeLanguage.bind(i18n)}
+        changeLanguage={changeLanguage}
         getResourceBundle={getResourceBundle}
       >
         {children}
