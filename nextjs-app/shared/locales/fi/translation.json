@@ -266,6 +266,7 @@
   "contactValidationMessageRequired": "Viesti on pakollinen",
   "inputValidationEmailInvalid": "Syötä kelvollinen sähköpostiosoite",
   "inputValidationPhoneInvalid": "Virheellinen puhelinnumeron muoto",
+  "inputClearField": "Tyhjennä kenttä {{field}}",
   "shareOnInstagram": "Jaa Instagramissa",
   "shareOnTwitter": "Jaa Twitterissä",
   "shareOnFacebook": "Jaa Facebookissa",

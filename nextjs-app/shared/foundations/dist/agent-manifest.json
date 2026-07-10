@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-09T23:04:19.839Z",
+  "generatedAt": "2026-07-10T07:49:56.044Z",
   "summary": {
     "componentCount": 163,
     "statusCounts": {
@@ -81,8 +81,8 @@
     "withAnyUsage": 152,
     "withProductionUsage": 46,
     "uniqueImportedComponents": 152,
-    "totalEvidenceRows": 854,
-    "aliasImportFiles": 471,
+    "totalEvidenceRows": 855,
+    "aliasImportFiles": 472,
     "relativeImportFiles": 391,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -14734,10 +14734,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 74,
+        "importCount": 75,
         "productionImportCount": 6,
         "patternImportCount": 5,
-        "componentImportCount": 32,
+        "componentImportCount": 33,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
@@ -30061,7 +30061,8 @@
           "Default",
           "Playground",
           "Example",
-          "ForcedColors"
+          "ForcedColors",
+          "Clearable"
         ],
         "a11y": {
           "keyboard": [
@@ -30069,7 +30070,8 @@
           ],
           "ariaRequirements": [
             "label association",
-            "aria-describedby for error/helper"
+            "aria-describedby for error/helper",
+            "clear button carries a per-field accessible name and returns focus to the input"
           ],
           "reducedMotion": true,
           "reviewed": true,
@@ -30195,6 +30197,18 @@
             "optional": true,
             "type": "boolean"
           },
+          "clearable": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "onClear": {
+            "optional": true,
+            "type": "() => void"
+          },
+          "hideLabel": {
+            "optional": true,
+            "type": "boolean"
+          },
           "onChange": {
             "optional": true,
             "type": "(value: string | number) => void"
@@ -30221,7 +30235,7 @@
           "phone",
           "validation"
         ],
-        "dense": "labelled single-line field: text/number/email/password/search/tel, built-in email + phone validation, own error/helperText, sm/md/lg; onValueChange(value)",
+        "dense": "labelled single-line field: text/number/email/tel/password/search, built-in email+phone validation, error/helperText, sm/md/lg; onValueChange(value); clearable ×-button (onClear); hideLabel",
         "usage": {
           "description": "TextInput is the standard single-line field: label, control, helper and error text in one component. The email and tel types add built-in validation (typo suggestions for common email domains, libphonenumber formatting for phone numbers); error overrides the helper line and wires aria-invalid.",
           "bestPractices": [
@@ -30242,6 +30256,14 @@
               "description": "Use helperText for format hints before errors happen (We never share this address)."
             },
             {
+              "guidance": true,
+              "description": "Use clearable for fields users iterate on (search boxes, filters, generators); the ×-button appears only while there is a value and hands focus back to the input."
+            },
+            {
+              "guidance": true,
+              "description": "Reserve hideLabel for dense compositions where surrounding design carries the affordance; the label stays in the accessibility tree, so still write a real one."
+            },
+            {
               "guidance": false,
               "description": "Do not build multi-line entry with TextInput; use TextArea."
             },
@@ -30259,7 +30281,7 @@
           }
         }
       },
-      "spec": "# TextInput\n\n## Intent\nProvide the canonical labelled text input with built-in validation for\nthe two types that always validate (email, tel) so consumers don't\nre-implement format checks per form. TextInput absorbs the label / helper /\nerror wiring so the consumer's form code is a sequence of\n`{ label, value, onValueChange, error }` quadruples — nothing else.\n\n## Interaction contract\n- Keyboard: native single-line input. Tab moves focus; characters\n  type into the field; Enter submits the containing form (no custom\n  submit handler). ArrowUp / ArrowDown bumps `type=\"number\"`\n  values.\n- Pointer: click focuses; selection works as native.\n- Screen readers: the label is announced first via the native\n  `<label htmlFor>` binding. On invalid state the description\n  (linked via `aria-describedby` to the error helper) is announced\n  on focus.\n\n## Do / don't\n- Do: use `onValueChange` (the new contract). The legacy `onChange`\n  still works but emits a deprecation warning in dev.\n- Do: pair `type=\"email\"` and `type=\"tel\"` with the built-in\n  validators. The component will surface format issues without\n  consumer wiring.\n- Don't: ship a form that relies on the email validator as the only\n  verification step. The validator is for UX; the server must verify\n  too.\n- Don't: pass a `value` plus a `defaultValue`. The component treats\n  `value` as controlled; mixing them produces drift.\n- Don't: use TextInput for multi-line text. Use **TextArea**, which\n  shares the label + helper contract but carries multi-line UX.\n\n## Design notes\n- Tokens: control surface uses `--color-surface`; border uses\n  `--color-border` (default) or `--color-error-border` (error).\n  Height is `--input-height-md` by default; `--input-height-sm` and\n  `--input-height-lg` via the `size` prop. Padding is\n  `--space-internal-12` inline.\n- Figma: https://www.figma.com/design/digitaltableteur/input — three\n  sizes, four states (default / focus / error / disabled), six\n  types via the `type` prop.\n- The `name` attribute is derived from the label so form submission\n  always has a stable key. Consumers can override by passing `name`\n  via the rest-spread.\n- Phone formatter is `formatIncompletePhoneNumber` from\n  `libphonenumber-js`; validator is `parsePhoneNumber(...).isValid()`.\n  Empty values pass validation so optional phone fields don't trigger\n  errors on mount.\n- Email suggestion uses `suggestEmailCorrection` which checks against\n  a known set of common domain typos; suggestions surface via the\n  same `error` channel as a friendly message.\n",
+      "spec": "# TextInput\n\n## Intent\nProvide the canonical labelled text input with built-in validation for\nthe two types that always validate (email, tel) so consumers don't\nre-implement format checks per form. TextInput absorbs the label / helper /\nerror wiring so the consumer's form code is a sequence of\n`{ label, value, onValueChange, error }` quadruples — nothing else.\n\n## Interaction contract\n- Keyboard: native single-line input. Tab moves focus; characters\n  type into the field; Enter submits the containing form (no custom\n  submit handler). ArrowUp / ArrowDown bumps `type=\"number\"`\n  values.\n- Pointer: click focuses; selection works as native.\n- Clearable: with `clearable`, a ×-button renders inside the field\n  chrome while the field has a value (never while disabled). It is\n  the next Tab stop after the input; activating it empties the\n  field, clears any built-in validation error, fires\n  `onValueChange(\"\")` then `onClear()`, and returns focus to the\n  input. Its accessible name interpolates the field label\n  (`inputClearField`: \"Clear {{field}}\", EN/FI/SV).\n- Screen readers: the label is announced first via the native\n  `<label htmlFor>` binding. With `hideLabel` the label is\n  visually hidden but stays in the accessibility tree. On invalid\n  state the description (linked via `aria-describedby` to the error\n  helper) is announced on focus.\n\n## Do / don't\n- Do: use `onValueChange` (the new contract). The legacy `onChange`\n  still works but emits a deprecation warning in dev.\n- Do: pair `type=\"email\"` and `type=\"tel\"` with the built-in\n  validators. The component will surface format issues without\n  consumer wiring.\n- Don't: ship a form that relies on the email validator as the only\n  verification step. The validator is for UX; the server must verify\n  too.\n- Don't: pass a `value` plus a `defaultValue`. The component treats\n  `value` as controlled; mixing them produces drift.\n- Don't: use TextInput for multi-line text. Use **TextArea**, which\n  shares the label + helper contract but carries multi-line UX.\n- Do: use `clearable` on fields users iterate on (search, filters,\n  generators) instead of hand-rolling an adjacent ×-button.\n- Don't: treat `hideLabel` as permission to skip the label. The label\n  is still required and still read by assistive tech; `hideLabel`\n  only removes it visually for dense compositions.\n\n## Design notes\n- Tokens: control surface uses `--color-surface`; border uses\n  `--color-border` (default) or `--color-error-border` (error).\n  Height is `--input-height-md` by default; `--input-height-sm` and\n  `--input-height-lg` via the `size` prop. Padding is\n  `--space-internal-12` inline.\n- Figma: https://www.figma.com/design/digitaltableteur/input — three\n  sizes, four states (default / focus / error / disabled), six\n  types via the `type` prop.\n- The `name` attribute is derived from the label so form submission\n  always has a stable key. Consumers can override by passing `name`\n  via the rest-spread.\n- Phone formatter is `formatIncompletePhoneNumber` from\n  `libphonenumber-js`; validator is `parsePhoneNumber(...).isValid()`.\n  Empty values pass validation so optional phone fields don't trigger\n  errors on mount.\n- Email suggestion uses `suggestEmailCorrection` which checks against\n  a known set of common domain typos; suggestions surface via the\n  same `error` channel as a friendly message.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TextInput",
@@ -30386,6 +30408,18 @@
             "optional": true,
             "type": "boolean"
           },
+          "clearable": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "onClear": {
+            "optional": true,
+            "type": "() => void"
+          },
+          "hideLabel": {
+            "optional": true,
+            "type": "boolean"
+          },
           "onChange": {
             "optional": true,
             "type": "(value: string | number) => void"
@@ -30425,16 +30459,19 @@
         "variantsFnName": "textInputVariants",
         "useWhen": [
           "use `onValueChange` (the new contract). The legacy `onChange`",
-          "pair `type=\"email\"` and `type=\"tel\"` with the built-in"
+          "pair `type=\"email\"` and `type=\"tel\"` with the built-in",
+          "use `clearable` on fields users iterate on (search, filters,"
         ],
         "avoidWhen": [
           "ship a form that relies on the email validator as the only",
           "pass a `value` plus a `defaultValue`. The component treats",
-          "use TextInput for multi-line text. Use **TextArea**, which"
+          "use TextInput for multi-line text. Use **TextArea**, which",
+          "treat `hideLabel` as permission to skip the label. The label"
         ],
         "requiredA11y": [
           "label association",
-          "aria-describedby for error/helper"
+          "aria-describedby for error/helper",
+          "clear button carries a per-field accessible name and returns focus to the input"
         ],
         "keyboard": [
           "Tab"
@@ -30451,7 +30488,8 @@
         "forbiddenUse": [
           "ship a form that relies on the email validator as the only",
           "pass a `value` plus a `defaultValue`. The component treats",
-          "use TextInput for multi-line text. Use **TextArea**, which"
+          "use TextInput for multi-line text. Use **TextArea**, which",
+          "treat `hideLabel` as permission to skip the label. The label"
         ],
         "composesWith": [
           "Text",
@@ -30462,7 +30500,7 @@
           "CheckboxGroup"
         ],
         "prefersOver": [],
-        "declaredPropCount": 10
+        "declaredPropCount": 13
       }
     },
     {

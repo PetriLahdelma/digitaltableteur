@@ -266,6 +266,7 @@
   "contactValidationMessageRequired": "Meddelande krävs",
   "inputValidationEmailInvalid": "Ange en giltig e-postadress",
   "inputValidationPhoneInvalid": "Ogiltigt telefonnummerformat",
+  "inputClearField": "Rensa fältet {{field}}",
   "shareOnInstagram": "Dela på Instagram",
   "shareOnTwitter": "Dela på Twitter",
   "shareOnFacebook": "Dela på Facebook",
