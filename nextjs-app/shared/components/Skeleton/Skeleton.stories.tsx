@@ -11,7 +11,7 @@ const meta: Meta<typeof Skeleton> = {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skeleton",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1652",
     },
     contractStatus: contract.status,
     a11y: { test: "error" },

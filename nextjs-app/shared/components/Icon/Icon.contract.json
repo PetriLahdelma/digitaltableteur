@@ -1,268 +1,268 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-    "name": "Icon",
-    "tier": "atom",
-    "group": "display",
-    "status": "stable",
-    "description": "Phosphor icon wrapper with size, weight, and motion affordances.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon",
-    "radixPrimitive": null,
-    "element": "span",
-    "variants": {
-        "size": {
-            "values": [
-                "2xs",
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-                "2xl"
-            ],
-            "default": "md"
-        }
-    },
-    "slots": [],
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-    ],
-    "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [
-            "decorative icons use aria-hidden",
-            "meaningful icons require aria-label"
-        ],
-        "reducedMotion": true,
-        "reviewed": true,
-        "reviewedNote": "2026-05-26 code review",
-        "forcedColorsVerified": true,
-        "axeTestExempt": "Display-only glyph wrapper",
-        "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
-    },
-    "tokens": {
-        "colors": [
-            "--color-error",
-            "--color-info",
-            "--color-primary",
-            "--color-success",
-            "--color-warning"
-        ],
-        "spacing": []
-    },
-    "lightDarkVerified": true,
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/BlogArticleShare.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleContent.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleMain.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/code-window/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/lib/siteStructure.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-            "since": "2026-06-04"
-        }
-    ],
-    "schemaVersion": 2,
-    "displayName": "Icon",
-    "props": {
-        "name": {
-            "optional": false,
-            "type": "string"
-        },
-        "weight": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "thin",
-                "light",
-                "regular",
-                "bold",
-                "fill",
-                "duotone"
-            ]
-        },
-        "legacyStyle": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "thin",
-                "light",
-                "regular",
-                "duotone",
-                "solid",
-                "brands"
-            ]
-        },
-        "size": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "xl",
-                "2xs",
-                "xs",
-                "2xl"
-            ]
-        },
-        "color": {
-            "optional": true,
-            "type": "string"
-        },
-        "rotate": {
-            "optional": true,
-            "type": "0 | 90 | 180 | 270"
-        },
-        "flip": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "horizontal",
-                "vertical",
-                "both"
-            ]
-        },
-        "spin": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "pulse": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "mirrored": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "ariaLabel": {
-            "optional": true,
-            "type": "string"
-        },
-        "decorative": {
-            "optional": true,
-            "type": "boolean"
-        }
-    },
-    "forbiddenUse": [
-        "pass both `ariaLabel` and `decorative`. The component prefers",
-        "import a Phosphor component directly from `@phosphor-icons/react`"
-    ],
-    "composesWith": [
-        "Button",
-        "Title",
-        "ComplianceCard",
-        "CodeSnippet",
-        "Text",
-        "HelperText"
-    ],
-    "keywords": [
-        "icon",
-        "phosphor",
-        "glyph",
-        "decorative",
-        "aria-label",
-        "spin",
-        "status",
-        "arrow",
-        "caret",
-        "check",
-        "close"
-    ],
-    "dense": "Phosphor icon wrapper; name by PascalCase or slug (FontAwesome aliases kept), 2xs-2xl size ladder, weight, rotate/flip/spin/pulse, decorative by default, ariaLabel switches to role=img",
-    "usage": {
-        "description": "Icon wraps the Phosphor icon set with the project's size ladder, motion affordances, and accessibility defaults. It accepts a Phosphor name (PascalCase like ShareNetwork or a slug like share-network) and stays decorative (aria-hidden) unless you pass ariaLabel, which switches it to role=img with an accessible name. Legacy FontAwesome-style names are aliased so older call sites keep working.",
-        "bestPractices": [
-            {
-                "guidance": true,
-                "description": "Keep icons decorative (no ariaLabel) inside labelled controls; the control's own label is the accessible name."
-            },
-            {
-                "guidance": true,
-                "description": "Pass ariaLabel when the icon is the only content of an interactive element, so the control has a name."
-            },
-            {
-                "guidance": true,
-                "description": "Use spin for loading and pulse for ambient activity; both stop under prefers-reduced-motion."
-            },
-            {
-                "guidance": true,
-                "description": "Pair semantic status icons with visible text; the icon reinforces, the text carries the meaning."
-            },
-            {
-                "guidance": false,
-                "description": "Do not build icon-only buttons from a bare Icon; use Button with icon and accessibleName so focus, hit target and keyboard activation are owned by the right component."
-            },
-            {
-                "guidance": false,
-                "description": "Do not pass both ariaLabel and decorative; they are mutually exclusive and ariaLabel wins."
-            },
-            {
-                "guidance": false,
-                "description": "Do not force brand marks through Icon; anything outside the Phosphor catalogue goes through the image pipeline."
-            }
-        ]
-    },
-    "playground": {
-        "defaults": {
-            "name": "share-network",
-            "size": "lg"
-        }
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "Icon",
+  "tier": "atom",
+  "group": "display",
+  "status": "stable",
+  "description": "Phosphor icon wrapper with size, weight, and motion affordances.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1176-1658",
+  "radixPrimitive": null,
+  "element": "span",
+  "variants": {
+    "size": {
+      "values": [
+        "2xs",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xl"
+      ],
+      "default": "md"
     }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [
+      "decorative icons use aria-hidden",
+      "meaningful icons require aria-label"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 code review 2026-07-10 — Figma component built (Atoms, node 1176-1658, parity-audit batch B2a): contract axes as variants with DT variable bindings.",
+    "forcedColorsVerified": true,
+    "axeTestExempt": "Display-only glyph wrapper",
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [
+      "--color-error",
+      "--color-info",
+      "--color-primary",
+      "--color-success",
+      "--color-warning"
+    ],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/BlogArticleShare.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/page.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/ServerArticleContent.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/ServerArticleMain.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/dev/code-window/page.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/dev/tailwind-test/page.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/layout.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/lib/siteStructure.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/tools/email-signature/page.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+      "since": "2026-06-04"
+    }
+  ],
+  "schemaVersion": 2,
+  "displayName": "Icon",
+  "props": {
+    "name": {
+      "optional": false,
+      "type": "string"
+    },
+    "weight": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "thin",
+        "light",
+        "regular",
+        "bold",
+        "fill",
+        "duotone"
+      ]
+    },
+    "legacyStyle": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "thin",
+        "light",
+        "regular",
+        "duotone",
+        "solid",
+        "brands"
+      ]
+    },
+    "size": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xs",
+        "xs",
+        "2xl"
+      ]
+    },
+    "color": {
+      "optional": true,
+      "type": "string"
+    },
+    "rotate": {
+      "optional": true,
+      "type": "0 | 90 | 180 | 270"
+    },
+    "flip": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "horizontal",
+        "vertical",
+        "both"
+      ]
+    },
+    "spin": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "pulse": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "mirrored": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "ariaLabel": {
+      "optional": true,
+      "type": "string"
+    },
+    "decorative": {
+      "optional": true,
+      "type": "boolean"
+    }
+  },
+  "forbiddenUse": [
+    "pass both `ariaLabel` and `decorative`. The component prefers",
+    "import a Phosphor component directly from `@phosphor-icons/react`"
+  ],
+  "composesWith": [
+    "Button",
+    "Title",
+    "ComplianceCard",
+    "CodeSnippet",
+    "Text",
+    "HelperText"
+  ],
+  "keywords": [
+    "icon",
+    "phosphor",
+    "glyph",
+    "decorative",
+    "aria-label",
+    "spin",
+    "status",
+    "arrow",
+    "caret",
+    "check",
+    "close"
+  ],
+  "dense": "Phosphor icon wrapper; name by PascalCase or slug (FontAwesome aliases kept), 2xs-2xl size ladder, weight, rotate/flip/spin/pulse, decorative by default, ariaLabel switches to role=img",
+  "usage": {
+    "description": "Icon wraps the Phosphor icon set with the project's size ladder, motion affordances, and accessibility defaults. It accepts a Phosphor name (PascalCase like ShareNetwork or a slug like share-network) and stays decorative (aria-hidden) unless you pass ariaLabel, which switches it to role=img with an accessible name. Legacy FontAwesome-style names are aliased so older call sites keep working.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Keep icons decorative (no ariaLabel) inside labelled controls; the control's own label is the accessible name."
+      },
+      {
+        "guidance": true,
+        "description": "Pass ariaLabel when the icon is the only content of an interactive element, so the control has a name."
+      },
+      {
+        "guidance": true,
+        "description": "Use spin for loading and pulse for ambient activity; both stop under prefers-reduced-motion."
+      },
+      {
+        "guidance": true,
+        "description": "Pair semantic status icons with visible text; the icon reinforces, the text carries the meaning."
+      },
+      {
+        "guidance": false,
+        "description": "Do not build icon-only buttons from a bare Icon; use Button with icon and accessibleName so focus, hit target and keyboard activation are owned by the right component."
+      },
+      {
+        "guidance": false,
+        "description": "Do not pass both ariaLabel and decorative; they are mutually exclusive and ariaLabel wins."
+      },
+      {
+        "guidance": false,
+        "description": "Do not force brand marks through Icon; anything outside the Phosphor catalogue goes through the image pipeline."
+      }
+    ]
+  },
+  "playground": {
+    "defaults": {
+      "name": "share-network",
+      "size": "lg"
+    }
+  }
 }

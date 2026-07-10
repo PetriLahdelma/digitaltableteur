@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-10T15:00:33.839Z",
+  "generatedAt": "2026-07-10T15:25:05.796Z",
   "summary": {
     "componentCount": 163,
     "statusCounts": {
@@ -9186,7 +9186,7 @@
         "group": "layout",
         "status": "stable",
         "description": "Max-width content wrapper with responsive horizontal padding.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-container",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1178-1654",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -9219,7 +9219,7 @@
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed and compare-clean in all four modes (plain/light/dark/forced-colors); Controls 100% operable + 0 inert. Container carries no color surface of its own (tokens.colors empty; transparent wrapper), so light/dark is a structural no-op. Fixed the stale variants.size.default (\"sm\" → \"lg\") to match the component default and docs."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed and compare-clean in all four modes (plain/light/dark/forced-colors); Controls 100% operable + 0 inert. Container carries no color surface of its own (tokens.colors empty; transparent wrapper), so light/dark is a structural no-op. Fixed the stale variants.size.default (\"sm\" → \"lg\") to match the component default and docs. 2026-07-10 — Figma component built (Atoms, node 1178-1654, parity-audit batch B2a): contract axes as variants with DT variable bindings."
         },
         "tokens": {
           "colors": [],
@@ -12563,7 +12563,7 @@
         "group": "layout",
         "status": "stable",
         "description": "Flexbox layout primitive for stacks and rows.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-flex-box",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1176-1698",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -12596,7 +12596,7 @@
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories in all four modes; AT snapshots bootstrapped (the component had none — snapshot-backfill debt) and compare-clean in plain/light/dark/forced-colors; Controls 9/9 operable + 0 inert. Pure css-less flex passthrough with no color surface (tokens.colors empty), so light/dark is a structural no-op. Fixed a contract defect: variants.align.default was \"center\" but the component default is \"stretch\" (align-items initial)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories in all four modes; AT snapshots bootstrapped (the component had none — snapshot-backfill debt) and compare-clean in plain/light/dark/forced-colors; Controls 9/9 operable + 0 inert. Pure css-less flex passthrough with no color surface (tokens.colors empty), so light/dark is a structural no-op. Fixed a contract defect: variants.align.default was \"center\" but the component default is \"stretch\" (align-items initial). 2026-07-10 — Figma component built (Atoms, node 1176-1698, parity-audit batch B2a): contract axes as variants with DT variable bindings."
         },
         "tokens": {
           "colors": [],
@@ -13554,7 +13554,7 @@
         "group": "layout",
         "status": "stable",
         "description": "CSS grid layout primitive with tokenized gaps.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-grid",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1654",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -13599,7 +13599,7 @@
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed compare-clean in all four modes (plain/light/dark/forced-colors); Controls 9/9 operable + 0 inert. Pure two-dimensional layout primitive with no color surface of its own (tokens.colors empty), so light/dark is a structural no-op. The GridProps `[key: string]: any` passthrough is the intentional, documented escape hatch for arbitrary grid CSS props — kept as-is."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed compare-clean in all four modes (plain/light/dark/forced-colors); Controls 9/9 operable + 0 inert. Pure two-dimensional layout primitive with no color surface of its own (tokens.colors empty), so light/dark is a structural no-op. The GridProps `[key: string]: any` passthrough is the intentional, documented escape hatch for arbitrary grid CSS props — kept as-is. 2026-07-10 — Figma component built (Atoms, node 1177-1654, parity-audit batch B2a): contract axes as variants with DT variable bindings."
         },
         "tokens": {
           "colors": [],
@@ -14485,7 +14485,7 @@
         "group": "display",
         "status": "stable",
         "description": "Phosphor icon wrapper with size, weight, and motion affordances.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1176-1658",
         "radixPrimitive": null,
         "element": "span",
         "variants": {
@@ -14519,7 +14519,7 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-05-26 code review",
+          "reviewedNote": "2026-05-26 code review 2026-07-10 — Figma component built (Atoms, node 1176-1658, parity-audit batch B2a): contract axes as variants with DT variable bindings.",
           "forcedColorsVerified": true,
           "axeTestExempt": "Display-only glyph wrapper",
           "accessibilityTreeVerified": true,
@@ -23741,7 +23741,7 @@
         "group": "layout",
         "status": "stable",
         "description": "Semantic section wrapper with spacing and background tokens.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-section",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1178-1712",
         "radixPrimitive": null,
         "element": "section",
         "variants": {
@@ -23786,7 +23786,7 @@
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories in all four modes (plain/light/dark/forced-colors); AT snapshots refreshed compare-clean; Controls 100% operable + 0 inert. Unlike a pure wrapper, Section owns a real surface (background=inverse flips bg-foreground/text-background) — eyeballed the Backgrounds story in light and dark: default/muted/inverse track the theme and inverse contrast holds both ways. Fixed two contract defects: element was \"div\" (renders <section>) and variants was empty (spacing + background are the styling axes)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories in all four modes (plain/light/dark/forced-colors); AT snapshots refreshed compare-clean; Controls 100% operable + 0 inert. Unlike a pure wrapper, Section owns a real surface (background=inverse flips bg-foreground/text-background) — eyeballed the Backgrounds story in light and dark: default/muted/inverse track the theme and inverse contrast holds both ways. Fixed two contract defects: element was \"div\" (renders <section>) and variants was empty (spacing + background are the styling axes). 2026-07-10 — Figma component built (Atoms, node 1178-1712, parity-audit batch B2a): contract axes as variants with DT variable bindings."
         },
         "tokens": {
           "colors": [],
@@ -25587,7 +25587,7 @@
         "group": "feedback",
         "status": "stable",
         "description": "Loading placeholder that mirrors the layout of incoming content.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skeleton",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1652",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -25621,7 +25621,7 @@
             "role=status with aria-label naming what is loading",
             "shimmer suppressed under prefers-reduced-motion"
           ],
-          "reviewedNote": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified; accessibility tree and real-browser forced-colors confirmed in Storybook.",
+          "reviewedNote": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified; accessibility tree and real-browser forced-colors confirmed in Storybook. 2026-07-10 — Figma component built (Atoms, node 1177-1652, parity-audit batch B2a): contract axes as variants with DT variable bindings.",
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true
         },
@@ -26026,7 +26026,7 @@
         "group": "navigation",
         "status": "stable",
         "description": "Skip-to-main link shown on keyboard focus.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skip-link",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1644",
         "radixPrimitive": null,
         "element": "a",
         "variants": {},
@@ -26052,7 +26052,7 @@
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true,
-          "reviewedNote": "2026-07-05 — beta→stable (fleet #15): renders a real <a> (contract element corrected div→a). The reveal slide (transition: inset-block-start) is already guarded by a prefers-reduced-motion:reduce { transition:none } block, so reducedMotion is honest. --color-primary/--color-white token pairing holds contrast across all 4 themes. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: Breadth beta port, keyboard/ARIA reviewed, ForcedColors story + Storybook axe gate."
+          "reviewedNote": "2026-07-05 — beta→stable (fleet #15): renders a real <a> (contract element corrected div→a). The reveal slide (transition: inset-block-start) is already guarded by a prefers-reduced-motion:reduce { transition:none } block, so reducedMotion is honest. --color-primary/--color-white token pairing holds contrast across all 4 themes. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: Breadth beta port, keyboard/ARIA reviewed, ForcedColors story + Storybook axe gate. 2026-07-10 — Figma component built (Atoms, node 1177-1644, parity-audit batch B2a): contract axes as variants with DT variable bindings."
         },
         "tokens": {
           "colors": [],
@@ -27477,7 +27477,7 @@
         "group": "layout",
         "status": "stable",
         "description": "Flex stack primitive for vertical and horizontal rhythm.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-stack",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1176-1676",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -27511,7 +27511,7 @@
           "forcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "realBrowserForcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes (plain/light/dark/forced); AT snapshots refreshed compare-clean (only change is the dropped Work-in-progress badge line); Controls operable + 0 inert; no motion in the CSS so reducedMotion is trivially honest. Fixed real defect: `align` claimed `@default \"center\"` in the JSDoc and `variants.align.default`/order in the contract, but the component defaults to `stretch` (matching sibling FlexBox); corrected the JSDoc, union order (stretch first), and contract so the derived default is honest and sync-stable — zero render change since the runtime default was already `stretch`."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all stories in all four modes (plain/light/dark/forced); AT snapshots refreshed compare-clean (only change is the dropped Work-in-progress badge line); Controls operable + 0 inert; no motion in the CSS so reducedMotion is trivially honest. Fixed real defect: `align` claimed `@default \"center\"` in the JSDoc and `variants.align.default`/order in the contract, but the component defaults to `stretch` (matching sibling FlexBox); corrected the JSDoc, union order (stretch first), and contract so the derived default is honest and sync-stable — zero render change since the runtime default was already `stretch`. 2026-07-10 — Figma component built (Atoms, node 1176-1676, parity-audit batch B2a): contract axes as variants with DT variable bindings."
         },
         "tokens": {
           "colors": [],
