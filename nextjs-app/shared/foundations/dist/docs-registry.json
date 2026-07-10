@@ -3742,7 +3742,7 @@
       "name": "CodeSnippet",
       "group": "structure",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Syntax-highlighted code block with a language picker, optional line numbers, and a copy button.",
       "dense": "Prism-highlighted code block: language set (ts/js/html/python/go/rust/json/bash/...), showLineNumbers, allowCopy button w/ onCopy hook, maxLines clamp, variant surface; aria-label for AT context",
       "keywords": [

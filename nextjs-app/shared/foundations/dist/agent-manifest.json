@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-10T08:10:01.976Z",
+  "generatedAt": "2026-07-10T13:30:37.574Z",
   "summary": {
     "componentCount": 163,
     "statusCounts": {
-      "beta": 49,
-      "stable": 88,
+      "beta": 48,
+      "stable": 89,
       "alpha": 25,
       "deprecated": 1
     },
@@ -20,7 +20,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 88,
+    "stableCount": 89,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -107,8 +107,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 49,
-        "stable": 88,
+        "beta": 48,
+        "stable": 89,
         "alpha": 25,
         "deprecated": 1
       },
@@ -7802,9 +7802,9 @@
         "name": "CodeSnippet",
         "tier": "molecule",
         "group": "structure",
-        "status": "beta",
+        "status": "stable",
         "description": "Syntax-highlighted code block with a language picker, optional line numbers, and a copy button.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-code-snippet",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1161-2809",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -7835,14 +7835,25 @@
           "realBrowserForcedColorsVerified": true,
           "accessibilityTreeVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-08 — captured Default and Example accessibility-tree snapshots plus a real Playwright forced-colors snapshot; stable remains blocked until the Figma URL points at a real numeric node id."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-08 — captured Default and Example accessibility-tree snapshots plus a real Playwright forced-colors snapshot; stable remains blocked until the Figma URL points at a real numeric node id. 2026-07-10 — Figma component set built (Molecules, node 1161-2809: Inline/Single/Multi variants, DT token bindings); promoted to stable with RhythmguardPage as production consumer."
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "code": {

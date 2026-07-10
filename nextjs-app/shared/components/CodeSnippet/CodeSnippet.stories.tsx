@@ -54,11 +54,11 @@ const meta: Meta<typeof CodeSnippet> = {
 },
   title: "Content/CodeSnippet",
   component: CodeSnippet,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-code-snippet",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1161-2809",
     },
     contractStatus: contract.status,
     a11y: { test: "error" },
