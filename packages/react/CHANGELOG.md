@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.5 - 2026-07-10
+
+- TextInput gains three additive props (#1054): `clearable` renders a labelled ×-button inside the field chrome while the field has a value (never while disabled); activating it empties the field, clears built-in validation errors, fires `onValueChange("")` then `onClear()`, and returns focus to the input. `hideLabel` visually hides the label while keeping it in the accessibility tree (sr-only). The clear button's accessible name interpolates the field label via the new `inputClearField` i18n key (EN/FI/SV).
+- Non-clearable usage keeps the exact previous DOM (no wrapper element is added unless `clearable` is set); no breaking changes, public runtime API otherwise unchanged from 0.1.4.
+- Verified by the full stable-change evidence bundle: contract + required story with play, unit tests incl. jest-axe and focus behavior, 4-mode accessibility-tree snapshots, controls audit (10/10 operable, 0 inert), forced-colors treatment, and real-browser verification (consumed by EmailSignatureGenerator in #1055).
+
 ## 0.1.4 - 2026-07-09
 
 - Stops shipping a publish-time snapshot of the design-token sheet inside `dist/style.css`: Title, Text, Link, and List no longer side-effect-import `variables.css`, so tokens ship once, via `@digitaltableteur/tokens-css/tokens.css` as the install docs already instruct. Consumers who skipped `tokens-css` and relied on the embedded snapshot must add it now.
