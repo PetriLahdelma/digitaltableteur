@@ -39,7 +39,7 @@ const meta = {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-grid",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1654",
     },
     layout: "centered",
     contractStatus: contract.status,

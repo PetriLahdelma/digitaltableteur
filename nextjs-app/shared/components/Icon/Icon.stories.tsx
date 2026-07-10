@@ -7,7 +7,7 @@ const meta: Meta<typeof Icon> = {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1176-1658",
     },
     contractStatus: contract.status,
     a11y: { test: "error" },

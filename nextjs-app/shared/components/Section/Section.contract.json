@@ -1,219 +1,219 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-    "name": "Section",
-    "tier": "atom",
-    "group": "layout",
-    "status": "stable",
-    "description": "Semantic section wrapper with spacing and background tokens.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-section",
-    "radixPrimitive": null,
-    "element": "section",
-    "variants": {
-        "spacing": {
-            "values": [
-                "none",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-                "hero",
-                "follow"
-            ],
-            "default": "md",
-            "propSourced": true
-        },
-        "background": {
-            "values": [
-                "default",
-                "muted",
-                "accent",
-                "inverse"
-            ],
-            "default": "default",
-            "propSourced": true
-        }
-    },
-    "slots": [],
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-    ],
-    "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
-        "reducedMotion": true,
-        "reviewed": true,
-        "forcedColorsVerified": true,
-        "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories in all four modes (plain/light/dark/forced-colors); AT snapshots refreshed compare-clean; Controls 100% operable + 0 inert. Unlike a pure wrapper, Section owns a real surface (background=inverse flips bg-foreground/text-background) — eyeballed the Backgrounds story in light and dark: default/muted/inverse track the theme and inverse contrast holds both ways. Fixed two contract defects: element was \"div\" (renders <section>) and variants was empty (spacing + background are the styling axes)."
-    },
-    "tokens": {
-        "colors": [],
-        "spacing": []
-    },
-    "lightDarkVerified": true,
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleContent.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleMain.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
-            "since": "2026-06-04"
-        }
-    ],
-    "schemaVersion": 2,
-    "props": {
-        "children": {
-            "optional": false,
-            "type": "ReactNode"
-        },
-        "spacing": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "none",
-                "xl",
-                "hero",
-                "follow"
-            ]
-        },
-        "background": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "muted",
-                "accent",
-                "default",
-                "inverse"
-            ]
-        },
-        "className": {
-            "optional": true,
-            "type": "string"
-        },
-        "id": {
-            "optional": true,
-            "type": "string"
-        },
-        "spotlightTarget": {
-            "optional": true,
-            "type": "string"
-        }
-    },
-    "forbiddenUse": [
-        "Nest Sections — bands are siblings; nesting compounds paddings and backgrounds.",
-        "Use Section inside a component or card; it is page architecture, not component padding."
-    ],
-    "composesWith": [
-        "Container",
-        "Title",
-        "Grid"
-    ],
-    "displayName": "Section",
-    "keywords": [
-        "section",
-        "page band",
-        "vertical rhythm",
-        "background",
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "Section",
+  "tier": "atom",
+  "group": "layout",
+  "status": "stable",
+  "description": "Semantic section wrapper with spacing and background tokens.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1178-1712",
+  "radixPrimitive": null,
+  "element": "section",
+  "variants": {
+    "spacing": {
+      "values": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "xl",
         "hero",
-        "landmark"
-    ],
-    "dense": "Page band: spacing none|sm|md (default)|lg|xl + hero/follow pair (hero = roomy top tight bottom, follow = no top), background default|muted|accent|inverse; id/spotlightTarget anchors",
-    "usage": {
-        "description": "Section is the page-level band: it owns vertical rhythm (`spacing`, responsive paddings) and surface (`background`), while Container inside it owns the horizontal clamp. `hero` and `follow` are a pair — the hero band keeps a generous top and tight bottom, and the section right after uses `follow` to avoid a double gap. `inverse` flips to the dark surface with matching text tokens. Give sections an `id` when they are anchor or skip targets.",
-        "bestPractices": [
-            {
-                "guidance": true,
-                "description": "Pair spacing=\"hero\" on the page hero with spacing=\"follow\" on the next section — that is what kills the double gap."
-            },
-            {
-                "guidance": true,
-                "description": "Alternate background=\"muted\" sparingly to group related content; every-other-band zebra striping reads as noise."
-            },
-            {
-                "guidance": true,
-                "description": "Put a Container directly inside; Section handles vertical, Container horizontal."
-            },
-            {
-                "guidance": true,
-                "description": "Give anchor/deep-link targets an id, and use spotlightTarget only when the host app needs stable guided-navigation selectors."
-            },
-            {
-                "guidance": false,
-                "description": "Do not nest Sections — bands are siblings; nesting compounds paddings and backgrounds."
-            },
-            {
-                "guidance": false,
-                "description": "Do not use Section inside components or cards; it is page architecture, not component padding."
-            }
-        ]
+        "follow"
+      ],
+      "default": "md",
+      "propSourced": true
     },
-    "playground": {
-        "defaults": {
-            "spacing": "md",
-            "background": "default",
-            "children": "Band content"
-        }
+    "background": {
+      "values": [
+        "default",
+        "muted",
+        "accent",
+        "inverse"
+      ],
+      "default": "default",
+      "propSourced": true
     }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true,
+    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories in all four modes (plain/light/dark/forced-colors); AT snapshots refreshed compare-clean; Controls 100% operable + 0 inert. Unlike a pure wrapper, Section owns a real surface (background=inverse flips bg-foreground/text-background) — eyeballed the Backgrounds story in light and dark: default/muted/inverse track the theme and inverse contrast holds both ways. Fixed two contract defects: element was \"div\" (renders <section>) and variants was empty (spacing + background are the styling axes). 2026-07-10 — Figma component built (Atoms, node 1178-1712, parity-audit batch B2a): contract axes as variants with DT variable bindings."
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/page.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/ServerArticleContent.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/blog/[slug]/ServerArticleMain.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
+      "since": "2026-06-04"
+    }
+  ],
+  "schemaVersion": 2,
+  "props": {
+    "children": {
+      "optional": false,
+      "type": "ReactNode"
+    },
+    "spacing": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "none",
+        "xl",
+        "hero",
+        "follow"
+      ]
+    },
+    "background": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "muted",
+        "accent",
+        "default",
+        "inverse"
+      ]
+    },
+    "className": {
+      "optional": true,
+      "type": "string"
+    },
+    "id": {
+      "optional": true,
+      "type": "string"
+    },
+    "spotlightTarget": {
+      "optional": true,
+      "type": "string"
+    }
+  },
+  "forbiddenUse": [
+    "Nest Sections — bands are siblings; nesting compounds paddings and backgrounds.",
+    "Use Section inside a component or card; it is page architecture, not component padding."
+  ],
+  "composesWith": [
+    "Container",
+    "Title",
+    "Grid"
+  ],
+  "displayName": "Section",
+  "keywords": [
+    "section",
+    "page band",
+    "vertical rhythm",
+    "background",
+    "hero",
+    "landmark"
+  ],
+  "dense": "Page band: spacing none|sm|md (default)|lg|xl + hero/follow pair (hero = roomy top tight bottom, follow = no top), background default|muted|accent|inverse; id/spotlightTarget anchors",
+  "usage": {
+    "description": "Section is the page-level band: it owns vertical rhythm (`spacing`, responsive paddings) and surface (`background`), while Container inside it owns the horizontal clamp. `hero` and `follow` are a pair — the hero band keeps a generous top and tight bottom, and the section right after uses `follow` to avoid a double gap. `inverse` flips to the dark surface with matching text tokens. Give sections an `id` when they are anchor or skip targets.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Pair spacing=\"hero\" on the page hero with spacing=\"follow\" on the next section — that is what kills the double gap."
+      },
+      {
+        "guidance": true,
+        "description": "Alternate background=\"muted\" sparingly to group related content; every-other-band zebra striping reads as noise."
+      },
+      {
+        "guidance": true,
+        "description": "Put a Container directly inside; Section handles vertical, Container horizontal."
+      },
+      {
+        "guidance": true,
+        "description": "Give anchor/deep-link targets an id, and use spotlightTarget only when the host app needs stable guided-navigation selectors."
+      },
+      {
+        "guidance": false,
+        "description": "Do not nest Sections — bands are siblings; nesting compounds paddings and backgrounds."
+      },
+      {
+        "guidance": false,
+        "description": "Do not use Section inside components or cards; it is page architecture, not component padding."
+      }
+    ]
+  },
+  "playground": {
+    "defaults": {
+      "spacing": "md",
+      "background": "default",
+      "children": "Band content"
+    }
+  }
 }
