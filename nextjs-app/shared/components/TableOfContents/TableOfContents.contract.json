@@ -1,0 +1,84 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "schemaVersion": 2,
+  "name": "TableOfContents",
+  "tier": "molecule",
+  "group": "navigation",
+  "status": "alpha",
+  "description": "In-article table of contents for h2/h3 sections, with mobile disclosure and active-section indication.",
+  "figma": null,
+  "radixPrimitive": null,
+  "element": "nav",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [
+      "Tab reaches the disclosure trigger and each heading button.",
+      "Enter / Space toggles the mobile disclosure and activates heading buttons."
+    ],
+    "ariaRequirements": [
+      "nav landmark with a localized aria-label",
+      "mobile trigger exposes aria-expanded and aria-controls",
+      "active heading button exposes aria-current='location'"
+    ],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "props": {
+    "items": {
+      "optional": false,
+      "type": "TOCItem[]"
+    },
+    "activeId": {
+      "optional": true,
+      "type": "string | null"
+    },
+    "sticky": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "onItemClick": {
+      "optional": true,
+      "type": "(id: string) => void"
+    },
+    "className": {
+      "optional": true,
+      "type": "string"
+    }
+  },
+  "forbiddenUse": [
+    "Use for global site navigation — use NavMenuList or SiteTree instead.",
+    "Pass heading levels outside h2/h3 without updating the TOCItem contract."
+  ],
+  "composesWith": [
+    "ArticleContent",
+    "ArticlePageTemplate",
+    "ReadingProgress"
+  ],
+  "displayName": "TableOfContents",
+  "keywords": [
+    "toc",
+    "table of contents",
+    "article navigation",
+    "headings",
+    "active section"
+  ],
+  "dense": "Article table of contents for h2/h3 headings; mobile disclosure; activeId marks aria-current=location; onItemClick or built-in smooth scroll.",
+  "usage": {
+    "description": "Use TableOfContents in article layouts when the page exposes multiple h2/h3 sections. Pass extracted heading items and activeId from useTableOfContents; pass onItemClick when the parent owns scroll behavior."
+  }
+}

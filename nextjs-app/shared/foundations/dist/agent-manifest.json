@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-11T15:32:58.173Z",
+  "generatedAt": "2026-07-11T16:19:26.524Z",
   "summary": {
-    "componentCount": 164,
+    "componentCount": 165,
     "statusCounts": {
       "beta": 48,
       "stable": 89,
-      "alpha": 26,
+      "alpha": 27,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 87.7,
+    "catalogCompletenessPercent": 88.2,
     "codebaseComponentCount": 187,
     "usageCoveragePercent": 93.3,
     "componentsWithProductionUsage": 49,
@@ -58,40 +58,40 @@
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
     "totalComponentsInCodebase": 187,
-    "inCatalog": 164,
-    "outOfCatalog": 23,
-    "catalogCompletenessPercent": 87.7,
+    "inCatalog": 165,
+    "outOfCatalog": 22,
+    "catalogCompletenessPercent": 88.2,
     "artifactCoverage": {
-      "stories": 148,
-      "tests": 147,
+      "stories": 149,
+      "tests": 148,
       "mdx": 6,
-      "spec": 164
+      "spec": 165
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
       "page-pattern": 0,
       "enhanced-fork": 4,
-      "exempt": 19
+      "exempt": 18
     },
     "regenerate": "node scripts/design-system/audit-catalog-coverage.mjs (run with --json for machine-readable output)"
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 164,
-    "withAnyUsage": 153,
+    "catalogedComponents": 165,
+    "withAnyUsage": 154,
     "withProductionUsage": 49,
-    "uniqueImportedComponents": 153,
-    "totalEvidenceRows": 868,
+    "uniqueImportedComponents": 154,
+    "totalEvidenceRows": 871,
     "aliasImportFiles": 485,
-    "relativeImportFiles": 391,
+    "relativeImportFiles": 396,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-11T09:36:34.646Z",
+    "generatedAt": "2026-07-11T16:19:24.393Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 87,
+    "nodesWithComposesWith": 88,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 164,
+      "digitaltableteur": 165,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 48,
         "stable": 89,
-        "alpha": 26,
+        "alpha": 27,
         "deprecated": 1
       },
       "dsharp": {
@@ -28858,6 +28858,192 @@
         "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 10
+      }
+    },
+    {
+      "name": "TableOfContents",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "TableOfContents",
+        "tier": "molecule",
+        "group": "navigation",
+        "status": "alpha",
+        "description": "In-article table of contents for h2/h3 sections, with mobile disclosure and active-section indication.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "nav",
+        "variants": {},
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab reaches the disclosure trigger and each heading button.",
+            "Enter / Space toggles the mobile disclosure and activates heading buttons."
+          ],
+          "ariaRequirements": [
+            "nav landmark with a localized aria-label",
+            "mobile trigger exposes aria-expanded and aria-controls",
+            "active heading button exposes aria-current='location'"
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [],
+          "spacing": []
+        },
+        "lightDarkVerified": false,
+        "props": {
+          "items": {
+            "optional": false,
+            "type": "TOCItem[]"
+          },
+          "activeId": {
+            "optional": true,
+            "type": "string | null"
+          },
+          "sticky": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "onItemClick": {
+            "optional": true,
+            "type": "(id: string) => void"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "forbiddenUse": [
+          "Use for global site navigation — use NavMenuList or SiteTree instead.",
+          "Pass heading levels outside h2/h3 without updating the TOCItem contract."
+        ],
+        "composesWith": [
+          "ArticleContent",
+          "ArticlePageTemplate",
+          "ReadingProgress"
+        ],
+        "displayName": "TableOfContents",
+        "keywords": [
+          "toc",
+          "table of contents",
+          "article navigation",
+          "headings",
+          "active section"
+        ],
+        "dense": "Article table of contents for h2/h3 headings; mobile disclosure; activeId marks aria-current=location; onItemClick or built-in smooth scroll.",
+        "usage": {
+          "description": "Use TableOfContents in article layouts when the page exposes multiple h2/h3 sections. Pass extracted heading items and activeId from useTableOfContents; pass onItemClick when the parent owns scroll behavior."
+        }
+      },
+      "spec": "# TableOfContents\n\n## Intent\n\nRender an in-article navigation list for h2/h3 headings so readers can scan and\njump between sections without leaving the article context.\n\n## Interaction contract\n\n- Keyboard: Tab reaches the mobile disclosure trigger and every heading button.\n- Pointer: The trigger expands/collapses the mobile list; heading buttons jump to\n  the matching section.\n- Screen readers: The root is a `nav` landmark labelled \"Table of Contents\";\n  the active heading exposes `aria-current=\"location\"`.\n\n## API\n\n| Prop | Type | Notes |\n| --- | --- | --- |\n| `items` | `TOCItem[]` | Ordered h2/h3 headings. |\n| `activeId` | `string | null` | Heading id currently in view. |\n| `sticky` | `boolean` | Enables tablet-and-up sticky positioning. |\n| `onItemClick` | `(id: string) => void` | Parent-owned scroll handler. |\n| `className` | `string` | Optional root classes. |\n\n## Do / don't\n\n- Do: Pair with `useTableOfContents` in article templates.\n- Do: Keep item text identical to the rendered heading text.\n- Don't: Use for primary site navigation.\n- Don't: Pass arbitrary nesting levels without expanding `TOCItem`.\n\n## Design notes\n\n- Uses existing article typography and Tailwind token utilities.\n- Figma: not linked yet; keep the contract alpha until forced-colors and AT\n  verification are captured.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/TableOfContents",
+        "importCount": 3,
+        "productionImportCount": 0,
+        "patternImportCount": 1,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/TableOfContents",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./TableOfContents",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/hooks/useTableOfContents.ts",
+            "importKind": "relative",
+            "importPath": "../components/TableOfContents",
+            "context": "other"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/TableOfContents",
+        "intent": "Render an in-article navigation list for h2/h3 headings so readers can scan and jump between sections without leaving the article context.",
+        "props": {
+          "items": {
+            "optional": false,
+            "type": "TOCItem[]"
+          },
+          "activeId": {
+            "optional": true,
+            "type": "string | null"
+          },
+          "sticky": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "onItemClick": {
+            "optional": true,
+            "type": "(id: string) => void"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "Pair with `useTableOfContents` in article templates.",
+          "Keep item text identical to the rendered heading text."
+        ],
+        "avoidWhen": [
+          "Use for primary site navigation.",
+          "Pass arbitrary nesting levels without expanding `TOCItem`."
+        ],
+        "requiredA11y": [
+          "nav landmark with a localized aria-label",
+          "mobile trigger exposes aria-expanded and aria-controls",
+          "active heading button exposes aria-current='location'"
+        ],
+        "keyboard": [
+          "Tab reaches the disclosure trigger and each heading button.",
+          "Enter / Space toggles the mobile disclosure and activates heading buttons."
+        ],
+        "compositionRules": [
+          "Pass arbitrary nesting levels without expanding `TOCItem`."
+        ],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "Use for primary site navigation.",
+          "Pass arbitrary nesting levels without expanding `TOCItem`."
+        ],
+        "composesWith": [
+          "AuthorBio",
+          "CodeBlockWindow",
+          "DashLeadList",
+          "ArticleContent",
+          "EnhancedAuthorCard",
+          "ArticleShareSection"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 5
       }
     },
     {

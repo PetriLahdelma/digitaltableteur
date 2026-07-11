@@ -84,6 +84,7 @@ export type {
 } from "./Menu";
 export { default as MCPActionButton } from "./MCPActionButton/MCPActionButton";
 export { default as NavMenuList } from "./NavMenuList/NavMenuList";
+export type { NavMenuItem, NavMenuListProps } from "./NavMenuList";
 export { default as MarkdownMessage } from "./MarkdownMessage/MarkdownMessage";
 export { default as Modal } from "./Modal/Modal";
 export type { ModalProps, ModalSeverity } from "./Modal/Modal";
@@ -108,6 +109,11 @@ export { SkillsGrid, type SkillsGridProps, type Skill } from "./SkillsGrid";
 export { default as StudioMap } from "./StudioMap/StudioMap";
 export { default as Switch } from "./Switch/Switch";
 export { SocialShare } from "./SocialShare/SocialShare";
+export type {
+  SocialShareChannel,
+  SocialShareProps,
+  SocialShareVariant,
+} from "./SocialShare";
 export { default as Tabs, getTabPanelProps } from "./Tabs";
 export type { TabItem, TabsProps } from "./Tabs";
 export { default as Testimonial } from "./Testimonial/Testimonial";

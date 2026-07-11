@@ -44,6 +44,29 @@ describe("LanguageSwitcher", () => {
     expect(screen.getByText("SV")).toBeVisible();
   });
 
+  it("pins trigger aria-current, aria-expanded, and aria-controls", async () => {
+    renderSwitcher("en");
+    const user = userEvent.setup();
+    const trigger = screen.getByRole("button", { name: /english/i });
+    const controlsId = trigger.getAttribute("aria-controls");
+
+    expect(trigger).toHaveAttribute("aria-current", "true");
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
+    expect(controlsId).toBeTruthy();
+    expect(document.getElementById(controlsId as string)).toHaveTextContent(
+      /show language options/i,
+    );
+
+    await user.click(trigger);
+
+    expect(trigger).toHaveAttribute("aria-current", "true");
+    expect(trigger).toHaveAttribute("aria-expanded", "true");
+    expect(trigger).toHaveAttribute("aria-controls", controlsId);
+    expect(document.getElementById(controlsId as string)).toHaveTextContent(
+      /hide language options/i,
+    );
+  });
+
   // Backs the audit:controls effect exemptions for the open-tray class props:
   // both exist in the DOM only while the tray is expanded.
   it("applies openTriggerClassName and floatedButtonClassName while open", async () => {

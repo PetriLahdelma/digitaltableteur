@@ -13739,6 +13739,84 @@
         }
       ]
     },
+    "TableOfContents": {
+      "name": "TableOfContents",
+      "group": "navigation",
+      "tier": 2,
+      "status": "alpha",
+      "description": "In-article table of contents for h2/h3 sections, with mobile disclosure and active-section indication.",
+      "dense": "Article table of contents for h2/h3 headings; mobile disclosure; activeId marks aria-current=location; onItemClick or built-in smooth scroll.",
+      "keywords": [
+        "toc",
+        "table of contents",
+        "article navigation",
+        "headings",
+        "active section"
+      ],
+      "importLine": "import { TableOfContents } from \"@dt/TableOfContents\";",
+      "keyProps": [
+        {
+          "name": "items",
+          "type": "TOCItem[]",
+          "required": true
+        },
+        {
+          "name": "activeId",
+          "type": "string | null",
+          "required": false
+        },
+        {
+          "name": "sticky",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "items": {
+          "optional": false,
+          "type": "TOCItem[]"
+        },
+        "activeId": {
+          "optional": true,
+          "type": "string | null"
+        },
+        "sticky": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "onItemClick": {
+          "optional": true,
+          "type": "(id: string) => void"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "composesWith": [
+        "ArticleContent",
+        "ArticlePageTemplate",
+        "ReadingProgress"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "Use for global site navigation — use NavMenuList or SiteTree instead.",
+        "Pass heading levels outside h2/h3 without updating the TOCItem contract."
+      ],
+      "usage": {
+        "description": "Use TableOfContents in article layouts when the page exposes multiple h2/h3 sections. Pass extracted heading items and activeId from useTableOfContents; pass onItemClick when the parent owns scroll behavior."
+      },
+      "tokens": {
+        "colors": [],
+        "spacing": []
+      },
+      "examples": []
+    },
     "Tabs": {
       "name": "Tabs",
       "group": "navigation",

@@ -61,4 +61,28 @@ describe("SiteTree", () => {
     const homeLink = screen.getByRole("link", { name: "Home" });
     expect(homeLink.closest("details")?.open).toBe(true);
   });
+
+  it("keeps branch index links outside summary to avoid nested-interactive markup", () => {
+    render(
+      <SiteTree
+        nodes={[
+          {
+            id: "docs",
+            label: "Docs",
+            href: "/docs",
+            indexLabel: "Docs overview",
+            defaultExpanded: true,
+            children: [{ id: "api", label: "API", href: "/docs/api" }],
+          },
+        ]}
+      />,
+    );
+
+    const summary = screen.getByText("Docs").closest("summary");
+    expect(summary?.querySelector("a")).toBeNull();
+
+    const branchIndexLink = screen.getByRole("link", { name: "Docs overview" });
+    expect(branchIndexLink).toHaveAttribute("href", "/docs");
+    expect(branchIndexLink.closest("summary")).toBeNull();
+  });
 });
