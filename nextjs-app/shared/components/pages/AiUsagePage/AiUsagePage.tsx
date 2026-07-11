@@ -3,8 +3,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
 import Title from "@dt/Title";
 import styles from "./AiUsagePage.module.css";
 
@@ -80,7 +78,7 @@ const renderContactLinks = (text: string, email: string, phone: string) => {
   );
 };
 
-export function AiUsagePage({ onBack }: { onBack?: () => void }) {
+export function AiUsagePage() {
   const { t } = useTranslation();
 
   const principles = [
@@ -128,25 +126,6 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
 
   return (
     <div className={styles.policyPage}>
-      {onBack ? (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "1.5rem",
-          }}
-        >
-          <Button variant="secondary" size="md" onClick={onBack}>
-            <Icon
-              name="arrow-left"
-              ariaLabel={t("back")}
-              style={{ marginInlineEnd: 8 }}
-            />
-            {t("back")}
-          </Button>
-        </div>
-      ) : null}
-
       <Title level={1} size="xs">
         {t("aiPolicyHeading")}
       </Title>

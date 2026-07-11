@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from "vitest";
-import { screen, fireEvent } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../../../test-utils/render";
 import { CookiePolicyPage } from "@dt-pages/CookiePolicy/CookiePolicyPage";
 import { CookiePolicyFullEnPage } from "@dt-pages/CookiePolicy/CookiePolicyFullEnPage";
@@ -21,11 +21,14 @@ describe("Static content pages", () => {
     expect(screen.getAllByText(/Privacy Policy|Tietosuojakäytäntö|Sekretesspolicy/i).length).toBeGreaterThan(0);
   });
 
-  it("renders AI usage page and triggers back handler", () => {
-    const onBack = vi.fn();
-    renderWithProviders(<AiUsagePage onBack={onBack} />);
-    fireEvent.click(screen.getByRole("button", { name: /Back/i }));
-    expect(onBack).toHaveBeenCalled();
+  it("renders AI usage page heading", () => {
+    renderWithProviders(<AiUsagePage />);
+    expect(
+      screen.getByRole("heading", {
+        name: /AI use & transparency statement/i,
+        level: 1,
+      }),
+    ).toBeInTheDocument();
   });
 
   it("renders imprint page", () => {
