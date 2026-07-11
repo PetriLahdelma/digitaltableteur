@@ -97,7 +97,11 @@ export const List = React.forwardRef<
   return (
     <Tag
       ref={ref}
-      className={`${styles.list} ${sizeClass} ${lineHeightClass} ${spacingClass} ${className}`.trim()}
+      className={`${styles.list} ${sizeClass} ${lineHeightClass} ${spacingClass} ${
+        listStyleType === "dash" ? styles.markerDash : ""
+      } ${className}`
+        .replace(/\s+/g, " ")
+        .trim()}
       style={combinedStyle}
       role={role}
     >
