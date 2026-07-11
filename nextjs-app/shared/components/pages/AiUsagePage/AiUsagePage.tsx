@@ -3,6 +3,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { Container } from "@dt/Container";
 import Link from "@dt/Link";
 import List from "@dt/List";
 import { Section } from "@dt/Section";
@@ -113,7 +114,7 @@ export function AiUsagePage() {
   ];
 
   return (
-    <div className={styles.policyPage}>
+    <Container size="sm" className={styles.prosePage}>
       <Title level={1} size="xs">
         {t("aiPolicyHeading")}
       </Title>
@@ -234,6 +235,6 @@ export function AiUsagePage() {
           )}
         </Text>
       </Section>
-    </div>
+    </Container>
   );
 }
