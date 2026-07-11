@@ -3,6 +3,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
 
@@ -79,28 +80,28 @@ export function AccessibilityPage() {
       <Title level={1} size="xs">
         {t("accessibilityHeading")}
       </Title>
-      <p>{t("accessibilityIntro")}</p>
-      <p>
+      <Text as="p" size="xs">{t("accessibilityIntro")}</Text>
+      <Text as="p" size="xs">
         <em>{t("accessibilityLastUpdated")}</em>
-      </p>
+      </Text>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityConformanceTitle")}
         </Title>
-        <p>{t("accessibilityConformanceBody")}</p>
-        <p>{t("accessibilityConformanceLevel")}</p>
+        <Text as="p" size="xs">{t("accessibilityConformanceBody")}</Text>
+        <Text as="p" size="xs">{t("accessibilityConformanceLevel")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityMeasuresTitle")}
         </Title>
-        <p>{t("accessibilityMeasuresIntro")}</p>
+        <Text as="p" size="xs">{t("accessibilityMeasuresIntro")}</Text>
         <ul>
           {measures.map((key) => (
             <li key={key}>
-              <p>{t(key)}</p>
+              <Text as="p" size="xs">{t(key)}</Text>
             </li>
           ))}
         </ul>
@@ -110,18 +111,18 @@ export function AccessibilityPage() {
         <Title level={2} size="xxs">
           {t("accessibilityStandardsTitle")}
         </Title>
-        <p>{t("accessibilityStandardsBody")}</p>
+        <Text as="p" size="xs">{t("accessibilityStandardsBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityTechnicalTitle")}
         </Title>
-        <p>{t("accessibilityTechnicalIntro")}</p>
+        <Text as="p" size="xs">{t("accessibilityTechnicalIntro")}</Text>
         <ul>
           {technicalSpecs.map((key) => (
             <li key={key}>
-              <p>{t(key)}</p>
+              <Text as="p" size="xs">{t(key)}</Text>
             </li>
           ))}
         </ul>
@@ -131,109 +132,109 @@ export function AccessibilityPage() {
         <Title level={2} size="xxs">
           {t("accessibilityCompatibilityTitle")}
         </Title>
-        <p>{t("accessibilityCompatibilityBody")}</p>
+        <Text as="p" size="xs">{t("accessibilityCompatibilityBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityLimitationsTitle")}
         </Title>
-        <p>{t("accessibilityLimitationsIntro")}</p>
+        <Text as="p" size="xs">{t("accessibilityLimitationsIntro")}</Text>
         <ul>
           {limitations.map((key) => (
             <li key={key}>
-              <p>{t(key)}</p>
+              <Text as="p" size="xs">{t(key)}</Text>
             </li>
           ))}
         </ul>
-        <p>{t("accessibilityLimitationsFooter")}</p>
+        <Text as="p" size="xs">{t("accessibilityLimitationsFooter")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityShortcomingsTitle")}
         </Title>
-        <p>{t("accessibilityShortcomingsIntro")}</p>
+        <Text as="p" size="xs">{t("accessibilityShortcomingsIntro")}</Text>
         <ul>
           {shortcomings.map((key) => (
             <li key={key}>
-              <p>{t(key)}</p>
+              <Text as="p" size="xs">{t(key)}</Text>
             </li>
           ))}
         </ul>
-        <p>{t("accessibilityShortcomingsFooter")}</p>
+        <Text as="p" size="xs">{t("accessibilityShortcomingsFooter")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityTestingTitle")}
         </Title>
-        <p>{t("accessibilityTestingBody")}</p>
+        <Text as="p" size="xs">{t("accessibilityTestingBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityMonitoringTitle")}
         </Title>
-        <p>{t("accessibilityMonitoringBody")}</p>
-        <p>
+        <Text as="p" size="xs">{t("accessibilityMonitoringBody")}</Text>
+        <Text as="p" size="xs">
           <strong>{t("accessibilityMonitoringAgency")}</strong>
-        </p>
-        <p>{t("accessibilityMonitoringWebsite")}</p>
-        <p>{t("accessibilityMonitoringEmail")}</p>
-        <p>{t("accessibilityMonitoringPhone")}</p>
+        </Text>
+        <Text as="p" size="xs">{t("accessibilityMonitoringWebsite")}</Text>
+        <Text as="p" size="xs">{t("accessibilityMonitoringEmail")}</Text>
+        <Text as="p" size="xs">{t("accessibilityMonitoringPhone")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityPublicationTitle")}
         </Title>
-        <p>{t("accessibilityPublicationWebsite")}</p>
-        <p>{t("accessibilityPublicationStatement")}</p>
-        <p>{t("accessibilityPublicationAct")}</p>
+        <Text as="p" size="xs">{t("accessibilityPublicationWebsite")}</Text>
+        <Text as="p" size="xs">{t("accessibilityPublicationStatement")}</Text>
+        <Text as="p" size="xs">{t("accessibilityPublicationAct")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityFeedbackTitle")}
         </Title>
-        <p>{t("accessibilityFeedbackIntro")}</p>
-        <p>{t("accessibilityFeedbackEmail")}</p>
-        <p>
+        <Text as="p" size="xs">{t("accessibilityFeedbackIntro")}</Text>
+        <Text as="p" size="xs">{t("accessibilityFeedbackEmail")}</Text>
+        <Text as="p" size="xs">
           {renderContactLinks(
             t("accessibilityContactBody"),
             "mail@digitaltableteur.com",
             "+358 45 657 4469",
           )}
-        </p>
-        <p>{t("accessibilityFeedbackResponse")}</p>
+        </Text>
+        <Text as="p" size="xs">{t("accessibilityFeedbackResponse")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityComplaintTitle")}
         </Title>
-        <p>{t("accessibilityComplaintBody")}</p>
+        <Text as="p" size="xs">{t("accessibilityComplaintBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityAlternativeTitle")}
         </Title>
-        <p>{t("accessibilityAlternativeBody")}</p>
+        <Text as="p" size="xs">{t("accessibilityAlternativeBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("accessibilityContactTitle")}
         </Title>
-        <p>
+        <Text as="p" size="xs">
           {renderContactLinks(
             t("accessibilityContactBody"),
             "mail@digitaltableteur.com",
             "+358 45 657 4469",
           )}
-        </p>
+        </Text>
       </section>
     </div>
   );
