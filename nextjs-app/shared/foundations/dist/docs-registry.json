@@ -8099,7 +8099,7 @@
         },
         {
           "name": "listStyleType",
-          "type": "none | decimal | circle | square | disc | decimal-leading-zero | lower-alpha | upper-alpha | lower-roman | upper-roman",
+          "type": "none | decimal | circle | square | disc | decimal-leading-zero | lower-alpha | upper-alpha | lower-roman | upper-roman | dash",
           "required": false
         },
         {
@@ -8166,7 +8166,8 @@
             "lower-alpha",
             "upper-alpha",
             "lower-roman",
-            "upper-roman"
+            "upper-roman",
+            "dash"
           ]
         },
         "spacing": {
@@ -14593,6 +14594,30 @@
       },
       "tokens": {
         "colors": [],
+        "spacing": []
+      },
+      "examples": []
+    },
+    "Timestamp": {
+      "name": "Timestamp",
+      "group": "display",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import Timestamp from \"@dt/Timestamp\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-muted"
+        ],
         "spacing": []
       },
       "examples": []

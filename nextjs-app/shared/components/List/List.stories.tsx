@@ -76,6 +76,7 @@ const meta: Meta<typeof List> = {
         "lower-roman",
         "upper-roman",
         "none",
+        "dash",
       ],
       description: "CSS list-style-type",
     },

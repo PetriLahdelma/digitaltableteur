@@ -14,7 +14,8 @@ type ListStyleType =
   | "upper-alpha"
   | "lower-roman"
   | "upper-roman"
-  | "none";
+  | "none"
+  | "dash";
 
 export interface ListProps {
   items: React.ReactNode[];
@@ -82,7 +83,11 @@ export const List = React.forwardRef<
   const spacingClass = spacingClassMap[spacing] || "";
 
   const resolvedListStyleType =
-    listStyleType === "none" ? ('" "' as ListStyleType) : listStyleType;
+    listStyleType === "none"
+      ? ('" "' as ListStyleType)
+      : listStyleType === "dash"
+        ? ('"— "' as ListStyleType)
+        : listStyleType;
 
   const combinedStyle = {
     ...style,

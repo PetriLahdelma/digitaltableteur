@@ -8,11 +8,12 @@
 }
 
 .list li {
+  /* Measure is governed by the container, like all prose; items only get
+     word-level wrapping protection. (A 20ch max-inline-size + hyphens:auto
+     default used to live here — every real consumer overrode it.) */
   margin-block-end: var(--space-internal-8);
-  max-inline-size: 20ch; /* or max-width: 20ch */
   white-space: normal;
   overflow-wrap: break-word;
-  hyphens: auto;
 }
 
 /* Spacing classes */

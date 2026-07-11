@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../../../../test-utils/render";
 import { PrivacyPolicyPage } from "./PrivacyPolicyPage";
@@ -18,9 +18,14 @@ describe("PrivacyPolicyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders back button when onBack is provided", () => {
-    const onBack = vi.fn();
-    renderWithProviders(<PrivacyPolicyPage onBack={onBack} />);
-    expect(screen.getByRole("button", { name: /Back/i })).toBeInTheDocument();
+  it("renders the policy sections as a marker-less list layout", () => {
+    renderWithProviders(<PrivacyPolicyPage />);
+    // DS structure after the dogfooding swaps: Text paragraphs, DS List items,
+    // DS Section wrappers (the dead onBack back-button affordance is gone).
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    expect(screen.getAllByRole("list").length).toBe(6);
+    expect(
+      screen.getAllByText(/Last updated/i)[0].closest("p"),
+    ).toBeInTheDocument();
   });
 });

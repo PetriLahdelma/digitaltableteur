@@ -1,0 +1,43 @@
+.timestamp {
+  font-family: var(--primary-body-font);
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+.toneDefault {
+  color: var(--color-text);
+}
+
+.toneMuted {
+  color: var(--color-muted);
+}
+
+/* Text ladder, same tokens as Text. */
+
+.sizeXXS {
+  font-size: var(--font-size-text-xxs);
+}
+
+.sizeXS {
+  font-size: var(--font-size-text-xs);
+}
+
+.sizeS {
+  font-size: var(--font-size-text-s);
+}
+
+.sizeM {
+  font-size: var(--font-size-text-m);
+}
+
+.sizeL {
+  font-size: var(--font-size-text-l);
+}
+
+.sizeXL {
+  font-size: var(--font-size-text-xl);
+}
+
+.sizeXXL {
+  font-size: var(--font-size-text-xxl);
+}

@@ -441,10 +441,6 @@
       "rawElements": 1,
       "utilityLines": 0
     },
-    "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx": {
-      "rawElements": 10,
-      "utilityLines": 0
-    },
     "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx": {
       "rawElements": 1,
       "utilityLines": 0
