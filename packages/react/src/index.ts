@@ -9,7 +9,14 @@ export type {
   BreadcrumbProps,
 } from "../../../nextjs-app/shared/components/Breadcrumb/Breadcrumb";
 export { default as Button } from "../../../nextjs-app/shared/components/Button/Button";
+export type {
+  ButtonAsButton,
+  ButtonAsLink,
+  ButtonProps,
+  ButtonSurface,
+} from "../../../nextjs-app/shared/components/Button/Button";
 export { default as ButtonGroup } from "../../../nextjs-app/shared/components/ButtonGroup/ButtonGroup";
+export type { ButtonGroupProps } from "../../../nextjs-app/shared/components/ButtonGroup/ButtonGroup";
 export { default as Card } from "../../../nextjs-app/shared/components/Card/Card";
 export {
   CategoryFilter,
@@ -95,7 +102,16 @@ export {
   MenuSubTrigger,
   MenuSubContent,
 } from "../../../nextjs-app/shared/components/Menu";
+export type {
+  MenuItemProps,
+  MenuProps,
+  MenuRootProps,
+  MenuSubProps,
+  MenuSubTriggerProps,
+  MenuTriggerProps,
+} from "../../../nextjs-app/shared/components/Menu";
 export { default as Modal } from "../../../nextjs-app/shared/components/Modal/Modal";
+export type { ModalProps, ModalSeverity } from "../../../nextjs-app/shared/components/Modal/Modal";
 export {
   MultiCombobox,
   type MultiComboboxOption,
@@ -171,6 +187,7 @@ export { default as Title } from "../../../nextjs-app/shared/components/Title/Ti
 export { default as Toast } from "../../../nextjs-app/shared/components/Toast/Toast";
 export type {
   ToastPosition,
+  ToastProps,
   ToastTone,
 } from "../../../nextjs-app/shared/components/Toast/Toast";
 export {

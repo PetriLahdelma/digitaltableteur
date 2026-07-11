@@ -133,6 +133,30 @@ describe("SelectableCardGroup — error", () => {
     expect(screen.getByText("Pick one.")).toBeInTheDocument();
     expect(screen.getByRole("group")).toHaveAttribute("aria-invalid", "true");
   });
+
+  it("wires helper and error copy through aria-describedby", () => {
+    render(
+      <SelectableCardGroup
+        type="single"
+        legend="Plan"
+        name="plan"
+        helperText="Choose a plan."
+        error="Pick one."
+      >
+        <SelectableCard value="a" title="A" />
+      </SelectableCardGroup>,
+    );
+
+    const group = screen.getByRole("group", { name: "Plan" });
+    expect(group).toHaveAttribute(
+      "aria-describedby",
+      expect.stringContaining("plan-helper"),
+    );
+    expect(group).toHaveAttribute(
+      "aria-describedby",
+      expect.stringContaining("plan-error"),
+    );
+  });
 });
 
 describe("SelectableCard — standalone", () => {

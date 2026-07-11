@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent, within } from "@testing-library/react";
+import { render, screen, fireEvent, within, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { CommandPalette, type CommandPaletteItem } from "./CommandPalette";
@@ -70,6 +70,33 @@ describe("CommandPalette", () => {
     fireEvent.click(within(screen.getByRole("listbox")).getByText("Go to Work"));
     expect(items[2].onSelect).toHaveBeenCalledTimes(1);
     expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("traps focus while open and restores prior focus when closed", async () => {
+    const main = document.createElement("main");
+    main.id = "main-content";
+    const before = document.createElement("button");
+    before.type = "button";
+    before.textContent = "Before";
+    main.appendChild(before);
+    document.body.appendChild(main);
+    before.focus();
+
+    const onClose = vi.fn();
+    const { rerender } = render(
+      <CommandPalette open onClose={onClose} items={makeItems()} />,
+    );
+
+    await waitFor(() => expect(screen.getByRole("combobox")).toHaveFocus());
+    expect(main).toHaveAttribute("inert");
+
+    rerender(
+      <CommandPalette open={false} onClose={onClose} items={makeItems()} />,
+    );
+
+    expect(before).toHaveFocus();
+    expect(main).not.toHaveAttribute("inert");
+    main.remove();
   });
 
   it("has no axe violations", async () => {
