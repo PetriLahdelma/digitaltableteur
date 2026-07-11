@@ -3,6 +3,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "./AiUsagePage.module.css";
 
@@ -129,7 +130,7 @@ export function AiUsagePage() {
       <Title level={1} size="xs">
         {t("aiPolicyHeading")}
       </Title>
-      <p>{t("aiPolicyIntro")}</p>
+      <Text as="p" size="xs">{t("aiPolicyIntro")}</Text>
 
       <section>
         <Title level={2} size="xxs">
@@ -167,14 +168,14 @@ export function AiUsagePage() {
         <Title level={2} size="xxs">
           {t("aiPolicyNotUsedTitle")}
         </Title>
-        <p>{t("aiPolicyNotUsedBody")}</p>
+        <Text as="p" size="xs">{t("aiPolicyNotUsedBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("aiPolicyProvidersTitle")}
         </Title>
-        <p>{t("aiPolicyProvidersIntro")}</p>
+        <Text as="p" size="xs">{t("aiPolicyProvidersIntro")}</Text>
         <ul>
           {providers.map((key) => {
             const content = t(key);
@@ -185,14 +186,14 @@ export function AiUsagePage() {
             );
           })}
         </ul>
-        <p>{t("aiPolicyProvidersFooter")}</p>
+        <Text as="p" size="xs">{t("aiPolicyProvidersFooter")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("aiPolicyDataTitle")}
         </Title>
-        <p>{t("aiPolicyDataIntro")}</p>
+        <Text as="p" size="xs">{t("aiPolicyDataIntro")}</Text>
         <ul>
           {dataItems.map((key) => {
             const content = t(key);
@@ -203,7 +204,7 @@ export function AiUsagePage() {
             );
           })}
         </ul>
-        <p>{t("aiPolicyDataFooter")}</p>
+        <Text as="p" size="xs">{t("aiPolicyDataFooter")}</Text>
       </section>
 
       <section>
@@ -226,7 +227,7 @@ export function AiUsagePage() {
         <Title level={2} size="xxs">
           {t("aiPolicyLimitationsTitle")}
         </Title>
-        <p>{t("aiPolicyLimitationsBody")}</p>
+        <Text as="p" size="xs">{t("aiPolicyLimitationsBody")}</Text>
       </section>
 
       <section>
@@ -243,32 +244,32 @@ export function AiUsagePage() {
             );
           })}
         </ul>
-        <p>
+        <Text as="p" size="xs">
           {renderEmailLink(
             t("aiPolicyRightsFooter"),
             "mail@digitaltableteur.com",
           )}
-        </p>
+        </Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("aiPolicyChangesTitle")}
         </Title>
-        <p>{t("aiPolicyChangesBody")}</p>
+        <Text as="p" size="xs">{t("aiPolicyChangesBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("aiPolicyContactTitle")}
         </Title>
-        <p>
+        <Text as="p" size="xs">
           {renderContactLinks(
             t("aiPolicyContactBody"),
             "mail@digitaltableteur.com",
             "+358 45 657 4469",
           )}
-        </p>
+        </Text>
       </section>
     </div>
   );
