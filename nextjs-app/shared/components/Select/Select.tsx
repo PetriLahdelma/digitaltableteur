@@ -7,7 +7,7 @@ import Icon from "@dt/Icon";
 import { warnPropRename } from "../../utils/deprecationWarning";
 import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 
-interface SelectOptionItem {
+export interface SelectOptionItem {
   value: string;
   label: string;
   /** Disables this option. */
