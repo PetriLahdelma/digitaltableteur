@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
-import Title from "@dt/Title";
+import { Title } from "@digitaltableteur/react";
 
 import styles from "./CookiePolicy.module.css";
 

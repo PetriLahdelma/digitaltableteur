@@ -3,8 +3,7 @@
 import Link from "next/link";
 import React from "react";
 
-import Text from "@dt/Text";
-import Title from "@dt/Title";
+import { Text, Title } from "@digitaltableteur/react";
 
 import styles from "./colophon.module.css";
 

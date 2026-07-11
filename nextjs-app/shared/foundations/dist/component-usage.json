@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T18:07:01.188Z",
+  "generatedAt": "2026-07-11T20:03:54.265Z",
   "components": [
     {
       "name": "__templates__",
@@ -397,9 +397,13 @@
         "nextjs-app/shared/components/pages/Pseo/PseoPillarMetaBadgeLinks.tsx",
         "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
-      "prodPageCount": 12,
+      "packageImportCount": 3,
+      "packageImporters": [
+        "nextjs-app/shared/components/pages/Pseo/PseoClusterBadges.tsx",
+        "nextjs-app/shared/components/pages/Pseo/PseoPillarMetaBadgeLinks.tsx",
+        "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx"
+      ],
+      "prodPageCount": 10,
       "prodPages": [
         "app/dev/tailwind-test/page.tsx",
         "app/layout.tsx",
@@ -409,8 +413,6 @@
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoPillarMetaBadgeLinks.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-        "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-        "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
         "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
         "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts"
       ]
@@ -543,12 +545,12 @@
         "nextjs-app/shared/components/index.ts",
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
-      "prodPageCount": 1,
-      "prodPages": [
+      "packageImportCount": 1,
+      "packageImporters": [
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx"
-      ]
+      ],
+      "prodPageCount": 0,
+      "prodPages": []
     },
     {
       "name": "Button",
@@ -604,12 +606,17 @@
         "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
         "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx"
       ],
-      "packageImportCount": 4,
+      "packageImportCount": 9,
       "packageImporters": [
         "app/blog/NextBlogNav.tsx",
         "app/error.tsx",
         "app/not-found.tsx",
-        "app/work/NextWorkNav.tsx"
+        "app/work/NextWorkNav.tsx",
+        "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
+        "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [
@@ -654,14 +661,14 @@
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
-      "prodPageCount": 3,
-      "prodPages": [
+      "packageImportCount": 3,
+      "packageImporters": [
         "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx"
-      ]
+      ],
+      "prodPageCount": 0,
+      "prodPages": []
     },
     {
       "name": "CategoryFilter",
@@ -823,8 +830,10 @@
       "directImporters": [
         "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
+      "packageImportCount": 1,
+      "packageImporters": [
+        "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx"
+      ],
       "prodPageCount": 2,
       "prodPages": [
         "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
@@ -1044,9 +1053,12 @@
         "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.tsx",
         "nextjs-app/shared/patterns/WorkPreviewSection/WorkPreviewSection.tsx"
       ],
-      "packageImportCount": 1,
+      "packageImportCount": 4,
       "packageImporters": [
-        "app/dev/code-window/page.tsx"
+        "app/dev/code-window/page.tsx",
+        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+        "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [
@@ -1469,13 +1481,12 @@
         "nextjs-app/shared/components/index.ts",
         "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
-      "prodPageCount": 2,
-      "prodPages": [
-        "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-        "nextjs-app/shared/components/pages/Work/Illustrations/index.ts"
-      ]
+      "packageImportCount": 1,
+      "packageImporters": [
+        "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx"
+      ],
+      "prodPageCount": 0,
+      "prodPages": []
     },
     {
       "name": "Footer",
@@ -1530,8 +1541,10 @@
         "nextjs-app/shared/components/index.ts",
         "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
+      "packageImportCount": 1,
+      "packageImporters": [
+        "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx"
+      ],
       "prodPageCount": 2,
       "prodPages": [
         "nextjs-app/shared/components/pages/Work/NewThingsCo/index.ts",
@@ -1823,12 +1836,15 @@
         "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
         "nextjs-app/shared/utils/semanticIcons.tsx"
       ],
-      "packageImportCount": 4,
+      "packageImportCount": 7,
       "packageImporters": [
         "app/blog/NextBlogNav.tsx",
         "app/error.tsx",
         "app/not-found.tsx",
-        "app/work/NextWorkNav.tsx"
+        "app/work/NextWorkNav.tsx",
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [
@@ -2050,8 +2066,12 @@
         "nextjs-app/shared/patterns/Footer/Footer.tsx",
         "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
+      "packageImportCount": 3,
+      "packageImporters": [
+        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+        "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx"
+      ],
       "prodPageCount": 12,
       "prodPages": [
         "app/blog/[slug]/BlogArticleMdxBody.tsx",
@@ -2061,11 +2081,11 @@
         "app/dev/tailwind-test/page.tsx",
         "app/layout.tsx",
         "app/lib/siteStructure.ts",
-        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-        "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
-        "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-        "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
-        "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx"
+        "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
+        "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+        "nextjs-app/shared/components/pages/Blog/index.ts",
+        "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+        "nextjs-app/shared/components/pages/SitemapPage/index.ts"
       ]
     },
     {
@@ -2092,22 +2112,26 @@
         "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
         "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
+      "packageImportCount": 3,
+      "packageImporters": [
+        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+        "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx"
+      ],
       "prodPageCount": 12,
       "prodPages": [
-        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-        "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
-        "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-        "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
-        "nextjs-app/shared/components/pages/PrivacyPolicyPage/index.ts",
-        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
-        "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts"
+        "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
+        "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+        "nextjs-app/shared/components/pages/Work/LlmComponentSchema/index.ts",
+        "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
+        "nextjs-app/shared/components/pages/Work/NewThingsCo/index.ts",
+        "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx"
       ]
     },
     {
@@ -2262,11 +2286,11 @@
         "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
         "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
         "nextjs-app/shared/components/pages/Blog/index.ts",
-        "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
         "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
         "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
         "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-        "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts"
+        "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
+        "nextjs-app/shared/patterns/index.ts"
       ]
     },
     {
@@ -3093,8 +3117,12 @@
         "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.tsx",
         "nextjs-app/shared/patterns/WorkPreviewSection/WorkPreviewSection.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
+      "packageImportCount": 3,
+      "packageImporters": [
+        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+        "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx"
+      ],
       "prodPageCount": 12,
       "prodPages": [
         "app/blog/[slug]/BlogArticleMdxBody.tsx",
@@ -3103,12 +3131,12 @@
         "app/blog/[slug]/ServerArticleMain.tsx",
         "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
         "nextjs-app/shared/components/pages/AboutPage/index.ts",
-        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-        "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
-        "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-        "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
         "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-        "nextjs-app/shared/components/pages/Blog/BlogPage.tsx"
+        "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+        "nextjs-app/shared/components/pages/Blog/index.ts",
+        "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+        "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts"
       ]
     },
     {
@@ -3349,12 +3377,8 @@
       ],
       "packageImportCount": 0,
       "packageImporters": [],
-      "prodPageCount": 3,
-      "prodPages": [
-        "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
-        "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-        "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx"
-      ]
+      "prodPageCount": 0,
+      "prodPages": []
     },
     {
       "name": "SkillsGrid",
@@ -3538,7 +3562,7 @@
       ],
       "packageImportCount": 0,
       "packageImporters": [],
-      "prodPageCount": 12,
+      "prodPageCount": 10,
       "prodPages": [
         "app/dev/tailwind-test/page.tsx",
         "app/layout.tsx",
@@ -3548,8 +3572,6 @@
         "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoPillarMetaBadgeLinks.tsx",
         "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-        "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-        "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
         "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
         "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts"
       ]
@@ -3781,9 +3803,31 @@
         "nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx",
         "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx"
       ],
-      "packageImportCount": 1,
+      "packageImportCount": 23,
       "packageImporters": [
-        "app/dev/code-window/page.tsx"
+        "app/dev/code-window/page.tsx",
+        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+        "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+        "nextjs-app/shared/components/pages/Colophon/ColophonPage.tsx",
+        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+        "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+        "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+        "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+        "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
+        "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+        "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
+        "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
+        "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
+        "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx",
+        "nextjs-app/shared/components/pages/Work/ProjectSpine/ProjectSpinePage.tsx",
+        "nextjs-app/shared/components/pages/Work/RawView/RawViewPage.tsx",
+        "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
+        "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
+        "nextjs-app/shared/components/pages/Work/Tulli/TulliPage.tsx",
+        "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [
@@ -3797,8 +3841,8 @@
         "app/layout.tsx",
         "app/tools/email-signature/EmailSignatureContent.tsx",
         "app/tools/email-signature/page.tsx",
-        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-        "nextjs-app/shared/components/pages/AccessibilityPage/index.ts"
+        "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
+        "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx"
       ]
     },
     {
@@ -3955,9 +3999,33 @@
         "nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx",
         "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx"
       ],
-      "packageImportCount": 1,
+      "packageImportCount": 25,
       "packageImporters": [
-        "app/dev/code-window/page.tsx"
+        "app/dev/code-window/page.tsx",
+        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+        "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+        "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
+        "nextjs-app/shared/components/pages/Colophon/ColophonPage.tsx",
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyPage.tsx",
+        "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
+        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+        "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+        "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+        "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+        "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
+        "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+        "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+        "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+        "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
+        "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
+        "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx",
+        "nextjs-app/shared/components/pages/Work/ProjectSpine/ProjectSpinePage.tsx",
+        "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
+        "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [
@@ -3972,7 +4040,7 @@
         "app/tools/email-signature/page.tsx",
         "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
         "nextjs-app/shared/components/pages/AboutPage/index.ts",
-        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx"
+        "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx"
       ]
     },
     {

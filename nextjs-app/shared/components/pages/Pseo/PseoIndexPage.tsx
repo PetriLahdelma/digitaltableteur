@@ -3,10 +3,8 @@ import type { PseoCatalog, PseoLeafPage } from "@/lib/pseo/types";
 import { getStackDisplayName } from "@/lib/pseo/display";
 
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
-import Card from "@dt/Card";
+import { Card, Text, Title } from "@digitaltableteur/react";
 import NextLink from "next/link";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
 import styles from "./PseoIndexPage.module.css";
 
 export function PseoIndexPage({
