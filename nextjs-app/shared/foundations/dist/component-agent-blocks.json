@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T10:24:57.300Z",
+  "generatedAt": "2026-07-11T16:19:26.317Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -8995,6 +8995,76 @@
       "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 10
+    },
+    "TableOfContents": {
+      "preferredImport": "@dt/TableOfContents",
+      "intent": "Render an in-article navigation list for h2/h3 headings so readers can scan and jump between sections without leaving the article context.",
+      "props": {
+        "items": {
+          "optional": false,
+          "type": "TOCItem[]"
+        },
+        "activeId": {
+          "optional": true,
+          "type": "string | null"
+        },
+        "sticky": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "onItemClick": {
+          "optional": true,
+          "type": "(id: string) => void"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "Pair with `useTableOfContents` in article templates.",
+        "Keep item text identical to the rendered heading text."
+      ],
+      "avoidWhen": [
+        "Use for primary site navigation.",
+        "Pass arbitrary nesting levels without expanding `TOCItem`."
+      ],
+      "requiredA11y": [
+        "nav landmark with a localized aria-label",
+        "mobile trigger exposes aria-expanded and aria-controls",
+        "active heading button exposes aria-current='location'"
+      ],
+      "keyboard": [
+        "Tab reaches the disclosure trigger and each heading button.",
+        "Enter / Space toggles the mobile disclosure and activates heading buttons."
+      ],
+      "compositionRules": [
+        "Pass arbitrary nesting levels without expanding `TOCItem`."
+      ],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "Use for primary site navigation.",
+        "Pass arbitrary nesting levels without expanding `TOCItem`."
+      ],
+      "composesWith": [
+        "AuthorBio",
+        "CodeBlockWindow",
+        "DashLeadList",
+        "ArticleContent",
+        "EnhancedAuthorCard",
+        "ArticleShareSection"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 5
     },
     "Tabs": {
       "preferredImport": "@dt/Tabs",
