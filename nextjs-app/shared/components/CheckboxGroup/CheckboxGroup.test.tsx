@@ -44,7 +44,22 @@ describe("CheckboxGroup", () => {
       />,
     );
     fireEvent.click(screen.getByLabelText("Option 2"));
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith(["option2"]);
+  });
+
+  it("calls onChange with all option values from the master checkbox", () => {
+    const onChange = vi.fn();
+    render(
+      <CheckboxGroup
+        label="Group Label"
+        options={options}
+        onChange={onChange}
+      />,
+    );
+
+    fireEvent.click(screen.getByLabelText(/Select All|All/i));
+
+    expect(onChange).toHaveBeenCalledWith(["option1", "option2", "option3"]);
   });
 
   it("master checkbox shows indeterminate when some options are selected", () => {
