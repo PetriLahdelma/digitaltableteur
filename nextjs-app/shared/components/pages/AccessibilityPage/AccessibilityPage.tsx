@@ -3,44 +3,50 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
+import { Container } from "@dt/Container";
+import Link from "@dt/Link";
+import List from "@dt/List";
+import { Section } from "@dt/Section";
+import Text from "@dt/Text";
+import Timestamp from "@dt/Timestamp";
 import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
 
-const renderEmailLink = (text: string, email: string) => {
-  if (!text.includes(email)) {
-    return text;
+const delimiter = ": ";
+
+const emphasiseLeadingLabel = (text: string) => {
+  const delimiterIndex = text.indexOf(delimiter);
+  if (delimiterIndex === -1) {
+    return <strong>{text}</strong>;
   }
-  const [before, after = ""] = text.split(email);
+  const label = text.slice(0, delimiterIndex);
+  const remainder = text.slice(delimiterIndex + delimiter.length);
   return (
     <>
-      {before}
-      <a href={`mailto:${email}`} className={styles.emailLink}>
-        {email}
-      </a>
-      {after}
+      <strong>{label}</strong>
+      {delimiter}
+      {remainder}
     </>
   );
 };
 
-const renderContactLinks = (text: string, email: string, phone: string) => {
+const renderContactLinks = (text: string, email: string, phone?: string) => {
   // Split by email first
   const emailParts = text.split(email);
   if (emailParts.length !== 2) return text;
 
   const [beforeEmail, afterEmail] = emailParts;
 
-  // Split the afterEmail part by phone
-  const phoneParts = afterEmail.split(phone);
-  if (phoneParts.length !== 2) {
-    // Phone not found, just render email
+  // Split the afterEmail part by phone (when given)
+  const phoneParts = phone ? afterEmail.split(phone) : [afterEmail];
+  if (!phone || phoneParts.length !== 2) {
+    // Phone absent or not found, just render email
     return (
       <>
         {beforeEmail}
-        <a href={`mailto:${email}`} className={styles.emailLink}>
+        <Link href={`mailto:${email}`} size="inherit">
           {email}
-        </a>
+        </Link>
         {afterEmail}
       </>
     );
@@ -50,19 +56,19 @@ const renderContactLinks = (text: string, email: string, phone: string) => {
   return (
     <>
       {beforeEmail}
-      <a href={`mailto:${email}`} className={styles.emailLink}>
+      <Link href={`mailto:${email}`} size="inherit">
         {email}
-      </a>
+      </Link>
       {betweenEmailPhone}
-      <a href={`tel:${phone.replace(/\s/g, "")}`} className={styles.emailLink}>
+      <Link href={`tel:${phone.replace(/\s/g, "")}`} size="inherit">
         {phone}
-      </a>
+      </Link>
       {afterPhone}
     </>
   );
 };
 
-export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
+export function AccessibilityPage() {
   const { t } = useTranslation();
 
   const measures = [
@@ -93,185 +99,163 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
   ];
 
   return (
-    <div className={styles.policyPage}>
-      {onBack ? (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "1.5rem",
-          }}
-        >
-          <Button variant="secondary" size="md" onClick={onBack}>
-            <Icon
-              name="arrow-left"
-              ariaLabel={t("back")}
-              style={{ marginInlineEnd: 8 }}
-            />
-            {t("back")}
-          </Button>
-        </div>
-      ) : null}
-
+    <Container size="sm" className={styles.prosePage}>
       <Title level={1} size="xs">
         {t("accessibilityHeading")}
       </Title>
-      <p>{t("accessibilityIntro")}</p>
-      <p>
-        <em>{t("accessibilityLastUpdated")}</em>
-      </p>
+      <Text as="p" size="xs">{t("accessibilityIntro")}</Text>
+      <Text as="p" size="xs">
+        {t("accessibilityLastUpdatedLabel")}{" "}
+        <Timestamp value="2026-02-04" format="date" size="xs" />
+      </Text>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityConformanceTitle")}
         </Title>
-        <p>{t("accessibilityConformanceBody")}</p>
-        <p>{t("accessibilityConformanceLevel")}</p>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityConformanceBody")}</Text>
+        <Text as="p" size="xs">{t("accessibilityConformanceLevel")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityMeasuresTitle")}
         </Title>
-        <p>{t("accessibilityMeasuresIntro")}</p>
-        <ul>
-          {measures.map((key) => (
-            <li key={key}>
-              <p>{t(key)}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityMeasuresIntro")}</Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={measures.map((key) => t(key))}
+        />
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityStandardsTitle")}
         </Title>
-        <p>{t("accessibilityStandardsBody")}</p>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityStandardsBody")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityTechnicalTitle")}
         </Title>
-        <p>{t("accessibilityTechnicalIntro")}</p>
-        <ul>
-          {technicalSpecs.map((key) => (
-            <li key={key}>
-              <p>{t(key)}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityTechnicalIntro")}</Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={technicalSpecs.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityCompatibilityTitle")}
         </Title>
-        <p>{t("accessibilityCompatibilityBody")}</p>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityCompatibilityBody")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityLimitationsTitle")}
         </Title>
-        <p>{t("accessibilityLimitationsIntro")}</p>
-        <ul>
-          {limitations.map((key) => (
-            <li key={key}>
-              <p>{t(key)}</p>
-            </li>
-          ))}
-        </ul>
-        <p>{t("accessibilityLimitationsFooter")}</p>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityLimitationsIntro")}</Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={limitations.map((key) => t(key))}
+        />
+        <Text as="p" size="xs">{t("accessibilityLimitationsFooter")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityShortcomingsTitle")}
         </Title>
-        <p>{t("accessibilityShortcomingsIntro")}</p>
-        <ul>
-          {shortcomings.map((key) => (
-            <li key={key}>
-              <p>{t(key)}</p>
-            </li>
-          ))}
-        </ul>
-        <p>{t("accessibilityShortcomingsFooter")}</p>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityShortcomingsIntro")}</Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={shortcomings.map((key) => t(key))}
+        />
+        <Text as="p" size="xs">{t("accessibilityShortcomingsFooter")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityTestingTitle")}
         </Title>
-        <p>{t("accessibilityTestingBody")}</p>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityTestingBody")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityMonitoringTitle")}
         </Title>
-        <p>{t("accessibilityMonitoringBody")}</p>
-        <p>
+        <Text as="p" size="xs">{t("accessibilityMonitoringBody")}</Text>
+        <Text as="p" size="xs">
           <strong>{t("accessibilityMonitoringAgency")}</strong>
-        </p>
-        <p>{t("accessibilityMonitoringWebsite")}</p>
-        <p>{t("accessibilityMonitoringEmail")}</p>
-        <p>{t("accessibilityMonitoringPhone")}</p>
-      </section>
+        </Text>
+        <Text as="p" size="xs">{t("accessibilityMonitoringWebsite")}</Text>
+        <Text as="p" size="xs">{t("accessibilityMonitoringEmail")}</Text>
+        <Text as="p" size="xs">{t("accessibilityMonitoringPhone")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityPublicationTitle")}
         </Title>
-        <p>{t("accessibilityPublicationWebsite")}</p>
-        <p>{t("accessibilityPublicationStatement")}</p>
-        <p>{t("accessibilityPublicationAct")}</p>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityPublicationWebsite")}</Text>
+        <Text as="p" size="xs">{t("accessibilityPublicationStatement")}</Text>
+        <Text as="p" size="xs">{t("accessibilityPublicationAct")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityFeedbackTitle")}
         </Title>
-        <p>{t("accessibilityFeedbackIntro")}</p>
-        <p>{t("accessibilityFeedbackEmail")}</p>
-        <p>
+        <Text as="p" size="xs">{t("accessibilityFeedbackIntro")}</Text>
+        <Text as="p" size="xs">{t("accessibilityFeedbackEmail")}</Text>
+        <Text as="p" size="xs">
           {renderContactLinks(
             t("accessibilityContactBody"),
             "mail@digitaltableteur.com",
             "+358 45 657 4469",
           )}
-        </p>
-        <p>{t("accessibilityFeedbackResponse")}</p>
-      </section>
+        </Text>
+        <Text as="p" size="xs">{t("accessibilityFeedbackResponse")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityComplaintTitle")}
         </Title>
-        <p>{t("accessibilityComplaintBody")}</p>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityComplaintBody")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityAlternativeTitle")}
         </Title>
-        <p>{t("accessibilityAlternativeBody")}</p>
-      </section>
+        <Text as="p" size="xs">{t("accessibilityAlternativeBody")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityContactTitle")}
         </Title>
-        <p>
+        <Text as="p" size="xs">
           {renderContactLinks(
             t("accessibilityContactBody"),
             "mail@digitaltableteur.com",
             "+358 45 657 4469",
           )}
-        </p>
-      </section>
-    </div>
+        </Text>
+      </Section>
+    </Container>
   );
 }

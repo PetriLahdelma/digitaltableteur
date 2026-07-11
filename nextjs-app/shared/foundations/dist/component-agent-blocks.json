@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T09:36:37.279Z",
+  "generatedAt": "2026-07-11T10:24:57.300Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -4637,8 +4637,8 @@
       ],
       "composesWith": [
         "Button",
-        "Title",
         "Text",
+        "Title",
         "ComplianceCard",
         "Badge",
         "CodeSnippet"
@@ -5088,9 +5088,9 @@
         "Text",
         "Title",
         "Container",
-        "Badge",
-        "Checkbox",
-        "TextInput"
+        "List",
+        "Section",
+        "Badge"
       ],
       "prefersOver": [
         "Button with href for body-copy links"
@@ -9261,7 +9261,7 @@
         "ProjectDetailLayout",
         "ProjectHero",
         "RelatedProjects",
-        "GridBlock"
+        "ProcessBlock"
       ],
       "prefersOver": [
         "raw paragraph elements"
@@ -12461,8 +12461,8 @@
         "StoryBlock",
         "ProjectHero",
         "RelatedProjects",
-        "GridBlock",
-        "ProcessBlock"
+        "ProcessBlock",
+        "GridBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 8
@@ -12622,8 +12622,8 @@
         "StoryBlock",
         "ProjectDetailLayout",
         "RelatedProjects",
-        "GridBlock",
-        "ProcessBlock"
+        "ProcessBlock",
+        "GridBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
@@ -12874,8 +12874,8 @@
         "StoryBlock",
         "ProjectDetailLayout",
         "ProjectHero",
-        "GridBlock",
-        "ProcessBlock"
+        "ProcessBlock",
+        "GridBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 4
@@ -13309,8 +13309,8 @@
         "ProjectDetailLayout",
         "ProjectHero",
         "RelatedProjects",
-        "GridBlock",
-        "ProcessBlock"
+        "ProcessBlock",
+        "GridBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 11

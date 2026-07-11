@@ -1,77 +1,11 @@
-.policyPage {
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  max-width: 600px;
-  font-family: var(--primary-body-font, sans-serif);
-  line-height: 1.6;
-}
-
-.policyPage h1 {
-  font-family: var(--secondary-heading-font, sans-serif);
-  font-size: 2rem;
-  font-weight: var(--secondary-heading-weight, 400);
-  margin-bottom: 1rem;
-}
-
-.policyPage h2 {
-  margin-block: 2rem 1rem;
-  font-weight: 600;
-}
-
-.policyPage p {
-  margin-block-end: 1rem;
-  line-height: 1.6;
-}
-
-.policyPage ul,
-.policyPage ol {
-  margin-block-end: 1rem;
-  padding-inline-start: 1.5rem;
-}
-
-.policyPage li {
-  margin-block-end: 0.5rem;
-}
-
-.policyPage section {
-  margin-block-end: 2rem;
-}
-
-/* Link with wavy underline */
-
-/* stylelint-disable order/properties-order */
-
-.policyPage a,
-.emailLink {
-  color: var(--color-primary);
-  text-decoration: underline;
-  text-decoration-color: var(--color-primary);
-  text-decoration-style: wavy;
-  transition: color 0.2s ease-in-out;
-  text-underline-offset: 0.2em;
-}
-
-/* stylelint-enable order/properties-order */
-
-.policyPage a:hover,
-.emailLink:hover {
-  color: var(--color-primary);
-  text-decoration-color: var(--color-primary);
-}
-
-@media (width <= 768px) {
-  .policyPage h1 {
-    margin-top: 1.5rem;
-  }
-}
-
 .preLine {
   white-space: pre-line;
 }
 
-/* Privacy policy prose wrapper: Container owns measure/centering/page
-   margins; this only carries block padding and section rhythm. Link, Text,
-   Title, List own their own appearance (no descendant element rules). */
+/* Policy prose wrapper (privacy, ai-usage, accessibility): Container owns
+   measure/centering/page margins; this only carries block padding and
+   section rhythm. Link, Text, Title, List own their own appearance (no
+   descendant element rules). */
 
 .prosePage {
   padding-block: 2rem;
