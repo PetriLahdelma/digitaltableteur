@@ -16,6 +16,14 @@ describe("Skeleton", () => {
     expect(screen.getByRole("status")).toBeInTheDocument();
   });
 
+  it("exposes the loading label as a polite live status", () => {
+    render(<Skeleton variant="rect" label="Loading profile" />);
+    const status = screen.getByRole("status", { name: "Loading profile" });
+
+    expect(status).toHaveAttribute("aria-label", "Loading profile");
+    expect(status).toHaveAttribute("aria-live", "polite");
+  });
+
   it("applies animate class by default", () => {
     render(<Skeleton variant="text" lines={3} />);
     const status = screen.getByRole("status");

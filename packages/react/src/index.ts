@@ -42,6 +42,7 @@ export {
 } from "../../../nextjs-app/shared/components/Combobox";
 export { Container, type ContainerProps } from "../../../nextjs-app/shared/components/Container";
 export { default as CookieConsent } from "../../../nextjs-app/shared/components/CookieConsent/CookieConsent";
+export type { CookieConsentProps } from "../../../nextjs-app/shared/components/CookieConsent";
 export {
   clearConsentState,
   CookieConsentProvider,
@@ -61,6 +62,10 @@ export {
   type DividerProps,
 } from "../../../nextjs-app/shared/components/Divider";
 export { default as EmptyState } from "../../../nextjs-app/shared/components/EmptyState/EmptyState";
+export type {
+  EmptyStateProps,
+  EmptyStateSize,
+} from "../../../nextjs-app/shared/components/EmptyState";
 export {
   ExpandableSection,
   type ExpandableSectionProps,
@@ -160,6 +165,7 @@ export {
   type SkipLinkProps,
 } from "../../../nextjs-app/shared/components/SkipLink";
 export { default as Skeleton } from "../../../nextjs-app/shared/components/Skeleton/Skeleton";
+export type { SkeletonProps } from "../../../nextjs-app/shared/components/Skeleton";
 export {
   Spinner,
   type SpinnerProps,
@@ -169,6 +175,11 @@ export {
   type StackProps,
 } from "../../../nextjs-app/shared/components/Stack";
 export { default as StatusDot } from "../../../nextjs-app/shared/components/StatusDot/StatusDot";
+export type {
+  StatusDotProps,
+  StatusDotSize,
+  StatusDotTone,
+} from "../../../nextjs-app/shared/components/StatusDot";
 export { default as Switch } from "../../../nextjs-app/shared/components/Switch/Switch";
 export { default as Tabs, getTabPanelProps } from "../../../nextjs-app/shared/components/Tabs";
 export type { TabItem, TabsProps } from "../../../nextjs-app/shared/components/Tabs";

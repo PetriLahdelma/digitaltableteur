@@ -32,6 +32,23 @@ describe("ToastStack", () => {
     ).toBeInTheDocument();
   });
 
+  it("preserves each Toast live-region role and politeness", () => {
+    render(
+      <ToastStack
+        toasts={[
+          { id: "saved", message: "Saved", tone: "success" },
+          { id: "failed", message: "Failed", tone: "error" },
+        ]}
+      />,
+    );
+
+    expect(screen.getByRole("status")).toHaveAttribute("aria-live", "polite");
+    expect(screen.getByRole("alert")).toHaveAttribute(
+      "aria-live",
+      "assertive",
+    );
+  });
+
   it("renders toasts inline so the stack owns placement", () => {
     const { container } = render(<ToastStack toasts={items} />);
     const stack = container.firstElementChild as HTMLElement;
