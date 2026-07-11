@@ -3,6 +3,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import List from "@dt/List";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "./AiUsagePage.module.css";
@@ -136,32 +137,24 @@ export function AiUsagePage() {
         <Title level={2} size="xxs">
           {t("aiPolicyPrinciplesTitle")}
         </Title>
-        <ul>
-          {principles.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={principles.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("aiPolicyUseCasesTitle")}
         </Title>
-        <ul>
-          {useCases.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={useCases.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
       </section>
 
       <section>
@@ -176,16 +169,12 @@ export function AiUsagePage() {
           {t("aiPolicyProvidersTitle")}
         </Title>
         <Text as="p" size="xs">{t("aiPolicyProvidersIntro")}</Text>
-        <ul>
-          {providers.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={providers.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
         <Text as="p" size="xs">{t("aiPolicyProvidersFooter")}</Text>
       </section>
 
@@ -194,16 +183,12 @@ export function AiUsagePage() {
           {t("aiPolicyDataTitle")}
         </Title>
         <Text as="p" size="xs">{t("aiPolicyDataIntro")}</Text>
-        <ul>
-          {dataItems.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={dataItems.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
         <Text as="p" size="xs">{t("aiPolicyDataFooter")}</Text>
       </section>
 
@@ -211,16 +196,12 @@ export function AiUsagePage() {
         <Title level={2} size="xxs">
           {t("aiPolicySafeguardsTitle")}
         </Title>
-        <ul>
-          {safeguards.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={safeguards.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
       </section>
 
       <section>
@@ -234,16 +215,12 @@ export function AiUsagePage() {
         <Title level={2} size="xxs">
           {t("aiPolicyRightsTitle")}
         </Title>
-        <ul>
-          {rights.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={rights.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
         <Text as="p" size="xs">
           {renderEmailLink(
             t("aiPolicyRightsFooter"),
