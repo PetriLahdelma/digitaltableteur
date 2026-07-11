@@ -31,7 +31,7 @@ export interface RadioGroupProps {
   disabled?: boolean;
   /** Error message; announces via role=alert and sets aria-invalid */
   error?: string;
-  /** Helper copy below the group; suppressed while error is set */
+  /** Helper copy below the group; always rendered, alongside error when both are set */
   helperText?: string;
   /** Merged onto the fieldset */
   className?: string;

@@ -115,7 +115,7 @@ WithError.parameters = {
   docs: {
     description: {
       story:
-        "error replaces the helper line, sets aria-invalid, and links to the input via aria-describedby. Validate on submit with isValidPhoneNumber.",
+        "error renders above the helper line, sets aria-invalid, and links to the input via aria-describedby. Validate on submit with isValidPhoneNumber.",
     },
   },
 };

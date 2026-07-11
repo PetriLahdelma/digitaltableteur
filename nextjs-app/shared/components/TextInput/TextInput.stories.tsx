@@ -115,7 +115,7 @@ InputWithError.parameters = {
   docs: {
     description: {
       story:
-        "error replaces the helper line, sets aria-invalid, and announces via role=alert.",
+        "error renders above the helper line, sets aria-invalid, and announces via role=alert.",
     },
   },
 };

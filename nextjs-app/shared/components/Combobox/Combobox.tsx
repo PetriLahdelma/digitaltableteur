@@ -37,7 +37,7 @@ export interface ComboboxProps {
   placeholder?: string;
   /** Assistive text below the field */
   helperText?: string;
-  /** Error message; replaces the helper line and sets aria-invalid */
+  /** Error message; renders above the helper line and sets aria-invalid */
   error?: string;
   /** Marks the field required. @default false */
   required?: boolean;
@@ -82,7 +82,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
 
     const describedBy = [
       error ? errorId : null,
-      !error && helperText ? helperId : null,
+      helperText ? helperId : null,
     ]
       .filter(Boolean)
       .join(" ");
@@ -331,13 +331,14 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
           {mounted && dropdown && createPortal(dropdown, document.body)}
         </div>
 
-        {error ? (
+        {error && (
           <HelperText id={errorId} state="error">
             {error}
           </HelperText>
-        ) : helperText ? (
+        )}
+        {helperText && (
           <HelperText id={helperId}>{helperText}</HelperText>
-        ) : null}
+        )}
       </div>
     );
   },

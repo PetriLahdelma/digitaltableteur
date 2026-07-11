@@ -21,7 +21,7 @@ export interface SwitchProps
   label?: React.ReactNode;
   /** Where the label sits relative to the control. @default "right" */
   labelPlacement?: "right" | "left" | "top";
-  /** Supporting text rendered beneath the control; suppressed while `error` is set. */
+  /** Supporting text rendered beneath the control; always rendered, below `error` when both are set. */
   helperText?: string;
   /** Error message beneath the control; sets aria-invalid and aria-describedby. */
   error?: string;
@@ -60,7 +60,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
     const switchId = id ?? generatedId;
     const labelId = label ? `${switchId}-label` : undefined;
     const errorId = error ? `${switchId}-error` : undefined;
-    const helperId = helperText && !error ? `${switchId}-helper` : undefined;
+    const helperId = helperText ? `${switchId}-helper` : undefined;
     const describedBy =
       [errorId, helperId, rest["aria-describedby"]].filter(Boolean).join(" ") ||
       undefined;
@@ -145,13 +145,14 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
           </button>
           {shouldRenderLabelAfter ? renderLabel() : null}
         </span>
-        {error ? (
+        {error && (
           <HelperText id={errorId} state="error">
             {error}
           </HelperText>
-        ) : helperText ? (
+        )}
+        {helperText && (
           <HelperText id={helperId}>{helperText}</HelperText>
-        ) : null}
+        )}
       </>
     );
   },

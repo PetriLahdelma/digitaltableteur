@@ -49,7 +49,7 @@ describe("TextArea", () => {
     expect(screen.getByText("Maximum 500 characters")).toBeInTheDocument();
   });
 
-  it("does not display helper text when error is present", () => {
+  it("displays helper text alongside the error", () => {
     render(
       <TextArea
         label="Description"
@@ -58,7 +58,14 @@ describe("TextArea", () => {
       />,
     );
     expect(screen.getByText("Required")).toBeInTheDocument();
-    expect(screen.queryByText("Helper text")).not.toBeInTheDocument();
+    expect(screen.getByText("Helper text")).toBeInTheDocument();
+    const textarea = screen.getByLabelText("Description");
+    expect(textarea.getAttribute("aria-describedby")).toContain(
+      screen.getByText("Required").id,
+    );
+    expect(textarea.getAttribute("aria-describedby")).toContain(
+      screen.getByText("Helper text").id,
+    );
   });
 
   it("disables textarea when disabled prop is true", () => {

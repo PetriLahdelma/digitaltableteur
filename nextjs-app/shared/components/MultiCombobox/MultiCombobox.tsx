@@ -38,7 +38,7 @@ export interface MultiComboboxProps {
   placeholder?: string;
   /** Assistive text below the field */
   helperText?: string;
-  /** Error message; replaces the helper line and sets aria-invalid */
+  /** Error message; renders above the helper line and sets aria-invalid */
   error?: string;
   /** Marks the field required. @default false */
   required?: boolean;
@@ -91,7 +91,7 @@ export function MultiCombobox({
 
   const describedBy = [
     error ? errorId : null,
-    !error && helperText ? helperId : null,
+    helperText ? helperId : null,
   ]
     .filter(Boolean)
     .join(" ");
@@ -401,13 +401,14 @@ export function MultiCombobox({
         {mounted && dropdown && createPortal(dropdown, document.body)}
       </div>
 
-      {error ? (
+      {error && (
         <HelperText id={errorId} state="error">
           {error}
         </HelperText>
-      ) : helperText ? (
+      )}
+      {helperText && (
         <HelperText id={helperId}>{helperText}</HelperText>
-      ) : null}
+      )}
     </div>
   );
 }

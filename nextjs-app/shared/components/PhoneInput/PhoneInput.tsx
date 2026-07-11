@@ -11,7 +11,7 @@ export interface PhoneInputProps {
   label: string;
   /** Phone number value (E.164 format) */
   value?: string;
-  /** Error message; replaces the helper line */
+  /** Error message; renders above the helper line */
   error?: string;
   /** Helper text below the input */
   helperText?: string;
@@ -45,7 +45,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
   const fieldId = providedId ?? `phone-input-${generatedId}`;
   const errorId = `${fieldId}-error`;
   const helperId = `${fieldId}-helper`;
-  const describedBy = [error ? errorId : null, helperText && !error ? helperId : null]
+  const describedBy = [error ? errorId : null, helperText ? helperId : null]
     .filter(Boolean)
     .join(" ");
 
@@ -71,13 +71,14 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
         international
         defaultCountry={defaultCountry}
       />
-      {error ? (
+      {error && (
         <HelperText id={errorId} state="error">
           {error}
         </HelperText>
-      ) : helperText ? (
+      )}
+      {helperText && (
         <HelperText id={helperId}>{helperText}</HelperText>
-      ) : null}
+      )}
     </div>
   );
 };

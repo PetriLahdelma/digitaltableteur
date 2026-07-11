@@ -123,7 +123,7 @@ export const WithError: Story = {
     docs: {
       description: {
         story:
-          "error replaces the helper line, colors the control, and sets aria-invalid on the trigger.",
+          "error renders above the helper line, colors the control, and sets aria-invalid on the trigger.",
       },
     },
   },

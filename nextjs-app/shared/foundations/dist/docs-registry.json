@@ -4102,8 +4102,8 @@
         },
         {
           "story": "WithError",
-          "description": "error replaces the helper line, colors the control, and sets aria-invalid on the trigger.",
-          "source": "export const WithError: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"error replaces the helper line, colors the control, and sets aria-invalid on the trigger.\",\n      },\n    },\n  },\n  render: () => <ComboboxDemo required error=\"Pick a timeline to continue.\" />,\n};"
+          "description": "error renders above the helper line, colors the control, and sets aria-invalid on the trigger.",
+          "source": "export const WithError: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"error renders above the helper line, colors the control, and sets aria-invalid on the trigger.\",\n      },\n    },\n  },\n  render: () => <ComboboxDemo required error=\"Pick a timeline to continue.\" />,\n};"
         },
         {
           "story": "Disabled",
@@ -5906,8 +5906,8 @@
         },
         {
           "story": "SizeRejection",
-          "description": "Rejection state: an oversized pick is dropped, the input resets, and sizeErrorMessage replaces the helper until the next pick.",
-          "source": "export const SizeRejection = Template.bind({});\nSizeRejection.args = {\n  ...Default.args,\n  maxSizeInBytes: 10,\n  sizeErrorMessage: \"File exceeds the 10 byte demo limit.\",\n};\nSizeRejection.tags = [\"example\"];\nSizeRejection.parameters = {\n  docs: {\n    description: {\n      story:\n        \"Rejection state: an oversized pick is dropped, the input resets, and sizeErrorMessage replaces the helper until the next pick.\",\n    },\n  },\n};\nSizeRejection.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const hiddenInput =\n    canvasElement.querySelector<HTMLInputElement>(\"input[type='file']\");\n  if (!hiddenInput) throw new Error(\"hidden file input not found\");\n\n  const bigFile = new File([\"x\".repeat(64)], \"too-big.pdf\", {\n    type: \"application/pdf\",\n  });\n  await userEvent.upload(hiddenInput, bigFile);\n\n  await waitFor(() =>\n    expect(\n      canvas.getByText(/exceeds the 10 byte demo limit/i),\n    ).toBeInTheDocument(),\n  );\n  const summary = canvas.getByRole(\"textbox\") as HTMLInputElement;\n  expect(summary.value).not.toMatch(/too-big\\.pdf/);\n};"
+          "description": "Rejection state: an oversized pick is dropped, the input resets, and sizeErrorMessage renders above the helper until the next pick.",
+          "source": "export const SizeRejection = Template.bind({});\nSizeRejection.args = {\n  ...Default.args,\n  maxSizeInBytes: 10,\n  sizeErrorMessage: \"File exceeds the 10 byte demo limit.\",\n};\nSizeRejection.tags = [\"example\"];\nSizeRejection.parameters = {\n  docs: {\n    description: {\n      story:\n        \"Rejection state: an oversized pick is dropped, the input resets, and sizeErrorMessage renders above the helper until the next pick.\",\n    },\n  },\n};\nSizeRejection.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const hiddenInput =\n    canvasElement.querySelector<HTMLInputElement>(\"input[type='file']\");\n  if (!hiddenInput) throw new Error(\"hidden file input not found\");\n\n  const bigFile = new File([\"x\".repeat(64)], \"too-big.pdf\", {\n    type: \"application/pdf\",\n  });\n  await userEvent.upload(hiddenInput, bigFile);\n\n  await waitFor(() =>\n    expect(\n      canvas.getByText(/exceeds the 10 byte demo limit/i),\n    ).toBeInTheDocument(),\n  );\n  const summary = canvas.getByRole(\"textbox\") as HTMLInputElement;\n  expect(summary.value).not.toMatch(/too-big\\.pdf/);\n};"
         },
         {
           "story": "Editorial",
@@ -10555,8 +10555,8 @@
         },
         {
           "story": "WithError",
-          "description": "error replaces the helper line, sets aria-invalid, and links to the input via aria-describedby. Validate on submit with isValidPhoneNumber.",
-          "source": "export const WithError = Template.bind({});\nWithError.args = {\n  label: \"storyPhoneInputLabel\",\n  placeholder: \"storyPhoneInputPlaceholder\",\n  error: \"storyPhoneInputError\",\n};\nWithError.tags = [\"example\"];\nWithError.parameters = {\n  docs: {\n    description: {\n      story:\n        \"error replaces the helper line, sets aria-invalid, and links to the input via aria-describedby. Validate on submit with isValidPhoneNumber.\",\n    },\n  },\n};\nWithError.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  await canvas.findByText(\n    /invalid phone number|virheellinen puhelinnumero|ogiltigt telefonnummer/i,\n  );\n};"
+          "description": "error renders above the helper line, sets aria-invalid, and links to the input via aria-describedby. Validate on submit with isValidPhoneNumber.",
+          "source": "export const WithError = Template.bind({});\nWithError.args = {\n  label: \"storyPhoneInputLabel\",\n  placeholder: \"storyPhoneInputPlaceholder\",\n  error: \"storyPhoneInputError\",\n};\nWithError.tags = [\"example\"];\nWithError.parameters = {\n  docs: {\n    description: {\n      story:\n        \"error renders above the helper line, sets aria-invalid, and links to the input via aria-describedby. Validate on submit with isValidPhoneNumber.\",\n    },\n  },\n};\nWithError.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  await canvas.findByText(\n    /invalid phone number|virheellinen puhelinnumero|ogiltigt telefonnummer/i,\n  );\n};"
         },
         {
           "story": "CountryDefault",
@@ -11811,8 +11811,8 @@
         },
         {
           "story": "WithError",
-          "description": "error replaces the helper line, sets aria-invalid, and announces via role=alert.",
-          "source": "export const WithError = Template.bind({});\nWithError.args = {\n  label: \"storySelectLabel\",\n  options: [\n    { value: \"option1\", label: \"storyCheckboxOption1\" },\n    { value: \"option2\", label: \"storyCheckboxOption2\" },\n    { value: \"option3\", label: \"storyCheckboxOption3\" },\n  ],\n  value: \"option1\",\n  error: \"storySelectErrorRequired\",\n};\n\nWithError.tags = [\"example\"];\nWithError.parameters = {\n  docs: {\n    description: {\n      story: \"error replaces the helper line, sets aria-invalid, and announces via role=alert.\",\n    },\n  },\n};"
+          "description": "error renders above the helper line, sets aria-invalid, and announces via role=alert.",
+          "source": "export const WithError = Template.bind({});\nWithError.args = {\n  label: \"storySelectLabel\",\n  options: [\n    { value: \"option1\", label: \"storyCheckboxOption1\" },\n    { value: \"option2\", label: \"storyCheckboxOption2\" },\n    { value: \"option3\", label: \"storyCheckboxOption3\" },\n  ],\n  value: \"option1\",\n  error: \"storySelectErrorRequired\",\n};\n\nWithError.tags = [\"example\"];\nWithError.parameters = {\n  docs: {\n    description: {\n      story: \"error renders above the helper line, sets aria-invalid, and announces via role=alert.\",\n    },\n  },\n};"
         }
       ]
     },
@@ -13734,8 +13734,8 @@
         },
         {
           "story": "WithError",
-          "description": "The control owns its error: it replaces the helper line, sets aria-invalid, and announces via role=alert. Useful when an immediate toggle fails server-side.",
-          "source": "export const WithError: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The control owns its error: it replaces the helper line, sets aria-invalid, and announces via role=alert. Useful when an immediate toggle fails server-side.\",\n      },\n    },\n  },\n  args: {\n    label: \"Email notifications\",\n    error: \"Could not update the setting. Try again.\",\n  },\n  render: (args) => <ControlledTemplate {...args} />,\n};"
+          "description": "The control owns its error: it renders above the helper line, sets aria-invalid, and announces via role=alert. Useful when an immediate toggle fails server-side.",
+          "source": "export const WithError: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The control owns its error: it renders above the helper line, sets aria-invalid, and announces via role=alert. Useful when an immediate toggle fails server-side.\",\n      },\n    },\n  },\n  args: {\n    label: \"Email notifications\",\n    error: \"Could not update the setting. Try again.\",\n  },\n  render: (args) => <ControlledTemplate {...args} />,\n};"
         }
       ]
     },
@@ -14322,8 +14322,8 @@
         },
         {
           "story": "WithError",
-          "description": "error replaces the helper line, sets aria-invalid, and announces via role=alert.",
-          "source": "export const WithError = Template.bind({});\nWithError.args = {\n  label: \"storyTextAreaErrorLabel\",\n  placeholder: \"storyTextAreaPlaceholder\",\n  error: \"storyTextAreaErrorText\",\n  rows: 4,\n};\n\nWithError.tags = [\"example\"];\nWithError.parameters = {\n  docs: {\n    description: {\n      story: \"error replaces the helper line, sets aria-invalid, and announces via role=alert.\",\n    },\n  },\n};"
+          "description": "error renders above the helper line, sets aria-invalid, and announces via role=alert.",
+          "source": "export const WithError = Template.bind({});\nWithError.args = {\n  label: \"storyTextAreaErrorLabel\",\n  placeholder: \"storyTextAreaPlaceholder\",\n  error: \"storyTextAreaErrorText\",\n  rows: 4,\n};\n\nWithError.tags = [\"example\"];\nWithError.parameters = {\n  docs: {\n    description: {\n      story: \"error renders above the helper line, sets aria-invalid, and announces via role=alert.\",\n    },\n  },\n};"
         },
         {
           "story": "AnimatedResize",
@@ -14469,7 +14469,7 @@
         "use TextInput for multi-line text. Use **TextArea**, which"
       ],
       "usage": {
-        "description": "TextInput is the standard single-line field: label, control, helper and error text in one component. The email and tel types add built-in validation (typo suggestions for common email domains, libphonenumber formatting for phone numbers); error overrides the helper line and wires aria-invalid.",
+        "description": "TextInput is the standard single-line field: label, control, helper and error text in one component. The email and tel types add built-in validation (typo suggestions for common email domains, libphonenumber formatting for phone numbers); error renders above the helper line and wires aria-invalid.",
         "bestPractices": [
           {
             "guidance": true,
@@ -14533,8 +14533,8 @@
         },
         {
           "story": "InputWithError",
-          "description": "error replaces the helper line, sets aria-invalid, and announces via role=alert.",
-          "source": "export const InputWithError = Template.bind({});\nInputWithError.args = {\n  label: \"storyInputErrorLabel\",\n  type: \"text\",\n  placeholder: \"storyInputTextPlaceholder\",\n  error: \"storyInputErrorText\",\n};\n\nInputWithError.tags = [\"example\"];\nInputWithError.parameters = {\n  docs: {\n    description: {\n      story:\n        \"error replaces the helper line, sets aria-invalid, and announces via role=alert.\",\n    },\n  },\n};"
+          "description": "error renders above the helper line, sets aria-invalid, and announces via role=alert.",
+          "source": "export const InputWithError = Template.bind({});\nInputWithError.args = {\n  label: \"storyInputErrorLabel\",\n  type: \"text\",\n  placeholder: \"storyInputTextPlaceholder\",\n  error: \"storyInputErrorText\",\n};\n\nInputWithError.tags = [\"example\"];\nInputWithError.parameters = {\n  docs: {\n    description: {\n      story:\n        \"error renders above the helper line, sets aria-invalid, and announces via role=alert.\",\n    },\n  },\n};"
         }
       ]
     },
