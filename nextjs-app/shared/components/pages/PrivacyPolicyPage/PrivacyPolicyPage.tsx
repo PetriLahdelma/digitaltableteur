@@ -3,29 +3,30 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import Link from "@dt/Link";
 import List from "@dt/List";
 import { Section } from "@dt/Section";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
 
-const renderContactLinks = (text: string, email: string, phone: string) => {
+const renderContactLinks = (text: string, email: string, phone?: string) => {
   // Split by email first
   const emailParts = text.split(email);
   if (emailParts.length !== 2) return text;
 
   const [beforeEmail, afterEmail] = emailParts;
 
-  // Split the afterEmail part by phone
-  const phoneParts = afterEmail.split(phone);
-  if (phoneParts.length !== 2) {
-    // Phone not found, just render email
+  // Split the afterEmail part by phone (when given)
+  const phoneParts = phone ? afterEmail.split(phone) : [afterEmail];
+  if (!phone || phoneParts.length !== 2) {
+    // Phone absent or not found, just render email
     return (
       <>
         {beforeEmail}
-        <a href={`mailto:${email}`} className={styles.emailLink}>
+        <Link href={`mailto:${email}`} size="sm">
           {email}
-        </a>
+        </Link>
         {afterEmail}
       </>
     );
@@ -35,13 +36,13 @@ const renderContactLinks = (text: string, email: string, phone: string) => {
   return (
     <>
       {beforeEmail}
-      <a href={`mailto:${email}`} className={styles.emailLink}>
+      <Link href={`mailto:${email}`} size="sm">
         {email}
-      </a>
+      </Link>
       {betweenEmailPhone}
-      <a href={`tel:${phone.replace(/\s/g, "")}`} className={styles.emailLink}>
+      <Link href={`tel:${phone.replace(/\s/g, "")}`} size="sm">
         {phone}
-      </a>
+      </Link>
       {afterPhone}
     </>
   );
@@ -109,7 +110,10 @@ export function PrivacyPolicyPage() {
           {t("privacyPolicyControllerTitle")}
         </Title>
         <Text as="p" size="xs" className={styles.preLine}>
-          {t("privacyPolicyControllerBody")}
+          {renderContactLinks(
+            t("privacyPolicyControllerBody"),
+            "mail@digitaltableteur.com",
+          )}
         </Text>
       </Section>
 
