@@ -66,6 +66,13 @@ describe("List", () => {
     expect(container.firstChild).toHaveStyle({ listStyleType: '"— "' });
   });
 
+  it("gives the dash marker enough inline padding to stay inside the list box", () => {
+    const { container } = render(<List items={items} listStyleType="dash" />);
+    expect((container.firstChild as HTMLElement).className).toMatch(/markerDash/);
+    const { container: plain } = render(<List items={items} />);
+    expect((plain.firstChild as HTMLElement).className).not.toMatch(/markerDash/);
+  });
+
   it("applies custom inline styles", () => {
     const { container } = render(
       <List items={items} style={{ color: "red" }} />,
