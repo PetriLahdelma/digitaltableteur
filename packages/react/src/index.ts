@@ -274,3 +274,12 @@ export {
   type ScrollOverflowState,
 } from "../../../nextjs-app/shared/hooks/useOverflow";
 export { useScrollLock } from "../../../nextjs-app/shared/hooks/useScrollLock";
+
+// ── Patterns ──────────────────────────────────────────────────────────────
+// Composite, page-level building blocks. First pattern exported from the
+// registry, establishing the pattern rung of the full-consumption mandate
+// (atoms → molecules → patterns → pages).
+export {
+  ArticleLayout,
+  type ArticleLayoutProps,
+} from "../../../nextjs-app/shared/patterns/ArticleLayout/ArticleLayout";
