@@ -6,9 +6,7 @@ import { useTranslate } from "../../lib/translation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useHydrationSafeMotion } from "../../hooks/useHydrationSafeMotion";
 import { cn } from "../../lib/cn";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
-import Icon from "@dt/Icon";
+import { Icon, Text, Title } from "@digitaltableteur/react";
 import {
   ContactInquiryPanel,
   type ContactInquiryMode,

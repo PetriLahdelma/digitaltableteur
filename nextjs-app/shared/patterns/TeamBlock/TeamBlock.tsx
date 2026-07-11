@@ -3,8 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import PageLayout from "../PageLayout/PageLayout";
-import Title from "@dt/Title";
-import Text from "@dt/Text";
+import { Text, Title } from "@digitaltableteur/react";
 import styles from "./TeamBlock.module.css";
 
 /**

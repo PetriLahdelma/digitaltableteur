@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import PageLayout from "../PageLayout/PageLayout";
-import Text from "@dt/Text";
+import { Text } from "@digitaltableteur/react";
 import styles from "./GridBlock.module.css";
 
 /**
