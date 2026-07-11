@@ -803,7 +803,7 @@
   "privacyPolicyContactBody": "For questions, requests, or concerns about this Privacy Policy or your personal data, contact: mail@digitaltableteur.com or +358 45 657 4469",
   "accessibilityHeading": "Accessibility Statement",
   "accessibilityIntro": "Digitaltableteur is committed to ensuring digital accessibility for people with disabilities. We believe everyone should be able to access our website and services, regardless of ability. We continually improve the user experience for all visitors and apply relevant accessibility standards.",
-  "accessibilityLastUpdated": "Last updated: 4 February 2026",
+  "accessibilityLastUpdatedLabel": "Last updated:",
   "accessibilityConformanceTitle": "Conformance status",
   "accessibilityConformanceBody": "This website is designed to conform with Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. We aim for full conformance and are actively addressing remaining issues. Conformance means the content meets all requirements of the specified level without exception.",
   "accessibilityConformanceLevel": "Current status: Substantially conformant. Automated testing of 188 page/theme/language combinations shows 100% pass rate. Manual screen reader testing is ongoing.",

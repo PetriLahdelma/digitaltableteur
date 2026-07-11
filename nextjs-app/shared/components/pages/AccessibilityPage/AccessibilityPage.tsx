@@ -8,6 +8,7 @@ import Link from "@dt/Link";
 import List from "@dt/List";
 import { Section } from "@dt/Section";
 import Text from "@dt/Text";
+import Timestamp from "@dt/Timestamp";
 import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
 
@@ -104,7 +105,8 @@ export function AccessibilityPage() {
       </Title>
       <Text as="p" size="xs">{t("accessibilityIntro")}</Text>
       <Text as="p" size="xs">
-        <em>{t("accessibilityLastUpdated")}</em>
+        {t("accessibilityLastUpdatedLabel")}{" "}
+        <Timestamp value="2026-02-04" format="date" size="xs" />
       </Text>
 
       <Section spacing="none">

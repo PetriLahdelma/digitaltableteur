@@ -806,7 +806,7 @@
   "privacyPolicyContactBody": "Kysymyksiä, pyyntöjä tai huolia tästä tietosuojakäytännöstä tai henkilötiedoistasi, ota yhteyttä: mail@digitaltableteur.com tai +358 45 657 4469",
   "accessibilityHeading": "Saavutettavuusseloste",
   "accessibilityIntro": "Digitaltableteur sitoutuu varmistamaan digitaalisen saavutettavuuden vammaisille henkilöille. Uskomme, että kaikkien tulisi pystyä käyttämään verkkosivustoamme ja palvelujamme kyvyistä riippumatta. Parannamme jatkuvasti käyttökokemusta kaikille kävijöille ja sovellotamme asiaankuuluvia saavutettavuusstandardeja.",
-  "accessibilityLastUpdated": "Viimeksi päivitetty: 29. marraskuuta 2025",
+  "accessibilityLastUpdatedLabel": "Viimeksi päivitetty:",
   "accessibilityConformanceTitle": "Vaatimustenmukaisuuden tila",
   "accessibilityConformanceBody": "Tämä verkkosivusto on suunniteltu noudattamaan Web Content Accessibility Guidelines (WCAG) 2.1 tasoa AA. Tavoittelemme täyttä vaatimustenmukaisuutta ja korjaamme aktiivisesti jäljellä olevia ongelmia. Vaatimustenmukaisuus tarkoittaa, että sisältö täyttää kaikki määritellyn tason vaatimukset ilman poikkeuksia.",
   "accessibilityConformanceLevel": "Nykyinen tila: Osittain vaatimusten mukainen. Jotkin verkkosivuston alueet eivät vielä täysin täytä kaikkia WCAG 2.1 tason AA kriteereitä, mutta työskentelemme näiden puutteiden korjaamiseksi.",

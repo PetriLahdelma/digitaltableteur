@@ -815,7 +815,7 @@
   "accessibilityMetaTitle": "Tillgänglighetsutlåtande",
   "accessibilityMetaDescription": "Digitaltableteurs tillgänglighetsutlåtande beskriver vårt arbete för att göra webbplatsen tillgänglig för alla användare enligt WCAG 2.1 nivå AA.",
   "accessibilityHeading": "Tillgänglighetsutlåtande",
-  "accessibilityLastUpdated": "Senast uppdaterad: 29 november 2025",
+  "accessibilityLastUpdatedLabel": "Senast uppdaterad:",
   "accessibilityIntro": "Digitaltableteur åtar sig att säkerställa digital tillgänglighet för personer med funktionsnedsättning. Vi tror att alla ska kunna få tillgång till vår webbplats och våra tjänster, oavsett förmåga. Vi förbättrar kontinuerligt användarupplevelsen för alla besökare och tillämpar relevanta tillgänglighetsstandarder.",
   "accessibilityConformanceTitle": "Överensstämmelsestatus",
   "accessibilityConformanceBody": "Denna webbplats är utformad för att överensstämma med Web Content Accessibility Guidelines (WCAG) 2.1 nivå AA. Vi strävar efter full överensstämmelse och arbetar aktivt med att åtgärda återstående problem. Överensstämmelse innebär att innehållet uppfyller alla krav på den angivna nivån utan undantag.",
