@@ -409,10 +409,6 @@
       "rawElements": 0,
       "utilityLines": 2
     },
-    "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx": {
-      "rawElements": 8,
-      "utilityLines": 0
-    },
     "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx": {
       "rawElements": 4,
       "utilityLines": 0
