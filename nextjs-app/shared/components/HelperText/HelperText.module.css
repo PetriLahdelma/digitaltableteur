@@ -9,6 +9,18 @@
   color: var(--color-primary);
 }
 
+/* Consecutive helper lines (error stacked above helper) read as one block */
+
+.helperText + .helperText {
+  margin-block-start: 0;
+}
+
+@supports selector(:has(*)) {
+  .helperText:has(+ .helperText) {
+    margin-block-end: var(--space-internal-4);
+  }
+}
+
 .icon {
   display: inline-flex;
   flex-shrink: 0;
