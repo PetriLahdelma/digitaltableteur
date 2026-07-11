@@ -52,7 +52,13 @@
 }
 
 .input:disabled {
+  color: var(--color-disabled-placeholder);
   cursor: not-allowed;
+}
+
+.input:disabled::placeholder {
+  color: var(--color-disabled-placeholder);
+  opacity: 1;
 }
 
 .badgeWrap {
@@ -69,4 +75,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.control:has(.input:disabled) .badgeLabel {
+  color: var(--color-disabled-placeholder);
 }

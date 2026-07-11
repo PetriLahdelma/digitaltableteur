@@ -109,7 +109,11 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <div className={styles.container}>
-        {label && <Label htmlFor={selectId}>{label}</Label>}
+        {label && (
+          <Label htmlFor={selectId} disabled={disabled}>
+            {label}
+          </Label>
+        )}
         <div className={styles.wrapper}>
           <select
             id={selectId}

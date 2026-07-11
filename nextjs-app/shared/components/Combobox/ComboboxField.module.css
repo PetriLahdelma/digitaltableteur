@@ -233,9 +233,20 @@
 /* Dedicated-token disabled surface (no opacity), matching the text inputs. The
    border/background live on the parent .wrapper, so mute it when it holds a
    disabled control. */
+
 .wrapper:has(.disabled) {
   border-color: var(--color-primary-disabled);
   background: var(--color-disabled-bg-light);
+}
+
+.wrapper:has(.disabled) .triggerLabel,
+.wrapper:has(.disabled) .triggerPlaceholder {
+  color: var(--color-disabled-placeholder);
+}
+
+.field:has(.disabled) .label {
+  color: var(--color-muted-light);
+  cursor: not-allowed;
 }
 
 @keyframes dropdown-enter {

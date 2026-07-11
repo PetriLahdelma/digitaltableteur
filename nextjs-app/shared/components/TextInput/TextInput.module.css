@@ -88,6 +88,7 @@
 .input:disabled {
   border-color: var(--color-primary-disabled);
   background-color: var(--color-disabled-bg-light);
+  color: var(--color-disabled-placeholder);
   cursor: not-allowed;
 }
 
