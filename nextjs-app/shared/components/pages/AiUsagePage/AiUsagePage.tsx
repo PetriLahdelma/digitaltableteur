@@ -11,7 +11,7 @@ import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "./AiUsagePage.module.css";
 
-const delimiter = " – ";
+const delimiter = ": ";
 
 const emphasiseLeadingLabel = (text: string) => {
   const delimiterIndex = text.indexOf(delimiter);
