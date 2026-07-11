@@ -26,7 +26,7 @@ const renderContactLinks = (text: string, email: string, phone?: string) => {
     return (
       <>
         {beforeEmail}
-        <Link href={`mailto:${email}`} size="sm">
+        <Link href={`mailto:${email}`} size="inherit">
           {email}
         </Link>
         {afterEmail}
@@ -38,11 +38,11 @@ const renderContactLinks = (text: string, email: string, phone?: string) => {
   return (
     <>
       {beforeEmail}
-      <Link href={`mailto:${email}`} size="sm">
+      <Link href={`mailto:${email}`} size="inherit">
         {email}
       </Link>
       {betweenEmailPhone}
-      <Link href={`tel:${phone.replace(/\s/g, "")}`} size="sm">
+      <Link href={`tel:${phone.replace(/\s/g, "")}`} size="inherit">
         {phone}
       </Link>
       {afterPhone}
