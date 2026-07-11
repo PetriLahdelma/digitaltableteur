@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
+import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
 
@@ -132,25 +133,25 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
       <Title level={1} size="xs">
         {t("privacyPolicyHeading")}
       </Title>
-      <p>{t("privacyPolicyIntro")}</p>
-      <p>
+      <Text as="p" size="xs">{t("privacyPolicyIntro")}</Text>
+      <Text as="p" size="xs">
         <em>{t("privacyPolicyLastUpdated")}</em>
-      </p>
+      </Text>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicyControllerTitle")}
         </Title>
-        <p style={{ whiteSpace: "pre-line" }}>
+        <Text as="p" size="xs" className={styles.preLine}>
           {t("privacyPolicyControllerBody")}
-        </p>
+        </Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicyPurposeTitle")}
         </Title>
-        <p>{t("privacyPolicyPurposeBody")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyPurposeBody")}</Text>
       </section>
 
       <section>
@@ -160,131 +161,131 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
         <Title level={3} size="xxs">
           {t("privacyPolicyContactFormSubtitle")}
         </Title>
-        <p>{t("privacyPolicyContactFormIntro")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyContactFormIntro")}</Text>
         <ul>
           {whatWeCollect.map((key) => (
             <li key={key}>
-              <p>{t(key)}</p>
+              <Text as="p" size="xs">{t(key)}</Text>
             </li>
           ))}
         </ul>
-        <p>{t("privacyPolicyContactFormUsage")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyContactFormUsage")}</Text>
 
         <Title level={3} size="xxs">
           {t("privacyPolicyWebsiteVisitorsSubtitle")}
         </Title>
-        <p>{t("privacyPolicyWebsiteVisitorsIntro")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyWebsiteVisitorsIntro")}</Text>
         <ul>
           {websiteVisitors.map((key) => (
             <li key={key}>
-              <p>{t(key)}</p>
+              <Text as="p" size="xs">{t(key)}</Text>
             </li>
           ))}
         </ul>
-        <p>{t("privacyPolicyWebsiteVisitorsUsage")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyWebsiteVisitorsUsage")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicyLegalBasisTitle")}
         </Title>
-        <p>{t("privacyPolicyLegalBasisBody")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyLegalBasisBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicySharingTitle")}
         </Title>
-        <p>{t("privacyPolicySharingIntro")}</p>
+        <Text as="p" size="xs">{t("privacyPolicySharingIntro")}</Text>
         <ul>
           {sharingItems.map((key) => (
             <li key={key}>
-              <p>{t(key)}</p>
+              <Text as="p" size="xs">{t(key)}</Text>
             </li>
           ))}
         </ul>
-        <p>{t("privacyPolicySharingFooter")}</p>
+        <Text as="p" size="xs">{t("privacyPolicySharingFooter")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicyTransfersTitle")}
         </Title>
-        <p>{t("privacyPolicyTransfersBody")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyTransfersBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicyCookiesTitle")}
         </Title>
-        <p>{t("privacyPolicyCookiesIntro")}</p>
-        <p>{t("privacyPolicyCookiesTypes")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyCookiesIntro")}</Text>
+        <Text as="p" size="xs">{t("privacyPolicyCookiesTypes")}</Text>
         <ul>
           {cookiesItems.map((key) => (
             <li key={key}>
-              <p>{t(key)}</p>
+              <Text as="p" size="xs">{t(key)}</Text>
             </li>
           ))}
         </ul>
-        <p>{t("privacyPolicyCookiesControl")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyCookiesControl")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicyRetentionTitle")}
         </Title>
-        <p>{t("privacyPolicyRetentionBody")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyRetentionBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicyYourRightsTitle")}
         </Title>
-        <p>{t("privacyPolicyYourRightsIntro")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyYourRightsIntro")}</Text>
         <ul>
           {rights.map((key) => (
             <li key={key}>
-              <p>{t(key)}</p>
+              <Text as="p" size="xs">{t(key)}</Text>
             </li>
           ))}
         </ul>
-        <p>{t("privacyPolicyRightsExercise")}</p>
-        <p>{t("privacyPolicyRightsComplaint")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyRightsExercise")}</Text>
+        <Text as="p" size="xs">{t("privacyPolicyRightsComplaint")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicySecurityTitle")}
         </Title>
-        <p>{t("privacyPolicySecurityIntro")}</p>
+        <Text as="p" size="xs">{t("privacyPolicySecurityIntro")}</Text>
         <ul>
           {securityItems.map((key) => (
             <li key={key}>
-              <p>{t(key)}</p>
+              <Text as="p" size="xs">{t(key)}</Text>
             </li>
           ))}
         </ul>
-        <p>{t("privacyPolicySecurityFooter")}</p>
+        <Text as="p" size="xs">{t("privacyPolicySecurityFooter")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicyChangesTitle")}
         </Title>
-        <p>{t("privacyPolicyChangesBody")}</p>
+        <Text as="p" size="xs">{t("privacyPolicyChangesBody")}</Text>
       </section>
 
       <section>
         <Title level={2} size="xxs">
           {t("privacyPolicyContactTitle")}
         </Title>
-        <p>
+        <Text as="p" size="xs">
           {renderContactLinks(
             t("privacyPolicyContactBody"),
             "mail@digitaltableteur.com",
             "+358 45 657 4469",
           )}
-        </p>
+        </Text>
       </section>
     </div>
   );

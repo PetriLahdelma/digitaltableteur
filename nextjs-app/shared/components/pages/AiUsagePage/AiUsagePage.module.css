@@ -64,3 +64,7 @@
     margin-top: 1.5rem;
   }
 }
+
+.preLine {
+  white-space: pre-line;
+}
