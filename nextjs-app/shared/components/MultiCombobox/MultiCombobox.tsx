@@ -89,7 +89,10 @@ export function MultiCombobox({
     );
   }, [options, query]);
 
-  const describedBy = [error ? errorId : null, helperText ? helperId : null]
+  const describedBy = [
+    error ? errorId : null,
+    !error && helperText ? helperId : null,
+  ]
     .filter(Boolean)
     .join(" ");
 

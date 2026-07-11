@@ -80,7 +80,10 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
       [options, value],
     );
 
-    const describedBy = [error ? errorId : null, helperText ? helperId : null]
+    const describedBy = [
+      error ? errorId : null,
+      !error && helperText ? helperId : null,
+    ]
       .filter(Boolean)
       .join(" ");
 
