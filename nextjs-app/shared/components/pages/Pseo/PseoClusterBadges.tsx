@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import Badge from "@dt/Badge";
+import { Badge } from "@digitaltableteur/react";
 
 type ClusterBadgesProps = {
   serviceHref: string;

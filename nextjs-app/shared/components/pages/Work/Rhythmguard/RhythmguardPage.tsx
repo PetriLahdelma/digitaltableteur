@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import Title from "@dt/Title";
-import Text from "@dt/Text";
-import CodeSnippet from "@dt/CodeSnippet";
+import { CodeSnippet, Text, Title } from "@digitaltableteur/react";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";

@@ -2,10 +2,8 @@
 
 import React, { useState, useCallback } from "react";
 
-import Badge from "@dt/Badge";
-import FlexBox from "@dt/FlexBox";
+import { Badge, FlexBox, Title } from "@digitaltableteur/react";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
-import Title from "@dt/Title";
 import WorkNav from "@dt/WorkNav";
 import styles from "./illustrations.module.css";
 

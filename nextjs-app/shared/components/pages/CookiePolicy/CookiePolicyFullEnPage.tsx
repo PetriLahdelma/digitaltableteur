@@ -3,9 +3,7 @@
 import React from "react";
 import Link from "next/link";
 
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
-import Title from "@dt/Title";
+import { Button, Icon, Title } from "@digitaltableteur/react";
 import styles from "./CookiePolicy.module.css";
 
 export function CookiePolicyFullEnPage({

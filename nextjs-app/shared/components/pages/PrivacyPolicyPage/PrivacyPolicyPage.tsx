@@ -3,13 +3,15 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { Container } from "@dt/Container";
-import Link from "@dt/Link";
-import List from "@dt/List";
+import {
+  Container,
+  Link,
+  List,
+  Section,
+  Text,
+  Title,
+} from "@digitaltableteur/react";
 import Timestamp from "@dt/Timestamp";
-import { Section } from "@dt/Section";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
 
 const renderContactLinks = (text: string, email: string, phone?: string) => {

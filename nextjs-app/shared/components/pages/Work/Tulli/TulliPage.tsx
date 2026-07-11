@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Text from "@dt/Text";
+import { Text } from "@digitaltableteur/react";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
