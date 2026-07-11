@@ -3,12 +3,15 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
+import { Container } from "@dt/Container";
+import Link from "@dt/Link";
+import List from "@dt/List";
+import { Section } from "@dt/Section";
+import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "./AiUsagePage.module.css";
 
-const delimiter = " – ";
+const delimiter = ": ";
 
 const emphasiseLeadingLabel = (text: string) => {
   const delimiterIndex = text.indexOf(delimiter);
@@ -26,39 +29,23 @@ const emphasiseLeadingLabel = (text: string) => {
   );
 };
 
-const renderEmailLink = (text: string, email: string) => {
-  if (!text.includes(email)) {
-    return text;
-  }
-  const [before, after = ""] = text.split(email);
-  return (
-    <>
-      {before}
-      <a href={`mailto:${email}`} className={styles.emailLink}>
-        {email}
-      </a>
-      {after}
-    </>
-  );
-};
-
-const renderContactLinks = (text: string, email: string, phone: string) => {
+const renderContactLinks = (text: string, email: string, phone?: string) => {
   // Split by email first
   const emailParts = text.split(email);
   if (emailParts.length !== 2) return text;
 
   const [beforeEmail, afterEmail] = emailParts;
 
-  // Split the afterEmail part by phone
-  const phoneParts = afterEmail.split(phone);
-  if (phoneParts.length !== 2) {
-    // Phone not found, just render email
+  // Split the afterEmail part by phone (when given)
+  const phoneParts = phone ? afterEmail.split(phone) : [afterEmail];
+  if (!phone || phoneParts.length !== 2) {
+    // Phone absent or not found, just render email
     return (
       <>
         {beforeEmail}
-        <a href={`mailto:${email}`} className={styles.emailLink}>
+        <Link href={`mailto:${email}`} size="inherit">
           {email}
-        </a>
+        </Link>
         {afterEmail}
       </>
     );
@@ -68,19 +55,19 @@ const renderContactLinks = (text: string, email: string, phone: string) => {
   return (
     <>
       {beforeEmail}
-      <a href={`mailto:${email}`} className={styles.emailLink}>
+      <Link href={`mailto:${email}`} size="inherit">
         {email}
-      </a>
+      </Link>
       {betweenEmailPhone}
-      <a href={`tel:${phone.replace(/\s/g, "")}`} className={styles.emailLink}>
+      <Link href={`tel:${phone.replace(/\s/g, "")}`} size="inherit">
         {phone}
-      </a>
+      </Link>
       {afterPhone}
     </>
   );
 };
 
-export function AiUsagePage({ onBack }: { onBack?: () => void }) {
+export function AiUsagePage() {
   const { t } = useTranslation();
 
   const principles = [
@@ -127,170 +114,127 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
   ];
 
   return (
-    <div className={styles.policyPage}>
-      {onBack ? (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "1.5rem",
-          }}
-        >
-          <Button variant="secondary" size="md" onClick={onBack}>
-            <Icon
-              name="arrow-left"
-              ariaLabel={t("back")}
-              style={{ marginInlineEnd: 8 }}
-            />
-            {t("back")}
-          </Button>
-        </div>
-      ) : null}
-
+    <Container size="sm" className={styles.prosePage}>
       <Title level={1} size="xs">
         {t("aiPolicyHeading")}
       </Title>
-      <p>{t("aiPolicyIntro")}</p>
+      <Text as="p" size="xs">{t("aiPolicyIntro")}</Text>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyPrinciplesTitle")}
         </Title>
-        <ul>
-          {principles.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={principles.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyUseCasesTitle")}
         </Title>
-        <ul>
-          {useCases.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={useCases.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyNotUsedTitle")}
         </Title>
-        <p>{t("aiPolicyNotUsedBody")}</p>
-      </section>
+        <Text as="p" size="xs">{t("aiPolicyNotUsedBody")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyProvidersTitle")}
         </Title>
-        <p>{t("aiPolicyProvidersIntro")}</p>
-        <ul>
-          {providers.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
-        <p>{t("aiPolicyProvidersFooter")}</p>
-      </section>
+        <Text as="p" size="xs">{t("aiPolicyProvidersIntro")}</Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={providers.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
+        <Text as="p" size="xs">{t("aiPolicyProvidersFooter")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyDataTitle")}
         </Title>
-        <p>{t("aiPolicyDataIntro")}</p>
-        <ul>
-          {dataItems.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
-        <p>{t("aiPolicyDataFooter")}</p>
-      </section>
+        <Text as="p" size="xs">{t("aiPolicyDataIntro")}</Text>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={dataItems.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
+        <Text as="p" size="xs">{t("aiPolicyDataFooter")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicySafeguardsTitle")}
         </Title>
-        <ul>
-          {safeguards.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={safeguards.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyLimitationsTitle")}
         </Title>
-        <p>{t("aiPolicyLimitationsBody")}</p>
-      </section>
+        <Text as="p" size="xs">{t("aiPolicyLimitationsBody")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyRightsTitle")}
         </Title>
-        <ul>
-          {rights.map((key) => {
-            const content = t(key);
-            return (
-              <li key={key}>
-                <p>{emphasiseLeadingLabel(content)}</p>
-              </li>
-            );
-          })}
-        </ul>
-        <p>
-          {renderEmailLink(
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={rights.map((key) => emphasiseLeadingLabel(t(key)))}
+        />
+        <Text as="p" size="xs">
+          {renderContactLinks(
             t("aiPolicyRightsFooter"),
             "mail@digitaltableteur.com",
           )}
-        </p>
-      </section>
+        </Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyChangesTitle")}
         </Title>
-        <p>{t("aiPolicyChangesBody")}</p>
-      </section>
+        <Text as="p" size="xs">{t("aiPolicyChangesBody")}</Text>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyContactTitle")}
         </Title>
-        <p>
+        <Text as="p" size="xs">
           {renderContactLinks(
             t("aiPolicyContactBody"),
             "mail@digitaltableteur.com",
             "+358 45 657 4469",
           )}
-        </p>
-      </section>
-    </div>
+        </Text>
+      </Section>
+    </Container>
   );
 }
