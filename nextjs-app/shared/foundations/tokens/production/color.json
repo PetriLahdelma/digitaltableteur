@@ -166,7 +166,7 @@
     "disabled": {
       "bg": {
         "DEFAULT": {
-          "$value": "#e0e0e0",
+          "$value": "#e8e8e8",
           "$description": "Color token (disabled-bg).",
           "$type": "color",
           "$extensions": {
@@ -178,7 +178,7 @@
           }
         },
         "light": {
-          "$value": "#d8d8d8",
+          "$value": "#efefef",
           "$description": "Color token (disabled-bg-light).",
           "$type": "color",
           "$extensions": {
