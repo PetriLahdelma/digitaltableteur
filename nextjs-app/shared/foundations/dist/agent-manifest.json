@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-11T08:14:01.960Z",
+  "generatedAt": "2026-07-11T09:36:37.548Z",
   "summary": {
     "componentCount": 164,
     "statusCounts": {
@@ -81,17 +81,17 @@
     "withAnyUsage": 153,
     "withProductionUsage": 49,
     "uniqueImportedComponents": 153,
-    "totalEvidenceRows": 861,
-    "aliasImportFiles": 478,
+    "totalEvidenceRows": 864,
+    "aliasImportFiles": 481,
     "relativeImportFiles": 391,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-11T08:13:59.225Z",
+    "generatedAt": "2026-07-11T09:36:34.646Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 88,
+    "nodesWithComposesWith": 87,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -4773,19 +4773,13 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 66,
-        "productionImportCount": 7,
+        "importCount": 65,
+        "productionImportCount": 6,
         "patternImportCount": 6,
         "componentImportCount": 32,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Button",
             "context": "production"
@@ -4846,6 +4840,12 @@
           },
           {
             "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
             "importKind": "alias",
             "importPath": "@dt/Button",
             "context": "pattern"
@@ -9557,8 +9557,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Container",
-        "importCount": 32,
-        "productionImportCount": 4,
+        "importCount": 33,
+        "productionImportCount": 5,
         "patternImportCount": 23,
         "componentImportCount": 4,
         "evidence": [
@@ -9572,6 +9572,12 @@
             "path": "app/blog/[slug]/ServerRelatedPosts.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/Container",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Container",
             "context": "production"
           },
           {
@@ -9624,12 +9630,6 @@
           },
           {
             "path": "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
-            "importKind": "relative",
-            "importPath": "../../components/Container",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
             "importKind": "relative",
             "importPath": "../../components/Container",
             "context": "pattern"
@@ -9887,9 +9887,9 @@
           "Section",
           "animations",
           "Link",
-          "Stack",
           "Title",
-          "ScrollIndicator"
+          "List",
+          "Text"
         ],
         "prefersOver": [],
         "declaredPropCount": 5
@@ -14750,19 +14750,13 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 74,
-        "productionImportCount": 5,
+        "importCount": 73,
+        "productionImportCount": 4,
         "patternImportCount": 5,
         "componentImportCount": 33,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Icon",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Icon",
             "context": "production"
@@ -14823,6 +14817,12 @@
           },
           {
             "path": "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Icon",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Badge/Badge.tsx",
             "importKind": "alias",
             "importPath": "@dt/Icon",
             "context": "component"
@@ -16606,11 +16606,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 15,
-        "productionImportCount": 1,
+        "importCount": 16,
+        "productionImportCount": 2,
         "patternImportCount": 2,
         "componentImportCount": 11,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
             "importKind": "alias",
@@ -16673,12 +16679,6 @@
           },
           {
             "path": "nextjs-app/shared/components/PersonCard/PersonCard.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/SiteTree/SiteTree.tsx",
             "importKind": "alias",
             "importPath": "@dt/Link",
             "context": "component"
@@ -16753,8 +16753,8 @@
         "composesWith": [
           "Text",
           "Title",
-          "Badge",
           "Container",
+          "Badge",
           "Checkbox",
           "TextInput"
         ],
@@ -17241,11 +17241,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 4,
-        "productionImportCount": 1,
+        "importCount": 5,
+        "productionImportCount": 2,
         "patternImportCount": 2,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/List",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
             "importKind": "alias",
@@ -17391,8 +17397,8 @@
           "Title",
           "Container",
           "Link",
-          "Timestamp",
-          "Section"
+          "Section",
+          "Timestamp"
         ],
         "prefersOver": [],
         "declaredPropCount": 9
@@ -23973,11 +23979,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Section",
-        "importCount": 22,
-        "productionImportCount": 2,
+        "importCount": 23,
+        "productionImportCount": 3,
         "patternImportCount": 20,
         "componentImportCount": 0,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Section",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
             "importKind": "alias",
@@ -24040,12 +24052,6 @@
           },
           {
             "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../components/Section",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/ManifestoSection/ManifestoSection.tsx",
             "importKind": "relative",
             "importPath": "../../components/Section",
             "context": "pattern"
@@ -24124,7 +24130,7 @@
           "Title",
           "Link",
           "List",
-          "Timestamp"
+          "Text"
         ],
         "prefersOver": [],
         "declaredPropCount": 6
@@ -24295,11 +24301,7 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [
-          "Section",
-          "Container",
-          "animations"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 3
       }
@@ -28861,7 +28863,7 @@
         "group": "navigation",
         "status": "stable",
         "description": "Tablist navigation with keyboard support, a sliding selection indicator, and per-item icon/count.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-5",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1211-2930",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -29615,11 +29617,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 82,
-        "productionImportCount": 20,
+        "importCount": 83,
+        "productionImportCount": 21,
         "patternImportCount": 10,
         "componentImportCount": 27,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Text",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/Colophon/ColophonPage.tsx",
             "importKind": "alias",
@@ -29682,12 +29690,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Text",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
             "context": "production"

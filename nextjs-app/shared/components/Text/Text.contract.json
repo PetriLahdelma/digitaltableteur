@@ -103,12 +103,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
             "since": "2026-06-04"
         }
     ],

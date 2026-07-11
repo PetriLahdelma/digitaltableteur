@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T08:14:01.688Z",
+  "generatedAt": "2026-07-11T09:36:37.279Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -3052,9 +3052,9 @@
         "Section",
         "animations",
         "Link",
-        "Stack",
         "Title",
-        "ScrollIndicator"
+        "List",
+        "Text"
       ],
       "prefersOver": [],
       "declaredPropCount": 5
@@ -5087,8 +5087,8 @@
       "composesWith": [
         "Text",
         "Title",
-        "Badge",
         "Container",
+        "Badge",
         "Checkbox",
         "TextInput"
       ],
@@ -5298,8 +5298,8 @@
         "Title",
         "Container",
         "Link",
-        "Timestamp",
-        "Section"
+        "Section",
+        "Timestamp"
       ],
       "prefersOver": [],
       "declaredPropCount": 9
@@ -7426,7 +7426,7 @@
         "Title",
         "Link",
         "List",
-        "Timestamp"
+        "Text"
       ],
       "prefersOver": [],
       "declaredPropCount": 6
@@ -7476,11 +7476,7 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [
-        "Section",
-        "Container",
-        "animations"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 3
     },
