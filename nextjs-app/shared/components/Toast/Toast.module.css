@@ -61,7 +61,7 @@
 }
 
 .toast--lg {
-  padding: var(--space-internal-16) var(--space-internal-20);
+  padding: var(--space-internal-16) var(--space-internal-24);
   font-size: var(--font-size-button-l);
 }
 

@@ -226,8 +226,11 @@ mockups) — out of scope, leave as-is.
   Accordion, RadioGroup, SplitButton; bonus Radio size fix).** Whole-file dependency scan
   found ONE dependent (CodeSnippet's copySplitButton — rename-safe, SplitButton set id kept).
   Toast in place: legacy Intent axis (incl. pre-tone Default variant, deleted) → Tone × Size
-  = 12, paddings/gap/radius bound (lg inline 20px raw — code references --space-internal-20
-  which is a PHANTOM token, no definition anywhere; fix chip spawned), font sizes button-s/m/l
+  = 12, paddings/gap/radius bound (lg inline: code referenced --space-internal-20, a PHANTOM
+  token defined nowhere — per CSS spec the whole padding declaration was invalid at
+  computed-value time and lg toasts rendered with 0 padding; fixed to --space-internal-24
+  on 2026-07-11, empirically verified 0px -> 16px/24px, Figma lg variants rebound to
+  space/internal/24 to match — the scale has no 20 step), font sizes button-s/m/l
   clamp maxima 16/18/20, warning ink color/warning/text, position documented as
   placement-only prop (Menu.align precedent). AlertBanner in place: Intent → Tone, text ink
   rebound per-tone hardcodes → color/text (code truth), icons likewise, warning 16%/46%.
