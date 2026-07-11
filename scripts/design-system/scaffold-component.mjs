@@ -20,6 +20,9 @@ function resolvePlaceholders(template, opts) {
     .replaceAll("{{group}}", opts.group)
     .replaceAll("{{tier}}", opts.tier)
     .replaceAll("{{TierPrefix}}", TIER_PREFIX[opts.tier] ?? "Components")
+    // Storybook sidebar groups are USE-based (Actions, Content, Forms,
+    // Navigation, Layout, Feedback, Site), never the atomic tiers.
+    .replaceAll("{{StoryGroup}}", opts.storyGroup ?? "Content")
     .replaceAll("{{status}}", opts.status ?? "alpha")
     .replaceAll("{{asChild}}", String(opts.asChild))
     .replaceAll("{{radixPrimitiveJson}}", radixJson);
@@ -65,7 +68,18 @@ function main() {
     console.error("Usage: npm run new-component -- <Name> --tier atom --group display");
     process.exit(1);
   }
-  scaffoldComponent({ name, tier, group, root, asChild: args.includes("--asChild"), radixPrimitive: null, status: "alpha" });
+  scaffoldComponent({
+    name,
+    tier,
+    group,
+    root,
+    asChild: args.includes("--asChild"),
+    radixPrimitive: null,
+    status: "alpha",
+    storyGroup: args.includes("--story-group")
+      ? args[args.indexOf("--story-group") + 1]
+      : undefined,
+  });
   console.log(`Scaffolded ${name}`);
 }
 
