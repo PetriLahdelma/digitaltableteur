@@ -164,7 +164,15 @@ function auditContrast(themeMap, themeId) {
       return { ...pair, themeId, fgRaw, bgRaw, ratio: null, level: "N/A", pass: null };
     }
     const ratio = contrastRatio(fgRgb, bgRgb);
-    const level = wcagLevel(ratio, pair.largeText);
+    // Pairs with a DS-defined minimum (e.g. disabled tokens, WCAG-exempt)
+    // grade against that per-theme bar instead of the AA/AAA ladder.
+    const minRatio = pair.minRatioByTheme?.[themeId];
+    const level =
+      minRatio != null
+        ? ratio >= minRatio
+          ? `DS ≥${minRatio}:1`
+          : "Fail"
+        : wcagLevel(ratio, pair.largeText);
     const pass = level !== "Fail";
     return { ...pair, themeId, fgRaw, bgRaw, ratio: Math.round(ratio * 100) / 100, level, pass };
   });

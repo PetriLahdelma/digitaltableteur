@@ -1,6 +1,6 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-11T16:31:25.521Z",
+  "generatedAt": "2026-07-11T16:39:46.044Z",
   "tokenCount": 184,
   "usageCoverage": 150,
   "themes": [
@@ -88,6 +88,30 @@
       "bg": "--color-warning",
       "label": "Warning text on warning",
       "largeText": false
+    },
+    {
+      "id": "disabled-text-on-disabled-bg",
+      "fg": "--color-disabled-placeholder",
+      "bg": "--color-disabled-bg",
+      "label": "Disabled text on disabled fill",
+      "minRatioByTheme": {
+        "light": 3,
+        "dark": 3,
+        "hcb": 4.3,
+        "hcw": 4.3
+      }
+    },
+    {
+      "id": "disabled-text-on-disabled-bg-light",
+      "fg": "--color-disabled-placeholder",
+      "bg": "--color-disabled-bg-light",
+      "label": "Disabled text on disabled field",
+      "minRatioByTheme": {
+        "light": 3,
+        "dark": 3,
+        "hcb": 4.3,
+        "hcw": 4.3
+      }
     }
   ],
   "contrastByTheme": {
@@ -208,6 +232,42 @@
         "ratio": 10.86,
         "level": "AAA",
         "pass": true
+      },
+      {
+        "id": "disabled-text-on-disabled-bg",
+        "fg": "--color-disabled-placeholder",
+        "bg": "--color-disabled-bg",
+        "label": "Disabled text on disabled fill",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 4.3,
+          "hcw": 4.3
+        },
+        "themeId": "light",
+        "fgRaw": "#858585",
+        "bgRaw": "#e8e8e8",
+        "ratio": 3.01,
+        "level": "DS ≥3:1",
+        "pass": true
+      },
+      {
+        "id": "disabled-text-on-disabled-bg-light",
+        "fg": "--color-disabled-placeholder",
+        "bg": "--color-disabled-bg-light",
+        "label": "Disabled text on disabled field",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 4.3,
+          "hcw": 4.3
+        },
+        "themeId": "light",
+        "fgRaw": "#858585",
+        "bgRaw": "#efefef",
+        "ratio": 3.21,
+        "level": "DS ≥3:1",
+        "pass": true
       }
     ],
     "dark": [
@@ -326,6 +386,42 @@
         "bgRaw": "#ffb366",
         "ratio": 9.89,
         "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "disabled-text-on-disabled-bg",
+        "fg": "--color-disabled-placeholder",
+        "bg": "--color-disabled-bg",
+        "label": "Disabled text on disabled fill",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 4.3,
+          "hcw": 4.3
+        },
+        "themeId": "dark",
+        "fgRaw": "#767676",
+        "bgRaw": "#23272a",
+        "ratio": 3.31,
+        "level": "DS ≥3:1",
+        "pass": true
+      },
+      {
+        "id": "disabled-text-on-disabled-bg-light",
+        "fg": "--color-disabled-placeholder",
+        "bg": "--color-disabled-bg-light",
+        "label": "Disabled text on disabled field",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 4.3,
+          "hcw": 4.3
+        },
+        "themeId": "dark",
+        "fgRaw": "#767676",
+        "bgRaw": "#23272a",
+        "ratio": 3.31,
+        "level": "DS ≥3:1",
         "pass": true
       }
     ],
@@ -446,6 +542,42 @@
         "ratio": 21,
         "level": "AAA",
         "pass": true
+      },
+      {
+        "id": "disabled-text-on-disabled-bg",
+        "fg": "--color-disabled-placeholder",
+        "bg": "--color-disabled-bg",
+        "label": "Disabled text on disabled fill",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 4.3,
+          "hcw": 4.3
+        },
+        "themeId": "hcb",
+        "fgRaw": "#9e9e9e",
+        "bgRaw": "#313131",
+        "ratio": 4.86,
+        "level": "DS ≥4.3:1",
+        "pass": true
+      },
+      {
+        "id": "disabled-text-on-disabled-bg-light",
+        "fg": "--color-disabled-placeholder",
+        "bg": "--color-disabled-bg-light",
+        "label": "Disabled text on disabled field",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 4.3,
+          "hcw": 4.3
+        },
+        "themeId": "hcb",
+        "fgRaw": "#9e9e9e",
+        "bgRaw": "#313131",
+        "ratio": 4.86,
+        "level": "DS ≥4.3:1",
+        "pass": true
       }
     ],
     "hcw": [
@@ -564,6 +696,42 @@
         "bgRaw": "#000",
         "ratio": 21,
         "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "disabled-text-on-disabled-bg",
+        "fg": "--color-disabled-placeholder",
+        "bg": "--color-disabled-bg",
+        "label": "Disabled text on disabled fill",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 4.3,
+          "hcw": 4.3
+        },
+        "themeId": "hcw",
+        "fgRaw": "#6b6b6b",
+        "bgRaw": "#e8e8e8",
+        "ratio": 4.35,
+        "level": "DS ≥4.3:1",
+        "pass": true
+      },
+      {
+        "id": "disabled-text-on-disabled-bg-light",
+        "fg": "--color-disabled-placeholder",
+        "bg": "--color-disabled-bg-light",
+        "label": "Disabled text on disabled field",
+        "minRatioByTheme": {
+          "light": 3,
+          "dark": 3,
+          "hcb": 4.3,
+          "hcw": 4.3
+        },
+        "themeId": "hcw",
+        "fgRaw": "#6b6b6b",
+        "bgRaw": "#efefef",
+        "ratio": 4.63,
+        "level": "DS ≥4.3:1",
         "pass": true
       }
     ]
