@@ -413,10 +413,6 @@
       "rawElements": 8,
       "utilityLines": 0
     },
-    "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx": {
-      "rawElements": 10,
-      "utilityLines": 0
-    },
     "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx": {
       "rawElements": 4,
       "utilityLines": 0
