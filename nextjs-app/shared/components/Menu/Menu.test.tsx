@@ -21,15 +21,17 @@ beforeAll(() => {
 
 function renderMenu({
   defaultOpen,
+  onOpenChange,
   onSelect,
   disabled,
 }: {
   defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
   onSelect?: () => void;
   disabled?: boolean;
 } = {}) {
   return render(
-    <Menu defaultOpen={defaultOpen}>
+    <Menu defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
       <MenuTrigger asChild>
         <button type="button">Actions</button>
       </MenuTrigger>
@@ -67,6 +69,16 @@ describe("Menu", () => {
     renderMenu({ defaultOpen: true, onSelect });
     await user.click(screen.getByText("Edit"));
     expect(onSelect).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls onOpenChange with the next open state", async () => {
+    const onOpenChange = vi.fn();
+    const user = userEvent.setup();
+    renderMenu({ onOpenChange });
+
+    await user.click(screen.getByRole("button", { name: "Actions" }));
+
+    expect(onOpenChange).toHaveBeenCalledWith(true);
   });
 
   it("does not select a disabled item and marks it disabled", async () => {

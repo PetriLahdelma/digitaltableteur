@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import {
   Tooltip,
@@ -11,7 +11,10 @@ import {
 
 expect.extend(toHaveNoViolations);
 
-function renderTooltip(props?: { defaultOpen?: boolean }) {
+function renderTooltip(props?: {
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}) {
   return render(
     <TooltipProvider delayDuration={0}>
       <Tooltip {...props}>
@@ -44,6 +47,17 @@ describe("Tooltip", () => {
     expect(trigger).toHaveFocus();
     await waitFor(() => expect(screen.getByRole("tooltip")).toBeVisible());
     expect(trigger).toHaveAttribute("aria-describedby");
+  });
+
+  it("calls onOpenChange when keyboard focus opens the tooltip", async () => {
+    const onOpenChange = vi.fn();
+    const user = userEvent.setup();
+    renderTooltip({ onOpenChange });
+
+    await user.tab();
+    await waitFor(() => expect(screen.getByRole("tooltip")).toBeVisible());
+
+    expect(onOpenChange).toHaveBeenCalledWith(true);
   });
 
   it("dismisses on Escape without moving focus", async () => {

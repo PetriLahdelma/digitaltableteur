@@ -13,7 +13,14 @@ export type {
   BreadcrumbProps,
 } from "./Breadcrumb/Breadcrumb";
 export { default as Button } from "./Button/Button";
+export type {
+  ButtonAsButton,
+  ButtonAsLink,
+  ButtonProps,
+  ButtonSurface,
+} from "./Button/Button";
 export { default as ButtonGroup } from "./ButtonGroup/ButtonGroup";
+export type { ButtonGroupProps } from "./ButtonGroup/ButtonGroup";
 export { default as Card } from "./Card/Card";
 export { default as Checkbox } from "./Checkbox/Checkbox";
 export { default as CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
@@ -67,10 +74,19 @@ export {
   MenuSubTrigger,
   MenuSubContent,
 } from "./Menu";
+export type {
+  MenuItemProps,
+  MenuProps,
+  MenuRootProps,
+  MenuSubProps,
+  MenuSubTriggerProps,
+  MenuTriggerProps,
+} from "./Menu";
 export { default as MCPActionButton } from "./MCPActionButton/MCPActionButton";
 export { default as NavMenuList } from "./NavMenuList/NavMenuList";
 export { default as MarkdownMessage } from "./MarkdownMessage/MarkdownMessage";
 export { default as Modal } from "./Modal/Modal";
+export type { ModalProps, ModalSeverity } from "./Modal/Modal";
 export { NextLayout } from "./NextLayout";
 export { default as OpenHours } from "./OpenHours/OpenHours";
 export { default as PersonCard } from "./PersonCard/PersonCard";
@@ -100,7 +116,7 @@ export { ThemeProvider, useTheme } from "./ThemeProvider/ThemeProvider";
 export type { Theme, ThemeProviderProps } from "./ThemeProvider/ThemeProvider";
 export { default as Title } from "./Title/Title";
 export { default as Toast } from "./Toast/Toast";
-export type { ToastPosition, ToastTone } from "./Toast/Toast";
+export type { ToastPosition, ToastProps, ToastTone } from "./Toast/Toast";
 export { default as TransformingActionInput } from "./TransformingActionInput/TransformingActionInput";
 export { ValueCard, type ValueCardProps } from "./ValueCard";
 export { default as WorkNav } from "./WorkNav/WorkNav";
