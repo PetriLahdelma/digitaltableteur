@@ -90,6 +90,16 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "since": "2026-06-04"
         },
@@ -106,16 +116,6 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
             "since": "2026-06-04"
         }
     ],

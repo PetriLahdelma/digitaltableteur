@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-11T09:36:37.548Z",
+  "generatedAt": "2026-07-11T10:24:57.591Z",
   "summary": {
     "componentCount": 164,
     "statusCounts": {
@@ -81,8 +81,8 @@
     "withAnyUsage": 153,
     "withProductionUsage": 49,
     "uniqueImportedComponents": 153,
-    "totalEvidenceRows": 864,
-    "aliasImportFiles": 481,
+    "totalEvidenceRows": 868,
+    "aliasImportFiles": 485,
     "relativeImportFiles": 391,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -4773,17 +4773,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 65,
-        "productionImportCount": 6,
+        "importCount": 64,
+        "productionImportCount": 5,
         "patternImportCount": 6,
         "componentImportCount": 32,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
             "importKind": "alias",
@@ -4849,6 +4843,12 @@
             "importKind": "alias",
             "importPath": "@dt/Button",
             "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
           }
         ]
       },
@@ -9557,8 +9557,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Container",
-        "importCount": 33,
-        "productionImportCount": 5,
+        "importCount": 34,
+        "productionImportCount": 6,
         "patternImportCount": 23,
         "componentImportCount": 4,
         "evidence": [
@@ -9572,6 +9572,12 @@
             "path": "app/blog/[slug]/ServerRelatedPosts.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/Container",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Container",
             "context": "production"
           },
           {
@@ -9624,12 +9630,6 @@
           },
           {
             "path": "nextjs-app/shared/patterns/ContentSection/ContentSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../components/Container",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
             "importKind": "relative",
             "importPath": "../../components/Container",
             "context": "pattern"
@@ -14750,17 +14750,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 73,
-        "productionImportCount": 4,
+        "importCount": 72,
+        "productionImportCount": 3,
         "patternImportCount": 5,
         "componentImportCount": 33,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Icon",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
             "importKind": "alias",
@@ -14823,6 +14817,12 @@
           },
           {
             "path": "nextjs-app/shared/components/Badge/Badge.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Icon",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/BlogNav/BlogNav.tsx",
             "importKind": "alias",
             "importPath": "@dt/Icon",
             "context": "component"
@@ -14971,8 +14971,8 @@
         ],
         "composesWith": [
           "Button",
-          "Title",
           "Text",
+          "Title",
           "ComplianceCard",
           "Badge",
           "CodeSnippet"
@@ -16495,6 +16495,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
             "since": "2026-06-04"
           },
@@ -16506,16 +16516,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/SitemapPage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -16606,11 +16606,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 16,
-        "productionImportCount": 2,
+        "importCount": 17,
+        "productionImportCount": 3,
         "patternImportCount": 2,
         "componentImportCount": 11,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "importKind": "alias",
@@ -16673,12 +16679,6 @@
           },
           {
             "path": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/PersonCard/PersonCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Link",
             "context": "component"
@@ -16754,9 +16754,9 @@
           "Text",
           "Title",
           "Container",
-          "Badge",
-          "Checkbox",
-          "TextInput"
+          "List",
+          "Section",
+          "Badge"
         ],
         "prefersOver": [
           "Button with href for body-copy links"
@@ -17025,6 +17025,26 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
             "since": "2026-06-04"
           },
@@ -17061,26 +17081,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -17241,11 +17241,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 5,
-        "productionImportCount": 2,
+        "importCount": 6,
+        "productionImportCount": 3,
         "patternImportCount": 2,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/List",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "importKind": "alias",
@@ -23848,6 +23854,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
             "since": "2026-06-04"
           },
@@ -23864,16 +23880,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -23979,11 +23985,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Section",
-        "importCount": 23,
-        "productionImportCount": 3,
+        "importCount": 24,
+        "productionImportCount": 4,
         "patternImportCount": 20,
         "componentImportCount": 0,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Section",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "importKind": "alias",
@@ -24046,12 +24058,6 @@
           },
           {
             "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../components/Section",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
             "importKind": "relative",
             "importPath": "../../components/Section",
             "context": "pattern"
@@ -29489,12 +29495,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -29617,11 +29623,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 83,
-        "productionImportCount": 21,
+        "importCount": 84,
+        "productionImportCount": 22,
         "patternImportCount": 10,
         "componentImportCount": 27,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Text",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
             "importKind": "alias",
@@ -29684,12 +29696,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Text",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
             "context": "production"
@@ -29796,7 +29802,7 @@
           "ProjectDetailLayout",
           "ProjectHero",
           "RelatedProjects",
-          "GridBlock"
+          "ProcessBlock"
         ],
         "prefersOver": [
           "raw paragraph elements"
@@ -30833,11 +30839,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Timestamp",
-        "importCount": 1,
-        "productionImportCount": 1,
+        "importCount": 2,
+        "productionImportCount": 2,
         "patternImportCount": 0,
         "componentImportCount": 0,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Timestamp",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
             "importKind": "alias",
@@ -39301,8 +39313,8 @@
           "StoryBlock",
           "ProjectHero",
           "RelatedProjects",
-          "GridBlock",
-          "ProcessBlock"
+          "ProcessBlock",
+          "GridBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 8
@@ -39743,8 +39755,8 @@
           "StoryBlock",
           "ProjectDetailLayout",
           "RelatedProjects",
-          "GridBlock",
-          "ProcessBlock"
+          "ProcessBlock",
+          "GridBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 11
@@ -40497,8 +40509,8 @@
           "StoryBlock",
           "ProjectDetailLayout",
           "ProjectHero",
-          "GridBlock",
-          "ProcessBlock"
+          "ProcessBlock",
+          "GridBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 4
@@ -41831,8 +41843,8 @@
           "ProjectDetailLayout",
           "ProjectHero",
           "RelatedProjects",
-          "GridBlock",
-          "ProcessBlock"
+          "ProcessBlock",
+          "GridBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 11
