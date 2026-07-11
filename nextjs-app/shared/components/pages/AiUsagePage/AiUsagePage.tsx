@@ -4,6 +4,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 import List from "@dt/List";
+import { Section } from "@dt/Section";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "./AiUsagePage.module.css";
@@ -133,7 +134,7 @@ export function AiUsagePage() {
       </Title>
       <Text as="p" size="xs">{t("aiPolicyIntro")}</Text>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyPrinciplesTitle")}
         </Title>
@@ -143,9 +144,9 @@ export function AiUsagePage() {
           listStyleType="dash"
           items={principles.map((key) => emphasiseLeadingLabel(t(key)))}
         />
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyUseCasesTitle")}
         </Title>
@@ -155,16 +156,16 @@ export function AiUsagePage() {
           listStyleType="dash"
           items={useCases.map((key) => emphasiseLeadingLabel(t(key)))}
         />
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyNotUsedTitle")}
         </Title>
         <Text as="p" size="xs">{t("aiPolicyNotUsedBody")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyProvidersTitle")}
         </Title>
@@ -176,9 +177,9 @@ export function AiUsagePage() {
           items={providers.map((key) => emphasiseLeadingLabel(t(key)))}
         />
         <Text as="p" size="xs">{t("aiPolicyProvidersFooter")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyDataTitle")}
         </Title>
@@ -190,9 +191,9 @@ export function AiUsagePage() {
           items={dataItems.map((key) => emphasiseLeadingLabel(t(key)))}
         />
         <Text as="p" size="xs">{t("aiPolicyDataFooter")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicySafeguardsTitle")}
         </Title>
@@ -202,16 +203,16 @@ export function AiUsagePage() {
           listStyleType="dash"
           items={safeguards.map((key) => emphasiseLeadingLabel(t(key)))}
         />
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyLimitationsTitle")}
         </Title>
         <Text as="p" size="xs">{t("aiPolicyLimitationsBody")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyRightsTitle")}
         </Title>
@@ -227,16 +228,16 @@ export function AiUsagePage() {
             "mail@digitaltableteur.com",
           )}
         </Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyChangesTitle")}
         </Title>
         <Text as="p" size="xs">{t("aiPolicyChangesBody")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("aiPolicyContactTitle")}
         </Title>
@@ -247,7 +248,7 @@ export function AiUsagePage() {
             "+358 45 657 4469",
           )}
         </Text>
-      </section>
+      </Section>
     </div>
   );
 }
