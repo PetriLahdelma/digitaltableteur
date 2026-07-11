@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
+import List from "@dt/List";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
@@ -162,26 +163,14 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
           {t("privacyPolicyContactFormSubtitle")}
         </Title>
         <Text as="p" size="xs">{t("privacyPolicyContactFormIntro")}</Text>
-        <ul>
-          {whatWeCollect.map((key) => (
-            <li key={key}>
-              <Text as="p" size="xs">{t(key)}</Text>
-            </li>
-          ))}
-        </ul>
+        <List as="ul" size="xs" listStyleType="none" items={whatWeCollect.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicyContactFormUsage")}</Text>
 
         <Title level={3} size="xxs">
           {t("privacyPolicyWebsiteVisitorsSubtitle")}
         </Title>
         <Text as="p" size="xs">{t("privacyPolicyWebsiteVisitorsIntro")}</Text>
-        <ul>
-          {websiteVisitors.map((key) => (
-            <li key={key}>
-              <Text as="p" size="xs">{t(key)}</Text>
-            </li>
-          ))}
-        </ul>
+        <List as="ul" size="xs" listStyleType="none" items={websiteVisitors.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicyWebsiteVisitorsUsage")}</Text>
       </section>
 
@@ -197,13 +186,7 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
           {t("privacyPolicySharingTitle")}
         </Title>
         <Text as="p" size="xs">{t("privacyPolicySharingIntro")}</Text>
-        <ul>
-          {sharingItems.map((key) => (
-            <li key={key}>
-              <Text as="p" size="xs">{t(key)}</Text>
-            </li>
-          ))}
-        </ul>
+        <List as="ul" size="xs" listStyleType="none" items={sharingItems.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicySharingFooter")}</Text>
       </section>
 
@@ -220,13 +203,7 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
         </Title>
         <Text as="p" size="xs">{t("privacyPolicyCookiesIntro")}</Text>
         <Text as="p" size="xs">{t("privacyPolicyCookiesTypes")}</Text>
-        <ul>
-          {cookiesItems.map((key) => (
-            <li key={key}>
-              <Text as="p" size="xs">{t(key)}</Text>
-            </li>
-          ))}
-        </ul>
+        <List as="ul" size="xs" listStyleType="none" items={cookiesItems.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicyCookiesControl")}</Text>
       </section>
 
@@ -242,13 +219,7 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
           {t("privacyPolicyYourRightsTitle")}
         </Title>
         <Text as="p" size="xs">{t("privacyPolicyYourRightsIntro")}</Text>
-        <ul>
-          {rights.map((key) => (
-            <li key={key}>
-              <Text as="p" size="xs">{t(key)}</Text>
-            </li>
-          ))}
-        </ul>
+        <List as="ul" size="xs" listStyleType="none" items={rights.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicyRightsExercise")}</Text>
         <Text as="p" size="xs">{t("privacyPolicyRightsComplaint")}</Text>
       </section>
@@ -258,13 +229,7 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
           {t("privacyPolicySecurityTitle")}
         </Title>
         <Text as="p" size="xs">{t("privacyPolicySecurityIntro")}</Text>
-        <ul>
-          {securityItems.map((key) => (
-            <li key={key}>
-              <Text as="p" size="xs">{t(key)}</Text>
-            </li>
-          ))}
-        </ul>
+        <List as="ul" size="xs" listStyleType="none" items={securityItems.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicySecurityFooter")}</Text>
       </section>
 
