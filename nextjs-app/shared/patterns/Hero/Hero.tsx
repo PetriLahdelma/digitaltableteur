@@ -3,9 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import PageLayout from "../PageLayout/PageLayout";
-import Title from "@dt/Title";
-import Text from "@dt/Text";
-import Button from "@dt/Button";
+import { Button, Text, Title } from "@digitaltableteur/react";
 import styles from "./Hero.module.css";
 
 export interface HeroProps {

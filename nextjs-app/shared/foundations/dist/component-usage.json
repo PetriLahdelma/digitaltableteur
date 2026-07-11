@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T20:03:54.265Z",
+  "generatedAt": "2026-07-11T20:10:27.197Z",
   "components": [
     {
       "name": "__templates__",
@@ -606,7 +606,7 @@
         "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
         "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx"
       ],
-      "packageImportCount": 9,
+      "packageImportCount": 14,
       "packageImporters": [
         "app/blog/NextBlogNav.tsx",
         "app/error.tsx",
@@ -616,11 +616,15 @@
         "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
         "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
         "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
-        "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx"
+        "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+        "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx",
+        "nextjs-app/shared/patterns/Hero/Hero.tsx",
+        "nextjs-app/shared/patterns/HighlightSection/HighlightSection.tsx",
+        "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
+        "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [
-        "app/blog/[slug]/BlogArticleMdxBody.tsx",
         "app/blog/[slug]/BlogArticleShare.tsx",
         "app/blog/[slug]/page.tsx",
         "app/blog/[slug]/ServerArticleContent.tsx",
@@ -631,7 +635,8 @@
         "app/tools/email-signature/EmailSignatureContent.tsx",
         "app/tools/email-signature/page.tsx",
         "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-        "nextjs-app/shared/components/pages/AboutPage/index.ts"
+        "nextjs-app/shared/components/pages/AboutPage/index.ts",
+        "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx"
       ]
     },
     {
@@ -804,22 +809,14 @@
         "nextjs-app/shared/components/index.ts",
         "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx"
       ],
-      "packageImportCount": 1,
+      "packageImportCount": 2,
       "packageImporters": [
-        "app/dev/code-window/page.tsx"
-      ],
-      "prodPageCount": 10,
-      "prodPages": [
-        "app/blog/[slug]/BlogArticleMdxBody.tsx",
-        "app/blog/[slug]/page.tsx",
-        "app/blog/[slug]/ServerArticleContent.tsx",
-        "app/blog/[slug]/ServerArticleMain.tsx",
         "app/dev/code-window/page.tsx",
-        "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
-        "nextjs-app/shared/components/pages/Blog/index.ts",
-        "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-        "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
-        "nextjs-app/shared/patterns/index.ts"
+        "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx"
+      ],
+      "prodPageCount": 1,
+      "prodPages": [
+        "app/dev/code-window/page.tsx"
       ]
     },
     {
@@ -1584,8 +1581,10 @@
         "nextjs-app/shared/components/index.ts",
         "nextjs-app/shared/patterns/Footer/Footer.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
+      "packageImportCount": 1,
+      "packageImporters": [
+        "nextjs-app/shared/patterns/Footer/Footer.tsx"
+      ],
       "prodPageCount": 1,
       "prodPages": [
         "nextjs-app/shared/patterns/Footer/Footer.tsx"
@@ -1836,7 +1835,7 @@
         "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
         "nextjs-app/shared/utils/semanticIcons.tsx"
       ],
-      "packageImportCount": 7,
+      "packageImportCount": 10,
       "packageImporters": [
         "app/blog/NextBlogNav.tsx",
         "app/error.tsx",
@@ -1844,7 +1843,10 @@
         "app/work/NextWorkNav.tsx",
         "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
         "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
-        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx"
+        "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
+        "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+        "nextjs-app/shared/patterns/Footer/Footer.tsx",
+        "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [
@@ -2066,11 +2068,12 @@
         "nextjs-app/shared/patterns/Footer/Footer.tsx",
         "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx"
       ],
-      "packageImportCount": 3,
+      "packageImportCount": 4,
       "packageImporters": [
         "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
         "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx"
+        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+        "nextjs-app/shared/patterns/Footer/Footer.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [
@@ -2112,11 +2115,13 @@
         "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
         "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.tsx"
       ],
-      "packageImportCount": 3,
+      "packageImportCount": 5,
       "packageImporters": [
         "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
         "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx"
+        "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+        "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
+        "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [
@@ -2684,17 +2689,12 @@
         "nextjs-app/shared/components/index.ts",
         "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
-      "prodPageCount": 6,
-      "prodPages": [
-        "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
-        "nextjs-app/shared/components/pages/ContactPage/index.ts",
-        "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx",
-        "nextjs-app/shared/patterns/ContactInquiryPanel/index.ts",
-        "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-        "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts"
-      ]
+      "packageImportCount": 1,
+      "packageImporters": [
+        "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx"
+      ],
+      "prodPageCount": 0,
+      "prodPages": []
     },
     {
       "name": "ProjectCard",
@@ -3803,7 +3803,7 @@
         "nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx",
         "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx"
       ],
-      "packageImportCount": 23,
+      "packageImportCount": 33,
       "packageImporters": [
         "app/dev/code-window/page.tsx",
         "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
@@ -3827,7 +3827,17 @@
         "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
         "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
         "nextjs-app/shared/components/pages/Work/Tulli/TulliPage.tsx",
-        "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx"
+        "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx",
+        "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+        "nextjs-app/shared/patterns/GridBlock/GridBlock.tsx",
+        "nextjs-app/shared/patterns/Hero/Hero.tsx",
+        "nextjs-app/shared/patterns/HighlightSection/HighlightSection.tsx",
+        "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+        "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
+        "nextjs-app/shared/patterns/ProofBlock/ProofBlock.tsx",
+        "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.tsx",
+        "nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx",
+        "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [
@@ -3999,7 +4009,7 @@
         "nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx",
         "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx"
       ],
-      "packageImportCount": 25,
+      "packageImportCount": 34,
       "packageImporters": [
         "app/dev/code-window/page.tsx",
         "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
@@ -4025,7 +4035,16 @@
         "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx",
         "nextjs-app/shared/components/pages/Work/ProjectSpine/ProjectSpinePage.tsx",
         "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-        "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx"
+        "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx",
+        "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+        "nextjs-app/shared/patterns/Hero/Hero.tsx",
+        "nextjs-app/shared/patterns/HighlightSection/HighlightSection.tsx",
+        "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+        "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
+        "nextjs-app/shared/patterns/ProofBlock/ProofBlock.tsx",
+        "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.tsx",
+        "nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx",
+        "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx"
       ],
       "prodPageCount": 12,
       "prodPages": [

@@ -4,10 +4,7 @@ import Image from "next/image";
 import { useId, useState } from "react";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
+import { Button, Icon, Text, Title } from "@digitaltableteur/react";
 import styles from "./PricingPageContent.module.css";
 
 const PRICING_HERO_IMAGE = "/images/pricing/dsharp3-hero.png";

@@ -2,9 +2,7 @@
 
 import React from "react";
 import PageLayout from "../PageLayout/PageLayout";
-import Title from "@dt/Title";
-import Text from "@dt/Text";
-import List from "@dt/List";
+import { List, Text, Title } from "@digitaltableteur/react";
 import styles from "./ProcessBlock.module.css";
 
 /**

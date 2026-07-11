@@ -11,9 +11,8 @@ import {
   type ReactNode,
 } from "react";
 import { useLocalization } from "../../lib/translation";
-import Button from "@dt/Button";
+import { Button, Progress } from "@digitaltableteur/react";
 import DonnyBookingEmbed from "@dt/DonnyBookingEmbed";
-import Progress from "@dt/Progress";
 import Tabs, { getTabPanelProps, type TabItem } from "@dt/Tabs";
 import {
   resolveSiteBookingConfig,

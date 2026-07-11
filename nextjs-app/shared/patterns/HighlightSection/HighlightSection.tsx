@@ -2,9 +2,7 @@
 
 import React from "react";
 import { useTranslate } from "../../lib/translation";
-import Title from "@dt/Title";
-import Text from "@dt/Text";
-import Button from "@dt/Button";
+import { Button, Text, Title } from "@digitaltableteur/react";
 import type { ButtonProps } from "@dt/Button";
 import styles from "./HighlightSection.module.css";
 
