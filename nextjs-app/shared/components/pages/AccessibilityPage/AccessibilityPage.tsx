@@ -3,6 +3,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import List from "@dt/List";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
@@ -98,13 +99,12 @@ export function AccessibilityPage() {
           {t("accessibilityMeasuresTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityMeasuresIntro")}</Text>
-        <ul>
-          {measures.map((key) => (
-            <li key={key}>
-              <Text as="p" size="xs">{t(key)}</Text>
-            </li>
-          ))}
-        </ul>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={measures.map((key) => t(key))}
+        />
       </section>
 
       <section>
@@ -119,13 +119,12 @@ export function AccessibilityPage() {
           {t("accessibilityTechnicalTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityTechnicalIntro")}</Text>
-        <ul>
-          {technicalSpecs.map((key) => (
-            <li key={key}>
-              <Text as="p" size="xs">{t(key)}</Text>
-            </li>
-          ))}
-        </ul>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={technicalSpecs.map((key) => t(key))}
+        />
       </section>
 
       <section>
@@ -140,13 +139,12 @@ export function AccessibilityPage() {
           {t("accessibilityLimitationsTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityLimitationsIntro")}</Text>
-        <ul>
-          {limitations.map((key) => (
-            <li key={key}>
-              <Text as="p" size="xs">{t(key)}</Text>
-            </li>
-          ))}
-        </ul>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={limitations.map((key) => t(key))}
+        />
         <Text as="p" size="xs">{t("accessibilityLimitationsFooter")}</Text>
       </section>
 
@@ -155,13 +153,12 @@ export function AccessibilityPage() {
           {t("accessibilityShortcomingsTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityShortcomingsIntro")}</Text>
-        <ul>
-          {shortcomings.map((key) => (
-            <li key={key}>
-              <Text as="p" size="xs">{t(key)}</Text>
-            </li>
-          ))}
-        </ul>
+        <List
+          as="ul"
+          size="xs"
+          listStyleType="dash"
+          items={shortcomings.map((key) => t(key))}
+        />
         <Text as="p" size="xs">{t("accessibilityShortcomingsFooter")}</Text>
       </section>
 
