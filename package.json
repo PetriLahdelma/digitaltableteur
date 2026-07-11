@@ -150,6 +150,7 @@
     "check:package-tarballs": "node scripts/design-system/check-package-tarball-contents.mjs",
     "check:package-publish-dry-run": "node scripts/design-system/check-package-publish-dry-run.mjs",
     "check:token-packages": "node scripts/design-system/check-token-packages.mjs",
+    "check:published-tokens-freshness": "node scripts/design-system/check-published-tokens-freshness.mjs",
     "check:react-package": "node scripts/design-system/check-react-package.mjs",
     "check:react-public-api": "node scripts/design-system/check-react-public-api.mjs",
     "check:react-public-surface": "node scripts/design-system/check-react-public-surface.mjs",

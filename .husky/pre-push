@@ -18,6 +18,9 @@ echo "$changed" | grep -qE 'nextjs-app/shared/(components|patterns|foundations)|
 # artifacts (relationship graph + agent blocks) the two checks compare against.
 npm run build:tokens
 npm run check:token-packages
+# Published-tokens freshness: warns on registry drift, fails only when the
+# drift is older than 7 days (forgotten republish). Offline-safe skip.
+npm run check:published-tokens-freshness -- --max-age-days 7
 npm run check:contract-props
 npm run check:consumers
 npm run check:astryx-roadmap
