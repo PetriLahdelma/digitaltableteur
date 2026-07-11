@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T07:47:39.691Z",
+  "generatedAt": "2026-07-11T07:57:14.817Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -908,8 +908,8 @@
         "FlexBox",
         "Link",
         "Button",
-        "Checkbox",
-        "TextArea"
+        "Grid",
+        "Checkbox"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
@@ -3054,7 +3054,7 @@
         "Stack",
         "Link",
         "ScrollIndicator",
-        "Badge"
+        "BlogCategoryFilter"
       ],
       "prefersOver": [],
       "declaredPropCount": 5
@@ -5083,12 +5083,12 @@
         "override the underline via inline styles; the token-driven treatment"
       ],
       "composesWith": [
+        "Text",
         "Badge",
+        "Title",
         "Checkbox",
         "TextInput",
-        "Text",
-        "Button",
-        "Grid"
+        "Button"
       ],
       "prefersOver": [
         "Button with href for body-copy links"
@@ -5294,6 +5294,7 @@
       "composesWith": [
         "Text",
         "Title",
+        "Link",
         "Section"
       ],
       "prefersOver": [],
@@ -9489,8 +9490,8 @@
         "Button",
         "TextArea",
         "Badge",
-        "Checkbox",
-        "CheckboxGroup"
+        "CheckboxGroup",
+        "Checkbox"
       ],
       "prefersOver": [],
       "declaredPropCount": 13
@@ -9544,6 +9545,121 @@
       ],
       "prefersOver": [],
       "declaredPropCount": 2
+    },
+    "Timestamp": {
+      "preferredImport": "@dt/Timestamp",
+      "intent": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+      "props": {
+        "value": {
+          "optional": false,
+          "type": "string | number | Date"
+        },
+        "format": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "auto",
+            "date",
+            "time",
+            "relative",
+            "date_time",
+            "system_date",
+            "system_date_time",
+            "system_time"
+          ]
+        },
+        "autoThreshold": {
+          "optional": true,
+          "type": "number"
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "s",
+            "xl",
+            "xs",
+            "xxs",
+            "m",
+            "l",
+            "xxl"
+          ]
+        },
+        "tone": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "default",
+            "muted"
+          ]
+        },
+        "showTimezone": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "tooltip": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "live": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "now": {
+          "optional": true,
+          "type": "string | number | Date"
+        },
+        "locale": {
+          "optional": true,
+          "type": "string"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "variants": {
+        "size": {
+          "values": [
+            "s",
+            "xl",
+            "xs",
+            "xxs",
+            "m",
+            "l",
+            "xxl"
+          ],
+          "default": "s"
+        },
+        "tone": {
+          "values": [
+            "default",
+            "muted"
+          ],
+          "default": "default"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [],
+      "avoidWhen": [],
+      "requiredA11y": [
+        "Renders a semantic <time> element with a machine-readable dateTime attribute.",
+        "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
+      ],
+      "keyboard": [],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 11
     },
     "Title": {
       "preferredImport": "@dt/Title",

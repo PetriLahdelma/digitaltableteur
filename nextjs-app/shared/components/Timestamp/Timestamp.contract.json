@@ -1,0 +1,42 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Timestamp",
+    "tier": "atom",
+    "group": "display",
+    "status": "alpha",
+    "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "time",
+    "variants": {
+        "size": {
+            "values": ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
+            "default": "s",
+            "propSourced": true
+        },
+        "tone": {
+            "values": ["default", "muted"],
+            "default": "muted",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "Renders a semantic <time> element with a machine-readable dateTime attribute.",
+            "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": ["--color-text", "--color-muted"],
+        "spacing": []
+    },
+    "lightDarkVerified": false
+}

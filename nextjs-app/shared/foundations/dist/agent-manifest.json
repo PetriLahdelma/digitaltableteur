@@ -1,19 +1,19 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-11T07:47:39.964Z",
+  "generatedAt": "2026-07-11T07:57:15.091Z",
   "summary": {
-    "componentCount": 163,
+    "componentCount": 164,
     "statusCounts": {
       "beta": 48,
       "stable": 89,
-      "alpha": 25,
+      "alpha": 26,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 87.6,
-    "codebaseComponentCount": 186,
-    "usageCoveragePercent": 93.3,
-    "componentsWithProductionUsage": 47,
+    "catalogCompletenessPercent": 87.7,
+    "codebaseComponentCount": 187,
+    "usageCoveragePercent": 92.7,
+    "componentsWithProductionUsage": 48,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 186,
-    "inCatalog": 163,
+    "totalComponentsInCodebase": 187,
+    "inCatalog": 164,
     "outOfCatalog": 23,
-    "catalogCompletenessPercent": 87.6,
+    "catalogCompletenessPercent": 87.7,
     "artifactCoverage": {
-      "stories": 147,
-      "tests": 146,
-      "mdx": 5,
-      "spec": 163
+      "stories": 148,
+      "tests": 147,
+      "mdx": 6,
+      "spec": 164
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,12 +77,12 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 163,
+    "catalogedComponents": 164,
     "withAnyUsage": 152,
-    "withProductionUsage": 47,
+    "withProductionUsage": 48,
     "uniqueImportedComponents": 152,
-    "totalEvidenceRows": 857,
-    "aliasImportFiles": 474,
+    "totalEvidenceRows": 859,
+    "aliasImportFiles": 476,
     "relativeImportFiles": 391,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 163,
+      "digitaltableteur": 164,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 48,
         "stable": 89,
-        "alpha": 25,
+        "alpha": 26,
         "deprecated": 1
       },
       "dsharp": {
@@ -3168,8 +3168,8 @@
           "FlexBox",
           "Link",
           "Button",
-          "Checkbox",
-          "TextArea"
+          "Grid",
+          "Checkbox"
         ],
         "prefersOver": [],
         "declaredPropCount": 11
@@ -9889,7 +9889,7 @@
           "Stack",
           "Link",
           "ScrollIndicator",
-          "Badge"
+          "BlogCategoryFilter"
         ],
         "prefersOver": [],
         "declaredPropCount": 5
@@ -16604,11 +16604,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 14,
-        "productionImportCount": 0,
+        "importCount": 15,
+        "productionImportCount": 1,
         "patternImportCount": 2,
         "componentImportCount": 11,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
             "importKind": "alias",
@@ -16671,12 +16677,6 @@
           },
           {
             "path": "nextjs-app/shared/components/SiteTree/SiteTree.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
             "importKind": "alias",
             "importPath": "@dt/Link",
             "context": "component"
@@ -16747,12 +16747,12 @@
           "override the underline via inline styles; the token-driven treatment"
         ],
         "composesWith": [
+          "Text",
           "Badge",
+          "Title",
           "Checkbox",
           "TextInput",
-          "Text",
-          "Button",
-          "Grid"
+          "Button"
         ],
         "prefersOver": [
           "Button with href for body-copy links"
@@ -17385,6 +17385,7 @@
         "composesWith": [
           "Text",
           "Title",
+          "Link",
           "Section"
         ],
         "prefersOver": [],
@@ -29608,7 +29609,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 81,
+        "importCount": 82,
         "productionImportCount": 20,
         "patternImportCount": 10,
         "componentImportCount": 27,
@@ -30542,8 +30543,8 @@
           "Button",
           "TextArea",
           "Badge",
-          "Checkbox",
-          "CheckboxGroup"
+          "CheckboxGroup",
+          "Checkbox"
         ],
         "prefersOver": [],
         "declaredPropCount": 13
@@ -30755,6 +30756,195 @@
         ],
         "prefersOver": [],
         "declaredPropCount": 2
+      }
+    },
+    {
+      "name": "Timestamp",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.json",
+        "name": "Timestamp",
+        "tier": "atom",
+        "group": "display",
+        "status": "alpha",
+        "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "time",
+        "variants": {
+          "size": {
+            "values": [
+              "xxs",
+              "xs",
+              "s",
+              "m",
+              "l",
+              "xl",
+              "xxl"
+            ],
+            "default": "s",
+            "propSourced": true
+          },
+          "tone": {
+            "values": [
+              "default",
+              "muted"
+            ],
+            "default": "muted",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [],
+          "ariaRequirements": [
+            "Renders a semantic <time> element with a machine-readable dateTime attribute.",
+            "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-text",
+            "--color-muted"
+          ],
+          "spacing": []
+        },
+        "lightDarkVerified": false
+      },
+      "spec": "# Timestamp\n\n## Intent\nTODO: What job does Timestamp perform for users?\n\n## Interaction contract\n- Keyboard: TODO\n- Pointer: TODO\n- Screen readers: TODO\n\n## Do / don't\n- Do: TODO\n- Don't: TODO\n\n## Design notes\n- Tokens: TODO\n- Figma: TODO\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/Timestamp",
+        "importCount": 0,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 0,
+        "evidence": []
+      },
+      "agent": {
+        "preferredImport": "@dt/Timestamp",
+        "intent": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+        "props": {
+          "value": {
+            "optional": false,
+            "type": "string | number | Date"
+          },
+          "format": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "auto",
+              "date",
+              "time",
+              "relative",
+              "date_time",
+              "system_date",
+              "system_date_time",
+              "system_time"
+            ]
+          },
+          "autoThreshold": {
+            "optional": true,
+            "type": "number"
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "s",
+              "xl",
+              "xs",
+              "xxs",
+              "m",
+              "l",
+              "xxl"
+            ]
+          },
+          "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "default",
+              "muted"
+            ]
+          },
+          "showTimezone": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "tooltip": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "live": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "now": {
+            "optional": true,
+            "type": "string | number | Date"
+          },
+          "locale": {
+            "optional": true,
+            "type": "string"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "variants": {
+          "size": {
+            "values": [
+              "s",
+              "xl",
+              "xs",
+              "xxs",
+              "m",
+              "l",
+              "xxl"
+            ],
+            "default": "s"
+          },
+          "tone": {
+            "values": [
+              "default",
+              "muted"
+            ],
+            "default": "default"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [],
+        "avoidWhen": [],
+        "requiredA11y": [
+          "Renders a semantic <time> element with a machine-readable dateTime attribute.",
+          "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
+        ],
+        "keyboard": [],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 11
       }
     },
     {

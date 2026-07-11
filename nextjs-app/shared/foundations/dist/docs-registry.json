@@ -14598,6 +14598,30 @@
       },
       "examples": []
     },
+    "Timestamp": {
+      "name": "Timestamp",
+      "group": "display",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import Timestamp from \"@dt/Timestamp\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-muted"
+        ],
+        "spacing": []
+      },
+      "examples": []
+    },
     "Title": {
       "name": "Title",
       "group": "display",
