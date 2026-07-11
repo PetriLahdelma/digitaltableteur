@@ -222,8 +222,36 @@ mockups) — out of scope, leave as-is.
   legacy State axis removed (states are props, recorded), Size sm|md|lg from Select.module.css
   metrics, field chrome corrected to 1px color/border + radius/lg + color/white, chevron
   color/primary (S/M/L prop values documented as aliases). All four verified in forced Dark.
-  **B3b remaining drifted:** Modal, Toast (position → component property), AlertBanner,
-  EmptyState + beta Accordion, RadioGroup, SplitButton.
+  **B3b DONE 2026-07-11 (drifted remodels: Modal, Toast, AlertBanner, EmptyState + beta
+  Accordion, RadioGroup, SplitButton; bonus Radio size fix).** Whole-file dependency scan
+  found ONE dependent (CodeSnippet's copySplitButton — rename-safe, SplitButton set id kept).
+  Toast in place: legacy Intent axis (incl. pre-tone Default variant, deleted) → Tone × Size
+  = 12, paddings/gap/radius bound (lg inline 20px raw — code references --space-internal-20
+  which is a PHANTOM token, no definition anywhere; fix chip spawned), font sizes button-s/m/l
+  clamp maxima 16/18/20, warning ink color/warning/text, position documented as
+  placement-only prop (Menu.align precedent). AlertBanner in place: Intent → Tone, text ink
+  rebound per-tone hardcodes → color/text (code truth), icons likewise, warning 16%/46%.
+  **NEW RECIPE CONFIRMED: variable-bound SOLID paint opacity renders correctly in the default
+  mode but is DROPPED under setExplicitVariableModeForCollection** — the color-mix() tint had
+  to move to the B2a wash idiom (opaque color/surface fill + absolute STRETCH tint rect with
+  NODE opacity 0.12/0.16 + separate border rect at 0.4/0.46); always verify tints in forced
+  Dark, the light render lies. EmptyState in place: SM/MD/LG → sm/md/lg, Title instances
+  re-propped to the xxs/xs/s contract map (were all 's' = 36px), paddings/gaps bound.
+  Modal rebuilt as Severity set **node 1222-2927** (old single 384:13 combined via
+  combineAsVariants → new id, contract + story URLs updated): 4px severity top rail,
+  semantic icon 32 (STATUS_COLORS incl. warning → color/warning/contrast), close X (muted),
+  432 dialog width (30vw code truth); plain wide dialog + isLoading/animation recorded as
+  props. Accordion rebuilt as Variant set **node 1223-2915** (contained | enclosed | divided;
+  old 381:17 combined → new id, URLs updated): chrome rebound color/primary → color/border,
+  radius/lg, chevron color/muted, trigger Satoshi Medium; type single|multiple = behavioral
+  prop. RadioGroup rebuilt as Orientation × Size = 6 set **node 1227-2963** (old 383:36 →
+  new id, URLs updated): composes the Radio atom via instance Size props, legend
+  color/title 17/600, option gap space/layout/16. Radio atom (beta, 372-27) resized in
+  place to code truth 16/20/24 (dot = size−10) + lowercase Size values; its legacy State
+  axis kept for now — full contract alignment is B6. SplitButton in place (set id kept):
+  9 → Variant × Surface × Size = 27 lowercase, surfaces driven through the composed Button
+  set instances' Surface property (visuals inherit Button code truth; menuAlign =
+  placement-only prop note). All seven verified in forced Dark.
   **B3c missing stable molecules:** EnhancedProjectCard, List, ReadingProgress, AuthorBio,
   LanguageSwitcher, ValueCard, Pagination, PhoneInput, Combobox, MultiCombobox,
   ExpandableSection, FormFieldEditorial, ServiceCard, SocialShare, CategoryFilter,
