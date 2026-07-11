@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-11T16:19:26.524Z",
+  "generatedAt": "2026-07-11T16:39:31.734Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
@@ -53,7 +53,7 @@
         "label": "High contrast (white)"
       }
     ],
-    "contrastPairCount": 9
+    "contrastPairCount": 11
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",

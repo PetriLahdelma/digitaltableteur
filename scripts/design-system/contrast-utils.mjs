@@ -59,4 +59,10 @@ export const SEMANTIC_CONTRAST_PAIRS = [
   { id: "error-on-canvas", fg: "--color-error", bg: "--main-body-background-color", label: "Error on canvas", largeText: false },
   { id: "error-text-on-error-bg", fg: "--color-error-text", bg: "--color-error-bg", label: "Error text on error surface", largeText: false },
   { id: "warning-text-on-warning", fg: "--color-warning-text", bg: "--color-warning", label: "Warning text on warning", largeText: false },
+  // Disabled controls are WCAG-1.4.3-exempt, so these two enforce the DS's own
+  // dim-but-legible bar instead of AA: 3:1 on the normal themes, 4.3:1 on the
+  // high-contrast themes. Guards against the silent 1.7-2.6:1 regressions
+  // fixed in #1099.
+  { id: "disabled-text-on-disabled-bg", fg: "--color-disabled-placeholder", bg: "--color-disabled-bg", label: "Disabled text on disabled fill", minRatioByTheme: { light: 3, dark: 3, hcb: 4.3, hcw: 4.3 } },
+  { id: "disabled-text-on-disabled-bg-light", fg: "--color-disabled-placeholder", bg: "--color-disabled-bg-light", label: "Disabled text on disabled field", minRatioByTheme: { light: 3, dark: 3, hcb: 4.3, hcw: 4.3 } },
 ];
