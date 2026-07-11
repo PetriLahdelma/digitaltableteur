@@ -127,6 +127,10 @@ export {
   type SectionProps,
 } from "../../../nextjs-app/shared/components/Section";
 export { default as Select } from "../../../nextjs-app/shared/components/Select/Select";
+export type {
+  SelectOptionItem,
+  SelectProps,
+} from "../../../nextjs-app/shared/components/Select/Select";
 export { default as SelectOption } from "../../../nextjs-app/shared/components/Select/SelectOption";
 export {
   SkipLink,

@@ -31,4 +31,41 @@ describe("Select", () => {
     fireEvent.change(select, { target: { value: "option2" } });
     expect(onChange).toHaveBeenCalledWith("option2");
   });
+
+  it("calls onValueChange with the selected value", () => {
+    const onValueChange = vi.fn();
+    render(
+      <Select
+        label="Test Select"
+        options={options}
+        onValueChange={onValueChange}
+      />,
+    );
+    fireEvent.change(screen.getByRole("combobox"), {
+      target: { value: "option3" },
+    });
+    expect(onValueChange).toHaveBeenCalledTimes(1);
+    expect(onValueChange).toHaveBeenCalledWith("option3");
+  });
+
+  it("calls onValueChange before the deprecated onChange when both are given", () => {
+    const onValueChange = vi.fn();
+    const onChange = vi.fn();
+    render(
+      <Select
+        label="Test Select"
+        options={options}
+        onValueChange={onValueChange}
+        onChange={onChange}
+      />,
+    );
+    fireEvent.change(screen.getByRole("combobox"), {
+      target: { value: "option2" },
+    });
+    expect(onValueChange).toHaveBeenCalledWith("option2");
+    expect(onChange).toHaveBeenCalledWith("option2");
+    expect(onValueChange.mock.invocationCallOrder[0]).toBeLessThan(
+      onChange.mock.invocationCallOrder[0],
+    );
+  });
 });
