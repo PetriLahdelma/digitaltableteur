@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-11T10:16:28.968Z",
+  "createdAt": "2026-07-11T14:43:55.471Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -5805,8 +5805,8 @@
     {
       "column": 19,
       "file": "nextjs-app/shared/patterns/Footer/Footer.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/patterns/Footer/Footer.module.css\u001f24\u001f19\u001f6px\u001fUnexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "line": 24,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/patterns/Footer/Footer.module.css\u001f45\u001f19\u001f6px\u001fUnexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "line": 45,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -5815,28 +5815,8 @@
     {
       "column": 19,
       "file": "nextjs-app/shared/patterns/Footer/Footer.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/patterns/Footer/Footer.module.css\u001f76\u001f19\u001f6px\u001fUnexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "line": 76,
-      "rule": "rhythmguard/use-scale",
-      "text": "Unexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "type": "off-scale",
-      "value": "6px"
-    },
-    {
-      "column": 19,
-      "file": "nextjs-app/shared/patterns/Footer/Footer.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/Footer/Footer.module.css\u001f24\u001f19\u001f6px\u001fUnexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 24,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "6px"
-    },
-    {
-      "column": 19,
-      "file": "nextjs-app/shared/patterns/Footer/Footer.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/Footer/Footer.module.css\u001f76\u001f19\u001f6px\u001fUnexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 76,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/Footer/Footer.module.css\u001f45\u001f19\u001f6px\u001fUnexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 45,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -5845,8 +5825,8 @@
     {
       "column": 21,
       "file": "nextjs-app/shared/patterns/Footer/Footer.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/Footer/Footer.module.css\u001f108\u001f21\u001f2rem\u001fUnexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 108,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/Footer/Footer.module.css\u001f77\u001f21\u001f2rem\u001fUnexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 77,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -7386,6 +7366,6 @@
   "formatVersion": 1,
   "summary": {
     "scaleCleanliness": 92,
-    "totalFindings": 738
+    "totalFindings": 736
   }
 }

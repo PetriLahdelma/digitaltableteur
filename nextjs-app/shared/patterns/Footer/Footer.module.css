@@ -8,37 +8,6 @@
   text-align: left;
 }
 
-.footerLinksRow {
-  display: flex;
-  margin-block: var(--space-layout-12);
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: var(--space-layout-12);
-}
-
-.footerLinksRow a {
-  position: relative;
-  text-decoration: none;
-  color: var(--inverted-text-color);
-  padding-bottom: 6px;
-}
-
-.footerLinksRow a::after {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 6px;
-  background-color: var(--underline-accent-color, currentcolor);
-  transition: opacity 0.2s ease;
-  opacity: 0;
-  content: "";
-  mask-image: var(--wavy-underline-mask);
-  mask-repeat: repeat-x;
-  mask-size: 16px 6px;
-}
-
 .socialLinks {
   display: flex;
   margin-block: var(--space-layout-16);
