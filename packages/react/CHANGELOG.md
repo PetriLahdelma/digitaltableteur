@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.7 - 2026-07-11
+
+- Forms semantics unification (#1094, owner ruling): `helperText` is always-on across all field components — TextInput, TextArea, Select, PhoneInput, Combobox, MultiCombobox, Checkbox, Switch, FileUpload now render `error` above the helper instead of replacing it, with `aria-describedby` referencing both ids. Consecutive HelperText lines stack 4px apart as one block.
+- Disabled styling unification (#1096): one recipe on every text-value control — `--color-disabled-bg-light` surface, `--color-primary-disabled` border, `--color-disabled-placeholder` value/placeholder/chip text, dimmed label, `cursor: not-allowed`. PhoneInput previously shipped no disabled styling; Select's label never dimmed. Pair with `@digitaltableteur/tokens-css@0.1.2` for the legible disabled greys (#1099).
+- Combobox/MultiCombobox no longer emit a dangling `aria-describedby` IDREF when `error` is set alongside `helperText` (#1093).
+- Type-only export alignment (#1093, #1095, #1097): prop types for CheckboxGroup, FileUpload, PhoneInput, TextInput, Button (incl. AsButton/AsLink/Surface), ButtonGroup, Menu (6 types), Modal, Toast, Accordion, Tooltip, Breadcrumb, NavMenuList, SocialShare. Runtime public API unchanged: 106 exports.
+- Verified by the full local gate plus check:react-package and check:react-public-api.
+
 ## 0.1.6 - 2026-07-10
 
 - Exports `CodeSnippet` (stable since #1067) with its prop types; public-api manifest now lists 106 exports.
