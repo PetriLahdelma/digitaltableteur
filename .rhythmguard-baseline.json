@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-11T10:09:06.301Z",
+  "createdAt": "2026-07-11T10:16:28.968Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -4693,120 +4693,10 @@
       "value": "0.35rem"
     },
     {
-      "column": 12,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f3\u001f12\u001f2rem\u001fUnexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 3,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "2rem"
-    },
-    {
-      "column": 17,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f3\u001f17\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 3,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1rem"
-    },
-    {
       "column": 18,
       "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f13\u001f18\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 13,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1rem"
-    },
-    {
-      "column": 17,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f17\u001f17\u001f2rem\u001fUnexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 17,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "2rem"
-    },
-    {
-      "column": 22,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f17\u001f22\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 17,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1rem"
-    },
-    {
-      "column": 21,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f22\u001f21\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 22,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1rem"
-    },
-    {
-      "column": 21,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f28\u001f21\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 28,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1rem"
-    },
-    {
-      "column": 25,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f29\u001f25\u001f1.5rem\u001fUnexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 29,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1.5rem"
-    },
-    {
-      "column": 21,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f33\u001f21\u001f0.5rem\u001fUnexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 33,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "0.5rem"
-    },
-    {
-      "column": 21,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f37\u001f21\u001f2rem\u001fUnexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 37,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "2rem"
-    },
-    {
-      "column": 17,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f64\u001f17\u001f1.5rem\u001fUnexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 64,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "1.5rem"
-    },
-    {
-      "column": 18,
-      "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f77\u001f18\u001f2rem\u001fUnexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 77,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f11\u001f18\u001f2rem\u001fUnexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 11,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -4815,8 +4705,8 @@
     {
       "column": 21,
       "file": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f81\u001f21\u001f2rem\u001fUnexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 81,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.module.css\u001f15\u001f21\u001f2rem\u001fUnexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 15,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -7496,6 +7386,6 @@
   "formatVersion": 1,
   "summary": {
     "scaleCleanliness": 92,
-    "totalFindings": 749
+    "totalFindings": 738
   }
 }
