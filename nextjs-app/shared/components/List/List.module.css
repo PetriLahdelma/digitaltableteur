@@ -16,11 +16,22 @@
   overflow-wrap: break-word;
 }
 
-/* The em-dash string marker renders outside the li box and is wider than the
-   16px default padding, so it would hang past the list's left edge.
-   Font-relative padding because marker width tracks the type size. */
+/* Em-dash markers hang in the li's own padding (the ProcessBlock idiom):
+   the list box stays flush with surrounding copy, the dash paints at the
+   column edge, and wrapped lines align under first-line text. */
 .markerDash {
-  padding-inline-start: 2em;
+  padding-inline-start: 0;
+}
+
+.markerDash li {
+  position: relative;
+  padding-inline-start: 1.5em;
+}
+
+.markerDash li::before {
+  position: absolute;
+  content: "—";
+  inset-inline-start: 0;
 }
 
 /* Spacing classes */

@@ -61,14 +61,13 @@ describe("List", () => {
     expect(container.firstChild).toHaveStyle({ listStyleType: "circle" });
   });
 
-  it("maps listStyleType='dash' to an em-dash string marker", () => {
+  it("draws dash markers via the hanging ::before idiom (native marker off)", () => {
+    // The dash paints at the column edge inside the li padding, so the list
+    // box stays flush with surrounding copy (no extra left inset).
     const { container } = render(<List items={items} listStyleType="dash" />);
-    expect(container.firstChild).toHaveStyle({ listStyleType: '"— "' });
-  });
-
-  it("gives the dash marker enough inline padding to stay inside the list box", () => {
-    const { container } = render(<List items={items} listStyleType="dash" />);
-    expect((container.firstChild as HTMLElement).className).toMatch(/markerDash/);
+    const list = container.firstChild as HTMLElement;
+    expect(list).toHaveStyle({ listStyleType: "none" });
+    expect(list.className).toMatch(/markerDash/);
     const { container: plain } = render(<List items={items} />);
     expect((plain.firstChild as HTMLElement).className).not.toMatch(/markerDash/);
   });

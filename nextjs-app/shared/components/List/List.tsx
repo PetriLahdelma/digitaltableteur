@@ -86,7 +86,9 @@ export const List = React.forwardRef<
     listStyleType === "none"
       ? ('" "' as ListStyleType)
       : listStyleType === "dash"
-        ? ('"— "' as ListStyleType)
+        ? // The dash is drawn by .markerDash li::before so it can hang in the
+          // li padding; the native marker is suppressed.
+          ("none" as ListStyleType)
         : listStyleType;
 
   const combinedStyle = {
