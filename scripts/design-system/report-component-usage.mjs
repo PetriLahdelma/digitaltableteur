@@ -85,37 +85,49 @@ function importPatternsFor(name) {
 }
 
 function barrelImportedNames(source) {
-  const names = new Set();
-  const barrelImportRe = /import\s+(?:type\s+)?\{([^}]+)\}\s+from\s+["']@digitaltableteur\/react["']/g;
+  // value = runtime imports (real package consumption); typeOnly = statement-
+  // or specifier-level `type` imports, which don't consume the shipped code.
+  const value = new Set();
+  const typeOnly = new Set();
+  const barrelImportRe = /import\s+(type\s+)?\{([^}]+)\}\s+from\s+["']@digitaltableteur\/react["']/g;
   for (const match of source.matchAll(barrelImportRe)) {
-    for (const raw of match[1].split(",")) {
+    const statementTypeOnly = Boolean(match[1]);
+    for (const raw of match[2].split(",")) {
+      const inlineType = /\btype\b/.test(raw);
       const cleaned = raw.replace(/\btype\b/, "").trim().split(/\s+as\s+/)[0].trim();
-      if (cleaned) names.add(cleaned);
+      if (!cleaned) continue;
+      (statementTypeOnly || inlineType ? typeOnly : value).add(cleaned);
     }
   }
-  return names;
+  return { value, typeOnly };
 }
 
 const components = listComponents();
 const files = collectSourceFiles();
 const fileEntries = files.map((path) => {
   const source = readFileSync(path, "utf8");
+  const barrel = source.includes("@digitaltableteur/react")
+    ? barrelImportedNames(source)
+    : { value: new Set(), typeOnly: new Set() };
   return {
     path: relative(ROOT, path),
     source,
-    barrelNames: source.includes("@digitaltableteur/react") ? barrelImportedNames(source) : new Set(),
+    barrelNames: barrel,
   };
 });
 
 const rows = components.map(({ name, kind, status }) => {
   const patterns = importPatternsFor(name);
   const importers = [];
+  const packageImporters = [];
   for (const entry of fileEntries) {
     // A component's own directory does not count as an importer of itself.
     if (entry.path.includes(`/${name}/`)) continue;
     const direct = patterns.some((re) => re.test(entry.source));
-    const viaBarrel = entry.barrelNames.has(name);
+    const viaBarrelValue = entry.barrelNames.value.has(name);
+    const viaBarrel = viaBarrelValue || entry.barrelNames.typeOnly.has(name);
     if (direct || viaBarrel) importers.push(entry.path);
+    if (viaBarrelValue) packageImporters.push(entry.path);
   }
   const consumers = computeConsumersForComponent(name);
   return {
@@ -124,6 +136,8 @@ const rows = components.map(({ name, kind, status }) => {
     status,
     directImportCount: importers.length,
     directImporters: importers.sort(),
+    packageImportCount: packageImporters.length,
+    packageImporters: packageImporters.sort(),
     prodPageCount: consumers.length,
     prodPages: consumers.map((c) => c.path),
   };
@@ -150,5 +164,9 @@ for (const row of sorted) {
   );
 }
 const unused = sorted.filter((row) => row.directImportCount === 0);
+const viaPackage = rows.filter((row) => row.packageImportCount > 0);
 console.log(`\n${rows.length} components; ${unused.length} with zero direct imports.`);
+console.log(
+  `${viaPackage.length} of ${rows.length} consumed via @digitaltableteur/react (runtime imports).`,
+);
 console.log(`Report: ${relative(ROOT, OUT_PATH)}`);

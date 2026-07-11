@@ -9,6 +9,8 @@ type UsageRow = {
   status: string | null;
   directImportCount: number;
   directImporters: string[];
+  packageImportCount?: number;
+  packageImporters?: string[];
   prodPageCount: number;
   prodPages: string[];
 };
@@ -35,6 +37,9 @@ const ComponentUsageContent = () => {
   }, [sortKey, onlyUnused]);
 
   const unusedCount = rows.filter((row) => row.directImportCount === 0).length;
+  const viaPackageCount = rows.filter(
+    (row) => (row.packageImportCount ?? 0) > 0,
+  ).length;
 
   return (
     <article className={styles.wrapper}>
@@ -56,6 +61,15 @@ const ComponentUsageContent = () => {
           <div className={styles.principle}>
             <h3>{unusedCount}</h3>
             <p>Without any importer</p>
+          </div>
+          <div className={styles.principle}>
+            <h3>
+              {viaPackageCount}/{rows.length}
+            </h3>
+            <p>
+              Consumed via <code>@digitaltableteur/react</code> (runtime
+              imports from the npm package)
+            </p>
           </div>
           <div className={styles.principle}>
             <h3>{new Date(generatedAt).toLocaleDateString("en-GB")}</h3>
