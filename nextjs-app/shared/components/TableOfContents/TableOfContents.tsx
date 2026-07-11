@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { useTranslate } from "../../lib/translation";
 import { ChevronDown } from "lucide-react";
 import { cn } from "../../lib/cn";
@@ -45,6 +45,7 @@ export function TableOfContents({
 }: TableOfContentsProps) {
   const t = useTranslate();
   const [isExpanded, setIsExpanded] = useState(false);
+  const listId = useId();
 
   // Don't render if no items
   if (!items || items.length === 0) {
@@ -70,7 +71,7 @@ export function TableOfContents({
       className={cn(
         "w-full",
         sticky && "tablet:sticky tablet:top-24",
-        className
+        className,
       )}
     >
       {/* Mobile toggle button */}
@@ -81,26 +82,28 @@ export function TableOfContents({
           "flex items-center justify-between w-full",
           "tablet:hidden",
           "p-4 bg-muted rounded-lg",
-          "text-sm font-body font-medium text-foreground"
+          "text-sm font-body font-medium text-foreground",
         )}
         aria-expanded={isExpanded}
+        aria-controls={listId}
       >
         <span>{t("articleTOCTitle", "Table of Contents")}</span>
         <ChevronDown
           className={cn(
             "w-4 h-4 transition-transform",
-            isExpanded && "rotate-180"
+            isExpanded && "rotate-180",
           )}
         />
       </button>
 
       {/* TOC list */}
       <div
+        id={listId}
         className={cn(
           // Mobile: collapsible
           "tablet:block",
           isExpanded ? "block" : "hidden",
-          "mt-2 tablet:mt-0"
+          "mt-2 tablet:mt-0",
         )}
       >
         {/* Title (desktop only) */}
@@ -129,8 +132,9 @@ export function TableOfContents({
                     // Active state
                     isActive
                       ? "text-foreground font-medium bg-muted/50 tablet:bg-transparent tablet:border-l-2 tablet:border-primary tablet:pl-3"
-                      : "text-muted-foreground hover:text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
                   )}
+                  aria-current={isActive ? "location" : undefined}
                 >
                   {item.text}
                 </button>

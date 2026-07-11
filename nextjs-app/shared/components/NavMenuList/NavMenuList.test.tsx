@@ -1,6 +1,7 @@
 import React from "react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import NavMenuList, { NavMenuItem } from "@dt/NavMenuList";
 import {
   NavigationProvider,
@@ -14,7 +15,10 @@ const items: NavMenuItem[] = [
 ];
 
 describe("NavMenuList", () => {
-  const renderNav = (pathname: string) => {
+  const renderNav = (
+    pathname: string,
+    props: Partial<React.ComponentProps<typeof NavMenuList>> = {},
+  ) => {
     const runtime: NavigationRuntime = {
       pathname,
       searchParams: new URLSearchParams(),
@@ -23,7 +27,7 @@ describe("NavMenuList", () => {
     };
     return render(
       <NavigationProvider runtime={runtime}>
-        <NavMenuList items={items} />
+        <NavMenuList items={items} {...props} />
       </NavigationProvider>,
     );
   };
@@ -47,5 +51,16 @@ describe("NavMenuList", () => {
       "aria-current",
       "page",
     );
+  });
+
+  it("calls onNavigate when a link is activated", async () => {
+    const onNavigate = vi.fn((event?: { preventDefault: () => void }) =>
+      event?.preventDefault(),
+    );
+    renderNav("/", { onNavigate });
+
+    await userEvent.click(screen.getByRole("link", { name: "Work" }));
+
+    expect(onNavigate).toHaveBeenCalledTimes(1);
   });
 });

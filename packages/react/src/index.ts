@@ -122,6 +122,10 @@ export {
   type NavLinkProps,
 } from "../../../nextjs-app/shared/components/NavLink";
 export { default as NavMenuList } from "../../../nextjs-app/shared/components/NavMenuList/NavMenuList";
+export type {
+  NavMenuItem,
+  NavMenuListProps,
+} from "../../../nextjs-app/shared/components/NavMenuList";
 export {
   Pagination,
   type PaginationProps,
