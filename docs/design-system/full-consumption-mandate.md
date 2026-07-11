@@ -41,6 +41,10 @@ bespoke survivor**:
   parity** against the pre-change rendering.
 - Repeat per divergent element until none remain.
 
+One blessed exception: **semantic inline text markup** (`<em>`, `<strong>`,
+`<abbr>`, and kin) inside DS `Text`/`Title` children is content semantics,
+not a component, and does not count as raw-HTML debt.
+
 ## Engineering prerequisites (sequenced program)
 
 1. **Pilot** (do first, one component end-to-end): export one self-contained
