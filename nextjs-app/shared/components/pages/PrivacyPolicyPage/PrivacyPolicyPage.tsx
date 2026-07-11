@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import Link from "@dt/Link";
 import List from "@dt/List";
+import Timestamp from "@dt/Timestamp";
 import { Section } from "@dt/Section";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
@@ -102,7 +103,8 @@ export function PrivacyPolicyPage() {
       </Title>
       <Text as="p" size="xs">{t("privacyPolicyIntro")}</Text>
       <Text as="p" size="xs">
-        <em>{t("privacyPolicyLastUpdated")}</em>
+        {t("privacyPolicyLastUpdatedLabel")}{" "}
+        <Timestamp value="2025-11-29" format="date" size="xs" />
       </Text>
 
       <Section spacing="none">

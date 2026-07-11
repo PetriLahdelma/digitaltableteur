@@ -744,7 +744,7 @@
   "privacyPolicyMetaTitle": "Integritetspolicy",
   "privacyPolicyMetaDescription": "Digitaltableteurs integritetspolicy beskriver hur vi behandlar personuppgifter i enlighet med GDPR (dataskyddsförordningen).",
   "privacyPolicyHeading": "Integritetspolicy",
-  "privacyPolicyLastUpdated": "Senast uppdaterad: 29 november 2025",
+  "privacyPolicyLastUpdatedLabel": "Senast uppdaterad:",
   "privacyPolicyIntro": "Digitaltableteur, driven av Petri Lahdelma, respekterar din integritet och åtar sig att skydda dina personuppgifter i enlighet med EU:s allmänna dataskyddsförordning (GDPR) och finsk dataskyddslagstiftning. Denna policy förklarar vilka data vi samlar in, varför vi samlar in dem och dina rättigheter.",
   "privacyPolicyControllerTitle": "Personuppgiftsansvarig",
   "privacyPolicyControllerBody": "Petri Lahdelma (Digitaltableteur)\nHelsingfors, Finland\nE-post: mail@digitaltableteur.com",

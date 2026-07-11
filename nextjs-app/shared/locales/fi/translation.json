@@ -743,7 +743,7 @@
   "aiPolicyContactBody": "Kysymyksiä, pyyntöjä tai huolia tästä tekoälyn käyttö & läpinäkyvyysselosteesta, ota yhteyttä: mail@digitaltableteur.com tai +358 45 657 4469",
   "privacyPolicyHeading": "Tietosuojalauseke",
   "privacyPolicyIntro": "Digitaltableteur kunnioittaa yksityisyyttäsi ja sitoutuu suojelemaan henkilötietojasi. Tämä käytäntö selittää, mitä tietoja keräämme, miten niitä käytämme ja oikeutesi yleisen tietosuoja-asetuksen (GDPR) ja muiden sovellettavien tietosuojalakien mukaisesti.",
-  "privacyPolicyLastUpdated": "Viimeksi päivitetty: 29. marraskuuta 2025",
+  "privacyPolicyLastUpdatedLabel": "Viimeksi päivitetty:",
   "privacyPolicyControllerTitle": "Rekisterinpitäjä",
   "privacyPolicyControllerBody": "Petri Lahdelma (Digitaltableteur)\nHelsinki, Suomi\nSähköposti: mail@digitaltableteur.com",
   "privacyPolicyPurposeTitle": "Mitä tämä käytäntö on?",
