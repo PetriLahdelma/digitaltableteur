@@ -122,4 +122,49 @@ describe("MultiCombobox", () => {
 
     expect(screen.getByText("Pick at least one project type")).toBeInTheDocument();
   });
+
+  it("wires helper text to the input when there is no error", () => {
+    render(
+      <MultiCombobox
+        id="project-type"
+        label="Project type"
+        options={OPTIONS}
+        value={[]}
+        onValueChange={() => {}}
+        helperText="Choose at least one"
+      />,
+    );
+
+    expect(screen.getByRole("combobox", { name: "Project type" })).toHaveAttribute(
+      "aria-describedby",
+      "project-type-helper",
+    );
+    expect(screen.getByText("Choose at least one")).toHaveAttribute(
+      "id",
+      "project-type-helper",
+    );
+  });
+
+  it("wires only the rendered error text when an error replaces helper text", () => {
+    render(
+      <MultiCombobox
+        id="project-type"
+        label="Project type"
+        options={OPTIONS}
+        value={[]}
+        onValueChange={() => {}}
+        helperText="Choose at least one"
+        error="Pick at least one project type"
+      />,
+    );
+
+    const input = screen.getByRole("combobox", { name: "Project type" });
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(input).toHaveAttribute("aria-describedby", "project-type-error");
+    expect(screen.getByText("Pick at least one project type")).toHaveAttribute(
+      "id",
+      "project-type-error",
+    );
+    expect(screen.queryByText("Choose at least one")).not.toBeInTheDocument();
+  });
 });

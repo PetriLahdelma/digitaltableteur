@@ -69,6 +69,24 @@ describe("FileUpload", () => {
     expect(screen.getByText(/File too large/i)).toBeInTheDocument();
   });
 
+  it("calls onFileChange with null when the selected file is cleared", () => {
+    const handleChange = vi.fn();
+    const { container } = renderComponent({ onFileChange: handleChange });
+    const fileInput = container.querySelector(
+      "input[type='file']",
+    ) as HTMLInputElement;
+    const file = new File(["hello"], "hello.pdf", {
+      type: "application/pdf",
+    });
+
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    fireEvent.click(screen.getByRole("button", { name: /remove/i }));
+
+    expect(handleChange).toHaveBeenLastCalledWith(null);
+    const textField = screen.getByLabelText(/attachment/i) as HTMLInputElement;
+    expect(textField.value).toBe("");
+  });
+
   it("clicking the text field triggers the hidden file input", () => {
     const { container } = renderComponent();
     const fileInput = container.querySelector(

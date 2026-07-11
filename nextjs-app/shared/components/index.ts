@@ -17,6 +17,7 @@ export { default as ButtonGroup } from "./ButtonGroup/ButtonGroup";
 export { default as Card } from "./Card/Card";
 export { default as Checkbox } from "./Checkbox/Checkbox";
 export { default as CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
+export type { CheckboxGroupProps } from "./CheckboxGroup/CheckboxGroup";
 export { default as ChunkErrorBoundary } from "./ChunkErrorBoundary/ChunkErrorBoundary";
 export {
   CommandPalette,
@@ -42,6 +43,7 @@ export { default as EmptyState } from "./EmptyState/EmptyState";
 export { default as EmailSignatureGenerator } from "./EmailSignatureGenerator";
 export { default as FlexBox } from "./FlexBox/FlexBox";
 export { default as FileUpload } from "./FileUpload/FileUpload";
+export type { FileUploadProps } from "./FileUpload/FileUpload";
 export { default as Gallery } from "./Gallery/Gallery";
 export { default as Grid } from "./Grid/Grid";
 export { default as GroupLabel } from "./GroupLabel/GroupLabel";
@@ -50,6 +52,7 @@ export { default as HelsinkiClock } from "./HelsinkiClock/HelsinkiClock";
 export { default as Kbd } from "./Kbd/Kbd";
 export { default as StatusDot } from "./StatusDot/StatusDot";
 export { default as TextInput } from "./TextInput/TextInput";
+export type { TextInputProps } from "./TextInput/TextInput";
 export { default as Label } from "./Label/Label";
 export { default as Link } from "./Link/Link";
 export { default as List } from "./List/List";
@@ -72,6 +75,7 @@ export { NextLayout } from "./NextLayout";
 export { default as OpenHours } from "./OpenHours/OpenHours";
 export { default as PersonCard } from "./PersonCard/PersonCard";
 export { default as PhoneInput } from "./PhoneInput/PhoneInput";
+export type { PhoneInputProps } from "./PhoneInput/PhoneInput";
 export { default as SecureCVDownload } from "./SecureCVDownload/SecureCVDownload";
 export {
   SegmentedControl,

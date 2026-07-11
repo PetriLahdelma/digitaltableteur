@@ -55,4 +55,49 @@ describe("Combobox", () => {
     fireEvent.click(screen.getByRole("button", { name: /toggle options/i }));
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
   });
+
+  it("wires helper text to the trigger when there is no error", () => {
+    render(
+      <Combobox
+        id="timeline"
+        label="Timeline"
+        options={OPTIONS}
+        value=""
+        onValueChange={() => {}}
+        helperText="Choose a timeline"
+      />,
+    );
+
+    expect(screen.getByRole("combobox", { name: "Timeline" })).toHaveAttribute(
+      "aria-describedby",
+      "timeline-helper",
+    );
+    expect(screen.getByText("Choose a timeline")).toHaveAttribute(
+      "id",
+      "timeline-helper",
+    );
+  });
+
+  it("wires only the rendered error text when an error replaces helper text", () => {
+    render(
+      <Combobox
+        id="timeline"
+        label="Timeline"
+        options={OPTIONS}
+        value=""
+        onValueChange={() => {}}
+        helperText="Choose a timeline"
+        error="Timeline is required"
+      />,
+    );
+
+    const trigger = screen.getByRole("combobox", { name: "Timeline" });
+    expect(trigger).toHaveAttribute("aria-invalid", "true");
+    expect(trigger).toHaveAttribute("aria-describedby", "timeline-error");
+    expect(screen.getByText("Timeline is required")).toHaveAttribute(
+      "id",
+      "timeline-error",
+    );
+    expect(screen.queryByText("Choose a timeline")).not.toBeInTheDocument();
+  });
 });

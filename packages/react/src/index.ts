@@ -18,6 +18,7 @@ export {
 } from "../../../nextjs-app/shared/components/CategoryFilter";
 export { default as Checkbox } from "../../../nextjs-app/shared/components/Checkbox/Checkbox";
 export { default as CheckboxGroup } from "../../../nextjs-app/shared/components/CheckboxGroup/CheckboxGroup";
+export type { CheckboxGroupProps } from "../../../nextjs-app/shared/components/CheckboxGroup/CheckboxGroup";
 export { default as CodeBlockWindow } from "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow";
 export { default as CodeSnippet } from "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet";
 export type {
@@ -59,6 +60,7 @@ export {
 } from "../../../nextjs-app/shared/components/ExpandableSection";
 export { default as FlexBox } from "../../../nextjs-app/shared/components/FlexBox/FlexBox";
 export { default as FileUpload } from "../../../nextjs-app/shared/components/FileUpload/FileUpload";
+export type { FileUploadProps } from "../../../nextjs-app/shared/components/FileUpload/FileUpload";
 export {
   FormField,
   type FormFieldProps,
@@ -109,6 +111,7 @@ export {
   type PaginationProps,
 } from "../../../nextjs-app/shared/components/Pagination";
 export { default as PhoneInput } from "../../../nextjs-app/shared/components/PhoneInput/PhoneInput";
+export type { PhoneInputProps } from "../../../nextjs-app/shared/components/PhoneInput/PhoneInput";
 export { default as Progress } from "../../../nextjs-app/shared/components/Progress/Progress";
 export type { ProgressProps } from "../../../nextjs-app/shared/components/Progress/Progress";
 export { default as Radio } from "../../../nextjs-app/shared/components/Radio/Radio";
@@ -155,6 +158,7 @@ export {
   type TextAreaProps,
 } from "../../../nextjs-app/shared/components/TextArea";
 export { default as TextInput } from "../../../nextjs-app/shared/components/TextInput/TextInput";
+export type { TextInputProps } from "../../../nextjs-app/shared/components/TextInput/TextInput";
 export {
   ThemeProvider,
   useTheme,
