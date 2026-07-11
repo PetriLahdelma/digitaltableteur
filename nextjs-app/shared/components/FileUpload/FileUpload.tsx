@@ -24,7 +24,7 @@ export interface FileUploadProps {
   maxSizeInBytes?: number;
   /** Error shown when a picked file exceeds maxSizeInBytes */
   sizeErrorMessage?: string;
-  /** External error message; replaces the helper line */
+  /** External error message; renders above the helper line */
   error?: string;
   /** Controlled File value */
   value?: File | null;
@@ -140,12 +140,15 @@ const FileUpload: React.FC<FileUploadProps> = ({
     />
   );
 
-  const helper = displayError ? (
-    <HelperText id={errorId} state="error">
-      {displayError}
-    </HelperText>
-  ) : (
-    helperText && <HelperText id={helperTextId}>{helperText}</HelperText>
+  const helper = (
+    <>
+      {displayError && (
+        <HelperText id={errorId} state="error">
+          {displayError}
+        </HelperText>
+      )}
+      {helperText && <HelperText id={helperTextId}>{helperText}</HelperText>}
+    </>
   );
 
   if (isEditorial) {

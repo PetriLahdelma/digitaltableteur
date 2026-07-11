@@ -78,7 +78,7 @@ describe("Combobox", () => {
     );
   });
 
-  it("wires only the rendered error text when an error replaces helper text", () => {
+  it("wires error and helper text together when both are set", () => {
     render(
       <Combobox
         id="timeline"
@@ -93,11 +93,17 @@ describe("Combobox", () => {
 
     const trigger = screen.getByRole("combobox", { name: "Timeline" });
     expect(trigger).toHaveAttribute("aria-invalid", "true");
-    expect(trigger).toHaveAttribute("aria-describedby", "timeline-error");
+    expect(trigger).toHaveAttribute(
+      "aria-describedby",
+      "timeline-error timeline-helper",
+    );
     expect(screen.getByText("Timeline is required")).toHaveAttribute(
       "id",
       "timeline-error",
     );
-    expect(screen.queryByText("Choose a timeline")).not.toBeInTheDocument();
+    expect(screen.getByText("Choose a timeline")).toHaveAttribute(
+      "id",
+      "timeline-helper",
+    );
   });
 });

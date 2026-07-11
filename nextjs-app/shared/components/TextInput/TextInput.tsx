@@ -37,7 +37,7 @@ export interface TextInputProps
   // EXISTING PROPS
   /** Controlled value; an initial "" is treated as absent (uncontrolled), later changes always sync in */
   value?: string | number;
-  /** Validation error message; replaces the helper line and sets aria-invalid */
+  /** Validation error message; renders above the helper line and sets aria-invalid */
   error?: string;
   /** Helper copy below the field */
   helperText?: string;
@@ -110,10 +110,10 @@ const TextInput: React.FC<TextInputProps> = ({
   const hasError = !!(error || phoneError || emailError);
   const errorMessage = error || phoneError || emailError;
 
-  // Compute aria-describedby - link to error or helper text
+  // Compute aria-describedby - link to error and helper text
   const describedBy = [
     hasError && errorId,
-    helperText && !hasError && helperId,
+    helperText && helperId,
   ].filter(Boolean).join(' ') || undefined;
 
   useEffect(() => {
@@ -241,7 +241,7 @@ const TextInput: React.FC<TextInputProps> = ({
           {errorMessage}
         </HelperText>
       )}
-      {helperText && !hasError && (
+      {helperText && (
         <HelperText id={helperId}>{helperText}</HelperText>
       )}
     </div>

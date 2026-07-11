@@ -34,12 +34,12 @@ describe("PhoneInput", () => {
     expect(screen.getByText("Invalid phone number")).toBeInTheDocument();
   });
 
-  it("does not render helper text when error is present", () => {
+  it("renders helper text alongside the error", () => {
     render(
       <PhoneInput label="Phone" error="Invalid" helperText="Helper text" />,
     );
     expect(screen.getByText("Invalid")).toBeInTheDocument();
-    expect(screen.queryByText("Helper text")).not.toBeInTheDocument();
+    expect(screen.getByText("Helper text")).toBeInTheDocument();
   });
 
   it("calls onChange when value changes", async () => {

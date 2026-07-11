@@ -134,7 +134,7 @@ SizeRejection.parameters = {
   docs: {
     description: {
       story:
-        "Rejection state: an oversized pick is dropped, the input resets, and sizeErrorMessage replaces the helper until the next pick.",
+        "Rejection state: an oversized pick is dropped, the input resets, and sizeErrorMessage renders above the helper until the next pick.",
     },
   },
 };

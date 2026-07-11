@@ -28,7 +28,7 @@ export interface CheckboxProps
   id?: string;
   /** Error message under the control; sets aria-invalid and aria-describedby. */
   error?: string;
-  /** Supporting text under the control; suppressed while `error` is set. */
+  /** Supporting text under the control; always rendered, below `error` when both are set. */
   helperText?: string;
 }
 
@@ -112,7 +112,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const describedBy =
       [
         error ? errorId : null,
-        helperText && !error ? helperId : null,
+        helperText ? helperId : null,
         props["aria-describedby"],
       ]
         .filter(Boolean)
@@ -164,13 +164,14 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {showLabel && label}
         </Label>
       </div>
-      {error ? (
+      {error && (
         <HelperText id={errorId} state="error">
           {error}
         </HelperText>
-      ) : helperText ? (
+      )}
+      {helperText && (
         <HelperText id={helperId}>{helperText}</HelperText>
-      ) : null}
+      )}
       </>
     );
   },

@@ -265,7 +265,7 @@ export const WithError: Story = {
     docs: {
       description: {
         story:
-          "The control owns its error: it replaces the helper line, sets aria-invalid, and announces via role=alert. Useful when an immediate toggle fails server-side.",
+          "The control owns its error: it renders above the helper line, sets aria-invalid, and announces via role=alert. Useful when an immediate toggle fails server-side.",
       },
     },
   },

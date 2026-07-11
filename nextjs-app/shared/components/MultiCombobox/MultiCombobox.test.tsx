@@ -145,7 +145,7 @@ describe("MultiCombobox", () => {
     );
   });
 
-  it("wires only the rendered error text when an error replaces helper text", () => {
+  it("wires error and helper text together when both are set", () => {
     render(
       <MultiCombobox
         id="project-type"
@@ -160,11 +160,17 @@ describe("MultiCombobox", () => {
 
     const input = screen.getByRole("combobox", { name: "Project type" });
     expect(input).toHaveAttribute("aria-invalid", "true");
-    expect(input).toHaveAttribute("aria-describedby", "project-type-error");
+    expect(input).toHaveAttribute(
+      "aria-describedby",
+      "project-type-error project-type-helper",
+    );
     expect(screen.getByText("Pick at least one project type")).toHaveAttribute(
       "id",
       "project-type-error",
     );
-    expect(screen.queryByText("Choose at least one")).not.toBeInTheDocument();
+    expect(screen.getByText("Choose at least one")).toHaveAttribute(
+      "id",
+      "project-type-helper",
+    );
   });
 });

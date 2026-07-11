@@ -9,7 +9,7 @@ export interface TextAreaProps
   label: string;
   /** Value synced into the field; typing still works after it is set */
   value?: string;
-  /** Validation error message; replaces the helper line */
+  /** Validation error message; renders above the helper line */
   error?: string;
   /** Helper copy below the field */
   helperText?: string;
@@ -50,7 +50,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 
   const hasError = !!error;
   const describedBy =
-    [hasError && errorId, helperText && !hasError && helperId]
+    [hasError && errorId, helperText && helperId]
       .filter(Boolean)
       .join(" ") || undefined;
 
@@ -141,7 +141,7 @@ const TextArea: React.FC<TextAreaProps> = ({
           {error}
         </HelperText>
       )}
-      {helperText && !hasError && (
+      {helperText && (
         <HelperText id={helperId}>{helperText}</HelperText>
       )}
     </div>

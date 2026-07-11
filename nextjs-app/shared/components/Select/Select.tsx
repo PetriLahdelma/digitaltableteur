@@ -20,7 +20,7 @@ export interface SelectProps
   label: string;
   /** Option objects with value, label, and optional disabled; children override this */
   options?: SelectOptionItem[];
-  /** Supporting text under the control; suppressed while `error` is set. */
+  /** Supporting text under the control; always rendered, below `error` when both are set. */
   helperText?: string;
   /** Error message under the control; sets aria-invalid and aria-describedby. */
   error?: string;
@@ -82,7 +82,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     const describedBy =
       [
         error ? errorId : null,
-        helperText && !error ? helperId : null,
+        helperText ? helperId : null,
         rest["aria-describedby"],
       ]
         .filter(Boolean)
@@ -148,7 +148,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             {error}
           </HelperText>
         )}
-        {helperText && !error && (
+        {helperText && (
           <HelperText id={helperId}>{helperText}</HelperText>
         )}
       </div>
