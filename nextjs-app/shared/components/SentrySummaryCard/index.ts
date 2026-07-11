@@ -1,2 +1,6 @@
 export { default } from "./SentrySummaryCard";
-export type { SentryIssue, SentrySummaryData } from "./SentrySummaryCard";
+export type {
+  SentryIssue,
+  SentrySummaryCardProps,
+  SentrySummaryData,
+} from "./SentrySummaryCard";

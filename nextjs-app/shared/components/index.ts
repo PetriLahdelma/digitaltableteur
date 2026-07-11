@@ -32,6 +32,11 @@ export {
   type CommandPaletteItem,
 } from "./CommandPalette";
 export { default as ComplianceCard } from "./ComplianceCard/ComplianceCard";
+export type {
+  ComplianceCardProps,
+  ComplianceRule,
+  ComplianceStatus,
+} from "./ComplianceCard";
 export { default as ContactForm } from "./ContactForm/ContactForm";
 export { default as ChatWidget } from "./ChatWidget/ChatWidget";
 export { default as ChatHeader } from "./ChatWidget/ChatHeader";
@@ -39,6 +44,7 @@ export { default as ChatMessages } from "./ChatWidget/ChatMessages";
 export { default as ChatComposer } from "./ChatWidget/ChatComposer";
 export { default as ChatToggle } from "./ChatWidget/ChatToggle";
 export { default as CookieConsent } from "./CookieConsent/CookieConsent";
+export type { CookieConsentProps } from "./CookieConsent";
 export { default as CodeBlockWindow } from "./CodeBlockWindow/CodeBlockWindow";
 export { Container, type ContainerProps } from "./Container";
 export {
@@ -47,6 +53,7 @@ export {
   type DonnyAvatarProps,
 } from "./DonnyAvatar";
 export { default as EmptyState } from "./EmptyState/EmptyState";
+export type { EmptyStateProps, EmptyStateSize } from "./EmptyState";
 export { default as EmailSignatureGenerator } from "./EmailSignatureGenerator";
 export { default as FlexBox } from "./FlexBox/FlexBox";
 export { default as FileUpload } from "./FileUpload/FileUpload";
@@ -58,6 +65,11 @@ export { default as Icon } from "./Icon/Icon";
 export { default as HelsinkiClock } from "./HelsinkiClock/HelsinkiClock";
 export { default as Kbd } from "./Kbd/Kbd";
 export { default as StatusDot } from "./StatusDot/StatusDot";
+export type {
+  StatusDotProps,
+  StatusDotSize,
+  StatusDotTone,
+} from "./StatusDot";
 export { default as TextInput } from "./TextInput/TextInput";
 export type { TextInputProps } from "./TextInput/TextInput";
 export { default as Label } from "./Label/Label";
@@ -105,6 +117,7 @@ export { default as ServicesGrid } from "./ServicesGrid/ServicesGrid";
 export { default as SiteTree } from "./SiteTree";
 export type { SiteTreeNode, SiteTreeProps } from "./SiteTree";
 export { default as Skeleton } from "./Skeleton/Skeleton";
+export type { SkeletonProps } from "./Skeleton";
 export { SkillsGrid, type SkillsGridProps, type Skill } from "./SkillsGrid";
 export { default as StudioMap } from "./StudioMap/StudioMap";
 export { default as Switch } from "./Switch/Switch";

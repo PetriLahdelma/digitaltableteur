@@ -63,7 +63,34 @@ describe("Toast", () => {
     render(<Toast message="Test message" open={true} />);
     const toast = screen.getByRole("status");
     expect(toast).toHaveAttribute("aria-live", "polite");
+    expect(toast).toHaveAttribute("aria-atomic", "true");
     expect(screen.getByText("Test message")).toBeInTheDocument();
+  });
+
+  it("uses assertive alert semantics for warning and error tones", () => {
+    const { rerender } = render(
+      <Toast message="Check this" open={true} tone="warning" />,
+    );
+
+    expect(screen.getByRole("alert")).toHaveAttribute(
+      "aria-live",
+      "assertive",
+    );
+
+    rerender(<Toast message="Failed" open={true} tone="error" />);
+
+    expect(screen.getByRole("alert")).toHaveAttribute(
+      "aria-live",
+      "assertive",
+    );
+  });
+
+  it("keeps tone icons decorative", () => {
+    const { container } = render(
+      <Toast message="Saved" open={true} tone="success" />,
+    );
+
+    expect(container.querySelector("[aria-hidden='true']")).toBeInTheDocument();
   });
 
   it("clears timer when component unmounts", () => {

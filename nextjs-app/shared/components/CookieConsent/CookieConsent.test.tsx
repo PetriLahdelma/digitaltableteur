@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { vi, beforeEach, describe, it, expect } from "vitest";
 import CookieConsent from "@dt/CookieConsent";
 import { CookieConsentProvider } from "../../lib/cookieConsent";
+import styles from "./CookieConsent.module.css";
 
 const mockT = vi.fn((key: string) => key);
 const mockI18n = { language: "en" };
@@ -111,6 +112,9 @@ describe("CookieConsent", () => {
     );
     expect(
       screen.getByRole("heading", { name: /cookie consent/i }),
+    ).toBeInTheDocument();
+    expect(
+      document.querySelector(`.${styles.slider}[aria-hidden="true"]`),
     ).toBeInTheDocument();
   });
 

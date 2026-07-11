@@ -149,6 +149,17 @@ describe("ComplianceCard", () => {
       ).toBeInTheDocument();
     });
 
+    test("resize handle exposes separator value semantics", () => {
+      render(<ComplianceCard title="Test" rules={mockRules} />);
+      const resizeHandle = screen.getByRole("separator", {
+        name: "complianceCard.resizeHandle",
+      });
+
+      expect(resizeHandle).toHaveAttribute("aria-valuenow", "100");
+      expect(resizeHandle).toHaveAttribute("aria-valuemin", "0");
+      expect(resizeHandle).toHaveAttribute("aria-valuemax", "100");
+    });
+
     test("uses grid layout for rules", () => {
       const { container } = render(
         <ComplianceCard title="Test" rules={mockRules} />,
