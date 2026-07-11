@@ -1,6 +1,6 @@
 {
   "name": "@digitaltableteur/tokens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "CSS-sourced Digitaltableteur design tokens generated from production variables.css.",
   "type": "module",
