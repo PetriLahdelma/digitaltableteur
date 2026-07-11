@@ -207,13 +207,27 @@ mockups) — out of scope, leave as-is.
   MINTED (DT / Dimension 9999, CORNER_RADIUS, var(--radius-full)), sizes 32/40/48 with 20/24/28
   icons, Icon INSTANCE_SWAP wired to all variants. Both sets verified Light + forced-Dark.
   Ceiling 38 → 37.
-- [ ] **B2c Menu (molecule-tier leftover listed under atoms drift)** — Menu align:3 variants;
-  fold into B3.
-- [ ] **B3 Molecules parity** — drifted (Tabs, Modal, Card, Select, Toast, AlertBanner, Accordion,
-  RadioGroup, SplitButton, EmptyState) + missing stable molecules (EnhancedProjectCard, List,
-  ReadingProgress, AuthorBio, LanguageSwitcher, ValueCard, Pagination, PhoneInput, Combobox,
-  MultiCombobox, ExpandableSection, FormFieldEditorial, ServiceCard, SocialShare, CategoryFilter,
-  SecureCVDownload, SiteTree, FormField).
+- [x] **B2c Menu** — DONE 2026-07-11 (folded into B3a). Menu `align` is popover PLACEMENT
+  (start|center|end, zero visual CSS) — modelled as a usage note in the component description
+  per the geometry/placement-only rule, NOT three identical variants. Icon vectors rebound to
+  color/primary (code truth: `.itemIcon` color); everything else was already bound.
+- [ ] **B3 Molecules parity** — **B3a DONE 2026-07-11 (drifted remodels: Menu, Tabs, Card,
+  Select).** Whole-file dependency scan first: only one dependent instance existed
+  (Select State=Default in an Organism — rename-safe). Tabs rebuilt as a 9-variant set
+  (Variant default|pills|underline × Size sm|md|lg, node **1211-2930**; old single component
+  381:5 deleted, contract + story URLs updated). Card remodeled in place (node id kept):
+  legacy Elevated/Outlined/Filled/Variant4 → Variant default|muted|transparent ×
+  Padding none|sm|md|lg = 12, paddings/gap bound to space/internal tokens, radius fixed 12px
+  (code hardcodes it — not a token, recorded in description). Select remodeled in place:
+  legacy State axis removed (states are props, recorded), Size sm|md|lg from Select.module.css
+  metrics, field chrome corrected to 1px color/border + radius/lg + color/white, chevron
+  color/primary (S/M/L prop values documented as aliases). All four verified in forced Dark.
+  **B3b remaining drifted:** Modal, Toast (position → component property), AlertBanner,
+  EmptyState + beta Accordion, RadioGroup, SplitButton.
+  **B3c missing stable molecules:** EnhancedProjectCard, List, ReadingProgress, AuthorBio,
+  LanguageSwitcher, ValueCard, Pagination, PhoneInput, Combobox, MultiCombobox,
+  ExpandableSection, FormFieldEditorial, ServiceCard, SocialShare, CategoryFilter,
+  SecureCVDownload, SiteTree, FormField.
 - [ ] **B4 Organisms rebind + missing** — blog/work cluster variable rebind + variants;
   ContactFormEditorial build.
 - [ ] **B5 Patterns full sets** — rebuild ContactInquiryPanel; missing stable patterns (GridBlock,

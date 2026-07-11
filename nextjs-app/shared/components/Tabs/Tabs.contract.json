@@ -5,7 +5,7 @@
     "group": "navigation",
     "status": "stable",
     "description": "Tablist navigation with keyboard support, a sliding selection indicator, and per-item icon/count.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-5",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1211-2930",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
