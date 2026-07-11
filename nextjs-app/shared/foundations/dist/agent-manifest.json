@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-11T07:57:15.091Z",
+  "generatedAt": "2026-07-11T08:14:01.960Z",
   "summary": {
     "componentCount": 164,
     "statusCounts": {
@@ -12,8 +12,8 @@
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 87.7,
     "codebaseComponentCount": 187,
-    "usageCoveragePercent": 92.7,
-    "componentsWithProductionUsage": 48,
+    "usageCoveragePercent": 93.3,
+    "componentsWithProductionUsage": 49,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -78,20 +78,20 @@
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 164,
-    "withAnyUsage": 152,
-    "withProductionUsage": 48,
-    "uniqueImportedComponents": 152,
-    "totalEvidenceRows": 859,
-    "aliasImportFiles": 476,
+    "withAnyUsage": 153,
+    "withProductionUsage": 49,
+    "uniqueImportedComponents": 153,
+    "totalEvidenceRows": 861,
+    "aliasImportFiles": 478,
     "relativeImportFiles": 391,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-09T23:04:16.149Z",
+    "generatedAt": "2026-07-11T08:13:59.225Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 87,
+    "nodesWithComposesWith": 88,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -9557,8 +9557,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Container",
-        "importCount": 31,
-        "productionImportCount": 3,
+        "importCount": 32,
+        "productionImportCount": 4,
         "patternImportCount": 23,
         "componentImportCount": 4,
         "evidence": [
@@ -9572,6 +9572,12 @@
             "path": "app/blog/[slug]/ServerRelatedPosts.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/Container",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Container",
             "context": "production"
           },
           {
@@ -9624,12 +9630,6 @@
           },
           {
             "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../components/Container",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
             "importKind": "relative",
             "importPath": "../../components/Container",
             "context": "pattern"
@@ -9886,10 +9886,10 @@
         "composesWith": [
           "Section",
           "animations",
-          "Stack",
           "Link",
-          "ScrollIndicator",
-          "BlogCategoryFilter"
+          "Stack",
+          "Title",
+          "ScrollIndicator"
         ],
         "prefersOver": [],
         "declaredPropCount": 5
@@ -16412,7 +16412,8 @@
             "values": [
               "sm",
               "md",
-              "lg"
+              "lg",
+              "inherit"
             ],
             "default": "md",
             "propSourced": true
@@ -16526,7 +16527,8 @@
             "values": [
               "sm",
               "md",
-              "lg"
+              "lg",
+              "inherit"
             ]
           },
           "underline": {
@@ -16693,7 +16695,8 @@
             "values": [
               "sm",
               "md",
-              "lg"
+              "lg",
+              "inherit"
             ]
           },
           "underline": {
@@ -16711,7 +16714,8 @@
             "values": [
               "sm",
               "md",
-              "lg"
+              "lg",
+              "inherit"
             ],
             "default": "sm"
           }
@@ -16748,11 +16752,11 @@
         ],
         "composesWith": [
           "Text",
-          "Badge",
           "Title",
+          "Badge",
+          "Container",
           "Checkbox",
-          "TextInput",
-          "Button"
+          "TextInput"
         ],
         "prefersOver": [
           "Button with href for body-copy links"
@@ -17385,7 +17389,9 @@
         "composesWith": [
           "Text",
           "Title",
+          "Container",
           "Link",
+          "Timestamp",
           "Section"
         ],
         "prefersOver": [],
@@ -24116,9 +24122,9 @@
           "Container",
           "animations",
           "Title",
-          "BlogCategoryFilter",
-          "BlogGrid",
-          "Pagination"
+          "Link",
+          "List",
+          "Timestamp"
         ],
         "prefersOver": [],
         "declaredPropCount": 6
@@ -30825,11 +30831,18 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Timestamp",
-        "importCount": 0,
-        "productionImportCount": 0,
+        "importCount": 1,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 0,
-        "evidence": []
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Timestamp",
+            "context": "production"
+          }
+        ]
       },
       "agent": {
         "preferredImport": "@dt/Timestamp",
@@ -30942,7 +30955,14 @@
         ],
         "replacementFor": [],
         "forbiddenUse": [],
-        "composesWith": [],
+        "composesWith": [
+          "Container",
+          "Link",
+          "List",
+          "Section",
+          "Text",
+          "Title"
+        ],
         "prefersOver": [],
         "declaredPropCount": 11
       }

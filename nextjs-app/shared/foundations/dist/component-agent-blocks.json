@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T07:57:14.817Z",
+  "generatedAt": "2026-07-11T08:14:01.688Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -3051,10 +3051,10 @@
       "composesWith": [
         "Section",
         "animations",
-        "Stack",
         "Link",
-        "ScrollIndicator",
-        "BlogCategoryFilter"
+        "Stack",
+        "Title",
+        "ScrollIndicator"
       ],
       "prefersOver": [],
       "declaredPropCount": 5
@@ -5029,7 +5029,8 @@
           "values": [
             "sm",
             "md",
-            "lg"
+            "lg",
+            "inherit"
           ]
         },
         "underline": {
@@ -5047,7 +5048,8 @@
           "values": [
             "sm",
             "md",
-            "lg"
+            "lg",
+            "inherit"
           ],
           "default": "sm"
         }
@@ -5084,11 +5086,11 @@
       ],
       "composesWith": [
         "Text",
-        "Badge",
         "Title",
+        "Badge",
+        "Container",
         "Checkbox",
-        "TextInput",
-        "Button"
+        "TextInput"
       ],
       "prefersOver": [
         "Button with href for body-copy links"
@@ -5294,7 +5296,9 @@
       "composesWith": [
         "Text",
         "Title",
+        "Container",
         "Link",
+        "Timestamp",
         "Section"
       ],
       "prefersOver": [],
@@ -7420,9 +7424,9 @@
         "Container",
         "animations",
         "Title",
-        "BlogCategoryFilter",
-        "BlogGrid",
-        "Pagination"
+        "Link",
+        "List",
+        "Timestamp"
       ],
       "prefersOver": [],
       "declaredPropCount": 6
@@ -9657,7 +9661,14 @@
       ],
       "replacementFor": [],
       "forbiddenUse": [],
-      "composesWith": [],
+      "composesWith": [
+        "Container",
+        "Link",
+        "List",
+        "Section",
+        "Text",
+        "Title"
+      ],
       "prefersOver": [],
       "declaredPropCount": 11
     },

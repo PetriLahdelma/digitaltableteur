@@ -5,7 +5,7 @@ import Icon from "@dt/Icon";
 export interface LinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   /** Size. @default "md" */
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "inherit";
   /**
    * Wavy underline mode. "always" shows it permanently, "hover" reveals it
    * on hover and keyboard focus (nav lists like the site footer), "none"
@@ -111,9 +111,11 @@ const SIZE_CLASS = {
   sm: styles.linkSm,
   md: styles.linkMd,
   lg: styles.linkLg,
+  // In-copy links: follow the surrounding text size (raw-anchor parity).
+  inherit: styles.linkInherit,
 } as const;
 
-const ICON_SIZE = { sm: 20, md: 24, lg: 32 } as const;
+const ICON_SIZE = { sm: 20, md: 24, lg: 32, inherit: 20 } as const;
 
 const UNDERLINE_CLASS = {
   always: "wavyUnderline",
