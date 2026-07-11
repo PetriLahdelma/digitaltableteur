@@ -5,7 +5,7 @@
     "group": "overlay",
     "status": "stable",
     "description": "Modal dialog for confirmations, forms, and focused tasks.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=384-13",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1222-2927",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
