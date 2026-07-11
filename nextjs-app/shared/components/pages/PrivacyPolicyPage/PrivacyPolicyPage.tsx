@@ -128,14 +128,14 @@ export function PrivacyPolicyPage() {
           {t("privacyPolicyContactFormSubtitle")}
         </Title>
         <Text as="p" size="xs">{t("privacyPolicyContactFormIntro")}</Text>
-        <List as="ul" size="xs" listStyleType="none" items={whatWeCollect.map((key) => t(key))} />
+        <List as="ul" size="xs" listStyleType="dash" items={whatWeCollect.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicyContactFormUsage")}</Text>
 
         <Title level={3} size="xxs">
           {t("privacyPolicyWebsiteVisitorsSubtitle")}
         </Title>
         <Text as="p" size="xs">{t("privacyPolicyWebsiteVisitorsIntro")}</Text>
-        <List as="ul" size="xs" listStyleType="none" items={websiteVisitors.map((key) => t(key))} />
+        <List as="ul" size="xs" listStyleType="dash" items={websiteVisitors.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicyWebsiteVisitorsUsage")}</Text>
       </Section>
 
@@ -151,7 +151,7 @@ export function PrivacyPolicyPage() {
           {t("privacyPolicySharingTitle")}
         </Title>
         <Text as="p" size="xs">{t("privacyPolicySharingIntro")}</Text>
-        <List as="ul" size="xs" listStyleType="none" items={sharingItems.map((key) => t(key))} />
+        <List as="ul" size="xs" listStyleType="dash" items={sharingItems.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicySharingFooter")}</Text>
       </Section>
 
@@ -168,7 +168,7 @@ export function PrivacyPolicyPage() {
         </Title>
         <Text as="p" size="xs">{t("privacyPolicyCookiesIntro")}</Text>
         <Text as="p" size="xs">{t("privacyPolicyCookiesTypes")}</Text>
-        <List as="ul" size="xs" listStyleType="none" items={cookiesItems.map((key) => t(key))} />
+        <List as="ul" size="xs" listStyleType="dash" items={cookiesItems.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicyCookiesControl")}</Text>
       </Section>
 
@@ -184,7 +184,7 @@ export function PrivacyPolicyPage() {
           {t("privacyPolicyYourRightsTitle")}
         </Title>
         <Text as="p" size="xs">{t("privacyPolicyYourRightsIntro")}</Text>
-        <List as="ul" size="xs" listStyleType="none" items={rights.map((key) => t(key))} />
+        <List as="ul" size="xs" listStyleType="dash" items={rights.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicyRightsExercise")}</Text>
         <Text as="p" size="xs">{t("privacyPolicyRightsComplaint")}</Text>
       </Section>
@@ -194,7 +194,7 @@ export function PrivacyPolicyPage() {
           {t("privacyPolicySecurityTitle")}
         </Title>
         <Text as="p" size="xs">{t("privacyPolicySecurityIntro")}</Text>
-        <List as="ul" size="xs" listStyleType="none" items={securityItems.map((key) => t(key))} />
+        <List as="ul" size="xs" listStyleType="dash" items={securityItems.map((key) => t(key))} />
         <Text as="p" size="xs">{t("privacyPolicySecurityFooter")}</Text>
       </Section>
 
