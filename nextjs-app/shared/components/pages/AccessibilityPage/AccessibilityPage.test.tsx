@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../../../../test-utils/render";
 import { AccessibilityPage } from "./AccessibilityPage";
@@ -41,11 +41,5 @@ describe("AccessibilityPage", () => {
       name: /mail@digitaltableteur.com/i,
     });
     expect(emailLinks.length).toBeGreaterThan(0);
-  });
-
-  it("renders back button when onBack is provided", () => {
-    const onBack = vi.fn();
-    renderWithProviders(<AccessibilityPage onBack={onBack} />);
-    expect(screen.getByRole("button", { name: /Back/i })).toBeInTheDocument();
   });
 });

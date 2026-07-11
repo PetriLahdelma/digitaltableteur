@@ -3,26 +3,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
 import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
-
-const renderEmailLink = (text: string, email: string) => {
-  if (!text.includes(email)) {
-    return text;
-  }
-  const [before, after = ""] = text.split(email);
-  return (
-    <>
-      {before}
-      <a href={`mailto:${email}`} className={styles.emailLink}>
-        {email}
-      </a>
-      {after}
-    </>
-  );
-};
 
 const renderContactLinks = (text: string, email: string, phone: string) => {
   // Split by email first
@@ -62,7 +44,7 @@ const renderContactLinks = (text: string, email: string, phone: string) => {
   );
 };
 
-export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
+export function AccessibilityPage() {
   const { t } = useTranslation();
 
   const measures = [
@@ -94,25 +76,6 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
 
   return (
     <div className={styles.policyPage}>
-      {onBack ? (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "1.5rem",
-          }}
-        >
-          <Button variant="secondary" size="md" onClick={onBack}>
-            <Icon
-              name="arrow-left"
-              ariaLabel={t("back")}
-              style={{ marginInlineEnd: 8 }}
-            />
-            {t("back")}
-          </Button>
-        </div>
-      ) : null}
-
       <Title level={1} size="xs">
         {t("accessibilityHeading")}
       </Title>
