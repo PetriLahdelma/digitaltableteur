@@ -9,7 +9,7 @@ import { SocialIconLink } from "./SocialIconLink";
 import contract from "./SocialIconLink.contract.json";
 
 const meta = {
-  title: "Atoms/SocialIconLink",
+  title: "Navigation/SocialIconLink",
   component: SocialIconLink,
   parameters: {
     layout: "centered",

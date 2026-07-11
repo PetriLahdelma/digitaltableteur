@@ -64,3 +64,11 @@
     transition: none;
   }
 }
+
+/* In-copy links inherit the surrounding text's size (raw-anchor parity on
+   fluid type ramps); external-icon size stays at the sm scale. */
+
+.linkInherit {
+  gap: 0.3rem;
+  font-size: inherit;
+}

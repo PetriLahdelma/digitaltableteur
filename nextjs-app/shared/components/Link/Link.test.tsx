@@ -40,6 +40,19 @@ describe("Link", () => {
     expect(linkElement.className).not.toContain("underlineHover");
   });
 
+  it("size=\"inherit\" follows the surrounding text size", () => {
+    render(
+      <p style={{ fontSize: "13px" }}>
+        <Link href="mailto:a@b.c" size="inherit">
+          inline link
+        </Link>
+      </p>,
+    );
+    const linkElement = screen.getByRole("link");
+    expect(linkElement.className).toMatch(/linkInherit/);
+    expect(getComputedStyle(linkElement).fontSize).not.toBe("16px");
+  });
+
   it("renders with custom href", () => {
     render(<Link href="/test">Test Link</Link>);
     const linkElement = screen.getByRole("link");

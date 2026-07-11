@@ -13,7 +13,7 @@ const RECENT = "2026-02-19T17:00:00Z"; // 2 hours before FIXED_NOW
 const OLDER = "2025-11-29T12:00:00Z";
 
 const meta = {
-  title: "Atoms/Timestamp",
+  title: "Content/Timestamp",
   component: Timestamp,
   parameters: {
     layout: "centered",

@@ -68,3 +68,15 @@
 .preLine {
   white-space: pre-line;
 }
+
+/* Privacy policy prose wrapper: Container owns measure/centering/page
+   margins; this only carries block padding and section rhythm. Link, Text,
+   Title, List own their own appearance (no descendant element rules). */
+
+.prosePage {
+  padding-block: 2rem;
+}
+
+.prosePage section {
+  margin-block-end: 2rem;
+}

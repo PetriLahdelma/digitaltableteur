@@ -3,7 +3,7 @@ import { {{Name}} } from "./{{Name}}";
 import contract from "./{{Name}}.contract.json";
 
 const meta = {
-  title: "{{TierPrefix}}/{{Name}}",
+  title: "{{StoryGroup}}/{{Name}}",
   component: {{Name}},
   parameters: {
     layout: "centered",

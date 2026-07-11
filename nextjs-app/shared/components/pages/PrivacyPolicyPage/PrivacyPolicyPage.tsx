@@ -3,6 +3,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { Container } from "@dt/Container";
 import Link from "@dt/Link";
 import List from "@dt/List";
 import Timestamp from "@dt/Timestamp";
@@ -25,7 +26,7 @@ const renderContactLinks = (text: string, email: string, phone?: string) => {
     return (
       <>
         {beforeEmail}
-        <Link href={`mailto:${email}`} size="sm">
+        <Link href={`mailto:${email}`} size="inherit">
           {email}
         </Link>
         {afterEmail}
@@ -37,11 +38,11 @@ const renderContactLinks = (text: string, email: string, phone?: string) => {
   return (
     <>
       {beforeEmail}
-      <Link href={`mailto:${email}`} size="sm">
+      <Link href={`mailto:${email}`} size="inherit">
         {email}
       </Link>
       {betweenEmailPhone}
-      <Link href={`tel:${phone.replace(/\s/g, "")}`} size="sm">
+      <Link href={`tel:${phone.replace(/\s/g, "")}`} size="inherit">
         {phone}
       </Link>
       {afterPhone}
@@ -96,7 +97,7 @@ export function PrivacyPolicyPage() {
   ];
 
   return (
-    <div className={styles.policyPage}>
+    <Container size="sm" className={styles.prosePage}>
 
       <Title level={1} size="xs">
         {t("privacyPolicyHeading")}
@@ -223,6 +224,6 @@ export function PrivacyPolicyPage() {
           )}
         </Text>
       </Section>
-    </div>
+    </Container>
   );
 }

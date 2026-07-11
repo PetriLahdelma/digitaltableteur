@@ -21,7 +21,7 @@ const meta: Meta<typeof Link> = {
   argTypes: {
     size: {
       control: { type: "inline-radio" },
-      options: ["sm", "md", "lg"],
+      options: ["sm", "md", "lg", "inherit"],
       description: "Size.",
       table: { defaultValue: { summary: "md" } },
     },

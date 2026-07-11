@@ -4,7 +4,7 @@ import { FilterChip } from "./FilterChip";
 import contract from "./FilterChip.contract.json";
 
 const meta = {
-  title: "Atoms/FilterChip",
+  title: "Actions/FilterChip",
   component: FilterChip,
   parameters: {
     layout: "centered",

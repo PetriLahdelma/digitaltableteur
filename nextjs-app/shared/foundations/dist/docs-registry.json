@@ -7858,7 +7858,7 @@
       "keyProps": [
         {
           "name": "size",
-          "type": "sm | md | lg",
+          "type": "sm | md | lg | inherit",
           "required": false
         },
         {
@@ -7874,7 +7874,8 @@
           "values": [
             "sm",
             "md",
-            "lg"
+            "lg",
+            "inherit"
           ]
         },
         "underline": {
