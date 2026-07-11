@@ -130,8 +130,8 @@
   --color-muted-light: #909090;
   --color-border: #c0c0c0;
   --color-border-light: #ccc;
-  --color-disabled-bg: #e0e0e0;
-  --color-disabled-bg-light: #d8d8d8;
+  --color-disabled-bg: #e8e8e8; /* 3.01:1 with --color-disabled-placeholder */
+  --color-disabled-bg-light: #efefef; /* 3.21:1 with --color-disabled-placeholder */
   --color-disabled-placeholder: #858585;
   --color-gray-medium: #666;
   --color-light-bg: #f9f9f9;
@@ -387,7 +387,7 @@
   --color-border-light: #444;
   --color-disabled-bg: #23272a;
   --color-disabled-bg-light: #23272a;
-  --color-disabled-placeholder: #555;
+  --color-disabled-placeholder: #767676; /* 3.31:1 on #23272a; #555 was 2.02:1 */
   --color-gray-medium: #888;
   --color-light-bg: #23272a;
   --accent-pink: #f205c5;
@@ -454,8 +454,8 @@
   --color-border: #333;
   --color-border-light: #444;
   --color-disabled-bg: #313131;
-  --color-disabled-bg-light: #7b7b7b;
-  --color-disabled-placeholder: #555;
+  --color-disabled-bg-light: #313131; /* #7b7b7b midtone was 1.76:1 with any gray text */
+  --color-disabled-placeholder: #9e9e9e; /* 4.86:1 on #313131; #555 was 1.74:1 */
   --color-gray-medium: #888;
   --color-light-bg: #101010;
   --accent-pink: #fff;
@@ -565,9 +565,9 @@
   --color-muted-light: #555;
   --color-border: #333;
   --color-border-light: #444;
-  --color-disabled-bg: #313131;
-  --color-disabled-bg-light: #7b7b7b;
-  --color-disabled-placeholder: #555;
+  --color-disabled-bg: #e8e8e8; /* dark-on-light HC theme: near-black fields were illegible */
+  --color-disabled-bg-light: #efefef;
+  --color-disabled-placeholder: #6b6b6b; /* 4.63:1 on #efefef, 4.35:1 on #e8e8e8 */
   --color-gray-medium: #888;
   --color-light-bg: #f1f1f1;
   --accent-pink: #000;
