@@ -11,6 +11,24 @@ import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
 
+const delimiter = ": ";
+
+const emphasiseLeadingLabel = (text: string) => {
+  const delimiterIndex = text.indexOf(delimiter);
+  if (delimiterIndex === -1) {
+    return <strong>{text}</strong>;
+  }
+  const label = text.slice(0, delimiterIndex);
+  const remainder = text.slice(delimiterIndex + delimiter.length);
+  return (
+    <>
+      <strong>{label}</strong>
+      {delimiter}
+      {remainder}
+    </>
+  );
+};
+
 const renderContactLinks = (text: string, email: string, phone?: string) => {
   // Split by email first
   const emailParts = text.split(email);
@@ -126,7 +144,7 @@ export function AccessibilityPage() {
           as="ul"
           size="xs"
           listStyleType="dash"
-          items={technicalSpecs.map((key) => t(key))}
+          items={technicalSpecs.map((key) => emphasiseLeadingLabel(t(key)))}
         />
       </Section>
 
