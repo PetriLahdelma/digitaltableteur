@@ -8099,7 +8099,7 @@
         },
         {
           "name": "listStyleType",
-          "type": "none | decimal | circle | square | disc | decimal-leading-zero | lower-alpha | upper-alpha | lower-roman | upper-roman",
+          "type": "none | decimal | circle | square | disc | decimal-leading-zero | lower-alpha | upper-alpha | lower-roman | upper-roman | dash",
           "required": false
         },
         {
@@ -8166,7 +8166,8 @@
             "lower-alpha",
             "upper-alpha",
             "lower-roman",
-            "upper-roman"
+            "upper-roman",
+            "dash"
           ]
         },
         "spacing": {

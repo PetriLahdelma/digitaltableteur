@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-10T16:24:26.714Z",
+  "generatedAt": "2026-07-11T07:47:39.964Z",
   "summary": {
     "componentCount": 163,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 87.6,
     "codebaseComponentCount": 186,
     "usageCoveragePercent": 93.3,
-    "componentsWithProductionUsage": 46,
+    "componentsWithProductionUsage": 47,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,10 +79,10 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 163,
     "withAnyUsage": 152,
-    "withProductionUsage": 46,
+    "withProductionUsage": 47,
     "uniqueImportedComponents": 152,
-    "totalEvidenceRows": 856,
-    "aliasImportFiles": 473,
+    "totalEvidenceRows": 857,
+    "aliasImportFiles": 474,
     "relativeImportFiles": 391,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -4773,8 +4773,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 67,
-        "productionImportCount": 8,
+        "importCount": 66,
+        "productionImportCount": 7,
         "patternImportCount": 6,
         "componentImportCount": 32,
         "evidence": [
@@ -4815,12 +4815,6 @@
             "context": "production"
           },
           {
-            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "production"
-          },
-          {
             "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Button",
@@ -4846,6 +4840,12 @@
           },
           {
             "path": "nextjs-app/shared/patterns/HighlightSection/HighlightSection.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
             "importKind": "alias",
             "importPath": "@dt/Button",
             "context": "pattern"
@@ -9888,8 +9888,8 @@
           "animations",
           "Stack",
           "Link",
-          "Badge",
-          "Checkbox"
+          "ScrollIndicator",
+          "Badge"
         ],
         "prefersOver": [],
         "declaredPropCount": 5
@@ -14750,8 +14750,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 75,
-        "productionImportCount": 6,
+        "importCount": 74,
+        "productionImportCount": 5,
         "patternImportCount": 5,
         "componentImportCount": 33,
         "evidence": [
@@ -14781,12 +14781,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Icon",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Icon",
             "context": "production"
@@ -14823,6 +14817,12 @@
           },
           {
             "path": "nextjs-app/shared/components/Accordion/Accordion.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Icon",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
             "importKind": "alias",
             "importPath": "@dt/Icon",
             "context": "component"
@@ -17139,7 +17139,8 @@
               "lower-alpha",
               "upper-alpha",
               "lower-roman",
-              "upper-roman"
+              "upper-roman",
+              "dash"
             ]
           },
           "spacing": {
@@ -17236,11 +17237,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 3,
-        "productionImportCount": 0,
+        "importCount": 4,
+        "productionImportCount": 1,
         "patternImportCount": 2,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/List",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
             "importKind": "alias",
@@ -17322,7 +17329,8 @@
               "lower-alpha",
               "upper-alpha",
               "lower-roman",
-              "upper-roman"
+              "upper-roman",
+              "dash"
             ]
           },
           "spacing": {
@@ -17375,8 +17383,9 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
+          "Text",
           "Title",
-          "Text"
+          "Section"
         ],
         "prefersOver": [],
         "declaredPropCount": 9
@@ -23957,11 +23966,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Section",
-        "importCount": 21,
-        "productionImportCount": 1,
+        "importCount": 22,
+        "productionImportCount": 2,
         "patternImportCount": 20,
         "componentImportCount": 0,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Section",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
             "importKind": "relative",
@@ -24024,12 +24039,6 @@
           },
           {
             "path": "nextjs-app/shared/patterns/ManifestoSection/ManifestoSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../components/Section",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/ProjectDetailTemplate/ProjectDetailTemplate.tsx",
             "importKind": "relative",
             "importPath": "../../components/Section",
             "context": "pattern"
@@ -24105,10 +24114,10 @@
         "composesWith": [
           "Container",
           "animations",
+          "Title",
           "BlogCategoryFilter",
           "BlogGrid",
-          "Pagination",
-          "EnhancedArticleCard"
+          "Pagination"
         ],
         "prefersOver": [],
         "declaredPropCount": 6
@@ -29599,13 +29608,19 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 80,
-        "productionImportCount": 19,
+        "importCount": 81,
+        "productionImportCount": 20,
         "patternImportCount": 10,
         "componentImportCount": 27,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/pages/Colophon/ColophonPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Text",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
             "context": "production"
@@ -29666,12 +29681,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Text",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
             "context": "production"

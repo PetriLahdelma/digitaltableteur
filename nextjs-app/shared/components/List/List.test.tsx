@@ -61,6 +61,11 @@ describe("List", () => {
     expect(container.firstChild).toHaveStyle({ listStyleType: "circle" });
   });
 
+  it("maps listStyleType='dash' to an em-dash string marker", () => {
+    const { container } = render(<List items={items} listStyleType="dash" />);
+    expect(container.firstChild).toHaveStyle({ listStyleType: '"— "' });
+  });
+
   it("applies custom inline styles", () => {
     const { container } = render(
       <List items={items} style={{ color: "red" }} />,

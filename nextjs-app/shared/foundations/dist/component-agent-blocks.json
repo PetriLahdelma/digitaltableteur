@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T08:10:01.682Z",
+  "generatedAt": "2026-07-11T07:47:39.691Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -3053,8 +3053,8 @@
         "animations",
         "Stack",
         "Link",
-        "Badge",
-        "Checkbox"
+        "ScrollIndicator",
+        "Badge"
       ],
       "prefersOver": [],
       "declaredPropCount": 5
@@ -5238,7 +5238,8 @@
             "lower-alpha",
             "upper-alpha",
             "lower-roman",
-            "upper-roman"
+            "upper-roman",
+            "dash"
           ]
         },
         "spacing": {
@@ -5291,8 +5292,9 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
+        "Text",
         "Title",
-        "Text"
+        "Section"
       ],
       "prefersOver": [],
       "declaredPropCount": 9
@@ -7416,10 +7418,10 @@
       "composesWith": [
         "Container",
         "animations",
+        "Title",
         "BlogCategoryFilter",
         "BlogGrid",
-        "Pagination",
-        "EnhancedArticleCard"
+        "Pagination"
       ],
       "prefersOver": [],
       "declaredPropCount": 6
