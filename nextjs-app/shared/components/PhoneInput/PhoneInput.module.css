@@ -56,6 +56,24 @@
   font-style: italic;
 }
 
+/* Dedicated-token disabled surface (no opacity), matching the text inputs */
+
+.phone-input:has(:global(.PhoneInputInput):disabled) {
+  border-color: var(--color-primary-disabled);
+  background-color: var(--color-disabled-bg-light);
+  cursor: not-allowed;
+}
+
+.phone-input :global(.PhoneInputInput):disabled {
+  color: var(--color-disabled-placeholder);
+  cursor: not-allowed;
+}
+
+.phone-input :global(.PhoneInputInput):disabled::placeholder {
+  color: var(--color-disabled-placeholder);
+  opacity: 1;
+}
+
 .phone-input :global(.PhoneInputCountry) {
   display: flex;
   margin-inline-end: 0.5rem;
