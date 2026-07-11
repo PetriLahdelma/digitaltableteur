@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, test, expect, vi } from "vitest";
 import axe from "axe-core";
 import ComplianceCard from "@dt/ComplianceCard";
@@ -158,6 +158,25 @@ describe("ComplianceCard", () => {
       expect(resizeHandle).toHaveAttribute("aria-valuenow", "100");
       expect(resizeHandle).toHaveAttribute("aria-valuemin", "0");
       expect(resizeHandle).toHaveAttribute("aria-valuemax", "100");
+    });
+
+    test("reports aria-valuenow across the true resize range", () => {
+      render(<ComplianceCard title="Test" rules={mockRules} />);
+      const resizeHandle = screen.getByRole("separator", {
+        name: "complianceCard.resizeHandle",
+      });
+      const wrapper = resizeHandle.parentElement as HTMLElement;
+      wrapper.getBoundingClientRect = () =>
+        ({ top: 0, left: 0 }) as DOMRect;
+
+      // Drag the handle down to the minimum height (200px). A collapsed
+      // table must report the aria-valuemin of 0, not 25% (the pre-fix
+      // formula divided by the max height and floored at min/max = 25).
+      fireEvent.mouseDown(resizeHandle);
+      fireEvent.mouseMove(document, { clientY: 200, clientX: 600 });
+      fireEvent.mouseUp(document);
+
+      expect(resizeHandle).toHaveAttribute("aria-valuenow", "0");
     });
 
     test("uses grid layout for rules", () => {

@@ -36,6 +36,15 @@ const STATUS_COLOR_MAP: Record<ComplianceStatus, string> = {
   fail: "var(--color-error)",
 };
 
+// Resize bounds. Keep in sync with min/max-height and min/max-width in
+// ComplianceCard.module.css. Defaults MUST stay within these ranges.
+const TABLE_MIN_HEIGHT = 200;
+const TABLE_MAX_HEIGHT = 800;
+const TABLE_MIN_WIDTH = 400;
+const TABLE_MAX_WIDTH = 1200;
+const TABLE_DEFAULT_HEIGHT = TABLE_MAX_HEIGHT;
+const TABLE_DEFAULT_WIDTH = 800;
+
 /**
  * ComplianceCard component.
  */
@@ -58,8 +67,8 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
       day: "numeric",
     });
   }, [lastReviewed]);
-  const [tableHeight, setTableHeight] = useState<number>(900);
-  const [tableWidth, setTableWidth] = useState<number>(800);
+  const [tableHeight, setTableHeight] = useState<number>(TABLE_DEFAULT_HEIGHT);
+  const [tableWidth, setTableWidth] = useState<number>(TABLE_DEFAULT_WIDTH);
   const tableWrapperRef = useRef<HTMLDivElement>(null);
   const isResizing = useRef(false);
 
@@ -77,10 +86,10 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
     const newHeight = e.clientY - rect.top;
     const newWidth = e.clientX - rect.left;
 
-    if (newHeight >= 200 && newHeight <= 800) {
+    if (newHeight >= TABLE_MIN_HEIGHT && newHeight <= TABLE_MAX_HEIGHT) {
       setTableHeight(newHeight);
     }
-    if (newWidth >= 400 && newWidth <= 1200) {
+    if (newWidth >= TABLE_MIN_WIDTH && newWidth <= TABLE_MAX_WIDTH) {
       setTableWidth(newWidth);
     }
   }, []);
@@ -165,7 +174,11 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
           role="separator"
           aria-orientation="vertical"
           aria-label={t("complianceCard.resizeHandle")}
-          aria-valuenow={Math.min(100, Math.round((tableHeight / 800) * 100))}
+          aria-valuenow={Math.round(
+            ((tableHeight - TABLE_MIN_HEIGHT) /
+              (TABLE_MAX_HEIGHT - TABLE_MIN_HEIGHT)) *
+              100,
+          )}
           aria-valuemin={0}
           aria-valuemax={100}
           tabIndex={0}
