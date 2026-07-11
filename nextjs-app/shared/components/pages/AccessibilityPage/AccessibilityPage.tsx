@@ -4,6 +4,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 import List from "@dt/List";
+import { Section } from "@dt/Section";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "../AiUsagePage/AiUsagePage.module.css";
@@ -86,15 +87,15 @@ export function AccessibilityPage() {
         <em>{t("accessibilityLastUpdated")}</em>
       </Text>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityConformanceTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityConformanceBody")}</Text>
         <Text as="p" size="xs">{t("accessibilityConformanceLevel")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityMeasuresTitle")}
         </Title>
@@ -105,16 +106,16 @@ export function AccessibilityPage() {
           listStyleType="dash"
           items={measures.map((key) => t(key))}
         />
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityStandardsTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityStandardsBody")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityTechnicalTitle")}
         </Title>
@@ -125,16 +126,16 @@ export function AccessibilityPage() {
           listStyleType="dash"
           items={technicalSpecs.map((key) => t(key))}
         />
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityCompatibilityTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityCompatibilityBody")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityLimitationsTitle")}
         </Title>
@@ -146,9 +147,9 @@ export function AccessibilityPage() {
           items={limitations.map((key) => t(key))}
         />
         <Text as="p" size="xs">{t("accessibilityLimitationsFooter")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityShortcomingsTitle")}
         </Title>
@@ -160,16 +161,16 @@ export function AccessibilityPage() {
           items={shortcomings.map((key) => t(key))}
         />
         <Text as="p" size="xs">{t("accessibilityShortcomingsFooter")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityTestingTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityTestingBody")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityMonitoringTitle")}
         </Title>
@@ -180,18 +181,18 @@ export function AccessibilityPage() {
         <Text as="p" size="xs">{t("accessibilityMonitoringWebsite")}</Text>
         <Text as="p" size="xs">{t("accessibilityMonitoringEmail")}</Text>
         <Text as="p" size="xs">{t("accessibilityMonitoringPhone")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityPublicationTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityPublicationWebsite")}</Text>
         <Text as="p" size="xs">{t("accessibilityPublicationStatement")}</Text>
         <Text as="p" size="xs">{t("accessibilityPublicationAct")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityFeedbackTitle")}
         </Title>
@@ -205,23 +206,23 @@ export function AccessibilityPage() {
           )}
         </Text>
         <Text as="p" size="xs">{t("accessibilityFeedbackResponse")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityComplaintTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityComplaintBody")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityAlternativeTitle")}
         </Title>
         <Text as="p" size="xs">{t("accessibilityAlternativeBody")}</Text>
-      </section>
+      </Section>
 
-      <section>
+      <Section spacing="none">
         <Title level={2} size="xxs">
           {t("accessibilityContactTitle")}
         </Title>
@@ -232,7 +233,7 @@ export function AccessibilityPage() {
             "+358 45 657 4469",
           )}
         </Text>
-      </section>
+      </Section>
     </div>
   );
 }
