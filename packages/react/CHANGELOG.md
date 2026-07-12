@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.10 - 2026-07-12
+
+- `NavLink`: the active same-path current-page indicator (rendered as `<span aria-current="page">` since 0.1.9) now uses `cursor: default` instead of the browser's text/I-beam default over its label. It is a non-interactive location marker, so the arrow cursor is correct — not `pointer` (nothing to follow) or `not-allowed` (which would overstate a current location as a blocked action). The real `<a>` (inactive/other links) keeps its native pointer. No API change; runtime public API unchanged (113 exports).
+- Verified by the full local gate (typecheck, lint, 2292 tests, build) plus check:react-package, check:react-public-api, and check:react-public-surface (0 alpha).
+
 ## 0.1.9 - 2026-07-12
 
 - Fixes the `CodeSnippet` expand control's `aria-controls`: it previously read `codeRef.current?.id`, which is `undefined` on first render (the ref is not attached yet) and empty thereafter (the `<code>` had no `id`), so the "Show more"/"Show less" toggle referenced nothing. The `<code>` element now carries a stable `useId()`-based `id` and the control points at it (SSR/hydration-safe). Regression-tested.
