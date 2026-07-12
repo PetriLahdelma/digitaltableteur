@@ -5,7 +5,7 @@
     "group": "controls",
     "status": "alpha",
     "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1249-1954",
     "radixPrimitive": null,
     "element": "button",
     "variants": {
