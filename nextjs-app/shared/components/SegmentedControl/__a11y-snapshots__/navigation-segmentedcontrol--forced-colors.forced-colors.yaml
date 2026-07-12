@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- radiogroup "View":
+  - radio "List" [checked]
+  - radio "Grid"
+  - radio "Board"

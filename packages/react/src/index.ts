@@ -158,6 +158,11 @@ export {
   Section,
   type SectionProps,
 } from "../../../nextjs-app/shared/components/Section";
+export {
+  default as SegmentedControl,
+  type SegmentedControlItem,
+  type SegmentedControlProps,
+} from "../../../nextjs-app/shared/components/SegmentedControl/SegmentedControl";
 export { default as Select } from "../../../nextjs-app/shared/components/Select/Select";
 export type {
   SelectOptionItem,

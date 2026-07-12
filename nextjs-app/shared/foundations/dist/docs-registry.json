@@ -11683,17 +11683,85 @@
       "name": "SegmentedControl",
       "group": "form",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Single-select segmented control: a compact row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation.",
-      "dense": "",
-      "keywords": [],
+      "dense": "Single-select segmented control (role=radiogroup): 2-5 short options, one visibly selected; sm/md/lg; controlled value + onValueChange; roving-tabindex arrow-key nav skipping disabled segments.",
+      "keywords": [
+        "segmented control",
+        "toggle group",
+        "single select",
+        "view switcher",
+        "radiogroup",
+        "mode switch"
+      ],
       "importLine": "import { SegmentedControl } from \"@dt/SegmentedControl\";",
-      "keyProps": [],
-      "props": {},
+      "keyProps": [
+        {
+          "name": "items",
+          "type": "SegmentedControlItem[]",
+          "required": true
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "ariaLabel",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "size",
+          "type": "sm | md | lg",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "items": {
+          "optional": false,
+          "type": "SegmentedControlItem[]"
+        },
+        "value": {
+          "optional": false,
+          "type": "string"
+        },
+        "onValueChange": {
+          "optional": false,
+          "type": "(value: string) => void"
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "ariaLabel": {
+          "optional": false,
+          "type": "string"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
       "composesWith": [],
       "prefersOver": [],
-      "forbiddenUse": [],
-      "usage": null,
+      "forbiddenUse": [
+        "use it for actions or navigation that commits/routes — use `ButtonGroup`",
+        "overflow it; if the options do not fit on one line, use `Select`."
+      ],
+      "usage": {
+        "description": "SegmentedControl is the single-select counterpart to ButtonGroup: a compact row of mutually exclusive options with one visibly selected, for switching a small closed set of views or modes inline without opening a menu (list/grid, day/week/month). It is controlled — value + onValueChange own the selection. Keep it to 2-5 short segments; if the options do not fit on one line, use Select. Selecting must only change the bound value, never commit or route."
+      },
       "tokens": {
         "colors": [
           "--color-muted",

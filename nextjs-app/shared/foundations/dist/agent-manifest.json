@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-12T07:52:15.578Z",
+  "generatedAt": "2026-07-12T08:12:17.996Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
-      "beta": 48,
+      "beta": 49,
       "stable": 92,
-      "alpha": 24,
+      "alpha": 23,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
@@ -107,9 +107,9 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 48,
+        "beta": 49,
         "stable": 92,
-        "alpha": 24,
+        "alpha": 23,
         "deprecated": 1
       },
       "dsharp": {
@@ -24286,9 +24286,9 @@
         "name": "SegmentedControl",
         "tier": "molecule",
         "group": "form",
-        "status": "alpha",
+        "status": "beta",
         "description": "Single-select segmented control: a compact row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation.",
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1281-2108",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -24298,8 +24298,7 @@
               "md",
               "lg"
             ],
-            "default": "md",
-            "propSourced": true
+            "default": "md"
           }
         },
         "slots": [],
@@ -24323,8 +24322,9 @@
             "Disabled segments are skipped by keyboard navigation"
           ],
           "reducedMotion": true,
-          "reviewed": false,
-          "forcedColorsVerified": false
+          "reviewed": true,
+          "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. Container is role=radiogroup with a required aria-label; each segment is role=radio with aria-checked reflecting selection. Roving tabindex keeps exactly one segment tabbable (the selection, else the first enabled); Arrow keys move selection wrapping and skip disabled segments; Home/End jump to first/last enabled. Selection shown by a raised neutral surface (not brand fill) so it reads across light/dark; forced-colors maps the selected segment to a Highlight outline. Motion respects prefers-reduced-motion. Axe asserted in unit test; forced-colors + light/dark verified on a non-6010 Storybook.",
+          "forcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -24347,7 +24347,62 @@
             "--font-size-text-m"
           ]
         },
-        "lightDarkVerified": false
+        "lightDarkVerified": true,
+        "props": {
+          "items": {
+            "optional": false,
+            "type": "SegmentedControlItem[]"
+          },
+          "value": {
+            "optional": false,
+            "type": "string"
+          },
+          "onValueChange": {
+            "optional": false,
+            "type": "(value: string) => void"
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ]
+          },
+          "ariaLabel": {
+            "optional": false,
+            "type": "string"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "forbiddenUse": [
+          "use it for actions or navigation that commits/routes — use `ButtonGroup`",
+          "overflow it; if the options do not fit on one line, use `Select`."
+        ],
+        "keywords": [
+          "segmented control",
+          "toggle group",
+          "single select",
+          "view switcher",
+          "radiogroup",
+          "mode switch"
+        ],
+        "dense": "Single-select segmented control (role=radiogroup): 2-5 short options, one visibly selected; sm/md/lg; controlled value + onValueChange; roving-tabindex arrow-key nav skipping disabled segments.",
+        "usage": {
+          "description": "SegmentedControl is the single-select counterpart to ButtonGroup: a compact row of mutually exclusive options with one visibly selected, for switching a small closed set of views or modes inline without opening a menu (list/grid, day/week/month). It is controlled — value + onValueChange own the selection. Keep it to 2-5 short segments; if the options do not fit on one line, use Select. Selecting must only change the bound value, never commit or route."
+        },
+        "playground": {
+          "defaults": {
+            "size": "md"
+          }
+        },
+        "composesWith": [],
+        "schemaVersion": 2,
+        "displayName": "SegmentedControl"
       },
       "spec": "# SegmentedControl\n\n## Intent\nA compact row of mutually exclusive options with one visibly selected, for\nswitching a small closed set of views or modes (e.g. list/grid, day/week/month)\ninline without opening a menu. It is the single-select counterpart to\n`ButtonGroup`, which is a non-exclusive row of actions.\n\n## Interaction contract\n- Keyboard: Tab moves focus to the selected segment (roving tabindex — exactly one\n  segment is tabbable); Arrow Left/Up and Right/Down move selection to the\n  previous/next enabled segment, wrapping; Home/End jump to the first/last enabled\n  segment. Disabled segments are skipped.\n- Pointer: clicking a segment selects it.\n- Controlled only: `value` + `onValueChange` own the selection; the component\n  holds no selection state.\n- Screen readers: the container is `role=radiogroup` with a required `ariaLabel`;\n  each segment is `role=radio` with `aria-checked` reflecting selection.\n\n## Do / don't\n- Do: keep to 2–5 short segments; it is a glance-and-switch control, not a menu.\n- Do: give a meaningful `ariaLabel` naming what is being switched.\n- Don't: use it for actions or navigation that commits/routes — use `ButtonGroup`\n  or links. Selecting must only change the bound value.\n- Don't: overflow it; if the options do not fit on one line, use `Select`.\n\n## Design notes\n- Tokens: track fill from `--color-muted`; segment text `--color-muted` →\n  `--color-text` (hover/selected); selected surface `--color-surface` with a\n  subtle shadow; focus via `--focus-ring-*`; spacing/radius from `--space-internal-*`\n  / `--radius-*`. No hardcoded colors.\n- Selection is shown by a raised neutral surface, not a brand fill, so it reads\n  consistently across light/dark; forced-colors maps the selected segment to a\n  `Highlight` outline. Motion respects `prefers-reduced-motion`.\n- Figma: TODO (parity build; no Figma node yet).\n\n## Promotion notes\nParity build (Astryx `Segmented Control`). Ships at alpha with the WIP badge. Do\nnot promote past alpha/beta without a documented production consumer, AT\nsnapshots, and forced-colors + light/dark verification.\n",
       "documentationDebt": false,
@@ -24407,11 +24462,20 @@
               "md",
               "lg"
             ],
-            "default": "sm"
+            "default": "md"
           }
         },
-        "cvaVariants": {},
-        "variantsFnName": null,
+        "cvaVariants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md"
+          }
+        },
+        "variantsFnName": "segmentedControlVariants",
         "useWhen": [
           "keep to 2–5 short segments; it is a glance-and-switch control, not a menu.",
           "give a meaningful `ariaLabel` naming what is being switched."
