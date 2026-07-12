@@ -80,6 +80,7 @@
     "ReadingProgress",
     "saveConsentState",
     "Section",
+    "SegmentedControl",
     "Select",
     "SelectOption",
     "Skeleton",

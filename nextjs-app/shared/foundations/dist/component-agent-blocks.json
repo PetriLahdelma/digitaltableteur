@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T07:41:35.141Z",
+  "generatedAt": "2026-07-12T08:04:34.941Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -7508,11 +7508,20 @@
             "md",
             "lg"
           ],
-          "default": "sm"
+          "default": "md"
         }
       },
-      "cvaVariants": {},
-      "variantsFnName": null,
+      "cvaVariants": {
+        "size": {
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        }
+      },
+      "variantsFnName": "segmentedControlVariants",
       "useWhen": [
         "keep to 2–5 short segments; it is a glance-and-switch control, not a menu.",
         "give a meaningful `ariaLabel` naming what is being switched."

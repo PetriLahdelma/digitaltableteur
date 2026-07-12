@@ -1,8 +1,20 @@
 "use client";
 
 import React, { useRef } from "react";
+import { cva } from "class-variance-authority";
 import { cn } from "../../lib/cn";
 import styles from "./SegmentedControl.module.css";
+
+export const segmentedControlVariants = cva(styles.root, {
+  variants: {
+    size: {
+      sm: styles.sm,
+      md: styles.md,
+      lg: styles.lg,
+    },
+  },
+  defaultVariants: { size: "md" },
+});
 
 export interface SegmentedControlItem {
   /** Stable value emitted on selection. */
@@ -84,7 +96,7 @@ export const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedContro
         ref={ref}
         role="radiogroup"
         aria-label={ariaLabel}
-        className={cn(styles.root, styles[size], className)}
+        className={cn(segmentedControlVariants({ size }), className)}
       >
         {items.map((item, i) => {
           const selected = item.value === value;

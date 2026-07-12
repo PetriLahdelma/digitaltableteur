@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- radiogroup "Range":
+  - radio "Day" [checked]
+  - radio "Week"
+  - radio "Month" [disabled]

@@ -3,22 +3,30 @@
     "name": "SegmentedControl",
     "tier": "molecule",
     "group": "form",
-    "status": "alpha",
+    "status": "beta",
     "description": "Single-select segmented control: a compact row of mutually exclusive options with one visibly selected, as a radiogroup with roving-tabindex arrow-key navigation.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1281-2108",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
         "size": {
-            "values": ["sm", "md", "lg"],
-            "default": "md",
-            "propSourced": true
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
         }
     },
     "slots": [],
     "asChild": false,
     "subParts": [],
-    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
     "a11y": {
         "keyboard": [
             "Tab moves focus to the selected segment (roving tabindex)",
@@ -31,8 +39,9 @@
             "Disabled segments are skipped by keyboard navigation"
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. Container is role=radiogroup with a required aria-label; each segment is role=radio with aria-checked reflecting selection. Roving tabindex keeps exactly one segment tabbable (the selection, else the first enabled); Arrow keys move selection wrapping and skip disabled segments; Home/End jump to first/last enabled. Selection shown by a raised neutral surface (not brand fill) so it reads across light/dark; forced-colors maps the selected segment to a Highlight outline. Motion respects prefers-reduced-motion. Axe asserted in unit test; forced-colors + light/dark verified on a non-6010 Storybook.",
+        "forcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -55,5 +64,60 @@
             "--font-size-text-m"
         ]
     },
-    "lightDarkVerified": false
+    "lightDarkVerified": true,
+    "props": {
+        "items": {
+            "optional": false,
+            "type": "SegmentedControlItem[]"
+        },
+        "value": {
+            "optional": false,
+            "type": "string"
+        },
+        "onValueChange": {
+            "optional": false,
+            "type": "(value: string) => void"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "ariaLabel": {
+            "optional": false,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "use it for actions or navigation that commits/routes — use `ButtonGroup`",
+        "overflow it; if the options do not fit on one line, use `Select`."
+    ],
+    "keywords": [
+        "segmented control",
+        "toggle group",
+        "single select",
+        "view switcher",
+        "radiogroup",
+        "mode switch"
+    ],
+    "dense": "Single-select segmented control (role=radiogroup): 2-5 short options, one visibly selected; sm/md/lg; controlled value + onValueChange; roving-tabindex arrow-key nav skipping disabled segments.",
+    "usage": {
+        "description": "SegmentedControl is the single-select counterpart to ButtonGroup: a compact row of mutually exclusive options with one visibly selected, for switching a small closed set of views or modes inline without opening a menu (list/grid, day/week/month). It is controlled — value + onValueChange own the selection. Keep it to 2-5 short segments; if the options do not fit on one line, use Select. Selecting must only change the bound value, never commit or route."
+    },
+    "playground": {
+        "defaults": {
+            "size": "md"
+        }
+    },
+    "composesWith": [],
+    "schemaVersion": 2,
+    "displayName": "SegmentedControl"
 }
