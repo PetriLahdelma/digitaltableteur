@@ -69,7 +69,7 @@
     - listitem "Storybook 10"
     - listitem "npm"
   - term: react
-  - definition: 0.1.8
+  - definition: 0.1.9
   - term: tokens
   - definition: 0.1.1
   - term: tokens-css
