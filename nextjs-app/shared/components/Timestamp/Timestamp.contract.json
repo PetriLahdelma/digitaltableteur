@@ -151,12 +151,8 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Container",
-        "Link",
-        "List",
-        "Section",
-        "Text",
-        "Title"
+    "forbiddenUse": [
+        "wrap it in another `<time>` or add a redundant `title`; it owns both.",
+        "use `live` for values that will not change meaningfully while on screen"
     ]
 }

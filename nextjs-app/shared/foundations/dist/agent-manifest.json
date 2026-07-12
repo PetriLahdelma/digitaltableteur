@@ -1,26 +1,26 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-11T16:39:31.734Z",
+  "generatedAt": "2026-07-12T07:15:45.094Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
       "beta": 48,
-      "stable": 89,
-      "alpha": 27,
+      "stable": 90,
+      "alpha": 26,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 88.2,
     "codebaseComponentCount": 187,
     "usageCoveragePercent": 93.3,
-    "componentsWithProductionUsage": 49,
+    "componentsWithProductionUsage": 37,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 89,
+    "stableCount": 90,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -63,7 +63,7 @@
     "catalogCompletenessPercent": 88.2,
     "artifactCoverage": {
       "stories": 149,
-      "tests": 148,
+      "tests": 149,
       "mdx": 6,
       "spec": 165
     },
@@ -79,19 +79,19 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 165,
     "withAnyUsage": 154,
-    "withProductionUsage": 49,
+    "withProductionUsage": 37,
     "uniqueImportedComponents": 154,
-    "totalEvidenceRows": 871,
-    "aliasImportFiles": 485,
-    "relativeImportFiles": 396,
+    "totalEvidenceRows": 763,
+    "aliasImportFiles": 377,
+    "relativeImportFiles": 401,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-11T16:19:24.393Z",
+    "generatedAt": "2026-07-12T04:16:17.105Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 88,
+    "nodesWithComposesWith": 83,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -108,8 +108,8 @@
     "statusMix": {
       "digitaltableteur": {
         "beta": 48,
-        "stable": 89,
-        "alpha": 27,
+        "stable": 90,
+        "alpha": 26,
         "deprecated": 1
       },
       "dsharp": {
@@ -1218,11 +1218,11 @@
         ],
         "composesWith": [
           "AuthorBio",
-          "CodeBlockWindow",
           "DashLeadList",
           "TableOfContents",
           "EnhancedAuthorCard",
-          "ArticleShareSection"
+          "ArticleShareSection",
+          "MdxImage"
         ],
         "prefersOver": [],
         "declaredPropCount": 3
@@ -1470,11 +1470,11 @@
         ],
         "composesWith": [
           "AuthorBio",
-          "CodeBlockWindow",
           "DashLeadList",
           "ArticleContent",
           "TableOfContents",
-          "EnhancedAuthorCard"
+          "EnhancedAuthorCard",
+          "MdxImage"
         ],
         "prefersOver": [],
         "declaredPropCount": 5
@@ -2017,12 +2017,12 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "CodeBlockWindow",
           "DashLeadList",
           "ArticleContent",
           "TableOfContents",
           "EnhancedAuthorCard",
-          "ArticleShareSection"
+          "ArticleShareSection",
+          "MdxImage"
         ],
         "prefersOver": [],
         "declaredPropCount": 4
@@ -2953,29 +2953,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Badge",
-        "importCount": 13,
-        "productionImportCount": 3,
+        "importCount": 10,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 5,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoClusterBadges.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Badge",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarMetaBadgeLinks.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Badge",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Badge",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
             "importKind": "alias",
@@ -3028,6 +3010,12 @@
             "path": "nextjs-app/shared/stories/KitchenSink.stories.tsx",
             "importKind": "relative",
             "importPath": "../components/Badge/Badge.stories",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Badge",
             "context": "story"
           }
         ]
@@ -3165,11 +3153,11 @@
         ],
         "composesWith": [
           "TextInput",
-          "FlexBox",
           "Link",
           "Button",
-          "Grid",
-          "Checkbox"
+          "Checkbox",
+          "TextArea",
+          "ui"
         ],
         "prefersOver": [],
         "declaredPropCount": 11
@@ -4299,17 +4287,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Breadcrumb",
-        "importCount": 2,
-        "productionImportCount": 1,
+        "importCount": 1,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Breadcrumb",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -4385,14 +4367,7 @@
           "skip levels to make the trail shorter. If the user is at",
           "render the breadcrumb above a hero — it gets lost. Place it"
         ],
-        "composesWith": [
-          "Button",
-          "Card",
-          "Text",
-          "Title",
-          "MarkdownMessage",
-          "PageLayout"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 6
       }
@@ -4516,6 +4491,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ClientArticleShell.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/page.tsx",
             "since": "2026-06-04"
           },
@@ -4531,6 +4511,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/NextBlogNav.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/code-window/page.tsx",
             "since": "2026-06-04"
           },
@@ -4541,27 +4526,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/error.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -4773,55 +4748,13 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 64,
-        "productionImportCount": 5,
-        "patternImportCount": 6,
+        "importCount": 55,
+        "productionImportCount": 0,
+        "patternImportCount": 2,
         "componentImportCount": 32,
         "evidence": [
           {
-            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "pattern"
-          },
-          {
             "path": "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/Hero/Hero.tsx",
             "importKind": "alias",
             "importPath": "@dt/Button",
             "context": "pattern"
@@ -4833,19 +4766,61 @@
             "context": "pattern"
           },
           {
-            "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Button",
-            "context": "pattern"
-          },
-          {
             "path": "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/BlogNav/BlogNav.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatComposer.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatHeader.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatToggle.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/ComposePrompt.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/FieldPrompt.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/ReviewSummary.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/SendStatus.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Button",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.tsx",
             "importKind": "alias",
             "importPath": "@dt/Button",
             "context": "component"
@@ -5030,10 +5005,10 @@
         ],
         "composesWith": [
           "Text",
-          "Title",
-          "Icon",
           "TextInput",
+          "Icon",
           "CheckboxGroup",
+          "Title",
           "Modal"
         ],
         "prefersOver": [
@@ -5530,29 +5505,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Card",
-        "importCount": 8,
-        "productionImportCount": 3,
+        "importCount": 5,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 4,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Card",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Card",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Card",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.tsx",
             "importKind": "alias",
@@ -5728,9 +5685,10 @@
           "Title",
           "Text",
           "Button",
-          "PageLayout",
-          "Breadcrumb",
-          "MarkdownMessage"
+          "Icon",
+          "Badge",
+          "Divider",
+          "FlexBox"
         ],
         "prefersOver": [],
         "declaredPropCount": 16
@@ -7701,9 +7659,9 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/CodeBlockWindow",
-        "importCount": 3,
+        "importCount": 2,
         "productionImportCount": 1,
-        "patternImportCount": 1,
+        "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
           {
@@ -7711,12 +7669,6 @@
             "importKind": "relative",
             "importPath": "../../../nextjs-app/shared/components/CodeBlockWindow/codeBlockFixtures",
             "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/CodeBlockWindow",
-            "context": "pattern"
           },
           {
             "path": "nextjs-app/shared/components/index.ts",
@@ -7783,14 +7735,7 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [
-          "AuthorBio",
-          "DashLeadList",
-          "ArticleContent",
-          "TableOfContents",
-          "EnhancedAuthorCard",
-          "ArticleShareSection"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 7
       }
@@ -7964,17 +7909,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/CodeSnippet",
-        "importCount": 11,
-        "productionImportCount": 1,
+        "importCount": 10,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 0,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/CodeSnippet",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/Accordion/Accordion.stories.tsx",
             "importKind": "alias",
@@ -8120,12 +8059,9 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "Text",
-          "Title",
           "Icon",
           "ComplianceCard",
-          "ProcessBlock",
-          "StoryBlock"
+          "Button"
         ],
         "prefersOver": [],
         "declaredPropCount": 8
@@ -9168,10 +9104,7 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "ContactFormSuccessEditorial",
-          "Text",
-          "Title",
-          "Icon"
+          "ContactFormSuccessEditorial"
         ],
         "prefersOver": [],
         "declaredPropCount": 3
@@ -9557,8 +9490,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Container",
-        "importCount": 34,
-        "productionImportCount": 6,
+        "importCount": 31,
+        "productionImportCount": 3,
         "patternImportCount": 23,
         "componentImportCount": 4,
         "evidence": [
@@ -9572,24 +9505,6 @@
             "path": "app/blog/[slug]/ServerRelatedPosts.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/Container",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Container",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Container",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Container",
             "context": "production"
           },
           {
@@ -9630,6 +9545,24 @@
           },
           {
             "path": "nextjs-app/shared/patterns/ContentSection/ContentSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Container",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/CTASection/CTASection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Container",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Container",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
             "importKind": "relative",
             "importPath": "../../components/Container",
             "context": "pattern"
@@ -9886,10 +9819,10 @@
         "composesWith": [
           "Section",
           "animations",
+          "Stack",
           "Link",
-          "Title",
-          "List",
-          "Text"
+          "Badge",
+          "Checkbox"
         ],
         "prefersOver": [],
         "declaredPropCount": 5
@@ -10947,7 +10880,12 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Button",
+          "Icon",
+          "Title",
+          "Text"
+        ],
         "prefersOver": [],
         "declaredPropCount": 16
       }
@@ -12361,7 +12299,7 @@
         "group": "controls",
         "status": "alpha",
         "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1249-1954",
         "radixPrimitive": null,
         "element": "button",
         "variants": {
@@ -12752,17 +12690,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/FlexBox",
-        "importCount": 4,
-        "productionImportCount": 1,
+        "importCount": 3,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/FlexBox",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -12896,12 +12828,12 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "Badge",
           "Grid",
           "Button",
+          "Badge",
           "Text",
-          "Title",
-          "ArticleCard"
+          "ArticleCard",
+          "Avatar"
         ],
         "prefersOver": [],
         "declaredPropCount": 10
@@ -13465,17 +13397,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Gallery",
-        "importCount": 2,
-        "productionImportCount": 1,
+        "importCount": 1,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Gallery",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -13533,14 +13459,7 @@
           "Use as a navigation surface — gallery items are not links.",
           "Auto-open the lightbox on mount — confine motion to explicit user actions."
         ],
-        "composesWith": [
-          "Text",
-          "Title",
-          "ProcessBlock",
-          "StoryBlock",
-          "ProjectDetailLayout",
-          "ProjectHero"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 3
       }
@@ -13769,17 +13688,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Grid",
-        "importCount": 4,
+        "importCount": 3,
         "productionImportCount": 0,
-        "patternImportCount": 1,
+        "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Grid",
-            "context": "pattern"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -13938,8 +13851,8 @@
           "Button",
           "Badge",
           "Text",
-          "Link",
-          "ArticleCard"
+          "ArticleCard",
+          "Avatar"
         ],
         "prefersOver": [],
         "declaredPropCount": 10
@@ -14549,6 +14462,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ClientArticleShell.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/page.tsx",
             "since": "2026-06-04"
           },
@@ -14564,6 +14482,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/NextBlogNav.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/code-window/page.tsx",
             "since": "2026-06-04"
           },
@@ -14574,27 +14497,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/error.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/lib/siteStructure.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -14750,35 +14663,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 72,
-        "productionImportCount": 3,
-        "patternImportCount": 5,
+        "importCount": 66,
+        "productionImportCount": 0,
+        "patternImportCount": 2,
         "componentImportCount": 33,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Icon",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Icon",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Icon",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Icon",
-            "context": "pattern"
-          },
           {
             "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
             "importKind": "relative",
@@ -14786,21 +14675,9 @@
             "context": "pattern"
           },
           {
-            "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Icon",
-            "context": "pattern"
-          },
-          {
             "path": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/Icon",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Icon",
             "context": "pattern"
           },
           {
@@ -14823,6 +14700,42 @@
           },
           {
             "path": "nextjs-app/shared/components/BlogNav/BlogNav.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Icon",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Icon",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Button/Button.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Icon",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatComposer.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Icon",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatHeader.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Icon",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatToggle.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Icon",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ChatWidget/ChatToolResultSection.tsx",
             "importKind": "alias",
             "importPath": "@dt/Icon",
             "context": "component"
@@ -14972,10 +14885,10 @@
         "composesWith": [
           "Button",
           "Text",
-          "Title",
           "ComplianceCard",
+          "Title",
           "Badge",
-          "CodeSnippet"
+          "HelperText"
         ],
         "prefersOver": [],
         "declaredPropCount": 12
@@ -16110,11 +16023,11 @@
         ],
         "composesWith": [
           "HelperText",
+          "Button",
           "Text",
           "Checkbox",
           "TextInput",
-          "Button",
-          "Grid"
+          "Icon"
         ],
         "prefersOver": [],
         "declaredPropCount": 4
@@ -16606,35 +16519,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 17,
-        "productionImportCount": 3,
-        "patternImportCount": 2,
+        "importCount": 13,
+        "productionImportCount": 0,
+        "patternImportCount": 1,
         "componentImportCount": 11,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "pattern"
-          },
           {
             "path": "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx",
             "importKind": "relative",
@@ -16679,6 +16568,30 @@
           },
           {
             "path": "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/PersonCard/PersonCard.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/SiteTree/SiteTree.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Testimonial/Testimonial.tsx",
             "importKind": "alias",
             "importPath": "@dt/Link",
             "context": "component"
@@ -16751,12 +16664,12 @@
           "override the underline via inline styles; the token-driven treatment"
         ],
         "composesWith": [
+          "Badge",
           "Text",
+          "Checkbox",
+          "TextInput",
           "Title",
-          "Container",
-          "List",
-          "Section",
-          "Badge"
+          "Avatar"
         ],
         "prefersOver": [
           "Button with href for body-copy links"
@@ -17241,41 +17154,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 6,
-        "productionImportCount": 3,
-        "patternImportCount": 2,
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/List",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/List",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/List",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/List",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/List",
-            "context": "pattern"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -17398,14 +17281,7 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [
-          "Text",
-          "Title",
-          "Container",
-          "Link",
-          "Section",
-          "Timestamp"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 9
       }
@@ -18319,12 +18195,10 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "Breadcrumb",
-          "Button",
-          "Card",
-          "Text",
-          "Title",
-          "PageLayout"
+          "OpenHours",
+          "ServicesGrid",
+          "StudioMap",
+          "DonnyBookingEmbed"
         ],
         "prefersOver": [],
         "declaredPropCount": 6
@@ -22084,17 +21958,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Progress",
-        "importCount": 3,
+        "importCount": 2,
         "productionImportCount": 0,
-        "patternImportCount": 1,
+        "patternImportCount": 0,
         "componentImportCount": 2,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Progress",
-            "context": "pattern"
-          },
           {
             "path": "nextjs-app/shared/components/DonnyBookingEmbed/DonnyBookingEmbed.tsx",
             "importKind": "alias",
@@ -22192,11 +22060,7 @@
           "animate value backwards or reset mid-task; regressing progress",
           "bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [
-          "Button",
-          "DonnyBookingEmbed",
-          "Tabs"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 7
       }
@@ -23985,29 +23849,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Section",
-        "importCount": 24,
-        "productionImportCount": 4,
+        "importCount": 21,
+        "productionImportCount": 1,
         "patternImportCount": 20,
         "componentImportCount": 0,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Section",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Section",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Section",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
             "importKind": "relative",
@@ -24058,6 +23904,24 @@
           },
           {
             "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Section",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Section",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/ManifestoSection/ManifestoSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Section",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/ProjectDetailTemplate/ProjectDetailTemplate.tsx",
             "importKind": "relative",
             "importPath": "../../components/Section",
             "context": "pattern"
@@ -24133,10 +23997,10 @@
         "composesWith": [
           "Container",
           "animations",
-          "Title",
-          "Link",
-          "List",
-          "Text"
+          "BlogCategoryFilter",
+          "BlogGrid",
+          "Pagination",
+          "EnhancedArticleCard"
         ],
         "prefersOver": [],
         "declaredPropCount": 6
@@ -24307,7 +24171,11 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Section",
+          "Container",
+          "animations"
+        ],
         "prefersOver": [],
         "declaredPropCount": 3
       }
@@ -25049,7 +24917,11 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "ThemeProvider",
+          "Badge",
+          "Icon"
+        ],
         "prefersOver": [],
         "declaredPropCount": 1
       }
@@ -25884,7 +25756,8 @@
           "bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "Text"
+          "Text",
+          "Title"
         ],
         "prefersOver": [],
         "declaredPropCount": 7
@@ -27487,7 +27360,11 @@
           "use for unrelated actions; prefer separate Buttons.",
           "promote past alpha without a11y review, forced-colors verification, and light/dark verification (see roadmap below)."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Text",
+          "Button",
+          "Toast"
+        ],
         "prefersOver": [],
         "declaredPropCount": 7
       }
@@ -29036,11 +28913,11 @@
         ],
         "composesWith": [
           "AuthorBio",
-          "CodeBlockWindow",
           "DashLeadList",
           "ArticleContent",
           "EnhancedAuthorCard",
-          "ArticleShareSection"
+          "ArticleShareSection",
+          "MdxImage"
         ],
         "prefersOver": [],
         "declaredPropCount": 5
@@ -29409,11 +29286,7 @@
           "use Tabs for non-mutually-exclusive content. Two panels open",
           "hand-author `id=\"tab-<key>\"` / `id=\"tabpanel-<key>\"` on the"
         ],
-        "composesWith": [
-          "Button",
-          "DonnyBookingEmbed",
-          "Progress"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 8
       }
@@ -29809,82 +29682,82 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 84,
-        "productionImportCount": 22,
-        "patternImportCount": 10,
+        "importCount": 52,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
         "componentImportCount": 27,
         "evidence": [
           {
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "path": "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "path": "nextjs-app/shared/components/ArticleCard/ArticleCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Colophon/ColophonPage.tsx",
+            "path": "nextjs-app/shared/components/AuthorBio/AuthorBio.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "path": "nextjs-app/shared/components/Card/Card.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+            "path": "nextjs-app/shared/components/ChatWidget/ChatHeader.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "path": "nextjs-app/shared/components/ChatWidget/ChatMessages.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/ComposePrompt.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
+            "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/FieldPrompt.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+            "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/SendStatus.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+            "path": "nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+            "path": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "path": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
-            "context": "production"
+            "context": "component"
           }
         ]
       },
@@ -29983,12 +29856,12 @@
           "override font-size via inline `style`. The ladder is the contract;"
         ],
         "composesWith": [
+          "Button",
           "Title",
-          "StoryBlock",
-          "ProjectDetailLayout",
-          "ProjectHero",
-          "RelatedProjects",
-          "ProcessBlock"
+          "TextInput",
+          "Icon",
+          "CheckboxGroup",
+          "Modal"
         ],
         "prefersOver": [
           "raw paragraph elements"
@@ -30952,7 +30825,9 @@
           "NavLink",
           "IconButton",
           "Container",
-          "LanguageSwitcher"
+          "LanguageSwitcher",
+          "Badge",
+          "SentrySummaryCard"
         ],
         "prefersOver": [],
         "declaredPropCount": 2
@@ -30965,9 +30840,9 @@
         "name": "Timestamp",
         "tier": "atom",
         "group": "display",
-        "status": "alpha",
+        "status": "stable",
         "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1245-1732",
         "radixPrimitive": null,
         "element": "time",
         "variants": {
@@ -30976,10 +30851,7 @@
               "xxs",
               "xs",
               "s",
-              "m",
-              "l",
-              "xl",
-              "xxl"
+              "m"
             ],
             "default": "s",
             "propSourced": true
@@ -30999,6 +30871,10 @@
         "requiredStories": [
           "Default",
           "Playground",
+          "Sizes",
+          "Relative",
+          "Tones",
+          "Formats",
           "Example",
           "ForcedColors"
         ],
@@ -31009,8 +30885,11 @@
             "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
           ],
           "reducedMotion": true,
-          "reviewed": false,
-          "forcedColorsVerified": false
+          "reviewed": true,
+          "reviewedNote": "2026-07-12 (Claude): verified in Storybook 6010 — light + dark render all 8 formats readable in both tones; relative ladder correct (30s->now, minutes/hours/days/weeks/months); forced-colors safe by construction (pure <time> text, no bg/border/opacity) and confirmed via DT_FORCED_COLORS=active pass; console clean; axe green (10 tests); AT snapshots captured for all 8 stories.",
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -31019,34 +30898,30 @@
           ],
           "spacing": []
         },
-        "lightDarkVerified": false
-      },
-      "spec": "# Timestamp\n\n## Intent\nTODO: What job does Timestamp perform for users?\n\n## Interaction contract\n- Keyboard: TODO\n- Pointer: TODO\n- Screen readers: TODO\n\n## Do / don't\n- Do: TODO\n- Don't: TODO\n\n## Design notes\n- Tokens: TODO\n- Figma: TODO\n",
-      "documentationDebt": false,
-      "usage": {
-        "publicImport": "@dt/Timestamp",
-        "importCount": 2,
-        "productionImportCount": 2,
-        "patternImportCount": 0,
-        "componentImportCount": 0,
-        "evidence": [
+        "lightDarkVerified": true,
+        "schemaVersion": 2,
+        "consumers": [
           {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Timestamp",
-            "context": "production"
+            "since": "2026-06-04"
           },
           {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Timestamp",
-            "context": "production"
+            "since": "2026-06-04"
           }
-        ]
-      },
-      "agent": {
-        "preferredImport": "@dt/Timestamp",
-        "intent": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+        ],
         "props": {
           "value": {
             "optional": false,
@@ -31075,12 +30950,106 @@
             "type": "union",
             "values": [
               "s",
-              "xl",
               "xs",
               "xxs",
-              "m",
-              "l",
-              "xxl"
+              "m"
+            ]
+          },
+          "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "default",
+              "muted"
+            ]
+          },
+          "showTimezone": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "tooltip": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "live": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "now": {
+            "optional": true,
+            "type": "string | number | Date"
+          },
+          "locale": {
+            "optional": true,
+            "type": "string"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "forbiddenUse": [
+          "wrap it in another `<time>` or add a redundant `title`; it owns both.",
+          "use `live` for values that will not change meaningfully while on screen"
+        ]
+      },
+      "spec": "# Timestamp\n\n## Intent\nRenders a single date or time value as human-readable text: relative (\"2 hours\nago\") for recency, absolute (\"29 Nov 2025\") for precision, or `auto` to show\nrelative until the value ages past `autoThreshold` and then switch to the full\ndate. System variants emit ISO-style strings for logs and developer surfaces.\nIt exists so timestamps read consistently across the site instead of each\nsurface hand-rolling `Intl` calls.\n\n## Interaction contract\n- Keyboard: not interactive; nothing is focusable.\n- Pointer: hovering relative output reveals a native tooltip (`title`) with the\n  full medium date + short time, so the precise moment stays discoverable.\n- Screen readers: renders a semantic `<time>` with a machine-readable\n  `dateTime` (ISO 8601) attribute; the visible text is the label. Relative and\n  `auto` output derives from render-time \"now\", so `suppressHydrationWarning`\n  absorbs a legitimate server/client one-tick difference.\n\n## Do / don't\n- Do use `muted` tone for secondary metadata (list rows, card footers) and\n  `default` when the value carries body-text weight.\n- Do pin `now` in stories and tests for deterministic relative output.\n- Do use the `system_*` formats for developer-facing surfaces (logs, dev tools)\n  where an unambiguous ISO string matters more than locale formatting.\n- Don't wrap it in another `<time>` or add a redundant `title`; it owns both.\n- Don't use `live` for values that will not change meaningfully while on screen\n  (absolute dates) — it only re-renders relative/auto output.\n\n## Design notes\n- Tokens: `--color-text` (default tone) and `--color-muted` (muted tone); the\n  size ladder maps 1:1 onto the shared Text type scale so it aligns inline with\n  surrounding copy. No spacing tokens — it is a pure inline element.\n- Locale: defaults to the active site language (`useLocalization`); pass\n  `locale` to override. All formatting goes through `Intl`, so it localizes\n  without translation keys.\n- Figma: none — presentation is entirely the type scale + text color roles,\n  so there is no dedicated Figma node to mirror.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/Timestamp",
+        "importCount": 2,
+        "productionImportCount": 2,
+        "patternImportCount": 0,
+        "componentImportCount": 0,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Timestamp",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Timestamp",
+            "context": "production"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/Timestamp",
+        "intent": "Renders a single date or time value as human-readable text: relative (\"2 hours ago\") for recency, absolute (\"29 Nov 2025\") for precision, or `auto` to show relative until the value ages past `autoThreshold` and then swi…",
+        "props": {
+          "value": {
+            "optional": false,
+            "type": "string | number | Date"
+          },
+          "format": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "auto",
+              "date",
+              "time",
+              "relative",
+              "date_time",
+              "system_date",
+              "system_date_time",
+              "system_time"
+            ]
+          },
+          "autoThreshold": {
+            "optional": true,
+            "type": "number"
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "s",
+              "xs",
+              "xxs",
+              "m"
             ]
           },
           "tone": {
@@ -31120,12 +31089,9 @@
           "size": {
             "values": [
               "s",
-              "xl",
               "xs",
               "xxs",
-              "m",
-              "l",
-              "xxl"
+              "m"
             ],
             "default": "s"
           },
@@ -31139,8 +31105,15 @@
         },
         "cvaVariants": {},
         "variantsFnName": null,
-        "useWhen": [],
-        "avoidWhen": [],
+        "useWhen": [
+          "use `muted` tone for secondary metadata (list rows, card footers) and",
+          "pin `now` in stories and tests for deterministic relative output.",
+          "use the `system_*` formats for developer-facing surfaces (logs, dev tools)"
+        ],
+        "avoidWhen": [
+          "wrap it in another `<time>` or add a redundant `title`; it owns both.",
+          "use `live` for values that will not change meaningfully while on screen"
+        ],
         "requiredA11y": [
           "Renders a semantic <time> element with a machine-readable dateTime attribute.",
           "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
@@ -31154,15 +31127,11 @@
           "ForcedColors"
         ],
         "replacementFor": [],
-        "forbiddenUse": [],
-        "composesWith": [
-          "Container",
-          "Link",
-          "List",
-          "Section",
-          "Text",
-          "Title"
+        "forbiddenUse": [
+          "wrap it in another `<time>` or add a redundant `title`; it owns both.",
+          "use `live` for values that will not change meaningfully while on screen"
         ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 11
       }
@@ -31406,82 +31375,82 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 60,
-        "productionImportCount": 24,
-        "patternImportCount": 12,
+        "importCount": 27,
+        "productionImportCount": 0,
+        "patternImportCount": 3,
         "componentImportCount": 15,
         "evidence": [
           {
-            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Title",
-            "context": "production"
+            "path": "nextjs-app/shared/patterns/ContentSection/ContentSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Title",
+            "context": "pattern"
           },
           {
-            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Title",
-            "context": "production"
+            "path": "nextjs-app/shared/patterns/RelatedProjects/RelatedProjects.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Title",
+            "context": "pattern"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Title",
-            "context": "production"
+            "path": "nextjs-app/shared/patterns/StatsSection/StatsSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Title",
+            "context": "pattern"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Colophon/ColophonPage.tsx",
+            "path": "nextjs-app/shared/components/ArticleCard/ArticleCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
+            "path": "nextjs-app/shared/components/AuthorBio/AuthorBio.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
+            "path": "nextjs-app/shared/components/Card/Card.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
+            "path": "nextjs-app/shared/components/ChatWidget/ChatHeader.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyPage.tsx",
+            "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/ReviewSummary.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
+            "path": "nextjs-app/shared/components/ChatWidget/emailWorkflow/SendStatus.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "path": "nextjs-app/shared/components/ChunkErrorBoundary/ChunkErrorBoundary.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+            "path": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
-            "context": "production"
+            "context": "component"
           },
           {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "path": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
-            "context": "production"
+            "context": "component"
           }
         ]
       },
@@ -31592,11 +31561,11 @@
         ],
         "composesWith": [
           "Text",
-          "ProjectDetailLayout",
-          "StoryBlock",
-          "ProjectHero",
-          "RelatedProjects",
-          "ProcessBlock"
+          "Button",
+          "TextInput",
+          "Icon",
+          "Link",
+          "Avatar"
         ],
         "prefersOver": [
           "raw heading elements"
@@ -33627,12 +33596,7 @@
           "invent parallel primitives inside this folder",
           "use this for site-wide navigation (that is SiteHeader)"
         ],
-        "composesWith": [
-          "Badge",
-          "FlexBox",
-          "Title",
-          "ProjectDetailLayout"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 1
       }
@@ -36623,12 +36587,12 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "Text",
           "StoryBlock",
           "ProjectDetailLayout",
           "ProjectHero",
           "RelatedProjects",
-          "ProcessBlock"
+          "ProcessBlock",
+          "ProjectMetaSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 8
@@ -38725,14 +38689,7 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [
-          "Title",
-          "Card",
-          "Text",
-          "Button",
-          "Breadcrumb",
-          "MarkdownMessage"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 11
       }
@@ -39262,12 +39219,12 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "Text",
           "StoryBlock",
           "ProjectDetailLayout",
           "ProjectHero",
           "RelatedProjects",
-          "GridBlock"
+          "GridBlock",
+          "ProjectMetaSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 10
@@ -39495,12 +39452,12 @@
           "promote to stable without production consumer evidence"
         ],
         "composesWith": [
-          "Text",
           "StoryBlock",
           "ProjectHero",
           "RelatedProjects",
+          "GridBlock",
           "ProcessBlock",
-          "GridBlock"
+          "ProjectMetaSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 8
@@ -39941,8 +39898,9 @@
           "StoryBlock",
           "ProjectDetailLayout",
           "RelatedProjects",
+          "GridBlock",
           "ProcessBlock",
-          "GridBlock"
+          "ProjectMetaSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 11
@@ -40180,12 +40138,12 @@
           "promote to stable without production consumer evidence"
         ],
         "composesWith": [
-          "Text",
           "StoryBlock",
           "GridBlock",
           "ProjectDetailLayout",
           "ProjectHero",
-          "RelatedProjects"
+          "RelatedProjects",
+          "ProcessBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 10
@@ -40691,12 +40649,12 @@
           "promote to stable without production consumer evidence"
         ],
         "composesWith": [
-          "Text",
           "StoryBlock",
           "ProjectDetailLayout",
           "ProjectHero",
+          "GridBlock",
           "ProcessBlock",
-          "GridBlock"
+          "ProjectMetaSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 4
@@ -42029,8 +41987,9 @@
           "ProjectDetailLayout",
           "ProjectHero",
           "RelatedProjects",
+          "GridBlock",
           "ProcessBlock",
-          "GridBlock"
+          "ProjectMetaSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 11
@@ -42309,12 +42268,12 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "Text",
           "ProcessBlock",
           "StoryBlock",
           "GridBlock",
           "ProjectDetailLayout",
-          "ProjectHero"
+          "ProjectHero",
+          "ProjectMetaSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 11

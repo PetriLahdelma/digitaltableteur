@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T16:19:26.317Z",
+  "generatedAt": "2026-07-12T07:13:16.839Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -337,11 +337,11 @@
       ],
       "composesWith": [
         "AuthorBio",
-        "CodeBlockWindow",
         "DashLeadList",
         "TableOfContents",
         "EnhancedAuthorCard",
-        "ArticleShareSection"
+        "ArticleShareSection",
+        "MdxImage"
       ],
       "prefersOver": [],
       "declaredPropCount": 3
@@ -417,11 +417,11 @@
       ],
       "composesWith": [
         "AuthorBio",
-        "CodeBlockWindow",
         "DashLeadList",
         "ArticleContent",
         "TableOfContents",
-        "EnhancedAuthorCard"
+        "EnhancedAuthorCard",
+        "MdxImage"
       ],
       "prefersOver": [],
       "declaredPropCount": 5
@@ -578,12 +578,12 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "CodeBlockWindow",
         "DashLeadList",
         "ArticleContent",
         "TableOfContents",
         "EnhancedAuthorCard",
-        "ArticleShareSection"
+        "ArticleShareSection",
+        "MdxImage"
       ],
       "prefersOver": [],
       "declaredPropCount": 4
@@ -905,11 +905,11 @@
       ],
       "composesWith": [
         "TextInput",
-        "FlexBox",
         "Link",
         "Button",
-        "Grid",
-        "Checkbox"
+        "Checkbox",
+        "TextArea",
+        "ui"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
@@ -1306,14 +1306,7 @@
         "skip levels to make the trail shorter. If the user is at",
         "render the breadcrumb above a hero — it gets lost. Place it"
       ],
-      "composesWith": [
-        "Button",
-        "Card",
-        "Text",
-        "Title",
-        "MarkdownMessage",
-        "PageLayout"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 6
     },
@@ -1495,10 +1488,10 @@
       ],
       "composesWith": [
         "Text",
-        "Title",
-        "Icon",
         "TextInput",
+        "Icon",
         "CheckboxGroup",
+        "Title",
         "Modal"
       ],
       "prefersOver": [
@@ -1700,9 +1693,10 @@
         "Title",
         "Text",
         "Button",
-        "PageLayout",
-        "Breadcrumb",
-        "MarkdownMessage"
+        "Icon",
+        "Badge",
+        "Divider",
+        "FlexBox"
       ],
       "prefersOver": [],
       "declaredPropCount": 16
@@ -2381,14 +2375,7 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [
-        "AuthorBio",
-        "DashLeadList",
-        "ArticleContent",
-        "TableOfContents",
-        "EnhancedAuthorCard",
-        "ArticleShareSection"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 7
     },
@@ -2475,12 +2462,9 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "Text",
-        "Title",
         "Icon",
         "ComplianceCard",
-        "ProcessBlock",
-        "StoryBlock"
+        "Button"
       ],
       "prefersOver": [],
       "declaredPropCount": 8
@@ -2793,10 +2777,7 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "ContactFormSuccessEditorial",
-        "Text",
-        "Title",
-        "Icon"
+        "ContactFormSuccessEditorial"
       ],
       "prefersOver": [],
       "declaredPropCount": 3
@@ -3051,10 +3032,10 @@
       "composesWith": [
         "Section",
         "animations",
+        "Stack",
         "Link",
-        "Title",
-        "List",
-        "Text"
+        "Badge",
+        "Checkbox"
       ],
       "prefersOver": [],
       "declaredPropCount": 5
@@ -3400,7 +3381,12 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Button",
+        "Icon",
+        "Title",
+        "Text"
+      ],
       "prefersOver": [],
       "declaredPropCount": 16
     },
@@ -4015,12 +4001,12 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "Badge",
         "Grid",
         "Button",
+        "Badge",
         "Text",
-        "Title",
-        "ArticleCard"
+        "ArticleCard",
+        "Avatar"
       ],
       "prefersOver": [],
       "declaredPropCount": 10
@@ -4221,14 +4207,7 @@
         "Use as a navigation surface — gallery items are not links.",
         "Auto-open the lightbox on mount — confine motion to explicit user actions."
       ],
-      "composesWith": [
-        "Text",
-        "Title",
-        "ProcessBlock",
-        "StoryBlock",
-        "ProjectDetailLayout",
-        "ProjectHero"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 3
     },
@@ -4370,8 +4349,8 @@
         "Button",
         "Badge",
         "Text",
-        "Link",
-        "ArticleCard"
+        "ArticleCard",
+        "Avatar"
       ],
       "prefersOver": [],
       "declaredPropCount": 10
@@ -4638,10 +4617,10 @@
       "composesWith": [
         "Button",
         "Text",
-        "Title",
         "ComplianceCard",
+        "Title",
         "Badge",
-        "CodeSnippet"
+        "HelperText"
       ],
       "prefersOver": [],
       "declaredPropCount": 12
@@ -4938,11 +4917,11 @@
       ],
       "composesWith": [
         "HelperText",
+        "Button",
         "Text",
         "Checkbox",
         "TextInput",
-        "Button",
-        "Grid"
+        "Icon"
       ],
       "prefersOver": [],
       "declaredPropCount": 4
@@ -5085,12 +5064,12 @@
         "override the underline via inline styles; the token-driven treatment"
       ],
       "composesWith": [
+        "Badge",
         "Text",
+        "Checkbox",
+        "TextInput",
         "Title",
-        "Container",
-        "List",
-        "Section",
-        "Badge"
+        "Avatar"
       ],
       "prefersOver": [
         "Button with href for body-copy links"
@@ -5293,14 +5272,7 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [
-        "Text",
-        "Title",
-        "Container",
-        "Link",
-        "Section",
-        "Timestamp"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 9
     },
@@ -5615,12 +5587,10 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "Breadcrumb",
-        "Button",
-        "Card",
-        "Text",
-        "Title",
-        "PageLayout"
+        "OpenHours",
+        "ServicesGrid",
+        "StudioMap",
+        "DonnyBookingEmbed"
       ],
       "prefersOver": [],
       "declaredPropCount": 6
@@ -6891,11 +6861,7 @@
         "animate value backwards or reset mid-task; regressing progress",
         "bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [
-        "Button",
-        "DonnyBookingEmbed",
-        "Tabs"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 7
     },
@@ -7423,10 +7389,10 @@
       "composesWith": [
         "Container",
         "animations",
-        "Title",
-        "Link",
-        "List",
-        "Text"
+        "BlogCategoryFilter",
+        "BlogGrid",
+        "Pagination",
+        "EnhancedArticleCard"
       ],
       "prefersOver": [],
       "declaredPropCount": 6
@@ -7476,7 +7442,11 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Section",
+        "Container",
+        "animations"
+      ],
       "prefersOver": [],
       "declaredPropCount": 3
     },
@@ -7750,7 +7720,11 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "ThemeProvider",
+        "Badge",
+        "Icon"
+      ],
       "prefersOver": [],
       "declaredPropCount": 1
     },
@@ -8013,7 +7987,8 @@
         "bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "Text"
+        "Text",
+        "Title"
       ],
       "prefersOver": [],
       "declaredPropCount": 7
@@ -8512,7 +8487,11 @@
         "use for unrelated actions; prefer separate Buttons.",
         "promote past alpha without a11y review, forced-colors verification, and light/dark verification (see roadmap below)."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Text",
+        "Button",
+        "Toast"
+      ],
       "prefersOver": [],
       "declaredPropCount": 7
     },
@@ -9057,11 +9036,11 @@
       ],
       "composesWith": [
         "AuthorBio",
-        "CodeBlockWindow",
         "DashLeadList",
         "ArticleContent",
         "EnhancedAuthorCard",
-        "ArticleShareSection"
+        "ArticleShareSection",
+        "MdxImage"
       ],
       "prefersOver": [],
       "declaredPropCount": 5
@@ -9167,11 +9146,7 @@
         "use Tabs for non-mutually-exclusive content. Two panels open",
         "hand-author `id=\"tab-<key>\"` / `id=\"tabpanel-<key>\"` on the"
       ],
-      "composesWith": [
-        "Button",
-        "DonnyBookingEmbed",
-        "Progress"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 8
     },
@@ -9326,12 +9301,12 @@
         "override font-size via inline `style`. The ladder is the contract;"
       ],
       "composesWith": [
+        "Button",
         "Title",
-        "StoryBlock",
-        "ProjectDetailLayout",
-        "ProjectHero",
-        "RelatedProjects",
-        "ProcessBlock"
+        "TextInput",
+        "Icon",
+        "CheckboxGroup",
+        "Modal"
       ],
       "prefersOver": [
         "raw paragraph elements"
@@ -9611,14 +9586,16 @@
         "NavLink",
         "IconButton",
         "Container",
-        "LanguageSwitcher"
+        "LanguageSwitcher",
+        "Badge",
+        "SentrySummaryCard"
       ],
       "prefersOver": [],
       "declaredPropCount": 2
     },
     "Timestamp": {
       "preferredImport": "@dt/Timestamp",
-      "intent": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+      "intent": "Renders a single date or time value as human-readable text: relative (\"2 hours ago\") for recency, absolute (\"29 Nov 2025\") for precision, or `auto` to show relative until the value ages past `autoThreshold` and then swi…",
       "props": {
         "value": {
           "optional": false,
@@ -9647,12 +9624,9 @@
           "type": "union",
           "values": [
             "s",
-            "xl",
             "xs",
             "xxs",
-            "m",
-            "l",
-            "xxl"
+            "m"
           ]
         },
         "tone": {
@@ -9692,12 +9666,9 @@
         "size": {
           "values": [
             "s",
-            "xl",
             "xs",
             "xxs",
-            "m",
-            "l",
-            "xxl"
+            "m"
           ],
           "default": "s"
         },
@@ -9711,8 +9682,15 @@
       },
       "cvaVariants": {},
       "variantsFnName": null,
-      "useWhen": [],
-      "avoidWhen": [],
+      "useWhen": [
+        "use `muted` tone for secondary metadata (list rows, card footers) and",
+        "pin `now` in stories and tests for deterministic relative output.",
+        "use the `system_*` formats for developer-facing surfaces (logs, dev tools)"
+      ],
+      "avoidWhen": [
+        "wrap it in another `<time>` or add a redundant `title`; it owns both.",
+        "use `live` for values that will not change meaningfully while on screen"
+      ],
       "requiredA11y": [
         "Renders a semantic <time> element with a machine-readable dateTime attribute.",
         "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
@@ -9726,15 +9704,11 @@
         "ForcedColors"
       ],
       "replacementFor": [],
-      "forbiddenUse": [],
-      "composesWith": [
-        "Container",
-        "Link",
-        "List",
-        "Section",
-        "Text",
-        "Title"
+      "forbiddenUse": [
+        "wrap it in another `<time>` or add a redundant `title`; it owns both.",
+        "use `live` for values that will not change meaningfully while on screen"
       ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 11
     },
@@ -9845,11 +9819,11 @@
       ],
       "composesWith": [
         "Text",
-        "ProjectDetailLayout",
-        "StoryBlock",
-        "ProjectHero",
-        "RelatedProjects",
-        "ProcessBlock"
+        "Button",
+        "TextInput",
+        "Icon",
+        "Link",
+        "Avatar"
       ],
       "prefersOver": [
         "raw heading elements"
@@ -10491,12 +10465,7 @@
         "invent parallel primitives inside this folder",
         "use this for site-wide navigation (that is SiteHeader)"
       ],
-      "composesWith": [
-        "Badge",
-        "FlexBox",
-        "Title",
-        "ProjectDetailLayout"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 1
     },
@@ -11521,12 +11490,12 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "Text",
         "StoryBlock",
         "ProjectDetailLayout",
         "ProjectHero",
         "RelatedProjects",
-        "ProcessBlock"
+        "ProcessBlock",
+        "ProjectMetaSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 8
@@ -12312,14 +12281,7 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [
-        "Title",
-        "Card",
-        "Text",
-        "Button",
-        "Breadcrumb",
-        "MarkdownMessage"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 11
     },
@@ -12457,12 +12419,12 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "Text",
         "StoryBlock",
         "ProjectDetailLayout",
         "ProjectHero",
         "RelatedProjects",
-        "GridBlock"
+        "GridBlock",
+        "ProjectMetaSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 10
@@ -12527,12 +12489,12 @@
         "promote to stable without production consumer evidence"
       ],
       "composesWith": [
-        "Text",
         "StoryBlock",
         "ProjectHero",
         "RelatedProjects",
+        "GridBlock",
         "ProcessBlock",
-        "GridBlock"
+        "ProjectMetaSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 8
@@ -12692,8 +12654,9 @@
         "StoryBlock",
         "ProjectDetailLayout",
         "RelatedProjects",
+        "GridBlock",
         "ProcessBlock",
-        "GridBlock"
+        "ProjectMetaSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
@@ -12778,12 +12741,12 @@
         "promote to stable without production consumer evidence"
       ],
       "composesWith": [
-        "Text",
         "StoryBlock",
         "GridBlock",
         "ProjectDetailLayout",
         "ProjectHero",
-        "RelatedProjects"
+        "RelatedProjects",
+        "ProcessBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 10
@@ -12940,12 +12903,12 @@
         "promote to stable without production consumer evidence"
       ],
       "composesWith": [
-        "Text",
         "StoryBlock",
         "ProjectDetailLayout",
         "ProjectHero",
+        "GridBlock",
         "ProcessBlock",
-        "GridBlock"
+        "ProjectMetaSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 4
@@ -13379,8 +13342,9 @@
         "ProjectDetailLayout",
         "ProjectHero",
         "RelatedProjects",
+        "GridBlock",
         "ProcessBlock",
-        "GridBlock"
+        "ProjectMetaSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
@@ -13478,12 +13442,12 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "Text",
         "ProcessBlock",
         "StoryBlock",
         "GridBlock",
         "ProjectDetailLayout",
-        "ProjectHero"
+        "ProjectHero",
+        "ProjectMetaSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
