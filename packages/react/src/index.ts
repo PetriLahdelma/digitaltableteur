@@ -74,6 +74,10 @@ export { default as FlexBox } from "../../../nextjs-app/shared/components/FlexBo
 export { default as FileUpload } from "../../../nextjs-app/shared/components/FileUpload/FileUpload";
 export type { FileUploadProps } from "../../../nextjs-app/shared/components/FileUpload/FileUpload";
 export {
+  FilterChip,
+  type FilterChipProps,
+} from "../../../nextjs-app/shared/components/FilterChip";
+export {
   FormField,
   type FormFieldProps,
 } from "../../../nextjs-app/shared/components/FormField";

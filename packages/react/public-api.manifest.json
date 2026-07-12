@@ -35,6 +35,7 @@
     "EmptyState",
     "ExpandableSection",
     "FileUpload",
+    "FilterChip",
     "FlexBox",
     "FormField",
     "Gallery",

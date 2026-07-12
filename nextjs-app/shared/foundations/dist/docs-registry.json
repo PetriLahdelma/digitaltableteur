@@ -5920,7 +5920,7 @@
       "name": "FilterChip",
       "group": "controls",
       "tier": 2,
-      "status": "alpha",
+      "status": "stable",
       "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
       "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
       "keywords": [
@@ -5932,11 +5932,80 @@
         "pressed"
       ],
       "importLine": "import { FilterChip } from \"@dt/FilterChip\";",
-      "keyProps": [],
-      "props": {},
+      "keyProps": [
+        {
+          "name": "pressed",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true
+        },
+        {
+          "name": "variant",
+          "type": "underline | minimal | pill",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "sm | md | lg",
+          "required": false
+        },
+        {
+          "name": "count",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "pressed": {
+          "optional": false,
+          "type": "boolean"
+        },
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode"
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "underline",
+            "minimal",
+            "pill"
+          ]
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "count": {
+          "optional": true,
+          "type": "number"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
       "composesWith": [],
       "prefersOver": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "use for navigation between panels (that is Tabs).",
+        "nest interactive content inside the label."
+      ],
       "usage": null,
       "tokens": {
         "colors": [

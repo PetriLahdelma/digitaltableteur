@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-12T07:15:45.094Z",
+  "generatedAt": "2026-07-12T07:30:18.004Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
       "beta": 48,
-      "stable": 90,
-      "alpha": 26,
+      "stable": 91,
+      "alpha": 25,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
@@ -20,7 +20,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 90,
+    "stableCount": 91,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -108,8 +108,8 @@
     "statusMix": {
       "digitaltableteur": {
         "beta": 48,
-        "stable": 90,
-        "alpha": 26,
+        "stable": 91,
+        "alpha": 25,
         "deprecated": 1
       },
       "dsharp": {
@@ -12297,7 +12297,7 @@
         "name": "FilterChip",
         "tier": "atom",
         "group": "controls",
-        "status": "alpha",
+        "status": "stable",
         "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1249-1954",
         "radixPrimitive": null,
@@ -12320,9 +12320,7 @@
             "default": "md"
           }
         },
-        "slots": [
-          "children"
-        ],
+        "slots": [],
         "asChild": false,
         "subParts": [],
         "requiredStories": [
@@ -12342,8 +12340,11 @@
             "parents wrap chips in a labelled role=group"
           ],
           "reducedMotion": true,
-          "reviewed": false,
-          "forcedColorsVerified": false
+          "reviewed": true,
+          "reviewedNote": "2026-07-12 — alpha→stable: shared implementation behind CategoryFilter and BlogCategoryFilter (8 production consumers). 4-mode AT (base/light/dark/forced-colors) captured on a non-6010 Storybook for all four required stories; accessibility tree and real-browser forced-colors confirmed; aria-pressed toggle semantics asserted in unit test with jest-axe; light/dark re-verified. Exported from @digitaltableteur/react.",
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -12360,7 +12361,7 @@
             "--space-internal-24"
           ]
         },
-        "lightDarkVerified": false,
+        "lightDarkVerified": true,
         "schemaVersion": 2,
         "displayName": "FilterChip",
         "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
@@ -12372,7 +12373,88 @@
           "tag",
           "pressed"
         ],
-        "consumers": []
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+          }
+        ],
+        "props": {
+          "pressed": {
+            "optional": false,
+            "type": "boolean"
+          },
+          "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "underline",
+              "minimal",
+              "pill"
+            ]
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ]
+          },
+          "count": {
+            "optional": true,
+            "type": "number"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "forbiddenUse": [
+          "use for navigation between panels (that is Tabs).",
+          "nest interactive content inside the label."
+        ]
       },
       "spec": "# FilterChip\n\n## Intent\nOne toggle-chip implementation for single-select filters. CategoryFilter and BlogCategoryFilter each hand-rolled the same aria-pressed button in three visual treatments; FilterChip collapses the six copies into one control.\n\n## Interaction contract\n- Keyboard: Tab focuses each chip; Enter/Space toggles (native button).\n- Pointer: click toggles; hover shifts muted → text ink.\n- Screen readers: announced as a toggle button with pressed state; a filter is a UI control, not a tablist, so parents wrap chips in a labelled role=\"group\".\n\n## Do / don't\n- Do: keep exactly one chip pressed per group (single-select filters).\n- Do: pass counts via the count prop so the \"(n)\" suffix stays in the accessible name.\n- Don't: use for navigation between panels (that is Tabs).\n- Don't: nest interactive content inside the label.\n\n## Design notes\n- Tokens: --color-muted/-text/-border ink+chrome, --focus-ring-color, --space-internal-{6,8,12,16,24} paddings, --font-size-text-{xs,s,m}.\n- Pressed pill inverts (text bg / canvas ink); underline variant sits on the group border (-1px margin); forced colors use Highlight/HighlightText.\n- Figma: pending (alpha); create in DT-Site-stuff Atoms before beta.\n",
       "documentationDebt": false,
@@ -12439,11 +12521,11 @@
         "variants": {
           "variant": {
             "values": [
+              "pill",
               "underline",
-              "minimal",
-              "pill"
+              "minimal"
             ],
-            "default": "underline"
+            "default": "pill"
           },
           "size": {
             "values": [
@@ -12451,11 +12533,28 @@
               "md",
               "lg"
             ],
-            "default": "sm"
+            "default": "md"
           }
         },
-        "cvaVariants": {},
-        "variantsFnName": null,
+        "cvaVariants": {
+          "variant": {
+            "values": [
+              "pill",
+              "underline",
+              "minimal"
+            ],
+            "default": "pill"
+          },
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md"
+          }
+        },
+        "variantsFnName": "filterChipVariants",
         "useWhen": [
           "keep exactly one chip pressed per group (single-select filters).",
           "pass counts via the count prop so the \"(n)\" suffix stays in the accessible name."
