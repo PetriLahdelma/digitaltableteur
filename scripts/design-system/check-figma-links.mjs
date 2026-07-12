@@ -1,26 +1,47 @@
 #!/usr/bin/env node
 /**
- * Figma-link ratchet: stable contracts must not gain placeholder Figma links.
+ * Figma-link ratchet: a stable contract's `figma` must resolve to a REAL Figma
+ * component, and the debt count can only go DOWN.
  *
- * A "placeholder" is any contract `figma` value without a real numeric node id
- * (node-id=<digits>-<digits>). The committed ceiling in figma-links.baseline.json
- * can only go DOWN — lower it in the same PR that wires real nodes. The backfill
- * plan lives in docs/design-system/figma-parity-audit.md.
+ * "Resolves to a real component" means BOTH:
+ *   1. the URL carries a numeric node id (`node-id=<digits>-<digits>`), not a
+ *      `dt-<name>` placeholder; AND
+ *   2. that node id is present in figma-component-index.json — the committed
+ *      set of real COMPONENT / COMPONENT_SET node ids in the DT-Site-stuff file.
  *
- * This is a static check: it cannot detect numeric links whose node was later
- * deleted in Figma (those are caught by the audit's live scan).
+ * Rule (2) is what catches links that point at a numeric node which is NOT a
+ * component — e.g. a Section full of loose "Specimens" frames (Timestamp), a
+ * deleted node, or a stray group. The plain URL-presence check in
+ * validate-components.ts cannot see that; this can, because the index
+ * (figma-component-index.json) is enumerated from the live Figma file via the
+ * Figma MCP (findAllWithCriteria over COMPONENT/COMPONENT_SET on the Atoms /
+ * Organisms / Patterns pages) and committed.
+ *
+ * Regenerate the index whenever DS components are added/moved (re-run the MCP
+ * enumeration and rewrite the file), then this check (and the ratchet) reflects
+ * the true state. Lower the ceiling in figma-links.baseline.json in the same PR
+ * that wires a real component.
  */
 import { readFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const BASELINE_PATH = join(
-  dirname(fileURLToPath(import.meta.url)),
-  "figma-links.baseline.json",
-);
+const HERE = dirname(fileURLToPath(import.meta.url));
+const ROOT = join(HERE, "..", "..");
+const BASELINE_PATH = join(HERE, "figma-links.baseline.json");
+const INDEX_PATH = join(HERE, "figma-component-index.json");
 
-const REAL_NODE = /node-id=\d+[-:]\d+/;
+const REAL_NODE = /node-id=(\d+)[-:](\d+)/;
+
+const index = JSON.parse(readFileSync(INDEX_PATH, "utf8"));
+const knownComponentIds = new Set(Object.keys(index.components));
+
+/** Extract the node id from a figma URL, normalised to dash form, or null. */
+function nodeIdOf(figma) {
+  if (typeof figma !== "string") return null;
+  const m = figma.match(REAL_NODE);
+  return m ? `${m[1]}-${m[2]}` : null;
+}
 
 const contractFiles = [];
 const walk = (dir) => {
@@ -33,27 +54,31 @@ const walk = (dir) => {
 walk(join(ROOT, "nextjs-app", "shared", "components"));
 walk(join(ROOT, "nextjs-app", "shared", "patterns"));
 
-const stablePlaceholders = [];
+/** name -> reason, for every stable contract whose figma does not resolve. */
+const unresolved = [];
 for (const file of contractFiles) {
   const contract = JSON.parse(readFileSync(file, "utf8"));
   if (contract.status !== "stable") continue;
-  if (typeof contract.figma !== "string" || !REAL_NODE.test(contract.figma)) {
-    stablePlaceholders.push(contract.name);
+  const nodeId = nodeIdOf(contract.figma);
+  if (nodeId === null) {
+    unresolved.push(`${contract.name} (placeholder link)`);
+  } else if (!knownComponentIds.has(nodeId)) {
+    unresolved.push(`${contract.name} (node ${nodeId} is not a known DS component)`);
   }
 }
 
 const baseline = JSON.parse(readFileSync(BASELINE_PATH, "utf8"));
 const ceiling = baseline.stablePlaceholderCeiling;
-const count = stablePlaceholders.length;
+const count = unresolved.length;
 
 if (count > ceiling) {
   console.error(
-    `✖ figma-links ratchet: ${count} stable contracts have placeholder Figma links (ceiling ${ceiling}).`,
+    `✖ figma-links ratchet: ${count} stable contracts do not resolve to a real Figma component (ceiling ${ceiling}).`,
   );
   console.error(
-    `  New stable contracts need a real numeric Figma node (build it first — see docs/design-system/figma-parity-audit.md).`,
+    `  A stable contract needs a real COMPONENT/COMPONENT_SET node (build it, then add it to figma-component-index.json — see docs/design-system/figma-parity-audit.md).`,
   );
-  console.error(`  Placeholders: ${stablePlaceholders.sort().join(", ")}`);
+  console.error(`  Unresolved:\n    ${unresolved.sort().join("\n    ")}`);
   process.exit(1);
 }
 
@@ -68,5 +93,5 @@ if (count < ceiling) {
 }
 
 console.log(
-  `✓ figma-links ratchet: ${count}/${ceiling} stable contracts with placeholder Figma links (can only decrease)`,
+  `✓ figma-links ratchet: ${count}/${ceiling} stable contracts without a real Figma component (can only decrease)`,
 );
