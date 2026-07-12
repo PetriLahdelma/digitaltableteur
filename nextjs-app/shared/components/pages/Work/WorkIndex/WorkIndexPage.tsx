@@ -2,10 +2,8 @@
 
 import React, { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { Container } from "../../../../components/Container";
-import { Section } from "../../../../components/Section";
+import { CategoryFilter, Container, Section } from "@digitaltableteur/react";
 import { WorkHero } from "../../../../patterns/WorkHero";
-import { CategoryFilter } from "../../../../components/CategoryFilter";
 import { WorkGrid } from "../../../../components/WorkGrid";
 import { FadeIn } from "../../../../components/animations/FadeIn";
 import {
