@@ -5,7 +5,7 @@
     "group": "form",
     "status": "stable",
     "description": "Single-select combobox with portaled dropdown, shared with MultiCombobox.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-combobox",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1297-3061",
     "radixPrimitive": null,
     "element": "button",
     "variants": {},

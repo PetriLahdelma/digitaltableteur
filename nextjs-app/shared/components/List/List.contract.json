@@ -5,7 +5,7 @@
     "group": "structure",
     "status": "stable",
     "description": "Typographic list (ul or ol) that renders `items` on the text ladder — size matches the surrounding Text voice, listStyleType styles or removes markers, and spacing owns the inter-item rhythm.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-list",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1297-2111",
     "radixPrimitive": null,
     "element": "ul",
     "variants": {

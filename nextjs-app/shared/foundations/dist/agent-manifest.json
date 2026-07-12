@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-12T10:01:45.807Z",
+  "generatedAt": "2026-07-12T10:23:43.479Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
@@ -8076,7 +8076,7 @@
         "group": "form",
         "status": "stable",
         "description": "Single-select combobox with portaled dropdown, shared with MultiCombobox.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-combobox",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1297-3061",
         "radixPrimitive": null,
         "element": "button",
         "variants": {},
@@ -17065,7 +17065,7 @@
         "group": "structure",
         "status": "stable",
         "description": "Typographic list (ul or ol) that renders `items` on the text ladder — size matches the surrounding Text voice, listStyleType styles or removes markers, and spacing owns the inter-item rhythm.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-list",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1297-2111",
         "radixPrimitive": null,
         "element": "ul",
         "variants": {
@@ -31131,7 +31131,7 @@
         "group": "display",
         "status": "stable",
         "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1245-1732",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1297-3064",
         "radixPrimitive": null,
         "element": "time",
         "variants": {
