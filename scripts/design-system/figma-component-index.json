@@ -406,6 +406,11 @@
       "name": "Timestamp",
       "type": "COMPONENT",
       "page": "Atoms"
+    },
+    "1298-2106": {
+      "name": "Tooltip",
+      "type": "COMPONENT",
+      "page": "Atoms"
     }
   }
 }

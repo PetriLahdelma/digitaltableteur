@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-12T10:23:43.479Z",
+  "generatedAt": "2026-07-12T10:31:59.836Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
@@ -32563,7 +32563,7 @@
         "group": "overlay",
         "status": "beta",
         "description": "Radix tooltip primitive set (Provider, Trigger, Content) for icon hints.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-tooltip",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1298-2106",
         "radixPrimitive": "@radix-ui/react-tooltip",
         "element": "div",
         "variants": {},

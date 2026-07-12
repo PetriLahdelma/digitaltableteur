@@ -5,7 +5,7 @@
     "group": "overlay",
     "status": "beta",
     "description": "Radix tooltip primitive set (Provider, Trigger, Content) for icon hints.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-tooltip",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1298-2106",
     "radixPrimitive": "@radix-ui/react-tooltip",
     "element": "div",
     "variants": {},
