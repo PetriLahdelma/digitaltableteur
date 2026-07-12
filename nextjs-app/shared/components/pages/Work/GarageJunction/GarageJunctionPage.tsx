@@ -2,8 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Text, Title } from "@digitaltableteur/react";
-import ProcessBlock from "../../../../patterns/ProcessBlock";
+import { ProcessBlock, Text, Title } from "@digitaltableteur/react";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";

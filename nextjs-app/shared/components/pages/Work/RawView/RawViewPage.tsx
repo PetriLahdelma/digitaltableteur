@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import { Text } from "@digitaltableteur/react";
+import { ProcessBlock, Text } from "@digitaltableteur/react";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
-import ProcessBlock from "../../../../patterns/ProcessBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";
 import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";

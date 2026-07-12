@@ -2,8 +2,7 @@ import type { PseoCatalog, PseoLeafPage } from "@/lib/pseo/types";
 
 import { getStackDisplayName } from "@/lib/pseo/display";
 
-import PageLayout from "../../../patterns/PageLayout/PageLayout";
-import { Card, Text, Title } from "@digitaltableteur/react";
+import { Card, PageLayout, Text, Title } from "@digitaltableteur/react";
 import NextLink from "next/link";
 import styles from "./PseoIndexPage.module.css";
 
