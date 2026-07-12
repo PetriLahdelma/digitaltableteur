@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T08:04:34.941Z",
+  "generatedAt": "2026-07-12T08:37:41.480Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -7687,7 +7687,7 @@
         "use `type=\"single\"` for an exclusive choice, `type=\"multiple\"` for add-ons."
       ],
       "avoidWhen": [
-        "nest interactive controls (buttons, links) inside a SelectableCard — the",
+        "nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.",
         "use it for navigation; selecting must not commit or route on click."
       ],
       "requiredA11y": [
@@ -7701,7 +7701,7 @@
         "Space toggles the focused option"
       ],
       "compositionRules": [
-        "nest interactive controls (buttons, links) inside a SelectableCard — the"
+        "nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards."
       ],
       "canonicalExamples": [
         "Default",
@@ -7711,7 +7711,7 @@
       ],
       "replacementFor": [],
       "forbiddenUse": [
-        "nest interactive controls (buttons, links) inside a SelectableCard — the",
+        "nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.",
         "use it for navigation; selecting must not commit or route on click."
       ],
       "composesWith": [],

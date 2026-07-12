@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-12T08:25:46.352Z",
+  "generatedAt": "2026-07-12T08:40:42.306Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
-      "beta": 50,
+      "beta": 51,
       "stable": 92,
-      "alpha": 22,
+      "alpha": 21,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
@@ -107,9 +107,9 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 50,
+        "beta": 51,
         "stable": 92,
-        "alpha": 22,
+        "alpha": 21,
         "deprecated": 1
       },
       "dsharp": {
@@ -24905,13 +24905,13 @@
     {
       "name": "SelectableCard",
       "contract": {
-        "$schema": "../../../scripts/design-system/contract.schema.json",
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
         "name": "SelectableCard",
         "tier": "molecule",
         "group": "form",
-        "status": "alpha",
+        "status": "beta",
         "description": "A Card that is one selectable option; grouped into single (radio) or multiple (checkbox) sets via SelectableCardGroup.",
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1288-2114",
         "radixPrimitive": null,
         "element": "label",
         "variants": {},
@@ -24936,8 +24936,9 @@
             "Error announces via role=alert and sets aria-invalid on the group"
           ],
           "reducedMotion": true,
-          "reviewed": false,
-          "forcedColorsVerified": false
+          "reviewed": true,
+          "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. SelectableCardGroup renders a fieldset with a legend for the accessible name; each SelectableCard is a label wrapping a visually-hidden native radio (single) or checkbox (multiple) input, so keyboard, focus and form submission come from the platform. Error announces via role=alert and sets aria-invalid on the group. Selected/disabled states mirror to data-attributes for CSS + tests. Motion respects prefers-reduced-motion. Axe asserted in the colocated a11y test; forced-colors + light/dark verified on a non-6010 Storybook.",
+          "forcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -24954,9 +24955,42 @@
             "--space-internal-24"
           ]
         },
-        "lightDarkVerified": false
+        "lightDarkVerified": true,
+        "props": {
+          "value": {
+            "optional": false,
+            "type": "string"
+          },
+          "disabled": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "selected": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "onSelectedChange": {
+            "optional": true,
+            "type": "(selected: boolean) => void"
+          }
+        },
+        "forbiddenUse": [
+          "nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.",
+          "use it for navigation; selecting must not commit or route on click."
+        ],
+        "keywords": [
+          "selectable card",
+          "card radio",
+          "card checkbox",
+          "choice card",
+          "option card",
+          "card group"
+        ],
+        "dense": "Card as one selectable option; grouped via SelectableCardGroup into single (radio) or multiple (checkbox) sets; whole card is a label over a hidden native input; controlled or uncontrolled.",
+        "schemaVersion": 2,
+        "displayName": "SelectableCard"
       },
-      "spec": "# SelectableCard\n\n## Intent\nTurn a Card into a selectable option so a set of rich choices (plan pickers,\nonboarding options, add-ons, settings tiles) reads as cards rather than bare\nradios or checkboxes. `SelectableCardGroup` owns the selection; `SelectableCard`\nis one option in it.\n\n## Interaction contract\n- Keyboard: Tab moves focus into the group; Arrow keys move within a single-select\n  set (native radio behavior); Space toggles the focused option.\n- Pointer: the whole card is the hit area — clicking anywhere toggles the option.\n- Screen readers: the group is a fieldset announced by its legend; each option is\n  a native radio (single) or checkbox (multiple) whose accessible name is the\n  card content; errors announce via role=alert and set aria-invalid on the group.\n\n## Do / don't\n- Do: write the legend as the question; keep each card's title short and scannable.\n- Do: use `type=\"single\"` for an exclusive choice, `type=\"multiple\"` for add-ons.\n- Don't: nest interactive controls (buttons, links) inside a SelectableCard — the\n  label already owns the click. Use a plain Card for action cards.\n- Don't: use it for navigation; selecting must not commit or route on click.\n\n## Design notes\n- Tokens: `--color-primary` (selected ring + indicator), `--color-focus-ring`\n  (focus), `--color-border` / `--color-border-light` (rest/hover), `--color-surface`;\n  spacing from `--space-internal-*`. No hardcoded colors.\n- The selected state is shown by a ring on the surface plus an indicator (radio\n  dot / checkbox check) drawn in `--color-primary`, with a forced-colors mapping\n  to `Highlight`.\n- Figma: TODO (parity build; no Figma node yet).\n\n## Promotion notes\nParity build (Astryx `SelectableCard`). Ships at alpha with the WIP badge. Do not\npromote past alpha/beta without a documented production consumer, AT snapshots,\nand forced-colors + light/dark verification.\n",
+      "spec": "# SelectableCard\n\n## Intent\nTurn a Card into a selectable option so a set of rich choices (plan pickers,\nonboarding options, add-ons, settings tiles) reads as cards rather than bare\nradios or checkboxes. `SelectableCardGroup` owns the selection; `SelectableCard`\nis one option in it.\n\n## Interaction contract\n- Keyboard: Tab moves focus into the group; Arrow keys move within a single-select\n  set (native radio behavior); Space toggles the focused option.\n- Pointer: the whole card is the hit area — clicking anywhere toggles the option.\n- Screen readers: the group is a fieldset announced by its legend; each option is\n  a native radio (single) or checkbox (multiple) whose accessible name is the\n  card content; errors announce via role=alert and set aria-invalid on the group.\n\n## Do / don't\n- Do: write the legend as the question; keep each card's title short and scannable.\n- Do: use `type=\"single\"` for an exclusive choice, `type=\"multiple\"` for add-ons.\n- Don't: nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.\n- Don't: use it for navigation; selecting must not commit or route on click.\n\n## Design notes\n- Tokens: `--color-primary` (selected ring + indicator), `--color-focus-ring`\n  (focus), `--color-border` / `--color-border-light` (rest/hover), `--color-surface`;\n  spacing from `--space-internal-*`. No hardcoded colors.\n- The selected state is shown by a ring on the surface plus an indicator (radio\n  dot / checkbox check) drawn in `--color-primary`, with a forced-colors mapping\n  to `Highlight`.\n- Figma: TODO (parity build; no Figma node yet).\n\n## Promotion notes\nParity build (Astryx `SelectableCard`). Ships at alpha with the WIP badge. Do not\npromote past alpha/beta without a documented production consumer, AT snapshots,\nand forced-colors + light/dark verification.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/SelectableCard",
@@ -24995,7 +25029,7 @@
           "use `type=\"single\"` for an exclusive choice, `type=\"multiple\"` for add-ons."
         ],
         "avoidWhen": [
-          "nest interactive controls (buttons, links) inside a SelectableCard — the",
+          "nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.",
           "use it for navigation; selecting must not commit or route on click."
         ],
         "requiredA11y": [
@@ -25009,7 +25043,7 @@
           "Space toggles the focused option"
         ],
         "compositionRules": [
-          "nest interactive controls (buttons, links) inside a SelectableCard — the"
+          "nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards."
         ],
         "canonicalExamples": [
           "Default",
@@ -25019,7 +25053,7 @@
         ],
         "replacementFor": [],
         "forbiddenUse": [
-          "nest interactive controls (buttons, links) inside a SelectableCard — the",
+          "nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.",
           "use it for navigation; selecting must not commit or route on click."
         ],
         "composesWith": [],

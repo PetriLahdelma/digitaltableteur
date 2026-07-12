@@ -12029,16 +12029,59 @@
       "name": "SelectableCard",
       "group": "form",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "A Card that is one selectable option; grouped into single (radio) or multiple (checkbox) sets via SelectableCardGroup.",
-      "dense": "",
-      "keywords": [],
+      "dense": "Card as one selectable option; grouped via SelectableCardGroup into single (radio) or multiple (checkbox) sets; whole card is a label over a hidden native input; controlled or uncontrolled.",
+      "keywords": [
+        "selectable card",
+        "card radio",
+        "card checkbox",
+        "choice card",
+        "option card",
+        "card group"
+      ],
       "importLine": "import { SelectableCard } from \"@dt/SelectableCard\";",
-      "keyProps": [],
-      "props": {},
+      "keyProps": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "props": {
+        "value": {
+          "optional": false,
+          "type": "string"
+        },
+        "disabled": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "selected": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "onSelectedChange": {
+          "optional": true,
+          "type": "(selected: boolean) => void"
+        }
+      },
       "composesWith": [],
       "prefersOver": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.",
+        "use it for navigation; selecting must not commit or route on click."
+      ],
       "usage": null,
       "tokens": {
         "colors": [

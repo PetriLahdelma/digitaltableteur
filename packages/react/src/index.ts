@@ -175,6 +175,13 @@ export type {
 } from "../../../nextjs-app/shared/components/Select/Select";
 export { default as SelectOption } from "../../../nextjs-app/shared/components/Select/SelectOption";
 export {
+  SelectableCard,
+  SelectableCardGroup,
+  type SelectableCardGroupProps,
+  type SelectableCardProps,
+  type SelectableCardSelectionType,
+} from "../../../nextjs-app/shared/components/SelectableCard/SelectableCard";
+export {
   SkipLink,
   type SkipLinkProps,
 } from "../../../nextjs-app/shared/components/SkipLink";

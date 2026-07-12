@@ -1,0 +1,15 @@
+- status: Work in progress (beta)
+- group "Whole group disabled":
+  - text: Whole group disabled
+  - radio "Option A Selected but disabled." [checked] [disabled]
+  - heading "Option A" [level=3]
+  - paragraph: Selected but disabled.
+  - radio "Option B" [disabled]
+  - heading "Option B" [level=3]
+- group "One option disabled":
+  - text: One option disabled
+  - radio "Available" [checked]
+  - heading "Available" [level=3]
+  - radio "Unavailable Out of stock." [disabled]
+  - heading "Unavailable" [level=3]
+  - paragraph: Out of stock.

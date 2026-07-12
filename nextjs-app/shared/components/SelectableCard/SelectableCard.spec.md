@@ -17,8 +17,7 @@ is one option in it.
 ## Do / don't
 - Do: write the legend as the question; keep each card's title short and scannable.
 - Do: use `type="single"` for an exclusive choice, `type="multiple"` for add-ons.
-- Don't: nest interactive controls (buttons, links) inside a SelectableCard — the
-  label already owns the click. Use a plain Card for action cards.
+- Don't: nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.
 - Don't: use it for navigation; selecting must not commit or route on click.
 
 ## Design notes
