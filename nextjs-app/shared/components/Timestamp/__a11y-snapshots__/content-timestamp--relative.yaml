@@ -1,0 +1,19 @@
+- status: Work in progress (alpha)
+- paragraph:
+  - text: "30 seconds:"
+  - time: now
+- paragraph:
+  - text: "5 minutes:"
+  - time: 5 minutes ago
+- paragraph:
+  - text: "3 hours:"
+  - time: 3 hours ago
+- paragraph:
+  - text: "2 days:"
+  - time: 2 days ago
+- paragraph:
+  - text: "3 weeks:"
+  - time: 3 weeks ago
+- paragraph:
+  - text: "2 months:"
+  - time: 2 months ago
