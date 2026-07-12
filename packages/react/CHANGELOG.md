@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.11 - 2026-07-13
+
+- Re-establishes the pattern rung: `PageLayout` and `ProcessBlock` are the first composite patterns exported from the package (runtime public API 113 → 115, both stable contracts, zero-alpha surface ceiling holds). ProcessBlock's own imports move off the published barrel onto package-internal source per the same-module-instance rule.
+- Type-only export alignment accumulated since 0.1.10: `TextProps`, `LinkProps`, `ListProps`, `GridProps`, `FlexBoxProps`, `CodeBlockWindowProps`, `GroupLabelProps` now ship in the d.ts.
+- Accessibility regression coverage added across Divider (semantic `aria-orientation`), ImagePlaceholder (decorative icon hidden), CodeBlockWindow (copy feedback as `role=status` live region), Select (merged `aria-describedby` with external ids), MarkdownMessage (fallback announcement), and ChatWidget dialog modality (DS-internal).
+- Verified by the full local gate (typecheck, lint, 2295 tests, build) plus check:react-package, check:react-public-api, check:react-public-surface (0 alpha), and check:astryx-roadmap (no next/* imports in package source).
+
 ## 0.1.10 - 2026-07-12
 
 - `NavLink`: the active same-path current-page indicator (rendered as `<span aria-current="page">` since 0.1.9) now uses `cursor: default` instead of the browser's text/I-beam default over its label. It is a non-interactive location marker, so the arrow cursor is correct — not `pointer` (nothing to follow) or `not-allowed` (which would overstate a current location as a blocked action). The real `<a>` (inactive/other links) keeps its native pointer. No API change; runtime public API unchanged (113 exports).
