@@ -52,8 +52,12 @@ export function NavLink({
   );
 
   if (isActive && isSamePath) {
+    // The current-page item is a non-interactive location indicator, not a
+    // link: cursor-default (arrow) — never pointer (nothing to follow), text
+    // (the <span>'s default over its label; implies selectable prose), or
+    // not-allowed (overstates it as a blocked/disabled action).
     return (
-      <span className={linkClassName} aria-current="page">
+      <span className={cn(linkClassName, "cursor-default")} aria-current="page">
         {children}
       </span>
     );
