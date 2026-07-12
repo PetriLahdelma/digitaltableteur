@@ -1,0 +1,3 @@
+- text: Price range
+- textbox "Minimum price"
+- textbox "Maximum price"

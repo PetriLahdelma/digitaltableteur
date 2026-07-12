@@ -6837,7 +6837,7 @@
       "name": "GroupLabel",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Fieldset/legend-shaped label used by `CheckboxGroup`, `FormGroup`, and other multi-control groupings. Provides the group's accessible name without forcing every child input to repeat it.",
       "dense": "heading-style label for a cluster of related controls; htmlFor targets the primary control; for true same-name sets use FormField or RadioGroup (fieldset legend)",
       "keywords": [
