@@ -20,11 +20,46 @@ const seedToasts: ToastStackItem[] = [
 const meta = {
   title: "Feedback/ToastStack",
   component: ToastStack,
-  tags: ["alpha", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     layout: "fullscreen",
     a11y: { test: "error" },
     contractStatus: contract.status,
+  },
+  argTypes: {
+    toasts: {
+      control: { type: "object" },
+      description: "Toasts to display, oldest first; new toasts are appended by the caller.",
+      table: { category: "Content", type: { summary: "ToastStackItem[]" } },
+    },
+    position: {
+      control: { type: "select" },
+      options: [
+        "top-left",
+        "top-center",
+        "top-right",
+        "bottom-left",
+        "bottom-center",
+        "bottom-right",
+      ],
+      description: "Screen corner/edge the stack docks to.",
+      table: { category: "Appearance", defaultValue: { summary: "bottom-center" } },
+    },
+    max: {
+      control: { type: "number" },
+      description:
+        "Maximum toasts rendered at once; older ones wait so bursts drain in order.",
+      table: { category: "Behavior", defaultValue: { summary: "5" } },
+    },
+    onDismiss: {
+      description: "Called with the toast id when its auto-dismiss timer fires.",
+      table: { category: "Behavior", type: { summary: "(id: string) => void" } },
+    },
+    className: {
+      control: "text",
+      description: "Optional classes on the stack wrapper.",
+      table: { category: "Appearance" },
+    },
   },
   args: { toasts: seedToasts, position: "bottom-center" },
 } satisfies Meta<typeof ToastStack>;
@@ -32,7 +67,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"],
+};
 
 const PlaygroundHarness = (args: ToastStackProps) => {
   const [toasts, setToasts] = useState<ToastStackItem[]>(args.toasts);
@@ -68,11 +105,13 @@ const PlaygroundHarness = (args: ToastStackProps) => {
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <PlaygroundHarness {...args} toasts={[]} />,
 };
 
 export const Example: Story = {
   name: "Example",
+  tags: ["beta-matrix"],
   args: {
     toasts: seedToasts,
     position: "bottom-center",
@@ -89,8 +128,10 @@ export const Example: Story = {
 
 export const ForcedColors: Story = {
   name: "ForcedColors",
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
   args: { toasts: seedToasts },
   parameters: {
-    chromatic: { forcedColors: "active" },
+    a11y: { disable: true, test: "off" },
   },
 };

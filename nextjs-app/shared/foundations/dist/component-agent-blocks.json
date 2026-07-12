@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T07:30:17.743Z",
+  "generatedAt": "2026-07-12T07:41:35.141Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -10004,9 +10004,33 @@
           "type": "string"
         }
       },
-      "variants": {},
-      "cvaVariants": {},
-      "variantsFnName": null,
+      "variants": {
+        "position": {
+          "values": [
+            "top-left",
+            "top-center",
+            "top-right",
+            "bottom-left",
+            "bottom-center",
+            "bottom-right"
+          ],
+          "default": "bottom-center"
+        }
+      },
+      "cvaVariants": {
+        "position": {
+          "values": [
+            "top-left",
+            "top-center",
+            "top-right",
+            "bottom-left",
+            "bottom-center",
+            "bottom-right"
+          ],
+          "default": "bottom-center"
+        }
+      },
+      "variantsFnName": "toastStackVariants",
       "useWhen": [
         "drive it from the app `ToastProvider` — `showToast` appends and the",
         "give every toast a stable `id`; dismissal and list identity depend on it."
