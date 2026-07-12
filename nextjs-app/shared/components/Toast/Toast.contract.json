@@ -21,12 +21,13 @@
         },
         "tone": {
             "values": [
+                "neutral",
                 "success",
                 "error",
                 "warning",
                 "info"
             ],
-            "default": "info",
+            "default": "neutral",
             "forwarded": true
         },
         "position": {
@@ -133,6 +134,7 @@
             "optional": true,
             "type": "union",
             "values": [
+                "neutral",
                 "info",
                 "success",
                 "warning",

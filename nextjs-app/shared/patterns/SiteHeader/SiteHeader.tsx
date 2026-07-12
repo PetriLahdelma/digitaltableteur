@@ -129,7 +129,7 @@ export function SiteHeader({
     }
     const nextTheme = cycleTheme() as Theme;
     const label = t(themeNames[nextTheme], nextTheme);
-    showToast(t("themeChanged", { theme: label }), 3000);
+    showToast(t("themeChanged", { theme: label }), { tone: "neutral", duration: 3000 });
   };
 
   const handleLanguageChange = (code: string) => {
@@ -151,7 +151,7 @@ export function SiteHeader({
         lng: code,
         language: label,
       }),
-      3000,
+      { tone: "neutral", duration: 3000 },
     );
   };
 

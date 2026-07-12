@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T08:37:41.480Z",
+  "generatedAt": "2026-07-12T10:01:45.548Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -9871,7 +9871,8 @@
             "info",
             "success",
             "warning",
-            "error"
+            "error",
+            "neutral"
           ]
         },
         "position": {
@@ -9918,7 +9919,8 @@
             "info",
             "success",
             "warning",
-            "error"
+            "error",
+            "neutral"
           ],
           "default": "info"
         },

@@ -66,13 +66,14 @@ export const Tones: Story = {
     docs: {
       description: {
         story:
-          "One toast, four tones. The filled icon carries the meaning alongside color; error and warning announce assertively (role=alert), success and info stay polite.",
+          "One toast, five tones. Neutral is the plain acknowledgement (no icon, no accent) used for language/theme changes; the four semantic tones add a filled icon that carries the meaning alongside color. Error and warning announce assertively (role=alert); neutral, success, and info stay polite.",
       },
     },
   },
   render: function TonesStory() {
     const [tone, setTone] = useState<ToastTone | null>(null);
     const messages: Record<ToastTone, string> = {
+      neutral: "Language changed to English.",
       success: "Operation completed successfully.",
       error: "An error occurred. Please try again.",
       warning: "Your session will expire soon.",

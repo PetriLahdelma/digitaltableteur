@@ -8,7 +8,10 @@ import React, {
   useRef,
   useState,
 } from "react";
-import type { ToastTone, ToastPosition } from "@digitaltableteur/react";
+// Import the tone/position types from local source (not the published barrel):
+// the neutral tone is added locally here and ships to the package on the next
+// republish; until then the barrel's .d.ts lags the local ToastTone.
+import type { ToastTone, ToastPosition } from "@dt/Toast";
 import ToastStack, { type ToastStackItem } from "@dt/ToastStack";
 import { ToastRuntimeProvider } from "../nextjs-app/shared/lib/toast";
 
