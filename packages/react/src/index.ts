@@ -348,3 +348,15 @@ export {
   type ScrollOverflowState,
 } from "../../../nextjs-app/shared/hooks/useOverflow";
 export { useScrollLock } from "../../../nextjs-app/shared/hooks/useScrollLock";
+
+// ── Patterns ──────────────────────────────────────────────────────────────
+// Composite, page-level building blocks: the pattern rung of the
+// full-consumption mandate (atoms → molecules → patterns → pages). Stable
+// contracts only; alpha patterns enter after their honest beta promotion.
+export { default as PageLayout } from "../../../nextjs-app/shared/patterns/PageLayout/PageLayout";
+export type { PageLayoutProps } from "../../../nextjs-app/shared/patterns/PageLayout/PageLayout";
+export { default as ProcessBlock } from "../../../nextjs-app/shared/patterns/ProcessBlock/ProcessBlock";
+export type {
+  ProcessBlockProps,
+  ProcessPhase,
+} from "../../../nextjs-app/shared/patterns/ProcessBlock/ProcessBlock";
