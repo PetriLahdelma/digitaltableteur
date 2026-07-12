@@ -88,14 +88,6 @@ const ALLOWED_LOCAL_SHARED_IMPORTS = new Map([
     "toast runtime is LOCAL end-to-end (ToastStack + LanguageNotice read this instance); dual-provide if a package component ever calls useToast",
   ],
   [
-    "providers/ToastProvider.tsx :: ../nextjs-app/shared/components/Toast/Toast",
-    "ToastTone/ToastPosition: local source leads the published barrel until 0.1.8 ships the #1124 neutral tone (LanguageNotice passes tone:'neutral'); flip to @digitaltableteur/react after the 0.1.8 consume",
-  ],
-  [
-    "providers/ToastProvider.tsx :: ../nextjs-app/shared/components/ToastStack/ToastStack",
-    "ToastStack + ToastStackItem: presentational stack rides the same local source until the 0.1.8 consume ships it to the registry barrel; flip to @digitaltableteur/react then",
-  ],
-  [
     "app/components/LanguageNotice/LanguageNotice.tsx :: @/nextjs-app/shared/lib/toast",
     "reads the LOCAL toast instance mounted by providers/ToastProvider",
   ],
