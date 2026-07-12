@@ -40,6 +40,11 @@ export {
   optionsFromSelectChildren,
   splitPlaceholderOption,
 } from "../../../nextjs-app/shared/components/Combobox";
+export {
+  CommandPalette,
+  type CommandPaletteItem,
+  type CommandPaletteProps,
+} from "../../../nextjs-app/shared/components/CommandPalette/CommandPalette";
 export { Container, type ContainerProps } from "../../../nextjs-app/shared/components/Container";
 export { default as CookieConsent } from "../../../nextjs-app/shared/components/CookieConsent/CookieConsent";
 export type { CookieConsentProps } from "../../../nextjs-app/shared/components/CookieConsent";

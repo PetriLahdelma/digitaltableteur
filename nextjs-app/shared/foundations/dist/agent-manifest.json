@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-12T08:12:17.996Z",
+  "generatedAt": "2026-07-12T08:25:46.352Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
-      "beta": 49,
+      "beta": 50,
       "stable": 92,
-      "alpha": 23,
+      "alpha": 22,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
@@ -107,9 +107,9 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 49,
+        "beta": 50,
         "stable": 92,
-        "alpha": 23,
+        "alpha": 22,
         "deprecated": 1
       },
       "dsharp": {
@@ -8428,9 +8428,9 @@
         "name": "CommandPalette",
         "tier": "organism",
         "group": "navigation",
-        "status": "alpha",
+        "status": "beta",
         "description": "Modal, keyboard-driven command launcher: a search input filters a listbox of commands (matched on label + keywords); Arrow keys move the active option, Enter runs it, Escape closes. Focus is trapped and background scroll locked while open.",
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1285-2113",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -8456,8 +8456,9 @@
             "Each command is role=option with aria-selected reflecting the active item"
           ],
           "reducedMotion": true,
-          "reviewed": false,
-          "forcedColorsVerified": false
+          "reviewed": true,
+          "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. Overlay dialog is role=dialog aria-modal with an accessible label; the search input is role=combobox with aria-expanded, aria-controls and aria-activedescendant onto the role=listbox; each command is role=option with aria-selected reflecting the active item. Focus is trapped (useFocusTrap) and background scroll locked (useScrollLock) while open; Arrow Up/Down wrap the active option, Enter runs it and closes, Escape closes, overlay mousedown closes. User-facing strings are props so the component carries no i18n dependency. Axe asserted in unit test; forced-colors + light/dark verified on a non-6010 Storybook. Known limitation: virtualization is not implemented, so very long command lists render in full.",
+          "forcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -8479,7 +8480,56 @@
             "--font-size-text-m"
           ]
         },
-        "lightDarkVerified": false
+        "lightDarkVerified": true,
+        "props": {
+          "open": {
+            "optional": false,
+            "type": "boolean"
+          },
+          "onClose": {
+            "optional": false,
+            "type": "() => void"
+          },
+          "items": {
+            "optional": false,
+            "type": "CommandPaletteItem[]"
+          },
+          "label": {
+            "optional": true,
+            "type": "string"
+          },
+          "placeholder": {
+            "optional": true,
+            "type": "string"
+          },
+          "emptyText": {
+            "optional": true,
+            "type": "string"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "forbiddenUse": [
+          "nest submenus or put long forms inside it; it is a launcher, not a menu system or a modal form",
+          "hardcode user-facing copy; pass `label`, `placeholder`, and `emptyText` so the host owns i18n"
+        ],
+        "keywords": [
+          "command palette",
+          "command launcher",
+          "cmdk",
+          "quick actions",
+          "spotlight",
+          "fuzzy search"
+        ],
+        "dense": "Modal keyboard-driven command launcher: role=dialog with a combobox filtering a role=listbox on label+keywords; Arrow moves active option, Enter runs, Escape closes; focus trapped, scroll locked.",
+        "usage": {
+          "description": "CommandPalette is a modal, keyboard-first launcher: a search input filters a listbox of commands matched on label and keywords, Arrow keys move the active option, Enter runs it, Escape closes. It is controlled (open + onClose) and portal-rendered with focus trapped and background scroll locked while open. Reach for it as a power-user shortcut surface (go-to navigation, quick actions), not as a replacement for primary navigation or a container for forms. All user-facing strings are props so the host owns i18n."
+        },
+        "composesWith": [],
+        "schemaVersion": 2,
+        "displayName": "CommandPalette"
       },
       "spec": "# CommandPalette\n\n## Intent\nA modal, keyboard-first launcher for jumping to a command, page, or action\nwithout reaching for the mouse. Opened by a shortcut (e.g. Cmd/Ctrl-K), it filters\na flat list of commands as you type and runs the highlighted one on Enter. Use it\nfor cross-surface navigation and quick actions, not as a menu bound to one control.\n\n## Interaction contract\n- Keyboard: type to filter (matches label + keywords); Arrow Down/Up move the\n  active option, wrapping; Enter runs the active command and closes; Escape\n  closes. Focus is trapped in the dialog and background scroll is locked while open.\n- Pointer: hovering an option makes it active; clicking runs it; clicking the\n  scrim closes.\n- Controlled only: `open` + `onClose` own visibility; the component holds query\n  and active-index state internally and resets them on open.\n- Screen readers: the overlay is `role=dialog aria-modal`; the input is\n  `role=combobox` with `aria-controls` + `aria-activedescendant` onto the\n  `role=listbox`; each command is `role=option` with `aria-selected`.\n\n## Do / don't\n- Do: keep commands flat and label them as actions (\"Go to Blog\", \"New post\").\n- Do: pass `keywords` for synonyms so fuzzy intent still matches.\n- Don't: nest submenus or put long forms inside it — it is a launcher, not a\n  workspace. Route or run on Enter and close.\n- Don't: hardcode copy in the component — `label` / `placeholder` / `emptyText`\n  are props so the host owns translation.\n\n## Design notes\n- Tokens: scrim from `--color-black`; dialog `--color-surface` + `--color-border`\n  + shadow; text `--color-text` / `--color-muted`; radius/spacing from\n  `--radius-*` / `--space-internal-*`. No hardcoded colors.\n- Reuses `useFocusTrap` and `useScrollLock` (see Foundations/Utilities). The\n  active option is a neutral tint; forced-colors maps it to a `Highlight` outline.\n- Figma: TODO (parity build; no Figma node yet).\n\n## Promotion notes\nParity build (Astryx `Command Palette`, reduced to the core launcher). Ships at\nalpha with the WIP badge. Do not promote past alpha/beta without a documented\nproduction consumer, AT snapshots, and forced-colors + light/dark verification.\n",
       "documentationDebt": false,

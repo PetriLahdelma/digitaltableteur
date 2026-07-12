@@ -3,16 +3,21 @@
     "name": "CommandPalette",
     "tier": "organism",
     "group": "navigation",
-    "status": "alpha",
+    "status": "beta",
     "description": "Modal, keyboard-driven command launcher: a search input filters a listbox of commands (matched on label + keywords); Arrow keys move the active option, Enter runs it, Escape closes. Focus is trapped and background scroll locked while open.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1285-2113",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
-    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
     "a11y": {
         "keyboard": [
             "Arrow Down / Up move the active option (wrapping)",
@@ -26,8 +31,9 @@
             "Each command is role=option with aria-selected reflecting the active item"
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. Overlay dialog is role=dialog aria-modal with an accessible label; the search input is role=combobox with aria-expanded, aria-controls and aria-activedescendant onto the role=listbox; each command is role=option with aria-selected reflecting the active item. Focus is trapped (useFocusTrap) and background scroll locked (useScrollLock) while open; Arrow Up/Down wrap the active option, Enter runs it and closes, Escape closes, overlay mousedown closes. User-facing strings are props so the component carries no i18n dependency. Axe asserted in unit test; forced-colors + light/dark verified on a non-6010 Storybook. Known limitation: virtualization is not implemented, so very long command lists render in full.",
+        "forcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -49,5 +55,54 @@
             "--font-size-text-m"
         ]
     },
-    "lightDarkVerified": false
+    "lightDarkVerified": true,
+    "props": {
+        "open": {
+            "optional": false,
+            "type": "boolean"
+        },
+        "onClose": {
+            "optional": false,
+            "type": "() => void"
+        },
+        "items": {
+            "optional": false,
+            "type": "CommandPaletteItem[]"
+        },
+        "label": {
+            "optional": true,
+            "type": "string"
+        },
+        "placeholder": {
+            "optional": true,
+            "type": "string"
+        },
+        "emptyText": {
+            "optional": true,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "nest submenus or put long forms inside it; it is a launcher, not a menu system or a modal form",
+        "hardcode user-facing copy; pass `label`, `placeholder`, and `emptyText` so the host owns i18n"
+    ],
+    "keywords": [
+        "command palette",
+        "command launcher",
+        "cmdk",
+        "quick actions",
+        "spotlight",
+        "fuzzy search"
+    ],
+    "dense": "Modal keyboard-driven command launcher: role=dialog with a combobox filtering a role=listbox on label+keywords; Arrow moves active option, Enter runs, Escape closes; focus trapped, scroll locked.",
+    "usage": {
+        "description": "CommandPalette is a modal, keyboard-first launcher: a search input filters a listbox of commands matched on label and keywords, Arrow keys move the active option, Enter runs it, Escape closes. It is controlled (open + onClose) and portal-rendered with focus trapped and background scroll locked while open. Reach for it as a power-user shortcut surface (go-to navigation, quick actions), not as a replacement for primary navigation or a container for forms. All user-facing strings are props so the host owns i18n."
+    },
+    "composesWith": [],
+    "schemaVersion": 2,
+    "displayName": "CommandPalette"
 }
