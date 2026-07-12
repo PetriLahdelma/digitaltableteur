@@ -12,7 +12,7 @@ const defaultArgs = {
 const meta = {
   title: "Forms/GroupLabel",
   component: GroupLabel,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
