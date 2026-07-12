@@ -26,7 +26,7 @@ export function Display({
   return (
     <Tag
       className={cn(
-        "font-heading text-display font-bold leading-tight text-foreground",
+        "font-heading text-dt-display font-bold leading-tight text-foreground",
         className,
       )}
       {...props}
