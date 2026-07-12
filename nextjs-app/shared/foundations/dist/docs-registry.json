@@ -14681,16 +14681,115 @@
       "name": "Timestamp",
       "group": "display",
       "tier": 2,
-      "status": "alpha",
+      "status": "stable",
       "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
       "dense": "",
       "keywords": [],
       "importLine": "import Timestamp from \"@dt/Timestamp\";",
-      "keyProps": [],
-      "props": {},
+      "keyProps": [
+        {
+          "name": "value",
+          "type": "string | number | Date",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "auto | date | time | relative | date_time | system_date | system_date_time | system_time",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "s | xs | xxs | m",
+          "required": false
+        },
+        {
+          "name": "tone",
+          "type": "default | muted",
+          "required": false
+        },
+        {
+          "name": "autoThreshold",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "showTimezone",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "props": {
+        "value": {
+          "optional": false,
+          "type": "string | number | Date"
+        },
+        "format": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "auto",
+            "date",
+            "time",
+            "relative",
+            "date_time",
+            "system_date",
+            "system_date_time",
+            "system_time"
+          ]
+        },
+        "autoThreshold": {
+          "optional": true,
+          "type": "number"
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "s",
+            "xs",
+            "xxs",
+            "m"
+          ]
+        },
+        "tone": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "default",
+            "muted"
+          ]
+        },
+        "showTimezone": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "tooltip": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "live": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "now": {
+          "optional": true,
+          "type": "string | number | Date"
+        },
+        "locale": {
+          "optional": true,
+          "type": "string"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
       "composesWith": [],
       "prefersOver": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "wrap it in another `<time>` or add a redundant `title`; it owns both.",
+        "use `live` for values that will not change meaningfully while on screen"
+      ],
       "usage": null,
       "tokens": {
         "colors": [
