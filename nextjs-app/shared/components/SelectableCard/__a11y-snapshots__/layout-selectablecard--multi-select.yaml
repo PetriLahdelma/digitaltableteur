@@ -1,0 +1,13 @@
+- status: Work in progress (beta)
+- group "Add-ons":
+  - text: Add-ons
+  - checkbox "Analytics Usage dashboards." [checked]
+  - heading "Analytics" [level=3]
+  - paragraph: Usage dashboards.
+  - checkbox "Audit log Exportable event history."
+  - heading "Audit log" [level=3]
+  - paragraph: Exportable event history.
+  - checkbox "SSO SAML / OIDC single sign-on."
+  - heading "SSO" [level=3]
+  - paragraph: SAML / OIDC single sign-on.
+  - paragraph: Pick any that apply.

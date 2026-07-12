@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
+import { expect, userEvent, within } from "storybook/test";
 import { SelectableCard, SelectableCardGroup } from "./SelectableCard";
 import contract from "./SelectableCard.contract.json";
 
@@ -13,7 +14,7 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   // Custom MDX docs page exists; do not also enable autodocs.
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   argTypes: {
     value: {
       control: "text",
@@ -55,6 +56,7 @@ type Story = StoryObj<typeof meta>;
 
 /** A standalone card toggles as a controlled checkbox-style option. */
 export const Default: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   render: (args) => {
     const [on, setOn] = useState(Boolean(args.selected));
@@ -68,15 +70,27 @@ export const Default: Story = {
       </div>
     );
   },
+  // Drives the toggle via the native input. Two clicks net to zero (on then off)
+  // so the settled selection is unchanged and the captured AT snapshot is stable.
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole("checkbox");
+    await userEvent.click(input);
+    await expect(input).toBeChecked();
+    await userEvent.click(input);
+    await expect(input).not.toBeChecked();
+  },
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   render: Default.render,
 };
 
 /** Single-select set: an exclusive radio group rendered as cards. */
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   render: () => {
     const [plan, setPlan] = useState("team");
@@ -174,6 +188,7 @@ export const WithError: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   parameters: {
     controls: { disable: true },

@@ -1,18 +1,23 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "SelectableCard",
     "tier": "molecule",
     "group": "form",
-    "status": "alpha",
+    "status": "beta",
     "description": "A Card that is one selectable option; grouped into single (radio) or multiple (checkbox) sets via SelectableCardGroup.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1288-2114",
     "radixPrimitive": null,
     "element": "label",
     "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
-    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
     "a11y": {
         "keyboard": [
             "Tab moves focus into the group",
@@ -25,8 +30,9 @@
             "Error announces via role=alert and sets aria-invalid on the group"
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. SelectableCardGroup renders a fieldset with a legend for the accessible name; each SelectableCard is a label wrapping a visually-hidden native radio (single) or checkbox (multiple) input, so keyboard, focus and form submission come from the platform. Error announces via role=alert and sets aria-invalid on the group. Selected/disabled states mirror to data-attributes for CSS + tests. Motion respects prefers-reduced-motion. Axe asserted in the colocated a11y test; forced-colors + light/dark verified on a non-6010 Storybook.",
+        "forcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -43,5 +49,38 @@
             "--space-internal-24"
         ]
     },
-    "lightDarkVerified": false
+    "lightDarkVerified": true,
+    "props": {
+        "value": {
+            "optional": false,
+            "type": "string"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "selected": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onSelectedChange": {
+            "optional": true,
+            "type": "(selected: boolean) => void"
+        }
+    },
+    "forbiddenUse": [
+        "nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.",
+        "use it for navigation; selecting must not commit or route on click."
+    ],
+    "keywords": [
+        "selectable card",
+        "card radio",
+        "card checkbox",
+        "choice card",
+        "option card",
+        "card group"
+    ],
+    "dense": "Card as one selectable option; grouped via SelectableCardGroup into single (radio) or multiple (checkbox) sets; whole card is a label over a hidden native input; controlled or uncontrolled.",
+    "schemaVersion": 2,
+    "displayName": "SelectableCard"
 }

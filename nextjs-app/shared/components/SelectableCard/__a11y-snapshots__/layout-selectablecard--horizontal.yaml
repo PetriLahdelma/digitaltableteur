@@ -1,0 +1,9 @@
+- status: Work in progress (beta)
+- group "T-shirt size":
+  - text: T-shirt size
+  - radio "S"
+  - heading "S" [level=3]
+  - radio "M" [checked]
+  - heading "M" [level=3]
+  - radio "L"
+  - heading "L" [level=3]

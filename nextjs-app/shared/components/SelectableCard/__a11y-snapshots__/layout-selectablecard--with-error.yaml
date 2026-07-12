@@ -1,0 +1,12 @@
+- status: Work in progress (beta)
+- group "Choose a plan":
+  - text: Choose a plan
+  - radio "Starter 1 seat."
+  - heading "Starter" [level=3]
+  - paragraph: 1 seat.
+  - radio "Team Up to 10 seats."
+  - heading "Team" [level=3]
+  - paragraph: Up to 10 seats.
+  - alert:
+    - img
+    - text: Select a plan to continue.
