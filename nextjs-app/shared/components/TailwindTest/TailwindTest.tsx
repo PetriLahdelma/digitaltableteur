@@ -139,36 +139,36 @@ export default function TailwindTest() {
 
       {/* Typography Demo - Phase 02 */}
       <div className="mt-8 pt-8 border-t border-border">
-        <h3 className="font-heading text-title-m font-bold mb-6">
+        <h3 className="font-heading text-dt-title-m font-bold mb-6">
           Typography System (Satoshi)
         </h3>
 
         <div className="space-y-4">
-          <p className="font-heading text-display font-bold leading-tight">
+          <p className="font-heading text-dt-display font-bold leading-tight">
             Display — SatoshiBold
           </p>
-          <p className="font-heading text-title-xl font-semibold">
+          <p className="font-heading text-dt-title-xl font-semibold">
             Heading XL — SatoshiSemibold
           </p>
-          <p className="font-heading text-title-l font-medium">
+          <p className="font-heading text-dt-title-l font-medium">
             Heading L — SatoshiMedium
           </p>
-          <p className="font-heading text-title-m">
+          <p className="font-heading text-dt-title-m">
             Heading M — SatoshiRegular
           </p>
-          <p className="font-body text-text-l">
+          <p className="font-body text-dt-text-l">
             Body Large — Satoshi for body text and UI elements
           </p>
-          <p className="font-body text-text-m">
+          <p className="font-body text-dt-text-m">
             Body Medium — Clean and readable at any size
           </p>
-          <p className="font-body text-text-s text-muted-foreground">
+          <p className="font-body text-dt-text-s text-muted-foreground">
             Body Small — Muted for secondary content
           </p>
         </div>
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
-          <p className="font-body text-text-s">
+          <p className="font-body text-dt-text-s">
             <strong className="font-heading">Font Stack:</strong> Satoshi (single typeface, headings + body)
           </p>
         </div>
@@ -176,7 +176,7 @@ export default function TailwindTest() {
 
       {/* Animation Demo - Phase 03 */}
       <div className="mt-8 pt-8 border-t border-border">
-        <h3 className="font-heading text-title-m font-bold mb-6">
+        <h3 className="font-heading text-dt-title-m font-bold mb-6">
           Animation Primitives (GSAP + Lenis)
         </h3>
 
@@ -184,7 +184,7 @@ export default function TailwindTest() {
         <div className="space-y-4 mb-8">
           <FadeIn direction="up" delay={0}>
             <div className="p-4 bg-muted rounded-sm">
-              <p className="font-body text-text-m">
+              <p className="font-body text-dt-text-m">
                 <strong>FadeIn Up</strong> — Fades in from below on scroll
               </p>
             </div>
@@ -192,7 +192,7 @@ export default function TailwindTest() {
 
           <FadeIn direction="left" delay={0.1}>
             <div className="p-4 bg-muted rounded-sm">
-              <p className="font-body text-text-m">
+              <p className="font-body text-dt-text-m">
                 <strong>FadeIn Left</strong> — Fades in from the left
               </p>
             </div>
@@ -200,7 +200,7 @@ export default function TailwindTest() {
 
           <FadeIn direction="right" delay={0.2}>
             <div className="p-4 bg-muted rounded-sm">
-              <p className="font-body text-text-m">
+              <p className="font-body text-dt-text-m">
                 <strong>FadeIn Right</strong> — Fades in from the right
               </p>
             </div>
@@ -209,18 +209,18 @@ export default function TailwindTest() {
 
         {/* SlideIn Demo */}
         <div className="mb-8">
-          <p className="font-body text-text-s text-muted-foreground mb-2">
+          <p className="font-body text-dt-text-s text-muted-foreground mb-2">
             SlideIn with stagger effect:
           </p>
           <SlideIn direction="left" stagger={0.15}>
             <div className="p-3 bg-primary/10 rounded-sm mb-2">
-              <p className="font-body text-text-m">SlideIn Item 1</p>
+              <p className="font-body text-dt-text-m">SlideIn Item 1</p>
             </div>
             <div className="p-3 bg-primary/10 rounded-sm mb-2">
-              <p className="font-body text-text-m">SlideIn Item 2</p>
+              <p className="font-body text-dt-text-m">SlideIn Item 2</p>
             </div>
             <div className="p-3 bg-primary/10 rounded-sm">
-              <p className="font-body text-text-m">SlideIn Item 3</p>
+              <p className="font-body text-dt-text-m">SlideIn Item 3</p>
             </div>
           </SlideIn>
         </div>
@@ -231,7 +231,7 @@ export default function TailwindTest() {
             as="h4"
             type="words"
             animation="slide"
-            className="font-heading text-title-l font-bold"
+            className="font-heading text-dt-title-l font-bold"
           >
             Kinetic Typography Demo
           </TextReveal>
@@ -245,7 +245,7 @@ export default function TailwindTest() {
         <div className="mb-8 h-32 bg-muted/30 rounded-sm overflow-hidden">
           <Parallax speed={-0.2}>
             <div className="p-6 text-center">
-              <p className="font-body text-text-l">
+              <p className="font-body text-dt-text-l">
                 This content moves slower than scroll (parallax effect)
               </p>
             </div>
@@ -253,10 +253,10 @@ export default function TailwindTest() {
         </div>
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
-          <p className="font-body text-text-s">
+          <p className="font-body text-dt-text-s">
             <strong className="font-heading">Animation Stack:</strong> GSAP (animations) + Lenis (smooth scroll) + ScrollTrigger (scroll-driven)
           </p>
-          <p className="font-body text-text-s text-muted-foreground mt-2">
+          <p className="font-body text-dt-text-s text-muted-foreground mt-2">
             All animations respect prefers-reduced-motion for accessibility.
           </p>
         </div>
@@ -264,22 +264,22 @@ export default function TailwindTest() {
 
       {/* Layout Demo - Phase 04 */}
       <div className="mt-8 pt-8 border-t border-border">
-        <h3 className="font-heading text-title-m font-bold mb-6">
+        <h3 className="font-heading text-dt-title-m font-bold mb-6">
           Layout Primitives
         </h3>
 
         <Stack gap="lg">
           {/* Container demo */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-2">Container (md):</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-2">Container (md):</p>
             <Container size="md" className="bg-primary/10 p-4 rounded">
-              <p className="font-body text-text-m text-center">Centered content with max-width</p>
+              <p className="font-body text-dt-text-m text-center">Centered content with max-width</p>
             </Container>
           </div>
 
           {/* Stack demo */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-2">Stack (horizontal, gap-md):</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-2">Stack (horizontal, gap-md):</p>
             <Stack direction="horizontal" gap="md">
               <div className="bg-primary/20 p-3 rounded">Item 1</div>
               <div className="bg-primary/20 p-3 rounded">Item 2</div>
@@ -289,25 +289,25 @@ export default function TailwindTest() {
 
           {/* Center demo */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-2">Center:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-2">Center:</p>
             <Center className="h-24 bg-primary/10 rounded">
-              <p className="font-body text-text-m">Centered content</p>
+              <p className="font-body text-dt-text-m">Centered content</p>
             </Center>
           </div>
 
           {/* AspectRatio demo */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-2">AspectRatio (16:9):</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-2">AspectRatio (16:9):</p>
             <AspectRatio ratio="16:9" className="bg-primary/20 rounded max-w-sm">
               <Center className="h-full">
-                <p className="font-body text-text-m">16:9 Container</p>
+                <p className="font-body text-dt-text-m">16:9 Container</p>
               </Center>
             </AspectRatio>
           </div>
         </Stack>
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
-          <p className="font-body text-text-s">
+          <p className="font-body text-dt-text-s">
             <strong className="font-heading">Layout Stack:</strong> Container, Section, Stack, Spacer, Center, AspectRatio + existing Grid/FlexBox
           </p>
         </div>
@@ -315,14 +315,14 @@ export default function TailwindTest() {
 
       {/* UI Components Demo - Phase 05 */}
       <div className="mt-8 pt-8 border-t border-border">
-        <h3 className="font-heading text-title-m font-bold mb-6">
+        <h3 className="font-heading text-dt-title-m font-bold mb-6">
           UI Components (Tailwind-first)
         </h3>
 
         <Stack gap="lg">
           {/* Studio Button Variants */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Button Studio Variants:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Button Studio Variants:</p>
             <Stack direction="horizontal" gap="sm" wrap>
               <Button variant="primary">Primary</Button>
               <Button variant="inverse">Inverse</Button>
@@ -333,7 +333,7 @@ export default function TailwindTest() {
 
           {/* Link Variants */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Link Variants:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Link Variants:</p>
             <Stack direction="horizontal" gap="md" wrap>
               <Link href="/about" size="sm">Default Link</Link>
               <Link href="/work" size="md">Medium Link</Link>
@@ -346,7 +346,7 @@ export default function TailwindTest() {
 
           {/* Badge Variants (Tag was folded into Badge) */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Badge Variants:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Badge Variants:</p>
             <Stack direction="horizontal" gap="sm" wrap>
               <Badge>Default</Badge>
               <Badge variant="secondary">Secondary</Badge>
@@ -360,20 +360,20 @@ export default function TailwindTest() {
 
           {/* Divider */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Divider:</p>
-            <p className="font-body text-text-m mb-2">Content above divider</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Divider:</p>
+            <p className="font-body text-dt-text-m mb-2">Content above divider</p>
             <Divider />
-            <p className="font-body text-text-m mt-2">Content below divider</p>
+            <p className="font-body text-dt-text-m mt-2">Content below divider</p>
             <div className="flex items-center gap-4 mt-4 h-8">
-              <span className="font-body text-text-m">Left</span>
+              <span className="font-body text-dt-text-m">Left</span>
               <Divider orientation="vertical" />
-              <span className="font-body text-text-m">Right</span>
+              <span className="font-body text-dt-text-m">Right</span>
             </div>
           </div>
 
           {/* IconButton */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">IconButton:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">IconButton:</p>
             <Stack direction="horizontal" gap="sm">
               <IconButton icon={<Heart className="h-5 w-5" />} label="Like" />
               <IconButton icon={<Share className="h-5 w-5" />} label="Share" variant="secondary" />
@@ -384,7 +384,7 @@ export default function TailwindTest() {
 
           {/* Prose */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Prose (Rich Text):</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Prose (Rich Text):</p>
             <Prose size="sm">
               <p>
                 The <strong>Prose</strong> component wraps rich text content with proper typography styles.
@@ -395,7 +395,7 @@ export default function TailwindTest() {
         </Stack>
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
-          <p className="font-body text-text-s">
+          <p className="font-body text-dt-text-s">
             <strong className="font-heading">UI Components:</strong> Button (studio variants), Link, Tag, Divider, IconButton, VisuallyHidden, Prose
           </p>
         </div>
@@ -403,14 +403,14 @@ export default function TailwindTest() {
 
       {/* Form Components Demo - Phase 05-2 */}
       <div className="mt-8 pt-8 border-t border-border">
-        <h3 className="font-heading text-title-m font-bold mb-6">
+        <h3 className="font-heading text-dt-title-m font-bold mb-6">
           Form Components
         </h3>
 
         <Stack gap="lg">
           {/* FormField group mode (absorbs former FormGroup + CheckboxField) */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">FormField (group mode):</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">FormField (group mode):</p>
             <FormField
               legend="Notification preferences"
               groupDescription="Choose how you would like to hear from us"
@@ -425,7 +425,7 @@ export default function TailwindTest() {
         </Stack>
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
-          <p className="font-body text-text-s">
+          <p className="font-body text-dt-text-s">
             <strong className="font-heading">Form Stack:</strong> FormField (group/fieldset mode only; controls own their own label/error), Checkbox. See <code>@dt/TextInput</code> and <code>@dt/TextArea</code> for the canonical text field components.
           </p>
         </div>
@@ -433,14 +433,14 @@ export default function TailwindTest() {
 
       {/* Interactive Components Demo - Phase 06 */}
       <div className="mt-8 pt-8 border-t border-border">
-        <h3 className="font-heading text-title-m font-bold mb-6">
+        <h3 className="font-heading text-dt-title-m font-bold mb-6">
           Interactive Components
         </h3>
 
         <Stack gap="lg">
           {/* Dialog with size variants */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Dialog Size Variants:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Dialog Size Variants:</p>
             <Stack direction="horizontal" gap="sm" wrap>
               <Dialog>
                 <DialogTrigger asChild>
@@ -486,7 +486,7 @@ export default function TailwindTest() {
 
           {/* Accordion Variants */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Accordion Card Variant:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Accordion Card Variant:</p>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="card-1" variant="card">
                 <AccordionTrigger variant="card">Card Style Item 1</AccordionTrigger>
@@ -505,10 +505,10 @@ export default function TailwindTest() {
 
           {/* Tabs Variants */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Tabs Variants:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Tabs Variants:</p>
             <Stack gap="md">
               <div>
-                <p className="font-body text-text-xs text-muted-foreground mb-2">Underline:</p>
+                <p className="font-body text-dt-text-xs text-muted-foreground mb-2">Underline:</p>
                 <Tabs defaultValue="tab1">
                   <TabsList variant="underline">
                     <TabsTrigger value="tab1" variant="underline">Overview</TabsTrigger>
@@ -518,7 +518,7 @@ export default function TailwindTest() {
                 </Tabs>
               </div>
               <div>
-                <p className="font-body text-text-xs text-muted-foreground mb-2">Pills:</p>
+                <p className="font-body text-dt-text-xs text-muted-foreground mb-2">Pills:</p>
                 <Tabs defaultValue="tab1">
                   <TabsList variant="pills">
                     <TabsTrigger value="tab1" variant="pills">All</TabsTrigger>
@@ -532,7 +532,7 @@ export default function TailwindTest() {
 
           {/* Tooltip */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Tooltip:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Tooltip:</p>
             <Stack direction="horizontal" gap="md">
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -547,7 +547,7 @@ export default function TailwindTest() {
 
           {/* Toast */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Toast Notifications:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Toast Notifications:</p>
             <Stack direction="horizontal" gap="sm" wrap>
               <Button
                 variant="outline"
@@ -578,7 +578,7 @@ export default function TailwindTest() {
 
           {/* Lightbox */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">Lightbox:</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">Lightbox:</p>
             <Button variant="outline" onClick={() => setLightboxOpen(true)}>
               <ImageIcon className="mr-2 h-4 w-4" />
               Open Lightbox Demo
@@ -587,7 +587,7 @@ export default function TailwindTest() {
         </Stack>
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
-          <p className="font-body text-text-s">
+          <p className="font-body text-dt-text-s">
             <strong className="font-heading">Interactive Stack:</strong> Dialog (size/severity), Accordion (variants), Tabs (variants), Tooltip, Toast, Lightbox
           </p>
         </div>
@@ -595,14 +595,14 @@ export default function TailwindTest() {
 
       {/* Navigation Components Demo - Phase 06-2 */}
       <div className="mt-8 pt-8 border-t border-border">
-        <h3 className="font-heading text-title-m font-bold mb-6">
+        <h3 className="font-heading text-dt-title-m font-bold mb-6">
           Navigation Components
         </h3>
 
         <Stack gap="lg">
           {/* NavLink */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">NavLink (active state detection):</p>
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">NavLink (active state detection):</p>
             <Stack direction="horizontal" gap="md" wrap>
               <NavLink href="/" exact>Home</NavLink>
               <NavLink href="/work">Work</NavLink>
@@ -615,22 +615,22 @@ export default function TailwindTest() {
 
           {/* SkipLink demo note */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">SkipLink (accessibility):</p>
-            <p className="font-body text-text-m">
-              Press <kbd className="px-2 py-0.5 bg-muted border border-border rounded text-text-s font-mono">Tab</kbd> at the top of the page to see the skip link.
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">SkipLink (accessibility):</p>
+            <p className="font-body text-dt-text-m">
+              Press <kbd className="px-2 py-0.5 bg-muted border border-border rounded text-dt-text-s font-mono">Tab</kbd> at the top of the page to see the skip link.
             </p>
-            <p className="font-body text-text-s text-muted-foreground mt-2">
+            <p className="font-body text-dt-text-s text-muted-foreground mt-2">
               The SkipLink is hidden by default and becomes visible when focused, allowing keyboard users to bypass navigation.
             </p>
           </div>
 
           {/* SiteHeader/SiteFooter note */}
           <div className="bg-muted/30 p-4 rounded-sm">
-            <p className="font-body text-text-s text-muted-foreground mb-3">SiteHeader & SiteFooter:</p>
-            <p className="font-body text-text-m">
+            <p className="font-body text-dt-text-s text-muted-foreground mb-3">SiteHeader & SiteFooter:</p>
+            <p className="font-body text-dt-text-m">
               Look at the header and footer of this page. They are now using the new Tailwind-first navigation components with:
             </p>
-            <ul className="font-body text-text-s text-muted-foreground mt-2 list-disc list-inside space-y-1">
+            <ul className="font-body text-dt-text-s text-muted-foreground mt-2 list-disc list-inside space-y-1">
               <li>Sticky header with backdrop blur</li>
               <li>Desktop navigation with NavLink active states</li>
               <li>Language switcher (EN/FI/SV)</li>
@@ -642,7 +642,7 @@ export default function TailwindTest() {
         </Stack>
 
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
-          <p className="font-body text-text-s">
+          <p className="font-body text-dt-text-s">
             <strong className="font-heading">Navigation Stack:</strong> SiteHeader, SiteFooter, MobileDrawer, NavLink, SkipLink, useNavigation
           </p>
         </div>

@@ -31,6 +31,8 @@ const twMerge = extendTailwindMerge({
             "dt-text-l",
             "dt-text-xl",
             "dt-text-xxl",
+            "dt-display",
+            "dt-display-xl",
             "dt-title",
             "dt-title-xxs",
             "dt-title-xs",
