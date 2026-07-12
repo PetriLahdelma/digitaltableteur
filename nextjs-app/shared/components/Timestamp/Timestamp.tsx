@@ -21,7 +21,7 @@ export type TimestampFormat =
   | "system_date_time"
   | "system_time";
 
-export type TimestampSize = "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
+export type TimestampSize = "xxs" | "xs" | "s" | "m";
 
 export interface TimestampProps {
   /** The date/time to display: ISO 8601 string, Unix seconds, or Date. */
@@ -59,9 +59,6 @@ const SIZE_CLASS: Record<TimestampSize, string> = {
   xs: styles.sizeXS,
   s: styles.sizeS,
   m: styles.sizeM,
-  l: styles.sizeL,
-  xl: styles.sizeXL,
-  xxl: styles.sizeXXL,
 };
 
 const toDate = (value: string | number | Date): Date => {
