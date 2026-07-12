@@ -73,6 +73,17 @@ describe("ImagePlaceholder", () => {
     expect(container.querySelector("svg")).not.toBeInTheDocument();
   });
 
+  it("hides its decorative icon from the accessibility tree", () => {
+    const { container } = render(
+      <ImagePlaceholder width={800} height={400} />,
+    );
+
+    expect(container.querySelector("svg")).toHaveAttribute(
+      "aria-hidden",
+      "true",
+    );
+  });
+
   it("hides dimensions when showDimensions is false", () => {
     render(
       <ImagePlaceholder width={800} height={400} showDimensions={false} />,
