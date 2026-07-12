@@ -4,10 +4,11 @@ import MarkdownMessage from "@dt/MarkdownMessage";
 
 describe("MarkdownMessage", () => {
   it("renders fallback when content empty", () => {
-    render(
+    const { container } = render(
       <MarkdownMessage content="" fallback="Loading…" data-role="assistant" />,
     );
     expect(screen.getByText("Loading…")).toBeInTheDocument();
+    expect(container.firstElementChild).toHaveAttribute("aria-live", "polite");
   });
 
   it("renders basic markdown (heading, list, code)", () => {

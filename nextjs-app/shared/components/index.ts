@@ -53,13 +53,24 @@ export type {
 } from "./ComplianceCard";
 export { default as ContactForm } from "./ContactForm/ContactForm";
 export { default as ChatWidget } from "./ChatWidget/ChatWidget";
+export type {
+  ChatErrorMessages,
+  ChatWidgetProps,
+} from "./ChatWidget/ChatWidget";
 export { default as ChatHeader } from "./ChatWidget/ChatHeader";
+export type { ChatHeaderProps } from "./ChatWidget/ChatHeader";
 export { default as ChatMessages } from "./ChatWidget/ChatMessages";
+export type { ChatMessagesProps } from "./ChatWidget/ChatMessages";
 export { default as ChatComposer } from "./ChatWidget/ChatComposer";
+export type {
+  ChatComposerHandle,
+  ChatComposerProps,
+} from "./ChatWidget/ChatComposer";
 export { default as ChatToggle } from "./ChatWidget/ChatToggle";
 export { default as CookieConsent } from "./CookieConsent/CookieConsent";
 export type { CookieConsentProps } from "./CookieConsent";
 export { default as CodeBlockWindow } from "./CodeBlockWindow/CodeBlockWindow";
+export type { CodeBlockWindowProps } from "./CodeBlockWindow/CodeBlockWindow";
 export { Container, type ContainerProps } from "./Container";
 export {
   DonnyAvatar,
@@ -78,6 +89,7 @@ export type { GalleryProps } from "./Gallery";
 export { default as Grid } from "./Grid/Grid";
 export type { GridProps } from "./Grid/Grid";
 export { default as GroupLabel } from "./GroupLabel/GroupLabel";
+export type { GroupLabelProps } from "./GroupLabel/GroupLabel";
 export { default as Icon } from "./Icon/Icon";
 export type { IconProps } from "./Icon";
 export { default as HelsinkiClock } from "./HelsinkiClock/HelsinkiClock";
@@ -122,9 +134,11 @@ export type { MCPActionButtonProps } from "./MCPActionButton";
 export { default as NavMenuList } from "./NavMenuList/NavMenuList";
 export type { NavMenuItem, NavMenuListProps } from "./NavMenuList";
 export { default as MarkdownMessage } from "./MarkdownMessage/MarkdownMessage";
+export type { MarkdownMessageProps } from "./MarkdownMessage/MarkdownMessage";
 export { default as Modal } from "./Modal/Modal";
 export type { ModalProps, ModalSeverity } from "./Modal/Modal";
 export { NextLayout } from "./NextLayout";
+export type { NextLayoutProps } from "./NextLayout";
 export { default as OpenHours } from "./OpenHours/OpenHours";
 export { default as PersonCard } from "./PersonCard/PersonCard";
 export { default as PhoneInput } from "./PhoneInput/PhoneInput";
@@ -136,6 +150,7 @@ export {
   type SegmentedControlItem,
 } from "./SegmentedControl";
 export { default as Select } from "./Select/Select";
+export type { SelectOptionItem, SelectProps } from "./Select/Select";
 export { default as SelectOption } from "./Select/SelectOption";
 export { default as ServicesGrid } from "./ServicesGrid/ServicesGrid";
 export { default as SiteTree } from "./SiteTree";

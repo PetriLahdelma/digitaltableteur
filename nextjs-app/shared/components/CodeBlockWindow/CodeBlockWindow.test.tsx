@@ -75,7 +75,9 @@ describe("CodeBlockWindow", () => {
     await user.click(button);
 
     await waitFor(() => {
-      expect(screen.getByText("Copied")).toBeInTheDocument();
+      const status = screen.getByRole("status");
+      expect(status).toHaveTextContent("Copied");
+      expect(status).toHaveAttribute("aria-live", "polite");
     });
   });
 

@@ -68,4 +68,26 @@ describe("Select", () => {
       onChange.mock.invocationCallOrder[0],
     );
   });
+
+  it("associates error and helper text with the invalid control", () => {
+    render(
+      <Select
+        label="Test Select"
+        options={options}
+        error="Choose a valid option"
+        helperText="This choice affects the result"
+        aria-describedby="external-description"
+      />,
+    );
+
+    const select = screen.getByRole("combobox");
+    const error = screen.getByText("Choose a valid option");
+    const helper = screen.getByText("This choice affects the result");
+    const describedBy = select.getAttribute("aria-describedby")?.split(" ");
+
+    expect(select).toHaveAttribute("aria-invalid", "true");
+    expect(describedBy).toEqual(
+      expect.arrayContaining([error.id, helper.id, "external-description"]),
+    );
+  });
 });

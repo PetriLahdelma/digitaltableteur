@@ -30,4 +30,7 @@ export {
   extractLastToolActivity,
   resolveToolAvatarState,
 } from "./chatAvatarState";
-export type { ChatErrorMessages } from "./ChatWidget";
+export type {
+  ChatErrorMessages,
+  ChatWidgetProps,
+} from "./ChatWidget";
