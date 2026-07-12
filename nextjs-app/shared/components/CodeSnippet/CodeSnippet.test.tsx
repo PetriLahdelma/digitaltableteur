@@ -87,6 +87,32 @@ describe("CodeSnippet", () => {
       });
     });
 
+    it("links the expand control to the code element", async () => {
+      const longCode = Array(15).fill("console.log('line');").join("\n");
+      const { container } = render(
+        <CodeSnippet
+          code={longCode}
+          language="javascript"
+          variant="multi"
+          maxLines={10}
+        />,
+      );
+
+      const codeElement = container.querySelector("code");
+      const button = screen.getByRole("button", { name: "Show more" });
+      expect(codeElement).toHaveAttribute("id");
+      expect(button).toHaveAttribute("aria-expanded", "false");
+      expect(button).toHaveAttribute("aria-controls", codeElement?.id);
+
+      fireEvent.click(button);
+
+      await waitFor(() =>
+        expect(
+          screen.getByRole("button", { name: "Show less" }),
+        ).toHaveAttribute("aria-expanded", "true"),
+      );
+    });
+
     // Regression: maxLines=0 (clamp disabled) made hasOverflow the NUMBER 0,
     // which {hasOverflow && ...} rendered as a literal "0" in the figure.
     it("does not leak a stray '0' when maxLines is 0", () => {

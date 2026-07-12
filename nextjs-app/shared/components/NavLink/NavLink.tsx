@@ -40,19 +40,29 @@ export function NavLink({
     : exact
       ? pathname === href
       : pathname.startsWith(href);
+  const isSamePath = pathname === href;
+  const linkClassName = cn(
+    // rounded-sm matches the LanguageSwitcher buttons so the global
+    // :focus-visible outline renders with the same corner rounding.
+    // motion-reduce guard keeps a11y.reducedMotion honest (matches the
+    // Pagination / ValueCard color-transition treatment).
+    "font-body text-text-m transition-colors motion-reduce:transition-none rounded-sm",
+    className,
+    isActive ? activeClassName : inactiveClassName,
+  );
+
+  if (isActive && isSamePath) {
+    return (
+      <span className={linkClassName} aria-current="page">
+        {children}
+      </span>
+    );
+  }
 
   return (
     <Link
       href={href}
-      className={cn(
-        // rounded-sm matches the LanguageSwitcher buttons so the global
-        // :focus-visible outline renders with the same corner rounding.
-        // motion-reduce guard keeps a11y.reducedMotion honest (matches the
-        // Pagination / ValueCard color-transition treatment).
-        "font-body text-text-m transition-colors motion-reduce:transition-none rounded-sm",
-        className,
-        isActive ? activeClassName : inactiveClassName
-      )}
+      className={linkClassName}
       aria-current={isActive ? "page" : undefined}
     >
       {children}

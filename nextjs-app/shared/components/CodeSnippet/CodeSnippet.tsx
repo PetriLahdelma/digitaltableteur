@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState, useRef } from "react";
+import React, { useId, useMemo, useState, useRef } from "react";
 import styles from "./CodeSnippet.module.css";
 import Text from "@dt/Text";
 import Button from "@dt/Button";
@@ -94,6 +94,8 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   const [toastMessage, setToastMessage] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
   const codeRef = useRef<HTMLElement>(null);
+  const generatedCodeId = useId();
+  const codeId = `${generatedCodeId}-code`;
 
   const lines = code.trimEnd().split("\n");
   // Boolean() matters: maxLines=0 (clamp disabled) would otherwise make this
@@ -241,6 +243,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         aria-label={ariaLabel || `Code snippet in ${language}`}
       >
         <code
+          id={codeId}
           ref={codeRef as React.RefObject<HTMLElement>}
           className={`${styles.code} language-${language}`}
           dangerouslySetInnerHTML={{ __html: rendered }}
@@ -253,7 +256,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
             variant="tertiary"
             onClick={() => setIsExpanded(!isExpanded)}
             aria-expanded={isExpanded}
-            aria-controls={codeRef.current?.id}
+            aria-controls={codeId}
           >
             {isExpanded ? "Show less" : "Show more"}
           </Button>

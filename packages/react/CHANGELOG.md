@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.9 - 2026-07-12
+
+- Fixes the `CodeSnippet` expand control's `aria-controls`: it previously read `codeRef.current?.id`, which is `undefined` on first render (the ref is not attached yet) and empty thereafter (the `<code>` had no `id`), so the "Show more"/"Show less" toggle referenced nothing. The `<code>` element now carries a stable `useId()`-based `id` and the control points at it (SSR/hydration-safe). Regression-tested.
+- `NavLink` now suppresses redundant navigation when an already-active link points at the current path: an unmodified primary-button click on a same-path `exact`/active link calls `preventDefault()`. Prefix-active links to a parent route, modified clicks (cmd/ctrl/shift/alt), non-primary buttons, and `target` other than `_self` still navigate normally. Regression-tested.
+- Adds the `MacWindowFrameProps` type export. Runtime public API unchanged (113 exports).
+- Interaction/ARIA test coverage added around Combobox, MultiCombobox, CommandPalette, CodeSnippet, and DonnyAvatar proximity callbacks (no API change).
+- Verified by the full local gate (typecheck, lint, 2290 tests, build) plus check:react-package, check:react-public-api, and check:react-public-surface (0 alpha).
+
 ## 0.1.8 - 2026-07-12
 
 - Batch publish of the alpha-wave promotions merged since 0.1.7. Seven new runtime exports enter the package surface: `CommandPalette`, `FilterChip`, `SegmentedControl`, `SelectableCard`, `SelectableCardGroup`, `SplitButton`, `ToastStack` (with their prop types). Runtime public API now lists 113 exports (was 106).

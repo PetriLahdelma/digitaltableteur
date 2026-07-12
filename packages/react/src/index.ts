@@ -137,6 +137,7 @@ export {
 export { default as Link } from "../../../nextjs-app/shared/components/Link/Link";
 export { default as List } from "../../../nextjs-app/shared/components/List/List";
 export { default as MacWindowFrame } from "../../../nextjs-app/shared/components/MacWindowFrame/MacWindowFrame";
+export type { MacWindowFrameProps } from "../../../nextjs-app/shared/components/MacWindowFrame";
 export {
   Menu,
   MenuTrigger,

@@ -52,6 +52,26 @@ describe("MCPActionButton", () => {
     expect(handleResult).toHaveBeenCalledWith({ ok: true });
   });
 
+  test("invokes onError and updates status when execution fails", async () => {
+    const error = new Error("boom");
+    const execute = vi.fn().mockRejectedValueOnce(error);
+    const handleError = vi.fn();
+    render(
+      <MCPActionButton
+        toolId="demo"
+        onExecute={execute}
+        onError={handleError}
+      />,
+    );
+
+    await userEvent.click(screen.getByRole("button"));
+
+    await waitFor(() =>
+      expect(screen.getByText(/mcpActionButton.status.error/)).toBeInTheDocument(),
+    );
+    expect(handleError).toHaveBeenCalledWith(error);
+  });
+
   test("has no accessibility violations", async () => {
     const { container } = render(<MCPActionButton toolId="demo" />);
     const results = await axe(container);

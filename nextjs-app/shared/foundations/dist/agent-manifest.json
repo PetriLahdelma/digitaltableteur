@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-12T11:40:32.358Z",
+  "generatedAt": "2026-07-12T15:25:47.936Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
@@ -83,7 +83,7 @@
     "uniqueImportedComponents": 154,
     "totalEvidenceRows": 763,
     "aliasImportFiles": 377,
-    "relativeImportFiles": 412,
+    "relativeImportFiles": 415,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },

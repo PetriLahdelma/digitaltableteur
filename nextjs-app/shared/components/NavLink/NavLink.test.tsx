@@ -71,7 +71,7 @@ describe("NavLink", () => {
 
   it("applies the active class pair by route state", () => {
     renderWithPathname(
-      "/work",
+      "/work/case-study",
       <NavLink
         href="/work"
         activeClassName="is-active"
@@ -85,8 +85,38 @@ describe("NavLink", () => {
     expect(link.className).not.toContain("is-idle");
   });
 
+  it("renders same-path current items without an href to avoid redundant navigation", () => {
+    renderWithPathname(
+      "/",
+      <NavLink href="/" exact>
+        Home
+      </NavLink>,
+    );
+
+    expect(screen.queryByRole("link", { name: "Home" })).not.toBeInTheDocument();
+    expect(screen.getByText("Home")).toHaveAttribute("aria-current", "page");
+  });
+
+  it("does not block prefix-active links that navigate to their parent route", () => {
+    renderWithPathname(
+      "/work/case-study",
+      <NavLink href="/work">Work</NavLink>,
+    );
+
+    const link = screen.getByRole("link", { name: "Work" });
+    const event = new MouseEvent("click", {
+      bubbles: true,
+      cancelable: true,
+      button: 0,
+    });
+
+    link.dispatchEvent(event);
+
+    expect(event.defaultPrevented).toBe(false);
+  });
+
   it("guards its color transition under prefers-reduced-motion", () => {
-    renderWithPathname("/work", <NavLink href="/work">Work</NavLink>);
+    renderWithPathname("/work/case-study", <NavLink href="/work">Work</NavLink>);
     // reducedMotion:true must be literally honest — the transition-colors
     // fade is neutralised via motion-reduce (matches Pagination / ValueCard).
     expect(screen.getByRole("link", { name: "Work" }).className).toContain(
