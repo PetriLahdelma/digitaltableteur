@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import Combobox from "@dt/Combobox";
 
 const OPTIONS = [
@@ -39,6 +39,42 @@ describe("Combobox", () => {
     fireEvent.click(within(screen.getByRole("listbox")).getByRole("option", { name: "ASAP" }));
     expect(onValueChange).toHaveBeenCalledWith("asap");
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+  });
+
+  it("wires required combobox state to the portaled listbox", async () => {
+    render(
+      <Combobox
+        id="timeline"
+        label="Timeline"
+        options={OPTIONS}
+        value="flexible"
+        onValueChange={() => {}}
+        required
+      />,
+    );
+
+    const trigger = screen.getByRole("combobox", { name: /Timeline/ });
+    expect(trigger).toHaveAttribute("aria-required", "true");
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
+    expect(trigger).toHaveAttribute("aria-controls", "timeline-listbox");
+
+    fireEvent.click(trigger);
+
+    await waitFor(() =>
+      expect(trigger).toHaveAttribute("aria-expanded", "true"),
+    );
+    expect(trigger).toHaveAttribute(
+      "aria-activedescendant",
+      "timeline-option-flexible",
+    );
+    expect(screen.getByRole("listbox", { name: "Timeline" })).toHaveAttribute(
+      "id",
+      "timeline-listbox",
+    );
+    expect(screen.getByRole("option", { name: "Flexible" })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
   });
 
   it("closes when the chevron is clicked while open", () => {

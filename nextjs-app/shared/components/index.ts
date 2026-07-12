@@ -94,6 +94,7 @@ export type { LabelProps } from "./Label";
 export { default as Link } from "./Link/Link";
 export { default as List } from "./List/List";
 export { default as MacWindowFrame } from "./MacWindowFrame/MacWindowFrame";
+export type { MacWindowFrameProps } from "./MacWindowFrame";
 export {
   Menu,
   MenuTrigger,
@@ -113,6 +114,7 @@ export type {
   MenuTriggerProps,
 } from "./Menu";
 export { default as MCPActionButton } from "./MCPActionButton/MCPActionButton";
+export type { MCPActionButtonProps } from "./MCPActionButton";
 export { default as NavMenuList } from "./NavMenuList/NavMenuList";
 export type { NavMenuItem, NavMenuListProps } from "./NavMenuList";
 export { default as MarkdownMessage } from "./MarkdownMessage/MarkdownMessage";
@@ -157,6 +159,7 @@ export type { TitleProps } from "./Title";
 export { default as Toast } from "./Toast/Toast";
 export type { ToastPosition, ToastProps, ToastTone } from "./Toast/Toast";
 export { default as TransformingActionInput } from "./TransformingActionInput/TransformingActionInput";
+export type { TransformingActionInputProps } from "./TransformingActionInput";
 export { ValueCard, type ValueCardProps } from "./ValueCard";
 export { default as WorkNav } from "./WorkNav/WorkNav";
 

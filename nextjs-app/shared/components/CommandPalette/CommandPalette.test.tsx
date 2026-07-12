@@ -19,7 +19,21 @@ describe("CommandPalette", () => {
       "aria-modal",
       "true",
     );
-    expect(screen.getByRole("combobox")).toBeInTheDocument();
+    const input = screen.getByRole("combobox");
+    expect(input).toHaveAttribute("aria-expanded", "true");
+    expect(input).toHaveAttribute("aria-controls", "command-palette-list");
+    expect(input).toHaveAttribute(
+      "aria-activedescendant",
+      "command-palette-option-home",
+    );
+    expect(screen.getByRole("listbox")).toHaveAttribute(
+      "id",
+      "command-palette-list",
+    );
+    expect(screen.getByRole("option", { name: "Go to Home" })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
     expect(screen.getAllByRole("option")).toHaveLength(3);
   });
 

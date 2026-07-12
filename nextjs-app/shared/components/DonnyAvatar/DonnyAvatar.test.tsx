@@ -1,6 +1,6 @@
 import React from "react";
 import { describe, it, expect, vi } from "vitest";
-import { render, screen, act } from "@testing-library/react";
+import { render, screen, act, waitFor } from "@testing-library/react";
 // Import directly from file to avoid React version mismatch through alias resolution
 import { DonnyAvatar, type DonnyState } from "./DonnyAvatar";
 import styles from "./DonnyAvatar.module.css";
@@ -206,6 +206,76 @@ describe("DonnyAvatar", () => {
       render(<DonnyAvatar trackMouse proximitySelectors={[".test"]} />);
       const avatar = screen.getByRole("img");
       expect(avatar).toHaveAttribute("data-near-target", "false");
+    });
+
+    it("calls onProximityChange when the cursor nears a tracked selector", async () => {
+      const onProximityChange = vi.fn();
+      const requestAnimationFrameSpy = vi
+        .spyOn(window, "requestAnimationFrame")
+        .mockImplementation((callback) => {
+          callback(0);
+          return 1;
+        });
+      const cancelAnimationFrameSpy = vi
+        .spyOn(window, "cancelAnimationFrame")
+        .mockImplementation(() => {});
+      const rect = (
+        left: number,
+        top: number,
+        width: number,
+        height: number,
+      ) =>
+        ({
+          x: left,
+          y: top,
+          left,
+          top,
+          width,
+          height,
+          right: left + width,
+          bottom: top + height,
+          toJSON: () => ({}),
+        }) as DOMRect;
+
+      const target = document.createElement("button");
+      target.className = "tracked-action";
+      target.getBoundingClientRect = vi.fn(() => rect(90, 0, 20, 20));
+      document.body.appendChild(target);
+
+      try {
+        render(
+          <DonnyAvatar
+            trackMouse
+            proximitySelectors={[".tracked-action"]}
+            proximityThreshold={40}
+            onProximityChange={onProximityChange}
+          />,
+        );
+        const avatar = screen.getByRole("img");
+        avatar.getBoundingClientRect = vi.fn(() => rect(0, 0, 40, 32));
+
+        await act(async () => {
+          window.dispatchEvent(
+            new MouseEvent("mousemove", {
+              clientX: 100,
+              clientY: 10,
+              bubbles: true,
+            }),
+          );
+        });
+
+        await waitFor(() =>
+          expect(onProximityChange).toHaveBeenCalledWith(
+            true,
+            ".tracked-action",
+          ),
+        );
+        expect(avatar).toHaveAttribute("data-near-target", "true");
+      } finally {
+        target.remove();
+        requestAnimationFrameSpy.mockRestore();
+        cancelAnimationFrameSpy.mockRestore();
+      }
     });
   });
 });

@@ -1,2 +1,6 @@
 export { default } from "./CodeSnippet";
-export type { CodeSnippetProps, SupportedLanguage } from "./CodeSnippet";
+export type {
+  CodeSnippetProps,
+  CodeSnippetVariant,
+  SupportedLanguage,
+} from "./CodeSnippet";

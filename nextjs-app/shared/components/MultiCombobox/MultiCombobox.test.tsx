@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import MultiCombobox from "@dt/MultiCombobox";
 
 const OPTIONS = [
@@ -52,6 +52,41 @@ describe("MultiCombobox", () => {
       within(listbox).getByRole("option", { name: /Brand & Identity/i }),
     );
     expect(onValueChange).toHaveBeenCalledWith(["website", "brand-identity"]);
+  });
+
+  it("wires required combobox state to the multiselect listbox", async () => {
+    render(
+      <MultiCombobox
+        id="project-type"
+        label="Project type"
+        options={OPTIONS}
+        value={["website"]}
+        onValueChange={() => {}}
+        required
+      />,
+    );
+
+    const input = screen.getByRole("combobox", { name: /Project type/ });
+    expect(input).toHaveAttribute("aria-required", "true");
+    expect(input).toHaveAttribute("aria-expanded", "false");
+    expect(input).toHaveAttribute("aria-controls", "project-type-listbox");
+
+    fireEvent.focus(input);
+
+    await waitFor(() =>
+      expect(input).toHaveAttribute("aria-expanded", "true"),
+    );
+    expect(input).toHaveAttribute(
+      "aria-activedescendant",
+      "project-type-option-website",
+    );
+    expect(
+      screen.getByRole("listbox", { name: "Project type" }),
+    ).toHaveAttribute("aria-multiselectable", "true");
+    expect(screen.getByRole("option", { name: "Website" })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
   });
 
   it("removes a chip without closing the field", () => {

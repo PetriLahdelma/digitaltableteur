@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe, toHaveNoViolations } from "jest-axe";
 import React from "react";
@@ -48,6 +48,23 @@ describe("TransformingActionInput", () => {
       screen.getByRole("button", { name: /transformingActionInput.submit/ }),
     );
     expect(handleSubmit).toHaveBeenCalledWith("hello");
+  });
+
+  test("wires helper text and calls onChange in input mode", async () => {
+    const handleChange = vi.fn();
+    render(
+      <TransformingActionInput initialMode="input" onChange={handleChange} />,
+    );
+
+    const input = screen.getByRole("textbox");
+    const helper = screen.getByText("transformingActionInput.helper");
+    expect(input).toHaveAttribute("aria-describedby", helper.id);
+
+    await userEvent.type(input, "hello");
+
+    await waitFor(() =>
+      expect(handleChange).toHaveBeenLastCalledWith("hello"),
+    );
   });
 
   test("has no accessibility violations", async () => {
