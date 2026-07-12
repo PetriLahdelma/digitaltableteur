@@ -1822,6 +1822,32 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "group": "feedback",
     "import": "import Spinner from "@dt/Spinner";",
   },
+  "SplitButton": {
+    "exampleStories": [
+      "Variants",
+      "ExportFormats",
+      "NestedSubmenus",
+      "DisabledState",
+    ],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "interaction",
+    "import": "import SplitButton from "@dt/SplitButton";",
+  },
   "Stack": {
     "exampleStories": [
       "GapScale",
