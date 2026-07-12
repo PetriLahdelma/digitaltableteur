@@ -52,7 +52,7 @@ describe("LanguageNotice", () => {
     await waitFor(() => {
       expect(showToast).toHaveBeenCalledWith(
         "Tämä sisältö on saatavilla vain englanniksi.",
-        { duration: 5000 },
+        { tone: "neutral", duration: 5000 },
       );
     });
   });

@@ -2,10 +2,12 @@ import { forwardRef, useEffect, type ReactNode } from "react";
 import styles from "./Toast.module.css";
 import { CheckCircle, Warning, XCircle, Info } from "@phosphor-icons/react";
 
-export type ToastTone = "success" | "error" | "warning" | "info";
+export type ToastTone = "neutral" | "success" | "error" | "warning" | "info";
 
-// Direct Phosphor icons for color-independent meaning (WCAG 1.4.1).
-const toneIcons: Record<ToastTone, ReactNode> = {
+// Direct Phosphor icons for color-independent meaning (WCAG 1.4.1). Neutral
+// carries no icon and no accent colour — it is the plain acknowledgement toast
+// (e.g. "Language changed", "Theme set to dark").
+const toneIcons: Record<Exclude<ToastTone, "neutral">, ReactNode> = {
   success: <CheckCircle weight="fill" aria-hidden="true" />,
   error: <XCircle weight="fill" aria-hidden="true" />,
   warning: <Warning weight="fill" aria-hidden="true" />,
@@ -23,7 +25,7 @@ export type ToastPosition =
 export interface ToastProps {
   /** Controls visibility. */
   open?: boolean;
-  /** Semantic colour. */
+  /** Semantic colour. @default "neutral" */
   tone?: ToastTone;
   /** Position on screen. @default "bottom-center" */
   position?: ToastPosition;
@@ -49,7 +51,7 @@ export interface ToastProps {
  * AnimatePresence mount/unmount, which would defeat the live region.
  */
 const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
-  { open, tone, position = "bottom-center", size = "md", message, duration = 3000, onClose, inline },
+  { open, tone = "neutral", position = "bottom-center", size = "md", message, duration = 3000, onClose, inline },
   ref,
 ) {
   useEffect(() => {
@@ -66,7 +68,7 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
   // Error/warning interrupt (assertive); everything else is a polite status.
   const isAssertive = tone === "error" || tone === "warning";
 
-  const toneIcon = tone ? toneIcons[tone] : null;
+  const toneIcon = tone === "neutral" ? null : toneIcons[tone];
 
   return (
     <div
@@ -74,7 +76,7 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
       className={[
         styles.toast,
         styles[`toast--${size}`],
-        tone ? styles[`toast--${tone}`] : "",
+        tone === "neutral" ? "" : styles[`toast--${tone}`],
         inline ? styles["toast--inline"] : styles[`toast--${position}`],
         !isVisible ? styles["toast--hidden"] : "",
       ]

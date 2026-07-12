@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-12T08:54:38.481Z",
+  "generatedAt": "2026-07-12T10:01:45.807Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
@@ -31887,12 +31887,13 @@
           },
           "tone": {
             "values": [
+              "neutral",
               "success",
               "error",
               "warning",
               "info"
             ],
-            "default": "info",
+            "default": "neutral",
             "forwarded": true
           },
           "position": {
@@ -31999,6 +32000,7 @@
             "optional": true,
             "type": "union",
             "values": [
+              "neutral",
               "info",
               "success",
               "warning",
@@ -32204,7 +32206,8 @@
               "info",
               "success",
               "warning",
-              "error"
+              "error",
+              "neutral"
             ]
           },
           "position": {
@@ -32251,7 +32254,8 @@
               "info",
               "success",
               "warning",
-              "error"
+              "error",
+              "neutral"
             ],
             "default": "info"
           },

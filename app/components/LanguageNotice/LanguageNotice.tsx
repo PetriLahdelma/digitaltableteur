@@ -50,7 +50,7 @@ export function LanguageNotice({
     if (announcedKeyRef.current === announcementKey) return;
 
     announcedKeyRef.current = announcementKey;
-    showToast(message, { duration: 5000 });
+    showToast(message, { tone: "neutral", duration: 5000 });
   }, [contentLanguage, getResourceBundle, resolvedLanguage, showToast]);
 
   return null;

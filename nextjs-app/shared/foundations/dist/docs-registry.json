@@ -15248,7 +15248,7 @@
         },
         {
           "name": "tone",
-          "type": "info | success | warning | error",
+          "type": "neutral | info | success | warning | error",
           "required": false
         },
         {
@@ -15281,6 +15281,7 @@
           "optional": true,
           "type": "union",
           "values": [
+            "neutral",
             "info",
             "success",
             "warning",
@@ -15399,8 +15400,8 @@
       "examples": [
         {
           "story": "Tones",
-          "description": "One toast, four tones. The filled icon carries the meaning alongside color; error and warning announce assertively (role=alert), success and info stay polite.",
-          "source": "export const Tones: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"One toast, four tones. The filled icon carries the meaning alongside color; error and warning announce assertively (role=alert), success and info stay polite.\",\n      },\n    },\n  },\n  render: function TonesStory() {\n    const [tone, setTone] = useState<ToastTone | null>(null);\n    const messages: Record<ToastTone, string> = {\n      success: \"Operation completed successfully.\",\n      error: \"An error occurred. Please try again.\",\n      warning: \"Your session will expire soon.\",\n      info: \"New features available.\",\n    };\n    return (\n      <>\n        {(Object.keys(messages) as ToastTone[]).map((t) => (\n          <Button\n            key={t}\n            variant=\"secondary\"\n            size=\"sm\"\n            onClick={() => setTone(t)}\n          >\n            {t}\n          </Button>\n        ))}\n        <Toast\n          message={tone ? messages[tone] : \"\"}\n          open={tone !== null}\n          tone={tone ?? undefined}\n          onClose={() => setTone(null)}\n        />\n      </>\n    );\n  },\n};\n\n/** Six placements; the toast is position: fixed so it anchors to the viewport. */"
+          "description": "One toast, five tones. Neutral is the plain acknowledgement (no icon, no accent) used for language/theme changes; the four semantic tones add a filled icon that carries the meaning alongside color. Error and warning announce assertively (role=alert); neutral, success, and info stay polite.",
+          "source": "export const Tones: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"One toast, five tones. Neutral is the plain acknowledgement (no icon, no accent) used for language/theme changes; the four semantic tones add a filled icon that carries the meaning alongside color. Error and warning announce assertively (role=alert); neutral, success, and info stay polite.\",\n      },\n    },\n  },\n  render: function TonesStory() {\n    const [tone, setTone] = useState<ToastTone | null>(null);\n    const messages: Record<ToastTone, string> = {\n      neutral: \"Language changed to English.\",\n      success: \"Operation completed successfully.\",\n      error: \"An error occurred. Please try again.\",\n      warning: \"Your session will expire soon.\",\n      info: \"New features available.\",\n    };\n    return (\n      <>\n        {(Object.keys(messages) as ToastTone[]).map((t) => (\n          <Button\n            key={t}\n            variant=\"secondary\"\n            size=\"sm\"\n            onClick={() => setTone(t)}\n          >\n            {t}\n          </Button>\n        ))}\n        <Toast\n          message={tone ? messages[tone] : \"\"}\n          open={tone !== null}\n          tone={tone ?? undefined}\n          onClose={() => setTone(null)}\n        />\n      </>\n    );\n  },\n};\n\n/** Six placements; the toast is position: fixed so it anchors to the viewport. */"
         },
         {
           "story": "Placement",
