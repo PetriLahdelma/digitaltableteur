@@ -5,10 +5,8 @@ import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
-import { Button, Title } from "@digitaltableteur/react";
-
+import { Button, PageLayout, Title } from "@digitaltableteur/react";
 import { getAuthorBySlug } from "../../../data/authors";
-import PageLayout from "../../../patterns/PageLayout/PageLayout";
 import styles from "./BlogArticle.module.css";
 
 export function AuthorPage({ slug }: { slug: string }) {

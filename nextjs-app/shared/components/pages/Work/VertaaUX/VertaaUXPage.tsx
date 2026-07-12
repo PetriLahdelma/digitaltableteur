@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import { Text, Title } from "@digitaltableteur/react";
+import { ProcessBlock, Text, Title } from "@digitaltableteur/react";
 import { Mermaid } from "../../../Mermaid";
-import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";

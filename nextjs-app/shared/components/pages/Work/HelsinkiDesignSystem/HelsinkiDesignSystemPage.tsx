@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import { Text } from "@digitaltableteur/react";
-import ProcessBlock from "../../../../patterns/ProcessBlock";
+import { ProcessBlock, Text } from "@digitaltableteur/react";
 import TeamBlock from "../../../../patterns/TeamBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
