@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- button "Open command palette"
+- dialog "Command palette":
+  - combobox "Search commands…" [expanded]: blog
+  - listbox "Command palette":
+    - option "Go to Blog" [selected]
+    - option "New blog post"

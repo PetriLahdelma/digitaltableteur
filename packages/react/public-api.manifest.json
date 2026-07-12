@@ -27,6 +27,7 @@
     "CodeBlockWindow",
     "CodeSnippet",
     "Combobox",
+    "CommandPalette",
     "Container",
     "CookieConsent",
     "CookieConsentProvider",

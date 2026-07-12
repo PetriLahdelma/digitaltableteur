@@ -4126,17 +4126,89 @@
       "name": "CommandPalette",
       "group": "navigation",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "Modal, keyboard-driven command launcher: a search input filters a listbox of commands (matched on label + keywords); Arrow keys move the active option, Enter runs it, Escape closes. Focus is trapped and background scroll locked while open.",
-      "dense": "",
-      "keywords": [],
+      "dense": "Modal keyboard-driven command launcher: role=dialog with a combobox filtering a role=listbox on label+keywords; Arrow moves active option, Enter runs, Escape closes; focus trapped, scroll locked.",
+      "keywords": [
+        "command palette",
+        "command launcher",
+        "cmdk",
+        "quick actions",
+        "spotlight",
+        "fuzzy search"
+      ],
       "importLine": "import { CommandPalette } from \"@dt/CommandPalette\";",
-      "keyProps": [],
-      "props": {},
+      "keyProps": [
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "name": "items",
+          "type": "CommandPaletteItem[]",
+          "required": true
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "emptyText",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "open": {
+          "optional": false,
+          "type": "boolean"
+        },
+        "onClose": {
+          "optional": false,
+          "type": "() => void"
+        },
+        "items": {
+          "optional": false,
+          "type": "CommandPaletteItem[]"
+        },
+        "label": {
+          "optional": true,
+          "type": "string"
+        },
+        "placeholder": {
+          "optional": true,
+          "type": "string"
+        },
+        "emptyText": {
+          "optional": true,
+          "type": "string"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
       "composesWith": [],
       "prefersOver": [],
-      "forbiddenUse": [],
-      "usage": null,
+      "forbiddenUse": [
+        "nest submenus or put long forms inside it; it is a launcher, not a menu system or a modal form",
+        "hardcode user-facing copy; pass `label`, `placeholder`, and `emptyText` so the host owns i18n"
+      ],
+      "usage": {
+        "description": "CommandPalette is a modal, keyboard-first launcher: a search input filters a listbox of commands matched on label and keywords, Arrow keys move the active option, Enter runs it, Escape closes. It is controlled (open + onClose) and portal-rendered with focus trapped and background scroll locked while open. Reach for it as a power-user shortcut surface (go-to navigation, quick actions), not as a replacement for primary navigation or a container for forms. All user-facing strings are props so the host owns i18n."
+      },
       "tokens": {
         "colors": [
           "--color-black",
