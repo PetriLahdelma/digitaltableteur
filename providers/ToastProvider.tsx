@@ -8,11 +8,19 @@ import React, {
   useRef,
   useState,
 } from "react";
-// Import the tone/position types from local source (not the published barrel):
-// the neutral tone is added locally here and ships to the package on the next
-// republish; until then the barrel's .d.ts lags the local ToastTone.
-import type { ToastTone, ToastPosition } from "@dt/Toast";
-import ToastStack, { type ToastStackItem } from "@dt/ToastStack";
+// Import Toast tone/position types and the ToastStack component from local
+// source (relative path, not the published barrel): the #1124 neutral tone is
+// added locally and ships to the package with this 0.1.8 republish, but until
+// that version is consumed the registry barrel's .d.ts lags the local ToastTone
+// (LanguageNotice passes tone:"neutral"). Flip both to "@digitaltableteur/react"
+// after the 0.1.8 consume; classified in check:package-registry-resolution.
+import type {
+  ToastTone,
+  ToastPosition,
+} from "../nextjs-app/shared/components/Toast/Toast";
+import ToastStack, {
+  type ToastStackItem,
+} from "../nextjs-app/shared/components/ToastStack/ToastStack";
 import { ToastRuntimeProvider } from "../nextjs-app/shared/lib/toast";
 
 export interface ShowToastOptions {

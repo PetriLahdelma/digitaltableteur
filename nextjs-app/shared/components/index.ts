@@ -3,10 +3,13 @@ export { default as ArticleCard } from "./ArticleCard/ArticleCard";
 export { default as Author } from "./Author/Author";
 export { default as AuthorBio } from "./AuthorBio/AuthorBio";
 export { default as Avatar } from "./Avatar/Avatar";
+export type { AvatarMenuItem, AvatarProps, AvatarSize } from "./Avatar";
 export { default as AvatarGroup } from "./AvatarGroup/AvatarGroup";
+export type { AvatarGroupProps, AvatarGroupSize } from "./AvatarGroup";
 export { default as AlertBanner } from "./AlertBanner/AlertBanner";
 export type { AlertBannerProps } from "./AlertBanner/AlertBanner";
 export { default as Badge } from "./Badge/Badge";
+export type { BadgeProps, BadgeSize, BadgeTone, BadgeVariant } from "./Badge";
 export { default as Breadcrumb } from "./Breadcrumb/Breadcrumb";
 export type {
   BreadcrumbItem,
@@ -16,13 +19,24 @@ export { default as Button } from "./Button/Button";
 export type {
   ButtonAsButton,
   ButtonAsLink,
+  ButtonSize,
   ButtonProps,
   ButtonSurface,
+  ButtonTone,
+  ButtonVariant,
 } from "./Button/Button";
 export { default as ButtonGroup } from "./ButtonGroup/ButtonGroup";
 export type { ButtonGroupProps } from "./ButtonGroup/ButtonGroup";
 export { default as Card } from "./Card/Card";
+export type {
+  CardDescriptionProps,
+  CardPadding,
+  CardProps,
+  CardTitleProps,
+  CardVariant,
+} from "./Card";
 export { default as Checkbox } from "./Checkbox/Checkbox";
+export type { CheckboxProps } from "./Checkbox";
 export { default as CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
 export type { CheckboxGroupProps } from "./CheckboxGroup/CheckboxGroup";
 export { default as ChunkErrorBoundary } from "./ChunkErrorBoundary/ChunkErrorBoundary";
@@ -59,11 +73,14 @@ export { default as FlexBox } from "./FlexBox/FlexBox";
 export { default as FileUpload } from "./FileUpload/FileUpload";
 export type { FileUploadProps } from "./FileUpload/FileUpload";
 export { default as Gallery } from "./Gallery/Gallery";
+export type { GalleryProps } from "./Gallery";
 export { default as Grid } from "./Grid/Grid";
 export { default as GroupLabel } from "./GroupLabel/GroupLabel";
 export { default as Icon } from "./Icon/Icon";
+export type { IconProps } from "./Icon";
 export { default as HelsinkiClock } from "./HelsinkiClock/HelsinkiClock";
 export { default as Kbd } from "./Kbd/Kbd";
+export type { KbdProps, KbdSize } from "./Kbd";
 export { default as StatusDot } from "./StatusDot/StatusDot";
 export type {
   StatusDotProps,
@@ -73,6 +90,7 @@ export type {
 export { default as TextInput } from "./TextInput/TextInput";
 export type { TextInputProps } from "./TextInput/TextInput";
 export { default as Label } from "./Label/Label";
+export type { LabelProps } from "./Label";
 export { default as Link } from "./Link/Link";
 export { default as List } from "./List/List";
 export { default as MacWindowFrame } from "./MacWindowFrame/MacWindowFrame";
@@ -121,6 +139,7 @@ export type { SkeletonProps } from "./Skeleton";
 export { SkillsGrid, type SkillsGridProps, type Skill } from "./SkillsGrid";
 export { default as StudioMap } from "./StudioMap/StudioMap";
 export { default as Switch } from "./Switch/Switch";
+export type { SwitchProps } from "./Switch";
 export { SocialShare } from "./SocialShare/SocialShare";
 export type {
   SocialShareChannel,
@@ -134,6 +153,7 @@ export { default as Text } from "./Text/Text";
 export { ThemeProvider, useTheme } from "./ThemeProvider/ThemeProvider";
 export type { Theme, ThemeProviderProps } from "./ThemeProvider/ThemeProvider";
 export { default as Title } from "./Title/Title";
+export type { TitleProps } from "./Title";
 export { default as Toast } from "./Toast/Toast";
 export type { ToastPosition, ToastProps, ToastTone } from "./Toast/Toast";
 export { default as TransformingActionInput } from "./TransformingActionInput/TransformingActionInput";

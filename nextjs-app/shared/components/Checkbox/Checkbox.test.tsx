@@ -53,4 +53,24 @@ describe("Checkbox", () => {
     );
     expect(screen.getByLabelText("Disabled")).toBeDisabled();
   });
+
+  it("associates error and helper text through aria-describedby", () => {
+    render(
+      <Checkbox
+        id="terms"
+        label="Terms"
+        checked={false}
+        onCheckedChange={() => {}}
+        error="Required"
+        helperText="Accept before continuing"
+      />,
+    );
+
+    const checkbox = screen.getByLabelText("Terms");
+    expect(checkbox).toHaveAttribute("aria-invalid", "true");
+    expect(checkbox).toHaveAttribute(
+      "aria-describedby",
+      "terms-error terms-helper",
+    );
+  });
 });

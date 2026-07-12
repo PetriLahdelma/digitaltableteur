@@ -32,6 +32,23 @@ describe("FileUpload", () => {
     expect(screen.getByRole("button", { name: /choose file/i })).toBeInTheDocument();
   });
 
+  it("pins editorial required and validation ARIA wiring", () => {
+    renderComponent({
+      appearance: "editorial",
+      error: "Upload is required",
+      required: true,
+    });
+
+    const trigger = screen.getByRole("button", { name: /attachment/i });
+    const error = screen.getByText("Upload is required");
+    const helper = screen.getByText("Max 5 MB");
+
+    expect(trigger).toHaveAttribute("aria-invalid", "true");
+    expect(trigger).toHaveAttribute("aria-required", "true");
+    expect(trigger.getAttribute("aria-describedby")).toContain(error.id);
+    expect(trigger.getAttribute("aria-describedby")).toContain(helper.id);
+  });
+
   it("calls onFileChange when file is selected", () => {
     const handleChange = vi.fn();
     const { container } = renderComponent({ onFileChange: handleChange });
