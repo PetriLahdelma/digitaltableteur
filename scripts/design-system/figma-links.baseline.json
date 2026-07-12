@@ -1,4 +1,4 @@
 {
-  "stablePlaceholderCeiling": 37,
-  "note": "Ratchet: lower this in the PR that wires real Figma nodes; see docs/design-system/figma-parity-audit.md"
+  "stablePlaceholderCeiling": 39,
+  "note": "Ratchet for stable contracts whose figma link does not resolve to a real component in figma-component-index.json (placeholder dt-* links, deleted nodes, or non-component nodes like a Specimens section). Lower this in the PR that wires a real component. Raised 37->39 on 2026-07-12 when check:figma-links began verifying node existence/type, which surfaced Timestamp (Specimens section) and ContactInquiryPanel (deleted node 664-33). See docs/design-system/figma-parity-audit.md"
 }

@@ -1,0 +1,396 @@
+{
+  "$comment": "Index of real Figma COMPONENT/COMPONENT_SET node-ids in DT-Site-stuff, keyed by node-id (dash form). Regenerate via scripts/design-system/audit-figma-components.mjs when components are added/moved. A beta/stable contract's figma link MUST resolve to a node-id in this index (check:figma-links).",
+  "fileKey": "PC2UPdYwm8qGt6ZTg0AakF",
+  "components": {
+    "371-30": {
+      "name": "Link",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "492-1578": {
+      "name": "DonnyAvatar",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "543-2510": {
+      "name": "Storybook banner",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1177-1644": {
+      "name": "SkipLink",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1176-1676": {
+      "name": "Stack",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1176-1698": {
+      "name": "FlexBox",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1177-1654": {
+      "name": "Grid",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1178-1654": {
+      "name": "Container",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1178-1712": {
+      "name": "Section",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "480-1588": {
+      "name": "Logo",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "516-3098": {
+      "name": "nav",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "516-3146": {
+      "name": "NavLink",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "368-6": {
+      "name": "Divider",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "371-31": {
+      "name": "VisuallyHidden",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "406-1569": {
+      "name": "Button",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1012-176": {
+      "name": "ButtonGroup",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1194-1733": {
+      "name": "IconButton",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1015-180": {
+      "name": "Menu",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1052-2084": {
+      "name": "SplitButton",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1249-1954": {
+      "name": "FilterChip",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "369-8": {
+      "name": "Avatar",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1010-147": {
+      "name": "AvatarGroup",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "400-1249": {
+      "name": "Badge",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1164-257": {
+      "name": "CodeBlockWindow",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1161-2809": {
+      "name": "CodeSnippet",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1014-192": {
+      "name": "EmptyState",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1176-1658": {
+      "name": "Icon",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1005-1638": {
+      "name": "Kbd",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "370-19": {
+      "name": "Text",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "370-12": {
+      "name": "Title",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "372-14": {
+      "name": "Checkbox",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "383-24": {
+      "name": "CheckboxGroup",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "384-26": {
+      "name": "FileUpload",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1288-2114": {
+      "name": "SelectableCard",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "371-6": {
+      "name": "Label",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "371-17": {
+      "name": "HelperText",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1290-2104": {
+      "name": "GroupLabel",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "372-27": {
+      "name": "Radio",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "383-23": {
+      "name": "Select",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "373-14": {
+      "name": "Switch",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1227-2963": {
+      "name": "RadioGroup",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "374-10": {
+      "name": "TextInput",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "374-17": {
+      "name": "TextArea",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "393-35": {
+      "name": "Toast",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1279-2105": {
+      "name": "ToastStack",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "394-41": {
+      "name": "AlertBanner",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1222-2927": {
+      "name": "Modal",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "369-15": {
+      "name": "Progress",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1177-1652": {
+      "name": "Skeleton",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1004-1677": {
+      "name": "StatusDot",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "368-16": {
+      "name": "Spinner",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1281-2108": {
+      "name": "SegmentedControl",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1285-2113": {
+      "name": "CommandPalette",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "381-31": {
+      "name": "Breadcrumb",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "949-1774": {
+      "name": "Component 1",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "949-1791": {
+      "name": "Component 2",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1151-2835": {
+      "name": "Badge/Card",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1211-2930": {
+      "name": "Tabs",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1223-2915": {
+      "name": "Accordion",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "377-26": {
+      "name": "Card",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "470-2": {
+      "name": "ContactForm",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "471-21": {
+      "name": "NewsletterWaitlist",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "473-25": {
+      "name": "ChatWidget",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1027-2672": {
+      "name": "WorkNav",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1028-89": {
+      "name": "ProjectNav",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1029-101": {
+      "name": "BlogNav",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1031-109": {
+      "name": "ProjectCard",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1032-110": {
+      "name": "ProjectGallery",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1033-110": {
+      "name": "WorkGrid",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1034-110": {
+      "name": "BlogGrid",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1035-110": {
+      "name": "BlogCategoryFilter",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1036-109": {
+      "name": "BlogMediaImage",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1037-110": {
+      "name": "ArticleContent",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "1043-110": {
+      "name": "ArticleShareSection",
+      "type": "COMPONENT",
+      "page": "Organisms"
+    },
+    "476-2": {
+      "name": "SiteHeader",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "477-6": {
+      "name": "SiteFooter",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "502-20": {
+      "name": "CTASection",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "503-20": {
+      "name": "NewsBulletin",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    }
+  }
+}
