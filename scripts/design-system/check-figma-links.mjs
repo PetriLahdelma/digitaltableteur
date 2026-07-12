@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * Figma-link ratchet: a stable contract's `figma` must resolve to a REAL Figma
- * component, and the debt count can only go DOWN.
+ * Figma-link ratchet: a beta or stable contract's `figma` must resolve to a
+ * REAL Figma component, and the debt count can only go DOWN. (validate-
+ * components.ts requires a figma URL for both tiers, so both are guarded.)
  *
  * "Resolves to a real component" means BOTH:
  *   1. the URL carries a numeric node id (`node-id=<digits>-<digits>`), not a
@@ -54,16 +55,21 @@ const walk = (dir) => {
 walk(join(ROOT, "nextjs-app", "shared", "components"));
 walk(join(ROOT, "nextjs-app", "shared", "patterns"));
 
-/** name -> reason, for every stable contract whose figma does not resolve. */
+// validate-components.ts requires a figma URL for BOTH beta and stable, so both
+// tiers are guardrailed here — a beta placeholder (e.g. Tooltip -> dt-tooltip)
+// is the same class of gap as a stable one.
+const GUARDED = new Set(["beta", "stable"]);
+
+/** "name (status): reason", for every guarded contract whose figma doesn't resolve. */
 const unresolved = [];
 for (const file of contractFiles) {
   const contract = JSON.parse(readFileSync(file, "utf8"));
-  if (contract.status !== "stable") continue;
+  if (!GUARDED.has(contract.status)) continue;
   const nodeId = nodeIdOf(contract.figma);
   if (nodeId === null) {
-    unresolved.push(`${contract.name} (placeholder link)`);
+    unresolved.push(`${contract.name} [${contract.status}] (placeholder link)`);
   } else if (!knownComponentIds.has(nodeId)) {
-    unresolved.push(`${contract.name} (node ${nodeId} is not a known DS component)`);
+    unresolved.push(`${contract.name} [${contract.status}] (node ${nodeId} is not a known DS component)`);
   }
 }
 
@@ -73,10 +79,10 @@ const count = unresolved.length;
 
 if (count > ceiling) {
   console.error(
-    `✖ figma-links ratchet: ${count} stable contracts do not resolve to a real Figma component (ceiling ${ceiling}).`,
+    `✖ figma-links ratchet: ${count} beta/stable contracts do not resolve to a real Figma component (ceiling ${ceiling}).`,
   );
   console.error(
-    `  A stable contract needs a real COMPONENT/COMPONENT_SET node (build it, then add it to figma-component-index.json — see docs/design-system/figma-parity-audit.md).`,
+    `  A beta/stable contract needs a real COMPONENT/COMPONENT_SET node (build it, then add it to figma-component-index.json — see docs/design-system/figma-parity-audit.md).`,
   );
   console.error(`  Unresolved:\n    ${unresolved.sort().join("\n    ")}`);
   process.exit(1);
@@ -93,5 +99,5 @@ if (count < ceiling) {
 }
 
 console.log(
-  `✓ figma-links ratchet: ${count}/${ceiling} stable contracts without a real Figma component (can only decrease)`,
+  `✓ figma-links ratchet: ${count}/${ceiling} beta/stable contracts without a real Figma component (can only decrease)`,
 );
