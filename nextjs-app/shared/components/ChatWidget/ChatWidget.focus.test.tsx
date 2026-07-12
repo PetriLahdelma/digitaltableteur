@@ -10,6 +10,7 @@ describe("ChatWidget focus behavior", () => {
     const { getByRole, findByLabelText } = render(<ChatWidget />);
     const toggle = getByRole("button", { name: /chat with donny/i });
     fireEvent.click(toggle);
+    expect(getByRole("dialog")).toHaveAttribute("aria-modal", "false");
     const textarea = await findByLabelText(/ask donny a question/i);
     await waitFor(() => expect(textarea).toHaveFocus());
   });

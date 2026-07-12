@@ -53,6 +53,7 @@ export type { CheckboxProps } from "../../../nextjs-app/shared/components/Checkb
 export { default as CheckboxGroup } from "../../../nextjs-app/shared/components/CheckboxGroup/CheckboxGroup";
 export type { CheckboxGroupProps } from "../../../nextjs-app/shared/components/CheckboxGroup/CheckboxGroup";
 export { default as CodeBlockWindow } from "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow";
+export type { CodeBlockWindowProps } from "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow";
 export { default as CodeSnippet } from "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet";
 export type {
   CodeSnippetProps,
@@ -116,6 +117,7 @@ export type { GalleryProps } from "../../../nextjs-app/shared/components/Gallery
 export { default as Grid } from "../../../nextjs-app/shared/components/Grid/Grid";
 export type { GridProps } from "../../../nextjs-app/shared/components/Grid/Grid";
 export { default as GroupLabel } from "../../../nextjs-app/shared/components/GroupLabel/GroupLabel";
+export type { GroupLabelProps } from "../../../nextjs-app/shared/components/GroupLabel/GroupLabel";
 export { default as HelperText } from "../../../nextjs-app/shared/components/HelperText/HelperText";
 export type {
   HelperTextProps,
