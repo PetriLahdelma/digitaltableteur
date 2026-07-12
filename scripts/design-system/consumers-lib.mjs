@@ -142,16 +142,18 @@ function parseDtComponents(content) {
 
 function parsePackageComponents(content) {
   const names = new Set();
+  // Anchor the brace group directly to the barrel `from` clause. `[^{}]*`
+  // cannot cross another import's braces, so a preceding `import { … } from
+  // "react"` no longer bleeds into this match (the old `[\s\S]*?` did, which
+  // silently dropped every barrel-consumed component to zero). An optional
+  // default binding and a whole-import `type ` prefix are tolerated.
   const re =
-    /\bimport\s+(type\s+)?([\s\S]*?)\s+from\s+["']@digitaltableteur\/react["']/g;
+    /\bimport\s+(?:[A-Za-z0-9_$]+\s*,\s*)?(type\s+)?\{([^{}]*)\}\s+from\s+["']@digitaltableteur\/react["']/g;
   let match;
   while ((match = re.exec(content)) !== null) {
     const isTypeOnly = Boolean(match[1]);
     if (isTypeOnly) continue;
-    const clause = match[2];
-    const named = clause.match(/\{([\s\S]*?)\}/);
-    if (!named) continue;
-    for (const raw of named[1].split(",")) {
+    for (const raw of match[2].split(",")) {
       const local = raw
         .trim()
         .replace(/^type\s+/, "")
