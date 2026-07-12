@@ -3,19 +3,30 @@
     "name": "Timestamp",
     "tier": "atom",
     "group": "display",
-    "status": "alpha",
+    "status": "stable",
     "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1245-1732",
     "radixPrimitive": null,
     "element": "time",
     "variants": {
         "size": {
-            "values": ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
+            "values": [
+                "xxs",
+                "xs",
+                "s",
+                "m",
+                "l",
+                "xl",
+                "xxl"
+            ],
             "default": "s",
             "propSourced": true
         },
         "tone": {
-            "values": ["default", "muted"],
+            "values": [
+                "default",
+                "muted"
+            ],
             "default": "muted",
             "propSourced": true
         }
@@ -23,7 +34,16 @@
     "slots": [],
     "asChild": false,
     "subParts": [],
-    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Sizes",
+        "Relative",
+        "Tones",
+        "Formats",
+        "Example",
+        "ForcedColors"
+    ],
     "a11y": {
         "keyboard": [],
         "ariaRequirements": [
@@ -31,12 +51,118 @@
             "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-12 (Claude): verified in Storybook 6010 — light + dark render all 8 formats readable in both tones; relative ladder correct (30s->now, minutes/hours/days/weeks/months); forced-colors safe by construction (pure <time> text, no bg/border/opacity) and confirmed via DT_FORCED_COLORS=active pass; console clean; axe green (10 tests); AT snapshots captured for all 8 stories.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
-        "colors": ["--color-text", "--color-muted"],
+        "colors": [
+            "--color-text",
+            "--color-muted"
+        ],
         "spacing": []
     },
-    "lightDarkVerified": false
+    "lightDarkVerified": true,
+    "schemaVersion": 2,
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
+    "props": {
+        "value": {
+            "optional": false,
+            "type": "string | number | Date"
+        },
+        "format": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "auto",
+                "date",
+                "time",
+                "relative",
+                "date_time",
+                "system_date",
+                "system_date_time",
+                "system_time"
+            ]
+        },
+        "autoThreshold": {
+            "optional": true,
+            "type": "number"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "s",
+                "xl",
+                "xs",
+                "xxs",
+                "m",
+                "l",
+                "xxl"
+            ]
+        },
+        "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "muted"
+            ]
+        },
+        "showTimezone": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "tooltip": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "live": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "now": {
+            "optional": true,
+            "type": "string | number | Date"
+        },
+        "locale": {
+            "optional": true,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Container",
+        "Link",
+        "List",
+        "Section",
+        "Text",
+        "Title"
+    ]
 }

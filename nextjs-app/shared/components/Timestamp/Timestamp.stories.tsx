@@ -122,6 +122,89 @@ export const Default: Story = {
 
 export const Playground: Story = {
   globals: { forcedColors: "none" },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Drive every prop from the Controls panel. `value` and `now` are pinned so relative output stays deterministic; clear `now` to read against the live clock.",
+      },
+    },
+  },
+};
+
+export const Sizes: Story = {
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "The text-ladder sizes from xxs to xxl. Timestamp inherits the same type scale as Text, so it aligns inline with surrounding copy at any size.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: "grid", gap: "0.5rem" }}>
+      {(["xxs", "xs", "s", "m", "l", "xl", "xxl"] as const).map((size) => (
+        <Text as="p" size="s" key={size}>
+          {size}:{" "}
+          <Timestamp value={OLDER} now={FIXED_NOW} format="date" size={size} />
+        </Text>
+      ))}
+    </div>
+  ),
+};
+
+export const Relative: Story = {
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Relative output across the age ladder, from seconds to months before the fixed reference `now`. Each renders a native full-date tooltip on hover.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: "grid", gap: "0.5rem" }}>
+      {(
+        [
+          ["30 seconds", "2026-02-19T18:59:30Z"],
+          ["5 minutes", "2026-02-19T18:55:00Z"],
+          ["3 hours", "2026-02-19T16:00:00Z"],
+          ["2 days", "2026-02-17T19:00:00Z"],
+          ["3 weeks", "2026-01-29T19:00:00Z"],
+          ["2 months", "2025-12-19T19:00:00Z"],
+        ] as const
+      ).map(([label, value]) => (
+        <Text as="p" size="s" key={label}>
+          {label}:{" "}
+          <Timestamp value={value} now={FIXED_NOW} format="relative" />
+        </Text>
+      ))}
+    </div>
+  ),
+};
+
+export const Tones: Story = {
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "`muted` (default) for secondary metadata like list timestamps; `default` when the value carries body-text weight.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: "grid", gap: "0.5rem" }}>
+      {(["muted", "default"] as const).map((tone) => (
+        <Text as="p" size="s" key={tone}>
+          {tone}:{" "}
+          <Timestamp value={OLDER} now={FIXED_NOW} format="date_time" tone={tone} />
+        </Text>
+      ))}
+    </div>
+  ),
 };
 
 export const Formats: Story = {

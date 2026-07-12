@@ -1,0 +1,22 @@
+- status: Work in progress (alpha)
+- paragraph:
+  - text: "relative:"
+  - time: 3 months ago
+- paragraph:
+  - text: "date:"
+  - time: Nov 29, 2025
+- paragraph:
+  - text: "date_time:"
+  - time: Nov 29, 2025, 02:00 PM
+- paragraph:
+  - text: "time:"
+  - time: 02:00 PM
+- paragraph:
+  - text: "system_date:"
+  - time: 2025-11-29
+- paragraph:
+  - text: "system_date_time:"
+  - time: 2025-11-29 14:00:00
+- paragraph:
+  - text: "system_time:"
+  - time: 14:00:00
