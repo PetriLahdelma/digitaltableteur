@@ -30,7 +30,7 @@ const basicOptions = [
 const meta: Meta<typeof SplitButton> = {
   title: "Actions/SplitButton",
   component: SplitButton,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

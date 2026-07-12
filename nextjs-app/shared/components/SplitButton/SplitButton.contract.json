@@ -3,7 +3,7 @@
     "name": "SplitButton",
     "tier": "molecule",
     "group": "interaction",
-    "status": "beta",
+    "status": "stable",
     "description": "Primary action button paired with a dropdown toggle for related secondary actions, with collision-aware menu placement and optional nested submenus.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1052-2084",
     "radixPrimitive": null,
@@ -67,7 +67,9 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). 2026-07-05 — dropdown now consumes the shared Menu primitive (Radix dropdown-menu) incl. MenuSub submenus: hand-rolled role=menu markup, openSubIndex state, manual placement math, and focus-trap removed. Public options API unchanged; obsolete usePortal prop removed (Menu always portals). Re-verified: hover + ArrowRight/Left submenu parity and keyboard select via test-storybook play, axe-clean open, Controls 100% + 0 inert. 2026-07-06 — alpha→beta: Figma variant set built (Variant×Size, node 1052-2084, DT-Site-stuff Molecules). Light/dark AND forced-colors verified for real on the closed control AND the open menu via Playwright (globals=theme + forcedColors:active): theme flips both segments and the portaled Menu surface correctly; in forced-colors the menu draws a visible CanvasText border (not shadow-only), segment outlines and caret/option icons stay distinguishable. forcedColorsVerified + lightDarkVerified now true."
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-07-03 — Astryx Phase 3 batch 1: keyboard/ARIA contract documented from implementation; missing splitButton.moreOptions locale keys added (en/fi/sv). 2026-07-05 — dropdown now consumes the shared Menu primitive (Radix dropdown-menu) incl. MenuSub submenus: hand-rolled role=menu markup, openSubIndex state, manual placement math, and focus-trap removed. Public options API unchanged; obsolete usePortal prop removed (Menu always portals). Re-verified: hover + ArrowRight/Left submenu parity and keyboard select via test-storybook play, axe-clean open, Controls 100% + 0 inert. 2026-07-06 — alpha→beta: Figma variant set built (Variant×Size, node 1052-2084, DT-Site-stuff Molecules). Light/dark AND forced-colors verified for real on the closed control AND the open menu via Playwright (globals=theme + forcedColors:active): theme flips both segments and the portaled Menu surface correctly; in forced-colors the menu draws a visible CanvasText border (not shadow-only), segment outlines and caret/option icons stay distinguishable. forcedColorsVerified + lightDarkVerified now true. 2026-07-12 — beta→stable: 4-mode AT recaptured at stable (WIP badge dropped) via the story runner (plays open the Menu); accessibility tree and real-browser forced-colors confirmed; exported from @digitaltableteur/react. 2 production consumers."
     },
     "tokens": {
         "colors": [
@@ -229,5 +231,17 @@
         "Button",
         "Icon",
         "Menu"
+    ],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
+            "since": "2026-06-04"
+        }
     ]
 }

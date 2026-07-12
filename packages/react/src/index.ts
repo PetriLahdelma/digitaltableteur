@@ -192,6 +192,11 @@ export {
   type SpinnerProps,
 } from "../../../nextjs-app/shared/components/Spinner";
 export {
+  default as SplitButton,
+  type SplitButtonOption,
+  type SplitButtonProps,
+} from "../../../nextjs-app/shared/components/SplitButton/SplitButton";
+export {
   Stack,
   type StackProps,
 } from "../../../nextjs-app/shared/components/Stack";
