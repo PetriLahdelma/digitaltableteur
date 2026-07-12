@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T07:13:16.839Z",
+  "generatedAt": "2026-07-12T07:30:17.743Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -3836,11 +3836,11 @@
       "variants": {
         "variant": {
           "values": [
+            "pill",
             "underline",
-            "minimal",
-            "pill"
+            "minimal"
           ],
-          "default": "underline"
+          "default": "pill"
         },
         "size": {
           "values": [
@@ -3848,11 +3848,28 @@
             "md",
             "lg"
           ],
-          "default": "sm"
+          "default": "md"
         }
       },
-      "cvaVariants": {},
-      "variantsFnName": null,
+      "cvaVariants": {
+        "variant": {
+          "values": [
+            "pill",
+            "underline",
+            "minimal"
+          ],
+          "default": "pill"
+        },
+        "size": {
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        }
+      },
+      "variantsFnName": "filterChipVariants",
       "useWhen": [
         "keep exactly one chip pressed per group (single-select filters).",
         "pass counts via the count prop so the \"(n)\" suffix stays in the accessible name."

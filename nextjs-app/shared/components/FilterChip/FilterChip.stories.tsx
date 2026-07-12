@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within } from "storybook/test";
 import { FilterChip } from "./FilterChip";
 import contract from "./FilterChip.contract.json";
 
@@ -18,7 +19,7 @@ const meta = {
   },
   // Custom MDX docs pages exist for all catalog entries; do not also enable autodocs
   // or Storybook will treat it as conflicting sources of truth for the docs page.
-  tags: ["!autodocs"],
+  tags: ["stable", "!autodocs"],
   argTypes: {
     pressed: {
       control: "boolean",
@@ -63,6 +64,19 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  // Drives the toggle via keyboard + pointer. The chip is controlled with no
+  // handler wired here, so the interaction is a no-op on the accessibility tree
+  // (focus/press state is not serialised into AT snapshots) — this exercises the
+  // control without perturbing the captured snapshot.
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const chip = canvas.getByRole("button", { name: "Design systems" });
+    await userEvent.tab();
+    await expect(chip).toHaveFocus();
+    await expect(chip).toHaveAttribute("aria-pressed", "false");
+    await userEvent.keyboard("{Enter}");
+    await userEvent.click(chip);
+  },
 };
 
 export const Playground: Story = {

@@ -1,4 +1,5 @@
 import React from "react";
+import { cva } from "class-variance-authority";
 import styles from "./FilterChip.module.css";
 import { cn } from "../../lib/cn";
 
@@ -21,17 +22,21 @@ export interface FilterChipProps
   className?: string;
 }
 
-const variantClassMap: Record<FilterChipVariant, string> = {
-  pill: styles.pill,
-  underline: styles.underline,
-  minimal: styles.minimal,
-};
-
-const sizeClassMap: Record<FilterChipSize, string> = {
-  sm: styles.sm,
-  md: styles.md,
-  lg: styles.lg,
-};
+export const filterChipVariants = cva(styles.chip, {
+  variants: {
+    variant: {
+      pill: styles.pill,
+      underline: styles.underline,
+      minimal: styles.minimal,
+    },
+    size: {
+      sm: styles.sm,
+      md: styles.md,
+      lg: styles.lg,
+    },
+  },
+  defaultVariants: { variant: "pill", size: "md" },
+});
 
 /**
  * Single-select filter toggle chip: a `button[aria-pressed]` with pill,
@@ -57,12 +62,7 @@ export const FilterChip = React.forwardRef<HTMLButtonElement, FilterChipProps>(
         ref={ref}
         type="button"
         aria-pressed={pressed}
-        className={cn(
-          styles.chip,
-          variantClassMap[variant],
-          sizeClassMap[size],
-          className,
-        )}
+        className={cn(filterChipVariants({ variant, size }), className)}
         {...rest}
       >
         {children}

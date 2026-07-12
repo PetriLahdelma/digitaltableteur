@@ -3,7 +3,7 @@
     "name": "FilterChip",
     "tier": "atom",
     "group": "controls",
-    "status": "alpha",
+    "status": "stable",
     "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1249-1954",
     "radixPrimitive": null,
@@ -26,9 +26,7 @@
             "default": "md"
         }
     },
-    "slots": [
-        "children"
-    ],
+    "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
@@ -48,8 +46,11 @@
             "parents wrap chips in a labelled role=group"
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-12 — alpha→stable: shared implementation behind CategoryFilter and BlogCategoryFilter (8 production consumers). 4-mode AT (base/light/dark/forced-colors) captured on a non-6010 Storybook for all four required stories; accessibility tree and real-browser forced-colors confirmed; aria-pressed toggle semantics asserted in unit test with jest-axe; light/dark re-verified. Exported from @digitaltableteur/react.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -66,7 +67,7 @@
             "--space-internal-24"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "schemaVersion": 2,
     "displayName": "FilterChip",
     "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
@@ -78,5 +79,86 @@
         "tag",
         "pressed"
     ],
-    "consumers": []
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
+    "props": {
+        "pressed": {
+            "optional": false,
+            "type": "boolean"
+        },
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "underline",
+                "minimal",
+                "pill"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "count": {
+            "optional": true,
+            "type": "number"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "use for navigation between panels (that is Tabs).",
+        "nest interactive content inside the label."
+    ]
 }
