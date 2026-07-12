@@ -57,7 +57,7 @@ const meta = {
     },
     size: {
       control: { type: "select" },
-      options: ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
+      options: ["xxs", "xs", "s", "m"],
       description: "Text-ladder size.",
       table: { category: "Appearance", defaultValue: { summary: "s" } },
     },
@@ -138,13 +138,13 @@ export const Sizes: Story = {
     docs: {
       description: {
         story:
-          "The text-ladder sizes from xxs to xxl. Timestamp inherits the same type scale as Text, so it aligns inline with surrounding copy at any size.",
+          "The text-ladder sizes from xxs to m. Timestamp is metadata, so it caps at body size (m) — it inherits the Text type scale and aligns inline with surrounding copy.",
       },
     },
   },
   render: () => (
     <div style={{ display: "grid", gap: "0.5rem" }}>
-      {(["xxs", "xs", "s", "m", "l", "xl", "xxl"] as const).map((size) => (
+      {(["xxs", "xs", "s", "m"] as const).map((size) => (
         <Text as="p" size="s" key={size}>
           {size}:{" "}
           <Timestamp value={OLDER} now={FIXED_NOW} format="date" size={size} />

@@ -14,10 +14,7 @@
                 "xxs",
                 "xs",
                 "s",
-                "m",
-                "l",
-                "xl",
-                "xxl"
+                "m"
             ],
             "default": "s",
             "propSourced": true
@@ -116,12 +113,9 @@
             "type": "union",
             "values": [
                 "s",
-                "xl",
                 "xs",
                 "xxs",
-                "m",
-                "l",
-                "xxl"
+                "m"
             ]
         },
         "tone": {

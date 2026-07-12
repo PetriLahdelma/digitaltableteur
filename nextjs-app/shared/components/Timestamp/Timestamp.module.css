@@ -29,15 +29,3 @@
 .sizeM {
   font-size: var(--font-size-text-m);
 }
-
-.sizeL {
-  font-size: var(--font-size-text-l);
-}
-
-.sizeXL {
-  font-size: var(--font-size-text-xl);
-}
-
-.sizeXXL {
-  font-size: var(--font-size-text-xxl);
-}
