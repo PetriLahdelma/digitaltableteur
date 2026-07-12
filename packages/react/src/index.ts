@@ -102,6 +102,7 @@ export {
   type ExpandableSectionProps,
 } from "../../../nextjs-app/shared/components/ExpandableSection";
 export { default as FlexBox } from "../../../nextjs-app/shared/components/FlexBox/FlexBox";
+export type { FlexBoxProps } from "../../../nextjs-app/shared/components/FlexBox/FlexBox";
 export { default as FileUpload } from "../../../nextjs-app/shared/components/FileUpload/FileUpload";
 export type { FileUploadProps } from "../../../nextjs-app/shared/components/FileUpload/FileUpload";
 export { FilterChip } from "../../../nextjs-app/shared/components/FilterChip";
@@ -113,6 +114,7 @@ export {
 export { default as Gallery } from "../../../nextjs-app/shared/components/Gallery/Gallery";
 export type { GalleryProps } from "../../../nextjs-app/shared/components/Gallery";
 export { default as Grid } from "../../../nextjs-app/shared/components/Grid/Grid";
+export type { GridProps } from "../../../nextjs-app/shared/components/Grid/Grid";
 export { default as GroupLabel } from "../../../nextjs-app/shared/components/GroupLabel/GroupLabel";
 export { default as HelperText } from "../../../nextjs-app/shared/components/HelperText/HelperText";
 export type {
@@ -135,7 +137,9 @@ export {
   type LanguageSwitcherProps,
 } from "../../../nextjs-app/shared/components/LanguageSwitcher";
 export { default as Link } from "../../../nextjs-app/shared/components/Link/Link";
+export type { LinkProps } from "../../../nextjs-app/shared/components/Link/Link";
 export { default as List } from "../../../nextjs-app/shared/components/List/List";
+export type { ListProps } from "../../../nextjs-app/shared/components/List/List";
 export { default as MacWindowFrame } from "../../../nextjs-app/shared/components/MacWindowFrame/MacWindowFrame";
 export type { MacWindowFrameProps } from "../../../nextjs-app/shared/components/MacWindowFrame";
 export {
@@ -245,6 +249,7 @@ export type { SwitchProps } from "../../../nextjs-app/shared/components/Switch";
 export { default as Tabs, getTabPanelProps } from "../../../nextjs-app/shared/components/Tabs";
 export type { TabItem, TabsProps } from "../../../nextjs-app/shared/components/Tabs";
 export { default as Text } from "../../../nextjs-app/shared/components/Text/Text";
+export type { TextProps } from "../../../nextjs-app/shared/components/Text/Text";
 export {
   TextArea,
   type TextAreaProps,
