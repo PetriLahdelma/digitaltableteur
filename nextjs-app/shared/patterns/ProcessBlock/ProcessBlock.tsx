@@ -2,7 +2,11 @@
 
 import React from "react";
 import PageLayout from "../PageLayout/PageLayout";
-import { List, Text, Title } from "@digitaltableteur/react";
+// Same-module-instance rule: this pattern is bundled into the package, so it
+// must import DS source directly (a bundled file cannot import its own barrel).
+import List from "@dt/List";
+import Text from "@dt/Text";
+import Title from "@dt/Title";
 import styles from "./ProcessBlock.module.css";
 
 /**
