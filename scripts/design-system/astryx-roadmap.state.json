@@ -325,6 +325,7 @@
       "ScrollOverflowState",
       "SectionProps",
       "SelectOption",
+      "SelectableCardGroup",
       "SkipLinkProps",
       "SpinnerProps",
       "StackProps",

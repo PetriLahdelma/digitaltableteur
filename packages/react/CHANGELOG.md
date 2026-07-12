@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.8 - 2026-07-12
+
+- Batch publish of the alpha-wave promotions merged since 0.1.7. Seven new runtime exports enter the package surface: `CommandPalette`, `FilterChip`, `SegmentedControl`, `SelectableCard`, `SelectableCardGroup`, `SplitButton`, `ToastStack` (with their prop types). Runtime public API now lists 113 exports (was 106).
+- Type-only export alignment across the curated surface: `Avatar` (incl. `AvatarMenuItem`/`AvatarSize`), `AvatarGroup`, `Badge` (`BadgeSize`/`BadgeTone`/`BadgeVariant`), `Card` (`CardProps`/`CardVariant`/`CardPadding`/`CardTitleProps`/`CardDescriptionProps`), `Checkbox`, `Gallery`, `HelperText` (adds `HelperTextState`), `Icon`, `Kbd` (`KbdSize`), `Label`, `Switch`, `Title`, and `Button` (`ButtonSize`/`ButtonTone`/`ButtonVariant`). Mixed `export { X, type Y }` statements split into separate `export type { … }` blocks so the public-surface guard classifies them correctly. No runtime behavior change from these.
+- `ArticleLayout` is intentionally not exported in this release: it is `status: alpha` and the public surface enforces a zero-alpha ceiling. It returns at beta once its full promotion surface (stories, verified forced-colors/light-dark, a11y review, docs) lands.
+- Verified by the full local gate (typecheck, lint, 2284 tests, build) plus check:react-package, check:react-public-api, and check:react-public-surface (0 alpha).
+
 ## 0.1.7 - 2026-07-11
 
 - Forms semantics unification (#1094, owner ruling): `helperText` is always-on across all field components — TextInput, TextArea, Select, PhoneInput, Combobox, MultiCombobox, Checkbox, Switch, FileUpload now render `error` above the helper instead of replacing it, with `aria-describedby` referencing both ids. Consecutive HelperText lines stack 4px apart as one block.

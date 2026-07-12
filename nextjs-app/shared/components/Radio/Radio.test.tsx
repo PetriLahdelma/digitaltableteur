@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
 import Radio from "./Radio";
 
 describe("Radio", () => {
@@ -13,5 +13,21 @@ describe("Radio", () => {
   it("preselects via defaultChecked on the uncontrolled path", () => {
     render(<Radio name="n" value="v" label="Opt" defaultChecked />);
     expect(screen.getByRole("radio")).toBeChecked();
+  });
+
+  it("calls onCheckedChange with the selected state", () => {
+    const onCheckedChange = vi.fn();
+    render(
+      <Radio
+        name="n"
+        value="v"
+        label="Opt"
+        checked={false}
+        onCheckedChange={onCheckedChange}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("radio"));
+    expect(onCheckedChange).toHaveBeenCalledWith(true);
   });
 });

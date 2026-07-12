@@ -1,8 +1,23 @@
 export { default as AlertBanner } from "../../../nextjs-app/shared/components/AlertBanner/AlertBanner";
 export type { AlertBannerProps } from "../../../nextjs-app/shared/components/AlertBanner/AlertBanner";
 export { default as Avatar } from "../../../nextjs-app/shared/components/Avatar/Avatar";
+export type {
+  AvatarMenuItem,
+  AvatarProps,
+  AvatarSize,
+} from "../../../nextjs-app/shared/components/Avatar";
 export { default as AvatarGroup } from "../../../nextjs-app/shared/components/AvatarGroup/AvatarGroup";
+export type {
+  AvatarGroupProps,
+  AvatarGroupSize,
+} from "../../../nextjs-app/shared/components/AvatarGroup";
 export { default as Badge } from "../../../nextjs-app/shared/components/Badge/Badge";
+export type {
+  BadgeProps,
+  BadgeSize,
+  BadgeTone,
+  BadgeVariant,
+} from "../../../nextjs-app/shared/components/Badge";
 export { default as Breadcrumb } from "../../../nextjs-app/shared/components/Breadcrumb/Breadcrumb";
 export type {
   BreadcrumbItem,
@@ -12,18 +27,29 @@ export { default as Button } from "../../../nextjs-app/shared/components/Button/
 export type {
   ButtonAsButton,
   ButtonAsLink,
+  ButtonSize,
   ButtonProps,
   ButtonSurface,
+  ButtonTone,
+  ButtonVariant,
 } from "../../../nextjs-app/shared/components/Button/Button";
 export { default as ButtonGroup } from "../../../nextjs-app/shared/components/ButtonGroup/ButtonGroup";
 export type { ButtonGroupProps } from "../../../nextjs-app/shared/components/ButtonGroup/ButtonGroup";
 export { default as Card } from "../../../nextjs-app/shared/components/Card/Card";
+export type {
+  CardDescriptionProps,
+  CardPadding,
+  CardProps,
+  CardTitleProps,
+  CardVariant,
+} from "../../../nextjs-app/shared/components/Card";
 export {
   CategoryFilter,
   type CategoryFilterProps,
   type CategoryOption,
 } from "../../../nextjs-app/shared/components/CategoryFilter";
 export { default as Checkbox } from "../../../nextjs-app/shared/components/Checkbox/Checkbox";
+export type { CheckboxProps } from "../../../nextjs-app/shared/components/Checkbox";
 export { default as CheckboxGroup } from "../../../nextjs-app/shared/components/CheckboxGroup/CheckboxGroup";
 export type { CheckboxGroupProps } from "../../../nextjs-app/shared/components/CheckboxGroup/CheckboxGroup";
 export { default as CodeBlockWindow } from "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow";
@@ -40,10 +66,10 @@ export {
   optionsFromSelectChildren,
   splitPlaceholderOption,
 } from "../../../nextjs-app/shared/components/Combobox";
-export {
-  CommandPalette,
-  type CommandPaletteItem,
-  type CommandPaletteProps,
+export { CommandPalette } from "../../../nextjs-app/shared/components/CommandPalette/CommandPalette";
+export type {
+  CommandPaletteItem,
+  CommandPaletteProps,
 } from "../../../nextjs-app/shared/components/CommandPalette/CommandPalette";
 export { Container, type ContainerProps } from "../../../nextjs-app/shared/components/Container";
 export { default as CookieConsent } from "../../../nextjs-app/shared/components/CookieConsent/CookieConsent";
@@ -78,26 +104,31 @@ export {
 export { default as FlexBox } from "../../../nextjs-app/shared/components/FlexBox/FlexBox";
 export { default as FileUpload } from "../../../nextjs-app/shared/components/FileUpload/FileUpload";
 export type { FileUploadProps } from "../../../nextjs-app/shared/components/FileUpload/FileUpload";
-export {
-  FilterChip,
-  type FilterChipProps,
-} from "../../../nextjs-app/shared/components/FilterChip";
+export { FilterChip } from "../../../nextjs-app/shared/components/FilterChip";
+export type { FilterChipProps } from "../../../nextjs-app/shared/components/FilterChip";
 export {
   FormField,
   type FormFieldProps,
 } from "../../../nextjs-app/shared/components/FormField";
 export { default as Gallery } from "../../../nextjs-app/shared/components/Gallery/Gallery";
+export type { GalleryProps } from "../../../nextjs-app/shared/components/Gallery";
 export { default as Grid } from "../../../nextjs-app/shared/components/Grid/Grid";
 export { default as GroupLabel } from "../../../nextjs-app/shared/components/GroupLabel/GroupLabel";
 export { default as HelperText } from "../../../nextjs-app/shared/components/HelperText/HelperText";
-export type { HelperTextProps } from "../../../nextjs-app/shared/components/HelperText/HelperText";
+export type {
+  HelperTextProps,
+  HelperTextState,
+} from "../../../nextjs-app/shared/components/HelperText";
 export { default as Icon } from "../../../nextjs-app/shared/components/Icon/Icon";
+export type { IconProps } from "../../../nextjs-app/shared/components/Icon";
 export {
   IconButton,
   type IconButtonProps,
 } from "../../../nextjs-app/shared/components/IconButton";
 export { default as Kbd } from "../../../nextjs-app/shared/components/Kbd/Kbd";
 export { default as Label } from "../../../nextjs-app/shared/components/Label/Label";
+export type { KbdProps, KbdSize } from "../../../nextjs-app/shared/components/Kbd";
+export type { LabelProps } from "../../../nextjs-app/shared/components/Label";
 export {
   LanguageSwitcher,
   type LanguageSwitcherOption,
@@ -163,10 +194,10 @@ export {
   Section,
   type SectionProps,
 } from "../../../nextjs-app/shared/components/Section";
-export {
-  default as SegmentedControl,
-  type SegmentedControlItem,
-  type SegmentedControlProps,
+export { default as SegmentedControl } from "../../../nextjs-app/shared/components/SegmentedControl/SegmentedControl";
+export type {
+  SegmentedControlItem,
+  SegmentedControlProps,
 } from "../../../nextjs-app/shared/components/SegmentedControl/SegmentedControl";
 export { default as Select } from "../../../nextjs-app/shared/components/Select/Select";
 export type {
@@ -177,9 +208,11 @@ export { default as SelectOption } from "../../../nextjs-app/shared/components/S
 export {
   SelectableCard,
   SelectableCardGroup,
-  type SelectableCardGroupProps,
-  type SelectableCardProps,
-  type SelectableCardSelectionType,
+} from "../../../nextjs-app/shared/components/SelectableCard/SelectableCard";
+export type {
+  SelectableCardGroupProps,
+  SelectableCardProps,
+  SelectableCardSelectionType,
 } from "../../../nextjs-app/shared/components/SelectableCard/SelectableCard";
 export {
   SkipLink,
@@ -191,10 +224,10 @@ export {
   Spinner,
   type SpinnerProps,
 } from "../../../nextjs-app/shared/components/Spinner";
-export {
-  default as SplitButton,
-  type SplitButtonOption,
-  type SplitButtonProps,
+export { default as SplitButton } from "../../../nextjs-app/shared/components/SplitButton/SplitButton";
+export type {
+  SplitButtonOption,
+  SplitButtonProps,
 } from "../../../nextjs-app/shared/components/SplitButton/SplitButton";
 export {
   Stack,
@@ -207,6 +240,7 @@ export type {
   StatusDotTone,
 } from "../../../nextjs-app/shared/components/StatusDot";
 export { default as Switch } from "../../../nextjs-app/shared/components/Switch/Switch";
+export type { SwitchProps } from "../../../nextjs-app/shared/components/Switch";
 export { default as Tabs, getTabPanelProps } from "../../../nextjs-app/shared/components/Tabs";
 export type { TabItem, TabsProps } from "../../../nextjs-app/shared/components/Tabs";
 export { default as Text } from "../../../nextjs-app/shared/components/Text/Text";
@@ -225,16 +259,17 @@ export type {
   ThemeProviderProps,
 } from "../../../nextjs-app/shared/components/ThemeProvider/ThemeProvider";
 export { default as Title } from "../../../nextjs-app/shared/components/Title/Title";
+export type { TitleProps } from "../../../nextjs-app/shared/components/Title";
 export { default as Toast } from "../../../nextjs-app/shared/components/Toast/Toast";
 export type {
   ToastPosition,
   ToastProps,
   ToastTone,
 } from "../../../nextjs-app/shared/components/Toast/Toast";
-export {
-  default as ToastStack,
-  type ToastStackItem,
-  type ToastStackProps,
+export { default as ToastStack } from "../../../nextjs-app/shared/components/ToastStack/ToastStack";
+export type {
+  ToastStackItem,
+  ToastStackProps,
 } from "../../../nextjs-app/shared/components/ToastStack/ToastStack";
 export {
   ValueCard,
@@ -305,12 +340,3 @@ export {
   type ScrollOverflowState,
 } from "../../../nextjs-app/shared/hooks/useOverflow";
 export { useScrollLock } from "../../../nextjs-app/shared/hooks/useScrollLock";
-
-// ── Patterns ──────────────────────────────────────────────────────────────
-// Composite, page-level building blocks. First pattern exported from the
-// registry, establishing the pattern rung of the full-consumption mandate
-// (atoms → molecules → patterns → pages).
-export {
-  ArticleLayout,
-  type ArticleLayoutProps,
-} from "../../../nextjs-app/shared/patterns/ArticleLayout/ArticleLayout";

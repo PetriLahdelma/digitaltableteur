@@ -110,4 +110,23 @@ describe("Switch", () => {
     expect(toggle).toHaveAttribute("aria-busy", "true");
     expect(toggle).toHaveAttribute("data-loading", "true");
   });
+
+  it("associates error and helper text through aria-describedby", () => {
+    render(
+      <Switch
+        id="email-alerts"
+        checked={false}
+        label="Email alerts"
+        error="Required"
+        helperText="Used for service updates"
+      />,
+    );
+
+    const toggle = screen.getByRole("switch", { name: "Email alerts" });
+    expect(toggle).toHaveAttribute("aria-invalid", "true");
+    expect(toggle).toHaveAttribute(
+      "aria-describedby",
+      "email-alerts-error email-alerts-helper",
+    );
+  });
 });
