@@ -1,12 +1,27 @@
 "use client";
 
 import { forwardRef } from "react";
+import { cva } from "class-variance-authority";
 import Toast, {
   type ToastPosition,
   type ToastTone,
 } from "../Toast/Toast";
 import { cn } from "../../lib/cn";
 import styles from "./ToastStack.module.css";
+
+export const toastStackVariants = cva(styles.stack, {
+  variants: {
+    position: {
+      "top-left": styles["stack--top-left"],
+      "top-center": styles["stack--top-center"],
+      "top-right": styles["stack--top-right"],
+      "bottom-left": styles["stack--bottom-left"],
+      "bottom-center": styles["stack--bottom-center"],
+      "bottom-right": styles["stack--bottom-right"],
+    },
+  },
+  defaultVariants: { position: "bottom-center" },
+});
 
 export interface ToastStackItem {
   /** Stable identity for dismissal and list rendering. */
@@ -54,7 +69,7 @@ const ToastStack = forwardRef<HTMLDivElement, ToastStackProps>(
     return (
       <div
         ref={ref}
-        className={cn(styles.stack, styles[`stack--${position}`], className)}
+        className={cn(toastStackVariants({ position }), className)}
       >
         {visible.map((toast) => (
           <Toast

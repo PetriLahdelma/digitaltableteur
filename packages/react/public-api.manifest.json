@@ -98,6 +98,7 @@
     "Title",
     "Toast",
     "ToastRuntimeProvider",
+    "ToastStack",
     "TranslationProvider",
     "useAnimationContext",
     "useCookieConsent",

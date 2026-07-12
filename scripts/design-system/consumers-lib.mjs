@@ -18,6 +18,7 @@ const COMPONENT_ROOTS = [
 /** Production entry surfaces — paths recorded in consumers[]. */
 const ENTRY_ROOTS = [
   join(ROOT, "app"),
+  join(ROOT, "providers"),
   join(ROOT, "nextjs-app/shared/patterns"),
   join(ROOT, "nextjs-app/shared/components/pages"),
 ].filter((d) => existsSync(d));
@@ -25,6 +26,7 @@ const ENTRY_ROOTS = [
 /** Modules we follow when resolving local import graph. */
 const MODULE_ROOTS = [
   join(ROOT, "app"),
+  join(ROOT, "providers"),
   join(ROOT, "nextjs-app/shared/components"),
   join(ROOT, "nextjs-app/shared/patterns"),
 ].filter((d) => existsSync(d));
@@ -49,6 +51,7 @@ function isProductionModule(abs) {
   if (shouldSkipRel(rel)) return false;
   return (
     rel.startsWith("app/") ||
+    rel.startsWith("providers/") ||
     rel.startsWith("nextjs-app/shared/components/") ||
     rel.startsWith("nextjs-app/shared/patterns/")
   );

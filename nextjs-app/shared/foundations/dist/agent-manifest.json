@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-12T07:30:18.004Z",
+  "generatedAt": "2026-07-12T07:52:15.578Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
       "beta": 48,
-      "stable": 91,
-      "alpha": 25,
+      "stable": 92,
+      "alpha": 24,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
@@ -20,7 +20,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 91,
+    "stableCount": 92,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -108,8 +108,8 @@
     "statusMix": {
       "digitaltableteur": {
         "beta": 48,
-        "stable": 91,
-        "alpha": 25,
+        "stable": 92,
+        "alpha": 24,
         "deprecated": 1
       },
       "dsharp": {
@@ -31792,6 +31792,11 @@
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
             "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "providers/ToastProvider.tsx",
+            "since": "2026-06-04"
           }
         ],
         "schemaVersion": 2,
@@ -32126,9 +32131,9 @@
         "name": "ToastStack",
         "tier": "molecule",
         "group": "feedback",
-        "status": "alpha",
+        "status": "stable",
         "description": "Docked stack of transient toasts: renders Toast children inline and owns the fixed placement, newest toast nearest the docked edge, so concurrent messages stay visible instead of replacing each other.",
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1279-2105",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -32160,8 +32165,11 @@
             "each stacked Toast keeps its own live region (role=status or role=alert per tone) so concurrent messages announce independently",
             "the stack wrapper is presentational: no role, pointer-events none with interactive children restored"
           ],
-          "reviewed": false,
-          "forcedColorsVerified": false,
+          "reviewed": true,
+          "reviewedNote": "2026-07-12 — alpha→stable: the multi-toast surface behind the app ToastProvider (providers/ToastProvider.tsx → app/layout.tsx). position axis migrated to a root CVA (toastStackVariants). 4-mode AT (base/light/dark/forced-colors) captured for all four required stories; each stacked Toast keeps its own live region so concurrent messages announce independently; forced-colors + light/dark re-verified. Exported from @digitaltableteur/react.",
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true,
           "reducedMotion": true
         },
         "tokens": {
@@ -32171,8 +32179,19 @@
             "--space-layout-24"
           ]
         },
-        "lightDarkVerified": false,
-        "consumers": [],
+        "lightDarkVerified": true,
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "providers/ToastProvider.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "toasts": {
@@ -32282,9 +32301,33 @@
             "type": "string"
           }
         },
-        "variants": {},
-        "cvaVariants": {},
-        "variantsFnName": null,
+        "variants": {
+          "position": {
+            "values": [
+              "top-left",
+              "top-center",
+              "top-right",
+              "bottom-left",
+              "bottom-center",
+              "bottom-right"
+            ],
+            "default": "bottom-center"
+          }
+        },
+        "cvaVariants": {
+          "position": {
+            "values": [
+              "top-left",
+              "top-center",
+              "top-right",
+              "bottom-left",
+              "bottom-center",
+              "bottom-right"
+            ],
+            "default": "bottom-center"
+          }
+        },
+        "variantsFnName": "toastStackVariants",
         "useWhen": [
           "drive it from the app `ToastProvider` — `showToast` appends and the",
           "give every toast a stable `id`; dismissal and list identity depend on it."

@@ -15245,7 +15245,7 @@
       "name": "ToastStack",
       "group": "feedback",
       "tier": 2,
-      "status": "alpha",
+      "status": "stable",
       "description": "Docked stack of transient toasts: renders Toast children inline and owns the fixed placement, newest toast nearest the docked edge, so concurrent messages stay visible instead of replacing each other.",
       "dense": "docked flex stack of Toast (inline mode); toasts: {id,message,tone?,duration?,size?}[], 6 dock positions, max visible (default 5, oldest wait), onDismiss(id) on per-toast auto-dismiss",
       "keywords": [

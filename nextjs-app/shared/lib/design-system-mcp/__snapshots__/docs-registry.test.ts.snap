@@ -2067,6 +2067,27 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "group": "feedback",
     "import": "import Toast from "@dt/Toast";",
   },
+  "ToastStack": {
+    "exampleStories": [],
+    "fields": [
+      "composesWith",
+      "dense",
+      "description",
+      "examples",
+      "forbiddenUse",
+      "group",
+      "import",
+      "keywords",
+      "name",
+      "prefersOver",
+      "props",
+      "status",
+      "tokens",
+      "usage",
+    ],
+    "group": "feedback",
+    "import": "import ToastStack from "@dt/ToastStack";",
+  },
   "ValueCard": {
     "exampleStories": [],
     "fields": [
