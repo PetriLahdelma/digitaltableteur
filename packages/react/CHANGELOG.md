@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.14 - 2026-07-14
+
+- Adds the `useStreamingText(targetText, isStreaming, options)` hook (runtime public API 115 → 116): smooths bursty accumulated stream text into an adaptive, grapheme-safe reveal. `natural`/`fast`/`instant` speeds, reduced-motion bypass, completion snap when streaming ends, and clean reset when the accumulated target is replaced. RAF loop polls a ref for the latest target so new chunks are absorbed without re-subscribing. Exports `StreamingTextSpeed` and `UseStreamingTextOptions` types (#1191).
+- Pass the complete accumulated string on every update, not individual chunks; the hook controls display cadence only. Donny applies it to the currently streaming assistant reply, with the message log `aria-busy` during streaming so assistive tech does not announce partial chunks.
+- Verified by the full local gate (typecheck, lint, 2320 tests, build) plus check:react-package, check:react-public-api (116 exports), check:react-public-surface (0 alpha), and check:generated.
+
 ## 0.1.13 - 2026-07-13
 
 - `Link` now classifies protocol-relative cross-origin URLs (`//host/path`) as external: they receive the external indicator and `rel="noopener noreferrer"` instead of being mistaken for internal paths. Previously any href starting with `/` — including protocol-relative `//` — short-circuited as internal, so cross-origin `//evil.example/path` rendered without the external safeguards. Protocol-relative same-origin links stay internal; `mailto:`/`tel:` and disallowed protocols (neutralized to `#`) are unchanged; SSR (no `window`) still treats all http(s) absolutes as external. The two normalize + classify passes are consolidated into a single `analyzeHref` (#1187).
