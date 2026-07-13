@@ -17,8 +17,9 @@ guardrails, and its email-handoff flow — because every consumer of
   message bubble does nothing unless it carries an action; the
   email-workflow bubbles expose explicit buttons.
 - Screen readers: the toggle's `aria-expanded` reflects state. The
-  message log uses `role="log"` with polite live region so streamed
-  assistant messages announce incrementally without stealing focus.
+  message log uses `role="log"` with a polite live region and remains
+  `aria-busy` while a reply streams, so assistive technology receives
+  the completed response instead of repeated partial-text mutations.
 
 ## Do / don't
 - Do: mount once globally in the layout. The widget is designed for
@@ -60,3 +61,8 @@ guardrails, and its email-handoff flow — because every consumer of
   runs after every assistant response and can flip flags (e.g.
   "user is angry" or "user asked for human"). Flags drive UI
   decisions like surfacing the email-handoff prompt.
+- The active assistant text part consumes the public `useStreamingText`
+  utility. It smooths bursty accumulated chunks for sighted users,
+  preserves grapheme clusters, bypasses animation for reduced motion,
+  and snaps to the complete response when streaming ends. Historical
+  assistant messages and user messages never enter the reveal loop.

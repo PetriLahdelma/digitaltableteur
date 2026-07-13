@@ -30,7 +30,7 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "reviewedNote": "2026-07-14 — streaming display reviewed: only the active assistant reply uses grapheme-safe adaptive smoothing; reduced motion bypasses it and the polite message log remains aria-busy until the complete response is available.",
         "forcedColorsVerified": true
     },
     "tokens": {
@@ -75,6 +75,6 @@
     ],
     "dense": "Collapsible site assistant (Donny) chat widget: streaming replies, tool actions, i18n, mobile sheet behavior",
     "usage": {
-        "description": "The site's collapsible assistant widget: streaming chat with Donny, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
+        "description": "The site's collapsible assistant widget: streaming chat with Donny, grapheme-safe burst smoothing for the active reply, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
     }
 }

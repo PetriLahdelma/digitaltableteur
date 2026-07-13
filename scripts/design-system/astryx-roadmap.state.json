@@ -325,6 +325,7 @@
       "SkipLinkProps",
       "SpinnerProps",
       "StackProps",
+      "StreamingTextSpeed",
       "TextAreaProps",
       "ToastRuntime",
       "ToastRuntimeProviderProps",
@@ -332,6 +333,7 @@
       "TranslationOptions",
       "TranslationResourceBundle",
       "TranslationRuntime",
+      "UseStreamingTextOptions",
       "ValueCardProps",
       "VisuallyHiddenProps"
     ],

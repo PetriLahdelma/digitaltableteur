@@ -3101,7 +3101,7 @@
         "tamper with the email-workflow reducer state from outside."
       ],
       "usage": {
-        "description": "The site's collapsible assistant widget: streaming chat with Donny, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
+        "description": "The site's collapsible assistant widget: streaming chat with Donny, grapheme-safe burst smoothing for the active reply, tool-action buttons, localized UI, and mobile sheet behavior. One instance per page, mounted by the app shell."
       },
       "tokens": {
         "colors": [],

@@ -77,7 +77,7 @@ const smoke = run(
     "-e",
     [
       `const m = await import(${JSON.stringify(pathToFileURL(join(dist, "index.js")).href)});`,
-      "for (const key of ['AlertBanner','Breadcrumb','Button','Card','Container','CookieConsentProvider','ImageProvider','LayerProvider','LinkProvider','NavigationProvider','Progress','Tabs','TranslationProvider','useCookieConsent','useFocusTrap','useLayer','useMediaQuery','useOverflow','useScrollLock','useScrollOverflow','useToast','useTranslate']) { if (!m[key]) throw new Error(`missing public export: ${key}`); }",
+      "for (const key of ['AlertBanner','Breadcrumb','Button','Card','Container','CookieConsentProvider','ImageProvider','LayerProvider','LinkProvider','NavigationProvider','Progress','Tabs','TranslationProvider','useCookieConsent','useFocusTrap','useLayer','useMediaQuery','useOverflow','useScrollLock','useScrollOverflow','useStreamingText','useToast','useTranslate']) { if (!m[key]) throw new Error(`missing public export: ${key}`); }",
       `for (const key of ${JSON.stringify(forbiddenExports)}) { if (m[key]) throw new Error(\`forbidden app/product export leaked: \${key}\`); }`,
       "console.log(Object.keys(m).length);",
     ].join(" "),

@@ -107,6 +107,38 @@ describe("ChatMessages", () => {
       ).toBeInTheDocument();
     });
 
+    it("keeps completed assistant messages visible while only the latest reply streams", () => {
+      render(
+        withI18n(
+          <ChatMessages
+            messages={mockMessages}
+            isStreaming
+            emailWorkflow={{ step: "idle" }}
+          />,
+        ),
+      );
+
+      expect(screen.getByText("Hello! How can I help you?")).toBeInTheDocument();
+      expect(
+        screen.queryByText("We offer design, development, and content services."),
+      ).not.toBeInTheDocument();
+    });
+
+    it("does not restart the previous assistant message while a user submission waits", () => {
+      render(
+        withI18n(
+          <ChatMessages
+            messages={mockMessages.slice(0, 2)}
+            isStreaming
+            emailWorkflow={{ step: "idle" }}
+          />,
+        ),
+      );
+
+      expect(screen.getByText("Hello! How can I help you?")).toBeInTheDocument();
+      expect(screen.getByText("Tell me about your services.")).toBeInTheDocument();
+    });
+
     it("does not show streaming indicator when isStreaming is false", () => {
       render(
         withI18n(
@@ -119,6 +151,31 @@ describe("ChatMessages", () => {
       );
 
       expect(screen.queryByText("Thinking…")).not.toBeInTheDocument();
+    });
+
+    it("marks the live log busy until the response is complete", () => {
+      const { rerender } = render(
+        withI18n(
+          <ChatMessages
+            messages={mockMessages}
+            isStreaming
+            emailWorkflow={{ step: "idle" }}
+          />,
+        ),
+      );
+
+      expect(screen.getByRole("log")).toHaveAttribute("aria-busy", "true");
+
+      rerender(
+        withI18n(
+          <ChatMessages
+            messages={mockMessages}
+            isStreaming={false}
+            emailWorkflow={{ step: "idle" }}
+          />,
+        ),
+      );
+      expect(screen.getByRole("log")).toHaveAttribute("aria-busy", "false");
     });
   });
 

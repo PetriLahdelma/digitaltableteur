@@ -356,6 +356,11 @@ export {
   type ScrollOverflowState,
 } from "../../../nextjs-app/shared/hooks/useOverflow";
 export { useScrollLock } from "../../../nextjs-app/shared/hooks/useScrollLock";
+export {
+  useStreamingText,
+  type StreamingTextSpeed,
+  type UseStreamingTextOptions,
+} from "../../../nextjs-app/shared/hooks/useStreamingText";
 
 // ── Patterns ──────────────────────────────────────────────────────────────
 // Composite, page-level building blocks: the pattern rung of the
