@@ -21,7 +21,13 @@ jobs:
         env:
           NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
         run: bash .github/scripts/write-npm-read-config.sh
-      - run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci
+      # Force the @digitaltableteur scope to public npm on the CLI (highest config
+      # precedence, beats the runner's machine-global Verdaccio redirect at
+      # 100.77.151.86:4873, which lags newly published packages e.g. tokens-css@0.1.2).
+      # npm rewrites the lockfile's registry.npmjs.org tarball host to the configured
+      # scoped registry, so this keeps it on public npm — matching the lockfile
+      # integrity hashes and the check:package-registry-resolution contract.
+      - run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci --@digitaltableteur:registry=https://registry.npmjs.org/
       - run: npm run build:tokens
       - run: npm run check:contract-drift -- --strict
       - run: npm run check:contract-props
