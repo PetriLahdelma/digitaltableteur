@@ -1,7 +1,20 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import postcss from "postcss";
 import Grid from "@dt/Grid";
+
+const here = dirname(fileURLToPath(import.meta.url));
+
+const normalizeCssValue = (value: string | undefined) =>
+  value
+    ?.replace(/\s+/g, " ")
+    .replace(/\(\s+/g, "(")
+    .replace(/\s+\)/g, ")")
+    .trim();
 
 describe("Grid", () => {
   it("renders children", () => {
@@ -120,5 +133,67 @@ describe("Grid", () => {
       "200px 1fr",
     );
     expect(grid.style.getPropertyValue("--grid-cols-tablet")).toBe("");
+  });
+
+  it("locks responsive breakpoints and sparse-rung CSS fallbacks", () => {
+    const css = postcss.parse(
+      readFileSync(join(here, "Grid.module.css"), "utf8"),
+    );
+    const expected = [
+      {
+        query: "(width >= 768px)",
+        columns: "var(--grid-cols-tablet, var(--grid-cols))",
+        gap: "var(--grid-gap-tablet, var(--grid-gap))",
+      },
+      {
+        query: "(width >= 1024px)",
+        columns:
+          "var(--grid-cols-desktop, var(--grid-cols-tablet, var(--grid-cols)))",
+        gap: "var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)))",
+      },
+      {
+        query: "(width >= 1440px)",
+        columns:
+          "var(--grid-cols-wide, var(--grid-cols-desktop, var(--grid-cols-tablet, var(--grid-cols))))",
+        gap: "var(--grid-gap-wide, var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap))))",
+      },
+      {
+        query: "(width >= 1920px)",
+        columns:
+          "var(--grid-cols-ultra, var(--grid-cols-wide, var(--grid-cols-desktop, var(--grid-cols-tablet, var(--grid-cols)))))",
+        gap: "var(--grid-gap-ultra, var(--grid-gap-wide, var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)))))",
+      },
+    ];
+
+    const mediaQueries = css.nodes.filter(
+      (node) =>
+        node.type === "atrule" &&
+        node.name === "media" &&
+        node.nodes?.some(
+          (child) => child.type === "rule" && child.selector === ".responsive",
+        ),
+    );
+    expect(mediaQueries.map((query) => query.params)).toEqual(
+      expected.map(({ query }) => query),
+    );
+
+    for (const expectedRung of expected) {
+      const media = mediaQueries.find(
+        (query) => query.params === expectedRung.query,
+      );
+      const responsiveRule = media?.nodes?.find(
+        (node) => node.type === "rule" && node.selector === ".responsive",
+      );
+      const declarations = Object.fromEntries(
+        (responsiveRule?.nodes ?? [])
+          .filter((node) => node.type === "decl")
+          .map((declaration) => [declaration.prop, declaration.value]),
+      );
+
+      expect(normalizeCssValue(declarations["grid-template-columns"])).toBe(
+        expectedRung.columns,
+      );
+      expect(normalizeCssValue(declarations.gap)).toBe(expectedRung.gap);
+    }
   });
 });

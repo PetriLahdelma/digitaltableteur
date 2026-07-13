@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T09:00:54.945Z",
+  "generatedAt": "2026-07-13T09:52:29.167Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -4142,7 +4142,7 @@
     },
     "Grid": {
       "preferredImport": "@dt/Grid",
-      "intent": "Documents how **Grid** is used in production layouts and Storybook examples.",
+      "intent": "Use **Grid** for two-dimensional layouts whose rows and columns both matter. Numeric columns create equal tracks; template strings describe asymmetric tracks. Use Stack or FlexBox for single-axis flow.",
       "props": {
         "children": {
           "optional": false,
@@ -4285,10 +4285,12 @@
       "cvaVariants": {},
       "variantsFnName": null,
       "useWhen": [
-        "Match the **Example** story composition on Grid pages."
+        "Use responsive props on Grid instead of creating page-specific grid wrappers or duplicating token breakpoints in consumer stylesheets.",
+        "Wrap only spanning children in `Grid.Item` with `span` or `rowSpan`."
       ],
       "avoidWhen": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Replace the flat responsive props with object syntax; the flat API is the published compatibility boundary.",
+        "Size grid cells with child widths or use Grid for a one-dimensional sequence."
       ],
       "requiredA11y": [],
       "keyboard": [],
@@ -4303,7 +4305,8 @@
         "manual CSS grid with arbitrary gap literals"
       ],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Replace the flat responsive props with object syntax; the flat API is the published compatibility boundary.",
+        "Size grid cells with child widths or use Grid for a one-dimensional sequence."
       ],
       "composesWith": [
         "FlexBox",

@@ -87,7 +87,7 @@ export type { FileUploadProps } from "./FileUpload/FileUpload";
 export { default as Gallery } from "./Gallery/Gallery";
 export type { GalleryProps } from "./Gallery";
 export { default as Grid } from "./Grid/Grid";
-export type { GridProps } from "./Grid/Grid";
+export type { GridItemProps, GridProps } from "./Grid/Grid";
 export { default as GroupLabel } from "./GroupLabel/GroupLabel";
 export type { GroupLabelProps } from "./GroupLabel/GroupLabel";
 export { default as Icon } from "./Icon/Icon";

@@ -6535,8 +6535,8 @@
       "group": "layout",
       "tier": 1,
       "status": "stable",
-      "description": "CSS grid layout primitive with tokenized gaps.",
-      "dense": "CSS-grid wrapper: numeric columns for equal tracks or template strings; gap/rowGap/colGap strings; Grid.Item adds span/rowSpan; extra grid CSS props pass through via style",
+      "description": "CSS grid layout primitive with scalar and token-breakpoint responsive columns and gaps.",
+      "dense": "CSS-grid wrapper with scalar or 768/1024/1440/1920 responsive columns and gaps; numeric responsive tracks use minmax(0, 1fr); Grid.Item adds spans",
       "keywords": [
         "grid",
         "columns",
@@ -6704,7 +6704,7 @@
         "Size cells by styling children with widths; spans and templates belong on the grid, not in the card."
       ],
       "usage": {
-        "description": "Grid is the two-dimensional layout primitive: pass `columns` as a number for equal tracks or a template string for custom ones, gaps as CSS strings (prefer space tokens), and wrap children needing to span in `Grid.Item` with `span`/`rowSpan`. Reach for it when both axes matter — card walls, media mosaics, dashboard modules; single-axis flows are Stack/FlexBox territory.",
+        "description": "Grid is the two-dimensional layout primitive: pass `columns` as a number for equal tracks or a template string for custom ones, then add `tabletColumns`/`desktopColumns`/`wideColumns`/`ultraColumns` and matching gap props when the layout changes at the 768/1024/1440/1920 token breakpoints. Sparse responsive values inherit through the previous rung, and numeric responsive tracks use `minmax(0, 1fr)`. Wrap children needing to span in `Grid.Item` with `span`/`rowSpan`; use Stack or FlexBox when only one axis matters.",
         "bestPractices": [
           {
             "guidance": true,
@@ -6717,6 +6717,10 @@
           {
             "guidance": true,
             "description": "Set gaps with space tokens (\"var(--space-layout-24)\") so grid gutters follow the page rhythm."
+          },
+          {
+            "guidance": true,
+            "description": "Set only the responsive rungs that change; omitted tablet, desktop, wide, or ultra values inherit through the previous rung."
           },
           {
             "guidance": true,
@@ -6762,7 +6766,7 @@
         {
           "story": "ResponsiveColumns",
           "description": "Per-breakpoint columns and gaps: tabletColumns/desktopColumns/wideColumns/ultraColumns and the matching Gap props resolve at the design-token breakpoints (768 / 1024 / 1440 / 1920px), each falling back through the previous rung. Resize the viewport to see the tracks change. Numeric responsive counts render as minmax(0, 1fr) tracks so cells can shrink below content width.",
-          "source": "export const ResponsiveColumns: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Per-breakpoint columns and gaps: tabletColumns/desktopColumns/wideColumns/ultraColumns and the matching Gap props resolve at the design-token breakpoints (768 / 1024 / 1440 / 1920px), each falling back through the previous rung. Resize the viewport to see the tracks change. Numeric responsive counts render as minmax(0, 1fr) tracks so cells can shrink below content width.\" } },\n  },\n  render: () => (\n    <Grid\n      columns={1}\n      tabletColumns={2}\n      desktopColumns={3}\n      wideColumns={4}\n      ultraColumns={6}\n      gap=\"1.25rem\"\n      tabletGap=\"2rem\"\n      desktopGap=\"2.5rem\"\n      wideGap=\"3rem\"\n    >\n      {Array.from({ length: 6 }, (_, i) => (\n        <div key={i} style={{ border: \"1px dashed var(--color-border, #999)\", padding: \"1rem\", textAlign: \"center\" }}>\n          Cell {i + 1}\n        </div>\n      ))}\n    </Grid>\n  ),\n};\n\n/** A template string when tracks genuinely differ — sidebar plus content here. */"
+          "source": "export const ResponsiveColumns: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Per-breakpoint columns and gaps: tabletColumns/desktopColumns/wideColumns/ultraColumns and the matching Gap props resolve at the design-token breakpoints (768 / 1024 / 1440 / 1920px), each falling back through the previous rung. Resize the viewport to see the tracks change. Numeric responsive counts render as minmax(0, 1fr) tracks so cells can shrink below content width.\" } },\n  },\n  render: () => (\n    <Grid\n      columns={1}\n      tabletColumns={2}\n      desktopColumns={3}\n      wideColumns={4}\n      ultraColumns={6}\n      gap=\"1.25rem\"\n      tabletGap=\"2rem\"\n      desktopGap=\"2.5rem\"\n      wideGap=\"3rem\"\n      ultraGap=\"4rem\"\n    >\n      {Array.from({ length: 6 }, (_, i) => (\n        <div key={i} style={{ border: \"1px dashed var(--color-border, #999)\", padding: \"1rem\", textAlign: \"center\" }}>\n          Cell {i + 1}\n        </div>\n      ))}\n    </Grid>\n  ),\n};\n\n/** A template string when tracks genuinely differ — sidebar plus content here. */"
         },
         {
           "story": "CustomTemplate",

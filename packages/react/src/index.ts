@@ -115,7 +115,10 @@ export {
 export { default as Gallery } from "../../../nextjs-app/shared/components/Gallery/Gallery";
 export type { GalleryProps } from "../../../nextjs-app/shared/components/Gallery";
 export { default as Grid } from "../../../nextjs-app/shared/components/Grid/Grid";
-export type { GridProps } from "../../../nextjs-app/shared/components/Grid/Grid";
+export type {
+  GridItemProps,
+  GridProps,
+} from "../../../nextjs-app/shared/components/Grid/Grid";
 export { default as GroupLabel } from "../../../nextjs-app/shared/components/GroupLabel/GroupLabel";
 export type { GroupLabelProps } from "../../../nextjs-app/shared/components/GroupLabel/GroupLabel";
 export { default as HelperText } from "../../../nextjs-app/shared/components/HelperText/HelperText";
