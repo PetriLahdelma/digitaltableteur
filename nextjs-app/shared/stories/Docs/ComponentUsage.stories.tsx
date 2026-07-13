@@ -25,7 +25,21 @@ type UsageSummary = {
   transitiveConsumedCount: number;
 };
 
-type SortKey = "name" | "directImportCount" | "prodPageCount";
+type SortKey =
+  | "name"
+  | "kind"
+  | "status"
+  | "exported"
+  | "directImportCount"
+  | "prodPageCount";
+
+const NUMERIC_SORT_KEYS: SortKey[] = [
+  "exported",
+  "directImportCount",
+  "prodPageCount",
+];
+
+const statusLabel = (status: string | null) => status ?? "—";
 
 const report = usageReport as {
   generatedAt: string;
@@ -54,20 +68,89 @@ const computeSummary = (): UsageSummary => {
 };
 const summary = report.summary ?? computeSummary();
 
+const KIND_OPTIONS = Array.from(new Set(rows.map((row) => row.kind))).sort();
+const STATUS_OPTIONS = Array.from(
+  new Set(rows.map((row) => statusLabel(row.status))),
+).sort((a, b) => (a === "—" ? 1 : b === "—" ? -1 : a.localeCompare(b)));
+
 const ComponentUsageContent = () => {
+  const [query, setQuery] = useState("");
+  const [kind, setKind] = useState("all");
+  const [status, setStatus] = useState("all");
+  const [inPackage, setInPackage] = useState<"all" | "in" | "out">("all");
   const [sortKey, setSortKey] = useState<SortKey>("directImportCount");
-  const [onlyUnused, setOnlyUnused] = useState(false);
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
 
   const sorted = useMemo(() => {
-    const filtered = onlyUnused
-      ? rows.filter((row) => row.directImportCount === 0)
-      : rows;
-    return [...filtered].sort((a, b) =>
-      sortKey === "name"
-        ? a.name.localeCompare(b.name)
-        : b[sortKey] - a[sortKey] || a.name.localeCompare(b.name),
-    );
-  }, [sortKey, onlyUnused]);
+    const sortValue = (row: UsageRow): string | number => {
+      switch (sortKey) {
+        case "name":
+          return row.name.toLowerCase();
+        case "kind":
+          return row.kind;
+        case "status":
+          return statusLabel(row.status);
+        case "exported":
+          return row.exported ? 1 : 0;
+        default:
+          return row[sortKey];
+      }
+    };
+    const q = query.trim().toLowerCase();
+    const filtered = rows.filter((row) => {
+      if (kind !== "all" && row.kind !== kind) return false;
+      if (status !== "all" && statusLabel(row.status) !== status) return false;
+      if (inPackage === "in" && !row.exported) return false;
+      if (inPackage === "out" && row.exported) return false;
+      if (q) {
+        const haystack = [row.name, ...row.directImporters]
+          .join(" ")
+          .toLowerCase();
+        if (!haystack.includes(q)) return false;
+      }
+      return true;
+    });
+    const dir = sortDir === "asc" ? 1 : -1;
+    return filtered.sort((a, b) => {
+      const av = sortValue(a);
+      const bv = sortValue(b);
+      let cmp =
+        typeof av === "number" && typeof bv === "number"
+          ? av - bv
+          : String(av).localeCompare(String(bv));
+      if (cmp === 0) cmp = a.name.localeCompare(b.name);
+      return cmp * dir;
+    });
+  }, [query, kind, status, inPackage, sortKey, sortDir]);
+
+  const toggleSort = (key: SortKey) => {
+    if (key === sortKey) {
+      setSortDir((dir) => (dir === "asc" ? "desc" : "asc"));
+      return;
+    }
+    setSortKey(key);
+    setSortDir(NUMERIC_SORT_KEYS.includes(key) ? "desc" : "asc");
+  };
+
+  const sortableHeader = (label: string, key: SortKey) => (
+    <th aria-sort={sortKey === key ? (sortDir === "asc" ? "ascending" : "descending") : "none"}>
+      <button
+        type="button"
+        className={styles.sortHeader}
+        onClick={() => toggleSort(key)}
+      >
+        {label}
+        <span
+          className={
+            sortKey === key ? styles.sortIndicator : styles.sortIndicatorIdle
+          }
+          aria-hidden="true"
+        >
+          {sortKey === key ? (sortDir === "asc" ? "▲" : "▼") : "↕"}
+        </span>
+      </button>
+    </th>
+  );
 
   return (
     <article className={styles.wrapper}>
@@ -90,7 +173,7 @@ const ComponentUsageContent = () => {
             <h3>{summary.governedCount}</h3>
             <p>
               Governed components{" "}
-              <span style={{ opacity: 0.6 }}>
+              <span className={styles.subtle}>
                 (of {summary.catalogCount} catalog entries)
               </span>
             </p>
@@ -137,36 +220,86 @@ const ComponentUsageContent = () => {
       </section>
 
       <section className={styles.section}>
-        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-          <label>
-            Sort by{" "}
-            <select
-              value={sortKey}
-              onChange={(event) => setSortKey(event.target.value as SortKey)}
-            >
-              <option value="directImportCount">direct imports</option>
-              <option value="prodPageCount">prod pages</option>
-              <option value="name">name</option>
-            </select>
-          </label>
-          <label>
+        <div className={styles.usageControls}>
+          <div className={`${styles.usageControl} ${styles.usageControlGrow}`}>
+            <label className={styles.usageControlLabel} htmlFor="usage-search">
+              Search
+            </label>
             <input
-              type="checkbox"
-              checked={onlyUnused}
-              onChange={(event) => setOnlyUnused(event.target.checked)}
-            />{" "}
-            only zero-import components
-          </label>
+              id="usage-search"
+              type="search"
+              className={styles.usageInput}
+              placeholder="Component name or importer path…"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+            />
+          </div>
+          <div className={styles.usageControl}>
+            <label className={styles.usageControlLabel} htmlFor="usage-kind">
+              Kind
+            </label>
+            <select
+              id="usage-kind"
+              className={styles.usageSelect}
+              value={kind}
+              onChange={(event) => setKind(event.target.value)}
+            >
+              <option value="all">All kinds</option>
+              {KIND_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.usageControl}>
+            <label className={styles.usageControlLabel} htmlFor="usage-status">
+              Status
+            </label>
+            <select
+              id="usage-status"
+              className={styles.usageSelect}
+              value={status}
+              onChange={(event) => setStatus(event.target.value)}
+            >
+              <option value="all">All statuses</option>
+              {STATUS_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.usageControl}>
+            <label className={styles.usageControlLabel} htmlFor="usage-package">
+              In package
+            </label>
+            <select
+              id="usage-package"
+              className={styles.usageSelect}
+              value={inPackage}
+              onChange={(event) =>
+                setInPackage(event.target.value as "all" | "in" | "out")
+              }
+            >
+              <option value="all">Any</option>
+              <option value="in">Exported</option>
+              <option value="out">Not exported</option>
+            </select>
+          </div>
         </div>
+        <p className={styles.resultCount}>
+          {sorted.length} of {rows.length} components
+        </p>
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Component</th>
-              <th>Kind</th>
-              <th>Status</th>
-              <th>In package</th>
-              <th>Direct imports</th>
-              <th>Prod pages</th>
+              {sortableHeader("Component", "name")}
+              {sortableHeader("Kind", "kind")}
+              {sortableHeader("Status", "status")}
+              {sortableHeader("In package", "exported")}
+              {sortableHeader("Direct imports", "directImportCount")}
+              {sortableHeader("Prod pages", "prodPageCount")}
               <th>Importers</th>
             </tr>
           </thead>
