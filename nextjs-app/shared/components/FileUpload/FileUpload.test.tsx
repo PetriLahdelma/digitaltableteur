@@ -66,6 +66,32 @@ describe("FileUpload", () => {
     expect(textField.value).toContain("hello.pdf");
   });
 
+  it("synchronizes the displayed file when controlled value changes", () => {
+    const initialFile = new File(["first"], "first.pdf", {
+      type: "application/pdf",
+    });
+    const replacementFile = new File(["second"], "second.pdf", {
+      type: "application/pdf",
+    });
+    const { rerender } = renderComponent({ value: initialFile });
+    const textField = screen.getByLabelText(/attachment/i) as HTMLInputElement;
+
+    expect(textField.value).toContain("first.pdf");
+
+    rerender(
+      <FileUpload
+        label="Attachment"
+        placeholder="Select a file"
+        uploadButtonLabel="Choose file"
+        clearButtonLabel="Remove"
+        helperText="Max 5 MB"
+        value={replacementFile}
+      />,
+    );
+
+    expect(textField.value).toContain("second.pdf");
+  });
+
   it("shows error when file exceeds max size", () => {
     const handleChange = vi.fn();
     const { container } = renderComponent({

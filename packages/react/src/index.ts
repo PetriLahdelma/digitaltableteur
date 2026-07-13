@@ -166,7 +166,11 @@ export type {
   MenuTriggerProps,
 } from "../../../nextjs-app/shared/components/Menu";
 export { default as Modal } from "../../../nextjs-app/shared/components/Modal/Modal";
-export type { ModalProps, ModalSeverity } from "../../../nextjs-app/shared/components/Modal/Modal";
+export type {
+  ModalAnimation,
+  ModalProps,
+  ModalSeverity,
+} from "../../../nextjs-app/shared/components/Modal/Modal";
 export {
   MultiCombobox,
   type MultiComboboxOption,
@@ -215,6 +219,7 @@ export type {
   SelectProps,
 } from "../../../nextjs-app/shared/components/Select/Select";
 export { default as SelectOption } from "../../../nextjs-app/shared/components/Select/SelectOption";
+export type { SelectOptionProps } from "../../../nextjs-app/shared/components/Select/SelectOption";
 export {
   SelectableCard,
   SelectableCardGroup,

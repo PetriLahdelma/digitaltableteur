@@ -148,6 +148,7 @@ describe("SplitButton", () => {
 
   it("closes the menu on Escape", async () => {
     render(<SplitButton label="Save" options={[{ label: "Save as draft" }]} />);
+    const toggle = screen.getAllByRole("button")[1];
 
     await openMenu();
     expect(
@@ -156,6 +157,7 @@ describe("SplitButton", () => {
 
     await userEvent.keyboard("{Escape}");
     expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    expect(toggle).toHaveFocus();
   });
 
   it("applies custom className to the wrapper", () => {
