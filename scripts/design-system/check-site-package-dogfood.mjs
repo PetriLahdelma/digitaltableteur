@@ -156,8 +156,21 @@ async function main() {
             (await page.getByRole("heading", { name: textPattern(homeSelectedWork) }).count()) > 0,
             `home selected-work heading is localized: ${homeSelectedWork}`,
           );
+          // Since NavLink 0.1.9 the active same-path item renders as a
+          // non-interactive <span aria-current="page">, so on "/" the Home
+          // label is a current-page marker, not a link.
+          const headerNav = page.getByRole("navigation", {
+            name: textPattern(tr(language, "navMenuAccessibleLabel")),
+          });
+          const homeAsLink = await headerNav
+            .getByRole("link", { name: textPattern(navHome) })
+            .count();
+          const homeAsCurrent = await headerNav
+            .locator('[aria-current="page"]')
+            .filter({ hasText: textPattern(navHome) })
+            .count();
           assert(
-            (await page.getByRole("link", { name: textPattern(navHome) }).count()) > 0,
+            homeAsLink + homeAsCurrent > 0,
             `site header home label is localized: ${navHome}`,
           );
           return { summary: await pageSummary(page) };
@@ -208,12 +221,14 @@ async function main() {
           });
           await nav.getByRole("link", { name: textPattern(navWork) }).click();
           await page.waitForURL("**/work", { timeout: 15_000 });
+          // Since NavLink 0.1.9 the now-active Work item re-renders as a
+          // non-interactive <span aria-current="page"> instead of a link.
           const activeWork = nav
-            .getByRole("link", { name: textPattern(navWork) })
-            .first();
+            .locator('[aria-current="page"]')
+            .filter({ hasText: textPattern(navWork) });
           assert(
-            (await activeWork.getAttribute("aria-current")) === "page",
-            "SiteHeader Work link routes through the injected link runtime and marks aria-current",
+            (await activeWork.count()) > 0,
+            "SiteHeader Work link routes through the injected link runtime and marks the current page",
           );
           return { summary: await pageSummary(page) };
         },
