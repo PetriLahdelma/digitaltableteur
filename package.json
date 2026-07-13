@@ -188,7 +188,7 @@
   },
   "dependencies": {
     "@ai-sdk/mcp": "^1.0.51",
-    "@ai-sdk/openai": "^3.0.71",
+    "@ai-sdk/openai": "^4.0.11",
     "@ai-sdk/react": "^3.0.207",
     "@calcom/embed-react": "^1.5.3",
     "@digitaltableteur/react": "^0.1.12",
