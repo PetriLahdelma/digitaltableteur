@@ -93,6 +93,22 @@ describe("Toast", () => {
     expect(container.querySelector("[aria-hidden='true']")).toBeInTheDocument();
   });
 
+  it("lets inline placement override a fixed position", () => {
+    render(
+      <Toast message="Stacked" open inline position="top-left" />,
+    );
+    const toast = screen.getByRole("status");
+    expect(toast.className).toContain("toast--inline");
+    expect(toast.className).not.toContain("toast--top-left");
+  });
+
+  it("applies non-default size and fixed position", () => {
+    render(<Toast message="Placed" open size="lg" position="top-right" />);
+    const toast = screen.getByRole("status");
+    expect(toast.className).toContain("toast--lg");
+    expect(toast.className).toContain("toast--top-right");
+  });
+
   it("clears timer when component unmounts", () => {
     const onClose = vi.fn();
     const { unmount } = render(
