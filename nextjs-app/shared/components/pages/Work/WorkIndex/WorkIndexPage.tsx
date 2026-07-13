@@ -6,11 +6,9 @@ import {
   CategoryFilter,
   Container,
   EmptyState,
+  Grid,
   Section,
 } from "@digitaltableteur/react";
-// Grid stays a local import until its responsive props ship in the next
-// package release; flip to the barrel with that consume.
-import Grid from "@dt/Grid";
 import { WorkHero } from "../../../../patterns/WorkHero";
 import { EnhancedProjectCard } from "../../../EnhancedProjectCard";
 import { FadeIn } from "../../../../components/animations/FadeIn";

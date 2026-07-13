@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T09:52:29.167Z",
+  "generatedAt": "2026-07-13T10:30:10.002Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -13478,10 +13478,7 @@
         "invent parallel primitives inside this folder",
         "promote to stable without production consumer evidence"
       ],
-      "composesWith": [
-        "Grid",
-        "animations"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 4
     },
