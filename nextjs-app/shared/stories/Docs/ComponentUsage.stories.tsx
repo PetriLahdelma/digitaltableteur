@@ -98,7 +98,7 @@ const StatCard = ({
   children: React.ReactNode;
 }) => (
   <Card variant="default" padding="md">
-    <Title size="xl" className={styles.statFigure}>
+    <Title size="m" className={styles.statFigure}>
       {figure}
     </Title>
     <Text size="s" className={styles.statLabel}>
