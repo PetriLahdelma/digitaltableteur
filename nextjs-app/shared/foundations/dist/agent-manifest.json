@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-13T09:00:57.891Z",
+  "generatedAt": "2026-07-13T09:13:35.743Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -25199,7 +25199,7 @@
         },
         "forbiddenUse": [
           "Use for a value or principle without a link/CTA — that is ValueCard.",
-          "Place outside a ServicesGrid; the tile is sized and gapped by that grid."
+          "Place outside the ServicesSection grid; the tile is sized and gapped by that section."
         ],
         "displayName": "ServiceCard",
         "keywords": [
@@ -25210,7 +25210,7 @@
         ],
         "dense": "Service tile: icon, title, description, optional link; services-grid unit",
         "usage": {
-          "description": "Tile for one service offering — icon, title, short description, optional link. Renders inside ServicesGrid."
+          "description": "Tile for one service offering — icon, title, short description, optional link. Renders inside the ServicesSection pattern's grid."
         }
       },
       "spec": "# ServiceCard\n\n## Intent\nDocuments how **ServiceCard** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on ServiceCard pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
