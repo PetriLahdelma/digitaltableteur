@@ -18,7 +18,7 @@ describe("Link", () => {
     expect(linkElement.className).not.toContain("underlineHover");
   });
 
-  it("adds the hover modifier for underline=\"hover\"", () => {
+  it('adds the hover modifier for underline="hover"', () => {
     render(
       <Link href="/test" underline="hover">
         Test Link
@@ -29,7 +29,7 @@ describe("Link", () => {
     expect(linkElement.className).toContain("underlineHover");
   });
 
-  it("omits the underline classes for underline=\"none\"", () => {
+  it('omits the underline classes for underline="none"', () => {
     render(
       <Link href="/test" underline="none">
         Test Link
@@ -40,7 +40,7 @@ describe("Link", () => {
     expect(linkElement.className).not.toContain("underlineHover");
   });
 
-  it("size=\"inherit\" follows the surrounding text size", () => {
+  it('size="inherit" follows the surrounding text size', () => {
     render(
       <p style={{ fontSize: "13px" }}>
         <Link href="mailto:a@b.c" size="inherit">
@@ -67,9 +67,32 @@ describe("Link", () => {
     // it just shows an external icon
   });
 
+  it("treats protocol-relative cross-origin URLs as external", () => {
+    render(<Link href="//external.example/docs">External Link</Link>);
+    const linkElement = screen.getByRole("link");
+
+    expect(linkElement).toHaveAttribute("href", "//external.example/docs");
+    expect(linkElement).toHaveAttribute("rel", "noopener noreferrer");
+    expect(
+      linkElement.querySelector('[data-icon-name="arrow-square-out"]'),
+    ).toBeInTheDocument();
+  });
+
+  it("keeps protocol-relative same-origin URLs internal", () => {
+    render(<Link href={`//${window.location.host}/docs`}>Internal Link</Link>);
+    const linkElement = screen.getByRole("link");
+
+    expect(linkElement).not.toHaveAttribute("rel");
+    expect(
+      linkElement.querySelector('[data-icon-name="arrow-square-out"]'),
+    ).not.toBeInTheDocument();
+  });
+
   it("keeps trusted internal absolute URLs", () => {
     render(
-      <Link href="https://www.digitaltableteur.com/work">Internal absolute</Link>,
+      <Link href="https://www.digitaltableteur.com/work">
+        Internal absolute
+      </Link>,
     );
     expect(screen.getByRole("link")).toHaveAttribute(
       "href",

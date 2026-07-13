@@ -2,8 +2,7 @@ import React from "react";
 import styles from "./Link.module.css";
 import Icon from "@dt/Icon";
 
-export interface LinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   /** Size. @default "md" */
   size?: "sm" | "md" | "lg" | "inherit";
   /**
@@ -17,76 +16,49 @@ export interface LinkProps
 const ALLOWED_PROTOCOLS = new Set(["http:", "https:", "mailto:", "tel:"]);
 const URL_PARSE_BASE = "https://example.invalid";
 
+type LinkDecision = {
+  normalizedHref: string;
+  isExternal: boolean;
+};
+
 function getCurrentOrigin(): string | null {
   return typeof window !== "undefined" && window.location.origin
     ? window.location.origin
     : null;
 }
 
-function getUrlParseBase(): string {
-  return getCurrentOrigin() ?? URL_PARSE_BASE;
-}
-
-function normalizeHref(href: string): string {
+function analyzeHref(href: string, currentOrigin: string | null): LinkDecision {
   const trimmedHref = href.trim();
 
   if (!trimmedHref) {
-    return "#";
+    return { normalizedHref: "#", isExternal: false };
   }
 
   if (
-    trimmedHref.startsWith("/") ||
+    (trimmedHref.startsWith("/") && !trimmedHref.startsWith("//")) ||
     trimmedHref.startsWith("./") ||
     trimmedHref.startsWith("../") ||
     trimmedHref.startsWith("?") ||
     trimmedHref.startsWith("#")
   ) {
-    return trimmedHref;
+    return { normalizedHref: trimmedHref, isExternal: false };
   }
 
   try {
-    const parsed = new URL(trimmedHref, getUrlParseBase());
+    const base = currentOrigin ?? URL_PARSE_BASE;
+    const parsed = new URL(trimmedHref, base);
 
     if (!ALLOWED_PROTOCOLS.has(parsed.protocol)) {
-      return "#";
+      return { normalizedHref: "#", isExternal: false };
     }
 
-    return trimmedHref;
+    const isHttp = parsed.protocol === "http:" || parsed.protocol === "https:";
+    const isExternal =
+      isHttp && (!currentOrigin || parsed.origin !== new URL(base).origin);
+
+    return { normalizedHref: trimmedHref, isExternal };
   } catch {
-    return "#";
-  }
-}
-
-function isExternalHref(href: string): boolean {
-  if (!href || href === "#") {
-    return false;
-  }
-
-  if (
-    href.startsWith("/") ||
-    href.startsWith("./") ||
-    href.startsWith("../") ||
-    href.startsWith("?") ||
-    href.startsWith("#")
-  ) {
-    return false;
-  }
-
-  try {
-    const parsed = new URL(href, getUrlParseBase());
-
-    if (!ALLOWED_PROTOCOLS.has(parsed.protocol)) {
-      return false;
-    }
-
-    if (parsed.protocol === "mailto:" || parsed.protocol === "tel:") {
-      return false;
-    }
-
-    const currentOrigin = getCurrentOrigin();
-    return currentOrigin ? parsed.origin !== currentOrigin : true;
-  } catch {
-    return false;
+    return { normalizedHref: "#", isExternal: false };
   }
 }
 
@@ -136,10 +108,9 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
     },
     ref,
   ) => {
-    const normalizedHref = React.useMemo(() => normalizeHref(href), [href]);
-    const isExternal = React.useMemo(
-      () => isExternalHref(normalizedHref),
-      [normalizedHref],
+    const { normalizedHref, isExternal } = React.useMemo(
+      () => analyzeHref(href, getCurrentOrigin()),
+      [href],
     );
     const hasTextContent = React.useMemo(
       () => extractTextContent(children).trim().length > 0,
