@@ -14888,7 +14888,7 @@
       "group": "display",
       "tier": 2,
       "status": "stable",
-      "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+      "description": "Formats an ISO calendar date, instant, Unix timestamp, or Date into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Date-only values retain their calendar date across runtime timezones.",
       "dense": "",
       "keywords": [],
       "importLine": "import Timestamp from \"@dt/Timestamp\";",

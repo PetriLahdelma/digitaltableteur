@@ -4,7 +4,7 @@
     "tier": "atom",
     "group": "display",
     "status": "stable",
-    "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+    "description": "Formats an ISO calendar date, instant, Unix timestamp, or Date into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Date-only values retain their calendar date across runtime timezones.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1297-3064",
     "radixPrimitive": null,
     "element": "time",
@@ -44,7 +44,7 @@
     "a11y": {
         "keyboard": [],
         "ariaRequirements": [
-            "Renders a semantic <time> element with a machine-readable dateTime attribute.",
+            "Renders a semantic <time> element with a machine-readable dateTime attribute that preserves date-only versus instant precision.",
             "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
         ],
         "reducedMotion": true,

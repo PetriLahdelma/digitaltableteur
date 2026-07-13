@@ -24,7 +24,7 @@ export type TimestampFormat =
 export type TimestampSize = "xxs" | "xs" | "s" | "m";
 
 export interface TimestampProps {
-  /** The date/time to display: ISO 8601 string, Unix seconds, or Date. */
+  /** The date/time to display: ISO 8601 calendar date or instant, Unix seconds, or Date. */
   value: string | number | Date;
   /** Display format. @default "auto" */
   format?: TimestampFormat;
@@ -61,13 +61,65 @@ const SIZE_CLASS: Record<TimestampSize, string> = {
   m: styles.sizeM,
 };
 
-const toDate = (value: string | number | Date): Date => {
-  if (value instanceof Date) return value;
-  if (typeof value === "number") {
-    // Unix seconds (Astryx convention); treat obviously-millisecond values as ms.
-    return new Date(value > 1e12 ? value : value * 1000);
+type ParsedTimestamp = {
+  date: Date;
+  dateTime: string | undefined;
+};
+
+const ISO_CALENDAR_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
+const MAX_FOUR_DIGIT_UNIX_SECONDS = 253_402_300_799;
+
+const invalidTimestamp = (): ParsedTimestamp => ({
+  date: new Date(Number.NaN),
+  dateTime: undefined,
+});
+
+const parseTimestampValue = (
+  value: string | number | Date,
+): ParsedTimestamp => {
+  if (value instanceof Date) {
+    return Number.isNaN(value.getTime())
+      ? invalidTimestamp()
+      : { date: value, dateTime: value.toISOString() };
   }
-  return new Date(value);
+
+  if (typeof value === "number") {
+    if (!Number.isFinite(value)) return invalidTimestamp();
+
+    const epochMs =
+      Math.abs(value) <= MAX_FOUR_DIGIT_UNIX_SECONDS ? value * 1000 : value;
+    const date = new Date(epochMs);
+    return Number.isNaN(date.getTime())
+      ? invalidTimestamp()
+      : { date, dateTime: date.toISOString() };
+  }
+
+  const normalizedValue = value.trim();
+  if (!normalizedValue) return invalidTimestamp();
+
+  const calendarDate = ISO_CALENDAR_DATE.exec(normalizedValue);
+  if (calendarDate) {
+    const year = Number(calendarDate[1]);
+    const month = Number(calendarDate[2]) - 1;
+    const day = Number(calendarDate[3]);
+    const date = new Date(2000, month, day);
+    date.setFullYear(year);
+
+    if (
+      date.getFullYear() !== year ||
+      date.getMonth() !== month ||
+      date.getDate() !== day
+    ) {
+      return invalidTimestamp();
+    }
+
+    return { date, dateTime: normalizedValue };
+  }
+
+  const date = new Date(normalizedValue);
+  return Number.isNaN(date.getTime())
+    ? invalidTimestamp()
+    : { date, dateTime: date.toISOString() };
 };
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -187,12 +239,13 @@ export const Timestamp = React.forwardRef<HTMLTimeElement, TimestampProps>(
   ) {
     const { resolvedLanguage } = useLocalization();
     const activeLocale = locale || resolvedLanguage || "en";
-    const date = toDate(value);
+    const parsedValue = parseTimestampValue(value);
+    const date = parsedValue.date;
 
     // Ticks only when live; otherwise "now" is captured per render pass.
     const [tick, setTick] = React.useState(0);
     const nowDate = React.useMemo(
-      () => (now !== undefined ? toDate(now) : new Date()),
+      () => (now !== undefined ? parseTimestampValue(now).date : new Date()),
       // eslint-disable-next-line react-hooks/exhaustive-deps -- tick forces live re-evaluation
       [now, tick],
     );
@@ -233,7 +286,7 @@ export const Timestamp = React.forwardRef<HTMLTimeElement, TimestampProps>(
     return (
       <time
         ref={ref}
-        dateTime={isValid ? date.toISOString() : undefined}
+        dateTime={isValid ? parsedValue.dateTime : undefined}
         title={fullDate}
         className={`${styles.timestamp} ${SIZE_CLASS[size]} ${
           tone === "muted" ? styles.toneMuted : styles.toneDefault

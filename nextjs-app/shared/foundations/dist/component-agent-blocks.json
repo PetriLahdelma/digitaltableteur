@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T18:32:27.468Z",
+  "generatedAt": "2026-07-13T21:03:41.062Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -9633,7 +9633,7 @@
         "use `live` for values that will not change meaningfully while on screen"
       ],
       "requiredA11y": [
-        "Renders a semantic <time> element with a machine-readable dateTime attribute.",
+        "Renders a semantic <time> element with a machine-readable dateTime attribute that preserves date-only versus instant precision.",
         "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
       ],
       "keyboard": [],

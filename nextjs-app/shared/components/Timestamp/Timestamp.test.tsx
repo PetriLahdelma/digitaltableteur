@@ -97,6 +97,32 @@ describe("Timestamp", () => {
     );
   });
 
+  it("preserves date-only values as calendar dates", () => {
+    render(<Timestamp value="2025-11-29" format="system_date" now={NOW} />);
+    const time = document.querySelector("time");
+
+    expect(time).toHaveTextContent("2025-11-29");
+    expect(time).toHaveAttribute("dateTime", "2025-11-29");
+  });
+
+  it("accepts practical millisecond timestamps before 2001", () => {
+    render(
+      <Timestamp value={946684800000} format="system_date" now={NOW} />,
+    );
+    const time = document.querySelector("time");
+
+    expect(time).toHaveAttribute("dateTime", "2000-01-01T00:00:00.000Z");
+    expect(time?.textContent).toMatch(/^(1999-12-31|2000-01-01)$/);
+  });
+
+  it("rejects overflowing ISO calendar dates", () => {
+    render(<Timestamp value="2025-02-30" format="date" now={NOW} />);
+    const time = document.querySelector("time");
+
+    expect(time).toBeEmptyDOMElement();
+    expect(time).not.toHaveAttribute("dateTime");
+  });
+
   it("renders nothing readable for invalid values without crashing", () => {
     render(<Timestamp value="not-a-date" format="date" now={NOW} />);
     const time = document.querySelector("time");

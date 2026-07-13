@@ -31,7 +31,8 @@ const meta = {
   argTypes: {
     value: {
       control: "text",
-      description: "ISO 8601 string, Unix seconds, or Date to display.",
+      description:
+        "ISO 8601 calendar date or instant, Unix seconds, or Date to display.",
       table: { category: "Content", type: { summary: "string | number | Date" } },
     },
     format: {
