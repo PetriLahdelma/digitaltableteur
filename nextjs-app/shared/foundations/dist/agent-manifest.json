@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-13T17:29:04.432Z",
+  "generatedAt": "2026-07-13T20:29:43.453Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -4396,19 +4396,25 @@
         "props": {
           "submits": {
             "optional": true,
-            "type": "never"
+            "type": "boolean"
           },
           "clickAction": {
             "optional": true,
-            "type": "never"
+            "type": "(event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>"
           },
           "href": {
-            "optional": false,
+            "optional": true,
             "type": "string"
           },
           "target": {
             "optional": true,
-            "type": "HTMLAttributeAnchorTarget | undefined"
+            "type": "union",
+            "values": [
+              "_self",
+              "_blank",
+              "_parent",
+              "_top"
+            ]
           },
           "rel": {
             "optional": true,
@@ -4602,19 +4608,25 @@
         "props": {
           "submits": {
             "optional": true,
-            "type": "never"
+            "type": "boolean"
           },
           "clickAction": {
             "optional": true,
-            "type": "never"
+            "type": "(event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>"
           },
           "href": {
-            "optional": false,
+            "optional": true,
             "type": "string"
           },
           "target": {
             "optional": true,
-            "type": "HTMLAttributeAnchorTarget | undefined"
+            "type": "union",
+            "values": [
+              "_self",
+              "_blank",
+              "_parent",
+              "_top"
+            ]
           },
           "rel": {
             "optional": true,
@@ -13085,16 +13097,18 @@
         "schemaVersion": 2,
         "props": {
           "type": {
-            "optional": false,
+            "optional": true,
             "type": "union",
             "values": [
               "text",
               "tel",
-              "email"
+              "email",
+              "textarea",
+              "select"
             ]
           },
           "children": {
-            "optional": false,
+            "optional": true,
             "type": "ReactNode"
           },
           "label": {
@@ -13155,16 +13169,18 @@
         "intent": "Documents how **FormFieldEditorial** is used in production layouts and Storybook examples.",
         "props": {
           "type": {
-            "optional": false,
+            "optional": true,
             "type": "union",
             "values": [
               "text",
               "tel",
-              "email"
+              "email",
+              "textarea",
+              "select"
             ]
           },
           "children": {
-            "optional": false,
+            "optional": true,
             "type": "ReactNode"
           },
           "label": {
@@ -13193,7 +13209,9 @@
             "values": [
               "text",
               "tel",
-              "email"
+              "email",
+              "textarea",
+              "select"
             ],
             "default": "text"
           }
@@ -29733,7 +29751,7 @@
         "props": {
           "children": {
             "optional": true,
-            "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+            "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
           },
           "as": {
             "optional": true,
@@ -29932,7 +29950,7 @@
         "props": {
           "children": {
             "optional": true,
-            "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+            "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
           },
           "as": {
             "optional": true,
@@ -31428,7 +31446,7 @@
         "props": {
           "children": {
             "optional": true,
-            "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+            "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
           },
           "as": {
             "optional": true,
@@ -31631,7 +31649,7 @@
         "props": {
           "children": {
             "optional": true,
-            "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+            "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
           },
           "as": {
             "optional": true,
@@ -42529,9 +42547,6 @@
         "forbiddenUse": [
           "invent parallel primitives inside this folder",
           "promote to stable without production consumer evidence"
-        ],
-        "composesWith": [
-          "Grid"
         ]
       },
       "spec": "# WorkHero\n\n## Intent\nWork index hero with portfolio positioning copy.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-hero\n",
