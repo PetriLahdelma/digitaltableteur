@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-11T16:07:14.660Z",
+  "createdAt": "2026-07-13T08:01:50.491Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -2695,8 +2695,8 @@
     {
       "column": 8,
       "file": "nextjs-app/shared/components/Grid/Grid.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Grid/Grid.module.css\u001f12\u001f8\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 12,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Grid/Grid.module.css\u001f41\u001f8\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 41,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -2705,8 +2705,8 @@
     {
       "column": 12,
       "file": "nextjs-app/shared/components/Grid/Grid.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Grid/Grid.module.css\u001f17\u001f12\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 17,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Grid/Grid.module.css\u001f46\u001f12\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 46,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
