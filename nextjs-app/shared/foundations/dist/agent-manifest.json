@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-13T09:13:35.743Z",
+  "generatedAt": "2026-07-13T09:27:24.070Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -5591,8 +5591,7 @@
         "composesWith": [
           "Container",
           "Section",
-          "WorkHero",
-          "WorkGrid"
+          "WorkHero"
         ],
         "displayName": "CategoryFilter",
         "keywords": [
@@ -13440,6 +13439,11 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
@@ -25346,7 +25350,9 @@
         },
         "tokens": {
           "colors": [],
-          "spacing": []
+          "spacing": [
+            "--space-internal-16"
+          ]
         },
         "lightDarkVerified": true,
         "consumers": [],

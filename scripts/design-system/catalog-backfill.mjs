@@ -237,13 +237,6 @@ const BACKFILL = [
     description: "Prev/next navigation for case studies.",
   },
   {
-    name: "WorkGrid",
-    root: "components",
-    tier: "organism",
-    group: "content",
-    description: "Portfolio work index grid.",
-  },
-  {
     name: "WorkNav",
     root: "components",
     tier: "molecule",

@@ -2723,8 +2723,7 @@
       "composesWith": [
         "Container",
         "Section",
-        "WorkHero",
-        "WorkGrid"
+        "WorkHero"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -12227,7 +12226,9 @@
       },
       "tokens": {
         "colors": [],
-        "spacing": []
+        "spacing": [
+          "--space-internal-16"
+        ]
       },
       "examples": []
     },
