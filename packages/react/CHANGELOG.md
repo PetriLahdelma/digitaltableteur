@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.12 - 2026-07-13
+
+- `Grid` becomes the master responsive grid: additive per-breakpoint props `tabletColumns`/`desktopColumns`/`wideColumns`/`ultraColumns` and `tabletGap`/`desktopGap`/`wideGap`/`ultraGap` resolve at the token breakpoints (768/1024/1440/1920px) via CSS custom properties and module media queries, each falling back through the previous rung (#1141, #1143). Numeric responsive counts render as `repeat(n, minmax(0, 1fr))` so cells can shrink below content width. Without responsive props the legacy scalar path renders byte-identical to 0.1.11, so existing consumers are unaffected.
+- Adds the `GridItemProps` type export and registers `GridItem` as a contract subpart; contract and spec guidance rewritten around the responsive vs legacy-scalar contracts (#1160). Runtime public API unchanged (115 exports).
+- Executable PostCSS coverage locks all four responsive media-query rungs and the sparse column/gap fallback chains (#1160).
+- Verified by the full local gate (typecheck, lint, 2291 tests, build) plus check:react-package, check:react-public-api, and check:react-public-surface (0 alpha).
+
 ## 0.1.11 - 2026-07-13
 
 - Re-establishes the pattern rung: `PageLayout` and `ProcessBlock` are the first composite patterns exported from the package (runtime public API 113 → 115, both stable contracts, zero-alpha surface ceiling holds). ProcessBlock's own imports move off the published barrel onto package-internal source per the same-module-instance rule.
