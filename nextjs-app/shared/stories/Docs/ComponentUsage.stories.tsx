@@ -330,7 +330,11 @@ const ComponentUsageContent = () => {
                 <td>{row.kind}</td>
                 <td>
                   {row.status ? (
-                    <Badge variant="secondary" tone={statusTone(row.status)}>
+                    <Badge
+                      variant="primary"
+                      size="sm"
+                      tone={statusTone(row.status)}
+                    >
                       {row.status}
                     </Badge>
                   ) : (
@@ -339,11 +343,17 @@ const ComponentUsageContent = () => {
                 </td>
                 <td>
                   {row.exported ? (
-                    <Badge variant="secondary" tone="success">
-                      In package
-                    </Badge>
+                    <Icon
+                      name="check-circle"
+                      color="var(--color-success)"
+                      ariaLabel="In package"
+                    />
                   ) : (
-                    "—"
+                    <Icon
+                      name="x-circle"
+                      color="var(--color-error)"
+                      ariaLabel="Not in package"
+                    />
                   )}
                 </td>
                 <td>{row.directImportCount}</td>
