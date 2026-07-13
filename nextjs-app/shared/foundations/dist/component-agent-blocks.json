@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T07:55:52.523Z",
+  "generatedAt": "2026-07-13T08:13:34.046Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -908,8 +908,8 @@
         "Link",
         "Button",
         "Checkbox",
-        "TextArea",
-        "ui"
+        "Grid",
+        "FlexBox"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
@@ -9573,8 +9573,8 @@
         "Text",
         "Button",
         "TextArea",
-        "Badge",
         "CheckboxGroup",
+        "Badge",
         "Checkbox"
       ],
       "prefersOver": [],
@@ -10416,75 +10416,6 @@
       "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 2
-    },
-    "WorkGrid": {
-      "preferredImport": "@dt/WorkGrid",
-      "intent": "Responsive portfolio work-index grid: one EnhancedProjectCard per project, with a friendly empty state.",
-      "props": {
-        "projects": {
-          "optional": false,
-          "type": "Project[]"
-        },
-        "columns": {
-          "optional": true,
-          "type": "2 | 3 | 4"
-        },
-        "animateItems": {
-          "optional": true,
-          "type": "boolean"
-        },
-        "aspectRatio": {
-          "optional": true,
-          "type": "union",
-          "values": [
-            "video",
-            "square",
-            "portrait",
-            "landscape"
-          ]
-        },
-        "showCategory": {
-          "optional": true,
-          "type": "boolean"
-        },
-        "className": {
-          "optional": true,
-          "type": "string"
-        }
-      },
-      "variants": {},
-      "cvaVariants": {},
-      "variantsFnName": null,
-      "useWhen": [
-        "pass a `projects` array; tune `columns`, `aspectRatio`, `showCategory`",
-        "rely on the built-in empty state when a filter yields no results"
-      ],
-      "avoidWhen": [
-        "invent parallel primitives inside this folder",
-        "hand-roll the card — WorkGrid owns the EnhancedProjectCard composition"
-      ],
-      "requiredA11y": [
-        "Grid is role=list labelled via workGalleryLabel; each project is a listitem",
-        "Empty state is a labelled heading + description, not an empty grid"
-      ],
-      "keyboard": [],
-      "compositionRules": [
-        "invent parallel primitives inside this folder"
-      ],
-      "canonicalExamples": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-      ],
-      "replacementFor": [],
-      "forbiddenUse": [
-        "invent parallel primitives inside this folder",
-        "hand-roll the card — WorkGrid owns the EnhancedProjectCard composition"
-      ],
-      "composesWith": [],
-      "prefersOver": [],
-      "declaredPropCount": 6
     },
     "WorkNav": {
       "preferredImport": "@dt/WorkNav",
@@ -13663,7 +13594,10 @@
         "invent parallel primitives inside this folder",
         "promote to stable without production consumer evidence"
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Grid",
+        "animations"
+      ],
       "prefersOver": [],
       "declaredPropCount": 4
     },

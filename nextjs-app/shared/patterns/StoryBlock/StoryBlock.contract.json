@@ -133,18 +133,18 @@
             "optional": true,
             "type": "union",
             "values": [
+                "single",
                 "none",
-                "grid",
-                "single"
+                "grid"
             ]
         },
         "backgroundColor": {
             "optional": true,
             "type": "union",
             "values": [
+                "transparent",
                 "light",
-                "white",
-                "transparent"
+                "white"
             ]
         },
         "maxWidth": {
@@ -154,8 +154,8 @@
                 "sm",
                 "md",
                 "lg",
-                "full",
-                "xl"
+                "xl",
+                "full"
             ]
         },
         "spacing": {

@@ -139,8 +139,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "muted",
                 "primary",
+                "muted",
                 "dark",
                 "gradient",
                 "brand"

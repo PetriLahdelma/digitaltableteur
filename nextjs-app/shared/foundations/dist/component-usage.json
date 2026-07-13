@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T21:24:16.342Z",
+  "generatedAt": "2026-07-13T08:13:47.685Z",
   "components": [
     {
       "name": "__templates__",
@@ -86,7 +86,7 @@
       "name": "animations",
       "kind": "component",
       "status": null,
-      "directImportCount": 27,
+      "directImportCount": 26,
       "directImporters": [
         "nextjs-app/shared/components/BlogGrid/BlogGrid.tsx",
         "nextjs-app/shared/components/ContactFormSuccess/ContactFormSuccess.tsx",
@@ -94,7 +94,6 @@
         "nextjs-app/shared/components/NextLayout/NextLayout.tsx",
         "nextjs-app/shared/components/SkillsGrid/SkillsGrid.tsx",
         "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
-        "nextjs-app/shared/components/WorkGrid/WorkGrid.tsx",
         "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
         "nextjs-app/shared/patterns/AboutHero/AboutHero.tsx",
         "nextjs-app/shared/patterns/ArticleHero/ArticleHero.tsx",
@@ -1342,14 +1341,15 @@
       "status": "stable",
       "directImportCount": 2,
       "directImporters": [
-        "nextjs-app/shared/components/WorkGrid/WorkGrid.tsx",
-        "nextjs-app/shared/components/index.ts"
+        "nextjs-app/shared/components/index.ts",
+        "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
-      "prodPageCount": 3,
+      "packageImportCount": 1,
+      "packageImporters": [
+        "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx"
+      ],
+      "prodPageCount": 2,
       "prodPages": [
-        "app/dev/tailwind-test/page.tsx",
         "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
         "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx"
       ]
@@ -1390,7 +1390,7 @@
       "status": "stable",
       "directImportCount": 5,
       "directImporters": [
-        "nextjs-app/shared/components/WorkGrid/WorkGrid.tsx",
+        "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
         "nextjs-app/shared/components/ui/index.ts",
         "nextjs-app/shared/patterns/RelatedProjects/RelatedProjects.tsx",
         "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.tsx",
@@ -1599,17 +1599,20 @@
       "name": "Grid",
       "kind": "component",
       "status": "stable",
-      "directImportCount": 2,
+      "directImportCount": 3,
       "directImporters": [
         "nextjs-app/shared/components/index.ts",
+        "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
         "nextjs-app/shared/patterns/Footer/Footer.tsx"
       ],
       "packageImportCount": 1,
       "packageImporters": [
         "nextjs-app/shared/patterns/Footer/Footer.tsx"
       ],
-      "prodPageCount": 1,
+      "prodPageCount": 3,
       "prodPages": [
+        "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
+        "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
         "nextjs-app/shared/patterns/Footer/Footer.tsx"
       ]
     },
@@ -3899,12 +3902,12 @@
         "app/blog/[slug]/ServerArticleContent.tsx",
         "app/blog/[slug]/ServerArticleMain.tsx",
         "app/dev/code-window/page.tsx",
-        "app/dev/tailwind-test/page.tsx",
         "app/layout.tsx",
         "app/tools/email-signature/EmailSignatureContent.tsx",
         "app/tools/email-signature/page.tsx",
         "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
-        "nextjs-app/shared/components/pages/AccessibilityPage/index.ts"
+        "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
+        "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx"
       ]
     },
     {
@@ -4105,13 +4108,13 @@
         "app/blog/[slug]/ServerArticleContent.tsx",
         "app/blog/[slug]/ServerArticleMain.tsx",
         "app/dev/code-window/page.tsx",
-        "app/dev/tailwind-test/page.tsx",
         "app/layout.tsx",
         "app/tools/email-signature/EmailSignatureContent.tsx",
         "app/tools/email-signature/page.tsx",
         "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
         "nextjs-app/shared/components/pages/AboutPage/index.ts",
-        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx"
+        "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+        "nextjs-app/shared/components/pages/AccessibilityPage/index.ts"
       ]
     },
     {
@@ -4323,24 +4326,6 @@
         "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
         "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
         "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx"
-      ]
-    },
-    {
-      "name": "WorkGrid",
-      "kind": "component",
-      "status": "stable",
-      "directImportCount": 2,
-      "directImporters": [
-        "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
-        "nextjs-app/shared/components/ui/index.ts"
-      ],
-      "packageImportCount": 0,
-      "packageImporters": [],
-      "prodPageCount": 3,
-      "prodPages": [
-        "app/dev/tailwind-test/page.tsx",
-        "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
-        "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx"
       ]
     },
     {

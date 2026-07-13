@@ -41,10 +41,10 @@
             "optional": true,
             "type": "union",
             "values": [
-                "muted",
                 "primary",
-                "accent",
-                "default"
+                "default",
+                "muted",
+                "accent"
             ]
         },
         "className": {

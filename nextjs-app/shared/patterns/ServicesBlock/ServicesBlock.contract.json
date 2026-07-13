@@ -99,8 +99,8 @@
                 "sm",
                 "md",
                 "lg",
-                "full",
-                "xl"
+                "xl",
+                "full"
             ]
         },
         "spacing": {

@@ -118,10 +118,10 @@
             "type": "union",
             "values": [
                 "image",
+                "transparent",
                 "light",
                 "dark",
-                "gradient",
-                "transparent"
+                "gradient"
             ]
         },
         "align": {
@@ -140,8 +140,8 @@
                 "sm",
                 "md",
                 "lg",
-                "full",
-                "xl"
+                "xl",
+                "full"
             ]
         },
         "spacing": {

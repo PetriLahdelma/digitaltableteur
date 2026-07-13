@@ -134,11 +134,11 @@
             "optional": true,
             "type": "union",
             "values": [
-                "neutral",
                 "info",
                 "success",
                 "warning",
-                "error"
+                "error",
+                "neutral"
             ]
         },
         "position": {

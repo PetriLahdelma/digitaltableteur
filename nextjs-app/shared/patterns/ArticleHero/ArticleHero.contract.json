@@ -67,9 +67,9 @@
             "optional": true,
             "type": "union",
             "values": [
+                "contained",
                 "minimal",
-                "full-width",
-                "contained"
+                "full-width"
             ]
         },
         "className": {

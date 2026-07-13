@@ -74,5 +74,54 @@
     "lightDarkVerified": false,
     "schemaVersion": 2,
     "displayName": "SocialIconLink",
-    "consumers": []
+    "consumers": [],
+    "props": {
+        "href": {
+            "optional": false,
+            "type": "string"
+        },
+        "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "plain",
+                "chip"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "external": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Container",
+        "Stack",
+        "Link",
+        "Divider"
+    ],
+    "forbiddenUse": [
+        "put text children inside — this is icon-only; use Link for labeled links.",
+        "disable `external` for social profiles; same-tab is for internal routes only."
+    ]
 }

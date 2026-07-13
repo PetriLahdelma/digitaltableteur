@@ -57,9 +57,9 @@
             "optional": true,
             "type": "union",
             "values": [
+                "default",
                 "muted",
-                "accent",
-                "default"
+                "accent"
             ]
         },
         "maxWidth": {
@@ -69,8 +69,8 @@
                 "sm",
                 "md",
                 "lg",
-                "full",
-                "xl"
+                "xl",
+                "full"
             ]
         },
         "className": {
@@ -87,11 +87,11 @@
         "promote to stable without production consumer evidence"
     ],
     "composesWith": [
-        "Text",
         "StoryBlock",
         "GridBlock",
         "ProjectDetailLayout",
         "ProjectHero",
-        "RelatedProjects"
+        "RelatedProjects",
+        "TeamBlock"
     ]
 }

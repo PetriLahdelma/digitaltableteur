@@ -93,9 +93,9 @@
             "optional": true,
             "type": "union",
             "values": [
+                "transparent",
                 "light",
-                "white",
-                "transparent"
+                "white"
             ]
         },
         "maxWidth": {
@@ -105,8 +105,8 @@
                 "sm",
                 "md",
                 "lg",
-                "full",
-                "xl"
+                "xl",
+                "full"
             ]
         },
         "spacing": {

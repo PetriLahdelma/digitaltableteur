@@ -110,18 +110,18 @@
             "optional": true,
             "type": "union",
             "values": [
-                "none",
                 "sm",
                 "md",
-                "lg"
+                "lg",
+                "none"
             ]
         },
         "as": {
             "optional": true,
             "type": "union",
             "values": [
-                "div",
                 "article",
+                "div",
                 "section",
                 "aside",
                 "li"
@@ -143,15 +143,15 @@
             "optional": true,
             "type": "CardDescriptionProps"
         },
-        "extra": {
-            "optional": true,
-            "type": "React.ReactNode"
-        },
         "headerStart": {
             "optional": true,
             "type": "React.ReactNode"
         },
         "headerEnd": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "extra": {
             "optional": true,
             "type": "React.ReactNode"
         },

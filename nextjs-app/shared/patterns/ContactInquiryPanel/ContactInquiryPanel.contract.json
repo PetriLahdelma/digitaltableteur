@@ -117,7 +117,7 @@
         },
         "messagePanel": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "ReactNode"
         },
         "bookingConfig": {
             "optional": true,

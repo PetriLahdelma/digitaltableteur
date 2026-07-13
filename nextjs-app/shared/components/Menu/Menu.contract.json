@@ -108,7 +108,7 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "React.ReactNode"
         },
         "className": {
             "optional": true,
@@ -118,19 +118,19 @@
             "optional": true,
             "type": "union",
             "values": [
-                "top",
+                "left",
                 "right",
-                "bottom",
-                "left"
+                "top",
+                "bottom"
             ]
         },
         "align": {
             "optional": true,
             "type": "union",
             "values": [
-                "start",
                 "center",
-                "end"
+                "end",
+                "start"
             ]
         },
         "sideOffset": {

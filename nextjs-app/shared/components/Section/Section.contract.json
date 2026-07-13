@@ -142,9 +142,9 @@
             "optional": true,
             "type": "union",
             "values": [
+                "default",
                 "muted",
                 "accent",
-                "default",
                 "inverse"
             ]
         },

@@ -49,9 +49,9 @@
             "optional": true,
             "type": "union",
             "values": [
+                "single",
                 "none",
                 "grid",
-                "single",
                 "side-by-side"
             ]
         },
@@ -59,9 +59,9 @@
             "optional": true,
             "type": "union",
             "values": [
+                "default",
                 "muted",
-                "accent",
-                "default"
+                "accent"
             ]
         },
         "centered": {

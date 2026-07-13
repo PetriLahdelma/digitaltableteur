@@ -93,8 +93,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "inline",
                 "single",
+                "inline",
                 "multi"
             ]
         },
