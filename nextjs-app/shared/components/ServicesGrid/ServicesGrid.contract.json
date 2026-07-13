@@ -28,7 +28,9 @@
     },
     "tokens": {
         "colors": [],
-        "spacing": []
+        "spacing": [
+            "--space-internal-16"
+        ]
     },
     "lightDarkVerified": true,
     "consumers": [],
