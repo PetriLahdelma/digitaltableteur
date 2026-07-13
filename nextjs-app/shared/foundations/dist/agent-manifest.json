@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-13T20:29:43.453Z",
+  "generatedAt": "2026-07-13T21:19:46.593Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -31030,7 +31030,7 @@
         "tier": "atom",
         "group": "display",
         "status": "stable",
-        "description": "Formats a date or time value into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Modeled on the Astryx Timestamp reference.",
+        "description": "Formats an ISO calendar date, instant, Unix timestamp, or Date into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Date-only values retain their calendar date across runtime timezones.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1297-3064",
         "radixPrimitive": null,
         "element": "time",
@@ -31070,7 +31070,7 @@
         "a11y": {
           "keyboard": [],
           "ariaRequirements": [
-            "Renders a semantic <time> element with a machine-readable dateTime attribute.",
+            "Renders a semantic <time> element with a machine-readable dateTime attribute that preserves date-only versus instant precision.",
             "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
           ],
           "reducedMotion": true,
@@ -31182,7 +31182,7 @@
           "use `live` for values that will not change meaningfully while on screen"
         ]
       },
-      "spec": "# Timestamp\n\n## Intent\nRenders a single date or time value as human-readable text: relative (\"2 hours\nago\") for recency, absolute (\"29 Nov 2025\") for precision, or `auto` to show\nrelative until the value ages past `autoThreshold` and then switch to the full\ndate. System variants emit ISO-style strings for logs and developer surfaces.\nIt exists so timestamps read consistently across the site instead of each\nsurface hand-rolling `Intl` calls.\n\n## Interaction contract\n- Keyboard: not interactive; nothing is focusable.\n- Pointer: hovering relative output reveals a native tooltip (`title`) with the\n  full medium date + short time, so the precise moment stays discoverable.\n- Screen readers: renders a semantic `<time>` with a machine-readable\n  `dateTime` (ISO 8601) attribute; the visible text is the label. Relative and\n  `auto` output derives from render-time \"now\", so `suppressHydrationWarning`\n  absorbs a legitimate server/client one-tick difference.\n\n## Do / don't\n- Do use `muted` tone for secondary metadata (list rows, card footers) and\n  `default` when the value carries body-text weight.\n- Do pin `now` in stories and tests for deterministic relative output.\n- Do use the `system_*` formats for developer-facing surfaces (logs, dev tools)\n  where an unambiguous ISO string matters more than locale formatting.\n- Don't wrap it in another `<time>` or add a redundant `title`; it owns both.\n- Don't use `live` for values that will not change meaningfully while on screen\n  (absolute dates) — it only re-renders relative/auto output.\n\n## Design notes\n- Tokens: `--color-text` (default tone) and `--color-muted` (muted tone); the\n  size ladder maps 1:1 onto the shared Text type scale so it aligns inline with\n  surrounding copy. No spacing tokens — it is a pure inline element.\n- Locale: defaults to the active site language (`useLocalization`); pass\n  `locale` to override. All formatting goes through `Intl`, so it localizes\n  without translation keys.\n- Figma: none — presentation is entirely the type scale + text color roles,\n  so there is no dedicated Figma node to mirror.\n",
+      "spec": "# Timestamp\n\n## Intent\nRenders a single date or time value as human-readable text: relative (\"2 hours\nago\") for recency, absolute (\"29 Nov 2025\") for precision, or `auto` to show\nrelative until the value ages past `autoThreshold` and then switch to the full\ndate. System variants emit ISO-style strings for logs and developer surfaces.\nIt exists so timestamps read consistently across the site instead of each\nsurface hand-rolling `Intl` calls.\n\n## Interaction contract\n- Keyboard: not interactive; nothing is focusable.\n- Pointer: hovering relative output reveals a native tooltip (`title`) with the\n  full medium date + short time, so the precise moment stays discoverable.\n- Screen readers: renders a semantic `<time>` with a machine-readable\n  `dateTime` (ISO 8601) attribute; date-only input stays `YYYY-MM-DD`, while\n  instants are canonicalized. Relative and `auto` output derives from\n  render-time \"now\", so `suppressHydrationWarning` absorbs a legitimate\n  server/client one-tick difference.\n\n## Do / don't\n- Do use `muted` tone for secondary metadata (list rows, card footers) and\n  `default` when the value carries body-text weight.\n- Do pin `now` in stories and tests for deterministic relative output.\n- Do use the `system_*` formats for developer-facing surfaces (logs, dev tools)\n  where an unambiguous ISO string matters more than locale formatting.\n- Don't wrap it in another `<time>` or add a redundant `title`; it owns both.\n- Don't use `live` for values that will not change meaningfully while on screen\n  (absolute dates) — it only re-renders relative/auto output.\n\n## Design notes\n- Tokens: `--color-text` (default tone) and `--color-muted` (muted tone); the\n  size ladder maps 1:1 onto the shared Text type scale so it aligns inline with\n  surrounding copy. No spacing tokens — it is a pure inline element.\n- Locale: defaults to the active site language (`useLocalization`); pass\n  `locale` to override. All formatting goes through `Intl`, so it localizes\n  without translation keys.\n- Date-only ISO values are parsed as calendar dates rather than UTC instants,\n  preventing users west of UTC from seeing the previous day.\n- Figma: none — presentation is entirely the type scale + text color roles,\n  so there is no dedicated Figma node to mirror.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Timestamp",
@@ -31304,7 +31304,7 @@
           "use `live` for values that will not change meaningfully while on screen"
         ],
         "requiredA11y": [
-          "Renders a semantic <time> element with a machine-readable dateTime attribute.",
+          "Renders a semantic <time> element with a machine-readable dateTime attribute that preserves date-only versus instant precision.",
           "Relative output carries the full date as a native tooltip (title) so the precise moment stays discoverable."
         ],
         "keyboard": [],

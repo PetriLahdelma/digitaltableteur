@@ -13,9 +13,10 @@ surface hand-rolling `Intl` calls.
 - Pointer: hovering relative output reveals a native tooltip (`title`) with the
   full medium date + short time, so the precise moment stays discoverable.
 - Screen readers: renders a semantic `<time>` with a machine-readable
-  `dateTime` (ISO 8601) attribute; the visible text is the label. Relative and
-  `auto` output derives from render-time "now", so `suppressHydrationWarning`
-  absorbs a legitimate server/client one-tick difference.
+  `dateTime` (ISO 8601) attribute; date-only input stays `YYYY-MM-DD`, while
+  instants are canonicalized. Relative and `auto` output derives from
+  render-time "now", so `suppressHydrationWarning` absorbs a legitimate
+  server/client one-tick difference.
 
 ## Do / don't
 - Do use `muted` tone for secondary metadata (list rows, card footers) and
@@ -34,5 +35,7 @@ surface hand-rolling `Intl` calls.
 - Locale: defaults to the active site language (`useLocalization`); pass
   `locale` to override. All formatting goes through `Intl`, so it localizes
   without translation keys.
+- Date-only ISO values are parsed as calendar dates rather than UTC instants,
+  preventing users west of UTC from seeing the previous day.
 - Figma: none — presentation is entirely the type scale + text color roles,
   so there is no dedicated Figma node to mirror.
