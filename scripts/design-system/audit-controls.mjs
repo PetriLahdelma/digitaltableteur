@@ -36,9 +36,6 @@ const EFFECT_EXEMPT = {
     FormFieldEditorial: {
         children: 'the <option> list feeds the select-mode Combobox popover, which is closed in the static canvas — swapping the preset changes options that only render once the popover opens; verified by the select-variant unit test (open popover → pick option → onChange payload) and the Playground mapping presets',
     },
-    WorkGrid: {
-        animateItems: 'scroll-triggered GSAP entrance stagger — only fires on scroll into view, so it has no stable DOM signature in the static effect probe (and is gated by the AnimationProvider motion preference); stories seed it off for a settled, deterministic grid, verified by the reduced-motion guard in the component',
-    },
     BlogMediaImage: {
         fit: 'object-fit class only applies in fill mode; the Playground renders inline (fill=false) so it is inert there; verified by the FillContain story and the fill-mode cover/contain unit tests',
     },

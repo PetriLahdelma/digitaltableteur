@@ -130,8 +130,7 @@
     "composesWith": [
         "Container",
         "Section",
-        "WorkHero",
-        "WorkGrid"
+        "WorkHero"
     ],
     "displayName": "CategoryFilter",
     "keywords": [
