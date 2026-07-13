@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-13T09:58:18.163Z",
+  "generatedAt": "2026-07-13T10:30:10.418Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 88,
     "codebaseComponentCount": 184,
     "usageCoveragePercent": 93.2,
-    "componentsWithProductionUsage": 34,
+    "componentsWithProductionUsage": 33,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,19 +79,19 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 162,
     "withAnyUsage": 151,
-    "withProductionUsage": 34,
+    "withProductionUsage": 33,
     "uniqueImportedComponents": 151,
-    "totalEvidenceRows": 742,
-    "aliasImportFiles": 379,
+    "totalEvidenceRows": 741,
+    "aliasImportFiles": 378,
     "relativeImportFiles": 392,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-13T08:53:55.054Z",
+    "generatedAt": "2026-07-13T10:30:06.202Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 80,
+    "nodesWithComposesWith": 79,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -13682,17 +13682,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Grid",
-        "importCount": 4,
-        "productionImportCount": 1,
+        "importCount": 3,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Grid",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -42513,10 +42507,7 @@
           "invent parallel primitives inside this folder",
           "promote to stable without production consumer evidence"
         ],
-        "composesWith": [
-          "Grid",
-          "animations"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 4
       }
