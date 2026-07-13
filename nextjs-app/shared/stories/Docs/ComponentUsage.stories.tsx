@@ -6,6 +6,8 @@ import TextInput from "@dt/TextInput";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Badge from "@dt/Badge";
+import Icon from "@dt/Icon";
+import { IconButton } from "@dt/IconButton";
 import usageReport from "../../foundations/dist/component-usage.json";
 import styles from "./Documentation.module.css";
 
@@ -166,33 +168,37 @@ const ComponentUsageContent = () => {
     setSortDir(NUMERIC_SORT_KEYS.includes(key) ? "desc" : "asc");
   };
 
-  const sortableHeader = (label: string, key: SortKey) => (
-    <th
-      aria-sort={
-        sortKey === key
-          ? sortDir === "asc"
-            ? "ascending"
-            : "descending"
-          : "none"
-      }
-    >
-      <button
-        type="button"
-        className={styles.sortHeader}
-        onClick={() => toggleSort(key)}
+  // Literal Icon names so the icon-registry codegen (build:icons) discovers
+  // caret-up / caret-down / caret-up-down; the active column shows its
+  // direction, idle columns show the neutral up-down affordance.
+  const sortGlyph = (state: "asc" | "desc" | "none") => {
+    if (state === "asc") return <Icon name="caret-up" size="xs" />;
+    if (state === "desc") return <Icon name="caret-down" size="xs" />;
+    return <Icon name="caret-up-down" size="xs" />;
+  };
+
+  const sortableHeader = (label: string, key: SortKey) => {
+    const active = sortKey === key;
+    return (
+      <th
+        aria-sort={
+          active ? (sortDir === "asc" ? "ascending" : "descending") : "none"
+        }
       >
-        {label}
-        <span
-          className={
-            sortKey === key ? styles.sortIndicator : styles.sortIndicatorIdle
-          }
-          aria-hidden="true"
-        >
-          {sortKey === key ? (sortDir === "asc" ? "▲" : "▼") : "↕"}
+        <span className={styles.sortHeaderCell}>
+          {label}
+          <IconButton
+            icon={sortGlyph(active ? sortDir : "none")}
+            label={`Sort by ${label}`}
+            title={`Sort by ${label}`}
+            variant="tertiary"
+            size="sm"
+            onClick={() => toggleSort(key)}
+          />
         </span>
-      </button>
-    </th>
-  );
+      </th>
+    );
+  };
 
   return (
     <article className={styles.wrapper}>

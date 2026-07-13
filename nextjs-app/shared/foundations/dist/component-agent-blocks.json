@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T10:30:10.002Z",
+  "generatedAt": "2026-07-13T16:35:13.111Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -905,11 +905,11 @@
       ],
       "composesWith": [
         "TextInput",
+        "Text",
         "Link",
         "Button",
-        "Checkbox",
-        "Grid",
-        "FlexBox"
+        "Icon",
+        "Checkbox"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
@@ -1613,8 +1613,7 @@
         "Button",
         "Icon",
         "Badge",
-        "Divider",
-        "FlexBox"
+        "Divider"
       ],
       "prefersOver": [],
       "declaredPropCount": 16
@@ -4581,10 +4580,10 @@
       "composesWith": [
         "Button",
         "Text",
-        "ComplianceCard",
         "Title",
+        "ComplianceCard",
         "Badge",
-        "HelperText"
+        "Card"
       ],
       "prefersOver": [],
       "declaredPropCount": 12
@@ -4684,9 +4683,10 @@
       "composesWith": [
         "NavLink",
         "ThemeProvider",
-        "Container",
-        "LanguageSwitcher",
-        "Button"
+        "Card",
+        "Select",
+        "TextInput",
+        "Title"
       ],
       "prefersOver": [],
       "declaredPropCount": 7
@@ -7603,7 +7603,7 @@
         "FileUpload",
         "PhoneInput",
         "TextInput",
-        "Modal"
+        "Text"
       ],
       "prefersOver": [],
       "declaredPropCount": 8
@@ -9229,7 +9229,7 @@
         "TextInput",
         "Icon",
         "CheckboxGroup",
-        "Link"
+        "Badge"
       ],
       "prefersOver": [
         "raw paragraph elements"
@@ -9456,9 +9456,9 @@
       "composesWith": [
         "Text",
         "Button",
+        "Badge",
         "TextArea",
         "CheckboxGroup",
-        "Badge",
         "Checkbox"
       ],
       "prefersOver": [],
@@ -9744,9 +9744,9 @@
         "Text",
         "Button",
         "TextInput",
+        "Icon",
         "Link",
-        "Avatar",
-        "Icon"
+        "Badge"
       ],
       "prefersOver": [
         "raw heading elements"

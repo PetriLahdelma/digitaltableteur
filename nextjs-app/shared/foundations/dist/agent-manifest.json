@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-13T10:30:10.418Z",
+  "generatedAt": "2026-07-13T16:35:13.376Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -81,8 +81,8 @@
     "withAnyUsage": 151,
     "withProductionUsage": 33,
     "uniqueImportedComponents": 151,
-    "totalEvidenceRows": 741,
-    "aliasImportFiles": 378,
+    "totalEvidenceRows": 749,
+    "aliasImportFiles": 386,
     "relativeImportFiles": 392,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -2954,7 +2954,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Badge",
-        "importCount": 10,
+        "importCount": 11,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 5,
@@ -3003,6 +3003,12 @@
           },
           {
             "path": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Badge",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Badge",
             "context": "story"
@@ -3154,11 +3160,11 @@
         ],
         "composesWith": [
           "TextInput",
+          "Text",
           "Link",
           "Button",
-          "Checkbox",
-          "Grid",
-          "FlexBox"
+          "Icon",
+          "Checkbox"
         ],
         "prefersOver": [],
         "declaredPropCount": 11
@@ -5268,7 +5274,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Card",
-        "importCount": 5,
+        "importCount": 6,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 4,
@@ -5299,6 +5305,12 @@
           },
           {
             "path": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Card",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Card",
             "context": "story"
@@ -5450,8 +5462,7 @@
           "Button",
           "Icon",
           "Badge",
-          "Divider",
-          "FlexBox"
+          "Divider"
         ],
         "prefersOver": [],
         "declaredPropCount": 16
@@ -14720,7 +14731,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 66,
+        "importCount": 67,
         "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 33,
@@ -14942,10 +14953,10 @@
         "composesWith": [
           "Button",
           "Text",
-          "ComplianceCard",
           "Title",
+          "ComplianceCard",
           "Badge",
-          "HelperText"
+          "Card"
         ],
         "prefersOver": [],
         "declaredPropCount": 12
@@ -15215,7 +15226,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/IconButton",
-        "importCount": 6,
+        "importCount": 7,
         "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 1,
@@ -15246,6 +15257,12 @@
           },
           {
             "path": "nextjs-app/shared/components/Tooltip/Tooltip.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/IconButton",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/IconButton",
             "context": "story"
@@ -15353,9 +15370,10 @@
         "composesWith": [
           "NavLink",
           "ThemeProvider",
-          "Container",
-          "LanguageSwitcher",
-          "Button"
+          "Card",
+          "Select",
+          "TextInput",
+          "Title"
         ],
         "prefersOver": [],
         "declaredPropCount": 7
@@ -24691,7 +24709,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Select",
-        "importCount": 3,
+        "importCount": 4,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 3,
@@ -24713,6 +24731,12 @@
             "importKind": "relative",
             "importPath": "./Select/Select",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Select",
+            "context": "story"
           }
         ]
       },
@@ -24813,7 +24837,7 @@
           "FileUpload",
           "PhoneInput",
           "TextInput",
-          "Modal"
+          "Text"
         ],
         "prefersOver": [],
         "declaredPropCount": 8
@@ -29760,7 +29784,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 53,
+        "importCount": 54,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 27,
@@ -29939,7 +29963,7 @@
           "TextInput",
           "Icon",
           "CheckboxGroup",
-          "Link"
+          "Badge"
         ],
         "prefersOver": [
           "raw paragraph elements"
@@ -30477,7 +30501,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TextInput",
-        "importCount": 11,
+        "importCount": 12,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 7,
@@ -30532,6 +30556,12 @@
           },
           {
             "path": "nextjs-app/shared/components/Modal/Modal.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TextInput",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/TextInput",
             "context": "story"
@@ -30692,9 +30722,9 @@
         "composesWith": [
           "Text",
           "Button",
+          "Badge",
           "TextArea",
           "CheckboxGroup",
-          "Badge",
           "Checkbox"
         ],
         "prefersOver": [],
@@ -31453,7 +31483,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 28,
+        "importCount": 29,
         "productionImportCount": 0,
         "patternImportCount": 4,
         "componentImportCount": 15,
@@ -31641,9 +31671,9 @@
           "Text",
           "Button",
           "TextInput",
+          "Icon",
           "Link",
-          "Avatar",
-          "Icon"
+          "Badge"
         ],
         "prefersOver": [
           "raw heading elements"

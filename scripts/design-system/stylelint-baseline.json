@@ -3783,36 +3783,36 @@
       "text": "Disallowed property \"padding-left\" (property-disallowed-list)"
     },
     {
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::619::3::property-disallowed-list::Disallowed property \"border-left\" (property-disallowed-list)",
+      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::604::3::property-disallowed-list::Disallowed property \"border-left\" (property-disallowed-list)",
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 619,
+      "line": 604,
       "column": 3,
       "rule": "property-disallowed-list",
       "severity": "warning",
       "text": "Disallowed property \"border-left\" (property-disallowed-list)"
     },
     {
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::627::33::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::612::33::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 627,
+      "line": 612,
       "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::628::32::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::613::32::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 628,
+      "line": 613,
       "column": 32,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::629::34::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/stories/Docs/Documentation.module.css::614::34::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "line": 629,
+      "line": 614,
       "column": 34,
       "rule": "declaration-no-important",
       "severity": "warning",
