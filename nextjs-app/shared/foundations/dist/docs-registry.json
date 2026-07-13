@@ -8458,8 +8458,8 @@
       "name": "Logo",
       "group": "display",
       "tier": 2,
-      "status": "beta",
-      "description": "Digitaltableteur brand mark — monochrome (currentColor), square footprint, optional hover pulse.",
+      "status": "stable",
+      "description": "Digitaltableteur brand mark — monochrome (currentColor), square footprint, optional controlled pulse.",
       "dense": "Digitaltableteur brand mark: monochrome currentColor, square footprint, optional link wrapper",
       "keywords": [
         "logo",

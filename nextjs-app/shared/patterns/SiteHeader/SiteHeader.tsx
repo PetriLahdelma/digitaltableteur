@@ -6,6 +6,7 @@ import { Link as RouterLink } from "../../lib/linkComponent";
 import { useLocalization } from "../../lib/translation";
 import { NavLink } from "../../components/NavLink";
 import { Container } from "../../components/Container";
+import Logo from "../../components/Logo";
 import { useNavigation } from "../../hooks/useNavigation";
 import { usePersistentTheme } from "../../hooks/usePersistentTheme";
 import { useToast } from "../../lib/toast";
@@ -183,94 +184,12 @@ export function SiteHeader({
               "bg-[var(--logo-background)] text-[var(--logo-color)]",
             )}
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 395 323"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <Logo
+              size={24}
+              animated={isLogoHovered}
+              decorative
               className="h-6 w-6"
-              aria-hidden="true"
-              focusable="false"
-            >
-            <style>{`
-              @keyframes pulse-1 {
-                0%, 33%, 100% { opacity: 1; }
-                5%, 28% { opacity: 0.5; }
-              }
-              @keyframes pulse-2 {
-                0%, 5%, 66%, 100% { opacity: 1; }
-                33%, 61% { opacity: 0.5; }
-              }
-              @keyframes pulse-3 {
-                0%, 61%, 100% { opacity: 1; }
-                66%, 95% { opacity: 0.5; }
-              }
-              .logo-bar {
-                transition: opacity 0.3s ease;
-              }
-              .logo-bar.pulse-1 {
-                animation: pulse-1 0.9s ease-in-out infinite;
-              }
-              .logo-bar.pulse-2 {
-                animation: pulse-2 0.9s ease-in-out infinite;
-              }
-              .logo-bar.pulse-3 {
-                animation: pulse-3 0.9s ease-in-out infinite;
-              }
-              @media (prefers-reduced-motion: reduce) {
-                .logo-bar.pulse-1,
-                .logo-bar.pulse-2,
-                .logo-bar.pulse-3 {
-                  animation: none;
-                }
-              }
-            `}</style>
-            <g clipPath="url(#clip0_header)">
-              <rect
-                x="190.742"
-                width="39.0494"
-                height="142.681"
-                fill="currentColor"
-                className={cn(
-                  "logo-bar",
-                  isLogoHovered && "pulse-1",
-                )}
-              />
-              <rect
-                x="190.742"
-                y="180.228"
-                width="39.0494"
-                height="142.681"
-                fill="currentColor"
-                className={cn(
-                  "logo-bar",
-                  isLogoHovered && "pulse-2",
-                )}
-              />
-              <rect
-                x="267.338"
-                y="181.73"
-                width="39.0494"
-                height="127.662"
-                transform="rotate(-90 267.338 181.73)"
-                fill="currentColor"
-                className={cn(
-                  "logo-bar",
-                  isLogoHovered && "pulse-3",
-                )}
-              />
-              <rect y="37.5475" width="39.0494" height="246.312" fill="currentColor"/>
-              <rect x="115.646" y="76.597" width="39.0494" height="168.213" fill="currentColor"/>
-              <path d="M39.0493 76.597L39.0493 37.5475L118.65 37.5475L154.696 76.5969L39.0493 76.597Z" fill="currentColor"/>
-              <path d="M39.0493 244.81L39.0493 283.859L118.65 283.859L154.696 244.81L39.0493 244.81Z" fill="currentColor"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_header">
-                <rect width="395" height="322.909" fill="white"/>
-              </clipPath>
-            </defs>
-          </svg>
+            />
           </div>
           <span className="font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors text-[var(--logo-text-color)] group-hover:text-primary">
             Digitaltableteur

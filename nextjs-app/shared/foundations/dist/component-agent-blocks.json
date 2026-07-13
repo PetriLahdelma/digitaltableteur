@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T16:35:13.111Z",
+  "generatedAt": "2026-07-13T17:29:04.223Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -4956,6 +4956,7 @@
       "composesWith": [
         "NavLink",
         "Container",
+        "Logo",
         "IconButton",
         "ThemeProvider"
       ],
@@ -5370,7 +5371,13 @@
       ],
       "replacementFor": [],
       "forbiddenUse": [],
-      "composesWith": [],
+      "composesWith": [
+        "NavLink",
+        "Container",
+        "IconButton",
+        "LanguageSwitcher",
+        "ThemeProvider"
+      ],
       "prefersOver": [],
       "declaredPropCount": 6
     },
@@ -5996,6 +6003,7 @@
         "IconButton",
         "ThemeProvider",
         "Container",
+        "Logo",
         "LanguageSwitcher",
         "SkipLink"
       ],
@@ -9509,9 +9517,9 @@
         "NavLink",
         "IconButton",
         "Container",
+        "Logo",
         "LanguageSwitcher",
-        "Badge",
-        "SentrySummaryCard"
+        "Badge"
       ],
       "prefersOver": [],
       "declaredPropCount": 2

@@ -5,7 +5,7 @@ import contract from "./Logo.contract.json";
 const meta = {
   title: "Site/Logo",
   component: Logo,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
