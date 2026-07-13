@@ -12174,10 +12174,10 @@
       "prefersOver": [],
       "forbiddenUse": [
         "Use for a value or principle without a link/CTA — that is ValueCard.",
-        "Place outside a ServicesGrid; the tile is sized and gapped by that grid."
+        "Place outside the ServicesSection grid; the tile is sized and gapped by that section."
       ],
       "usage": {
-        "description": "Tile for one service offering — icon, title, short description, optional link. Renders inside ServicesGrid."
+        "description": "Tile for one service offering — icon, title, short description, optional link. Renders inside the ServicesSection pattern's grid."
       },
       "tokens": {
         "colors": [],

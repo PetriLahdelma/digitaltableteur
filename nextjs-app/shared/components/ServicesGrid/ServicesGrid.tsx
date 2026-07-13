@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid } from "@digitaltableteur/react";
 import styles from "./ServicesGrid.module.css";
 import { useTranslate } from "../../lib/translation";
 import Icon from "@dt/Icon";
@@ -25,7 +26,14 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
 
   return (
     <div className={[styles.fillVertical, className].filter(Boolean).join(" ")}>
-      <div className={styles.root} data-testid="services-grid">
+      {/* DS Grid owns the 2-column track and gap (component tribunal:
+          layout = Grid); the module class keeps the panel chrome only. */}
+      <Grid
+        className={styles.root}
+        columns={2}
+        gap="var(--space-internal-16)"
+        data-testid="services-grid"
+      >
         <span className={styles.gridLabel} aria-hidden="true">
           {ariaLabel}
         </span>
@@ -46,7 +54,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
             <div className={styles.title}>{titles[idx]}</div>
           </div>
         ))}
-      </div>
+      </Grid>
     </div>
   );
 };

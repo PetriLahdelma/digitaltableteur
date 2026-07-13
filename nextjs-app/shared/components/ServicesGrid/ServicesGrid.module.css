@@ -1,11 +1,11 @@
+/* Panel chrome only; the 2-column track and gap come from the DS Grid
+   component this class is applied to. */
+
 .root {
-  display: grid;
   padding: var(--space-internal-16);
   box-sizing: border-box;
   height: 100%;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-internal-16);
-  border-radius: var(--radius-medium);
+  border-radius: var(--radius-md);
   background: var(--color-surface);
 }
 
@@ -26,7 +26,7 @@
   justify-content: center;
   align-items: center;
   gap: 1rem; /* 1rem gap between icon and title */
-  border-radius: var(--radius-small);
+  border-radius: var(--radius-sm);
   background: var(--color-elevation-1);
   text-align: center;
 }
@@ -38,7 +38,7 @@
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  border-radius: var(--radius-small);
+  border-radius: var(--radius-sm);
   background: transparent;
   font-size: clamp(1.75rem, 4vw, 2rem); /* 28px -> 1.75rem, 32px -> 2rem */
   color: var(--color-primary);
