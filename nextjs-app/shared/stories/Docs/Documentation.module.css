@@ -375,6 +375,93 @@
   margin-top: var(--space-layout-12, 0.75rem);
 }
 
+/* Usage-table controls: search + per-field filters. */
+
+.usageControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-layout-16, 1rem);
+  margin-bottom: var(--space-layout-16, 1rem);
+}
+
+.usageControl {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-4, 0.25rem);
+}
+
+.usageControlGrow {
+  flex: 1 1 16rem;
+}
+
+.usageControlLabel {
+  font-size: var(--font-size-text-xs, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.usageInput,
+.usageSelect {
+  padding: var(--space-layout-8, 0.5rem) var(--space-layout-12, 0.75rem);
+  width: 100%;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-m);
+  background: var(--main-body-background-color);
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-s);
+  color: var(--color-text);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.usageInput:focus,
+.usageSelect:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(0 0 255 / 10%);
+}
+
+/* Sortable column header: full-width reset button inside the <th>. */
+
+.sortHeader {
+  display: inline-flex;
+  padding: 0;
+  align-items: center;
+  gap: var(--space-layout-4, 0.25rem);
+  border: none;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sortHeader:hover {
+  color: var(--color-primary);
+}
+
+.sortHeader:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.sortIndicator {
+  font-size: 0.75em;
+  color: var(--color-primary);
+}
+
+.sortIndicatorIdle {
+  font-size: 0.75em;
+  color: var(--color-muted);
+  opacity: 0.5;
+}
+
+.subtle {
+  opacity: 0.6;
+}
+
 .iconGrid {
   display: grid;
   margin: var(--space-layout-24, 1.5rem) 0;
