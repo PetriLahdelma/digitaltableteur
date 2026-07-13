@@ -1,5 +1,14 @@
 name: Security Scanning
 
+# Runner topology (intentional): this workflow runs on GitHub-hosted ubuntu-latest,
+# NOT the self-hosted mac-mini farm that runs PR Validation. Snyk, TruffleHog, and
+# CodeQL are Docker container actions, which a macOS self-hosted runner cannot
+# execute — de-metering them would require a separate Linux self-hosted runner.
+# Dedup: the pure-gate jobs (NPM Audit, TypeScript Security) run on pull_request
+# only, so the merge push to main does not re-scan identical content. CodeQL, Snyk
+# (monitor + SARIF upload), secret-scanning, and env-file-check keep their push runs
+# because they need the default-branch baseline or must catch direct pushes to main.
+
 on:
   push:
     # DT-* branches are covered by the pull_request trigger below. Scanning them on push
@@ -20,6 +29,9 @@ jobs:
   dependency-audit:
     name: NPM Audit
     runs-on: ubuntu-latest
+    # PR-gate only; the merge push to main would re-audit identical content, and
+    # Snyk (which keeps its push run) already covers dependency scanning there.
+    if: github.event_name == 'pull_request'
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -253,6 +265,9 @@ jobs:
   typescript-security:
     name: TypeScript Security Check
     runs-on: ubuntu-latest
+    # PR-gate only; identical on the merge push (typecheck is deterministic) and
+    # never fails the gate (tsc runs with `|| echo`), so skip the duplicate push run.
+    if: github.event_name == 'pull_request'
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
