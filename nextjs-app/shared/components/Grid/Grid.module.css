@@ -4,6 +4,35 @@
   grid-auto-rows: minmax(6.25rem, auto); /* Converted 100px to rem */
 }
 
+/* Per-breakpoint column/gap resolution for tabletColumns/desktopColumns and
+   tabletGap/desktopGap. Values arrive as CSS custom properties set inline by
+   Grid.tsx; each breakpoint falls back through the previous one. Breakpoints
+   mirror --breakpoint-tablet (768px) and --breakpoint-desktop (1024px) from
+   variables.css — media queries cannot read custom properties, so the values
+   are repeated here. */
+
+.responsive {
+  grid-template-columns: var(--grid-cols);
+  gap: var(--grid-gap);
+}
+
+@media (width >= 768px) {
+  .responsive {
+    grid-template-columns: var(--grid-cols-tablet, var(--grid-cols));
+    gap: var(--grid-gap-tablet, var(--grid-gap));
+  }
+}
+
+@media (width >= 1024px) {
+  .responsive {
+    grid-template-columns: var(
+      --grid-cols-desktop,
+      var(--grid-cols-tablet, var(--grid-cols))
+    );
+    gap: var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)));
+  }
+}
+
 /* Example classes for nested grids */
 
 .nested {

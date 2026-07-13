@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T10:01:45.548Z",
+  "generatedAt": "2026-07-13T07:55:52.523Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -1790,13 +1790,7 @@
         "Use as primary navigation — `CategoryFilter` is a UI control, not a nav surface; use `NavLink` for routes.",
         "Stack two filter rows when one composite control would do — readability collapses."
       ],
-      "composesWith": [
-        "Container",
-        "Section",
-        "WorkHero",
-        "WorkGrid",
-        "animations"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 6
     },
@@ -3034,8 +3028,8 @@
         "animations",
         "Stack",
         "Link",
-        "Badge",
-        "Checkbox"
+        "ScrollIndicator",
+        "Badge"
       ],
       "prefersOver": [],
       "declaredPropCount": 5
@@ -4240,11 +4234,27 @@
           "optional": true,
           "type": "number | string"
         },
+        "tabletColumns": {
+          "optional": true,
+          "type": "number | string"
+        },
+        "desktopColumns": {
+          "optional": true,
+          "type": "number | string"
+        },
         "rows": {
           "optional": true,
           "type": "number | string"
         },
         "gap": {
+          "optional": true,
+          "type": "string"
+        },
+        "tabletGap": {
+          "optional": true,
+          "type": "string"
+        },
+        "desktopGap": {
           "optional": true,
           "type": "string"
         },
@@ -4370,7 +4380,7 @@
         "Avatar"
       ],
       "prefersOver": [],
-      "declaredPropCount": 10
+      "declaredPropCount": 14
     },
     "GroupLabel": {
       "preferredImport": "@dt/GroupLabel",
@@ -5289,7 +5299,10 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Text",
+        "Title"
+      ],
       "prefersOver": [],
       "declaredPropCount": 9
     },
@@ -9332,7 +9345,7 @@
         "TextInput",
         "Icon",
         "CheckboxGroup",
-        "Modal"
+        "Link"
       ],
       "prefersOver": [
         "raw paragraph elements"
@@ -9847,9 +9860,9 @@
         "Text",
         "Button",
         "TextInput",
-        "Icon",
         "Link",
-        "Avatar"
+        "Avatar",
+        "Icon"
       ],
       "prefersOver": [
         "raw heading elements"
@@ -10469,13 +10482,7 @@
         "invent parallel primitives inside this folder",
         "hand-roll the card — WorkGrid owns the EnhancedProjectCard composition"
       ],
-      "composesWith": [
-        "Container",
-        "Section",
-        "WorkHero",
-        "CategoryFilter",
-        "animations"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 6
     },
@@ -11546,8 +11553,8 @@
         "ProjectDetailLayout",
         "ProjectHero",
         "RelatedProjects",
-        "ProcessBlock",
-        "ProjectMetaSection"
+        "ProjectMetaSection",
+        "TeamBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 8
@@ -12470,14 +12477,7 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [
-        "StoryBlock",
-        "ProjectDetailLayout",
-        "ProjectHero",
-        "RelatedProjects",
-        "GridBlock",
-        "ProjectMetaSection"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 10
     },
@@ -12545,8 +12545,8 @@
         "ProjectHero",
         "RelatedProjects",
         "GridBlock",
-        "ProcessBlock",
-        "ProjectMetaSection"
+        "ProjectMetaSection",
+        "TeamBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 8
@@ -12707,8 +12707,8 @@
         "ProjectDetailLayout",
         "RelatedProjects",
         "GridBlock",
-        "ProcessBlock",
-        "ProjectMetaSection"
+        "ProjectMetaSection",
+        "TeamBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
@@ -12798,7 +12798,7 @@
         "ProjectDetailLayout",
         "ProjectHero",
         "RelatedProjects",
-        "ProcessBlock"
+        "TeamBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 10
@@ -12959,8 +12959,8 @@
         "ProjectDetailLayout",
         "ProjectHero",
         "GridBlock",
-        "ProcessBlock",
-        "ProjectMetaSection"
+        "ProjectMetaSection",
+        "TeamBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 4
@@ -13395,8 +13395,8 @@
         "ProjectHero",
         "RelatedProjects",
         "GridBlock",
-        "ProcessBlock",
-        "ProjectMetaSection"
+        "ProjectMetaSection",
+        "TeamBlock"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
@@ -13494,12 +13494,12 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "ProcessBlock",
         "StoryBlock",
         "GridBlock",
         "ProjectDetailLayout",
         "ProjectHero",
-        "ProjectMetaSection"
+        "ProjectMetaSection",
+        "RelatedProjects"
       ],
       "prefersOver": [],
       "declaredPropCount": 11
@@ -13663,13 +13663,7 @@
         "invent parallel primitives inside this folder",
         "promote to stable without production consumer evidence"
       ],
-      "composesWith": [
-        "Container",
-        "Section",
-        "CategoryFilter",
-        "WorkGrid",
-        "animations"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 4
     },

@@ -1,218 +1,234 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "name": "Grid",
-  "tier": "atom",
-  "group": "layout",
-  "status": "stable",
-  "description": "CSS grid layout primitive with tokenized gaps.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1654",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {
-    "align": {
-      "values": [
-        "inherit",
-        "center",
-        "flex-start",
-        "flex-end",
-        "stretch",
-        "baseline",
-        "-moz-initial",
-        "initial",
-        "revert",
-        "revert-layer",
-        "unset",
-        "end",
-        "self-end",
-        "self-start",
-        "start",
-        "anchor-center",
-        "normal"
-      ],
-      "default": "inherit",
-      "propSourced": true
-    }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": true,
-    "realBrowserForcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed compare-clean in all four modes (plain/light/dark/forced-colors); Controls 9/9 operable + 0 inert. Pure two-dimensional layout primitive with no color surface of its own (tokens.colors empty), so light/dark is a structural no-op. The GridProps `[key: string]: any` passthrough is the intentional, documented escape hatch for arbitrary grid CSS props — kept as-is. 2026-07-10 — Figma component built (Atoms, node 1177-1654, parity-audit batch B2a): contract axes as variants with DT variable bindings."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "consumers": [
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
-      "since": "2026-06-04"
-    }
-  ],
-  "schemaVersion": 2,
-  "props": {
-    "children": {
-      "optional": false,
-      "type": "ReactNode"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Grid",
+    "tier": "atom",
+    "group": "layout",
+    "status": "stable",
+    "description": "CSS grid layout primitive with tokenized gaps.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1654",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "align": {
+            "values": [
+                "inherit",
+                "center",
+                "flex-start",
+                "flex-end",
+                "stretch",
+                "baseline",
+                "-moz-initial",
+                "initial",
+                "revert",
+                "revert-layer",
+                "unset",
+                "end",
+                "self-end",
+                "self-start",
+                "start",
+                "anchor-center",
+                "normal"
+            ],
+            "default": "inherit",
+            "propSourced": true
+        }
     },
-    "columns": {
-      "optional": true,
-      "type": "number | string"
-    },
-    "rows": {
-      "optional": true,
-      "type": "number | string"
-    },
-    "gap": {
-      "optional": true,
-      "type": "string"
-    },
-    "rowGap": {
-      "optional": true,
-      "type": "string"
-    },
-    "colGap": {
-      "optional": true,
-      "type": "string"
-    },
-    "align": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "inherit",
-        "center",
-        "flex-start",
-        "flex-end",
-        "stretch",
-        "baseline",
-        "-moz-initial",
-        "initial",
-        "revert",
-        "revert-layer",
-        "unset",
-        "end",
-        "self-end",
-        "self-start",
-        "start",
-        "anchor-center",
-        "normal"
-      ]
-    },
-    "justify": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "inherit",
-        "center",
-        "flex-start",
-        "flex-end",
-        "stretch",
-        "baseline",
-        "-moz-initial",
-        "initial",
-        "revert",
-        "revert-layer",
-        "unset",
-        "end",
-        "self-end",
-        "self-start",
-        "start",
-        "anchor-center",
-        "normal",
-        "left",
-        "legacy",
-        "right"
-      ]
-    },
-    "style": {
-      "optional": true,
-      "type": "CSSProperties"
-    },
-    "className": {
-      "optional": true,
-      "type": "string"
-    }
-  },
-  "forbiddenUse": [
-    "Use Grid for single-axis flows — Stack (token gaps) or FlexBox (free-form) read clearer and cost less.",
-    "Size cells by styling children with widths; spans and templates belong on the grid, not in the card."
-  ],
-  "composesWith": [
-    "Card",
-    "Container",
-    "AspectRatio"
-  ],
-  "displayName": "Grid",
-  "keywords": [
-    "grid",
-    "columns",
-    "layout",
-    "span",
-    "grid item",
-    "two dimensional"
-  ],
-  "dense": "CSS-grid wrapper: numeric columns for equal tracks or template strings; gap/rowGap/colGap strings; Grid.Item adds span/rowSpan; extra grid CSS props pass through via style",
-  "usage": {
-    "description": "Grid is the two-dimensional layout primitive: pass `columns` as a number for equal tracks or a template string for custom ones, gaps as CSS strings (prefer space tokens), and wrap children needing to span in `Grid.Item` with `span`/`rowSpan`. Reach for it when both axes matter — card walls, media mosaics, dashboard modules; single-axis flows are Stack/FlexBox territory.",
-    "bestPractices": [
-      {
-        "guidance": true,
-        "description": "Use numeric columns for equal tracks and a template string (e.g. \"2fr 1fr\") only when tracks genuinely differ."
-      },
-      {
-        "guidance": true,
-        "description": "Wrap only the children that span in Grid.Item; plain children flow one per cell without a wrapper."
-      },
-      {
-        "guidance": true,
-        "description": "Set gaps with space tokens (\"var(--space-layout-24)\") so grid gutters follow the page rhythm."
-      },
-      {
-        "guidance": true,
-        "description": "Give featured cards span={2} instead of a wider one-off column template."
-      },
-      {
-        "guidance": false,
-        "description": "Do not use Grid for single-axis flows — Stack (token gaps) or FlexBox (free-form) read clearer and cost less."
-      },
-      {
-        "guidance": false,
-        "description": "Do not size cells by styling children with widths; spans and templates belong on the grid, not in the card."
-      }
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "anatomy": [
-      {
-        "name": "Grid",
-        "required": true,
-        "description": "The display:grid container; columns/rows/gaps and any extra grid CSS via props."
-      },
-      {
-        "name": "Grid.Item",
-        "required": false,
-        "description": "Optional child wrapper adding span/rowSpan; unwrapped children occupy one cell each."
-      }
-    ]
-  },
-  "playground": {
-    "defaults": {
-      "columns": 3,
-      "gap": "1.5rem",
-      "children": "Add Grid.Item children in code"
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed compare-clean in all four modes (plain/light/dark/forced-colors); Controls 9/9 operable + 0 inert. Pure two-dimensional layout primitive with no color surface of its own (tokens.colors empty), so light/dark is a structural no-op. The GridProps `[key: string]: any` passthrough is the intentional, documented escape hatch for arbitrary grid CSS props — kept as-is. 2026-07-10 — Figma component built (Atoms, node 1177-1654, parity-audit batch B2a): contract axes as variants with DT variable bindings."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
+            "since": "2026-06-04"
+        }
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "columns": {
+            "optional": true,
+            "type": "number | string"
+        },
+        "tabletColumns": {
+            "optional": true,
+            "type": "number | string"
+        },
+        "desktopColumns": {
+            "optional": true,
+            "type": "number | string"
+        },
+        "rows": {
+            "optional": true,
+            "type": "number | string"
+        },
+        "gap": {
+            "optional": true,
+            "type": "string"
+        },
+        "tabletGap": {
+            "optional": true,
+            "type": "string"
+        },
+        "desktopGap": {
+            "optional": true,
+            "type": "string"
+        },
+        "rowGap": {
+            "optional": true,
+            "type": "string"
+        },
+        "colGap": {
+            "optional": true,
+            "type": "string"
+        },
+        "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "inherit",
+                "center",
+                "flex-start",
+                "flex-end",
+                "stretch",
+                "baseline",
+                "-moz-initial",
+                "initial",
+                "revert",
+                "revert-layer",
+                "unset",
+                "end",
+                "self-end",
+                "self-start",
+                "start",
+                "anchor-center",
+                "normal"
+            ]
+        },
+        "justify": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "inherit",
+                "center",
+                "flex-start",
+                "flex-end",
+                "stretch",
+                "baseline",
+                "-moz-initial",
+                "initial",
+                "revert",
+                "revert-layer",
+                "unset",
+                "end",
+                "self-end",
+                "self-start",
+                "start",
+                "anchor-center",
+                "normal",
+                "left",
+                "legacy",
+                "right"
+            ]
+        },
+        "style": {
+            "optional": true,
+            "type": "CSSProperties"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "Use Grid for single-axis flows — Stack (token gaps) or FlexBox (free-form) read clearer and cost less.",
+        "Size cells by styling children with widths; spans and templates belong on the grid, not in the card."
+    ],
+    "composesWith": [
+        "Card",
+        "Container",
+        "AspectRatio"
+    ],
+    "displayName": "Grid",
+    "keywords": [
+        "grid",
+        "columns",
+        "layout",
+        "span",
+        "grid item",
+        "two dimensional"
+    ],
+    "dense": "CSS-grid wrapper: numeric columns for equal tracks or template strings; gap/rowGap/colGap strings; Grid.Item adds span/rowSpan; extra grid CSS props pass through via style",
+    "usage": {
+        "description": "Grid is the two-dimensional layout primitive: pass `columns` as a number for equal tracks or a template string for custom ones, gaps as CSS strings (prefer space tokens), and wrap children needing to span in `Grid.Item` with `span`/`rowSpan`. Reach for it when both axes matter — card walls, media mosaics, dashboard modules; single-axis flows are Stack/FlexBox territory.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use numeric columns for equal tracks and a template string (e.g. \"2fr 1fr\") only when tracks genuinely differ."
+            },
+            {
+                "guidance": true,
+                "description": "Wrap only the children that span in Grid.Item; plain children flow one per cell without a wrapper."
+            },
+            {
+                "guidance": true,
+                "description": "Set gaps with space tokens (\"var(--space-layout-24)\") so grid gutters follow the page rhythm."
+            },
+            {
+                "guidance": true,
+                "description": "Give featured cards span={2} instead of a wider one-off column template."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Grid for single-axis flows — Stack (token gaps) or FlexBox (free-form) read clearer and cost less."
+            },
+            {
+                "guidance": false,
+                "description": "Do not size cells by styling children with widths; spans and templates belong on the grid, not in the card."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Grid",
+                "required": true,
+                "description": "The display:grid container; columns/rows/gaps and any extra grid CSS via props."
+            },
+            {
+                "name": "Grid.Item",
+                "required": false,
+                "description": "Optional child wrapper adding span/rowSpan; unwrapped children occupy one cell each."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "columns": 3,
+            "gap": "1.5rem",
+            "children": "Add Grid.Item children in code"
+        }
     }
-  }
 }

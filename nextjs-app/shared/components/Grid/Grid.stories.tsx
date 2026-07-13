@@ -166,6 +166,24 @@ export const SpannedFeature: Story = {
   ),
 };
 
+/** Per-breakpoint columns and gaps — one column on mobile, two from tablet, three from desktop. */
+export const ResponsiveColumns: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Per-breakpoint columns and gaps: tabletColumns/desktopColumns and tabletGap/desktopGap resolve at the design-token breakpoints (768px / 1024px), falling back through the previous breakpoint. Resize the viewport to see the tracks change. Numeric responsive counts render as minmax(0, 1fr) tracks so cells can shrink below content width." } },
+  },
+  render: () => (
+    <Grid columns={1} tabletColumns={2} desktopColumns={3} gap="1.25rem" tabletGap="2rem" desktopGap="2.5rem">
+      {Array.from({ length: 6 }, (_, i) => (
+        <div key={i} style={{ border: "1px dashed var(--color-border, #999)", padding: "1rem", textAlign: "center" }}>
+          Cell {i + 1}
+        </div>
+      ))}
+    </Grid>
+  ),
+};
+
 /** A template string when tracks genuinely differ — sidebar plus content here. */
 export const CustomTemplate: Story = {
   tags: ["example"],

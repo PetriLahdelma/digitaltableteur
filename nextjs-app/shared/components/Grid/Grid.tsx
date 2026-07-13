@@ -12,10 +12,21 @@ export interface GridProps {
   children: ReactNode;
   /** Column count or grid-template-columns string. */
   columns?: number | string;
+  /** Columns from the tablet breakpoint (768px) up. Numeric counts render as
+   * `repeat(n, minmax(0, 1fr))` so cells can shrink below content width. */
+  tabletColumns?: number | string;
+  /** Columns from the desktop breakpoint (1024px) up. Falls back to
+   * tabletColumns, then columns. */
+  desktopColumns?: number | string;
   /** Row count or grid-template-rows string. */
   rows?: number | string;
   /** Grid gap. @default "1rem" */
   gap?: string;
+  /** Gap from the tablet breakpoint (768px) up. */
+  tabletGap?: string;
+  /** Gap from the desktop breakpoint (1024px) up. Falls back to tabletGap,
+   * then gap. */
+  desktopGap?: string;
   /** Row gap override. */
   rowGap?: string;
   /** Column gap override. */
@@ -48,8 +59,12 @@ interface GridItemProps {
 function Grid({
   children,
   columns = 1,
+  tabletColumns,
+  desktopColumns,
   rows,
   gap = "1rem",
+  tabletGap,
+  desktopGap,
   rowGap,
   colGap,
   align,
@@ -82,15 +97,45 @@ function Grid({
     return child;
   });
 
+  // Per-breakpoint props switch the column/gap resolution from inline styles
+  // to CSS custom properties read by the .responsive media queries in
+  // Grid.module.css (inline styles cannot express media queries). Without
+  // them the legacy inline path below renders byte-identical to before.
+  const isResponsive =
+    tabletColumns != null ||
+    desktopColumns != null ||
+    tabletGap != null ||
+    desktopGap != null;
+
+  // Responsive tracks use minmax(0, 1fr) so cells can shrink below their
+  // content's intrinsic width (matches utility-grid column behavior).
+  const toTemplate = (value: number | string) =>
+    typeof value === "number" ? `repeat(${value}, minmax(0, 1fr))` : value;
+
   const gridStyles: CSSProperties = {
     display: "grid",
-    gridTemplateColumns:
-      typeof columns === "number" ? `repeat(${columns}, 1fr)` : columns,
+    ...(isResponsive
+      ? ({
+          "--grid-cols": toTemplate(columns),
+          ...(tabletColumns != null && {
+            "--grid-cols-tablet": toTemplate(tabletColumns),
+          }),
+          ...(desktopColumns != null && {
+            "--grid-cols-desktop": toTemplate(desktopColumns),
+          }),
+          "--grid-gap": gap,
+          ...(tabletGap != null && { "--grid-gap-tablet": tabletGap }),
+          ...(desktopGap != null && { "--grid-gap-desktop": desktopGap }),
+        } as CSSProperties)
+      : {
+          gridTemplateColumns:
+            typeof columns === "number" ? `repeat(${columns}, 1fr)` : columns,
+          gap,
+        }),
     ...(rows && {
       gridTemplateRows:
         typeof rows === "number" ? `repeat(${rows}, 1fr)` : rows,
     }),
-    gap,
     ...(rowGap && { rowGap }),
     ...(colGap && { columnGap: colGap }),
     ...(align && { alignItems: align }),
@@ -98,8 +143,16 @@ function Grid({
     ...style,
   };
 
+  const gridClassName = [
+    styles.grid,
+    isResponsive ? styles.responsive : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div className={`${styles.grid} ${className}`} style={gridStyles} {...rest}>
+    <div className={gridClassName} style={gridStyles} {...rest}>
       {enhancedChildren}
     </div>
   );

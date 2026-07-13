@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-12T15:25:47.936Z",
+  "generatedAt": "2026-07-13T07:55:52.815Z",
   "summary": {
     "componentCount": 165,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 88.2,
     "codebaseComponentCount": 187,
     "usageCoveragePercent": 93.3,
-    "componentsWithProductionUsage": 37,
+    "componentsWithProductionUsage": 33,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,19 +79,19 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 165,
     "withAnyUsage": 154,
-    "withProductionUsage": 37,
+    "withProductionUsage": 33,
     "uniqueImportedComponents": 154,
-    "totalEvidenceRows": 763,
-    "aliasImportFiles": 377,
-    "relativeImportFiles": 415,
+    "totalEvidenceRows": 748,
+    "aliasImportFiles": 380,
+    "relativeImportFiles": 397,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-12T04:16:17.105Z",
+    "generatedAt": "2026-07-13T07:55:49.477Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 83,
+    "nodesWithComposesWith": 80,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -5848,17 +5848,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/CategoryFilter",
-        "importCount": 2,
-        "productionImportCount": 1,
+        "importCount": 1,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../components/CategoryFilter",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/ui/index.ts",
             "importKind": "relative",
@@ -5956,13 +5950,7 @@
           "Use as primary navigation — `CategoryFilter` is a UI control, not a nav surface; use `NavLink` for routes.",
           "Stack two filter rows when one composite control would do — readability collapses."
         ],
-        "composesWith": [
-          "Container",
-          "Section",
-          "WorkHero",
-          "WorkGrid",
-          "animations"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 6
       }
@@ -9540,8 +9528,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Container",
-        "importCount": 31,
-        "productionImportCount": 3,
+        "importCount": 30,
+        "productionImportCount": 2,
         "patternImportCount": 23,
         "componentImportCount": 4,
         "evidence": [
@@ -9555,12 +9543,6 @@
             "path": "app/blog/[slug]/ServerRelatedPosts.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/Container",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../components/Container",
             "context": "production"
           },
           {
@@ -9613,6 +9595,12 @@
           },
           {
             "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Container",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
             "importKind": "relative",
             "importPath": "../../components/Container",
             "context": "pattern"
@@ -9871,8 +9859,8 @@
           "animations",
           "Stack",
           "Link",
-          "Badge",
-          "Checkbox"
+          "ScrollIndicator",
+          "Badge"
         ],
         "prefersOver": [],
         "declaredPropCount": 5
@@ -13874,11 +13862,27 @@
             "optional": true,
             "type": "number | string"
           },
+          "tabletColumns": {
+            "optional": true,
+            "type": "number | string"
+          },
+          "desktopColumns": {
+            "optional": true,
+            "type": "number | string"
+          },
           "rows": {
             "optional": true,
             "type": "number | string"
           },
           "gap": {
+            "optional": true,
+            "type": "string"
+          },
+          "tabletGap": {
+            "optional": true,
+            "type": "string"
+          },
+          "desktopGap": {
             "optional": true,
             "type": "string"
           },
@@ -14004,7 +14008,7 @@
           "Avatar"
         ],
         "prefersOver": [],
-        "declaredPropCount": 10
+        "declaredPropCount": 14
       }
     },
     {
@@ -17331,11 +17335,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/List",
-        "importCount": 1,
+        "importCount": 2,
         "productionImportCount": 0,
-        "patternImportCount": 0,
+        "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/List",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -17458,7 +17468,10 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Text",
+          "Title"
+        ],
         "prefersOver": [],
         "declaredPropCount": 9
       }
@@ -24026,17 +24039,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Section",
-        "importCount": 21,
-        "productionImportCount": 1,
+        "importCount": 20,
+        "productionImportCount": 0,
         "patternImportCount": 20,
         "componentImportCount": 0,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../components/Section",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/patterns/AboutHero/AboutHero.tsx",
             "importKind": "relative",
@@ -24099,6 +24106,12 @@
           },
           {
             "path": "nextjs-app/shared/patterns/ProjectDetailTemplate/ProjectDetailTemplate.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Section",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/ProjectHero/ProjectHero.tsx",
             "importKind": "relative",
             "importPath": "../../components/Section",
             "context": "pattern"
@@ -29971,11 +29984,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 52,
+        "importCount": 53,
         "productionImportCount": 0,
-        "patternImportCount": 0,
+        "patternImportCount": 1,
         "componentImportCount": 27,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Text",
+            "context": "pattern"
+          },
           {
             "path": "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
             "importKind": "alias",
@@ -30038,12 +30057,6 @@
           },
           {
             "path": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Text",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.tsx",
             "importKind": "alias",
             "importPath": "@dt/Text",
             "context": "component"
@@ -30150,7 +30163,7 @@
           "TextInput",
           "Icon",
           "CheckboxGroup",
-          "Modal"
+          "Link"
         ],
         "prefersOver": [
           "raw paragraph elements"
@@ -31664,15 +31677,21 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 27,
+        "importCount": 28,
         "productionImportCount": 0,
-        "patternImportCount": 3,
+        "patternImportCount": 4,
         "componentImportCount": 15,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/ContentSection/ContentSection.tsx",
             "importKind": "relative",
             "importPath": "../../components/Title",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Title",
             "context": "pattern"
           },
           {
@@ -31731,12 +31750,6 @@
           },
           {
             "path": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Title",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.tsx",
             "importKind": "alias",
             "importPath": "@dt/Title",
             "context": "component"
@@ -31852,9 +31865,9 @@
           "Text",
           "Button",
           "TextInput",
-          "Icon",
           "Link",
-          "Avatar"
+          "Avatar",
+          "Icon"
         ],
         "prefersOver": [
           "raw heading elements"
@@ -33800,13 +33813,7 @@
           "invent parallel primitives inside this folder",
           "hand-roll the card — WorkGrid owns the EnhancedProjectCard composition"
         ],
-        "composesWith": [
-          "Container",
-          "Section",
-          "WorkHero",
-          "CategoryFilter",
-          "animations"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 6
       }
@@ -36927,8 +36934,8 @@
           "ProjectDetailLayout",
           "ProjectHero",
           "RelatedProjects",
-          "ProcessBlock",
-          "ProjectMetaSection"
+          "ProjectMetaSection",
+          "TeamBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 8
@@ -38858,35 +38865,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PageLayout",
-        "importCount": 14,
-        "productionImportCount": 4,
+        "importCount": 10,
+        "productionImportCount": 0,
         "patternImportCount": 9,
         "componentImportCount": 0,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../patterns/PageLayout/PageLayout",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../patterns/PageLayout/PageLayout",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../patterns/PageLayout/PageLayout",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../patterns/PageLayout/PageLayout",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/patterns/GridBlock/GridBlock.tsx",
             "importKind": "relative",
@@ -38934,6 +38917,18 @@
             "importKind": "relative",
             "importPath": "../PageLayout/PageLayout",
             "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx",
+            "importKind": "relative",
+            "importPath": "../PageLayout/PageLayout",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.stories.tsx",
+            "importKind": "relative",
+            "importPath": "../PageLayout/PageLayout",
+            "context": "story"
           }
         ]
       },
@@ -39387,77 +39382,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProcessBlock",
-        "importCount": 12,
-        "productionImportCount": 11,
+        "importCount": 1,
+        "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
-          {
-            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/ProjectSpine/ProjectSpinePage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/RawView/RawViewPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProcessBlock",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/patterns/index.ts",
             "importKind": "relative",
@@ -39554,14 +39483,7 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [
-          "StoryBlock",
-          "ProjectDetailLayout",
-          "ProjectHero",
-          "RelatedProjects",
-          "GridBlock",
-          "ProjectMetaSection"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 10
       }
@@ -39792,8 +39714,8 @@
           "ProjectHero",
           "RelatedProjects",
           "GridBlock",
-          "ProcessBlock",
-          "ProjectMetaSection"
+          "ProjectMetaSection",
+          "TeamBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 8
@@ -40235,8 +40157,8 @@
           "ProjectDetailLayout",
           "RelatedProjects",
           "GridBlock",
-          "ProcessBlock",
-          "ProjectMetaSection"
+          "ProjectMetaSection",
+          "TeamBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 11
@@ -40479,7 +40401,7 @@
           "ProjectDetailLayout",
           "ProjectHero",
           "RelatedProjects",
-          "ProcessBlock"
+          "TeamBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 10
@@ -40989,8 +40911,8 @@
           "ProjectDetailLayout",
           "ProjectHero",
           "GridBlock",
-          "ProcessBlock",
-          "ProjectMetaSection"
+          "ProjectMetaSection",
+          "TeamBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 4
@@ -42324,8 +42246,8 @@
           "ProjectHero",
           "RelatedProjects",
           "GridBlock",
-          "ProcessBlock",
-          "ProjectMetaSection"
+          "ProjectMetaSection",
+          "TeamBlock"
         ],
         "prefersOver": [],
         "declaredPropCount": 11
@@ -42604,12 +42526,12 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "ProcessBlock",
           "StoryBlock",
           "GridBlock",
           "ProjectDetailLayout",
           "ProjectHero",
-          "ProjectMetaSection"
+          "ProjectMetaSection",
+          "RelatedProjects"
         ],
         "prefersOver": [],
         "declaredPropCount": 11
@@ -43041,13 +42963,7 @@
           "invent parallel primitives inside this folder",
           "promote to stable without production consumer evidence"
         ],
-        "composesWith": [
-          "Container",
-          "Section",
-          "CategoryFilter",
-          "WorkGrid",
-          "animations"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 4
       }
