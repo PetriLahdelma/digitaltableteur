@@ -18,6 +18,12 @@ export interface GridProps {
   /** Columns from the desktop breakpoint (1024px) up. Falls back to
    * tabletColumns, then columns. */
   desktopColumns?: number | string;
+  /** Columns from the wide breakpoint (1440px) up. Falls back through
+   * desktopColumns, tabletColumns, columns. */
+  wideColumns?: number | string;
+  /** Columns from the ultra breakpoint (1920px) up. Falls back through
+   * wideColumns, desktopColumns, tabletColumns, columns. */
+  ultraColumns?: number | string;
   /** Row count or grid-template-rows string. */
   rows?: number | string;
   /** Grid gap. @default "1rem" */
@@ -27,6 +33,12 @@ export interface GridProps {
   /** Gap from the desktop breakpoint (1024px) up. Falls back to tabletGap,
    * then gap. */
   desktopGap?: string;
+  /** Gap from the wide breakpoint (1440px) up. Falls back through desktopGap,
+   * tabletGap, gap. */
+  wideGap?: string;
+  /** Gap from the ultra breakpoint (1920px) up. Falls back through wideGap,
+   * desktopGap, tabletGap, gap. */
+  ultraGap?: string;
   /** Row gap override. */
   rowGap?: string;
   /** Column gap override. */
@@ -61,10 +73,14 @@ function Grid({
   columns = 1,
   tabletColumns,
   desktopColumns,
+  wideColumns,
+  ultraColumns,
   rows,
   gap = "1rem",
   tabletGap,
   desktopGap,
+  wideGap,
+  ultraGap,
   rowGap,
   colGap,
   align,
@@ -104,8 +120,12 @@ function Grid({
   const isResponsive =
     tabletColumns != null ||
     desktopColumns != null ||
+    wideColumns != null ||
+    ultraColumns != null ||
     tabletGap != null ||
-    desktopGap != null;
+    desktopGap != null ||
+    wideGap != null ||
+    ultraGap != null;
 
   // Responsive tracks use minmax(0, 1fr) so cells can shrink below their
   // content's intrinsic width (matches utility-grid column behavior).
@@ -123,9 +143,17 @@ function Grid({
           ...(desktopColumns != null && {
             "--grid-cols-desktop": toTemplate(desktopColumns),
           }),
+          ...(wideColumns != null && {
+            "--grid-cols-wide": toTemplate(wideColumns),
+          }),
+          ...(ultraColumns != null && {
+            "--grid-cols-ultra": toTemplate(ultraColumns),
+          }),
           "--grid-gap": gap,
           ...(tabletGap != null && { "--grid-gap-tablet": tabletGap }),
           ...(desktopGap != null && { "--grid-gap-desktop": desktopGap }),
+          ...(wideGap != null && { "--grid-gap-wide": wideGap }),
+          ...(ultraGap != null && { "--grid-gap-ultra": ultraGap }),
         } as CSSProperties)
       : {
           gridTemplateColumns:

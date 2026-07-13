@@ -166,15 +166,25 @@ export const SpannedFeature: Story = {
   ),
 };
 
-/** Per-breakpoint columns and gaps — one column on mobile, two from tablet, three from desktop. */
+/** Per-breakpoint columns and gaps — one column on mobile, two from tablet, three from desktop, four from wide, six from ultra. */
 export const ResponsiveColumns: Story = {
   tags: ["example"],
   parameters: {
     controls: { disable: true },
-    docs: { description: { story: "Per-breakpoint columns and gaps: tabletColumns/desktopColumns and tabletGap/desktopGap resolve at the design-token breakpoints (768px / 1024px), falling back through the previous breakpoint. Resize the viewport to see the tracks change. Numeric responsive counts render as minmax(0, 1fr) tracks so cells can shrink below content width." } },
+    docs: { description: { story: "Per-breakpoint columns and gaps: tabletColumns/desktopColumns/wideColumns/ultraColumns and the matching Gap props resolve at the design-token breakpoints (768 / 1024 / 1440 / 1920px), each falling back through the previous rung. Resize the viewport to see the tracks change. Numeric responsive counts render as minmax(0, 1fr) tracks so cells can shrink below content width." } },
   },
   render: () => (
-    <Grid columns={1} tabletColumns={2} desktopColumns={3} gap="1.25rem" tabletGap="2rem" desktopGap="2.5rem">
+    <Grid
+      columns={1}
+      tabletColumns={2}
+      desktopColumns={3}
+      wideColumns={4}
+      ultraColumns={6}
+      gap="1.25rem"
+      tabletGap="2rem"
+      desktopGap="2.5rem"
+      wideGap="3rem"
+    >
       {Array.from({ length: 6 }, (_, i) => (
         <div key={i} style={{ border: "1px dashed var(--color-border, #999)", padding: "1rem", textAlign: "center" }}>
           Cell {i + 1}

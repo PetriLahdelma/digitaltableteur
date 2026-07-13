@@ -4,12 +4,13 @@
   grid-auto-rows: minmax(6.25rem, auto); /* Converted 100px to rem */
 }
 
-/* Per-breakpoint column/gap resolution for tabletColumns/desktopColumns and
-   tabletGap/desktopGap. Values arrive as CSS custom properties set inline by
-   Grid.tsx; each breakpoint falls back through the previous one. Breakpoints
-   mirror --breakpoint-tablet (768px) and --breakpoint-desktop (1024px) from
-   variables.css — media queries cannot read custom properties, so the values
-   are repeated here. */
+/* Per-breakpoint column/gap resolution for the responsive props
+   (tablet/desktop/wide/ultra Columns and Gaps). Values arrive as CSS custom
+   properties set inline by Grid.tsx; each breakpoint falls back through the
+   previous one. Breakpoints mirror --breakpoint-tablet (768px),
+   --breakpoint-desktop (1024px), --breakpoint-wide (1440px) and
+   --breakpoint-ultra (1920px) from variables.css — media queries cannot read
+   custom properties, so the values are repeated here. */
 
 .responsive {
   grid-template-columns: var(--grid-cols);
@@ -30,6 +31,38 @@
       var(--grid-cols-tablet, var(--grid-cols))
     );
     gap: var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)));
+  }
+}
+
+@media (width >= 1440px) {
+  .responsive {
+    grid-template-columns: var(
+      --grid-cols-wide,
+      var(--grid-cols-desktop, var(--grid-cols-tablet, var(--grid-cols)))
+    );
+    gap: var(
+      --grid-gap-wide,
+      var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)))
+    );
+  }
+}
+
+@media (width >= 1920px) {
+  .responsive {
+    grid-template-columns: var(
+      --grid-cols-ultra,
+      var(
+        --grid-cols-wide,
+        var(--grid-cols-desktop, var(--grid-cols-tablet, var(--grid-cols)))
+      )
+    );
+    gap: var(
+      --grid-gap-ultra,
+      var(
+        --grid-gap-wide,
+        var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)))
+      )
+    );
   }
 }
 

@@ -92,6 +92,14 @@
             "optional": true,
             "type": "number | string"
         },
+        "wideColumns": {
+            "optional": true,
+            "type": "number | string"
+        },
+        "ultraColumns": {
+            "optional": true,
+            "type": "number | string"
+        },
         "rows": {
             "optional": true,
             "type": "number | string"
@@ -105,6 +113,14 @@
             "type": "string"
         },
         "desktopGap": {
+            "optional": true,
+            "type": "string"
+        },
+        "wideGap": {
+            "optional": true,
+            "type": "string"
+        },
+        "ultraGap": {
             "optional": true,
             "type": "string"
         },
