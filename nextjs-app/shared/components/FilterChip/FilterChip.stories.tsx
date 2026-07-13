@@ -39,7 +39,9 @@ const meta = {
       table: { defaultValue: { summary: "md" }, category: "Appearance" },
     },
     count: {
-      control: "number",
+      control: { type: "select" },
+      options: ["none", "few", "many"],
+      mapping: { none: undefined, few: 3, many: 12 },
       description: "Optional count suffix, rendered as (n).",
       table: { category: "Content" },
     },
@@ -54,6 +56,8 @@ const meta = {
     pressed: false,
     variant: "pill" as const,
     size: "md" as const,
+    count: "none" as unknown as number,
+    className: "",
     children: "Design systems",
   },
 } satisfies Meta<typeof FilterChip>;

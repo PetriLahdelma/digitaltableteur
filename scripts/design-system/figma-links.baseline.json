@@ -1,4 +1,4 @@
 {
-  "stablePlaceholderCeiling": 67,
-  "note": "Ratchet for BETA and STABLE contracts whose figma link does not resolve to a real component in figma-component-index.json (validate requires a figma URL for both tiers). Raised to 67 on 2026-07-12 when the check was extended to cover beta (was stable-only at 36); beta added 31 placeholders incl. Tooltip. Lower this in the PR that wires a real component. See docs/design-system/figma-parity-audit.md"
+  "stablePlaceholderCeiling": 66,
+  "note": "Ratchet for BETA and STABLE contracts whose figma link does not resolve to a real component in figma-component-index.json (validate requires a figma URL for both tiers). Raised to 67 on 2026-07-12 when the check was extended to cover beta (was stable-only at 36); beta added 31 placeholders incl. Tooltip. Tightened to 66 on 2026-07-13 to lock in the improvement already present on main (count had dropped to 66 but the baseline was never lowered). Lower this in the PR that wires a real component. See docs/design-system/figma-parity-audit.md"
 }

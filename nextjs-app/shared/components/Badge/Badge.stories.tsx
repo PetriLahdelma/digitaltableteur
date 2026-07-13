@@ -133,6 +133,7 @@ const meta: Meta<typeof Badge> = {
     className: "",
     removable: false,
     square: false,
+    dot: false,
     size: "md",
   },
 };

@@ -52,7 +52,23 @@ const meta = {
       description: "Accessible name (the control is icon-only).",
       table: { category: "Accessibility" },
     },
-    children: { table: { disable: true } },
+    children: {
+      control: { type: "select" },
+      options: ["linkedin", "github", "instagram", "facebook"],
+      mapping: {
+        linkedin: <LinkedinLogo aria-hidden="true" />,
+        github: <GithubLogo aria-hidden="true" />,
+        instagram: <InstagramLogo aria-hidden="true" />,
+        facebook: <FacebookLogo aria-hidden="true" />,
+      },
+      description: "Brand glyph node (icon-only). Presets here; pass any ReactNode in code.",
+      table: { category: "Content", type: { summary: "ReactNode" } },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS class names.",
+      table: { category: "Advanced" },
+    },
   },
   args: {
     href: "https://www.linkedin.com/company/digitaltableteur/",
@@ -60,7 +76,8 @@ const meta = {
     variant: "plain" as const,
     size: "md" as const,
     external: true,
-    children: <LinkedinLogo aria-hidden="true" />,
+    className: "",
+    children: "linkedin",
   },
 } satisfies Meta<typeof SocialIconLink>;
 
