@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-13T09:27:24.070Z",
+  "generatedAt": "2026-07-13T09:58:18.163Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -13385,7 +13385,7 @@
         "tier": "atom",
         "group": "layout",
         "status": "stable",
-        "description": "CSS grid layout primitive with tokenized gaps.",
+        "description": "CSS grid layout primitive with scalar and token-breakpoint responsive columns and gaps.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1654",
         "radixPrimitive": null,
         "element": "div",
@@ -13416,7 +13416,12 @@
         },
         "slots": [],
         "asChild": false,
-        "subParts": [],
+        "subParts": [
+          {
+            "name": "GridItem",
+            "element": "div"
+          }
+        ],
         "requiredStories": [
           "Default",
           "Playground",
@@ -13619,9 +13624,9 @@
           "grid item",
           "two dimensional"
         ],
-        "dense": "CSS-grid wrapper: numeric columns for equal tracks or template strings; gap/rowGap/colGap strings; Grid.Item adds span/rowSpan; extra grid CSS props pass through via style",
+        "dense": "CSS-grid wrapper with scalar or 768/1024/1440/1920 responsive columns and gaps; numeric responsive tracks use minmax(0, 1fr); Grid.Item adds spans",
         "usage": {
-          "description": "Grid is the two-dimensional layout primitive: pass `columns` as a number for equal tracks or a template string for custom ones, gaps as CSS strings (prefer space tokens), and wrap children needing to span in `Grid.Item` with `span`/`rowSpan`. Reach for it when both axes matter — card walls, media mosaics, dashboard modules; single-axis flows are Stack/FlexBox territory.",
+          "description": "Grid is the two-dimensional layout primitive: pass `columns` as a number for equal tracks or a template string for custom ones, then add `tabletColumns`/`desktopColumns`/`wideColumns`/`ultraColumns` and matching gap props when the layout changes at the 768/1024/1440/1920 token breakpoints. Sparse responsive values inherit through the previous rung, and numeric responsive tracks use `minmax(0, 1fr)`. Wrap children needing to span in `Grid.Item` with `span`/`rowSpan`; use Stack or FlexBox when only one axis matters.",
           "bestPractices": [
             {
               "guidance": true,
@@ -13634,6 +13639,10 @@
             {
               "guidance": true,
               "description": "Set gaps with space tokens (\"var(--space-layout-24)\") so grid gutters follow the page rhythm."
+            },
+            {
+              "guidance": true,
+              "description": "Set only the responsive rungs that change; omitted tablet, desktop, wide, or ultra values inherit through the previous rung."
             },
             {
               "guidance": true,
@@ -13669,7 +13678,7 @@
           }
         }
       },
-      "spec": "# Grid\n\n## Intent\nDocuments how **Grid** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on Grid pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
+      "spec": "# Grid\n\n## Intent\n\nUse **Grid** for two-dimensional layouts whose rows and columns both matter.\nNumeric columns create equal tracks; template strings describe asymmetric\ntracks. Use Stack or FlexBox for single-axis flow.\n\n## Interaction contract\n\n- Grid adds no interaction or ARIA semantics of its own.\n- DOM order remains the keyboard and screen-reader order; do not use visual\n  placement to imply a different reading order.\n\n## Responsive contract\n\n- `columns` and `gap` are the base values. Add `tabletColumns`/`tabletGap`,\n  `desktopColumns`/`desktopGap`, `wideColumns`/`wideGap`, and\n  `ultraColumns`/`ultraGap` at 768/1024/1440/1920px.\n- Omitted values inherit through the previous rung, so set only the points\n  where the layout changes.\n- Numeric responsive columns render as `repeat(n, minmax(0, 1fr))`; template\n  strings pass through unchanged.\n- With no responsive props, Grid preserves the scalar inline API and numeric\n  `repeat(n, 1fr)` output used before the responsive props were added.\n\n## Do / don't\n\n- Do: Use responsive props on Grid instead of creating page-specific grid wrappers or duplicating token breakpoints in consumer stylesheets.\n- Do: Wrap only spanning children in `Grid.Item` with `span` or `rowSpan`.\n- Don't: Replace the flat responsive props with object syntax; the flat API is the published compatibility boundary.\n- Don't: Size grid cells with child widths or use Grid for a one-dimensional sequence.\n\n## Design notes\n\n- Breakpoints mirror the layout tokens in `variables.css`; media queries repeat\n  their fixed values because CSS custom properties cannot be used in queries.\n- Prefer spacing tokens in gap strings.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Grid",
@@ -13706,7 +13715,7 @@
       },
       "agent": {
         "preferredImport": "@dt/Grid",
-        "intent": "Documents how **Grid** is used in production layouts and Storybook examples.",
+        "intent": "Use **Grid** for two-dimensional layouts whose rows and columns both matter. Numeric columns create equal tracks; template strings describe asymmetric tracks. Use Stack or FlexBox for single-axis flow.",
         "props": {
           "children": {
             "optional": false,
@@ -13849,10 +13858,12 @@
         "cvaVariants": {},
         "variantsFnName": null,
         "useWhen": [
-          "Match the **Example** story composition on Grid pages."
+          "Use responsive props on Grid instead of creating page-specific grid wrappers or duplicating token breakpoints in consumer stylesheets.",
+          "Wrap only spanning children in `Grid.Item` with `span` or `rowSpan`."
         ],
         "avoidWhen": [
-          "Bypass design tokens or skip forced-colors verification at beta."
+          "Replace the flat responsive props with object syntax; the flat API is the published compatibility boundary.",
+          "Size grid cells with child widths or use Grid for a one-dimensional sequence."
         ],
         "requiredA11y": [],
         "keyboard": [],
@@ -13867,7 +13878,8 @@
           "manual CSS grid with arbitrary gap literals"
         ],
         "forbiddenUse": [
-          "Bypass design tokens or skip forced-colors verification at beta."
+          "Replace the flat responsive props with object syntax; the flat API is the published compatibility boundary.",
+          "Size grid cells with child widths or use Grid for a one-dimensional sequence."
         ],
         "composesWith": [
           "FlexBox",

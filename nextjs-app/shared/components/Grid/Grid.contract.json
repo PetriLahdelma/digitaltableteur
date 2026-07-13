@@ -4,7 +4,7 @@
     "tier": "atom",
     "group": "layout",
     "status": "stable",
-    "description": "CSS grid layout primitive with tokenized gaps.",
+    "description": "CSS grid layout primitive with scalar and token-breakpoint responsive columns and gaps.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1654",
     "radixPrimitive": null,
     "element": "div",
@@ -35,7 +35,12 @@
     },
     "slots": [],
     "asChild": false,
-    "subParts": [],
+    "subParts": [
+        {
+            "name": "GridItem",
+            "element": "div"
+        }
+    ],
     "requiredStories": [
         "Default",
         "Playground",
@@ -238,9 +243,9 @@
         "grid item",
         "two dimensional"
     ],
-    "dense": "CSS-grid wrapper: numeric columns for equal tracks or template strings; gap/rowGap/colGap strings; Grid.Item adds span/rowSpan; extra grid CSS props pass through via style",
+    "dense": "CSS-grid wrapper with scalar or 768/1024/1440/1920 responsive columns and gaps; numeric responsive tracks use minmax(0, 1fr); Grid.Item adds spans",
     "usage": {
-        "description": "Grid is the two-dimensional layout primitive: pass `columns` as a number for equal tracks or a template string for custom ones, gaps as CSS strings (prefer space tokens), and wrap children needing to span in `Grid.Item` with `span`/`rowSpan`. Reach for it when both axes matter — card walls, media mosaics, dashboard modules; single-axis flows are Stack/FlexBox territory.",
+        "description": "Grid is the two-dimensional layout primitive: pass `columns` as a number for equal tracks or a template string for custom ones, then add `tabletColumns`/`desktopColumns`/`wideColumns`/`ultraColumns` and matching gap props when the layout changes at the 768/1024/1440/1920 token breakpoints. Sparse responsive values inherit through the previous rung, and numeric responsive tracks use `minmax(0, 1fr)`. Wrap children needing to span in `Grid.Item` with `span`/`rowSpan`; use Stack or FlexBox when only one axis matters.",
         "bestPractices": [
             {
                 "guidance": true,
@@ -253,6 +258,10 @@
             {
                 "guidance": true,
                 "description": "Set gaps with space tokens (\"var(--space-layout-24)\") so grid gutters follow the page rhythm."
+            },
+            {
+                "guidance": true,
+                "description": "Set only the responsive rungs that change; omitted tablet, desktop, wide, or ultra values inherit through the previous rung."
             },
             {
                 "guidance": true,

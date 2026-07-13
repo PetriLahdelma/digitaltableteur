@@ -184,6 +184,7 @@ export const ResponsiveColumns: Story = {
       tabletGap="2rem"
       desktopGap="2.5rem"
       wideGap="3rem"
+      ultraGap="4rem"
     >
       {Array.from({ length: 6 }, (_, i) => (
         <div key={i} style={{ border: "1px dashed var(--color-border, #999)", padding: "1rem", textAlign: "center" }}>

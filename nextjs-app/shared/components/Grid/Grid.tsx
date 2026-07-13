@@ -56,7 +56,7 @@ export interface GridProps {
 /**
  * GridItemProps: span for columns, rowSpan for rows, and style/className
  */
-interface GridItemProps {
+export interface GridItemProps {
   children?: ReactNode;
   span?: number;
   rowSpan?: number;
