@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-13T16:17:03.021Z",
+  "createdAt": "2026-07-13T16:35:58.810Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -6155,8 +6155,8 @@
     {
       "column": 25,
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/stories/Docs/Documentation.module.css\u001f475\u001f25\u001f-2px\u001fUnexpected off-scale value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "line": 475,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/stories/Docs/Documentation.module.css\u001f460\u001f25\u001f-2px\u001fUnexpected off-scale value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 460,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -6165,8 +6165,8 @@
     {
       "column": 25,
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/stories/Docs/Documentation.module.css\u001f587\u001f25\u001f-2px\u001fUnexpected off-scale value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "line": 587,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/stories/Docs/Documentation.module.css\u001f572\u001f25\u001f-2px\u001fUnexpected off-scale value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 572,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -6245,8 +6245,8 @@
     {
       "column": 25,
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/stories/Docs/Documentation.module.css\u001f475\u001f25\u001f-2px\u001fUnexpected raw scale value \"-2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 475,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/stories/Docs/Documentation.module.css\u001f460\u001f25\u001f-2px\u001fUnexpected raw scale value \"-2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 460,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"-2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -6255,8 +6255,8 @@
     {
       "column": 25,
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/stories/Docs/Documentation.module.css\u001f528\u001f25\u001f-50%\u001fUnexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 528,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/stories/Docs/Documentation.module.css\u001f513\u001f25\u001f-50%\u001fUnexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 513,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -6265,8 +6265,8 @@
     {
       "column": 25,
       "file": "nextjs-app/shared/stories/Docs/Documentation.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/stories/Docs/Documentation.module.css\u001f587\u001f25\u001f-2px\u001fUnexpected raw scale value \"-2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 587,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/stories/Docs/Documentation.module.css\u001f572\u001f25\u001f-2px\u001fUnexpected raw scale value \"-2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 572,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"-2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",

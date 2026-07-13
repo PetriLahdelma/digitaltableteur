@@ -380,7 +380,7 @@
 .usageControls {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: var(--space-layout-16, 1rem);
   margin-bottom: var(--space-layout-16, 1rem);
 }
@@ -408,39 +408,24 @@
   color: var(--color-muted);
 }
 
-/* Sortable column header: full-width reset button inside the <th>. */
+/* Sortable header: label text next to a dogfooded IconButton sort toggle. */
 
-.sortHeader {
+.sortHeaderCell {
   display: inline-flex;
-  padding: 0;
   align-items: center;
   gap: var(--space-layout-4, 0.25rem);
-  border: none;
-  background: none;
-  font: inherit;
-  font-weight: 600;
-  color: inherit;
+}
+
+/* The Importers <details> keeps its count summary but drops the native
+   disclosure triangle (read as a stray play glyph). */
+
+.table summary {
   cursor: pointer;
+  list-style: none;
 }
 
-.sortHeader:hover {
-  color: var(--color-primary);
-}
-
-.sortHeader:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.sortIndicator {
-  font-size: 0.75em;
-  color: var(--color-primary);
-}
-
-.sortIndicatorIdle {
-  font-size: 0.75em;
-  color: var(--color-muted);
-  opacity: 0.5;
+.table summary::-webkit-details-marker {
+  display: none;
 }
 
 .subtle {
