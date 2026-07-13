@@ -67,6 +67,25 @@ Extends `useOverflow` with `canScrollStart` and `canScrollEnd`, kept current on
 scroll. `NewsBulletin` uses it for previous/next affordances on the horizontal
 highlight track.
 
+## Streaming content
+
+### `useStreamingText(targetText, isStreaming, options)`
+
+Smooths bursty accumulated text into an adaptive reveal without delaying the
+completed value. The hook preserves grapheme clusters, skips animation for
+reduced motion, supports `natural`, `fast`, and `instant` speeds, and snaps to
+the full target when streaming ends. Donny uses it for the active assistant
+reply; completed messages bypass the animation entirely.
+
+```tsx
+import { useStreamingText } from '@digitaltableteur/react';
+
+const displayed = useStreamingText(accumulatedText, isStreaming);
+```
+
+Pass the accumulated response, not individual chunks. Keep transport and error
+handling outside the hook; it controls display cadence only.
+
 ## Navigation
 
 ### `LinkProvider` + `Link`
@@ -101,4 +120,4 @@ engine, Tree, grid focus, or media-scoped theming DT has declared out of scope):
 `useGridFocus`, `useTreeFocus`, `Media Theme`, `useImageMode`. Others are
 deferred until a consuming component needs them (`Syntax Theme`,
 `useClickableContainer`, `useEntryAnimation`, `useInputContainer`,
-`useListFocus`, `useKeyboardHint`, `useStreamingText`).
+`useListFocus`, `useKeyboardHint`).

@@ -101,6 +101,7 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
           ref={ref}
           role="log"
           aria-live="polite"
+          aria-busy={isStreaming}
           aria-label={t("chatMessages.ariaLabel", "Chat messages")}
           tabIndex={0}
         >
@@ -119,6 +120,7 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
         ref={ref}
         role="log"
         aria-live="polite"
+        aria-busy={isStreaming}
         aria-label={t("chatMessages.ariaLabel", "Chat messages")}
         aria-relevant="additions"
         tabIndex={0}
@@ -131,7 +133,11 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
             <ChatMessageBubble
               key={message.id}
               message={message}
-              isStreaming={isStreaming}
+              isStreaming={
+                isStreaming &&
+                msgIndex === lastAssistantIndex &&
+                msgIndex === processed.length - 1
+              }
               workflowUI={workflowUI}
             />
           );

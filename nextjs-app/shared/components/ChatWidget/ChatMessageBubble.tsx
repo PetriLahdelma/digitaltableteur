@@ -18,6 +18,7 @@ import type {
   FollowUpDraftData,
   BookingEmbedData,
 } from "./messageProcessor";
+import { useStreamingText } from "../../hooks/useStreamingText";
 
 /**
  * Props for the ChatMessageBubble component.
@@ -204,6 +205,31 @@ function renderComponentPart(
   return null;
 }
 
+interface StreamingMarkdownPartProps {
+  content: string;
+  fallback: string;
+  role: ProcessedMessage["role"];
+  isStreaming: boolean;
+}
+
+function StreamingMarkdownPart({
+  content,
+  fallback,
+  role,
+  isStreaming,
+}: StreamingMarkdownPartProps) {
+  const displayedContent = useStreamingText(content, isStreaming);
+
+  return (
+    <MarkdownMessage
+      content={displayedContent}
+      fallback={fallback}
+      data-role={role}
+      density={role === "assistant" ? "chat" : "default"}
+    />
+  );
+}
+
 const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
   message,
   isStreaming,
@@ -232,12 +258,12 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
           {message.parts.map((part, idx) => {
             if (part.kind === "text") {
               return (
-                <MarkdownMessage
+                <StreamingMarkdownPart
                   key={idx}
                   content={part.content}
                   fallback={fallback}
-                  data-role={message.role}
-                  density={isAssistant ? "chat" : "default"}
+                  role={message.role}
+                  isStreaming={isAssistant && isStreaming}
                 />
               );
             }
