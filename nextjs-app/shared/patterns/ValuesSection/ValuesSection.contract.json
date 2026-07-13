@@ -55,17 +55,17 @@
             "type": "union",
             "values": [
                 "default",
-                "elevated",
-                "bordered"
+                "bordered",
+                "elevated"
             ]
         },
         "background": {
             "optional": true,
             "type": "union",
             "values": [
+                "default",
                 "muted",
-                "accent",
-                "default"
+                "accent"
             ]
         },
         "columns": {

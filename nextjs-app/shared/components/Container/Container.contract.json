@@ -1,374 +1,374 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "name": "Container",
-  "tier": "atom",
-  "group": "layout",
-  "status": "stable",
-  "description": "Max-width content wrapper with responsive horizontal padding.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1178-1654",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {
-    "size": {
-      "values": [
-        "sm",
-        "md",
-        "lg",
-        "xl",
-        "full"
-      ],
-      "default": "lg",
-      "propSourced": true
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Container",
+    "tier": "atom",
+    "group": "layout",
+    "status": "stable",
+    "description": "Max-width content wrapper with responsive horizontal padding.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1178-1654",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "full"
+            ],
+            "default": "lg",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed and compare-clean in all four modes (plain/light/dark/forced-colors); Controls 100% operable + 0 inert. Container carries no color surface of its own (tokens.colors empty; transparent wrapper), so light/dark is a structural no-op. Fixed the stale variants.size.default (\"sm\" → \"lg\") to match the component default and docs. 2026-07-10 — Figma component built (Atoms, node 1178-1654, parity-audit batch B2a): contract axes as variants with DT variable bindings."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ClientArticleShell.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerRelatedPosts.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/code-window/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "full"
+            ]
+        },
+        "center": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "as": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "symbol",
+                "object",
+                "image",
+                "form",
+                "slot",
+                "style",
+                "title",
+                "button",
+                "search",
+                "article",
+                "dialog",
+                "figure",
+                "img",
+                "link",
+                "main",
+                "menu",
+                "menuitem",
+                "option",
+                "switch",
+                "table",
+                "text",
+                "time",
+                "div",
+                "section",
+                "aside",
+                "li",
+                "a",
+                "abbr",
+                "address",
+                "area",
+                "audio",
+                "b",
+                "base",
+                "bdi",
+                "bdo",
+                "big",
+                "blockquote",
+                "body",
+                "br",
+                "canvas",
+                "caption",
+                "center",
+                "cite",
+                "code",
+                "col",
+                "colgroup",
+                "data",
+                "datalist",
+                "dd",
+                "del",
+                "details",
+                "dfn",
+                "dl",
+                "dt",
+                "em",
+                "embed",
+                "fieldset",
+                "figcaption",
+                "footer",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "head",
+                "header",
+                "hgroup",
+                "hr",
+                "html",
+                "i",
+                "iframe",
+                "input",
+                "ins",
+                "kbd",
+                "keygen",
+                "label",
+                "legend",
+                "map",
+                "mark",
+                "meta",
+                "meter",
+                "nav",
+                "noindex",
+                "noscript",
+                "ol",
+                "optgroup",
+                "output",
+                "p",
+                "param",
+                "picture",
+                "pre",
+                "progress",
+                "q",
+                "rp",
+                "rt",
+                "ruby",
+                "s",
+                "samp",
+                "script",
+                "select",
+                "small",
+                "source",
+                "span",
+                "strong",
+                "sub",
+                "summary",
+                "sup",
+                "template",
+                "tbody",
+                "td",
+                "textarea",
+                "tfoot",
+                "th",
+                "thead",
+                "tr",
+                "track",
+                "u",
+                "ul",
+                "var",
+                "video",
+                "wbr",
+                "webview",
+                "svg",
+                "animate",
+                "animateMotion",
+                "animateTransform",
+                "circle",
+                "clipPath",
+                "defs",
+                "desc",
+                "ellipse",
+                "feBlend",
+                "feColorMatrix",
+                "feComponentTransfer",
+                "feComposite",
+                "feConvolveMatrix",
+                "feDiffuseLighting",
+                "feDisplacementMap",
+                "feDistantLight",
+                "feDropShadow",
+                "feFlood",
+                "feFuncA",
+                "feFuncB",
+                "feFuncG",
+                "feFuncR",
+                "feGaussianBlur",
+                "feImage",
+                "feMerge",
+                "feMergeNode",
+                "feMorphology",
+                "feOffset",
+                "fePointLight",
+                "feSpecularLighting",
+                "feSpotLight",
+                "feTile",
+                "feTurbulence",
+                "filter",
+                "foreignObject",
+                "g",
+                "line",
+                "linearGradient",
+                "marker",
+                "mask",
+                "metadata",
+                "mpath",
+                "path",
+                "pattern",
+                "polygon",
+                "polyline",
+                "radialGradient",
+                "rect",
+                "set",
+                "stop",
+                "textPath",
+                "tspan",
+                "use",
+                "view"
+            ]
+        }
+    },
+    "forbiddenUse": [
+        "Nest a Container inside another Container — gutters compound and the measure narrows.",
+        "Use size=\"full\" together with a custom max-width class; pick the size that matches instead."
+    ],
+    "composesWith": [
+        "Section",
+        "Grid",
+        "Stack"
+    ],
+    "displayName": "Container",
+    "keywords": [
+        "container",
+        "max-width",
+        "page width",
+        "wrapper",
+        "gutter",
+        "layout"
+    ],
+    "dense": "Width clamp: size sm 640|md 960|lg 1200 (default)|xl 1440|full; center=true adds auto inline margins; polymorphic as for landmarks (main, section)",
+    "usage": {
+        "description": "Container clamps content to a readable page width and centers it. Pick `size` by the content's measure, not the viewport — `lg` (1200px) is the page default, `sm` suits prose. It renders a `div` unless you pass `as` (use `main`/`section` when the wrapper should also be the landmark). One container per page region; sections stack inside it, not around it.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Pick size by content measure: sm for prose, lg for standard pages, xl only for dashboard-density layouts."
+            },
+            {
+                "guidance": true,
+                "description": "Use as=\"main\" (or section) when the container doubles as the landmark, instead of nesting an extra wrapper."
+            },
+            {
+                "guidance": true,
+                "description": "Pair with Section: Section owns vertical rhythm and background, Container owns horizontal clamp."
+            },
+            {
+                "guidance": true,
+                "description": "Keep center on (default); opt out only for asymmetric editorial layouts."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest containers — you get compounding gutters and a narrowing measure."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use size=\"full\" plus a custom max-width class; pick the size that matches instead."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "Clamped content",
+            "size": "lg"
+        }
     }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": true,
-    "realBrowserForcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-05 (beta→stable) — re-verified independently: axe-clean across all 7 stories; AT snapshots refreshed and compare-clean in all four modes (plain/light/dark/forced-colors); Controls 100% operable + 0 inert. Container carries no color surface of its own (tokens.colors empty; transparent wrapper), so light/dark is a structural no-op. Fixed the stale variants.size.default (\"sm\" → \"lg\") to match the component default and docs. 2026-07-10 — Figma component built (Atoms, node 1178-1654, parity-audit batch B2a): contract axes as variants with DT variable bindings."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "consumers": [
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/blog/[slug]/ClientArticleShell.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/blog/[slug]/page.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/blog/[slug]/ServerArticleContent.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/blog/[slug]/ServerArticleHero.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/blog/[slug]/ServerArticleMain.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/blog/[slug]/ServerRelatedPosts.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/dev/code-window/page.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/dev/tailwind-test/page.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/layout.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
-      "since": "2026-06-04"
-    }
-  ],
-  "schemaVersion": 2,
-  "props": {
-    "children": {
-      "optional": false,
-      "type": "ReactNode"
-    },
-    "size": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "sm",
-        "md",
-        "lg",
-        "full",
-        "xl"
-      ]
-    },
-    "center": {
-      "optional": true,
-      "type": "boolean"
-    },
-    "className": {
-      "optional": true,
-      "type": "string"
-    },
-    "as": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "symbol",
-        "object",
-        "image",
-        "form",
-        "slot",
-        "style",
-        "title",
-        "button",
-        "search",
-        "article",
-        "dialog",
-        "figure",
-        "img",
-        "link",
-        "main",
-        "menu",
-        "menuitem",
-        "option",
-        "switch",
-        "table",
-        "text",
-        "time",
-        "a",
-        "abbr",
-        "address",
-        "area",
-        "aside",
-        "audio",
-        "b",
-        "base",
-        "bdi",
-        "bdo",
-        "big",
-        "blockquote",
-        "body",
-        "br",
-        "canvas",
-        "caption",
-        "center",
-        "cite",
-        "code",
-        "col",
-        "colgroup",
-        "data",
-        "datalist",
-        "dd",
-        "del",
-        "details",
-        "dfn",
-        "div",
-        "dl",
-        "dt",
-        "em",
-        "embed",
-        "fieldset",
-        "figcaption",
-        "footer",
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "head",
-        "header",
-        "hgroup",
-        "hr",
-        "html",
-        "i",
-        "iframe",
-        "input",
-        "ins",
-        "kbd",
-        "keygen",
-        "label",
-        "legend",
-        "li",
-        "map",
-        "mark",
-        "meta",
-        "meter",
-        "nav",
-        "noindex",
-        "noscript",
-        "ol",
-        "optgroup",
-        "output",
-        "p",
-        "param",
-        "picture",
-        "pre",
-        "progress",
-        "q",
-        "rp",
-        "rt",
-        "ruby",
-        "s",
-        "samp",
-        "script",
-        "section",
-        "select",
-        "small",
-        "source",
-        "span",
-        "strong",
-        "sub",
-        "summary",
-        "sup",
-        "template",
-        "tbody",
-        "td",
-        "textarea",
-        "tfoot",
-        "th",
-        "thead",
-        "tr",
-        "track",
-        "u",
-        "ul",
-        "var",
-        "video",
-        "wbr",
-        "webview",
-        "svg",
-        "animate",
-        "animateMotion",
-        "animateTransform",
-        "circle",
-        "clipPath",
-        "defs",
-        "desc",
-        "ellipse",
-        "feBlend",
-        "feColorMatrix",
-        "feComponentTransfer",
-        "feComposite",
-        "feConvolveMatrix",
-        "feDiffuseLighting",
-        "feDisplacementMap",
-        "feDistantLight",
-        "feDropShadow",
-        "feFlood",
-        "feFuncA",
-        "feFuncB",
-        "feFuncG",
-        "feFuncR",
-        "feGaussianBlur",
-        "feImage",
-        "feMerge",
-        "feMergeNode",
-        "feMorphology",
-        "feOffset",
-        "fePointLight",
-        "feSpecularLighting",
-        "feSpotLight",
-        "feTile",
-        "feTurbulence",
-        "filter",
-        "foreignObject",
-        "g",
-        "line",
-        "linearGradient",
-        "marker",
-        "mask",
-        "metadata",
-        "mpath",
-        "path",
-        "pattern",
-        "polygon",
-        "polyline",
-        "radialGradient",
-        "rect",
-        "set",
-        "stop",
-        "textPath",
-        "tspan",
-        "use",
-        "view"
-      ]
-    }
-  },
-  "forbiddenUse": [
-    "Nest a Container inside another Container — gutters compound and the measure narrows.",
-    "Use size=\"full\" together with a custom max-width class; pick the size that matches instead."
-  ],
-  "composesWith": [
-    "Section",
-    "Grid",
-    "Stack"
-  ],
-  "displayName": "Container",
-  "keywords": [
-    "container",
-    "max-width",
-    "page width",
-    "wrapper",
-    "gutter",
-    "layout"
-  ],
-  "dense": "Width clamp: size sm 640|md 960|lg 1200 (default)|xl 1440|full; center=true adds auto inline margins; polymorphic as for landmarks (main, section)",
-  "usage": {
-    "description": "Container clamps content to a readable page width and centers it. Pick `size` by the content's measure, not the viewport — `lg` (1200px) is the page default, `sm` suits prose. It renders a `div` unless you pass `as` (use `main`/`section` when the wrapper should also be the landmark). One container per page region; sections stack inside it, not around it.",
-    "bestPractices": [
-      {
-        "guidance": true,
-        "description": "Pick size by content measure: sm for prose, lg for standard pages, xl only for dashboard-density layouts."
-      },
-      {
-        "guidance": true,
-        "description": "Use as=\"main\" (or section) when the container doubles as the landmark, instead of nesting an extra wrapper."
-      },
-      {
-        "guidance": true,
-        "description": "Pair with Section: Section owns vertical rhythm and background, Container owns horizontal clamp."
-      },
-      {
-        "guidance": true,
-        "description": "Keep center on (default); opt out only for asymmetric editorial layouts."
-      },
-      {
-        "guidance": false,
-        "description": "Do not nest containers — you get compounding gutters and a narrowing measure."
-      },
-      {
-        "guidance": false,
-        "description": "Do not use size=\"full\" plus a custom max-width class; pick the size that matches instead."
-      }
-    ]
-  },
-  "playground": {
-    "defaults": {
-      "children": "Clamped content",
-      "size": "lg"
-    }
-  }
 }

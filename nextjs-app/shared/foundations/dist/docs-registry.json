@@ -6667,13 +6667,13 @@
           "required": false
         },
         {
-          "name": "rows",
+          "name": "tabletColumns",
           "type": "number | string",
           "required": false
         },
         {
-          "name": "gap",
-          "type": "string",
+          "name": "desktopColumns",
+          "type": "number | string",
           "required": false
         }
       ],
@@ -6686,11 +6686,27 @@
           "optional": true,
           "type": "number | string"
         },
+        "tabletColumns": {
+          "optional": true,
+          "type": "number | string"
+        },
+        "desktopColumns": {
+          "optional": true,
+          "type": "number | string"
+        },
         "rows": {
           "optional": true,
           "type": "number | string"
         },
         "gap": {
+          "optional": true,
+          "type": "string"
+        },
+        "tabletGap": {
+          "optional": true,
+          "type": "string"
+        },
+        "desktopGap": {
           "optional": true,
           "type": "string"
         },
@@ -16030,103 +16046,6 @@
         "typography": [
           "--font-size-sm"
         ]
-      },
-      "examples": []
-    },
-    "WorkGrid": {
-      "name": "WorkGrid",
-      "group": "content",
-      "tier": 2,
-      "status": "stable",
-      "description": "Responsive portfolio work-index grid: one EnhancedProjectCard per project, with a friendly empty state.",
-      "dense": "Portfolio index grid arranging project cards on the work page",
-      "keywords": [
-        "work",
-        "portfolio",
-        "grid",
-        "index"
-      ],
-      "importLine": "import { WorkGrid } from \"@dt/WorkGrid\";",
-      "keyProps": [
-        {
-          "name": "projects",
-          "type": "Project[]",
-          "required": true
-        },
-        {
-          "name": "aspectRatio",
-          "type": "video | square | portrait | landscape",
-          "required": false
-        },
-        {
-          "name": "columns",
-          "type": "2 | 3 | 4",
-          "required": false
-        },
-        {
-          "name": "animateItems",
-          "type": "boolean",
-          "required": false
-        },
-        {
-          "name": "showCategory",
-          "type": "boolean",
-          "required": false
-        },
-        {
-          "name": "className",
-          "type": "string",
-          "required": false
-        }
-      ],
-      "props": {
-        "projects": {
-          "optional": false,
-          "type": "Project[]"
-        },
-        "columns": {
-          "optional": true,
-          "type": "2 | 3 | 4"
-        },
-        "animateItems": {
-          "optional": true,
-          "type": "boolean"
-        },
-        "aspectRatio": {
-          "optional": true,
-          "type": "union",
-          "values": [
-            "video",
-            "square",
-            "portrait",
-            "landscape"
-          ]
-        },
-        "showCategory": {
-          "optional": true,
-          "type": "boolean"
-        },
-        "className": {
-          "optional": true,
-          "type": "string"
-        }
-      },
-      "composesWith": [
-        "EnhancedProjectCard",
-        "CategoryFilter",
-        "EmptyState"
-      ],
-      "prefersOver": [],
-      "forbiddenUse": [
-        "invent parallel primitives inside this folder",
-        "promote to stable without production consumer evidence"
-      ],
-      "usage": {
-        "description": "The work index grid arranging project cards. Layout owner for the portfolio listing."
-      },
-      "tokens": {
-        "colors": [],
-        "spacing": []
       },
       "examples": []
     },

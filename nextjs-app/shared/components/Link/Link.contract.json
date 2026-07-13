@@ -136,9 +136,9 @@
             "optional": true,
             "type": "union",
             "values": [
-                "none",
                 "always",
-                "hover"
+                "hover",
+                "none"
             ]
         }
     },

@@ -51,9 +51,6 @@
         "promote to stable without production consumer evidence"
     ],
     "composesWith": [
-        "Container",
-        "Section",
-        "CategoryFilter",
-        "WorkGrid"
+        "Grid"
     ]
 }

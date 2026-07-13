@@ -85,8 +85,8 @@
             "values": [
                 "minimal",
                 "default",
-                "elevated",
-                "bordered"
+                "bordered",
+                "elevated"
             ]
         },
         "className": {

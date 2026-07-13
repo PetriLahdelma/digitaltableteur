@@ -51,11 +51,11 @@
         "promote to stable without production consumer evidence"
     ],
     "composesWith": [
-        "Text",
         "StoryBlock",
         "ProjectDetailLayout",
         "ProjectHero",
         "GridBlock",
-        "ProcessBlock"
+        "ProjectMetaSection",
+        "TeamBlock"
     ]
 }

@@ -119,8 +119,8 @@
             "type": "union",
             "values": [
                 "default",
-                "elevated",
-                "bordered"
+                "bordered",
+                "elevated"
             ]
         },
         "className": {

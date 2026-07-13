@@ -75,8 +75,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "full-width",
                 "contained",
+                "full-width",
                 "split"
             ]
         },
@@ -101,6 +101,7 @@
         "ProjectDetailLayout",
         "RelatedProjects",
         "GridBlock",
-        "ProcessBlock"
+        "ProjectMetaSection",
+        "TeamBlock"
     ]
 }

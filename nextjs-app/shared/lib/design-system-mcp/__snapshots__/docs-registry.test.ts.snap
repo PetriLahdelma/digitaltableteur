@@ -844,6 +844,7 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     "exampleStories": [
       "EqualTracks",
       "SpannedFeature",
+      "ResponsiveColumns",
       "CustomTemplate",
     ],
     "fields": [
@@ -2159,27 +2160,6 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
     ],
     "group": "display",
     "import": "import { ValueCard } from "@dt/ValueCard";",
-  },
-  "WorkGrid": {
-    "exampleStories": [],
-    "fields": [
-      "composesWith",
-      "dense",
-      "description",
-      "examples",
-      "forbiddenUse",
-      "group",
-      "import",
-      "keywords",
-      "name",
-      "prefersOver",
-      "props",
-      "status",
-      "tokens",
-      "usage",
-    ],
-    "group": "content",
-    "import": "import { WorkGrid } from "@dt/WorkGrid";",
   },
   "WorkMagneticField": {
     "exampleStories": [],

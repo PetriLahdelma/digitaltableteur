@@ -119,8 +119,8 @@
                 "sm",
                 "md",
                 "lg",
-                "full",
-                "xl"
+                "xl",
+                "full"
             ]
         },
         "grid": {

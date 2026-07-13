@@ -92,9 +92,9 @@
             "type": "union",
             "values": [
                 "image",
+                "transparent",
                 "solid",
-                "gradient",
-                "transparent"
+                "gradient"
             ]
         },
         "backgroundImage": {
@@ -159,11 +159,14 @@
                 "table",
                 "text",
                 "time",
+                "div",
+                "section",
+                "aside",
+                "li",
                 "a",
                 "abbr",
                 "address",
                 "area",
-                "aside",
                 "audio",
                 "b",
                 "base",
@@ -186,7 +189,6 @@
                 "del",
                 "details",
                 "dfn",
-                "div",
                 "dl",
                 "dt",
                 "em",
@@ -213,7 +215,6 @@
                 "keygen",
                 "label",
                 "legend",
-                "li",
                 "map",
                 "mark",
                 "meta",
@@ -236,7 +237,6 @@
                 "s",
                 "samp",
                 "script",
-                "section",
                 "select",
                 "small",
                 "source",
