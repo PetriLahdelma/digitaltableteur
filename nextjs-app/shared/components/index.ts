@@ -157,7 +157,6 @@ export { default as SiteTree } from "./SiteTree";
 export type { SiteTreeNode, SiteTreeProps } from "./SiteTree";
 export { default as Skeleton } from "./Skeleton/Skeleton";
 export type { SkeletonProps } from "./Skeleton";
-export { SkillsGrid, type SkillsGridProps, type Skill } from "./SkillsGrid";
 export { default as StudioMap } from "./StudioMap/StudioMap";
 export { default as Switch } from "./Switch/Switch";
 export type { SwitchProps } from "./Switch";

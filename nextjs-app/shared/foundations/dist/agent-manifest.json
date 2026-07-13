@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-13T08:53:58.414Z",
+  "generatedAt": "2026-07-13T09:00:57.891Z",
   "summary": {
-    "componentCount": 163,
+    "componentCount": 162,
     "statusCounts": {
-      "beta": 49,
+      "beta": 48,
       "stable": 92,
       "alpha": 21,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 88.1,
-    "codebaseComponentCount": 185,
-    "usageCoveragePercent": 93.3,
+    "catalogCompletenessPercent": 88,
+    "codebaseComponentCount": 184,
+    "usageCoveragePercent": 93.2,
     "componentsWithProductionUsage": 34,
     "notReadyForStablePromotion": false
   },
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 185,
-    "inCatalog": 163,
+    "totalComponentsInCodebase": 184,
+    "inCatalog": 162,
     "outOfCatalog": 22,
-    "catalogCompletenessPercent": 88.1,
+    "catalogCompletenessPercent": 88,
     "artifactCoverage": {
-      "stories": 147,
+      "stories": 146,
       "tests": 147,
       "mdx": 6,
-      "spec": 163
+      "spec": 162
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,13 +77,13 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 163,
-    "withAnyUsage": 152,
+    "catalogedComponents": 162,
+    "withAnyUsage": 151,
     "withProductionUsage": 34,
-    "uniqueImportedComponents": 152,
-    "totalEvidenceRows": 744,
-    "aliasImportFiles": 380,
-    "relativeImportFiles": 393,
+    "uniqueImportedComponents": 151,
+    "totalEvidenceRows": 742,
+    "aliasImportFiles": 379,
+    "relativeImportFiles": 392,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -102,12 +102,12 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 163,
+      "digitaltableteur": 162,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 49,
+        "beta": 48,
         "stable": 92,
         "alpha": 21,
         "deprecated": 1
@@ -11009,12 +11009,37 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -13417,6 +13442,16 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
             "since": "2026-06-04"
           },
@@ -13427,7 +13462,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/BlogIndexContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -25868,157 +25918,6 @@
       }
     },
     {
-      "name": "SkillsGrid",
-      "contract": {
-        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-        "name": "SkillsGrid",
-        "tier": "organism",
-        "group": "display",
-        "status": "beta",
-        "description": "Grid of skill / tech logos arranged in 4 / 6 / 8 columns. Used on the about page and case studies to show capabilities or tooling at a glance.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skills-grid",
-        "radixPrimitive": null,
-        "element": "section",
-        "variants": {},
-        "slots": [],
-        "asChild": false,
-        "subParts": [],
-        "requiredStories": [
-          "Default",
-          "Playground",
-          "Example",
-          "ForcedColors"
-        ],
-        "a11y": {
-          "keyboard": [],
-          "ariaRequirements": [
-            "Renders a `<section>` with an `aria-labelledby` heading so the grid is a labelled region.",
-            "Each logo carries an `alt` text describing the skill or tool; decorative-only logos are `aria-hidden`."
-          ],
-          "reducedMotion": true,
-          "reviewed": true,
-          "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-        },
-        "tokens": {
-          "colors": [
-            "--color-text",
-            "--color-text-muted"
-          ],
-          "spacing": [
-            "--space-layout-12",
-            "--space-layout-24"
-          ]
-        },
-        "lightDarkVerified": true,
-        "consumers": [],
-        "schemaVersion": 2,
-        "props": {
-          "skills": {
-            "optional": false,
-            "type": "Skill[]"
-          },
-          "showCategories": {
-            "optional": true,
-            "type": "boolean"
-          },
-          "columns": {
-            "optional": true,
-            "type": "4 | 6 | 8"
-          },
-          "className": {
-            "optional": true,
-            "type": "string"
-          }
-        },
-        "forbiddenUse": [
-          "Use for a small set of (≤ 4) capabilities — the grid rhythm collapses; use `Card` instead.",
-          "Mix logos and text in the same grid — pick one visual language."
-        ],
-        "displayName": "SkillsGrid",
-        "keywords": [
-          "skills",
-          "logos",
-          "grid",
-          "about"
-        ],
-        "dense": "Grid of skill/tech logos in 4/6/8 columns; about-page module",
-        "usage": {
-          "description": "Logo grid of skills and technologies (4/6/8 column presets) for the about page. Keep logos alt-texted and monochrome where possible."
-        }
-      },
-      "spec": "# SkillsGrid\n\n## Intent\nSingle, repeatable visual for the 'capabilities' / 'tools we use' grid on marketing pages. Owns the column-count axis so the same data can render as a tight or sparse grid.\n\n## Interaction contract\n- Keyboard: None — the grid is non-interactive unless logos are linkified by the caller.\n- Pointer: None unless individual logos are wrapped in links by the caller.\n- Screen readers: Announced as 'region, {grid label}' followed by each logo's alt text.\n\n## Do / don't\n- Do: Use on the about page and capability sections.\n- Do: Pick a column count that matches the viewport (4 mobile, 6 desktop default).\n- Don't: Use for a small set of (≤ 4) capabilities — the grid rhythm collapses; use `Card` instead.\n- Don't: Mix logos and text in the same grid — pick one visual language.\n\n## Design notes\n- Colors: --color-text, --color-text-muted\n- Spacing: --space-layout-12, --space-layout-24\n- Figma: TODO — to be linked during the alpha → beta promotion.\n- Catalog status: **alpha**, scaffolded as part of the Bucket-1\n  catalog-gap migration on 2026-05-26.\n",
-      "documentationDebt": false,
-      "usage": {
-        "publicImport": "@dt/SkillsGrid",
-        "importCount": 1,
-        "productionImportCount": 0,
-        "patternImportCount": 0,
-        "componentImportCount": 1,
-        "evidence": [
-          {
-            "path": "nextjs-app/shared/components/index.ts",
-            "importKind": "relative",
-            "importPath": "./SkillsGrid",
-            "context": "component"
-          }
-        ]
-      },
-      "agent": {
-        "preferredImport": "@dt/SkillsGrid",
-        "intent": "Single, repeatable visual for the 'capabilities' / 'tools we use' grid on marketing pages. Owns the column-count axis so the same data can render as a tight or sparse grid.",
-        "props": {
-          "skills": {
-            "optional": false,
-            "type": "Skill[]"
-          },
-          "showCategories": {
-            "optional": true,
-            "type": "boolean"
-          },
-          "columns": {
-            "optional": true,
-            "type": "4 | 6 | 8"
-          },
-          "className": {
-            "optional": true,
-            "type": "string"
-          }
-        },
-        "variants": {},
-        "cvaVariants": {},
-        "variantsFnName": null,
-        "useWhen": [
-          "Use on the about page and capability sections.",
-          "Pick a column count that matches the viewport (4 mobile, 6 desktop default)."
-        ],
-        "avoidWhen": [
-          "Use for a small set of (≤ 4) capabilities — the grid rhythm collapses; use `Card` instead.",
-          "Mix logos and text in the same grid — pick one visual language."
-        ],
-        "requiredA11y": [
-          "Renders a `<section>` with an `aria-labelledby` heading so the grid is a labelled region.",
-          "Each logo carries an `alt` text describing the skill or tool; decorative-only logos are `aria-hidden`."
-        ],
-        "keyboard": [],
-        "compositionRules": [],
-        "canonicalExamples": [
-          "Default",
-          "Playground",
-          "Example",
-          "ForcedColors"
-        ],
-        "replacementFor": [],
-        "forbiddenUse": [
-          "Use for a small set of (≤ 4) capabilities — the grid rhythm collapses; use `Card` instead.",
-          "Mix logos and text in the same grid — pick one visual language."
-        ],
-        "composesWith": [],
-        "prefersOver": [],
-        "declaredPropCount": 4
-      }
-    },
-    {
       "name": "SkipLink",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -32604,19 +32503,13 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Tooltip",
-        "importCount": 2,
+        "importCount": 1,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 2,
+        "componentImportCount": 1,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/interactive/index.ts",
-            "importKind": "alias",
-            "importPath": "@dt/Tooltip",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/SkillsGrid/SkillsGrid.tsx",
             "importKind": "alias",
             "importPath": "@dt/Tooltip",
             "context": "component"
