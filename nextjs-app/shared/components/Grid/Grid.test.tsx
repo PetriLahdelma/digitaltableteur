@@ -67,6 +67,47 @@ describe("Grid", () => {
     expect(grid.style.gap).toBe("");
   });
 
+  it("resolves the wide and ultra breakpoint rungs", () => {
+    const { container } = render(
+      <Grid
+        columns={1}
+        tabletColumns={2}
+        desktopColumns={3}
+        wideColumns={4}
+        ultraColumns={6}
+        wideGap="3rem"
+        ultraGap="4rem"
+      >
+        <div>Item</div>
+      </Grid>,
+    );
+    const grid = container.firstChild as HTMLElement;
+    expect(grid.style.getPropertyValue("--grid-cols-wide")).toBe(
+      "repeat(4, minmax(0, 1fr))",
+    );
+    expect(grid.style.getPropertyValue("--grid-cols-ultra")).toBe(
+      "repeat(6, minmax(0, 1fr))",
+    );
+    expect(grid.style.getPropertyValue("--grid-gap-wide")).toBe("3rem");
+    expect(grid.style.getPropertyValue("--grid-gap-ultra")).toBe("4rem");
+  });
+
+  it("enters the responsive path when only a wide/ultra prop is set", () => {
+    const { container } = render(
+      <Grid columns={2} wideColumns={4}>
+        <div>Item</div>
+      </Grid>,
+    );
+    const grid = container.firstChild as HTMLElement;
+    expect(grid.style.getPropertyValue("--grid-cols")).toBe(
+      "repeat(2, minmax(0, 1fr))",
+    );
+    expect(grid.style.getPropertyValue("--grid-cols-wide")).toBe(
+      "repeat(4, minmax(0, 1fr))",
+    );
+    expect(grid.style.gridTemplateColumns).toBe("");
+  });
+
   it("accepts template strings for responsive columns", () => {
     const { container } = render(
       <Grid columns="1fr" desktopColumns="200px 1fr">

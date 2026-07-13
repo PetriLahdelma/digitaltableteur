@@ -397,10 +397,6 @@
       "rawElements": 1,
       "utilityLines": 14
     },
-    "nextjs-app/shared/components/WorkGrid/WorkGrid.tsx": {
-      "rawElements": 0,
-      "utilityLines": 1
-    },
     "nextjs-app/shared/components/animations/KineticTitle/KineticTitle.tsx": {
       "rawElements": 0,
       "utilityLines": 2
