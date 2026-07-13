@@ -21,13 +21,17 @@ jobs:
         env:
           NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
         run: bash .github/scripts/write-npm-read-config.sh
-      # Force the @digitaltableteur scope to public npm on the CLI (highest config
-      # precedence, beats the runner's machine-global Verdaccio redirect at
-      # 100.77.151.86:4873, which lags newly published packages e.g. tokens-css@0.1.2).
-      # npm rewrites the lockfile's registry.npmjs.org tarball host to the configured
-      # scoped registry, so this keeps it on public npm — matching the lockfile
-      # integrity hashes and the check:package-registry-resolution contract.
-      - run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci --@digitaltableteur:registry=https://registry.npmjs.org/
+      # The farm runner sets the default npm registry to a local Verdaccio
+      # (npm_config_registry=http://100.77.151.86:4873/ via environment). With npm's
+      # default replace-registry-host=npmjs, that rewrites every lockfile
+      # registry.npmjs.org tarball URL to Verdaccio — including @digitaltableteur/*,
+      # and the mirror lags newly published packages (tokens-css@0.1.2 404s there).
+      # Scoped-registry pins don't help: the rewrite targets the DEFAULT registry, not
+      # the scope. replace-registry-host=never disables the rewrite so npm fetches each
+      # tarball from its literal lockfile URL (registry.npmjs.org, authed by the read
+      # token), matching the lockfile integrity hashes and the
+      # check:package-registry-resolution contract. CLI precedence beats the env var.
+      - run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci --replace-registry-host=never
       - run: npm run build:tokens
       - run: npm run check:contract-drift -- --strict
       - run: npm run check:contract-props
