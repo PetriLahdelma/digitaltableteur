@@ -13,8 +13,16 @@ if [ -z "${RUNNER_TEMP:-}" ]; then
   exit 1
 fi
 
+# Pin the @digitaltableteur scope to public npm explicitly. The self-hosted farm
+# runner ships a machine-global npmrc that redirects this scope to a local Verdaccio
+# mirror (100.77.151.86:4873); that mirror lags newly published packages (e.g.
+# tokens-css@0.1.2 404s there) and diverges from the lockfile, which the
+# check:package-registry-resolution guard requires to resolve from registry.npmjs.org.
+# A userconfig scope entry overrides the global one, so npm ci fetches every
+# @digitaltableteur package from the same registry the lockfile integrity hashes cover.
 cat > "$RUNNER_TEMP/npm-read.npmrc" <<EOF
 registry=https://registry.npmjs.org/
+@digitaltableteur:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:_authToken=${NPM_READ_TOKEN}
 EOF
 
