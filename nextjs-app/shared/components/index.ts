@@ -188,7 +188,6 @@ export {
   EnhancedArticleCard,
   type EnhancedArticleCardProps,
 } from "./EnhancedArticleCard";
-export { BlogGrid, type BlogGridProps } from "./BlogGrid";
 export {
   BlogCategoryFilter,
   type BlogCategoryFilterProps,

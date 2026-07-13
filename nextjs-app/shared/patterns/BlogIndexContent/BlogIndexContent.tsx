@@ -1,16 +1,21 @@
 "use client";
 
 import { useState, useMemo, Suspense } from "react";
+import { EmptyState, Grid } from "@digitaltableteur/react";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { BlogHero } from "../BlogHero";
 import { BlogCategoryFilter } from "../../components/BlogCategoryFilter";
-import { BlogGrid } from "../../components/BlogGrid";
 import { Pagination } from "../../components/Pagination";
+import { FadeIn } from "../../components/animations/FadeIn";
 import { useBlogFilter } from "../../hooks/useBlogFilter";
+import { useTranslate } from "../../lib/translation";
 import { getBlogPosts, type BlogPostEntry } from "../../data/blogPosts";
 import { getAuthorBySlug } from "../../data/authors";
-import type { EnhancedArticleCardProps } from "../../components/EnhancedArticleCard";
+import {
+  EnhancedArticleCard,
+  type EnhancedArticleCardProps,
+} from "../../components/EnhancedArticleCard";
 import { cn } from "../../lib/cn";
 
 export interface BlogIndexContentProps {
@@ -75,6 +80,7 @@ function BlogIndexContentInner({
   hideImages = false,
   className,
 }: BlogIndexContentProps) {
+  const t = useTranslate();
   const [currentPage, setCurrentPage] = useState(1);
 
   // Get all posts
@@ -102,6 +108,17 @@ function BlogIndexContentInner({
     () => paginatedPosts.map(transformToCardProps),
     [paginatedPosts],
   );
+
+  // Featured-first promotes one card to a full-width featured slot; the
+  // first filtered post wins unless it fell off the current page.
+  const featuredCard =
+    gridLayout === "featured-first" && cardProps.length > 0
+      ? cardProps.find((card) => card.slug === filteredPosts[0]?.slug) ||
+        cardProps[0]
+      : null;
+  const remainingCards = featuredCard
+    ? cardProps.filter((card) => card.slug !== featuredCard.slug)
+    : cardProps;
 
   // Calculate total pages
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
@@ -144,14 +161,45 @@ function BlogIndexContentInner({
             </div>
           )}
 
-          {/* Grid — single column list on all breakpoints (editorial index) */}
-          <BlogGrid
-            articles={cardProps}
-            layout={gridLayout}
-            featuredSlug={filteredPosts[0]?.slug}
-            hideImages={hideImages}
-            columns={{ sm: 1, md: 1, lg: 1 }}
-          />
+          {/* Grid — single column list on all breakpoints (editorial index).
+              DS Grid composition (BlogGrid dissolved per the component
+              tribunal: layout = Grid, empty state = EmptyState, cards mapped
+              at the pattern level). */}
+          {cardProps.length === 0 ? (
+            <EmptyState
+              icon="article"
+              title={t("blogNoPostsFound", "No articles found")}
+              headingLevel="h3"
+            />
+          ) : (
+            <div className="space-y-8">
+              {featuredCard && (
+                <FadeIn direction="up" delay={0} distance={30}>
+                  <EnhancedArticleCard
+                    {...featuredCard}
+                    variant="featured"
+                    hideImage={hideImages}
+                  />
+                </FadeIn>
+              )}
+              <Grid columns={1} gap="1.5rem">
+                {remainingCards.map((card, index) => (
+                  <FadeIn
+                    key={card.slug}
+                    direction="up"
+                    delay={featuredCard ? 0.1 + index * 0.05 : index * 0.05}
+                    distance={30}
+                  >
+                    <EnhancedArticleCard
+                      {...card}
+                      variant="default"
+                      hideImage={hideImages}
+                    />
+                  </FadeIn>
+                ))}
+              </Grid>
+            </div>
+          )}
 
           {/* Pagination */}
           {showPagination && totalPages > 1 && (
@@ -171,7 +219,8 @@ function BlogIndexContentInner({
 
 /**
  * Blog Index Content - Composed pattern
- * Combines BlogHero, BlogCategoryFilter, BlogGrid, and Pagination
+ * Combines BlogHero, BlogCategoryFilter, a DS Grid of article cards, and
+ * Pagination
  */
 export function BlogIndexContent(props: BlogIndexContentProps) {
   return (

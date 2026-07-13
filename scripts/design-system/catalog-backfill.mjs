@@ -202,13 +202,6 @@ const BACKFILL = [
     description: "Blog category filter control.",
   },
   {
-    name: "BlogGrid",
-    root: "components",
-    tier: "organism",
-    group: "content",
-    description: "Blog post card grid for index pages.",
-  },
-  {
     name: "BlogMediaImage",
     root: "components",
     tier: "atom",

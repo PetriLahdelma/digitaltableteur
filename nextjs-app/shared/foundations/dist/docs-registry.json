@@ -32,7 +32,7 @@
         },
         {
           "name": "variant",
-          "type": "contained | divided",
+          "type": "contained | enclosed | divided",
           "required": false
         },
         {
@@ -69,6 +69,7 @@
           "type": "union",
           "values": [
             "contained",
+            "enclosed",
             "divided"
           ]
         },
@@ -1563,7 +1564,6 @@
       "composesWith": [
         "Container",
         "Section",
-        "BlogGrid",
         "Pagination",
         "EnhancedArticleCard"
       ],
@@ -1574,104 +1574,6 @@
       ],
       "usage": {
         "description": "Category filter control for the blog archive. Blog-scoped variant; for generic list pages use CategoryFilter."
-      },
-      "tokens": {
-        "colors": [],
-        "spacing": []
-      },
-      "examples": []
-    },
-    "BlogGrid": {
-      "name": "BlogGrid",
-      "group": "content",
-      "tier": 2,
-      "status": "stable",
-      "description": "Responsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.",
-      "dense": "Blog index grid laying out ArticleCards responsively",
-      "keywords": [
-        "blog",
-        "grid",
-        "index",
-        "cards"
-      ],
-      "importLine": "import { BlogGrid } from \"@dt/BlogGrid\";",
-      "keyProps": [
-        {
-          "name": "articles",
-          "type": "EnhancedArticleCardProps[]",
-          "required": true
-        },
-        {
-          "name": "layout",
-          "type": "standard | featured-first | masonry",
-          "required": false
-        },
-        {
-          "name": "featuredSlug",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "columns",
-          "type": "{\n    sm?: 1 | 2;\n    md?: 1 | 2 | 3;\n    lg?: 1 | 2 | 3 | 4;\n  }",
-          "required": false
-        },
-        {
-          "name": "hideImages",
-          "type": "boolean",
-          "required": false
-        },
-        {
-          "name": "className",
-          "type": "string",
-          "required": false
-        }
-      ],
-      "props": {
-        "articles": {
-          "optional": false,
-          "type": "EnhancedArticleCardProps[]"
-        },
-        "featuredSlug": {
-          "optional": true,
-          "type": "string"
-        },
-        "layout": {
-          "optional": true,
-          "type": "union",
-          "values": [
-            "standard",
-            "featured-first",
-            "masonry"
-          ]
-        },
-        "columns": {
-          "optional": true,
-          "type": "{\n    sm?: 1 | 2;\n    md?: 1 | 2 | 3;\n    lg?: 1 | 2 | 3 | 4;\n  }"
-        },
-        "hideImages": {
-          "optional": true,
-          "type": "boolean"
-        },
-        "className": {
-          "optional": true,
-          "type": "string"
-        }
-      },
-      "composesWith": [
-        "Container",
-        "Section",
-        "BlogCategoryFilter",
-        "Pagination",
-        "EnhancedArticleCard"
-      ],
-      "prefersOver": [],
-      "forbiddenUse": [
-        "invent parallel primitives inside this folder",
-        "promote to stable without production consumer evidence"
-      ],
-      "usage": {
-        "description": "Responsive grid of ArticleCards for blog index pages. Owns layout only; the cards own their content."
       },
       "tokens": {
         "colors": [],
@@ -2486,12 +2388,12 @@
         },
         {
           "name": "padding",
-          "type": "none | sm | md | lg",
+          "type": "sm | md | lg | none",
           "required": false
         },
         {
           "name": "as",
-          "type": "div | article | section | aside | li",
+          "type": "article | div | section | aside | li",
           "required": false
         },
         {
@@ -2524,18 +2426,18 @@
           "optional": true,
           "type": "union",
           "values": [
-            "none",
             "sm",
             "md",
-            "lg"
+            "lg",
+            "none"
           ]
         },
         "as": {
           "optional": true,
           "type": "union",
           "values": [
-            "div",
             "article",
+            "div",
             "section",
             "aside",
             "li"
@@ -2557,15 +2459,15 @@
           "optional": true,
           "type": "CardDescriptionProps"
         },
-        "extra": {
-          "optional": true,
-          "type": "React.ReactNode"
-        },
         "headerStart": {
           "optional": true,
           "type": "React.ReactNode"
         },
         "headerEnd": {
+          "optional": true,
+          "type": "React.ReactNode"
+        },
+        "extra": {
           "optional": true,
           "type": "React.ReactNode"
         },
@@ -2872,7 +2774,7 @@
         },
         {
           "name": "as",
-          "type": "symbol | object | image | form | slot | style | title | button | search | article | dialog | figure | img | link | main | menu | menuitem | option | switch | table | text | time | a | abbr | address | area | aside | audio | b | base | bdi | bdo | big | blockquote | body | br | canvas | caption | center | cite | code | col | colgroup | data | datalist | dd | del | details | dfn | div | dl | dt | em | embed | fieldset | figcaption | footer | h1 | h2 | h3 | h4 | h5 | h6 | head | header | hgroup | hr | html | i | iframe | input | ins | kbd | keygen | label | legend | li | map | mark | meta | meter | nav | noindex | noscript | ol | optgroup | output | p | param | picture | pre | progress | q | rp | rt | ruby | s | samp | script | section | select | small | source | span | strong | sub | summary | sup | template | tbody | td | textarea | tfoot | th | thead | tr | track | u | ul | var | video | wbr | webview | svg | animate | animateMotion | animateTransform | circle | clipPath | defs | desc | ellipse | feBlend | feColorMatrix | feComponentTransfer | feComposite | feConvolveMatrix | feDiffuseLighting | feDisplacementMap | feDistantLight | feDropShadow | feFlood | feFuncA | feFuncB | feFuncG | feFuncR | feGaussianBlur | feImage | feMerge | feMergeNode | feMorphology | feOffset | fePointLight | feSpecularLighting | feSpotLight | feTile | feTurbulence | filter | foreignObject | g | line | linearGradient | marker | mask | metadata | mpath | path | pattern | polygon | polyline | radialGradient | rect | set | stop | textPath | tspan | use | view",
+          "type": "symbol | object | image | form | slot | style | title | button | search | article | dialog | figure | img | link | main | menu | menuitem | option | switch | table | text | time | div | section | aside | li | a | abbr | address | area | audio | b | base | bdi | bdo | big | blockquote | body | br | canvas | caption | center | cite | code | col | colgroup | data | datalist | dd | del | details | dfn | dl | dt | em | embed | fieldset | figcaption | footer | h1 | h2 | h3 | h4 | h5 | h6 | head | header | hgroup | hr | html | i | iframe | input | ins | kbd | keygen | label | legend | map | mark | meta | meter | nav | noindex | noscript | ol | optgroup | output | p | param | picture | pre | progress | q | rp | rt | ruby | s | samp | script | select | small | source | span | strong | sub | summary | sup | template | tbody | td | textarea | tfoot | th | thead | tr | track | u | ul | var | video | wbr | webview | svg | animate | animateMotion | animateTransform | circle | clipPath | defs | desc | ellipse | feBlend | feColorMatrix | feComponentTransfer | feComposite | feConvolveMatrix | feDiffuseLighting | feDisplacementMap | feDistantLight | feDropShadow | feFlood | feFuncA | feFuncB | feFuncG | feFuncR | feGaussianBlur | feImage | feMerge | feMergeNode | feMorphology | feOffset | fePointLight | feSpecularLighting | feSpotLight | feTile | feTurbulence | filter | foreignObject | g | line | linearGradient | marker | mask | metadata | mpath | path | pattern | polygon | polyline | radialGradient | rect | set | stop | textPath | tspan | use | view",
           "required": false
         },
         {
@@ -2916,11 +2818,14 @@
             "table",
             "text",
             "time",
+            "div",
+            "section",
+            "aside",
+            "li",
             "a",
             "abbr",
             "address",
             "area",
-            "aside",
             "audio",
             "b",
             "base",
@@ -2943,7 +2848,6 @@
             "del",
             "details",
             "dfn",
-            "div",
             "dl",
             "dt",
             "em",
@@ -2970,7 +2874,6 @@
             "keygen",
             "label",
             "legend",
-            "li",
             "map",
             "mark",
             "meta",
@@ -2993,7 +2896,6 @@
             "s",
             "samp",
             "script",
-            "section",
             "select",
             "small",
             "source",
@@ -3767,7 +3669,7 @@
         },
         {
           "name": "variant",
-          "type": "inline | single | multi",
+          "type": "single | inline | multi",
           "required": false
         },
         {
@@ -3823,8 +3725,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "inline",
             "single",
+            "inline",
             "multi"
           ]
         },
@@ -4434,12 +4336,12 @@
         },
         {
           "name": "size",
-          "type": "sm | md | lg | full | xl",
+          "type": "sm | md | lg | xl | full",
           "required": false
         },
         {
           "name": "as",
-          "type": "symbol | object | image | form | slot | style | title | button | search | article | dialog | figure | img | link | main | menu | menuitem | option | switch | table | text | time | a | abbr | address | area | aside | audio | b | base | bdi | bdo | big | blockquote | body | br | canvas | caption | center | cite | code | col | colgroup | data | datalist | dd | del | details | dfn | div | dl | dt | em | embed | fieldset | figcaption | footer | h1 | h2 | h3 | h4 | h5 | h6 | head | header | hgroup | hr | html | i | iframe | input | ins | kbd | keygen | label | legend | li | map | mark | meta | meter | nav | noindex | noscript | ol | optgroup | output | p | param | picture | pre | progress | q | rp | rt | ruby | s | samp | script | section | select | small | source | span | strong | sub | summary | sup | template | tbody | td | textarea | tfoot | th | thead | tr | track | u | ul | var | video | wbr | webview | svg | animate | animateMotion | animateTransform | circle | clipPath | defs | desc | ellipse | feBlend | feColorMatrix | feComponentTransfer | feComposite | feConvolveMatrix | feDiffuseLighting | feDisplacementMap | feDistantLight | feDropShadow | feFlood | feFuncA | feFuncB | feFuncG | feFuncR | feGaussianBlur | feImage | feMerge | feMergeNode | feMorphology | feOffset | fePointLight | feSpecularLighting | feSpotLight | feTile | feTurbulence | filter | foreignObject | g | line | linearGradient | marker | mask | metadata | mpath | path | pattern | polygon | polyline | radialGradient | rect | set | stop | textPath | tspan | use | view",
+          "type": "symbol | object | image | form | slot | style | title | button | search | article | dialog | figure | img | link | main | menu | menuitem | option | switch | table | text | time | div | section | aside | li | a | abbr | address | area | audio | b | base | bdi | bdo | big | blockquote | body | br | canvas | caption | center | cite | code | col | colgroup | data | datalist | dd | del | details | dfn | dl | dt | em | embed | fieldset | figcaption | footer | h1 | h2 | h3 | h4 | h5 | h6 | head | header | hgroup | hr | html | i | iframe | input | ins | kbd | keygen | label | legend | map | mark | meta | meter | nav | noindex | noscript | ol | optgroup | output | p | param | picture | pre | progress | q | rp | rt | ruby | s | samp | script | select | small | source | span | strong | sub | summary | sup | template | tbody | td | textarea | tfoot | th | thead | tr | track | u | ul | var | video | wbr | webview | svg | animate | animateMotion | animateTransform | circle | clipPath | defs | desc | ellipse | feBlend | feColorMatrix | feComponentTransfer | feComposite | feConvolveMatrix | feDiffuseLighting | feDisplacementMap | feDistantLight | feDropShadow | feFlood | feFuncA | feFuncB | feFuncG | feFuncR | feGaussianBlur | feImage | feMerge | feMergeNode | feMorphology | feOffset | fePointLight | feSpecularLighting | feSpotLight | feTile | feTurbulence | filter | foreignObject | g | line | linearGradient | marker | mask | metadata | mpath | path | pattern | polygon | polyline | radialGradient | rect | set | stop | textPath | tspan | use | view",
           "required": false
         },
         {
@@ -4465,8 +4367,8 @@
             "sm",
             "md",
             "lg",
-            "full",
-            "xl"
+            "xl",
+            "full"
           ]
         },
         "center": {
@@ -4503,11 +4405,14 @@
             "table",
             "text",
             "time",
+            "div",
+            "section",
+            "aside",
+            "li",
             "a",
             "abbr",
             "address",
             "area",
-            "aside",
             "audio",
             "b",
             "base",
@@ -4530,7 +4435,6 @@
             "del",
             "details",
             "dfn",
-            "div",
             "dl",
             "dt",
             "em",
@@ -4557,7 +4461,6 @@
             "keygen",
             "label",
             "legend",
-            "li",
             "map",
             "mark",
             "meta",
@@ -4580,7 +4483,6 @@
             "s",
             "samp",
             "script",
-            "section",
             "select",
             "small",
             "source",
@@ -6694,6 +6596,14 @@
           "optional": true,
           "type": "number | string"
         },
+        "wideColumns": {
+          "optional": true,
+          "type": "number | string"
+        },
+        "ultraColumns": {
+          "optional": true,
+          "type": "number | string"
+        },
         "rows": {
           "optional": true,
           "type": "number | string"
@@ -6707,6 +6617,14 @@
           "type": "string"
         },
         "desktopGap": {
+          "optional": true,
+          "type": "string"
+        },
+        "wideGap": {
+          "optional": true,
+          "type": "string"
+        },
+        "ultraGap": {
           "optional": true,
           "type": "string"
         },
@@ -6840,12 +6758,12 @@
         {
           "story": "SpannedFeature",
           "description": "Grid.Item with span promotes one child to a feature slot without touching the column template.",
-          "source": "export const SpannedFeature: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Grid.Item with span promotes one child to a feature slot without touching the column template.\" } },\n  },\n  render: () => (\n    <Grid columns={3} gap=\"1rem\">\n      <Grid.Item span={2}>\n        <div style={{ border: \"2px solid var(--color-border, #999)\", padding: \"1rem\", textAlign: \"center\" }}>\n          Featured (span 2)\n        </div>\n      </Grid.Item>\n      {Array.from({ length: 4 }, (_, i) => (\n        <div key={i} style={{ border: \"1px dashed var(--color-border, #999)\", padding: \"1rem\", textAlign: \"center\" }}>\n          Cell\n        </div>\n      ))}\n    </Grid>\n  ),\n};\n\n/** Per-breakpoint columns and gaps — one column on mobile, two from tablet, three from desktop. */"
+          "source": "export const SpannedFeature: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Grid.Item with span promotes one child to a feature slot without touching the column template.\" } },\n  },\n  render: () => (\n    <Grid columns={3} gap=\"1rem\">\n      <Grid.Item span={2}>\n        <div style={{ border: \"2px solid var(--color-border, #999)\", padding: \"1rem\", textAlign: \"center\" }}>\n          Featured (span 2)\n        </div>\n      </Grid.Item>\n      {Array.from({ length: 4 }, (_, i) => (\n        <div key={i} style={{ border: \"1px dashed var(--color-border, #999)\", padding: \"1rem\", textAlign: \"center\" }}>\n          Cell\n        </div>\n      ))}\n    </Grid>\n  ),\n};\n\n/** Per-breakpoint columns and gaps — one column on mobile, two from tablet, three from desktop, four from wide, six from ultra. */"
         },
         {
           "story": "ResponsiveColumns",
-          "description": "Per-breakpoint columns and gaps: tabletColumns/desktopColumns and tabletGap/desktopGap resolve at the design-token breakpoints (768px / 1024px), falling back through the previous breakpoint. Resize the viewport to see the tracks change. Numeric responsive counts render as minmax(0, 1fr) tracks so cells can shrink below content width.",
-          "source": "export const ResponsiveColumns: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Per-breakpoint columns and gaps: tabletColumns/desktopColumns and tabletGap/desktopGap resolve at the design-token breakpoints (768px / 1024px), falling back through the previous breakpoint. Resize the viewport to see the tracks change. Numeric responsive counts render as minmax(0, 1fr) tracks so cells can shrink below content width.\" } },\n  },\n  render: () => (\n    <Grid columns={1} tabletColumns={2} desktopColumns={3} gap=\"1.25rem\" tabletGap=\"2rem\" desktopGap=\"2.5rem\">\n      {Array.from({ length: 6 }, (_, i) => (\n        <div key={i} style={{ border: \"1px dashed var(--color-border, #999)\", padding: \"1rem\", textAlign: \"center\" }}>\n          Cell {i + 1}\n        </div>\n      ))}\n    </Grid>\n  ),\n};\n\n/** A template string when tracks genuinely differ — sidebar plus content here. */"
+          "description": "Per-breakpoint columns and gaps: tabletColumns/desktopColumns/wideColumns/ultraColumns and the matching Gap props resolve at the design-token breakpoints (768 / 1024 / 1440 / 1920px), each falling back through the previous rung. Resize the viewport to see the tracks change. Numeric responsive counts render as minmax(0, 1fr) tracks so cells can shrink below content width.",
+          "source": "export const ResponsiveColumns: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: { description: { story: \"Per-breakpoint columns and gaps: tabletColumns/desktopColumns/wideColumns/ultraColumns and the matching Gap props resolve at the design-token breakpoints (768 / 1024 / 1440 / 1920px), each falling back through the previous rung. Resize the viewport to see the tracks change. Numeric responsive counts render as minmax(0, 1fr) tracks so cells can shrink below content width.\" } },\n  },\n  render: () => (\n    <Grid\n      columns={1}\n      tabletColumns={2}\n      desktopColumns={3}\n      wideColumns={4}\n      ultraColumns={6}\n      gap=\"1.25rem\"\n      tabletGap=\"2rem\"\n      desktopGap=\"2.5rem\"\n      wideGap=\"3rem\"\n    >\n      {Array.from({ length: 6 }, (_, i) => (\n        <div key={i} style={{ border: \"1px dashed var(--color-border, #999)\", padding: \"1rem\", textAlign: \"center\" }}>\n          Cell {i + 1}\n        </div>\n      ))}\n    </Grid>\n  ),\n};\n\n/** A template string when tracks genuinely differ — sidebar plus content here. */"
         },
         {
           "story": "CustomTemplate",
@@ -8025,7 +7943,7 @@
         },
         {
           "name": "underline",
-          "type": "none | always | hover",
+          "type": "always | hover | none",
           "required": false
         }
       ],
@@ -8044,9 +7962,9 @@
           "optional": true,
           "type": "union",
           "values": [
-            "none",
             "always",
-            "hover"
+            "hover",
+            "none"
           ]
         }
       },
@@ -8457,7 +8375,7 @@
         },
         {
           "name": "variant",
-          "type": "default | elevated | bordered",
+          "type": "default | bordered | elevated",
           "required": false
         },
         {
@@ -8498,8 +8416,8 @@
           "type": "union",
           "values": [
             "default",
-            "elevated",
-            "bordered"
+            "bordered",
+            "elevated"
           ]
         },
         "className": {
@@ -8938,17 +8856,17 @@
       "keyProps": [
         {
           "name": "children",
-          "type": "ReactNode",
+          "type": "React.ReactNode",
           "required": true
         },
         {
           "name": "side",
-          "type": "top | right | bottom | left",
+          "type": "left | right | top | bottom",
           "required": false
         },
         {
           "name": "align",
-          "type": "start | center | end",
+          "type": "center | end | start",
           "required": false
         },
         {
@@ -8965,7 +8883,7 @@
       "props": {
         "children": {
           "optional": false,
-          "type": "ReactNode"
+          "type": "React.ReactNode"
         },
         "className": {
           "optional": true,
@@ -8975,19 +8893,19 @@
           "optional": true,
           "type": "union",
           "values": [
-            "top",
+            "left",
             "right",
-            "bottom",
-            "left"
+            "top",
+            "bottom"
           ]
         },
         "align": {
           "optional": true,
           "type": "union",
           "values": [
-            "start",
             "center",
-            "end"
+            "end",
+            "start"
           ]
         },
         "sideOffset": {
@@ -11580,7 +11498,7 @@
         },
         {
           "name": "background",
-          "type": "muted | accent | default | inverse",
+          "type": "default | muted | accent | inverse",
           "required": false
         },
         {
@@ -11621,9 +11539,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "default",
             "muted",
             "accent",
-            "default",
             "inverse"
           ]
         },
@@ -12189,7 +12107,7 @@
         },
         {
           "name": "variant",
-          "type": "minimal | default | elevated | bordered",
+          "type": "minimal | default | bordered | elevated",
           "required": false
         },
         {
@@ -12231,8 +12149,8 @@
           "values": [
             "minimal",
             "default",
-            "elevated",
-            "bordered"
+            "bordered",
+            "elevated"
           ]
         },
         "iconPosition": {
@@ -12745,11 +12663,88 @@
         "share"
       ],
       "importLine": "import { SocialIconLink } from \"@dt/SocialIconLink\";",
-      "keyProps": [],
-      "props": {},
-      "composesWith": [],
+      "keyProps": [
+        {
+          "name": "href",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true
+        },
+        {
+          "name": "variant",
+          "type": "plain | chip",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "sm | md | lg",
+          "required": false
+        },
+        {
+          "name": "external",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "props": {
+        "href": {
+          "optional": false,
+          "type": "string"
+        },
+        "label": {
+          "optional": false,
+          "type": "string"
+        },
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode"
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "plain",
+            "chip"
+          ]
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "external": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "composesWith": [
+        "Container",
+        "Stack",
+        "Link",
+        "Divider"
+      ],
       "prefersOver": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "put text children inside — this is icon-only; use Link for labeled links.",
+        "disable `external` for social profiles; same-tab is for internal routes only."
+      ],
       "usage": null,
       "tokens": {
         "colors": [
@@ -13333,7 +13328,7 @@
         },
         {
           "name": "align",
-          "type": "stretch | start | center | end",
+          "type": "center | stretch | end | start",
           "required": false
         },
         {
@@ -13343,7 +13338,7 @@
         },
         {
           "name": "as",
-          "type": "symbol | object | image | form | slot | style | title | button | search | article | dialog | figure | img | link | main | menu | menuitem | option | switch | table | text | time | a | abbr | address | area | aside | audio | b | base | bdi | bdo | big | blockquote | body | br | canvas | caption | center | cite | code | col | colgroup | data | datalist | dd | del | details | dfn | div | dl | dt | em | embed | fieldset | figcaption | footer | h1 | h2 | h3 | h4 | h5 | h6 | head | header | hgroup | hr | html | i | iframe | input | ins | kbd | keygen | label | legend | li | map | mark | meta | meter | nav | noindex | noscript | ol | optgroup | output | p | param | picture | pre | progress | q | rp | rt | ruby | s | samp | script | section | select | small | source | span | strong | sub | summary | sup | template | tbody | td | textarea | tfoot | th | thead | tr | track | u | ul | var | video | wbr | webview | svg | animate | animateMotion | animateTransform | circle | clipPath | defs | desc | ellipse | feBlend | feColorMatrix | feComponentTransfer | feComposite | feConvolveMatrix | feDiffuseLighting | feDisplacementMap | feDistantLight | feDropShadow | feFlood | feFuncA | feFuncB | feFuncG | feFuncR | feGaussianBlur | feImage | feMerge | feMergeNode | feMorphology | feOffset | fePointLight | feSpecularLighting | feSpotLight | feTile | feTurbulence | filter | foreignObject | g | line | linearGradient | marker | mask | metadata | mpath | path | pattern | polygon | polyline | radialGradient | rect | set | stop | textPath | tspan | use | view",
+          "type": "symbol | object | image | form | slot | style | title | button | search | article | dialog | figure | img | link | main | menu | menuitem | option | switch | table | text | time | div | section | aside | li | a | abbr | address | area | audio | b | base | bdi | bdo | big | blockquote | body | br | canvas | caption | center | cite | code | col | colgroup | data | datalist | dd | del | details | dfn | dl | dt | em | embed | fieldset | figcaption | footer | h1 | h2 | h3 | h4 | h5 | h6 | head | header | hgroup | hr | html | i | iframe | input | ins | kbd | keygen | label | legend | map | mark | meta | meter | nav | noindex | noscript | ol | optgroup | output | p | param | picture | pre | progress | q | rp | rt | ruby | s | samp | script | select | small | source | span | strong | sub | summary | sup | template | tbody | td | textarea | tfoot | th | thead | tr | track | u | ul | var | video | wbr | webview | svg | animate | animateMotion | animateTransform | circle | clipPath | defs | desc | ellipse | feBlend | feColorMatrix | feComponentTransfer | feComposite | feConvolveMatrix | feDiffuseLighting | feDisplacementMap | feDistantLight | feDropShadow | feFlood | feFuncA | feFuncB | feFuncG | feFuncR | feGaussianBlur | feImage | feMerge | feMergeNode | feMorphology | feOffset | fePointLight | feSpecularLighting | feSpotLight | feTile | feTurbulence | filter | foreignObject | g | line | linearGradient | marker | mask | metadata | mpath | path | pattern | polygon | polyline | radialGradient | rect | set | stop | textPath | tspan | use | view",
           "required": false
         }
       ],
@@ -13376,10 +13371,10 @@
           "optional": true,
           "type": "union",
           "values": [
-            "stretch",
-            "start",
             "center",
-            "end"
+            "stretch",
+            "end",
+            "start"
           ]
         },
         "justify": {
@@ -13427,11 +13422,14 @@
             "table",
             "text",
             "time",
+            "div",
+            "section",
+            "aside",
+            "li",
             "a",
             "abbr",
             "address",
             "area",
-            "aside",
             "audio",
             "b",
             "base",
@@ -13454,7 +13452,6 @@
             "del",
             "details",
             "dfn",
-            "div",
             "dl",
             "dt",
             "em",
@@ -13481,7 +13478,6 @@
             "keygen",
             "label",
             "legend",
-            "li",
             "map",
             "mark",
             "meta",
@@ -13504,7 +13500,6 @@
             "s",
             "samp",
             "script",
-            "section",
             "select",
             "small",
             "source",
@@ -14394,7 +14389,7 @@
       "keyProps": [
         {
           "name": "as",
-          "type": "cite | div | em | h1 | h2 | h3 | h4 | h5 | h6 | p | span | strong",
+          "type": "div | cite | em | h1 | h2 | h3 | h4 | h5 | h6 | p | span | strong",
           "required": false
         },
         {
@@ -14422,8 +14417,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "cite",
             "div",
+            "cite",
             "em",
             "h1",
             "h2",
@@ -15269,7 +15264,7 @@
         },
         {
           "name": "tone",
-          "type": "neutral | info | success | warning | error",
+          "type": "info | success | warning | error | neutral",
           "required": false
         },
         {
@@ -15302,11 +15297,11 @@
           "optional": true,
           "type": "union",
           "values": [
-            "neutral",
             "info",
             "success",
             "warning",
-            "error"
+            "error",
+            "neutral"
           ]
         },
         "position": {
@@ -15835,7 +15830,7 @@
         },
         {
           "name": "variant",
-          "type": "default | elevated | bordered",
+          "type": "default | bordered | elevated",
           "required": false
         },
         {
@@ -15871,8 +15866,8 @@
           "type": "union",
           "values": [
             "default",
-            "elevated",
-            "bordered"
+            "bordered",
+            "elevated"
           ]
         },
         "className": {
@@ -16245,7 +16240,7 @@
         },
         {
           "name": "variant",
-          "type": "minimal | full-width | contained",
+          "type": "contained | minimal | full-width",
           "required": false
         },
         {
@@ -16298,9 +16293,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "contained",
             "minimal",
-            "full-width",
-            "contained"
+            "full-width"
           ]
         },
         "className": {
@@ -16718,7 +16713,7 @@
         },
         {
           "name": "background",
-          "type": "muted | primary | dark | gradient | brand",
+          "type": "primary | muted | dark | gradient | brand",
           "required": false
         },
         {
@@ -16758,8 +16753,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "muted",
             "primary",
+            "muted",
             "dark",
             "gradient",
             "brand"
@@ -16984,7 +16979,7 @@
       "keyProps": [
         {
           "name": "messagePanel",
-          "type": "React.ReactNode",
+          "type": "ReactNode",
           "required": true
         },
         {
@@ -17018,7 +17013,7 @@
         },
         "messagePanel": {
           "optional": false,
-          "type": "React.ReactNode"
+          "type": "ReactNode"
         },
         "bookingConfig": {
           "optional": true,
@@ -17148,12 +17143,12 @@
         },
         {
           "name": "imageLayout",
-          "type": "none | grid | single | side-by-side",
+          "type": "single | none | grid | side-by-side",
           "required": false
         },
         {
           "name": "background",
-          "type": "muted | accent | default",
+          "type": "default | muted | accent",
           "required": false
         },
         {
@@ -17193,9 +17188,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "single",
             "none",
             "grid",
-            "single",
             "side-by-side"
           ]
         },
@@ -17203,9 +17198,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "default",
             "muted",
-            "accent",
-            "default"
+            "accent"
           ]
         },
         "centered": {
@@ -17370,12 +17365,12 @@
         },
         {
           "name": "backgroundColor",
-          "type": "light | white | transparent",
+          "type": "transparent | light | white",
           "required": false
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | full | xl",
+          "type": "sm | md | lg | xl | full",
           "required": false
         },
         {
@@ -17412,9 +17407,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "transparent",
             "light",
-            "white",
-            "transparent"
+            "white"
           ]
         },
         "maxWidth": {
@@ -17424,8 +17419,8 @@
             "sm",
             "md",
             "lg",
-            "full",
-            "xl"
+            "xl",
+            "full"
           ]
         },
         "spacing": {
@@ -17504,7 +17499,7 @@
         },
         {
           "name": "background",
-          "type": "image | light | dark | gradient | transparent",
+          "type": "image | transparent | light | dark | gradient",
           "required": false
         },
         {
@@ -17514,7 +17509,7 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | full | xl",
+          "type": "sm | md | lg | xl | full",
           "required": false
         },
         {
@@ -17576,10 +17571,10 @@
           "type": "union",
           "values": [
             "image",
+            "transparent",
             "light",
             "dark",
-            "gradient",
-            "transparent"
+            "gradient"
           ]
         },
         "align": {
@@ -17598,8 +17593,8 @@
             "sm",
             "md",
             "lg",
-            "full",
-            "xl"
+            "xl",
+            "full"
           ]
         },
         "spacing": {
@@ -17658,7 +17653,7 @@
         },
         {
           "name": "background",
-          "type": "image | solid | gradient | transparent",
+          "type": "image | transparent | solid | gradient",
           "required": false
         },
         {
@@ -17678,7 +17673,7 @@
         },
         {
           "name": "as",
-          "type": "symbol | object | image | form | slot | style | title | button | search | article | dialog | figure | img | link | main | menu | menuitem | option | switch | table | text | time | a | abbr | address | area | aside | audio | b | base | bdi | bdo | big | blockquote | body | br | canvas | caption | center | cite | code | col | colgroup | data | datalist | dd | del | details | dfn | div | dl | dt | em | embed | fieldset | figcaption | footer | h1 | h2 | h3 | h4 | h5 | h6 | head | header | hgroup | hr | html | i | iframe | input | ins | kbd | keygen | label | legend | li | map | mark | meta | meter | nav | noindex | noscript | ol | optgroup | output | p | param | picture | pre | progress | q | rp | rt | ruby | s | samp | script | section | select | small | source | span | strong | sub | summary | sup | template | tbody | td | textarea | tfoot | th | thead | tr | track | u | ul | var | video | wbr | webview | svg | animate | animateMotion | animateTransform | circle | clipPath | defs | desc | ellipse | feBlend | feColorMatrix | feComponentTransfer | feComposite | feConvolveMatrix | feDiffuseLighting | feDisplacementMap | feDistantLight | feDropShadow | feFlood | feFuncA | feFuncB | feFuncG | feFuncR | feGaussianBlur | feImage | feMerge | feMergeNode | feMorphology | feOffset | fePointLight | feSpecularLighting | feSpotLight | feTile | feTurbulence | filter | foreignObject | g | line | linearGradient | marker | mask | metadata | mpath | path | pattern | polygon | polyline | radialGradient | rect | set | stop | textPath | tspan | use | view",
+          "type": "symbol | object | image | form | slot | style | title | button | search | article | dialog | figure | img | link | main | menu | menuitem | option | switch | table | text | time | div | section | aside | li | a | abbr | address | area | audio | b | base | bdi | bdo | big | blockquote | body | br | canvas | caption | center | cite | code | col | colgroup | data | datalist | dd | del | details | dfn | dl | dt | em | embed | fieldset | figcaption | footer | h1 | h2 | h3 | h4 | h5 | h6 | head | header | hgroup | hr | html | i | iframe | input | ins | kbd | keygen | label | legend | map | mark | meta | meter | nav | noindex | noscript | ol | optgroup | output | p | param | picture | pre | progress | q | rp | rt | ruby | s | samp | script | select | small | source | span | strong | sub | summary | sup | template | tbody | td | textarea | tfoot | th | thead | tr | track | u | ul | var | video | wbr | webview | svg | animate | animateMotion | animateTransform | circle | clipPath | defs | desc | ellipse | feBlend | feColorMatrix | feComponentTransfer | feComposite | feConvolveMatrix | feDiffuseLighting | feDisplacementMap | feDistantLight | feDropShadow | feFlood | feFuncA | feFuncB | feFuncG | feFuncR | feGaussianBlur | feImage | feMerge | feMergeNode | feMorphology | feOffset | fePointLight | feSpecularLighting | feSpotLight | feTile | feTurbulence | filter | foreignObject | g | line | linearGradient | marker | mask | metadata | mpath | path | pattern | polygon | polyline | radialGradient | rect | set | stop | textPath | tspan | use | view",
           "required": false
         }
       ],
@@ -17692,9 +17687,9 @@
           "type": "union",
           "values": [
             "image",
+            "transparent",
             "solid",
-            "gradient",
-            "transparent"
+            "gradient"
           ]
         },
         "backgroundImage": {
@@ -17759,11 +17754,14 @@
             "table",
             "text",
             "time",
+            "div",
+            "section",
+            "aside",
+            "li",
             "a",
             "abbr",
             "address",
             "area",
-            "aside",
             "audio",
             "b",
             "base",
@@ -17786,7 +17784,6 @@
             "del",
             "details",
             "dfn",
-            "div",
             "dl",
             "dt",
             "em",
@@ -17813,7 +17810,6 @@
             "keygen",
             "label",
             "legend",
-            "li",
             "map",
             "mark",
             "meta",
@@ -17836,7 +17832,6 @@
             "s",
             "samp",
             "script",
-            "section",
             "select",
             "small",
             "source",
@@ -18137,7 +18132,7 @@
         },
         {
           "name": "background",
-          "type": "muted | gradient | transparent",
+          "type": "muted | transparent | gradient",
           "required": false
         },
         {
@@ -18178,8 +18173,8 @@
           "type": "union",
           "values": [
             "muted",
-            "gradient",
-            "transparent"
+            "transparent",
+            "gradient"
           ]
         },
         "className": {
@@ -18259,7 +18254,7 @@
           },
           {
             "guidance": false,
-            "description": "Don't use it for blog listings; BlogGrid owns article lists."
+            "description": "Don't use it for blog listings; the blog index composes its own DS Grid of article cards."
           },
           {
             "guidance": false,
@@ -18296,7 +18291,7 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | full | xl",
+          "type": "sm | md | lg | xl | full",
           "required": false
         },
         {
@@ -18332,8 +18327,8 @@
             "sm",
             "md",
             "lg",
-            "full",
-            "xl"
+            "xl",
+            "full"
           ]
         },
         "grid": {
@@ -18484,12 +18479,12 @@
         },
         {
           "name": "backgroundColor",
-          "type": "light | white | transparent",
+          "type": "transparent | light | white",
           "required": false
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | full | xl",
+          "type": "sm | md | lg | xl | full",
           "required": false
         },
         {
@@ -18525,9 +18520,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "transparent",
             "light",
-            "white",
-            "transparent"
+            "white"
           ]
         },
         "maxWidth": {
@@ -18537,8 +18532,8 @@
             "sm",
             "md",
             "lg",
-            "full",
-            "xl"
+            "xl",
+            "full"
           ]
         },
         "spacing": {
@@ -18673,12 +18668,12 @@
         }
       },
       "composesWith": [
-        "Text",
         "StoryBlock",
         "ProjectHero",
         "RelatedProjects",
         "GridBlock",
-        "ProcessBlock"
+        "ProjectMetaSection",
+        "TeamBlock"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -18797,7 +18792,7 @@
         },
         {
           "name": "variant",
-          "type": "full-width | contained | split",
+          "type": "contained | full-width | split",
           "required": false
         },
         {
@@ -18858,8 +18853,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "full-width",
             "contained",
+            "full-width",
             "split"
           ]
         },
@@ -18880,7 +18875,8 @@
         "ProjectDetailLayout",
         "RelatedProjects",
         "GridBlock",
-        "ProcessBlock"
+        "ProjectMetaSection",
+        "TeamBlock"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -18911,12 +18907,12 @@
         },
         {
           "name": "background",
-          "type": "muted | accent | default",
+          "type": "default | muted | accent",
           "required": false
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | full | xl",
+          "type": "sm | md | lg | xl | full",
           "required": false
         },
         {
@@ -18964,9 +18960,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "default",
             "muted",
-            "accent",
-            "default"
+            "accent"
           ]
         },
         "maxWidth": {
@@ -18976,8 +18972,8 @@
             "sm",
             "md",
             "lg",
-            "full",
-            "xl"
+            "xl",
+            "full"
           ]
         },
         "className": {
@@ -18990,12 +18986,12 @@
         }
       },
       "composesWith": [
-        "Text",
         "StoryBlock",
         "GridBlock",
         "ProjectDetailLayout",
         "ProjectHero",
-        "RelatedProjects"
+        "RelatedProjects",
+        "TeamBlock"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -19216,12 +19212,12 @@
         }
       },
       "composesWith": [
-        "Text",
         "StoryBlock",
         "ProjectDetailLayout",
         "ProjectHero",
         "GridBlock",
-        "ProcessBlock"
+        "ProjectMetaSection",
+        "TeamBlock"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -19258,7 +19254,7 @@
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | full | xl",
+          "type": "sm | md | lg | xl | full",
           "required": false
         },
         {
@@ -19322,8 +19318,8 @@
             "sm",
             "md",
             "lg",
-            "full",
-            "xl"
+            "xl",
+            "full"
           ]
         },
         "spacing": {
@@ -19391,7 +19387,7 @@
         },
         {
           "name": "cardVariant",
-          "type": "minimal | default | elevated | bordered",
+          "type": "minimal | default | bordered | elevated",
           "required": false
         },
         {
@@ -19438,8 +19434,8 @@
           "values": [
             "minimal",
             "default",
-            "elevated",
-            "bordered"
+            "bordered",
+            "elevated"
           ]
         },
         "className": {
@@ -19578,7 +19574,7 @@
         },
         {
           "name": "background",
-          "type": "muted | primary | accent | default",
+          "type": "primary | default | muted | accent",
           "required": false
         },
         {
@@ -19605,10 +19601,10 @@
           "optional": true,
           "type": "union",
           "values": [
-            "muted",
             "primary",
-            "accent",
-            "default"
+            "default",
+            "muted",
+            "accent"
           ]
         },
         "className": {
@@ -19657,17 +19653,17 @@
         },
         {
           "name": "imageLayout",
-          "type": "none | grid | single",
+          "type": "single | none | grid",
           "required": false
         },
         {
           "name": "backgroundColor",
-          "type": "light | white | transparent",
+          "type": "transparent | light | white",
           "required": false
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | full | xl",
+          "type": "sm | md | lg | xl | full",
           "required": false
         },
         {
@@ -19697,18 +19693,18 @@
           "optional": true,
           "type": "union",
           "values": [
+            "single",
             "none",
-            "grid",
-            "single"
+            "grid"
           ]
         },
         "backgroundColor": {
           "optional": true,
           "type": "union",
           "values": [
+            "transparent",
             "light",
-            "white",
-            "transparent"
+            "white"
           ]
         },
         "maxWidth": {
@@ -19718,8 +19714,8 @@
             "sm",
             "md",
             "lg",
-            "full",
-            "xl"
+            "xl",
+            "full"
           ]
         },
         "spacing": {
@@ -19798,12 +19794,12 @@
         },
         {
           "name": "backgroundColor",
-          "type": "light | white | transparent",
+          "type": "transparent | light | white",
           "required": false
         },
         {
           "name": "maxWidth",
-          "type": "sm | md | lg | full | xl",
+          "type": "sm | md | lg | xl | full",
           "required": false
         },
         {
@@ -19843,9 +19839,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "transparent",
             "light",
-            "white",
-            "transparent"
+            "white"
           ]
         },
         "maxWidth": {
@@ -19855,8 +19851,8 @@
             "sm",
             "md",
             "lg",
-            "full",
-            "xl"
+            "xl",
+            "full"
           ]
         },
         "spacing": {
@@ -19937,12 +19933,12 @@
         },
         {
           "name": "cardVariant",
-          "type": "default | elevated | bordered",
+          "type": "default | bordered | elevated",
           "required": false
         },
         {
           "name": "background",
-          "type": "muted | accent | default",
+          "type": "default | muted | accent",
           "required": false
         },
         {
@@ -19974,17 +19970,17 @@
           "type": "union",
           "values": [
             "default",
-            "elevated",
-            "bordered"
+            "bordered",
+            "elevated"
           ]
         },
         "background": {
           "optional": true,
           "type": "union",
           "values": [
+            "default",
             "muted",
-            "accent",
-            "default"
+            "accent"
           ]
         },
         "columns": {
@@ -20116,10 +20112,7 @@
         }
       },
       "composesWith": [
-        "Container",
-        "Section",
-        "CategoryFilter",
-        "WorkGrid"
+        "Grid"
       ],
       "prefersOver": [],
       "forbiddenUse": [

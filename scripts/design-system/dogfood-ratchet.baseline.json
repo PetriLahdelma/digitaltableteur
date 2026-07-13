@@ -85,10 +85,6 @@
       "rawElements": 0,
       "utilityLines": 6
     },
-    "nextjs-app/shared/components/BlogGrid/BlogGrid.tsx": {
-      "rawElements": 0,
-      "utilityLines": 5
-    },
     "nextjs-app/shared/components/BlogMediaImage/BlogMediaImage.tsx": {
       "rawElements": 2,
       "utilityLines": 2

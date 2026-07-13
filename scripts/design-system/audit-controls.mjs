@@ -39,9 +39,6 @@ const EFFECT_EXEMPT = {
     WorkGrid: {
         animateItems: 'scroll-triggered GSAP entrance stagger — only fires on scroll into view, so it has no stable DOM signature in the static effect probe (and is gated by the AnimationProvider motion preference); stories seed it off for a settled, deterministic grid, verified by the reduced-motion guard in the component',
     },
-    BlogGrid: {
-        featuredSlug: 'only affects the featured-first layout (selects which article is promoted to the full-width slot); inert in the default standard layout the Playground probes; verified by the FeaturedFirst story and the featured-first unit test',
-    },
     BlogMediaImage: {
         fit: 'object-fit class only applies in fill mode; the Playground renders inline (fill=false) so it is inert there; verified by the FillContain story and the fill-mode cover/contain unit tests',
     },
