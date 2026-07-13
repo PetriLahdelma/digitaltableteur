@@ -1,10 +1,10 @@
+/* Panel chrome only; the 2-column track and gap come from the DS Grid
+   component this class is applied to. */
+
 .root {
-  display: grid;
   padding: var(--space-internal-16);
   box-sizing: border-box;
   height: 100%;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-internal-16);
   border-radius: var(--radius-medium);
   background: var(--color-surface);
 }
