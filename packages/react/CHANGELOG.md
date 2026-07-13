@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.13 - 2026-07-13
+
+- `Link` now classifies protocol-relative cross-origin URLs (`//host/path`) as external: they receive the external indicator and `rel="noopener noreferrer"` instead of being mistaken for internal paths. Previously any href starting with `/` — including protocol-relative `//` — short-circuited as internal, so cross-origin `//evil.example/path` rendered without the external safeguards. Protocol-relative same-origin links stay internal; `mailto:`/`tel:` and disallowed protocols (neutralized to `#`) are unchanged; SSR (no `window`) still treats all http(s) absolutes as external. The two normalize + classify passes are consolidated into a single `analyzeHref` (#1187).
+- Runtime public API unchanged (115 exports); no contract change (public `LinkProps` is identical).
+- Verified by the full local gate (typecheck, lint, 2306 tests, build) plus check:react-package, check:react-public-api, check:react-public-surface (0 alpha), and the publish preflight (i18n/navigation matrix 27/27, site package dogfood 27/27).
+
 ## 0.1.12 - 2026-07-13
 
 - `Grid` becomes the master responsive grid: additive per-breakpoint props `tabletColumns`/`desktopColumns`/`wideColumns`/`ultraColumns` and `tabletGap`/`desktopGap`/`wideGap`/`ultraGap` resolve at the token breakpoints (768/1024/1440/1920px) via CSS custom properties and module media queries, each falling back through the previous rung (#1141, #1143). Numeric responsive counts render as `repeat(n, minmax(0, 1fr))` so cells can shrink below content width. Without responsive props the legacy scalar path renders byte-identical to 0.1.11, so existing consumers are unaffected.
