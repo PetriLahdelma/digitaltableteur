@@ -24,7 +24,13 @@ npm run check:published-tokens-freshness -- --max-age-days 7
 npm run check:contract-props
 npm run check:consumers
 npm run check:astryx-roadmap
-npm run check:figma-links
+# figma-links is a ratchet over contract `figma` fields + figma-component-index.json.
+# Only run it when a figma-governing file actually changed, so a stale baseline
+# (debt improved elsewhere but not yet tightened) can't block an unrelated
+# story/CSS/test push. See project_ci_actually_fixable memory (2026-07-13).
+if echo "$changed" | grep -qE '\.contract\.json$|figma-component-index\.json|figma-links\.baseline\.json|check-figma-links'; then
+  npm run check:figma-links
+fi
 npm run validate:components
 npm run typecheck
 npm run lint

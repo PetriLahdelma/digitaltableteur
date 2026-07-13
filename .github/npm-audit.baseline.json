@@ -1,0 +1,5 @@
+{
+  "maxCritical": 0,
+  "maxHigh": 15,
+  "note": "NPM Audit gate thresholds for .github/workflows/security-scanning.yml. maxCritical=0 (never ship a critical). maxHigh is a ratchet: the CI step fails when `npm audit` reports more high-severity advisories than this. Lower it as advisories are resolved; only raise it in a reviewed PR that documents which unfixable transitive advisory forced the bump. Keeping the number here (not hardcoded in the workflow) makes every threshold change an explicit, reviewable diff instead of a silent magic constant."
+}
