@@ -45,19 +45,23 @@ jobs:
 
       - name: Check for high/critical vulnerabilities
         run: |
-          HIGH=$(cat audit-report.json | jq '.metadata.vulnerabilities.high // 0')
-          CRITICAL=$(cat audit-report.json | jq '.metadata.vulnerabilities.critical // 0')
-          echo "High vulnerabilities: $HIGH"
-          echo "Critical vulnerabilities: $CRITICAL"
-          if [ "$CRITICAL" -gt 0 ]; then
-            echo "❌ Found $CRITICAL critical vulnerabilities"
+          # Thresholds live in a committed, reviewable baseline instead of a magic
+          # constant here, so any change to the tolerance is an explicit diff.
+          MAX_HIGH=$(jq '.maxHigh // 15' .github/npm-audit.baseline.json)
+          MAX_CRITICAL=$(jq '.maxCritical // 0' .github/npm-audit.baseline.json)
+          HIGH=$(jq '.metadata.vulnerabilities.high // 0' audit-report.json)
+          CRITICAL=$(jq '.metadata.vulnerabilities.critical // 0' audit-report.json)
+          echo "High vulnerabilities: $HIGH (max $MAX_HIGH)"
+          echo "Critical vulnerabilities: $CRITICAL (max $MAX_CRITICAL)"
+          if [ "$CRITICAL" -gt "$MAX_CRITICAL" ]; then
+            echo "❌ Found $CRITICAL critical vulnerabilities (threshold: $MAX_CRITICAL)"
             exit 1
           fi
-          if [ "$HIGH" -gt 15 ]; then
-            echo "⚠️  Found $HIGH high vulnerabilities (threshold: 15)"
+          if [ "$HIGH" -gt "$MAX_HIGH" ]; then
+            echo "⚠️  Found $HIGH high vulnerabilities (threshold: $MAX_HIGH) — fix advisories or bump .github/npm-audit.baseline.json with justification"
             exit 1
           fi
-          echo "✅ No critical vulnerabilities found"
+          echo "✅ Vulnerabilities within baseline"
 
       - name: Upload audit report
         uses: actions/upload-artifact@v7
@@ -89,7 +93,7 @@ jobs:
         run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci
 
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
+        uses: snyk/actions/node@8e119fbb6c251787721d34ba683ed48eba792766 # master @ 2026-07-13 (was @master, a moving ref)
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -99,7 +103,7 @@ jobs:
           args: --severity-threshold=high --all-projects
 
       - name: Generate Snyk SARIF (single run for upload)
-        uses: snyk/actions/node@master
+        uses: snyk/actions/node@8e119fbb6c251787721d34ba683ed48eba792766 # master @ 2026-07-13 (was @master, a moving ref)
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -115,7 +119,7 @@ jobs:
           sarif_file: snyk.sarif
 
       - name: Monitor with Snyk
-        uses: snyk/actions/node@master
+        uses: snyk/actions/node@8e119fbb6c251787721d34ba683ed48eba792766 # master @ 2026-07-13 (was @master, a moving ref)
         # Fire-and-forget telemetry push to the Snyk dashboard; monitoring must never
         # gate the security workflow. The CLI can exit non-zero (SNYK-CLI-0000) even
         # after all projects monitor successfully with --all-projects, which otherwise
