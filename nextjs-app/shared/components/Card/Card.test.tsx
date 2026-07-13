@@ -46,6 +46,18 @@ describe("Card", () => {
     expect(screen.getByText("Meta")).toBeInTheDocument();
   });
 
+  it("honors descriptionProps element and size", () => {
+    render(
+      <Card
+        description="Supporting line"
+        descriptionProps={{ as: "span", size: "xl" }}
+      />,
+    );
+    const description = screen.getByText("Supporting line");
+    expect(description.tagName).toBe("SPAN");
+    expect(description.className).toContain("textXL");
+  });
+
   it("renders the semantic element from as", () => {
     const { container } = render(<Card as="article">x</Card>);
     expect((container.firstChild as HTMLElement).tagName).toBe("ARTICLE");

@@ -58,16 +58,18 @@
     "schemaVersion": 2,
     "props": {
         "type": {
-            "optional": false,
+            "optional": true,
             "type": "union",
             "values": [
                 "text",
                 "tel",
-                "email"
+                "email",
+                "textarea",
+                "select"
             ]
         },
         "children": {
-            "optional": false,
+            "optional": true,
             "type": "ReactNode"
         },
         "label": {

@@ -143,8 +143,8 @@ function extractPropSchemasFromFile(
     const locallyDeclared = decls.some((d) => d.getSourceFile().getFilePath() === ownPath);
     if (!locallyDeclared) continue;
 
-    let optional = true;
-    let typeText = "unknown";
+    const optionalFlags: boolean[] = [];
+    const declaredTypeTexts: string[] = [];
     let deprecated = false;
 
     for (const d of decls) {
@@ -152,10 +152,12 @@ function extractPropSchemasFromFile(
         "hasQuestionToken" in d &&
         typeof (d as { hasQuestionToken: () => boolean }).hasQuestionToken === "function"
       ) {
-        optional = (d as { hasQuestionToken: () => boolean }).hasQuestionToken();
+        optionalFlags.push(
+          (d as { hasQuestionToken: () => boolean }).hasQuestionToken(),
+        );
       }
       const typeNodeInner = (d as { getTypeNode?: () => { getText: () => string } }).getTypeNode?.();
-      if (typeNodeInner) typeText = typeNodeInner.getText();
+      if (typeNodeInner) declaredTypeTexts.push(typeNodeInner.getText());
       const jsDocs =
         (d as { getJsDocs?: () => Array<{ getDescription: () => string }> }).getJsDocs?.() ?? [];
       if (jsDocs.some((doc) => doc.getDescription().includes("@deprecated"))) {
@@ -163,9 +165,36 @@ function extractPropSchemasFromFile(
       }
     }
 
-    const propType = (decls[0] as import("ts-morph").Node & { getType: () => import("ts-morph").Type }).getType?.() ??
-      sym.getDeclarations()[0]?.getType?.();
-    const literalValues = propType ? collectStringLiterals(propType) : [];
+    const optional = optionalFlags.length ? optionalFlags.some(Boolean) : true;
+    const uniqueTypeTexts = [...new Set(declaredTypeTexts)];
+    const nonNeverTypeTexts =
+      uniqueTypeTexts.length > 1
+        ? uniqueTypeTexts.filter((typeText) => typeText !== "never")
+        : uniqueTypeTexts;
+    const meaningfulTypeTexts = nonNeverTypeTexts.filter((candidate, index, all) => {
+      if (!/^[A-Za-z_$][\w.$]*$/.test(candidate)) return true;
+      return !all.some(
+        (other, otherIndex) =>
+          otherIndex !== index &&
+          other
+            .split("|")
+            .map((part) => part.trim())
+            .includes(candidate),
+      );
+    });
+    const typeText = meaningfulTypeTexts.join(" | ") || "unknown";
+    const literalValues = [
+      ...new Set(
+        decls.flatMap((decl) => {
+          const propType = (
+            decl as import("ts-morph").Node & {
+              getType?: () => import("ts-morph").Type;
+            }
+          ).getType?.();
+          return propType ? collectStringLiterals(propType) : [];
+        }),
+      ),
+    ];
     const values =
       literalValues.length >= 2
         ? literalValues

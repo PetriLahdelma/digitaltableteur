@@ -71,4 +71,20 @@ describe("Badge", () => {
     expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
     expect(container.querySelector('[class*="dot"]')).toBeNull();
   });
+
+  it("opts into polite live-region semantics with role status", () => {
+    render(<Badge role="status">3 updates</Badge>);
+    expect(screen.getByRole("status")).toHaveAttribute("aria-live", "polite");
+  });
+
+  it("composes square corners with a non-default size", () => {
+    const { container } = render(
+      <Badge square size="lg">
+        Large square
+      </Badge>,
+    );
+    const badge = container.firstChild as HTMLElement;
+    expect(badge.className).toContain("square");
+    expect(badge.className).toContain("lg");
+  });
 });

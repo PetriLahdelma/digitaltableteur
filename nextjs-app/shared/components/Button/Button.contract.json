@@ -251,19 +251,25 @@
     "props": {
         "submits": {
             "optional": true,
-            "type": "never"
+            "type": "boolean"
         },
         "clickAction": {
             "optional": true,
-            "type": "never"
+            "type": "(event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>"
         },
         "href": {
-            "optional": false,
+            "optional": true,
             "type": "string"
         },
         "target": {
             "optional": true,
-            "type": "HTMLAttributeAnchorTarget | undefined"
+            "type": "union",
+            "values": [
+                "_self",
+                "_blank",
+                "_parent",
+                "_top"
+            ]
         },
         "rel": {
             "optional": true,

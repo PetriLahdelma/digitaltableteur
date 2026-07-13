@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, within } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import Modal from "@dt/Modal";
 
 describe("Modal", () => {
@@ -41,6 +41,52 @@ describe("Modal", () => {
     );
     expect(
       within(document.body).getByRole("button", { name: "Options" }),
+    ).toBeInTheDocument();
+  });
+
+  it("omits the default footer when showFooter is false", () => {
+    render(
+      <Modal isOpen title="Composed dialog" showFooter={false} onClose={() => {}}>
+        <div>Modal Content</div>
+      </Modal>,
+    );
+    expect(within(document.body).queryByRole("button")).not.toBeInTheDocument();
+  });
+
+  it("wires object and callback panel refs to the dialog", () => {
+    const objectRef = React.createRef<HTMLDivElement>();
+    const callbackRef = vi.fn();
+    const { rerender } = render(
+      <Modal isOpen title="Object ref" panelRef={objectRef}>
+        content
+      </Modal>,
+    );
+    expect(objectRef.current).toBe(within(document.body).getByRole("dialog"));
+
+    rerender(
+      <Modal isOpen title="Callback ref" panelRef={callbackRef}>
+        content
+      </Modal>,
+    );
+    expect(callbackRef).toHaveBeenCalledWith(within(document.body).getByRole("dialog"));
+  });
+
+  it("renders the requested close icon", () => {
+    render(
+      <Modal
+        isOpen
+        title="Custom close icon"
+        showCloseIcon
+        closeIconName="check"
+        onClose={() => {}}
+      >
+        content
+      </Modal>,
+    );
+    expect(
+      within(document.body)
+        .getByRole("button", { name: "Close dialog" })
+        .querySelector('[data-icon-name="check"]'),
     ).toBeInTheDocument();
   });
 

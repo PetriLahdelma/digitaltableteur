@@ -117,7 +117,7 @@
     "props": {
         "children": {
             "optional": true,
-            "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+            "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
         },
         "as": {
             "optional": true,

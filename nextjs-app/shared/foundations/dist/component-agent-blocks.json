@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T17:29:04.223Z",
+  "generatedAt": "2026-07-13T18:32:27.468Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -1234,19 +1234,25 @@
       "props": {
         "submits": {
           "optional": true,
-          "type": "never"
+          "type": "boolean"
         },
         "clickAction": {
           "optional": true,
-          "type": "never"
+          "type": "(event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>"
         },
         "href": {
-          "optional": false,
+          "optional": true,
           "type": "string"
         },
         "target": {
           "optional": true,
-          "type": "HTMLAttributeAnchorTarget | undefined"
+          "type": "union",
+          "values": [
+            "_self",
+            "_blank",
+            "_parent",
+            "_top"
+          ]
         },
         "rel": {
           "optional": true,
@@ -4018,16 +4024,18 @@
       "intent": "Documents how **FormFieldEditorial** is used in production layouts and Storybook examples.",
       "props": {
         "type": {
-          "optional": false,
+          "optional": true,
           "type": "union",
           "values": [
             "text",
             "tel",
-            "email"
+            "email",
+            "textarea",
+            "select"
           ]
         },
         "children": {
-          "optional": false,
+          "optional": true,
           "type": "ReactNode"
         },
         "label": {
@@ -4056,7 +4064,9 @@
           "values": [
             "text",
             "tel",
-            "email"
+            "email",
+            "textarea",
+            "select"
           ],
           "default": "text"
         }
@@ -9143,7 +9153,7 @@
       "props": {
         "children": {
           "optional": true,
-          "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+          "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
         },
         "as": {
           "optional": true,
@@ -9649,7 +9659,7 @@
       "props": {
         "children": {
           "optional": true,
-          "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+          "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
         },
         "as": {
           "optional": true,
