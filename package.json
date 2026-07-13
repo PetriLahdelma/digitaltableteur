@@ -327,7 +327,7 @@
     "@types/sanitize-html": "^2.16.1",
     "@types/webpack": "^5.28.5",
     "@vercel/node": "^5.8.23",
-    "@vitejs/plugin-react": "^5.2.0",
+    "@vitejs/plugin-react": "^6.0.3",
     "@vitest/coverage-v8": "^4.1.10",
     "agent-browser": "0.31.1",
     "ajv": "^8.20.0",
