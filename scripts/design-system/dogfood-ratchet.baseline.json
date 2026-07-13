@@ -341,10 +341,6 @@
       "rawElements": 1,
       "utilityLines": 0
     },
-    "nextjs-app/shared/components/SkillsGrid/SkillsGrid.tsx": {
-      "rawElements": 1,
-      "utilityLines": 13
-    },
     "nextjs-app/shared/components/SkipLink/SkipLink.tsx": {
       "rawElements": 1,
       "utilityLines": 2

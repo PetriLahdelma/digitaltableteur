@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T08:53:58.131Z",
+  "generatedAt": "2026-07-13T09:00:54.945Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -7965,59 +7965,6 @@
       ],
       "prefersOver": [],
       "declaredPropCount": 7
-    },
-    "SkillsGrid": {
-      "preferredImport": "@dt/SkillsGrid",
-      "intent": "Single, repeatable visual for the 'capabilities' / 'tools we use' grid on marketing pages. Owns the column-count axis so the same data can render as a tight or sparse grid.",
-      "props": {
-        "skills": {
-          "optional": false,
-          "type": "Skill[]"
-        },
-        "showCategories": {
-          "optional": true,
-          "type": "boolean"
-        },
-        "columns": {
-          "optional": true,
-          "type": "4 | 6 | 8"
-        },
-        "className": {
-          "optional": true,
-          "type": "string"
-        }
-      },
-      "variants": {},
-      "cvaVariants": {},
-      "variantsFnName": null,
-      "useWhen": [
-        "Use on the about page and capability sections.",
-        "Pick a column count that matches the viewport (4 mobile, 6 desktop default)."
-      ],
-      "avoidWhen": [
-        "Use for a small set of (≤ 4) capabilities — the grid rhythm collapses; use `Card` instead.",
-        "Mix logos and text in the same grid — pick one visual language."
-      ],
-      "requiredA11y": [
-        "Renders a `<section>` with an `aria-labelledby` heading so the grid is a labelled region.",
-        "Each logo carries an `alt` text describing the skill or tool; decorative-only logos are `aria-hidden`."
-      ],
-      "keyboard": [],
-      "compositionRules": [],
-      "canonicalExamples": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-      ],
-      "replacementFor": [],
-      "forbiddenUse": [
-        "Use for a small set of (≤ 4) capabilities — the grid rhythm collapses; use `Card` instead.",
-        "Mix logos and text in the same grid — pick one visual language."
-      ],
-      "composesWith": [],
-      "prefersOver": [],
-      "declaredPropCount": 4
     },
     "SkipLink": {
       "preferredImport": "@dt/SkipLink",
