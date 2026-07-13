@@ -7,6 +7,8 @@ type UsageRow = {
   name: string;
   kind: string;
   status: string | null;
+  governed?: boolean;
+  exported?: boolean;
   directImportCount: number;
   directImporters: string[];
   packageImportCount?: number;
@@ -15,11 +17,42 @@ type UsageRow = {
   prodPages: string[];
 };
 
+type UsageSummary = {
+  catalogCount: number;
+  governedCount: number;
+  exportedCount: number;
+  strictConsumedCount: number;
+  transitiveConsumedCount: number;
+};
+
 type SortKey = "name" | "directImportCount" | "prodPageCount";
 
-const rows = (usageReport as { generatedAt: string; components: UsageRow[] })
-  .components;
-const generatedAt = (usageReport as { generatedAt: string }).generatedAt;
+const report = usageReport as {
+  generatedAt: string;
+  summary?: UsageSummary;
+  components: UsageRow[];
+};
+const rows = report.components;
+const generatedAt = report.generatedAt;
+
+// Prefer the report's own summary; fall back to computing it from the rows so
+// the page still renders against a report generated before the summary block
+// (and before the governed/exported per-row fields) existed.
+const computeSummary = (): UsageSummary => {
+  const governed = rows.filter((row) => row.governed ?? row.status !== null);
+  return {
+    catalogCount: rows.length,
+    governedCount: governed.length,
+    exportedCount: rows.filter((row) => row.exported).length,
+    strictConsumedCount: governed.filter(
+      (row) => (row.packageImportCount ?? 0) > 0,
+    ).length,
+    transitiveConsumedCount: governed.filter(
+      (row) => row.exported && row.prodPageCount > 0,
+    ).length,
+  };
+};
+const summary = report.summary ?? computeSummary();
 
 const ComponentUsageContent = () => {
   const [sortKey, setSortKey] = useState<SortKey>("directImportCount");
@@ -36,40 +69,53 @@ const ComponentUsageContent = () => {
     );
   }, [sortKey, onlyUnused]);
 
-  const unusedCount = rows.filter((row) => row.directImportCount === 0).length;
-  const viaPackageCount = rows.filter(
-    (row) => (row.packageImportCount ?? 0) > 0,
-  ).length;
-
   return (
     <article className={styles.wrapper}>
       <header className={styles.header}>
         <h1>Component Usage</h1>
         <p className={styles.lead}>
-          Real adoption data from the production codebase: how many source
-          files import each component (statically or via dynamic import), and
-          how many production pages transitively render it.
+          Real adoption data from the production codebase, measured over the{" "}
+          <strong>{summary.governedCount} governed</strong> (contract-bearing)
+          components rather than the raw catalog, which also lists non-component
+          dirs and bespoke one-off page components. Two honest consumption
+          signals: components this repo imports directly from the npm barrel
+          (strict dogfooding), and components that ship in the package and reach
+          a production page (transitive).
         </p>
       </header>
 
       <section className={styles.section}>
         <div className={styles.principleGrid}>
           <div className={styles.principle}>
-            <h3>{rows.length}</h3>
-            <p>Components in the catalog</p>
-          </div>
-          <div className={styles.principle}>
-            <h3>{unusedCount}</h3>
-            <p>Without any importer</p>
+            <h3>{summary.governedCount}</h3>
+            <p>
+              Governed components{" "}
+              <span style={{ opacity: 0.6 }}>
+                (of {summary.catalogCount} catalog entries)
+              </span>
+            </p>
           </div>
           <div className={styles.principle}>
             <h3>
-              {viaPackageCount}/{rows.length}
+              {summary.transitiveConsumedCount}/{summary.governedCount}
             </h3>
             <p>
-              Consumed via <code>@digitaltableteur/react</code> (runtime
-              imports from the npm package)
+              Shipped in <code>@digitaltableteur/react</code> and rendered in
+              production (transitive)
             </p>
+          </div>
+          <div className={styles.principle}>
+            <h3>
+              {summary.strictConsumedCount}/{summary.governedCount}
+            </h3>
+            <p>
+              Directly imported from <code>@digitaltableteur/react</code> as a
+              runtime value (strict dogfooding)
+            </p>
+          </div>
+          <div className={styles.principle}>
+            <h3>{summary.exportedCount}</h3>
+            <p>Exported from the package barrel</p>
           </div>
           <div className={styles.principle}>
             <h3>{new Date(generatedAt).toLocaleDateString("en-GB")}</h3>
@@ -118,6 +164,7 @@ const ComponentUsageContent = () => {
               <th>Component</th>
               <th>Kind</th>
               <th>Status</th>
+              <th>In package</th>
               <th>Direct imports</th>
               <th>Prod pages</th>
               <th>Importers</th>
@@ -131,6 +178,7 @@ const ComponentUsageContent = () => {
                 </td>
                 <td>{row.kind}</td>
                 <td>{row.status ?? "—"}</td>
+                <td>{row.exported ? "✓" : "—"}</td>
                 <td>{row.directImportCount}</td>
                 <td>{row.prodPageCount}</td>
                 <td>

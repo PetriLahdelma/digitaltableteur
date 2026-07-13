@@ -102,7 +102,30 @@ function barrelImportedNames(source) {
   return { value, typeOnly };
 }
 
+// Runtime-value exports of the @digitaltableteur/react barrel: the names an
+// external consumer can import as running code. Powers the "shipped in the
+// package" signal — `export type {}` blocks and inline `type` specifiers are
+// skipped because they carry no runtime surface.
+function packageExportedValueNames() {
+  const barrelPath = join(ROOT, "packages/react/src/index.ts");
+  if (!existsSync(barrelPath)) return new Set();
+  const src = readFileSync(barrelPath, "utf8");
+  const names = new Set();
+  for (const match of src.matchAll(/export\s+(type\s+)?\{([^}]+)\}/g)) {
+    if (match[1]) continue; // `export type { … }` block — no runtime surface
+    for (const raw of match[2].split(",")) {
+      const spec = raw.trim();
+      if (!spec || /^type\s/.test(spec)) continue; // inline `type X` specifier
+      const parts = spec.split(/\s+as\s+/);
+      const exportedName = (parts.length > 1 ? parts[1] : parts[0]).trim();
+      if (/^[A-Z][A-Za-z0-9]*$/.test(exportedName)) names.add(exportedName);
+    }
+  }
+  return names;
+}
+
 const components = listComponents();
+const exportedValueNames = packageExportedValueNames();
 const files = collectSourceFiles();
 const fileEntries = files.map((path) => {
   const source = readFileSync(path, "utf8");
@@ -130,10 +153,17 @@ const rows = components.map(({ name, kind, status }) => {
     if (viaBarrelValue) packageImporters.push(entry.path);
   }
   const consumers = computeConsumersForComponent(name);
+  // governed = a contract-bearing DS component (the honest denominator); the
+  // catalog also lists non-component dirs (animations, icons, navigation…) and
+  // bespoke one-off page components (Tulli, VertaaUX…) that carry no contract.
+  const governed = status !== null;
+  const exported = exportedValueNames.has(name);
   return {
     name,
     kind,
     status,
+    governed,
+    exported,
     directImportCount: importers.length,
     directImporters: importers.sort(),
     packageImportCount: packageImporters.length,
@@ -143,10 +173,29 @@ const rows = components.map(({ name, kind, status }) => {
   };
 });
 
+// Two honest consumption signals over the governed denominator:
+//  - strict: this repo imports the component as a runtime value from the barrel
+//    (pure dogfooding; capped low because the app renders the DS through page
+//    shells that live inside the package boundary and cannot self-import it).
+//  - transitive: the component ships in the package AND is rendered by at least
+//    one production page, i.e. it reaches production as a package-shipped unit.
+const governedRows = rows.filter((row) => row.governed);
+const strictConsumed = governedRows.filter((row) => row.packageImportCount > 0);
+const transitiveConsumed = governedRows.filter(
+  (row) => row.exported && row.prodPageCount > 0,
+);
+const summary = {
+  catalogCount: rows.length,
+  governedCount: governedRows.length,
+  exportedCount: rows.filter((row) => row.exported).length,
+  strictConsumedCount: strictConsumed.length,
+  transitiveConsumedCount: transitiveConsumed.length,
+};
+
 mkdirSync(dirname(OUT_PATH), { recursive: true });
 writeFileSync(
   OUT_PATH,
-  `${JSON.stringify({ generatedAt: new Date().toISOString(), components: rows }, null, 2)}\n`,
+  `${JSON.stringify({ generatedAt: new Date().toISOString(), summary, components: rows }, null, 2)}\n`,
 );
 
 const sorted = [...rows].sort(
@@ -164,9 +213,13 @@ for (const row of sorted) {
   );
 }
 const unused = sorted.filter((row) => row.directImportCount === 0);
-const viaPackage = rows.filter((row) => row.packageImportCount > 0);
-console.log(`\n${rows.length} components; ${unused.length} with zero direct imports.`);
 console.log(
-  `${viaPackage.length} of ${rows.length} consumed via @digitaltableteur/react (runtime imports).`,
+  `\n${summary.catalogCount} catalog entries; ${summary.governedCount} governed (contract-bearing) components; ${unused.length} with zero direct imports.`,
+);
+console.log(
+  `${summary.strictConsumedCount}/${summary.governedCount} directly imported from @digitaltableteur/react (strict runtime dogfooding).`,
+);
+console.log(
+  `${summary.transitiveConsumedCount}/${summary.governedCount} shipped in the package and rendered in production (transitive).`,
 );
 console.log(`Report: ${relative(ROOT, OUT_PATH)}`);
