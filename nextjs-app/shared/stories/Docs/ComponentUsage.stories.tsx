@@ -1,5 +1,11 @@
 import React, { useMemo, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import Card from "@dt/Card";
+import Select from "@dt/Select";
+import TextInput from "@dt/TextInput";
+import Title from "@dt/Title";
+import Text from "@dt/Text";
+import Badge from "@dt/Badge";
 import usageReport from "../../foundations/dist/component-usage.json";
 import styles from "./Documentation.module.css";
 
@@ -33,13 +39,24 @@ type SortKey =
   | "directImportCount"
   | "prodPageCount";
 
+type BadgeTone = "neutral" | "error" | "warning" | "success" | "info";
+
 const NUMERIC_SORT_KEYS: SortKey[] = [
   "exported",
   "directImportCount",
   "prodPageCount",
 ];
 
+const STATUS_TONE: Record<string, BadgeTone> = {
+  stable: "success",
+  beta: "info",
+  alpha: "warning",
+  deprecated: "error",
+};
+
 const statusLabel = (status: string | null) => status ?? "—";
+const statusTone = (status: string): BadgeTone =>
+  STATUS_TONE[status] ?? "neutral";
 
 const report = usageReport as {
   generatedAt: string;
@@ -72,6 +89,23 @@ const KIND_OPTIONS = Array.from(new Set(rows.map((row) => row.kind))).sort();
 const STATUS_OPTIONS = Array.from(
   new Set(rows.map((row) => statusLabel(row.status))),
 ).sort((a, b) => (a === "—" ? 1 : b === "—" ? -1 : a.localeCompare(b)));
+
+const StatCard = ({
+  figure,
+  children,
+}: {
+  figure: React.ReactNode;
+  children: React.ReactNode;
+}) => (
+  <Card variant="default" padding="md">
+    <Title size="xl" className={styles.statFigure}>
+      {figure}
+    </Title>
+    <Text size="s" className={styles.statLabel}>
+      {children}
+    </Text>
+  </Card>
+);
 
 const ComponentUsageContent = () => {
   const [query, setQuery] = useState("");
@@ -133,7 +167,15 @@ const ComponentUsageContent = () => {
   };
 
   const sortableHeader = (label: string, key: SortKey) => (
-    <th aria-sort={sortKey === key ? (sortDir === "asc" ? "ascending" : "descending") : "none"}>
+    <th
+      aria-sort={
+        sortKey === key
+          ? sortDir === "asc"
+            ? "ascending"
+            : "descending"
+          : "none"
+      }
+    >
       <button
         type="button"
         className={styles.sortHeader}
@@ -169,123 +211,93 @@ const ComponentUsageContent = () => {
 
       <section className={styles.section}>
         <div className={styles.principleGrid}>
-          <div className={styles.principle}>
-            <h3>{summary.governedCount}</h3>
-            <p>
-              Governed components{" "}
-              <span className={styles.subtle}>
-                (of {summary.catalogCount} catalog entries)
-              </span>
-            </p>
-          </div>
-          <div className={styles.principle}>
-            <h3>
-              {summary.transitiveConsumedCount}/{summary.governedCount}
-            </h3>
-            <p>
-              Shipped in <code>@digitaltableteur/react</code> and rendered in
-              production (transitive)
-            </p>
-          </div>
-          <div className={styles.principle}>
-            <h3>
-              {summary.strictConsumedCount}/{summary.governedCount}
-            </h3>
-            <p>
-              Directly imported from <code>@digitaltableteur/react</code> as a
-              runtime value (strict dogfooding)
-            </p>
-          </div>
-          <div className={styles.principle}>
-            <h3>{summary.exportedCount}</h3>
-            <p>Exported from the package barrel</p>
-          </div>
-          <div className={styles.principle}>
-            <h3>{new Date(generatedAt).toLocaleDateString("en-GB")}</h3>
-            <p>
-              Generated{" "}
-              {new Date(generatedAt).toLocaleTimeString("en-GB", {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </p>
-          </div>
-          <div className={styles.principle}>
-            <h3>Regenerate</h3>
-            <p>
-              <code>npm run report:component-usage</code>
-            </p>
-          </div>
+          <StatCard figure={summary.governedCount}>
+            Governed components{" "}
+            <span className={styles.subtle}>
+              (of {summary.catalogCount} catalog entries)
+            </span>
+          </StatCard>
+          <StatCard
+            figure={`${summary.transitiveConsumedCount}/${summary.governedCount}`}
+          >
+            Shipped in <code>@digitaltableteur/react</code> and rendered in
+            production (transitive)
+          </StatCard>
+          <StatCard
+            figure={`${summary.strictConsumedCount}/${summary.governedCount}`}
+          >
+            Directly imported from <code>@digitaltableteur/react</code> as a
+            runtime value (strict dogfooding)
+          </StatCard>
+          <StatCard figure={summary.exportedCount}>
+            Exported from the package barrel
+          </StatCard>
+          <StatCard figure={new Date(generatedAt).toLocaleDateString("en-GB")}>
+            Generated{" "}
+            {new Date(generatedAt).toLocaleTimeString("en-GB", {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </StatCard>
+          <StatCard figure="Regenerate">
+            <code>npm run report:component-usage</code>
+          </StatCard>
         </div>
       </section>
 
       <section className={styles.section}>
         <div className={styles.usageControls}>
-          <div className={`${styles.usageControl} ${styles.usageControlGrow}`}>
-            <label className={styles.usageControlLabel} htmlFor="usage-search">
-              Search
-            </label>
-            <input
-              id="usage-search"
+          <div className={styles.usageControlGrow}>
+            <TextInput
+              label="Search"
               type="search"
-              className={styles.usageInput}
+              clearable
               placeholder="Component name or importer path…"
               value={query}
-              onChange={(event) => setQuery(event.target.value)}
+              onValueChange={(value) => setQuery(String(value))}
             />
           </div>
           <div className={styles.usageControl}>
-            <label className={styles.usageControlLabel} htmlFor="usage-kind">
-              Kind
-            </label>
-            <select
-              id="usage-kind"
-              className={styles.usageSelect}
+            <Select
+              label="Kind"
               value={kind}
-              onChange={(event) => setKind(event.target.value)}
-            >
-              <option value="all">All kinds</option>
-              {KIND_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
+              onValueChange={setKind}
+              options={[
+                { value: "all", label: "All kinds" },
+                ...KIND_OPTIONS.map((option) => ({
+                  value: option,
+                  label: option,
+                })),
+              ]}
+            />
           </div>
           <div className={styles.usageControl}>
-            <label className={styles.usageControlLabel} htmlFor="usage-status">
-              Status
-            </label>
-            <select
-              id="usage-status"
-              className={styles.usageSelect}
+            <Select
+              label="Status"
               value={status}
-              onChange={(event) => setStatus(event.target.value)}
-            >
-              <option value="all">All statuses</option>
-              {STATUS_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
+              onValueChange={setStatus}
+              options={[
+                { value: "all", label: "All statuses" },
+                ...STATUS_OPTIONS.map((option) => ({
+                  value: option,
+                  label: option,
+                })),
+              ]}
+            />
           </div>
           <div className={styles.usageControl}>
-            <label className={styles.usageControlLabel} htmlFor="usage-package">
-              In package
-            </label>
-            <select
-              id="usage-package"
-              className={styles.usageSelect}
+            <Select
+              label="In package"
               value={inPackage}
-              onChange={(event) =>
-                setInPackage(event.target.value as "all" | "in" | "out")
+              onValueChange={(value) =>
+                setInPackage(value as "all" | "in" | "out")
               }
-            >
-              <option value="all">Any</option>
-              <option value="in">Exported</option>
-              <option value="out">Not exported</option>
-            </select>
+              options={[
+                { value: "all", label: "Any" },
+                { value: "in", label: "Exported" },
+                { value: "out", label: "Not exported" },
+              ]}
+            />
           </div>
         </div>
         <p className={styles.resultCount}>
@@ -310,8 +322,24 @@ const ComponentUsageContent = () => {
                   <code>{row.name}</code>
                 </td>
                 <td>{row.kind}</td>
-                <td>{row.status ?? "—"}</td>
-                <td>{row.exported ? "✓" : "—"}</td>
+                <td>
+                  {row.status ? (
+                    <Badge variant="secondary" tone={statusTone(row.status)}>
+                      {row.status}
+                    </Badge>
+                  ) : (
+                    "—"
+                  )}
+                </td>
+                <td>
+                  {row.exported ? (
+                    <Badge variant="secondary" tone="success">
+                      In package
+                    </Badge>
+                  ) : (
+                    "—"
+                  )}
+                </td>
                 <td>{row.directImportCount}</td>
                 <td>{row.prodPageCount}</td>
                 <td>
