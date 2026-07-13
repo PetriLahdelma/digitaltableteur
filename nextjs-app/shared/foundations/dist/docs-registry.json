@@ -1948,9 +1948,9 @@
       "importLine": "import Button from \"@dt/Button\";",
       "keyProps": [
         {
-          "name": "href",
-          "type": "string",
-          "required": true
+          "name": "target",
+          "type": "_self | _blank | _parent | _top",
+          "required": false
         },
         {
           "name": "variant",
@@ -1974,26 +1974,32 @@
         },
         {
           "name": "submits",
-          "type": "never",
+          "type": "boolean",
           "required": false
         }
       ],
       "props": {
         "submits": {
           "optional": true,
-          "type": "never"
+          "type": "boolean"
         },
         "clickAction": {
           "optional": true,
-          "type": "never"
+          "type": "(event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>"
         },
         "href": {
-          "optional": false,
+          "optional": true,
           "type": "string"
         },
         "target": {
           "optional": true,
-          "type": "HTMLAttributeAnchorTarget | undefined"
+          "type": "union",
+          "values": [
+            "_self",
+            "_blank",
+            "_parent",
+            "_top"
+          ]
         },
         "rel": {
           "optional": true,
@@ -6374,19 +6380,19 @@
       "importLine": "import { FormFieldEditorial } from \"@dt/FormFieldEditorial\";",
       "keyProps": [
         {
-          "name": "type",
-          "type": "text | tel | email",
+          "name": "label",
+          "type": "string",
           "required": true
+        },
+        {
+          "name": "type",
+          "type": "text | tel | email | textarea | select",
+          "required": false
         },
         {
           "name": "children",
           "type": "ReactNode",
-          "required": true
-        },
-        {
-          "name": "label",
-          "type": "string",
-          "required": true
+          "required": false
         },
         {
           "name": "error",
@@ -6406,16 +6412,18 @@
       ],
       "props": {
         "type": {
-          "optional": false,
+          "optional": true,
           "type": "union",
           "values": [
             "text",
             "tel",
-            "email"
+            "email",
+            "textarea",
+            "select"
           ]
         },
         "children": {
-          "optional": false,
+          "optional": true,
           "type": "ReactNode"
         },
         "label": {
@@ -14334,14 +14342,14 @@
         },
         {
           "name": "children",
-          "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>",
+          "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>",
           "required": false
         }
       ],
       "props": {
         "children": {
           "optional": true,
-          "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+          "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
         },
         "as": {
           "optional": true,
@@ -15033,7 +15041,7 @@
         },
         {
           "name": "children",
-          "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>",
+          "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>",
           "required": false
         },
         {
@@ -15050,7 +15058,7 @@
       "props": {
         "children": {
           "optional": true,
-          "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+          "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
         },
         "as": {
           "optional": true,
@@ -20041,9 +20049,7 @@
           "type": "string"
         }
       },
-      "composesWith": [
-        "Grid"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "forbiddenUse": [
         "invent parallel primitives inside this folder",
