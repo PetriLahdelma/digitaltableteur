@@ -29,17 +29,19 @@
     transition: opacity 0.3s ease;
   }
 
-  /* Opt-in: pulse the three leading bars on hover. */
+  /* Controlled: pulse the three leading bars whenever `animated` is set. The
+     consumer drives it from hover/focus state (e.g. the SiteHeader link), so
+     the pulse fires for the whole logo affordance, not just the mark itself. */
 
-  .animated:hover .bar1 {
+  .animated .bar1 {
     animation: dt-logo-pulse-1 0.9s ease-in-out infinite;
   }
 
-  .animated:hover .bar2 {
+  .animated .bar2 {
     animation: dt-logo-pulse-2 0.9s ease-in-out infinite;
   }
 
-  .animated:hover .bar3 {
+  .animated .bar3 {
     animation: dt-logo-pulse-3 0.9s ease-in-out infinite;
   }
 
@@ -84,9 +86,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .animated:hover .bar1,
-    .animated:hover .bar2,
-    .animated:hover .bar3 {
+    .animated .bar1,
+    .animated .bar2,
+    .animated .bar3 {
       animation: none;
     }
   }

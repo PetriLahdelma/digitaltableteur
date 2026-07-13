@@ -4,7 +4,8 @@ import styles from "./Logo.module.css";
 export interface LogoProps {
   /** Square render box in pixels. Default 24. */
   size?: number;
-  /** Enable the three-bar pulse on hover (respects prefers-reduced-motion). Default false. */
+  /** Pulse the three leading bars while true; a controlled signal driven from the
+   * consumer's hover/focus state (respects prefers-reduced-motion). Default false. */
   animated?: boolean;
   /** Wrap the mark in the brand lime circle (`--logo-background` / `--logo-color`). Default false. */
   badge?: boolean;
@@ -18,8 +19,9 @@ export interface LogoProps {
 
 /**
  * Digitaltableteur brand mark. Monochrome (inherits `currentColor`) and renders
- * inside a square `size`×`size` box. Opt into the hover pulse with `animated`,
- * or the lime brand badge with `badge` (a filled circle behind a contrast mark).
+ * inside a square `size`×`size` box. Drive the three-bar pulse with `animated`
+ * (controlled from the consumer's hover/focus state), or the lime brand badge
+ * with `badge` (a filled circle behind a contrast mark).
  */
 export const Logo = React.forwardRef<SVGSVGElement, LogoProps>(function Logo(
   {

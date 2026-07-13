@@ -3,12 +3,18 @@
     "name": "Logo",
     "tier": "atom",
     "group": "display",
-    "status": "beta",
-    "description": "Digitaltableteur brand mark — monochrome (currentColor), square footprint, optional hover pulse.",
+    "status": "stable",
+    "description": "Digitaltableteur brand mark — monochrome (currentColor), square footprint, optional controlled pulse.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=480-1588",
     "radixPrimitive": null,
     "element": "svg",
-    "variants": {},
+    "variants": {
+        "size": {
+            "propSourced": true,
+            "values": ["16", "24", "40", "64"],
+            "default": "24"
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
@@ -27,14 +33,52 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "Verified 2026-06-02: role=img/aria-label vs aria-hidden when decorative, focusable=false, non-interactive (no keyboard contract — wrap in link/button to activate). Every mark uses fill=currentColor → maps to system CanvasText in forced colors; the ForcedColors story passes axe. Hover pulse is disabled under prefers-reduced-motion. All Logo tests pass (7/7)."
+        "realBrowserForcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "reviewedNote": "Verified 2026-06-02: role=img/aria-label vs aria-hidden when decorative, focusable=false, non-interactive (no keyboard contract — wrap in link/button to activate). Every mark uses fill=currentColor → maps to system CanvasText in forced colors; the ForcedColors story passes axe. Pulse is disabled under prefers-reduced-motion. All Logo tests pass. Re-verified 2026-07-13 for stable promotion: AT snapshots committed for all required stories; `animated` is now a controlled signal (pulses while true) rather than self-hover, driven by SiteHeader's link-hover state. Swapped into SiteHeader (production consumer on every page) with byte-for-byte parity vs the prior inline mark — identical viewBox 0 0 395 323, geometry, dt-logo-pulse keyframes, badge scale, currentColor tokens; verified live in the running app (rest/hover/both themes)."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "size": {
