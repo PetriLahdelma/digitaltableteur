@@ -22,7 +22,7 @@
             },
             {
                 "guidance": false,
-                "description": "Don't use it for blog listings; BlogGrid owns article lists."
+                "description": "Don't use it for blog listings; the blog index composes its own DS Grid of article cards."
             },
             {
                 "guidance": false,

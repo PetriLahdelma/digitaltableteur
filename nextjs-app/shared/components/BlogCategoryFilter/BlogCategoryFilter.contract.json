@@ -109,7 +109,6 @@
     "composesWith": [
         "Container",
         "Section",
-        "BlogGrid",
         "Pagination",
         "EnhancedArticleCard"
     ],

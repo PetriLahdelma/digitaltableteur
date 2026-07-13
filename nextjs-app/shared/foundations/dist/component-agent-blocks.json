@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T08:26:10.489Z",
+  "generatedAt": "2026-07-13T08:53:58.131Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -1014,94 +1014,12 @@
       "composesWith": [
         "Container",
         "Section",
-        "BlogGrid",
         "Pagination",
+        "animations",
         "EnhancedArticleCard"
       ],
       "prefersOver": [],
       "declaredPropCount": 8
-    },
-    "BlogGrid": {
-      "preferredImport": "@dt/BlogGrid",
-      "intent": "Responsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.",
-      "props": {
-        "articles": {
-          "optional": false,
-          "type": "EnhancedArticleCardProps[]"
-        },
-        "featuredSlug": {
-          "optional": true,
-          "type": "string"
-        },
-        "layout": {
-          "optional": true,
-          "type": "union",
-          "values": [
-            "standard",
-            "featured-first",
-            "masonry"
-          ]
-        },
-        "columns": {
-          "optional": true,
-          "type": "{\n    sm?: 1 | 2;\n    md?: 1 | 2 | 3;\n    lg?: 1 | 2 | 3 | 4;\n  }"
-        },
-        "hideImages": {
-          "optional": true,
-          "type": "boolean"
-        },
-        "className": {
-          "optional": true,
-          "type": "string"
-        }
-      },
-      "variants": {
-        "layout": {
-          "values": [
-            "standard",
-            "featured-first",
-            "masonry"
-          ],
-          "default": "standard"
-        }
-      },
-      "cvaVariants": {},
-      "variantsFnName": null,
-      "useWhen": [
-        "pass an `articles` array; choose `layout`, `columns`, `featuredSlug`",
-        "rely on the built-in empty state when a filter yields no articles"
-      ],
-      "avoidWhen": [
-        "invent parallel primitives inside this folder",
-        "hand-roll cards — BlogGrid owns the EnhancedArticleCard composition"
-      ],
-      "requiredA11y": [
-        "Each article renders as an EnhancedArticleCard; the empty state is a labelled message, not an empty grid"
-      ],
-      "keyboard": [],
-      "compositionRules": [
-        "invent parallel primitives inside this folder"
-      ],
-      "canonicalExamples": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-      ],
-      "replacementFor": [],
-      "forbiddenUse": [
-        "invent parallel primitives inside this folder",
-        "hand-roll cards — BlogGrid owns the EnhancedArticleCard composition"
-      ],
-      "composesWith": [
-        "Container",
-        "Section",
-        "BlogCategoryFilter",
-        "Pagination",
-        "EnhancedArticleCard"
-      ],
-      "prefersOver": [],
-      "declaredPropCount": 6
     },
     "BlogMediaImage": {
       "preferredImport": "@dt/BlogMediaImage",
@@ -3024,8 +2942,8 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "Section",
         "animations",
+        "Section",
         "Stack",
         "Link",
         "ScrollIndicator",
@@ -6339,7 +6257,7 @@
         "Container",
         "Section",
         "BlogCategoryFilter",
-        "BlogGrid",
+        "animations",
         "EnhancedArticleCard"
       ],
       "prefersOver": [],
@@ -7435,10 +7353,10 @@
       "composesWith": [
         "Container",
         "animations",
+        "Title",
+        "EnhancedProjectCard",
         "BlogCategoryFilter",
-        "BlogGrid",
-        "Pagination",
-        "EnhancedArticleCard"
+        "Pagination"
       ],
       "prefersOver": [],
       "declaredPropCount": 6

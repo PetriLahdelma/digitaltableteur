@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-13T08:13:34.339Z",
+  "generatedAt": "2026-07-13T08:53:58.414Z",
   "summary": {
-    "componentCount": 164,
+    "componentCount": 163,
     "statusCounts": {
       "beta": 49,
-      "stable": 93,
+      "stable": 92,
       "alpha": 21,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 88.2,
-    "codebaseComponentCount": 186,
+    "catalogCompletenessPercent": 88.1,
+    "codebaseComponentCount": 185,
     "usageCoveragePercent": 93.3,
     "componentsWithProductionUsage": 34,
     "notReadyForStablePromotion": false
@@ -20,7 +20,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 93,
+    "stableCount": 92,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 186,
-    "inCatalog": 164,
+    "totalComponentsInCodebase": 185,
+    "inCatalog": 163,
     "outOfCatalog": 22,
-    "catalogCompletenessPercent": 88.2,
+    "catalogCompletenessPercent": 88.1,
     "artifactCoverage": {
-      "stories": 148,
-      "tests": 148,
+      "stories": 147,
+      "tests": 147,
       "mdx": 6,
-      "spec": 164
+      "spec": 163
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 164,
-    "withAnyUsage": 153,
+    "catalogedComponents": 163,
+    "withAnyUsage": 152,
     "withProductionUsage": 34,
-    "uniqueImportedComponents": 153,
-    "totalEvidenceRows": 746,
+    "uniqueImportedComponents": 152,
+    "totalEvidenceRows": 744,
     "aliasImportFiles": 380,
-    "relativeImportFiles": 395,
+    "relativeImportFiles": 393,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-13T08:13:31.700Z",
+    "generatedAt": "2026-07-13T08:53:55.054Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 81,
+    "nodesWithComposesWith": 80,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,13 +102,13 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 164,
+      "digitaltableteur": 163,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 49,
-        "stable": 93,
+        "stable": 92,
         "alpha": 21,
         "deprecated": 1
       },
@@ -215,6 +215,7 @@
             "type": "union",
             "values": [
               "contained",
+              "enclosed",
               "divided"
             ]
           },
@@ -3276,7 +3277,6 @@
         "composesWith": [
           "Container",
           "Section",
-          "BlogGrid",
           "Pagination",
           "EnhancedArticleCard"
         ],
@@ -3442,249 +3442,12 @@
         "composesWith": [
           "Container",
           "Section",
-          "BlogGrid",
           "Pagination",
+          "animations",
           "EnhancedArticleCard"
         ],
         "prefersOver": [],
         "declaredPropCount": 8
-      }
-    },
-    {
-      "name": "BlogGrid",
-      "contract": {
-        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-        "name": "BlogGrid",
-        "tier": "organism",
-        "group": "content",
-        "status": "stable",
-        "description": "Responsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1034-110",
-        "radixPrimitive": null,
-        "element": "div",
-        "variants": {
-          "layout": {
-            "values": [
-              "standard",
-              "featured-first",
-              "masonry"
-            ],
-            "default": "standard",
-            "propSourced": true
-          }
-        },
-        "slots": [],
-        "asChild": false,
-        "subParts": [],
-        "requiredStories": [
-          "Default",
-          "Example",
-          "ForcedColors"
-        ],
-        "a11y": {
-          "keyboard": [],
-          "ariaRequirements": [
-            "Each article renders as an EnhancedArticleCard; the empty state is a labelled message, not an empty grid"
-          ],
-          "motion": true,
-          "reducedMotion": true,
-          "reviewed": true,
-          "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories (standard + featured-first, populated + empty); 4-mode AT snapshots captured and compare-clean. Cards fade in via FadeIn, which is gated by the AnimationProvider motion preference. Composes the prod EnhancedArticleCard. Tailwind className styling retained as an intentional per-surface owner call. 2026-07-08 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed.",
-          "forcedColorsVerified": true,
-          "accessibilityTreeVerified": true,
-          "realBrowserForcedColorsVerified": true
-        },
-        "tokens": {
-          "colors": [],
-          "spacing": []
-        },
-        "lightDarkVerified": true,
-        "schemaVersion": 2,
-        "props": {
-          "articles": {
-            "optional": false,
-            "type": "EnhancedArticleCardProps[]"
-          },
-          "featuredSlug": {
-            "optional": true,
-            "type": "string"
-          },
-          "layout": {
-            "optional": true,
-            "type": "union",
-            "values": [
-              "standard",
-              "featured-first",
-              "masonry"
-            ]
-          },
-          "columns": {
-            "optional": true,
-            "type": "{\n    sm?: 1 | 2;\n    md?: 1 | 2 | 3;\n    lg?: 1 | 2 | 3 | 4;\n  }"
-          },
-          "hideImages": {
-            "optional": true,
-            "type": "boolean"
-          },
-          "className": {
-            "optional": true,
-            "type": "string"
-          }
-        },
-        "forbiddenUse": [
-          "invent parallel primitives inside this folder",
-          "promote to stable without production consumer evidence"
-        ],
-        "composesWith": [
-          "Container",
-          "Section",
-          "BlogCategoryFilter",
-          "Pagination",
-          "EnhancedArticleCard"
-        ],
-        "displayName": "BlogGrid",
-        "keywords": [
-          "blog",
-          "grid",
-          "index",
-          "cards"
-        ],
-        "dense": "Blog index grid laying out ArticleCards responsively",
-        "usage": {
-          "description": "Responsive grid of ArticleCards for blog index pages. Owns layout only; the cards own their content."
-        },
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/BlogIndexContent/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
-            "since": "2026-06-04"
-          }
-        ]
-      },
-      "spec": "# BlogGrid\n\n## Intent\nResponsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.\n\n## Interaction contract\n- Keyboard: focus flows through each article card link in order\n- Pointer: each card is an EnhancedArticleCard linking to its article\n- Screen readers: articles render as self-labelled cards; the empty state is a labelled message\n- Reduced motion: the FadeIn entrance is skipped when the AnimationProvider reports a reduced motion preference\n\n## Do / don't\n- Do: pass an `articles` array; choose `layout`, `columns`, `featuredSlug`\n- Do: rely on the built-in empty state when a filter yields no articles\n- Don't: invent parallel primitives inside this folder\n- Don't: hand-roll cards — BlogGrid owns the EnhancedArticleCard composition\n\n## Design notes\n- Tokens: Tailwind grid utilities mapped to theme spacing\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1034-110\n",
-      "documentationDebt": false,
-      "usage": {
-        "publicImport": "@dt/BlogGrid",
-        "importCount": 2,
-        "productionImportCount": 0,
-        "patternImportCount": 1,
-        "componentImportCount": 1,
-        "evidence": [
-          {
-            "path": "nextjs-app/shared/patterns/BlogIndexContent/BlogIndexContent.tsx",
-            "importKind": "relative",
-            "importPath": "../../components/BlogGrid",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/components/index.ts",
-            "importKind": "relative",
-            "importPath": "./BlogGrid",
-            "context": "component"
-          }
-        ]
-      },
-      "agent": {
-        "preferredImport": "@dt/BlogGrid",
-        "intent": "Responsive blog-index grid: one EnhancedArticleCard per article, with a featured-first layout option and a friendly empty state.",
-        "props": {
-          "articles": {
-            "optional": false,
-            "type": "EnhancedArticleCardProps[]"
-          },
-          "featuredSlug": {
-            "optional": true,
-            "type": "string"
-          },
-          "layout": {
-            "optional": true,
-            "type": "union",
-            "values": [
-              "standard",
-              "featured-first",
-              "masonry"
-            ]
-          },
-          "columns": {
-            "optional": true,
-            "type": "{\n    sm?: 1 | 2;\n    md?: 1 | 2 | 3;\n    lg?: 1 | 2 | 3 | 4;\n  }"
-          },
-          "hideImages": {
-            "optional": true,
-            "type": "boolean"
-          },
-          "className": {
-            "optional": true,
-            "type": "string"
-          }
-        },
-        "variants": {
-          "layout": {
-            "values": [
-              "standard",
-              "featured-first",
-              "masonry"
-            ],
-            "default": "standard"
-          }
-        },
-        "cvaVariants": {},
-        "variantsFnName": null,
-        "useWhen": [
-          "pass an `articles` array; choose `layout`, `columns`, `featuredSlug`",
-          "rely on the built-in empty state when a filter yields no articles"
-        ],
-        "avoidWhen": [
-          "invent parallel primitives inside this folder",
-          "hand-roll cards — BlogGrid owns the EnhancedArticleCard composition"
-        ],
-        "requiredA11y": [
-          "Each article renders as an EnhancedArticleCard; the empty state is a labelled message, not an empty grid"
-        ],
-        "keyboard": [],
-        "compositionRules": [
-          "invent parallel primitives inside this folder"
-        ],
-        "canonicalExamples": [
-          "Default",
-          "Playground",
-          "Example",
-          "ForcedColors"
-        ],
-        "replacementFor": [],
-        "forbiddenUse": [
-          "invent parallel primitives inside this folder",
-          "hand-roll cards — BlogGrid owns the EnhancedArticleCard composition"
-        ],
-        "composesWith": [
-          "Container",
-          "Section",
-          "BlogCategoryFilter",
-          "Pagination",
-          "EnhancedArticleCard"
-        ],
-        "prefersOver": [],
-        "declaredPropCount": 6
       }
     },
     {
@@ -5320,18 +5083,18 @@
             "optional": true,
             "type": "union",
             "values": [
-              "none",
               "sm",
               "md",
-              "lg"
+              "lg",
+              "none"
             ]
           },
           "as": {
             "optional": true,
             "type": "union",
             "values": [
-              "div",
               "article",
+              "div",
               "section",
               "aside",
               "li"
@@ -5353,15 +5116,15 @@
             "optional": true,
             "type": "CardDescriptionProps"
           },
-          "extra": {
-            "optional": true,
-            "type": "React.ReactNode"
-          },
           "headerStart": {
             "optional": true,
             "type": "React.ReactNode"
           },
           "headerEnd": {
+            "optional": true,
+            "type": "React.ReactNode"
+          },
+          "extra": {
             "optional": true,
             "type": "React.ReactNode"
           },
@@ -6029,11 +5792,14 @@
               "table",
               "text",
               "time",
+              "div",
+              "section",
+              "aside",
+              "li",
               "a",
               "abbr",
               "address",
               "area",
-              "aside",
               "audio",
               "b",
               "base",
@@ -6056,7 +5822,6 @@
               "del",
               "details",
               "dfn",
-              "div",
               "dl",
               "dt",
               "em",
@@ -6083,7 +5848,6 @@
               "keygen",
               "label",
               "legend",
-              "li",
               "map",
               "mark",
               "meta",
@@ -6106,7 +5870,6 @@
               "s",
               "samp",
               "script",
-              "section",
               "select",
               "small",
               "source",
@@ -7825,8 +7588,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "inline",
               "single",
+              "inline",
               "multi"
             ]
           },
@@ -9272,8 +9035,8 @@
               "sm",
               "md",
               "lg",
-              "full",
-              "xl"
+              "xl",
+              "full"
             ]
           },
           "center": {
@@ -9310,11 +9073,14 @@
               "table",
               "text",
               "time",
+              "div",
+              "section",
+              "aside",
+              "li",
               "a",
               "abbr",
               "address",
               "area",
-              "aside",
               "audio",
               "b",
               "base",
@@ -9337,7 +9103,6 @@
               "del",
               "details",
               "dfn",
-              "div",
               "dl",
               "dt",
               "em",
@@ -9364,7 +9129,6 @@
               "keygen",
               "label",
               "legend",
-              "li",
               "map",
               "mark",
               "meta",
@@ -9387,7 +9151,6 @@
               "s",
               "samp",
               "script",
-              "section",
               "select",
               "small",
               "source",
@@ -9855,8 +9618,8 @@
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
         "composesWith": [
-          "Section",
           "animations",
+          "Section",
           "Stack",
           "Link",
           "ScrollIndicator",
@@ -11244,11 +11007,6 @@
           "Card"
         ],
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
@@ -13659,6 +13417,16 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/WorkIndex/WorkIndexPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
             "since": "2026-06-04"
           }
@@ -13681,6 +13449,14 @@
             "optional": true,
             "type": "number | string"
           },
+          "wideColumns": {
+            "optional": true,
+            "type": "number | string"
+          },
+          "ultraColumns": {
+            "optional": true,
+            "type": "number | string"
+          },
           "rows": {
             "optional": true,
             "type": "number | string"
@@ -13694,6 +13470,14 @@
             "type": "string"
           },
           "desktopGap": {
+            "optional": true,
+            "type": "string"
+          },
+          "wideGap": {
+            "optional": true,
+            "type": "string"
+          },
+          "ultraGap": {
             "optional": true,
             "type": "string"
           },
@@ -13886,6 +13670,14 @@
             "optional": true,
             "type": "number | string"
           },
+          "wideColumns": {
+            "optional": true,
+            "type": "number | string"
+          },
+          "ultraColumns": {
+            "optional": true,
+            "type": "number | string"
+          },
           "rows": {
             "optional": true,
             "type": "number | string"
@@ -13899,6 +13691,14 @@
             "type": "string"
           },
           "desktopGap": {
+            "optional": true,
+            "type": "string"
+          },
+          "wideGap": {
+            "optional": true,
+            "type": "string"
+          },
+          "ultraGap": {
             "optional": true,
             "type": "string"
           },
@@ -14024,7 +13824,7 @@
           "Avatar"
         ],
         "prefersOver": [],
-        "declaredPropCount": 14
+        "declaredPropCount": 18
       }
     },
     {
@@ -16645,9 +16445,9 @@
             "optional": true,
             "type": "union",
             "values": [
-              "none",
               "always",
-              "hover"
+              "hover",
+              "none"
             ]
           }
         },
@@ -17577,8 +17377,8 @@
             "type": "union",
             "values": [
               "default",
-              "elevated",
-              "bordered"
+              "bordered",
+              "elevated"
             ]
           },
           "className": {
@@ -18522,7 +18322,7 @@
         "props": {
           "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "React.ReactNode"
           },
           "className": {
             "optional": true,
@@ -18532,19 +18332,19 @@
             "optional": true,
             "type": "union",
             "values": [
-              "top",
+              "left",
               "right",
-              "bottom",
-              "left"
+              "top",
+              "bottom"
             ]
           },
           "align": {
             "optional": true,
             "type": "union",
             "values": [
-              "start",
               "center",
-              "end"
+              "end",
+              "start"
             ]
           },
           "sideOffset": {
@@ -20815,7 +20615,7 @@
           "Container",
           "Section",
           "BlogCategoryFilter",
-          "BlogGrid",
+          "animations",
           "EnhancedArticleCard"
         ],
         "prefersOver": [],
@@ -23976,9 +23776,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "default",
               "muted",
               "accent",
-              "default",
               "inverse"
             ]
           },
@@ -24203,10 +24003,10 @@
         "composesWith": [
           "Container",
           "animations",
+          "Title",
+          "EnhancedProjectCard",
           "BlogCategoryFilter",
-          "BlogGrid",
-          "Pagination",
-          "EnhancedArticleCard"
+          "Pagination"
         ],
         "prefersOver": [],
         "declaredPropCount": 6
@@ -25326,8 +25126,8 @@
             "values": [
               "minimal",
               "default",
-              "elevated",
-              "bordered"
+              "bordered",
+              "elevated"
             ]
           },
           "iconPosition": {
@@ -26498,7 +26298,56 @@
         "lightDarkVerified": false,
         "schemaVersion": 2,
         "displayName": "SocialIconLink",
-        "consumers": []
+        "consumers": [],
+        "props": {
+          "href": {
+            "optional": false,
+            "type": "string"
+          },
+          "label": {
+            "optional": false,
+            "type": "string"
+          },
+          "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "plain",
+              "chip"
+            ]
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ]
+          },
+          "external": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "composesWith": [
+          "Container",
+          "Stack",
+          "Link",
+          "Divider"
+        ],
+        "forbiddenUse": [
+          "put text children inside — this is icon-only; use Link for labeled links.",
+          "disable `external` for social profiles; same-tab is for internal routes only."
+        ]
       },
       "spec": "# SocialIconLink\n\n## Intent\nGive icon-only social/profile links one accessible, external-safe implementation. Every hand-rolled `<a aria-label><Icon/></a>` in SiteFooter, ArticleShareSection, and SocialShare repeats the same four obligations (accessible name, aria-hidden icon, target=_blank, rel=noopener); this atom makes them impossible to forget.\n\n## Interaction contract\n- Keyboard: Tab focuses the link (token focus ring), Enter activates it.\n- Pointer: whole padded hit target is clickable; hover shifts color muted → text.\n- Screen readers: announced as a link named by `label`; the icon child is aria-hidden so the glyph never leaks into the name.\n\n## Do / don't\n- Do: pass a human label (\"Digitaltableteur on LinkedIn\"), not the platform name alone when context needs it.\n- Do: size the hit target with `size` (sm/md/lg paddings), not custom CSS.\n- Don't: put text children inside — this is icon-only; use Link for labeled links.\n- Don't: disable `external` for social profiles; same-tab is for internal routes only.\n\n## Design notes\n- Tokens: --color-muted (rest), --color-text (hover), --focus-ring-color, --space-internal-{4,8,12} hit paddings.\n- Forced colors: LinkText color, Highlight focus outline.\n- Figma: pending (alpha); create in DT-Site-stuff Atoms before beta.\n",
       "documentationDebt": false,
@@ -27814,10 +27663,10 @@
             "optional": true,
             "type": "union",
             "values": [
-              "stretch",
-              "start",
               "center",
-              "end"
+              "stretch",
+              "end",
+              "start"
             ]
           },
           "justify": {
@@ -27865,11 +27714,14 @@
               "table",
               "text",
               "time",
+              "div",
+              "section",
+              "aside",
+              "li",
               "a",
               "abbr",
               "address",
               "area",
-              "aside",
               "audio",
               "b",
               "base",
@@ -27892,7 +27744,6 @@
               "del",
               "details",
               "dfn",
-              "div",
               "dl",
               "dt",
               "em",
@@ -27919,7 +27770,6 @@
               "keygen",
               "label",
               "legend",
-              "li",
               "map",
               "mark",
               "meta",
@@ -27942,7 +27792,6 @@
               "s",
               "samp",
               "script",
-              "section",
               "select",
               "small",
               "source",
@@ -29852,11 +29701,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -29879,6 +29723,11 @@
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
             "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "since": "2026-06-04"
           }
         ],
         "schemaVersion": 2,
@@ -29892,8 +29741,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "cite",
               "div",
+              "cite",
               "em",
               "h1",
               "h2",
@@ -31536,11 +31385,6 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -31567,6 +31411,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -32029,11 +31878,11 @@
             "optional": true,
             "type": "union",
             "values": [
-              "neutral",
               "info",
               "success",
               "warning",
-              "error"
+              "error",
+              "neutral"
             ]
           },
           "position": {
@@ -33171,8 +33020,8 @@
             "type": "union",
             "values": [
               "default",
-              "elevated",
-              "bordered"
+              "bordered",
+              "elevated"
             ]
           },
           "className": {
@@ -34107,9 +33956,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "contained",
               "minimal",
-              "full-width",
-              "contained"
+              "full-width"
             ]
           },
           "className": {
@@ -35061,8 +34910,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "muted",
               "primary",
+              "muted",
               "dark",
               "gradient",
               "brand"
@@ -35652,7 +35501,7 @@
           },
           "messagePanel": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "ReactNode"
           },
           "bookingConfig": {
             "optional": true,
@@ -35967,9 +35816,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "single",
               "none",
               "grid",
-              "single",
               "side-by-side"
             ]
           },
@@ -35977,9 +35826,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "default",
               "muted",
-              "accent",
-              "default"
+              "accent"
             ]
           },
           "centered": {
@@ -36500,9 +36349,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "transparent",
               "light",
-              "white",
-              "transparent"
+              "white"
             ]
           },
           "maxWidth": {
@@ -36512,8 +36361,8 @@
               "sm",
               "md",
               "lg",
-              "full",
-              "xl"
+              "xl",
+              "full"
             ]
           },
           "spacing": {
@@ -36855,10 +36704,10 @@
             "type": "union",
             "values": [
               "image",
+              "transparent",
               "light",
               "dark",
-              "gradient",
-              "transparent"
+              "gradient"
             ]
           },
           "align": {
@@ -36877,8 +36726,8 @@
               "sm",
               "md",
               "lg",
-              "full",
-              "xl"
+              "xl",
+              "full"
             ]
           },
           "spacing": {
@@ -37163,9 +37012,9 @@
             "type": "union",
             "values": [
               "image",
+              "transparent",
               "solid",
-              "gradient",
-              "transparent"
+              "gradient"
             ]
           },
           "backgroundImage": {
@@ -37230,11 +37079,14 @@
               "table",
               "text",
               "time",
+              "div",
+              "section",
+              "aside",
+              "li",
               "a",
               "abbr",
               "address",
               "area",
-              "aside",
               "audio",
               "b",
               "base",
@@ -37257,7 +37109,6 @@
               "del",
               "details",
               "dfn",
-              "div",
               "dl",
               "dt",
               "em",
@@ -37284,7 +37135,6 @@
               "keygen",
               "label",
               "legend",
-              "li",
               "map",
               "mark",
               "meta",
@@ -37307,7 +37157,6 @@
               "s",
               "samp",
               "script",
-              "section",
               "select",
               "small",
               "source",
@@ -38187,8 +38036,8 @@
             "type": "union",
             "values": [
               "muted",
-              "gradient",
-              "transparent"
+              "transparent",
+              "gradient"
             ]
           },
           "className": {
@@ -38311,7 +38160,7 @@
             },
             {
               "guidance": false,
-              "description": "Don't use it for blog listings; BlogGrid owns article lists."
+              "description": "Don't use it for blog listings; the blog index composes its own DS Grid of article cards."
             },
             {
               "guidance": false,
@@ -38588,8 +38437,8 @@
               "sm",
               "md",
               "lg",
-              "full",
-              "xl"
+              "xl",
+              "full"
             ]
           },
           "grid": {
@@ -39110,9 +38959,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "transparent",
               "light",
-              "white",
-              "transparent"
+              "white"
             ]
           },
           "maxWidth": {
@@ -39122,8 +38971,8 @@
               "sm",
               "md",
               "lg",
-              "full",
-              "xl"
+              "xl",
+              "full"
             ]
           },
           "spacing": {
@@ -39351,12 +39200,12 @@
           "promote to stable without production consumer evidence"
         ],
         "composesWith": [
-          "Text",
           "StoryBlock",
           "ProjectHero",
           "RelatedProjects",
           "GridBlock",
-          "ProcessBlock"
+          "ProjectMetaSection",
+          "TeamBlock"
         ]
       },
       "spec": "# ProjectDetailLayout\n\n## Intent\nCase study detail layout shell.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-detail-layout\n",
@@ -39744,8 +39593,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "full-width",
               "contained",
+              "full-width",
               "split"
             ]
           },
@@ -39770,7 +39619,8 @@
           "ProjectDetailLayout",
           "RelatedProjects",
           "GridBlock",
-          "ProcessBlock"
+          "ProjectMetaSection",
+          "TeamBlock"
         ]
       },
       "spec": "# ProjectHero\n\n## Intent\nCase study hero with project title and summary.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-hero\n",
@@ -40017,9 +39867,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "default",
               "muted",
-              "accent",
-              "default"
+              "accent"
             ]
           },
           "maxWidth": {
@@ -40029,8 +39879,8 @@
               "sm",
               "md",
               "lg",
-              "full",
-              "xl"
+              "xl",
+              "full"
             ]
           },
           "className": {
@@ -40047,12 +39897,12 @@
           "promote to stable without production consumer evidence"
         ],
         "composesWith": [
-          "Text",
           "StoryBlock",
           "GridBlock",
           "ProjectDetailLayout",
           "ProjectHero",
-          "RelatedProjects"
+          "RelatedProjects",
+          "TeamBlock"
         ]
       },
       "spec": "# ProjectMetaSection\n\n## Intent\nCase study metadata (client, role, year).\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-project-meta-section\n",
@@ -40564,12 +40414,12 @@
           "promote to stable without production consumer evidence"
         ],
         "composesWith": [
-          "Text",
           "StoryBlock",
           "ProjectDetailLayout",
           "ProjectHero",
           "GridBlock",
-          "ProcessBlock"
+          "ProjectMetaSection",
+          "TeamBlock"
         ]
       },
       "spec": "# RelatedProjects\n\n## Intent\nRelated case studies grid at project footer.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-related-projects\n",
@@ -40813,8 +40663,8 @@
               "sm",
               "md",
               "lg",
-              "full",
-              "xl"
+              "xl",
+              "full"
             ]
           },
           "spacing": {
@@ -41055,8 +40905,8 @@
             "values": [
               "minimal",
               "default",
-              "elevated",
-              "bordered"
+              "bordered",
+              "elevated"
             ]
           },
           "className": {
@@ -41561,10 +41411,10 @@
             "optional": true,
             "type": "union",
             "values": [
-              "muted",
               "primary",
-              "accent",
-              "default"
+              "default",
+              "muted",
+              "accent"
             ]
           },
           "className": {
@@ -41785,18 +41635,18 @@
             "optional": true,
             "type": "union",
             "values": [
+              "single",
               "none",
-              "grid",
-              "single"
+              "grid"
             ]
           },
           "backgroundColor": {
             "optional": true,
             "type": "union",
             "values": [
+              "transparent",
               "light",
-              "white",
-              "transparent"
+              "white"
             ]
           },
           "maxWidth": {
@@ -41806,8 +41656,8 @@
               "sm",
               "md",
               "lg",
-              "full",
-              "xl"
+              "xl",
+              "full"
             ]
           },
           "spacing": {
@@ -42142,9 +41992,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "transparent",
               "light",
-              "white",
-              "transparent"
+              "white"
             ]
           },
           "maxWidth": {
@@ -42154,8 +42004,8 @@
               "sm",
               "md",
               "lg",
-              "full",
-              "xl"
+              "xl",
+              "full"
             ]
           },
           "spacing": {
@@ -42388,17 +42238,17 @@
             "type": "union",
             "values": [
               "default",
-              "elevated",
-              "bordered"
+              "bordered",
+              "elevated"
             ]
           },
           "background": {
             "optional": true,
             "type": "union",
             "values": [
+              "default",
               "muted",
-              "accent",
-              "default"
+              "accent"
             ]
           },
           "columns": {
@@ -42683,10 +42533,7 @@
           "promote to stable without production consumer evidence"
         ],
         "composesWith": [
-          "Container",
-          "Section",
-          "CategoryFilter",
-          "WorkGrid"
+          "Grid"
         ]
       },
       "spec": "# WorkHero\n\n## Intent\nWork index hero with portfolio positioning copy.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/* primitives\n- Pointer: standard link/button targets where interactive\n- Screen readers: use landmarks and labels from child components\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: treat this as a page assembly reference when matching production routes\n- Don't: invent parallel primitives inside this folder\n- Don't: promote to stable without production consumer evidence\n\n## Design notes\n- Tokens: inherit from child components\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-hero\n",
