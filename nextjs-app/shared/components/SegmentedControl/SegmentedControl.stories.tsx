@@ -24,7 +24,9 @@ const meta = {
   },
   argTypes: {
     items: {
-      control: { type: "object" },
+      control: { type: "select" },
+      options: ["default", "compact"],
+      mapping: { default: items, compact: items.slice(0, 2) },
       description: "Segments to render, in order. Each: { value, label, disabled? }.",
       table: { category: "Content", type: { summary: "SegmentedControlItem[]" } },
     },
@@ -54,7 +56,13 @@ const meta = {
       table: { category: "Appearance" },
     },
   },
-  args: { items, value: "list", size: "md", ariaLabel: "View" },
+  args: {
+    items: "default" as unknown as SegmentedControlProps["items"],
+    value: "list",
+    size: "md",
+    ariaLabel: "View",
+    className: "",
+  },
 } satisfies Meta<typeof SegmentedControl>;
 
 export default meta;

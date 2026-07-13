@@ -28,7 +28,9 @@ const meta = {
   },
   argTypes: {
     toasts: {
-      control: { type: "object" },
+      control: { type: "select" },
+      options: ["sample", "single"],
+      mapping: { sample: seedToasts, single: [seedToasts[0]] },
       description: "Toasts to display, oldest first; new toasts are appended by the caller.",
       table: { category: "Content", type: { summary: "ToastStackItem[]" } },
     },
@@ -61,7 +63,12 @@ const meta = {
       table: { category: "Appearance" },
     },
   },
-  args: { toasts: seedToasts, position: "bottom-center" },
+  args: {
+    toasts: "sample" as unknown as ToastStackProps["toasts"],
+    position: "bottom-center",
+    max: 5,
+    className: "",
+  },
 } satisfies Meta<typeof ToastStack>;
 
 export default meta;

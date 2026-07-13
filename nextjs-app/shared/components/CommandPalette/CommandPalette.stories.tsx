@@ -36,7 +36,9 @@ const meta = {
       table: { category: "Behavior", type: { summary: "() => void" } },
     },
     items: {
-      control: { type: "object" },
+      control: { type: "select" },
+      options: ["full", "minimal"],
+      mapping: { full: commands, minimal: commands.slice(0, 2) },
       description: "Commands to show, in order. Each: { id, label, onSelect, keywords?, icon? }.",
       table: { category: "Content", type: { summary: "CommandPaletteItem[]" } },
     },
@@ -61,7 +63,14 @@ const meta = {
       table: { category: "Appearance" },
     },
   },
-  args: { open: true, items: commands, label: "Command palette" },
+  args: {
+    open: true,
+    items: "full" as unknown as CommandPaletteProps["items"],
+    label: "Command palette",
+    placeholder: "Search commands…",
+    emptyText: "No results",
+    className: "",
+  },
 } satisfies Meta<typeof CommandPalette>;
 
 export default meta;

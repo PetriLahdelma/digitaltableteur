@@ -36,10 +36,25 @@ const meta = {
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
   },
+  argTypes: {
+    items: {
+      control: { type: "select" },
+      options: ["default", "short"],
+      mapping: { default: items, short: items.slice(0, 2) },
+      description: "Heading entries to render, in document order.",
+      table: { category: "Content", type: { summary: "TOCItem[]" } },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS class names.",
+      table: { category: "Appearance" },
+    },
+  },
   args: {
-    items,
+    items: "default" as unknown as ComponentProps<typeof TableOfContents>["items"],
     activeId: "overview",
     sticky: false,
+    className: "",
   },
 } satisfies Meta<typeof TableOfContents>;
 

@@ -54,6 +54,8 @@ const meta = {
     pressed: false,
     variant: "pill" as const,
     size: "md" as const,
+    count: 3,
+    className: "",
     children: "Design systems",
   },
 } satisfies Meta<typeof FilterChip>;

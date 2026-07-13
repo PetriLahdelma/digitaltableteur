@@ -103,6 +103,7 @@ const meta = {
     value: RECENT,
     now: FIXED_NOW,
     format: "auto",
+    autoThreshold: 604800,
     size: "s",
     tone: "muted",
     showTimezone: false,
