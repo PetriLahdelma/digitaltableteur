@@ -109,6 +109,25 @@ describe("MultiCombobox", () => {
     expect(onValueChange).toHaveBeenCalledWith(["other"]);
   });
 
+  it("removes the last selected value on Backspace with an empty query", () => {
+    const onValueChange = vi.fn();
+
+    render(
+      <MultiCombobox
+        label="Project type"
+        options={OPTIONS}
+        value={["website", "other"]}
+        onValueChange={onValueChange}
+      />,
+    );
+
+    const input = screen.getByRole("combobox");
+    fireEvent.focus(input);
+    fireEvent.keyDown(input, { key: "Backspace" });
+
+    expect(onValueChange).toHaveBeenCalledWith(["website"]);
+  });
+
   it("closes the dropdown when the chevron is clicked while open", () => {
     render(
       <MultiCombobox

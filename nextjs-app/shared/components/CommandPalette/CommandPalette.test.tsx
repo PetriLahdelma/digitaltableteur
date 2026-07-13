@@ -77,6 +77,17 @@ describe("CommandPalette", () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
+  it("closes when the overlay is pressed", () => {
+    const onClose = vi.fn();
+    render(<CommandPalette open onClose={onClose} items={makeItems()} />);
+
+    const overlay = screen.getByRole("dialog").parentElement;
+    expect(overlay).not.toBeNull();
+    fireEvent.mouseDown(overlay!);
+
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
   it("runs a command on click", () => {
     const items = makeItems();
     const onClose = vi.fn();

@@ -69,6 +69,25 @@ describe("Select", () => {
     );
   });
 
+  it("ensures value takes precedence when value and defaultValue are both provided", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    render(
+      <Select
+        label="Test Select"
+        options={options}
+        value="option2"
+        defaultValue="option1"
+      />,
+    );
+
+    expect(screen.getByRole("combobox")).toHaveValue("option2");
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining("value` will take precedence"),
+    );
+    warn.mockRestore();
+  });
+
   it("associates error and helper text with the invalid control", () => {
     render(
       <Select

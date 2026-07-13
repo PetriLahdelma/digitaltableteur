@@ -136,7 +136,7 @@ export type { NavMenuItem, NavMenuListProps } from "./NavMenuList";
 export { default as MarkdownMessage } from "./MarkdownMessage/MarkdownMessage";
 export type { MarkdownMessageProps } from "./MarkdownMessage/MarkdownMessage";
 export { default as Modal } from "./Modal/Modal";
-export type { ModalProps, ModalSeverity } from "./Modal/Modal";
+export type { ModalAnimation, ModalProps, ModalSeverity } from "./Modal/Modal";
 export { NextLayout } from "./NextLayout";
 export type { NextLayoutProps } from "./NextLayout";
 export { default as OpenHours } from "./OpenHours/OpenHours";
@@ -152,6 +152,7 @@ export {
 export { default as Select } from "./Select/Select";
 export type { SelectOptionItem, SelectProps } from "./Select/Select";
 export { default as SelectOption } from "./Select/SelectOption";
+export type { SelectOptionProps } from "./Select/SelectOption";
 export { default as ServicesGrid } from "./ServicesGrid/ServicesGrid";
 export { default as SiteTree } from "./SiteTree";
 export type { SiteTreeNode, SiteTreeProps } from "./SiteTree";

@@ -92,6 +92,25 @@ describe("Combobox", () => {
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
   });
 
+  it("closes the listbox on Escape", () => {
+    render(
+      <Combobox
+        label="Timeline"
+        options={OPTIONS}
+        value=""
+        onValueChange={() => {}}
+      />,
+    );
+
+    const trigger = screen.getByRole("combobox");
+    fireEvent.click(trigger);
+    expect(screen.getByRole("listbox")).toBeInTheDocument();
+
+    fireEvent.keyDown(trigger, { key: "Escape" });
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
+  });
+
   it("wires helper text to the trigger when there is no error", () => {
     render(
       <Combobox

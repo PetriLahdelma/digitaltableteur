@@ -1,2 +1,2 @@
 export { default } from "./Modal";
-export type { ModalProps, ModalSeverity } from "./Modal";
+export type { ModalAnimation, ModalProps, ModalSeverity } from "./Modal";
