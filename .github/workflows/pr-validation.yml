@@ -21,34 +21,17 @@ jobs:
         env:
           NPM_READ_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
         run: bash .github/scripts/write-npm-read-config.sh
-      # TEMP DIAGNOSTIC (DT-1173): the farm redirects the @digitaltableteur scope to a
-      # local Verdaccio (100.77.151.86:4873) that lags tokens-css@0.1.2. Neither a
-      # userconfig scope pin nor a CLI --@scope:registry flag overrode it, so dump the
-      # effective config with its source files (auth redacted) to find where it is set.
-      # Remove once the redirect source is identified and the real fix lands.
-      - name: Diagnose npm registry config
-        run: |
-          export NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc"
-          echo "::group::key values"
-          echo "registry                 = $(npm config get registry)"
-          echo "@digitaltableteur:registry = $(npm config get @digitaltableteur:registry)"
-          echo "replace-registry-host    = $(npm config get replace-registry-host)"
-          echo "userconfig               = $(npm config get userconfig)"
-          echo "globalconfig             = $(npm config get globalconfig)"
-          echo "::endgroup::"
-          echo "::group::npm config ls -l (with source files; npm redacts auth)"
-          npm config ls -l 2>&1 | grep -iE "registry|replace-registry-host|config from" || true
-          echo "::endgroup::"
-          echo "::group::npm_config_* env vars (auth redacted)"
-          env | grep -i "npm_config" | sed -E 's/(token|_auth[^=]*|password)=.*/\1=REDACTED/I' || echo "(none)"
-          echo "::endgroup::"
-          echo "::group::npmrc files (auth redacted)"
-          for f in "$(npm config get globalconfig)" "$HOME/.npmrc" "./.npmrc" "$RUNNER_TEMP/npm-read.npmrc"; do
-            echo "--- $f ---"
-            if [ -f "$f" ]; then sed -E 's/(_authToken|_auth|_password)=.*/\1=REDACTED/' "$f"; else echo "(absent)"; fi
-          done
-          echo "::endgroup::"
-      - run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci --@digitaltableteur:registry=https://registry.npmjs.org/
+      # The farm runner sets the default npm registry to a local Verdaccio
+      # (npm_config_registry=http://100.77.151.86:4873/ via environment). With npm's
+      # default replace-registry-host=npmjs, that rewrites every lockfile
+      # registry.npmjs.org tarball URL to Verdaccio — including @digitaltableteur/*,
+      # and the mirror lags newly published packages (tokens-css@0.1.2 404s there).
+      # Scoped-registry pins don't help: the rewrite targets the DEFAULT registry, not
+      # the scope. replace-registry-host=never disables the rewrite so npm fetches each
+      # tarball from its literal lockfile URL (registry.npmjs.org, authed by the read
+      # token), matching the lockfile integrity hashes and the
+      # check:package-registry-resolution contract. CLI precedence beats the env var.
+      - run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-read.npmrc" npm ci --replace-registry-host=never
       - run: npm run build:tokens
       - run: npm run check:contract-drift -- --strict
       - run: npm run check:contract-props
