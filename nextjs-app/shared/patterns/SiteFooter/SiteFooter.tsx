@@ -176,6 +176,19 @@ export function SiteFooter({ className }: SiteFooterProps) {
               <DtLink underline="hover" href="/sitemap" size="sm">
                 {t("footerSiteMap")}
               </DtLink>
+              {consent ? (
+                // "Cookie preferences" belongs with the legal links. Link is
+                // anchor-only, so this is a real <button> matched to the sibling
+                // DtLinks (themed --link-color, 1rem, hover underline). Only
+                // rendered where a CookieConsentProvider exists.
+                <button
+                  type="button"
+                  onClick={consent.openBanner}
+                  className="font-body text-base text-[color:var(--link-color)] bg-transparent border-0 p-0 cursor-pointer text-left hover:underline rounded-sm"
+                >
+                  {t("footerCookiePreferences")}
+                </button>
+              ) : null}
             </Stack>
           </div>
         </div>
@@ -192,24 +205,9 @@ export function SiteFooter({ className }: SiteFooterProps) {
             ))}
           </Stack>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            {consent ? (
-              // Consent withdrawal must be as easy as granting it (GDPR). A real
-              // <button> (Link is anchor-only) styled to match the subtle
-              // copyright/legal tone of the bottom bar rather than the primary
-              // nav links. Only rendered where a CookieConsentProvider exists.
-              <button
-                type="button"
-                onClick={consent.openBanner}
-                className="font-body text-text-s text-muted-foreground hover:text-foreground hover:underline bg-transparent border-0 p-0 cursor-pointer rounded-sm"
-              >
-                {t("footerCookiePreferences")}
-              </button>
-            ) : null}
-            <p className="font-body text-text-s text-muted-foreground">
-              &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
-            </p>
-          </div>
+          <p className="font-body text-text-s text-muted-foreground">
+            &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
+          </p>
         </div>
       </Container>
     </footer>
