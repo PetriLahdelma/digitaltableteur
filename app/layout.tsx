@@ -123,9 +123,10 @@ export default function RootLayout({
             strategy="beforeInteractive"
           />
         ) : null}
-        {/* GTM + GA4 (+ ahrefs) are interaction-gated in <DeferredAnalytics>
-            (rendered in the body) so ~280 KiB of third-party JS stays off the
-            critical path and out of the Lighthouse/PSI trace entirely. */}
+        {/* GTM + GA4 (+ ahrefs) are consent- AND interaction-gated in
+            <DeferredAnalytics> (rendered inside CookieConsentProvider) so they
+            only load after the visitor grants the analytics category, and even
+            then stay off the critical path / out of the Lighthouse/PSI trace. */}
       </head>
       <body suppressHydrationWarning>
         <noscript>
@@ -153,7 +154,6 @@ export default function RootLayout({
           }}
         />
         <Analytics />
-        <DeferredAnalytics gaMeasurementId={gaMeasurementId} />
         <WebMcpProvider>
           <NextThemeProvider>
             <NextLinkProvider>
@@ -165,6 +165,9 @@ export default function RootLayout({
                       <SmoothScrollProvider>
                         <ToastProvider>
                           <CookieConsentProvider autoShow={true}>
+                            <DeferredAnalytics
+                              gaMeasurementId={gaMeasurementId}
+                            />
                             <NextLayout>{children}</NextLayout>
                           </CookieConsentProvider>
                         </ToastProvider>
