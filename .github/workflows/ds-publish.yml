@@ -101,11 +101,11 @@ jobs:
         run: npm run check:react-public-surface -- --require-publishable
 
       - name: Verify @digitaltableteur/react OIDC publish auth
-        if: ${{ (inputs.package == 'react' || inputs.package == 'all') && inputs.dry_run == false }}
+        if: ${{ inputs.package == 'react' || inputs.package == 'all' }}
         run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react
 
       - name: Verify @digitaltableteur/web-components OIDC publish auth
-        if: ${{ (inputs.package == 'web-components' || inputs.package == 'all') && inputs.dry_run == false }}
+        if: ${{ inputs.package == 'web-components' || inputs.package == 'all' }}
         run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/web-components
 
       - name: Publish @digitaltableteur/tokens
