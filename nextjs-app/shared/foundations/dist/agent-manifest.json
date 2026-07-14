@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-13T22:51:02.818Z",
+  "generatedAt": "2026-07-14T16:39:59.880Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -25,8 +25,8 @@
   },
   "tokens": {
     "source": "nextjs-app/shared/styles/variables.css",
-    "tokenCount": 184,
-    "usageCoverage": 150,
+    "tokenCount": 185,
+    "usageCoverage": 151,
     "catalogPath": "nextjs-app/shared/foundations/token-catalog.json",
     "dtcgExport": "nextjs-app/shared/foundations/tokens/production/",
     "tailwindBridge": "app/tailwind.css (DT-THEME block)",
@@ -63,7 +63,7 @@
     "catalogCompletenessPercent": 88,
     "artifactCoverage": {
       "stories": 146,
-      "tests": 147,
+      "tests": 148,
       "mdx": 6,
       "spec": 162
     },

@@ -305,6 +305,22 @@
         }
       }
     },
+    "switch": {
+      "track": {
+        "off": {
+          "$value": "#ccc",
+          "$description": "Color token (switch-track-off).",
+          "$type": "color",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--color-switch-track-off",
+              "category": "color",
+              "subgroup": "Semantic"
+            }
+          }
+        }
+      }
+    },
     "light": {
       "bg": {
         "$value": "#f9f9f9",

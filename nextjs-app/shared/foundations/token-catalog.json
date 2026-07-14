@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-11T16:39:46.044Z",
-  "tokenCount": 184,
-  "usageCoverage": 150,
+  "generatedAt": "2026-07-14T16:39:51.626Z",
+  "tokenCount": 185,
+  "usageCoverage": 151,
   "themes": [
     {
       "id": "light",
@@ -942,6 +942,13 @@
           "name": "--color-border-light",
           "value": "#ccc",
           "usage": "Color token (border-light).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-switch-track-off",
+          "value": "#ccc",
+          "usage": "Color token (switch-track-off).",
           "category": "color",
           "subgroup": "Semantic"
         },

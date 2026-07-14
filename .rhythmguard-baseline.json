@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-13T16:35:58.810Z",
+  "createdAt": "2026-07-14T16:45:30.741Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -1735,8 +1735,8 @@
     {
       "column": 23,
       "file": "nextjs-app/shared/components/CookieConsent/CookieConsent.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/CookieConsent/CookieConsent.module.css\u001f123\u001f23\u001f3px\u001fUnexpected off-scale value \"3px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "line": 123,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/CookieConsent/CookieConsent.module.css\u001f133\u001f23\u001f3px\u001fUnexpected off-scale value \"3px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 133,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"3px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -1745,8 +1745,8 @@
     {
       "column": 25,
       "file": "nextjs-app/shared/components/CookieConsent/CookieConsent.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/CookieConsent/CookieConsent.module.css\u001f131\u001f25\u001f20px\u001fUnexpected off-scale value \"20px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
-      "line": 131,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/CookieConsent/CookieConsent.module.css\u001f141\u001f25\u001f20px\u001fUnexpected off-scale value \"20px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "line": 141,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"20px\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -1785,8 +1785,8 @@
     {
       "column": 23,
       "file": "nextjs-app/shared/components/CookieConsent/CookieConsent.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/CookieConsent/CookieConsent.module.css\u001f123\u001f23\u001f3px\u001fUnexpected raw scale value \"3px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 123,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/CookieConsent/CookieConsent.module.css\u001f133\u001f23\u001f3px\u001fUnexpected raw scale value \"3px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 133,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"3px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -1795,8 +1795,8 @@
     {
       "column": 25,
       "file": "nextjs-app/shared/components/CookieConsent/CookieConsent.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/CookieConsent/CookieConsent.module.css\u001f131\u001f25\u001f20px\u001fUnexpected raw scale value \"20px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 131,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/CookieConsent/CookieConsent.module.css\u001f141\u001f25\u001f20px\u001fUnexpected raw scale value \"20px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 141,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"20px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -7345,8 +7345,8 @@
     {
       "column": 19,
       "file": "nextjs-app/shared/styles/variables.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/styles/variables.css\u001f708\u001f19\u001f6px\u001fUnexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "line": 708,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/styles/variables.css\u001f716\u001f19\u001f6px\u001fUnexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "line": 716,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"6px\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -7355,8 +7355,8 @@
     {
       "column": 19,
       "file": "nextjs-app/shared/styles/variables.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/styles/variables.css\u001f708\u001f19\u001f6px\u001fUnexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 708,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/styles/variables.css\u001f716\u001f19\u001f6px\u001fUnexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 716,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"6px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",

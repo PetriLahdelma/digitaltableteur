@@ -130,6 +130,11 @@
   --color-muted-light: #909090;
   --color-border: #c0c0c0;
   --color-border-light: #ccc;
+
+  /* Off-state track for switch/toggle controls. Theme-aware: a light gray on
+     light surfaces, a subtle slate on dark, so the track reads clearly as OFF
+     (not half-on) while the white knob carries the state. */
+  --color-switch-track-off: #ccc;
   --color-disabled-bg: #e8e8e8; /* 3.01:1 with --color-disabled-placeholder */
   --color-disabled-bg-light: #efefef; /* 3.21:1 with --color-disabled-placeholder */
   --color-disabled-placeholder: #858585;
@@ -385,6 +390,7 @@
   --color-muted-light: #555;
   --color-border: #333;
   --color-border-light: #444;
+  --color-switch-track-off: #35393c;
   --color-disabled-bg: #23272a;
   --color-disabled-bg-light: #23272a;
   --color-disabled-placeholder: #767676; /* 3.31:1 on #23272a; #555 was 2.02:1 */
@@ -453,6 +459,7 @@
   --color-muted-light: #555;
   --color-border: #333;
   --color-border-light: #444;
+  --color-switch-track-off: #444;
   --color-disabled-bg: #313131;
   --color-disabled-bg-light: #313131; /* #7b7b7b midtone was 1.76:1 with any gray text */
   --color-disabled-placeholder: #9e9e9e; /* 4.86:1 on #313131; #555 was 1.74:1 */
@@ -565,6 +572,7 @@
   --color-muted-light: #555;
   --color-border: #333;
   --color-border-light: #444;
+  --color-switch-track-off: #ccc;
   --color-disabled-bg: #e8e8e8; /* dark-on-light HC theme: near-black fields were illegible */
   --color-disabled-bg-light: #efefef;
   --color-disabled-placeholder: #6b6b6b; /* 4.63:1 on #efefef, 4.35:1 on #e8e8e8 */
