@@ -10,13 +10,17 @@ const MINIMIZED_KEY = "dt-cookie-consent-minimized";
 const CURRENT_VERSION = 1;
 
 /**
- * Default consent state structure
+ * Default consent state structure.
+ *
+ * Optional categories default to `false`: under an opt-in consent model the
+ * baseline before any explicit choice (and the "reject all optional" outcome)
+ * must NOT grant analytics/marketing/functional. Only `essential` is on.
  */
 export const DEFAULT_CONSENTS: Record<CookieCategory, boolean> = {
   essential: true, // Always true, can't be disabled
-  analytics: true,
-  marketing: true,
-  functional: true,
+  analytics: false,
+  marketing: false,
+  functional: false,
 };
 
 /**

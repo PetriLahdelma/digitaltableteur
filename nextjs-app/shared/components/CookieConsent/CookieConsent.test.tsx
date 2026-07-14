@@ -150,6 +150,29 @@ describe("CookieConsent", () => {
     );
   });
 
+  it("rejects all optional categories on essential only", () => {
+    render(
+      <CookieConsentProvider autoShow>
+        <CookieConsent />
+      </CookieConsentProvider>,
+    );
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: /only essential/i,
+      }),
+    );
+    const stored = localStorageMock.setItem.mock.calls.at(-1)?.[1] as string;
+    const { categories } = JSON.parse(stored) as {
+      categories: Record<string, boolean>;
+    };
+    expect(categories).toMatchObject({
+      essential: true,
+      analytics: false,
+      marketing: false,
+      functional: false,
+    });
+  });
+
   it("renders cookie policy link on the banner", () => {
     render(
       <CookieConsentProvider autoShow>

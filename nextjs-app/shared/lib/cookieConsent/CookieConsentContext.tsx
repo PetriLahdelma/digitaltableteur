@@ -123,7 +123,13 @@ export function CookieConsentProvider({
    * Accept only essential (reject all optional)
    */
   const acceptEssentialOnly = useCallback(() => {
-    updateConsents(DEFAULT_CONSENTS, "accept-required");
+    const essentialOnly: Record<CookieCategory, boolean> = {
+      essential: true,
+      analytics: false,
+      marketing: false,
+      functional: false,
+    };
+    updateConsents(essentialOnly, "accept-required");
   }, [updateConsents]);
 
   /**

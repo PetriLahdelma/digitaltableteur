@@ -2,6 +2,7 @@
 
 import Script from "next/script";
 import { useEffect, useState } from "react";
+import { useCookieConsent } from "@/nextjs-app/shared/lib/cookieConsent";
 
 interface DeferredAnalyticsProps {
   /** GA4 measurement ID (e.g. G-XXXXXXXXXX). */
@@ -28,12 +29,19 @@ const INTERACTION_EVENTS: (keyof WindowEventMap)[] = [
  * while still tracking real visitors on their first scroll/pointer/key event.
  * The fallback fires well past any trace so engaged-but-idle visitors still
  * count without re-entering the perf window.
+ *
+ * Consent gate: nothing loads unless the visitor has granted the `analytics`
+ * category. Before a choice is made (and after a "reject optional"/revoke)
+ * `hasConsent("analytics")` is false, so GA/GTM/ahrefs never mount. This
+ * component MUST be rendered inside <CookieConsentProvider>.
  */
 export function DeferredAnalytics({ gaMeasurementId }: DeferredAnalyticsProps) {
+  const { hasConsent } = useCookieConsent();
+  const analyticsAllowed = hasConsent("analytics");
   const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
-    if (shouldLoad) return;
+    if (!analyticsAllowed || shouldLoad) return;
 
     const load = () => setShouldLoad(true);
 
@@ -48,9 +56,9 @@ export function DeferredAnalytics({ gaMeasurementId }: DeferredAnalyticsProps) {
       }
       window.clearTimeout(fallback);
     };
-  }, [shouldLoad]);
+  }, [analyticsAllowed, shouldLoad]);
 
-  if (!shouldLoad) return null;
+  if (!analyticsAllowed || !shouldLoad) return null;
 
   return (
     <>
