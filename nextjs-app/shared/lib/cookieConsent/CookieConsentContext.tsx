@@ -49,6 +49,19 @@ export function useCookieConsent(): CookieConsentContextValue {
 }
 
 /**
+ * Non-throwing accessor for the cookie consent context.
+ *
+ * Returns `null` when rendered outside a `CookieConsentProvider` instead of
+ * throwing. Use this only for optional UI affordances (e.g. a footer
+ * "Cookie preferences" trigger) that should simply not render when consent
+ * isn't wired — never to read or bypass consent state. For consumers that
+ * require consent, use {@link useCookieConsent}.
+ */
+export function useCookieConsentOptional(): CookieConsentContextValue | null {
+  return useContext(CookieConsentContext);
+}
+
+/**
  * Provider component that manages consent state
  */
 export function CookieConsentProvider({
