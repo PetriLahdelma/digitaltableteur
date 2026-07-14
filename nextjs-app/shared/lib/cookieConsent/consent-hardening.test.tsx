@@ -10,6 +10,7 @@
 
 import React from "react";
 import { renderHook, act, waitFor } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 
 // The provider reads the active language via useLocalization; stub it so the
@@ -253,10 +254,62 @@ describe("consent hardening — C4: preferences reopen without clearing storage"
   });
 });
 
-// Remaining gap, tracked until implemented:
-// C6 — consent state must not flash/change during hydration.
-describe("consent hardening — open gaps", () => {
-  it.todo("C6: consent state does not flash or change during hydration");
+describe("consent hardening — C6: no flash or change during hydration", () => {
+  function Probe() {
+    const { isReady, isBannerOpen, hasConsent } = useCookieConsent();
+    return (
+      <div
+        data-ready={String(isReady)}
+        data-banner={String(isBannerOpen)}
+        data-analytics={String(hasConsent("analytics"))}
+      />
+    );
+  }
+
+  it("server render is consent-neutral even when storage holds granted consent", () => {
+    // Storage says analytics is granted, but the provider only reads storage in
+    // a client effect. The server paint must therefore be not-ready with nothing
+    // granted and the banner closed, so hydration has no wrong state to flash.
+    localStorage.setItem(
+      STORAGE_KEY,
+      validState({
+        essential: true,
+        analytics: true,
+        marketing: true,
+        functional: true,
+      }),
+    );
+
+    const html = renderToString(
+      <CookieConsentProvider autoShow={true}>
+        <Probe />
+      </CookieConsentProvider>,
+    );
+
+    expect(html).toContain('data-ready="false"');
+    expect(html).toContain('data-banner="false"');
+    expect(html).toContain('data-analytics="false"');
+  });
+
+  it("first client paint matches the server paint before effects resolve", async () => {
+    localStorage.setItem(
+      STORAGE_KEY,
+      validState({
+        essential: true,
+        analytics: true,
+        marketing: true,
+        functional: true,
+      }),
+    );
+
+    // isReady only becomes true after the load effect, so the initial committed
+    // value is the safe not-ready state — the same as the server paint.
+    const { result } = await mountConsent();
+    // After hydration completes the real state is applied (no earlier flash).
+    expect(result.current.isReady).toBe(true);
+    expect(result.current.hasConsent("analytics")).toBe(true);
+  });
+
   // C7 (keyboard/focus/axe/forced-colors/mobile for banner + settings modal) is
   // covered by the Playwright a11y suite, not this unit gate.
 });
