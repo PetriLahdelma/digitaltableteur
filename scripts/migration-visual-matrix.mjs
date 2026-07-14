@@ -39,8 +39,8 @@ const STORIES = [
   { id: "actions-iconbutton--example", label: "IconButton" },
   { id: "forms-formfield--example", label: "FormField" },
   { id: "site-contactformeditorial--example", label: "ContactFormEditorial" },
-  { id: "actions-button-surface-comparison--cta-bands", label: "ButtonSurfaceCtaBands" },
-  { id: "actions-button-surface-comparison--home-hero-band", label: "ButtonSurfaceHomeHero" },
+  { id: "actions-button--cta-bands", label: "ButtonSurfaceCtaBands" },
+  { id: "actions-button--home-hero-band", label: "ButtonSurfaceHomeHero" },
 ];
 
 const PAGES = [

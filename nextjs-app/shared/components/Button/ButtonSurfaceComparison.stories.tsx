@@ -12,7 +12,7 @@ import {
 import board from "../../stories/MigrationDecisionBoard/MigrationDecisionBoard.module.css";
 
 const meta = {
-  title: "Actions/Button/Surface comparison",
+  title: "Actions/Button",
   parameters: {
     layout: "fullscreen",
     docs: { disable: true },
