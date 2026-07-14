@@ -110,10 +110,11 @@
 
 /* High-contrast black: on a pure-black surface a flat grey track can't contrast
    with BOTH the background and the white knob, so outline the track (pill reads
-   on black). Scoped to HCB; light/dark/HCW unchanged. */
+   on black). box-shadow (not border) keeps the knob's box geometry intact so it
+   stays centered. Scoped to HCB; light/dark/HCW unchanged. */
 
 :global(.themeHCB) .slider {
-  border: 1px solid var(--color-title);
+  box-shadow: 0 0 0 1px var(--color-title);
 }
 
 /* Off-state track background. Stated at the same specificity as the checked
@@ -141,10 +142,11 @@
   inset-inline-start: 3px;
 }
 
-/* HCB: dark ring keeps the white knob distinct from the track. */
+/* HCB: dark ring keeps the white knob distinct from the track (box-shadow, not
+   border, so the knob keeps its 18px box and stays centered). */
 
 :global(.themeHCB) .slider::before {
-  border: 1px solid var(--main-body-background-color);
+  box-shadow: 0 0 0 1px var(--main-body-background-color);
 }
 
 .switch input:checked + .slider {
