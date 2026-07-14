@@ -58,12 +58,12 @@ export const metadata: Metadata = {
     "product design",
   ],
   alternates: {
+    // No hreflang `languages` map: the site serves a single English URL tree
+    // (translation is client-side only, no locale-segmented routes). Advertising
+    // en/fi/sv alternates that all resolve to "/" is a misleading SEO signal, so
+    // we emit only the canonical. Add real hreflang here if/when locale routes
+    // (e.g. /fi, /sv) actually exist.
     canonical: "/",
-    languages: {
-      en: "/",
-      fi: "/",
-      sv: "/",
-    },
   },
   openGraph: {
     type: "website",
