@@ -84,6 +84,10 @@ const ALLOWED_LOCAL_SHARED_IMPORTS = new Map([
     "local shell (NextLayout -> CookieConsent) provides and consumes the LOCAL consent context end-to-end; the package instance is unused",
   ],
   [
+    "app/components/DeferredAnalytics.tsx :: @/nextjs-app/shared/lib/cookieConsent",
+    "reads the LOCAL consent context mounted by app/layout.tsx; using the package hook would create a distinct React context instance",
+  ],
+  [
     "providers/ToastProvider.tsx :: ../nextjs-app/shared/lib/toast",
     "toast runtime is LOCAL end-to-end (ToastStack + LanguageNotice read this instance); dual-provide if a package component ever calls useToast",
   ],
