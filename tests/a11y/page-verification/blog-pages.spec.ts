@@ -1,7 +1,9 @@
 /**
  * Blog Post Pages Accessibility Verification
  *
- * Tests all 12 blog post pages for WCAG 2.1 AA compliance.
+ * Tests every publicly visible blog post for WCAG 2.1 AA compliance.
+ * The post list is derived from generated metadata (see `blogPages` in
+ * page-registry), so coverage tracks published content automatically.
  * Blog posts are English-only MDX content with code blocks, images,
  * and potentially embedded content.
  *
@@ -9,10 +11,9 @@
  * Plan: 07-04 (Blog Pages)
  *
  * Test matrix:
- * - 12 blog posts
+ * - Every visible blog post (derived, not hardcoded)
  * - 4 themes (Light, Dark, HCB, HCW)
  * - English only (MDX content is English)
- * - 48 total combinations
  *
  * Run: npx playwright test tests/a11y/page-verification/blog-pages.spec.ts
  */
