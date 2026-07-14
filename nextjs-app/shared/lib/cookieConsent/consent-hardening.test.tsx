@@ -27,7 +27,12 @@ import {
   CookieConsentProvider,
   useCookieConsent,
 } from "./CookieConsentContext";
-import { loadConsentState, stateToConsents } from "./storage";
+import {
+  loadConsentState,
+  stateToConsents,
+  hasGivenConsent,
+  CONSENT_MAX_AGE_MS,
+} from "./storage";
 import type { CookieCategory } from "./types";
 
 const STORAGE_KEY = "dt-cookie-consent";
@@ -142,11 +147,54 @@ describe("consent hardening — C5: bad/missing/old storage fails closed", () =>
     expect(loadConsentState()).toBeNull();
   });
 
-  // Gap: no expiry/TTL exists yet (only CURRENT_VERSION). Consent should lapse
-  // after a max age and re-prompt. Implemented in a follow-up PR.
-  it.todo(
-    "C5: consent older than the max age fails closed and re-prompts (needs storage TTL)",
-  );
+  it("consent older than the max age fails closed and re-prompts", () => {
+    const expired = new Date(
+      Date.now() - (CONSENT_MAX_AGE_MS + 60_000),
+    ).toISOString();
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        version: 1,
+        timestamp: expired,
+        language: "en",
+        categories: {
+          essential: true,
+          analytics: true,
+          marketing: true,
+          functional: true,
+        },
+      }),
+    );
+
+    expect(loadConsentState()).toBeNull();
+    // Re-prompt: with no valid consent, hasGivenConsent is false so the banner
+    // auto-shows again.
+    expect(hasGivenConsent()).toBe(false);
+    const consents = stateToConsents(loadConsentState());
+    expect(consentedFor(consents, "analytics")).toBe(false);
+  });
+
+  it("consent within the max age is retained", () => {
+    const recent = new Date(Date.now() - 60_000).toISOString();
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        version: 1,
+        timestamp: recent,
+        language: "en",
+        categories: {
+          essential: true,
+          analytics: true,
+          marketing: false,
+          functional: true,
+        },
+      }),
+    );
+
+    const state = loadConsentState();
+    expect(state).not.toBeNull();
+    expect(state?.categories.analytics).toBe(true);
+  });
 });
 
 describe("consent hardening — C8: consumers subscribe through the public API", () => {
