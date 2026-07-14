@@ -137,6 +137,9 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {t("footerExploreTitle")}
             </p>
             <Stack gap="xs" align="start">
+              <DtLink underline="hover" href="/" size="sm">
+                {t("navHome")}
+              </DtLink>
               <DtLink underline="hover" href="/work" size="sm">
                 {t("navWork")}
               </DtLink>
@@ -205,9 +208,12 @@ export function SiteFooter({ className }: SiteFooterProps) {
             ))}
           </Stack>
 
-          <p className="font-body text-text-s text-muted-foreground">
+          {/* <span>, not <p>: a global `p { margin-block-end }` rule (unlayered,
+              so it beats Tailwind's m-0) added an asymmetric bottom margin that
+              pushed the copyright above the social icons' centre in this row. */}
+          <span className="font-body text-text-s text-muted-foreground">
             &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
-          </p>
+          </span>
         </div>
       </Container>
     </footer>

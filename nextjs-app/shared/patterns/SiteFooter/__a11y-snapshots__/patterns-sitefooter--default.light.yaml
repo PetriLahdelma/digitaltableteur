@@ -8,6 +8,8 @@
   - paragraph: Billing details
   - text: E-invoice address 003722644552 Operator APIX Messaging Oy Operator ID 003723327487
   - paragraph: Explore
+  - link "Home":
+    - /url: /
   - link "Work":
     - /url: /work
   - link "About":
@@ -29,6 +31,7 @@
     - /url: /accessibility
   - link "Sitemap":
     - /url: /sitemap
+  - button "Cookie preferences"
   - link "Instagram":
     - /url: https://www.instagram.com/digitaltableteur/
   - link "Facebook":
@@ -45,4 +48,4 @@
     - /url: https://substack.com/@petrilahdelma
   - link "Dribbble":
     - /url: https://dribbble.com/digitaltableteur
-  - paragraph: © 2026 Digitaltableteur. All rights reserved.
+  - text: © 2026 Digitaltableteur. All rights reserved.
