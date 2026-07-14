@@ -17,6 +17,37 @@ const INTERACTION_EVENTS: (keyof WindowEventMap)[] = [
   "mousemove",
 ];
 
+/** GA/GTM identifiers that should be dropped when analytics consent is absent. */
+const ANALYTICS_COOKIE_PREFIXES = ["_ga", "_gid", "_gat", "_dc_gtm_"];
+
+/**
+ * Best-effort teardown of already-set analytics cookies on the client. GA sets
+ * `_ga*` on the registrable domain, so we expire each name across the plausible
+ * domain scopes (exact host, dotted host, registrable domain, and no domain).
+ */
+function clearAnalyticsCookies(): void {
+  if (typeof document === "undefined") return;
+
+  const names = document.cookie
+    .split(";")
+    .map((c) => c.split("=")[0].trim())
+    .filter(Boolean);
+
+  const host = window.location.hostname;
+  const registrable = host.split(".").slice(-2).join(".");
+  const domains = [undefined, host, `.${host}`, `.${registrable}`];
+
+  for (const name of names) {
+    if (!ANALYTICS_COOKIE_PREFIXES.some((prefix) => name.startsWith(prefix))) {
+      continue;
+    }
+    for (const domain of domains) {
+      const domainPart = domain ? `; domain=${domain}` : "";
+      document.cookie = `${name}=; path=/${domainPart}; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    }
+  }
+}
+
 /**
  * Loads GTM + GA4 (and ahrefs in production) only after the first real user
  * interaction, with a long idle fallback.
@@ -34,11 +65,28 @@ const INTERACTION_EVENTS: (keyof WindowEventMap)[] = [
  * category. Before a choice is made (and after a "reject optional"/revoke)
  * `hasConsent("analytics")` is false, so GA/GTM/ahrefs never mount. This
  * component MUST be rendered inside <CookieConsentProvider>.
+ *
+ * Revocation also tears down already-initialized tracking: it sets GA's
+ * `ga-disable-<id>` flag (which halts any loaded gtag) and clears `_ga*`
+ * cookies, so withdrawing consent stops tracking that was live in the session.
  */
 export function DeferredAnalytics({ gaMeasurementId }: DeferredAnalyticsProps) {
   const { hasConsent } = useCookieConsent();
   const analyticsAllowed = hasConsent("analytics");
   const [shouldLoad, setShouldLoad] = useState(false);
+
+  // React to consent being absent/withdrawn: disable any loaded GA and drop its
+  // cookies. Re-enable when analytics is (re-)granted so a later load tracks.
+  useEffect(() => {
+    const disableFlag = `ga-disable-${gaMeasurementId}`;
+    const globals = window as unknown as Record<string, boolean>;
+    if (analyticsAllowed) {
+      globals[disableFlag] = false;
+      return;
+    }
+    globals[disableFlag] = true;
+    clearAnalyticsCookies();
+  }, [analyticsAllowed, gaMeasurementId]);
 
   useEffect(() => {
     if (!analyticsAllowed || shouldLoad) return;

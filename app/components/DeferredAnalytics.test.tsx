@@ -103,3 +103,55 @@ describe("DeferredAnalytics — C2: consent-gated loading", () => {
     );
   });
 });
+
+describe("DeferredAnalytics — C3: teardown when analytics is not consented", () => {
+  const disableKey = "ga-disable-G-TEST123";
+
+  beforeEach(() => {
+    delete (window as unknown as Record<string, unknown>)[disableKey];
+    for (const name of ["_ga", "_ga_ABC123", "_gid", "_gat_gtag"]) {
+      document.cookie = `${name}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    }
+  });
+
+  it("sets the GA disable flag and clears _ga* cookies when analytics is rejected", async () => {
+    document.cookie = "_ga=GA1.1.987654; path=/";
+    document.cookie = "_ga_ABC123=GS1.1.session; path=/";
+    document.cookie = "_gid=GA1.2.123; path=/";
+
+    seedConsent({
+      essential: true,
+      analytics: false,
+      marketing: false,
+      functional: false,
+    });
+    renderAnalytics();
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(
+      (window as unknown as Record<string, boolean>)[disableKey],
+    ).toBe(true);
+    expect(document.cookie).not.toMatch(/_ga=/);
+    expect(document.cookie).not.toMatch(/_ga_ABC123=/);
+    expect(document.cookie).not.toMatch(/_gid=/);
+  });
+
+  it("leaves the GA disable flag off when analytics is granted", async () => {
+    seedConsent({
+      essential: true,
+      analytics: true,
+      marketing: true,
+      functional: true,
+    });
+    renderAnalytics();
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(
+      (window as unknown as Record<string, boolean>)[disableKey],
+    ).toBe(false);
+  });
+});
