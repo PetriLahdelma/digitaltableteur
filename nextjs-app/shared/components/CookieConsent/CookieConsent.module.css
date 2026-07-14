@@ -108,6 +108,14 @@
   transition: background-color 0.2s ease;
 }
 
+/* High-contrast black: on a pure-black surface a flat grey track can't contrast
+   with BOTH the background and the white knob, so outline the track (pill reads
+   on black). Scoped to HCB; light/dark/HCW unchanged. */
+
+:global(.themeHCB) .slider {
+  border: 1px solid var(--color-title);
+}
+
 /* Off-state track background. Stated at the same specificity as the checked
    rule below (0,3,1) because the Modal content reset
    (`.content :is(p, span, div) { background: transparent }`, 0,2,1) otherwise
@@ -133,6 +141,12 @@
   inset-inline-start: 3px;
 }
 
+/* HCB: dark ring keeps the white knob distinct from the track. */
+
+:global(.themeHCB) .slider::before {
+  border: 1px solid var(--main-body-background-color);
+}
+
 .switch input:checked + .slider {
   background-color: var(--color-primary);
 }
@@ -144,6 +158,14 @@
 .switch input:disabled + .slider {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+/* HCB disabled: opacity dims track and knob to the same grey (the knob
+   vanishes), so use a distinct dark track at full opacity instead. */
+
+:global(.themeHCB) input:disabled + .slider {
+  background-color: var(--color-disabled-bg);
+  opacity: 1;
 }
 
 .switch input:focus-visible + .slider {
