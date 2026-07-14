@@ -22,6 +22,66 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./actions": {
+      "types": "./dist/actions.d.ts",
+      "import": "./dist/actions.js"
+    },
+    "./actions/style.css": "./dist/actions.css",
+    "./consent": {
+      "types": "./dist/consent.d.ts",
+      "import": "./dist/consent.js"
+    },
+    "./consent/style.css": "./dist/consent.css",
+    "./content": {
+      "types": "./dist/content.d.ts",
+      "import": "./dist/content.js"
+    },
+    "./content/style.css": "./dist/content.css",
+    "./feedback": {
+      "types": "./dist/feedback.d.ts",
+      "import": "./dist/feedback.js"
+    },
+    "./feedback/style.css": "./dist/feedback.css",
+    "./forms": {
+      "types": "./dist/forms.d.ts",
+      "import": "./dist/forms.js"
+    },
+    "./forms/style.css": "./dist/forms.css",
+    "./hooks": {
+      "types": "./dist/hooks.d.ts",
+      "import": "./dist/hooks.js"
+    },
+    "./hooks/style.css": "./dist/hooks.css",
+    "./identity": {
+      "types": "./dist/identity.d.ts",
+      "import": "./dist/identity.js"
+    },
+    "./identity/style.css": "./dist/identity.css",
+    "./layout": {
+      "types": "./dist/layout.d.ts",
+      "import": "./dist/layout.js"
+    },
+    "./layout/style.css": "./dist/layout.css",
+    "./navigation": {
+      "types": "./dist/navigation.d.ts",
+      "import": "./dist/navigation.js"
+    },
+    "./navigation/style.css": "./dist/navigation.css",
+    "./patterns": {
+      "types": "./dist/patterns.d.ts",
+      "import": "./dist/patterns.js"
+    },
+    "./patterns/style.css": "./dist/patterns.css",
+    "./runtime": {
+      "types": "./dist/runtime.d.ts",
+      "import": "./dist/runtime.js"
+    },
+    "./runtime/style.css": "./dist/runtime.css",
+    "./typography": {
+      "types": "./dist/typography.d.ts",
+      "import": "./dist/typography.js"
+    },
+    "./typography/style.css": "./dist/typography.css",
     "./style.css": "./dist/style.css"
   },
   "sideEffects": [
@@ -39,6 +99,6 @@
     "react-phone-number-input": "^3.4.17"
   },
   "scripts": {
-    "build": "vite build --config vite.config.ts && tsc -p tsconfig.types.json && node ../../scripts/design-system/assemble-react-package-types.mjs"
+    "build": "vite build --config vite.config.ts && node ../../scripts/design-system/build-react-package-css.mjs && tsc -p tsconfig.types.json && node ../../scripts/design-system/assemble-react-package-types.mjs"
   }
 }

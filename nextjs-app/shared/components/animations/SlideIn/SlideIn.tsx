@@ -3,6 +3,7 @@
 import { useRef, type ReactNode } from "react";
 import { gsap, useGSAP } from "../../../lib/gsap";
 import { useAnimationContext } from "../../../lib/animation";
+import { resolveMotionPlan } from "../../../lib/motionPolicy";
 import styles from "./SlideIn.module.css";
 
 type Direction = "left" | "right" | "up" | "down";
@@ -27,36 +28,40 @@ export function SlideIn({
   className = "",
 }: SlideInProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const { motionPreference } = useAnimationContext();
+  const { motionPreference, isReady } = useAnimationContext();
 
   useGSAP(
     () => {
       if (!ref.current) return;
 
-      // For reduced motion, snap children to their final visible state instead
-      // of running a tween. Partial-opacity frames mid-slide otherwise misreport
-      // as color-contrast failures in the matrix axe runs.
-      const prefersReduced =
-        motionPreference === "reduced" ||
-        (typeof window !== "undefined" &&
-          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
-      if (prefersReduced) {
+      const motion = resolveMotionPlan({
+        preference: motionPreference,
+        hydrated: isReady,
+        isReady,
+        kind: "entrance",
+        userInitiated: false,
+        essential: false,
+        durationMs: duration * 1000,
+        distancePx: 100,
+        iterations: 1,
+      });
+      if (!motion.animate) {
         gsap.set(ref.current.children, { opacity: 1, x: 0, y: 0 });
         return;
       }
 
       const from: gsap.TweenVars = {
         opacity: 0,
-        ...(direction === "left" && { x: -100 }),
-        ...(direction === "right" && { x: 100 }),
-        ...(direction === "up" && { y: 100 }),
-        ...(direction === "down" && { y: -100 }),
+        ...(direction === "left" && { x: -motion.distancePx }),
+        ...(direction === "right" && { x: motion.distancePx }),
+        ...(direction === "up" && { y: motion.distancePx }),
+        ...(direction === "down" && { y: -motion.distancePx }),
       };
 
       gsap.from(ref.current.children, {
         ...from,
         delay,
-        duration,
+        duration: motion.durationMs / 1000,
         stagger,
         ease: "power3.out",
         scrollTrigger: {
@@ -66,7 +71,19 @@ export function SlideIn({
         },
       });
     },
-    { scope: ref, dependencies: [motionPreference] }
+    {
+      scope: ref,
+      dependencies: [
+        motionPreference,
+        isReady,
+        direction,
+        delay,
+        duration,
+        stagger,
+        threshold,
+      ],
+      revertOnUpdate: true,
+    },
   );
 
   return (

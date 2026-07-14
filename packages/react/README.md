@@ -33,6 +33,23 @@ export function Example() {
 }
 ```
 
+For a smaller package graph, import only the families an application uses and
+their matching stylesheets:
+
+```tsx
+import "@digitaltableteur/react/actions/style.css";
+import "@digitaltableteur/react/typography/style.css";
+import { Button } from "@digitaltableteur/react/actions";
+import { Text, Title } from "@digitaltableteur/react/typography";
+```
+
+Available family entrypoints are `actions`, `consent`, `content`, `feedback`,
+`forms`, `hooks`, `identity`, `layout`, `navigation`, `patterns`, `runtime`, and
+`typography`. Family stylesheets include the shared component CSS reachable
+from that entrypoint. Use either the family stylesheets or the global
+`@digitaltableteur/react/style.css`; loading both is redundant. The root module
+and global stylesheet remain the compatibility surface for existing consumers.
+
 Host frameworks provide their own routing, image, i18n, toast, and navigation runtime behavior through package adapters:
 
 ```tsx
@@ -49,15 +66,16 @@ import {
 
 The package intentionally exposes design-system primitives and host adapters, not Digitaltableteur product/page composition.
 
-Component exports include:
+Use the family entrypoints above to discover the supported actions, consent,
+content, feedback, forms, hooks, identity, layout, navigation, patterns,
+runtime, and typography surfaces. Runtime utilities such as
+`resolveMotionPlan` are available from `@digitaltableteur/react/runtime` and
+the compatibility root.
 
-- Display and feedback: `AlertBanner`, `Avatar`, `AvatarGroup`, `Badge`, `EmptyState`, `Progress`, `Skeleton`, `Spinner`, `StatusDot`, `Toast`, `ValueCard`.
-- Layout and typography: `Card`, `Container`, `Divider`, `FlexBox`, `Grid`, `Kbd`, `List`, `Section`, `Stack`, `Text`, `Title`, `VisuallyHidden`.
-- Forms: `Button`, `ButtonGroup`, `Checkbox`, `CheckboxGroup`, `Combobox`, `FileUpload`, `FormField`, `GroupLabel`, `HelperText`, `IconButton`, `Label`, `MultiCombobox`, `PhoneInput`, `Radio`, `RadioGroup`, `Select`, `SelectOption`, `Switch`, `TextArea`, `TextInput`.
-- Navigation and content: `Breadcrumb`, `CategoryFilter`, `Gallery`, `Icon`, `LanguageSwitcher`, `Link`, `MacWindowFrame`, `Menu`, `Modal`, `NavLink`, `NavMenuList`, `Pagination`, `ReadingProgress`, `SkipLink`, `Tabs`.
-- Runtime providers and hooks: `AnimationRuntimeProvider`, `CookieConsentProvider`, `ImageProvider`, `LayerProvider`, `LinkProvider`, `NavigationProvider`, `ThemeProvider`, `ToastRuntimeProvider`, `TranslationProvider`, `useCookieConsent`, `useFocusTrap`, `useLayer`, `useMediaQuery`, `useOverflow`, `useScrollLock`, `useScrollOverflow`, `useTheme`, `useToast`.
-
-The public API is frozen by `packages/react/public-api.manifest.json` and checked by `npm run check:react-public-api`.
+The authoritative export list is frozen in
+`packages/react/public-api.manifest.json` and checked by
+`npm run check:react-public-api`; the README intentionally does not duplicate
+that generated list.
 
 ## Boundaries
 

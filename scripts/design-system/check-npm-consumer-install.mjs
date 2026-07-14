@@ -8,7 +8,13 @@
  * post-publish registry dogfooding while npm auth is unavailable.
  */
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, rmSync, writeFileSync, mkdirSync, readFileSync } from "node:fs";
+import {
+  mkdtempSync,
+  rmSync,
+  writeFileSync,
+  mkdirSync,
+  readFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -17,6 +23,20 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const OUT_DIR = join(ROOT, ".omx/state/design-system/npm-consumer-install");
 const OUT_JSON = join(OUT_DIR, "latest.json");
 const KEEP = process.env.DT_KEEP_NPM_CONSUMER_SMOKE === "1";
+const REACT_FAMILY_ENTRIES = {
+  actions: "Button",
+  consent: "CookieConsent",
+  content: "CodeSnippet",
+  feedback: "AlertBanner",
+  forms: "TextInput",
+  hooks: "useStreamingText",
+  identity: "Avatar",
+  layout: "Grid",
+  navigation: "Tabs",
+  patterns: "PageLayout",
+  runtime: "LayerProvider",
+  typography: "Text",
+};
 
 function run(command, args, options = {}) {
   return execFileSync(command, args, {
@@ -48,7 +68,8 @@ const PACKAGE_DIRS = {
 
 function packageDir(packageName) {
   const dir = PACKAGE_DIRS[packageName];
-  if (!dir) throw new Error(`Unknown package for consumer smoke: ${packageName}`);
+  if (!dir)
+    throw new Error(`Unknown package for consumer smoke: ${packageName}`);
   return join(ROOT, dir);
 }
 
@@ -60,7 +81,9 @@ function parsePackJson(stdout, packageName) {
       ? [parsed[packageName]]
       : [parsed];
   if (rows.length !== 1) {
-    throw new Error(`npm pack for ${packageName} returned ${rows.length} package rows.`);
+    throw new Error(
+      `npm pack for ${packageName} returned ${rows.length} package rows.`,
+    );
   }
   return rows[0];
 }
@@ -93,21 +116,30 @@ function inspectPack(packageName) {
 }
 
 const rootPackage = readJson(join(ROOT, "package.json"));
-const roadmapState = readJson(join(ROOT, "scripts/design-system/astryx-roadmap.state.json"));
-const forbiddenReactExports = roadmapState.reactPublicSurface?.forbiddenExports ?? [];
-const reactVersion = rootPackage.dependencies?.react ?? rootPackage.devDependencies?.react;
+const roadmapState = readJson(
+  join(ROOT, "scripts/design-system/astryx-roadmap.state.json"),
+);
+const forbiddenReactExports =
+  roadmapState.reactPublicSurface?.forbiddenExports ?? [];
+const reactVersion =
+  rootPackage.dependencies?.react ?? rootPackage.devDependencies?.react;
 const reactDomVersion =
-  rootPackage.dependencies?.["react-dom"] ?? rootPackage.devDependencies?.["react-dom"];
+  rootPackage.dependencies?.["react-dom"] ??
+  rootPackage.devDependencies?.["react-dom"];
 const typescriptVersion =
-  rootPackage.dependencies?.typescript ?? rootPackage.devDependencies?.typescript;
+  rootPackage.dependencies?.typescript ??
+  rootPackage.devDependencies?.typescript;
 const reactTypesVersion =
-  rootPackage.dependencies?.["@types/react"] ?? rootPackage.devDependencies?.["@types/react"];
+  rootPackage.dependencies?.["@types/react"] ??
+  rootPackage.devDependencies?.["@types/react"];
 const reactDomTypesVersion =
-  rootPackage.dependencies?.["@types/react-dom"] ?? rootPackage.devDependencies?.["@types/react-dom"];
+  rootPackage.dependencies?.["@types/react-dom"] ??
+  rootPackage.devDependencies?.["@types/react-dom"];
 // framer-motion is a package peerDependency; the repo installs with
 // legacy-peer-deps so the consumer must install it explicitly like react.
 const framerMotionVersion =
-  rootPackage.dependencies?.["framer-motion"] ?? rootPackage.devDependencies?.["framer-motion"];
+  rootPackage.dependencies?.["framer-motion"] ??
+  rootPackage.devDependencies?.["framer-motion"];
 
 if (
   !reactVersion ||
@@ -152,6 +184,11 @@ try {
   assertPackedFile(reactPack, "dist/index.js");
   assertPackedFile(reactPack, "dist/index.d.ts");
   assertPackedFile(reactPack, "dist/style.css");
+  for (const entryName of Object.keys(REACT_FAMILY_ENTRIES)) {
+    assertPackedFile(reactPack, `dist/${entryName}.js`);
+    assertPackedFile(reactPack, `dist/${entryName}.d.ts`);
+    assertPackedFile(reactPack, `dist/${entryName}.css`);
+  }
   report.packages = [tokenPack, tokenCssPack, reactPack].map((row) => ({
     name: row.name,
     version: row.version,
@@ -202,6 +239,14 @@ const tokenCssRoot = require.resolve("@digitaltableteur/tokens-css");
 const acmeTheme = require.resolve("@digitaltableteur/tokens-css/themes/acme");
 const acmeThemeWithExt = require.resolve("@digitaltableteur/tokens-css/themes/acme.css");
 const reactCss = require.resolve("@digitaltableteur/react/style.css");
+const familyEntries = ${JSON.stringify(REACT_FAMILY_ENTRIES)};
+for (const [entryName, expectedExport] of Object.entries(familyEntries)) {
+  const family = await import("@digitaltableteur/react/" + entryName);
+  if (!family[expectedExport]) {
+    throw new Error("Missing " + expectedExport + " from @digitaltableteur/react/" + entryName);
+  }
+  require.resolve("@digitaltableteur/react/" + entryName + "/style.css");
+}
 
 if (tokenCount < 180 || tokenNames.length !== tokenCount) {
   throw new Error("Token package export count is incomplete");
@@ -324,6 +369,56 @@ console.log(JSON.stringify({
     `
 import * as React from "react";
 import {
+  Button as FamilyButton,
+  type ButtonProps as FamilyButtonProps,
+} from "@digitaltableteur/react/actions";
+import {
+  CookieConsent as FamilyCookieConsent,
+  type CookieConsentProps as FamilyCookieConsentProps,
+} from "@digitaltableteur/react/consent";
+import {
+  CodeSnippet as FamilyCodeSnippet,
+  type CodeSnippetProps as FamilyCodeSnippetProps,
+} from "@digitaltableteur/react/content";
+import {
+  AlertBanner as FamilyAlertBanner,
+  type AlertBannerProps as FamilyAlertBannerProps,
+} from "@digitaltableteur/react/feedback";
+import {
+  TextInput as FamilyTextInput,
+  type TextInputProps as FamilyTextInputProps,
+} from "@digitaltableteur/react/forms";
+import {
+  useStreamingText as useFamilyStreamingText,
+  type UseStreamingTextOptions as FamilyStreamingTextOptions,
+} from "@digitaltableteur/react/hooks";
+import {
+  Avatar as FamilyAvatar,
+  type AvatarProps as FamilyAvatarProps,
+} from "@digitaltableteur/react/identity";
+import {
+  Grid as FamilyGrid,
+  type GridProps as FamilyGridProps,
+} from "@digitaltableteur/react/layout";
+import {
+  Tabs as FamilyTabs,
+  type TabsProps as FamilyTabsProps,
+} from "@digitaltableteur/react/navigation";
+import {
+  PageLayout as FamilyPageLayout,
+  type PageLayoutProps as FamilyPageLayoutProps,
+} from "@digitaltableteur/react/patterns";
+import {
+  LayerProvider as FamilyLayerProvider,
+  resolveMotionPlan as resolveFamilyMotionPlan,
+  type LayerProviderProps as FamilyLayerProviderProps,
+  type MotionRequest as FamilyMotionRequest,
+} from "@digitaltableteur/react/runtime";
+import {
+  Text as FamilyText,
+  type TextProps as FamilyTextProps,
+} from "@digitaltableteur/react/typography";
+import {
   AlertBanner,
   Breadcrumb,
   Button,
@@ -344,6 +439,49 @@ import {
   useOverflow,
   useScrollOverflow,
 } from "@digitaltableteur/react";
+
+type FamilyTypeProbe = [
+  FamilyButtonProps,
+  FamilyCookieConsentProps,
+  FamilyCodeSnippetProps,
+  FamilyAlertBannerProps,
+  FamilyTextInputProps,
+  FamilyStreamingTextOptions,
+  FamilyAvatarProps,
+  FamilyGridProps,
+  FamilyTabsProps,
+  FamilyPageLayoutProps,
+  FamilyLayerProviderProps,
+  FamilyTextProps,
+];
+
+const familyTypeProbe: FamilyTypeProbe | undefined = undefined;
+const familyMotionRequest: FamilyMotionRequest = {
+  preference: "reduced",
+  hydrated: true,
+  isReady: true,
+  kind: "continuous",
+  userInitiated: false,
+  essential: false,
+  durationMs: 1000,
+  distancePx: 100,
+  iterations: -1,
+};
+const familyMotionPlan = resolveFamilyMotionPlan(familyMotionRequest);
+void FamilyButton;
+void FamilyCookieConsent;
+void FamilyCodeSnippet;
+void FamilyAlertBanner;
+void FamilyTextInput;
+void useFamilyStreamingText;
+void FamilyAvatar;
+void FamilyGrid;
+void FamilyTabs;
+void FamilyPageLayout;
+void FamilyLayerProvider;
+void FamilyText;
+void familyTypeProbe;
+void familyMotionPlan;
 
 const translate: Translate = (key, fallbackOrOptions) => {
   if (typeof fallbackOrOptions === "string") return fallbackOrOptions;

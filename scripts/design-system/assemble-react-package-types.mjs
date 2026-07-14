@@ -6,7 +6,21 @@ const root = resolve(new URL("../..", import.meta.url).pathname);
 const dist = join(root, "packages/react/dist");
 const typesRoot = join(dist, "types");
 const componentTypesRoot = join(typesRoot, "nextjs-app/shared/components");
-const entryDeclaration = join(typesRoot, "packages/react/src/index.d.ts");
+const publicEntries = [
+  "index",
+  "actions",
+  "consent",
+  "content",
+  "feedback",
+  "forms",
+  "hooks",
+  "identity",
+  "layout",
+  "navigation",
+  "patterns",
+  "runtime",
+  "typography",
+];
 
 function walkDeclarations(dir, files = []) {
   for (const entry of readdirSync(dir)) {
@@ -50,12 +64,19 @@ writeFileSync(
     "",
   ].join("\n"),
 );
-writeFileSync(
-  join(dist, "index.d.ts"),
-  [
-    '/// <reference path="./package-globals.d.ts" />',
-    `export * from "${relativeImport(join(dist, "index.d.ts"), entryDeclaration)}";`,
-    "",
-  ].join("\n"),
-);
+for (const entryName of publicEntries) {
+  const publicDeclaration = join(dist, `${entryName}.d.ts`);
+  const entryDeclaration = join(
+    typesRoot,
+    `packages/react/src/${entryName}.d.ts`,
+  );
+  writeFileSync(
+    publicDeclaration,
+    [
+      '/// <reference path="./package-globals.d.ts" />',
+      `export * from "${relativeImport(publicDeclaration, entryDeclaration)}";`,
+      "",
+    ].join("\n"),
+  );
+}
 rewriteInternalAliases();

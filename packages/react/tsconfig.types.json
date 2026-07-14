@@ -17,7 +17,7 @@
   },
   "include": [
     "src/**/*.d.ts",
-    "src/index.ts",
+    "src/**/*.ts",
     "../../nextjs-app/shared/custom.d.ts",
     "../../nextjs-app/shared/types/**/*.d.ts"
   ],

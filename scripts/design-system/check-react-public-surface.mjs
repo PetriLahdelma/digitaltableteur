@@ -16,7 +16,6 @@ const COMPONENTS = join(ROOT, "nextjs-app/shared/components");
 const PATTERNS = join(ROOT, "nextjs-app/shared/patterns");
 const STATE_PATH = join(ROOT, "scripts/design-system/astryx-roadmap.state.json");
 const REACT_ENTRY = join(ROOT, "packages/react/src/index.ts");
-const COMPONENT_BARREL = join(ROOT, "nextjs-app/shared/components/index.ts");
 const OUT_DIR = join(ROOT, ".omx/state/design-system/react-public-surface");
 const REPORT = process.argv.includes("--report");
 const REQUIRE_PUBLISHABLE =
@@ -26,12 +25,6 @@ const REQUIRE_PUBLISHABLE =
 const IGNORED_EXPORT_NAMES = new Set([
   "MobileDrawer",
 ]);
-
-function hasComponentBarrelWildcardExport(source) {
-  return /export\s+\*\s+from\s+["']\.\.\/\.\.\/\.\.\/nextjs-app\/shared\/components["'];?/m.test(
-    source,
-  );
-}
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
@@ -85,19 +78,36 @@ function extractExportedNames(source) {
   return names;
 }
 
+function resolveRelativeModule(fromFile, specifier) {
+  const base = resolve(dirname(fromFile), specifier);
+  return [base, `${base}.ts`, `${base}.tsx`, join(base, "index.ts"), join(base, "index.tsx")]
+    .find((candidate) => existsSync(candidate));
+}
+
+function collectExportedNames(entryPath, visited = new Set()) {
+  if (visited.has(entryPath)) return new Set();
+  visited.add(entryPath);
+
+  const source = readFileSync(entryPath, "utf8");
+  const names = extractExportedNames(source);
+  for (const match of source.matchAll(/export\s+\*\s+from\s+["']([^"']+)["']/g)) {
+    if (!match[1].startsWith(".")) continue;
+    const target = resolveRelativeModule(entryPath, match[1]);
+    if (!target) {
+      throw new Error(
+        `Cannot resolve public barrel export ${match[1]} from ${relative(ROOT, entryPath)}`,
+      );
+    }
+    for (const name of collectExportedNames(target, visited)) names.add(name);
+  }
+  return names;
+}
+
 function exportedContractRows() {
   const contracts = walkContracts(COMPONENTS);
   walkContracts(PATTERNS, contracts);
 
-  const reactEntry = readFileSync(REACT_ENTRY, "utf8");
-  const componentBarrel = readFileSync(COMPONENT_BARREL, "utf8");
-  const exported = new Set();
-
-  if (hasComponentBarrelWildcardExport(reactEntry)) {
-    for (const name of extractExportedNames(componentBarrel)) exported.add(name);
-  }
-
-  for (const name of extractExportedNames(reactEntry)) exported.add(name);
+  const exported = collectExportedNames(REACT_ENTRY);
 
   const rows = [];
   const unmapped = [];

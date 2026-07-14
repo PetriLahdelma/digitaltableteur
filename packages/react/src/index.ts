@@ -72,7 +72,10 @@ export type {
   CommandPaletteItem,
   CommandPaletteProps,
 } from "../../../nextjs-app/shared/components/CommandPalette/CommandPalette";
-export { Container, type ContainerProps } from "../../../nextjs-app/shared/components/Container";
+export {
+  Container,
+  type ContainerProps,
+} from "../../../nextjs-app/shared/components/Container";
 export { default as CookieConsent } from "../../../nextjs-app/shared/components/CookieConsent/CookieConsent";
 export type { CookieConsentProps } from "../../../nextjs-app/shared/components/CookieConsent";
 export {
@@ -134,7 +137,10 @@ export {
 } from "../../../nextjs-app/shared/components/IconButton";
 export { default as Kbd } from "../../../nextjs-app/shared/components/Kbd/Kbd";
 export { default as Label } from "../../../nextjs-app/shared/components/Label/Label";
-export type { KbdProps, KbdSize } from "../../../nextjs-app/shared/components/Kbd";
+export type {
+  KbdProps,
+  KbdSize,
+} from "../../../nextjs-app/shared/components/Kbd";
 export type { LabelProps } from "../../../nextjs-app/shared/components/Label";
 export {
   LanguageSwitcher,
@@ -256,8 +262,14 @@ export type {
 } from "../../../nextjs-app/shared/components/StatusDot";
 export { default as Switch } from "../../../nextjs-app/shared/components/Switch/Switch";
 export type { SwitchProps } from "../../../nextjs-app/shared/components/Switch";
-export { default as Tabs, getTabPanelProps } from "../../../nextjs-app/shared/components/Tabs";
-export type { TabItem, TabsProps } from "../../../nextjs-app/shared/components/Tabs";
+export {
+  default as Tabs,
+  getTabPanelProps,
+} from "../../../nextjs-app/shared/components/Tabs";
+export type {
+  TabItem,
+  TabsProps,
+} from "../../../nextjs-app/shared/components/Tabs";
 export { default as Text } from "../../../nextjs-app/shared/components/Text/Text";
 export type { TextProps } from "../../../nextjs-app/shared/components/Text/Text";
 export {
@@ -303,6 +315,12 @@ export {
   type AnimationRuntimeProviderProps,
   type MotionPreference,
 } from "../../../nextjs-app/shared/lib/animation";
+export {
+  resolveMotionPlan,
+  type MotionKind,
+  type MotionPlan,
+  type MotionRequest,
+} from "../../../nextjs-app/shared/lib/motionPolicy";
 export { cn } from "../../../nextjs-app/shared/lib/cn";
 export {
   Image,

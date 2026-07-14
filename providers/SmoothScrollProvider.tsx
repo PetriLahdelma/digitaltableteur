@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 import type { ReactNode } from "react";
+import { resolveMotionPlan } from "@/nextjs-app/shared/lib/motionPolicy";
+import { useAnimationContext } from "@/providers/AnimationProvider";
 
 interface SmoothScrollProviderProps {
   children: ReactNode;
@@ -14,11 +16,21 @@ type LenisInstance = {
 };
 
 export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
+  const { motionPreference, isReady } = useAnimationContext();
+
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    );
-    if (prefersReducedMotion.matches) return;
+    const motion = resolveMotionPlan({
+      preference: motionPreference,
+      hydrated: isReady,
+      isReady,
+      kind: "scroll",
+      userInitiated: false,
+      essential: false,
+      durationMs: 1200,
+      distancePx: 1,
+      iterations: -1,
+    });
+    if (!motion.animate) return;
 
     let isDisposed = false;
     let lenis: LenisInstance | null = null;
@@ -63,7 +75,7 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
       unsubscribeScroll?.();
       lenis?.destroy();
     };
-  }, []);
+  }, [isReady, motionPreference]);
 
   return <>{children}</>;
 }
