@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "name": "DtButtonReactElement",
+          "name": "DtButtonElement",
           "description": "Digitaltableteur action or link control.",
           "customElement": true,
           "tagName": "dt-button",
@@ -143,11 +143,11 @@
           ],
           "events": [],
           "dtSourceComponent": "Button",
-          "dtBackend": "react"
+          "dtBackend": "native"
         },
         {
           "kind": "class",
-          "name": "DtBadgeReactElement",
+          "name": "DtBadgeElement",
           "description": "Compact status label with semantic tone.",
           "customElement": true,
           "tagName": "dt-badge",
@@ -220,7 +220,7 @@
             }
           ],
           "dtSourceComponent": "Badge",
-          "dtBackend": "react"
+          "dtBackend": "native"
         },
         {
           "kind": "class",
@@ -300,6 +300,230 @@
           ],
           "events": [],
           "dtSourceComponent": "Progress",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtStatusDotElement",
+          "description": "Inline semantic status indicator with visible or screen-reader label.",
+          "customElement": true,
+          "tagName": "dt-status-dot",
+          "attributes": [
+            {
+              "name": "tone",
+              "fieldName": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "pulse",
+              "fieldName": "pulse",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "StatusDot",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtDividerElement",
+          "description": "Decorative or semantic horizontal and vertical separator.",
+          "customElement": true,
+          "tagName": "dt-divider",
+          "attributes": [
+            {
+              "name": "orientation",
+              "fieldName": "orientation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "decorative",
+              "fieldName": "decorative",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Divider",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtIconElement",
+          "description": "Framework-free Phosphor icon with design-system sizing and motion.",
+          "customElement": true,
+          "tagName": "dt-icon",
+          "attributes": [
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "weight",
+              "fieldName": "weight",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "legacy-style",
+              "fieldName": "legacyStyle",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "color",
+              "fieldName": "color",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "rotate",
+              "fieldName": "rotate",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "flip",
+              "fieldName": "flip",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "spin",
+              "fieldName": "spin",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "pulse",
+              "fieldName": "pulse",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "mirrored",
+              "fieldName": "mirrored",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "decorative",
+              "fieldName": "decorative",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Icon",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtAlertBannerElement",
+          "description": "Persistent semantic alert with title, description, action, and dismiss slots.",
+          "customElement": true,
+          "tagName": "dt-alert-banner",
+          "attributes": [
+            {
+              "name": "tone",
+              "fieldName": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title-text",
+              "fieldName": "titleText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-icon",
+              "fieldName": "showIcon",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "dismissible",
+              "fieldName": "dismissible",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "aria-live",
+              "fieldName": "ariaLive",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "dismiss",
+              "description": "Dispatched when the dismiss control is activated.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "AlertBanner",
           "dtBackend": "native"
         }
       ]

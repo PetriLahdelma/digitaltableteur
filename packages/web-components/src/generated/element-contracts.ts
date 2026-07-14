@@ -45,11 +45,51 @@ export type DtProgressElementContract = HTMLElement & {
   indeterminate?: boolean;
 };
 
+export type DtStatusDotElementContract = HTMLElement & {
+  tone?: string;
+  size?: string;
+  pulse?: boolean;
+  label?: string;
+};
+
+export type DtDividerElementContract = HTMLElement & {
+  orientation?: string;
+  decorative?: boolean;
+};
+
+export type DtIconElementContract = HTMLElement & {
+  name?: string;
+  weight?: string;
+  legacyStyle?: string;
+  size?: string;
+  color?: string;
+  rotate?: number;
+  flip?: string;
+  spin?: boolean;
+  pulse?: boolean;
+  mirrored?: boolean;
+  ariaLabel?: string;
+  decorative?: boolean;
+};
+
+export type DtAlertBannerElementContract = HTMLElement & {
+  tone?: string;
+  titleText?: string;
+  description?: string;
+  showIcon?: boolean;
+  dismissible?: boolean;
+  ariaLive?: string;
+};
+
 export const elementMigrationManifest = [
-  { tagName: "dt-button", sourceComponent: "Button", backend: "react" },
-  { tagName: "dt-badge", sourceComponent: "Badge", backend: "react" },
+  { tagName: "dt-button", sourceComponent: "Button", backend: "native" },
+  { tagName: "dt-badge", sourceComponent: "Badge", backend: "native" },
   { tagName: "dt-spinner", sourceComponent: "Spinner", backend: "native" },
   { tagName: "dt-progress", sourceComponent: "Progress", backend: "native" },
+  { tagName: "dt-status-dot", sourceComponent: "StatusDot", backend: "native" },
+  { tagName: "dt-divider", sourceComponent: "Divider", backend: "native" },
+  { tagName: "dt-icon", sourceComponent: "Icon", backend: "native" },
+  { tagName: "dt-alert-banner", sourceComponent: "AlertBanner", backend: "native" },
 ] as const;
 
 declare global {
@@ -58,5 +98,9 @@ declare global {
     "dt-badge": DtBadgeElementContract;
     "dt-spinner": DtSpinnerElementContract;
     "dt-progress": DtProgressElementContract;
+    "dt-status-dot": DtStatusDotElementContract;
+    "dt-divider": DtDividerElementContract;
+    "dt-icon": DtIconElementContract;
+    "dt-alert-banner": DtAlertBannerElementContract;
   }
 }

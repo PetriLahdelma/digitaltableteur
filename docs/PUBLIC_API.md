@@ -10,7 +10,7 @@ from the published package entrypoints.
 | Package | Purpose | Current role |
 |---|---|---|
 | `@digitaltableteur/react` | React components, stable patterns, hooks, host adapters, package CSS | Runtime package for app and Storybook consumers |
-| `@digitaltableteur/web-components` | Framework-neutral custom elements with hybrid React/native registration modes | Prepared for its first cross-framework package release |
+| `@digitaltableteur/web-components` | Native custom elements; React adapters remain available through explicit compatibility entrypoints | Published independently from the React marketing-site runtime |
 | `@digitaltableteur/tokens` | DTCG JSON, JS token map, Tailwind refs, manifest | Machine-readable token package |
 | `@digitaltableteur/tokens-css` | Token CSS and generated brand theme CSS | Runtime CSS token package for second consumers |
 

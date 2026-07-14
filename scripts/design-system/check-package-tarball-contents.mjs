@@ -102,9 +102,9 @@ const PACKAGE_DEFINITIONS = [
   {
     dir: "packages/web-components",
     name: "@digitaltableteur/web-components",
-    maxEntryCount: 40,
-    maxTarballSize: 35_000,
-    maxUnpackedSize: 120_000,
+    maxEntryCount: 55,
+    maxTarballSize: 90_000,
+    maxUnpackedSize: 400_000,
     requiredFiles: [
       "README.md",
       "custom-elements.json",
