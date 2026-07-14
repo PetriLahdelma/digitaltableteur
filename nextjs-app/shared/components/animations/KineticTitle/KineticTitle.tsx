@@ -113,12 +113,10 @@ export function KineticTitle({
 
       // For reduced motion, snap targets to their final visible state instead
       // of running any tween. Partial-opacity frames otherwise misreport as
-      // color-contrast failures in the matrix axe runs.
-      const prefersReduced =
-        motionPreference === "reduced" ||
-        (typeof window !== "undefined" &&
-          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
-      if (prefersReduced) {
+      // color-contrast failures in the matrix axe runs. motionPreference is the
+      // single source of truth (AnimationProvider tracks the media query), so no
+      // redundant window.matchMedia fallback is needed.
+      if (motionPreference === "reduced") {
         gsap.set(targets, { opacity: 1, x: 0, y: 0, scale: 1, rotationX: 0 });
         gsap.set(ref.current, { opacity: 1 });
         return () => {
