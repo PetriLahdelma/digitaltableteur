@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 443,
+  "warningCount": 439,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -3207,90 +3207,54 @@
       "text": "Expected selector \":global(.themeHCB) .backgroundBase\" to come before selector \":global(.themeDark) .gradient .backgroundBase\", at line 249 (no-descending-specificity)"
     },
     {
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::232::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#5c5c5c\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::280::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#d9d9d9\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 232,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Expected variable, function or keyword for \"#5c5c5c\" of \"background-color\" (scale-unlimited/declaration-strict-value)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::233::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#fff\" of \"color\" (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 233,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Expected variable, function or keyword for \"#fff\" of \"color\" (scale-unlimited/declaration-strict-value)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::244::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#006da3\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 244,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Expected variable, function or keyword for \"#006da3\" of \"background-color\" (scale-unlimited/declaration-strict-value)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::246::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#fff\" of \"color\" (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 246,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Expected variable, function or keyword for \"#fff\" of \"color\" (scale-unlimited/declaration-strict-value)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::254::3::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#d9d9d9\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 254,
+      "line": 280,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"#d9d9d9\" of \"background-color\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::274::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"Canvas\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::300::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"Canvas\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 274,
+      "line": 300,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"Canvas\" of \"background-color\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::275::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"CanvasText\" of \"color\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::301::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"CanvasText\" of \"color\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 275,
+      "line": 301,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"CanvasText\" of \"color\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::286::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"CanvasText\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::312::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"CanvasText\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 286,
+      "line": 312,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"CanvasText\" of \"background-color\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::291::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"Canvas\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::317::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"Canvas\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 291,
+      "line": 317,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"Canvas\" of \"background-color\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::292::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"CanvasText\" of \"color\" (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css::318::5::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"CanvasText\" of \"color\" (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "line": 292,
+      "line": 318,
       "column": 5,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",

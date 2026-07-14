@@ -212,6 +212,13 @@
 }
 
 .npmBadge {
+  /* npm badge palette — theme-aware so the brand chip stays legible on every
+     surface. White text throughout (keeps the shared shadow valid), so the
+     backgrounds stay dark enough for WCAG AA; theme overrides live below. */
+  --npm-badge-label-bg: #5c5c5c;
+  --npm-badge-version-bg: #006da3; /* npm blue #0085ca darkened for AA on white text */
+  --npm-badge-fg: #fff;
+
   display: inline-flex;
   flex-shrink: 0;
   border-radius: 0.2rem;
@@ -223,14 +230,35 @@
   text-shadow: 0 0.05rem 0 rgb(0 0 0 / 55%);
 }
 
+/* Dark: lighten the grey label so the chip lifts off the dark bulletin
+   surface (blue stays AA-safe as-is). */
+
+:global(.themeDark) .npmBadge {
+  --npm-badge-label-bg: #6e6e6e;
+}
+
+/* HCB: colours can't contrast with both a pure-black surface and white text at
+   once, so outline the whole chip. */
+
+:global(.themeHCB) .npmBadge {
+  border: 1px solid var(--color-title);
+}
+
+/* HCW: deepen both chips for stronger contrast on the white surface. */
+
+:global(.themeHCW) .npmBadge {
+  --npm-badge-label-bg: #454545;
+  --npm-badge-version-bg: #005e8a;
+}
+
 .npmBadgeLabel {
   display: inline-flex;
   padding-inline: 0.45rem;
   min-block-size: 1.506rem;
   justify-content: center;
   align-items: center;
-  background-color: #5c5c5c;
-  color: #fff;
+  background-color: var(--npm-badge-label-bg);
+  color: var(--npm-badge-fg);
 }
 
 .npmBadgeVersion {
@@ -239,11 +267,9 @@
   min-block-size: 1.506rem;
   justify-content: center;
   align-items: center;
-
-  /* npm brand blue #0085ca is 4.03:1 on white @ ~13px — darken for WCAG AA */
-  background-color: #006da3;
+  background-color: var(--npm-badge-version-bg);
   letter-spacing: -0.06em;
-  color: #fff;
+  color: var(--npm-badge-fg);
 }
 
 .placeholderBadge {

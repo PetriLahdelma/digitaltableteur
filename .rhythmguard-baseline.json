@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-14T17:19:51.620Z",
+  "createdAt": "2026-07-14T17:44:46.357Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -5885,8 +5885,8 @@
     {
       "column": 19,
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css\u001f228\u001f19\u001f0.45rem\u001fUnexpected off-scale value \"0.45rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "line": 228,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css\u001f256\u001f19\u001f0.45rem\u001fUnexpected off-scale value \"0.45rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "line": 256,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"0.45rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -5895,8 +5895,8 @@
     {
       "column": 19,
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css\u001f238\u001f19\u001f0.45rem\u001fUnexpected off-scale value \"0.45rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "line": 238,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css\u001f266\u001f19\u001f0.45rem\u001fUnexpected off-scale value \"0.45rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "line": 266,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"0.45rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -5925,8 +5925,8 @@
     {
       "column": 19,
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css\u001f228\u001f19\u001f0.45rem\u001fUnexpected raw scale value \"0.45rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 228,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css\u001f256\u001f19\u001f0.45rem\u001fUnexpected raw scale value \"0.45rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 256,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"0.45rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -5935,8 +5935,8 @@
     {
       "column": 19,
       "file": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css\u001f238\u001f19\u001f0.45rem\u001fUnexpected raw scale value \"0.45rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 238,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/NewsBulletin/NewsBulletin.module.css\u001f266\u001f19\u001f0.45rem\u001fUnexpected raw scale value \"0.45rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 266,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"0.45rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
