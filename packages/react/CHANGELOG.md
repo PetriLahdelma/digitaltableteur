@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.15 - 2026-07-14
+
+- Adds 12 tree-shakeable family subpath entrypoints alongside the root barrel: `@digitaltableteur/react/{actions,consent,content,feedback,forms,hooks,identity,layout,navigation,patterns,runtime,typography}`, each with isolated JS, `.d.ts`, and `./style.css`. Consumers can import a single family to pull a smaller graph (median family JS is 34.8% of the root bundle, largest 46.9%). The root entrypoint is unchanged and fully back-compatible; the 12 families form an exact partition of it (117 runtime exports, 0 duplicated/orphaned ownership), frozen in the public API manifest and enforced by `check:react-package-topology`.
+- Adds the exported `resolveMotionPlan` runtime API (with `MotionKind` / `MotionPlan` / `MotionRequest` types) — the shared reduced-motion / hydration policy behind the site's GSAP animations. Motion stays static until hydration readiness and reverts active work on a live full→reduced preference flip.
+- No component prop contracts changed; runtime public API 116 → 117 (additive). Verified by the full local gate (typecheck, lint, 2333 tests, build) plus check:react-package, check:react-public-api (117 exports, 26 entrypoints), check:react-public-surface (0 alpha), check:react-package-topology, check:package-tarballs, and check:npm-consumer-install.
+
 ## 0.1.14 - 2026-07-14
 
 - Adds the `useStreamingText(targetText, isStreaming, options)` hook (runtime public API 115 → 116): smooths bursty accumulated stream text into an adaptive, grapheme-safe reveal. `natural`/`fast`/`instant` speeds, reduced-motion bypass, completion snap when streaming ends, and clean reset when the accumulated target is replaced. RAF loop polls a ref for the latest target so new chunks are absorbed without re-subscribing. Exports `StreamingTextSpeed` and `UseStreamingTextOptions` types (#1191).
