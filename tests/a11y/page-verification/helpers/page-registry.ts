@@ -8,6 +8,11 @@
  * Plan: 07-01 (Infrastructure Setup)
  */
 
+// Relative imports (not the "@/" alias): Playwright resolves this file with
+// esbuild, which does not honor tsconfig path aliases.
+import { allPosts } from "../../../../app/blog/postMetadata";
+import { isPostVisible } from "../../../../lib/blog/postVisibility";
+
 /**
  * Page information for accessibility verification.
  */
@@ -95,71 +100,21 @@ export const workPages: PageInfo[] = [
 ];
 
 /**
- * Blog post pages (12 pages)
- * From app/blog/postMetadata.ts
+ * Blog post pages — DERIVED from generated post metadata, never hand-listed.
+ *
+ * Every publicly visible post (not draft, `publishedAt` in the past) is audited.
+ * Deriving from the same source that drives routing/metadata means page-level
+ * a11y coverage can never silently drift behind published content: adding a post
+ * to `content/` regenerates `postMetadata` and this list picks it up on the next
+ * run. (Previously this was a hand-maintained array that fell 12 → 17 behind.)
  */
-export const blogPages: PageInfo[] = [
-  {
-    name: "From Tokens to Thinking Systems",
-    url: "/blog/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work",
-    category: "blog",
-  },
-  {
-    name: "Constructive vs Constrictive Criticism",
-    url: "/blog/the-evolutionary-difference-between-constructive-and-constrictive-criticism",
-    category: "blog",
-  },
-  {
-    name: "Branding Design Systems",
-    url: "/blog/branding-design-systems-essay",
-    category: "blog",
-  },
-  {
-    name: "Design System Meets AI Pt 2",
-    url: "/blog/design-system-meets-ai-building-the-self-evolving-component-library-pt-2",
-    category: "blog",
-  },
-  {
-    name: "Design System Meets AI Pt 1",
-    url: "/blog/design-system-meets-ai-building-the-self-evolving-component-library-pt-1",
-    category: "blog",
-  },
-  {
-    name: "A Biography",
-    url: "/blog/petri-lahdelma-bio",
-    category: "blog",
-  },
-  {
-    name: "Digital Craftsmanship",
-    url: "/blog/digital-craftsmanship",
-    category: "blog",
-  },
-  {
-    name: "MCP, Design Systems, and Generative UI",
-    url: "/blog/figma-mcp-design-systems",
-    category: "blog",
-  },
-  {
-    name: "Workflow Tips",
-    url: "/blog/workflow-tips",
-    category: "blog",
-  },
-  {
-    name: "In Search of Impact",
-    url: "/blog/in-search-of-impact",
-    category: "blog",
-  },
-  {
-    name: "Designing in 2025",
-    url: "/blog/designing-in-2025",
-    category: "blog",
-  },
-  {
-    name: "Thoughts on Future Branding",
-    url: "/blog/thoughts-on-future-branding",
-    category: "blog",
-  },
-];
+export const blogPages: PageInfo[] = allPosts
+  .filter((post) => isPostVisible(post, false))
+  .map((post) => ({
+    name: post.title,
+    url: `/blog/${post.slug}`,
+    category: "blog" as const,
+  }));
 
 /**
  * Utility pages (2 pages)
@@ -213,8 +168,9 @@ export const legalPages: PageInfo[] = [
 ];
 
 /**
- * All public pages combined
- * 6 core + 11 work + 12 blog + 3 legal + 1 utility + 4 pseo = 37
+ * All public pages combined.
+ * Blog count is derived from visible post metadata, so the total is dynamic:
+ * 6 core + 11 work + (all visible blog) + 3 legal + 1 utility + 4 pseo.
  */
 export const allPages: PageInfo[] = [
   ...corePages,
