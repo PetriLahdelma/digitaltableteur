@@ -2,11 +2,23 @@
 /**
  * PSEO quality gate — word count, uniqueness, proof/package links.
  *
+ * Thresholds default OFF (0 / false) so ad-hoc runs can target a single check.
+ * A bare run enforces NOTHING and says so loudly (it does not claim a pass).
+ * The wired gate (`npm run pseo:check-quality`, run in pre-push when pSEO files
+ * change) enforces two tiers:
+ *   - Baseline, all pages: --min-words 250 --require-proof-link --require-package-link
+ *     (floor against thinning + missing service→proof/pricing mappings; no
+ *     uniqueness gate — the templated copy sits at ~10-11% and a baseline
+ *     uniqueness floor there would be meaningless).
+ *   - Indexed only: --indexed-only --min-words 600 --min-unique-percent 40 ...
+ *     A page may only be promoted into catalog.generation.indexedLeafSlugs once
+ *     it clears a real quality bar, so thin copy can never earn search traffic.
+ *
  * Usage:
- *   node scripts/pseo/check-pseo-quality.mjs
+ *   node scripts/pseo/check-pseo-quality.mjs --min-words 250 --require-proof-link
  *   node scripts/pseo/check-pseo-quality.mjs --min-unique-percent 40 --min-words 600
  *   node scripts/pseo/check-pseo-quality.mjs --slug design-system-audit-react-startups
- *   node scripts/pseo/check-pseo-quality.mjs --require-proof-link --require-package-link
+ *   node scripts/pseo/check-pseo-quality.mjs --indexed-only --min-words 600 --min-unique-percent 40
  */
 
 import { readFileSync } from "node:fs";
@@ -223,9 +235,30 @@ if (minUniquePercent > 0 && rendered.length > 1) {
 }
 
 const indexedCount = indexedSlugs.size;
+
+const activeChecks = [];
+if (minWords > 0) activeChecks.push(`min-words=${minWords}`);
+if (minUniquePercent > 0) activeChecks.push(`min-unique=${minUniquePercent}%`);
+if (requireProofLink) activeChecks.push("require-proof-link");
+if (requirePackageLink) activeChecks.push("require-package-link");
+
+const scope = indexedOnly ? "indexed-only" : "all";
 console.log(
-  `[pseo-quality] Checked ${targets.length} pages (${indexedCount} indexed). Failures: ${failures.length}`,
+  `[pseo-quality] Scope: ${scope}. Checked ${targets.length} pages ` +
+    `(${indexedCount} indexed). Enforced: ` +
+    `${activeChecks.length ? activeChecks.join(", ") : "NOTHING"}. ` +
+    `Failures: ${failures.length}`,
 );
+
+if (activeChecks.length === 0) {
+  // Never claim a "pass" when no threshold was active — that false-green was
+  // the whole point of the gate-is-a-no-op finding. Signal it loudly instead.
+  console.warn(
+    "[pseo-quality] No thresholds active — nothing was enforced. Pass " +
+      "--min-words / --min-unique-percent / --require-proof-link / " +
+      "--require-package-link to actually check quality.",
+  );
+}
 
 if (failures.length > 0) {
   for (const failure of failures.slice(0, 30)) {
@@ -235,6 +268,6 @@ if (failures.length > 0) {
     console.error(`  … and ${failures.length - 30} more`);
   }
   process.exitCode = 1;
-} else {
-  console.log("[pseo-quality] All checks passed.");
+} else if (activeChecks.length > 0) {
+  console.log(`[pseo-quality] All checks passed (${activeChecks.join(", ")}).`);
 }

@@ -11,6 +11,13 @@ fi
 if echo "$changed" | grep -qE '^app/|^nextjs-app/shared/(patterns|components)/|dogfood-ratchet'; then
   npm run check:dogfood-ratchet
 fi
+# pSEO quality gate: enforce the word/link floor on all leaf pages and the
+# strict word+uniqueness bar on any page promoted to indexed. Only run when
+# pSEO content/copy/routes/script change (the finding: gate previously ran no
+# thresholds AND was wired into nothing).
+if echo "$changed" | grep -qE '^content/pseo/|^app/pseo/|check-pseo-quality|^scripts/pseo/'; then
+  npm run pseo:check-quality
+fi
 echo "$changed" | grep -qE 'nextjs-app/shared/(components|patterns|foundations)|scripts/design-system' || exit 0
 # Contract gate: keep the local gate a superset of the farm's validate job for
 # contract-touching changes (2026-07-03 incident: ten red farm runs because
