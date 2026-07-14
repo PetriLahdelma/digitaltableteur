@@ -104,8 +104,18 @@
   position: absolute;
   inset: 0;
   border-radius: 24px;
-  background-color: var(--color-gray);
+  background-color: var(--color-switch-track-off);
   transition: background-color 0.2s ease;
+}
+
+/* Off-state track background. Stated at the same specificity as the checked
+   rule below (0,3,1) because the Modal content reset
+   (`.content :is(p, span, div) { background: transparent }`, 0,2,1) otherwise
+   outspecifies a bare `.slider` and makes the off track invisible on the dark
+   modal surface. */
+
+.switch input:not(:checked) + .slider {
+  background-color: var(--color-switch-track-off);
 }
 
 .slider::before {
