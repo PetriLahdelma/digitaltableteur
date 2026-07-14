@@ -703,6 +703,31 @@ test.describe("OPER-03: Skip Link Functionality", () => {
     ).toBe(true);
   });
 
+  test("Skip link moves focus INTO main content, not just scroll", async ({
+    page,
+  }) => {
+    // The whole point of a skip link is to relocate focus: without tabIndex=-1
+    // on <main> the browser leaves focus on <body> and the next Tab restarts
+    // from the header, so the bypass never happens (WCAG 2.4.1).
+    const skipLink = page.locator('a[href="#main-content"]');
+    await skipLink.focus();
+    await page.keyboard.press("Enter");
+
+    await expect
+      .poll(async () =>
+        page.evaluate(() => {
+          const main = document.getElementById("main-content");
+          const focused = document.activeElement;
+          return !!(
+            main &&
+            focused &&
+            (main === focused || main.contains(focused))
+          );
+        })
+      )
+      .toBe(true);
+  });
+
   test("Main content has correct ID for skip link target", async ({ page }) => {
     const mainContent = page.locator("#main-content");
     const exists = (await mainContent.count()) > 0;
