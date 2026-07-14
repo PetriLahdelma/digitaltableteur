@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   setupReducedMotion,
   type MotionPreference,
@@ -22,9 +18,9 @@ interface AnimationProviderProps {
 
 export function AnimationProvider({ children }: AnimationProviderProps) {
   const [isReady, setIsReady] = useState(false);
-  // Stable SSR + first paint; real preference applied in useEffect only.
+  // Static SSR + first paint; the real preference is applied after hydration.
   const [motionPreference, setMotionPreference] =
-    useState<MotionPreference>("full");
+    useState<MotionPreference>("reduced");
 
   useEffect(() => {
     const cleanup = setupReducedMotion();

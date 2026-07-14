@@ -8,6 +8,7 @@ import {
   type ElementType,
 } from "react";
 import { gsap, ScrollTrigger, useGSAP } from "@/nextjs-app/shared/lib/gsap";
+import { resolveMotionPlan } from "@/nextjs-app/shared/lib/motionPolicy";
 import { useAnimationContext } from "@/providers/AnimationProvider";
 import styles from "./TextReveal.module.css";
 
@@ -40,7 +41,7 @@ export function TextReveal({
   as: Component = "p",
 }: TextRevealProps) {
   const ref = useRef<HTMLElement>(null);
-  const { motionPreference } = useAnimationContext();
+  const { motionPreference, isReady } = useAnimationContext();
 
   // Split text into elements based on type
   const elements = useMemo(() => {
@@ -91,17 +92,20 @@ export function TextReveal({
 
       setFinalState();
 
-      // For reduced motion, snap targets to their final visible state instead
-      // of running any tween. Partial-opacity frames otherwise misreport as
-      // color-contrast failures in the matrix axe runs (axe samples once,
-      // doesn't poll until animations finish). Read the media query directly
-      // as a fallback because the AnimationContext bootstraps in a useEffect
-      // and the first render can otherwise still observe "full".
-      const prefersReduced =
-        motionPreference === "reduced" ||
-        (typeof window !== "undefined" &&
-          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
-      if (prefersReduced) {
+      const requestedDistance =
+        animation === "slide" ? 50 : animation === "wave" ? 30 : 0;
+      const motion = resolveMotionPlan({
+        preference: motionPreference,
+        hydrated: isReady,
+        isReady,
+        kind: "entrance",
+        userInitiated: false,
+        essential: true,
+        durationMs: duration * 1000,
+        distancePx: requestedDistance,
+        iterations: 1,
+      });
+      if (!motion.animate) {
         setFinalState();
         return;
       }
@@ -121,21 +125,25 @@ export function TextReveal({
         if (hasAnimated) return;
         hasAnimated = true;
 
-        gsap.fromTo(targets, { opacity: 1, ...animations[animation] }, {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          scale: 1,
-          rotationX: 0,
-          clearProps: "opacity,transform",
-          overwrite: "auto",
-          onInterrupt: setFinalState,
-          onComplete: setFinalState,
-          duration,
-          stagger,
-          delay,
-          ease: "power2.out",
-        });
+        gsap.fromTo(
+          targets,
+          { opacity: 1, ...animations[animation] },
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            rotationX: 0,
+            clearProps: "opacity,transform",
+            overwrite: "auto",
+            onInterrupt: setFinalState,
+            onComplete: setFinalState,
+            duration: motion.durationMs / 1000,
+            stagger,
+            delay,
+            ease: "power2.out",
+          },
+        );
       };
 
       const rect = ref.current.getBoundingClientRect();
@@ -158,7 +166,21 @@ export function TextReveal({
         setFinalState();
       };
     },
-    { scope: ref, dependencies: [children, type, animation, motionPreference] }
+    {
+      scope: ref,
+      dependencies: [
+        children,
+        type,
+        animation,
+        motionPreference,
+        isReady,
+        delay,
+        duration,
+        stagger,
+        threshold,
+      ],
+      revertOnUpdate: true,
+    },
   );
 
   return (

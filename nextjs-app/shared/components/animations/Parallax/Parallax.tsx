@@ -3,6 +3,7 @@
 import { useRef, type ReactNode } from "react";
 import { gsap, useGSAP } from "../../../lib/gsap";
 import { useAnimationContext } from "../../../lib/animation";
+import { resolveMotionPlan } from "../../../lib/motionPolicy";
 import styles from "./Parallax.module.css";
 
 export interface ParallaxProps {
@@ -18,19 +19,31 @@ export function Parallax({
 }: ParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
-  const { motionPreference } = useAnimationContext();
+  const { motionPreference, isReady } = useAnimationContext();
 
   useGSAP(
     () => {
       if (!ref.current || !innerRef.current) return;
 
-      // Disable parallax for reduced motion
-      if (motionPreference === "reduced") return;
-
       const distance = 100 * speed;
+      const motion = resolveMotionPlan({
+        preference: motionPreference,
+        hydrated: isReady,
+        isReady,
+        kind: "scroll",
+        userInitiated: false,
+        essential: false,
+        durationMs: 1000,
+        distancePx: Math.abs(distance),
+        iterations: 1,
+      });
+      if (!motion.animate) {
+        gsap.set(innerRef.current, { y: 0 });
+        return;
+      }
 
       gsap.to(innerRef.current, {
-        y: distance,
+        y: Math.sign(distance) * motion.distancePx,
         ease: "none",
         scrollTrigger: {
           trigger: ref.current,
@@ -40,7 +53,11 @@ export function Parallax({
         },
       });
     },
-    { scope: ref, dependencies: [speed, motionPreference] }
+    {
+      scope: ref,
+      dependencies: [speed, motionPreference, isReady],
+      revertOnUpdate: true,
+    },
   );
 
   return (

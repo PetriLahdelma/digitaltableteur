@@ -40,6 +40,8 @@ export function getMotionPreference(): MotionPreference {
     try {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         currentPreference = "reduced";
+      } else {
+        currentPreference = "full";
       }
     } catch {
       // matchMedia unavailable — fall through to cached value.

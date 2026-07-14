@@ -152,6 +152,7 @@
     "check:token-packages": "node scripts/design-system/check-token-packages.mjs",
     "check:published-tokens-freshness": "node scripts/design-system/check-published-tokens-freshness.mjs",
     "check:react-package": "node scripts/design-system/check-react-package.mjs",
+    "check:react-package-topology": "node scripts/design-system/check-react-package-topology.mjs",
     "check:react-public-api": "node scripts/design-system/check-react-public-api.mjs",
     "check:react-public-surface": "node scripts/design-system/check-react-public-surface.mjs",
     "check:npm-consumer-install": "node scripts/design-system/check-npm-consumer-install.mjs",

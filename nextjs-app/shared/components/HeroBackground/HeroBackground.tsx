@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "../../lib/gsap";
 import { useAnimationContext } from "../../lib/animation";
 import { cn } from "../../lib/cn";
+import { resolveMotionPlan } from "../../lib/motionPolicy";
 
 export interface HeroBackgroundProps {
   /** Background style variant */
@@ -18,7 +19,10 @@ export interface HeroBackgroundProps {
 
 const baseClasses = "absolute inset-0 overflow-hidden";
 
-const colorSchemeGradients: Record<NonNullable<HeroBackgroundProps["colorScheme"]>, string> = {
+const colorSchemeGradients: Record<
+  NonNullable<HeroBackgroundProps["colorScheme"]>,
+  string
+> = {
   primary: "from-primary/20 via-background to-primary/10",
   secondary: "from-secondary/20 via-background to-secondary/10",
   neutral: "from-muted via-background to-muted/50",
@@ -33,19 +37,30 @@ export function HeroBackground({
 }: HeroBackgroundProps) {
   const ref = useRef<HTMLDivElement>(null);
   const gradientRef = useRef<HTMLDivElement>(null);
-  const { motionPreference } = useAnimationContext();
-
-  const shouldAnimate = animate && motionPreference !== "reduced";
+  const { motionPreference, isReady } = useAnimationContext();
+  const motion = resolveMotionPlan({
+    preference: motionPreference,
+    hydrated: isReady,
+    isReady,
+    kind: "continuous",
+    userInitiated: false,
+    essential: false,
+    durationMs: 8000,
+    distancePx: 100,
+    iterations: -1,
+  });
+  const shouldAnimate = animate && motion.animate;
 
   // Gradient animation
   useGSAP(
     () => {
-      if (!gradientRef.current || !shouldAnimate || variant !== "gradient") return;
+      if (!gradientRef.current || !shouldAnimate || variant !== "gradient")
+        return;
 
       // Subtle gradient movement
       gsap.to(gradientRef.current, {
         backgroundPosition: "100% 50%",
-        duration: 8,
+        duration: motion.durationMs / 1000,
         ease: "sine.inOut",
         repeat: -1,
         yoyo: true,
@@ -55,7 +70,11 @@ export function HeroBackground({
     // a post-mount effect, so the gate flips AFTER this tween starts — without
     // revert, the early return leaves the infinite loop running for
     // reduced-motion users.
-    { scope: ref, dependencies: [shouldAnimate, variant], revertOnUpdate: true }
+    {
+      scope: ref,
+      dependencies: [shouldAnimate, variant],
+      revertOnUpdate: true,
+    },
   );
 
   // Noise flicker animation
@@ -75,7 +94,11 @@ export function HeroBackground({
         yoyo: true,
       });
     },
-    { scope: ref, dependencies: [shouldAnimate, variant], revertOnUpdate: true }
+    {
+      scope: ref,
+      dependencies: [shouldAnimate, variant],
+      revertOnUpdate: true,
+    },
   );
 
   const renderGradient = () => (
@@ -84,7 +107,7 @@ export function HeroBackground({
       className={cn(
         "absolute inset-0",
         "bg-gradient-to-br bg-[length:200%_200%] bg-[position:0%_50%]",
-        colorSchemeGradients[colorScheme]
+        colorSchemeGradients[colorScheme],
       )}
       aria-hidden="true"
     />
@@ -96,19 +119,19 @@ export function HeroBackground({
       <div
         className={cn(
           "absolute inset-0 opacity-60",
-          "bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,var(--color-primary),transparent)]"
+          "bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,var(--color-primary),transparent)]",
         )}
       />
       <div
         className={cn(
           "absolute inset-0 opacity-40",
-          "bg-[radial-gradient(ellipse_60%_60%_at_0%_0%,var(--color-secondary),transparent)]"
+          "bg-[radial-gradient(ellipse_60%_60%_at_0%_0%,var(--color-secondary),transparent)]",
         )}
       />
       <div
         className={cn(
           "absolute inset-0 opacity-30",
-          "bg-[radial-gradient(ellipse_50%_80%_at_100%_100%,var(--color-accent),transparent)]"
+          "bg-[radial-gradient(ellipse_50%_80%_at_100%_100%,var(--color-accent),transparent)]",
         )}
       />
     </div>
@@ -118,7 +141,7 @@ export function HeroBackground({
     <div
       className={cn(
         "absolute inset-0",
-        colorScheme === "dark" ? "bg-zinc-950" : "bg-background"
+        colorScheme === "dark" ? "bg-zinc-950" : "bg-background",
       )}
       aria-hidden="true"
     />
@@ -129,7 +152,7 @@ export function HeroBackground({
       <div
         className={cn(
           "absolute inset-0 bg-gradient-to-br",
-          colorSchemeGradients[colorScheme]
+          colorSchemeGradients[colorScheme],
         )}
         aria-hidden="true"
       />

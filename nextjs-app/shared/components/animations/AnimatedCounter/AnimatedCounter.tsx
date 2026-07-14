@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "../../../lib/gsap";
 import { useAnimationContext } from "../../../lib/animation";
 import { cn } from "../../../lib/cn";
+import { resolveMotionPlan } from "../../../lib/motionPolicy";
 import styles from "./AnimatedCounter.module.css";
 
 export interface AnimatedCounterProps {
@@ -39,7 +40,7 @@ export function AnimatedCounter({
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLDivElement>(null);
   const numberRef = useRef<HTMLSpanElement>(null);
-  const { motionPreference } = useAnimationContext();
+  const { motionPreference, isReady } = useAnimationContext();
   const displayValue = formatStatValue(value, prefix, suffix);
   const initialVisibleValue = formatStatValue(0, prefix, suffix);
   const accessibleLabel = `${displayValue} ${label}`;
@@ -48,11 +49,18 @@ export function AnimatedCounter({
     () => {
       if (!ref.current || !numberRef.current) return;
 
-      const prefersReduced =
-        motionPreference === "reduced" ||
-        (typeof window !== "undefined" &&
-          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
-      if (prefersReduced) {
+      const motion = resolveMotionPlan({
+        preference: motionPreference,
+        hydrated: isReady,
+        isReady,
+        kind: "progress",
+        userInitiated: false,
+        essential: false,
+        durationMs: duration * 1000,
+        distancePx: 0,
+        iterations: 1,
+      });
+      if (!motion.animate) {
         numberRef.current.textContent = displayValue;
         return;
       }
@@ -66,7 +74,7 @@ export function AnimatedCounter({
         { val: 0 },
         {
           val: value,
-          duration,
+          duration: motion.durationMs / 1000,
           ease: "power2.out",
           snap: { val: 1 },
           scrollTrigger: {
@@ -91,12 +99,14 @@ export function AnimatedCounter({
       dependencies: [
         value,
         motionPreference,
+        isReady,
         duration,
         prefix,
         suffix,
         displayValue,
         initialVisibleValue,
       ],
+      revertOnUpdate: true,
     },
   );
 

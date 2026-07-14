@@ -11,6 +11,20 @@ const roadmapState = JSON.parse(
   readFileSync(join(root, "scripts/design-system/astryx-roadmap.state.json"), "utf8"),
 );
 const forbiddenExports = roadmapState.reactPublicSurface?.forbiddenExports ?? [];
+const familyEntries = {
+  actions: "Button",
+  consent: "CookieConsent",
+  content: "CodeSnippet",
+  feedback: "AlertBanner",
+  forms: "TextInput",
+  hooks: "useStreamingText",
+  identity: "Avatar",
+  layout: "Grid",
+  navigation: "Tabs",
+  patterns: "PageLayout",
+  runtime: "LayerProvider",
+  typography: "Text",
+};
 
 function run(command, args, options = {}) {
   return execFileSync(command, args, {
@@ -44,6 +58,11 @@ run("npm", ["--prefix", "packages/react", "run", "build"]);
 assertFile(join(dist, "index.js"), "React package JS entry");
 assertFile(join(dist, "index.d.ts"), "React package type entry");
 assertFile(join(dist, "style.css"), "React package CSS export");
+for (const entryName of Object.keys(familyEntries)) {
+  assertFile(join(dist, `${entryName}.js`), `React package ${entryName} JS entry`);
+  assertFile(join(dist, `${entryName}.d.ts`), `React package ${entryName} type entry`);
+  assertFile(join(dist, `${entryName}.css`), `React package ${entryName} CSS entry`);
+}
 
 const jsEntry = readFileSync(join(dist, "index.js"), "utf8");
 if (!jsEntry.startsWith('"use client";')) {
@@ -85,6 +104,28 @@ const smoke = run(
   { capture: true },
 ).trim();
 
+const familySmoke = run(
+  "node",
+  [
+    "--input-type=module",
+    "-e",
+    [
+      `const entries = ${JSON.stringify(Object.entries(familyEntries))};`,
+      `const dist = ${JSON.stringify(pathToFileURL(`${dist}/`).href)};`,
+      "const root = await import(new URL('index.js', dist));",
+      "const owners = new Map();",
+      "for (const [entry, expected] of entries) { const m = await import(new URL(`${entry}.js`, dist)); if (!m[expected]) throw new Error(`missing ${expected} from family entry ${entry}`); for (const name of Object.keys(m)) { if (owners.has(name)) throw new Error(`${name} is exported by both ${owners.get(name)} and ${entry}`); owners.set(name, entry); } }",
+      "const rootNames = Object.keys(root).sort();",
+      "const familyNames = [...owners.keys()].sort();",
+      "if (JSON.stringify(rootNames) !== JSON.stringify(familyNames)) throw new Error(`family export partition differs from root; missing=${rootNames.filter(name => !owners.has(name))} extra=${familyNames.filter(name => !(name in root))}`);",
+      "console.log(entries.length);",
+    ].join(" "),
+  ],
+  { capture: true },
+).trim();
+
+run("node", ["scripts/design-system/check-react-package-topology.mjs"]);
+
 const packJson = run(
   "npm",
   ["pack", "./packages/react", "--dry-run", "--json"],
@@ -92,7 +133,15 @@ const packJson = run(
 );
 const pack = parsePackJson(packJson, "@digitaltableteur/react");
 const files = new Set(pack.files.map((file) => file.path));
-for (const required of ["dist/index.js", "dist/index.d.ts", "dist/style.css"]) {
+const requiredPackageFiles = ["dist/index.js", "dist/index.d.ts", "dist/style.css"];
+for (const entryName of Object.keys(familyEntries)) {
+  requiredPackageFiles.push(
+    `dist/${entryName}.js`,
+    `dist/${entryName}.d.ts`,
+    `dist/${entryName}.css`,
+  );
+}
+for (const required of requiredPackageFiles) {
   if (!files.has(required)) {
     throw new Error(`npm pack is missing ${required}`);
   }
@@ -101,5 +150,5 @@ for (const required of ["dist/index.js", "dist/index.d.ts", "dist/style.css"]) {
 run("npm", ["run", "check:react-public-api"]);
 
 console.log(
-  `✓ react package verified (${smoke} exports, ${pack.entryCount} packed files, ${(pack.unpackedSize / 1024 / 1024).toFixed(2)} MiB unpacked)`,
+  `✓ react package verified (${smoke} exports, ${familySmoke} family entries, ${pack.entryCount} packed files, ${(pack.unpackedSize / 1024 / 1024).toFixed(2)} MiB unpacked)`,
 );

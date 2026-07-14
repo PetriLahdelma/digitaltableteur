@@ -5,6 +5,7 @@ import { useNavigationPathname } from "../../../lib/navigation";
 import { cn } from "../../../lib/cn";
 import { gsap } from "../../../lib/gsap";
 import { useAnimationContext } from "../../../lib/animation";
+import { resolveMotionPlan } from "../../../lib/motionPolicy";
 import styles from "./PageTransition.module.css";
 
 interface PageTransitionProps {
@@ -15,21 +16,31 @@ interface PageTransitionProps {
 export function PageTransition({ children, className }: PageTransitionProps) {
   const pathname = useNavigationPathname() ?? "";
   const containerRef = useRef<HTMLDivElement>(null);
-  const { motionPreference } = useAnimationContext();
-  const isFirstRender = useRef(true);
+  const { motionPreference, isReady } = useAnimationContext();
+  const previousPathname = useRef(pathname);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    const routeChanged = previousPathname.current !== pathname;
+    previousPathname.current = pathname;
+    if (!routeChanged) return;
 
     const container = containerRef.current;
     if (!container) return;
 
     gsap.killTweensOf(container);
 
-    if (motionPreference === "reduced") {
+    const motion = resolveMotionPlan({
+      preference: motionPreference,
+      hydrated: isReady,
+      isReady,
+      kind: "route",
+      userInitiated: false,
+      essential: false,
+      durationMs: 420,
+      distancePx: 10,
+      iterations: 1,
+    });
+    if (!motion.animate) {
       delete container.dataset.routeTransitioning;
       gsap.set(container, {
         clearProps: "opacity,visibility,transform,willChange",
@@ -41,11 +52,15 @@ export function PageTransition({ children, className }: PageTransitionProps) {
 
     const transition = gsap.fromTo(
       container,
-      { autoAlpha: 0, y: 10, willChange: "opacity, transform" },
+      {
+        autoAlpha: 0,
+        y: motion.distancePx,
+        willChange: "opacity, transform",
+      },
       {
         autoAlpha: 1,
         y: 0,
-        duration: 0.42,
+        duration: motion.durationMs / 1000,
         ease: "power3.out",
         clearProps: "opacity,visibility,transform,willChange",
         onComplete: () => {
@@ -61,7 +76,7 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         clearProps: "opacity,visibility,transform,willChange",
       });
     };
-  }, [pathname, motionPreference]);
+  }, [pathname, motionPreference, isReady]);
 
   return (
     <div ref={containerRef} className={cn(styles.root, className)}>

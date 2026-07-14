@@ -7,6 +7,30 @@ const packageRoot = fileURLToPath(new URL(".", import.meta.url));
 const repoRoot = resolve(packageRoot, "../..");
 const sharedRoot = resolve(repoRoot, "nextjs-app/shared");
 const componentsRoot = resolve(sharedRoot, "components");
+const entryNames = [
+  "actions",
+  "consent",
+  "content",
+  "feedback",
+  "forms",
+  "hooks",
+  "identity",
+  "layout",
+  "navigation",
+  "patterns",
+  "runtime",
+  "typography",
+] as const;
+const cssEntryName = process.env.DT_REACT_CSS_ENTRY;
+const cssEntryNames = new Set(["index", ...entryNames]);
+if (cssEntryName && !cssEntryNames.has(cssEntryName)) {
+  throw new Error(`Unknown React package CSS entry: ${cssEntryName}`);
+}
+const cssOnlyBuild = Boolean(cssEntryName);
+const entries = Object.fromEntries([
+  ["index", resolve(packageRoot, "src/index.ts")],
+  ...entryNames.map((name) => [name, resolve(packageRoot, `src/${name}.ts`)]),
+]);
 // Everything here must be a peerDependency or dependency in package.json:
 // inlining a declared dependency ships two copies (bundle + registry install)
 // with independent module state (framer AnimatePresence, phosphor registry).
@@ -47,21 +71,32 @@ export default defineConfig({
     ],
   },
   build: {
+    outDir: resolve(
+      packageRoot,
+      cssOnlyBuild ? `dist/.css/${cssEntryName}` : "dist",
+    ),
     emptyOutDir: true,
-    cssCodeSplit: false,
+    cssCodeSplit: !cssOnlyBuild,
+    manifest: !cssOnlyBuild,
     lib: {
-      entry: resolve(packageRoot, "src/index.ts"),
+      entry: cssOnlyBuild
+        ? resolve(packageRoot, `src/${cssEntryName}.ts`)
+        : entries,
       formats: ["es"],
-      fileName: () => "index.js",
-      cssFileName: "style",
+      fileName: (_format, entryName) =>
+        cssOnlyBuild ? "index.js" : `${entryName}.js`,
+      ...(cssOnlyBuild ? { cssFileName: "style" } : {}),
     },
     rollupOptions: {
       external: isExternal,
       output: {
         banner: '"use client";',
+        chunkFileNames: "chunks/[name]-[hash].js",
         assetFileNames: (assetInfo) =>
           assetInfo.names?.some((name) => name.endsWith(".css"))
-            ? "style.css"
+            ? cssOnlyBuild
+              ? "style.css"
+              : "assets/css/[name][extname]"
             : "assets/[name][extname]",
       },
     },

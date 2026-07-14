@@ -12,6 +12,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { fileURLToPath } from "node:url";
+import ts from "typescript";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const PACKAGE_DIR = join(ROOT, "packages/react");
@@ -60,16 +61,62 @@ function deepEqual(a, b) {
   return JSON.stringify(a) === JSON.stringify(b);
 }
 
+function sourceExports(entryName) {
+  const path = join(PACKAGE_DIR, `src/${entryName}.ts`);
+  const source = ts.createSourceFile(
+    path,
+    readFileSync(path, "utf8"),
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  const names = [];
+  for (const statement of source.statements) {
+    if (
+      !ts.isExportDeclaration(statement) ||
+      !statement.exportClause ||
+      !ts.isNamedExports(statement.exportClause)
+    ) {
+      continue;
+    }
+    for (const element of statement.exportClause.elements) {
+      names.push(element.name.text);
+    }
+  }
+  return sorted(new Set(names));
+}
+
 async function currentManifest() {
   runBuildIfNeeded();
   const packageJson = readJson(PACKAGE_JSON_PATH);
   const runtime = await import(`${pathToFileURL(DIST_ENTRY).href}?t=${Date.now()}`);
+  const familyEntries = Object.entries(packageJson.exports ?? {})
+    .filter(
+      ([key, value]) =>
+        /^\.\/[a-z][a-z0-9-]*$/.test(key) &&
+        typeof value === "object" &&
+        value !== null &&
+        "import" in value,
+    )
+    .map(([key]) => key.slice(2))
+    .sort((a, b) => a.localeCompare(b));
+  const runtimeExportsByEntry = {};
+  const sourceExportsByEntry = {};
+  for (const entryName of familyEntries) {
+    const entry = await import(
+      `${pathToFileURL(join(PACKAGE_DIR, `dist/${entryName}.js`)).href}?t=${Date.now()}`
+    );
+    runtimeExportsByEntry[entryName] = sorted(Object.keys(entry));
+    sourceExportsByEntry[entryName] = sourceExports(entryName);
+  }
 
   return {
     packageName: packageJson.name,
     packageVersion: packageJson.version,
     packageExports: normalizePackageExports(packageJson.exports),
     runtimeExports: sorted(Object.keys(runtime)),
+    runtimeExportsByEntry,
+    sourceExportsByEntry,
   };
 }
 
@@ -88,7 +135,7 @@ if (UPDATE) {
     `${JSON.stringify(
       {
         ...current,
-        generatedFrom: "packages/react/dist/index.js",
+        generatedFrom: "packages/react/dist/*.js and packages/react/src/*.ts",
         note: "Checked by npm run check:react-public-api. Update only for intentional public API changes.",
       },
       null,
@@ -122,6 +169,25 @@ if (!deepEqual(manifest.packageExports, current.packageExports)) {
 const { added, removed } = diffLists(manifest.runtimeExports ?? [], current.runtimeExports);
 if (added.length) errors.push(`runtime exports added: ${added.join(", ")}`);
 if (removed.length) errors.push(`runtime exports removed: ${removed.join(", ")}`);
+
+for (const field of ["runtimeExportsByEntry", "sourceExportsByEntry"]) {
+  const expectedEntries = manifest[field] ?? {};
+  const actualEntries = current[field];
+  for (const entryName of sorted(
+    new Set([...Object.keys(expectedEntries), ...Object.keys(actualEntries)]),
+  )) {
+    const entryDiff = diffLists(
+      expectedEntries[entryName] ?? [],
+      actualEntries[entryName] ?? [],
+    );
+    if (entryDiff.added.length) {
+      errors.push(`${field}.${entryName} added: ${entryDiff.added.join(", ")}`);
+    }
+    if (entryDiff.removed.length) {
+      errors.push(`${field}.${entryName} removed: ${entryDiff.removed.join(", ")}`);
+    }
+  }
+}
 
 if (errors.length) {
   console.error("React public API guard failed:");
