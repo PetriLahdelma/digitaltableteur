@@ -7,4 +7,5 @@ export * from "./storage";
 export {
   CookieConsentProvider,
   useCookieConsent,
+  useCookieConsentOptional,
 } from "./CookieConsentContext";

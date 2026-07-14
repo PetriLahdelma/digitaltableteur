@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslate } from "../../lib/translation";
+import { useCookieConsentOptional } from "../../lib/cookieConsent";
 import { cn } from "../../lib/cn";
 import { Link as RouterLink } from "../../lib/linkComponent";
 import { Container } from "../../components/Container";
@@ -73,6 +74,10 @@ export interface SiteFooterProps {
 export function SiteFooter({ className }: SiteFooterProps) {
   const t = useTranslate();
   const currentYear = new Date().getFullYear();
+  // Null-safe: renders the "Cookie preferences" trigger only where a
+  // CookieConsentProvider is present (the live site). Stories/tests that render
+  // the footer bare simply omit it, so the footer stays provider-agnostic.
+  const consent = useCookieConsentOptional();
 
   return (
     <footer
@@ -187,9 +192,24 @@ export function SiteFooter({ className }: SiteFooterProps) {
             ))}
           </Stack>
 
-          <p className="font-body text-text-s text-muted-foreground">
-            &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            {consent ? (
+              // Consent withdrawal must be as easy as granting it (GDPR). A real
+              // <button> (Link is anchor-only) styled to match the subtle
+              // copyright/legal tone of the bottom bar rather than the primary
+              // nav links. Only rendered where a CookieConsentProvider exists.
+              <button
+                type="button"
+                onClick={consent.openBanner}
+                className="font-body text-text-s text-muted-foreground hover:text-foreground hover:underline bg-transparent border-0 p-0 cursor-pointer rounded-sm"
+              >
+                {t("footerCookiePreferences")}
+              </button>
+            ) : null}
+            <p className="font-body text-text-s text-muted-foreground">
+              &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
+            </p>
+          </div>
         </div>
       </Container>
     </footer>

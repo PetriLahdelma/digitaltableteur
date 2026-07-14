@@ -180,13 +180,34 @@ describe("consent hardening — C10: valid stored consent is backward compatible
   });
 });
 
-// Remaining criteria, tracked as gaps until implemented:
-// C4 — reopen preferences from the footer without clearing storage.
+describe("consent hardening — C4: preferences reopen without clearing storage", () => {
+  it("openBanner re-opens the banner and leaves stored consent intact", async () => {
+    localStorage.setItem(
+      STORAGE_KEY,
+      validState({
+        essential: true,
+        analytics: true,
+        marketing: false,
+        functional: true,
+      }),
+    );
+
+    const { result } = await mountConsent();
+    expect(result.current.isBannerOpen).toBe(false);
+
+    act(() => result.current.openBanner());
+
+    expect(result.current.isBannerOpen).toBe(true);
+    // Reopening preferences must not wipe the existing choice.
+    expect(localStorage.getItem(STORAGE_KEY)).not.toBeNull();
+    expect(result.current.hasConsent("analytics")).toBe(true);
+    expect(result.current.hasConsent("marketing")).toBe(false);
+  });
+});
+
+// Remaining gap, tracked until implemented:
 // C6 — consent state must not flash/change during hydration.
 describe("consent hardening — open gaps", () => {
-  it.todo(
-    "C4: preferences reopen from the footer via openBanner without clearing storage",
-  );
   it.todo("C6: consent state does not flash or change during hydration");
   // C7 (keyboard/focus/axe/forced-colors/mobile for banner + settings modal) is
   // covered by the Playwright a11y suite, not this unit gate.
