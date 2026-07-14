@@ -450,212 +450,164 @@ test.describe("OPER-02: ChatWidget Focus Trap", () => {
   });
 });
 
-test.describe("OPER-02: MobileDrawer Focus Trap", () => {
+test.describe("OPER-02: MobileDrawer Focus Trap (mobile)", () => {
+  // The drawer only renders below the lg breakpoint, so pin a phone viewport.
   test.use({ viewport: { width: 375, height: 667 } });
+
+  const DIALOG = { role: "dialog" as const, name: "Main navigation" };
+  const HAMBURGER = { role: "button" as const, name: "Open navigation menu" };
+  const CLOSE = { role: "button" as const, name: "Close navigation" };
 
   test.beforeEach(async ({ page }) => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(1000);
+    // The header is a client component; its SSR markup paints immediately but
+    // the toggle only works once hydrated. openDrawer() below absorbs the
+    // hydration gap by retrying the click.
+    await page.getByRole(HAMBURGER.role, { name: HAMBURGER.name }).waitFor();
   });
 
-  test("MobileDrawer opens and receives focus", async ({ page }) => {
-    // Find hamburger menu button - in mobile viewport, it's the last button in header
-    // It has aria-label from t("navMenuOpen") and class lg:hidden
-    const headerButtons = page.locator("header button:visible");
-
-    // On mobile, the hamburger is typically a button with menu-related aria-label
-    // or the last button in the header (theme toggle is before hamburger in DOM)
-    let menuButton = null;
-
-    const headerCount = await headerButtons.count();
-    console.log(`Found ${headerCount} header buttons on mobile viewport`);
-
-    if (headerCount > 0) {
-      // Log all buttons for debugging
-      for (let i = 0; i < headerCount; i++) {
-        const btn = headerButtons.nth(i);
-        const ariaLabel = await btn.getAttribute("aria-label");
-        console.log(`Button ${i}: aria-label="${ariaLabel}"`);
-        // Check for menu-related aria-label (localized open-menu label)
-        if (
-          ariaLabel?.toLowerCase().includes("menu") ||
-          ariaLabel?.toLowerCase().includes("nav") ||
-          ariaLabel === "Open navigation menu"
-        ) {
-          menuButton = btn;
-          break;
-        }
-      }
-
-      // Fallback: last header button on mobile is likely the hamburger
-      if (!menuButton && headerCount >= 2) {
-        menuButton = headerButtons.last();
-        console.log("Using last header button as hamburger");
-      }
-    }
-
-    if (!menuButton) {
-      console.log("No hamburger menu button found - skipping MobileDrawer test");
-      test.skip();
-      return;
-    }
-
-    await menuButton.click();
-    await page.waitForTimeout(500);
-
-    // Check if drawer opened (look for dialog role or drawer class)
-    const drawer = page.locator(
-      '[role="dialog"][aria-modal="true"], [class*="drawer" i]:visible, [class*="Drawer" i]:visible'
+  async function openDrawer(page: Page) {
+    const hamburger = page.getByRole(HAMBURGER.role, { name: HAMBURGER.name });
+    const dialog = page.getByRole(DIALOG.role, { name: DIALOG.name });
+    // Clicks that land before hydration focus the button but do nothing, so
+    // retry the open until the drawer actually mounts.
+    await expect(async () => {
+      await hamburger.click();
+      await expect(dialog).toBeVisible({ timeout: 2000 });
+    }).toPass({ timeout: 25000 });
+    // useNavigation flips this flag while the menu is open — a
+    // locale-independent signal that the drawer is fully mounted.
+    await page.waitForFunction(
+      () => document.body.dataset.mobileMenuOpen === "true",
     );
+    return hamburger;
+  }
 
-    const isDrawerOpen = (await drawer.count()) > 0;
-
-    if (!isDrawerOpen) {
-      console.log("Mobile drawer did not open - skipping test");
-      test.skip();
-      return;
-    }
-
-    // Verify focus is inside drawer
-    const focusInDrawer = await page.evaluate(() => {
-      const drawerEl = document.querySelector(
-        '[role="dialog"][aria-modal="true"]'
-      );
-      const focused = document.activeElement;
-      return drawerEl && focused && drawerEl.contains(focused);
-    });
-
-    // Note: MobileDrawer may not auto-focus first element - document behavior
-    console.log(`Focus inside drawer after open: ${focusInDrawer}`);
-
-    // Verify drawer is accessible
-    expect(isDrawerOpen, "MobileDrawer should be visible when open").toBe(true);
-  });
-
-  test("MobileDrawer closes with Escape key", async ({ page }) => {
-    // Find and click hamburger
-    const headerButtons = page.locator("header button:visible");
-    let menuButton = null;
-
-    const headerCount = await headerButtons.count();
-    for (let i = 0; i < headerCount; i++) {
-      const btn = headerButtons.nth(i);
-      const ariaLabel = await btn.getAttribute("aria-label");
-      if (
-        ariaLabel?.toLowerCase().includes("menu") ||
-        ariaLabel?.toLowerCase().includes("nav")
-      ) {
-        menuButton = btn;
-        break;
-      }
-    }
-
-    if (!menuButton && headerCount > 0) {
-      menuButton = headerButtons.last();
-    }
-
-    if (!menuButton) {
-      test.skip();
-      return;
-    }
-
-    await menuButton.click();
-    await page.waitForTimeout(500);
-
-    // Verify drawer is open
-    const drawerBefore = page.locator('[role="dialog"][aria-modal="true"]');
-    if ((await drawerBefore.count()) === 0) {
-      test.skip();
-      return;
-    }
-
-    // Press Escape
-    await page.keyboard.press("Escape");
-    await page.waitForTimeout(500);
-
-    // Verify drawer is closed
-    const drawerAfter = page.locator(
-      '[role="dialog"][aria-modal="true"]:visible'
-    );
-    const isDrawerClosed = (await drawerAfter.count()) === 0;
-
-    expect(isDrawerClosed, "MobileDrawer should close on Escape key").toBe(
-      true
-    );
-  });
-
-  test("MobileDrawer returns focus to hamburger when closed", async ({
+  test("opens from the hamburger and moves focus to the close control", async ({
     page,
   }) => {
-    const headerButtons = page.locator("header button:visible");
-    let menuButton = null;
+    await openDrawer(page);
+    await expect(
+      page.getByRole(DIALOG.role, { name: DIALOG.name }),
+    ).toBeVisible();
+    // The drawer focuses its first control (the close button) after opening.
+    await expect(
+      page.getByRole(CLOSE.role, { name: CLOSE.name }),
+    ).toBeFocused();
+  });
 
-    const headerCount = await headerButtons.count();
-    for (let i = 0; i < headerCount; i++) {
-      const btn = headerButtons.nth(i);
-      const ariaLabel = await btn.getAttribute("aria-label");
-      if (
-        ariaLabel?.toLowerCase().includes("menu") ||
-        ariaLabel?.toLowerCase().includes("nav")
-      ) {
-        menuButton = btn;
-        break;
-      }
-    }
+  test("makes the background inert while open and restores it on close", async ({
+    page,
+  }) => {
+    const main = page.locator("#main-content");
+    expect(await main.evaluate((el) => el.hasAttribute("inert"))).toBe(false);
 
-    if (!menuButton && headerCount > 0) {
-      menuButton = headerButtons.last();
-    }
+    await openDrawer(page);
+    await expect(main).toHaveAttribute("inert", "");
 
-    if (!menuButton) {
-      test.skip();
-      return;
-    }
-
-    // Store button info before clicking
-    const buttonInfo = await menuButton.evaluate((el) => ({
-      tagName: el.tagName.toLowerCase(),
-      ariaLabel: el.getAttribute("aria-label"),
-    }));
-
-    await menuButton.click();
-    await page.waitForTimeout(500);
-
-    const drawerBefore = page.locator('[role="dialog"][aria-modal="true"]');
-    if ((await drawerBefore.count()) === 0) {
-      test.skip();
-      return;
-    }
-
-    // Close with Escape
     await page.keyboard.press("Escape");
-    await page.waitForTimeout(500);
+    await expect(
+      page.getByRole(DIALOG.role, { name: DIALOG.name }),
+    ).toBeHidden();
+    await expect
+      .poll(async () => main.evaluate((el) => el.hasAttribute("inert")))
+      .toBe(false);
+  });
 
-    // Verify focus returned to button
-    const focusedInfo = await page.evaluate(() => {
-      const el = document.activeElement;
-      if (!el) return null;
-      return {
-        tagName: el.tagName.toLowerCase(),
-        ariaLabel: el.getAttribute("aria-label"),
-      };
+  test("keeps Tab focus inside the drawer (2.1.2 No Keyboard Trap)", async ({
+    page,
+  }) => {
+    await openDrawer(page);
+    const dialog = page.getByRole(DIALOG.role, { name: DIALOG.name });
+
+    // Header/footer controls live OUTSIDE #main-content, so inert alone can't
+    // contain Tab (finding #6). Walk well past the control count in both
+    // directions; focus must never escape the panel.
+    for (let i = 0; i < 15; i += 1) {
+      await page.keyboard.press("Tab");
+      const inside = await dialog.evaluate((el) =>
+        el.contains(document.activeElement),
+      );
+      expect(
+        inside,
+        `focus escaped the drawer after ${i + 1} Tab press(es)`,
+      ).toBe(true);
+    }
+
+    for (let i = 0; i < 15; i += 1) {
+      await page.keyboard.press("Shift+Tab");
+      const inside = await dialog.evaluate((el) =>
+        el.contains(document.activeElement),
+      );
+      expect(
+        inside,
+        `focus escaped the drawer after ${i + 1} Shift+Tab press(es)`,
+      ).toBe(true);
+    }
+  });
+
+  test("wraps Shift+Tab from the first control back to the last", async ({
+    page,
+  }) => {
+    await openDrawer(page);
+    await expect(
+      page.getByRole(CLOSE.role, { name: CLOSE.name }),
+    ).toBeFocused();
+
+    await page.keyboard.press("Shift+Tab");
+
+    const onLastControl = await page.evaluate(() => {
+      const panel = document.querySelector(
+        '[role="dialog"][aria-modal="true"]',
+      );
+      if (!panel) return false;
+      const focusable = panel.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      return (
+        focusable.length > 0 &&
+        document.activeElement === focusable[focusable.length - 1]
+      );
     });
-
-    console.log(`Menu button: ${JSON.stringify(buttonInfo)}`);
-    console.log(`Focused after close: ${JSON.stringify(focusedInfo)}`);
-
-    // MobileDrawer may not restore focus - this documents current behavior
-    // The test will be updated after fixes
-    const focusRestored =
-      focusedInfo &&
-      focusedInfo.tagName === buttonInfo.tagName &&
-      focusedInfo.ariaLabel === buttonInfo.ariaLabel;
-
-    // Note: This test documents expected behavior, may fail if fix is needed
     expect(
-      focusRestored,
-      "Focus should return to hamburger button when drawer closes"
+      onLastControl,
+      "Shift+Tab from the first control should wrap to the last",
     ).toBe(true);
+  });
+
+  test("closes on Escape and restores focus to the hamburger", async ({
+    page,
+  }) => {
+    const hamburger = await openDrawer(page);
+
+    await page.keyboard.press("Escape");
+
+    await expect(
+      page.getByRole(DIALOG.role, { name: DIALOG.name }),
+    ).toBeHidden();
+    await page.waitForFunction(
+      () => document.body.dataset.mobileMenuOpen === undefined,
+    );
+    await expect(hamburger).toBeFocused();
+  });
+
+  test("closes when the backdrop is clicked", async ({ page }) => {
+    await openDrawer(page);
+    // The panel is 280px wide and docked right; click the exposed backdrop on
+    // the left half of the 375px viewport.
+    await page.mouse.click(20, 320);
+    await expect(
+      page.getByRole(DIALOG.role, { name: DIALOG.name }),
+    ).toBeHidden();
+  });
+
+  test("closes when a navigation link is chosen", async ({ page }) => {
+    await openDrawer(page);
+    const dialog = page.getByRole(DIALOG.role, { name: DIALOG.name });
+    await dialog.getByRole("link", { name: "About" }).click();
+    // The route change tears the drawer down via useNavigation.
+    await expect(dialog).toBeHidden();
+    await expect(page).toHaveURL(/\/about$/);
   });
 });
 
