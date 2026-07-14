@@ -27,6 +27,10 @@ const PACKAGES = [
     dir: "packages/react",
     requiredExports: [".", "./style.css"],
   },
+  {
+    dir: "packages/web-components",
+    requiredExports: [".", "./native", "./react", "./register"],
+  },
 ];
 
 const SEMVER_RE =
@@ -71,6 +75,7 @@ const publicApiDoc = assertDocIncludes(PUBLIC_API_DOC, "docs/PUBLIC_API.md", [
   "@digitaltableteur/react",
   "@digitaltableteur/tokens",
   "@digitaltableteur/tokens-css",
+  "@digitaltableteur/web-components",
   "check:package-registry-resolution",
   "check:storybook-registry-package",
 ]);

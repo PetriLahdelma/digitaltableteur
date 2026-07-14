@@ -10,12 +10,15 @@ from the published package entrypoints.
 | Package | Purpose | Current role |
 |---|---|---|
 | `@digitaltableteur/react` | React components, stable patterns, hooks, host adapters, package CSS | Runtime package for app and Storybook consumers |
+| `@digitaltableteur/web-components` | Framework-neutral custom elements with hybrid React/native registration modes | Prepared for its first cross-framework package release |
 | `@digitaltableteur/tokens` | DTCG JSON, JS token map, Tailwind refs, manifest | Machine-readable token package |
 | `@digitaltableteur/tokens-css` | Token CSS and generated brand theme CSS | Runtime CSS token package for second consumers |
 
-The site/root install depends on these packages from npm. The local
-`packages/*` folders remain the source used by build, pack, dry-run, and publish
-checks, but they are not npm workspaces for the app install.
+The site/root install depends on the React and token packages from npm. The Web
+Components package is a separate distribution and is not a marketing-site
+runtime dependency. Local `packages/*` folders remain the source used by build,
+pack, dry-run, and publish checks, but they are not npm workspaces for the app
+install.
 
 ## Import Surface
 

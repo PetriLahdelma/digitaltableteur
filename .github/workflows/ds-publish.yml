@@ -12,6 +12,7 @@ on:
           - tokens
           - tokens-css
           - react
+          - web-components
           - all
       dry_run:
         description: Run npm publish --dry-run instead of publishing
@@ -67,6 +68,9 @@ jobs:
       - name: Build and verify React package
         run: npm run check:react-package
 
+      - name: Build and verify Web Components package
+        run: npm run check:web-components
+
       - name: Verify package metadata
         run: npm run check:package-release-notes
 
@@ -100,6 +104,10 @@ jobs:
         if: ${{ (inputs.package == 'react' || inputs.package == 'all') && inputs.dry_run == false }}
         run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react
 
+      - name: Verify @digitaltableteur/web-components OIDC publish auth
+        if: ${{ (inputs.package == 'web-components' || inputs.package == 'all') && inputs.dry_run == false }}
+        run: NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/web-components
+
       - name: Publish @digitaltableteur/tokens
         if: ${{ inputs.package == 'tokens' || inputs.package == 'all' }}
         working-directory: packages/tokens
@@ -128,6 +136,16 @@ jobs:
             NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
           else
             NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/react --publish
+          fi
+
+      - name: Publish @digitaltableteur/web-components
+        if: ${{ inputs.package == 'web-components' || inputs.package == 'all' }}
+        working-directory: packages/web-components
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" npm publish --dry-run --access restricted
+          else
+            NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npm-publish.npmrc" node ../../scripts/design-system/check-npm-oidc-publish-auth.mjs @digitaltableteur/web-components --publish
           fi
 
       - name: Verify @digitaltableteur/react registry install

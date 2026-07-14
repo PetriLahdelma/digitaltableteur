@@ -17,6 +17,7 @@ const PACKAGE_DIRS = new Map([
   ["@digitaltableteur/tokens", "packages/tokens"],
   ["@digitaltableteur/tokens-css", "packages/tokens-css"],
   ["@digitaltableteur/react", "packages/react"],
+  ["@digitaltableteur/web-components", "packages/web-components"],
 ]);
 
 const args = process.argv.slice(2);

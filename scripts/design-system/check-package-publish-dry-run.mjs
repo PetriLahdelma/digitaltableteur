@@ -18,6 +18,7 @@ const PACKAGES = [
   { dir: "packages/tokens", name: "@digitaltableteur/tokens", requiredFiles: ["package.json", "dist/index.js"] },
   { dir: "packages/tokens-css", name: "@digitaltableteur/tokens-css", requiredFiles: ["package.json", "dist/tokens.css"] },
   { dir: "packages/react", name: "@digitaltableteur/react", requiredFiles: ["package.json", "dist/index.js", "dist/style.css"] },
+  { dir: "packages/web-components", name: "@digitaltableteur/web-components", requiredFiles: ["package.json", "custom-elements.json", "dist/index.js", "dist/native.js", "dist/react.js"] },
 ];
 
 function relativePath(path) {
