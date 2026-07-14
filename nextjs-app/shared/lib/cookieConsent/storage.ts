@@ -10,6 +10,13 @@ const MINIMIZED_KEY = "dt-cookie-consent-minimized";
 const CURRENT_VERSION = 1;
 
 /**
+ * Consent lapses after this age and the visitor is re-prompted. 12 months sits
+ * under the EU (CNIL) 13-month ceiling for consent validity. Exported so tests
+ * and callers can reason about the window.
+ */
+export const CONSENT_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
+
+/**
  * Default consent state structure.
  *
  * Optional categories default to `false`: under an opt-in consent model the
@@ -53,6 +60,19 @@ export function loadConsentState(): ConsentState | null {
     // Handle version migration if needed
     if (parsed.version < CURRENT_VERSION) {
       // Future: migration logic
+      return null;
+    }
+
+    // Expiry: consent older than the max age (or with an unparseable
+    // timestamp) fails closed so the visitor is re-prompted rather than tracked
+    // on a stale choice.
+    const savedAt = Date.parse(parsed.timestamp);
+    if (!Number.isFinite(savedAt) || Date.now() - savedAt > CONSENT_MAX_AGE_MS) {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // ignore storage cleanup errors
+      }
       return null;
     }
 
