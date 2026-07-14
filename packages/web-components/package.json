@@ -1,6 +1,6 @@
 {
   "name": "@digitaltableteur/web-components",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "description": "Framework-neutral custom elements for the Digitaltableteur design system.",
   "type": "module",
@@ -50,13 +50,25 @@
     "./dist/register-native.js",
     "./dist/register-react.js"
   ],
-  "dependencies": {
-    "@digitaltableteur/react": "^0.1.15",
-    "@r2wc/react-to-web-component": "^2.1.1"
-  },
   "peerDependencies": {
+    "@digitaltableteur/react": "^0.1.15",
+    "@r2wc/react-to-web-component": "^2.1.1",
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@digitaltableteur/react": {
+      "optional": true
+    },
+    "@r2wc/react-to-web-component": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
   },
   "scripts": {
     "generate": "node ../../scripts/design-system/generate-web-components.mjs",

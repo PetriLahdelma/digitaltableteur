@@ -20,10 +20,11 @@ const booleanProp = (name, sourceProp = name, description = "") => ({
 export default [
   {
     tagName: "dt-button",
-    className: "DtButtonReactElement",
+    adapterClassName: "DtButtonReactElement",
     sourceComponent: "Button",
     contract: "Button",
-    defaultBackend: "react",
+    defaultBackend: "native",
+    nativeClassName: "DtButtonElement",
     description: "Digitaltableteur action or link control.",
     props: [
       stringProp("label", "children", "Visible button label."),
@@ -49,10 +50,11 @@ export default [
   },
   {
     tagName: "dt-badge",
-    className: "DtBadgeReactElement",
+    adapterClassName: "DtBadgeReactElement",
     sourceComponent: "Badge",
     contract: "Badge",
-    defaultBackend: "react",
+    defaultBackend: "native",
+    nativeClassName: "DtBadgeElement",
     description: "Compact status label with semantic tone.",
     props: [
       stringProp("label", "children", "Visible badge label."),
@@ -74,7 +76,7 @@ export default [
   },
   {
     tagName: "dt-spinner",
-    className: "DtSpinnerReactElement",
+    adapterClassName: "DtSpinnerReactElement",
     sourceComponent: "Spinner",
     contract: "Spinner",
     defaultBackend: "native",
@@ -85,7 +87,7 @@ export default [
   },
   {
     tagName: "dt-progress",
-    className: "DtProgressReactElement",
+    adapterClassName: "DtProgressReactElement",
     sourceComponent: "Progress",
     contract: "Progress",
     defaultBackend: "native",
@@ -100,5 +102,79 @@ export default [
       booleanProp("indeterminate"),
     ],
     events: [],
+  },
+  {
+    tagName: "dt-status-dot",
+    sourceComponent: "StatusDot",
+    contract: "StatusDot",
+    defaultBackend: "native",
+    nativeClassName: "DtStatusDotElement",
+    description:
+      "Inline semantic status indicator with visible or screen-reader label.",
+    props: [
+      stringProp("tone"),
+      stringProp("size"),
+      booleanProp("pulse"),
+      stringProp("label"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-divider",
+    sourceComponent: "Divider",
+    contract: "Divider",
+    defaultBackend: "native",
+    nativeClassName: "DtDividerElement",
+    description: "Decorative or semantic horizontal and vertical separator.",
+    props: [stringProp("orientation"), booleanProp("decorative")],
+    events: [],
+  },
+  {
+    tagName: "dt-icon",
+    sourceComponent: "Icon",
+    contract: "Icon",
+    defaultBackend: "native",
+    nativeClassName: "DtIconElement",
+    description:
+      "Framework-free Phosphor icon with design-system sizing and motion.",
+    props: [
+      stringProp("name"),
+      stringProp("weight"),
+      stringProp("legacyStyle"),
+      stringProp("size"),
+      stringProp("color"),
+      numberProp("rotate"),
+      stringProp("flip"),
+      booleanProp("spin"),
+      booleanProp("pulse"),
+      booleanProp("mirrored"),
+      stringProp("ariaLabel"),
+      booleanProp("decorative"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-alert-banner",
+    sourceComponent: "AlertBanner",
+    contract: "AlertBanner",
+    defaultBackend: "native",
+    nativeClassName: "DtAlertBannerElement",
+    description:
+      "Persistent semantic alert with title, description, action, and dismiss slots.",
+    props: [
+      stringProp("tone"),
+      stringProp("titleText", "title"),
+      stringProp("description"),
+      booleanProp("showIcon"),
+      booleanProp("dismissible"),
+      stringProp("ariaLive", "aria-live"),
+    ],
+    events: [
+      {
+        callbackProp: "onDismiss",
+        name: "dismiss",
+        description: "Dispatched when the dismiss control is activated.",
+      },
+    ],
   },
 ];

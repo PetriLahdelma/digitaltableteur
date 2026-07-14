@@ -1,8 +1,7 @@
 # @digitaltableteur/web-components
 
-Framework-neutral custom elements for the Digitaltableteur design system. The
-package is being migrated in place: React adapters provide fast coverage, then
-native implementations replace them without changing tag names or attributes.
+Framework-neutral, native custom elements for the Digitaltableteur design
+system. The default package surface has no React runtime dependency.
 
 ## Install
 
@@ -10,26 +9,33 @@ native implementations replace them without changing tag names or attributes.
 npm install @digitaltableteur/web-components @digitaltableteur/tokens-css
 ```
 
-Load tokens once, then choose exactly one registry mode per document:
+Load tokens once, then register the native element fleet:
 
 ```js
 import "@digitaltableteur/tokens-css/tokens.css";
-import "@digitaltableteur/react/style.css";
 import "@digitaltableteur/web-components/register";
 ```
 
-The default hybrid registry currently serves `dt-spinner` and `dt-progress`
-natively, with `dt-button` and `dt-badge` backed by the canonical React
-components. React-backed tags need the React package stylesheet shown above.
+The default registry includes Button, Badge, StatusDot, Divider, Icon, Spinner,
+Progress, and AlertBanner as native Shadow DOM custom elements.
 
 ```html
 <dt-button label="Continue" variant="primary"></dt-button>
 <dt-badge label="Beta" tone="warning"></dt-badge>
+<dt-status-dot label="Online" tone="success"></dt-status-dot>
+<dt-divider></dt-divider>
+<dt-icon name="check-circle" aria-label="Complete"></dt-icon>
 <dt-spinner label="Loading portfolio"></dt-spinner>
 <dt-progress value="64" label="Upload progress"></dt-progress>
+<dt-alert-banner
+  tone="warning"
+  title-text="Review required"
+  description="Check the deployment settings."
+></dt-alert-banner>
 ```
 
-For a React-free bundle containing only graduated native tags:
+`/native` and `/register/native` are retained as explicit aliases for hosts
+that prefer to state the implementation mode:
 
 ```js
 import "@digitaltableteur/tokens-css/tokens.css";
@@ -42,17 +48,30 @@ element registry is owned by the host:
 ```js
 import { defineElements } from "@digitaltableteur/web-components";
 
-await defineElements();
+defineElements();
 ```
 
-`@digitaltableteur/web-components/react` exposes the complete quick-port fleet
-for parity comparisons. Do not load it together with the hybrid or native
-registry; registration rejects mixed implementations instead of silently
-keeping the first one.
+Native components accept text attributes for simple markup and slots for rich
+content. For example, Button supports default, `icon`, and `end-icon` slots;
+AlertBanner supports default, `title`, `description`, `icon`, and `action`
+slots. Component metadata and attributes are published in
+`custom-elements.json`.
 
-The machine-readable API is published as `custom-elements.json`. Generated
-adapter and manifest drift is checked against the React public API and source
-component contracts before every package build.
+## Legacy React adapters
 
-The first publish must follow `@digitaltableteur/react@0.1.15`; the quick-port
-adapters deliberately depend on that canonical package version or newer.
+The initial quick-port adapters remain available temporarily from
+`@digitaltableteur/web-components/react` and
+`@digitaltableteur/web-components/register/react`. They are not loaded by the
+default entrypoint and their dependencies are optional:
+
+```sh
+npm install @digitaltableteur/react @r2wc/react-to-web-component react react-dom
+```
+
+Load `@digitaltableteur/react/style.css` before registering those adapters.
+Do not register native and React implementations for the same tag in one
+custom-element registry; the package rejects implementation conflicts.
+
+The Digitaltableteur marketing site continues to consume
+`@digitaltableteur/react`. The web-components package is an independent sibling
+implementation, not a migration target for the site.

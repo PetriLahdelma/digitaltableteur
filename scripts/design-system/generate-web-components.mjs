@@ -2,12 +2,26 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const PACKAGE_ROOT = join(ROOT, "packages/web-components");
 const GENERATED_ROOT = join(PACKAGE_ROOT, "src/generated");
 const CONFIG_PATH = join(PACKAGE_ROOT, "web-components.config.mjs");
 const PUBLIC_API_PATH = join(ROOT, "packages/react/public-api.manifest.json");
+const ICON_REGISTRY_PATH = join(
+  ROOT,
+  "nextjs-app/shared/components/Icon/iconRegistry.ts",
+);
+const DISCOVERED_ICON_REGISTRY_PATH = join(
+  ROOT,
+  "nextjs-app/shared/components/Icon/iconRegistry.discovered.ts",
+);
+const ICON_ALIASES_PATH = join(
+  ROOT,
+  "nextjs-app/shared/components/Icon/iconAliases.ts",
+);
 const CHECK = process.argv.includes("--check");
 
 const { default: elements } = await import(pathToFileURL(CONFIG_PATH));
@@ -31,12 +45,13 @@ function validate() {
   const tags = new Set();
   const classes = new Set();
   for (const element of elements) {
-    if (tags.has(element.tagName)) throw new Error(`Duplicate tag ${element.tagName}`);
-    if (classes.has(element.className)) {
-      throw new Error(`Duplicate adapter class ${element.className}`);
+    if (tags.has(element.tagName))
+      throw new Error(`Duplicate tag ${element.tagName}`);
+    if (element.adapterClassName && classes.has(element.adapterClassName)) {
+      throw new Error(`Duplicate adapter class ${element.adapterClassName}`);
     }
     tags.add(element.tagName);
-    classes.add(element.className);
+    if (element.adapterClassName) classes.add(element.adapterClassName);
 
     if (!publicApi.runtimeExports.includes(element.sourceComponent)) {
       throw new Error(
@@ -50,7 +65,9 @@ function validate() {
       throw new Error(`${element.tagName} has invalid defaultBackend`);
     }
     if (element.defaultBackend === "native" && !element.nativeClassName) {
-      throw new Error(`${element.tagName} is native but has no nativeClassName`);
+      throw new Error(
+        `${element.tagName} is native but has no nativeClassName`,
+      );
     }
 
     const contract = contractFor(element);
@@ -72,9 +89,12 @@ function validate() {
 }
 
 function renderAdapter(element) {
-  const interfaceName = element.className.replace(/Element$/, "Props");
+  const interfaceName = element.adapterClassName.replace(/Element$/, "Props");
   const propRows = element.props
-    .map((prop) => `  ${prop.name}?: ${prop.type === "number" ? "number" : prop.type === "boolean" ? "boolean" : "string"};`)
+    .map(
+      (prop) =>
+        `  ${prop.name}?: ${prop.type === "number" ? "number" : prop.type === "boolean" ? "boolean" : "string"};`,
+    )
     .join("\n");
   const eventRows = element.events
     .map((event) => `  ${event.callbackProp}?: (detail?: unknown) => void;`)
@@ -90,37 +110,41 @@ function renderAdapter(element) {
     .join("\n");
   const sourceMappings = [
     ...element.props
-    .filter((prop) => prop.sourceProp !== "children")
-    .map((prop) => `${prop.sourceProp}: props.${prop.name}`),
+      .filter((prop) => prop.sourceProp !== "children")
+      .map((prop) => `${prop.sourceProp}: props.${prop.name}`),
     ...element.events.map(
       (event) => `${event.callbackProp}: props.${event.callbackProp}`,
     ),
-  ]
-    .join(", ");
+  ].join(", ");
   const label = element.props.find((prop) => prop.sourceProp === "children");
   const booleanMappings = element.props
     .filter((prop) => prop.type === "boolean")
     .map((prop) => `[${quote(prop.name)}, ${quote(dashed(prop.name))}]`)
     .join(", ");
-  const baseClassName = `${element.className}Base`;
+  const baseClassName = `${element.adapterClassName}Base`;
 
-  return `export interface ${interfaceName} {\n${[propRows, eventRows].filter(Boolean).join("\n")}\n}\n\nconst ${element.className}Adapter: React.FC<${interfaceName}> = (props) =>\n  React.createElement(\n    ${element.sourceComponent} as unknown as React.ComponentType<Record<string, unknown>>,\n    { ${sourceMappings} },\n    ${label ? `props.${label.name}` : "undefined"},\n  );\n\nconst ${baseClassName} = r2wc(${element.className}Adapter, {\n  props: {\n${propConfig}\n  },${eventConfig ? `\n  events: {\n${eventConfig}\n  },` : ""}\n});\n\nexport const ${element.className} = withStandardBooleanAttributes(\n  ${baseClassName},\n  [${booleanMappings}],\n);`;
+  return `export interface ${interfaceName} {\n${[propRows, eventRows].filter(Boolean).join("\n")}\n}\n\nconst ${element.adapterClassName}Adapter: React.FC<${interfaceName}> = (props) =>\n  React.createElement(\n    ${element.sourceComponent} as unknown as React.ComponentType<Record<string, unknown>>,\n    { ${sourceMappings} },\n    ${label ? `props.${label.name}` : "undefined"},\n  );\n\nconst ${baseClassName} = r2wc(${element.adapterClassName}Adapter, {\n  props: {\n${propConfig}\n  },${eventConfig ? `\n  events: {\n${eventConfig}\n  },` : ""}\n});\n\nexport const ${element.adapterClassName} = withStandardBooleanAttributes(\n  ${baseClassName},\n  [${booleanMappings}],\n);`;
 }
 
 function renderReactAdapters() {
-  const imports = elements.map((element) => element.sourceComponent).join(", ");
-  const adapters = elements.map(renderAdapter).join("\n\n");
-  const allDefinitions = elements
+  const adapterElements = elements.filter(
+    (element) => element.adapterClassName,
+  );
+  const imports = adapterElements
+    .map((element) => element.sourceComponent)
+    .join(", ");
+  const adapters = adapterElements.map(renderAdapter).join("\n\n");
+  const allDefinitions = adapterElements
     .map(
       (element) =>
-        `  [${quote(element.tagName)}, ${element.className}],`,
+        `  [${quote(element.tagName)}, ${element.adapterClassName}],`,
     )
     .join("\n");
-  const hybridDefinitions = elements
+  const hybridDefinitions = adapterElements
     .filter((element) => element.defaultBackend === "react")
     .map(
       (element) =>
-        `  [${quote(element.tagName)}, ${element.className}],`,
+        `  [${quote(element.tagName)}, ${element.adapterClassName}],`,
     )
     .join("\n");
 
@@ -130,9 +154,12 @@ function renderReactAdapters() {
 function renderElementContracts() {
   const interfaces = elements
     .map((element) => {
-      const name = `${element.className.replace(/ReactElement$/, "Element")}Contract`;
+      const name = `${element.nativeClassName}Contract`;
       const props = element.props
-        .map((prop) => `  ${prop.name}?: ${prop.type === "number" ? "number" : prop.type === "boolean" ? "boolean" : "string"};`)
+        .map(
+          (prop) =>
+            `  ${prop.name}?: ${prop.type === "number" ? "number" : prop.type === "boolean" ? "boolean" : "string"};`,
+        )
         .join("\n");
       return `export type ${name} = HTMLElement & {\n${props}\n};`;
     })
@@ -140,7 +167,7 @@ function renderElementContracts() {
   const tagRows = elements
     .map(
       (element) =>
-        `    ${quote(element.tagName)}: ${element.className.replace(/ReactElement$/, "Element")}Contract;`,
+        `    ${quote(element.tagName)}: ${element.nativeClassName}Contract;`,
     )
     .join("\n");
   const migrationRows = elements
@@ -151,6 +178,66 @@ function renderElementContracts() {
     .join("\n");
 
   return `/* This file is generated by scripts/design-system/generate-web-components.mjs. */\n${interfaces}\n\nexport const elementMigrationManifest = [\n${migrationRows}\n] as const;\n\ndeclare global {\n  interface HTMLElementTagNameMap {\n${tagRows}\n  }\n}\n`;
+}
+
+function extractPhosphorExports(source) {
+  const names = new Set();
+  const imports = source.matchAll(
+    /import\s*\{([\s\S]*?)\}\s*from\s*["']@phosphor-icons\/react\/ssr["'];/g,
+  );
+  for (const match of imports) {
+    for (const entry of match[1].split(",")) {
+      const name = entry.trim().split(/\s+as\s+/)[0];
+      if (name) names.add(name);
+    }
+  }
+  return names;
+}
+
+function extractIconAliases(source) {
+  const body = source.match(/ICON_ALIASES[^=]*=\s*\{([\s\S]*?)\n\};/)?.[1];
+  if (!body) throw new Error("Unable to parse ICON_ALIASES");
+
+  const aliases = {};
+  for (const line of body.split("\n")) {
+    const match = line.match(
+      /^\s*(?:"([^"]+)"|([A-Za-z_$][\w$]*)):\s*"([^"]+)",?\s*$/,
+    );
+    if (match) aliases[match[1] ?? match[2]] = match[3];
+  }
+  return aliases;
+}
+
+async function renderNativeIconData() {
+  const phosphor = await import("@phosphor-icons/react/ssr");
+  const iconNames = new Set([
+    ...extractPhosphorExports(readFileSync(ICON_REGISTRY_PATH, "utf8")),
+    ...extractPhosphorExports(
+      readFileSync(DISCOVERED_ICON_REGISTRY_PATH, "utf8"),
+    ),
+  ]);
+  const weights = ["thin", "light", "regular", "bold", "fill", "duotone"];
+  const icons = {};
+
+  for (const name of [...iconNames].sort()) {
+    const component = phosphor[name];
+    if (!component) throw new Error(`Missing Phosphor SSR export ${name}`);
+    icons[name] = {};
+    for (const weight of weights) {
+      icons[name][weight] = renderToStaticMarkup(
+        React.createElement(component, {
+          size: 24,
+          weight,
+          color: "currentColor",
+          "aria-hidden": true,
+          focusable: false,
+        }),
+      );
+    }
+  }
+
+  const aliases = extractIconAliases(readFileSync(ICON_ALIASES_PATH, "utf8"));
+  return `/* This file is generated by scripts/design-system/generate-web-components.mjs. */\nexport const nativeIconNames = ${JSON.stringify([...iconNames].sort())} as const;\nexport type NativeIconName = (typeof nativeIconNames)[number];\nexport type NativeIconWeight = "thin" | "light" | "regular" | "bold" | "fill" | "duotone";\nexport type NativeIconMarkup = Readonly<Record<NativeIconName, Readonly<Record<NativeIconWeight, string>>>>;\n\nexport const nativeIconMarkup: NativeIconMarkup = ${JSON.stringify(icons, null, 2)};\n\nexport const nativeIconAliases: Readonly<Record<string, string>> = ${JSON.stringify(aliases, null, 2)};\n`;
 }
 
 function renderCustomElementsManifest() {
@@ -199,7 +286,9 @@ function update(path, content) {
   }
   if (current === content) return false;
   if (CHECK) {
-    console.error(`Generated web-component artifact is stale: ${relative(ROOT, path)}`);
+    console.error(
+      `Generated web-component artifact is stale: ${relative(ROOT, path)}`,
+    );
     process.exitCode = 1;
     return true;
   }
@@ -212,8 +301,17 @@ validate();
 mkdirSync(GENERATED_ROOT, { recursive: true });
 update(join(GENERATED_ROOT, "react-adapters.ts"), renderReactAdapters());
 update(join(GENERATED_ROOT, "element-contracts.ts"), renderElementContracts());
-update(join(PACKAGE_ROOT, "custom-elements.json"), renderCustomElementsManifest());
+update(
+  join(GENERATED_ROOT, "native-icon-data.ts"),
+  await renderNativeIconData(),
+);
+update(
+  join(PACKAGE_ROOT, "custom-elements.json"),
+  renderCustomElementsManifest(),
+);
 
 if (CHECK && !process.exitCode) {
-  console.log(`✓ web-component generated artifacts match ${elements.length} source contracts`);
+  console.log(
+    `✓ web-component generated artifacts match ${elements.length} source contracts`,
+  );
 }

@@ -1,10 +1,13 @@
-const HTMLElementBase = (globalThis.HTMLElement ?? class {}) as typeof HTMLElement;
+const HTMLElementBase = (globalThis.HTMLElement ??
+  class {}) as typeof HTMLElement;
 
 export abstract class DigitaltableteurElement extends HTMLElementBase {
+  private lightDomObserver?: MutationObserver;
+
   constructor() {
     super();
     if (typeof this.attachShadow === "function" && !this.shadowRoot) {
-      this.attachShadow({ mode: "open" });
+      this.attachShadow({ mode: "open", delegatesFocus: true });
     }
   }
 
@@ -16,6 +19,46 @@ export abstract class DigitaltableteurElement extends HTMLElementBase {
     style.textContent = css;
     root.replaceChildren(style, content);
   }
+
+  protected observeLightDom(callback: () => void): void {
+    const Observer = this.ownerDocument.defaultView?.MutationObserver;
+    if (!Observer) return;
+
+    this.lightDomObserver?.disconnect();
+    this.lightDomObserver = new Observer(callback);
+    this.lightDomObserver.observe(this, {
+      attributes: true,
+      attributeFilter: ["slot"],
+      characterData: true,
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  disconnectedCallback(): void {
+    this.lightDomObserver?.disconnect();
+  }
+}
+
+export function stringAttribute(
+  element: Element,
+  name: string,
+  fallback = "",
+): string {
+  return element.getAttribute(name) ?? fallback;
+}
+
+export function hasDefaultSlotContent(element: Element): boolean {
+  return [...element.childNodes].some((node) => {
+    if (node.nodeType === 1 && (node as Element).hasAttribute("slot")) {
+      return false;
+    }
+    return node.nodeType !== 3 || Boolean(node.textContent?.trim());
+  });
+}
+
+export function hasNamedSlot(element: Element, name: string): boolean {
+  return Boolean(element.querySelector(`:scope > [slot="${name}"]`));
 }
 
 export function enumAttribute<T extends string>(

@@ -218,6 +218,5 @@ export const reactElementDefinitions = [
 ] as const satisfies readonly ElementDefinition[];
 
 export const hybridReactElementDefinitions = [
-  ["dt-button", DtButtonReactElement],
-  ["dt-badge", DtBadgeReactElement],
+
 ] as const satisfies readonly ElementDefinition[];
