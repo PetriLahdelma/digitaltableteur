@@ -99,9 +99,33 @@ const PACKAGE_DEFINITIONS = [
       "package.json",
     ],
   },
+  {
+    dir: "packages/web-components",
+    name: "@digitaltableteur/web-components",
+    maxEntryCount: 40,
+    maxTarballSize: 35_000,
+    maxUnpackedSize: 120_000,
+    requiredFiles: [
+      "README.md",
+      "custom-elements.json",
+      "dist/index.d.ts",
+      "dist/index.js",
+      "dist/native.d.ts",
+      "dist/native.js",
+      "dist/react.d.ts",
+      "dist/react.js",
+      "dist/register.js",
+      "package.json",
+    ],
+  },
 ];
 
-const ROOT_FILE_ALLOWLIST = new Set(["LICENSE", "README.md", "package.json"]);
+const ROOT_FILE_ALLOWLIST = new Set([
+  "LICENSE",
+  "README.md",
+  "custom-elements.json",
+  "package.json",
+]);
 const DIST_FILE_ALLOWLIST = /^dist\/.+\.(?:css|d\.ts|d\.ts\.map|js|json)$/;
 const FORBIDDEN_PATTERNS = [
   { label: "environment file", re: /(^|\/)\.env(?:\.|$)|(^|\/)\.npmrc$|(^|\/)\.npm-userconfig$/ },

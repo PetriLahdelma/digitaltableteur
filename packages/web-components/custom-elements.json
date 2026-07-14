@@ -1,0 +1,308 @@
+{
+  "schemaVersion": "2.1.0",
+  "readme": "./README.md",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "dist/index.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DtButtonReactElement",
+          "description": "Digitaltableteur action or link control.",
+          "customElement": true,
+          "tagName": "dt-button",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible button label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tone",
+              "fieldName": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "surface",
+              "fieldName": "surface",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "rounded",
+              "fieldName": "rounded",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "end-icon",
+              "fieldName": "endIcon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "accessible-name",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "accessible-name-ref",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "accessible-description",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tooltip",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "href",
+              "fieldName": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "target",
+              "fieldName": "target",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "rel",
+              "fieldName": "rel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "submits",
+              "fieldName": "submits",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Button",
+          "dtBackend": "react"
+        },
+        {
+          "kind": "class",
+          "name": "DtBadgeReactElement",
+          "description": "Compact status label with semantic tone.",
+          "customElement": true,
+          "tagName": "dt-badge",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible badge label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tone",
+              "fieldName": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "removable",
+              "fieldName": "removable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "dot",
+              "fieldName": "dot",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "square",
+              "fieldName": "square",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "role",
+              "fieldName": "role",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "remove",
+              "description": "Dispatched after a removable badge is dismissed.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Badge",
+          "dtBackend": "react"
+        },
+        {
+          "kind": "class",
+          "name": "DtSpinnerElement",
+          "description": "Indeterminate loading indicator.",
+          "customElement": true,
+          "tagName": "dt-spinner",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Spinner",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtProgressElement",
+          "description": "Linear determinate or indeterminate progress indicator.",
+          "customElement": true,
+          "tagName": "dt-progress",
+          "attributes": [
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "max",
+              "fieldName": "max",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "state",
+              "fieldName": "state",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "indeterminate",
+              "fieldName": "indeterminate",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Progress",
+          "dtBackend": "native"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "incremental": false,
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "types": [
+      "react",
+      "react-dom"
+    ],
+    "tsBuildInfoFile": "dist/.tsbuildinfo",
+    "paths": {
+      "@digitaltableteur/react": [
+        "../react/src/index.ts"
+      ],
+      "@dt/*": [
+        "../../nextjs-app/shared/components/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../../nextjs-app/shared/custom.d.ts",
+    "../../nextjs-app/shared/types/**/*.d.ts"
+  ],
+  "exclude": [
+    "dist"
+  ]
+}
