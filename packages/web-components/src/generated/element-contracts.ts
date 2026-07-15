@@ -31,6 +31,61 @@ export type DtBadgeElementContract = HTMLElement & {
   role?: string;
 };
 
+export type DtIconButtonElementContract = HTMLElement & {
+  icon?: string;
+  label?: string;
+  variant?: string;
+  tone?: string;
+  surface?: string;
+  size?: string;
+  tooltip?: string;
+  disabled?: boolean;
+  loading?: boolean;
+  submits?: boolean;
+};
+
+export type DtButtonGroupElementContract = HTMLElement & {
+  ariaLabel?: string;
+  attached?: boolean;
+};
+
+export type DtFilterChipElementContract = HTMLElement & {
+  label?: string;
+  pressed?: boolean;
+  variant?: string;
+  size?: string;
+  count?: number;
+  disabled?: boolean;
+};
+
+export type DtLinkElementContract = HTMLElement & {
+  href?: string;
+  label?: string;
+  size?: string;
+  underline?: string;
+  target?: string;
+  rel?: string;
+  download?: string;
+  hrefLang?: string;
+  referrerPolicy?: string;
+  ariaCurrent?: string;
+  ariaLabel?: string;
+};
+
+export type DtNavLinkElementContract = HTMLElement & {
+  href?: string;
+  label?: string;
+  currentPath?: string;
+  exact?: boolean;
+  size?: string;
+  underline?: string;
+};
+
+export type DtSkipLinkElementContract = HTMLElement & {
+  href?: string;
+  label?: string;
+};
+
 export type DtSpinnerElementContract = HTMLElement & {
   label?: string;
   size?: string;
@@ -81,26 +136,48 @@ export type DtAlertBannerElementContract = HTMLElement & {
   ariaLive?: string;
 };
 
+export type DtEmptyStateElementContract = HTMLElement & {
+  icon?: string;
+  titleText?: string;
+  description?: string;
+  headingLevel?: string;
+  size?: string;
+};
+
 export const elementMigrationManifest = [
   { tagName: "dt-button", sourceComponent: "Button", backend: "native" },
   { tagName: "dt-badge", sourceComponent: "Badge", backend: "native" },
+  { tagName: "dt-icon-button", sourceComponent: "IconButton", backend: "native" },
+  { tagName: "dt-button-group", sourceComponent: "ButtonGroup", backend: "native" },
+  { tagName: "dt-filter-chip", sourceComponent: "FilterChip", backend: "native" },
+  { tagName: "dt-link", sourceComponent: "Link", backend: "native" },
+  { tagName: "dt-nav-link", sourceComponent: "NavLink", backend: "native" },
+  { tagName: "dt-skip-link", sourceComponent: "SkipLink", backend: "native" },
   { tagName: "dt-spinner", sourceComponent: "Spinner", backend: "native" },
   { tagName: "dt-progress", sourceComponent: "Progress", backend: "native" },
   { tagName: "dt-status-dot", sourceComponent: "StatusDot", backend: "native" },
   { tagName: "dt-divider", sourceComponent: "Divider", backend: "native" },
   { tagName: "dt-icon", sourceComponent: "Icon", backend: "native" },
   { tagName: "dt-alert-banner", sourceComponent: "AlertBanner", backend: "native" },
+  { tagName: "dt-empty-state", sourceComponent: "EmptyState", backend: "native" },
 ] as const;
 
 declare global {
   interface HTMLElementTagNameMap {
     "dt-button": DtButtonElementContract;
     "dt-badge": DtBadgeElementContract;
+    "dt-icon-button": DtIconButtonElementContract;
+    "dt-button-group": DtButtonGroupElementContract;
+    "dt-filter-chip": DtFilterChipElementContract;
+    "dt-link": DtLinkElementContract;
+    "dt-nav-link": DtNavLinkElementContract;
+    "dt-skip-link": DtSkipLinkElementContract;
     "dt-spinner": DtSpinnerElementContract;
     "dt-progress": DtProgressElementContract;
     "dt-status-dot": DtStatusDotElementContract;
     "dt-divider": DtDividerElementContract;
     "dt-icon": DtIconElementContract;
     "dt-alert-banner": DtAlertBannerElementContract;
+    "dt-empty-state": DtEmptyStateElementContract;
   }
 }

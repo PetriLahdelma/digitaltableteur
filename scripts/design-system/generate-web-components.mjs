@@ -2,12 +2,15 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import React from "react";
-import { renderToStaticMarkup } from "react-dom/server";
+import { icons as phosphorIcons } from "@phosphor-icons/core";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const PACKAGE_ROOT = join(ROOT, "packages/web-components");
 const GENERATED_ROOT = join(PACKAGE_ROOT, "src/generated");
+const PHOSPHOR_CORE_ROOT = resolve(
+  dirname(fileURLToPath(import.meta.resolve("@phosphor-icons/core"))),
+  "..",
+);
 const CONFIG_PATH = join(PACKAGE_ROOT, "web-components.config.mjs");
 const PUBLIC_API_PATH = join(ROOT, "packages/react/public-api.manifest.json");
 const ICON_REGISTRY_PATH = join(
@@ -72,6 +75,7 @@ function validate() {
 
     const contract = contractFor(element);
     for (const prop of element.props) {
+      if (!prop.sourceProp) continue;
       if (!contract.props?.[prop.sourceProp]) {
         throw new Error(
           `${element.tagName}.${prop.name} maps to missing ${element.contract}.${prop.sourceProp}`,
@@ -208,8 +212,7 @@ function extractIconAliases(source) {
   return aliases;
 }
 
-async function renderNativeIconData() {
-  const phosphor = await import("@phosphor-icons/react/ssr");
+function renderNativeIconData() {
   const iconNames = new Set([
     ...extractPhosphorExports(readFileSync(ICON_REGISTRY_PATH, "utf8")),
     ...extractPhosphorExports(
@@ -218,20 +221,24 @@ async function renderNativeIconData() {
   ]);
   const weights = ["thin", "light", "regular", "bold", "fill", "duotone"];
   const icons = {};
+  const catalog = new Map(
+    phosphorIcons.map((icon) => [icon.pascal_name, icon.name]),
+  );
 
   for (const name of [...iconNames].sort()) {
-    const component = phosphor[name];
-    if (!component) throw new Error(`Missing Phosphor SSR export ${name}`);
+    const assetName = catalog.get(name);
+    if (!assetName) throw new Error(`Missing Phosphor core asset ${name}`);
     icons[name] = {};
     for (const weight of weights) {
-      icons[name][weight] = renderToStaticMarkup(
-        React.createElement(component, {
-          size: 24,
-          weight,
-          color: "currentColor",
-          "aria-hidden": true,
-          focusable: false,
-        }),
+      const assetPath = join(
+        PHOSPHOR_CORE_ROOT,
+        "assets",
+        weight,
+        `${assetName}${weight === "regular" ? "" : `-${weight}`}.svg`,
+      );
+      icons[name][weight] = readFileSync(assetPath, "utf8").replace(
+        "<svg ",
+        '<svg width="24" height="24" aria-hidden="true" focusable="false" ',
       );
     }
   }
@@ -301,10 +308,7 @@ validate();
 mkdirSync(GENERATED_ROOT, { recursive: true });
 update(join(GENERATED_ROOT, "react-adapters.ts"), renderReactAdapters());
 update(join(GENERATED_ROOT, "element-contracts.ts"), renderElementContracts());
-update(
-  join(GENERATED_ROOT, "native-icon-data.ts"),
-  await renderNativeIconData(),
-);
+update(join(GENERATED_ROOT, "native-icon-data.ts"), renderNativeIconData());
 update(
   join(PACKAGE_ROOT, "custom-elements.json"),
   renderCustomElementsManifest(),

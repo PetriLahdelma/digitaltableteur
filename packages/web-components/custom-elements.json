@@ -224,6 +224,342 @@
         },
         {
           "kind": "class",
+          "name": "DtIconButtonElement",
+          "description": "Accessible icon-only action composed from native Button.",
+          "customElement": true,
+          "tagName": "dt-icon-button",
+          "attributes": [
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tone",
+              "fieldName": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "surface",
+              "fieldName": "surface",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tooltip",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "submits",
+              "fieldName": "submits",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "IconButton",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtButtonGroupElement",
+          "description": "Attached or spaced group of related action controls.",
+          "customElement": true,
+          "tagName": "dt-button-group",
+          "attributes": [
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "attached",
+              "fieldName": "attached",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "ButtonGroup",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtFilterChipElement",
+          "description": "Controlled filter toggle with pressed semantics.",
+          "customElement": true,
+          "tagName": "dt-filter-chip",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible chip label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "pressed",
+              "fieldName": "pressed",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "count",
+              "fieldName": "count",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "FilterChip",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtLinkElement",
+          "description": "Protocol-safe native anchor with external-link affordance.",
+          "customElement": true,
+          "tagName": "dt-link",
+          "attributes": [
+            {
+              "name": "href",
+              "fieldName": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible link label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "underline",
+              "fieldName": "underline",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "target",
+              "fieldName": "target",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "rel",
+              "fieldName": "rel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "download",
+              "fieldName": "download",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "href-lang",
+              "fieldName": "hrefLang",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "referrer-policy",
+              "fieldName": "referrerPolicy",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-current",
+              "fieldName": "ariaCurrent",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Link",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtNavLinkElement",
+          "description": "Host-routed navigation link with boundary-safe active state.",
+          "customElement": true,
+          "tagName": "dt-nav-link",
+          "attributes": [
+            {
+              "name": "href",
+              "fieldName": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible navigation label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "current-path",
+              "fieldName": "currentPath",
+              "description": "Current host route used to derive active state.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "exact",
+              "fieldName": "exact",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "underline",
+              "fieldName": "underline",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "NavLink",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSkipLinkElement",
+          "description": "Keyboard bypass link revealed on focus.",
+          "customElement": true,
+          "tagName": "dt-skip-link",
+          "attributes": [
+            {
+              "name": "href",
+              "fieldName": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible link label on focus.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "SkipLink",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
           "name": "DtSpinnerElement",
           "description": "Indeterminate loading indicator.",
           "customElement": true,
@@ -524,6 +860,53 @@
             }
           ],
           "dtSourceComponent": "AlertBanner",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtEmptyStateElement",
+          "description": "Empty-result composition with semantic heading, description, icon, and action slots.",
+          "customElement": true,
+          "tagName": "dt-empty-state",
+          "attributes": [
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title-text",
+              "fieldName": "titleText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "heading-level",
+              "fieldName": "headingLevel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "EmptyState",
           "dtBackend": "native"
         }
       ]

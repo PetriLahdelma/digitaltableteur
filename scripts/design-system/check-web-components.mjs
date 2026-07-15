@@ -27,14 +27,33 @@ const expectedTags = [
   "dt-alert-banner",
   "dt-badge",
   "dt-button",
+  "dt-button-group",
   "dt-divider",
+  "dt-empty-state",
+  "dt-filter-chip",
   "dt-icon",
+  "dt-icon-button",
+  "dt-link",
+  "dt-nav-link",
   "dt-progress",
+  "dt-skip-link",
   "dt-spinner",
   "dt-status-dot",
 ];
 if (JSON.stringify(tags) !== JSON.stringify(expectedTags)) {
   throw new Error(`Custom Elements Manifest tags differ: ${tags.join(", ")}`);
+}
+
+const generatorSource = readFileSync(
+  join(ROOT, "scripts/design-system/generate-web-components.mjs"),
+  "utf8",
+);
+const generatorImports = generatorSource.slice(0, generatorSource.indexOf("const ROOT"));
+if (
+  /from ["'](?:react|react-dom(?:\/server)?)["']/.test(generatorImports) ||
+  generatorSource.includes("renderToStaticMarkup")
+) {
+  throw new Error("Native icon generation must not invoke React or React DOM");
 }
 
 const packageJson = JSON.parse(
@@ -96,7 +115,7 @@ for (const required of [
   if (!files.has(required))
     throw new Error(`Web-components tarball misses ${required}`);
 }
-if (pack.entryCount > 50 || pack.unpackedSize > 500_000) {
+if (pack.entryCount > 70 || pack.unpackedSize > 450_000) {
   throw new Error(
     `Web-components tarball exceeds its ceiling (${pack.entryCount} files, ${pack.unpackedSize} bytes)`,
   );

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0 - 2026-07-15
+
+- Adds native Link, NavLink, SkipLink, IconButton, FilterChip, ButtonGroup, and
+  EmptyState elements.
+- Keeps routing host-owned through the native-only `current-path` NavLink
+  attribute and preserves boundary-safe active matching.
+- Adds controlled pressed-state, attached-group, secure URL, slot composition,
+  and current-page accessibility conformance coverage.
+- Generates the native icon catalog from official raw Phosphor SVG assets
+  without invoking React or React DOM.
+
 ## 0.2.0 - 2026-07-14
 
 - Makes the default registry fully native and synchronous, without a React

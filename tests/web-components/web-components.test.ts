@@ -6,9 +6,16 @@ import {
   DtAlertBannerElement,
   DtBadgeElement,
   DtButtonElement,
+  DtButtonGroupElement,
   DtDividerElement,
+  DtEmptyStateElement,
+  DtFilterChipElement,
   DtIconElement,
+  DtIconButtonElement,
+  DtLinkElement,
+  DtNavLinkElement,
   DtProgressElement,
+  DtSkipLinkElement,
   DtSpinnerElement,
   DtStatusDotElement,
 } from "../../packages/web-components/src/native";
@@ -21,12 +28,19 @@ import { defineElementSet } from "../../packages/web-components/src/registry";
 const NATIVE_TAGS = [
   "dt-icon",
   "dt-button",
+  "dt-icon-button",
+  "dt-button-group",
+  "dt-filter-chip",
+  "dt-link",
+  "dt-nav-link",
+  "dt-skip-link",
   "dt-badge",
   "dt-status-dot",
   "dt-divider",
   "dt-spinner",
   "dt-progress",
   "dt-alert-banner",
+  "dt-empty-state",
 ] as const;
 
 beforeAll(() => {
@@ -45,12 +59,19 @@ describe("native registry", () => {
     expect(defineNativeElements()).toEqual(NATIVE_TAGS);
     expect(customElements.get("dt-icon")).toBe(DtIconElement);
     expect(customElements.get("dt-button")).toBe(DtButtonElement);
+    expect(customElements.get("dt-icon-button")).toBe(DtIconButtonElement);
+    expect(customElements.get("dt-button-group")).toBe(DtButtonGroupElement);
+    expect(customElements.get("dt-filter-chip")).toBe(DtFilterChipElement);
+    expect(customElements.get("dt-link")).toBe(DtLinkElement);
+    expect(customElements.get("dt-nav-link")).toBe(DtNavLinkElement);
+    expect(customElements.get("dt-skip-link")).toBe(DtSkipLinkElement);
     expect(customElements.get("dt-badge")).toBe(DtBadgeElement);
     expect(customElements.get("dt-status-dot")).toBe(DtStatusDotElement);
     expect(customElements.get("dt-divider")).toBe(DtDividerElement);
     expect(customElements.get("dt-spinner")).toBe(DtSpinnerElement);
     expect(customElements.get("dt-progress")).toBe(DtProgressElement);
     expect(customElements.get("dt-alert-banner")).toBe(DtAlertBannerElement);
+    expect(customElements.get("dt-empty-state")).toBe(DtEmptyStateElement);
   });
 
   it("rejects a mixed registry before defining any new tags", () => {
@@ -264,6 +285,178 @@ describe("native action and content elements", () => {
     element.shadowRoot?.querySelector("button")?.click();
     expect(onDismiss).toHaveBeenCalledTimes(1);
     expect((onDismiss.mock.calls[0]?.[0] as CustomEvent).composed).toBe(true);
+  });
+});
+
+describe("native action and navigation composition", () => {
+  it("composes IconButton from the native Button and preserves one click", () => {
+    const element = document.createElement(
+      "dt-icon-button",
+    ) as DtIconButtonElement;
+    element.label = "Open menu";
+    element.icon = "list";
+    const onClick = vi.fn();
+    element.addEventListener("click", onClick);
+    document.body.append(element);
+
+    const button = element.shadowRoot?.querySelector("dt-button");
+    expect(button).toHaveAttribute("accessible-name", "Open menu");
+    expect(button).toHaveAttribute("icon", "list");
+    expect(button).toHaveAttribute("variant", "tertiary");
+    expect(button).toHaveAttribute("rounded");
+    expect(
+      button?.shadowRoot?.querySelector('dt-icon[name="list"]'),
+    ).toBeTruthy();
+    expect(DtIconButtonElement.formAssociated).toBe(true);
+
+    element.submits = true;
+    expect(element.shadowRoot?.querySelector("dt-button")).toHaveAttribute(
+      "submits",
+    );
+
+    element.click();
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it("keeps FilterChip controlled while exposing pressed and count semantics", () => {
+    const element = document.createElement(
+      "dt-filter-chip",
+    ) as DtFilterChipElement;
+    element.textContent = "Articles";
+    element.pressed = true;
+    element.count = 12;
+    const onClick = vi.fn();
+    element.addEventListener("click", onClick);
+    document.body.append(element);
+
+    const button = element.shadowRoot?.querySelector("button");
+    expect(button).toHaveAttribute("aria-pressed", "true");
+    expect(button).toHaveClass("pill", "md");
+    expect(button?.querySelector('[part="count"]')).toHaveTextContent("(12)");
+
+    button?.click();
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(element.pressed).toBe(true);
+  });
+
+  it("renders secure Link destinations and rejects executable protocols", () => {
+    const element = document.createElement("dt-link") as DtLinkElement;
+    element.textContent = "External documentation";
+    element.href = "https://example.com/docs";
+    element.target = "_blank";
+    document.body.append(element);
+
+    let anchor = element.shadowRoot?.querySelector("a");
+    expect(anchor).toHaveAttribute("href", "https://example.com/docs");
+    expect(anchor).toHaveAttribute("rel", "noopener noreferrer");
+    expect(
+      anchor?.querySelector('dt-icon[name="arrow-square-out"]'),
+    ).toBeTruthy();
+
+    element.href = "javascript:alert(1)";
+    anchor = element.shadowRoot?.querySelector("a");
+    expect(anchor).toHaveAttribute("href", "#");
+    expect(anchor?.querySelector("dt-icon")).toBeNull();
+  });
+
+  it("matches NavLink only at path boundaries and removes the current-page link", () => {
+    const element = document.createElement("dt-nav-link") as DtNavLinkElement;
+    element.textContent = "Work";
+    element.href = "/work";
+    element.currentPath = "/workshops";
+    document.body.append(element);
+
+    expect(element.shadowRoot?.querySelector("dt-link")).toBeTruthy();
+    expect(
+      element.shadowRoot?.querySelector('[aria-current="page"]'),
+    ).toBeNull();
+
+    element.currentPath = "/work/case-study";
+    expect(element.shadowRoot?.querySelector("dt-link")).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+
+    element.currentPath = "/work";
+    expect(element.shadowRoot?.querySelector("dt-link")).toBeNull();
+    expect(element.shadowRoot?.querySelector("span")).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+
+    element.exact = true;
+    element.currentPath = "/work/case-study";
+    expect(element.shadowRoot?.querySelector("dt-link")).not.toHaveAttribute(
+      "aria-current",
+    );
+  });
+
+  it("renders SkipLink with native focus-reveal semantics", () => {
+    const element = document.createElement("dt-skip-link") as DtSkipLinkElement;
+    element.textContent = "Skip navigation";
+    document.body.append(element);
+
+    const anchor = element.shadowRoot?.querySelector("a");
+    expect(anchor).toHaveAttribute("href", "#main-content");
+    expect(anchor?.querySelector("slot")).toBeTruthy();
+
+    element.href = "javascript:alert(1)";
+    expect(element.shadowRoot?.querySelector("a")).toHaveAttribute(
+      "href",
+      "#main-content",
+    );
+  });
+
+  it("composes EmptyState heading, description, icon, and action slot", () => {
+    const element = document.createElement(
+      "dt-empty-state",
+    ) as DtEmptyStateElement;
+    element.titleText = "No results";
+    element.description = "Try another filter.";
+    element.icon = "magnifying-glass";
+    element.headingLevel = "h3";
+    const action = document.createElement("dt-button");
+    action.slot = "action";
+    action.textContent = "Clear filters";
+    element.append(action);
+    document.body.append(element);
+
+    expect(element.shadowRoot?.querySelector("h3")).toHaveTextContent(
+      "No results",
+    );
+    expect(
+      element.shadowRoot?.querySelector("dt-icon[decorative]"),
+    ).toHaveAttribute("name", "magnifying-glass");
+    expect(
+      element.shadowRoot?.querySelector('[part="description"]'),
+    ).toHaveTextContent("Try another filter.");
+    expect(
+      element.shadowRoot?.querySelector('slot[name="action"]'),
+    ).toBeTruthy();
+  });
+
+  it("groups slotted controls and assigns attached edge positions", async () => {
+    const group = document.createElement(
+      "dt-button-group",
+    ) as DtButtonGroupElement;
+    group.ariaLabel = "View options";
+    const first = document.createElement("dt-button");
+    const second = document.createElement("dt-icon-button");
+    group.append(first, second);
+    document.body.append(group);
+
+    expect(group.shadowRoot?.querySelector('[role="group"]')).toHaveAttribute(
+      "aria-label",
+      "View options",
+    );
+    await waitFor(() => {
+      expect(first).toHaveAttribute("data-dt-group-position", "first");
+      expect(second).toHaveAttribute("data-dt-group-position", "last");
+    });
+
+    group.attached = false;
+    expect(first).not.toHaveAttribute("data-dt-group-position");
+    expect(second).not.toHaveAttribute("data-dt-group-position");
   });
 });
 

@@ -47,6 +47,9 @@ const styles = `
     transition: background-color var(--duration-fast) var(--ease-out-cubic), border-color var(--duration-fast) var(--ease-out-cubic), color var(--duration-fast) var(--ease-out-cubic), filter var(--duration-fast) var(--ease-out-cubic), transform var(--duration-instant) var(--ease-out-cubic);
   }
   .control:focus-visible { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary)); outline-offset: var(--focus-ring-offset, 2px); }
+  :host([data-dt-group-position="first"]) .control { border-start-end-radius: 0; border-end-end-radius: 0; }
+  :host([data-dt-group-position="middle"]) .control { border-radius: 0; }
+  :host([data-dt-group-position="last"]) .control { border-start-start-radius: 0; border-end-start-radius: 0; }
   .control:active:not(:disabled, [aria-disabled="true"]) { transform: scale(0.97); }
   .error { --btn-accent: var(--color-error); }
   .warning { --btn-accent: var(--color-warning-contrast); }

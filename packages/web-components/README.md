@@ -16,11 +16,21 @@ import "@digitaltableteur/tokens-css/tokens.css";
 import "@digitaltableteur/web-components/register";
 ```
 
-The default registry includes Button, Badge, StatusDot, Divider, Icon, Spinner,
-Progress, and AlertBanner as native Shadow DOM custom elements.
+The default registry contains 15 native Shadow DOM custom elements:
+AlertBanner, Badge, Button, ButtonGroup, Divider, EmptyState, FilterChip, Icon,
+IconButton, Link, NavLink, Progress, SkipLink, Spinner, and StatusDot.
 
 ```html
 <dt-button label="Continue" variant="primary"></dt-button>
+<dt-icon-button icon="list" label="Open menu"></dt-icon-button>
+<dt-button-group aria-label="View options">
+  <dt-button>Grid</dt-button>
+  <dt-button>List</dt-button>
+</dt-button-group>
+<dt-filter-chip pressed count="12">Articles</dt-filter-chip>
+<dt-link href="https://example.com">Documentation</dt-link>
+<dt-nav-link href="/work" current-path="/work/case-study">Work</dt-nav-link>
+<dt-skip-link>Skip to main content</dt-skip-link>
 <dt-badge label="Beta" tone="warning"></dt-badge>
 <dt-status-dot label="Online" tone="success"></dt-status-dot>
 <dt-divider></dt-divider>
@@ -32,6 +42,13 @@ Progress, and AlertBanner as native Shadow DOM custom elements.
   title-text="Review required"
   description="Check the deployment settings."
 ></dt-alert-banner>
+<dt-empty-state
+  icon="magnifying-glass"
+  title-text="No results"
+  description="Try another filter."
+>
+  <dt-button slot="action">Clear filters</dt-button>
+</dt-empty-state>
 ```
 
 `/native` and `/register/native` are retained as explicit aliases for hosts
@@ -54,8 +71,10 @@ defineElements();
 Native components accept text attributes for simple markup and slots for rich
 content. For example, Button supports default, `icon`, and `end-icon` slots;
 AlertBanner supports default, `title`, `description`, `icon`, and `action`
-slots. Component metadata and attributes are published in
-`custom-elements.json`.
+slots; EmptyState supports `title`, `description`, `icon`, and `action` slots.
+`dt-nav-link` deliberately does not inspect a framework router: the host updates
+`current-path` when navigation changes. Component metadata and attributes are
+published in `custom-elements.json`.
 
 ## Legacy React adapters
 
