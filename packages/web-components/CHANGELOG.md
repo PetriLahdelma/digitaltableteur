@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.0 - 2026-07-15
 
 - Adds native Avatar, AvatarGroup, Display, FlexBox, Grid, Kbd, Skeleton, and
   VisuallyHidden elements with responsive layout, semantic, motion, and
@@ -15,6 +15,9 @@
   integrity, and generated contract drift.
 - Expands applicable native stories to match their canonical React component
   surfaces.
+
+Verified by `check:web-components:dod`, `check:package-release-notes`,
+`check:package-tarballs`, and `check:npm-consumer-install`.
 
 ## 0.3.0 - 2026-07-15
 
