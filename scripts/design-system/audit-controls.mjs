@@ -190,7 +190,14 @@ for (const root of ROOTS) {
 const index = await (await fetch(`${URL}/index.json`)).json()
 const entries = Object.values(index.entries ?? {})
 function storyIdFor(name) {
-    const of = entries.filter((e) => e.type === 'story' && e.title?.split('/').pop() === name)
+    // Native web-component stories intentionally mirror React component names.
+    // This audit gates the React contract catalog, so never let index ordering
+    // select a Web Components story with the same leaf title.
+    const of = entries.filter(
+        (e) => e.type === 'story'
+            && !e.title?.startsWith('Web Components/')
+            && e.title?.split('/').pop() === name,
+    )
     if (!of.length) return null
     const pref = of.find((e) => e.name === 'Playground') ?? of.find((e) => e.name === 'Default') ?? of[0]
     return pref.id

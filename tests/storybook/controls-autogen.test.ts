@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { autogenArgs } from "../../.storybook/lib/controls-autogen";
+import {
+  autogenArgs,
+  autogenArgTypes,
+} from "../../.storybook/lib/controls-autogen";
 
 function checkboxArgs(initialArgs: Record<string, unknown>) {
   return autogenArgs({
@@ -10,14 +13,25 @@ function checkboxArgs(initialArgs: Record<string, unknown>) {
 }
 
 describe("contract-driven Storybook args", () => {
-  it("prefers an uncontrolled default regardless of contract property order", () => {
+  it("seeds controlled and uncontrolled rows so both controls stay operable", () => {
     const args = checkboxArgs({});
 
-    expect(args).not.toHaveProperty("checked");
+    expect(args).toHaveProperty("checked", false);
     expect(args).toHaveProperty("defaultChecked", false);
   });
 
-  it("preserves an explicitly authored controlled value", () => {
-    expect(checkboxArgs({ checked: true })).toMatchObject({ checked: true });
+  it("preserves an explicitly authored uncontrolled default", () => {
+    expect(checkboxArgs({ defaultChecked: true })).toMatchObject({
+      defaultChecked: true,
+    });
+  });
+
+  it("replaces docgen's object control for a ReactNode children slot", () => {
+    const argTypes = autogenArgTypes({
+      title: "Site/VisuallyHidden",
+      argTypes: { children: { control: { type: "object" } } },
+    } as never) as Record<string, { control?: { type?: string } }>;
+
+    expect(argTypes.children?.control).toEqual({ type: "text" });
   });
 });

@@ -165,9 +165,19 @@ export const autogenArgTypes: ArgTypesEnhancer = (context) => {
     // A story-authored entry (control/options/mapping/action or explicit hide)
     // is deliberate — leave it alone. Docgen-inferred entries carry name/type/
     // description but none of those fields.
+    const existingControl = existing?.control as
+      | string
+      | { type?: string }
+      | undefined;
+    const existingControlType =
+      typeof existingControl === "string"
+        ? existingControl
+        : existingControl?.type;
+    const docgenObjectControl =
+      prop === "children" && existingControlType === "object";
     const authored =
       existing &&
-      ("control" in existing ||
+      ((!docgenObjectControl && "control" in existing) ||
         "options" in existing ||
         "mapping" in existing ||
         "action" in existing ||
@@ -188,29 +198,6 @@ export const autogenArgs: ArgsEnhancer = (context) => {
   const seeds: Record<string, unknown> = {};
   for (const [prop, spec] of Object.entries(contract.props)) {
     if (HIDDEN.has(prop) || /^on[A-Z]/.test(prop) || prop === "children")
-      continue;
-    // React treats a controlled prop and its uncontrolled default as mutually
-    // exclusive, even when the generated default is false or an empty string.
-    const counterpart = {
-      checked: "defaultChecked",
-      defaultChecked: "checked",
-      value: "defaultValue",
-      defaultValue: "value",
-    }[prop];
-    const isControlledProp = prop === "checked" || prop === "value";
-    if (
-      isControlledProp &&
-      counterpart &&
-      counterpart in contract.props &&
-      !(prop in context.initialArgs) &&
-      !(counterpart in context.initialArgs)
-    ) {
-      continue;
-    }
-    if (
-      counterpart &&
-      (counterpart in context.initialArgs || counterpart in seeds)
-    )
       continue;
     const argType = (context.argTypes as Record<string, AnyArgType>)[prop];
     if (argType && "mapping" in argType) continue; // preset selects stay unset
