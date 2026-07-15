@@ -551,6 +551,7 @@ const preview: Preview = {
           "Feedback",
           "Navigation",
           "Layout",
+          "Web Components",
           "Site",
           ["Chat"],
           "Patterns",

@@ -51,13 +51,21 @@ export function DtDocsPage() {
   const stories = context.componentStories() as unknown as PreparedDocsStory[];
 
   const preparedMeta = context.resolveOf("meta", ["meta"]) as unknown as {
-    preparedMeta?: { component?: unknown; title?: string };
+    preparedMeta?: {
+      component?: unknown;
+      title?: string;
+      parameters?: { implementation?: string };
+    };
   };
   const name = componentNameFromDocsContext({
     component: preparedMeta.preparedMeta?.component,
     title: preparedMeta.preparedMeta?.title ?? "",
   } as Parameters<typeof componentNameFromDocsContext>[0]);
   const contract = name ? getContractByName(name) : null;
+  const implementation =
+    preparedMeta.preparedMeta?.parameters?.implementation === "web-component"
+      ? "web-component"
+      : "react";
 
   if (!contract) {
     return (
@@ -69,6 +77,17 @@ export function DtDocsPage() {
         <Controls />
         <Stories />
       </>
+    );
+  }
+
+  if (implementation === "web-component") {
+    return (
+      <div className={styles.page}>
+        <DocHeader contract={contract} implementation="web-component" />
+        <Primary />
+        <Controls />
+        <Stories />
+      </div>
     );
   }
 
@@ -85,7 +104,7 @@ export function DtDocsPage() {
 
   return (
     <div className={styles.page}>
-      <DocHeader contract={contract} />
+      <DocHeader contract={contract} implementation="react" />
       {contract.status === "deprecated" ? (
         <AlertBanner
           tone="warning"

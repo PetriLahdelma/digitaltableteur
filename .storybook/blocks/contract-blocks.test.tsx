@@ -19,6 +19,14 @@ describe("contract blocks", () => {
       "href",
       c.figma as string,
     );
+    expect(
+      screen.getByRole("navigation", { name: "Implementation" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("React")).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("link", { name: "Web component" })).toHaveAttribute(
+      "href",
+      "/?path=/docs/web-components-actions-button--docs",
+    );
   });
 
   it("ImportBlock renders the @dt import line", () => {
@@ -57,5 +65,40 @@ describe("contract blocks", () => {
       </>,
     );
     expect(container).toBeEmptyDOMElement();
+  });
+
+  it("omits implementation navigation without a native counterpart", () => {
+    render(
+      <DocHeader
+        contract={{ name: "NonNative", status: "stable" } as DtContract}
+      />,
+    );
+    expect(
+      screen.queryByRole("navigation", { name: "Implementation" }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("links multiword component names to Storybook's kebab-case story IDs", () => {
+    render(
+      <DocHeader
+        contract={{ name: "ButtonGroup", status: "stable" } as DtContract}
+      />,
+    );
+    expect(screen.getByRole("link", { name: "Web component" })).toHaveAttribute(
+      "href",
+      "/?path=/docs/web-components-actions-buttongroup--docs",
+    );
+  });
+
+  it("links web-component docs back to the canonical React docs", () => {
+    render(<DocHeader contract={c} implementation="web-component" />);
+    expect(screen.getByText("Web component")).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+    expect(screen.getByRole("link", { name: "React" })).toHaveAttribute(
+      "href",
+      "/?path=/docs/actions-button--docs",
+    );
   });
 });

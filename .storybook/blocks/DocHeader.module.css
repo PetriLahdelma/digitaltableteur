@@ -22,6 +22,41 @@
   margin: 0;
 }
 
+.implementations {
+  display: flex;
+  align-items: center;
+  gap: var(--space-internal-16);
+  border-block-end: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-s);
+}
+
+.implementations a,
+.currentImplementation {
+  margin-block-end: -1px;
+  padding-block: var(--space-internal-8);
+  border-block-end: 2px solid transparent;
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.implementations a:hover,
+.implementations a:focus-visible {
+  color: var(--color-text);
+}
+
+.implementations a:focus-visible {
+  border-radius: var(--radius-sm);
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset, 2px);
+}
+
+.currentImplementation {
+  border-block-end-color: var(--color-text);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
 /* View in Figma sits on its own row; a touch more air above it than the
    tight group -> title gap. Plain link, no wavy underline (underline="none"),
    no icon. The doubled class (.figma.figma) raises specificity above

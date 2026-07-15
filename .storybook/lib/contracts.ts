@@ -119,8 +119,7 @@ export function componentNameFromDocsContext(
   const fromComponent =
     typeof context.component === "function"
       ? (context.component as { displayName?: string; name?: string })
-          .displayName ||
-        (context.component as { name?: string }).name
+          .displayName || (context.component as { name?: string }).name
       : null;
   const title = context.title ?? "";
   const segment = title.split("/").filter(Boolean).pop() ?? null;
@@ -149,13 +148,24 @@ export function componentNameFromDocsContext(
  */
 export const titleByComponentName: Record<string, string> = {
   Button: "Actions/Button",
+  ButtonGroup: "Actions/ButtonGroup",
+  FilterChip: "Actions/FilterChip",
+  IconButton: "Actions/IconButton",
   Badge: "Content/Badge",
+  EmptyState: "Content/EmptyState",
   Icon: "Content/Icon",
   Text: "Content/Text",
   Title: "Content/Title",
+  AlertBanner: "Feedback/AlertBanner",
+  Progress: "Feedback/Progress",
+  Spinner: "Feedback/Spinner",
+  StatusDot: "Feedback/StatusDot",
   Link: "Navigation/Link",
+  NavLink: "Navigation/NavLink",
+  SkipLink: "Navigation/SkipLink",
   Label: "Forms/Label",
   Card: "Layout/Card",
+  Divider: "Layout/Divider",
 };
 
 /** Storybook's title -> id slug (mirrors @storybook/csf sanitize rules). */
