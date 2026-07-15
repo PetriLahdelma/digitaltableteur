@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-14T16:39:59.880Z",
+  "generatedAt": "2026-07-15T10:35:24.240Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -41089,7 +41089,9 @@
           "realBrowserForcedColorsVerified": true
         },
         "tokens": {
-          "colors": [],
+          "colors": [
+            "--link-color"
+          ],
           "spacing": []
         },
         "lightDarkVerified": true,

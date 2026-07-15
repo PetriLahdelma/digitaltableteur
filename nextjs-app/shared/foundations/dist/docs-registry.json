@@ -19441,7 +19441,9 @@
       ],
       "usage": null,
       "tokens": {
-        "colors": [],
+        "colors": [
+          "--link-color"
+        ],
         "spacing": []
       },
       "examples": []
