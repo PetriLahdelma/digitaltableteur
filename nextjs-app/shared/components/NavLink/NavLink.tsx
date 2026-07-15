@@ -35,11 +35,15 @@ export function NavLink({
   // SSR fallback and outside the app router (e.g. Storybook). Treat null as
   // "no current pathname" → never active.
   const pathname = useNavigationPathname();
+  // Non-exact matches the route and its sub-routes, but a bare startsWith
+  // over-matches siblings that merely share a prefix (href "/work" would
+  // light up on "/workshops"). Require either an exact hit or a real path
+  // boundary ("/work/…").
   const isActive = pathname === null
     ? false
     : exact
       ? pathname === href
-      : pathname.startsWith(href);
+      : pathname === href || pathname.startsWith(`${href}/`);
   const isSamePath = pathname === href;
   const linkClassName = cn(
     // rounded-sm matches the LanguageSwitcher buttons so the global

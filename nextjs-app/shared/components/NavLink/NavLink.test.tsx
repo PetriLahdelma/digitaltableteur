@@ -38,6 +38,15 @@ describe("NavLink", () => {
     );
   });
 
+  it("does not mark a sibling route that merely shares the prefix", () => {
+    // "/workshops" starts with "/work" but is a different route — a bare
+    // startsWith would wrongly light up the Work link here.
+    renderWithPathname("/workshops", <NavLink href="/work">Work</NavLink>);
+    expect(screen.getByRole("link", { name: "Work" })).not.toHaveAttribute(
+      "aria-current",
+    );
+  });
+
   it("exact requires the full pathname to match", () => {
     renderWithPathname(
       "/work/case-study",
