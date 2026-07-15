@@ -72,6 +72,12 @@ describe("native form elements", () => {
       value: "hello@example.com",
     });
     expect((onValue.mock.calls[0]?.[0] as CustomEvent).composed).toBe(true);
+
+    element.helperText = "Updated help text.";
+    expect(element.shadowRoot?.querySelector("input")).toHaveValue(
+      "hello@example.com",
+    );
+    expect(element.value).toBe("hello@example.com");
   });
 
   it("clears TextInput values and restores input focus", () => {
@@ -115,6 +121,10 @@ describe("native form elements", () => {
     expect((onValue.mock.calls[0]?.[0] as CustomEvent).detail).toEqual({
       value: "Hello",
     });
+
+    element.helperText = "Updated guidance.";
+    expect(element.shadowRoot?.querySelector("textarea")).toHaveValue("Hello");
+    expect(element.value).toBe("Hello");
   });
 
   it("resolves an indeterminate Checkbox and emits checked state", () => {

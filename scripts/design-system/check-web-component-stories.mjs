@@ -191,19 +191,38 @@ try {
             new Event("input", { bubbles: true, composed: true }),
           );
         }
+        control.setAttribute("helper-text", "Rerender check");
+        const currentControl =
+          control.shadowRoot?.querySelector("input, textarea");
         const label = control.shadowRoot?.querySelector("label");
         const result = {
           formValue: new FormData(form).get("field"),
           eventDetail,
+          liveValue:
+            currentControl instanceof HTMLInputElement ||
+            currentControl instanceof HTMLTextAreaElement
+              ? currentControl.type === "checkbox"
+                ? currentControl.checked
+                : currentControl.value
+              : null,
           labelFor: label?.getAttribute("for"),
-          controlId: nativeControl?.id,
+          controlId: currentControl?.id,
         };
         form.remove();
         return result;
       }, story.tagName);
+      const expectedValue =
+        story.tagName === "dt-checkbox" ? "on" : "browser value";
+      const expectedDetail =
+        story.tagName === "dt-checkbox"
+          ? { checked: true }
+          : { value: "browser value" };
       if (
-        !formResult.formValue ||
-        !formResult.eventDetail ||
+        formResult.formValue !== expectedValue ||
+        JSON.stringify(formResult.eventDetail) !==
+          JSON.stringify(expectedDetail) ||
+        formResult.liveValue !==
+          (story.tagName === "dt-checkbox" ? true : "browser value") ||
         formResult.labelFor !== formResult.controlId
       ) {
         throw new Error(

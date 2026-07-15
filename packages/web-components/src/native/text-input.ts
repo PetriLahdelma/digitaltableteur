@@ -53,12 +53,33 @@ export class DtTextInputElement extends DigitaltableteurElement {
 
   private control: HTMLInputElement | null = null;
   private formDisabled = false;
+  private liveValue: string | null = null;
+  private valueDirty = false;
   private readonly internals = attachFormInternals(this);
 
   connectedCallback(): void {
+    this.liveValue ??= stringAttribute(
+      this,
+      "value",
+      stringAttribute(this, "default-value"),
+    );
     this.render();
   }
-  attributeChangedCallback(): void {
+  attributeChangedCallback(
+    name: string,
+    _oldValue: string | null,
+    value: string | null,
+  ): void {
+    if (name === "value") {
+      this.liveValue = value ?? "";
+      this.valueDirty = false;
+    } else if (
+      name === "default-value" &&
+      !this.valueDirty &&
+      !this.hasAttribute("value")
+    ) {
+      this.liveValue = value ?? "";
+    }
     if (this.isConnected) this.render();
   }
   formDisabledCallback(disabled: boolean): void {
@@ -66,7 +87,9 @@ export class DtTextInputElement extends DigitaltableteurElement {
     if (this.control) this.control.disabled = disabled || this.disabled;
   }
   formResetCallback(): void {
-    this.value = stringAttribute(this, "default-value");
+    this.liveValue = stringAttribute(this, "default-value");
+    this.valueDirty = false;
+    this.render();
   }
 
   get label(): string {
@@ -90,6 +113,7 @@ export class DtTextInputElement extends DigitaltableteurElement {
   get value(): string {
     return (
       this.control?.value ??
+      this.liveValue ??
       stringAttribute(this, "value", stringAttribute(this, "default-value"))
     );
   }
@@ -152,6 +176,8 @@ export class DtTextInputElement extends DigitaltableteurElement {
   }
 
   private commit(value: string, source: "input" | "clear"): void {
+    this.liveValue = value;
+    this.valueDirty = true;
     this.internals?.setFormValue(value);
     if (this.control) {
       const error = stringAttribute(this, "error");
@@ -196,11 +222,9 @@ export class DtTextInputElement extends DigitaltableteurElement {
     input.id = id;
     input.type = this.type;
     input.className = `${this.size}${this.clearable && this.value ? " hasClear" : ""}`;
-    input.value = stringAttribute(
-      this,
-      "value",
-      stringAttribute(this, "default-value"),
-    );
+    input.value =
+      this.liveValue ??
+      stringAttribute(this, "value", stringAttribute(this, "default-value"));
     input.name = stringAttribute(this, "name");
     input.placeholder = stringAttribute(this, "placeholder");
     input.disabled = this.disabled || this.formDisabled;

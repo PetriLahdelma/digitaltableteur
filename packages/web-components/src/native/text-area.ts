@@ -41,12 +41,33 @@ export class DtTextAreaElement extends DigitaltableteurElement {
   ];
   private control: HTMLTextAreaElement | null = null;
   private formDisabled = false;
+  private liveValue: string | null = null;
+  private valueDirty = false;
   private readonly internals = attachFormInternals(this);
 
   connectedCallback(): void {
+    this.liveValue ??= stringAttribute(
+      this,
+      "value",
+      stringAttribute(this, "default-value"),
+    );
     this.render();
   }
-  attributeChangedCallback(): void {
+  attributeChangedCallback(
+    name: string,
+    _oldValue: string | null,
+    value: string | null,
+  ): void {
+    if (name === "value") {
+      this.liveValue = value ?? "";
+      this.valueDirty = false;
+    } else if (
+      name === "default-value" &&
+      !this.valueDirty &&
+      !this.hasAttribute("value")
+    ) {
+      this.liveValue = value ?? "";
+    }
     if (this.isConnected) this.render();
   }
   formDisabledCallback(disabled: boolean): void {
@@ -55,7 +76,9 @@ export class DtTextAreaElement extends DigitaltableteurElement {
       this.control.disabled = disabled || this.hasAttribute("disabled");
   }
   formResetCallback(): void {
-    this.value = stringAttribute(this, "default-value");
+    this.liveValue = stringAttribute(this, "default-value");
+    this.valueDirty = false;
+    this.render();
   }
   get label(): string {
     return stringAttribute(this, "label");
@@ -66,6 +89,7 @@ export class DtTextAreaElement extends DigitaltableteurElement {
   get value(): string {
     return (
       this.control?.value ??
+      this.liveValue ??
       stringAttribute(this, "value", stringAttribute(this, "default-value"))
     );
   }
@@ -155,11 +179,9 @@ export class DtTextAreaElement extends DigitaltableteurElement {
     field.append(label);
     const textarea = this.ownerDocument.createElement("textarea");
     textarea.id = "control";
-    textarea.value = stringAttribute(
-      this,
-      "value",
-      stringAttribute(this, "default-value"),
-    );
+    textarea.value =
+      this.liveValue ??
+      stringAttribute(this, "value", stringAttribute(this, "default-value"));
     textarea.name = stringAttribute(this, "name");
     textarea.placeholder = stringAttribute(this, "placeholder");
     textarea.disabled = this.hasAttribute("disabled") || this.formDisabled;
@@ -174,6 +196,8 @@ export class DtTextAreaElement extends DigitaltableteurElement {
       .join(" ");
     if (describedBy) textarea.setAttribute("aria-describedby", describedBy);
     textarea.addEventListener("input", () => {
+      this.liveValue = textarea.value;
+      this.valueDirty = true;
       this.internals?.setFormValue(textarea.value);
       this.internals?.setValidity(
         error ? { customError: true } : textarea.validity,
