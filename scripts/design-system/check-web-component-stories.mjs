@@ -157,6 +157,29 @@ try {
         `${story.defaultStoryId} must render a visible, labelled status dot`,
       );
     }
+    if (story.tagName === "dt-link") {
+      const underline = await element.evaluate((node) => {
+        const anchor = node.shadowRoot?.querySelector("a");
+        if (!(anchor instanceof HTMLAnchorElement)) return null;
+        const styles = getComputedStyle(anchor, "::after");
+        return {
+          height: styles.height,
+          maskImage: styles.maskImage,
+          maskRepeat: styles.maskRepeat,
+          maskSize: styles.maskSize,
+        };
+      });
+      if (
+        underline?.height !== "6px" ||
+        underline.maskImage === "none" ||
+        underline.maskRepeat !== "repeat-x" ||
+        underline.maskSize !== "16px 6px"
+      ) {
+        throw new Error(
+          `${story.defaultStoryId} must use the canonical 16px x 6px wavy underline: ${JSON.stringify(underline)}`,
+        );
+      }
+    }
     if (
       ["dt-text-input", "dt-text-area", "dt-checkbox"].includes(story.tagName)
     ) {

@@ -371,6 +371,17 @@ describe("native action and navigation composition", () => {
     expect(anchor?.querySelector("dt-icon")).toBeNull();
   });
 
+  it("uses the canonical 16px wavy underline period for Link", () => {
+    const element = document.createElement("dt-link") as DtLinkElement;
+    element.textContent = "Documentation";
+    document.body.append(element);
+
+    const styles = element.shadowRoot?.querySelector("style")?.textContent;
+    expect(styles).toContain("mask-image: var(--wavy-underline-mask)");
+    expect(styles).toContain("mask-repeat: repeat-x");
+    expect(styles).toContain("mask-size: 16px 6px");
+  });
+
   it("matches NavLink only at path boundaries and removes the current-page link", () => {
     const element = document.createElement("dt-nav-link") as DtNavLinkElement;
     element.textContent = "Work";

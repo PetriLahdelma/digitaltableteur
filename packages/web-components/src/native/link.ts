@@ -19,13 +19,15 @@ type LinkDecision = { href: string; external: boolean };
 const styles = `
   :host { display: inline; }
   :host([hidden]) { display: none; }
-  .link { display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 2px; font-family: var(--font-text); text-decoration-line: underline; text-decoration-style: wavy; text-underline-offset: 0.2em; color: var(--link-color); transition: color var(--duration-fast) var(--ease-out-cubic), text-decoration-color var(--duration-fast) var(--ease-out-cubic); }
+  .link { display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 2px; font-family: var(--font-text); text-decoration: none; color: var(--link-color); transition: color var(--duration-fast) var(--ease-out-cubic); }
   .sm { gap: 0.3rem; font-size: 1rem; }
   .md { font-size: 1.125rem; }
   .lg { font-size: 1.5rem; }
   .inherit { gap: 0.3rem; font-size: inherit; }
+  .always, .hover { position: relative; padding-bottom: 6px; }
+  .always::after, .hover::after { position: absolute; right: 0; bottom: 0; left: 0; height: 6px; background-color: var(--underline-accent-color, currentcolor); opacity: 0.9; content: ""; mask-image: var(--wavy-underline-mask); mask-repeat: repeat-x; mask-size: 16px 6px; }
   .none { text-decoration: none; }
-  .hover { text-decoration-color: transparent; }
+  .hover::after { opacity: 0; transition: opacity var(--duration-fast) var(--ease-out-cubic); }
   .external { display: inline-flex; flex: none; align-items: center; translate: 0 -2px; }
   .sm .external, .inherit .external { translate: 0 -1px; }
   .external dt-icon { inline-size: var(--dt-link-icon-size); block-size: var(--dt-link-icon-size); }
@@ -33,9 +35,9 @@ const styles = `
   .md { --dt-link-icon-size: 1.5rem; }
   .lg { --dt-link-icon-size: 2rem; }
   .link:focus-visible { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary)); outline-offset: 2px; }
-  .link:focus-visible.hover { text-decoration-color: currentcolor; }
-  @media (hover: hover) and (pointer: fine) { .link:hover.hover { text-decoration-color: currentcolor; } }
-  @media (prefers-reduced-motion: reduce) { .link { transition: none; } }
+  .link:focus-visible.hover::after { opacity: 0.9; }
+  @media (hover: hover) and (pointer: fine) { .link:hover.hover::after { opacity: 0.9; } }
+  @media (prefers-reduced-motion: reduce) { .link, .hover::after { transition: none; } }
 `;
 
 function analyzeHref(
