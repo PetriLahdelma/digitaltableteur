@@ -72,6 +72,25 @@ function validate() {
         `${element.tagName} is native but has no nativeClassName`,
       );
     }
+    if (element.defaultBackend === "native" && !element.storyParity) {
+      throw new Error(
+        `${element.tagName} must declare storyParity for the web-component DoD`,
+      );
+    }
+    for (const equivalent of element.storyParity?.equivalents ?? []) {
+      if (!equivalent.react || !equivalent.native) {
+        throw new Error(
+          `${element.tagName} has an incomplete storyParity equivalent`,
+        );
+      }
+    }
+    for (const exclusion of element.storyParity?.exclusions ?? []) {
+      if (!exclusion.react || exclusion.reason?.trim().length < 16) {
+        throw new Error(
+          `${element.tagName} storyParity exclusions require a React story and concrete reason`,
+        );
+      }
+    }
 
     const contract = contractFor(element);
     for (const prop of element.props) {

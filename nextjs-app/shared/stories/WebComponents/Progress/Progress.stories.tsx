@@ -58,6 +58,10 @@ export const Indeterminate: Story = {
   ...exampleStory,
   args: { indeterminate: true },
 };
+export const WithLabel: Story = {
+  ...exampleStory,
+  args: { label: "Profile completeness", value: 68 },
+};
 export const States: Story = {
   ...exampleStory,
   render: () => (

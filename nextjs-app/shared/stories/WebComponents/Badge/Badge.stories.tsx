@@ -82,6 +82,18 @@ export const Removable: Story = {
   ...exampleStory,
   args: { label: "Design systems", removable: true },
 };
+export const WithIcon: Story = {
+  ...exampleStory,
+  render: () => (
+    <NativeElement tagName="dt-badge" attributes={{ label: "Verified" }}>
+      <NativeElement
+        tagName="dt-icon"
+        slot="icon"
+        attributes={{ name: "check" }}
+      />
+    </NativeElement>
+  ),
+};
 export const LifecycleDots: Story = {
   ...exampleStory,
   render: () => (
@@ -110,6 +122,10 @@ export const Sizes: Story = {
       ))}
     </Row>
   ),
+};
+export const AsCount: Story = {
+  ...exampleStory,
+  args: { label: "3", tone: "info", size: "sm" },
 };
 export const Example: Story = {
   ...exampleStory,

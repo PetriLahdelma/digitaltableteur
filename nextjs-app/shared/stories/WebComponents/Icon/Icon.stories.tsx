@@ -136,6 +136,41 @@ export const Transformations: Story = {
     </Row>
   ),
 };
+export const ColorShowcase: Story = {
+  ...exampleStory,
+  render: () => (
+    <Row>
+      {(
+        [
+          "var(--color-primary)",
+          "var(--color-success)",
+          "var(--color-error)",
+        ] as const
+      ).map((color) => (
+        <NativeElement
+          key={color}
+          tagName="dt-icon"
+          attributes={{ name: "circle", color, size: "xl", decorative: true }}
+        />
+      ))}
+    </Row>
+  ),
+};
+export const DecorativeVsInformative: Story = {
+  ...exampleStory,
+  render: () => (
+    <Row>
+      <NativeElement
+        tagName="dt-icon"
+        attributes={{ name: "sparkle", decorative: true, size: "xl" }}
+      />
+      <NativeElement
+        tagName="dt-icon"
+        attributes={{ name: "warning", "aria-label": "Warning", size: "xl" }}
+      />
+    </Row>
+  ),
+};
 export const Example: Story = {
   ...exampleStory,
   args: {

@@ -164,6 +164,10 @@ export const titleByComponentName: Record<string, string> = {
   NavLink: "Navigation/NavLink",
   SkipLink: "Navigation/SkipLink",
   Label: "Forms/Label",
+  TextInput: "Forms/TextInput",
+  TextArea: "Forms/TextArea",
+  Checkbox: "Forms/Checkbox",
+  Switch: "Forms/Switch",
   Card: "Layout/Card",
   Divider: "Layout/Divider",
 };

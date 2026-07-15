@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- Adds native, form-associated TextInput, TextArea, and Checkbox elements plus
+  an immediate-action Switch.
+- Adds an enforceable web-component definition-of-done gate covering React
+  story parity, explicit exclusions, browser behavior, docs links, package
+  integrity, and generated contract drift.
+- Expands applicable native stories to match their canonical React component
+  surfaces.
+
 ## 0.3.0 - 2026-07-15
 
 - Adds native Link, NavLink, SkipLink, IconButton, FilterChip, ButtonGroup, and

@@ -69,7 +69,7 @@ jobs:
         run: npm run check:react-package
 
       - name: Build and verify Web Components package
-        run: npm run check:web-components
+        run: npm run check:web-components:dod
 
       - name: Verify package metadata
         run: npm run check:package-release-notes

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { chromium } from "playwright";
 import elements from "../../packages/web-components/web-components.config.mjs";
+import { evaluateStoryParity } from "./web-component-story-parity.mjs";
 
 const baseUrl =
   process.argv
@@ -67,12 +68,40 @@ const expectedComponents = nativeElements.map((element) => {
     throw new Error(`${title} must expose Default and autodocs entries`);
   }
 
+  const canonicalTitle = title.replace(/^Web Components\//, "");
+  const reactStories = entries
+    .filter((entry) => entry.title === canonicalTitle && entry.type === "story")
+    .map((entry) => entry.name);
+  const nativeStories = componentEntries
+    .filter((entry) => entry.type === "story")
+    .map((entry) => entry.name);
+  if (reactStories.length === 0) {
+    throw new Error(
+      `${title} has no canonical React stories at ${canonicalTitle}`,
+    );
+  }
+  const parity = evaluateStoryParity({
+    reactStories,
+    nativeStories,
+    ...element.storyParity,
+  });
+  if (parity.errors.length > 0 || parity.missing.length > 0) {
+    const details = [
+      ...parity.errors,
+      ...parity.missing.map(
+        (story) => `missing native coverage for "${story}"`,
+      ),
+    ];
+    throw new Error(`${title} story parity failed:\n- ${details.join("\n- ")}`);
+  }
+
   return {
     title,
-    canonicalTitle: title.replace(/^Web Components\//, ""),
+    canonicalTitle,
     defaultStoryId: defaultStory.id,
     docsId: docs.id,
     tagName: element.tagName,
+    parity: parity.parity,
   };
 });
 
@@ -127,6 +156,90 @@ try {
       throw new Error(
         `${story.defaultStoryId} must render a visible, labelled status dot`,
       );
+    }
+    if (
+      ["dt-text-input", "dt-text-area", "dt-checkbox"].includes(story.tagName)
+    ) {
+      const formResult = await element.evaluate((_node, tagName) => {
+        const form = document.createElement("form");
+        const control = document.createElement(tagName);
+        control.setAttribute("name", "field");
+        control.setAttribute("label", "Field label");
+        form.append(control);
+        document.body.append(form);
+        const nativeControl =
+          control.shadowRoot?.querySelector("input, textarea");
+        let eventDetail = null;
+        control.addEventListener(
+          tagName === "dt-checkbox" ? "checked-change" : "value-change",
+          (event) => {
+            eventDetail = event.detail;
+          },
+          { once: true },
+        );
+        if (
+          nativeControl instanceof HTMLInputElement &&
+          nativeControl.type === "checkbox"
+        ) {
+          nativeControl.click();
+        } else if (
+          nativeControl instanceof HTMLInputElement ||
+          nativeControl instanceof HTMLTextAreaElement
+        ) {
+          nativeControl.value = "browser value";
+          nativeControl.dispatchEvent(
+            new Event("input", { bubbles: true, composed: true }),
+          );
+        }
+        const label = control.shadowRoot?.querySelector("label");
+        const result = {
+          formValue: new FormData(form).get("field"),
+          eventDetail,
+          labelFor: label?.getAttribute("for"),
+          controlId: nativeControl?.id,
+        };
+        form.remove();
+        return result;
+      }, story.tagName);
+      if (
+        !formResult.formValue ||
+        !formResult.eventDetail ||
+        formResult.labelFor !== formResult.controlId
+      ) {
+        throw new Error(
+          `${story.tagName} failed form value, composed event, or label association DoD: ${JSON.stringify(formResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-switch") {
+      const switchResult = await element.evaluate((node) => {
+        const button = node.shadowRoot?.querySelector("button");
+        let detail = null;
+        node.addEventListener(
+          "checked-change",
+          (event) => {
+            detail = event.detail;
+          },
+          { once: true },
+        );
+        button?.click();
+        return {
+          role: button?.getAttribute("role"),
+          checked: node.shadowRoot
+            ?.querySelector("button")
+            ?.getAttribute("aria-checked"),
+          detail,
+        };
+      });
+      if (
+        switchResult.role !== "switch" ||
+        switchResult.checked !== "true" ||
+        !switchResult.detail
+      ) {
+        throw new Error(
+          `dt-switch failed role/state/event DoD: ${JSON.stringify(switchResult)}`,
+        );
+      }
     }
     await page.waitForTimeout(50);
   }
@@ -188,5 +301,5 @@ try {
 }
 
 console.log(
-  `✓ Storybook verified ${expectedComponents.length} component folders, native renders, and bidirectional implementation links`,
+  `✓ Storybook verified ${expectedComponents.length} component folders, 100% declared React story parity, native renders, and bidirectional implementation links`,
 );

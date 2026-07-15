@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import elements from "../../packages/web-components/web-components.config.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const PACKAGE_ROOT = join(ROOT, "packages/web-components");
@@ -12,7 +13,7 @@ function run(command, args, cwd = ROOT) {
 }
 
 run("npm", ["run", "build"], PACKAGE_ROOT);
-run("npx", ["vitest", "run", "tests/web-components/web-components.test.ts"]);
+run("npx", ["vitest", "run", "tests/web-components"]);
 
 await import(pathToFileURL(join(PACKAGE_ROOT, "dist/index.js")));
 await import(pathToFileURL(join(PACKAGE_ROOT, "dist/native.js")));
@@ -23,23 +24,7 @@ const manifest = JSON.parse(
 const declarations =
   manifest.modules?.flatMap((module) => module.declarations ?? []) ?? [];
 const tags = declarations.map((declaration) => declaration.tagName).sort();
-const expectedTags = [
-  "dt-alert-banner",
-  "dt-badge",
-  "dt-button",
-  "dt-button-group",
-  "dt-divider",
-  "dt-empty-state",
-  "dt-filter-chip",
-  "dt-icon",
-  "dt-icon-button",
-  "dt-link",
-  "dt-nav-link",
-  "dt-progress",
-  "dt-skip-link",
-  "dt-spinner",
-  "dt-status-dot",
-];
+const expectedTags = elements.map((element) => element.tagName).sort();
 if (JSON.stringify(tags) !== JSON.stringify(expectedTags)) {
   throw new Error(`Custom Elements Manifest tags differ: ${tags.join(", ")}`);
 }
@@ -48,7 +33,10 @@ const generatorSource = readFileSync(
   join(ROOT, "scripts/design-system/generate-web-components.mjs"),
   "utf8",
 );
-const generatorImports = generatorSource.slice(0, generatorSource.indexOf("const ROOT"));
+const generatorImports = generatorSource.slice(
+  0,
+  generatorSource.indexOf("const ROOT"),
+);
 if (
   /from ["'](?:react|react-dom(?:\/server)?)["']/.test(generatorImports) ||
   generatorSource.includes("renderToStaticMarkup")
@@ -115,9 +103,11 @@ for (const required of [
   if (!files.has(required))
     throw new Error(`Web-components tarball misses ${required}`);
 }
-if (pack.entryCount > 70 || pack.unpackedSize > 450_000) {
+const maxPackedFiles = 40 + tags.length * 2;
+const maxUnpackedSize = 250_000 + tags.length * 13_000;
+if (pack.entryCount > maxPackedFiles || pack.unpackedSize > maxUnpackedSize) {
   throw new Error(
-    `Web-components tarball exceeds its ceiling (${pack.entryCount} files, ${pack.unpackedSize} bytes)`,
+    `Web-components tarball exceeds its ${tags.length}-component budget (${pack.entryCount}/${maxPackedFiles} files, ${pack.unpackedSize}/${maxUnpackedSize} bytes)`,
   );
 }
 

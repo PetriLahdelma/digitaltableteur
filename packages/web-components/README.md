@@ -16,9 +16,10 @@ import "@digitaltableteur/tokens-css/tokens.css";
 import "@digitaltableteur/web-components/register";
 ```
 
-The default registry contains 15 native Shadow DOM custom elements:
-AlertBanner, Badge, Button, ButtonGroup, Divider, EmptyState, FilterChip, Icon,
-IconButton, Link, NavLink, Progress, SkipLink, Spinner, and StatusDot.
+The default registry contains 19 native Shadow DOM custom elements:
+AlertBanner, Badge, Button, ButtonGroup, Checkbox, Divider, EmptyState,
+FilterChip, Icon, IconButton, Link, NavLink, Progress, SkipLink, Spinner,
+StatusDot, Switch, TextArea, and TextInput.
 
 ```html
 <dt-button label="Continue" variant="primary"></dt-button>
@@ -49,6 +50,18 @@ IconButton, Link, NavLink, Progress, SkipLink, Spinner, and StatusDot.
 >
   <dt-button slot="action">Clear filters</dt-button>
 </dt-empty-state>
+<form>
+  <dt-text-input
+    name="email"
+    type="email"
+    label="Email address"
+    required
+  ></dt-text-input>
+  <dt-text-area name="brief" label="Project brief"></dt-text-area>
+  <dt-checkbox name="terms" label="I agree to the terms" required></dt-checkbox>
+  <dt-button submits>Send</dt-button>
+</form>
+<dt-switch label="Email notifications"></dt-switch>
 ```
 
 `/native` and `/register/native` are retained as explicit aliases for hosts
@@ -74,7 +87,9 @@ AlertBanner supports default, `title`, `description`, `icon`, and `action`
 slots; EmptyState supports `title`, `description`, `icon`, and `action` slots.
 `dt-nav-link` deliberately does not inspect a framework router: the host updates
 `current-path` when navigation changes. Component metadata and attributes are
-published in `custom-elements.json`.
+published in `custom-elements.json`. TextInput, TextArea, and Checkbox are
+form-associated custom elements; Switch remains an immediate-action control
+and deliberately does not submit a form value.
 
 ## Legacy React adapters
 

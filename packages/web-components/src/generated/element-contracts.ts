@@ -29,6 +29,7 @@ export type DtBadgeElementContract = HTMLElement & {
   dot?: boolean;
   square?: boolean;
   role?: string;
+  icon?: string;
 };
 
 export type DtIconButtonElementContract = HTMLElement & {
@@ -144,6 +145,64 @@ export type DtEmptyStateElementContract = HTMLElement & {
   size?: string;
 };
 
+export type DtTextInputElementContract = HTMLElement & {
+  label?: string;
+  type?: string;
+  size?: string;
+  value?: string;
+  defaultValue?: string;
+  error?: string;
+  helperText?: string;
+  disabled?: boolean;
+  clearable?: boolean;
+  hideLabel?: boolean;
+  required?: boolean;
+  placeholder?: string;
+  name?: string;
+};
+
+export type DtTextAreaElementContract = HTMLElement & {
+  label?: string;
+  value?: string;
+  error?: string;
+  helperText?: string;
+  animateResize?: boolean;
+  minRows?: number;
+  maxRows?: number;
+  defaultValue?: string;
+  disabled?: boolean;
+  required?: boolean;
+  placeholder?: string;
+  name?: string;
+};
+
+export type DtCheckboxElementContract = HTMLElement & {
+  label?: string;
+  showLabel?: boolean;
+  checked?: boolean;
+  indeterminate?: boolean;
+  disabled?: boolean;
+  defaultChecked?: boolean;
+  size?: string;
+  error?: string;
+  helperText?: string;
+  required?: boolean;
+  name?: string;
+  value?: string;
+};
+
+export type DtSwitchElementContract = HTMLElement & {
+  checked?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  size?: string;
+  label?: string;
+  labelPlacement?: string;
+  helperText?: string;
+  error?: string;
+};
+
 export const elementMigrationManifest = [
   { tagName: "dt-button", sourceComponent: "Button", backend: "native" },
   { tagName: "dt-badge", sourceComponent: "Badge", backend: "native" },
@@ -160,6 +219,10 @@ export const elementMigrationManifest = [
   { tagName: "dt-icon", sourceComponent: "Icon", backend: "native" },
   { tagName: "dt-alert-banner", sourceComponent: "AlertBanner", backend: "native" },
   { tagName: "dt-empty-state", sourceComponent: "EmptyState", backend: "native" },
+  { tagName: "dt-text-input", sourceComponent: "TextInput", backend: "native" },
+  { tagName: "dt-text-area", sourceComponent: "TextArea", backend: "native" },
+  { tagName: "dt-checkbox", sourceComponent: "Checkbox", backend: "native" },
+  { tagName: "dt-switch", sourceComponent: "Switch", backend: "native" },
 ] as const;
 
 declare global {
@@ -179,5 +242,9 @@ declare global {
     "dt-icon": DtIconElementContract;
     "dt-alert-banner": DtAlertBannerElementContract;
     "dt-empty-state": DtEmptyStateElementContract;
+    "dt-text-input": DtTextInputElementContract;
+    "dt-text-area": DtTextAreaElementContract;
+    "dt-checkbox": DtCheckboxElementContract;
+    "dt-switch": DtSwitchElementContract;
   }
 }

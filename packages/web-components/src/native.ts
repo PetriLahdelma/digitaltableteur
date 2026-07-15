@@ -13,6 +13,10 @@ import { DtProgressElement } from "./native/progress";
 import { DtSkipLinkElement } from "./native/skip-link";
 import { DtSpinnerElement } from "./native/spinner";
 import { DtStatusDotElement } from "./native/status-dot";
+import { DtTextInputElement } from "./native/text-input";
+import { DtTextAreaElement } from "./native/text-area";
+import { DtCheckboxElement } from "./native/checkbox";
+import { DtSwitchElement } from "./native/switch";
 import { defineElementSet, type ElementDefinition } from "./registry";
 
 export { DtAlertBannerElement } from "./native/alert-banner";
@@ -61,6 +65,13 @@ export type { DtSpinnerSize } from "./native/spinner";
 export { DtSkipLinkElement } from "./native/skip-link";
 export { DtStatusDotElement } from "./native/status-dot";
 export type { DtStatusDotSize, DtStatusDotTone } from "./native/status-dot";
+export { DtTextInputElement } from "./native/text-input";
+export type { DtTextInputSize, DtTextInputType } from "./native/text-input";
+export { DtTextAreaElement } from "./native/text-area";
+export { DtCheckboxElement } from "./native/checkbox";
+export type { DtCheckboxSize } from "./native/checkbox";
+export { DtSwitchElement } from "./native/switch";
+export type { DtSwitchLabelPlacement, DtSwitchSize } from "./native/switch";
 
 export const nativeElementDefinitions = [
   ["dt-icon", DtIconElement],
@@ -78,6 +89,10 @@ export const nativeElementDefinitions = [
   ["dt-progress", DtProgressElement],
   ["dt-alert-banner", DtAlertBannerElement],
   ["dt-empty-state", DtEmptyStateElement],
+  ["dt-text-input", DtTextInputElement],
+  ["dt-text-area", DtTextAreaElement],
+  ["dt-checkbox", DtCheckboxElement],
+  ["dt-switch", DtSwitchElement],
 ] as const satisfies readonly ElementDefinition[];
 
 export function defineNativeElements(

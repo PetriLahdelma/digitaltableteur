@@ -15,6 +15,7 @@ type Args = {
   tone: "neutral" | "info" | "success" | "warning" | "error";
   size: "sm" | "md" | "lg";
   disabled: boolean;
+  tooltip?: string;
 };
 
 function NativeIconButton(args: Args) {
@@ -109,6 +110,31 @@ export const DestructiveTone: Story = {
         }}
       />
     </Row>
+  ),
+};
+export const WithTooltip: Story = {
+  ...exampleStory,
+  args: { tooltip: "Toggle dark mode" },
+};
+export const InToolbar: Story = {
+  ...exampleStory,
+  render: () => (
+    <nav aria-label="Page tools">
+      <Row>
+        <NativeElement
+          tagName="dt-icon-button"
+          attributes={{ icon: "magnifying-glass", label: "Search" }}
+        />
+        <NativeElement
+          tagName="dt-icon-button"
+          attributes={{ icon: "moon", label: "Theme" }}
+        />
+        <NativeElement
+          tagName="dt-icon-button"
+          attributes={{ icon: "list", label: "Menu" }}
+        />
+      </Row>
+    </nav>
   ),
 };
 export const Example: Story = {

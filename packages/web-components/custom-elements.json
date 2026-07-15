@@ -208,6 +208,14 @@
               "type": {
                 "text": "string"
               }
+            },
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "description": "Leading native icon name.",
+              "type": {
+                "text": "string"
+              }
             }
           ],
           "events": [
@@ -907,6 +915,415 @@
           ],
           "events": [],
           "dtSourceComponent": "EmptyState",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtTextInputElement",
+          "description": "Form-associated single-line field with native validation, label, and messages.",
+          "customElement": true,
+          "tagName": "dt-text-input",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "type",
+              "fieldName": "type",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "clearable",
+              "fieldName": "clearable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "hide-label",
+              "fieldName": "hideLabel",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "placeholder",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after user input.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "clear",
+              "description": "Dispatched after the clear control resets the field.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "TextInput",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtTextAreaElement",
+          "description": "Form-associated multiline field with bounded auto-grow and messages.",
+          "customElement": true,
+          "tagName": "dt-text-area",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "animate-resize",
+              "fieldName": "animateResize",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "min-rows",
+              "fieldName": "minRows",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "max-rows",
+              "fieldName": "maxRows",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "placeholder",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after user input.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "TextArea",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtCheckboxElement",
+          "description": "Form-associated checkbox with indeterminate, validation, and messaging states.",
+          "customElement": true,
+          "tagName": "dt-checkbox",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-label",
+              "fieldName": "showLabel",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "checked",
+              "fieldName": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "indeterminate",
+              "fieldName": "indeterminate",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-checked",
+              "fieldName": "defaultChecked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "checked-change",
+              "description": "Dispatched with detail.checked after user activation.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Checkbox",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSwitchElement",
+          "description": "Immediate-action switch with loading, placement, and message states.",
+          "customElement": true,
+          "tagName": "dt-switch",
+          "attributes": [
+            {
+              "name": "checked",
+              "fieldName": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-checked",
+              "fieldName": "defaultChecked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label-placement",
+              "fieldName": "labelPlacement",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "checked-change",
+              "description": "Dispatched with detail.checked after user activation.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Switch",
           "dtBackend": "native"
         }
       ]

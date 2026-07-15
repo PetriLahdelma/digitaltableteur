@@ -64,5 +64,25 @@ export const DecorativeRhythm: Story = {
     </Stage>
   ),
 };
+export const VerticalInRow: Story = {
+  ...exampleStory,
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "stretch",
+        gap: "1rem",
+        height: "4rem",
+      }}
+    >
+      <span>Before</span>
+      <NativeElement
+        tagName="dt-divider"
+        attributes={{ orientation: "vertical" }}
+      />
+      <span>After</span>
+    </div>
+  ),
+};
 export const Example: Story = { ...exampleStory };
 export const ForcedColors: Story = { ...forcedColorsStory };

@@ -89,6 +89,22 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = { play: assertNative("dt-alert-banner") };
 export const Playground: Story = {};
+export const Info: Story = {
+  ...exampleStory,
+  args: {
+    titleText: "Information",
+    description: "A useful update.",
+    tone: "info",
+  },
+};
+export const Warning: Story = {
+  ...exampleStory,
+  args: {
+    titleText: "Review required",
+    description: "Check these settings.",
+    tone: "warning",
+  },
+};
 export const Tones: Story = {
   ...exampleStory,
   render: () => (

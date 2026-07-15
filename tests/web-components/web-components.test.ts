@@ -18,6 +18,10 @@ import {
   DtSkipLinkElement,
   DtSpinnerElement,
   DtStatusDotElement,
+  DtTextInputElement,
+  DtTextAreaElement,
+  DtCheckboxElement,
+  DtSwitchElement,
 } from "../../packages/web-components/src/native";
 import {
   DtBadgeReactElement,
@@ -41,6 +45,10 @@ const NATIVE_TAGS = [
   "dt-progress",
   "dt-alert-banner",
   "dt-empty-state",
+  "dt-text-input",
+  "dt-text-area",
+  "dt-checkbox",
+  "dt-switch",
 ] as const;
 
 beforeAll(() => {
@@ -72,6 +80,10 @@ describe("native registry", () => {
     expect(customElements.get("dt-progress")).toBe(DtProgressElement);
     expect(customElements.get("dt-alert-banner")).toBe(DtAlertBannerElement);
     expect(customElements.get("dt-empty-state")).toBe(DtEmptyStateElement);
+    expect(customElements.get("dt-text-input")).toBe(DtTextInputElement);
+    expect(customElements.get("dt-text-area")).toBe(DtTextAreaElement);
+    expect(customElements.get("dt-checkbox")).toBe(DtCheckboxElement);
+    expect(customElements.get("dt-switch")).toBe(DtSwitchElement);
   });
 
   it("rejects a mixed registry before defining any new tags", () => {

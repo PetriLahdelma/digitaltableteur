@@ -123,13 +123,14 @@ export interface DtBadgeReactProps {
   dot?: boolean;
   square?: boolean;
   role?: string;
+  icon?: string;
   onRemove?: (detail?: unknown) => void;
 }
 
 const DtBadgeReactElementAdapter: React.FC<DtBadgeReactProps> = (props) =>
   React.createElement(
     Badge as unknown as React.ComponentType<Record<string, unknown>>,
-    { variant: props.variant, tone: props.tone, size: props.size, removable: props.removable, dot: props.dot, square: props.square, role: props.role, onRemove: props.onRemove },
+    { variant: props.variant, tone: props.tone, size: props.size, removable: props.removable, dot: props.dot, square: props.square, role: props.role, null: props.icon, onRemove: props.onRemove },
     props.label,
   );
 
@@ -143,6 +144,7 @@ const DtBadgeReactElementBase = r2wc(DtBadgeReactElementAdapter, {
     dot: "boolean",
     square: "boolean",
     role: "string",
+    icon: "string",
   },
   events: {
     onRemove: { bubbles: true, composed: true },
