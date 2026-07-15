@@ -170,8 +170,12 @@ export const titleByComponentName: Record<string, string> = {
   Checkbox: "Forms/Checkbox",
   Switch: "Forms/Switch",
   Card: "Layout/Card",
+  Center: "Layout/Center",
+  Container: "Layout/Container",
   Divider: "Layout/Divider",
+  AspectRatio: "Layout/AspectRatio",
   Section: "Layout/Section",
+  Spacer: "Layout/Spacer",
   Stack: "Layout/Stack",
 };
 

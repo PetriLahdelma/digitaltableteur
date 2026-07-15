@@ -4,9 +4,13 @@ import { defineElements } from "../../packages/web-components/src/index";
 import {
   defineNativeElements,
   DtAlertBannerElement,
+  DtAspectRatioElement,
   DtBadgeElement,
   DtButtonElement,
   DtButtonGroupElement,
+  DtCardElement,
+  DtCenterElement,
+  DtContainerElement,
   DtDividerElement,
   DtEmptyStateElement,
   DtFilterChipElement,
@@ -18,6 +22,7 @@ import {
   DtProgressElement,
   DtSkipLinkElement,
   DtSpinnerElement,
+  DtSpacerElement,
   DtStatusDotElement,
   DtSectionElement,
   DtStackElement,
@@ -54,6 +59,11 @@ const NATIVE_TAGS = [
   "dt-list",
   "dt-section",
   "dt-stack",
+  "dt-card",
+  "dt-center",
+  "dt-container",
+  "dt-spacer",
+  "dt-aspect-ratio",
   "dt-empty-state",
   "dt-text-input",
   "dt-text-area",
@@ -94,6 +104,11 @@ describe("native registry", () => {
     expect(customElements.get("dt-list")).toBe(DtListElement);
     expect(customElements.get("dt-section")).toBe(DtSectionElement);
     expect(customElements.get("dt-stack")).toBe(DtStackElement);
+    expect(customElements.get("dt-card")).toBe(DtCardElement);
+    expect(customElements.get("dt-center")).toBe(DtCenterElement);
+    expect(customElements.get("dt-container")).toBe(DtContainerElement);
+    expect(customElements.get("dt-spacer")).toBe(DtSpacerElement);
+    expect(customElements.get("dt-aspect-ratio")).toBe(DtAspectRatioElement);
     expect(customElements.get("dt-empty-state")).toBe(DtEmptyStateElement);
     expect(customElements.get("dt-text-input")).toBe(DtTextInputElement);
     expect(customElements.get("dt-text-area")).toBe(DtTextAreaElement);
@@ -592,6 +607,131 @@ describe("native typography and semantic layout elements", () => {
     );
     expect(list?.querySelectorAll("li")).toHaveLength(3);
     expect(list?.querySelector("li")).toHaveTextContent("First");
+  });
+});
+
+describe("native surface and layout primitives", () => {
+  it("renders Card structure, typography settings, and content fallback", () => {
+    const element = document.createElement("dt-card") as DtCardElement;
+    element.as = "article";
+    element.variant = "muted";
+    element.padding = "lg";
+    element.titleText = "Design tokens";
+    element.titleLevel = 2;
+    element.titleSize = "m";
+    element.description = "Platform-independent foundations.";
+    element.descriptionAs = "span";
+    element.descriptionSize = "xs";
+    element.content = "Card body";
+    document.body.append(element);
+
+    const card = element.shadowRoot?.querySelector("article");
+    expect(card).toHaveClass("card", "muted", "paddingLg");
+    expect(card?.querySelector("h2")).toHaveClass("title", "titleM");
+    expect(card?.querySelector("span.description")).toHaveClass("textXS");
+    expect(card?.querySelector("slot:not([name])")).toHaveTextContent(
+      "Card body",
+    );
+  });
+
+  it("keeps Card footer actions outside stretched-link mode", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const element = document.createElement("dt-card") as DtCardElement;
+    element.titleText = "Review";
+    element.link = "/review";
+    const action = document.createElement("button");
+    action.slot = "footer-end";
+    action.textContent = "Continue";
+    element.append(action);
+    document.body.append(element);
+
+    expect(element.shadowRoot?.querySelector("a")).toBeNull();
+    expect(
+      element.shadowRoot?.querySelector('[part="footer-end"]'),
+    ).toBeTruthy();
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining("`link` is ignored"),
+    );
+    warn.mockRestore();
+  });
+
+  it("sanitizes Card links and replaces content while loading", () => {
+    const element = document.createElement("dt-card") as DtCardElement;
+    element.titleText = "Unsafe destination";
+    element.link = "javascript:alert(1)";
+    document.body.append(element);
+
+    expect(element.shadowRoot?.querySelector("a")).toHaveAttribute("href", "#");
+
+    element.loading = true;
+    const card = element.shadowRoot?.querySelector('[part~="card"]');
+    expect(card).toHaveAttribute("role", "status");
+    expect(card).toHaveAttribute("aria-busy", "true");
+    expect(card?.querySelectorAll('[part~="skeleton-line"]')).toHaveLength(3);
+    expect(card?.querySelector("a")).toBeNull();
+  });
+
+  it("centers content with a safe semantic Center wrapper", () => {
+    const element = document.createElement("dt-center") as DtCenterElement;
+    element.as = "section";
+    element.content = "Focal content";
+    document.body.append(element);
+
+    const center = element.shadowRoot?.querySelector("section");
+    expect(center).toHaveClass("root");
+    expect(center).toHaveAttribute("part", "root center");
+    expect(center).toHaveTextContent("Focal content");
+  });
+
+  it("preserves Container size, landmark, and default-true centering", () => {
+    const element = document.createElement(
+      "dt-container",
+    ) as DtContainerElement;
+    element.as = "main";
+    element.size = "sm";
+    document.body.append(element);
+
+    expect(element.center).toBe(true);
+    expect(element.shadowRoot?.querySelector("main")).toHaveClass(
+      "root",
+      "sm",
+      "centered",
+    );
+
+    element.center = false;
+    expect(element).toHaveAttribute("center", "false");
+    expect(element.shadowRoot?.querySelector("main")).not.toHaveClass(
+      "centered",
+    );
+  });
+
+  it("maps Spacer dimensions and keeps it out of the accessibility tree", () => {
+    const element = document.createElement("dt-spacer") as DtSpacerElement;
+    element.size = "2xl";
+    element.axis = "horizontal";
+    document.body.append(element);
+
+    expect(element).toHaveAttribute("aria-hidden", "true");
+    expect(element.shadowRoot?.querySelector("div")).toHaveClass(
+      "spacer",
+      "horizontal-2xl",
+    );
+  });
+
+  it("reserves AspectRatio space and fills it with slotted media", () => {
+    const element = document.createElement(
+      "dt-aspect-ratio",
+    ) as DtAspectRatioElement;
+    element.ratio = "3:2";
+    const image = document.createElement("img");
+    image.alt = "Case study";
+    element.append(image);
+    document.body.append(element);
+
+    expect(element.shadowRoot?.querySelector('[part~="frame"]')).toHaveClass(
+      "ratio-3:2",
+    );
+    expect(element.shadowRoot?.querySelector("slot")).toBeTruthy();
   });
 });
 

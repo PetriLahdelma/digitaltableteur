@@ -16,10 +16,11 @@ import "@digitaltableteur/tokens-css/tokens.css";
 import "@digitaltableteur/web-components/register";
 ```
 
-The default registry contains 24 native Shadow DOM custom elements:
-AlertBanner, Badge, Button, ButtonGroup, Checkbox, Divider, EmptyState,
-FilterChip, Icon, IconButton, Link, List, NavLink, Progress, Section, SkipLink,
-Spinner, Stack, StatusDot, Switch, Text, TextArea, TextInput, and Title.
+The default registry contains 29 native Shadow DOM custom elements:
+AlertBanner, AspectRatio, Badge, Button, ButtonGroup, Card, Center, Checkbox,
+Container, Divider, EmptyState, FilterChip, Icon, IconButton, Link, List,
+NavLink, Progress, Section, SkipLink, Spacer, Spinner, Stack, StatusDot, Switch,
+Text, TextArea, TextInput, and Title.
 
 ```html
 <dt-button label="Continue" variant="primary"></dt-button>
@@ -62,6 +63,17 @@ Spinner, Stack, StatusDot, Switch, Text, TextArea, TextInput, and Title.
     <dt-text>Slots preserve arbitrary native content.</dt-text>
   </dt-stack>
 </dt-section>
+<dt-container size="lg">
+  <dt-card title-text="Native surface" description="Structured without React.">
+    <dt-text>Default-slot body content.</dt-text>
+    <dt-button slot="footer-end">Continue</dt-button>
+  </dt-card>
+</dt-container>
+<dt-center style="min-height: 8rem">Centered content</dt-center>
+<dt-aspect-ratio ratio="16:9">
+  <img src="hero.jpg" alt="Case study hero" />
+</dt-aspect-ratio>
+<dt-spacer size="md"></dt-spacer>
 <form>
   <dt-text-input
     name="email"
@@ -100,6 +112,9 @@ slots; EmptyState supports `title`, `description`, `icon`, and `action` slots.
 Text, Title, Section, and Stack expose a default slot plus a text attribute
 fallback. List accepts either semantic light-DOM `li` children or a JSON string
 array through `items` (and a `string[]` property in JavaScript).
+Card exposes default, `header-start`, `header-end`, `extra`, `footer-start`, and
+`footer-end` slots. Center, Container, and AspectRatio expose default slots;
+Spacer is intentionally empty and hidden from the accessibility tree.
 `dt-nav-link` deliberately does not inspect a framework router: the host updates
 `current-path` when navigation changes. Component metadata and attributes are
 published in `custom-elements.json`. TextInput, TextArea, and Checkbox are

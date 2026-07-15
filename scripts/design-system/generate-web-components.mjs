@@ -91,6 +91,20 @@ function validate() {
         );
       }
     }
+    const slotNames = new Set();
+    for (const slot of element.slots ?? []) {
+      if (slotNames.has(slot.name)) {
+        throw new Error(
+          `${element.tagName} declares duplicate slot ${slot.name}`,
+        );
+      }
+      if (!slot.description?.trim()) {
+        throw new Error(
+          `${element.tagName} slot ${slot.name} needs a description`,
+        );
+      }
+      slotNames.add(slot.name);
+    }
 
     const contract = contractFor(element);
     for (const prop of element.props) {
@@ -291,6 +305,14 @@ function renderCustomElementsManifest() {
                       description: prop.description || undefined,
                       type: { text: prop.propertyType },
                     })),
+                }
+              : {}),
+            ...(element.slots?.length
+              ? {
+                  slots: element.slots.map((slot) => ({
+                    name: slot.name,
+                    description: slot.description,
+                  })),
                 }
               : {}),
             attributes: element.props.map((prop) => ({

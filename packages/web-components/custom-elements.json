@@ -1171,6 +1171,294 @@
         },
         {
           "kind": "class",
+          "name": "DtCardElement",
+          "description": "Semantic content surface with structured header, body, footer, link, and loading modes.",
+          "customElement": true,
+          "tagName": "dt-card",
+          "slots": [
+            {
+              "name": "",
+              "description": "Card body content."
+            },
+            {
+              "name": "header-start",
+              "description": "Leading header content; replaces the title block."
+            },
+            {
+              "name": "header-end",
+              "description": "Trailing header metadata or actions."
+            },
+            {
+              "name": "extra",
+              "description": "Deprecated alias for header-end."
+            },
+            {
+              "name": "footer-start",
+              "description": "Leading footer action region."
+            },
+            {
+              "name": "footer-end",
+              "description": "Trailing footer action region."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "padding",
+              "fieldName": "padding",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title-text",
+              "fieldName": "titleText",
+              "description": "Card heading text; uses title-text to avoid the global HTML title tooltip.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title-level",
+              "fieldName": "titleLevel",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "title-as",
+              "fieldName": "titleAs",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title-size",
+              "fieldName": "titleSize",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description-as",
+              "fieldName": "descriptionAs",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description-size",
+              "fieldName": "descriptionSize",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "link",
+              "fieldName": "link",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "link-label",
+              "fieldName": "linkLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Card",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtCenterElement",
+          "description": "Both-axis centering primitive for focal content.",
+          "customElement": true,
+          "tagName": "dt-center",
+          "slots": [
+            {
+              "name": "",
+              "description": "Content centered on both axes."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Center",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtContainerElement",
+          "description": "Responsive page-width constraint with tokenized gutters and semantic wrappers.",
+          "customElement": true,
+          "tagName": "dt-container",
+          "members": [
+            {
+              "kind": "field",
+              "name": "center",
+              "description": "Boolean property; the attribute accepts true or false and defaults to true when absent.",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Content constrained by the container."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "center",
+              "fieldName": "center",
+              "description": "Boolean property; the attribute accepts true or false and defaults to true when absent.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Container",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSpacerElement",
+          "description": "Accessibility-hidden escape hatch for tokenized spatial gaps.",
+          "customElement": true,
+          "tagName": "dt-spacer",
+          "attributes": [
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "axis",
+              "fieldName": "axis",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Spacer",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtAspectRatioElement",
+          "description": "Clipped media frame that reserves a tokenized aspect ratio.",
+          "customElement": true,
+          "tagName": "dt-aspect-ratio",
+          "slots": [
+            {
+              "name": "",
+              "description": "Media or placeholder content filling the ratio frame."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "ratio",
+              "fieldName": "ratio",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "AspectRatio",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
           "name": "DtEmptyStateElement",
           "description": "Empty-result composition with semantic heading, description, icon, and action slots.",
           "customElement": true,

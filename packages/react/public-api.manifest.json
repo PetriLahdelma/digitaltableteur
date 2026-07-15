@@ -71,6 +71,7 @@
   "runtimeExports": [
     "AlertBanner",
     "AnimationRuntimeProvider",
+    "AspectRatio",
     "Avatar",
     "AvatarGroup",
     "Badge",
@@ -79,6 +80,7 @@
     "ButtonGroup",
     "Card",
     "CategoryFilter",
+    "Center",
     "Checkbox",
     "CheckboxGroup",
     "clearConsentState",
@@ -150,6 +152,7 @@
     "SelectOption",
     "Skeleton",
     "SkipLink",
+    "Spacer",
     "Spinner",
     "SplitButton",
     "splitPlaceholderOption",
@@ -195,9 +198,7 @@
       "IconButton",
       "SplitButton"
     ],
-    "consent": [
-      "CookieConsent"
-    ],
+    "consent": ["CookieConsent"],
     "content": [
       "CodeBlockWindow",
       "CodeSnippet",
@@ -247,21 +248,18 @@
       "useScrollOverflow",
       "useStreamingText"
     ],
-    "identity": [
-      "Avatar",
-      "AvatarGroup",
-      "Badge",
-      "Icon",
-      "StatusDot"
-    ],
+    "identity": ["Avatar", "AvatarGroup", "Badge", "Icon", "StatusDot"],
     "layout": [
+      "AspectRatio",
       "Card",
+      "Center",
       "Container",
       "Divider",
       "FlexBox",
       "Grid",
       "MacWindowFrame",
       "Section",
+      "Spacer",
       "Stack"
     ],
     "navigation": [
@@ -285,12 +283,7 @@
       "SkipLink",
       "Tabs"
     ],
-    "patterns": [
-      "CategoryFilter",
-      "Modal",
-      "PageLayout",
-      "ProcessBlock"
-    ],
+    "patterns": ["CategoryFilter", "Modal", "PageLayout", "ProcessBlock"],
     "runtime": [
       "AnimationRuntimeProvider",
       "clearConsentState",
@@ -323,12 +316,7 @@
       "useToast",
       "useTranslate"
     ],
-    "typography": [
-      "Kbd",
-      "Text",
-      "Title",
-      "VisuallyHidden"
-    ]
+    "typography": ["Kbd", "Text", "Title", "VisuallyHidden"]
   },
   "sourceExportsByEntry": {
     "actions": [
@@ -350,10 +338,7 @@
       "SplitButtonOption",
       "SplitButtonProps"
     ],
-    "consent": [
-      "CookieConsent",
-      "CookieConsentProps"
-    ],
+    "consent": ["CookieConsent", "CookieConsentProps"],
     "content": [
       "CodeBlockWindow",
       "CodeBlockWindowProps",
@@ -473,12 +458,16 @@
       "StatusDotTone"
     ],
     "layout": [
+      "AspectRatio",
+      "AspectRatioProps",
       "Card",
       "CardDescriptionProps",
       "CardPadding",
       "CardProps",
       "CardTitleProps",
       "CardVariant",
+      "Center",
+      "CenterProps",
       "Container",
       "ContainerProps",
       "Divider",
@@ -492,6 +481,8 @@
       "MacWindowFrameProps",
       "Section",
       "SectionProps",
+      "Spacer",
+      "SpacerProps",
       "Stack",
       "StackProps"
     ],

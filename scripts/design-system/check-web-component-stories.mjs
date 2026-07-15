@@ -319,6 +319,220 @@ try {
         );
       }
     }
+    if (story.tagName === "dt-card") {
+      const cardResult = await page.evaluate(() => {
+        const linked = document.createElement("dt-card");
+        linked.setAttribute("title-text", "Case study");
+        linked.setAttribute("link", "/work/case-study");
+        linked.setAttribute("link-label", "Read the case study");
+        linked.setAttribute("content", "Portable card body");
+
+        const action = document.createElement("dt-card");
+        action.setAttribute("title-text", "Action card");
+        action.setAttribute("link", "/ignored");
+        const button = document.createElement("button");
+        button.slot = "footer-end";
+        button.textContent = "Confirm";
+        action.append(button);
+
+        const loading = document.createElement("dt-card");
+        loading.setAttribute("loading", "");
+
+        const unsafe = document.createElement("dt-card");
+        unsafe.setAttribute("title-text", "Unsafe link");
+        unsafe.setAttribute("link", "javascript:alert(1)");
+
+        document.body.append(linked, action, loading, unsafe);
+        const linkedAnchors = linked.shadowRoot?.querySelectorAll("a") ?? [];
+        const linkedAnchor = linkedAnchors[0];
+        const actionRoot = action.shadowRoot?.querySelector('[part~="card"]');
+        const loadingRoot = loading.shadowRoot?.querySelector('[part~="card"]');
+        const unsafeAnchor = unsafe.shadowRoot?.querySelector("a");
+        const result = {
+          linkedAnchorCount: linkedAnchors.length,
+          linkedName: linkedAnchor?.getAttribute("aria-label"),
+          linkedHref: linkedAnchor?.getAttribute("href"),
+          bodyText: linked.shadowRoot
+            ?.querySelector('[part~="body"]')
+            ?.textContent?.trim(),
+          actionAnchorCount:
+            action.shadowRoot?.querySelectorAll("a").length ?? -1,
+          actionHasFooter: Boolean(
+            action.shadowRoot?.querySelector('[part~="footer"]'),
+          ),
+          actionTag: actionRoot?.tagName,
+          loadingRole: loadingRoot?.getAttribute("role"),
+          loadingBusy: loadingRoot?.getAttribute("aria-busy"),
+          loadingSkeleton: Boolean(
+            loading.shadowRoot?.querySelector('[part~="skeleton"]'),
+          ),
+          unsafeHref: unsafeAnchor?.getAttribute("href"),
+        };
+        linked.remove();
+        action.remove();
+        loading.remove();
+        unsafe.remove();
+        return result;
+      });
+      if (
+        cardResult.linkedAnchorCount !== 1 ||
+        cardResult.linkedName !== "Read the case study" ||
+        cardResult.linkedHref !== "/work/case-study" ||
+        cardResult.bodyText !== "Portable card body" ||
+        cardResult.actionAnchorCount !== 0 ||
+        !cardResult.actionHasFooter ||
+        cardResult.actionTag !== "DIV" ||
+        cardResult.loadingRole !== "status" ||
+        cardResult.loadingBusy !== "true" ||
+        !cardResult.loadingSkeleton ||
+        cardResult.unsafeHref !== "#"
+      ) {
+        throw new Error(
+          `dt-card failed composition, link, or loading DoD: ${JSON.stringify(cardResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-center") {
+      const centerResult = await page.evaluate(() => {
+        const center = document.createElement("dt-center");
+        center.setAttribute("as", "section");
+        center.setAttribute("content", "Centered fallback");
+        center.setAttribute("aria-label", "Focal content");
+        document.body.append(center);
+        const root = center.shadowRoot?.querySelector('[part~="center"]');
+        const result = {
+          tagName: root?.tagName,
+          label: root?.getAttribute("aria-label"),
+          text: root?.textContent?.trim(),
+          display:
+            root instanceof HTMLElement ? getComputedStyle(root).display : null,
+          alignItems:
+            root instanceof HTMLElement
+              ? getComputedStyle(root).alignItems
+              : null,
+          justifyContent:
+            root instanceof HTMLElement
+              ? getComputedStyle(root).justifyContent
+              : null,
+        };
+        center.remove();
+        return result;
+      });
+      if (
+        centerResult.tagName !== "SECTION" ||
+        centerResult.label !== "Focal content" ||
+        centerResult.text !== "Centered fallback" ||
+        centerResult.display !== "flex" ||
+        centerResult.alignItems !== "center" ||
+        centerResult.justifyContent !== "center"
+      ) {
+        throw new Error(
+          `dt-center failed semantic or alignment DoD: ${JSON.stringify(centerResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-container") {
+      const containerResult = await page.evaluate(() => {
+        const centered = document.createElement("dt-container");
+        centered.setAttribute("content", "Centered by default");
+        const uncentered = document.createElement("dt-container");
+        uncentered.setAttribute("as", "main");
+        uncentered.setAttribute("center", "false");
+        uncentered.setAttribute("content", "Landmark content");
+        document.body.append(centered, uncentered);
+        const centeredRoot = centered.shadowRoot?.querySelector(
+          '[part~="container"]',
+        );
+        const uncenteredRoot = uncentered.shadowRoot?.querySelector(
+          '[part~="container"]',
+        );
+        const result = {
+          centeredValue: centered.center,
+          centeredClass:
+            centeredRoot instanceof HTMLElement
+              ? centeredRoot.classList.contains("centered")
+              : false,
+          uncenteredValue: uncentered.center,
+          uncenteredClass:
+            uncenteredRoot instanceof HTMLElement
+              ? uncenteredRoot.classList.contains("centered")
+              : true,
+          uncenteredTag: uncenteredRoot?.tagName,
+          text: uncenteredRoot?.textContent?.trim(),
+        };
+        centered.remove();
+        uncentered.remove();
+        return result;
+      });
+      if (
+        containerResult.centeredValue !== true ||
+        containerResult.centeredClass !== true ||
+        containerResult.uncenteredValue !== false ||
+        containerResult.uncenteredClass !== false ||
+        containerResult.uncenteredTag !== "MAIN" ||
+        containerResult.text !== "Landmark content"
+      ) {
+        throw new Error(
+          `dt-container failed centering or semantic DoD: ${JSON.stringify(containerResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-spacer") {
+      const spacerResult = await element.evaluate((node) => {
+        const spacer = node.shadowRoot?.querySelector('[part~="spacer"]');
+        const styles =
+          spacer instanceof HTMLElement ? getComputedStyle(spacer) : null;
+        return {
+          hostHidden: node.getAttribute("aria-hidden"),
+          internalHidden: spacer?.getAttribute("aria-hidden"),
+          width: styles?.width,
+          height: styles?.height,
+        };
+      });
+      if (
+        spacerResult.hostHidden !== "true" ||
+        spacerResult.internalHidden !== "true" ||
+        spacerResult.width === "0px" ||
+        spacerResult.height !== "24px"
+      ) {
+        throw new Error(
+          `dt-spacer failed hidden geometry DoD: ${JSON.stringify(spacerResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-aspect-ratio") {
+      const ratioResult = await element.evaluate((node) => {
+        const frame = node.shadowRoot?.querySelector('[part~="frame"]');
+        const content = node.shadowRoot?.querySelector('[part~="content"]');
+        const frameStyles =
+          frame instanceof HTMLElement ? getComputedStyle(frame) : null;
+        const contentStyles =
+          content instanceof HTMLElement ? getComputedStyle(content) : null;
+        const bounds = frame?.getBoundingClientRect();
+        return {
+          ratio: frameStyles?.aspectRatio,
+          overflow: frameStyles?.overflow,
+          position: frameStyles?.position,
+          contentPosition: contentStyles?.position,
+          width: bounds?.width ?? 0,
+          height: bounds?.height ?? 0,
+        };
+      });
+      const renderedRatio = ratioResult.width / ratioResult.height;
+      if (
+        ratioResult.ratio !== "16 / 9" ||
+        ratioResult.overflow !== "hidden" ||
+        ratioResult.position !== "relative" ||
+        ratioResult.contentPosition !== "absolute" ||
+        ratioResult.width <= 0 ||
+        ratioResult.height <= 0 ||
+        Math.abs(renderedRatio - 16 / 9) > 0.01
+      ) {
+        throw new Error(
+          `dt-aspect-ratio failed reserved-frame DoD: ${JSON.stringify(ratioResult)}`,
+        );
+      }
+    }
     const parityTargets = {
       "dt-text": {
         part: "text",
@@ -378,6 +592,54 @@ try {
           "gap",
           "justifyContent",
         ],
+      },
+      "dt-card": {
+        part: "card",
+        selector: "#storybook-root > div",
+        properties: [
+          "backgroundColor",
+          "borderBlockStartColor",
+          "borderBlockStartStyle",
+          "borderBlockStartWidth",
+          "borderRadius",
+          "display",
+          "flexDirection",
+          "gap",
+          "paddingBlockEnd",
+          "paddingBlockStart",
+          "paddingInlineEnd",
+          "paddingInlineStart",
+          "position",
+        ],
+      },
+      "dt-center": {
+        part: "center",
+        selector: "#storybook-root > .flex.items-center.justify-center",
+        properties: ["alignItems", "display", "justifyContent"],
+      },
+      "dt-container": {
+        part: "container",
+        selector: "#storybook-root > .max-w-container-lg",
+        properties: [
+          "boxSizing",
+          "marginInlineEnd",
+          "marginInlineStart",
+          "maxWidth",
+          "paddingInlineEnd",
+          "paddingInlineStart",
+          "width",
+        ],
+      },
+      "dt-spacer": {
+        part: "spacer",
+        selector:
+          '#storybook-root > div:not([data-axe-ignore]) > [aria-hidden="true"]',
+        properties: ["height", "width"],
+      },
+      "dt-aspect-ratio": {
+        part: "frame",
+        selector: "#storybook-root .relative.overflow-hidden",
+        properties: ["aspectRatio", "overflow", "position"],
       },
     };
     const parityTarget = parityTargets[story.tagName];

@@ -1,7 +1,11 @@
 import { DtAlertBannerElement } from "./native/alert-banner";
+import { DtAspectRatioElement } from "./native/aspect-ratio";
 import { DtBadgeElement } from "./native/badge";
 import { DtButtonElement } from "./native/button";
 import { DtButtonGroupElement } from "./native/button-group";
+import { DtCardElement } from "./native/card";
+import { DtCenterElement } from "./native/center";
+import { DtContainerElement } from "./native/container";
 import { DtDividerElement } from "./native/divider";
 import { DtEmptyStateElement } from "./native/empty-state";
 import { DtFilterChipElement } from "./native/filter-chip";
@@ -13,6 +17,7 @@ import { DtNavLinkElement } from "./native/nav-link";
 import { DtProgressElement } from "./native/progress";
 import { DtSkipLinkElement } from "./native/skip-link";
 import { DtSpinnerElement } from "./native/spinner";
+import { DtSpacerElement } from "./native/spacer";
 import { DtStatusDotElement } from "./native/status-dot";
 import { DtSectionElement } from "./native/section";
 import { DtStackElement } from "./native/stack";
@@ -29,6 +34,8 @@ export type {
   DtAlertBannerAriaLive,
   DtAlertBannerTone,
 } from "./native/alert-banner";
+export { DtAspectRatioElement } from "./native/aspect-ratio";
+export type { DtAspectRatioRatio } from "./native/aspect-ratio";
 export { DtBadgeElement } from "./native/badge";
 export type { DtBadgeSize, DtBadgeTone, DtBadgeVariant } from "./native/badge";
 export { DtButtonElement } from "./native/button";
@@ -39,6 +46,28 @@ export type {
   DtButtonVariant,
 } from "./native/button";
 export { DtButtonGroupElement } from "./native/button-group";
+export { DtCardElement } from "./native/card";
+export type {
+  DtCardDescriptionSettings,
+  DtCardDescriptionSize,
+  DtCardDescriptionTag,
+  DtCardPadding,
+  DtCardTag,
+  DtCardTextSize,
+  DtCardTitleLevel,
+  DtCardTitleSettings,
+  DtCardTitleSize,
+  DtCardTitleTag,
+  DtCardVariant,
+} from "./native/card";
+export { DtCenterElement } from "./native/center";
+export type { DtCenterTag } from "./native/center";
+export { DtContainerElement } from "./native/container";
+export type {
+  DtContainerCenterValue,
+  DtContainerSize,
+  DtContainerTag,
+} from "./native/container";
 export { DtEmptyStateElement } from "./native/empty-state";
 export type {
   DtEmptyStateHeadingLevel,
@@ -75,6 +104,8 @@ export { DtProgressElement } from "./native/progress";
 export type { DtProgressSize, DtProgressState } from "./native/progress";
 export { DtSpinnerElement } from "./native/spinner";
 export type { DtSpinnerSize } from "./native/spinner";
+export { DtSpacerElement } from "./native/spacer";
+export type { DtSpacerAxis, DtSpacerSize } from "./native/spacer";
 export { DtSkipLinkElement } from "./native/skip-link";
 export { DtStatusDotElement } from "./native/status-dot";
 export type { DtStatusDotSize, DtStatusDotTone } from "./native/status-dot";
@@ -125,6 +156,11 @@ export const nativeElementDefinitions = [
   ["dt-list", DtListElement],
   ["dt-section", DtSectionElement],
   ["dt-stack", DtStackElement],
+  ["dt-card", DtCardElement],
+  ["dt-center", DtCenterElement],
+  ["dt-container", DtContainerElement],
+  ["dt-spacer", DtSpacerElement],
+  ["dt-aspect-ratio", DtAspectRatioElement],
   ["dt-empty-state", DtEmptyStateElement],
   ["dt-text-input", DtTextInputElement],
   ["dt-text-area", DtTextAreaElement],

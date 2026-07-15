@@ -23,6 +23,13 @@ const stringArrayProperty = (name, sourceProp = name, description = "") => ({
   propertyType: "string[]",
   description,
 });
+const booleanValueProperty = (name, sourceProp = name, description = "") => ({
+  name,
+  sourceProp,
+  type: "string",
+  propertyType: "boolean",
+  description,
+});
 const nativeProp = (name, type, description = "") => ({
   name,
   sourceProp: null,
@@ -33,6 +40,7 @@ const storyParity = ({ equivalents = [], exclusions = [] } = {}) => ({
   equivalents,
   exclusions,
 });
+const slot = (name, description) => ({ name, description });
 
 export default [
   {
@@ -480,6 +488,125 @@ export default [
       booleanProp("wrap"),
       stringProp("as"),
     ],
+    events: [],
+  },
+  {
+    tagName: "dt-card",
+    sourceComponent: "Card",
+    contract: "Card",
+    defaultBackend: "native",
+    nativeClassName: "DtCardElement",
+    description:
+      "Semantic content surface with structured header, body, footer, link, and loading modes.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("variant"),
+      stringProp("padding"),
+      stringProp("as"),
+      stringProp(
+        "titleText",
+        "title",
+        "Card heading text; uses title-text to avoid the global HTML title tooltip.",
+      ),
+      numberProp("titleLevel", "titleProps"),
+      stringProp("titleAs", "titleProps"),
+      stringProp("titleSize", "titleProps"),
+      stringProp("description"),
+      stringProp("descriptionAs", "descriptionProps"),
+      stringProp("descriptionSize", "descriptionProps"),
+      stringProp("link"),
+      stringProp("linkLabel"),
+      booleanProp("loading"),
+    ],
+    slots: [
+      slot("", "Card body content."),
+      slot("header-start", "Leading header content; replaces the title block."),
+      slot("header-end", "Trailing header metadata or actions."),
+      slot("extra", "Deprecated alias for header-end."),
+      slot("footer-start", "Leading footer action region."),
+      slot("footer-end", "Trailing footer action region."),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-center",
+    sourceComponent: "Center",
+    contract: "Center",
+    defaultBackend: "native",
+    nativeClassName: "DtCenterElement",
+    description: "Both-axis centering primitive for focal content.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("as"),
+    ],
+    slots: [slot("", "Content centered on both axes.")],
+    events: [],
+  },
+  {
+    tagName: "dt-container",
+    sourceComponent: "Container",
+    contract: "Container",
+    defaultBackend: "native",
+    nativeClassName: "DtContainerElement",
+    description:
+      "Responsive page-width constraint with tokenized gutters and semantic wrappers.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("size"),
+      booleanValueProperty(
+        "center",
+        "center",
+        "Boolean property; the attribute accepts true or false and defaults to true when absent.",
+      ),
+      stringProp("as"),
+    ],
+    slots: [slot("", "Content constrained by the container.")],
+    events: [],
+  },
+  {
+    tagName: "dt-spacer",
+    sourceComponent: "Spacer",
+    contract: "Spacer",
+    defaultBackend: "native",
+    nativeClassName: "DtSpacerElement",
+    description:
+      "Accessibility-hidden escape hatch for tokenized spatial gaps.",
+    storyParity: storyParity(),
+    props: [stringProp("size"), stringProp("axis")],
+    events: [],
+  },
+  {
+    tagName: "dt-aspect-ratio",
+    sourceComponent: "AspectRatio",
+    contract: "AspectRatio",
+    defaultBackend: "native",
+    nativeClassName: "DtAspectRatioElement",
+    description: "Clipped media frame that reserves a tokenized aspect ratio.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("ratio"),
+    ],
+    slots: [slot("", "Media or placeholder content filling the ratio frame.")],
     events: [],
   },
   {

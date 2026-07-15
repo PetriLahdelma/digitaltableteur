@@ -184,6 +184,45 @@ export type DtStackElementContract = HTMLElement & {
   as?: string;
 };
 
+export type DtCardElementContract = HTMLElement & {
+  content?: string;
+  variant?: string;
+  padding?: string;
+  as?: string;
+  titleText?: string;
+  titleLevel?: number;
+  titleAs?: string;
+  titleSize?: string;
+  description?: string;
+  descriptionAs?: string;
+  descriptionSize?: string;
+  link?: string;
+  linkLabel?: string;
+  loading?: boolean;
+};
+
+export type DtCenterElementContract = HTMLElement & {
+  content?: string;
+  as?: string;
+};
+
+export type DtContainerElementContract = HTMLElement & {
+  content?: string;
+  size?: string;
+  center?: boolean;
+  as?: string;
+};
+
+export type DtSpacerElementContract = HTMLElement & {
+  size?: string;
+  axis?: string;
+};
+
+export type DtAspectRatioElementContract = HTMLElement & {
+  content?: string;
+  ratio?: string;
+};
+
 export type DtEmptyStateElementContract = HTMLElement & {
   icon?: string;
   titleText?: string;
@@ -270,6 +309,11 @@ export const elementMigrationManifest = [
   { tagName: "dt-list", sourceComponent: "List", backend: "native" },
   { tagName: "dt-section", sourceComponent: "Section", backend: "native" },
   { tagName: "dt-stack", sourceComponent: "Stack", backend: "native" },
+  { tagName: "dt-card", sourceComponent: "Card", backend: "native" },
+  { tagName: "dt-center", sourceComponent: "Center", backend: "native" },
+  { tagName: "dt-container", sourceComponent: "Container", backend: "native" },
+  { tagName: "dt-spacer", sourceComponent: "Spacer", backend: "native" },
+  { tagName: "dt-aspect-ratio", sourceComponent: "AspectRatio", backend: "native" },
   { tagName: "dt-empty-state", sourceComponent: "EmptyState", backend: "native" },
   { tagName: "dt-text-input", sourceComponent: "TextInput", backend: "native" },
   { tagName: "dt-text-area", sourceComponent: "TextArea", backend: "native" },
@@ -298,6 +342,11 @@ declare global {
     "dt-list": DtListElementContract;
     "dt-section": DtSectionElementContract;
     "dt-stack": DtStackElementContract;
+    "dt-card": DtCardElementContract;
+    "dt-center": DtCenterElementContract;
+    "dt-container": DtContainerElementContract;
+    "dt-spacer": DtSpacerElementContract;
+    "dt-aspect-ratio": DtAspectRatioElementContract;
     "dt-empty-state": DtEmptyStateElementContract;
     "dt-text-input": DtTextInputElementContract;
     "dt-text-area": DtTextAreaElementContract;
