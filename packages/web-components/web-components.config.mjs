@@ -16,6 +16,13 @@ const booleanProp = (name, sourceProp = name, description = "") => ({
   type: "boolean",
   description,
 });
+const stringArrayProperty = (name, sourceProp = name, description = "") => ({
+  name,
+  sourceProp,
+  type: "string",
+  propertyType: "string[]",
+  description,
+});
 const nativeProp = (name, type, description = "") => ({
   name,
   sourceProp: null,
@@ -345,6 +352,135 @@ export default [
         description: "Dispatched when the dismiss control is activated.",
       },
     ],
+  },
+  {
+    tagName: "dt-text",
+    sourceComponent: "Text",
+    contract: "Text",
+    defaultBackend: "native",
+    nativeClassName: "DtTextElement",
+    description:
+      "Semantic body and inline typography with tokenized size and line height.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Text Compliance",
+          reason:
+            "React-only internal compliance fixture; native parity is enforced by package and Storybook browser gates.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("content", "children", "Fallback text for the default slot."),
+      stringProp("as"),
+      stringProp("size"),
+      stringProp("lineHeight"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-title",
+    sourceComponent: "Title",
+    contract: "Title",
+    defaultBackend: "native",
+    nativeClassName: "DtTitleElement",
+    description:
+      "Semantic heading with independent level, display size, and line-height controls.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Title Compliance",
+          reason:
+            "React-only internal compliance fixture; native parity is enforced by package and Storybook browser gates.",
+        },
+      ],
+    }),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback heading text for the default slot.",
+      ),
+      stringProp("as"),
+      booleanProp("unstyled"),
+      stringProp("size"),
+      numberProp("level"),
+      stringProp("lineHeight"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-list",
+    sourceComponent: "List",
+    contract: "List",
+    defaultBackend: "native",
+    nativeClassName: "DtListElement",
+    description:
+      "Semantic ordered or unordered list with tokenized type, spacing, and marker styles.",
+    storyParity: storyParity(),
+    props: [
+      stringArrayProperty(
+        "items",
+        "items",
+        "JSON string array or string[] property; light-DOM li children are also supported.",
+      ),
+      stringProp("as"),
+      stringProp("size"),
+      stringProp("lineHeight"),
+      stringProp("listStyleType"),
+      stringProp("spacing"),
+      stringProp("role"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-section",
+    sourceComponent: "Section",
+    contract: "Section",
+    defaultBackend: "native",
+    nativeClassName: "DtSectionElement",
+    description:
+      "Semantic page section with responsive spacing and theme-aware surfaces.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("spacing"),
+      stringProp("background"),
+      stringProp("spotlightTarget"),
+      nativeProp("id", "string"),
+      nativeProp("ariaLabel", "string"),
+      nativeProp("ariaLabelledby", "string"),
+      nativeProp("ariaDescribedby", "string"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-stack",
+    sourceComponent: "Stack",
+    contract: "Stack",
+    defaultBackend: "native",
+    nativeClassName: "DtStackElement",
+    description:
+      "Semantic flex stack with tokenized direction, gap, alignment, distribution, and wrapping.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("direction"),
+      stringProp("gap"),
+      stringProp("align"),
+      stringProp("justify"),
+      booleanProp("wrap"),
+      stringProp("as"),
+    ],
+    events: [],
   },
   {
     tagName: "dt-empty-state",

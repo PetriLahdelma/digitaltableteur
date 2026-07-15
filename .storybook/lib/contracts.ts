@@ -156,6 +156,7 @@ export const titleByComponentName: Record<string, string> = {
   Icon: "Content/Icon",
   Text: "Content/Text",
   Title: "Content/Title",
+  List: "Content/List",
   AlertBanner: "Feedback/AlertBanner",
   Progress: "Feedback/Progress",
   Spinner: "Feedback/Spinner",
@@ -170,6 +171,8 @@ export const titleByComponentName: Record<string, string> = {
   Switch: "Forms/Switch",
   Card: "Layout/Card",
   Divider: "Layout/Divider",
+  Section: "Layout/Section",
+  Stack: "Layout/Stack",
 };
 
 /** Storybook's title -> id slug (mirrors @storybook/csf sanitize rules). */

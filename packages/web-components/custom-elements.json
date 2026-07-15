@@ -872,6 +872,305 @@
         },
         {
           "kind": "class",
+          "name": "DtTextElement",
+          "description": "Semantic body and inline typography with tokenized size and line height.",
+          "customElement": true,
+          "tagName": "dt-text",
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "line-height",
+              "fieldName": "lineHeight",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Text",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtTitleElement",
+          "description": "Semantic heading with independent level, display size, and line-height controls.",
+          "customElement": true,
+          "tagName": "dt-title",
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback heading text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "unstyled",
+              "fieldName": "unstyled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "level",
+              "fieldName": "level",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "line-height",
+              "fieldName": "lineHeight",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Title",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtListElement",
+          "description": "Semantic ordered or unordered list with tokenized type, spacing, and marker styles.",
+          "customElement": true,
+          "tagName": "dt-list",
+          "members": [
+            {
+              "kind": "field",
+              "name": "items",
+              "description": "JSON string array or string[] property; light-DOM li children are also supported.",
+              "type": {
+                "text": "string[]"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "fieldName": "items",
+              "description": "JSON string array or string[] property; light-DOM li children are also supported.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "line-height",
+              "fieldName": "lineHeight",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "list-style-type",
+              "fieldName": "listStyleType",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "spacing",
+              "fieldName": "spacing",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "role",
+              "fieldName": "role",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "List",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSectionElement",
+          "description": "Semantic page section with responsive spacing and theme-aware surfaces.",
+          "customElement": true,
+          "tagName": "dt-section",
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "spacing",
+              "fieldName": "spacing",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "background",
+              "fieldName": "background",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "spotlight-target",
+              "fieldName": "spotlightTarget",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "id",
+              "fieldName": "id",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-labelledby",
+              "fieldName": "ariaLabelledby",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-describedby",
+              "fieldName": "ariaDescribedby",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Section",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtStackElement",
+          "description": "Semantic flex stack with tokenized direction, gap, alignment, distribution, and wrapping.",
+          "customElement": true,
+          "tagName": "dt-stack",
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "direction",
+              "fieldName": "direction",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "gap",
+              "fieldName": "gap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "align",
+              "fieldName": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "justify",
+              "fieldName": "justify",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "wrap",
+              "fieldName": "wrap",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Stack",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
           "name": "DtEmptyStateElement",
           "description": "Empty-result composition with semantic heading, description, icon, and action slots.",
           "customElement": true,

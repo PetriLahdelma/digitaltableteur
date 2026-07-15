@@ -139,10 +139,13 @@ export const SemanticList: Story = {
     docs: { description: { story: "Rendering as ul keeps the markup a real list while Stack owns the rhythm — list semantics without list styling." } },
   },
   render: () => (
-    <Stack as="ul" gap="sm" className="list-none p-0 m-0">
-      {["Design tokens", "Components", "Patterns"].map((item) => (
-        <li key={item} style={{ border: "1px dashed var(--color-border, #999)", padding: "0.5rem" }}>{item}</li>
-      ))}
-    </Stack>
+    <>
+      <style>{".stack-semantic-list { list-style: none; padding: 0; margin: 0; }"}</style>
+      <Stack as="ul" gap="sm" className="stack-semantic-list">
+        {["Design tokens", "Components", "Patterns"].map((item) => (
+          <li key={item} style={{ border: "1px dashed var(--color-border, #999)", padding: "0.5rem" }}>{item}</li>
+        ))}
+      </Stack>
+    </>
   ),
 };

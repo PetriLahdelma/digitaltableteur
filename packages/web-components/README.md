@@ -16,10 +16,10 @@ import "@digitaltableteur/tokens-css/tokens.css";
 import "@digitaltableteur/web-components/register";
 ```
 
-The default registry contains 19 native Shadow DOM custom elements:
+The default registry contains 24 native Shadow DOM custom elements:
 AlertBanner, Badge, Button, ButtonGroup, Checkbox, Divider, EmptyState,
-FilterChip, Icon, IconButton, Link, NavLink, Progress, SkipLink, Spinner,
-StatusDot, Switch, TextArea, and TextInput.
+FilterChip, Icon, IconButton, Link, List, NavLink, Progress, Section, SkipLink,
+Spinner, Stack, StatusDot, Switch, Text, TextArea, TextInput, and Title.
 
 ```html
 <dt-button label="Continue" variant="primary"></dt-button>
@@ -50,6 +50,18 @@ StatusDot, Switch, TextArea, and TextInput.
 >
   <dt-button slot="action">Clear filters</dt-button>
 </dt-empty-state>
+<dt-title level="2" size="l">Native semantic heading</dt-title>
+<dt-text size="m">Tokenized body copy.</dt-text>
+<dt-list list-style-type="dash">
+  <li>Semantic light-DOM list items</li>
+  <li>JSON string arrays are also supported through the items attribute</li>
+</dt-list>
+<dt-section spacing="lg" background="muted">
+  <dt-stack gap="sm">
+    <dt-title level="2" size="m">Composed layout primitives</dt-title>
+    <dt-text>Slots preserve arbitrary native content.</dt-text>
+  </dt-stack>
+</dt-section>
 <form>
   <dt-text-input
     name="email"
@@ -85,6 +97,9 @@ Native components accept text attributes for simple markup and slots for rich
 content. For example, Button supports default, `icon`, and `end-icon` slots;
 AlertBanner supports default, `title`, `description`, `icon`, and `action`
 slots; EmptyState supports `title`, `description`, `icon`, and `action` slots.
+Text, Title, Section, and Stack expose a default slot plus a text attribute
+fallback. List accepts either semantic light-DOM `li` children or a JSON string
+array through `items` (and a `string[]` property in JavaScript).
 `dt-nav-link` deliberately does not inspect a framework router: the host updates
 `current-path` when navigation changes. Component metadata and attributes are
 published in `custom-elements.json`. TextInput, TextArea, and Checkbox are

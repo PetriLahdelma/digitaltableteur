@@ -181,7 +181,7 @@ function renderElementContracts() {
       const props = element.props
         .map(
           (prop) =>
-            `  ${prop.name}?: ${prop.type === "number" ? "number" : prop.type === "boolean" ? "boolean" : "string"};`,
+            `  ${prop.name}?: ${prop.propertyType ?? (prop.type === "number" ? "number" : prop.type === "boolean" ? "boolean" : "string")};`,
         )
         .join("\n");
       return `export type ${name} = HTMLElement & {\n${props}\n};`;
@@ -281,6 +281,18 @@ function renderCustomElementsManifest() {
             description: element.description,
             customElement: true,
             tagName: element.tagName,
+            ...(element.props.some((prop) => prop.propertyType)
+              ? {
+                  members: element.props
+                    .filter((prop) => prop.propertyType)
+                    .map((prop) => ({
+                      kind: "field",
+                      name: prop.name,
+                      description: prop.description || undefined,
+                      type: { text: prop.propertyType },
+                    })),
+                }
+              : {}),
             attributes: element.props.map((prop) => ({
               name: dashed(prop.name),
               fieldName: prop.name,

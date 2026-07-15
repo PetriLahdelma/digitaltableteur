@@ -13,11 +13,16 @@ import {
   DtIconElement,
   DtIconButtonElement,
   DtLinkElement,
+  DtListElement,
   DtNavLinkElement,
   DtProgressElement,
   DtSkipLinkElement,
   DtSpinnerElement,
   DtStatusDotElement,
+  DtSectionElement,
+  DtStackElement,
+  DtTextElement,
+  DtTitleElement,
   DtTextInputElement,
   DtTextAreaElement,
   DtCheckboxElement,
@@ -44,6 +49,11 @@ const NATIVE_TAGS = [
   "dt-spinner",
   "dt-progress",
   "dt-alert-banner",
+  "dt-text",
+  "dt-title",
+  "dt-list",
+  "dt-section",
+  "dt-stack",
   "dt-empty-state",
   "dt-text-input",
   "dt-text-area",
@@ -79,6 +89,11 @@ describe("native registry", () => {
     expect(customElements.get("dt-spinner")).toBe(DtSpinnerElement);
     expect(customElements.get("dt-progress")).toBe(DtProgressElement);
     expect(customElements.get("dt-alert-banner")).toBe(DtAlertBannerElement);
+    expect(customElements.get("dt-text")).toBe(DtTextElement);
+    expect(customElements.get("dt-title")).toBe(DtTitleElement);
+    expect(customElements.get("dt-list")).toBe(DtListElement);
+    expect(customElements.get("dt-section")).toBe(DtSectionElement);
+    expect(customElements.get("dt-stack")).toBe(DtStackElement);
     expect(customElements.get("dt-empty-state")).toBe(DtEmptyStateElement);
     expect(customElements.get("dt-text-input")).toBe(DtTextInputElement);
     expect(customElements.get("dt-text-area")).toBe(DtTextAreaElement);
@@ -480,6 +495,103 @@ describe("native action and navigation composition", () => {
     group.attached = false;
     expect(first).not.toHaveAttribute("data-dt-group-position");
     expect(second).not.toHaveAttribute("data-dt-group-position");
+  });
+});
+
+describe("native typography and semantic layout elements", () => {
+  it("renders Text with semantic tags and token variants", () => {
+    const element = document.createElement("dt-text") as DtTextElement;
+    element.content = "Body copy";
+    element.as = "strong";
+    element.size = "l";
+    element.lineHeight = "relaxed";
+    document.body.append(element);
+
+    const text = element.shadowRoot?.querySelector("strong");
+    expect(text).toHaveClass("text", "textL", "lineHeightRelaxed");
+    expect(text?.querySelector("slot")).toHaveTextContent("Body copy");
+    expect(text).toHaveAttribute("part", "root text");
+  });
+
+  it("gives Title as precedence over level and supports unstyled headings", () => {
+    const element = document.createElement("dt-title") as DtTitleElement;
+    element.content = "Section title";
+    element.level = 3;
+    element.as = "div";
+    element.size = "xl";
+    document.body.append(element);
+
+    expect(element.shadowRoot?.querySelector("div")).toHaveClass(
+      "title",
+      "titleXL",
+    );
+    expect(element.shadowRoot?.querySelector("h3")).toBeNull();
+
+    element.as = null;
+    element.unstyled = true;
+    const heading = element.shadowRoot?.querySelector("h3");
+    expect(heading).toBeTruthy();
+    expect(heading).not.toHaveAttribute("class");
+    const style = element.shadowRoot?.querySelector("style")?.textContent ?? "";
+    expect(style).not.toMatch(/(?:^|\s)h3\s*\{/);
+  });
+
+  it("preserves Section spacing, surface, and spotlight hooks", () => {
+    const element = document.createElement("dt-section") as DtSectionElement;
+    element.content = "Band content";
+    element.spacing = "hero";
+    element.background = "inverse";
+    element.spotlightTarget = "pricing";
+    element.setAttribute("aria-labelledby", "pricing-title");
+    element.setAttribute("aria-describedby", "pricing-description");
+    document.body.append(element);
+
+    const section = element.shadowRoot?.querySelector("section");
+    expect(section).toHaveClass("root", "hero", "inverse");
+    expect(section).toHaveAttribute("data-spotlight-target", "pricing");
+    expect(section).toHaveAttribute("aria-labelledby", "pricing-title");
+    expect(section).toHaveAttribute("aria-describedby", "pricing-description");
+    expect(element).toHaveAttribute("data-spotlight-target", "pricing");
+  });
+
+  it("renders Stack as a safe semantic element with flex token classes", () => {
+    const element = document.createElement("dt-stack") as DtStackElement;
+    element.as = "ul";
+    element.direction = "horizontal";
+    element.gap = "xl";
+    element.align = "center";
+    element.justify = "between";
+    element.wrap = true;
+    document.body.append(element);
+
+    expect(element.shadowRoot?.querySelector("ul")).toHaveClass(
+      "root",
+      "horizontal",
+      "gap-xl",
+      "align-center",
+      "justify-between",
+      "wrap",
+    );
+  });
+
+  it("supports List items properties, semantics, and marker variants", () => {
+    const element = document.createElement("dt-list") as DtListElement;
+    element.items = ["First", "Second", "Third"];
+    element.as = "ol";
+    element.size = "s";
+    element.spacing = "compact";
+    element.listStyleType = "dash";
+    document.body.append(element);
+
+    const list = element.shadowRoot?.querySelector("ol");
+    expect(list).toHaveClass(
+      "list",
+      "text-s",
+      "spacing-compact",
+      "marker-dash",
+    );
+    expect(list?.querySelectorAll("li")).toHaveLength(3);
+    expect(list?.querySelector("li")).toHaveTextContent("First");
   });
 });
 

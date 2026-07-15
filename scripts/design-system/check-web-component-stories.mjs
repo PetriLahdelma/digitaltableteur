@@ -72,6 +72,12 @@ const expectedComponents = nativeElements.map((element) => {
   const reactStories = entries
     .filter((entry) => entry.title === canonicalTitle && entry.type === "story")
     .map((entry) => entry.name);
+  const canonicalDefaultStory = entries.find(
+    (entry) =>
+      entry.title === canonicalTitle &&
+      entry.type === "story" &&
+      entry.name === "Default",
+  );
   const nativeStories = componentEntries
     .filter((entry) => entry.type === "story")
     .map((entry) => entry.name);
@@ -79,6 +85,29 @@ const expectedComponents = nativeElements.map((element) => {
     throw new Error(
       `${title} has no canonical React stories at ${canonicalTitle}`,
     );
+  }
+  if (!canonicalDefaultStory) {
+    throw new Error(`${canonicalTitle} has no canonical Default story`);
+  }
+  const semanticListStories =
+    element.tagName === "dt-stack"
+      ? {
+          canonical: entries.find(
+            (entry) =>
+              entry.title === canonicalTitle &&
+              entry.type === "story" &&
+              entry.name === "Semantic List",
+          ),
+          native: componentEntries.find(
+            (entry) => entry.type === "story" && entry.name === "Semantic List",
+          ),
+        }
+      : null;
+  if (
+    semanticListStories &&
+    (!semanticListStories.canonical || !semanticListStories.native)
+  ) {
+    throw new Error(`${title} must preserve the canonical Semantic List story`);
   }
   const parity = evaluateStoryParity({
     reactStories,
@@ -98,10 +127,17 @@ const expectedComponents = nativeElements.map((element) => {
   return {
     title,
     canonicalTitle,
+    canonicalDefaultStoryId: canonicalDefaultStory.id,
     defaultStoryId: defaultStory.id,
     docsId: docs.id,
     tagName: element.tagName,
     parity: parity.parity,
+    semanticListStoryIds: semanticListStories
+      ? {
+          canonical: semanticListStories.canonical.id,
+          native: semanticListStories.native.id,
+        }
+      : null,
   };
 });
 
@@ -280,6 +316,170 @@ try {
       ) {
         throw new Error(
           `dt-switch failed role/state/event DoD: ${JSON.stringify(switchResult)}`,
+        );
+      }
+    }
+    const parityTargets = {
+      "dt-text": {
+        part: "text",
+        selector: "#storybook-root > p",
+        properties: [
+          "color",
+          "fontFamily",
+          "fontSize",
+          "fontWeight",
+          "lineHeight",
+          "marginBlockEnd",
+          "marginBlockStart",
+        ],
+      },
+      "dt-title": {
+        part: "title",
+        selector: "#storybook-root > h2",
+        properties: [
+          "color",
+          "fontFamily",
+          "fontSize",
+          "fontWeight",
+          "lineHeight",
+          "marginBlockEnd",
+          "marginBlockStart",
+        ],
+      },
+      "dt-list": {
+        part: "list",
+        selector: "#storybook-root > ul",
+        properties: [
+          "fontFamily",
+          "fontSize",
+          "lineHeight",
+          "listStyleType",
+          "paddingInlineStart",
+        ],
+      },
+      "dt-section": {
+        part: "section",
+        selector: "#storybook-root > section",
+        properties: [
+          "backgroundColor",
+          "color",
+          "paddingBlockEnd",
+          "paddingBlockStart",
+        ],
+      },
+      "dt-stack": {
+        part: "stack",
+        selector: "#storybook-root > div",
+        properties: [
+          "alignItems",
+          "display",
+          "flexDirection",
+          "flexWrap",
+          "gap",
+          "justifyContent",
+        ],
+      },
+    };
+    const parityTarget = parityTargets[story.tagName];
+    if (parityTarget) {
+      const nativeSnapshot = await element.evaluate((node, target) => {
+        const rendered = node.shadowRoot?.querySelector(
+          `[part~="${target.part}"]`,
+        );
+        if (!(rendered instanceof HTMLElement)) return null;
+        const computed = getComputedStyle(rendered);
+        return {
+          tagName: rendered.tagName,
+          itemCount: rendered.querySelectorAll("li").length,
+          styles: Object.fromEntries(
+            target.properties.map((property) => {
+              const value = computed[property];
+              return [
+                property,
+                property === "listStyleType" && value === '\" \"'
+                  ? "none"
+                  : value,
+              ];
+            }),
+          ),
+        };
+      }, parityTarget);
+      await page.goto(
+        `${baseUrl}/iframe.html?id=${story.canonicalDefaultStoryId}&viewMode=story`,
+        { waitUntil: "domcontentloaded", timeout: 60_000 },
+      );
+      const canonical = page.locator(parityTarget.selector);
+      await canonical.waitFor({ state: "attached", timeout: 30_000 });
+      const reactSnapshot = await canonical.evaluate((rendered, target) => {
+        const computed = getComputedStyle(rendered);
+        return {
+          tagName: rendered.tagName,
+          itemCount: rendered.querySelectorAll("li").length,
+          styles: Object.fromEntries(
+            target.properties.map((property) => {
+              const value = computed[property];
+              return [
+                property,
+                property === "listStyleType" && value === '\" \"'
+                  ? "none"
+                  : value,
+              ];
+            }),
+          ),
+        };
+      }, parityTarget);
+      if (JSON.stringify(nativeSnapshot) !== JSON.stringify(reactSnapshot)) {
+        throw new Error(
+          `${story.tagName} Default semantics/style parity failed:\nReact ${JSON.stringify(reactSnapshot)}\nNative ${JSON.stringify(nativeSnapshot)}`,
+        );
+      }
+    }
+    if (story.semanticListStoryIds) {
+      const snapshotSemanticList = async (storyId, selector, shadowPart) => {
+        await page.goto(`${baseUrl}/iframe.html?id=${storyId}&viewMode=story`, {
+          waitUntil: "domcontentloaded",
+          timeout: 60_000,
+        });
+        const host = page.locator(selector);
+        await host.waitFor({ state: "attached", timeout: 30_000 });
+        return host.evaluate((node, part) => {
+          const list = part
+            ? node.shadowRoot?.querySelector(`[part~="${part}"]`)
+            : node;
+          if (!(list instanceof HTMLElement)) return null;
+          const item = part
+            ? node.querySelector("li")
+            : list.querySelector("li");
+          if (!(item instanceof HTMLElement)) return null;
+          const listStyles = getComputedStyle(list);
+          const itemStyles = getComputedStyle(item);
+          return {
+            tagName: list.tagName,
+            itemCount: part
+              ? node.querySelectorAll("li").length
+              : list.querySelectorAll("li").length,
+            listStyleType: listStyles.listStyleType,
+            margin: listStyles.margin,
+            padding: listStyles.padding,
+            itemBorderStyle: itemStyles.borderBlockStartStyle,
+            itemBorderWidth: itemStyles.borderBlockStartWidth,
+            itemPadding: itemStyles.padding,
+          };
+        }, shadowPart);
+      };
+      const nativeSnapshot = await snapshotSemanticList(
+        story.semanticListStoryIds.native,
+        "dt-stack",
+        "stack",
+      );
+      const reactSnapshot = await snapshotSemanticList(
+        story.semanticListStoryIds.canonical,
+        "#storybook-root > ul",
+        null,
+      );
+      if (JSON.stringify(nativeSnapshot) !== JSON.stringify(reactSnapshot)) {
+        throw new Error(
+          `dt-stack Semantic List parity failed:\nReact ${JSON.stringify(reactSnapshot)}\nNative ${JSON.stringify(nativeSnapshot)}`,
         );
       }
     }

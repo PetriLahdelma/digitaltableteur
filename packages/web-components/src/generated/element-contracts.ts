@@ -137,6 +137,53 @@ export type DtAlertBannerElementContract = HTMLElement & {
   ariaLive?: string;
 };
 
+export type DtTextElementContract = HTMLElement & {
+  content?: string;
+  as?: string;
+  size?: string;
+  lineHeight?: string;
+};
+
+export type DtTitleElementContract = HTMLElement & {
+  content?: string;
+  as?: string;
+  unstyled?: boolean;
+  size?: string;
+  level?: number;
+  lineHeight?: string;
+};
+
+export type DtListElementContract = HTMLElement & {
+  items?: string[];
+  as?: string;
+  size?: string;
+  lineHeight?: string;
+  listStyleType?: string;
+  spacing?: string;
+  role?: string;
+};
+
+export type DtSectionElementContract = HTMLElement & {
+  content?: string;
+  spacing?: string;
+  background?: string;
+  spotlightTarget?: string;
+  id?: string;
+  ariaLabel?: string;
+  ariaLabelledby?: string;
+  ariaDescribedby?: string;
+};
+
+export type DtStackElementContract = HTMLElement & {
+  content?: string;
+  direction?: string;
+  gap?: string;
+  align?: string;
+  justify?: string;
+  wrap?: boolean;
+  as?: string;
+};
+
 export type DtEmptyStateElementContract = HTMLElement & {
   icon?: string;
   titleText?: string;
@@ -218,6 +265,11 @@ export const elementMigrationManifest = [
   { tagName: "dt-divider", sourceComponent: "Divider", backend: "native" },
   { tagName: "dt-icon", sourceComponent: "Icon", backend: "native" },
   { tagName: "dt-alert-banner", sourceComponent: "AlertBanner", backend: "native" },
+  { tagName: "dt-text", sourceComponent: "Text", backend: "native" },
+  { tagName: "dt-title", sourceComponent: "Title", backend: "native" },
+  { tagName: "dt-list", sourceComponent: "List", backend: "native" },
+  { tagName: "dt-section", sourceComponent: "Section", backend: "native" },
+  { tagName: "dt-stack", sourceComponent: "Stack", backend: "native" },
   { tagName: "dt-empty-state", sourceComponent: "EmptyState", backend: "native" },
   { tagName: "dt-text-input", sourceComponent: "TextInput", backend: "native" },
   { tagName: "dt-text-area", sourceComponent: "TextArea", backend: "native" },
@@ -241,6 +293,11 @@ declare global {
     "dt-divider": DtDividerElementContract;
     "dt-icon": DtIconElementContract;
     "dt-alert-banner": DtAlertBannerElementContract;
+    "dt-text": DtTextElementContract;
+    "dt-title": DtTitleElementContract;
+    "dt-list": DtListElementContract;
+    "dt-section": DtSectionElementContract;
+    "dt-stack": DtStackElementContract;
     "dt-empty-state": DtEmptyStateElementContract;
     "dt-text-input": DtTextInputElementContract;
     "dt-text-area": DtTextAreaElementContract;

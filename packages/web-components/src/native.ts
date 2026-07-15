@@ -8,11 +8,16 @@ import { DtFilterChipElement } from "./native/filter-chip";
 import { DtIconElement } from "./native/icon";
 import { DtIconButtonElement } from "./native/icon-button";
 import { DtLinkElement } from "./native/link";
+import { DtListElement } from "./native/list";
 import { DtNavLinkElement } from "./native/nav-link";
 import { DtProgressElement } from "./native/progress";
 import { DtSkipLinkElement } from "./native/skip-link";
 import { DtSpinnerElement } from "./native/spinner";
 import { DtStatusDotElement } from "./native/status-dot";
+import { DtSectionElement } from "./native/section";
+import { DtStackElement } from "./native/stack";
+import { DtTextElement } from "./native/text";
+import { DtTitleElement } from "./native/title";
 import { DtTextInputElement } from "./native/text-input";
 import { DtTextAreaElement } from "./native/text-area";
 import { DtCheckboxElement } from "./native/checkbox";
@@ -57,6 +62,14 @@ export type {
 } from "./native/icon-button";
 export { DtLinkElement } from "./native/link";
 export type { DtLinkSize, DtLinkUnderline } from "./native/link";
+export { DtListElement } from "./native/list";
+export type {
+  DtListLineHeight,
+  DtListSize,
+  DtListSpacing,
+  DtListStyleType,
+  DtListTag,
+} from "./native/list";
 export { DtNavLinkElement } from "./native/nav-link";
 export { DtProgressElement } from "./native/progress";
 export type { DtProgressSize, DtProgressState } from "./native/progress";
@@ -65,6 +78,25 @@ export type { DtSpinnerSize } from "./native/spinner";
 export { DtSkipLinkElement } from "./native/skip-link";
 export { DtStatusDotElement } from "./native/status-dot";
 export type { DtStatusDotSize, DtStatusDotTone } from "./native/status-dot";
+export { DtSectionElement } from "./native/section";
+export type { DtSectionBackground, DtSectionSpacing } from "./native/section";
+export { DtStackElement } from "./native/stack";
+export type {
+  DtStackAlign,
+  DtStackDirection,
+  DtStackGap,
+  DtStackJustify,
+  DtStackTag,
+} from "./native/stack";
+export { DtTextElement } from "./native/text";
+export type { DtTextLineHeight, DtTextSize, DtTextTag } from "./native/text";
+export { DtTitleElement } from "./native/title";
+export type {
+  DtTitleLevel,
+  DtTitleLineHeight,
+  DtTitleSize,
+  DtTitleTag,
+} from "./native/title";
 export { DtTextInputElement } from "./native/text-input";
 export type { DtTextInputSize, DtTextInputType } from "./native/text-input";
 export { DtTextAreaElement } from "./native/text-area";
@@ -88,6 +120,11 @@ export const nativeElementDefinitions = [
   ["dt-spinner", DtSpinnerElement],
   ["dt-progress", DtProgressElement],
   ["dt-alert-banner", DtAlertBannerElement],
+  ["dt-text", DtTextElement],
+  ["dt-title", DtTitleElement],
+  ["dt-list", DtListElement],
+  ["dt-section", DtSectionElement],
+  ["dt-stack", DtStackElement],
   ["dt-empty-state", DtEmptyStateElement],
   ["dt-text-input", DtTextInputElement],
   ["dt-text-area", DtTextAreaElement],
