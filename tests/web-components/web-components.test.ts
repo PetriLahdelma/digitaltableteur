@@ -673,11 +673,11 @@ describe("native surface and layout primitives", () => {
 
   it("centers content with a safe semantic Center wrapper", () => {
     const element = document.createElement("dt-center") as DtCenterElement;
-    element.as = "section";
+    element.as = "span";
     element.content = "Focal content";
     document.body.append(element);
 
-    const center = element.shadowRoot?.querySelector("section");
+    const center = element.shadowRoot?.querySelector("span");
     expect(center).toHaveClass("root");
     expect(center).toHaveAttribute("part", "root center");
     expect(center).toHaveTextContent("Focal content");
@@ -687,12 +687,12 @@ describe("native surface and layout primitives", () => {
     const element = document.createElement(
       "dt-container",
     ) as DtContainerElement;
-    element.as = "main";
+    element.as = "li";
     element.size = "sm";
     document.body.append(element);
 
     expect(element.center).toBe(true);
-    expect(element.shadowRoot?.querySelector("main")).toHaveClass(
+    expect(element.shadowRoot?.querySelector("li")).toHaveClass(
       "root",
       "sm",
       "centered",
@@ -700,9 +700,7 @@ describe("native surface and layout primitives", () => {
 
     element.center = false;
     expect(element).toHaveAttribute("center", "false");
-    expect(element.shadowRoot?.querySelector("main")).not.toHaveClass(
-      "centered",
-    );
+    expect(element.shadowRoot?.querySelector("li")).not.toHaveClass("centered");
   });
 
   it("maps Spacer dimensions and keeps it out of the accessibility tree", () => {

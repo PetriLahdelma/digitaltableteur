@@ -1331,6 +1331,7 @@
             {
               "name": "as",
               "fieldName": "as",
+              "description": "Safe intrinsic wrapper element; supports common sectioning, grouping, list, and phrasing tags.",
               "type": {
                 "text": "string"
               }
@@ -1389,6 +1390,7 @@
             {
               "name": "as",
               "fieldName": "as",
+              "description": "Safe intrinsic wrapper element; supports common sectioning, grouping, list, and phrasing tags.",
               "type": {
                 "text": "string"
               }

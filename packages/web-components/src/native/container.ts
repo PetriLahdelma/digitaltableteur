@@ -17,7 +17,19 @@ const TAGS = [
   "header",
   "footer",
   "figure",
+  "figcaption",
   "form",
+  "fieldset",
+  "address",
+  "blockquote",
+  "ul",
+  "ol",
+  "li",
+  "dl",
+  "dt",
+  "dd",
+  "p",
+  "span",
 ] as const;
 const CENTER_VALUES = ["true", "false"] as const;
 const ARIA_ATTRIBUTES = [
