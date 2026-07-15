@@ -81,6 +81,11 @@ const expectedComponents = nativeElements.map((element) => {
   const nativeStories = componentEntries
     .filter((entry) => entry.type === "story")
     .map((entry) => entry.name);
+  const nativeStoryIds = Object.fromEntries(
+    componentEntries
+      .filter((entry) => entry.type === "story")
+      .map((entry) => [entry.name, entry.id]),
+  );
   if (reactStories.length === 0) {
     throw new Error(
       `${title} has no canonical React stories at ${canonicalTitle}`,
@@ -131,6 +136,7 @@ const expectedComponents = nativeElements.map((element) => {
     defaultStoryId: defaultStory.id,
     docsId: docs.id,
     tagName: element.tagName,
+    nativeStoryIds,
     parity: parity.parity,
     semanticListStoryIds: semanticListStories
       ? {
@@ -831,6 +837,246 @@ try {
         );
       }
     }
+    if (story.tagName === "dt-avatar") {
+      const avatarResult = await page.evaluate(() => {
+        const avatar = document.createElement("dt-avatar");
+        avatar.setAttribute("name", "Aino Virtanen");
+        avatar.setAttribute("variant", "initials");
+        avatar.menuItems = [
+          { id: "profile", label: "Profile" },
+          { id: "sign-out", label: "Sign out" },
+        ];
+        let detail = null;
+        avatar.addEventListener("menu-select", (event) => {
+          detail = event.detail;
+        });
+        document.body.append(avatar);
+        const trigger = avatar.shadowRoot?.querySelector("button");
+        trigger?.click();
+        const item = avatar.shadowRoot?.querySelector('[role="menuitem"]');
+        item?.click();
+        const result = {
+          initials: avatar.shadowRoot
+            ?.querySelector('[part~="initials"]')
+            ?.textContent?.trim(),
+          triggerLabel: trigger?.getAttribute("aria-label"),
+          detail,
+          expanded: avatar.shadowRoot
+            ?.querySelector("button")
+            ?.getAttribute("aria-expanded"),
+        };
+        avatar.remove();
+        return result;
+      });
+      if (
+        avatarResult.initials !== "AV" ||
+        avatarResult.triggerLabel !== "Aino Virtanen menu" ||
+        avatarResult.detail?.id !== "profile" ||
+        avatarResult.expanded !== "false"
+      ) {
+        throw new Error(
+          `dt-avatar failed initials, menu, or event DoD: ${JSON.stringify(avatarResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-avatar-group") {
+      const groupResult = await page.evaluate(() => {
+        const group = document.createElement("dt-avatar-group");
+        group.setAttribute("aria-label", "Project members");
+        group.setAttribute("max", "2");
+        for (const name of ["Aino", "Bo", "Carla", "Deniz"]) {
+          const avatar = document.createElement("dt-avatar");
+          avatar.setAttribute("name", name);
+          avatar.setAttribute("variant", "initials");
+          group.append(avatar);
+        }
+        document.body.append(group);
+        const result = {
+          role: group.shadowRoot
+            ?.querySelector('[part~="group"]')
+            ?.getAttribute("role"),
+          label: group.shadowRoot
+            ?.querySelector('[part~="group"]')
+            ?.getAttribute("aria-label"),
+          hidden: [...group.children].filter(
+            (child) =>
+              child.getAttribute("data-dt-avatar-group-hidden") === "true",
+          ).length,
+          overflow: group.shadowRoot
+            ?.querySelector('[part~="overflow"]')
+            ?.textContent?.replace(/\s+/g, " ")
+            .trim(),
+        };
+        group.remove();
+        return result;
+      });
+      if (
+        groupResult.role !== "group" ||
+        groupResult.label !== "Project members" ||
+        groupResult.hidden !== 2 ||
+        groupResult.overflow !== "+22 more"
+      ) {
+        throw new Error(
+          `dt-avatar-group failed grouping or overflow DoD: ${JSON.stringify(groupResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-display") {
+      const displayResult = await page.evaluate(() => {
+        const display = document.createElement("dt-display");
+        display.setAttribute("as", "h2");
+        display.setAttribute("content", "Section hero");
+        document.body.append(display);
+        const root = display.shadowRoot?.querySelector('[part~="display"]');
+        const result = { tagName: root?.tagName, text: root?.textContent };
+        display.remove();
+        return result;
+      });
+      if (
+        displayResult.tagName !== "H2" ||
+        displayResult.text !== "Section hero"
+      ) {
+        throw new Error(
+          `dt-display failed semantic content DoD: ${JSON.stringify(displayResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-flex-box") {
+      const flexResult = await page.evaluate(() => {
+        const flex = document.createElement("dt-flex-box");
+        flex.setAttribute("direction", "column");
+        flex.setAttribute("justify", "space-between");
+        flex.setAttribute("gap", "12");
+        document.body.append(flex);
+        const root = flex.shadowRoot?.querySelector('[part~="flex-box"]');
+        const computed =
+          root instanceof HTMLElement ? getComputedStyle(root) : null;
+        const result = {
+          display: computed?.display,
+          direction: computed?.flexDirection,
+          justify: computed?.justifyContent,
+          gap: computed?.gap,
+        };
+        flex.remove();
+        return result;
+      });
+      if (
+        flexResult.display !== "flex" ||
+        flexResult.direction !== "column" ||
+        flexResult.justify !== "space-between" ||
+        flexResult.gap !== "12px"
+      ) {
+        throw new Error(
+          `dt-flex-box failed layout DoD: ${JSON.stringify(flexResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-grid") {
+      const gridResult = await page.evaluate(() => {
+        const grid = document.createElement("dt-grid");
+        grid.setAttribute("columns", "2");
+        grid.setAttribute("tablet-columns", "3");
+        const feature = document.createElement("div");
+        feature.setAttribute("span", "2");
+        grid.append(feature, document.createElement("div"));
+        document.body.append(grid);
+        const root = grid.shadowRoot?.querySelector('[part~="grid"]');
+        const result = {
+          display:
+            root instanceof HTMLElement ? getComputedStyle(root).display : null,
+          responsive: root?.classList.contains("responsive"),
+          base:
+            root instanceof HTMLElement
+              ? root.style.getPropertyValue("--grid-cols")
+              : null,
+          tablet:
+            root instanceof HTMLElement
+              ? root.style.getPropertyValue("--grid-cols-tablet")
+              : null,
+          span: feature.style.gridColumn,
+        };
+        grid.remove();
+        return result;
+      });
+      if (
+        gridResult.display !== "grid" ||
+        !gridResult.responsive ||
+        gridResult.base !== "repeat(2, minmax(0, 1fr))" ||
+        gridResult.tablet !== "repeat(3, minmax(0, 1fr))" ||
+        gridResult.span !== "span 2"
+      ) {
+        throw new Error(
+          `dt-grid failed responsive tracks or span DoD: ${JSON.stringify(gridResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-kbd") {
+      const kbdResult = await element.evaluate((node) => {
+        const root = node.shadowRoot?.querySelector('[part~="kbd"]');
+        return { tagName: root?.tagName, text: root?.textContent?.trim() };
+      });
+      if (kbdResult.tagName !== "KBD" || kbdResult.text !== "Esc") {
+        throw new Error(
+          `dt-kbd failed semantic keycap DoD: ${JSON.stringify(kbdResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-skeleton") {
+      const skeletonResult = await element.evaluate((node) => {
+        const root = node.shadowRoot?.querySelector('[part~="skeleton"]');
+        const firstLine = node.shadowRoot?.querySelector(
+          '[part~="skeleton-line"]',
+        );
+        return {
+          role: root?.getAttribute("role"),
+          live: root?.getAttribute("aria-live"),
+          label: root?.getAttribute("aria-label"),
+          lines: node.shadowRoot?.querySelectorAll('[part~="skeleton-line"]')
+            .length,
+          firstLineWidth: firstLine?.getBoundingClientRect().width ?? 0,
+        };
+      });
+      if (
+        skeletonResult.role !== "status" ||
+        skeletonResult.live !== "polite" ||
+        skeletonResult.label !== "Loading content" ||
+        skeletonResult.lines !== 3 ||
+        skeletonResult.firstLineWidth <= 0
+      ) {
+        throw new Error(
+          `dt-skeleton failed loading semantics DoD: ${JSON.stringify(skeletonResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-visually-hidden") {
+      const hiddenResult = await element.evaluate((node) => {
+        const root = node.shadowRoot?.querySelector(
+          '[part~="visually-hidden"]',
+        );
+        const computed =
+          root instanceof HTMLElement ? getComputedStyle(root) : null;
+        return {
+          tagName: root?.tagName,
+          text: root?.textContent?.trim(),
+          position: computed?.position,
+          width: computed?.width,
+          height: computed?.height,
+          clipPath: computed?.clipPath,
+        };
+      });
+      if (
+        hiddenResult.tagName !== "SPAN" ||
+        hiddenResult.text !== "Additional context for screen readers" ||
+        hiddenResult.position !== "absolute" ||
+        hiddenResult.width !== "1px" ||
+        hiddenResult.height !== "1px" ||
+        hiddenResult.clipPath !== "inset(50%)"
+      ) {
+        throw new Error(
+          `dt-visually-hidden failed hidden-content DoD: ${JSON.stringify(hiddenResult)}`,
+        );
+      }
+    }
     const parityTargets = {
       "dt-text": {
         part: "text",
@@ -939,6 +1185,90 @@ try {
         selector: "#storybook-root .relative.overflow-hidden",
         properties: ["aspectRatio", "overflow", "position"],
       },
+      "dt-avatar": {
+        part: "image",
+        selector: "#storybook-root img",
+        properties: ["borderRadius", "display", "height", "objectFit", "width"],
+      },
+      "dt-avatar-group": {
+        part: "group",
+        selector: '#storybook-root > [role="group"]',
+        properties: ["alignItems", "display"],
+      },
+      "dt-display": {
+        part: "display",
+        selector: "#storybook-root > h1",
+        properties: [
+          "color",
+          "fontFamily",
+          "fontSize",
+          "fontWeight",
+          "lineHeight",
+        ],
+      },
+      "dt-flex-box": {
+        part: "flex-box",
+        selector: "#storybook-root > div",
+        properties: [
+          "alignItems",
+          "display",
+          "flexDirection",
+          "flexWrap",
+          "gap",
+          "justifyContent",
+        ],
+      },
+      "dt-grid": {
+        part: "grid",
+        selector: "#storybook-root > div",
+        properties: [
+          "columnGap",
+          "display",
+          "gridAutoRows",
+          "gridTemplateColumns",
+          "rowGap",
+          "width",
+        ],
+      },
+      "dt-kbd": {
+        part: "kbd",
+        selector: "#storybook-root > kbd",
+        properties: [
+          "backgroundColor",
+          "borderBlockEndWidth",
+          "borderRadius",
+          "color",
+          "display",
+          "fontFamily",
+          "fontSize",
+          "lineHeight",
+        ],
+      },
+      "dt-skeleton": {
+        part: "skeleton",
+        selector: '#storybook-root > [role="status"]',
+        properties: [
+          "borderRadius",
+          "display",
+          "flexDirection",
+          "gap",
+          "overflow",
+        ],
+      },
+      "dt-visually-hidden": {
+        part: "visually-hidden",
+        selector: "#storybook-root > span",
+        properties: [
+          "clipPath",
+          "height",
+          "margin",
+          "overflow",
+          "padding",
+          "position",
+          "whiteSpace",
+          "width",
+        ],
+      },
     };
     const parityTarget = parityTargets[story.tagName];
     if (parityTarget) {
@@ -958,7 +1288,13 @@ try {
                 property,
                 property === "listStyleType" && value === '\" \"'
                   ? "none"
-                  : value,
+                  : property === "fontFamily"
+                    ? [
+                        ...new Set(
+                          value.split(",").map((family) => family.trim()),
+                        ),
+                      ].join(", ")
+                    : value,
               ];
             }),
           ),
@@ -982,7 +1318,13 @@ try {
                 property,
                 property === "listStyleType" && value === '\" \"'
                   ? "none"
-                  : value,
+                  : property === "fontFamily"
+                    ? [
+                        ...new Set(
+                          value.split(",").map((family) => family.trim()),
+                        ),
+                      ].join(", ")
+                    : value,
               ];
             }),
           ),
@@ -991,6 +1333,53 @@ try {
       if (JSON.stringify(nativeSnapshot) !== JSON.stringify(reactSnapshot)) {
         throw new Error(
           `${story.tagName} Default semantics/style parity failed:\nReact ${JSON.stringify(reactSnapshot)}\nNative ${JSON.stringify(nativeSnapshot)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-avatar") {
+      await page.goto(
+        `${baseUrl}/iframe.html?id=${story.nativeStoryIds.Example}&viewMode=story`,
+        { waitUntil: "domcontentloaded", timeout: 60_000 },
+      );
+      const avatarExample = page.locator("dt-avatar").first();
+      await avatarExample.waitFor({ state: "attached", timeout: 30_000 });
+      const trigger = avatarExample.locator('[part~="trigger"]');
+      await trigger.click();
+      const menuItems = avatarExample.locator('[role="menuitem"]');
+      if ((await menuItems.count()) !== 4) {
+        throw new Error(
+          "dt-avatar Example must preserve the canonical four-item menu behavior",
+        );
+      }
+      await menuItems.first().click();
+      if (
+        (await avatarExample
+          .locator('[part~="trigger"]')
+          .getAttribute("aria-expanded")) !== "false"
+      ) {
+        throw new Error("dt-avatar Example menu must close after selection");
+      }
+    }
+    if (story.tagName === "dt-display") {
+      await page.goto(
+        `${baseUrl}/iframe.html?id=${story.nativeStoryIds["Constrained Measure"]}&viewMode=story`,
+        { waitUntil: "domcontentloaded", timeout: 60_000 },
+      );
+      const constrained = page.locator("dt-display").first();
+      await constrained.waitFor({ state: "attached", timeout: 30_000 });
+      const constrainedResult = await constrained.evaluate((node) => ({
+        maxWidth: getComputedStyle(node.parentElement).maxWidth,
+        text: node.shadowRoot
+          ?.querySelector('[part~="display"]')
+          ?.textContent?.trim(),
+      }));
+      if (
+        constrainedResult.maxWidth !== "576px" ||
+        constrainedResult.text !==
+          "A hero line that wraps with intent, not by accident."
+      ) {
+        throw new Error(
+          `dt-display Constrained Measure parity failed: ${JSON.stringify(constrainedResult)}`,
         );
       }
     }

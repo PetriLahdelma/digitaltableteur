@@ -93,6 +93,7 @@
     "CookieConsent",
     "CookieConsentProvider",
     "DEFAULT_CONSENTS",
+    "Display",
     "Divider",
     "EmptyState",
     "ExpandableSection",
@@ -316,7 +317,7 @@
       "useToast",
       "useTranslate"
     ],
-    "typography": ["Kbd", "Text", "Title", "VisuallyHidden"]
+    "typography": ["Display", "Kbd", "Text", "Title", "VisuallyHidden"]
   },
   "sourceExportsByEntry": {
     "actions": [
@@ -602,6 +603,8 @@
       "useTranslate"
     ],
     "typography": [
+      "Display",
+      "DisplayProps",
       "Kbd",
       "KbdProps",
       "KbdSize",

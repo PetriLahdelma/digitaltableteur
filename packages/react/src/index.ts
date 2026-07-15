@@ -104,6 +104,10 @@ export {
   Divider,
   type DividerProps,
 } from "../../../nextjs-app/shared/components/Divider";
+export {
+  Display,
+  type DisplayProps,
+} from "../../../nextjs-app/shared/components/Display";
 export { default as EmptyState } from "../../../nextjs-app/shared/components/EmptyState/EmptyState";
 export type {
   EmptyStateProps,

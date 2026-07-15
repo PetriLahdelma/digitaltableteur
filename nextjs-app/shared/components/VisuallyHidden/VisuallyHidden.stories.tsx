@@ -5,7 +5,7 @@ import contract from "./VisuallyHidden.contract.json";
 const meta = {
   title: "Site/VisuallyHidden",
   component: VisuallyHidden,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

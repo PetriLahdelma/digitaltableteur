@@ -5,6 +5,8 @@ import {
   defineNativeElements,
   DtAlertBannerElement,
   DtAspectRatioElement,
+  DtAvatarElement,
+  DtAvatarGroupElement,
   DtBadgeElement,
   DtButtonElement,
   DtButtonGroupElement,
@@ -12,10 +14,14 @@ import {
   DtCenterElement,
   DtContainerElement,
   DtDividerElement,
+  DtDisplayElement,
   DtEmptyStateElement,
   DtFilterChipElement,
+  DtFlexBoxElement,
+  DtGridElement,
   DtIconElement,
   DtIconButtonElement,
+  DtKbdElement,
   DtLinkElement,
   DtListElement,
   DtLabelElement,
@@ -39,7 +45,9 @@ import {
   DtRadioGroupElement,
   DtSelectElement,
   DtSelectOptionElement,
+  DtSkeletonElement,
   DtSwitchElement,
+  DtVisuallyHiddenElement,
 } from "../../packages/web-components/src/native";
 import {
   DtBadgeReactElement,
@@ -57,16 +65,22 @@ const NATIVE_TAGS = [
   "dt-nav-link",
   "dt-skip-link",
   "dt-badge",
+  "dt-avatar",
+  "dt-avatar-group",
   "dt-status-dot",
   "dt-divider",
+  "dt-display",
   "dt-spinner",
   "dt-progress",
   "dt-alert-banner",
   "dt-text",
   "dt-title",
   "dt-list",
+  "dt-kbd",
   "dt-section",
   "dt-stack",
+  "dt-flex-box",
+  "dt-grid",
   "dt-card",
   "dt-center",
   "dt-container",
@@ -85,6 +99,8 @@ const NATIVE_TAGS = [
   "dt-select",
   "dt-select-option",
   "dt-switch",
+  "dt-skeleton",
+  "dt-visually-hidden",
 ] as const;
 
 beforeAll(() => {
@@ -110,16 +126,22 @@ describe("native registry", () => {
     expect(customElements.get("dt-nav-link")).toBe(DtNavLinkElement);
     expect(customElements.get("dt-skip-link")).toBe(DtSkipLinkElement);
     expect(customElements.get("dt-badge")).toBe(DtBadgeElement);
+    expect(customElements.get("dt-avatar")).toBe(DtAvatarElement);
+    expect(customElements.get("dt-avatar-group")).toBe(DtAvatarGroupElement);
     expect(customElements.get("dt-status-dot")).toBe(DtStatusDotElement);
     expect(customElements.get("dt-divider")).toBe(DtDividerElement);
+    expect(customElements.get("dt-display")).toBe(DtDisplayElement);
     expect(customElements.get("dt-spinner")).toBe(DtSpinnerElement);
     expect(customElements.get("dt-progress")).toBe(DtProgressElement);
     expect(customElements.get("dt-alert-banner")).toBe(DtAlertBannerElement);
     expect(customElements.get("dt-text")).toBe(DtTextElement);
     expect(customElements.get("dt-title")).toBe(DtTitleElement);
     expect(customElements.get("dt-list")).toBe(DtListElement);
+    expect(customElements.get("dt-kbd")).toBe(DtKbdElement);
     expect(customElements.get("dt-section")).toBe(DtSectionElement);
     expect(customElements.get("dt-stack")).toBe(DtStackElement);
+    expect(customElements.get("dt-flex-box")).toBe(DtFlexBoxElement);
+    expect(customElements.get("dt-grid")).toBe(DtGridElement);
     expect(customElements.get("dt-card")).toBe(DtCardElement);
     expect(customElements.get("dt-center")).toBe(DtCenterElement);
     expect(customElements.get("dt-container")).toBe(DtContainerElement);
@@ -140,6 +162,10 @@ describe("native registry", () => {
     expect(customElements.get("dt-select")).toBe(DtSelectElement);
     expect(customElements.get("dt-select-option")).toBe(DtSelectOptionElement);
     expect(customElements.get("dt-switch")).toBe(DtSwitchElement);
+    expect(customElements.get("dt-skeleton")).toBe(DtSkeletonElement);
+    expect(customElements.get("dt-visually-hidden")).toBe(
+      DtVisuallyHiddenElement,
+    );
   });
 
   it("rejects a mixed registry before defining any new tags", () => {

@@ -1,5 +1,7 @@
 import { DtAlertBannerElement } from "./native/alert-banner";
 import { DtAspectRatioElement } from "./native/aspect-ratio";
+import { DtAvatarElement } from "./native/avatar";
+import { DtAvatarGroupElement } from "./native/avatar-group";
 import { DtBadgeElement } from "./native/badge";
 import { DtButtonElement } from "./native/button";
 import { DtButtonGroupElement } from "./native/button-group";
@@ -7,10 +9,14 @@ import { DtCardElement } from "./native/card";
 import { DtCenterElement } from "./native/center";
 import { DtContainerElement } from "./native/container";
 import { DtDividerElement } from "./native/divider";
+import { DtDisplayElement } from "./native/display";
 import { DtEmptyStateElement } from "./native/empty-state";
 import { DtFilterChipElement } from "./native/filter-chip";
+import { DtFlexBoxElement } from "./native/flex-box";
+import { DtGridElement } from "./native/grid";
 import { DtIconElement } from "./native/icon";
 import { DtIconButtonElement } from "./native/icon-button";
+import { DtKbdElement } from "./native/kbd";
 import { DtLinkElement } from "./native/link";
 import { DtListElement } from "./native/list";
 import { DtLabelElement } from "./native/label";
@@ -34,7 +40,9 @@ import { DtRadioElement } from "./native/radio";
 import { DtRadioGroupElement } from "./native/radio-group";
 import { DtSelectElement } from "./native/select";
 import { DtSelectOptionElement } from "./native/select-option";
+import { DtSkeletonElement } from "./native/skeleton";
 import { DtSwitchElement } from "./native/switch";
+import { DtVisuallyHiddenElement } from "./native/visually-hidden";
 import { defineElementSet, type ElementDefinition } from "./registry";
 
 export { DtAlertBannerElement } from "./native/alert-banner";
@@ -44,6 +52,15 @@ export type {
 } from "./native/alert-banner";
 export { DtAspectRatioElement } from "./native/aspect-ratio";
 export type { DtAspectRatioRatio } from "./native/aspect-ratio";
+export { DtAvatarElement } from "./native/avatar";
+export type {
+  DtAvatarDecoding,
+  DtAvatarLoading,
+  DtAvatarMenuItem,
+  DtAvatarVariant,
+} from "./native/avatar";
+export { DtAvatarGroupElement } from "./native/avatar-group";
+export type { DtAvatarGroupSize } from "./native/avatar-group";
 export { DtBadgeElement } from "./native/badge";
 export type { DtBadgeSize, DtBadgeTone, DtBadgeVariant } from "./native/badge";
 export { DtButtonElement } from "./native/button";
@@ -88,6 +105,17 @@ export type {
 } from "./native/filter-chip";
 export { DtDividerElement } from "./native/divider";
 export type { DtDividerOrientation } from "./native/divider";
+export { DtDisplayElement } from "./native/display";
+export type { DtDisplayTag } from "./native/display";
+export { DtFlexBoxElement } from "./native/flex-box";
+export type {
+  DtFlexBoxAlign,
+  DtFlexBoxAlignContent,
+  DtFlexBoxDirection,
+  DtFlexBoxJustify,
+  DtFlexBoxWrap,
+} from "./native/flex-box";
+export { DtGridElement } from "./native/grid";
 export { DtIconElement } from "./native/icon";
 export type { DtIconFlip, DtIconSize, DtIconWeight } from "./native/icon";
 export { DtIconButtonElement } from "./native/icon-button";
@@ -97,6 +125,8 @@ export type {
   DtIconButtonTone,
   DtIconButtonVariant,
 } from "./native/icon-button";
+export { DtKbdElement } from "./native/kbd";
+export type { DtKbdSize } from "./native/kbd";
 export { DtLinkElement } from "./native/link";
 export type { DtLinkSize, DtLinkUnderline } from "./native/link";
 export { DtListElement } from "./native/list";
@@ -153,8 +183,12 @@ export type { DtRadioGroupOrientation } from "./native/radio-group";
 export { DtSelectElement } from "./native/select";
 export type { DtSelectOptionItem, DtSelectSize } from "./native/select";
 export { DtSelectOptionElement } from "./native/select-option";
+export { DtSkeletonElement } from "./native/skeleton";
+export type { DtSkeletonVariant } from "./native/skeleton";
 export { DtSwitchElement } from "./native/switch";
 export type { DtSwitchLabelPlacement, DtSwitchSize } from "./native/switch";
+export { DtVisuallyHiddenElement } from "./native/visually-hidden";
+export type { DtVisuallyHiddenTag } from "./native/visually-hidden";
 
 export const nativeElementDefinitions = [
   ["dt-icon", DtIconElement],
@@ -166,16 +200,22 @@ export const nativeElementDefinitions = [
   ["dt-nav-link", DtNavLinkElement],
   ["dt-skip-link", DtSkipLinkElement],
   ["dt-badge", DtBadgeElement],
+  ["dt-avatar", DtAvatarElement],
+  ["dt-avatar-group", DtAvatarGroupElement],
   ["dt-status-dot", DtStatusDotElement],
   ["dt-divider", DtDividerElement],
+  ["dt-display", DtDisplayElement],
   ["dt-spinner", DtSpinnerElement],
   ["dt-progress", DtProgressElement],
   ["dt-alert-banner", DtAlertBannerElement],
   ["dt-text", DtTextElement],
   ["dt-title", DtTitleElement],
   ["dt-list", DtListElement],
+  ["dt-kbd", DtKbdElement],
   ["dt-section", DtSectionElement],
   ["dt-stack", DtStackElement],
+  ["dt-flex-box", DtFlexBoxElement],
+  ["dt-grid", DtGridElement],
   ["dt-card", DtCardElement],
   ["dt-center", DtCenterElement],
   ["dt-container", DtContainerElement],
@@ -194,6 +234,8 @@ export const nativeElementDefinitions = [
   ["dt-select", DtSelectElement],
   ["dt-select-option", DtSelectOptionElement],
   ["dt-switch", DtSwitchElement],
+  ["dt-skeleton", DtSkeletonElement],
+  ["dt-visually-hidden", DtVisuallyHiddenElement],
 ] as const satisfies readonly ElementDefinition[];
 
 export function defineNativeElements(

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Adds native Avatar, AvatarGroup, Display, FlexBox, Grid, Kbd, Skeleton, and
+  VisuallyHidden elements with responsive layout, semantic, motion, and
+  accessibility parity.
 - Adds native Label, HelperText, FormField, Radio, RadioGroup, CheckboxGroup,
   Select, and SelectOption elements with form participation, validation
   semantics, declarative options, and canonical Storybook parity.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-15T10:35:24.240Z",
+  "generatedAt": "2026-07-15T18:11:55.177Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -12,7 +12,7 @@
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 88,
     "codebaseComponentCount": 184,
-    "usageCoveragePercent": 93.2,
+    "usageCoveragePercent": 93.8,
     "componentsWithProductionUsage": 33,
     "notReadyForStablePromotion": false
   },
@@ -78,12 +78,12 @@
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 162,
-    "withAnyUsage": 151,
+    "withAnyUsage": 152,
     "withProductionUsage": 33,
-    "uniqueImportedComponents": 151,
-    "totalEvidenceRows": 750,
+    "uniqueImportedComponents": 152,
+    "totalEvidenceRows": 751,
     "aliasImportFiles": 386,
-    "relativeImportFiles": 393,
+    "relativeImportFiles": 394,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -10043,11 +10043,18 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Display",
-        "importCount": 0,
+        "importCount": 1,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 0,
-        "evidence": []
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./Display",
+            "context": "component"
+          }
+        ]
       },
       "agent": {
         "preferredImport": "@dt/Display",

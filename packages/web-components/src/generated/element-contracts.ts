@@ -355,6 +355,79 @@ export type DtSelectOptionElementContract = HTMLElement & {
   selected?: boolean;
 };
 
+export type DtAvatarElementContract = HTMLElement & {
+  name?: string;
+  imageUrl?: string;
+  clickable?: boolean;
+  destinationUrl?: string;
+  size?: string;
+  srcSet?: string;
+  sizes?: string;
+  loading?: string;
+  decoding?: string;
+  menuItems?: { id?: string; value?: string; label: string; href?: string; icon?: string; disabled?: boolean }[];
+  menuLabel?: string;
+  variant?: string;
+};
+
+export type DtAvatarGroupElementContract = HTMLElement & {
+  ariaLabel?: string;
+  max?: number;
+  size?: string;
+};
+
+export type DtDisplayElementContract = HTMLElement & {
+  as?: string;
+  content?: string;
+};
+
+export type DtFlexBoxElementContract = HTMLElement & {
+  direction?: string;
+  wrap?: string;
+  justify?: string;
+  align?: string;
+  alignContent?: string;
+  gap?: number | string;
+  rowGap?: number | string;
+  columnGap?: number | string;
+};
+
+export type DtGridElementContract = HTMLElement & {
+  columns?: number | string;
+  tabletColumns?: number | string;
+  desktopColumns?: number | string;
+  wideColumns?: number | string;
+  ultraColumns?: number | string;
+  rows?: number | string;
+  gap?: string;
+  tabletGap?: string;
+  desktopGap?: string;
+  wideGap?: string;
+  ultraGap?: string;
+  rowGap?: string;
+  colGap?: string;
+  align?: string;
+  justify?: string;
+};
+
+export type DtKbdElementContract = HTMLElement & {
+  size?: string;
+  content?: string;
+};
+
+export type DtSkeletonElementContract = HTMLElement & {
+  variant?: string;
+  width?: number | string;
+  height?: number | string;
+  lines?: number;
+  label?: string;
+};
+
+export type DtVisuallyHiddenElementContract = HTMLElement & {
+  as?: string;
+  content?: string;
+};
+
 export type DtSwitchElementContract = HTMLElement & {
   checked?: boolean;
   defaultChecked?: boolean;
@@ -404,6 +477,14 @@ export const elementMigrationManifest = [
   { tagName: "dt-radio-group", sourceComponent: "RadioGroup", backend: "native" },
   { tagName: "dt-select", sourceComponent: "Select", backend: "native" },
   { tagName: "dt-select-option", sourceComponent: "SelectOption", backend: "native" },
+  { tagName: "dt-avatar", sourceComponent: "Avatar", backend: "native" },
+  { tagName: "dt-avatar-group", sourceComponent: "AvatarGroup", backend: "native" },
+  { tagName: "dt-display", sourceComponent: "Display", backend: "native" },
+  { tagName: "dt-flex-box", sourceComponent: "FlexBox", backend: "native" },
+  { tagName: "dt-grid", sourceComponent: "Grid", backend: "native" },
+  { tagName: "dt-kbd", sourceComponent: "Kbd", backend: "native" },
+  { tagName: "dt-skeleton", sourceComponent: "Skeleton", backend: "native" },
+  { tagName: "dt-visually-hidden", sourceComponent: "VisuallyHidden", backend: "native" },
   { tagName: "dt-switch", sourceComponent: "Switch", backend: "native" },
 ] as const;
 
@@ -445,6 +526,14 @@ declare global {
     "dt-radio-group": DtRadioGroupElementContract;
     "dt-select": DtSelectElementContract;
     "dt-select-option": DtSelectOptionElementContract;
+    "dt-avatar": DtAvatarElementContract;
+    "dt-avatar-group": DtAvatarGroupElementContract;
+    "dt-display": DtDisplayElementContract;
+    "dt-flex-box": DtFlexBoxElementContract;
+    "dt-grid": DtGridElementContract;
+    "dt-kbd": DtKbdElementContract;
+    "dt-skeleton": DtSkeletonElementContract;
+    "dt-visually-hidden": DtVisuallyHiddenElementContract;
     "dt-switch": DtSwitchElementContract;
   }
 }

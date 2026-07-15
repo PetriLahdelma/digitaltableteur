@@ -16,12 +16,13 @@ import "@digitaltableteur/tokens-css/tokens.css";
 import "@digitaltableteur/web-components/register";
 ```
 
-The default registry contains 37 native Shadow DOM custom elements:
-AlertBanner, AspectRatio, Badge, Button, ButtonGroup, Card, Center, Checkbox,
-CheckboxGroup, Container, Divider, EmptyState, FilterChip, FormField,
-HelperText, Icon, IconButton, Label, Link, List, NavLink, Progress, Radio,
-RadioGroup, Section, Select, SelectOption, SkipLink, Spacer, Spinner, Stack,
-StatusDot, Switch, Text, TextArea, TextInput, and Title.
+The default registry contains 45 native Shadow DOM custom elements:
+AlertBanner, AspectRatio, Avatar, AvatarGroup, Badge, Button, ButtonGroup, Card,
+Center, Checkbox, CheckboxGroup, Container, Display, Divider, EmptyState,
+FilterChip, FlexBox, FormField, Grid, HelperText, Icon, IconButton, Kbd, Label,
+Link, List, NavLink, Progress, Radio, RadioGroup, Section, Select, SelectOption,
+Skeleton, SkipLink, Spacer, Spinner, Stack, StatusDot, Switch, Text, TextArea,
+TextInput, Title, and VisuallyHidden.
 
 ```html
 <dt-button label="Continue" variant="primary"></dt-button>
@@ -53,7 +54,9 @@ StatusDot, Switch, Text, TextArea, TextInput, and Title.
   <dt-button slot="action">Clear filters</dt-button>
 </dt-empty-state>
 <dt-title level="2" size="l">Native semantic heading</dt-title>
+<dt-display as="h1">Native hero statement</dt-display>
 <dt-text size="m">Tokenized body copy.</dt-text>
+<dt-kbd>Enter</dt-kbd>
 <dt-list list-style-type="dash">
   <li>Semantic light-DOM list items</li>
   <li>JSON string arrays are also supported through the items attribute</li>
@@ -75,6 +78,18 @@ StatusDot, Switch, Text, TextArea, TextInput, and Title.
   <img src="hero.jpg" alt="Case study hero" />
 </dt-aspect-ratio>
 <dt-spacer size="md"></dt-spacer>
+<dt-avatar name="Aino Virtanen" variant="initials"></dt-avatar>
+<dt-avatar-group aria-label="Project members" max="3">
+  <dt-avatar name="Aino Virtanen" variant="initials"></dt-avatar>
+  <dt-avatar name="Bo Lindqvist" variant="initials"></dt-avatar>
+  <dt-avatar name="Carla Mendes" variant="initials"></dt-avatar>
+  <dt-avatar name="Deniz Aydin" variant="initials"></dt-avatar>
+</dt-avatar-group>
+<dt-grid columns="1" tablet-columns="2" desktop-columns="3">
+  <div>First cell</div>
+  <div span="2">Spanning cell</div>
+</dt-grid>
+<dt-skeleton variant="text" lines="3"></dt-skeleton>
 <form>
   <dt-text-input
     name="email"
@@ -127,6 +142,13 @@ JavaScript).
 Card exposes default, `header-start`, `header-end`, `extra`, `footer-start`, and
 `footer-end` slots. Center, Container, and AspectRatio expose default slots;
 Spacer is intentionally empty and hidden from the accessibility tree.
+AvatarGroup, Display, FlexBox, Grid, Kbd, and VisuallyHidden preserve rich
+light-DOM content through default slots. Direct Grid children accept `span` and
+`row-span` placement attributes. Avatar menu data is set through the
+`menuItems` JavaScript property and emits a composed `menu-select` event.
+Skeleton's `animate` option is attribute-only because the platform already
+reserves the `HTMLElement.animate()` JavaScript property; use
+`animate="false"` to disable shimmer declaratively.
 `dt-nav-link` deliberately does not inspect a framework router: the host updates
 `current-path` when navigation changes. Component metadata and attributes are
 published in `custom-elements.json`. TextInput, TextArea, Checkbox, Radio,

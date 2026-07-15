@@ -2438,6 +2438,597 @@
         },
         {
           "kind": "class",
+          "name": "DtAvatarElement",
+          "description": "Profile image or initials with optional navigation and host-owned menu data.",
+          "customElement": true,
+          "tagName": "dt-avatar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "menuItems",
+              "type": {
+                "text": "{ id?: string; value?: string; label: string; href?: string; icon?: string; disabled?: boolean }[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "menu-item",
+              "description": "Host-rendered menu controls used instead of the menuItems property."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "image-url",
+              "fieldName": "imageUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "clickable",
+              "fieldName": "clickable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "destination-url",
+              "fieldName": "destinationUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "src-set",
+              "fieldName": "srcSet",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "sizes",
+              "fieldName": "sizes",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "decoding",
+              "fieldName": "decoding",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "menu-items",
+              "fieldName": "menuItems",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "menu-label",
+              "fieldName": "menuLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "menu-select",
+              "description": "Dispatched with the selected serializable menu item in detail.item.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Avatar",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtAvatarGroupElement",
+          "description": "Overlapping native avatar cluster with accessible overflow.",
+          "customElement": true,
+          "tagName": "dt-avatar-group",
+          "slots": [
+            {
+              "name": "",
+              "description": "Native dt-avatar members in display order."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "max",
+              "fieldName": "max",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "AvatarGroup",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtDisplayElement",
+          "description": "Hero-scale semantic display typography.",
+          "customElement": true,
+          "tagName": "dt-display",
+          "slots": [
+            {
+              "name": "",
+              "description": "Display copy or rich inline content."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Display",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtFlexBoxElement",
+          "description": "Framework-neutral flexbox layout primitive.",
+          "customElement": true,
+          "tagName": "dt-flex-box",
+          "members": [
+            {
+              "kind": "field",
+              "name": "gap",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rowGap",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "columnGap",
+              "type": {
+                "text": "number | string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Flex items."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "direction",
+              "fieldName": "direction",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "wrap",
+              "fieldName": "wrap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "justify",
+              "fieldName": "justify",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "align",
+              "fieldName": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "align-content",
+              "fieldName": "alignContent",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "gap",
+              "fieldName": "gap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "row-gap",
+              "fieldName": "rowGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "column-gap",
+              "fieldName": "columnGap",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "FlexBox",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtGridElement",
+          "description": "CSS grid primitive with token-breakpoint responsive columns and gaps.",
+          "customElement": true,
+          "tagName": "dt-grid",
+          "members": [
+            {
+              "kind": "field",
+              "name": "columns",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tabletColumns",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "desktopColumns",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "wideColumns",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ultraColumns",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rows",
+              "type": {
+                "text": "number | string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Grid cells; span and row-span attributes on direct children control placement."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "columns",
+              "fieldName": "columns",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tablet-columns",
+              "fieldName": "tabletColumns",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "desktop-columns",
+              "fieldName": "desktopColumns",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "wide-columns",
+              "fieldName": "wideColumns",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "ultra-columns",
+              "fieldName": "ultraColumns",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "rows",
+              "fieldName": "rows",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "gap",
+              "fieldName": "gap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tablet-gap",
+              "fieldName": "tabletGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "desktop-gap",
+              "fieldName": "desktopGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "wide-gap",
+              "fieldName": "wideGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "ultra-gap",
+              "fieldName": "ultraGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "row-gap",
+              "fieldName": "rowGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "col-gap",
+              "fieldName": "colGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "align",
+              "fieldName": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "justify",
+              "fieldName": "justify",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Grid",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtKbdElement",
+          "description": "Semantic keyboard-key indicator styled as a keycap.",
+          "customElement": true,
+          "tagName": "dt-kbd",
+          "slots": [
+            {
+              "name": "",
+              "description": "Key label or symbol."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Kbd",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSkeletonElement",
+          "description": "Motion-aware loading placeholder for text, media, avatars, and cards.",
+          "customElement": true,
+          "tagName": "dt-skeleton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "width",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "type": {
+                "text": "number | string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "width",
+              "fieldName": "width",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "height",
+              "fieldName": "height",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "lines",
+              "fieldName": "lines",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "animate",
+              "fieldName": "animate",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Skeleton",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtVisuallyHiddenElement",
+          "description": "Screen-reader-only semantic content.",
+          "customElement": true,
+          "tagName": "dt-visually-hidden",
+          "slots": [
+            {
+              "name": "",
+              "description": "Content exposed to assistive technology."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "VisuallyHidden",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
           "name": "DtSwitchElement",
           "description": "Immediate-action switch with loading, placement, and message states.",
           "customElement": true,

@@ -116,7 +116,17 @@ function validate() {
       }
     }
     for (const event of element.events) {
-      if (!contract.props?.[event.callbackProp]) {
+      if (!event.name?.trim() || !event.description?.trim()) {
+        throw new Error(
+          `${element.tagName} events require a name and description`,
+        );
+      }
+      if (!event.callbackProp && element.defaultBackend !== "native") {
+        throw new Error(
+          `${element.tagName}.${event.name} requires a React callback mapping`,
+        );
+      }
+      if (event.callbackProp && !contract.props?.[event.callbackProp]) {
         throw new Error(
           `${element.tagName}.${event.name} maps to missing ${element.contract}.${event.callbackProp}`,
         );
@@ -193,6 +203,7 @@ function renderElementContracts() {
     .map((element) => {
       const name = `${element.nativeClassName}Contract`;
       const props = element.props
+        .filter((prop) => !prop.attributeOnly)
         .map(
           (prop) =>
             `  ${prop.name}?: ${prop.propertyType ?? (prop.type === "number" ? "number" : prop.type === "boolean" ? "boolean" : "string")};`,
@@ -295,10 +306,12 @@ function renderCustomElementsManifest() {
             description: element.description,
             customElement: true,
             tagName: element.tagName,
-            ...(element.props.some((prop) => prop.propertyType)
+            ...(element.props.some(
+              (prop) => prop.propertyType && !prop.attributeOnly,
+            )
               ? {
                   members: element.props
-                    .filter((prop) => prop.propertyType)
+                    .filter((prop) => prop.propertyType && !prop.attributeOnly)
                     .map((prop) => ({
                       kind: "field",
                       name: prop.name,

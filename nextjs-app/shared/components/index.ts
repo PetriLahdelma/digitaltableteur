@@ -82,6 +82,7 @@ export type { EmptyStateProps, EmptyStateSize } from "./EmptyState";
 export { default as EmailSignatureGenerator } from "./EmailSignatureGenerator";
 export { default as FlexBox } from "./FlexBox/FlexBox";
 export type { FlexBoxProps } from "./FlexBox/FlexBox";
+export { Display, type DisplayProps } from "./Display";
 export { default as FileUpload } from "./FileUpload/FileUpload";
 export type { FileUploadProps } from "./FileUpload/FileUpload";
 export { default as Gallery } from "./Gallery/Gallery";
