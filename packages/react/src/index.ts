@@ -44,6 +44,14 @@ export type {
   CardVariant,
 } from "../../../nextjs-app/shared/components/Card";
 export {
+  AspectRatio,
+  type AspectRatioProps,
+} from "../../../nextjs-app/shared/components/AspectRatio";
+export {
+  Center,
+  type CenterProps,
+} from "../../../nextjs-app/shared/components/Center";
+export {
   CategoryFilter,
   type CategoryFilterProps,
   type CategoryOption,
@@ -96,6 +104,10 @@ export {
   Divider,
   type DividerProps,
 } from "../../../nextjs-app/shared/components/Divider";
+export {
+  Display,
+  type DisplayProps,
+} from "../../../nextjs-app/shared/components/Display";
 export { default as EmptyState } from "../../../nextjs-app/shared/components/EmptyState/EmptyState";
 export type {
   EmptyStateProps,
@@ -214,6 +226,10 @@ export {
   Section,
   type SectionProps,
 } from "../../../nextjs-app/shared/components/Section";
+export {
+  Spacer,
+  type SpacerProps,
+} from "../../../nextjs-app/shared/components/Spacer";
 export { default as SegmentedControl } from "../../../nextjs-app/shared/components/SegmentedControl/SegmentedControl";
 export type {
   SegmentedControlItem,

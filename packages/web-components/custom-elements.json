@@ -208,6 +208,14 @@
               "type": {
                 "text": "string"
               }
+            },
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "description": "Leading native icon name.",
+              "type": {
+                "text": "string"
+              }
             }
           ],
           "events": [
@@ -220,6 +228,374 @@
             }
           ],
           "dtSourceComponent": "Badge",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtIconButtonElement",
+          "description": "Accessible icon-only action composed from native Button.",
+          "customElement": true,
+          "tagName": "dt-icon-button",
+          "attributes": [
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tone",
+              "fieldName": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "surface",
+              "fieldName": "surface",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tooltip",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "submits",
+              "fieldName": "submits",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "IconButton",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtButtonGroupElement",
+          "description": "Attached or spaced group of related action controls.",
+          "customElement": true,
+          "tagName": "dt-button-group",
+          "attributes": [
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "attached",
+              "fieldName": "attached",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "ButtonGroup",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtFilterChipElement",
+          "description": "Controlled filter toggle with pressed semantics.",
+          "customElement": true,
+          "tagName": "dt-filter-chip",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible chip label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "pressed",
+              "fieldName": "pressed",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "count",
+              "fieldName": "count",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "FilterChip",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtLinkElement",
+          "description": "Protocol-safe native anchor with external-link affordance.",
+          "customElement": true,
+          "tagName": "dt-link",
+          "attributes": [
+            {
+              "name": "href",
+              "fieldName": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible link label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "underline",
+              "fieldName": "underline",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "target",
+              "fieldName": "target",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "rel",
+              "fieldName": "rel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "download",
+              "fieldName": "download",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "hreflang",
+              "fieldName": "hrefLang",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "referrerpolicy",
+              "fieldName": "referrerPolicy",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-current",
+              "fieldName": "ariaCurrent",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "external-label",
+              "fieldName": "externalLabel",
+              "description": "Override the external-link announcement for every locale.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "external-label-en",
+              "fieldName": "externalLabelEn",
+              "description": "English external-link announcement override.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "external-label-fi",
+              "fieldName": "externalLabelFi",
+              "description": "Finnish external-link announcement override.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "external-label-sv",
+              "fieldName": "externalLabelSv",
+              "description": "Swedish external-link announcement override.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Link",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtNavLinkElement",
+          "description": "Host-routed navigation link with boundary-safe active state.",
+          "customElement": true,
+          "tagName": "dt-nav-link",
+          "attributes": [
+            {
+              "name": "href",
+              "fieldName": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible navigation label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "current-path",
+              "fieldName": "currentPath",
+              "description": "Current host route used to derive active state.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "exact",
+              "fieldName": "exact",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "underline",
+              "fieldName": "underline",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "NavLink",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSkipLinkElement",
+          "description": "Keyboard bypass link revealed on focus.",
+          "customElement": true,
+          "tagName": "dt-skip-link",
+          "attributes": [
+            {
+              "name": "href",
+              "fieldName": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible link label on focus.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "SkipLink",
           "dtBackend": "native"
         },
         {
@@ -524,6 +900,2294 @@
             }
           ],
           "dtSourceComponent": "AlertBanner",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtTextElement",
+          "description": "Semantic body and inline typography with tokenized size and line height.",
+          "customElement": true,
+          "tagName": "dt-text",
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "line-height",
+              "fieldName": "lineHeight",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Text",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtTitleElement",
+          "description": "Semantic heading with independent level, display size, and line-height controls.",
+          "customElement": true,
+          "tagName": "dt-title",
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback heading text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "unstyled",
+              "fieldName": "unstyled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "level",
+              "fieldName": "level",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "line-height",
+              "fieldName": "lineHeight",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Title",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtListElement",
+          "description": "Semantic ordered or unordered list with tokenized type, spacing, and marker styles.",
+          "customElement": true,
+          "tagName": "dt-list",
+          "members": [
+            {
+              "kind": "field",
+              "name": "items",
+              "description": "JSON string array or string[] property; light-DOM li children are also supported.",
+              "type": {
+                "text": "string[]"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "fieldName": "items",
+              "description": "JSON string array or string[] property; light-DOM li children are also supported.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "line-height",
+              "fieldName": "lineHeight",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "list-style-type",
+              "fieldName": "listStyleType",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "spacing",
+              "fieldName": "spacing",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "role",
+              "fieldName": "role",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "List",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSectionElement",
+          "description": "Semantic page section with responsive spacing and theme-aware surfaces.",
+          "customElement": true,
+          "tagName": "dt-section",
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "spacing",
+              "fieldName": "spacing",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "background",
+              "fieldName": "background",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "spotlight-target",
+              "fieldName": "spotlightTarget",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "id",
+              "fieldName": "id",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-labelledby",
+              "fieldName": "ariaLabelledby",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-describedby",
+              "fieldName": "ariaDescribedby",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Section",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtStackElement",
+          "description": "Semantic flex stack with tokenized direction, gap, alignment, distribution, and wrapping.",
+          "customElement": true,
+          "tagName": "dt-stack",
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "direction",
+              "fieldName": "direction",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "gap",
+              "fieldName": "gap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "align",
+              "fieldName": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "justify",
+              "fieldName": "justify",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "wrap",
+              "fieldName": "wrap",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Stack",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtCardElement",
+          "description": "Semantic content surface with structured header, body, footer, link, and loading modes.",
+          "customElement": true,
+          "tagName": "dt-card",
+          "slots": [
+            {
+              "name": "",
+              "description": "Card body content."
+            },
+            {
+              "name": "header-start",
+              "description": "Leading header content; replaces the title block."
+            },
+            {
+              "name": "header-end",
+              "description": "Trailing header metadata or actions."
+            },
+            {
+              "name": "extra",
+              "description": "Deprecated alias for header-end."
+            },
+            {
+              "name": "footer-start",
+              "description": "Leading footer action region."
+            },
+            {
+              "name": "footer-end",
+              "description": "Trailing footer action region."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "padding",
+              "fieldName": "padding",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title-text",
+              "fieldName": "titleText",
+              "description": "Card heading text; uses title-text to avoid the global HTML title tooltip.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title-level",
+              "fieldName": "titleLevel",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "title-as",
+              "fieldName": "titleAs",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title-size",
+              "fieldName": "titleSize",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description-as",
+              "fieldName": "descriptionAs",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description-size",
+              "fieldName": "descriptionSize",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "link",
+              "fieldName": "link",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "link-label",
+              "fieldName": "linkLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Card",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtCenterElement",
+          "description": "Both-axis centering primitive for focal content.",
+          "customElement": true,
+          "tagName": "dt-center",
+          "slots": [
+            {
+              "name": "",
+              "description": "Content centered on both axes."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "description": "Safe intrinsic wrapper element; supports common sectioning, grouping, list, and phrasing tags.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Center",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtContainerElement",
+          "description": "Responsive page-width constraint with tokenized gutters and semantic wrappers.",
+          "customElement": true,
+          "tagName": "dt-container",
+          "members": [
+            {
+              "kind": "field",
+              "name": "center",
+              "description": "Boolean property; the attribute accepts true or false and defaults to true when absent.",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Content constrained by the container."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "center",
+              "fieldName": "center",
+              "description": "Boolean property; the attribute accepts true or false and defaults to true when absent.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "as",
+              "fieldName": "as",
+              "description": "Safe intrinsic wrapper element; supports common sectioning, grouping, list, and phrasing tags.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Container",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSpacerElement",
+          "description": "Accessibility-hidden escape hatch for tokenized spatial gaps.",
+          "customElement": true,
+          "tagName": "dt-spacer",
+          "attributes": [
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "axis",
+              "fieldName": "axis",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Spacer",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtAspectRatioElement",
+          "description": "Clipped media frame that reserves a tokenized aspect ratio.",
+          "customElement": true,
+          "tagName": "dt-aspect-ratio",
+          "slots": [
+            {
+              "name": "",
+              "description": "Media or placeholder content filling the ratio frame."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "ratio",
+              "fieldName": "ratio",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "AspectRatio",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtEmptyStateElement",
+          "description": "Empty-result composition with semantic heading, description, icon, and action slots.",
+          "customElement": true,
+          "tagName": "dt-empty-state",
+          "attributes": [
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title-text",
+              "fieldName": "titleText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "heading-level",
+              "fieldName": "headingLevel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "EmptyState",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtLabelElement",
+          "description": "Native form label with required and disabled presentation.",
+          "customElement": true,
+          "tagName": "dt-label",
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible label content."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "for",
+              "fieldName": "for",
+              "description": "ID of the labelled control.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tooltip-text",
+              "fieldName": "tooltipText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required-text",
+              "fieldName": "requiredText",
+              "description": "Override the localized screen-reader text for the required marker.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title",
+              "fieldName": "title",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Label",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtHelperTextElement",
+          "description": "Supporting or validation text with semantic state feedback.",
+          "customElement": true,
+          "tagName": "dt-helper-text",
+          "slots": [
+            {
+              "name": "",
+              "description": "Supporting message content."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "state",
+              "fieldName": "state",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "id",
+              "fieldName": "id",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "HelperText",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtFormFieldElement",
+          "description": "Accessible fieldset wrapper for grouped form controls.",
+          "customElement": true,
+          "tagName": "dt-form-field",
+          "slots": [
+            {
+              "name": "",
+              "description": "Grouped form controls."
+            },
+            {
+              "name": "legend",
+              "description": "Rich legend content overriding the legend attribute."
+            },
+            {
+              "name": "group-description",
+              "description": "Rich group description overriding the group-description attribute."
+            },
+            {
+              "name": "error",
+              "description": "Rich error content overriding the error attribute."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "legend",
+              "fieldName": "legend",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "group-description",
+              "fieldName": "groupDescription",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "FormField",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtTextInputElement",
+          "description": "Form-associated single-line field with native validation, label, and messages.",
+          "customElement": true,
+          "tagName": "dt-text-input",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "type",
+              "fieldName": "type",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "clearable",
+              "fieldName": "clearable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "hide-label",
+              "fieldName": "hideLabel",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "placeholder",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "clear-label-prefix",
+              "fieldName": "clearLabelPrefix",
+              "description": "Override the localized clear-button accessible-label prefix.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after user input.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "clear",
+              "description": "Dispatched after the clear control resets the field.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "TextInput",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtTextAreaElement",
+          "description": "Form-associated multiline field with bounded auto-grow and messages.",
+          "customElement": true,
+          "tagName": "dt-text-area",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "animate-resize",
+              "fieldName": "animateResize",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "min-rows",
+              "fieldName": "minRows",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "max-rows",
+              "fieldName": "maxRows",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "placeholder",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after user input.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "TextArea",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtCheckboxElement",
+          "description": "Form-associated checkbox with indeterminate, validation, and messaging states.",
+          "customElement": true,
+          "tagName": "dt-checkbox",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-label",
+              "fieldName": "showLabel",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "checked",
+              "fieldName": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "indeterminate",
+              "fieldName": "indeterminate",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-checked",
+              "fieldName": "defaultChecked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required-message",
+              "fieldName": "requiredMessage",
+              "description": "Override the localized required-state validation message.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "checked-change",
+              "description": "Dispatched with detail.checked after user activation.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Checkbox",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtCheckboxGroupElement",
+          "description": "Accessible checkbox fieldset with optional select-all behavior.",
+          "customElement": true,
+          "tagName": "dt-checkbox-group",
+          "members": [
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "{ value: string; label: string; disabled?: boolean }[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultSelected",
+              "type": {
+                "text": "string[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Declarative dt-checkbox children overriding options."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "options",
+              "fieldName": "options",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-master-checkbox",
+              "fieldName": "showMasterCheckbox",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "master-label",
+              "fieldName": "masterLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-selected",
+              "fieldName": "defaultSelected",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "selected-change",
+              "description": "Dispatched with detail.selected after selection changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "CheckboxGroup",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtRadioElement",
+          "description": "Form-associated native radio control with tokenized sizing.",
+          "customElement": true,
+          "tagName": "dt-radio",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "checked",
+              "fieldName": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-checked",
+              "fieldName": "defaultChecked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-label",
+              "fieldName": "showLabel",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required-message",
+              "fieldName": "requiredMessage",
+              "description": "Override the localized required-state validation message.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "checked-change",
+              "description": "Dispatched with detail.checked after user activation.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Radio",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtRadioGroupElement",
+          "description": "Form-associated radio fieldset with controlled and default selection modes.",
+          "customElement": true,
+          "tagName": "dt-radio-group",
+          "members": [
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "{ value: string; label: string; disabled?: boolean }[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Declarative dt-radio children overriding options."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "legend",
+              "fieldName": "legend",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "options",
+              "fieldName": "options",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "orientation",
+              "fieldName": "orientation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required-message",
+              "fieldName": "requiredMessage",
+              "description": "Override the localized required-state validation message.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after selection changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "RadioGroup",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSelectElement",
+          "description": "Form-associated native select with declarative options and validation messages.",
+          "customElement": true,
+          "tagName": "dt-select",
+          "members": [
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "{ value: string; label: string; disabled?: boolean; selected?: boolean }[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Declarative dt-select-option children overriding options."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "options",
+              "fieldName": "options",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required-text",
+              "fieldName": "requiredText",
+              "description": "Override the localized screen-reader text for the required marker.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value before the compatibility change event.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "change",
+              "description": "Compatibility change event dispatched after value-change.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Select",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSelectOptionElement",
+          "description": "Declarative option data materialized by a parent dt-select.",
+          "customElement": true,
+          "tagName": "dt-select-option",
+          "slots": [
+            {
+              "name": "",
+              "description": "Option label overriding the label attribute."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "selected",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "SelectOption",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtAvatarElement",
+          "description": "Profile image or initials with optional navigation and host-owned menu data.",
+          "customElement": true,
+          "tagName": "dt-avatar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "menuItems",
+              "type": {
+                "text": "{ id?: string; value?: string; label: string; href?: string; icon?: string; disabled?: boolean }[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "menu-item",
+              "description": "Host-rendered menu controls used instead of the menuItems property."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "image-url",
+              "fieldName": "imageUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "clickable",
+              "fieldName": "clickable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "destination-url",
+              "fieldName": "destinationUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "src-set",
+              "fieldName": "srcSet",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "sizes",
+              "fieldName": "sizes",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "decoding",
+              "fieldName": "decoding",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "menu-items",
+              "fieldName": "menuItems",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "menu-label",
+              "fieldName": "menuLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "menu-select",
+              "description": "Dispatched with the selected serializable menu item in detail.item.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Avatar",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtAvatarGroupElement",
+          "description": "Overlapping native avatar cluster with accessible overflow.",
+          "customElement": true,
+          "tagName": "dt-avatar-group",
+          "slots": [
+            {
+              "name": "",
+              "description": "Native dt-avatar members in display order."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "max",
+              "fieldName": "max",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "AvatarGroup",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtDisplayElement",
+          "description": "Hero-scale semantic display typography.",
+          "customElement": true,
+          "tagName": "dt-display",
+          "slots": [
+            {
+              "name": "",
+              "description": "Display copy or rich inline content."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Display",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtFlexBoxElement",
+          "description": "Framework-neutral flexbox layout primitive.",
+          "customElement": true,
+          "tagName": "dt-flex-box",
+          "members": [
+            {
+              "kind": "field",
+              "name": "gap",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rowGap",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "columnGap",
+              "type": {
+                "text": "number | string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Flex items."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "direction",
+              "fieldName": "direction",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "wrap",
+              "fieldName": "wrap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "justify",
+              "fieldName": "justify",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "align",
+              "fieldName": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "align-content",
+              "fieldName": "alignContent",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "gap",
+              "fieldName": "gap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "row-gap",
+              "fieldName": "rowGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "column-gap",
+              "fieldName": "columnGap",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "FlexBox",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtGridElement",
+          "description": "CSS grid primitive with token-breakpoint responsive columns and gaps.",
+          "customElement": true,
+          "tagName": "dt-grid",
+          "members": [
+            {
+              "kind": "field",
+              "name": "columns",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tabletColumns",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "desktopColumns",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "wideColumns",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ultraColumns",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rows",
+              "type": {
+                "text": "number | string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Grid cells; span and row-span attributes on direct children control placement."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "columns",
+              "fieldName": "columns",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tablet-columns",
+              "fieldName": "tabletColumns",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "desktop-columns",
+              "fieldName": "desktopColumns",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "wide-columns",
+              "fieldName": "wideColumns",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "ultra-columns",
+              "fieldName": "ultraColumns",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "rows",
+              "fieldName": "rows",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "gap",
+              "fieldName": "gap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tablet-gap",
+              "fieldName": "tabletGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "desktop-gap",
+              "fieldName": "desktopGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "wide-gap",
+              "fieldName": "wideGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "ultra-gap",
+              "fieldName": "ultraGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "row-gap",
+              "fieldName": "rowGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "col-gap",
+              "fieldName": "colGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "align",
+              "fieldName": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "justify",
+              "fieldName": "justify",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Grid",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtKbdElement",
+          "description": "Semantic keyboard-key indicator styled as a keycap.",
+          "customElement": true,
+          "tagName": "dt-kbd",
+          "slots": [
+            {
+              "name": "",
+              "description": "Key label or symbol."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Kbd",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSkeletonElement",
+          "description": "Motion-aware loading placeholder for text, media, avatars, and cards.",
+          "customElement": true,
+          "tagName": "dt-skeleton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "width",
+              "type": {
+                "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "type": {
+                "text": "number | string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "width",
+              "fieldName": "width",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "height",
+              "fieldName": "height",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "lines",
+              "fieldName": "lines",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "animate",
+              "fieldName": "animate",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Skeleton",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtVisuallyHiddenElement",
+          "description": "Screen-reader-only semantic content.",
+          "customElement": true,
+          "tagName": "dt-visually-hidden",
+          "slots": [
+            {
+              "name": "",
+              "description": "Content exposed to assistive technology."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "as",
+              "fieldName": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "VisuallyHidden",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSwitchElement",
+          "description": "Immediate-action switch with loading, placement, and message states.",
+          "customElement": true,
+          "tagName": "dt-switch",
+          "attributes": [
+            {
+              "name": "checked",
+              "fieldName": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-checked",
+              "fieldName": "defaultChecked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label-placement",
+              "fieldName": "labelPlacement",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "checked-change",
+              "description": "Dispatched with detail.checked after user activation.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Switch",
           "dtBackend": "native"
         }
       ]

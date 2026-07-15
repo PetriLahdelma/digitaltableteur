@@ -35,7 +35,7 @@
         "realBrowserForcedColorsVerified": true
     },
     "tokens": {
-        "colors": [],
+        "colors": ["--link-color"],
         "spacing": []
     },
     "lightDarkVerified": true,

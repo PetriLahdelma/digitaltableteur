@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T21:03:41.062Z",
+  "generatedAt": "2026-07-15T16:47:57.714Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -7625,6 +7625,50 @@
       ],
       "prefersOver": [],
       "declaredPropCount": 8
+    },
+    "SelectOption": {
+      "preferredImport": "@dt/Select",
+      "intent": "Native option primitive for composing Select choices.",
+      "props": {
+        "value": {
+          "optional": false,
+          "type": "string"
+        },
+        "label": {
+          "optional": false,
+          "type": "string"
+        },
+        "disabled": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "children": {
+          "optional": true,
+          "type": "React.ReactNode"
+        }
+      },
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [],
+      "avoidWhen": [],
+      "requiredA11y": [
+        "render only inside a native select"
+      ],
+      "keyboard": [
+        "Arrow keys",
+        "Enter",
+        "Space"
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 4
     },
     "SelectableCard": {
       "preferredImport": "@dt/SelectableCard",

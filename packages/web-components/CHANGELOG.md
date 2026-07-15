@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.4.0 - 2026-07-15
+
+- Adds native Avatar, AvatarGroup, Display, FlexBox, Grid, Kbd, Skeleton, and
+  VisuallyHidden elements with responsive layout, semantic, motion, and
+  accessibility parity.
+- Adds native Label, HelperText, FormField, Radio, RadioGroup, CheckboxGroup,
+  Select, and SelectOption elements with form participation, validation
+  semantics, declarative options, and canonical Storybook parity.
+- Adds native, form-associated TextInput, TextArea, and Checkbox elements plus
+  an immediate-action Switch.
+- Adds an enforceable web-component definition-of-done gate covering React
+  story parity, explicit exclusions, browser behavior, docs links, package
+  integrity, and generated contract drift.
+- Expands applicable native stories to match their canonical React component
+  surfaces.
+- Hardens reconnect, focus, form-value, disabled-option, and Shadow DOM ARIA
+  behavior across the native form, navigation, content, and layout elements.
+- Adds framework-independent EN/FI/SV fallback copy with host overrides for
+  built-in validation, clear-control, required-marker, and external-link text.
+- Renders all four required stories per native component in the browser DoD,
+  rather than validating only each component's default story.
+
+Verified by `check:web-components:dod`, `check:package-release-notes`,
+`check:package-tarballs`, and `check:npm-consumer-install`.
+
+## 0.3.0 - 2026-07-15
+
+- Adds native Link, NavLink, SkipLink, IconButton, FilterChip, ButtonGroup, and
+  EmptyState elements.
+- Keeps routing host-owned through the native-only `current-path` NavLink
+  attribute and preserves boundary-safe active matching.
+- Adds controlled pressed-state, attached-group, secure URL, slot composition,
+  and current-page accessibility conformance coverage.
+- Generates the native icon catalog from official raw Phosphor SVG assets
+  without invoking React or React DOM.
+
 ## 0.2.0 - 2026-07-14
 
 - Makes the default registry fully native and synchronous, without a React

@@ -3,6 +3,10 @@ import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Link from "@dt/Link";
 import type { DtContract } from "../lib/contracts";
+import {
+  reactComponentStoryHref,
+  webComponentStoryHref,
+} from "../lib/web-components";
 import { StatusPill } from "./StatusPill";
 import styles from "./DocHeader.module.css";
 
@@ -12,12 +16,17 @@ import styles from "./DocHeader.module.css";
  * `description` doubles as the standfirst and sits above the Figma link so the
  * link stays last.
  */
-export function DocHeader({ contract }: { contract: DtContract }) {
+export function DocHeader({
+  contract,
+  implementation = "react",
+}: {
+  contract: DtContract;
+  implementation?: "react" | "web-component";
+}) {
   const figma =
     typeof contract.figma === "string" && contract.figma.startsWith("http")
       ? contract.figma
       : null;
-
   return (
     <header className={styles.header} data-doc-block="doc-header">
       {contract.group ? (
@@ -31,8 +40,17 @@ export function DocHeader({ contract }: { contract: DtContract }) {
         </Title>
         <StatusPill status={contract.status} />
       </div>
+      <ImplementationSwitch
+        componentName={contract.name}
+        implementation={implementation}
+      />
       {contract.description ? (
-        <Text as="p" size="l" lineHeight="relaxed" className={styles.standfirst}>
+        <Text
+          as="p"
+          size="l"
+          lineHeight="relaxed"
+          className={styles.standfirst}
+        >
           {contract.description}
         </Text>
       ) : null}
@@ -47,5 +65,40 @@ export function DocHeader({ contract }: { contract: DtContract }) {
         </Link>
       ) : null}
     </header>
+  );
+}
+
+export function ImplementationSwitch({
+  componentName,
+  implementation = "react",
+}: {
+  componentName: string;
+  implementation?: "react" | "web-component";
+}) {
+  const webComponentHref = webComponentStoryHref(componentName);
+  const reactComponentHref = reactComponentStoryHref(componentName);
+  if (!webComponentHref) return null;
+
+  return (
+    <nav className={styles.implementations} aria-label="Implementation">
+      {implementation === "react" ? (
+        <span className={styles.currentImplementation} aria-current="page">
+          React
+        </span>
+      ) : (
+        <a href={reactComponentHref ?? undefined} target="_top">
+          React
+        </a>
+      )}
+      {implementation === "web-component" ? (
+        <span className={styles.currentImplementation} aria-current="page">
+          Web component
+        </span>
+      ) : (
+        <a href={webComponentHref} target="_top">
+          Web component
+        </a>
+      )}
+    </nav>
   );
 }

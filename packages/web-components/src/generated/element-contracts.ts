@@ -29,6 +29,66 @@ export type DtBadgeElementContract = HTMLElement & {
   dot?: boolean;
   square?: boolean;
   role?: string;
+  icon?: string;
+};
+
+export type DtIconButtonElementContract = HTMLElement & {
+  icon?: string;
+  label?: string;
+  variant?: string;
+  tone?: string;
+  surface?: string;
+  size?: string;
+  tooltip?: string;
+  disabled?: boolean;
+  loading?: boolean;
+  submits?: boolean;
+};
+
+export type DtButtonGroupElementContract = HTMLElement & {
+  ariaLabel?: string;
+  attached?: boolean;
+};
+
+export type DtFilterChipElementContract = HTMLElement & {
+  label?: string;
+  pressed?: boolean;
+  variant?: string;
+  size?: string;
+  count?: number;
+  disabled?: boolean;
+};
+
+export type DtLinkElementContract = HTMLElement & {
+  href?: string;
+  label?: string;
+  size?: string;
+  underline?: string;
+  target?: string;
+  rel?: string;
+  download?: string;
+  hrefLang?: string;
+  referrerPolicy?: string;
+  ariaCurrent?: string;
+  ariaLabel?: string;
+  externalLabel?: string;
+  externalLabelEn?: string;
+  externalLabelFi?: string;
+  externalLabelSv?: string;
+};
+
+export type DtNavLinkElementContract = HTMLElement & {
+  href?: string;
+  label?: string;
+  currentPath?: string;
+  exact?: boolean;
+  size?: string;
+  underline?: string;
+};
+
+export type DtSkipLinkElementContract = HTMLElement & {
+  href?: string;
+  label?: string;
 };
 
 export type DtSpinnerElementContract = HTMLElement & {
@@ -81,26 +141,406 @@ export type DtAlertBannerElementContract = HTMLElement & {
   ariaLive?: string;
 };
 
+export type DtTextElementContract = HTMLElement & {
+  content?: string;
+  as?: string;
+  size?: string;
+  lineHeight?: string;
+};
+
+export type DtTitleElementContract = HTMLElement & {
+  content?: string;
+  as?: string;
+  unstyled?: boolean;
+  size?: string;
+  level?: number;
+  lineHeight?: string;
+};
+
+export type DtListElementContract = HTMLElement & {
+  items?: string[];
+  as?: string;
+  size?: string;
+  lineHeight?: string;
+  listStyleType?: string;
+  spacing?: string;
+  role?: string;
+};
+
+export type DtSectionElementContract = HTMLElement & {
+  content?: string;
+  spacing?: string;
+  background?: string;
+  spotlightTarget?: string;
+  id?: string;
+  ariaLabel?: string;
+  ariaLabelledby?: string;
+  ariaDescribedby?: string;
+};
+
+export type DtStackElementContract = HTMLElement & {
+  content?: string;
+  direction?: string;
+  gap?: string;
+  align?: string;
+  justify?: string;
+  wrap?: boolean;
+  as?: string;
+};
+
+export type DtCardElementContract = HTMLElement & {
+  content?: string;
+  variant?: string;
+  padding?: string;
+  as?: string;
+  titleText?: string;
+  titleLevel?: number;
+  titleAs?: string;
+  titleSize?: string;
+  description?: string;
+  descriptionAs?: string;
+  descriptionSize?: string;
+  link?: string;
+  linkLabel?: string;
+  loading?: boolean;
+};
+
+export type DtCenterElementContract = HTMLElement & {
+  content?: string;
+  as?: string;
+};
+
+export type DtContainerElementContract = HTMLElement & {
+  content?: string;
+  size?: string;
+  center?: boolean;
+  as?: string;
+};
+
+export type DtSpacerElementContract = HTMLElement & {
+  size?: string;
+  axis?: string;
+};
+
+export type DtAspectRatioElementContract = HTMLElement & {
+  content?: string;
+  ratio?: string;
+};
+
+export type DtEmptyStateElementContract = HTMLElement & {
+  icon?: string;
+  titleText?: string;
+  description?: string;
+  headingLevel?: string;
+  size?: string;
+};
+
+export type DtLabelElementContract = HTMLElement & {
+  content?: string;
+  for?: string;
+  tooltipText?: string;
+  required?: boolean;
+  disabled?: boolean;
+  requiredText?: string;
+  title?: string;
+};
+
+export type DtHelperTextElementContract = HTMLElement & {
+  content?: string;
+  state?: string;
+  id?: string;
+};
+
+export type DtFormFieldElementContract = HTMLElement & {
+  legend?: string;
+  groupDescription?: string;
+  error?: string;
+  required?: boolean;
+  disabled?: boolean;
+};
+
+export type DtTextInputElementContract = HTMLElement & {
+  label?: string;
+  type?: string;
+  size?: string;
+  value?: string;
+  defaultValue?: string;
+  error?: string;
+  helperText?: string;
+  disabled?: boolean;
+  clearable?: boolean;
+  hideLabel?: boolean;
+  required?: boolean;
+  placeholder?: string;
+  name?: string;
+};
+
+export type DtTextAreaElementContract = HTMLElement & {
+  label?: string;
+  value?: string;
+  error?: string;
+  helperText?: string;
+  animateResize?: boolean;
+  minRows?: number;
+  maxRows?: number;
+  defaultValue?: string;
+  disabled?: boolean;
+  required?: boolean;
+  placeholder?: string;
+  name?: string;
+};
+
+export type DtCheckboxElementContract = HTMLElement & {
+  label?: string;
+  showLabel?: boolean;
+  checked?: boolean;
+  indeterminate?: boolean;
+  disabled?: boolean;
+  defaultChecked?: boolean;
+  size?: string;
+  error?: string;
+  helperText?: string;
+  required?: boolean;
+  name?: string;
+  value?: string;
+};
+
+export type DtCheckboxGroupElementContract = HTMLElement & {
+  label?: string;
+  options?: { value: string; label: string; disabled?: boolean }[];
+  showMasterCheckbox?: boolean;
+  masterLabel?: string;
+  defaultSelected?: string[];
+  name?: string;
+};
+
+export type DtRadioElementContract = HTMLElement & {
+  label?: string;
+  value?: string;
+  name?: string;
+  checked?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  size?: string;
+  showLabel?: boolean;
+  required?: boolean;
+  requiredMessage?: string;
+};
+
+export type DtRadioGroupElementContract = HTMLElement & {
+  name?: string;
+  legend?: string;
+  options?: { value: string; label: string; disabled?: boolean }[];
+  value?: string;
+  defaultValue?: string;
+  orientation?: string;
+  size?: string;
+  disabled?: boolean;
+  error?: string;
+  helperText?: string;
+  required?: boolean;
+  requiredMessage?: string;
+};
+
+export type DtSelectElementContract = HTMLElement & {
+  label?: string;
+  options?: { value: string; label: string; disabled?: boolean; selected?: boolean }[];
+  helperText?: string;
+  error?: string;
+  size?: string;
+  value?: string;
+  defaultValue?: string;
+  disabled?: boolean;
+  required?: boolean;
+  name?: string;
+};
+
+export type DtSelectOptionElementContract = HTMLElement & {
+  value?: string;
+  label?: string;
+  disabled?: boolean;
+  selected?: boolean;
+};
+
+export type DtAvatarElementContract = HTMLElement & {
+  name?: string;
+  imageUrl?: string;
+  clickable?: boolean;
+  destinationUrl?: string;
+  size?: string;
+  srcSet?: string;
+  sizes?: string;
+  loading?: string;
+  decoding?: string;
+  menuItems?: { id?: string; value?: string; label: string; href?: string; icon?: string; disabled?: boolean }[];
+  menuLabel?: string;
+  variant?: string;
+};
+
+export type DtAvatarGroupElementContract = HTMLElement & {
+  ariaLabel?: string;
+  max?: number;
+  size?: string;
+};
+
+export type DtDisplayElementContract = HTMLElement & {
+  as?: string;
+  content?: string;
+};
+
+export type DtFlexBoxElementContract = HTMLElement & {
+  direction?: string;
+  wrap?: string;
+  justify?: string;
+  align?: string;
+  alignContent?: string;
+  gap?: number | string;
+  rowGap?: number | string;
+  columnGap?: number | string;
+};
+
+export type DtGridElementContract = HTMLElement & {
+  columns?: number | string;
+  tabletColumns?: number | string;
+  desktopColumns?: number | string;
+  wideColumns?: number | string;
+  ultraColumns?: number | string;
+  rows?: number | string;
+  gap?: string;
+  tabletGap?: string;
+  desktopGap?: string;
+  wideGap?: string;
+  ultraGap?: string;
+  rowGap?: string;
+  colGap?: string;
+  align?: string;
+  justify?: string;
+};
+
+export type DtKbdElementContract = HTMLElement & {
+  size?: string;
+  content?: string;
+};
+
+export type DtSkeletonElementContract = HTMLElement & {
+  variant?: string;
+  width?: number | string;
+  height?: number | string;
+  lines?: number;
+  label?: string;
+};
+
+export type DtVisuallyHiddenElementContract = HTMLElement & {
+  as?: string;
+  content?: string;
+};
+
+export type DtSwitchElementContract = HTMLElement & {
+  checked?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  size?: string;
+  label?: string;
+  labelPlacement?: string;
+  helperText?: string;
+  error?: string;
+};
+
 export const elementMigrationManifest = [
   { tagName: "dt-button", sourceComponent: "Button", backend: "native" },
   { tagName: "dt-badge", sourceComponent: "Badge", backend: "native" },
+  { tagName: "dt-icon-button", sourceComponent: "IconButton", backend: "native" },
+  { tagName: "dt-button-group", sourceComponent: "ButtonGroup", backend: "native" },
+  { tagName: "dt-filter-chip", sourceComponent: "FilterChip", backend: "native" },
+  { tagName: "dt-link", sourceComponent: "Link", backend: "native" },
+  { tagName: "dt-nav-link", sourceComponent: "NavLink", backend: "native" },
+  { tagName: "dt-skip-link", sourceComponent: "SkipLink", backend: "native" },
   { tagName: "dt-spinner", sourceComponent: "Spinner", backend: "native" },
   { tagName: "dt-progress", sourceComponent: "Progress", backend: "native" },
   { tagName: "dt-status-dot", sourceComponent: "StatusDot", backend: "native" },
   { tagName: "dt-divider", sourceComponent: "Divider", backend: "native" },
   { tagName: "dt-icon", sourceComponent: "Icon", backend: "native" },
   { tagName: "dt-alert-banner", sourceComponent: "AlertBanner", backend: "native" },
+  { tagName: "dt-text", sourceComponent: "Text", backend: "native" },
+  { tagName: "dt-title", sourceComponent: "Title", backend: "native" },
+  { tagName: "dt-list", sourceComponent: "List", backend: "native" },
+  { tagName: "dt-section", sourceComponent: "Section", backend: "native" },
+  { tagName: "dt-stack", sourceComponent: "Stack", backend: "native" },
+  { tagName: "dt-card", sourceComponent: "Card", backend: "native" },
+  { tagName: "dt-center", sourceComponent: "Center", backend: "native" },
+  { tagName: "dt-container", sourceComponent: "Container", backend: "native" },
+  { tagName: "dt-spacer", sourceComponent: "Spacer", backend: "native" },
+  { tagName: "dt-aspect-ratio", sourceComponent: "AspectRatio", backend: "native" },
+  { tagName: "dt-empty-state", sourceComponent: "EmptyState", backend: "native" },
+  { tagName: "dt-label", sourceComponent: "Label", backend: "native" },
+  { tagName: "dt-helper-text", sourceComponent: "HelperText", backend: "native" },
+  { tagName: "dt-form-field", sourceComponent: "FormField", backend: "native" },
+  { tagName: "dt-text-input", sourceComponent: "TextInput", backend: "native" },
+  { tagName: "dt-text-area", sourceComponent: "TextArea", backend: "native" },
+  { tagName: "dt-checkbox", sourceComponent: "Checkbox", backend: "native" },
+  { tagName: "dt-checkbox-group", sourceComponent: "CheckboxGroup", backend: "native" },
+  { tagName: "dt-radio", sourceComponent: "Radio", backend: "native" },
+  { tagName: "dt-radio-group", sourceComponent: "RadioGroup", backend: "native" },
+  { tagName: "dt-select", sourceComponent: "Select", backend: "native" },
+  { tagName: "dt-select-option", sourceComponent: "SelectOption", backend: "native" },
+  { tagName: "dt-avatar", sourceComponent: "Avatar", backend: "native" },
+  { tagName: "dt-avatar-group", sourceComponent: "AvatarGroup", backend: "native" },
+  { tagName: "dt-display", sourceComponent: "Display", backend: "native" },
+  { tagName: "dt-flex-box", sourceComponent: "FlexBox", backend: "native" },
+  { tagName: "dt-grid", sourceComponent: "Grid", backend: "native" },
+  { tagName: "dt-kbd", sourceComponent: "Kbd", backend: "native" },
+  { tagName: "dt-skeleton", sourceComponent: "Skeleton", backend: "native" },
+  { tagName: "dt-visually-hidden", sourceComponent: "VisuallyHidden", backend: "native" },
+  { tagName: "dt-switch", sourceComponent: "Switch", backend: "native" },
 ] as const;
 
 declare global {
   interface HTMLElementTagNameMap {
     "dt-button": DtButtonElementContract;
     "dt-badge": DtBadgeElementContract;
+    "dt-icon-button": DtIconButtonElementContract;
+    "dt-button-group": DtButtonGroupElementContract;
+    "dt-filter-chip": DtFilterChipElementContract;
+    "dt-link": DtLinkElementContract;
+    "dt-nav-link": DtNavLinkElementContract;
+    "dt-skip-link": DtSkipLinkElementContract;
     "dt-spinner": DtSpinnerElementContract;
     "dt-progress": DtProgressElementContract;
     "dt-status-dot": DtStatusDotElementContract;
     "dt-divider": DtDividerElementContract;
     "dt-icon": DtIconElementContract;
     "dt-alert-banner": DtAlertBannerElementContract;
+    "dt-text": DtTextElementContract;
+    "dt-title": DtTitleElementContract;
+    "dt-list": DtListElementContract;
+    "dt-section": DtSectionElementContract;
+    "dt-stack": DtStackElementContract;
+    "dt-card": DtCardElementContract;
+    "dt-center": DtCenterElementContract;
+    "dt-container": DtContainerElementContract;
+    "dt-spacer": DtSpacerElementContract;
+    "dt-aspect-ratio": DtAspectRatioElementContract;
+    "dt-empty-state": DtEmptyStateElementContract;
+    "dt-label": DtLabelElementContract;
+    "dt-helper-text": DtHelperTextElementContract;
+    "dt-form-field": DtFormFieldElementContract;
+    "dt-text-input": DtTextInputElementContract;
+    "dt-text-area": DtTextAreaElementContract;
+    "dt-checkbox": DtCheckboxElementContract;
+    "dt-checkbox-group": DtCheckboxGroupElementContract;
+    "dt-radio": DtRadioElementContract;
+    "dt-radio-group": DtRadioGroupElementContract;
+    "dt-select": DtSelectElementContract;
+    "dt-select-option": DtSelectOptionElementContract;
+    "dt-avatar": DtAvatarElementContract;
+    "dt-avatar-group": DtAvatarGroupElementContract;
+    "dt-display": DtDisplayElementContract;
+    "dt-flex-box": DtFlexBoxElementContract;
+    "dt-grid": DtGridElementContract;
+    "dt-kbd": DtKbdElementContract;
+    "dt-skeleton": DtSkeletonElementContract;
+    "dt-visually-hidden": DtVisuallyHiddenElementContract;
+    "dt-switch": DtSwitchElementContract;
   }
 }

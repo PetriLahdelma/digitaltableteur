@@ -16,6 +16,14 @@ const meta = {
     a11y: { test: "error" },
   },
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
+  // The generated panel exposes both controlled and uncontrolled APIs. Keep
+  // both rows operable without forwarding both modes to the native input.
+  render: ({ checked, defaultChecked, ...args }) => (
+    <Radio
+      {...args}
+      {...(checked !== undefined ? { checked } : { defaultChecked })}
+    />
+  ),
   args: {
     label: "Email updates",
     value: "email",

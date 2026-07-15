@@ -119,8 +119,7 @@ export function componentNameFromDocsContext(
   const fromComponent =
     typeof context.component === "function"
       ? (context.component as { displayName?: string; name?: string })
-          .displayName ||
-        (context.component as { name?: string }).name
+          .displayName || (context.component as { name?: string }).name
       : null;
   const title = context.title ?? "";
   const segment = title.split("/").filter(Boolean).pop() ?? null;
@@ -149,13 +148,50 @@ export function componentNameFromDocsContext(
  */
 export const titleByComponentName: Record<string, string> = {
   Button: "Actions/Button",
+  ButtonGroup: "Actions/ButtonGroup",
+  FilterChip: "Actions/FilterChip",
+  IconButton: "Actions/IconButton",
   Badge: "Content/Badge",
+  Avatar: "Content/Avatar",
+  AvatarGroup: "Content/AvatarGroup",
+  Display: "Content/Display",
+  EmptyState: "Content/EmptyState",
   Icon: "Content/Icon",
+  Kbd: "Content/Kbd",
   Text: "Content/Text",
   Title: "Content/Title",
+  List: "Content/List",
+  AlertBanner: "Feedback/AlertBanner",
+  Skeleton: "Feedback/Skeleton",
+  Progress: "Feedback/Progress",
+  Spinner: "Feedback/Spinner",
+  StatusDot: "Feedback/StatusDot",
   Link: "Navigation/Link",
+  NavLink: "Navigation/NavLink",
+  SkipLink: "Navigation/SkipLink",
   Label: "Forms/Label",
+  HelperText: "Forms/HelperText",
+  FormField: "Forms/FormField",
+  TextInput: "Forms/TextInput",
+  TextArea: "Forms/TextArea",
+  Checkbox: "Forms/Checkbox",
+  CheckboxGroup: "Forms/CheckboxGroup",
+  Radio: "Forms/Radio",
+  RadioGroup: "Forms/RadioGroup",
+  Select: "Forms/Select",
+  SelectOption: "Forms/SelectOption",
+  Switch: "Forms/Switch",
   Card: "Layout/Card",
+  Center: "Layout/Center",
+  Container: "Layout/Container",
+  Divider: "Layout/Divider",
+  FlexBox: "Layout/FlexBox",
+  Grid: "Layout/Grid",
+  AspectRatio: "Layout/AspectRatio",
+  Section: "Layout/Section",
+  Spacer: "Layout/Spacer",
+  Stack: "Layout/Stack",
+  VisuallyHidden: "Site/VisuallyHidden",
 };
 
 /** Storybook's title -> id slug (mirrors @storybook/csf sanitize rules). */

@@ -103,7 +103,7 @@ export const PrimaryNav: Story = {
     docs: {
       description: {
         story:
-          "NavLinks live inside a labelled <nav>. Each link derives its active state from the route and reflects it as aria-current=\"page\" — in this preview no route matches, so all render inactive.",
+          "NavLinks live inside a labelled navigation landmark. Each link derives its active state from the route and reflects it as aria-current=\"page\" — in this preview no route matches, so all render inactive.",
       },
     },
   },

@@ -96,3 +96,14 @@ export function reflectBooleanAttribute(
 ): void {
   element.toggleAttribute(name, value);
 }
+
+export function attachFormInternals(
+  element: HTMLElement,
+): ElementInternals | null {
+  if (typeof element.attachInternals !== "function") return null;
+  const internals = element.attachInternals();
+  return typeof internals.setFormValue === "function" &&
+    typeof internals.setValidity === "function"
+    ? internals
+    : null;
+}

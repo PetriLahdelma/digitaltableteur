@@ -5,7 +5,7 @@ import contract from "./AspectRatio.contract.json";
 const defaultArgs = {
   ratio: "16:9" as const,
   children: (
-    <div className="flex h-full w-full items-center justify-center bg-primary/20 text-sm text-muted-foreground">
+    <div className="flex h-full w-full items-center justify-center bg-primary/20 text-sm text-primary">
       16:9 media slot
     </div>
   ),
@@ -87,13 +87,32 @@ export const RatioGallery: Story = {
   tags: ["example"],
   parameters: {
     controls: { disable: true },
-    docs: { description: { story: "The preset ratios: 16:9 for video, 1:1 for thumbnails, 3:2 for editorial photography. The child fills and clips." } },
+    docs: {
+      description: {
+        story:
+          "The preset ratios: 16:9 for video, 1:1 for thumbnails, 3:2 for editorial photography. The child fills and clips.",
+      },
+    },
   },
   render: () => (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "1rem",
+      }}
+    >
       {(["16:9", "1:1", "3:2"] as const).map((ratio) => (
         <AspectRatio key={ratio} ratio={ratio}>
-          <div style={{ width: "100%", height: "100%", display: "grid", placeItems: "center", border: "1px dashed var(--color-border, #999)" }}>
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "grid",
+              placeItems: "center",
+              border: "1px dashed var(--color-border, #999)",
+            }}
+          >
             {ratio}
           </div>
         </AspectRatio>
@@ -107,7 +126,12 @@ export const MediaFill: Story = {
   tags: ["example"],
   parameters: {
     controls: { disable: true },
-    docs: { description: { story: "Media fills the frame with width/height 100% and object-fit cover, so a source of any ratio crops to the frame instead of distorting. The same square (1:1) source is shown two ways in identical 16:9 frames — contain reveals the whole source (note the top/bottom bands), cover fills the frame and clips those bands away." } },
+    docs: {
+      description: {
+        story:
+          "Media fills the frame with width/height 100% and object-fit cover, so a source of any ratio crops to the frame instead of distorting. The same square (1:1) source is shown two ways in identical 16:9 frames — contain reveals the whole source (note the top/bottom bands), cover fills the frame and clips those bands away.",
+      },
+    },
   },
   render: () => {
     // 1:1 source with labeled top/bottom bands, so the crop is visible when the
@@ -123,9 +147,17 @@ export const MediaFill: Story = {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
         <figure style={{ margin: 0 }}>
-          <figcaption style={caption}>object-fit: contain — whole 1:1 source, letterboxed</figcaption>
+          <figcaption style={caption}>
+            object-fit: contain — whole 1:1 source, letterboxed
+          </figcaption>
           <AspectRatio ratio="16:9">
-            <div style={{ width: "100%", height: "100%", background: "var(--color-light-bg, #f1f5f9)" }}>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                background: "var(--color-light-bg, #f1f5f9)",
+              }}
+            >
               <img
                 src={src}
                 alt="Square source shown whole inside a 16:9 frame, with visible top and bottom bands"
@@ -135,7 +167,9 @@ export const MediaFill: Story = {
           </AspectRatio>
         </figure>
         <figure style={{ margin: 0 }}>
-          <figcaption style={caption}>object-fit: cover — fills the frame, top and bottom cropped</figcaption>
+          <figcaption style={caption}>
+            object-fit: cover — fills the frame, top and bottom cropped
+          </figcaption>
           <AspectRatio ratio="16:9">
             <img
               src={src}
@@ -154,12 +188,25 @@ export const ReservedSpace: Story = {
   tags: ["example"],
   parameters: {
     controls: { disable: true },
-    docs: { description: { story: "Because the height comes from the ratio, the frame reserves space before media loads — no layout shift; pair with Skeleton for the placeholder." } },
+    docs: {
+      description: {
+        story:
+          "Because the height comes from the ratio, the frame reserves space before media loads — no layout shift; pair with Skeleton for the placeholder.",
+      },
+    },
   },
   render: () => (
     <div style={{ maxWidth: "20rem" }}>
       <AspectRatio ratio="16:9">
-        <div style={{ width: "100%", height: "100%", background: "var(--color-light-bg, #eee)", display: "grid", placeItems: "center" }}>
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            background: "var(--color-light-bg, #eee)",
+            display: "grid",
+            placeItems: "center",
+          }}
+        >
           loading…
         </div>
       </AspectRatio>

@@ -6,7 +6,18 @@ export type {
   CardTitleProps,
   CardVariant,
 } from "../../../nextjs-app/shared/components/Card";
-export { Container, type ContainerProps } from "../../../nextjs-app/shared/components/Container";
+export {
+  AspectRatio,
+  type AspectRatioProps,
+} from "../../../nextjs-app/shared/components/AspectRatio";
+export {
+  Center,
+  type CenterProps,
+} from "../../../nextjs-app/shared/components/Center";
+export {
+  Container,
+  type ContainerProps,
+} from "../../../nextjs-app/shared/components/Container";
 export {
   Divider,
   type DividerProps,
@@ -25,7 +36,10 @@ export {
   type SectionProps,
 } from "../../../nextjs-app/shared/components/Section";
 export {
+  Spacer,
+  type SpacerProps,
+} from "../../../nextjs-app/shared/components/Spacer";
+export {
   Stack,
   type StackProps,
 } from "../../../nextjs-app/shared/components/Stack";
-

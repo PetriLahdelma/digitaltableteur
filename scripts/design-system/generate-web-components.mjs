@@ -2,12 +2,15 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import React from "react";
-import { renderToStaticMarkup } from "react-dom/server";
+import { icons as phosphorIcons } from "@phosphor-icons/core";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const PACKAGE_ROOT = join(ROOT, "packages/web-components");
 const GENERATED_ROOT = join(PACKAGE_ROOT, "src/generated");
+const PHOSPHOR_CORE_ROOT = resolve(
+  dirname(fileURLToPath(import.meta.resolve("@phosphor-icons/core"))),
+  "..",
+);
 const CONFIG_PATH = join(PACKAGE_ROOT, "web-components.config.mjs");
 const PUBLIC_API_PATH = join(ROOT, "packages/react/public-api.manifest.json");
 const ICON_REGISTRY_PATH = join(
@@ -35,7 +38,7 @@ function contractFor(element) {
   const path = join(
     ROOT,
     "nextjs-app/shared/components",
-    element.contract,
+    element.contractDirectory ?? element.contract,
     `${element.contract}.contract.json`,
   );
   return JSON.parse(readFileSync(path, "utf8"));
@@ -69,9 +72,43 @@ function validate() {
         `${element.tagName} is native but has no nativeClassName`,
       );
     }
+    if (element.defaultBackend === "native" && !element.storyParity) {
+      throw new Error(
+        `${element.tagName} must declare storyParity for the web-component DoD`,
+      );
+    }
+    for (const equivalent of element.storyParity?.equivalents ?? []) {
+      if (!equivalent.react || !equivalent.native) {
+        throw new Error(
+          `${element.tagName} has an incomplete storyParity equivalent`,
+        );
+      }
+    }
+    for (const exclusion of element.storyParity?.exclusions ?? []) {
+      if (!exclusion.react || exclusion.reason?.trim().length < 16) {
+        throw new Error(
+          `${element.tagName} storyParity exclusions require a React story and concrete reason`,
+        );
+      }
+    }
+    const slotNames = new Set();
+    for (const slot of element.slots ?? []) {
+      if (slotNames.has(slot.name)) {
+        throw new Error(
+          `${element.tagName} declares duplicate slot ${slot.name}`,
+        );
+      }
+      if (!slot.description?.trim()) {
+        throw new Error(
+          `${element.tagName} slot ${slot.name} needs a description`,
+        );
+      }
+      slotNames.add(slot.name);
+    }
 
     const contract = contractFor(element);
     for (const prop of element.props) {
+      if (!prop.sourceProp) continue;
       if (!contract.props?.[prop.sourceProp]) {
         throw new Error(
           `${element.tagName}.${prop.name} maps to missing ${element.contract}.${prop.sourceProp}`,
@@ -79,7 +116,17 @@ function validate() {
       }
     }
     for (const event of element.events) {
-      if (!contract.props?.[event.callbackProp]) {
+      if (!event.name?.trim() || !event.description?.trim()) {
+        throw new Error(
+          `${element.tagName} events require a name and description`,
+        );
+      }
+      if (!event.callbackProp && element.defaultBackend !== "native") {
+        throw new Error(
+          `${element.tagName}.${event.name} requires a React callback mapping`,
+        );
+      }
+      if (event.callbackProp && !contract.props?.[event.callbackProp]) {
         throw new Error(
           `${element.tagName}.${event.name} maps to missing ${element.contract}.${event.callbackProp}`,
         );
@@ -156,9 +203,10 @@ function renderElementContracts() {
     .map((element) => {
       const name = `${element.nativeClassName}Contract`;
       const props = element.props
+        .filter((prop) => !prop.attributeOnly)
         .map(
           (prop) =>
-            `  ${prop.name}?: ${prop.type === "number" ? "number" : prop.type === "boolean" ? "boolean" : "string"};`,
+            `  ${prop.name}?: ${prop.propertyType ?? (prop.type === "number" ? "number" : prop.type === "boolean" ? "boolean" : "string")};`,
         )
         .join("\n");
       return `export type ${name} = HTMLElement & {\n${props}\n};`;
@@ -208,8 +256,7 @@ function extractIconAliases(source) {
   return aliases;
 }
 
-async function renderNativeIconData() {
-  const phosphor = await import("@phosphor-icons/react/ssr");
+function renderNativeIconData() {
   const iconNames = new Set([
     ...extractPhosphorExports(readFileSync(ICON_REGISTRY_PATH, "utf8")),
     ...extractPhosphorExports(
@@ -218,20 +265,24 @@ async function renderNativeIconData() {
   ]);
   const weights = ["thin", "light", "regular", "bold", "fill", "duotone"];
   const icons = {};
+  const catalog = new Map(
+    phosphorIcons.map((icon) => [icon.pascal_name, icon.name]),
+  );
 
   for (const name of [...iconNames].sort()) {
-    const component = phosphor[name];
-    if (!component) throw new Error(`Missing Phosphor SSR export ${name}`);
+    const assetName = catalog.get(name);
+    if (!assetName) throw new Error(`Missing Phosphor core asset ${name}`);
     icons[name] = {};
     for (const weight of weights) {
-      icons[name][weight] = renderToStaticMarkup(
-        React.createElement(component, {
-          size: 24,
-          weight,
-          color: "currentColor",
-          "aria-hidden": true,
-          focusable: false,
-        }),
+      const assetPath = join(
+        PHOSPHOR_CORE_ROOT,
+        "assets",
+        weight,
+        `${assetName}${weight === "regular" ? "" : `-${weight}`}.svg`,
+      );
+      icons[name][weight] = readFileSync(assetPath, "utf8").replace(
+        "<svg ",
+        '<svg width="24" height="24" aria-hidden="true" focusable="false" ',
       );
     }
   }
@@ -255,9 +306,31 @@ function renderCustomElementsManifest() {
             description: element.description,
             customElement: true,
             tagName: element.tagName,
+            ...(element.props.some(
+              (prop) => prop.propertyType && !prop.attributeOnly,
+            )
+              ? {
+                  members: element.props
+                    .filter((prop) => prop.propertyType && !prop.attributeOnly)
+                    .map((prop) => ({
+                      kind: "field",
+                      name: prop.name,
+                      description: prop.description || undefined,
+                      type: { text: prop.propertyType },
+                    })),
+                }
+              : {}),
+            ...(element.slots?.length
+              ? {
+                  slots: element.slots.map((slot) => ({
+                    name: slot.name,
+                    description: slot.description,
+                  })),
+                }
+              : {}),
             attributes: element.props.map((prop) => ({
-              name: dashed(prop.name),
-              fieldName: prop.name,
+              name: prop.attributeName ?? dashed(prop.name),
+              fieldName: prop.fieldName ?? prop.name,
               description: prop.description || undefined,
               type: { text: prop.type },
             })),
@@ -301,10 +374,7 @@ validate();
 mkdirSync(GENERATED_ROOT, { recursive: true });
 update(join(GENERATED_ROOT, "react-adapters.ts"), renderReactAdapters());
 update(join(GENERATED_ROOT, "element-contracts.ts"), renderElementContracts());
-update(
-  join(GENERATED_ROOT, "native-icon-data.ts"),
-  await renderNativeIconData(),
-);
+update(join(GENERATED_ROOT, "native-icon-data.ts"), renderNativeIconData());
 update(
   join(PACKAGE_ROOT, "custom-elements.json"),
   renderCustomElementsManifest(),

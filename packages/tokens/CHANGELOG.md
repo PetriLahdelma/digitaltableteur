@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.2 - 2026-07-15
+
+- Adds the theme-aware `color.switch.track.off` semantic token introduced for
+  visibly distinct off-state switch tracks.
+- Increases the generated token catalog from 184 to 185 entries and updates the
+  ESM, DTCG, Tailwind, type, and manifest exports together.
+- Verified by `check:token-packages`, `check:package-release-notes`, and
+  `check:npm-consumer-install`.
+
 ## 0.1.1 - 2026-07-11
 
 - Disabled-state contrast fix (#1099): `color.disabled.bg` `#e0e0e0` → `#e8e8e8`, `color.disabled.bg.light` `#d8d8d8` → `#efefef` in the DTCG export (theme-level placeholder/surface changes for dark and high-contrast themes ship via `@digitaltableteur/tokens-css@0.1.2`).

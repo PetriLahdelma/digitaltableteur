@@ -16,6 +16,32 @@ const booleanProp = (name, sourceProp = name, description = "") => ({
   type: "boolean",
   description,
 });
+const stringArrayProperty = (name, sourceProp = name, description = "") => ({
+  name,
+  sourceProp,
+  type: "string",
+  propertyType: "string[]",
+  description,
+});
+const booleanValueProperty = (name, sourceProp = name, description = "") => ({
+  name,
+  sourceProp,
+  type: "string",
+  propertyType: "boolean",
+  description,
+});
+const nativeProp = (name, type, description = "", options = {}) => ({
+  name,
+  sourceProp: null,
+  type,
+  description,
+  ...options,
+});
+const storyParity = ({ equivalents = [], exclusions = [] } = {}) => ({
+  equivalents,
+  exclusions,
+});
+const slot = (name, description) => ({ name, description });
 
 export default [
   {
@@ -26,6 +52,25 @@ export default [
     defaultBackend: "native",
     nativeClassName: "DtButtonElement",
     description: "Digitaltableteur action or link control.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Async Action",
+          reason:
+            "React-only promise callback orchestration; native hosts own async state and set loading explicitly.",
+        },
+        {
+          react: "Cta Bands",
+          reason:
+            "Marketing-site React composition rather than a reusable Button capability.",
+        },
+        {
+          react: "Home Hero Band",
+          reason:
+            "Marketing-site React composition rather than a reusable Button capability.",
+        },
+      ],
+    }),
     props: [
       stringProp("label", "children", "Visible button label."),
       stringProp("variant"),
@@ -56,6 +101,15 @@ export default [
     defaultBackend: "native",
     nativeClassName: "DtBadgeElement",
     description: "Compact status label with semantic tone.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "In Button End Slot",
+          reason:
+            "React-node composition demo; native hosts compose separate custom elements without a React end-slot prop.",
+        },
+      ],
+    }),
     props: [
       stringProp("label", "children", "Visible badge label."),
       stringProp("variant"),
@@ -65,6 +119,7 @@ export default [
       booleanProp("dot"),
       booleanProp("square"),
       stringProp("role"),
+      nativeProp("icon", "string", "Leading native icon name."),
     ],
     events: [
       {
@@ -75,6 +130,144 @@ export default [
     ],
   },
   {
+    tagName: "dt-icon-button",
+    sourceComponent: "IconButton",
+    contract: "IconButton",
+    defaultBackend: "native",
+    nativeClassName: "DtIconButtonElement",
+    description: "Accessible icon-only action composed from native Button.",
+    storyParity: storyParity({
+      equivalents: [
+        { react: "Example (site header toolbar)", native: "Example" },
+      ],
+    }),
+    props: [
+      stringProp("icon"),
+      stringProp("label"),
+      stringProp("variant"),
+      stringProp("tone"),
+      stringProp("surface"),
+      stringProp("size"),
+      stringProp("tooltip"),
+      nativeProp("disabled", "boolean"),
+      nativeProp("loading", "boolean"),
+      nativeProp("submits", "boolean"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-button-group",
+    sourceComponent: "ButtonGroup",
+    contract: "ButtonGroup",
+    defaultBackend: "native",
+    nativeClassName: "DtButtonGroupElement",
+    description: "Attached or spaced group of related action controls.",
+    storyParity: storyParity(),
+    props: [stringProp("ariaLabel"), booleanProp("attached")],
+    events: [],
+  },
+  {
+    tagName: "dt-filter-chip",
+    sourceComponent: "FilterChip",
+    contract: "FilterChip",
+    defaultBackend: "native",
+    nativeClassName: "DtFilterChipElement",
+    description: "Controlled filter toggle with pressed semantics.",
+    storyParity: storyParity({
+      equivalents: [{ react: "Example (filter group)", native: "Example" }],
+    }),
+    props: [
+      stringProp("label", "children", "Visible chip label."),
+      booleanProp("pressed"),
+      stringProp("variant"),
+      stringProp("size"),
+      numberProp("count"),
+      nativeProp("disabled", "boolean"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-link",
+    sourceComponent: "Link",
+    contract: "Link",
+    defaultBackend: "native",
+    nativeClassName: "DtLinkElement",
+    description: "Protocol-safe native anchor with external-link affordance.",
+    storyParity: storyParity(),
+    props: [
+      nativeProp("href", "string"),
+      nativeProp("label", "string", "Visible link label."),
+      stringProp("size"),
+      stringProp("underline"),
+      nativeProp("target", "string"),
+      nativeProp("rel", "string"),
+      nativeProp("download", "string"),
+      nativeProp("hrefLang", "string", "", { attributeName: "hreflang" }),
+      nativeProp("referrerPolicy", "string", "", {
+        attributeName: "referrerpolicy",
+      }),
+      nativeProp("ariaCurrent", "string"),
+      nativeProp("ariaLabel", "string"),
+      nativeProp(
+        "externalLabel",
+        "string",
+        "Override the external-link announcement for every locale.",
+      ),
+      nativeProp(
+        "externalLabelEn",
+        "string",
+        "English external-link announcement override.",
+      ),
+      nativeProp(
+        "externalLabelFi",
+        "string",
+        "Finnish external-link announcement override.",
+      ),
+      nativeProp(
+        "externalLabelSv",
+        "string",
+        "Swedish external-link announcement override.",
+      ),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-nav-link",
+    sourceComponent: "NavLink",
+    contract: "NavLink",
+    defaultBackend: "native",
+    nativeClassName: "DtNavLinkElement",
+    description: "Host-routed navigation link with boundary-safe active state.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("href"),
+      stringProp("label", "children", "Visible navigation label."),
+      nativeProp(
+        "currentPath",
+        "string",
+        "Current host route used to derive active state.",
+      ),
+      booleanProp("exact"),
+      nativeProp("size", "string"),
+      nativeProp("underline", "string"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-skip-link",
+    sourceComponent: "SkipLink",
+    contract: "SkipLink",
+    defaultBackend: "native",
+    nativeClassName: "DtSkipLinkElement",
+    description: "Keyboard bypass link revealed on focus.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("href"),
+      stringProp("label", "children", "Visible link label on focus."),
+    ],
+    events: [],
+  },
+  {
     tagName: "dt-spinner",
     adapterClassName: "DtSpinnerReactElement",
     sourceComponent: "Spinner",
@@ -82,6 +275,7 @@ export default [
     defaultBackend: "native",
     nativeClassName: "DtSpinnerElement",
     description: "Indeterminate loading indicator.",
+    storyParity: storyParity(),
     props: [stringProp("label"), stringProp("size")],
     events: [],
   },
@@ -93,6 +287,7 @@ export default [
     defaultBackend: "native",
     nativeClassName: "DtProgressElement",
     description: "Linear determinate or indeterminate progress indicator.",
+    storyParity: storyParity(),
     props: [
       numberProp("value"),
       numberProp("max"),
@@ -111,6 +306,7 @@ export default [
     nativeClassName: "DtStatusDotElement",
     description:
       "Inline semantic status indicator with visible or screen-reader label.",
+    storyParity: storyParity(),
     props: [
       stringProp("tone"),
       stringProp("size"),
@@ -126,6 +322,7 @@ export default [
     defaultBackend: "native",
     nativeClassName: "DtDividerElement",
     description: "Decorative or semantic horizontal and vertical separator.",
+    storyParity: storyParity(),
     props: [stringProp("orientation"), booleanProp("decorative")],
     events: [],
   },
@@ -137,6 +334,15 @@ export default [
     nativeClassName: "DtIconElement",
     description:
       "Framework-free Phosphor icon with design-system sizing and motion.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Brand Icon",
+          reason:
+            "React brand-asset node injection is outside the raw Phosphor icon registry contract.",
+        },
+      ],
+    }),
     props: [
       stringProp("name"),
       stringProp("weight"),
@@ -161,6 +367,7 @@ export default [
     nativeClassName: "DtAlertBannerElement",
     description:
       "Persistent semantic alert with title, description, action, and dismiss slots.",
+    storyParity: storyParity(),
     props: [
       stringProp("tone"),
       stringProp("titleText", "title"),
@@ -174,6 +381,885 @@ export default [
         callbackProp: "onDismiss",
         name: "dismiss",
         description: "Dispatched when the dismiss control is activated.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-text",
+    sourceComponent: "Text",
+    contract: "Text",
+    defaultBackend: "native",
+    nativeClassName: "DtTextElement",
+    description:
+      "Semantic body and inline typography with tokenized size and line height.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Text Compliance",
+          reason:
+            "React-only internal compliance fixture; native parity is enforced by package and Storybook browser gates.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("content", "children", "Fallback text for the default slot."),
+      stringProp("as"),
+      stringProp("size"),
+      stringProp("lineHeight"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-title",
+    sourceComponent: "Title",
+    contract: "Title",
+    defaultBackend: "native",
+    nativeClassName: "DtTitleElement",
+    description:
+      "Semantic heading with independent level, display size, and line-height controls.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Title Compliance",
+          reason:
+            "React-only internal compliance fixture; native parity is enforced by package and Storybook browser gates.",
+        },
+      ],
+    }),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback heading text for the default slot.",
+      ),
+      stringProp("as"),
+      booleanProp("unstyled"),
+      stringProp("size"),
+      numberProp("level"),
+      stringProp("lineHeight"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-list",
+    sourceComponent: "List",
+    contract: "List",
+    defaultBackend: "native",
+    nativeClassName: "DtListElement",
+    description:
+      "Semantic ordered or unordered list with tokenized type, spacing, and marker styles.",
+    storyParity: storyParity(),
+    props: [
+      stringArrayProperty(
+        "items",
+        "items",
+        "JSON string array or string[] property; light-DOM li children are also supported.",
+      ),
+      stringProp("as"),
+      stringProp("size"),
+      stringProp("lineHeight"),
+      stringProp("listStyleType"),
+      stringProp("spacing"),
+      stringProp("role"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-section",
+    sourceComponent: "Section",
+    contract: "Section",
+    defaultBackend: "native",
+    nativeClassName: "DtSectionElement",
+    description:
+      "Semantic page section with responsive spacing and theme-aware surfaces.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("spacing"),
+      stringProp("background"),
+      stringProp("spotlightTarget"),
+      nativeProp("id", "string"),
+      nativeProp("ariaLabel", "string"),
+      nativeProp("ariaLabelledby", "string"),
+      nativeProp("ariaDescribedby", "string"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-stack",
+    sourceComponent: "Stack",
+    contract: "Stack",
+    defaultBackend: "native",
+    nativeClassName: "DtStackElement",
+    description:
+      "Semantic flex stack with tokenized direction, gap, alignment, distribution, and wrapping.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("direction"),
+      stringProp("gap"),
+      stringProp("align"),
+      stringProp("justify"),
+      booleanProp("wrap"),
+      stringProp("as"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-card",
+    sourceComponent: "Card",
+    contract: "Card",
+    defaultBackend: "native",
+    nativeClassName: "DtCardElement",
+    description:
+      "Semantic content surface with structured header, body, footer, link, and loading modes.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("variant"),
+      stringProp("padding"),
+      stringProp("as"),
+      stringProp(
+        "titleText",
+        "title",
+        "Card heading text; uses title-text to avoid the global HTML title tooltip.",
+      ),
+      numberProp("titleLevel", "titleProps"),
+      stringProp("titleAs", "titleProps"),
+      stringProp("titleSize", "titleProps"),
+      stringProp("description"),
+      stringProp("descriptionAs", "descriptionProps"),
+      stringProp("descriptionSize", "descriptionProps"),
+      stringProp("link"),
+      stringProp("linkLabel"),
+      booleanProp("loading"),
+    ],
+    slots: [
+      slot("", "Card body content."),
+      slot("header-start", "Leading header content; replaces the title block."),
+      slot("header-end", "Trailing header metadata or actions."),
+      slot("extra", "Deprecated alias for header-end."),
+      slot("footer-start", "Leading footer action region."),
+      slot("footer-end", "Trailing footer action region."),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-center",
+    sourceComponent: "Center",
+    contract: "Center",
+    defaultBackend: "native",
+    nativeClassName: "DtCenterElement",
+    description: "Both-axis centering primitive for focal content.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp(
+        "as",
+        "as",
+        "Safe intrinsic wrapper element; supports common sectioning, grouping, list, and phrasing tags.",
+      ),
+    ],
+    slots: [slot("", "Content centered on both axes.")],
+    events: [],
+  },
+  {
+    tagName: "dt-container",
+    sourceComponent: "Container",
+    contract: "Container",
+    defaultBackend: "native",
+    nativeClassName: "DtContainerElement",
+    description:
+      "Responsive page-width constraint with tokenized gutters and semantic wrappers.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("size"),
+      booleanValueProperty(
+        "center",
+        "center",
+        "Boolean property; the attribute accepts true or false and defaults to true when absent.",
+      ),
+      stringProp(
+        "as",
+        "as",
+        "Safe intrinsic wrapper element; supports common sectioning, grouping, list, and phrasing tags.",
+      ),
+    ],
+    slots: [slot("", "Content constrained by the container.")],
+    events: [],
+  },
+  {
+    tagName: "dt-spacer",
+    sourceComponent: "Spacer",
+    contract: "Spacer",
+    defaultBackend: "native",
+    nativeClassName: "DtSpacerElement",
+    description:
+      "Accessibility-hidden escape hatch for tokenized spatial gaps.",
+    storyParity: storyParity(),
+    props: [stringProp("size"), stringProp("axis")],
+    events: [],
+  },
+  {
+    tagName: "dt-aspect-ratio",
+    sourceComponent: "AspectRatio",
+    contract: "AspectRatio",
+    defaultBackend: "native",
+    nativeClassName: "DtAspectRatioElement",
+    description: "Clipped media frame that reserves a tokenized aspect ratio.",
+    storyParity: storyParity(),
+    props: [
+      stringProp(
+        "content",
+        "children",
+        "Fallback content for the default slot.",
+      ),
+      stringProp("ratio"),
+    ],
+    slots: [slot("", "Media or placeholder content filling the ratio frame.")],
+    events: [],
+  },
+  {
+    tagName: "dt-empty-state",
+    sourceComponent: "EmptyState",
+    contract: "EmptyState",
+    defaultBackend: "native",
+    nativeClassName: "DtEmptyStateElement",
+    description:
+      "Empty-result composition with semantic heading, description, icon, and action slots.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("icon"),
+      stringProp("titleText", "title"),
+      stringProp("description"),
+      stringProp("headingLevel"),
+      stringProp("size"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-label",
+    sourceComponent: "Label",
+    contract: "Label",
+    defaultBackend: "native",
+    nativeClassName: "DtLabelElement",
+    description: "Native form label with required and disabled presentation.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Label Compliance",
+          reason:
+            "React-only compliance fixture; native semantics are enforced by package and Storybook browser checks.",
+        },
+      ],
+    }),
+    props: [
+      nativeProp("content", "string", "Fallback text for the default slot."),
+      {
+        ...stringProp("for", "htmlFor"),
+        description: "ID of the labelled control.",
+      },
+      stringProp("tooltipText"),
+      booleanProp("required"),
+      booleanProp("disabled"),
+      nativeProp(
+        "requiredText",
+        "string",
+        "Override the localized screen-reader text for the required marker.",
+      ),
+      nativeProp("title", "string"),
+    ],
+    slots: [slot("", "Visible label content.")],
+    events: [],
+  },
+  {
+    tagName: "dt-helper-text",
+    sourceComponent: "HelperText",
+    contract: "HelperText",
+    defaultBackend: "native",
+    nativeClassName: "DtHelperTextElement",
+    description: "Supporting or validation text with semantic state feedback.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("content", "children", "Fallback text for the default slot."),
+      stringProp("state"),
+      nativeProp("id", "string"),
+    ],
+    slots: [slot("", "Supporting message content.")],
+    events: [],
+  },
+  {
+    tagName: "dt-form-field",
+    sourceComponent: "FormField",
+    contract: "FormField",
+    defaultBackend: "native",
+    nativeClassName: "DtFormFieldElement",
+    description: "Accessible fieldset wrapper for grouped form controls.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("legend"),
+      stringProp("groupDescription"),
+      stringProp("error"),
+      booleanProp("required"),
+      booleanProp("disabled"),
+    ],
+    slots: [
+      slot("", "Grouped form controls."),
+      slot("legend", "Rich legend content overriding the legend attribute."),
+      slot(
+        "group-description",
+        "Rich group description overriding the group-description attribute.",
+      ),
+      slot("error", "Rich error content overriding the error attribute."),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-text-input",
+    sourceComponent: "TextInput",
+    contract: "TextInput",
+    defaultBackend: "native",
+    nativeClassName: "DtTextInputElement",
+    description:
+      "Form-associated single-line field with native validation, label, and messages.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("label"),
+      stringProp("type"),
+      stringProp("size"),
+      stringProp("value"),
+      stringProp("defaultValue"),
+      stringProp("error"),
+      stringProp("helperText"),
+      booleanProp("disabled"),
+      booleanProp("clearable"),
+      booleanProp("hideLabel"),
+      nativeProp("required", "boolean"),
+      nativeProp("placeholder", "string"),
+      nativeProp("name", "string"),
+      {
+        ...nativeProp(
+          "clearLabelPrefix",
+          "string",
+          "Override the localized clear-button accessible-label prefix.",
+        ),
+        attributeOnly: true,
+      },
+    ],
+    events: [
+      {
+        callbackProp: "onValueChange",
+        name: "value-change",
+        description: "Dispatched with detail.value after user input.",
+      },
+      {
+        callbackProp: "onClear",
+        name: "clear",
+        description: "Dispatched after the clear control resets the field.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-text-area",
+    sourceComponent: "TextArea",
+    contract: "TextArea",
+    defaultBackend: "native",
+    nativeClassName: "DtTextAreaElement",
+    description:
+      "Form-associated multiline field with bounded auto-grow and messages.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("label"),
+      stringProp("value"),
+      stringProp("error"),
+      stringProp("helperText"),
+      booleanProp("animateResize"),
+      numberProp("minRows"),
+      numberProp("maxRows"),
+      nativeProp("defaultValue", "string"),
+      nativeProp("disabled", "boolean"),
+      nativeProp("required", "boolean"),
+      nativeProp("placeholder", "string"),
+      nativeProp("name", "string"),
+    ],
+    events: [
+      {
+        callbackProp: "onChange",
+        name: "value-change",
+        description: "Dispatched with detail.value after user input.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-checkbox",
+    sourceComponent: "Checkbox",
+    contract: "Checkbox",
+    defaultBackend: "native",
+    nativeClassName: "DtCheckboxElement",
+    description:
+      "Form-associated checkbox with indeterminate, validation, and messaging states.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Checkbox Compliance",
+          reason:
+            "React-only internal compliance fixture; native behavior is enforced by the web-component DoD and browser tests.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("label"),
+      booleanProp("showLabel"),
+      booleanProp("checked"),
+      booleanProp("indeterminate"),
+      booleanProp("disabled"),
+      booleanProp("defaultChecked"),
+      stringProp("size"),
+      stringProp("error"),
+      stringProp("helperText"),
+      nativeProp("required", "boolean"),
+      nativeProp("name", "string"),
+      nativeProp("value", "string"),
+      {
+        ...nativeProp(
+          "requiredMessage",
+          "string",
+          "Override the localized required-state validation message.",
+        ),
+        attributeOnly: true,
+      },
+    ],
+    events: [
+      {
+        callbackProp: "onCheckedChange",
+        name: "checked-change",
+        description: "Dispatched with detail.checked after user activation.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-checkbox-group",
+    sourceComponent: "CheckboxGroup",
+    contract: "CheckboxGroup",
+    defaultBackend: "native",
+    nativeClassName: "DtCheckboxGroupElement",
+    description:
+      "Accessible checkbox fieldset with optional select-all behavior.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Checkbox Group Compliance",
+          reason:
+            "React-only compliance fixture; native group behavior is enforced by web-component tests.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("label"),
+      {
+        ...stringProp("options"),
+        propertyType: "{ value: string; label: string; disabled?: boolean }[]",
+      },
+      booleanProp("showMasterCheckbox"),
+      stringProp("masterLabel"),
+      {
+        ...stringProp("defaultSelected"),
+        propertyType: "string[]",
+      },
+      nativeProp("name", "string"),
+    ],
+    slots: [slot("", "Declarative dt-checkbox children overriding options.")],
+    events: [
+      {
+        callbackProp: "onChange",
+        name: "selected-change",
+        description: "Dispatched with detail.selected after selection changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-radio",
+    sourceComponent: "Radio",
+    contract: "Radio",
+    defaultBackend: "native",
+    nativeClassName: "DtRadioElement",
+    description: "Form-associated native radio control with tokenized sizing.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("label"),
+      stringProp("value"),
+      stringProp("name"),
+      booleanProp("checked"),
+      booleanProp("defaultChecked"),
+      booleanProp("disabled"),
+      stringProp("size"),
+      booleanProp("showLabel"),
+      nativeProp("required", "boolean"),
+      nativeProp(
+        "requiredMessage",
+        "string",
+        "Override the localized required-state validation message.",
+      ),
+    ],
+    events: [
+      {
+        callbackProp: "onCheckedChange",
+        name: "checked-change",
+        description: "Dispatched with detail.checked after user activation.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-radio-group",
+    sourceComponent: "RadioGroup",
+    contract: "RadioGroup",
+    defaultBackend: "native",
+    nativeClassName: "DtRadioGroupElement",
+    description:
+      "Form-associated radio fieldset with controlled and default selection modes.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("name"),
+      stringProp("legend"),
+      {
+        ...stringProp("options"),
+        propertyType: "{ value: string; label: string; disabled?: boolean }[]",
+      },
+      stringProp("value"),
+      stringProp("defaultValue"),
+      stringProp("orientation"),
+      stringProp("size"),
+      booleanProp("disabled"),
+      stringProp("error"),
+      stringProp("helperText"),
+      nativeProp("required", "boolean"),
+      nativeProp(
+        "requiredMessage",
+        "string",
+        "Override the localized required-state validation message.",
+      ),
+    ],
+    slots: [slot("", "Declarative dt-radio children overriding options.")],
+    events: [
+      {
+        callbackProp: "onValueChange",
+        name: "value-change",
+        description: "Dispatched with detail.value after selection changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-select",
+    sourceComponent: "Select",
+    contract: "Select",
+    defaultBackend: "native",
+    nativeClassName: "DtSelectElement",
+    description:
+      "Form-associated native select with declarative options and validation messages.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Select Compliance",
+          reason:
+            "React-only compliance fixture; native select behavior is enforced by package and browser checks.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("label"),
+      {
+        ...stringProp("options"),
+        propertyType:
+          "{ value: string; label: string; disabled?: boolean; selected?: boolean }[]",
+      },
+      stringProp("helperText"),
+      stringProp("error"),
+      stringProp("size"),
+      nativeProp("value", "string"),
+      nativeProp("defaultValue", "string"),
+      booleanProp("disabled"),
+      nativeProp("required", "boolean"),
+      nativeProp("name", "string"),
+      {
+        ...nativeProp(
+          "requiredText",
+          "string",
+          "Override the localized screen-reader text for the required marker.",
+        ),
+        attributeOnly: true,
+      },
+    ],
+    slots: [
+      slot("", "Declarative dt-select-option children overriding options."),
+    ],
+    events: [
+      {
+        callbackProp: "onValueChange",
+        name: "value-change",
+        description:
+          "Dispatched with detail.value before the compatibility change event.",
+      },
+      {
+        callbackProp: "onChange",
+        name: "change",
+        description:
+          "Compatibility change event dispatched after value-change.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-select-option",
+    sourceComponent: "SelectOption",
+    contract: "SelectOption",
+    contractDirectory: "Select",
+    defaultBackend: "native",
+    nativeClassName: "DtSelectOptionElement",
+    description: "Declarative option data materialized by a parent dt-select.",
+    storyParity: storyParity(),
+    props: [
+      nativeProp("value", "string"),
+      nativeProp("label", "string"),
+      nativeProp("disabled", "boolean"),
+      nativeProp("selected", "boolean"),
+    ],
+    slots: [slot("", "Option label overriding the label attribute.")],
+    events: [],
+  },
+  {
+    tagName: "dt-avatar",
+    sourceComponent: "Avatar",
+    contract: "Avatar",
+    defaultBackend: "native",
+    nativeClassName: "DtAvatarElement",
+    description:
+      "Profile image or initials with optional navigation and host-owned menu data.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "With Menu",
+          reason:
+            "React icon nodes and callback handlers are host-specific; the native menuItems property accepts serializable menu data and dispatches menu-select events.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("name"),
+      stringProp("imageUrl"),
+      booleanProp("clickable"),
+      stringProp("destinationUrl"),
+      stringProp("size"),
+      stringProp("srcSet"),
+      stringProp("sizes"),
+      stringProp("loading"),
+      stringProp("decoding"),
+      {
+        ...stringProp("menuItems"),
+        propertyType:
+          "{ id?: string; value?: string; label: string; href?: string; icon?: string; disabled?: boolean }[]",
+      },
+      stringProp("menuLabel"),
+      stringProp("variant"),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "menu-select",
+        description:
+          "Dispatched with the selected serializable menu item in detail.item.",
+      },
+    ],
+    slots: [
+      slot(
+        "menu-item",
+        "Host-rendered menu controls used instead of the menuItems property.",
+      ),
+    ],
+  },
+  {
+    tagName: "dt-avatar-group",
+    sourceComponent: "AvatarGroup",
+    contract: "AvatarGroup",
+    defaultBackend: "native",
+    nativeClassName: "DtAvatarGroupElement",
+    description: "Overlapping native avatar cluster with accessible overflow.",
+    storyParity: storyParity(),
+    props: [stringProp("ariaLabel"), numberProp("max"), stringProp("size")],
+    slots: [slot("", "Native dt-avatar members in display order.")],
+    events: [],
+  },
+  {
+    tagName: "dt-display",
+    sourceComponent: "Display",
+    contract: "Display",
+    defaultBackend: "native",
+    nativeClassName: "DtDisplayElement",
+    description: "Hero-scale semantic display typography.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("as"),
+      stringProp("content", "children", "Text fallback for the default slot."),
+    ],
+    slots: [slot("", "Display copy or rich inline content.")],
+    events: [],
+  },
+  {
+    tagName: "dt-flex-box",
+    sourceComponent: "FlexBox",
+    contract: "FlexBox",
+    defaultBackend: "native",
+    nativeClassName: "DtFlexBoxElement",
+    description: "Framework-neutral flexbox layout primitive.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("direction"),
+      stringProp("wrap"),
+      stringProp("justify"),
+      stringProp("align"),
+      stringProp("alignContent"),
+      { ...stringProp("gap"), propertyType: "number | string" },
+      { ...stringProp("rowGap"), propertyType: "number | string" },
+      { ...stringProp("columnGap"), propertyType: "number | string" },
+    ],
+    slots: [slot("", "Flex items.")],
+    events: [],
+  },
+  {
+    tagName: "dt-grid",
+    sourceComponent: "Grid",
+    contract: "Grid",
+    defaultBackend: "native",
+    nativeClassName: "DtGridElement",
+    description:
+      "CSS grid primitive with token-breakpoint responsive columns and gaps.",
+    storyParity: storyParity(),
+    props: [
+      { ...stringProp("columns"), propertyType: "number | string" },
+      { ...stringProp("tabletColumns"), propertyType: "number | string" },
+      { ...stringProp("desktopColumns"), propertyType: "number | string" },
+      { ...stringProp("wideColumns"), propertyType: "number | string" },
+      { ...stringProp("ultraColumns"), propertyType: "number | string" },
+      { ...stringProp("rows"), propertyType: "number | string" },
+      stringProp("gap"),
+      stringProp("tabletGap"),
+      stringProp("desktopGap"),
+      stringProp("wideGap"),
+      stringProp("ultraGap"),
+      stringProp("rowGap"),
+      stringProp("colGap"),
+      stringProp("align"),
+      stringProp("justify"),
+    ],
+    slots: [
+      slot(
+        "",
+        "Grid cells; span and row-span attributes on direct children control placement.",
+      ),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-kbd",
+    sourceComponent: "Kbd",
+    contract: "Kbd",
+    defaultBackend: "native",
+    nativeClassName: "DtKbdElement",
+    description: "Semantic keyboard-key indicator styled as a keycap.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("size"),
+      nativeProp("content", "string", "Text fallback for the default slot."),
+    ],
+    slots: [slot("", "Key label or symbol.")],
+    events: [],
+  },
+  {
+    tagName: "dt-skeleton",
+    sourceComponent: "Skeleton",
+    contract: "Skeleton",
+    defaultBackend: "native",
+    nativeClassName: "DtSkeletonElement",
+    description:
+      "Motion-aware loading placeholder for text, media, avatars, and cards.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("variant"),
+      { ...stringProp("width"), propertyType: "number | string" },
+      { ...stringProp("height"), propertyType: "number | string" },
+      numberProp("lines"),
+      stringProp("label"),
+      { ...booleanProp("animate"), attributeOnly: true },
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-visually-hidden",
+    sourceComponent: "VisuallyHidden",
+    contract: "VisuallyHidden",
+    defaultBackend: "native",
+    nativeClassName: "DtVisuallyHiddenElement",
+    description: "Screen-reader-only semantic content.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("as"),
+      stringProp("content", "children", "Text fallback for the default slot."),
+    ],
+    slots: [slot("", "Content exposed to assistive technology.")],
+    events: [],
+  },
+  {
+    tagName: "dt-switch",
+    sourceComponent: "Switch",
+    contract: "Switch",
+    defaultBackend: "native",
+    nativeClassName: "DtSwitchElement",
+    description:
+      "Immediate-action switch with loading, placement, and message states.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Switch Compliance",
+          reason:
+            "React-only internal compliance fixture; native behavior is enforced by the web-component DoD and browser tests.",
+        },
+      ],
+    }),
+    props: [
+      booleanProp("checked"),
+      booleanProp("defaultChecked"),
+      booleanProp("disabled"),
+      booleanProp("loading"),
+      stringProp("size"),
+      stringProp("label"),
+      stringProp("labelPlacement"),
+      stringProp("helperText"),
+      stringProp("error"),
+    ],
+    events: [
+      {
+        callbackProp: "onCheckedChange",
+        name: "checked-change",
+        description: "Dispatched with detail.checked after user activation.",
       },
     ],
   },
