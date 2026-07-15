@@ -6,6 +6,7 @@ import {
   reflectBooleanAttribute,
   stringAttribute,
 } from "./base";
+import { localizedText } from "./localization";
 import type { DtSelectOptionElement } from "./select-option";
 
 const SIZES = ["sm", "md", "lg"] as const;
@@ -55,6 +56,8 @@ export class DtSelectElement extends DigitaltableteurElement {
     "disabled",
     "required",
     "name",
+    "required-text",
+    "lang",
   ];
 
   private control: HTMLSelectElement | null = null;
@@ -159,7 +162,11 @@ export class DtSelectElement extends DigitaltableteurElement {
     return this.control?.value ?? this.liveValue ?? "";
   }
   set value(value: string) {
+    const reflectedValue = this.getAttribute("value");
+    this.liveValue = value;
+    this.valueDirty = false;
     reflectAttribute(this, "value", value);
+    if (this.isConnected && reflectedValue === value) this.render();
   }
 
   get defaultValue(): string {
@@ -251,44 +258,140 @@ export class DtSelectElement extends DigitaltableteurElement {
     this.dispatchEvent(new Event("change", { bubbles: true, composed: true }));
   }
 
+  private requiredText(): string {
+    const override = this.getAttribute("required-text");
+    if (override !== null) return override;
+    return localizedText(this, {
+      en: " (required)",
+      fi: " (pakollinen)",
+      sv: " (obligatorisk)",
+    });
+  }
+
+  private missingSelectionMessage(select: HTMLSelectElement): string {
+    const probe = select.cloneNode(true) as HTMLSelectElement;
+    probe.required = true;
+    probe.selectedIndex = -1;
+    return probe.validationMessage;
+  }
+
+  private selectedEnabledOption(
+    select: HTMLSelectElement,
+  ): HTMLOptionElement | null {
+    return (
+      [...select.options].find(
+        (option) => option.selected && !option.disabled,
+      ) ?? null
+    );
+  }
+
+  private optionsMatch(
+    select: HTMLSelectElement,
+    items: DtSelectOptionItem[],
+  ): boolean {
+    if (select.options.length !== items.length) return false;
+    return items.every((item, index) => {
+      const option = select.options.item(index);
+      return (
+        option !== null &&
+        option.value === item.value &&
+        option.textContent === item.label &&
+        option.disabled === (item.disabled === true) &&
+        option.defaultSelected === (item.selected === true)
+      );
+    });
+  }
+
+  private syncOptions(
+    select: HTMLSelectElement,
+    items: DtSelectOptionItem[],
+  ): void {
+    if (this.optionsMatch(select, items)) return;
+    const fragment = this.ownerDocument.createDocumentFragment();
+    for (const item of items) {
+      const option = this.ownerDocument.createElement("option");
+      option.value = item.value;
+      option.textContent = item.label;
+      option.disabled = item.disabled === true;
+      option.defaultSelected = item.selected === true;
+      fragment.append(option);
+    }
+    select.replaceChildren(fragment);
+  }
+
+  private defaultSelectedIndex(items: DtSelectOptionItem[]): number {
+    const markedIndex = items.findIndex((item) => item.selected === true);
+    if (markedIndex >= 0) return markedIndex;
+    return items.length > 0 ? 0 : -1;
+  }
+
+  private buildLabel(): HTMLLabelElement {
+    const label = this.ownerDocument.createElement("label");
+    label.htmlFor = "control";
+    if (this.disabled || this.formDisabled) label.className = "disabled";
+    label.append(this.label);
+    if (this.required) {
+      const marker = this.ownerDocument.createElement("span");
+      marker.className = "required";
+      marker.setAttribute("aria-hidden", "true");
+      marker.textContent = "*";
+      const requiredText = this.ownerDocument.createElement("span");
+      requiredText.className = "srOnly";
+      requiredText.textContent = this.requiredText();
+      label.append(marker, requiredText);
+    }
+    return label;
+  }
+
+  private buildMessage(id: string, text: string, error = false): HTMLElement {
+    const message = this.ownerDocument.createElement("p");
+    message.id = id;
+    message.className = `message${error ? " errorMessage" : ""}`;
+    message.textContent = text;
+    if (error) message.setAttribute("role", "alert");
+    return message;
+  }
+
   private syncForm(): void {
     if (!this.control) return;
     const error = this.error;
-    this.internals?.setFormValue(this.control.value);
+    const selected = this.selectedEnabledOption(this.control);
+    const missing = this.required && !selected;
+    this.internals?.setFormValue(selected?.value ?? null);
     this.internals?.setValidity(
-      error ? { customError: true } : this.control.validity,
-      error || this.control.validationMessage,
+      missing ? { valueMissing: true } : error ? { customError: true } : {},
+      error || (missing ? this.missingSelectionMessage(this.control) : ""),
       this.control,
     );
   }
 
   private render(): void {
-    const container = this.ownerDocument.createElement("div");
-    container.className = "container";
+    const root = this.shadowRoot;
+    if (!root) return;
+    let style = root.querySelector("style");
+    if (!style) {
+      style = this.ownerDocument.createElement("style");
+      root.append(style);
+    }
+    style.textContent = styles;
+    let container = root.querySelector(".container") as HTMLDivElement | null;
+    if (!container) {
+      container = this.ownerDocument.createElement("div");
+      container.className = "container";
+      root.append(container);
+    }
     const error = this.error;
     const helper = this.helperText;
-
-    if (this.label) {
-      const label = this.ownerDocument.createElement("label");
-      label.htmlFor = "control";
-      if (this.disabled || this.formDisabled) label.className = "disabled";
-      label.append(this.label);
-      if (this.required) {
-        const marker = this.ownerDocument.createElement("span");
-        marker.className = "required";
-        marker.setAttribute("aria-hidden", "true");
-        marker.textContent = "*";
-        const requiredText = this.ownerDocument.createElement("span");
-        requiredText.className = "srOnly";
-        requiredText.textContent = " (required)";
-        label.append(marker, requiredText);
-      }
-      container.append(label);
+    let wrapper = container.querySelector(".wrapper") as HTMLDivElement | null;
+    if (!wrapper) {
+      wrapper = this.ownerDocument.createElement("div");
+      wrapper.className = "wrapper";
+      container.append(wrapper);
     }
-
-    const wrapper = this.ownerDocument.createElement("div");
-    wrapper.className = "wrapper";
-    const select = this.ownerDocument.createElement("select");
+    const select =
+      this.control && this.control.parentElement === wrapper
+        ? this.control
+        : this.ownerDocument.createElement("select");
     select.id = "control";
     select.name = this.name;
     select.className = `${this.size}${error ? " error" : ""}`;
@@ -298,44 +401,59 @@ export class DtSelectElement extends DigitaltableteurElement {
       .filter(Boolean)
       .join(" ");
     if (describedBy) select.setAttribute("aria-describedby", describedBy);
+    else select.removeAttribute("aria-describedby");
     if (error) select.setAttribute("aria-invalid", "true");
+    else select.removeAttribute("aria-invalid");
 
     const declarative = this.declarativeOptions();
     const options = declarative.length > 0 ? declarative : this.options;
-    for (const item of options) {
-      const option = this.ownerDocument.createElement("option");
-      option.value = item.value;
-      option.textContent = item.label;
-      option.disabled = item.disabled === true;
-      option.defaultSelected = item.selected === true;
-      select.append(option);
-    }
+    this.syncOptions(select, options);
 
     const desiredValue = this.liveValue;
     if (desiredValue !== null) select.value = desiredValue;
-    select.addEventListener("change", () => this.commit(select.value));
-    this.control = select;
-    wrapper.append(select);
+    else select.selectedIndex = this.defaultSelectedIndex(options);
+    if (select !== this.control) {
+      select.addEventListener("change", () => this.commit(select.value));
+      this.control = select;
+    }
+    if (select.parentElement !== wrapper) wrapper.prepend(select);
 
-    const chevron = this.ownerDocument.createElement("span");
-    chevron.className = "chevron";
-    chevron.setAttribute("aria-hidden", "true");
-    wrapper.append(chevron);
-    container.append(wrapper);
+    let chevron = wrapper.querySelector(".chevron") as HTMLSpanElement | null;
+    if (!chevron) {
+      chevron = this.ownerDocument.createElement("span");
+      chevron.className = "chevron";
+      chevron.setAttribute("aria-hidden", "true");
+      wrapper.append(chevron);
+    }
 
-    if (error) container.append(this.message("error", error, true));
-    if (helper) container.append(this.message("helper", helper));
-    this.replaceShadow(styles, container);
+    const existingLabel = container.querySelector("label");
+    if (this.label) {
+      const label = this.buildLabel();
+      if (existingLabel) existingLabel.replaceWith(label);
+      else container.insertBefore(label, wrapper);
+    } else {
+      existingLabel?.remove();
+    }
+
+    const existingError = container.querySelector("#error");
+    if (error) {
+      const errorMessage = this.buildMessage("error", error, true);
+      if (existingError) existingError.replaceWith(errorMessage);
+      else container.append(errorMessage);
+    } else {
+      existingError?.remove();
+    }
+
+    const existingHelper = container.querySelector("#helper");
+    if (helper) {
+      const helperMessage = this.buildMessage("helper", helper);
+      if (existingHelper) existingHelper.replaceWith(helperMessage);
+      else container.append(helperMessage);
+    } else {
+      existingHelper?.remove();
+    }
+
     if (desiredValue === null) this.liveValue = select.value;
     this.syncForm();
-  }
-
-  private message(id: string, text: string, error = false): HTMLElement {
-    const message = this.ownerDocument.createElement("p");
-    message.id = id;
-    message.className = `message${error ? " errorMessage" : ""}`;
-    message.textContent = text;
-    if (error) message.setAttribute("role", "alert");
-    return message;
   }
 }

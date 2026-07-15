@@ -197,6 +197,16 @@ export const autogenArgs: ArgsEnhancer = (context) => {
       value: "defaultValue",
       defaultValue: "value",
     }[prop];
+    const isControlledProp = prop === "checked" || prop === "value";
+    if (
+      isControlledProp &&
+      counterpart &&
+      counterpart in contract.props &&
+      !(prop in context.initialArgs) &&
+      !(counterpart in context.initialArgs)
+    ) {
+      continue;
+    }
     if (
       counterpart &&
       (counterpart in context.initialArgs || counterpart in seeds)

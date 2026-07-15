@@ -109,7 +109,6 @@ export class DtTextElement extends DigitaltableteurElement {
 
   connectedCallback(): void {
     this.render();
-    this.observeLightDom(() => this.render());
   }
 
   attributeChangedCallback(): void {

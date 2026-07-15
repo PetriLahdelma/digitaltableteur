@@ -6,6 +6,7 @@ import {
   reflectBooleanAttribute,
   stringAttribute,
 } from "./base";
+import { localizedText } from "./localization";
 
 const SIZES = ["sm", "md", "lg"] as const;
 const TYPES = ["text", "number", "email", "password", "search", "tel"] as const;
@@ -49,6 +50,8 @@ export class DtTextInputElement extends DigitaltableteurElement {
     "hide-label",
     "placeholder",
     "name",
+    "clear-label-prefix",
+    "lang",
   ];
 
   private control: HTMLInputElement | null = null;
@@ -175,6 +178,25 @@ export class DtTextInputElement extends DigitaltableteurElement {
     reflectAttribute(this, "name", value || null);
   }
 
+  private clearLabelPrefix(): string {
+    const override = this.getAttribute("clear-label-prefix");
+    if (override !== null) return override;
+    return localizedText(this, {
+      en: "Clear ",
+      fi: "Tyhjennä ",
+      sv: "Rensa ",
+    });
+  }
+
+  private clearLabelTarget(): string {
+    if (this.label) return this.label;
+    return localizedText(this, {
+      en: "field",
+      fi: "kenttä",
+      sv: "fält",
+    });
+  }
+
   private commit(value: string, source: "input" | "clear"): void {
     this.liveValue = value;
     this.valueDirty = true;
@@ -218,13 +240,14 @@ export class DtTextInputElement extends DigitaltableteurElement {
 
     const wrapper = this.ownerDocument.createElement("div");
     wrapper.className = "control";
+    const value =
+      this.liveValue ??
+      stringAttribute(this, "value", stringAttribute(this, "default-value"));
     const input = this.ownerDocument.createElement("input");
     input.id = id;
     input.type = this.type;
-    input.className = `${this.size}${this.clearable && this.value ? " hasClear" : ""}`;
-    input.value =
-      this.liveValue ??
-      stringAttribute(this, "value", stringAttribute(this, "default-value"));
+    input.className = `${this.size}${this.clearable && value ? " hasClear" : ""}`;
+    input.value = value;
     input.name = stringAttribute(this, "name");
     input.placeholder = stringAttribute(this, "placeholder");
     input.disabled = this.disabled || this.formDisabled;
@@ -237,6 +260,10 @@ export class DtTextInputElement extends DigitaltableteurElement {
     let clear: HTMLButtonElement | null = null;
     input.addEventListener("input", () => {
       this.commit(input.value, "input");
+      input.classList.toggle(
+        "hasClear",
+        this.clearable && input.value.length > 0,
+      );
       if (clear) clear.hidden = input.value.length === 0;
     });
     this.control = input;
@@ -247,10 +274,14 @@ export class DtTextInputElement extends DigitaltableteurElement {
       clear.type = "button";
       clear.className = "clear";
       clear.hidden = input.value.length === 0;
-      clear.setAttribute("aria-label", `Clear ${this.label || "field"}`);
+      clear.setAttribute(
+        "aria-label",
+        `${this.clearLabelPrefix()}${this.clearLabelTarget()}`,
+      );
       clear.textContent = "×";
       clear.addEventListener("click", () => {
         input.value = "";
+        input.classList.remove("hasClear");
         clear!.hidden = true;
         this.commit("", "clear");
         this.dispatchEvent(

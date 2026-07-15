@@ -2,7 +2,6 @@ import {
   DigitaltableteurElement,
   attachFormInternals,
   reflectAttribute,
-  reflectBooleanAttribute,
   stringAttribute,
 } from "./base";
 import type { DtCheckboxElement } from "./checkbox";
@@ -39,10 +38,14 @@ export class DtCheckboxGroupElement extends DigitaltableteurElement {
   >();
   private assignedOptions: DtCheckboxOption[] | null = null;
   private selectedValues: string[] = [];
+  private selectionInitialized = false;
   private formDisabled = false;
 
   connectedCallback(): void {
-    this.selectedValues = this.defaultSelected;
+    if (!this.selectionInitialized) {
+      this.selectedValues = this.filterSelected(this.defaultSelected);
+      this.selectionInitialized = true;
+    }
     this.addEventListener("checked-change", this.handleCheckedChange);
     this.observeLightDom(() => this.render());
     this.render();
@@ -55,8 +58,11 @@ export class DtCheckboxGroupElement extends DigitaltableteurElement {
 
   attributeChangedCallback(name: string): void {
     if (name === "options") this.assignedOptions = null;
-    if (name === "options" || name === "default-selected") {
-      this.selectedValues = this.defaultSelected;
+    if (name === "default-selected") {
+      this.selectedValues = this.filterSelected(this.defaultSelected);
+      this.selectionInitialized = true;
+    } else if (name === "options") {
+      this.selectedValues = this.filterSelected(this.selectedValues);
     }
     if (this.isConnected) this.render();
   }
@@ -75,7 +81,8 @@ export class DtCheckboxGroupElement extends DigitaltableteurElement {
   }
 
   formResetCallback(): void {
-    this.selectedValues = this.defaultSelected;
+    this.selectedValues = this.filterSelected(this.defaultSelected);
+    this.selectionInitialized = true;
     this.render();
   }
 
@@ -90,7 +97,6 @@ export class DtCheckboxGroupElement extends DigitaltableteurElement {
   }
   set options(value: DtCheckboxOption[]) {
     this.assignedOptions = value.map((option) => ({ ...option }));
-    this.selectedValues = this.filterSelected(this.defaultSelected);
     if (this.isConnected) this.render();
   }
   get showMasterCheckbox(): boolean {
@@ -239,12 +245,16 @@ export class DtCheckboxGroupElement extends DigitaltableteurElement {
   }
 
   private syncForm(): void {
-    if (!this.name || this.selectedValues.length === 0) {
+    const submittedValues = this.optionControls
+      .filter((control) => control.checked && !control.disabled)
+      .map((control) => control.value);
+
+    if (!this.name || submittedValues.length === 0) {
       this.internals?.setFormValue(null);
       return;
     }
     const data = new FormData();
-    for (const value of this.selectedValues) data.append(this.name, value);
+    for (const value of submittedValues) data.append(this.name, value);
     this.internals?.setFormValue(data);
   }
 

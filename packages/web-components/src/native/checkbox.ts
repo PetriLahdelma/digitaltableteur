@@ -6,6 +6,7 @@ import {
   reflectBooleanAttribute,
   stringAttribute,
 } from "./base";
+import { localizedText } from "./localization";
 
 const SIZES = ["sm", "md", "lg"] as const;
 export type DtCheckboxSize = (typeof SIZES)[number];
@@ -44,15 +45,24 @@ export class DtCheckboxElement extends DigitaltableteurElement {
     "value",
     "error",
     "helper-text",
+    "required-message",
+    "lang",
   ];
   private control: HTMLInputElement | null = null;
+  private defaultCheckedInitialized = false;
   private formDisabled = false;
   private reflectingControlState = false;
   private readonly internals = attachFormInternals(this);
   connectedCallback(): void {
-    if (this.hasAttribute("default-checked") && !this.hasAttribute("checked")) {
-      this.setAttribute("checked", "");
-      return;
+    if (!this.defaultCheckedInitialized) {
+      this.defaultCheckedInitialized = true;
+      if (
+        this.hasAttribute("default-checked") &&
+        !this.hasAttribute("checked")
+      ) {
+        this.setAttribute("checked", "");
+        return;
+      }
     }
     this.render();
   }
@@ -63,7 +73,19 @@ export class DtCheckboxElement extends DigitaltableteurElement {
     ) {
       return;
     }
-    if (this.isConnected) this.render();
+    if (!this.isConnected) return;
+    if (
+      this.control &&
+      (name === "checked" ||
+        name === "indeterminate" ||
+        name === "disabled" ||
+        name === "required")
+    ) {
+      this.syncControl();
+      this.syncForm();
+      return;
+    }
+    this.render();
   }
   formDisabledCallback(disabled: boolean): void {
     this.formDisabled = disabled;
@@ -145,6 +167,24 @@ export class DtCheckboxElement extends DigitaltableteurElement {
     reflectAttribute(this, "value", value || null);
   }
 
+  private requiredMessage(): string {
+    const override = this.getAttribute("required-message");
+    if (override !== null) return override;
+    return localizedText(this, {
+      en: "Please check this box.",
+      fi: "Valitse tämä ruutu.",
+      sv: "Markera den här rutan.",
+    });
+  }
+
+  private syncControl(): void {
+    if (!this.control) return;
+    this.control.checked = this.checked;
+    this.control.indeterminate = this.indeterminate;
+    this.control.disabled = this.disabled || this.formDisabled;
+    this.control.required = this.required;
+  }
+
   private syncForm(): void {
     this.internals?.setFormValue(
       this.checked ? stringAttribute(this, "value", "on") : null,
@@ -152,7 +192,7 @@ export class DtCheckboxElement extends DigitaltableteurElement {
     const missing = this.hasAttribute("required") && !this.checked;
     this.internals?.setValidity(
       missing ? { valueMissing: true } : {},
-      missing ? "Please check this box." : "",
+      missing ? this.requiredMessage() : "",
       this.control ?? undefined,
     );
   }

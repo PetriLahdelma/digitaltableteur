@@ -7,6 +7,7 @@ import {
   forcedColorsStory,
   nativeStoryParameters,
 } from "../NativeStory";
+import { expect } from "storybook/test";
 
 type Args = {
   label: string;
@@ -14,9 +15,37 @@ type Args = {
   size: "sm" | "md" | "lg" | "inherit";
   underline: "always" | "hover" | "none";
   target?: string;
+  lang?: "en" | "fi" | "sv";
+  hrefLang?: string;
+  referrerPolicy?: string;
+  externalLabel?: string;
+  externalLabelEn?: string;
+  externalLabelFi?: string;
+  externalLabelSv?: string;
 };
-function NativeLink(args: Args) {
-  return <NativeElement tagName="dt-link" attributes={args} />;
+function NativeLink({
+  hrefLang,
+  referrerPolicy,
+  externalLabel,
+  externalLabelEn,
+  externalLabelFi,
+  externalLabelSv,
+  ...args
+}: Args) {
+  return (
+    <NativeElement
+      tagName="dt-link"
+      attributes={{
+        ...args,
+        hreflang: hrefLang,
+        referrerpolicy: referrerPolicy,
+        "external-label": externalLabel,
+        "external-label-en": externalLabelEn,
+        "external-label-fi": externalLabelFi,
+        "external-label-sv": externalLabelSv,
+      }}
+    />
+  );
 }
 const meta = {
   title: "Web Components/Navigation/Link",
@@ -78,6 +107,13 @@ export const External: Story = {
     label: "External documentation",
     href: "https://example.com",
     target: "_blank",
+    lang: "fi",
+    externalLabelFi: "Poistut sivustolta",
+  },
+  play: async ({ canvasElement }) => {
+    const host = canvasElement.querySelector("dt-link");
+    const icon = host?.shadowRoot?.querySelector("dt-icon");
+    expect(icon).toHaveAttribute("aria-label", "Poistut sivustolta");
   },
 };
 export const Example: Story = {

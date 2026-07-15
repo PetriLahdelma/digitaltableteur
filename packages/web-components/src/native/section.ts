@@ -59,13 +59,17 @@ export class DtSectionElement extends DigitaltableteurElement {
     "aria-describedby",
   ];
 
+  private managesRegionRole = false;
+
   connectedCallback(): void {
     this.syncSpotlightTarget();
+    this.syncHostSemantics();
     this.render();
   }
 
   attributeChangedCallback(name: string): void {
     if (name === "spotlight-target") this.syncSpotlightTarget();
+    if (name.startsWith("aria-")) this.syncHostSemantics();
     if (this.isConnected) this.render();
   }
 
@@ -88,11 +92,7 @@ export class DtSectionElement extends DigitaltableteurElement {
     reflectAttribute(this, "content", value || null);
   }
   get spotlightTarget(): string {
-    return stringAttribute(
-      this,
-      "spotlight-target",
-      stringAttribute(this, "data-spotlight-target"),
-    );
+    return stringAttribute(this, "spotlight-target");
   }
   set spotlightTarget(value: string) {
     reflectAttribute(this, "spotlight-target", value || null);
@@ -103,21 +103,32 @@ export class DtSectionElement extends DigitaltableteurElement {
     reflectAttribute(this, "data-spotlight-target", value || null);
   }
 
+  private syncHostSemantics(): void {
+    const hasAccessibleName = Boolean(
+      this.getAttribute("aria-label")?.trim() ||
+      this.getAttribute("aria-labelledby")?.trim(),
+    );
+    if (hasAccessibleName && !this.hasAttribute("role")) {
+      this.setAttribute("role", "region");
+      this.managesRegionRole = true;
+    } else if (
+      !hasAccessibleName &&
+      this.managesRegionRole &&
+      this.getAttribute("role") === "region"
+    ) {
+      this.removeAttribute("role");
+      this.managesRegionRole = false;
+    }
+  }
+
   private render(): void {
     const section = this.ownerDocument.createElement("section");
     section.className = `root ${this.spacing} ${this.background}`;
     section.setAttribute("part", "section");
+    section.setAttribute("role", "presentation");
     if (this.id) section.id = this.id;
     if (this.spotlightTarget) {
       section.dataset.spotlightTarget = this.spotlightTarget;
-    }
-    for (const attribute of [
-      "aria-label",
-      "aria-labelledby",
-      "aria-describedby",
-    ]) {
-      const value = this.getAttribute(attribute);
-      if (value !== null) section.setAttribute(attribute, value);
     }
     const slot = this.ownerDocument.createElement("slot");
     if (this.content) slot.textContent = this.content;

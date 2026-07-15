@@ -59,7 +59,8 @@ describe("native layout primitives", () => {
     expect(root?.style.gap).toBe("12px");
     expect(root?.style.rowGap).toBe("1rem");
     expect(root?.style.columnGap).toBe("8px");
-    expect(root).toHaveAttribute("aria-label", "Layout group");
+    expect(element).toHaveAttribute("aria-label", "Layout group");
+    expect(root).not.toHaveAttribute("aria-label");
   });
 
   it("keeps dt-grid responsive tokens and applies span attributes to slotted children", async () => {

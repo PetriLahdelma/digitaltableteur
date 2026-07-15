@@ -4,6 +4,7 @@ import {
   reflectBooleanAttribute,
   stringAttribute,
 } from "./base";
+import { localizedText } from "./localization";
 
 let generatedLabelId = 0;
 
@@ -52,13 +53,20 @@ export class DtLabelElement extends DigitaltableteurElement {
     "for",
     "tooltip-text",
     "required",
+    "required-text",
     "disabled",
     "title",
   ];
+  private associatedTarget: HTMLElement | null = null;
 
   connectedCallback(): void {
     this.render();
     this.observeLightDom(() => this.render());
+  }
+
+  disconnectedCallback(): void {
+    this.clearAccessibleAssociation();
+    super.disconnectedCallback();
   }
 
   attributeChangedCallback(): void {
@@ -111,6 +119,21 @@ export class DtLabelElement extends DigitaltableteurElement {
 
   set tooltip(value: string) {
     reflectAttribute(this, "title", value || null);
+  }
+
+  get requiredText(): string {
+    return (
+      stringAttribute(this, "required-text") ||
+      localizedText(this, {
+        en: "(required)",
+        fi: "(pakollinen)",
+        sv: "(obligatorisk)",
+      })
+    );
+  }
+
+  set requiredText(value: string) {
+    reflectAttribute(this, "required-text", value || null);
   }
 
   private activateTarget(): void {
@@ -166,7 +189,7 @@ export class DtLabelElement extends DigitaltableteurElement {
       const srOnly = this.ownerDocument.createElement("span");
       srOnly.className = "srOnly";
       srOnly.setAttribute("part", "required-text");
-      srOnly.textContent = "(required)";
+      srOnly.textContent = this.requiredText;
       label.append(srOnly);
     }
 
@@ -174,17 +197,49 @@ export class DtLabelElement extends DigitaltableteurElement {
     this.syncAccessibleAssociation();
   }
 
+  private clearAccessibleAssociation(target = this.associatedTarget): void {
+    if (!(target instanceof HTMLElement) || !this.id) {
+      if (target === this.associatedTarget) this.associatedTarget = null;
+      return;
+    }
+
+    const labelledBy = (target.getAttribute("aria-labelledby") ?? "")
+      .split(/\s+/)
+      .filter(Boolean)
+      .filter((value) => value !== this.id);
+
+    if (labelledBy.length > 0) {
+      target.setAttribute("aria-labelledby", labelledBy.join(" "));
+    } else {
+      target.removeAttribute("aria-labelledby");
+    }
+
+    if (target === this.associatedTarget) this.associatedTarget = null;
+  }
+
   private syncAccessibleAssociation(): void {
     const targetId = this.htmlFor;
-    if (!targetId) return;
+    if (!targetId) {
+      this.clearAccessibleAssociation();
+      return;
+    }
     const root = this.getRootNode();
     const target =
       root instanceof Document || root instanceof ShadowRoot
         ? root.getElementById(targetId)
         : null;
-    if (!(target instanceof HTMLElement)) return;
+    if (!(target instanceof HTMLElement)) {
+      this.clearAccessibleAssociation();
+      return;
+    }
     if (!this.id) this.id = `dt-label-${++generatedLabelId}`;
-    if (target.hasAttribute("aria-label")) return;
+    if (this.associatedTarget && this.associatedTarget !== target) {
+      this.clearAccessibleAssociation();
+    }
+    if (target.hasAttribute("aria-label")) {
+      this.clearAccessibleAssociation(target);
+      return;
+    }
     const labelledBy = new Set(
       (target.getAttribute("aria-labelledby") ?? "")
         .split(/\s+/)
@@ -192,5 +247,6 @@ export class DtLabelElement extends DigitaltableteurElement {
     );
     labelledBy.add(this.id);
     target.setAttribute("aria-labelledby", [...labelledBy].join(" "));
+    this.associatedTarget = target;
   }
 }

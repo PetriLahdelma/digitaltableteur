@@ -21,6 +21,16 @@ const HEADER_START_SLOT_NAMES = ["header-start", "headerStart"] as const;
 const HEADER_END_SLOT_NAMES = ["header-end", "headerEnd", "extra"] as const;
 const FOOTER_START_SLOT_NAMES = ["footer-start", "footerStart"] as const;
 const FOOTER_END_SLOT_NAMES = ["footer-end", "footerEnd"] as const;
+const SHADOW_UNSAFE_ARIA_ATTRIBUTES = new Set([
+  "aria-activedescendant",
+  "aria-controls",
+  "aria-describedby",
+  "aria-details",
+  "aria-errormessage",
+  "aria-flowto",
+  "aria-labelledby",
+  "aria-owns",
+]);
 
 export type DtCardVariant = (typeof VARIANTS)[number];
 export type DtCardPadding = (typeof PADDINGS)[number];
@@ -316,16 +326,25 @@ function secureRel(value: string, external: boolean): string {
   return [...tokens].join(" ");
 }
 
+function isForwardedHostAttribute(attributeName: string): boolean {
+  if (
+    attributeName === "role" ||
+    attributeName === "tabindex" ||
+    attributeName === "lang" ||
+    attributeName === "dir" ||
+    attributeName.startsWith("data-")
+  ) {
+    return true;
+  }
+  return (
+    attributeName.startsWith("aria-") &&
+    !SHADOW_UNSAFE_ARIA_ATTRIBUTES.has(attributeName)
+  );
+}
+
 function copyForwardedAttributes(host: HTMLElement, target: HTMLElement): void {
   for (const attributeName of host.getAttributeNames()) {
-    if (
-      attributeName === "role" ||
-      attributeName === "tabindex" ||
-      attributeName === "lang" ||
-      attributeName === "dir" ||
-      attributeName.startsWith("aria-") ||
-      attributeName.startsWith("data-")
-    ) {
+    if (isForwardedHostAttribute(attributeName)) {
       const value = host.getAttribute(attributeName);
       if (value !== null) target.setAttribute(attributeName, value);
     }
@@ -498,14 +517,7 @@ export class DtCardElement extends DigitaltableteurElement {
         const attributeName = record.attributeName;
         if (!attributeName) return false;
         if (handledAttributes.has(attributeName)) return false;
-        return (
-          attributeName === "role" ||
-          attributeName === "tabindex" ||
-          attributeName === "lang" ||
-          attributeName === "dir" ||
-          attributeName.startsWith("aria-") ||
-          attributeName.startsWith("data-")
-        );
+        return isForwardedHostAttribute(attributeName);
       });
       if (shouldRender) this.render();
     });

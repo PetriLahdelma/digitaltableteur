@@ -181,6 +181,11 @@ export class DtFormFieldElement extends DigitaltableteurElement {
 
   private syncDisabledControls(): void {
     for (const element of this.defaultSlotControls()) {
+      if (this.supportsInheritedDisabled(element)) {
+        element.inheritedDisabled = this.disabled;
+        continue;
+      }
+
       if (this.disabled) {
         if (!this.disabledSnapshot.has(element)) {
           this.disabledSnapshot.set(
@@ -214,7 +219,13 @@ export class DtFormFieldElement extends DigitaltableteurElement {
   }
 
   private canToggleDisabled(element: HTMLElement): boolean {
-    return "disabled" in element;
+    return "disabled" in element || this.supportsInheritedDisabled(element);
+  }
+
+  private supportsInheritedDisabled(
+    element: HTMLElement,
+  ): element is HTMLElement & { inheritedDisabled: boolean } {
+    return "inheritedDisabled" in element;
   }
 
   private readDisabledProperty(element: HTMLElement): boolean {

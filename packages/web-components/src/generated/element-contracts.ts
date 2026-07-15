@@ -71,6 +71,10 @@ export type DtLinkElementContract = HTMLElement & {
   referrerPolicy?: string;
   ariaCurrent?: string;
   ariaLabel?: string;
+  externalLabel?: string;
+  externalLabelEn?: string;
+  externalLabelFi?: string;
+  externalLabelSv?: string;
 };
 
 export type DtNavLinkElementContract = HTMLElement & {
@@ -237,6 +241,7 @@ export type DtLabelElementContract = HTMLElement & {
   tooltipText?: string;
   required?: boolean;
   disabled?: boolean;
+  requiredText?: string;
   title?: string;
 };
 
@@ -319,6 +324,7 @@ export type DtRadioElementContract = HTMLElement & {
   size?: string;
   showLabel?: boolean;
   required?: boolean;
+  requiredMessage?: string;
 };
 
 export type DtRadioGroupElementContract = HTMLElement & {
@@ -333,6 +339,7 @@ export type DtRadioGroupElementContract = HTMLElement & {
   error?: string;
   helperText?: string;
   required?: boolean;
+  requiredMessage?: string;
 };
 
 export type DtSelectElementContract = HTMLElement & {

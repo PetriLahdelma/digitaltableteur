@@ -615,9 +615,13 @@ describe("native typography and semantic layout elements", () => {
 
     const section = element.shadowRoot?.querySelector("section");
     expect(section).toHaveClass("root", "hero", "inverse");
+    expect(section).toHaveAttribute("role", "presentation");
     expect(section).toHaveAttribute("data-spotlight-target", "pricing");
-    expect(section).toHaveAttribute("aria-labelledby", "pricing-title");
-    expect(section).toHaveAttribute("aria-describedby", "pricing-description");
+    expect(section).not.toHaveAttribute("aria-labelledby");
+    expect(section).not.toHaveAttribute("aria-describedby");
+    expect(element).toHaveAttribute("aria-labelledby", "pricing-title");
+    expect(element).toHaveAttribute("aria-describedby", "pricing-description");
+    expect(element).toHaveAttribute("role", "region");
     expect(element).toHaveAttribute("data-spotlight-target", "pricing");
   });
 

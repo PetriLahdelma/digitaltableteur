@@ -30,11 +30,12 @@ const booleanValueProperty = (name, sourceProp = name, description = "") => ({
   propertyType: "boolean",
   description,
 });
-const nativeProp = (name, type, description = "") => ({
+const nativeProp = (name, type, description = "", options = {}) => ({
   name,
   sourceProp: null,
   type,
   description,
+  ...options,
 });
 const storyParity = ({ equivalents = [], exclusions = [] } = {}) => ({
   equivalents,
@@ -201,10 +202,32 @@ export default [
       nativeProp("target", "string"),
       nativeProp("rel", "string"),
       nativeProp("download", "string"),
-      nativeProp("hrefLang", "string"),
-      nativeProp("referrerPolicy", "string"),
+      nativeProp("hrefLang", "string", "", { attributeName: "hreflang" }),
+      nativeProp("referrerPolicy", "string", "", {
+        attributeName: "referrerpolicy",
+      }),
       nativeProp("ariaCurrent", "string"),
       nativeProp("ariaLabel", "string"),
+      nativeProp(
+        "externalLabel",
+        "string",
+        "Override the external-link announcement for every locale.",
+      ),
+      nativeProp(
+        "externalLabelEn",
+        "string",
+        "English external-link announcement override.",
+      ),
+      nativeProp(
+        "externalLabelFi",
+        "string",
+        "Finnish external-link announcement override.",
+      ),
+      nativeProp(
+        "externalLabelSv",
+        "string",
+        "Swedish external-link announcement override.",
+      ),
     ],
     events: [],
   },
@@ -660,6 +683,11 @@ export default [
       stringProp("tooltipText"),
       booleanProp("required"),
       booleanProp("disabled"),
+      nativeProp(
+        "requiredText",
+        "string",
+        "Override the localized screen-reader text for the required marker.",
+      ),
       nativeProp("title", "string"),
     ],
     slots: [slot("", "Visible label content.")],
@@ -730,6 +758,14 @@ export default [
       nativeProp("required", "boolean"),
       nativeProp("placeholder", "string"),
       nativeProp("name", "string"),
+      {
+        ...nativeProp(
+          "clearLabelPrefix",
+          "string",
+          "Override the localized clear-button accessible-label prefix.",
+        ),
+        attributeOnly: true,
+      },
     ],
     events: [
       {
@@ -805,6 +841,14 @@ export default [
       nativeProp("required", "boolean"),
       nativeProp("name", "string"),
       nativeProp("value", "string"),
+      {
+        ...nativeProp(
+          "requiredMessage",
+          "string",
+          "Override the localized required-state validation message.",
+        ),
+        attributeOnly: true,
+      },
     ],
     events: [
       {
@@ -872,6 +916,11 @@ export default [
       stringProp("size"),
       booleanProp("showLabel"),
       nativeProp("required", "boolean"),
+      nativeProp(
+        "requiredMessage",
+        "string",
+        "Override the localized required-state validation message.",
+      ),
     ],
     events: [
       {
@@ -905,6 +954,11 @@ export default [
       stringProp("error"),
       stringProp("helperText"),
       nativeProp("required", "boolean"),
+      nativeProp(
+        "requiredMessage",
+        "string",
+        "Override the localized required-state validation message.",
+      ),
     ],
     slots: [slot("", "Declarative dt-radio children overriding options.")],
     events: [
@@ -947,6 +1001,14 @@ export default [
       booleanProp("disabled"),
       nativeProp("required", "boolean"),
       nativeProp("name", "string"),
+      {
+        ...nativeProp(
+          "requiredText",
+          "string",
+          "Override the localized screen-reader text for the required marker.",
+        ),
+        attributeOnly: true,
+      },
     ],
     slots: [
       slot("", "Declarative dt-select-option children overriding options."),

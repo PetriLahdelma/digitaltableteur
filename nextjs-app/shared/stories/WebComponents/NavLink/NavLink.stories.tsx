@@ -7,6 +7,7 @@ import {
   forcedColorsStory,
   nativeStoryParameters,
 } from "../NativeStory";
+import { expect } from "storybook/test";
 
 type Args = {
   label: string;
@@ -77,7 +78,20 @@ export const ExactMatching: Story = {
 };
 export const CustomStyling: Story = {
   ...exampleStory,
-  args: { size: "lg", underline: "always" },
+  args: {
+    href: "/work",
+    currentPath: "/work",
+    size: "lg",
+    underline: "always",
+  },
+  play: async ({ canvasElement }) => {
+    const host = canvasElement.querySelector("dt-nav-link");
+    const current = host?.shadowRoot?.querySelector("span[part='current']");
+    expect(host?.shadowRoot?.querySelector("dt-link")).toBeNull();
+    expect(current).toHaveAttribute("aria-current", "page");
+    expect(current?.className).toContain("lg");
+    expect(current?.className).toContain("always");
+  },
 };
 export const Example: Story = {
   ...exampleStory,

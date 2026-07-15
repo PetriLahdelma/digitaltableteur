@@ -46,10 +46,18 @@ export class DtSwitchElement extends DigitaltableteurElement {
     "helper-text",
     "error",
   ];
+  private control: HTMLButtonElement | null = null;
+  private defaultCheckedInitialized = false;
   connectedCallback(): void {
-    if (this.hasAttribute("default-checked") && !this.hasAttribute("checked")) {
-      this.setAttribute("checked", "");
-      return;
+    if (!this.defaultCheckedInitialized) {
+      this.defaultCheckedInitialized = true;
+      if (
+        this.hasAttribute("default-checked") &&
+        !this.hasAttribute("checked")
+      ) {
+        this.setAttribute("checked", "");
+        return;
+      }
     }
     this.render();
   }
@@ -112,6 +120,9 @@ export class DtSwitchElement extends DigitaltableteurElement {
   }
 
   private render(): void {
+    const wasFocused =
+      this.shadowRoot?.activeElement === this.control ||
+      this.shadowRoot?.activeElement?.tagName === "BUTTON";
     const fragment = this.ownerDocument.createDocumentFragment();
     const wrap = this.ownerDocument.createElement("span");
     const placement = enumAttribute(
@@ -155,12 +166,14 @@ export class DtSwitchElement extends DigitaltableteurElement {
         }),
       );
     });
+    this.control = button;
     wrap.append(button);
     if (labelText) wrap.append(label);
     fragment.append(wrap);
     if (error) fragment.append(this.message("error", error, true));
     if (helper) fragment.append(this.message("helper", helper));
     this.replaceShadow(styles, fragment);
+    if (wasFocused && !button.disabled) button.focus();
   }
 
   private message(id: string, text: string, error = false): HTMLElement {

@@ -8,7 +8,6 @@ export const nativeStoryParameters = {
   layout: "centered",
   contractStatus: "stable",
   implementation: "web-component",
-  wip: { disabled: true },
   a11y: { test: "error" },
 } as const;
 

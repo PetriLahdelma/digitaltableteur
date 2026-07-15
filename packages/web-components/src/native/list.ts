@@ -89,7 +89,11 @@ export class DtListElement extends DigitaltableteurElement {
     return parseItems(this.getAttribute("items"));
   }
   set items(value: readonly string[]) {
-    reflectAttribute(this, "items", JSON.stringify([...value]));
+    reflectAttribute(
+      this,
+      "items",
+      JSON.stringify(Array.isArray(value) ? value : []),
+    );
   }
   get as(): DtListTag {
     return enumAttribute(this, "as", TAGS, "ul");

@@ -6,6 +6,7 @@ import {
   reflectBooleanAttribute,
   stringAttribute,
 } from "./base";
+import { localizedText } from "./localization";
 
 const SIZES = ["sm", "md", "lg"] as const;
 export type DtRadioSize = (typeof SIZES)[number];
@@ -81,6 +82,7 @@ export class DtRadioElement extends DigitaltableteurElement {
     "default-checked",
     "disabled",
     "required",
+    "required-message",
     "size",
     "error",
     "helper-text",
@@ -88,6 +90,7 @@ export class DtRadioElement extends DigitaltableteurElement {
 
   private control: HTMLInputElement | null = null;
   private formDisabled = false;
+  private inheritedDisabledState = false;
   private reflectingControlState = false;
   private readonly internals = attachFormInternals(this);
 
@@ -101,23 +104,44 @@ export class DtRadioElement extends DigitaltableteurElement {
       return;
     }
     this.render();
-    if (this.checked) this.uncheckPeers();
+    this.reconcileGroupState();
   }
 
-  attributeChangedCallback(name: string): void {
+  attributeChangedCallback(
+    name: string,
+    oldValue: string | null,
+    _newValue: string | null,
+  ): void {
     if (name === "checked" && this.reflectingControlState) return;
+    const previousGroup =
+      name === "name" && oldValue && oldValue !== this.name
+        ? this.groupMembers(oldValue)
+        : [];
     if (this.isConnected) this.render();
+    if (
+      this.isConnected &&
+      (name === "checked" ||
+        name === "name" ||
+        name === "required" ||
+        name === "disabled")
+    ) {
+      this.reconcileGroupState(previousGroup);
+    }
   }
 
   formDisabledCallback(disabled: boolean): void {
     this.formDisabled = disabled;
-    if (this.control) {
-      this.control.disabled = disabled || this.disabled;
-    }
+    if (this.control) this.control.disabled = this.effectiveDisabled;
+    this.reconcileGroupState();
   }
 
   formResetCallback(): void {
-    this.checked = this.hasAttribute("default-checked");
+    const defaultChecked = this.hasAttribute("default-checked");
+    if (this.checked !== defaultChecked) {
+      this.checked = defaultChecked;
+      return;
+    }
+    this.reconcileGroupState();
   }
 
   get label(): string {
@@ -184,6 +208,21 @@ export class DtRadioElement extends DigitaltableteurElement {
     reflectBooleanAttribute(this, "required", value);
   }
 
+  get requiredMessage(): string {
+    return (
+      stringAttribute(this, "required-message") ||
+      localizedText(this, {
+        en: "Please select an option.",
+        fi: "Valitse vaihtoehto.",
+        sv: "Välj ett alternativ.",
+      })
+    );
+  }
+
+  set requiredMessage(value: string) {
+    reflectAttribute(this, "required-message", value || null);
+  }
+
   get size(): DtRadioSize {
     return enumAttribute(this, "size", SIZES, "md");
   }
@@ -208,16 +247,33 @@ export class DtRadioElement extends DigitaltableteurElement {
     reflectAttribute(this, "helper-text", value || null);
   }
 
+  get inheritedDisabled(): boolean {
+    return this.inheritedDisabledState;
+  }
+
+  set inheritedDisabled(value: boolean) {
+    this.inheritedDisabledState = value;
+    if (this.control) this.control.disabled = this.effectiveDisabled;
+    this.reconcileGroupState();
+  }
+
+  private get effectiveDisabled(): boolean {
+    return this.disabled || this.formDisabled || this.inheritedDisabledState;
+  }
+
   private syncForm(): void {
-    const value = this.checked ? this.selectedValue : null;
+    const groupSelection = this.groupMembers().find(
+      (radio) => radio.checked && !radio.effectiveDisabled,
+    );
+    const value =
+      this.checked && !this.effectiveDisabled ? this.selectedValue : null;
     this.internals?.setFormValue(value);
 
-    if (!this.control) return;
-    const missing = this.required && !this.checked;
+    const missing = !this.effectiveDisabled && this.required && !groupSelection;
     this.internals?.setValidity(
       missing ? { valueMissing: true } : {},
-      missing ? "Please select an option." : "",
-      this.control,
+      missing ? this.requiredMessage : "",
+      this.control ?? undefined,
     );
   }
 
@@ -233,7 +289,7 @@ export class DtRadioElement extends DigitaltableteurElement {
     input.value = this.selectedValue;
     input.className = this.size;
     input.checked = this.checked;
-    input.disabled = this.disabled || this.formDisabled;
+    input.disabled = this.effectiveDisabled;
     input.required = this.required;
 
     const error = this.error;
@@ -245,11 +301,10 @@ export class DtRadioElement extends DigitaltableteurElement {
     if (describedBy) input.setAttribute("aria-describedby", describedBy);
 
     input.addEventListener("change", () => {
-      if (input.checked) this.uncheckPeers();
       this.reflectingControlState = true;
       reflectBooleanAttribute(this, "checked", input.checked);
       this.reflectingControlState = false;
-      this.syncForm();
+      this.reconcileGroupState();
       this.dispatchEvent(
         new CustomEvent("checked-change", {
           detail: { checked: input.checked },
@@ -276,18 +331,37 @@ export class DtRadioElement extends DigitaltableteurElement {
     this.syncForm();
   }
 
-  private uncheckPeers(): void {
-    if (!this.name) return;
+  private groupMembers(name = this.name): DtRadioElement[] {
+    if (!name) return [this];
     const root = this.getRootNode();
-    if (!(root instanceof Document || root instanceof ShadowRoot)) return;
+    if (!(root instanceof Document || root instanceof ShadowRoot))
+      return [this];
     const form = this.internals?.form ?? this.closest("form");
+    const members: DtRadioElement[] = [];
     for (const peer of root.querySelectorAll("dt-radio")) {
-      if (peer === this || !(peer instanceof DtRadioElement)) continue;
+      if (!(peer instanceof DtRadioElement)) continue;
       const peerForm = peer.internals?.form ?? peer.closest("form");
-      if (peer.name === this.name && peerForm === form && peer.checked) {
+      if (peer.name === name && peerForm === form) members.push(peer);
+    }
+    return members.length > 0 ? members : [this];
+  }
+
+  private reconcileGroupState(extraMembers: DtRadioElement[] = []): void {
+    const members = new Set<DtRadioElement>([
+      ...extraMembers,
+      ...this.groupMembers(),
+      this,
+    ]);
+
+    if (this.checked) {
+      for (const peer of this.groupMembers()) {
+        if (peer === this || !peer.checked) continue;
         peer.checked = false;
       }
     }
+
+    for (const peer of this.groupMembers()) members.add(peer);
+    for (const radio of members) radio.syncForm();
   }
 
   private message(id: string, text: string, isError = false): HTMLElement {

@@ -6,6 +6,7 @@ import {
   reflectBooleanAttribute,
   stringAttribute,
 } from "./base";
+import { localizedText } from "./localization";
 import type { DtRadioElement, DtRadioSize } from "./radio";
 
 const ORIENTATIONS = ["vertical", "horizontal"] as const;
@@ -44,11 +45,11 @@ export class DtRadioGroupElement extends DigitaltableteurElement {
     "error",
     "helper-text",
     "required",
+    "required-message",
   ];
 
   private readonly generatedName = `dt-radio-group-${++radioGroupCounter}`;
   private readonly internals = attachFormInternals(this);
-  private readonly intrinsicDisabled = new WeakMap<DtRadioElement, boolean>();
   private assignedOptions: DtRadioOption[] | null = null;
   private liveValue: string | null = null;
   private valueDirty = false;
@@ -155,6 +156,19 @@ export class DtRadioGroupElement extends DigitaltableteurElement {
   set required(value: boolean) {
     reflectBooleanAttribute(this, "required", value);
   }
+  get requiredMessage(): string {
+    return (
+      stringAttribute(this, "required-message") ||
+      localizedText(this, {
+        en: "Please select an option.",
+        fi: "Valitse vaihtoehto.",
+        sv: "Välj ett alternativ.",
+      })
+    );
+  }
+  set requiredMessage(value: string) {
+    reflectAttribute(this, "required-message", value || null);
+  }
   get error(): string {
     return stringAttribute(this, "error");
   }
@@ -237,29 +251,32 @@ export class DtRadioGroupElement extends DigitaltableteurElement {
   };
 
   private syncControls(): void {
+    const inheritedDisabled = this.disabled || this.formDisabled;
     for (const radio of this.controls) {
-      if (!this.intrinsicDisabled.has(radio)) {
-        this.intrinsicDisabled.set(radio, radio.disabled);
-      }
       const checked = radio.value === this.value;
-      const disabled =
-        this.disabled ||
-        this.formDisabled ||
-        this.intrinsicDisabled.get(radio) === true;
       if (radio.name !== this.name) radio.name = this.name;
       if (radio.size !== this.size) radio.size = this.size;
       if (radio.checked !== checked) radio.checked = checked;
-      if (radio.disabled !== disabled) radio.disabled = disabled;
+      if (radio.inheritedDisabled !== inheritedDisabled) {
+        radio.inheritedDisabled = inheritedDisabled;
+      }
     }
   }
 
   private syncForm(): void {
-    this.internals?.setFormValue(this.value || null);
-    const missing = this.required && !this.value;
+    const selected = this.controls.find(
+      (radio) =>
+        radio.value === this.value &&
+        radio.checked &&
+        !radio.disabled &&
+        !radio.inheritedDisabled,
+    );
+    const missing = this.required && !selected;
     const error = this.error;
+    this.internals?.setFormValue(selected?.value ?? null);
     this.internals?.setValidity(
       missing ? { valueMissing: true } : error ? { customError: true } : {},
-      error || (missing ? "Please select an option." : ""),
+      missing ? this.requiredMessage : error || "",
       this,
     );
   }
@@ -288,7 +305,6 @@ export class DtRadioGroupElement extends DigitaltableteurElement {
         radio.label = option.label;
         radio.value = option.value;
         radio.disabled = option.disabled === true;
-        this.intrinsicDisabled.set(radio, option.disabled === true);
         optionContainer.append(radio);
       }
     }

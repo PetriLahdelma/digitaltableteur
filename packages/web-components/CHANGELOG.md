@@ -15,6 +15,12 @@
   integrity, and generated contract drift.
 - Expands applicable native stories to match their canonical React component
   surfaces.
+- Hardens reconnect, focus, form-value, disabled-option, and Shadow DOM ARIA
+  behavior across the native form, navigation, content, and layout elements.
+- Adds framework-independent EN/FI/SV fallback copy with host overrides for
+  built-in validation, clear-control, required-marker, and external-link text.
+- Renders all four required stories per native component in the browser DoD,
+  rather than validating only each component's default story.
 
 Verified by `check:web-components:dod`, `check:package-release-notes`,
 `check:package-tarballs`, and `check:npm-consumer-install`.

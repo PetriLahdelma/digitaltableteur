@@ -329,8 +329,8 @@ function renderCustomElementsManifest() {
                 }
               : {}),
             attributes: element.props.map((prop) => ({
-              name: dashed(prop.name),
-              fieldName: prop.name,
+              name: prop.attributeName ?? dashed(prop.name),
+              fieldName: prop.fieldName ?? prop.name,
               description: prop.description || undefined,
               type: { text: prop.type },
             })),

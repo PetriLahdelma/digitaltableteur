@@ -5,6 +5,7 @@ import {
   reflectAttribute,
   stringAttribute,
 } from "./base";
+import { localizedText, resolveElementLocale } from "./localization";
 
 const SIZES = ["sm", "md", "lg", "inherit"] as const;
 const UNDERLINES = ["always", "hover", "none"] as const;
@@ -96,6 +97,11 @@ export class DtLinkElement extends DigitaltableteurElement {
     "referrerpolicy",
     "aria-current",
     "aria-label",
+    "external-label",
+    "external-label-en",
+    "external-label-fi",
+    "external-label-sv",
+    "lang",
   ];
 
   connectedCallback(): void {
@@ -160,6 +166,44 @@ export class DtLinkElement extends DigitaltableteurElement {
   set referrerPolicy(value: string) {
     reflectAttribute(this, "referrerpolicy", value || null);
   }
+  get externalLabel(): string {
+    return stringAttribute(this, "external-label");
+  }
+  set externalLabel(value: string) {
+    reflectAttribute(this, "external-label", value || null);
+  }
+  get externalLabelEn(): string {
+    return stringAttribute(this, "external-label-en");
+  }
+  set externalLabelEn(value: string) {
+    reflectAttribute(this, "external-label-en", value || null);
+  }
+  get externalLabelFi(): string {
+    return stringAttribute(this, "external-label-fi");
+  }
+  set externalLabelFi(value: string) {
+    reflectAttribute(this, "external-label-fi", value || null);
+  }
+  get externalLabelSv(): string {
+    return stringAttribute(this, "external-label-sv");
+  }
+  set externalLabelSv(value: string) {
+    reflectAttribute(this, "external-label-sv", value || null);
+  }
+
+  private externalAnnouncement(): string {
+    if (this.externalLabel) return this.externalLabel;
+
+    const locale = resolveElementLocale(this);
+    const localizedOverride = this.getAttribute(`external-label-${locale}`);
+    if (localizedOverride) return localizedOverride;
+
+    return localizedText(this, {
+      en: "External link",
+      fi: "Ulkoinen linkki",
+      sv: "Extern länk",
+    });
+  }
 
   private render(): void {
     const origin = this.ownerDocument.defaultView?.location.origin ?? null;
@@ -195,7 +239,7 @@ export class DtLinkElement extends DigitaltableteurElement {
       wrapper.setAttribute("part", "external-icon");
       const icon = this.ownerDocument.createElement("dt-icon");
       icon.setAttribute("name", "arrow-square-out");
-      icon.setAttribute("aria-label", "External link");
+      icon.setAttribute("aria-label", this.externalAnnouncement());
       wrapper.append(icon);
       anchor.append(wrapper);
     }

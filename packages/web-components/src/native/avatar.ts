@@ -6,6 +6,7 @@ import {
   reflectBooleanAttribute,
   stringAttribute,
 } from "./base";
+import { localizedText, resolveElementLocale } from "./localization";
 
 const VARIANTS = ["image", "initials"] as const;
 const LOADINGS = ["lazy", "eager"] as const;
@@ -61,6 +62,7 @@ function cloneMenuItem(item: DtAvatarMenuItem): DtAvatarMenuItem {
 function safeHref(value: string): string {
   const href = value.trim();
   if (!href) return "#";
+  if (href.startsWith("//")) return "#";
   if (
     (href.startsWith("/") && !href.startsWith("//")) ||
     href.startsWith("./") ||
@@ -94,6 +96,7 @@ export class DtAvatarElement extends DigitaltableteurElement {
     "variant",
     "menu-items",
     "menu-label",
+    "lang",
   ];
 
   private assignedMenuItems: DtAvatarMenuItem[] | null = null;
@@ -113,6 +116,7 @@ export class DtAvatarElement extends DigitaltableteurElement {
   }
 
   disconnectedCallback(): void {
+    this.menuOpen = false;
     this.detachMenuListeners();
     this.restoreSlottedMenuItems();
     super.disconnectedCallback();
@@ -252,7 +256,18 @@ export class DtAvatarElement extends DigitaltableteurElement {
   }
 
   private triggerLabel(): string {
-    return this.menuLabel || (this.name ? `${this.name} menu` : "Avatar menu");
+    if (this.menuLabel) return this.menuLabel;
+    if (this.name) {
+      const locale = resolveElementLocale(this);
+      return locale === "en"
+        ? `${this.name} menu`
+        : `${this.name}, ${locale === "fi" ? "valikko" : "meny"}`;
+    }
+    return localizedText(this, {
+      en: "Avatar menu",
+      fi: "Avatar-valikko",
+      sv: "Avatarmeny",
+    });
   }
 
   private detachMenuListeners(): void {
@@ -303,6 +318,7 @@ export class DtAvatarElement extends DigitaltableteurElement {
     if (this.menuOpen) this.attachMenuListeners();
     else this.detachMenuListeners();
     this.render();
+    if (this.menuOpen) queueMicrotask(() => this.focusMenuItem(0));
   };
 
   private readonly handleTriggerKeydown = (event: KeyboardEvent): void => {
@@ -459,7 +475,9 @@ export class DtAvatarElement extends DigitaltableteurElement {
       image.className = "visual";
       image.setAttribute("part", "image");
       image.src = this.imageUrl;
-      image.alt = this.name || "Avatar";
+      image.alt =
+        this.name ||
+        localizedText(this, { en: "Avatar", fi: "Avatar", sv: "Avatar" });
       image.loading = this.loading;
       image.decoding = this.decoding;
       image.setAttribute("loading", this.loading);

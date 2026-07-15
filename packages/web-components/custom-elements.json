@@ -451,14 +451,14 @@
               }
             },
             {
-              "name": "href-lang",
+              "name": "hreflang",
               "fieldName": "hrefLang",
               "type": {
                 "text": "string"
               }
             },
             {
-              "name": "referrer-policy",
+              "name": "referrerpolicy",
               "fieldName": "referrerPolicy",
               "type": {
                 "text": "string"
@@ -474,6 +474,38 @@
             {
               "name": "aria-label",
               "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "external-label",
+              "fieldName": "externalLabel",
+              "description": "Override the external-link announcement for every locale.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "external-label-en",
+              "fieldName": "externalLabelEn",
+              "description": "English external-link announcement override.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "external-label-fi",
+              "fieldName": "externalLabelFi",
+              "description": "Finnish external-link announcement override.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "external-label-sv",
+              "fieldName": "externalLabelSv",
+              "description": "Swedish external-link announcement override.",
               "type": {
                 "text": "string"
               }
@@ -1557,6 +1589,14 @@
               }
             },
             {
+              "name": "required-text",
+              "fieldName": "requiredText",
+              "description": "Override the localized screen-reader text for the required marker.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
               "name": "title",
               "fieldName": "title",
               "type": {
@@ -1767,6 +1807,14 @@
             {
               "name": "name",
               "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "clear-label-prefix",
+              "fieldName": "clearLabelPrefix",
+              "description": "Override the localized clear-button accessible-label prefix.",
               "type": {
                 "text": "string"
               }
@@ -1985,6 +2033,14 @@
               "type": {
                 "text": "string"
               }
+            },
+            {
+              "name": "required-message",
+              "fieldName": "requiredMessage",
+              "description": "Override the localized required-state validation message.",
+              "type": {
+                "text": "string"
+              }
             }
           ],
           "events": [
@@ -2152,6 +2208,14 @@
               "type": {
                 "text": "boolean"
               }
+            },
+            {
+              "name": "required-message",
+              "fieldName": "requiredMessage",
+              "description": "Override the localized required-state validation message.",
+              "type": {
+                "text": "string"
+              }
             }
           ],
           "events": [
@@ -2264,6 +2328,14 @@
               "type": {
                 "text": "boolean"
               }
+            },
+            {
+              "name": "required-message",
+              "fieldName": "requiredMessage",
+              "description": "Override the localized required-state validation message.",
+              "type": {
+                "text": "string"
+              }
             }
           ],
           "events": [
@@ -2366,6 +2438,14 @@
             {
               "name": "name",
               "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required-text",
+              "fieldName": "requiredText",
+              "description": "Override the localized screen-reader text for the required marker.",
               "type": {
                 "text": "string"
               }

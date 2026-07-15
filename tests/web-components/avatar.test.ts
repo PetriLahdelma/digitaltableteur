@@ -67,6 +67,11 @@ describe("native avatar components", () => {
     expect(avatar.shadowRoot?.querySelector("a")?.getAttribute("href")).toBe(
       "#",
     );
+
+    avatar.destinationUrl = "//attacker.example/profile";
+    expect(avatar.shadowRoot?.querySelector("a")?.getAttribute("href")).toBe(
+      "#",
+    );
   });
 
   it("collapses avatars past max into a +N overflow bubble", () => {
@@ -146,6 +151,47 @@ describe("native avatar components", () => {
         ?.querySelector(".trigger")
         ?.getAttribute("aria-expanded"),
     ).toBe("false");
+  });
+
+  it("focuses the first menu item after click activation and resets on reconnect", async () => {
+    const avatar = document.createElement("dt-avatar") as DtAvatarElement;
+    avatar.menuItems = [{ id: "profile", label: "Profile" }];
+    document.body.append(avatar);
+
+    avatar.shadowRoot?.querySelector<HTMLButtonElement>(".trigger")?.click();
+    await Promise.resolve();
+    expect(avatar.shadowRoot?.activeElement).toBe(
+      avatar.shadowRoot?.querySelector(".item"),
+    );
+
+    avatar.remove();
+    document.body.append(avatar);
+    expect(
+      avatar.shadowRoot
+        ?.querySelector(".trigger")
+        ?.getAttribute("aria-expanded"),
+    ).toBe("false");
+  });
+
+  it("localizes built-in avatar labels from the host language", () => {
+    const avatar = document.createElement("dt-avatar") as DtAvatarElement;
+    avatar.lang = "fi";
+    avatar.menuItems = [{ label: "Profiili" }];
+
+    const group = document.createElement(
+      "dt-avatar-group",
+    ) as DtAvatarGroupElement;
+    group.lang = "sv";
+    group.max = 1;
+    group.append(avatar, document.createElement("dt-avatar"));
+    document.body.append(group);
+
+    expect(
+      avatar.shadowRoot?.querySelector(".trigger")?.getAttribute("aria-label"),
+    ).toBe("Avatar-valikko");
+    expect(group.shadowRoot?.querySelector(".srOnly")?.textContent).toBe(
+      "1 till",
+    );
   });
 
   it("gives slotted menu controls complete focus and selection behavior", async () => {

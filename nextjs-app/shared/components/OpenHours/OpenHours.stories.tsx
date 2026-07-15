@@ -76,7 +76,7 @@ const meta: Meta<typeof OpenHours> = {
   component: OpenHours,
   tags: ["beta", "!autodocs"],
   // Required AT snapshots must not depend on the CI runner's wall clock.
-  args: { date: new Date("2025-11-03T10:30:00") },
+  args: { date: new Date("2025-11-03T10:30:00Z") },
 };
 export default meta;
 

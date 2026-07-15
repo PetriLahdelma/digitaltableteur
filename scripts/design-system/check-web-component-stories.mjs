@@ -86,6 +86,12 @@ const expectedComponents = nativeElements.map((element) => {
       .filter((entry) => entry.type === "story")
       .map((entry) => [entry.name, entry.id]),
   );
+  const requiredStoryIds = [
+    ...requiredStories
+      .filter((name) => name !== "Default")
+      .map((name) => ({ name, id: nativeStoryIds[name] })),
+    { name: "Default", id: defaultStory.id },
+  ];
   if (reactStories.length === 0) {
     throw new Error(
       `${title} has no canonical React stories at ${canonicalTitle}`,
@@ -137,6 +143,7 @@ const expectedComponents = nativeElements.map((element) => {
     docsId: docs.id,
     tagName: element.tagName,
     nativeStoryIds,
+    requiredStoryIds,
     parity: parity.parity,
     semanticListStoryIds: semanticListStories
       ? {
@@ -169,36 +176,47 @@ captureErrors(page);
 
 try {
   for (const story of expectedComponents) {
-    await page.goto(
-      `${baseUrl}/iframe.html?id=${story.defaultStoryId}&viewMode=story`,
-      { waitUntil: "domcontentloaded", timeout: 60_000 },
-    );
+    for (const requiredStory of story.requiredStoryIds) {
+      await page.goto(
+        `${baseUrl}/iframe.html?id=${requiredStory.id}&viewMode=story`,
+        { waitUntil: "domcontentloaded", timeout: 60_000 },
+      );
+      const requiredElement = page.locator(story.tagName).first();
+      await requiredElement.waitFor({ state: "attached", timeout: 30_000 });
+      const result = await requiredElement.evaluate(
+        (node, tagName) => ({
+          defined: Boolean(customElements.get(tagName)),
+          hasShadowRoot: Boolean(node.shadowRoot),
+          bounds: node.getBoundingClientRect().toJSON(),
+          label:
+            node.getAttribute("label")?.trim() ||
+            node.shadowRoot
+              ?.querySelector('[part="label"], .label')
+              ?.textContent?.trim() ||
+            node.textContent?.trim() ||
+            "",
+        }),
+        story.tagName,
+      );
+      if (!result.defined || !result.hasShadowRoot) {
+        throw new Error(
+          `${requiredStory.id} did not render a registered shadow-root ${story.tagName}`,
+        );
+      }
+      if (
+        story.tagName === "dt-status-dot" &&
+        (result.bounds.width <= 0 ||
+          result.bounds.height <= 0 ||
+          result.label.length === 0)
+      ) {
+        throw new Error(
+          `${requiredStory.id} must render a visible, labelled status dot`,
+        );
+      }
+    }
+    // Default is deliberately checked last above so the component-specific
+    // browser assertions can continue on the same rendered canvas.
     const element = page.locator(story.tagName).first();
-    await element.waitFor({ state: "attached", timeout: 30_000 });
-    const result = await element.evaluate(
-      (node, tagName) => ({
-        defined: Boolean(customElements.get(tagName)),
-        hasShadowRoot: Boolean(node.shadowRoot),
-        bounds: node.getBoundingClientRect().toJSON(),
-        text: node.textContent?.trim() ?? "",
-      }),
-      story.tagName,
-    );
-    if (!result.defined || !result.hasShadowRoot) {
-      throw new Error(
-        `${story.defaultStoryId} did not render a registered shadow-root ${story.tagName}`,
-      );
-    }
-    if (
-      story.tagName === "dt-status-dot" &&
-      (result.bounds.width <= 0 ||
-        result.bounds.height <= 0 ||
-        result.text.length === 0)
-    ) {
-      throw new Error(
-        `${story.defaultStoryId} must render a visible, labelled status dot`,
-      );
-    }
     if (story.tagName === "dt-link") {
       const underline = await element.evaluate((node) => {
         const anchor = node.shadowRoot?.querySelector("a");
@@ -234,11 +252,15 @@ try {
         document.body.append(form);
         const nativeControl =
           control.shadowRoot?.querySelector("input, textarea");
-        let eventDetail = null;
+        let eventResult = null;
         control.addEventListener(
           tagName === "dt-checkbox" ? "checked-change" : "value-change",
           (event) => {
-            eventDetail = event.detail;
+            eventResult = {
+              detail: event.detail,
+              bubbles: event.bubbles,
+              composed: event.composed,
+            };
           },
           { once: true },
         );
@@ -262,7 +284,7 @@ try {
         const label = control.shadowRoot?.querySelector("label");
         const result = {
           formValue: new FormData(form).get("field"),
-          eventDetail,
+          eventResult,
           liveValue:
             currentControl instanceof HTMLInputElement ||
             currentControl instanceof HTMLTextAreaElement
@@ -284,8 +306,12 @@ try {
           : { value: "browser value" };
       if (
         formResult.formValue !== expectedValue ||
-        JSON.stringify(formResult.eventDetail) !==
-          JSON.stringify(expectedDetail) ||
+        JSON.stringify(formResult.eventResult) !==
+          JSON.stringify({
+            detail: expectedDetail,
+            bubbles: true,
+            composed: true,
+          }) ||
         formResult.liveValue !==
           (story.tagName === "dt-checkbox" ? true : "browser value") ||
         formResult.labelFor !== formResult.controlId
@@ -401,9 +427,13 @@ try {
         second.setAttribute("name", "discipline");
         second.setAttribute("value", "engineering");
         second.setAttribute("label", "Engineering");
-        let detail = null;
+        let eventResult = null;
         second.addEventListener("checked-change", (event) => {
-          detail = event.detail;
+          eventResult = {
+            detail: event.detail,
+            bubbles: event.bubbles,
+            composed: event.composed,
+          };
         });
         form.append(first, second);
         document.body.append(form);
@@ -416,7 +446,7 @@ try {
           firstChecked: first.hasAttribute("checked"),
           secondChecked: second.hasAttribute("checked"),
           focussed: second.shadowRoot?.activeElement === input,
-          detail,
+          eventResult,
         };
         form.remove();
         return result;
@@ -426,7 +456,12 @@ try {
         radioResult.firstChecked ||
         !radioResult.secondChecked ||
         !radioResult.focussed ||
-        JSON.stringify(radioResult.detail) !== JSON.stringify({ checked: true })
+        JSON.stringify(radioResult.eventResult) !==
+          JSON.stringify({
+            detail: { checked: true },
+            bubbles: true,
+            composed: true,
+          })
       ) {
         throw new Error(
           `dt-radio failed exclusivity, form, focus, or event DoD: ${JSON.stringify(radioResult)}`,
@@ -596,11 +631,15 @@ try {
     if (story.tagName === "dt-switch") {
       const switchResult = await element.evaluate((node) => {
         const button = node.shadowRoot?.querySelector("button");
-        let detail = null;
+        let eventResult = null;
         node.addEventListener(
           "checked-change",
           (event) => {
-            detail = event.detail;
+            eventResult = {
+              detail: event.detail,
+              bubbles: event.bubbles,
+              composed: event.composed,
+            };
           },
           { once: true },
         );
@@ -610,13 +649,18 @@ try {
           checked: node.shadowRoot
             ?.querySelector("button")
             ?.getAttribute("aria-checked"),
-          detail,
+          eventResult,
         };
       });
       if (
         switchResult.role !== "switch" ||
         switchResult.checked !== "true" ||
-        !switchResult.detail
+        JSON.stringify(switchResult.eventResult) !==
+          JSON.stringify({
+            detail: { checked: true },
+            bubbles: true,
+            composed: true,
+          })
       ) {
         throw new Error(
           `dt-switch failed role/state/event DoD: ${JSON.stringify(switchResult)}`,

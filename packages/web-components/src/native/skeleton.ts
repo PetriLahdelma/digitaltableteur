@@ -151,7 +151,9 @@ function animateAttribute(element: Element): boolean {
 }
 
 function linesAttribute(element: Element): number {
-  const value = Number(element.getAttribute("lines"));
+  const rawValue = element.getAttribute("lines");
+  if (rawValue == null || rawValue.trim() === "") return 3;
+  const value = Number(rawValue);
   if (!Number.isFinite(value)) return 3;
   return Math.max(0, Math.trunc(value));
 }

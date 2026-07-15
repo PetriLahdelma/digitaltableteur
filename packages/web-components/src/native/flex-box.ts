@@ -30,12 +30,6 @@ const ALIGN_CONTENTS = [
   "space-between",
   "space-around",
 ] as const;
-const FORWARDED_ATTRIBUTES = [
-  "role",
-  "aria-label",
-  "aria-labelledby",
-  "aria-describedby",
-] as const;
 
 export type DtFlexBoxDirection = (typeof DIRECTIONS)[number];
 export type DtFlexBoxWrap = (typeof WRAPS)[number];
@@ -91,7 +85,6 @@ export class DtFlexBoxElement extends DigitaltableteurElement {
     "gap",
     "row-gap",
     "column-gap",
-    ...FORWARDED_ATTRIBUTES,
   ];
 
   connectedCallback(): void {
@@ -195,11 +188,6 @@ export class DtFlexBoxElement extends DigitaltableteurElement {
     if (gap !== undefined) root.style.gap = gap;
     if (rowGap !== undefined) root.style.rowGap = rowGap;
     if (columnGap !== undefined) root.style.columnGap = columnGap;
-
-    for (const attribute of FORWARDED_ATTRIBUTES) {
-      const value = this.getAttribute(attribute);
-      if (value !== null) root.setAttribute(attribute, value);
-    }
 
     root.append(this.ownerDocument.createElement("slot"));
     this.replaceShadow(styles, root);

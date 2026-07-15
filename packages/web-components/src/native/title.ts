@@ -39,11 +39,11 @@ const styles = `
   h1.title { line-height: var(--line-height-tight); }
   h2.title, h3.title { line-height: var(--line-height-snug); }
   h4.title, h5.title, h6.title, div.title { line-height: var(--line-height-normal); }
-  .lineHeightTight { line-height: var(--line-height-tight); }
-  .lineHeightSnug { line-height: var(--line-height-snug); }
-  .lineHeightNormal { line-height: var(--line-height-normal); }
-  .lineHeightRelaxed { line-height: var(--line-height-relaxed); }
-  .lineHeightLoose { line-height: var(--line-height-loose); }
+  .title.lineHeightTight { line-height: var(--line-height-tight); }
+  .title.lineHeightSnug { line-height: var(--line-height-snug); }
+  .title.lineHeightNormal { line-height: var(--line-height-normal); }
+  .title.lineHeightRelaxed { line-height: var(--line-height-relaxed); }
+  .title.lineHeightLoose { line-height: var(--line-height-loose); }
   @supports (text-wrap: balance) {
     .title { text-wrap: balance; }
   }

@@ -6,6 +6,7 @@ import {
   reflectAttribute,
   stringAttribute,
 } from "./base";
+import { localizedText } from "./localization";
 
 const SIZES = ["sm", "md", "lg"] as const;
 export type DtAvatarGroupSize = (typeof SIZES)[number];
@@ -32,7 +33,7 @@ const styles = `
 `;
 
 export class DtAvatarGroupElement extends DigitaltableteurElement {
-  static observedAttributes = ["aria-label", "max", "size"];
+  static observedAttributes = ["aria-label", "lang", "max", "size"];
 
   private managedChildren = new Set<HTMLElement>();
   private originalMargins = new Map<HTMLElement, OriginalMargin>();
@@ -171,7 +172,11 @@ export class DtAvatarGroupElement extends DigitaltableteurElement {
 
       const srOnly = this.ownerDocument.createElement("span");
       srOnly.className = "srOnly";
-      srOnly.textContent = `${overflow} more`;
+      srOnly.textContent = localizedText(this, {
+        en: `${overflow} more`,
+        fi: `${overflow} lisää`,
+        sv: `${overflow} till`,
+      });
 
       bubble.append(visible, srOnly);
       group.append(bubble);
