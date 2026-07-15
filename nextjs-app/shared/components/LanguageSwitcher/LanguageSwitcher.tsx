@@ -116,6 +116,32 @@ export function LanguageSwitcher({
       role="group"
       aria-label={t("navMenuLanguages", "Language")}
     >
+      {/* Trigger first in DOM so that opening the tray and pressing Tab walks
+          FORWARD into the revealed options. The tray is position:absolute, so
+          its DOM order is decoupled from the visual left-fan — keeping it
+          after the trigger fixes the focus order without moving the fan. */}
+      <button
+        type="button"
+        className={cn(
+          styles.trigger,
+          styles.option,
+          buttonClassName,
+          activeButtonClassName,
+          isOpen && openTriggerClassName,
+        )}
+        aria-expanded={isOpen}
+        aria-controls={optionsId}
+        aria-label={
+          isOpen
+            ? t("languageSwitcherCollapse", "Hide language options")
+            : `${current.ariaLabel}. ${t("languageSwitcherExpand", "Show language options")}`
+        }
+        aria-current="true"
+        onClick={() => setIsOpen((open) => !open)}
+      >
+        {current.label}
+      </button>
+
       <div
         className={styles.optionsTrayAnchor}
         data-open={isOpen ? "true" : "false"}
@@ -161,28 +187,6 @@ export function LanguageSwitcher({
           )}
         </AnimatePresence>
       </div>
-
-      <button
-        type="button"
-        className={cn(
-          styles.trigger,
-          styles.option,
-          buttonClassName,
-          activeButtonClassName,
-          isOpen && openTriggerClassName,
-        )}
-        aria-expanded={isOpen}
-        aria-controls={optionsId}
-        aria-label={
-          isOpen
-            ? t("languageSwitcherCollapse", "Hide language options")
-            : `${current.ariaLabel}. ${t("languageSwitcherExpand", "Show language options")}`
-        }
-        aria-current="true"
-        onClick={() => setIsOpen((open) => !open)}
-      >
-        {current.label}
-      </button>
       <span id={optionsId} className={styles.srOnly}>
         {isOpen
           ? t("languageSwitcherCollapse", "Hide language options")
