@@ -75,7 +75,8 @@ const meta: Meta<typeof OpenHours> = {
   title: "Site/OpenHours",
   component: OpenHours,
   tags: ["beta", "!autodocs"],
-  args: {},
+  // Required AT snapshots must not depend on the CI runner's wall clock.
+  args: { date: new Date("2025-11-03T10:30:00") },
 };
 export default meta;
 
@@ -104,7 +105,6 @@ export const Z_OpenHoursCompliance: Story = {
 
 export const Default: Story = {
   tags: ["beta-matrix"],
-  args: {},
 };
 
 export const Compact: Story = { args: { compact: true } };
