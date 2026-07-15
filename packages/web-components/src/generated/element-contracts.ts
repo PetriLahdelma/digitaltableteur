@@ -231,6 +231,29 @@ export type DtEmptyStateElementContract = HTMLElement & {
   size?: string;
 };
 
+export type DtLabelElementContract = HTMLElement & {
+  content?: string;
+  for?: string;
+  tooltipText?: string;
+  required?: boolean;
+  disabled?: boolean;
+  title?: string;
+};
+
+export type DtHelperTextElementContract = HTMLElement & {
+  content?: string;
+  state?: string;
+  id?: string;
+};
+
+export type DtFormFieldElementContract = HTMLElement & {
+  legend?: string;
+  groupDescription?: string;
+  error?: string;
+  required?: boolean;
+  disabled?: boolean;
+};
+
 export type DtTextInputElementContract = HTMLElement & {
   label?: string;
   type?: string;
@@ -277,6 +300,61 @@ export type DtCheckboxElementContract = HTMLElement & {
   value?: string;
 };
 
+export type DtCheckboxGroupElementContract = HTMLElement & {
+  label?: string;
+  options?: { value: string; label: string; disabled?: boolean }[];
+  showMasterCheckbox?: boolean;
+  masterLabel?: string;
+  defaultSelected?: string[];
+  name?: string;
+};
+
+export type DtRadioElementContract = HTMLElement & {
+  label?: string;
+  value?: string;
+  name?: string;
+  checked?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  size?: string;
+  showLabel?: boolean;
+  required?: boolean;
+};
+
+export type DtRadioGroupElementContract = HTMLElement & {
+  name?: string;
+  legend?: string;
+  options?: { value: string; label: string; disabled?: boolean }[];
+  value?: string;
+  defaultValue?: string;
+  orientation?: string;
+  size?: string;
+  disabled?: boolean;
+  error?: string;
+  helperText?: string;
+  required?: boolean;
+};
+
+export type DtSelectElementContract = HTMLElement & {
+  label?: string;
+  options?: { value: string; label: string; disabled?: boolean; selected?: boolean }[];
+  helperText?: string;
+  error?: string;
+  size?: string;
+  value?: string;
+  defaultValue?: string;
+  disabled?: boolean;
+  required?: boolean;
+  name?: string;
+};
+
+export type DtSelectOptionElementContract = HTMLElement & {
+  value?: string;
+  label?: string;
+  disabled?: boolean;
+  selected?: boolean;
+};
+
 export type DtSwitchElementContract = HTMLElement & {
   checked?: boolean;
   defaultChecked?: boolean;
@@ -315,9 +393,17 @@ export const elementMigrationManifest = [
   { tagName: "dt-spacer", sourceComponent: "Spacer", backend: "native" },
   { tagName: "dt-aspect-ratio", sourceComponent: "AspectRatio", backend: "native" },
   { tagName: "dt-empty-state", sourceComponent: "EmptyState", backend: "native" },
+  { tagName: "dt-label", sourceComponent: "Label", backend: "native" },
+  { tagName: "dt-helper-text", sourceComponent: "HelperText", backend: "native" },
+  { tagName: "dt-form-field", sourceComponent: "FormField", backend: "native" },
   { tagName: "dt-text-input", sourceComponent: "TextInput", backend: "native" },
   { tagName: "dt-text-area", sourceComponent: "TextArea", backend: "native" },
   { tagName: "dt-checkbox", sourceComponent: "Checkbox", backend: "native" },
+  { tagName: "dt-checkbox-group", sourceComponent: "CheckboxGroup", backend: "native" },
+  { tagName: "dt-radio", sourceComponent: "Radio", backend: "native" },
+  { tagName: "dt-radio-group", sourceComponent: "RadioGroup", backend: "native" },
+  { tagName: "dt-select", sourceComponent: "Select", backend: "native" },
+  { tagName: "dt-select-option", sourceComponent: "SelectOption", backend: "native" },
   { tagName: "dt-switch", sourceComponent: "Switch", backend: "native" },
 ] as const;
 
@@ -348,9 +434,17 @@ declare global {
     "dt-spacer": DtSpacerElementContract;
     "dt-aspect-ratio": DtAspectRatioElementContract;
     "dt-empty-state": DtEmptyStateElementContract;
+    "dt-label": DtLabelElementContract;
+    "dt-helper-text": DtHelperTextElementContract;
+    "dt-form-field": DtFormFieldElementContract;
     "dt-text-input": DtTextInputElementContract;
     "dt-text-area": DtTextAreaElementContract;
     "dt-checkbox": DtCheckboxElementContract;
+    "dt-checkbox-group": DtCheckboxGroupElementContract;
+    "dt-radio": DtRadioElementContract;
+    "dt-radio-group": DtRadioGroupElementContract;
+    "dt-select": DtSelectElementContract;
+    "dt-select-option": DtSelectOptionElementContract;
     "dt-switch": DtSwitchElementContract;
   }
 }

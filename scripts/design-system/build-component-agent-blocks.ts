@@ -256,21 +256,34 @@ function canonicalExamplesFromStories(storiesPath: string): string[] {
 
 function main() {
   const tsxPaths: string[] = [];
-  const meta: Array<{ name: string; dir: string; contractPath: string; specPath: string }> = [];
+  const meta: Array<{
+    name: string;
+    dir: string;
+    importName: string;
+    contractPath: string;
+    specPath: string;
+  }> = [];
 
   for (const base of roots) {
-    for (const name of readdirSync(base)) {
-      const dir = join(base, name);
-      const contractPath = join(dir, `${name}.contract.json`);
-      const tsxPath = join(dir, `${name}.tsx`);
-      if (!existsSync(contractPath) || !existsSync(tsxPath)) continue;
-      tsxPaths.push(tsxPath);
-      meta.push({
-        name,
-        dir,
-        contractPath,
-        specPath: join(dir, `${name}.spec.md`),
-      });
+    for (const directory of readdirSync(base, { withFileTypes: true })) {
+      if (!directory.isDirectory()) continue;
+      const importName = directory.name;
+      const dir = join(base, importName);
+      for (const file of readdirSync(dir)) {
+        if (!file.endsWith(".contract.json")) continue;
+        const name = file.slice(0, -".contract.json".length);
+        const contractPath = join(dir, file);
+        const tsxPath = join(dir, `${name}.tsx`);
+        if (!existsSync(tsxPath)) continue;
+        tsxPaths.push(tsxPath);
+        meta.push({
+          name,
+          dir,
+          importName,
+          contractPath,
+          specPath: join(dir, `${name}.spec.md`),
+        });
+      }
     }
   }
 
@@ -303,7 +316,7 @@ function main() {
     };
 
     blocks[entry.name] = {
-      preferredImport: `@dt/${entry.name}`,
+      preferredImport: `@dt/${entry.importName}`,
       intent: intent || "",
       props,
       variants,

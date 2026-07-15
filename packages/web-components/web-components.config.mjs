@@ -636,6 +636,78 @@ export default [
     events: [],
   },
   {
+    tagName: "dt-label",
+    sourceComponent: "Label",
+    contract: "Label",
+    defaultBackend: "native",
+    nativeClassName: "DtLabelElement",
+    description: "Native form label with required and disabled presentation.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Label Compliance",
+          reason:
+            "React-only compliance fixture; native semantics are enforced by package and Storybook browser checks.",
+        },
+      ],
+    }),
+    props: [
+      nativeProp("content", "string", "Fallback text for the default slot."),
+      {
+        ...stringProp("for", "htmlFor"),
+        description: "ID of the labelled control.",
+      },
+      stringProp("tooltipText"),
+      booleanProp("required"),
+      booleanProp("disabled"),
+      nativeProp("title", "string"),
+    ],
+    slots: [slot("", "Visible label content.")],
+    events: [],
+  },
+  {
+    tagName: "dt-helper-text",
+    sourceComponent: "HelperText",
+    contract: "HelperText",
+    defaultBackend: "native",
+    nativeClassName: "DtHelperTextElement",
+    description: "Supporting or validation text with semantic state feedback.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("content", "children", "Fallback text for the default slot."),
+      stringProp("state"),
+      nativeProp("id", "string"),
+    ],
+    slots: [slot("", "Supporting message content.")],
+    events: [],
+  },
+  {
+    tagName: "dt-form-field",
+    sourceComponent: "FormField",
+    contract: "FormField",
+    defaultBackend: "native",
+    nativeClassName: "DtFormFieldElement",
+    description: "Accessible fieldset wrapper for grouped form controls.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("legend"),
+      stringProp("groupDescription"),
+      stringProp("error"),
+      booleanProp("required"),
+      booleanProp("disabled"),
+    ],
+    slots: [
+      slot("", "Grouped form controls."),
+      slot("legend", "Rich legend content overriding the legend attribute."),
+      slot(
+        "group-description",
+        "Rich group description overriding the group-description attribute.",
+      ),
+      slot("error", "Rich error content overriding the error attribute."),
+    ],
+    events: [],
+  },
+  {
     tagName: "dt-text-input",
     sourceComponent: "TextInput",
     contract: "TextInput",
@@ -741,6 +813,176 @@ export default [
         description: "Dispatched with detail.checked after user activation.",
       },
     ],
+  },
+  {
+    tagName: "dt-checkbox-group",
+    sourceComponent: "CheckboxGroup",
+    contract: "CheckboxGroup",
+    defaultBackend: "native",
+    nativeClassName: "DtCheckboxGroupElement",
+    description:
+      "Accessible checkbox fieldset with optional select-all behavior.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Checkbox Group Compliance",
+          reason:
+            "React-only compliance fixture; native group behavior is enforced by web-component tests.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("label"),
+      {
+        ...stringProp("options"),
+        propertyType: "{ value: string; label: string; disabled?: boolean }[]",
+      },
+      booleanProp("showMasterCheckbox"),
+      stringProp("masterLabel"),
+      {
+        ...stringProp("defaultSelected"),
+        propertyType: "string[]",
+      },
+      nativeProp("name", "string"),
+    ],
+    slots: [slot("", "Declarative dt-checkbox children overriding options.")],
+    events: [
+      {
+        callbackProp: "onChange",
+        name: "selected-change",
+        description: "Dispatched with detail.selected after selection changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-radio",
+    sourceComponent: "Radio",
+    contract: "Radio",
+    defaultBackend: "native",
+    nativeClassName: "DtRadioElement",
+    description: "Form-associated native radio control with tokenized sizing.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("label"),
+      stringProp("value"),
+      stringProp("name"),
+      booleanProp("checked"),
+      booleanProp("defaultChecked"),
+      booleanProp("disabled"),
+      stringProp("size"),
+      booleanProp("showLabel"),
+      nativeProp("required", "boolean"),
+    ],
+    events: [
+      {
+        callbackProp: "onCheckedChange",
+        name: "checked-change",
+        description: "Dispatched with detail.checked after user activation.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-radio-group",
+    sourceComponent: "RadioGroup",
+    contract: "RadioGroup",
+    defaultBackend: "native",
+    nativeClassName: "DtRadioGroupElement",
+    description:
+      "Form-associated radio fieldset with controlled and default selection modes.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("name"),
+      stringProp("legend"),
+      {
+        ...stringProp("options"),
+        propertyType: "{ value: string; label: string; disabled?: boolean }[]",
+      },
+      stringProp("value"),
+      stringProp("defaultValue"),
+      stringProp("orientation"),
+      stringProp("size"),
+      booleanProp("disabled"),
+      stringProp("error"),
+      stringProp("helperText"),
+      nativeProp("required", "boolean"),
+    ],
+    slots: [slot("", "Declarative dt-radio children overriding options.")],
+    events: [
+      {
+        callbackProp: "onValueChange",
+        name: "value-change",
+        description: "Dispatched with detail.value after selection changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-select",
+    sourceComponent: "Select",
+    contract: "Select",
+    defaultBackend: "native",
+    nativeClassName: "DtSelectElement",
+    description:
+      "Form-associated native select with declarative options and validation messages.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Select Compliance",
+          reason:
+            "React-only compliance fixture; native select behavior is enforced by package and browser checks.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("label"),
+      {
+        ...stringProp("options"),
+        propertyType:
+          "{ value: string; label: string; disabled?: boolean; selected?: boolean }[]",
+      },
+      stringProp("helperText"),
+      stringProp("error"),
+      stringProp("size"),
+      nativeProp("value", "string"),
+      nativeProp("defaultValue", "string"),
+      booleanProp("disabled"),
+      nativeProp("required", "boolean"),
+      nativeProp("name", "string"),
+    ],
+    slots: [
+      slot("", "Declarative dt-select-option children overriding options."),
+    ],
+    events: [
+      {
+        callbackProp: "onValueChange",
+        name: "value-change",
+        description:
+          "Dispatched with detail.value before the compatibility change event.",
+      },
+      {
+        callbackProp: "onChange",
+        name: "change",
+        description:
+          "Compatibility change event dispatched after value-change.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-select-option",
+    sourceComponent: "SelectOption",
+    contract: "SelectOption",
+    contractDirectory: "Select",
+    defaultBackend: "native",
+    nativeClassName: "DtSelectOptionElement",
+    description: "Declarative option data materialized by a parent dt-select.",
+    storyParity: storyParity(),
+    props: [
+      nativeProp("value", "string"),
+      nativeProp("label", "string"),
+      nativeProp("disabled", "boolean"),
+      nativeProp("selected", "boolean"),
+    ],
+    slots: [slot("", "Option label overriding the label attribute.")],
+    events: [],
   },
   {
     tagName: "dt-switch",

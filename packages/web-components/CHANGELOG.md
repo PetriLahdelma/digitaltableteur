@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Adds native Label, HelperText, FormField, Radio, RadioGroup, CheckboxGroup,
+  Select, and SelectOption elements with form participation, validation
+  semantics, declarative options, and canonical Storybook parity.
 - Adds native, form-associated TextInput, TextArea, and Checkbox elements plus
   an immediate-action Switch.
 - Adds an enforceable web-component definition-of-done gate covering React

@@ -18,6 +18,9 @@ import {
   DtIconButtonElement,
   DtLinkElement,
   DtListElement,
+  DtLabelElement,
+  DtHelperTextElement,
+  DtFormFieldElement,
   DtNavLinkElement,
   DtProgressElement,
   DtSkipLinkElement,
@@ -31,6 +34,11 @@ import {
   DtTextInputElement,
   DtTextAreaElement,
   DtCheckboxElement,
+  DtCheckboxGroupElement,
+  DtRadioElement,
+  DtRadioGroupElement,
+  DtSelectElement,
+  DtSelectOptionElement,
   DtSwitchElement,
 } from "../../packages/web-components/src/native";
 import {
@@ -65,9 +73,17 @@ const NATIVE_TAGS = [
   "dt-spacer",
   "dt-aspect-ratio",
   "dt-empty-state",
+  "dt-label",
+  "dt-helper-text",
+  "dt-form-field",
   "dt-text-input",
   "dt-text-area",
   "dt-checkbox",
+  "dt-checkbox-group",
+  "dt-radio",
+  "dt-radio-group",
+  "dt-select",
+  "dt-select-option",
   "dt-switch",
 ] as const;
 
@@ -110,9 +126,19 @@ describe("native registry", () => {
     expect(customElements.get("dt-spacer")).toBe(DtSpacerElement);
     expect(customElements.get("dt-aspect-ratio")).toBe(DtAspectRatioElement);
     expect(customElements.get("dt-empty-state")).toBe(DtEmptyStateElement);
+    expect(customElements.get("dt-label")).toBe(DtLabelElement);
+    expect(customElements.get("dt-helper-text")).toBe(DtHelperTextElement);
+    expect(customElements.get("dt-form-field")).toBe(DtFormFieldElement);
     expect(customElements.get("dt-text-input")).toBe(DtTextInputElement);
     expect(customElements.get("dt-text-area")).toBe(DtTextAreaElement);
     expect(customElements.get("dt-checkbox")).toBe(DtCheckboxElement);
+    expect(customElements.get("dt-checkbox-group")).toBe(
+      DtCheckboxGroupElement,
+    );
+    expect(customElements.get("dt-radio")).toBe(DtRadioElement);
+    expect(customElements.get("dt-radio-group")).toBe(DtRadioGroupElement);
+    expect(customElements.get("dt-select")).toBe(DtSelectElement);
+    expect(customElements.get("dt-select-option")).toBe(DtSelectOptionElement);
     expect(customElements.get("dt-switch")).toBe(DtSwitchElement);
   });
 

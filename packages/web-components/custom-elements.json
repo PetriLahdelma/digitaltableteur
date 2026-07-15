@@ -1508,6 +1508,173 @@
         },
         {
           "kind": "class",
+          "name": "DtLabelElement",
+          "description": "Native form label with required and disabled presentation.",
+          "customElement": true,
+          "tagName": "dt-label",
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible label content."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "for",
+              "fieldName": "for",
+              "description": "ID of the labelled control.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tooltip-text",
+              "fieldName": "tooltipText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "title",
+              "fieldName": "title",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Label",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtHelperTextElement",
+          "description": "Supporting or validation text with semantic state feedback.",
+          "customElement": true,
+          "tagName": "dt-helper-text",
+          "slots": [
+            {
+              "name": "",
+              "description": "Supporting message content."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Fallback text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "state",
+              "fieldName": "state",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "id",
+              "fieldName": "id",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "HelperText",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtFormFieldElement",
+          "description": "Accessible fieldset wrapper for grouped form controls.",
+          "customElement": true,
+          "tagName": "dt-form-field",
+          "slots": [
+            {
+              "name": "",
+              "description": "Grouped form controls."
+            },
+            {
+              "name": "legend",
+              "description": "Rich legend content overriding the legend attribute."
+            },
+            {
+              "name": "group-description",
+              "description": "Rich group description overriding the group-description attribute."
+            },
+            {
+              "name": "error",
+              "description": "Rich error content overriding the error attribute."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "legend",
+              "fieldName": "legend",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "group-description",
+              "fieldName": "groupDescription",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "FormField",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
           "name": "DtTextInputElement",
           "description": "Form-associated single-line field with native validation, label, and messages.",
           "customElement": true,
@@ -1830,6 +1997,443 @@
             }
           ],
           "dtSourceComponent": "Checkbox",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtCheckboxGroupElement",
+          "description": "Accessible checkbox fieldset with optional select-all behavior.",
+          "customElement": true,
+          "tagName": "dt-checkbox-group",
+          "members": [
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "{ value: string; label: string; disabled?: boolean }[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultSelected",
+              "type": {
+                "text": "string[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Declarative dt-checkbox children overriding options."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "options",
+              "fieldName": "options",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-master-checkbox",
+              "fieldName": "showMasterCheckbox",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "master-label",
+              "fieldName": "masterLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-selected",
+              "fieldName": "defaultSelected",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "selected-change",
+              "description": "Dispatched with detail.selected after selection changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "CheckboxGroup",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtRadioElement",
+          "description": "Form-associated native radio control with tokenized sizing.",
+          "customElement": true,
+          "tagName": "dt-radio",
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "checked",
+              "fieldName": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-checked",
+              "fieldName": "defaultChecked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-label",
+              "fieldName": "showLabel",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "checked-change",
+              "description": "Dispatched with detail.checked after user activation.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Radio",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtRadioGroupElement",
+          "description": "Form-associated radio fieldset with controlled and default selection modes.",
+          "customElement": true,
+          "tagName": "dt-radio-group",
+          "members": [
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "{ value: string; label: string; disabled?: boolean }[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Declarative dt-radio children overriding options."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "legend",
+              "fieldName": "legend",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "options",
+              "fieldName": "options",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "orientation",
+              "fieldName": "orientation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after selection changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "RadioGroup",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSelectElement",
+          "description": "Form-associated native select with declarative options and validation messages.",
+          "customElement": true,
+          "tagName": "dt-select",
+          "members": [
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "{ value: string; label: string; disabled?: boolean; selected?: boolean }[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Declarative dt-select-option children overriding options."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "options",
+              "fieldName": "options",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value before the compatibility change event.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "change",
+              "description": "Compatibility change event dispatched after value-change.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Select",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSelectOptionElement",
+          "description": "Declarative option data materialized by a parent dt-select.",
+          "customElement": true,
+          "tagName": "dt-select-option",
+          "slots": [
+            {
+              "name": "",
+              "description": "Option label overriding the label attribute."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "selected",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "SelectOption",
           "dtBackend": "native"
         },
         {

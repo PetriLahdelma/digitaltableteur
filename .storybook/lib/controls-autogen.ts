@@ -47,15 +47,29 @@ for (const [path, mod] of Object.entries(contractModules)) {
 const AUTOGEN = new Set<string>(registry.components);
 
 // Plumbing a human never sets from a panel — hidden, same set audit:controls skips.
-const HIDDEN = new Set(["ref", "style", "key", "asChild", "as", "data-role", "aria-label", "id"]);
+const HIDDEN = new Set([
+  "ref",
+  "style",
+  "key",
+  "asChild",
+  "as",
+  "data-role",
+  "aria-label",
+  "id",
+]);
 
 const componentNameFor = (title?: string) => title?.split("/").pop() ?? "";
 
 const categoryFor = (name: string): string => {
   if (/^on[A-Z]/.test(name)) return "Behavior";
-  if (/^aria|^role$|label|accessible|tooltip/i.test(name)) return "Accessibility";
+  if (/^aria|^role$|label|accessible|tooltip/i.test(name))
+    return "Accessibility";
   if (/^(id|className|style|ref)$/.test(name)) return "Advanced";
-  if (/variant|tone|size|surface|rounded|square|attached|align|spacing|lineHeight|terminals|weight|color/i.test(name))
+  if (
+    /variant|tone|size|surface|rounded|square|attached|align|spacing|lineHeight|terminals|weight|color/i.test(
+      name,
+    )
+  )
     return "Appearance";
   return "Content";
 };
@@ -80,7 +94,11 @@ const isFunction = (type: string) => type.includes("=>") || /^\(/.test(type);
 
 type AnyArgType = Record<string, unknown> & { table?: Record<string, unknown> };
 
-function deriveEntry(prop: string, spec: ContractProp, inherited: AnyArgType | undefined): AnyArgType {
+function deriveEntry(
+  prop: string,
+  spec: ContractProp,
+  inherited: AnyArgType | undefined,
+): AnyArgType {
   const type = spec.type ?? "";
   const table = { category: categoryFor(prop), ...(inherited?.table ?? {}) };
 
@@ -101,8 +119,10 @@ function deriveEntry(prop: string, spec: ContractProp, inherited: AnyArgType | u
   }
   // Object form only: CSF shorthand normalization (control: "text") runs
   // BEFORE argTypes enhancers, so shorthands emitted here render no widget.
-  if (/^boolean\b/.test(type)) return { ...inherited, control: { type: "boolean" }, table };
-  if (/^number\b/.test(type)) return { ...inherited, control: { type: "number" }, table };
+  if (/^boolean\b/.test(type))
+    return { ...inherited, control: { type: "boolean" }, table };
+  if (/^number\b/.test(type))
+    return { ...inherited, control: { type: "number" }, table };
   if (prop === "children" || isStringish(type)) {
     return { ...inherited, control: { type: "text" }, table };
   }
@@ -112,10 +132,14 @@ function deriveEntry(prop: string, spec: ContractProp, inherited: AnyArgType | u
 }
 
 /** Seed a no-op default so text/boolean/number controls render operable widgets. */
-function seedFor(spec: ContractProp, inherited: AnyArgType | undefined): unknown {
+function seedFor(
+  spec: ContractProp,
+  inherited: AnyArgType | undefined,
+): unknown {
   const type = spec.type ?? "";
-  const summary = (inherited?.table as { defaultValue?: { summary?: string } } | undefined)
-    ?.defaultValue?.summary;
+  const summary = (
+    inherited?.table as { defaultValue?: { summary?: string } } | undefined
+  )?.defaultValue?.summary;
   if (/^boolean\b/.test(type)) {
     return summary === "true";
   }
@@ -147,7 +171,8 @@ export const autogenArgTypes: ArgTypesEnhancer = (context) => {
         "options" in existing ||
         "mapping" in existing ||
         "action" in existing ||
-        (existing.table as { disable?: boolean } | undefined)?.disable === true);
+        (existing.table as { disable?: boolean } | undefined)?.disable ===
+          true);
     if (authored) continue;
     out[prop] = { ...existing, ...deriveEntry(prop, spec, existing) };
   }
@@ -162,7 +187,21 @@ export const autogenArgs: ArgsEnhancer = (context) => {
 
   const seeds: Record<string, unknown> = {};
   for (const [prop, spec] of Object.entries(contract.props)) {
-    if (HIDDEN.has(prop) || /^on[A-Z]/.test(prop) || prop === "children") continue;
+    if (HIDDEN.has(prop) || /^on[A-Z]/.test(prop) || prop === "children")
+      continue;
+    // React treats a controlled prop and its uncontrolled default as mutually
+    // exclusive, even when the generated default is false or an empty string.
+    const counterpart = {
+      checked: "defaultChecked",
+      defaultChecked: "checked",
+      value: "defaultValue",
+      defaultValue: "value",
+    }[prop];
+    if (
+      counterpart &&
+      (counterpart in context.initialArgs || counterpart in seeds)
+    )
+      continue;
     const argType = (context.argTypes as Record<string, AnyArgType>)[prop];
     if (argType && "mapping" in argType) continue; // preset selects stay unset
     const seed = seedFor(spec, argType);

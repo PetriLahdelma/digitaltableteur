@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "SelectOption",
+  "displayName": "Select Option",
+  "tier": "atom",
+  "group": "form",
+  "status": "stable",
+  "description": "Native option primitive for composing Select choices.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=383-23",
+  "radixPrimitive": null,
+  "element": "option",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": ["Arrow keys", "Enter", "Space"],
+    "ariaRequirements": ["render only inside a native select"],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-07-15 - native option semantics and disabled state verified through Select.",
+    "forcedColorsVerified": true,
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "consumers": [],
+  "schemaVersion": 2,
+  "props": {
+    "value": {
+      "optional": false,
+      "type": "string"
+    },
+    "label": {
+      "optional": false,
+      "type": "string"
+    },
+    "disabled": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "children": {
+      "optional": true,
+      "type": "ReactNode"
+    }
+  },
+  "forbiddenUse": [
+    "render SelectOption outside Select; browsers only expose option semantics inside a select",
+    "use an empty enabled option as a consequential default; disable placeholder options"
+  ],
+  "composesWith": ["Select"],
+  "keywords": ["option", "select", "choice", "disabled", "form"],
+  "dense": "native option for Select; value and label required, children override label, optional disabled state",
+  "usage": {
+    "description": "SelectOption is the typed option primitive for Select children. Use it when declarative children are clearer than the options array, especially for placeholders and per-option attributes.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Use the Select options array for ordinary flat data; use SelectOption children for explicit declarative composition."
+      },
+      {
+        "guidance": true,
+        "description": "Disable an empty placeholder option so it cannot be reselected after a valid choice."
+      },
+      {
+        "guidance": false,
+        "description": "Do not render SelectOption outside Select; standalone option elements have no useful interaction semantics."
+      }
+    ]
+  },
+  "playground": {
+    "defaults": {
+      "value": "design",
+      "label": "Design",
+      "disabled": false
+    }
+  }
+}

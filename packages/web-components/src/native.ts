@@ -13,6 +13,9 @@ import { DtIconElement } from "./native/icon";
 import { DtIconButtonElement } from "./native/icon-button";
 import { DtLinkElement } from "./native/link";
 import { DtListElement } from "./native/list";
+import { DtLabelElement } from "./native/label";
+import { DtHelperTextElement } from "./native/helper-text";
+import { DtFormFieldElement } from "./native/form-field";
 import { DtNavLinkElement } from "./native/nav-link";
 import { DtProgressElement } from "./native/progress";
 import { DtSkipLinkElement } from "./native/skip-link";
@@ -26,6 +29,11 @@ import { DtTitleElement } from "./native/title";
 import { DtTextInputElement } from "./native/text-input";
 import { DtTextAreaElement } from "./native/text-area";
 import { DtCheckboxElement } from "./native/checkbox";
+import { DtCheckboxGroupElement } from "./native/checkbox-group";
+import { DtRadioElement } from "./native/radio";
+import { DtRadioGroupElement } from "./native/radio-group";
+import { DtSelectElement } from "./native/select";
+import { DtSelectOptionElement } from "./native/select-option";
 import { DtSwitchElement } from "./native/switch";
 import { defineElementSet, type ElementDefinition } from "./registry";
 
@@ -99,6 +107,10 @@ export type {
   DtListStyleType,
   DtListTag,
 } from "./native/list";
+export { DtLabelElement } from "./native/label";
+export { DtHelperTextElement } from "./native/helper-text";
+export type { DtHelperTextState } from "./native/helper-text";
+export { DtFormFieldElement } from "./native/form-field";
 export { DtNavLinkElement } from "./native/nav-link";
 export { DtProgressElement } from "./native/progress";
 export type { DtProgressSize, DtProgressState } from "./native/progress";
@@ -133,6 +145,14 @@ export type { DtTextInputSize, DtTextInputType } from "./native/text-input";
 export { DtTextAreaElement } from "./native/text-area";
 export { DtCheckboxElement } from "./native/checkbox";
 export type { DtCheckboxSize } from "./native/checkbox";
+export { DtCheckboxGroupElement } from "./native/checkbox-group";
+export { DtRadioElement } from "./native/radio";
+export type { DtRadioSize } from "./native/radio";
+export { DtRadioGroupElement } from "./native/radio-group";
+export type { DtRadioGroupOrientation } from "./native/radio-group";
+export { DtSelectElement } from "./native/select";
+export type { DtSelectOptionItem, DtSelectSize } from "./native/select";
+export { DtSelectOptionElement } from "./native/select-option";
 export { DtSwitchElement } from "./native/switch";
 export type { DtSwitchLabelPlacement, DtSwitchSize } from "./native/switch";
 
@@ -162,9 +182,17 @@ export const nativeElementDefinitions = [
   ["dt-spacer", DtSpacerElement],
   ["dt-aspect-ratio", DtAspectRatioElement],
   ["dt-empty-state", DtEmptyStateElement],
+  ["dt-label", DtLabelElement],
+  ["dt-helper-text", DtHelperTextElement],
+  ["dt-form-field", DtFormFieldElement],
   ["dt-text-input", DtTextInputElement],
   ["dt-text-area", DtTextAreaElement],
   ["dt-checkbox", DtCheckboxElement],
+  ["dt-checkbox-group", DtCheckboxGroupElement],
+  ["dt-radio", DtRadioElement],
+  ["dt-radio-group", DtRadioGroupElement],
+  ["dt-select", DtSelectElement],
+  ["dt-select-option", DtSelectOptionElement],
   ["dt-switch", DtSwitchElement],
 ] as const satisfies readonly ElementDefinition[];
 

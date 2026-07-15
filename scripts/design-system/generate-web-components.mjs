@@ -38,7 +38,7 @@ function contractFor(element) {
   const path = join(
     ROOT,
     "nextjs-app/shared/components",
-    element.contract,
+    element.contractDirectory ?? element.contract,
     `${element.contract}.contract.json`,
   );
   return JSON.parse(readFileSync(path, "utf8"));

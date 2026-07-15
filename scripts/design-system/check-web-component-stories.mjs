@@ -289,6 +289,304 @@ try {
         );
       }
     }
+    if (story.tagName === "dt-label") {
+      const labelResult = await page.evaluate(() => {
+        const input = document.createElement("input");
+        input.id = "native-label-target";
+        const label = document.createElement("dt-label");
+        label.setAttribute("for", input.id);
+        label.setAttribute("required", "");
+        label.textContent = "Email address";
+        document.body.append(input, label);
+        label.shadowRoot?.querySelector("label")?.click();
+        const result = {
+          labelFor: label.shadowRoot
+            ?.querySelector("label")
+            ?.getAttribute("for"),
+          focussed: document.activeElement === input,
+          association: input.getAttribute("aria-labelledby"),
+          labelId: label.id,
+          required: Boolean(
+            label.shadowRoot?.querySelector('[part~="required-indicator"]'),
+          ),
+        };
+        input.remove();
+        label.remove();
+        return result;
+      });
+      if (
+        labelResult.labelFor !== "native-label-target" ||
+        !labelResult.focussed ||
+        !labelResult.association?.split(/\s+/).includes(labelResult.labelId) ||
+        !labelResult.required
+      ) {
+        throw new Error(
+          `dt-label failed target, accessible association, or required DoD: ${JSON.stringify(labelResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-helper-text") {
+      const helperResult = await page.evaluate(() => {
+        const helper = document.createElement("dt-helper-text");
+        helper.setAttribute("state", "error");
+        helper.textContent = "Correct the field.";
+        document.body.append(helper);
+        const message = helper.shadowRoot?.querySelector("p");
+        const result = {
+          role: message?.getAttribute("role"),
+          hasIcon: Boolean(message?.querySelector("svg")),
+          text: helper.textContent?.trim(),
+        };
+        helper.remove();
+        return result;
+      });
+      if (
+        helperResult.role !== "alert" ||
+        !helperResult.hasIcon ||
+        helperResult.text !== "Correct the field."
+      ) {
+        throw new Error(
+          `dt-helper-text failed error semantics DoD: ${JSON.stringify(helperResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-form-field") {
+      const fieldResult = await page.evaluate(() => {
+        const field = document.createElement("dt-form-field");
+        field.setAttribute("legend", "Preferences");
+        field.setAttribute("group-description", "Choose all that apply.");
+        field.setAttribute("error", "Choose one preference.");
+        field.setAttribute("disabled", "");
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        field.append(input);
+        document.body.append(field);
+        const fieldset = field.shadowRoot?.querySelector("fieldset");
+        const result = {
+          legend: fieldset?.querySelector("legend")?.textContent?.trim(),
+          disabled: fieldset?.hasAttribute("disabled"),
+          childDisabled: input.disabled,
+          describedBy: fieldset?.getAttribute("aria-describedby"),
+          errorRole: fieldset?.querySelector(".error")?.getAttribute("role"),
+        };
+        field.remove();
+        return result;
+      });
+      if (
+        fieldResult.legend !== "Preferences" ||
+        !fieldResult.disabled ||
+        !fieldResult.childDisabled ||
+        fieldResult.describedBy !== "group-description error" ||
+        fieldResult.errorRole !== "alert"
+      ) {
+        throw new Error(
+          `dt-form-field failed fieldset, description, or disabled DoD: ${JSON.stringify(fieldResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-radio") {
+      const radioResult = await page.evaluate(() => {
+        const form = document.createElement("form");
+        const first = document.createElement("dt-radio");
+        first.setAttribute("name", "discipline");
+        first.setAttribute("value", "design");
+        first.setAttribute("label", "Design");
+        const second = document.createElement("dt-radio");
+        second.setAttribute("name", "discipline");
+        second.setAttribute("value", "engineering");
+        second.setAttribute("label", "Engineering");
+        let detail = null;
+        second.addEventListener("checked-change", (event) => {
+          detail = event.detail;
+        });
+        form.append(first, second);
+        document.body.append(form);
+        first.shadowRoot?.querySelector("input")?.click();
+        const input = second.shadowRoot?.querySelector("input");
+        input?.focus();
+        input?.click();
+        const result = {
+          formValue: new FormData(form).get("discipline"),
+          firstChecked: first.hasAttribute("checked"),
+          secondChecked: second.hasAttribute("checked"),
+          focussed: second.shadowRoot?.activeElement === input,
+          detail,
+        };
+        form.remove();
+        return result;
+      });
+      if (
+        radioResult.formValue !== "engineering" ||
+        radioResult.firstChecked ||
+        !radioResult.secondChecked ||
+        !radioResult.focussed ||
+        JSON.stringify(radioResult.detail) !== JSON.stringify({ checked: true })
+      ) {
+        throw new Error(
+          `dt-radio failed exclusivity, form, focus, or event DoD: ${JSON.stringify(radioResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-radio-group") {
+      const groupResult = await page.evaluate(() => {
+        const form = document.createElement("form");
+        const group = document.createElement("dt-radio-group");
+        group.setAttribute("name", "discipline");
+        group.setAttribute("legend", "Discipline");
+        group.setAttribute(
+          "options",
+          JSON.stringify([
+            { value: "design", label: "Design" },
+            { value: "engineering", label: "Engineering" },
+          ]),
+        );
+        let detail = null;
+        group.addEventListener("value-change", (event) => {
+          detail = event.detail;
+        });
+        form.append(group);
+        document.body.append(form);
+        const radios = group.shadowRoot?.querySelectorAll(
+          ".options > dt-radio",
+        );
+        const second = radios?.[1];
+        const input = second?.shadowRoot?.querySelector("input");
+        input?.focus();
+        input?.click();
+        group.setAttribute("helper-text", "Rerender check");
+        const current = group.shadowRoot?.querySelectorAll(
+          ".options > dt-radio",
+        )[1];
+        const result = {
+          formValue: new FormData(form).get("discipline"),
+          value: group.value,
+          detail,
+          legend: group.shadowRoot?.querySelector("legend")?.textContent,
+          checked: current?.hasAttribute("checked"),
+        };
+        form.remove();
+        return result;
+      });
+      if (
+        groupResult.formValue !== "engineering" ||
+        groupResult.value !== "engineering" ||
+        JSON.stringify(groupResult.detail) !==
+          JSON.stringify({ value: "engineering" }) ||
+        groupResult.legend !== "Discipline" ||
+        !groupResult.checked
+      ) {
+        throw new Error(
+          `dt-radio-group failed form, live value, or fieldset DoD: ${JSON.stringify(groupResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-checkbox-group") {
+      const checkboxGroupResult = await page.evaluate(() => {
+        const form = document.createElement("form");
+        const group = document.createElement("dt-checkbox-group");
+        group.setAttribute("name", "services");
+        group.setAttribute("label", "Services");
+        group.setAttribute(
+          "options",
+          JSON.stringify([
+            { value: "strategy", label: "Strategy" },
+            { value: "design", label: "Design" },
+          ]),
+        );
+        group.setAttribute("default-selected", JSON.stringify(["strategy"]));
+        let detail = null;
+        group.addEventListener("selected-change", (event) => {
+          detail = event.detail;
+        });
+        form.append(group);
+        document.body.append(form);
+        const design = group.shadowRoot?.querySelectorAll(
+          ".options > dt-checkbox",
+        )[1];
+        design?.shadowRoot?.querySelector("input")?.click();
+        const result = {
+          formValues: new FormData(form).getAll("services"),
+          selected: group.selected,
+          detail,
+          legend: group.shadowRoot?.querySelector("legend")?.textContent,
+          masterChecked: group.shadowRoot
+            ?.querySelector("dt-checkbox[data-master]")
+            ?.hasAttribute("checked"),
+        };
+        form.remove();
+        return result;
+      });
+      if (
+        JSON.stringify(checkboxGroupResult.formValues) !==
+          JSON.stringify(["strategy", "design"]) ||
+        JSON.stringify(checkboxGroupResult.selected) !==
+          JSON.stringify(["strategy", "design"]) ||
+        JSON.stringify(checkboxGroupResult.detail) !==
+          JSON.stringify({ selected: ["strategy", "design"] }) ||
+        checkboxGroupResult.legend !== "Services" ||
+        !checkboxGroupResult.masterChecked
+      ) {
+        throw new Error(
+          `dt-checkbox-group failed form, master, or event DoD: ${JSON.stringify(checkboxGroupResult)}`,
+        );
+      }
+    }
+    if (story.tagName === "dt-select") {
+      const selectResult = await page.evaluate(() => {
+        const form = document.createElement("form");
+        const select = document.createElement("dt-select");
+        select.setAttribute("name", "discipline");
+        select.setAttribute("label", "Discipline");
+        select.setAttribute(
+          "options",
+          JSON.stringify([
+            { value: "design", label: "Design" },
+            { value: "engineering", label: "Engineering" },
+          ]),
+        );
+        const events = [];
+        let detail = null;
+        select.addEventListener("value-change", (event) => {
+          events.push("value-change");
+          detail = event.detail;
+        });
+        select.addEventListener("change", () => events.push("change"));
+        form.append(select);
+        document.body.append(form);
+        const control = select.shadowRoot?.querySelector("select");
+        control.value = "engineering";
+        control.dispatchEvent(new Event("change", { bubbles: true }));
+        select.setAttribute("helper-text", "Rerender check");
+        const current = select.shadowRoot?.querySelector("select");
+        const result = {
+          formValue: new FormData(form).get("discipline"),
+          value: select.value,
+          detail,
+          events,
+          optionCount: current?.options.length,
+          currentValue: current?.value,
+          labelFor: select.shadowRoot?.querySelector("label")?.htmlFor,
+          controlId: current?.id,
+        };
+        form.remove();
+        return result;
+      });
+      if (
+        selectResult.formValue !== "engineering" ||
+        selectResult.value !== "engineering" ||
+        JSON.stringify(selectResult.detail) !==
+          JSON.stringify({ value: "engineering" }) ||
+        JSON.stringify(selectResult.events) !==
+          JSON.stringify(["value-change", "change"]) ||
+        selectResult.optionCount !== 2 ||
+        selectResult.currentValue !== "engineering" ||
+        selectResult.labelFor !== selectResult.controlId
+      ) {
+        throw new Error(
+          `dt-select failed form, option, event-order, or live-value DoD: ${JSON.stringify(selectResult)}`,
+        );
+      }
+    }
     if (story.tagName === "dt-switch") {
       const switchResult = await element.evaluate((node) => {
         const button = node.shadowRoot?.querySelector("button");

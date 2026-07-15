@@ -16,11 +16,12 @@ import "@digitaltableteur/tokens-css/tokens.css";
 import "@digitaltableteur/web-components/register";
 ```
 
-The default registry contains 29 native Shadow DOM custom elements:
+The default registry contains 37 native Shadow DOM custom elements:
 AlertBanner, AspectRatio, Badge, Button, ButtonGroup, Card, Center, Checkbox,
-Container, Divider, EmptyState, FilterChip, Icon, IconButton, Link, List,
-NavLink, Progress, Section, SkipLink, Spacer, Spinner, Stack, StatusDot, Switch,
-Text, TextArea, TextInput, and Title.
+CheckboxGroup, Container, Divider, EmptyState, FilterChip, FormField,
+HelperText, Icon, IconButton, Label, Link, List, NavLink, Progress, Radio,
+RadioGroup, Section, Select, SelectOption, SkipLink, Spacer, Spinner, Stack,
+StatusDot, Switch, Text, TextArea, TextInput, and Title.
 
 ```html
 <dt-button label="Continue" variant="primary"></dt-button>
@@ -83,6 +84,16 @@ Text, TextArea, TextInput, and Title.
   ></dt-text-input>
   <dt-text-area name="brief" label="Project brief"></dt-text-area>
   <dt-checkbox name="terms" label="I agree to the terms" required></dt-checkbox>
+  <dt-radio-group
+    name="discipline"
+    legend="Primary discipline"
+    options='[{"value":"design","label":"Design"},{"value":"engineering","label":"Engineering"}]'
+  ></dt-radio-group>
+  <dt-select
+    name="office"
+    label="Office"
+    options='[{"value":"helsinki","label":"Helsinki"},{"value":"remote","label":"Remote"}]'
+  ></dt-select>
   <dt-button submits>Send</dt-button>
 </form>
 <dt-switch label="Email notifications"></dt-switch>
@@ -109,17 +120,21 @@ Native components accept text attributes for simple markup and slots for rich
 content. For example, Button supports default, `icon`, and `end-icon` slots;
 AlertBanner supports default, `title`, `description`, `icon`, and `action`
 slots; EmptyState supports `title`, `description`, `icon`, and `action` slots.
-Text, Title, Section, and Stack expose a default slot plus a text attribute
-fallback. List accepts either semantic light-DOM `li` children or a JSON string
-array through `items` (and a `string[]` property in JavaScript).
+Text, Title, Section, Stack, Label, and HelperText expose a default slot plus a
+text attribute fallback. List accepts either semantic light-DOM `li` children
+or a JSON string array through `items` (and a `string[]` property in
+JavaScript).
 Card exposes default, `header-start`, `header-end`, `extra`, `footer-start`, and
 `footer-end` slots. Center, Container, and AspectRatio expose default slots;
 Spacer is intentionally empty and hidden from the accessibility tree.
 `dt-nav-link` deliberately does not inspect a framework router: the host updates
 `current-path` when navigation changes. Component metadata and attributes are
-published in `custom-elements.json`. TextInput, TextArea, and Checkbox are
-form-associated custom elements; Switch remains an immediate-action control
-and deliberately does not submit a form value.
+published in `custom-elements.json`. TextInput, TextArea, Checkbox, Radio,
+RadioGroup, CheckboxGroup, and Select are form-associated custom elements.
+Select accepts JSON option data or declarative `dt-select-option` children;
+RadioGroup and CheckboxGroup accept JSON option data or matching declarative
+control children. Switch remains an immediate-action control and deliberately
+does not submit a form value.
 
 ## Legacy React adapters
 
