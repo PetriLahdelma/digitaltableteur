@@ -1,5 +1,5 @@
 - group "Language":
+  - button "Hide language options" [expanded]: EN
   - button "Swedish": SV
   - button "Finnish": FI
-  - button "Hide language options" [expanded]: EN
   - text: Hide language options
