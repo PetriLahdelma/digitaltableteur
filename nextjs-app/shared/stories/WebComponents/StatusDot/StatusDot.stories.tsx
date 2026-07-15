@@ -9,13 +9,19 @@ import {
 } from "../NativeStory";
 
 type Args = {
-  label: string;
+  children: string;
+  label?: string;
   tone: "neutral" | "info" | "success" | "warning" | "error";
   size: "sm" | "md" | "lg";
   pulse: boolean;
 };
 function NativeStatusDot(args: Args) {
-  return <NativeElement tagName="dt-status-dot" attributes={args} />;
+  const { children, ...attributes } = args;
+  return (
+    <NativeElement tagName="dt-status-dot" attributes={attributes}>
+      {children}
+    </NativeElement>
+  );
 }
 const meta = {
   title: "Web Components/Feedback/StatusDot",
@@ -27,8 +33,22 @@ const meta = {
       description: { component: "Native dt-status-dot custom element." },
     },
   },
-  args: { label: "Online", tone: "success", size: "md", pulse: false },
+  args: {
+    children: "Operational",
+    tone: "success",
+    size: "md",
+    pulse: false,
+  },
   argTypes: {
+    children: {
+      control: "text",
+      description: "Visible text rendered through the default slot.",
+    },
+    label: {
+      control: "text",
+      description:
+        "Screen-reader-only fallback when the default slot is empty.",
+    },
     tone: {
       control: "select",
       options: ["neutral", "info", "success", "warning", "error"],
@@ -50,8 +70,10 @@ export const Tones: Story = {
           <NativeElement
             key={tone}
             tagName="dt-status-dot"
-            attributes={{ label: tone, tone }}
-          />
+            attributes={{ tone }}
+          >
+            {tone}
+          </NativeElement>
         ),
       )}
     </Row>
@@ -59,24 +81,31 @@ export const Tones: Story = {
 };
 export const Live: Story = {
   ...exampleStory,
-  args: { label: "Live", tone: "success", pulse: true },
+  args: { children: "Live", tone: "success", pulse: true },
 };
 export const Sizes: Story = {
   ...exampleStory,
   render: () => (
     <Row>
       {(["sm", "md", "lg"] as const).map((size) => (
-        <NativeElement
-          key={size}
-          tagName="dt-status-dot"
-          attributes={{ label: size, size }}
-        />
+        <NativeElement key={size} tagName="dt-status-dot" attributes={{ size }}>
+          {size}
+        </NativeElement>
       ))}
     </Row>
   ),
 };
+export const SrOnlyLabel: Story = {
+  ...exampleStory,
+  render: () => (
+    <NativeElement
+      tagName="dt-status-dot"
+      attributes={{ label: "Connection lost", tone: "error" }}
+    />
+  ),
+};
 export const Example: Story = {
   ...exampleStory,
-  args: { label: "Deployment healthy", tone: "success" },
+  args: { children: "Deployment healthy", tone: "success" },
 };
 export const ForcedColors: Story = { ...forcedColorsStory };

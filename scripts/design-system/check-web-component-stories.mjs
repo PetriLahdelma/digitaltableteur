@@ -108,12 +108,24 @@ try {
       (node, tagName) => ({
         defined: Boolean(customElements.get(tagName)),
         hasShadowRoot: Boolean(node.shadowRoot),
+        bounds: node.getBoundingClientRect().toJSON(),
+        text: node.textContent?.trim() ?? "",
       }),
       story.tagName,
     );
     if (!result.defined || !result.hasShadowRoot) {
       throw new Error(
         `${story.defaultStoryId} did not render a registered shadow-root ${story.tagName}`,
+      );
+    }
+    if (
+      story.tagName === "dt-status-dot" &&
+      (result.bounds.width <= 0 ||
+        result.bounds.height <= 0 ||
+        result.text.length === 0)
+    ) {
+      throw new Error(
+        `${story.defaultStoryId} must render a visible, labelled status dot`,
       );
     }
     await page.waitForTimeout(50);

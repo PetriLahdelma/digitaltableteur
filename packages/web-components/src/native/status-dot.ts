@@ -13,10 +13,11 @@ export type DtStatusDotTone = (typeof TONES)[number];
 export type DtStatusDotSize = (typeof SIZES)[number];
 
 const styles = `
-  :host { display: inline-flex; align-items: center; gap: var(--space-internal-6); font-family: var(--font-body); color: var(--color-text); }
+  :host { display: inline-flex; vertical-align: middle; }
+  .root { display: inline-flex; align-items: center; gap: var(--space-internal-6); font-family: var(--font-body); color: var(--color-text); }
   .dot { inline-size: 0.5em; block-size: 0.5em; flex: none; border-radius: 50%; background: currentcolor; }
   .sm { font-size: var(--font-size-text-xxs); } .md { font-size: var(--font-size-text-s); } .lg { font-size: var(--font-size-text-m); }
-  .neutral { background: var(--color-muted); } .success { background: var(--color-success); } .warning { background: var(--color-warning); } .error { background: var(--color-error); } .info { background: var(--color-info); }
+  .neutral { color: var(--color-muted); } .success { color: var(--color-success); } .warning { color: var(--color-warning); } .error { color: var(--color-error); } .info { color: var(--color-info); }
   .pulse { animation: dt-status-pulse 2s var(--ease-out-cubic) infinite; }
   .label { line-height: 1.3; }
   .srOnly { position: absolute; margin: -1px; padding: 0; inline-size: 1px; block-size: 1px; border: 0; clip-path: inset(50%); white-space: nowrap; overflow: hidden; }
@@ -60,7 +61,7 @@ export class DtStatusDotElement extends DigitaltableteurElement {
   }
   private render(): void {
     const root = this.ownerDocument.createElement("span");
-    root.className = this.size;
+    root.className = `root ${this.size}`;
     root.setAttribute("part", "root");
     const dot = this.ownerDocument.createElement("span");
     dot.className = ["dot", this.tone, this.pulse ? "pulse" : ""]
