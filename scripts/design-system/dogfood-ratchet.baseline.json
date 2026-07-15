@@ -277,6 +277,10 @@
       "rawElements": 1,
       "utilityLines": 0
     },
+    "nextjs-app/shared/components/NextLayout/NextLayout.tsx": {
+      "rawElements": 0,
+      "utilityLines": 1
+    },
     "nextjs-app/shared/components/OpenHours/OpenHours.tsx": {
       "rawElements": 1,
       "utilityLines": 0
@@ -578,8 +582,8 @@
       "utilityLines": 5
     },
     "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx": {
-      "rawElements": 1,
-      "utilityLines": 14
+      "rawElements": 3,
+      "utilityLines": 15
     },
     "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx": {
       "rawElements": 2,
