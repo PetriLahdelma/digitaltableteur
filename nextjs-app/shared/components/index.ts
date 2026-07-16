@@ -1,7 +1,10 @@
 export { default as AppLoading } from "./AppLoading/AppLoading";
 export { default as ArticleCard } from "./ArticleCard/ArticleCard";
 export { default as Author } from "./Author/Author";
+export type { AuthorProps } from "./Author";
 export { default as AuthorBio } from "./AuthorBio/AuthorBio";
+export { default as BlogNav } from "./BlogNav/BlogNav";
+export type { BlogNavPage, BlogNavProps } from "./BlogNav";
 export { default as Avatar } from "./Avatar/Avatar";
 export type { AvatarMenuItem, AvatarProps, AvatarSize } from "./Avatar";
 export { default as AvatarGroup } from "./AvatarGroup/AvatarGroup";
@@ -183,6 +186,7 @@ export { default as TransformingActionInput } from "./TransformingActionInput/Tr
 export type { TransformingActionInputProps } from "./TransformingActionInput";
 export { ValueCard, type ValueCardProps } from "./ValueCard";
 export { default as WorkNav } from "./WorkNav/WorkNav";
+export type { WorkNavPage, WorkNavProps } from "./WorkNav";
 
 // Blog components (Phase 10)
 export {

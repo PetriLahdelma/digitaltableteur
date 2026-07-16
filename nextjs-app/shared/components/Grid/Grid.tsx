@@ -136,24 +136,24 @@ function Grid({
     display: "grid",
     ...(isResponsive
       ? ({
-          "--grid-cols": toTemplate(columns),
+          "--dt-grid-columns": toTemplate(columns),
           ...(tabletColumns != null && {
-            "--grid-cols-tablet": toTemplate(tabletColumns),
+            "--dt-grid-columns-tablet": toTemplate(tabletColumns),
           }),
           ...(desktopColumns != null && {
-            "--grid-cols-desktop": toTemplate(desktopColumns),
+            "--dt-grid-columns-desktop": toTemplate(desktopColumns),
           }),
           ...(wideColumns != null && {
-            "--grid-cols-wide": toTemplate(wideColumns),
+            "--dt-grid-columns-wide": toTemplate(wideColumns),
           }),
           ...(ultraColumns != null && {
-            "--grid-cols-ultra": toTemplate(ultraColumns),
+            "--dt-grid-columns-ultra": toTemplate(ultraColumns),
           }),
-          "--grid-gap": gap,
-          ...(tabletGap != null && { "--grid-gap-tablet": tabletGap }),
-          ...(desktopGap != null && { "--grid-gap-desktop": desktopGap }),
-          ...(wideGap != null && { "--grid-gap-wide": wideGap }),
-          ...(ultraGap != null && { "--grid-gap-ultra": ultraGap }),
+          "--dt-grid-gap": gap,
+          ...(tabletGap != null && { "--dt-grid-gap-tablet": tabletGap }),
+          ...(desktopGap != null && { "--dt-grid-gap-desktop": desktopGap }),
+          ...(wideGap != null && { "--dt-grid-gap-wide": wideGap }),
+          ...(ultraGap != null && { "--dt-grid-gap-ultra": ultraGap }),
         } as CSSProperties)
       : {
           gridTemplateColumns:

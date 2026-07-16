@@ -32,7 +32,7 @@ function NativeFormField({ groupDescription, ...args }: Args) {
 const meta = {
   title: "Web Components/Forms/FormField",
   component: NativeFormField,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: { ...nativeStoryParameters, layout: "padded" },
   args: {
     legend: "Notification channels",

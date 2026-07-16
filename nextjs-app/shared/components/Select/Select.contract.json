@@ -4,7 +4,7 @@
     "tier": "atom",
     "group": "form",
     "status": "stable",
-    "description": "Native select with label, options, error state, and size tokens.",
+    "description": "Native dropdown select with labelled options, error state, and size tokens.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=383-23",
     "radixPrimitive": null,
     "element": "select",
@@ -149,6 +149,7 @@
     ],
     "displayName": "Select",
     "keywords": [
+        "dropdown select options",
         "select",
         "dropdown",
         "native select",

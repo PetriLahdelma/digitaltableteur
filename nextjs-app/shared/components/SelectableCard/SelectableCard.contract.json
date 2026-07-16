@@ -82,5 +82,30 @@
     ],
     "dense": "Card as one selectable option; grouped via SelectableCardGroup into single (radio) or multiple (checkbox) sets; whole card is a label over a hidden native input; controlled or uncontrolled.",
     "schemaVersion": 2,
-    "displayName": "SelectableCard"
+    "displayName": "SelectableCard",
+    "usage": {
+        "description": "Use SelectableCardGroup for visually prominent form choices, with SelectableCard children representing radio-style exclusive options or checkbox-style multiple options. The group owns the legend, value state, and error relationship.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Write the group legend as the question and keep each card title short and scannable."
+            },
+            {
+                "guidance": true,
+                "description": "Use single selection for a few rich exclusive options and multiple selection for independent add-ons."
+            },
+            {
+                "guidance": true,
+                "description": "For one standalone toggle outside a group, control selected and onSelectedChange directly."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest buttons or links inside a selectable card; use Card for action-oriented content."
+            },
+            {
+                "guidance": false,
+                "description": "For bare text options without supporting content, use RadioGroup or CheckboxGroup."
+            }
+        ]
+    }
 }

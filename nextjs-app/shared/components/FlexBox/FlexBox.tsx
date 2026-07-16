@@ -5,6 +5,7 @@ export interface FlexBoxProps extends React.HTMLAttributes<HTMLDivElement> {
   direction?: "row" | "row-reverse" | "column" | "column-reverse";
   /** flex-wrap. @default "nowrap" */
   wrap?: "nowrap" | "wrap" | "wrap-reverse";
+  /** Main-axis distribution. @default "flex-start" */
   justify?:
     | "flex-start"
     | "flex-end"
@@ -12,7 +13,9 @@ export interface FlexBoxProps extends React.HTMLAttributes<HTMLDivElement> {
     | "space-between"
     | "space-around"
     | "space-evenly";
+  /** Cross-axis item alignment. @default "stretch" */
   align?: "stretch" | "flex-start" | "flex-end" | "center" | "baseline";
+  /** Cross-axis line distribution when wrapping. */
   alignContent?:
     | "stretch"
     | "flex-start"
@@ -26,7 +29,9 @@ export interface FlexBoxProps extends React.HTMLAttributes<HTMLDivElement> {
   rowGap?: string | number;
   /** Column gap override. */
   columnGap?: string | number;
+  /** Inline style overrides applied after generated flex declarations. */
   style?: React.CSSProperties;
+  /** Flex items rendered inside the container. */
   children: React.ReactNode;
 }
 

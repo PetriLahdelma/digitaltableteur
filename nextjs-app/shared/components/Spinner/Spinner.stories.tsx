@@ -96,6 +96,33 @@ export const WithVisibleLabel: Story = {
     </span>
   ),
 };
+
+export const RegionLoading: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "For a short region-level wait, mark the host region busy and give the large Spinner a specific status label.",
+      },
+    },
+  },
+  render: () => (
+    <section
+      aria-busy="true"
+      aria-label="Recent projects"
+      style={{
+        display: "grid",
+        minBlockSize: "var(--space-layout-120)",
+        placeItems: "center",
+      }}
+    >
+      <Spinner size="lg" label="Loading recent projects" />
+    </section>
+  ),
+};
+
 export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },

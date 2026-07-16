@@ -93,26 +93,27 @@ describe("native layout primitives", () => {
       | HTMLDivElement
       | undefined;
     expect(root).toHaveClass("root", "responsive");
-    expect(root.style.getPropertyValue("--grid-cols")).toBe(
+    expect(root.style.getPropertyValue("--dt-grid-columns")).toBe(
       "repeat(1, minmax(0, 1fr))",
     );
-    expect(root.style.getPropertyValue("--grid-cols-tablet")).toBe(
+    expect(root.style.getPropertyValue("--dt-grid-columns-tablet")).toBe(
       "repeat(2, minmax(0, 1fr))",
     );
-    expect(root.style.getPropertyValue("--grid-cols-desktop")).toBe(
+    expect(root.style.getPropertyValue("--dt-grid-columns-desktop")).toBe(
       "repeat(3, minmax(0, 1fr))",
     );
-    expect(root.style.getPropertyValue("--grid-cols-wide")).toBe(
+    expect(root.style.getPropertyValue("--dt-grid-columns-wide")).toBe(
       "repeat(4, minmax(0, 1fr))",
     );
-    expect(root.style.getPropertyValue("--grid-cols-ultra")).toBe(
+    expect(root.style.getPropertyValue("--dt-grid-columns-ultra")).toBe(
       "repeat(6, minmax(0, 1fr))",
     );
-    expect(root.style.getPropertyValue("--grid-gap")).toBe("1.25rem");
-    expect(root.style.getPropertyValue("--grid-gap-tablet")).toBe("2rem");
-    expect(root.style.getPropertyValue("--grid-gap-desktop")).toBe("2.5rem");
-    expect(root.style.getPropertyValue("--grid-gap-wide")).toBe("3rem");
-    expect(root.style.getPropertyValue("--grid-gap-ultra")).toBe("4rem");
+    expect(root.style.getPropertyValue("--dt-grid-gap")).toBe("1.25rem");
+    expect(root.style.getPropertyValue("--dt-grid-gap-tablet")).toBe("2rem");
+    expect(root.style.getPropertyValue("--dt-grid-gap-desktop")).toBe("2.5rem");
+    expect(root.style.getPropertyValue("--dt-grid-gap-wide")).toBe("3rem");
+    expect(root.style.getPropertyValue("--dt-grid-gap-ultra")).toBe("4rem");
+    expect(root.style.getPropertyValue("--grid-gap-desktop")).toBe("");
     expect(root.style.gridTemplateColumns).toBe("");
     expect(root.style.gap).toBe("");
     expect(root.style.rowGap).toBe("0.5rem");

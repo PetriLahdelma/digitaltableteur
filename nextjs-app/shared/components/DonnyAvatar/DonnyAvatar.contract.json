@@ -3,7 +3,7 @@
   "name": "DonnyAvatar",
   "tier": "molecule",
   "group": "display",
-  "status": "beta",
+  "status": "stable",
   "description": "The assistant's animated avatar with thinking, speaking, and idle mood states, used inside ChatWidget and Donny surfaces.",
   "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=492-1578",
   "radixPrimitive": null,
@@ -35,7 +35,9 @@
     "reviewed": true,
     "forcedColorsVerified": true,
     "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-10 — Figma link wired to the existing DonnyAvatar component (Atoms page, node 492-1578)."
+    "reviewedNote": "2026-07-16 beta->stable: ChatToggle and ChatHeader production consumers documented; complete base/light/dark/Chromium forced-colors AT matrix captured for Default, Playground, Example, and ForcedColors. DONNY_STATES and isDonnyState now expose the validated 25-state vocabulary.",
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true
   },
   "tokens": {
     "colors": [
@@ -44,7 +46,13 @@
     "spacing": []
   },
   "lightDarkVerified": true,
-  "consumers": [],
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/layout.tsx",
+      "since": "2026-06-04"
+    }
+  ],
   "schemaVersion": 2,
   "props": {
     "state": {
@@ -76,7 +84,8 @@
         "skeptical",
         "sleepy",
         "sleeping"
-      ]
+      ],
+      "description": "Current expression or assistant lifecycle state."
     },
     "size": {
       "optional": true,
@@ -86,67 +95,83 @@
         "md",
         "lg",
         "xl"
-      ]
+      ],
+      "description": "Rendered avatar size."
     },
     "className": {
       "optional": true,
-      "type": "string"
+      "type": "string",
+      "description": "Additional CSS class."
     },
     "onTransitionEnd": {
       "optional": true,
-      "type": "() => void"
+      "type": "() => void",
+      "description": "Called when the state transition animation ends."
     },
     "showLabel": {
       "optional": true,
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Shows the current state label for diagnostics."
     },
     "trackMouse": {
       "optional": true,
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Makes the eyes follow the pointer."
     },
     "proximitySelectors": {
       "optional": true,
-      "type": "string[]"
+      "type": "string[]",
+      "description": "CSS selectors whose pointer proximity can trigger curious or playful behavior."
     },
     "onProximityChange": {
       "optional": true,
-      "type": "(isNearTarget: boolean, targetSelector?: string) => void"
+      "type": "(isNearTarget: boolean, targetSelector?: string) => void",
+      "description": "Called when proximity to a tracked target changes."
     },
     "proximityThreshold": {
       "optional": true,
-      "type": "number"
+      "type": "number",
+      "description": "Pointer proximity threshold in pixels."
     },
     "enableIdleExpressions": {
       "optional": true,
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Enables randomized idle expressions."
     },
     "idleExpressionInterval": {
       "optional": true,
-      "type": "number"
+      "type": "number",
+      "description": "Base idle-expression interval in milliseconds, randomized by 50 percent."
     },
     "isSpeaking": {
       "optional": true,
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Animates the mouth during streaming responses."
     },
     "enableSleepDetection": {
       "optional": true,
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Enables sleepy and sleeping states after pointer inactivity."
     },
     "sleepyDelay": {
       "optional": true,
-      "type": "number"
+      "type": "number",
+      "description": "Inactivity delay before the sleepy state, in milliseconds."
     },
     "sleepDelay": {
       "optional": true,
-      "type": "number"
+      "type": "number",
+      "description": "Inactivity delay before the sleeping state, in milliseconds."
     },
     "decorative": {
       "optional": true,
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Removes role and label when a parent control owns the accessible name."
     }
   },
   "forbiddenUse": [
-    "Bypass design tokens or skip forced-colors verification at beta."
+    "Use a decorative DonnyAvatar as the only accessible name for a chat control.",
+    "Drive lifecycle-only states such as loading or typing from decorative marketing copy."
   ],
   "displayName": "DonnyAvatar",
   "keywords": [
@@ -154,10 +179,52 @@
     "avatar",
     "chatbot",
     "mood",
-    "expression"
+    "expression",
+    "assistant state",
+    "streaming avatar"
   ],
   "dense": "Donny assistant avatar with mood/action states (distinct eye expressions) used by the chat widget",
   "usage": {
-    "description": "The assistant's animated avatar with mood states (thinking, speaking, idle) used inside ChatWidget and Donny marketing surfaces."
+    "description": "The assistant's animated avatar with mood and lifecycle states used inside ChatWidget and Donny surfaces. DONNY_STATES and isDonnyState expose the complete validated state vocabulary to hosts.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Use lifecycle states such as listening, thinking, searching, typing, and loading to reflect actual assistant work."
+      },
+      {
+        "guidance": true,
+        "description": "Set decorative when Donny sits inside an already-labelled button or link."
+      },
+      {
+        "guidance": true,
+        "description": "Validate external state strings with isDonnyState before rendering."
+      },
+      {
+        "guidance": false,
+        "description": "Do not use random emotional states to imply work or success that has not occurred."
+      }
+    ],
+    "anatomy": [
+      {
+        "name": "Face",
+        "required": true,
+        "description": "Brand container and state-specific eye geometry."
+      },
+      {
+        "name": "Mouth",
+        "required": false,
+        "description": "Appears only for expressions where it adds meaning or speaking motion."
+      },
+      {
+        "name": "State decoration",
+        "required": false,
+        "description": "Sparkles, question mark, sleep bubble, or other state-specific detail."
+      },
+      {
+        "name": "Diagnostic label",
+        "required": false,
+        "description": "Optional visible state id intended for testing and demos."
+      }
+    ]
   }
 }

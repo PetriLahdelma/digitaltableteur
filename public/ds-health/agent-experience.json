@@ -1,0 +1,4766 @@
+{
+  "schemaVersion": 1,
+  "scoringModel": "Evidence scorecard only. No weighted aggregate or model-authored quality score is produced.",
+  "componentCount": 161,
+  "dimensions": {
+    "apiEntropy": {
+      "description": "Raw API surface and finite-choice state-space indicators; lower is not automatically better.",
+      "totalProps": 1071,
+      "maximumPropCount": 27,
+      "maximumFiniteStateBits": 16.383,
+      "largestSurfaces": [
+        {
+          "name": "Stack",
+          "tier": "atom",
+          "propCount": 8,
+          "requiredPropCount": 1,
+          "documentedPropCount": 8,
+          "booleanAxisCount": 1,
+          "finiteChoiceAxisCount": 5,
+          "finiteStateBits": 16.383,
+          "slotCount": 0,
+          "relationshipCount": 0
+        },
+        {
+          "name": "HeroSection",
+          "tier": "pattern",
+          "propCount": 9,
+          "requiredPropCount": 1,
+          "documentedPropCount": 9,
+          "booleanAxisCount": 0,
+          "finiteChoiceAxisCount": 5,
+          "finiteStateBits": 14.646,
+          "slotCount": 0,
+          "relationshipCount": 0
+        },
+        {
+          "name": "Icon",
+          "tier": "atom",
+          "propCount": 12,
+          "requiredPropCount": 1,
+          "documentedPropCount": 12,
+          "booleanAxisCount": 4,
+          "finiteChoiceAxisCount": 4,
+          "finiteStateBits": 13.562,
+          "slotCount": 0,
+          "relationshipCount": 0
+        },
+        {
+          "name": "Button",
+          "tier": "molecule",
+          "propCount": 19,
+          "requiredPropCount": 0,
+          "documentedPropCount": 17,
+          "booleanAxisCount": 4,
+          "finiteChoiceAxisCount": 5,
+          "finiteStateBits": 13.077,
+          "slotCount": 2,
+          "relationshipCount": 4
+        },
+        {
+          "name": "DonnyAvatar",
+          "tier": "molecule",
+          "propCount": 16,
+          "requiredPropCount": 0,
+          "documentedPropCount": 16,
+          "booleanAxisCount": 6,
+          "finiteChoiceAxisCount": 2,
+          "finiteStateBits": 12.644,
+          "slotCount": 0,
+          "relationshipCount": 0
+        },
+        {
+          "name": "Modal",
+          "tier": "molecule",
+          "propCount": 19,
+          "requiredPropCount": 1,
+          "documentedPropCount": 19,
+          "booleanAxisCount": 4,
+          "finiteChoiceAxisCount": 3,
+          "finiteStateBits": 11.807,
+          "slotCount": 3,
+          "relationshipCount": 0
+        },
+        {
+          "name": "List",
+          "tier": "molecule",
+          "propCount": 9,
+          "requiredPropCount": 1,
+          "documentedPropCount": 9,
+          "booleanAxisCount": 0,
+          "finiteChoiceAxisCount": 5,
+          "finiteStateBits": 11.174,
+          "slotCount": 1,
+          "relationshipCount": 0
+        },
+        {
+          "name": "FlexBox",
+          "tier": "atom",
+          "propCount": 10,
+          "requiredPropCount": 1,
+          "documentedPropCount": 10,
+          "booleanAxisCount": 0,
+          "finiteChoiceAxisCount": 5,
+          "finiteStateBits": 11.077,
+          "slotCount": 0,
+          "relationshipCount": 0
+        },
+        {
+          "name": "Container",
+          "tier": "atom",
+          "propCount": 5,
+          "requiredPropCount": 1,
+          "documentedPropCount": 5,
+          "booleanAxisCount": 1,
+          "finiteChoiceAxisCount": 2,
+          "finiteStateBits": 10.798,
+          "slotCount": 0,
+          "relationshipCount": 0
+        },
+        {
+          "name": "PhoneInput",
+          "tier": "molecule",
+          "propCount": 10,
+          "requiredPropCount": 1,
+          "documentedPropCount": 9,
+          "booleanAxisCount": 2,
+          "finiteChoiceAxisCount": 1,
+          "finiteStateBits": 9.937,
+          "slotCount": 0,
+          "relationshipCount": 0
+        },
+        {
+          "name": "GridBlock",
+          "tier": "pattern",
+          "propCount": 8,
+          "requiredPropCount": 1,
+          "documentedPropCount": 8,
+          "booleanAxisCount": 0,
+          "finiteChoiceAxisCount": 5,
+          "finiteStateBits": 9.492,
+          "slotCount": 0,
+          "relationshipCount": 0
+        },
+        {
+          "name": "StoryBlock",
+          "tier": "pattern",
+          "propCount": 11,
+          "requiredPropCount": 2,
+          "documentedPropCount": 11,
+          "booleanAxisCount": 0,
+          "finiteChoiceAxisCount": 5,
+          "finiteStateBits": 9.077,
+          "slotCount": 1,
+          "relationshipCount": 0
+        }
+      ]
+    },
+    "promptability": {
+      "description": "Golden intent queries resolved by the production ranker.",
+      "passed": 20,
+      "total": 20,
+      "rate": 1,
+      "minimumRate": 0.9
+    },
+    "recoverability": {
+      "description": "Components with negative guidance, replacement guidance, or executable prop relationships.",
+      "coverage": {
+        "numerator": 161,
+        "denominator": 161,
+        "rate": 1
+      },
+      "machineRelationshipComponents": 3
+    },
+    "composability": {
+      "description": "Components connected to the relationship graph plus golden pattern retrieval evidence.",
+      "componentCoverage": {
+        "numerator": 81,
+        "denominator": 161,
+        "rate": 0.5031
+      },
+      "patternRetrieval": {
+        "passed": 11,
+        "total": 11,
+        "rate": 1,
+        "minimumRate": 1
+      }
+    },
+    "contractClarity": {
+      "description": "Source-backed prop documentation and complete intent/guidance/a11y/example/rationale evidence.",
+      "propDocumentation": {
+        "numerator": 957,
+        "denominator": 1071,
+        "rate": 0.8936
+      },
+      "completeContractEvidence": {
+        "numerator": 138,
+        "denominator": 161,
+        "rate": 0.8571
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Accordion",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 1,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 2.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "AlertBanner",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 0,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 5.585,
+        "slotCount": 2,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ArticleCard",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 2,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ArticleContent",
+      "status": "stable",
+      "tier": "organism",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 1,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ArticleShareSection",
+      "status": "stable",
+      "tier": "organism",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 2,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "AspectRatio",
+      "status": "beta",
+      "tier": "atom",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 1,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Author",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 2,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "AuthorBio",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Avatar",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 12,
+        "requiredPropCount": 0,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 4.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "AvatarGroup",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Badge",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 11,
+        "requiredPropCount": 1,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 3,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 7.907,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "BlogCategoryFilter",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 3,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 4.17,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "BlogMediaImage",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 12,
+        "requiredPropCount": 2,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 3,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 4,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "BlogNav",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 0,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Breadcrumb",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Button",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 19,
+        "requiredPropCount": 0,
+        "documentedPropCount": 17,
+        "booleanAxisCount": 4,
+        "finiteChoiceAxisCount": 5,
+        "finiteStateBits": 13.077,
+        "slotCount": 2,
+        "relationshipCount": 4
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "href",
+            "submits"
+          ],
+          "reason": "`href` and `submits` never coexist in a valid ButtonProps branch."
+        },
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "clickAction",
+            "href"
+          ],
+          "reason": "`clickAction` and `href` never coexist in a valid ButtonProps branch."
+        },
+        {
+          "kind": "requires",
+          "prop": "target",
+          "requires": [
+            "href"
+          ],
+          "reason": "Whenever `target` is accepted by ButtonProps, `href` must also be present."
+        },
+        {
+          "kind": "requires",
+          "prop": "rel",
+          "requires": [
+            "href"
+          ],
+          "reason": "Whenever `rel` is accepted by ButtonProps, `href` must also be present."
+        }
+      ]
+    },
+    {
+      "name": "ButtonGroup",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 1,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Card",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 16,
+        "requiredPropCount": 0,
+        "documentedPropCount": 14,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 6.907,
+        "slotCount": 5,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "CategoryFilter",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 3,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.17,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Center",
+      "status": "beta",
+      "tier": "atom",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 1,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 7.476,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ChatWidget",
+      "status": "beta",
+      "tier": "organism",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 0,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Checkbox",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 11,
+        "requiredPropCount": 0,
+        "documentedPropCount": 11,
+        "booleanAxisCount": 5,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 6.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "CheckboxGroup",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 2,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ClientLogoMarquee",
+      "status": "beta",
+      "tier": "organism",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 1,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "CodeBlockWindow",
+      "status": "stable",
+      "tier": "organism",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 1,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "CodeSnippet",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 1,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 6.907,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Combobox",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 11,
+        "requiredPropCount": 4,
+        "documentedPropCount": 11,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "CommandPalette",
+      "status": "beta",
+      "tier": "organism",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 3,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ComplianceCard",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 2,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ContactForm",
+      "status": "beta",
+      "tier": "organism",
+      "api": {
+        "propCount": 0,
+        "requiredPropCount": 0,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ContactFormEditorial",
+      "status": "stable",
+      "tier": "organism",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 0,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Container",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 1,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 10.798,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "CookieConsent",
+      "status": "beta",
+      "tier": "organism",
+      "api": {
+        "propCount": 1,
+        "requiredPropCount": 0,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Designerman",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 1,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Display",
+      "status": "beta",
+      "tier": "atom",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 1,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2.322,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Divider",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 0,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "DonnyAvatar",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 16,
+        "requiredPropCount": 0,
+        "documentedPropCount": 16,
+        "booleanAxisCount": 6,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 12.644,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "EmailSignatureGenerator",
+      "status": "beta",
+      "tier": "organism",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 0,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "EmptyState",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.17,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "EnhancedProjectCard",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 12,
+        "requiredPropCount": 3,
+        "documentedPropCount": 12,
+        "booleanAxisCount": 3,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 5,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ExpandableSection",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 2,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "FileUpload",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 15,
+        "requiredPropCount": 2,
+        "documentedPropCount": 14,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 3,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "FilterChip",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 2,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 4.17,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "FlexBox",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 10,
+        "requiredPropCount": 1,
+        "documentedPropCount": 10,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 5,
+        "finiteStateBits": 11.077,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "FormField",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 2,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "FormFieldEditorial",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 3.322,
+        "slotCount": 0,
+        "relationshipCount": 1
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": [
+        {
+          "kind": "requires",
+          "prop": "children",
+          "requires": [
+            "type"
+          ],
+          "reason": "Whenever `children` is accepted by FormFieldEditorialProps, `type` must also be present."
+        }
+      ]
+    },
+    {
+      "name": "Gallery",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 1,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Grid",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 18,
+        "requiredPropCount": 1,
+        "documentedPropCount": 17,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 8.409,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "GroupLabel",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 1,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "HelperText",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Icon",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 12,
+        "requiredPropCount": 1,
+        "documentedPropCount": 12,
+        "booleanAxisCount": 4,
+        "finiteChoiceAxisCount": 4,
+        "finiteStateBits": 13.562,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "IconButton",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 2,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.17,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ImagePlaceholder",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 10,
+        "requiredPropCount": 2,
+        "documentedPropCount": 10,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 4,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Kbd",
+      "status": "beta",
+      "tier": "atom",
+      "api": {
+        "propCount": 1,
+        "requiredPropCount": 0,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Label",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "LanguageSwitcher",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 3,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Link",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 0,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "LinkedInQuoteCard",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 10,
+        "requiredPropCount": 4,
+        "documentedPropCount": 10,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "List",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 9,
+        "requiredPropCount": 1,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 5,
+        "finiteStateBits": 11.174,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "LocationCard",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 2,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Logo",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 0,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 3,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 3,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "MCPActionButton",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "MacWindowFrame",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "MarkdownMessage",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Menu",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 1,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Modal",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 19,
+        "requiredPropCount": 1,
+        "documentedPropCount": 19,
+        "booleanAxisCount": 4,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 11.807,
+        "slotCount": 3,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "MultiCombobox",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 11,
+        "requiredPropCount": 4,
+        "documentedPropCount": 11,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "NavLink",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 2,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "NavMenuList",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 1,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "NewsletterWaitlist",
+      "status": "beta",
+      "tier": "organism",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 0,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "NextLayout",
+      "status": "beta",
+      "tier": "template",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 1,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "OpenHours",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 0,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 3,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 3,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Pagination",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 3,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "PersonCard",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 27,
+        "requiredPropCount": 5,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "PhoneInput",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 10,
+        "requiredPropCount": 1,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 9.937,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Progress",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 0,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 4.907,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ProjectCard",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 3,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ProjectGallery",
+      "status": "stable",
+      "tier": "organism",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 4.17,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ProjectNav",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 1,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Radio",
+      "status": "beta",
+      "tier": "atom",
+      "api": {
+        "propCount": 9,
+        "requiredPropCount": 3,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 4,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 6.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "RadioGroup",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 12,
+        "requiredPropCount": 2,
+        "documentedPropCount": 12,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 4.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ReadingProgress",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 1,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Section",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 4.807,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "SecureCVDownload",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 0,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 3.807,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "SegmentedControl",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 4,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Select",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 1,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 3.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "SelectableCard",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "SentrySummaryCard",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 1,
+        "requiredPropCount": 0,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ServiceCard",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 2,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ServicesGrid",
+      "status": "beta",
+      "tier": "organism",
+      "api": {
+        "propCount": 1,
+        "requiredPropCount": 0,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "SiteTree",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Skeleton",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 0,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 3.322,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "SkipLink",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 0,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "SocialIconLink",
+      "status": "alpha",
+      "tier": "atom",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 3,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.585,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "SocialShare",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 2,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Spacer",
+      "status": "beta",
+      "tier": "atom",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 0,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Spinner",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 0,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "SplitButton",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 2,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Stack",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 1,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 5,
+        "finiteStateBits": 16.383,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "StatusDot",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 0,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 4.907,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Switch",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 10,
+        "requiredPropCount": 0,
+        "documentedPropCount": 10,
+        "booleanAxisCount": 4,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 7.17,
+        "slotCount": 1,
+        "relationshipCount": 1
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "checked",
+            "defaultChecked"
+          ],
+          "reason": "`checked` and `defaultChecked` never coexist in a valid SwitchProps branch."
+        }
+      ]
+    },
+    {
+      "name": "TableOfContents",
+      "status": "alpha",
+      "tier": "molecule",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 1,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Tabs",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 1,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.17,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Testimonial",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 4,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Text",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 0,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 8.714,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "TextArea",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 1,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "TextInput",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 13,
+        "requiredPropCount": 2,
+        "documentedPropCount": 12,
+        "booleanAxisCount": 3,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 8.17,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ThemeProvider",
+      "status": "beta",
+      "tier": "atom",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 1,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Timestamp",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 11,
+        "requiredPropCount": 1,
+        "documentedPropCount": 11,
+        "booleanAxisCount": 3,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 9,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Title",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 0,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 8.714,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Toast",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 1,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 8.492,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ToastStack",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 1,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "Tooltip",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "TransformingActionInput",
+      "status": "beta",
+      "tier": "molecule",
+      "api": {
+        "propCount": 12,
+        "requiredPropCount": 0,
+        "documentedPropCount": 12,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 3,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ValueCard",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 3,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "VisuallyHidden",
+      "status": "beta",
+      "tier": "atom",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 1,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "WipBadge",
+      "status": "beta",
+      "tier": "atom",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 0,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "WorkNav",
+      "status": "stable",
+      "tier": "molecule",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 0,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "AboutHero",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "AboutPageContent",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 0,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ArticleHero",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 1,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ArticleLayout",
+      "status": "alpha",
+      "tier": "template",
+      "api": {
+        "propCount": 9,
+        "requiredPropCount": 2,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ArticlePageTemplate",
+      "status": "alpha",
+      "tier": "template",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 1,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 3,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 3,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "BlogHero",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 0,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "BlogIndexContent",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 9,
+        "requiredPropCount": 0,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 4,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 7.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "CTASection",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 9,
+        "requiredPropCount": 2,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.322,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "CVDownloadSection",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 3,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ContactHero",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 1,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ContactInquiryPanel",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ContactPageContentEditorial",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 0,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ContentSection",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 9,
+        "requiredPropCount": 1,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 4.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "DesignSprintsSection",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 0,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Footer",
+      "status": "beta",
+      "tier": "pattern",
+      "api": {
+        "propCount": 1,
+        "requiredPropCount": 0,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "GridBlock",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 1,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 5,
+        "finiteStateBits": 9.492,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "HeroSection",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 9,
+        "requiredPropCount": 1,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 5,
+        "finiteStateBits": 14.646,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "HighlightSection",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 10,
+        "requiredPropCount": 2,
+        "documentedPropCount": 10,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "HomeHero",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 0,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ManifestoSection",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 2,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "NewsBulletin",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 0,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "PageLayout",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 11,
+        "requiredPropCount": 1,
+        "documentedPropCount": 10,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 8.322,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "PricingPageContent",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 1,
+        "requiredPropCount": 0,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ProcessBlock",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 10,
+        "requiredPropCount": 1,
+        "documentedPropCount": 10,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 4,
+        "finiteStateBits": 7.492,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ProjectDetailLayout",
+      "status": "alpha",
+      "tier": "template",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 2,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ProjectDetailTemplate",
+      "status": "alpha",
+      "tier": "template",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 4,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ProjectHero",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 11,
+        "requiredPropCount": 1,
+        "documentedPropCount": 11,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ProjectMetaSection",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 10,
+        "requiredPropCount": 1,
+        "documentedPropCount": 10,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.907,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ProofBlock",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 2,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "RelatedPosts",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "RelatedProjects",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ServicesBlock",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 13,
+        "requiredPropCount": 1,
+        "documentedPropCount": 13,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 5.907,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "ServicesSection",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 1,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "SiteFooter",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 1,
+        "requiredPropCount": 0,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "SiteHeader",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 0,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "StatsSection",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "StoryBlock",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 11,
+        "requiredPropCount": 2,
+        "documentedPropCount": 11,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 5,
+        "finiteStateBits": 9.077,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "TeamBlock",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 11,
+        "requiredPropCount": 1,
+        "documentedPropCount": 11,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 4,
+        "finiteStateBits": 8.492,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "ValuesSection",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 7,
+        "requiredPropCount": 2,
+        "documentedPropCount": 7,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 4.17,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "WorkCTA",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 0,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "WorkHero",
+      "status": "alpha",
+      "tier": "pattern",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 0,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": false,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "WorkMagneticField",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "WorkPreviewSection",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    }
+  ],
+  "ok": true,
+  "violations": [],
+  "generatedAt": "2026-07-16T17:36:46.373Z"
+}

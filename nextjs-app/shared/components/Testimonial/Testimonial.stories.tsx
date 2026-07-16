@@ -74,6 +74,7 @@ export default {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/Testimonial",
   component: Testimonial,
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

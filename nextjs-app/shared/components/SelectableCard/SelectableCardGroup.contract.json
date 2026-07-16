@@ -1,0 +1,140 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "SelectableCardGroup",
+  "displayName": "SelectableCardGroup",
+  "schemaVersion": 2,
+  "tier": "molecule",
+  "group": "form",
+  "status": "beta",
+  "description": "Selection owner for a set of SelectableCard options, with native fieldset semantics, controlled or uncontrolled state, and single or multiple selection.",
+  "dense": "fieldset owner for SelectableCard options; single or multiple selection; controlled with value/onValueChange or uncontrolled with defaultValue; owns legend, helper text and errors",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1288-2114",
+  "radixPrimitive": null,
+  "element": "fieldset",
+  "variants": {
+    "type": ["single", "multiple"],
+    "orientation": ["vertical", "horizontal"]
+  },
+  "slots": ["children"],
+  "asChild": false,
+  "subParts": ["legend", "options", "helperText", "error"],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": [
+      "Tab moves focus into the option set",
+      "Arrow keys move between native radios in a single-select set",
+      "Space selects or toggles the focused option"
+    ],
+    "ariaRequirements": [
+      "The fieldset has a visible legend",
+      "Helper and error messages are referenced by aria-describedby",
+      "An error sets aria-invalid and is announced through HelperText"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-07-16: reviewed the fieldset/legend structure, native radio and checkbox keyboard behavior, disabled propagation, helper/error relationships, and forced-colors story while adding independent React and web-component documentation.",
+    "forcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": ["--color-primary", "--color-border", "--color-surface"],
+    "spacing": [
+      "--space-internal-8",
+      "--space-internal-12",
+      "--space-internal-16"
+    ]
+  },
+  "lightDarkVerified": true,
+  "props": {
+    "type": {
+      "optional": true,
+      "type": "union",
+      "values": ["single", "multiple"],
+      "description": "Selection model: one exclusive value or several independent values."
+    },
+    "legend": {
+      "optional": false,
+      "type": "string",
+      "description": "Visible fieldset legend and accessible group name."
+    },
+    "name": {
+      "optional": true,
+      "type": "string",
+      "description": "Shared native radio name; generated when omitted."
+    },
+    "value": {
+      "optional": true,
+      "type": "string | string[]",
+      "description": "Controlled selection value matching the selection type."
+    },
+    "defaultValue": {
+      "optional": true,
+      "type": "string | string[]",
+      "description": "Initial selection for uncontrolled use."
+    },
+    "onValueChange": {
+      "optional": true,
+      "type": "(value: string | string[]) => void",
+      "description": "Receives the next selection after an option is activated."
+    },
+    "orientation": {
+      "optional": true,
+      "type": "union",
+      "values": ["vertical", "horizontal"],
+      "description": "Visual stack direction for the options."
+    },
+    "disabled": {
+      "optional": true,
+      "type": "boolean",
+      "description": "Disables every option in the fieldset."
+    },
+    "error": {
+      "optional": true,
+      "type": "string",
+      "description": "Validation message announced below the group."
+    },
+    "helperText": {
+      "optional": true,
+      "type": "string",
+      "description": "Supporting guidance suppressed while an error is present."
+    },
+    "className": {
+      "optional": true,
+      "type": "string",
+      "description": "Additional class name merged onto the fieldset."
+    },
+    "children": {
+      "optional": false,
+      "type": "ReactNode",
+      "description": "SelectableCard options owned by this group."
+    }
+  },
+  "composesWith": ["SelectableCard", "HelperText"],
+  "forbiddenUse": [
+    "mix SelectableCard with unrelated interactive children inside the group",
+    "pass value without updating it from onValueChange; use defaultValue for uncontrolled state"
+  ],
+  "keywords": [
+    "selectable card group",
+    "choice cards",
+    "radio cards",
+    "checkbox cards",
+    "plan selector"
+  ],
+  "usage": {
+    "description": "Use SelectableCardGroup when each choice needs more explanation than a plain radio or checkbox label. The group owns the question, selection state, validation and layout while SelectableCard children own option content.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Use a concise legend that states the decision being made."
+      },
+      {
+        "guidance": true,
+        "description": "Match value and defaultValue to type: strings for single selection and string arrays for multiple selection."
+      },
+      {
+        "guidance": false,
+        "description": "Do not use rich cards when plain RadioGroup or CheckboxGroup labels communicate the choices clearly."
+      }
+    ]
+  }
+}

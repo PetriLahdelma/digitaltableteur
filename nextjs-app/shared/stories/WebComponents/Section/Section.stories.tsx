@@ -28,7 +28,7 @@ function NativeSection({ content, spotlightTarget, ...args }: Args) {
 const meta = {
   title: "Web Components/Layout/Section",
   component: NativeSection,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "centered",

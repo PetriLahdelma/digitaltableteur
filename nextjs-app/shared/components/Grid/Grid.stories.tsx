@@ -5,6 +5,10 @@ import contract from "./Grid.contract.json";
 
 const defaultArgs = {
   columns: 2,
+  tabletColumns: undefined,
+  desktopColumns: undefined,
+  wideColumns: undefined,
+  ultraColumns: undefined,
   gap: "1rem",
   children: (
     <>

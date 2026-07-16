@@ -58,7 +58,7 @@ function NativeStack(args: Args) {
 const meta = {
   title: "Web Components/Layout/Stack",
   component: NativeStack,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-stack flex primitive." } },

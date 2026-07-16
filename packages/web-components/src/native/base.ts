@@ -48,6 +48,37 @@ export function stringAttribute(
   return element.getAttribute(name) ?? fallback;
 }
 
+const SAFE_HREF_PARSE_BASE = "https://example.invalid";
+const SAFE_HREF_PROTOCOLS = new Set(["http:", "https:", "mailto:", "tel:"]);
+
+/**
+ * Neutralizes consumer-supplied hrefs: relative paths pass through,
+ * absolute URLs must be http(s)/mailto/tel, protocol-relative and
+ * javascript:-style schemes collapse to "#".
+ */
+export function safeHref(value: string): string {
+  const href = value.trim();
+  if (!href || href.startsWith("//")) return "#";
+  if (
+    href.startsWith("/") ||
+    href.startsWith("./") ||
+    href.startsWith("../") ||
+    href.startsWith("?") ||
+    href.startsWith("#")
+  ) {
+    return href;
+  }
+  try {
+    return SAFE_HREF_PROTOCOLS.has(
+      new URL(href, SAFE_HREF_PARSE_BASE).protocol,
+    )
+      ? href
+      : "#";
+  } catch {
+    return "#";
+  }
+}
+
 export function hasDefaultSlotContent(element: Element): boolean {
   return [...element.childNodes].some((node) => {
     if (node.nodeType === 1 && (node as Element).hasAttribute("slot")) {

@@ -1,6 +1,6 @@
 {
   "packageName": "@digitaltableteur/react",
-  "packageVersion": "0.1.16",
+  "packageVersion": "0.1.17",
   "packageExports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -101,6 +101,7 @@
     "FileUpload",
     "FilterChip",
     "FlexBox",
+    "formatTimestamp",
     "FormField",
     "Gallery",
     "getTabPanelProps",
@@ -167,6 +168,7 @@
     "TextArea",
     "TextInput",
     "ThemeProvider",
+    "Timestamp",
     "Title",
     "Toast",
     "ToastRuntimeProvider",
@@ -211,9 +213,11 @@
       "CodeBlockWindow",
       "CodeSnippet",
       "ExpandableSection",
+      "formatTimestamp",
       "Gallery",
       "List",
       "ReadingProgress",
+      "Timestamp",
       "ValueCard"
     ],
     "feedback": [
@@ -380,6 +384,7 @@
       "CodeSnippetVariant",
       "ExpandableSection",
       "ExpandableSectionProps",
+      "formatTimestamp",
       "Gallery",
       "GalleryProps",
       "List",
@@ -387,6 +392,10 @@
       "ReadingProgress",
       "ReadingProgressProps",
       "SupportedLanguage",
+      "Timestamp",
+      "TimestampFormat",
+      "TimestampProps",
+      "TimestampSize",
       "ValueCard",
       "ValueCardProps"
     ],

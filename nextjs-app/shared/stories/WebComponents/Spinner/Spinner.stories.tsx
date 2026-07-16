@@ -15,7 +15,7 @@ function NativeSpinner(args: Args) {
 const meta = {
   title: "Web Components/Feedback/Spinner",
   component: NativeSpinner,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-spinner custom element." } },
@@ -45,9 +45,31 @@ export const WithVisibleLabel: Story = {
   ...exampleStory,
   render: () => (
     <Row>
-      <NativeElement tagName="dt-spinner" attributes={{ label: "Loading" }} />
-      <span>Loading case studies...</span>
+      <NativeElement
+        tagName="dt-spinner"
+        attributes={{ label: "Loading application", size: "lg" }}
+      />
+      <span aria-hidden="true">Loading</span>
     </Row>
+  ),
+};
+export const RegionLoading: Story = {
+  ...exampleStory,
+  render: () => (
+    <section
+      aria-busy="true"
+      aria-label="Recent projects"
+      style={{
+        display: "grid",
+        minBlockSize: "var(--space-layout-120)",
+        placeItems: "center",
+      }}
+    >
+      <NativeElement
+        tagName="dt-spinner"
+        attributes={{ label: "Loading recent projects", size: "lg" }}
+      />
+    </section>
   ),
 };
 export const Example: Story = {

@@ -77,102 +77,11 @@
   color: var(--secondary-text-color);
 }
 
-/* Toggle switch (inspired by HDS but using DT tokens) */
-
 .categoryToggle {
   display: flex;
   flex-shrink: 0;
   align-items: center;
   gap: var(--space-layout-16);
-}
-
-.switch {
-  display: inline-block;
-  position: relative;
-  width: 44px;
-  height: 24px;
-  cursor: pointer;
-}
-
-.switch input {
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
-
-.slider {
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  background-color: var(--color-switch-track-off);
-  transition: background-color 0.2s ease;
-}
-
-/* High-contrast black: on a pure-black surface a flat grey track can't contrast
-   with BOTH the background and the white knob, so outline the track (pill reads
-   on black). box-shadow (not border) keeps the knob's box geometry intact so it
-   stays centered. Scoped to HCB; light/dark/HCW unchanged. */
-
-:global(.themeHCB) .slider {
-  box-shadow: 0 0 0 1px var(--color-title);
-}
-
-/* Off-state track background. Stated at the same specificity as the checked
-   rule below (0,3,1) because the Modal content reset
-   (`.content :is(p, span, div) { background: transparent }`, 0,2,1) otherwise
-   outspecifies a bare `.slider` and makes the off track invisible on the dark
-   modal surface. */
-
-.switch input:not(:checked) + .slider {
-  background-color: var(--color-switch-track-off);
-}
-
-.slider::before {
-  /* Knob stays white in every theme, like native platform switches */
-  --cookie-knob: #fff;
-
-  position: absolute;
-  bottom: 3px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background-color: var(--cookie-knob);
-  transition: transform 0.2s ease;
-  content: "";
-  inset-inline-start: 3px;
-}
-
-/* HCB: dark ring keeps the white knob distinct from the track (box-shadow, not
-   border, so the knob keeps its 18px box and stays centered). */
-
-:global(.themeHCB) .slider::before {
-  box-shadow: 0 0 0 1px var(--main-body-background-color);
-}
-
-.switch input:checked + .slider {
-  background-color: var(--color-primary);
-}
-
-.switch input:checked + .slider::before {
-  transform: translateX(20px);
-}
-
-.switch input:disabled + .slider {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-/* HCB disabled: opacity dims track and knob to the same grey (the knob
-   vanishes), so use a distinct dark track at full opacity instead. */
-
-:global(.themeHCB) input:disabled + .slider {
-  background-color: var(--color-disabled-bg);
-  opacity: 1;
-}
-
-.switch input:focus-visible + .slider {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
 }
 
 /* Footer actions */
@@ -223,13 +132,5 @@
 
   .categoryToggle {
     align-self: flex-start;
-  }
-}
-
-/* Accessibility: reduce motion */
-@media (prefers-reduced-motion: reduce) {
-  .slider,
-  .slider::before {
-    transition: none;
   }
 }

@@ -3,7 +3,7 @@
     "name": "WorkNav",
     "tier": "molecule",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Work section sub-navigation: a back-to-index action plus previous/next controls for stepping through the portfolio case studies.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1027-2672",
     "radixPrimitive": null,
@@ -11,7 +11,23 @@
     "props": {
         "currentPath": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Active route used to compute previous and next state; defaults to the navigation runtime pathname."
+        },
+        "pages": {
+            "optional": true,
+            "type": "readonly WorkNavPage[]",
+            "description": "Ordered case-study paths. Defaults to the bundled legacy sequence."
+        },
+        "onNavigate": {
+            "optional": true,
+            "type": "(path: string) => void",
+            "description": "Host navigation callback. Defaults to the configured navigation runtime."
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Disables every action while host navigation is pending."
         }
     },
     "variants": {},
@@ -30,18 +46,86 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all 6 stories; 4-mode AT snapshots captured and compare-clean (15 yamls). Rendered in a nav landmark labelled via workNavLabel (en/fi/sv). Composes verified beta Button/Icon primitives; no own animation so reduced-motion is N/A.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-16 beta->stable: production NextWorkNav now composes WorkNav with the live project registry while retaining prefetch and transition deduplication; required-story AT snapshots and Chromium forced-colors were recaptured.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/dsharp-design-system/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/finnish-transport-agency/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/garage-junction/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/helsinki-design-system/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/illustrations/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/intrum/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/knobsmith-audio/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/llm-component-schema/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/new-things-co/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/NextWorkNav.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/project-spine/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/raw-view/page.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "composesWith": [
         "Button",
         "Icon"
+    ],
+    "forbiddenUse": [
+        "Hardcode a second project sequence in an application wrapper; pass the live ordered pages collection.",
+        "Use WorkNav outside portfolio case-study chrome."
     ],
     "displayName": "WorkNav",
     "keywords": [
@@ -53,6 +137,32 @@
     ],
     "dense": "Work-section sub-navigation: back-to-index plus prev/next stepping for portfolio case-study pages",
     "usage": {
-        "description": "Sub-navigation for the work section. Renders a back-to-work action and previous/next controls that step through the case-study sequence, disabling the edges. Portfolio chrome; site-wide nav lives in SiteHeader."
+        "description": "Sub-navigation for the work section. Renders a back-to-work action and previous/next controls that step through the case-study sequence, disabling the edges. Portfolio chrome; site-wide nav lives in SiteHeader.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Pass the ordered project registry so navigation stays synchronized with published work."
+            },
+            {
+                "guidance": true,
+                "description": "Use onNavigate when the host needs prefetching, transitions, or navigation deduplication."
+            },
+            {
+                "guidance": false,
+                "description": "Do not infer a next project for an unknown route; both adjacent controls intentionally disable."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Back action",
+                "required": true,
+                "description": "Returns to the work index."
+            },
+            {
+                "name": "Adjacent actions",
+                "required": true,
+                "description": "Previous and next case-study controls with edge-state disabling."
+            }
+        ]
     }
 }

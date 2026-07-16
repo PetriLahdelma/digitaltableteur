@@ -23,7 +23,7 @@ How humans and agents build UI on Digitaltableteur without drift, visual regress
 2. MCP find_component_for_intent OR npm run find-component -- "…"
 3. MCP get_component_contract    # props, useWhen, avoidWhen, composesWith
 4. Implement with @dt/* imports
-5. MCP validate_component_usage  # or npm run lint:dt-usage on touched app files
+5. MCP validate_component_usage  # source scan or structured { component, props }
 6. npm run validate:components && npm run agent:eval
 ```
 
@@ -62,10 +62,13 @@ See [PHASE-05-SUMMARY.md](../.planning/milestones/ai-native-design-system/PHASE-
 |--------|-------------------|
 | Intent retrieval | `npm run agent:eval` → golden-intents (20 cases, ≥85%) |
 | Pattern composition | `npm run agent:eval:patterns` — 10 layout recipes |
+| Agent Experience | `npm run audit:agent-experience` — evidence scorecard + API complexity ratchet |
 | Local audit bundle | `npm run agentic-ds-audit` |
 | Manifest health | Schema, usage coverage, agent blocks, graph |
 | Contract drift | `npm run check:contract-drift --strict` |
 | Import policy | `npm run lint:dt-usage` |
+
+AX method and limitations: [design-system/agent-experience.md](./design-system/agent-experience.md).
 
 Run intent eval alone:
 

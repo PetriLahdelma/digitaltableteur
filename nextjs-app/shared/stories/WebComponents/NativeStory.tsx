@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useCallback, useLayoutEffect, useRef } from "react";
 import { expect } from "storybook/test";
 import "../../../../packages/web-components/src/register";
 
@@ -6,7 +6,6 @@ export type AttributeValue = string | number | boolean | null | undefined;
 
 export const nativeStoryParameters = {
   layout: "centered",
-  contractStatus: "stable",
   implementation: "web-component",
   a11y: { test: "error" },
 } as const;
@@ -16,14 +15,26 @@ export function NativeElement({
   attributes = {},
   slot,
   children,
+  elementRef,
+  onClick,
 }: {
   tagName: string;
   attributes?: Record<string, AttributeValue>;
   slot?: string;
   children?: React.ReactNode;
+  elementRef?: React.Ref<HTMLElement>;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 }) {
   const ref = useRef<HTMLElement>(null);
   const appliedAttributes = useRef(new Set<string>());
+  const setRef = useCallback(
+    (element: HTMLElement | null) => {
+      ref.current = element;
+      if (typeof elementRef === "function") elementRef(element);
+      else if (elementRef) elementRef.current = element;
+    },
+    [elementRef],
+  );
 
   useLayoutEffect(() => {
     const element = ref.current;
@@ -39,7 +50,11 @@ export function NativeElement({
     }
   }, [attributes]);
 
-  return React.createElement(tagName, { ref, slot }, children);
+  return React.createElement(
+    tagName,
+    { ref: setRef, slot, onClick },
+    children,
+  );
 }
 
 export function Row({ children }: { children: React.ReactNode }) {
@@ -83,9 +98,44 @@ export function Stage({
   );
 }
 
-export function assertNative(tagName: string) {
+/**
+ * Token-styled semantic <button> for slotted trigger slots. Menus write
+ * aria-haspopup/aria-expanded onto the slotted element itself, so triggers
+ * must stay real buttons (a dt-button host would strand those attributes
+ * outside its shadow control); this keeps them presentable without losing
+ * that wiring.
+ */
+export function TriggerButton({
+  children,
+  ...rest
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & { slot?: string }) {
+  return (
+    <button
+      type="button"
+      style={{
+        font: "inherit",
+        fontWeight: 600,
+        padding: "0.5rem 1.25rem",
+        border: "1px solid var(--color-primary, #111)",
+        borderRadius: "var(--radius-md, 0.5rem)",
+        background: "var(--color-white, #fff)",
+        color: "var(--color-primary, #111)",
+        cursor: "pointer",
+      }}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+}
+
+export function assertNative(
+  tagName: string,
+  scope: "canvas" | "document" = "canvas",
+) {
   return async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-    const element = canvasElement.querySelector(tagName);
+    const root = scope === "document" ? document : canvasElement;
+    const element = root.querySelector(tagName);
     expect(customElements.get(tagName)).toBeDefined();
     expect(element?.shadowRoot).toBeTruthy();
   };

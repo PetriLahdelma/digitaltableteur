@@ -16,13 +16,13 @@ renders the trigger + fanned options and the open/close behavior.
 
 ## API
 
-| Prop               | Type                          | Notes                                   |
-| ------------------ | ----------------------------- | --------------------------------------- |
-| `languages`        | `LanguageSwitcherOption[]`    | `{ code, label, ariaLabel }` per locale |
-| `currentLang`      | `string`                      | Selected language code                  |
-| `onLanguageChange` | `(code: string) => void`      | Called when an option is chosen         |
-| `className`        | `string`                      | Classes on the `role=group` wrapper     |
-| `*ClassName`       | `string`                      | Style overrides for trigger/options     |
+| Prop               | Type                       | Notes                                   |
+| ------------------ | -------------------------- | --------------------------------------- |
+| `languages`        | `LanguageSwitcherOption[]` | `{ code, label, ariaLabel }` per locale |
+| `currentLang`      | `string`                   | Selected language code                  |
+| `onLanguageChange` | `(code: string) => void`   | Called when an option is chosen         |
+| `className`        | `string`                   | Classes on the `role=group` wrapper     |
+| `*ClassName`       | `string`                   | Style overrides for trigger/options     |
 
 ## Behavior
 
@@ -43,10 +43,10 @@ renders the trigger + fanned options and the open/close behavior.
 
 ## Do / don't
 
-- **Do** pass an `ariaLabel` per language (e.g. "Finnish"), not just the code.
-- **Do** keep language state in the parent and feed `currentLang` back.
-- **Don't** translate inside the component; labels/aria come from the caller.
-- **Don't** render it as the only nav — it complements, not replaces, navigation.
+- Do: pass an `ariaLabel` per language (e.g. "Finnish"), not just the code.
+- Do: keep language state in the parent and feed `currentLang` back.
+- Don't: translate inside the component; labels and accessible names come from the caller.
+- Don't: render it as the only navigation; it complements rather than replaces site navigation.
 
 ## Accessibility
 

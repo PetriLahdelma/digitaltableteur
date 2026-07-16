@@ -48,7 +48,7 @@ function NativeButton(args: ButtonArgs) {
 const meta = {
   title: "Web Components/Actions/Button",
   component: NativeButton,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-button custom element." } },

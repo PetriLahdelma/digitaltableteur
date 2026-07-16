@@ -93,6 +93,7 @@ page.on("pageerror", (err) => pageErrors.push(String(err).slice(0, 200)));
 
 let failed = false;
 const rows = [];
+const nativeDocsFailures = [];
 
 for (const { name, docsId } of PROVEN) {
   const contract = contractFor(name);
@@ -146,10 +147,49 @@ for (const { name, docsId } of PROVEN) {
   });
 }
 
+const indexResponse = await fetch(`${BASE}/index.json`);
+if (!indexResponse.ok) {
+  throw new Error(
+    `Unable to read Storybook index (${indexResponse.status} ${indexResponse.statusText})`,
+  );
+}
+const index = await indexResponse.json();
+const nativeDocs = Object.values(index.entries).filter(
+  (entry) => entry.type === "docs" && entry.title.startsWith("Web Components/"),
+);
+
+for (const entry of nativeDocs) {
+  await page.goto(`${BASE}/iframe.html?viewMode=docs&id=${entry.id}`, {
+    waitUntil: "domcontentloaded",
+  });
+  try {
+    await page.waitForSelector("[data-doc-block='doc-header']", {
+      timeout: 45000,
+    });
+    const overlayVisible = await page
+      .$eval(
+        ".sb-errordisplay",
+        (element) => getComputedStyle(element).display !== "none",
+      )
+      .catch(() => false);
+    if (overlayVisible) throw new Error("Storybook error overlay visible");
+  } catch (error) {
+    nativeDocsFailures.push(
+      `${entry.title}: ${error instanceof Error ? error.message : String(error)}`,
+    );
+    failed = true;
+  }
+}
+
 await browser.close();
 
 for (const row of rows) {
   console.log(`${row.ok ? "✓" : "✗"} ${row.name.padEnd(8)} ${row.detail}`);
+}
+if (nativeDocsFailures.length === 0) {
+  console.log(`✓ Web Components ${nativeDocs.length} docs pages`);
+} else {
+  for (const failure of nativeDocsFailures) console.log(`✗ ${failure}`);
 }
 if (pageErrors.length) {
   console.log("page errors:", pageErrors.slice(0, 5));

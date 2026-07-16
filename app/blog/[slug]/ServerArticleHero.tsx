@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { getPostMetaBySlug } from "@/app/blog/postMetadata";
 import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
 import { Container } from "@/nextjs-app/shared/components/Container";
+import Author from "@/nextjs-app/shared/components/Author/Author";
 
 function formatPublishedDate(iso?: string): string {
   if (!iso) return "";
@@ -74,21 +74,17 @@ export function ServerArticleHero({
               {excerpt}
             </p>
           ) : null}
-          {author || authorName ? (
-            <p className="mt-6 font-body text-sm text-muted-foreground">
-              By{" "}
-              {author?.slug ? (
-                <Link
-                  href={`/blog/authors/${author.slug}`}
-                  className="font-medium text-foreground underline underline-offset-2"
-                >
-                  {author.name}
-                </Link>
-              ) : (
-                <span className="font-medium text-foreground">
-                  {author?.name ?? authorName}
-                </span>
-              )}
+          {author?.imageUrl ? (
+            <div className="mt-6 flex justify-center">
+              <Author
+                name={author.name}
+                imageUrl={author.imageUrl}
+                profileUrl={`/blog/authors/${author.slug}`}
+              />
+            </div>
+          ) : authorName ? (
+            <p className="mt-6 font-body text-sm font-medium text-foreground">
+              By {authorName}
             </p>
           ) : null}
         </div>

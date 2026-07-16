@@ -8,6 +8,8 @@ import {
   vi,
 } from "vitest";
 import { DtIconElement } from "../../packages/web-components/src/native/icon";
+import { DtButtonElement } from "../../packages/web-components/src/native/button";
+import { DtIconButtonElement } from "../../packages/web-components/src/native/icon-button";
 import {
   DtModalElement,
   type DtModalDismissReason,
@@ -15,8 +17,14 @@ import {
 import { DtTooltipElement } from "../../packages/web-components/src/native/tooltip";
 
 beforeAll(() => {
+  if (!customElements.get("dt-button")) {
+    customElements.define("dt-button", DtButtonElement);
+  }
   if (!customElements.get("dt-icon")) {
     customElements.define("dt-icon", DtIconElement);
+  }
+  if (!customElements.get("dt-icon-button")) {
+    customElements.define("dt-icon-button", DtIconButtonElement);
   }
   if (!customElements.get("dt-modal")) {
     customElements.define("dt-modal", DtModalElement);
@@ -51,13 +59,46 @@ describe("native modal and tooltip", () => {
     modal.defaultOpen = true;
     document.body.append(modal);
 
+    const closeButton = modal.shadowRoot?.querySelector("dt-icon-button");
+    const button = closeButton?.shadowRoot?.querySelector("dt-button");
+    const icon = button?.shadowRoot?.querySelector("dt-icon");
+    expect(closeButton).toHaveAttribute("part", "close-button");
+    expect(closeButton).toHaveAttribute("label", "Close dialog");
+    expect(closeButton).toHaveAttribute("variant", "tertiary");
+    expect(closeButton).toHaveAttribute("icon", modal.closeIconName);
+    expect(icon?.getAttribute("name")).toBe(modal.closeIconName);
+    expect(icon?.shadowRoot?.querySelector("img, [onerror]")).toBeNull();
+    expect(
+      modal.shadowRoot?.querySelector(
+        "img, dt-icon-button img, dt-icon-button [onerror]",
+      ),
+    ).toBeNull();
+  });
+
+  it("uses the design-system IconButton for its close control", () => {
+    const modal = document.createElement("dt-modal") as DtModalElement;
+    modal.dialogTitle = "Composable dialog";
+    modal.showCloseIcon = true;
+    modal.defaultOpen = true;
+    document.body.append(modal);
+
     const closeButton = modal.shadowRoot?.querySelector(
       '[part="close-button"]',
     );
-    const icon = closeButton?.querySelector("dt-icon");
-    expect(closeButton?.children).toHaveLength(1);
-    expect(icon?.getAttribute("name")).toBe(modal.closeIconName);
-    expect(modal.shadowRoot?.querySelector("img")).toBeNull();
+    expect(closeButton?.tagName).toBe("DT-ICON-BUTTON");
+    expect(closeButton).toHaveAttribute("icon", "x");
+    expect(closeButton).toHaveAttribute("size", "md");
+  });
+
+  it("uses the design-system Button for its default acknowledgement", () => {
+    const modal = document.createElement("dt-modal") as DtModalElement;
+    modal.dialogTitle = "Acknowledgement";
+    modal.defaultOpen = true;
+    document.body.append(modal);
+
+    const action = modal.shadowRoot?.querySelector('[part="default-action"]');
+    expect(action?.tagName).toBe("DT-BUTTON");
+    expect(action).toHaveAttribute("label", "OK");
   });
 
   it("renders modal dialog semantics and closes itself when uncontrolled", async () => {
@@ -199,6 +240,38 @@ describe("native modal and tooltip", () => {
     expect(document.body.style.overflow).toBe("");
   });
 
+  it("includes nested design-system controls in the composed focus order", async () => {
+    const modal = document.createElement("dt-modal") as DtModalElement;
+    modal.dialogTitle = "Composed controls";
+    modal.showCloseIcon = true;
+
+    const field = document.createElement("dt-button");
+    field.setAttribute("label", "Body action");
+    field.setAttribute("autofocus", "");
+    modal.append(field);
+
+    const footer = document.createElement("dt-button");
+    footer.slot = "footer";
+    footer.setAttribute("label", "Save");
+    modal.append(footer);
+
+    document.body.append(modal);
+    modal.show();
+    await nextTick();
+    expect(document.activeElement).toBe(field);
+
+    footer.focus();
+    window.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Tab",
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    await nextTick();
+    expect(modal.shadowRoot?.activeElement?.tagName).toBe("DT-ICON-BUTTON");
+  });
+
   it("opens tooltip on hover after delay and wires aria-describedby onto the trigger", async () => {
     vi.useFakeTimers();
 
@@ -274,6 +347,24 @@ describe("native review regressions (#1224)", () => {
 
     modal.remove();
     expect(sibling.hasAttribute("inert")).toBe(false);
+  });
+
+  it("seeds default-open even when the attribute arrives after connection", () => {
+    const tooltip = document.createElement("dt-tooltip") as DtTooltipElement;
+    const trigger = document.createElement("button");
+    trigger.textContent = "Trigger";
+    tooltip.append(trigger);
+    document.body.append(tooltip); // frameworks apply attributes post-connect
+
+    tooltip.setAttribute("default-open", "");
+    expect(tooltip.open).toBe(true);
+
+    // Seeding is one-shot: after the host closes it, re-adding default-open
+    // must not override that interaction.
+    tooltip.removeAttribute("open");
+    tooltip.removeAttribute("default-open");
+    tooltip.setAttribute("default-open", "");
+    expect(tooltip.open).toBe(false);
   });
 
   it("re-appends the tooltip description after disconnect and reconnect", () => {

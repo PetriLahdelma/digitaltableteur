@@ -295,7 +295,7 @@ function NativeCardStory(args: CardArgs) {
 const meta = {
   title: "Web Components/Layout/Card",
   component: NativeCardStory,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

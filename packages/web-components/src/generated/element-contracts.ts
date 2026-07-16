@@ -656,69 +656,316 @@ export type DtCookieConsentElementContract = HTMLElement & {
   closeLabel?: string;
 };
 
+export type DtCodeSnippetElementContract = HTMLElement & {
+  code?: string;
+  language?: string;
+  showLineNumbers?: boolean;
+  ariaLabel?: string;
+  allowCopy?: boolean;
+  variant?: string;
+  maxLines?: number;
+};
+
+export type DtCodeBlockWindowElementContract = HTMLElement & {
+  windowTitle?: string;
+  caption?: string;
+  language?: string;
+  showLineNumbers?: boolean;
+  context?: string;
+};
+
+export type DtBreadcrumbElementContract = HTMLElement & {
+  items?: import("../native/breadcrumb").DtBreadcrumbItem[];
+  ariaLabel?: string;
+  underline?: string;
+  maxItems?: number;
+  collapseLabel?: string;
+  homeIcon?: boolean;
+};
+
+export type DtPaginationElementContract = HTMLElement & {
+  currentPage?: number;
+  totalPages?: number;
+  siblingCount?: number;
+  ariaLabel?: string;
+  previousLabel?: string;
+  nextLabel?: string;
+  pageLabel?: string;
+  pageParam?: string;
+};
+
+export type DtTimestampElementContract = HTMLElement & {
+  value?: string | number | Date;
+  format?: string;
+  autoThreshold?: number;
+  size?: string;
+  tone?: string;
+  showTimezone?: boolean;
+  tooltip?: boolean;
+  live?: boolean;
+  now?: string | number | Date;
+  locale?: string;
+};
+
+export type DtGroupLabelElementContract = HTMLElement & {
+  htmlFor?: string;
+  content?: string;
+  tooltipText?: string;
+  required?: boolean;
+  requiredText?: string;
+  optional?: boolean;
+  optionalText?: string;
+  hint?: string;
+  disabled?: boolean;
+  tooltip?: string;
+};
+
+export type DtMacWindowFrameElementContract = HTMLElement & {
+  titleKey?: string;
+  actionLabelKey?: string;
+  actionLabel?: string;
+  density?: string;
+  bodyLabel?: string;
+};
+
+export type DtFileUploadElementContract = HTMLElement & {
+  label?: string;
+  placeholder?: string;
+  helperText?: string;
+  uploadButtonLabel?: string;
+  clearButtonLabel?: string;
+  accept?: string;
+  maxSizeInBytes?: number;
+  sizeErrorMessage?: string;
+  error?: string;
+  value?: File | null;
+  disabled?: boolean;
+  required?: boolean;
+  appearance?: string;
+  name?: string;
+  inheritedDisabled?: boolean;
+};
+
+export type DtCategoryFilterElementContract = HTMLElement & {
+  categories?: import("../native/category-filter").DtCategoryOption[];
+  activeCategory?: string;
+  size?: string;
+  variant?: string;
+  ariaLabel?: string;
+};
+
+export type DtGalleryElementContract = HTMLElement & {
+  images?: import("../native/gallery").DtGalleryImage[];
+  minColumnWidth?: number;
+  gutter?: number;
+};
+
+export type DtReadingProgressElementContract = HTMLElement & {
+  target?: HTMLElement | null;
+  targetSelector?: string;
+  showPercentage?: boolean;
+  ariaLabel?: string;
+};
+
+export type DtSelectableCardElementContract = HTMLElement & {
+  value?: string;
+  selected?: boolean;
+  disabled?: boolean;
+  selectionType?: string;
+  name?: string;
+};
+
+export type DtSelectableCardGroupElementContract = HTMLElement & {
+  type?: string;
+  legend?: string;
+  name?: string;
+  value?: string | string[];
+  defaultValue?: string | string[];
+  orientation?: string;
+  disabled?: boolean;
+  error?: string;
+  helperText?: string;
+};
+
+export type DtLogoElementContract = HTMLElement & {
+  size?: number;
+  animated?: boolean;
+  badge?: boolean;
+  accessibleTitle?: string;
+  decorative?: boolean;
+};
+
+export type DtBlogMediaImageElementContract = HTMLElement & {
+  src?: string;
+  alt?: string;
+  fill?: boolean;
+  width?: number;
+  height?: number;
+  priority?: boolean;
+  sizes?: string;
+  srcSet?: string;
+  fit?: string;
+  fluid?: boolean;
+};
+
+export type DtAuthorElementContract = HTMLElement & {
+  name?: string;
+  imageUrl?: string;
+  size?: string;
+  profileUrl?: string;
+  bylinePrefix?: string;
+};
+
+export type DtSocialShareElementContract = HTMLElement & {
+  url?: string;
+  shareTitle?: string;
+  channels?: import("../native/social-share").DtSocialShareChannel[];
+  variant?: string;
+  showHeading?: boolean;
+  heading?: string;
+};
+
+export type DtBlogNavElementContract = HTMLElement & {
+  currentPath?: string;
+  pages?: import("../native/section-nav").DtSectionNavPage[];
+  disabled?: boolean;
+};
+
+export type DtWorkNavElementContract = HTMLElement & {
+  currentPath?: string;
+  pages?: import("../native/section-nav").DtSectionNavPage[];
+  disabled?: boolean;
+};
+
+export type DtPersonCardElementContract = HTMLElement & {
+  imageSrc?: string;
+  imageAlt?: string;
+  imageSrcSet?: string;
+  imageSizes?: string;
+  name?: string;
+  personTitle?: string;
+  email?: string;
+  linkedinUrl?: string;
+  linkedinLabel?: string;
+  githubUrl?: string;
+  githubLabel?: string;
+  facebookUrl?: string;
+  facebookLabel?: string;
+  twitterUrl?: string;
+  twitterLabel?: string;
+  dribbbleUrl?: string;
+  dribbbleLabel?: string;
+  mediumUrl?: string;
+  mediumLabel?: string;
+  instagramUrl?: string;
+  instagramLabel?: string;
+  substackUrl?: string;
+  substackLabel?: string;
+  imageLoading?: string;
+  imageDecoding?: string;
+  loading?: boolean;
+};
+
+export type DtTestimonialElementContract = HTMLElement & {
+  quote?: string;
+  name?: string;
+  personTitle?: string;
+  company?: string;
+  linkedinUrl?: string;
+  avatarUrl?: string;
+};
+
+export type DtValueCardElementContract = HTMLElement & {
+  title?: string;
+  description?: string;
+  variant?: string;
+};
+
 export const elementMigrationManifest = [
-  { tagName: "dt-button", sourceComponent: "Button", backend: "native" },
-  { tagName: "dt-badge", sourceComponent: "Badge", backend: "native" },
-  { tagName: "dt-icon-button", sourceComponent: "IconButton", backend: "native" },
-  { tagName: "dt-button-group", sourceComponent: "ButtonGroup", backend: "native" },
-  { tagName: "dt-filter-chip", sourceComponent: "FilterChip", backend: "native" },
-  { tagName: "dt-link", sourceComponent: "Link", backend: "native" },
-  { tagName: "dt-nav-link", sourceComponent: "NavLink", backend: "native" },
-  { tagName: "dt-skip-link", sourceComponent: "SkipLink", backend: "native" },
-  { tagName: "dt-spinner", sourceComponent: "Spinner", backend: "native" },
-  { tagName: "dt-progress", sourceComponent: "Progress", backend: "native" },
-  { tagName: "dt-status-dot", sourceComponent: "StatusDot", backend: "native" },
-  { tagName: "dt-divider", sourceComponent: "Divider", backend: "native" },
-  { tagName: "dt-icon", sourceComponent: "Icon", backend: "native" },
-  { tagName: "dt-alert-banner", sourceComponent: "AlertBanner", backend: "native" },
-  { tagName: "dt-text", sourceComponent: "Text", backend: "native" },
-  { tagName: "dt-title", sourceComponent: "Title", backend: "native" },
-  { tagName: "dt-list", sourceComponent: "List", backend: "native" },
-  { tagName: "dt-section", sourceComponent: "Section", backend: "native" },
-  { tagName: "dt-stack", sourceComponent: "Stack", backend: "native" },
-  { tagName: "dt-card", sourceComponent: "Card", backend: "native" },
-  { tagName: "dt-center", sourceComponent: "Center", backend: "native" },
-  { tagName: "dt-container", sourceComponent: "Container", backend: "native" },
-  { tagName: "dt-spacer", sourceComponent: "Spacer", backend: "native" },
-  { tagName: "dt-aspect-ratio", sourceComponent: "AspectRatio", backend: "native" },
-  { tagName: "dt-empty-state", sourceComponent: "EmptyState", backend: "native" },
-  { tagName: "dt-label", sourceComponent: "Label", backend: "native" },
-  { tagName: "dt-helper-text", sourceComponent: "HelperText", backend: "native" },
-  { tagName: "dt-form-field", sourceComponent: "FormField", backend: "native" },
-  { tagName: "dt-text-input", sourceComponent: "TextInput", backend: "native" },
-  { tagName: "dt-text-area", sourceComponent: "TextArea", backend: "native" },
-  { tagName: "dt-checkbox", sourceComponent: "Checkbox", backend: "native" },
-  { tagName: "dt-checkbox-group", sourceComponent: "CheckboxGroup", backend: "native" },
-  { tagName: "dt-radio", sourceComponent: "Radio", backend: "native" },
-  { tagName: "dt-radio-group", sourceComponent: "RadioGroup", backend: "native" },
-  { tagName: "dt-select", sourceComponent: "Select", backend: "native" },
-  { tagName: "dt-select-option", sourceComponent: "SelectOption", backend: "native" },
-  { tagName: "dt-avatar", sourceComponent: "Avatar", backend: "native" },
-  { tagName: "dt-avatar-group", sourceComponent: "AvatarGroup", backend: "native" },
-  { tagName: "dt-display", sourceComponent: "Display", backend: "native" },
-  { tagName: "dt-flex-box", sourceComponent: "FlexBox", backend: "native" },
-  { tagName: "dt-grid", sourceComponent: "Grid", backend: "native" },
-  { tagName: "dt-kbd", sourceComponent: "Kbd", backend: "native" },
-  { tagName: "dt-skeleton", sourceComponent: "Skeleton", backend: "native" },
-  { tagName: "dt-visually-hidden", sourceComponent: "VisuallyHidden", backend: "native" },
-  { tagName: "dt-switch", sourceComponent: "Switch", backend: "native" },
-  { tagName: "dt-modal", sourceComponent: "Modal", backend: "native" },
-  { tagName: "dt-tooltip", sourceComponent: "Tooltip", backend: "native" },
-  { tagName: "dt-menu", sourceComponent: "Menu", backend: "native" },
-  { tagName: "dt-split-button", sourceComponent: "SplitButton", backend: "native" },
-  { tagName: "dt-tabs", sourceComponent: "Tabs", backend: "native" },
-  { tagName: "dt-segmented-control", sourceComponent: "SegmentedControl", backend: "native" },
-  { tagName: "dt-accordion", sourceComponent: "Accordion", backend: "native" },
-  { tagName: "dt-expandable-section", sourceComponent: "ExpandableSection", backend: "native" },
-  { tagName: "dt-command-palette", sourceComponent: "CommandPalette", backend: "native" },
-  { tagName: "dt-nav-menu-list", sourceComponent: "NavMenuList", backend: "native" },
-  { tagName: "dt-language-switcher", sourceComponent: "LanguageSwitcher", backend: "native" },
-  { tagName: "dt-toast", sourceComponent: "Toast", backend: "native" },
-  { tagName: "dt-toast-stack", sourceComponent: "ToastStack", backend: "native" },
-  { tagName: "dt-phone-input", sourceComponent: "PhoneInput", backend: "native" },
-  { tagName: "dt-combobox", sourceComponent: "Combobox", backend: "native" },
-  { tagName: "dt-multi-combobox", sourceComponent: "MultiCombobox", backend: "native" },
-  { tagName: "dt-cookie-consent", sourceComponent: "CookieConsent", backend: "native" },
+  { tagName: "dt-button", sourceComponent: "Button", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-badge", sourceComponent: "Badge", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-icon-button", sourceComponent: "IconButton", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-button-group", sourceComponent: "ButtonGroup", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-filter-chip", sourceComponent: "FilterChip", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-link", sourceComponent: "Link", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-nav-link", sourceComponent: "NavLink", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-skip-link", sourceComponent: "SkipLink", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-spinner", sourceComponent: "Spinner", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-progress", sourceComponent: "Progress", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-status-dot", sourceComponent: "StatusDot", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-divider", sourceComponent: "Divider", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-icon", sourceComponent: "Icon", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-alert-banner", sourceComponent: "AlertBanner", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-text", sourceComponent: "Text", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-title", sourceComponent: "Title", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-list", sourceComponent: "List", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-section", sourceComponent: "Section", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-stack", sourceComponent: "Stack", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-card", sourceComponent: "Card", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-center", sourceComponent: "Center", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-container", sourceComponent: "Container", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-spacer", sourceComponent: "Spacer", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-aspect-ratio", sourceComponent: "AspectRatio", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-empty-state", sourceComponent: "EmptyState", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-label", sourceComponent: "Label", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-helper-text", sourceComponent: "HelperText", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-form-field", sourceComponent: "FormField", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-text-input", sourceComponent: "TextInput", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-text-area", sourceComponent: "TextArea", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-checkbox", sourceComponent: "Checkbox", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-checkbox-group", sourceComponent: "CheckboxGroup", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-radio", sourceComponent: "Radio", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-radio-group", sourceComponent: "RadioGroup", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-select", sourceComponent: "Select", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-select-option", sourceComponent: "SelectOption", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-avatar", sourceComponent: "Avatar", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-avatar-group", sourceComponent: "AvatarGroup", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-display", sourceComponent: "Display", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-flex-box", sourceComponent: "FlexBox", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-grid", sourceComponent: "Grid", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-kbd", sourceComponent: "Kbd", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-skeleton", sourceComponent: "Skeleton", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-visually-hidden", sourceComponent: "VisuallyHidden", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-switch", sourceComponent: "Switch", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-modal", sourceComponent: "Modal", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-tooltip", sourceComponent: "Tooltip", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-menu", sourceComponent: "Menu", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-split-button", sourceComponent: "SplitButton", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-tabs", sourceComponent: "Tabs", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-segmented-control", sourceComponent: "SegmentedControl", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-accordion", sourceComponent: "Accordion", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-expandable-section", sourceComponent: "ExpandableSection", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-command-palette", sourceComponent: "CommandPalette", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-nav-menu-list", sourceComponent: "NavMenuList", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-language-switcher", sourceComponent: "LanguageSwitcher", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-toast", sourceComponent: "Toast", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-toast-stack", sourceComponent: "ToastStack", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-phone-input", sourceComponent: "PhoneInput", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-combobox", sourceComponent: "Combobox", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-multi-combobox", sourceComponent: "MultiCombobox", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-cookie-consent", sourceComponent: "CookieConsent", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-code-snippet", sourceComponent: "CodeSnippet", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-code-block-window", sourceComponent: "CodeBlockWindow", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-breadcrumb", sourceComponent: "Breadcrumb", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-pagination", sourceComponent: "Pagination", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-timestamp", sourceComponent: "Timestamp", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-group-label", sourceComponent: "GroupLabel", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-mac-window-frame", sourceComponent: "MacWindowFrame", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-file-upload", sourceComponent: "FileUpload", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-category-filter", sourceComponent: "CategoryFilter", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-gallery", sourceComponent: "Gallery", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-reading-progress", sourceComponent: "ReadingProgress", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-selectable-card", sourceComponent: "SelectableCard", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-selectable-card-group", sourceComponent: "SelectableCardGroup", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-logo", sourceComponent: "Logo", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-blog-media-image", sourceComponent: "BlogMediaImage", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-author", sourceComponent: "Author", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-social-share", sourceComponent: "SocialShare", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-blog-nav", sourceComponent: "BlogNav", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-work-nav", sourceComponent: "WorkNav", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-person-card", sourceComponent: "PersonCard", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-testimonial", sourceComponent: "Testimonial", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-value-card", sourceComponent: "ValueCard", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
 ] as const;
 
 declare global {
@@ -785,5 +1032,27 @@ declare global {
     "dt-combobox": DtComboboxElementContract;
     "dt-multi-combobox": DtMultiComboboxElementContract;
     "dt-cookie-consent": DtCookieConsentElementContract;
+    "dt-code-snippet": DtCodeSnippetElementContract;
+    "dt-code-block-window": DtCodeBlockWindowElementContract;
+    "dt-breadcrumb": DtBreadcrumbElementContract;
+    "dt-pagination": DtPaginationElementContract;
+    "dt-timestamp": DtTimestampElementContract;
+    "dt-group-label": DtGroupLabelElementContract;
+    "dt-mac-window-frame": DtMacWindowFrameElementContract;
+    "dt-file-upload": DtFileUploadElementContract;
+    "dt-category-filter": DtCategoryFilterElementContract;
+    "dt-gallery": DtGalleryElementContract;
+    "dt-reading-progress": DtReadingProgressElementContract;
+    "dt-selectable-card": DtSelectableCardElementContract;
+    "dt-selectable-card-group": DtSelectableCardGroupElementContract;
+    "dt-logo": DtLogoElementContract;
+    "dt-blog-media-image": DtBlogMediaImageElementContract;
+    "dt-author": DtAuthorElementContract;
+    "dt-social-share": DtSocialShareElementContract;
+    "dt-blog-nav": DtBlogNavElementContract;
+    "dt-work-nav": DtWorkNavElementContract;
+    "dt-person-card": DtPersonCardElementContract;
+    "dt-testimonial": DtTestimonialElementContract;
+    "dt-value-card": DtValueCardElementContract;
   }
 }

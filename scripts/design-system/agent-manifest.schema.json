@@ -54,6 +54,45 @@
               "preferredImport": { "type": "string" },
               "intent": { "type": "string" },
               "props": { "type": "object" },
+              "propRelationships": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": ["kind", "props", "reason"],
+                      "properties": {
+                        "kind": { "const": "mutuallyExclusive" },
+                        "props": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "uniqueItems": true
+                        },
+                        "reason": { "type": "string", "minLength": 1 }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": ["kind", "prop", "requires", "reason"],
+                      "properties": {
+                        "kind": { "const": "requires" },
+                        "prop": { "type": "string" },
+                        "requires": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "minItems": 1,
+                          "uniqueItems": true
+                        },
+                        "reason": { "type": "string", "minLength": 1 }
+                      }
+                    }
+                  ]
+                }
+              },
               "variants": { "type": "object" },
               "useWhen": { "type": "array", "items": { "type": "string" } },
               "avoidWhen": { "type": "array", "items": { "type": "string" } },

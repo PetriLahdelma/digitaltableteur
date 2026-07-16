@@ -28,7 +28,7 @@ function NativeNavLink({ currentPath, ...args }: Args) {
 const meta = {
   title: "Web Components/Navigation/NavLink",
   component: NativeNavLink,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-nav-link custom element." } },

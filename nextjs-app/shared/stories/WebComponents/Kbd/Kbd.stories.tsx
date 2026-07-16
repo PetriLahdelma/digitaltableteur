@@ -57,4 +57,14 @@ export const KeyNames: Story = {
     </Row>
   ),
 };
+export const InInstruction: Story = {
+  ...exampleStory,
+  render: () => (
+    <p style={{ margin: 0 }}>
+      Press <NativeKbd content="Esc" size="md" /> to close or{" "}
+      <NativeKbd content="⌘" size="md" /> +
+      <NativeKbd content="Enter" size="md" /> to submit.
+    </p>
+  ),
+};
 export const ForcedColors: Story = { ...forcedColorsStory };

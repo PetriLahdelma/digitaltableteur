@@ -13,8 +13,7 @@ const meta = {
     contractStatus: contract.status,
     docs: { description: { component: contract.description } },
   },
-  // Custom MDX docs page exists; do not also enable autodocs.
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   argTypes: {
     value: {
       control: "text",

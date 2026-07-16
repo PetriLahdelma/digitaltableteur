@@ -19,27 +19,3 @@
     padding-inline: var(--space-layout-32);
   }
 }
-
-.row {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.navButtons {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 0.5rem;
-}
-
-.buttonLabel {
-  display: none;
-}
-
-@media (width >= 768px) {
-  .buttonLabel {
-    display: inline;
-  }
-}

@@ -48,7 +48,7 @@ const storyParity = ({
 });
 const slot = (name, description) => ({ name, description });
 
-export default [
+const elementDefinitions = [
   {
     tagName: "dt-button",
     adapterClassName: "DtButtonReactElement",
@@ -1278,25 +1278,81 @@ export default [
       "Layered dialog with focus containment, dismissal, loading, and severity states.",
     storyParity: storyParity(),
     props: [
-      stringProp("severity"),
-      booleanProp("loading", "isLoading"),
-      stringProp("titleSize"),
-      stringProp("iconSize"),
-      booleanProp("open", "isOpen"),
-      nativeProp("defaultOpen", "boolean"),
-      nativeProp("controlled", "boolean"),
+      stringProp(
+        "severity",
+        "severity",
+        "Optional success, error, warning, or info treatment. Error and warning use alertdialog semantics.",
+      ),
+      booleanProp(
+        "loading",
+        "isLoading",
+        "Replaces the body with a centered progress indicator and hides the footer.",
+      ),
+      stringProp(
+        "titleSize",
+        "titleSize",
+        "Heading size token: xxs, xs, sm, md, lg, xl, or xxl.",
+      ),
+      stringProp(
+        "iconSize",
+        "iconSize",
+        "Semantic or slotted header icon size from 2xs through 2xl.",
+      ),
+      booleanProp(
+        "open",
+        "isOpen",
+        "Current visibility. Use with controlled when the host owns state.",
+      ),
+      nativeProp(
+        "defaultOpen",
+        "boolean",
+        "Opens an uncontrolled modal when it first connects.",
+      ),
+      nativeProp(
+        "controlled",
+        "boolean",
+        "Makes dismissal request-only; the host must update open.",
+      ),
       stringProp(
         "dialogTitle",
         "title",
         "Dialog heading; dialog-title avoids the global HTML title tooltip attribute.",
       ),
-      stringProp("description"),
-      booleanProp("showFooter"),
-      stringProp("animation"),
-      booleanProp("showCloseIcon"),
-      stringProp("closeIconName"),
-      stringProp("closeButtonLabel"),
-      nativeProp("dismissOnBackdrop", "boolean"),
+      stringProp(
+        "description",
+        "description",
+        "Concise supporting text associated with the dialog through aria-describedby.",
+      ),
+      booleanProp(
+        "showFooter",
+        "showFooter",
+        "Shows the footer slot or the default acknowledgement action.",
+      ),
+      stringProp(
+        "animation",
+        "animation",
+        "Entrance animation: none, scale, slide, or fade. Disabled by reduced-motion preferences.",
+      ),
+      booleanProp(
+        "showCloseIcon",
+        "showCloseIcon",
+        "Shows a design-system IconButton in the header.",
+      ),
+      stringProp(
+        "closeIconName",
+        "closeIconName",
+        "Icon registry name used by the header IconButton.",
+      ),
+      stringProp(
+        "closeButtonLabel",
+        "closeButtonLabel",
+        "Accessible name for the header close IconButton.",
+      ),
+      nativeProp(
+        "dismissOnBackdrop",
+        "boolean",
+        "Whether an overlay click requests dismissal. Defaults to true.",
+      ),
     ],
     slots: [
       slot("", "Dialog body content."),
@@ -1953,4 +2009,741 @@ export default [
       },
     ],
   },
+  {
+    tagName: "dt-code-snippet",
+    sourceComponent: "CodeSnippet",
+    contract: "CodeSnippet",
+    defaultBackend: "native",
+    nativeClassName: "DtCodeSnippetElement",
+    description:
+      "Copyable raw-code presentation with optional line numbers and bounded expansion.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("code"),
+      stringProp("language"),
+      booleanProp("showLineNumbers"),
+      nativeProp(
+        "ariaLabel",
+        "string",
+        "Accessible name for the code region.",
+        {
+          attributeName: "aria-label",
+        },
+      ),
+      booleanProp("allowCopy"),
+      stringProp("variant"),
+      numberProp("maxLines"),
+    ],
+    events: [
+      {
+        callbackProp: "onCopy",
+        name: "copy",
+        description:
+          "Dispatched after the complete raw code value is copied successfully.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-code-block-window",
+    sourceComponent: "CodeBlockWindow",
+    contract: "CodeBlockWindow",
+    defaultBackend: "native",
+    nativeClassName: "DtCodeBlockWindowElement",
+    description:
+      "Framed presentation for host-highlighted pre/code markup with metadata and caption.",
+    storyParity: storyParity({
+      extensions: [
+        {
+          native: "Composed Snippet",
+          reason:
+            "Demonstrates framework-neutral composition with dt-code-snippet while the canonical React story receives highlighted nodes from its host pipeline.",
+        },
+      ],
+    }),
+    slots: [
+      slot(
+        "",
+        "Host-highlighted pre/code markup; raw strings belong in dt-code-snippet.",
+      ),
+    ],
+    props: [
+      {
+        ...stringProp(
+          "windowTitle",
+          "title",
+          "Visible frame heading; window-title avoids the global HTML title tooltip attribute.",
+        ),
+        attributeName: "window-title",
+      },
+      stringProp("caption"),
+      stringProp("language"),
+      booleanProp("showLineNumbers"),
+      stringProp("context"),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "copy",
+        description:
+          "Dispatched after the complete code content is copied successfully.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-breadcrumb",
+    sourceComponent: "Breadcrumb",
+    contract: "Breadcrumb",
+    defaultBackend: "native",
+    nativeClassName: "DtBreadcrumbElement",
+    description:
+      "Host-routed location trail with current-page, collapse, and home affordances.",
+    storyParity: storyParity({
+      extensions: [
+        {
+          native: "Comparison",
+          reason:
+            "Native-only comparison verifies declarative items and property-assigned items render the same trail.",
+        },
+      ],
+    }),
+    props: [
+      {
+        ...stringProp("items"),
+        propertyType: String.raw`import("../native/breadcrumb").DtBreadcrumbItem[]`,
+      },
+      nativeProp("ariaLabel", "string", "Navigation landmark label.", {
+        attributeName: "aria-label",
+      }),
+      stringProp("underline"),
+      numberProp("maxItems"),
+      stringProp("collapseLabel"),
+      booleanProp("homeIcon"),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "navigate",
+        description:
+          "Cancelable host-routing request carrying the destination href and source item.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-pagination",
+    sourceComponent: "Pagination",
+    contract: "Pagination",
+    defaultBackend: "native",
+    nativeClassName: "DtPaginationElement",
+    description:
+      "Controlled content pager with numbered pages, ellipses, and localized labels.",
+    storyParity: storyParity(),
+    props: [
+      numberProp("currentPage"),
+      numberProp("totalPages"),
+      numberProp("siblingCount"),
+      nativeProp("ariaLabel", "string", "Pagination landmark label.", {
+        attributeName: "aria-label",
+      }),
+      nativeProp("previousLabel", "string"),
+      nativeProp("nextLabel", "string"),
+      nativeProp("pageLabel", "string"),
+      nativeProp(
+        "pageParam",
+        "string",
+        "URL query parameter used by the native uncontrolled navigation mode.",
+      ),
+    ],
+    events: [
+      {
+        callbackProp: "onPageChange",
+        name: "page-change",
+        description:
+          "Dispatched with detail.page when the user requests another page.",
+      },
+      {
+        callbackProp: null,
+        name: "navigate",
+        description:
+          "Cancelable host-routing request carrying the page, href, and trigger.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-timestamp",
+    sourceComponent: "Timestamp",
+    contract: "Timestamp",
+    defaultBackend: "native",
+    nativeClassName: "DtTimestampElement",
+    description:
+      "Semantic locale-aware time value with absolute, relative, and live formats.",
+    storyParity: storyParity(),
+    props: [
+      {
+        ...stringProp("value"),
+        propertyType: "string | number | Date",
+      },
+      stringProp("format"),
+      numberProp("autoThreshold"),
+      stringProp("size"),
+      stringProp("tone"),
+      booleanProp("showTimezone"),
+      booleanProp("tooltip"),
+      booleanProp("live"),
+      {
+        ...stringProp("now"),
+        propertyType: "string | number | Date",
+      },
+      stringProp("locale"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-group-label",
+    sourceComponent: "GroupLabel",
+    contract: "GroupLabel",
+    defaultBackend: "native",
+    nativeClassName: "DtGroupLabelElement",
+    description:
+      "Label for a compound control that preserves native label activation semantics.",
+    storyParity: storyParity(),
+    slots: [slot("", "Visible compound-control label text.")],
+    props: [
+      {
+        ...stringProp("htmlFor"),
+        attributeName: "for",
+      },
+      nativeProp(
+        "content",
+        "string",
+        "Attribute alternative to the default text slot.",
+      ),
+      stringProp("tooltipText"),
+      booleanProp("required"),
+      nativeProp("requiredText", "string"),
+      nativeProp("optional", "boolean"),
+      nativeProp("optionalText", "string"),
+      nativeProp("hint", "string"),
+      booleanProp("disabled"),
+      {
+        ...stringProp(
+          "tooltip",
+          "title",
+          "Native tooltip exposed under a collision-free typed property.",
+        ),
+        attributeName: "title",
+      },
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-mac-window-frame",
+    sourceComponent: "MacWindowFrame",
+    contract: "MacWindowFrame",
+    defaultBackend: "native",
+    nativeClassName: "DtMacWindowFrameElement",
+    description:
+      "Decorative desktop-window frame for demos and showcase content.",
+    storyParity: storyParity(),
+    slots: [
+      slot("", "Showcase content rendered inside the decorative frame."),
+      slot(
+        "content",
+        "Explicit alternative to the default showcase-content slot.",
+      ),
+      slot("title", "Host-rendered frame title content."),
+      slot(
+        "toolbar",
+        "Host-rendered toolbar content replacing the built-in action.",
+      ),
+    ],
+    props: [
+      stringProp("titleKey"),
+      stringProp("actionLabelKey"),
+      nativeProp(
+        "actionLabel",
+        "string",
+        "Visible and accessible action label.",
+      ),
+      stringProp("density"),
+      nativeProp("bodyLabel", "string", "Accessible name for the framed body."),
+    ],
+    events: [
+      {
+        callbackProp: "onAction",
+        name: "action-click",
+        description: "Dispatched when the optional frame action is activated.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-file-upload",
+    sourceComponent: "FileUpload",
+    contract: "FileUpload",
+    defaultBackend: "native",
+    nativeClassName: "DtFileUploadElement",
+    description:
+      "Form-associated file picker with size validation, drag/drop, and clear behavior.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("label"),
+      stringProp("placeholder"),
+      stringProp("helperText"),
+      stringProp("uploadButtonLabel"),
+      stringProp("clearButtonLabel"),
+      stringProp("accept"),
+      numberProp("maxSizeInBytes"),
+      stringProp("sizeErrorMessage"),
+      stringProp("error"),
+      {
+        ...stringProp("value"),
+        propertyType: "File | null",
+        propertyOnly: true,
+      },
+      booleanProp("disabled"),
+      booleanProp("required"),
+      stringProp("appearance"),
+      nativeProp("name", "string"),
+      nativeProp(
+        "inheritedDisabled",
+        "boolean",
+        "Property-only disabled state supplied by an owning form-field composition.",
+        { propertyOnly: true },
+      ),
+    ],
+    events: [
+      {
+        callbackProp: "onFileChange",
+        name: "file-change",
+        description:
+          "Dispatched with detail.file after selection, drop, rejection, or clearing.",
+      },
+      {
+        callbackProp: null,
+        name: "change",
+        description:
+          "Standard composed change event emitted after the file value changes.",
+      },
+      {
+        callbackProp: null,
+        name: "picker-request",
+        description:
+          "Cancelable request emitted before opening the platform file picker.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-category-filter",
+    sourceComponent: "CategoryFilter",
+    contract: "CategoryFilter",
+    defaultBackend: "native",
+    nativeClassName: "DtCategoryFilterElement",
+    description:
+      "Controlled category filter rendered as a group of native toggle buttons.",
+    storyParity: storyParity(),
+    props: [
+      {
+        ...stringProp("categories"),
+        propertyType: String.raw`import("../native/category-filter").DtCategoryOption[]`,
+      },
+      stringProp("activeCategory"),
+      stringProp("size"),
+      stringProp("variant"),
+      nativeProp("ariaLabel", "string", "Accessible filter-group label.", {
+        attributeName: "aria-label",
+      }),
+    ],
+    events: [
+      {
+        callbackProp: "onCategoryChange",
+        name: "category-change",
+        description:
+          "Dispatched with detail.category when a category is requested.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-gallery",
+    sourceComponent: "Gallery",
+    contract: "Gallery",
+    defaultBackend: "native",
+    nativeClassName: "DtGalleryElement",
+    description:
+      "Responsive image gallery with captions and keyboard-focusable items.",
+    storyParity: storyParity(),
+    props: [
+      {
+        ...stringProp("images"),
+        propertyType: String.raw`import("../native/gallery").DtGalleryImage[]`,
+      },
+      numberProp("minColumnWidth"),
+      numberProp("gutter"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-reading-progress",
+    sourceComponent: "ReadingProgress",
+    contract: "ReadingProgress",
+    defaultBackend: "native",
+    nativeClassName: "DtReadingProgressElement",
+    description:
+      "Fixed reading-progress indicator tracking a host element or selector.",
+    storyParity: storyParity(),
+    props: [
+      nativeProp("target", "string", "Property-only HTMLElement to track.", {
+        propertyType: "HTMLElement | null",
+        propertyOnly: true,
+      }),
+      nativeProp(
+        "targetSelector",
+        "string",
+        "Document selector for the content to track.",
+      ),
+      booleanProp("showPercentage"),
+      nativeProp("ariaLabel", "string", "Progressbar accessible name.", {
+        attributeName: "aria-label",
+      }),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-selectable-card",
+    sourceComponent: "SelectableCard",
+    contract: "SelectableCard",
+    defaultBackend: "native",
+    nativeClassName: "DtSelectableCardElement",
+    description: "Native radio- or checkbox-style selectable card option.",
+    storyParity: storyParity(),
+    slots: [slot("", "Card content.")],
+    props: [
+      stringProp("value"),
+      booleanProp("selected"),
+      booleanProp("disabled"),
+      nativeProp("selectionType", "string"),
+      nativeProp("name", "string"),
+    ],
+    events: [
+      {
+        callbackProp: "onSelectedChange",
+        name: "selection-request",
+        description:
+          "Dispatched when standalone selection changes or a group receives an option request.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-selectable-card-group",
+    sourceComponent: "SelectableCardGroup",
+    contract: "SelectableCard",
+    defaultBackend: "native",
+    nativeClassName: "DtSelectableCardGroupElement",
+    description: "Selection owner for native selectable-card options.",
+    storyParity: storyParity(),
+    slots: [slot("", "dt-selectable-card options.")],
+    props: [
+      nativeProp("type", "string"),
+      nativeProp("legend", "string"),
+      nativeProp("name", "string"),
+      nativeProp("value", "string", "Controlled group value.", {
+        propertyType: "string | string[]",
+      }),
+      nativeProp(
+        "defaultValue",
+        "string",
+        "Initial uncontrolled group value.",
+        { propertyType: "string | string[]" },
+      ),
+      nativeProp("orientation", "string"),
+      nativeProp("disabled", "boolean"),
+      nativeProp("error", "string"),
+      nativeProp("helperText", "string"),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "value-change",
+        description: "Dispatched with detail.value after selection changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-logo",
+    sourceComponent: "Logo",
+    contract: "Logo",
+    defaultBackend: "native",
+    nativeClassName: "DtLogoElement",
+    description:
+      "Native Digitaltableteur brand mark with badge and motion modes.",
+    storyParity: storyParity(),
+    props: [
+      numberProp("size"),
+      booleanProp("animated"),
+      booleanProp("badge"),
+      {
+        ...stringProp("accessibleTitle", "title"),
+        attributeName: "accessible-title",
+      },
+      booleanProp("decorative"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-blog-media-image",
+    sourceComponent: "BlogMediaImage",
+    contract: "BlogMediaImage",
+    defaultBackend: "native",
+    nativeClassName: "DtBlogMediaImageElement",
+    description: "Responsive native article image with fill and fit modes.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("src"),
+      stringProp("alt"),
+      booleanProp("fill"),
+      numberProp("width"),
+      numberProp("height"),
+      booleanProp("priority"),
+      stringProp("sizes"),
+      nativeProp(
+        "srcSet",
+        "string",
+        "Responsive candidate set for the native img; sizes only applies when this is present (React generates its srcset via next/image).",
+      ),
+      stringProp("fit"),
+      booleanProp("fluid"),
+    ],
+    events: [
+      {
+        callbackProp: "onLoad",
+        name: "image-load",
+        description: "Dispatched after the native image loads.",
+      },
+      {
+        callbackProp: "onError",
+        name: "image-error",
+        description: "Dispatched when the native image cannot load.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-author",
+    sourceComponent: "Author",
+    contract: "Author",
+    defaultBackend: "native",
+    nativeClassName: "DtAuthorElement",
+    description: "Compact native author byline composed with dt-avatar.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("name"),
+      stringProp("imageUrl"),
+      stringProp("size"),
+      stringProp("profileUrl"),
+      nativeProp("bylinePrefix", "string", "Localized byline prefix override."),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-social-share",
+    sourceComponent: "SocialShare",
+    contract: "SocialShare",
+    defaultBackend: "native",
+    nativeClassName: "DtSocialShareElement",
+    description:
+      "Native multi-channel sharing row with Web Share and copy fallback.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("url"),
+      {
+        ...stringProp("shareTitle", "title"),
+        attributeName: "share-title",
+      },
+      {
+        ...stringProp("channels"),
+        propertyType: String.raw`import("../native/social-share").DtSocialShareChannel[]`,
+      },
+      stringProp("variant"),
+      booleanProp("showHeading"),
+      stringProp("heading"),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "native-share",
+        description: "Dispatched after the Web Share API resolves.",
+      },
+      {
+        callbackProp: null,
+        name: "link-copy",
+        description: "Dispatched with detail.url after the URL is copied.",
+      },
+      {
+        callbackProp: null,
+        name: "share-error",
+        description: "Dispatched when neither native share nor copy succeeds.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-blog-nav",
+    sourceComponent: "BlogNav",
+    contract: "BlogNav",
+    defaultBackend: "native",
+    nativeClassName: "DtBlogNavElement",
+    description:
+      "Native previous and next navigation for ordered blog articles.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("currentPath"),
+      {
+        ...stringProp("pages"),
+        propertyType: String.raw`import("../native/section-nav").DtSectionNavPage[]`,
+      },
+      booleanProp("disabled"),
+    ],
+    events: [
+      {
+        callbackProp: "onNavigate",
+        name: "navigate",
+        description: "Cancelable host-navigation request with detail.path.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-work-nav",
+    sourceComponent: "WorkNav",
+    contract: "WorkNav",
+    defaultBackend: "native",
+    nativeClassName: "DtWorkNavElement",
+    description:
+      "Native previous and next navigation for ordered work projects.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("currentPath"),
+      {
+        ...stringProp("pages"),
+        propertyType: String.raw`import("../native/section-nav").DtSectionNavPage[]`,
+      },
+      booleanProp("disabled"),
+    ],
+    events: [
+      {
+        callbackProp: "onNavigate",
+        name: "navigate",
+        description: "Cancelable host-navigation request with detail.path.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-person-card",
+    sourceComponent: "PersonCard",
+    contract: "PersonCard",
+    defaultBackend: "native",
+    nativeClassName: "DtPersonCardElement",
+    description:
+      "Native profile card with responsive portrait, contact, and social links.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Person Card Compliance",
+          reason:
+            "React-only historical compliance fixture; native conformance is enforced by executable package and Storybook gates.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("imageSrc"),
+      stringProp("imageAlt"),
+      stringProp("imageSrcSet"),
+      stringProp("imageSizes"),
+      stringProp("name"),
+      {
+        ...stringProp("personTitle", "title"),
+        attributeName: "person-title",
+      },
+      stringProp("email"),
+      stringProp("linkedinUrl"),
+      stringProp("linkedinLabel"),
+      stringProp("githubUrl"),
+      stringProp("githubLabel"),
+      stringProp("facebookUrl"),
+      stringProp("facebookLabel"),
+      stringProp("twitterUrl"),
+      stringProp("twitterLabel"),
+      stringProp("dribbbleUrl"),
+      stringProp("dribbbleLabel"),
+      stringProp("mediumUrl"),
+      stringProp("mediumLabel"),
+      stringProp("instagramUrl"),
+      stringProp("instagramLabel"),
+      stringProp("substackUrl"),
+      stringProp("substackLabel"),
+      stringProp("imageLoading"),
+      stringProp("imageDecoding"),
+      booleanProp("loading"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-testimonial",
+    sourceComponent: "Testimonial",
+    contract: "Testimonial",
+    defaultBackend: "native",
+    nativeClassName: "DtTestimonialElement",
+    description:
+      "Native testimonial quote with attribution and optional avatar and LinkedIn link.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Testimonial Compliance",
+          reason:
+            "React-only historical compliance fixture; native conformance is enforced by executable package and Storybook gates.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("quote"),
+      stringProp("name"),
+      {
+        ...stringProp("personTitle", "title"),
+        attributeName: "person-title",
+      },
+      stringProp("company"),
+      stringProp("linkedinUrl"),
+      stringProp("avatarUrl"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-value-card",
+    sourceComponent: "ValueCard",
+    contract: "ValueCard",
+    defaultBackend: "native",
+    nativeClassName: "DtValueCardElement",
+    description:
+      "Compact value proposition card with icon, title, and description.",
+    storyParity: storyParity(),
+    slots: [
+      slot("icon", "Icon or short visual mark."),
+      slot("", "Optional supplemental content."),
+    ],
+    props: [
+      stringProp("title"),
+      stringProp("description"),
+      stringProp("variant"),
+    ],
+    events: [],
+  },
 ];
+
+/**
+ * Native maturity is independent from the canonical React contract. A port may
+ * implement a stable API while its own production and accessibility evidence is
+ * still accumulating. Promotion overrides belong on the individual definition.
+ */
+export default elementDefinitions.map((element) => ({
+  implementationStatus: "beta",
+  implementationConsumers: [],
+  props: [],
+  slots: [],
+  events: [],
+  ...element,
+}));

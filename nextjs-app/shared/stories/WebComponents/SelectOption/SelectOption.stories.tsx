@@ -32,7 +32,7 @@ function NativeSelectOption(args: Args) {
 const meta = {
   title: "Web Components/Forms/SelectOption",
   component: NativeSelectOption,
-  tags: ["autodocs", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: { ...nativeStoryParameters, layout: "padded" },
   args: { value: "option2", label: "Option 2", disabled: false },
 } satisfies Meta<typeof NativeSelectOption>;

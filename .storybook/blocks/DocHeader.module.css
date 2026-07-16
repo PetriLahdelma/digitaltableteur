@@ -22,6 +22,27 @@
   margin: 0;
 }
 
+.lifecycleStatuses,
+.lifecycleStatus {
+  display: flex;
+  align-items: center;
+}
+
+.lifecycleStatuses {
+  flex-wrap: wrap;
+  gap: var(--space-internal-12);
+}
+
+.lifecycleStatus {
+  gap: var(--space-internal-4);
+}
+
+.lifecycleLabel {
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-xs, 0.75rem);
+}
+
 .implementations {
   display: flex;
   align-items: center;

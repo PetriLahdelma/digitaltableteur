@@ -1,295 +1,268 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-    "name": "Modal",
-    "tier": "molecule",
-    "group": "overlay",
-    "status": "stable",
-    "description": "Modal dialog for confirmations, forms, and focused tasks.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1222-2927",
-    "radixPrimitive": null,
-    "element": "div",
-    "variants": {
-        "severity": {
-            "values": [
-                "info",
-                "success",
-                "warning",
-                "error"
-            ],
-            "default": "info",
-            "propSourced": true
-        }
-    },
-    "slots": [
-        "menu",
-        "footer",
-        "icon"
-    ],
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-    ],
-    "a11y": {
-        "keyboard": [
-            "Escape",
-            "Tab"
-        ],
-        "ariaRequirements": [
-            "role=dialog",
-            "focus trap while open",
-            "accessible title"
-        ],
-        "reducedMotion": true,
-        "reviewed": true,
-        "reviewedNote": "2026-07-06 — beta→stable: portal-aware AT snapshots regenerated across base/light/dark/forced-colors (all 9 beta-matrix stories green), severity color axis verified per value via getComputedStyle, footer default fixed; focus trap + Escape reviewed in plays.",
-        "forcedColorsVerified": true,
-        "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
-    },
-    "tokens": {
-        "colors": [],
-        "spacing": []
-    },
-    "lightDarkVerified": true,
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
-            "since": "2026-06-04"
-        }
-    ],
-    "schemaVersion": 2,
-    "props": {
-        "severity": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "info",
-                "success",
-                "warning",
-                "error"
-            ]
-        },
-        "isLoading": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "titleSize": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "xl",
-                "xs",
-                "xxs",
-                "xxl",
-                "XXS",
-                "XS",
-                "S",
-                "M",
-                "L",
-                "XL",
-                "XXL"
-            ]
-        },
-        "iconSize": {
-            "optional": true,
-            "type": "IconProps[\"size\"]"
-        },
-        "isOpen": {
-            "optional": false,
-            "type": "boolean"
-        },
-        "title": {
-            "optional": true,
-            "type": "string"
-        },
-        "description": {
-            "optional": true,
-            "type": "string"
-        },
-        "menu": {
-            "optional": true,
-            "type": "React.ReactNode"
-        },
-        "children": {
-            "optional": true,
-            "type": "React.ReactNode"
-        },
-        "footer": {
-            "optional": true,
-            "type": "React.ReactNode"
-        },
-        "onClose": {
-            "optional": true,
-            "type": "() => void"
-        },
-        "icon": {
-            "optional": true,
-            "type": "React.ReactNode"
-        },
-        "className": {
-            "optional": true,
-            "type": "string"
-        },
-        "showFooter": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "panelRef": {
-            "optional": true,
-            "type": "React.Ref<HTMLDivElement>"
-        },
-        "animation": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "none",
-                "scale",
-                "slide",
-                "fade"
-            ]
-        },
-        "showCloseIcon": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "closeIconName": {
-            "optional": true,
-            "type": "string"
-        },
-        "closeButtonLabel": {
-            "optional": true,
-            "type": "string"
-        }
-    },
-    "forbiddenUse": [
-        "nest a Modal inside another Modal — AT focus order breaks; swap content in place inside one overlay instead.",
-        "mount Modal lazily (only when isOpen) — keep it mounted and toggle isOpen so focus can be restored to the trigger on close.",
-        "pair AlertBanner with Modal for the same status — use Modal alone for blocking alerts; the dialog role already announces.",
-        "add aria-live to the dialog root — role=dialog/alertdialog already announces; aria-live causes double screen-reader output."
-    ],
-    "composesWith": [
-        "Button",
-        "Title",
-        "Text",
-        "TextInput",
-        "Toast",
-        "CheckboxGroup",
-        "TextArea"
-    ],
-    "displayName": "Modal",
-    "keywords": [
-        "modal",
-        "dialog",
-        "overlay",
-        "confirmation",
-        "alert dialog",
-        "focus trap",
-        "popup"
-    ],
-    "dense": "Portal dialog w/ focus trap + inert bg; severity info|success|warning|error (error/warning => alertdialog); title/description ARIA-wired; menu/footer/icon slots; animation scale|slide|fade",
-    "usage": {
-        "description": "Modal is the blocking overlay for focused, dismissible tasks: confirmations, short forms, and status dialogs. Control it with `isOpen`/`onClose` and keep it mounted so focus returns to the trigger on close. While open it portals to `document.body`, traps focus by marking the page `inert`, and closes on Escape or overlay click. `title` becomes the accessible name (aria-labelledby) and `description` the aria-describedby summary. `severity` swaps in a semantic header icon and escalates error/warning to `role=\"alertdialog\"`. The footer defaults to a single OK button; pass `footer` for real actions or `showFooter={false}` for fully composed bodies.",
-        "bestPractices": [
-            {
-                "guidance": true,
-                "description": "Keep the Modal mounted and toggle isOpen; it stores the previously focused element on open and restores it on close."
-            },
-            {
-                "guidance": true,
-                "description": "Always pass title — it is the dialog's accessible name. Untitled dialogs fall back to a generic aria-label=\"Dialog\"."
-            },
-            {
-                "guidance": true,
-                "description": "Use description for the one-line summary screen readers announce on open (wired to aria-describedby), then put the rest in children."
-            },
-            {
-                "guidance": true,
-                "description": "Use severity for status dialogs: it derives the header icon and promotes error/warning to role=alertdialog for assertive announcement."
-            },
-            {
-                "guidance": true,
-                "description": "Give destructive or two-way choices an explicit footer (Cancel + primary action); reserve the default OK-only footer for acknowledgements."
-            },
-            {
-                "guidance": false,
-                "description": "Do not nest modals or open one from another — swap the content of the open modal in place instead."
-            },
-            {
-                "guidance": false,
-                "description": "Do not add aria-live near or on the dialog; the role already announces and you get a double reading."
-            },
-            {
-                "guidance": false,
-                "description": "Do not use a modal for long reading or deep multi-step forms — content that deserves scrolling deserves a page or section."
-            }
-        ],
-        "anatomy": [
-            {
-                "name": "Overlay",
-                "required": true,
-                "description": "Full-viewport scrim behind the panel; clicking it closes the dialog when onClose is provided."
-            },
-            {
-                "name": "Panel",
-                "required": true,
-                "description": "The dialog surface: role=dialog (or alertdialog for error/warning severity), aria-modal, focus target; exposed via panelRef for motion hooks."
-            },
-            {
-                "name": "Header",
-                "required": false,
-                "description": "Rendered when title is set: severity-derived or custom icon, Title (h2), and an optional close button (showCloseIcon + closeButtonLabel)."
-            },
-            {
-                "name": "Content",
-                "required": true,
-                "description": "description paragraph (aria-describedby) followed by children; shows the loading spinner when isLoading."
-            },
-            {
-                "name": "Footer",
-                "required": false,
-                "description": "footer slot for actions; defaults to a single OK button that calls onClose; omit entirely with showFooter={false}."
-            }
-        ]
-    },
-    "playground": {
-        "defaults": {
-            "title": "Confirm changes",
-            "description": "Review the summary below before continuing.",
-            "children": "Your edits will be applied immediately.",
-            "showCloseIcon": true
-        }
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "Modal",
+  "tier": "molecule",
+  "group": "overlay",
+  "status": "stable",
+  "description": "Modal dialog for confirmations, forms, and focused tasks.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1222-2927",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {
+    "severity": {
+      "values": ["info", "success", "warning", "error"],
+      "default": "info",
+      "propSourced": true
     }
+  },
+  "slots": ["menu", "footer", "icon"],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": ["Escape", "Tab"],
+    "ariaRequirements": [
+      "role=dialog",
+      "focus trap while open",
+      "accessible title"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-07-06 — beta→stable: portal-aware AT snapshots regenerated across base/light/dark/forced-colors (all 9 beta-matrix stories green), severity color axis verified per value via getComputedStyle, footer default fixed; focus trap + Escape reviewed in plays.",
+    "forcedColorsVerified": true,
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/layout.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/tools/email-signature/page.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/index.ts",
+      "since": "2026-06-04"
+    }
+  ],
+  "schemaVersion": 2,
+  "props": {
+    "severity": {
+      "optional": true,
+      "type": "union",
+      "values": ["info", "success", "warning", "error"]
+    },
+    "isLoading": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "titleSize": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xs",
+        "xxs",
+        "xxl",
+        "XXS",
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    "iconSize": {
+      "optional": true,
+      "type": "IconProps[\"size\"]"
+    },
+    "isOpen": {
+      "optional": false,
+      "type": "boolean"
+    },
+    "title": {
+      "optional": true,
+      "type": "string"
+    },
+    "description": {
+      "optional": true,
+      "type": "string"
+    },
+    "menu": {
+      "optional": true,
+      "type": "React.ReactNode"
+    },
+    "children": {
+      "optional": true,
+      "type": "React.ReactNode"
+    },
+    "footer": {
+      "optional": true,
+      "type": "React.ReactNode"
+    },
+    "onClose": {
+      "optional": true,
+      "type": "() => void"
+    },
+    "icon": {
+      "optional": true,
+      "type": "React.ReactNode"
+    },
+    "className": {
+      "optional": true,
+      "type": "string"
+    },
+    "showFooter": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "panelRef": {
+      "optional": true,
+      "type": "React.Ref<HTMLDivElement>"
+    },
+    "animation": {
+      "optional": true,
+      "type": "union",
+      "values": ["none", "scale", "slide", "fade"]
+    },
+    "showCloseIcon": {
+      "optional": true,
+      "type": "boolean"
+    },
+    "closeIconName": {
+      "optional": true,
+      "type": "string"
+    },
+    "closeButtonLabel": {
+      "optional": true,
+      "type": "string"
+    }
+  },
+  "forbiddenUse": [
+    "nest a Modal inside another Modal — AT focus order breaks; swap content in place inside one overlay instead.",
+    "mount Modal lazily (only when isOpen) — keep it mounted and toggle isOpen so focus can be restored to the trigger on close.",
+    "pair AlertBanner with Modal for the same status — use Modal alone for blocking alerts; the dialog role already announces.",
+    "add aria-live to the dialog root — role=dialog/alertdialog already announces; aria-live causes double screen-reader output."
+  ],
+  "composesWith": [
+    "Button",
+    "Title",
+    "Text",
+    "TextInput",
+    "Toast",
+    "CheckboxGroup",
+    "TextArea"
+  ],
+  "displayName": "Modal",
+  "keywords": [
+    "modal",
+    "dialog",
+    "overlay",
+    "confirmation",
+    "alert dialog",
+    "focus trap",
+    "popup"
+  ],
+  "dense": "Portal dialog w/ focus trap + inert bg; severity info|success|warning|error (error/warning => alertdialog); title/description ARIA-wired; menu/footer/icon slots; animation scale|slide|fade",
+  "usage": {
+    "description": "Modal is the blocking overlay for focused, dismissible tasks: confirmations, short forms, and status dialogs. Control it with `isOpen`/`onClose` and keep it mounted so focus returns to the trigger on close. While open it portals to `document.body`, traps focus by marking the page `inert`, and closes on Escape or overlay click. `title` becomes the accessible name (aria-labelledby) and `description` the aria-describedby summary. `severity` swaps in a semantic header icon and escalates error/warning to `role=\"alertdialog\"`. The footer defaults to a single OK button; pass `footer` for real actions or `showFooter={false}` for fully composed bodies.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Keep the Modal mounted and toggle isOpen; it stores the previously focused element on open and restores it on close."
+      },
+      {
+        "guidance": true,
+        "description": "Always pass title — it is the dialog's accessible name. Untitled dialogs fall back to a generic aria-label=\"Dialog\"."
+      },
+      {
+        "guidance": true,
+        "description": "Use description for the one-line summary screen readers announce on open (wired to aria-describedby), then put the rest in children."
+      },
+      {
+        "guidance": true,
+        "description": "Use severity for status dialogs: it derives the header icon and promotes error/warning to role=alertdialog for assertive announcement."
+      },
+      {
+        "guidance": true,
+        "description": "Give destructive confirmations severity=error and an explicit footer (secondary Cancel + error-toned action) so the dialog chrome and action communicate the same risk; reserve the default OK-only footer for acknowledgements."
+      },
+      {
+        "guidance": false,
+        "description": "Do not nest modals or open one from another — swap the content of the open modal in place instead."
+      },
+      {
+        "guidance": false,
+        "description": "Do not add aria-live near or on the dialog; the role already announces and you get a double reading."
+      },
+      {
+        "guidance": false,
+        "description": "Do not use a modal for long reading or deep multi-step forms — content that deserves scrolling deserves a page or section."
+      }
+    ],
+    "anatomy": [
+      {
+        "name": "Overlay",
+        "required": true,
+        "description": "Full-viewport scrim behind the panel; clicking it closes the dialog when onClose is provided."
+      },
+      {
+        "name": "Panel",
+        "required": true,
+        "description": "The dialog surface: role=dialog (or alertdialog for error/warning severity), aria-modal, focus target; exposed via panelRef for motion hooks."
+      },
+      {
+        "name": "Header",
+        "required": false,
+        "description": "Rendered when title is set: severity-derived or custom icon, Title (h2), and an optional close button (showCloseIcon + closeButtonLabel)."
+      },
+      {
+        "name": "Content",
+        "required": true,
+        "description": "description paragraph (aria-describedby) followed by children; shows the loading spinner when isLoading."
+      },
+      {
+        "name": "Footer",
+        "required": false,
+        "description": "footer slot for actions; defaults to a single OK button that calls onClose; omit entirely with showFooter={false}."
+      }
+    ]
+  },
+  "playground": {
+    "defaults": {
+      "title": "Confirm changes",
+      "description": "Review the summary below before continuing.",
+      "children": "Your edits will be applied immediately.",
+      "showCloseIcon": true
+    }
+  }
 }

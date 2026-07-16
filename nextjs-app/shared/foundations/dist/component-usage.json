@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-13T15:32:23.548Z",
+  "generatedAt": "2026-07-16T16:46:16.641Z",
   "summary": {
     "catalogCount": 204,
     "governedCount": 162,
-    "exportedCount": 70,
+    "exportedCount": 77,
     "strictConsumedCount": 22,
-    "transitiveConsumedCount": 59
+    "transitiveConsumedCount": 62
   },
   "components": [
     {
@@ -70,7 +70,7 @@
       "kind": "component",
       "status": "beta",
       "governed": true,
-      "exported": false,
+      "exported": true,
       "directImportCount": 0,
       "directImporters": [],
       "packageImportCount": 0,
@@ -327,7 +327,7 @@
       "kind": "component",
       "status": "beta",
       "governed": true,
-      "exported": false,
+      "exported": true,
       "directImportCount": 1,
       "directImporters": [
         "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx"
@@ -753,7 +753,7 @@
       "kind": "component",
       "status": "beta",
       "governed": true,
-      "exported": false,
+      "exported": true,
       "directImportCount": 1,
       "directImporters": [
         "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx"
@@ -1329,9 +1329,11 @@
       "kind": "component",
       "status": "beta",
       "governed": true,
-      "exported": false,
-      "directImportCount": 0,
-      "directImporters": [],
+      "exported": true,
+      "directImportCount": 1,
+      "directImporters": [
+        "nextjs-app/shared/components/index.ts"
+      ],
       "packageImportCount": 0,
       "packageImporters": [],
       "prodPageCount": 0,
@@ -2393,15 +2395,25 @@
     {
       "name": "Logo",
       "kind": "component",
-      "status": "beta",
+      "status": "stable",
       "governed": true,
       "exported": false,
-      "directImportCount": 0,
-      "directImporters": [],
+      "directImportCount": 1,
+      "directImporters": [
+        "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx"
+      ],
       "packageImportCount": 0,
       "packageImporters": [],
-      "prodPageCount": 0,
-      "prodPages": []
+      "prodPageCount": 7,
+      "prodPages": [
+        "app/dev/tailwind-test/page.tsx",
+        "app/layout.tsx",
+        "nextjs-app/shared/patterns/index.ts",
+        "nextjs-app/shared/patterns/navigation/index.ts",
+        "nextjs-app/shared/patterns/SiteHeader/index.ts",
+        "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
+        "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx"
+      ]
     },
     {
       "name": "LogoConstruction",
@@ -3840,7 +3852,7 @@
       "kind": "component",
       "status": "beta",
       "governed": true,
-      "exported": false,
+      "exported": true,
       "directImportCount": 0,
       "directImporters": [],
       "packageImportCount": 0,
@@ -4352,7 +4364,7 @@
       "kind": "component",
       "status": "stable",
       "governed": true,
-      "exported": false,
+      "exported": true,
       "directImportCount": 2,
       "directImporters": [
         "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
@@ -4538,7 +4550,7 @@
       "kind": "component",
       "status": "beta",
       "governed": true,
-      "exported": false,
+      "exported": true,
       "directImportCount": 1,
       "directImporters": [
         "nextjs-app/shared/components/interactive/index.ts"

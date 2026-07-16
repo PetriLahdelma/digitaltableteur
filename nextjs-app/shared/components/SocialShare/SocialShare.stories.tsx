@@ -25,7 +25,11 @@ const withoutNativeShare = (Story: React.ComponentType) => {
   React.useEffect(
     () => () => {
       if (NATIVE_SHARE_DESCRIPTOR)
-        Object.defineProperty(NAVIGATOR_PROTO, "share", NATIVE_SHARE_DESCRIPTOR);
+        Object.defineProperty(
+          NAVIGATOR_PROTO,
+          "share",
+          NATIVE_SHARE_DESCRIPTOR,
+        );
     },
     [],
   );
@@ -45,7 +49,7 @@ const meta = {
     a11y: { test: "error" },
     layout: "centered",
   },
-  tags: ["stable", "!autodocs"],
+  tags: ["stable", "autodocs"],
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
 } satisfies Meta<typeof SocialShare>;
 
@@ -90,9 +94,7 @@ export const BlogPost: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const section = canvas.getByRole("region", { name: "Share" });
-    expect(
-      within(section).getByText("Share", { selector: "p" }),
-    ).toBeVisible();
+    expect(within(section).getByText("Share", { selector: "p" })).toBeVisible();
     expect(
       canvas.getByRole("link", { name: "Share on LinkedIn" }),
     ).toBeInTheDocument();

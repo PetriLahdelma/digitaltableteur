@@ -88,12 +88,26 @@ type PropSchema = {
   type: string;
   values?: string[];
   deprecated?: boolean;
+  description?: string;
 };
 
 type VariantAxis = {
   values: string[];
   default: string | null;
 };
+
+type PropRelationship =
+  | {
+      kind: "mutuallyExclusive";
+      props: [string, string];
+      reason: string;
+    }
+  | {
+      kind: "requires";
+      prop: string;
+      requires: string[];
+      reason: string;
+    };
 
 function collectStringLiterals(type: import("ts-morph").Type, depth = 0): string[] {
   if (depth > 6) return [];
@@ -145,6 +159,7 @@ function extractPropSchemasFromFile(
 
     const optionalFlags: boolean[] = [];
     const declaredTypeTexts: string[] = [];
+    const descriptions: string[] = [];
     let deprecated = false;
 
     for (const d of decls) {
@@ -159,8 +174,20 @@ function extractPropSchemasFromFile(
       const typeNodeInner = (d as { getTypeNode?: () => { getText: () => string } }).getTypeNode?.();
       if (typeNodeInner) declaredTypeTexts.push(typeNodeInner.getText());
       const jsDocs =
-        (d as { getJsDocs?: () => Array<{ getDescription: () => string }> }).getJsDocs?.() ?? [];
-      if (jsDocs.some((doc) => doc.getDescription().includes("@deprecated"))) {
+        (d as {
+          getJsDocs?: () => Array<{
+            getDescription: () => string;
+            getTags: () => Array<{ getTagName: () => string }>;
+          }>;
+        }).getJsDocs?.() ?? [];
+      descriptions.push(
+        ...jsDocs.map((doc) => doc.getDescription().trim()).filter(Boolean),
+      );
+      if (
+        jsDocs.some((doc) =>
+          doc.getTags().some((tag) => tag.getTagName() === "deprecated"),
+        )
+      ) {
         deprecated = true;
       }
     }
@@ -205,10 +232,100 @@ function extractPropSchemasFromFile(
       type: values?.length ? "union" : typeText.slice(0, 120),
       ...(values?.length ? { values } : {}),
       ...(deprecated ? { deprecated: true } : {}),
+      ...(descriptions[0] ? { description: descriptions[0] } : {}),
     };
   }
 
   return props;
+}
+
+function extractPropRelationships(
+  propsDecl:
+    | import("ts-morph").InterfaceDeclaration
+    | import("ts-morph").TypeAliasDeclaration
+    | undefined,
+  propNames: string[],
+): PropRelationship[] {
+  if (!propsDecl || !("getType" in propsDecl)) return [];
+
+  const branches = propsDecl.getType().getUnionTypes();
+  if (branches.length < 2) return [];
+
+  const states = branches.map((branch) => {
+    const branchState = new Map<string, { available: boolean; required: boolean }>();
+    for (const name of propNames) {
+      const symbol = branch.getProperty(name);
+      const typeText = symbol?.getTypeAtLocation(propsDecl).getText(propsDecl) ?? "undefined";
+      const available = typeText
+        .split("|")
+        .map((part) => part.trim())
+        .some((part) => part !== "never" && part !== "undefined");
+      branchState.set(name, {
+        available,
+        required: available && !symbol?.isOptional(),
+      });
+    }
+    return branchState;
+  });
+
+  const requires: PropRelationship[] = [];
+  const requiresByProp = new Map<string, Set<string>>();
+  for (const prop of propNames) {
+    const activeBranches = states.filter((state) => state.get(prop)?.available);
+    if (!activeBranches.length) continue;
+
+    const requiredProps = propNames.filter(
+      (candidate) =>
+        candidate !== prop &&
+        activeBranches.every((state) => state.get(candidate)?.required) &&
+        !states.every((state) => state.get(candidate)?.required),
+    );
+    if (!requiredProps.length) continue;
+
+    requiresByProp.set(prop, new Set(requiredProps));
+    requires.push({
+      kind: "requires",
+      prop,
+      requires: requiredProps,
+      reason: `Whenever \`${prop}\` is accepted by ${propsDecl.getName()}, ${requiredProps.map((name) => `\`${name}\``).join(" and ")} must also be present.`,
+    });
+  }
+
+  const incompatiblePairs = new Set<string>();
+  for (let index = 0; index < propNames.length; index += 1) {
+    for (let otherIndex = index + 1; otherIndex < propNames.length; otherIndex += 1) {
+      const first = propNames[index];
+      const second = propNames[otherIndex];
+      const firstExists = states.some((state) => state.get(first)?.available);
+      const secondExists = states.some((state) => state.get(second)?.available);
+      const coexist = states.some(
+        (state) => state.get(first)?.available && state.get(second)?.available,
+      );
+      if (firstExists && secondExists && !coexist) {
+        incompatiblePairs.add([first, second].sort().join("\0"));
+      }
+    }
+  }
+
+  const mutuallyExclusive: PropRelationship[] = [];
+  for (const key of incompatiblePairs) {
+    const [first, second] = key.split("\0");
+    const firstIsImplied = [...(requiresByProp.get(first) ?? [])].some((required) =>
+      incompatiblePairs.has([required, second].sort().join("\0")),
+    );
+    const secondIsImplied = [...(requiresByProp.get(second) ?? [])].some((required) =>
+      incompatiblePairs.has([required, first].sort().join("\0")),
+    );
+    if (firstIsImplied || secondIsImplied) continue;
+
+    mutuallyExclusive.push({
+      kind: "mutuallyExclusive",
+      props: [first, second],
+      reason: `\`${first}\` and \`${second}\` never coexist in a valid ${propsDecl.getName()} branch.`,
+    });
+  }
+
+  return [...mutuallyExclusive, ...requires];
 }
 
 function literalUnionValuesFromText(typeText: string): string[] | undefined {
@@ -304,6 +421,12 @@ function main() {
     const spec = existsSync(entry.specPath) ? readFileSync(entry.specPath, "utf8") : null;
     const extracted = extractComponentFromSourceFile(sf, tsxPath);
     const props = extractPropSchemasFromFile(sf, entry.name);
+    const propsName = `${entry.name}Props`;
+    const propsDecl =
+      sf.getInterface(propsName) ??
+      sf.getTypeAlias(propsName) ??
+      sf.getInterfaces().find((candidate) => candidate.isExported()) ??
+      sf.getTypeAliases().find((candidate) => candidate.isExported());
     const variants = mergeVariants(extracted.variants, variantsFromProps(props));
     const { useWhen, avoidWhen } = parseSpecAgentHints(spec);
     const intent = pickAgentIntent(
@@ -319,6 +442,7 @@ function main() {
       preferredImport: `@dt/${entry.importName}`,
       intent: intent || "",
       props,
+      propRelationships: extractPropRelationships(propsDecl, Object.keys(props)),
       variants,
       /** CVA-only axes — safe to sync into contract.json when invoked in source */
       cvaVariants: extracted.variants,

@@ -20,7 +20,6 @@ export const iconVariants = cva(styles.base, {
   defaultVariants: { size: "md" },
 });
 
-
 type NamedSize = "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 type LegacyStyle =
   | "solid"
@@ -43,14 +42,23 @@ export type IconProps = Omit<React.HTMLAttributes<HTMLElement>, "color"> & {
    * Legacy FontAwesome-style weight string kept for backward compatibility.
    */
   legacyStyle?: LegacyStyle;
+  /** Tokenized or explicit pixel size. @default "md" */
   size?: NamedSize | number;
+  /** SVG color override; defaults to the inherited current color. */
   color?: string;
+  /** Quarter-turn rotation applied to the glyph. */
   rotate?: 0 | 90 | 180 | 270;
+  /** Mirror the glyph along one or both axes. */
   flip?: "horizontal" | "vertical" | "both";
+  /** Apply the continuous rotation animation. */
   spin?: boolean;
+  /** Apply the pulse animation when spin is not active. */
   pulse?: boolean;
+  /** Use Phosphor's horizontal mirroring. */
   mirrored?: boolean;
+  /** Accessible name for a meaningful icon. */
   ariaLabel?: string;
+  /** Hide the icon from assistive technology. Defaults to true without ariaLabel. */
   decorative?: boolean;
 };
 

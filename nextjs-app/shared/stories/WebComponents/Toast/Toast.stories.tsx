@@ -90,7 +90,7 @@ function DefaultDemo() {
 const meta = {
   title: "Web Components/Feedback/Toast",
   component: NativeToast,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "padded",

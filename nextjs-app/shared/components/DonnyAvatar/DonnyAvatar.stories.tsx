@@ -6,7 +6,7 @@ import { DonnyAvatar, DonnyState } from "./DonnyAvatar";
 const meta: Meta<typeof DonnyAvatar> = {
   title: "Site/DonnyAvatar",
   component: DonnyAvatar,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

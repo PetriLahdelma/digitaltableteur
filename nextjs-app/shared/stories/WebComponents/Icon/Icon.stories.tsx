@@ -30,7 +30,7 @@ function NativeIcon({ ariaLabel, ...args }: Args) {
 const meta = {
   title: "Web Components/Content/Icon",
   component: NativeIcon,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

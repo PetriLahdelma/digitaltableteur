@@ -50,9 +50,9 @@ const styles = `
   }
   .overlay {
     box-sizing: border-box;
+    position: absolute;
+    inset: 0;
     display: flex;
-    inline-size: 100%;
-    block-size: 100%;
     align-items: center;
     justify-content: center;
     padding: 1rem;
@@ -73,22 +73,22 @@ const styles = `
   }
   .panel.success {
     border-block-start: 4px solid var(--color-success);
-    max-inline-size: min(90vw, 30rem);
+    max-inline-size: 30vw;
   }
   .panel.error {
     border-block-start: 4px solid var(--color-error);
-    max-inline-size: min(90vw, 30rem);
+    max-inline-size: 30vw;
   }
   .panel.warning {
     border-block-start: 4px solid var(--color-warning);
-    max-inline-size: min(90vw, 30rem);
+    max-inline-size: 30vw;
   }
   .panel.info {
     border-block-start: 4px solid var(--color-info);
-    max-inline-size: min(90vw, 30rem);
+    max-inline-size: 30vw;
   }
   .panel.loading {
-    max-inline-size: min(90vw, 30rem);
+    max-inline-size: 30vw;
   }
   .panel[data-animation="scale"] {
     animation: modalScaleIn var(--duration-fast, 200ms) var(--ease-out-cubic, ease-out);
@@ -138,8 +138,7 @@ const styles = `
     line-height: 0;
   }
   .icon ::slotted(*),
-  .icon dt-icon,
-  .closeButton dt-icon {
+  .icon dt-icon {
     inline-size: 2rem;
     block-size: 2rem;
   }
@@ -159,7 +158,7 @@ const styles = `
   .title[data-size="xxl"] { font-size: var(--font-size-title-xxl); }
   .loadingContent {
     display: flex;
-    min-block-size: 8rem;
+    min-block-size: 11.25rem;
     align-items: center;
     justify-content: center;
   }
@@ -168,28 +167,12 @@ const styles = `
     align-items: center;
     gap: var(--space-internal-8, 0.5rem);
   }
-  .closeButton {
-    display: inline-flex;
-    inline-size: 2rem;
-    block-size: 2rem;
-    flex: none;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: var(--color-primary);
-    cursor: pointer;
-  }
-  .closeButton:focus-visible,
-  .defaultAction:focus-visible,
   .panel:focus-visible {
     outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
     outline-offset: var(--focus-ring-offset, 2px);
   }
   .description {
     margin: 0;
-    padding-inline: var(--space-internal-24, 1.5rem);
     color: inherit;
     font-family: var(--font-text);
     font-size: var(--font-size-text-s, 0.875rem);
@@ -211,21 +194,6 @@ const styles = `
     gap: var(--space-internal-8, 0.5rem);
     padding: var(--space-internal-24, 1.5rem);
   }
-  .defaultAction {
-    display: inline-flex;
-    min-block-size: 2.5rem;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-internal-8, 0.5rem) var(--space-internal-16, 1rem);
-    border: 0;
-    border-radius: var(--radius-lg);
-    background: var(--color-primary);
-    color: var(--color-white);
-    font: inherit;
-    font-family: var(--primary-body-font);
-    font-size: var(--font-size-button-m, 1rem);
-    cursor: pointer;
-  }
   .srOnly {
     position: absolute;
     inline-size: 1px;
@@ -236,14 +204,6 @@ const styles = `
     clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .defaultAction:hover {
-      filter: brightness(0.94);
-    }
-    .closeButton:hover {
-      background: color-mix(in srgb, var(--color-primary) 10%, transparent);
-    }
   }
   @media (width <= 768px) {
     .overlay {
@@ -256,14 +216,11 @@ const styles = `
     .panel.warning,
     .panel.info {
       inline-size: 100%;
-      max-inline-size: 100%;
+      max-inline-size: 90vw;
       max-block-size: min(90vh, 48rem);
     }
     .header {
       padding: 1.5rem 1rem 0.75rem;
-    }
-    .description {
-      padding-inline: 1rem;
     }
     .content {
       padding-inline: 1rem;
@@ -274,8 +231,6 @@ const styles = `
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .defaultAction,
-    .closeButton,
     .panel {
       transition: none;
       animation: none;
@@ -296,11 +251,6 @@ const styles = `
     .panel.info {
       border-block-start-color: Highlight;
     }
-    .defaultAction {
-      background: ButtonFace;
-      color: ButtonText;
-      border: 1px solid ButtonText;
-    }
   }
 `;
 
@@ -309,6 +259,9 @@ let modalId = 0;
 function isFocusable(control: HTMLElement): boolean {
   if (control.matches(":disabled")) return false;
   if (control.getAttribute("aria-hidden") === "true") return false;
+  if (control.shadowRoot && hasComposedFocusable(control.shadowRoot)) {
+    return true;
+  }
   if (
     control.tabIndex < 0 &&
     !control.matches("a[href], button, input, select, textarea")
@@ -318,8 +271,25 @@ function isFocusable(control: HTMLElement): boolean {
   return !control.hasAttribute("hidden");
 }
 
+function hasComposedFocusable(root: ParentNode): boolean {
+  for (const element of root.querySelectorAll<HTMLElement>("*")) {
+    if (
+      element.matches(focusableSelector) &&
+      !element.matches(":disabled") &&
+      element.getAttribute("aria-hidden") !== "true" &&
+      !element.hasAttribute("hidden")
+    ) {
+      return true;
+    }
+    if (element.shadowRoot && hasComposedFocusable(element.shadowRoot)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function findFocusable(root: ParentNode): HTMLElement[] {
-  const nodes = [...root.querySelectorAll<HTMLElement>(focusableSelector)];
+  const nodes = [...root.querySelectorAll<HTMLElement>("*")];
   return nodes.filter(isFocusable);
 }
 
@@ -346,8 +316,8 @@ export class DtModalElement extends DigitaltableteurElement {
   private lastOpen = false;
   private overlay: HTMLDivElement | null = null;
   private panel: HTMLDivElement | null = null;
-  private closeButton: HTMLButtonElement | null = null;
-  private defaultAction: HTMLButtonElement | null = null;
+  private closeButton: HTMLElement | null = null;
+  private defaultAction: HTMLElement | null = null;
   private previousFocus: HTMLElement | null = null;
   private previousBodyOverflow: string | null = null;
   private readonly background = new BackgroundInert(this);
@@ -726,8 +696,7 @@ export class DtModalElement extends DigitaltableteurElement {
         : "dialog",
     );
     panel.setAttribute("aria-modal", "true");
-    if (this.dialogTitle)
-      panel.setAttribute("aria-labelledby", this.titleId());
+    if (this.dialogTitle) panel.setAttribute("aria-labelledby", this.titleId());
     else
       panel.setAttribute(
         "aria-label",
@@ -786,16 +755,12 @@ export class DtModalElement extends DigitaltableteurElement {
       }
 
       if (this.showCloseIcon) {
-        const closeButton = this.ownerDocument.createElement("button");
-        closeButton.type = "button";
-        closeButton.className = "closeButton";
+        const closeButton = this.ownerDocument.createElement("dt-icon-button");
         closeButton.setAttribute("part", "close-button");
-        closeButton.setAttribute("aria-label", this.closeButtonLabel);
-        const closeIcon = this.ownerDocument.createElement("dt-icon");
-        closeIcon.setAttribute("name", this.closeIconName);
-        closeIcon.setAttribute("size", "md");
-        closeIcon.setAttribute("decorative", "");
-        closeButton.append(closeIcon);
+        closeButton.setAttribute("icon", this.closeIconName);
+        closeButton.setAttribute("label", this.closeButtonLabel);
+        closeButton.setAttribute("variant", "tertiary");
+        closeButton.setAttribute("size", "md");
         closeButton.addEventListener("click", () =>
           this.requestDismiss("close-button"),
         );
@@ -810,14 +775,6 @@ export class DtModalElement extends DigitaltableteurElement {
       this.closeButton = null;
     }
 
-    if (this.description) {
-      const description = this.ownerDocument.createElement("p");
-      description.className = "description";
-      description.id = this.descriptionId();
-      description.textContent = this.description;
-      panel.append(description);
-    }
-
     const content = this.ownerDocument.createElement("div");
     content.className = "content";
     content.setAttribute("part", "content");
@@ -826,6 +783,13 @@ export class DtModalElement extends DigitaltableteurElement {
       content.setAttribute("aria-busy", "true");
       content.innerHTML = '<dt-spinner label="Loading dialog"></dt-spinner>';
     } else {
+      if (this.description) {
+        const description = this.ownerDocument.createElement("p");
+        description.className = "description";
+        description.id = this.descriptionId();
+        description.textContent = this.description;
+        content.append(description);
+      }
       const bodySlot = this.ownerDocument.createElement("slot");
       content.append(bodySlot);
     }
@@ -841,10 +805,9 @@ export class DtModalElement extends DigitaltableteurElement {
         slot.name = "footer";
         footer.append(slot);
       } else {
-        const action = this.ownerDocument.createElement("button");
-        action.type = "button";
-        action.className = "defaultAction";
-        action.textContent = "OK";
+        const action = this.ownerDocument.createElement("dt-button");
+        action.setAttribute("part", "default-action");
+        action.setAttribute("label", "OK");
         action.addEventListener("click", () =>
           this.requestDismiss("close-button"),
         );

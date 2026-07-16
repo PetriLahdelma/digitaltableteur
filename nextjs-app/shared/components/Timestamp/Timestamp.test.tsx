@@ -63,6 +63,19 @@ describe("formatTimestamp", () => {
     expect(fi).toContain("2025");
     expect(fi).not.toBe(en);
   });
+
+  it("returns an empty relative value for an invalid reference time", () => {
+    expect(
+      formatTimestamp(
+        TWO_HOURS_AGO,
+        new Date(Number.NaN),
+        "relative",
+        "en",
+        false,
+        604800,
+      ),
+    ).toBe("");
+  });
 });
 
 describe("Timestamp", () => {
@@ -127,6 +140,21 @@ describe("Timestamp", () => {
     render(<Timestamp value="not-a-date" format="date" now={NOW} />);
     const time = document.querySelector("time");
     expect(time?.textContent).toBe("");
+    expect(time).not.toHaveAttribute("dateTime");
+  });
+
+  it("renders nothing readable for an invalid relative reference time", () => {
+    expect(() =>
+      render(
+        <Timestamp
+          value={TWO_HOURS_AGO}
+          format="relative"
+          now="not-a-date"
+        />,
+      ),
+    ).not.toThrow();
+    const time = document.querySelector("time");
+    expect(time).toBeEmptyDOMElement();
     expect(time).not.toHaveAttribute("dateTime");
   });
 

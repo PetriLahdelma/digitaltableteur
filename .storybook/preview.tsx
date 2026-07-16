@@ -6,9 +6,7 @@ import { AnimationProvider } from "../providers/AnimationProvider";
 
 // @gsap/react reads React from globalThis in some Vite/Storybook bundles
 if (typeof globalThis !== "undefined") {
-  (
-    globalThis as typeof globalThis & { React: typeof React }
-  ).React = React;
+  (globalThis as typeof globalThis & { React: typeof React }).React = React;
 }
 
 import { I18nextProvider } from "react-i18next";
@@ -257,7 +255,11 @@ const withI18next: Decorator = (Story: StoryFn, context: StoryContext) => {
 const withFullscreenSafeArea: Decorator = (Story, context) => {
   const isFullscreen = context.parameters?.layout === "fullscreen";
   if (!isFullscreen) {
-    return <><Story /></>;
+    return (
+      <>
+        <Story />
+      </>
+    );
   }
   return (
     <div className="fullscreenSafeArea" data-safe-area>
@@ -265,7 +267,6 @@ const withFullscreenSafeArea: Decorator = (Story, context) => {
     </div>
   );
 };
-
 
 const withWipBadge: Decorator = (Story, context) => {
   // Docs pages carry status through their own affordances (DocHeader
@@ -277,14 +278,29 @@ const withWipBadge: Decorator = (Story, context) => {
   if (context.viewMode === "docs") {
     return <Story />;
   }
-  const contractStatus =
-    (context.parameters?.contractStatus as string | undefined) ??
-    (context.parameters?.wip?.status as string | undefined) ??
-    "alpha";
-  const showBadge = contractStatus !== "stable" && context.parameters?.wip?.disabled !== true;
+  const lifecycleTags = ["alpha", "beta", "stable", "deprecated"];
+  const taggedStatus = lifecycleTags.find((status) =>
+    context.tags?.includes(status),
+  );
+  const lifecycleStatus =
+    context.parameters?.implementation === "web-component"
+      ? ((context.parameters?.implementationStatus as string | undefined) ??
+        taggedStatus ??
+        "alpha")
+      : ((context.parameters?.contractStatus as string | undefined) ??
+        (context.parameters?.wip?.status as string | undefined) ??
+        taggedStatus ??
+        "alpha");
+  const showBadge =
+    lifecycleStatus !== "stable" && context.parameters?.wip?.disabled !== true;
   return (
     <>
-      {showBadge ? <WipBadge status={contractStatus as "alpha" | "beta" | "stable" | "deprecated"} variant="canvas" /> : null}
+      {showBadge ? (
+        <WipBadge
+          status={lifecycleStatus as "alpha" | "beta" | "stable" | "deprecated"}
+          variant="canvas"
+        />
+      ) : null}
       <Story />
     </>
   );
@@ -314,7 +330,8 @@ const FORCED_COLORS_A11Y_FIX_STYLE_ID = "sb-forced-colors-a11y-fix";
  * Default/Playground/Example set `forcedColors: "none"` so toolbar + URL do not stick.
  */
 const withForcedColorsGlobal: Decorator = (Story, context) => {
-  const mode = (context.globals?.forcedColors as ForcedColorsGlobal | undefined) ?? "none";
+  const mode =
+    (context.globals?.forcedColors as ForcedColorsGlobal | undefined) ?? "none";
   const active = mode === "active";
   const forcedColorsEnvActive = isForcedColorsRuntime();
 

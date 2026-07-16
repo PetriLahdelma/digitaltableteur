@@ -18,6 +18,7 @@ import {
 import { tmpdir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import webComponentElements from "../../packages/web-components/web-components.config.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const OUT_DIR = join(ROOT, ".omx/state/design-system/npm-consumer-install");
@@ -37,6 +38,9 @@ const REACT_FAMILY_ENTRIES = {
   runtime: "LayerProvider",
   typography: "Text",
 };
+const EXPECTED_NATIVE_WEB_COMPONENT_TAGS = webComponentElements
+  .filter((element) => element.defaultBackend === "native")
+  .map((element) => element.tagName);
 
 function run(command, args, options = {}) {
   return execFileSync(command, args, {
@@ -256,6 +260,7 @@ const registry = {
   define: (name, constructor) => registeredElements.set(name, constructor),
 };
 const webComponentTags = WC.defineElements(registry);
+const expectedWebComponentTags = ${JSON.stringify(EXPECTED_NATIVE_WEB_COMPONENT_TAGS)};
 
 const require = createRequire(import.meta.url);
 const tokenCss = require.resolve("@digitaltableteur/tokens-css/tokens.css");
@@ -282,10 +287,9 @@ if (!tailwindThemeRefs["color-dt-primary"]) {
   throw new Error("Tailwind token export missing color-dt-primary");
 }
 if (
-  webComponentTags.length !== 62 ||
-  registeredElements.size !== 62 ||
-  !registeredElements.has("dt-phone-input") ||
-  !registeredElements.has("dt-cookie-consent")
+  webComponentTags.length !== expectedWebComponentTags.length ||
+  registeredElements.size !== expectedWebComponentTags.length ||
+  expectedWebComponentTags.some((tagName) => !registeredElements.has(tagName))
 ) {
   throw new Error("Web-components package did not register the complete native fleet");
 }
@@ -402,9 +406,13 @@ console.log(JSON.stringify({
     `
 import * as React from "react";
 import {
+  DtBreadcrumbElement,
   DtComboboxElement,
   DtCookieConsentElement,
+  DtFileUploadElement,
   DtPhoneInputElement,
+  DtTimestampElement,
+  type DtBreadcrumbItem,
   type DtComboboxOption,
   type DtCookieConsentPersistence,
 } from "@digitaltableteur/web-components";
@@ -499,6 +507,10 @@ const webComponentOption: DtComboboxOption = {
   value: "helsinki",
   label: "Helsinki",
 };
+const nativeBreadcrumbItems: DtBreadcrumbItem[] = [
+  { label: "Home", href: "/" },
+  { label: "Package smoke" },
+];
 const persistence: DtCookieConsentPersistence = {
   load: () => null,
   save: () => undefined,
@@ -506,12 +518,19 @@ const persistence: DtCookieConsentPersistence = {
 let comboboxElement: DtComboboxElement | undefined;
 let phoneInputElement: DtPhoneInputElement | undefined;
 let cookieConsentElement: DtCookieConsentElement | undefined;
+let breadcrumbElement: DtBreadcrumbElement | undefined;
+let fileUploadElement: DtFileUploadElement | undefined;
+let timestampElement: DtTimestampElement | undefined;
 void webComponentOption;
 void persistence;
 void comboboxElement;
 void phoneInputElement;
 void cookieConsentElement;
-type NativeTagProbe = HTMLElementTagNameMap["dt-cookie-consent"];
+void nativeBreadcrumbItems;
+void breadcrumbElement;
+void fileUploadElement;
+void timestampElement;
+type NativeTagProbe = HTMLElementTagNameMap["dt-file-upload"];
 const nativeTagProbe: NativeTagProbe | undefined = undefined;
 void nativeTagProbe;
 

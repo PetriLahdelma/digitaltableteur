@@ -1,1 +1,7 @@
 - button "Delete project…"
+- alertdialog "Delete this project?":
+  - heading "Delete this project?" [level=2]
+  - paragraph: This removes the project and its history for everyone in the workspace.
+  - paragraph: Type the project name to confirm elsewhere; this demo keeps it short.
+  - button "Cancel"
+  - button "Delete project"

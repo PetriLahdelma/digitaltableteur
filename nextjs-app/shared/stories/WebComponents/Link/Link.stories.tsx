@@ -50,7 +50,7 @@ function NativeLink({
 const meta = {
   title: "Web Components/Navigation/Link",
   component: NativeLink,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-link custom element." } },

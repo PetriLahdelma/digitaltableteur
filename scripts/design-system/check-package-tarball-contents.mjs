@@ -102,9 +102,15 @@ const PACKAGE_DEFINITIONS = [
   {
     dir: "packages/web-components",
     name: "@digitaltableteur/web-components",
-    maxEntryCount: 168,
-    maxTarballSize: 250_000,
-    maxUnpackedSize: 1_450_000,
+    // 84 native tags as of the editorial/navigation batch (#1228): measured
+    // 204 entries / 311 kB packed / 1.83 MB unpacked; ceilings keep ~3-6%
+    // headroom so the next real component still forces a deliberate bump.
+    maxEntryCount: 210,
+    maxTarballSize: 330_000,
+    // Includes per-element canonical/native lifecycle metadata in the Custom
+    // Elements Manifest and generated migration table. The package-specific
+    // guard retains a separate fleet-scaled formula for future growth.
+    maxUnpackedSize: 1_900_000,
     requiredFiles: [
       "README.md",
       "custom-elements.json",
@@ -128,16 +134,31 @@ const ROOT_FILE_ALLOWLIST = new Set([
 ]);
 const DIST_FILE_ALLOWLIST = /^dist\/.+\.(?:css|d\.ts|d\.ts\.map|js|json)$/;
 const FORBIDDEN_PATTERNS = [
-  { label: "environment file", re: /(^|\/)\.env(?:\.|$)|(^|\/)\.npmrc$|(^|\/)\.npm-userconfig$/ },
+  {
+    label: "environment file",
+    re: /(^|\/)\.env(?:\.|$)|(^|\/)\.npmrc$|(^|\/)\.npm-userconfig$/,
+  },
   {
     label: "source/config directory",
     re: /(^|\/)(?:src|app|scripts|tests?|__tests__|__mocks__|__snapshots__|__a11y-snapshots__|\.storybook|\.next|coverage|storybook-static)(?:\/|$)/,
   },
-  { label: "lockfile or npm debug log", re: /(^|\/)(?:package-lock\.json|pnpm-lock\.yaml|yarn\.lock|npm-debug\.log)$/ },
-  { label: "test or story source", re: /\.(?:test|spec|stories)\.[cm]?[tj]sx?$/ },
+  {
+    label: "lockfile or npm debug log",
+    re: /(^|\/)(?:package-lock\.json|pnpm-lock\.yaml|yarn\.lock|npm-debug\.log)$/,
+  },
+  {
+    label: "test or story source",
+    re: /\.(?:test|spec|stories)\.[cm]?[tj]sx?$/,
+  },
   { label: "raw TypeScript source", re: /\.(?:ts|tsx)$/ },
-  { label: "image/media artifact", re: /\.(?:avif|gif|jpe?g|mov|mp4|pdf|png|svg|webp)$/ },
-  { label: "tool config", re: /(^|\/)(?:eslint|next|playwright|tsconfig|vite|vitest)\.config\./ },
+  {
+    label: "image/media artifact",
+    re: /\.(?:avif|gif|jpe?g|mov|mp4|pdf|png|svg|webp)$/,
+  },
+  {
+    label: "tool config",
+    re: /(^|\/)(?:eslint|next|playwright|tsconfig|vite|vitest)\.config\./,
+  },
   { label: "node_modules payload", re: /(^|\/)node_modules(?:\/|$)/ },
 ];
 
@@ -162,7 +183,9 @@ function parsePackJson(stdout, packageName) {
           ? [parsed[packageName]]
           : [parsed];
       if (rows.length !== 1) {
-        throw new Error(`npm pack for ${packageName} returned ${rows.length} package rows.`);
+        throw new Error(
+          `npm pack for ${packageName} returned ${rows.length} package rows.`,
+        );
       }
       return rows[0];
     } catch {
@@ -174,15 +197,11 @@ function parsePackJson(stdout, packageName) {
 }
 
 function packPackage(definition) {
-  const stdout = execFileSync(
-    "npm",
-    ["pack", "--dry-run", "--json"],
-    {
-      cwd: join(ROOT, definition.dir),
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "pipe"],
-    },
-  );
+  const stdout = execFileSync("npm", ["pack", "--dry-run", "--json"], {
+    cwd: join(ROOT, definition.dir),
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
   return parsePackJson(stdout, definition.name);
 }
 
@@ -207,7 +226,9 @@ function validatePack(definition, pack) {
     );
   }
   if (pack.size > definition.maxTarballSize) {
-    errors.push(`tarball size ${pack.size} exceeds ceiling ${definition.maxTarballSize}`);
+    errors.push(
+      `tarball size ${pack.size} exceeds ceiling ${definition.maxTarballSize}`,
+    );
   }
   if (pack.unpackedSize > definition.maxUnpackedSize) {
     errors.push(
@@ -236,8 +257,13 @@ function validatePack(definition, pack) {
 
     for (const forbidden of FORBIDDEN_PATTERNS) {
       if (!forbidden.re.test(path)) continue;
-      if (forbidden.label === "source/config directory" && path.startsWith("dist/types/")) continue;
-      if (forbidden.label === "raw TypeScript source" && /\.d\.ts$/.test(path)) continue;
+      if (
+        forbidden.label === "source/config directory" &&
+        path.startsWith("dist/types/")
+      )
+        continue;
+      if (forbidden.label === "raw TypeScript source" && /\.d\.ts$/.test(path))
+        continue;
       forbiddenFiles.push({ path, reason: forbidden.label });
       errors.push(`forbidden ${forbidden.label}: ${path}`);
     }

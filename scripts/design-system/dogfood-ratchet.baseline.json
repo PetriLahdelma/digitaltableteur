@@ -11,7 +11,7 @@
     },
     "app/blog/[slug]/ServerArticleHero.tsx": {
       "rawElements": 1,
-      "utilityLines": 11
+      "utilityLines": 10
     },
     "app/blog/[slug]/ServerArticleMain.tsx": {
       "rawElements": 0,
@@ -162,7 +162,7 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx": {
-      "rawElements": 2,
+      "rawElements": 1,
       "utilityLines": 0
     },
     "nextjs-app/shared/components/DashLeadList/DashLeadList.tsx": {

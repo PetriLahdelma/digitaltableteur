@@ -36,23 +36,31 @@
     "props": {
         "name": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Author name shown after the byline prefix."
         },
         "imageUrl": {
             "optional": false,
-            "type": "string | { default: string } | StaticImageData"
+            "type": "string | { default: string } | StaticImageData",
+            "description": "Avatar image source."
         },
         "size": {
             "optional": true,
-            "type": "AvatarSize"
+            "type": "AvatarSize",
+            "description": "Avatar size."
         },
         "profileUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional author profile URL; makes the byline text a link."
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Use Author for a full biography or social-link block; use AuthorBio instead.",
+        "Render an unlabelled avatar when the author's identity is not also available as text."
+    ],
+    "composesWith": [
+        "Avatar"
     ],
     "displayName": "Author",
     "keywords": [
@@ -63,6 +71,28 @@
     ],
     "dense": "Article byline: author name/avatar attribution line for blog posts",
     "usage": {
-        "description": "Compact byline attribution (author identity) for blog posts. For the fuller end-of-article treatment use AuthorBio."
+        "description": "Compact byline attribution (author identity) for blog posts. For the fuller end-of-article treatment use AuthorBio.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Place Author beside publication metadata near the article title."
+            },
+            {
+                "guidance": false,
+                "description": "Do not repeat a biography in the compact byline; compose AuthorBio later in the article."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Avatar",
+                "required": true,
+                "description": "Visual author identity rendered by Avatar."
+            },
+            {
+                "name": "Byline",
+                "required": true,
+                "description": "Text attribution, optionally linked to the author profile."
+            }
+        ]
     }
 }

@@ -3,7 +3,7 @@
     "name": "Switch",
     "tier": "atom",
     "group": "form",
-    "status": "beta",
+    "status": "stable",
     "description": "Toggle control with label placement, loading, and helper text.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=373-14",
     "radixPrimitive": null,
@@ -41,8 +41,10 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-16 beta->stable: Switch replaced the bespoke GDPR category toggle in CookieConsent; controlled/uncontrolled exclusivity is executable in SwitchProps, and required-story AT plus Chromium forced-colors evidence was recaptured.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -56,24 +58,34 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "checked": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Checked state for controlled use. Mutually exclusive with defaultChecked."
         },
         "defaultChecked": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean | undefined",
+            "description": "Initial checked state for uncontrolled use. Mutually exclusive with checked."
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables interaction and dims the control."
         },
         "loading": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Shows a loading spinner and blocks interaction; sets aria-busy."
         },
         "size": {
             "optional": true,
@@ -82,15 +94,18 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Control size."
         },
         "onCheckedChange": {
             "optional": true,
-            "type": "(checked: boolean) => void"
+            "type": "(checked: boolean) => void",
+            "description": "Called with the next checked value when the switch is toggled."
         },
         "label": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Visible label."
         },
         "labelPlacement": {
             "optional": true,
@@ -99,17 +114,24 @@
                 "left",
                 "right",
                 "top"
-            ]
+            ],
+            "description": "Where the label sits relative to the control."
         },
         "helperText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Supporting text rendered beneath the control."
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Error message beneath the control; sets aria-invalid and aria-describedby."
         }
     },
+    "composesWith": [
+        "Label",
+        "HelperText"
+    ],
     "forbiddenUse": [
         "use Switch inside a form whose values are submitted in a batch.",
         "rely on colour alone to convey state — the position of the"

@@ -7,6 +7,15 @@ export type {
   SupportedLanguage,
 } from "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet";
 export {
+  Timestamp,
+  formatTimestamp,
+} from "../../../nextjs-app/shared/components/Timestamp";
+export type {
+  TimestampFormat,
+  TimestampProps,
+  TimestampSize,
+} from "../../../nextjs-app/shared/components/Timestamp";
+export {
   ExpandableSection,
   type ExpandableSectionProps,
 } from "../../../nextjs-app/shared/components/ExpandableSection";
@@ -22,4 +31,3 @@ export {
   ValueCard,
   type ValueCardProps,
 } from "../../../nextjs-app/shared/components/ValueCard";
-

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   NativeElement,
   Row,
+  Stage,
   Stack,
   assertNative,
   exampleStory,
@@ -57,28 +58,32 @@ const submenuOptions = JSON.stringify([
 ]);
 
 function NativeSplitButton(args: SplitButtonArgs) {
+  // The open menu is position:absolute (out of flow); the Stage reserves its
+  // space so docs canvases don't clip it mid-item.
   return (
-    <NativeElement
-      tagName="dt-split-button"
-      attributes={{
-        label: args.label,
-        variant: args.variant,
-        size: args.size,
-        surface: args.surface,
-        rounded: args.rounded,
-        disabled: args.disabled,
-        "menu-align": args.menuAlign,
-        "toggle-label": args.toggleLabel,
-        options: args.options,
-      }}
-    />
+    <Stage height="15rem">
+      <NativeElement
+        tagName="dt-split-button"
+        attributes={{
+          label: args.label,
+          variant: args.variant,
+          size: args.size,
+          surface: args.surface,
+          rounded: args.rounded,
+          disabled: args.disabled,
+          "menu-align": args.menuAlign,
+          "toggle-label": args.toggleLabel,
+          options: args.options,
+        }}
+      />
+    </Stage>
   );
 }
 
 const meta = {
   title: "Web Components/Actions/SplitButton",
   component: NativeSplitButton,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {
@@ -139,7 +144,8 @@ export const Playground: Story = {};
 export const Variants: Story = {
   ...exampleStory,
   render: () => (
-    <Row>
+    <Stage height="15rem">
+      <Row>
       <NativeElement
         tagName="dt-split-button"
         attributes={{ label: "Save", options: saveOptions, variant: "primary" }}
@@ -160,7 +166,8 @@ export const Variants: Story = {
           variant: "tertiary",
         }}
       />
-    </Row>
+      </Row>
+    </Stage>
   ),
 };
 
@@ -205,18 +212,21 @@ export const DisabledState: Story = { ...Disabled };
 export const RichLabelSlot: Story = {
   ...exampleStory,
   render: () => (
-    <NativeElement
-      tagName="dt-split-button"
-      attributes={{ options: saveOptions }}
-    >
-      <span slot="label">Save draft</span>
-    </NativeElement>
+    <Stage height="15rem">
+      <NativeElement
+        tagName="dt-split-button"
+        attributes={{ options: saveOptions }}
+      >
+        <span slot="label">Save draft</span>
+      </NativeElement>
+    </Stage>
   ),
 };
 
 export const Surfaces: Story = {
   ...exampleStory,
   render: () => (
+    <Stage height="22rem">
     <Stack>
       <Row>
         <NativeElement
@@ -247,21 +257,24 @@ export const Surfaces: Story = {
         </div>
       </Row>
     </Stack>
+    </Stage>
   ),
 };
 
 export const Example: Story = {
   ...exampleStory,
   render: () => (
-    <NativeElement
-      tagName="dt-split-button"
-      attributes={{
-        label: "Export",
-        variant: "secondary",
-        "toggle-label": "Choose export format",
-        options: exportOptions,
-      }}
-    />
+    <Stage height="15rem">
+      <NativeElement
+        tagName="dt-split-button"
+        attributes={{
+          label: "Export",
+          variant: "secondary",
+          "toggle-label": "Choose export format",
+          options: exportOptions,
+        }}
+      />
+    </Stage>
   ),
 };
 

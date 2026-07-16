@@ -52,7 +52,7 @@ function NativeAlertBanner({
 const meta = {
   title: "Web Components/Feedback/AlertBanner",
   component: NativeAlertBanner,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

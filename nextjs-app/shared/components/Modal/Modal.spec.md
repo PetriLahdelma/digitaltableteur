@@ -27,9 +27,9 @@ route.
 - Do: pick the severity that matches the message. `error` and
   `warning` flip the role to `alertdialog`, which carries an implicit
   assertive announcement.
-- Do: render destructive actions with `variant="error"` and pair them
-  with a tertiary Cancel. The user should be able to back out without
-  thinking.
+- Do: use `severity="error"` for destructive confirmations, render the
+  destructive action with `tone="error"`, and pair it with a secondary
+  Cancel. The dialog chrome and action must communicate the same risk.
 - Don't: nest a Modal inside another Modal. AT focus order becomes
   ambiguous and the `inert` attribute applies once. If you need a
   second confirmation step, swap content in place inside the existing

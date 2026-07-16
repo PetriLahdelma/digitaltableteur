@@ -104,7 +104,7 @@ function shadowTrigger(canvasElement: HTMLElement): HTMLButtonElement {
 const meta = {
   title: "Web Components/Navigation/LanguageSwitcher",
   component: NativeLanguageSwitcher,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

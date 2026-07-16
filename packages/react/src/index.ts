@@ -74,6 +74,15 @@ export type {
   SupportedLanguage,
 } from "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet";
 export {
+  Timestamp,
+  formatTimestamp,
+} from "../../../nextjs-app/shared/components/Timestamp";
+export type {
+  TimestampFormat,
+  TimestampProps,
+  TimestampSize,
+} from "../../../nextjs-app/shared/components/Timestamp";
+export {
   Combobox,
   type ComboboxOption,
   type ComboboxProps,

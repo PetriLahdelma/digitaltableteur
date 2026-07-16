@@ -31,6 +31,19 @@ export interface ManifestComponentEntry {
     replacementFor?: string[];
     prefersOver?: string[];
     props?: Record<string, unknown>;
+    propRelationships?: Array<
+      | {
+          kind: "mutuallyExclusive";
+          props: [string, string];
+          reason: string;
+        }
+      | {
+          kind: "requires";
+          prop: string;
+          requires: string[];
+          reason: string;
+        }
+    >;
     requiredA11y?: string[];
     keyboard?: string[];
     [key: string]: unknown;

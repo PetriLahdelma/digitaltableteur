@@ -17,7 +17,7 @@ import { getAuthors } from "../../data/authors";
 const meta: Meta<typeof Author> = {
   title: "Site/Author",
   component: Author,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

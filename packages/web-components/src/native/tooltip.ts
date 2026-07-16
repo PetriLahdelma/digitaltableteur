@@ -27,7 +27,13 @@ const styles = `
   }
   .content {
     position: fixed;
+    /* Keep inline top/left authoritative when the bubble is promoted to the
+       top layer (UA popover styles set inset: 0 and margin: auto). */
+    inset: auto;
     z-index: 6000;
+    margin: 0;
+    border: 0;
+    overflow: visible;
     max-inline-size: 20rem;
     padding: var(--space-internal-8, 0.5rem) var(--space-internal-12, 0.75rem);
     border-radius: var(--radius-md);
@@ -127,11 +133,23 @@ export class DtTooltipElement extends DigitaltableteurElement {
   private focusActive = false;
   private managedDescriptionBy: string | null = null;
   private lastOpen = false;
+  /**
+   * Frameworks (and the Storybook NativeElement wrapper) often apply
+   * attributes after the element has already connected, so default-open can
+   * arrive late; it seeds at most once so it never overrides interaction.
+   */
+  private defaultOpenConsumed = false;
 
-  connectedCallback(): void {
-    if (!this.hasAttribute("open") && this.defaultOpen && !this.controlled) {
+  private seedDefaultOpen(): void {
+    if (this.defaultOpenConsumed || !this.defaultOpen) return;
+    this.defaultOpenConsumed = true;
+    if (!this.hasAttribute("open") && !this.controlled) {
       this.setAttribute("open", "");
     }
+  }
+
+  connectedCallback(): void {
+    this.seedDefaultOpen();
     this.ensureDescriptionElement();
     this.render();
     this.syncTriggerElement();
@@ -163,6 +181,7 @@ export class DtTooltipElement extends DigitaltableteurElement {
 
   attributeChangedCallback(name: string): void {
     if (!this.isConnected) return;
+    if (name === "default-open") this.seedDefaultOpen();
     this.ensureDescriptionElement();
     this.render();
     this.syncTriggerElement();
@@ -352,6 +371,33 @@ export class DtTooltipElement extends DigitaltableteurElement {
     }, this.delay);
   }
 
+  /**
+   * position:fixed resolves against transformed/filtered ancestors (Storybook
+   * docs zoom, host animations) instead of the viewport, so an open bubble is
+   * promoted to the top layer where viewport coordinates always hold.
+   * Browsers without the Popover API keep plain fixed positioning.
+   */
+  private promoteToTopLayer(): void {
+    const content = this.contentElement;
+    if (!content || typeof content.showPopover !== "function") return;
+    content.setAttribute("popover", "manual");
+    try {
+      if (!content.matches(":popover-open")) content.showPopover();
+    } catch {
+      // Disconnected mid-flight; the next open re-promotes.
+    }
+  }
+
+  private demoteFromTopLayer(): void {
+    const content = this.contentElement;
+    if (!content || typeof content.hidePopover !== "function") return;
+    try {
+      if (content.matches(":popover-open")) content.hidePopover();
+    } catch {
+      // Already hidden or disconnected.
+    }
+  }
+
   private syncOpen(previousOpen: boolean): void {
     if (this.open === previousOpen) return;
     const view = this.ownerDocument.defaultView;
@@ -364,6 +410,7 @@ export class DtTooltipElement extends DigitaltableteurElement {
       view?.addEventListener("scroll", this.handleViewportChange, true);
       view?.addEventListener("keydown", this.handleDocumentKeydown, true);
     } else {
+      this.demoteFromTopLayer();
       this.contentElement?.setAttribute("data-state", "closed");
       this.contentElement?.setAttribute("hidden", "");
       this.syncAccessibleDescription();
@@ -430,6 +477,8 @@ export class DtTooltipElement extends DigitaltableteurElement {
 
   private positionTooltip(): void {
     if (!this.open || !this.triggerElement || !this.contentElement) return;
+    // Promote before measuring: showPopover() changes display and geometry.
+    this.promoteToTopLayer();
 
     const triggerRect = this.triggerElement.getBoundingClientRect();
     const tooltipRect = this.contentElement.getBoundingClientRect();

@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "structure",
     "status": "stable",
-    "description": "Quiet bordered surface for discrete, self-contained content; structure by composition.",
+    "description": "Quiet bordered card surface for discrete, self-contained content, including cards with actions composed into footer slots.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=377-26",
     "radixPrimitive": null,
     "element": "div",
@@ -182,6 +182,7 @@
     },
     "displayName": "Card",
     "keywords": [
+        "card with actions",
         "card",
         "surface",
         "container",

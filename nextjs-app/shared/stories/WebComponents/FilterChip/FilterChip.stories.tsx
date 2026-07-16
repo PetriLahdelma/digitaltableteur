@@ -23,7 +23,7 @@ function Chip(args: Args) {
 const meta = {
   title: "Web Components/Actions/FilterChip",
   component: Chip,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

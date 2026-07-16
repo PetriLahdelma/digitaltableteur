@@ -2,7 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   NativeElement,
   Row,
+  Stage,
   Stack,
+  TriggerButton,
   assertNative,
   exampleStory,
   forcedColorsStory,
@@ -65,28 +67,30 @@ const disabledItems = JSON.stringify([
 ]);
 
 function NativeMenu(args: MenuArgs) {
+  // The open panel is position:absolute (out of flow); the Stage reserves its
+  // space so docs canvases don't clip it mid-item.
   return (
-    <NativeElement
-      tagName="dt-menu"
-      attributes={{
-        side: args.side,
-        align: args.align,
-        "side-offset": args.sideOffset,
-        modal: args.modal,
-        items: args.items,
-      }}
-    >
-      <button slot="trigger" type="button">
-        Actions
-      </button>
-    </NativeElement>
+    <Stage height="17rem">
+      <NativeElement
+        tagName="dt-menu"
+        attributes={{
+          side: args.side,
+          align: args.align,
+          "side-offset": args.sideOffset,
+          modal: args.modal,
+          items: args.items,
+        }}
+      >
+        <TriggerButton slot="trigger">Actions</TriggerButton>
+      </NativeElement>
+    </Stage>
   );
 }
 
 const meta = {
   title: "Web Components/Actions/Menu",
   component: NativeMenu,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {
@@ -143,19 +147,19 @@ export const WithSubmenu: Story = {
   ...exampleStory,
   args: { items: withSubmenu },
   render: (args) => (
-    <NativeElement
-      tagName="dt-menu"
-      attributes={{
-        side: args.side,
-        align: args.align,
-        "side-offset": args.sideOffset,
-        items: withSubmenu,
-      }}
-    >
-      <button slot="trigger" type="button">
-        Share
-      </button>
-    </NativeElement>
+    <Stage height="17rem" width="26rem">
+      <NativeElement
+        tagName="dt-menu"
+        attributes={{
+          side: args.side,
+          align: args.align,
+          "side-offset": args.sideOffset,
+          items: withSubmenu,
+        }}
+      >
+        <TriggerButton slot="trigger">Share</TriggerButton>
+      </NativeElement>
+    </Stage>
   ),
 };
 
@@ -168,82 +172,78 @@ export const AsLinks: Story = {
   ...exampleStory,
   args: { items: asLinks },
   render: (args) => (
-    <NativeElement
-      tagName="dt-menu"
-      attributes={{
-        side: args.side,
-        align: args.align,
-        "side-offset": args.sideOffset,
-        items: asLinks,
-      }}
-    >
-      <button slot="trigger" type="button">
-        Account
-      </button>
-    </NativeElement>
+    <Stage height="17rem">
+      <NativeElement
+        tagName="dt-menu"
+        attributes={{
+          side: args.side,
+          align: args.align,
+          "side-offset": args.sideOffset,
+          items: asLinks,
+        }}
+      >
+        <TriggerButton slot="trigger">Account</TriggerButton>
+      </NativeElement>
+    </Stage>
   ),
 };
 
 export const DeclarativeItems: Story = {
   ...exampleStory,
   render: () => (
-    <NativeElement tagName="dt-menu">
-      <button slot="trigger" type="button">
-        Account
-      </button>
-      <button data-id="profile" type="button">
-        Profile
-      </button>
-      <div data-separator="true" />
-      <button data-value="sign-out" type="button">
-        Sign out
-      </button>
-    </NativeElement>
+    <Stage height="14rem">
+      <NativeElement tagName="dt-menu">
+        <TriggerButton slot="trigger">Account</TriggerButton>
+        <button data-id="profile" type="button">
+          Profile
+        </button>
+        <div data-separator="true" />
+        <button data-value="sign-out" type="button">
+          Sign out
+        </button>
+      </NativeElement>
+    </Stage>
   ),
 };
 
 export const Alignments: Story = {
   ...exampleStory,
   render: () => (
-    <Stack>
-      <Row>
-        <NativeElement
-          tagName="dt-menu"
-          attributes={{ align: "start", items: actions }}
-        >
-          <button slot="trigger" type="button">
-            Start
-          </button>
-        </NativeElement>
-        <NativeElement
-          tagName="dt-menu"
-          attributes={{ align: "center", items: actions }}
-        >
-          <button slot="trigger" type="button">
-            Center
-          </button>
-        </NativeElement>
-        <NativeElement
-          tagName="dt-menu"
-          attributes={{ align: "end", items: actions }}
-        >
-          <button slot="trigger" type="button">
-            End
-          </button>
-        </NativeElement>
-      </Row>
-    </Stack>
+    <Stage height="17rem">
+      <Stack>
+        <Row>
+          <NativeElement
+            tagName="dt-menu"
+            attributes={{ align: "start", items: actions }}
+          >
+            <TriggerButton slot="trigger">Start</TriggerButton>
+          </NativeElement>
+          <NativeElement
+            tagName="dt-menu"
+            attributes={{ align: "center", items: actions }}
+          >
+            <TriggerButton slot="trigger">Center</TriggerButton>
+          </NativeElement>
+          <NativeElement
+            tagName="dt-menu"
+            attributes={{ align: "end", items: actions }}
+          >
+            <TriggerButton slot="trigger">End</TriggerButton>
+          </NativeElement>
+        </Row>
+      </Stack>
+    </Stage>
   ),
 };
 
 export const Example: Story = {
   ...exampleStory,
   render: () => (
-    <NativeElement tagName="dt-menu" attributes={{ items: withIcons }}>
-      <button slot="trigger" type="button">
-        File
-      </button>
-    </NativeElement>
+    <Stage height="17rem">
+      <NativeElement tagName="dt-menu" attributes={{ items: withIcons }}>
+        <TriggerButton slot="trigger">File</TriggerButton>
+      </NativeElement>
+    </Stage>
   ),
 };
 

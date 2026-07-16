@@ -25,7 +25,7 @@ function NativeIconButton(args: Args) {
 const meta = {
   title: "Web Components/Actions/IconButton",
   component: NativeIconButton,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

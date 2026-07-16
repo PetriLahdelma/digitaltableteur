@@ -96,9 +96,8 @@ describe("BlogNav", () => {
     renderWithRouter();
     const prevButton = screen.getByRole("button", { name: /prev/i });
     const nextButton = screen.getByRole("button", { name: /next/i });
-    // Should handle gracefully without errors
-    expect(prevButton).toBeInTheDocument();
-    expect(nextButton).toBeInTheDocument();
+    expect(prevButton).toBeDisabled();
+    expect(nextButton).toBeDisabled();
   });
 
   it("exposes a labelled navigation landmark", () => {
@@ -114,6 +113,25 @@ describe("BlogNav", () => {
     render(<BlogNav currentPath="/blog/digital-craftsmanship" />);
     expect(screen.getByRole("button", { name: /prev/i })).not.toBeDisabled();
     expect(screen.getByRole("button", { name: /next/i })).not.toBeDisabled();
+  });
+
+  it("uses a host-provided article sequence and navigation callback", () => {
+    const onNavigate = vi.fn();
+    render(
+      <BlogNav
+        currentPath="/blog/two"
+        pages={[
+          { path: "/blog/one" },
+          { path: "/blog/two" },
+          { path: "/blog/three" },
+        ]}
+        onNavigate={onNavigate}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /next/i }));
+    expect(onNavigate).toHaveBeenCalledWith("/blog/three");
+    expect(mockPush).not.toHaveBeenCalled();
   });
 
   it("has no axe violations", async () => {

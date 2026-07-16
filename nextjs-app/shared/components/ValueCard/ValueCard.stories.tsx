@@ -15,7 +15,7 @@ const defaultArgs = {
 const meta = {
   title: "Site/ValueCard",
   component: ValueCard,
-  tags: ["stable", "!autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

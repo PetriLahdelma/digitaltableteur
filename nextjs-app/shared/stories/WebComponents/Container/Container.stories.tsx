@@ -47,7 +47,7 @@ function NativeContainer({
 const meta = {
   title: "Web Components/Layout/Container",
   component: NativeContainer,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-container width clamp." } },

@@ -152,6 +152,7 @@ export function executeFindComponentForIntent(args?: {
       description: entry.contract?.description,
       intent: entry.agent?.intent,
       variants: entry.agent?.variants ?? {},
+      propRelationships: entry.agent?.propRelationships ?? [],
       useWhen: entry.agent?.useWhen ?? [],
       avoidWhen: entry.agent?.avoidWhen ?? [],
       composesWith: entry.agent?.composesWith ?? [],
@@ -325,13 +326,20 @@ function scanSourceForDtViolations(
 export function executeValidateComponentUsage(args?: {
   filePath?: string;
   snippet?: string;
+  component?: string;
+  props?: Record<string, unknown>;
 }): DesignSystemToolTextResult {
   const filePath = String(args?.filePath ?? "").trim();
   const snippet = String(args?.snippet ?? "").trim();
+  const component = String(args?.component ?? "").trim();
+  const suppliedProps = args?.props;
   const root = designSystemMcpRoot();
 
-  if (!filePath && !snippet) {
-    return dsTextResult("Error: provide filePath (repo-relative) or snippet.", true);
+  if (!filePath && !snippet && !component) {
+    return dsTextResult(
+      "Error: provide filePath, snippet, or component with structured props.",
+      true,
+    );
   }
 
   let source = snippet;
@@ -348,18 +356,77 @@ export function executeValidateComponentUsage(args?: {
     label = relative(root, abs).replace(/\\/g, "/");
   }
 
-  const findings = scanSourceForDtViolations(source, label);
+  const findings = filePath || snippet ? scanSourceForDtViolations(source, label) : [];
+  const contractFindings: Array<{
+    component: string;
+    rule: string;
+    props: string[];
+    message: string;
+  }> = [];
+
+  if (component) {
+    const loaded = getManifestOrError();
+    if (!loaded.ok) return loaded.result;
+    const entry = loaded.manifest.components?.find(
+      (candidate) => candidate.name.toLowerCase() === component.toLowerCase(),
+    );
+    if (!entry) {
+      return dsTextResult(`No cataloged component named ${component}.`, true);
+    }
+    if (!suppliedProps || Array.isArray(suppliedProps)) {
+      return dsTextResult(
+        "Error: component validation requires props as a JSON object.",
+        true,
+      );
+    }
+
+    const isPresent = (name: string) =>
+      Object.prototype.hasOwnProperty.call(suppliedProps, name) &&
+      suppliedProps[name] !== undefined &&
+      suppliedProps[name] !== null;
+
+    for (const relationship of entry.agent?.propRelationships ?? []) {
+      if (relationship.kind === "mutuallyExclusive") {
+        const present = relationship.props.filter(isPresent);
+        if (present.length > 1) {
+          contractFindings.push({
+            component: entry.name,
+            rule: relationship.kind,
+            props: present,
+            message: relationship.reason,
+          });
+        }
+        continue;
+      }
+
+      if (relationship.kind === "requires" && isPresent(relationship.prop)) {
+        const missing = relationship.requires.filter((name) => !isPresent(name));
+        if (missing.length) {
+          contractFindings.push({
+            component: entry.name,
+            rule: relationship.kind,
+            props: [relationship.prop, ...missing],
+            message: relationship.reason,
+          });
+        }
+      }
+    }
+  }
+
+  const violationCount = findings.length + contractFindings.length;
 
   return dsJsonResult({
     file: label,
-    violationCount: findings.length,
-    ok: findings.length === 0,
+    component: component || null,
+    violationCount,
+    ok: violationCount === 0,
     findings,
+    contractFindings,
     fleetLint: "npm run lint:dt-usage",
     note:
-      findings.length > 0
-        ? "Replace raw primitives with @dt/* imports from agent-manifest."
-        : "No raw button/heading/shadcn-ui violations detected in this input.",
+      violationCount > 0
+        ? "Resolve raw-UI findings and machine-readable component contract violations."
+        : "No raw-UI or component contract violations detected in this input.",
   });
 }
 

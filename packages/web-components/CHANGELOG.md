@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.8.0 - 2026-07-16
+
+- Adds native CodeSnippet, CodeBlockWindow, Breadcrumb, Pagination, Timestamp,
+  GroupLabel, MacWindowFrame, and FileUpload elements.
+- Extends the framework-neutral surface with copyable code presentation,
+  location and paging navigation, semantic time formatting, compound-control
+  labels, decorative showcase framing, and form-associated file selection.
+- Keeps syntax highlighting, SPA routing, localization copy, and upload
+  transport host-owned while preserving applicable React behavior, accessibility,
+  token styling, and Storybook parity.
+- Uses collision-safe `window-title`/`windowTitle` naming for
+  `dt-code-block-window` rather than shadowing the platform `title` tooltip
+  property, and bundles only the Prism grammars supported by CodeSnippet.
+- Publishes every non-attribute-only prop as a Custom Elements Manifest member,
+  with a package guard preventing attributes from pointing at undeclared
+  fields.
+- Hardens host-data boundaries: code comment removal preserves comment-like
+  string literals, file selection enforces extension and MIME `accept` rules,
+  GroupLabel maintains its hint IDREF without removing host-owned ARIA tokens,
+  MacWindowFrame responds to live language changes, and Timestamp fails closed
+  for invalid relative reference times.
+- Separates canonical contract maturity from native `implementationStatus`.
+  All current native ports are beta until they have native accessibility
+  evidence and a documented production consumer; Storybook and the Custom
+  Elements Manifest expose both lifecycle values.
+- Restores Modal story visibility in docs, corrects stale `title` attribute
+  usage, and aligns destructive confirmation chrome with its error-toned
+  action.
+
+Verified by `check:web-components:dod`, `check:package-release-notes`,
+`check:package-tarballs`, and `check:npm-consumer-install`.
+
 ## 0.7.0 - 2026-07-16
 
 - BREAKING: `dt-modal` and `dt-cookie-consent` rename their heading attribute

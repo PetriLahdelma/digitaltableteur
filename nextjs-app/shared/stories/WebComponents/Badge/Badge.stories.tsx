@@ -22,7 +22,7 @@ function NativeBadge(args: Args) {
 const meta = {
   title: "Web Components/Content/Badge",
   component: NativeBadge,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-badge custom element." } },

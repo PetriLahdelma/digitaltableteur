@@ -136,6 +136,40 @@ if (!buttonEntry?.agent?.variants?.variant?.values?.length) {
   console.log("✓ Button agent variants extracted from source");
 }
 
+const buttonRelationships = buttonEntry?.agent?.propRelationships ?? [];
+const hasHrefSubmitExclusion = buttonRelationships.some(
+  (relationship) =>
+    relationship.kind === "mutuallyExclusive" &&
+    relationship.props?.includes("href") &&
+    relationship.props?.includes("submits"),
+);
+const hasTargetHrefRequirement = buttonRelationships.some(
+  (relationship) =>
+    relationship.kind === "requires" &&
+    relationship.prop === "target" &&
+    relationship.requires?.includes("href"),
+);
+if (!hasHrefSubmitExclusion || !hasTargetHrefRequirement) {
+  console.error(
+    "FAIL: Button agent block must preserve discriminated-union prop relationships",
+  );
+  failed += 1;
+} else {
+  console.log("✓ Button discriminated-union prop relationships extracted");
+}
+
+const documentedButtonProps = Object.values(buttonEntry?.agent?.props ?? {}).filter(
+  (prop) => typeof prop.description === "string" && prop.description.trim(),
+).length;
+if (documentedButtonProps < 12) {
+  console.error(
+    `FAIL: expected >=12 source-documented Button props, got ${documentedButtonProps}`,
+  );
+  failed += 1;
+} else {
+  console.log(`✓ Button source prop documentation retained (${documentedButtonProps})`);
+}
+
 const goldenPath = join(dirname(fileURLToPath(import.meta.url)), "golden-intents.json");
 if (!existsSync(goldenPath)) {
   console.error("FAIL: golden-intents.json missing");
@@ -233,6 +267,30 @@ if (compositionTest.status !== 0) {
   failed += 1;
 } else {
   console.log("✓ composition-lint-lib unit tests");
+}
+
+const agentExperienceTest = spawnSync(
+  "npx",
+  ["vitest", "run", join(ROOT, "scripts/design-system/agent-experience-lib.test.mjs")],
+  { stdio: "inherit" },
+);
+if (agentExperienceTest.status !== 0) {
+  console.error("FAIL: agent-experience-lib unit tests");
+  failed += 1;
+} else {
+  console.log("✓ agent-experience-lib unit tests");
+}
+
+const agentExperienceAudit = spawnSync(
+  process.execPath,
+  [join(ROOT, "scripts/design-system/audit-agent-experience.mjs")],
+  { stdio: "inherit" },
+);
+if (agentExperienceAudit.status !== 0) {
+  console.error("FAIL: Agent Experience scorecard or complexity ratchet");
+  failed += 1;
+} else {
+  console.log("✓ Agent Experience scorecard and complexity ratchet");
 }
 
 const catalogGate = spawnSync(

@@ -63,18 +63,19 @@ describe("Grid", () => {
       </Grid>,
     );
     const grid = container.firstChild as HTMLElement;
-    expect(grid.style.getPropertyValue("--grid-cols")).toBe(
+    expect(grid.style.getPropertyValue("--dt-grid-columns")).toBe(
       "repeat(1, minmax(0, 1fr))",
     );
-    expect(grid.style.getPropertyValue("--grid-cols-tablet")).toBe(
+    expect(grid.style.getPropertyValue("--dt-grid-columns-tablet")).toBe(
       "repeat(2, minmax(0, 1fr))",
     );
-    expect(grid.style.getPropertyValue("--grid-cols-desktop")).toBe(
+    expect(grid.style.getPropertyValue("--dt-grid-columns-desktop")).toBe(
       "repeat(3, minmax(0, 1fr))",
     );
-    expect(grid.style.getPropertyValue("--grid-gap")).toBe("1.25rem");
-    expect(grid.style.getPropertyValue("--grid-gap-tablet")).toBe("2rem");
-    expect(grid.style.getPropertyValue("--grid-gap-desktop")).toBe("2.5rem");
+    expect(grid.style.getPropertyValue("--dt-grid-gap")).toBe("1.25rem");
+    expect(grid.style.getPropertyValue("--dt-grid-gap-tablet")).toBe("2rem");
+    expect(grid.style.getPropertyValue("--dt-grid-gap-desktop")).toBe("2.5rem");
+    expect(grid.style.getPropertyValue("--grid-gap-desktop")).toBe("");
     // Inline template/gap must NOT be set — the module media queries own them.
     expect(grid.style.gridTemplateColumns).toBe("");
     expect(grid.style.gap).toBe("");
@@ -95,14 +96,14 @@ describe("Grid", () => {
       </Grid>,
     );
     const grid = container.firstChild as HTMLElement;
-    expect(grid.style.getPropertyValue("--grid-cols-wide")).toBe(
+    expect(grid.style.getPropertyValue("--dt-grid-columns-wide")).toBe(
       "repeat(4, minmax(0, 1fr))",
     );
-    expect(grid.style.getPropertyValue("--grid-cols-ultra")).toBe(
+    expect(grid.style.getPropertyValue("--dt-grid-columns-ultra")).toBe(
       "repeat(6, minmax(0, 1fr))",
     );
-    expect(grid.style.getPropertyValue("--grid-gap-wide")).toBe("3rem");
-    expect(grid.style.getPropertyValue("--grid-gap-ultra")).toBe("4rem");
+    expect(grid.style.getPropertyValue("--dt-grid-gap-wide")).toBe("3rem");
+    expect(grid.style.getPropertyValue("--dt-grid-gap-ultra")).toBe("4rem");
   });
 
   it("enters the responsive path when only a wide/ultra prop is set", () => {
@@ -112,10 +113,10 @@ describe("Grid", () => {
       </Grid>,
     );
     const grid = container.firstChild as HTMLElement;
-    expect(grid.style.getPropertyValue("--grid-cols")).toBe(
+    expect(grid.style.getPropertyValue("--dt-grid-columns")).toBe(
       "repeat(2, minmax(0, 1fr))",
     );
-    expect(grid.style.getPropertyValue("--grid-cols-wide")).toBe(
+    expect(grid.style.getPropertyValue("--dt-grid-columns-wide")).toBe(
       "repeat(4, minmax(0, 1fr))",
     );
     expect(grid.style.gridTemplateColumns).toBe("");
@@ -128,11 +129,11 @@ describe("Grid", () => {
       </Grid>,
     );
     const grid = container.firstChild as HTMLElement;
-    expect(grid.style.getPropertyValue("--grid-cols")).toBe("1fr");
-    expect(grid.style.getPropertyValue("--grid-cols-desktop")).toBe(
+    expect(grid.style.getPropertyValue("--dt-grid-columns")).toBe("1fr");
+    expect(grid.style.getPropertyValue("--dt-grid-columns-desktop")).toBe(
       "200px 1fr",
     );
-    expect(grid.style.getPropertyValue("--grid-cols-tablet")).toBe("");
+    expect(grid.style.getPropertyValue("--dt-grid-columns-tablet")).toBe("");
   });
 
   it("locks responsive breakpoints and sparse-rung CSS fallbacks", () => {
@@ -142,26 +143,26 @@ describe("Grid", () => {
     const expected = [
       {
         query: "(width >= 768px)",
-        columns: "var(--grid-cols-tablet, var(--grid-cols))",
-        gap: "var(--grid-gap-tablet, var(--grid-gap))",
+        columns: "var(--dt-grid-columns-tablet, var(--dt-grid-columns))",
+        gap: "var(--dt-grid-gap-tablet, var(--dt-grid-gap))",
       },
       {
         query: "(width >= 1024px)",
         columns:
-          "var(--grid-cols-desktop, var(--grid-cols-tablet, var(--grid-cols)))",
-        gap: "var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)))",
+          "var(--dt-grid-columns-desktop, var(--dt-grid-columns-tablet, var(--dt-grid-columns)))",
+        gap: "var(--dt-grid-gap-desktop, var(--dt-grid-gap-tablet, var(--dt-grid-gap)))",
       },
       {
         query: "(width >= 1440px)",
         columns:
-          "var(--grid-cols-wide, var(--grid-cols-desktop, var(--grid-cols-tablet, var(--grid-cols))))",
-        gap: "var(--grid-gap-wide, var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap))))",
+          "var(--dt-grid-columns-wide, var(--dt-grid-columns-desktop, var(--dt-grid-columns-tablet, var(--dt-grid-columns))))",
+        gap: "var(--dt-grid-gap-wide, var(--dt-grid-gap-desktop, var(--dt-grid-gap-tablet, var(--dt-grid-gap))))",
       },
       {
         query: "(width >= 1920px)",
         columns:
-          "var(--grid-cols-ultra, var(--grid-cols-wide, var(--grid-cols-desktop, var(--grid-cols-tablet, var(--grid-cols)))))",
-        gap: "var(--grid-gap-ultra, var(--grid-gap-wide, var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)))))",
+          "var(--dt-grid-columns-ultra, var(--dt-grid-columns-wide, var(--dt-grid-columns-desktop, var(--dt-grid-columns-tablet, var(--dt-grid-columns)))))",
+        gap: "var(--dt-grid-gap-ultra, var(--dt-grid-gap-wide, var(--dt-grid-gap-desktop, var(--dt-grid-gap-tablet, var(--dt-grid-gap)))))",
       },
     ];
 
@@ -195,5 +196,17 @@ describe("Grid", () => {
       );
       expect(normalizeCssValue(declarations.gap)).toBe(expectedRung.gap);
     }
+  });
+
+  it("keeps the private --dt-grid-* namespace out of the global token sheet", () => {
+    // The pre-rename --grid-gap-* names collided with :root tokens in
+    // variables.css, which silently overrode per-component gaps at
+    // tablet/desktop widths. This locks the fix's premise: globals must
+    // never define the component's private custom properties.
+    const variablesCss = readFileSync(
+      join(here, "../../styles/variables.css"),
+      "utf8",
+    );
+    expect(variablesCss).not.toMatch(/--dt-grid-/);
   });
 });
