@@ -3,6 +3,7 @@ import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { defineElements } from "../../packages/web-components/src/index";
 import {
   defineNativeElements,
+  DtAccordionElement,
   DtAlertBannerElement,
   DtAspectRatioElement,
   DtAvatarElement,
@@ -16,6 +17,7 @@ import {
   DtDividerElement,
   DtDisplayElement,
   DtEmptyStateElement,
+  DtExpandableSectionElement,
   DtFilterChipElement,
   DtFlexBoxElement,
   DtGridElement,
@@ -24,6 +26,8 @@ import {
   DtKbdElement,
   DtLinkElement,
   DtListElement,
+  DtMenuElement,
+  DtModalElement,
   DtLabelElement,
   DtHelperTextElement,
   DtFormFieldElement,
@@ -34,6 +38,8 @@ import {
   DtSpacerElement,
   DtStatusDotElement,
   DtSectionElement,
+  DtSegmentedControlElement,
+  DtSplitButtonElement,
   DtStackElement,
   DtTextElement,
   DtTitleElement,
@@ -47,6 +53,8 @@ import {
   DtSelectOptionElement,
   DtSkeletonElement,
   DtSwitchElement,
+  DtTabsElement,
+  DtTooltipElement,
   DtVisuallyHiddenElement,
 } from "../../packages/web-components/src/native";
 import {
@@ -99,6 +107,14 @@ const NATIVE_TAGS = [
   "dt-select",
   "dt-select-option",
   "dt-switch",
+  "dt-modal",
+  "dt-tooltip",
+  "dt-menu",
+  "dt-split-button",
+  "dt-tabs",
+  "dt-segmented-control",
+  "dt-accordion",
+  "dt-expandable-section",
   "dt-skeleton",
   "dt-visually-hidden",
 ] as const;
@@ -162,6 +178,18 @@ describe("native registry", () => {
     expect(customElements.get("dt-select")).toBe(DtSelectElement);
     expect(customElements.get("dt-select-option")).toBe(DtSelectOptionElement);
     expect(customElements.get("dt-switch")).toBe(DtSwitchElement);
+    expect(customElements.get("dt-modal")).toBe(DtModalElement);
+    expect(customElements.get("dt-tooltip")).toBe(DtTooltipElement);
+    expect(customElements.get("dt-menu")).toBe(DtMenuElement);
+    expect(customElements.get("dt-split-button")).toBe(DtSplitButtonElement);
+    expect(customElements.get("dt-tabs")).toBe(DtTabsElement);
+    expect(customElements.get("dt-segmented-control")).toBe(
+      DtSegmentedControlElement,
+    );
+    expect(customElements.get("dt-accordion")).toBe(DtAccordionElement);
+    expect(customElements.get("dt-expandable-section")).toBe(
+      DtExpandableSectionElement,
+    );
     expect(customElements.get("dt-skeleton")).toBe(DtSkeletonElement);
     expect(customElements.get("dt-visually-hidden")).toBe(
       DtVisuallyHiddenElement,

@@ -104,7 +104,19 @@ for (const required of [
     throw new Error(`Web-components tarball misses ${required}`);
 }
 const maxPackedFiles = 40 + tags.length * 2;
-const maxUnpackedSize = 250_000 + tags.length * 13_000;
+const interactionTags = new Set([
+  "dt-accordion",
+  "dt-expandable-section",
+  "dt-menu",
+  "dt-modal",
+  "dt-segmented-control",
+  "dt-split-button",
+  "dt-tabs",
+  "dt-tooltip",
+]);
+const interactionCount = tags.filter((tag) => interactionTags.has(tag)).length;
+const maxUnpackedSize =
+  250_000 + tags.length * 13_000 + interactionCount * 1_100;
 if (pack.entryCount > maxPackedFiles || pack.unpackedSize > maxUnpackedSize) {
   throw new Error(
     `Web-components tarball exceeds its ${tags.length}-component budget (${pack.entryCount}/${maxPackedFiles} files, ${pack.unpackedSize}/${maxUnpackedSize} bytes)`,

@@ -447,6 +447,96 @@ export type DtSwitchElementContract = HTMLElement & {
   error?: string;
 };
 
+export type DtModalElementContract = HTMLElement & {
+  severity?: string;
+  loading?: boolean;
+  titleSize?: string;
+  iconSize?: string;
+  open?: boolean;
+  defaultOpen?: boolean;
+  controlled?: boolean;
+  title?: string;
+  description?: string;
+  showFooter?: boolean;
+  animation?: string;
+  showCloseIcon?: boolean;
+  closeIconName?: string;
+  closeButtonLabel?: string;
+  dismissOnBackdrop?: boolean;
+};
+
+export type DtTooltipElementContract = HTMLElement & {
+  content?: string;
+  placement?: string;
+  offset?: number;
+  open?: boolean;
+  defaultOpen?: boolean;
+  controlled?: boolean;
+  delay?: number;
+  disabled?: boolean;
+};
+
+export type DtMenuElementContract = HTMLElement & {
+  side?: string;
+  align?: string;
+  sideOffset?: number;
+  open?: boolean;
+  defaultOpen?: boolean;
+  modal?: boolean;
+  items?: import("../native/menu").DtMenuItem[];
+};
+
+export type DtSplitButtonElementContract = HTMLElement & {
+  label?: string;
+  options?: import("../native/split-button").DtSplitButtonOption[];
+  menuAlign?: string;
+  variant?: string;
+  size?: string;
+  surface?: string;
+  rounded?: boolean;
+  disabled?: boolean;
+  toggleLabel?: string;
+  tooltip?: string;
+  accessibleName?: string;
+};
+
+export type DtTabsElementContract = HTMLElement & {
+  activeTab?: string;
+  defaultActiveTab?: string;
+  size?: string;
+  tabs?: { key: string; label: string; disabled?: boolean; icon?: string; count?: number }[];
+  ariaLabel?: string;
+  variant?: string;
+  orientation?: string;
+  activation?: string;
+};
+
+export type DtSegmentedControlElementContract = HTMLElement & {
+  items?: { value: string; label: string; icon?: string; disabled?: boolean }[];
+  value?: string;
+  defaultValue?: string;
+  size?: string;
+  ariaLabel?: string;
+  disabled?: boolean;
+  orientation?: string;
+};
+
+export type DtAccordionElementContract = HTMLElement & {
+  items?: { id: string; title: string; content: string; disabled?: boolean }[];
+  type?: string;
+  variant?: string;
+  defaultOpenId?: string;
+  defaultOpenIds?: string[];
+  openIds?: string[];
+};
+
+export type DtExpandableSectionElementContract = HTMLElement & {
+  collapsedLabel?: string;
+  expandedLabel?: string;
+  defaultExpanded?: boolean;
+  expanded?: boolean;
+};
+
 export const elementMigrationManifest = [
   { tagName: "dt-button", sourceComponent: "Button", backend: "native" },
   { tagName: "dt-badge", sourceComponent: "Badge", backend: "native" },
@@ -493,6 +583,14 @@ export const elementMigrationManifest = [
   { tagName: "dt-skeleton", sourceComponent: "Skeleton", backend: "native" },
   { tagName: "dt-visually-hidden", sourceComponent: "VisuallyHidden", backend: "native" },
   { tagName: "dt-switch", sourceComponent: "Switch", backend: "native" },
+  { tagName: "dt-modal", sourceComponent: "Modal", backend: "native" },
+  { tagName: "dt-tooltip", sourceComponent: "Tooltip", backend: "native" },
+  { tagName: "dt-menu", sourceComponent: "Menu", backend: "native" },
+  { tagName: "dt-split-button", sourceComponent: "SplitButton", backend: "native" },
+  { tagName: "dt-tabs", sourceComponent: "Tabs", backend: "native" },
+  { tagName: "dt-segmented-control", sourceComponent: "SegmentedControl", backend: "native" },
+  { tagName: "dt-accordion", sourceComponent: "Accordion", backend: "native" },
+  { tagName: "dt-expandable-section", sourceComponent: "ExpandableSection", backend: "native" },
 ] as const;
 
 declare global {
@@ -542,5 +640,13 @@ declare global {
     "dt-skeleton": DtSkeletonElementContract;
     "dt-visually-hidden": DtVisuallyHiddenElementContract;
     "dt-switch": DtSwitchElementContract;
+    "dt-modal": DtModalElementContract;
+    "dt-tooltip": DtTooltipElementContract;
+    "dt-menu": DtMenuElementContract;
+    "dt-split-button": DtSplitButtonElementContract;
+    "dt-tabs": DtTabsElementContract;
+    "dt-segmented-control": DtSegmentedControlElementContract;
+    "dt-accordion": DtAccordionElementContract;
+    "dt-expandable-section": DtExpandableSectionElementContract;
   }
 }

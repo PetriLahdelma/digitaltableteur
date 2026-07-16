@@ -1263,4 +1263,286 @@ export default [
       },
     ],
   },
+  {
+    tagName: "dt-modal",
+    sourceComponent: "Modal",
+    contract: "Modal",
+    defaultBackend: "native",
+    nativeClassName: "DtModalElement",
+    description:
+      "Layered dialog with focus containment, dismissal, loading, and severity states.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("severity"),
+      booleanProp("loading", "isLoading"),
+      stringProp("titleSize"),
+      stringProp("iconSize"),
+      booleanProp("open", "isOpen"),
+      nativeProp("defaultOpen", "boolean"),
+      nativeProp("controlled", "boolean"),
+      stringProp("title"),
+      stringProp("description"),
+      booleanProp("showFooter"),
+      stringProp("animation"),
+      booleanProp("showCloseIcon"),
+      stringProp("closeIconName"),
+      stringProp("closeButtonLabel"),
+      nativeProp("dismissOnBackdrop", "boolean"),
+    ],
+    slots: [
+      slot("", "Dialog body content."),
+      slot("icon", "Optional header icon."),
+      slot("menu", "Optional contextual header controls."),
+      slot("footer", "Optional dialog actions."),
+    ],
+    events: [
+      {
+        callbackProp: "onClose",
+        name: "dismiss-request",
+        description:
+          "Dispatched when Escape, the backdrop, or the close control requests dismissal.",
+      },
+      {
+        callbackProp: null,
+        name: "open-change",
+        description:
+          "Dispatched with detail.open and detail.reason after state changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-tooltip",
+    sourceComponent: "Tooltip",
+    contract: "Tooltip",
+    defaultBackend: "native",
+    nativeClassName: "DtTooltipElement",
+    description:
+      "Non-interactive accessible hint shown from hover and keyboard focus.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("content", "children", "Short tooltip text."),
+      stringProp("placement", "side"),
+      numberProp("offset", "sideOffset"),
+      nativeProp("open", "boolean"),
+      nativeProp("defaultOpen", "boolean"),
+      nativeProp("controlled", "boolean"),
+      nativeProp("delay", "number"),
+      nativeProp("disabled", "boolean"),
+    ],
+    slots: [slot("", "The trigger element whose semantics remain intact.")],
+    events: [
+      {
+        callbackProp: null,
+        name: "open-change",
+        description:
+          "Dispatched with detail.open when tooltip visibility changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-menu",
+    sourceComponent: "Menu",
+    contract: "Menu",
+    defaultBackend: "native",
+    nativeClassName: "DtMenuElement",
+    description:
+      "Menu-button primitive with roving focus, typeahead, and dismissal behavior.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("side"),
+      stringProp("align"),
+      numberProp("sideOffset"),
+      nativeProp("open", "boolean"),
+      nativeProp("defaultOpen", "boolean"),
+      nativeProp("modal", "boolean"),
+      {
+        ...nativeProp("items", "string"),
+        propertyType: String.raw`import("../native/menu").DtMenuItem[]`,
+      },
+    ],
+    slots: [
+      slot("trigger", "Menu trigger control."),
+      slot("", "Declarative menu item content overriding the items property."),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "open-change",
+        description:
+          "Dispatched with detail.open when menu visibility changes.",
+      },
+      {
+        callbackProp: null,
+        name: "item-select",
+        description: "Dispatched with the activated item in event.detail.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-split-button",
+    sourceComponent: "SplitButton",
+    contract: "SplitButton",
+    defaultBackend: "native",
+    nativeClassName: "DtSplitButtonElement",
+    description:
+      "Primary action paired with an accessible menu of related actions.",
+    storyParity: storyParity({
+      equivalents: [{ react: "Example (document toolbar)", native: "Example" }],
+    }),
+    props: [
+      stringProp("label"),
+      {
+        ...stringProp("options"),
+        propertyType: String.raw`import("../native/split-button").DtSplitButtonOption[]`,
+      },
+      stringProp("menuAlign"),
+      nativeProp("variant", "string"),
+      nativeProp("size", "string"),
+      nativeProp("surface", "string"),
+      nativeProp("rounded", "boolean"),
+      booleanProp("disabled"),
+      stringProp("toggleLabel"),
+      nativeProp("tooltip", "string"),
+      nativeProp("accessibleName", "string"),
+    ],
+    slots: [slot("label", "Rich primary-action label content.")],
+    events: [
+      {
+        callbackProp: "onPrimaryClick",
+        name: "primary-click",
+        description: "Dispatched when the primary action is activated.",
+      },
+      {
+        callbackProp: null,
+        name: "option-select",
+        description:
+          "Dispatched with the selected secondary option in event.detail.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-tabs",
+    sourceComponent: "Tabs",
+    contract: "Tabs",
+    defaultBackend: "native",
+    nativeClassName: "DtTabsElement",
+    description:
+      "Keyboard-navigable tab list with controlled and uncontrolled selection.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("activeTab"),
+      stringProp("defaultActiveTab"),
+      stringProp("size"),
+      {
+        ...stringProp("tabs"),
+        propertyType:
+          "{ key: string; label: string; disabled?: boolean; icon?: string; count?: number }[]",
+      },
+      stringProp("ariaLabel"),
+      stringProp("variant"),
+      nativeProp("orientation", "string"),
+      nativeProp("activation", "string"),
+    ],
+    slots: [
+      slot(
+        "",
+        "Tab panel content selected through slot names matching tab keys.",
+      ),
+    ],
+    events: [
+      {
+        callbackProp: "onTabChange",
+        name: "tab-change",
+        description:
+          "Dispatched with detail.activeTab after active-tab changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-segmented-control",
+    sourceComponent: "SegmentedControl",
+    contract: "SegmentedControl",
+    defaultBackend: "native",
+    nativeClassName: "DtSegmentedControlElement",
+    description: "Single-select segmented control with radio-group semantics.",
+    storyParity: storyParity(),
+    props: [
+      {
+        ...stringProp("items"),
+        propertyType:
+          "{ value: string; label: string; icon?: string; disabled?: boolean }[]",
+      },
+      stringProp("value"),
+      nativeProp("defaultValue", "string"),
+      stringProp("size"),
+      stringProp("ariaLabel"),
+      nativeProp("disabled", "boolean"),
+      nativeProp("orientation", "string"),
+    ],
+    events: [
+      {
+        callbackProp: "onValueChange",
+        name: "value-change",
+        description: "Dispatched with detail.value after selection changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-accordion",
+    sourceComponent: "Accordion",
+    contract: "Accordion",
+    defaultBackend: "native",
+    nativeClassName: "DtAccordionElement",
+    description:
+      "Single or multi-open disclosure group with controlled state support.",
+    storyParity: storyParity(),
+    props: [
+      {
+        ...stringProp("items"),
+        propertyType:
+          "{ id: string; title: string; content: string; disabled?: boolean }[]",
+      },
+      stringProp("type"),
+      stringProp("variant"),
+      stringProp("defaultOpenId"),
+      stringArrayProperty("defaultOpenIds"),
+      stringArrayProperty("openIds"),
+    ],
+    events: [
+      {
+        callbackProp: "onOpenChange",
+        name: "open-change",
+        description: "Dispatched with detail.openIds after disclosure changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-expandable-section",
+    sourceComponent: "ExpandableSection",
+    contract: "ExpandableSection",
+    defaultBackend: "native",
+    nativeClassName: "DtExpandableSectionElement",
+    description:
+      "Single disclosure for progressively revealing supporting content.",
+    storyParity: storyParity({
+      equivalents: [
+        { react: "Example (contact form editorial)", native: "Example" },
+      ],
+    }),
+    props: [
+      stringProp("collapsedLabel"),
+      stringProp("expandedLabel"),
+      booleanProp("defaultExpanded"),
+      booleanProp("expanded"),
+    ],
+    slots: [slot("", "Content revealed by the disclosure control.")],
+    events: [
+      {
+        callbackProp: "onExpandedChange",
+        name: "expanded-change",
+        description:
+          "Dispatched with detail.expanded after disclosure changes.",
+      },
+    ],
+  },
 ];

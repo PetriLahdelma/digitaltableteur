@@ -1,4 +1,5 @@
 import { DtAlertBannerElement } from "./native/alert-banner";
+import { DtAccordionElement } from "./native/accordion";
 import { DtAspectRatioElement } from "./native/aspect-ratio";
 import { DtAvatarElement } from "./native/avatar";
 import { DtAvatarGroupElement } from "./native/avatar-group";
@@ -11,6 +12,7 @@ import { DtContainerElement } from "./native/container";
 import { DtDividerElement } from "./native/divider";
 import { DtDisplayElement } from "./native/display";
 import { DtEmptyStateElement } from "./native/empty-state";
+import { DtExpandableSectionElement } from "./native/expandable-section";
 import { DtFilterChipElement } from "./native/filter-chip";
 import { DtFlexBoxElement } from "./native/flex-box";
 import { DtGridElement } from "./native/grid";
@@ -19,6 +21,8 @@ import { DtIconButtonElement } from "./native/icon-button";
 import { DtKbdElement } from "./native/kbd";
 import { DtLinkElement } from "./native/link";
 import { DtListElement } from "./native/list";
+import { DtMenuElement } from "./native/menu";
+import { DtModalElement } from "./native/modal";
 import { DtLabelElement } from "./native/label";
 import { DtHelperTextElement } from "./native/helper-text";
 import { DtFormFieldElement } from "./native/form-field";
@@ -29,6 +33,8 @@ import { DtSpinnerElement } from "./native/spinner";
 import { DtSpacerElement } from "./native/spacer";
 import { DtStatusDotElement } from "./native/status-dot";
 import { DtSectionElement } from "./native/section";
+import { DtSegmentedControlElement } from "./native/segmented-control";
+import { DtSplitButtonElement } from "./native/split-button";
 import { DtStackElement } from "./native/stack";
 import { DtTextElement } from "./native/text";
 import { DtTitleElement } from "./native/title";
@@ -42,6 +48,8 @@ import { DtSelectElement } from "./native/select";
 import { DtSelectOptionElement } from "./native/select-option";
 import { DtSkeletonElement } from "./native/skeleton";
 import { DtSwitchElement } from "./native/switch";
+import { DtTabsElement } from "./native/tabs";
+import { DtTooltipElement } from "./native/tooltip";
 import { DtVisuallyHiddenElement } from "./native/visually-hidden";
 import { defineElementSet, type ElementDefinition } from "./registry";
 
@@ -50,6 +58,12 @@ export type {
   DtAlertBannerAriaLive,
   DtAlertBannerTone,
 } from "./native/alert-banner";
+export { DtAccordionElement } from "./native/accordion";
+export type {
+  DtAccordionItem,
+  DtAccordionType,
+  DtAccordionVariant,
+} from "./native/accordion";
 export { DtAspectRatioElement } from "./native/aspect-ratio";
 export type { DtAspectRatioRatio } from "./native/aspect-ratio";
 export { DtAvatarElement } from "./native/avatar";
@@ -98,6 +112,7 @@ export type {
   DtEmptyStateHeadingLevel,
   DtEmptyStateSize,
 } from "./native/empty-state";
+export { DtExpandableSectionElement } from "./native/expandable-section";
 export { DtFilterChipElement } from "./native/filter-chip";
 export type {
   DtFilterChipSize,
@@ -137,6 +152,15 @@ export type {
   DtListStyleType,
   DtListTag,
 } from "./native/list";
+export { DtMenuElement } from "./native/menu";
+export type { DtMenuAlign, DtMenuItem, DtMenuSide } from "./native/menu";
+export { DtModalElement } from "./native/modal";
+export type {
+  DtModalAnimation,
+  DtModalDismissReason,
+  DtModalIconSize,
+  DtModalSeverity,
+} from "./native/modal";
 export { DtLabelElement } from "./native/label";
 export { DtHelperTextElement } from "./native/helper-text";
 export type { DtHelperTextState } from "./native/helper-text";
@@ -153,6 +177,20 @@ export { DtStatusDotElement } from "./native/status-dot";
 export type { DtStatusDotSize, DtStatusDotTone } from "./native/status-dot";
 export { DtSectionElement } from "./native/section";
 export type { DtSectionBackground, DtSectionSpacing } from "./native/section";
+export { DtSegmentedControlElement } from "./native/segmented-control";
+export type {
+  DtSegmentedControlItem,
+  DtSegmentedControlOrientation,
+  DtSegmentedControlSize,
+} from "./native/segmented-control";
+export { DtSplitButtonElement } from "./native/split-button";
+export type {
+  DtSplitButtonMenuAlign,
+  DtSplitButtonOption,
+  DtSplitButtonSize,
+  DtSplitButtonSurface,
+  DtSplitButtonVariant,
+} from "./native/split-button";
 export { DtStackElement } from "./native/stack";
 export type {
   DtStackAlign,
@@ -187,6 +225,16 @@ export { DtSkeletonElement } from "./native/skeleton";
 export type { DtSkeletonVariant } from "./native/skeleton";
 export { DtSwitchElement } from "./native/switch";
 export type { DtSwitchLabelPlacement, DtSwitchSize } from "./native/switch";
+export { DtTabsElement } from "./native/tabs";
+export type {
+  DtTabItem,
+  DtTabsActivation,
+  DtTabsOrientation,
+  DtTabsSize,
+  DtTabsVariant,
+} from "./native/tabs";
+export { DtTooltipElement } from "./native/tooltip";
+export type { DtTooltipPlacement } from "./native/tooltip";
 export { DtVisuallyHiddenElement } from "./native/visually-hidden";
 export type { DtVisuallyHiddenTag } from "./native/visually-hidden";
 
@@ -234,6 +282,14 @@ export const nativeElementDefinitions = [
   ["dt-select", DtSelectElement],
   ["dt-select-option", DtSelectOptionElement],
   ["dt-switch", DtSwitchElement],
+  ["dt-modal", DtModalElement],
+  ["dt-tooltip", DtTooltipElement],
+  ["dt-menu", DtMenuElement],
+  ["dt-split-button", DtSplitButtonElement],
+  ["dt-tabs", DtTabsElement],
+  ["dt-segmented-control", DtSegmentedControlElement],
+  ["dt-accordion", DtAccordionElement],
+  ["dt-expandable-section", DtExpandableSectionElement],
   ["dt-skeleton", DtSkeletonElement],
   ["dt-visually-hidden", DtVisuallyHiddenElement],
 ] as const satisfies readonly ElementDefinition[];

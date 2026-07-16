@@ -1,0 +1,260 @@
+import {
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
+import { DtIconElement } from "../../packages/web-components/src/native/icon";
+import {
+  DtModalElement,
+  type DtModalDismissReason,
+} from "../../packages/web-components/src/native/modal";
+import { DtTooltipElement } from "../../packages/web-components/src/native/tooltip";
+
+beforeAll(() => {
+  if (!customElements.get("dt-icon")) {
+    customElements.define("dt-icon", DtIconElement);
+  }
+  if (!customElements.get("dt-modal")) {
+    customElements.define("dt-modal", DtModalElement);
+  }
+  if (!customElements.get("dt-tooltip")) {
+    customElements.define("dt-tooltip", DtTooltipElement);
+  }
+});
+
+beforeEach(() => {
+  document.body.replaceChildren();
+  document.body.style.overflow = "";
+});
+
+afterEach(() => {
+  document.body.replaceChildren();
+  document.body.style.overflow = "";
+  vi.clearAllTimers();
+  vi.useRealTimers();
+});
+
+function nextTick() {
+  return new Promise<void>((resolve) => queueMicrotask(resolve));
+}
+
+describe("native modal and tooltip", () => {
+  it("treats close-icon-name as data instead of executable markup", () => {
+    const modal = document.createElement("dt-modal") as DtModalElement;
+    modal.title = "Safe dialog";
+    modal.showCloseIcon = true;
+    modal.closeIconName = 'x\"><img src=x onerror="globalThis.injected=true">';
+    modal.defaultOpen = true;
+    document.body.append(modal);
+
+    const closeButton = modal.shadowRoot?.querySelector(
+      '[part="close-button"]',
+    );
+    const icon = closeButton?.querySelector("dt-icon");
+    expect(closeButton?.children).toHaveLength(1);
+    expect(icon?.getAttribute("name")).toBe(modal.closeIconName);
+    expect(modal.shadowRoot?.querySelector("img")).toBeNull();
+  });
+
+  it("renders modal dialog semantics and closes itself when uncontrolled", async () => {
+    const modal = document.createElement("dt-modal") as DtModalElement;
+    modal.title = "Confirm changes";
+    modal.description = "Your edits will be applied immediately.";
+    modal.showCloseIcon = true;
+    modal.defaultOpen = true;
+    modal.textContent = "Modal body";
+    document.body.append(modal);
+
+    const panel =
+      modal.shadowRoot?.querySelector<HTMLElement>('[role="dialog"]');
+    expect(panel).toBeTruthy();
+    expect(panel?.getAttribute("aria-modal")).toBe("true");
+    expect(panel?.getAttribute("aria-labelledby")).toContain("dt-modal-title-");
+    expect(panel?.getAttribute("aria-describedby")).toContain(
+      "dt-modal-description-",
+    );
+
+    const dismissEvents: DtModalDismissReason[] = [];
+    const openChanges: Array<{ open: boolean; reason: string }> = [];
+    modal.addEventListener("dismiss-request", (event) => {
+      dismissEvents.push(
+        (event as CustomEvent<{ reason: DtModalDismissReason }>).detail.reason,
+      );
+    });
+    modal.addEventListener("open-change", (event) => {
+      openChanges.push(
+        (event as CustomEvent<{ open: boolean; reason: string }>).detail,
+      );
+    });
+
+    modal.shadowRoot
+      ?.querySelector<HTMLButtonElement>('[part="close-button"]')
+      ?.click();
+    await nextTick();
+
+    expect(modal.open).toBe(false);
+    expect(dismissEvents).toEqual(["close-button"]);
+    expect(openChanges).toContainEqual({
+      open: false,
+      reason: "close-button",
+    });
+  });
+
+  it("keeps controlled modal open until the host updates open itself", async () => {
+    const trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.textContent = "Open";
+    document.body.append(trigger);
+    trigger.focus();
+
+    const modal = document.createElement("dt-modal") as DtModalElement;
+    modal.controlled = true;
+    modal.open = true;
+    modal.title = "Controlled dialog";
+    modal.showCloseIcon = true;
+    document.body.append(modal);
+
+    let dismissReason: string | null = null;
+    modal.addEventListener("dismiss-request", (event) => {
+      dismissReason = (event as CustomEvent<{ reason: string }>).detail.reason;
+    });
+
+    modal.shadowRoot
+      ?.querySelector<HTMLDivElement>('[part="overlay"]')
+      ?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    await nextTick();
+
+    expect(dismissReason).toBe("backdrop");
+    expect(modal.open).toBe(true);
+
+    modal.open = false;
+    await nextTick();
+    expect(document.activeElement).toBe(trigger);
+  });
+
+  it("places focus inside the modal, traps tab order, and restores focus on close", async () => {
+    const trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.textContent = "Launch";
+    document.body.append(trigger);
+    trigger.focus();
+
+    const modal = document.createElement("dt-modal") as DtModalElement;
+    modal.title = "Focusable dialog";
+    modal.showCloseIcon = true;
+
+    const nameField = document.createElement("button");
+    nameField.type = "button";
+    nameField.textContent = "Body action";
+    nameField.autofocus = true;
+    modal.append(nameField);
+
+    const footerAction = document.createElement("button");
+    footerAction.type = "button";
+    footerAction.slot = "footer";
+    footerAction.textContent = "Save";
+    modal.append(footerAction);
+
+    document.body.append(modal);
+    modal.show();
+    await nextTick();
+
+    expect(document.activeElement).toBe(nameField);
+
+    footerAction.focus();
+    window.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Tab",
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    await nextTick();
+    expect(modal.shadowRoot?.activeElement).toBe(
+      modal.shadowRoot?.querySelector('[part="close-button"]'),
+    );
+
+    const closeButton = modal.shadowRoot?.querySelector<HTMLButtonElement>(
+      '[part="close-button"]',
+    );
+    closeButton?.focus();
+    window.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Tab",
+        shiftKey: true,
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    await nextTick();
+    expect(document.activeElement).toBe(footerAction);
+
+    modal.close();
+    await nextTick();
+    expect(document.activeElement).toBe(trigger);
+    expect(document.body.style.overflow).toBe("");
+  });
+
+  it("opens tooltip on hover after delay and wires aria-describedby onto the trigger", async () => {
+    vi.useFakeTimers();
+
+    const tooltip = document.createElement("dt-tooltip") as DtTooltipElement;
+    tooltip.delay = 200;
+    tooltip.content = "Tip content";
+
+    const trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.textContent = "Trigger";
+    tooltip.append(trigger);
+    document.body.append(tooltip);
+
+    trigger.dispatchEvent(new Event("pointerenter", { bubbles: true }));
+    vi.advanceTimersByTime(199);
+    expect(tooltip.open).toBe(false);
+
+    vi.advanceTimersByTime(1);
+    await nextTick();
+
+    expect(tooltip.open).toBe(true);
+    expect(trigger.getAttribute("aria-describedby")).toContain("dt-tooltip-");
+    expect(
+      tooltip.shadowRoot
+        ?.querySelector('[role="tooltip"]')
+        ?.hasAttribute("hidden"),
+    ).toBe(false);
+  });
+
+  it("does not auto-close a controlled tooltip on Escape", async () => {
+    const tooltip = document.createElement("dt-tooltip") as DtTooltipElement;
+    tooltip.controlled = true;
+    tooltip.open = true;
+    tooltip.content = "Controlled";
+
+    const trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.textContent = "Focus me";
+    tooltip.append(trigger);
+    document.body.append(tooltip);
+
+    let dismissReason: string | null = null;
+    tooltip.addEventListener("dismiss-request", (event) => {
+      dismissReason = (event as CustomEvent<{ reason: string }>).detail.reason;
+    });
+
+    window.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Escape",
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    await nextTick();
+
+    expect(dismissReason).toBe("escape");
+    expect(tooltip.open).toBe(true);
+  });
+});

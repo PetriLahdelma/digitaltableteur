@@ -3189,6 +3189,761 @@
           ],
           "dtSourceComponent": "Switch",
           "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtModalElement",
+          "description": "Layered dialog with focus containment, dismissal, loading, and severity states.",
+          "customElement": true,
+          "tagName": "dt-modal",
+          "slots": [
+            {
+              "name": "",
+              "description": "Dialog body content."
+            },
+            {
+              "name": "icon",
+              "description": "Optional header icon."
+            },
+            {
+              "name": "menu",
+              "description": "Optional contextual header controls."
+            },
+            {
+              "name": "footer",
+              "description": "Optional dialog actions."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "severity",
+              "fieldName": "severity",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "title-size",
+              "fieldName": "titleSize",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "icon-size",
+              "fieldName": "iconSize",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "open",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-open",
+              "fieldName": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "controlled",
+              "fieldName": "controlled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "title",
+              "fieldName": "title",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-footer",
+              "fieldName": "showFooter",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "animation",
+              "fieldName": "animation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-close-icon",
+              "fieldName": "showCloseIcon",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "close-icon-name",
+              "fieldName": "closeIconName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "close-button-label",
+              "fieldName": "closeButtonLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "dismiss-on-backdrop",
+              "fieldName": "dismissOnBackdrop",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "dismiss-request",
+              "description": "Dispatched when Escape, the backdrop, or the close control requests dismissal.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "open-change",
+              "description": "Dispatched with detail.open and detail.reason after state changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Modal",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtTooltipElement",
+          "description": "Non-interactive accessible hint shown from hover and keyboard focus.",
+          "customElement": true,
+          "tagName": "dt-tooltip",
+          "slots": [
+            {
+              "name": "",
+              "description": "The trigger element whose semantics remain intact."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "fieldName": "content",
+              "description": "Short tooltip text.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "placement",
+              "fieldName": "placement",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "fieldName": "offset",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "open",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-open",
+              "fieldName": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "controlled",
+              "fieldName": "controlled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "delay",
+              "fieldName": "delay",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "open-change",
+              "description": "Dispatched with detail.open when tooltip visibility changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Tooltip",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtMenuElement",
+          "description": "Menu-button primitive with roving focus, typeahead, and dismissal behavior.",
+          "customElement": true,
+          "tagName": "dt-menu",
+          "members": [
+            {
+              "kind": "field",
+              "name": "items",
+              "type": {
+                "text": "import(\"../native/menu\").DtMenuItem[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "trigger",
+              "description": "Menu trigger control."
+            },
+            {
+              "name": "",
+              "description": "Declarative menu item content overriding the items property."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "side",
+              "fieldName": "side",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "align",
+              "fieldName": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "side-offset",
+              "fieldName": "sideOffset",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "open",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-open",
+              "fieldName": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "modal",
+              "fieldName": "modal",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "items",
+              "fieldName": "items",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "open-change",
+              "description": "Dispatched with detail.open when menu visibility changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "item-select",
+              "description": "Dispatched with the activated item in event.detail.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Menu",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSplitButtonElement",
+          "description": "Primary action paired with an accessible menu of related actions.",
+          "customElement": true,
+          "tagName": "dt-split-button",
+          "members": [
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "import(\"../native/split-button\").DtSplitButtonOption[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "label",
+              "description": "Rich primary-action label content."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "options",
+              "fieldName": "options",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "menu-align",
+              "fieldName": "menuAlign",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "surface",
+              "fieldName": "surface",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "rounded",
+              "fieldName": "rounded",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "toggle-label",
+              "fieldName": "toggleLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tooltip",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "accessible-name",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "primary-click",
+              "description": "Dispatched when the primary action is activated.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "option-select",
+              "description": "Dispatched with the selected secondary option in event.detail.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "SplitButton",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtTabsElement",
+          "description": "Keyboard-navigable tab list with controlled and uncontrolled selection.",
+          "customElement": true,
+          "tagName": "dt-tabs",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tabs",
+              "type": {
+                "text": "{ key: string; label: string; disabled?: boolean; icon?: string; count?: number }[]"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Tab panel content selected through slot names matching tab keys."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active-tab",
+              "fieldName": "activeTab",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-active-tab",
+              "fieldName": "defaultActiveTab",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tabs",
+              "fieldName": "tabs",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "orientation",
+              "fieldName": "orientation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "activation",
+              "fieldName": "activation",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "tab-change",
+              "description": "Dispatched with detail.activeTab after active-tab changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Tabs",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtSegmentedControlElement",
+          "description": "Single-select segmented control with radio-group semantics.",
+          "customElement": true,
+          "tagName": "dt-segmented-control",
+          "members": [
+            {
+              "kind": "field",
+              "name": "items",
+              "type": {
+                "text": "{ value: string; label: string; icon?: string; disabled?: boolean }[]"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "fieldName": "items",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "orientation",
+              "fieldName": "orientation",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after selection changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "SegmentedControl",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtAccordionElement",
+          "description": "Single or multi-open disclosure group with controlled state support.",
+          "customElement": true,
+          "tagName": "dt-accordion",
+          "members": [
+            {
+              "kind": "field",
+              "name": "items",
+              "type": {
+                "text": "{ id: string; title: string; content: string; disabled?: boolean }[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultOpenIds",
+              "type": {
+                "text": "string[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "openIds",
+              "type": {
+                "text": "string[]"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "fieldName": "items",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "type",
+              "fieldName": "type",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-open-id",
+              "fieldName": "defaultOpenId",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-open-ids",
+              "fieldName": "defaultOpenIds",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "open-ids",
+              "fieldName": "openIds",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "open-change",
+              "description": "Dispatched with detail.openIds after disclosure changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Accordion",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtExpandableSectionElement",
+          "description": "Single disclosure for progressively revealing supporting content.",
+          "customElement": true,
+          "tagName": "dt-expandable-section",
+          "slots": [
+            {
+              "name": "",
+              "description": "Content revealed by the disclosure control."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "collapsed-label",
+              "fieldName": "collapsedLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "expanded-label",
+              "fieldName": "expandedLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-expanded",
+              "fieldName": "defaultExpanded",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "expanded",
+              "fieldName": "expanded",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "expanded-change",
+              "description": "Dispatched with detail.expanded after disclosure changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "ExpandableSection",
+          "dtBackend": "native"
         }
       ]
     }

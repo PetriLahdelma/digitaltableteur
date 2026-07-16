@@ -16,13 +16,14 @@ import "@digitaltableteur/tokens-css/tokens.css";
 import "@digitaltableteur/web-components/register";
 ```
 
-The default registry contains 45 native Shadow DOM custom elements:
-AlertBanner, AspectRatio, Avatar, AvatarGroup, Badge, Button, ButtonGroup, Card,
-Center, Checkbox, CheckboxGroup, Container, Display, Divider, EmptyState,
-FilterChip, FlexBox, FormField, Grid, HelperText, Icon, IconButton, Kbd, Label,
-Link, List, NavLink, Progress, Radio, RadioGroup, Section, Select, SelectOption,
-Skeleton, SkipLink, Spacer, Spinner, Stack, StatusDot, Switch, Text, TextArea,
-TextInput, Title, and VisuallyHidden.
+The default registry contains 53 native Shadow DOM custom elements:
+Accordion, AlertBanner, AspectRatio, Avatar, AvatarGroup, Badge, Button,
+ButtonGroup, Card, Center, Checkbox, CheckboxGroup, Container, Display, Divider,
+EmptyState, ExpandableSection, FilterChip, FlexBox, FormField, Grid, HelperText,
+Icon, IconButton, Kbd, Label, Link, List, Menu, Modal, NavLink, Progress, Radio,
+RadioGroup, Section, SegmentedControl, Select, SelectOption, Skeleton, SkipLink,
+Spacer, Spinner, SplitButton, Stack, StatusDot, Switch, Tabs, Text, TextArea,
+TextInput, Title, Tooltip, and VisuallyHidden.
 
 ```html
 <dt-button label="Continue" variant="primary"></dt-button>
@@ -112,6 +113,15 @@ TextInput, Title, and VisuallyHidden.
   <dt-button submits>Send</dt-button>
 </form>
 <dt-switch label="Email notifications"></dt-switch>
+<dt-tooltip content="Opens in a new tab" placement="top">
+  <button type="button">More information</button>
+</dt-tooltip>
+<dt-expandable-section
+  collapsed-label="Show implementation notes"
+  expanded-label="Hide implementation notes"
+>
+  Native disclosure content remains in the light DOM.
+</dt-expandable-section>
 ```
 
 `/native` and `/register/native` are retained as explicit aliases for hosts
@@ -157,6 +167,10 @@ Select accepts JSON option data or declarative `dt-select-option` children;
 RadioGroup and CheckboxGroup accept JSON option data or matching declarative
 control children. Switch remains an immediate-action control and deliberately
 does not submit a form value.
+Modal and Tooltip preserve slotted interactive content while owning overlay
+semantics, positioning, and dismissal requests. Menu, SplitButton, Tabs,
+SegmentedControl, Accordion, and ExpandableSection expose composed events so
+framework and plain-JavaScript hosts can own controlled state without adapters.
 
 ## Legacy React adapters
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.16 - 2026-07-16
+
+- Exposes the existing Accordion and Tooltip runtime families from the root and
+  appropriate family entrypoints so they can serve as canonical counterparts
+  for the native web-component package. Their component behavior and prop
+  contracts are unchanged.
+- Runtime public API grows additively from 121 to 126 exports; no existing
+  export or component API changes.
+
 ## 0.1.15 - 2026-07-14
 
 - Adds 12 tree-shakeable family subpath entrypoints alongside the root barrel: `@digitaltableteur/react/{actions,consent,content,feedback,forms,hooks,identity,layout,navigation,patterns,runtime,typography}`, each with isolated JS, `.d.ts`, and `./style.css`. Consumers can import a single family to pull a smaller graph (median family JS is 34.8% of the root bundle, largest 46.9%). The root entrypoint is unchanged and fully back-compatible; the 12 families form an exact partition of it (117 runtime exports, 0 duplicated/orphaned ownership), frozen in the public API manifest and enforced by `check:react-package-topology`.
@@ -30,7 +39,7 @@
 - Re-establishes the pattern rung: `PageLayout` and `ProcessBlock` are the first composite patterns exported from the package (runtime public API 113 → 115, both stable contracts, zero-alpha surface ceiling holds). ProcessBlock's own imports move off the published barrel onto package-internal source per the same-module-instance rule.
 - Type-only export alignment accumulated since 0.1.10: `TextProps`, `LinkProps`, `ListProps`, `GridProps`, `FlexBoxProps`, `CodeBlockWindowProps`, `GroupLabelProps` now ship in the d.ts.
 - Accessibility regression coverage added across Divider (semantic `aria-orientation`), ImagePlaceholder (decorative icon hidden), CodeBlockWindow (copy feedback as `role=status` live region), Select (merged `aria-describedby` with external ids), MarkdownMessage (fallback announcement), and ChatWidget dialog modality (DS-internal).
-- Verified by the full local gate (typecheck, lint, 2295 tests, build) plus check:react-package, check:react-public-api, check:react-public-surface (0 alpha), and check:astryx-roadmap (no next/* imports in package source).
+- Verified by the full local gate (typecheck, lint, 2295 tests, build) plus check:react-package, check:react-public-api, check:react-public-surface (0 alpha), and check:astryx-roadmap (no next/\* imports in package source).
 
 ## 0.1.10 - 2026-07-12
 

@@ -1,3 +1,8 @@
+export { default as Accordion } from "../../../nextjs-app/shared/components/Accordion";
+export type {
+  AccordionItem,
+  AccordionProps,
+} from "../../../nextjs-app/shared/components/Accordion";
 export { default as Card } from "../../../nextjs-app/shared/components/Card/Card";
 export type {
   CardDescriptionProps,
