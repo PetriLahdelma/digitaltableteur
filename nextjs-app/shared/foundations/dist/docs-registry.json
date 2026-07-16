@@ -14889,8 +14889,17 @@
       "tier": 2,
       "status": "stable",
       "description": "Formats an ISO calendar date, instant, Unix timestamp, or Date into human-readable text: relative for recency, absolute for precision, or auto to switch between them. Date-only values retain their calendar date across runtime timezones.",
-      "dense": "",
-      "keywords": [],
+      "dense": "semantic time value with locale-aware absolute, relative, and auto formats; preserves date-only values across timezones and can update live",
+      "keywords": [
+        "timestamp",
+        "date",
+        "time",
+        "relative time",
+        "timezone",
+        "metadata",
+        "recency",
+        "calendar date"
+      ],
       "importLine": "import Timestamp from \"@dt/Timestamp\";",
       "keyProps": [
         {
@@ -14990,13 +14999,57 @@
           "type": "string"
         }
       },
-      "composesWith": [],
+      "composesWith": [
+        "Text",
+        "Card",
+        "List"
+      ],
       "prefersOver": [],
       "forbiddenUse": [
         "wrap it in another `<time>` or add a redundant `title`; it owns both.",
         "use `live` for values that will not change meaningfully while on screen"
       ],
-      "usage": null,
+      "usage": {
+        "description": "Timestamp renders machine-readable date and time values as localized human text. Use relative or auto formats for recent activity, absolute formats when precision matters, and system formats for technical contexts. Date-only input stays on the same calendar date regardless of the runtime timezone.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Use auto for activity metadata that should read relatively while recent and become precise as it ages."
+          },
+          {
+            "guidance": true,
+            "description": "Use date or date_time when readers must compare or cite an exact calendar value."
+          },
+          {
+            "guidance": true,
+            "description": "Pass date-only content as YYYY-MM-DD so its calendar date is preserved across runtime timezones."
+          },
+          {
+            "guidance": true,
+            "description": "Enable showTimezone for time-bearing values when the reader needs to know which timezone applies."
+          },
+          {
+            "guidance": false,
+            "description": "Do not wrap Timestamp in another time element or duplicate its machine-readable dateTime value."
+          },
+          {
+            "guidance": false,
+            "description": "Do not enable live for static historical values; periodic updates should be reserved for relative time that changes on screen."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Semantic value",
+            "required": true,
+            "description": "A time element carries the normalized machine-readable dateTime value."
+          },
+          {
+            "name": "Visible label",
+            "required": true,
+            "description": "Localized text presents the selected absolute, relative, auto, or system format."
+          }
+        ]
+      },
       "tokens": {
         "colors": [
           "--color-text",

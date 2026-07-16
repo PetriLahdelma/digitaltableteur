@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-16T10:46:53.799Z",
+  "generatedAt": "2026-07-16T11:16:06.483Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -31205,7 +31205,77 @@
         "forbiddenUse": [
           "wrap it in another `<time>` or add a redundant `title`; it owns both.",
           "use `live` for values that will not change meaningfully while on screen"
-        ]
+        ],
+        "composesWith": [
+          "Text",
+          "Card",
+          "List"
+        ],
+        "displayName": "Timestamp",
+        "keywords": [
+          "timestamp",
+          "date",
+          "time",
+          "relative time",
+          "timezone",
+          "metadata",
+          "recency",
+          "calendar date"
+        ],
+        "dense": "semantic time value with locale-aware absolute, relative, and auto formats; preserves date-only values across timezones and can update live",
+        "usage": {
+          "description": "Timestamp renders machine-readable date and time values as localized human text. Use relative or auto formats for recent activity, absolute formats when precision matters, and system formats for technical contexts. Date-only input stays on the same calendar date regardless of the runtime timezone.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Use auto for activity metadata that should read relatively while recent and become precise as it ages."
+            },
+            {
+              "guidance": true,
+              "description": "Use date or date_time when readers must compare or cite an exact calendar value."
+            },
+            {
+              "guidance": true,
+              "description": "Pass date-only content as YYYY-MM-DD so its calendar date is preserved across runtime timezones."
+            },
+            {
+              "guidance": true,
+              "description": "Enable showTimezone for time-bearing values when the reader needs to know which timezone applies."
+            },
+            {
+              "guidance": false,
+              "description": "Do not wrap Timestamp in another time element or duplicate its machine-readable dateTime value."
+            },
+            {
+              "guidance": false,
+              "description": "Do not enable live for static historical values; periodic updates should be reserved for relative time that changes on screen."
+            }
+          ],
+          "anatomy": [
+            {
+              "name": "Semantic value",
+              "required": true,
+              "description": "A time element carries the normalized machine-readable dateTime value."
+            },
+            {
+              "name": "Visible label",
+              "required": true,
+              "description": "Localized text presents the selected absolute, relative, auto, or system format."
+            }
+          ]
+        },
+        "playground": {
+          "defaults": {
+            "value": "2026-02-19T17:00:00Z",
+            "format": "auto",
+            "autoThreshold": 604800,
+            "size": "s",
+            "tone": "muted",
+            "showTimezone": false,
+            "tooltip": true,
+            "live": false
+          }
+        }
       },
       "spec": "# Timestamp\n\n## Intent\nRenders a single date or time value as human-readable text: relative (\"2 hours\nago\") for recency, absolute (\"29 Nov 2025\") for precision, or `auto` to show\nrelative until the value ages past `autoThreshold` and then switch to the full\ndate. System variants emit ISO-style strings for logs and developer surfaces.\nIt exists so timestamps read consistently across the site instead of each\nsurface hand-rolling `Intl` calls.\n\n## Interaction contract\n- Keyboard: not interactive; nothing is focusable.\n- Pointer: hovering relative output reveals a native tooltip (`title`) with the\n  full medium date + short time, so the precise moment stays discoverable.\n- Screen readers: renders a semantic `<time>` with a machine-readable\n  `dateTime` (ISO 8601) attribute; date-only input stays `YYYY-MM-DD`, while\n  instants are canonicalized. Relative and `auto` output derives from\n  render-time \"now\", so `suppressHydrationWarning` absorbs a legitimate\n  server/client one-tick difference.\n\n## Do / don't\n- Do use `muted` tone for secondary metadata (list rows, card footers) and\n  `default` when the value carries body-text weight.\n- Do pin `now` in stories and tests for deterministic relative output.\n- Do use the `system_*` formats for developer-facing surfaces (logs, dev tools)\n  where an unambiguous ISO string matters more than locale formatting.\n- Don't wrap it in another `<time>` or add a redundant `title`; it owns both.\n- Don't use `live` for values that will not change meaningfully while on screen\n  (absolute dates) — it only re-renders relative/auto output.\n\n## Design notes\n- Tokens: `--color-text` (default tone) and `--color-muted` (muted tone); the\n  size ladder maps 1:1 onto the shared Text type scale so it aligns inline with\n  surrounding copy. No spacing tokens — it is a pure inline element.\n- Locale: defaults to the active site language (`useLocalization`); pass\n  `locale` to override. All formatting goes through `Intl`, so it localizes\n  without translation keys.\n- Date-only ISO values are parsed as calendar dates rather than UTC instants,\n  preventing users west of UTC from seeing the previous day.\n- Figma: none — presentation is entirely the type scale + text color roles,\n  so there is no dedicated Figma node to mirror.\n",
       "documentationDebt": false,
