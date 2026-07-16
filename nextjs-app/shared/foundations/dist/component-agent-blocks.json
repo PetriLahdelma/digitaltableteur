@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T16:17:45.061Z",
+  "generatedAt": "2026-07-16T17:36:39.943Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -526,19 +526,23 @@
       "props": {
         "name": {
           "optional": false,
-          "type": "string"
+          "type": "string",
+          "description": "Author name shown after the byline prefix."
         },
         "imageUrl": {
           "optional": false,
-          "type": "string | { default: string } | StaticImageData"
+          "type": "string | { default: string } | StaticImageData",
+          "description": "Avatar image source."
         },
         "size": {
           "optional": true,
-          "type": "AvatarSize"
+          "type": "AvatarSize",
+          "description": "Avatar size."
         },
         "profileUrl": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Optional author profile URL; makes the byline text a link."
         }
       },
       "propRelationships": [],
@@ -960,8 +964,8 @@
       ],
       "composesWith": [
         "TextInput",
-        "Text",
         "Link",
+        "Text",
         "Button",
         "Icon",
         "Checkbox"
@@ -1190,6 +1194,21 @@
           "optional": true,
           "type": "string",
           "description": "Active route used to compute the prev/next disabled state. Defaults to the\ncurrent pathname from the router; stories and tests override it to show a\ngiven position in the article sequence."
+        },
+        "pages": {
+          "optional": true,
+          "type": "readonly BlogNavPage[]",
+          "description": "Ordered article paths. Defaults to the bundled legacy sequence."
+        },
+        "onNavigate": {
+          "optional": true,
+          "type": "(path: string) => void",
+          "description": "Host navigation callback. Defaults to the configured navigation runtime."
+        },
+        "disabled": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Disables every action while host navigation is pending."
         }
       },
       "propRelationships": [],
@@ -1224,7 +1243,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 1
+      "declaredPropCount": 4
     },
     "Breadcrumb": {
       "preferredImport": "@dt/Breadcrumb",
@@ -4176,7 +4195,8 @@
             "space-between",
             "space-around",
             "space-evenly"
-          ]
+          ],
+          "description": "Main-axis distribution."
         },
         "align": {
           "optional": true,
@@ -4187,7 +4207,8 @@
             "flex-end",
             "stretch",
             "baseline"
-          ]
+          ],
+          "description": "Cross-axis item alignment."
         },
         "alignContent": {
           "optional": true,
@@ -4199,7 +4220,8 @@
             "space-between",
             "space-around",
             "stretch"
-          ]
+          ],
+          "description": "Cross-axis line distribution when wrapping."
         },
         "gap": {
           "optional": true,
@@ -4218,11 +4240,13 @@
         },
         "style": {
           "optional": true,
-          "type": "React.CSSProperties"
+          "type": "React.CSSProperties",
+          "description": "Inline style overrides applied after generated flex declarations."
         },
         "children": {
           "optional": false,
-          "type": "React.ReactNode"
+          "type": "React.ReactNode",
+          "description": "Flex items rendered inside the container."
         }
       },
       "propRelationships": [],
@@ -4872,15 +4896,18 @@
             "2xs",
             "xs",
             "2xl"
-          ]
+          ],
+          "description": "Tokenized or explicit pixel size."
         },
         "color": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "SVG color override; defaults to the inherited current color."
         },
         "rotate": {
           "optional": true,
-          "type": "0 | 90 | 180 | 270"
+          "type": "0 | 90 | 180 | 270",
+          "description": "Quarter-turn rotation applied to the glyph."
         },
         "flip": {
           "optional": true,
@@ -4889,27 +4916,33 @@
             "horizontal",
             "vertical",
             "both"
-          ]
+          ],
+          "description": "Mirror the glyph along one or both axes."
         },
         "spin": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Apply the continuous rotation animation."
         },
         "pulse": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Apply the pulse animation when spin is not active."
         },
         "mirrored": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Use Phosphor's horizontal mirroring."
         },
         "ariaLabel": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Accessible name for a meaningful icon."
         },
         "decorative": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Hide the icon from assistive technology. Defaults to true without ariaLabel."
         }
       },
       "propRelationships": [],
@@ -5357,8 +5390,14 @@
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
-      "useWhen": [],
-      "avoidWhen": [],
+      "useWhen": [
+        "pass an `ariaLabel` per language (e.g. \"Finnish\"), not just the code.",
+        "keep language state in the parent and feed `currentLang` back."
+      ],
+      "avoidWhen": [
+        "translate inside the component; labels and accessible names come from the caller.",
+        "render it as the only navigation; it complements rather than replaces site navigation."
+      ],
       "requiredA11y": [
         "role=group with aria-label",
         "trigger aria-expanded + aria-controls",
@@ -5371,7 +5410,9 @@
         "Space",
         "Escape"
       ],
-      "compositionRules": [],
+      "compositionRules": [
+        "translate inside the component; labels and accessible names come from the caller."
+      ],
       "canonicalExamples": [
         "Default",
         "Playground",
@@ -5379,7 +5420,10 @@
         "ForcedColors"
       ],
       "replacementFor": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "translate inside the component; labels and accessible names come from the caller.",
+        "render it as the only navigation; it complements rather than replaces site navigation."
+      ],
       "composesWith": [
         "NavLink",
         "Container",
@@ -5463,8 +5507,8 @@
         "Text",
         "Checkbox",
         "TextInput",
-        "Title",
-        "Avatar"
+        "Button",
+        "Title"
       ],
       "prefersOver": [
         "Button with href for body-copy links"
@@ -5570,7 +5614,8 @@
       "props": {
         "items": {
           "optional": false,
-          "type": "React.ReactNode[]"
+          "type": "React.ReactNode[]",
+          "description": "Ordered content rendered as one list item per entry."
         },
         "as": {
           "optional": true,
@@ -5578,11 +5623,13 @@
           "values": [
             "ol",
             "ul"
-          ]
+          ],
+          "description": "Semantic list element."
         },
         "className": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Additional class name applied to the list element."
         },
         "size": {
           "optional": true,
@@ -5595,7 +5642,8 @@
             "m",
             "l",
             "xxl"
-          ]
+          ],
+          "description": "Tokenized text size."
         },
         "lineHeight": {
           "optional": true,
@@ -5606,11 +5654,13 @@
             "snug",
             "relaxed",
             "loose"
-          ]
+          ],
+          "description": "Optional tokenized line height."
         },
         "style": {
           "optional": true,
-          "type": "React.CSSProperties"
+          "type": "React.CSSProperties",
+          "description": "Inline style overrides applied after component defaults."
         },
         "listStyleType": {
           "optional": true,
@@ -5627,7 +5677,8 @@
             "lower-roman",
             "upper-roman",
             "dash"
-          ]
+          ],
+          "description": "Native marker style or the custom dash treatment."
         },
         "spacing": {
           "optional": true,
@@ -5636,11 +5687,13 @@
             "normal",
             "relaxed",
             "compact"
-          ]
+          ],
+          "description": "Vertical spacing between items."
         },
         "role": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Optional ARIA role override for specialized list semantics."
         }
       },
       "propRelationships": [],
@@ -5811,8 +5864,15 @@
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
-      "useWhen": [],
-      "avoidWhen": [],
+      "useWhen": [
+        "let the mark inherit text color; set `color` on the parent to recolor.",
+        "pass `decorative` when an adjacent wordmark already names the brand."
+      ],
+      "avoidWhen": [
+        "hardcode a fill or wrap the mark in a fixed-color box; that breaks",
+        "translate `title`; the brand name is a proper noun.",
+        "add click handlers to `Logo` itself; wrap it in a real link or button."
+      ],
       "requiredA11y": [
         "accessible name via title unless decorative",
         "decorative renders aria-hidden"
@@ -5826,7 +5886,11 @@
         "ForcedColors"
       ],
       "replacementFor": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "hardcode a fill or wrap the mark in a fixed-color box; that breaks",
+        "translate `title`; the brand name is a proper noun.",
+        "add click handlers to `Logo` itself; wrap it in a real link or button."
+      ],
       "composesWith": [
         "NavLink",
         "Container",
@@ -9554,16 +9618,6 @@
       "preferredImport": "@dt/Switch",
       "intent": "Render a two-state setting toggle with the right semantic role for \"on/off\" controls. Switch is distinct from Checkbox: it implies \"applied immediately\" and is announced by screen readers as a switch, not a checkbox.",
       "props": {
-        "checked": {
-          "optional": true,
-          "type": "boolean",
-          "description": "Checked state (controlled)."
-        },
-        "defaultChecked": {
-          "optional": true,
-          "type": "boolean",
-          "description": "Initial checked state for uncontrolled use."
-        },
         "disabled": {
           "optional": true,
           "type": "boolean",
@@ -9613,9 +9667,28 @@
           "optional": true,
           "type": "string",
           "description": "Error message beneath the control; sets aria-invalid and aria-describedby."
+        },
+        "defaultChecked": {
+          "optional": true,
+          "type": "boolean | undefined",
+          "description": "Initial checked state for uncontrolled use. Mutually exclusive with `checked`."
+        },
+        "checked": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Checked state for controlled use. Mutually exclusive with `defaultChecked`."
         }
       },
-      "propRelationships": [],
+      "propRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "checked",
+            "defaultChecked"
+          ],
+          "reason": "`checked` and `defaultChecked` never coexist in a valid SwitchProps branch."
+        }
+      ],
       "variants": {
         "size": {
           "values": [
@@ -9658,7 +9731,12 @@
         "use Switch inside a form whose values are submitted in a batch.",
         "rely on colour alone to convey state — the position of the"
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Modal",
+        "Button",
+        "Link",
+        "Badge"
+      ],
       "prefersOver": [],
       "declaredPropCount": 10
     },
@@ -11186,6 +11264,21 @@
           "optional": true,
           "type": "string",
           "description": "Active route used to compute the prev/next disabled state. Defaults to the\ncurrent pathname from the router; stories and tests override it to show a\ngiven position in the work sequence."
+        },
+        "pages": {
+          "optional": true,
+          "type": "readonly WorkNavPage[]",
+          "description": "Ordered case-study paths. Defaults to the bundled legacy sequence."
+        },
+        "onNavigate": {
+          "optional": true,
+          "type": "(path: string) => void",
+          "description": "Host navigation callback. Defaults to the configured navigation runtime."
+        },
+        "disabled": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Disables every action while host navigation is pending."
         }
       },
       "propRelationships": [],
@@ -11220,7 +11313,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 1
+      "declaredPropCount": 4
     },
     "AboutHero": {
       "preferredImport": "@dt/AboutHero",

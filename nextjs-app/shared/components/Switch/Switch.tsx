@@ -3,12 +3,10 @@ import styles from "./Switch.module.css";
 import Label from "@dt/Label";
 import HelperText from "@dt/HelperText";
 
-export interface SwitchProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> {
-  /** Checked state (controlled). @default false */
-  checked?: boolean;
-  /** Initial checked state for uncontrolled use. @default false */
-  defaultChecked?: boolean;
+interface SwitchBaseProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "onChange"
+> {
   /** Disables interaction and dims the control. @default false */
   disabled?: boolean;
   /** Shows a loading spinner and blocks interaction; sets `aria-busy`. @default false */
@@ -26,6 +24,22 @@ export interface SwitchProps
   /** Error message beneath the control; sets aria-invalid and aria-describedby. */
   error?: string;
 }
+
+type SwitchControlledProps = {
+  /** Checked state for controlled use. Mutually exclusive with `defaultChecked`. */
+  checked: boolean;
+  defaultChecked?: never;
+};
+
+type SwitchUncontrolledProps = {
+  checked?: never;
+  /** Initial checked state for uncontrolled use. Mutually exclusive with `checked`. @default false */
+  defaultChecked?: boolean;
+};
+
+/** Controlled or uncontrolled switch props; `checked` and `defaultChecked` cannot be combined. */
+export type SwitchProps = SwitchBaseProps &
+  (SwitchControlledProps | SwitchUncontrolledProps);
 
 /** Toggle with label, helper text, and loading affordances. */
 const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
@@ -140,7 +154,9 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
             }}
           >
             <span className={styles.handle} aria-hidden="true">
-              {loading && <span className={styles.spinner} aria-hidden="true" />}
+              {loading && (
+                <span className={styles.spinner} aria-hidden="true" />
+              )}
             </span>
           </button>
           {shouldRenderLabelAfter ? renderLabel() : null}
@@ -150,9 +166,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
             {error}
           </HelperText>
         )}
-        {helperText && (
-          <HelperText id={helperId}>{helperText}</HelperText>
-        )}
+        {helperText && <HelperText id={helperId}>{helperText}</HelperText>}
       </>
     );
   },

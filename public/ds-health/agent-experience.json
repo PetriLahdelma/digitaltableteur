@@ -5,7 +5,7 @@
   "dimensions": {
     "apiEntropy": {
       "description": "Raw API surface and finite-choice state-space indicators; lower is not automatically better.",
-      "totalProps": 1065,
+      "totalProps": 1071,
       "maximumPropCount": 27,
       "maximumFiniteStateBits": 16.383,
       "largestSurfaces": [
@@ -38,7 +38,7 @@
           "tier": "atom",
           "propCount": 12,
           "requiredPropCount": 1,
-          "documentedPropCount": 3,
+          "documentedPropCount": 12,
           "booleanAxisCount": 4,
           "finiteChoiceAxisCount": 4,
           "finiteStateBits": 13.562,
@@ -86,7 +86,7 @@
           "tier": "molecule",
           "propCount": 9,
           "requiredPropCount": 1,
-          "documentedPropCount": 0,
+          "documentedPropCount": 9,
           "booleanAxisCount": 0,
           "finiteChoiceAxisCount": 5,
           "finiteStateBits": 11.174,
@@ -98,7 +98,7 @@
           "tier": "atom",
           "propCount": 10,
           "requiredPropCount": 1,
-          "documentedPropCount": 5,
+          "documentedPropCount": 10,
           "booleanAxisCount": 0,
           "finiteChoiceAxisCount": 5,
           "finiteStateBits": 11.077,
@@ -157,26 +157,26 @@
     },
     "promptability": {
       "description": "Golden intent queries resolved by the production ranker.",
-      "passed": 18,
+      "passed": 20,
       "total": 20,
-      "rate": 0.9,
+      "rate": 1,
       "minimumRate": 0.9
     },
     "recoverability": {
       "description": "Components with negative guidance, replacement guidance, or executable prop relationships.",
       "coverage": {
-        "numerator": 159,
+        "numerator": 161,
         "denominator": 161,
-        "rate": 0.9876
+        "rate": 1
       },
-      "machineRelationshipComponents": 2
+      "machineRelationshipComponents": 3
     },
     "composability": {
       "description": "Components connected to the relationship graph plus golden pattern retrieval evidence.",
       "componentCoverage": {
-        "numerator": 80,
+        "numerator": 81,
         "denominator": 161,
-        "rate": 0.4969
+        "rate": 0.5031
       },
       "patternRetrieval": {
         "passed": 11,
@@ -188,14 +188,14 @@
     "contractClarity": {
       "description": "Source-backed prop documentation and complete intent/guidance/a11y/example/rationale evidence.",
       "propDocumentation": {
-        "numerator": 924,
-        "denominator": 1065,
-        "rate": 0.8676
+        "numerator": 957,
+        "denominator": 1071,
+        "rate": 0.8936
       },
       "completeContractEvidence": {
-        "numerator": 134,
+        "numerator": 138,
         "denominator": 161,
-        "rate": 0.8323
+        "rate": 0.8571
       }
     }
   },
@@ -375,7 +375,7 @@
       "api": {
         "propCount": 4,
         "requiredPropCount": 2,
-        "documentedPropCount": 0,
+        "documentedPropCount": 4,
         "booleanAxisCount": 0,
         "finiteChoiceAxisCount": 0,
         "finiteStateBits": 0,
@@ -566,15 +566,15 @@
     },
     {
       "name": "BlogNav",
-      "status": "beta",
+      "status": "stable",
       "tier": "molecule",
       "api": {
-        "propCount": 1,
+        "propCount": 4,
         "requiredPropCount": 0,
-        "documentedPropCount": 1,
-        "booleanAxisCount": 0,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 1,
         "finiteChoiceAxisCount": 0,
-        "finiteStateBits": 0,
+        "finiteStateBits": 1,
         "slotCount": 0,
         "relationshipCount": 0
       },
@@ -1243,7 +1243,7 @@
     },
     {
       "name": "DonnyAvatar",
-      "status": "beta",
+      "status": "stable",
       "tier": "molecule",
       "api": {
         "propCount": 16,
@@ -1430,7 +1430,7 @@
         "accessibilityReview": true,
         "canonicalExamples": true,
         "discoverability": true,
-        "usageRationale": false,
+        "usageRationale": true,
         "designRationale": true
       },
       "recoverability": true,
@@ -1444,7 +1444,7 @@
       "api": {
         "propCount": 10,
         "requiredPropCount": 1,
-        "documentedPropCount": 5,
+        "documentedPropCount": 10,
         "booleanAxisCount": 0,
         "finiteChoiceAxisCount": 5,
         "finiteStateBits": 11.077,
@@ -1649,7 +1649,7 @@
       "api": {
         "propCount": 12,
         "requiredPropCount": 1,
-        "documentedPropCount": 3,
+        "documentedPropCount": 12,
         "booleanAxisCount": 4,
         "finiteChoiceAxisCount": 4,
         "finiteStateBits": 13.562,
@@ -1798,15 +1798,15 @@
       },
       "evidence": {
         "intent": true,
-        "positiveGuidance": false,
-        "negativeGuidance": false,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
         "accessibilityReview": true,
         "canonicalExamples": true,
         "discoverability": true,
         "usageRationale": true,
         "designRationale": true
       },
-      "recoverability": false,
+      "recoverability": true,
       "composable": true,
       "machineRelationships": []
     },
@@ -1873,7 +1873,7 @@
       "api": {
         "propCount": 9,
         "requiredPropCount": 1,
-        "documentedPropCount": 0,
+        "documentedPropCount": 9,
         "booleanAxisCount": 0,
         "finiteChoiceAxisCount": 5,
         "finiteStateBits": 11.174,
@@ -1938,15 +1938,15 @@
       },
       "evidence": {
         "intent": true,
-        "positiveGuidance": false,
-        "negativeGuidance": false,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
         "accessibilityReview": true,
         "canonicalExamples": true,
         "discoverability": true,
         "usageRationale": true,
         "designRationale": true
       },
-      "recoverability": false,
+      "recoverability": true,
       "composable": true,
       "machineRelationships": []
     },
@@ -2671,7 +2671,7 @@
         "accessibilityReview": true,
         "canonicalExamples": true,
         "discoverability": true,
-        "usageRationale": false,
+        "usageRationale": true,
         "designRationale": true
       },
       "recoverability": true,
@@ -3044,7 +3044,7 @@
     },
     {
       "name": "Switch",
-      "status": "beta",
+      "status": "stable",
       "tier": "atom",
       "api": {
         "propCount": 10,
@@ -3054,7 +3054,7 @@
         "finiteChoiceAxisCount": 2,
         "finiteStateBits": 7.17,
         "slotCount": 1,
-        "relationshipCount": 0
+        "relationshipCount": 1
       },
       "evidence": {
         "intent": true,
@@ -3067,8 +3067,17 @@
         "designRationale": true
       },
       "recoverability": true,
-      "composable": false,
-      "machineRelationships": []
+      "composable": true,
+      "machineRelationships": [
+        {
+          "kind": "mutuallyExclusive",
+          "props": [
+            "checked",
+            "defaultChecked"
+          ],
+          "reason": "`checked` and `defaultChecked` never coexist in a valid SwitchProps branch."
+        }
+      ]
     },
     {
       "name": "TableOfContents",
@@ -3520,15 +3529,15 @@
     },
     {
       "name": "WorkNav",
-      "status": "beta",
+      "status": "stable",
       "tier": "molecule",
       "api": {
-        "propCount": 1,
+        "propCount": 4,
         "requiredPropCount": 0,
-        "documentedPropCount": 1,
-        "booleanAxisCount": 0,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 1,
         "finiteChoiceAxisCount": 0,
-        "finiteStateBits": 0,
+        "finiteStateBits": 1,
         "slotCount": 0,
         "relationshipCount": 0
       },
@@ -4753,5 +4762,5 @@
   ],
   "ok": true,
   "violations": [],
-  "generatedAt": "2026-07-16T16:17:45.470Z"
+  "generatedAt": "2026-07-16T17:36:46.373Z"
 }

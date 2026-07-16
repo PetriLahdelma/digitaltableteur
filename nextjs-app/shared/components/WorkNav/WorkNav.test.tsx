@@ -150,9 +150,9 @@ describe("WorkNav", () => {
     const prevButton = screen.getByText("Prev").closest("button");
     const nextButton = screen.getByText("Next").closest("button");
 
-    // When currentIndex is -1 (not found), prev should be disabled, next should be enabled
+    // An unknown route has no safe adjacent destination.
     expect(prevButton).toBeDisabled();
-    expect(nextButton).not.toBeDisabled();
+    expect(nextButton).toBeDisabled();
   });
 
   it("exposes a labelled navigation landmark", () => {
@@ -172,10 +172,27 @@ describe("WorkNav", () => {
     expect(screen.getByText("Next").closest("button")).not.toBeDisabled();
   });
 
-  it("has no axe violations", async () => {
-    const { container } = render(
-      <WorkNav currentPath="/work/new-things-co" />,
+  it("uses a host-provided project sequence and navigation callback", () => {
+    const onNavigate = vi.fn();
+    render(
+      <WorkNav
+        currentPath="/work/two"
+        pages={[
+          { path: "/work/one" },
+          { path: "/work/two" },
+          { path: "/work/three" },
+        ]}
+        onNavigate={onNavigate}
+      />,
     );
+
+    fireEvent.click(screen.getByText("Next"));
+    expect(onNavigate).toHaveBeenCalledWith("/work/three");
+    expect(mockPush).not.toHaveBeenCalled();
+  });
+
+  it("has no axe violations", async () => {
+    const { container } = render(<WorkNav currentPath="/work/new-things-co" />);
     expect(await axe(container)).toHaveNoViolations();
   });
 });

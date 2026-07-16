@@ -9,7 +9,7 @@ const meta: Meta<typeof WorkNav> = {
   // prev/next disabled state is operable from the panel.
   title: "Site/WorkNav",
   component: WorkNav,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -24,7 +24,10 @@ const meta: Meta<typeof WorkNav> = {
       control: "text",
       description:
         "Active route used to compute the prev/next disabled state. Defaults to the router pathname; seeded here to a real work route.",
-      table: { category: "Behavior", defaultValue: { summary: "usePathname()" } },
+      table: {
+        category: "Behavior",
+        defaultValue: { summary: "usePathname()" },
+      },
     },
   },
   args: {

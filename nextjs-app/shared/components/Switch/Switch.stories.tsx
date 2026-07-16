@@ -76,7 +76,7 @@ const switchComplianceRules: ComplianceRule[] = [
 const meta: Meta<typeof Switch> = {
   title: "Forms/Switch",
   component: Switch,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -123,9 +123,7 @@ export const Z_SwitchCompliance: Story = {
 Z_SwitchCompliance.parameters = { docs: { disable: true } };
 
 const ControlledTemplate = (args: SwitchProps) => {
-  const [checked, setChecked] = React.useState<boolean>(
-    args.checked ?? false,
-  );
+  const [checked, setChecked] = React.useState<boolean>(args.checked ?? false);
 
   React.useEffect(() => {
     setChecked(args.checked ?? false);
@@ -180,7 +178,8 @@ export const LabelOnTop: Story = {
   parameters: {
     docs: {
       description: {
-        story: "labelPlacement moves the visible label; the wiring via aria-labelledby is unchanged.",
+        story:
+          "labelPlacement moves the visible label; the wiring via aria-labelledby is unchanged.",
       },
     },
   },
@@ -249,7 +248,9 @@ export const SizeLarge: Story = {
 
 export const AllSizes: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "sm, md and lg control sizes." } } },
+  parameters: {
+    docs: { description: { story: "sm, md and lg control sizes." } },
+  },
   name: "All Sizes (v2.0.0)",
   render: () => (
     <div className={styles.sizesContainer}>

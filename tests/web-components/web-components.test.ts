@@ -13,6 +13,7 @@ import {
   DtButtonGroupElement,
   DtBreadcrumbElement,
   DtCardElement,
+  DtCategoryFilterElement,
   DtCenterElement,
   DtCodeBlockWindowElement,
   DtCodeSnippetElement,
@@ -28,6 +29,7 @@ import {
   DtFilterChipElement,
   DtFlexBoxElement,
   DtGridElement,
+  DtGalleryElement,
   DtGroupLabelElement,
   DtIconElement,
   DtIconButtonElement,
@@ -47,11 +49,14 @@ import {
   DtPhoneInputElement,
   DtPaginationElement,
   DtProgressElement,
+  DtReadingProgressElement,
   DtSkipLinkElement,
   DtSpinnerElement,
   DtSpacerElement,
   DtStatusDotElement,
   DtSectionElement,
+  DtSelectableCardElement,
+  DtSelectableCardGroupElement,
   DtSegmentedControlElement,
   DtSplitButtonElement,
   DtStackElement,
@@ -73,6 +78,7 @@ import {
   DtToastStackElement,
   DtTimestampElement,
   DtVisuallyHiddenElement,
+  DtValueCardElement,
 } from "../../packages/web-components/src/native";
 import {
   DtBadgeReactElement,
@@ -86,6 +92,7 @@ const NATIVE_TAGS = [
   "dt-icon-button",
   "dt-button-group",
   "dt-filter-chip",
+  "dt-category-filter",
   "dt-command-palette",
   "dt-breadcrumb",
   "dt-pagination",
@@ -104,6 +111,7 @@ const NATIVE_TAGS = [
   "dt-display",
   "dt-spinner",
   "dt-progress",
+  "dt-reading-progress",
   "dt-alert-banner",
   "dt-text",
   "dt-title",
@@ -116,8 +124,12 @@ const NATIVE_TAGS = [
   "dt-stack",
   "dt-flex-box",
   "dt-grid",
+  "dt-gallery",
   "dt-mac-window-frame",
   "dt-card",
+  "dt-selectable-card",
+  "dt-selectable-card-group",
+  "dt-value-card",
   "dt-center",
   "dt-container",
   "dt-spacer",
@@ -172,6 +184,9 @@ describe("native registry", () => {
     expect(customElements.get("dt-icon-button")).toBe(DtIconButtonElement);
     expect(customElements.get("dt-button-group")).toBe(DtButtonGroupElement);
     expect(customElements.get("dt-filter-chip")).toBe(DtFilterChipElement);
+    expect(customElements.get("dt-category-filter")).toBe(
+      DtCategoryFilterElement,
+    );
     expect(customElements.get("dt-command-palette")).toBe(
       DtCommandPaletteElement,
     );
@@ -194,6 +209,9 @@ describe("native registry", () => {
     expect(customElements.get("dt-display")).toBe(DtDisplayElement);
     expect(customElements.get("dt-spinner")).toBe(DtSpinnerElement);
     expect(customElements.get("dt-progress")).toBe(DtProgressElement);
+    expect(customElements.get("dt-reading-progress")).toBe(
+      DtReadingProgressElement,
+    );
     expect(customElements.get("dt-alert-banner")).toBe(DtAlertBannerElement);
     expect(customElements.get("dt-text")).toBe(DtTextElement);
     expect(customElements.get("dt-title")).toBe(DtTitleElement);
@@ -208,10 +226,18 @@ describe("native registry", () => {
     expect(customElements.get("dt-stack")).toBe(DtStackElement);
     expect(customElements.get("dt-flex-box")).toBe(DtFlexBoxElement);
     expect(customElements.get("dt-grid")).toBe(DtGridElement);
+    expect(customElements.get("dt-gallery")).toBe(DtGalleryElement);
     expect(customElements.get("dt-mac-window-frame")).toBe(
       DtMacWindowFrameElement,
     );
     expect(customElements.get("dt-card")).toBe(DtCardElement);
+    expect(customElements.get("dt-selectable-card")).toBe(
+      DtSelectableCardElement,
+    );
+    expect(customElements.get("dt-selectable-card-group")).toBe(
+      DtSelectableCardGroupElement,
+    );
+    expect(customElements.get("dt-value-card")).toBe(DtValueCardElement);
     expect(customElements.get("dt-center")).toBe(DtCenterElement);
     expect(customElements.get("dt-container")).toBe(DtContainerElement);
     expect(customElements.get("dt-spacer")).toBe(DtSpacerElement);

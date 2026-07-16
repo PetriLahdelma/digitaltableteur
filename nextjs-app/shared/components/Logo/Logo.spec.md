@@ -45,12 +45,12 @@ it inherits `currentColor` and scales cleanly. Replaces ad-hoc inline SVGs
 
 ## Do / don't
 
-- **Do** let the mark inherit text color; set `color` on the parent to recolor.
-- **Do** pass `decorative` when an adjacent wordmark already names the brand.
-- **Don't** hardcode a fill or wrap the mark in a fixed-color box — that breaks
+- Do: let the mark inherit text color; set `color` on the parent to recolor.
+- Do: pass `decorative` when an adjacent wordmark already names the brand.
+- Don't: hardcode a fill or wrap the mark in a fixed-color box; that breaks
   dark theme and forced-colors.
-- **Don't** translate `title`; the brand name is a proper noun.
-- **Don't** add click handlers to `Logo` itself; wrap it in a real link/button.
+- Don't: translate `title`; the brand name is a proper noun.
+- Don't: add click handlers to `Logo` itself; wrap it in a real link or button.
 
 ## Accessibility
 

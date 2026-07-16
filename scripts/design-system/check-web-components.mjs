@@ -158,7 +158,7 @@ const sharedBundleAndManifestCeiling = 1_255_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.
-const perTagAllowance = tags.length * 5_775;
+const perTagAllowance = tags.length * 6_025;
 // Canonical/native status plus production-consumer evidence is intentionally
 // repeated per declaration in custom-elements.json and in the generated
 // migration manifest so package consumers can inspect maturity without this

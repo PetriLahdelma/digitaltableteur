@@ -10,6 +10,7 @@ import Modal from "@dt/Modal";
 import Button from "@dt/Button";
 import Link from "@dt/Link";
 import Badge from "@dt/Badge";
+import Switch from "@dt/Switch";
 import { useCookieConsent } from "../../lib/cookieConsent";
 import type { CookieCategory } from "../../lib/cookieConsent/types";
 import { clearMinimizedState } from "../../lib/cookieConsent/storage";
@@ -111,7 +112,11 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ className }) => {
                 </Link>
               </div>
               <div className={styles.rightActions}>
-                <Button variant="secondary" size="md" onClick={handleAcceptEssential}>
+                <Button
+                  variant="secondary"
+                  size="md"
+                  onClick={handleAcceptEssential}
+                >
                   {t("cookieConsent.acceptEssentialButton")}
                 </Button>
                 <Button variant="primary" size="md" onClick={handleSaveCustom}>
@@ -148,23 +153,17 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ className }) => {
                         {t("cookieConsent.required")}
                       </Badge>
                     ) : null}
-                    <label className={styles.switch}>
-                      <input
-                        type="checkbox"
-                        checked={customConsents[consent.category]}
-                        onChange={() =>
-                          handleToggleCategory(
-                            consent.category,
-                            consent.required,
-                          )
-                        }
-                        disabled={consent.required}
-                        aria-label={t(
-                          `cookieConsent.categories.${consent.category}.toggleLabel`,
-                        )}
-                      />
-                      <span className={styles.slider} aria-hidden="true" />
-                    </label>
+                    <Switch
+                      size="sm"
+                      checked={customConsents[consent.category]}
+                      onCheckedChange={() =>
+                        handleToggleCategory(consent.category, consent.required)
+                      }
+                      disabled={consent.required}
+                      aria-label={t(
+                        `cookieConsent.categories.${consent.category}.toggleLabel`,
+                      )}
+                    />
                   </div>
                 </div>
               ))}

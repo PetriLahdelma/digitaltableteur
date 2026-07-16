@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "note": "Complexity is a per-component no-growth ratchet, not an ideal-quality claim. Update deliberately with npm run audit:agent-experience -- --update-baseline.",
   "minimums": {
-    "propDocumentationRate": 0.8676,
-    "completeContractEvidenceRate": 0.8323,
-    "recoverabilityRate": 0.9876,
-    "composabilityRate": 0.4969,
-    "machineRelationshipComponents": 2
+    "propDocumentationRate": 0.8936,
+    "completeContractEvidenceRate": 0.8571,
+    "recoverabilityRate": 1,
+    "composabilityRate": 0.5031,
+    "machineRelationshipComponents": 3
   },
   "components": {
     "Accordion": {
@@ -75,8 +75,8 @@
       "maxSlotCount": 0
     },
     "BlogNav": {
-      "maxPropCount": 1,
-      "maxFiniteStateBits": 0,
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
       "maxSlotCount": 0
     },
     "Breadcrumb": {
@@ -595,8 +595,8 @@
       "maxSlotCount": 0
     },
     "WorkNav": {
-      "maxPropCount": 1,
-      "maxFiniteStateBits": 0,
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
       "maxSlotCount": 0
     },
     "AboutHero": {

@@ -2,9 +2,7 @@
 
 import { useCallback, useEffect, useRef, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { useTranslation } from "react-i18next";
-
-import { Button, Icon } from "@digitaltableteur/react";
+import WorkNav from "@/nextjs-app/shared/components/WorkNav/WorkNav";
 import { sortedProjects } from "@/nextjs-app/shared/data/projects";
 
 import styles from "./NextWorkNav.module.css";
@@ -15,7 +13,6 @@ const workPages = sortedProjects.map((p) => ({
 }));
 
 export function NextWorkNav() {
-  const { t } = useTranslation();
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -53,41 +50,12 @@ export function NextWorkNav() {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.row}>
-        <Button
-          variant="tertiary"
-          size="md"
-          icon={<Icon name="briefcase" ariaLabel={t("projectBackToWork")} />}
-          disabled={isPending}
-          onClick={() => navigate("/work")}
-        >
-          <span className={styles.buttonLabel}>{t("projectBackToWork")}</span>
-        </Button>
-        <div className={styles.navButtons}>
-          <Button
-            variant="tertiary"
-            size="md"
-            icon={<Icon name="arrow-left" ariaLabel={t("workNavPrev")} />}
-            disabled={navDisabled || currentIndex <= 0}
-            onClick={() => {
-              if (prevPath) navigate(prevPath);
-            }}
-          >
-            <span className={styles.buttonLabel}>{t("workNavPrev")}</span>
-          </Button>
-          <Button
-            variant="tertiary"
-            size="md"
-            endIcon={<Icon name="arrow-right" ariaLabel={t("workNavNext")} />}
-            disabled={navDisabled || currentIndex === workPages.length - 1}
-            onClick={() => {
-              if (nextPath) navigate(nextPath);
-            }}
-          >
-            <span className={styles.buttonLabel}>{t("workNavNext")}</span>
-          </Button>
-        </div>
-      </div>
+      <WorkNav
+        currentPath={pathname ?? undefined}
+        pages={workPages}
+        onNavigate={navigate}
+        disabled={navDisabled}
+      />
     </div>
   );
 }

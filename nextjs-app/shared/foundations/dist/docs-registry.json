@@ -816,28 +816,57 @@
       "props": {
         "name": {
           "optional": false,
-          "type": "string"
+          "type": "string",
+          "description": "Author name shown after the byline prefix."
         },
         "imageUrl": {
           "optional": false,
-          "type": "string | { default: string } | StaticImageData"
+          "type": "string | { default: string } | StaticImageData",
+          "description": "Avatar image source."
         },
         "size": {
           "optional": true,
-          "type": "AvatarSize"
+          "type": "AvatarSize",
+          "description": "Avatar size."
         },
         "profileUrl": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Optional author profile URL; makes the byline text a link."
         }
       },
-      "composesWith": [],
+      "composesWith": [
+        "Avatar"
+      ],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Use Author for a full biography or social-link block; use AuthorBio instead.",
+        "Render an unlabelled avatar when the author's identity is not also available as text."
       ],
       "usage": {
-        "description": "Compact byline attribution (author identity) for blog posts. For the fuller end-of-article treatment use AuthorBio."
+        "description": "Compact byline attribution (author identity) for blog posts. For the fuller end-of-article treatment use AuthorBio.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Place Author beside publication metadata near the article title."
+          },
+          {
+            "guidance": false,
+            "description": "Do not repeat a biography in the compact byline; compose AuthorBio later in the article."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Avatar",
+            "required": true,
+            "description": "Visual author identity rendered by Avatar."
+          },
+          {
+            "name": "Byline",
+            "required": true,
+            "description": "Text attribution, optionally linked to the author profile."
+          }
+        ]
       },
       "tokens": {
         "colors": [],
@@ -1703,7 +1732,7 @@
       "name": "BlogNav",
       "group": "navigation",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Blog article sub-navigation: a back-to-articles action plus previous/next controls for stepping through the article sequence.",
       "dense": "Blog article sub-navigation: back-to-articles plus prev/next stepping for article pages",
       "keywords": [
@@ -1719,12 +1748,38 @@
           "name": "currentPath",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "pages",
+          "type": "readonly BlogNavPage[]",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
         }
       ],
       "props": {
         "currentPath": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Active route used to compute previous and next state; defaults to the navigation runtime pathname."
+        },
+        "pages": {
+          "optional": true,
+          "type": "readonly BlogNavPage[]",
+          "description": "Ordered article paths. Defaults to the bundled legacy sequence."
+        },
+        "onNavigate": {
+          "optional": true,
+          "type": "(path: string) => void",
+          "description": "Host navigation callback. Defaults to the configured navigation runtime."
+        },
+        "disabled": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Disables every action while host navigation is pending."
         }
       },
       "composesWith": [
@@ -1732,9 +1787,38 @@
         "Icon"
       ],
       "prefersOver": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "Hardcode a second article sequence in an application wrapper; pass the live ordered pages collection.",
+        "Use BlogNav as site-wide navigation; use SiteHeader or NavLink instead."
+      ],
       "usage": {
-        "description": "Sub-navigation for blog articles. Renders a back-to-articles action and previous/next controls that step through the article sequence, disabling the edges (and both when the route is not an article). Blog chrome; for site-wide nav use SiteHeader/NavLink."
+        "description": "Sub-navigation for blog articles. Renders a back-to-articles action and previous/next controls that step through the article sequence, disabling the edges (and both when the route is not an article). Blog chrome; for site-wide nav use SiteHeader/NavLink.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Pass the published article sequence from the host's content manifest."
+          },
+          {
+            "guidance": true,
+            "description": "Set disabled during pending host navigation to prevent duplicate requests."
+          },
+          {
+            "guidance": false,
+            "description": "Do not show adjacent controls when the current route is absent from pages; both controls intentionally disable."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Back action",
+            "required": true,
+            "description": "Returns to the blog index."
+          },
+          {
+            "name": "Adjacent actions",
+            "required": true,
+            "description": "Previous and next article controls with edge-state disabling."
+          }
+        ]
       },
       "tokens": {
         "colors": [],
@@ -2375,9 +2459,10 @@
       "group": "structure",
       "tier": 1,
       "status": "stable",
-      "description": "Quiet bordered surface for discrete, self-contained content; structure by composition.",
+      "description": "Quiet bordered card surface for discrete, self-contained content, including cards with actions composed into footer slots.",
       "dense": "Quiet bordered surface: variant default (hairline)|muted|transparent, padding none|sm|md|lg; title (xxs h3)/description/extra; link = ONE stretched anchor; loading = skeleton+status; compose the rest",
       "keywords": [
+        "card with actions",
         "card",
         "surface",
         "container",
@@ -4996,7 +5081,7 @@
       "name": "DonnyAvatar",
       "group": "display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "The assistant's animated avatar with thinking, speaking, and idle mood states, used inside ChatWidget and Donny surfaces.",
       "dense": "Donny assistant avatar with mood/action states (distinct eye expressions) used by the chat widget",
       "keywords": [
@@ -5004,7 +5089,9 @@
         "avatar",
         "chatbot",
         "mood",
-        "expression"
+        "expression",
+        "assistant state",
+        "streaming avatar"
       ],
       "importLine": "import DonnyAvatar from \"@dt/DonnyAvatar\";",
       "keyProps": [
@@ -5069,7 +5156,8 @@
             "skeptical",
             "sleepy",
             "sleeping"
-          ]
+          ],
+          "description": "Current expression or assistant lifecycle state."
         },
         "size": {
           "optional": true,
@@ -5079,72 +5167,128 @@
             "md",
             "lg",
             "xl"
-          ]
+          ],
+          "description": "Rendered avatar size."
         },
         "className": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Additional CSS class."
         },
         "onTransitionEnd": {
           "optional": true,
-          "type": "() => void"
+          "type": "() => void",
+          "description": "Called when the state transition animation ends."
         },
         "showLabel": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Shows the current state label for diagnostics."
         },
         "trackMouse": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Makes the eyes follow the pointer."
         },
         "proximitySelectors": {
           "optional": true,
-          "type": "string[]"
+          "type": "string[]",
+          "description": "CSS selectors whose pointer proximity can trigger curious or playful behavior."
         },
         "onProximityChange": {
           "optional": true,
-          "type": "(isNearTarget: boolean, targetSelector?: string) => void"
+          "type": "(isNearTarget: boolean, targetSelector?: string) => void",
+          "description": "Called when proximity to a tracked target changes."
         },
         "proximityThreshold": {
           "optional": true,
-          "type": "number"
+          "type": "number",
+          "description": "Pointer proximity threshold in pixels."
         },
         "enableIdleExpressions": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Enables randomized idle expressions."
         },
         "idleExpressionInterval": {
           "optional": true,
-          "type": "number"
+          "type": "number",
+          "description": "Base idle-expression interval in milliseconds, randomized by 50 percent."
         },
         "isSpeaking": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Animates the mouth during streaming responses."
         },
         "enableSleepDetection": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Enables sleepy and sleeping states after pointer inactivity."
         },
         "sleepyDelay": {
           "optional": true,
-          "type": "number"
+          "type": "number",
+          "description": "Inactivity delay before the sleepy state, in milliseconds."
         },
         "sleepDelay": {
           "optional": true,
-          "type": "number"
+          "type": "number",
+          "description": "Inactivity delay before the sleeping state, in milliseconds."
         },
         "decorative": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Removes role and label when a parent control owns the accessible name."
         }
       },
       "composesWith": [],
       "prefersOver": [],
       "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "Use a decorative DonnyAvatar as the only accessible name for a chat control.",
+        "Drive lifecycle-only states such as loading or typing from decorative marketing copy."
       ],
       "usage": {
-        "description": "The assistant's animated avatar with mood states (thinking, speaking, idle) used inside ChatWidget and Donny marketing surfaces."
+        "description": "The assistant's animated avatar with mood and lifecycle states used inside ChatWidget and Donny surfaces. DONNY_STATES and isDonnyState expose the complete validated state vocabulary to hosts.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Use lifecycle states such as listening, thinking, searching, typing, and loading to reflect actual assistant work."
+          },
+          {
+            "guidance": true,
+            "description": "Set decorative when Donny sits inside an already-labelled button or link."
+          },
+          {
+            "guidance": true,
+            "description": "Validate external state strings with isDonnyState before rendering."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use random emotional states to imply work or success that has not occurred."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Face",
+            "required": true,
+            "description": "Brand container and state-specific eye geometry."
+          },
+          {
+            "name": "Mouth",
+            "required": false,
+            "description": "Appears only for expressions where it adds meaning or speaking motion."
+          },
+          {
+            "name": "State decoration",
+            "required": false,
+            "description": "Sparkles, question mark, sleep bubble, or other state-specific detail."
+          },
+          {
+            "name": "Diagnostic label",
+            "required": false,
+            "description": "Optional visible state id intended for testing and demos."
+          }
+        ]
       },
       "tokens": {
         "colors": [
@@ -5985,7 +6129,19 @@
         "use for navigation between panels (that is Tabs).",
         "nest interactive content inside the label."
       ],
-      "usage": null,
+      "usage": {
+        "description": "Use FilterChip inside a labelled single-select filter group when a compact option must expose its active state with aria-pressed. Keep one chip pressed and use count for result totals so the accessible name stays synchronized.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Keep exactly one chip pressed in a single-select filter group."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use FilterChip as navigation between content panels; use Tabs."
+          }
+        ]
+      },
       "tokens": {
         "colors": [
           "--color-muted",
@@ -11817,9 +11973,10 @@
       "group": "form",
       "tier": 1,
       "status": "stable",
-      "description": "Native select with label, options, error state, and size tokens.",
+      "description": "Native dropdown select with labelled options, error state, and size tokens.",
       "dense": "native select with label, options array or option children, own error + helperText, sm/md/lg; onValueChange(value)",
       "keywords": [
+        "dropdown select options",
         "select",
         "dropdown",
         "native select",
@@ -12037,7 +12194,19 @@
         "nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.",
         "use it for navigation; selecting must not commit or route on click."
       ],
-      "usage": null,
+      "usage": {
+        "description": "Use SelectableCardGroup for visually prominent form choices, with SelectableCard children representing radio-style exclusive options or checkbox-style multiple options. The group owns the legend, value state, and error relationship.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Write the group legend as the question and keep each card title short and scannable."
+          },
+          {
+            "guidance": false,
+            "description": "Do not nest buttons or links inside a selectable card; use Card for action-oriented content."
+          }
+        ]
+      },
       "tokens": {
         "colors": [
           "--color-primary",
@@ -13764,7 +13933,7 @@
       "name": "Switch",
       "group": "form",
       "tier": 1,
-      "status": "beta",
+      "status": "stable",
       "description": "Toggle control with label placement, loading, and helper text.",
       "dense": "on/off toggle with immediate effect; label placement right/left/top, sm/md/lg, loading (aria-busy), own helperText + error; onCheckedChange(boolean)",
       "keywords": [
@@ -13793,7 +13962,7 @@
         },
         {
           "name": "defaultChecked",
-          "type": "boolean",
+          "type": "boolean | undefined",
           "required": false
         },
         {
@@ -13810,19 +13979,23 @@
       "props": {
         "checked": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Checked state for controlled use. Mutually exclusive with defaultChecked."
         },
         "defaultChecked": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean | undefined",
+          "description": "Initial checked state for uncontrolled use. Mutually exclusive with checked."
         },
         "disabled": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Disables interaction and dims the control."
         },
         "loading": {
           "optional": true,
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Shows a loading spinner and blocks interaction; sets aria-busy."
         },
         "size": {
           "optional": true,
@@ -13831,15 +14004,18 @@
             "sm",
             "md",
             "lg"
-          ]
+          ],
+          "description": "Control size."
         },
         "onCheckedChange": {
           "optional": true,
-          "type": "(checked: boolean) => void"
+          "type": "(checked: boolean) => void",
+          "description": "Called with the next checked value when the switch is toggled."
         },
         "label": {
           "optional": true,
-          "type": "React.ReactNode"
+          "type": "React.ReactNode",
+          "description": "Visible label."
         },
         "labelPlacement": {
           "optional": true,
@@ -13848,18 +14024,24 @@
             "left",
             "right",
             "top"
-          ]
+          ],
+          "description": "Where the label sits relative to the control."
         },
         "helperText": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Supporting text rendered beneath the control."
         },
         "error": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Error message beneath the control; sets aria-invalid and aria-describedby."
         }
       },
-      "composesWith": [],
+      "composesWith": [
+        "Label",
+        "HelperText"
+      ],
       "prefersOver": [],
       "forbiddenUse": [
         "use Switch inside a form whose values are submitted in a batch.",
@@ -13936,7 +14118,7 @@
         {
           "story": "LabelOnTop",
           "description": "labelPlacement moves the visible label; the wiring via aria-labelledby is unchanged.",
-          "source": "export const LabelOnTop: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story: \"labelPlacement moves the visible label; the wiring via aria-labelledby is unchanged.\",\n      },\n    },\n  },\n  name: \"Label on Top\",\n  args: { labelPlacement: \"top\", label: \"Top aligned label\" },\n  render: (args) => <ControlledTemplate {...args} />,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const switchElement = canvas.getByRole(\"switch\");\n    await userEvent.click(switchElement);\n  },\n};"
+          "source": "export const LabelOnTop: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"labelPlacement moves the visible label; the wiring via aria-labelledby is unchanged.\",\n      },\n    },\n  },\n  name: \"Label on Top\",\n  args: { labelPlacement: \"top\", label: \"Top aligned label\" },\n  render: (args) => <ControlledTemplate {...args} />,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const switchElement = canvas.getByRole(\"switch\");\n    await userEvent.click(switchElement);\n  },\n};"
         },
         {
           "story": "WithHelperText",
@@ -13946,7 +14128,7 @@
         {
           "story": "AllSizes",
           "description": "sm, md and lg control sizes.",
-          "source": "export const AllSizes: Story = {\n  tags: [\"example\"],\n  parameters: { docs: { description: { story: \"sm, md and lg control sizes.\" } } },\n  name: \"All Sizes (v2.0.0)\",\n  render: () => (\n    <div className={styles.sizesContainer}>\n      <Switch label=\"Small (sm)\" checked={true} size=\"sm\" />\n      <Switch label=\"Medium (md)\" checked={true} size=\"md\" />\n      <Switch label=\"Large (lg)\" checked={true} size=\"lg\" />\n    </div>\n  ),\n};"
+          "source": "export const AllSizes: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: { description: { story: \"sm, md and lg control sizes.\" } },\n  },\n  name: \"All Sizes (v2.0.0)\",\n  render: () => (\n    <div className={styles.sizesContainer}>\n      <Switch label=\"Small (sm)\" checked={true} size=\"sm\" />\n      <Switch label=\"Medium (md)\" checked={true} size=\"md\" />\n      <Switch label=\"Large (lg)\" checked={true} size=\"lg\" />\n    </div>\n  ),\n};"
         },
         {
           "story": "WithError",
@@ -16049,7 +16231,7 @@
       "name": "WorkNav",
       "group": "navigation",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Work section sub-navigation: a back-to-index action plus previous/next controls for stepping through the portfolio case studies.",
       "dense": "Work-section sub-navigation: back-to-index plus prev/next stepping for portfolio case-study pages",
       "keywords": [
@@ -16065,12 +16247,38 @@
           "name": "currentPath",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "pages",
+          "type": "readonly WorkNavPage[]",
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false
         }
       ],
       "props": {
         "currentPath": {
           "optional": true,
-          "type": "string"
+          "type": "string",
+          "description": "Active route used to compute previous and next state; defaults to the navigation runtime pathname."
+        },
+        "pages": {
+          "optional": true,
+          "type": "readonly WorkNavPage[]",
+          "description": "Ordered case-study paths. Defaults to the bundled legacy sequence."
+        },
+        "onNavigate": {
+          "optional": true,
+          "type": "(path: string) => void",
+          "description": "Host navigation callback. Defaults to the configured navigation runtime."
+        },
+        "disabled": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Disables every action while host navigation is pending."
         }
       },
       "composesWith": [
@@ -16078,9 +16286,38 @@
         "Icon"
       ],
       "prefersOver": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "Hardcode a second project sequence in an application wrapper; pass the live ordered pages collection.",
+        "Use WorkNav outside portfolio case-study chrome."
+      ],
       "usage": {
-        "description": "Sub-navigation for the work section. Renders a back-to-work action and previous/next controls that step through the case-study sequence, disabling the edges. Portfolio chrome; site-wide nav lives in SiteHeader."
+        "description": "Sub-navigation for the work section. Renders a back-to-work action and previous/next controls that step through the case-study sequence, disabling the edges. Portfolio chrome; site-wide nav lives in SiteHeader.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Pass the ordered project registry so navigation stays synchronized with published work."
+          },
+          {
+            "guidance": true,
+            "description": "Use onNavigate when the host needs prefetching, transitions, or navigation deduplication."
+          },
+          {
+            "guidance": false,
+            "description": "Do not infer a next project for an unknown route; both adjacent controls intentionally disable."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Back action",
+            "required": true,
+            "description": "Returns to the work index."
+          },
+          {
+            "name": "Adjacent actions",
+            "required": true,
+            "description": "Previous and next case-study controls with edge-state disabling."
+          }
+        ]
       },
       "tokens": {
         "colors": [],

@@ -1,26 +1,26 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-16T16:17:45.341Z",
+  "generatedAt": "2026-07-16T17:42:56.027Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
-      "beta": 47,
-      "stable": 93,
+      "beta": 43,
+      "stable": 97,
       "alpha": 21,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 88,
     "codebaseComponentCount": 184,
-    "usageCoveragePercent": 93.8,
-    "componentsWithProductionUsage": 33,
+    "usageCoveragePercent": 94.4,
+    "componentsWithProductionUsage": 35,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 93,
+    "stableCount": 97,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -78,20 +78,20 @@
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 162,
-    "withAnyUsage": 152,
-    "withProductionUsage": 33,
-    "uniqueImportedComponents": 152,
-    "totalEvidenceRows": 756,
-    "aliasImportFiles": 388,
-    "relativeImportFiles": 398,
+    "withAnyUsage": 153,
+    "withProductionUsage": 35,
+    "uniqueImportedComponents": 153,
+    "totalEvidenceRows": 761,
+    "aliasImportFiles": 389,
+    "relativeImportFiles": 405,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-13T17:29:02.407Z",
+    "generatedAt": "2026-07-16T17:33:35.077Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 80,
+    "nodesWithComposesWith": 81,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -107,8 +107,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 47,
-        "stable": 93,
+        "beta": 43,
+        "stable": 97,
         "alpha": 21,
         "deprecated": 1
       },
@@ -1748,23 +1748,31 @@
         "props": {
           "name": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Author name shown after the byline prefix."
           },
           "imageUrl": {
             "optional": false,
-            "type": "string | { default: string } | StaticImageData"
+            "type": "string | { default: string } | StaticImageData",
+            "description": "Avatar image source."
           },
           "size": {
             "optional": true,
-            "type": "AvatarSize"
+            "type": "AvatarSize",
+            "description": "Avatar size."
           },
           "profileUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional author profile URL; makes the byline text a link."
           }
         },
         "forbiddenUse": [
-          "Bypass design tokens or skip forced-colors verification at beta."
+          "Use Author for a full biography or social-link block; use AuthorBio instead.",
+          "Render an unlabelled avatar when the author's identity is not also available as text."
+        ],
+        "composesWith": [
+          "Avatar"
         ],
         "displayName": "Author",
         "keywords": [
@@ -1775,18 +1783,46 @@
         ],
         "dense": "Article byline: author name/avatar attribution line for blog posts",
         "usage": {
-          "description": "Compact byline attribution (author identity) for blog posts. For the fuller end-of-article treatment use AuthorBio."
+          "description": "Compact byline attribution (author identity) for blog posts. For the fuller end-of-article treatment use AuthorBio.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Place Author beside publication metadata near the article title."
+            },
+            {
+              "guidance": false,
+              "description": "Do not repeat a biography in the compact byline; compose AuthorBio later in the article."
+            }
+          ],
+          "anatomy": [
+            {
+              "name": "Avatar",
+              "required": true,
+              "description": "Visual author identity rendered by Avatar."
+            },
+            {
+              "name": "Byline",
+              "required": true,
+              "description": "Text attribution, optionally linked to the author profile."
+            }
+          ]
         }
       },
       "spec": "# Author\n\n## Intent\nDocuments how **Author** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on Author pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Author",
-        "importCount": 1,
-        "productionImportCount": 0,
+        "importCount": 2,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
+            "importKind": "relative",
+            "importPath": "@/nextjs-app/shared/components/Author/Author",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -1801,19 +1837,23 @@
         "props": {
           "name": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Author name shown after the byline prefix."
           },
           "imageUrl": {
             "optional": false,
-            "type": "string | { default: string } | StaticImageData"
+            "type": "string | { default: string } | StaticImageData",
+            "description": "Avatar image source."
           },
           "size": {
             "optional": true,
-            "type": "AvatarSize"
+            "type": "AvatarSize",
+            "description": "Avatar size."
           },
           "profileUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional author profile URL; makes the byline text a link."
           }
         },
         "propRelationships": [],
@@ -2143,6 +2183,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
             "since": "2026-06-04"
           },
           {
@@ -3215,8 +3260,8 @@
         ],
         "composesWith": [
           "TextInput",
-          "Text",
           "Link",
+          "Text",
           "Button",
           "Icon",
           "Checkbox"
@@ -3838,7 +3883,7 @@
         "name": "BlogNav",
         "tier": "molecule",
         "group": "navigation",
-        "status": "beta",
+        "status": "stable",
         "description": "Blog article sub-navigation: a back-to-articles action plus previous/next controls for stepping through the article sequence.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1029-101",
         "radixPrimitive": null,
@@ -3846,7 +3891,23 @@
         "props": {
           "currentPath": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Active route used to compute previous and next state; defaults to the navigation runtime pathname."
+          },
+          "pages": {
+            "optional": true,
+            "type": "readonly BlogNavPage[]",
+            "description": "Ordered article paths. Defaults to the bundled legacy sequence."
+          },
+          "onNavigate": {
+            "optional": true,
+            "type": "(path: string) => void",
+            "description": "Host navigation callback. Defaults to the configured navigation runtime."
+          },
+          "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Disables every action while host navigation is pending."
           }
         },
         "variants": {},
@@ -3865,18 +3926,41 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories; 4-mode AT snapshots captured and compare-clean. Rendered in a nav landmark labelled via blogNavLabel (en/fi/sv); labels collapse below 768px but each button keeps its Icon aria-label. Composes verified beta Button/Icon primitives; no own animation.",
-          "forcedColorsVerified": true
+          "reviewedNote": "2026-07-16 beta->stable: production NextBlogNav now composes BlogNav with live post metadata; required-story AT snapshots and Chromium forced-colors were recaptured after the host-driven pages/navigation API landed.",
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ClientArticleShell.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/NextBlogNav.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "composesWith": [
           "Button",
           "Icon"
+        ],
+        "forbiddenUse": [
+          "Hardcode a second article sequence in an application wrapper; pass the live ordered pages collection.",
+          "Use BlogNav as site-wide navigation; use SiteHeader or NavLink instead."
         ],
         "displayName": "BlogNav",
         "keywords": [
@@ -3888,18 +3972,57 @@
         ],
         "dense": "Blog article sub-navigation: back-to-articles plus prev/next stepping for article pages",
         "usage": {
-          "description": "Sub-navigation for blog articles. Renders a back-to-articles action and previous/next controls that step through the article sequence, disabling the edges (and both when the route is not an article). Blog chrome; for site-wide nav use SiteHeader/NavLink."
+          "description": "Sub-navigation for blog articles. Renders a back-to-articles action and previous/next controls that step through the article sequence, disabling the edges (and both when the route is not an article). Blog chrome; for site-wide nav use SiteHeader/NavLink.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Pass the published article sequence from the host's content manifest."
+            },
+            {
+              "guidance": true,
+              "description": "Set disabled during pending host navigation to prevent duplicate requests."
+            },
+            {
+              "guidance": false,
+              "description": "Do not show adjacent controls when the current route is absent from pages; both controls intentionally disable."
+            }
+          ],
+          "anatomy": [
+            {
+              "name": "Back action",
+              "required": true,
+              "description": "Returns to the blog index."
+            },
+            {
+              "name": "Adjacent actions",
+              "required": true,
+              "description": "Previous and next article controls with edge-state disabling."
+            }
+          ]
         }
       },
       "spec": "# BlogNav\n\n## Intent\nBlog article sub-navigation: a back-to-articles action plus previous/next controls for stepping through the article sequence.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/Button primitives (native button focus/activation)\n- Pointer: standard button targets; disabled at the sequence edges and off article routes\n- Screen readers: rendered inside a `nav` landmark labelled via `aria-label` (blogNavLabel); labels collapse below 768px but each button keeps its Icon aria-label\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: pass `currentPath` in stories/tests to drive the prev/next disabled state\n- Don't: invent parallel primitives inside this folder\n- Don't: use this for site-wide navigation (that is SiteHeader/NavLink)\n\n## Design notes\n- Tokens: inherit from child components (Button, Icon)\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1029-101\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/BlogNav",
-        "importCount": 0,
-        "productionImportCount": 0,
+        "importCount": 2,
+        "productionImportCount": 1,
         "patternImportCount": 0,
-        "componentImportCount": 0,
-        "evidence": []
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "app/blog/NextBlogNav.tsx",
+            "importKind": "relative",
+            "importPath": "@/nextjs-app/shared/components/BlogNav/BlogNav",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./BlogNav/BlogNav",
+            "context": "component"
+          }
+        ]
       },
       "agent": {
         "preferredImport": "@dt/BlogNav",
@@ -3909,6 +4032,21 @@
             "optional": true,
             "type": "string",
             "description": "Active route used to compute the prev/next disabled state. Defaults to the\ncurrent pathname from the router; stories and tests override it to show a\ngiven position in the article sequence."
+          },
+          "pages": {
+            "optional": true,
+            "type": "readonly BlogNavPage[]",
+            "description": "Ordered article paths. Defaults to the bundled legacy sequence."
+          },
+          "onNavigate": {
+            "optional": true,
+            "type": "(path: string) => void",
+            "description": "Host navigation callback. Defaults to the configured navigation runtime."
+          },
+          "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Disables every action while host navigation is pending."
           }
         },
         "propRelationships": [],
@@ -3943,7 +4081,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 1
+        "declaredPropCount": 4
       }
     },
     {
@@ -5126,7 +5264,7 @@
         "tier": "molecule",
         "group": "structure",
         "status": "stable",
-        "description": "Quiet bordered surface for discrete, self-contained content; structure by composition.",
+        "description": "Quiet bordered card surface for discrete, self-contained content, including cards with actions composed into footer slots.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=377-26",
         "radixPrimitive": null,
         "element": "div",
@@ -5304,6 +5442,7 @@
         },
         "displayName": "Card",
         "keywords": [
+          "card with actions",
           "card",
           "surface",
           "container",
@@ -10627,7 +10766,7 @@
         "name": "DonnyAvatar",
         "tier": "molecule",
         "group": "display",
-        "status": "beta",
+        "status": "stable",
         "description": "The assistant's animated avatar with thinking, speaking, and idle mood states, used inside ChatWidget and Donny surfaces.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=492-1578",
         "radixPrimitive": null,
@@ -10659,7 +10798,9 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-10 — Figma link wired to the existing DonnyAvatar component (Atoms page, node 492-1578)."
+          "reviewedNote": "2026-07-16 beta->stable: ChatToggle and ChatHeader production consumers documented; complete base/light/dark/Chromium forced-colors AT matrix captured for Default, Playground, Example, and ForcedColors. DONNY_STATES and isDonnyState now expose the validated 25-state vocabulary.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -10668,7 +10809,13 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "state": {
@@ -10700,7 +10847,8 @@
               "skeptical",
               "sleepy",
               "sleeping"
-            ]
+            ],
+            "description": "Current expression or assistant lifecycle state."
           },
           "size": {
             "optional": true,
@@ -10710,67 +10858,83 @@
               "md",
               "lg",
               "xl"
-            ]
+            ],
+            "description": "Rendered avatar size."
           },
           "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class."
           },
           "onTransitionEnd": {
             "optional": true,
-            "type": "() => void"
+            "type": "() => void",
+            "description": "Called when the state transition animation ends."
           },
           "showLabel": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Shows the current state label for diagnostics."
           },
           "trackMouse": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Makes the eyes follow the pointer."
           },
           "proximitySelectors": {
             "optional": true,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "CSS selectors whose pointer proximity can trigger curious or playful behavior."
           },
           "onProximityChange": {
             "optional": true,
-            "type": "(isNearTarget: boolean, targetSelector?: string) => void"
+            "type": "(isNearTarget: boolean, targetSelector?: string) => void",
+            "description": "Called when proximity to a tracked target changes."
           },
           "proximityThreshold": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Pointer proximity threshold in pixels."
           },
           "enableIdleExpressions": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Enables randomized idle expressions."
           },
           "idleExpressionInterval": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Base idle-expression interval in milliseconds, randomized by 50 percent."
           },
           "isSpeaking": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Animates the mouth during streaming responses."
           },
           "enableSleepDetection": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Enables sleepy and sleeping states after pointer inactivity."
           },
           "sleepyDelay": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Inactivity delay before the sleepy state, in milliseconds."
           },
           "sleepDelay": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Inactivity delay before the sleeping state, in milliseconds."
           },
           "decorative": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Removes role and label when a parent control owns the accessible name."
           }
         },
         "forbiddenUse": [
-          "Bypass design tokens or skip forced-colors verification at beta."
+          "Use a decorative DonnyAvatar as the only accessible name for a chat control.",
+          "Drive lifecycle-only states such as loading or typing from decorative marketing copy."
         ],
         "displayName": "DonnyAvatar",
         "keywords": [
@@ -10778,11 +10942,53 @@
           "avatar",
           "chatbot",
           "mood",
-          "expression"
+          "expression",
+          "assistant state",
+          "streaming avatar"
         ],
         "dense": "Donny assistant avatar with mood/action states (distinct eye expressions) used by the chat widget",
         "usage": {
-          "description": "The assistant's animated avatar with mood states (thinking, speaking, idle) used inside ChatWidget and Donny marketing surfaces."
+          "description": "The assistant's animated avatar with mood and lifecycle states used inside ChatWidget and Donny surfaces. DONNY_STATES and isDonnyState expose the complete validated state vocabulary to hosts.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Use lifecycle states such as listening, thinking, searching, typing, and loading to reflect actual assistant work."
+            },
+            {
+              "guidance": true,
+              "description": "Set decorative when Donny sits inside an already-labelled button or link."
+            },
+            {
+              "guidance": true,
+              "description": "Validate external state strings with isDonnyState before rendering."
+            },
+            {
+              "guidance": false,
+              "description": "Do not use random emotional states to imply work or success that has not occurred."
+            }
+          ],
+          "anatomy": [
+            {
+              "name": "Face",
+              "required": true,
+              "description": "Brand container and state-specific eye geometry."
+            },
+            {
+              "name": "Mouth",
+              "required": false,
+              "description": "Appears only for expressions where it adds meaning or speaking motion."
+            },
+            {
+              "name": "State decoration",
+              "required": false,
+              "description": "Sparkles, question mark, sleep bubble, or other state-specific detail."
+            },
+            {
+              "name": "Diagnostic label",
+              "required": false,
+              "description": "Optional visible state id intended for testing and demos."
+            }
+          ]
         }
       },
       "spec": "# DonnyAvatar\n\n## Intent\nDocuments how **DonnyAvatar** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on DonnyAvatar pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
@@ -12628,7 +12834,20 @@
         "forbiddenUse": [
           "use for navigation between panels (that is Tabs).",
           "nest interactive content inside the label."
-        ]
+        ],
+        "usage": {
+          "description": "Use FilterChip inside a labelled single-select filter group when a compact option must expose its active state with aria-pressed. Keep one chip pressed and use count for result totals so the accessible name stays synchronized.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Keep exactly one chip pressed in a single-select filter group."
+            },
+            {
+              "guidance": false,
+              "description": "Do not use FilterChip as navigation between content panels; use Tabs."
+            }
+          ]
+        }
       },
       "spec": "# FilterChip\n\n## Intent\nOne toggle-chip implementation for single-select filters. CategoryFilter and BlogCategoryFilter each hand-rolled the same aria-pressed button in three visual treatments; FilterChip collapses the six copies into one control.\n\n## Interaction contract\n- Keyboard: Tab focuses each chip; Enter/Space toggles (native button).\n- Pointer: click toggles; hover shifts muted → text ink.\n- Screen readers: announced as a toggle button with pressed state; a filter is a UI control, not a tablist, so parents wrap chips in a labelled role=\"group\".\n\n## Do / don't\n- Do: keep exactly one chip pressed per group (single-select filters).\n- Do: pass counts via the count prop so the \"(n)\" suffix stays in the accessible name.\n- Don't: use for navigation between panels (that is Tabs).\n- Don't: nest interactive content inside the label.\n\n## Design notes\n- Tokens: --color-muted/-text/-border ink+chrome, --focus-ring-color, --space-internal-{6,8,12,16,24} paddings, --font-size-text-{xs,s,m}.\n- Pressed pill inverts (text bg / canvas ink); underline variant sits on the group border (-1px margin); forced colors use Highlight/HighlightText.\n- Figma: pending (alpha); create in DT-Site-stuff Atoms before beta.\n",
       "documentationDebt": false,
@@ -13030,7 +13249,8 @@
               "space-between",
               "space-around",
               "space-evenly"
-            ]
+            ],
+            "description": "Main-axis distribution."
           },
           "align": {
             "optional": true,
@@ -13041,7 +13261,8 @@
               "flex-end",
               "stretch",
               "baseline"
-            ]
+            ],
+            "description": "Cross-axis item alignment."
           },
           "alignContent": {
             "optional": true,
@@ -13053,7 +13274,8 @@
               "space-between",
               "space-around",
               "stretch"
-            ]
+            ],
+            "description": "Cross-axis line distribution when wrapping."
           },
           "gap": {
             "optional": true,
@@ -13072,11 +13294,13 @@
           },
           "style": {
             "optional": true,
-            "type": "React.CSSProperties"
+            "type": "React.CSSProperties",
+            "description": "Inline style overrides applied after generated flex declarations."
           },
           "children": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Flex items rendered inside the container."
           }
         },
         "propRelationships": [],
@@ -14967,6 +15191,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/ServerArticleMain.tsx",
             "since": "2026-06-04"
           },
@@ -14993,11 +15222,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/lib/siteStructure.ts",
             "since": "2026-06-04"
           }
         ],
@@ -15278,15 +15502,18 @@
               "2xs",
               "xs",
               "2xl"
-            ]
+            ],
+            "description": "Tokenized or explicit pixel size."
           },
           "color": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "SVG color override; defaults to the inherited current color."
           },
           "rotate": {
             "optional": true,
-            "type": "0 | 90 | 180 | 270"
+            "type": "0 | 90 | 180 | 270",
+            "description": "Quarter-turn rotation applied to the glyph."
           },
           "flip": {
             "optional": true,
@@ -15295,27 +15522,33 @@
               "horizontal",
               "vertical",
               "both"
-            ]
+            ],
+            "description": "Mirror the glyph along one or both axes."
           },
           "spin": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Apply the continuous rotation animation."
           },
           "pulse": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Apply the pulse animation when spin is not active."
           },
           "mirrored": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Use Phosphor's horizontal mirroring."
           },
           "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for a meaningful icon."
           },
           "decorative": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Hide the icon from assistive technology. Defaults to true without ariaLabel."
           }
         },
         "propRelationships": [],
@@ -16744,7 +16977,7 @@
           }
         }
       },
-      "spec": "# LanguageSwitcher — spec\n\nCompact locale selector. Molecule, navigation group.\n\n## Intent\n\nLet a visitor switch UI language from a small, header-friendly control that\nshows the current language and reveals the alternatives on demand, without a\nfull dropdown's weight. Used in the site header.\n\n## Purpose\n\nSingle, accessible language control shared across layouts. The parent owns the\nlanguage list and the change handler (i18n lives outside the component); this\nrenders the trigger + fanned options and the open/close behavior.\n\n## API\n\n| Prop               | Type                          | Notes                                   |\n| ------------------ | ----------------------------- | --------------------------------------- |\n| `languages`        | `LanguageSwitcherOption[]`    | `{ code, label, ariaLabel }` per locale |\n| `currentLang`      | `string`                      | Selected language code                  |\n| `onLanguageChange` | `(code: string) => void`      | Called when an option is chosen         |\n| `className`        | `string`                      | Classes on the `role=group` wrapper     |\n| `*ClassName`       | `string`                      | Style overrides for trigger/options     |\n\n## Behavior\n\n- Collapsed: shows only the current language as the trigger.\n- Expanded: fans out the other locales as buttons; selecting one calls\n  `onLanguageChange` and collapses.\n- Closes on Escape and on outside click.\n- Animations use a spring fan, swapped for a plain fade under reduced motion.\n\n## Interaction contract\n\n- **Trigger** is a `button` with `aria-expanded`, `aria-controls`, and\n  `aria-current`; Enter/Space toggle it (native button).\n- **Options** are native `button`s with an `aria-label`; Enter/Space activate.\n- **Escape** closes the fan and returns control to the trigger.\n- Verified by the `KeyboardToggle` story play function (open via trigger, close\n  via Escape).\n\n## Do / don't\n\n- **Do** pass an `ariaLabel` per language (e.g. \"Finnish\"), not just the code.\n- **Do** keep language state in the parent and feed `currentLang` back.\n- **Don't** translate inside the component; labels/aria come from the caller.\n- **Don't** render it as the only nav — it complements, not replaces, navigation.\n\n## Accessibility\n\n- `role=\"group\"` with an `aria-label` (\"Language\").\n- Trigger announces expanded state and current language; options announce their\n  language name.\n- Reduced motion respected; colors inherit theme tokens (light/dark + forced\n  colors safe).\n\n## Design notes\n\n- The \"fan\" is intentional brand motion; it degrades to a fade, never blocking\n  use. Styling is utility-class driven with overridable `*ClassName` props for\n  header vs. floated placements.\n",
+      "spec": "# LanguageSwitcher — spec\n\nCompact locale selector. Molecule, navigation group.\n\n## Intent\n\nLet a visitor switch UI language from a small, header-friendly control that\nshows the current language and reveals the alternatives on demand, without a\nfull dropdown's weight. Used in the site header.\n\n## Purpose\n\nSingle, accessible language control shared across layouts. The parent owns the\nlanguage list and the change handler (i18n lives outside the component); this\nrenders the trigger + fanned options and the open/close behavior.\n\n## API\n\n| Prop               | Type                       | Notes                                   |\n| ------------------ | -------------------------- | --------------------------------------- |\n| `languages`        | `LanguageSwitcherOption[]` | `{ code, label, ariaLabel }` per locale |\n| `currentLang`      | `string`                   | Selected language code                  |\n| `onLanguageChange` | `(code: string) => void`   | Called when an option is chosen         |\n| `className`        | `string`                   | Classes on the `role=group` wrapper     |\n| `*ClassName`       | `string`                   | Style overrides for trigger/options     |\n\n## Behavior\n\n- Collapsed: shows only the current language as the trigger.\n- Expanded: fans out the other locales as buttons; selecting one calls\n  `onLanguageChange` and collapses.\n- Closes on Escape and on outside click.\n- Animations use a spring fan, swapped for a plain fade under reduced motion.\n\n## Interaction contract\n\n- **Trigger** is a `button` with `aria-expanded`, `aria-controls`, and\n  `aria-current`; Enter/Space toggle it (native button).\n- **Options** are native `button`s with an `aria-label`; Enter/Space activate.\n- **Escape** closes the fan and returns control to the trigger.\n- Verified by the `KeyboardToggle` story play function (open via trigger, close\n  via Escape).\n\n## Do / don't\n\n- Do: pass an `ariaLabel` per language (e.g. \"Finnish\"), not just the code.\n- Do: keep language state in the parent and feed `currentLang` back.\n- Don't: translate inside the component; labels and accessible names come from the caller.\n- Don't: render it as the only navigation; it complements rather than replaces site navigation.\n\n## Accessibility\n\n- `role=\"group\"` with an `aria-label` (\"Language\").\n- Trigger announces expanded state and current language; options announce their\n  language name.\n- Reduced motion respected; colors inherit theme tokens (light/dark + forced\n  colors safe).\n\n## Design notes\n\n- The \"fan\" is intentional brand motion; it degrades to a fade, never blocking\n  use. Styling is utility-class driven with overridable `*ClassName` props for\n  header vs. floated placements.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/LanguageSwitcher",
@@ -16810,8 +17043,14 @@
         "variants": {},
         "cvaVariants": {},
         "variantsFnName": null,
-        "useWhen": [],
-        "avoidWhen": [],
+        "useWhen": [
+          "pass an `ariaLabel` per language (e.g. \"Finnish\"), not just the code.",
+          "keep language state in the parent and feed `currentLang` back."
+        ],
+        "avoidWhen": [
+          "translate inside the component; labels and accessible names come from the caller.",
+          "render it as the only navigation; it complements rather than replaces site navigation."
+        ],
         "requiredA11y": [
           "role=group with aria-label",
           "trigger aria-expanded + aria-controls",
@@ -16824,7 +17063,9 @@
           "Space",
           "Escape"
         ],
-        "compositionRules": [],
+        "compositionRules": [
+          "translate inside the component; labels and accessible names come from the caller."
+        ],
         "canonicalExamples": [
           "Default",
           "Playground",
@@ -16832,7 +17073,10 @@
           "ForcedColors"
         ],
         "replacementFor": [],
-        "forbiddenUse": [],
+        "forbiddenUse": [
+          "translate inside the component; labels and accessible names come from the caller.",
+          "render it as the only navigation; it complements rather than replaces site navigation."
+        ],
         "composesWith": [
           "NavLink",
           "Container",
@@ -17207,8 +17451,8 @@
           "Text",
           "Checkbox",
           "TextInput",
-          "Title",
-          "Avatar"
+          "Button",
+          "Title"
         ],
         "prefersOver": [
           "Button with href for body-copy links"
@@ -17729,7 +17973,8 @@
         "props": {
           "items": {
             "optional": false,
-            "type": "React.ReactNode[]"
+            "type": "React.ReactNode[]",
+            "description": "Ordered content rendered as one list item per entry."
           },
           "as": {
             "optional": true,
@@ -17737,11 +17982,13 @@
             "values": [
               "ol",
               "ul"
-            ]
+            ],
+            "description": "Semantic list element."
           },
           "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional class name applied to the list element."
           },
           "size": {
             "optional": true,
@@ -17754,7 +18001,8 @@
               "m",
               "l",
               "xxl"
-            ]
+            ],
+            "description": "Tokenized text size."
           },
           "lineHeight": {
             "optional": true,
@@ -17765,11 +18013,13 @@
               "snug",
               "relaxed",
               "loose"
-            ]
+            ],
+            "description": "Optional tokenized line height."
           },
           "style": {
             "optional": true,
-            "type": "React.CSSProperties"
+            "type": "React.CSSProperties",
+            "description": "Inline style overrides applied after component defaults."
           },
           "listStyleType": {
             "optional": true,
@@ -17786,7 +18036,8 @@
               "lower-roman",
               "upper-roman",
               "dash"
-            ]
+            ],
+            "description": "Native marker style or the custom dash treatment."
           },
           "spacing": {
             "optional": true,
@@ -17795,11 +18046,13 @@
               "normal",
               "relaxed",
               "compact"
-            ]
+            ],
+            "description": "Vertical spacing between items."
           },
           "role": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional ARIA role override for specialized list semantics."
           }
         },
         "propRelationships": [],
@@ -18188,7 +18441,7 @@
           "description": "The brand mark. Monochrome via currentColor so it inherits the surface's ink; square footprint; optionally wraps itself in a home link."
         }
       },
-      "spec": "# Logo — spec\n\nBrand mark for Digitaltableteur. Atom, display group.\n\n## Intent\n\nProvide one canonical, theme-safe Digitaltableteur mark for use across the\nsite (header, footer, loading states, favicons-as-component). It exists so no\nsurface hand-rolls an inline SVG or hardcodes brand color: the mark inherits\n`currentColor` and scales cleanly inside a square box.\n\n## Purpose\n\nSingle source of truth for the DT mark. Renders the canonical vector inline so\nit inherits `currentColor` and scales cleanly. Replaces ad-hoc inline SVGs\n(e.g. the placeholder square previously used in `SiteHeader` / `SiteFooter`).\n\n## API\n\n| Prop         | Type      | Default              | Notes                                                  |\n| ------------ | --------- | -------------------- | ------------------------------------------------------ |\n| `size`       | `number`  | `24`                 | Square render box in px; mark fits inside (no distort) |\n| `animated`   | `boolean` | `false`              | Three-bar hover pulse; disabled under reduced motion   |\n| `badge`      | `boolean` | `false`              | Wrap the mark in the brand lime circle (contrast mark) |\n| `title`      | `string`  | `\"Digitaltableteur\"` | Accessible name; ignored when `decorative`             |\n| `decorative` | `boolean` | `false`              | `aria-hidden`, no title — for redundant placements     |\n| `className`  | `string`  | —                    | Utility/spacing classes                                |\n\n## Behavior\n\n- Monochrome via `currentColor`; color comes from the consumer's text color, so\n  it is theme- and forced-colors-safe (no hardcoded values).\n- `animated` adds the `pulse-1/2/3` keyframes on hover only.\n- `badge` swaps to a filled lime circle (`--logo-background`) behind a contrast\n  mark (`--logo-color`).\n\n## Interaction contract\n\n- **Not interactive.** The mark renders a non-focusable `<svg>`\n  (`focusable=\"false\"`) with no pointer or keyboard handlers. When it needs to\n  act as a link (e.g. header home link), the consumer wraps it in an `<a>` /\n  `Button` and owns focus and the accessible name.\n- `animated` is hover-only decoration and is fully suppressed under\n  `prefers-reduced-motion: reduce`.\n\n## Do / don't\n\n- **Do** let the mark inherit text color; set `color` on the parent to recolor.\n- **Do** pass `decorative` when an adjacent wordmark already names the brand.\n- **Don't** hardcode a fill or wrap the mark in a fixed-color box — that breaks\n  dark theme and forced-colors.\n- **Don't** translate `title`; the brand name is a proper noun.\n- **Don't** add click handlers to `Logo` itself; wrap it in a real link/button.\n\n## Accessibility\n\n- Default: `role=\"img\"` + `<title>`/`aria-label` from `title`.\n- `decorative`: removed from the a11y tree (`aria-hidden`), for cases where an\n  adjacent wordmark already names the brand.\n- The accessible name is a brand proper noun and is not translated.\n- Reduced motion: the hover pulse is disabled via `@media (prefers-reduced-motion: reduce)`.\n\n## Design notes\n\n- The mark is the three-bar \"DI–\" device; the `badge` variant is the lime\n  brand lockup. Both share one viewBox so sizing stays consistent.\n- Forced-colors safety comes from `fill=\"currentColor\"` on every path, which\n  maps to the system `CanvasText` keyword automatically.\n\n## Out of scope\n\n- Wordmark lockup beyond the badge circle remains composition.\n",
+      "spec": "# Logo — spec\n\nBrand mark for Digitaltableteur. Atom, display group.\n\n## Intent\n\nProvide one canonical, theme-safe Digitaltableteur mark for use across the\nsite (header, footer, loading states, favicons-as-component). It exists so no\nsurface hand-rolls an inline SVG or hardcodes brand color: the mark inherits\n`currentColor` and scales cleanly inside a square box.\n\n## Purpose\n\nSingle source of truth for the DT mark. Renders the canonical vector inline so\nit inherits `currentColor` and scales cleanly. Replaces ad-hoc inline SVGs\n(e.g. the placeholder square previously used in `SiteHeader` / `SiteFooter`).\n\n## API\n\n| Prop         | Type      | Default              | Notes                                                  |\n| ------------ | --------- | -------------------- | ------------------------------------------------------ |\n| `size`       | `number`  | `24`                 | Square render box in px; mark fits inside (no distort) |\n| `animated`   | `boolean` | `false`              | Three-bar hover pulse; disabled under reduced motion   |\n| `badge`      | `boolean` | `false`              | Wrap the mark in the brand lime circle (contrast mark) |\n| `title`      | `string`  | `\"Digitaltableteur\"` | Accessible name; ignored when `decorative`             |\n| `decorative` | `boolean` | `false`              | `aria-hidden`, no title — for redundant placements     |\n| `className`  | `string`  | —                    | Utility/spacing classes                                |\n\n## Behavior\n\n- Monochrome via `currentColor`; color comes from the consumer's text color, so\n  it is theme- and forced-colors-safe (no hardcoded values).\n- `animated` adds the `pulse-1/2/3` keyframes on hover only.\n- `badge` swaps to a filled lime circle (`--logo-background`) behind a contrast\n  mark (`--logo-color`).\n\n## Interaction contract\n\n- **Not interactive.** The mark renders a non-focusable `<svg>`\n  (`focusable=\"false\"`) with no pointer or keyboard handlers. When it needs to\n  act as a link (e.g. header home link), the consumer wraps it in an `<a>` /\n  `Button` and owns focus and the accessible name.\n- `animated` is hover-only decoration and is fully suppressed under\n  `prefers-reduced-motion: reduce`.\n\n## Do / don't\n\n- Do: let the mark inherit text color; set `color` on the parent to recolor.\n- Do: pass `decorative` when an adjacent wordmark already names the brand.\n- Don't: hardcode a fill or wrap the mark in a fixed-color box; that breaks\n  dark theme and forced-colors.\n- Don't: translate `title`; the brand name is a proper noun.\n- Don't: add click handlers to `Logo` itself; wrap it in a real link or button.\n\n## Accessibility\n\n- Default: `role=\"img\"` + `<title>`/`aria-label` from `title`.\n- `decorative`: removed from the a11y tree (`aria-hidden`), for cases where an\n  adjacent wordmark already names the brand.\n- The accessible name is a brand proper noun and is not translated.\n- Reduced motion: the hover pulse is disabled via `@media (prefers-reduced-motion: reduce)`.\n\n## Design notes\n\n- The mark is the three-bar \"DI–\" device; the `badge` variant is the lime\n  brand lockup. Both share one viewBox so sizing stays consistent.\n- Forced-colors safety comes from `fill=\"currentColor\"` on every path, which\n  maps to the system `CanvasText` keyword automatically.\n\n## Out of scope\n\n- Wordmark lockup beyond the badge circle remains composition.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Logo",
@@ -18250,8 +18503,15 @@
         "variants": {},
         "cvaVariants": {},
         "variantsFnName": null,
-        "useWhen": [],
-        "avoidWhen": [],
+        "useWhen": [
+          "let the mark inherit text color; set `color` on the parent to recolor.",
+          "pass `decorative` when an adjacent wordmark already names the brand."
+        ],
+        "avoidWhen": [
+          "hardcode a fill or wrap the mark in a fixed-color box; that breaks",
+          "translate `title`; the brand name is a proper noun.",
+          "add click handlers to `Logo` itself; wrap it in a real link or button."
+        ],
         "requiredA11y": [
           "accessible name via title unless decorative",
           "decorative renders aria-hidden"
@@ -18265,7 +18525,11 @@
           "ForcedColors"
         ],
         "replacementFor": [],
-        "forbiddenUse": [],
+        "forbiddenUse": [
+          "hardcode a fill or wrap the mark in a fixed-color box; that breaks",
+          "translate `title`; the brand name is a proper noun.",
+          "add click handlers to `Logo` itself; wrap it in a real link or button."
+        ],
         "composesWith": [
           "NavLink",
           "Container",
@@ -19107,6 +19371,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/ServerArticleMain.tsx",
             "since": "2026-06-04"
           },
@@ -19143,11 +19412,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -25218,7 +25482,7 @@
         "tier": "atom",
         "group": "form",
         "status": "stable",
-        "description": "Native select with label, options, error state, and size tokens.",
+        "description": "Native dropdown select with labelled options, error state, and size tokens.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=383-23",
         "radixPrimitive": null,
         "element": "select",
@@ -25363,6 +25627,7 @@
         ],
         "displayName": "Select",
         "keywords": [
+          "dropdown select options",
           "select",
           "dropdown",
           "native select",
@@ -25652,7 +25917,20 @@
         ],
         "dense": "Card as one selectable option; grouped via SelectableCardGroup into single (radio) or multiple (checkbox) sets; whole card is a label over a hidden native input; controlled or uncontrolled.",
         "schemaVersion": 2,
-        "displayName": "SelectableCard"
+        "displayName": "SelectableCard",
+        "usage": {
+          "description": "Use SelectableCardGroup for visually prominent form choices, with SelectableCard children representing radio-style exclusive options or checkbox-style multiple options. The group owns the legend, value state, and error relationship.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Write the group legend as the question and keep each card title short and scannable."
+            },
+            {
+              "guidance": false,
+              "description": "Do not nest buttons or links inside a selectable card; use Card for action-oriented content."
+            }
+          ]
+        }
       },
       "spec": "# SelectableCard\n\n## Intent\nTurn a Card into a selectable option so a set of rich choices (plan pickers,\nonboarding options, add-ons, settings tiles) reads as cards rather than bare\nradios or checkboxes. `SelectableCardGroup` owns the selection; `SelectableCard`\nis one option in it.\n\n## Interaction contract\n- Keyboard: Tab moves focus into the group; Arrow keys move within a single-select\n  set (native radio behavior); Space toggles the focused option.\n- Pointer: the whole card is the hit area — clicking anywhere toggles the option.\n- Screen readers: the group is a fieldset announced by its legend; each option is\n  a native radio (single) or checkbox (multiple) whose accessible name is the\n  card content; errors announce via role=alert and set aria-invalid on the group.\n\n## Do / don't\n- Do: write the legend as the question; keep each card's title short and scannable.\n- Do: use `type=\"single\"` for an exclusive choice, `type=\"multiple\"` for add-ons.\n- Don't: nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.\n- Don't: use it for navigation; selecting must not commit or route on click.\n\n## Design notes\n- Tokens: `--color-primary` (selected ring + indicator), `--color-focus-ring`\n  (focus), `--color-border` / `--color-border-light` (rest/hover), `--color-surface`;\n  spacing from `--space-internal-*`. No hardcoded colors.\n- The selected state is shown by a ring on the surface plus an indicator (radio\n  dot / checkbox check) drawn in `--color-primary`, with a forced-colors mapping\n  to `Highlight`.\n- Figma: TODO (parity build; no Figma node yet).\n\n## Promotion notes\nParity build (Astryx `SelectableCard`). Ships at alpha with the WIP badge. Do not\npromote past alpha/beta without a documented production consumer, AT snapshots,\nand forced-colors + light/dark verification.\n",
       "documentationDebt": false,
@@ -29338,7 +29616,7 @@
         "name": "Switch",
         "tier": "atom",
         "group": "form",
-        "status": "beta",
+        "status": "stable",
         "description": "Toggle control with label placement, loading, and helper text.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=373-14",
         "radixPrimitive": null,
@@ -29376,8 +29654,10 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
-          "forcedColorsVerified": true
+          "reviewedNote": "2026-07-16 beta->stable: Switch replaced the bespoke GDPR category toggle in CookieConsent; controlled/uncontrolled exclusivity is executable in SwitchProps, and required-story AT plus Chromium forced-colors evidence was recaptured.",
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -29391,24 +29671,34 @@
           "spacing": []
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "checked": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Checked state for controlled use. Mutually exclusive with defaultChecked."
           },
           "defaultChecked": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean | undefined",
+            "description": "Initial checked state for uncontrolled use. Mutually exclusive with checked."
           },
           "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables interaction and dims the control."
           },
           "loading": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Shows a loading spinner and blocks interaction; sets aria-busy."
           },
           "size": {
             "optional": true,
@@ -29417,15 +29707,18 @@
               "sm",
               "md",
               "lg"
-            ]
+            ],
+            "description": "Control size."
           },
           "onCheckedChange": {
             "optional": true,
-            "type": "(checked: boolean) => void"
+            "type": "(checked: boolean) => void",
+            "description": "Called with the next checked value when the switch is toggled."
           },
           "label": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Visible label."
           },
           "labelPlacement": {
             "optional": true,
@@ -29434,17 +29727,24 @@
               "left",
               "right",
               "top"
-            ]
+            ],
+            "description": "Where the label sits relative to the control."
           },
           "helperText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Supporting text rendered beneath the control."
           },
           "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Error message beneath the control; sets aria-invalid and aria-describedby."
           }
         },
+        "composesWith": [
+          "Label",
+          "HelperText"
+        ],
         "forbiddenUse": [
           "use Switch inside a form whose values are submitted in a batch.",
           "rely on colour alone to convey state — the position of the"
@@ -29520,11 +29820,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Switch",
-        "importCount": 1,
+        "importCount": 2,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 1,
+        "componentImportCount": 2,
         "evidence": [
+          {
+            "path": "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Switch",
+            "context": "component"
+          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -29537,16 +29843,6 @@
         "preferredImport": "@dt/Switch",
         "intent": "Render a two-state setting toggle with the right semantic role for \"on/off\" controls. Switch is distinct from Checkbox: it implies \"applied immediately\" and is announced by screen readers as a switch, not a checkbox.",
         "props": {
-          "checked": {
-            "optional": true,
-            "type": "boolean",
-            "description": "Checked state (controlled)."
-          },
-          "defaultChecked": {
-            "optional": true,
-            "type": "boolean",
-            "description": "Initial checked state for uncontrolled use."
-          },
           "disabled": {
             "optional": true,
             "type": "boolean",
@@ -29596,9 +29892,28 @@
             "optional": true,
             "type": "string",
             "description": "Error message beneath the control; sets aria-invalid and aria-describedby."
+          },
+          "defaultChecked": {
+            "optional": true,
+            "type": "boolean | undefined",
+            "description": "Initial checked state for uncontrolled use. Mutually exclusive with `checked`."
+          },
+          "checked": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Checked state for controlled use. Mutually exclusive with `defaultChecked`."
           }
         },
-        "propRelationships": [],
+        "propRelationships": [
+          {
+            "kind": "mutuallyExclusive",
+            "props": [
+              "checked",
+              "defaultChecked"
+            ],
+            "reason": "`checked` and `defaultChecked` never coexist in a valid SwitchProps branch."
+          }
+        ],
         "variants": {
           "size": {
             "values": [
@@ -29641,7 +29956,12 @@
           "use Switch inside a form whose values are submitted in a batch.",
           "rely on colour alone to convey state — the position of the"
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Modal",
+          "Button",
+          "Link",
+          "Badge"
+        ],
         "prefersOver": [],
         "declaredPropCount": 10
       }
@@ -34397,7 +34717,7 @@
         "name": "WorkNav",
         "tier": "molecule",
         "group": "navigation",
-        "status": "beta",
+        "status": "stable",
         "description": "Work section sub-navigation: a back-to-index action plus previous/next controls for stepping through the portfolio case studies.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1027-2672",
         "radixPrimitive": null,
@@ -34405,7 +34725,23 @@
         "props": {
           "currentPath": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Active route used to compute previous and next state; defaults to the navigation runtime pathname."
+          },
+          "pages": {
+            "optional": true,
+            "type": "readonly WorkNavPage[]",
+            "description": "Ordered case-study paths. Defaults to the bundled legacy sequence."
+          },
+          "onNavigate": {
+            "optional": true,
+            "type": "(path: string) => void",
+            "description": "Host navigation callback. Defaults to the configured navigation runtime."
+          },
+          "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Disables every action while host navigation is pending."
           }
         },
         "variants": {},
@@ -34424,18 +34760,86 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all 6 stories; 4-mode AT snapshots captured and compare-clean (15 yamls). Rendered in a nav landmark labelled via workNavLabel (en/fi/sv). Composes verified beta Button/Icon primitives; no own animation so reduced-motion is N/A.",
-          "forcedColorsVerified": true
+          "reviewedNote": "2026-07-16 beta->stable: production NextWorkNav now composes WorkNav with the live project registry while retaining prefetch and transition deduplication; required-story AT snapshots and Chromium forced-colors were recaptured.",
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [],
           "spacing": []
         },
         "lightDarkVerified": true,
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/dsharp-design-system/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/finnish-transport-agency/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/garage-junction/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/helsinki-design-system/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/illustrations/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/intrum/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/knobsmith-audio/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/llm-component-schema/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/new-things-co/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/NextWorkNav.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/project-spine/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/raw-view/page.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "composesWith": [
           "Button",
           "Icon"
+        ],
+        "forbiddenUse": [
+          "Hardcode a second project sequence in an application wrapper; pass the live ordered pages collection.",
+          "Use WorkNav outside portfolio case-study chrome."
         ],
         "displayName": "WorkNav",
         "keywords": [
@@ -34447,18 +34851,50 @@
         ],
         "dense": "Work-section sub-navigation: back-to-index plus prev/next stepping for portfolio case-study pages",
         "usage": {
-          "description": "Sub-navigation for the work section. Renders a back-to-work action and previous/next controls that step through the case-study sequence, disabling the edges. Portfolio chrome; site-wide nav lives in SiteHeader."
+          "description": "Sub-navigation for the work section. Renders a back-to-work action and previous/next controls that step through the case-study sequence, disabling the edges. Portfolio chrome; site-wide nav lives in SiteHeader.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Pass the ordered project registry so navigation stays synchronized with published work."
+            },
+            {
+              "guidance": true,
+              "description": "Use onNavigate when the host needs prefetching, transitions, or navigation deduplication."
+            },
+            {
+              "guidance": false,
+              "description": "Do not infer a next project for an unknown route; both adjacent controls intentionally disable."
+            }
+          ],
+          "anatomy": [
+            {
+              "name": "Back action",
+              "required": true,
+              "description": "Returns to the work index."
+            },
+            {
+              "name": "Adjacent actions",
+              "required": true,
+              "description": "Previous and next case-study controls with edge-state disabling."
+            }
+          ]
         }
       },
       "spec": "# WorkNav\n\n## Intent\nWork section sub-navigation: a back-to-index action plus previous/next controls for stepping through the portfolio case studies.\n\n## Interaction contract\n- Keyboard: inherit from composed @dt/Button primitives (native button focus/activation)\n- Pointer: standard button targets; disabled at the sequence edges\n- Screen readers: rendered inside a `nav` landmark labelled via `aria-label` (workNavLabel)\n\n## Do / don't\n- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface\n- Do: pass `currentPath` in stories/tests to drive the prev/next disabled state\n- Don't: invent parallel primitives inside this folder\n- Don't: use this for site-wide navigation (that is SiteHeader)\n\n## Design notes\n- Tokens: inherit from child components (Button, Icon)\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1027-2672\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/WorkNav",
-        "importCount": 2,
-        "productionImportCount": 1,
+        "importCount": 3,
+        "productionImportCount": 2,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "app/work/NextWorkNav.tsx",
+            "importKind": "relative",
+            "importPath": "@/nextjs-app/shared/components/WorkNav/WorkNav",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
             "importKind": "alias",
@@ -34481,6 +34917,21 @@
             "optional": true,
             "type": "string",
             "description": "Active route used to compute the prev/next disabled state. Defaults to the\ncurrent pathname from the router; stories and tests override it to show a\ngiven position in the work sequence."
+          },
+          "pages": {
+            "optional": true,
+            "type": "readonly WorkNavPage[]",
+            "description": "Ordered case-study paths. Defaults to the bundled legacy sequence."
+          },
+          "onNavigate": {
+            "optional": true,
+            "type": "(path: string) => void",
+            "description": "Host navigation callback. Defaults to the configured navigation runtime."
+          },
+          "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Disables every action while host navigation is pending."
           }
         },
         "propRelationships": [],
@@ -34515,7 +34966,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 1
+        "declaredPropCount": 4
       }
     },
     {

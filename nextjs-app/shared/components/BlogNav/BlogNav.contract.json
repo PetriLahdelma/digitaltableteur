@@ -3,7 +3,7 @@
     "name": "BlogNav",
     "tier": "molecule",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Blog article sub-navigation: a back-to-articles action plus previous/next controls for stepping through the article sequence.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1029-101",
     "radixPrimitive": null,
@@ -11,7 +11,23 @@
     "props": {
         "currentPath": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Active route used to compute previous and next state; defaults to the navigation runtime pathname."
+        },
+        "pages": {
+            "optional": true,
+            "type": "readonly BlogNavPage[]",
+            "description": "Ordered article paths. Defaults to the bundled legacy sequence."
+        },
+        "onNavigate": {
+            "optional": true,
+            "type": "(path: string) => void",
+            "description": "Host navigation callback. Defaults to the configured navigation runtime."
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Disables every action while host navigation is pending."
         }
     },
     "variants": {},
@@ -30,18 +46,41 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-06 alpha->beta: axe clean via test-storybook a11y test:error across base + light + dark + forced-colors on all stories; 4-mode AT snapshots captured and compare-clean. Rendered in a nav landmark labelled via blogNavLabel (en/fi/sv); labels collapse below 768px but each button keeps its Icon aria-label. Composes verified beta Button/Icon primitives; no own animation.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-16 beta->stable: production NextBlogNav now composes BlogNav with live post metadata; required-story AT snapshots and Chromium forced-colors were recaptured after the host-driven pages/navigation API landed.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
     "lightDarkVerified": true,
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ClientArticleShell.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/NextBlogNav.tsx",
+            "since": "2026-06-04"
+        }
+    ],
     "schemaVersion": 2,
     "composesWith": [
         "Button",
         "Icon"
+    ],
+    "forbiddenUse": [
+        "Hardcode a second article sequence in an application wrapper; pass the live ordered pages collection.",
+        "Use BlogNav as site-wide navigation; use SiteHeader or NavLink instead."
     ],
     "displayName": "BlogNav",
     "keywords": [
@@ -53,6 +92,32 @@
     ],
     "dense": "Blog article sub-navigation: back-to-articles plus prev/next stepping for article pages",
     "usage": {
-        "description": "Sub-navigation for blog articles. Renders a back-to-articles action and previous/next controls that step through the article sequence, disabling the edges (and both when the route is not an article). Blog chrome; for site-wide nav use SiteHeader/NavLink."
+        "description": "Sub-navigation for blog articles. Renders a back-to-articles action and previous/next controls that step through the article sequence, disabling the edges (and both when the route is not an article). Blog chrome; for site-wide nav use SiteHeader/NavLink.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Pass the published article sequence from the host's content manifest."
+            },
+            {
+                "guidance": true,
+                "description": "Set disabled during pending host navigation to prevent duplicate requests."
+            },
+            {
+                "guidance": false,
+                "description": "Do not show adjacent controls when the current route is absent from pages; both controls intentionally disable."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Back action",
+                "required": true,
+                "description": "Returns to the blog index."
+            },
+            {
+                "name": "Adjacent actions",
+                "required": true,
+                "description": "Previous and next article controls with edge-state disabling."
+            }
+        ]
     }
 }

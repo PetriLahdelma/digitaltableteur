@@ -5490,7 +5490,7 @@
           ],
           "dtSourceComponent": "Switch",
           "dtBackend": "native",
-          "dtContractStatus": "beta",
+          "dtContractStatus": "stable",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },
@@ -9463,6 +9463,564 @@
             }
           ],
           "dtSourceComponent": "FileUpload",
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtCategoryFilterElement",
+          "description": "Controlled category filter rendered as a group of native toggle buttons.",
+          "customElement": true,
+          "tagName": "dt-category-filter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "categories",
+              "type": {
+                "text": "import(\"../native/category-filter\").DtCategoryOption[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "activeCategory",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "description": "Accessible filter-group label.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "categories",
+              "fieldName": "categories",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "active-category",
+              "fieldName": "activeCategory",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "description": "Accessible filter-group label.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "category-change",
+              "description": "Dispatched with detail.category when a category is requested.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "CategoryFilter",
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtGalleryElement",
+          "description": "Responsive image gallery with captions and keyboard-focusable items.",
+          "customElement": true,
+          "tagName": "dt-gallery",
+          "members": [
+            {
+              "kind": "field",
+              "name": "images",
+              "type": {
+                "text": "import(\"../native/gallery\").DtGalleryImage[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "minColumnWidth",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "gutter",
+              "type": {
+                "text": "number"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "images",
+              "fieldName": "images",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "min-column-width",
+              "fieldName": "minColumnWidth",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "gutter",
+              "fieldName": "gutter",
+              "type": {
+                "text": "number"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Gallery",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtReadingProgressElement",
+          "description": "Fixed reading-progress indicator tracking a host element or selector.",
+          "customElement": true,
+          "tagName": "dt-reading-progress",
+          "members": [
+            {
+              "kind": "field",
+              "name": "target",
+              "description": "Property-only HTMLElement to track.",
+              "type": {
+                "text": "HTMLElement | null"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "targetSelector",
+              "description": "Document selector for the content to track.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showPercentage",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "description": "Progressbar accessible name.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "target-selector",
+              "fieldName": "targetSelector",
+              "description": "Document selector for the content to track.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-percentage",
+              "fieldName": "showPercentage",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "description": "Progressbar accessible name.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "ReadingProgress",
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtSelectableCardElement",
+          "description": "Native radio- or checkbox-style selectable card option.",
+          "customElement": true,
+          "tagName": "dt-selectable-card",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selectionType",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Card content."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "selected",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "selection-type",
+              "fieldName": "selectionType",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "selection-request",
+              "description": "Dispatched when standalone selection changes or a group receives an option request.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "SelectableCard",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtSelectableCardGroupElement",
+          "description": "Selection owner for native selectable-card options.",
+          "customElement": true,
+          "tagName": "dt-selectable-card-group",
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "legend",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "description": "Controlled group value.",
+              "type": {
+                "text": "string | string[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "description": "Initial uncontrolled group value.",
+              "type": {
+                "text": "string | string[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "helperText",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "dt-selectable-card options."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "fieldName": "type",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "legend",
+              "fieldName": "legend",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "description": "Controlled group value.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "description": "Initial uncontrolled group value.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "orientation",
+              "fieldName": "orientation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after selection changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "SelectableCardGroup",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtValueCardElement",
+          "description": "Compact value proposition card with icon, title, and description.",
+          "customElement": true,
+          "tagName": "dt-value-card",
+          "members": [
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "icon",
+              "description": "Icon or short visual mark."
+            },
+            {
+              "name": "",
+              "description": "Optional supplemental content."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "fieldName": "title",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "ValueCard",
           "dtBackend": "native",
           "dtContractStatus": "stable",
           "dtImplementationStatus": "beta",

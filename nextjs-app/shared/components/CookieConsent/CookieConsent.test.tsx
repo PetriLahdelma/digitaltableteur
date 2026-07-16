@@ -3,7 +3,6 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { vi, beforeEach, describe, it, expect } from "vitest";
 import CookieConsent from "@dt/CookieConsent";
 import { CookieConsentProvider } from "../../lib/cookieConsent";
-import styles from "./CookieConsent.module.css";
 
 const mockT = vi.fn((key: string) => key);
 const mockI18n = { language: "en" };
@@ -113,9 +112,7 @@ describe("CookieConsent", () => {
     expect(
       screen.getByRole("heading", { name: /cookie consent/i }),
     ).toBeInTheDocument();
-    expect(
-      document.querySelector(`.${styles.slider}[aria-hidden="true"]`),
-    ).toBeInTheDocument();
+    expect(screen.getAllByRole("switch")).toHaveLength(4);
   });
 
   it("handles accept all button click", () => {
@@ -124,12 +121,10 @@ describe("CookieConsent", () => {
         <CookieConsent />
       </CookieConsentProvider>,
     );
-    fireEvent.click(
-      screen.getByRole("button", { name: /accept all/i }),
-    );
+    fireEvent.click(screen.getByRole("button", { name: /accept all/i }));
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
       "dt-cookie-consent",
-      expect.stringContaining("\"analytics\":true"),
+      expect.stringContaining('"analytics":true'),
     );
   });
 
@@ -146,7 +141,7 @@ describe("CookieConsent", () => {
     );
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
       "dt-cookie-consent",
-      expect.stringContaining("\"essential\":true"),
+      expect.stringContaining('"essential":true'),
     );
   });
 

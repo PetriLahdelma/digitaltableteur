@@ -7,6 +7,7 @@ import { DtBadgeElement } from "./native/badge";
 import { DtButtonElement } from "./native/button";
 import { DtButtonGroupElement } from "./native/button-group";
 import { DtCardElement } from "./native/card";
+import { DtCategoryFilterElement } from "./native/category-filter";
 import { DtCenterElement } from "./native/center";
 import { DtCodeBlockWindowElement } from "./native/code-block-window";
 import { DtCodeSnippetElement } from "./native/code-snippet";
@@ -22,6 +23,7 @@ import { DtFileUploadElement } from "./native/file-upload";
 import { DtFilterChipElement } from "./native/filter-chip";
 import { DtFlexBoxElement } from "./native/flex-box";
 import { DtGridElement } from "./native/grid";
+import { DtGalleryElement } from "./native/gallery";
 import { DtGroupLabelElement } from "./native/group-label";
 import { DtIconElement } from "./native/icon";
 import { DtIconButtonElement } from "./native/icon-button";
@@ -41,11 +43,16 @@ import { DtNavMenuListElement } from "./native/nav-menu-list";
 import { DtPhoneInputElement } from "./native/phone-input";
 import { DtPaginationElement } from "./native/pagination";
 import { DtProgressElement } from "./native/progress";
+import { DtReadingProgressElement } from "./native/reading-progress";
 import { DtSkipLinkElement } from "./native/skip-link";
 import { DtSpinnerElement } from "./native/spinner";
 import { DtSpacerElement } from "./native/spacer";
 import { DtStatusDotElement } from "./native/status-dot";
 import { DtSectionElement } from "./native/section";
+import {
+  DtSelectableCardElement,
+  DtSelectableCardGroupElement,
+} from "./native/selectable-card";
 import { DtSegmentedControlElement } from "./native/segmented-control";
 import { DtSplitButtonElement } from "./native/split-button";
 import { DtStackElement } from "./native/stack";
@@ -67,6 +74,7 @@ import { DtToastElement } from "./native/toast";
 import { DtToastStackElement } from "./native/toast-stack";
 import { DtTimestampElement } from "./native/timestamp";
 import { DtVisuallyHiddenElement } from "./native/visually-hidden";
+import { DtValueCardElement } from "./native/value-card";
 import { DtBreadcrumbElement } from "./native/breadcrumb";
 import { defineElementSet, type ElementDefinition } from "./registry";
 
@@ -116,6 +124,12 @@ export type {
   DtCardTitleTag,
   DtCardVariant,
 } from "./native/card";
+export { DtCategoryFilterElement } from "./native/category-filter";
+export type {
+  DtCategoryFilterSize,
+  DtCategoryFilterVariant,
+  DtCategoryOption,
+} from "./native/category-filter";
 export { DtCodeBlockWindowElement } from "./native/code-block-window";
 export { DtCodeSnippetElement } from "./native/code-snippet";
 export type {
@@ -177,6 +191,8 @@ export type {
   DtFlexBoxWrap,
 } from "./native/flex-box";
 export { DtGridElement } from "./native/grid";
+export { DtGalleryElement } from "./native/gallery";
+export type { DtGalleryImage } from "./native/gallery";
 export { DtGroupLabelElement } from "./native/group-label";
 export { DtIconElement } from "./native/icon";
 export type { DtIconFlip, DtIconSize, DtIconWeight } from "./native/icon";
@@ -229,7 +245,10 @@ export type {
   DtPhoneInputCountry,
   DtPhoneInputValue,
 } from "./native/phone-input";
-export { DtPaginationElement, generatePaginationRange } from "./native/pagination";
+export {
+  DtPaginationElement,
+  generatePaginationRange,
+} from "./native/pagination";
 export type { DtPaginationPage } from "./native/pagination";
 export { DtBreadcrumbElement, computeLeadingCount } from "./native/breadcrumb";
 export type {
@@ -238,6 +257,7 @@ export type {
 } from "./native/breadcrumb";
 export { DtProgressElement } from "./native/progress";
 export type { DtProgressSize, DtProgressState } from "./native/progress";
+export { DtReadingProgressElement } from "./native/reading-progress";
 export { DtSpinnerElement } from "./native/spinner";
 export type { DtSpinnerSize } from "./native/spinner";
 export { DtSpacerElement } from "./native/spacer";
@@ -247,6 +267,14 @@ export { DtStatusDotElement } from "./native/status-dot";
 export type { DtStatusDotSize, DtStatusDotTone } from "./native/status-dot";
 export { DtSectionElement } from "./native/section";
 export type { DtSectionBackground, DtSectionSpacing } from "./native/section";
+export {
+  DtSelectableCardElement,
+  DtSelectableCardGroupElement,
+} from "./native/selectable-card";
+export type {
+  DtSelectableCardOrientation,
+  DtSelectableCardSelectionType,
+} from "./native/selectable-card";
 export { DtSegmentedControlElement } from "./native/segmented-control";
 export type {
   DtSegmentedControlItem,
@@ -306,11 +334,7 @@ export type {
 export { DtTooltipElement } from "./native/tooltip";
 export type { DtTooltipPlacement } from "./native/tooltip";
 export { DtToastElement } from "./native/toast";
-export type {
-  DtToastPosition,
-  DtToastSize,
-  DtToastTone,
-} from "./native/toast";
+export type { DtToastPosition, DtToastSize, DtToastTone } from "./native/toast";
 export { DtToastStackElement } from "./native/toast-stack";
 export type {
   DtToastStackItem,
@@ -330,6 +354,8 @@ export type {
 } from "./native/timestamp";
 export { DtVisuallyHiddenElement } from "./native/visually-hidden";
 export type { DtVisuallyHiddenTag } from "./native/visually-hidden";
+export { DtValueCardElement } from "./native/value-card";
+export type { DtValueCardVariant } from "./native/value-card";
 
 export const nativeElementDefinitions = [
   ["dt-icon", DtIconElement],
@@ -337,6 +363,7 @@ export const nativeElementDefinitions = [
   ["dt-icon-button", DtIconButtonElement],
   ["dt-button-group", DtButtonGroupElement],
   ["dt-filter-chip", DtFilterChipElement],
+  ["dt-category-filter", DtCategoryFilterElement],
   ["dt-command-palette", DtCommandPaletteElement],
   ["dt-breadcrumb", DtBreadcrumbElement],
   ["dt-pagination", DtPaginationElement],
@@ -355,6 +382,7 @@ export const nativeElementDefinitions = [
   ["dt-display", DtDisplayElement],
   ["dt-spinner", DtSpinnerElement],
   ["dt-progress", DtProgressElement],
+  ["dt-reading-progress", DtReadingProgressElement],
   ["dt-alert-banner", DtAlertBannerElement],
   ["dt-text", DtTextElement],
   ["dt-title", DtTitleElement],
@@ -367,8 +395,12 @@ export const nativeElementDefinitions = [
   ["dt-stack", DtStackElement],
   ["dt-flex-box", DtFlexBoxElement],
   ["dt-grid", DtGridElement],
+  ["dt-gallery", DtGalleryElement],
   ["dt-mac-window-frame", DtMacWindowFrameElement],
   ["dt-card", DtCardElement],
+  ["dt-selectable-card", DtSelectableCardElement],
+  ["dt-selectable-card-group", DtSelectableCardGroupElement],
+  ["dt-value-card", DtValueCardElement],
   ["dt-center", DtCenterElement],
   ["dt-container", DtContainerElement],
   ["dt-spacer", DtSpacerElement],

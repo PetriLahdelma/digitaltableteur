@@ -160,5 +160,18 @@
     "forbiddenUse": [
         "use for navigation between panels (that is Tabs).",
         "nest interactive content inside the label."
-    ]
+    ],
+    "usage": {
+        "description": "Use FilterChip inside a labelled single-select filter group when a compact option must expose its active state with aria-pressed. Keep one chip pressed and use count for result totals so the accessible name stays synchronized.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Keep exactly one chip pressed in a single-select filter group."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use FilterChip as navigation between content panels; use Tabs."
+            }
+        ]
+    }
 }

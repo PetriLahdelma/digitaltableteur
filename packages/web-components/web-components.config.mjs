@@ -2331,6 +2331,161 @@ const elementDefinitions = [
       },
     ],
   },
+  {
+    tagName: "dt-category-filter",
+    sourceComponent: "CategoryFilter",
+    contract: "CategoryFilter",
+    defaultBackend: "native",
+    nativeClassName: "DtCategoryFilterElement",
+    description:
+      "Controlled category filter rendered as a group of native toggle buttons.",
+    storyParity: storyParity(),
+    props: [
+      {
+        ...stringProp("categories"),
+        propertyType: String.raw`import("../native/category-filter").DtCategoryOption[]`,
+      },
+      stringProp("activeCategory"),
+      stringProp("size"),
+      stringProp("variant"),
+      nativeProp("ariaLabel", "string", "Accessible filter-group label.", {
+        attributeName: "aria-label",
+      }),
+    ],
+    events: [
+      {
+        callbackProp: "onCategoryChange",
+        name: "category-change",
+        description:
+          "Dispatched with detail.category when a category is requested.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-gallery",
+    sourceComponent: "Gallery",
+    contract: "Gallery",
+    defaultBackend: "native",
+    nativeClassName: "DtGalleryElement",
+    description:
+      "Responsive image gallery with captions and keyboard-focusable items.",
+    storyParity: storyParity(),
+    props: [
+      {
+        ...stringProp("images"),
+        propertyType: String.raw`import("../native/gallery").DtGalleryImage[]`,
+      },
+      numberProp("minColumnWidth"),
+      numberProp("gutter"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-reading-progress",
+    sourceComponent: "ReadingProgress",
+    contract: "ReadingProgress",
+    defaultBackend: "native",
+    nativeClassName: "DtReadingProgressElement",
+    description:
+      "Fixed reading-progress indicator tracking a host element or selector.",
+    storyParity: storyParity(),
+    props: [
+      nativeProp("target", "string", "Property-only HTMLElement to track.", {
+        propertyType: "HTMLElement | null",
+        propertyOnly: true,
+      }),
+      nativeProp(
+        "targetSelector",
+        "string",
+        "Document selector for the content to track.",
+      ),
+      booleanProp("showPercentage"),
+      nativeProp("ariaLabel", "string", "Progressbar accessible name.", {
+        attributeName: "aria-label",
+      }),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-selectable-card",
+    sourceComponent: "SelectableCard",
+    contract: "SelectableCard",
+    defaultBackend: "native",
+    nativeClassName: "DtSelectableCardElement",
+    description: "Native radio- or checkbox-style selectable card option.",
+    storyParity: storyParity(),
+    slots: [slot("", "Card content.")],
+    props: [
+      stringProp("value"),
+      booleanProp("selected"),
+      booleanProp("disabled"),
+      nativeProp("selectionType", "string"),
+      nativeProp("name", "string"),
+    ],
+    events: [
+      {
+        callbackProp: "onSelectedChange",
+        name: "selection-request",
+        description:
+          "Dispatched when standalone selection changes or a group receives an option request.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-selectable-card-group",
+    sourceComponent: "SelectableCardGroup",
+    contract: "SelectableCard",
+    defaultBackend: "native",
+    nativeClassName: "DtSelectableCardGroupElement",
+    description: "Selection owner for native selectable-card options.",
+    storyParity: storyParity(),
+    slots: [slot("", "dt-selectable-card options.")],
+    props: [
+      nativeProp("type", "string"),
+      nativeProp("legend", "string"),
+      nativeProp("name", "string"),
+      nativeProp("value", "string", "Controlled group value.", {
+        propertyType: "string | string[]",
+      }),
+      nativeProp(
+        "defaultValue",
+        "string",
+        "Initial uncontrolled group value.",
+        { propertyType: "string | string[]" },
+      ),
+      nativeProp("orientation", "string"),
+      nativeProp("disabled", "boolean"),
+      nativeProp("error", "string"),
+      nativeProp("helperText", "string"),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "value-change",
+        description: "Dispatched with detail.value after selection changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-value-card",
+    sourceComponent: "ValueCard",
+    contract: "ValueCard",
+    defaultBackend: "native",
+    nativeClassName: "DtValueCardElement",
+    description:
+      "Compact value proposition card with icon, title, and description.",
+    storyParity: storyParity(),
+    slots: [
+      slot("icon", "Icon or short visual mark."),
+      slot("", "Optional supplemental content."),
+    ],
+    props: [
+      stringProp("title"),
+      stringProp("description"),
+      stringProp("variant"),
+    ],
+    events: [],
+  },
 ];
 
 /**

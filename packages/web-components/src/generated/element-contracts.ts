@@ -746,6 +746,53 @@ export type DtFileUploadElementContract = HTMLElement & {
   inheritedDisabled?: boolean;
 };
 
+export type DtCategoryFilterElementContract = HTMLElement & {
+  categories?: import("../native/category-filter").DtCategoryOption[];
+  activeCategory?: string;
+  size?: string;
+  variant?: string;
+  ariaLabel?: string;
+};
+
+export type DtGalleryElementContract = HTMLElement & {
+  images?: import("../native/gallery").DtGalleryImage[];
+  minColumnWidth?: number;
+  gutter?: number;
+};
+
+export type DtReadingProgressElementContract = HTMLElement & {
+  target?: HTMLElement | null;
+  targetSelector?: string;
+  showPercentage?: boolean;
+  ariaLabel?: string;
+};
+
+export type DtSelectableCardElementContract = HTMLElement & {
+  value?: string;
+  selected?: boolean;
+  disabled?: boolean;
+  selectionType?: string;
+  name?: string;
+};
+
+export type DtSelectableCardGroupElementContract = HTMLElement & {
+  type?: string;
+  legend?: string;
+  name?: string;
+  value?: string | string[];
+  defaultValue?: string | string[];
+  orientation?: string;
+  disabled?: boolean;
+  error?: string;
+  helperText?: string;
+};
+
+export type DtValueCardElementContract = HTMLElement & {
+  title?: string;
+  description?: string;
+  variant?: string;
+};
+
 export const elementMigrationManifest = [
   { tagName: "dt-button", sourceComponent: "Button", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-badge", sourceComponent: "Badge", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
@@ -791,7 +838,7 @@ export const elementMigrationManifest = [
   { tagName: "dt-kbd", sourceComponent: "Kbd", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-skeleton", sourceComponent: "Skeleton", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-visually-hidden", sourceComponent: "VisuallyHidden", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
-  { tagName: "dt-switch", sourceComponent: "Switch", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-switch", sourceComponent: "Switch", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-modal", sourceComponent: "Modal", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-tooltip", sourceComponent: "Tooltip", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-menu", sourceComponent: "Menu", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
@@ -817,6 +864,12 @@ export const elementMigrationManifest = [
   { tagName: "dt-group-label", sourceComponent: "GroupLabel", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-mac-window-frame", sourceComponent: "MacWindowFrame", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-file-upload", sourceComponent: "FileUpload", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-category-filter", sourceComponent: "CategoryFilter", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-gallery", sourceComponent: "Gallery", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-reading-progress", sourceComponent: "ReadingProgress", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-selectable-card", sourceComponent: "SelectableCard", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-selectable-card-group", sourceComponent: "SelectableCardGroup", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-value-card", sourceComponent: "ValueCard", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
 ] as const;
 
 declare global {
@@ -891,5 +944,11 @@ declare global {
     "dt-group-label": DtGroupLabelElementContract;
     "dt-mac-window-frame": DtMacWindowFrameElementContract;
     "dt-file-upload": DtFileUploadElementContract;
+    "dt-category-filter": DtCategoryFilterElementContract;
+    "dt-gallery": DtGalleryElementContract;
+    "dt-reading-progress": DtReadingProgressElementContract;
+    "dt-selectable-card": DtSelectableCardElementContract;
+    "dt-selectable-card-group": DtSelectableCardGroupElementContract;
+    "dt-value-card": DtValueCardElementContract;
   }
 }

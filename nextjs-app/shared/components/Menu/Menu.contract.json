@@ -244,6 +244,11 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/blog/[slug]/ServerArticleMain.tsx",
             "since": "2026-06-04"
         },
@@ -280,11 +285,6 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
             "since": "2026-06-04"
         }
     ]

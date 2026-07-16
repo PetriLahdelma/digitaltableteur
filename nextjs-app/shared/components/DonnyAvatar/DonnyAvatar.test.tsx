@@ -2,7 +2,12 @@ import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, act, waitFor } from "@testing-library/react";
 // Import directly from file to avoid React version mismatch through alias resolution
-import { DonnyAvatar, type DonnyState } from "./DonnyAvatar";
+import {
+  DONNY_STATES,
+  DonnyAvatar,
+  isDonnyState,
+  type DonnyState,
+} from "./DonnyAvatar";
 import styles from "./DonnyAvatar.module.css";
 
 describe("DonnyAvatar", () => {
@@ -39,7 +44,10 @@ describe("DonnyAvatar", () => {
       it(`renders ${size} size with ${expected}px dimensions`, () => {
         render(<DonnyAvatar size={size} />);
         const container = screen.getByRole("img");
-        expect(container).toHaveStyle({ width: `${expected}px`, height: `${expected}px` });
+        expect(container).toHaveStyle({
+          width: `${expected}px`,
+          height: `${expected}px`,
+        });
       });
     });
   });
@@ -49,15 +57,20 @@ describe("DonnyAvatar", () => {
       vi.useFakeTimers();
       const onTransitionEnd = vi.fn();
       const { rerender } = render(
-        <DonnyAvatar state="idle" onTransitionEnd={onTransitionEnd} />
+        <DonnyAvatar state="idle" onTransitionEnd={onTransitionEnd} />,
       );
 
       expect(screen.getByRole("img")).toHaveAttribute("data-state", "idle");
 
-      rerender(<DonnyAvatar state="thinking" onTransitionEnd={onTransitionEnd} />);
+      rerender(
+        <DonnyAvatar state="thinking" onTransitionEnd={onTransitionEnd} />,
+      );
 
       // Should be transitioning
-      expect(screen.getByRole("img")).toHaveAttribute("data-transitioning", "true");
+      expect(screen.getByRole("img")).toHaveAttribute(
+        "data-transitioning",
+        "true",
+      );
 
       // Wait for transition
       await act(async () => {
@@ -65,7 +78,10 @@ describe("DonnyAvatar", () => {
       });
 
       expect(screen.getByRole("img")).toHaveAttribute("data-state", "thinking");
-      expect(screen.getByRole("img")).toHaveAttribute("data-transitioning", "false");
+      expect(screen.getByRole("img")).toHaveAttribute(
+        "data-transitioning",
+        "false",
+      );
       expect(onTransitionEnd).toHaveBeenCalled();
 
       vi.useRealTimers();
@@ -88,14 +104,20 @@ describe("DonnyAvatar", () => {
     it("updates aria-label when state changes", async () => {
       vi.useFakeTimers();
       const { rerender } = render(<DonnyAvatar state="idle" />);
-      expect(screen.getByRole("img")).toHaveAttribute("aria-label", "Donny is idle");
+      expect(screen.getByRole("img")).toHaveAttribute(
+        "aria-label",
+        "Donny is idle",
+      );
 
       rerender(<DonnyAvatar state="success" />);
       await act(async () => {
         vi.advanceTimersByTime(250);
       });
 
-      expect(screen.getByRole("img")).toHaveAttribute("aria-label", "Donny is success");
+      expect(screen.getByRole("img")).toHaveAttribute(
+        "aria-label",
+        "Donny is success",
+      );
       vi.useRealTimers();
     });
   });
@@ -159,6 +181,12 @@ describe("DonnyAvatar", () => {
         expect(avatar).toHaveAttribute("data-state", state);
       });
     });
+
+    it("publishes the complete validated state vocabulary", () => {
+      expect(DONNY_STATES).toHaveLength(25);
+      expect(DONNY_STATES.every(isDonnyState)).toBe(true);
+      expect(isDonnyState("unknown")).toBe(false);
+    });
   });
 
   describe("Decorative Elements", () => {
@@ -219,12 +247,7 @@ describe("DonnyAvatar", () => {
       const cancelAnimationFrameSpy = vi
         .spyOn(window, "cancelAnimationFrame")
         .mockImplementation(() => {});
-      const rect = (
-        left: number,
-        top: number,
-        width: number,
-        height: number,
-      ) =>
+      const rect = (left: number, top: number, width: number, height: number) =>
         ({
           x: left,
           y: top,

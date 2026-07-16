@@ -2,36 +2,43 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { clsx } from "clsx";
 import styles from "./DonnyAvatar.module.css";
 
-/**
- * Donny Avatar States
- * Each state represents a mood/action with distinct eye expression
- */
-export type DonnyState =
-  | "idle"
-  | "listening"
-  | "thinking"
-  | "searching"
-  | "success"
-  | "error"
-  | "confused"
-  | "handoff"
-  | "greeting"
-  | "acknowledging"
-  | "suggesting"
-  | "confident"
-  | "curious"
-  | "celebrating"
-  | "apologetic"
-  | "typing"
-  | "loading"
-  | "waving"
-  | "remembering"
-  | "focused"
-  | "playful"
-  | "impressed"
-  | "skeptical"
-  | "sleepy"
-  | "sleeping";
+/** Every supported Donny expression and lifecycle state. */
+export const DONNY_STATES = [
+  "idle",
+  "listening",
+  "thinking",
+  "searching",
+  "success",
+  "error",
+  "confused",
+  "handoff",
+  "greeting",
+  "acknowledging",
+  "suggesting",
+  "confident",
+  "curious",
+  "celebrating",
+  "apologetic",
+  "typing",
+  "loading",
+  "waving",
+  "remembering",
+  "focused",
+  "playful",
+  "impressed",
+  "skeptical",
+  "sleepy",
+  "sleeping",
+] as const;
+
+export type DonnyState = (typeof DONNY_STATES)[number];
+
+const DONNY_STATE_SET = new Set<string>(DONNY_STATES);
+
+/** Checks untrusted host data before it is passed to DonnyAvatar. */
+export function isDonnyState(value: string): value is DonnyState {
+  return DONNY_STATE_SET.has(value);
+}
 
 export interface DonnyAvatarProps {
   /** Current avatar state */
