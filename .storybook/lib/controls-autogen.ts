@@ -154,6 +154,9 @@ function seedFor(
 }
 
 export const autogenArgTypes: ArgTypesEnhancer = (context) => {
+  if (context.parameters?.implementation === "web-component") {
+    return context.argTypes;
+  }
   const name = componentNameFor(context.title);
   if (!AUTOGEN.has(name)) return context.argTypes;
   const contract = contracts.get(name);
@@ -190,6 +193,9 @@ export const autogenArgTypes: ArgTypesEnhancer = (context) => {
 };
 
 export const autogenArgs: ArgsEnhancer = (context) => {
+  if (context.parameters?.implementation === "web-component") {
+    return context.initialArgs;
+  }
   const name = componentNameFor(context.title);
   if (!AUTOGEN.has(name)) return context.initialArgs;
   const contract = contracts.get(name);

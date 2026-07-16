@@ -15,7 +15,7 @@ function NativeSpinner(args: Args) {
 const meta = {
   title: "Web Components/Feedback/Spinner",
   component: NativeSpinner,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-spinner custom element." } },

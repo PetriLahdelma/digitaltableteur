@@ -30,7 +30,7 @@ function NativeLabel({ content, htmlFor, tooltipText, ...args }: Args) {
 const meta = {
   title: "Web Components/Forms/Label",
   component: NativeLabel,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-label form label." } },

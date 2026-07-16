@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T16:47:57.714Z",
+  "generatedAt": "2026-07-16T12:22:44.510Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -5805,7 +5805,7 @@
         "always pass a `title`. Title-less modals are a bad AT experience;",
         "pass `description` for supporting copy (maps to `aria-describedby`,",
         "pick the severity that matches the message. `error` and",
-        "render destructive actions with `variant=\"error\"` and pair them"
+        "use `severity=\"error\"` for destructive confirmations, render the"
       ],
       "avoidWhen": [
         "nest a Modal inside another Modal. AT focus order becomes",

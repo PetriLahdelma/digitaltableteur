@@ -11,12 +11,14 @@ import styles from "./PropsSection.module.css";
  */
 export function PropsSection({
   playground,
+  heading = "Props",
 }: {
   playground: PreparedDocsStory | null;
+  heading?: string;
 }) {
   if (!playground) return null;
   return (
-    <Section block="props" heading="Props">
+    <Section block="props" heading={heading}>
       <div className={styles.panel}>
         <Canvas of={playground.moduleExport} sourceState="none" />
         <Controls of={playground.moduleExport} />

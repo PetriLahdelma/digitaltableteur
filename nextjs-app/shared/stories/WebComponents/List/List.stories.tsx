@@ -50,7 +50,7 @@ function NativeList({ lineHeight, listStyleType, ...args }: Args) {
 const meta = {
   title: "Web Components/Content/List",
   component: NativeList,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "padded",

@@ -105,7 +105,7 @@ function NativeCodeSnippet(args: Args) {
 const meta = {
   title: "Web Components/Content/CodeSnippet",
   component: NativeCodeSnippet,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "padded",

@@ -48,7 +48,7 @@ const storyParity = ({
 });
 const slot = (name, description) => ({ name, description });
 
-export default [
+const elementDefinitions = [
   {
     tagName: "dt-button",
     adapterClassName: "DtButtonReactElement",
@@ -1278,25 +1278,81 @@ export default [
       "Layered dialog with focus containment, dismissal, loading, and severity states.",
     storyParity: storyParity(),
     props: [
-      stringProp("severity"),
-      booleanProp("loading", "isLoading"),
-      stringProp("titleSize"),
-      stringProp("iconSize"),
-      booleanProp("open", "isOpen"),
-      nativeProp("defaultOpen", "boolean"),
-      nativeProp("controlled", "boolean"),
+      stringProp(
+        "severity",
+        "severity",
+        "Optional success, error, warning, or info treatment. Error and warning use alertdialog semantics.",
+      ),
+      booleanProp(
+        "loading",
+        "isLoading",
+        "Replaces the body with a centered progress indicator and hides the footer.",
+      ),
+      stringProp(
+        "titleSize",
+        "titleSize",
+        "Heading size token: xxs, xs, sm, md, lg, xl, or xxl.",
+      ),
+      stringProp(
+        "iconSize",
+        "iconSize",
+        "Semantic or slotted header icon size from 2xs through 2xl.",
+      ),
+      booleanProp(
+        "open",
+        "isOpen",
+        "Current visibility. Use with controlled when the host owns state.",
+      ),
+      nativeProp(
+        "defaultOpen",
+        "boolean",
+        "Opens an uncontrolled modal when it first connects.",
+      ),
+      nativeProp(
+        "controlled",
+        "boolean",
+        "Makes dismissal request-only; the host must update open.",
+      ),
       stringProp(
         "dialogTitle",
         "title",
         "Dialog heading; dialog-title avoids the global HTML title tooltip attribute.",
       ),
-      stringProp("description"),
-      booleanProp("showFooter"),
-      stringProp("animation"),
-      booleanProp("showCloseIcon"),
-      stringProp("closeIconName"),
-      stringProp("closeButtonLabel"),
-      nativeProp("dismissOnBackdrop", "boolean"),
+      stringProp(
+        "description",
+        "description",
+        "Concise supporting text associated with the dialog through aria-describedby.",
+      ),
+      booleanProp(
+        "showFooter",
+        "showFooter",
+        "Shows the footer slot or the default acknowledgement action.",
+      ),
+      stringProp(
+        "animation",
+        "animation",
+        "Entrance animation: none, scale, slide, or fade. Disabled by reduced-motion preferences.",
+      ),
+      booleanProp(
+        "showCloseIcon",
+        "showCloseIcon",
+        "Shows a design-system IconButton in the header.",
+      ),
+      stringProp(
+        "closeIconName",
+        "closeIconName",
+        "Icon registry name used by the header IconButton.",
+      ),
+      stringProp(
+        "closeButtonLabel",
+        "closeButtonLabel",
+        "Accessible name for the header close IconButton.",
+      ),
+      nativeProp(
+        "dismissOnBackdrop",
+        "boolean",
+        "Whether an overlay click requests dismissal. Defaults to true.",
+      ),
     ],
     slots: [
       slot("", "Dialog body content."),
@@ -2276,3 +2332,14 @@ export default [
     ],
   },
 ];
+
+/**
+ * Native maturity is independent from the canonical React contract. A port may
+ * implement a stable API while its own production and accessibility evidence is
+ * still accumulating. Promotion overrides belong on the individual definition.
+ */
+export default elementDefinitions.map((element) => ({
+  implementationStatus: "beta",
+  implementationConsumers: [],
+  ...element,
+}));

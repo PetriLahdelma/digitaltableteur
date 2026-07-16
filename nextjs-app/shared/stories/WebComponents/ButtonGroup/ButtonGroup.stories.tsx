@@ -31,7 +31,7 @@ function Group({ label, attached }: Args) {
 const meta = {
   title: "Web Components/Actions/ButtonGroup",
   component: Group,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

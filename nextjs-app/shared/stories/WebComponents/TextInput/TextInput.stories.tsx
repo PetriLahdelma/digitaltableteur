@@ -40,7 +40,7 @@ function NativeTextInput({ helperText, hideLabel, ...args }: Args) {
 const meta = {
   title: "Web Components/Forms/TextInput",
   component: NativeTextInput,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "padded",

@@ -62,7 +62,7 @@ function ControlledSelect() {
 const meta = {
   title: "Web Components/Forms/Select",
   component: NativeSelect,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: { ...nativeStoryParameters, layout: "padded" },
   args: {
     label: "Select an option",

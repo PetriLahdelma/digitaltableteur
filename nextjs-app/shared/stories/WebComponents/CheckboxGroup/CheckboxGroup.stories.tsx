@@ -43,7 +43,7 @@ function NativeCheckboxGroup({
 const meta = {
   title: "Web Components/Forms/CheckboxGroup",
   component: NativeCheckboxGroup,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: { ...nativeStoryParameters, layout: "padded" },
   args: {
     label: "Group Label",

@@ -21,7 +21,7 @@ function NativeHelperText({ content, ...attributes }: Args) {
 const meta = {
   title: "Web Components/Forms/HelperText",
   component: NativeHelperText,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

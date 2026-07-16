@@ -6,8 +6,19 @@ import styles from "./ImportBlock.module.css";
  * Copyable import line derived from the contract name. The `@dt/*` alias is
  * the sanctioned import path (see repo CLAUDE.md paths section).
  */
-export function ImportBlock({ contract }: { contract: DtContract }) {
-  const line = `import { ${contract.name} } from "@dt/${contract.name}";`;
+export function ImportBlock({
+  contract,
+  implementation = "react",
+  tagName,
+}: {
+  contract: DtContract;
+  implementation?: "react" | "web-component";
+  tagName?: string;
+}) {
+  const line =
+    implementation === "web-component" && tagName
+      ? `import "@digitaltableteur/web-components";\n\n<${tagName}></${tagName}>`
+      : `import { ${contract.name} } from "@dt/${contract.name}";`;
   const [copied, setCopied] = useState(false);
 
   const copy = useCallback(() => {

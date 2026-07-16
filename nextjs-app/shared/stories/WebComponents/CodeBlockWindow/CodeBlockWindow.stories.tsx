@@ -62,7 +62,7 @@ function NativeCodeBlockWindow(args: Args) {
 const meta = {
   title: "Web Components/Content/CodeBlockWindow",
   component: NativeCodeBlockWindow,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "padded",

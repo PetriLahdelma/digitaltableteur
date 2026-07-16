@@ -107,7 +107,7 @@ function PlaygroundHarness({ position, max }: Pick<Args, "position" | "max">) {
 const meta = {
   title: "Web Components/Feedback/ToastStack",
   component: NativeToastStack,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "fullscreen",

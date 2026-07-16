@@ -11,6 +11,9 @@
 - Makes relative and automatic `Timestamp` formatting fail closed when a host
   supplies an invalid reference time instead of throwing during render;
   absolute formatting remains independent of the reference time.
+- Corrects the Modal destructive-confirmation example to use `severity="error"`
+  so its border and semantic icon agree with the error-toned destructive
+  action; the Modal runtime severity API is unchanged.
 - Runtime public API grows additively from 126 to 128 exports; no existing
   component API changes.
 

@@ -21,6 +21,13 @@
   GroupLabel maintains its hint IDREF without removing host-owned ARIA tokens,
   MacWindowFrame responds to live language changes, and Timestamp fails closed
   for invalid relative reference times.
+- Separates canonical contract maturity from native `implementationStatus`.
+  All current native ports are beta until they have native accessibility
+  evidence and a documented production consumer; Storybook and the Custom
+  Elements Manifest expose both lifecycle values.
+- Restores Modal story visibility in docs, corrects stale `title` attribute
+  usage, and aligns destructive confirmation chrome with its error-toned
+  action.
 
 Verified by `check:web-components:dod`, `check:package-release-notes`,
 `check:package-tarballs`, and `check:npm-consumer-install`.

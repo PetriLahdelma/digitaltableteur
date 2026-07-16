@@ -7,10 +7,22 @@ const baseUrl =
   process.argv
     .find((argument) => argument.startsWith("--url="))
     ?.slice("--url=".length) ?? "http://127.0.0.1:6010";
+const componentFilter = process.argv
+  .find((argument) => argument.startsWith("--component="))
+  ?.slice("--component=".length)
+  .toLowerCase();
 
 const nativeElements = elements.filter(
-  (element) => element.defaultBackend === "native",
+  (element) =>
+    element.defaultBackend === "native" &&
+    (!componentFilter ||
+      element.sourceComponent.toLowerCase() === componentFilter ||
+      element.tagName.toLowerCase() === componentFilter),
 );
+
+if (nativeElements.length === 0) {
+  throw new Error(`No native component matches ${componentFilter}`);
+}
 
 const slug = (value) =>
   value
@@ -66,6 +78,17 @@ const expectedComponents = nativeElements.map((element) => {
   const docs = componentEntries.find((entry) => entry.type === "docs");
   if (!defaultStory || !docs) {
     throw new Error(`${title} must expose Default and autodocs entries`);
+  }
+  const lifecycleTags = ["alpha", "beta", "stable", "deprecated"].filter(
+    (status) => defaultStory.tags?.includes(status),
+  );
+  if (
+    lifecycleTags.length !== 1 ||
+    lifecycleTags[0] !== element.implementationStatus
+  ) {
+    throw new Error(
+      `${title} Storybook lifecycle ${lifecycleTags.join(", ") || "missing"} must match implementationStatus ${element.implementationStatus}`,
+    );
   }
 
   const canonicalTitle = title.replace(/^Web Components\//, "");
@@ -195,6 +218,22 @@ try {
               ?.textContent?.trim() ||
             node.textContent?.trim() ||
             "",
+          modal:
+            tagName === "dt-modal"
+              ? (() => {
+                  const overlay = node.shadowRoot?.querySelector(".overlay");
+                  const panel = node.shadowRoot?.querySelector(
+                    '[role="dialog"], [role="alertdialog"]',
+                  );
+                  return {
+                    open: node.hasAttribute("open"),
+                    overlayBounds: overlay?.getBoundingClientRect().toJSON(),
+                    title:
+                      panel?.querySelector("h2")?.textContent?.trim() ?? "",
+                    viewport: { width: innerWidth, height: innerHeight },
+                  };
+                })()
+              : null,
         }),
         story.tagName,
       );
@@ -212,6 +251,203 @@ try {
         throw new Error(
           `${requiredStory.id} must render a visible, labelled status dot`,
         );
+      }
+      if (story.tagName === "dt-modal") {
+        const modal = result.modal;
+        if (
+          !modal?.open ||
+          !modal.title ||
+          !modal.overlayBounds ||
+          Math.abs(modal.overlayBounds.width - modal.viewport.width) > 1 ||
+          Math.abs(modal.overlayBounds.height - modal.viewport.height) > 1
+        ) {
+          throw new Error(
+            `${requiredStory.id} must render an open, titled modal with a full-viewport overlay`,
+          );
+        }
+      }
+    }
+    if (story.tagName === "dt-modal") {
+      const alreadyChecked = new Set(
+        story.requiredStoryIds.map((requiredStory) => requiredStory.name),
+      );
+      for (const [name, id] of Object.entries(story.nativeStoryIds)) {
+        if (alreadyChecked.has(name)) continue;
+        await page.goto(`${baseUrl}/iframe.html?id=${id}&viewMode=story`, {
+          waitUntil: "domcontentloaded",
+          timeout: 60_000,
+        });
+        const modal = page.locator("dt-modal").first();
+        await modal.waitFor({ state: "attached", timeout: 30_000 });
+        const result = await modal.evaluate((node) => {
+          const overlay = node.shadowRoot?.querySelector(".overlay");
+          const panel = node.shadowRoot?.querySelector(
+            '[role="dialog"], [role="alertdialog"]',
+          );
+          return {
+            open: node.hasAttribute("open"),
+            severity: node.getAttribute("severity"),
+            title: panel?.querySelector("h2")?.textContent?.trim() ?? "",
+            overlayBounds: overlay?.getBoundingClientRect().toJSON(),
+            viewport: { width: innerWidth, height: innerHeight },
+          };
+        });
+        if (
+          !result.open ||
+          !result.title ||
+          !result.overlayBounds ||
+          Math.abs(result.overlayBounds.width - result.viewport.width) > 1 ||
+          Math.abs(result.overlayBounds.height - result.viewport.height) > 1
+        ) {
+          throw new Error(
+            `${id} must render an open, titled modal with a full-viewport overlay`,
+          );
+        }
+        if (name === "Confirmation" && result.severity !== "error") {
+          throw new Error(
+            `${id} destructive confirmation must use error severity`,
+          );
+        }
+      }
+
+      const docsScenarios = [
+        [
+          "Default",
+          "Open modal",
+          "Confirm changes",
+          "close-icon",
+          "showcase",
+        ],
+        [
+          "Playground",
+          "Open modal",
+          "Confirm changes",
+          "close-icon",
+          "props",
+        ],
+        [
+          "Confirmation",
+          "Delete project…",
+          "Delete this project?",
+          "cancel",
+          null,
+        ],
+        [
+          "Form In Modal",
+          "Rename workspace…",
+          "Rename workspace",
+          "save",
+          null,
+        ],
+        [
+          "Severities",
+          "Open success dialog",
+          "Success dialog",
+          "escape",
+          null,
+        ],
+        [
+          "Severities",
+          "Open error dialog",
+          "Error dialog",
+          "escape",
+          null,
+        ],
+        [
+          "Severities",
+          "Open warning dialog",
+          "Warning dialog",
+          "escape",
+          null,
+        ],
+        [
+          "Severities",
+          "Open info dialog",
+          "Info dialog",
+          "escape",
+          null,
+        ],
+        ["Scrollable", "View terms", "Terms of service", "escape", null],
+        [
+          "Animated Entrance",
+          "scale",
+          "Scale entrance",
+          "escape",
+          null,
+        ],
+        [
+          "Animated Entrance",
+          "slide",
+          "Slide entrance",
+          "escape",
+          null,
+        ],
+        [
+          "Animated Entrance",
+          "fade",
+          "Fade entrance",
+          "escape",
+          null,
+        ],
+      ];
+
+      await page.goto(
+        `${baseUrl}/iframe.html?id=${story.docsId}&viewMode=docs`,
+        { waitUntil: "domcontentloaded", timeout: 60_000 },
+      );
+      for (const [name, trigger, title, dismiss, block] of docsScenarios) {
+        const storyId = story.nativeStoryIds[name];
+        const root = block
+          ? page.locator(`[data-doc-block="${block}"]`)
+          : page;
+        const launcher = root.getByRole("button", {
+          name: trigger,
+          exact: true,
+        });
+        await launcher.click();
+
+        const openModal = page.locator("body > dt-modal[open]");
+        await openModal.waitFor({ state: "attached", timeout: 10_000 });
+        const result = await openModal.evaluate((node) => {
+          const overlay = node.shadowRoot?.querySelector(".overlay");
+          const panel = node.shadowRoot?.querySelector(
+            '[role="dialog"], [role="alertdialog"]',
+          );
+          return {
+            parent: node.parentElement?.tagName,
+            title: panel?.querySelector("h2")?.textContent?.trim() ?? "",
+            overlayBounds: overlay?.getBoundingClientRect().toJSON(),
+            viewport: { width: innerWidth, height: innerHeight },
+          };
+        });
+        if (
+          result.parent !== "BODY" ||
+          result.title !== title ||
+          !result.overlayBounds ||
+          Math.abs(result.overlayBounds.width - result.viewport.width) > 1 ||
+          Math.abs(result.overlayBounds.height - result.viewport.height) > 1
+        ) {
+          throw new Error(
+            `${storyId} must launch from Docs into a body-level, full-viewport modal: ${JSON.stringify(result)}`,
+          );
+        }
+
+        if (dismiss === "close-icon") {
+          await openModal
+            .getByRole("button", { name: "Close dialog", exact: true })
+            .click();
+        } else if (dismiss === "cancel") {
+          await openModal
+            .getByRole("button", { name: "Cancel", exact: true })
+            .click();
+        } else if (dismiss === "save") {
+          await openModal
+            .getByRole("button", { name: "Save", exact: true })
+            .click();
+        } else {
+          await page.keyboard.press("Escape");
+        }
+        await openModal.waitFor({ state: "detached", timeout: 10_000 });
       }
     }
     // Default is deliberately checked last above so the component-specific

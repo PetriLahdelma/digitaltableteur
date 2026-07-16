@@ -33,7 +33,7 @@ function NativeGroupLabel({ content, htmlFor, tooltipText, ...args }: Args) {
 const meta = {
   title: "Web Components/Forms/GroupLabel",
   component: NativeGroupLabel,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

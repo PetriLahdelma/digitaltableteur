@@ -33,6 +33,22 @@ for (const element of elements) {
   const declaration = declarations.find(
     (candidate) => candidate.tagName === element.tagName,
   );
+  if (
+    declaration?.dtImplementationStatus !== element.implementationStatus ||
+    declaration?.dtContractStatus == null
+  ) {
+    throw new Error(
+      `${element.tagName} manifest lifecycle metadata differs from source configuration`,
+    );
+  }
+  if (
+    JSON.stringify(declaration.dtImplementationConsumers ?? []) !==
+    JSON.stringify(element.implementationConsumers ?? [])
+  ) {
+    throw new Error(
+      `${element.tagName} manifest production-consumer evidence differs from source configuration`,
+    );
+  }
   const members = new Set(
     (declaration?.members ?? []).map((member) => member.name),
   );
@@ -142,8 +158,16 @@ const sharedBundleAndManifestCeiling = 1_255_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.
-const perTagAllowance = tags.length * 5_750;
-const maxUnpackedSize = sharedBundleAndManifestCeiling + perTagAllowance;
+const perTagAllowance = tags.length * 5_775;
+// Canonical/native status plus production-consumer evidence is intentionally
+// repeated per declaration in custom-elements.json and in the generated
+// migration manifest so package consumers can inspect maturity without this
+// repository. Keep that new cost separate from runtime/property growth.
+const lifecycleMetadataAllowance = tags.length * 300;
+const maxUnpackedSize =
+  sharedBundleAndManifestCeiling +
+  perTagAllowance +
+  lifecycleMetadataAllowance;
 if (pack.entryCount > maxPackedFiles || pack.unpackedSize > maxUnpackedSize) {
   throw new Error(
     `Web-components tarball exceeds its ${tags.length}-component budget (${pack.entryCount}/${maxPackedFiles} files, ${pack.unpackedSize}/${maxUnpackedSize} bytes)`,

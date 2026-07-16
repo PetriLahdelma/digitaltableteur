@@ -28,7 +28,7 @@ function NativeDivider(args: Args) {
 const meta = {
   title: "Web Components/Layout/Divider",
   component: NativeDivider,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-divider custom element." } },

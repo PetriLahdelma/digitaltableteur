@@ -46,7 +46,7 @@ function NativeFlexBox({ rowGap, columnGap, ...args }: Args) {
 const meta = {
   title: "Web Components/Layout/FlexBox",
   component: NativeFlexBox,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native flexbox layout primitive." } },

@@ -44,7 +44,7 @@ function NativeEmptyState({
 const meta = {
   title: "Web Components/Content/EmptyState",
   component: NativeEmptyState,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-empty-state composition." } },

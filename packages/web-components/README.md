@@ -16,16 +16,17 @@ import "@digitaltableteur/tokens-css/tokens.css";
 import "@digitaltableteur/web-components/register";
 ```
 
-The default registry contains 62 native Shadow DOM custom elements:
-Accordion, AlertBanner, AspectRatio, Avatar, AvatarGroup, Badge, Button,
-ButtonGroup, Card, Center, Checkbox, CheckboxGroup, Combobox, CommandPalette,
-Container, CookieConsent, Display, Divider, EmptyState, ExpandableSection,
-FilterChip, FlexBox, FormField, Grid, HelperText, Icon, IconButton, Kbd, Label,
-LanguageSwitcher, Link, List, Menu, Modal, MultiCombobox, NavLink, NavMenuList,
-PhoneInput, Progress, Radio, RadioGroup, Section, SegmentedControl, Select,
-SelectOption, Skeleton, SkipLink, Spacer, Spinner, SplitButton, Stack,
-StatusDot, Switch, Tabs, Text, TextArea, TextInput, Title, Toast, ToastStack,
-Tooltip, and VisuallyHidden.
+The default registry contains 70 native Shadow DOM custom elements:
+Accordion, AlertBanner, AspectRatio, Avatar, AvatarGroup, Badge, Breadcrumb,
+Button, ButtonGroup, Card, Center, Checkbox, CheckboxGroup, CodeBlockWindow,
+CodeSnippet, Combobox, CommandPalette, Container, CookieConsent, Display,
+Divider, EmptyState, ExpandableSection, FileUpload, FilterChip, FlexBox,
+FormField, Grid, GroupLabel, HelperText, Icon, IconButton, Kbd, Label,
+LanguageSwitcher, Link, List, MacWindowFrame, Menu, Modal, MultiCombobox,
+NavLink, NavMenuList, Pagination, PhoneInput, Progress, Radio, RadioGroup,
+Section, SegmentedControl, Select, SelectOption, Skeleton, SkipLink, Spacer,
+Spinner, SplitButton, Stack, StatusDot, Switch, Tabs, Text, TextArea,
+TextInput, Timestamp, Title, Toast, ToastStack, Tooltip, and VisuallyHidden.
 
 ```html
 <dt-button label="Continue" variant="primary"></dt-button>
@@ -178,6 +179,24 @@ ToastStack reports dismissals without owning application state. PhoneInput,
 Combobox, and MultiCombobox participate in forms and expose typed value-change
 events. CookieConsent exposes consent decisions while leaving storage,
 analytics, and policy enforcement to the host.
+
+## Lifecycle status
+
+Canonical API maturity and native implementation maturity are separate. A
+component can have a stable React-backed contract while its framework-neutral
+implementation remains beta. Storybook displays both values, and
+`custom-elements.json` publishes them as `dtContractStatus` and
+`dtImplementationStatus`.
+
+All current native implementations are beta. Promoting one to stable requires:
+
+- a stable canonical contract;
+- native accessibility-tree and real-browser forced-colors evidence; and
+- at least one documented production consumer of the published custom element.
+
+Package build tests, Storybook usage, and clean-install smoke tests do not count
+as production consumption. Evidence is recorded in the element definition and
+published as `dtImplementationConsumers`.
 
 > **Combobox behavioral extension (native-only):** the React `Combobox` renders a
 > non-editable `role="combobox"` button (select-from-list). The native

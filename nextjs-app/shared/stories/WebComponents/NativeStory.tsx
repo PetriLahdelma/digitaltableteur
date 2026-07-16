@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useCallback, useLayoutEffect, useRef } from "react";
 import { expect } from "storybook/test";
 import "../../../../packages/web-components/src/register";
 
@@ -6,7 +6,6 @@ export type AttributeValue = string | number | boolean | null | undefined;
 
 export const nativeStoryParameters = {
   layout: "centered",
-  contractStatus: "stable",
   implementation: "web-component",
   a11y: { test: "error" },
 } as const;
@@ -16,14 +15,26 @@ export function NativeElement({
   attributes = {},
   slot,
   children,
+  elementRef,
+  onClick,
 }: {
   tagName: string;
   attributes?: Record<string, AttributeValue>;
   slot?: string;
   children?: React.ReactNode;
+  elementRef?: React.Ref<HTMLElement>;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 }) {
   const ref = useRef<HTMLElement>(null);
   const appliedAttributes = useRef(new Set<string>());
+  const setRef = useCallback(
+    (element: HTMLElement | null) => {
+      ref.current = element;
+      if (typeof elementRef === "function") elementRef(element);
+      else if (elementRef) elementRef.current = element;
+    },
+    [elementRef],
+  );
 
   useLayoutEffect(() => {
     const element = ref.current;
@@ -39,7 +50,11 @@ export function NativeElement({
     }
   }, [attributes]);
 
-  return React.createElement(tagName, { ref, slot }, children);
+  return React.createElement(
+    tagName,
+    { ref: setRef, slot, onClick },
+    children,
+  );
 }
 
 export function Row({ children }: { children: React.ReactNode }) {
@@ -83,9 +98,13 @@ export function Stage({
   );
 }
 
-export function assertNative(tagName: string) {
+export function assertNative(
+  tagName: string,
+  scope: "canvas" | "document" = "canvas",
+) {
   return async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-    const element = canvasElement.querySelector(tagName);
+    const root = scope === "document" ? document : canvasElement;
+    const element = root.querySelector(tagName);
     expect(customElements.get(tagName)).toBeDefined();
     expect(element?.shadowRoot).toBeTruthy();
   };

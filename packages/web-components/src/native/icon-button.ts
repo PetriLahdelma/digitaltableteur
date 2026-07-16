@@ -37,7 +37,9 @@ export class DtIconButtonElement extends DigitaltableteurElement {
     "submits",
     "data-dt-group-position",
   ];
-  private button: (HTMLElement & { click(): void }) | null = null;
+  private button:
+    | (HTMLElement & { click(): void; focus(options?: FocusOptions): void })
+    | null = null;
   private formDisabled = false;
   private readonly internals =
     typeof this.attachInternals === "function" ? this.attachInternals() : null;
@@ -120,11 +122,15 @@ export class DtIconButtonElement extends DigitaltableteurElement {
     if (this.disabled || this.loading || this.formDisabled) return;
     this.button?.click();
   }
+  focus(options?: FocusOptions): void {
+    this.button?.focus(options);
+  }
   private render(): void {
     const button = this.ownerDocument.createElement(
       "dt-button",
     ) as HTMLElement & {
       click(): void;
+      focus(options?: FocusOptions): void;
     };
     button.setAttribute("variant", this.variant);
     button.setAttribute("tone", this.tone);

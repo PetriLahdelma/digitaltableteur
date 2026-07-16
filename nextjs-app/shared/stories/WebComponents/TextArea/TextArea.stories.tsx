@@ -44,7 +44,7 @@ function NativeTextArea({
 const meta = {
   title: "Web Components/Forms/TextArea",
   component: NativeTextArea,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "padded",

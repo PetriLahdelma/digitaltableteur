@@ -27,7 +27,7 @@ function NativeProgress(args: Args) {
 const meta = {
   title: "Web Components/Feedback/Progress",
   component: NativeProgress,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: { description: { component: "Native dt-progress custom element." } },

@@ -272,7 +272,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Button",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -424,7 +427,10 @@
             }
           ],
           "dtSourceComponent": "Badge",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -578,7 +584,10 @@
           ],
           "events": [],
           "dtSourceComponent": "IconButton",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -620,7 +629,10 @@
           ],
           "events": [],
           "dtSourceComponent": "ButtonGroup",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -720,7 +732,10 @@
           ],
           "events": [],
           "dtSourceComponent": "FilterChip",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -954,7 +969,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Link",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1056,7 +1074,10 @@
           ],
           "events": [],
           "dtSourceComponent": "NavLink",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1100,7 +1121,10 @@
           ],
           "events": [],
           "dtSourceComponent": "SkipLink",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1142,7 +1166,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Spinner",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1240,7 +1267,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Progress",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1310,7 +1340,10 @@
           ],
           "events": [],
           "dtSourceComponent": "StatusDot",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1352,7 +1385,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Divider",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1534,7 +1570,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Icon",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1640,7 +1679,10 @@
             }
           ],
           "dtSourceComponent": "AlertBanner",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1712,7 +1754,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Text",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1812,7 +1857,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Title",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -1926,7 +1974,10 @@
           ],
           "events": [],
           "dtSourceComponent": "List",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -2054,7 +2105,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Section",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -2168,7 +2222,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Stack",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -2408,7 +2465,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Card",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -2460,7 +2520,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Center",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -2542,7 +2605,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Container",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -2584,7 +2650,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Spacer",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -2634,7 +2703,10 @@
           ],
           "events": [],
           "dtSourceComponent": "AspectRatio",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -2718,7 +2790,10 @@
           ],
           "events": [],
           "dtSourceComponent": "EmptyState",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -2842,7 +2917,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Label",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -2906,7 +2984,10 @@
           ],
           "events": [],
           "dtSourceComponent": "HelperText",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -3008,7 +3089,10 @@
           ],
           "events": [],
           "dtSourceComponent": "FormField",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -3227,7 +3311,10 @@
             }
           ],
           "dtSourceComponent": "TextInput",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -3417,7 +3504,10 @@
             }
           ],
           "dtSourceComponent": "TextArea",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -3615,7 +3705,10 @@
             }
           ],
           "dtSourceComponent": "Checkbox",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -3727,7 +3820,10 @@
             }
           ],
           "dtSourceComponent": "CheckboxGroup",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -3891,7 +3987,10 @@
             }
           ],
           "dtSourceComponent": "Radio",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -4089,7 +4188,10 @@
             }
           ],
           "dtSourceComponent": "RadioGroup",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -4272,7 +4374,10 @@
             }
           ],
           "dtSourceComponent": "Select",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -4348,7 +4453,10 @@
           ],
           "events": [],
           "dtSourceComponent": "SelectOption",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -4544,7 +4652,10 @@
             }
           ],
           "dtSourceComponent": "Avatar",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -4606,7 +4717,10 @@
           ],
           "events": [],
           "dtSourceComponent": "AvatarGroup",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -4656,7 +4770,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Display",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -4788,7 +4905,10 @@
           ],
           "events": [],
           "dtSourceComponent": "FlexBox",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -5018,7 +5138,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Grid",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -5068,7 +5191,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Kbd",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -5159,7 +5285,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Skeleton",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -5209,7 +5338,10 @@
           ],
           "events": [],
           "dtSourceComponent": "VisuallyHidden",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -5357,7 +5489,10 @@
             }
           ],
           "dtSourceComponent": "Switch",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -5369,6 +5504,7 @@
             {
               "kind": "field",
               "name": "severity",
+              "description": "Optional success, error, warning, or info treatment. Error and warning use alertdialog semantics.",
               "type": {
                 "text": "string"
               }
@@ -5376,6 +5512,7 @@
             {
               "kind": "field",
               "name": "loading",
+              "description": "Replaces the body with a centered progress indicator and hides the footer.",
               "type": {
                 "text": "boolean"
               }
@@ -5383,6 +5520,7 @@
             {
               "kind": "field",
               "name": "titleSize",
+              "description": "Heading size token: xxs, xs, sm, md, lg, xl, or xxl.",
               "type": {
                 "text": "string"
               }
@@ -5390,6 +5528,7 @@
             {
               "kind": "field",
               "name": "iconSize",
+              "description": "Semantic or slotted header icon size from 2xs through 2xl.",
               "type": {
                 "text": "string"
               }
@@ -5397,6 +5536,7 @@
             {
               "kind": "field",
               "name": "open",
+              "description": "Current visibility. Use with controlled when the host owns state.",
               "type": {
                 "text": "boolean"
               }
@@ -5404,6 +5544,7 @@
             {
               "kind": "field",
               "name": "defaultOpen",
+              "description": "Opens an uncontrolled modal when it first connects.",
               "type": {
                 "text": "boolean"
               }
@@ -5411,6 +5552,7 @@
             {
               "kind": "field",
               "name": "controlled",
+              "description": "Makes dismissal request-only; the host must update open.",
               "type": {
                 "text": "boolean"
               }
@@ -5426,6 +5568,7 @@
             {
               "kind": "field",
               "name": "description",
+              "description": "Concise supporting text associated with the dialog through aria-describedby.",
               "type": {
                 "text": "string"
               }
@@ -5433,6 +5576,7 @@
             {
               "kind": "field",
               "name": "showFooter",
+              "description": "Shows the footer slot or the default acknowledgement action.",
               "type": {
                 "text": "boolean"
               }
@@ -5440,6 +5584,7 @@
             {
               "kind": "field",
               "name": "animation",
+              "description": "Entrance animation: none, scale, slide, or fade. Disabled by reduced-motion preferences.",
               "type": {
                 "text": "string"
               }
@@ -5447,6 +5592,7 @@
             {
               "kind": "field",
               "name": "showCloseIcon",
+              "description": "Shows a design-system IconButton in the header.",
               "type": {
                 "text": "boolean"
               }
@@ -5454,6 +5600,7 @@
             {
               "kind": "field",
               "name": "closeIconName",
+              "description": "Icon registry name used by the header IconButton.",
               "type": {
                 "text": "string"
               }
@@ -5461,6 +5608,7 @@
             {
               "kind": "field",
               "name": "closeButtonLabel",
+              "description": "Accessible name for the header close IconButton.",
               "type": {
                 "text": "string"
               }
@@ -5468,6 +5616,7 @@
             {
               "kind": "field",
               "name": "dismissOnBackdrop",
+              "description": "Whether an overlay click requests dismissal. Defaults to true.",
               "type": {
                 "text": "boolean"
               }
@@ -5495,6 +5644,7 @@
             {
               "name": "severity",
               "fieldName": "severity",
+              "description": "Optional success, error, warning, or info treatment. Error and warning use alertdialog semantics.",
               "type": {
                 "text": "string"
               }
@@ -5502,6 +5652,7 @@
             {
               "name": "loading",
               "fieldName": "loading",
+              "description": "Replaces the body with a centered progress indicator and hides the footer.",
               "type": {
                 "text": "boolean"
               }
@@ -5509,6 +5660,7 @@
             {
               "name": "title-size",
               "fieldName": "titleSize",
+              "description": "Heading size token: xxs, xs, sm, md, lg, xl, or xxl.",
               "type": {
                 "text": "string"
               }
@@ -5516,6 +5668,7 @@
             {
               "name": "icon-size",
               "fieldName": "iconSize",
+              "description": "Semantic or slotted header icon size from 2xs through 2xl.",
               "type": {
                 "text": "string"
               }
@@ -5523,6 +5676,7 @@
             {
               "name": "open",
               "fieldName": "open",
+              "description": "Current visibility. Use with controlled when the host owns state.",
               "type": {
                 "text": "boolean"
               }
@@ -5530,6 +5684,7 @@
             {
               "name": "default-open",
               "fieldName": "defaultOpen",
+              "description": "Opens an uncontrolled modal when it first connects.",
               "type": {
                 "text": "boolean"
               }
@@ -5537,6 +5692,7 @@
             {
               "name": "controlled",
               "fieldName": "controlled",
+              "description": "Makes dismissal request-only; the host must update open.",
               "type": {
                 "text": "boolean"
               }
@@ -5552,6 +5708,7 @@
             {
               "name": "description",
               "fieldName": "description",
+              "description": "Concise supporting text associated with the dialog through aria-describedby.",
               "type": {
                 "text": "string"
               }
@@ -5559,6 +5716,7 @@
             {
               "name": "show-footer",
               "fieldName": "showFooter",
+              "description": "Shows the footer slot or the default acknowledgement action.",
               "type": {
                 "text": "boolean"
               }
@@ -5566,6 +5724,7 @@
             {
               "name": "animation",
               "fieldName": "animation",
+              "description": "Entrance animation: none, scale, slide, or fade. Disabled by reduced-motion preferences.",
               "type": {
                 "text": "string"
               }
@@ -5573,6 +5732,7 @@
             {
               "name": "show-close-icon",
               "fieldName": "showCloseIcon",
+              "description": "Shows a design-system IconButton in the header.",
               "type": {
                 "text": "boolean"
               }
@@ -5580,6 +5740,7 @@
             {
               "name": "close-icon-name",
               "fieldName": "closeIconName",
+              "description": "Icon registry name used by the header IconButton.",
               "type": {
                 "text": "string"
               }
@@ -5587,6 +5748,7 @@
             {
               "name": "close-button-label",
               "fieldName": "closeButtonLabel",
+              "description": "Accessible name for the header close IconButton.",
               "type": {
                 "text": "string"
               }
@@ -5594,6 +5756,7 @@
             {
               "name": "dismiss-on-backdrop",
               "fieldName": "dismissOnBackdrop",
+              "description": "Whether an overlay click requests dismissal. Defaults to true.",
               "type": {
                 "text": "boolean"
               }
@@ -5616,7 +5779,10 @@
             }
           ],
           "dtSourceComponent": "Modal",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -5758,7 +5924,10 @@
             }
           ],
           "dtSourceComponent": "Tooltip",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -5895,7 +6064,10 @@
             }
           ],
           "dtSourceComponent": "Menu",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -6084,7 +6256,10 @@
             }
           ],
           "dtSourceComponent": "SplitButton",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -6224,7 +6399,10 @@
             }
           ],
           "dtSourceComponent": "Tabs",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -6344,7 +6522,10 @@
             }
           ],
           "dtSourceComponent": "SegmentedControl",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -6450,7 +6631,10 @@
             }
           ],
           "dtSourceComponent": "Accordion",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -6534,7 +6718,10 @@
             }
           ],
           "dtSourceComponent": "ExpandableSection",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -6668,7 +6855,10 @@
             }
           ],
           "dtSourceComponent": "CommandPalette",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -6720,7 +6910,10 @@
             }
           ],
           "dtSourceComponent": "NavMenuList",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -6861,7 +7054,10 @@
             }
           ],
           "dtSourceComponent": "LanguageSwitcher",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -6981,7 +7177,10 @@
             }
           ],
           "dtSourceComponent": "Toast",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -7045,7 +7244,10 @@
             }
           ],
           "dtSourceComponent": "ToastStack",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -7256,7 +7458,10 @@
             }
           ],
           "dtSourceComponent": "PhoneInput",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -7467,7 +7672,10 @@
             }
           ],
           "dtSourceComponent": "Combobox",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -7720,7 +7928,10 @@
             }
           ],
           "dtSourceComponent": "MultiCombobox",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -8088,7 +8299,10 @@
             }
           ],
           "dtSourceComponent": "CookieConsent",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -8210,7 +8424,10 @@
             }
           ],
           "dtSourceComponent": "CodeSnippet",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -8310,7 +8527,10 @@
             }
           ],
           "dtSourceComponent": "CodeBlockWindow",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -8418,7 +8638,10 @@
             }
           ],
           "dtSourceComponent": "Breadcrumb",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -8563,7 +8786,10 @@
             }
           ],
           "dtSourceComponent": "Pagination",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -8717,7 +8943,10 @@
           ],
           "events": [],
           "dtSourceComponent": "Timestamp",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -8881,7 +9110,10 @@
           ],
           "events": [],
           "dtSourceComponent": "GroupLabel",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -8995,7 +9227,10 @@
             }
           ],
           "dtSourceComponent": "MacWindowFrame",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         },
         {
           "kind": "class",
@@ -9228,7 +9463,10 @@
             }
           ],
           "dtSourceComponent": "FileUpload",
-          "dtBackend": "native"
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
         }
       ]
     }

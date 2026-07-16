@@ -78,7 +78,7 @@ function NativeSplitButton(args: SplitButtonArgs) {
 const meta = {
   title: "Web Components/Actions/SplitButton",
   component: NativeSplitButton,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

@@ -8,6 +8,7 @@ import {
   webComponentStoryHref,
 } from "../lib/web-components";
 import { StatusPill } from "./StatusPill";
+import type { ComponentStatus } from "./StatusPill";
 import styles from "./DocHeader.module.css";
 
 /**
@@ -19,9 +20,11 @@ import styles from "./DocHeader.module.css";
 export function DocHeader({
   contract,
   implementation = "react",
+  implementationStatus,
 }: {
   contract: DtContract;
   implementation?: "react" | "web-component";
+  implementationStatus?: ComponentStatus;
 }) {
   const figma =
     typeof contract.figma === "string" && contract.figma.startsWith("http")
@@ -38,7 +41,23 @@ export function DocHeader({
         <Title as="h1" size="l" className={styles.title}>
           {contract.displayName ?? contract.name}
         </Title>
-        <StatusPill status={contract.status} />
+        {implementation === "web-component" && implementationStatus ? (
+          <div
+            className={styles.lifecycleStatuses}
+            aria-label="Lifecycle status"
+          >
+            <span className={styles.lifecycleStatus}>
+              <span className={styles.lifecycleLabel}>API</span>
+              <StatusPill status={contract.status} />
+            </span>
+            <span className={styles.lifecycleStatus}>
+              <span className={styles.lifecycleLabel}>Implementation</span>
+              <StatusPill status={implementationStatus} />
+            </span>
+          </div>
+        ) : (
+          <StatusPill status={contract.status} />
+        )}
       </div>
       <ImplementationSwitch
         componentName={contract.name}

@@ -262,6 +262,10 @@ export class DtButtonElement extends DigitaltableteurElement {
     this.control?.click();
   }
 
+  focus(options?: FocusOptions): void {
+    this.control?.focus(options);
+  }
+
   private iconSlot(
     name: "icon" | "end-icon",
     iconName: string,

@@ -75,7 +75,7 @@ function NativeBreadcrumb({
 const meta = {
   title: "Web Components/Navigation/Breadcrumb",
   component: NativeBreadcrumb,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

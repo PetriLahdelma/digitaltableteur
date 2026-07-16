@@ -87,7 +87,7 @@ function AsyncCombobox() {
 const meta = {
   title: "Web Components/Forms/Combobox",
   component: NativeCombobox,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "padded",

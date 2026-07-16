@@ -104,7 +104,10 @@ const PACKAGE_DEFINITIONS = [
     name: "@digitaltableteur/web-components",
     maxEntryCount: 180,
     maxTarballSize: 290_000,
-    maxUnpackedSize: 1_660_000,
+    // Includes per-element canonical/native lifecycle metadata in the Custom
+    // Elements Manifest and generated migration table. The package-specific
+    // guard retains a separate fleet-scaled formula for future growth.
+    maxUnpackedSize: 1_685_000,
     requiredFiles: [
       "README.md",
       "custom-elements.json",

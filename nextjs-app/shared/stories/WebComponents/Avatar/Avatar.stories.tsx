@@ -37,7 +37,7 @@ function NativeAvatar({ imageUrl, destinationUrl, menuLabel, ...args }: Args) {
 const meta = {
   title: "Web Components/Content/Avatar",
   component: NativeAvatar,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "padded",

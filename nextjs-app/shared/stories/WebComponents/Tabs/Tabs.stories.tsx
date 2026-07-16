@@ -103,7 +103,7 @@ function ControlledTabsDemo() {
 const meta = {
   title: "Web Components/Navigation/Tabs",
   component: NativeTabs,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: { ...nativeStoryParameters, layout: "padded" },
   args: {
     tabs: JSON.stringify(basicTabs),

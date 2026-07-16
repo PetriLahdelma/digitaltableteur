@@ -102,7 +102,7 @@ function ControlledMultiCombobox({
 const meta = {
   title: "Web Components/Forms/MultiCombobox",
   component: NativeMultiCombobox,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "padded",

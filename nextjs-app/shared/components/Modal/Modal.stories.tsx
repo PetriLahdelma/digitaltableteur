@@ -2,7 +2,7 @@ import contract from "./Modal.contract.json";
 import React, { useState } from "react";
 import { useArgs } from "storybook/preview-api";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
-import { userEvent, waitFor, within } from "storybook/test";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import Modal, { type ModalProps } from "@dt/Modal";
 import Button from "@dt/Button";
 import TextInput from "@dt/TextInput";
@@ -123,7 +123,11 @@ Default.parameters = {};
 export const CloseViaIcon = Template.bind({});
 CloseViaIcon.args = Default.args;
 CloseViaIcon.parameters = { docs: { disable: true } };
-CloseViaIcon.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+CloseViaIcon.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
   const canvas = within(canvasElement);
 
   const openButton = canvas.getByRole("button", { name: /open/i });
@@ -163,7 +167,8 @@ ErrorDialog.args = {
   isOpen: true,
   title: "Something went wrong",
   severity: "error",
-  description: "We could not save your changes. Check your connection and try again.",
+  description:
+    "We could not save your changes. Check your connection and try again.",
 };
 
 export const SuccessDialog = Template.bind({});
@@ -201,7 +206,7 @@ export const Confirmation: Story = {
     docs: {
       description: {
         story:
-          "Destructive or two-way choices get an explicit footer — Cancel plus a toned primary action. The default OK-only footer is for acknowledgements. severity=\"warning\" makes this an alertdialog announced assertively.",
+          "Destructive or two-way choices get an explicit footer — Cancel plus a toned primary action. The default OK-only footer is for acknowledgements. severity=\"error\" aligns the dialog chrome with the destructive action and makes this an alertdialog announced assertively.",
       },
     },
   },
@@ -217,7 +222,7 @@ export const Confirmation: Story = {
           onClose={() => setOpen(false)}
           title="Delete this project?"
           description="This removes the project and its history for everyone in the workspace."
-          severity="warning"
+          severity="error"
           footer={
             <>
               <Button variant="secondary" onClick={() => setOpen(false)}>
@@ -229,9 +234,24 @@ export const Confirmation: Story = {
             </>
           }
         >
-          <Text size="s">Type the project name to confirm elsewhere; this demo keeps it short.</Text>
+          <Text size="s">
+            Type the project name to confirm elsewhere; this demo keeps it
+            short.
+          </Text>
         </Modal>
       </>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.click(
+      within(canvasElement).getByRole("button", { name: /delete project/i }),
+    );
+    const dialog = await within(document.body).findByRole("alertdialog", {
+      name: "Delete this project?",
+    });
+    expect(dialog.querySelector("[data-semantic-icon]")).toHaveAttribute(
+      "data-semantic-icon",
+      "error",
     );
   },
 };
@@ -404,6 +424,7 @@ export const ForcedColors: Story = {
   args: {
     title: "Something went wrong",
     severity: "error",
-    description: "We could not save your changes. Check your connection and try again.",
+    description:
+      "We could not save your changes. Check your connection and try again.",
   },
 };

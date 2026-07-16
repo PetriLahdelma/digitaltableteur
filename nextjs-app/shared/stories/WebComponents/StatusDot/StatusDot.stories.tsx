@@ -26,7 +26,7 @@ function NativeStatusDot(args: Args) {
 const meta = {
   title: "Web Components/Feedback/StatusDot",
   component: NativeStatusDot,
-  tags: ["autodocs", "stable", "web-components"],
+  tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {
