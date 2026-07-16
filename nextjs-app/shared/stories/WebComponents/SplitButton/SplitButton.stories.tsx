@@ -35,7 +35,12 @@ const saveOptions = JSON.stringify([
 const exportOptions = JSON.stringify([
   { id: "pdf", label: "Export PDF", trailingIcon: "file-text" },
   { id: "csv", label: "Export CSV", trailingIcon: "download" },
-  { id: "xlsx", label: "Export Excel", disabled: true, trailingIcon: "file-text" },
+  {
+    id: "xlsx",
+    label: "Export Excel",
+    disabled: true,
+    trailingIcon: "file-text",
+  },
 ]);
 
 const submenuOptions = JSON.stringify([
@@ -135,9 +140,26 @@ export const Variants: Story = {
   ...exampleStory,
   render: () => (
     <Row>
-      <NativeElement tagName="dt-split-button" attributes={{ label: "Save", options: saveOptions, variant: "primary" }} />
-      <NativeElement tagName="dt-split-button" attributes={{ label: "Save", options: saveOptions, variant: "secondary" }} />
-      <NativeElement tagName="dt-split-button" attributes={{ label: "Save", options: saveOptions, variant: "tertiary" }} />
+      <NativeElement
+        tagName="dt-split-button"
+        attributes={{ label: "Save", options: saveOptions, variant: "primary" }}
+      />
+      <NativeElement
+        tagName="dt-split-button"
+        attributes={{
+          label: "Save",
+          options: saveOptions,
+          variant: "secondary",
+        }}
+      />
+      <NativeElement
+        tagName="dt-split-button"
+        attributes={{
+          label: "Save",
+          options: saveOptions,
+          variant: "tertiary",
+        }}
+      />
     </Row>
   ),
 };
@@ -160,6 +182,8 @@ export const WithSubmenu: Story = {
   },
 };
 
+export const NestedSubmenus: Story = { ...WithSubmenu };
+
 export const Rounded: Story = {
   ...exampleStory,
   args: {
@@ -176,10 +200,15 @@ export const Disabled: Story = {
   },
 };
 
+export const DisabledState: Story = { ...Disabled };
+
 export const RichLabelSlot: Story = {
   ...exampleStory,
   render: () => (
-    <NativeElement tagName="dt-split-button" attributes={{ options: saveOptions }}>
+    <NativeElement
+      tagName="dt-split-button"
+      attributes={{ options: saveOptions }}
+    >
       <span slot="label">Save draft</span>
     </NativeElement>
   ),
@@ -190,19 +219,30 @@ export const Surfaces: Story = {
   render: () => (
     <Stack>
       <Row>
-        <NativeElement tagName="dt-split-button" attributes={{ label: "Save", options: saveOptions }} />
+        <NativeElement
+          tagName="dt-split-button"
+          attributes={{ label: "Save", options: saveOptions }}
+        />
       </Row>
       <Row>
         <div style={{ padding: "1rem", background: "#111" }}>
           <NativeElement
             tagName="dt-split-button"
-            attributes={{ label: "Save", options: saveOptions, surface: "onDark" }}
+            attributes={{
+              label: "Save",
+              options: saveOptions,
+              surface: "onDark",
+            }}
           />
         </div>
         <div style={{ padding: "1rem", background: "var(--color-primary)" }}>
           <NativeElement
             tagName="dt-split-button"
-            attributes={{ label: "Save", options: saveOptions, surface: "onBrand" }}
+            attributes={{
+              label: "Save",
+              options: saveOptions,
+              surface: "onBrand",
+            }}
           />
         </div>
       </Row>

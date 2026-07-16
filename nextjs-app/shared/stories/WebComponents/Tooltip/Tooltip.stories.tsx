@@ -105,7 +105,11 @@ export const Placements: Story = {
           >
             <NativeElement
               tagName="dt-button"
-              attributes={{ variant: "secondary", size: "sm", label: placement }}
+              attributes={{
+                variant: "secondary",
+                size: "sm",
+                label: placement,
+              }}
             />
           </NativeElement>
         ))}
@@ -160,7 +164,11 @@ export const Delay: Story = {
         >
           <NativeElement
             tagName="dt-button"
-            attributes={{ variant: "secondary", size: "sm", label: `${delay}ms` }}
+            attributes={{
+              variant: "secondary",
+              size: "sm",
+              label: `${delay}ms`,
+            }}
           />
         </NativeElement>
       ))}

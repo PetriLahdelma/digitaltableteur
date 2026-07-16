@@ -13,6 +13,31 @@ beforeAll(() => {
 });
 
 describe("native tabs and segmented control", () => {
+  it("uses instance-scoped tab and panel IDs", () => {
+    const createTabs = () => {
+      const element = document.createElement("dt-tabs") as DtTabsElement;
+      element.tabs = [{ key: "overview", label: "Overview" }];
+      return element;
+    };
+    const first = createTabs();
+    const second = createTabs();
+    document.body.append(first, second);
+
+    const firstTab =
+      first.shadowRoot?.querySelector<HTMLElement>('[role="tab"]');
+    const secondTab =
+      second.shadowRoot?.querySelector<HTMLElement>('[role="tab"]');
+    const firstPanel =
+      first.shadowRoot?.querySelector<HTMLElement>('[role="tabpanel"]');
+    const secondPanel =
+      second.shadowRoot?.querySelector<HTMLElement>('[role="tabpanel"]');
+
+    expect(firstTab?.id).not.toBe(secondTab?.id);
+    expect(firstPanel?.id).not.toBe(secondPanel?.id);
+    expect(firstTab?.getAttribute("aria-controls")).toBe(firstPanel?.id);
+    expect(firstPanel?.getAttribute("aria-labelledby")).toBe(firstTab?.id);
+  });
+
   it("renders slotted tabpanels, updates uncontrolled selection, and emits bubbling composed tab-change events", () => {
     const element = document.createElement("dt-tabs") as DtTabsElement;
     element.tabs = [
@@ -38,8 +63,10 @@ describe("native tabs and segmented control", () => {
     document.body.append(element);
 
     const tablist = element.shadowRoot?.querySelector("[role='tablist']");
-    const tabs = element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='tab']");
-    const panels = element.shadowRoot?.querySelectorAll<HTMLElement>("[role='tabpanel']");
+    const tabs =
+      element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='tab']");
+    const panels =
+      element.shadowRoot?.querySelectorAll<HTMLElement>("[role='tabpanel']");
 
     expect(tablist).toHaveAttribute("aria-label", "Navigate between tabs");
     expect(tabs?.[1]).toHaveAttribute("aria-selected", "true");
@@ -69,7 +96,8 @@ describe("native tabs and segmented control", () => {
     element.defaultActiveTab = "one";
     document.body.append(element);
 
-    const tabs = element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='tab']");
+    const tabs =
+      element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='tab']");
     const onTabChange = vi.fn();
     element.addEventListener("tab-change", onTabChange);
 
@@ -100,7 +128,8 @@ describe("native tabs and segmented control", () => {
     element.activation = "automatic";
     document.body.append(element);
 
-    const tabs = element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='tab']");
+    const tabs =
+      element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='tab']");
     const onTabChange = vi.fn();
     element.addEventListener("tab-change", onTabChange);
 
@@ -119,10 +148,9 @@ describe("native tabs and segmented control", () => {
     const updatedTabs =
       element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='tab']");
     expect(updatedTabs?.[1]).toHaveAttribute("aria-selected", "true");
-    expect(element.shadowRoot?.querySelector("[role='tablist']")).toHaveAttribute(
-      "aria-orientation",
-      "vertical",
-    );
+    expect(
+      element.shadowRoot?.querySelector("[role='tablist']"),
+    ).toHaveAttribute("aria-orientation", "vertical");
   });
 
   it("renders segmented control as a radiogroup and supports uncontrolled value changes while skipping disabled items", () => {
@@ -138,7 +166,8 @@ describe("native tabs and segmented control", () => {
     element.setAttribute("aria-label", "Range");
     document.body.append(element);
 
-    const segments = element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='radio']");
+    const segments =
+      element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='radio']");
     const onValueChange = vi.fn();
     element.addEventListener("value-change", onValueChange);
 
@@ -149,7 +178,9 @@ describe("native tabs and segmented control", () => {
     expect(segments?.[1]).toBeDisabled();
 
     segments?.[0].focus();
-    fireEvent.keyDown(segments?.[0] as HTMLButtonElement, { key: "ArrowRight" });
+    fireEvent.keyDown(segments?.[0] as HTMLButtonElement, {
+      key: "ArrowRight",
+    });
 
     expect(element.value).toBe("month");
     expect(segments?.[2]).toHaveAttribute("aria-checked", "true");
@@ -174,7 +205,8 @@ describe("native tabs and segmented control", () => {
     element.addEventListener("value-change", onValueChange);
     document.body.append(element);
 
-    const segments = element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='radio']");
+    const segments =
+      element.shadowRoot?.querySelectorAll<HTMLButtonElement>("[role='radio']");
     fireEvent.click(segments?.[2] as HTMLButtonElement);
 
     expect(onValueChange).toHaveBeenCalledTimes(1);

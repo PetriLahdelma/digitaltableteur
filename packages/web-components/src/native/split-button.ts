@@ -345,7 +345,10 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
   }
 
   disconnectedCallback(): void {
-    this.ownerDocument.removeEventListener("pointerdown", this.handlePointerDown);
+    this.ownerDocument.removeEventListener(
+      "pointerdown",
+      this.handlePointerDown,
+    );
     this.removeEventListener("keydown", this.handleKeydown);
     if (this.typeaheadTimer) clearTimeout(this.typeaheadTimer);
     super.disconnectedCallback();
@@ -492,7 +495,10 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
   }
 
   private detachDismissListeners(): void {
-    this.ownerDocument.removeEventListener("pointerdown", this.handlePointerDown);
+    this.ownerDocument.removeEventListener(
+      "pointerdown",
+      this.handlePointerDown,
+    );
   }
 
   private openMenu(focusLast = false): void {
@@ -545,18 +551,19 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
     if (active) active.setAttribute("data-highlighted", "true");
   }
 
-  private focusControl(
-    direction: "first" | "last",
-    panelId: string,
-  ): void {
+  private focusControl(direction: "first" | "last", panelId: string): void {
     const controls = this.controlsForPanel(panelId);
     const target =
-      direction === "last" ? controls.at(-1) ?? null : controls[0] ?? null;
+      direction === "last" ? (controls.at(-1) ?? null) : (controls[0] ?? null);
     this.highlightControl(target);
     target?.focus();
   }
 
-  private moveFocus(delta: number, panelId: string, active: HTMLElement | null): void {
+  private moveFocus(
+    delta: number,
+    panelId: string,
+    active: HTMLElement | null,
+  ): void {
     const controls = this.controlsForPanel(panelId);
     if (controls.length === 0) return;
     const currentIndex = active ? controls.indexOf(active) : -1;
@@ -646,7 +653,8 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
 
   private currentLabelText(): string {
     if (this.hasLabelSlot) {
-      const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="label"]');
+      const slot =
+        this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="label"]');
       const text = slot
         ?.assignedNodes({ flatten: true })
         .map((node) => node.textContent || "")
@@ -657,7 +665,10 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
     return this.label;
   }
 
-  private optionBody(option: DtSplitButtonOption, trailingCaret = false): DocumentFragment {
+  private optionBody(
+    option: DtSplitButtonOption,
+    trailingCaret = false,
+  ): DocumentFragment {
     const fragment = this.ownerDocument.createDocumentFragment();
     if (option.icon) {
       const icon = this.ownerDocument.createElement("span");
@@ -696,7 +707,9 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
     panel.className = `menu${parentPath ? " submenu" : ""}`;
     panel.setAttribute("part", parentPath ? "submenu" : "menu");
     panel.setAttribute("role", "menu");
-    panel.hidden = parentPath ? this.openSubmenuPath !== parentPath : !this.menuOpen;
+    panel.hidden = parentPath
+      ? this.openSubmenuPath !== parentPath
+      : !this.menuOpen;
     if (!parentPath) {
       panel.id = this.menuId;
       panel.setAttribute("data-align", this.menuAlign);
@@ -709,9 +722,10 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
       const wrap = this.ownerDocument.createElement("div");
       wrap.className = "menuWrap";
 
-      const control = option.href && !hasChildren
-        ? this.ownerDocument.createElement("a")
-        : this.ownerDocument.createElement("button");
+      const control =
+        option.href && !hasChildren
+          ? this.ownerDocument.createElement("a")
+          : this.ownerDocument.createElement("button");
       control.className = "menuItem";
       control.setAttribute("part", "menu-item");
       control.setAttribute("role", "menuitem");
@@ -813,11 +827,17 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
   };
 
   private readonly handleKeydown = (event: KeyboardEvent): void => {
-    const fromToggle = event.composedPath().some(
-      (node) => node instanceof HTMLElement && node.classList.contains("toggle"),
-    );
+    const fromToggle = event
+      .composedPath()
+      .some(
+        (node) =>
+          node instanceof HTMLElement && node.classList.contains("toggle"),
+      );
     if (!this.menuOpen) {
-      if (fromToggle && (event.key === "ArrowDown" || event.key === "ArrowUp")) {
+      if (
+        fromToggle &&
+        (event.key === "ArrowDown" || event.key === "ArrowUp")
+      ) {
         this.handleToggleKeydown(event);
       }
       return;
@@ -825,8 +845,9 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
 
     const active = this.activeControlFromEvent(event);
     const panelId = active?.getAttribute("data-menu-panel-id") || "root";
-    const parentPath =
-      panelId.startsWith("submenu:") ? panelId.slice("submenu:".length) : null;
+    const parentPath = panelId.startsWith("submenu:")
+      ? panelId.slice("submenu:".length)
+      : null;
 
     if (event.key === "Escape") {
       event.preventDefault();
@@ -836,8 +857,7 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
     }
 
     if (event.key === "Tab") {
-      event.preventDefault();
-      this.moveFocus(event.shiftKey ? -1 : 1, panelId, active);
+      this.ownerDocument.defaultView?.setTimeout(() => this.closeMenu(), 0);
       return;
     }
 
@@ -863,7 +883,11 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
       this.moveFocus(-1, panelId, active);
       return;
     }
-    if (event.key === "ArrowRight" || event.key === "Enter" || event.key === " ") {
+    if (
+      event.key === "ArrowRight" ||
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
       if (active?.getAttribute("data-has-children") === "true") {
         event.preventDefault();
         const path = active.getAttribute("data-menu-path");
@@ -903,7 +927,8 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
       .filter(Boolean)
       .join(" ");
     if (this.tooltip) primary.title = this.tooltip;
-    if (this.accessibleName) primary.setAttribute("aria-label", this.accessibleName);
+    if (this.accessibleName)
+      primary.setAttribute("aria-label", this.accessibleName);
     primary.disabled = this.disabled;
     primary.addEventListener("click", this.handlePrimaryClick);
 

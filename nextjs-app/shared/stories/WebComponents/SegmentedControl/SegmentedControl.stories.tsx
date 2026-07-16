@@ -50,8 +50,7 @@ function ControlledSegmentedControl() {
   const [value, setValue] = useState("list");
   const wrapperRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const element =
-      wrapperRef.current?.querySelector("dt-segmented-control");
+    const element = wrapperRef.current?.querySelector("dt-segmented-control");
     const onChange = (event: Event) =>
       setValue((event as CustomEvent<{ value: string }>).detail.value);
     element?.addEventListener("value-change", onChange);

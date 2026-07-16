@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0 - 2026-07-16
+
+- Adds native Modal, Tooltip, Menu, SplitButton, Tabs, SegmentedControl,
+  Accordion, and ExpandableSection elements.
+- Covers controlled and uncontrolled state, composed change/request events,
+  focus restoration and containment, roving keyboard navigation, disabled-item
+  handling, and declarative or property-based item data.
+- Expands the native Storybook catalog to mirror the canonical React stories,
+  including controlled, severity, placement, variant, keyboard, and
+  forced-colors scenarios.
+
+Verified by `check:web-components:dod`, `check:package-release-notes`,
+`check:package-tarballs`, and `check:npm-consumer-install`.
+
 ## 0.4.0 - 2026-07-15
 
 - Adds native Avatar, AvatarGroup, Display, FlexBox, Grid, Kbd, Skeleton, and

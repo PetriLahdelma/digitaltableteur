@@ -1,5 +1,10 @@
 export { default as AlertBanner } from "../../../nextjs-app/shared/components/AlertBanner/AlertBanner";
 export type { AlertBannerProps } from "../../../nextjs-app/shared/components/AlertBanner/AlertBanner";
+export { default as Accordion } from "../../../nextjs-app/shared/components/Accordion";
+export type {
+  AccordionItem,
+  AccordionProps,
+} from "../../../nextjs-app/shared/components/Accordion";
 export { default as Avatar } from "../../../nextjs-app/shared/components/Avatar/Avatar";
 export type {
   AvatarMenuItem,
@@ -315,6 +320,13 @@ export type {
   ToastStackItem,
   ToastStackProps,
 } from "../../../nextjs-app/shared/components/ToastStack/ToastStack";
+export {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+  type TooltipProps,
+} from "../../../nextjs-app/shared/components/Tooltip";
 export {
   ValueCard,
   type ValueCardProps,

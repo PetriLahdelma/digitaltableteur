@@ -24,10 +24,10 @@ export interface DtTabItem {
   count?: number;
 }
 
-const ICON_PX: Record<DtTabsSize, string> = {
-  sm: "16",
-  md: "18",
-  lg: "20",
+const ICON_SIZE: Record<DtTabsSize, DtTabsSize> = {
+  sm: "sm",
+  md: "md",
+  lg: "lg",
 };
 
 const styles = `
@@ -245,14 +245,6 @@ const styles = `
   }
 `;
 
-function tabId(key: string): string {
-  return `tab-${key}`;
-}
-
-function panelId(key: string): string {
-  return `tabpanel-${key}`;
-}
-
 function tabSlotName(key: string): string {
   return `tab-${key}`;
 }
@@ -283,6 +275,9 @@ export class DtTabsElement extends DigitaltableteurElement {
   private readonly tabButtons = new Map<string, HTMLButtonElement>();
   private readonly panelWrappers = new Map<string, HTMLElement>();
   private resizeObserver?: ResizeObserver;
+  private readonly instanceId = `dt-tabs-${++DtTabsElement.sequence}`;
+
+  private static sequence = 0;
 
   connectedCallback(): void {
     if (this.liveActiveTab === null) {
@@ -417,7 +412,8 @@ export class DtTabsElement extends DigitaltableteurElement {
   }
 
   private resolveInitialActiveTab(): string {
-    if (this.hasAttribute("active-tab")) return stringAttribute(this, "active-tab");
+    if (this.hasAttribute("active-tab"))
+      return stringAttribute(this, "active-tab");
     return this.resolveFallbackActiveTab();
   }
 
@@ -437,11 +433,21 @@ export class DtTabsElement extends DigitaltableteurElement {
   }
 
   private isEnabledKey(key: string | null): key is string {
-    return Boolean(key && this.tabs.some((tab) => tab.key === key && !tab.disabled));
+    return Boolean(
+      key && this.tabs.some((tab) => tab.key === key && !tab.disabled),
+    );
   }
 
   private selectedKey(): string {
     return this.liveActiveTab ?? "";
+  }
+
+  private tabId(key: string): string {
+    return `${this.instanceId}-tab-${key}`;
+  }
+
+  private panelId(key: string): string {
+    return `${this.instanceId}-panel-${key}`;
   }
 
   private resolvedFocusKey(): string {
@@ -478,7 +484,9 @@ export class DtTabsElement extends DigitaltableteurElement {
     const tab = this.tabs.find((item) => item.key === key);
     if (!tab || tab.disabled) return;
 
-    const enabledKeys = this.tabs.filter((item) => !item.disabled).map((item) => item.key);
+    const enabledKeys = this.tabs
+      .filter((item) => !item.disabled)
+      .map((item) => item.key);
     const currentKey = this.isEnabledKey(this.focusKey) ? this.focusKey : key;
     const currentIndex = enabledKeys.indexOf(currentKey);
     if (currentIndex === -1) return;
@@ -488,7 +496,9 @@ export class DtTabsElement extends DigitaltableteurElement {
       case "ArrowLeft":
       case "ArrowUp":
         nextKey =
-          enabledKeys[(currentIndex - 1 + enabledKeys.length) % enabledKeys.length] ?? null;
+          enabledKeys[
+            (currentIndex - 1 + enabledKeys.length) % enabledKeys.length
+          ] ?? null;
         break;
       case "ArrowRight":
       case "ArrowDown":
@@ -518,11 +528,15 @@ export class DtTabsElement extends DigitaltableteurElement {
     this.moveFocus(nextKey);
   }
 
-  private renderTabButton(tab: DtTabItem, activeKey: string, focusKey: string): HTMLButtonElement {
+  private renderTabButton(
+    tab: DtTabItem,
+    activeKey: string,
+    focusKey: string,
+  ): HTMLButtonElement {
     const button = this.ownerDocument.createElement("button");
     const selected = tab.key === activeKey;
     button.type = "button";
-    button.id = tabId(tab.key);
+    button.id = this.tabId(tab.key);
     button.dataset.tabKey = tab.key;
     button.className = [
       "tab",
@@ -534,7 +548,7 @@ export class DtTabsElement extends DigitaltableteurElement {
     button.setAttribute("part", "tab");
     button.setAttribute("role", "tab");
     button.setAttribute("aria-selected", String(selected));
-    button.setAttribute("aria-controls", panelId(tab.key));
+    button.setAttribute("aria-controls", this.panelId(tab.key));
     button.tabIndex = !tab.disabled && tab.key === focusKey ? 0 : -1;
     button.disabled = tab.disabled === true;
     button.addEventListener("click", () => {
@@ -555,7 +569,7 @@ export class DtTabsElement extends DigitaltableteurElement {
       icon.className = "tabIcon";
       icon.setAttribute("aria-hidden", "true");
       icon.setAttribute("name", tab.icon);
-      icon.setAttribute("size", ICON_PX[this.size]);
+      icon.setAttribute("size", ICON_SIZE[this.size]);
       button.append(icon);
     }
 
@@ -581,10 +595,10 @@ export class DtTabsElement extends DigitaltableteurElement {
     const panel = this.ownerDocument.createElement("div");
     const active = tab.key === activeKey;
     panel.className = "panel";
-    panel.id = panelId(tab.key);
+    panel.id = this.panelId(tab.key);
     panel.setAttribute("part", "panel");
     panel.setAttribute("role", "tabpanel");
-    panel.setAttribute("aria-labelledby", tabId(tab.key));
+    panel.setAttribute("aria-labelledby", this.tabId(tab.key));
     panel.hidden = !active;
     panel.tabIndex = active ? 0 : -1;
     const slot = this.ownerDocument.createElement("slot");
@@ -663,7 +677,9 @@ export class DtTabsElement extends DigitaltableteurElement {
     root.append(list, panels);
     this.replaceShadow(styles, root);
     this.list = this.shadowRoot?.querySelector<HTMLDivElement>(".tabs") ?? list;
-    this.indicator = this.shadowRoot?.querySelector<HTMLSpanElement>(".indicator") ?? indicator;
+    this.indicator =
+      this.shadowRoot?.querySelector<HTMLSpanElement>(".indicator") ??
+      indicator;
 
     this.resizeObserver?.disconnect();
     if (typeof ResizeObserver !== "undefined" && this.list) {
@@ -724,11 +740,23 @@ export class DtTabsElement extends DigitaltableteurElement {
     }
 
     if (this.orientation === "vertical") {
-      this.list.style.setProperty("--tab-ind-offset", `${activeButton.offsetTop}px`);
-      this.list.style.setProperty("--tab-ind-size", `${activeButton.offsetHeight}px`);
+      this.list.style.setProperty(
+        "--tab-ind-offset",
+        `${activeButton.offsetTop}px`,
+      );
+      this.list.style.setProperty(
+        "--tab-ind-size",
+        `${activeButton.offsetHeight}px`,
+      );
     } else {
-      this.list.style.setProperty("--tab-ind-offset", `${activeButton.offsetLeft}px`);
-      this.list.style.setProperty("--tab-ind-size", `${activeButton.offsetWidth}px`);
+      this.list.style.setProperty(
+        "--tab-ind-offset",
+        `${activeButton.offsetLeft}px`,
+      );
+      this.list.style.setProperty(
+        "--tab-ind-size",
+        `${activeButton.offsetWidth}px`,
+      );
     }
     this.list.dataset.indicatorReady = "true";
   }

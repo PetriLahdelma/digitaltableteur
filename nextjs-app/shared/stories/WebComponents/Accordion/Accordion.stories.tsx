@@ -1,11 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { expect, userEvent } from "storybook/test";
-import {
-  Stage,
-  assertNative,
-  nativeStoryParameters,
-} from "../NativeStory";
+import { Stage, assertNative, nativeStoryParameters } from "../NativeStory";
 import {
   DtAccordionElement,
   type DtAccordionItem,
@@ -61,15 +57,21 @@ function NativeAccordion({
     element.type = type;
     element.variant = variant;
     element.defaultOpenId = defaultOpenId ?? "";
-    element.defaultOpenIds = defaultOpenIds ?? [];
-    element.openIds = openIds;
+    element.defaultOpenIds = Array.isArray(defaultOpenIds)
+      ? defaultOpenIds
+      : [];
+    element.openIds = Array.isArray(openIds) ? openIds : undefined;
   }, [defaultOpenId, defaultOpenIds, items, openIds, type, variant]);
 
   return React.createElement(
     "dt-accordion",
     { ref },
     slots?.map((entry) =>
-      React.createElement("div", { key: entry.slot, slot: entry.slot }, entry.content),
+      React.createElement(
+        "div",
+        { key: entry.slot, slot: entry.slot },
+        entry.content,
+      ),
     ),
   );
 }
@@ -152,12 +154,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   play: async ({ canvasElement }) => {
     await assertNative("dt-accordion")({ canvasElement });
-    const first =
-      canvasElement
-        .querySelector("dt-accordion")
-        ?.shadowRoot?.querySelector<HTMLButtonElement>("button[id$=\"-one\"]");
+    const first = canvasElement
+      .querySelector("dt-accordion")
+      ?.shadowRoot?.querySelector<HTMLButtonElement>("button[id$='-one']");
     await userEvent.click(first!);
-    await expect(first).toHaveAttribute("aria-expanded", "true");
+    const updated = canvasElement
+      .querySelector("dt-accordion")
+      ?.shadowRoot?.querySelector<HTMLButtonElement>("button[id$='-one']");
+    await expect(updated).toHaveAttribute("aria-expanded", "true");
   },
 };
 
@@ -190,12 +194,14 @@ export const Faq: Story = {
         {
           id: "request",
           title: "How do I request a component?",
-          content: "Open an issue with the use case and two production consumers.",
+          content:
+            "Open an issue with the use case and two production consumers.",
         },
         {
           id: "contribute",
           title: "Can I contribute a pattern?",
-          content: "Yes-start from the pattern template and the contract schema.",
+          content:
+            "Yes-start from the pattern template and the contract schema.",
         },
       ]}
       type="single"
@@ -238,12 +244,14 @@ export const Multiple: Story = {
         {
           id: "features",
           title: "Features",
-          content: "Real-time collaboration, version history, and granular permissions.",
+          content:
+            "Real-time collaboration, version history, and granular permissions.",
         },
         {
           id: "pricing",
           title: "Pricing",
-          content: "Free for up to 5 users. Pro starts at EUR12/user/month billed annually.",
+          content:
+            "Free for up to 5 users. Pro starts at EUR12/user/month billed annually.",
         },
         {
           id: "integrations",
@@ -275,7 +283,8 @@ export const Enclosed: Story = {
         {
           id: "notifications",
           title: "Notifications",
-          content: "Choose which email and push notifications you want to receive.",
+          content:
+            "Choose which email and push notifications you want to receive.",
         },
         {
           id: "privacy",
@@ -297,7 +306,8 @@ export const Divided: Story = {
         {
           id: "deploy",
           title: "Deployment details",
-          content: "Last deployed April 18, 2026 at 3:42 PM. Build duration 2m 14s.",
+          content:
+            "Last deployed April 18, 2026 at 3:42 PM. Build duration 2m 14s.",
         },
         {
           id: "env",
@@ -372,7 +382,10 @@ export const RichSlottedContent: Story = {
           slot: "content-bio",
           content: (
             <>
-              <p>We pair system design, front-end engineering, and content strategy.</p>
+              <p>
+                We pair system design, front-end engineering, and content
+                strategy.
+              </p>
               <p>Most readers can skip this until they need the details.</p>
             </>
           ),

@@ -24,4 +24,10 @@ export type {
   ToastStackItem,
   ToastStackProps,
 } from "../../../nextjs-app/shared/components/ToastStack/ToastStack";
-
+export {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+  type TooltipProps,
+} from "../../../nextjs-app/shared/components/Tooltip";

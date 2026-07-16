@@ -60,7 +60,10 @@ function renderAccordion({
   return element;
 }
 
-function triggerFor(element: DtAccordionElement, id: string): HTMLButtonElement {
+function triggerFor(
+  element: DtAccordionElement,
+  id: string,
+): HTMLButtonElement {
   const button = element.shadowRoot?.querySelector<HTMLButtonElement>(
     `button[id$="-${CSS.escape(id)}"]`,
   );
@@ -117,7 +120,9 @@ function renderExpandable({
   return element;
 }
 
-function expandableTrigger(element: DtExpandableSectionElement): HTMLButtonElement {
+function expandableTrigger(
+  element: DtExpandableSectionElement,
+): HTMLButtonElement {
   const button = element.shadowRoot?.querySelector<HTMLButtonElement>("button");
   if (!button) throw new Error("Missing expandable trigger");
   return button;
@@ -172,6 +177,17 @@ describe("DtAccordionElement", () => {
     await user.click(triggerFor(single, "three"));
     expect(isAccordionOpen(single, "two")).toBe(false);
     expect(isAccordionOpen(single, "three")).toBe(true);
+  });
+
+  it("treats default open IDs as seed-only after user interaction", async () => {
+    const user = userEvent.setup();
+    const element = renderAccordion({ defaultOpenId: "one" });
+
+    await user.click(triggerFor(element, "two"));
+    element.defaultOpenId = "three";
+
+    expect(isAccordionOpen(element, "two")).toBe(true);
+    expect(isAccordionOpen(element, "three")).toBe(false);
   });
 
   it("supports controlled state and emits bubbled composed open-change events", async () => {
@@ -246,7 +262,9 @@ describe("DtAccordionElement", () => {
     });
 
     const trigger = triggerFor(element, "one");
-    trigger.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    trigger.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
+    );
 
     expect(isAccordionOpen(element, "one")).toBe(true);
     const slot = panelFor(element, "one").querySelector<HTMLSlotElement>(
@@ -272,7 +290,10 @@ describe("DtExpandableSectionElement", () => {
       expandedLabel: "Show less",
     });
 
-    expect(expandableTrigger(element)).toHaveAttribute("aria-expanded", "false");
+    expect(expandableTrigger(element)).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
     expect(expandableTrigger(element)).toHaveTextContent("Show more");
 
     await user.click(expandableTrigger(element));
@@ -280,6 +301,16 @@ describe("DtExpandableSectionElement", () => {
     expect(expandableTrigger(element)).toHaveAttribute("aria-expanded", "true");
     expect(expandableTrigger(element)).toHaveTextContent("Show less");
     expect(expandablePanel(element)).not.toHaveAttribute("aria-hidden");
+  });
+
+  it("treats defaultExpanded as a seed-only value", async () => {
+    const user = userEvent.setup();
+    const element = renderExpandable();
+
+    await user.click(expandableTrigger(element));
+    element.defaultExpanded = false;
+
+    expect(expandableTrigger(element)).toHaveAttribute("aria-expanded", "true");
   });
 
   it("supports controlled expansion and emits bubbled composed expanded-change events", async () => {
@@ -304,7 +335,10 @@ describe("DtExpandableSectionElement", () => {
       bubbles: true,
       composed: true,
     });
-    expect(expandableTrigger(element)).toHaveAttribute("aria-expanded", "false");
+    expect(expandableTrigger(element)).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
 
     element.expanded = true;
     expect(expandableTrigger(element)).toHaveAttribute("aria-expanded", "true");
@@ -323,9 +357,7 @@ describe("DtExpandableSectionElement", () => {
       expandableTrigger(element).id,
     );
     expect(
-      slotText(
-        expandablePanel(element).querySelector<HTMLSlotElement>("slot"),
-      ),
+      slotText(expandablePanel(element).querySelector<HTMLSlotElement>("slot")),
     ).toBe("Visible tail");
   });
 
@@ -333,11 +365,16 @@ describe("DtExpandableSectionElement", () => {
     const element = renderExpandable({ collapsedLabel: "Details" });
 
     const trigger = expandableTrigger(element);
-    trigger.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    trigger.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
+    );
     expect(expandableTrigger(element)).toHaveAttribute("aria-expanded", "true");
     expandableTrigger(element).dispatchEvent(
       new KeyboardEvent("keydown", { key: " ", bubbles: true }),
     );
-    expect(expandableTrigger(element)).toHaveAttribute("aria-expanded", "false");
+    expect(expandableTrigger(element)).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
   });
 });

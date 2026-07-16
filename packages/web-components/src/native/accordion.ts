@@ -144,6 +144,7 @@ export class DtAccordionElement extends DigitaltableteurElement {
   private assignedItems: DtAccordionItem[] | null = null;
   private assignedOpenIds: string[] | null = null;
   private defaultOpenInitialized = false;
+  private defaultOpenDirty = false;
   private internalOpenIds: string[] = [];
   private instanceId = 0;
 
@@ -165,10 +166,10 @@ export class DtAccordionElement extends DigitaltableteurElement {
     if (name === "open-ids") this.assignedOpenIds = null;
     if (
       (name === "default-open-id" || name === "default-open-ids") &&
-      !this.isControlled
+      !this.isControlled &&
+      !this.defaultOpenDirty
     ) {
       this.internalOpenIds = this.normalizeOpenIds(this.seedDefaultOpenIds());
-      this.defaultOpenInitialized = true;
     }
     if (this.isConnected) this.render();
   }
@@ -205,7 +206,10 @@ export class DtAccordionElement extends DigitaltableteurElement {
 
   get openIds(): string[] | undefined {
     if (!this.isControlled) return undefined;
-    return [...(this.assignedOpenIds ?? this.parseStringArray(this.getAttribute("open-ids")))];
+    return [
+      ...(this.assignedOpenIds ??
+        this.parseStringArray(this.getAttribute("open-ids"))),
+    ];
   }
   set openIds(value: string[] | undefined) {
     this.assignedOpenIds = value ? [...value] : null;
@@ -300,7 +304,10 @@ export class DtAccordionElement extends DigitaltableteurElement {
       current.add(id);
     }
     const next = this.normalizeOpenIds([...current]);
-    if (!this.isControlled) this.internalOpenIds = next;
+    if (!this.isControlled) {
+      this.internalOpenIds = next;
+      this.defaultOpenDirty = true;
+    }
     this.dispatchEvent(
       new CustomEvent("open-change", {
         detail: { openIds: [...next] },
@@ -347,7 +354,11 @@ export class DtAccordionElement extends DigitaltableteurElement {
       trigger.dataset.itemKey = itemKey;
       let ignoreNextClick = false;
       trigger.addEventListener("keydown", (event) => {
-        if (event.key !== "Enter" && event.key !== " " && event.key !== "Spacebar") {
+        if (
+          event.key !== "Enter" &&
+          event.key !== " " &&
+          event.key !== "Spacebar"
+        ) {
           return;
         }
         event.preventDefault();

@@ -16,7 +16,7 @@ const items: SegmentedControlItem[] = [
 const meta = {
   title: "Navigation/SegmentedControl",
   component: SegmentedControl,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "centered",
     a11y: { test: "error" },

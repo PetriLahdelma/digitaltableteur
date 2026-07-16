@@ -24,6 +24,49 @@ afterEach(() => {
 });
 
 describe("native Menu", () => {
+  it("closes a non-modal menu on Tab without cancelling focus navigation", async () => {
+    const menu = document.createElement("dt-menu") as DtMenuElement;
+    menu.items = [{ id: "edit", label: "Edit" }];
+    const trigger = document.createElement("button");
+    trigger.slot = "trigger";
+    trigger.textContent = "Actions";
+    menu.append(trigger);
+    document.body.append(menu);
+    trigger.click();
+
+    const item =
+      menu.shadowRoot?.querySelector<HTMLElement>('[role="menuitem"]');
+    const event = new KeyboardEvent("keydown", {
+      key: "Tab",
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+    });
+    item?.dispatchEvent(event);
+
+    expect(event.defaultPrevented).toBe(false);
+    await waitFor(() => expect(menu.open).toBe(false));
+  });
+
+  it("tracks externally controlled open attributes for outside dismissal", () => {
+    const menu = document.createElement("dt-menu") as DtMenuElement;
+    menu.items = [{ id: "edit", label: "Edit" }];
+    const trigger = document.createElement("button");
+    trigger.slot = "trigger";
+    trigger.textContent = "Actions";
+    menu.append(trigger);
+    document.body.append(menu);
+
+    menu.setAttribute("open", "");
+    expect(menu.open).toBe(true);
+
+    document.body.dispatchEvent(
+      new PointerEvent("pointerdown", { bubbles: true }),
+    );
+
+    expect(menu.open).toBe(false);
+  });
+
   it("wires a slotted trigger, opens serializable items, and emits selection payloads", async () => {
     const menu = document.createElement("dt-menu") as DtMenuElement;
     menu.items = [
@@ -93,25 +136,33 @@ describe("native Menu", () => {
       expect(menu.shadowRoot?.activeElement?.textContent).toContain("Rename");
     });
 
-    menu.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }));
+    menu.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
+    );
     await waitFor(() => {
       expect(menu.shadowRoot?.activeElement?.textContent).toContain("Share");
     });
 
-    menu.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
+    menu.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }),
+    );
     await waitFor(() => {
       expect(menu.shadowRoot?.activeElement?.textContent).toContain("By email");
     });
 
-    menu.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }));
+    menu.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }),
+    );
     await waitFor(() => {
       expect(menu.shadowRoot?.activeElement?.textContent).toContain("Share");
     });
 
-    menu.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
-    expect(document.activeElement === trigger || document.activeElement === menu).toBe(
-      true,
+    menu.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
     );
+    expect(
+      document.activeElement === trigger || document.activeElement === menu,
+    ).toBe(true);
     expect(trigger).toHaveAttribute("aria-expanded", "false");
   });
 
@@ -177,12 +228,10 @@ describe("native SplitButton", () => {
     splitButton.addEventListener("primary-click", onPrimary);
     splitButton.addEventListener("option-select", onOption);
 
-    const primary = splitButton.shadowRoot?.querySelector<HTMLButtonElement>(
-      ".primary",
-    );
-    const toggle = splitButton.shadowRoot?.querySelector<HTMLButtonElement>(
-      ".toggle",
-    );
+    const primary =
+      splitButton.shadowRoot?.querySelector<HTMLButtonElement>(".primary");
+    const toggle =
+      splitButton.shadowRoot?.querySelector<HTMLButtonElement>(".toggle");
 
     primary?.click();
     expect(onPrimary).toHaveBeenCalledTimes(1);
@@ -276,7 +325,7 @@ describe("native SplitButton", () => {
     ).toBe(true);
   });
 
-  it("traps Tab within the open menu and closes on outside click", async () => {
+  it("closes on Tab without cancelling focus navigation and on outside click", async () => {
     const user = userEvent.setup();
     const wrapper = document.createElement("div");
     const splitButton = document.createElement(
@@ -302,12 +351,21 @@ describe("native SplitButton", () => {
       );
     });
 
-    splitButton.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true }));
-    await waitFor(() => {
-      expect(splitButton.shadowRoot?.activeElement?.textContent).toContain(
-        "Publish now",
-      );
+    const firstItem = splitButton.shadowRoot?.activeElement as HTMLElement;
+    const tabEvent = new KeyboardEvent("keydown", {
+      key: "Tab",
+      bubbles: true,
+      cancelable: true,
+      composed: true,
     });
+    firstItem.dispatchEvent(tabEvent);
+
+    expect(tabEvent.defaultPrevented).toBe(false);
+    await waitFor(() =>
+      expect(toggle).toHaveAttribute("aria-expanded", "false"),
+    );
+
+    toggle.click();
 
     await user.click(outside);
     expect(toggle).toHaveAttribute("aria-expanded", "false");
@@ -322,7 +380,9 @@ describe("native SplitButton", () => {
     disabled.disabled = true;
     document.body.append(disabled);
 
-    const empty = document.createElement("dt-split-button") as DtSplitButtonElement;
+    const empty = document.createElement(
+      "dt-split-button",
+    ) as DtSplitButtonElement;
     empty.label = "Save";
     document.body.append(empty);
 

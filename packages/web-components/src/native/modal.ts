@@ -1,5 +1,6 @@
 import {
   DigitaltableteurElement,
+  enumAttribute,
   hasNamedSlot,
   reflectAttribute,
   reflectBooleanAttribute,
@@ -8,9 +9,13 @@ import {
 
 const SEVERITIES = ["success", "error", "warning", "info"] as const;
 const DISMISS_REASONS = ["api", "backdrop", "close-button", "escape"] as const;
+const ICON_SIZES = ["2xs", "xs", "sm", "md", "lg", "xl", "2xl"] as const;
+const ANIMATIONS = ["none", "scale", "slide", "fade"] as const;
 
 export type DtModalSeverity = (typeof SEVERITIES)[number];
 export type DtModalDismissReason = (typeof DISMISS_REASONS)[number];
+export type DtModalIconSize = (typeof ICON_SIZES)[number];
+export type DtModalAnimation = (typeof ANIMATIONS)[number];
 
 const severityIcon: Record<DtModalSeverity, { name: string; color: string }> = {
   success: { name: "check-circle", color: "var(--color-success)" },
@@ -81,6 +86,30 @@ const styles = `
     border-block-start: 4px solid var(--color-info);
     max-inline-size: min(90vw, 30rem);
   }
+  .panel.loading {
+    max-inline-size: min(90vw, 30rem);
+  }
+  .panel[data-animation="scale"] {
+    animation: modalScaleIn var(--duration-fast, 200ms) var(--ease-out-cubic, ease-out);
+  }
+  .panel[data-animation="slide"] {
+    animation: modalSlideIn var(--duration-fast, 250ms) var(--ease-out-cubic, ease-out);
+  }
+  .panel[data-animation="fade"] {
+    animation: modalFadeIn var(--duration-fast, 200ms) var(--ease-out-cubic, ease-out);
+  }
+  @keyframes modalScaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(1.25rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
   .header,
   .content,
   .footer {
@@ -119,6 +148,19 @@ const styles = `
     font-size: var(--font-size-title-xs, 1.25rem);
     line-height: var(--line-height-tight, 1.2);
     color: var(--color-primary);
+  }
+  .title[data-size="xxs"] { font-size: var(--font-size-title-xxs); }
+  .title[data-size="xs"] { font-size: var(--font-size-title-xs); }
+  .title[data-size="sm"] { font-size: var(--font-size-title-s); }
+  .title[data-size="md"] { font-size: var(--font-size-title-m); }
+  .title[data-size="lg"] { font-size: var(--font-size-title-l); }
+  .title[data-size="xl"] { font-size: var(--font-size-title-xl); }
+  .title[data-size="xxl"] { font-size: var(--font-size-title-xxl); }
+  .loadingContent {
+    display: flex;
+    min-block-size: 8rem;
+    align-items: center;
+    justify-content: center;
   }
   .menu {
     display: inline-flex;
@@ -232,8 +274,10 @@ const styles = `
   }
   @media (prefers-reduced-motion: reduce) {
     .defaultAction,
-    .closeButton {
+    .closeButton,
+    .panel {
       transition: none;
+      animation: none;
     }
   }
   @media (forced-colors: active) {
@@ -264,7 +308,10 @@ let modalId = 0;
 function isFocusable(control: HTMLElement): boolean {
   if (control.matches(":disabled")) return false;
   if (control.getAttribute("aria-hidden") === "true") return false;
-  if (control.tabIndex < 0 && !control.matches("a[href], button, input, select, textarea")) {
+  if (
+    control.tabIndex < 0 &&
+    !control.matches("a[href], button, input, select, textarea")
+  ) {
     return false;
   }
   return !control.hasAttribute("hidden");
@@ -283,6 +330,10 @@ export class DtModalElement extends DigitaltableteurElement {
     "title",
     "description",
     "severity",
+    "loading",
+    "title-size",
+    "icon-size",
+    "animation",
     "show-close-icon",
     "close-button-label",
     "close-icon-name",
@@ -378,6 +429,40 @@ export class DtModalElement extends DigitaltableteurElement {
 
   set severity(value: DtModalSeverity | "") {
     reflectAttribute(this, "severity", value || null);
+  }
+
+  get loading(): boolean {
+    return this.hasAttribute("loading");
+  }
+
+  set loading(value: boolean) {
+    reflectBooleanAttribute(this, "loading", value);
+  }
+
+  get titleSize(): string {
+    const value = stringAttribute(this, "title-size").toLowerCase();
+    const aliases: Record<string, string> = { s: "sm", m: "md", l: "lg" };
+    return aliases[value] ?? (value || "sm");
+  }
+
+  set titleSize(value: string) {
+    reflectAttribute(this, "title-size", value || null);
+  }
+
+  get iconSize(): DtModalIconSize {
+    return enumAttribute(this, "icon-size", ICON_SIZES, "lg");
+  }
+
+  set iconSize(value: DtModalIconSize) {
+    reflectAttribute(this, "icon-size", value);
+  }
+
+  get animation(): DtModalAnimation {
+    return enumAttribute(this, "animation", ANIMATIONS, "none");
+  }
+
+  set animation(value: DtModalAnimation) {
+    reflectAttribute(this, "animation", value);
   }
 
   get showCloseIcon(): boolean {
@@ -562,10 +647,7 @@ export class DtModalElement extends DigitaltableteurElement {
       this.querySelector<HTMLElement>("[autofocus]") ??
       this.shadowRoot?.querySelector<HTMLElement>("[autofocus]");
     const focusables = this.allFocusableElements();
-    const target =
-      autofocus ??
-      focusables[0] ??
-      this.panel;
+    const target = autofocus ?? focusables[0] ?? this.panel;
     if (!target) return;
     if (opening || !this.isWithinModal(this.ownerDocument.activeElement)) {
       target.focus();
@@ -617,7 +699,10 @@ export class DtModalElement extends DigitaltableteurElement {
     });
 
     const panel = this.ownerDocument.createElement("div");
-    panel.className = ["panel", this.severity].filter(Boolean).join(" ");
+    panel.className = ["panel", this.loading ? "loading" : this.severity]
+      .filter(Boolean)
+      .join(" ");
+    if (this.animation !== "none") panel.dataset.animation = this.animation;
     panel.setAttribute("part", "panel");
     panel.tabIndex = -1;
     panel.setAttribute(
@@ -628,8 +713,13 @@ export class DtModalElement extends DigitaltableteurElement {
     );
     panel.setAttribute("aria-modal", "true");
     if (this.title) panel.setAttribute("aria-labelledby", this.titleId());
-    else panel.setAttribute("aria-label", this.getAttribute("aria-label") || "Dialog");
-    if (this.description) panel.setAttribute("aria-describedby", this.descriptionId());
+    else
+      panel.setAttribute(
+        "aria-label",
+        this.getAttribute("aria-label") || "Dialog",
+      );
+    if (this.description)
+      panel.setAttribute("aria-describedby", this.descriptionId());
 
     const hasHeader =
       Boolean(this.title) ||
@@ -656,13 +746,14 @@ export class DtModalElement extends DigitaltableteurElement {
         const icon = this.ownerDocument.createElement("span");
         icon.className = "icon";
         const semantic = severityIcon[this.severity];
-        icon.innerHTML = `<dt-icon name="${semantic.name}" size="lg" color="${semantic.color}" decorative></dt-icon>`;
+        icon.innerHTML = `<dt-icon name="${semantic.name}" size="${this.iconSize}" color="${semantic.color}" decorative></dt-icon>`;
         main.append(icon);
       }
 
       if (this.title) {
         const title = this.ownerDocument.createElement("h2");
         title.className = "title";
+        title.dataset.size = this.titleSize;
         title.id = this.titleId();
         title.textContent = this.title;
         main.append(title);
@@ -685,7 +776,11 @@ export class DtModalElement extends DigitaltableteurElement {
         closeButton.className = "closeButton";
         closeButton.setAttribute("part", "close-button");
         closeButton.setAttribute("aria-label", this.closeButtonLabel);
-        closeButton.innerHTML = `<dt-icon name="${this.closeIconName}" size="md" decorative></dt-icon>`;
+        const closeIcon = this.ownerDocument.createElement("dt-icon");
+        closeIcon.setAttribute("name", this.closeIconName);
+        closeIcon.setAttribute("size", "md");
+        closeIcon.setAttribute("decorative", "");
+        closeButton.append(closeIcon);
         closeButton.addEventListener("click", () =>
           this.requestDismiss("close-button"),
         );
@@ -711,12 +806,18 @@ export class DtModalElement extends DigitaltableteurElement {
     const content = this.ownerDocument.createElement("div");
     content.className = "content";
     content.setAttribute("part", "content");
-    const bodySlot = this.ownerDocument.createElement("slot");
-    content.append(bodySlot);
+    if (this.loading) {
+      content.classList.add("loadingContent");
+      content.setAttribute("aria-busy", "true");
+      content.innerHTML = '<dt-spinner label="Loading dialog"></dt-spinner>';
+    } else {
+      const bodySlot = this.ownerDocument.createElement("slot");
+      content.append(bodySlot);
+    }
     panel.append(content);
 
     this.defaultAction = null;
-    if (this.showFooter) {
+    if (this.showFooter && !this.loading) {
       const footer = this.ownerDocument.createElement("div");
       footer.className = "footer";
       footer.setAttribute("part", "footer");

@@ -97,6 +97,7 @@ export class DtExpandableSectionElement extends DigitaltableteurElement {
 
   private internalExpanded = false;
   private defaultExpandedInitialized = false;
+  private defaultExpandedDirty = false;
   private instanceId = 0;
 
   connectedCallback(): void {
@@ -113,9 +114,12 @@ export class DtExpandableSectionElement extends DigitaltableteurElement {
   }
 
   attributeChangedCallback(name: string): void {
-    if (name === "default-expanded" && !this.isControlled) {
+    if (
+      name === "default-expanded" &&
+      !this.isControlled &&
+      !this.defaultExpandedDirty
+    ) {
       this.internalExpanded = this.defaultExpanded;
-      this.defaultExpandedInitialized = true;
     }
     if (this.isConnected) this.render();
   }
@@ -158,7 +162,9 @@ export class DtExpandableSectionElement extends DigitaltableteurElement {
   }
 
   private get isExpanded(): boolean {
-    return this.isControlled ? this.parseBooleanAttribute("expanded") : this.internalExpanded;
+    return this.isControlled
+      ? this.parseBooleanAttribute("expanded")
+      : this.internalExpanded;
   }
 
   private parseBooleanAttribute(name: string): boolean {
@@ -168,7 +174,10 @@ export class DtExpandableSectionElement extends DigitaltableteurElement {
 
   private toggle(): void {
     const next = !this.isExpanded;
-    if (!this.isControlled) this.internalExpanded = next;
+    if (!this.isControlled) {
+      this.internalExpanded = next;
+      this.defaultExpandedDirty = true;
+    }
     this.dispatchEvent(
       new CustomEvent("expanded-change", {
         detail: { expanded: next },
@@ -196,7 +205,11 @@ export class DtExpandableSectionElement extends DigitaltableteurElement {
     trigger.setAttribute("aria-controls", this.panelId());
     let ignoreNextClick = false;
     trigger.addEventListener("keydown", (event) => {
-      if (event.key !== "Enter" && event.key !== " " && event.key !== "Spacebar") {
+      if (
+        event.key !== "Enter" &&
+        event.key !== " " &&
+        event.key !== "Spacebar"
+      ) {
         return;
       }
       event.preventDefault();

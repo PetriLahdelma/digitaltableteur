@@ -1,6 +1,6 @@
 {
   "packageName": "@digitaltableteur/react",
-  "packageVersion": "0.1.15",
+  "packageVersion": "0.1.16",
   "packageExports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -69,6 +69,7 @@
     "./typography/style.css": "./dist/typography.css"
   },
   "runtimeExports": [
+    "Accordion",
     "AlertBanner",
     "AnimationRuntimeProvider",
     "AspectRatio",
@@ -170,6 +171,10 @@
     "Toast",
     "ToastRuntimeProvider",
     "ToastStack",
+    "Tooltip",
+    "TooltipContent",
+    "TooltipProvider",
+    "TooltipTrigger",
     "TranslationProvider",
     "useAnimationContext",
     "useCookieConsent",
@@ -199,7 +204,9 @@
       "IconButton",
       "SplitButton"
     ],
-    "consent": ["CookieConsent"],
+    "consent": [
+      "CookieConsent"
+    ],
     "content": [
       "CodeBlockWindow",
       "CodeSnippet",
@@ -216,7 +223,11 @@
       "Skeleton",
       "Spinner",
       "Toast",
-      "ToastStack"
+      "ToastStack",
+      "Tooltip",
+      "TooltipContent",
+      "TooltipProvider",
+      "TooltipTrigger"
     ],
     "forms": [
       "Checkbox",
@@ -249,8 +260,15 @@
       "useScrollOverflow",
       "useStreamingText"
     ],
-    "identity": ["Avatar", "AvatarGroup", "Badge", "Icon", "StatusDot"],
+    "identity": [
+      "Avatar",
+      "AvatarGroup",
+      "Badge",
+      "Icon",
+      "StatusDot"
+    ],
     "layout": [
+      "Accordion",
       "AspectRatio",
       "Card",
       "Center",
@@ -284,7 +302,12 @@
       "SkipLink",
       "Tabs"
     ],
-    "patterns": ["CategoryFilter", "Modal", "PageLayout", "ProcessBlock"],
+    "patterns": [
+      "CategoryFilter",
+      "Modal",
+      "PageLayout",
+      "ProcessBlock"
+    ],
     "runtime": [
       "AnimationRuntimeProvider",
       "clearConsentState",
@@ -317,7 +340,13 @@
       "useToast",
       "useTranslate"
     ],
-    "typography": ["Display", "Kbd", "Text", "Title", "VisuallyHidden"]
+    "typography": [
+      "Display",
+      "Kbd",
+      "Text",
+      "Title",
+      "VisuallyHidden"
+    ]
   },
   "sourceExportsByEntry": {
     "actions": [
@@ -339,7 +368,10 @@
       "SplitButtonOption",
       "SplitButtonProps"
     ],
-    "consent": ["CookieConsent", "CookieConsentProps"],
+    "consent": [
+      "CookieConsent",
+      "CookieConsentProps"
+    ],
     "content": [
       "CodeBlockWindow",
       "CodeBlockWindowProps",
@@ -376,7 +408,12 @@
       "ToastStack",
       "ToastStackItem",
       "ToastStackProps",
-      "ToastTone"
+      "ToastTone",
+      "Tooltip",
+      "TooltipContent",
+      "TooltipProps",
+      "TooltipProvider",
+      "TooltipTrigger"
     ],
     "forms": [
       "Checkbox",
@@ -459,6 +496,9 @@
       "StatusDotTone"
     ],
     "layout": [
+      "Accordion",
+      "AccordionItem",
+      "AccordionProps",
       "AspectRatio",
       "AspectRatioProps",
       "Card",

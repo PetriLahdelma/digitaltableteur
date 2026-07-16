@@ -207,17 +207,26 @@ export const Alignments: Story = {
   render: () => (
     <Stack>
       <Row>
-        <NativeElement tagName="dt-menu" attributes={{ align: "start", items: actions }}>
+        <NativeElement
+          tagName="dt-menu"
+          attributes={{ align: "start", items: actions }}
+        >
           <button slot="trigger" type="button">
             Start
           </button>
         </NativeElement>
-        <NativeElement tagName="dt-menu" attributes={{ align: "center", items: actions }}>
+        <NativeElement
+          tagName="dt-menu"
+          attributes={{ align: "center", items: actions }}
+        >
           <button slot="trigger" type="button">
             Center
           </button>
         </NativeElement>
-        <NativeElement tagName="dt-menu" attributes={{ align: "end", items: actions }}>
+        <NativeElement
+          tagName="dt-menu"
+          attributes={{ align: "end", items: actions }}
+        >
           <button slot="trigger" type="button">
             End
           </button>

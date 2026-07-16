@@ -1,24 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { expect, userEvent } from "storybook/test";
-import {
-  Stage,
-  nativeStoryParameters,
-} from "../NativeStory";
+import { Stage, nativeStoryParameters } from "../NativeStory";
 import { DtExpandableSectionElement } from "../../../../../packages/web-components/src/native/expandable-section";
 
 if (!customElements.get("dt-expandable-section")) {
-  customElements.define(
-    "dt-expandable-section",
-    DtExpandableSectionElement,
-  );
+  customElements.define("dt-expandable-section", DtExpandableSectionElement);
 }
 
 type Args = {
   collapsedLabel: string;
   expandedLabel?: string;
   defaultExpanded?: boolean;
-  expanded?: boolean;
   children?: React.ReactNode;
 };
 
@@ -26,7 +19,6 @@ function NativeExpandableSection({
   collapsedLabel,
   expandedLabel,
   defaultExpanded,
-  expanded,
   children,
 }: Args) {
   const ref = useRef<DtExpandableSectionElement>(null);
@@ -37,8 +29,7 @@ function NativeExpandableSection({
     element.collapsedLabel = collapsedLabel;
     element.expandedLabel = expandedLabel ?? "";
     element.defaultExpanded = Boolean(defaultExpanded);
-    element.expanded = expanded;
-  }, [collapsedLabel, defaultExpanded, expanded, expandedLabel]);
+  }, [collapsedLabel, defaultExpanded, expandedLabel]);
 
   return React.createElement("dt-expandable-section", { ref }, children);
 }
@@ -112,9 +103,12 @@ export const Default: Story = {
     const host = canvasElement.querySelector("dt-expandable-section");
     expect(customElements.get("dt-expandable-section")).toBeDefined();
     expect(host?.shadowRoot).toBeTruthy();
-    const trigger = host?.shadowRoot?.querySelector<HTMLButtonElement>("button");
+    const trigger =
+      host?.shadowRoot?.querySelector<HTMLButtonElement>("button");
     await userEvent.click(trigger!);
-    await expect(trigger).toHaveAttribute("aria-expanded", "true");
+    const updated =
+      host?.shadowRoot?.querySelector<HTMLButtonElement>("button");
+    await expect(updated).toHaveAttribute("aria-expanded", "true");
   },
 };
 

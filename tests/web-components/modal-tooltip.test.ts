@@ -1,4 +1,12 @@
-import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 import { DtIconElement } from "../../packages/web-components/src/native/icon";
 import {
   DtModalElement,
@@ -35,6 +43,23 @@ function nextTick() {
 }
 
 describe("native modal and tooltip", () => {
+  it("treats close-icon-name as data instead of executable markup", () => {
+    const modal = document.createElement("dt-modal") as DtModalElement;
+    modal.title = "Safe dialog";
+    modal.showCloseIcon = true;
+    modal.closeIconName = 'x\"><img src=x onerror="globalThis.injected=true">';
+    modal.defaultOpen = true;
+    document.body.append(modal);
+
+    const closeButton = modal.shadowRoot?.querySelector(
+      '[part="close-button"]',
+    );
+    const icon = closeButton?.querySelector("dt-icon");
+    expect(closeButton?.children).toHaveLength(1);
+    expect(icon?.getAttribute("name")).toBe(modal.closeIconName);
+    expect(modal.shadowRoot?.querySelector("img")).toBeNull();
+  });
+
   it("renders modal dialog semantics and closes itself when uncontrolled", async () => {
     const modal = document.createElement("dt-modal") as DtModalElement;
     modal.title = "Confirm changes";
@@ -44,7 +69,8 @@ describe("native modal and tooltip", () => {
     modal.textContent = "Modal body";
     document.body.append(modal);
 
-    const panel = modal.shadowRoot?.querySelector<HTMLElement>('[role="dialog"]');
+    const panel =
+      modal.shadowRoot?.querySelector<HTMLElement>('[role="dialog"]');
     expect(panel).toBeTruthy();
     expect(panel?.getAttribute("aria-modal")).toBe("true");
     expect(panel?.getAttribute("aria-labelledby")).toContain("dt-modal-title-");
@@ -196,7 +222,9 @@ describe("native modal and tooltip", () => {
     expect(tooltip.open).toBe(true);
     expect(trigger.getAttribute("aria-describedby")).toContain("dt-tooltip-");
     expect(
-      tooltip.shadowRoot?.querySelector('[role="tooltip"]')?.hasAttribute("hidden"),
+      tooltip.shadowRoot
+        ?.querySelector('[role="tooltip"]')
+        ?.hasAttribute("hidden"),
     ).toBe(false);
   });
 

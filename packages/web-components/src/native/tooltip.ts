@@ -261,14 +261,15 @@ export class DtTooltipElement extends DigitaltableteurElement {
   }
 
   private triggerCandidate(): HTMLElement | null {
-    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>(
-      "slot:not([name])",
-    );
+    const slot =
+      this.shadowRoot?.querySelector<HTMLSlotElement>("slot:not([name])");
     const assigned = slot?.assignedElements({ flatten: true }) ?? [];
-    return (assigned.find(
-      (element: Element) =>
-        element instanceof HTMLElement && element.slot !== "content",
-    ) as HTMLElement | undefined) ?? null;
+    return (
+      (assigned.find(
+        (element: Element) =>
+          element instanceof HTMLElement && element.slot !== "content",
+      ) as HTMLElement | undefined) ?? null
+    );
   }
 
   private ensureDescriptionElement(): void {
@@ -281,14 +282,13 @@ export class DtTooltipElement extends DigitaltableteurElement {
       this.descriptionElement = description;
       this.append(description);
     }
-    this.descriptionElement.textContent = this.tooltipText();
+    const text = this.tooltipText();
+    if (this.descriptionElement.textContent !== text) {
+      this.descriptionElement.textContent = text;
+    }
   }
 
-  private setOpenState(
-    value: boolean,
-    reason: string,
-    emit: boolean,
-  ): void {
+  private setOpenState(value: boolean, reason: string, emit: boolean): void {
     if (this.open === value) return;
     this.toggleAttribute("open", value);
     if (emit) {
@@ -375,7 +375,10 @@ export class DtTooltipElement extends DigitaltableteurElement {
     if (this.managedDescriptionBy === null) {
       this.triggerElement.removeAttribute("aria-describedby");
     } else {
-      this.triggerElement.setAttribute("aria-describedby", this.managedDescriptionBy);
+      this.triggerElement.setAttribute(
+        "aria-describedby",
+        this.managedDescriptionBy,
+      );
     }
     this.managedDescriptionBy = null;
   }
@@ -383,7 +386,9 @@ export class DtTooltipElement extends DigitaltableteurElement {
   private syncAccessibleDescription(): void {
     if (!this.triggerElement || !this.descriptionElement) return;
     const text = this.tooltipText();
-    this.descriptionElement.textContent = text;
+    if (this.descriptionElement.textContent !== text) {
+      this.descriptionElement.textContent = text;
+    }
     this.restoreTriggerDescription();
     if (!text) return;
 
@@ -391,10 +396,7 @@ export class DtTooltipElement extends DigitaltableteurElement {
     this.managedDescriptionBy = current;
     const ids = new Set((current ?? "").split(/\s+/).filter(Boolean));
     ids.add(this.descriptionElement.id);
-    this.triggerElement.setAttribute(
-      "aria-describedby",
-      [...ids].join(" "),
-    );
+    this.triggerElement.setAttribute("aria-describedby", [...ids].join(" "));
   }
 
   private attachTriggerListeners(trigger: HTMLElement | null): void {
@@ -430,9 +432,11 @@ export class DtTooltipElement extends DigitaltableteurElement {
     const tooltipRect = this.contentElement.getBoundingClientRect();
     const spacing = this.offset;
     const viewportWidth =
-      this.ownerDocument.documentElement?.clientWidth ?? triggerRect.right + tooltipRect.width;
+      this.ownerDocument.documentElement?.clientWidth ??
+      triggerRect.right + tooltipRect.width;
     const viewportHeight =
-      this.ownerDocument.documentElement?.clientHeight ?? triggerRect.bottom + tooltipRect.height;
+      this.ownerDocument.documentElement?.clientHeight ??
+      triggerRect.bottom + tooltipRect.height;
 
     const preferred = this.placement;
     const candidates = [
@@ -446,7 +450,8 @@ export class DtTooltipElement extends DigitaltableteurElement {
         (candidate === "top" &&
           triggerRect.top >= tooltipRect.height + spacing) ||
         (candidate === "bottom" &&
-          viewportHeight - triggerRect.bottom >= tooltipRect.height + spacing) ||
+          viewportHeight - triggerRect.bottom >=
+            tooltipRect.height + spacing) ||
         (candidate === "left" &&
           triggerRect.left >= tooltipRect.width + spacing) ||
         (candidate === "right" &&

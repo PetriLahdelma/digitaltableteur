@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   NativeElement,
+  Row,
   Stage,
   assertNative,
   nativeStoryParameters,
@@ -35,11 +36,7 @@ type Args = {
   ariaLabel?: string;
 };
 
-function Panels({
-  tabs,
-}: {
-  tabs: Array<{ key: string; label: string }>;
-}) {
+function Panels({ tabs }: { tabs: Array<{ key: string; label: string }> }) {
   return (
     <>
       {tabs.map((tab) => (
@@ -71,13 +68,15 @@ function NativeTabs({ defaultActiveTab, tabs, ...args }: Args) {
   );
 }
 
-function ControlledTabs() {
+function ControlledTabsDemo() {
   const [activeTab, setActiveTab] = useState("overview");
   const hostRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const element = hostRef.current?.querySelector("dt-tabs");
     const onChange = (event: Event) => {
-      setActiveTab((event as CustomEvent<{ activeTab: string }>).detail.activeTab);
+      setActiveTab(
+        (event as CustomEvent<{ activeTab: string }>).detail.activeTab,
+      );
     };
     element?.addEventListener("tab-change", onChange);
     return () => element?.removeEventListener("tab-change", onChange);
@@ -161,10 +160,39 @@ export const IconsAndCount: Story = {
     defaultActiveTab: "inbox",
   },
 };
+export const WithDisabled: Story = {
+  tags: ["example"],
+  args: {
+    tabs: JSON.stringify(tabsWithDisabled),
+    defaultActiveTab: "inbox",
+  },
+};
+export const Sizes: Story = {
+  tags: ["example"],
+  render: () => (
+    <Row>
+      {(["sm", "md", "lg"] as const).map((size) => (
+        <NativeElement
+          key={size}
+          tagName="dt-tabs"
+          attributes={{
+            tabs: JSON.stringify(basicTabs),
+            "default-active-tab": "overview",
+            "aria-label": `${size} tabs`,
+            size,
+          }}
+        >
+          <Panels tabs={basicTabs} />
+        </NativeElement>
+      ))}
+    </Row>
+  ),
+};
 export const Controlled: Story = {
   tags: ["example"],
-  render: () => <ControlledTabs />,
+  render: () => <ControlledTabsDemo />,
 };
+export const ControlledTabs: Story = { ...Controlled };
 export const Example: Story = {
   tags: ["example"],
   render: () => (

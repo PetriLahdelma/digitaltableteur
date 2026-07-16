@@ -281,6 +281,7 @@ export class DtMenuElement extends DigitaltableteurElement {
   }
 
   attributeChangedCallback(name: string): void {
+    const wasOpen = this.openState;
     if (name === "items") this.assignedItems = null;
     if (name === "open" && !this.syncingOpenAttribute) {
       this.openState = this.hasAttribute("open");
@@ -293,7 +294,13 @@ export class DtMenuElement extends DigitaltableteurElement {
       this.openState = this.hasAttribute("default-open");
     }
     if (!this.openState) this.openSubmenuPath = null;
-    if (this.isConnected) this.render();
+    if (this.isConnected) {
+      if (wasOpen !== this.openState) {
+        if (this.openState) this.attachDismissListeners();
+        else this.detachDismissListeners();
+      }
+      this.render();
+    }
   }
 
   get side(): DtMenuSide {
@@ -402,7 +409,10 @@ export class DtMenuElement extends DigitaltableteurElement {
       else this.managedTrigger.setAttribute(name, value);
     }
     this.managedTrigger.removeEventListener("click", this.handleTriggerClick);
-    this.managedTrigger.removeEventListener("keydown", this.handleTriggerKeydown);
+    this.managedTrigger.removeEventListener(
+      "keydown",
+      this.handleTriggerKeydown,
+    );
     this.managedTrigger = null;
     this.managedTriggerAttributes = null;
   }
@@ -473,11 +483,15 @@ export class DtMenuElement extends DigitaltableteurElement {
         element.setAttribute("data-dt-menu-panel-id", "root");
         continue;
       }
-      if (!element.hasAttribute("role")) element.setAttribute("role", "menuitem");
+      if (!element.hasAttribute("role"))
+        element.setAttribute("role", "menuitem");
       element.setAttribute("tabindex", "-1");
       element.setAttribute("data-dt-menu-item", "true");
       element.setAttribute("data-dt-menu-panel-id", "root");
-      if (this.isDisabledControl(element) && !element.hasAttribute("aria-disabled")) {
+      if (
+        this.isDisabledControl(element) &&
+        !element.hasAttribute("aria-disabled")
+      ) {
         element.setAttribute("aria-disabled", "true");
       }
     }
@@ -488,7 +502,10 @@ export class DtMenuElement extends DigitaltableteurElement {
   }
 
   private detachDismissListeners(): void {
-    this.ownerDocument.removeEventListener("pointerdown", this.handlePointerDown);
+    this.ownerDocument.removeEventListener(
+      "pointerdown",
+      this.handlePointerDown,
+    );
   }
 
   private updateOpen(next: boolean, returnFocus = false): void {
@@ -547,7 +564,9 @@ export class DtMenuElement extends DigitaltableteurElement {
 
   private controlsForPanel(panelId: string): HTMLElement[] {
     if (panelId === "root" && this.hasDeclarativeItems) {
-      return this.slottedItems().filter((item) => !this.isDisabledControl(item));
+      return this.slottedItems().filter(
+        (item) => !this.isDisabledControl(item),
+      );
     }
     return [
       ...(this.shadowRoot?.querySelectorAll<HTMLElement>(
@@ -558,8 +577,9 @@ export class DtMenuElement extends DigitaltableteurElement {
 
   private controlForPath(path: string): HTMLElement | null {
     return (
-      this.shadowRoot?.querySelector<HTMLElement>(`[data-menu-path="${path}"]`) ||
-      null
+      this.shadowRoot?.querySelector<HTMLElement>(
+        `[data-menu-path="${path}"]`,
+      ) || null
     );
   }
 
@@ -569,7 +589,7 @@ export class DtMenuElement extends DigitaltableteurElement {
   ): void {
     const controls = this.controlsForPanel(panelId);
     const control =
-      direction === "last" ? controls.at(-1) ?? null : controls[0] ?? null;
+      direction === "last" ? (controls.at(-1) ?? null) : (controls[0] ?? null);
     this.highlightControl(control);
     control?.focus();
   }
@@ -609,16 +629,23 @@ export class DtMenuElement extends DigitaltableteurElement {
 
   private highlightControl(active: HTMLElement | null): void {
     for (const control of [
-      ...(this.shadowRoot?.querySelectorAll<HTMLElement>("[data-highlighted]") ??
-        []),
-      ...this.slottedItems().filter((item) => item.hasAttribute("data-highlighted")),
+      ...(this.shadowRoot?.querySelectorAll<HTMLElement>(
+        "[data-highlighted]",
+      ) ?? []),
+      ...this.slottedItems().filter((item) =>
+        item.hasAttribute("data-highlighted"),
+      ),
     ]) {
       if (control !== active) control.removeAttribute("data-highlighted");
     }
     if (active) active.setAttribute("data-highlighted", "true");
   }
 
-  private moveFocus(delta: number, panelId: string, active: HTMLElement | null): void {
+  private moveFocus(
+    delta: number,
+    panelId: string,
+    active: HTMLElement | null,
+  ): void {
     const controls = this.controlsForPanel(panelId);
     if (controls.length === 0) return;
     const currentIndex = active ? controls.indexOf(active) : -1;
@@ -706,18 +733,28 @@ export class DtMenuElement extends DigitaltableteurElement {
     if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
     event.preventDefault();
     if (!this.openState) this.openMenu(event.key === "ArrowUp");
-    else this.focusFirstControl(event.key === "ArrowUp" ? "last" : "first", "root");
+    else
+      this.focusFirstControl(
+        event.key === "ArrowUp" ? "last" : "first",
+        "root",
+      );
   };
 
   private readonly handleKeydown = (event: KeyboardEvent): void => {
     const fromTrigger =
       event.composedPath().includes(this.managedTrigger as EventTarget) ||
-      event.composedPath().some(
-        (node) =>
-          node instanceof HTMLElement && node.classList.contains("fallbackTrigger"),
-      );
+      event
+        .composedPath()
+        .some(
+          (node) =>
+            node instanceof HTMLElement &&
+            node.classList.contains("fallbackTrigger"),
+        );
     if (!this.openState) {
-      if (fromTrigger && (event.key === "ArrowDown" || event.key === "ArrowUp")) {
+      if (
+        fromTrigger &&
+        (event.key === "ArrowDown" || event.key === "ArrowUp")
+      ) {
         this.handleTriggerKeydown(event);
       }
       return;
@@ -725,8 +762,9 @@ export class DtMenuElement extends DigitaltableteurElement {
 
     const active = this.activeControlFromEvent(event);
     const panelId = active ? this.panelIdForControl(active) : "root";
-    const parentPath =
-      panelId.startsWith("submenu:") ? panelId.slice("submenu:".length) : null;
+    const parentPath = panelId.startsWith("submenu:")
+      ? panelId.slice("submenu:".length)
+      : null;
 
     if (event.key === "Escape") {
       event.preventDefault();
@@ -736,12 +774,12 @@ export class DtMenuElement extends DigitaltableteurElement {
     }
 
     if (event.key === "Tab") {
-      event.preventDefault();
-      if (!this.modal) {
-        this.closeMenu();
+      if (this.modal) {
+        event.preventDefault();
+        this.moveFocus(event.shiftKey ? -1 : 1, panelId, active);
         return;
       }
-      this.moveFocus(event.shiftKey ? -1 : 1, panelId, active);
+      this.ownerDocument.defaultView?.setTimeout(() => this.closeMenu(), 0);
       return;
     }
 
@@ -767,7 +805,11 @@ export class DtMenuElement extends DigitaltableteurElement {
       this.moveFocus(-1, panelId, active);
       return;
     }
-    if (event.key === "ArrowRight" || event.key === "Enter" || event.key === " ") {
+    if (
+      event.key === "ArrowRight" ||
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
       if (active?.getAttribute("data-has-children") === "true") {
         event.preventDefault();
         const path = active.getAttribute("data-menu-path");
@@ -825,7 +867,9 @@ export class DtMenuElement extends DigitaltableteurElement {
         item.textContent?.trim() ||
         undefined,
       label:
-        item.getAttribute("aria-label") || item.textContent?.trim() || undefined,
+        item.getAttribute("aria-label") ||
+        item.textContent?.trim() ||
+        undefined,
       href:
         item instanceof HTMLAnchorElement
           ? item.getAttribute("href") || undefined
@@ -835,7 +879,11 @@ export class DtMenuElement extends DigitaltableteurElement {
     this.closeMenu(true);
   };
 
-  private applyPanelPosition(panel: HTMLElement, side: DtMenuSide, align: DtMenuAlign): void {
+  private applyPanelPosition(
+    panel: HTMLElement,
+    side: DtMenuSide,
+    align: DtMenuAlign,
+  ): void {
     const offset = `${this.sideOffset}px`;
     panel.style.removeProperty("inset-block-start");
     panel.style.removeProperty("inset-block-end");
@@ -882,7 +930,10 @@ export class DtMenuElement extends DigitaltableteurElement {
     }
   }
 
-  private renderItemBody(item: DtMenuItem, trailingOverride?: Node): DocumentFragment {
+  private renderItemBody(
+    item: DtMenuItem,
+    trailingOverride?: Node,
+  ): DocumentFragment {
     const fragment = this.ownerDocument.createDocumentFragment();
     if (item.icon) {
       const icon = this.ownerDocument.createElement("span");
@@ -903,7 +954,8 @@ export class DtMenuElement extends DigitaltableteurElement {
       const trailing = this.ownerDocument.createElement("span");
       trailing.className = "itemTrailing";
       trailing.setAttribute("aria-hidden", "true");
-      if (typeof trailingValue === "string") trailing.textContent = trailingValue;
+      if (typeof trailingValue === "string")
+        trailing.textContent = trailingValue;
       else trailing.append(trailingValue);
       fragment.append(trailing);
     }
@@ -920,7 +972,9 @@ export class DtMenuElement extends DigitaltableteurElement {
     panel.setAttribute("part", parentPath ? "submenu" : "menu");
     panel.setAttribute("role", "menu");
     panel.id = parentPath ? `${this.menuId}-${panelId}` : this.menuId;
-    panel.hidden = parentPath ? this.openSubmenuPath !== parentPath : !this.openState;
+    panel.hidden = parentPath
+      ? this.openSubmenuPath !== parentPath
+      : !this.openState;
 
     for (const [index, item] of items.entries()) {
       const path = parentPath ? `${parentPath}-${index}` : `${index}`;
@@ -933,13 +987,15 @@ export class DtMenuElement extends DigitaltableteurElement {
         continue;
       }
 
-      const children = item.children?.filter((child) => !child.separator || true) ?? [];
+      const children =
+        item.children?.filter((child) => !child.separator || true) ?? [];
       const hasChildren = children.length > 0;
       const wrapper = this.ownerDocument.createElement("div");
       wrapper.className = "itemWrap";
-      const control = item.href && !hasChildren
-        ? this.ownerDocument.createElement("a")
-        : this.ownerDocument.createElement("button");
+      const control =
+        item.href && !hasChildren
+          ? this.ownerDocument.createElement("a")
+          : this.ownerDocument.createElement("button");
       control.className = "item";
       control.setAttribute("part", "menu-item");
       control.setAttribute("role", "menuitem");
@@ -990,7 +1046,9 @@ export class DtMenuElement extends DigitaltableteurElement {
         }
       });
       if (!hasChildren) {
-        control.addEventListener("click", (event) => this.activateItem(item, event));
+        control.addEventListener("click", (event) =>
+          this.activateItem(item, event),
+        );
       }
 
       wrapper.append(control);
@@ -1030,7 +1088,10 @@ export class DtMenuElement extends DigitaltableteurElement {
     fallbackTrigger.className = "fallbackTrigger";
     fallbackTrigger.textContent = this.triggerLabel();
     fallbackTrigger.setAttribute("aria-haspopup", "menu");
-    fallbackTrigger.setAttribute("aria-expanded", this.openState ? "true" : "false");
+    fallbackTrigger.setAttribute(
+      "aria-expanded",
+      this.openState ? "true" : "false",
+    );
     fallbackTrigger.setAttribute("aria-controls", this.menuId);
     fallbackTrigger.addEventListener("click", this.handleTriggerClick);
     fallbackTrigger.addEventListener("keydown", this.handleTriggerKeydown);

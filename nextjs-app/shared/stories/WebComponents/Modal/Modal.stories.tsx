@@ -142,6 +142,76 @@ export const Default: Story = {
 
 export const Playground: Story = {};
 
+export const CloseViaIcon: Story = {
+  ...exampleStory,
+  render: (args) => <OpenableModal {...args} />,
+};
+
+export const Loading: Story = {
+  ...exampleStory,
+  render: () => (
+    <Stage width="min(36rem, 90vw)">
+      <NativeElement
+        tagName="dt-modal"
+        attributes={{
+          title: "Saving changes",
+          loading: true,
+          "show-close-icon": false,
+          "default-open": true,
+        }}
+      >
+        Please wait while we save your edits.
+      </NativeElement>
+    </Stage>
+  ),
+};
+
+function severityStory(
+  severity: "success" | "error" | "warning" | "info",
+  title: string,
+  body: string,
+): Story {
+  return {
+    ...exampleStory,
+    render: () => (
+      <Stage width="min(36rem, 90vw)">
+        <NativeElement
+          tagName="dt-modal"
+          attributes={{
+            title,
+            severity,
+            "show-close-icon": true,
+            "default-open": true,
+          }}
+        >
+          {body}
+        </NativeElement>
+      </Stage>
+    ),
+  };
+}
+
+export const ErrorDialog = severityStory(
+  "error",
+  "Something went wrong",
+  "We could not save your changes. Check your connection and try again.",
+);
+export const SuccessDialog = severityStory(
+  "success",
+  "Changes saved",
+  "Your edits are live.",
+);
+export const WarningDialog = severityStory(
+  "warning",
+  "Unsaved changes",
+  "Leaving now discards your edits.",
+);
+export const InfoDialog = severityStory(
+  "info",
+  "Heads up",
+  "This workspace is read-only during maintenance.",
+);
+
 export const Controlled: Story = {
   ...exampleStory,
   render: (args) => <OpenableModal {...args} controlled />,
@@ -232,6 +302,52 @@ export const Severities: Story = {
       ))}
     </Row>
   ),
+};
+
+export const Scrollable: Story = {
+  ...exampleStory,
+  render: () => (
+    <Stage width="min(40rem, 90vw)">
+      <NativeElement
+        tagName="dt-modal"
+        attributes={{
+          title: "Terms of service",
+          "show-close-icon": true,
+          "default-open": true,
+        }}
+      >
+        {Array.from({ length: 18 }, (_, index) => (
+          <p key={index}>
+            Section {index + 1}: review this agreement before continuing.
+          </p>
+        ))}
+      </NativeElement>
+    </Stage>
+  ),
+};
+
+export const AnimatedEntrance: Story = {
+  ...exampleStory,
+  render: () => (
+    <Stage width="min(36rem, 90vw)">
+      <NativeElement
+        tagName="dt-modal"
+        attributes={{
+          title: "Animated dialog",
+          animation: "scale",
+          "show-close-icon": true,
+          "default-open": true,
+        }}
+      >
+        Motion follows the host preference and is removed under reduced motion.
+      </NativeElement>
+    </Stage>
+  ),
+};
+
+export const Example: Story = {
+  ...exampleStory,
+  render: (args) => <OpenableModal {...args} />,
 };
 
 export const ForcedColors: Story = { ...forcedColorsStory };
