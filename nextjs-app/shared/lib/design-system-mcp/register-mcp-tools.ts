@@ -87,13 +87,18 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
 
   tools.tool(
     "validate_component_usage",
-    "Check a repo-relative file path or code snippet for raw <button>, headings, or shadcn-ui imports that should be @dt/*.",
+    "Check a file/snippet for raw UI and optionally validate structured component props against inferred API relationships.",
     emptySchema,
     READ_ONLY,
     (args) =>
       executeValidateComponentUsage({
         filePath: args.filePath != null ? String(args.filePath) : undefined,
         snippet: args.snippet != null ? String(args.snippet) : undefined,
+        component: args.component != null ? String(args.component) : undefined,
+        props:
+          args.props && typeof args.props === "object" && !Array.isArray(args.props)
+            ? (args.props as Record<string, unknown>)
+            : undefined,
       }),
   );
 

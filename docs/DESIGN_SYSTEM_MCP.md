@@ -43,7 +43,7 @@ Drift guard: `nextjs-app/shared/lib/design-system-mcp/docs-registry.test.ts`
 | `suggest_pattern_for_layout` | Rank layout patterns (CTA, header, hero) with useWhen/avoidWhen |
 | `get_component_contract` | Full contract + agent block + usage for one name |
 | `get_tokens` | Token catalog summary + manifest token metadata |
-| `validate_component_usage` | Scan file path or snippet for raw button/heading/shadcn |
+| `validate_component_usage` | Scan file/snippet for raw UI, or validate `{ component, props }` against machine-readable prop relationships |
 
 CLI equivalents: `npm run find-component`, `npm run lint:dt-usage`, `npm run validate:components`.
 
@@ -82,7 +82,7 @@ Optional: `DT_REPO_ROOT` if the process cwd is not the repo root.
 
 ## Evaluation
 
-`npm run agent:eval` validates manifest, MCP tool registration, and **intent retrieval** against `scripts/design-system/agent-eval/golden-intents.json` (≥85% pass rate).
+`npm run agent:eval` validates manifest, MCP tool registration, **intent retrieval** against `scripts/design-system/agent-eval/golden-intents.json` (≥85% pass rate), and the Agent Experience complexity/coverage ratchet.
 
 ```bash
 node scripts/design-system/agent-eval/intent-retrieval-eval.mjs

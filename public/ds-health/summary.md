@@ -1,9 +1,10 @@
 # Design system health
 
-Generated: 2026-07-03T17:16:21.613Z
+Generated: 2026-07-16T16:17:55.388Z
 
 ## Governance checks
 
+- **audit:agent-experience**: pass (exit 0)
 - **lint:dt-usage**: pass (exit 0)
 - **lint:dt-responsive-visibility**: pass (exit 0)
 
@@ -26,6 +27,14 @@ Generated: 2026-07-03T17:16:21.613Z
 
 - 96/96 passed
 - Report time: 2026-06-05T13:10:40.288Z
+
+## Agent Experience
+
+- **Ratchet:** pass
+- **Prop documentation:** 924/1065 (86.8%)
+- **Complete contract evidence:** 134/161
+- **Machine-readable prop relationships:** 2 component(s)
+- **Golden intent retrieval:** 18/20
 
 ## Before merging DS changes
 

@@ -16,6 +16,7 @@ import { spawnSync } from "node:child_process";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = join(ROOT, "public", "ds-health");
 const MIGRATION_REPORT = join(ROOT, "public", "visual-diff", "migration-matrix-report.json");
+const AGENT_EXPERIENCE_REPORT = join(OUT_DIR, "agent-experience.json");
 
 const SHADCN_IMPORT = /from\s+["']@\/components\/ui\//;
 
@@ -99,6 +100,27 @@ function loadMigrationMatrix() {
   }
 }
 
+function loadAgentExperience() {
+  if (!existsSync(AGENT_EXPERIENCE_REPORT)) return { present: false };
+  try {
+    const report = JSON.parse(readFileSync(AGENT_EXPERIENCE_REPORT, "utf8"));
+    return {
+      present: true,
+      ok: report.ok,
+      generatedAt: report.generatedAt,
+      propDocumentation: report.dimensions?.contractClarity?.propDocumentation,
+      completeContractEvidence:
+        report.dimensions?.contractClarity?.completeContractEvidence,
+      machineRelationshipComponents:
+        report.dimensions?.recoverability?.machineRelationshipComponents,
+      promptability: report.dimensions?.promptability,
+      violations: report.violations ?? [],
+    };
+  } catch (error) {
+    return { present: false, error: String(error) };
+  }
+}
+
 function migrationBoardStatus() {
   return {
     buttonSurfaces: "approved",
@@ -151,6 +173,20 @@ function buildSummary(report) {
     lines.push("", "## Last visual matrix", "", `- ${report.migrationMatrix.hint ?? "Not run yet"}`);
   }
 
+  if (report.agentExperience.present) {
+    const ax = report.agentExperience;
+    lines.push(
+      "",
+      "## Agent Experience",
+      "",
+      `- **Ratchet:** ${ax.ok ? "pass" : "fail"}`,
+      `- **Prop documentation:** ${ax.propDocumentation.numerator}/${ax.propDocumentation.denominator} (${(ax.propDocumentation.rate * 100).toFixed(1)}%)`,
+      `- **Complete contract evidence:** ${ax.completeContractEvidence.numerator}/${ax.completeContractEvidence.denominator}`,
+      `- **Machine-readable prop relationships:** ${ax.machineRelationshipComponents} component(s)`,
+      `- **Golden intent retrieval:** ${ax.promptability.passed}/${ax.promptability.total}`,
+    );
+  }
+
   lines.push(
     "",
     "## Before merging DS changes",
@@ -169,12 +205,14 @@ function main() {
   mkdirSync(OUT_DIR, { recursive: true });
 
   const checks = [
+    runScript("audit:agent-experience"),
     runScript("lint:dt-usage", ["--strict"]),
     runScript("lint:dt-responsive-visibility", ["--strict"]),
   ];
 
   const shadcnByArea = countShadcnImports();
   const migrationMatrix = loadMigrationMatrix();
+  const agentExperience = loadAgentExperience();
 
   const report = {
     generatedAt: new Date().toISOString(),
@@ -183,6 +221,7 @@ function main() {
     shadcnTotal: Object.values(shadcnByArea).reduce((n, h) => n + h.length, 0),
     migrationBoards: migrationBoardStatus(),
     migrationMatrix,
+    agentExperience,
     docs: {
       strategy: "docs/DS_AUTOMATION_STRATEGY.md",
       migration: "docs/SHADCN_TO_DT_MIGRATION.md",

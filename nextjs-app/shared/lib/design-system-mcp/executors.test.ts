@@ -65,6 +65,49 @@ describe("executeValidateComponentUsage", () => {
     const parsed = JSON.parse(result.content[0].text) as { ok: boolean };
     expect(parsed.ok).toBe(true);
   });
+
+  it("rejects mutually exclusive props from the generated component contract", () => {
+    const result = executeValidateComponentUsage({
+      component: "Button",
+      props: { href: "/work", submits: true },
+    });
+    const parsed = JSON.parse(result.content[0].text) as {
+      ok: boolean;
+      contractFindings: Array<{ rule: string }>;
+    };
+    expect(parsed.ok).toBe(false);
+    expect(parsed.contractFindings).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ rule: "mutuallyExclusive" }),
+      ]),
+    );
+  });
+
+  it("rejects dependent props when their required discriminator is absent", () => {
+    const result = executeValidateComponentUsage({
+      component: "Button",
+      props: { target: "_blank" },
+    });
+    const parsed = JSON.parse(result.content[0].text) as {
+      ok: boolean;
+      contractFindings: Array<{ rule: string; props: string[] }>;
+    };
+    expect(parsed.ok).toBe(false);
+    expect(parsed.contractFindings).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ rule: "requires", props: ["target", "href"] }),
+      ]),
+    );
+  });
+
+  it("accepts a valid structured prop combination", () => {
+    const result = executeValidateComponentUsage({
+      component: "Button",
+      props: { href: "/work", target: "_blank" },
+    });
+    const parsed = JSON.parse(result.content[0].text) as { ok: boolean };
+    expect(parsed.ok).toBe(true);
+  });
 });
 
 describe("executeFindComponentForIntent", () => {

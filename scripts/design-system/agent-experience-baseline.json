@@ -1,0 +1,818 @@
+{
+  "schemaVersion": 1,
+  "note": "Complexity is a per-component no-growth ratchet, not an ideal-quality claim. Update deliberately with npm run audit:agent-experience -- --update-baseline.",
+  "minimums": {
+    "propDocumentationRate": 0.8676,
+    "completeContractEvidenceRate": 0.8323,
+    "recoverabilityRate": 0.9876,
+    "composabilityRate": 0.4969,
+    "machineRelationshipComponents": 2
+  },
+  "components": {
+    "Accordion": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 2.585,
+      "maxSlotCount": 0
+    },
+    "AlertBanner": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 5.585,
+      "maxSlotCount": 2
+    },
+    "ArticleCard": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ArticleContent": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "ArticleShareSection": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "AspectRatio": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 2.585,
+      "maxSlotCount": 0
+    },
+    "Author": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "AuthorBio": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "Avatar": {
+      "maxPropCount": 12,
+      "maxFiniteStateBits": 4.585,
+      "maxSlotCount": 0
+    },
+    "AvatarGroup": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "Badge": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 7.907,
+      "maxSlotCount": 1
+    },
+    "BlogCategoryFilter": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 4.17,
+      "maxSlotCount": 0
+    },
+    "BlogMediaImage": {
+      "maxPropCount": 12,
+      "maxFiniteStateBits": 4,
+      "maxSlotCount": 0
+    },
+    "BlogNav": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "Breadcrumb": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 2.585,
+      "maxSlotCount": 0
+    },
+    "Button": {
+      "maxPropCount": 19,
+      "maxFiniteStateBits": 13.077,
+      "maxSlotCount": 2
+    },
+    "ButtonGroup": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "Card": {
+      "maxPropCount": 16,
+      "maxFiniteStateBits": 6.907,
+      "maxSlotCount": 5
+    },
+    "CategoryFilter": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 3.17,
+      "maxSlotCount": 0
+    },
+    "Center": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 7.476,
+      "maxSlotCount": 0
+    },
+    "ChatWidget": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "Checkbox": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 6.585,
+      "maxSlotCount": 0
+    },
+    "CheckboxGroup": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ClientLogoMarquee": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "CodeBlockWindow": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "CodeSnippet": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 6.907,
+      "maxSlotCount": 0
+    },
+    "Combobox": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "CommandPalette": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ComplianceCard": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 1
+    },
+    "ContactForm": {
+      "maxPropCount": 0,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "ContactFormEditorial": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "Container": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 10.798,
+      "maxSlotCount": 0
+    },
+    "CookieConsent": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "Designerman": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "Display": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 2.322,
+      "maxSlotCount": 0
+    },
+    "Divider": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "DonnyAvatar": {
+      "maxPropCount": 16,
+      "maxFiniteStateBits": 12.644,
+      "maxSlotCount": 0
+    },
+    "EmailSignatureGenerator": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "EmptyState": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 3.17,
+      "maxSlotCount": 0
+    },
+    "EnhancedProjectCard": {
+      "maxPropCount": 12,
+      "maxFiniteStateBits": 5,
+      "maxSlotCount": 0
+    },
+    "ExpandableSection": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "FileUpload": {
+      "maxPropCount": 15,
+      "maxFiniteStateBits": 3,
+      "maxSlotCount": 0
+    },
+    "FilterChip": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 4.17,
+      "maxSlotCount": 0
+    },
+    "FlexBox": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 11.077,
+      "maxSlotCount": 0
+    },
+    "FormField": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "FormFieldEditorial": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 3.322,
+      "maxSlotCount": 0
+    },
+    "Gallery": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "Grid": {
+      "maxPropCount": 18,
+      "maxFiniteStateBits": 8.409,
+      "maxSlotCount": 0
+    },
+    "GroupLabel": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "HelperText": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "Icon": {
+      "maxPropCount": 12,
+      "maxFiniteStateBits": 13.562,
+      "maxSlotCount": 0
+    },
+    "IconButton": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 3.17,
+      "maxSlotCount": 1
+    },
+    "ImagePlaceholder": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 4,
+      "maxSlotCount": 0
+    },
+    "Kbd": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "Label": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "LanguageSwitcher": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "Link": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 3.585,
+      "maxSlotCount": 0
+    },
+    "LinkedInQuoteCard": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "List": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 11.174,
+      "maxSlotCount": 1
+    },
+    "LocationCard": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "Logo": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 3,
+      "maxSlotCount": 0
+    },
+    "MCPActionButton": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "MacWindowFrame": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "MarkdownMessage": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "Menu": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 3.585,
+      "maxSlotCount": 0
+    },
+    "Modal": {
+      "maxPropCount": 19,
+      "maxFiniteStateBits": 11.807,
+      "maxSlotCount": 3
+    },
+    "MultiCombobox": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "NavLink": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "NavMenuList": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "NewsletterWaitlist": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "NextLayout": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "OpenHours": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 3,
+      "maxSlotCount": 0
+    },
+    "Pagination": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "PersonCard": {
+      "maxPropCount": 27,
+      "maxFiniteStateBits": 3.585,
+      "maxSlotCount": 0
+    },
+    "PhoneInput": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 9.937,
+      "maxSlotCount": 0
+    },
+    "Progress": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 4.907,
+      "maxSlotCount": 0
+    },
+    "ProjectCard": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 3,
+      "maxSlotCount": 0
+    },
+    "ProjectGallery": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 4.17,
+      "maxSlotCount": 0
+    },
+    "ProjectNav": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "Radio": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 6.585,
+      "maxSlotCount": 0
+    },
+    "RadioGroup": {
+      "maxPropCount": 12,
+      "maxFiniteStateBits": 4.585,
+      "maxSlotCount": 0
+    },
+    "ReadingProgress": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "Section": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 4.807,
+      "maxSlotCount": 0
+    },
+    "SecureCVDownload": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 3.807,
+      "maxSlotCount": 0
+    },
+    "SegmentedControl": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "Select": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 3.585,
+      "maxSlotCount": 0
+    },
+    "SelectableCard": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "SentrySummaryCard": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "ServiceCard": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 3,
+      "maxSlotCount": 1
+    },
+    "ServicesGrid": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "SiteTree": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "Skeleton": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 3.322,
+      "maxSlotCount": 0
+    },
+    "SkipLink": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "SocialIconLink": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 3.585,
+      "maxSlotCount": 1
+    },
+    "SocialShare": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "Spacer": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 3.585,
+      "maxSlotCount": 0
+    },
+    "Spinner": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "SplitButton": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 1
+    },
+    "Stack": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 16.383,
+      "maxSlotCount": 0
+    },
+    "StatusDot": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 4.907,
+      "maxSlotCount": 0
+    },
+    "Switch": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 7.17,
+      "maxSlotCount": 1
+    },
+    "TableOfContents": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "Tabs": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 3.17,
+      "maxSlotCount": 0
+    },
+    "Testimonial": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "Text": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 8.714,
+      "maxSlotCount": 0
+    },
+    "TextArea": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "TextInput": {
+      "maxPropCount": 13,
+      "maxFiniteStateBits": 8.17,
+      "maxSlotCount": 0
+    },
+    "ThemeProvider": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "Timestamp": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 9,
+      "maxSlotCount": 0
+    },
+    "Title": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 8.714,
+      "maxSlotCount": 0
+    },
+    "Toast": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 8.492,
+      "maxSlotCount": 0
+    },
+    "ToastStack": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 2.585,
+      "maxSlotCount": 0
+    },
+    "Tooltip": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "TransformingActionInput": {
+      "maxPropCount": 12,
+      "maxFiniteStateBits": 3,
+      "maxSlotCount": 0
+    },
+    "ValueCard": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 1
+    },
+    "VisuallyHidden": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "WipBadge": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 3,
+      "maxSlotCount": 0
+    },
+    "WorkNav": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "AboutHero": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 2.585,
+      "maxSlotCount": 0
+    },
+    "AboutPageContent": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ArticleHero": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "ArticleLayout": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ArticlePageTemplate": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 3,
+      "maxSlotCount": 0
+    },
+    "BlogHero": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "BlogIndexContent": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 7.585,
+      "maxSlotCount": 0
+    },
+    "CTASection": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 3.322,
+      "maxSlotCount": 0
+    },
+    "CVDownloadSection": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "ContactHero": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "ContactInquiryPanel": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 1
+    },
+    "ContactPageContentEditorial": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ContentSection": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 4.585,
+      "maxSlotCount": 0
+    },
+    "DesignSprintsSection": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "Footer": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "GridBlock": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 9.492,
+      "maxSlotCount": 0
+    },
+    "HeroSection": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 14.646,
+      "maxSlotCount": 0
+    },
+    "HighlightSection": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 3.585,
+      "maxSlotCount": 0
+    },
+    "HomeHero": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "ManifestoSection": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "NewsBulletin": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "PageLayout": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 8.322,
+      "maxSlotCount": 0
+    },
+    "PricingPageContent": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "ProcessBlock": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 7.492,
+      "maxSlotCount": 1
+    },
+    "ProjectDetailLayout": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ProjectDetailTemplate": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ProjectHero": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 2.585,
+      "maxSlotCount": 0
+    },
+    "ProjectMetaSection": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 3.907,
+      "maxSlotCount": 0
+    },
+    "ProofBlock": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "RelatedPosts": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "RelatedProjects": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "ServicesBlock": {
+      "maxPropCount": 13,
+      "maxFiniteStateBits": 5.907,
+      "maxSlotCount": 1
+    },
+    "ServicesSection": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "SiteFooter": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "SiteHeader": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "StatsSection": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "StoryBlock": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 9.077,
+      "maxSlotCount": 1
+    },
+    "TeamBlock": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 8.492,
+      "maxSlotCount": 1
+    },
+    "ValuesSection": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 4.17,
+      "maxSlotCount": 0
+    },
+    "WorkCTA": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "WorkHero": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "WorkMagneticField": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "WorkPreviewSection": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 2.585,
+      "maxSlotCount": 0
+    }
+  }
+}

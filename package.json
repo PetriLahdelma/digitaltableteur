@@ -141,6 +141,7 @@
     "agent:eval": "node scripts/design-system/agent-eval/run.mjs",
     "agent:eval:intents": "node scripts/design-system/agent-eval/intent-retrieval-eval.mjs",
     "agent:eval:patterns": "node scripts/design-system/agent-eval/pattern-composition-eval.mjs",
+    "audit:agent-experience": "node scripts/design-system/audit-agent-experience.mjs",
     "agentic-ds-audit": "node scripts/design-system/agentic-ds-audit.mjs",
     "release:gate": "node scripts/design-system/release-gate.mjs",
     "check:trusted-publisher": "node scripts/design-system/check-trusted-publisher-config.mjs",
