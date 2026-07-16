@@ -7667,6 +7667,11 @@
           "story": "KeyNames",
           "description": "Named keys keep their full word; symbols stay symbols.",
           "source": "export const KeyNames: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: { story: \"Named keys keep their full word; symbols stay symbols.\" },\n    },\n  },\n  render: () => (\n    <span>\n      <Kbd>Esc</Kbd> <Kbd>Enter</Kbd> <Kbd>Space</Kbd> <Kbd>Tab</Kbd>\n    </span>\n  ),\n};"
+        },
+        {
+          "story": "InInstruction",
+          "description": "Keycaps sit inline with instructional copy; the clickable command remains the primary affordance elsewhere in the interface.",
+          "source": "export const InInstruction: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"Keycaps sit inline with instructional copy; the clickable command remains the primary affordance elsewhere in the interface.\",\n      },\n    },\n  },\n  render: () => (\n    <p style={{ margin: 0 }}>\n      Press <Kbd>Esc</Kbd> to close or <Kbd>⌘</Kbd> + <Kbd>Enter</Kbd> to\n      submit.\n    </p>\n  ),\n};"
         }
       ]
     },
@@ -13033,6 +13038,11 @@
           "story": "WithVisibleLabel",
           "description": "For waits sighted users watch, compose a visible Text label; keep it aria-hidden and let the Spinner label carry the announcement (this is the AppLoading pattern).",
           "source": "export const WithVisibleLabel: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"For waits sighted users watch, compose a visible Text label; keep it aria-hidden and let the Spinner label carry the announcement (this is the AppLoading pattern).\",\n      },\n    },\n  },\n  render: () => (\n    <span\n      style={{\n        display: \"inline-flex\",\n        gap: \"var(--space-internal-16, 1rem)\",\n        alignItems: \"center\",\n      }}\n    >\n      <Spinner size=\"lg\" label=\"Loading application\" />\n      <span aria-hidden=\"true\">Loading</span>\n    </span>\n  ),\n};"
+        },
+        {
+          "story": "RegionLoading",
+          "description": "For a short region-level wait, mark the host region busy and give the large Spinner a specific status label.",
+          "source": "export const RegionLoading: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"For a short region-level wait, mark the host region busy and give the large Spinner a specific status label.\",\n      },\n    },\n  },\n  render: () => (\n    <section\n      aria-busy=\"true\"\n      aria-label=\"Recent projects\"\n      style={{\n        display: \"grid\",\n        minBlockSize: \"var(--space-layout-120)\",\n        placeItems: \"center\",\n      }}\n    >\n      <Spinner size=\"lg\" label=\"Loading recent projects\" />\n    </section>\n  ),\n};"
         }
       ]
     },

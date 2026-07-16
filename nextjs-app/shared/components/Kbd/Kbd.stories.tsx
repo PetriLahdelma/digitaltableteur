@@ -89,6 +89,25 @@ export const KeyNames: Story = {
   ),
 };
 
+export const InInstruction: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Keycaps sit inline with instructional copy; the clickable command remains the primary affordance elsewhere in the interface.",
+      },
+    },
+  },
+  render: () => (
+    <p style={{ margin: 0 }}>
+      Press <Kbd>Esc</Kbd> to close or <Kbd>⌘</Kbd> + <Kbd>Enter</Kbd> to
+      submit.
+    </p>
+  ),
+};
+
 export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
