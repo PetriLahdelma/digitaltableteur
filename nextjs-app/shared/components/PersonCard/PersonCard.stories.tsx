@@ -75,6 +75,12 @@ const personCardComplianceRules: ComplianceRule[] = [
 export default {
   title: "Site/PersonCard",
   component: PersonCard,
+  tags: ["beta", "autodocs"],
+  parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    layout: "padded",
+  },
   args: {
     imageSrc: peteVaultBoy,
     imageAlt: "Portrait of Petri Lahdelma",

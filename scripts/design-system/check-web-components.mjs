@@ -148,13 +148,13 @@ for (const required of [
 }
 const maxPackedFiles = 40 + tags.length * 2;
 // The published tarball is dominated by two things that do NOT scale per component:
-// the shared framework-free native chunk (~1.09 MB minified, including bundled
+// the shared framework-free native chunk (~1.15 MB minified, including bundled
 // libphonenumber-js data for dt-phone-input and Prism grammars for
-// dt-code-snippet) and the generated custom-elements.json manifest (~235 kB).
+// dt-code-snippet) and the generated custom-elements.json manifest (~298 kB).
 // The remainder scales with the number of registered tags
 // (register/contract/typings entries). Keep this ceiling snug so genuine bloat in
 // either the shared chunk or the manifest still trips the budget.
-const sharedBundleAndManifestCeiling = 1_255_000;
+const sharedBundleAndManifestCeiling = 1_295_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.

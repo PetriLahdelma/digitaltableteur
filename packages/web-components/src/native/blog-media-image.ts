@@ -1,0 +1,134 @@
+import {
+  DigitaltableteurElement,
+  enumAttribute,
+  numberAttribute,
+  reflectAttribute,
+  reflectBooleanAttribute,
+  stringAttribute,
+} from "./base";
+
+const FITS = ["cover", "contain"] as const;
+export type DtBlogMediaImageFit = (typeof FITS)[number];
+
+const styles = `
+  :host { display: block; max-inline-size: 100%; }
+  :host([hidden]) { display: none; }
+  img { display: block; box-sizing: border-box; block-size: auto; max-inline-size: 100%; }
+  .fluid { inline-size: 100%; max-inline-size: none; }
+  .fill { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; }
+  .cover { object-fit: cover; }
+  .contain { object-fit: contain; }
+  @media (forced-colors: active) { img { forced-color-adjust: auto; } }
+`;
+
+export class DtBlogMediaImageElement extends DigitaltableteurElement {
+  static observedAttributes = [
+    "src",
+    "alt",
+    "fill",
+    "width",
+    "height",
+    "priority",
+    "sizes",
+    "fit",
+    "fluid",
+  ];
+
+  connectedCallback(): void {
+    this.render();
+  }
+  attributeChangedCallback(): void {
+    if (this.isConnected) this.render();
+  }
+  get src(): string {
+    return stringAttribute(this, "src");
+  }
+  set src(value: string) {
+    reflectAttribute(this, "src", value || null);
+  }
+  get alt(): string {
+    return stringAttribute(this, "alt");
+  }
+  set alt(value: string) {
+    reflectAttribute(this, "alt", value);
+  }
+  get fill(): boolean {
+    return this.hasAttribute("fill");
+  }
+  set fill(value: boolean) {
+    reflectBooleanAttribute(this, "fill", value);
+  }
+  get width(): number {
+    return this.hasAttribute("width")
+      ? Math.max(0, numberAttribute(this, "width", 800))
+      : 800;
+  }
+  set width(value: number) {
+    reflectAttribute(this, "width", value);
+  }
+  get height(): number {
+    return this.hasAttribute("height")
+      ? Math.max(0, numberAttribute(this, "height", 400))
+      : 400;
+  }
+  set height(value: number) {
+    reflectAttribute(this, "height", value);
+  }
+  get priority(): boolean {
+    return this.hasAttribute("priority");
+  }
+  set priority(value: boolean) {
+    reflectBooleanAttribute(this, "priority", value);
+  }
+  get sizes(): string {
+    return stringAttribute(this, "sizes");
+  }
+  set sizes(value: string) {
+    reflectAttribute(this, "sizes", value || null);
+  }
+  get fit(): DtBlogMediaImageFit {
+    return enumAttribute(this, "fit", FITS, "cover");
+  }
+  set fit(value: DtBlogMediaImageFit) {
+    reflectAttribute(this, "fit", value);
+  }
+  get fluid(): boolean {
+    return this.hasAttribute("fluid");
+  }
+  set fluid(value: boolean) {
+    reflectBooleanAttribute(this, "fluid", value);
+  }
+
+  private render(): void {
+    const image = this.ownerDocument.createElement("img");
+    image.setAttribute("part", "image");
+    image.src = this.src;
+    image.alt = this.alt;
+    image.loading = this.priority ? "eager" : "lazy";
+    if (this.priority) image.fetchPriority = "high";
+    image.decoding = "async";
+    image.className = [
+      this.fill ? "fill" : "",
+      this.fluid ? "fluid" : "",
+      this.fit,
+    ]
+      .filter(Boolean)
+      .join(" ");
+    if (!this.fill) {
+      image.width = this.width;
+      image.height = this.height;
+    }
+    if (this.sizes) image.sizes = this.sizes;
+    image.addEventListener("load", () => {
+      this.dispatchEvent(
+        new CustomEvent("image-load", { bubbles: true, composed: true }),
+      );
+    });
+    image.addEventListener("error", () => {
+      this.dispatchEvent(
+        new CustomEvent("image-error", { bubbles: true, composed: true }),
+      );
+    });
+    this.replaceShadow(styles, image);
+  }
+}

@@ -9959,6 +9959,1079 @@
         },
         {
           "kind": "class",
+          "name": "DtLogoElement",
+          "description": "Native Digitaltableteur brand mark with badge and motion modes.",
+          "customElement": true,
+          "tagName": "dt-logo",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "animated",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "badge",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleTitle",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "decorative",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "animated",
+              "fieldName": "animated",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "badge",
+              "fieldName": "badge",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "title",
+              "fieldName": "accessibleTitle",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "decorative",
+              "fieldName": "decorative",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Logo",
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtBlogMediaImageElement",
+          "description": "Responsive native article image with fill and fit modes.",
+          "customElement": true,
+          "tagName": "dt-blog-media-image",
+          "members": [
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fill",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "priority",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sizes",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fit",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fluid",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "src",
+              "fieldName": "src",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "alt",
+              "fieldName": "alt",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "fill",
+              "fieldName": "fill",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "width",
+              "fieldName": "width",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "height",
+              "fieldName": "height",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "priority",
+              "fieldName": "priority",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "sizes",
+              "fieldName": "sizes",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "fit",
+              "fieldName": "fit",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "fluid",
+              "fieldName": "fluid",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "image-load",
+              "description": "Dispatched after the native image loads.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "image-error",
+              "description": "Dispatched when the native image cannot load.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "BlogMediaImage",
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtAuthorElement",
+          "description": "Compact native author byline composed with dt-avatar.",
+          "customElement": true,
+          "tagName": "dt-author",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "imageUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "profileUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "bylinePrefix",
+              "description": "Localized byline prefix override.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "image-url",
+              "fieldName": "imageUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "profile-url",
+              "fieldName": "profileUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "byline-prefix",
+              "fieldName": "bylinePrefix",
+              "description": "Localized byline prefix override.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Author",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtSocialShareElement",
+          "description": "Native multi-channel sharing row with Web Share and copy fallback.",
+          "customElement": true,
+          "tagName": "dt-social-share",
+          "members": [
+            {
+              "kind": "field",
+              "name": "url",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shareTitle",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "channels",
+              "type": {
+                "text": "import(\"../native/social-share\").DtSocialShareChannel[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showHeading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "url",
+              "fieldName": "url",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "share-title",
+              "fieldName": "shareTitle",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "channels",
+              "fieldName": "channels",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "show-heading",
+              "fieldName": "showHeading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "heading",
+              "fieldName": "heading",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "native-share",
+              "description": "Dispatched after the Web Share API resolves.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "link-copy",
+              "description": "Dispatched with detail.url after the URL is copied.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "share-error",
+              "description": "Dispatched when neither native share nor copy succeeds.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "SocialShare",
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtBlogNavElement",
+          "description": "Native previous and next navigation for ordered blog articles.",
+          "customElement": true,
+          "tagName": "dt-blog-nav",
+          "members": [
+            {
+              "kind": "field",
+              "name": "currentPath",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pages",
+              "type": {
+                "text": "import(\"../native/section-nav\").DtSectionNavPage[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "current-path",
+              "fieldName": "currentPath",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "pages",
+              "fieldName": "pages",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "navigate",
+              "description": "Cancelable host-navigation request with detail.path.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "BlogNav",
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtWorkNavElement",
+          "description": "Native previous and next navigation for ordered work projects.",
+          "customElement": true,
+          "tagName": "dt-work-nav",
+          "members": [
+            {
+              "kind": "field",
+              "name": "currentPath",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pages",
+              "type": {
+                "text": "import(\"../native/section-nav\").DtSectionNavPage[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "current-path",
+              "fieldName": "currentPath",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "pages",
+              "fieldName": "pages",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "navigate",
+              "description": "Cancelable host-navigation request with detail.path.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "WorkNav",
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtPersonCardElement",
+          "description": "Native profile card with responsive portrait, contact, and social links.",
+          "customElement": true,
+          "tagName": "dt-person-card",
+          "members": [
+            {
+              "kind": "field",
+              "name": "imageSrc",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "imageAlt",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "imageSrcSet",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "imageSizes",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "personTitle",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "email",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "linkedinUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "linkedinLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "githubUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "githubLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "facebookUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "facebookLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "twitterUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "twitterLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dribbbleUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dribbbleLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mediumUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mediumLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "instagramUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "instagramLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "substackUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "substackLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "imageLoading",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "imageDecoding",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "image-src",
+              "fieldName": "imageSrc",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "image-alt",
+              "fieldName": "imageAlt",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "image-src-set",
+              "fieldName": "imageSrcSet",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "image-sizes",
+              "fieldName": "imageSizes",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "person-title",
+              "fieldName": "personTitle",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "email",
+              "fieldName": "email",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "linkedin-url",
+              "fieldName": "linkedinUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "linkedin-label",
+              "fieldName": "linkedinLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "github-url",
+              "fieldName": "githubUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "github-label",
+              "fieldName": "githubLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "facebook-url",
+              "fieldName": "facebookUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "facebook-label",
+              "fieldName": "facebookLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "twitter-url",
+              "fieldName": "twitterUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "twitter-label",
+              "fieldName": "twitterLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "dribbble-url",
+              "fieldName": "dribbbleUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "dribbble-label",
+              "fieldName": "dribbbleLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "medium-url",
+              "fieldName": "mediumUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "medium-label",
+              "fieldName": "mediumLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "instagram-url",
+              "fieldName": "instagramUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "instagram-label",
+              "fieldName": "instagramLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "substack-url",
+              "fieldName": "substackUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "substack-label",
+              "fieldName": "substackLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "image-loading",
+              "fieldName": "imageLoading",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "image-decoding",
+              "fieldName": "imageDecoding",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "PersonCard",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtTestimonialElement",
+          "description": "Native testimonial quote with attribution and optional avatar and LinkedIn link.",
+          "customElement": true,
+          "tagName": "dt-testimonial",
+          "members": [
+            {
+              "kind": "field",
+              "name": "quote",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "personTitle",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "company",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "linkedinUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "avatarUrl",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "quote",
+              "fieldName": "quote",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title",
+              "fieldName": "personTitle",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "company",
+              "fieldName": "company",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "linkedin-url",
+              "fieldName": "linkedinUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "avatar-url",
+              "fieldName": "avatarUrl",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "Testimonial",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
           "name": "DtValueCardElement",
           "description": "Compact value proposition card with icon, title, and description.",
           "customElement": true,

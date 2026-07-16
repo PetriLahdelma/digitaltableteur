@@ -2467,6 +2467,247 @@ const elementDefinitions = [
     ],
   },
   {
+    tagName: "dt-logo",
+    sourceComponent: "Logo",
+    contract: "Logo",
+    defaultBackend: "native",
+    nativeClassName: "DtLogoElement",
+    description:
+      "Native Digitaltableteur brand mark with badge and motion modes.",
+    storyParity: storyParity(),
+    props: [
+      numberProp("size"),
+      booleanProp("animated"),
+      booleanProp("badge"),
+      {
+        ...stringProp("accessibleTitle", "title"),
+        attributeName: "title",
+      },
+      booleanProp("decorative"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-blog-media-image",
+    sourceComponent: "BlogMediaImage",
+    contract: "BlogMediaImage",
+    defaultBackend: "native",
+    nativeClassName: "DtBlogMediaImageElement",
+    description: "Responsive native article image with fill and fit modes.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("src"),
+      stringProp("alt"),
+      booleanProp("fill"),
+      numberProp("width"),
+      numberProp("height"),
+      booleanProp("priority"),
+      stringProp("sizes"),
+      stringProp("fit"),
+      booleanProp("fluid"),
+    ],
+    events: [
+      {
+        callbackProp: "onLoad",
+        name: "image-load",
+        description: "Dispatched after the native image loads.",
+      },
+      {
+        callbackProp: "onError",
+        name: "image-error",
+        description: "Dispatched when the native image cannot load.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-author",
+    sourceComponent: "Author",
+    contract: "Author",
+    defaultBackend: "native",
+    nativeClassName: "DtAuthorElement",
+    description: "Compact native author byline composed with dt-avatar.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("name"),
+      stringProp("imageUrl"),
+      stringProp("size"),
+      stringProp("profileUrl"),
+      nativeProp("bylinePrefix", "string", "Localized byline prefix override."),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-social-share",
+    sourceComponent: "SocialShare",
+    contract: "SocialShare",
+    defaultBackend: "native",
+    nativeClassName: "DtSocialShareElement",
+    description:
+      "Native multi-channel sharing row with Web Share and copy fallback.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("url"),
+      {
+        ...stringProp("shareTitle", "title"),
+        attributeName: "share-title",
+      },
+      {
+        ...stringProp("channels"),
+        propertyType: String.raw`import("../native/social-share").DtSocialShareChannel[]`,
+      },
+      stringProp("variant"),
+      booleanProp("showHeading"),
+      stringProp("heading"),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "native-share",
+        description: "Dispatched after the Web Share API resolves.",
+      },
+      {
+        callbackProp: null,
+        name: "link-copy",
+        description: "Dispatched with detail.url after the URL is copied.",
+      },
+      {
+        callbackProp: null,
+        name: "share-error",
+        description: "Dispatched when neither native share nor copy succeeds.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-blog-nav",
+    sourceComponent: "BlogNav",
+    contract: "BlogNav",
+    defaultBackend: "native",
+    nativeClassName: "DtBlogNavElement",
+    description:
+      "Native previous and next navigation for ordered blog articles.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("currentPath"),
+      {
+        ...stringProp("pages"),
+        propertyType: String.raw`import("../native/section-nav").DtSectionNavPage[]`,
+      },
+      booleanProp("disabled"),
+    ],
+    events: [
+      {
+        callbackProp: "onNavigate",
+        name: "navigate",
+        description: "Cancelable host-navigation request with detail.path.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-work-nav",
+    sourceComponent: "WorkNav",
+    contract: "WorkNav",
+    defaultBackend: "native",
+    nativeClassName: "DtWorkNavElement",
+    description:
+      "Native previous and next navigation for ordered work projects.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("currentPath"),
+      {
+        ...stringProp("pages"),
+        propertyType: String.raw`import("../native/section-nav").DtSectionNavPage[]`,
+      },
+      booleanProp("disabled"),
+    ],
+    events: [
+      {
+        callbackProp: "onNavigate",
+        name: "navigate",
+        description: "Cancelable host-navigation request with detail.path.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-person-card",
+    sourceComponent: "PersonCard",
+    contract: "PersonCard",
+    defaultBackend: "native",
+    nativeClassName: "DtPersonCardElement",
+    description:
+      "Native profile card with responsive portrait, contact, and social links.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Person Card Compliance",
+          reason:
+            "React-only historical compliance fixture; native conformance is enforced by executable package and Storybook gates.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("imageSrc"),
+      stringProp("imageAlt"),
+      stringProp("imageSrcSet"),
+      stringProp("imageSizes"),
+      stringProp("name"),
+      {
+        ...stringProp("personTitle", "title"),
+        attributeName: "person-title",
+      },
+      stringProp("email"),
+      stringProp("linkedinUrl"),
+      stringProp("linkedinLabel"),
+      stringProp("githubUrl"),
+      stringProp("githubLabel"),
+      stringProp("facebookUrl"),
+      stringProp("facebookLabel"),
+      stringProp("twitterUrl"),
+      stringProp("twitterLabel"),
+      stringProp("dribbbleUrl"),
+      stringProp("dribbbleLabel"),
+      stringProp("mediumUrl"),
+      stringProp("mediumLabel"),
+      stringProp("instagramUrl"),
+      stringProp("instagramLabel"),
+      stringProp("substackUrl"),
+      stringProp("substackLabel"),
+      stringProp("imageLoading"),
+      stringProp("imageDecoding"),
+      booleanProp("loading"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-testimonial",
+    sourceComponent: "Testimonial",
+    contract: "Testimonial",
+    defaultBackend: "native",
+    nativeClassName: "DtTestimonialElement",
+    description:
+      "Native testimonial quote with attribution and optional avatar and LinkedIn link.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Testimonial Compliance",
+          reason:
+            "React-only historical compliance fixture; native conformance is enforced by executable package and Storybook gates.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("quote"),
+      stringProp("name"),
+      {
+        ...stringProp("personTitle", "title"),
+        attributeName: "title",
+      },
+      stringProp("company"),
+      stringProp("linkedinUrl"),
+      stringProp("avatarUrl"),
+    ],
+    events: [],
+  },
+  {
     tagName: "dt-value-card",
     sourceComponent: "ValueCard",
     contract: "ValueCard",

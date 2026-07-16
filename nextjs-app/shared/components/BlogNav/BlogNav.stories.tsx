@@ -7,7 +7,7 @@ const meta: Meta<typeof BlogNav> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/BlogNav",
   component: BlogNav,
-  tags: ["stable", "!autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

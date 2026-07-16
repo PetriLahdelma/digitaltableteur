@@ -787,6 +787,93 @@ export type DtSelectableCardGroupElementContract = HTMLElement & {
   helperText?: string;
 };
 
+export type DtLogoElementContract = HTMLElement & {
+  size?: number;
+  animated?: boolean;
+  badge?: boolean;
+  accessibleTitle?: string;
+  decorative?: boolean;
+};
+
+export type DtBlogMediaImageElementContract = HTMLElement & {
+  src?: string;
+  alt?: string;
+  fill?: boolean;
+  width?: number;
+  height?: number;
+  priority?: boolean;
+  sizes?: string;
+  fit?: string;
+  fluid?: boolean;
+};
+
+export type DtAuthorElementContract = HTMLElement & {
+  name?: string;
+  imageUrl?: string;
+  size?: string;
+  profileUrl?: string;
+  bylinePrefix?: string;
+};
+
+export type DtSocialShareElementContract = HTMLElement & {
+  url?: string;
+  shareTitle?: string;
+  channels?: import("../native/social-share").DtSocialShareChannel[];
+  variant?: string;
+  showHeading?: boolean;
+  heading?: string;
+};
+
+export type DtBlogNavElementContract = HTMLElement & {
+  currentPath?: string;
+  pages?: import("../native/section-nav").DtSectionNavPage[];
+  disabled?: boolean;
+};
+
+export type DtWorkNavElementContract = HTMLElement & {
+  currentPath?: string;
+  pages?: import("../native/section-nav").DtSectionNavPage[];
+  disabled?: boolean;
+};
+
+export type DtPersonCardElementContract = HTMLElement & {
+  imageSrc?: string;
+  imageAlt?: string;
+  imageSrcSet?: string;
+  imageSizes?: string;
+  name?: string;
+  personTitle?: string;
+  email?: string;
+  linkedinUrl?: string;
+  linkedinLabel?: string;
+  githubUrl?: string;
+  githubLabel?: string;
+  facebookUrl?: string;
+  facebookLabel?: string;
+  twitterUrl?: string;
+  twitterLabel?: string;
+  dribbbleUrl?: string;
+  dribbbleLabel?: string;
+  mediumUrl?: string;
+  mediumLabel?: string;
+  instagramUrl?: string;
+  instagramLabel?: string;
+  substackUrl?: string;
+  substackLabel?: string;
+  imageLoading?: string;
+  imageDecoding?: string;
+  loading?: boolean;
+};
+
+export type DtTestimonialElementContract = HTMLElement & {
+  quote?: string;
+  name?: string;
+  personTitle?: string;
+  company?: string;
+  linkedinUrl?: string;
+  avatarUrl?: string;
+};
+
 export type DtValueCardElementContract = HTMLElement & {
   title?: string;
   description?: string;
@@ -869,6 +956,14 @@ export const elementMigrationManifest = [
   { tagName: "dt-reading-progress", sourceComponent: "ReadingProgress", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-selectable-card", sourceComponent: "SelectableCard", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-selectable-card-group", sourceComponent: "SelectableCardGroup", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-logo", sourceComponent: "Logo", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-blog-media-image", sourceComponent: "BlogMediaImage", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-author", sourceComponent: "Author", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-social-share", sourceComponent: "SocialShare", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-blog-nav", sourceComponent: "BlogNav", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-work-nav", sourceComponent: "WorkNav", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-person-card", sourceComponent: "PersonCard", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-testimonial", sourceComponent: "Testimonial", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-value-card", sourceComponent: "ValueCard", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
 ] as const;
 
@@ -949,6 +1044,14 @@ declare global {
     "dt-reading-progress": DtReadingProgressElementContract;
     "dt-selectable-card": DtSelectableCardElementContract;
     "dt-selectable-card-group": DtSelectableCardGroupElementContract;
+    "dt-logo": DtLogoElementContract;
+    "dt-blog-media-image": DtBlogMediaImageElementContract;
+    "dt-author": DtAuthorElementContract;
+    "dt-social-share": DtSocialShareElementContract;
+    "dt-blog-nav": DtBlogNavElementContract;
+    "dt-work-nav": DtWorkNavElementContract;
+    "dt-person-card": DtPersonCardElementContract;
+    "dt-testimonial": DtTestimonialElementContract;
     "dt-value-card": DtValueCardElementContract;
   }
 }

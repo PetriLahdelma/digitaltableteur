@@ -223,6 +223,14 @@ export const titleByComponentName: Record<string, string> = {
   ValueCard: "Site/ValueCard",
   NavMenuList: "Site/NavMenuList",
   VisuallyHidden: "Site/VisuallyHidden",
+  Logo: "Site/Logo",
+  BlogMediaImage: "Site/BlogMediaImage",
+  Author: "Site/Author",
+  SocialShare: "Site/SocialShare",
+  BlogNav: "Site/BlogNav",
+  WorkNav: "Site/WorkNav",
+  PersonCard: "Site/PersonCard",
+  Testimonial: "Site/Testimonial",
 };
 
 /** Storybook's title -> id slug (mirrors @storybook/csf sanitize rules). */

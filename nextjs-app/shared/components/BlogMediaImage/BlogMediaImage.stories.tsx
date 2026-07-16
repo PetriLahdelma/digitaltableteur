@@ -8,7 +8,7 @@ const meta: Meta<typeof BlogMediaImage> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/BlogMediaImage",
   component: BlogMediaImage,
-  tags: ["stable", "!autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -19,12 +19,21 @@ const meta: Meta<typeof BlogMediaImage> = {
     layout: "padded",
   },
   argTypes: {
-    src: { control: "text", description: "Image source.", table: { category: "Content" } },
-    alt: { control: "text", description: "Alt text for the image.", table: { category: "Content" } },
+    src: {
+      control: "text",
+      description: "Image source.",
+      table: { category: "Content" },
+    },
+    alt: {
+      control: "text",
+      description: "Alt text for the image.",
+      table: { category: "Content" },
+    },
     fit: {
       options: ["cover", "contain"],
       control: { type: "inline-radio" },
-      description: "object-fit in fill mode; contain for diagrams, cover for photos.",
+      description:
+        "object-fit in fill mode; contain for diagrams, cover for photos.",
       table: { category: "Appearance", defaultValue: { summary: "cover" } },
     },
     fluid: {
@@ -37,15 +46,31 @@ const meta: Meta<typeof BlogMediaImage> = {
       description: "Absolutely fill the nearest positioned ancestor.",
       table: { category: "Appearance", defaultValue: { summary: "false" } },
     },
-    width: { control: "number", description: "Intrinsic width (raster).", table: { category: "Appearance" } },
-    height: { control: "number", description: "Intrinsic height (raster).", table: { category: "Appearance" } },
+    width: {
+      control: "number",
+      description: "Intrinsic width (raster).",
+      table: { category: "Appearance" },
+    },
+    height: {
+      control: "number",
+      description: "Intrinsic height (raster).",
+      table: { category: "Appearance" },
+    },
     priority: {
       control: "boolean",
       description: "Load eagerly (above-the-fold heroes).",
       table: { category: "Behavior", defaultValue: { summary: "false" } },
     },
-    sizes: { control: "text", description: "next/image responsive sizes hint.", table: { category: "Behavior" } },
-    className: { control: "text", description: "Extra class names on the image.", table: { category: "Appearance" } },
+    sizes: {
+      control: "text",
+      description: "next/image responsive sizes hint.",
+      table: { category: "Behavior" },
+    },
+    className: {
+      control: "text",
+      description: "Extra class names on the image.",
+      table: { category: "Appearance" },
+    },
     onLoad: { table: { disable: true } },
     onError: { table: { disable: true } },
   },

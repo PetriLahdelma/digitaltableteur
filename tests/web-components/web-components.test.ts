@@ -6,9 +6,12 @@ import {
   DtAccordionElement,
   DtAlertBannerElement,
   DtAspectRatioElement,
+  DtAuthorElement,
   DtAvatarElement,
   DtAvatarGroupElement,
   DtBadgeElement,
+  DtBlogMediaImageElement,
+  DtBlogNavElement,
   DtButtonElement,
   DtButtonGroupElement,
   DtBreadcrumbElement,
@@ -37,6 +40,7 @@ import {
   DtLanguageSwitcherElement,
   DtLinkElement,
   DtListElement,
+  DtLogoElement,
   DtMacWindowFrameElement,
   DtMenuElement,
   DtModalElement,
@@ -48,6 +52,7 @@ import {
   DtNavMenuListElement,
   DtPhoneInputElement,
   DtPaginationElement,
+  DtPersonCardElement,
   DtProgressElement,
   DtReadingProgressElement,
   DtSkipLinkElement,
@@ -71,14 +76,17 @@ import {
   DtSelectElement,
   DtSelectOptionElement,
   DtSkeletonElement,
+  DtSocialShareElement,
   DtSwitchElement,
   DtTabsElement,
   DtTooltipElement,
   DtToastElement,
   DtToastStackElement,
   DtTimestampElement,
+  DtTestimonialElement,
   DtVisuallyHiddenElement,
   DtValueCardElement,
+  DtWorkNavElement,
 } from "../../packages/web-components/src/native";
 import {
   DtBadgeReactElement,
@@ -112,6 +120,14 @@ const NATIVE_TAGS = [
   "dt-spinner",
   "dt-progress",
   "dt-reading-progress",
+  "dt-logo",
+  "dt-blog-media-image",
+  "dt-author",
+  "dt-social-share",
+  "dt-blog-nav",
+  "dt-work-nav",
+  "dt-person-card",
+  "dt-testimonial",
   "dt-alert-banner",
   "dt-text",
   "dt-title",
@@ -212,6 +228,16 @@ describe("native registry", () => {
     expect(customElements.get("dt-reading-progress")).toBe(
       DtReadingProgressElement,
     );
+    expect(customElements.get("dt-logo")).toBe(DtLogoElement);
+    expect(customElements.get("dt-blog-media-image")).toBe(
+      DtBlogMediaImageElement,
+    );
+    expect(customElements.get("dt-author")).toBe(DtAuthorElement);
+    expect(customElements.get("dt-social-share")).toBe(DtSocialShareElement);
+    expect(customElements.get("dt-blog-nav")).toBe(DtBlogNavElement);
+    expect(customElements.get("dt-work-nav")).toBe(DtWorkNavElement);
+    expect(customElements.get("dt-person-card")).toBe(DtPersonCardElement);
+    expect(customElements.get("dt-testimonial")).toBe(DtTestimonialElement);
     expect(customElements.get("dt-alert-banner")).toBe(DtAlertBannerElement);
     expect(customElements.get("dt-text")).toBe(DtTextElement);
     expect(customElements.get("dt-title")).toBe(DtTitleElement);

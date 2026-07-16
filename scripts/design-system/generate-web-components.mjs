@@ -57,9 +57,12 @@ function validate() {
     tags.add(element.tagName);
     if (element.adapterClassName) classes.add(element.adapterClassName);
 
-    if (!publicApi.runtimeExports.includes(element.sourceComponent)) {
+    if (
+      element.adapterClassName &&
+      !publicApi.runtimeExports.includes(element.sourceComponent)
+    ) {
       throw new Error(
-        `${element.tagName} references non-public React export ${element.sourceComponent}`,
+        `${element.tagName} React adapter references non-public React export ${element.sourceComponent}`,
       );
     }
     if (!element.tagName.startsWith("dt-")) {

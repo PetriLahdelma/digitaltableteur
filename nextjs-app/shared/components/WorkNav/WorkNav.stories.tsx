@@ -9,7 +9,7 @@ const meta: Meta<typeof WorkNav> = {
   // prev/next disabled state is operable from the panel.
   title: "Site/WorkNav",
   component: WorkNav,
-  tags: ["stable", "!autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

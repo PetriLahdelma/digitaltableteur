@@ -1,9 +1,12 @@
 import { DtAlertBannerElement } from "./native/alert-banner";
 import { DtAccordionElement } from "./native/accordion";
 import { DtAspectRatioElement } from "./native/aspect-ratio";
+import { DtAuthorElement } from "./native/author";
 import { DtAvatarElement } from "./native/avatar";
 import { DtAvatarGroupElement } from "./native/avatar-group";
 import { DtBadgeElement } from "./native/badge";
+import { DtBlogMediaImageElement } from "./native/blog-media-image";
+import { DtBlogNavElement, DtWorkNavElement } from "./native/section-nav";
 import { DtButtonElement } from "./native/button";
 import { DtButtonGroupElement } from "./native/button-group";
 import { DtCardElement } from "./native/card";
@@ -31,6 +34,7 @@ import { DtKbdElement } from "./native/kbd";
 import { DtLanguageSwitcherElement } from "./native/language-switcher";
 import { DtLinkElement } from "./native/link";
 import { DtListElement } from "./native/list";
+import { DtLogoElement } from "./native/logo";
 import { DtMacWindowFrameElement } from "./native/mac-window-frame";
 import { DtMenuElement } from "./native/menu";
 import { DtModalElement } from "./native/modal";
@@ -42,6 +46,7 @@ import { DtNavLinkElement } from "./native/nav-link";
 import { DtNavMenuListElement } from "./native/nav-menu-list";
 import { DtPhoneInputElement } from "./native/phone-input";
 import { DtPaginationElement } from "./native/pagination";
+import { DtPersonCardElement } from "./native/person-card";
 import { DtProgressElement } from "./native/progress";
 import { DtReadingProgressElement } from "./native/reading-progress";
 import { DtSkipLinkElement } from "./native/skip-link";
@@ -67,12 +72,14 @@ import { DtRadioGroupElement } from "./native/radio-group";
 import { DtSelectElement } from "./native/select";
 import { DtSelectOptionElement } from "./native/select-option";
 import { DtSkeletonElement } from "./native/skeleton";
+import { DtSocialShareElement } from "./native/social-share";
 import { DtSwitchElement } from "./native/switch";
 import { DtTabsElement } from "./native/tabs";
 import { DtTooltipElement } from "./native/tooltip";
 import { DtToastElement } from "./native/toast";
 import { DtToastStackElement } from "./native/toast-stack";
 import { DtTimestampElement } from "./native/timestamp";
+import { DtTestimonialElement } from "./native/testimonial";
 import { DtVisuallyHiddenElement } from "./native/visually-hidden";
 import { DtValueCardElement } from "./native/value-card";
 import { DtBreadcrumbElement } from "./native/breadcrumb";
@@ -91,6 +98,7 @@ export type {
 } from "./native/accordion";
 export { DtAspectRatioElement } from "./native/aspect-ratio";
 export type { DtAspectRatioRatio } from "./native/aspect-ratio";
+export { DtAuthorElement } from "./native/author";
 export { DtAvatarElement } from "./native/avatar";
 export type {
   DtAvatarDecoding,
@@ -102,6 +110,10 @@ export { DtAvatarGroupElement } from "./native/avatar-group";
 export type { DtAvatarGroupSize } from "./native/avatar-group";
 export { DtBadgeElement } from "./native/badge";
 export type { DtBadgeSize, DtBadgeTone, DtBadgeVariant } from "./native/badge";
+export { DtBlogMediaImageElement } from "./native/blog-media-image";
+export type { DtBlogMediaImageFit } from "./native/blog-media-image";
+export { DtBlogNavElement, DtWorkNavElement } from "./native/section-nav";
+export type { DtSectionNavPage } from "./native/section-nav";
 export { DtButtonElement } from "./native/button";
 export type {
   DtButtonSize,
@@ -217,6 +229,7 @@ export type {
   DtListStyleType,
   DtListTag,
 } from "./native/list";
+export { DtLogoElement } from "./native/logo";
 export { DtMacWindowFrameElement } from "./native/mac-window-frame";
 export type { DtMacWindowFrameDensity } from "./native/mac-window-frame";
 export { DtMenuElement } from "./native/menu";
@@ -245,6 +258,11 @@ export type {
   DtPhoneInputCountry,
   DtPhoneInputValue,
 } from "./native/phone-input";
+export { DtPersonCardElement } from "./native/person-card";
+export type {
+  DtPersonCardImageDecoding,
+  DtPersonCardImageLoading,
+} from "./native/person-card";
 export {
   DtPaginationElement,
   generatePaginationRange,
@@ -321,6 +339,11 @@ export type { DtSelectOptionItem, DtSelectSize } from "./native/select";
 export { DtSelectOptionElement } from "./native/select-option";
 export { DtSkeletonElement } from "./native/skeleton";
 export type { DtSkeletonVariant } from "./native/skeleton";
+export { DtSocialShareElement } from "./native/social-share";
+export type {
+  DtSocialShareChannel,
+  DtSocialShareVariant,
+} from "./native/social-share";
 export { DtSwitchElement } from "./native/switch";
 export type { DtSwitchLabelPlacement, DtSwitchSize } from "./native/switch";
 export { DtTabsElement } from "./native/tabs";
@@ -352,6 +375,7 @@ export type {
   DtTimestampSize,
   DtTimestampTone,
 } from "./native/timestamp";
+export { DtTestimonialElement } from "./native/testimonial";
 export { DtVisuallyHiddenElement } from "./native/visually-hidden";
 export type { DtVisuallyHiddenTag } from "./native/visually-hidden";
 export { DtValueCardElement } from "./native/value-card";
@@ -383,6 +407,14 @@ export const nativeElementDefinitions = [
   ["dt-spinner", DtSpinnerElement],
   ["dt-progress", DtProgressElement],
   ["dt-reading-progress", DtReadingProgressElement],
+  ["dt-logo", DtLogoElement],
+  ["dt-blog-media-image", DtBlogMediaImageElement],
+  ["dt-author", DtAuthorElement],
+  ["dt-social-share", DtSocialShareElement],
+  ["dt-blog-nav", DtBlogNavElement],
+  ["dt-work-nav", DtWorkNavElement],
+  ["dt-person-card", DtPersonCardElement],
+  ["dt-testimonial", DtTestimonialElement],
   ["dt-alert-banner", DtAlertBannerElement],
   ["dt-text", DtTextElement],
   ["dt-title", DtTitleElement],
