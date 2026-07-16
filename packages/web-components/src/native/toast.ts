@@ -147,6 +147,9 @@ export class DtToastElement extends DigitaltableteurElement {
   private timer: ReturnType<typeof setTimeout> | null = null;
   private timerDuration: number | null = null;
   private closeDispatched = false;
+  private toastEl: HTMLDivElement | null = null;
+  private iconWrapper: HTMLSpanElement | null = null;
+  private messageEl: HTMLSpanElement | null = null;
 
   connectedCallback(): void {
     this.render();
@@ -256,9 +259,33 @@ export class DtToastElement extends DigitaltableteurElement {
     }, this.duration);
   }
 
-  private render(): void {
-    const assertive = this.tone === "error" || this.tone === "warning";
+  // The live region is mounted once and then mutated in place. Recreating the
+  // role=status/aria-live node on every update would insert it already-populated,
+  // which screen readers do not reliably announce; keeping the same node mounted
+  // and swapping only the message text preserves announcements (parity with the
+  // React Toast, which keeps a stable live region rather than remounting it).
+  private ensureShadow(): void {
+    if (this.toastEl) return;
     const toast = this.ownerDocument.createElement("div");
+    const iconWrapper = this.ownerDocument.createElement("span");
+    iconWrapper.className = "icon";
+    iconWrapper.setAttribute("part", "icon");
+    iconWrapper.setAttribute("aria-hidden", "true");
+    const message = this.ownerDocument.createElement("span");
+    message.className = "message";
+    message.setAttribute("part", "message");
+    toast.append(iconWrapper, message);
+    this.toastEl = toast;
+    this.iconWrapper = iconWrapper;
+    this.messageEl = message;
+    this.replaceShadow(styles, toast);
+  }
+
+  private render(): void {
+    this.ensureShadow();
+    const toast = this.toastEl!;
+    const wrapper = this.iconWrapper!;
+    const assertive = this.tone === "error" || this.tone === "warning";
     toast.className = [
       "toast",
       this.size,
@@ -275,23 +302,23 @@ export class DtToastElement extends DigitaltableteurElement {
 
     const iconName = toneIcons[this.tone];
     if (iconName) {
-      const iconWrapper = this.ownerDocument.createElement("span");
-      iconWrapper.className = "icon";
-      iconWrapper.setAttribute("part", "icon");
-      iconWrapper.setAttribute("aria-hidden", "true");
-      const icon = this.ownerDocument.createElement("dt-icon");
-      icon.setAttribute("name", iconName);
-      icon.setAttribute("size", "md");
-      icon.setAttribute("decorative", "");
-      iconWrapper.append(icon);
-      toast.append(iconWrapper);
+      let icon = wrapper.firstElementChild;
+      if (!icon) {
+        icon = this.ownerDocument.createElement("dt-icon");
+        icon.setAttribute("size", "md");
+        icon.setAttribute("decorative", "");
+        wrapper.append(icon);
+      }
+      if (icon.getAttribute("name") !== iconName) {
+        icon.setAttribute("name", iconName);
+      }
+      wrapper.hidden = false;
+    } else {
+      wrapper.replaceChildren();
+      wrapper.hidden = true;
     }
 
-    const message = this.ownerDocument.createElement("span");
-    message.className = "message";
-    message.setAttribute("part", "message");
-    message.textContent = this.open ? this.message : "";
-    toast.append(message);
-    this.replaceShadow(styles, toast);
+    // Mutate text only — the live region node itself stays mounted.
+    this.messageEl!.textContent = this.open ? this.message : "";
   }
 }

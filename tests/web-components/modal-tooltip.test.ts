@@ -258,3 +258,41 @@ describe("native modal and tooltip", () => {
     expect(tooltip.open).toBe(true);
   });
 });
+
+describe("native review regressions (#1224)", () => {
+  it("inerts background siblings while open and restores on disconnect", () => {
+    const sibling = document.createElement("div");
+    sibling.id = "background";
+    document.body.append(sibling);
+
+    const modal = document.createElement("dt-modal") as DtModalElement;
+    modal.title = "Dialog";
+    modal.defaultOpen = true;
+    document.body.append(modal);
+
+    expect(sibling.hasAttribute("inert")).toBe(true);
+
+    modal.remove();
+    expect(sibling.hasAttribute("inert")).toBe(false);
+  });
+
+  it("re-appends the tooltip description after disconnect and reconnect", () => {
+    const tooltip = document.createElement("dt-tooltip") as DtTooltipElement;
+    const trigger = document.createElement("button");
+    trigger.textContent = "Help";
+    tooltip.append(trigger);
+    tooltip.setAttribute("content", "Contextual hint");
+    document.body.append(tooltip);
+    const slotSelector = "[slot='__dt-tooltip-description']";
+    expect(tooltip.querySelector(slotSelector)).not.toBeNull();
+
+    tooltip.remove();
+    document.body.append(tooltip);
+
+    const description = tooltip.querySelector(slotSelector);
+    // Description is re-appended and live in the tree, not a detached orphan that
+    // a lingering aria-describedby would point at.
+    expect(description).not.toBeNull();
+    expect(description?.isConnected).toBe(true);
+  });
+});

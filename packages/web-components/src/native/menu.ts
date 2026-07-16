@@ -532,10 +532,10 @@ export class DtMenuElement extends DigitaltableteurElement {
   }
 
   private focusTrigger(): void {
-    this.managedTrigger?.focus();
-    this.shadowRoot
-      ?.querySelector<HTMLButtonElement>(".fallbackTrigger")
-      ?.focus();
+    const fallback = this.shadowRoot?.querySelector<HTMLButtonElement>(
+      ".fallbackTrigger",
+    );
+    (this.managedTrigger ?? fallback)?.focus();
   }
 
   private openMenu(focusLast = false): void {
@@ -988,7 +988,7 @@ export class DtMenuElement extends DigitaltableteurElement {
       }
 
       const children =
-        item.children?.filter((child) => !child.separator || true) ?? [];
+        item.children?.filter((child) => !child.separator) ?? [];
       const hasChildren = children.length > 0;
       const wrapper = this.ownerDocument.createElement("div");
       wrapper.className = "itemWrap";
@@ -999,6 +999,10 @@ export class DtMenuElement extends DigitaltableteurElement {
       control.className = "item";
       control.setAttribute("part", "menu-item");
       control.setAttribute("role", "menuitem");
+      // Non-modal menus must not trap Tab: items are focused programmatically, so
+      // keep them out of the native tab order (matches the slotted-item path). Tab
+      // then exits the menu naturally instead of stepping to the next menu item.
+      control.setAttribute("tabindex", "-1");
       control.setAttribute("data-menu-control", "true");
       control.setAttribute("data-menu-panel-id", panelId);
       control.setAttribute("data-menu-path", path);

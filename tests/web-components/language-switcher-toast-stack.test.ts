@@ -445,3 +445,24 @@ describe("native ToastStack", () => {
     expect(dismiss).not.toHaveBeenCalled();
   });
 });
+
+describe("native review regressions (#1225)", () => {
+  it("keeps the toast live region mounted across message updates", () => {
+    const toast = document.createElement(TOAST_TAG) as DtToastElement;
+    toast.open = true;
+    toast.message = "Saved";
+    document.body.append(toast);
+
+    const region = toast.shadowRoot?.querySelector("[aria-live]");
+    const messageNode = toast.shadowRoot?.querySelector(".message");
+    expect(region).not.toBeNull();
+    expect(messageNode?.textContent).toBe("Saved");
+
+    toast.message = "Deleted";
+    // Same live-region node and same message node — only the text changed, so the
+    // announcement fires as a mutation instead of a wholesale remount.
+    expect(toast.shadowRoot?.querySelector("[aria-live]")).toBe(region);
+    expect(toast.shadowRoot?.querySelector(".message")).toBe(messageNode);
+    expect(messageNode?.textContent).toBe("Deleted");
+  });
+});

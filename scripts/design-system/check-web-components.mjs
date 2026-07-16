@@ -104,27 +104,15 @@ for (const required of [
     throw new Error(`Web-components tarball misses ${required}`);
 }
 const maxPackedFiles = 40 + tags.length * 2;
-const interactionTags = new Set([
-  "dt-accordion",
-  "dt-expandable-section",
-  "dt-menu",
-  "dt-modal",
-  "dt-segmented-control",
-  "dt-split-button",
-  "dt-tabs",
-  "dt-tooltip",
-]);
-const interactionCount = tags.filter((tag) => interactionTags.has(tag)).length;
-const internationalPhoneAllowance = tags.includes("dt-phone-input")
-  ? 300_000
-  : 0;
-const completeManifestMemberAllowance = tags.length * 1_250;
-const maxUnpackedSize =
-  250_000 +
-  tags.length * 13_000 +
-  interactionCount * 1_100 +
-  internationalPhoneAllowance +
-  completeManifestMemberAllowance;
+// The published tarball is dominated by two things that do NOT scale per component:
+// the shared framework-free native chunk (~940 kB minified, including the bundled
+// libphonenumber-js data for dt-phone-input) and the generated custom-elements.json
+// manifest (~210 kB). The remainder scales with the number of registered tags
+// (register/contract/typings entries). Keep this ceiling snug so genuine bloat in
+// either the shared chunk or the manifest still trips the budget.
+const sharedBundleAndManifestCeiling = 1_180_000;
+const perTagAllowance = tags.length * 4_500;
+const maxUnpackedSize = sharedBundleAndManifestCeiling + perTagAllowance;
 if (pack.entryCount > maxPackedFiles || pack.unpackedSize > maxUnpackedSize) {
   throw new Error(
     `Web-components tarball exceeds its ${tags.length}-component budget (${pack.entryCount}/${maxPackedFiles} files, ${pack.unpackedSize}/${maxUnpackedSize} bytes)`,

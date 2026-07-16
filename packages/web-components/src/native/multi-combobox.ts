@@ -179,8 +179,10 @@ export class DtMultiComboboxElement extends DigitaltableteurElement {
 
   formDisabledCallback(disabled: boolean): void {
     this.formDisabled = disabled;
+    // close() early-returns at rest (no open state, no query), so render()
+    // unconditionally to propagate the disabled state and null the form value.
     if (disabled) this.close(false);
-    else this.render();
+    this.render();
   }
 
   formResetCallback(): void {

@@ -153,7 +153,9 @@ export class DtSegmentedControlElement extends DigitaltableteurElement {
     return this.liveValue ?? "";
   }
   set value(value: string) {
-    reflectAttribute(this, "value", value);
+    // Empty string means "no controlled selection" (parity with React); reflect it
+    // as an absent attribute rather than a controlled-empty state.
+    reflectAttribute(this, "value", value || null);
   }
 
   get defaultValue(): string {
@@ -192,7 +194,7 @@ export class DtSegmentedControlElement extends DigitaltableteurElement {
   }
 
   private get isControlled(): boolean {
-    return this.hasAttribute("value");
+    return (this.getAttribute("value") ?? "") !== "";
   }
 
   private parseItemsAttribute(): DtSegmentedControlItem[] {

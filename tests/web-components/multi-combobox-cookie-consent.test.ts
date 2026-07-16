@@ -465,3 +465,64 @@ describe("native CookieConsent", () => {
     ).not.toThrow();
   });
 });
+
+describe("native review regressions (#1224/#1225)", () => {
+  it("re-prompts when built-in stored consent has expired (GDPR max-age)", () => {
+    const key = "dt-consent-expiry-regression";
+    window.localStorage.setItem(
+      key,
+      JSON.stringify({
+        version: 1,
+        timestamp: new Date(Date.now() - 366 * 24 * 60 * 60 * 1000).toISOString(),
+        language: "en",
+        categories: { essential: true, analytics: true, marketing: false },
+      }),
+    );
+    const element = createCookieConsent();
+    element.setAttribute("storage-key", key);
+    document.body.append(element);
+    expect(element.open).toBe(true);
+    window.localStorage.removeItem(key);
+  });
+
+  it("honors built-in stored consent within the max-age", () => {
+    const key = "dt-consent-fresh-regression";
+    window.localStorage.setItem(
+      key,
+      JSON.stringify({
+        version: 1,
+        timestamp: new Date().toISOString(),
+        language: "en",
+        categories: { essential: true, analytics: true, marketing: false },
+      }),
+    );
+    const element = createCookieConsent();
+    element.setAttribute("storage-key", key);
+    document.body.append(element);
+    expect(element.open).toBe(false);
+    expect(element.value).toEqual({
+      essential: true,
+      analytics: true,
+      marketing: false,
+    });
+    window.localStorage.removeItem(key);
+  });
+
+  it("defaults optional categories to opt-out (no pre-ticked consent)", () => {
+    const element = createCookieConsent();
+    document.body.append(element);
+    expect(element.value).toEqual({
+      essential: true,
+      analytics: false,
+      marketing: false,
+    });
+  });
+
+  it("applies a form-level disable even when closed at rest", () => {
+    const element = createMultiCombobox();
+    document.body.append(element);
+    element.formDisabledCallback(true);
+    const input = element.shadowRoot?.querySelector<HTMLInputElement>("input");
+    expect(input?.disabled).toBe(true);
+  });
+});

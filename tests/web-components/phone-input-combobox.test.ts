@@ -343,3 +343,22 @@ describe("native Combobox", () => {
     expect(element.open).toBe(false);
   });
 });
+
+describe("native review regressions (#1225)", () => {
+  it("keeps an in-progress international prefix visible while typing", () => {
+    const element = document.createElement(
+      "dt-phone-input",
+    ) as DtPhoneInputElement;
+    element.label = "Phone number";
+    element.name = "phone";
+    document.body.append(element);
+
+    const input = element.shadowRoot?.querySelector<HTMLInputElement>("input")!;
+    fireEvent.input(input, { target: { value: "+358" } });
+
+    const after = element.shadowRoot?.querySelector<HTMLInputElement>("input")!;
+    // Field is not blanked mid-entry; the prefix stays typeable by hand.
+    expect(after.value).not.toBe("");
+    expect(after.value.startsWith("+")).toBe(true);
+  });
+});

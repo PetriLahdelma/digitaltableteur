@@ -4,7 +4,13 @@ import {
   reflectBooleanAttribute,
   stringAttribute,
 } from "./base";
+import { BackgroundInert } from "./overlay";
 import { localizedText } from "./localization";
+
+// Stored consent is only honored for a year, staying under the EU (CNIL) 13-month
+// ceiling for consent validity. Mirrors the React store (cookieConsent/storage.ts)
+// so registry hosts do not keep tracking a visitor on a legally-expired decision.
+const CONSENT_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
 
 export type DtCookieConsentValue = Record<string, boolean>;
 export type DtCookieConsentChangeType =
@@ -18,7 +24,6 @@ export interface DtCookieConsentCategory {
   label: string;
   description?: string;
   required?: boolean;
-  consented?: boolean;
   toggleLabel?: string;
 }
 
@@ -234,6 +239,8 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
   private customizing = false;
   private syncingOpenAttribute = false;
   private resizeObserver: ResizeObserver | null = null;
+  private readonly background = new BackgroundInert(this);
+  private previousBodyOverflow: string | null = null;
 
   connectedCallback(): void {
     if (!this.initialized) this.initialize();
@@ -242,6 +249,7 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
 
   disconnectedCallback(): void {
     this.detachDialogListeners();
+    this.releaseDialogBackground();
     this.clearBodySignal();
     super.disconnectedCallback();
   }
@@ -466,7 +474,6 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
                 ? category.description
                 : undefined,
             required: category.required === true,
-            consented: category.consented === true,
             toggleLabel:
               typeof category.toggleLabel === "string"
                 ? category.toggleLabel
@@ -480,10 +487,12 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
   }
 
   private categoryDefaults(): DtCookieConsentValue {
+    // Optional categories always default to false (opt-in). Pre-ticked non-essential
+    // consent is non-compliant (CJEU Planet49); only required categories start on.
     return Object.fromEntries(
       this.categories.map((category) => [
         category.id,
-        category.required === true || category.consented === true,
+        category.required === true,
       ]),
     );
   }
@@ -506,9 +515,19 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
       record.categories !== undefined
     ) {
       if (record.version !== this.storageVersion) return null;
+      // Fail closed on missing/expired timestamps so the banner re-prompts rather
+      // than tracking on stale consent.
+      if (!this.isStoredConsentFresh(record.timestamp)) return null;
       return parseValue(record.categories);
     }
     return parseValue(value);
+  }
+
+  private isStoredConsentFresh(timestamp: string | undefined): boolean {
+    if (!timestamp) return false;
+    const savedAt = Date.parse(timestamp);
+    if (!Number.isFinite(savedAt)) return false;
+    return Date.now() - savedAt <= CONSENT_MAX_AGE_MS;
   }
 
   private loadPersistedValue(): DtCookieConsentValue | null {
@@ -556,8 +575,25 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
 
   private clearPersistence(): void {
     try {
-      if (this.assignedPersistence?.clear) this.assignedPersistence.clear(this);
-      else if (this.storageKey)
+      if (this.assignedPersistence) {
+        if (this.assignedPersistence.clear) {
+          this.assignedPersistence.clear(this);
+        } else {
+          // Adapters without clear() still need consent withdrawn: overwrite the
+          // host store with the (non-consenting) defaults instead of leaving the
+          // previous grant in place.
+          this.assignedPersistence.save(
+            {
+              type: "reset",
+              value: this.normalizeValue(this.defaultValue),
+              timestamp: new Date().toISOString(),
+            },
+            this,
+          );
+        }
+        return;
+      }
+      if (this.storageKey)
         this.ownerDocument.defaultView?.localStorage?.removeItem(
           this.storageKey,
         );
@@ -653,6 +689,7 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
     this.draftValue = cloneValue(this.liveValue);
     this.customizing = true;
     this.attachDialogListeners();
+    this.lockDialogBackground();
     this.render();
     queueMicrotask(() =>
       this.shadowRoot?.querySelector<HTMLButtonElement>(".close")?.focus(),
@@ -663,12 +700,32 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
     if (!this.customizing) return;
     this.customizing = false;
     this.detachDialogListeners();
+    this.releaseDialogBackground();
     this.render();
     queueMicrotask(() => {
       const customize =
         this.shadowRoot?.querySelector<HTMLButtonElement>(".customize");
       customize?.focus();
     });
+  }
+
+  private lockDialogBackground(): void {
+    // The preferences dialog is modal: hide the rest of the page from AT and lock
+    // body scroll while it is open, restoring both when it closes.
+    this.background.engage();
+    const body = this.ownerDocument.body;
+    if (this.previousBodyOverflow === null && body) {
+      this.previousBodyOverflow = body.style.overflow;
+      body.style.overflow = "hidden";
+    }
+  }
+
+  private releaseDialogBackground(): void {
+    this.background.restore();
+    if (this.previousBodyOverflow === null) return;
+    const body = this.ownerDocument.body;
+    if (body) body.style.overflow = this.previousBodyOverflow;
+    this.previousBodyOverflow = null;
   }
 
   private attachDialogListeners(): void {

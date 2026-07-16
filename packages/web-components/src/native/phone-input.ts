@@ -400,8 +400,15 @@ export class DtPhoneInputElement extends DigitaltableteurElement {
       .join(" ");
     if (describedBy) input.setAttribute("aria-describedby", describedBy);
     input.addEventListener("input", () => {
-      const nextValue = this.normalizeValue(input.value);
-      input.value = nextValue ? new AsYouType().input(nextValue) : "";
+      const raw = input.value;
+      const nextValue = this.normalizeValue(raw);
+      // Keep the user's in-progress entry visible (formatted as-you-type). Blanking
+      // when normalizeValue is not yet resolvable made typing a "+<code>" prefix by
+      // hand impossible; the E.164 value still commits once it resolves.
+      const formatter = new AsYouType(
+        raw.startsWith("+") ? undefined : this.liveCountry,
+      );
+      input.value = formatter.input(raw);
       this.commit(nextValue);
       country.value = this.liveCountry;
     });

@@ -313,10 +313,12 @@ function renderCustomElementsManifest() {
             description: element.description,
             customElement: true,
             tagName: element.tagName,
-            ...(element.props.some((prop) => !prop.attributeOnly)
+            ...(element.props.some(
+              (prop) => prop.propertyType && !prop.attributeOnly,
+            )
               ? {
                   members: element.props
-                    .filter((prop) => !prop.attributeOnly)
+                    .filter((prop) => prop.propertyType && !prop.attributeOnly)
                     .map((prop) => ({
                       kind: "field",
                       name: prop.name,

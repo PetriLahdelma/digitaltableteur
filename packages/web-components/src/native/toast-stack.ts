@@ -219,12 +219,17 @@ export class DtToastStackElement extends DigitaltableteurElement {
     element: DtToastElement,
     item: DtToastStackItem,
   ): void {
-    element.message = item.message;
-    element.tone = item.tone ?? "neutral";
-    element.size = item.size ?? "md";
-    element.duration = item.duration ?? 3000;
-    element.inline = true;
-    element.open = true;
+    // Only assign changed properties so an unrelated stack update does not
+    // re-render every visible toast.
+    const tone = item.tone ?? "neutral";
+    const size = item.size ?? "md";
+    const duration = item.duration ?? 3000;
+    if (element.message !== item.message) element.message = item.message;
+    if (element.tone !== tone) element.tone = tone;
+    if (element.size !== size) element.size = size;
+    if (element.duration !== duration) element.duration = duration;
+    if (!element.inline) element.inline = true;
+    if (!element.open) element.open = true;
   }
 
   private reconcile(): void {

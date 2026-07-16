@@ -179,6 +179,14 @@ Combobox, and MultiCombobox participate in forms and expose typed value-change
 events. CookieConsent exposes consent decisions while leaving storage,
 analytics, and policy enforcement to the host.
 
+> **Combobox behavioral extension (native-only):** the React `Combobox` renders a
+> non-editable `role="combobox"` button (select-from-list). The native
+> `dt-combobox` deliberately extends this to an editable, filtering combobox
+> (`aria-autocomplete="list"`) that emits a `filter-change` event, matching the
+> APG editable-combobox pattern for framework-free hosts that lack a React
+> selection surface. This is an intentional superset, not a port mismatch; the
+> non-editable React behavior is still reproducible by ignoring `filter-change`.
+
 ## Legacy React adapters
 
 The initial quick-port adapters remain available temporarily from
