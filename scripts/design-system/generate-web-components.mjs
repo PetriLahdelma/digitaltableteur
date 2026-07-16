@@ -91,6 +91,13 @@ function validate() {
         );
       }
     }
+    for (const extension of element.storyParity?.extensions ?? []) {
+      if (!extension.native || extension.reason?.trim().length < 16) {
+        throw new Error(
+          `${element.tagName} storyParity extensions require a native story and concrete reason`,
+        );
+      }
+    }
     const slotNames = new Set();
     for (const slot of element.slots ?? []) {
       if (slotNames.has(slot.name)) {
@@ -306,17 +313,23 @@ function renderCustomElementsManifest() {
             description: element.description,
             customElement: true,
             tagName: element.tagName,
-            ...(element.props.some(
-              (prop) => prop.propertyType && !prop.attributeOnly,
-            )
+            ...(element.props.some((prop) => !prop.attributeOnly)
               ? {
                   members: element.props
-                    .filter((prop) => prop.propertyType && !prop.attributeOnly)
+                    .filter((prop) => !prop.attributeOnly)
                     .map((prop) => ({
                       kind: "field",
                       name: prop.name,
                       description: prop.description || undefined,
-                      type: { text: prop.propertyType },
+                      type: {
+                        text:
+                          prop.propertyType ??
+                          (prop.type === "number"
+                            ? "number"
+                            : prop.type === "boolean"
+                              ? "boolean"
+                              : "string"),
+                      },
                     })),
                 }
               : {}),
@@ -328,12 +341,14 @@ function renderCustomElementsManifest() {
                   })),
                 }
               : {}),
-            attributes: element.props.map((prop) => ({
-              name: prop.attributeName ?? dashed(prop.name),
-              fieldName: prop.fieldName ?? prop.name,
-              description: prop.description || undefined,
-              type: { text: prop.type },
-            })),
+            attributes: element.props
+              .filter((prop) => !prop.propertyOnly)
+              .map((prop) => ({
+                name: prop.attributeName ?? dashed(prop.name),
+                fieldName: prop.fieldName ?? prop.name,
+                description: prop.description || undefined,
+                type: { text: prop.type },
+              })),
             events: element.events.map((event) => ({
               name: event.name,
               description: event.description,

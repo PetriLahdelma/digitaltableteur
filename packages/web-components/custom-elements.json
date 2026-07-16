@@ -12,6 +12,135 @@
           "description": "Digitaltableteur action or link control.",
           "customElement": true,
           "tagName": "dt-button",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "description": "Visible button label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "surface",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "endIcon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleNameRef",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "submits",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "label",
@@ -151,6 +280,73 @@
           "description": "Compact status label with semantic tone.",
           "customElement": true,
           "tagName": "dt-badge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "description": "Visible badge label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "removable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dot",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "square",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "description": "Leading native icon name.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "label",
@@ -236,6 +432,78 @@
           "description": "Accessible icon-only action composed from native Button.",
           "customElement": true,
           "tagName": "dt-icon-button",
+          "members": [
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "surface",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "submits",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "icon",
@@ -318,6 +586,22 @@
           "description": "Attached or spaced group of related action controls.",
           "customElement": true,
           "tagName": "dt-button-group",
+          "members": [
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "attached",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "aria-label",
@@ -344,6 +628,51 @@
           "description": "Controlled filter toggle with pressed semantics.",
           "customElement": true,
           "tagName": "dt-filter-chip",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "description": "Visible chip label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pressed",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "count",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "label",
@@ -399,6 +728,118 @@
           "description": "Protocol-safe native anchor with external-link affordance.",
           "customElement": true,
           "tagName": "dt-link",
+          "members": [
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "description": "Visible link label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "underline",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "download",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hrefLang",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "referrerPolicy",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaCurrent",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "externalLabel",
+              "description": "Override the external-link announcement for every locale.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "externalLabelEn",
+              "description": "English external-link announcement override.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "externalLabelFi",
+              "description": "Finnish external-link announcement override.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "externalLabelSv",
+              "description": "Swedish external-link announcement override.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "href",
@@ -521,6 +962,52 @@
           "description": "Host-routed navigation link with boundary-safe active state.",
           "customElement": true,
           "tagName": "dt-nav-link",
+          "members": [
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "description": "Visible navigation label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentPath",
+              "description": "Current host route used to derive active state.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "exact",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "underline",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "href",
@@ -577,6 +1064,23 @@
           "description": "Keyboard bypass link revealed on focus.",
           "customElement": true,
           "tagName": "dt-skip-link",
+          "members": [
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "description": "Visible link label on focus.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "href",
@@ -604,6 +1108,22 @@
           "description": "Indeterminate loading indicator.",
           "customElement": true,
           "tagName": "dt-spinner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "label",
@@ -630,6 +1150,50 @@
           "description": "Linear determinate or indeterminate progress indicator.",
           "customElement": true,
           "tagName": "dt-progress",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "state",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "indeterminate",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "value",
@@ -684,6 +1248,36 @@
           "description": "Inline semantic status indicator with visible or screen-reader label.",
           "customElement": true,
           "tagName": "dt-status-dot",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pulse",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "tone",
@@ -724,6 +1318,22 @@
           "description": "Decorative or semantic horizontal and vertical separator.",
           "customElement": true,
           "tagName": "dt-divider",
+          "members": [
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "decorative",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "orientation",
@@ -750,6 +1360,92 @@
           "description": "Framework-free Phosphor icon with design-system sizing and motion.",
           "customElement": true,
           "tagName": "dt-icon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "weight",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "legacyStyle",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rotate",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "flip",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "spin",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pulse",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mirrored",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "decorative",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "name",
@@ -846,6 +1542,50 @@
           "description": "Persistent semantic alert with title, description, action, and dismiss slots.",
           "customElement": true,
           "tagName": "dt-alert-banner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "titleText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showIcon",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dismissible",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLive",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "tone",
@@ -908,6 +1648,37 @@
           "description": "Semantic body and inline typography with tokenized size and line height.",
           "customElement": true,
           "tagName": "dt-text",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Fallback text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "lineHeight",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "content",
@@ -949,6 +1720,51 @@
           "description": "Semantic heading with independent level, display size, and line-height controls.",
           "customElement": true,
           "tagName": "dt-title",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Fallback heading text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "unstyled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "level",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "lineHeight",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "content",
@@ -1011,6 +1827,48 @@
               "description": "JSON string array or string[] property; light-DOM li children are also supported.",
               "type": {
                 "text": "string[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "lineHeight",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "listStyleType",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "spacing",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -1076,6 +1934,65 @@
           "description": "Semantic page section with responsive spacing and theme-aware surfaces.",
           "customElement": true,
           "tagName": "dt-section",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "spacing",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "background",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "spotlightTarget",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabelledby",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaDescribedby",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "content",
@@ -1145,6 +2062,58 @@
           "description": "Semantic flex stack with tokenized direction, gap, alignment, distribution, and wrapping.",
           "customElement": true,
           "tagName": "dt-stack",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "direction",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "gap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "justify",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "wrap",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "content",
@@ -1207,6 +2176,108 @@
           "description": "Semantic content surface with structured header, body, footer, link, and loading modes.",
           "customElement": true,
           "tagName": "dt-card",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "padding",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "titleText",
+              "description": "Card heading text; uses title-text to avoid the global HTML title tooltip.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "titleLevel",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "titleAs",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "titleSize",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "descriptionAs",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "descriptionSize",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "link",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "linkLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -1345,6 +2416,24 @@
           "description": "Both-axis centering primitive for focal content.",
           "customElement": true,
           "tagName": "dt-center",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "as",
+              "description": "Safe intrinsic wrapper element; supports common sectioning, grouping, list, and phrasing tags.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -1382,10 +2471,33 @@
           "members": [
             {
               "kind": "field",
+              "name": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "center",
               "description": "Boolean property; the attribute accepts true or false and defaults to true when absent.",
               "type": {
                 "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "as",
+              "description": "Safe intrinsic wrapper element; supports common sectioning, grouping, list, and phrasing tags.",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -1438,6 +2550,22 @@
           "description": "Accessibility-hidden escape hatch for tokenized spatial gaps.",
           "customElement": true,
           "tagName": "dt-spacer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "axis",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "size",
@@ -1464,6 +2592,23 @@
           "description": "Clipped media frame that reserves a tokenized aspect ratio.",
           "customElement": true,
           "tagName": "dt-aspect-ratio",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Fallback content for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ratio",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -1497,6 +2642,43 @@
           "description": "Empty-result composition with semantic heading, description, icon, and action slots.",
           "customElement": true,
           "tagName": "dt-empty-state",
+          "members": [
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "titleText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "headingLevel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "icon",
@@ -1544,6 +2726,60 @@
           "description": "Native form label with required and disabled presentation.",
           "customElement": true,
           "tagName": "dt-label",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Fallback text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "for",
+              "description": "ID of the labelled control.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltipText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "requiredText",
+              "description": "Override the localized screen-reader text for the required marker.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -1614,6 +2850,30 @@
           "description": "Supporting or validation text with semantic state feedback.",
           "customElement": true,
           "tagName": "dt-helper-text",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Fallback text for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "state",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -1654,6 +2914,43 @@
           "description": "Accessible fieldset wrapper for grouped form controls.",
           "customElement": true,
           "tagName": "dt-form-field",
+          "members": [
+            {
+              "kind": "field",
+              "name": "legend",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "groupDescription",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -1719,6 +3016,99 @@
           "description": "Form-associated single-line field with native validation, label, and messages.",
           "customElement": true,
           "tagName": "dt-text-input",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "clearable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideLabel",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "label",
@@ -1845,6 +3235,92 @@
           "description": "Form-associated multiline field with bounded auto-grow and messages.",
           "customElement": true,
           "tagName": "dt-text-area",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "animateResize",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "minRows",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxRows",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "label",
@@ -1949,6 +3425,92 @@
           "description": "Form-associated checkbox with indeterminate, validation, and messaging states.",
           "customElement": true,
           "tagName": "dt-checkbox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showLabel",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "indeterminate",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultChecked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "label",
@@ -2064,6 +3626,13 @@
           "members": [
             {
               "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "options",
               "type": {
                 "text": "{ value: string; label: string; disabled?: boolean }[]"
@@ -2071,9 +3640,30 @@
             },
             {
               "kind": "field",
+              "name": "showMasterCheckbox",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "masterLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "defaultSelected",
               "type": {
                 "text": "string[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -2145,6 +3735,79 @@
           "description": "Form-associated native radio control with tokenized sizing.",
           "customElement": true,
           "tagName": "dt-radio",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultChecked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showLabel",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "requiredMessage",
+              "description": "Override the localized required-state validation message.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "label",
@@ -2239,9 +3902,87 @@
           "members": [
             {
               "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "legend",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "options",
               "type": {
                 "text": "{ value: string; label: string; disabled?: boolean }[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "requiredMessage",
+              "description": "Override the localized required-state validation message.",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -2359,9 +4100,72 @@
           "members": [
             {
               "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "options",
               "type": {
                 "text": "{ value: string; label: string; disabled?: boolean; selected?: boolean }[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -2476,6 +4280,36 @@
           "description": "Declarative option data materialized by a parent dt-select.",
           "customElement": true,
           "tagName": "dt-select-option",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -2525,9 +4359,86 @@
           "members": [
             {
               "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "imageUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "destinationUrl",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "srcSet",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sizes",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "decoding",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "menuItems",
               "type": {
                 "text": "{ id?: string; value?: string; label: string; href?: string; icon?: string; disabled?: boolean }[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "menuLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -2641,6 +4552,29 @@
           "description": "Overlapping native avatar cluster with accessible overflow.",
           "customElement": true,
           "tagName": "dt-avatar-group",
+          "members": [
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -2680,6 +4614,23 @@
           "description": "Hero-scale semantic display typography.",
           "customElement": true,
           "tagName": "dt-display",
+          "members": [
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -2714,6 +4665,41 @@
           "customElement": true,
           "tagName": "dt-flex-box",
           "members": [
+            {
+              "kind": "field",
+              "name": "direction",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "wrap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "justify",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "alignContent",
+              "type": {
+                "text": "string"
+              }
+            },
             {
               "kind": "field",
               "name": "gap",
@@ -2852,6 +4838,69 @@
               "type": {
                 "text": "number | string"
               }
+            },
+            {
+              "kind": "field",
+              "name": "gap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tabletGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "desktopGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "wideGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ultraGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rowGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "colGap",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "justify",
+              "type": {
+                "text": "string"
+              }
             }
           ],
           "slots": [
@@ -2977,6 +5026,23 @@
           "description": "Semantic keyboard-key indicator styled as a keycap.",
           "customElement": true,
           "tagName": "dt-kbd",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -3013,6 +5079,13 @@
           "members": [
             {
               "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "width",
               "type": {
                 "text": "number | string"
@@ -3023,6 +5096,20 @@
               "name": "height",
               "type": {
                 "text": "number | string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "lines",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -3080,6 +5167,23 @@
           "description": "Screen-reader-only semantic content.",
           "customElement": true,
           "tagName": "dt-visually-hidden",
+          "members": [
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Text fallback for the default slot.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -3113,6 +5217,71 @@
           "description": "Immediate-action switch with loading, placement, and message states.",
           "customElement": true,
           "tagName": "dt-switch",
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultChecked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "labelPlacement",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "checked",
@@ -3196,6 +5365,113 @@
           "description": "Layered dialog with focus containment, dismissal, loading, and severity states.",
           "customElement": true,
           "tagName": "dt-modal",
+          "members": [
+            {
+              "kind": "field",
+              "name": "severity",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "titleSize",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "iconSize",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "controlled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showFooter",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "animation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showCloseIcon",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "closeIconName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "closeButtonLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dismissOnBackdrop",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -3346,6 +5622,65 @@
           "description": "Non-interactive accessible hint shown from hover and keyboard focus.",
           "customElement": true,
           "tagName": "dt-tooltip",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "description": "Short tooltip text.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placement",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "controlled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "delay",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -3430,6 +5765,48 @@
           "customElement": true,
           "tagName": "dt-menu",
           "members": [
+            {
+              "kind": "field",
+              "name": "side",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "align",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sideOffset",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "modal",
+              "type": {
+                "text": "boolean"
+              }
+            },
             {
               "kind": "field",
               "name": "items",
@@ -3527,9 +5904,79 @@
           "members": [
             {
               "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "options",
               "type": {
                 "text": "import(\"../native/split-button\").DtSplitButtonOption[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "menuAlign",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "surface",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "toggleLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -3646,9 +6093,58 @@
           "members": [
             {
               "kind": "field",
+              "name": "activeTab",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultActiveTab",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "tabs",
               "type": {
                 "text": "{ key: string; label: string; disabled?: boolean; icon?: string; count?: number }[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "activation",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -3741,6 +6237,48 @@
               "type": {
                 "text": "{ value: string; label: string; icon?: string; disabled?: boolean }[]"
               }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "string"
+              }
             }
           ],
           "attributes": [
@@ -3822,6 +6360,27 @@
             },
             {
               "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultOpenId",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "defaultOpenIds",
               "type": {
                 "text": "string[]"
@@ -3897,6 +6456,36 @@
           "description": "Single disclosure for progressively revealing supporting content.",
           "customElement": true,
           "tagName": "dt-expandable-section",
+          "members": [
+            {
+              "kind": "field",
+              "name": "collapsedLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "expandedLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultExpanded",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "",
@@ -3943,6 +6532,1558 @@
             }
           ],
           "dtSourceComponent": "ExpandableSection",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtCommandPaletteElement",
+          "description": "Modal command launcher with filtering, active-option navigation, and host-owned command execution.",
+          "customElement": true,
+          "tagName": "dt-command-palette",
+          "members": [
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "controlled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "type": {
+                "text": "import(\"../native/command-palette\").DtCommandPaletteItem[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "emptyText",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "open",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-open",
+              "fieldName": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "controlled",
+              "fieldName": "controlled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "items",
+              "fieldName": "items",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "placeholder",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "empty-text",
+              "fieldName": "emptyText",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "dismiss-request",
+              "description": "Dispatched when Escape, the backdrop, or command selection requests dismissal.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "item-select",
+              "description": "Dispatched with the selected command in event.detail before dismissal is requested.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "open-change",
+              "description": "Dispatched with detail.open after uncontrolled visibility changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "CommandPalette",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtNavMenuListElement",
+          "description": "Host-routed navigation list with exact or boundary-safe active-page matching.",
+          "customElement": true,
+          "tagName": "dt-nav-menu-list",
+          "members": [
+            {
+              "kind": "field",
+              "name": "items",
+              "type": {
+                "text": "import(\"../native/nav-menu-list\").DtNavMenuItem[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentPath",
+              "description": "Current host route used to derive aria-current without inspecting a framework router.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "fieldName": "items",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "current-path",
+              "fieldName": "currentPath",
+              "description": "Current host route used to derive aria-current without inspecting a framework router.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "navigate",
+              "description": "Dispatched with the activated navigation item in event.detail.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "NavMenuList",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtLanguageSwitcherElement",
+          "description": "Compact language chooser with host-owned locale changes and accessible disclosure behavior.",
+          "customElement": true,
+          "tagName": "dt-language-switcher",
+          "members": [
+            {
+              "kind": "field",
+              "name": "languages",
+              "type": {
+                "text": "import(\"../native/language-switcher\").DtLanguageSwitcherOption[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentLang",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buttonClassName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "activeButtonClassName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "openTriggerClassName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "floatedButtonClassName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "languages",
+              "fieldName": "languages",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "current-lang",
+              "fieldName": "currentLang",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "open",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "button-class-name",
+              "fieldName": "buttonClassName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "active-button-class-name",
+              "fieldName": "activeButtonClassName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "open-trigger-class-name",
+              "fieldName": "openTriggerClassName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "floated-button-class-name",
+              "fieldName": "floatedButtonClassName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "aria-label",
+              "fieldName": "ariaLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "language-change",
+              "description": "Dispatched with detail.code after the user chooses a language.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "open-change",
+              "description": "Dispatched with detail.open when the language tray changes visibility.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "LanguageSwitcher",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtToastElement",
+          "description": "Transient live-region message with semantic tone and optional auto-dismissal.",
+          "customElement": true,
+          "tagName": "dt-toast",
+          "members": [
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "duration",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inline",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "open",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "tone",
+              "fieldName": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "position",
+              "fieldName": "position",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "message",
+              "fieldName": "message",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "duration",
+              "fieldName": "duration",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "inline",
+              "fieldName": "inline",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "close",
+              "description": "Dispatched when the auto-dismiss timer requests that the host close the toast.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Toast",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtToastStackElement",
+          "description": "Docked queue of transient live-region messages with host-owned list state.",
+          "customElement": true,
+          "tagName": "dt-toast-stack",
+          "members": [
+            {
+              "kind": "field",
+              "name": "toasts",
+              "type": {
+                "text": "import(\"../native/toast-stack\").DtToastStackItem[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "type": {
+                "text": "number"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "toasts",
+              "fieldName": "toasts",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "position",
+              "fieldName": "position",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "max",
+              "fieldName": "max",
+              "type": {
+                "text": "number"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "dismiss",
+              "description": "Dispatched with detail.id when a visible toast requests dismissal.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "ToastStack",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtPhoneInputElement",
+          "description": "Form-associated international telephone field with explicit country context.",
+          "customElement": true,
+          "tagName": "dt-phone-input",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultCountry",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "country",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "countryLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "placeholder",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "id",
+              "fieldName": "id",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-country",
+              "fieldName": "defaultCountry",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "country",
+              "fieldName": "country",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "country-label",
+              "fieldName": "countryLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after the telephone value changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "country-change",
+              "description": "Dispatched with detail.country after the selected country changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "PhoneInput",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtComboboxElement",
+          "description": "Form-associated searchable single-select control with listbox keyboard behavior.",
+          "customElement": true,
+          "tagName": "dt-combobox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "import(\"../native/combobox\").DtComboboxOption[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "noResultsText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "toggleLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "options",
+              "fieldName": "options",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "id",
+              "fieldName": "id",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "placeholder",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "no-results-text",
+              "fieldName": "noResultsText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "toggle-label",
+              "fieldName": "toggleLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after the selected option changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "filter-change",
+              "description": "Dispatched with detail.query as user input filters the options.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "Combobox",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtMultiComboboxElement",
+          "description": "Form-associated searchable multi-select with removable selections and listbox keyboard behavior.",
+          "customElement": true,
+          "tagName": "dt-multi-combobox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "import(\"../native/multi-combobox\").DtMultiComboboxOption[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "type": {
+                "text": "string[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "controlled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "noResultsText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "toggleLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "removeLabelPrefix",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "requiredMessage",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "options",
+              "fieldName": "options",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "id",
+              "fieldName": "id",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "placeholder",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "helper-text",
+              "fieldName": "helperText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "error",
+              "fieldName": "error",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "controlled",
+              "fieldName": "controlled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "no-results-text",
+              "fieldName": "noResultsText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "toggle-label",
+              "fieldName": "toggleLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "remove-label-prefix",
+              "fieldName": "removeLabelPrefix",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required-message",
+              "fieldName": "requiredMessage",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after the selected value array changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "before-value-change",
+              "description": "Cancelable request carrying detail.value before a controlled selection changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "MultiCombobox",
+          "dtBackend": "native"
+        },
+        {
+          "kind": "class",
+          "name": "DtCookieConsentElement",
+          "description": "Consent banner and preferences dialog with host-controlled policy, persistence, and analytics boundaries.",
+          "customElement": true,
+          "tagName": "dt-cookie-consent",
+          "members": [
+            {
+              "kind": "field",
+              "name": "categories",
+              "type": {
+                "text": "import(\"../native/cookie-consent\").DtCookieConsentCategory[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "import(\"../native/cookie-consent\").DtCookieConsentValue"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultValue",
+              "type": {
+                "text": "import(\"../native/cookie-consent\").DtCookieConsentValue"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "autoShow",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "controlled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "storageKey",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "storageVersion",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "persistence",
+              "description": "Host-injected persistence adapter; not available as an HTML attribute.",
+              "type": {
+                "text": "import(\"../native/cookie-consent\").DtCookieConsentPersistence | null"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "bannerLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "summary",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "readOurText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "policyLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "policyHref",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "customizeLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "acceptRequiredLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "acceptAllLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "requiredLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "saveLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "closeLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "categories",
+              "fieldName": "categories",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "default-value",
+              "fieldName": "defaultValue",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "open",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "default-open",
+              "fieldName": "defaultOpen",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "auto-show",
+              "fieldName": "autoShow",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "controlled",
+              "fieldName": "controlled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "storage-key",
+              "fieldName": "storageKey",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "storage-version",
+              "fieldName": "storageVersion",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "banner-label",
+              "fieldName": "bannerLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "summary",
+              "fieldName": "summary",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "read-our-text",
+              "fieldName": "readOurText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "policy-label",
+              "fieldName": "policyLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "policy-href",
+              "fieldName": "policyHref",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "customize-label",
+              "fieldName": "customizeLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "accept-required-label",
+              "fieldName": "acceptRequiredLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "accept-all-label",
+              "fieldName": "acceptAllLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "title",
+              "fieldName": "title",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "description",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "required-label",
+              "fieldName": "requiredLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "save-label",
+              "fieldName": "saveLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "close-label",
+              "fieldName": "closeLabel",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "before-consent-change",
+              "description": "Cancelable request carrying the next consent decision before persistence.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "consent-change",
+              "description": "Dispatched with the decision type, normalized value, and timestamp.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "value-change",
+              "description": "Dispatched with detail.value after the consent value changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "open-change",
+              "description": "Dispatched with detail.open and detail.reason after visibility changes.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            },
+            {
+              "name": "persistence-error",
+              "description": "Dispatched when an injected or explicitly configured persistence operation fails.",
+              "type": {
+                "text": "CustomEvent<unknown>"
+              }
+            }
+          ],
+          "dtSourceComponent": "CookieConsent",
           "dtBackend": "native"
         }
       ]

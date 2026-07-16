@@ -146,7 +146,7 @@ export const Default: Story = {
     expect(customElements.get("dt-command-palette")).toBeDefined();
     expect(input).toBeTruthy();
     if (!input) return;
-    await userEvent.type(input, "blog");
+    await userEvent.type(input, "articles");
     await userEvent.keyboard("{ArrowDown}{ArrowUp}");
     expect(host?.shadowRoot?.querySelectorAll("[role=option]")).toHaveLength(1);
     expect(host?.shadowRoot?.querySelector("[role=dialog]")).toHaveAttribute(

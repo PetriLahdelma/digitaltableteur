@@ -115,8 +115,16 @@ const interactionTags = new Set([
   "dt-tooltip",
 ]);
 const interactionCount = tags.filter((tag) => interactionTags.has(tag)).length;
+const internationalPhoneAllowance = tags.includes("dt-phone-input")
+  ? 300_000
+  : 0;
+const completeManifestMemberAllowance = tags.length * 1_250;
 const maxUnpackedSize =
-  250_000 + tags.length * 13_000 + interactionCount * 1_100;
+  250_000 +
+  tags.length * 13_000 +
+  interactionCount * 1_100 +
+  internationalPhoneAllowance +
+  completeManifestMemberAllowance;
 if (pack.entryCount > maxPackedFiles || pack.unpackedSize > maxUnpackedSize) {
   throw new Error(
     `Web-components tarball exceeds its ${tags.length}-component budget (${pack.entryCount}/${maxPackedFiles} files, ${pack.unpackedSize}/${maxUnpackedSize} bytes)`,

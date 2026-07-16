@@ -64,6 +64,7 @@ const PACKAGE_DIRS = {
   "@digitaltableteur/tokens": "packages/tokens",
   "@digitaltableteur/tokens-css": "packages/tokens-css",
   "@digitaltableteur/react": "packages/react",
+  "@digitaltableteur/web-components": "packages/web-components",
 };
 
 function packageDir(packageName) {
@@ -172,10 +173,12 @@ const report = {
 try {
   run("npm", ["run", "check:token-packages"]);
   run("npm", ["run", "check:react-package"]);
+  run("npm", ["run", "check:web-components"]);
 
   const tokenPack = inspectPack("@digitaltableteur/tokens");
   const tokenCssPack = inspectPack("@digitaltableteur/tokens-css");
   const reactPack = inspectPack("@digitaltableteur/react");
+  const webComponentsPack = inspectPack("@digitaltableteur/web-components");
   assertPackedFile(tokenPack, "dist/index.js");
   assertPackedFile(tokenPack, "dist/tokens.dtcg.json");
   assertPackedFile(tokenPack, "dist/tailwind.tokens.js");
@@ -184,24 +187,36 @@ try {
   assertPackedFile(reactPack, "dist/index.js");
   assertPackedFile(reactPack, "dist/index.d.ts");
   assertPackedFile(reactPack, "dist/style.css");
+  assertPackedFile(webComponentsPack, "dist/index.js");
+  assertPackedFile(webComponentsPack, "dist/index.d.ts");
+  assertPackedFile(webComponentsPack, "dist/native.js");
+  assertPackedFile(webComponentsPack, "dist/native.d.ts");
+  assertPackedFile(webComponentsPack, "dist/register.js");
+  assertPackedFile(webComponentsPack, "custom-elements.json");
   for (const entryName of Object.keys(REACT_FAMILY_ENTRIES)) {
     assertPackedFile(reactPack, `dist/${entryName}.js`);
     assertPackedFile(reactPack, `dist/${entryName}.d.ts`);
     assertPackedFile(reactPack, `dist/${entryName}.css`);
   }
-  report.packages = [tokenPack, tokenCssPack, reactPack].map((row) => ({
-    name: row.name,
-    version: row.version,
-    filename: row.filename,
-    entryCount: row.entryCount,
-    unpackedSize: row.unpackedSize,
-    requiredFilesPresent: true,
-  }));
+  report.packages = [
+    tokenPack,
+    tokenCssPack,
+    reactPack,
+    webComponentsPack,
+  ].map((row) => ({
+      name: row.name,
+      version: row.version,
+      filename: row.filename,
+      entryCount: row.entryCount,
+      unpackedSize: row.unpackedSize,
+      requiredFilesPresent: true,
+    }));
 
   const tarballs = [
     pack("@digitaltableteur/tokens", artifacts),
     pack("@digitaltableteur/tokens-css", artifacts),
     pack("@digitaltableteur/react", artifacts),
+    pack("@digitaltableteur/web-components", artifacts),
   ];
 
   writeFileSync(
@@ -233,6 +248,15 @@ import manifest from "@digitaltableteur/tokens/manifest" with { type: "json" };
 import { tailwindThemeRefs } from "@digitaltableteur/tokens/tailwind";
 import * as DS from "@digitaltableteur/react";
 
+globalThis.HTMLElement ??= class HTMLElement {};
+const WC = await import("@digitaltableteur/web-components");
+const registeredElements = new Map();
+const registry = {
+  get: (name) => registeredElements.get(name),
+  define: (name, constructor) => registeredElements.set(name, constructor),
+};
+const webComponentTags = WC.defineElements(registry);
+
 const require = createRequire(import.meta.url);
 const tokenCss = require.resolve("@digitaltableteur/tokens-css/tokens.css");
 const tokenCssRoot = require.resolve("@digitaltableteur/tokens-css");
@@ -256,6 +280,14 @@ if (manifest.tokenCount !== tokenCount || !dtcg.$schema) {
 }
 if (!tailwindThemeRefs["color-dt-primary"]) {
   throw new Error("Tailwind token export missing color-dt-primary");
+}
+if (
+  webComponentTags.length !== 62 ||
+  registeredElements.size !== 62 ||
+  !registeredElements.has("dt-phone-input") ||
+  !registeredElements.has("dt-cookie-consent")
+) {
+  throw new Error("Web-components package did not register the complete native fleet");
 }
 
 for (const key of [
@@ -361,6 +393,7 @@ console.log(JSON.stringify({
   acmeThemeWithExt,
   reactCss,
   reactExports: Object.keys(DS).length,
+  webComponentTags: webComponentTags.length,
 }));
 `.trimStart(),
   );
@@ -368,6 +401,13 @@ console.log(JSON.stringify({
     join(consumer, "smoke.tsx"),
     `
 import * as React from "react";
+import {
+  DtComboboxElement,
+  DtCookieConsentElement,
+  DtPhoneInputElement,
+  type DtComboboxOption,
+  type DtCookieConsentPersistence,
+} from "@digitaltableteur/web-components";
 import {
   Button as FamilyButton,
   type ButtonProps as FamilyButtonProps,
@@ -454,6 +494,26 @@ type FamilyTypeProbe = [
   FamilyLayerProviderProps,
   FamilyTextProps,
 ];
+
+const webComponentOption: DtComboboxOption = {
+  value: "helsinki",
+  label: "Helsinki",
+};
+const persistence: DtCookieConsentPersistence = {
+  load: () => null,
+  save: () => undefined,
+};
+let comboboxElement: DtComboboxElement | undefined;
+let phoneInputElement: DtPhoneInputElement | undefined;
+let cookieConsentElement: DtCookieConsentElement | undefined;
+void webComponentOption;
+void persistence;
+void comboboxElement;
+void phoneInputElement;
+void cookieConsentElement;
+type NativeTagProbe = HTMLElementTagNameMap["dt-cookie-consent"];
+const nativeTagProbe: NativeTagProbe | undefined = undefined;
+void nativeTagProbe;
 
 const familyTypeProbe: FamilyTypeProbe | undefined = undefined;
 const familyMotionRequest: FamilyMotionRequest = {
@@ -614,6 +674,7 @@ void tree;
   report.consumer = {
     tokenCount: smoke.tokenCount,
     reactExports: smoke.reactExports,
+    webComponentTags: smoke.webComponentTags,
     tokenCssResolved: Boolean(smoke.tokenCss),
     tokenCssRootResolved: Boolean(smoke.tokenCssRoot),
     acmeThemeResolved: Boolean(smoke.acmeTheme),
@@ -623,7 +684,7 @@ void tree;
   };
   writeReport(report);
   console.log(
-    `\u2713 npm consumer install verified (${smoke.tokenCount} tokens, ${smoke.reactExports} react exports, runtime + types, temp ${scratch})`,
+    `\u2713 npm consumer install verified (${smoke.tokenCount} tokens, ${smoke.reactExports} react exports, ${smoke.webComponentTags} native elements, runtime + types, temp ${scratch})`,
   );
   console.log(`  Report: ${relativePath(OUT_JSON)}`);
 } catch (error) {

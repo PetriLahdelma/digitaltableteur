@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.6.0 - 2026-07-16
+
+- Adds native CommandPalette, NavMenuList, LanguageSwitcher, Toast, ToastStack,
+  PhoneInput, Combobox, MultiCombobox, and CookieConsent elements.
+- Extends the framework-neutral surface with composite navigation, transient
+  feedback, internationalized input, searchable selection, and consent flows
+  while keeping application routing, persistence policy, and analytics
+  host-owned.
+- Mirrors applicable canonical React stories and publishes typed item/value
+  properties, composed events, form participation, and accessible keyboard
+  behavior for plain-JavaScript consumers.
+
+Verified by `check:web-components:dod`, `check:package-release-notes`,
+`check:package-tarballs`, and `check:npm-consumer-install`.
+
 ## 0.5.0 - 2026-07-16
 
 - Adds native Modal, Tooltip, Menu, SplitButton, Tabs, SegmentedControl,

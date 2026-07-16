@@ -18,7 +18,7 @@ const withOpenBanner = (Story: ComponentType) => (
 const meta = {
   title: "Site/CookieConsent",
   component: CookieConsent,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

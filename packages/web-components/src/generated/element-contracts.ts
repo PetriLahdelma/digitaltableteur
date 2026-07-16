@@ -537,6 +537,125 @@ export type DtExpandableSectionElementContract = HTMLElement & {
   expanded?: boolean;
 };
 
+export type DtCommandPaletteElementContract = HTMLElement & {
+  open?: boolean;
+  defaultOpen?: boolean;
+  controlled?: boolean;
+  items?: import("../native/command-palette").DtCommandPaletteItem[];
+  label?: string;
+  placeholder?: string;
+  emptyText?: string;
+};
+
+export type DtNavMenuListElementContract = HTMLElement & {
+  items?: import("../native/nav-menu-list").DtNavMenuItem[];
+  currentPath?: string;
+};
+
+export type DtLanguageSwitcherElementContract = HTMLElement & {
+  languages?: import("../native/language-switcher").DtLanguageSwitcherOption[];
+  currentLang?: string;
+  open?: boolean;
+  buttonClassName?: string;
+  activeButtonClassName?: string;
+  openTriggerClassName?: string;
+  floatedButtonClassName?: string;
+  ariaLabel?: string;
+};
+
+export type DtToastElementContract = HTMLElement & {
+  open?: boolean;
+  tone?: string;
+  position?: string;
+  size?: string;
+  message?: string;
+  duration?: number;
+  inline?: boolean;
+};
+
+export type DtToastStackElementContract = HTMLElement & {
+  toasts?: import("../native/toast-stack").DtToastStackItem[];
+  position?: string;
+  max?: number;
+};
+
+export type DtPhoneInputElementContract = HTMLElement & {
+  label?: string;
+  value?: string;
+  defaultValue?: string;
+  error?: string;
+  helperText?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  required?: boolean;
+  id?: string;
+  defaultCountry?: string;
+  country?: string;
+  name?: string;
+  countryLabel?: string;
+};
+
+export type DtComboboxElementContract = HTMLElement & {
+  label?: string;
+  options?: import("../native/combobox").DtComboboxOption[];
+  value?: string;
+  defaultValue?: string;
+  id?: string;
+  placeholder?: string;
+  helperText?: string;
+  error?: string;
+  required?: boolean;
+  disabled?: boolean;
+  name?: string;
+  noResultsText?: string;
+  toggleLabel?: string;
+};
+
+export type DtMultiComboboxElementContract = HTMLElement & {
+  label?: string;
+  options?: import("../native/multi-combobox").DtMultiComboboxOption[];
+  value?: string[];
+  defaultValue?: string[];
+  id?: string;
+  placeholder?: string;
+  helperText?: string;
+  error?: string;
+  required?: boolean;
+  disabled?: boolean;
+  controlled?: boolean;
+  name?: string;
+  noResultsText?: string;
+  toggleLabel?: string;
+  removeLabelPrefix?: string;
+  requiredMessage?: string;
+};
+
+export type DtCookieConsentElementContract = HTMLElement & {
+  categories?: import("../native/cookie-consent").DtCookieConsentCategory[];
+  value?: import("../native/cookie-consent").DtCookieConsentValue;
+  defaultValue?: import("../native/cookie-consent").DtCookieConsentValue;
+  open?: boolean;
+  defaultOpen?: boolean;
+  autoShow?: boolean;
+  controlled?: boolean;
+  storageKey?: string;
+  storageVersion?: number;
+  persistence?: import("../native/cookie-consent").DtCookieConsentPersistence | null;
+  bannerLabel?: string;
+  summary?: string;
+  readOurText?: string;
+  policyLabel?: string;
+  policyHref?: string;
+  customizeLabel?: string;
+  acceptRequiredLabel?: string;
+  acceptAllLabel?: string;
+  title?: string;
+  description?: string;
+  requiredLabel?: string;
+  saveLabel?: string;
+  closeLabel?: string;
+};
+
 export const elementMigrationManifest = [
   { tagName: "dt-button", sourceComponent: "Button", backend: "native" },
   { tagName: "dt-badge", sourceComponent: "Badge", backend: "native" },
@@ -591,6 +710,15 @@ export const elementMigrationManifest = [
   { tagName: "dt-segmented-control", sourceComponent: "SegmentedControl", backend: "native" },
   { tagName: "dt-accordion", sourceComponent: "Accordion", backend: "native" },
   { tagName: "dt-expandable-section", sourceComponent: "ExpandableSection", backend: "native" },
+  { tagName: "dt-command-palette", sourceComponent: "CommandPalette", backend: "native" },
+  { tagName: "dt-nav-menu-list", sourceComponent: "NavMenuList", backend: "native" },
+  { tagName: "dt-language-switcher", sourceComponent: "LanguageSwitcher", backend: "native" },
+  { tagName: "dt-toast", sourceComponent: "Toast", backend: "native" },
+  { tagName: "dt-toast-stack", sourceComponent: "ToastStack", backend: "native" },
+  { tagName: "dt-phone-input", sourceComponent: "PhoneInput", backend: "native" },
+  { tagName: "dt-combobox", sourceComponent: "Combobox", backend: "native" },
+  { tagName: "dt-multi-combobox", sourceComponent: "MultiCombobox", backend: "native" },
+  { tagName: "dt-cookie-consent", sourceComponent: "CookieConsent", backend: "native" },
 ] as const;
 
 declare global {
@@ -648,5 +776,14 @@ declare global {
     "dt-segmented-control": DtSegmentedControlElementContract;
     "dt-accordion": DtAccordionElementContract;
     "dt-expandable-section": DtExpandableSectionElementContract;
+    "dt-command-palette": DtCommandPaletteElementContract;
+    "dt-nav-menu-list": DtNavMenuListElementContract;
+    "dt-language-switcher": DtLanguageSwitcherElementContract;
+    "dt-toast": DtToastElementContract;
+    "dt-toast-stack": DtToastStackElementContract;
+    "dt-phone-input": DtPhoneInputElementContract;
+    "dt-combobox": DtComboboxElementContract;
+    "dt-multi-combobox": DtMultiComboboxElementContract;
+    "dt-cookie-consent": DtCookieConsentElementContract;
   }
 }
