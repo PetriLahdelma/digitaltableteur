@@ -165,6 +165,18 @@ describe("CodeSnippet", () => {
   });
 
   describe("Inline variant", () => {
+    it("keeps block-level copy feedback outside prose containers", () => {
+      const { container } = render(
+        <p>
+          Install with{" "}
+          <CodeSnippet code="npm install" language="bash" variant="inline" />
+        </p>,
+      );
+
+      expect(container.querySelector("p > div")).not.toBeInTheDocument();
+      expect(container.querySelector("p > code")).toBeInTheDocument();
+    });
+
     it("renders inline code element", () => {
       render(
         <CodeSnippet code="npm install" language="bash" variant="inline" />,

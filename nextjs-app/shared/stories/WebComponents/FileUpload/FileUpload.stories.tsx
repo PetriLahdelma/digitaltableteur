@@ -111,7 +111,7 @@ function NativeFileUpload({ valuePreset, ...args }: Args) {
 const meta = {
   title: "Web Components/Forms/FileUpload",
   component: NativeFileUpload,
-  tags: ["autodocs", contract.status, "web-components"],
+  tags: ["autodocs", "stable", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     layout: "padded",

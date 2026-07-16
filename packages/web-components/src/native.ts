@@ -8,6 +8,8 @@ import { DtButtonElement } from "./native/button";
 import { DtButtonGroupElement } from "./native/button-group";
 import { DtCardElement } from "./native/card";
 import { DtCenterElement } from "./native/center";
+import { DtCodeBlockWindowElement } from "./native/code-block-window";
+import { DtCodeSnippetElement } from "./native/code-snippet";
 import { DtContainerElement } from "./native/container";
 import { DtComboboxElement } from "./native/combobox";
 import { DtCommandPaletteElement } from "./native/command-palette";
@@ -16,15 +18,18 @@ import { DtDividerElement } from "./native/divider";
 import { DtDisplayElement } from "./native/display";
 import { DtEmptyStateElement } from "./native/empty-state";
 import { DtExpandableSectionElement } from "./native/expandable-section";
+import { DtFileUploadElement } from "./native/file-upload";
 import { DtFilterChipElement } from "./native/filter-chip";
 import { DtFlexBoxElement } from "./native/flex-box";
 import { DtGridElement } from "./native/grid";
+import { DtGroupLabelElement } from "./native/group-label";
 import { DtIconElement } from "./native/icon";
 import { DtIconButtonElement } from "./native/icon-button";
 import { DtKbdElement } from "./native/kbd";
 import { DtLanguageSwitcherElement } from "./native/language-switcher";
 import { DtLinkElement } from "./native/link";
 import { DtListElement } from "./native/list";
+import { DtMacWindowFrameElement } from "./native/mac-window-frame";
 import { DtMenuElement } from "./native/menu";
 import { DtModalElement } from "./native/modal";
 import { DtMultiComboboxElement } from "./native/multi-combobox";
@@ -34,6 +39,7 @@ import { DtFormFieldElement } from "./native/form-field";
 import { DtNavLinkElement } from "./native/nav-link";
 import { DtNavMenuListElement } from "./native/nav-menu-list";
 import { DtPhoneInputElement } from "./native/phone-input";
+import { DtPaginationElement } from "./native/pagination";
 import { DtProgressElement } from "./native/progress";
 import { DtSkipLinkElement } from "./native/skip-link";
 import { DtSpinnerElement } from "./native/spinner";
@@ -59,7 +65,9 @@ import { DtTabsElement } from "./native/tabs";
 import { DtTooltipElement } from "./native/tooltip";
 import { DtToastElement } from "./native/toast";
 import { DtToastStackElement } from "./native/toast-stack";
+import { DtTimestampElement } from "./native/timestamp";
 import { DtVisuallyHiddenElement } from "./native/visually-hidden";
+import { DtBreadcrumbElement } from "./native/breadcrumb";
 import { defineElementSet, type ElementDefinition } from "./registry";
 
 export { DtAlertBannerElement } from "./native/alert-banner";
@@ -108,6 +116,13 @@ export type {
   DtCardTitleTag,
   DtCardVariant,
 } from "./native/card";
+export { DtCodeBlockWindowElement } from "./native/code-block-window";
+export { DtCodeSnippetElement } from "./native/code-snippet";
+export type {
+  DtCodeSnippetCopyVariant,
+  DtCodeSnippetLanguage,
+  DtCodeSnippetVariant,
+} from "./native/code-snippet";
 export { DtCenterElement } from "./native/center";
 export type { DtCenterTag } from "./native/center";
 export { DtContainerElement } from "./native/container";
@@ -138,6 +153,12 @@ export type {
   DtEmptyStateSize,
 } from "./native/empty-state";
 export { DtExpandableSectionElement } from "./native/expandable-section";
+export { DtFileUploadElement } from "./native/file-upload";
+export type {
+  DtFileUploadAppearance,
+  DtFileUploadChangeDetail,
+  DtFileUploadChangeSource,
+} from "./native/file-upload";
 export { DtFilterChipElement } from "./native/filter-chip";
 export type {
   DtFilterChipSize,
@@ -156,6 +177,7 @@ export type {
   DtFlexBoxWrap,
 } from "./native/flex-box";
 export { DtGridElement } from "./native/grid";
+export { DtGroupLabelElement } from "./native/group-label";
 export { DtIconElement } from "./native/icon";
 export type { DtIconFlip, DtIconSize, DtIconWeight } from "./native/icon";
 export { DtIconButtonElement } from "./native/icon-button";
@@ -179,6 +201,8 @@ export type {
   DtListStyleType,
   DtListTag,
 } from "./native/list";
+export { DtMacWindowFrameElement } from "./native/mac-window-frame";
+export type { DtMacWindowFrameDensity } from "./native/mac-window-frame";
 export { DtMenuElement } from "./native/menu";
 export type { DtMenuAlign, DtMenuItem, DtMenuSide } from "./native/menu";
 export { DtModalElement } from "./native/modal";
@@ -205,6 +229,13 @@ export type {
   DtPhoneInputCountry,
   DtPhoneInputValue,
 } from "./native/phone-input";
+export { DtPaginationElement, generatePaginationRange } from "./native/pagination";
+export type { DtPaginationPage } from "./native/pagination";
+export { DtBreadcrumbElement, computeLeadingCount } from "./native/breadcrumb";
+export type {
+  DtBreadcrumbItem,
+  DtBreadcrumbUnderline,
+} from "./native/breadcrumb";
 export { DtProgressElement } from "./native/progress";
 export type { DtProgressSize, DtProgressState } from "./native/progress";
 export { DtSpinnerElement } from "./native/spinner";
@@ -287,6 +318,16 @@ export type {
   DtToastStackSize,
   DtToastStackTone,
 } from "./native/toast-stack";
+export {
+  DtTimestampElement,
+  formatTimestamp as formatNativeTimestamp,
+  parseTimestampValue,
+} from "./native/timestamp";
+export type {
+  DtTimestampFormat,
+  DtTimestampSize,
+  DtTimestampTone,
+} from "./native/timestamp";
 export { DtVisuallyHiddenElement } from "./native/visually-hidden";
 export type { DtVisuallyHiddenTag } from "./native/visually-hidden";
 
@@ -297,6 +338,8 @@ export const nativeElementDefinitions = [
   ["dt-button-group", DtButtonGroupElement],
   ["dt-filter-chip", DtFilterChipElement],
   ["dt-command-palette", DtCommandPaletteElement],
+  ["dt-breadcrumb", DtBreadcrumbElement],
+  ["dt-pagination", DtPaginationElement],
   ["dt-link", DtLinkElement],
   ["dt-nav-link", DtNavLinkElement],
   ["dt-nav-menu-list", DtNavMenuListElement],
@@ -317,10 +360,14 @@ export const nativeElementDefinitions = [
   ["dt-title", DtTitleElement],
   ["dt-list", DtListElement],
   ["dt-kbd", DtKbdElement],
+  ["dt-code-snippet", DtCodeSnippetElement],
+  ["dt-code-block-window", DtCodeBlockWindowElement],
+  ["dt-timestamp", DtTimestampElement],
   ["dt-section", DtSectionElement],
   ["dt-stack", DtStackElement],
   ["dt-flex-box", DtFlexBoxElement],
   ["dt-grid", DtGridElement],
+  ["dt-mac-window-frame", DtMacWindowFrameElement],
   ["dt-card", DtCardElement],
   ["dt-center", DtCenterElement],
   ["dt-container", DtContainerElement],
@@ -330,9 +377,11 @@ export const nativeElementDefinitions = [
   ["dt-label", DtLabelElement],
   ["dt-helper-text", DtHelperTextElement],
   ["dt-form-field", DtFormFieldElement],
+  ["dt-group-label", DtGroupLabelElement],
   ["dt-text-input", DtTextInputElement],
   ["dt-text-area", DtTextAreaElement],
   ["dt-phone-input", DtPhoneInputElement],
+  ["dt-file-upload", DtFileUploadElement],
   ["dt-checkbox", DtCheckboxElement],
   ["dt-checkbox-group", DtCheckboxGroupElement],
   ["dt-radio", DtRadioElement],

@@ -338,7 +338,7 @@ function codeBlockRegionLabel(
 
 export class DtCodeBlockWindowElement extends DigitaltableteurElement {
   static observedAttributes = [
-    "title",
+    "window-title",
     "caption",
     "language",
     "show-line-numbers",
@@ -365,12 +365,12 @@ export class DtCodeBlockWindowElement extends DigitaltableteurElement {
     if (this.isConnected) this.render();
   }
 
-  get title(): string {
-    return stringAttribute(this, "title");
+  get windowTitle(): string {
+    return stringAttribute(this, "window-title");
   }
 
-  set title(value: string) {
-    reflectAttribute(this, "title", value || null);
+  set windowTitle(value: string) {
+    reflectAttribute(this, "window-title", value || null);
   }
 
   get caption(): string {
@@ -621,10 +621,10 @@ export class DtCodeBlockWindowElement extends DigitaltableteurElement {
 
     const headerInfo = this.ownerDocument.createElement("div");
     headerInfo.className = "headerInfo";
-    if (this.title) {
+    if (this.windowTitle) {
       const title = this.ownerDocument.createElement("span");
       title.className = "title";
-      title.textContent = this.title;
+      title.textContent = this.windowTitle;
       headerInfo.append(title);
     }
 

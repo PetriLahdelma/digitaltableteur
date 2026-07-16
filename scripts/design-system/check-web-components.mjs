@@ -29,6 +29,33 @@ if (JSON.stringify(tags) !== JSON.stringify(expectedTags)) {
   throw new Error(`Custom Elements Manifest tags differ: ${tags.join(", ")}`);
 }
 
+for (const element of elements) {
+  const declaration = declarations.find(
+    (candidate) => candidate.tagName === element.tagName,
+  );
+  const members = new Set(
+    (declaration?.members ?? []).map((member) => member.name),
+  );
+  const attributes = new Set(
+    (declaration?.attributes ?? []).map((attribute) => attribute.name),
+  );
+  for (const prop of element.props) {
+    if (!prop.attributeOnly && !members.has(prop.name)) {
+      throw new Error(
+        `${element.tagName} manifest misses property member ${prop.name}`,
+      );
+    }
+    const attributeName =
+      prop.attributeName ??
+      prop.name.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+    if (!prop.propertyOnly && !attributes.has(attributeName)) {
+      throw new Error(
+        `${element.tagName} manifest misses attribute ${attributeName}`,
+      );
+    }
+  }
+}
+
 const generatorSource = readFileSync(
   join(ROOT, "scripts/design-system/generate-web-components.mjs"),
   "utf8",
@@ -105,13 +132,17 @@ for (const required of [
 }
 const maxPackedFiles = 40 + tags.length * 2;
 // The published tarball is dominated by two things that do NOT scale per component:
-// the shared framework-free native chunk (~940 kB minified, including the bundled
-// libphonenumber-js data for dt-phone-input) and the generated custom-elements.json
-// manifest (~210 kB). The remainder scales with the number of registered tags
+// the shared framework-free native chunk (~1.09 MB minified, including bundled
+// libphonenumber-js data for dt-phone-input and Prism grammars for
+// dt-code-snippet) and the generated custom-elements.json manifest (~235 kB).
+// The remainder scales with the number of registered tags
 // (register/contract/typings entries). Keep this ceiling snug so genuine bloat in
 // either the shared chunk or the manifest still trips the budget.
-const sharedBundleAndManifestCeiling = 1_180_000;
-const perTagAllowance = tags.length * 4_500;
+const sharedBundleAndManifestCeiling = 1_255_000;
+// Attribute metadata and complete property-member metadata both scale with
+// each public element. Keep the member allowance explicit so fieldName never
+// points at an undeclared Custom Elements Manifest member.
+const perTagAllowance = tags.length * 5_750;
 const maxUnpackedSize = sharedBundleAndManifestCeiling + perTagAllowance;
 if (pack.entryCount > maxPackedFiles || pack.unpackedSize > maxUnpackedSize) {
   throw new Error(

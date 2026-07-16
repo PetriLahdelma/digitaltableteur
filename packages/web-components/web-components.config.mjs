@@ -1953,4 +1953,326 @@ export default [
       },
     ],
   },
+  {
+    tagName: "dt-code-snippet",
+    sourceComponent: "CodeSnippet",
+    contract: "CodeSnippet",
+    defaultBackend: "native",
+    nativeClassName: "DtCodeSnippetElement",
+    description:
+      "Copyable raw-code presentation with optional line numbers and bounded expansion.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("code"),
+      stringProp("language"),
+      booleanProp("showLineNumbers"),
+      nativeProp(
+        "ariaLabel",
+        "string",
+        "Accessible name for the code region.",
+        {
+          attributeName: "aria-label",
+        },
+      ),
+      booleanProp("allowCopy"),
+      stringProp("variant"),
+      numberProp("maxLines"),
+    ],
+    events: [
+      {
+        callbackProp: "onCopy",
+        name: "copy",
+        description:
+          "Dispatched after the complete raw code value is copied successfully.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-code-block-window",
+    sourceComponent: "CodeBlockWindow",
+    contract: "CodeBlockWindow",
+    defaultBackend: "native",
+    nativeClassName: "DtCodeBlockWindowElement",
+    description:
+      "Framed presentation for host-highlighted pre/code markup with metadata and caption.",
+    storyParity: storyParity({
+      extensions: [
+        {
+          native: "Composed Snippet",
+          reason:
+            "Demonstrates framework-neutral composition with dt-code-snippet while the canonical React story receives highlighted nodes from its host pipeline.",
+        },
+      ],
+    }),
+    slots: [
+      slot(
+        "",
+        "Host-highlighted pre/code markup; raw strings belong in dt-code-snippet.",
+      ),
+    ],
+    props: [
+      {
+        ...stringProp(
+          "windowTitle",
+          "title",
+          "Visible frame heading; window-title avoids the global HTML title tooltip attribute.",
+        ),
+        attributeName: "window-title",
+      },
+      stringProp("caption"),
+      stringProp("language"),
+      booleanProp("showLineNumbers"),
+      stringProp("context"),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "copy",
+        description:
+          "Dispatched after the complete code content is copied successfully.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-breadcrumb",
+    sourceComponent: "Breadcrumb",
+    contract: "Breadcrumb",
+    defaultBackend: "native",
+    nativeClassName: "DtBreadcrumbElement",
+    description:
+      "Host-routed location trail with current-page, collapse, and home affordances.",
+    storyParity: storyParity({
+      extensions: [
+        {
+          native: "Comparison",
+          reason:
+            "Native-only comparison verifies declarative items and property-assigned items render the same trail.",
+        },
+      ],
+    }),
+    props: [
+      {
+        ...stringProp("items"),
+        propertyType: String.raw`import("../native/breadcrumb").DtBreadcrumbItem[]`,
+      },
+      nativeProp("ariaLabel", "string", "Navigation landmark label.", {
+        attributeName: "aria-label",
+      }),
+      stringProp("underline"),
+      numberProp("maxItems"),
+      stringProp("collapseLabel"),
+      booleanProp("homeIcon"),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "navigate",
+        description:
+          "Cancelable host-routing request carrying the destination href and source item.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-pagination",
+    sourceComponent: "Pagination",
+    contract: "Pagination",
+    defaultBackend: "native",
+    nativeClassName: "DtPaginationElement",
+    description:
+      "Controlled content pager with numbered pages, ellipses, and localized labels.",
+    storyParity: storyParity(),
+    props: [
+      numberProp("currentPage"),
+      numberProp("totalPages"),
+      numberProp("siblingCount"),
+      nativeProp("ariaLabel", "string", "Pagination landmark label.", {
+        attributeName: "aria-label",
+      }),
+      nativeProp("previousLabel", "string"),
+      nativeProp("nextLabel", "string"),
+      nativeProp("pageLabel", "string"),
+      nativeProp(
+        "pageParam",
+        "string",
+        "URL query parameter used by the native uncontrolled navigation mode.",
+      ),
+    ],
+    events: [
+      {
+        callbackProp: "onPageChange",
+        name: "page-change",
+        description:
+          "Dispatched with detail.page when the user requests another page.",
+      },
+      {
+        callbackProp: null,
+        name: "navigate",
+        description:
+          "Cancelable host-routing request carrying the page, href, and trigger.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-timestamp",
+    sourceComponent: "Timestamp",
+    contract: "Timestamp",
+    defaultBackend: "native",
+    nativeClassName: "DtTimestampElement",
+    description:
+      "Semantic locale-aware time value with absolute, relative, and live formats.",
+    storyParity: storyParity(),
+    props: [
+      {
+        ...stringProp("value"),
+        propertyType: "string | number | Date",
+      },
+      stringProp("format"),
+      numberProp("autoThreshold"),
+      stringProp("size"),
+      stringProp("tone"),
+      booleanProp("showTimezone"),
+      booleanProp("tooltip"),
+      booleanProp("live"),
+      {
+        ...stringProp("now"),
+        propertyType: "string | number | Date",
+      },
+      stringProp("locale"),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-group-label",
+    sourceComponent: "GroupLabel",
+    contract: "GroupLabel",
+    defaultBackend: "native",
+    nativeClassName: "DtGroupLabelElement",
+    description:
+      "Label for a compound control that preserves native label activation semantics.",
+    storyParity: storyParity(),
+    slots: [slot("", "Visible compound-control label text.")],
+    props: [
+      {
+        ...stringProp("htmlFor"),
+        attributeName: "for",
+      },
+      nativeProp(
+        "content",
+        "string",
+        "Attribute alternative to the default text slot.",
+      ),
+      stringProp("tooltipText"),
+      booleanProp("required"),
+      nativeProp("requiredText", "string"),
+      nativeProp("optional", "boolean"),
+      nativeProp("optionalText", "string"),
+      nativeProp("hint", "string"),
+      booleanProp("disabled"),
+      {
+        ...stringProp(
+          "tooltip",
+          "title",
+          "Native tooltip exposed under a collision-free typed property.",
+        ),
+        attributeName: "title",
+      },
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-mac-window-frame",
+    sourceComponent: "MacWindowFrame",
+    contract: "MacWindowFrame",
+    defaultBackend: "native",
+    nativeClassName: "DtMacWindowFrameElement",
+    description:
+      "Decorative desktop-window frame for demos and showcase content.",
+    storyParity: storyParity(),
+    slots: [
+      slot("", "Showcase content rendered inside the decorative frame."),
+      slot(
+        "content",
+        "Explicit alternative to the default showcase-content slot.",
+      ),
+      slot("title", "Host-rendered frame title content."),
+      slot(
+        "toolbar",
+        "Host-rendered toolbar content replacing the built-in action.",
+      ),
+    ],
+    props: [
+      stringProp("titleKey"),
+      stringProp("actionLabelKey"),
+      nativeProp(
+        "actionLabel",
+        "string",
+        "Visible and accessible action label.",
+      ),
+      stringProp("density"),
+      nativeProp("bodyLabel", "string", "Accessible name for the framed body."),
+    ],
+    events: [
+      {
+        callbackProp: "onAction",
+        name: "action-click",
+        description: "Dispatched when the optional frame action is activated.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-file-upload",
+    sourceComponent: "FileUpload",
+    contract: "FileUpload",
+    defaultBackend: "native",
+    nativeClassName: "DtFileUploadElement",
+    description:
+      "Form-associated file picker with size validation, drag/drop, and clear behavior.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("label"),
+      stringProp("placeholder"),
+      stringProp("helperText"),
+      stringProp("uploadButtonLabel"),
+      stringProp("clearButtonLabel"),
+      stringProp("accept"),
+      numberProp("maxSizeInBytes"),
+      stringProp("sizeErrorMessage"),
+      stringProp("error"),
+      {
+        ...stringProp("value"),
+        propertyType: "File | null",
+        propertyOnly: true,
+      },
+      booleanProp("disabled"),
+      booleanProp("required"),
+      stringProp("appearance"),
+      nativeProp("name", "string"),
+      nativeProp(
+        "inheritedDisabled",
+        "boolean",
+        "Property-only disabled state supplied by an owning form-field composition.",
+        { propertyOnly: true },
+      ),
+    ],
+    events: [
+      {
+        callbackProp: "onFileChange",
+        name: "file-change",
+        description:
+          "Dispatched with detail.file after selection, drop, rejection, or clearing.",
+      },
+      {
+        callbackProp: null,
+        name: "change",
+        description:
+          "Standard composed change event emitted after the file value changes.",
+      },
+      {
+        callbackProp: null,
+        name: "picker-request",
+        description:
+          "Cancelable request emitted before opening the platform file picker.",
+      },
+    ],
+  },
 ];

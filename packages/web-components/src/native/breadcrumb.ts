@@ -294,6 +294,14 @@ export class DtBreadcrumbElement extends DigitaltableteurElement {
     reflectAttribute(this, "max-items", value > 0 ? Math.floor(value) : null);
   }
 
+  get collapseLabel(): string {
+    return stringAttribute(this, "collapse-label");
+  }
+
+  set collapseLabel(value: string) {
+    reflectAttribute(this, "collapse-label", value || null);
+  }
+
   get homeIcon(): boolean {
     return this.hasAttribute("home-icon");
   }
@@ -359,9 +367,9 @@ export class DtBreadcrumbElement extends DigitaltableteurElement {
     });
   }
 
-  private collapseLabel(hiddenCount: number): string {
-    if (this.getAttribute("collapse-label")) {
-      return stringAttribute(this, "collapse-label");
+  private resolvedCollapseLabel(hiddenCount: number): string {
+    if (this.collapseLabel) {
+      return this.collapseLabel;
     }
     const locale = localizedText(this, {
       en: "en",
@@ -464,7 +472,10 @@ export class DtBreadcrumbElement extends DigitaltableteurElement {
     trigger.type = "button";
     trigger.className = "ellipsis";
     trigger.slot = "trigger";
-    trigger.setAttribute("aria-label", this.collapseLabel(hiddenItems.length));
+    trigger.setAttribute(
+      "aria-label",
+      this.resolvedCollapseLabel(hiddenItems.length),
+    );
 
     const dots = this.ownerDocument.createElement("span");
     dots.className = "ellipsisDots";

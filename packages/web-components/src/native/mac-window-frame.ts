@@ -264,6 +264,14 @@ export class DtMacWindowFrameElement extends DigitaltableteurElement {
     reflectAttribute(this, "action-label-key", value || null);
   }
 
+  get actionLabel(): string {
+    return stringAttribute(this, "action-label");
+  }
+
+  set actionLabel(value: string) {
+    reflectAttribute(this, "action-label", value || null);
+  }
+
   get bodyLabel(): string {
     return (
       stringAttribute(this, "body-label") ||
@@ -305,7 +313,7 @@ export class DtMacWindowFrameElement extends DigitaltableteurElement {
   }
 
   private resolvedActionLabel(): string {
-    const explicit = stringAttribute(this, "action-label");
+    const explicit = this.actionLabel;
     if (explicit) return explicit;
     return resolveKeyText(
       this,

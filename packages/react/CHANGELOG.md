@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.17 - 2026-07-16
+
+- Exposes the existing stable `Timestamp` component and pure
+  `formatTimestamp` utility from the root and content-family entrypoints so the
+  public React package remains the canonical source for its native counterpart.
+- Moves inline `CodeSnippet` copy feedback into a body portal so the component
+  remains valid phrasing content inside paragraphs instead of nesting Toast's
+  block element inside prose and triggering hydration warnings.
+- Runtime public API grows additively from 126 to 128 exports; no existing
+  component API changes.
+
 ## 0.1.16 - 2026-07-16
 
 - Exposes the existing Accordion and Tooltip runtime families from the root and

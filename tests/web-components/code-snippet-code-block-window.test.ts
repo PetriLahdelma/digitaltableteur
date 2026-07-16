@@ -87,8 +87,17 @@ describe("native code snippet and code block window", () => {
     ).toMatch(/show less/i);
 
     fireEvent.click(menuButton as HTMLButtonElement);
+    const expandedMenuButton =
+      element.shadowRoot?.querySelector<HTMLButtonElement>(".menuButton");
     const menuItem =
       element.shadowRoot?.querySelector<HTMLButtonElement>(".menuItem");
+    expect(expandedMenuButton).toHaveAttribute("aria-expanded", "true");
+    expect(expandedMenuButton).toHaveAttribute(
+      "aria-controls",
+      element.shadowRoot?.querySelector<HTMLElement>(".menu")?.id,
+    );
+    expect(element.shadowRoot?.querySelector('[role="menu"]')).toBeNull();
+    expect(element.shadowRoot?.querySelector('[role="menuitem"]')).toBeNull();
     fireEvent.click(menuItem as HTMLButtonElement);
 
     await waitFor(() => {
@@ -145,7 +154,7 @@ describe("native code snippet and code block window", () => {
     const element = document.createElement(
       WINDOW_TAG,
     ) as DtCodeBlockWindowElement;
-    element.title = "demo.tsx";
+    element.windowTitle = "demo.tsx";
     element.language = "tsx";
     element.append(buildCodeBlock("const value = 42;", "tsx"));
     document.body.append(element);
@@ -175,7 +184,7 @@ describe("native code snippet and code block window", () => {
     const element = document.createElement(
       WINDOW_TAG,
     ) as DtCodeBlockWindowElement;
-    element.title = "long-line.ts";
+    element.windowTitle = "long-line.ts";
     element.language = "ts";
     element.context = "article";
     element.append(
@@ -217,7 +226,7 @@ describe("native code snippet and code block window", () => {
     const windowElement = document.createElement(
       WINDOW_TAG,
     ) as DtCodeBlockWindowElement;
-    windowElement.title = "install.sh";
+    windowElement.windowTitle = "install.sh";
     windowElement.language = "bash";
 
     const nestedSnippet = document.createElement(

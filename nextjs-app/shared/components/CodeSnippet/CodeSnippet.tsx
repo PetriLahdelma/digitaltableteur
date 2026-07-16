@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useId, useMemo, useState, useRef } from "react";
+import React, { useEffect, useId, useMemo, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import styles from "./CodeSnippet.module.css";
 import Text from "@dt/Text";
 import Button from "@dt/Button";
@@ -92,10 +93,15 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   );
   const [toastOpen, setToastOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+  const [portalRoot, setPortalRoot] = useState<HTMLElement | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const codeRef = useRef<HTMLElement>(null);
   const generatedCodeId = useId();
   const codeId = `${generatedCodeId}-code`;
+
+  useEffect(() => {
+    setPortalRoot(document.body);
+  }, []);
 
   const lines = code.trimEnd().split("\n");
   // Boolean() matters: maxLines=0 (clamp disabled) would otherwise make this
@@ -186,11 +192,16 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
             ),
           }}
         />
-        <Toast
-          message={toastMessage}
-          open={toastOpen}
-          onClose={() => setToastOpen(false)}
-        />
+        {portalRoot
+          ? createPortal(
+              <Toast
+                message={toastMessage}
+                open={toastOpen}
+                onClose={() => setToastOpen(false)}
+              />,
+              portalRoot,
+            )
+          : null}
       </>
     );
   }

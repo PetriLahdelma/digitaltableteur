@@ -11,8 +11,11 @@ import {
   DtBadgeElement,
   DtButtonElement,
   DtButtonGroupElement,
+  DtBreadcrumbElement,
   DtCardElement,
   DtCenterElement,
+  DtCodeBlockWindowElement,
+  DtCodeSnippetElement,
   DtComboboxElement,
   DtCommandPaletteElement,
   DtContainerElement,
@@ -21,15 +24,18 @@ import {
   DtDisplayElement,
   DtEmptyStateElement,
   DtExpandableSectionElement,
+  DtFileUploadElement,
   DtFilterChipElement,
   DtFlexBoxElement,
   DtGridElement,
+  DtGroupLabelElement,
   DtIconElement,
   DtIconButtonElement,
   DtKbdElement,
   DtLanguageSwitcherElement,
   DtLinkElement,
   DtListElement,
+  DtMacWindowFrameElement,
   DtMenuElement,
   DtModalElement,
   DtMultiComboboxElement,
@@ -39,6 +45,7 @@ import {
   DtNavLinkElement,
   DtNavMenuListElement,
   DtPhoneInputElement,
+  DtPaginationElement,
   DtProgressElement,
   DtSkipLinkElement,
   DtSpinnerElement,
@@ -64,6 +71,7 @@ import {
   DtTooltipElement,
   DtToastElement,
   DtToastStackElement,
+  DtTimestampElement,
   DtVisuallyHiddenElement,
 } from "../../packages/web-components/src/native";
 import {
@@ -79,6 +87,8 @@ const NATIVE_TAGS = [
   "dt-button-group",
   "dt-filter-chip",
   "dt-command-palette",
+  "dt-breadcrumb",
+  "dt-pagination",
   "dt-link",
   "dt-nav-link",
   "dt-nav-menu-list",
@@ -99,10 +109,14 @@ const NATIVE_TAGS = [
   "dt-title",
   "dt-list",
   "dt-kbd",
+  "dt-code-snippet",
+  "dt-code-block-window",
+  "dt-timestamp",
   "dt-section",
   "dt-stack",
   "dt-flex-box",
   "dt-grid",
+  "dt-mac-window-frame",
   "dt-card",
   "dt-center",
   "dt-container",
@@ -112,9 +126,11 @@ const NATIVE_TAGS = [
   "dt-label",
   "dt-helper-text",
   "dt-form-field",
+  "dt-group-label",
   "dt-text-input",
   "dt-text-area",
   "dt-phone-input",
+  "dt-file-upload",
   "dt-checkbox",
   "dt-checkbox-group",
   "dt-radio",
@@ -159,6 +175,8 @@ describe("native registry", () => {
     expect(customElements.get("dt-command-palette")).toBe(
       DtCommandPaletteElement,
     );
+    expect(customElements.get("dt-breadcrumb")).toBe(DtBreadcrumbElement);
+    expect(customElements.get("dt-pagination")).toBe(DtPaginationElement);
     expect(customElements.get("dt-link")).toBe(DtLinkElement);
     expect(customElements.get("dt-nav-link")).toBe(DtNavLinkElement);
     expect(customElements.get("dt-nav-menu-list")).toBe(DtNavMenuListElement);
@@ -181,10 +199,18 @@ describe("native registry", () => {
     expect(customElements.get("dt-title")).toBe(DtTitleElement);
     expect(customElements.get("dt-list")).toBe(DtListElement);
     expect(customElements.get("dt-kbd")).toBe(DtKbdElement);
+    expect(customElements.get("dt-code-snippet")).toBe(DtCodeSnippetElement);
+    expect(customElements.get("dt-code-block-window")).toBe(
+      DtCodeBlockWindowElement,
+    );
+    expect(customElements.get("dt-timestamp")).toBe(DtTimestampElement);
     expect(customElements.get("dt-section")).toBe(DtSectionElement);
     expect(customElements.get("dt-stack")).toBe(DtStackElement);
     expect(customElements.get("dt-flex-box")).toBe(DtFlexBoxElement);
     expect(customElements.get("dt-grid")).toBe(DtGridElement);
+    expect(customElements.get("dt-mac-window-frame")).toBe(
+      DtMacWindowFrameElement,
+    );
     expect(customElements.get("dt-card")).toBe(DtCardElement);
     expect(customElements.get("dt-center")).toBe(DtCenterElement);
     expect(customElements.get("dt-container")).toBe(DtContainerElement);
@@ -194,9 +220,11 @@ describe("native registry", () => {
     expect(customElements.get("dt-label")).toBe(DtLabelElement);
     expect(customElements.get("dt-helper-text")).toBe(DtHelperTextElement);
     expect(customElements.get("dt-form-field")).toBe(DtFormFieldElement);
+    expect(customElements.get("dt-group-label")).toBe(DtGroupLabelElement);
     expect(customElements.get("dt-text-input")).toBe(DtTextInputElement);
     expect(customElements.get("dt-text-area")).toBe(DtTextAreaElement);
     expect(customElements.get("dt-phone-input")).toBe(DtPhoneInputElement);
+    expect(customElements.get("dt-file-upload")).toBe(DtFileUploadElement);
     expect(customElements.get("dt-checkbox")).toBe(DtCheckboxElement);
     expect(customElements.get("dt-checkbox-group")).toBe(
       DtCheckboxGroupElement,

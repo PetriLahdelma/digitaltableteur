@@ -228,8 +228,36 @@ export class DtPaginationElement extends DigitaltableteurElement {
     reflectAttribute(this, "current-page", value > 0 ? Math.floor(value) : 1);
   }
 
-  private get pageParam(): string {
+  get pageParam(): string {
     return stringAttribute(this, "page-param", "page") || "page";
+  }
+
+  set pageParam(value: string) {
+    reflectAttribute(this, "page-param", value || null);
+  }
+
+  get previousLabel(): string {
+    return stringAttribute(this, "previous-label");
+  }
+
+  set previousLabel(value: string) {
+    reflectAttribute(this, "previous-label", value || null);
+  }
+
+  get nextLabel(): string {
+    return stringAttribute(this, "next-label");
+  }
+
+  set nextLabel(value: string) {
+    reflectAttribute(this, "next-label", value || null);
+  }
+
+  get pageLabel(): string {
+    return stringAttribute(this, "page-label");
+  }
+
+  set pageLabel(value: string) {
+    reflectAttribute(this, "page-label", value || null);
   }
 
   private readonly handleLocationChange = (): void => {
@@ -252,9 +280,9 @@ export class DtPaginationElement extends DigitaltableteurElement {
     });
   }
 
-  private previousLabel(): string {
+  private resolvedPreviousLabel(): string {
     return (
-      stringAttribute(this, "previous-label") ||
+      this.previousLabel ||
       localizedText(this, {
         en: "Previous page",
         fi: "Edellinen sivu",
@@ -263,9 +291,9 @@ export class DtPaginationElement extends DigitaltableteurElement {
     );
   }
 
-  private nextLabel(): string {
+  private resolvedNextLabel(): string {
     return (
-      stringAttribute(this, "next-label") ||
+      this.nextLabel ||
       localizedText(this, {
         en: "Next page",
         fi: "Seuraava sivu",
@@ -274,8 +302,8 @@ export class DtPaginationElement extends DigitaltableteurElement {
     );
   }
 
-  private pageLabel(page: number): string {
-    const label = stringAttribute(this, "page-label");
+  private resolvedPageLabel(page: number): string {
+    const label = this.pageLabel;
     if (label) return `${label} ${page}`;
     return `${localizedText(this, {
       en: "Page",
@@ -311,6 +339,9 @@ export class DtPaginationElement extends DigitaltableteurElement {
     this.dispatchEvent(navigate);
 
     if (!this.hasAttribute("current-page")) {
+      if (!navigate.defaultPrevented) {
+        this.ownerDocument.defaultView?.history.pushState({}, "", href);
+      }
       this.optimisticPage = page;
       this.render();
     }
@@ -393,7 +424,7 @@ export class DtPaginationElement extends DigitaltableteurElement {
 
     nav.append(
       this.createControl({
-        label: this.previousLabel(),
+        label: this.resolvedPreviousLabel(),
         disabled: currentPage <= 1,
         page: currentPage - 1,
         trigger: "previous",
@@ -418,7 +449,7 @@ export class DtPaginationElement extends DigitaltableteurElement {
 
       pagesWrapper.append(
         this.createControl({
-          label: this.pageLabel(page),
+          label: this.resolvedPageLabel(page),
           current: page === currentPage,
           page,
           trigger: "page",
@@ -430,7 +461,7 @@ export class DtPaginationElement extends DigitaltableteurElement {
     nav.append(pagesWrapper);
     nav.append(
       this.createControl({
-        label: this.nextLabel(),
+        label: this.resolvedNextLabel(),
         disabled: currentPage >= totalPages,
         page: currentPage + 1,
         trigger: "next",

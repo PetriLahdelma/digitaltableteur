@@ -224,6 +224,27 @@ describe("native Pagination", () => {
       'button[aria-current="page"]',
     );
     expect(current).toHaveAttribute("aria-label", "Page 2");
+    expect(window.location.pathname).toBe("/");
+    expect(window.location.search).toBe("");
+  });
+
+  it("updates browser history in uncontrolled mode when navigation is not canceled", async () => {
+    window.history.pushState({}, "", "/blog?filter=recent#articles");
+    const pagination = new DtPaginationElement();
+    pagination.totalPages = 9;
+    document.body.append(pagination);
+
+    const pageTwo = pagination.shadowRoot?.querySelector<HTMLButtonElement>(
+      'button[aria-label="Page 2"]',
+    );
+    await userEvent.click(pageTwo as HTMLButtonElement);
+
+    expect(window.location.pathname).toBe("/blog");
+    expect(window.location.search).toBe("?filter=recent&page=2");
+    expect(window.location.hash).toBe("#articles");
+    expect(
+      pagination.shadowRoot?.querySelector('button[aria-current="page"]'),
+    ).toHaveAttribute("aria-label", "Page 2");
   });
 
   it("re-syncs uncontrolled state from location changes", () => {

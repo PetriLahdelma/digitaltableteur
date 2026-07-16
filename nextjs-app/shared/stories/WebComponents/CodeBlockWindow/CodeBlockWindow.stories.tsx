@@ -38,7 +38,7 @@ type Args = {
 
 function windowAttributes(args: Args) {
   return {
-    title: args.title,
+    "window-title": args.title,
     caption: args.caption,
     language: args.language,
     context: args.context,
@@ -133,7 +133,7 @@ export const ComposedSnippet: Story = {
       <NativeElement
         tagName="dt-code-block-window"
         attributes={{
-          title: "scripts/install.sh",
+          "window-title": "scripts/install.sh",
           language: "bash",
           caption: "The window consumes the snippet source and keeps a single copy affordance.",
         }}

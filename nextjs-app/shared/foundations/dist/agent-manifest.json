@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-15T18:11:55.177Z",
+  "generatedAt": "2026-07-16T10:46:53.799Z",
   "summary": {
     "componentCount": 162,
     "statusCounts": {
@@ -64,7 +64,7 @@
     "artifactCoverage": {
       "stories": 146,
       "tests": 148,
-      "mdx": 6,
+      "mdx": 5,
       "spec": 162
     },
     "outOfCatalogByBucket": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 152,
     "withProductionUsage": 33,
     "uniqueImportedComponents": 152,
-    "totalEvidenceRows": 751,
-    "aliasImportFiles": 386,
-    "relativeImportFiles": 394,
+    "totalEvidenceRows": 756,
+    "aliasImportFiles": 388,
+    "relativeImportFiles": 398,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -4523,7 +4523,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 55,
+        "importCount": 56,
         "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 32,
@@ -5286,7 +5286,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Card",
-        "importCount": 6,
+        "importCount": 7,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 4,
@@ -5323,6 +5323,12 @@
           },
           {
             "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Card",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/WebComponents/CodeSnippet/CodeSnippet.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Card",
             "context": "story"
@@ -7432,7 +7438,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/CodeBlockWindow",
-        "importCount": 2,
+        "importCount": 3,
         "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 1,
@@ -7448,6 +7454,12 @@
             "importKind": "relative",
             "importPath": "./CodeBlockWindow/CodeBlockWindow",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/stories/WebComponents/CodeBlockWindow/CodeBlockWindow.stories.tsx",
+            "importKind": "relative",
+            "importPath": "../../../components/CodeBlockWindow/codeBlockFixtures",
+            "context": "story"
           }
         ]
       },
@@ -11995,7 +12007,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/FileUpload",
-        "importCount": 3,
+        "importCount": 4,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 3,
@@ -12017,6 +12029,12 @@
             "importKind": "relative",
             "importPath": "./FileUpload/FileUpload",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/stories/WebComponents/FileUpload/FileUpload.stories.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../shared/components/FileUpload/FileUpload.contract.json",
+            "context": "story"
           }
         ]
       },
@@ -31193,7 +31211,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Timestamp",
-        "importCount": 2,
+        "importCount": 3,
         "productionImportCount": 2,
         "patternImportCount": 0,
         "componentImportCount": 0,
@@ -31209,6 +31227,12 @@
             "importKind": "alias",
             "importPath": "@dt/Timestamp",
             "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/stories/WebComponents/Timestamp/Timestamp.stories.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../shared/components/Timestamp/Timestamp.contract.json",
+            "context": "story"
           }
         ]
       },

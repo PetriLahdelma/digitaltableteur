@@ -102,9 +102,9 @@ const PACKAGE_DEFINITIONS = [
   {
     dir: "packages/web-components",
     name: "@digitaltableteur/web-components",
-    maxEntryCount: 168,
-    maxTarballSize: 250_000,
-    maxUnpackedSize: 1_450_000,
+    maxEntryCount: 180,
+    maxTarballSize: 290_000,
+    maxUnpackedSize: 1_660_000,
     requiredFiles: [
       "README.md",
       "custom-elements.json",
@@ -128,16 +128,31 @@ const ROOT_FILE_ALLOWLIST = new Set([
 ]);
 const DIST_FILE_ALLOWLIST = /^dist\/.+\.(?:css|d\.ts|d\.ts\.map|js|json)$/;
 const FORBIDDEN_PATTERNS = [
-  { label: "environment file", re: /(^|\/)\.env(?:\.|$)|(^|\/)\.npmrc$|(^|\/)\.npm-userconfig$/ },
+  {
+    label: "environment file",
+    re: /(^|\/)\.env(?:\.|$)|(^|\/)\.npmrc$|(^|\/)\.npm-userconfig$/,
+  },
   {
     label: "source/config directory",
     re: /(^|\/)(?:src|app|scripts|tests?|__tests__|__mocks__|__snapshots__|__a11y-snapshots__|\.storybook|\.next|coverage|storybook-static)(?:\/|$)/,
   },
-  { label: "lockfile or npm debug log", re: /(^|\/)(?:package-lock\.json|pnpm-lock\.yaml|yarn\.lock|npm-debug\.log)$/ },
-  { label: "test or story source", re: /\.(?:test|spec|stories)\.[cm]?[tj]sx?$/ },
+  {
+    label: "lockfile or npm debug log",
+    re: /(^|\/)(?:package-lock\.json|pnpm-lock\.yaml|yarn\.lock|npm-debug\.log)$/,
+  },
+  {
+    label: "test or story source",
+    re: /\.(?:test|spec|stories)\.[cm]?[tj]sx?$/,
+  },
   { label: "raw TypeScript source", re: /\.(?:ts|tsx)$/ },
-  { label: "image/media artifact", re: /\.(?:avif|gif|jpe?g|mov|mp4|pdf|png|svg|webp)$/ },
-  { label: "tool config", re: /(^|\/)(?:eslint|next|playwright|tsconfig|vite|vitest)\.config\./ },
+  {
+    label: "image/media artifact",
+    re: /\.(?:avif|gif|jpe?g|mov|mp4|pdf|png|svg|webp)$/,
+  },
+  {
+    label: "tool config",
+    re: /(^|\/)(?:eslint|next|playwright|tsconfig|vite|vitest)\.config\./,
+  },
   { label: "node_modules payload", re: /(^|\/)node_modules(?:\/|$)/ },
 ];
 
@@ -162,7 +177,9 @@ function parsePackJson(stdout, packageName) {
           ? [parsed[packageName]]
           : [parsed];
       if (rows.length !== 1) {
-        throw new Error(`npm pack for ${packageName} returned ${rows.length} package rows.`);
+        throw new Error(
+          `npm pack for ${packageName} returned ${rows.length} package rows.`,
+        );
       }
       return rows[0];
     } catch {
@@ -174,15 +191,11 @@ function parsePackJson(stdout, packageName) {
 }
 
 function packPackage(definition) {
-  const stdout = execFileSync(
-    "npm",
-    ["pack", "--dry-run", "--json"],
-    {
-      cwd: join(ROOT, definition.dir),
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "pipe"],
-    },
-  );
+  const stdout = execFileSync("npm", ["pack", "--dry-run", "--json"], {
+    cwd: join(ROOT, definition.dir),
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
   return parsePackJson(stdout, definition.name);
 }
 
@@ -207,7 +220,9 @@ function validatePack(definition, pack) {
     );
   }
   if (pack.size > definition.maxTarballSize) {
-    errors.push(`tarball size ${pack.size} exceeds ceiling ${definition.maxTarballSize}`);
+    errors.push(
+      `tarball size ${pack.size} exceeds ceiling ${definition.maxTarballSize}`,
+    );
   }
   if (pack.unpackedSize > definition.maxUnpackedSize) {
     errors.push(
@@ -236,8 +251,13 @@ function validatePack(definition, pack) {
 
     for (const forbidden of FORBIDDEN_PATTERNS) {
       if (!forbidden.re.test(path)) continue;
-      if (forbidden.label === "source/config directory" && path.startsWith("dist/types/")) continue;
-      if (forbidden.label === "raw TypeScript source" && /\.d\.ts$/.test(path)) continue;
+      if (
+        forbidden.label === "source/config directory" &&
+        path.startsWith("dist/types/")
+      )
+        continue;
+      if (forbidden.label === "raw TypeScript source" && /\.d\.ts$/.test(path))
+        continue;
       forbiddenFiles.push({ path, reason: forbidden.label });
       errors.push(`forbidden ${forbidden.label}: ${path}`);
     }

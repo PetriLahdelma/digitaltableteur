@@ -656,6 +656,96 @@ export type DtCookieConsentElementContract = HTMLElement & {
   closeLabel?: string;
 };
 
+export type DtCodeSnippetElementContract = HTMLElement & {
+  code?: string;
+  language?: string;
+  showLineNumbers?: boolean;
+  ariaLabel?: string;
+  allowCopy?: boolean;
+  variant?: string;
+  maxLines?: number;
+};
+
+export type DtCodeBlockWindowElementContract = HTMLElement & {
+  windowTitle?: string;
+  caption?: string;
+  language?: string;
+  showLineNumbers?: boolean;
+  context?: string;
+};
+
+export type DtBreadcrumbElementContract = HTMLElement & {
+  items?: import("../native/breadcrumb").DtBreadcrumbItem[];
+  ariaLabel?: string;
+  underline?: string;
+  maxItems?: number;
+  collapseLabel?: string;
+  homeIcon?: boolean;
+};
+
+export type DtPaginationElementContract = HTMLElement & {
+  currentPage?: number;
+  totalPages?: number;
+  siblingCount?: number;
+  ariaLabel?: string;
+  previousLabel?: string;
+  nextLabel?: string;
+  pageLabel?: string;
+  pageParam?: string;
+};
+
+export type DtTimestampElementContract = HTMLElement & {
+  value?: string | number | Date;
+  format?: string;
+  autoThreshold?: number;
+  size?: string;
+  tone?: string;
+  showTimezone?: boolean;
+  tooltip?: boolean;
+  live?: boolean;
+  now?: string | number | Date;
+  locale?: string;
+};
+
+export type DtGroupLabelElementContract = HTMLElement & {
+  htmlFor?: string;
+  content?: string;
+  tooltipText?: string;
+  required?: boolean;
+  requiredText?: string;
+  optional?: boolean;
+  optionalText?: string;
+  hint?: string;
+  disabled?: boolean;
+  tooltip?: string;
+};
+
+export type DtMacWindowFrameElementContract = HTMLElement & {
+  titleKey?: string;
+  actionLabelKey?: string;
+  actionLabel?: string;
+  density?: string;
+  bodyLabel?: string;
+};
+
+export type DtFileUploadElementContract = HTMLElement & {
+  label?: string;
+  placeholder?: string;
+  helperText?: string;
+  uploadButtonLabel?: string;
+  clearButtonLabel?: string;
+  accept?: string;
+  maxSizeInBytes?: number;
+  sizeErrorMessage?: string;
+  error?: string;
+  value?: File | null;
+  disabled?: boolean;
+  required?: boolean;
+  appearance?: string;
+  name?: string;
+  inheritedDisabled?: boolean;
+};
+
 export const elementMigrationManifest = [
   { tagName: "dt-button", sourceComponent: "Button", backend: "native" },
   { tagName: "dt-badge", sourceComponent: "Badge", backend: "native" },
@@ -719,6 +809,14 @@ export const elementMigrationManifest = [
   { tagName: "dt-combobox", sourceComponent: "Combobox", backend: "native" },
   { tagName: "dt-multi-combobox", sourceComponent: "MultiCombobox", backend: "native" },
   { tagName: "dt-cookie-consent", sourceComponent: "CookieConsent", backend: "native" },
+  { tagName: "dt-code-snippet", sourceComponent: "CodeSnippet", backend: "native" },
+  { tagName: "dt-code-block-window", sourceComponent: "CodeBlockWindow", backend: "native" },
+  { tagName: "dt-breadcrumb", sourceComponent: "Breadcrumb", backend: "native" },
+  { tagName: "dt-pagination", sourceComponent: "Pagination", backend: "native" },
+  { tagName: "dt-timestamp", sourceComponent: "Timestamp", backend: "native" },
+  { tagName: "dt-group-label", sourceComponent: "GroupLabel", backend: "native" },
+  { tagName: "dt-mac-window-frame", sourceComponent: "MacWindowFrame", backend: "native" },
+  { tagName: "dt-file-upload", sourceComponent: "FileUpload", backend: "native" },
 ] as const;
 
 declare global {
@@ -785,5 +883,13 @@ declare global {
     "dt-combobox": DtComboboxElementContract;
     "dt-multi-combobox": DtMultiComboboxElementContract;
     "dt-cookie-consent": DtCookieConsentElementContract;
+    "dt-code-snippet": DtCodeSnippetElementContract;
+    "dt-code-block-window": DtCodeBlockWindowElementContract;
+    "dt-breadcrumb": DtBreadcrumbElementContract;
+    "dt-pagination": DtPaginationElementContract;
+    "dt-timestamp": DtTimestampElementContract;
+    "dt-group-label": DtGroupLabelElementContract;
+    "dt-mac-window-frame": DtMacWindowFrameElementContract;
+    "dt-file-upload": DtFileUploadElementContract;
   }
 }

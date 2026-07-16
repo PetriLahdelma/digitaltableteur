@@ -67,7 +67,7 @@ function NativeTimestamp({
 const meta = {
   title: "Web Components/Content/Timestamp",
   component: NativeTimestamp,
-  tags: ["autodocs", contract.status, "web-components"],
+  tags: ["autodocs", "stable", "web-components"],
   parameters: {
     ...nativeStoryParameters,
     docs: {

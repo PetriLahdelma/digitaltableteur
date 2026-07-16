@@ -1,4 +1,4 @@
-import Prism from "../../../../nextjs-app/shared/components/CodeSnippet/prismSetup";
+import Prism from "./prism";
 import {
   DigitaltableteurElement,
   enumAttribute,
@@ -847,18 +847,17 @@ export class DtCodeSnippetElement extends DigitaltableteurElement {
           }),
         );
         menuButton.setAttribute("aria-expanded", String(this.menuOpen));
-        menuButton.setAttribute("aria-haspopup", "menu");
+        menuButton.setAttribute("aria-controls", `${this.instanceId}-copy-options`);
         menuButton.addEventListener("click", () => this.toggleMenu());
 
         const menu = this.ownerDocument.createElement("div");
         menu.className = "menu";
-        menu.setAttribute("role", "menu");
+        menu.id = `${this.instanceId}-copy-options`;
         menu.hidden = !this.menuOpen;
 
         const menuItem = this.ownerDocument.createElement("button");
         menuItem.type = "button";
         menuItem.className = "menuItem";
-        menuItem.setAttribute("role", "menuitem");
         menuItem.textContent = localizedText(this, {
           en: "Copy w/o comments",
           fi: "Kopioi ilman kommentteja",
