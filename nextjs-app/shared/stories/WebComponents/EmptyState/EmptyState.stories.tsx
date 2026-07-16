@@ -50,8 +50,9 @@ const meta = {
     docs: { description: { component: "Native dt-empty-state composition." } },
   },
   args: {
-    titleText: "No results",
-    description: "Try another filter.",
+    titleText: "No results found",
+    description:
+      "Try a different search term, or clear the filters to see everything.",
     icon: "magnifying-glass",
     headingLevel: "h2",
     size: "md",
@@ -72,13 +73,36 @@ export const Sizes: Story = {
   ...exampleStory,
   render: () => (
     <div style={{ display: "grid", gap: "1rem" }}>
-      {(["sm", "md", "lg"] as const).map((size) => (
+      {(
+        [
+          {
+            size: "sm",
+            title: "No notifications",
+            description: "You're all caught up.",
+            icon: "tray",
+          },
+          {
+            size: "md",
+            title: "No results found",
+            description:
+              "Try a different search term, or clear the filters to see everything.",
+            icon: "magnifying-glass",
+          },
+          {
+            size: "lg",
+            title: "No projects yet",
+            description: "Create your first project to see it listed here.",
+            icon: "folder-open",
+          },
+        ] as const
+      ).map(({ size, title, description, icon }) => (
         <NativeElement
           key={size}
           tagName="dt-empty-state"
           attributes={{
-            "title-text": `${size} empty state`,
-            description: "Nothing here yet.",
+            "title-text": title,
+            description,
+            icon,
             size,
           }}
         />

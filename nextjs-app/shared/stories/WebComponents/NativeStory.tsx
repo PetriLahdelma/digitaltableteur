@@ -98,6 +98,37 @@ export function Stage({
   );
 }
 
+/**
+ * Token-styled semantic <button> for slotted trigger slots. Menus write
+ * aria-haspopup/aria-expanded onto the slotted element itself, so triggers
+ * must stay real buttons (a dt-button host would strand those attributes
+ * outside its shadow control); this keeps them presentable without losing
+ * that wiring.
+ */
+export function TriggerButton({
+  children,
+  ...rest
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & { slot?: string }) {
+  return (
+    <button
+      type="button"
+      style={{
+        font: "inherit",
+        fontWeight: 600,
+        padding: "0.5rem 1.25rem",
+        border: "1px solid var(--color-primary, #111)",
+        borderRadius: "var(--radius-md, 0.5rem)",
+        background: "var(--color-white, #fff)",
+        color: "var(--color-primary, #111)",
+        cursor: "pointer",
+      }}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+}
+
 export function assertNative(
   tagName: string,
   scope: "canvas" | "document" = "canvas",
