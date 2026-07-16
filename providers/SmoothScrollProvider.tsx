@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import type { ReactNode } from "react";
-import { resolveMotionPlan } from "@/nextjs-app/shared/lib/motionPolicy";
+import { resolveMotionPlan } from "@digitaltableteur/react";
 import { useAnimationContext } from "@/providers/AnimationProvider";
 
 interface SmoothScrollProviderProps {
