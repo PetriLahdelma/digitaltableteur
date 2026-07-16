@@ -69,11 +69,11 @@
     - listitem "Storybook 10"
     - listitem "npm"
   - term: react
-  - definition: 0.1.12
+  - definition: 0.1.16
   - term: tokens
-  - definition: 0.1.1
-  - term: tokens-css
   - definition: 0.1.2
+  - term: tokens-css
+  - definition: 0.1.3
 - region "Ready to build something great?":
   - heading "Ready to build something great?" [level=2]
   - paragraph: Let's discuss your next project and explore how we can help bring your vision to life.
