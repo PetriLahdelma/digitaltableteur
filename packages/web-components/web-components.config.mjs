@@ -2341,5 +2341,8 @@ const elementDefinitions = [
 export default elementDefinitions.map((element) => ({
   implementationStatus: "beta",
   implementationConsumers: [],
+  props: [],
+  slots: [],
+  events: [],
   ...element,
 }));

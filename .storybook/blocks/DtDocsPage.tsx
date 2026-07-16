@@ -46,16 +46,16 @@ const NON_EXAMPLE_NAMES = new Set([
   "Forced Colors",
 ]);
 
-function WebComponentUsage({
+export function WebComponentUsage({
   description,
   tagName,
-  slots,
-  events,
+  slots = [],
+  events = [],
 }: {
   description: string;
   tagName: string;
-  slots: Array<{ name: string; description: string }>;
-  events: Array<{ name: string }>;
+  slots?: Array<{ name: string; description: string }>;
+  events?: Array<{ name: string }>;
 }) {
   const slotNames = slots.map((slot) => slot.name || "default").join(", ");
   const eventNames = events.map((event) => event.name).join(", ");
@@ -167,8 +167,8 @@ export function DtDocsPage() {
             <WebComponentUsage
               description={element.description}
               tagName={element.tagName}
-              slots={element.slots}
-              events={element.events}
+              slots={element.slots ?? []}
+              events={element.events ?? []}
             />
           </>
         ) : null}

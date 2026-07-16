@@ -7,6 +7,8 @@ import { ImportBlock } from "./ImportBlock";
 import { UsageSection } from "./UsageSection";
 import { BestPractices } from "./BestPractices";
 import { AnatomySection } from "./AnatomySection";
+import { WebComponentUsage } from "./DtDocsPage";
+import { WebComponentApiSection } from "./WebComponentApiSection";
 
 const c = contract as unknown as DtContract;
 
@@ -109,5 +111,22 @@ describe("contract blocks", () => {
       "href",
       "/?path=/docs/actions-button--docs",
     );
+  });
+
+  it("renders native docs when optional metadata arrays are omitted", () => {
+    render(
+      <>
+        <WebComponentUsage
+          description="Native loading indicator."
+          tagName="dt-spinner"
+        />
+        <WebComponentApiSection />
+      </>,
+    );
+    expect(screen.getByRole("heading", { name: "Usage" })).toBeInTheDocument();
+    expect(screen.getByText(/<dt-spinner>/)).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "Native API" }),
+    ).not.toBeInTheDocument();
   });
 });

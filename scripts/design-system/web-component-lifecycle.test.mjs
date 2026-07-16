@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import elementDefinitions from "../../packages/web-components/web-components.config.mjs";
 import { validateImplementationLifecycle } from "./web-component-lifecycle.mjs";
 
 const contract = { status: "stable" };
@@ -10,6 +11,14 @@ const base = {
 };
 
 describe("web-component implementation lifecycle", () => {
+  it("normalizes documentation metadata for every native definition", () => {
+    for (const element of elementDefinitions) {
+      expect(Array.isArray(element.props), element.tagName).toBe(true);
+      expect(Array.isArray(element.slots), element.tagName).toBe(true);
+      expect(Array.isArray(element.events), element.tagName).toBe(true);
+    }
+  });
+
   it("allows a beta implementation of a stable canonical contract", () => {
     expect(() => validateImplementationLifecycle(base, contract)).not.toThrow();
   });

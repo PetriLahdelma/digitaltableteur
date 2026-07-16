@@ -13,7 +13,11 @@ function attributeName(name: string): string {
   return name.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
 }
 
-export function WebComponentApiSection({ props }: { props: NativeProp[] }) {
+export function WebComponentApiSection({
+  props = [],
+}: {
+  props?: NativeProp[];
+}) {
   if (props.length === 0) return null;
   return (
     <Section block="native-api" heading="Native API">
