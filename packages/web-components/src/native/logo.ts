@@ -28,7 +28,7 @@ export class DtLogoElement extends DigitaltableteurElement {
     "size",
     "animated",
     "badge",
-    "title",
+    "accessible-title",
     "decorative",
   ];
 
@@ -66,10 +66,10 @@ export class DtLogoElement extends DigitaltableteurElement {
     reflectBooleanAttribute(this, "decorative", value);
   }
   get accessibleTitle(): string {
-    return stringAttribute(this, "title", "Digitaltableteur");
+    return stringAttribute(this, "accessible-title", "Digitaltableteur");
   }
   set accessibleTitle(value: string) {
-    reflectAttribute(this, "title", value || null);
+    reflectAttribute(this, "accessible-title", value || null);
   }
 
   private render(): void {

@@ -154,7 +154,9 @@ const maxPackedFiles = 40 + tags.length * 2;
 // The remainder scales with the number of registered tags
 // (register/contract/typings entries). Keep this ceiling snug so genuine bloat in
 // either the shared chunk or the manifest still trips the budget.
-const sharedBundleAndManifestCeiling = 1_295_000;
+// +10 kB for the #1228 review fixes (shared safeHref, per-channel localized
+// share labels, tooltip top-layer promotion) measured at ~1.83 MB unpacked.
+const sharedBundleAndManifestCeiling = 1_305_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.

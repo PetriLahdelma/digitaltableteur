@@ -803,6 +803,7 @@ export type DtBlogMediaImageElementContract = HTMLElement & {
   height?: number;
   priority?: boolean;
   sizes?: string;
+  srcSet?: string;
   fit?: string;
   fluid?: boolean;
 };

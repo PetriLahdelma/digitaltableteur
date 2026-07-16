@@ -102,12 +102,15 @@ const PACKAGE_DEFINITIONS = [
   {
     dir: "packages/web-components",
     name: "@digitaltableteur/web-components",
-    maxEntryCount: 180,
-    maxTarballSize: 290_000,
+    // 84 native tags as of the editorial/navigation batch (#1228): measured
+    // 204 entries / 311 kB packed / 1.83 MB unpacked; ceilings keep ~3-6%
+    // headroom so the next real component still forces a deliberate bump.
+    maxEntryCount: 210,
+    maxTarballSize: 330_000,
     // Includes per-element canonical/native lifecycle metadata in the Custom
     // Elements Manifest and generated migration table. The package-specific
     // guard retains a separate fleet-scaled formula for future growth.
-    maxUnpackedSize: 1_685_000,
+    maxUnpackedSize: 1_900_000,
     requiredFiles: [
       "README.md",
       "custom-elements.json",

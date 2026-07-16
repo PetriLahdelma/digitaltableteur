@@ -10023,7 +10023,7 @@
               }
             },
             {
-              "name": "title",
+              "name": "accessible-title",
               "fieldName": "accessibleTitle",
               "type": {
                 "text": "string"
@@ -10102,6 +10102,14 @@
             },
             {
               "kind": "field",
+              "name": "srcSet",
+              "description": "Responsive candidate set for the native img; sizes only applies when this is present (React generates its srcset via next/image).",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "fit",
               "type": {
                 "text": "string"
@@ -10161,6 +10169,14 @@
             {
               "name": "sizes",
               "fieldName": "sizes",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "src-set",
+              "fieldName": "srcSet",
+              "description": "Responsive candidate set for the native img; sizes only applies when this is present (React generates its srcset via next/image).",
               "type": {
                 "text": "string"
               }
@@ -10995,7 +11011,7 @@
               }
             },
             {
-              "name": "title",
+              "name": "person-title",
               "fieldName": "personTitle",
               "type": {
                 "text": "string"

@@ -85,8 +85,8 @@ function parseChannels(value: string | null): DtSocialShareChannel[] {
   }
   return Array.isArray(candidates)
     ? candidates.filter((channel): channel is DtSocialShareChannel =>
-        CHANNELS.includes(String(channel) as DtSocialShareChannel),
-      )
+        CHANNELS.includes(String(channel).trim() as DtSocialShareChannel),
+      ).map((channel) => String(channel).trim() as DtSocialShareChannel)
     : [...CHANNELS];
 }
 
@@ -152,19 +152,45 @@ export class DtSocialShareElement extends DigitaltableteurElement {
   }
 
   private channelLabel(channel: DtSocialShareChannel): string {
-    const names = {
-      linkedin: "LinkedIn",
-      twitter: "Twitter",
-      facebook: "Facebook",
-      reddit: "Reddit",
-      whatsapp: "WhatsApp",
-      instagram: "Instagram",
+    // Finnish inessive endings follow vowel harmony per stem (-ssa vs -ssä),
+    // so labels are the canonical per-channel strings from the site locales,
+    // not a template.
+    const labels: Record<
+      DtSocialShareChannel,
+      { en: string; fi: string; sv: string }
+    > = {
+      linkedin: {
+        en: "Share on LinkedIn",
+        fi: "Jaa LinkedInissä",
+        sv: "Dela på LinkedIn",
+      },
+      twitter: {
+        en: "Share on Twitter",
+        fi: "Jaa Twitterissä",
+        sv: "Dela på Twitter",
+      },
+      facebook: {
+        en: "Share on Facebook",
+        fi: "Jaa Facebookissa",
+        sv: "Dela på Facebook",
+      },
+      reddit: {
+        en: "Share on Reddit",
+        fi: "Jaa Redditissä",
+        sv: "Dela på Reddit",
+      },
+      whatsapp: {
+        en: "Share on WhatsApp",
+        fi: "Jaa WhatsAppissa",
+        sv: "Dela på WhatsApp",
+      },
+      instagram: {
+        en: "Share on Instagram",
+        fi: "Jaa Instagramissa",
+        sv: "Dela på Instagram",
+      },
     };
-    return localizedText(this, {
-      en: `Share on ${names[channel]}`,
-      fi: `Jaa ${names[channel]}issä`,
-      sv: `Dela på ${names[channel]}`,
-    });
+    return localizedText(this, labels[channel]);
   }
   private channelHref(channel: DtSocialShareChannel): string {
     const url = encodeURIComponent(this.url);
@@ -220,7 +246,10 @@ export class DtSocialShareElement extends DigitaltableteurElement {
         return;
       }
       if (await this.copy(toast)) return;
-    } catch {
+    } catch (error) {
+      // The user dismissing the share sheet is a decision, not a failure:
+      // clobbering their clipboard and toasting "copied" would be a lie.
+      if (error instanceof Error && error.name === "AbortError") return;
       if (await this.copy(toast)) return;
     }
     this.dispatchEvent(
@@ -249,7 +278,12 @@ export class DtSocialShareElement extends DigitaltableteurElement {
     actions.className = "actions";
     actions.setAttribute("part", "actions");
     actions.setAttribute("role", "group");
-    actions.setAttribute("aria-label", headingText);
+    // Group keeps the fixed localized name even under a custom heading,
+    // matching the React component.
+    actions.setAttribute(
+      "aria-label",
+      localizedText(this, { en: "Share", fi: "Jaa", sv: "Dela" }),
+    );
     for (const channel of this.channels) {
       const link = this.ownerDocument.createElement("a");
       link.className = "channel";

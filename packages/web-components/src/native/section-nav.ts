@@ -2,11 +2,21 @@ import {
   DigitaltableteurElement,
   reflectAttribute,
   reflectBooleanAttribute,
+  safeHref,
   stringAttribute,
 } from "./base";
 import { localizedText } from "./localization";
 
 export type DtSectionNavPage = { path: string };
+
+/**
+ * Structural subset of the Navigation API — typed locally so strict builds
+ * don't depend on lib.dom shipping `Window.navigation`.
+ */
+type NavigationLike = {
+  addEventListener(type: "currententrychange", listener: () => void): void;
+  removeEventListener(type: "currententrychange", listener: () => void): void;
+};
 
 const BLOG_PAGES: DtSectionNavPage[] = [
   { path: "/blog/petri-lahdelma-bio" },
@@ -45,9 +55,11 @@ function parsePages(
   fallback: DtSectionNavPage[],
 ): DtSectionNavPage[] {
   if (!value) return fallback.map((page) => ({ ...page }));
+  // A malformed attribute renders empty rather than falling back to this
+  // site's own article list on a stranger's page — visible, not misleading.
   try {
     const parsed = JSON.parse(value) as unknown;
-    if (!Array.isArray(parsed)) return fallback.map((page) => ({ ...page }));
+    if (!Array.isArray(parsed)) return [];
     return parsed
       .filter(
         (page): page is DtSectionNavPage =>
@@ -58,7 +70,7 @@ function parsePages(
       )
       .map((page) => ({ path: page.path }));
   } catch {
-    return fallback.map((page) => ({ ...page }));
+    return [];
   }
 }
 
@@ -68,18 +80,57 @@ abstract class DtSectionNavElement extends DigitaltableteurElement {
   protected abstract readonly fallbackPages: DtSectionNavPage[];
   private assignedPages: DtSectionNavPage[] | null = null;
 
+  /**
+   * Uncontrolled-mode guess at the current path after a host-cancelled link
+   * click: SPA routers pushState without firing popstate, so until a location
+   * event confirms the change this is the only signal the element has.
+   */
+  private optimisticPath: string | null = null;
+
+  private get navigationApi(): NavigationLike | null {
+    const view = this.ownerDocument.defaultView as
+      | (Window & { navigation?: NavigationLike })
+      | null;
+    return view?.navigation ?? null;
+  }
+
   connectedCallback(): void {
+    this.ownerDocument.defaultView?.addEventListener(
+      "popstate",
+      this.handleLocationChange,
+    );
+    this.navigationApi?.addEventListener(
+      "currententrychange",
+      this.handleLocationChange,
+    );
     this.render();
+  }
+  disconnectedCallback(): void {
+    this.ownerDocument.defaultView?.removeEventListener(
+      "popstate",
+      this.handleLocationChange,
+    );
+    this.navigationApi?.removeEventListener(
+      "currententrychange",
+      this.handleLocationChange,
+    );
+    super.disconnectedCallback();
   }
   attributeChangedCallback(name: string): void {
     if (name === "pages") this.assignedPages = null;
+    if (name === "current-path") this.optimisticPath = null;
     if (this.isConnected) this.render();
   }
+  private readonly handleLocationChange = (): void => {
+    this.optimisticPath = null;
+    if (!this.hasAttribute("current-path")) this.render();
+  };
   get currentPath(): string {
-    return stringAttribute(
-      this,
-      "current-path",
-      this.ownerDocument.defaultView?.location.pathname ?? "/",
+    return (
+      stringAttribute(this, "current-path") ||
+      this.optimisticPath ||
+      this.ownerDocument.defaultView?.location.pathname ||
+      "/"
     );
   }
   set currentPath(value: string) {
@@ -157,11 +208,23 @@ abstract class DtSectionNavElement extends DigitaltableteurElement {
     button.setAttribute(endIcon ? "end-icon" : "icon", icon);
     const unavailable = this.disabled || !path;
     if (unavailable) button.setAttribute("disabled", "");
-    else button.setAttribute("href", path);
+    else button.setAttribute("href", safeHref(path));
     if (path) button.dataset.path = path;
     button.addEventListener("click", (event) => {
       if (unavailable) {
         event.preventDefault();
+        return;
+      }
+      // Modified/secondary clicks keep native open-in-new-tab semantics; an
+      // always-cancelling SPA host must not swallow them.
+      if (
+        event instanceof MouseEvent &&
+        (event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.button !== 0)
+      ) {
         return;
       }
       const navigation = new CustomEvent("navigate", {
@@ -170,7 +233,15 @@ abstract class DtSectionNavElement extends DigitaltableteurElement {
         composed: true,
         detail: { path },
       });
-      if (!this.dispatchEvent(navigation)) event.preventDefault();
+      if (!this.dispatchEvent(navigation)) {
+        event.preventDefault();
+        // Host-cancelled = SPA routing; move the highlight/boundaries now
+        // instead of waiting for a popstate that pushState never fires.
+        if (!this.hasAttribute("current-path") && path) {
+          this.optimisticPath = path;
+          this.render();
+        }
+      }
     });
     return button;
   }

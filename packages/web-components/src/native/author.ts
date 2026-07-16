@@ -1,6 +1,7 @@
 import {
   DigitaltableteurElement,
   reflectAttribute,
+  safeHref,
   stringAttribute,
 } from "./base";
 import { localizedText } from "./localization";
@@ -55,6 +56,12 @@ export class DtAuthorElement extends DigitaltableteurElement {
   set profileUrl(value: string) {
     reflectAttribute(this, "profile-url", value || null);
   }
+  get bylinePrefix(): string {
+    return stringAttribute(this, "byline-prefix");
+  }
+  set bylinePrefix(value: string) {
+    reflectAttribute(this, "byline-prefix", value || null);
+  }
 
   private render(): void {
     const root = this.ownerDocument.createElement("div");
@@ -66,17 +73,19 @@ export class DtAuthorElement extends DigitaltableteurElement {
     avatar.setAttribute("image-url", this.imageUrl);
     avatar.setAttribute("size", this.size);
     const prefix =
-      stringAttribute(this, "byline-prefix") ||
+      this.bylinePrefix ||
       localizedText(this, { en: "By", fi: "Kirjoittanut", sv: "Av" });
     const paragraph = this.ownerDocument.createElement("p");
     paragraph.setAttribute("part", "byline");
-    if (this.profileUrl) {
+    // No name, no byline: a bare localized "By" is noise, not attribution.
+    const byline = this.name ? `${prefix} ${this.name}` : "";
+    if (byline && this.profileUrl) {
       const link = this.ownerDocument.createElement("a");
-      link.href = this.profileUrl;
-      link.textContent = `${prefix} ${this.name}`;
+      link.href = safeHref(this.profileUrl);
+      link.textContent = byline;
       paragraph.append(link);
     } else {
-      paragraph.textContent = `${prefix} ${this.name}`;
+      paragraph.textContent = byline;
     }
     root.append(avatar, paragraph);
     this.replaceShadow(styles, root);

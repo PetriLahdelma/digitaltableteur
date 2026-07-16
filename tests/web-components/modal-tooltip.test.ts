@@ -349,6 +349,24 @@ describe("native review regressions (#1224)", () => {
     expect(sibling.hasAttribute("inert")).toBe(false);
   });
 
+  it("seeds default-open even when the attribute arrives after connection", () => {
+    const tooltip = document.createElement("dt-tooltip") as DtTooltipElement;
+    const trigger = document.createElement("button");
+    trigger.textContent = "Trigger";
+    tooltip.append(trigger);
+    document.body.append(tooltip); // frameworks apply attributes post-connect
+
+    tooltip.setAttribute("default-open", "");
+    expect(tooltip.open).toBe(true);
+
+    // Seeding is one-shot: after the host closes it, re-adding default-open
+    // must not override that interaction.
+    tooltip.removeAttribute("open");
+    tooltip.removeAttribute("default-open");
+    tooltip.setAttribute("default-open", "");
+    expect(tooltip.open).toBe(false);
+  });
+
   it("re-appends the tooltip description after disconnect and reconnect", () => {
     const tooltip = document.createElement("dt-tooltip") as DtTooltipElement;
     const trigger = document.createElement("button");

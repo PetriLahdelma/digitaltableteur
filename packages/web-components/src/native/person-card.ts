@@ -3,8 +3,10 @@ import {
   enumAttribute,
   reflectAttribute,
   reflectBooleanAttribute,
+  safeHref,
   stringAttribute,
 } from "./base";
+import { localizedText } from "./localization";
 
 const LOADINGS = ["lazy", "eager"] as const;
 const DECODINGS = ["auto", "sync", "async"] as const;
@@ -238,7 +240,14 @@ export class DtPersonCardElement extends DigitaltableteurElement {
   private renderLoading(root: HTMLElement): void {
     root.setAttribute("aria-busy", "true");
     root.setAttribute("role", "status");
-    root.setAttribute("aria-label", "Loading person");
+    root.setAttribute(
+      "aria-label",
+      localizedText(this, {
+        en: "Loading person",
+        fi: "Ladataan henkilöä",
+        sv: "Läser in person",
+      }),
+    );
     const portrait = this.ownerDocument.createElement("span");
     portrait.className = "skeleton skeletonPortrait";
     const lines = this.ownerDocument.createElement("span");
@@ -286,10 +295,15 @@ export class DtPersonCardElement extends DigitaltableteurElement {
     const title = this.ownerDocument.createElement("p");
     title.className = "personTitle";
     title.textContent = this.personTitle;
-    const email = this.ownerDocument.createElement("a");
-    email.className = "email";
-    email.href = `mailto:${this.email}`;
-    email.textContent = this.email;
+    // No email attribute must not yield a nameless focusable mailto: stub.
+    const email = this.email
+      ? this.ownerDocument.createElement("a")
+      : null;
+    if (email) {
+      email.className = "email";
+      email.href = `mailto:${this.email}`;
+      email.textContent = this.email;
+    }
     const social = this.ownerDocument.createElement("div");
     social.className = "social";
     social.setAttribute("part", "social-links");
@@ -297,9 +311,14 @@ export class DtPersonCardElement extends DigitaltableteurElement {
       const href = this.value(`${channel}-url`);
       if (!href) continue;
       const label =
-        this.value(`${channel}-label`) || `View ${labelName} profile`;
+        this.value(`${channel}-label`) ||
+        localizedText(this, {
+          en: `${labelName} profile`,
+          fi: `${labelName}-profiili`,
+          sv: `${labelName}-profil`,
+        });
       const link = this.ownerDocument.createElement("a");
-      link.href = href;
+      link.href = safeHref(href);
       link.target = "_blank";
       link.rel = "noopener noreferrer";
       link.setAttribute("aria-label", label);
@@ -311,7 +330,8 @@ export class DtPersonCardElement extends DigitaltableteurElement {
       link.append(icon);
       social.append(link);
     }
-    nameTitle.append(name, title, email);
+    nameTitle.append(name, title);
+    if (email) nameTitle.append(email);
     details.append(nameTitle, social);
     root.append(portrait, details);
     this.replaceShadow(styles, root);

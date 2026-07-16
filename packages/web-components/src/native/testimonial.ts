@@ -1,6 +1,7 @@
 import {
   DigitaltableteurElement,
   reflectAttribute,
+  safeHref,
   stringAttribute,
 } from "./base";
 
@@ -26,7 +27,7 @@ export class DtTestimonialElement extends DigitaltableteurElement {
   static observedAttributes = [
     "quote",
     "name",
-    "title",
+    "person-title",
     "company",
     "linkedin-url",
     "avatar-url",
@@ -56,10 +57,10 @@ export class DtTestimonialElement extends DigitaltableteurElement {
     this.setValue("name", value);
   }
   get personTitle(): string {
-    return this.value("title");
+    return this.value("person-title");
   }
   set personTitle(value: string) {
-    this.setValue("title", value);
+    this.setValue("person-title", value);
   }
   get company(): string {
     return this.value("company");
@@ -86,7 +87,7 @@ export class DtTestimonialElement extends DigitaltableteurElement {
     const quote = this.ownerDocument.createElement("p");
     quote.className = "quote";
     quote.setAttribute("part", "quote");
-    quote.textContent = `“${this.quote}”`;
+    quote.textContent = this.quote ? `“${this.quote}”` : "";
     const footer = this.ownerDocument.createElement("footer");
     if (this.avatarUrl) {
       const avatar = this.ownerDocument.createElement("img");
@@ -105,7 +106,7 @@ export class DtTestimonialElement extends DigitaltableteurElement {
     nameRow.append(cite);
     if (this.linkedinUrl) {
       const link = this.ownerDocument.createElement("a");
-      link.href = this.linkedinUrl;
+      link.href = safeHref(this.linkedinUrl);
       link.target = "_blank";
       link.rel = "noopener noreferrer";
       const label = `View ${this.name}'s LinkedIn profile`;
@@ -120,7 +121,9 @@ export class DtTestimonialElement extends DigitaltableteurElement {
     }
     const meta = this.ownerDocument.createElement("p");
     meta.className = "meta";
-    meta.textContent = `${this.personTitle} • ${this.company}`;
+    meta.textContent = [this.personTitle, this.company]
+      .filter(Boolean)
+      .join(" • ");
     info.append(nameRow, meta);
     footer.append(info);
     blockquote.append(quote, footer);

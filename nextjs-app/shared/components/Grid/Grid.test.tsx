@@ -197,4 +197,16 @@ describe("Grid", () => {
       expect(normalizeCssValue(declarations.gap)).toBe(expectedRung.gap);
     }
   });
+
+  it("keeps the private --dt-grid-* namespace out of the global token sheet", () => {
+    // The pre-rename --grid-gap-* names collided with :root tokens in
+    // variables.css, which silently overrode per-component gaps at
+    // tablet/desktop widths. This locks the fix's premise: globals must
+    // never define the component's private custom properties.
+    const variablesCss = readFileSync(
+      join(here, "../../styles/variables.css"),
+      "utf8",
+    );
+    expect(variablesCss).not.toMatch(/--dt-grid-/);
+  });
 });

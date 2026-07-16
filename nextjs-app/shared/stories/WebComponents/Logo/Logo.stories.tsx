@@ -16,8 +16,13 @@ type Args = {
   decorative: boolean;
 };
 
-function Logo(args: Args) {
-  return <NativeElement tagName="dt-logo" attributes={args} />;
+function Logo({ title, ...rest }: Args) {
+  return (
+    <NativeElement
+      tagName="dt-logo"
+      attributes={{ ...rest, "accessible-title": title }}
+    />
+  );
 }
 
 const meta = {

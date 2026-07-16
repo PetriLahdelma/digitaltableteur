@@ -2481,7 +2481,7 @@ const elementDefinitions = [
       booleanProp("badge"),
       {
         ...stringProp("accessibleTitle", "title"),
-        attributeName: "title",
+        attributeName: "accessible-title",
       },
       booleanProp("decorative"),
     ],
@@ -2503,6 +2503,11 @@ const elementDefinitions = [
       numberProp("height"),
       booleanProp("priority"),
       stringProp("sizes"),
+      nativeProp(
+        "srcSet",
+        "string",
+        "Responsive candidate set for the native img; sizes only applies when this is present (React generates its srcset via next/image).",
+      ),
       stringProp("fit"),
       booleanProp("fluid"),
     ],
@@ -2699,7 +2704,7 @@ const elementDefinitions = [
       stringProp("name"),
       {
         ...stringProp("personTitle", "title"),
-        attributeName: "title",
+        attributeName: "person-title",
       },
       stringProp("company"),
       stringProp("linkedinUrl"),

@@ -25,7 +25,7 @@ function Testimonial(args: Args) {
         attributes={{
           quote: args.quote,
           name: args.name,
-          title: args.title,
+          "person-title": args.title,
           company: args.company,
           "linkedin-url": args.linkedinUrl,
           "avatar-url": args.avatarUrl,

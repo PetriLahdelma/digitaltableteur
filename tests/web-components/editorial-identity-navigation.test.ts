@@ -230,3 +230,217 @@ describe("native editorial, identity, and section-navigation batch", () => {
     );
   });
 });
+
+describe("editorial batch review regressions (#1228)", () => {
+  it("treats a dismissed share sheet as a no-op instead of clobbering the clipboard", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: { writeText },
+    });
+    const abort = new Error("Share canceled");
+    abort.name = "AbortError";
+    vi.spyOn(navigator, "share").mockRejectedValue(abort);
+    try {
+      const element = document.createElement(
+        "dt-social-share",
+      ) as DtSocialShareElement;
+      element.url = "https://digitaltableteur.com/article";
+      element.shareTitle = "A useful article";
+      const copied = vi.fn();
+      const errored = vi.fn();
+      element.addEventListener("link-copy", copied);
+      element.addEventListener("share-error", errored);
+      document.body.append(element);
+
+      element.shadowRoot?.querySelector<HTMLElement>("dt-button")?.click();
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      expect(writeText).not.toHaveBeenCalled();
+      expect(copied).not.toHaveBeenCalled();
+      expect(errored).not.toHaveBeenCalled();
+      expect(
+        element.shadowRoot?.querySelector("dt-toast"),
+      ).not.toHaveAttribute("open");
+    } finally {
+      delete (navigator as { clipboard?: unknown }).clipboard;
+    }
+  });
+
+  it("trims comma-separated channels and uses vowel-harmony-correct Finnish labels", () => {
+    const element = document.createElement(
+      "dt-social-share",
+    ) as DtSocialShareElement;
+    element.setAttribute("channels", "facebook, twitter");
+    element.setAttribute("lang", "fi");
+    element.url = "https://digitaltableteur.com/article";
+    document.body.append(element);
+
+    const links = element.shadowRoot?.querySelectorAll("a") ?? [];
+    expect(links).toHaveLength(2);
+    expect(links[0]).toHaveAttribute("aria-label", "Jaa Facebookissa");
+    expect(links[1]).toHaveAttribute("aria-label", "Jaa Twitterissä");
+  });
+
+  it("neutralizes unsafe hrefs across the editorial batch", () => {
+    const nav = document.createElement("dt-work-nav") as DtWorkNavElement;
+    nav.setAttribute("current-path", "/work/a");
+    nav.pages = [{ path: "/work/a" }, { path: "javascript:alert(1)" }];
+    document.body.append(nav);
+    const next = nav.shadowRoot?.querySelectorAll("dt-button")[2];
+    expect(next).toHaveAttribute("href", "#");
+
+    const author = document.createElement("dt-author") as DtAuthorElement;
+    author.name = "Petri";
+    author.profileUrl = "javascript:alert(1)";
+    document.body.append(author);
+    expect(author.shadowRoot?.querySelector("a")).toHaveAttribute("href", "#");
+
+    const card = document.createElement(
+      "dt-person-card",
+    ) as DtPersonCardElement;
+    card.setAttribute("name", "Petri");
+    card.setAttribute("linkedin-url", "javascript:alert(1)");
+    document.body.append(card);
+    expect(card.shadowRoot?.querySelector(".social a")).toHaveAttribute(
+      "href",
+      "#",
+    );
+  });
+
+  it("moves the uncontrolled section-nav optimistically when a SPA host cancels navigate", () => {
+    const nav = document.createElement("dt-work-nav") as DtWorkNavElement;
+    nav.pages = [{ path: "/" }, { path: "/work/a" }, { path: "/work/b" }];
+    document.body.append(nav); // jsdom pathname is "/"
+    nav.addEventListener("navigate", (event) => event.preventDefault());
+
+    let buttons = nav.shadowRoot?.querySelectorAll("dt-button");
+    expect(buttons?.[1]).toHaveAttribute("disabled"); // prev at list start
+    buttons?.[2]?.click(); // next -> /work/a
+
+    buttons = nav.shadowRoot?.querySelectorAll("dt-button");
+    expect(buttons?.[1]).not.toHaveAttribute("disabled");
+    expect(buttons?.[2]).toHaveAttribute("href", "/work/b");
+  });
+
+  it("re-syncs the uncontrolled section-nav from Navigation API currententrychange", () => {
+    const navigationMock = new EventTarget();
+    Object.defineProperty(window, "navigation", {
+      value: navigationMock,
+      configurable: true,
+    });
+    try {
+      const nav = document.createElement("dt-work-nav") as DtWorkNavElement;
+      nav.pages = [{ path: "/" }, { path: "/work/a" }, { path: "/work/b" }];
+      document.body.append(nav);
+
+      window.history.pushState({}, "", "/work/b");
+      navigationMock.dispatchEvent(new Event("currententrychange"));
+
+      const buttons = nav.shadowRoot?.querySelectorAll("dt-button");
+      expect(buttons?.[2]).toHaveAttribute("disabled"); // next at list end
+    } finally {
+      delete (window as Window & { navigation?: unknown }).navigation;
+      window.history.pushState({}, "", "/");
+    }
+  });
+
+  it("renders empty section-nav actions for malformed pages JSON instead of this site's articles", () => {
+    const nav = document.createElement("dt-blog-nav") as DtBlogNavElement;
+    nav.setAttribute("pages", "{not json");
+    document.body.append(nav);
+    const buttons = nav.shadowRoot?.querySelectorAll("dt-button") ?? [];
+    expect(buttons[1]).toHaveAttribute("disabled");
+    expect(buttons[2]).toHaveAttribute("disabled");
+  });
+
+  it("keeps the global title attribute out of testimonial and logo semantics", () => {
+    const testimonial = document.createElement(
+      "dt-testimonial",
+    ) as DtTestimonialElement;
+    testimonial.quote = "Great";
+    testimonial.name = "Sarah";
+    testimonial.setAttribute("person-title", "Product Manager");
+    testimonial.title = "just a tooltip";
+    document.body.append(testimonial);
+    expect(
+      testimonial.shadowRoot?.querySelector(".meta"),
+    ).toHaveTextContent(/^Product Manager$/);
+
+    const logo = document.createElement("dt-logo") as DtLogoElement;
+    logo.setAttribute("accessible-title", "Custom brand");
+    logo.title = "just a tooltip";
+    document.body.append(logo);
+    expect(logo.shadowRoot?.querySelector("svg")).toHaveAttribute(
+      "aria-label",
+      "Custom brand",
+    );
+  });
+
+  it("omits orphaned separators, bylines, and email stubs for missing data", () => {
+    const testimonial = document.createElement(
+      "dt-testimonial",
+    ) as DtTestimonialElement;
+    testimonial.name = "Sarah";
+    testimonial.company = "TechCorp";
+    document.body.append(testimonial);
+    expect(
+      testimonial.shadowRoot?.querySelector(".meta"),
+    ).toHaveTextContent(/^TechCorp$/);
+
+    const author = document.createElement("dt-author") as DtAuthorElement;
+    document.body.append(author);
+    expect(author.shadowRoot?.querySelector("p")?.textContent).toBe("");
+    author.bylinePrefix = "Kirjoittaja";
+    author.name = "Petri";
+    expect(author.shadowRoot?.querySelector("p")?.textContent).toBe(
+      "Kirjoittaja Petri",
+    );
+
+    const card = document.createElement(
+      "dt-person-card",
+    ) as DtPersonCardElement;
+    card.setAttribute("name", "Petri");
+    document.body.append(card);
+    expect(card.shadowRoot?.querySelector(".email")).toBeNull();
+  });
+
+  it("localizes the person-card skeleton and social fallbacks", () => {
+    const card = document.createElement(
+      "dt-person-card",
+    ) as DtPersonCardElement;
+    card.setAttribute("lang", "fi");
+    card.setAttribute("name", "Petri");
+    card.setAttribute("linkedin-url", "https://linkedin.com/in/petri");
+    card.loading = true;
+    document.body.append(card);
+    expect(card.shadowRoot?.querySelector('[role="status"]')).toHaveAttribute(
+      "aria-label",
+      "Ladataan henkilöä",
+    );
+
+    card.loading = false;
+    expect(card.shadowRoot?.querySelector(".social a")).toHaveAttribute(
+      "aria-label",
+      "LinkedIn-profiili",
+    );
+  });
+
+  it("applies sizes only alongside a srcset on blog media images", () => {
+    const image = document.createElement(
+      "dt-blog-media-image",
+    ) as DtBlogMediaImageElement;
+    image.src = "/cover.jpg";
+    image.alt = "Cover";
+    image.sizes = "(max-width: 768px) 100vw, 800px";
+    document.body.append(image);
+    expect(image.shadowRoot?.querySelector("img")).not.toHaveAttribute(
+      "sizes",
+    );
+
+    image.srcSet = "/cover.jpg 1x, /cover@2x.jpg 2x";
+    const img = image.shadowRoot?.querySelector("img");
+    expect(img).toHaveAttribute("srcset", "/cover.jpg 1x, /cover@2x.jpg 2x");
+    expect(img).toHaveAttribute("sizes", "(max-width: 768px) 100vw, 800px");
+  });
+});
