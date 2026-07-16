@@ -30,51 +30,51 @@ const styles = `
     grid-auto-rows: minmax(6.25rem, auto);
   }
   .responsive {
-    grid-template-columns: var(--grid-cols);
-    gap: var(--grid-gap);
+    grid-template-columns: var(--dt-grid-columns);
+    gap: var(--dt-grid-gap);
   }
   slot { display: contents; }
   @media (width >= 768px) {
     .responsive {
-      grid-template-columns: var(--grid-cols-tablet, var(--grid-cols));
-      gap: var(--grid-gap-tablet, var(--grid-gap));
+      grid-template-columns: var(--dt-grid-columns-tablet, var(--dt-grid-columns));
+      gap: var(--dt-grid-gap-tablet, var(--dt-grid-gap));
     }
   }
   @media (width >= 1024px) {
     .responsive {
       grid-template-columns: var(
-        --grid-cols-desktop,
-        var(--grid-cols-tablet, var(--grid-cols))
+        --dt-grid-columns-desktop,
+        var(--dt-grid-columns-tablet, var(--dt-grid-columns))
       );
-      gap: var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)));
+      gap: var(--dt-grid-gap-desktop, var(--dt-grid-gap-tablet, var(--dt-grid-gap)));
     }
   }
   @media (width >= 1440px) {
     .responsive {
       grid-template-columns: var(
-        --grid-cols-wide,
-        var(--grid-cols-desktop, var(--grid-cols-tablet, var(--grid-cols)))
+        --dt-grid-columns-wide,
+        var(--dt-grid-columns-desktop, var(--dt-grid-columns-tablet, var(--dt-grid-columns)))
       );
       gap: var(
-        --grid-gap-wide,
-        var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)))
+        --dt-grid-gap-wide,
+        var(--dt-grid-gap-desktop, var(--dt-grid-gap-tablet, var(--dt-grid-gap)))
       );
     }
   }
   @media (width >= 1920px) {
     .responsive {
       grid-template-columns: var(
-        --grid-cols-ultra,
+        --dt-grid-columns-ultra,
         var(
-          --grid-cols-wide,
-          var(--grid-cols-desktop, var(--grid-cols-tablet, var(--grid-cols)))
+          --dt-grid-columns-wide,
+          var(--dt-grid-columns-desktop, var(--dt-grid-columns-tablet, var(--dt-grid-columns)))
         )
       );
       gap: var(
-        --grid-gap-ultra,
+        --dt-grid-gap-ultra,
         var(
-          --grid-gap-wide,
-          var(--grid-gap-desktop, var(--grid-gap-tablet, var(--grid-gap)))
+          --dt-grid-gap-wide,
+          var(--dt-grid-gap-desktop, var(--dt-grid-gap-tablet, var(--dt-grid-gap)))
         )
       );
     }
@@ -415,41 +415,45 @@ export class DtGridElement extends DigitaltableteurElement {
 
     const columns = this.columns;
     if (this.isResponsive()) {
-      root.style.setProperty("--grid-cols", toResponsiveTemplate(columns));
+      root.style.setProperty(
+        "--dt-grid-columns",
+        toResponsiveTemplate(columns),
+      );
       if (this.tabletColumns !== undefined) {
         root.style.setProperty(
-          "--grid-cols-tablet",
+          "--dt-grid-columns-tablet",
           toResponsiveTemplate(this.tabletColumns),
         );
       }
       if (this.desktopColumns !== undefined) {
         root.style.setProperty(
-          "--grid-cols-desktop",
+          "--dt-grid-columns-desktop",
           toResponsiveTemplate(this.desktopColumns),
         );
       }
       if (this.wideColumns !== undefined) {
         root.style.setProperty(
-          "--grid-cols-wide",
+          "--dt-grid-columns-wide",
           toResponsiveTemplate(this.wideColumns),
         );
       }
       if (this.ultraColumns !== undefined) {
         root.style.setProperty(
-          "--grid-cols-ultra",
+          "--dt-grid-columns-ultra",
           toResponsiveTemplate(this.ultraColumns),
         );
       }
 
-      root.style.setProperty("--grid-gap", this.gap);
+      root.style.setProperty("--dt-grid-gap", this.gap);
       if (this.tabletGap)
-        root.style.setProperty("--grid-gap-tablet", this.tabletGap);
+        root.style.setProperty("--dt-grid-gap-tablet", this.tabletGap);
       if (this.desktopGap) {
-        root.style.setProperty("--grid-gap-desktop", this.desktopGap);
+        root.style.setProperty("--dt-grid-gap-desktop", this.desktopGap);
       }
-      if (this.wideGap) root.style.setProperty("--grid-gap-wide", this.wideGap);
+      if (this.wideGap)
+        root.style.setProperty("--dt-grid-gap-wide", this.wideGap);
       if (this.ultraGap) {
-        root.style.setProperty("--grid-gap-ultra", this.ultraGap);
+        root.style.setProperty("--dt-grid-gap-ultra", this.ultraGap);
       }
     } else {
       root.style.gridTemplateColumns = toLegacyTemplate(columns);

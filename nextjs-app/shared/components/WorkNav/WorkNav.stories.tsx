@@ -29,6 +29,19 @@ const meta: Meta<typeof WorkNav> = {
         defaultValue: { summary: "usePathname()" },
       },
     },
+    pages: {
+      description:
+        "Ordered case-study paths supplied by the host project registry. Disabled in controls because entries include both path and label metadata.",
+      table: { disable: true },
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disables every action while host navigation is pending.",
+      table: {
+        category: "Behavior",
+        defaultValue: { summary: "false" },
+      },
+    },
   },
   args: {
     currentPath: "/work/new-things-co",

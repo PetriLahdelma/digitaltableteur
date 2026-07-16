@@ -48,7 +48,7 @@ const defaultArgs = {
 const meta = {
   title: "Site/CategoryFilter",
   component: CategoryFilter,
-  tags: ["stable", "!autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",

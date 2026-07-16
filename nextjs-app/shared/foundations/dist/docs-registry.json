@@ -6137,8 +6137,16 @@
             "description": "Keep exactly one chip pressed in a single-select filter group."
           },
           {
+            "guidance": true,
+            "description": "Use FilterChip to filter a visible collection such as a work grid or blog archive."
+          },
+          {
             "guidance": false,
             "description": "Do not use FilterChip as navigation between content panels; use Tabs."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use FilterChip for multi-select token input; use MultiCombobox."
           }
         ]
       },
@@ -12202,8 +12210,20 @@
             "description": "Write the group legend as the question and keep each card title short and scannable."
           },
           {
+            "guidance": true,
+            "description": "Use single selection for a few rich exclusive options and multiple selection for independent add-ons."
+          },
+          {
+            "guidance": true,
+            "description": "For one standalone toggle outside a group, control selected and onSelectedChange directly."
+          },
+          {
             "guidance": false,
             "description": "Do not nest buttons or links inside a selectable card; use Card for action-oriented content."
+          },
+          {
+            "guidance": false,
+            "description": "For bare text options without supporting content, use RadioGroup or CheckboxGroup."
           }
         ]
       },

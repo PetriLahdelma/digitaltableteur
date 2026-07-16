@@ -27,6 +27,19 @@ const meta: Meta<typeof BlogNav> = {
         defaultValue: { summary: "usePathname()" },
       },
     },
+    pages: {
+      description:
+        "Ordered article paths supplied by the host content manifest. Disabled in controls because entries include both path and label metadata.",
+      table: { disable: true },
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disables every action while host navigation is pending.",
+      table: {
+        category: "Behavior",
+        defaultValue: { summary: "false" },
+      },
+    },
   },
   args: {
     currentPath: "/blog/digital-craftsmanship",

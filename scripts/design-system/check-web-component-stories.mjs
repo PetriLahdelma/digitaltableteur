@@ -1267,11 +1267,11 @@ try {
           responsive: root?.classList.contains("responsive"),
           base:
             root instanceof HTMLElement
-              ? root.style.getPropertyValue("--grid-cols")
+              ? root.style.getPropertyValue("--dt-grid-columns")
               : null,
           tablet:
             root instanceof HTMLElement
-              ? root.style.getPropertyValue("--grid-cols-tablet")
+              ? root.style.getPropertyValue("--dt-grid-columns-tablet")
               : null,
           span: feature.style.gridColumn,
         };

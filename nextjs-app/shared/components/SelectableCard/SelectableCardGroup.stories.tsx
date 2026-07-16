@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SelectableCard, SelectableCardGroup } from "./SelectableCard";
+import contract from "./SelectableCardGroup.contract.json";
 
 function PlanGroup({
   type = "single",
@@ -34,7 +35,12 @@ const meta = {
   title: "Layout/SelectableCardGroup",
   component: PlanGroup,
   tags: ["beta", "autodocs"],
-  parameters: { layout: "padded", a11y: { test: "error" } },
+  parameters: {
+    layout: "padded",
+    a11y: { test: "error" },
+    contractStatus: contract.status,
+    docs: { description: { component: contract.description } },
+  },
   args: { type: "single", orientation: "vertical", disabled: false },
   argTypes: {
     type: { control: "inline-radio", options: ["single", "multiple"] },
