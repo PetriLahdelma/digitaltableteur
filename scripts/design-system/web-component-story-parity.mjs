@@ -3,6 +3,7 @@ export function evaluateStoryParity({
   nativeStories,
   equivalents = [],
   exclusions = [],
+  extensions = [],
 }) {
   const react = new Set(reactStories);
   const native = new Set(nativeStories);
@@ -50,6 +51,17 @@ export function evaluateStoryParity({
     }
     reactDecisions.add(decision.react);
     if (react.has(decision.react)) covered.add(decision.react);
+  }
+
+  for (const decision of extensions) {
+    if (!native.has(decision.native)) {
+      errors.push(`extension points to missing native story "${decision.native}"`);
+    }
+    if (!decision.reason || decision.reason.trim().length < 16) {
+      errors.push(
+        `extension for "${decision.native}" needs a concrete reason (16+ characters)`,
+      );
+    }
   }
 
   const missing = reactStories.filter((story) => !covered.has(story));

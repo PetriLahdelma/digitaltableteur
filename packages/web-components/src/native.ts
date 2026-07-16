@@ -9,6 +9,9 @@ import { DtButtonGroupElement } from "./native/button-group";
 import { DtCardElement } from "./native/card";
 import { DtCenterElement } from "./native/center";
 import { DtContainerElement } from "./native/container";
+import { DtComboboxElement } from "./native/combobox";
+import { DtCommandPaletteElement } from "./native/command-palette";
+import { DtCookieConsentElement } from "./native/cookie-consent";
 import { DtDividerElement } from "./native/divider";
 import { DtDisplayElement } from "./native/display";
 import { DtEmptyStateElement } from "./native/empty-state";
@@ -19,14 +22,18 @@ import { DtGridElement } from "./native/grid";
 import { DtIconElement } from "./native/icon";
 import { DtIconButtonElement } from "./native/icon-button";
 import { DtKbdElement } from "./native/kbd";
+import { DtLanguageSwitcherElement } from "./native/language-switcher";
 import { DtLinkElement } from "./native/link";
 import { DtListElement } from "./native/list";
 import { DtMenuElement } from "./native/menu";
 import { DtModalElement } from "./native/modal";
+import { DtMultiComboboxElement } from "./native/multi-combobox";
 import { DtLabelElement } from "./native/label";
 import { DtHelperTextElement } from "./native/helper-text";
 import { DtFormFieldElement } from "./native/form-field";
 import { DtNavLinkElement } from "./native/nav-link";
+import { DtNavMenuListElement } from "./native/nav-menu-list";
+import { DtPhoneInputElement } from "./native/phone-input";
 import { DtProgressElement } from "./native/progress";
 import { DtSkipLinkElement } from "./native/skip-link";
 import { DtSpinnerElement } from "./native/spinner";
@@ -50,6 +57,8 @@ import { DtSkeletonElement } from "./native/skeleton";
 import { DtSwitchElement } from "./native/switch";
 import { DtTabsElement } from "./native/tabs";
 import { DtTooltipElement } from "./native/tooltip";
+import { DtToastElement } from "./native/toast";
+import { DtToastStackElement } from "./native/toast-stack";
 import { DtVisuallyHiddenElement } from "./native/visually-hidden";
 import { defineElementSet, type ElementDefinition } from "./registry";
 
@@ -107,6 +116,22 @@ export type {
   DtContainerSize,
   DtContainerTag,
 } from "./native/container";
+export { DtComboboxElement } from "./native/combobox";
+export type { DtComboboxOption } from "./native/combobox";
+export { DtCommandPaletteElement } from "./native/command-palette";
+export type {
+  DtCommandPaletteDismissReason,
+  DtCommandPaletteItem,
+} from "./native/command-palette";
+export { DtCookieConsentElement } from "./native/cookie-consent";
+export type {
+  DtCookieConsentCategory,
+  DtCookieConsentChangeDetail,
+  DtCookieConsentChangeType,
+  DtCookieConsentPersistence,
+  DtCookieConsentStoredState,
+  DtCookieConsentValue,
+} from "./native/cookie-consent";
 export { DtEmptyStateElement } from "./native/empty-state";
 export type {
   DtEmptyStateHeadingLevel,
@@ -142,6 +167,8 @@ export type {
 } from "./native/icon-button";
 export { DtKbdElement } from "./native/kbd";
 export type { DtKbdSize } from "./native/kbd";
+export { DtLanguageSwitcherElement } from "./native/language-switcher";
+export type { DtLanguageSwitcherOption } from "./native/language-switcher";
 export { DtLinkElement } from "./native/link";
 export type { DtLinkSize, DtLinkUnderline } from "./native/link";
 export { DtListElement } from "./native/list";
@@ -161,11 +188,23 @@ export type {
   DtModalIconSize,
   DtModalSeverity,
 } from "./native/modal";
+export { DtMultiComboboxElement } from "./native/multi-combobox";
+export type {
+  DtMultiComboboxOption,
+  DtMultiComboboxValue,
+} from "./native/multi-combobox";
 export { DtLabelElement } from "./native/label";
 export { DtHelperTextElement } from "./native/helper-text";
 export type { DtHelperTextState } from "./native/helper-text";
 export { DtFormFieldElement } from "./native/form-field";
 export { DtNavLinkElement } from "./native/nav-link";
+export { DtNavMenuListElement } from "./native/nav-menu-list";
+export type { DtNavMenuItem } from "./native/nav-menu-list";
+export { DtPhoneInputElement } from "./native/phone-input";
+export type {
+  DtPhoneInputCountry,
+  DtPhoneInputValue,
+} from "./native/phone-input";
 export { DtProgressElement } from "./native/progress";
 export type { DtProgressSize, DtProgressState } from "./native/progress";
 export { DtSpinnerElement } from "./native/spinner";
@@ -235,6 +274,19 @@ export type {
 } from "./native/tabs";
 export { DtTooltipElement } from "./native/tooltip";
 export type { DtTooltipPlacement } from "./native/tooltip";
+export { DtToastElement } from "./native/toast";
+export type {
+  DtToastPosition,
+  DtToastSize,
+  DtToastTone,
+} from "./native/toast";
+export { DtToastStackElement } from "./native/toast-stack";
+export type {
+  DtToastStackItem,
+  DtToastStackPosition,
+  DtToastStackSize,
+  DtToastStackTone,
+} from "./native/toast-stack";
 export { DtVisuallyHiddenElement } from "./native/visually-hidden";
 export type { DtVisuallyHiddenTag } from "./native/visually-hidden";
 
@@ -244,13 +296,18 @@ export const nativeElementDefinitions = [
   ["dt-icon-button", DtIconButtonElement],
   ["dt-button-group", DtButtonGroupElement],
   ["dt-filter-chip", DtFilterChipElement],
+  ["dt-command-palette", DtCommandPaletteElement],
   ["dt-link", DtLinkElement],
   ["dt-nav-link", DtNavLinkElement],
+  ["dt-nav-menu-list", DtNavMenuListElement],
+  ["dt-language-switcher", DtLanguageSwitcherElement],
   ["dt-skip-link", DtSkipLinkElement],
   ["dt-badge", DtBadgeElement],
   ["dt-avatar", DtAvatarElement],
   ["dt-avatar-group", DtAvatarGroupElement],
   ["dt-status-dot", DtStatusDotElement],
+  ["dt-toast", DtToastElement],
+  ["dt-toast-stack", DtToastStackElement],
   ["dt-divider", DtDividerElement],
   ["dt-display", DtDisplayElement],
   ["dt-spinner", DtSpinnerElement],
@@ -275,14 +332,18 @@ export const nativeElementDefinitions = [
   ["dt-form-field", DtFormFieldElement],
   ["dt-text-input", DtTextInputElement],
   ["dt-text-area", DtTextAreaElement],
+  ["dt-phone-input", DtPhoneInputElement],
   ["dt-checkbox", DtCheckboxElement],
   ["dt-checkbox-group", DtCheckboxGroupElement],
   ["dt-radio", DtRadioElement],
   ["dt-radio-group", DtRadioGroupElement],
   ["dt-select", DtSelectElement],
   ["dt-select-option", DtSelectOptionElement],
+  ["dt-combobox", DtComboboxElement],
+  ["dt-multi-combobox", DtMultiComboboxElement],
   ["dt-switch", DtSwitchElement],
   ["dt-modal", DtModalElement],
+  ["dt-cookie-consent", DtCookieConsentElement],
   ["dt-tooltip", DtTooltipElement],
   ["dt-menu", DtMenuElement],
   ["dt-split-button", DtSplitButtonElement],

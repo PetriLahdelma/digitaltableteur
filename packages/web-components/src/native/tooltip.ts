@@ -150,7 +150,10 @@ export class DtTooltipElement extends DigitaltableteurElement {
     this.cancelOpenTimer();
     this.detachTriggerListeners(this.triggerElement);
     this.restoreTriggerDescription();
+    // Null the ref after removing it so a reconnect re-appends the description
+    // element instead of leaving aria-describedby pointing at a detached node.
     this.descriptionElement?.remove();
+    this.descriptionElement = null;
     const view = this.ownerDocument.defaultView;
     view?.removeEventListener("resize", this.handleViewportChange);
     view?.removeEventListener("scroll", this.handleViewportChange, true);

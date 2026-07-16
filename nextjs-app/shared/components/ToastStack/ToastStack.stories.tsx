@@ -20,7 +20,7 @@ const seedToasts: ToastStackItem[] = [
 const meta = {
   title: "Feedback/ToastStack",
   component: ToastStack,
-  tags: ["stable", "!autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     layout: "fullscreen",
     a11y: { test: "error" },

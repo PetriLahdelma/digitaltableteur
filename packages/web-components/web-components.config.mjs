@@ -37,9 +37,14 @@ const nativeProp = (name, type, description = "", options = {}) => ({
   description,
   ...options,
 });
-const storyParity = ({ equivalents = [], exclusions = [] } = {}) => ({
+const storyParity = ({
+  equivalents = [],
+  exclusions = [],
+  extensions = [],
+} = {}) => ({
   equivalents,
   exclusions,
+  extensions,
 });
 const slot = (name, description) => ({ name, description });
 
@@ -1542,6 +1547,401 @@ export default [
         name: "expanded-change",
         description:
           "Dispatched with detail.expanded after disclosure changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-command-palette",
+    sourceComponent: "CommandPalette",
+    contract: "CommandPalette",
+    defaultBackend: "native",
+    nativeClassName: "DtCommandPaletteElement",
+    description:
+      "Modal command launcher with filtering, active-option navigation, and host-owned command execution.",
+    storyParity: storyParity(),
+    props: [
+      booleanProp("open"),
+      nativeProp("defaultOpen", "boolean"),
+      nativeProp("controlled", "boolean"),
+      {
+        ...stringProp("items"),
+        propertyType: String.raw`import("../native/command-palette").DtCommandPaletteItem[]`,
+      },
+      stringProp("label"),
+      stringProp("placeholder"),
+      stringProp("emptyText"),
+    ],
+    events: [
+      {
+        callbackProp: "onClose",
+        name: "dismiss-request",
+        description:
+          "Dispatched when Escape, the backdrop, or command selection requests dismissal.",
+      },
+      {
+        callbackProp: null,
+        name: "item-select",
+        description:
+          "Dispatched with the selected command in event.detail before dismissal is requested.",
+      },
+      {
+        callbackProp: null,
+        name: "open-change",
+        description:
+          "Dispatched with detail.open after uncontrolled visibility changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-nav-menu-list",
+    sourceComponent: "NavMenuList",
+    contract: "NavMenuList",
+    defaultBackend: "native",
+    nativeClassName: "DtNavMenuListElement",
+    description:
+      "Host-routed navigation list with exact or boundary-safe active-page matching.",
+    storyParity: storyParity({
+      exclusions: [
+        {
+          react: "Z Nav Menu List Compliance",
+          reason:
+            "React-only internal compliance fixture; native navigation behavior is enforced by the web-component DoD and browser tests.",
+        },
+      ],
+    }),
+    props: [
+      {
+        ...stringProp("items"),
+        propertyType: String.raw`import("../native/nav-menu-list").DtNavMenuItem[]`,
+      },
+      nativeProp(
+        "currentPath",
+        "string",
+        "Current host route used to derive aria-current without inspecting a framework router.",
+      ),
+    ],
+    events: [
+      {
+        callbackProp: "onNavigate",
+        name: "navigate",
+        description:
+          "Dispatched with the activated navigation item in event.detail.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-language-switcher",
+    sourceComponent: "LanguageSwitcher",
+    contract: "LanguageSwitcher",
+    defaultBackend: "native",
+    nativeClassName: "DtLanguageSwitcherElement",
+    description:
+      "Compact language chooser with host-owned locale changes and accessible disclosure behavior.",
+    storyParity: storyParity(),
+    props: [
+      {
+        ...stringProp("languages"),
+        propertyType: String.raw`import("../native/language-switcher").DtLanguageSwitcherOption[]`,
+      },
+      stringProp("currentLang"),
+      nativeProp("open", "boolean"),
+      stringProp("buttonClassName"),
+      stringProp("activeButtonClassName"),
+      stringProp("openTriggerClassName"),
+      stringProp("floatedButtonClassName"),
+      nativeProp("ariaLabel", "string"),
+    ],
+    events: [
+      {
+        callbackProp: "onLanguageChange",
+        name: "language-change",
+        description:
+          "Dispatched with detail.code after the user chooses a language.",
+      },
+      {
+        callbackProp: null,
+        name: "open-change",
+        description:
+          "Dispatched with detail.open when the language tray changes visibility.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-toast",
+    sourceComponent: "Toast",
+    contract: "Toast",
+    defaultBackend: "native",
+    nativeClassName: "DtToastElement",
+    description:
+      "Transient live-region message with semantic tone and optional auto-dismissal.",
+    storyParity: storyParity(),
+    props: [
+      booleanProp("open"),
+      stringProp("tone"),
+      stringProp("position"),
+      stringProp("size"),
+      stringProp("message"),
+      numberProp("duration"),
+      booleanProp("inline"),
+    ],
+    events: [
+      {
+        callbackProp: "onClose",
+        name: "close",
+        description:
+          "Dispatched when the auto-dismiss timer requests that the host close the toast.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-toast-stack",
+    sourceComponent: "ToastStack",
+    contract: "ToastStack",
+    defaultBackend: "native",
+    nativeClassName: "DtToastStackElement",
+    description:
+      "Docked queue of transient live-region messages with host-owned list state.",
+    storyParity: storyParity({
+      equivalents: [{ react: "ForcedColors", native: "Forced Colors" }],
+    }),
+    props: [
+      {
+        ...stringProp("toasts"),
+        propertyType: String.raw`import("../native/toast-stack").DtToastStackItem[]`,
+      },
+      stringProp("position"),
+      numberProp("max"),
+    ],
+    events: [
+      {
+        callbackProp: "onDismiss",
+        name: "dismiss",
+        description:
+          "Dispatched with detail.id when a visible toast requests dismissal.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-phone-input",
+    sourceComponent: "PhoneInput",
+    contract: "PhoneInput",
+    defaultBackend: "native",
+    nativeClassName: "DtPhoneInputElement",
+    description:
+      "Form-associated international telephone field with explicit country context.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("label"),
+      stringProp("value"),
+      nativeProp("defaultValue", "string"),
+      stringProp("error"),
+      stringProp("helperText"),
+      stringProp("placeholder"),
+      booleanProp("disabled"),
+      booleanProp("required"),
+      stringProp("id"),
+      stringProp("defaultCountry"),
+      nativeProp("country", "string"),
+      nativeProp("name", "string"),
+      nativeProp("countryLabel", "string"),
+    ],
+    events: [
+      {
+        callbackProp: "onChange",
+        name: "value-change",
+        description:
+          "Dispatched with detail.value after the telephone value changes.",
+      },
+      {
+        callbackProp: null,
+        name: "country-change",
+        description:
+          "Dispatched with detail.country after the selected country changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-combobox",
+    sourceComponent: "Combobox",
+    contract: "Combobox",
+    defaultBackend: "native",
+    nativeClassName: "DtComboboxElement",
+    description:
+      "Form-associated searchable single-select control with listbox keyboard behavior.",
+    storyParity: storyParity({
+      extensions: [
+        {
+          native: "Filtering",
+          reason:
+            "Native-only editable filtering extends the canonical button-trigger selection model and emits filter-change for host observation.",
+        },
+      ],
+    }),
+    props: [
+      stringProp("label"),
+      {
+        ...stringProp("options"),
+        propertyType: String.raw`import("../native/combobox").DtComboboxOption[]`,
+      },
+      stringProp("value"),
+      nativeProp("defaultValue", "string"),
+      stringProp("id"),
+      stringProp("placeholder"),
+      stringProp("helperText"),
+      stringProp("error"),
+      booleanProp("required"),
+      booleanProp("disabled"),
+      nativeProp("name", "string"),
+      nativeProp("noResultsText", "string"),
+      nativeProp("toggleLabel", "string"),
+    ],
+    events: [
+      {
+        callbackProp: "onValueChange",
+        name: "value-change",
+        description:
+          "Dispatched with detail.value after the selected option changes.",
+      },
+      {
+        callbackProp: null,
+        name: "filter-change",
+        description:
+          "Dispatched with detail.query as user input filters the options.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-multi-combobox",
+    sourceComponent: "MultiCombobox",
+    contract: "MultiCombobox",
+    defaultBackend: "native",
+    nativeClassName: "DtMultiComboboxElement",
+    description:
+      "Form-associated searchable multi-select with removable selections and listbox keyboard behavior.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("label"),
+      {
+        ...stringProp("options"),
+        propertyType: String.raw`import("../native/multi-combobox").DtMultiComboboxOption[]`,
+      },
+      {
+        ...stringProp("value"),
+        propertyType: "string[]",
+      },
+      {
+        ...nativeProp("defaultValue", "string"),
+        propertyType: "string[]",
+      },
+      stringProp("id"),
+      stringProp("placeholder"),
+      stringProp("helperText"),
+      stringProp("error"),
+      booleanProp("required"),
+      booleanProp("disabled"),
+      nativeProp("controlled", "boolean"),
+      nativeProp("name", "string"),
+      nativeProp("noResultsText", "string"),
+      nativeProp("toggleLabel", "string"),
+      nativeProp("removeLabelPrefix", "string"),
+      nativeProp("requiredMessage", "string"),
+    ],
+    events: [
+      {
+        callbackProp: "onValueChange",
+        name: "value-change",
+        description:
+          "Dispatched with detail.value after the selected value array changes.",
+      },
+      {
+        callbackProp: null,
+        name: "before-value-change",
+        description:
+          "Cancelable request carrying detail.value before a controlled selection changes.",
+      },
+    ],
+  },
+  {
+    tagName: "dt-cookie-consent",
+    sourceComponent: "CookieConsent",
+    contract: "CookieConsent",
+    defaultBackend: "native",
+    nativeClassName: "DtCookieConsentElement",
+    description:
+      "Consent banner and preferences dialog with host-controlled policy, persistence, and analytics boundaries.",
+    storyParity: storyParity(),
+    props: [
+      {
+        ...nativeProp("categories", "string"),
+        propertyType: String.raw`import("../native/cookie-consent").DtCookieConsentCategory[]`,
+      },
+      {
+        ...nativeProp("value", "string"),
+        propertyType: String.raw`import("../native/cookie-consent").DtCookieConsentValue`,
+      },
+      {
+        ...nativeProp("defaultValue", "string"),
+        propertyType: String.raw`import("../native/cookie-consent").DtCookieConsentValue`,
+      },
+      nativeProp("open", "boolean"),
+      nativeProp("defaultOpen", "boolean"),
+      nativeProp("autoShow", "boolean"),
+      nativeProp("controlled", "boolean"),
+      nativeProp("storageKey", "string"),
+      nativeProp("storageVersion", "number"),
+      {
+        ...nativeProp(
+          "persistence",
+          "string",
+          "Host-injected persistence adapter; not available as an HTML attribute.",
+          { propertyOnly: true },
+        ),
+        propertyType: String.raw`import("../native/cookie-consent").DtCookieConsentPersistence | null`,
+      },
+      nativeProp("bannerLabel", "string"),
+      nativeProp("summary", "string"),
+      nativeProp("readOurText", "string"),
+      nativeProp("policyLabel", "string"),
+      nativeProp("policyHref", "string"),
+      nativeProp("customizeLabel", "string"),
+      nativeProp("acceptRequiredLabel", "string"),
+      nativeProp("acceptAllLabel", "string"),
+      nativeProp("title", "string"),
+      nativeProp("description", "string"),
+      nativeProp("requiredLabel", "string"),
+      nativeProp("saveLabel", "string"),
+      nativeProp("closeLabel", "string"),
+    ],
+    events: [
+      {
+        callbackProp: null,
+        name: "before-consent-change",
+        description:
+          "Cancelable request carrying the next consent decision before persistence.",
+      },
+      {
+        callbackProp: null,
+        name: "consent-change",
+        description:
+          "Dispatched with the decision type, normalized value, and timestamp.",
+      },
+      {
+        callbackProp: null,
+        name: "value-change",
+        description:
+          "Dispatched with detail.value after the consent value changes.",
+      },
+      {
+        callbackProp: null,
+        name: "open-change",
+        description:
+          "Dispatched with detail.open and detail.reason after visibility changes.",
+      },
+      {
+        callbackProp: null,
+        name: "persistence-error",
+        description:
+          "Dispatched when an injected or explicitly configured persistence operation fails.",
       },
     ],
   },

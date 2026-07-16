@@ -6,6 +6,7 @@ import {
   reflectBooleanAttribute,
   stringAttribute,
 } from "./base";
+import { BackgroundInert } from "./overlay";
 
 const SEVERITIES = ["success", "error", "warning", "info"] as const;
 const DISMISS_REASONS = ["api", "backdrop", "close-button", "escape"] as const;
@@ -349,6 +350,7 @@ export class DtModalElement extends DigitaltableteurElement {
   private defaultAction: HTMLButtonElement | null = null;
   private previousFocus: HTMLElement | null = null;
   private previousBodyOverflow: string | null = null;
+  private readonly background = new BackgroundInert(this);
 
   connectedCallback(): void {
     if (!this.hasAttribute("open") && this.defaultOpen && !this.controlled) {
@@ -366,6 +368,7 @@ export class DtModalElement extends DigitaltableteurElement {
   disconnectedCallback(): void {
     this.detachOpenListeners();
     this.unlockScroll();
+    this.background.restore();
     super.disconnectedCallback();
   }
 
@@ -568,12 +571,17 @@ export class DtModalElement extends DigitaltableteurElement {
       active instanceof HTMLElement && !this.contains(active) ? active : null;
     this.attachOpenListeners();
     this.lockScroll();
+    // Hide sibling/background content from assistive technology while open — the
+    // keydown Tab trap alone does not stop AT virtual-cursor or programmatic focus
+    // from reaching the background (parity with the React useFocusTrap `inert`).
+    this.background.engage();
     queueMicrotask(() => this.placeInitialFocus(true));
   }
 
   private handleClose(): void {
     this.detachOpenListeners();
     this.unlockScroll();
+    this.background.restore();
     queueMicrotask(() => {
       if (this.previousFocus?.isConnected) this.previousFocus.focus();
       this.previousFocus = null;
@@ -612,8 +620,7 @@ export class DtModalElement extends DigitaltableteurElement {
 
   private allFocusableElements(): HTMLElement[] {
     const elements: HTMLElement[] = [];
-    if (this.closeButton) elements.push(this.closeButton);
-    for (const slotName of ["menu", "", "footer"] as const) {
+    const collectSlot = (slotName: "menu" | "" | "footer"): void => {
       const roots = [...this.children].filter(
         (child): child is HTMLElement =>
           child instanceof HTMLElement &&
@@ -625,7 +632,14 @@ export class DtModalElement extends DigitaltableteurElement {
         if (isFocusable(root)) elements.push(root);
         elements.push(...findFocusable(root));
       }
-    }
+    };
+    // Match flattened DOM order: the header renders the menu slot before the close
+    // button, then the body, then the footer. Ordering the trap array the same way
+    // keeps Shift+Tab from skipping menu-slot controls at the wrap boundary.
+    collectSlot("menu");
+    if (this.closeButton) elements.push(this.closeButton);
+    collectSlot("");
+    collectSlot("footer");
     if (
       this.defaultAction &&
       !hasNamedSlot(this, "footer") &&

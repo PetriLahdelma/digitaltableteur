@@ -397,3 +397,47 @@ describe("native SplitButton", () => {
     ).toBeDisabled();
   });
 });
+
+describe("native review regressions (#1224)", () => {
+  it("keeps items-API menu controls out of the native tab order", () => {
+    const menu = document.createElement("dt-menu") as DtMenuElement;
+    menu.items = [
+      { id: "edit", label: "Edit" },
+      { id: "delete", label: "Delete" },
+    ];
+    const trigger = document.createElement("button");
+    trigger.slot = "trigger";
+    trigger.textContent = "Actions";
+    menu.append(trigger);
+    document.body.append(menu);
+    trigger.click();
+
+    const items = menu.shadowRoot?.querySelectorAll<HTMLElement>(
+      '[role="menuitem"]',
+    );
+    expect(items?.length).toBeGreaterThan(0);
+    items?.forEach((item) =>
+      expect(item.getAttribute("tabindex")).toBe("-1"),
+    );
+  });
+
+  it("keeps split-button menu items out of the native tab order", () => {
+    const splitButton = document.createElement(
+      "dt-split-button",
+    ) as DtSplitButtonElement;
+    splitButton.label = "Export";
+    splitButton.options = [
+      { id: "pdf", label: "PDF" },
+      { id: "csv", label: "CSV" },
+    ];
+    document.body.append(splitButton);
+
+    const items = splitButton.shadowRoot?.querySelectorAll<HTMLElement>(
+      '[role="menuitem"]',
+    );
+    expect(items?.length).toBeGreaterThan(0);
+    items?.forEach((item) =>
+      expect(item.getAttribute("tabindex")).toBe("-1"),
+    );
+  });
+});

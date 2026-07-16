@@ -16,14 +16,16 @@ import "@digitaltableteur/tokens-css/tokens.css";
 import "@digitaltableteur/web-components/register";
 ```
 
-The default registry contains 53 native Shadow DOM custom elements:
+The default registry contains 62 native Shadow DOM custom elements:
 Accordion, AlertBanner, AspectRatio, Avatar, AvatarGroup, Badge, Button,
-ButtonGroup, Card, Center, Checkbox, CheckboxGroup, Container, Display, Divider,
-EmptyState, ExpandableSection, FilterChip, FlexBox, FormField, Grid, HelperText,
-Icon, IconButton, Kbd, Label, Link, List, Menu, Modal, NavLink, Progress, Radio,
-RadioGroup, Section, SegmentedControl, Select, SelectOption, Skeleton, SkipLink,
-Spacer, Spinner, SplitButton, Stack, StatusDot, Switch, Tabs, Text, TextArea,
-TextInput, Title, Tooltip, and VisuallyHidden.
+ButtonGroup, Card, Center, Checkbox, CheckboxGroup, Combobox, CommandPalette,
+Container, CookieConsent, Display, Divider, EmptyState, ExpandableSection,
+FilterChip, FlexBox, FormField, Grid, HelperText, Icon, IconButton, Kbd, Label,
+LanguageSwitcher, Link, List, Menu, Modal, MultiCombobox, NavLink, NavMenuList,
+PhoneInput, Progress, Radio, RadioGroup, Section, SegmentedControl, Select,
+SelectOption, Skeleton, SkipLink, Spacer, Spinner, SplitButton, Stack,
+StatusDot, Switch, Tabs, Text, TextArea, TextInput, Title, Toast, ToastStack,
+Tooltip, and VisuallyHidden.
 
 ```html
 <dt-button label="Continue" variant="primary"></dt-button>
@@ -171,6 +173,19 @@ Modal and Tooltip preserve slotted interactive content while owning overlay
 semantics, positioning, and dismissal requests. Menu, SplitButton, Tabs,
 SegmentedControl, Accordion, and ExpandableSection expose composed events so
 framework and plain-JavaScript hosts can own controlled state without adapters.
+CommandPalette, NavMenuList, and LanguageSwitcher keep routing host-owned;
+ToastStack reports dismissals without owning application state. PhoneInput,
+Combobox, and MultiCombobox participate in forms and expose typed value-change
+events. CookieConsent exposes consent decisions while leaving storage,
+analytics, and policy enforcement to the host.
+
+> **Combobox behavioral extension (native-only):** the React `Combobox` renders a
+> non-editable `role="combobox"` button (select-from-list). The native
+> `dt-combobox` deliberately extends this to an editable, filtering combobox
+> (`aria-autocomplete="list"`) that emits a `filter-change` event, matching the
+> APG editable-combobox pattern for framework-free hosts that lack a React
+> selection surface. This is an intentional superset, not a port mismatch; the
+> non-editable React behavior is still reproducible by ignoring `filter-change`.
 
 ## Legacy React adapters
 

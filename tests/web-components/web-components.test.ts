@@ -13,7 +13,10 @@ import {
   DtButtonGroupElement,
   DtCardElement,
   DtCenterElement,
+  DtComboboxElement,
+  DtCommandPaletteElement,
   DtContainerElement,
+  DtCookieConsentElement,
   DtDividerElement,
   DtDisplayElement,
   DtEmptyStateElement,
@@ -24,14 +27,18 @@ import {
   DtIconElement,
   DtIconButtonElement,
   DtKbdElement,
+  DtLanguageSwitcherElement,
   DtLinkElement,
   DtListElement,
   DtMenuElement,
   DtModalElement,
+  DtMultiComboboxElement,
   DtLabelElement,
   DtHelperTextElement,
   DtFormFieldElement,
   DtNavLinkElement,
+  DtNavMenuListElement,
+  DtPhoneInputElement,
   DtProgressElement,
   DtSkipLinkElement,
   DtSpinnerElement,
@@ -55,6 +62,8 @@ import {
   DtSwitchElement,
   DtTabsElement,
   DtTooltipElement,
+  DtToastElement,
+  DtToastStackElement,
   DtVisuallyHiddenElement,
 } from "../../packages/web-components/src/native";
 import {
@@ -69,13 +78,18 @@ const NATIVE_TAGS = [
   "dt-icon-button",
   "dt-button-group",
   "dt-filter-chip",
+  "dt-command-palette",
   "dt-link",
   "dt-nav-link",
+  "dt-nav-menu-list",
+  "dt-language-switcher",
   "dt-skip-link",
   "dt-badge",
   "dt-avatar",
   "dt-avatar-group",
   "dt-status-dot",
+  "dt-toast",
+  "dt-toast-stack",
   "dt-divider",
   "dt-display",
   "dt-spinner",
@@ -100,14 +114,18 @@ const NATIVE_TAGS = [
   "dt-form-field",
   "dt-text-input",
   "dt-text-area",
+  "dt-phone-input",
   "dt-checkbox",
   "dt-checkbox-group",
   "dt-radio",
   "dt-radio-group",
   "dt-select",
   "dt-select-option",
+  "dt-combobox",
+  "dt-multi-combobox",
   "dt-switch",
   "dt-modal",
+  "dt-cookie-consent",
   "dt-tooltip",
   "dt-menu",
   "dt-split-button",
@@ -138,13 +156,22 @@ describe("native registry", () => {
     expect(customElements.get("dt-icon-button")).toBe(DtIconButtonElement);
     expect(customElements.get("dt-button-group")).toBe(DtButtonGroupElement);
     expect(customElements.get("dt-filter-chip")).toBe(DtFilterChipElement);
+    expect(customElements.get("dt-command-palette")).toBe(
+      DtCommandPaletteElement,
+    );
     expect(customElements.get("dt-link")).toBe(DtLinkElement);
     expect(customElements.get("dt-nav-link")).toBe(DtNavLinkElement);
+    expect(customElements.get("dt-nav-menu-list")).toBe(DtNavMenuListElement);
+    expect(customElements.get("dt-language-switcher")).toBe(
+      DtLanguageSwitcherElement,
+    );
     expect(customElements.get("dt-skip-link")).toBe(DtSkipLinkElement);
     expect(customElements.get("dt-badge")).toBe(DtBadgeElement);
     expect(customElements.get("dt-avatar")).toBe(DtAvatarElement);
     expect(customElements.get("dt-avatar-group")).toBe(DtAvatarGroupElement);
     expect(customElements.get("dt-status-dot")).toBe(DtStatusDotElement);
+    expect(customElements.get("dt-toast")).toBe(DtToastElement);
+    expect(customElements.get("dt-toast-stack")).toBe(DtToastStackElement);
     expect(customElements.get("dt-divider")).toBe(DtDividerElement);
     expect(customElements.get("dt-display")).toBe(DtDisplayElement);
     expect(customElements.get("dt-spinner")).toBe(DtSpinnerElement);
@@ -169,6 +196,7 @@ describe("native registry", () => {
     expect(customElements.get("dt-form-field")).toBe(DtFormFieldElement);
     expect(customElements.get("dt-text-input")).toBe(DtTextInputElement);
     expect(customElements.get("dt-text-area")).toBe(DtTextAreaElement);
+    expect(customElements.get("dt-phone-input")).toBe(DtPhoneInputElement);
     expect(customElements.get("dt-checkbox")).toBe(DtCheckboxElement);
     expect(customElements.get("dt-checkbox-group")).toBe(
       DtCheckboxGroupElement,
@@ -177,8 +205,15 @@ describe("native registry", () => {
     expect(customElements.get("dt-radio-group")).toBe(DtRadioGroupElement);
     expect(customElements.get("dt-select")).toBe(DtSelectElement);
     expect(customElements.get("dt-select-option")).toBe(DtSelectOptionElement);
+    expect(customElements.get("dt-combobox")).toBe(DtComboboxElement);
+    expect(customElements.get("dt-multi-combobox")).toBe(
+      DtMultiComboboxElement,
+    );
     expect(customElements.get("dt-switch")).toBe(DtSwitchElement);
     expect(customElements.get("dt-modal")).toBe(DtModalElement);
+    expect(customElements.get("dt-cookie-consent")).toBe(
+      DtCookieConsentElement,
+    );
     expect(customElements.get("dt-tooltip")).toBe(DtTooltipElement);
     expect(customElements.get("dt-menu")).toBe(DtMenuElement);
     expect(customElements.get("dt-split-button")).toBe(DtSplitButtonElement);

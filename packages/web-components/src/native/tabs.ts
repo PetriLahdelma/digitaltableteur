@@ -325,7 +325,9 @@ export class DtTabsElement extends DigitaltableteurElement {
     return this.liveActiveTab ?? "";
   }
   set activeTab(value: string) {
-    reflectAttribute(this, "active-tab", value);
+    // Empty string means "no controlled selection" (parity with React's
+    // `activeTab || internalTab`); reflect it as an absent attribute.
+    reflectAttribute(this, "active-tab", value || null);
   }
 
   get defaultActiveTab(): string {
@@ -378,7 +380,7 @@ export class DtTabsElement extends DigitaltableteurElement {
   }
 
   private get isControlled(): boolean {
-    return this.hasAttribute("active-tab");
+    return (this.getAttribute("active-tab") ?? "") !== "";
   }
 
   private parseTabsAttribute(): DtTabItem[] {

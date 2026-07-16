@@ -22,6 +22,30 @@ describe("evaluateStoryParity", () => {
     expect(result.parity).toBe(0.5);
   });
 
+  it("requires native-only extensions to name a real story and rationale", () => {
+    const accepted = evaluateStoryParity({
+      reactStories: ["Default"],
+      nativeStories: ["Default", "Filtering"],
+      extensions: [
+        {
+          native: "Filtering",
+          reason: "Native hosts receive an editable filtering extension.",
+        },
+      ],
+    });
+    const rejected = evaluateStoryParity({
+      reactStories: ["Default"],
+      nativeStories: ["Default"],
+      extensions: [{ native: "Filtering", reason: "Extra" }],
+    });
+
+    expect(accepted.errors).toEqual([]);
+    expect(rejected.errors).toEqual([
+      'extension points to missing native story "Filtering"',
+      'extension for "Filtering" needs a concrete reason (16+ characters)',
+    ]);
+  });
+
   it("rejects stale, duplicate, and unexplained decisions", () => {
     const result = evaluateStoryParity({
       reactStories: ["Default", "Async"],

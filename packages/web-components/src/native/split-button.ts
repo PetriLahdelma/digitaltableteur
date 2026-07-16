@@ -336,6 +336,7 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
   private openSubmenuPath: string | null = null;
   private typeaheadBuffer = "";
   private typeaheadTimer: ReturnType<typeof setTimeout> | null = null;
+  private menuCloseTimer: ReturnType<typeof setTimeout> | null = null;
   private readonly menuId = `dt-split-button-menu-${++splitButtonIdSequence}`;
 
   connectedCallback(): void {
@@ -351,6 +352,7 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
     );
     this.removeEventListener("keydown", this.handleKeydown);
     if (this.typeaheadTimer) clearTimeout(this.typeaheadTimer);
+    if (this.menuCloseTimer) clearTimeout(this.menuCloseTimer);
     super.disconnectedCallback();
   }
 
@@ -729,6 +731,9 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
       control.className = "menuItem";
       control.setAttribute("part", "menu-item");
       control.setAttribute("role", "menuitem");
+      // Items are focused programmatically; keep them out of the native tab order
+      // so Tab exits the (non-modal) menu instead of stepping between items.
+      control.setAttribute("tabindex", "-1");
       control.setAttribute("data-menu-control", "true");
       control.setAttribute("data-menu-panel-id", panelId);
       control.setAttribute("data-menu-path", path);
@@ -816,6 +821,10 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
   private readonly handleToggleKeydown = (event: KeyboardEvent): void => {
     if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
     event.preventDefault();
+    // This listener is authoritative for toggle arrows; stop the (composed) event
+    // so the host keydown listener does not run the open-and-focus logic a second
+    // time.
+    event.stopPropagation();
     if (!this.menuOpen) this.openMenu(event.key === "ArrowUp");
     else this.focusControl(event.key === "ArrowUp" ? "last" : "first", "root");
   };
@@ -827,21 +836,9 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
   };
 
   private readonly handleKeydown = (event: KeyboardEvent): void => {
-    const fromToggle = event
-      .composedPath()
-      .some(
-        (node) =>
-          node instanceof HTMLElement && node.classList.contains("toggle"),
-      );
-    if (!this.menuOpen) {
-      if (
-        fromToggle &&
-        (event.key === "ArrowDown" || event.key === "ArrowUp")
-      ) {
-        this.handleToggleKeydown(event);
-      }
-      return;
-    }
+    // Toggle arrows are handled by the toggle's own listener (which stops
+    // propagation); the host listener only drives navigation while the menu is open.
+    if (!this.menuOpen) return;
 
     const active = this.activeControlFromEvent(event);
     const panelId = active?.getAttribute("data-menu-panel-id") || "root";
@@ -857,7 +854,11 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
     }
 
     if (event.key === "Tab") {
-      this.ownerDocument.defaultView?.setTimeout(() => this.closeMenu(), 0);
+      if (this.menuCloseTimer) clearTimeout(this.menuCloseTimer);
+      this.menuCloseTimer = setTimeout(() => {
+        this.menuCloseTimer = null;
+        this.closeMenu();
+      }, 0);
       return;
     }
 
@@ -906,6 +907,15 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
   };
 
   private render(): void {
+    // replaceShadow rebuilds the tree, so snapshot the focused control first and
+    // restore it afterward — otherwise a re-render while the menu is open (light-DOM
+    // mutation, attribute change) drops keyboard focus to <body>.
+    const activeControl = this.shadowRoot?.activeElement as HTMLElement | null;
+    const activePanelId =
+      activeControl?.getAttribute("data-menu-panel-id") ?? null;
+    const activePath = activeControl?.getAttribute("data-menu-path") ?? null;
+    const toggleWasFocused =
+      activeControl?.classList.contains("toggle") ?? false;
     const wrapper = this.ownerDocument.createElement("div");
     wrapper.className = "wrapper";
     wrapper.setAttribute("data-variant", this.variant);
@@ -974,5 +984,19 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
     wrapper.append(this.renderMenuPanel(this.options, "root", null));
 
     this.replaceShadow(styles, wrapper);
+
+    if (toggleWasFocused || (this.menuOpen && activePath !== null)) {
+      queueMicrotask(() => {
+        if (toggleWasFocused) {
+          this.shadowRoot?.querySelector<HTMLElement>(".toggle")?.focus();
+          return;
+        }
+        this.shadowRoot
+          ?.querySelector<HTMLElement>(
+            `[data-menu-panel-id="${activePanelId}"][data-menu-path="${activePath}"]`,
+          )
+          ?.focus();
+      });
+    }
   }
 }

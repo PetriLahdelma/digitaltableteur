@@ -24,7 +24,7 @@ const meta: Meta<typeof NavMenuList> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/NavMenuList",
   component: NavMenuList,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",

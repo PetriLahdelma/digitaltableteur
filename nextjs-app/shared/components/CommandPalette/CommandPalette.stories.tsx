@@ -19,7 +19,7 @@ const commands: CommandPaletteItem[] = [
 const meta = {
   title: "Navigation/CommandPalette",
   component: CommandPalette,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     layout: "fullscreen",
     a11y: { test: "error" },
