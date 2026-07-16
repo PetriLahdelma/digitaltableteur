@@ -328,7 +328,7 @@ export class DtModalElement extends DigitaltableteurElement {
     "open",
     "default-open",
     "controlled",
-    "title",
+    "dialog-title",
     "description",
     "severity",
     "loading",
@@ -407,12 +407,12 @@ export class DtModalElement extends DigitaltableteurElement {
     reflectBooleanAttribute(this, "controlled", value);
   }
 
-  get title(): string {
-    return stringAttribute(this, "title");
+  get dialogTitle(): string {
+    return stringAttribute(this, "dialog-title");
   }
 
-  set title(value: string) {
-    reflectAttribute(this, "title", value || null);
+  set dialogTitle(value: string) {
+    reflectAttribute(this, "dialog-title", value || null);
   }
 
   get description(): string {
@@ -726,7 +726,8 @@ export class DtModalElement extends DigitaltableteurElement {
         : "dialog",
     );
     panel.setAttribute("aria-modal", "true");
-    if (this.title) panel.setAttribute("aria-labelledby", this.titleId());
+    if (this.dialogTitle)
+      panel.setAttribute("aria-labelledby", this.titleId());
     else
       panel.setAttribute(
         "aria-label",
@@ -736,7 +737,7 @@ export class DtModalElement extends DigitaltableteurElement {
       panel.setAttribute("aria-describedby", this.descriptionId());
 
     const hasHeader =
-      Boolean(this.title) ||
+      Boolean(this.dialogTitle) ||
       this.showCloseIcon ||
       hasNamedSlot(this, "menu") ||
       hasNamedSlot(this, "icon") ||
@@ -764,12 +765,12 @@ export class DtModalElement extends DigitaltableteurElement {
         main.append(icon);
       }
 
-      if (this.title) {
+      if (this.dialogTitle) {
         const title = this.ownerDocument.createElement("h2");
         title.className = "title";
         title.dataset.size = this.titleSize;
         title.id = this.titleId();
-        title.textContent = this.title;
+        title.textContent = this.dialogTitle;
         main.append(title);
       }
 

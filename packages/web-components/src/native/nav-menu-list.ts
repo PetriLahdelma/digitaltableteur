@@ -10,6 +10,15 @@ export interface DtNavMenuItem {
   exact?: boolean;
 }
 
+/**
+ * Structural subset of the Navigation API — typed locally so strict builds
+ * don't depend on lib.dom shipping `Window.navigation`.
+ */
+type NavigationLike = {
+  addEventListener(type: "currententrychange", listener: () => void): void;
+  removeEventListener(type: "currententrychange", listener: () => void): void;
+};
+
 const URL_PARSE_BASE = "https://example.invalid";
 const ALLOWED_PROTOCOLS = new Set(["http:", "https:", "mailto:", "tel:"]);
 
@@ -117,9 +126,27 @@ export class DtNavMenuListElement extends DigitaltableteurElement {
 
   private assignedItems: DtNavMenuItem[] | null = null;
 
+  /**
+   * Uncontrolled-mode guess at the current path after a host-cancelled link
+   * click: SPA routers pushState without firing popstate, so until a location
+   * event confirms the change this is the only signal the element has.
+   */
+  private optimisticPath: string | null = null;
+
+  private get navigationApi(): NavigationLike | null {
+    const view = this.ownerDocument.defaultView as
+      | (Window & { navigation?: NavigationLike })
+      | null;
+    return view?.navigation ?? null;
+  }
+
   connectedCallback(): void {
     this.ownerDocument.defaultView?.addEventListener(
       "popstate",
+      this.handleLocationChange,
+    );
+    this.navigationApi?.addEventListener(
+      "currententrychange",
       this.handleLocationChange,
     );
     this.render();
@@ -130,11 +157,16 @@ export class DtNavMenuListElement extends DigitaltableteurElement {
       "popstate",
       this.handleLocationChange,
     );
+    this.navigationApi?.removeEventListener(
+      "currententrychange",
+      this.handleLocationChange,
+    );
     super.disconnectedCallback();
   }
 
   attributeChangedCallback(name: string): void {
     if (name === "items") this.assignedItems = null;
+    if (name === "current-path") this.optimisticPath = null;
     if (this.isConnected) this.render();
   }
 
@@ -155,6 +187,7 @@ export class DtNavMenuListElement extends DigitaltableteurElement {
   get currentPath(): string {
     return (
       stringAttribute(this, "current-path") ||
+      this.optimisticPath ||
       this.ownerDocument.defaultView?.location.pathname ||
       "/"
     );
@@ -165,6 +198,7 @@ export class DtNavMenuListElement extends DigitaltableteurElement {
   }
 
   private readonly handleLocationChange = (): void => {
+    this.optimisticPath = null;
     if (!this.hasAttribute("current-path")) this.render();
   };
 
@@ -220,7 +254,15 @@ export class DtNavMenuListElement extends DigitaltableteurElement {
             cancelable: true,
           }),
         );
-        if (!approved) event.preventDefault();
+        if (!approved) {
+          event.preventDefault();
+          // Host-cancelled = SPA routing; move the highlight now instead of
+          // waiting for a popstate that pushState never fires.
+          if (!this.hasAttribute("current-path")) {
+            this.optimisticPath = item.to;
+            this.render();
+          }
+        }
       });
 
       listItem.append(link);

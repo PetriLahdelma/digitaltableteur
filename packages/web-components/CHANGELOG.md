@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.7.0 - 2026-07-16
+
+- BREAKING: `dt-modal` and `dt-cookie-consent` rename their heading attribute
+  from `title` to `dialog-title` (property `dialogTitle`). `title` is the
+  global HTML tooltip attribute, so the old name let an ordinary host tooltip
+  silently replace the dialog heading, and the `title` property shadowed
+  `HTMLElement.prototype.title`. Migrate by renaming the attribute/property;
+  the React `Modal` component's `title` prop is unchanged (the React adapter
+  maps it to `dialog-title` automatically).
+- `dt-nav-menu-list` (uncontrolled mode) now keeps its active highlight in
+  sync during SPA navigation: a host-cancelled `navigate` event moves the
+  highlight optimistically to the clicked item, and the element subscribes to
+  the Navigation API `currententrychange` event where available (falling back
+  to `popstate` elsewhere). The controlled `current-path` attribute remains
+  authoritative and is unchanged.
+
 ## 0.6.0 - 2026-07-16
 
 - Adds native CommandPalette, NavMenuList, LanguageSwitcher, Toast, ToastStack,
