@@ -106,4 +106,16 @@ describe("DtTimestampElement", () => {
     expect(time).toBeEmptyDOMElement();
     expect(time).not.toHaveAttribute("datetime");
   });
+
+  it("renders an empty relative value when the reference time is invalid", () => {
+    const element = document.createElement("dt-timestamp") as DtTimestampElement;
+    element.setAttribute("value", "2026-02-19T17:00:00Z");
+    element.setAttribute("format", "relative");
+    element.setAttribute("now", "not-a-date");
+
+    expect(() => document.body.append(element)).not.toThrow();
+    const time = element.shadowRoot?.querySelector("time");
+    expect(time).toBeEmptyDOMElement();
+    expect(time).not.toHaveAttribute("datetime");
+  });
 });

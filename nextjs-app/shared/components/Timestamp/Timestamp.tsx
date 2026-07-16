@@ -170,6 +170,14 @@ export const formatTimestamp = (
   showTimezone: boolean,
   autoThreshold: number,
 ): string => {
+  if (Number.isNaN(date.getTime())) return "";
+  if (
+    (format === "auto" || format === "relative") &&
+    Number.isNaN(nowDate.getTime())
+  ) {
+    return "";
+  }
+
   const resolved: Exclude<TimestampFormat, "auto"> =
     format === "auto"
       ? Math.abs(nowDate.getTime() - date.getTime()) / 1000 < autoThreshold
@@ -257,7 +265,11 @@ export const Timestamp = React.forwardRef<HTMLTimeElement, TimestampProps>(
       return () => window.clearInterval(interval);
     }, [live, now, format]);
 
-    const isValid = !Number.isNaN(date.getTime());
+    const valueIsValid = !Number.isNaN(date.getTime());
+    const nowIsValid = !Number.isNaN(nowDate.getTime());
+    const isValid =
+      valueIsValid &&
+      (format !== "relative" && format !== "auto" ? true : nowIsValid);
     const label = isValid
       ? formatTimestamp(
           date,

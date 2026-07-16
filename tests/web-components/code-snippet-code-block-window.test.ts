@@ -1,7 +1,10 @@
 import { fireEvent, waitFor } from "@testing-library/dom";
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { DtCodeBlockWindowElement } from "../../packages/web-components/src/native/code-block-window";
-import { DtCodeSnippetElement } from "../../packages/web-components/src/native/code-snippet";
+import {
+  DtCodeSnippetElement,
+  stripCodeComments,
+} from "../../packages/web-components/src/native/code-snippet";
 
 const SNIPPET_TAG = "dt-code-snippet";
 const WINDOW_TAG = "dt-code-block-window";
@@ -63,6 +66,22 @@ function buildCodeBlock(code: string, language: string): HTMLElement {
 }
 
 describe("native code snippet and code block window", () => {
+  it("removes language comments without changing comment-like text in strings", () => {
+    const javascript = [
+      'const url = "https://example.com/path"; // remove this',
+      'const marker = "/* keep this */";',
+      "/* remove this block */",
+      "console.log(url, marker);",
+    ].join("\n");
+    const python = 'print("# keep this")  # remove this';
+
+    const strippedJavascript = stripCodeComments(javascript, "javascript");
+    expect(strippedJavascript).toContain('"https://example.com/path"');
+    expect(strippedJavascript).toContain('"/* keep this */"');
+    expect(strippedJavascript).not.toContain("remove this");
+    expect(stripCodeComments(python, "python")).toBe('print("# keep this")');
+  });
+
   it("renders multi-line snippets with line numbers, expandable content, and copy-without-comments support", async () => {
     const element = snippetElement();
     element.code = Array.from({ length: 14 }, (_, index) => `line ${index + 1}`)

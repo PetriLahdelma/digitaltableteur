@@ -184,6 +184,14 @@ export function formatTimestamp(
   showTimezone: boolean,
   autoThreshold: number,
 ): string {
+  if (Number.isNaN(date.getTime())) return "";
+  if (
+    (format === "auto" || format === "relative") &&
+    Number.isNaN(nowDate.getTime())
+  ) {
+    return "";
+  }
+
   const resolvedFormat: Exclude<DtTimestampFormat, "auto"> =
     format === "auto"
       ? Math.abs(nowDate.getTime() - date.getTime()) / 1000 < autoThreshold
@@ -382,7 +390,11 @@ export class DtTimestampElement extends DigitaltableteurElement {
       ? parseTimestampValue(this.now).date
       : new Date();
     const locale = this.locale || resolveElementLocale(this);
-    const isValid = !Number.isNaN(parsedValue.date.getTime());
+    const valueIsValid = !Number.isNaN(parsedValue.date.getTime());
+    const nowIsValid = !Number.isNaN(nowDate.getTime());
+    const isValid =
+      valueIsValid &&
+      (this.format !== "relative" && this.format !== "auto" ? true : nowIsValid);
 
     const label = isValid
       ? formatTimestamp(

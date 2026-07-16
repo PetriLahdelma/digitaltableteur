@@ -194,6 +194,54 @@ describe("DtFileUploadElement", () => {
     );
   });
 
+  it("enforces extension, exact MIME, and wildcard MIME accept tokens", () => {
+    const element = document.createElement("dt-file-upload") as DtFileUploadElement;
+    element.label = "Attachment";
+    element.uploadButtonLabel = "Choose file";
+    element.accept = ".pdf,image/*,text/csv";
+    document.body.append(element);
+
+    const rejected = new File(["notes"], "notes.txt", { type: "text/plain" });
+    const onFileChange = vi.fn();
+    element.addEventListener("file-change", onFileChange);
+    fireEvent.change(hiddenInput(element), { target: { files: [rejected] } });
+
+    expect(element.value).toBeNull();
+    expect(element.shadowRoot?.querySelector("#error")).toHaveTextContent(
+      "File type is not accepted",
+    );
+    expect(
+      (onFileChange.mock.calls[0]?.[0] as CustomEvent<DtFileUploadChangeDetail>)
+        .detail,
+    ).toMatchObject({
+      file: null,
+      source: "picker",
+      rejectedFile: rejected,
+    });
+
+    const extensionMatch = new File(["pdf"], "REPORT.PDF", { type: "" });
+    fireEvent.change(hiddenInput(element), {
+      target: { files: [extensionMatch] },
+    });
+    expect(element.value).toBe(extensionMatch);
+
+    const wildcardMatch = new File(["image"], "preview.bin", {
+      type: "image/png",
+    });
+    fireEvent.change(hiddenInput(element), {
+      target: { files: [wildcardMatch] },
+    });
+    expect(element.value).toBe(wildcardMatch);
+
+    const exactMimeMatch = new File(["csv"], "data.bin", {
+      type: "text/csv",
+    });
+    fireEvent.change(hiddenInput(element), {
+      target: { files: [exactMimeMatch] },
+    });
+    expect(element.value).toBe(exactMimeMatch);
+  });
+
   it("supports drag and drop plus clear actions without a framework runtime", async () => {
     const element = document.createElement("dt-file-upload") as DtFileUploadElement;
     element.label = "Attachment";

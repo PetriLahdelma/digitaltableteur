@@ -235,6 +235,7 @@ export class DtMacWindowFrameElement extends DigitaltableteurElement {
     "action-label",
     "body-label",
     "density",
+    "lang",
   ];
 
   private actionHandler: (() => void) | null = null;

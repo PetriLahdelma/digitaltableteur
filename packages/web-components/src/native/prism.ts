@@ -10,4 +10,4 @@ import "prismjs/components/prism-markup";
 
 // Keep Prism's side-effect grammar imports inside the package root so emitted
 // declarations never reference application source or require Prism from hosts.
-export default Prism;
+export { Prism };

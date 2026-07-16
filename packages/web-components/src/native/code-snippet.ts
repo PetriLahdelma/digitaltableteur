@@ -1,4 +1,4 @@
-import Prism from "./prism";
+import { Prism } from "./prism";
 import {
   DigitaltableteurElement,
   enumAttribute,
@@ -407,11 +407,29 @@ function highlightCode(
   return Prism.highlight(code, grammar, prismLanguage);
 }
 
-export function stripCodeComments(value: string): string {
-  return value
-    .replace(/(^|\s)\/\/.*$/gm, "")
-    .replace(/\/\*[\s\S]*?\*\//gm, "")
-    .trimEnd();
+function textWithoutCommentTokens(stream: Prism.TokenStream): string {
+  if (typeof stream === "string") return stream;
+  if (Array.isArray(stream)) {
+    return stream.map((token) => textWithoutCommentTokens(token)).join("");
+  }
+  return stream.type === "comment"
+    ? ""
+    : textWithoutCommentTokens(stream.content);
+}
+
+export function stripCodeComments(
+  value: string,
+  language: DtCodeSnippetLanguage,
+): string {
+  const prismLanguage = prismLanguageMap[language];
+  const grammar = Prism.languages[prismLanguage];
+  if (!grammar) return value;
+
+  try {
+    return textWithoutCommentTokens(Prism.tokenize(value, grammar)).trimEnd();
+  } catch {
+    return value;
+  }
 }
 
 export async function copyTextToClipboard(
@@ -654,7 +672,9 @@ export class DtCodeSnippetElement extends DigitaltableteurElement {
   private async handleCopy(copyVariant: DtCodeSnippetCopyVariant): Promise<void> {
     if (!this.allowCopy) return;
     const textToCopy =
-      copyVariant === "no-comments" ? stripCodeComments(this.code) : this.code;
+      copyVariant === "no-comments"
+        ? stripCodeComments(this.code, this.language)
+        : this.code;
 
     try {
       await copyTextToClipboard(this.ownerDocument, textToCopy);

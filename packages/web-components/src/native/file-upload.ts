@@ -21,6 +21,24 @@ export type DtFileUploadChangeDetail = {
   error?: string;
 };
 
+function fileMatchesAccept(file: File, accept: string): boolean {
+  const tokens = accept
+    .split(",")
+    .map((token) => token.trim().toLowerCase())
+    .filter(Boolean);
+  if (tokens.length === 0) return true;
+
+  const fileName = file.name.toLowerCase();
+  const mimeType = file.type.toLowerCase();
+  return tokens.some((token) => {
+    if (token.startsWith(".")) return fileName.endsWith(token);
+    if (token.endsWith("/*")) {
+      return mimeType.startsWith(`${token.slice(0, -1)}`);
+    }
+    return mimeType === token;
+  });
+}
+
 const styles = `
   :host {
     display: block;
@@ -476,6 +494,14 @@ export class DtFileUploadElement extends DigitaltableteurElement {
     });
   }
 
+  private acceptError(): string {
+    return localizedText(this, {
+      en: `File type is not accepted. Choose: ${this.accept}.`,
+      fi: `Tiedostotyyppiä ei hyväksytä. Valitse: ${this.accept}.`,
+      sv: `Filtypen accepteras inte. Välj: ${this.accept}.`,
+    });
+  }
+
   private message(id: string, text: string, error = false): HTMLElement {
     const message = this.ownerDocument.createElement("p");
     message.id = id;
@@ -567,6 +593,14 @@ export class DtFileUploadElement extends DigitaltableteurElement {
   }
 
   private acceptFile(file: File, source: DtFileUploadChangeSource): void {
+    if (this.accept && !fileMatchesAccept(file, this.accept)) {
+      if (this.hiddenInput) this.hiddenInput.value = "";
+      this.internalError = this.acceptError();
+      this.setValue(null, source, file);
+      this.focusSummaryControl();
+      return;
+    }
+
     const limit = this.maxSizeInBytes;
     if (limit && file.size > limit) {
       if (this.hiddenInput) this.hiddenInput.value = "";

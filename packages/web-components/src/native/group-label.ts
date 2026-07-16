@@ -126,6 +126,14 @@ export class DtGroupLabelElement extends DigitaltableteurElement {
 
   private associatedTarget: HTMLElement | null = null;
 
+  private ensureId(): void {
+    if (!this.id) this.id = `dt-group-label-${++generatedGroupLabelId}`;
+  }
+
+  private get hintId(): string {
+    return `${this.id}-hint`;
+  }
+
   connectedCallback(): void {
     this.render();
     this.observeLightDom(() => this.render());
@@ -288,6 +296,17 @@ export class DtGroupLabelElement extends DigitaltableteurElement {
       target.removeAttribute("aria-labelledby");
     }
 
+    const describedBy = (target.getAttribute("aria-describedby") ?? "")
+      .split(/\s+/)
+      .filter(Boolean)
+      .filter((value) => value !== this.hintId);
+
+    if (describedBy.length > 0) {
+      target.setAttribute("aria-describedby", describedBy.join(" "));
+    } else {
+      target.removeAttribute("aria-describedby");
+    }
+
     if (target === this.associatedTarget) this.associatedTarget = null;
   }
 
@@ -298,26 +317,47 @@ export class DtGroupLabelElement extends DigitaltableteurElement {
       return;
     }
 
-    if (!this.id) this.id = `dt-group-label-${++generatedGroupLabelId}`;
+    this.ensureId();
     if (this.associatedTarget && this.associatedTarget !== target) {
       this.clearAccessibleAssociation();
     }
     if (target.hasAttribute("aria-label")) {
-      this.clearAccessibleAssociation(target);
-      return;
+      const labelledBy = (target.getAttribute("aria-labelledby") ?? "")
+        .split(/\s+/)
+        .filter(Boolean)
+        .filter((value) => value !== this.id);
+      if (labelledBy.length > 0) {
+        target.setAttribute("aria-labelledby", labelledBy.join(" "));
+      } else {
+        target.removeAttribute("aria-labelledby");
+      }
+    } else {
+      const labelledBy = new Set(
+        (target.getAttribute("aria-labelledby") ?? "")
+          .split(/\s+/)
+          .filter(Boolean),
+      );
+      labelledBy.add(this.id);
+      target.setAttribute("aria-labelledby", [...labelledBy].join(" "));
     }
 
-    const labelledBy = new Set(
-      (target.getAttribute("aria-labelledby") ?? "")
+    const describedBy = new Set(
+      (target.getAttribute("aria-describedby") ?? "")
         .split(/\s+/)
-        .filter(Boolean),
+        .filter(Boolean)
+        .filter((value) => value !== this.hintId),
     );
-    labelledBy.add(this.id);
-    target.setAttribute("aria-labelledby", [...labelledBy].join(" "));
+    if (this.hint || hasNamedSlot(this, "hint")) describedBy.add(this.hintId);
+    if (describedBy.size > 0) {
+      target.setAttribute("aria-describedby", [...describedBy].join(" "));
+    } else {
+      target.removeAttribute("aria-describedby");
+    }
     this.associatedTarget = target;
   }
 
   private render(): void {
+    this.ensureId();
     const root = this.ownerDocument.createElement("div");
     root.className = "root";
     root.setAttribute("part", "root");
@@ -367,6 +407,7 @@ export class DtGroupLabelElement extends DigitaltableteurElement {
 
     if (this.hint || hasNamedSlot(this, "hint")) {
       const hint = this.ownerDocument.createElement("p");
+      hint.id = this.hintId;
       hint.className = "hint";
       hint.setAttribute("part", "hint");
       const hintSlot = this.ownerDocument.createElement("slot");

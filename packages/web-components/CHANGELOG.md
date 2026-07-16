@@ -16,6 +16,11 @@
 - Publishes every non-attribute-only prop as a Custom Elements Manifest member,
   with a package guard preventing attributes from pointing at undeclared
   fields.
+- Hardens host-data boundaries: code comment removal preserves comment-like
+  string literals, file selection enforces extension and MIME `accept` rules,
+  GroupLabel maintains its hint IDREF without removing host-owned ARIA tokens,
+  MacWindowFrame responds to live language changes, and Timestamp fails closed
+  for invalid relative reference times.
 
 Verified by `check:web-components:dod`, `check:package-release-notes`,
 `check:package-tarballs`, and `check:npm-consumer-install`.

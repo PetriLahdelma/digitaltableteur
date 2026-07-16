@@ -48,16 +48,49 @@ describe("native group label and mac window frame", () => {
 
     expect(label.id).toMatch(/^dt-group-label-/);
     expect(group.getAttribute("aria-labelledby")).toContain(label.id);
+    expect(group.getAttribute("aria-describedby")).toContain(`${label.id}-hint`);
 
     const optional = label.shadowRoot?.querySelector('[part="optional-indicator"]');
     const hint = label.shadowRoot?.querySelector('[part="hint"]');
     expect(optional).toHaveTextContent("Optional");
     expect(hint).toHaveTextContent("Used for shipping updates.");
+    expect(hint).toHaveAttribute("id", `${label.id}-hint`);
 
     label.shadowRoot
       ?.querySelector("label")
       ?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     expect(document.activeElement).toBe(street);
+  });
+
+  it("preserves unrelated accessible-description tokens when retargeted or removed", () => {
+    const first = document.createElement("div");
+    first.id = "first-group";
+    first.setAttribute("aria-describedby", "first-help");
+    const second = document.createElement("div");
+    second.id = "second-group";
+    second.setAttribute("aria-describedby", "second-help");
+    document.body.append(first, second);
+
+    const label = document.createElement(GROUP_LABEL_TAG) as DtGroupLabelElement;
+    label.htmlFor = first.id;
+    label.content = "Delivery address";
+    label.hint = "Used for shipping updates.";
+    document.body.append(label);
+
+    expect(first.getAttribute("aria-describedby")?.split(/\s+/)).toEqual([
+      "first-help",
+      `${label.id}-hint`,
+    ]);
+
+    label.htmlFor = second.id;
+    expect(first).toHaveAttribute("aria-describedby", "first-help");
+    expect(second.getAttribute("aria-describedby")?.split(/\s+/)).toEqual([
+      "second-help",
+      `${label.id}-hint`,
+    ]);
+
+    label.remove();
+    expect(second).toHaveAttribute("aria-describedby", "second-help");
   });
 
   it("keeps checkbox semantics for direct targets and prioritizes title over tooltip text", () => {
@@ -112,6 +145,15 @@ describe("native group label and mac window frame", () => {
     expect(frame.shadowRoot?.querySelector('[part="toolbar-placeholder"]')).toBeInTheDocument();
     expect(style).toContain("@media (prefers-reduced-motion: reduce)");
     expect(style).toContain("@media (forced-colors: active)");
+
+    frame.lang = "fi";
+    expect(frame.shadowRoot?.querySelector('[part="title"]')).toHaveTextContent(
+      "Varhaiset LLM:t käytössä",
+    );
+    expect(frame.shadowRoot?.querySelector('[part="body"]')).toHaveAttribute(
+      "aria-label",
+      "Ikkunan sisältö",
+    );
   });
 
   it("supports title, toolbar, and content slots and dispatches an action event without pretending to be a real window", async () => {

@@ -8,6 +8,9 @@
 - Moves inline `CodeSnippet` copy feedback into a body portal so the component
   remains valid phrasing content inside paragraphs instead of nesting Toast's
   block element inside prose and triggering hydration warnings.
+- Makes relative and automatic `Timestamp` formatting fail closed when a host
+  supplies an invalid reference time instead of throwing during render;
+  absolute formatting remains independent of the reference time.
 - Runtime public API grows additively from 126 to 128 exports; no existing
   component API changes.
 
