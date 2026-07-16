@@ -9,6 +9,7 @@
 @import url("../nextjs-app/shared/styles/variables.css");
 @import url("../nextjs-app/shared/styles/typography.css");
 @import url("../nextjs-app/shared/styles/grain.css");
+@import url("../nextjs-app/shared/styles/caseStudyPageInset.css");
 
 /* Tailwind CSS 4.x + shadcn/ui (expands to rules - must be last import) */
 @import "./tailwind.css";

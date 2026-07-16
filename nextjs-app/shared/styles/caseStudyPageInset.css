@@ -1,27 +1,29 @@
 /*
  * Horizontal inset for case study sections inside ProjectDetailLayout.
  * Matches PageLayout withMargins (--page-margin-* tokens).
- * Import into work/*.module.css and use padding-inline: var(--cs-page-inset).
+ * Imported once via app/globals.css (Turbopack drops @import inside CSS Modules,
+ * so per-module imports never reach the page); sections use
+ * padding-inline: var(--cs-page-inset).
  */
 
-.page {
+:root {
   --cs-page-inset: var(--page-margin-mobile);
 }
 
 @media (width >= 768px) {
-  .page {
+  :root {
     --cs-page-inset: var(--page-margin-tablet);
   }
 }
 
 @media (width >= 1024px) {
-  .page {
+  :root {
     --cs-page-inset: var(--page-margin-desktop);
   }
 }
 
 @media (width >= 1440px) {
-  .page {
+  :root {
     --cs-page-inset: var(--page-margin-wide);
   }
 }
