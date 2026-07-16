@@ -314,4 +314,46 @@ describe("native NavMenuList", () => {
       "page",
     );
   });
+
+  it("moves the uncontrolled highlight optimistically when a SPA host cancels navigate", () => {
+    const nav = new DtNavMenuListElement();
+    nav.items = navItems;
+    document.body.append(nav);
+    nav.addEventListener("navigate", (event) => event.preventDefault());
+
+    let links = nav.shadowRoot?.querySelectorAll<HTMLAnchorElement>("a") ?? [];
+    expect(links[0]).toHaveAttribute("aria-current", "page");
+
+    links[1]?.dispatchEvent(
+      new MouseEvent("click", { bubbles: true, cancelable: true }),
+    );
+
+    links = nav.shadowRoot?.querySelectorAll<HTMLAnchorElement>("a") ?? [];
+    expect(links[0]).not.toHaveAttribute("aria-current");
+    expect(links[1]).toHaveAttribute("aria-current", "page");
+  });
+
+  it("re-syncs the uncontrolled highlight from Navigation API currententrychange", () => {
+    const navigationMock = new EventTarget();
+    Object.defineProperty(window, "navigation", {
+      value: navigationMock,
+      configurable: true,
+    });
+    try {
+      const nav = new DtNavMenuListElement();
+      nav.items = navItems;
+      document.body.append(nav);
+
+      window.history.pushState({}, "", "/about");
+      navigationMock.dispatchEvent(new Event("currententrychange"));
+
+      const links =
+        nav.shadowRoot?.querySelectorAll<HTMLAnchorElement>("a") ?? [];
+      expect(links[0]).not.toHaveAttribute("aria-current");
+      expect(links[2]).toHaveAttribute("aria-current", "page");
+    } finally {
+      delete (window as Window & { navigation?: unknown }).navigation;
+      window.history.pushState({}, "", "/");
+    }
+  });
 });

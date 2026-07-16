@@ -455,7 +455,7 @@ export type DtModalElementContract = HTMLElement & {
   open?: boolean;
   defaultOpen?: boolean;
   controlled?: boolean;
-  title?: string;
+  dialogTitle?: string;
   description?: string;
   showFooter?: boolean;
   animation?: string;
@@ -649,7 +649,7 @@ export type DtCookieConsentElementContract = HTMLElement & {
   customizeLabel?: string;
   acceptRequiredLabel?: string;
   acceptAllLabel?: string;
-  title?: string;
+  dialogTitle?: string;
   description?: string;
   requiredLabel?: string;
   saveLabel?: string;

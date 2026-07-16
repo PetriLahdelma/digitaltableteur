@@ -221,7 +221,7 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
     "customize-label",
     "accept-required-label",
     "accept-all-label",
-    "title",
+    "dialog-title",
     "description",
     "required-label",
     "save-label",
@@ -914,7 +914,7 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
     const title = this.ownerDocument.createElement("h2");
     title.id = "consent-title";
     title.className = "title";
-    title.textContent = this.text("title", {
+    title.textContent = this.text("dialog-title", {
       en: "Cookie consent",
       fi: "Evästeiden suostumus",
       sv: "Cookiesamtycke",

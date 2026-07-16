@@ -31,7 +31,7 @@ function NativeModal(args: ModalArgs) {
       <NativeElement
         tagName="dt-modal"
         attributes={{
-          title: args.title,
+          "dialog-title": args.title,
           description: args.description,
           severity: args.severity,
           "show-close-icon": args.showCloseIcon,
@@ -69,7 +69,7 @@ function OpenableModal(args: ModalArgs & { controlled?: boolean }) {
   }, [args.controlled]);
 
   const modalAttributes = {
-    title: args.title,
+    "dialog-title": args.title,
     description: args.description,
     severity: args.severity,
     "show-close-icon": args.showCloseIcon,
@@ -154,7 +154,7 @@ export const Loading: Story = {
       <NativeElement
         tagName="dt-modal"
         attributes={{
-          title: "Saving changes",
+          "dialog-title": "Saving changes",
           loading: true,
           "show-close-icon": false,
           "default-open": true,
@@ -178,7 +178,7 @@ function severityStory(
         <NativeElement
           tagName="dt-modal"
           attributes={{
-            title,
+            "dialog-title": title,
             severity,
             "show-close-icon": true,
             "default-open": true,
@@ -224,7 +224,7 @@ export const Confirmation: Story = {
       <NativeElement
         tagName="dt-modal"
         attributes={{
-          title: "Delete this project?",
+          "dialog-title": "Delete this project?",
           description:
             "This removes the project and its history for everyone in the workspace.",
           severity: "warning",

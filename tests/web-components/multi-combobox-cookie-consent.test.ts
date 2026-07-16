@@ -525,4 +525,27 @@ describe("native review regressions (#1224/#1225)", () => {
     const input = element.shadowRoot?.querySelector<HTMLInputElement>("input");
     expect(input?.disabled).toBe(true);
   });
+
+  it("uses dialog-title for the preferences heading and ignores the global title attribute", () => {
+    const element = createCookieConsent();
+    element.setAttribute("dialog-title", "Privacy choices");
+    element.title = "hover tooltip";
+    document.body.append(element);
+    element.shadowRoot?.querySelector<HTMLButtonElement>(".customize")?.click();
+
+    expect(element.shadowRoot?.querySelector("h2")?.textContent).toBe(
+      "Privacy choices",
+    );
+  });
+
+  it("falls back to the localized heading when only a title tooltip is present", () => {
+    const element = createCookieConsent();
+    element.title = "hover tooltip";
+    document.body.append(element);
+    element.shadowRoot?.querySelector<HTMLButtonElement>(".customize")?.click();
+
+    expect(element.shadowRoot?.querySelector("h2")?.textContent).toBe(
+      "Cookie consent",
+    );
+  });
 });

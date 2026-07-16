@@ -3265,8 +3265,9 @@
               }
             },
             {
-              "name": "title",
-              "fieldName": "title",
+              "name": "dialog-title",
+              "fieldName": "dialogTitle",
+              "description": "Dialog heading; dialog-title avoids the global HTML title tooltip attribute.",
               "type": {
                 "text": "string"
               }
@@ -4857,8 +4858,9 @@
               }
             },
             {
-              "name": "title",
-              "fieldName": "title",
+              "name": "dialog-title",
+              "fieldName": "dialogTitle",
+              "description": "Preferences dialog heading; dialog-title avoids the global HTML title tooltip attribute.",
               "type": {
                 "text": "string"
               }

@@ -45,7 +45,7 @@ function nextTick() {
 describe("native modal and tooltip", () => {
   it("treats close-icon-name as data instead of executable markup", () => {
     const modal = document.createElement("dt-modal") as DtModalElement;
-    modal.title = "Safe dialog";
+    modal.dialogTitle = "Safe dialog";
     modal.showCloseIcon = true;
     modal.closeIconName = 'x\"><img src=x onerror="globalThis.injected=true">';
     modal.defaultOpen = true;
@@ -62,7 +62,7 @@ describe("native modal and tooltip", () => {
 
   it("renders modal dialog semantics and closes itself when uncontrolled", async () => {
     const modal = document.createElement("dt-modal") as DtModalElement;
-    modal.title = "Confirm changes";
+    modal.dialogTitle = "Confirm changes";
     modal.description = "Your edits will be applied immediately.";
     modal.showCloseIcon = true;
     modal.defaultOpen = true;
@@ -114,7 +114,7 @@ describe("native modal and tooltip", () => {
     const modal = document.createElement("dt-modal") as DtModalElement;
     modal.controlled = true;
     modal.open = true;
-    modal.title = "Controlled dialog";
+    modal.dialogTitle = "Controlled dialog";
     modal.showCloseIcon = true;
     document.body.append(modal);
 
@@ -144,7 +144,7 @@ describe("native modal and tooltip", () => {
     trigger.focus();
 
     const modal = document.createElement("dt-modal") as DtModalElement;
-    modal.title = "Focusable dialog";
+    modal.dialogTitle = "Focusable dialog";
     modal.showCloseIcon = true;
 
     const nameField = document.createElement("button");
@@ -266,7 +266,7 @@ describe("native review regressions (#1224)", () => {
     document.body.append(sibling);
 
     const modal = document.createElement("dt-modal") as DtModalElement;
-    modal.title = "Dialog";
+    modal.dialogTitle = "Dialog";
     modal.defaultOpen = true;
     document.body.append(modal);
 
@@ -294,5 +294,20 @@ describe("native review regressions (#1224)", () => {
     // a lingering aria-describedby would point at.
     expect(description).not.toBeNull();
     expect(description?.isConnected).toBe(true);
+  });
+
+  it("renders the heading from dialog-title and leaves the global title attribute to tooltips", () => {
+    const modal = document.createElement("dt-modal") as DtModalElement;
+    modal.dialogTitle = "Real heading";
+    modal.title = "Just a tooltip";
+    modal.defaultOpen = true;
+    document.body.append(modal);
+
+    expect(modal.shadowRoot?.querySelector("h2")?.textContent).toBe(
+      "Real heading",
+    );
+    // dialogTitle no longer shadows HTMLElement.title, so both coexist.
+    expect(modal.getAttribute("dialog-title")).toBe("Real heading");
+    expect(modal.getAttribute("title")).toBe("Just a tooltip");
   });
 });
