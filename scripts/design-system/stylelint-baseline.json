@@ -12,15 +12,6 @@
       "text": "Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)"
     },
     {
-      "id": "app/globals.css::227::21::declaration-no-important::Disallowed !important (declaration-no-important)",
-      "file": "app/globals.css",
-      "line": 227,
-      "column": 21,
-      "rule": "declaration-no-important",
-      "severity": "warning",
-      "text": "Disallowed !important (declaration-no-important)"
-    },
-    {
       "id": "app/globals.css::228::21::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "app/globals.css",
       "line": 228,
@@ -30,18 +21,27 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "app/globals.css::55::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "id": "app/globals.css::229::21::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "app/globals.css",
-      "line": 55,
+      "line": 229,
+      "column": 21,
+      "rule": "declaration-no-important",
+      "severity": "warning",
+      "text": "Disallowed !important (declaration-no-important)"
+    },
+    {
+      "id": "app/globals.css::56::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "file": "app/globals.css",
+      "line": 56,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)"
     },
     {
-      "id": "app/globals.css::76::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "id": "app/globals.css::77::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
       "file": "app/globals.css",
-      "line": 76,
+      "line": 77,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -1560,6 +1560,15 @@
       "text": "Expected \"margin\" to come before \"box-sizing\" (order/properties-order)"
     },
     {
+      "id": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/dsharpDesignSystem.module.css::17::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "file": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/dsharpDesignSystem.module.css",
+      "line": 17,
+      "column": 3,
+      "rule": "scale-unlimited/declaration-strict-value",
+      "severity": "warning",
+      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
+    },
+    {
       "id": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/dsharpDesignSystem.module.css::18::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/dsharpDesignSystem.module.css",
       "line": 18,
@@ -1569,126 +1578,117 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/dsharpDesignSystem.module.css::19::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/dsharpDesignSystem.module.css",
-      "line": 19,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::159::1::no-descending-specificity::Expected selector \".teamContent\" to come before selector \".teamSection > .teamContent\", at line 144 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::158::1::no-descending-specificity::Expected selector \".teamContent\" to come before selector \".teamSection > .teamContent\", at line 143 (no-descending-specificity)",
       "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
-      "line": 159,
+      "line": 158,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".teamContent\" to come before selector \".teamSection > .teamContent\", at line 144 (no-descending-specificity)"
+      "text": "Expected selector \".teamContent\" to come before selector \".teamSection > .teamContent\", at line 143 (no-descending-specificity)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::392::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css::391::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
-      "line": 392,
+      "line": 391,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::108::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::107::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 108,
+      "line": 107,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::176::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::175::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 176,
+      "line": 175,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::190::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::189::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 190,
+      "line": 189,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::199::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::198::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 199,
+      "line": 198,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::209::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::208::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 209,
+      "line": 208,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::218::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::217::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 218,
+      "line": 217,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::223::1::no-descending-specificity::Expected selector \".colorLabel\" to come before selector \".colorBlack .colorLabel\", at line 181 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::222::1::no-descending-specificity::Expected selector \".colorLabel\" to come before selector \".colorBlack .colorLabel\", at line 180 (no-descending-specificity)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 223,
+      "line": 222,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".colorLabel\" to come before selector \".colorBlack .colorLabel\", at line 181 (no-descending-specificity)"
+      "text": "Expected selector \".colorLabel\" to come before selector \".colorBlack .colorLabel\", at line 180 (no-descending-specificity)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::227::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::226::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 227,
+      "line": 226,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::231::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::230::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 231,
+      "line": 230,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::294::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::293::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 294,
+      "line": 293,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::304::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css::303::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/GarageJunction/garageJunction.module.css",
-      "line": 304,
+      "line": 303,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -1875,220 +1875,229 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::104::18::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::103::18::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 104,
+      "line": 103,
       "column": 18,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::109::31::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::108::31::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 109,
+      "line": 108,
       "column": 31,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::216::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::215::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 216,
+      "line": 215,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::237::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::236::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 237,
+      "line": 236,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::243::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::242::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 243,
+      "line": 242,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::336::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::335::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 336,
+      "line": 335,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::374::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::373::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 374,
+      "line": 373,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::455::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::454::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 455,
+      "line": 454,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css::100::21::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css::217::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css",
-      "line": 100,
-      "column": 21,
-      "rule": "declaration-no-important",
-      "severity": "warning",
-      "text": "Disallowed !important (declaration-no-important)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css::218::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css",
-      "line": 218,
+      "line": 217,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css::228::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css::227::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css",
-      "line": 228,
+      "line": 227,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css::99::17::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css::98::17::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css",
-      "line": 99,
+      "line": 98,
       "column": 17,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::119::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css::99::21::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "file": "nextjs-app/shared/components/pages/Work/NewThingsCo/newThingsCo.module.css",
+      "line": 99,
+      "column": 21,
+      "rule": "declaration-no-important",
+      "severity": "warning",
+      "text": "Disallowed !important (declaration-no-important)"
+    },
+    {
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::118::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 119,
+      "line": 118,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::234::3::order/properties-order::Expected \"justify-content\" to come before \"overflow\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::233::3::order/properties-order::Expected \"justify-content\" to come before \"overflow\" (order/properties-order)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 234,
+      "line": 233,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"justify-content\" to come before \"overflow\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::237::3::order/properties-order::Expected \"padding\" to come before \"border-radius\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::236::3::order/properties-order::Expected \"padding\" to come before \"border-radius\" (order/properties-order)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 237,
+      "line": 236,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"padding\" to come before \"border-radius\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::241::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::240::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 241,
+      "line": 240,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::243::3::order/properties-order::Expected \"max-height\" to come before \"aspect-ratio\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::242::3::order/properties-order::Expected \"max-height\" to come before \"aspect-ratio\" (order/properties-order)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 243,
+      "line": 242,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"max-height\" to come before \"aspect-ratio\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::247::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::246::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 247,
+      "line": 246,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::249::3::order/properties-order::Expected \"width\" to come before \"aspect-ratio\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::248::3::order/properties-order::Expected \"width\" to come before \"aspect-ratio\" (order/properties-order)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 249,
+      "line": 248,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"width\" to come before \"aspect-ratio\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::253::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::252::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 253,
+      "line": 252,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::258::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::257::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 258,
+      "line": 257,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::27::5::order/properties-order::Expected \"max-width\" to come before \"letter-spacing\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::26::5::order/properties-order::Expected \"max-width\" to come before \"letter-spacing\" (order/properties-order)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 27,
+      "line": 26,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"max-width\" to come before \"letter-spacing\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::272::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::271::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 272,
+      "line": 271,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::278::3::order/properties-order::Expected \"width\" to come before \"flex\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::277::3::order/properties-order::Expected \"width\" to come before \"flex\" (order/properties-order)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 278,
+      "line": 277,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"width\" to come before \"flex\" (order/properties-order)"
+    },
+    {
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::379::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
+      "line": 379,
+      "column": 3,
+      "rule": "scale-unlimited/declaration-strict-value",
+      "severity": "warning",
+      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
       "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::380::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
@@ -2100,9 +2109,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::381::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::384::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 381,
+      "line": 384,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2118,9 +2127,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::386::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::389::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 386,
+      "line": 389,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2136,9 +2145,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::391::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::394::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 391,
+      "line": 394,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2154,9 +2163,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::396::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::401::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 396,
+      "line": 401,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2172,9 +2181,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::403::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::406::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 403,
+      "line": 406,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2190,9 +2199,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::408::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::411::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 408,
+      "line": 411,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2208,9 +2217,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::413::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::416::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 413,
+      "line": 416,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2226,9 +2235,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::418::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::424::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 418,
+      "line": 424,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2244,9 +2253,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::426::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::429::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 426,
+      "line": 429,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2262,9 +2271,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::431::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::434::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 431,
+      "line": 434,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2280,9 +2289,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::436::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::439::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 436,
+      "line": 439,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2298,9 +2307,9 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::441::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::615::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 441,
+      "line": 615,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -2316,27 +2325,18 @@
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::617::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::633::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 617,
+      "line": 633,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::634::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
+      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::653::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 634,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)"
-    },
-    {
-      "id": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css::654::3::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
-      "file": "nextjs-app/shared/components/pages/Work/VertaaUX/vertaaux.module.css",
-      "line": 654,
+      "line": 653,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
