@@ -196,8 +196,10 @@ export const Card: React.FC<CardProps> = ({
               )}
             </div>
           )}
+          {/* || not ??: Storybook's seeded text controls pass "", and an
+              empty accessible name is never valid — fall back to the href. */}
           {effectiveLink && !title && (
-            <a href={effectiveLink} className={styles.cardLink} aria-label={linkLabel ?? effectiveLink} />
+            <a href={effectiveLink} className={styles.cardLink} aria-label={linkLabel || effectiveLink} />
           )}
         </>
       )}

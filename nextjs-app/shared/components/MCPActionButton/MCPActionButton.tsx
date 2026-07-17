@@ -132,7 +132,9 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
 
       return (
         <Button href={href} {...rest} {...commonProps}>
-          {children ?? t("mcpActionButton.label")}
+          {/* || not ??: an empty children string must not blank the button
+              label — fall back to the translated default. */}
+          {children || t("mcpActionButton.label")}
         </Button>
       );
     }
@@ -152,7 +154,9 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
 
     return (
       <Button {...rest} {...commonProps}>
-        {children ?? t("mcpActionButton.label")}
+        {/* || not ??: an empty children string must not blank the button
+            label — fall back to the translated default. */}
+        {children || t("mcpActionButton.label")}
       </Button>
     );
   };

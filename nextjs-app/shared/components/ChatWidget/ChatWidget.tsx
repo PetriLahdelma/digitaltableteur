@@ -438,9 +438,11 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     emailWorkflowReducer,
     initialEmailWorkflowState,
   );
-  const resolvedTitle = title ?? t("chatTitle", "Chat with Donny");
+  // || not ??: Storybook's seeded text controls pass "", and an empty
+  // dialog title/description is never valid — fall back to the translations.
+  const resolvedTitle = title || t("chatTitle", "Chat with Donny");
   const resolvedDescription =
-    description ?? t("chatDescription", "Brand-specific answers, no fluff.");
+    description || t("chatDescription", "Brand-specific answers, no fluff.");
   const placeholderText = t("chatPlaceholder", "Ask me anything…");
   const inputLabelText = t("chatInputLabel", "Ask Donny a question");
   const sendLabelText = t("chatSend", "Send message");

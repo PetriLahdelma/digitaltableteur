@@ -72,8 +72,10 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
     const resolvedPlaceholder =
       placeholder ??
       t("chatPlaceholder", "Ask about a project, service, or approach…");
-    const resolvedLabel = label ?? t("chatInputLabel", "Ask Donny a question");
-    const resolvedSendLabel = sendLabel ?? t("chatSend", "Send message");
+    // || not ??: Storybook's seeded text controls pass "", and an empty
+    // accessible name is never valid — fall back to the translations.
+    const resolvedLabel = label || t("chatInputLabel", "Ask Donny a question");
+    const resolvedSendLabel = sendLabel || t("chatSend", "Send message");
     // Visible label; resolvedSendLabel stays the accessible name and
     // contains it, satisfying WCAG 2.5.3 Label in Name.
     const sendButtonText = t("chatSendLabel", "Send");

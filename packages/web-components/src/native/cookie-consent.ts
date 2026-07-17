@@ -1014,7 +1014,9 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
       input.type = "checkbox";
       input.checked = this.draftValue[category.id] === true;
       input.disabled = category.required === true;
-      input.setAttribute("aria-label", category.toggleLabel ?? category.label);
+      // || not ??: an empty toggleLabel from consumer data must not blank
+      // the checkbox's accessible name — fall back to the category label.
+      input.setAttribute("aria-label", category.toggleLabel || category.label);
       input.addEventListener("change", () => {
         this.draftValue = this.normalizeValue({
           ...this.draftValue,

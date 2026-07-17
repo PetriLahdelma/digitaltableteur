@@ -17,7 +17,12 @@ const ChatToolResultSection: React.FC<ChatToolResultSectionProps> = ({
   }
 
   return (
-    <section className={styles.toolResultSection} aria-label={meta.sectionTitle ?? meta.toolLabel}>
+    <section
+      className={styles.toolResultSection}
+      /* || not ??: an empty sectionTitle must not blank the region's
+         accessible name — fall back to the tool label. */
+      aria-label={meta.sectionTitle || meta.toolLabel}
+    >
       <div className={styles.toolResultMeta}>
         <Icon name="Wrench" size="xs" decorative />
         <span className={styles.toolResultMetaLabel}>
