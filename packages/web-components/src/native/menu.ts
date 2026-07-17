@@ -59,6 +59,9 @@ const styles = `
     position: absolute;
     z-index: 6000;
     display: flex;
+    /* React's global reset makes the panel border-box, so its 11rem minimum
+       includes padding and border; shadow DOM gets no reset. */
+    box-sizing: border-box;
     min-inline-size: 11rem;
     padding: var(--space-internal-4);
     flex-direction: column;
