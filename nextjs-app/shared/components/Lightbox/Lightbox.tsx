@@ -102,7 +102,9 @@ export function Lightbox({
         className={styles.panel}
         role="dialog"
         aria-modal="true"
-        aria-label={currentImage?.alt ?? "Image gallery"}
+        /* || not ??: alt="" is a valid decorative-image value, but the
+           dialog itself must always carry an accessible name. */
+        aria-label={currentImage?.alt || "Image gallery"}
       >
         <button
           type="button"
