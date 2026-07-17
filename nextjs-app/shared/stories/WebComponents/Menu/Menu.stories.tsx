@@ -4,7 +4,6 @@ import {
   Row,
   Stage,
   Stack,
-  TriggerButton,
   assertNative,
   exampleStory,
   forcedColorsStory,
@@ -81,7 +80,11 @@ function NativeMenu(args: MenuArgs) {
           items: args.items,
         }}
       >
-        <TriggerButton slot="trigger">Actions</TriggerButton>
+        <NativeElement
+          tagName="dt-button"
+          slot="trigger"
+          attributes={{ label: "Actions" }}
+        />
       </NativeElement>
     </Stage>
   );
@@ -157,7 +160,11 @@ export const WithSubmenu: Story = {
           items: withSubmenu,
         }}
       >
-        <TriggerButton slot="trigger">Share</TriggerButton>
+        <NativeElement
+          tagName="dt-button"
+          slot="trigger"
+          attributes={{ label: "Share" }}
+        />
       </NativeElement>
     </Stage>
   ),
@@ -182,7 +189,11 @@ export const AsLinks: Story = {
           items: asLinks,
         }}
       >
-        <TriggerButton slot="trigger">Account</TriggerButton>
+        <NativeElement
+          tagName="dt-button"
+          slot="trigger"
+          attributes={{ label: "Account" }}
+        />
       </NativeElement>
     </Stage>
   ),
@@ -193,7 +204,11 @@ export const DeclarativeItems: Story = {
   render: () => (
     <Stage height="14rem">
       <NativeElement tagName="dt-menu">
-        <TriggerButton slot="trigger">Account</TriggerButton>
+        <NativeElement
+          tagName="dt-button"
+          slot="trigger"
+          attributes={{ label: "Account" }}
+        />
         <button data-id="profile" type="button">
           Profile
         </button>
@@ -216,19 +231,31 @@ export const Alignments: Story = {
             tagName="dt-menu"
             attributes={{ align: "start", items: actions }}
           >
-            <TriggerButton slot="trigger">Start</TriggerButton>
+            <NativeElement
+          tagName="dt-button"
+          slot="trigger"
+          attributes={{ label: "Start" }}
+        />
           </NativeElement>
           <NativeElement
             tagName="dt-menu"
             attributes={{ align: "center", items: actions }}
           >
-            <TriggerButton slot="trigger">Center</TriggerButton>
+            <NativeElement
+          tagName="dt-button"
+          slot="trigger"
+          attributes={{ label: "Center" }}
+        />
           </NativeElement>
           <NativeElement
             tagName="dt-menu"
             attributes={{ align: "end", items: actions }}
           >
-            <TriggerButton slot="trigger">End</TriggerButton>
+            <NativeElement
+          tagName="dt-button"
+          slot="trigger"
+          attributes={{ label: "End" }}
+        />
           </NativeElement>
         </Row>
       </Stack>
@@ -241,7 +268,11 @@ export const Example: Story = {
   render: () => (
     <Stage height="17rem">
       <NativeElement tagName="dt-menu" attributes={{ items: withIcons }}>
-        <TriggerButton slot="trigger">File</TriggerButton>
+        <NativeElement
+          tagName="dt-button"
+          slot="trigger"
+          attributes={{ label: "File" }}
+        />
       </NativeElement>
     </Stage>
   ),

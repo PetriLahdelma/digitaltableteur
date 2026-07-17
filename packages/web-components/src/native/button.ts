@@ -106,6 +106,9 @@ export class DtButtonElement extends DigitaltableteurElement {
     "accessible-name",
     "accessible-name-ref",
     "accessible-description",
+    "aria-haspopup",
+    "aria-expanded",
+    "aria-controls",
     "tooltip",
     "href",
     "target",
@@ -332,6 +335,17 @@ export class DtButtonElement extends DigitaltableteurElement {
       this.getAttribute("aria-label") ||
       "";
     if (ariaLabel) control.setAttribute("aria-label", ariaLabel);
+    // Menu-style composers (dt-menu, Radix asChild) write popup state onto
+    // the slotted trigger element; mirror it onto the real control so AT
+    // hears it where focus actually lands.
+    for (const stateAttribute of [
+      "aria-haspopup",
+      "aria-expanded",
+      "aria-controls",
+    ] as const) {
+      const value = this.getAttribute(stateAttribute);
+      if (value !== null) control.setAttribute(stateAttribute, value);
+    }
     const referencedName = this.referencedText(this.accessibleNameRef);
     if (referencedName) {
       control.setAttribute("aria-labelledby", "accessible-name-ref");

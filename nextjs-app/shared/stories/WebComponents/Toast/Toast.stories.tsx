@@ -7,7 +7,12 @@ import {
   type DtToastTone,
 } from "../../../../../packages/web-components/src/native/toast";
 import { DtToastStackElement } from "../../../../../packages/web-components/src/native/toast-stack";
-import { assertNative, nativeStoryParameters } from "../NativeStory";
+import {
+  NativeElement,
+  Row,
+  assertNative,
+  nativeStoryParameters,
+} from "../NativeStory";
 
 if (!customElements.get("dt-toast")) {
   customElements.define("dt-toast", DtToastElement);
@@ -74,9 +79,11 @@ function DefaultDemo() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)}>
-        Show Toast
-      </button>
+      <NativeElement
+        tagName="dt-button"
+        attributes={{ label: "Show Toast" }}
+        onClick={() => setOpen(true)}
+      />
       <NativeToast
         {...baseArgs}
         message="Toast notification!"
@@ -130,7 +137,7 @@ export const Default: Story = {
   render: () => <DefaultDemo />,
   play: async ({ canvasElement }) => {
     await assertNative("dt-toast")({ canvasElement });
-    const button = canvasElement.querySelector<HTMLButtonElement>("button");
+    const button = canvasElement.querySelector<HTMLElement>("dt-button");
     await userEvent.click(button!);
     await waitFor(() => {
       const toast = canvasElement.querySelector<DtToastElement>("dt-toast");
@@ -154,11 +161,16 @@ export const Tones: Story = {
     };
     return (
       <>
-        {(Object.keys(messages) as DtToastTone[]).map((value) => (
-          <button key={value} type="button" onClick={() => setTone(value)}>
-            {value}
-          </button>
-        ))}
+        <Row>
+          {(Object.keys(messages) as DtToastTone[]).map((value) => (
+            <NativeElement
+              key={value}
+              tagName="dt-button"
+              attributes={{ label: value, variant: "secondary", size: "sm" }}
+              onClick={() => setTone(value)}
+            />
+          ))}
+        </Row>
         <NativeToast
           {...baseArgs}
           duration={60_000}
@@ -189,11 +201,16 @@ export const Placement: Story = {
     const [position, setPosition] = useState<DtToastPosition | null>(null);
     return (
       <>
-        {positions.map((value) => (
-          <button key={value} type="button" onClick={() => setPosition(value)}>
-            {value}
-          </button>
-        ))}
+        <Row>
+          {positions.map((value) => (
+            <NativeElement
+              key={value}
+              tagName="dt-button"
+              attributes={{ label: value, variant: "secondary", size: "sm" }}
+              onClick={() => setPosition(value)}
+            />
+          ))}
+        </Row>
         <NativeToast
           {...baseArgs}
           duration={60_000}
@@ -214,9 +231,11 @@ export const ProviderDriven: Story = {
     const [open, setOpen] = useState(false);
     return (
       <>
-        <button type="button" onClick={() => setOpen(true)}>
-          Save settings
-        </button>
+        <NativeElement
+          tagName="dt-button"
+          attributes={{ label: "Save settings" }}
+          onClick={() => setOpen(true)}
+        />
         <NativeToast
           {...baseArgs}
           duration={4000}
