@@ -1445,7 +1445,15 @@ const elementDefinitions = [
     nativeClassName: "DtMenuElement",
     description:
       "Menu-button primitive with roving focus, typeahead, and dismissal behavior.",
-    storyParity: storyParity(),
+    storyParity: storyParity({
+      extensions: [
+        {
+          native: "Declarative Items",
+          reason:
+            "Native-only slotted light-DOM items API; the React equivalent is ordinary JSX children, which every React story already demonstrates.",
+        },
+      ],
+    }),
     props: [
       stringProp("side"),
       stringProp("align"),

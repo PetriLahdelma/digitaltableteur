@@ -19,31 +19,36 @@ import Icon from "@dt/Icon";
 const contentPresets = {
   actions: (
     <>
-      <MenuItem onSelect={() => {}}>Edit</MenuItem>
+      <MenuItem meta="⌘E" onSelect={() => {}}>
+        Edit
+      </MenuItem>
       <MenuItem onSelect={() => {}}>Duplicate</MenuItem>
       <MenuSeparator />
-      <MenuItem onSelect={() => {}}>Delete</MenuItem>
+      <MenuItem tone="destructive" onSelect={() => {}}>
+        Delete
+      </MenuItem>
     </>
   ),
   withIcons: (
     <>
       <MenuItem
         icon={<Icon name="pencil" ariaLabel="" size="sm" />}
-        trailing="⌘E"
+        meta="⌘E"
         onSelect={() => {}}
       >
         Edit
       </MenuItem>
       <MenuItem
         icon={<Icon name="copy-simple" ariaLabel="" size="sm" />}
-        trailing="⌘D"
+        meta="⌘D"
         onSelect={() => {}}
       >
         Duplicate
       </MenuItem>
       <MenuSeparator />
       <MenuItem
-        icon={<Icon name="x-circle" ariaLabel="" size="sm" />}
+        icon={<Icon name="trash" ariaLabel="" size="sm" />}
+        tone="destructive"
         onSelect={() => {}}
       >
         Delete
@@ -152,7 +157,7 @@ export const WithIcons: Story = {
     docs: {
       description: {
         story:
-          "Each item's glyph goes in the icon slot (a fixed 1.25rem gutter) so labels line up in a column. The trailing slot carries a muted shortcut hint or metadata.",
+          "Each item's glyph goes in the icon slot (a fixed 1.25rem gutter) so labels line up in a column. The meta slot carries a muted shortcut hint or metadata, and destructive actions take tone=\"destructive\".",
       },
     },
   },
@@ -164,21 +169,22 @@ export const WithIcons: Story = {
       <MenuContent>
         <MenuItem
           icon={<Icon name="pencil" ariaLabel="" size="sm" />}
-          trailing="⌘E"
+          meta="⌘E"
           onSelect={() => {}}
         >
           Edit
         </MenuItem>
         <MenuItem
           icon={<Icon name="copy-simple" ariaLabel="" size="sm" />}
-          trailing="⌘D"
+          meta="⌘D"
           onSelect={() => {}}
         >
           Duplicate
         </MenuItem>
         <MenuSeparator />
         <MenuItem
-          icon={<Icon name="x-circle" ariaLabel="" size="sm" />}
+          icon={<Icon name="trash" ariaLabel="" size="sm" />}
+          tone="destructive"
           onSelect={() => {}}
         >
           Delete
@@ -250,6 +256,42 @@ export const Disabled: Story = {
         <MenuItem onSelect={() => {}}>Delete</MenuItem>
       </MenuContent>
     </Menu>
+  ),
+};
+
+/** Panel alignment relative to the trigger; flips automatically when out of room. */
+export const Alignments: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "MenuContent aligns its panel to the trigger via align (start, center, end); collision-aware positioning flips it when there is no room.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: "flex", gap: "1rem" }}>
+      <Menu>
+        <MenuTrigger asChild>
+          <Button variant="secondary">Start</Button>
+        </MenuTrigger>
+        <MenuContent align="start">{contentPresets.actions}</MenuContent>
+      </Menu>
+      <Menu>
+        <MenuTrigger asChild>
+          <Button variant="secondary">Center</Button>
+        </MenuTrigger>
+        <MenuContent align="center">{contentPresets.actions}</MenuContent>
+      </Menu>
+      <Menu>
+        <MenuTrigger asChild>
+          <Button variant="secondary">End</Button>
+        </MenuTrigger>
+        <MenuContent align="end">{contentPresets.actions}</MenuContent>
+      </Menu>
+    </div>
   ),
 };
 

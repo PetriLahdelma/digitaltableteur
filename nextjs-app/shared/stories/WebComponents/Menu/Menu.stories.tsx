@@ -24,17 +24,17 @@ type MenuArgs = {
 };
 
 const actions = JSON.stringify([
-  { id: "edit", label: "Edit" },
+  { id: "edit", label: "Edit", meta: "⌘E" },
   { id: "duplicate", label: "Duplicate" },
   { separator: true },
-  { id: "delete", label: "Delete" },
+  { id: "delete", label: "Delete", tone: "destructive" },
 ]);
 
 const withIcons = JSON.stringify([
-  { id: "edit", label: "Edit", icon: "pencil", trailing: "⌘E" },
-  { id: "duplicate", label: "Duplicate", icon: "copy-simple", trailing: "⌘D" },
+  { id: "edit", label: "Edit", icon: "pencil", meta: "⌘E" },
+  { id: "duplicate", label: "Duplicate", icon: "copy-simple", meta: "⌘D" },
   { separator: true },
-  { id: "delete", label: "Delete", icon: "x-circle" },
+  { id: "delete", label: "Delete", icon: "trash", tone: "destructive" },
 ]);
 
 const withSubmenu = JSON.stringify([

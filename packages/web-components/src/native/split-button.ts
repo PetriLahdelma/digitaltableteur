@@ -218,6 +218,12 @@ const styles = `
   .menuItem {
     display: flex;
     padding: 0;
+    /* The control is a flex child of .menuWrap: without an explicit fill it
+       hugs its content and the row highlight shrinks with it (regressed
+       twice; first fixed in #1230). */
+    flex: 1 1 auto;
+    inline-size: 100%;
+    min-inline-size: 0;
     border: none;
     border-radius: var(--radius-md);
     outline: none;
