@@ -132,6 +132,7 @@ const NATIVE_TAGS = [
   "dt-text",
   "dt-title",
   "dt-list",
+  "dt-list-item",
   "dt-kbd",
   "dt-code-snippet",
   "dt-code-block-window",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T17:36:39.943Z",
+  "generatedAt": "2026-07-17T11:23:39.059Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -966,8 +966,8 @@
         "TextInput",
         "Link",
         "Text",
-        "Button",
         "Icon",
+        "Button",
         "Checkbox"
       ],
       "prefersOver": [],
@@ -5006,9 +5006,9 @@
       "composesWith": [
         "Button",
         "Text",
+        "Badge",
         "Title",
         "ComplianceCard",
-        "Badge",
         "Card"
       ],
       "prefersOver": [],
@@ -5273,7 +5273,11 @@
         "use Kbd as a button; it never receives focus or handles clicks.",
         "put whole phrases inside one Kbd; one key (or chord symbol) per cap."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Badge",
+        "StatusDot",
+        "Icon"
+      ],
       "prefersOver": [],
       "declaredPropCount": 1
     },
@@ -5736,6 +5740,101 @@
         "Text",
         "Title"
       ],
+      "prefersOver": [],
+      "declaredPropCount": 9
+    },
+    "ListItem": {
+      "preferredImport": "@dt/ListItem",
+      "intent": "Presentational row primitive for menus, selects, comboboxes, command palettes, and generic lists. ListItem renders the visual anatomy — a leading icon, a truncating label, end-aligned meta, a trailing icon, and a select…",
+      "props": {
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode",
+          "description": "Primary label. Truncates with an ellipsis; never wraps."
+        },
+        "icon": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "Leading icon node; rendered in a fixed gutter so labels column-align."
+        },
+        "meta": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "End-aligned secondary content: muted small text, Badge, Kbd, StatusDot, or a value. Exposed to AT."
+        },
+        "trailingIcon": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "Trailing icon after meta (chevron, external-link). Decorative."
+        },
+        "selected": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Renders the check indicator in the trailing position. Visual only; semantic selection belongs to the consumer."
+        },
+        "tone": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "neutral",
+            "destructive"
+          ],
+          "description": "Destructive rows (deletions) use the error color treatment."
+        },
+        "disabled": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Visual disabled treatment via the canonical disabled tokens. The consumer carries aria-disabled."
+        },
+        "highlighted": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Parent-driven active row (combobox/palette). Radix menus work without it via [data-highlighted]."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "propRelationships": [],
+      "variants": {
+        "tone": {
+          "values": [
+            "neutral",
+            "destructive"
+          ],
+          "default": "neutral"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "wrap ListItem in the element that owns interaction (Radix",
+        "use `meta` for content the user needs (a `Kbd` shortcut, a",
+        "pair `disabled` with `aria-disabled` on the wrapper — the token swap"
+      ],
+      "avoidWhen": [
+        "add `role`, `tabIndex`, or `onClick` directly to ListItem — that",
+        "treat `selected`/`highlighted` as a substitute for real ARIA state"
+      ],
+      "requiredA11y": [
+        "No own ARIA — the interactive wrapper (Radix Item, button, li, option) owns role, aria-selected/aria-checked, and aria-disabled.",
+        "meta is exposed to assistive tech (no aria-hidden); icon, trailingIcon, and the selected check are decorative (aria-hidden)."
+      ],
+      "keyboard": [],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "add `role`, `tabIndex`, or `onClick` directly to ListItem — that",
+        "treat `selected`/`highlighted` as a substitute for real ARIA state"
+      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 9
     },
@@ -9610,7 +9709,11 @@
         "use StatusDot for counts or removable chips — Badge owns those.",
         "rely on the color alone to convey state."
       ],
-      "composesWith": [],
+      "composesWith": [
+        "Icon",
+        "Badge",
+        "Kbd"
+      ],
       "prefersOver": [],
       "declaredPropCount": 5
     },

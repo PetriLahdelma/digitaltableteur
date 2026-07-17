@@ -34,6 +34,7 @@ import { DtKbdElement } from "./native/kbd";
 import { DtLanguageSwitcherElement } from "./native/language-switcher";
 import { DtLinkElement } from "./native/link";
 import { DtListElement } from "./native/list";
+import { DtListItemElement } from "./native/list-item";
 import { DtLogoElement } from "./native/logo";
 import { DtMacWindowFrameElement } from "./native/mac-window-frame";
 import { DtMenuElement } from "./native/menu";
@@ -229,6 +230,8 @@ export type {
   DtListStyleType,
   DtListTag,
 } from "./native/list";
+export { DtListItemElement } from "./native/list-item";
+export type { DtListItemTone } from "./native/list-item";
 export { DtLogoElement } from "./native/logo";
 export { DtMacWindowFrameElement } from "./native/mac-window-frame";
 export type { DtMacWindowFrameDensity } from "./native/mac-window-frame";
@@ -419,6 +422,7 @@ export const nativeElementDefinitions = [
   ["dt-text", DtTextElement],
   ["dt-title", DtTitleElement],
   ["dt-list", DtListElement],
+  ["dt-list-item", DtListItemElement],
   ["dt-kbd", DtKbdElement],
   ["dt-code-snippet", DtCodeSnippetElement],
   ["dt-code-block-window", DtCodeBlockWindowElement],

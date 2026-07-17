@@ -5198,6 +5198,153 @@
         },
         {
           "kind": "class",
+          "name": "DtListItemElement",
+          "description": "Presentational row: leading icon, truncating label, end-aligned meta, trailing icon, selection check, destructive tone.",
+          "customElement": true,
+          "tagName": "dt-list-item",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "meta",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "trailingIcon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "highlighted",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Primary label (overrides the label attribute)."
+            },
+            {
+              "name": "icon",
+              "description": "Leading icon (overrides the icon attribute)."
+            },
+            {
+              "name": "meta",
+              "description": "End-aligned secondary content (overrides the meta attribute)."
+            },
+            {
+              "name": "trailing-icon",
+              "description": "Trailing icon (overrides the trailing-icon attribute)."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "meta",
+              "fieldName": "meta",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "trailing-icon",
+              "fieldName": "trailingIcon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tone",
+              "fieldName": "tone",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "selected",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "highlighted",
+              "fieldName": "highlighted",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "ListItem",
+          "dtBackend": "native",
+          "dtContractStatus": "beta",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
           "name": "DtSkeletonElement",
           "description": "Motion-aware loading placeholder for text, media, avatars, and cards.",
           "customElement": true,
