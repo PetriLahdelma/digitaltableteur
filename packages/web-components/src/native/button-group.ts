@@ -8,7 +8,11 @@ const styles = `
   :host { display: inline-flex; }
   .group { display: inline-flex; align-items: stretch; }
   .spaced { gap: var(--space-internal-8); }
-  ::slotted([data-dt-group-position]:not([data-dt-group-position="first"])) { margin-inline-start: -1px; }
+  /* !important: on pages with a global reset the normal ::slotted declaration
+     loses to the outer document context (same trap as dt-menu, #1237) and the
+     attached buttons render a 2px double-border seam instead of collapsing
+     to 1px. Verified: the normal declaration computes to 0 in Storybook. */
+  ::slotted([data-dt-group-position]:not([data-dt-group-position="first"])) { margin-inline-start: -1px !important; }
 `;
 
 export class DtButtonGroupElement extends DigitaltableteurElement {
