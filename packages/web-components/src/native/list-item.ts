@@ -15,9 +15,19 @@ export type DtListItemTone = (typeof TONES)[number];
  * Shadow styles mirror ListItem.module.css 1:1 (class-based tone/highlighted/
  * disabled selectors on .root, same as the React `cx(...)` composition), with
  * two additions the shadow tree needs that the light-DOM module doesn't:
- * box-sizing (no global reset reaches into shadow DOM) and `dt-icon`/
- * `::slotted(*)` sizing so slotted icon overrides clamp the same as the
- * synthesized `dt-icon` fallback.
+ * box-sizing (no global reset reaches into shadow DOM) and icon glyph sizing.
+ * The React module clamps a nested `<svg>` directly (`.icon svg { ... }`),
+ * leaving Icon's own 24px `.base` wrapper span untouched — React's `.icon`/
+ * `.trailingIcon` flex-basis (1.25rem/auto) loses to that wrapper's larger
+ * min-content size, so the *rendered* icon box is 24px with the clamped svg
+ * centered inside it, not the 20px the authored CSS implies. The synthesized
+ * `dt-icon` glyph is itself a shadow host whose `.root` (part="root") is the
+ * same-purpose 24px centering wrapper as Icon's `.base`; clamping `::part(svg)`
+ * (dt-icon's inner `<svg>`, not `.root`) reproduces the identical two-box
+ * geometry instead of shrinking the whole wrapper and losing the centering
+ * inset. Slotted consumer icons (real light-DOM children) clamp directly via
+ * `::slotted(*)`, matching how a bare consumer-supplied `<svg>` would clamp
+ * in the React module.
  */
 const styles = `
   :host { display: block; }
@@ -52,7 +62,7 @@ const styles = `
     line-height: 1;
     color: var(--color-primary, LinkText);
   }
-  .icon dt-icon,
+  .icon dt-icon::part(svg),
   .icon ::slotted(*) {
     inline-size: 1rem;
     block-size: 1rem;
@@ -70,6 +80,7 @@ const styles = `
     align-items: center;
     gap: var(--space-internal-4, 0.25rem);
     font-size: var(--font-size-text-xs, 0.75rem);
+    line-height: 1;
     color: var(--color-muted, GrayText);
   }
   .trailingIcon {
@@ -81,7 +92,7 @@ const styles = `
   .meta ~ .trailingIcon {
     margin-inline-start: 0;
   }
-  .trailingIcon dt-icon,
+  .trailingIcon dt-icon::part(svg),
   .trailingIcon ::slotted(*) {
     inline-size: 0.875rem;
     block-size: 0.875rem;

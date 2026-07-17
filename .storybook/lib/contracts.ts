@@ -163,6 +163,7 @@ export const titleByComponentName: Record<string, string> = {
   Text: "Content/Text",
   Title: "Content/Title",
   List: "Content/List",
+  ListItem: "Content/ListItem",
   Timestamp: "Content/Timestamp",
   AlertBanner: "Feedback/AlertBanner",
   Modal: "Feedback/Modal",
