@@ -61,23 +61,28 @@
     "props": {
         "tags": {
             "optional": false,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "Array of unique tags"
         },
         "selectedTag": {
             "optional": false,
-            "type": "string | null"
+            "type": "string | null",
+            "description": "Currently selected tag (null means \"All\")"
         },
         "onTagChange": {
             "optional": false,
-            "type": "(tag: string | null) => void"
+            "type": "(tag: string | null) => void",
+            "description": "Callback when tag selection changes"
         },
         "showCounts": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show post counts per tag"
         },
         "tagCounts": {
             "optional": true,
-            "type": "Record<string, number>"
+            "type": "Record<string, number>",
+            "description": "Tag counts object"
         },
         "variant": {
             "optional": true,
@@ -86,7 +91,8 @@
                 "pills",
                 "underline",
                 "minimal"
-            ]
+            ],
+            "description": "Style variant"
         },
         "size": {
             "optional": true,
@@ -95,11 +101,13 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size variant"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

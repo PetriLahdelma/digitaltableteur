@@ -31,35 +31,43 @@
     "props": {
         "nav": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Navigation slot (top)"
         },
         "hero": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Hero section slot"
         },
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Main content sections"
         },
         "cta": {
             "optional": true,
-            "type": "ReactNode | null"
+            "type": "ReactNode | null",
+            "description": "Call-to-action section slot (between content and related projects). Renders WorkCTA by default. Pass null to suppress."
         },
         "relatedProjects": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Related projects section slot"
         },
         "showScrollProgress": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show scroll progress indicator"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         },
         "donnyTarget": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Donny site action target id for the project main landmark"
         }
     },
     "forbiddenUse": [

@@ -31,19 +31,23 @@
     "props": {
         "subtitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Subtitle/eyebrow text"
         },
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Section title"
         },
         "content": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Rich text content (optional)"
         },
         "images": {
             "optional": true,
-            "type": "ContentImage | ContentImage[]"
+            "type": "ContentImage | ContentImage[]",
+            "description": "Single image or array of images"
         },
         "imageLayout": {
             "optional": true,
@@ -53,7 +57,8 @@
                 "none",
                 "grid",
                 "side-by-side"
-            ]
+            ],
+            "description": "Image layout"
         },
         "background": {
             "optional": true,
@@ -62,19 +67,23 @@
                 "default",
                 "muted",
                 "accent"
-            ]
+            ],
+            "description": "Background variant"
         },
         "centered": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Center align text"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         },
         "donnyTarget": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Donny site action target id for this content block"
         }
     },
     "forbiddenUse": [

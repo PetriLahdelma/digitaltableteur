@@ -128,7 +128,8 @@
     "props": {
         "open": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Controls visibility."
         },
         "tone": {
             "optional": true,
@@ -139,7 +140,8 @@
                 "warning",
                 "error",
                 "neutral"
-            ]
+            ],
+            "description": "Semantic colour."
         },
         "position": {
             "optional": true,
@@ -151,7 +153,8 @@
                 "bottom-left",
                 "bottom-center",
                 "bottom-right"
-            ]
+            ],
+            "description": "Position on screen."
         },
         "size": {
             "optional": true,
@@ -160,23 +163,28 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size."
         },
         "message": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Message text displayed in the toast."
         },
         "duration": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Auto-dismiss delay in ms."
         },
         "onClose": {
             "optional": true,
-            "type": "() => void"
+            "type": "() => void",
+            "description": "Called when the auto-dismiss timer fires."
         },
         "inline": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Render in normal document flow instead of fixed-positioning itself; a\nparent (ToastStack) owns placement. `position` is ignored when set."
         }
     },
     "forbiddenUse": [

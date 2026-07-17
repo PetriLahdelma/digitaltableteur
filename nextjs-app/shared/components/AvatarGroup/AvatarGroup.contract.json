@@ -60,11 +60,13 @@
     "props": {
         "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the cluster (e.g. \"Project members\")."
         },
         "max": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Avatars beyond this count collapse into a \"+N\" bubble."
         },
         "size": {
             "optional": true,
@@ -73,7 +75,8 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size of the overflow bubble; children Avatars should match\n(sm=2rem, md=2.5rem, lg=3rem)."
         },
         "children": {
             "optional": false,

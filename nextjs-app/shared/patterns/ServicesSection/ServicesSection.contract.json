@@ -65,19 +65,23 @@
     "props": {
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section title"
         },
         "description": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section description/lead text"
         },
         "services": {
             "optional": false,
-            "type": "ServiceItem[]"
+            "type": "ServiceItem[]",
+            "description": "Array of services to display"
         },
         "columns": {
             "optional": true,
-            "type": "2 | 3 | 4"
+            "type": "2 | 3 | 4",
+            "description": "Number of columns (responsive)"
         },
         "cardVariant": {
             "optional": true,
@@ -87,19 +91,23 @@
                 "default",
                 "bordered",
                 "elevated"
-            ]
+            ],
+            "description": "Card style variant"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section ID for navigation"
         },
         "donnyTarget": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Donny site action target id for this section"
         }
     },
     "forbiddenUse": [

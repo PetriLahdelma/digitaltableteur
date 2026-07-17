@@ -31,19 +31,23 @@
     "props": {
         "currentSlug": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Current project slug (to exclude from results)"
         },
         "maxItems": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Maximum number of related projects to show"
         },
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section title - uses i18n key \"projectRelatedTitle\" if not provided"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

@@ -1,167 +1,174 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "name": "Skeleton",
-  "tier": "atom",
-  "group": "feedback",
-  "status": "stable",
-  "description": "Loading placeholder that mirrors the layout of incoming content.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1652",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {
-    "variant": {
-      "values": [
-        "text",
-        "circle",
-        "rect",
-        "avatar",
-        "card"
-      ],
-      "default": "text",
-      "propSourced": true
-    }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [
-      "role=status with aria-label naming what is loading",
-      "shimmer suppressed under prefers-reduced-motion"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Skeleton",
+    "tier": "atom",
+    "group": "feedback",
+    "status": "stable",
+    "description": "Loading placeholder that mirrors the layout of incoming content.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1177-1652",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "variant": {
+            "values": [
+                "text",
+                "circle",
+                "rect",
+                "avatar",
+                "card"
+            ],
+            "default": "text",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reviewedNote": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified; accessibility tree and real-browser forced-colors confirmed in Storybook. 2026-07-10 — Figma component built (Atoms, node 1177-1652, parity-audit batch B2a): contract axes as variants with DT variable bindings.",
-    "accessibilityTreeVerified": true,
-    "realBrowserForcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "consumers": [
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
-      "since": "2026-06-04"
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [
+            "role=status with aria-label naming what is loading",
+            "shimmer suppressed under prefers-reduced-motion"
+        ],
+        "reviewedNote": "2026-07-07 — beta→stable: 4-mode AT (base/light/dark/forced-colors) verified; accessibility tree and real-browser forced-colors confirmed in Storybook. 2026-07-10 — Figma component built (Atoms, node 1177-1652, parity-audit batch B2a): contract axes as variants with DT variable bindings.",
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-      "since": "2026-06-04"
+    "tokens": {
+        "colors": [],
+        "spacing": []
     },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-      "since": "2026-06-04"
-    }
-  ],
-  "schemaVersion": 2,
-  "props": {
-    "variant": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "text",
-        "circle",
-        "rect",
-        "avatar",
-        "card"
-      ]
+    "lightDarkVerified": true,
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "since": "2026-06-04"
+        }
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "text",
+                "circle",
+                "rect",
+                "avatar",
+                "card"
+            ],
+            "description": "Shape variant"
+        },
+        "width": {
+            "optional": true,
+            "type": "number | string",
+            "description": "Width (px or %)"
+        },
+        "height": {
+            "optional": true,
+            "type": "number | string",
+            "description": "Height (px)"
+        },
+        "lines": {
+            "optional": true,
+            "type": "number",
+            "description": "Number of lines for text variant"
+        },
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional className"
+        },
+        "label": {
+            "optional": true,
+            "type": "string",
+            "description": "ARIA label for screen readers (hidden visually)"
+        },
+        "animate": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Animate shimmer (disabled with prefers-reduced-motion)"
+        }
     },
-    "width": {
-      "optional": true,
-      "type": "number | string"
+    "forbiddenUse": [
+        "use Skeleton for measurable work (uploads, multi-step jobs); that is Progress territory.",
+        "leave skeletons on screen after content fails to load; resolve to an error state instead."
+    ],
+    "prefersOver": [
+        "Spinner when the loading region has a layout worth mirroring"
+    ],
+    "displayName": "Skeleton",
+    "keywords": [
+        "skeleton",
+        "placeholder",
+        "loading",
+        "shimmer",
+        "ghost",
+        "content loading",
+        "lazy"
+    ],
+    "dense": "layout-mirroring loading placeholder; variant text|circle|rect|avatar|card, text takes lines, free width/height; role=status, shimmer respects reduced motion",
+    "usage": {
+        "description": "Skeleton holds the shape of content that is still loading so the layout never jumps: pick the variant that mirrors what will appear (text with a lines count, avatar, card, or free-form rect/circle sized via width/height) and compose several to sketch the incoming view. Each skeleton is a polite role=status with an aria-label; the shimmer is decorative and turns off under prefers-reduced-motion. Family rule: Skeleton for layouts, Spinner for sub-second unknown waits, Progress for measurable work.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Mirror the real layout — same widths, heights, and rhythm as the content that will replace it — so the swap is seamless."
+            },
+            {
+                "guidance": true,
+                "description": "Name what is loading in the label prop (\"Loading article\", not \"Loading content\") for assistive tech."
+            },
+            {
+                "guidance": true,
+                "description": "Compose variants (avatar + text lines inside a card) to sketch whole modules; see the ComposedPage example."
+            },
+            {
+                "guidance": true,
+                "description": "Give one composed region one label and mark the rest decorative where possible; a page of chattering live regions is noise."
+            },
+            {
+                "guidance": false,
+                "description": "Do not keep skeletons on screen when loading fails — resolve to an error state; a forever-shimmer reads as a hang."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Skeleton for measurable work like uploads; Progress communicates completion, Skeleton only promises layout."
+            }
+        ]
     },
-    "height": {
-      "optional": true,
-      "type": "number | string"
+    "playground": {
+        "defaults": {
+            "variant": "text",
+            "lines": 3,
+            "animate": true
+        }
     },
-    "lines": {
-      "optional": true,
-      "type": "number"
-    },
-    "className": {
-      "optional": true,
-      "type": "string"
-    },
-    "label": {
-      "optional": true,
-      "type": "string"
-    },
-    "animate": {
-      "optional": true,
-      "type": "boolean"
-    }
-  },
-  "forbiddenUse": [
-    "use Skeleton for measurable work (uploads, multi-step jobs); that is Progress territory.",
-    "leave skeletons on screen after content fails to load; resolve to an error state instead."
-  ],
-  "prefersOver": [
-    "Spinner when the loading region has a layout worth mirroring"
-  ],
-  "displayName": "Skeleton",
-  "keywords": [
-    "skeleton",
-    "placeholder",
-    "loading",
-    "shimmer",
-    "ghost",
-    "content loading",
-    "lazy"
-  ],
-  "dense": "layout-mirroring loading placeholder; variant text|circle|rect|avatar|card, text takes lines, free width/height; role=status, shimmer respects reduced motion",
-  "usage": {
-    "description": "Skeleton holds the shape of content that is still loading so the layout never jumps: pick the variant that mirrors what will appear (text with a lines count, avatar, card, or free-form rect/circle sized via width/height) and compose several to sketch the incoming view. Each skeleton is a polite role=status with an aria-label; the shimmer is decorative and turns off under prefers-reduced-motion. Family rule: Skeleton for layouts, Spinner for sub-second unknown waits, Progress for measurable work.",
-    "bestPractices": [
-      {
-        "guidance": true,
-        "description": "Mirror the real layout — same widths, heights, and rhythm as the content that will replace it — so the swap is seamless."
-      },
-      {
-        "guidance": true,
-        "description": "Name what is loading in the label prop (\"Loading article\", not \"Loading content\") for assistive tech."
-      },
-      {
-        "guidance": true,
-        "description": "Compose variants (avatar + text lines inside a card) to sketch whole modules; see the ComposedPage example."
-      },
-      {
-        "guidance": true,
-        "description": "Give one composed region one label and mark the rest decorative where possible; a page of chattering live regions is noise."
-      },
-      {
-        "guidance": false,
-        "description": "Do not keep skeletons on screen when loading fails — resolve to an error state; a forever-shimmer reads as a hang."
-      },
-      {
-        "guidance": false,
-        "description": "Do not use Skeleton for measurable work like uploads; Progress communicates completion, Skeleton only promises layout."
-      }
+    "composesWith": [
+        "Text",
+        "Card",
+        "Avatar",
+        "Spinner",
+        "Progress"
     ]
-  },
-  "playground": {
-    "defaults": {
-      "variant": "text",
-      "lines": 3,
-      "animate": true
-    }
-  },
-  "composesWith": [
-    "Text",
-    "Card",
-    "Avatar",
-    "Spinner",
-    "Progress"
-  ]
 }

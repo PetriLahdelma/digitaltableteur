@@ -83,7 +83,8 @@
         },
         "channels": {
             "optional": true,
-            "type": "SocialShareChannel[]"
+            "type": "SocialShareChannel[]",
+            "description": "Ordered list of network share targets. Defaults to all supported channels."
         },
         "variant": {
             "optional": true,
@@ -91,7 +92,8 @@
             "values": [
                 "article",
                 "inline"
-            ]
+            ],
+            "description": "`article` adds a labelled section suited to blog post footers."
         },
         "showHeading": {
             "optional": true,

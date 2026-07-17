@@ -31,19 +31,23 @@
     "props": {
         "currentSlug": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Current article slug to exclude"
         },
         "maxPosts": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Maximum number of related posts"
         },
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section title"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

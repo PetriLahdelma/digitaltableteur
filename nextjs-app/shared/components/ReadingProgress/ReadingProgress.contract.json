@@ -104,11 +104,13 @@
     "props": {
         "targetRef": {
             "optional": false,
-            "type": "RefObject<HTMLElement | null>"
+            "type": "RefObject<HTMLElement | null>",
+            "description": "Ref to the content container to track"
         },
         "showPercentage": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show percentage text"
         },
         "className": {
             "optional": true,

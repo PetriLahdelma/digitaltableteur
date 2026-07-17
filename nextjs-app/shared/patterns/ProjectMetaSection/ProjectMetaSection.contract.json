@@ -31,27 +31,33 @@
     "props": {
         "services": {
             "optional": false,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "List of services/skills"
         },
         "duration": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Project duration"
         },
         "tools": {
             "optional": true,
-            "type": "ToolItem[]"
+            "type": "ToolItem[]",
+            "description": "Tools used"
         },
         "team": {
             "optional": true,
-            "type": "TeamMember[]"
+            "type": "TeamMember[]",
+            "description": "Team members"
         },
         "client": {
             "optional": true,
-            "type": "ClientInfo"
+            "type": "ClientInfo",
+            "description": "Client info"
         },
         "overview": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Overview content"
         },
         "background": {
             "optional": true,
@@ -60,7 +66,8 @@
                 "default",
                 "muted",
                 "accent"
-            ]
+            ],
+            "description": "Background variant"
         },
         "maxWidth": {
             "optional": true,
@@ -71,15 +78,18 @@
                 "lg",
                 "xl",
                 "full"
-            ]
+            ],
+            "description": "Max width constraint for the section"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         },
         "donnyTarget": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Donny site action target id for the overview column"
         }
     },
     "forbiddenUse": [

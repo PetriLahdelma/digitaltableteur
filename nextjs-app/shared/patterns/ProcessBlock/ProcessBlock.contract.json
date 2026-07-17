@@ -115,15 +115,18 @@
     "props": {
         "phases": {
             "optional": false,
-            "type": "ProcessPhase[]"
+            "type": "ProcessPhase[]",
+            "description": "Array of process phases to display"
         },
         "sectionTitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional main title for the process section"
         },
         "description": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Optional description or introduction text"
         },
         "backgroundColor": {
             "optional": true,
@@ -132,7 +135,8 @@
                 "transparent",
                 "light",
                 "white"
-            ]
+            ],
+            "description": "Background color variant"
         },
         "maxWidth": {
             "optional": true,
@@ -143,7 +147,8 @@
                 "lg",
                 "xl",
                 "full"
-            ]
+            ],
+            "description": "Maximum width constraint"
         },
         "spacing": {
             "optional": true,
@@ -153,15 +158,18 @@
                 "compact",
                 "comfortable",
                 "spacious"
-            ]
+            ],
+            "description": "Spacing variant"
         },
         "columns": {
             "optional": true,
-            "type": "2 | 3 | 4"
+            "type": "2 | 3 | 4",
+            "description": "Number of columns (2, 3, or 4)"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class"
         },
         "as": {
             "optional": true,
@@ -170,11 +178,13 @@
                 "article",
                 "div",
                 "section"
-            ]
+            ],
+            "description": "Semantic HTML element to use"
         },
         "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible label for the section"
         }
     },
     "forbiddenUse": [

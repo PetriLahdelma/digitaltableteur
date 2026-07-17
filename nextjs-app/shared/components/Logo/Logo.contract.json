@@ -11,7 +11,12 @@
     "variants": {
         "size": {
             "propSourced": true,
-            "values": ["16", "24", "40", "64"],
+            "values": [
+                "16",
+                "24",
+                "40",
+                "64"
+            ],
             "default": "24"
         }
     },
@@ -83,27 +88,33 @@
     "props": {
         "size": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Square render box in pixels. Default 24."
         },
         "animated": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Pulse the three leading bars while true; a controlled signal driven from the\nconsumer's hover/focus state (respects prefers-reduced-motion). Default false."
         },
         "badge": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Wrap the mark in the brand lime circle (`--logo-background` / `--logo-color`). Default false."
         },
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the mark. Ignored when `decorative`. Default \"Digitaltableteur\"."
         },
         "decorative": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "When true the mark is purely decorative and removed from the accessibility tree. Default false."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional utility/spacing classes."
         }
     },
     "displayName": "Logo",

@@ -204,11 +204,13 @@
     "props": {
         "icon": {
             "optional": false,
-            "type": "ReactNode | string"
+            "type": "ReactNode | string",
+            "description": "Icon glyph: a rendered element (e.g. <CaretRight />) or a Phosphor icon name (e.g. \"x\")."
         },
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name when `aria-labelledby` is not set"
         },
         "variant": {
             "optional": true,
@@ -217,15 +219,18 @@
                 "primary",
                 "secondary",
                 "tertiary"
-            ]
+            ],
+            "description": "Visual weight."
         },
         "tone": {
             "optional": true,
-            "type": "ButtonProps[\"tone\"]"
+            "type": "ButtonProps[\"tone\"]",
+            "description": "Semantic colour, orthogonal to `variant`."
         },
         "surface": {
             "optional": true,
-            "type": "ButtonProps[\"surface\"]"
+            "type": "ButtonProps[\"surface\"]",
+            "description": "Surface the control sits on; prefer over color overrides on tinted bands."
         },
         "size": {
             "optional": true,
@@ -238,7 +243,8 @@
         },
         "tooltip": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Native tooltip text shown on hover; the `label` stays the accessible name."
         }
     },
     "forbiddenUse": [

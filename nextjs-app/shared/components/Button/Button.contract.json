@@ -251,15 +251,18 @@
     "props": {
         "submits": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "When true, sets `type=\"submit\"`."
         },
         "clickAction": {
             "optional": true,
-            "type": "(event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>"
+            "type": "(event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>",
+            "description": "Async click handler. `onClick` still fires first if both are provided.\nWhile the returned promise is pending, the button shows its `loading`\nstate, sets `aria-busy`, and disables itself (deduping repeat clicks).\nRejections are swallowed after clearing the pending state; callers own\nerror UX (e.g. surface a toast from within `clickAction` itself)."
         },
         "href": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Destination URL. When provided, the button renders as an anchor."
         },
         "target": {
             "optional": true,
@@ -282,7 +285,8 @@
                 "primary",
                 "secondary",
                 "tertiary"
-            ]
+            ],
+            "description": "Visual weight."
         },
         "tone": {
             "optional": true,
@@ -293,7 +297,8 @@
                 "warning",
                 "error",
                 "neutral"
-            ]
+            ],
+            "description": "Semantic color, orthogonal to `variant`."
         },
         "size": {
             "optional": true,
@@ -302,7 +307,8 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size."
         },
         "surface": {
             "optional": true,
@@ -311,47 +317,58 @@
                 "default",
                 "onDark",
                 "onBrand"
-            ]
+            ],
+            "description": "Surface the button renders on; prefer this over absolute colors on tinted bands."
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables interaction and dims the control."
         },
         "loading": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Shows a loading state and blocks interaction; sets `aria-busy`."
         },
         "rounded": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Fully rounded (pill) corners."
         },
         "icon": {
             "optional": true,
-            "type": "React.ReactNode | string"
+            "type": "React.ReactNode | string",
+            "description": "Leading icon: a React node, a component, or a Phosphor icon name (e.g. `\"arrow-left\"`)."
         },
         "endIcon": {
             "optional": true,
-            "type": "React.ReactNode | string"
+            "type": "React.ReactNode | string",
+            "description": "Trailing icon: a React node, a component, or a Phosphor icon name."
         },
         "children": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Button label."
         },
         "accessibleName": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name; required for icon-only buttons. Maps to `aria-label`."
         },
         "accessibleNameRef": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "id of an element that labels this button. Maps to `aria-labelledby`."
         },
         "accessibleDescription": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Extra context for assistive tech. Maps to `aria-describedby`."
         },
         "tooltip": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Native tooltip text; also used as an accessible-name fallback for icon-only buttons."
         }
     },
     "forbiddenUse": [

@@ -70,11 +70,13 @@
     "props": {
         "images": {
             "optional": false,
-            "type": "GalleryImage[]"
+            "type": "GalleryImage[]",
+            "description": "Array of images to display"
         },
         "columns": {
             "optional": true,
-            "type": "2 | 3 | 4"
+            "type": "2 | 3 | 4",
+            "description": "Number of columns"
         },
         "gap": {
             "optional": true,
@@ -83,7 +85,8 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Gap size between images"
         },
         "aspectRatio": {
             "optional": true,
@@ -92,15 +95,18 @@
                 "mixed",
                 "video",
                 "square"
-            ]
+            ],
+            "description": "Aspect ratio for thumbnails"
         },
         "enableLightbox": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Enable lightbox on click"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

@@ -60,7 +60,8 @@
     "props": {
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Extra class on the content bubble."
         },
         "side": {
             "optional": true,
@@ -70,15 +71,18 @@
                 "right",
                 "top",
                 "bottom"
-            ]
+            ],
+            "description": "Preferred placement relative to the trigger; flips when out of room."
         },
         "sideOffset": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Gap in px between the trigger and the bubble."
         },
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Hint content — a short phrase, never interactive."
         }
     },
     "forbiddenUse": [

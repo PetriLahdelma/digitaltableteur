@@ -63,15 +63,18 @@
     "props": {
         "icon": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Phosphor icon name rendered decoratively above the title."
         },
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Short headline stating what is empty."
         },
         "description": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "One or two sentences explaining why, or what to do next."
         },
         "headingLevel": {
             "optional": true,
@@ -80,7 +83,8 @@
                 "h2",
                 "h3",
                 "h4"
-            ]
+            ],
+            "description": "Heading tag for the title."
         },
         "size": {
             "optional": true,
@@ -89,11 +93,13 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size token."
         },
         "children": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Action slot — typically one primary Button, optionally a secondary."
         }
     },
     "displayName": "EmptyState",

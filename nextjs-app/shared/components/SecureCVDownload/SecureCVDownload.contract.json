@@ -54,7 +54,8 @@
     "props": {
         "buttonText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Button text to trigger the modal"
         },
         "buttonVariant": {
             "optional": true,
@@ -67,11 +68,13 @@
                 "primary",
                 "secondary",
                 "tertiary"
-            ]
+            ],
+            "description": "Button variant"
         },
         "inverse": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Make the trigger button use inverse styling (white text/border)"
         }
     },
     "forbiddenUse": [

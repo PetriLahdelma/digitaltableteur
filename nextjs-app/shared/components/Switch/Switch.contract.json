@@ -67,16 +67,6 @@
     ],
     "schemaVersion": 2,
     "props": {
-        "checked": {
-            "optional": true,
-            "type": "boolean",
-            "description": "Checked state for controlled use. Mutually exclusive with defaultChecked."
-        },
-        "defaultChecked": {
-            "optional": true,
-            "type": "boolean | undefined",
-            "description": "Initial checked state for uncontrolled use. Mutually exclusive with checked."
-        },
         "disabled": {
             "optional": true,
             "type": "boolean",
@@ -85,7 +75,7 @@
         "loading": {
             "optional": true,
             "type": "boolean",
-            "description": "Shows a loading spinner and blocks interaction; sets aria-busy."
+            "description": "Shows a loading spinner and blocks interaction; sets `aria-busy`."
         },
         "size": {
             "optional": true,
@@ -120,12 +110,22 @@
         "helperText": {
             "optional": true,
             "type": "string",
-            "description": "Supporting text rendered beneath the control."
+            "description": "Supporting text rendered beneath the control; always rendered, below `error` when both are set."
         },
         "error": {
             "optional": true,
             "type": "string",
             "description": "Error message beneath the control; sets aria-invalid and aria-describedby."
+        },
+        "defaultChecked": {
+            "optional": true,
+            "type": "boolean | undefined",
+            "description": "Initial checked state for uncontrolled use. Mutually exclusive with `checked`."
+        },
+        "checked": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Checked state for controlled use. Mutually exclusive with `defaultChecked`."
         }
     },
     "composesWith": [

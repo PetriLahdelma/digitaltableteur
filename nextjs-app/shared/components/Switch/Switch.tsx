@@ -11,7 +11,7 @@ interface SwitchBaseProps extends Omit<
   disabled?: boolean;
   /** Shows a loading spinner and blocks interaction; sets `aria-busy`. @default false */
   loading?: boolean;
-  /** Size. @default "md" */
+  /** Control size. @default "md" */
   size?: "sm" | "md" | "lg";
   /** Called with the next checked value when the switch is toggled. */
   onCheckedChange?: (checked: boolean) => void;

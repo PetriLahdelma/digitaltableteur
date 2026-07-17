@@ -113,59 +113,73 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Grid cells (supports span on child props)."
         },
         "columns": {
             "optional": true,
-            "type": "number | string"
+            "type": "number | string",
+            "description": "Column count or grid-template-columns string."
         },
         "tabletColumns": {
             "optional": true,
-            "type": "number | string"
+            "type": "number | string",
+            "description": "Columns from the tablet breakpoint (768px) up. Numeric counts render as\n`repeat(n, minmax(0, 1fr))` so cells can shrink below content width."
         },
         "desktopColumns": {
             "optional": true,
-            "type": "number | string"
+            "type": "number | string",
+            "description": "Columns from the desktop breakpoint (1024px) up. Falls back to\ntabletColumns, then columns."
         },
         "wideColumns": {
             "optional": true,
-            "type": "number | string"
+            "type": "number | string",
+            "description": "Columns from the wide breakpoint (1440px) up. Falls back through\ndesktopColumns, tabletColumns, columns."
         },
         "ultraColumns": {
             "optional": true,
-            "type": "number | string"
+            "type": "number | string",
+            "description": "Columns from the ultra breakpoint (1920px) up. Falls back through\nwideColumns, desktopColumns, tabletColumns, columns."
         },
         "rows": {
             "optional": true,
-            "type": "number | string"
+            "type": "number | string",
+            "description": "Row count or grid-template-rows string."
         },
         "gap": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Grid gap."
         },
         "tabletGap": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Gap from the tablet breakpoint (768px) up."
         },
         "desktopGap": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Gap from the desktop breakpoint (1024px) up. Falls back to tabletGap,\nthen gap."
         },
         "wideGap": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Gap from the wide breakpoint (1440px) up. Falls back through desktopGap,\ntabletGap, gap."
         },
         "ultraGap": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Gap from the ultra breakpoint (1920px) up. Falls back through wideGap,\ndesktopGap, tabletGap, gap."
         },
         "rowGap": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Row gap override."
         },
         "colGap": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Column gap override."
         },
         "align": {
             "optional": true,
@@ -188,7 +202,8 @@
                 "start",
                 "anchor-center",
                 "normal"
-            ]
+            ],
+            "description": "align-items."
         },
         "justify": {
             "optional": true,
@@ -214,7 +229,8 @@
                 "left",
                 "legacy",
                 "right"
-            ]
+            ],
+            "description": "justify-items."
         },
         "style": {
             "optional": true,
@@ -222,7 +238,8 @@
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Grid class names."
         }
     },
     "forbiddenUse": [

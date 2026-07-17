@@ -31,31 +31,38 @@
     "props": {
         "post": {
             "optional": false,
-            "type": "BlogPostEntry"
+            "type": "BlogPostEntry",
+            "description": "Blog post data"
         },
         "nav": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Navigation slot"
         },
         "shareBaseUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Base URL for share links"
         },
         "showTOC": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show table of contents"
         },
         "showRelated": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show related posts"
         },
         "showReadingProgress": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show reading progress"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

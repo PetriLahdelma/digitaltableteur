@@ -87,31 +87,38 @@
                 "success",
                 "warning",
                 "error"
-            ]
+            ],
+            "description": "Semantic tone controlling icon and surface colors."
         },
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Alert heading text."
         },
         "description": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Supporting body copy."
         },
         "action": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Optional action slot rendered under the description (e.g. a tertiary Button)."
         },
         "showIcon": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show the semantic tone icon. The icon is derived from `tone`; set false for a text-only banner."
         },
         "dismissible": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Shows a localized dismiss control when true."
         },
         "onDismiss": {
             "optional": true,
-            "type": "() => void"
+            "type": "() => void",
+            "description": "Called when the user dismisses the banner."
         },
         "aria-live": {
             "optional": true,
@@ -120,7 +127,8 @@
                 "polite",
                 "assertive",
                 "off"
-            ]
+            ],
+            "description": "Live region politeness for assistive tech (an explicit value wins over the tone default)."
         }
     },
     "forbiddenUse": [

@@ -87,11 +87,13 @@
     "props": {
         "items": {
             "optional": true,
-            "type": "NewsBulletinItem[]"
+            "type": "NewsBulletinItem[]",
+            "description": "Bulletin items; defaults to NEWS_BULLETIN_ITEMS."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional wrapper class."
         }
     },
     "forbiddenUse": [

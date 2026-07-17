@@ -31,11 +31,13 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Main title text"
         },
         "subtitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional subtitle"
         },
         "background": {
             "optional": true,
@@ -44,19 +46,23 @@
                 "image",
                 "minimal",
                 "gradient"
-            ]
+            ],
+            "description": "Background variant"
         },
         "backgroundImage": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Background image URL (for image variant)"
         },
         "showScrollIndicator": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show scroll indicator at bottom"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

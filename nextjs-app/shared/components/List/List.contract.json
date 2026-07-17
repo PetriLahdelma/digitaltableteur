@@ -118,7 +118,8 @@
     "props": {
         "items": {
             "optional": false,
-            "type": "React.ReactNode[]"
+            "type": "React.ReactNode[]",
+            "description": "Ordered content rendered as one list item per entry."
         },
         "as": {
             "optional": true,
@@ -126,11 +127,13 @@
             "values": [
                 "ol",
                 "ul"
-            ]
+            ],
+            "description": "Semantic list element."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional class name applied to the list element."
         },
         "size": {
             "optional": true,
@@ -143,7 +146,8 @@
                 "m",
                 "l",
                 "xxl"
-            ]
+            ],
+            "description": "Tokenized text size."
         },
         "lineHeight": {
             "optional": true,
@@ -154,11 +158,13 @@
                 "snug",
                 "relaxed",
                 "loose"
-            ]
+            ],
+            "description": "Optional tokenized line height."
         },
         "style": {
             "optional": true,
-            "type": "React.CSSProperties"
+            "type": "React.CSSProperties",
+            "description": "Inline style overrides applied after component defaults."
         },
         "listStyleType": {
             "optional": true,
@@ -175,7 +181,8 @@
                 "lower-roman",
                 "upper-roman",
                 "dash"
-            ]
+            ],
+            "description": "Native marker style or the custom dash treatment."
         },
         "spacing": {
             "optional": true,
@@ -184,11 +191,13 @@
                 "normal",
                 "relaxed",
                 "compact"
-            ]
+            ],
+            "description": "Vertical spacing between items."
         },
         "role": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional ARIA role override for specialized list semantics."
         }
     },
     "forbiddenUse": [

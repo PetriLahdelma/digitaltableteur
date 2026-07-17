@@ -97,7 +97,8 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Stacked children."
         },
         "direction": {
             "optional": true,
@@ -105,7 +106,8 @@
             "values": [
                 "horizontal",
                 "vertical"
-            ]
+            ],
+            "description": "Stack axis."
         },
         "gap": {
             "optional": true,
@@ -117,7 +119,8 @@
                 "none",
                 "xl",
                 "xs"
-            ]
+            ],
+            "description": "Gap token between items."
         },
         "align": {
             "optional": true,
@@ -127,7 +130,8 @@
                 "stretch",
                 "end",
                 "start"
-            ]
+            ],
+            "description": "Cross-axis alignment."
         },
         "justify": {
             "optional": true,
@@ -138,15 +142,18 @@
                 "start",
                 "between",
                 "around"
-            ]
+            ],
+            "description": "Main-axis distribution."
         },
         "wrap": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Allow wrapping on horizontal stacks."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Stack class names."
         },
         "as": {
             "optional": true,
@@ -330,7 +337,8 @@
                 "tspan",
                 "use",
                 "view"
-            ]
+            ],
+            "description": "Polymorphic element."
         }
     },
     "forbiddenUse": [

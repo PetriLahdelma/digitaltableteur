@@ -46,39 +46,48 @@
     "props": {
         "quote": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "The quote/post text"
         },
         "name": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Name of the person"
         },
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Title/position of the person"
         },
         "company": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Company name"
         },
         "connectionDegree": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Connection degree (e.g., \"1st\", \"2nd\", \"3rd\")"
         },
         "linkedinUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "LinkedIn profile URL (optional)"
         },
         "avatarUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Avatar image URL (optional)"
         },
         "companyLogoUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Company logo URL (optional, displayed at bottom)"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS classes"
         },
         "variant": {
             "optional": true,
@@ -87,7 +96,8 @@
                 "muted",
                 "light",
                 "dark"
-            ]
+            ],
+            "description": "Background color variant"
         }
     },
     "forbiddenUse": [

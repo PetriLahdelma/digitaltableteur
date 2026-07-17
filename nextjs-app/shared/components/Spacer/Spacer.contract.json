@@ -66,7 +66,8 @@
                 "xl",
                 "xs",
                 "2xl"
-            ]
+            ],
+            "description": "Tokenized gap size."
         },
         "axis": {
             "optional": true,
@@ -74,11 +75,13 @@
             "values": [
                 "horizontal",
                 "vertical"
-            ]
+            ],
+            "description": "Block (vertical) or inline (horizontal) axis."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class names."
         }
     },
     "forbiddenUse": [

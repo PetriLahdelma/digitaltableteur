@@ -31,19 +31,23 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Section title"
         },
         "tokens": {
             "optional": false,
-            "type": "ManifestoToken[]"
+            "type": "ManifestoToken[]",
+            "description": "Array of manifesto tokens"
         },
         "interval": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Cycling interval in milliseconds"
         },
         "separator": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Separator character between highlightable tokens"
         },
         "background": {
             "optional": true,
@@ -52,11 +56,13 @@
                 "muted",
                 "transparent",
                 "gradient"
-            ]
+            ],
+            "description": "Background variant"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

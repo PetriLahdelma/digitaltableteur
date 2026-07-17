@@ -51,11 +51,13 @@
     "props": {
         "items": {
             "optional": false,
-            "type": "BreadcrumbItem[]"
+            "type": "BreadcrumbItem[]",
+            "description": "Breadcrumb items in root-to-current order (label, optional href); the last renders as plain text."
         },
         "aria-label": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the nav landmark."
         },
         "underline": {
             "optional": true,
@@ -64,19 +66,23 @@
                 "always",
                 "hover",
                 "none"
-            ]
+            ],
+            "description": "Underline mode forwarded to the Link for each trail item — the same\ncontract as Link: \"always\" shows the wavy underline permanently, \"hover\"\nreveals it on hover and keyboard focus, \"none\" omits it."
         },
         "maxItems": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Static collapse cap. When set to a positive number smaller than the item\ncount, the middle items collapse into an ellipsis menu WITHOUT measuring:\nthe first `maxItems - 2` leading items and the current item stay visible.\nLeave unset (or 0) for automatic width-based collapse (the default)."
         },
         "collapseLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the ellipsis menu trigger."
         },
         "homeIcon": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Render the first item as a house icon instead of its text label. The\nitem's label becomes the icon's accessible name, so screen readers still\nannounce it (e.g. \"Home\")."
         }
     },
     "forbiddenUse": [

@@ -38,7 +38,8 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Media or placeholder content inside the ratio box."
         },
         "ratio": {
             "optional": true,
@@ -50,11 +51,13 @@
                 "21:9",
                 "3:2",
                 "2:3"
-            ]
+            ],
+            "description": "Width-to-height ratio token."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class names."
         }
     },
     "forbiddenUse": [

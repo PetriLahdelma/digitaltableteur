@@ -92,19 +92,23 @@
     "props": {
         "slug": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Author slug to fetch data from authors.ts"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional CSS class for styling extension"
         },
         "heading": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional custom heading text (defaults to author.name)"
         },
         "showContact": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Render the author's contact email (mailto) after the bio, if the author has one."
         }
     },
     "forbiddenUse": [

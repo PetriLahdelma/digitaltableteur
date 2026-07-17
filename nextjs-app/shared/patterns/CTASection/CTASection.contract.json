@@ -121,19 +121,23 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Main headline"
         },
         "description": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Supporting description"
         },
         "primaryAction": {
             "optional": false,
-            "type": "ActionItem"
+            "type": "ActionItem",
+            "description": "Primary action button"
         },
         "secondaryAction": {
             "optional": true,
-            "type": "ActionItem"
+            "type": "ActionItem",
+            "description": "Secondary action button"
         },
         "background": {
             "optional": true,
@@ -144,7 +148,8 @@
                 "dark",
                 "gradient",
                 "brand"
-            ]
+            ],
+            "description": "Background style"
         },
         "align": {
             "optional": true,
@@ -152,19 +157,23 @@
             "values": [
                 "center",
                 "left"
-            ]
+            ],
+            "description": "Text alignment"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section ID for navigation"
         },
         "donnyTarget": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Donny site action target id"
         }
     },
     "forbiddenUse": [

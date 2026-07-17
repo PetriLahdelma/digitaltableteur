@@ -86,11 +86,13 @@
     "props": {
         "navItems": {
             "optional": true,
-            "type": "NavItem[]"
+            "type": "NavItem[]",
+            "description": "Navigation items (href, label, exact); the site default when unset."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional wrapper class."
         }
     },
     "forbiddenUse": [

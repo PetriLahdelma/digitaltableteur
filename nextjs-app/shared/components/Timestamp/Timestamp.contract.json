@@ -88,7 +88,8 @@
     "props": {
         "value": {
             "optional": false,
-            "type": "string | number | Date"
+            "type": "string | number | Date",
+            "description": "The date/time to display: ISO 8601 calendar date or instant, Unix seconds, or Date."
         },
         "format": {
             "optional": true,
@@ -102,11 +103,13 @@
                 "system_date",
                 "system_date_time",
                 "system_time"
-            ]
+            ],
+            "description": "Display format."
         },
         "autoThreshold": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Seconds after which `auto` switches from relative to date_time."
         },
         "size": {
             "optional": true,
@@ -116,7 +119,8 @@
                 "xs",
                 "xxs",
                 "m"
-            ]
+            ],
+            "description": "Text-ladder size."
         },
         "tone": {
             "optional": true,
@@ -124,31 +128,38 @@
             "values": [
                 "default",
                 "muted"
-            ]
+            ],
+            "description": "Color role: body text or muted metadata."
         },
         "showTimezone": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Append the timezone abbreviation (date_time/time/system equivalents)."
         },
         "tooltip": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Native tooltip with the full date when showing relative time."
         },
         "live": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Keep relative output ticking while mounted."
         },
         "now": {
             "optional": true,
-            "type": "string | number | Date"
+            "type": "string | number | Date",
+            "description": "Reference \"now\" for relative/auto output. Defaults to render time; pass a\nfixed value in stories/tests for deterministic output."
         },
         "locale": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Locale override; defaults to the active site language."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional className passthrough."
         }
     },
     "forbiddenUse": [

@@ -78,15 +78,18 @@
     "props": {
         "href": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Destination URL."
         },
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name — required, the control is icon-only."
         },
         "children": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "The icon. Rendered inside an aria-hidden wrapper so only `label` names the link."
         },
         "variant": {
             "optional": true,
@@ -94,7 +97,8 @@
             "values": [
                 "plain",
                 "chip"
-            ]
+            ],
+            "description": "Visual treatment: bare glyph (footers) or bordered circular chip (share rows)."
         },
         "size": {
             "optional": true,
@@ -103,15 +107,18 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Hit-target size token."
         },
         "external": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Open in a new tab with rel=\"noopener noreferrer\"."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class names."
         }
     },
     "composesWith": [

@@ -432,6 +432,10 @@
                     "description": {
                         "type": "string",
                         "minLength": 1
+                    },
+                    "deprecated": {
+                        "type": "boolean",
+                        "description": "Synced from a JSDoc @deprecated tag on the prop."
                     }
                 }
             }

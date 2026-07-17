@@ -36,7 +36,8 @@
     "props": {
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS classes on the consent banner region."
         }
     },
     "forbiddenUse": [

@@ -52,27 +52,33 @@
     "props": {
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Option label"
         },
         "value": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Submitted value when selected"
         },
         "name": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Group name; must match siblings to form the exclusive set"
         },
         "checked": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Checked state (controlled); use inside RadioGroup for sets."
         },
         "defaultChecked": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Initial checked state (uncontrolled mode only)"
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables interaction and dims the control."
         },
         "size": {
             "optional": true,
@@ -84,15 +90,18 @@
                 "S",
                 "M",
                 "L"
-            ]
+            ],
+            "description": "Control hit area."
         },
         "onCheckedChange": {
             "optional": true,
-            "type": "(checked: boolean) => void"
+            "type": "(checked: boolean) => void",
+            "description": "Fired with the next checked value when selection changes"
         },
         "showLabel": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Render the visible label."
         }
     },
     "forbiddenUse": [

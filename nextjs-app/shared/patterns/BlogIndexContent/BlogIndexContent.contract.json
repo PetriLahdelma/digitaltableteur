@@ -31,11 +31,13 @@
     "props": {
         "postsPerPage": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Number of posts per page"
         },
         "showHero": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show hero section"
         },
         "heroVariant": {
             "optional": true,
@@ -43,11 +45,13 @@
             "values": [
                 "full",
                 "compact"
-            ]
+            ],
+            "description": "Hero variant"
         },
         "showFilter": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show filter"
         },
         "filterVariant": {
             "optional": true,
@@ -56,11 +60,13 @@
                 "pills",
                 "underline",
                 "minimal"
-            ]
+            ],
+            "description": "Filter variant"
         },
         "showPagination": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show pagination"
         },
         "gridLayout": {
             "optional": true,
@@ -68,15 +74,18 @@
             "values": [
                 "standard",
                 "featured-first"
-            ]
+            ],
+            "description": "Grid layout"
         },
         "hideImages": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Hide images in article cards"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

@@ -35,7 +35,9 @@
         "realBrowserForcedColorsVerified": true
     },
     "tokens": {
-        "colors": ["--link-color"],
+        "colors": [
+            "--link-color"
+        ],
         "spacing": []
     },
     "lightDarkVerified": true,
@@ -70,7 +72,8 @@
     "props": {
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional wrapper class."
         }
     },
     "forbiddenUse": [

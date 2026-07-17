@@ -110,7 +110,8 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Content to be displayed within the layout"
         },
         "maxWidth": {
             "optional": true,
@@ -121,15 +122,18 @@
                 "lg",
                 "xl",
                 "full"
-            ]
+            ],
+            "description": "Maximum width constraint for the content"
         },
         "grid": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether to use the 12-column grid system"
         },
         "columns": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Number of columns for grid layout (only applies when grid=true)\nAutomatically responsive: 4 cols mobile, 8 cols tablet, 12 cols desktop"
         },
         "spacing": {
             "optional": true,
@@ -139,15 +143,18 @@
                 "compact",
                 "comfortable",
                 "spacious"
-            ]
+            ],
+            "description": "Vertical spacing between sections"
         },
         "withMargins": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Apply consistent page margins"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class name"
         },
         "as": {
             "optional": true,
@@ -157,15 +164,18 @@
                 "main",
                 "div",
                 "section"
-            ]
+            ],
+            "description": "Semantic HTML element to use for the container"
         },
         "role": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "ARIA role for accessibility"
         },
         "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "ARIA label for accessibility"
         },
         "style": {
             "optional": true,

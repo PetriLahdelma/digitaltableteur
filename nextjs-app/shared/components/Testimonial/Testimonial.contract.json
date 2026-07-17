@@ -36,31 +36,38 @@
     "props": {
         "quote": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "The testimonial quote text"
         },
         "name": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Name of the person giving the testimonial"
         },
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Title/position of the person"
         },
         "company": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Company name"
         },
         "linkedinUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "LinkedIn URL (optional)"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS classes"
         },
         "avatarUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Avatar image URL (optional)"
         }
     },
     "forbiddenUse": [

@@ -116,31 +116,38 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Project title"
         },
         "slug": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "URL slug for project detail page"
         },
         "thumbnail": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Thumbnail image URL"
         },
         "videoThumbnail": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Video thumbnail URL (for hover autoplay)"
         },
         "description": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Short description"
         },
         "category": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Project category"
         },
         "tags": {
             "optional": true,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "Project tags"
         },
         "aspectRatio": {
             "optional": true,
@@ -150,23 +157,28 @@
                 "square",
                 "portrait",
                 "landscape"
-            ]
+            ],
+            "description": "Image aspect ratio"
         },
         "showCategory": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show category in caption"
         },
         "showDescription": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show description on hover"
         },
         "autoPlayVideo": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Autoplay video thumbnail continuously (not just on hover)"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

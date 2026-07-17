@@ -90,19 +90,23 @@
     "props": {
         "categories": {
             "optional": false,
-            "type": "CategoryOption[]"
+            "type": "CategoryOption[]",
+            "description": "Array of category options"
         },
         "activeCategory": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Currently active category value"
         },
         "onCategoryChange": {
             "optional": false,
-            "type": "(category: string) => void"
+            "type": "(category: string) => void",
+            "description": "Callback when category changes"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         },
         "size": {
             "optional": true,
@@ -111,7 +115,8 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size variant"
         },
         "variant": {
             "optional": true,
@@ -120,7 +125,8 @@
                 "pills",
                 "underline",
                 "minimal"
-            ]
+            ],
+            "description": "Style variant"
         }
     },
     "forbiddenUse": [

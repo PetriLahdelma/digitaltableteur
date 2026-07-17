@@ -81,55 +81,68 @@
     "props": {
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Field label"
         },
         "placeholder": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Placeholder shown when no file is selected"
         },
         "helperText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Helper copy below the control"
         },
         "uploadButtonLabel": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Upload button label"
         },
         "clearButtonLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Clear/remove button label; the button shows only while a file is set"
         },
         "accept": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accepted file extensions/MIME types for the native picker"
         },
         "maxSizeInBytes": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Maximum file size in bytes; checked when a file is picked"
         },
         "sizeErrorMessage": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Error shown when a picked file exceeds maxSizeInBytes"
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "External error message; renders above the helper line"
         },
         "value": {
             "optional": true,
-            "type": "File | null"
+            "type": "File | null",
+            "description": "Controlled File value"
         },
         "onFileChange": {
             "optional": true,
-            "type": "(file: File | null) => void"
+            "type": "(file: File | null) => void",
+            "description": "Called when a file is selected or cleared"
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables the control."
         },
         "required": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Marks the field required."
         },
         "appearance": {
             "optional": true,
@@ -137,7 +150,8 @@
             "values": [
                 "default",
                 "editorial"
-            ]
+            ],
+            "description": "Match FormFieldEditorial / Combobox styling on editorial forms."
         },
         "className": {
             "optional": true,

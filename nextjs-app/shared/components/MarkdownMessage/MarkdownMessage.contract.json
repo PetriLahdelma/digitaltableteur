@@ -45,11 +45,13 @@
     "props": {
         "content": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Markdown source rendered through DS typography."
         },
         "fallback": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Plain text shown when content is empty or fails to parse."
         },
         "data-role": {
             "optional": true,
@@ -57,11 +59,13 @@
         },
         "renderWithDesignSystem": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Render markdown using the design system components (Title/Text/Link).\nUseful for long-form content pages to ensure consistent styling."
         },
         "designSystemTextSize": {
             "optional": true,
-            "type": "DesignSystemTextSize"
+            "type": "DesignSystemTextSize",
+            "description": "When `renderWithDesignSystem` is enabled, use this as the base size for\nparagraph and inline emphasis text (e.g. `p`, `strong`, `em`)."
         },
         "density": {
             "optional": true,
@@ -69,7 +73,8 @@
             "values": [
                 "default",
                 "chat"
-            ]
+            ],
+            "description": "Compact typography for in-chat assistant replies."
         }
     },
     "forbiddenUse": [

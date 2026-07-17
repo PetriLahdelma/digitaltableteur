@@ -83,7 +83,8 @@
                 "warning",
                 "error",
                 "neutral"
-            ]
+            ],
+            "description": "Semantic tone of the status."
         },
         "size": {
             "optional": true,
@@ -92,19 +93,23 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size token."
         },
         "pulse": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Animates a soft pulse for live/ongoing states (respects reduced motion)."
         },
         "label": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible label when no visible children are given (e.g. \"Online\")."
         },
         "children": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Visible label text rendered next to the dot."
         }
     },
     "displayName": "StatusDot",

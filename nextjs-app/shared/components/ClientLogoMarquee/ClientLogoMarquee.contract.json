@@ -36,11 +36,13 @@
     "props": {
         "ariaLabel": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the marquee section."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS classes on the marquee section."
         }
     },
     "forbiddenUse": [

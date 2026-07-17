@@ -112,7 +112,8 @@
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Extra class on the content surface."
         },
         "side": {
             "optional": true,
@@ -122,7 +123,8 @@
                 "right",
                 "top",
                 "bottom"
-            ]
+            ],
+            "description": "Preferred side relative to the trigger; flips when out of room."
         },
         "align": {
             "optional": true,
@@ -131,11 +133,13 @@
                 "center",
                 "end",
                 "start"
-            ]
+            ],
+            "description": "Alignment along the trigger edge."
         },
         "sideOffset": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Gap in px between the trigger and the content."
         }
     },
     "forbiddenUse": [

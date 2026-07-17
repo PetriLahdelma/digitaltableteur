@@ -107,15 +107,18 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "The helper text content to display"
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional ID for aria-describedby association"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class name"
         },
         "state": {
             "optional": true,
@@ -125,7 +128,8 @@
                 "success",
                 "warning",
                 "error"
-            ]
+            ],
+            "description": "Semantic state of the helper text (error, warning, success, info)\nDefault is neutral/no state"
         }
     },
     "forbiddenUse": [

@@ -83,23 +83,28 @@
     "props": {
         "currentPage": {
             "optional": false,
-            "type": "number"
+            "type": "number",
+            "description": "Current active page (1-indexed)"
         },
         "totalPages": {
             "optional": false,
-            "type": "number"
+            "type": "number",
+            "description": "Total number of pages"
         },
         "onPageChange": {
             "optional": false,
-            "type": "(page: number) => void"
+            "type": "(page: number) => void",
+            "description": "Callback when page changes"
         },
         "siblingCount": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Number of page buttons to show on each side of current page"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

@@ -123,7 +123,8 @@
     "props": {
         "name": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Phosphor icon name. Accepts PascalCase (e.g., \"ShareNetwork\") or slug (\"share-network\")."
         },
         "weight": {
             "optional": true,
@@ -135,7 +136,8 @@
                 "bold",
                 "fill",
                 "duotone"
-            ]
+            ],
+            "description": "Optional Phosphor weight override."
         },
         "legacyStyle": {
             "optional": true,
@@ -147,7 +149,8 @@
                 "duotone",
                 "solid",
                 "brands"
-            ]
+            ],
+            "description": "Legacy FontAwesome-style weight string kept for backward compatibility."
         },
         "size": {
             "optional": true,
@@ -160,15 +163,18 @@
                 "2xs",
                 "xs",
                 "2xl"
-            ]
+            ],
+            "description": "Tokenized or explicit pixel size."
         },
         "color": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "SVG color override; defaults to the inherited current color."
         },
         "rotate": {
             "optional": true,
-            "type": "0 | 90 | 180 | 270"
+            "type": "0 | 90 | 180 | 270",
+            "description": "Quarter-turn rotation applied to the glyph."
         },
         "flip": {
             "optional": true,
@@ -177,27 +183,33 @@
                 "horizontal",
                 "vertical",
                 "both"
-            ]
+            ],
+            "description": "Mirror the glyph along one or both axes."
         },
         "spin": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Apply the continuous rotation animation."
         },
         "pulse": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Apply the pulse animation when spin is not active."
         },
         "mirrored": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Use Phosphor's horizontal mirroring."
         },
         "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for a meaningful icon."
         },
         "decorative": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Hide the icon from assistive technology. Defaults to true without ariaLabel."
         }
     },
     "forbiddenUse": [

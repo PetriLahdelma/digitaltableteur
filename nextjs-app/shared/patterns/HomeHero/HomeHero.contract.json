@@ -65,11 +65,13 @@
     "props": {
         "scrollTargetId": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the section to scroll to when clicking scroll indicator"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className for styling"
         }
     },
     "forbiddenUse": [

@@ -68,39 +68,48 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Hero title (required)"
         },
         "titleLevel": {
             "optional": true,
-            "type": "1 | 2 | 3 | 4 | 5 | 6"
+            "type": "1 | 2 | 3 | 4 | 5 | 6",
+            "description": "Title semantic level (defaults to 1 for page hero)"
         },
         "subtitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Subtitle text"
         },
         "description": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Descriptive body text"
         },
         "imageSrc": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Hero image source"
         },
         "imageAlt": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Hero image alt text (required if imageSrc provided)"
         },
         "imageWidth": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Image width for Next.js Image optimization"
         },
         "imageHeight": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Image height for Next.js Image optimization"
         },
         "actions": {
             "optional": true,
-            "type": "HeroAction[]"
+            "type": "HeroAction[]",
+            "description": "Call-to-action buttons"
         },
         "variant": {
             "optional": true,
@@ -111,7 +120,8 @@
                 "centered",
                 "split",
                 "stacked"
-            ]
+            ],
+            "description": "Layout variant"
         },
         "background": {
             "optional": true,
@@ -122,7 +132,8 @@
                 "light",
                 "dark",
                 "gradient"
-            ]
+            ],
+            "description": "Background color/gradient style"
         },
         "align": {
             "optional": true,
@@ -131,7 +142,8 @@
                 "center",
                 "left",
                 "right"
-            ]
+            ],
+            "description": "Content alignment"
         },
         "maxWidth": {
             "optional": true,
@@ -142,7 +154,8 @@
                 "lg",
                 "xl",
                 "full"
-            ]
+            ],
+            "description": "Maximum content width"
         },
         "spacing": {
             "optional": true,
@@ -152,15 +165,18 @@
                 "compact",
                 "comfortable",
                 "spacious"
-            ]
+            ],
+            "description": "Vertical spacing"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom CSS class for styling extensions"
         },
         "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "ARIA label for hero section"
         }
     },
     "forbiddenUse": [

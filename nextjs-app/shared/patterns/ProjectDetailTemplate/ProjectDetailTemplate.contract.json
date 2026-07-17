@@ -31,35 +31,43 @@
     "props": {
         "project": {
             "optional": false,
-            "type": "Project"
+            "type": "Project",
+            "description": "Project data from projects.ts"
         },
         "hero": {
             "optional": false,
-            "type": "{\n    image: ProjectHeroImage;\n    variant?: \"full-width\" | \"contained\" | \"split\";\n  }"
+            "type": "{\n    image: ProjectHeroImage;\n    variant?: \"full-width\" | \"contained\" | \"split\";\n  }",
+            "description": "Hero configuration"
         },
         "meta": {
             "optional": false,
-            "type": "{\n    services: string[];\n    duration?: string;\n    tools?: ToolItem[];\n    team?: TeamMember[];\n    client?: ClientInf"
+            "type": "{\n    services: string[];\n    duration?: string;\n    tools?: ToolItem[];\n    team?: TeamMember[];\n    client?: ClientInf",
+            "description": "Metadata configuration"
         },
         "sections": {
             "optional": false,
-            "type": "ContentSectionProps[]"
+            "type": "ContentSectionProps[]",
+            "description": "Content sections"
         },
         "gallery": {
             "optional": true,
-            "type": "GalleryImage[]"
+            "type": "GalleryImage[]",
+            "description": "Gallery images"
         },
         "relatedEnabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Enable related projects section"
         },
         "nav": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Custom navigation element (overrides default ProjectNav)"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

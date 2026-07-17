@@ -49,7 +49,8 @@
                 "h2",
                 "p",
                 "span"
-            ]
+            ],
+            "description": "Element to render (default span)"
         },
         "className": {
             "optional": true,

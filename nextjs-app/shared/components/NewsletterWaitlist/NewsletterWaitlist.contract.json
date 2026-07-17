@@ -42,19 +42,23 @@
     "props": {
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional class name for styling extension"
         },
         "onSuccess": {
             "optional": true,
-            "type": "(email: string) => void"
+            "type": "(email: string) => void",
+            "description": "Callback when email is successfully submitted"
         },
         "onError": {
             "optional": true,
-            "type": "(error: Error) => void"
+            "type": "(error: Error) => void",
+            "description": "Callback when submission fails"
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disable the component"
         }
     },
     "forbiddenUse": [

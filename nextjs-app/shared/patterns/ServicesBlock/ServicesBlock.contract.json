@@ -62,35 +62,43 @@
     "props": {
         "services": {
             "optional": true,
-            "type": "ServiceItem[]"
+            "type": "ServiceItem[]",
+            "description": "List of services provided"
         },
         "duration": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Project duration or timeline"
         },
         "tools": {
             "optional": true,
-            "type": "ToolIcon[]"
+            "type": "ToolIcon[]",
+            "description": "Tools/technologies used (icon objects)"
         },
         "overviewTitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Overview title (defaults to \"Overview\")"
         },
         "overview": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Overview content (can be string or React node for rich content)"
         },
         "servicesTitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional title for services section (defaults to \"Services\")"
         },
         "durationTitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional title for duration section (defaults to \"Duration\")"
         },
         "toolsTitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional title for tools section (defaults to \"Tools\")"
         },
         "maxWidth": {
             "optional": true,
@@ -101,7 +109,8 @@
                 "lg",
                 "xl",
                 "full"
-            ]
+            ],
+            "description": "Maximum content width"
         },
         "spacing": {
             "optional": true,
@@ -111,11 +120,13 @@
                 "compact",
                 "comfortable",
                 "spacious"
-            ]
+            ],
+            "description": "Vertical spacing"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom CSS class for styling extensions"
         },
         "as": {
             "optional": true,
@@ -124,11 +135,13 @@
                 "article",
                 "div",
                 "section"
-            ]
+            ],
+            "description": "Semantic HTML element to render as"
         },
         "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "ARIA label for section"
         }
     },
     "forbiddenUse": [

@@ -61,7 +61,8 @@
     "props": {
         "items": {
             "optional": false,
-            "type": "AccordionItem[]"
+            "type": "AccordionItem[]",
+            "description": "Accordion sections (id, title, content, optional disabled)."
         },
         "type": {
             "optional": true,
@@ -69,7 +70,8 @@
             "values": [
                 "single",
                 "multiple"
-            ]
+            ],
+            "description": "\"single\" (default) keeps at most one section open — opening another closes\nthe previous. \"multiple\" lets any number stay open for side-by-side reading."
         },
         "variant": {
             "optional": true,
@@ -78,27 +80,33 @@
                 "contained",
                 "enclosed",
                 "divided"
-            ]
+            ],
+            "description": "\"contained\" (default) is a bordered card group with dividers between rows;\n\"enclosed\" is the same outer border but seamless inside (no dividers);\n\"divided\" is flush with hairline separators only, for inline disclosure."
         },
         "defaultOpenId": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Initially open id (uncontrolled, single)."
         },
         "defaultOpenIds": {
             "optional": true,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "Initially open ids (uncontrolled); wins over defaultOpenId when set."
         },
         "openIds": {
             "optional": true,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "Controlled open ids. When set, the parent owns open state."
         },
         "onOpenChange": {
             "optional": true,
-            "type": "(openIds: string[]) => void"
+            "type": "(openIds: string[]) => void",
+            "description": "Called with the full set of open ids whenever it changes."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional utility classes on the container."
         }
     },
     "forbiddenUse": [

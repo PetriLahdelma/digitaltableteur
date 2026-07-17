@@ -41,27 +41,33 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Article title"
         },
         "image": {
             "optional": true,
-            "type": "{\n    src: string;\n    alt: string;\n    caption?: string;\n  }"
+            "type": "{\n    src: string;\n    alt: string;\n    caption?: string;\n  }",
+            "description": "Featured image"
         },
         "author": {
             "optional": true,
-            "type": "{\n    name: string;\n    slug?: string;\n    imageUrl?: string;\n  }"
+            "type": "{\n    name: string;\n    slug?: string;\n    imageUrl?: string;\n  }",
+            "description": "Author information"
         },
         "publishedAt": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Publication date (ISO string)"
         },
         "readTime": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Read time (e.g., \"5 min read\")"
         },
         "tags": {
             "optional": true,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "Article tags"
         },
         "variant": {
             "optional": true,
@@ -70,11 +76,13 @@
                 "contained",
                 "minimal",
                 "full-width"
-            ]
+            ],
+            "description": "Layout variant"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

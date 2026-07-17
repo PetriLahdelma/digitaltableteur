@@ -59,7 +59,8 @@
     "props": {
         "code": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "The code string to highlight."
         },
         "language": {
             "optional": true,
@@ -75,19 +76,23 @@
                 "json",
                 "bash",
                 "markdown"
-            ]
+            ],
+            "description": "Highlighting grammar."
         },
         "showLineNumbers": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Render a line-number gutter."
         },
         "aria-label": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the snippet region."
         },
         "allowCopy": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show the copy button; keep on for reusable code."
         },
         "variant": {
             "optional": true,
@@ -96,15 +101,18 @@
                 "single",
                 "inline",
                 "multi"
-            ]
+            ],
+            "description": "Layout variant: inline token, single line, or multi-line window."
         },
         "maxLines": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Clamp height to this many lines; longer code scrolls. 0 disables the clamp."
         },
         "onCopy": {
             "optional": true,
-            "type": "() => void"
+            "type": "() => void",
+            "description": "Fires after the code is copied to the clipboard."
         }
     },
     "forbiddenUse": [

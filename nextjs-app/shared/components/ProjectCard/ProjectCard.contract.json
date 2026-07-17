@@ -58,23 +58,28 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Project title"
         },
         "slug": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "URL slug for project detail page"
         },
         "thumbnail": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Thumbnail image URL"
         },
         "category": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Project category"
         },
         "tags": {
             "optional": true,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "Project tags"
         },
         "aspectRatio": {
             "optional": true,
@@ -84,7 +89,8 @@
                 "square",
                 "portrait",
                 "landscape"
-            ]
+            ],
+            "description": "Image aspect ratio"
         },
         "titlePosition": {
             "optional": true,
@@ -92,11 +98,13 @@
             "values": [
                 "overlay",
                 "below"
-            ]
+            ],
+            "description": "Title overlay position"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

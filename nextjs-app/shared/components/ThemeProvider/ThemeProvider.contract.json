@@ -36,12 +36,19 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Subtree that receives the theme context."
         },
         "forcedTheme": {
             "optional": true,
             "type": "union",
-            "values": ["light", "dark", "hcb", "hcw"]
+            "values": [
+                "light",
+                "dark",
+                "hcb",
+                "hcw"
+            ],
+            "description": "Pin the theme regardless of stored/system preference (e.g. external embeds)."
         }
     },
     "forbiddenUse": [

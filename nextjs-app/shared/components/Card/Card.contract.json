@@ -104,7 +104,8 @@
                 "default",
                 "muted",
                 "transparent"
-            ]
+            ],
+            "description": "Background variant. All variants keep a transparent border so\nswitching never causes layout jitter.\n- default: surface background with a hairline border\n- muted: recessed light background, no visible border\n- transparent: no background, no border — grouping without weight"
         },
         "padding": {
             "optional": true,
@@ -114,7 +115,8 @@
                 "md",
                 "lg",
                 "none"
-            ]
+            ],
+            "description": "Internal padding step on the space scale (12/16/24px)"
         },
         "as": {
             "optional": true,
@@ -125,55 +127,68 @@
                 "section",
                 "aside",
                 "li"
-            ]
+            ],
+            "description": "Semantic element for the card surface"
         },
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional heading rendered at the top of the card"
         },
         "titleProps": {
             "optional": true,
-            "type": "CardTitleProps"
+            "type": "CardTitleProps",
+            "description": "Heading configuration"
         },
         "description": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional supporting line under the title"
         },
         "descriptionProps": {
             "optional": true,
-            "type": "CardDescriptionProps"
+            "type": "CardDescriptionProps",
+            "description": "Description configuration"
         },
         "headerStart": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Leading header region. Defaults to the `title` heading block when omitted."
         },
         "headerEnd": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Trailing header region (badge, metadata, menu). Canonical replacement for `extra`."
         },
         "extra": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "deprecated": true
         },
         "footerStart": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Leading footer region — the special/destructive action, pinned left."
         },
         "footerEnd": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Trailing footer region — 1–2 action buttons, pinned right."
         },
         "link": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Makes the whole card one link to this href"
         },
         "linkLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the link when title alone is ambiguous"
         },
         "loading": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Skeleton loading state (role=status, aria-busy)"
         },
         "children": {
             "optional": true,

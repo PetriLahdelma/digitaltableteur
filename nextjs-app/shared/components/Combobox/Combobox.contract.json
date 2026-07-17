@@ -91,47 +91,58 @@
     "props": {
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Field label; associates the trigger"
         },
         "options": {
             "optional": false,
-            "type": "ComboboxOption[]"
+            "type": "ComboboxOption[]",
+            "description": "Selectable options"
         },
         "value": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Selected option value (controlled); \"\" shows the placeholder"
         },
         "onValueChange": {
             "optional": false,
-            "type": "(value: string) => void"
+            "type": "(value: string) => void",
+            "description": "Called with the chosen value"
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Explicit control id (wires the label); auto-generated when omitted"
         },
         "placeholder": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Shown when no value is selected"
         },
         "helperText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Assistive text below the field"
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Error message; renders above the helper line and sets aria-invalid"
         },
         "required": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Marks the field required."
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables the control."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Classes on the field wrapper"
         }
     },
     "forbiddenUse": [

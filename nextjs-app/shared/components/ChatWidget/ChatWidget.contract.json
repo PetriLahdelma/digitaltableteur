@@ -51,7 +51,8 @@
         },
         "endpoint": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional override for the API endpoint.\nDefaults to VITE_DONNY_CHAT_ENDPOINT, otherwise falls back to the secure proxy or /api/chat."
         }
     },
     "forbiddenUse": [

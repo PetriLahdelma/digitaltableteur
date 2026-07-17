@@ -47,19 +47,23 @@
     "props": {
         "width": {
             "optional": false,
-            "type": "number"
+            "type": "number",
+            "description": "Width in pixels"
         },
         "height": {
             "optional": false,
-            "type": "number"
+            "type": "number",
+            "description": "Height in pixels"
         },
         "alt": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Alt text for accessibility"
         },
         "caption": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Caption text displayed below the image"
         },
         "variant": {
             "optional": true,
@@ -69,27 +73,33 @@
                 "medium",
                 "dark",
                 "gradient"
-            ]
+            ],
+            "description": "Background color variant"
         },
         "showDimensions": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Display the dimensions on the placeholder"
         },
         "showIcon": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Display an icon on the placeholder"
         },
         "text": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Text to display on the placeholder"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class"
         },
         "style": {
             "optional": true,
-            "type": "React.CSSProperties"
+            "type": "React.CSSProperties",
+            "description": "Inline styles"
         }
     },
     "forbiddenUse": [

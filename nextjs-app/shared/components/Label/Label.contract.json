@@ -102,19 +102,23 @@
     "props": {
         "htmlFor": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "id of the form control this label describes."
         },
         "tooltipText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Native tooltip text; used as a fallback when `title` is not set."
         },
         "required": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Appends a \"*\" marker plus an sr-only \"(required)\" hint."
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Dims the label and shows a not-allowed cursor."
         }
     },
     "forbiddenUse": [

@@ -12,7 +12,7 @@
         "currentPath": {
             "optional": true,
             "type": "string",
-            "description": "Active route used to compute previous and next state; defaults to the navigation runtime pathname."
+            "description": "Active route used to compute the prev/next disabled state. Defaults to the\ncurrent pathname from the router; stories and tests override it to show a\ngiven position in the article sequence."
         },
         "pages": {
             "optional": true,

@@ -67,11 +67,13 @@
         },
         "aria-label": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the navigation landmark"
         },
         "defaultExpandAll": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Expand all branch nodes by default"
         },
         "className": {
             "optional": true,

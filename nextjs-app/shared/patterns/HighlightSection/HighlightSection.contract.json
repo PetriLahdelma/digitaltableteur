@@ -85,19 +85,23 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Section title/headline"
         },
         "overline": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional overline text above title"
         },
         "description": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Supporting description text"
         },
         "cta": {
             "optional": true,
-            "type": "HighlightSectionCTA | HighlightSectionCTA[]"
+            "type": "HighlightSectionCTA | HighlightSectionCTA[]",
+            "description": "CTA button configuration (up to 3 items)"
         },
         "variant": {
             "optional": true,
@@ -107,7 +111,8 @@
                 "solid",
                 "gradient",
                 "dots"
-            ]
+            ],
+            "description": "Background variant"
         },
         "size": {
             "optional": true,
@@ -116,23 +121,28 @@
                 "compact",
                 "comfortable",
                 "spacious"
-            ]
+            ],
+            "description": "Section size (affects padding and spacing)"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className for additional styling"
         },
         "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "ARIA label for the section"
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section id for anchor linking"
         },
         "donnyTarget": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Donny site action target id"
         }
     },
     "forbiddenUse": [

@@ -85,15 +85,18 @@
             "values": [
                 "horizontal",
                 "vertical"
-            ]
+            ],
+            "description": "Horizontal rule or vertical separator"
         },
         "decorative": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "When true, removed from accessibility tree (purely visual)"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional spacing token class — use margin utilities on className"
         }
     },
     "forbiddenUse": [

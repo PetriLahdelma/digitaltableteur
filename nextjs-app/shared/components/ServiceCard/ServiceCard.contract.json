@@ -72,19 +72,23 @@
     "props": {
         "icon": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Icon element displayed at the top"
         },
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Card title"
         },
         "description": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Card description"
         },
         "href": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional link URL"
         },
         "variant": {
             "optional": true,
@@ -94,7 +98,8 @@
                 "default",
                 "bordered",
                 "elevated"
-            ]
+            ],
+            "description": "Card style variant"
         },
         "iconPosition": {
             "optional": true,
@@ -102,15 +107,18 @@
             "values": [
                 "left",
                 "top"
-            ]
+            ],
+            "description": "Icon position"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         },
         "donnyTarget": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Donny site action target id when this card is a spotlight anchor"
         }
     },
     "forbiddenUse": [

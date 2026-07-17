@@ -188,15 +188,18 @@
     "props": {
         "label": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Main label rendered on the primary segment"
         },
         "onPrimaryClick": {
             "optional": true,
-            "type": "React.MouseEventHandler<HTMLButtonElement>"
+            "type": "React.MouseEventHandler<HTMLButtonElement>",
+            "description": "Primary action invoked when clicking the main segment"
         },
         "options": {
             "optional": false,
-            "type": "SplitButtonOption[]"
+            "type": "SplitButtonOption[]",
+            "description": "List of alternative actions shown in the dropdown"
         },
         "menuAlign": {
             "optional": true,
@@ -204,19 +207,23 @@
             "values": [
                 "end",
                 "start"
-            ]
+            ],
+            "description": "Alignment of the dropdown menu along the toggle edge"
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disable both segments"
         },
         "toggleLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible label for the dropdown trigger"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional className forwarded to the outer wrapper"
         }
     },
     "forbiddenUse": [

@@ -130,7 +130,8 @@
                 "md",
                 "lg",
                 "inherit"
-            ]
+            ],
+            "description": "Size."
         },
         "underline": {
             "optional": true,
@@ -139,7 +140,8 @@
                 "always",
                 "hover",
                 "none"
-            ]
+            ],
+            "description": "Wavy underline mode. \"always\" shows it permanently, \"hover\" reveals it\non hover and keyboard focus (nav lists like the site footer), \"none\"\nomits it entirely."
         }
     },
     "forbiddenUse": [

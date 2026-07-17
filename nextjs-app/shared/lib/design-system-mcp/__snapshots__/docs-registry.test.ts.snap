@@ -1202,6 +1202,7 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
       "WithIcons",
       "WithSubmenu",
       "Disabled",
+      "Alignments",
       "AsLinks",
       "Example",
     ],

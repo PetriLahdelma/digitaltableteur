@@ -66,35 +66,43 @@
     "props": {
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Visible field label"
         },
         "value": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Value synced into the field; typing still works after it is set"
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Validation error message; renders above the helper line"
         },
         "helperText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Helper copy below the field"
         },
         "onChange": {
             "optional": true,
-            "type": "(value: string) => void"
+            "type": "(value: string) => void",
+            "description": "Change handler receiving the raw string value"
         },
         "animateResize": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Enable smooth animated auto-growing (default: false)"
         },
         "minRows": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Minimum number of rows when animateResize is enabled"
         },
         "maxRows": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Maximum number of rows when animateResize is enabled"
         }
     },
     "forbiddenUse": [

@@ -45,15 +45,18 @@
     "props": {
         "titleKey": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Translation key for the window title"
         },
         "actionLabelKey": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional label for the action button"
         },
         "onAction": {
             "optional": true,
-            "type": "() => void"
+            "type": "() => void",
+            "description": "Called when the action button is pressed"
         },
         "density": {
             "optional": true,
@@ -61,15 +64,18 @@
             "values": [
                 "compact",
                 "comfortable"
-            ]
+            ],
+            "description": "Density variant"
         },
         "children": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Content to render inside the frame"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional className passthrough"
         }
     },
     "forbiddenUse": [

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T11:23:39.059Z",
+  "generatedAt": "2026-07-17T14:13:09.993Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -3467,7 +3467,7 @@
             "sleepy",
             "sleeping"
           ],
-          "description": "Current avatar state"
+          "description": "Current expression or assistant lifecycle state."
         },
         "size": {
           "optional": true,
@@ -3478,77 +3478,77 @@
             "lg",
             "xl"
           ],
-          "description": "Size variant"
+          "description": "Rendered avatar size."
         },
         "className": {
           "optional": true,
           "type": "string",
-          "description": "Additional CSS class"
+          "description": "Additional CSS class."
         },
         "onTransitionEnd": {
           "optional": true,
           "type": "() => void",
-          "description": "Callback when transition animation ends"
+          "description": "Called when the state transition animation ends."
         },
         "showLabel": {
           "optional": true,
           "type": "boolean",
-          "description": "Whether to show state label (for debugging)"
+          "description": "Shows the current state label for diagnostics."
         },
         "trackMouse": {
           "optional": true,
           "type": "boolean",
-          "description": "Enable eye tracking to follow mouse cursor"
+          "description": "Makes the eyes follow the pointer."
         },
         "proximitySelectors": {
           "optional": true,
           "type": "string[]",
-          "description": "CSS selectors for elements to detect proximity to (triggers curious/playful states)"
+          "description": "CSS selectors whose pointer proximity can trigger curious or playful behavior."
         },
         "onProximityChange": {
           "optional": true,
           "type": "(isNearTarget: boolean, targetSelector?: string) => void",
-          "description": "Callback when proximity to tracked elements changes"
+          "description": "Called when proximity to a tracked target changes."
         },
         "proximityThreshold": {
           "optional": true,
           "type": "number",
-          "description": "Distance threshold for proximity detection (default 150px)"
+          "description": "Pointer proximity threshold in pixels (default 150)."
         },
         "enableIdleExpressions": {
           "optional": true,
           "type": "boolean",
-          "description": "Enable random idle expressions to make Donny feel more alive"
+          "description": "Enables randomized idle expressions."
         },
         "idleExpressionInterval": {
           "optional": true,
           "type": "number",
-          "description": "Base interval for idle expressions in ms (default 8000, randomized ±50%)"
+          "description": "Base idle-expression interval in milliseconds (default 8000), randomized by 50 percent."
         },
         "isSpeaking": {
           "optional": true,
           "type": "boolean",
-          "description": "Animate mouth as if speaking (used during streaming responses)"
+          "description": "Animates the mouth during streaming responses."
         },
         "enableSleepDetection": {
           "optional": true,
           "type": "boolean",
-          "description": "Enable sleep detection when mouse is idle (default false)"
+          "description": "Enables sleepy and sleeping states after pointer inactivity."
         },
         "sleepyDelay": {
           "optional": true,
           "type": "number",
-          "description": "Time in ms before Donny gets sleepy (default 120000 = 2 min)"
+          "description": "Inactivity delay before the sleepy state, in milliseconds (default 120000)."
         },
         "sleepDelay": {
           "optional": true,
           "type": "number",
-          "description": "Time in ms before Donny falls asleep (default 150000 = 2.5 min)"
+          "description": "Inactivity delay before the sleeping state, in milliseconds (default 150000)."
         },
         "decorative": {
           "optional": true,
           "type": "boolean",
-          "description": "When true, omit role/label so a parent control owns the accessible name (e.g. chat toggle)"
+          "description": "Removes role and label when a parent control owns the accessible name (e.g. the chat toggle)."
         }
       },
       "propRelationships": [],
@@ -9739,7 +9739,7 @@
             "md",
             "lg"
           ],
-          "description": "Size."
+          "description": "Control size."
         },
         "onCheckedChange": {
           "optional": true,
