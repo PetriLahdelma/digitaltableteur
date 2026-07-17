@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   NativeElement,
+  TriggerButton,
   assertNative,
   exampleStory,
   forcedColorsStory,
@@ -30,12 +31,12 @@ export const Default: Story = { play: assertNative("dt-visually-hidden") };
 export const Example: Story = {
   ...exampleStory,
   render: () => (
-    <button type="button">
+    <TriggerButton>
       Save
       <NativeElement tagName="dt-visually-hidden">
         Saves your profile changes
       </NativeElement>
-    </button>
+    </TriggerButton>
   ),
 };
 export const ForcedColors: Story = { ...forcedColorsStory };

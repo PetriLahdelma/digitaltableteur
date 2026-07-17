@@ -6,7 +6,7 @@ import {
   type DtToastStackItem,
   type DtToastStackPosition,
 } from "../../../../../packages/web-components/src/native/toast-stack";
-import { assertNative, nativeStoryParameters } from "../NativeStory";
+import { TriggerButton, assertNative, nativeStoryParameters } from "../NativeStory";
 
 if (!customElements.get("dt-toast")) {
   customElements.define("dt-toast", DtToastElement);
@@ -91,9 +91,7 @@ function PlaygroundHarness({ position, max }: Pick<Args, "position" | "max">) {
 
   return (
     <div style={{ minHeight: "60vh", padding: "1rem" }}>
-      <button type="button" onClick={push}>
-        Push toast
-      </button>
+      <TriggerButton onClick={push}>Push toast</TriggerButton>
       <NativeToastStack
         max={max}
         onDismiss={dismiss}

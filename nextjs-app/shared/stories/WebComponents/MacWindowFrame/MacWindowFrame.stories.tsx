@@ -4,6 +4,7 @@ import { fn } from "storybook/test";
 import {
   NativeElement,
   Stage,
+  TriggerButton,
   assertNative,
   exampleStory,
   forcedColorsStory,
@@ -129,9 +130,7 @@ export const Example: Story = {
     <Stage width="min(44rem, 90vw)">
       <NativeElement tagName="dt-mac-window-frame" attributes={{ density: "comfortable" }}>
         <span slot="title">Showcase transcript</span>
-        <button slot="toolbar" type="button">
-          Download
-        </button>
+        <TriggerButton slot="toolbar">Download</TriggerButton>
         <pre
           slot="content"
           style={{

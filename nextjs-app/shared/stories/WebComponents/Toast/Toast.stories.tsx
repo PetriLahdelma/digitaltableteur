@@ -7,7 +7,7 @@ import {
   type DtToastTone,
 } from "../../../../../packages/web-components/src/native/toast";
 import { DtToastStackElement } from "../../../../../packages/web-components/src/native/toast-stack";
-import { assertNative, nativeStoryParameters } from "../NativeStory";
+import { Row, TriggerButton, assertNative, nativeStoryParameters } from "../NativeStory";
 
 if (!customElements.get("dt-toast")) {
   customElements.define("dt-toast", DtToastElement);
@@ -74,9 +74,7 @@ function DefaultDemo() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)}>
-        Show Toast
-      </button>
+      <TriggerButton onClick={() => setOpen(true)}>Show Toast</TriggerButton>
       <NativeToast
         {...baseArgs}
         message="Toast notification!"
@@ -154,11 +152,13 @@ export const Tones: Story = {
     };
     return (
       <>
-        {(Object.keys(messages) as DtToastTone[]).map((value) => (
-          <button key={value} type="button" onClick={() => setTone(value)}>
-            {value}
-          </button>
-        ))}
+        <Row>
+          {(Object.keys(messages) as DtToastTone[]).map((value) => (
+            <TriggerButton key={value} onClick={() => setTone(value)}>
+              {value}
+            </TriggerButton>
+          ))}
+        </Row>
         <NativeToast
           {...baseArgs}
           duration={60_000}
@@ -189,11 +189,13 @@ export const Placement: Story = {
     const [position, setPosition] = useState<DtToastPosition | null>(null);
     return (
       <>
-        {positions.map((value) => (
-          <button key={value} type="button" onClick={() => setPosition(value)}>
-            {value}
-          </button>
-        ))}
+        <Row>
+          {positions.map((value) => (
+            <TriggerButton key={value} onClick={() => setPosition(value)}>
+              {value}
+            </TriggerButton>
+          ))}
+        </Row>
         <NativeToast
           {...baseArgs}
           duration={60_000}
@@ -214,9 +216,9 @@ export const ProviderDriven: Story = {
     const [open, setOpen] = useState(false);
     return (
       <>
-        <button type="button" onClick={() => setOpen(true)}>
+        <TriggerButton onClick={() => setOpen(true)}>
           Save settings
-        </button>
+        </TriggerButton>
         <NativeToast
           {...baseArgs}
           duration={4000}

@@ -10,6 +10,7 @@ import {
   forcedColorsStory,
   NativeElement,
   nativeStoryParameters,
+  TriggerButton,
 } from "../NativeStory";
 
 if (!globalThis.customElements?.get("dt-command-palette")) {
@@ -86,9 +87,9 @@ function CommandPaletteHarness(args: Args) {
 
   return (
     <div ref={rootRef} style={{ minHeight: "60vh", padding: "1rem" }}>
-      <button type="button" onClick={() => setOpen(true)}>
+      <TriggerButton onClick={() => setOpen(true)}>
         Open command palette
-      </button>
+      </TriggerButton>
       <NativeElement
         tagName="dt-command-palette"
         attributes={{

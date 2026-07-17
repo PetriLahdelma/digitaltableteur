@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   NativeElement,
+  TriggerButton,
   assertNative,
   exampleStory,
   forcedColorsStory,
@@ -108,8 +109,8 @@ export const HorizontalCluster: Story = {
       tagName="dt-stack"
       attributes={{ direction: "horizontal", gap: "sm", align: "center" }}
     >
-      <button type="button">Save</button>
-      <button type="button">Cancel</button>
+      <TriggerButton>Save</TriggerButton>
+      <TriggerButton>Cancel</TriggerButton>
       <span>Last saved 2 min ago</span>
     </NativeElement>
   ),
