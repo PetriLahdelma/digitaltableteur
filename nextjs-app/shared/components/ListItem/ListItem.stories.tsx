@@ -23,6 +23,9 @@ const meta = {
     selected: false,
     disabled: false,
     highlighted: false,
+    // Seeded so the text control renders an input instead of a dead
+    // "Set string" button ("" is the no-op default).
+    className: "",
   },
   argTypes: {
     tone: {

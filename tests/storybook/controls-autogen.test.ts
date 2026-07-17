@@ -13,11 +13,24 @@ function checkboxArgs(initialArgs: Record<string, unknown>) {
 }
 
 describe("contract-driven Storybook args", () => {
-  it("seeds controlled and uncontrolled rows so both controls stay operable", () => {
+  it("seeds the uncontrolled row and leaves the controlled half unseeded", () => {
     const args = checkboxArgs({});
 
-    expect(args).toHaveProperty("checked", false);
+    // `checked` is the controlled half of the checked/defaultChecked pair:
+    // seeding it locks the canvas into controlled mode (defaultChecked
+    // ignored, clicking dead) — it stays unseeded and its panel row hidden.
+    expect(args).not.toHaveProperty("checked");
     expect(args).toHaveProperty("defaultChecked", false);
+  });
+
+  it("hides the controlled half's panel row", () => {
+    const argTypes = autogenArgTypes({
+      title: "Forms/Checkbox",
+      argTypes: {},
+    } as never) as Record<string, { table?: { disable?: boolean } }>;
+
+    expect(argTypes.checked?.table?.disable).toBe(true);
+    expect(argTypes.defaultChecked?.table?.disable).not.toBe(true);
   });
 
   it("preserves an explicitly authored uncontrolled default", () => {

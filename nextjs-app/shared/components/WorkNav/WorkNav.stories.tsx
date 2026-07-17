@@ -45,6 +45,9 @@ const meta: Meta<typeof WorkNav> = {
   },
   args: {
     currentPath: "/work/new-things-co",
+    // Seeded so the boolean control renders a toggle instead of a dead
+    // "Set boolean" button (the component's no-op default).
+    disabled: false,
   },
 };
 

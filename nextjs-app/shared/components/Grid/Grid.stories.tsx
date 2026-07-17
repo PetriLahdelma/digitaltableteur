@@ -76,6 +76,15 @@ const meta = {
       table: { category: "Content", type: { summary: "ReactNode" } },
     },
     columns: { control: "number", description: "Column count or template" },
+    // Responsive rungs are viewport-dependent: a panel knob at the default
+    // viewport looks inert (tracks only change past 768/1024/1440/1920px),
+    // and the default canvas stays deliberately scalar. Hidden by design —
+    // the ResponsiveColumns story demos them; audit:controls carries the
+    // matching HIDDEN_EXEMPT entry.
+    tabletColumns: { table: { disable: true } },
+    desktopColumns: { table: { disable: true } },
+    wideColumns: { table: { disable: true } },
+    ultraColumns: { table: { disable: true } },
   },
   args: defaultArgs,
 } satisfies Meta<typeof Grid>;

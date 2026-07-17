@@ -29,6 +29,10 @@ const meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
     docs: { description: { component: contract.description } },
+    // The chat toggle is a React.lazy chunk: AT capture must wait for it or
+    // the snapshot flips with worker cache warmth (cold page = no button,
+    // warmed page = button). See test-runner.ts atSnapshot handling.
+    atSnapshot: { waitForSelector: "button[aria-label^=\"Chat\"]" },
   },
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   args: {},

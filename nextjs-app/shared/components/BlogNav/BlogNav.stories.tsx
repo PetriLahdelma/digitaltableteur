@@ -43,6 +43,9 @@ const meta: Meta<typeof BlogNav> = {
   },
   args: {
     currentPath: "/blog/digital-craftsmanship",
+    // Seeded so the boolean control renders a toggle instead of a dead
+    // "Set boolean" button (the component's no-op default).
+    disabled: false,
   },
 };
 
