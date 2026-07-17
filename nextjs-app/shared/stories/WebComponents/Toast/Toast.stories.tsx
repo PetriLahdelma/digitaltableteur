@@ -7,7 +7,12 @@ import {
   type DtToastTone,
 } from "../../../../../packages/web-components/src/native/toast";
 import { DtToastStackElement } from "../../../../../packages/web-components/src/native/toast-stack";
-import { Row, TriggerButton, assertNative, nativeStoryParameters } from "../NativeStory";
+import {
+  NativeElement,
+  Row,
+  assertNative,
+  nativeStoryParameters,
+} from "../NativeStory";
 
 if (!customElements.get("dt-toast")) {
   customElements.define("dt-toast", DtToastElement);
@@ -74,7 +79,11 @@ function DefaultDemo() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <TriggerButton onClick={() => setOpen(true)}>Show Toast</TriggerButton>
+      <NativeElement
+        tagName="dt-button"
+        attributes={{ label: "Show Toast" }}
+        onClick={() => setOpen(true)}
+      />
       <NativeToast
         {...baseArgs}
         message="Toast notification!"
@@ -128,7 +137,7 @@ export const Default: Story = {
   render: () => <DefaultDemo />,
   play: async ({ canvasElement }) => {
     await assertNative("dt-toast")({ canvasElement });
-    const button = canvasElement.querySelector<HTMLButtonElement>("button");
+    const button = canvasElement.querySelector<HTMLElement>("dt-button");
     await userEvent.click(button!);
     await waitFor(() => {
       const toast = canvasElement.querySelector<DtToastElement>("dt-toast");
@@ -154,9 +163,12 @@ export const Tones: Story = {
       <>
         <Row>
           {(Object.keys(messages) as DtToastTone[]).map((value) => (
-            <TriggerButton key={value} onClick={() => setTone(value)}>
-              {value}
-            </TriggerButton>
+            <NativeElement
+              key={value}
+              tagName="dt-button"
+              attributes={{ label: value, variant: "secondary", size: "sm" }}
+              onClick={() => setTone(value)}
+            />
           ))}
         </Row>
         <NativeToast
@@ -191,9 +203,12 @@ export const Placement: Story = {
       <>
         <Row>
           {positions.map((value) => (
-            <TriggerButton key={value} onClick={() => setPosition(value)}>
-              {value}
-            </TriggerButton>
+            <NativeElement
+              key={value}
+              tagName="dt-button"
+              attributes={{ label: value, variant: "secondary", size: "sm" }}
+              onClick={() => setPosition(value)}
+            />
           ))}
         </Row>
         <NativeToast
@@ -216,9 +231,11 @@ export const ProviderDriven: Story = {
     const [open, setOpen] = useState(false);
     return (
       <>
-        <TriggerButton onClick={() => setOpen(true)}>
-          Save settings
-        </TriggerButton>
+        <NativeElement
+          tagName="dt-button"
+          attributes={{ label: "Save settings" }}
+          onClick={() => setOpen(true)}
+        />
         <NativeToast
           {...baseArgs}
           duration={4000}

@@ -74,8 +74,7 @@ const styles = `
       transform var(--duration-instant) var(--ease-out-cubic);
   }
   .primary:focus-visible,
-  .toggle:focus-visible,
-  .menuItem:focus-visible {
+  .toggle:focus-visible {
     outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
     outline-offset: 2px;
   }
@@ -207,13 +206,19 @@ const styles = `
   .menuWrap { position: relative; display: flex; }
   .menuItem {
     display: flex;
+    box-sizing: border-box;
     min-block-size: 2.5rem;
     padding-block: var(--space-internal-8);
     padding-inline: var(--space-internal-12);
+    flex: 1 1 auto;
+    inline-size: 100%;
     align-items: center;
     gap: var(--space-internal-8);
     border: none;
     border-radius: var(--radius-md);
+    /* Focus is signalled by the data-highlighted row background, matching
+       the React/Radix menu; forced-colors keeps its explicit ring. */
+    outline: none;
     background: none;
     color: var(--color-dark);
     font: inherit;

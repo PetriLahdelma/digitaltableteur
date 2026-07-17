@@ -73,9 +73,12 @@ const styles = `
   .item,
   .slotHost::slotted([data-dt-menu-item]) {
     display: flex;
+    box-sizing: border-box;
     min-block-size: 2.5rem;
     padding-block: var(--space-internal-8);
     padding-inline: var(--space-internal-12);
+    flex: 1 1 auto;
+    inline-size: 100%;
     align-items: center;
     gap: var(--space-internal-8);
     border: none;
@@ -102,10 +105,11 @@ const styles = `
     color: var(--color-muted);
     cursor: not-allowed;
   }
+  /* Focus is signalled by the data-highlighted row background (kept in sync
+     by highlightControl), matching the React/Radix menu; no extra ring. */
   .item:focus-visible,
   .slotHost::slotted([data-dt-menu-item]:focus-visible) {
-    outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
-    outline-offset: -1px;
+    outline: none;
   }
   .itemIcon,
   .itemTrailing {

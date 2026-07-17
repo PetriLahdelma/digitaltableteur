@@ -1003,3 +1003,47 @@ describe("existing native feedback elements", () => {
     );
   });
 });
+
+describe("trigger and sizing review regressions (#1228 follow-up)", () => {
+  it("mirrors menu popup state from the dt-button host onto its inner control", () => {
+    const button = document.createElement("dt-button") as DtButtonElement;
+    button.label = "Actions";
+    document.body.append(button);
+
+    // dt-menu writes these onto the slotted trigger element (the host).
+    button.setAttribute("aria-haspopup", "menu");
+    button.setAttribute("aria-expanded", "true");
+    button.setAttribute("aria-controls", "menu-panel");
+
+    const control = button.shadowRoot?.querySelector('[part="control"]');
+    expect(control).toHaveAttribute("aria-haspopup", "menu");
+    expect(control).toHaveAttribute("aria-expanded", "true");
+    expect(control).toHaveAttribute("aria-controls", "menu-panel");
+
+    button.setAttribute("aria-expanded", "false");
+    expect(
+      button.shadowRoot?.querySelector('[part="control"]'),
+    ).toHaveAttribute("aria-expanded", "false");
+    button.remove();
+  });
+
+  it("scales the empty-state icon with size like the React iconSizeMap", () => {
+    for (const [size, iconSize] of [
+      ["sm", "lg"],
+      ["md", "xl"],
+      ["lg", "2xl"],
+    ] as const) {
+      const element = document.createElement(
+        "dt-empty-state",
+      ) as DtEmptyStateElement;
+      element.setAttribute("title-text", "No results");
+      element.setAttribute("icon", "magnifying-glass");
+      element.setAttribute("size", size);
+      document.body.append(element);
+      expect(
+        element.shadowRoot?.querySelector("dt-icon"),
+      ).toHaveAttribute("size", iconSize);
+      element.remove();
+    }
+  });
+});
