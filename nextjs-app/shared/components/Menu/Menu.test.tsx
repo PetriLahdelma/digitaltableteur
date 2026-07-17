@@ -107,4 +107,51 @@ describe("Menu", () => {
       await axe(document.body, { rules: { region: { enabled: false } } }),
     ).toHaveNoViolations();
   });
+
+  it("renders meta content exposed to AT and maps deprecated trailing onto meta", async () => {
+    render(
+      <Menu defaultOpen>
+        <MenuTrigger asChild>
+          <button type="button">Actions</button>
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem meta="⌘K">Search</MenuItem>
+          <MenuItem trailing="legacy">Old</MenuItem>
+        </MenuContent>
+      </Menu>,
+    );
+
+    const metaShortcut = screen.getByText("⌘K");
+    expect(metaShortcut).toBeVisible();
+    const metaWrapper = metaShortcut.closest('[data-slot="meta"]');
+    expect(metaWrapper).not.toBeNull();
+    expect(metaWrapper).not.toHaveAttribute("aria-hidden");
+
+    const legacy = screen.getByText("legacy");
+    expect(legacy.closest('[data-slot="meta"]')).not.toBeNull();
+  });
+
+  it("applies destructive tone and selected check through MenuItem", async () => {
+    render(
+      <Menu defaultOpen>
+        <MenuTrigger asChild>
+          <button type="button">Actions</button>
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem tone="destructive">Delete</MenuItem>
+          <MenuItem selected>Finnish</MenuItem>
+        </MenuContent>
+      </Menu>,
+    );
+
+    const deleteItem = screen.getByText("Delete").closest('[role="menuitem"]');
+    expect(deleteItem?.querySelector('[class*="destructive"]')).not.toBeNull();
+
+    const finnishItem = screen
+      .getByText("Finnish")
+      .closest('[role="menuitem"]');
+    const check = finnishItem?.querySelector('[data-slot="check"]');
+    expect(check).not.toBeNull();
+    expect(check).toHaveAttribute("aria-hidden", "true");
+  });
 });

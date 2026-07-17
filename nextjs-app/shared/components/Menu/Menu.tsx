@@ -3,6 +3,7 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as React from "react";
 import Icon from "@dt/Icon";
+import ListItem from "@dt/ListItem";
 import styles from "./Menu.module.css";
 
 const cx = (...classes: Array<string | false | undefined>): string =>
@@ -123,37 +124,20 @@ export function MenuContent({
 }
 MenuContent.displayName = "MenuContent";
 
-interface ItemBodyProps {
-  icon?: React.ReactNode;
-  trailing?: React.ReactNode;
-  children: React.ReactNode;
-}
-
-/** Shared item layout: fixed leading-icon gutter, flexible label, muted trailing. */
-function ItemBody({ icon, trailing, children }: ItemBodyProps) {
-  return (
-    <>
-      {icon != null ? (
-        <span className={styles.itemIcon} aria-hidden="true" data-slot="icon">
-          {icon}
-        </span>
-      ) : null}
-      <span className={styles.itemLabel}>{children}</span>
-      {trailing != null ? (
-        <span className={styles.itemTrailing} aria-hidden="true">
-          {trailing}
-        </span>
-      ) : null}
-    </>
-  );
-}
-
 export interface MenuItemProps {
   children: React.ReactNode;
   /** Leading icon node; rendered in a fixed gutter so labels align in a column. */
   icon?: React.ReactNode;
-  /** Trailing content such as a shortcut hint; muted and right-aligned. */
+  /** @deprecated Use `meta` (exposed to AT) or `trailingIcon`. Maps onto `meta`. */
   trailing?: React.ReactNode;
+  /** End-aligned secondary content: muted text, Badge, Kbd, StatusDot, value. */
+  meta?: React.ReactNode;
+  /** Trailing icon after meta (chevron, external-link). */
+  trailingIcon?: React.ReactNode;
+  /** Renders the check indicator; pair with your own aria semantics if needed. */
+  selected?: boolean;
+  /** Destructive actions (deletions) get the error treatment. */
+  tone?: "neutral" | "destructive";
   disabled?: boolean;
   /** Selection handler, sync or async. The menu closes after select. */
   onSelect?: () => void | Promise<void>;
@@ -166,15 +150,25 @@ export function MenuItem({
   children,
   icon,
   trailing,
+  meta,
+  trailingIcon,
+  selected,
+  tone,
   disabled,
   onSelect,
   href,
   className,
 }: MenuItemProps) {
   const body = (
-    <ItemBody icon={icon} trailing={trailing}>
+    <ListItem
+      icon={icon}
+      meta={meta ?? trailing}
+      trailingIcon={trailingIcon}
+      selected={selected}
+      tone={tone}
+    >
       {children}
-    </ItemBody>
+    </ListItem>
   );
 
   if (href) {
@@ -264,12 +258,12 @@ export function MenuSubTrigger({
       className={cx(styles.item, styles.subTrigger, className)}
       disabled={disabled}
     >
-      <ItemBody
+      <ListItem
         icon={icon}
-        trailing={<Icon name="caret-right" ariaLabel="" size="sm" />}
+        trailingIcon={<Icon name="caret-right" ariaLabel="" size="sm" />}
       >
         {children}
-      </ItemBody>
+      </ListItem>
     </DropdownMenu.SubTrigger>
   );
 }
