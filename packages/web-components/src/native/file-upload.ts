@@ -131,7 +131,10 @@ const styles = `
   }
 
   .summaryField::placeholder {
-    color: var(--color-muted-light, GrayText);
+    /* --color-muted, not muted-light: active placeholder text is real text
+       (no WCAG inactive-control exemption) and must meet 4.5:1 — matches the
+       React shared-field placeholder convention. */
+    color: var(--color-muted, GrayText);
     opacity: 1;
   }
 
@@ -160,7 +163,10 @@ const styles = `
   .summaryField:disabled,
   .editorialTrigger:disabled {
     background: var(--color-disabled-bg-light, #eee);
-    color: var(--color-muted-light, GrayText);
+    /* Canonical disabled pair (project convention): disabled controls use the
+       --color-disabled-* tokens; contrast is intentionally sub-AA per the
+       WCAG 1.4.3 inactive-control exemption. */
+    color: var(--color-disabled-placeholder, GrayText);
   }
 
   .editorialTrigger {
@@ -173,7 +179,8 @@ const styles = `
   }
 
   .editorialPlaceholder {
-    color: var(--color-muted-light, GrayText);
+    /* --color-muted, not muted-light: see .summaryField::placeholder. */
+    color: var(--color-muted, GrayText);
   }
 
   .actions {

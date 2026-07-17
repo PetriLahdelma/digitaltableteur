@@ -1,6 +1,6 @@
 import contract from "./Button.contract.json";
 import { action } from "storybook/actions";
-import { userEvent, within, expect } from "storybook/test";
+import { expect, fn, userEvent, within } from "storybook/test";
 import React from "react";
 import { Meta, StoryFn, type StoryObj } from "@storybook/react-vite";
 import Button from "@dt/Button";
@@ -227,12 +227,18 @@ export const Default = Primary;
 Primary.args = {
   variant: "primary",
   children: <Label tKey="buttonPrimary" />,
+  // fn() spy: the play asserts toHaveBeenCalled(), which throws
+  // "not a spy" on a plain action-logger arg in Storybook 10.
+  onClick: fn(),
 };
 Primary.play = async ({ canvasElement, args }) => {
   const canvas = within(canvasElement);
   const button = canvas.getByRole("button");
   await userEvent.click(button);
   expect(args.onClick).toHaveBeenCalled();
+  // Keyboard reachability: the click leaves the button focused, so reset
+  // focus first — tab() would otherwise move focus OFF the button.
+  button.blur();
   await userEvent.tab();
   expect(button).toHaveFocus();
 };

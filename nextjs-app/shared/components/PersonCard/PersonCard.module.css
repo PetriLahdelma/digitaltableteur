@@ -117,6 +117,12 @@
   font-family: var(--font-text);
   color: var(--color-white);
 }
+
+.personGrid:global(.custom-person-card) a {
+  /* The demo darkens the card surface (--color-muted); links must flip to
+     white with the rest of the text or they fall to 3.2:1 contrast. */
+  color: var(--color-white);
+}
 /* stylelint-enable selector-pseudo-class-no-unknown, selector-class-pattern */
 
 @media (width <= 768px) {

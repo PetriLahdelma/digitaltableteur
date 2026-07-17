@@ -159,6 +159,12 @@ Disabled.args = {
   children: "storyLabelDisabled",
   disabled: true,
 };
+// Documented axe exemption (see Label.spec.md): the muted disabled-label
+// color is intentionally sub-AA — WCAG 1.4.3 exempts text that is part of
+// an inactive control, but axe cannot tell a label belongs to one.
+Disabled.parameters = {
+  a11y: { options: { rules: [{ id: "color-contrast", enabled: false }] } },
+};
 
 Default.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);

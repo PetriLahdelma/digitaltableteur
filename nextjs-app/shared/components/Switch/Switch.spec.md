@@ -31,3 +31,9 @@ not a checkbox.
 - Label and HelperText composition is internal — the consumer passes
   strings, the component owns the layout. Different from Checkbox, where
   the consumer composes the surrounding atoms manually.
+- Axe exemption (documented): while `loading` the control is inert
+  (interaction blocked, `aria-busy`) and its label takes the muted
+  disabled colour, intentionally sub-AA (3.19:1). WCAG 1.4.3 exempts
+  text that is part of an inactive control; axe cannot infer the label's
+  association, so the Loading story disables the color-contrast rule with
+  a pointer to this note. Do not reuse the muted colour for active text.
