@@ -148,13 +148,16 @@ export const Playground: Story = {
     linkedinUrl: "https://linkedin.com/in/sarahjohnson",
   },
 };
+// Default is a StoryFn (a function): spreading it copies nothing, so
+// `...Default` produced render-less stories that mounted an empty
+// Testimonial. Use it as the render function instead.
 export const Example = {
   tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
-  ...Default,
+  render: Default,
 };
 export const ForcedColors = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
-  ...Default,
+  render: Default,
 };

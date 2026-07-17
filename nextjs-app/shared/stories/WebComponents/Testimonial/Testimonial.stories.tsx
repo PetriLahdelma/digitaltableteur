@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   NativeElement,
-  Stage,
   assertNative,
   exampleStory,
   forcedColorsStory,
@@ -17,21 +16,21 @@ type Args = {
   avatarUrl: string;
 };
 
+// No width Stage: the React stories render the bare full-width testimonial
+// on the padded canvas, and the rendered-parity gate compares them 1:1.
 function Testimonial(args: Args) {
   return (
-    <Stage width="40rem">
-      <NativeElement
-        tagName="dt-testimonial"
-        attributes={{
-          quote: args.quote,
-          name: args.name,
-          "person-title": args.title,
-          company: args.company,
-          "linkedin-url": args.linkedinUrl,
-          "avatar-url": args.avatarUrl,
-        }}
-      />
-    </Stage>
+    <NativeElement
+      tagName="dt-testimonial"
+      attributes={{
+        quote: args.quote,
+        name: args.name,
+        "person-title": args.title,
+        company: args.company,
+        "linkedin-url": args.linkedinUrl,
+        "avatar-url": args.avatarUrl,
+      }}
+    />
   );
 }
 

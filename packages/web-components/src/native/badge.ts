@@ -16,13 +16,15 @@ export type DtBadgeSize = (typeof SIZES)[number];
 
 const toneIcons: Partial<Record<DtBadgeTone, string>> = {
   error: "x-circle",
-  warning: "warning-circle",
+  warning: "warning",
   success: "check-circle",
   info: "info",
 };
 
 const styles = `
-  :host { display: inline-block; vertical-align: middle; }
+  /* inline-flex like the React badge root: inline-block wraps the badge in a
+     line box whose leading adds a half pixel around icon content. */
+  :host { display: inline-flex; vertical-align: middle; }
   :host([hidden]) { display: none; }
   .badge { box-sizing: border-box; display: inline-flex; width: fit-content; height: 40px; padding: 0 var(--space-internal-16); align-items: center; gap: 0.25em; border: 2px solid transparent; border-radius: 999px; font-family: var(--primary-body-font); font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; }
   .sm { height: 32px; padding-inline: var(--space-internal-12); font-size: 0.75rem; }
@@ -76,11 +78,15 @@ export class DtBadgeElement extends DigitaltableteurElement {
   set variant(value: DtBadgeVariant) {
     reflectAttribute(this, "variant", value);
   }
-  get tone(): DtBadgeTone {
-    return enumAttribute(this, "tone", TONES, "neutral");
+  /**
+   * Tri-state like the React Badge's optional tone: an absent attribute means
+   * NO tone (the plain variant treatment), which is distinct from "neutral".
+   */
+  get tone(): DtBadgeTone | "" {
+    return enumAttribute<DtBadgeTone | "">(this, "tone", TONES, "");
   }
-  set tone(value: DtBadgeTone) {
-    reflectAttribute(this, "tone", value);
+  set tone(value: DtBadgeTone | "") {
+    reflectAttribute(this, "tone", value || null);
   }
   get size(): DtBadgeSize {
     return enumAttribute(this, "size", SIZES, "md");
@@ -128,7 +134,8 @@ export class DtBadgeElement extends DigitaltableteurElement {
     const explicitIcon = stringAttribute(this, "icon");
     const slottedIcon = hasNamedSlot(this, "icon");
     const iconName =
-      explicitIcon || (!this.dot ? toneIcons[this.tone] || "" : "");
+      explicitIcon ||
+      (!this.dot && this.tone ? toneIcons[this.tone] || "" : "");
     if (slottedIcon || iconName || this.dot) {
       const iconWrapper = this.ownerDocument.createElement("span");
       iconWrapper.className = "icon";

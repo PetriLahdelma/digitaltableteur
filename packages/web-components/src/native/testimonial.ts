@@ -10,15 +10,33 @@ const styles = `
   :host([hidden]) { display: none; }
   blockquote { box-sizing: border-box; margin: 0; padding: 1.5rem; border: 1px solid var(--color-gray-light); border-radius: .5rem; background: var(--color-white); color: var(--color-text); box-shadow: 0 2px 4px rgb(0 0 0 / 10%); transition: box-shadow .2s ease-in-out; }
   blockquote:hover { box-shadow: 0 4px 8px rgb(0 0 0 / 15%); }
-  .quote { margin: 0 0 1rem; font-family: var(--font-text); font-style: italic; line-height: 1.6; }
+  /* The React card composes the Text component (quote + name = Text M, title
+     row = Text S) whose sizing and trailing margin live in Text.module.css;
+     shadow DOM must restate them. */
+  .quote { margin: 0 0 var(--space-layout-16, 1rem); font-family: var(--font-text); font-size: var(--font-size-text-m, 1rem); font-style: italic; line-height: 1.6; }
   footer { display: flex; align-items: flex-start; gap: .75rem; }
   img { inline-size: 3rem; block-size: 3rem; flex: none; border-radius: 50%; object-fit: cover; }
   .info { min-inline-size: 0; flex: 1; }
   .nameRow { display: flex; margin-block-end: .25rem; align-items: center; gap: .5rem; }
-  cite { font-family: var(--font-text); font-weight: 600; font-style: normal; }
-  a { display: inline-flex; align-items: center; color: var(--color-linkedin, #0077b5); text-decoration: none; transition: color .2s ease-in-out; }
+  cite { margin-block-end: var(--space-layout-16, 1rem); font-family: var(--font-text); font-size: var(--font-size-text-m, 1rem); font-weight: 600; font-style: normal; line-height: 1.6; }
+  /* The React LinkedIn link is the DS Link, which carries the site's global
+     wavy-underline treatment (variables.css). */
+  a { display: inline-flex; position: relative; padding-block-end: 6px; align-items: center; color: var(--color-linkedin, #0077b5); text-decoration: none; transition: color .2s ease-in-out; }
+  a::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 6px;
+    background-color: var(--underline-accent-color, currentcolor);
+    opacity: 0.9;
+    content: "";
+    mask-image: var(--wavy-underline-mask);
+    mask-repeat: repeat-x;
+    mask-size: 16px 6px;
+  }
   a:hover { color: var(--color-linkedin-hover, #005885); }
-  .meta { margin: 0; color: var(--color-gray-medium); font-family: var(--font-text); font-size: var(--font-size-text-s, .875rem); line-height: 1.4; }
+  .meta { margin: 0 0 var(--space-layout-16, 1rem); color: var(--color-gray-medium); font-family: var(--font-text); font-size: var(--font-size-text-s, .875rem); font-style: italic; line-height: 1.4; }
   @media (prefers-reduced-motion: reduce) { blockquote, a { transition: none; } }
   @media (forced-colors: active) { blockquote { border-color: CanvasText; background: Canvas; color: CanvasText; box-shadow: none; } a { color: LinkText; } }
 `;

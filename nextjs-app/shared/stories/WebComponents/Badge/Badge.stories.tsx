@@ -11,7 +11,7 @@ import {
 type Args = {
   label: string;
   variant: "primary" | "secondary";
-  tone: "neutral" | "info" | "success" | "warning" | "error";
+  tone: "" | "neutral" | "info" | "success" | "warning" | "error";
   size: "sm" | "md" | "lg";
   removable: boolean;
   dot: boolean;
@@ -25,12 +25,17 @@ const meta = {
   tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
+    // The React stories use the default padded canvas; centered starts
+    // content on fractional x and shifts glyph rasterization.
+    layout: "padded",
     docs: { description: { component: "Native dt-badge custom element." } },
   },
+  // Mirrors the React Playground/Default args (children "Badge", no tone —
+  // distinct from "neutral", exactly like the React optional tone prop).
   args: {
-    label: "Beta",
+    label: "Badge",
     variant: "primary",
-    tone: "warning",
+    tone: "",
     size: "md",
     removable: false,
     dot: false,
@@ -39,7 +44,7 @@ const meta = {
     variant: { control: "inline-radio", options: ["primary", "secondary"] },
     tone: {
       control: "select",
-      options: ["neutral", "info", "success", "warning", "error"],
+      options: ["", "neutral", "info", "success", "warning", "error"],
     },
     size: { control: "inline-radio", options: ["sm", "md", "lg"] },
     removable: { control: "boolean" },
@@ -127,8 +132,38 @@ export const AsCount: Story = {
   ...exampleStory,
   args: { label: "3", tone: "info", size: "sm" },
 };
+// Replica of the React Example (TonesContent): all variants and tones in a
+// wrapping flex row; the rendered-parity gate compares them 1:1.
 export const Example: Story = {
   ...exampleStory,
-  args: { label: "New", tone: "info" },
+  render: () => (
+    <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+      <NativeElement tagName="dt-badge" attributes={{ label: "Primary" }} />
+      <NativeElement
+        tagName="dt-badge"
+        attributes={{ label: "Secondary", variant: "secondary" }}
+      />
+      <NativeElement
+        tagName="dt-badge"
+        attributes={{ label: "Success", tone: "success" }}
+      />
+      <NativeElement
+        tagName="dt-badge"
+        attributes={{ label: "Error", tone: "error" }}
+      />
+      <NativeElement
+        tagName="dt-badge"
+        attributes={{ label: "Warning", tone: "warning" }}
+      />
+      <NativeElement
+        tagName="dt-badge"
+        attributes={{ label: "Info", tone: "info" }}
+      />
+      <NativeElement
+        tagName="dt-badge"
+        attributes={{ label: "Neutral", tone: "neutral" }}
+      />
+    </div>
+  ),
 };
 export const ForcedColors: Story = { ...forcedColorsStory };
