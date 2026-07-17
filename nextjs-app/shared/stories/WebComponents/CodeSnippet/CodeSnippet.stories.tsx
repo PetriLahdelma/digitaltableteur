@@ -204,7 +204,11 @@ export const WithMaxLines: Story = {
       element?.shadowRoot?.querySelector<HTMLButtonElement>(".expandButton");
     await userEvent.click(expandButton!);
     await waitFor(() => {
-      expect(expandButton?.textContent).toMatch(/show less/i);
+      // Re-query: the toggle re-renders the shadow tree, so the pre-click
+      // node reference goes stale (same trap as WC Pagination, #1239).
+      const toggled =
+        element?.shadowRoot?.querySelector<HTMLButtonElement>(".expandButton");
+      expect(toggled?.textContent).toMatch(/show less/i);
     });
   },
 };

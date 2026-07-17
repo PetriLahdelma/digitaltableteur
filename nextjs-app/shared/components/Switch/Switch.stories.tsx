@@ -168,6 +168,11 @@ export const Loading: Story = {
           "loading blocks double flips and sets aria-busy while an async toggle is in flight.",
       },
     },
+    // Documented axe exemption (see Switch.spec.md): while loading the
+    // control is inactive and its label takes the muted disabled color —
+    // WCAG 1.4.3 exempts inactive-control text, but axe cannot tell the
+    // label belongs to one.
+    a11y: { options: { rules: [{ id: "color-contrast", enabled: false }] } },
   },
   args: { loading: true, checked: true },
   render: (args) => <ControlledTemplate {...args} />,

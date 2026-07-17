@@ -202,11 +202,14 @@ export const SelectAndClear: Story = {
     }
     await userEvent.click(clear);
 
-    await waitFor(() =>
+    await waitFor(() => {
+      // Re-query: clearing re-renders the shadow summary, so the pre-click
+      // node reference goes stale (same trap as WC Pagination, #1239).
+      const cleared = summaryField(canvasElement);
       expect(
-        summary instanceof HTMLInputElement ? summary.value : summary.textContent,
-      ).not.toMatch(/brief\.pdf/),
-    );
+        cleared instanceof HTMLInputElement ? cleared.value : cleared.textContent,
+      ).not.toMatch(/brief\.pdf/);
+    });
   },
 };
 

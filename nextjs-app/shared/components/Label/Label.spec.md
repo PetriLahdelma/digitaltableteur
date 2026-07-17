@@ -29,6 +29,13 @@ fieldset) or help text (use HelperText).
 - Tokens: drives from `--color-text` (default), `--color-text-muted`
   (disabled), and `--color-required` (asterisk). Forced-colors mode
   overrides the disabled muted colour with the system `GrayText` keyword.
+- Axe exemption (documented): the disabled label colour is intentionally
+  sub-AA (3.19:1 on white). WCAG 1.4.3 exempts text that is part of an
+  inactive user interface component, and a label of a disabled control is
+  part of that component — axe cannot infer the association, so the
+  Disabled stories (React and dt-label) disable the color-contrast rule
+  with a pointer to this note. Do not reuse the muted colour for active
+  text.
 - Figma: https://www.figma.com/design/digitaltableteur/forms — keep
   required-marker styling aligned with the Figma form-field component.
 - The translation surface is implicit: consumers pass already-translated

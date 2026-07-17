@@ -38,7 +38,10 @@ export const Default: Story = {
 };
 
 export const StartAsInput: Story = {
-  args: { initialMode: "input", defaultValue: "Intent prompt" },
+  // value: undefined un-seeds the autogen's value:"" — `value` is the
+  // CONTROLLED prop, and a seeded "" locks the input to controlled-empty
+  // (defaultValue ignored, typing dead).
+  args: { initialMode: "input", defaultValue: "Intent prompt", value: undefined },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole("textbox");
