@@ -9,6 +9,8 @@ import {
   DtSplitButtonElement,
   type DtSplitButtonOption,
 } from "../../packages/web-components/src/native/split-button";
+import { DtListItemElement } from "../../packages/web-components/src/native/list-item";
+import { DtIconElement } from "../../packages/web-components/src/native/icon";
 
 beforeAll(() => {
   if (!customElements.get("dt-menu")) {
@@ -16,6 +18,12 @@ beforeAll(() => {
   }
   if (!customElements.get("dt-split-button")) {
     customElements.define("dt-split-button", DtSplitButtonElement);
+  }
+  if (!customElements.get("dt-list-item")) {
+    customElements.define("dt-list-item", DtListItemElement);
+  }
+  if (!customElements.get("dt-icon")) {
+    customElements.define("dt-icon", DtIconElement);
   }
 });
 
@@ -128,33 +136,40 @@ describe("native Menu", () => {
     menu.append(trigger);
     document.body.append(menu);
 
+    // The row's label now lives inside dt-list-item's own shadow tree, so
+    // plain textContent no longer reaches it across the shadow boundary;
+    // data-search-label (set on the control regardless of row internals) is
+    // the stable cross-boundary handle for "which item is focused."
+    const focusedLabel = () =>
+      menu.shadowRoot?.activeElement?.getAttribute("data-search-label");
+
     trigger.dispatchEvent(
       new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
     );
 
     await waitFor(() => {
-      expect(menu.shadowRoot?.activeElement?.textContent).toContain("Rename");
+      expect(focusedLabel()).toBe("Rename");
     });
 
     menu.dispatchEvent(
       new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
     );
     await waitFor(() => {
-      expect(menu.shadowRoot?.activeElement?.textContent).toContain("Share");
+      expect(focusedLabel()).toBe("Share");
     });
 
     menu.dispatchEvent(
       new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }),
     );
     await waitFor(() => {
-      expect(menu.shadowRoot?.activeElement?.textContent).toContain("By email");
+      expect(focusedLabel()).toBe("By email");
     });
 
     menu.dispatchEvent(
       new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }),
     );
     await waitFor(() => {
-      expect(menu.shadowRoot?.activeElement?.textContent).toContain("Share");
+      expect(focusedLabel()).toBe("Share");
     });
 
     menu.dispatchEvent(
@@ -208,6 +223,98 @@ describe("native Menu", () => {
       id: null,
       value: "sign-out",
     });
+  });
+
+  it("composes rows onto dt-list-item, forwarding destructive tone", () => {
+    const menu = document.createElement("dt-menu") as DtMenuElement;
+    menu.items = [{ id: "delete", label: "Delete", tone: "destructive" }];
+    const trigger = document.createElement("button");
+    trigger.slot = "trigger";
+    trigger.textContent = "Actions";
+    menu.append(trigger);
+    document.body.append(menu);
+    trigger.click();
+
+    const control = menu.shadowRoot?.querySelector<HTMLElement>(
+      '[role="menuitem"]',
+    );
+    const row = control?.querySelector("dt-list-item");
+    expect(row).not.toBeNull();
+    expect(row).toHaveAttribute("label", "Delete");
+    expect(row).toHaveAttribute("tone", "destructive");
+  });
+
+  it("renders trailing text inside the dt-list-item meta part, not aria-hidden", () => {
+    const menu = document.createElement("dt-menu") as DtMenuElement;
+    menu.items = [{ id: "search", label: "Search", trailing: "⌘K" }];
+    const trigger = document.createElement("button");
+    trigger.slot = "trigger";
+    trigger.textContent = "Actions";
+    menu.append(trigger);
+    document.body.append(menu);
+    trigger.click();
+
+    const control = menu.shadowRoot?.querySelector<HTMLElement>(
+      '[role="menuitem"]',
+    );
+    const row = control?.querySelector("dt-list-item") as DtListItemElement;
+    expect(row).toHaveAttribute("meta", "⌘K");
+
+    const metaPart = row.shadowRoot?.querySelector('[part="meta"]');
+    expect(metaPart).not.toBeNull();
+    expect(metaPart).not.toHaveAttribute("aria-hidden");
+    expect(metaPart?.textContent).toContain("⌘K");
+  });
+
+  it("mirrors highlight state onto the highlighted row's dt-list-item", async () => {
+    const menu = document.createElement("dt-menu") as DtMenuElement;
+    menu.items = [
+      { id: "edit", label: "Edit" },
+      { id: "delete", label: "Delete" },
+    ];
+    const trigger = document.createElement("button");
+    trigger.slot = "trigger";
+    trigger.textContent = "Actions";
+    menu.append(trigger);
+    document.body.append(menu);
+
+    trigger.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
+    );
+
+    await waitFor(() => {
+      const highlighted = menu.shadowRoot?.querySelector(
+        '[data-highlighted="true"]',
+      );
+      expect(highlighted?.getAttribute("data-search-label")).toBe("Edit");
+    });
+
+    const firstRow = menu.shadowRoot?.querySelector(
+      '[data-highlighted="true"] dt-list-item',
+    );
+    expect(firstRow).toHaveAttribute("highlighted");
+
+    menu.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
+    );
+
+    await waitFor(() => {
+      const highlighted = menu.shadowRoot?.querySelector(
+        '[data-highlighted="true"]',
+      );
+      expect(highlighted?.getAttribute("data-search-label")).toBe("Delete");
+    });
+
+    const rows = menu.shadowRoot?.querySelectorAll("dt-list-item") ?? [];
+    expect(rows).toHaveLength(2);
+    const editRow = [...rows].find(
+      (row) => row.getAttribute("label") === "Edit",
+    );
+    const deleteRow = [...rows].find(
+      (row) => row.getAttribute("label") === "Delete",
+    );
+    expect(editRow).not.toHaveAttribute("highlighted");
+    expect(deleteRow).toHaveAttribute("highlighted");
   });
 });
 

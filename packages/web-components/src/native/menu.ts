@@ -23,7 +23,12 @@ export interface DtMenuItem {
   value?: string;
   label?: string;
   icon?: string;
+  /** @deprecated Use `meta`. Falls back to `meta` when both are set. */
   trailing?: string;
+  /** End-aligned secondary text, exposed to AT via dt-list-item's meta part. */
+  meta?: string;
+  /** Destructive actions (deletions) get the error treatment. */
+  tone?: "neutral" | "destructive";
   href?: string;
   disabled?: boolean;
   separator?: boolean;
@@ -73,7 +78,39 @@ const styles = `
   }
   .panel[hidden] { display: none; }
   .itemWrap { position: relative; display: flex; }
-  .item,
+  /* Shell only: the composed dt-list-item row owns all body visuals
+     (padding, colors, highlight/disabled treatment), same split as the
+     React side's Radix item shell + <ListItem>. */
+  .item {
+    display: flex;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-md);
+    outline: none;
+    background: none;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    user-select: none;
+  }
+  .item > dt-list-item {
+    flex: 1 1 auto;
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+  .item[aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+  /* Focus is signalled by the highlighted row background (kept in sync by
+     highlightControl), matching the React/Radix menu; no extra ring. */
+  .item:focus-visible,
+  .slotHost::slotted([data-dt-menu-item]:focus-visible) {
+    outline: none;
+  }
+  /* Slotted consumer items (declarative light-DOM children) are out of scope
+     for this refactor: they still render their own body visuals directly,
+     unchanged from before. */
   .slotHost::slotted([data-dt-menu-item]) {
     display: flex;
     box-sizing: border-box;
@@ -98,46 +135,13 @@ const styles = `
     user-select: none;
     white-space: nowrap;
   }
-  .item[data-highlighted="true"],
   .slotHost::slotted([data-dt-menu-item][data-highlighted="true"]) {
     background: var(--color-neutral-bg);
     color: var(--color-dark);
   }
-  .item[aria-disabled="true"],
   .slotHost::slotted([data-dt-menu-item][aria-disabled="true"]) {
     color: var(--color-muted);
     cursor: not-allowed;
-  }
-  /* Focus is signalled by the data-highlighted row background (kept in sync
-     by highlightControl), matching the React/Radix menu; no extra ring. */
-  .item:focus-visible,
-  .slotHost::slotted([data-dt-menu-item]:focus-visible) {
-    outline: none;
-  }
-  .itemIcon,
-  .itemTrailing {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    color: var(--color-primary);
-  }
-  .itemIcon { flex: 0 0 1.25rem; }
-  .itemIcon dt-icon,
-  .itemTrailing dt-icon {
-    inline-size: 1rem;
-    block-size: 1rem;
-  }
-  .itemLabel {
-    min-inline-size: 0;
-    flex: 1 1 auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .itemTrailing {
-    margin-inline-start: auto;
-    color: var(--color-muted);
-    font-size: var(--font-size-text-xs, 0.75rem);
   }
   .submenuPanel {
     inset-block-start: 0;
@@ -152,7 +156,6 @@ const styles = `
     background: var(--color-border);
   }
   @media (hover: hover) and (pointer: fine) {
-    .item:not([aria-disabled="true"]):hover,
     .slotHost::slotted([data-dt-menu-item]:not([aria-disabled="true"]):hover) {
       background: var(--color-neutral-bg);
     }
@@ -167,24 +170,17 @@ const styles = `
       box-shadow: none;
       forced-color-adjust: none;
     }
-    .item,
     .slotHost::slotted([data-dt-menu-item]) {
       color: CanvasText;
     }
-    .item[data-highlighted="true"],
     .slotHost::slotted([data-dt-menu-item][data-highlighted="true"]) {
       background: Highlight;
       color: HighlightText;
-    }
-    .itemIcon,
-    .itemTrailing {
-      color: currentcolor;
     }
     .separator,
     .slotHost::slotted([data-dt-menu-separator]) {
       background: CanvasText;
     }
-    .item[aria-disabled="true"],
     .slotHost::slotted([data-dt-menu-item][aria-disabled="true"]) {
       color: GrayText;
     }
@@ -395,6 +391,8 @@ export class DtMenuElement extends DigitaltableteurElement {
         icon: typeof record.icon === "string" ? record.icon : undefined,
         trailing:
           typeof record.trailing === "string" ? record.trailing : undefined,
+        meta: typeof record.meta === "string" ? record.meta : undefined,
+        tone: record.tone === "destructive" ? "destructive" : undefined,
         href: typeof record.href === "string" ? record.href : undefined,
         disabled: record.disabled === true,
         separator: false,
@@ -643,9 +641,17 @@ export class DtMenuElement extends DigitaltableteurElement {
         item.hasAttribute("data-highlighted"),
       ),
     ]) {
-      if (control !== active) control.removeAttribute("data-highlighted");
+      if (control !== active) {
+        control.removeAttribute("data-highlighted");
+        // Slotted consumer items have no composed row; querySelector is a
+        // harmless no-op for them.
+        control.querySelector("dt-list-item")?.removeAttribute("highlighted");
+      }
     }
-    if (active) active.setAttribute("data-highlighted", "true");
+    if (active) {
+      active.setAttribute("data-highlighted", "true");
+      active.querySelector("dt-list-item")?.setAttribute("highlighted", "");
+    }
   }
 
   private moveFocus(
@@ -937,36 +943,38 @@ export class DtMenuElement extends DigitaltableteurElement {
     }
   }
 
+  /**
+   * Builds the composed row for a menu control: a `<dt-list-item>` carrying
+   * the visual treatment (padding, colors, highlight/disabled states), same
+   * as the React side's `<ListItem>` inside a Radix item shell. The submenu
+   * chevron is the one exception — it rides the row's `trailing-icon` slot
+   * instead of the `meta` attribute, matching `MenuSubTrigger`'s
+   * `trailingIcon` prop.
+   */
   private renderItemBody(
     item: DtMenuItem,
     trailingOverride?: Node,
-  ): DocumentFragment {
-    const fragment = this.ownerDocument.createDocumentFragment();
-    if (item.icon) {
-      const icon = this.ownerDocument.createElement("span");
-      icon.className = "itemIcon";
-      icon.setAttribute("aria-hidden", "true");
-      const glyph = this.ownerDocument.createElement("dt-icon");
-      glyph.setAttribute("name", item.icon);
-      glyph.setAttribute("aria-hidden", "true");
-      icon.append(glyph);
-      fragment.append(icon);
+  ): HTMLElement {
+    const row = this.ownerDocument.createElement("dt-list-item");
+    row.setAttribute("data-menu-row", "true");
+    if (item.label) row.setAttribute("label", item.label);
+    if (item.icon) row.setAttribute("icon", item.icon);
+    if (item.tone === "destructive") row.setAttribute("tone", "destructive");
+    if (item.disabled) row.setAttribute("disabled", "");
+    if (trailingOverride) {
+      const trailing =
+        trailingOverride instanceof HTMLElement
+          ? trailingOverride
+          : this.ownerDocument.createElement("span");
+      if (!(trailingOverride instanceof HTMLElement))
+        trailing.append(trailingOverride);
+      trailing.setAttribute("slot", "trailing-icon");
+      row.append(trailing);
+    } else {
+      const meta = item.meta ?? item.trailing;
+      if (meta) row.setAttribute("meta", meta);
     }
-    const label = this.ownerDocument.createElement("span");
-    label.className = "itemLabel";
-    label.textContent = item.label || "";
-    fragment.append(label);
-    const trailingValue = trailingOverride || item.trailing;
-    if (trailingValue) {
-      const trailing = this.ownerDocument.createElement("span");
-      trailing.className = "itemTrailing";
-      trailing.setAttribute("aria-hidden", "true");
-      if (typeof trailingValue === "string")
-        trailing.textContent = trailingValue;
-      else trailing.append(trailingValue);
-      fragment.append(trailing);
-    }
-    return fragment;
+    return row;
   }
 
   private renderPanel(
