@@ -420,6 +420,24 @@ const config: TestRunnerConfig = {
     ];
     const betaMatrix = storyTags.includes("beta-matrix");
 
+    // Deterministic AT capture for stories with React.lazy content: a cold
+    // page loses the race between the lazy chunk and the capture, a warmed
+    // worker wins it, and the snapshot flips run-to-run (NextLayout's chat
+    // toggle). Stories declare the late element; capture waits for it.
+    const atWaitSelector = (
+      storyContext?.parameters as
+        | { atSnapshot?: { waitForSelector?: string } }
+        | undefined
+    )?.atSnapshot?.waitForSelector;
+    if (atWaitSelector) {
+      await page
+        .waitForSelector(atWaitSelector, { state: "visible", timeout: 5_000 })
+        .catch(() => {
+          // Capture proceeds; a genuinely missing element then surfaces as a
+          // visible snapshot mismatch instead of a silent skip.
+        });
+    }
+
     // AT-tree snapshots are the DSharp-style gate for Phase 2.
     await captureAccessibilityTree(page, context.id, { betaMatrix });
 

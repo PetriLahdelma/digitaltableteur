@@ -25,6 +25,10 @@
  */
 import type { ArgTypesEnhancer, ArgsEnhancer } from "storybook/internal/types";
 import registry from "../controls-autogen.json";
+import {
+  PLUMBING,
+  controlledPairPartner,
+} from "../../scripts/design-system/controls-hidden-by-design.mjs";
 
 type ContractProp = {
   optional?: boolean;
@@ -46,17 +50,10 @@ for (const [path, mod] of Object.entries(contractModules)) {
 
 const AUTOGEN = new Set<string>(registry.components);
 
-// Plumbing a human never sets from a panel — hidden, same set audit:controls skips.
-const HIDDEN = new Set([
-  "ref",
-  "style",
-  "key",
-  "asChild",
-  "as",
-  "data-role",
-  "aria-label",
-  "id",
-]);
+// Plumbing a human never sets from a panel — hidden. Shared with
+// audit:controls via scripts/design-system/controls-hidden-by-design.mjs so
+// the enhancer and the audit can never drift apart again.
+const HIDDEN: Set<string> = PLUMBING;
 
 const componentNameFor = (title?: string) => title?.split("/").pop() ?? "";
 
@@ -106,6 +103,7 @@ function deriveEntry(
   prop: string,
   spec: ContractProp,
   inherited: AnyArgType | undefined,
+  allProps: string[],
 ): AnyArgType {
   const type = spec.type ?? "";
   const table = { category: categoryFor(prop), ...(inherited?.table ?? {}) };
@@ -113,6 +111,14 @@ function deriveEntry(
   if (HIDDEN.has(prop)) return { table: { ...table, disable: true } };
   if (/^on[A-Z]/.test(prop) || isFunction(type)) {
     return { action: prop, table: { ...table, disable: true } };
+  }
+  // The controlled half of a value/defaultValue-style pair is hidden: "" is a
+  // legitimate controlled value, so it cannot be seeded as a no-op — a seeded
+  // "" locks the canvas into controlled-empty (defaultValue ignored, typing
+  // dead; TransformingActionInput #1242). Drive the playground through the
+  // default* sibling instead.
+  if (controlledPairPartner(prop, allProps)) {
+    return { table: { ...table, disable: true } };
   }
 
   const unionValues =
@@ -195,7 +201,10 @@ export const autogenArgTypes: ArgTypesEnhancer = (context) => {
         (existing.table as { disable?: boolean } | undefined)?.disable ===
           true);
     if (authored) continue;
-    out[prop] = { ...existing, ...deriveEntry(prop, spec, existing) };
+    out[prop] = {
+      ...existing,
+      ...deriveEntry(prop, spec, existing, Object.keys(contract.props)),
+    };
   }
   return out;
 };
@@ -209,10 +218,13 @@ export const autogenArgs: ArgsEnhancer = (context) => {
   const contract = contracts.get(name);
   if (!contract?.props) return context.initialArgs;
 
+  const allProps = Object.keys(contract.props);
   const seeds: Record<string, unknown> = {};
   for (const [prop, spec] of Object.entries(contract.props)) {
     if (HIDDEN.has(prop) || /^on[A-Z]/.test(prop) || prop === "children")
       continue;
+    // Controlled-pair halves are hidden AND unseeded — see deriveEntry.
+    if (controlledPairPartner(prop, allProps)) continue;
     const argType = (context.argTypes as Record<string, AnyArgType>)[prop];
     if (argType && "mapping" in argType) continue; // preset selects stay unset
     const seed = seedFor(spec, argType);

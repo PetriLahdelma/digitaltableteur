@@ -2,5 +2,6 @@
 - text: Adaptive surface Input state Intent
 - textbox "Intent":
   - /placeholder: Type your intent…
+  - text: New text
 - button "Cancel"
 - button "Submit"

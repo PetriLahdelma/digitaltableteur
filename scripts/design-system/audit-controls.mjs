@@ -14,6 +14,7 @@
  *   node scripts/design-system/audit-controls.mjs [--url http://127.0.0.1:6010] [--json] [--only Name]
  */
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
+import { PLUMBING, hiddenByDesign } from './controls-hidden-by-design.mjs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium } from 'playwright'
@@ -156,11 +157,22 @@ const ROOTS = [
     resolve(__dirname, '../../nextjs-app/shared/patterns'),
 ]
 
-// Public props worth a control (skip pure DOM/React plumbing a human never sets).
-// Keep in sync with HIDDEN in .storybook/lib/controls-autogen.ts — `id` is
-// plumbing of the same class as aria-label: contracts expose it, no human
-// drives a canvas from an id text field.
-const SKIP = new Set(['ref', 'style', 'key', 'asChild', 'as', 'data-role', 'aria-label', 'id'])
+// Public props worth a control (skip pure DOM/React plumbing a human never
+// sets). Single source of truth shared with the enhancer:
+// scripts/design-system/controls-hidden-by-design.mjs.
+const SKIP = PLUMBING
+
+// Props with NO Controls row by a documented per-component decision that the
+// shared hiddenByDesign() predicate cannot express. Every entry carries its
+// justification, mirroring EFFECT_EXEMPT.
+const HIDDEN_EXEMPT = {
+    Grid: {
+        tabletColumns: 'viewport-dependent: only changes tracks past 768px, so a panel knob at the default viewport looks inert; demoed by the ResponsiveColumns story',
+        desktopColumns: 'viewport-dependent (1024px rung); demoed by the ResponsiveColumns story',
+        wideColumns: 'viewport-dependent (1440px rung); demoed by the ResponsiveColumns story',
+        ultraColumns: 'viewport-dependent (1920px rung); demoed by the ResponsiveColumns story',
+    },
+}
 
 function contractProps(dir, root) {
     const p = `${root}/${dir}/${dir}.contract.json`
@@ -173,7 +185,10 @@ function contractProps(dir, root) {
         const props = Object.keys(c.props ?? {}).filter(
             (k) => !SKIP.has(k) && !/^(React\.)?(Ref|RefObject|MutableRefObject)\b/.test(c.props[k]?.type ?? ''),
         )
-        return { status: c.status, props }
+        const propTypes = Object.fromEntries(
+            props.map((k) => [k, c.props[k]?.type ?? '']),
+        )
+        return { status: c.status, props, propTypes }
     } catch { return null }
 }
 
@@ -365,15 +380,24 @@ for (const comp of components) {
         return out
     })
     const perProp = {}
-    let operable = 0, dead = 0, missing = 0, handlers = 0
+    let operable = 0, dead = 0, missing = 0, handlers = 0, hidden = 0
     for (const prop of comp.props) {
         if (/^on[A-Z]/.test(prop)) { perProp[prop] = 'handler'; handlers++; continue }
         const kind = widgets[prop]
         if (kind && FUNCTIONAL.has(kind)) { perProp[prop] = kind; operable++ }
         else if (kind === 'dead') { perProp[prop] = 'DEAD'; dead++ }
+        else if (
+            // No row at all AND deliberately so: either the shared predicate
+            // (ReactNode/arrays/Records/controlled-pair halves — the same
+            // classification the enhancer hides by) or a documented
+            // per-component exemption. A DEAD row (visible Set-button) never
+            // qualifies — a rendered dead widget is a defect regardless.
+            hiddenByDesign(prop, comp.propTypes?.[prop] ?? '', comp.props) ||
+            HIDDEN_EXEMPT[comp.name]?.[prop]
+        ) { perProp[prop] = 'hidden'; hidden++ }
         else { perProp[prop] = 'MISSING'; missing++ }
     }
-    const denom = comp.props.length - handlers
+    const denom = comp.props.length - handlers - hidden
     let effects = null
     if (EFFECTS) {
         effects = { effect: 0, inert: [], exempt: [], skipped: [], unstable: [] }
@@ -389,7 +413,7 @@ for (const comp of components) {
     }
     results.push({
         name: comp.name, status: comp.status,
-        total: denom, operable, dead, missing, handlers,
+        total: denom, operable, dead, missing, handlers, hidden,
         coverage: denom ? Math.round((operable / denom) * 100) : 100,
         failing: Object.entries(perProp).filter(([, v]) => v === 'DEAD' || v === 'MISSING').map(([k, v]) => `${k}:${v}`),
         ...(effects ? { effects } : {}),
@@ -401,18 +425,18 @@ await browser.close()
 if (JSON_OUT) { console.log(JSON.stringify(results, null, 2)); process.exit(0) }
 
 results.sort((a, b) => (a.coverage ?? -1) - (b.coverage ?? -1))
-let totalProps = 0, totalOperable = 0, fullyOperable = 0
+let totalProps = 0, totalOperable = 0, fullyOperable = 0, totalHidden = 0
 console.log('\nHuman-Simulated Controls audit — operable = human can select/toggle/check/input/slide\n')
 for (const r of results) {
     if (r.error) { console.log(`  ${r.name.padEnd(24)} — ${r.error}`); continue }
-    totalProps += r.total; totalOperable += r.operable
+    totalProps += r.total; totalOperable += r.operable; totalHidden += r.hidden ?? 0
     if (r.coverage === 100) { fullyOperable++; continue }
     const bar = '█'.repeat(Math.round(r.coverage / 5)).padEnd(20, '░')
     console.log(`  ${r.name.padEnd(24)} [${r.status.padEnd(6)}] ${bar} ${String(r.coverage).padStart(3)}%  ${r.operable}/${r.total}  ✗ ${r.failing.join(', ')}`)
 }
 const pct = Math.round((totalOperable / totalProps) * 100)
 console.log(`\n${fullyOperable}/${results.filter((r) => !r.error).length} components fully operable`)
-console.log(`${totalOperable}/${totalProps} value props operable (${pct}%)`)
+console.log(`${totalOperable}/${totalProps} value props operable (${pct}%), ${totalHidden} hidden by design`)
 console.log(`CONTROLS_OPERABLE_PCT=${pct}`)
 
 if (EFFECTS) {
