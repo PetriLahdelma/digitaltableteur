@@ -1,1 +1,6 @@
 - button "Share" [expanded]
+- menu "Share":
+  - menuitem "Copy link"
+  - menuitem "Invite people"
+  - separator
+  - menuitem "Export"

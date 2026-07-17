@@ -1,1 +1,5 @@
 - button "Actions" [expanded]
+- menu "Actions":
+  - menuitem "Rename"
+  - menuitem "Archive (unavailable)" [disabled]
+  - menuitem "Delete"

@@ -54,9 +54,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
-export const Example: Story = {};
+export const Default: Story = { tags: ["beta-matrix"] };
+export const Playground: Story = { tags: ["beta-matrix"] };
+export const Example: Story = { tags: ["beta-matrix"] };
 export const MultiSelect: Story = { args: { type: "multiple" } };
 export const Horizontal: Story = { args: { orientation: "horizontal" } };
 export const Disabled: Story = { args: { disabled: true } };
@@ -64,5 +64,6 @@ export const WithError: Story = {
   args: { error: "Choose at least one plan." },
 };
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
 };

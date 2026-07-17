@@ -1,1 +1,6 @@
 - button "File" [expanded]
+- menu "File":
+  - menuitem "Edit ⌘E"
+  - menuitem "Duplicate ⌘D"
+  - separator
+  - menuitem "Delete"

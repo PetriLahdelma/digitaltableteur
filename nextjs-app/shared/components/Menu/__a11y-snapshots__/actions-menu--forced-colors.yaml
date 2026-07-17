@@ -1,1 +1,6 @@
 - button "Actions" [expanded]
+- menu "Actions":
+  - menuitem "Edit"
+  - menuitem "Duplicate"
+  - separator
+  - menuitem "Delete (unavailable)" [disabled]
