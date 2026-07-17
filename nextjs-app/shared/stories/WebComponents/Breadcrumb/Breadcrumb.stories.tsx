@@ -197,8 +197,20 @@ export const Comparison: Story = {
   tags: ["example"],
   render: () => (
     <Row>
-      <NativeBreadcrumb items={site} underline="always" homeIcon={false} />
-      <NativeBreadcrumb items={deep} underline="hover" homeIcon={true} />
+      {/* Distinct labels keep the two nav landmarks distinguishable
+          (axe landmark-unique), same as UnderlineModes above. */}
+      <NativeBreadcrumb
+        items={site}
+        underline="always"
+        ariaLabel="Site trail"
+        homeIcon={false}
+      />
+      <NativeBreadcrumb
+        items={deep}
+        underline="hover"
+        ariaLabel="Deep trail"
+        homeIcon={true}
+      />
     </Row>
   ),
 };

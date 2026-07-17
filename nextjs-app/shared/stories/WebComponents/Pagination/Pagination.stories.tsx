@@ -106,9 +106,26 @@ export const SiblingCount: Story = {
   tags: ["example"],
   render: () => (
     <Stack>
-      <ControlledPagination currentPage={10} totalPages={20} siblingCount={0} />
-      <ControlledPagination currentPage={10} totalPages={20} siblingCount={1} />
-      <ControlledPagination currentPage={10} totalPages={20} siblingCount={2} />
+      {/* Distinct labels keep the three nav landmarks distinguishable
+          (axe landmark-unique). */}
+      <ControlledPagination
+        currentPage={10}
+        totalPages={20}
+        siblingCount={0}
+        ariaLabel="Pagination, no siblings"
+      />
+      <ControlledPagination
+        currentPage={10}
+        totalPages={20}
+        siblingCount={1}
+        ariaLabel="Pagination, one sibling"
+      />
+      <ControlledPagination
+        currentPage={10}
+        totalPages={20}
+        siblingCount={2}
+        ariaLabel="Pagination, two siblings"
+      />
     </Stack>
   ),
 };
@@ -124,7 +141,12 @@ export const Interactive: Story = {
     if (!pageTwo) throw new Error("Could not find page 2 button.");
     await userEvent.click(pageTwo);
     await waitFor(() => {
-      expect(pageTwo).toHaveAttribute("aria-current", "page");
+      // Re-query: the page-change round-trip re-renders the shadow list, so
+      // the pre-click node reference can go stale.
+      const current = element.shadowRoot?.querySelector(
+        "button[aria-label=\"Page 2\"]",
+      );
+      expect(current).toHaveAttribute("aria-current", "page");
     });
   },
 };
