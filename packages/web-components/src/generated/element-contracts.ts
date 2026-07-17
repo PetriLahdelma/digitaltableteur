@@ -422,6 +422,17 @@ export type DtKbdElementContract = HTMLElement & {
   content?: string;
 };
 
+export type DtListItemElementContract = HTMLElement & {
+  label?: string;
+  icon?: string;
+  meta?: string;
+  trailingIcon?: string;
+  tone?: string;
+  selected?: boolean;
+  disabled?: boolean;
+  highlighted?: boolean;
+};
+
 export type DtSkeletonElementContract = HTMLElement & {
   variant?: string;
   width?: number | string;
@@ -924,6 +935,7 @@ export const elementMigrationManifest = [
   { tagName: "dt-flex-box", sourceComponent: "FlexBox", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-grid", sourceComponent: "Grid", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-kbd", sourceComponent: "Kbd", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-list-item", sourceComponent: "ListItem", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-skeleton", sourceComponent: "Skeleton", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-visually-hidden", sourceComponent: "VisuallyHidden", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-switch", sourceComponent: "Switch", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
@@ -1012,6 +1024,7 @@ declare global {
     "dt-flex-box": DtFlexBoxElementContract;
     "dt-grid": DtGridElementContract;
     "dt-kbd": DtKbdElementContract;
+    "dt-list-item": DtListItemElementContract;
     "dt-skeleton": DtSkeletonElementContract;
     "dt-visually-hidden": DtVisuallyHiddenElementContract;
     "dt-switch": DtSwitchElementContract;

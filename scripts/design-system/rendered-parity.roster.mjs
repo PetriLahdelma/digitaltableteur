@@ -23,6 +23,7 @@ export const enforced = [
   "GroupLabel",
   "IconButton",
   "List",
+  "ListItem",
   "Menu",
   "NavMenuList",
   "SelectOption",

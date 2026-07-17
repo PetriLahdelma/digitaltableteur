@@ -48,80 +48,32 @@
 
 .item {
   display: flex;
-  padding-block: var(--space-internal-8);
-  padding-inline: var(--space-internal-12);
-  min-block-size: 2.5rem;
-  align-items: center;
-  gap: var(--space-internal-8);
+  padding: 0;
   border: none;
   border-radius: var(--radius-md);
   outline: none;
   background: none;
-  font-family: var(--font-text, system-ui, sans-serif);
-  font-size: var(--font-size-text-s);
-  line-height: var(--line-height-normal);
-  text-align: left;
   text-decoration: none;
-  color: var(--color-dark);
   cursor: pointer;
-  user-select: none;
 }
 
-/* Radix drives highlight via [data-highlighted] (pointer + keyboard roving). */
-
-.item[data-highlighted] {
-  background-color: var(--color-neutral-bg);
-  color: var(--color-dark);
+.item > * {
+  min-inline-size: 0;
+  flex: 1;
 }
 
 .item[data-disabled] {
-  color: var(--color-muted);
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.itemIcon {
-  display: inline-flex;
-  flex: 0 0 1.25rem;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  line-height: 1;
-  color: var(--color-primary);
+/* ListItem renders the disabled colors when Radix marks the item. */
+
+.item[data-disabled] > * {
+  color: var(--color-disabled-placeholder);
 }
 
-/* Clamp any consumer-supplied glyph to the 16px in-menu size so labels align
-   in a column regardless of the icon (or its size prop) that was passed. */
-
-.itemIcon svg {
-  block-size: 1rem;
-  inline-size: 1rem;
-}
-
-.itemLabel {
-  min-inline-size: 0;
-  flex: 1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.itemTrailing {
-  display: inline-flex;
-  margin-inline-start: auto;
-  align-items: center;
-  font-size: var(--font-size-text-xs, 0.75rem);
-  color: var(--color-muted);
-}
-
-/* Clamp a trailing glyph to the compact hint size, mirroring the leading icon. */
-
-.itemTrailing svg {
-  block-size: 0.875rem;
-  inline-size: 0.875rem;
-}
-
-.subTrigger[data-state="open"] {
+.subTrigger[data-state="open"] > * {
   background-color: var(--color-neutral-bg);
 }
 
@@ -149,21 +101,12 @@
     forced-color-adjust: none;
   }
 
-  .item {
-    color: CanvasText;
-  }
+  /* ListItem's forced-colors rules cover color and highlight inside .item,
+     but NOT disabled: Radix owns disabled via [data-disabled] on the item
+     (ListItem never gets its disabled class here), so the system GrayText
+     must come from this shell. */
 
-  .item[data-highlighted] {
-    background-color: Highlight;
-    color: HighlightText;
-  }
-
-  .item[data-highlighted] .itemIcon,
-  .item[data-highlighted] .itemTrailing {
-    color: HighlightText;
-  }
-
-  .item[data-disabled] {
+  .item[data-disabled] > * {
     color: GrayText;
   }
 
@@ -178,7 +121,11 @@
   forced-color-adjust: none;
 }
 
-:global(html.sb-forced-colors-active) .item[data-highlighted] {
+:global(html.sb-forced-colors-active) .item[data-highlighted] > * {
   background-color: Highlight;
   color: HighlightText;
+}
+
+:global(html.sb-forced-colors-active) .item[data-disabled] > * {
+  color: GrayText;
 }

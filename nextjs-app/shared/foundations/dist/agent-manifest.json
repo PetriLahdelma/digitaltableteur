@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-16T18:01:06.031Z",
+  "generatedAt": "2026-07-17T11:23:39.356Z",
   "summary": {
-    "componentCount": 162,
+    "componentCount": 163,
     "statusCounts": {
-      "beta": 43,
+      "beta": 44,
       "stable": 97,
       "alpha": 21,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 88,
-    "codebaseComponentCount": 184,
-    "usageCoveragePercent": 94.4,
+    "catalogCompletenessPercent": 88.1,
+    "codebaseComponentCount": 185,
+    "usageCoveragePercent": 94.5,
     "componentsWithProductionUsage": 35,
     "notReadyForStablePromotion": false
   },
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 184,
-    "inCatalog": 162,
+    "totalComponentsInCodebase": 185,
+    "inCatalog": 163,
     "outOfCatalog": 22,
-    "catalogCompletenessPercent": 88,
+    "catalogCompletenessPercent": 88.1,
     "artifactCoverage": {
-      "stories": 146,
-      "tests": 148,
+      "stories": 147,
+      "tests": 149,
       "mdx": 3,
-      "spec": 162
+      "spec": 163
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 162,
-    "withAnyUsage": 153,
+    "catalogedComponents": 163,
+    "withAnyUsage": 154,
     "withProductionUsage": 35,
-    "uniqueImportedComponents": 153,
-    "totalEvidenceRows": 761,
-    "aliasImportFiles": 389,
+    "uniqueImportedComponents": 154,
+    "totalEvidenceRows": 767,
+    "aliasImportFiles": 395,
     "relativeImportFiles": 405,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-16T17:33:35.077Z",
+    "generatedAt": "2026-07-17T07:53:52.073Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 81,
+    "nodesWithComposesWith": 83,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,12 +102,12 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 162,
+      "digitaltableteur": 163,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 43,
+        "beta": 44,
         "stable": 97,
         "alpha": 21,
         "deprecated": 1
@@ -3044,7 +3044,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Badge",
-        "importCount": 11,
+        "importCount": 12,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 5,
@@ -3093,6 +3093,12 @@
           },
           {
             "path": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Badge",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/ListItem/ListItem.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Badge",
             "context": "story"
@@ -3262,8 +3268,8 @@
           "TextInput",
           "Link",
           "Text",
-          "Button",
           "Icon",
+          "Button",
           "Checkbox"
         ],
         "prefersOver": [],
@@ -15385,10 +15391,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 67,
+        "importCount": 69,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 33,
+        "componentImportCount": 34,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
@@ -15620,9 +15626,9 @@
         "composesWith": [
           "Button",
           "Text",
+          "Badge",
           "Title",
           "ComplianceCard",
-          "Badge",
           "Card"
         ],
         "prefersOver": [],
@@ -16401,7 +16407,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Kbd",
-        "importCount": 1,
+        "importCount": 2,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
@@ -16411,6 +16417,12 @@
             "importKind": "relative",
             "importPath": "./Kbd/Kbd",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ListItem/ListItem.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Kbd",
+            "context": "story"
           }
         ]
       },
@@ -16468,7 +16480,11 @@
           "use Kbd as a button; it never receives focus or handles clicks.",
           "put whole phrases inside one Kbd; one key (or chord symbol) per cap."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Badge",
+          "StatusDot",
+          "Icon"
+        ],
         "prefersOver": [],
         "declaredPropCount": 1
       }
@@ -18103,6 +18119,291 @@
           "Text",
           "Title"
         ],
+        "prefersOver": [],
+        "declaredPropCount": 9
+      }
+    },
+    {
+      "name": "ListItem",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "name": "ListItem",
+        "tier": "atom",
+        "group": "display",
+        "status": "beta",
+        "description": "Presentational row for menus, selects, palettes, and lists: leading icon, truncating label, end-aligned meta (text, Badge, Kbd, StatusDot, value), trailing icon, selection check, and a destructive tone. Consumers own semantics.",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-list-item",
+        "radixPrimitive": null,
+        "element": "span",
+        "variants": {
+          "tone": {
+            "values": [
+              "neutral",
+              "destructive"
+            ],
+            "default": "neutral",
+            "propSourced": true
+          }
+        },
+        "slots": [
+          "icon",
+          "meta",
+          "trailingIcon"
+        ],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [],
+          "ariaRequirements": [
+            "No own ARIA — the interactive wrapper (Radix Item, button, li, option) owns role, aria-selected/aria-checked, and aria-disabled.",
+            "meta is exposed to assistive tech (no aria-hidden); icon, trailingIcon, and the selected check are decorative (aria-hidden)."
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-17 — axe asserted in ListItem.test.tsx and the Storybook a11y gate (parameters.a11y.test: error); consumer-owned semantics reviewed (role/focus/events belong to the interactive wrapper, ListItem itself carries no interactive ARIA); ForcedColors story verifies the forced-colors treatment (CanvasText/GrayText/Highlight/HighlightText mapping).",
+          "forcedColorsVerified": true
+        },
+        "tokens": {
+          "colors": [
+            "--color-dark",
+            "--color-neutral-bg",
+            "--color-primary",
+            "--color-muted",
+            "--color-error",
+            "--color-error-text",
+            "--color-disabled-placeholder"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12"
+          ],
+          "radii": [
+            "--radius-md"
+          ],
+          "typography": [
+            "--font-text",
+            "--font-size-text-s",
+            "--font-size-text-xs",
+            "--line-height-normal"
+          ]
+        },
+        "lightDarkVerified": true,
+        "consumers": [],
+        "schemaVersion": 2,
+        "props": {
+          "children": {
+            "optional": false,
+            "type": "React.ReactNode",
+            "description": "Primary label. Truncates with an ellipsis; never wraps."
+          },
+          "icon": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Leading icon node; rendered in a fixed gutter so labels column-align."
+          },
+          "meta": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "End-aligned secondary content: muted small text, Badge, Kbd, StatusDot, or a value. Exposed to AT."
+          },
+          "trailingIcon": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Trailing icon after meta (chevron, external-link). Decorative."
+          },
+          "selected": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders the check indicator in the trailing position. Visual only; semantic selection belongs to the consumer."
+          },
+          "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "neutral",
+              "destructive"
+            ],
+            "description": "Destructive rows (deletions) use the error color treatment."
+          },
+          "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visual disabled treatment via the canonical disabled tokens. The consumer carries aria-disabled."
+          },
+          "highlighted": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Parent-driven active row (combobox/palette). Radix menus work without it via [data-highlighted]."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "forbiddenUse": [
+          "Do not add role, tabIndex, or onClick to ListItem — the interactive wrapper (Radix Item, li, option, button) owns keyboard, focus, and events.",
+          "Do not rely on selected/highlighted for semantics — they are visual only; pair them with real ARIA (aria-selected, aria-checked, data-highlighted) on the wrapper."
+        ],
+        "composesWith": [
+          "Badge",
+          "Kbd",
+          "StatusDot",
+          "Icon"
+        ],
+        "displayName": "ListItem",
+        "keywords": [
+          "list item",
+          "row",
+          "menu item",
+          "option",
+          "combobox option",
+          "palette item"
+        ],
+        "dense": "Presentational span row: icon + truncating label + end-aligned meta (text/Badge/Kbd/StatusDot) + trailingIcon + selected check; tone neutral|destructive; the interactive wrapper owns role/focus/events",
+        "usage": {
+          "description": "ListItem renders the visual anatomy of a menu, select, palette, or list row: a leading icon, a truncating label, end-aligned meta content, a trailing icon, and a selection check. It is purely presentational — the interactive wrapper (a Radix Item, a native li/option, or a button) owns role, focus, and events. meta stays exposed to assistive tech since it often carries information (a shortcut, a status, a value); icon, trailingIcon, and the selected check are decorative.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Wrap ListItem in the element that owns interaction — Radix MenuItem/Item, a native li/option, or a button — and let that element carry role, tabIndex, and event handlers."
+            },
+            {
+              "guidance": true,
+              "description": "Use meta for content the user needs to hear or read (a Kbd shortcut, a StatusDot, a value); use trailingIcon only for purely decorative glyphs like a chevron."
+            },
+            {
+              "guidance": true,
+              "description": "Set tone=\"destructive\" for irreversible actions (delete, remove) so the row picks up the error color treatment."
+            },
+            {
+              "guidance": false,
+              "description": "Do not use disabled as the only signal for a non-interactive row — pair it with aria-disabled on the wrapper so assistive tech announces the state."
+            }
+          ]
+        },
+        "playground": {
+          "defaults": {
+            "children": "Rename",
+            "tone": "neutral"
+          }
+        }
+      },
+      "spec": "# ListItem\n\n## Intent\nPresentational row primitive for menus, selects, comboboxes, command\npalettes, and generic lists. ListItem renders the visual anatomy — a leading\nicon, a truncating label, end-aligned meta, a trailing icon, and a selection\ncheck — and nothing else. It never owns role, focus, or events; the consumer\nsupplies the interactive wrapper (a Radix `Item`, a native `li`/`option`, or\na `button`) around it.\n\n## Interaction contract\n- Keyboard: none. ListItem has no keyboard behavior of its own; the\n  interactive wrapper handles focus and key events (arrow navigation,\n  Enter/Space activation).\n- Pointer: none. Hover/press/highlight are pure CSS treatments\n  (`:hover`, `:active`, `.highlighted`, `[data-highlighted]`); ListItem\n  attaches no pointer handlers.\n- Screen readers: `meta` is exposed to assistive tech (no `aria-hidden`) —\n  it frequently carries information the user needs (a keyboard shortcut, a\n  status, a value). `icon`, `trailingIcon`, and the `selected` check are\n  `aria-hidden=\"true\"`: they are decorative restatements of state the\n  wrapper already conveys (or should convey) via `aria-selected` /\n  `aria-checked`. `selected` and `highlighted` are visual-only props; they do\n  not set any ARIA attribute themselves.\n\n## Do / don't\n- Do: wrap ListItem in the element that owns interaction (Radix\n  `Item`/`MenuItem`, a native `li`/`option`, or a `button`) and let that\n  element carry `role`, `tabIndex`, and handlers.\n- Do: use `meta` for content the user needs (a `Kbd` shortcut, a\n  `StatusDot`, a value) and reserve `trailingIcon` for purely decorative\n  glyphs like a chevron.\n- Do: pair `disabled` with `aria-disabled` on the wrapper — the token swap\n  is visual only and does not announce anything by itself.\n- Don't: add `role`, `tabIndex`, or `onClick` directly to ListItem — that\n  duplicates (and can conflict with) the wrapper's semantics.\n- Don't: treat `selected`/`highlighted` as a substitute for real ARIA state\n  on the wrapper (`aria-selected`, `aria-checked`, `data-highlighted`).\n\n## Design notes\n- Tokens: `--color-dark`, `--color-neutral-bg`, `--color-primary`,\n  `--color-muted`, `--color-error`, `--color-error-text`,\n  `--color-disabled-placeholder`, `--space-internal-4/8/12`, `--radius-md`,\n  `--font-text`, `--font-size-text-s/xs`, `--line-height-normal`.\n- `tone=\"destructive\"` swaps text/icon color to `--color-error` and tints the\n  hover/highlight background with it; on that tinted surface the label deepens\n  to `--color-error-text` so it stays AA (the base error red is only ~3.9:1\n  there). Disabled uses the canonical `--color-disabled-placeholder` token,\n  never opacity.\n- Hover, active, and parent-driven highlight (`.highlighted` or a wrapping\n  `[data-highlighted]`, as Radix menus set) share one visual treatment, so\n  ListItem looks correct whether the highlight comes from its own state prop\n  or from an ancestor.\n- `icon` and `trailingIcon` glyphs are clamped to a fixed size (1rem / 0.875rem)\n  so labels column-align across rows with and without an icon.\n- Forced colors: the row text maps to `CanvasText`; disabled maps to\n  `GrayText`; the highlighted state maps to `Highlight`/`HighlightText`\n  including its icon/meta/trailingIcon children.\n- Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-list-item\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/ListItem",
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/Menu/Menu.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/ListItem",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/ListItem",
+        "intent": "Presentational row primitive for menus, selects, comboboxes, command palettes, and generic lists. ListItem renders the visual anatomy — a leading icon, a truncating label, end-aligned meta, a trailing icon, and a select…",
+        "props": {
+          "children": {
+            "optional": false,
+            "type": "React.ReactNode",
+            "description": "Primary label. Truncates with an ellipsis; never wraps."
+          },
+          "icon": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Leading icon node; rendered in a fixed gutter so labels column-align."
+          },
+          "meta": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "End-aligned secondary content: muted small text, Badge, Kbd, StatusDot, or a value. Exposed to AT."
+          },
+          "trailingIcon": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Trailing icon after meta (chevron, external-link). Decorative."
+          },
+          "selected": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders the check indicator in the trailing position. Visual only; semantic selection belongs to the consumer."
+          },
+          "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "neutral",
+              "destructive"
+            ],
+            "description": "Destructive rows (deletions) use the error color treatment."
+          },
+          "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visual disabled treatment via the canonical disabled tokens. The consumer carries aria-disabled."
+          },
+          "highlighted": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Parent-driven active row (combobox/palette). Radix menus work without it via [data-highlighted]."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "propRelationships": [],
+        "variants": {
+          "tone": {
+            "values": [
+              "neutral",
+              "destructive"
+            ],
+            "default": "neutral"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "wrap ListItem in the element that owns interaction (Radix",
+          "use `meta` for content the user needs (a `Kbd` shortcut, a",
+          "pair `disabled` with `aria-disabled` on the wrapper — the token swap"
+        ],
+        "avoidWhen": [
+          "add `role`, `tabIndex`, or `onClick` directly to ListItem — that",
+          "treat `selected`/`highlighted` as a substitute for real ARIA state"
+        ],
+        "requiredA11y": [
+          "No own ARIA — the interactive wrapper (Radix Item, button, li, option) owns role, aria-selected/aria-checked, and aria-disabled.",
+          "meta is exposed to assistive tech (no aria-hidden); icon, trailingIcon, and the selected check are decorative (aria-hidden)."
+        ],
+        "keyboard": [],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "add `role`, `tabIndex`, or `onClick` directly to ListItem — that",
+          "treat `selected`/`highlighted` as a substitute for real ARIA state"
+        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 9
       }
@@ -29515,7 +29816,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/StatusDot",
-        "importCount": 2,
+        "importCount": 3,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 2,
@@ -29531,6 +29832,12 @@
             "importKind": "relative",
             "importPath": "./StatusDot/StatusDot",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ListItem/ListItem.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/StatusDot",
+            "context": "story"
           }
         ]
       },
@@ -29624,7 +29931,11 @@
           "use StatusDot for counts or removable chips — Badge owns those.",
           "rely on the color alone to convey state."
         ],
-        "composesWith": [],
+        "composesWith": [
+          "Icon",
+          "Badge",
+          "Kbd"
+        ],
         "prefersOver": [],
         "declaredPropCount": 5
       }

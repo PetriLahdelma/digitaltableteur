@@ -1,0 +1,6 @@
+- status: Work in progress (beta)
+- menu "States":
+  - menuitem "Default"
+  - menuitem "Highlighted"
+  - menuitem "Disabled" [disabled]
+  - menuitem "Disabled with meta ⌘X" [disabled]

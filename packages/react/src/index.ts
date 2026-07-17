@@ -177,6 +177,8 @@ export { default as Link } from "../../../nextjs-app/shared/components/Link/Link
 export type { LinkProps } from "../../../nextjs-app/shared/components/Link/Link";
 export { default as List } from "../../../nextjs-app/shared/components/List/List";
 export type { ListProps } from "../../../nextjs-app/shared/components/List/List";
+export { default as ListItem } from "../../../nextjs-app/shared/components/ListItem/ListItem";
+export type { ListItemProps } from "../../../nextjs-app/shared/components/ListItem/ListItem";
 export { default as MacWindowFrame } from "../../../nextjs-app/shared/components/MacWindowFrame/MacWindowFrame";
 export type { MacWindowFrameProps } from "../../../nextjs-app/shared/components/MacWindowFrame";
 export {

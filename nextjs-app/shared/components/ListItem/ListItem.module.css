@@ -1,0 +1,139 @@
+.root {
+  display: flex;
+  padding-block: var(--space-internal-8);
+  padding-inline: var(--space-internal-12);
+  min-block-size: 2.5rem;
+  align-items: center;
+  gap: var(--space-internal-8);
+  border-radius: var(--radius-md);
+  font-family: var(--font-text, system-ui, sans-serif);
+  font-size: var(--font-size-text-s);
+  line-height: var(--line-height-normal);
+  text-align: left;
+  color: var(--color-dark);
+  user-select: none;
+}
+
+/* States: hover, press, and parent-driven highlight share one treatment.
+   Radix menus highlight via [data-highlighted] on the wrapping item. */
+
+.root:hover,
+.root:active,
+.root.highlighted,
+:global([data-highlighted]) > .root {
+  background-color: var(--color-neutral-bg);
+}
+
+.icon {
+  display: inline-flex;
+  flex: 0 0 1.25rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+/* Clamp consumer glyphs to the 16px row size so labels column-align. */
+
+.icon svg {
+  block-size: 1rem;
+  inline-size: 1rem;
+}
+
+.label {
+  min-inline-size: 0;
+  flex: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.meta {
+  display: inline-flex;
+  margin-inline-start: auto;
+  align-items: center;
+  gap: var(--space-internal-4);
+  font-size: var(--font-size-text-xs, 0.75rem);
+  color: var(--color-muted);
+}
+
+.trailingIcon {
+  display: inline-flex;
+  margin-inline-start: auto;
+  align-items: center;
+  color: var(--color-muted);
+}
+
+/* When meta is present it owns the end-alignment; trailing sits after it. */
+
+.meta ~ .trailingIcon {
+  margin-inline-start: 0;
+}
+
+/* Clamp trailing glyphs to the compact hint size, mirroring the leading icon. */
+
+.trailingIcon svg {
+  block-size: 0.875rem;
+  inline-size: 0.875rem;
+}
+
+/* Destructive tone: error label/icons, error-tinted hover/highlight. */
+
+.destructive,
+.destructive .icon,
+.destructive .trailingIcon {
+  color: var(--color-error);
+}
+
+.destructive:hover,
+.destructive:active,
+.destructive.highlighted,
+:global([data-highlighted]) > .destructive {
+  /* On the error-tinted surface the base error red falls under AA (3.92:1);
+     the paired error-text token is designed for tinted error surfaces. */
+  background-color: color-mix(in srgb, var(--color-error) 10%, transparent);
+  color: var(--color-error-text);
+}
+
+/* Disabled: canonical disabled tokens, never opacity. */
+
+.disabled,
+.disabled .icon,
+.disabled .meta,
+.disabled .trailingIcon {
+  color: var(--color-disabled-placeholder);
+}
+
+.disabled:hover,
+.disabled:active {
+  background-color: transparent;
+}
+
+@media (forced-colors: active) {
+  .root {
+    color: CanvasText;
+  }
+
+  .disabled,
+  .disabled .icon,
+  .disabled .meta,
+  .disabled .trailingIcon {
+    color: GrayText;
+  }
+
+  .root.highlighted,
+  :global([data-highlighted]) > .root {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .root.highlighted .icon,
+  .root.highlighted .meta,
+  .root.highlighted .trailingIcon,
+  :global([data-highlighted]) > .root .icon,
+  :global([data-highlighted]) > .root .meta,
+  :global([data-highlighted]) > .root .trailingIcon {
+    color: HighlightText;
+  }
+}

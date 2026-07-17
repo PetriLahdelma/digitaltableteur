@@ -30,6 +30,8 @@ export interface DtSplitButtonOption {
   description?: string;
   icon?: string;
   trailingIcon?: string;
+  /** Destructive actions (deletions) get the error treatment. */
+  tone?: "neutral" | "destructive";
   href?: string;
   disabled?: boolean;
   title?: string;
@@ -210,44 +212,41 @@ const styles = `
   .menu[data-align="start"] { inset-inline-start: 0; }
   .menu[hidden] { display: none; }
   .menuWrap { position: relative; display: flex; }
+  /* Shell only: the composed dt-list-item row owns all body visuals
+     (padding, colors, highlight/disabled treatment), same split as the
+     React side's Radix item shell + <ListItem>. */
   .menuItem {
     display: flex;
-    box-sizing: border-box;
-    min-block-size: 2.5rem;
-    padding-block: var(--space-internal-8);
-    padding-inline: var(--space-internal-12);
+    padding: 0;
+    /* The control is a flex child of .menuWrap: without an explicit fill it
+       hugs its content and the row highlight shrinks with it (regressed
+       twice; first fixed in #1230). */
     flex: 1 1 auto;
     inline-size: 100%;
-    align-items: center;
-    gap: var(--space-internal-8);
+    min-inline-size: 0;
     border: none;
     border-radius: var(--radius-md);
-    /* Focus is signalled by the data-highlighted row background, matching
-       the React/Radix menu; forced-colors keeps its explicit ring. */
     outline: none;
     background: none;
-    color: var(--color-dark);
-    font: inherit;
-    font-size: var(--font-size-text-s);
-    line-height: var(--line-height-normal);
     text-align: left;
     text-decoration: none;
+    color: inherit;
     cursor: pointer;
-    white-space: nowrap;
+    user-select: none;
   }
-  .menuItem[data-highlighted="true"] { background: var(--color-neutral-bg); }
-  .menuItem[aria-disabled="true"] { color: var(--color-muted); cursor: not-allowed; }
-  .menuIcon,
-  .menuTrailing {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  .menuItem > dt-list-item {
+    flex: 1 1 auto;
+    inline-size: 100%;
+    min-inline-size: 0;
   }
-  .menuIcon { flex: 0 0 1.25rem; color: var(--color-primary); }
-  .menuIcon dt-icon,
-  .menuTrailing dt-icon { inline-size: 1rem; block-size: 1rem; }
-  .menuLabel { flex: 1 1 auto; min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; }
-  .menuTrailing { margin-inline-start: auto; color: var(--color-muted); }
+  .menuItem[aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+  /* Focus is signalled by the highlighted row background (kept in sync by
+     highlightControl), matching the React/Radix menu; no extra ring. */
+  .menuItem:focus-visible {
+    outline: none;
+  }
   .submenu {
     position: absolute;
     inset-block-start: 0;
@@ -262,7 +261,6 @@ const styles = `
     .toggle.tertiaryVariant:hover {
       background: color-mix(in srgb, var(--btn-accent) 10%, transparent);
     }
-    .menuItem:not([aria-disabled="true"]):hover { background: var(--color-neutral-bg); }
   }
   @media (prefers-reduced-motion: reduce) {
     .primary,
@@ -281,15 +279,8 @@ const styles = `
       background: Canvas;
       box-shadow: none;
     }
-    .menuItem { color: CanvasText; }
-    .menuItem[data-highlighted="true"] {
-      background: Highlight;
-      color: HighlightText;
-    }
-    .menuItem[aria-disabled="true"] { color: GrayText; }
     .primary:focus-visible,
-    .toggle:focus-visible,
-    .menuItem:focus-visible {
+    .toggle:focus-visible {
       outline: 3px solid Highlight;
     }
   }
@@ -494,6 +485,7 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
             typeof record.trailingIcon === "string"
               ? record.trailingIcon
               : undefined,
+          tone: record.tone === "destructive" ? "destructive" : undefined,
           href: typeof record.href === "string" ? record.href : undefined,
           disabled: record.disabled === true,
           title: typeof record.title === "string" ? record.title : undefined,
@@ -559,9 +551,15 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
     for (const control of this.shadowRoot?.querySelectorAll<HTMLElement>(
       "[data-highlighted]",
     ) ?? []) {
-      if (control !== active) control.removeAttribute("data-highlighted");
+      if (control !== active) {
+        control.removeAttribute("data-highlighted");
+        control.querySelector("dt-list-item")?.removeAttribute("highlighted");
+      }
     }
-    if (active) active.setAttribute("data-highlighted", "true");
+    if (active) {
+      active.setAttribute("data-highlighted", "true");
+      active.querySelector("dt-list-item")?.setAttribute("highlighted", "");
+    }
   }
 
   private focusControl(direction: "first" | "last", panelId: string): void {
@@ -678,37 +676,30 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
     return this.label;
   }
 
-  private optionBody(
+  /**
+   * Builds the composed row for a menu option: a `<dt-list-item>` carrying
+   * the visual treatment (padding, colors, highlight/disabled states), same
+   * as the React side's `<ListItem>` inside a Radix item shell. The submenu
+   * chevron is the one exception — it rides the row's `trailing-icon`
+   * attribute exactly like an option-supplied `trailingIcon`, matching
+   * `MenuSubTrigger`'s `trailingIcon` prop.
+   */
+  private renderOptionBody(
     option: DtSplitButtonOption,
     trailingCaret = false,
-  ): DocumentFragment {
-    const fragment = this.ownerDocument.createDocumentFragment();
-    if (option.icon) {
-      const icon = this.ownerDocument.createElement("span");
-      icon.className = "menuIcon";
-      const glyph = this.ownerDocument.createElement("dt-icon");
-      glyph.setAttribute("name", option.icon);
-      glyph.setAttribute("aria-hidden", "true");
-      icon.append(glyph);
-      fragment.append(icon);
+  ): HTMLElement {
+    const row = this.ownerDocument.createElement("dt-list-item");
+    row.setAttribute("data-menu-row", "true");
+    if (option.label) row.setAttribute("label", option.label);
+    if (option.icon) row.setAttribute("icon", option.icon);
+    if (option.tone === "destructive") row.setAttribute("tone", "destructive");
+    if (option.disabled) row.setAttribute("disabled", "");
+    if (trailingCaret) {
+      row.setAttribute("trailing-icon", "caret-right");
+    } else if (option.trailingIcon) {
+      row.setAttribute("trailing-icon", option.trailingIcon);
     }
-    const label = this.ownerDocument.createElement("span");
-    label.className = "menuLabel";
-    label.textContent = option.label;
-    fragment.append(label);
-    if (option.trailingIcon || trailingCaret) {
-      const trailing = this.ownerDocument.createElement("span");
-      trailing.className = "menuTrailing";
-      const glyph = this.ownerDocument.createElement("dt-icon");
-      glyph.setAttribute(
-        "name",
-        trailingCaret ? "caret-right" : option.trailingIcon || "caret-right",
-      );
-      glyph.setAttribute("aria-hidden", "true");
-      trailing.append(glyph);
-      fragment.append(trailing);
-    }
-    return fragment;
+    return row;
   }
 
   private renderMenuPanel(
@@ -765,7 +756,7 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
       } else if (option.href) {
         control.href = safeHref(option.href);
       }
-      control.append(this.optionBody(option, hasChildren));
+      control.append(this.renderOptionBody(option, hasChildren));
       control.addEventListener("focus", () => this.highlightControl(control));
       control.addEventListener("mouseenter", () => {
         this.highlightControl(control);

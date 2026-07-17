@@ -1199,6 +1199,39 @@ const elementDefinitions = [
     events: [],
   },
   {
+    tagName: "dt-list-item",
+    sourceComponent: "ListItem",
+    contract: "ListItem",
+    defaultBackend: "native",
+    nativeClassName: "DtListItemElement",
+    description:
+      "Presentational row: leading icon, truncating label, end-aligned meta, trailing icon, selection check, destructive tone.",
+    storyParity: storyParity(),
+    props: [
+      stringProp("label", "children"),
+      stringProp("icon"),
+      stringProp("meta"),
+      stringProp("trailingIcon"),
+      stringProp("tone"),
+      booleanProp("selected"),
+      booleanProp("disabled"),
+      booleanProp("highlighted"),
+    ],
+    slots: [
+      slot("", "Primary label (overrides the label attribute)."),
+      slot("icon", "Leading icon (overrides the icon attribute)."),
+      slot(
+        "meta",
+        "End-aligned secondary content (overrides the meta attribute).",
+      ),
+      slot(
+        "trailing-icon",
+        "Trailing icon (overrides the trailing-icon attribute).",
+      ),
+    ],
+    events: [],
+  },
+  {
     tagName: "dt-skeleton",
     sourceComponent: "Skeleton",
     contract: "Skeleton",
@@ -1412,7 +1445,15 @@ const elementDefinitions = [
     nativeClassName: "DtMenuElement",
     description:
       "Menu-button primitive with roving focus, typeahead, and dismissal behavior.",
-    storyParity: storyParity(),
+    storyParity: storyParity({
+      extensions: [
+        {
+          native: "Declarative Items",
+          reason:
+            "Native-only slotted light-DOM items API; the React equivalent is ordinary JSX children, which every React story already demonstrates.",
+        },
+      ],
+    }),
     props: [
       stringProp("side"),
       stringProp("align"),
