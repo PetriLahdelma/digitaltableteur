@@ -16,16 +16,19 @@
  */
 export const enforced = [
   "Avatar",
+  "Badge",
   "BlogMediaImage",
   "Container",
   "CookieConsent",
+  "GroupLabel",
   "IconButton",
   "List",
   "Menu",
   "NavMenuList",
   "SelectOption",
   "SkipLink",
-  "SplitButton"
+  "SplitButton",
+  "Testimonial"
 ];
 
 export const exceptions = [];
