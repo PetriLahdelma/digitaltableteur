@@ -90,7 +90,10 @@
 .destructive:active,
 .destructive.highlighted,
 :global([data-highlighted]) > .destructive {
+  /* On the error-tinted surface the base error red falls under AA (3.92:1);
+     the paired error-text token is designed for tinted error surfaces. */
   background-color: color-mix(in srgb, var(--color-error) 10%, transparent);
+  color: var(--color-error-text);
 }
 
 /* Disabled: canonical disabled tokens, never opacity. */

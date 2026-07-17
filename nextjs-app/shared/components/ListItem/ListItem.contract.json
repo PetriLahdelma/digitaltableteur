@@ -1,27 +1,170 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "ListItem",
     "tier": "atom",
     "group": "display",
-    "status": "alpha",
-    "description": "TODO: one-line purpose for ListItem.",
-    "figma": null,
+    "status": "beta",
+    "description": "Presentational row for menus, selects, palettes, and lists: leading icon, truncating label, end-aligned meta (text, Badge, Kbd, StatusDot, value), trailing icon, selection check, and a destructive tone. Consumers own semantics.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-list-item",
     "radixPrimitive": null,
-    "element": "div",
+    "element": "span",
     "variants": {
-        "size": { "values": ["sm", "md", "lg"], "default": "md" }
+        "tone": {
+            "values": [
+                "neutral",
+                "destructive"
+            ],
+            "default": "neutral",
+            "propSourced": true
+        }
     },
-    "slots": [],
+    "slots": [
+        "icon",
+        "meta",
+        "trailingIcon"
+    ],
     "asChild": false,
     "subParts": [],
-    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
     "a11y": {
         "keyboard": [],
-        "ariaRequirements": [],
+        "ariaRequirements": [
+            "No own ARIA — the interactive wrapper (Radix Item, button, li, option) owns role, aria-selected/aria-checked, and aria-disabled.",
+            "meta is exposed to assistive tech (no aria-hidden); icon, trailingIcon, and the selected check are decorative (aria-hidden)."
+        ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-07-17 — axe asserted in ListItem.test.tsx and the Storybook a11y gate (parameters.a11y.test: error); consumer-owned semantics reviewed (role/focus/events belong to the interactive wrapper, ListItem itself carries no interactive ARIA); ForcedColors story verifies the forced-colors treatment (CanvasText/GrayText/Highlight/HighlightText mapping).",
+        "forcedColorsVerified": true
     },
-    "tokens": { "colors": [], "spacing": [] },
-    "lightDarkVerified": false
+    "tokens": {
+        "colors": [
+            "--color-dark",
+            "--color-neutral-bg",
+            "--color-primary",
+            "--color-muted",
+            "--color-error",
+            "--color-error-text",
+            "--color-disabled-placeholder"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12"
+        ],
+        "radii": [
+            "--radius-md"
+        ],
+        "typography": [
+            "--font-text",
+            "--font-size-text-s",
+            "--font-size-text-xs",
+            "--line-height-normal"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode",
+            "description": "Primary label. Truncates with an ellipsis; never wraps."
+        },
+        "icon": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Leading icon node; rendered in a fixed gutter so labels column-align."
+        },
+        "meta": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "End-aligned secondary content: muted small text, Badge, Kbd, StatusDot, or a value. Exposed to AT."
+        },
+        "trailingIcon": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Trailing icon after meta (chevron, external-link). Decorative."
+        },
+        "selected": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders the check indicator in the trailing position. Visual only; semantic selection belongs to the consumer."
+        },
+        "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "neutral",
+                "destructive"
+            ],
+            "description": "Destructive rows (deletions) use the error color treatment."
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visual disabled treatment via the canonical disabled tokens. The consumer carries aria-disabled."
+        },
+        "highlighted": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Parent-driven active row (combobox/palette). Radix menus work without it via [data-highlighted]."
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "Do not add role, tabIndex, or onClick to ListItem — the interactive wrapper (Radix Item, li, option, button) owns keyboard, focus, and events.",
+        "Do not rely on selected/highlighted for semantics — they are visual only; pair them with real ARIA (aria-selected, aria-checked, data-highlighted) on the wrapper."
+    ],
+    "composesWith": [
+        "Badge",
+        "Kbd",
+        "StatusDot",
+        "Icon"
+    ],
+    "displayName": "ListItem",
+    "keywords": [
+        "list item",
+        "row",
+        "menu item",
+        "option",
+        "combobox option",
+        "palette item"
+    ],
+    "dense": "Presentational span row: icon + truncating label + end-aligned meta (text/Badge/Kbd/StatusDot) + trailingIcon + selected check; tone neutral|destructive; the interactive wrapper owns role/focus/events",
+    "usage": {
+        "description": "ListItem renders the visual anatomy of a menu, select, palette, or list row: a leading icon, a truncating label, end-aligned meta content, a trailing icon, and a selection check. It is purely presentational — the interactive wrapper (a Radix Item, a native li/option, or a button) owns role, focus, and events. meta stays exposed to assistive tech since it often carries information (a shortcut, a status, a value); icon, trailingIcon, and the selected check are decorative.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Wrap ListItem in the element that owns interaction — Radix MenuItem/Item, a native li/option, or a button — and let that element carry role, tabIndex, and event handlers."
+            },
+            {
+                "guidance": true,
+                "description": "Use meta for content the user needs to hear or read (a Kbd shortcut, a StatusDot, a value); use trailingIcon only for purely decorative glyphs like a chevron."
+            },
+            {
+                "guidance": true,
+                "description": "Set tone=\"destructive\" for irreversible actions (delete, remove) so the row picks up the error color treatment."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use disabled as the only signal for a non-interactive row — pair it with aria-disabled on the wrapper so assistive tech announces the state."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "Rename",
+            "tone": "neutral"
+        }
+    }
 }
