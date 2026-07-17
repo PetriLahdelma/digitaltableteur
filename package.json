@@ -162,7 +162,7 @@
     "generate:web-components": "node scripts/design-system/generate-web-components.mjs",
     "build:web-components": "npm run generate:web-components && npm --prefix packages/web-components run build",
     "check:web-components": "node scripts/design-system/check-web-components.mjs",
-    "check:web-components:dod": "npm run check:web-components && npm run test:stories:web-components:ci",
+    "check:web-components:dod": "npm run check:web-components && concurrently -k -s first -n SB,TEST \"npm run storybook -- --ci --no-open --quiet\" \"npm run storybook:wait && npm run test:stories:web-components && npm run check:rendered-parity\"",
     "check:react-public-api": "node scripts/design-system/check-react-public-api.mjs",
     "check:react-public-surface": "node scripts/design-system/check-react-public-surface.mjs",
     "check:npm-consumer-install": "node scripts/design-system/check-npm-consumer-install.mjs",
@@ -195,7 +195,9 @@
     "promote:stable-atoms": "node scripts/design-system/promote-stable-atoms.mjs",
     "check:bundle-budgets": "node scripts/design-system/check-bundle-budgets.mjs",
     "check:dogfood-ratchet": "node scripts/design-system/check-dogfood-ratchet.mjs",
-    "check:figma-links": "node scripts/design-system/check-figma-links.mjs"
+    "check:figma-links": "node scripts/design-system/check-figma-links.mjs",
+    "check:rendered-parity": "node scripts/design-system/check-rendered-parity.mjs",
+    "check:rendered-parity:ci": "concurrently -k -s first -n SB,PARITY \"npm run storybook -- --ci --no-open --quiet\" \"npm run storybook:wait && npm run check:rendered-parity\""
   },
   "dependencies": {
     "@ai-sdk/mcp": "^2.0.10",

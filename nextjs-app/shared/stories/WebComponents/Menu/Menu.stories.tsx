@@ -65,9 +65,11 @@ const disabledItems = JSON.stringify([
   { id: "delete", label: "Delete" },
 ]);
 
-function NativeMenu(args: MenuArgs) {
+function NativeMenu(args: MenuArgs & { defaultOpen?: boolean }) {
   // The open panel is position:absolute (out of flow); the Stage reserves its
-  // space so docs canvases don't clip it mid-item.
+  // space so docs canvases don't clip it mid-item. Trigger mirrors the
+  // canonical React PlaygroundRender: secondary Button labelled "Actions",
+  // open in canvas view.
   return (
     <Stage height="17rem">
       <NativeElement
@@ -78,12 +80,13 @@ function NativeMenu(args: MenuArgs) {
           "side-offset": args.sideOffset,
           modal: args.modal,
           items: args.items,
+          "default-open": args.defaultOpen,
         }}
       >
         <NativeElement
           tagName="dt-button"
           slot="trigger"
-          attributes={{ label: "Actions" }}
+          attributes={{ label: "Actions", variant: "secondary" }}
         />
       </NativeElement>
     </Stage>
@@ -138,8 +141,17 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-menu") };
-export const Playground: Story = {};
+export const Default: Story = {
+  render: (args, { viewMode }) => (
+    <NativeMenu {...args} defaultOpen={viewMode !== "docs"} />
+  ),
+  play: assertNative("dt-menu"),
+};
+export const Playground: Story = {
+  render: (args, { viewMode }) => (
+    <NativeMenu {...args} defaultOpen={viewMode !== "docs"} />
+  ),
+};
 
 export const WithIcons: Story = {
   ...exampleStory,
@@ -267,11 +279,20 @@ export const Example: Story = {
   ...exampleStory,
   render: () => (
     <Stage height="17rem">
-      <NativeElement tagName="dt-menu" attributes={{ items: withIcons }}>
+      <NativeElement
+        tagName="dt-menu"
+        attributes={{
+          items: JSON.stringify([
+            { id: "first", label: "First" },
+            { id: "second", label: "Second" },
+            { id: "third", label: "Third" },
+          ]),
+        }}
+      >
         <NativeElement
           tagName="dt-button"
           slot="trigger"
-          attributes={{ label: "File" }}
+          attributes={{ label: "Open menu", variant: "secondary" }}
         />
       </NativeElement>
     </Stage>
