@@ -1,2 +1,8 @@
 - button "Publish"
 - button "More options" [expanded]
+- menu "More options":
+  - menuitem "Environment" [expanded]
+  - menuitem "Notify"
+- menu "Environment":
+  - menuitem "Production"
+  - menuitem "Staging"
