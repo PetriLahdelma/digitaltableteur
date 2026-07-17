@@ -80,27 +80,59 @@ const styles = `
     background: color-mix(in srgb, var(--main-body-background-color, Canvas) 94%, transparent);
     backdrop-filter: blur(10px);
   }
-  .bar { display: flex; margin-inline: auto; inline-size: 100%; max-inline-size: var(--container-lg, 72rem); align-items: center; gap: var(--space-layout-24, 1.5rem); }
-  .copy { min-inline-size: 0; flex: 1 1 auto; }
-  .summary { margin: 0; color: var(--color-text, CanvasText); font-size: var(--font-size-text-m, 1rem); line-height: var(--line-height-normal, 1.5); }
-  .policy { color: var(--color-primary, LinkText); text-underline-offset: 0.2em; }
+  .bar { display: flex; margin-inline: auto; inline-size: 100%; min-block-size: 2.5rem; max-inline-size: var(--container-lg, 72rem); align-items: center; gap: var(--space-layout-24, 1.5rem); }
+  /* Optical vertical center, mirroring CookieConsentBanner.module.css: the
+     wavy underline hangs below the link, so the copy is nudged down half the
+     underline depth to center on cap height. */
+  .copy {
+    --underline-depth: 6px;
+    --optical-shift: calc(var(--underline-depth) / 2 - 2px);
+
+    display: flex;
+    min-inline-size: 0;
+    min-block-size: 2.5rem;
+    flex: 1 1 auto;
+    align-items: center;
+    overflow: visible;
+  }
+  .summary { margin: 0; color: var(--color-text, CanvasText); font-size: var(--font-size-text-m, 1rem); line-height: var(--line-height-normal, 1.5); transform: translateY(var(--optical-shift)); }
+  /* The site link treatment (variables.css .wavyUnderline) with the banner's
+     out-of-flow underline geometry, exactly as the React banner renders it. */
+  /* inline-flex mirrors the React Link: the label is an atomic inline box,
+     so it wraps as one unit and the wave spans the whole link. */
+  .policy { display: inline-flex; position: relative; align-items: center; color: var(--link-color, LinkText); text-decoration: none; }
+  .policy::after {
+    position: absolute;
+    right: 0;
+    bottom: calc(-1 * var(--underline-depth));
+    left: 0;
+    height: var(--underline-depth);
+    background-color: var(--underline-accent-color, currentcolor);
+    opacity: 0.9;
+    content: "";
+    mask-image: var(--wavy-underline-mask);
+    mask-repeat: repeat-x;
+    mask-size: 16px 6px;
+  }
   .actions { display: flex; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: var(--space-layout-16, 1rem); }
   button, .button {
     display: inline-flex;
+    box-sizing: border-box;
     min-block-size: 2.5rem;
     padding: var(--space-internal-8, 0.5rem) var(--space-internal-16, 1rem);
     align-items: center;
     justify-content: center;
-    border: 1px solid transparent;
+    border: none;
     border-radius: var(--radius-lg, 0.5rem);
-    font: inherit;
-    font-weight: 600;
-    line-height: 1.25;
+    font-family: var(--primary-body-font, inherit);
+    font-size: var(--font-size-button-m, 1rem);
+    font-weight: 400;
+    line-height: 1;
     cursor: pointer;
   }
   button:focus-visible, .button:focus-visible, input:focus-visible + .switchTrack { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary, Highlight)); outline-offset: var(--focus-ring-offset, 2px); }
   .primary { background: var(--color-primary, ButtonText); color: var(--color-white, ButtonFace); }
-  .secondary { border-color: var(--color-primary, ButtonText); background: transparent; color: var(--color-primary, ButtonText); }
+  .secondary { border: 0.125rem solid var(--color-primary, ButtonText); background: transparent; color: var(--color-primary, ButtonText); }
   .tertiary { background: transparent; color: var(--color-primary, ButtonText); }
   .overlay { position: fixed; z-index: 9100; inset: 0; display: grid; padding: var(--space-layout-16, 1rem); place-items: center; background: rgb(0 0 0 / 55%); }
   .dialog { box-sizing: border-box; inline-size: min(51.25rem, 100%); max-block-size: min(46rem, calc(100dvh - 2rem)); overflow: auto; border: 1px solid var(--color-border, #767676); border-radius: var(--radius-lg, 0.5rem); background: var(--main-body-background-color, Canvas); color: var(--color-text, CanvasText); box-shadow: 0 24px 80px rgb(0 0 0 / 30%); }
@@ -127,8 +159,15 @@ const styles = `
   .footerActions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-layout-16, 1rem); }
   @media (width >= 768px) { .banner { padding-inline: max(var(--page-margin-tablet, 2rem), env(safe-area-inset-left)) max(var(--page-margin-tablet, 2rem), env(safe-area-inset-right)); } }
   @media (width >= 1024px) { .banner { padding-inline: max(var(--page-margin-desktop, 3rem), env(safe-area-inset-left)) max(var(--page-margin-desktop, 3rem), env(safe-area-inset-right)); } }
+  /* Touch targets: >= 44px on small viewports, matching Button.module.css. */
+  @media (width <= 768px) {
+    button, .button { min-block-size: 2.75rem; }
+  }
   @media (width <= 767px) {
+    .banner { padding-block: var(--space-layout-24, 1.5rem) max(var(--space-layout-16, 1rem), env(safe-area-inset-bottom)); }
     .bar { align-items: stretch; flex-direction: column; gap: var(--space-layout-16, 1rem); }
+    .copy { min-block-size: auto; padding-block-end: var(--underline-depth); }
+    .summary { font-size: var(--font-size-text-s, 0.875rem); line-height: var(--line-height-snug, 1.375); }
     .actions { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-internal-8, 0.5rem); }
     .actions > * { inline-size: 100%; }
     .actions > :first-child { order: 3; grid-column: 1 / -1; }
@@ -141,9 +180,10 @@ const styles = `
   @media (prefers-reduced-motion: reduce) { .banner { animation: none; } .switchTrack, .switchTrack::before { transition: none; } }
   @keyframes banner-in { from { translate: 0 100%; opacity: 0; } to { translate: 0 0; opacity: 1; } }
   @media (forced-colors: active) {
-    .banner, .dialog { border-color: CanvasText; background: Canvas; color: CanvasText; forced-color-adjust: none; }
+    /* The banner and its buttons get NO overrides: the React banner has none,
+       so forced-colors must strip both implementations identically. */
+    .dialog { border-color: CanvasText; background: Canvas; color: CanvasText; forced-color-adjust: none; }
     .overlay { background: Canvas; }
-    .primary, .secondary, .tertiary, .close { border: 1px solid ButtonText; background: ButtonFace; color: ButtonText; }
     .switchTrack { border-color: CanvasText; background: Canvas; }
     .switch input:checked + .switchTrack { background: Highlight; }
     .switchTrack::before { background: CanvasText; }
@@ -856,7 +896,6 @@ export class DtCookieConsentElement extends DigitaltableteurElement {
       }),
       ` ${this.text("read-our-text", { en: "Read our", fi: "Lue", sv: "Läs vår" })} `,
       this.policyLink(),
-      ".",
     );
     copy.append(summary);
     bar.append(copy);
