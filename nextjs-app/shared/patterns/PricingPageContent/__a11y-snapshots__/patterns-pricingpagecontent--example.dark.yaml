@@ -1,0 +1,51 @@
+- region "Design Systems. Digital branding. UX/UI. Transparent pricetags.":
+  - heading "Design Systems. Digital branding. UX/UI. Transparent pricetags." [level=1]
+- region "Digitaltableteur / Traditional agency":
+  - heading "Digitaltableteur" [level=2]
+  - list:
+    - listitem: Fixed packages from €8k
+    - listitem: 2–4 weeks to first shippable product
+    - listitem: One focused engagement at a time
+    - listitem: Senior Design Lead
+  - heading "Traditional agency" [level=2]
+  - list:
+    - listitem: €80k–€300k+ scopes
+    - listitem: 3–9 months (or more)
+    - listitem: Many parallel workstreams
+    - listitem: Junior-heavy delivery teams
+- region "Client perspective":
+  - blockquote:
+    - paragraph: “ Why wrestle with bloated agency retainers when you can get a usable design system including contracts, components, tokens and an adoption plan in weeks?”
+- region "No guesswork. No scope creep. Just stellar design work, lightning fast, from €8k.":
+  - heading "No guesswork. No scope creep. Just stellar design work, lightning fast, from €8k." [level=2]
+  - heading "Packages" [level=3]
+  - list "Packages":
+    - listitem:
+      - heading "UX Sprint" [level=3]
+      - paragraph: €8–14k
+      - paragraph: 2 weeks
+      - paragraph: Prototype, eval plan and handoff your team can ship.
+      - paragraph: 2-week prototype with eval plan — see UX Sprint patterns in our work.
+      - link "Book UX Sprint":
+        - /url: /contact?mode=book&package=ux-sprint
+    - listitem:
+      - heading "AI-Ready Ops" [level=3]
+      - paragraph: €11–17k
+      - paragraph: 3 weeks
+      - paragraph: Design workflow setup, component governance, AI tooling hooks and a DesignOps playbook your team can run.
+      - paragraph: Agent-ready tokens and governance — see AI DesignOps case studies.
+      - link "Book AI-Ready Ops":
+        - /url: /contact?mode=book&package=ai-ready-designops
+    - listitem:
+      - heading "Design System Lift-Off" [level=3]
+      - paragraph: €14–20k
+      - paragraph: 4 weeks
+      - paragraph: Audit, tokens, core components, Storybook and an adoption playbook.
+      - paragraph: Storybook + adoption playbook — see design system deliveries.
+      - link "Book Design System Lift-Off":
+        - /url: /contact?mode=book&package=design-system-lift-off
+  - button "AaaS (Agents as a Service)"
+  - link "Book a call":
+    - /url: /contact?mode=book
+  - link "See our work":
+    - /url: /work

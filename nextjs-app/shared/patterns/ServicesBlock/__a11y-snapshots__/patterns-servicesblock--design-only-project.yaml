@@ -1,0 +1,16 @@
+- region "Overview":
+  - heading "Services" [level=3]
+  - list:
+    - listitem: Brand Identity
+    - listitem: UI Design
+    - listitem: Prototyping
+    - listitem: User Testing
+  - heading "Duration" [level=3]
+  - paragraph: March 2024–May 2024
+  - heading "Tools" [level=3]
+  - list "Tools":
+    - listitem "Figma"
+    - listitem "Adobe Illustrator":
+      - img "Adobe Illustrator": Ai
+  - heading "Overview" [level=3]
+  - paragraph: Created a comprehensive brand identity system including logo, color palette, typography guidelines, and UI component library for a sustainable fashion startup.

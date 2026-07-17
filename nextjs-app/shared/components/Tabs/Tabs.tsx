@@ -229,7 +229,11 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         .filter(Boolean)
         .join(" ")}
       role="tablist"
-      aria-label={ariaLabel ?? t("tabs.navigation", "Navigate between tabs")}
+      aria-label={
+        /* || not ??: Storybook's seeded text controls pass "", and an empty
+           accessible name is never valid — fall back to the translated label. */
+        ariaLabel || t("tabs.navigation", "Navigate between tabs")
+      }
       data-indicator-ready={indicator.ready ? "true" : "false"}
       style={
         {

@@ -1,0 +1,19 @@
+- status: Work in progress (alpha)
+- banner:
+  - heading "Home hero — HeroBackground colorScheme=primary (light)" [level=1]
+  - paragraph:
+    - text: On light gradient heroes use
+    - code: surface=default
+    - text: only.
+    - code: surface=onDark
+    - text: is for dark CTA bands (see Cta Bands story).
+- heading "Hero CTAs" [level=2]
+- paragraph: Legacy — shadcn default + outline
+- button "Get in touch"
+- button "About us"
+- paragraph: Wrong — surface=onDark (meant for dark CTA bands only)
+- button "Get in touch"
+- button "About us"
+- paragraph: Correct — @dt primary + secondary, surface=default
+- button "Get in touch"
+- button "About us"

@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- button "Shipping" [expanded]
+- region "Shipping": Standard shipping takes 3–5 business days.
+- button "Returns"
+- button "Warranty"

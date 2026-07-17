@@ -1,0 +1,11 @@
+- status: Deprecated
+- region "Get Started Today hero section":
+  - heading "Get Started Today" [level=1]
+  - paragraph: Transform Your Digital Presence
+  - paragraph: Join hundreds of successful projects and bring your vision to life with our expert team.
+  - link "Start a Project":
+    - /url: /contact
+    - button "Start a Project"
+  - link "View Our Work":
+    - /url: /work
+    - button "View Our Work"

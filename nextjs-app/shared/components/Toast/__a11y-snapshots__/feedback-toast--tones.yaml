@@ -1,0 +1,6 @@
+- button "neutral"
+- button "success"
+- button "error"
+- button "warning"
+- button "info"
+- status

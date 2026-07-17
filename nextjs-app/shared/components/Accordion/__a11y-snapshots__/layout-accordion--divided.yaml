@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- button "Deployment details"
+- button "Environment variables"
+- button "Build logs"

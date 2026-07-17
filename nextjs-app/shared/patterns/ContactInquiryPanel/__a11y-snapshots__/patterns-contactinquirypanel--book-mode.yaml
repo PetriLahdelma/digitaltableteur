@@ -1,0 +1,9 @@
+- tablist "Contact options":
+  - tab "Send a message"
+  - tab "Book a call" [selected]
+- tabpanel "Book a call":
+  - heading "Book a 30min" [level=4]
+  - paragraph: Choose a slot below. You will get a calendar invite by email.
+  - status "Loading"
+  - link "Open in Cal.com ↗":
+    - /url: https://cal.eu/digitaltableteur/30min

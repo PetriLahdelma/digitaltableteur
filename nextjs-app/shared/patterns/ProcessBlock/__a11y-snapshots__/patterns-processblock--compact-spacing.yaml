@@ -1,0 +1,22 @@
+- region "Rapid Design Sprint":
+  - heading "Rapid Design Sprint" [level=2]
+  - heading "Analyze" [level=3]
+  - list:
+    - listitem: — Data Collection
+    - listitem: — User Insights
+    - listitem: — Problem Definition
+  - heading "Create" [level=3]
+  - list:
+    - listitem: — Ideation
+    - listitem: — Sketching
+    - listitem: — Prototyping
+  - heading "Test" [level=3]
+  - list:
+    - listitem: — User Testing
+    - listitem: — Feedback
+    - listitem: — Iteration
+  - heading "Launch" [level=3]
+  - list:
+    - listitem: — Final Review
+    - listitem: — Deployment
+    - listitem: — Monitoring

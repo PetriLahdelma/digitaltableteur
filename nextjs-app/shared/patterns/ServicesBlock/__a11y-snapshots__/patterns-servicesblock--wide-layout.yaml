@@ -1,0 +1,18 @@
+- region "Overview":
+  - heading "Services" [level=3]
+  - list:
+    - listitem: UX Research
+    - listitem: Information Architecture
+    - listitem: Interaction Design
+    - listitem: Visual Design
+    - listitem: Accessibility Audit
+    - listitem: Frontend Development
+  - heading "Duration" [level=3]
+  - paragraph: January 2023–December 2023
+  - heading "Tools" [level=3]
+  - list "Tools":
+    - listitem "Figma"
+    - listitem "React"
+    - listitem "GitHub"
+  - heading "Overview" [level=3]
+  - paragraph: Led a comprehensive redesign of an enterprise SaaS platform serving 50,000+ users. The project involved extensive user research, information architecture restructuring, and implementation of a new design system. Key outcomes included a 60% reduction in support tickets, 45% improvement in task completion rates, and WCAG AA compliance across all features.

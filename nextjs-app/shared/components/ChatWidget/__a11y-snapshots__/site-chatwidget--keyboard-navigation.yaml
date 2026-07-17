@@ -3,7 +3,7 @@
 - paragraph: Click the chat bubble in the bottom-right corner to open the demo. You can type a prompt and Donny will answer with a prerecorded reply so you can explore the flow without calling the real API.
 - dialog "Meet Donny":
   - banner:
-    - img "Donny is listening":
+    - img "Donny is greeting":
       - img
     - paragraph:
       - text: DT Donny
@@ -26,7 +26,7 @@
   - text: Chat
 - dialog "Meet Donny":
   - banner:
-    - img "Donny is listening":
+    - img "Donny is greeting":
       - img
     - paragraph:
       - text: DT Donny

@@ -1,0 +1,9 @@
+- group "Opening hours":
+  - text: Opening hours
+  - paragraph: 24-hour format
+  - text: Opens
+  - textbox "Opens":
+    - /placeholder: 09:00
+  - text: Closes
+  - textbox "Closes":
+    - /placeholder: 17:00

@@ -1,0 +1,8 @@
+- status: Deprecated
+- region "Full Viewport Width hero section":
+  - heading "Full Viewport Width" [level=1]
+  - paragraph: Maximum Impact
+  - paragraph: Span the entire viewport for maximum visual impact. Perfect for immersive landing pages and hero sections.
+  - link "Explore More":
+    - /url: /work
+    - button "Explore More"

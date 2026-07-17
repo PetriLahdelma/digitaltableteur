@@ -1,4 +1,4 @@
-- tablist:
+- tablist "Navigate between tabs":
   - tab "Tab 1" [selected]
   - tab "Tab 2"
   - tab "Tab 3"

@@ -1,0 +1,5 @@
+- text: Attachment (optional)
+- textbox "Attachment (optional)":
+  - /placeholder: No file selected
+- button "Choose file"
+- paragraph: "Optional. Max 5 MB. Accepted formats: PDF, PNG, JPG."

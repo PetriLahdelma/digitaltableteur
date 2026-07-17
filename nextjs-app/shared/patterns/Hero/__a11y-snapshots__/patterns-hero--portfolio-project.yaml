@@ -1,0 +1,12 @@
+- status: Deprecated
+- region "Helsinki Design System hero section":
+  - heading "Helsinki Design System" [level=1]
+  - paragraph: Design System · 2024
+  - paragraph: A comprehensive design system for the city of Helsinki, featuring accessible components, design tokens, and documentation.
+  - link "View Case Study":
+    - /url: /work/helsinki-design-system
+    - button "View Case Study"
+  - link "Visit Live Site":
+    - /url: https://example.com
+    - button "Visit Live Site"
+  - img "Helsinki Design System showcase"

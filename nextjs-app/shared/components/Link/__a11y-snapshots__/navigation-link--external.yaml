@@ -1,0 +1,4 @@
+- link "External example External link":
+  - /url: https://example.com
+  - text: External example
+  - img "External link"

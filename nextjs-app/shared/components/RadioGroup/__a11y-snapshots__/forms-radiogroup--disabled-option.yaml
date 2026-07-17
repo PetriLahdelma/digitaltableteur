@@ -1,0 +1,9 @@
+- status: Work in progress (beta)
+- group "Plan":
+  - text: Plan
+  - radio "Free" [checked]
+  - text: Free
+  - radio "Pro"
+  - text: Pro
+  - radio "Enterprise (contact sales)" [disabled]
+  - text: Enterprise (contact sales)

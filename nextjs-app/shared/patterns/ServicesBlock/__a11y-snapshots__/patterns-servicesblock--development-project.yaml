@@ -1,0 +1,17 @@
+- region "Overview":
+  - heading "Services" [level=3]
+  - list:
+    - listitem: Frontend Development
+    - listitem: API Integration
+    - listitem: Testing & QA
+    - listitem: Performance Optimization
+  - heading "Duration" [level=3]
+  - paragraph: June 2023–Present
+  - heading "Tools" [level=3]
+  - list "Tools":
+    - listitem "React"
+    - listitem "TypeScript"
+    - listitem "GitHub"
+    - listitem "Vercel"
+  - heading "Overview" [level=3]
+  - paragraph: Built a high-performance web application using modern React and TypeScript, achieving 95+ Lighthouse scores across all metrics.

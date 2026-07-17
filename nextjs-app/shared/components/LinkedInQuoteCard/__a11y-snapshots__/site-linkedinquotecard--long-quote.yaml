@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- article "LinkedIn post by Petri Lahdelma":
+  - img "Portrait of Petri Lahdelma"
+  - text: Petri Lahdelma 1st Founder, Digitaltableteur
+  - blockquote:
+    - paragraph: After 15 years in design systems, I've learned that the best systems aren't the ones with the most components—they're the ones teams actually use. Documentation that reads like legal text gets ignored. Tokens without context get overridden. Guidelines without examples get misinterpreted. Build for humans first, machines second.
+- img "Digitaltableteur logo"

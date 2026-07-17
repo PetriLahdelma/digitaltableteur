@@ -1,0 +1,5 @@
+- status: Deprecated
+- region "Portfolio Showcase hero section":
+  - heading "Portfolio Showcase" [level=1]
+  - paragraph: Helsinki Design System
+  - img "Helsinki Design System project showcase"

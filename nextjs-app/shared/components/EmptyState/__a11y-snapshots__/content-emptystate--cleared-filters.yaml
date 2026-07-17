@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - heading "No matches" [level=3]
 - paragraph: Nothing matches the current filters.
 - button "Clear filters"

@@ -1,0 +1,20 @@
+- banner:
+  - link "Digitaltableteur":
+    - /url: /
+  - navigation "Main navigation":
+    - link "Home":
+      - /url: /
+    - link "Work":
+      - /url: /work
+    - link "About":
+      - /url: /about
+    - link "Pricing":
+      - /url: /pricing
+    - link "Blog":
+      - /url: /blog
+    - link "Contact":
+      - /url: /contact
+  - group "Language":
+    - button "EN — Switch to English. Show language options": EN
+    - text: Show language options
+  - button "Toggle dark mode"

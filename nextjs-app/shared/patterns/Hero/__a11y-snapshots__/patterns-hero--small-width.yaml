@@ -1,0 +1,5 @@
+- status: Deprecated
+- region "Blog Article Title hero section":
+  - heading "Blog Article Title" [level=1]
+  - paragraph: Published December 3, 2025
+  - paragraph: Narrower width perfect for blog articles and long-form content where readability is paramount.

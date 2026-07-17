@@ -1,0 +1,13 @@
+- region "Yleiskatsaus":
+  - heading "Palvelut" [level=3]
+  - list:
+    - listitem: Käyttöliittymäsuunnittelu
+    - listitem: Käytettävyystestaus
+    - listitem: Prototyypit
+  - heading "Kesto" [level=3]
+  - paragraph: Tammikuu–Maaliskuu 2024
+  - heading "Työkalut" [level=3]
+  - list "Työkalut":
+    - listitem "Figma"
+  - heading "Yleiskatsaus" [level=3]
+  - paragraph: Suunnittelimme käyttäjäystävällisen mobiilisovelluksen, joka helpottaa julkisen liikenteen käyttöä.

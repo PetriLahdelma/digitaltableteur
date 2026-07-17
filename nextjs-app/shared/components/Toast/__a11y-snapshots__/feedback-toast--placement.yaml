@@ -1,0 +1,7 @@
+- button "top-left"
+- button "top-center"
+- button "top-right"
+- button "bottom-left"
+- button "bottom-center"
+- button "bottom-right"
+- status

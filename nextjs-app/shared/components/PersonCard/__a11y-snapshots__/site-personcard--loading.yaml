@@ -1,0 +1,9 @@
+- status: Work in progress (beta)
+- status:
+  - status "Loading profile image"
+  - status "Loading name"
+  - status "Loading role"
+  - status "Loading contact"
+  - status "Loading social links"
+  - status "Loading social links"
+  - status "Loading social links"

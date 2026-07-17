@@ -1,0 +1,6 @@
+- status: Deprecated
+- region "Content on the Left hero section":
+  - heading "Content on the Left" [level=1]
+  - paragraph: Image on the Right
+  - paragraph: The split layout naturally places content on the left and image on the right in the DOM order, creating a balanced composition.
+  - img "Visual showcase"

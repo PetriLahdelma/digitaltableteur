@@ -1,0 +1,5 @@
+- status: Deprecated
+- region "Compact Vertical Spacing hero section":
+  - heading "Compact Vertical Spacing" [level=1]
+  - paragraph: Dense Layout
+  - paragraph: Reduced vertical spacing for content-heavy pages.

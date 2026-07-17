@@ -1,0 +1,4 @@
+- text: Timeline
+- combobox "Timeline" [disabled]: ASAP
+- button "Toggle options" [disabled]
+- paragraph: Timeline is locked for this request.

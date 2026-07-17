@@ -1,0 +1,6 @@
+- status: Work in progress (beta)
+- button "Features" [expanded]
+- region "Features": Real-time collaboration, version history, and granular permissions.
+- button "Pricing" [expanded]
+- region "Pricing": Free for up to 5 users. Pro starts at €12/user/month billed annually.
+- button "Integrations"

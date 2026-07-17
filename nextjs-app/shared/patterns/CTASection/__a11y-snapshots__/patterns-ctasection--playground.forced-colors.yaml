@@ -1,0 +1,7 @@
+- region "Ready to scale your design system?":
+  - heading "Ready to scale your design system?" [level=2]
+  - paragraph: We help teams ship accessible, token-driven UI with GenAI-ready specs.
+  - link "Book a call":
+    - /url: /contact
+  - link "View work":
+    - /url: /work

@@ -1,0 +1,22 @@
+- region "Overview":
+  - heading "Services" [level=3]
+  - list:
+    - listitem: UX Design
+    - listitem: UI Design
+    - listitem: Design System
+  - heading "Duration" [level=3]
+  - paragraph: March 2024–August 2024
+  - heading "Tools" [level=3]
+  - list "Tools":
+    - listitem "Figma"
+    - listitem "React"
+  - heading "Overview" [level=3]
+  - paragraph:
+    - strong: "The Challenge:"
+    - text: A growing e-commerce platform needed to scale its design language across web, mobile, and native apps while maintaining consistency and accessibility standards.
+  - paragraph:
+    - strong: "Our Approach:"
+    - text: We conducted a comprehensive audit of existing patterns, interviewed stakeholders across product teams, and built a modular design system with reusable components.
+  - paragraph:
+    - strong: "The Result:"
+    - text: Reduced design-to-development time by 50%, improved cross-platform consistency, and achieved WCAG AAA compliance for core user flows.

@@ -1,0 +1,4 @@
+- text: Message
+- textbox "Message":
+  - /placeholder: Share more details…
+- paragraph: Keep it under 500 characters.

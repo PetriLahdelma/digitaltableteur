@@ -1,0 +1,14 @@
+- status: Work in progress (beta)
+- strong: Open Hours
+- text: Open now
+- table:
+  - rowgroup:
+    - row "Day Opens Closes":
+      - columnheader "Day"
+      - columnheader "Opens"
+      - columnheader "Closes"
+  - rowgroup:
+    - row "Monday 9:00 17:00":
+      - cell "Monday"
+      - cell "9:00"
+      - cell "17:00"

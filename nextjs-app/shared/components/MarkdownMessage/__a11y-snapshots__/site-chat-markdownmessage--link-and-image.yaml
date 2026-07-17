@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- paragraph:
+  - text: Here is a
+  - link "link":
+    - /url: https://example.com
+  - text: and an image placeholder!
+- paragraph:
+  - img "Alt text"

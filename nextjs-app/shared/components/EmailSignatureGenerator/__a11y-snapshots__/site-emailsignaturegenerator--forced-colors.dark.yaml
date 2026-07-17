@@ -1,0 +1,43 @@
+- status: Work in progress (beta)
+- text: Work in progress
+- banner:
+  - heading "Email Signature Generator" [level=1]
+  - paragraph: Create a professional email signature in seconds
+- text: Name
+- textbox "Name":
+  - /placeholder: Your full name
+- text: Title
+- textbox "Title":
+  - /placeholder: Job title or role
+- text: Phone
+- textbox "Phone":
+  - /placeholder: +358 45 123 4567
+- text: LinkedIn
+- textbox "LinkedIn":
+  - /placeholder: LinkedIn username
+- text: GitHub
+- textbox "GitHub":
+  - /placeholder: GitHub username
+- text: Twitter/X
+- textbox "Twitter/X":
+  - /placeholder: "@username"
+- text: Bluesky
+- textbox "Bluesky":
+  - /placeholder: "@handle.bsky.social"
+- text: Instagram
+- textbox "Instagram":
+  - /placeholder: "@username"
+- text: TikTok
+- textbox "TikTok":
+  - /placeholder: "@username"
+- link "Digitaltableteur":
+  - /url: https://digitaltableteur.com
+  - img "Digitaltableteur"
+- text: Your Name
+- button "Switch to light mode" [pressed]
+- button "Switch to dark mode"
+- button "Copy Signature"
+- button "How to Import?"
+- link "Back to site":
+  - /url: ""
+- status

@@ -1,5 +1,9 @@
 - status: Work in progress (beta)
 - blockquote:
-  - paragraph: “”
+  - paragraph: “Working with Digitaltableteur was an exceptional experience. Petri delivered exactly what we needed with incredible attention to detail and professionalism.”
   - contentinfo:
-    - paragraph: •
+    - text: Sarah Johnson
+    - link "View Sarah Johnson's LinkedIn profile":
+      - /url: https://linkedin.com/in/sarahjohnson
+      - img "View Sarah Johnson's LinkedIn profile"
+    - paragraph: Product Manager • TechCorp

@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- article:
+  - heading "Building Modern Web Applications with Next.js" [level=1]
+  - img "Avatar"
+  - paragraph:
+    - link "By Petri Lahdelma":
+      - /url: /authors/petri-lahdelma
+  - paragraph: This article explores the latest features in Next.js and how they enable developers to build fast, scalable web applications...
