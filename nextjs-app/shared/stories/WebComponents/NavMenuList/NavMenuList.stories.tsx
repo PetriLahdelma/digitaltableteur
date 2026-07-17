@@ -40,8 +40,10 @@ function NativeNavMenuList(args: Args) {
     if (nav) nav.items = items;
   }, [items]);
 
+  // Full-width, no wrapper: the React NavMenuList stories render the bare
+  // list, and the rendered-parity gate compares against them 1:1.
   return (
-    <div ref={rootRef} style={{ inlineSize: "min(20rem, 90vw)" }}>
+    <div ref={rootRef}>
       <NativeElement
         tagName="dt-nav-menu-list"
         attributes={{ "current-path": args.currentPath }}
@@ -56,6 +58,9 @@ const meta = {
   tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
+    // The React stories use the default padded canvas, where the list fills
+    // the container width; centered would shrink-wrap it.
+    layout: "padded",
     docs: {
       description: {
         component:
@@ -63,7 +68,9 @@ const meta = {
       },
     },
   },
-  args: { items: "site", currentPath: "/work/case-study" },
+  // "/" matches the React stories, whose useNavigationPathname() falls back
+  // to "/" in Storybook (Home active via exact match).
+  args: { items: "site", currentPath: "/" },
   argTypes: {
     items: { control: "inline-radio", options: ["site", "three"] },
     currentPath: { control: "text" },
@@ -82,7 +89,7 @@ export const Default: Story = {
     expect(host?.shadowRoot?.querySelectorAll("a")).toHaveLength(5);
     expect(
       host?.shadowRoot?.querySelector("a[aria-current=page]"),
-    ).toHaveTextContent("Work");
+    ).toHaveTextContent("Home");
   },
 };
 

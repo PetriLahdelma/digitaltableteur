@@ -39,6 +39,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  decorators: [withOpenBanner],
 };
 export const Playground: Story = {
   tags: ["beta-matrix"],
@@ -55,10 +56,12 @@ export const Example: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "fullscreen" },
+  decorators: [withOpenBanner],
   render: () => <CookieConsent />,
 };
 
 export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
+  decorators: [withOpenBanner],
 };

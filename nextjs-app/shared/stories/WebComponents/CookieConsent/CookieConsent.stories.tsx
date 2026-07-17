@@ -84,7 +84,7 @@ const meta = {
     categories,
     value:
       "{\"essential\":true,\"analytics\":false,\"marketing\":false,\"functional\":false}",
-    summary: "We use cookies to improve your experience.",
+    summary: "Cookies improve your experience.",
     policyHref: "/privacy-policy",
     autoShow: "false",
   },

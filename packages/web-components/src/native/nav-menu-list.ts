@@ -34,6 +34,9 @@ const styles = `
     padding: 0;
     flex-direction: column;
     gap: var(--dt-nav-menu-gap, var(--space-internal-8, 0.5rem));
+    /* The site's global typography (typography.css ul rule) doesn't cross
+       the shadow boundary; the React list inherits it. */
+    line-height: var(--line-height-relaxed, 1.625);
     list-style: none;
   }
   .navItem { margin: 0; padding: 0; }
@@ -81,18 +84,16 @@ const styles = `
       border-color: color-mix(in srgb, var(--color-primary, #111) 45%, transparent);
     }
   }
+  /* Parent-driven active outline, exactly as NavMenuList.module.css. */
+  @supports selector(:has(*)) {
+    .navItem:has(> .navLink[aria-current="page"]) {
+      outline: 2px solid
+        color-mix(in srgb, var(--color-primary, #111) 100%, transparent);
+      outline-offset: 2px;
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     .navLink { transition: none; }
-  }
-  @media (forced-colors: active) {
-    .navLink { color: LinkText; forced-color-adjust: none; }
-    .navLink:hover { background: Canvas; }
-    .navLinkActive {
-      border-color: Highlight;
-      background: Highlight;
-      color: HighlightText;
-    }
-    .navLinkActive::after { border-color: HighlightText; }
   }
 `;
 

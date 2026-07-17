@@ -308,8 +308,11 @@ export const DisabledState: Story = {
 export const Example: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
-  name: "Example (document toolbar)",
-  parameters: { controls: { disable: true }, layout: "padded" },
+  parameters: {
+    controls: { disable: true },
+    layout: "padded",
+    docs: { description: { story: "Document toolbar composition." } },
+  },
   render: () => (
     <div
       style={{
