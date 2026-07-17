@@ -1,0 +1,22 @@
+- region "Development Team":
+  - heading "Development Team" [level=2]
+  - figure:
+    - img "Jamie Chen": 112 × 112
+  - heading "Jamie Chen" [level=3]
+  - paragraph: Tech Lead
+  - figure:
+    - img "Riley Johnson": 112 × 112
+  - heading "Riley Johnson" [level=3]
+  - paragraph: Senior Frontend Engineer
+  - figure:
+    - img "Avery Davis": 112 × 112
+  - heading "Avery Davis" [level=3]
+  - paragraph: Backend Developer
+  - figure:
+    - img "Morgan Lee": 112 × 112
+  - heading "Morgan Lee" [level=3]
+  - paragraph: DevOps Engineer
+  - figure:
+    - img "Dakota Smith": 112 × 112
+  - heading "Dakota Smith" [level=3]
+  - paragraph: QA Engineer

@@ -1,0 +1,14 @@
+- status: Work in progress (beta)
+- 'heading "Compliance: 2/5" [level=2]'
+- text: Complete file structure
+- img "Pass"
+- text: All 5 files present TypeScript strict
+- img "Warning"
+- text: Missing some type exports Translation support
+- img "Fail"
+- text: Hardcoded strings found CSS Modules
+- img "Pass"
+- text: No inline styles Design tokens
+- img "Warning"
+- text: 3 hardcoded fallbacks remaining
+- separator "Resize table"

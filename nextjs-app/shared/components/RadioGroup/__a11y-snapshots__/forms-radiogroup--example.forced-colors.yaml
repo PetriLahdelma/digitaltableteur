@@ -1,0 +1,9 @@
+- status: Work in progress (beta)
+- group "Contact preference":
+  - text: Contact preference
+  - radio "Design systems"
+  - text: Design systems
+  - radio "Product design" [checked]
+  - text: Product design
+  - radio "UX research"
+  - text: UX research

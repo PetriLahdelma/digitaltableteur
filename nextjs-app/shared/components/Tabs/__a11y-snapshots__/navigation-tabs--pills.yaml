@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - tablist "Navigate between tabs":
   - tab "Overview"
   - tab "Details"

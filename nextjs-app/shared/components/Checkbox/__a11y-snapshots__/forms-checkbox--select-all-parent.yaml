@@ -1,0 +1,8 @@
+- checkbox "All channels" [checked=mixed]
+- text: All channels
+- checkbox "Email" [checked]
+- text: Email
+- checkbox "SMS"
+- text: SMS
+- checkbox "Push"
+- text: Push

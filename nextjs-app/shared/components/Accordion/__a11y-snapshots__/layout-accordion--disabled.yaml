@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- button "Available section"
+- button "Coming soon" [disabled]
+- button "Another section"

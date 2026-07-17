@@ -1,0 +1,14 @@
+- status: Deprecated
+- region "Choose Your Path hero section":
+  - heading "Choose Your Path" [level=1]
+  - paragraph: Multiple Call-to-Actions
+  - paragraph: Provide users with multiple entry points to different sections of your site or application.
+  - link "Primary Action":
+    - /url: /contact
+    - button "Primary Action"
+  - link "Secondary Action":
+    - /url: /about
+    - button "Secondary Action"
+  - link "Tertiary Action":
+    - /url: /blog
+    - button "Tertiary Action"

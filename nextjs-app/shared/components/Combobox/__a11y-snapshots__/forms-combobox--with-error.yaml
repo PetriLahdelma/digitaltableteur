@@ -1,0 +1,6 @@
+- text: Timeline (required)
+- combobox "Timeline (required)" [invalid]: Select…
+- button "Toggle options"
+- alert:
+  - img
+  - text: Pick a timeline to continue.

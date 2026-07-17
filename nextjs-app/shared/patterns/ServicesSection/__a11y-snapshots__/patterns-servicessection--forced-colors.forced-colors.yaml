@@ -1,0 +1,9 @@
+- region "What we do":
+  - heading "What we do" [level=2]
+  - paragraph: Strategy, systems, and shipping — end to end.
+  - heading "UX & interfaces" [level=3]
+  - paragraph: Research-led product UI for web and mobile.
+  - heading "Design systems" [level=3]
+  - paragraph: Tokens, components, and governance that scale.
+  - heading "GenAI experiences" [level=3]
+  - paragraph: Human-centered flows with trustworthy AI patterns.

@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- 'figure "object-fit: contain — whole 1:1 source, letterboxed"':
+  - text: "object-fit: contain — whole 1:1 source, letterboxed"
+  - img "Square source shown whole inside a 16:9 frame, with visible top and bottom bands"
+- 'figure "object-fit: cover — fills the frame, top and bottom cropped"':
+  - text: "object-fit: cover — fills the frame, top and bottom cropped"
+  - img "Square source cropped to fill a 16:9 frame; the top and bottom bands are clipped"

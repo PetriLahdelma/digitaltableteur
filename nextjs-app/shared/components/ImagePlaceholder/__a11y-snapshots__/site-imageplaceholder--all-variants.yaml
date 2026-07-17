@@ -1,0 +1,9 @@
+- status: Work in progress (beta)
+- figure:
+  - img "Light variant": Light
+- figure:
+  - img "Medium variant": Medium
+- figure:
+  - img "Dark variant": Dark
+- figure:
+  - img "Gradient variant": Gradient

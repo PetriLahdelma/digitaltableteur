@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- button "General settings"
+- button "Notifications" [expanded]
+- region "Notifications": Choose which email and push notifications you want to receive.
+- button "Privacy"

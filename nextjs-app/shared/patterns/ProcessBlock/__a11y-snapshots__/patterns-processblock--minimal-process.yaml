@@ -1,0 +1,14 @@
+- region "Lean UX Process":
+  - heading "Lean UX Process" [level=2]
+  - heading "Research" [level=3]
+  - list:
+    - listitem: — User Interviews
+    - listitem: — Data Analysis
+  - heading "Design" [level=3]
+  - list:
+    - listitem: — Wireframes
+    - listitem: — Visual Design
+  - heading "Test" [level=3]
+  - list:
+    - listitem: — User Testing
+    - listitem: — Iteration

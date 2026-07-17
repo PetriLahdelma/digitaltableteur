@@ -1,0 +1,19 @@
+- status: Work in progress (beta)
+- img "Portrait of Petri Lahdelma"
+- heading "Dr. Alexandra Catherine Thompson-Williams" [level=3]
+- paragraph: Senior Principal Software Engineering Manager & Technical Lead for Digital Innovation
+- paragraph:
+  - link "alexandra.thompson-williams@company.com":
+    - /url: mailto:alexandra.thompson-williams@company.com
+- link "Connect on LinkedIn":
+  - /url: https://linkedin.com/in/petrilahdelma
+  - img "Connect on LinkedIn"
+- link "View GitHub Profile":
+  - /url: https://github.com/petrilahdelma
+  - img "View GitHub Profile"
+- link "Follow on Twitter":
+  - /url: https://twitter.com/petrilahdelma
+  - img "Follow on Twitter"
+- link "Read on Medium":
+  - /url: https://medium.com/digitaltableteur
+  - img "Read on Medium"

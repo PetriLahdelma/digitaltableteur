@@ -1,0 +1,22 @@
+- region "Team":
+  - heading "Team" [level=2]
+  - figure:
+    - img "Laura Karhu": 112 × 112
+  - heading "Laura Karhu" [level=3]
+  - paragraph: Project Lead (PM/PO)
+  - figure:
+    - img "Petri Lahdelma": 112 × 112
+  - heading "Petri Lahdelma" [level=3]
+  - paragraph: Senior UX Designer
+  - figure:
+    - img "Roni Helppi": 112 × 112
+  - heading "Roni Helppi" [level=3]
+  - paragraph: UX Designer
+  - figure:
+    - img "Mika Nevalainen": 112 × 112
+  - heading "Mika Nevalainen" [level=3]
+  - paragraph: Senior Software Developer
+  - figure:
+    - img "Ville Miekk'oja": 112 × 112
+  - heading "Ville Miekk'oja" [level=3]
+  - paragraph: Freelance Consultant

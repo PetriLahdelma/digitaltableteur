@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- radio "Small (sm)" [checked]
+- text: Small (sm)
+- radio "Medium (md)" [checked]
+- text: Medium (md)
+- radio "Large (lg)" [checked]
+- text: Large (lg)

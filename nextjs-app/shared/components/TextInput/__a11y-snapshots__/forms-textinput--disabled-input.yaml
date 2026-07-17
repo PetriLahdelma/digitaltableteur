@@ -1,0 +1,3 @@
+- text: Disabled Input
+- textbox "Disabled Input" [disabled]:
+  - /placeholder: This input is disabled

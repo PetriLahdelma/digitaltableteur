@@ -1,0 +1,26 @@
+- status: Work in progress (beta)
+- 'heading "Compliance: 11/11" [level=2]'
+- text: Complete file structure
+- img "Pass"
+- text: All 5 files present TypeScript strict
+- img "Pass"
+- text: Proper typing with OpenHoursProps Translation support
+- img "Pass"
+- text: Uses i18n for day names and status CSS Modules
+- img "Pass"
+- text: No inline styles Design tokens
+- img "Pass"
+- text: Replaced --font-family-sans with var(--font-text) Logical properties
+- img "Pass"
+- text: Uses margin-bottom for spacing Theme support
+- img "Pass"
+- text: CSS custom properties throughout Component composition
+- img "Pass"
+- text: "Flexible: compact, showAllDays, injected date Accessibility"
+- img "Pass"
+- text: Semantic table, status icons Storybook stories
+- img "Pass"
+- text: Multiple variants with ComplianceCard Tests
+- img "Pass"
+- text: Test file exists
+- separator "Resize table"

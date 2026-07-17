@@ -1,0 +1,12 @@
+- status: Work in progress (beta)
+- group "Primary expertise":
+  - text: Primary expertise
+  - radio "Design systems" [checked]
+  - text: Design systems
+  - radio "Product design"
+  - text: Product design
+  - radio "UX research"
+  - text: UX research
+  - alert:
+    - img
+    - text: Select an option to continue.

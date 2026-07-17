@@ -1,0 +1,7 @@
+- region "Call to action section":
+  - heading "Component Schema Template for GenAI Design Systems" [level=2]
+  - paragraph: Enforce shared prop structures and naming so AI output stays on-brand.
+  - link "Download Schema":
+    - /url: https://example.com
+  - link "Read Article":
+    - /url: /blog

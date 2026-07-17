@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- text: Adaptive surface Input state transformingActionInput.inputLabel
+- textbox "transformingActionInput.inputLabel":
+  - /placeholder: Type your intent…
+- paragraph: Describe what you want to do. Press Enter to submit.
+- button "Cancel"
+- button "Submit"

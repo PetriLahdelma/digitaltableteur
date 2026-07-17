@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - navigation "Breadcrumb":
   - list:
     - listitem:

@@ -1,0 +1,4 @@
+- text: Timeline
+- combobox "Timeline": Loading…
+- button "Toggle options"
+- paragraph: Options arrive from the network after ~1 second.

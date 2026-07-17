@@ -1,0 +1,5 @@
+- switch "Email notifications" [invalid]
+- text: Email notifications
+- alert:
+  - img
+  - text: Could not update the setting. Try again.

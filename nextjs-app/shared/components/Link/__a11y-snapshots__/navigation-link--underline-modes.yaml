@@ -1,0 +1,6 @@
+- link "Always underlined":
+  - /url: /about
+- link "Underline on hover":
+  - /url: /about
+- link "No underline":
+  - /url: /about

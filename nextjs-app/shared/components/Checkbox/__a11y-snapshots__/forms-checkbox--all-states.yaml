@@ -1,11 +1,10 @@
-- status: Work in progress (beta)
-- checkbox "Unchecked Checked Indeterminate Disabled unchecked Disabled checked"
+- checkbox "Unchecked"
 - text: Unchecked
-- checkbox [checked]
+- checkbox "Checked" [checked]
 - text: Checked
-- checkbox [checked=mixed]
+- checkbox "Indeterminate" [checked=mixed]
 - text: Indeterminate
-- checkbox [disabled]
+- checkbox "Disabled unchecked" [disabled]
 - text: Disabled unchecked
-- checkbox [checked] [disabled]
+- checkbox "Disabled checked" [checked] [disabled]
 - text: Disabled checked

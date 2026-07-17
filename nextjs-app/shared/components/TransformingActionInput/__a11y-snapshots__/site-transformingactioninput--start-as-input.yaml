@@ -1,0 +1,6 @@
+- status: Work in progress (beta)
+- text: Adaptive surface Input state Intent
+- textbox "Intent":
+  - /placeholder: Type your intent…
+- button "Cancel"
+- button "Submit"

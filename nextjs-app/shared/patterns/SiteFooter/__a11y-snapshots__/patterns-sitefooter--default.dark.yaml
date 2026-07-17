@@ -1,0 +1,51 @@
+- contentinfo:
+  - paragraph: Visit
+  - link "Digitaltableteur":
+    - /url: /
+  - text: Hämeentie 8 C 00530 Helsinki
+  - link "mail@digitaltableteur.com":
+    - /url: mailto:mail@digitaltableteur.com
+  - paragraph: Billing details
+  - text: E-invoice address 003722644552 Operator APIX Messaging Oy Operator ID 003723327487
+  - paragraph: Explore
+  - link "Home":
+    - /url: /
+  - link "Work":
+    - /url: /work
+  - link "About":
+    - /url: /about
+  - link "Blog":
+    - /url: /blog
+  - link "Pricing":
+    - /url: /pricing
+  - link "Contact":
+    - /url: /contact
+  - paragraph: Legal
+  - link "Privacy Policy":
+    - /url: /privacy-policy
+  - link "Imprint":
+    - /url: /imprint
+  - link "AI Usage":
+    - /url: /ai-use
+  - link "Accessibility Statement":
+    - /url: /accessibility
+  - link "Sitemap":
+    - /url: /sitemap
+  - button "Cookie preferences"
+  - link "Instagram":
+    - /url: https://www.instagram.com/digitaltableteur/
+  - link "Facebook":
+    - /url: https://www.facebook.com/digitaltableteur
+  - link "LinkedIn":
+    - /url: https://www.linkedin.com/company/digitaltableteur/
+  - link "Medium":
+    - /url: https://medium.com/digitaltableteur
+  - link "X":
+    - /url: https://x.com/dtdoesdesign
+  - link "GitHub":
+    - /url: https://github.com/PetriLahdelma
+  - link "Substack":
+    - /url: https://substack.com/@petrilahdelma
+  - link "Dribbble":
+    - /url: https://dribbble.com/digitaltableteur
+  - text: © 2026 Digitaltableteur. All rights reserved.

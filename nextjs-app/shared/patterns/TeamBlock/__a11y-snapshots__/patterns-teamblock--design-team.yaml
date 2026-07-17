@@ -1,0 +1,19 @@
+- region "Design Team":
+  - heading "Design Team" [level=2]
+  - paragraph: Our creative minds shaping exceptional user experiences.
+  - figure:
+    - img "Alex Rivera": 112 × 112
+  - heading "Alex Rivera" [level=3]
+  - paragraph: Design Director
+  - figure:
+    - img "Jordan Lee": 112 × 112
+  - heading "Jordan Lee" [level=3]
+  - paragraph: Lead Product Designer
+  - figure:
+    - img "Taylor Morgan": 112 × 112
+  - heading "Taylor Morgan" [level=3]
+  - paragraph: UI/UX Designer
+  - figure:
+    - img "Casey Park": 112 × 112
+  - heading "Casey Park" [level=3]
+  - paragraph: Visual Designer

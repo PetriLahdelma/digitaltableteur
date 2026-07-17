@@ -1,0 +1,26 @@
+- region "Core Team":
+  - heading "Core Team" [level=2]
+  - figure:
+    - img "Alex Rivera": 112 × 112
+  - heading "Alex Rivera" [level=3]
+  - paragraph: Creative Director
+  - figure:
+    - img "Jordan Lee": 112 × 112
+  - heading "Jordan Lee" [level=3]
+  - paragraph: Lead Designer
+  - figure:
+    - img "Taylor Swift": 112 × 112
+  - heading "Taylor Swift" [level=3]
+  - paragraph: Senior Developer
+  - figure:
+    - img "Casey Morgan": 112 × 112
+  - heading "Casey Morgan" [level=3]
+  - paragraph: UX Designer
+  - figure:
+    - img "Jamie Park": 112 × 112
+  - heading "Jamie Park" [level=3]
+  - paragraph: Frontend Engineer
+  - figure:
+    - img "Riley Chen": 112 × 112
+  - heading "Riley Chen" [level=3]
+  - paragraph: Product Manager

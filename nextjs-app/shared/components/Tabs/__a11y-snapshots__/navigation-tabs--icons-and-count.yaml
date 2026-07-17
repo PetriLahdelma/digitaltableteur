@@ -1,0 +1,7 @@
+- tablist "Navigate between tabs":
+  - tab "Inbox 3"
+  - tab "Starred" [selected]
+  - tab "Sent"
+  - tab "Drafts" [disabled]
+- tabpanel "Starred":
+  - paragraph: Starred content

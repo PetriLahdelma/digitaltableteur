@@ -1,0 +1,10 @@
+- region "Founders":
+  - heading "Founders" [level=2]
+  - figure:
+    - img "Sarah Williams": 112 × 112
+  - heading "Sarah Williams" [level=3]
+  - paragraph: Founder & Designer
+  - figure:
+    - img "John Smith": 112 × 112
+  - heading "John Smith" [level=3]
+  - paragraph: Co-founder & Developer

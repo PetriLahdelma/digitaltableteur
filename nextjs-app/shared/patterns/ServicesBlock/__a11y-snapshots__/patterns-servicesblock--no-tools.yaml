@@ -1,0 +1,10 @@
+- region "Overview":
+  - heading "Services" [level=3]
+  - list:
+    - listitem: Strategic Consulting
+    - listitem: User Research
+    - listitem: Service Design
+  - heading "Duration" [level=3]
+  - paragraph: Q1 2024
+  - heading "Overview" [level=3]
+  - paragraph: Conducted comprehensive user research and service design workshops to identify pain points and opportunities in the customer journey.

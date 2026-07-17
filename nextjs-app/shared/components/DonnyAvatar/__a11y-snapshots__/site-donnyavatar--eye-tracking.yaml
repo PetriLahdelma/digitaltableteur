@@ -1,0 +1,8 @@
+- img "Donny is idle":
+  - img
+- paragraph: Move your mouse around - Donny follows! Hover near the buttons below.
+- button "Contact Us"
+- button "Submit Form"
+- paragraph:
+  - text: "State:"
+  - strong: idle

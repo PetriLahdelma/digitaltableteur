@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- img "Portrait of Petri Lahdelma"
+- heading "Petri Lahdelma" [level=3]
+- paragraph: Digital Designer & Developer
+- paragraph:
+  - link "petri@digitaltableteur.com":
+    - /url: mailto:petri@digitaltableteur.com

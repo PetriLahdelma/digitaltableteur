@@ -1,0 +1,6 @@
+- group "Contact preference":
+  - text: Contact preference
+  - radio "Email" [checked]
+  - text: Email
+  - radio "Phone"
+  - text: Phone

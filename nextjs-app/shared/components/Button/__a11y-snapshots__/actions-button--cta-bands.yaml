@@ -1,0 +1,59 @@
+- status: Work in progress (alpha)
+- banner:
+  - heading "Button surface decision board" [level=1]
+  - paragraph:
+    - text: "Decision: add"
+    - code: surface="onDark" | "onBrand"
+    - text: "on @dt/Button (static CSS) for gradient bands rather than ad-hoc color inversion. More boards: Storybook →"
+    - strong: Design system / Migration boards
+    - text: → Review hub.
+- heading "Homepage CTA — background=primary" [level=2]
+- paragraph: Today — shadcn + pattern CSS
+- button "Primary CTA"
+- button "Secondary CTA"
+- paragraph: Wrong — @dt primary/secondary, surface=default
+- button "Primary CTA"
+- button "Secondary CTA"
+- paragraph: Proposed — @dt with surface=onDark
+- button "Primary CTA"
+- button "Secondary CTA"
+- heading "About bands — background=gradient" [level=2]
+- paragraph: Today — shadcn + pattern CSS
+- button "Primary CTA"
+- button "Secondary CTA"
+- paragraph: Wrong — @dt primary/secondary, surface=default
+- button "Primary CTA"
+- button "Secondary CTA"
+- paragraph: Proposed — @dt with surface=onDark
+- button "Primary CTA"
+- button "Secondary CTA"
+- heading "Dark zinc band" [level=2]
+- paragraph: Today — shadcn + pattern CSS
+- button "Primary CTA"
+- button "Secondary CTA"
+- paragraph: Wrong — @dt primary/secondary, surface=default
+- button "Primary CTA"
+- button "Secondary CTA"
+- paragraph: Proposed — @dt with surface=onDark
+- button "Primary CTA"
+- button "Secondary CTA"
+- heading "Muted (light) band" [level=2]
+- paragraph: Today — shadcn + pattern CSS
+- button "Primary CTA"
+- button "Secondary CTA"
+- paragraph: Wrong — @dt primary/secondary, surface=default
+- button "Primary CTA"
+- button "Secondary CTA"
+- paragraph: Proposed — @dt with surface=default
+- button "Primary CTA"
+- button "Secondary CTA"
+- heading "Work CTA — background=brand" [level=2]
+- paragraph: Today — shadcn + pattern CSS
+- button "Primary CTA"
+- button "Secondary CTA"
+- paragraph: Wrong — @dt primary/secondary, surface=default
+- button "Primary CTA"
+- button "Secondary CTA"
+- paragraph: Proposed — @dt with surface=onBrand
+- button "Primary CTA"
+- button "Secondary CTA"

@@ -1,0 +1,10 @@
+- status: Work in progress (beta)
+- blockquote:
+  - paragraph: “The design system created by Petri transformed our entire product line. The quality and consistency exceeded our expectations.”
+  - contentinfo:
+    - img "Portrait of Marcus Chen"
+    - text: Marcus Chen
+    - link "View Marcus Chen's LinkedIn profile":
+      - /url: https://linkedin.com/in/marcuschen
+      - img "View Marcus Chen's LinkedIn profile"
+    - paragraph: Design Director • InnovateNow

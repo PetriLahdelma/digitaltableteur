@@ -1,0 +1,14 @@
+- region "Overview":
+  - heading "Services" [level=3]
+  - list:
+    - listitem: Workshop Facilitation
+    - listitem: Rapid Prototyping
+    - listitem: Usability Testing
+  - heading "Duration" [level=3]
+  - paragraph: 2-week sprint (October 2024)
+  - heading "Tools" [level=3]
+  - list "Tools":
+    - listitem "Figma"
+    - listitem "Slack"
+  - heading "Overview" [level=3]
+  - paragraph: Intensive design sprint to validate a new product concept, resulting in a tested prototype and clear go-to-market strategy.

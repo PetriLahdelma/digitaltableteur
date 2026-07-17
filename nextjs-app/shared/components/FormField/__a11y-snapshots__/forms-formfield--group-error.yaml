@@ -1,0 +1,7 @@
+- group "Notification channels":
+  - text: Notification channels
+  - checkbox "Email"
+  - text: Email
+  - checkbox "SMS"
+  - text: SMS
+  - alert: Pick at least one channel

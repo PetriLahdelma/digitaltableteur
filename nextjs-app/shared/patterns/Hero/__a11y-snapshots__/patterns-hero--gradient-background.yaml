@@ -1,0 +1,8 @@
+- status: Deprecated
+- region "Innovation Meets Design hero section":
+  - heading "Innovation Meets Design" [level=1]
+  - paragraph: The Future of Digital
+  - paragraph: Pushing boundaries with cutting-edge technology and creative vision. Let's build something extraordinary together.
+  - link "Start Your Journey":
+    - /url: /contact
+    - button "Start Your Journey"

@@ -89,7 +89,15 @@ const literalUnionValues = (type: string): (string | number)[] | null => {
 };
 
 const isStringish = (type: string) =>
-  /\bstring\b/.test(type) && !/ReactNode|Element|Children/i.test(type);
+  /\bstring\b/.test(type) &&
+  // string[] (and other array/record types mentioning string) must NOT get a
+  // text control: the seeded "" lands in the args as a bogus scalar — e.g.
+  // Accordion's openIds: "" flipped every story into controlled-empty mode,
+  // suppressing defaultOpenId and killing item toggling in the canvas.
+  !type.includes("[]") &&
+  !/\bArray</.test(type) &&
+  !/\bRecord</.test(type) &&
+  !/ReactNode|Element|Children/i.test(type);
 const isFunction = (type: string) => type.includes("=>") || /^\(/.test(type);
 
 type AnyArgType = Record<string, unknown> & { table?: Record<string, unknown> };

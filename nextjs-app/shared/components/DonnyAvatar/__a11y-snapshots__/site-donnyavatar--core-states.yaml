@@ -1,0 +1,24 @@
+- img "Donny is idle":
+  - img
+- paragraph: idle
+- img "Donny is listening":
+  - img
+- paragraph: listening
+- img "Donny is thinking":
+  - img
+- paragraph: thinking
+- img "Donny is searching":
+  - img
+- paragraph: searching
+- img "Donny is success":
+  - img
+- paragraph: success
+- img "Donny is error":
+  - img
+- paragraph: error
+- img "Donny is confused":
+  - img: "?"
+- paragraph: confused
+- img "Donny is handoff":
+  - img
+- paragraph: handoff

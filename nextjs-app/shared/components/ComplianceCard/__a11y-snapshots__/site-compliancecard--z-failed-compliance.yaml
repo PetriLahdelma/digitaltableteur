@@ -1,0 +1,10 @@
+- status: Work in progress (beta)
+- 'heading "Compliance: 0/3" [level=2]'
+- text: Complete file structure
+- img "Fail"
+- text: Missing .test.tsx file TypeScript strict
+- img "Fail"
+- text: Using any types Translation support
+- img "Fail"
+- text: No i18n integration
+- separator "Resize table"

@@ -1,0 +1,9 @@
+- status: Deprecated
+- region "Design That Speaks hero section":
+  - heading "Design That Speaks" [level=1]
+  - paragraph: Creative Excellence
+  - paragraph: We craft digital experiences that tell your story through thoughtful design and seamless interaction.
+  - link "Explore Projects":
+    - /url: /work
+    - button "Explore Projects"
+  - img "Design portfolio showcase"

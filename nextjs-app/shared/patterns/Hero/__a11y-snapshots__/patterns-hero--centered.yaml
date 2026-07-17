@@ -1,0 +1,5 @@
+- status: Deprecated
+- region "Centered Hero Layout hero section":
+  - heading "Centered Hero Layout" [level=1]
+  - paragraph: Perfect for Landing Pages
+  - paragraph: This centered layout creates a focal point for your content with balanced alignment and clear visual hierarchy.

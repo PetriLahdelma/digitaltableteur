@@ -1,0 +1,11 @@
+- status: Deprecated
+- region "Brand Strategy & Identity hero section":
+  - heading "Brand Strategy & Identity" [level=1]
+  - paragraph: Stand Out in a Crowded Market
+  - paragraph: We help businesses define their unique voice and visual identity. From strategy to execution, we create brands that resonate.
+  - link "Book Free Consultation":
+    - /url: /contact
+    - button "Book Free Consultation"
+  - link "See Our Work":
+    - /url: /work
+    - button "See Our Work"

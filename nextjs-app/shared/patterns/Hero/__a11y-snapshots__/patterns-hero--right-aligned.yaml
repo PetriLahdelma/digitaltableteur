@@ -1,0 +1,6 @@
+- status: Deprecated
+- region "Aligned to the Right hero section":
+  - heading "Aligned to the Right" [level=1]
+  - paragraph: Alternative Layout Option
+  - paragraph: Content can be aligned to the right for unique visual compositions and asymmetric layouts.
+  - button "Take Action"

@@ -1,0 +1,5 @@
+- status: Deprecated
+- region "Generous Spacing hero section":
+  - heading "Generous Spacing" [level=1]
+  - paragraph: Breathing Room
+  - paragraph: Ample vertical spacing creates a sense of luxury and allows content to breathe.

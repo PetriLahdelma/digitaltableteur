@@ -1,0 +1,9 @@
+- status: Work in progress (beta)
+- group "Delivery speed":
+  - text: Delivery speed
+  - radio "Standard (3-5 days)" [checked]
+  - text: Standard (3-5 days)
+  - radio "Express (1-2 days)"
+  - text: Express (1-2 days)
+  - radio "Pickup point"
+  - text: Pickup point

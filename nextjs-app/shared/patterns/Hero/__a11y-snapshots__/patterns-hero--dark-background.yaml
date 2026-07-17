@@ -1,0 +1,11 @@
+- status: Deprecated
+- region "Premium Digital Solutions hero section":
+  - heading "Premium Digital Solutions" [level=1]
+  - paragraph: Elevate Your Brand
+  - paragraph: End-to-end digital services from strategy to execution. We help ambitious brands stand out in the digital landscape.
+  - link "Get in Touch":
+    - /url: /contact
+    - button "Get in Touch"
+  - link "Learn More":
+    - /url: /about
+    - button "Learn More"
