@@ -86,7 +86,8 @@
     "props": {
         "label": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name (required for standalone spinners)."
         },
         "size": {
             "optional": true,
@@ -95,11 +96,13 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size token: sm fits inside inputs/buttons, lg reads at region level."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional utility classes on the root."
         }
     },
     "forbiddenUse": [

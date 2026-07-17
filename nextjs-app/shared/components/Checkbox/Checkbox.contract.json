@@ -103,27 +103,33 @@
     "props": {
         "label": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Label text displayed next to the checkbox"
         },
         "showLabel": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether to show the label text."
         },
         "checked": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Checked state (controlled)."
         },
         "indeterminate": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Indeterminate (mixed) state."
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables interaction and dims the control."
         },
         "defaultChecked": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Initial checked state for uncontrolled use."
         },
         "size": {
             "optional": true,
@@ -132,23 +138,28 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size."
         },
         "onCheckedChange": {
             "optional": true,
-            "type": "(checked: boolean) => void"
+            "type": "(checked: boolean) => void",
+            "description": "Called with the next checked value when toggled."
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom ID for the checkbox element; auto-generated when omitted"
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Error message under the control; sets aria-invalid and aria-describedby."
         },
         "helperText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Supporting text under the control; always rendered, below `error` when both are set."
         }
     },
     "forbiddenUse": [

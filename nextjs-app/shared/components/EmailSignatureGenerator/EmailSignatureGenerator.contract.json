@@ -38,19 +38,23 @@
     "props": {
         "companyName": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Company name for the signature"
         },
         "companyUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Company website URL"
         },
         "logoUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Company logo URL for preview (relative path works)"
         },
         "logoUrlFull": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Full URL for the logo in generated HTML signature"
         }
     },
     "forbiddenUse": [

@@ -59,11 +59,13 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Main title text"
         },
         "subtitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional subtitle"
         },
         "background": {
             "optional": true,
@@ -71,15 +73,18 @@
             "values": [
                 "minimal",
                 "gradient"
-            ]
+            ],
+            "description": "Background variant"
         },
         "compact": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Use compact height (60-70vh instead of 80vh)"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

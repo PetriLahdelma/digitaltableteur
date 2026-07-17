@@ -46,7 +46,8 @@
     "props": {
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS classes on the footer."
         }
     },
     "forbiddenUse": [

@@ -36,31 +36,38 @@
     "props": {
         "spriteSheet": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Sprite sheet path (e.g. /sprites/designerman.png)"
         },
         "frameWidth": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Frame width in px"
         },
         "frameHeight": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Frame height in px"
         },
         "columns": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Number of columns in the sheet"
         },
         "animations": {
             "optional": true,
-            "type": "Partial<Record<AnimationName, AnimationConfig>>"
+            "type": "Partial<Record<AnimationName, AnimationConfig>>",
+            "description": "Optional custom animations"
         },
         "scale": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Scale multiplier for the sprite"
         },
         "audioSrc": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional looping audio track"
         }
     },
     "forbiddenUse": [

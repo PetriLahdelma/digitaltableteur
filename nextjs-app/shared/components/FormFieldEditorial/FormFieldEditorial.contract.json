@@ -70,27 +70,33 @@
         },
         "children": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Select options"
         },
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Field label (displayed as uppercase)"
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Error message"
         },
         "required": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether the field is required"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional className"
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Field ID (auto-generated from label if not provided)"
         }
     },
     "forbiddenUse": [

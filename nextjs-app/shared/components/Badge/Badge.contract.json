@@ -145,7 +145,8 @@
             "values": [
                 "primary",
                 "secondary"
-            ]
+            ],
+            "description": "Visual weight."
         },
         "tone": {
             "optional": true,
@@ -156,7 +157,8 @@
                 "warning",
                 "error",
                 "neutral"
-            ]
+            ],
+            "description": "Semantic colour, orthogonal to `variant`."
         },
         "size": {
             "optional": true,
@@ -165,7 +167,8 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size."
         },
         "className": {
             "optional": true,
@@ -173,27 +176,33 @@
         },
         "removable": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Renders a dismiss control that removes the badge."
         },
         "onRemove": {
             "optional": true,
-            "type": "() => void"
+            "type": "() => void",
+            "description": "Called after the badge is dismissed."
         },
         "icon": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Leading icon; a semantic icon is supplied automatically for non-neutral tones."
         },
         "dot": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Render a leading color-coded {@link StatusDot} (from `tone`) instead of the\nsemantic icon — e.g. lifecycle badges (alpha/beta/stable/deprecated). An\nexplicit `icon` still wins."
         },
         "square": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Square (non-pill) corners."
         },
         "role": {
             "optional": true,
-            "type": "\"status\""
+            "type": "\"status\"",
+            "description": "ARIA role. `\"status\"` makes dynamic updates announce via `aria-live=\"polite\"`\n(e.g. a live notification count). Omit for static decorative badges."
         }
     },
     "forbiddenUse": [

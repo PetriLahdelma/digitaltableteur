@@ -80,35 +80,43 @@
     "props": {
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Label text"
         },
         "value": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Phone number value (E.164 format)"
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Error message; renders above the helper line"
         },
         "helperText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Helper text below the input"
         },
         "placeholder": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Placeholder text"
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disabled state."
         },
         "required": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Shows the required marker on the label."
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Explicit control id (wires the label); auto-generated when omitted"
         },
         "defaultCountry": {
             "optional": true,
@@ -359,7 +367,8 @@
                 "ZA",
                 "ZM",
                 "ZW"
-            ]
+            ],
+            "description": "ISO 3166-1 alpha-2 code used when the value has no country prefix."
         },
         "onChange": {
             "optional": true,

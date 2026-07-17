@@ -68,15 +68,18 @@
     "props": {
         "items": {
             "optional": false,
-            "type": "SegmentedControlItem[]"
+            "type": "SegmentedControlItem[]",
+            "description": "Segments to render, in order."
         },
         "value": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Currently selected value (controlled)."
         },
         "onValueChange": {
             "optional": false,
-            "type": "(value: string) => void"
+            "type": "(value: string) => void",
+            "description": "Called with the new value when a segment is selected."
         },
         "size": {
             "optional": true,
@@ -85,15 +88,18 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size token."
         },
         "ariaLabel": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the group (required; announced by screen readers)."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class names."
         }
     },
     "forbiddenUse": [

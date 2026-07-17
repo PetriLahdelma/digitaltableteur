@@ -62,19 +62,23 @@
     "props": {
         "officeName": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Office name heading"
         },
         "address": {
             "optional": false,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "Address lines"
         },
         "email": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Contact email"
         },
         "phone": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Contact phone"
         },
         "variant": {
             "optional": true,
@@ -83,11 +87,13 @@
                 "default",
                 "bordered",
                 "elevated"
-            ]
+            ],
+            "description": "Card variant"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

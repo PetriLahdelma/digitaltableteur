@@ -68,7 +68,8 @@
     "props": {
         "toasts": {
             "optional": false,
-            "type": "ToastStackItem[]"
+            "type": "ToastStackItem[]",
+            "description": "Toasts to display, oldest first; new toasts are appended by the caller."
         },
         "position": {
             "optional": true,
@@ -80,19 +81,23 @@
                 "bottom-left",
                 "bottom-center",
                 "bottom-right"
-            ]
+            ],
+            "description": "Screen corner/edge the stack docks to."
         },
         "onDismiss": {
             "optional": true,
-            "type": "(id: string) => void"
+            "type": "(id: string) => void",
+            "description": "Called with the toast id when its auto-dismiss timer fires."
         },
         "max": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Maximum toasts rendered at once; older ones wait (their timers only run\nwhile rendered), so bursts drain in order."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional classes on the stack wrapper."
         }
     },
     "forbiddenUse": [

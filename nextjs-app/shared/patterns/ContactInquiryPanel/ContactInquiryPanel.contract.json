@@ -109,19 +109,23 @@
             "values": [
                 "message",
                 "book"
-            ]
+            ],
+            "description": "Initial tab selection."
         },
         "packageId": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional pricing package id for booking prefill."
         },
         "messagePanel": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Editorial contact form slot shown on the message tab."
         },
         "bookingConfig": {
             "optional": true,
-            "type": "SiteBookingConfig"
+            "type": "SiteBookingConfig",
+            "description": "Optional booking override; defaults from packageId."
         }
     },
     "forbiddenUse": [

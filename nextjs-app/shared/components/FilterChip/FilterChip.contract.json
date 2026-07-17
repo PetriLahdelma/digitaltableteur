@@ -124,11 +124,13 @@
     "props": {
         "pressed": {
             "optional": false,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether this chip's filter is active (rendered as aria-pressed)."
         },
         "children": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Chip label (compose counts etc. inline)."
         },
         "variant": {
             "optional": true,
@@ -137,7 +139,8 @@
                 "underline",
                 "minimal",
                 "pill"
-            ]
+            ],
+            "description": "Visual treatment."
         },
         "size": {
             "optional": true,
@@ -146,15 +149,18 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size token."
         },
         "count": {
             "optional": true,
-            "type": "number"
+            "type": "number",
+            "description": "Optional count suffix, rendered as \"(n)\"."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class names."
         }
     },
     "forbiddenUse": [

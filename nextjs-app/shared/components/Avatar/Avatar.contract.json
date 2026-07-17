@@ -165,11 +165,13 @@
         },
         "menuItems": {
             "optional": true,
-            "type": "AvatarMenuItem[]"
+            "type": "AvatarMenuItem[]",
+            "description": "When provided, renders an in-place dropdown menu triggered by the avatar"
         },
         "menuLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible label announced for the avatar menu trigger"
         },
         "variant": {
             "optional": true,
@@ -177,7 +179,8 @@
             "values": [
                 "image",
                 "initials"
-            ]
+            ],
+            "description": "Controls whether the avatar prefers an image or initials"
         }
     },
     "forbiddenUse": [

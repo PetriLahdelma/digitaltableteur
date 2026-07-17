@@ -42,15 +42,18 @@
     "props": {
         "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the group (announced by screen readers)."
         },
         "attached": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Fuse the children into one segmented control surface."
         },
         "children": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Buttons / IconButtons of the same variant and size."
         }
     },
     "displayName": "ButtonGroup",

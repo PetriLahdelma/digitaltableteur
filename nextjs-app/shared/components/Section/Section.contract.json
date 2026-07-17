@@ -123,7 +123,8 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Section content."
         },
         "spacing": {
             "optional": true,
@@ -136,7 +137,8 @@
                 "xl",
                 "hero",
                 "follow"
-            ]
+            ],
+            "description": "Block padding scale."
         },
         "background": {
             "optional": true,
@@ -146,19 +148,23 @@
                 "muted",
                 "accent",
                 "inverse"
-            ]
+            ],
+            "description": "Surface background token."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section class names."
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section id (anchor target)."
         },
         "spotlightTarget": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional stable selector target for host-app guided navigation."
         }
     },
     "forbiddenUse": [

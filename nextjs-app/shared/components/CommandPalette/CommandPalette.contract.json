@@ -59,31 +59,38 @@
     "props": {
         "open": {
             "optional": false,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether the palette is open (controlled)."
         },
         "onClose": {
             "optional": false,
-            "type": "() => void"
+            "type": "() => void",
+            "description": "Called to request close (Escape, overlay click, or after a selection)."
         },
         "items": {
             "optional": false,
-            "type": "CommandPaletteItem[]"
+            "type": "CommandPaletteItem[]",
+            "description": "Commands to show, in order."
         },
         "label": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the dialog + listbox."
         },
         "placeholder": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Search input placeholder."
         },
         "emptyText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Shown when nothing matches."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class names for the dialog."
         }
     },
     "forbiddenUse": [

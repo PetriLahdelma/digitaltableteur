@@ -41,35 +41,43 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Project title"
         },
         "description": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Project description/tagline"
         },
         "image": {
             "optional": true,
-            "type": "ProjectHeroImage"
+            "type": "ProjectHeroImage",
+            "description": "Hero image"
         },
         "video": {
             "optional": true,
-            "type": "ProjectHeroVideo"
+            "type": "ProjectHeroVideo",
+            "description": "Hero video (takes precedence over image when provided)"
         },
         "category": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Project category"
         },
         "tags": {
             "optional": true,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "Project tags"
         },
         "date": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Project date/duration"
         },
         "liveUrl": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Live project URL"
         },
         "variant": {
             "optional": true,
@@ -78,15 +86,18 @@
                 "contained",
                 "full-width",
                 "split"
-            ]
+            ],
+            "description": "Hero layout variant"
         },
         "showScrollIndicator": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show scroll indicator"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

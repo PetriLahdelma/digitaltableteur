@@ -70,11 +70,13 @@
     "props": {
         "showCTA": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show CTA section at bottom"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

@@ -149,7 +149,8 @@
         },
         "loading": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show skeleton placeholders while content is loading"
         }
     },
     "forbiddenUse": [

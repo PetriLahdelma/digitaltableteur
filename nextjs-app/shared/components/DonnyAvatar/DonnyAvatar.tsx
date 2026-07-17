@@ -41,37 +41,37 @@ export function isDonnyState(value: string): value is DonnyState {
 }
 
 export interface DonnyAvatarProps {
-  /** Current avatar state */
+  /** Current expression or assistant lifecycle state. */
   state?: DonnyState;
-  /** Size variant */
+  /** Rendered avatar size. */
   size?: "sm" | "md" | "lg" | "xl";
-  /** Additional CSS class */
+  /** Additional CSS class. */
   className?: string;
-  /** Callback when transition animation ends */
+  /** Called when the state transition animation ends. */
   onTransitionEnd?: () => void;
-  /** Whether to show state label (for debugging) */
+  /** Shows the current state label for diagnostics. */
   showLabel?: boolean;
-  /** Enable eye tracking to follow mouse cursor */
+  /** Makes the eyes follow the pointer. */
   trackMouse?: boolean;
-  /** CSS selectors for elements to detect proximity to (triggers curious/playful states) */
+  /** CSS selectors whose pointer proximity can trigger curious or playful behavior. */
   proximitySelectors?: string[];
-  /** Callback when proximity to tracked elements changes */
+  /** Called when proximity to a tracked target changes. */
   onProximityChange?: (isNearTarget: boolean, targetSelector?: string) => void;
-  /** Distance threshold for proximity detection (default 150px) */
+  /** Pointer proximity threshold in pixels (default 150). */
   proximityThreshold?: number;
-  /** Enable random idle expressions to make Donny feel more alive */
+  /** Enables randomized idle expressions. */
   enableIdleExpressions?: boolean;
-  /** Base interval for idle expressions in ms (default 8000, randomized ±50%) */
+  /** Base idle-expression interval in milliseconds (default 8000), randomized by 50 percent. */
   idleExpressionInterval?: number;
-  /** Animate mouth as if speaking (used during streaming responses) */
+  /** Animates the mouth during streaming responses. */
   isSpeaking?: boolean;
-  /** Enable sleep detection when mouse is idle (default false) */
+  /** Enables sleepy and sleeping states after pointer inactivity. */
   enableSleepDetection?: boolean;
-  /** Time in ms before Donny gets sleepy (default 120000 = 2 min) */
+  /** Inactivity delay before the sleepy state, in milliseconds (default 120000). */
   sleepyDelay?: number;
-  /** Time in ms before Donny falls asleep (default 150000 = 2.5 min) */
+  /** Inactivity delay before the sleeping state, in milliseconds (default 150000). */
   sleepDelay?: number;
-  /** When true, omit role/label so a parent control owns the accessible name (e.g. chat toggle) */
+  /** Removes role and label when a parent control owns the accessible name (e.g. the chat toggle). */
   decorative?: boolean;
 }
 

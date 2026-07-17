@@ -67,27 +67,33 @@
     "props": {
         "name": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Native form field name shared by the set; auto-generated when omitted"
         },
         "legend": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Group label rendered as the fieldset legend"
         },
         "options": {
             "optional": false,
-            "type": "RadioGroupOption[]"
+            "type": "RadioGroupOption[]",
+            "description": "Radio options; per-option disabled keeps the choice visible"
         },
         "value": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Controlled selected value; \"\" is treated as absent (uncontrolled)"
         },
         "defaultValue": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Initial value when uncontrolled"
         },
         "onValueChange": {
             "optional": true,
-            "type": "(value: string) => void"
+            "type": "(value: string) => void",
+            "description": "Fired with the next value when selection changes"
         },
         "orientation": {
             "optional": true,
@@ -95,7 +101,8 @@
             "values": [
                 "horizontal",
                 "vertical"
-            ]
+            ],
+            "description": "Stack direction."
         },
         "size": {
             "optional": true,
@@ -107,23 +114,28 @@
                 "S",
                 "M",
                 "L"
-            ]
+            ],
+            "description": "Radio control size."
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables the whole set."
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Error message; announces via role=alert and sets aria-invalid"
         },
         "helperText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Helper copy below the group; always rendered, alongside error when both are set"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Merged onto the fieldset"
         }
     },
     "forbiddenUse": [

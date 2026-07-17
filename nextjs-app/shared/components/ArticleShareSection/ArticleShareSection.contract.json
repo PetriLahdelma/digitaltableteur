@@ -50,11 +50,13 @@
     "props": {
         "url": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Article URL to share"
         },
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Article title for share text"
         },
         "layout": {
             "optional": true,
@@ -62,15 +64,18 @@
             "values": [
                 "horizontal",
                 "vertical"
-            ]
+            ],
+            "description": "Layout direction"
         },
         "showTitle": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show section title"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

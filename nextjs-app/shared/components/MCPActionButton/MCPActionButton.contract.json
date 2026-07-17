@@ -36,27 +36,33 @@
     "props": {
         "toolId": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Identifier for the MCP tool to invoke"
         },
         "payload": {
             "optional": true,
-            "type": "Record<string, unknown>"
+            "type": "Record<string, unknown>",
+            "description": "Optional payload for the MCP call"
         },
         "onExecute": {
             "optional": true,
-            "type": "(input: {\n    toolId: string;\n    payload?: Record<string, unknown>;\n  }) => Promise<unknown>"
+            "type": "(input: {\n    toolId: string;\n    payload?: Record<string, unknown>;\n  }) => Promise<unknown>",
+            "description": "Async executor for the MCP action"
         },
         "onResult": {
             "optional": true,
-            "type": "(result: unknown) => void"
+            "type": "(result: unknown) => void",
+            "description": "Callback for successful results"
         },
         "onError": {
             "optional": true,
-            "type": "(error: unknown) => void"
+            "type": "(error: unknown) => void",
+            "description": "Callback for errors"
         },
         "children": {
             "optional": true,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Button label override"
         }
     },
     "forbiddenUse": [

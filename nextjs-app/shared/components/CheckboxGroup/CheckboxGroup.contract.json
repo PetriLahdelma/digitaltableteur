@@ -70,31 +70,38 @@
     "props": {
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Base id for the checkbox inputs"
         },
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Legend text for the group"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS classes on the group"
         },
         "options": {
             "optional": false,
-            "type": "{ label: string; value: string }[]"
+            "type": "{ label: string; value: string }[]",
+            "description": "Checkbox options (label, value)"
         },
         "showMasterCheckbox": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Shows the select-all master checkbox."
         },
         "masterLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Label for the select-all master checkbox"
         },
         "defaultSelected": {
             "optional": true,
-            "type": "string[]"
+            "type": "string[]",
+            "description": "Initially selected option values (uncontrolled)"
         },
         "onChange": {
             "optional": true,

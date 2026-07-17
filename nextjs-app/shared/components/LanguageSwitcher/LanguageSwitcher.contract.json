@@ -84,35 +84,43 @@
     "props": {
         "languages": {
             "optional": false,
-            "type": "LanguageSwitcherOption[]"
+            "type": "LanguageSwitcherOption[]",
+            "description": "Available languages (code, label, accessible name)."
         },
         "currentLang": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Currently selected language code."
         },
         "onLanguageChange": {
             "optional": false,
-            "type": "(code: string) => void"
+            "type": "(code: string) => void",
+            "description": "Called with the selected language code."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional classes on the group wrapper."
         },
         "buttonClassName": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Base class override applied to every language button."
         },
         "activeButtonClassName": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Class override for the current-language trigger."
         },
         "openTriggerClassName": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Class override for the trigger while the tray is open."
         },
         "floatedButtonClassName": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Class override for the fanned-out tray options."
         }
     },
     "composesWith": [

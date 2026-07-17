@@ -65,15 +65,18 @@
     "props": {
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section id for anchor linking"
         },
         "donnyTarget": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Donny site action target id"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

@@ -40,15 +40,18 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Section title"
         },
         "subtitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional subtitle/intro text"
         },
         "values": {
             "optional": false,
-            "type": "ValueItem[]"
+            "type": "ValueItem[]",
+            "description": "Array of values to display"
         },
         "cardVariant": {
             "optional": true,
@@ -57,7 +60,8 @@
                 "default",
                 "bordered",
                 "elevated"
-            ]
+            ],
+            "description": "Card variant"
         },
         "background": {
             "optional": true,
@@ -66,7 +70,8 @@
                 "default",
                 "muted",
                 "accent"
-            ]
+            ],
+            "description": "Background variant"
         },
         "columns": {
             "optional": true,
@@ -74,11 +79,13 @@
             "values": [
                 "two",
                 "three"
-            ]
+            ],
+            "description": "Responsive grid column preset"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

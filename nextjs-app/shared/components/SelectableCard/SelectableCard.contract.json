@@ -53,19 +53,23 @@
     "props": {
         "value": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Submitted value / selection key."
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Per-card disable; the choice stays visible."
         },
         "selected": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Standalone selected state when used outside a SelectableCardGroup."
         },
         "onSelectedChange": {
             "optional": true,
-            "type": "(selected: boolean) => void"
+            "type": "(selected: boolean) => void",
+            "description": "Standalone change handler when used outside a SelectableCardGroup."
         }
     },
     "forbiddenUse": [

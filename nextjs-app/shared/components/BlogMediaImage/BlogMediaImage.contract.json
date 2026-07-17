@@ -91,11 +91,13 @@
             "values": [
                 "cover",
                 "contain"
-            ]
+            ],
+            "description": "Diagram heroes should use contain; photos use cover."
         },
         "fluid": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "When true, image spans its container (no max-width cap from width prop)."
         }
     },
     "forbiddenUse": [

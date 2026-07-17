@@ -95,19 +95,23 @@
     "props": {
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Label text displayed above the select dropdown"
         },
         "options": {
             "optional": true,
-            "type": "SelectOptionItem[]"
+            "type": "SelectOptionItem[]",
+            "description": "Option objects with value, label, and optional disabled; children override this"
         },
         "helperText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Supporting text under the control; always rendered, below `error` when both are set."
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Error message under the control; sets aria-invalid and aria-describedby."
         },
         "size": {
             "optional": true,
@@ -119,19 +123,23 @@
                 "S",
                 "M",
                 "L"
-            ]
+            ],
+            "description": "Size variant for select"
         },
         "onValueChange": {
             "optional": true,
-            "type": "(value: string) => void"
+            "type": "(value: string) => void",
+            "description": "Value change handler (recommended)"
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables the select. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it."
         },
         "onChange": {
             "optional": true,
-            "type": "(value: string) => void"
+            "type": "(value: string) => void",
+            "deprecated": true
         }
     },
     "forbiddenUse": [

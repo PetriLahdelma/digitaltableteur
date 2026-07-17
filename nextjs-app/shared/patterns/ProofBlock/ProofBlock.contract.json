@@ -60,35 +60,43 @@
     "props": {
         "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the proof section landmark."
         },
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Section heading."
         },
         "subTitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Supporting line under the title."
         },
         "caption": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Small print under the metrics (source, timeframe)."
         },
         "metrics": {
             "optional": false,
-            "type": "ProofMetric[]"
+            "type": "ProofMetric[]",
+            "description": "Proof metrics: value + label pairs."
         },
         "tight": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Reduce the band vertical padding."
         },
         "dark": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Render on the dark band treatment."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS classes on the section."
         }
     },
     "forbiddenUse": [

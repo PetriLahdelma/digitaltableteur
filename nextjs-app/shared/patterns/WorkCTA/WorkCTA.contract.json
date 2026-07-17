@@ -31,15 +31,18 @@
     "props": {
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Override the default title"
         },
         "description": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Override the default description"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

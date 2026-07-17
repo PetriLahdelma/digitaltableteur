@@ -58,7 +58,8 @@
         },
         "lastReviewed": {
             "optional": true,
-            "type": "string | Date"
+            "type": "string | Date",
+            "description": "Date when compliance was last reviewed (format: YYYY-MM-DD or Date object)"
         }
     },
     "forbiddenUse": [

@@ -31,39 +31,48 @@
     "props": {
         "nav": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Navigation slot (back link, etc.)"
         },
         "hero": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Hero section"
         },
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Main content area"
         },
         "sidebar": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Sidebar content (TOC, etc.)"
         },
         "relatedPosts": {
             "optional": true,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Related posts section"
         },
         "showReadingProgress": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show reading progress indicator"
         },
         "contentRef": {
             "optional": true,
-            "type": "RefObject<HTMLElement | null>"
+            "type": "RefObject<HTMLElement | null>",
+            "description": "Ref for reading progress tracking"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         },
         "lang": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Document language for the article root"
         }
     },
     "forbiddenUse": [

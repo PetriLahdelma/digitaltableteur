@@ -72,31 +72,38 @@
     "props": {
         "collapsedLabel": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Trigger label when collapsed"
         },
         "expandedLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Trigger label when expanded (optional, defaults to collapsedLabel)"
         },
         "defaultExpanded": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether the section is initially expanded"
         },
         "expanded": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Controlled expanded state"
         },
         "onExpandedChange": {
             "optional": true,
-            "type": "(expanded: boolean) => void"
+            "type": "(expanded: boolean) => void",
+            "description": "Callback when expansion state changes"
         },
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Content to reveal"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional className for the container"
         }
     },
     "forbiddenUse": [

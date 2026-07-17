@@ -60,31 +60,38 @@
     "props": {
         "legend": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Accessible name for the group of controls, rendered as a `<fieldset>`\n`<legend>`."
         },
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "The grouped controls; each keeps its own label."
         },
         "groupDescription": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Helper text shown under the legend."
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Group-level error message shown after the controls."
         },
         "required": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Appends a visual asterisk to the legend."
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables every contained control via the fieldset."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Merged onto the fieldset."
         }
     },
     "forbiddenUse": [

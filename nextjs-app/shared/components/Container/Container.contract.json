@@ -111,7 +111,8 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Page content inside the width constraint."
         },
         "size": {
             "optional": true,
@@ -122,15 +123,18 @@
                 "lg",
                 "xl",
                 "full"
-            ]
+            ],
+            "description": "Max-width token."
         },
         "center": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Center the container horizontally."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Wrapper class names."
         },
         "as": {
             "optional": true,
@@ -314,7 +318,8 @@
                 "tspan",
                 "use",
                 "view"
-            ]
+            ],
+            "description": "Polymorphic element."
         }
     },
     "forbiddenUse": [

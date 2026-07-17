@@ -40,19 +40,23 @@
     "props": {
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Hero title - uses i18n key \"blogHeroTitle\" if not provided"
         },
         "subtitle": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Hero subtitle - uses i18n key \"blogHeroSubtitle\" if not provided"
         },
         "showScrollIndicator": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show scroll indicator at bottom"
         },
         "scrollTargetId": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Target ID for scroll indicator"
         },
         "variant": {
             "optional": true,
@@ -60,15 +64,18 @@
             "values": [
                 "full",
                 "compact"
-            ]
+            ],
+            "description": "Hero variant"
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section ID for anchor navigation"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

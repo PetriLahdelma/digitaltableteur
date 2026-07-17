@@ -31,19 +31,23 @@
     "props": {
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Hero title - uses i18n key \"workTitle\" if not provided"
         },
         "description": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Hero description - uses i18n key \"workDescription\" if not provided"
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section ID for anchor navigation"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

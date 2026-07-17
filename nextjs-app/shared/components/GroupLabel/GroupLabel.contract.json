@@ -73,23 +73,28 @@
     "props": {
         "htmlFor": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the grouped control for label association"
         },
         "tooltipText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional browser tooltip; fallback when title is not set"
         },
         "required": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Shows the required asterisk."
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Muted disabled styling."
         },
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Native title attribute override"
         }
     },
     "forbiddenUse": [

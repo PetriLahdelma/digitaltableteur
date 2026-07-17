@@ -38,11 +38,13 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Content to center inside the flex container."
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class names (often a height constraint)."
         },
         "as": {
             "optional": true,
@@ -226,7 +228,8 @@
                 "tspan",
                 "use",
                 "view"
-            ]
+            ],
+            "description": "Polymorphic wrapper element."
         }
     },
     "forbiddenUse": [

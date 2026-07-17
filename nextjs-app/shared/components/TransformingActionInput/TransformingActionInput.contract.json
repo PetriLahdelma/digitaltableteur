@@ -40,51 +40,63 @@
             "values": [
                 "button",
                 "input"
-            ]
+            ],
+            "description": "Initial surface mode before transformation"
         },
         "value": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional controlled value"
         },
         "defaultValue": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Default value when uncontrolled"
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disabled state for both button and input"
         },
         "actionLabelKey": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Translation key for the trigger label"
         },
         "inputLabelKey": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Translation key for the input label"
         },
         "helperTextKey": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Translation key for helper text below the input"
         },
         "placeholderKey": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Translation key for the placeholder"
         },
         "onChange": {
             "optional": true,
-            "type": "(value: string) => void"
+            "type": "(value: string) => void",
+            "description": "Triggered when value changes"
         },
         "onSubmit": {
             "optional": true,
-            "type": "(value: string) => void"
+            "type": "(value: string) => void",
+            "description": "Triggered on submit in input mode"
         },
         "stayInInputMode": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "When true, retains the input after submit instead of returning to button mode"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional className passthrough"
         }
     },
     "forbiddenUse": [

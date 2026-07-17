@@ -117,7 +117,8 @@
     "props": {
         "children": {
             "optional": true,
-            "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+            "type": "React.ReactNode | ReactI18NextChildren | Iterable<ReactI18NextChildren>",
+            "description": "Heading text."
         },
         "as": {
             "optional": true,
@@ -129,15 +130,18 @@
                 "h4",
                 "h5",
                 "h6"
-            ]
+            ],
+            "description": "Override the rendered element (h1-h6); wins over level."
         },
         "className": {
             "optional": true,
-            "type": "string | undefined"
+            "type": "string | undefined",
+            "description": "Additional CSS class names."
         },
         "unstyled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "When true, only sets the heading tag + className (no Title token typography). Use in patterns/pages that already define font/size in CSS or Tailwind."
         },
         "size": {
             "optional": true,
@@ -150,11 +154,13 @@
                 "m",
                 "l",
                 "xxl"
-            ]
+            ],
+            "description": "Display size token for the heading."
         },
         "level": {
             "optional": true,
-            "type": "1 | 2 | 3 | 4 | 5 | 6"
+            "type": "1 | 2 | 3 | 4 | 5 | 6",
+            "description": "Semantic heading level (maps to h1-h6 when as is unset)."
         },
         "lineHeight": {
             "optional": true,
@@ -165,7 +171,8 @@
                 "snug",
                 "relaxed",
                 "loose"
-            ]
+            ],
+            "description": "Line height variant."
         }
     },
     "forbiddenUse": [

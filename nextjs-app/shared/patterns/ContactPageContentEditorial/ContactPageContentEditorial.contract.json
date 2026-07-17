@@ -65,7 +65,8 @@
     "props": {
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         },
         "initialInquiryMode": {
             "optional": true,
@@ -73,15 +74,18 @@
             "values": [
                 "message",
                 "book"
-            ]
+            ],
+            "description": "Deep-link from /contact?mode=book"
         },
         "bookingPackageId": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Deep-link from /contact?package=ux-sprint"
         },
         "bookingConfig": {
             "optional": true,
-            "type": "SiteBookingConfig"
+            "type": "SiteBookingConfig",
+            "description": "Server-resolved booking embed config from env vars."
         }
     },
     "forbiddenUse": [

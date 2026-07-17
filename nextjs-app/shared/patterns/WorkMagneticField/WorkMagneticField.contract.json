@@ -60,27 +60,33 @@
     "props": {
         "title": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section title"
         },
         "projects": {
             "optional": false,
-            "type": "ProjectItem[]"
+            "type": "ProjectItem[]",
+            "description": "Array of projects to display"
         },
         "showViewAll": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Show \"View all work\" link"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         },
         "id": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Section ID for navigation"
         },
         "donnyTarget": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Donny site action target id"
         }
     },
     "forbiddenUse": [

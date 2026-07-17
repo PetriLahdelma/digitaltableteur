@@ -123,7 +123,8 @@
     "props": {
         "label": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Visible field label; also feeds the input name"
         },
         "type": {
             "optional": false,
@@ -135,7 +136,8 @@
                 "tel",
                 "email",
                 "password"
-            ]
+            ],
+            "description": "HTML input type; tel formats and email validates as you type"
         },
         "size": {
             "optional": true,
@@ -147,47 +149,58 @@
                 "S",
                 "M",
                 "L"
-            ]
+            ],
+            "description": "Size variant for input"
         },
         "onValueChange": {
             "optional": true,
-            "type": "(value: string | number) => void"
+            "type": "(value: string | number) => void",
+            "description": "Value change handler (recommended)"
         },
         "defaultValue": {
             "optional": true,
-            "type": "string | number"
+            "type": "string | number",
+            "description": "Initial value for uncontrolled component"
         },
         "value": {
             "optional": true,
-            "type": "string | number"
+            "type": "string | number",
+            "description": "Controlled value; an initial \"\" is treated as absent (uncontrolled), later changes always sync in"
         },
         "error": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Validation error message; renders above the helper line and sets aria-invalid"
         },
         "helperText": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Helper copy below the field"
         },
         "disabled": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Disables the input. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it."
         },
         "clearable": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Shows a labelled ×-button inside the field chrome while the field has a value; clearing returns focus to the input"
         },
         "onClear": {
             "optional": true,
-            "type": "() => void"
+            "type": "() => void",
+            "description": "Called after the clear button empties the field (onValueChange also fires with \"\")"
         },
         "hideLabel": {
             "optional": true,
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Visually hides the label (kept in the accessibility tree); use where surrounding design carries the affordance"
         },
         "onChange": {
             "optional": true,
-            "type": "(value: string | number) => void"
+            "type": "(value: string | number) => void",
+            "deprecated": true
         }
     },
     "forbiddenUse": [

@@ -53,11 +53,13 @@
                 "h2",
                 "p",
                 "span"
-            ]
+            ],
+            "description": "Element to render, defaults to h1"
         },
         "children": {
             "optional": false,
-            "type": "React.ReactNode"
+            "type": "React.ReactNode",
+            "description": "Content to display"
         }
     },
     "forbiddenUse": [

@@ -113,11 +113,13 @@
     "props": {
         "cells": {
             "optional": false,
-            "type": "GridCell[]"
+            "type": "GridCell[]",
+            "description": "Array of grid cells to render"
         },
         "columns": {
             "optional": true,
-            "type": "1 | 2 | 3 | 4"
+            "type": "1 | 2 | 3 | 4",
+            "description": "Number of columns in the grid"
         },
         "gap": {
             "optional": true,
@@ -127,7 +129,8 @@
                 "small",
                 "medium",
                 "large"
-            ]
+            ],
+            "description": "Gap between cells"
         },
         "backgroundColor": {
             "optional": true,
@@ -136,7 +139,8 @@
                 "transparent",
                 "light",
                 "white"
-            ]
+            ],
+            "description": "Background color variant"
         },
         "maxWidth": {
             "optional": true,
@@ -147,7 +151,8 @@
                 "lg",
                 "xl",
                 "full"
-            ]
+            ],
+            "description": "Maximum width constraint"
         },
         "spacing": {
             "optional": true,
@@ -157,11 +162,13 @@
                 "compact",
                 "comfortable",
                 "spacious"
-            ]
+            ],
+            "description": "Spacing variant"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Additional CSS class"
         },
         "as": {
             "optional": true,
@@ -170,7 +177,8 @@
                 "article",
                 "div",
                 "section"
-            ]
+            ],
+            "description": "Semantic HTML element to use"
         }
     },
     "forbiddenUse": [

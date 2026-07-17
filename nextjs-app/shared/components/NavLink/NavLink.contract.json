@@ -1,167 +1,173 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "name": "NavLink",
-  "tier": "atom",
-  "group": "navigation",
-  "status": "stable",
-  "description": "Navigation anchor primitive used inside `SiteHeader`, `Footer`, and in-page navs. Renders an underlying `next/link` and applies the `aria-current='page'` token when the active route matches.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=516-3146",
-  "radixPrimitive": null,
-  "element": "a",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab — focusable.",
-      "Enter — follows the link."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "NavLink",
+    "tier": "atom",
+    "group": "navigation",
+    "status": "stable",
+    "description": "Navigation anchor primitive used inside `SiteHeader`, `Footer`, and in-page navs. Renders an underlying `next/link` and applies the `aria-current='page'` token when the active route matches.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=516-3146",
+    "radixPrimitive": null,
+    "element": "a",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "Sets `aria-current='page'` on the active route so the active nav item is announced.",
-      "Renders a real `<a>` (via next/link) for native browser behaviour."
+    "a11y": {
+        "keyboard": [
+            "Tab — focusable.",
+            "Enter — follows the link."
+        ],
+        "ariaRequirements": [
+            "Sets `aria-current='page'` on the active route so the active nav item is announced.",
+            "Renders a real `<a>` (via next/link) for native browser behaviour."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "reviewedNote": "2026-07-05 — beta→stable (fleet #13): renders a real next/link <a>, aria-current='page' on the active route. Fixed a reduced-motion gap — the transition-colors fade now carries motion-reduce:transition-none so a11y.reducedMotion is literally honest (matches Pagination / ValueCard); unit-tested. Styling is a deliberate className contract (active/inactiveClassName), so exact + activeClassName are EFFECT_EXEMPT in audit:controls with unit tests covering the active/inactive class swap. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: Bucket-1 beta port, keyboard/ARIA reviewed, ForcedColors story + Storybook axe gate. 2026-07-10 — Figma link wired to the existing NavLink component set (Patterns page, node 516-3146); parity uplift tracked in docs/design-system/figma-parity-audit.md B5."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-link",
+            "--color-link-hover"
+        ],
+        "spacing": [],
+        "typography": [
+            "--font-size-md"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/navigation/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
+            "since": "2026-06-04"
+        }
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": true,
-    "realBrowserForcedColorsVerified": true,
-    "reviewedNote": "2026-07-05 — beta→stable (fleet #13): renders a real next/link <a>, aria-current='page' on the active route. Fixed a reduced-motion gap — the transition-colors fade now carries motion-reduce:transition-none so a11y.reducedMotion is literally honest (matches Pagination / ValueCard); unit-tested. Styling is a deliberate className contract (active/inactiveClassName), so exact + activeClassName are EFFECT_EXEMPT in audit:controls with unit tests covering the active/inactive class swap. Re-verified: axe + plays green in light/dark/forced-colors, 100% controls operable / 0 inert, AT snapshots captured 4 modes. 2026-05-28 origin: Bucket-1 beta port, keyboard/ARIA reviewed, ForcedColors story + Storybook axe gate. 2026-07-10 — Figma link wired to the existing NavLink component set (Patterns page, node 516-3146); parity uplift tracked in docs/design-system/figma-parity-audit.md B5."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-link",
-      "--color-link-hover"
+    "schemaVersion": 2,
+    "props": {
+        "href": {
+            "optional": false,
+            "type": "string",
+            "description": "Route path for next/link."
+        },
+        "children": {
+            "optional": false,
+            "type": "ReactNode",
+            "description": "Navigation link label."
+        },
+        "exact": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Match href exactly for the active state instead of by prefix."
+        },
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Base class names applied in every state."
+        },
+        "activeClassName": {
+            "optional": true,
+            "type": "string",
+            "description": "Class names applied when the route is active."
+        },
+        "inactiveClassName": {
+            "optional": true,
+            "type": "string",
+            "description": "Class names applied when the route is inactive."
+        }
+    },
+    "forbiddenUse": [
+        "Use inside body prose — that is `Link`.",
+        "Use as a button — primary actions belong on `Button`."
     ],
-    "spacing": [],
-    "typography": [
-      "--font-size-md"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": [
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/dev/tailwind-test/page.tsx",
-      "since": "2026-06-04"
+    "composesWith": [
+        "Link",
+        "SkipLink",
+        "LanguageSwitcher"
+    ],
+    "displayName": "NavLink",
+    "keywords": [
+        "nav link",
+        "navigation",
+        "active state",
+        "aria-current",
+        "menu link",
+        "header"
+    ],
+    "dense": "Next.js nav link deriving active state from usePathname (prefix match, exact opt-in); sets aria-current=page; styled via className/activeClassName/inactiveClassName (Tailwind-token defaults by design)",
+    "usage": {
+        "description": "NavLink is the router-aware navigation link for site chrome: headers, drawers, and sidebars. It compares the current pathname against `href` — prefix match by default, exact with `exact` — and reflects the result both as `aria-current=\"page\"` and as the active/inactive class pair. Use it inside a labelled `<nav>`; for inline prose links use Link instead. Styling is deliberately className-driven (Tailwind tokens by default) so each navigation surface owns its look while the active-state contract stays shared.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Wrap groups in a labelled <nav aria-label=\"Primary\"> so assistive tech can jump to the landmark."
+            },
+            {
+                "guidance": true,
+                "description": "Use exact on short roots like \"/\" — prefix matching would otherwise mark Home active on every route."
+            },
+            {
+                "guidance": true,
+                "description": "Keep active styling redundant with aria-current: weight or underline plus color, never color alone."
+            },
+            {
+                "guidance": true,
+                "description": "Override className/activeClassName per surface instead of wrapping; the active-state logic is the shared part."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use NavLink for inline body links — that is Link's job; NavLink's route tracking is navigation-chrome behavior."
+            },
+            {
+                "guidance": false,
+                "description": "Do not hand-set aria-current on children; the component derives it from the route."
+            }
+        ]
     },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/layout.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/patterns/index.ts",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/patterns/navigation/index.ts",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/patterns/SiteHeader/index.ts",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
-      "since": "2026-06-04"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx",
-      "since": "2026-06-04"
+    "playground": {
+        "defaults": {
+            "href": "/work",
+            "children": "Work"
+        }
     }
-  ],
-  "schemaVersion": 2,
-  "props": {
-    "href": {
-      "optional": false,
-      "type": "string"
-    },
-    "children": {
-      "optional": false,
-      "type": "ReactNode"
-    },
-    "exact": {
-      "optional": true,
-      "type": "boolean"
-    },
-    "className": {
-      "optional": true,
-      "type": "string"
-    },
-    "activeClassName": {
-      "optional": true,
-      "type": "string"
-    },
-    "inactiveClassName": {
-      "optional": true,
-      "type": "string"
-    }
-  },
-  "forbiddenUse": [
-    "Use inside body prose — that is `Link`.",
-    "Use as a button — primary actions belong on `Button`."
-  ],
-  "composesWith": [
-    "Link",
-    "SkipLink",
-    "LanguageSwitcher"
-  ],
-  "displayName": "NavLink",
-  "keywords": [
-    "nav link",
-    "navigation",
-    "active state",
-    "aria-current",
-    "menu link",
-    "header"
-  ],
-  "dense": "Next.js nav link deriving active state from usePathname (prefix match, exact opt-in); sets aria-current=page; styled via className/activeClassName/inactiveClassName (Tailwind-token defaults by design)",
-  "usage": {
-    "description": "NavLink is the router-aware navigation link for site chrome: headers, drawers, and sidebars. It compares the current pathname against `href` — prefix match by default, exact with `exact` — and reflects the result both as `aria-current=\"page\"` and as the active/inactive class pair. Use it inside a labelled `<nav>`; for inline prose links use Link instead. Styling is deliberately className-driven (Tailwind tokens by default) so each navigation surface owns its look while the active-state contract stays shared.",
-    "bestPractices": [
-      {
-        "guidance": true,
-        "description": "Wrap groups in a labelled <nav aria-label=\"Primary\"> so assistive tech can jump to the landmark."
-      },
-      {
-        "guidance": true,
-        "description": "Use exact on short roots like \"/\" — prefix matching would otherwise mark Home active on every route."
-      },
-      {
-        "guidance": true,
-        "description": "Keep active styling redundant with aria-current: weight or underline plus color, never color alone."
-      },
-      {
-        "guidance": true,
-        "description": "Override className/activeClassName per surface instead of wrapping; the active-state logic is the shared part."
-      },
-      {
-        "guidance": false,
-        "description": "Do not use NavLink for inline body links — that is Link's job; NavLink's route tracking is navigation-chrome behavior."
-      },
-      {
-        "guidance": false,
-        "description": "Do not hand-set aria-current on children; the component derives it from the route."
-      }
-    ]
-  },
-  "playground": {
-    "defaults": {
-      "href": "/work",
-      "children": "Work"
-    }
-  }
 }

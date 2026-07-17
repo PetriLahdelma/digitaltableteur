@@ -31,15 +31,18 @@
     "props": {
         "title": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Section title"
         },
         "description": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Section description"
         },
         "email": {
             "optional": false,
-            "type": "string"
+            "type": "string",
+            "description": "Email to request password"
         },
         "background": {
             "optional": true,
@@ -48,11 +51,13 @@
                 "primary",
                 "dark",
                 "gradient"
-            ]
+            ],
+            "description": "Background variant"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className"
         }
     },
     "forbiddenUse": [

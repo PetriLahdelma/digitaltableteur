@@ -62,7 +62,8 @@
                 "sm",
                 "md",
                 "lg"
-            ]
+            ],
+            "description": "Size token."
         }
     },
     "displayName": "Kbd",

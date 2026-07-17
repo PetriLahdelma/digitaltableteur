@@ -85,7 +85,8 @@
     "props": {
         "children": {
             "optional": false,
-            "type": "ReactNode"
+            "type": "ReactNode",
+            "description": "Hero content"
         },
         "background": {
             "optional": true,
@@ -95,11 +96,13 @@
                 "transparent",
                 "solid",
                 "gradient"
-            ]
+            ],
+            "description": "Background style variant"
         },
         "backgroundImage": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Background image URL (only used when background=\"image\")"
         },
         "minHeight": {
             "optional": true,
@@ -109,7 +112,8 @@
                 "hero",
                 "screen",
                 "half"
-            ]
+            ],
+            "description": "Minimum height of the hero section"
         },
         "align": {
             "optional": true,
@@ -118,7 +122,8 @@
                 "center",
                 "end",
                 "start"
-            ]
+            ],
+            "description": "Content vertical alignment"
         },
         "justify": {
             "optional": true,
@@ -127,11 +132,13 @@
                 "center",
                 "end",
                 "start"
-            ]
+            ],
+            "description": "Content horizontal alignment"
         },
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Custom className for styling extensions"
         },
         "as": {
             "optional": true,
@@ -315,11 +322,13 @@
                 "tspan",
                 "use",
                 "view"
-            ]
+            ],
+            "description": "Semantic HTML element to render as"
         },
         "ariaLabel": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "ARIA label for accessibility"
         }
     },
     "forbiddenUse": [

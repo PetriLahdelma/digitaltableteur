@@ -85,7 +85,8 @@
     "props": {
         "className": {
             "optional": true,
-            "type": "string"
+            "type": "string",
+            "description": "Optional wrapper class."
         }
     },
     "forbiddenUse": [
