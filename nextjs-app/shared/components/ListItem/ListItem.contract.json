@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "ListItem",
+    "tier": "atom",
+    "group": "display",
+    "status": "alpha",
+    "description": "TODO: one-line purpose for ListItem.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": { "values": ["sm", "md", "lg"], "default": "md" }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": { "colors": [], "spacing": [] },
+    "lightDarkVerified": false
+}
