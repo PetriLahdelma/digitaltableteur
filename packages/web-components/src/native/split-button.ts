@@ -63,6 +63,9 @@ const styles = `
     border-radius: var(--radius-lg);
     font: inherit;
     font-family: var(--primary-body-font);
+    /* React Button wraps its label in a line-height:1 span, so min-block-size
+       (not the inherited body line box) decides the control height. */
+    line-height: 1;
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
@@ -138,6 +141,13 @@ const styles = `
     padding-inline: var(--space-internal-24);
     font-size: var(--font-size-button-l);
   }
+  /* After the size rules, as in Button.module.css: the toggle's narrow
+     padding must beat the per-size padding-inline. */
+  .toggle { padding-inline: var(--space-internal-12); }
+  /* Touch targets: >= 44px on small viewports, matching Button.module.css. */
+  @media (width <= 768px) {
+    .sm, .md { min-block-size: 2.75rem; }
+  }
   .rounded { border-radius: 9999px; }
   .rounded.primary { border-end-end-radius: 0; border-start-end-radius: 0; }
   .rounded.toggle { border-end-start-radius: 0; border-start-start-radius: 0; }
@@ -171,27 +181,23 @@ const styles = `
     background: color-mix(in srgb, var(--color-muted) 50%, transparent);
   }
   .labelFallback { display: inline-flex; }
+  /* 1.5rem matches the React caret Icon box; with md padding it is exactly
+     what makes the secondary segments 44px tall (React parity). */
   .caret {
     display: inline-flex;
-    inline-size: 1rem;
-    block-size: 1rem;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
     align-items: center;
     justify-content: center;
-  }
-  .caret::before {
-    content: "";
-    inline-size: 0.5rem;
-    block-size: 0.5rem;
-    border-inline-end: 2px solid currentcolor;
-    border-block-end: 2px solid currentcolor;
-    rotate: 45deg;
-    translate: 0 -15%;
   }
   .menu {
     position: absolute;
     inset-block-start: calc(100% + 0.375rem);
     z-index: 6000;
     display: flex;
+    /* React's global reset makes the panel border-box, so its 11rem minimum
+       includes padding and border; shadow DOM gets no reset. */
+    box-sizing: border-box;
     min-inline-size: 11rem;
     padding: var(--space-internal-4);
     flex-direction: column;
@@ -265,8 +271,8 @@ const styles = `
     .toggle:active:not(:disabled) { transform: none; }
   }
   @media (forced-colors: active) {
-    .primary,
-    .toggle,
+    /* The buttons get NO forced-color-adjust: the React Button has none, so
+       forced-colors must strip both implementations identically. */
     .menu {
       forced-color-adjust: none;
     }
@@ -983,6 +989,11 @@ export class DtSplitButtonElement extends DigitaltableteurElement {
     const caret = this.ownerDocument.createElement("span");
     caret.className = "caret";
     caret.setAttribute("aria-hidden", "true");
+    // The same Phosphor glyph the React caret renders (<Icon name="caret-down">).
+    const caretGlyph = this.ownerDocument.createElement("dt-icon");
+    caretGlyph.setAttribute("name", "caret-down");
+    caretGlyph.setAttribute("aria-hidden", "true");
+    caret.append(caretGlyph);
     toggle.append(caret);
 
     wrapper.append(primary, toggle);

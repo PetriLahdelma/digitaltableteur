@@ -1451,9 +1451,7 @@ const elementDefinitions = [
     nativeClassName: "DtSplitButtonElement",
     description:
       "Primary action paired with an accessible menu of related actions.",
-    storyParity: storyParity({
-      equivalents: [{ react: "Example (document toolbar)", native: "Example" }],
-    }),
+    storyParity: storyParity(),
     props: [
       stringProp("label"),
       {

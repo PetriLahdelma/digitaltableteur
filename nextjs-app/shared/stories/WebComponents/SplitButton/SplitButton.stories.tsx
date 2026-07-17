@@ -261,20 +261,47 @@ export const Surfaces: Story = {
   ),
 };
 
+// Replica of the React Example (document toolbar): Save primary + Export
+// secondary in a flex row; the rendered-parity gate compares them 1:1.
 export const Example: Story = {
   ...exampleStory,
+  // Same canvas layout as the React Example: centered canvases start the
+  // content on fractional x, changing glyph rasterization vs the pair.
+  parameters: { layout: "padded" },
   render: () => (
-    <Stage height="15rem">
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "0.75rem",
+        padding: "0.5rem",
+      }}
+    >
+      <NativeElement
+        tagName="dt-split-button"
+        attributes={{
+          label: "Save",
+          variant: "primary",
+          options: JSON.stringify([
+            { id: "save-as", label: "Save as", icon: "pencil" },
+            { id: "save-cloud", label: "Save to cloud", icon: "download" },
+            { id: "save-copy", label: "Save a copy", icon: "copy-simple" },
+          ]),
+        }}
+      />
       <NativeElement
         tagName="dt-split-button"
         attributes={{
           label: "Export",
           variant: "secondary",
           "toggle-label": "Choose export format",
-          options: exportOptions,
+          options: JSON.stringify([
+            { id: "pdf", label: "Export as PDF", trailingIcon: "file-text" },
+            { id: "csv", label: "Export CSV", trailingIcon: "download" },
+          ]),
         }}
       />
-    </Stage>
+    </div>
   ),
 };
 
