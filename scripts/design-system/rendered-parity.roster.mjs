@@ -18,10 +18,14 @@ export const enforced = [
   "Avatar",
   "BlogMediaImage",
   "Container",
+  "CookieConsent",
   "IconButton",
   "List",
+  "Menu",
+  "NavMenuList",
   "SelectOption",
-  "SkipLink"
+  "SkipLink",
+  "SplitButton"
 ];
 
 export const exceptions = [];
