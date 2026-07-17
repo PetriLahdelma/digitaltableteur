@@ -93,36 +93,29 @@ export const AboveCompoundWidget: Story = {
   ),
 };
 
+// Replica of the React Example (same markup, classes, and padded canvas);
+// the rendered-parity gate compares them 1:1.
 export const Example: Story = {
   ...exampleStory,
+  parameters: { layout: "padded" },
   render: () => (
-    <fieldset
-      id="native-contact-topic"
-      style={{
-        border: 0,
-        padding: 0,
-        margin: 0,
-        display: "grid",
-        gap: "0.75rem",
-        minWidth: "18rem",
-      }}
-    >
+    <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
       <NativeElement
         tagName="dt-group-label"
         attributes={{
           content: "What can we help with?",
           for: "native-contact-topic",
-          hint: "Pick one or more topics. The label names the group rather than any single checkbox.",
         }}
       />
-      <label style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-        <input type="checkbox" />
-        Strategy
-      </label>
-      <label style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-        <input type="checkbox" />
-        Design
-      </label>
+      <div
+        id="native-contact-topic"
+        role="group"
+        aria-labelledby="contact-topic-label"
+      >
+        <p className="text-sm text-muted-foreground">
+          Checkbox group slots here
+        </p>
+      </div>
     </fieldset>
   ),
 };

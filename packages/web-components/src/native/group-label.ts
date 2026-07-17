@@ -22,16 +22,17 @@ const styles = `
     gap: var(--space-internal-4, 0.25rem);
   }
 
+  /* Mirrors GroupLabel.module.css exactly: fixed 1rem, weight 500, primary
+     color, 0.5rem gap, inherited line-height. */
   .label {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-internal-4, 0.25rem);
+    gap: 0.5rem;
     margin: 0;
-    color: var(--color-text, var(--color-primary, currentColor));
-    font-family: var(--font-text, var(--primary-body-font));
-    font-size: var(--font-size-text-m, 1rem);
-    font-weight: 600;
-    line-height: var(--line-height-snug, 1.3);
+    color: var(--color-primary, currentColor);
+    font-family: var(--font-body, sans-serif);
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
   }
 
