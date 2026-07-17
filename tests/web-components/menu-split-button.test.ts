@@ -383,6 +383,15 @@ describe("native SplitButton", () => {
     splitButton.options = options;
     document.body.append(splitButton);
 
+    // The row's label now lives inside dt-list-item's own shadow tree, so
+    // plain textContent no longer reaches it across the shadow boundary;
+    // data-search-label (set on the control regardless of row internals) is
+    // the stable cross-boundary handle for "which item is focused."
+    const focusedLabel = () =>
+      splitButton.shadowRoot?.activeElement?.getAttribute(
+        "data-search-label",
+      );
+
     const toggle = splitButton.shadowRoot?.querySelector<HTMLButtonElement>(
       ".toggle",
     ) as HTMLButtonElement;
@@ -391,36 +400,28 @@ describe("native SplitButton", () => {
     );
 
     await waitFor(() => {
-      expect(splitButton.shadowRoot?.activeElement?.textContent).toContain(
-        "Export PDF",
-      );
+      expect(focusedLabel()).toBe("Export PDF");
     });
 
     splitButton.dispatchEvent(
       new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
     );
     await waitFor(() => {
-      expect(splitButton.shadowRoot?.activeElement?.textContent).toContain(
-        "Share",
-      );
+      expect(focusedLabel()).toBe("Share");
     });
 
     splitButton.dispatchEvent(
       new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }),
     );
     await waitFor(() => {
-      expect(splitButton.shadowRoot?.activeElement?.textContent).toContain(
-        "By email",
-      );
+      expect(focusedLabel()).toBe("By email");
     });
 
     splitButton.dispatchEvent(
       new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
     );
     await waitFor(() => {
-      expect(splitButton.shadowRoot?.activeElement?.textContent).toContain(
-        "Share",
-      );
+      expect(focusedLabel()).toBe("Share");
     });
 
     splitButton.dispatchEvent(
@@ -453,9 +454,11 @@ describe("native SplitButton", () => {
     ) as HTMLButtonElement;
     toggle.click();
     await waitFor(() => {
-      expect(splitButton.shadowRoot?.activeElement?.textContent).toContain(
-        "Save draft",
-      );
+      expect(
+        splitButton.shadowRoot?.activeElement?.getAttribute(
+          "data-search-label",
+        ),
+      ).toBe("Save draft");
     });
 
     const firstItem = splitButton.shadowRoot?.activeElement as HTMLElement;
@@ -502,6 +505,109 @@ describe("native SplitButton", () => {
     expect(
       empty.shadowRoot?.querySelector<HTMLButtonElement>(".toggle"),
     ).toBeDisabled();
+  });
+
+  it("composes menu rows onto dt-list-item, mapping tone and trailingIcon", () => {
+    const splitButton = document.createElement(
+      "dt-split-button",
+    ) as DtSplitButtonElement;
+    splitButton.label = "Actions";
+    splitButton.options = [
+      { id: "del", label: "Delete", tone: "destructive" },
+      { id: "pdf", label: "Export PDF", trailingIcon: "file-text" },
+    ];
+    document.body.append(splitButton);
+
+    const controls = splitButton.shadowRoot?.querySelectorAll<HTMLElement>(
+      '[data-menu-control="true"]',
+    );
+    const deleteRow = controls?.[0]?.querySelector("dt-list-item");
+    expect(deleteRow).not.toBeNull();
+    expect(deleteRow).toHaveAttribute("label", "Delete");
+    expect(deleteRow).toHaveAttribute("tone", "destructive");
+
+    const pdfRow = controls?.[1]?.querySelector("dt-list-item");
+    expect(pdfRow).not.toBeNull();
+    expect(pdfRow).toHaveAttribute("label", "Export PDF");
+    expect(pdfRow).toHaveAttribute("trailing-icon", "file-text");
+  });
+
+  it("rides the submenu chevron on the row's trailing-icon attribute", () => {
+    const splitButton = document.createElement(
+      "dt-split-button",
+    ) as DtSplitButtonElement;
+    splitButton.label = "Export";
+    splitButton.options = [
+      {
+        id: "share",
+        label: "Share",
+        children: [{ id: "email", label: "By email" }],
+      },
+    ];
+    document.body.append(splitButton);
+
+    const control = splitButton.shadowRoot?.querySelector<HTMLElement>(
+      '[data-menu-control="true"][data-menu-path="0"]',
+    );
+    const row = control?.querySelector("dt-list-item");
+    expect(row).toHaveAttribute("trailing-icon", "caret-right");
+  });
+
+  it("mirrors highlight state onto the highlighted row's dt-list-item", async () => {
+    const splitButton = document.createElement(
+      "dt-split-button",
+    ) as DtSplitButtonElement;
+    splitButton.label = "Export";
+    splitButton.options = [
+      { id: "pdf", label: "Export PDF" },
+      { id: "csv", label: "Export CSV" },
+    ];
+    document.body.append(splitButton);
+
+    const toggle = splitButton.shadowRoot?.querySelector<HTMLButtonElement>(
+      ".toggle",
+    ) as HTMLButtonElement;
+    toggle.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
+    );
+
+    await waitFor(() => {
+      const highlighted = splitButton.shadowRoot?.querySelector(
+        '[data-highlighted="true"]',
+      );
+      expect(highlighted?.getAttribute("data-search-label")).toBe(
+        "Export PDF",
+      );
+    });
+
+    const firstRow = splitButton.shadowRoot?.querySelector(
+      '[data-highlighted="true"] dt-list-item',
+    );
+    expect(firstRow).toHaveAttribute("highlighted");
+
+    splitButton.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
+    );
+
+    await waitFor(() => {
+      const highlighted = splitButton.shadowRoot?.querySelector(
+        '[data-highlighted="true"]',
+      );
+      expect(highlighted?.getAttribute("data-search-label")).toBe(
+        "Export CSV",
+      );
+    });
+
+    const rows = splitButton.shadowRoot?.querySelectorAll("dt-list-item") ?? [];
+    expect(rows).toHaveLength(2);
+    const pdfRow = [...rows].find(
+      (row) => row.getAttribute("label") === "Export PDF",
+    );
+    const csvRow = [...rows].find(
+      (row) => row.getAttribute("label") === "Export CSV",
+    );
+    expect(pdfRow).not.toHaveAttribute("highlighted");
+    expect(csvRow).toHaveAttribute("highlighted");
   });
 });
 
