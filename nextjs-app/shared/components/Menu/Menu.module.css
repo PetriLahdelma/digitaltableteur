@@ -101,9 +101,14 @@
     forced-color-adjust: none;
   }
 
-  /* ListItem's own forced-colors rules (color, highlighted, disabled) take
-     over inside .item — this subtree inherits forced-color-adjust: none from
-     .content, so ListItem's explicit system-color keywords apply as-is. */
+  /* ListItem's forced-colors rules cover color and highlight inside .item,
+     but NOT disabled: Radix owns disabled via [data-disabled] on the item
+     (ListItem never gets its disabled class here), so the system GrayText
+     must come from this shell. */
+
+  .item[data-disabled] > * {
+    color: GrayText;
+  }
 
   .separator {
     background-color: CanvasText;
@@ -119,4 +124,8 @@
 :global(html.sb-forced-colors-active) .item[data-highlighted] > * {
   background-color: Highlight;
   color: HighlightText;
+}
+
+:global(html.sb-forced-colors-active) .item[data-disabled] > * {
+  color: GrayText;
 }
