@@ -109,44 +109,53 @@ const styles = `
     cursor: not-allowed;
   }
   /* Focus is signalled by the highlighted row background (kept in sync by
-     highlightControl), matching the React/Radix menu; no extra ring. */
+     highlightControl), matching the React/Radix menu; no extra ring.
+     !important: the app's global :focus-visible outline (document context)
+     otherwise beats this ::slotted declaration and draws a ring. */
   .item:focus-visible,
   .slotHost::slotted([data-dt-menu-item]:focus-visible) {
-    outline: none;
+    outline: none !important;
   }
-  /* Slotted consumer items (declarative light-DOM children) are out of scope
-     for this refactor: they still render their own body visuals directly,
-     unchanged from before. */
+  /* Slotted consumer items (declarative light-DOM children) render their own
+     body visuals directly. CASCADE TRAP: for slotted elements, normal
+     declarations from the outer document tree beat ::slotted() declarations
+     from the shadow tree — context is resolved BEFORE specificity — so the
+     site's universal reset (Tailwind preflight: * { margin/padding: 0 } plus
+     button { font: inherit; color: inherit; border-radius: 0;
+     background-color: transparent }) silently strips these body visuals.
+     Only !important flips the order (important inner beats important/normal
+     outer), so every declaration the preflight also declares is marked
+     !important below. */
   .slotHost::slotted([data-dt-menu-item]) {
     display: flex;
     box-sizing: border-box;
     min-block-size: 2.5rem;
-    padding-block: var(--space-internal-8);
-    padding-inline: var(--space-internal-12);
+    padding-block: var(--space-internal-8) !important;
+    padding-inline: var(--space-internal-12) !important;
     flex: 1 1 auto;
     inline-size: 100%;
     align-items: center;
     gap: var(--space-internal-8);
     border: none;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-md) !important;
     outline: none;
     background: none;
-    color: var(--color-dark);
+    color: var(--color-dark) !important;
     font: inherit;
-    font-size: var(--font-size-text-s);
-    line-height: var(--line-height-normal);
+    font-size: var(--font-size-text-s) !important;
+    line-height: var(--line-height-normal) !important;
     text-align: left;
-    text-decoration: none;
+    text-decoration: none !important;
     cursor: pointer;
     user-select: none;
     white-space: nowrap;
   }
   .slotHost::slotted([data-dt-menu-item][data-highlighted="true"]) {
-    background: var(--color-neutral-bg);
-    color: var(--color-dark);
+    background: var(--color-neutral-bg) !important;
+    color: var(--color-dark) !important;
   }
   .slotHost::slotted([data-dt-menu-item][aria-disabled="true"]) {
-    color: var(--color-muted);
+    color: var(--color-muted) !important;
     cursor: not-allowed;
   }
   .submenuPanel {
@@ -156,14 +165,16 @@ const styles = `
   .separator,
   .slotHost::slotted([data-dt-menu-separator]) {
     display: block;
-    margin-block: var(--space-internal-4);
-    margin-inline: calc(-1 * var(--space-internal-4));
+    /* !important: the preflight's * { margin: 0 } otherwise cancels the
+       full-bleed negative inline margins on the slotted separator. */
+    margin-block: var(--space-internal-4) !important;
+    margin-inline: calc(-1 * var(--space-internal-4)) !important;
     block-size: 1px;
     background: var(--color-border);
   }
   @media (hover: hover) and (pointer: fine) {
     .slotHost::slotted([data-dt-menu-item]:not([aria-disabled="true"]):hover) {
-      background: var(--color-neutral-bg);
+      background: var(--color-neutral-bg) !important;
     }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -177,18 +188,18 @@ const styles = `
       forced-color-adjust: none;
     }
     .slotHost::slotted([data-dt-menu-item]) {
-      color: CanvasText;
+      color: CanvasText !important;
     }
     .slotHost::slotted([data-dt-menu-item][data-highlighted="true"]) {
-      background: Highlight;
-      color: HighlightText;
+      background: Highlight !important;
+      color: HighlightText !important;
     }
     .separator,
     .slotHost::slotted([data-dt-menu-separator]) {
       background: CanvasText;
     }
     .slotHost::slotted([data-dt-menu-item][aria-disabled="true"]) {
-      color: GrayText;
+      color: GrayText !important;
     }
   }
 `;
