@@ -5,7 +5,7 @@
     "group": "form",
     "status": "stable",
     "description": "International phone field: country selector + formatted number input with field chrome.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-phone-input",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1428-2164",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

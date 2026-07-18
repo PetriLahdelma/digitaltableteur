@@ -5,7 +5,7 @@
     "group": "form",
     "status": "stable",
     "description": "Multi-select combobox with inline chips, type-to-filter dropdown, label, error, and helper text.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-multi-combobox",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1428-2153",
     "radixPrimitive": null,
     "element": "input",
     "variants": {},
