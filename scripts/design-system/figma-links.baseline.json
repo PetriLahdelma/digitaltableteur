@@ -1,4 +1,4 @@
 {
-  "stablePlaceholderCeiling": 59,
-  "note": "Ratchet for BETA and STABLE contracts whose figma link does not resolve to a real component in figma-component-index.json. Tightened 64 -> 59 on 2026-07-18 (full-backfill program, batch wiring FormField, FormFieldEditorial, ContactFormEditorial, MultiCombobox, PhoneInput). Lower this in the PR that wires a real component. See docs/design-system/figma-parity-audit.md"
+  "stablePlaceholderCeiling": 55,
+  "note": "Ratchet for BETA and STABLE contracts whose figma link does not resolve to a real component in figma-component-index.json. Tightened 59 -> 55 on 2026-07-18 (full-backfill program, batch wiring CategoryFilter, LanguageSwitcher, Pagination, SiteTree). Lower this in the PR that wires a real component. See docs/design-system/figma-parity-audit.md"
 }
