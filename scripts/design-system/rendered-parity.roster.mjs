@@ -21,6 +21,7 @@ export const enforced = [
   "BlogMediaImage",
   "Container",
   "CookieConsent",
+  "Divider",
   "GroupLabel",
   "IconButton",
   "List",
@@ -30,7 +31,9 @@ export const enforced = [
   "SelectOption",
   "SkipLink",
   "SplitButton",
-  "Testimonial"
+  "Testimonial",
+  "Text",
+  "VisuallyHidden"
 ];
 
 export const exceptions = [];
