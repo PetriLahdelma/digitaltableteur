@@ -1352,5 +1352,26 @@
   "splitButton": {
     "moreOptions": "More options"
   },
-  "storyCheckboxGroupMasterLabel": "Select all"
+  "storyCheckboxGroupMasterLabel": "Select all",
+  "pricingCalcTitle": "Adjust duration and workload to see your total investment.",
+  "pricingCalcDurationLegend": "Duration",
+  "pricingCalcWorkloadLegend": "Workload",
+  "pricingCalcUnitWeeks": "weeks",
+  "pricingCalcUnitMonth": "month",
+  "pricingCalcUnitMonths": "months",
+  "pricingCalcUnitDaysPerWeek": "days/week",
+  "pricingCalcPartnershipBadge": "Partnership",
+  "pricingCalcAllocationLabel": "Allocation",
+  "pricingCalcAllocationBasis": "Based on {{days}} days/week × {{hours}} hours/day",
+  "pricingCalcTotalHoursLabel": "Total hours:",
+  "pricingCalcStandardRateLabel": "Standard rate:",
+  "pricingCalcRatePerHour": "{{rate}}€/hour",
+  "pricingCalcIncludedTitle": "What's included in your investment:",
+  "pricingCalcIncludedDuration": "{{duration}} design partnership",
+  "pricingCalcIncludedWorkload": "Dedicated design expertise for {{days}} days per week",
+  "pricingCalcIncludedProcess": "Complete end-to-end design process and deliverables",
+  "pricingCalcIncludedCollaboration": "Direct collaboration and strategic design guidance",
+  "pricingCalcYourPriceLabel": "Your price",
+  "pricingCalcTotalInvestmentLabel": "Total Investment:",
+  "pricingCalcCta": "Get in touch"
 }

@@ -442,6 +442,12 @@
   }
 }
 
+/* Calculator — custom-engagement estimator between AaaS and the CTAs */
+
+.calculatorSection {
+  margin-block-start: var(--space-layout-48);
+}
+
 /* CTAs */
 
 .ctaRow {

@@ -1,0 +1,90 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "PricingCalculator",
+    "tier": "pattern",
+    "group": "marketing",
+    "status": "beta",
+    "description": "Interactive duration × workload pricing calculator for the pricing page.",
+    "dense": "Pricing calculator section: duration and workload SelectableCard groups drive a live summary (allocation, hours, effective rate, total investment) with a booking CTA.",
+    "keywords": [
+        "pricing",
+        "calculator",
+        "estimator",
+        "investment",
+        "marketing"
+    ],
+    "usage": {
+        "description": "PricingCalculator is the custom-engagement estimator on the pricing page: two single-select SelectableCardGroups (duration: 2 weeks to 12 months; workload: 2–5 days/week) recompute total hours, allocation, the tier-discounted hourly rate, and the total investment on every change. Longer commitments (6/12 months) carry a Partnership badge and the deepest rate discounts. It complements the fixed packages; it does not replace them.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Keep the pricing model in pricingMath.ts as the single source of truth; the component only renders its output."
+            },
+            {
+                "guidance": false,
+                "description": "Don't use it for fixed-scope package pricing; that's the packages section of PricingPageContent."
+            },
+            {
+                "guidance": false,
+                "description": "Don't hardcode currency formatting; totals format via Intl.NumberFormat on the active language."
+            }
+        ]
+    },
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-pricing-calculator",
+    "radixPrimitive": null,
+    "element": "section",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Arrow keys",
+            "Space",
+            "Enter"
+        ],
+        "ariaRequirements": [
+            "section labelled by the calculator title",
+            "native fieldset/legend + radio semantics from SelectableCardGroup",
+            "CTA is a real link to /contact"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-18 — Initial beta: native radio groups via SelectableCardGroup (keyboard + AT from the platform), axe assertion in unit tests, ForcedColors story added.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-surface",
+            "--color-border-light",
+            "--color-muted",
+            "--color-primary"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "props": {
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional wrapper class."
+        }
+    },
+    "composesWith": [
+        "PricingPageContent",
+        "CTASection"
+    ],
+    "forbiddenUse": [
+        "use for fixed-scope package pricing",
+        "duplicate the pricing model outside pricingMath.ts"
+    ],
+    "consumers": []
+}

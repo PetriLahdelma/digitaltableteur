@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-17T14:13:44.419Z",
+  "generatedAt": "2026-07-18T06:07:34.935Z",
   "summary": {
-    "componentCount": 163,
+    "componentCount": 164,
     "statusCounts": {
-      "beta": 44,
+      "beta": 45,
       "stable": 97,
       "alpha": 21,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 88.1,
-    "codebaseComponentCount": 185,
+    "catalogCompletenessPercent": 88.2,
+    "codebaseComponentCount": 186,
     "usageCoveragePercent": 94.5,
     "componentsWithProductionUsage": 35,
     "notReadyForStablePromotion": false
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 185,
-    "inCatalog": 163,
+    "totalComponentsInCodebase": 186,
+    "inCatalog": 164,
     "outOfCatalog": 22,
-    "catalogCompletenessPercent": 88.1,
+    "catalogCompletenessPercent": 88.2,
     "artifactCoverage": {
-      "stories": 147,
-      "tests": 149,
+      "stories": 148,
+      "tests": 150,
       "mdx": 3,
-      "spec": 163
+      "spec": 164
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,13 +77,13 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 163,
-    "withAnyUsage": 154,
+    "catalogedComponents": 164,
+    "withAnyUsage": 155,
     "withProductionUsage": 35,
-    "uniqueImportedComponents": 154,
-    "totalEvidenceRows": 767,
+    "uniqueImportedComponents": 155,
+    "totalEvidenceRows": 768,
     "aliasImportFiles": 395,
-    "relativeImportFiles": 405,
+    "relativeImportFiles": 406,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -102,12 +102,12 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 163,
+      "digitaltableteur": 164,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 44,
+        "beta": 45,
         "stable": 97,
         "alpha": 21,
         "deprecated": 1
@@ -16976,7 +16976,7 @@
           }
         }
       },
-      "spec": "# Label\n\n## Intent\nProvide the visible, accessible-name-bearing label for a single form\ncontrol. Label is intentionally narrow — it owns text + required indicator\n+ disabled muted style, and explicitly does not own grouping (use a\nfieldset) or help text (use HelperText).\n\n## Interaction contract\n- Keyboard: clicking the label moves focus to the associated input via\n  native `htmlFor` resolution. No custom handler.\n- Pointer: click activates / focuses the associated input. The\n  `title`/`tooltipText` attribute fires a native tooltip on hover.\n- Screen readers: the label text becomes the accessible name of the\n  associated input. The required asterisk is hidden from SR; the\n  `<span className=\"srOnly\">(required)</span>` is announced instead.\n\n## Do / don't\n- Do: pass `htmlFor` for every Label. Implicit association by wrapping\n  works in browsers but is fragile under DOM reordering.\n- Do: pair `Label required` with `Input required` — visible state and\n  ARIA state must agree.\n- Don't: place validation errors inside Label. Errors belong to the\n  input's described-by region, not the label.\n- Don't: use a Label as a section heading. Headings carry navigation\n  semantics that Label does not.\n\n## Design notes\n- Tokens: drives from `--color-text` (default), `--color-text-muted`\n  (disabled), and `--color-required` (asterisk). Forced-colors mode\n  overrides the disabled muted colour with the system `GrayText` keyword.\n- Figma: https://www.figma.com/design/digitaltableteur/forms — keep\n  required-marker styling aligned with the Figma form-field component.\n- The translation surface is implicit: consumers pass already-translated\n  strings via `children`. The \"(required)\" SR text is hardcoded in EN\n  because the asterisk semantics are universally understood; if a locale\n  needs a different SR convention, override via the consumer.\n",
+      "spec": "# Label\n\n## Intent\nProvide the visible, accessible-name-bearing label for a single form\ncontrol. Label is intentionally narrow — it owns text + required indicator\n+ disabled muted style, and explicitly does not own grouping (use a\nfieldset) or help text (use HelperText).\n\n## Interaction contract\n- Keyboard: clicking the label moves focus to the associated input via\n  native `htmlFor` resolution. No custom handler.\n- Pointer: click activates / focuses the associated input. The\n  `title`/`tooltipText` attribute fires a native tooltip on hover.\n- Screen readers: the label text becomes the accessible name of the\n  associated input. The required asterisk is hidden from SR; the\n  `<span className=\"srOnly\">(required)</span>` is announced instead.\n\n## Do / don't\n- Do: pass `htmlFor` for every Label. Implicit association by wrapping\n  works in browsers but is fragile under DOM reordering.\n- Do: pair `Label required` with `Input required` — visible state and\n  ARIA state must agree.\n- Don't: place validation errors inside Label. Errors belong to the\n  input's described-by region, not the label.\n- Don't: use a Label as a section heading. Headings carry navigation\n  semantics that Label does not.\n\n## Design notes\n- Tokens: drives from `--color-text` (default), `--color-text-muted`\n  (disabled), and `--color-required` (asterisk). Forced-colors mode\n  overrides the disabled muted colour with the system `GrayText` keyword.\n- Axe exemption (documented): the disabled label colour is intentionally\n  sub-AA (3.19:1 on white). WCAG 1.4.3 exempts text that is part of an\n  inactive user interface component, and a label of a disabled control is\n  part of that component — axe cannot infer the association, so the\n  Disabled stories (React and dt-label) disable the color-contrast rule\n  with a pointer to this note. Do not reuse the muted colour for active\n  text.\n- Figma: https://www.figma.com/design/digitaltableteur/forms — keep\n  required-marker styling aligned with the Figma form-field component.\n- The translation surface is implicit: consumers pass already-translated\n  strings via `children`. The \"(required)\" SR text is hardcoded in EN\n  because the asterisk semantics are universally understood; if a locale\n  needs a different SR convention, override via the consumer.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Label",
@@ -30701,7 +30701,7 @@
           }
         }
       },
-      "spec": "# Switch\n\n## Intent\nRender a two-state setting toggle with the right semantic role for\n\"on/off\" controls. Switch is distinct from Checkbox: it implies\n\"applied immediately\" and is announced by screen readers as a switch,\nnot a checkbox.\n\n## Interaction contract\n- Keyboard: Space and Enter toggle. Tab follows DOM order.\n- Pointer: click toggles. Loading state suppresses click.\n- Screen readers: `<button role=\"switch\">` with `aria-checked` reflecting\n  the value. Loading sets `aria-busy`; disabled sets `aria-disabled`.\n\n## Do / don't\n- Do: use Switch for \"apply-on-toggle\" settings.\n- Do: set `isLoading` during async commits to prevent double-flips.\n- Don't: use Switch inside a form whose values are submitted in a batch.\n  Use Checkbox there so the choose-then-Submit affordance is honest.\n- Don't: rely on colour alone to convey state — the position of the\n  thumb is the primary visual cue, and forced-colors fallbacks preserve\n  that position semantic.\n\n## Design notes\n- Tokens: on-state surface is `--color-primary`; off-state is\n  `--color-surface-2`. Thumb is `--color-on-primary` against the surface.\n  Loading spinner uses the focus ring colour for clarity.\n- Figma: https://www.figma.com/design/digitaltableteur/switch — variants\n  for placement (right / left / top label) and loading state aligned with\n  the Figma component set.\n- Label and HelperText composition is internal — the consumer passes\n  strings, the component owns the layout. Different from Checkbox, where\n  the consumer composes the surrounding atoms manually.\n",
+      "spec": "# Switch\n\n## Intent\nRender a two-state setting toggle with the right semantic role for\n\"on/off\" controls. Switch is distinct from Checkbox: it implies\n\"applied immediately\" and is announced by screen readers as a switch,\nnot a checkbox.\n\n## Interaction contract\n- Keyboard: Space and Enter toggle. Tab follows DOM order.\n- Pointer: click toggles. Loading state suppresses click.\n- Screen readers: `<button role=\"switch\">` with `aria-checked` reflecting\n  the value. Loading sets `aria-busy`; disabled sets `aria-disabled`.\n\n## Do / don't\n- Do: use Switch for \"apply-on-toggle\" settings.\n- Do: set `isLoading` during async commits to prevent double-flips.\n- Don't: use Switch inside a form whose values are submitted in a batch.\n  Use Checkbox there so the choose-then-Submit affordance is honest.\n- Don't: rely on colour alone to convey state — the position of the\n  thumb is the primary visual cue, and forced-colors fallbacks preserve\n  that position semantic.\n\n## Design notes\n- Tokens: on-state surface is `--color-primary`; off-state is\n  `--color-surface-2`. Thumb is `--color-on-primary` against the surface.\n  Loading spinner uses the focus ring colour for clarity.\n- Figma: https://www.figma.com/design/digitaltableteur/switch — variants\n  for placement (right / left / top label) and loading state aligned with\n  the Figma component set.\n- Label and HelperText composition is internal — the consumer passes\n  strings, the component owns the layout. Different from Checkbox, where\n  the consumer composes the surrounding atoms manually.\n- Axe exemption (documented): while `loading` the control is inert\n  (interaction blocked, `aria-busy`) and its label takes the muted\n  disabled colour, intentionally sub-AA (3.19:1). WCAG 1.4.3 exempts\n  text that is part of an inactive control; axe cannot infer the label's\n  association, so the Loading story disables the color-contrast rule with\n  a pointer to this note. Do not reuse the muted colour for active text.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Switch",
@@ -41355,6 +41355,173 @@
         "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 11
+      }
+    },
+    {
+      "name": "PricingCalculator",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "PricingCalculator",
+        "tier": "pattern",
+        "group": "marketing",
+        "status": "beta",
+        "description": "Interactive duration × workload pricing calculator for the pricing page.",
+        "dense": "Pricing calculator section: duration and workload SelectableCard groups drive a live summary (allocation, hours, effective rate, total investment) with a booking CTA.",
+        "keywords": [
+          "pricing",
+          "calculator",
+          "estimator",
+          "investment",
+          "marketing"
+        ],
+        "usage": {
+          "description": "PricingCalculator is the custom-engagement estimator on the pricing page: two single-select SelectableCardGroups (duration: 2 weeks to 12 months; workload: 2–5 days/week) recompute total hours, allocation, the tier-discounted hourly rate, and the total investment on every change. Longer commitments (6/12 months) carry a Partnership badge and the deepest rate discounts. It complements the fixed packages; it does not replace them.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Keep the pricing model in pricingMath.ts as the single source of truth; the component only renders its output."
+            },
+            {
+              "guidance": false,
+              "description": "Don't use it for fixed-scope package pricing; that's the packages section of PricingPageContent."
+            },
+            {
+              "guidance": false,
+              "description": "Don't hardcode currency formatting; totals format via Intl.NumberFormat on the active language."
+            }
+          ]
+        },
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-pricing-calculator",
+        "radixPrimitive": null,
+        "element": "section",
+        "variants": {},
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab",
+            "Arrow keys",
+            "Space",
+            "Enter"
+          ],
+          "ariaRequirements": [
+            "section labelled by the calculator title",
+            "native fieldset/legend + radio semantics from SelectableCardGroup",
+            "CTA is a real link to /contact"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-18 — Initial beta: native radio groups via SelectableCardGroup (keyboard + AT from the platform), axe assertion in unit tests, ForcedColors story added.",
+          "forcedColorsVerified": true
+        },
+        "tokens": {
+          "colors": [
+            "--color-surface",
+            "--color-border-light",
+            "--color-muted",
+            "--color-primary"
+          ],
+          "spacing": []
+        },
+        "lightDarkVerified": true,
+        "props": {
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional wrapper class."
+          }
+        },
+        "composesWith": [
+          "PricingPageContent",
+          "CTASection"
+        ],
+        "forbiddenUse": [
+          "use for fixed-scope package pricing",
+          "duplicate the pricing model outside pricingMath.ts"
+        ],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "since": "2026-07-18"
+          }
+        ]
+      },
+      "spec": "# PricingCalculator\n\n## Intent\nInteractive duration × workload pricing calculator for the pricing page: two\nselectable option groups drive a live summary of total hours, allocation,\neffective hourly rate, and total investment, closing with a booking CTA.\n\n## Pricing model\n- Standard rate 120 €/h, 7 hours/day (owner-approved 2026-07-18).\n- Weeks per duration: 2 weeks = 2; months × 52/12 otherwise.\n- Hourly-rate tier discounts: 3 mo −5%, 6 mo −10%, 12 mo −15%; 6 and 12 months\n  carry the Partnership badge.\n- Total investment = round(weeks × days × 7) × discounted rate.\n- Model lives in `pricingMath.ts`; the component only renders its output.\n\n## Interaction contract\n- Keyboard: Tab into each group; Arrow keys/Space change the native radio\n  selection (SelectableCardGroup); Enter activates the CTA link\n- Pointer: whole option cards are labels for their radios\n- Screen readers: fieldset/legend names each group; the summary re-renders as\n  static text (no live region — values update on user action within the group)\n\n## Do / don't\n- Do: keep all price maths in `pricingMath.ts`\n- Do: format totals via `Intl.NumberFormat` on the active language\n- Don't: use for fixed-scope package pricing (packages section owns that)\n- Don't: duplicate the pricing model in other components\n\n## Design notes\n- Tokens: `--color-surface`, `--color-border-light`, `--color-muted`,\n  `--color-primary`, layout/internal space tokens, text/title size tokens\n- Figma: none yet (code-first pattern, 2026-07-18)\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/PricingCalculator",
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 1,
+        "componentImportCount": 0,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "importKind": "relative",
+            "importPath": "../PricingCalculator",
+            "context": "pattern"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/PricingCalculator",
+        "intent": "Interactive duration × workload pricing calculator for the pricing page: two selectable option groups drive a live summary of total hours, allocation, effective hourly rate, and total investment, closing with a booking …",
+        "props": {
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional wrapper class."
+          }
+        },
+        "propRelationships": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "keep all price maths in `pricingMath.ts`",
+          "format totals via `Intl.NumberFormat` on the active language"
+        ],
+        "avoidWhen": [
+          "use for fixed-scope package pricing (packages section owns that)",
+          "duplicate the pricing model in other components"
+        ],
+        "requiredA11y": [
+          "section labelled by the calculator title",
+          "native fieldset/legend + radio semantics from SelectableCardGroup",
+          "CTA is a real link to /contact"
+        ],
+        "keyboard": [
+          "Tab",
+          "Arrow keys",
+          "Space",
+          "Enter"
+        ],
+        "compositionRules": [
+          "duplicate the pricing model in other components"
+        ],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "use for fixed-scope package pricing (packages section owns that)",
+          "duplicate the pricing model in other components"
+        ],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 1
       }
     },
     {

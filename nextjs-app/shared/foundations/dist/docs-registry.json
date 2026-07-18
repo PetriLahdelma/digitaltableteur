@@ -8263,7 +8263,7 @@
         {
           "story": "Disabled",
           "description": "Visual mute for a disabled field; the input must also be disabled.",
-          "source": "export const Disabled = Template.bind({});\nDisabled.args = {\n  htmlFor: \"input-id\",\n  children: \"storyLabelDisabled\",\n  disabled: true,\n};\n\nDefault.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  await canvas.findByText(/default label/i);\n};\n\nWithTooltip.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const label = await canvas.findByText(/label with tooltip/i);\n  await userEvent.hover(label);\n  // Optionally, check for tooltip appearance if implemented\n};\n\nRequired.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  await canvas.findByText(/required label/i);\n};\n\nDisabled.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const label = await canvas.findByText(/disabled label/i);\n  // Optionally, check for disabled state if implemented\n};\n\nDisabled.tags = [\"example\"];\nDisabled.parameters = {\n  ...(Disabled as { parameters?: object }).parameters,\n  docs: { description: { story: \"Visual mute for a disabled field; the input must also be disabled.\" } },\n};"
+          "source": "export const Disabled = Template.bind({});\nDisabled.args = {\n  htmlFor: \"input-id\",\n  children: \"storyLabelDisabled\",\n  disabled: true,\n};\n// Documented axe exemption (see Label.spec.md): the muted disabled-label\n// color is intentionally sub-AA — WCAG 1.4.3 exempts text that is part of\n// an inactive control, but axe cannot tell a label belongs to one.\nDisabled.parameters = {\n  a11y: { options: { rules: [{ id: \"color-contrast\", enabled: false }] } },\n};\n\nDefault.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  await canvas.findByText(/default label/i);\n};\n\nWithTooltip.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const label = await canvas.findByText(/label with tooltip/i);\n  await userEvent.hover(label);\n  // Optionally, check for tooltip appearance if implemented\n};\n\nRequired.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  await canvas.findByText(/required label/i);\n};\n\nDisabled.play = async ({ canvasElement }) => {\n  const canvas = within(canvasElement);\n  const label = await canvas.findByText(/disabled label/i);\n  // Optionally, check for disabled state if implemented\n};\n\nDisabled.tags = [\"example\"];\nDisabled.parameters = {\n  ...(Disabled as { parameters?: object }).parameters,\n  docs: { description: { story: \"Visual mute for a disabled field; the input must also be disabled.\" } },\n};"
         }
       ]
     },
@@ -14849,7 +14849,7 @@
         {
           "story": "Loading",
           "description": "loading blocks double flips and sets aria-busy while an async toggle is in flight.",
-          "source": "export const Loading: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"loading blocks double flips and sets aria-busy while an async toggle is in flight.\",\n      },\n    },\n  },\n  args: { loading: true, checked: true },\n  render: (args) => <ControlledTemplate {...args} />,\n};"
+          "source": "export const Loading: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"loading blocks double flips and sets aria-busy while an async toggle is in flight.\",\n      },\n    },\n    // Documented axe exemption (see Switch.spec.md): while loading the\n    // control is inactive and its label takes the muted disabled color —\n    // WCAG 1.4.3 exempts inactive-control text, but axe cannot tell the\n    // label belongs to one.\n    a11y: { options: { rules: [{ id: \"color-contrast\", enabled: false }] } },\n  },\n  args: { loading: true, checked: true },\n  render: (args) => <ControlledTemplate {...args} />,\n};"
         },
         {
           "story": "LabelOnTop",
@@ -19619,6 +19619,72 @@
       },
       "tokens": {
         "colors": [],
+        "spacing": []
+      },
+      "examples": []
+    },
+    "PricingCalculator": {
+      "name": "PricingCalculator",
+      "group": "marketing",
+      "tier": 2,
+      "status": "beta",
+      "description": "Interactive duration × workload pricing calculator for the pricing page.",
+      "dense": "Pricing calculator section: duration and workload SelectableCard groups drive a live summary (allocation, hours, effective rate, total investment) with a booking CTA.",
+      "keywords": [
+        "pricing",
+        "calculator",
+        "estimator",
+        "investment",
+        "marketing"
+      ],
+      "importLine": "import { PricingCalculator } from \"@dt/PricingCalculator\";",
+      "keyProps": [
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Optional wrapper class."
+        }
+      },
+      "composesWith": [
+        "PricingPageContent",
+        "CTASection"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "use for fixed-scope package pricing",
+        "duplicate the pricing model outside pricingMath.ts"
+      ],
+      "usage": {
+        "description": "PricingCalculator is the custom-engagement estimator on the pricing page: two single-select SelectableCardGroups (duration: 2 weeks to 12 months; workload: 2–5 days/week) recompute total hours, allocation, the tier-discounted hourly rate, and the total investment on every change. Longer commitments (6/12 months) carry a Partnership badge and the deepest rate discounts. It complements the fixed packages; it does not replace them.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Keep the pricing model in pricingMath.ts as the single source of truth; the component only renders its output."
+          },
+          {
+            "guidance": false,
+            "description": "Don't use it for fixed-scope package pricing; that's the packages section of PricingPageContent."
+          },
+          {
+            "guidance": false,
+            "description": "Don't hardcode currency formatting; totals format via Intl.NumberFormat on the active language."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--color-surface",
+          "--color-border-light",
+          "--color-muted",
+          "--color-primary"
+        ],
         "spacing": []
       },
       "examples": []

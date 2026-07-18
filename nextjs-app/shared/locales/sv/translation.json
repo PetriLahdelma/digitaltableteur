@@ -1366,5 +1366,26 @@
     "moreOptions": "Fler alternativ"
   },
   "mermaidErrorTitle": "Diagramfel",
-  "storyCheckboxGroupMasterLabel": "Välj alla"
+  "storyCheckboxGroupMasterLabel": "Välj alla",
+  "pricingCalcTitle": "Justera längd och arbetsmängd för att se din totala investering.",
+  "pricingCalcDurationLegend": "Längd",
+  "pricingCalcWorkloadLegend": "Arbetsmängd",
+  "pricingCalcUnitWeeks": "veckor",
+  "pricingCalcUnitMonth": "månad",
+  "pricingCalcUnitMonths": "månader",
+  "pricingCalcUnitDaysPerWeek": "dagar/vecka",
+  "pricingCalcPartnershipBadge": "Partnerskap",
+  "pricingCalcAllocationLabel": "Allokering",
+  "pricingCalcAllocationBasis": "Baserat på {{days}} dagar/vecka × {{hours}} timmar/dag",
+  "pricingCalcTotalHoursLabel": "Timmar totalt:",
+  "pricingCalcStandardRateLabel": "Standardpris:",
+  "pricingCalcRatePerHour": "{{rate}} €/timme",
+  "pricingCalcIncludedTitle": "Vad din investering inkluderar:",
+  "pricingCalcIncludedDuration": "Designpartnerskap i {{duration}}",
+  "pricingCalcIncludedWorkload": "Dedikerad designexpertis {{days}} dagar i veckan",
+  "pricingCalcIncludedProcess": "Komplett designprocess och leveranser från början till slut",
+  "pricingCalcIncludedCollaboration": "Direkt samarbete och strategisk designrådgivning",
+  "pricingCalcYourPriceLabel": "Ditt pris",
+  "pricingCalcTotalInvestmentLabel": "Total investering:",
+  "pricingCalcCta": "Kontakta oss"
 }
