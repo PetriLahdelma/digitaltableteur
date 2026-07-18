@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 437,
+  "warningCount": 436,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -3216,31 +3216,22 @@
       "text": "Expected variable, function or keyword for \"CanvasText\" of \"color\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css::290::1::no-descending-specificity::Expected selector \".calculator .priceLabel\" to come before selector \".priceCard.priceCardDiscounted .priceLabel\", at line 243 (no-descending-specificity)",
+      "id": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css::253::1::no-descending-specificity::Expected selector \".calculator .priceLabel\" to come before selector \".priceCard.priceCardDiscounted .priceLabel\", at line 206 (no-descending-specificity)",
       "file": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css",
-      "line": 290,
+      "line": 253,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".calculator .priceLabel\" to come before selector \".priceCard.priceCardDiscounted .priceLabel\", at line 243 (no-descending-specificity)"
+      "text": "Expected selector \".calculator .priceLabel\" to come before selector \".priceCard.priceCardDiscounted .priceLabel\", at line 206 (no-descending-specificity)"
     },
     {
-      "id": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css::294::1::no-descending-specificity::Expected selector \".calculator .priceValue\" to come before selector \".priceCard.priceCardDiscounted .priceValue\", at line 247 (no-descending-specificity)",
+      "id": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css::257::1::no-descending-specificity::Expected selector \".calculator .priceValue\" to come before selector \".priceCard.priceCardDiscounted .priceValue\", at line 210 (no-descending-specificity)",
       "file": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css",
-      "line": 294,
+      "line": 257,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".calculator .priceValue\" to come before selector \".priceCard.priceCardDiscounted .priceValue\", at line 247 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css::85::1::selector-max-specificity::Too high specificity in \".calculator .optionGroup label[data-selected=\"true\"]:hover > div\", maximum \"0,4,0\" (selector-max-specificity)",
-      "file": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css",
-      "line": 85,
-      "column": 1,
-      "rule": "selector-max-specificity",
-      "severity": "warning",
-      "text": "Too high specificity in \".calculator .optionGroup label[data-selected=\"true\"]:hover > div\", maximum \"0,4,0\" (selector-max-specificity)"
+      "text": "Expected selector \".calculator .priceValue\" to come before selector \".priceCard.priceCardDiscounted .priceValue\", at line 210 (no-descending-specificity)"
     },
     {
       "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::11::3::order/properties-order::Expected \"padding-inline\" to come before \"max-width\" (order/properties-order)",

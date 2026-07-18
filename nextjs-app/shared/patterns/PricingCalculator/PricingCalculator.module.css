@@ -58,42 +58,10 @@
   row-gap: var(--space-internal-16);
 }
 
-/* Registry SelectableCard (react 0.1.16) still draws its radio indicator,
-   reserves trailing padding for it, lets the surface sit content-height
-   inside a stretched label, and swaps the selected border on hover; the DS
-   source has fixed all four (the whole card is the control, content centers,
-   selected look survives hover). Neutralize here until the next react
-   publish. */
-
-.optionGroup label {
-  display: flex;
-  flex-direction: column;
-}
-
-.optionGroup label span[data-type] {
-  display: none;
-}
-
-.optionGroup label > div {
-  display: flex;
-  padding-inline-end: var(--space-internal-12);
-  flex: 1 1 auto;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.calculator .optionGroup label[data-selected="true"]:hover > div {
-  border-color: var(--color-primary);
-}
-
-/* Windows High Contrast strips author box-shadows, so the published selected
-   ring vanishes; border-width survives forced colors and restores a non-color
-   selected cue on the whole-card control. */
-@media (forced-colors: active) {
-  .calculator .optionGroup label[data-selected="true"] > div {
-    border-width: 3px;
-  }
-}
+/* The registry SelectableCard (react >= 0.1.17) owns the whole-card control
+   behavior natively: no indicator glyph, flex-column centering, selected look
+   surviving hover, and the forced-colors border cue. The 0.1.16-era reach-in
+   shims that reproduced those from here are retired. */
 
 .optionContent {
   display: flex;
@@ -111,18 +79,13 @@
   color: var(--color-muted);
 }
 
-/* Badge straddles the card's top edge (half above, half on the card).
-   pointer-events: none so it never steals clicks from this or nearby cards.
-   The 24px height mirrors the DS Badge size="xs" added on this branch; the
-   registry package (0.1.16) predates it, so keep size="sm" + this override
-   until the next react publish, then switch to size="xs" and delete the
-   block-size line. Scoped under .calculator to outrank Badge's sm=32px at
-   equal load order. */
+/* Badge (size="xs") straddles the card's top edge (half above, half on the
+   card). pointer-events: none so it never steals clicks from this or nearby
+   cards. */
 
 .calculator .partnershipBadge {
   position: absolute;
   z-index: 1;
-  block-size: 24px;
   pointer-events: none;
   transform: translateY(-50%);
   inset-block-start: 0;
