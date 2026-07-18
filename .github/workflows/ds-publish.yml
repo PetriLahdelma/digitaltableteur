@@ -71,8 +71,13 @@ jobs:
       - name: Build and verify React package
         run: npm run check:react-package
 
+      # Build + vitest verification only. The Storybook story sweep and
+      # rendered-parity pixel gate (check:web-components:dod) are development
+      # gates enforced by the local publish preflight, whose clearance record
+      # this workflow verifies below; running them here made publish runs take
+      # 20-60 minutes instead of ~10 and wedged twice on 2026-07-18.
       - name: Build and verify Web Components package
-        run: npm run check:web-components:dod
+        run: npm run check:web-components
 
       - name: Verify package metadata
         run: npm run check:package-release-notes
