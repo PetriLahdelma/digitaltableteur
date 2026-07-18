@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-18T16:20:15.681Z",
+  "generatedAt": "2026-07-18T16:26:12.559Z",
   "summary": {
     "componentCount": 164,
     "statusCounts": {
@@ -38851,7 +38851,7 @@
         "usage": {
           "description": "GridBlock lays out case-study content cells in a responsive grid with columns, gap, spacing, and background knobs. Work project pages use it for image/text mosaics between StoryBlock narrative sections. Cells are free-form nodes; for the bare layout primitive use Grid, since GridBlock adds section chrome (max-width, background, spacing) around it."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-grid-block",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1438-229",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -41066,7 +41066,7 @@
         "usage": {
           "description": "PageLayout is the page-body wrapper: a max-width container with default page margins, an optional grid mode with columns, and a spacing scale. PSEO pages and several structure blocks (GridBlock, ProofBlock, ProjectMetaSection) build on it. Use it to open a page body or section shell; inside components prefer the Grid/FlexBox primitives."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-page-layout",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1438-245",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -41666,7 +41666,7 @@
             }
           ]
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-pricing-page-content",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1439-333",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -43141,7 +43141,7 @@
         "usage": {
           "description": "ProofBlock is the numbers band: a set of headline metrics with captions under an optional title and subtitle, with tight spacing and dark variants. Use it to evidence outcomes on case-study or marketing pages; metrics are data props so copy stays with the page."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-proof-block",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1438-264",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -45863,7 +45863,7 @@
         "usage": {
           "description": "WorkMagneticField is the homepage work showcase: a grid of project cards with the magnetic hover interaction, an optional view-all link, and homepage anchor wiring (id, donnyTarget). It wraps WorkPreviewSection's card grid in the animated treatment; use WorkPreviewSection directly when you need the plain grid without the effect."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-magnetic-field",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1439-366",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -46055,7 +46055,7 @@
         "usage": {
           "description": "WorkPreviewSection is the plain project-card grid: a titled section of project preview cards with layout options and an optional view-all link. WorkMagneticField layers the homepage's magnetic hover on top of it. Use it for straightforward work listings on landing or index pages."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-preview-section",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1439-476",
         "radixPrimitive": null,
         "element": "div",
         "variants": {

@@ -16,7 +16,7 @@
     "usage": {
         "description": "WorkPreviewSection is the plain project-card grid: a titled section of project preview cards with layout options and an optional view-all link. WorkMagneticField layers the homepage's magnetic hover on top of it. Use it for straightforward work listings on landing or index pages."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-preview-section",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1439-476",
     "radixPrimitive": null,
     "element": "div",
     "variants": {

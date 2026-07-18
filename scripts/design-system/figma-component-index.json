@@ -581,6 +581,36 @@
       "name": "TeamBlock",
       "type": "COMPONENT",
       "page": "Patterns"
+    },
+    "1438-229": {
+      "name": "GridBlock",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1438-245": {
+      "name": "PageLayout",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1438-264": {
+      "name": "ProofBlock",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1439-333": {
+      "name": "PricingPageContent",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1439-366": {
+      "name": "WorkMagneticField",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1439-476": {
+      "name": "WorkPreviewSection",
+      "type": "COMPONENT_SET",
+      "page": "Patterns"
     }
   }
 }

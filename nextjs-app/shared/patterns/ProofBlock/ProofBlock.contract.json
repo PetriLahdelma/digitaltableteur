@@ -16,7 +16,7 @@
     "usage": {
         "description": "ProofBlock is the numbers band: a set of headline metrics with captions under an optional title and subtitle, with tight spacing and dark variants. Use it to evidence outcomes on case-study or marketing pages; metrics are data props so copy stays with the page."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-proof-block",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1438-264",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
