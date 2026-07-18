@@ -5,7 +5,7 @@
     "group": "structure",
     "status": "beta",
     "description": "Dimension-labelled placeholder for imagery in layouts, demos, and drafts; swap for real media before shipping.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-image-placeholder",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1446-2375",
     "radixPrimitive": null,
     "element": "div",
     "variants": {

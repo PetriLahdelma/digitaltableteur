@@ -5,7 +5,7 @@
     "group": "structure",
     "status": "beta",
     "description": "Markdown renderer that maps elements onto design-system components so chat replies and long-form content share one typographic path.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-markdown-message",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1446-2388",
     "radixPrimitive": null,
     "element": "div",
     "variants": {

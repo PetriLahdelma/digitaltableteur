@@ -5,7 +5,7 @@
     "group": "structure",
     "status": "beta",
     "description": "Layout primitive that locks its children to a fixed width/height ratio (1:1, 4:3, 16:9, …) so media-shaped containers reserve space before content loads.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-aspect-ratio",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1445-2353",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
