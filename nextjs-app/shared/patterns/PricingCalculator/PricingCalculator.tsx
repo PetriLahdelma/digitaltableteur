@@ -240,7 +240,7 @@ export function PricingCalculator({ className }: PricingCalculatorProps) {
                     {unitLabel(option)}
                   </Text>{" "}
                   {option.partnership ? (
-                    <Badge size="sm" className={styles.partnershipBadge}>
+                    <Badge size="xs" className={styles.partnershipBadge}>
                       {t("pricingCalcPartnershipBadge", "Partnership")}
                     </Badge>
                   ) : null}
@@ -267,7 +267,7 @@ export function PricingCalculator({ className }: PricingCalculatorProps) {
                       {t("pricingCalcUnitDays", "days")}
                     </Text>{" "}
                     {duration.partnership && days >= PARTNERSHIP_MIN_DAYS ? (
-                      <Badge size="sm" className={styles.partnershipBadge}>
+                      <Badge size="xs" className={styles.partnershipBadge}>
                         {t("pricingCalcPartnershipBadge", "Partnership")}
                       </Badge>
                     ) : null}
