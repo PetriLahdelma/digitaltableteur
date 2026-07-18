@@ -611,6 +611,51 @@
       "name": "WorkPreviewSection",
       "type": "COMPONENT_SET",
       "page": "Patterns"
+    },
+    "1440-2596": {
+      "name": "ArticleCard",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1440-2603": {
+      "name": "Author",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1440-2619": {
+      "name": "ComplianceCard",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1440-2632": {
+      "name": "PersonCard",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1440-2641": {
+      "name": "Testimonial",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1441-2234": {
+      "name": "LinkedInQuoteCard",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1441-2250": {
+      "name": "LocationCard",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1441-2253": {
+      "name": "Display",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1441-2263": {
+      "name": "Gallery",
+      "type": "COMPONENT",
+      "page": "Atoms"
     }
   }
 }

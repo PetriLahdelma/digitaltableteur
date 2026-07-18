@@ -5,7 +5,7 @@
     "group": "structure",
     "status": "beta",
     "description": "Internal audit-checklist card with pass/fail rows and a last-reviewed date; a Storybook and docs tooling surface, not product UI.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-compliance-card",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1440-2619",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

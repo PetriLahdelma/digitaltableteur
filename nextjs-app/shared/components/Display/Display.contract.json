@@ -5,7 +5,7 @@
     "group": "display",
     "status": "beta",
     "description": "Display-sized heading for marketing hero copy. Larger than the `Title` scale; used sparingly on landing/about/contact heroes where the type itself is the visual.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-display",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1441-2253",
     "radixPrimitive": null,
     "element": "h1",
     "variants": {},
