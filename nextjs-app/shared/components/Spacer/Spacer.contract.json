@@ -5,7 +5,7 @@
     "group": "structure",
     "status": "beta",
     "description": "Empty layout element that injects a fixed gap on a single axis. Used inside flex/grid containers where adding a token-sized gap as a sibling reads cleaner than the gap utility.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-spacer",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1445-2382",
     "radixPrimitive": null,
     "element": "div",
     "variants": {

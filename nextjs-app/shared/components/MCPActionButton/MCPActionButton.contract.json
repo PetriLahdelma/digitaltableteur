@@ -5,7 +5,7 @@
     "group": "interaction",
     "status": "beta",
     "description": "Button that invokes an MCP tool from chat and docs surfaces and reflects its pending, success, and error state.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-mcpaction-button",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1446-2398",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

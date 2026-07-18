@@ -5,7 +5,7 @@
     "group": "structure",
     "status": "beta",
     "description": "Centers its children horizontally and vertically inside a relative container. Single-purpose alternative to ad-hoc `flex items-center justify-center` snippets scattered through the codebase.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-center",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1445-2357",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

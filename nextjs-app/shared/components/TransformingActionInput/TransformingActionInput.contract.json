@@ -5,7 +5,7 @@
     "group": "form",
     "status": "beta",
     "description": "Marketing entry-point input that morphs between surface modes, from a prompt bar into a chat handoff; pairs with ChatWidget.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-transforming-action-input",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1446-2411",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
