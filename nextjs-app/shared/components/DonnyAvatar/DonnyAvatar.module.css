@@ -20,8 +20,8 @@
 }
 
 .avatar {
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   transition:
     transform 0.2s var(--ease-out, ease-out),
     opacity 0.15s ease;
@@ -80,7 +80,8 @@
   color: var(--color-gray);
   transform: translateX(-50%);
   inset-block-end: -1.25rem;
-  inset-inline-start: 50%;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
+  left: 50%;
 }
 
 /* ========================= */

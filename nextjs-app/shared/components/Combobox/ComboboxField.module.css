@@ -24,8 +24,8 @@
 .control {
   display: flex;
   position: relative;
-  width: 100%;
-  min-height: 48px;
+  inline-size: 100%;
+  min-block-size: 48px;
   align-items: stretch;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -77,7 +77,7 @@
   padding-block: var(--space-internal-12);
   padding-inline: var(--space-internal-16)
     calc(var(--space-internal-32) + var(--space-internal-8));
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1;
   align-items: center;
   border: none;
@@ -113,7 +113,7 @@
   inset-block: 0;
   padding: 0;
   padding-inline-end: calc(var(--space-internal-12) + var(--space-internal-8));
-  width: calc(var(--space-internal-32) + var(--space-internal-8));
+  inline-size: calc(var(--space-internal-32) + var(--space-internal-8));
   justify-content: flex-end;
   align-items: center;
   border: none;
@@ -152,7 +152,7 @@
   z-index: 1000;
   margin: 0;
   padding: var(--space-internal-8);
-  max-height: 280px;
+  max-block-size: 280px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--main-body-background-color, var(--color-surface));
@@ -163,6 +163,7 @@
   list-style: none;
   list-style-type: " ";
   overflow-y: auto;
+  overflow-block: auto;
   overscroll-behavior: contain;
   transform-origin: top center;
 }
@@ -171,8 +172,8 @@
   display: flex;
   position: relative;
   padding: var(--space-internal-12) var(--space-internal-16);
-  width: 100%;
-  min-height: 44px;
+  inline-size: 100%;
+  min-block-size: 44px;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-internal-12);
@@ -218,7 +219,7 @@
 
 .empty {
   padding: var(--space-internal-12) var(--space-internal-16);
-  min-height: 44px;
+  min-block-size: 44px;
   font-family: var(--font-body);
   font-size: var(--font-size-text);
   line-height: 1.4;

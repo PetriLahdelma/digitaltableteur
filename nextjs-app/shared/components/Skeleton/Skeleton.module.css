@@ -76,7 +76,7 @@
 }
 
 .text .line {
-  height: 0.75rem;
+  block-size: 0.75rem;
   border-radius: 4px;
   background: linear-gradient(
     90deg,
@@ -108,24 +108,24 @@
 }
 
 .circle {
-  width: 48px;
-  height: 48px;
+  inline-size: 48px;
+  block-size: 48px;
   border-radius: 50%;
 }
 
 .avatar {
-  width: 64px;
-  height: 64px;
+  inline-size: 64px;
+  block-size: 64px;
   border-radius: 50%;
 }
 
 .rect {
-  width: 100%;
-  height: 120px;
+  inline-size: 100%;
+  block-size: 120px;
 }
 
 .card {
-  width: 100%;
-  height: 180px;
+  inline-size: 100%;
+  block-size: 180px;
   border-radius: 8px;
 }

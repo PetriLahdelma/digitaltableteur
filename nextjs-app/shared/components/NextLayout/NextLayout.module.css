@@ -1,14 +1,16 @@
 .layout {
   display: flex;
-  min-height: 100vh;
+  min-block-size: 100vb;
   flex-direction: column;
   overflow-x: clip;
+  overflow-inline: clip;
 }
 
 .main {
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1;
   overflow-x: clip;
+  overflow-inline: clip;
 }
 
 .main:focus {

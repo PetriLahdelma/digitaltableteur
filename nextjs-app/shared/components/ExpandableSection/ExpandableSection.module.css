@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  inline-size: 100%;
 }
 
 /* Trigger styled as subtle text link */
@@ -32,8 +32,8 @@
 
 .icon {
   display: inline-flex;
-  width: 16px;
-  height: 16px;
+  inline-size: 16px;
+  block-size: 16px;
   justify-content: center;
   align-items: center;
   font-size: 16px;

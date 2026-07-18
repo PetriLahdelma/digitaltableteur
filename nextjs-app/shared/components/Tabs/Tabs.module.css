@@ -18,7 +18,7 @@
 
 .indicator {
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   z-index: 0;
   inline-size: var(--tab-ind-w, 0);
   pointer-events: none;
@@ -48,7 +48,7 @@
 
 .underline {
   gap: var(--space-internal-4);
-  border-bottom: 1px solid var(--color-border);
+  border-block-end: 1px solid var(--color-border);
 }
 
 /* ---- Tab base ------------------------------------------------------------- */

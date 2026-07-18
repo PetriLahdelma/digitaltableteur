@@ -1,7 +1,7 @@
 /* Enhanced Cookie Consent Styles - HDS-inspired with DT design tokens */
 
 .consentModal {
-  max-width: 820px;
+  max-inline-size: 820px;
 }
 
 .simpleView,
@@ -55,7 +55,7 @@
 }
 
 .categoryInfo {
-  max-width: 66.67%;
+  max-inline-size: 66.67%;
   flex: 0 1 66.67%;
 }
 
@@ -88,7 +88,7 @@
 
 .footerActions {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-internal-16);
@@ -117,12 +117,12 @@
   }
 
   .rightActions {
-    width: 100%;
+    inline-size: 100%;
     flex-direction: column;
   }
 
   .rightActions > button {
-    width: 100%;
+    inline-size: 100%;
   }
 
   .categoryRow {

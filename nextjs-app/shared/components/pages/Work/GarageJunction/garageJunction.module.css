@@ -16,7 +16,7 @@
 .metaGrid {
   display: grid;
   margin-inline: auto;
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
   grid-template-columns: 1fr 1.5fr;
   gap: var(--space-layout-64);
 }
@@ -109,12 +109,12 @@
 
 .videoContainer {
   margin-inline: auto;
-  max-width: var(--container-lg);
+  max-inline-size: var(--container-lg);
 }
 
 .videoContainer video {
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   border-radius: var(--radius-lg);
 }
 
@@ -131,7 +131,7 @@
 .socialGrid {
   display: grid;
   margin-inline: auto;
-  max-width: var(--container-lg);
+  max-inline-size: var(--container-lg);
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-layout-16);
 }
@@ -143,8 +143,8 @@
 }
 
 .socialItem img {
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   object-fit: cover;
 }
 
@@ -157,13 +157,13 @@
 
 .colorContent {
   margin-inline: auto;
-  max-width: var(--container-lg);
+  max-inline-size: var(--container-lg);
 }
 
 .colorComposition {
   display: grid;
   margin-block-start: var(--space-layout-24);
-  max-width: 700px;
+  max-inline-size: 700px;
   grid-template-columns: 60px 1fr 1fr 1.5fr;
   grid-template-rows: 80px 80px;
 }
@@ -240,13 +240,13 @@
 .applicationsHeader {
   margin-block-end: var(--space-layout-32);
   margin-inline: auto;
-  max-width: var(--container-lg);
+  max-inline-size: var(--container-lg);
 }
 
 .applicationsGrid {
   display: grid;
   margin-inline: auto;
-  max-width: var(--container-xl);
+  max-inline-size: var(--container-xl);
   grid-template-columns: 1fr 2fr;
   gap: var(--space-layout-24);
 }
@@ -262,8 +262,8 @@
 }
 
 .appImage {
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   border-radius: var(--radius-md);
   background-color: var(--color-light-bg);
 }
@@ -295,7 +295,7 @@
 
 .resultsContent {
   margin-inline: auto;
-  max-width: var(--container-lg);
+  max-inline-size: var(--container-lg);
 }
 
 .resultsContent h3 {

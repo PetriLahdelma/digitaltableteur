@@ -25,8 +25,8 @@ const styles = `
   .md { font-size: 1.125rem; }
   .lg { font-size: 1.5rem; }
   .inherit { gap: 0.3rem; font-size: inherit; }
-  .always, .hover { position: relative; padding-bottom: 6px; }
-  .always::after, .hover::after { position: absolute; right: 0; bottom: 0; left: 0; height: 6px; background-color: var(--underline-accent-color, currentcolor); opacity: 0.9; content: ""; mask-image: var(--wavy-underline-mask); mask-repeat: repeat-x; mask-size: 16px 6px; }
+  .always, .hover { position: relative; padding-block-end: 6px; }
+  .always::after, .hover::after { position: absolute; inset-inline-end: 0; inset-block-end: 0; inset-inline-start: 0; block-size: 6px; background-color: var(--underline-accent-color, currentcolor); opacity: 0.9; content: ""; mask-image: var(--wavy-underline-mask); mask-repeat: repeat-x; mask-size: 16px 6px; }
   .none { text-decoration: none; }
   .hover::after { opacity: 0; transition: opacity var(--duration-fast) var(--ease-out-cubic); }
   .external { display: inline-flex; flex: none; align-items: center; translate: 0 -2px; }

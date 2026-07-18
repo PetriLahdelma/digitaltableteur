@@ -24,10 +24,10 @@ const styles = `
   a { display: inline-flex; position: relative; padding-block-end: 6px; align-items: center; color: var(--color-linkedin, #0077b5); text-decoration: none; transition: color .2s ease-in-out; }
   a::after {
     position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 6px;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    block-size: 6px;
     background-color: var(--underline-accent-color, currentcolor);
     opacity: 0.9;
     content: "";

@@ -18,8 +18,8 @@ const styles = `
   .current.md { font-size: 1.125rem; }
   .current.lg { font-size: 1.5rem; }
   .current.inherit { gap: 0.3rem; font-size: inherit; }
-  .current.always, .current.hover { position: relative; padding-bottom: 6px; }
-  .current.always::after, .current.hover::after { position: absolute; right: 0; bottom: 0; left: 0; height: 6px; background-color: var(--underline-accent-color, currentcolor); opacity: 0.9; content: ""; mask-image: var(--wavy-underline-mask); mask-repeat: repeat-x; mask-size: 16px 6px; }
+  .current.always, .current.hover { position: relative; padding-block-end: 6px; }
+  .current.always::after, .current.hover::after { position: absolute; inset-inline-end: 0; inset-block-end: 0; inset-inline-start: 0; block-size: 6px; background-color: var(--underline-accent-color, currentcolor); opacity: 0.9; content: ""; mask-image: var(--wavy-underline-mask); mask-repeat: repeat-x; mask-size: 16px 6px; }
   .current.hover::after { opacity: 0; transition: opacity var(--duration-fast) var(--ease-out-cubic); }
   dt-link { font-size: inherit; }
   @media (hover: hover) and (pointer: fine) { .current.hover:hover::after { opacity: 0.9; } }

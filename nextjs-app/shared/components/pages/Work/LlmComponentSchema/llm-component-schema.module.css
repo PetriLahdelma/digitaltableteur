@@ -22,13 +22,13 @@
 
 .pipelineSvg {
   display: block;
-  width: 100%;
-  max-width: 720px;
-  height: auto;
+  inline-size: 100%;
+  max-inline-size: 720px;
+  block-size: auto;
 }
 
 .pipelineCaption {
-  max-width: 720px;
+  max-inline-size: 720px;
   font-size: 0.875rem;
   text-align: center;
   color: var(--secondary-text-color);
@@ -44,7 +44,7 @@
 .metaGrid {
   display: grid;
   margin-inline: auto;
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
   grid-template-columns: 1fr 1.5fr;
   gap: var(--space-layout-64);
 }
@@ -100,7 +100,7 @@
 .schemaExample {
   margin-inline: auto;
   padding-block: var(--space-layout-32);
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
 }
 
 .schemaExample pre {
@@ -110,6 +110,7 @@
   font-size: var(--font-size-text-s);
   line-height: 1.5;
   overflow-x: auto;
+  overflow-inline: auto;
 }
 
 .schemaExample code {

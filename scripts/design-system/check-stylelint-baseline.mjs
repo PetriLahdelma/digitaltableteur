@@ -9,6 +9,7 @@ import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { assignStylelintWarningIds } from "./stylelint-warning-baseline.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const BASELINE_PATH = join(
@@ -19,7 +20,7 @@ const update = process.argv.includes("--update");
 const stylelintBin = join(ROOT, "node_modules/.bin/stylelint");
 const stylelintArgs = [
   "**/*.css",
-  "**/*.module.css",
+  ".storybook/**/*.css",
   "--formatter",
   "json",
   "--allow-empty-input",
@@ -29,28 +30,11 @@ function normalizePath(source) {
   return relative(ROOT, source).replaceAll("\\", "/");
 }
 
-function warningId(warning) {
-  return [
-    warning.file,
-    warning.line,
-    warning.column,
-    warning.rule,
-    warning.text,
-  ].join("::");
-}
-
 function flattenWarnings(results) {
-  return results
-    .flatMap((result) => {
+  return assignStylelintWarningIds(
+    results.flatMap((result) => {
       const file = normalizePath(result.source);
       return result.warnings.map((warning) => ({
-        id: warningId({
-          file,
-          line: warning.line ?? 0,
-          column: warning.column ?? 0,
-          rule: warning.rule ?? "unknown",
-          text: warning.text ?? "",
-        }),
         file,
         line: warning.line ?? 0,
         column: warning.column ?? 0,
@@ -58,8 +42,8 @@ function flattenWarnings(results) {
         severity: warning.severity ?? "warning",
         text: warning.text ?? "",
       }));
-    })
-    .sort((a, b) => a.id.localeCompare(b.id));
+    }),
+  );
 }
 
 function runStylelint() {
@@ -180,7 +164,9 @@ const baselineWarnings = readBaseline();
 const baselineById = new Map(
   baselineWarnings.map((warning) => [warning.id, warning]),
 );
-const currentById = new Map(currentWarnings.map((warning) => [warning.id, warning]));
+const currentById = new Map(
+  currentWarnings.map((warning) => [warning.id, warning]),
+);
 
 const newWarnings = currentWarnings.filter(
   (warning) => !baselineById.has(warning.id),

@@ -14,7 +14,7 @@
 .metaGrid {
   display: grid;
   margin-inline: auto;
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
   grid-template-columns: 1fr;
   gap: var(--space-layout-32);
 }
@@ -88,8 +88,8 @@
 }
 
 .problemMindmap {
-  margin-block-start: var(--space-400);
-  width: 100%;
+  margin-block-start: var(--space-internal-16);
+  inline-size: 100%;
 }
 
 .imageGrid {
@@ -123,8 +123,8 @@
   display: flex;
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  width: 100%;
-  max-width: var(--container-lg);
+  inline-size: 100%;
+  max-inline-size: var(--container-lg);
   flex-direction: column;
   align-items: center;
   gap: var(--space-internal-16);
@@ -144,8 +144,8 @@
 
 .meterVideoWrapper {
   display: flex;
-  width: 100%;
-  max-width: 1777px;
+  inline-size: 100%;
+  max-inline-size: 1777px;
   justify-content: center;
   align-items: center;
   border-radius: var(--radius-lg);
@@ -155,24 +155,24 @@
 
 .meterVideo {
   display: block;
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   transform: scale(2.5);
   transform-origin: center;
 }
 
 .knobsVideoContainer {
-  width: 44%;
-  max-width: 355px;
-  height: 66.67%;
+  inline-size: 44%;
+  max-inline-size: 355px;
+  block-size: 66.67%;
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
 .knobsVideo {
   display: block;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   object-fit: cover;
 }
 
@@ -186,8 +186,8 @@
   margin-block-start: var(--space-layout-32);
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  width: 100%;
-  max-width: var(--container-md);
+  inline-size: 100%;
+  max-inline-size: var(--container-md);
   flex-direction: column;
   align-items: center;
   gap: var(--space-internal-16);
@@ -208,7 +208,7 @@
 .logoWordmarkWrapper {
   display: flex;
   padding: var(--space-layout-64);
-  width: 100%;
+  inline-size: 100%;
   justify-content: center;
   align-items: center;
   border-radius: var(--radius-lg);
@@ -216,9 +216,9 @@
 }
 
 .logoWordmarkImage {
-  max-width: 100%;
-  height: auto;
-  max-height: 200px;
+  max-inline-size: 100%;
+  block-size: auto;
+  max-block-size: 200px;
 }
 
 .logoWordmarkCaption {
@@ -246,8 +246,8 @@
   margin-block-start: var(--space-layout-32);
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  width: 100%;
-  max-width: var(--container-md);
+  inline-size: 100%;
+  max-inline-size: var(--container-md);
 }
 
 @media (width >= 768px) {
@@ -266,8 +266,8 @@
   margin-inline: auto;
   padding-block: var(--space-layout-32);
   padding-inline: var(--page-margin-mobile);
-  width: 100%;
-  max-width: var(--container-md);
+  inline-size: 100%;
+  max-inline-size: var(--container-md);
 }
 
 @media (width >= 768px) {
@@ -303,7 +303,7 @@
 }
 
 .swatchColor {
-  width: 100%;
+  inline-size: 100%;
   border-radius: calc(var(--radius-lg) * 3);
   aspect-ratio: 16 / 9;
 }
@@ -349,8 +349,8 @@
   display: flex;
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  width: 100%;
-  max-width: var(--container-md);
+  inline-size: 100%;
+  max-inline-size: var(--container-md);
   flex-direction: column;
   gap: var(--space-layout-32);
 }
@@ -458,8 +458,8 @@
   margin-inline: auto;
   padding-block: var(--space-layout-32);
   padding-inline: var(--page-margin-mobile);
-  width: 100%;
-  max-width: var(--container-md);
+  inline-size: 100%;
+  max-inline-size: var(--container-md);
 }
 
 @media (width >= 768px) {
@@ -487,8 +487,8 @@
   margin-block-start: var(--space-layout-48);
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  width: 100%;
-  max-width: var(--container-lg);
+  inline-size: 100%;
+  max-inline-size: var(--container-lg);
   flex-direction: column;
   align-items: center;
   gap: var(--space-internal-16);
@@ -507,13 +507,13 @@
 }
 
 .ogImageWrapper {
-  width: 33.333%;
-  min-width: 280px;
+  inline-size: 33.333%;
+  min-inline-size: 280px;
 }
 
 .ogImage {
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 24px rgb(0 0 0 / 10%);
 }

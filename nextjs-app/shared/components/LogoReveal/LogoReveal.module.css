@@ -1,7 +1,7 @@
 .stage {
   display: grid;
-  width: 100%;
-  min-height: 200px;
+  inline-size: 100%;
+  min-block-size: 200px;
   place-items: center;
 }
 
@@ -10,7 +10,7 @@
 .lockup {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 2vw, 28px);
+  gap: clamp(16px, 2vi, 28px);
   transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
   user-select: none;
@@ -21,7 +21,7 @@
 .logoWrap {
   display: grid;
   position: relative;
-  width: clamp(88px, 10vw, 140px);
+  inline-size: clamp(88px, 10vi, 140px);
   place-items: center;
   cursor: default;
   aspect-ratio: 1 / 1;
@@ -29,8 +29,8 @@
 
 .logoImg {
   display: block;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
 
   /* Premium shadow */
   filter: drop-shadow(0 16px 28px rgb(0 0 0 / 28%));
@@ -53,8 +53,8 @@
 
 .wordmarkImg {
   display: block;
-  width: auto;
-  height: clamp(38px, 5vw, 84px);
+  inline-size: auto;
+  block-size: clamp(38px, 5vi, 84px);
   will-change: transform, opacity, filter;
 }
 

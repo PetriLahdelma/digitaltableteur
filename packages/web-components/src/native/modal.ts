@@ -61,9 +61,9 @@ const styles = `
   .panel {
     box-sizing: border-box;
     display: flex;
-    inline-size: min(90vw, var(--size-width-lg, 56.25rem));
-    max-inline-size: min(90vw, var(--size-width-lg, 56.25rem));
-    max-block-size: 90vh;
+    inline-size: min(90vi, var(--size-width-lg, 56.25rem));
+    max-inline-size: min(90vi, var(--size-width-lg, 56.25rem));
+    max-block-size: 90vb;
     flex-direction: column;
     overflow: hidden;
     border-radius: var(--radius-lg);
@@ -73,22 +73,22 @@ const styles = `
   }
   .panel.success {
     border-block-start: 4px solid var(--color-success);
-    max-inline-size: 30vw;
+    max-inline-size: 30vi;
   }
   .panel.error {
     border-block-start: 4px solid var(--color-error);
-    max-inline-size: 30vw;
+    max-inline-size: 30vi;
   }
   .panel.warning {
     border-block-start: 4px solid var(--color-warning);
-    max-inline-size: 30vw;
+    max-inline-size: 30vi;
   }
   .panel.info {
     border-block-start: 4px solid var(--color-info);
-    max-inline-size: 30vw;
+    max-inline-size: 30vi;
   }
   .panel.loading {
-    max-inline-size: 30vw;
+    max-inline-size: 30vi;
   }
   .panel[data-animation="scale"] {
     animation: modalScaleIn var(--duration-fast, 200ms) var(--ease-out-cubic, ease-out);
@@ -216,8 +216,8 @@ const styles = `
     .panel.warning,
     .panel.info {
       inline-size: 100%;
-      max-inline-size: 90vw;
-      max-block-size: min(90vh, 48rem);
+      max-inline-size: 90vi;
+      max-block-size: min(90vb, 48rem);
     }
     .header {
       padding: 1.5rem 1rem 0.75rem;

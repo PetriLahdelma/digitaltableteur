@@ -5,8 +5,8 @@
   /* Fixed heights per size step (xs 24 / sm 32 / md 40 / lg 56); vertical
      centering comes from the flex row, not padding. */
   box-sizing: border-box;
-  width: fit-content;
-  height: 40px;
+  inline-size: fit-content;
+  block-size: 40px;
   align-items: center;
   gap: 0.25em;
   border: 2px solid transparent;
@@ -25,19 +25,19 @@
 
 .xs {
   padding: 0 var(--space-internal-8);
-  height: 24px;
+  block-size: 24px;
   font-size: 0.75rem;
 }
 
 .sm {
   padding: 0 var(--space-internal-12);
-  height: 32px;
+  block-size: 32px;
   font-size: 0.75rem;
 }
 
 .lg {
   padding: 0 var(--space-internal-16);
-  height: 56px;
+  block-size: 56px;
   font-size: 1.25rem;
 }
 

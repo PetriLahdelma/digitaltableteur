@@ -14,7 +14,7 @@
   border-radius: 50%;
   background-color: var(--color-primary);
   font-family: var(--font-body, sans-serif);
-  font-size: clamp(0.875rem, 0.4vw + 0.8rem, 1.125rem);
+  font-size: clamp(0.875rem, 0.4vi + 0.8rem, 1.125rem);
   font-weight: 500;
   text-transform: uppercase;
   color: var(--color-white);

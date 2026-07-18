@@ -12,7 +12,7 @@
 
 .wrapperLabelLeft {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   justify-content: space-between;
   gap: 1rem;
 }
@@ -25,8 +25,8 @@
   display: inline-flex;
   position: relative;
   padding: 0;
-  width: var(--switch-width);
-  height: var(--switch-height);
+  inline-size: var(--switch-width);
+  block-size: var(--switch-height);
   justify-content: flex-start;
   align-items: center;
   border: none;
@@ -88,10 +88,10 @@
 .handle {
   display: inline-flex;
   position: absolute;
-  top: 0.15rem;
-  left: 0.15rem;
-  width: var(--switch-handle-size);
-  height: var(--switch-handle-size);
+  inset-block-start: 0.15rem;
+  inset-inline-start: 0.15rem;
+  inline-size: var(--switch-handle-size);
+  block-size: var(--switch-handle-size);
   justify-content: center;
   align-items: center;
   border-radius: 999px;
@@ -138,12 +138,12 @@
 }
 
 .spinner {
-  width: 0.8rem;
-  height: 0.8rem;
+  inline-size: 0.8rem;
+  block-size: 0.8rem;
   border: 2px solid rgb(15 23 42 / 15%);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
-  border-top-color: var(--color-primary);
+  border-block-start-color: var(--color-primary);
 }
 
 .label {
@@ -156,7 +156,7 @@
 }
 
 .wrapperLabelTop .label {
-  width: 100%;
+  inline-size: 100%;
 }
 
 @keyframes spin {

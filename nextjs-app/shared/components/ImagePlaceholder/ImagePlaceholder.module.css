@@ -75,8 +75,8 @@
 }
 
 .icon {
-  width: 40%;
-  height: 40%;
+  inline-size: 40%;
+  block-size: 40%;
   opacity: 0.4;
 }
 
@@ -106,8 +106,8 @@
 /* Responsive adjustments */
 @media (width < 768px) {
   .icon {
-    width: 32px;
-    height: 32px;
+    inline-size: 32px;
+    block-size: 32px;
   }
 
   .text {

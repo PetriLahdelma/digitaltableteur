@@ -29,8 +29,8 @@
 
 .channelLink {
   display: flex;
-  width: 2.5rem;
-  height: 2.5rem;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
   justify-content: center;
   align-items: center;
   border: 1px solid var(--color-border);
@@ -62,8 +62,8 @@
 }
 
 .channelLink svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
 }
 
 .copyButton {
@@ -75,8 +75,8 @@
 }
 
 .copyButton svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
 }
 
 .copyButtonText {
@@ -89,13 +89,13 @@
   }
 
   .channelLink {
-    width: 2.25rem;
-    height: 2.25rem;
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
   }
 
   .copyButton {
-    min-width: 2.25rem;
-    min-height: 2.25rem;
+    min-inline-size: 2.25rem;
+    min-block-size: 2.25rem;
     padding: 0;
     justify-content: center;
   }

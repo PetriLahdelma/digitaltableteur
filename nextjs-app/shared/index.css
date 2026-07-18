@@ -26,8 +26,8 @@ video,
 canvas,
 svg {
   display: block;
-  max-width: 100%;
-  height: auto;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 
 /* Form elements inherit fonts for consistency */
@@ -96,8 +96,8 @@ code {
   position: absolute;
   margin: -1px;
   padding: 0;
-  width: 1px;
-  height: 1px;
+  inline-size: 1px;
+  block-size: 1px;
   border: 0;
   white-space: nowrap;
   clip-path: inset(50%);

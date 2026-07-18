@@ -7,8 +7,8 @@
 }
 
 .checkbox {
-  width: 24px;
-  height: 24px;
+  inline-size: 24px;
+  block-size: 24px;
   border: 1px solid var(--color-primary);
 
   /* --radius-md (4px), not --radius-lg (8px): the radius is absolute, so on
@@ -29,18 +29,18 @@
 /* Size variants (v1.1.0) */
 
 .checkbox--sm {
-  width: 18px;
-  height: 18px;
+  inline-size: 18px;
+  block-size: 18px;
 }
 
 .checkbox--md {
-  width: 24px;
-  height: 24px;
+  inline-size: 24px;
+  block-size: 24px;
 }
 
 .checkbox--lg {
-  width: 30px;
-  height: 30px;
+  inline-size: 30px;
+  block-size: 30px;
 }
 
 /* Enhancement: native theming via accent-color where supported */
@@ -127,12 +127,14 @@ input.checkbox:checked {
 input.checkbox:checked::after {
   content: "";
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   top: 50%;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   left: 50%;
-  width: 12px;
-  height: 6px;
+  inline-size: 12px;
+  block-size: 6px;
   border-inline-start: 3px solid var(--checkbox-checkmark-color);
-  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  border-block-end: 3px solid var(--checkbox-checkmark-color);
   transform: translate(-50%, -60%) rotate(-45deg);
   border-radius: 1px;
 }
@@ -147,12 +149,14 @@ input.checkbox:checked::after {
 .checkboxContainer input.checkbox:checked::after {
   content: "";
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   top: 50%;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   left: 50%;
-  width: 12px;
-  height: 6px;
+  inline-size: 12px;
+  block-size: 6px;
   border-inline-start: 3px solid var(--checkbox-checkmark-color);
-  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  border-block-end: 3px solid var(--checkbox-checkmark-color);
   transform: translate(-50%, -60%) rotate(-45deg);
   border-radius: 1px;
 }
@@ -168,12 +172,14 @@ input.checkbox:checked::after {
 .checkedState::after {
   content: "";
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   top: 50%;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   left: 50%;
-  width: 12px;
-  height: 6px;
+  inline-size: 12px;
+  block-size: 6px;
   border-inline-start: 3px solid var(--checkbox-checkmark-color);
-  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  border-block-end: 3px solid var(--checkbox-checkmark-color);
   transform: translate(-50%, -60%) rotate(-45deg);
   border-radius: 1px;
   z-index: 1;
@@ -192,12 +198,14 @@ input.checkbox:checked::after {
 .checkboxContainer .checkedState::after {
   content: "";
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   top: 50%;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   left: 50%;
-  width: 12px;
-  height: 6px;
+  inline-size: 12px;
+  block-size: 6px;
   border-inline-start: 3px solid var(--checkbox-checkmark-color);
-  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  border-block-end: 3px solid var(--checkbox-checkmark-color);
   transform: translate(-50%, -60%) rotate(-45deg);
   border-radius: 1px;
   z-index: 1;
@@ -211,10 +219,12 @@ input.checkbox:checked::after {
 .checkbox:indeterminate::before {
   content: "";
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   top: 50%;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   left: 50%;
-  width: 12px;
-  height: 3px;
+  inline-size: 12px;
+  block-size: 3px;
   background-color: var(--checkbox-checkmark-color);
   transform: translate(-50%, -50%);
   transition: none;
@@ -231,10 +241,12 @@ input.checkbox:checked::after {
 .indeterminateState::before {
   content: "";
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   top: 50%;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate(). */
   left: 50%;
-  width: 12px;
-  height: 3px;
+  inline-size: 12px;
+  block-size: 3px;
   background-color: var(--checkbox-checkmark-color);
   transform: translate(-50%, -50%);
   z-index: 1;

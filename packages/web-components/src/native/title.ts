@@ -52,7 +52,7 @@ const styles = `
   }
   @media (width < 768px) {
     .title {
-      max-width: 100%;
+      max-inline-size: 100%;
       overflow-wrap: anywhere;
     }
   }

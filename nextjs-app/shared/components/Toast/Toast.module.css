@@ -1,7 +1,8 @@
 .toast {
   display: flex;
   position: fixed;
-  bottom: var(--space-layout-24);
+  inset-block-end: var(--space-layout-24);
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
   left: 50%;
   z-index: 1000;
   padding: var(--space-internal-12) var(--space-internal-16);
@@ -22,8 +23,8 @@
 
 .icon {
   display: flex;
-  width: 1.25rem;
-  height: 1.25rem;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
@@ -87,15 +88,14 @@
 /* Position variants (v1.1.0) */
 
 .toast--top-left {
-  top: var(--space-layout-24);
-  bottom: auto;
-  left: var(--space-layout-24);
+  inset-block: var(--space-layout-24) auto;
+  inset-inline-start: var(--space-layout-24);
   transform: none;
 }
 
 .toast--top-center {
-  top: var(--space-layout-24);
-  bottom: auto;
+  inset-block: var(--space-layout-24) auto;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
   left: 50%;
   transform: translateX(-50%);
 }
@@ -106,21 +106,21 @@
 }
 
 .toast--bottom-left {
-  bottom: var(--space-layout-24);
-  left: var(--space-layout-24);
+  inset-block-end: var(--space-layout-24);
+  inset-inline-start: var(--space-layout-24);
   transform: none;
 }
 
 .toast--bottom-center {
-  bottom: var(--space-layout-24);
+  inset-block-end: var(--space-layout-24);
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
   left: 50%;
   transform: translateX(-50%);
 }
 
 .toast--bottom-right {
-  right: var(--space-layout-24);
-  bottom: var(--space-layout-24);
-  left: auto;
+  inset-inline: auto var(--space-layout-24);
+  inset-block-end: var(--space-layout-24);
   transform: none;
 }
 

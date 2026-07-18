@@ -2,7 +2,7 @@
 
 .hero {
   position: relative;
-  width: 100%;
+  inline-size: 100%;
   overflow: hidden;
 }
 
@@ -147,7 +147,7 @@
 /* Hero Content */
 
 .heroContent {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .heroText {
@@ -185,7 +185,7 @@
 }
 
 .heroDescription {
-  max-width: 65ch;
+  max-inline-size: 65ch;
   line-height: var(--line-height-relaxed, 1.7);
   color: var(--color-white);
   opacity: 0.85;
@@ -232,7 +232,7 @@
 
 .heroImageWrapper {
   position: relative;
-  width: 100%;
+  inline-size: 100%;
   border-radius: var(--radius-lg, 16px);
   overflow: hidden;
 }
@@ -241,34 +241,34 @@
 
 .heroImageWrapperStacked {
   position: relative;
-  width: 100%;
+  inline-size: 100%;
   overflow: hidden;
 }
 
 .variant-centered .heroImageWrapper {
   margin-inline: auto;
-  max-width: 800px;
+  max-inline-size: 800px;
 }
 
 .heroImage {
   display: block;
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   object-fit: cover;
 }
 
 /* Responsive Typography */
 @media (width < 768px) {
   .heroTitle {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: clamp(2rem, 8vi, 3rem);
   }
 
   .heroSubtitle {
-    font-size: clamp(1rem, 4vw, 1.25rem);
+    font-size: clamp(1rem, 4vi, 1.25rem);
   }
 
   .heroDescription {
-    font-size: clamp(0.875rem, 3.5vw, 1rem);
+    font-size: clamp(0.875rem, 3.5vi, 1rem);
   }
 }
 

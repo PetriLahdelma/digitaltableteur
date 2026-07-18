@@ -36,8 +36,8 @@ video,
 canvas,
 svg {
   display: block;
-  max-width: 100%;
-  height: auto;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 
 input,
@@ -130,8 +130,8 @@ code {
   position: absolute;
   margin: -1px;
   padding: 0;
-  width: 1px;
-  height: 1px;
+  inline-size: 1px;
+  block-size: 1px;
   border: 0;
   white-space: nowrap;
   clip-path: inset(50%);
@@ -143,14 +143,14 @@ code {
   /* Full bleed - break out of container */
 
   .full-bleed {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    inline-size: 100vi;
+    margin-inline-start: calc(50% - 50vi);
   }
 
   /* Prose width for readable content */
 
   .prose-width {
-    max-width: 65ch;
+    max-inline-size: 65ch;
   }
 
   /* Screen reader only */
@@ -159,8 +159,8 @@ code {
     position: absolute;
     margin: -1px;
     padding: 0;
-    width: 1px;
-    height: 1px;
+    inline-size: 1px;
+    block-size: 1px;
     border-width: 0;
     white-space: nowrap;
     clip-path: inset(50%);
@@ -213,7 +213,7 @@ code {
 }
 
 /* Responsive asymmetric grids */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .grid-asymmetric-2-1,
   .grid-asymmetric-1-2,
   .grid-asymmetric-3-1,

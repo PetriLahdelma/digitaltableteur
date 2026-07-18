@@ -3,7 +3,7 @@
   justify-content: flex-start;
   align-items: start;
   font-family: var(--primary-body-font, sans-serif);
-  text-align: left;
+  text-align: start;
 }
 
 .date {

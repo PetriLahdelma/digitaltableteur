@@ -10,14 +10,14 @@
 }
 
 .button {
-  width: 100%;
+  inline-size: 100%;
   justify-content: center;
 }
 
 .status {
   letter-spacing: 0.01em;
   color: var(--color-text);
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 .status.disabled {
@@ -46,6 +46,6 @@
   }
 
   .button {
-    width: auto;
+    inline-size: auto;
   }
 }

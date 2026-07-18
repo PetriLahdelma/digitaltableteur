@@ -16,9 +16,9 @@
   align-items: center;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .stage {
-    min-block-size: clamp(220px, 28vw, 420px);
+    min-block-size: clamp(220px, 28vi, 420px);
   }
 }
 

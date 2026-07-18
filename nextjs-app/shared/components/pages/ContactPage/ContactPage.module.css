@@ -15,16 +15,16 @@
 
 .contactSectionHeading {
   margin-block: 2rem 1.5rem;
-  text-align: left;
+  text-align: start;
   color: var(--color-primary);
 }
 
 .officeSection {
   display: grid;
   margin: 0 auto 3rem;
-  max-width: 960px;
+  max-inline-size: 960px;
   gap: 2.5rem;
-  text-align: left;
+  text-align: start;
 }
 
 .officeSection a {
@@ -45,8 +45,8 @@
 
 .mapWrapper {
   position: relative;
-  width: 100%;
-  height: 18rem;
+  inline-size: 100%;
+  block-size: 18rem;
   border: 2px solid var(--color-primary);
   border-radius: 0;
   background-color: var(--color-light-bg);
@@ -68,13 +68,13 @@
 .map {
   position: relative;
   z-index: 1;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 .mapFallback {
   display: flex;
-  height: 100%;
+  block-size: 100%;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
@@ -101,7 +101,7 @@
 .officeAddressLine {
   font-family: var(--primary-body-font, sans-serif);
   font-size: 1rem;
-  text-align: left;
+  text-align: start;
   color: var(--color-primary);
 }
 
@@ -113,7 +113,7 @@
 }
 
 .portrait {
-  width: 128px;
+  inline-size: 128px;
   border-radius: 100rem;
   clip-path: inset(2px round 50%);
   object-fit: cover;
@@ -128,7 +128,7 @@
 .personCardCenter {
   display: flex;
   margin-block: 3rem;
-  width: 100%;
+  inline-size: 100%;
   justify-content: center;
   align-items: center;
   flex-flow: column wrap;
@@ -147,7 +147,6 @@
 
 .nameTitle {
   margin-block-end: 0 !important;
-  margin-bottom: 0 !important;
 }
 
 .personName {
@@ -163,7 +162,7 @@
 
 .contactPersonTitle {
   display: block;
-  width: 100%;
+  inline-size: 100%;
   text-align: center;
 }
 
@@ -189,11 +188,11 @@
   font-weight: 600;
   text-transform: uppercase;
   color: var(--color-secondary);
-  margin-bottom: 1rem;
+  margin-block-end: 1rem;
 }
 
 .formGroup {
-  margin-bottom: 1.5rem;
+  margin-block-end: 1.5rem;
 }
 
 .privacyPolicy {

@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.5rem, 4vi, 3rem);
   flex-direction: column;
   gap: 2rem;
   background: var(--color-light-bg);
@@ -21,7 +21,7 @@
 }
 
 .subtitle {
-  max-width: 48rem;
+  max-inline-size: 48rem;
   font-size: 1rem;
   opacity: 0.8;
 }
@@ -204,7 +204,7 @@
 
 .chartCanvas {
   display: flex;
-  min-block-size: clamp(16rem, 35vh, 20rem);
+  min-block-size: clamp(16rem, 35vb, 20rem);
   flex: 1;
 }
 
@@ -231,7 +231,7 @@
 }
 
 .visualSubtitle {
-  max-width: 48rem;
+  max-inline-size: 48rem;
   font-size: 1rem;
   opacity: 0.75;
 }
@@ -281,7 +281,7 @@
 }
 
 .diffFigure img {
-  width: 100%;
+  inline-size: 100%;
   border: 1px solid rgb(148 163 184 / 25%);
   border-radius: 8px;
   box-shadow: 0 6px 16px rgb(15 23 42 / 8%);
@@ -295,7 +295,7 @@
 .visualPlaceholder {
   display: flex;
   padding: 2rem;
-  min-height: 160px;
+  min-block-size: 160px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -312,7 +312,7 @@
 }
 
 .visualPlaceholder p {
-  max-width: 28rem;
+  max-inline-size: 28rem;
   font-size: 0.95rem;
   color: var(--color-muted);
 }

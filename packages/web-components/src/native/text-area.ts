@@ -12,11 +12,11 @@ const styles = `
   :host([hidden]) { display: none; }
   .field { display: grid; gap: 0.5rem; }
   label { color: var(--color-primary, currentcolor); font-size: 1rem; }
-  textarea { box-sizing: border-box; inline-size: 100%; min-block-size: 5rem; padding: 0.5rem; resize: vertical; border: 1px solid var(--color-border, #767676); border-radius: var(--radius-lg, 0.5rem); background: var(--color-white, Canvas); color: var(--color-primary, CanvasText); font: inherit; line-height: 1.5; }
+  textarea { box-sizing: border-box; inline-size: 100%; min-block-size: 5rem; padding: 0.5rem; resize: vertical; resize: block; border: 1px solid var(--color-border, #767676); border-radius: var(--radius-lg, 0.5rem); background: var(--color-white, Canvas); color: var(--color-primary, CanvasText); font: inherit; line-height: 1.5; }
   textarea:focus-visible { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary)); outline-offset: var(--focus-ring-offset, 2px); }
   textarea[aria-invalid="true"] { border-color: var(--color-error); }
   textarea:disabled { background: var(--color-disabled-bg-light, #eee); cursor: not-allowed; }
-  .animated { overflow-y: hidden; transition: block-size var(--duration-fast, 160ms) var(--ease-out-cubic, ease); }
+  .animated { overflow-y: hidden; overflow-block: hidden; transition: block-size var(--duration-fast, 160ms) var(--ease-out-cubic, ease); }
   .message { margin: 0; font-size: 0.875rem; color: var(--color-primary, currentcolor); }
   .error { color: var(--color-error-text, var(--color-error)); }
   @media (prefers-reduced-motion: reduce) { .animated { transition: none; } }

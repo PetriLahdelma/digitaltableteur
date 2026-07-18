@@ -23,37 +23,37 @@
   /* Typography tokens - Satoshi everywhere (next/font provides --font-body; --font-heading follows it) */
   --font-title: var(--font-heading), system-ui, sans-serif;
   --font-text: var(--font-body), system-ui, sans-serif;
-  --font-size-text: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+  --font-size-text: clamp(1rem, 0.6vi + 0.9rem, 1.25rem);
 
   /* Text ladder. 14px (0.875rem) is the floor (matches --font-size-button-s);
      small steps differ by max size. xs no longer aliased to s; text-s min 12 to 14px. */
-  --font-size-text-xxs: clamp(0.875rem, 0.1vw + 0.85rem, 0.9375rem);
-  --font-size-text-xs: clamp(0.875rem, 0.2vw + 0.83rem, 1rem);
-  --font-size-text-s: clamp(0.875rem, 0.35vw + 0.8rem, 1.05rem);
-  --font-size-text-m: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
-  --font-size-text-l: clamp(1.125rem, 0.8vw + 1rem, 1.5rem);
-  --font-size-text-xl: clamp(1.375rem, 1vw + 1.15rem, 1.875rem);
-  --font-size-text-xxl: clamp(1.625rem, 1.4vw + 1.35rem, 2.25rem);
-  --font-size-title: clamp(2.25rem, 3.5vw + 1.5rem, 3.75rem);
+  --font-size-text-xxs: clamp(0.875rem, 0.1vi + 0.85rem, 0.9375rem);
+  --font-size-text-xs: clamp(0.875rem, 0.2vi + 0.83rem, 1rem);
+  --font-size-text-s: clamp(0.875rem, 0.35vi + 0.8rem, 1.05rem);
+  --font-size-text-m: clamp(1rem, 0.6vi + 0.9rem, 1.25rem);
+  --font-size-text-l: clamp(1.125rem, 0.8vi + 1rem, 1.5rem);
+  --font-size-text-xl: clamp(1.375rem, 1vi + 1.15rem, 1.875rem);
+  --font-size-text-xxl: clamp(1.625rem, 1.4vi + 1.35rem, 2.25rem);
+  --font-size-title: clamp(2.25rem, 3.5vi + 1.5rem, 3.75rem);
 
   /* Title ladder. xxs/xs added below s, xxl above xl (2026-06-20). Fixes
      undefined --font-size-title-{xxs,xs,xxl} that left those headings unsized. */
-  --font-size-title-xxs: clamp(1.125rem, 0.4vw + 1.05rem, 1.375rem);
-  --font-size-title-xs: clamp(1.25rem, 0.9vw + 1.1rem, 1.75rem);
-  --font-size-title-s: clamp(1.5rem, 2vw + 1.1rem, 2.25rem);
-  --font-size-title-m: clamp(2rem, 2.8vw + 1.3rem, 3rem);
-  --font-size-title-l: clamp(2.75rem, 4vw + 1.75rem, 4.25rem);
-  --font-size-title-xl: clamp(3.5rem, 6vw + 2.5rem, 5.5rem);
-  --font-size-title-xxl: clamp(4.5rem, 8vw + 3rem, 7rem);
+  --font-size-title-xxs: clamp(1.125rem, 0.4vi + 1.05rem, 1.375rem);
+  --font-size-title-xs: clamp(1.25rem, 0.9vi + 1.1rem, 1.75rem);
+  --font-size-title-s: clamp(1.5rem, 2vi + 1.1rem, 2.25rem);
+  --font-size-title-m: clamp(2rem, 2.8vi + 1.3rem, 3rem);
+  --font-size-title-l: clamp(2.75rem, 4vi + 1.75rem, 4.25rem);
+  --font-size-title-xl: clamp(3.5rem, 6vi + 2.5rem, 5.5rem);
+  --font-size-title-xxl: clamp(4.5rem, 8vi + 3rem, 7rem);
   --font-size-display: clamp(
     5rem,
-    10vw + 3rem,
+    10vi + 3rem,
     8rem
   ); /* Display typography: 80px-128px */
 
   --font-size-display-xl: clamp(
     6rem,
-    14vw + 3rem,
+    14vi + 3rem,
     12rem
   ); /* Hero display: 96px-192px */
 
@@ -64,9 +64,9 @@
   --tracking-wide: 0.025em;
   --tracking-wider: 0.05em;
   --tracking-widest: 0.1em;
-  --font-size-button-s: clamp(0.875rem, 0.3vw + 0.8rem, 1rem);
-  --font-size-button-m: clamp(1rem, 0.35vw + 0.9rem, 1.125rem);
-  --font-size-button-l: clamp(1.125rem, 0.45vw + 1rem, 1.25rem);
+  --font-size-button-s: clamp(0.875rem, 0.3vi + 0.8rem, 1rem);
+  --font-size-button-m: clamp(1rem, 0.35vi + 0.9rem, 1.125rem);
+  --font-size-button-l: clamp(1.125rem, 0.45vi + 1rem, 1.25rem);
 
   /* Line heights for optimal readability */
   --line-height-tight: 1.2; /* For large headings */
@@ -713,7 +713,7 @@ h6 {
 .privacyPolicy a:hover {
   position: relative;
   text-decoration: none;
-  padding-bottom: 6px;
+  padding-block-end: 6px;
 }
 
 .wavyUnderline::after,
@@ -723,10 +723,9 @@ h6 {
 .privacyPolicy a::after,
 .privacyPolicy a:hover::after {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 6px;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 6px;
   background-color: var(--underline-accent-color, currentcolor);
   opacity: 0.9;
   content: "";

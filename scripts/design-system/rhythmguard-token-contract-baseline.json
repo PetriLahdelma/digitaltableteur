@@ -1,0 +1,27 @@
+{
+  "generatedBy": "npm run audit:rhythm:update",
+  "missingTokens": [
+    {
+      "files": [
+        "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css",
+        "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.module.css",
+        "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css"
+      ],
+      "token": "--space-layout-l"
+    },
+    {
+      "files": [
+        "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css",
+        "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.module.css",
+        "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css"
+      ],
+      "token": "--space-layout-m"
+    },
+    {
+      "files": [
+        "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.module.css"
+      ],
+      "token": "--space-layout-s"
+    }
+  ]
+}

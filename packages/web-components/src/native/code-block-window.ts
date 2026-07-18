@@ -36,10 +36,11 @@ const styles = `
     max-inline-size: 80%;
   }
   .bodyArticle {
-    max-block-size: 35vh;
+    max-block-size: 35vb;
     overflow: hidden auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
+    overscroll-behavior-block: contain;
     touch-action: pan-y;
   }
   .bodyArticle:focus-visible {
@@ -133,6 +134,7 @@ const styles = `
     max-inline-size: 100%;
     background-color: var(--main-body-background-color);
     overflow-x: hidden;
+    overflow-inline: hidden;
   }
   .body pre {
     margin: 0;

@@ -1,6 +1,6 @@
 .page {
   display: flex;
-  min-height: 100vh;
+  min-block-size: 100vb;
   flex-direction: column;
 }
 
@@ -9,8 +9,8 @@
 .container {
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  width: 100%;
-  max-width: var(--container-lg);
+  inline-size: 100%;
+  max-inline-size: var(--container-lg);
 }
 
 @media (width >= 768px) {
@@ -47,7 +47,7 @@
 
 .leftColumn {
   display: flex;
-  min-width: 0;
+  min-inline-size: 0;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-layout-32);
@@ -69,9 +69,9 @@
 
 .divider {
   margin: 0;
-  width: 100%;
-  max-width: 200px;
-  height: 1px;
+  inline-size: 100%;
+  max-inline-size: 200px;
+  block-size: 1px;
   border: none;
   background-color: var(--color-border);
   transform-origin: left;
@@ -79,8 +79,8 @@
 
 .layoutDivider {
   grid-column: 1 / -1;
-  width: 100%;
-  max-width: none;
+  inline-size: 100%;
+  max-inline-size: none;
   margin-block-start: var(--space-layout-96);
 }
 
@@ -88,7 +88,7 @@
 
 .intro {
   margin: 0;
-  max-width: 320px;
+  max-inline-size: 320px;
   font-family: var(--font-body);
   font-size: var(--font-size-text-l);
   line-height: var(--line-height-relaxed);
@@ -99,15 +99,15 @@
 
 .contactDetails {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   flex-direction: column;
   gap: var(--space-layout-24);
 }
 
 .newBusinessSection {
   display: flex;
-  width: 100%;
-  max-width: 38rem;
+  inline-size: 100%;
+  max-inline-size: 38rem;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-layout-24);
@@ -151,7 +151,7 @@
 
 .newBusiness {
   display: grid;
-  width: 100%;
+  inline-size: 100%;
   grid-template-columns: 9.5rem minmax(0, 1fr);
   align-items: start;
   gap: var(--space-layout-16);
@@ -160,7 +160,7 @@
 .newBusinessMedia,
 .newBusinessContent {
   align-self: start;
-  height: auto;
+  block-size: auto;
 }
 
 @media (width >= 768px) {
@@ -172,29 +172,29 @@
 
 .newBusinessMedia {
   position: relative;
-  width: 100%;
-  height: calc(9.5rem * 22.5 / 15);
+  inline-size: 100%;
+  block-size: calc(9.5rem * 22.5 / 15);
   overflow: hidden;
   background-color: var(--color-neutral-bg);
 }
 
 @media (width >= 768px) {
   .newBusinessMedia {
-    height: 22.5rem;
+    block-size: 22.5rem;
   }
 }
 
 .newBusinessPortrait {
   display: block;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   object-fit: cover;
   object-position: center 15%;
 }
 
 .newBusinessContent {
   display: flex;
-  min-width: 0;
+  min-inline-size: 0;
   flex: none;
   flex-direction: column;
   align-items: flex-start;
@@ -236,7 +236,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-layout-16);
-  width: fit-content;
+  inline-size: fit-content;
   margin: 0;
   margin-block-start: 0;
   text-decoration: none;
@@ -265,8 +265,8 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  inline-size: 2rem;
+  block-size: 2rem;
   border-radius: 50%;
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -291,8 +291,8 @@
 
 .rightColumn {
   display: flex;
-  min-width: 0;
-  width: 100%;
+  min-inline-size: 0;
+  inline-size: 100%;
   flex-direction: column;
   align-items: stretch;
   gap: var(--space-layout-48);
@@ -308,14 +308,14 @@
 }
 
 .formPanel {
-  width: 100%;
-  min-width: 0;
+  inline-size: 100%;
+  min-inline-size: 0;
   flex: 0 1 auto;
 }
 
 .quoteSection {
-  width: 100%;
-  min-width: 0;
+  inline-size: 100%;
+  min-inline-size: 0;
   align-self: flex-start;
   contain: layout;
 }
@@ -346,8 +346,8 @@
 .pullQuoteText::before {
   content: "\201C";
   float: inline-start;
-  width: 0;
-  height: 0;
+  inline-size: 0;
+  block-size: 0;
   margin-inline: -0.6em 0.08em;
   line-height: inherit;
 }

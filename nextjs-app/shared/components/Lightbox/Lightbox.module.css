@@ -11,34 +11,35 @@
 .panel {
   position: relative;
   display: flex;
-  width: 100%;
-  max-width: 95vw;
-  max-height: 95vh;
+  inline-size: 100%;
+  max-inline-size: 95vi;
+  max-block-size: 95vb;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
+  min-block-size: 60vb;
 }
 
 .close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
   z-index: 2;
 }
 
 .nav {
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateY(). */
   top: 50%;
   z-index: 2;
   transform: translateY(-50%);
 }
 
 .navPrev {
-  left: 1rem;
+  inset-inline-start: 1rem;
 }
 
 .navNext {
-  right: 1rem;
+  inset-inline-end: 1rem;
 }
 
 .figure {
@@ -49,15 +50,15 @@
 }
 
 .image {
-  max-width: 100%;
-  max-height: 80vh;
+  max-inline-size: 100%;
+  max-block-size: 80vb;
   border-radius: var(--radius-sm);
   object-fit: contain;
 }
 
 .caption {
-  margin-top: 1rem;
-  max-width: 42rem;
+  margin-block-start: 1rem;
+  max-inline-size: 42rem;
   padding-inline: 1rem;
   font-family: var(--font-text);
   font-size: var(--font-size-text-s, 0.875rem);
@@ -67,7 +68,8 @@
 
 .counter {
   position: absolute;
-  bottom: 1rem;
+  inset-block-end: 1rem;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-text);

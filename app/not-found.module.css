@@ -1,7 +1,7 @@
 .notFoundPage {
   display: flex;
   position: relative;
-  height: 100vh;
+  block-size: 100vb;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -14,8 +14,8 @@
 
 .notFoundPage > :first-child {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
+  inset-block-start: 2rem;
+  inset-inline-start: 2rem;
 }
 
 /* Responsive adjustments */

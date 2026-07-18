@@ -3,9 +3,9 @@
 .container {
   margin-block: var(--space-layout-24);
   margin-inline: 0;
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background-color: var(--main-body-background-color);
@@ -18,15 +18,16 @@
 .containerArticle {
   margin-block: var(--space-layout-48);
   margin-inline: auto;
-  width: 100%;
-  max-width: 80%;
+  inline-size: 100%;
+  max-inline-size: 80%;
 }
 
 .bodyArticle {
-  max-height: 35vh;
+  max-block-size: 35vb;
   overflow: hidden auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+  overscroll-behavior-block: contain;
   touch-action: pan-y;
 }
 
@@ -36,7 +37,7 @@
 }
 
 .bodyArticle::-webkit-scrollbar {
-  width: 8px;
+  inline-size: 8px;
 }
 
 .bodyArticle::-webkit-scrollbar-thumb {
@@ -52,7 +53,7 @@
   display: grid;
   padding-block: var(--space-layout-8);
   padding-inline: var(--space-layout-16);
-  min-height: 44px;
+  min-block-size: 44px;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--space-layout-16);
@@ -67,8 +68,8 @@
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  inline-size: 12px;
+  block-size: 12px;
   border-radius: 999px;
   box-shadow: inset 0 0 0 1px var(--color-border);
 }
@@ -87,7 +88,7 @@
 
 .headerInfo {
   display: flex;
-  min-width: 0;
+  min-inline-size: 0;
   justify-content: center;
   align-items: center;
   gap: var(--space-layout-8);
@@ -127,25 +128,26 @@
 }
 
 .status {
-  min-width: 9ch;
+  min-inline-size: 9ch;
   color: var(--code-toolbar-text, #2b3a45);
 }
 
 .body {
   padding: var(--space-layout-16);
-  min-width: 0;
-  max-width: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
   background-color: var(--main-body-background-color);
   overflow-x: hidden;
+  overflow-inline: hidden;
 }
 
 .pre {
   margin: 0;
   padding: var(--space-layout-16);
   box-sizing: border-box;
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
   border: none;
   border-radius: 0;
   background-color: transparent;
@@ -157,9 +159,9 @@
 .code {
   display: grid;
   box-sizing: border-box;
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
   font-family: var(--font-mono);
   font-size: var(--font-size-text-s);
   line-height: var(--line-height-relaxed);

@@ -26,7 +26,7 @@
 }
 
 .trigger {
-  width: 100%;
+  inline-size: 100%;
   justify-content: center;
 }
 
@@ -38,7 +38,7 @@
 .input {
   padding-block: var(--space-internal-12);
   padding-inline: var(--space-internal-12);
-  width: 100%;
+  inline-size: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background-color: var(--color-light-bg);

@@ -1,14 +1,14 @@
 .checkboxGroup {
   display: flex;
   margin-block: 1rem;
-  width: auto;
+  inline-size: auto;
   flex-direction: column;
   gap: 1rem;
 }
 
 @supports (width: fit-content) {
   .checkboxGroup {
-    width: fit-content;
+    inline-size: fit-content;
   }
 }
 
@@ -20,6 +20,6 @@
 }
 
 .checkbox {
-  width: 24px;
-  height: 24px;
+  inline-size: 24px;
+  block-size: 24px;
 }

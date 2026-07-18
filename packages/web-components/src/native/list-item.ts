@@ -44,7 +44,7 @@ const styles = `
     font-family: var(--font-text, system-ui, sans-serif);
     font-size: var(--font-size-text-s, 0.875rem);
     line-height: var(--line-height-normal, 1.5);
-    text-align: left;
+    text-align: start;
     color: var(--color-dark, CanvasText);
     user-select: none;
   }

@@ -1,8 +1,8 @@
 .wrapper {
   display: flex;
   margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 3rem);
-  max-width: 960px;
+  padding: clamp(1.5rem, 4vi, 3rem);
+  max-inline-size: 960px;
   flex-direction: column;
   gap: 2rem;
   font-family: var(--primary-body-font, sans-serif);
@@ -46,7 +46,7 @@
 }
 
 .table {
-  width: 100%;
+  inline-size: 100%;
   font-size: 0.95rem;
   border-collapse: collapse;
 }
@@ -54,8 +54,8 @@
 .table th,
 .table td {
   padding: 0.6rem 0.8rem;
-  text-align: left;
-  border-bottom: 1px solid rgb(148 163 184 / 20%);
+  text-align: start;
+  border-block-end: 1px solid rgb(148 163 184 / 20%);
 }
 
 .table th {
@@ -63,7 +63,7 @@
 }
 
 .table tr:last-child td {
-  border-bottom: none;
+  border-block-end: none;
 }
 
 @media (width <= 600px) {

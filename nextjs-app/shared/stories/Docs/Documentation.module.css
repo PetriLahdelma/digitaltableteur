@@ -1,16 +1,16 @@
 .wrapper {
   margin: 0 auto;
   padding: var(--space-layout-48, 3rem) var(--space-layout-24, 1.5rem);
-  max-width: 90rem;
+  max-inline-size: 90rem;
   font-family: var(--primary-body-font, var(--font-text));
   line-height: var(--line-height-relaxed);
   color: var(--color-text);
 }
 
 .header {
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: var(--space-layout-48, 3rem);
-  padding-bottom: var(--space-layout-24, 1.5rem);
+  border-block-end: 1px solid var(--color-border);
+  margin-block-end: var(--space-layout-48, 3rem);
+  padding-block-end: var(--space-layout-24, 1.5rem);
 }
 
 .header h1 {
@@ -19,11 +19,11 @@
   font-weight: 600;
   line-height: var(--line-height-snug);
   color: var(--color-primary);
-  margin-bottom: var(--space-layout-16, 1rem);
+  margin-block-end: var(--space-layout-16, 1rem);
 }
 
 .lead {
-  max-width: 60ch;
+  max-inline-size: 60ch;
   font-size: var(--font-size-text-l);
   line-height: var(--line-height-relaxed);
   color: var(--color-gray);
@@ -32,11 +32,11 @@
 .subtitle {
   font-size: var(--font-size-text-m);
   color: var(--color-muted);
-  margin-top: var(--space-layout-8, 0.5rem);
+  margin-block-start: var(--space-layout-8, 0.5rem);
 }
 
 .section {
-  margin-bottom: var(--space-layout-48, 3rem);
+  margin-block-end: var(--space-layout-48, 3rem);
 }
 
 .section h2 {
@@ -45,7 +45,7 @@
   font-weight: 600;
   line-height: var(--line-height-snug);
   color: var(--color-primary);
-  margin-bottom: var(--space-layout-16, 1rem);
+  margin-block-end: var(--space-layout-16, 1rem);
 }
 
 .section h3 {
@@ -53,23 +53,22 @@
   font-size: var(--font-size-text-m);
   font-weight: 600;
   color: var(--color-dark);
-  margin-bottom: var(--space-layout-12, 0.75rem);
-  margin-top: var(--space-layout-24, 1.5rem);
+  margin-block: var(--space-layout-24, 1.5rem) var(--space-internal-12, 0.75rem);
 }
 
 .section p {
-  max-width: 70ch;
-  margin-bottom: var(--space-layout-16, 1rem);
+  max-inline-size: 70ch;
+  margin-block-end: var(--space-layout-16, 1rem);
 }
 
 .section ul,
 .section ol {
-  margin-bottom: var(--space-layout-16, 1rem);
-  padding-left: var(--space-layout-24, 1.5rem);
+  margin-block-end: var(--space-layout-16, 1rem);
+  padding-inline-start: var(--space-layout-24, 1.5rem);
 }
 
 .section li {
-  margin-bottom: var(--space-layout-8, 0.5rem);
+  margin-block-end: var(--space-layout-8, 0.5rem);
 }
 
 .code {
@@ -81,8 +80,9 @@
   font-size: 0.875rem;
   line-height: 1.6;
   white-space: pre;
-  margin-bottom: var(--space-layout-16, 1rem);
+  margin-block-end: var(--space-layout-16, 1rem);
   overflow-x: auto;
+  overflow-inline: auto;
 }
 
 .mermaidBlock {
@@ -90,7 +90,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-s);
   background: var(--color-light-bg);
-  margin-bottom: var(--space-layout-16, 1rem);
+  margin-block-end: var(--space-layout-16, 1rem);
 }
 
 .mermaidTitle {
@@ -99,41 +99,42 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-muted);
-  margin-bottom: var(--space-layout-12, 0.75rem);
+  margin-block-end: var(--space-internal-12, 0.75rem);
 }
 
 .mermaid {
-  width: 100%;
+  inline-size: 100%;
   overflow-x: auto;
+  overflow-inline: auto;
 }
 
 .mermaid svg {
-  max-width: 100%;
-  height: auto;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 
 .table {
-  width: 100%;
+  inline-size: 100%;
   font-size: var(--font-size-text-s);
   border-collapse: collapse;
-  margin-bottom: var(--space-layout-24, 1.5rem);
+  margin-block-end: var(--space-layout-24, 1.5rem);
 }
 
 .table thead {
   background: var(--color-light-bg);
-  border-bottom: 2px solid var(--color-border);
+  border-block-end: 2px solid var(--color-border);
 }
 
 .table th {
-  padding: var(--space-layout-12, 0.75rem);
+  padding: var(--space-internal-12, 0.75rem);
   font-weight: 600;
-  text-align: left;
+  text-align: start;
   color: var(--color-dark);
 }
 
 .table td {
-  padding: var(--space-layout-12, 0.75rem);
-  border-bottom: 1px solid var(--color-border-light);
+  padding: var(--space-internal-12, 0.75rem);
+  border-block-end: 1px solid var(--color-border-light);
 }
 
 .table code {
@@ -150,11 +151,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: var(--space-layout-24, 1.5rem);
-  margin-bottom: var(--space-layout-32, 2rem);
+  margin-block-end: var(--space-layout-32, 2rem);
 }
 
 .principle {
-  padding: var(--space-layout-20, 1.25rem);
+  padding: calc(var(--space-internal-16) + var(--space-internal-4));
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-m);
   background: var(--color-light-bg);
@@ -162,15 +163,15 @@
 
 .principle h3 {
   color: var(--color-primary);
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .techStack,
 .apiGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: var(--space-layout-20, 1.25rem);
-  margin-bottom: var(--space-layout-24, 1.5rem);
+  gap: calc(var(--space-internal-16) + var(--space-internal-4));
+  margin-block-end: var(--space-layout-24, 1.5rem);
 }
 
 .techItem,
@@ -199,24 +200,24 @@
 .apiItem .code {
   padding: var(--space-layout-8, 0.5rem);
   font-size: 0.75rem;
-  margin-top: var(--space-layout-8, 0.5rem);
+  margin-block-start: var(--space-layout-8, 0.5rem);
 }
 
 .categoryList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  gap: var(--space-layout-20, 1.25rem);
+  gap: calc(var(--space-internal-16) + var(--space-internal-4));
 }
 
 .category {
   padding: var(--space-layout-16, 1rem);
   border-radius: var(--radius-s);
   background: var(--color-light-bg);
-  border-left: 3px solid var(--color-primary);
+  border-inline-start: 3px solid var(--color-primary);
 }
 
 .category h3 {
-  margin: 0 0 var(--space-layout-12, 0.75rem) 0;
+  margin: 0 0 var(--space-internal-12, 0.75rem) 0;
   font-size: var(--font-size-text-m);
   font-weight: 600;
   color: var(--color-primary);
@@ -224,12 +225,12 @@
 
 .category ul {
   margin: 0;
-  padding-left: var(--space-layout-16, 1rem);
+  padding-inline-start: var(--space-layout-16, 1rem);
 }
 
 .category li {
   font-size: var(--font-size-text-s);
-  margin-bottom: var(--space-layout-4, 0.25rem);
+  margin-block-end: var(--space-layout-4, 0.25rem);
 }
 
 .category code {
@@ -300,7 +301,7 @@
 
 .searchContainer {
   position: sticky;
-  top: 0;
+  inset-block-start: 0;
   z-index: 10;
   margin: var(--space-layout-24, 1.5rem) 0;
   padding: var(--space-layout-16, 1rem) 0;
@@ -310,22 +311,23 @@
 .searchWrapper {
   position: relative;
   margin: 0 auto;
-  max-width: 40rem;
+  max-inline-size: 40rem;
 }
 
 .searchIcon {
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateY(). */
   top: 50%;
-  left: var(--space-layout-16, 1rem);
+  inset-inline-start: var(--space-layout-16, 1rem);
   color: var(--color-muted);
   pointer-events: none;
   transform: translateY(-50%);
 }
 
 .searchInput {
-  padding: var(--space-layout-12, 0.75rem) var(--space-layout-12, 0.75rem)
-    var(--space-layout-12, 0.75rem) 2.75rem;
-  width: 100%;
+  padding: var(--space-internal-12, 0.75rem) var(--space-internal-12, 0.75rem)
+    var(--space-internal-12, 0.75rem) 2.75rem;
+  inline-size: 100%;
   border: 2px solid var(--color-border);
   border-radius: var(--radius-m);
   background: var(--main-body-background-color);
@@ -344,8 +346,9 @@
 .clearButton {
   display: flex;
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateY(). */
   top: 50%;
-  right: var(--space-layout-8, 0.5rem);
+  inset-inline-end: var(--space-layout-8, 0.5rem);
   padding: var(--space-layout-8, 0.5rem);
   justify-content: center;
   align-items: center;
@@ -372,7 +375,7 @@
   font-size: var(--font-size-text-s);
   text-align: center;
   color: var(--color-muted);
-  margin-top: var(--space-layout-12, 0.75rem);
+  margin-block-start: var(--space-internal-12, 0.75rem);
 }
 
 /* Usage-table controls: search + per-field filters. */
@@ -382,13 +385,13 @@
   flex-wrap: wrap;
   align-items: flex-start;
   gap: var(--space-layout-16, 1rem);
-  margin-bottom: var(--space-layout-16, 1rem);
+  margin-block-end: var(--space-layout-16, 1rem);
 }
 
 /* Each dropdown wrapper sizes the dogfooded Select; search grows to fill. */
 
 .usageControl {
-  min-width: 10rem;
+  min-inline-size: 10rem;
   flex: 0 1 12rem;
 }
 
@@ -443,7 +446,7 @@
   display: flex;
   position: relative;
   padding: var(--space-layout-16, 1rem);
-  min-height: 8rem;
+  min-block-size: 8rem;
   flex-direction: column;
   align-items: center;
   border: 2px solid var(--color-border);
@@ -471,12 +474,12 @@
 
 .iconDisplay {
   display: flex;
-  width: 100%;
-  height: 3rem;
+  inline-size: 100%;
+  block-size: 3rem;
   justify-content: center;
   align-items: center;
   color: var(--color-gray);
-  margin-bottom: var(--space-layout-8, 0.5rem);
+  margin-block-end: var(--space-layout-8, 0.5rem);
 }
 
 .iconDisplay svg {
@@ -499,7 +502,8 @@
 .copyHint {
   display: flex;
   position: absolute;
-  bottom: var(--space-layout-8, 0.5rem);
+  inset-block-end: var(--space-layout-8, 0.5rem);
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
   left: 50%;
   padding: var(--space-layout-4, 0.25rem) var(--space-layout-8, 0.5rem);
   align-items: center;
@@ -529,7 +533,7 @@
 }
 
 .resetButton {
-  padding: var(--space-layout-12, 0.75rem) var(--space-layout-24, 1.5rem);
+  padding: var(--space-internal-12, 0.75rem) var(--space-layout-24, 1.5rem);
   border: none;
   border-radius: var(--radius-m);
   background: var(--color-primary);
@@ -538,7 +542,7 @@
   color: var(--color-white);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  margin-top: var(--space-layout-16, 1rem);
+  margin-block-start: var(--space-layout-16, 1rem);
 }
 
 .resetButton:hover {
@@ -597,12 +601,12 @@
 }
 
 .docsList li {
-  padding: var(--space-layout-12, 0.75rem);
+  padding: var(--space-internal-12, 0.75rem);
   border-radius: var(--radius-s);
   background: var(--color-light-bg);
   font-size: var(--font-size-text-m);
-  border-left: 3px solid var(--color-primary);
-  margin-bottom: var(--space-layout-8, 0.5rem);
+  border-inline-start: 3px solid var(--color-primary);
+  margin-block-end: var(--space-layout-8, 0.5rem);
 }
 
 /* Accessibility */

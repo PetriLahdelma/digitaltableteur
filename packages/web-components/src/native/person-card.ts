@@ -41,7 +41,7 @@ const styles = `
   a:focus-visible { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary)); outline-offset: 2px; }
   .skeleton { position: relative; display: block; overflow: hidden; border-radius: var(--radius-md, .375rem); background: var(--color-muted); }
   .skeletonPortrait { inline-size: 6rem; block-size: 6rem; border-radius: 50%; }
-  .skeletonLines { display: grid; inline-size: min(18rem, 60vw); gap: .65rem; }
+  .skeletonLines { display: grid; inline-size: min(18rem, 60vi); gap: .65rem; }
   .skeletonLine { block-size: .875rem; }
   .skeletonLine:nth-child(1) { inline-size: 72%; }
   .skeletonLine:nth-child(2) { inline-size: 56%; }

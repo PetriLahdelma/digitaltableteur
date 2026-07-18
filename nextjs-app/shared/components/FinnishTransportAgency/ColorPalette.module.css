@@ -35,24 +35,24 @@
 
 .swatch {
   display: flex;
-  min-width: 100px;
+  min-inline-size: 100px;
   flex-direction: column;
   align-items: center;
   gap: var(--space-layout-16);
 }
 
 .swatch.small {
-  min-width: 70px;
+  min-inline-size: 70px;
 }
 
 .swatch.small .color {
-  width: 56px;
-  height: 56px;
+  inline-size: 56px;
+  block-size: 56px;
 }
 
 .color {
-  width: 80px;
-  height: 80px;
+  inline-size: 80px;
+  block-size: 80px;
   border-radius: 50%;
   box-shadow:
     inset 0 0 0 1px rgb(0 0 0 / 8%),
@@ -121,9 +121,9 @@
 }
 
 .proportionsImage {
-  width: 100%;
-  max-width: 280px;
-  height: auto;
+  inline-size: 100%;
+  max-inline-size: 280px;
+  block-size: auto;
   justify-self: center;
 }
 
@@ -138,7 +138,7 @@
   }
 
   .proportionsImage {
-    max-width: 220px;
+    max-inline-size: 220px;
   }
 
   .grid,

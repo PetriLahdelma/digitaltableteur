@@ -74,6 +74,7 @@ const styles = `
   .single .pre {
     white-space: nowrap;
     overflow-x: auto;
+    overflow-inline: auto;
   }
   .multi .pre {
     white-space: pre;
@@ -217,7 +218,7 @@ const styles = `
   }
   .lineNumber {
     min-inline-size: 2ch;
-    text-align: right;
+    text-align: end;
     color: var(--code-line-number);
     font-variant-numeric: tabular-nums;
     user-select: none;

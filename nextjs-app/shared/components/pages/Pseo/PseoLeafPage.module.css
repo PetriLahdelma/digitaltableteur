@@ -1,8 +1,8 @@
 .root {
   margin: 0 auto;
   box-sizing: border-box;
-  min-width: 0;
-  max-width: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
   font-family: var(--primary-body-font);
   font-size: var(--font-size-text-m);
   line-height: 1.6;
@@ -12,7 +12,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-internal-12);
-  margin-top: var(--space-layout-16);
+  margin-block-start: var(--space-layout-16);
 }
 
 .badgeLink {
@@ -25,28 +25,28 @@
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 16px;
   background: rgb(255 255 255 / 2%);
-  margin-top: var(--space-layout-32);
+  margin-block-start: var(--space-layout-32);
 }
 
 .tocList {
   margin: var(--space-internal-12) 0 0;
-  padding-left: var(--space-layout-24);
+  padding-inline-start: var(--space-layout-24);
 }
 
 .section {
-  margin-top: var(--space-layout-40);
+  margin-block-start: var(--space-layout-40);
 }
 
 .proofGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--space-layout-16);
-  margin-top: var(--space-layout-16);
+  margin-block-start: var(--space-layout-16);
 }
 
 .proofCard {
-  max-width: 100%;
-  height: 100%;
+  max-inline-size: 100%;
+  block-size: 100%;
 }
 
 .proofReason {
@@ -58,35 +58,35 @@
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 16px;
   background: rgb(255 255 255 / 2%);
-  margin-top: var(--space-layout-40);
+  margin-block-start: var(--space-layout-40);
 }
 
 .faqList {
   display: flex;
   flex-direction: column;
   gap: var(--space-layout-24);
-  margin-top: var(--space-layout-16);
+  margin-block-start: var(--space-layout-16);
 }
 
 .faqItem {
-  border-bottom: 1px solid rgb(255 255 255 / 8%);
-  padding-bottom: var(--space-layout-16);
+  border-block-end: 1px solid rgb(255 255 255 / 8%);
+  padding-block-end: var(--space-layout-16);
 }
 
 .relatedGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--space-layout-16);
-  margin-top: var(--space-layout-16);
+  margin-block-start: var(--space-layout-16);
 }
 
 .relatedCard {
-  max-width: 100%;
-  height: 100%;
+  max-inline-size: 100%;
+  block-size: 100%;
 }
 
 :global(.wavyUnderline).relatedCard {
-  padding-bottom: 0;
+  padding-block-end: 0;
 }
 
 :global(.wavyUnderline).relatedCard::after {
@@ -104,12 +104,12 @@
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 16px;
   background: rgb(255 255 255 / 2%);
-  margin-top: var(--space-layout-40);
+  margin-block-start: var(--space-layout-40);
 }
 
 .ctaActions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-internal-12);
-  margin-top: var(--space-layout-16);
+  margin-block-start: var(--space-layout-16);
 }

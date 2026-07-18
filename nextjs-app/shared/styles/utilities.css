@@ -89,8 +89,8 @@
   position: absolute;
   margin: -1px;
   padding: 0;
-  width: 1px;
-  height: 1px;
+  inline-size: 1px;
+  block-size: 1px;
   border: 0;
   white-space: nowrap;
   clip-path: inset(50%);
@@ -105,8 +105,8 @@
 .visually-hidden-focusable:focus-visible {
   position: static;
   margin: 0;
-  width: auto;
-  height: auto;
+  inline-size: auto;
+  block-size: auto;
   white-space: normal;
   clip-path: none;
   overflow: visible;

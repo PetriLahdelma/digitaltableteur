@@ -2,15 +2,15 @@
   display: flex;
   inline-size: 100%;
   align-items: flex-start;
-  gap: clamp(0.5rem, 2vw, 2rem);
+  gap: clamp(0.5rem, 2vi, 2rem);
 }
 
 .column {
   display: flex;
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1 1 0;
   flex-direction: column;
-  gap: clamp(0.5rem, 2vw, 2rem);
+  gap: clamp(0.5rem, 2vi, 2rem);
 }
 
 .item {
@@ -39,8 +39,8 @@
 
 .image {
   display: block;
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   border-radius: 0;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -56,7 +56,7 @@
   padding-block: 0.75em;
   padding-inline: 1em;
   background: var(--gallery-caption-bg);
-  font-size: clamp(0.875rem, 0.3vw + 0.85rem, 1rem);
+  font-size: clamp(0.875rem, 0.3vi + 0.85rem, 1rem);
   color: var(--inverted-text-color);
   pointer-events: none;
   transition: opacity 0.2s;

@@ -18,6 +18,10 @@ fi
 if echo "$changed" | grep -qE '^content/pseo/|^app/pseo/|check-pseo-quality|^scripts/pseo/'; then
   npm run pseo:check-quality
 fi
+if echo "$changed" | grep -qE '\.(astro|css|[cm]?js|jsx|html|svelte|ts|tsx|vue)$|^\.stylelintrc|^\.rhythmguard|^package(-lock)?\.json$|stylelint|rhythmguard'; then
+  npm run lint:css
+  npm run audit:rhythm:check
+fi
 echo "$changed" | grep -qE 'nextjs-app/shared/(components|patterns|foundations)|scripts/design-system' || exit 0
 # Contract gate: keep the local gate a superset of the farm's validate job for
 # contract-touching changes (2026-07-03 incident: ten red farm runs because
@@ -41,4 +45,3 @@ fi
 npm run validate:components
 npm run typecheck
 npm run lint
-npm run lint:css

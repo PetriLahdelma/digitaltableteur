@@ -14,7 +14,7 @@ export type DtCategoryOption = { value: string; label: string };
 
 const styles = `
   :host { display: block; }
-  .group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-internal-8); overflow-x: auto; padding-block: var(--space-internal-4); }
+  .group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-internal-8); overflow-x: auto; overflow-inline: auto; padding-block: var(--space-internal-4); }
   .underline { gap: var(--space-internal-24); border-block-end: 1px solid var(--color-border); }
   .minimal { gap: var(--space-internal-16); }
   button { display: inline-flex; flex: none; align-items: center; border: 0; background: transparent; font-family: var(--font-body); white-space: nowrap; color: var(--color-muted); cursor: pointer; }

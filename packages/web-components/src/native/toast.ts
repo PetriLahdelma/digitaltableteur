@@ -35,9 +35,9 @@ const styles = `
     display: flex;
     position: fixed;
     inset-block-end: var(--space-layout-24, 1.5rem);
-    inset-inline-start: 50%;
+    left: 50%;
     z-index: 1000;
-    max-inline-size: min(28rem, calc(100vw - 3rem));
+    max-inline-size: min(28rem, calc(100vi - 3rem));
     padding: var(--space-internal-12, 0.75rem)
       var(--space-internal-16, 1rem);
     align-items: center;

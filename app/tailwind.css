@@ -1,6 +1,7 @@
 /* Tailwind CSS 4.x entry point */
 @import "tailwindcss";
 @import "tw-animate-css";
+
 @plugin "@tailwindcss/typography";
 
 /*
@@ -192,6 +193,7 @@
   --radius-dt-lg: var(--radius-lg);
   --radius-dt-md: var(--radius-md);
   --radius-dt-sm: var(--radius-sm);
+
   /* DT-THEME:END */
 
 }
@@ -213,6 +215,7 @@
   --popover-foreground: var(--primary-text-color, #041B23);
   --primary: var(--color-primary, #041B23);
   --primary-foreground: var(--inverted-text-color, #fff);
+
   /* shadcn secondary surface (used by `bg-secondary` etc.) — the legacy
    * `--color-muted` (#6c757d) is a dark badge text color, not a surface, and
    * paired with the dark `--secondary-foreground` falls to 3.77 contrast.
@@ -220,6 +223,7 @@
    * >=4.5 contrast against it. */
   --secondary: #e5e7eb;
   --secondary-foreground: var(--primary-text-color, #041B23);
+
   /* shadcn muted surface — use a light gray surface (gray-200) so the muted
    * foreground stays >=4.5 contrast for body copy. The legacy `--color-muted`
    * is intentionally dark (#6c757d) for badge text on white; reusing it here
@@ -266,6 +270,7 @@
   --popover-foreground: var(--primary-text-color, #6fa8ff);
   --primary: var(--color-primary, #6fa8ff);
   --primary-foreground: var(--inverted-text-color, #181a1b);
+
   /* Dark-mode secondary/muted surfaces: must sit slightly above
    * `--background` (#181a1b) without trashing contrast for either
    * `--secondary-foreground` (#6fa8ff) or `--muted-foreground` (#aaa).

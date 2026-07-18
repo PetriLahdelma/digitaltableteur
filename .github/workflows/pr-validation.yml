@@ -56,6 +56,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run lint
       - run: npm run lint:css
+      - run: npm run audit:rhythm:check
       - run: npm run test:stories:smoke
       # The matrix command checks every React/native Docs page before theme stories, then drives
       # real Chromium. The farm runner container doesn't ship browsers:

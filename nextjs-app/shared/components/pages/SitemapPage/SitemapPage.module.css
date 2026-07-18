@@ -2,7 +2,7 @@
   margin-inline: auto;
   padding-block: var(--space-layout-48) var(--space-layout-120);
   padding-inline: var(--page-margin-mobile);
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
 }
 
 @media (width >= 768px) {
@@ -19,7 +19,7 @@
 
 .intro {
   margin-block: var(--space-layout-16) var(--space-layout-32);
-  max-width: 55ch;
+  max-inline-size: 55ch;
   line-height: 1.6;
   color: var(--secondary-text-color);
 }

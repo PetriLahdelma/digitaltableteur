@@ -1,7 +1,7 @@
 .policyPage {
   margin: 0 auto;
   padding: 2rem 1rem;
-  max-width: 600px;
+  max-inline-size: 600px;
   font-family: var(--primary-body-font, sans-serif);
   line-height: 1.6;
 }
@@ -10,11 +10,11 @@
   font-family: var(--secondary-heading-font, sans-serif);
   font-size: 2rem;
   font-weight: var(--secondary-heading-weight, 400);
-  margin-bottom: 1rem;
+  margin-block-end: 1rem;
 }
 
 @media (width <= 768px) {
   .policyPage h1 {
-    margin-top: 1.5rem;
+    margin-block-start: 1.5rem;
   }
 }

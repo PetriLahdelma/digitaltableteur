@@ -2,7 +2,7 @@
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-block-end: 1rem;
 }
 
 .label {
@@ -16,8 +16,8 @@
   composes: field from "../../styles/field.module.css";
   margin-block: 0.5rem;
   padding: 0.5rem;
-  width: 100%;
-  min-height: 2.5rem;
+  inline-size: 100%;
+  min-block-size: 2.5rem;
   font-family: var(--font-text);
   font-size: 1rem;
   color: var(--color-primary);
@@ -27,7 +27,7 @@
   font-family: var(--font-text);
   font-size: 1rem;
   color: var(--color-error);
-  margin-top: 0.5rem;
+  margin-block-start: 0.5rem;
 }
 
 .input::placeholder {
@@ -81,6 +81,7 @@
 .animatedTextarea {
   transition: height 180ms ease;
   overflow-y: hidden;
+  overflow-block: hidden;
   resize: none;
 }
 

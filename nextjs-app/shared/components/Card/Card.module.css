@@ -61,7 +61,7 @@
 }
 
 .headerStart {
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1 1 auto;
 }
 

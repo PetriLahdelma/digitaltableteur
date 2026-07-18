@@ -1,6 +1,6 @@
 .donnyBookingEmbed {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   flex-direction: column;
   gap: var(--space-internal-12);
 }
@@ -40,7 +40,7 @@
 .calEmbed {
   display: block;
   min-block-size: 42rem;
-  width: 100%;
+  inline-size: 100%;
   overflow: auto;
 }
 
@@ -48,7 +48,7 @@
   display: block;
   block-size: 42rem;
   min-block-size: 42rem;
-  width: 100%;
+  inline-size: 100%;
   border: 0;
 }
 
@@ -71,14 +71,14 @@
 
 .fallbackActions {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   flex-direction: column;
   gap: var(--space-layout-16);
 }
 
 .actionButton {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   justify-content: center;
 }
 

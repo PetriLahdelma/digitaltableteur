@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  width: 100%;
+  inline-size: 100%;
   grid-auto-rows: minmax(6.25rem, auto); /* Converted 100px to rem */
 }
 

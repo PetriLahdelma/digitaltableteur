@@ -47,8 +47,8 @@
   --mac-maximize: #28c840;
 
   display: inline-flex;
-  width: 12px;
-  height: 12px;
+  inline-size: 12px;
+  block-size: 12px;
   border-radius: 999px;
   box-shadow: inset 0 0 0 1px var(--mac-bezel);
 }
@@ -75,8 +75,8 @@
 }
 
 .actionPlaceholder {
-  width: 4rem;
-  height: 1px;
+  inline-size: 4rem;
+  block-size: 1px;
 }
 
 .body {

@@ -38,7 +38,7 @@ const styles = `
   .trigger:focus-visible, .link:focus-visible { outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary)); outline-offset: 2px; }
   .visual { display: inline-flex; inline-size: var(--avatar-size, 2.5rem); block-size: var(--avatar-size, 2.5rem); flex: none; align-items: center; justify-content: center; overflow: hidden; border-radius: 50%; }
   img.visual { display: block; object-fit: cover; }
-  .initials { background-color: var(--color-primary, #0047ab); color: var(--color-white, #fff); font-size: clamp(0.875rem, 0.4vw + 0.8rem, 1.125rem); font-weight: 500; line-height: 1; text-transform: uppercase; user-select: none; }
+  .initials { background-color: var(--color-primary, #0047ab); color: var(--color-white, #fff); font-size: clamp(0.875rem, 0.4vi + 0.8rem, 1.125rem); font-weight: 500; line-height: 1; text-transform: uppercase; user-select: none; }
   .panel { position: absolute; inset-block-start: calc(100% + 0.5rem); inset-inline-end: 0; z-index: 10; display: flex; min-inline-size: 12rem; padding: 0.375rem; flex-direction: column; gap: 0.125rem; border: 1px solid var(--color-border, rgba(0, 0, 0, 0.12)); border-radius: var(--radius-lg, 0.75rem); background: var(--color-surface, #fff); box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12); }
   .panel[hidden] { display: none; }
   .item { display: flex; min-block-size: 2.5rem; padding: 0.625rem 0.75rem; align-items: center; gap: 0.5rem; border: 0; border-radius: var(--radius-md, 0.5rem); background: transparent; color: var(--color-text, currentcolor); font: inherit; text-align: start; text-decoration: none; cursor: pointer; }

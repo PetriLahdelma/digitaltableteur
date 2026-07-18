@@ -10,7 +10,7 @@
 
 .what {
   display: flex;
-  min-block-size: 100vh;
+  min-block-size: 100vb;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@
   margin-block: 0;
   margin-inline: 0;
   font-family: var(--primary-heading-font, "Times New Roman"), serif;
-  font-size: clamp(3rem, 8vw + 1rem, 8rem);
+  font-size: clamp(3rem, 8vi + 1rem, 8rem);
   font-weight: var(--primary-heading-weight, 300);
   line-height: 1.1;
   color: var(--color-white);
@@ -35,7 +35,7 @@
   margin-inline: auto;
   max-inline-size: 40rem;
   font-family: var(--secondary-body-font), sans-serif;
-  font-size: clamp(1.25rem, 1.5vw + 1rem, 2rem);
+  font-size: clamp(1.25rem, 1.5vi + 1rem, 2rem);
   line-height: 1.4;
   color: var(--color-white);
 }
@@ -51,14 +51,14 @@
   margin-block: 0;
   margin-inline: 0;
   font-family: var(--secondary-heading-font);
-  font-size: clamp(2rem, 3vw + 1.5rem, 3.25rem);
+  font-size: clamp(2rem, 3vi + 1.5rem, 3.25rem);
   font-weight: var(--secondary-heading-weight, 400);
 }
 
 .who {
   display: grid;
   inline-size: auto;
-  min-block-size: 74vh;
+  min-block-size: 74vb;
   justify-items: start;
   align-content: center;
   text-align: start;
@@ -68,7 +68,7 @@
   margin-block: 0;
   margin-inline: 0;
   font-family: var(--secondary-heading-font), sans-serif;
-  font-size: clamp(2rem, 3vw + 1.5rem, 3.25rem);
+  font-size: clamp(2rem, 3vi + 1.5rem, 3.25rem);
   font-weight: var(--secondary-heading-weight, 400);
 }
 
@@ -77,14 +77,14 @@
   margin-inline: 0;
   max-inline-size: 50rem;
   font-family: var(--primary-body-font), sans-serif;
-  font-size: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+  font-size: clamp(1rem, 0.6vi + 0.9rem, 1.25rem);
   line-height: 1.6;
   color: var(--color-primary);
 }
 
 .mission {
   position: relative;
-  padding: clamp(1.75rem, 5vw, 3.5rem);
+  padding: clamp(1.75rem, 5vi, 3.5rem);
   gap: var(--space-layout-16);
   border: 1px solid rgb(255 255 255 / 10%);
   border-radius: calc(var(--radius-lg) * 1.4);
@@ -131,7 +131,7 @@
 .missionEyebrow {
   display: inline-flex;
   padding: 0.35rem 0.75rem;
-  width: fit-content;
+  inline-size: fit-content;
   align-items: center;
   gap: 0.5rem;
   border-radius: 999px;
@@ -157,7 +157,7 @@
 
 .manifesto {
   display: grid;
-  padding: clamp(2rem, 6vw, 4rem);
+  padding: clamp(2rem, 6vi, 4rem);
   gap: var(--space-layout-24);
   border-block-start: none;
   background: transparent;
@@ -174,7 +174,7 @@
   flex-wrap: wrap;
   gap: 0.45rem;
   font-family: var(--primary-body-font), sans-serif;
-  font-size: clamp(1.05rem, 0.6vw + 1rem, 1.25rem);
+  font-size: clamp(1.05rem, 0.6vi + 1rem, 1.25rem);
   line-height: 1.5;
   color: var(--color-primary);
 }
@@ -206,67 +206,67 @@
 
 @media (width <= 768px) {
   .what {
-    padding-block: clamp(2rem, 6vh, 3.5rem);
-    padding-inline: clamp(1rem, 8vw, 3rem);
-    min-block-size: 70vh;
+    padding-block: clamp(2rem, 6vb, 3.5rem);
+    padding-inline: clamp(1rem, 8vi, 3rem);
+    min-block-size: 70vb;
   }
 
   .mission {
-    padding: clamp(1.25rem, 4vw, 2rem);
+    padding: clamp(1.25rem, 4vi, 2rem);
   }
 
   .what h1 {
-    font-size: clamp(2.5rem, 7vw + 1rem, 5rem);
+    font-size: clamp(2.5rem, 7vi + 1rem, 5rem);
   }
 
   .what p {
     max-inline-size: 35rem;
-    font-size: clamp(1.125rem, 1.5vw + 1rem, 1.5rem);
+    font-size: clamp(1.125rem, 1.5vi + 1rem, 1.5rem);
   }
 
   .section,
   .who {
-    padding-inline: clamp(1rem, 8vw, 3rem);
+    padding-inline: clamp(1rem, 8vi, 3rem);
     justify-items: center;
     text-align: center;
   }
 
   .who {
-    min-block-size: 60vh;
+    min-block-size: 60vb;
   }
 }
 
 @media (width <= 480px) {
   .what {
-    padding-block: clamp(1.5rem, 6vh, 2.5rem);
-    padding-inline: clamp(1rem, 6vw, 2rem);
-    min-block-size: 60vh;
+    padding-block: clamp(1.5rem, 6vb, 2.5rem);
+    padding-inline: clamp(1rem, 6vi, 2rem);
+    min-block-size: 60vb;
   }
 
   .mission {
-    padding: clamp(1rem, 6vw, 1.75rem);
+    padding: clamp(1rem, 6vi, 1.75rem);
   }
 
   .what h1 {
-    font-size: clamp(2rem, 8vw + 1rem, 3.5rem);
+    font-size: clamp(2rem, 8vi + 1rem, 3.5rem);
   }
 
   .what p {
     max-inline-size: 100%;
-    font-size: clamp(1rem, 2vw + 0.9rem, 1.25rem);
+    font-size: clamp(1rem, 2vi + 0.9rem, 1.25rem);
   }
 
   .section,
   .who {
-    padding-block: clamp(2rem, 7vh, 3rem);
-    padding-inline: clamp(1rem, 6vw, 2rem);
+    padding-block: clamp(2rem, 7vb, 3rem);
+    padding-inline: clamp(1rem, 6vi, 2rem);
   }
 
   .section h2 {
-    font-size: clamp(1.75rem, 5vw + 1rem, 2.5rem);
+    font-size: clamp(1.75rem, 5vi + 1rem, 2.5rem);
   }
 
   .section p {
-    font-size: clamp(0.95rem, 2vw + 0.85rem, 1.1rem);
+    font-size: clamp(0.95rem, 2vi + 0.85rem, 1.1rem);
   }
 }
