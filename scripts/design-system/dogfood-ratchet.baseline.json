@@ -553,6 +553,10 @@
       "rawElements": 1,
       "utilityLines": 0
     },
+    "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx": {
+      "rawElements": 0,
+      "utilityLines": 2
+    },
     "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx": {
       "rawElements": 4,
       "utilityLines": 0

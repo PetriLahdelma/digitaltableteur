@@ -16,7 +16,7 @@
     "usage": {
         "description": "HomeHero is the bespoke landing hero for the homepage: a kinetic headline randomized per visit, background treatment, and a primary CTA that scrolls to scrollTargetId. Copy and variants live inside the component by design; it is not a configurable hero. For prop-driven heroes on other routes use Hero, or HeroSection for a bare shell."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-home-hero",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1435-131",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

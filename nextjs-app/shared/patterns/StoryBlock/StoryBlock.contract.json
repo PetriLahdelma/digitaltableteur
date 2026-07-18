@@ -16,7 +16,7 @@
     "usage": {
         "description": "StoryBlock is the workhorse narrative section of Work case studies: a subtitle/title pair, rich text content, and images arranged by imageLayout, over background and spacing knobs. Chain several StoryBlocks (with GridBlock mosaics and ProcessBlock) to build a project page's spine."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-story-block",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1435-143",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
