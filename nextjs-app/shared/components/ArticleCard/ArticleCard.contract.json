@@ -5,7 +5,7 @@
     "group": "content",
     "status": "beta",
     "description": "Blog article teaser card with title, lead, and read time.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-article-card",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1440-2596",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
