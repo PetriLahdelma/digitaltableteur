@@ -15,6 +15,7 @@
  * ratio.
  */
 export const enforced = [
+  "AspectRatio",
   "Avatar",
   "Badge",
   "BlogMediaImage",
