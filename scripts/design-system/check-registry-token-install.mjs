@@ -69,6 +69,12 @@ function accessValue(accessReport, packageName) {
 
 const tokensVersion = readJson(join(ROOT, "packages/tokens/package.json")).version;
 const tokensCssVersion = readJson(join(ROOT, "packages/tokens-css/package.json")).version;
+// Expected export count comes from the locally built manifest, not a
+// hardcoded literal: a stale literal broke this guard the first time a new
+// token shipped (184 → 185 with tokens 0.1.2). build:tokens must have run.
+const expectedTokenCount = readJson(
+  join(ROOT, "packages/tokens/dist/tokens-manifest.json"),
+).tokenCount;
 const userconfig = run("npm", ["config", "get", "userconfig"], { capture: true }).trim();
 const userconfigArgs =
   userconfig && userconfig !== "undefined" ? ["--userconfig", userconfig] : [];
@@ -190,7 +196,7 @@ const require = createRequire(import.meta.url);
 const tokensCss = require.resolve("@digitaltableteur/tokens-css/tokens.css");
 const acmeTheme = require.resolve("@digitaltableteur/tokens-css/themes/acme.css");
 
-if (tokenCount !== 184 || tokenNames.length !== tokenCount) {
+if (tokenCount !== ${expectedTokenCount} || tokenNames.length !== tokenCount) {
   throw new Error("Token package export count is incomplete");
 }
 if (manifest.tokenCount !== tokenCount || !dtcg.$schema) {
