@@ -158,7 +158,10 @@ const maxPackedFiles = 40 + tags.length * 2;
 // share labels, tooltip top-layer promotion) measured at ~1.83 MB unpacked.
 // +8 kB for dt-list-item (85th tag, ListItem native twin): measured
 // 1,848,351 bytes unpacked, ~5.7 kB over the prior ceiling.
-const sharedBundleAndManifestCeiling = 1_313_000;
+// +1 kB for the DT-1245 round (dt-badge xs size, dt-selectable-card redesign
+// port, 0.8.0 changelog entries): measured 1,851,032 bytes unpacked, ~0.4 kB
+// over the prior ceiling.
+const sharedBundleAndManifestCeiling = 1_314_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.
