@@ -116,8 +116,13 @@ export const WithError: Story = {
   args: { error: "Could not update this preference." },
 };
 export const Playground: Story = {};
+// Mirror the React Switch Example: an unchecked switch with the same label and
+// helper text (React renders a ControlledTemplate starting unchecked).
 export const Example: Story = {
   ...exampleStory,
-  args: { label: "Dark mode", checked: true },
+  args: {
+    label: "Enable email notifications",
+    helperText: "You'll receive updates about your account activity",
+  },
 };
 export const ForcedColors: Story = { ...forcedColorsStory };

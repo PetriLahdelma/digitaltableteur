@@ -162,8 +162,28 @@ export const LineHeights: Story = {
     </Stack>
   ),
 };
+// Mirror the React Text Example: an <h1>-sized dt-title above an l-size body
+// dt-text, using the same English strings the React story resolves from i18n
+// (storyTitlePlayground / storyTextDefault). The old single dt-text with
+// unrelated copy diffed on both content and composition height.
 export const Example: Story = {
   ...exampleStory,
-  args: { content: "Body copy for a marketing section.", size: "l" },
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => (
+    <>
+      <NativeElement
+        tagName="dt-title"
+        attributes={{
+          level: 1,
+          size: "l",
+          content: "Play with the Title component!",
+        }}
+      />
+      <NativeElement
+        tagName="dt-text"
+        attributes={{ size: "l", as: "p", content: "This is default text." }}
+      />
+    </>
+  ),
 };
 export const ForcedColors: Story = { ...forcedColorsStory };
