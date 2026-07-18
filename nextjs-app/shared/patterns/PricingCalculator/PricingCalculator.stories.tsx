@@ -43,24 +43,24 @@ export const Interactive: Story = {
     const canvas = within(canvasElement);
     const format = new Intl.NumberFormat("en", { maximumFractionDigits: 0 });
 
-    // Defaults: 2 months × 5 days/week.
-    const defaults = computePricing("2m", 5);
+    // Defaults: 2 weeks × 5 days/week.
+    const defaults = computePricing("2w", 5);
     await expect(
       canvas.getByText(format.format(defaults.totalHours)),
     ).toBeInTheDocument();
 
-    // Move to the 12-month partnership tier at 3 days/week.
+    // 12 months at the default 5 days/week earns the 90 €/h partnership rate.
     await userEvent.click(canvas.getByRole("radio", { name: /12\s*months/i }));
-    await userEvent.click(canvas.getByRole("radio", { name: /3\s*days/i }));
+    await expect(canvas.getByText(/^90\s?€\//)).toBeInTheDocument();
 
+    // Dropping below 4 days/week loses the partnership rate again.
+    await userEvent.click(canvas.getByRole("radio", { name: /3\s*days/i }));
     const next = computePricing("12m", 3);
+    await expect(next.effectiveRate).toBe(120);
     await expect(
       canvas.getByText(format.format(next.totalHours)),
     ).toBeInTheDocument();
-    await expect(next.effectiveRate).toBe(102);
-    await expect(
-      canvas.getByText(new RegExp(`^${next.effectiveRate}\\s?€/`)),
-    ).toBeInTheDocument();
+    await expect(canvas.queryByText(/^90\s?€\//)).toBeNull();
   },
 };
 

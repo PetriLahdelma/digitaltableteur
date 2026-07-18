@@ -2,6 +2,16 @@
 
 ## 0.1.17 - 2026-07-16
 
+- Redesigns SelectableCard: the whole card is the control — the radio/checkbox
+  indicator glyph is removed and selection reads from the primary border ring;
+  hover no longer swaps the selected border; the card is a flex column whose
+  surface fills stretched grid rows and centers content vertically; the
+  forced-colors selected cue uses `border-width: 3px` (author box-shadows are
+  stripped in forced colors); and the declared `className` prop is now merged
+  onto the card instead of being silently dropped.
+- Adds an official `xs` (24px) Badge size beneath `sm`; the existing
+  `sm | md | lg` steps are unchanged.
+
 - Exposes the existing stable `Timestamp` component and pure
   `formatTimestamp` utility from the root and content-family entrypoints so the
   public React package remains the canonical source for its native counterpart.

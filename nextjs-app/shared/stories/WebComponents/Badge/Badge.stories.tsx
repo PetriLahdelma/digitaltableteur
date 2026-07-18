@@ -12,7 +12,7 @@ type Args = {
   label: string;
   variant: "primary" | "secondary";
   tone: "" | "neutral" | "info" | "success" | "warning" | "error";
-  size: "sm" | "md" | "lg";
+  size: "xs" | "sm" | "md" | "lg";
   removable: boolean;
   dot: boolean;
 };
@@ -46,7 +46,7 @@ const meta = {
       control: "select",
       options: ["", "neutral", "info", "success", "warning", "error"],
     },
-    size: { control: "inline-radio", options: ["sm", "md", "lg"] },
+    size: { control: "inline-radio", options: ["xs", "sm", "md", "lg"] },
     removable: { control: "boolean" },
     dot: { control: "boolean" },
   },
@@ -118,11 +118,18 @@ export const Sizes: Story = {
   ...exampleStory,
   render: () => (
     <Row>
-      {(["sm", "md", "lg"] as const).map((size) => (
+      {(
+        [
+          ["xs", "Extra Small"],
+          ["sm", "Small"],
+          ["md", "Medium"],
+          ["lg", "Large"],
+        ] as const
+      ).map(([size, label]) => (
         <NativeElement
           key={size}
           tagName="dt-badge"
-          attributes={{ label: size, size }}
+          attributes={{ label, size }}
         />
       ))}
     </Row>

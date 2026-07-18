@@ -1,0 +1,48 @@
+- status: Work in progress (beta)
+- region "Adjust duration and workload to see your total investment.":
+  - status: 1,170 hours at 3 days/week, 120€/hour, total 140,400 €
+  - heading "Adjust duration and workload to see your total investment." [level=2]
+  - group "Duration":
+    - text: Duration
+    - radio "2 weeks"
+    - text: 2 weeks
+    - radio "1 month"
+    - text: 1 month
+    - radio "2 months"
+    - text: 2 months
+    - radio "3 months"
+    - text: 3 months
+    - radio "6 months Partnership"
+    - text: 6 months Partnership
+    - radio "12 months Partnership" [checked]
+    - text: 12 months Partnership
+  - group "Workload (per week)":
+    - text: Workload (per week)
+    - radio "2 days"
+    - text: 2 days
+    - radio "3 days" [checked]
+    - text: 3 days
+    - radio "4 days Partnership"
+    - text: 4 days Partnership
+    - radio "5 days Partnership"
+    - text: 5 days Partnership
+  - text: Allocation 60%
+  - paragraph: 3 days/week × 7.5 hrs/day
+  - text: "Total hours: 1,170 Standard rate: 120€/hour"
+  - paragraph: "What's included in your investment:"
+  - list:
+    - listitem: — 12 months design partnership
+    - listitem: — Dedicated design expertise for 3 days per week
+    - listitem: — Complete end-to-end design process and deliverables
+    - listitem: — Direct collaboration and strategic design guidance
+  - paragraph: "Perfect for:"
+  - list:
+    - listitem: — Holistic design leadership for your whole product
+    - listitem: — Org-wide design system stewardship and AI enablement
+    - listitem: "— An advisory pace: direction, reviews and coaching alongside your team"
+  - paragraph: Your price
+  - paragraph: 120€/hour
+  - paragraph: Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week workloads.
+  - text: "Total Investment: 140,400 €"
+  - link "Get in touch":
+    - /url: /contact?mode=book&duration=12m&days=3

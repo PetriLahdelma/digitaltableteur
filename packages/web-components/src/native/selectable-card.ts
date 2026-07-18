@@ -12,21 +12,24 @@ export type DtSelectableCardSelectionType = (typeof TYPES)[number];
 export type DtSelectableCardOrientation = (typeof ORIENTATIONS)[number];
 
 const cardStyles = `
-  :host { display: block; position: relative; }
-  label { display: block; position: relative; cursor: pointer; }
+  :host { display: flex; position: relative; flex-direction: column; }
+  /* The whole card is the control (no radio/checkbox glyph); the label is a
+     flex column so the surface fills it when a grid/flex parent stretches
+     options to equal heights, mirroring the React SelectableCard. */
+  label { display: flex; position: relative; flex: 1 1 auto; flex-direction: column; cursor: pointer; }
   label.disabled { cursor: not-allowed; opacity: .55; }
   input { position: absolute; margin: -1px; inline-size: 1px; block-size: 1px; border: 0; clip-path: inset(50%); overflow: hidden; }
-  .surface { position: relative; box-sizing: border-box; min-block-size: 4rem; padding: var(--space-internal-16); padding-inline-end: calc(var(--space-internal-24) + 20px); border: 1px solid var(--color-border-light); border-radius: var(--radius-lg, 8px); background: var(--color-surface); color: var(--color-text); }
-  label:hover:not(.disabled) .surface { border-color: var(--color-border); }
+  .surface { display: flex; position: relative; box-sizing: border-box; flex: 1 1 auto; flex-direction: column; justify-content: center; min-block-size: 4rem; padding: var(--space-internal-16); border: 1px solid var(--color-border-light); border-radius: var(--radius-lg, 8px); background: var(--color-surface); color: var(--color-text); }
+  /* Hover only affects unselected cards; a selected card keeps its look. */
+  label:hover:not(.disabled):not(.selected) .surface { border-color: var(--color-border); }
   label.selected .surface { border-color: var(--color-primary); box-shadow: inset 0 0 0 1px var(--color-primary); }
   input:focus-visible + .surface { outline: 2px solid var(--color-focus-ring, var(--color-primary)); outline-offset: 2px; }
-  .indicator { position: absolute; inset-block-start: var(--space-internal-16); inset-inline-end: var(--space-internal-16); box-sizing: border-box; inline-size: 20px; block-size: 20px; border: 2px solid var(--color-border); background: var(--color-surface); }
-  .radio { border-radius: 50%; }
-  .checkbox { border-radius: 6px; }
-  .selected .indicator { border-color: var(--color-primary); }
-  .selected .radio::after { display: block; margin: 3px; inline-size: 10px; block-size: 10px; border-radius: 50%; background: var(--color-primary); content: ""; }
-  .selected .checkbox::after { display: block; margin: 1px 0 0 5px; inline-size: 5px; block-size: 10px; border: solid var(--color-primary); border-width: 0 2px 2px 0; transform: rotate(45deg); content: ""; }
-  @media (forced-colors: active) { .selected .surface, .selected .indicator { border-color: Highlight; } }
+  @media (forced-colors: active) {
+    /* The UA strips author box-shadows; border-width survives forced colors
+       and keeps a non-color selected cue. */
+    label.selected .surface { border-width: 3px; border-color: Highlight; }
+    label.disabled .surface { color: GrayText; opacity: 1; }
+  }
 `;
 
 export class DtSelectableCardElement extends DigitaltableteurElement {
@@ -103,11 +106,6 @@ export class DtSelectableCardElement extends DigitaltableteurElement {
     surface.className = "surface";
     surface.setAttribute("part", "surface");
     surface.append(this.ownerDocument.createElement("slot"));
-    const indicator = this.ownerDocument.createElement("span");
-    indicator.className = `indicator ${input.type}`;
-    indicator.setAttribute("part", "indicator");
-    indicator.setAttribute("aria-hidden", "true");
-    surface.append(indicator);
     label.append(input, surface);
     this.replaceShadow(cardStyles, label);
   }

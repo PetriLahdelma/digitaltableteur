@@ -191,7 +191,7 @@ export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
   parameters: {
     controls: { disable: true },
-    docs: { description: { story: "Forced-colors verification: selected ring and indicator map to system Highlight." } },
+    docs: { description: { story: "Forced-colors verification: the selected ring maps to system Highlight." } },
   },
   render: () => {
     const [plan, setPlan] = useState("team");

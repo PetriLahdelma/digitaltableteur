@@ -15,7 +15,7 @@
         "marketing"
     ],
     "usage": {
-        "description": "PricingCalculator is the custom-engagement estimator on the pricing page: two single-select SelectableCardGroups (duration: 2 weeks to 12 months; workload: 2–5 days/week) recompute total hours, allocation, the tier-discounted hourly rate, and the total investment on every change. Longer commitments (6/12 months) carry a Partnership badge and the deepest rate discounts. It complements the fixed packages; it does not replace them.",
+        "description": "PricingCalculator is the custom-engagement estimator on the pricing page: two single-select SelectableCardGroups (duration: 2 weeks to 12 months; workload: up to 2-5 days/week, with short 2-week/1-month engagements offering only 4-5 days) recompute total hours, allocation, the effective hourly rate, and the total investment on every change (partnership selections add a '4th day is free' note). Only the 6/12-month partnership tiers at 4+ days/week earn the 90 EUR/h partnership rate; those selections carry Partnership badges and a distinct discounted price-card treatment. It complements the fixed packages; it does not replace them.",
         "bestPractices": [
             {
                 "guidance": true,
@@ -54,7 +54,9 @@
         "ariaRequirements": [
             "section labelled by the calculator title",
             "native fieldset/legend + radio semantics from SelectableCardGroup",
-            "CTA is a real link to /contact"
+            "CTA is a real link to /contact",
+            "visually hidden role=status region announces recomputed totals and the workload clamp",
+            "workload radios are added/removed on duration change; selection is clamped programmatically and focus is restored if the focused radio unmounts"
         ],
         "reducedMotion": true,
         "reviewed": true,
@@ -66,9 +68,28 @@
             "--color-surface",
             "--color-border-light",
             "--color-muted",
-            "--color-primary"
+            "--color-primary",
+            "--color-white",
+            "--color-title",
+            "--color-text",
+            "--logo-background",
+            "--accent-purple",
+            "--accent-yellow"
         ],
-        "spacing": []
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-16",
+            "--space-layout-24",
+            "--space-layout-32",
+            "--space-layout-48"
+        ],
+        "typography": [
+            "--font-size-text-xxl",
+            "--font-size-title-s"
+        ]
     },
     "lightDarkVerified": true,
     "props": {

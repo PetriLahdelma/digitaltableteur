@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T06:07:34.644Z",
+  "generatedAt": "2026-07-18T08:48:17.550Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -856,7 +856,8 @@
           "values": [
             "sm",
             "md",
-            "lg"
+            "lg",
+            "xs"
           ],
           "description": "Size."
         },
@@ -916,6 +917,7 @@
         },
         "size": {
           "values": [
+            "xs",
             "sm",
             "md",
             "lg"
@@ -926,6 +928,7 @@
       "cvaVariants": {
         "size": {
           "values": [
+            "xs",
             "sm",
             "md",
             "lg"
@@ -4892,9 +4895,9 @@
             "sm",
             "md",
             "lg",
+            "xs",
             "xl",
             "2xs",
-            "xs",
             "2xl"
           ],
           "description": "Tokenized or explicit pixel size."
@@ -5639,9 +5642,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xs",
             "s",
             "xl",
-            "xs",
             "xxs",
             "m",
             "l",
@@ -5704,15 +5707,15 @@
       "variants": {
         "size": {
           "values": [
+            "xs",
             "s",
             "xl",
-            "xs",
             "xxs",
             "m",
             "l",
             "xxl"
           ],
-          "default": "s"
+          "default": "xs"
         }
       },
       "cvaVariants": {},
@@ -6340,8 +6343,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
             "xs",
+            "xl",
             "xxs",
             "xxl",
             "XXS",
@@ -9088,8 +9091,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
             "xs",
+            "xl",
             "2xl"
           ],
           "description": "Tokenized gap size."
@@ -9116,8 +9119,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
             "xs",
+            "xl",
             "2xl"
           ],
           "default": "sm"
@@ -9344,9 +9347,9 @@
             "sm",
             "md",
             "lg",
+            "xs",
             "none",
-            "xl",
-            "xs"
+            "xl"
           ],
           "description": "Gap token between items."
         },
@@ -10127,9 +10130,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xs",
             "s",
             "xl",
-            "xs",
             "xxs",
             "m",
             "l",
@@ -10152,15 +10155,15 @@
       "variants": {
         "size": {
           "values": [
+            "xs",
             "s",
             "xl",
-            "xs",
             "xxs",
             "m",
             "l",
             "xxl"
           ],
-          "default": "s"
+          "default": "xs"
         }
       },
       "cvaVariants": {},
@@ -10544,8 +10547,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "s",
             "xs",
+            "s",
             "xxs",
             "m"
           ],
@@ -10595,12 +10598,12 @@
       "variants": {
         "size": {
           "values": [
-            "s",
             "xs",
+            "s",
             "xxs",
             "m"
           ],
-          "default": "s"
+          "default": "xs"
         },
         "tone": {
           "values": [
@@ -10678,9 +10681,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xs",
             "s",
             "xl",
-            "xs",
             "xxs",
             "m",
             "l",
@@ -10710,15 +10713,15 @@
       "variants": {
         "size": {
           "values": [
+            "xs",
             "s",
             "xl",
-            "xs",
             "xxs",
             "m",
             "l",
             "xxl"
           ],
-          "default": "s"
+          "default": "xs"
         }
       },
       "cvaVariants": {},
@@ -13433,7 +13436,9 @@
       "requiredA11y": [
         "section labelled by the calculator title",
         "native fieldset/legend + radio semantics from SelectableCardGroup",
-        "CTA is a real link to /contact"
+        "CTA is a real link to /contact",
+        "visually hidden role=status region announces recomputed totals and the workload clamp",
+        "workload radios are added/removed on duration change; selection is clamped programmatically and focus is restored if the focused radio unmounts"
       ],
       "keyboard": [
         "Tab",

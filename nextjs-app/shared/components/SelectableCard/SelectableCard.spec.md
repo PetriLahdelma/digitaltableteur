@@ -21,12 +21,13 @@ is one option in it.
 - Don't: use it for navigation; selecting must not commit or route on click.
 
 ## Design notes
-- Tokens: `--color-primary` (selected ring + indicator), `--color-focus-ring`
-  (focus), `--color-border` / `--color-border-light` (rest/hover), `--color-surface`;
+- Tokens: `--color-primary` (selected ring), `--color-focus-ring` (focus),
+  `--color-border` / `--color-border-light` (rest/hover);
   spacing from `--space-internal-*`. No hardcoded colors.
-- The selected state is shown by a ring on the surface plus an indicator (radio
-  dot / checkbox check) drawn in `--color-primary`, with a forced-colors mapping
-  to `Highlight`.
+- The whole card is the control: no radio/checkbox glyph is drawn. The selected
+  state is shown by a ring on the surface in `--color-primary`, with a
+  forced-colors mapping to `Highlight`. Card content centers vertically so a
+  lone title sits mid-card when grid rows stretch options to equal heights.
 - Figma: TODO (parity build; no Figma node yet).
 
 ## Promotion notes

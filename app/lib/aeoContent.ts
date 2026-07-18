@@ -5,7 +5,7 @@ export const pricingFaqs: FaqEntry[] = [
   {
     question: "How much does Digitaltableteur charge for design work?",
     answer:
-      "Productized packages start from €8,000. Scope covers design systems, UX/UI, DesignOps, and AI-ready workflows with fixed deliverables and senior delivery — not open-ended agency retainers.",
+      "Productized packages start from €7,000. Scope covers design systems, UX/UI, DesignOps, and AI-ready workflows with fixed deliverables and senior delivery — not open-ended agency retainers.",
   },
   {
     question: "What is included in a Digitaltableteur pricing package?",

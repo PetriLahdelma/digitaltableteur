@@ -1,6 +1,6 @@
 /* SelectableCard — a Card that is one selectable option. The label wraps a
-   visually-hidden native input; the Card is the visual, an indicator shows the
-   selected state, and the whole surface is the hit area. */
+   visually-hidden native input; the Card is the visual, the selected ring
+   shows the state, and the whole surface is the hit area. */
 
 /* Group (fieldset) reset + legend */
 
@@ -33,9 +33,14 @@
 
 /* Card as label */
 
+/* The label is a flex column so the Card surface fills it when a grid/flex
+   parent stretches options to equal heights — that is what lets the surface
+   center its content vertically. */
+
 .card {
-  display: block;
+  display: flex;
   position: relative;
+  flex-direction: column;
   border-radius: 12px;
   cursor: pointer;
 }
@@ -59,16 +64,23 @@
   overflow: hidden;
 }
 
-/* Surface — the Card visual. Reserve room on the trailing edge for the
-   indicator so content never sits under it. */
+/* Surface — the Card visual. The whole card IS the control (no separate
+   radio/checkbox glyph); selection reads from the ring. Content centers
+   vertically so a lone title sits mid-card when grid rows stretch. */
 
 .surface {
-  padding-inline-end: calc(var(--space-internal-24) + 20px);
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
   border-color: var(--color-border-light);
   transition: border-color 120ms ease, box-shadow 120ms ease;
 }
 
-.card:hover:not(.disabled) .surface {
+/* Hover only affects unselected cards; a selected card keeps its selected
+   look under the pointer. */
+
+.card:hover:not(.disabled, [data-selected="true"]) .surface {
   border-color: var(--color-border);
 }
 
@@ -88,79 +100,20 @@
   opacity: 0.55;
 }
 
-/* Selection indicator — outline dot (radio) or check (checkbox), always drawn
-   in --color-primary so it stays legible in every theme without a fill. */
-
-.indicator {
-  display: inline-flex;
-  position: absolute;
-  box-sizing: border-box;
-  width: 20px;
-  height: 20px;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid var(--color-border);
-  background-color: var(--color-surface);
-  transition: border-color 120ms ease;
-  inset-block-start: var(--space-internal-16);
-  inset-inline-end: var(--space-internal-16);
-}
-
-.indicator[data-type="radio"] {
-  border-radius: 50%;
-}
-
-.indicator[data-type="checkbox"] {
-  border-radius: 6px;
-}
-
-.card[data-selected="true"] .indicator {
-  border-color: var(--color-primary);
-}
-
-/* Radio: filled inner dot */
-
-.card[data-selected="true"] .indicator[data-type="radio"]::after {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--color-primary);
-  content: "";
-}
-
-/* Checkbox: check glyph drawn as two strokes in --color-primary */
-
-.card[data-selected="true"] .indicator[data-type="checkbox"]::after {
-  margin-block-start: -2px;
-  width: 5px;
-  height: 10px;
-  border: solid var(--color-primary);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  content: "";
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .surface,
-  .indicator {
+  .surface {
     transition: none;
   }
 }
 
 @media (forced-colors: active) {
+  /* The UA force-removes author box-shadows, so the selected ring cannot rely
+     on one here; border-width survives forced colors and gives the selected
+     card a non-color weight cue on top of the Highlight color. */
+
   .card[data-selected="true"] .surface {
+    border-width: 3px;
     border-color: Highlight;
-    box-shadow: inset 0 0 0 1px Highlight;
-  }
-
-  .card[data-selected="true"] .indicator {
-    border-color: Highlight;
-  }
-
-  .card[data-selected="true"] .indicator[data-type="radio"]::after,
-  .card[data-selected="true"] .indicator[data-type="checkbox"]::after {
-    border-color: Highlight;
-    background-color: Highlight;
   }
 
   .card.disabled .surface {

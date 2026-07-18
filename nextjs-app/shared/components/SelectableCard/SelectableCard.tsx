@@ -205,11 +205,6 @@ export const SelectableCard: React.FC<SelectableCardProps> = ({
       />
       <Card {...cardProps} className={styles.surface}>
         {children}
-        <span
-          className={styles.indicator}
-          data-type={inputType}
-          aria-hidden="true"
-        />
       </Card>
     </label>
   );

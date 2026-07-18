@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-07-16T21:51:38.235Z",
+  "createdAt": "2026-07-18T09:11:44.565Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -195,8 +195,8 @@
     {
       "column": 24,
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Badge/Badge.module.css\u001f132\u001f24\u001f0.125rem\u001fUnexpected off-scale value \"0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "line": 132,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/Badge/Badge.module.css\u001f139\u001f24\u001f0.125rem\u001fUnexpected off-scale value \"0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 139,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"0.125rem\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
       "type": "off-scale",
@@ -215,8 +215,8 @@
     {
       "column": 24,
       "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Badge/Badge.module.css\u001f132\u001f24\u001f0.125rem\u001fUnexpected raw scale value \"0.125rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 132,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/Badge/Badge.module.css\u001f139\u001f24\u001f0.125rem\u001fUnexpected raw scale value \"0.125rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 139,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"0.125rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -3855,42 +3855,22 @@
     {
       "column": 11,
       "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/SelectableCard/SelectableCard.module.css\u001f52\u001f11\u001f-1px\u001fUnexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "line": 52,
+      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/SelectableCard/SelectableCard.module.css\u001f57\u001f11\u001f-1px\u001fUnexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
+      "line": 57,
       "rule": "rhythmguard/use-scale",
       "text": "Unexpected off-scale value \"-1px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
       "type": "off-scale",
       "value": "-1px"
     },
     {
-      "column": 23,
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/components/SelectableCard/SelectableCard.module.css\u001f134\u001f23\u001f-2px\u001fUnexpected off-scale value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "line": 134,
-      "rule": "rhythmguard/use-scale",
-      "text": "Unexpected off-scale value \"-2px\". Use scale values (nearest: 0px or 4px). (rhythmguard/use-scale)",
-      "type": "off-scale",
-      "value": "-2px"
-    },
-    {
       "column": 11,
       "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/SelectableCard/SelectableCard.module.css\u001f52\u001f11\u001f-1px\u001fUnexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 52,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/SelectableCard/SelectableCard.module.css\u001f57\u001f11\u001f-1px\u001fUnexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 57,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
       "value": "-1px"
-    },
-    {
-      "column": 23,
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/components/SelectableCard/SelectableCard.module.css\u001f134\u001f23\u001f-2px\u001fUnexpected raw scale value \"-2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 134,
-      "rule": "rhythmguard/prefer-token",
-      "text": "Unexpected raw scale value \"-2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "type": "token-opportunity",
-      "value": "-2px"
     },
     {
       "column": 18,
@@ -5884,6 +5864,16 @@
     },
     {
       "column": 25,
+      "file": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css",
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css\u001f127\u001f25\u001f-50%\u001fUnexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 127,
+      "rule": "rhythmguard/prefer-token",
+      "text": "Unexpected raw scale value \"-50%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "type": "token-opportunity",
+      "value": "-50%"
+    },
+    {
+      "column": 25,
       "file": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css",
       "key": "rhythmguard/use-scale\u001foff-scale\u001fnextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css\u001f239\u001f25\u001f0.6em\u001fUnexpected off-scale value \"0.6em\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
       "line": 239,
@@ -7306,6 +7296,6 @@
   "formatVersion": 1,
   "summary": {
     "scaleCleanliness": 92,
-    "totalFindings": 730
+    "totalFindings": 729
   }
 }

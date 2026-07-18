@@ -8,6 +8,7 @@ export {
   STANDARD_RATE,
   computePricing,
   getDurationOption,
+  getWorkloadOptions,
 } from "./pricingMath";
 export type {
   DurationId,
