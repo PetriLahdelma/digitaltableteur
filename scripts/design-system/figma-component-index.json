@@ -456,6 +456,26 @@
       "name": "PhoneInput",
       "type": "COMPONENT",
       "page": "Atoms"
+    },
+    "1429-2346": {
+      "name": "CategoryFilter",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1430-2164": {
+      "name": "LanguageSwitcher",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1430-2182": {
+      "name": "Pagination",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1430-2200": {
+      "name": "SiteTree",
+      "type": "COMPONENT",
+      "page": "Atoms"
     }
   }
 }
