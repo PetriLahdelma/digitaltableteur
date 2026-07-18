@@ -4,7 +4,7 @@
     "name": "PricingCalculator",
     "tier": "pattern",
     "group": "marketing",
-    "status": "beta",
+    "status": "stable",
     "description": "Interactive duration × workload pricing calculator for the pricing page.",
     "dense": "Pricing calculator section: duration and workload SelectableCard groups drive a live summary (allocation, hours, effective rate, total investment) with a booking CTA.",
     "keywords": [
@@ -60,8 +60,10 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-18 — Initial beta: native radio groups via SelectableCardGroup (keyboard + AT from the platform), axe assertion in unit tests, ForcedColors story added.",
-        "forcedColorsVerified": true
+        "reviewedNote": "2026-07-18 — Initial beta: native radio groups via SelectableCardGroup (keyboard + AT from the platform), axe assertion in unit tests, ForcedColors story added. 2026-07-18 — Promoted to stable: 4-mode AT snapshots recaptured via the story runner, forced-colors compare pass and controls audit green, 6 production consumers on the pricing page chain.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -107,5 +109,36 @@
         "use for fixed-scope package pricing",
         "duplicate the pricing model outside pricingMath.ts"
     ],
-    "consumers": []
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "since": "2026-06-04"
+        }
+    ]
 }

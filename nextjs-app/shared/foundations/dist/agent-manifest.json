@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-18T09:04:56.000Z",
+  "generatedAt": "2026-07-18T12:49:17.909Z",
   "summary": {
     "componentCount": 164,
     "statusCounts": {
-      "beta": 45,
-      "stable": 97,
+      "beta": 44,
+      "stable": 98,
       "alpha": 21,
       "deprecated": 1
     },
@@ -20,7 +20,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 97,
+    "stableCount": 98,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -107,8 +107,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 45,
-        "stable": 97,
+        "beta": 44,
+        "stable": 98,
         "alpha": 21,
         "deprecated": 1
       },
@@ -41427,7 +41427,7 @@
         "name": "PricingCalculator",
         "tier": "pattern",
         "group": "marketing",
-        "status": "beta",
+        "status": "stable",
         "description": "Interactive duration × workload pricing calculator for the pricing page.",
         "dense": "Pricing calculator section: duration and workload SelectableCard groups drive a live summary (allocation, hours, effective rate, total investment) with a booking CTA.",
         "keywords": [
@@ -41483,8 +41483,10 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-18 — Initial beta: native radio groups via SelectableCardGroup (keyboard + AT from the platform), axe assertion in unit tests, ForcedColors story added.",
-          "forcedColorsVerified": true
+          "reviewedNote": "2026-07-18 — Initial beta: native radio groups via SelectableCardGroup (keyboard + AT from the platform), axe assertion in unit tests, ForcedColors story added. 2026-07-18 — Promoted to stable: 4-mode AT snapshots recaptured via the story runner, forced-colors compare pass and controls audit green, 6 production consumers on the pricing page chain.",
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -41530,7 +41532,38 @@
           "use for fixed-scope package pricing",
           "duplicate the pricing model outside pricingMath.ts"
         ],
-        "consumers": []
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
+            "since": "2026-06-04"
+          }
+        ]
       },
       "spec": "# PricingCalculator\n\n## Intent\nInteractive duration × workload pricing calculator for the pricing page: two\nselectable option groups drive a live summary of total hours, allocation,\neffective hourly rate, and total investment, closing with a booking CTA.\n\n## Pricing model\n- Standard rate 120 €/h, 7.5 hours/day (owner-approved 2026-07-18).\n- Weeks per duration: 2 weeks = 2; months × 52/12 otherwise.\n- Only the 6/12-month partnership tiers discount, at a flat 90 €/h (−25%),\n  and only at a partnership workload of 4+ days/week; every other combination\n  is standard rate. The partnership tiers carry the Partnership badge\n  (straddling the card's top edge, pointer-events none so it never blocks\n  selections).\n- Total investment = round(weeks × days × 7.5) × effective rate; partnership\n  selections show \"Partnership pricing: 1 day per week is free.\" under the total\n  (the −25% rate exactly cancels the 3→4 day step, so a savings-amount claim\n  would not survive comparison against the 3-day configuration).\n- Short engagements (2 weeks / 1 month) only offer 4–5 days/week; switching to\n  them clamps a lighter selection up to 4 days.\n- Defaults: 2 weeks × 5 days/week (≈ €9,000 — first figure stays credible\n  against the page's \"from €7k\" floor).\n- Model lives in `pricingMath.ts`; the component only renders its output.\n\n## Interaction contract\n- Keyboard: Tab into each group; Arrow keys/Space change the native radio\n  selection (SelectableCardGroup); Enter activates the CTA link\n- Pointer: whole option cards are labels for their radios\n- Screen readers: fieldset/legend names each group; a visually hidden\n  `role=\"status\"` region announces the recomputed hours/rate/total (and\n  savings) politely on every selection change, including the workload clamp\n- Focus: if the focused workload radio unmounts with the short-duration clamp,\n  focus is restored to the newly checked workload radio\n- The partnership pricing rule is stated in visible copy under the price card;\n  the CTA carries the configured duration/days as query params\n\n## Do / don't\n- Do: keep all price maths in `pricingMath.ts`\n- Do: format totals via `Intl.NumberFormat` on the active language\n- Don't: use for fixed-scope package pricing (packages section owns that)\n- Don't: duplicate the pricing model in other components\n\n## Design notes\n- Tokens: `--color-surface`, `--color-border-light`, `--color-muted`,\n  `--color-primary`, layout/internal space tokens, text/title size tokens\n- Figma: none yet (code-first pattern, 2026-07-18)\n",
       "documentationDebt": false,
