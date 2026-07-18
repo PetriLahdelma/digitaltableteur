@@ -54,6 +54,9 @@ const walk = (dir) => {
 };
 walk(join(ROOT, "nextjs-app", "shared", "components"));
 walk(join(ROOT, "nextjs-app", "shared", "patterns"));
+// templates/ was a blind spot until 2026-07-18: NextLayoutShell's beta
+// placeholder sat invisible to the ratchet (found during the full backfill).
+walk(join(ROOT, "nextjs-app", "shared", "templates"));
 
 // validate-components.ts requires a figma URL for BOTH beta and stable, so both
 // tiers are guardrailed here — a beta placeholder (e.g. Tooltip -> dt-tooltip)

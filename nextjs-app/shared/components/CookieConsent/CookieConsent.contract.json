@@ -5,7 +5,7 @@
     "group": "chrome",
     "status": "beta",
     "description": "GDPR cookie consent modal and banner wired to site providers.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-cookie-consent",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1442-2248",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

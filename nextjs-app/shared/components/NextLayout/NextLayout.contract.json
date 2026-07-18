@@ -5,7 +5,7 @@
     "group": "chrome",
     "status": "beta",
     "description": "Production app shell: header, main landmark, footer, chat, consent.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-next-layout",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1442-2362",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
