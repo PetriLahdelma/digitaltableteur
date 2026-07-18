@@ -104,7 +104,12 @@ if (nativeElements.length === 0) {
   throw new Error(`No native component matches ${componentFilter}`);
 }
 
-const indexResponse = await fetch(`${baseUrl}/index.json`);
+// Bounded: after the wc story sweep the shared dev server can be wedged
+// (accepted socket, no response); an untimed fetch here turned that into an
+// infinite CI hang (2026-07-18 publish runs). Fail loudly instead.
+const indexResponse = await fetch(`${baseUrl}/index.json`, {
+  signal: AbortSignal.timeout(60_000),
+});
 if (!indexResponse.ok) {
   throw new Error(
     `Unable to read Storybook index (${indexResponse.status} ${indexResponse.statusText})`,
