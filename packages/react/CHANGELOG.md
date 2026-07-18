@@ -24,7 +24,9 @@
 - Corrects the Modal destructive-confirmation example to use `severity="error"`
   so its border and semantic icon agree with the error-toned destructive
   action; the Modal runtime severity API is unchanged.
-- Runtime public API grows additively from 126 to 128 exports; no existing
+- Exposes the `ListItem` presentational row primitive (introduced with the
+  native `dt-list-item` twin) from the root and content-family entrypoints.
+- Runtime public API grows additively from 126 to 129 exports; no existing
   component API changes.
 
 ## 0.1.16 - 2026-07-16
