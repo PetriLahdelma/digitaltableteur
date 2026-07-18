@@ -16,7 +16,7 @@
     "usage": {
         "description": "HeroSection is the layout shell under heroes: a full-bleed section with min-height, align/justify, and background/backgroundImage variants, rendering whatever children you pass (HomeHero builds on it). Use it when a bespoke hero needs the shell but not Hero's fixed content model. Pass ariaLabel when the section needs its own landmark name."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-hero-section",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1434-139",
     "radixPrimitive": null,
     "element": "div",
     "variants": {

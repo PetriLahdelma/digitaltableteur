@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-18T15:53:47.165Z",
+  "generatedAt": "2026-07-18T16:00:33.728Z",
   "summary": {
     "componentCount": 164,
     "statusCounts": {
@@ -37797,7 +37797,7 @@
         "usage": {
           "description": "ContactHero opens a contact page with a headline and supporting copy; compact tightens vertical rhythm for shorter pages. Copy arrives via props (title, subtitle), so route-level i18n stays in the page component. The current editorial contact layout owns its own heading, so check ContactPageContentEditorial before reaching for this."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-contact-hero",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1435-135",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -39605,7 +39605,7 @@
         "usage": {
           "description": "HeroSection is the layout shell under heroes: a full-bleed section with min-height, align/justify, and background/backgroundImage variants, rendering whatever children you pass (HomeHero builds on it). Use it when a bespoke hero needs the shell but not Hero's fixed content model. Pass ariaLabel when the section needs its own landmark name."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-hero-section",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1434-139",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -40256,7 +40256,7 @@
         "usage": {
           "description": "HighlightSection is the emphasized marketing band: overline, title, description, and a CTA slot over stronger visual variants and sm/md/lg sizes. The homepage uses it for the featured message between section bands. Use CTASection when the band's whole job is the closing call to action; HighlightSection is for mid-page emphasis."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-highlight-section",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1434-312",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -40553,7 +40553,7 @@
         "usage": {
           "description": "HomeHero is the bespoke landing hero for the homepage: a kinetic headline randomized per visit, background treatment, and a primary CTA that scrolls to scrollTargetId. Copy and variants live inside the component by design; it is not a configurable hero. For prop-driven heroes on other routes use Hero, or HeroSection for a bare shell."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-home-hero",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1435-131",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -41819,7 +41819,7 @@
         "usage": {
           "description": "ProcessBlock presents a project's process as titled phase cards in a grid, under an optional section title and description. Work case-study pages use it to walk through discovery-to-delivery phases between StoryBlock sections. Phases are data props, so pages keep copy colocated with the page."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-process-block",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1435-160",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -44680,7 +44680,7 @@
         "usage": {
           "description": "StoryBlock is the workhorse narrative section of Work case studies: a subtitle/title pair, rich text content, and images arranged by imageLayout, over background and spacing knobs. Chain several StoryBlocks (with GridBlock mosaics and ProcessBlock) to build a project page's spine."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-story-block",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1435-143",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},

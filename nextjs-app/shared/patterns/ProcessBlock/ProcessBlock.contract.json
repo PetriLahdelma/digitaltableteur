@@ -16,7 +16,7 @@
     "usage": {
         "description": "ProcessBlock presents a project's process as titled phase cards in a grid, under an optional section title and description. Work case-study pages use it to walk through discovery-to-delivery phases between StoryBlock sections. Phases are data props, so pages keep copy colocated with the page."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-process-block",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1435-160",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

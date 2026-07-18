@@ -16,7 +16,7 @@
     "usage": {
         "description": "HighlightSection is the emphasized marketing band: overline, title, description, and a CTA slot over stronger visual variants and sm/md/lg sizes. The homepage uses it for the featured message between section bands. Use CTASection when the band's whole job is the closing call to action; HighlightSection is for mid-page emphasis."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-highlight-section",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1434-312",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
