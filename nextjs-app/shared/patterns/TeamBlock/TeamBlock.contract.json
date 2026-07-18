@@ -16,7 +16,7 @@
     "usage": {
         "description": "TeamBlock renders a team/people grid: member cards with photo, name, and role, plus roundImages, column, and spacing knobs, under an optional section title and description. Work case studies use it to credit project teams; AboutPageContent has its own team treatment."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-team-block",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1437-264",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

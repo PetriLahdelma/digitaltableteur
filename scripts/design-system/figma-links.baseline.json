@@ -1,4 +1,4 @@
 {
-  "stablePlaceholderCeiling": 41,
-  "note": "Ratchet for BETA and STABLE contracts whose figma link does not resolve to a real component in figma-component-index.json. Tightened 47 -> 41 on 2026-07-18 (full-backfill program, batch wiring HeroSection, HighlightSection, HomeHero, ContactHero, StoryBlock, ProcessBlock). Lower this in the PR that wires a real component. See docs/design-system/figma-parity-audit.md"
+  "stablePlaceholderCeiling": 34,
+  "note": "Ratchet for BETA and STABLE contracts whose figma link does not resolve to a real component in figma-component-index.json. Tightened 41 -> 34 on 2026-07-18 (full-backfill program, batch wiring AboutPageContent, ContactPageContentEditorial, ContactInquiryPanel, DesignSprintsSection, ServicesBlock, ServicesSection, TeamBlock). Lower this in the PR that wires a real component. See docs/design-system/figma-parity-audit.md"
 }

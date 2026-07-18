@@ -16,7 +16,7 @@
     "usage": {
         "description": "AboutPageContent assembles the entire About page body: narrative sections, values, and team highlights, with an optional closing CTA band (showCTA). Copy comes from i18n, not props. Mount it once per /about route inside the page shell; compose atoms directly for one-off content sections elsewhere."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-about-page-content",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1436-166",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

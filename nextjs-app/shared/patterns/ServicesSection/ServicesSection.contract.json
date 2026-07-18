@@ -16,7 +16,7 @@
     "usage": {
         "description": "ServicesSection is the homepage services grid: icon-led service cards with title/description copy, configurable columns and card variant. It anchors into the homepage band flow (id, donnyTarget) alongside HomeHero, WorkMagneticField, and CTASection. For a case-study scope summary use ServicesBlock instead."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-services-section",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1437-246",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
