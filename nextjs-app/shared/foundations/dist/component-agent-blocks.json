@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T14:13:09.993Z",
+  "generatedAt": "2026-07-18T06:07:34.644Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -13407,6 +13407,57 @@
       "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 11
+    },
+    "PricingCalculator": {
+      "preferredImport": "@dt/PricingCalculator",
+      "intent": "Interactive duration × workload pricing calculator for the pricing page: two selectable option groups drive a live summary of total hours, allocation, effective hourly rate, and total investment, closing with a booking …",
+      "props": {
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Optional wrapper class."
+        }
+      },
+      "propRelationships": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "keep all price maths in `pricingMath.ts`",
+        "format totals via `Intl.NumberFormat` on the active language"
+      ],
+      "avoidWhen": [
+        "use for fixed-scope package pricing (packages section owns that)",
+        "duplicate the pricing model in other components"
+      ],
+      "requiredA11y": [
+        "section labelled by the calculator title",
+        "native fieldset/legend + radio semantics from SelectableCardGroup",
+        "CTA is a real link to /contact"
+      ],
+      "keyboard": [
+        "Tab",
+        "Arrow keys",
+        "Space",
+        "Enter"
+      ],
+      "compositionRules": [
+        "duplicate the pricing model in other components"
+      ],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "use for fixed-scope package pricing (packages section owns that)",
+        "duplicate the pricing model in other components"
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 1
     },
     "PricingPageContent": {
       "preferredImport": "@dt/PricingPageContent",

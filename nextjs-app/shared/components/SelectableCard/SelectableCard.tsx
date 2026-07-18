@@ -184,7 +184,7 @@ export const SelectableCard: React.FC<SelectableCardProps> = ({
 
   return (
     <label
-      className={[styles.card, isDisabled ? styles.disabled : ""]
+      className={[styles.card, isDisabled ? styles.disabled : "", className]
         .filter(Boolean)
         .join(" ")}
       data-selected={checked ? "true" : "false"}

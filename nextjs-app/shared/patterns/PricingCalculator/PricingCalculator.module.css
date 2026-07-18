@@ -1,0 +1,178 @@
+/* PricingCalculator — duration × workload → total investment.
+   Two-column section: selection controls on the left, live summary on the
+   right; collapses to a single column below the content breakpoint. */
+
+.calculator {
+  display: grid;
+  padding: var(--space-layout-24);
+  grid-template-columns: 1fr;
+  gap: var(--space-layout-32);
+  border: 1px solid var(--color-border-light);
+  border-radius: 16px;
+  background-color: var(--color-surface);
+}
+
+@media (width >= 900px) {
+  .calculator {
+    padding: var(--space-layout-32);
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--space-layout-48);
+  }
+}
+
+/* Left column — controls */
+
+.controls {
+  display: flex;
+  min-inline-size: 0;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+}
+
+.title {
+  max-inline-size: 24ch;
+}
+
+/* Option groups: two columns of equal cards. The group renders a fieldset
+   with an options wrapper div; the layout lives here (not on the cards) so it
+   also holds for the registry-published SelectableCard, which drops per-card
+   className until the next @digitaltableteur/react release. */
+
+.optionGroup {
+  inline-size: 100%;
+}
+
+.optionGroup > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.optionContent {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: var(--space-internal-8);
+}
+
+.optionAmount {
+  font-weight: 600;
+}
+
+.optionUnit {
+  color: var(--color-muted);
+}
+
+.partnershipBadge {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: calc(-1 * var(--space-internal-8));
+  inset-inline-end: var(--space-internal-12);
+}
+
+/* Meta cards under the controls */
+
+.metaRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-internal-12);
+}
+
+@media (width >= 600px) {
+  .metaRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.metaCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-internal-8);
+}
+
+.metaHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-internal-8);
+}
+
+.metaLabel {
+  color: var(--color-muted);
+}
+
+.metaValue {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.metaFootnote {
+  color: var(--color-muted);
+}
+
+.metaLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-internal-8);
+}
+
+.metaFigure {
+  font-weight: 600;
+}
+
+/* Right column — summary */
+
+.summary {
+  display: flex;
+  min-inline-size: 0;
+  flex-direction: column;
+  gap: var(--space-layout-16);
+}
+
+.includedTitle {
+  margin-block-end: var(--space-internal-12);
+  font-weight: 600;
+}
+
+.includedList {
+  color: var(--color-muted);
+}
+
+.priceCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-8);
+}
+
+.priceLabel {
+  color: var(--color-muted);
+}
+
+.priceValue {
+  font-size: var(--font-size-text-xxl);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.totalCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-internal-12);
+  flex-flow: row wrap;
+}
+
+.totalLabel {
+  font-weight: 600;
+}
+
+.totalValue {
+  font-size: var(--font-size-title-s);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.cta {
+  inline-size: 100%;
+}

@@ -1356,5 +1356,26 @@
     "moreOptions": "Lisää vaihtoehtoja"
   },
   "mermaidErrorTitle": "Kaaviovirhe",
-  "storyCheckboxGroupMasterLabel": "Valitse kaikki"
+  "storyCheckboxGroupMasterLabel": "Valitse kaikki",
+  "pricingCalcTitle": "Säädä kestoa ja työmäärää, niin näet kokonaisinvestointisi.",
+  "pricingCalcDurationLegend": "Kesto",
+  "pricingCalcWorkloadLegend": "Työmäärä",
+  "pricingCalcUnitWeeks": "viikkoa",
+  "pricingCalcUnitMonth": "kuukausi",
+  "pricingCalcUnitMonths": "kuukautta",
+  "pricingCalcUnitDaysPerWeek": "päivää/vko",
+  "pricingCalcPartnershipBadge": "Kumppanuus",
+  "pricingCalcAllocationLabel": "Allokaatio",
+  "pricingCalcAllocationBasis": "Perustuu: {{days}} päivää/vko × {{hours}} tuntia/päivä",
+  "pricingCalcTotalHoursLabel": "Tunnit yhteensä:",
+  "pricingCalcStandardRateLabel": "Normaalihinta:",
+  "pricingCalcRatePerHour": "{{rate}} €/tunti",
+  "pricingCalcIncludedTitle": "Mitä investointisi sisältää:",
+  "pricingCalcIncludedDuration": "{{duration}} kestävä designkumppanuus",
+  "pricingCalcIncludedWorkload": "Omistettu designasiantuntemus {{days}} päivänä viikossa",
+  "pricingCalcIncludedProcess": "Kattava design-prosessi ja toimitukset alusta loppuun",
+  "pricingCalcIncludedCollaboration": "Suora yhteistyö ja strateginen designohjaus",
+  "pricingCalcYourPriceLabel": "Hintasi",
+  "pricingCalcTotalInvestmentLabel": "Kokonaisinvestointi:",
+  "pricingCalcCta": "Ota yhteyttä"
 }

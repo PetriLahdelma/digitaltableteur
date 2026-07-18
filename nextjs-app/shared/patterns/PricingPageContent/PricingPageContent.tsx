@@ -5,6 +5,7 @@ import { useId, useState } from "react";
 import { useTranslate } from "../../lib/translation";
 import { cn } from "../../lib/cn";
 import { Button, Icon, Text, Title } from "@digitaltableteur/react";
+import { PricingCalculator } from "../PricingCalculator";
 import styles from "./PricingPageContent.module.css";
 
 const PRICING_HERO_IMAGE = "/images/pricing/dsharp3-hero.png";
@@ -475,6 +476,13 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
                 ))}
               </ul>
             </div>
+          </div>
+
+          <div
+            className={styles.calculatorSection}
+            data-donny-target="pricing.calculator"
+          >
+            <PricingCalculator />
           </div>
 
           <div className={styles.ctaRow}>
