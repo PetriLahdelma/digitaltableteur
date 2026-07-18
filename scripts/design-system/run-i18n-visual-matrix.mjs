@@ -199,7 +199,9 @@ async function main() {
           assert(page.url().endsWith("/work"), "SiteHeader Work link routes to /work");
 
           await gotoAndStabilize(page, "/work/helsinki-design-system");
-          const workBack = tr(language, "projectBackToWork");
+          // Work detail routes render WorkNav (via NextWorkNav) since #1228;
+          // its back control is labeled workNavBackToWork.
+          const workBack = tr(language, "workNavBackToWork");
           assert(
             (await page.getByRole("button", { name: textPattern(workBack) }).count()) > 0,
             `WorkNav back label is localized: ${workBack}`,
