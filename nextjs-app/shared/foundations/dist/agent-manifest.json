@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-18T06:07:34.935Z",
+  "generatedAt": "2026-07-18T09:04:56.000Z",
   "summary": {
     "componentCount": 164,
     "statusCounts": {
@@ -2827,6 +2827,7 @@
           },
           "size": {
             "values": [
+              "xs",
               "sm",
               "md",
               "lg"
@@ -2890,6 +2891,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoClusterBadges.tsx",
             "since": "2026-06-04"
           },
@@ -2916,16 +2927,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -3084,7 +3085,7 @@
           }
         }
       },
-      "spec": "# Badge\n\n## Intent\nCarry a compact piece of status or category meaning. Badge is the display atom\nfor \"one short label, optionally coloured by tone, and sometimes removable.\"\nTwo orthogonal axes: `variant` (visual weight — filled vs outlined) and `tone`\n(semantic colour — neutral / error / warning / success / info).\n\n## Interaction contract\n- Keyboard: none on the badge itself; the embedded remove button (when\n  `removable`) is a real Button (Enter / Space activate it, with press feedback).\n- Pointer: hover on the remove button shows a tonal highlight; click dismisses\n  and calls `onRemove`.\n- Screen readers: silent by default. With `role=\"status\"` the badge becomes a\n  polite live region and announces text changes.\n\n## Do / don't\n- Do: use `variant=\"primary\"` for filled, emphasis-bearing tags and\n  `\"secondary\"` for outlined/tonal tags (categories, filters).\n- Do: set `tone` for semantic colour; a matching icon is supplied automatically\n  for non-neutral tones.\n- Do: pass `role=\"status\"` only when the content actually changes at runtime.\n- Don't: rely on colour alone to convey tone — pair it with the icon or include\n  the state word in the text.\n- Don't: nest a Button inside a Badge beyond the built-in removable affordance.\n\n## Design notes\n- Colour: filled (`variant=\"primary\"`) tones fill with `--color-success` /\n  `--color-info` / `--color-error` / `--color-warning-contrast` (or\n  `--color-neutral-bg`) and white text; outlined (`secondary`) tones apply the\n  same colour to border and text over a transparent background.\n- Size: `sm | md | lg` adjust padding and font-size; pill radius (999px) by\n  default, squared via `square`.\n- Motion: the badge is static; the removable close button inherits Button's\n  tokenized press feedback plus a tonal hover, suppressed under\n  `prefers-reduced-motion`.\n- Translation: the remove button label is `t(\"badgeRemove\")` (EN / FI / SV).\n",
+      "spec": "# Badge\n\n## Intent\nCarry a compact piece of status or category meaning. Badge is the display atom\nfor \"one short label, optionally coloured by tone, and sometimes removable.\"\nTwo orthogonal axes: `variant` (visual weight — filled vs outlined) and `tone`\n(semantic colour — neutral / error / warning / success / info).\n\n## Interaction contract\n- Keyboard: none on the badge itself; the embedded remove button (when\n  `removable`) is a real Button (Enter / Space activate it, with press feedback).\n- Pointer: hover on the remove button shows a tonal highlight; click dismisses\n  and calls `onRemove`.\n- Screen readers: silent by default. With `role=\"status\"` the badge becomes a\n  polite live region and announces text changes.\n\n## Do / don't\n- Do: use `variant=\"primary\"` for filled, emphasis-bearing tags and\n  `\"secondary\"` for outlined/tonal tags (categories, filters).\n- Do: set `tone` for semantic colour; a matching icon is supplied automatically\n  for non-neutral tones.\n- Do: pass `role=\"status\"` only when the content actually changes at runtime.\n- Don't: rely on colour alone to convey tone — pair it with the icon or include\n  the state word in the text.\n- Don't: nest a Button inside a Badge beyond the built-in removable affordance.\n\n## Design notes\n- Colour: filled (`variant=\"primary\"`) tones fill with `--color-success` /\n  `--color-info` / `--color-error` / `--color-warning-contrast` (or\n  `--color-neutral-bg`) and white text; outlined (`secondary`) tones apply the\n  same colour to border and text over a transparent background.\n- Size: `xs | sm | md | lg` (24/32/40/56px) adjust padding and font-size; pill radius (999px) by\n  default, squared via `square`.\n- Motion: the badge is static; the removable close button inherits Button's\n  tokenized press feedback plus a tonal hover, suppressed under\n  `prefers-reduced-motion`.\n- Translation: the remove button label is `t(\"badgeRemove\")` (EN / FI / SV).\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Badge",
@@ -3202,7 +3203,8 @@
             "values": [
               "sm",
               "md",
-              "lg"
+              "lg",
+              "xs"
             ],
             "description": "Size."
           },
@@ -3262,6 +3264,7 @@
           },
           "size": {
             "values": [
+              "xs",
               "sm",
               "md",
               "lg"
@@ -3272,6 +3275,7 @@
         "cvaVariants": {
           "size": {
             "values": [
+              "xs",
               "sm",
               "md",
               "lg"
@@ -5428,6 +5432,16 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
             "since": "2026-06-04"
           },
@@ -5439,6 +5453,26 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -15136,22 +15170,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -15799,9 +15833,9 @@
               "sm",
               "md",
               "lg",
+              "xs",
               "xl",
               "2xs",
-              "xs",
               "2xl"
             ],
             "description": "Tokenized or explicit pixel size."
@@ -18104,6 +18138,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/index.ts",
             "since": "2026-06-04"
           },
@@ -18130,16 +18174,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -18355,9 +18389,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "xs",
               "s",
               "xl",
-              "xs",
               "xxs",
               "m",
               "l",
@@ -18420,15 +18454,15 @@
         "variants": {
           "size": {
             "values": [
+              "xs",
               "s",
               "xl",
-              "xs",
               "xxs",
               "m",
               "l",
               "xxl"
             ],
-            "default": "s"
+            "default": "xs"
           }
         },
         "cvaVariants": {},
@@ -20638,8 +20672,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
               "xs",
+              "xl",
               "xxs",
               "xxl",
               "XXS",
@@ -26679,13 +26713,11 @@
             "--color-focus-ring",
             "--color-border",
             "--color-border-light",
-            "--color-surface"
+            "--color-title"
           ],
           "spacing": [
             "--space-internal-8",
-            "--space-internal-12",
-            "--space-internal-16",
-            "--space-internal-24"
+            "--space-internal-12"
           ]
         },
         "lightDarkVerified": true,
@@ -26752,7 +26784,7 @@
           ]
         }
       },
-      "spec": "# SelectableCard\n\n## Intent\nTurn a Card into a selectable option so a set of rich choices (plan pickers,\nonboarding options, add-ons, settings tiles) reads as cards rather than bare\nradios or checkboxes. `SelectableCardGroup` owns the selection; `SelectableCard`\nis one option in it.\n\n## Interaction contract\n- Keyboard: Tab moves focus into the group; Arrow keys move within a single-select\n  set (native radio behavior); Space toggles the focused option.\n- Pointer: the whole card is the hit area — clicking anywhere toggles the option.\n- Screen readers: the group is a fieldset announced by its legend; each option is\n  a native radio (single) or checkbox (multiple) whose accessible name is the\n  card content; errors announce via role=alert and set aria-invalid on the group.\n\n## Do / don't\n- Do: write the legend as the question; keep each card's title short and scannable.\n- Do: use `type=\"single\"` for an exclusive choice, `type=\"multiple\"` for add-ons.\n- Don't: nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.\n- Don't: use it for navigation; selecting must not commit or route on click.\n\n## Design notes\n- Tokens: `--color-primary` (selected ring + indicator), `--color-focus-ring`\n  (focus), `--color-border` / `--color-border-light` (rest/hover), `--color-surface`;\n  spacing from `--space-internal-*`. No hardcoded colors.\n- The selected state is shown by a ring on the surface plus an indicator (radio\n  dot / checkbox check) drawn in `--color-primary`, with a forced-colors mapping\n  to `Highlight`.\n- Figma: TODO (parity build; no Figma node yet).\n\n## Promotion notes\nParity build (Astryx `SelectableCard`). Ships at alpha with the WIP badge. Do not\npromote past alpha/beta without a documented production consumer, AT snapshots,\nand forced-colors + light/dark verification.\n",
+      "spec": "# SelectableCard\n\n## Intent\nTurn a Card into a selectable option so a set of rich choices (plan pickers,\nonboarding options, add-ons, settings tiles) reads as cards rather than bare\nradios or checkboxes. `SelectableCardGroup` owns the selection; `SelectableCard`\nis one option in it.\n\n## Interaction contract\n- Keyboard: Tab moves focus into the group; Arrow keys move within a single-select\n  set (native radio behavior); Space toggles the focused option.\n- Pointer: the whole card is the hit area — clicking anywhere toggles the option.\n- Screen readers: the group is a fieldset announced by its legend; each option is\n  a native radio (single) or checkbox (multiple) whose accessible name is the\n  card content; errors announce via role=alert and set aria-invalid on the group.\n\n## Do / don't\n- Do: write the legend as the question; keep each card's title short and scannable.\n- Do: use `type=\"single\"` for an exclusive choice, `type=\"multiple\"` for add-ons.\n- Don't: nest interactive controls (buttons, links) inside a SelectableCard; the whole card is a label wrapping the input, so nested controls steal the click. Use a plain Card for action cards.\n- Don't: use it for navigation; selecting must not commit or route on click.\n\n## Design notes\n- Tokens: `--color-primary` (selected ring), `--color-focus-ring` (focus),\n  `--color-border` / `--color-border-light` (rest/hover);\n  spacing from `--space-internal-*`. No hardcoded colors.\n- The whole card is the control: no radio/checkbox glyph is drawn. The selected\n  state is shown by a ring on the surface in `--color-primary`, with a\n  forced-colors mapping to `Highlight`. Card content centers vertically so a\n  lone title sits mid-card when grid rows stretch options to equal heights.\n- Figma: TODO (parity build; no Figma node yet).\n\n## Promotion notes\nParity build (Astryx `SelectableCard`). Ships at alpha with the WIP badge. Do not\npromote past alpha/beta without a documented production consumer, AT snapshots,\nand forced-colors + light/dark verification.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/SelectableCard",
@@ -27569,6 +27601,16 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
             "since": "2026-06-04"
           },
@@ -27580,6 +27622,26 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -28680,8 +28742,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
               "xs",
+              "xl",
               "2xl"
             ],
             "description": "Tokenized gap size."
@@ -28708,8 +28770,8 @@
               "sm",
               "md",
               "lg",
-              "xl",
               "xs",
+              "xl",
               "2xl"
             ],
             "default": "sm"
@@ -29847,9 +29909,9 @@
               "sm",
               "md",
               "lg",
+              "xs",
               "none",
-              "xl",
-              "xs"
+              "xl"
             ],
             "description": "Gap token between items."
           },
@@ -30326,6 +30388,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoClusterBadges.tsx",
             "since": "2026-06-04"
           },
@@ -30352,16 +30424,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -31948,9 +32010,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "xs",
               "s",
               "xl",
-              "xs",
               "xxs",
               "m",
               "l",
@@ -31973,15 +32035,15 @@
         "variants": {
           "size": {
             "values": [
+              "xs",
               "s",
               "xl",
-              "xs",
               "xxs",
               "m",
               "l",
               "xxl"
             ],
-            "default": "s"
+            "default": "xs"
           }
         },
         "cvaVariants": {},
@@ -33349,8 +33411,8 @@
             "optional": true,
             "type": "union",
             "values": [
-              "s",
               "xs",
+              "s",
               "xxs",
               "m"
             ],
@@ -33400,12 +33462,12 @@
         "variants": {
           "size": {
             "values": [
-              "s",
               "xs",
+              "s",
               "xxs",
               "m"
             ],
-            "default": "s"
+            "default": "xs"
           },
           "tone": {
             "values": [
@@ -33809,9 +33871,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "xs",
               "s",
               "xl",
-              "xs",
               "xxs",
               "m",
               "l",
@@ -33841,15 +33903,15 @@
         "variants": {
           "size": {
             "values": [
+              "xs",
               "s",
               "xl",
-              "xs",
               "xxs",
               "m",
               "l",
               "xxl"
             ],
-            "default": "s"
+            "default": "xs"
           }
         },
         "cvaVariants": {},
@@ -41376,7 +41438,7 @@
           "marketing"
         ],
         "usage": {
-          "description": "PricingCalculator is the custom-engagement estimator on the pricing page: two single-select SelectableCardGroups (duration: 2 weeks to 12 months; workload: 2–5 days/week) recompute total hours, allocation, the tier-discounted hourly rate, and the total investment on every change. Longer commitments (6/12 months) carry a Partnership badge and the deepest rate discounts. It complements the fixed packages; it does not replace them.",
+          "description": "PricingCalculator is the custom-engagement estimator on the pricing page: two single-select SelectableCardGroups (duration: 2 weeks to 12 months; workload: up to 2-5 days/week, with short 2-week/1-month engagements offering only 4-5 days) recompute total hours, allocation, the effective hourly rate, and the total investment on every change (partnership selections add a '4th day is free' note). Only the 6/12-month partnership tiers at 4+ days/week earn the 90 EUR/h partnership rate; those selections carry Partnership badges and a distinct discounted price-card treatment. It complements the fixed packages; it does not replace them.",
           "bestPractices": [
             {
               "guidance": true,
@@ -41415,7 +41477,9 @@
           "ariaRequirements": [
             "section labelled by the calculator title",
             "native fieldset/legend + radio semantics from SelectableCardGroup",
-            "CTA is a real link to /contact"
+            "CTA is a real link to /contact",
+            "visually hidden role=status region announces recomputed totals and the workload clamp",
+            "workload radios are added/removed on duration change; selection is clamped programmatically and focus is restored if the focused radio unmounts"
           ],
           "reducedMotion": true,
           "reviewed": true,
@@ -41427,9 +41491,28 @@
             "--color-surface",
             "--color-border-light",
             "--color-muted",
-            "--color-primary"
+            "--color-primary",
+            "--color-white",
+            "--color-title",
+            "--color-text",
+            "--logo-background",
+            "--accent-purple",
+            "--accent-yellow"
           ],
-          "spacing": []
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-16",
+            "--space-layout-24",
+            "--space-layout-32",
+            "--space-layout-48"
+          ],
+          "typography": [
+            "--font-size-text-xxl",
+            "--font-size-title-s"
+          ]
         },
         "lightDarkVerified": true,
         "props": {
@@ -41447,15 +41530,9 @@
           "use for fixed-scope package pricing",
           "duplicate the pricing model outside pricingMath.ts"
         ],
-        "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
-            "since": "2026-07-18"
-          }
-        ]
+        "consumers": []
       },
-      "spec": "# PricingCalculator\n\n## Intent\nInteractive duration × workload pricing calculator for the pricing page: two\nselectable option groups drive a live summary of total hours, allocation,\neffective hourly rate, and total investment, closing with a booking CTA.\n\n## Pricing model\n- Standard rate 120 €/h, 7 hours/day (owner-approved 2026-07-18).\n- Weeks per duration: 2 weeks = 2; months × 52/12 otherwise.\n- Hourly-rate tier discounts: 3 mo −5%, 6 mo −10%, 12 mo −15%; 6 and 12 months\n  carry the Partnership badge.\n- Total investment = round(weeks × days × 7) × discounted rate.\n- Model lives in `pricingMath.ts`; the component only renders its output.\n\n## Interaction contract\n- Keyboard: Tab into each group; Arrow keys/Space change the native radio\n  selection (SelectableCardGroup); Enter activates the CTA link\n- Pointer: whole option cards are labels for their radios\n- Screen readers: fieldset/legend names each group; the summary re-renders as\n  static text (no live region — values update on user action within the group)\n\n## Do / don't\n- Do: keep all price maths in `pricingMath.ts`\n- Do: format totals via `Intl.NumberFormat` on the active language\n- Don't: use for fixed-scope package pricing (packages section owns that)\n- Don't: duplicate the pricing model in other components\n\n## Design notes\n- Tokens: `--color-surface`, `--color-border-light`, `--color-muted`,\n  `--color-primary`, layout/internal space tokens, text/title size tokens\n- Figma: none yet (code-first pattern, 2026-07-18)\n",
+      "spec": "# PricingCalculator\n\n## Intent\nInteractive duration × workload pricing calculator for the pricing page: two\nselectable option groups drive a live summary of total hours, allocation,\neffective hourly rate, and total investment, closing with a booking CTA.\n\n## Pricing model\n- Standard rate 120 €/h, 7.5 hours/day (owner-approved 2026-07-18).\n- Weeks per duration: 2 weeks = 2; months × 52/12 otherwise.\n- Only the 6/12-month partnership tiers discount, at a flat 90 €/h (−25%),\n  and only at a partnership workload of 4+ days/week; every other combination\n  is standard rate. The partnership tiers carry the Partnership badge\n  (straddling the card's top edge, pointer-events none so it never blocks\n  selections).\n- Total investment = round(weeks × days × 7.5) × effective rate; partnership\n  selections show \"Partnership pricing: 1 day per week is free.\" under the total\n  (the −25% rate exactly cancels the 3→4 day step, so a savings-amount claim\n  would not survive comparison against the 3-day configuration).\n- Short engagements (2 weeks / 1 month) only offer 4–5 days/week; switching to\n  them clamps a lighter selection up to 4 days.\n- Defaults: 2 weeks × 5 days/week (≈ €9,000 — first figure stays credible\n  against the page's \"from €7k\" floor).\n- Model lives in `pricingMath.ts`; the component only renders its output.\n\n## Interaction contract\n- Keyboard: Tab into each group; Arrow keys/Space change the native radio\n  selection (SelectableCardGroup); Enter activates the CTA link\n- Pointer: whole option cards are labels for their radios\n- Screen readers: fieldset/legend names each group; a visually hidden\n  `role=\"status\"` region announces the recomputed hours/rate/total (and\n  savings) politely on every selection change, including the workload clamp\n- Focus: if the focused workload radio unmounts with the short-duration clamp,\n  focus is restored to the newly checked workload radio\n- The partnership pricing rule is stated in visible copy under the price card;\n  the CTA carries the configured duration/days as query params\n\n## Do / don't\n- Do: keep all price maths in `pricingMath.ts`\n- Do: format totals via `Intl.NumberFormat` on the active language\n- Don't: use for fixed-scope package pricing (packages section owns that)\n- Don't: duplicate the pricing model in other components\n\n## Design notes\n- Tokens: `--color-surface`, `--color-border-light`, `--color-muted`,\n  `--color-primary`, layout/internal space tokens, text/title size tokens\n- Figma: none yet (code-first pattern, 2026-07-18)\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PricingCalculator",
@@ -41497,7 +41574,9 @@
         "requiredA11y": [
           "section labelled by the calculator title",
           "native fieldset/legend + radio semantics from SelectableCardGroup",
-          "CTA is a real link to /contact"
+          "CTA is a real link to /contact",
+          "visually hidden role=status region announces recomputed totals and the workload clamp",
+          "workload radios are added/removed on duration change; selection is clamped programmatically and focus is restored if the focused radio unmounts"
         ],
         "keyboard": [
           "Tab",

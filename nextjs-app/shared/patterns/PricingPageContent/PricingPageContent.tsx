@@ -21,7 +21,7 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   {
     usKey: "pricingCompareUs1",
     themKey: "pricingCompareThem1",
-    usDefault: "Fixed packages from €8k",
+    usDefault: "Fixed packages from €7k",
     themDefault: "€80k–€300k+ scopes",
   },
   {
@@ -66,7 +66,7 @@ const PACKAGES: PackageItem[] = [
     titleKey: "pricingPackage3Title",
     titleDefault: "UX Sprint",
     priceKey: "pricingPackage3Price",
-    priceDefault: "€8–14k",
+    priceDefault: "€7–14k",
     durationKey: "pricingPackage3Duration",
     durationDefault: "2 weeks",
     descriptionKey: "pricingPackage3Description",
@@ -382,6 +382,13 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
       </section>
 
       <div className={styles.container}>
+        <div
+          className={styles.calculatorSection}
+          data-donny-target="pricing.calculator"
+        >
+          <PricingCalculator />
+        </div>
+
         <section
           className={styles.deliverables}
           aria-labelledby="pricing-deliverables-title"
@@ -395,7 +402,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
           >
             {t(
               "pricingDeliverablesTitle",
-              "No guesswork. No scope creep. Just stellar design work, lightning fast, from €8k.",
+              "No guesswork. No scope creep. Just stellar design work, lightning fast, from €7k.",
             )}
           </Title>
 
@@ -476,13 +483,6 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
                 ))}
               </ul>
             </div>
-          </div>
-
-          <div
-            className={styles.calculatorSection}
-            data-donny-target="pricing.calculator"
-          >
-            <PricingCalculator />
           </div>
 
           <div className={styles.ctaRow}>

@@ -442,10 +442,11 @@
   }
 }
 
-/* Calculator — custom-engagement estimator between AaaS and the CTAs */
+/* Calculator — custom-engagement estimator leading the deliverables block,
+   right after the testimonial band. */
 
 .calculatorSection {
-  margin-block-start: var(--space-layout-48);
+  padding-block-start: var(--space-layout-48);
 }
 
 /* CTAs */

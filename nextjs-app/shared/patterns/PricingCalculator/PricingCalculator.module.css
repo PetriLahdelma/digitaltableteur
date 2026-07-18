@@ -33,6 +33,16 @@
   max-inline-size: 24ch;
 }
 
+/* Duration + workload + meta cards anchor to the bottom of the controls
+   column, mirroring the summary footer on the right. */
+
+.controlsBody {
+  display: flex;
+  margin-block-start: auto;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+}
+
 /* Option groups: two columns of equal cards. The group renders a fieldset
    with an options wrapper div; the layout lives here (not on the cards) so it
    also holds for the registry-published SelectableCard, which drops per-card
@@ -45,28 +55,86 @@
 .optionGroup > div {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  row-gap: var(--space-internal-16);
+}
+
+/* Registry SelectableCard (react 0.1.16) still draws its radio indicator,
+   reserves trailing padding for it, lets the surface sit content-height
+   inside a stretched label, and swaps the selected border on hover; the DS
+   source has fixed all four (the whole card is the control, content centers,
+   selected look survives hover). Neutralize here until the next react
+   publish. */
+
+.optionGroup label {
+  display: flex;
+  flex-direction: column;
+}
+
+.optionGroup label span[data-type] {
+  display: none;
+}
+
+.optionGroup label > div {
+  display: flex;
+  padding-inline-end: var(--space-internal-12);
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.calculator .optionGroup label[data-selected="true"]:hover > div {
+  border-color: var(--color-primary);
+}
+
+/* Windows High Contrast strips author box-shadows, so the published selected
+   ring vanishes; border-width survives forced colors and restores a non-color
+   selected cue on the whole-card control. */
+@media (forced-colors: active) {
+  .calculator .optionGroup label[data-selected="true"] > div {
+    border-width: 3px;
+  }
 }
 
 .optionContent {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   gap: var(--space-internal-8);
 }
 
-.optionAmount {
+.calculator .optionAmount {
   font-weight: 600;
 }
 
-.optionUnit {
+.calculator .optionUnit {
   color: var(--color-muted);
 }
 
-.partnershipBadge {
+/* Badge straddles the card's top edge (half above, half on the card).
+   pointer-events: none so it never steals clicks from this or nearby cards.
+   The 24px height mirrors the DS Badge size="xs" added on this branch; the
+   registry package (0.1.16) predates it, so keep size="sm" + this override
+   until the next react publish, then switch to size="xs" and delete the
+   block-size line. Scoped under .calculator to outrank Badge's sm=32px at
+   equal load order. */
+
+.calculator .partnershipBadge {
   position: absolute;
   z-index: 1;
-  inset-block-start: calc(-1 * var(--space-internal-8));
+  block-size: 24px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  inset-block-start: 0;
   inset-inline-end: var(--space-internal-12);
+}
+
+/* The package Text base carries a bottom margin that pushes glyphs to the top
+   of their box; reset it so card and summary text truly centers. Scoped under
+   .calculator to outrank the package base at equal load order. */
+
+.calculator :is(.optionAmount, .optionUnit, .metaLabel, .metaValue, .metaFigure, .metaFootnote, .priceLabel, .priceValue, .totalLabel, .totalValue, .totalNote) {
+  margin: 0;
 }
 
 /* Meta cards under the controls */
@@ -97,16 +165,16 @@
   gap: var(--space-internal-8);
 }
 
-.metaLabel {
+.calculator .metaLabel {
   color: var(--color-muted);
 }
 
-.metaValue {
+.calculator .metaValue {
   font-weight: 600;
   color: var(--color-primary);
 }
 
-.metaFootnote {
+.calculator .metaFootnote {
   color: var(--color-muted);
 }
 
@@ -117,7 +185,7 @@
   gap: var(--space-internal-8);
 }
 
-.metaFigure {
+.calculator .metaFigure {
   font-weight: 600;
 }
 
@@ -130,13 +198,87 @@
   gap: var(--space-layout-16);
 }
 
-.includedTitle {
+/* Price + total + CTA anchor to the bottom of the summary column; the
+   "Perfect for" block fills the space above them. */
+
+.summaryFooter {
+  display: flex;
+  margin-block-start: auto;
+  flex-direction: column;
+  gap: var(--space-layout-16);
+}
+
+/* Dynamic fit list between the included block and the summary footer. */
+
+.perfectFor {
+  padding-block-start: var(--space-internal-12);
+}
+
+.calculator .perfectForTitle {
   margin-block-end: var(--space-internal-12);
   font-weight: 600;
 }
 
-.includedList {
+.calculator .perfectForList {
   color: var(--color-muted);
+}
+
+.calculator .includedTitle {
+  margin-block-end: var(--space-internal-12);
+  font-weight: 600;
+}
+
+.calculator .includedList {
+  color: var(--color-muted);
+}
+
+/* Partnership-rate treatment: primary surface, light label, brand-neon price.
+   The dark theme's --color-primary / --logo-background flip to blue/purple,
+   so the dark override keeps the purple-surface + soft-yellow brand pairing. */
+
+.priceCard.priceCardDiscounted {
+  background-color: var(--color-primary);
+}
+
+.priceCard.priceCardDiscounted .priceLabel {
+  color: var(--color-white);
+}
+
+.priceCard.priceCardDiscounted .priceValue {
+  color: var(--logo-background);
+}
+
+:global(.themeDark) .priceCard.priceCardDiscounted {
+  background-color: var(--accent-purple);
+}
+
+/* Dark flips --color-white to the dark ink; --color-title is the light ink. */
+
+:global(.themeDark) .priceCard.priceCardDiscounted .priceLabel {
+  color: var(--color-title);
+}
+
+/* The neon/yellow accent is a light-theme-only treatment; dark keeps the
+   price in the light ink on the purple surface. */
+
+:global(.themeDark) .priceCard.priceCardDiscounted .priceValue {
+  color: var(--color-title);
+}
+
+/* High-contrast themes collapse primary and the neon to monochrome, which
+   would hide the card; fall back to an outlined card in theme ink. */
+
+:global(.themeHCB) .priceCard.priceCardDiscounted,
+:global(.themeHCW) .priceCard.priceCardDiscounted {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+}
+
+:global(.themeHCB) .priceCard.priceCardDiscounted .priceLabel,
+:global(.themeHCW) .priceCard.priceCardDiscounted .priceLabel,
+:global(.themeHCB) .priceCard.priceCardDiscounted .priceValue,
+:global(.themeHCW) .priceCard.priceCardDiscounted .priceValue {
+  color: var(--color-text);
 }
 
 .priceCard {
@@ -145,14 +287,32 @@
   gap: var(--space-internal-8);
 }
 
-.priceLabel {
+.calculator .priceLabel {
   color: var(--color-muted);
 }
 
-.priceValue {
+.calculator .priceValue {
   font-size: var(--font-size-text-xxl);
   font-weight: 600;
   line-height: 1.1;
+}
+
+.calculator .priceHint {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.priceCard.priceCardDiscounted .priceHint {
+  color: var(--color-white);
+}
+
+:global(.themeDark) .priceCard.priceCardDiscounted .priceHint {
+  color: var(--color-title);
+}
+
+:global(.themeHCB) .priceCard.priceCardDiscounted .priceHint,
+:global(.themeHCW) .priceCard.priceCardDiscounted .priceHint {
+  color: var(--color-text);
 }
 
 .totalCard {
@@ -163,11 +323,19 @@
   flex-flow: row wrap;
 }
 
-.totalLabel {
+.calculator .totalLabel {
   font-weight: 600;
 }
 
-.totalValue {
+/* Full-width note under the label/total row; the row itself keeps the same
+   one-line layout as the undiscounted state. */
+
+.calculator .totalNote {
+  flex-basis: 100%;
+  color: var(--color-muted);
+}
+
+.calculator .totalValue {
   font-size: var(--font-size-title-s);
   font-weight: 700;
   line-height: 1.1;

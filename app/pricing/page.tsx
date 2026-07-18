@@ -12,11 +12,11 @@ import {
 export const metadata: Metadata = {
   title: "Pricing | Digitaltableteur",
   description:
-    "Productized design, UX/UI and DesignOps packages from €8k. AI-ready workflows, fixed scope and senior delivery without bloated agency retainers.",
+    "Productized design, UX/UI and DesignOps packages from €7k. AI-ready workflows, fixed scope and senior delivery without bloated agency retainers.",
   openGraph: {
     title: "Pricing | Digitaltableteur",
     description:
-      "Productized design, UX/UI and DesignOps packages from €8k. AI-ready workflows, fixed scope and senior delivery without bloated agency retainers.",
+      "Productized design, UX/UI and DesignOps packages from €7k. AI-ready workflows, fixed scope and senior delivery without bloated agency retainers.",
     type: "website",
     siteName: "Digitaltableteur",
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pricing | Digitaltableteur",
     description:
-      "Productized design, UX/UI and DesignOps packages from €8k. AI-ready workflows, fixed scope and senior delivery without bloated agency retainers.",
+      "Productized design, UX/UI and DesignOps packages from €7k. AI-ready workflows, fixed scope and senior delivery without bloated agency retainers.",
   },
   alternates: {
     canonical: "/pricing",
@@ -38,7 +38,7 @@ export default function Pricing() {
     getWebPageSchema({
       name: "Pricing | Digitaltableteur",
       description:
-        "Productized design, UX/UI and DesignOps packages from €8k. AI-ready workflows, fixed scope and senior delivery.",
+        "Productized design, UX/UI and DesignOps packages from €7k. AI-ready workflows, fixed scope and senior delivery.",
       url: "/pricing",
       keywords: [
         "design pricing",

@@ -4,6 +4,7 @@ import styles from "./Badge.module.css";
 export const badgeVariants = cva(styles.badge, {
   variants: {
     size: {
+      xs: styles.xs,
       sm: styles.sm,
       md: "",
       lg: styles.lg,
@@ -23,7 +24,7 @@ export type BadgeVariant = "primary" | "secondary";
 /** Semantic colour, matching the design-token palette. */
 export type BadgeTone = "neutral" | "error" | "warning" | "success" | "info";
 /** Size. */
-export type BadgeSize = "sm" | "md" | "lg";
+export type BadgeSize = "xs" | "sm" | "md" | "lg";
 
 const TONE_TO_STATUS: Partial<
   Record<Exclude<BadgeTone, "neutral">, SemanticStatus>
@@ -89,9 +90,9 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       tone && tone !== "neutral" ? TONE_TO_STATUS[tone] : undefined;
 
     // Icons track the badge's size step: sm 16px, md 24px, lg 32px.
-    const badgeIconSize = { sm: "xs", md: "md", lg: "lg" } as const;
+    const badgeIconSize = { xs: "xs", sm: "xs", md: "md", lg: "lg" } as const;
     // StatusDot follows the badge size step so lifecycle dots scale with sm/md/lg.
-    const badgeDotSize = { sm: "sm", md: "md", lg: "lg" } as const;
+    const badgeDotSize = { xs: "sm", sm: "sm", md: "md", lg: "lg" } as const;
 
     let resolvedIcon: React.ReactNode = icon;
     if (resolvedIcon == null && dot) {

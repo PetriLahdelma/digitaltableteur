@@ -30,6 +30,7 @@
         },
         "size": {
             "values": [
+                "xs",
                 "sm",
                 "md",
                 "lg"

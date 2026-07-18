@@ -24,6 +24,13 @@ import { DtDocsPage } from "./blocks/DtDocsPage";
 import { dtSourceTransform } from "./blocks/sourceTransform";
 
 // Import global styles - CRITICAL for design tokens and component styling
+// Published-package styles first, mirroring app/layout.tsx: patterns that
+// consume components from the @digitaltableteur/react barrel (dist JS with
+// pre-scoped class names) need the package stylesheet, which the dist JS does
+// not import itself. Without this, barrel-consumed components render unstyled
+// in every story. Local source-compiled modules load after and keep winning
+// ties, same as on the page.
+import "@digitaltableteur/react/style.css";
 import "@dt/../index.css";
 // Tailwind 4 entry — components in shared/patterns rely on shadcn semantic
 // tokens (e.g. text-foreground, bg-background) which need the `@theme` block

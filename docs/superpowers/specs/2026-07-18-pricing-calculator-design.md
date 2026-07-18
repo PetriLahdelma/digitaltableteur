@@ -32,14 +32,26 @@ Right column:
 - "Total Investment" `Card` — locale-formatted total.
 - `Button` "Get in touch" → `/contact?mode=book`. No icon (owner deviation).
 
-## Pricing model (owner decision)
+## Pricing model (owner decision, revised same day)
 
-- Standard rate: **€120/h**, 7 hours/day.
+- Standard rate: **€120/h**, **7.5 hours/day**.
 - Weeks per duration: 2 weeks = 2; otherwise months × 52 / 12.
-- Total hours = round(weeks × daysPerWeek × 7).
-- Tier discounts on the hourly rate: 3 mo −5%, 6 mo −10%, 12 mo −15%.
+- Total hours = round(weeks × daysPerWeek × 7.5).
+- **Only the partnership tiers (6/12 mo) discount, at a flat 90 €/h, and only
+  at 4+ days/week**; every other duration × workload combination stays at the
+  standard rate.
 - Total investment = round(totalHours × effectiveRate).
-- Defaults: 2 months, 5 days/week.
+- Defaults: 2 weeks, 5 days/week (first figure ≈ €9,000, credible against the €7k floor).
+
+## Revisions (owner, 2026-07-18 second pass)
+
+- "Book a call" / "See our work" CTA row moved BEFORE the calculator.
+- Partnership badge rendered in flow inside the card (the absolute overlay
+  covered neighboring cards and blocked their clicks).
+- SelectableCard: radio/checkbox indicator glyph removed — the whole card is
+  the control, selection reads from the ring; content centers vertically so a
+  lone title sits mid-card. Mirrored via pattern reach-in overrides for the
+  registry 0.1.16 package.
 
 ## i18n
 

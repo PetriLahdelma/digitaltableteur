@@ -29,7 +29,7 @@ Two orthogonal axes: `variant` (visual weight — filled vs outlined) and `tone`
   `--color-info` / `--color-error` / `--color-warning-contrast` (or
   `--color-neutral-bg`) and white text; outlined (`secondary`) tones apply the
   same colour to border and text over a transparent background.
-- Size: `sm | md | lg` adjust padding and font-size; pill radius (999px) by
+- Size: `xs | sm | md | lg` (24/32/40/56px) adjust padding and font-size; pill radius (999px) by
   default, squared via `square`.
 - Motion: the badge is static; the removable close button inherits Button's
   tokenized press feedback plus a tonal hover, suppressed under

@@ -193,7 +193,6 @@ describe("SelectableCard — CSS module classes exist", () => {
     "disabled",
     "input",
     "surface",
-    "indicator",
   ])("defines .%s", (cls) => {
     expect(css).toContain(`.${cls}`);
   });

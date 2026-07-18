@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 439,
+  "warningCount": 437,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -87,15 +87,6 @@
       "id": "nextjs-app/shared/components/AskAI/AskAI.module.css::415::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
       "file": "nextjs-app/shared/components/AskAI/AskAI.module.css",
       "line": 415,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::193::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 193,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -2379,58 +2370,22 @@
       "text": "Expected empty line before rule (rule-empty-line-before)"
     },
     {
-      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::123::1::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 123,
-      "column": 1,
-      "rule": "selector-max-specificity",
-      "severity": "warning",
-      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::133::1::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 133,
-      "column": 1,
-      "rule": "selector-max-specificity",
-      "severity": "warning",
-      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::160::3::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 160,
-      "column": 3,
-      "rule": "selector-max-specificity",
-      "severity": "warning",
-      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"radio\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::161::3::selector-max-specificity::Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)",
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 161,
-      "column": 3,
-      "rule": "selector-max-specificity",
-      "severity": "warning",
-      "text": "Too high specificity in \".card[data-selected=\"true\"] .indicator[data-type=\"checkbox\"]::after\", maximum \"0,4,0\" (selector-max-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::75::1::no-descending-specificity::Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
-      "line": 75,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::87::1::no-descending-specificity::Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::87::1::no-descending-specificity::Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled, [data-selected=\"true\"]) .surface\", at line 83 (no-descending-specificity)",
       "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
       "line": 87,
       "column": 1,
       "rule": "no-descending-specificity",
       "severity": "warning",
-      "text": "Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled) .surface\", at line 71 (no-descending-specificity)"
+      "text": "Expected selector \".card[data-selected=\"true\"] .surface\" to come before selector \".card:hover:not(.disabled, [data-selected=\"true\"]) .surface\", at line 83 (no-descending-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css::99::1::no-descending-specificity::Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled, [data-selected=\"true\"]) .surface\", at line 83 (no-descending-specificity)",
+      "file": "nextjs-app/shared/components/SelectableCard/SelectableCard.module.css",
+      "line": 99,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".card.disabled .surface\" to come before selector \".card:hover:not(.disabled, [data-selected=\"true\"]) .surface\", at line 83 (no-descending-specificity)"
     },
     {
       "id": "nextjs-app/shared/components/SiteTree/SiteTree.module.css::42::3::order/properties-order::Expected \"padding-block\" to come before \"gap\" (order/properties-order)",
@@ -3259,6 +3214,33 @@
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Expected variable, function or keyword for \"CanvasText\" of \"color\" (scale-unlimited/declaration-strict-value)"
+    },
+    {
+      "id": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css::290::1::no-descending-specificity::Expected selector \".calculator .priceLabel\" to come before selector \".priceCard.priceCardDiscounted .priceLabel\", at line 243 (no-descending-specificity)",
+      "file": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css",
+      "line": 290,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".calculator .priceLabel\" to come before selector \".priceCard.priceCardDiscounted .priceLabel\", at line 243 (no-descending-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css::294::1::no-descending-specificity::Expected selector \".calculator .priceValue\" to come before selector \".priceCard.priceCardDiscounted .priceValue\", at line 247 (no-descending-specificity)",
+      "file": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css",
+      "line": 294,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".calculator .priceValue\" to come before selector \".priceCard.priceCardDiscounted .priceValue\", at line 247 (no-descending-specificity)"
+    },
+    {
+      "id": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css::85::1::selector-max-specificity::Too high specificity in \".calculator .optionGroup label[data-selected=\"true\"]:hover > div\", maximum \"0,4,0\" (selector-max-specificity)",
+      "file": "nextjs-app/shared/patterns/PricingCalculator/PricingCalculator.module.css",
+      "line": 85,
+      "column": 1,
+      "rule": "selector-max-specificity",
+      "severity": "warning",
+      "text": "Too high specificity in \".calculator .optionGroup label[data-selected=\"true\"]:hover > div\", maximum \"0,4,0\" (selector-max-specificity)"
     },
     {
       "id": "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.module.css::11::3::order/properties-order::Expected \"padding-inline\" to come before \"max-width\" (order/properties-order)",

@@ -1,9 +1,9 @@
-- region "Design Systems. Digital branding. UX/UI. Transparent pricetags.":
-  - heading "Design Systems. Digital branding. UX/UI. Transparent pricetags." [level=1]
+- region "Design Systems. Digital branding. UX/UI. Transparent price tags.":
+  - heading "Design Systems. Digital branding. UX/UI. Transparent price tags." [level=1]
 - region "Digitaltableteur / Traditional agency":
   - heading "Digitaltableteur" [level=2]
   - list:
-    - listitem: Fixed packages from €8k
+    - listitem: Fixed packages from €7k
     - listitem: 2–4 weeks to first shippable product
     - listitem: One focused engagement at a time
     - listitem: Senior Design Lead
@@ -16,13 +16,56 @@
 - region "Client perspective":
   - blockquote:
     - paragraph: “ Why wrestle with bloated agency retainers when you can get a usable design system including contracts, components, tokens and an adoption plan in weeks?”
-- region "No guesswork. No scope creep. Just stellar design work, lightning fast, from €8k.":
-  - heading "No guesswork. No scope creep. Just stellar design work, lightning fast, from €8k." [level=2]
+- region "Adjust duration and workload to see your total investment.":
+  - status: 75 hours at 5 days/week, 120€/hour, total 9,000 €
+  - heading "Adjust duration and workload to see your total investment." [level=2]
+  - group "Duration":
+    - text: Duration
+    - radio "2 weeks" [checked]
+    - text: 2 weeks
+    - radio "1 month"
+    - text: 1 month
+    - radio "2 months"
+    - text: 2 months
+    - radio "3 months"
+    - text: 3 months
+    - radio "6 months Partnership"
+    - text: 6 months Partnership
+    - radio "12 months Partnership"
+    - text: 12 months Partnership
+  - group "Workload (per week)":
+    - text: Workload (per week)
+    - radio "4 days"
+    - text: 4 days
+    - radio "5 days" [checked]
+    - text: 5 days
+  - text: Allocation 100%
+  - paragraph: 5 days/week × 7.5 hrs/day
+  - text: "Total hours: 75 Standard rate: 120€/hour"
+  - paragraph: "What's included in your investment:"
+  - list:
+    - listitem: — 2 weeks design partnership
+    - listitem: — Dedicated design expertise for 5 days per week
+    - listitem: — Complete end-to-end design process and deliverables
+    - listitem: — Direct collaboration and strategic design guidance
+  - paragraph: "Perfect for:"
+  - list:
+    - listitem: — Rapid UX sprints and POC/MVP validation
+    - listitem: — Focused design audits with an actionable roadmap
+    - listitem: — Hands-on, end-to-end design execution
+  - paragraph: Your price
+  - paragraph: 120€/hour
+  - paragraph: Partnership rate 90€/hour applies on 6 and 12 month engagements at 4+ days per week workloads.
+  - text: "Total Investment: 9,000 €"
+  - link "Get in touch":
+    - /url: /contact?mode=book&duration=2w&days=5
+- region "No guesswork. No scope creep. Just stellar design work, lightning fast, from €7k.":
+  - heading "No guesswork. No scope creep. Just stellar design work, lightning fast, from €7k." [level=2]
   - heading "Packages" [level=3]
   - list "Packages":
     - listitem:
       - heading "UX Sprint" [level=3]
-      - paragraph: €8–14k
+      - paragraph: €7–14k
       - paragraph: 2 weeks
       - paragraph: Prototype, eval plan and handoff your team can ship.
       - paragraph: 2-week prototype with eval plan — see UX Sprint patterns in our work.

@@ -2,8 +2,8 @@
   display: inline-flex;
   padding: 0 var(--space-internal-16);
 
-  /* Fixed heights per size step (sm 32 / md 40 / lg 56); vertical centering
-     comes from the flex row, not padding. */
+  /* Fixed heights per size step (xs 24 / sm 32 / md 40 / lg 56); vertical
+     centering comes from the flex row, not padding. */
   box-sizing: border-box;
   width: fit-content;
   height: 40px;
@@ -21,6 +21,12 @@
   color: var(--color-dark);
   overflow: hidden;
   vertical-align: middle;
+}
+
+.xs {
+  padding: 0 var(--space-internal-8);
+  height: 24px;
+  font-size: 0.75rem;
 }
 
 .sm {
@@ -45,6 +51,7 @@
   padding-inline: var(--space-internal-4);
 }
 
+.xs .label,
 .sm .label {
   padding-inline: var(--space-internal-2);
 }
@@ -190,6 +197,7 @@
    it is constant (sm was 2px = visually no gap); only the leading/label side
    scales. Set on the .removable base so it also covers the default md badge,
    which carries no size class — so .removable.md never matched it. */
+
 .removable {
   padding-inline-end: var(--space-internal-6);
 }

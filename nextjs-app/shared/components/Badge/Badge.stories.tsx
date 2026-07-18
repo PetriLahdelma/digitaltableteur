@@ -84,8 +84,8 @@ const meta: Meta<typeof Badge> = {
     },
     size: {
       control: { type: "inline-radio" },
-      options: ["sm", "md", "lg"],
-      description: "Size step: 32/40/56px tall with 12/16/20px labels.",
+      options: ["xs", "sm", "md", "lg"],
+      description: "Size step: 24/32/40/56px tall.",
       table: { category: "Appearance", defaultValue: { summary: "md" } },
     },
     square: {
@@ -285,6 +285,7 @@ const SizesContent: React.FC = () => {
   const { t } = useTranslation();
   return (
     <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+      <Badge size="xs">{t("badgeExtraSmall")}</Badge>
       <Badge size="sm">{t("badgeSmall")}</Badge>
       <Badge size="md">{t("badgeMedium")}</Badge>
       <Badge size="lg">{t("badgeLarge")}</Badge>
@@ -294,7 +295,7 @@ const SizesContent: React.FC = () => {
 
 export const Sizes: Story = {
   tags: ["example"],
-  parameters: { docs: { description: { story: "sm, md and lg badge sizes." } } }, render: () => <SizesContent /> };
+  parameters: { docs: { description: { story: "xs, sm, md and lg badge sizes." } } }, render: () => <SizesContent /> };
 
 const AsCountContent: React.FC = () => {
   const [count, setCount] = React.useState(3);

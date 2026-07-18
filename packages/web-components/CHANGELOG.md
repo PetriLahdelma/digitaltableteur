@@ -2,6 +2,13 @@
 
 ## 0.8.0 - 2026-07-16
 
+- Ports the SelectableCard redesign to `dt-selectable-card`: the indicator
+  glyph is removed (the whole card is the control, selection = border ring),
+  hover excludes the selected state, the card/surface are flex columns with
+  vertically centered content, and forced colors use a 3px `Highlight` border
+  plus `GrayText` disabled mapping instead of a stripped box-shadow.
+- Adds the `xs` (24px) size step to `dt-badge`, matching the React Badge.
+
 - Adds native CodeSnippet, CodeBlockWindow, Breadcrumb, Pagination, Timestamp,
   GroupLabel, MacWindowFrame, and FileUpload elements.
 - Extends the framework-neutral surface with copyable code presentation,

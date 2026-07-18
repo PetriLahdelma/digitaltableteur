@@ -9,7 +9,7 @@ import {
 
 const VARIANTS = ["primary", "secondary"] as const;
 const TONES = ["neutral", "error", "warning", "success", "info"] as const;
-const SIZES = ["sm", "md", "lg"] as const;
+const SIZES = ["xs", "sm", "md", "lg"] as const;
 export type DtBadgeVariant = (typeof VARIANTS)[number];
 export type DtBadgeTone = (typeof TONES)[number];
 export type DtBadgeSize = (typeof SIZES)[number];
@@ -27,6 +27,7 @@ const styles = `
   :host { display: inline-flex; vertical-align: middle; }
   :host([hidden]) { display: none; }
   .badge { box-sizing: border-box; display: inline-flex; width: fit-content; height: 40px; padding: 0 var(--space-internal-16); align-items: center; gap: 0.25em; border: 2px solid transparent; border-radius: 999px; font-family: var(--primary-body-font); font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; }
+  .xs { height: 24px; padding-inline: var(--space-internal-8); font-size: 0.75rem; }
   .sm { height: 32px; padding-inline: var(--space-internal-12); font-size: 0.75rem; }
   .lg { height: 56px; font-size: 1.25rem; }
   .square { border-radius: 0; }
