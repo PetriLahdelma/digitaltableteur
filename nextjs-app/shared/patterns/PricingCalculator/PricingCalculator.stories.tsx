@@ -7,7 +7,7 @@ import contract from "./PricingCalculator.contract.json";
 const meta = {
   title: "Patterns/PricingCalculator",
   component: PricingCalculator,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     layout: "padded",
     contractStatus: contract.status,

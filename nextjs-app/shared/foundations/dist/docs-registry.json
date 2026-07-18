@@ -19625,7 +19625,7 @@
       "name": "PricingCalculator",
       "group": "marketing",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Interactive duration × workload pricing calculator for the pricing page.",
       "dense": "Pricing calculator section: duration and workload SelectableCard groups drive a live summary (allocation, hours, effective rate, total investment) with a booking CTA.",
       "keywords": [
