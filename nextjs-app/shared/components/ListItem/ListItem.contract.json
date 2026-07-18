@@ -5,7 +5,7 @@
     "group": "display",
     "status": "beta",
     "description": "Presentational row for menus, selects, palettes, and lists: leading icon, truncating label, end-aligned meta (text, Badge, Kbd, StatusDot, value), trailing icon, selection check, and a destructive tone. Consumers own semantics.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-list-item",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1423-2122",
     "radixPrimitive": null,
     "element": "span",
     "variants": {
