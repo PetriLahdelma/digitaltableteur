@@ -476,6 +476,46 @@
       "name": "SiteTree",
       "type": "COMPONENT",
       "page": "Atoms"
+    },
+    "1432-2568": {
+      "name": "AuthorBio",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1433-2206": {
+      "name": "ExpandableSection",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1432-2635": {
+      "name": "SecureCVDownload",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1432-2609": {
+      "name": "SocialShare",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1433-2257": {
+      "name": "EnhancedProjectCard",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1431-2225": {
+      "name": "ServiceCard",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
+    },
+    "1433-2212": {
+      "name": "ReadingProgress",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1431-2190": {
+      "name": "ValueCard",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
     }
   }
 }

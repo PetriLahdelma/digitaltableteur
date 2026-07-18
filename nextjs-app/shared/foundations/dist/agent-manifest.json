@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-18T15:45:05.369Z",
+  "generatedAt": "2026-07-18T15:53:47.165Z",
   "summary": {
     "componentCount": 164,
     "statusCounts": {
@@ -1916,7 +1916,7 @@
         "group": "structure",
         "status": "stable",
         "description": "Author byline card for blog articles: avatar, name, and markdown bio, resolved from the authors data by slug.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-author-bio",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1432-2568",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -11905,7 +11905,7 @@
         "group": "marketing",
         "status": "stable",
         "description": "Portfolio project card with image, video hover, and metadata.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-enhanced-project-card",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1433-2257",
         "radixPrimitive": null,
         "element": "a",
         "variants": {
@@ -12261,7 +12261,7 @@
         "group": "structure",
         "status": "stable",
         "description": "Collapsible content region with a trigger header. Lighter than `Accordion` (which manages a group of expandables) — used standalone for a single 'show more' or detail-disclosure section.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-expandable-section",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1433-2206",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -25284,7 +25284,7 @@
         "group": "feedback",
         "status": "stable",
         "description": "Scroll-linked reading progress indicator for long content.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-reading-progress",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1433-2212",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -25887,7 +25887,7 @@
         "group": "structure",
         "status": "stable",
         "description": "Gated CV download whose trigger opens a verification modal before the file is served.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-secure-cvdownload",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1432-2635",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -26982,7 +26982,7 @@
         "group": "marketing",
         "status": "stable",
         "description": "Service tile with icon, title, description, and optional link.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-service-card",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1431-2225",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -28366,7 +28366,7 @@
         "group": "structure",
         "status": "stable",
         "description": "Row of social share targets: per-network deep links plus a native-share or copy-link button, with an optional labelled article-footer variant.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-social-share",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1432-2609",
         "radixPrimitive": null,
         "element": "section",
         "variants": {
@@ -35184,7 +35184,7 @@
         "group": "display",
         "status": "stable",
         "description": "Card variant for values / principles grids — icon + title + short description, with the same three visual treatments as `LocationCard`.",
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-value-card",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1431-2190",
         "radixPrimitive": null,
         "element": "article",
         "variants": {
