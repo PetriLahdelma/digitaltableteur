@@ -5,7 +5,7 @@
     "group": "layout",
     "status": "beta",
     "description": "Production app chrome from NextLayout, wrapping page content with the header, main landmark, footer, and chat widget; mirrors app/layout.tsx.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-next-layout-shell",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1442-2370",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

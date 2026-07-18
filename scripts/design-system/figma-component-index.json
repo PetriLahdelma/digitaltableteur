@@ -656,6 +656,51 @@
       "name": "Gallery",
       "type": "COMPONENT",
       "page": "Atoms"
+    },
+    "1442-2248": {
+      "name": "CookieConsent",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1442-2362": {
+      "name": "NextLayout",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1442-2370": {
+      "name": "NextLayoutShell",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1442-2389": {
+      "name": "Footer",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1443-2365": {
+      "name": "ServicesGrid",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1443-2373": {
+      "name": "ClientLogoMarquee",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1443-2379": {
+      "name": "OpenHours",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1443-2398": {
+      "name": "EmailSignatureGenerator",
+      "type": "COMPONENT",
+      "page": "Atoms"
+    },
+    "1443-2417": {
+      "name": "MacWindowFrame",
+      "type": "COMPONENT_SET",
+      "page": "Atoms"
     }
   }
 }

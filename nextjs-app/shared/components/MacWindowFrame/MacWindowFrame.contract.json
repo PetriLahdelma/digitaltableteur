@@ -5,7 +5,7 @@
     "group": "structure",
     "status": "beta",
     "description": "Decorative macOS-style window chrome that wraps showcase content such as code demos, screenshots, and portfolio pieces.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-mac-window-frame",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1443-2417",
     "radixPrimitive": null,
     "element": "div",
     "variants": {
