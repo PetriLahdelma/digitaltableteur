@@ -16,7 +16,7 @@
     "usage": {
         "description": "GridBlock lays out case-study content cells in a responsive grid with columns, gap, spacing, and background knobs. Work project pages use it for image/text mosaics between StoryBlock narrative sections. Cells are free-form nodes; for the bare layout primitive use Grid, since GridBlock adds section chrome (max-width, background, spacing) around it."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-grid-block",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1438-229",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
