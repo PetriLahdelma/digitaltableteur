@@ -5,7 +5,7 @@
     "group": "structure",
     "status": "stable",
     "description": "Author byline card for blog articles: avatar, name, and markdown bio, resolved from the authors data by slug.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-author-bio",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1432-2568",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

@@ -5,7 +5,7 @@
     "group": "display",
     "status": "stable",
     "description": "Card variant for values / principles grids — icon + title + short description, with the same three visual treatments as `LocationCard`.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-value-card",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1431-2190",
     "radixPrimitive": null,
     "element": "article",
     "variants": {

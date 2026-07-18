@@ -5,7 +5,7 @@
     "group": "structure",
     "status": "stable",
     "description": "Row of social share targets: per-network deep links plus a native-share or copy-link button, with an optional labelled article-footer variant.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-social-share",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1432-2609",
     "radixPrimitive": null,
     "element": "section",
     "variants": {
