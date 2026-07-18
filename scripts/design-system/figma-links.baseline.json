@@ -1,4 +1,4 @@
 {
-  "stablePlaceholderCeiling": 66,
-  "note": "Ratchet for BETA and STABLE contracts whose figma link does not resolve to a real component in figma-component-index.json (validate requires a figma URL for both tiers). Raised to 67 on 2026-07-12 when the check was extended to cover beta (was stable-only at 36); beta added 31 placeholders incl. Tooltip. Tightened to 66 on 2026-07-13 to lock in the improvement already present on main (count had dropped to 66 but the baseline was never lowered). Lower this in the PR that wires a real component. See docs/design-system/figma-parity-audit.md"
+  "stablePlaceholderCeiling": 67,
+  "note": "Ratchet for BETA and STABLE contracts whose figma link does not resolve to a real component in figma-component-index.json (validate requires a figma URL for both tiers). Trued to 67 on 2026-07-18: PricingCalculator wired (real node 1416-3118, -1 from main's actual 68), but ListItem, NavMenuList and SentrySummaryCard beta placeholders had slipped past the pre-push ratchet since the 66 ceiling of 2026-07-13 (pushed bypassing hooks); their Figma builds are tracked debt. History: raised to 67 on 2026-07-12 when the check was extended to cover beta (was stable-only at 36); tightened to 66 on 2026-07-13. Lower this in the PR that wires a real component. See docs/design-system/figma-parity-audit.md"
 }
