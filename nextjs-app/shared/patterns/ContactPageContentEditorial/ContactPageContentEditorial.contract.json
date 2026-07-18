@@ -16,7 +16,7 @@
     "usage": {
         "description": "ContactPageContentEditorial assembles the editorial contact page: intro copy alongside ContactInquiryPanel with the message form, plus the post-submit success state. initialInquiryMode and bookingPackageId wire /pricing deep links through to the booking tab. Mount once per /contact route; the route provides metadata and page chrome."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-contact-page-content-editorial",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1436-214",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

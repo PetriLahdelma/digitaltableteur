@@ -16,7 +16,7 @@
     "usage": {
         "description": "DesignSprintsSection is the homepage band promoting design sprints, with animated CTA pills. It is copy-complete via i18n and takes only anchor wiring (id, donnyTarget) plus className. It composes with the other homepage bands (HomeHero, ServicesSection, WorkMagneticField, CTASection); it is not a generic reusable band, so for configurable content use HighlightSection or CTASection."
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-design-sprints-section",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1436-265",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},

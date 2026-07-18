@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-18T16:00:33.728Z",
+  "generatedAt": "2026-07-18T16:20:15.681Z",
   "summary": {
     "componentCount": 164,
     "statusCounts": {
@@ -36198,7 +36198,7 @@
         "usage": {
           "description": "AboutPageContent assembles the entire About page body: narrative sections, values, and team highlights, with an optional closing CTA band (showCTA). Copy comes from i18n, not props. Mount it once per /about route inside the page shell; compose atoms directly for one-off content sections elsewhere."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-about-page-content",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1436-166",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -37990,7 +37990,7 @@
             }
           ]
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=664-33",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1436-242",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -38203,7 +38203,7 @@
         "usage": {
           "description": "ContactPageContentEditorial assembles the editorial contact page: intro copy alongside ContactInquiryPanel with the message form, plus the post-submit success state. initialInquiryMode and bookingPackageId wire /pricing deep links through to the booking tab. Mount once per /contact route; the route provides metadata and page chrome."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-contact-page-content-editorial",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1436-214",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -38580,7 +38580,7 @@
         "usage": {
           "description": "DesignSprintsSection is the homepage band promoting design sprints, with animated CTA pills. It is copy-complete via i18n and takes only anchor wiring (id, donnyTarget) plus className. It composes with the other homepage bands (HomeHero, ServicesSection, WorkMagneticField, CTASection); it is not a generic reusable band, so for configurable content use HighlightSection or CTASection."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-design-sprints-section",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1436-265",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -43687,7 +43687,7 @@
         "usage": {
           "description": "ServicesBlock summarizes an engagement at the top of a case study: overview copy plus services / duration / tools columns, each with its own title prop. All content arrives via props so pages keep copy local. Use ServicesSection for the marketing services grid on the homepage; ServicesBlock is the factual project-scope block."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-services-block",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1437-217",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -43970,7 +43970,7 @@
         "usage": {
           "description": "ServicesSection is the homepage services grid: icon-led service cards with title/description copy, configurable columns and card variant. It anchors into the homepage band flow (id, donnyTarget) alongside HomeHero, WorkMagneticField, and CTASection. For a case-study scope summary use ServicesBlock instead."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-services-section",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1437-246",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
@@ -45100,7 +45100,7 @@
         "usage": {
           "description": "TeamBlock renders a team/people grid: member cards with photo, name, and role, plus roundImages, column, and spacing knobs, under an optional section title and description. Work case studies use it to credit project teams; AboutPageContent has its own team treatment."
         },
-        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-team-block",
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1437-264",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},

@@ -546,6 +546,41 @@
       "name": "ProcessBlock",
       "type": "COMPONENT",
       "page": "Patterns"
+    },
+    "1436-166": {
+      "name": "AboutPageContent",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1436-214": {
+      "name": "ContactPageContentEditorial",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1436-242": {
+      "name": "ContactInquiryPanel",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1436-265": {
+      "name": "DesignSprintsSection",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1437-217": {
+      "name": "ServicesBlock",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1437-246": {
+      "name": "ServicesSection",
+      "type": "COMPONENT",
+      "page": "Patterns"
+    },
+    "1437-264": {
+      "name": "TeamBlock",
+      "type": "COMPONENT",
+      "page": "Patterns"
     }
   }
 }
