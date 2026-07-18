@@ -246,7 +246,10 @@ async function main() {
         },
         async ({ assert }) => {
           await gotoAndStabilize(page, WORK_ROUTE);
-          const back = tr(language, "projectBackToWork");
+          // Work detail routes render WorkNav (via NextWorkNav) since #1228;
+          // its back control is labeled workNavBackToWork, not the old
+          // ProjectNav projectBackToWork.
+          const back = tr(language, "workNavBackToWork");
           const prev = tr(language, "workNavPrev");
           const next = tr(language, "workNavNext");
           assert(
