@@ -14,10 +14,10 @@
     - /url: /work
   - link "About":
     - /url: /about
-  - link "Blog":
-    - /url: /blog
   - link "Pricing":
     - /url: /pricing
+  - link "Blog":
+    - /url: /blog
   - link "Contact":
     - /url: /contact
   - paragraph: Legal
