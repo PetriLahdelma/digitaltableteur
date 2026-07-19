@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-19T13:28:10.929Z",
+  "generatedAt": "2026-07-19T15:36:35.444Z",
   "summary": {
     "componentCount": 164,
     "statusCounts": {
@@ -25,8 +25,8 @@
   },
   "tokens": {
     "source": "nextjs-app/shared/styles/variables.css",
-    "tokenCount": 186,
-    "usageCoverage": 151,
+    "tokenCount": 192,
+    "usageCoverage": 156,
     "catalogPath": "nextjs-app/shared/foundations/token-catalog.json",
     "dtcgExport": "nextjs-app/shared/foundations/tokens/production/",
     "tailwindBridge": "app/tailwind.css (DT-THEME block)",

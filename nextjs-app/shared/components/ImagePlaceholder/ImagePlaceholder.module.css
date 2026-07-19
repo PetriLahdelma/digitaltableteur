@@ -49,8 +49,11 @@
 }
 
 .dark {
-  background-color: var(--color-gray-dark);
-  color: var(--color-text-inverse, #fff);
+  background-color: var(--color-placeholder-dark);
+
+  /* --color-placeholder-dark stays dark in every theme (unlike --color-gray-dark,
+     which inverts to a light value in dark/HCW and left the white text invisible). */
+  color: var(--color-placeholder-dark-fg);
 }
 
 .gradient {

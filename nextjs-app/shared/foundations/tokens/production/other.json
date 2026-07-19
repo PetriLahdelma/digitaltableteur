@@ -164,6 +164,24 @@
       }
     }
   },
+  "switch": {
+    "handle": {
+      "ring": {
+        "color": {
+          "$value": "transparent",
+          "$description": "Production token --switch-handle-ring-color",
+          "$type": "color",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--switch-handle-ring-color",
+              "category": "other",
+              "subgroup": "General"
+            }
+          }
+        }
+      }
+    }
+  },
   "wavy": {
     "underline": {
       "mask": {

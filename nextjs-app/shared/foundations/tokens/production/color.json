@@ -227,6 +227,18 @@
             "subgroup": "Semantic"
           }
         }
+      },
+      "dark": {
+        "$value": "#0046b8",
+        "$description": "Color token (primary-dark).",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-primary-dark",
+            "category": "color",
+            "subgroup": "Semantic"
+          }
+        }
       }
     },
     "title": {
@@ -335,6 +347,34 @@
         }
       }
     },
+    "placeholder": {
+      "dark": {
+        "DEFAULT": {
+          "$value": "#222",
+          "$description": "Color token (placeholder-dark).",
+          "$type": "color",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--color-placeholder-dark",
+              "category": "color",
+              "subgroup": "Semantic"
+            }
+          }
+        },
+        "fg": {
+          "$value": "#fff",
+          "$description": "Color token (placeholder-dark-fg).",
+          "$type": "color",
+          "$extensions": {
+            "digitaltableteur": {
+              "cssVar": "--color-placeholder-dark-fg",
+              "category": "color",
+              "subgroup": "Semantic"
+            }
+          }
+        }
+      }
+    },
     "react": {
       "$value": "#61dafb",
       "$description": "Color token (react).",
@@ -374,14 +414,40 @@
       }
     },
     "info": {
-      "$value": "#0c7a8b",
-      "$description": "Informational alerts and neutral-positive emphasis.",
-      "$type": "color",
-      "$extensions": {
-        "digitaltableteur": {
-          "cssVar": "--color-info",
-          "category": "color",
-          "subgroup": "Status & feedback"
+      "DEFAULT": {
+        "$value": "#0c7a8b",
+        "$description": "Informational alerts and neutral-positive emphasis.",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-info",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
+        }
+      },
+      "bg": {
+        "$value": "#e6f4ff",
+        "$description": "Color token (info-bg).",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-info-bg",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
+        }
+      },
+      "text": {
+        "$value": "#0c5460",
+        "$description": "Color token (info-text).",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--color-info-text",
+            "category": "color",
+            "subgroup": "Status & feedback"
+          }
         }
       }
     },

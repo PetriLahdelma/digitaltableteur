@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-19T13:28:08.351Z",
-  "tokenCount": 186,
-  "usageCoverage": 151,
+  "generatedAt": "2026-07-19T15:36:32.450Z",
+  "tokenCount": 192,
+  "usageCoverage": 156,
   "themes": [
     {
       "id": "light",
@@ -967,6 +967,27 @@
           "subgroup": "Semantic"
         },
         {
+          "name": "--color-primary-dark",
+          "value": "#0046b8",
+          "usage": "Color token (primary-dark).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-placeholder-dark",
+          "value": "#222",
+          "usage": "Color token (placeholder-dark).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-placeholder-dark-fg",
+          "value": "#fff",
+          "usage": "Color token (placeholder-dark-fg).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
           "name": "--color-react",
           "value": "#61dafb",
           "usage": "Color token (react).",
@@ -1005,6 +1026,20 @@
           "name": "--color-info",
           "value": "#0c7a8b",
           "usage": "Informational alerts and neutral-positive emphasis.",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-info-bg",
+          "value": "#e6f4ff",
+          "usage": "Color token (info-bg).",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-info-text",
+          "value": "#0c5460",
+          "usage": "Color token (info-text).",
           "category": "color",
           "subgroup": "Status & feedback"
         },
@@ -1536,6 +1571,13 @@
         {
           "name": "--shortcut-hint-color",
           "value": "#4b5563",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--switch-handle-ring-color",
+          "value": "transparent",
           "usage": "",
           "category": "other",
           "subgroup": "General"
