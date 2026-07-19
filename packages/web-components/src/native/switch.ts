@@ -27,7 +27,7 @@ const styles = `
   .handle { position: absolute; top: 50%; inset-inline-start: 0.15rem; translate: 0 -50%; aspect-ratio: 1; block-size: calc(var(--switch-height) - 0.3rem); border-radius: 50%; background: var(--switch-handle-bg, white); box-shadow: 0 2px 6px rgb(15 23 42 / 18%); transition: translate var(--duration-fast, 160ms) ease; }
   button[aria-checked="true"] .handle { translate: calc(var(--switch-width) - var(--switch-height)) -50%; }
   .loading .handle::after { content: ""; position: absolute; inset: 20%; border: 1px solid currentcolor; border-inline-end-color: transparent; border-radius: 50%; animation: spin 700ms linear infinite; }
-  .message { margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--color-primary); }
+  .message { margin: var(--space-internal-8, 0.5rem) 0 0; font-size: 0.875rem; color: var(--color-primary); }
   .error { color: var(--color-error-text, var(--color-error)); }
   @keyframes spin { to { rotate: 1turn; } }
   @media (prefers-reduced-motion: reduce) { button, .handle { transition: none; } .loading .handle::after { animation: none; } }
