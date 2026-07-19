@@ -60,7 +60,10 @@ function main() {
     lines.push(line);
   }
 
-  lines.push(END);
+  // Blank line before the END marker so the generated block satisfies
+  // stylelint's comment-empty-line-before rule (matches the committed,
+  // lint-valid form; otherwise every build:tokens re-dirties tailwind.css).
+  lines.push("", END);
 
   let css = readFileSync(TAILWIND_CSS, "utf8");
   const block = `${lines.join("\n")}\n`;
