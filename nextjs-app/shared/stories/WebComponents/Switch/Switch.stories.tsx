@@ -51,6 +51,8 @@ const meta = {
     loading: false,
     size: "md",
     labelPlacement: "right",
+    helperText: "",
+    error: "",
   },
   argTypes: {
     size: { control: "inline-radio", options: ["sm", "md", "lg"] },
@@ -58,6 +60,9 @@ const meta = {
       control: "inline-radio",
       options: ["left", "right", "top"],
     },
+    // Match the React Switch control surface (the 8 meaningful knobs).
+    helperText: { control: "text" },
+    error: { control: "text" },
   },
 } satisfies Meta<typeof NativeSwitch>;
 export default meta;

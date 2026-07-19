@@ -90,6 +90,24 @@ const meta: Meta<typeof Switch> = {
   // label is ReactNode on the contract (autogen hides those) but accepts plain
   // text, so it keeps an authored text control.
   argTypes: {
+    // `checked` is the controlled half of the checked/defaultChecked pair, so
+    // the autogen force-hides it (an unwired controlled prop would lock the
+    // canvas). These stories DO wire it through ControlledTemplate, so expose
+    // an on/off toggle here to match the dt-switch web-component story — an
+    // authored argType wins over the autogen, and the contract-based
+    // audit:controls predicate still counts it hidden-by-design (no drift).
+    checked: {
+      control: { type: "boolean" },
+      description: "Whether the switch is on. Toggling flips the control.",
+      table: { category: "State", type: { summary: "boolean" } },
+    },
+    // Keep the control surface equal to the dt-switch web-component twin (the
+    // 8 meaningful knobs). `defaultChecked` is mount-only — React's useState
+    // ignores prop changes after mount, so toggling it does nothing live; the
+    // real on/off is `checked` above. `className` is a react-docgen leak (not a
+    // contract prop) that renders a useless "Set object" widget.
+    defaultChecked: { table: { disable: true } },
+    className: { table: { disable: true } },
     label: {
       control: { type: "text" },
       description: "Label text displayed next to the switch",

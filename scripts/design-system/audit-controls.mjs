@@ -166,6 +166,9 @@ const SKIP = PLUMBING
 // shared hiddenByDesign() predicate cannot express. Every entry carries its
 // justification, mirroring EFFECT_EXEMPT.
 const HIDDEN_EXEMPT = {
+    Switch: {
+        defaultChecked: 'mount-only in Storybook: React useState ignores prop changes after mount, so a defaultChecked knob is inert. The live on/off is the controlled `checked` prop (driven by ControlledTemplate), matching the dt-switch web-component surface.',
+    },
     Grid: {
         tabletColumns: 'viewport-dependent: only changes tracks past 768px, so a panel knob at the default viewport looks inert; demoed by the ResponsiveColumns story',
         desktopColumns: 'viewport-dependent (1024px rung); demoed by the ResponsiveColumns story',
