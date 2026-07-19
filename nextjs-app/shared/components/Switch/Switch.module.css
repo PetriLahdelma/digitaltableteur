@@ -77,8 +77,29 @@
   outline-offset: var(--focus-ring-offset, 2px);
 }
 
-/* Forced colors mode (Windows High Contrast) */
+/* Forced colors mode (Windows High Contrast).
+   Without explicit system colors the track background is forced to Canvas and
+   the handle to Canvas — the whole control disappears (white on white). Keep it
+   perceivable: outline the track (CanvasText, no box-model shift), fill the
+   handle (CanvasText), and use Highlight for the on-state track. `outline` is
+   used rather than `border` so the handle's absolute position is unaffected.
+   Mirrors the native dt-switch twin so both render identically. */
 @media (forced-colors: active) {
+  .switch {
+    outline: 1px solid CanvasText;
+    background-color: Canvas;
+    forced-color-adjust: none;
+  }
+
+  .switch[data-checked="true"] {
+    background-color: Highlight;
+  }
+
+  .handle {
+    background-color: CanvasText;
+    box-shadow: none;
+  }
+
   .switch:focus-visible {
     outline: 3px solid Highlight;
     outline-offset: 2px;

@@ -31,7 +31,7 @@ const styles = `
   .error { color: var(--color-error-text, var(--color-error)); }
   @keyframes spin { to { rotate: 1turn; } }
   @media (prefers-reduced-motion: reduce) { button, .handle { transition: none; } .loading .handle::after { animation: none; } }
-  @media (forced-colors: active) { button { forced-color-adjust: none; background: Canvas; border-color: CanvasText; } button[aria-checked="true"] { background: Highlight; } .handle { background: CanvasText; } }
+  @media (forced-colors: active) { button { forced-color-adjust: none; background: Canvas; outline: 1px solid CanvasText; } button[aria-checked="true"] { background: Highlight; } .handle { background: CanvasText; box-shadow: none; } }
 `;
 
 export class DtSwitchElement extends DigitaltableteurElement {
