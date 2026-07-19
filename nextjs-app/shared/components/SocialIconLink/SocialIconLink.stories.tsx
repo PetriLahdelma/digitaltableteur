@@ -23,7 +23,7 @@ const meta = {
   },
   // Custom MDX docs pages exist for all catalog entries; do not also enable autodocs
   // or Storybook will treat it as conflicting sources of truth for the docs page.
-  tags: ["!autodocs"],
+  tags: ["alpha", "!autodocs"],
   argTypes: {
     variant: {
       control: "radio",

@@ -34,6 +34,9 @@ npm run check:token-packages
 npm run check:published-tokens-freshness -- --max-age-days 7
 npm run check:contract-props
 npm run check:consumers
+# Sidebar lifecycle dot is drawn only from a meta lifecycle tag; keep it in
+# sync with each component's contract status (see check-story-lifecycle-tags).
+npm run check:story-lifecycle-tags
 npm run check:astryx-roadmap
 # figma-links is a ratchet over contract `figma` fields + figma-component-index.json.
 # Only run it when a figma-governing file actually changed, so a stale baseline

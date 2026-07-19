@@ -35,6 +35,7 @@ jobs:
       - run: npm run build:tokens
       - run: npm run check:contract-drift -- --strict
       - run: npm run check:contract-props
+      - run: npm run check:story-lifecycle-tags
       - run: npm run build:zod-catalog
       - run: npm run check:generated
       - run: npm run agent:eval

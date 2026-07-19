@@ -4,6 +4,7 @@ import { WipBadge } from "./WipBadge";
 const meta: Meta<typeof WipBadge> = {
   title: "Site/WipBadge",
   component: WipBadge,
+  tags: ["beta"],
   parameters: {
     design: {
       type: "figma",

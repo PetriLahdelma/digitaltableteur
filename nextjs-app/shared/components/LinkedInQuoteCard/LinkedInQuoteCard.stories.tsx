@@ -191,6 +191,7 @@ export default {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
   title: "Site/LinkedInQuoteCard",
   component: LinkedInQuoteCard,
+  tags: ["beta"],
   parameters: {
     design: {
       type: "figma",

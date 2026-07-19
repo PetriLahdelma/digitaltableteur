@@ -13,6 +13,11 @@ import board from "../../stories/MigrationDecisionBoard/MigrationDecisionBoard.m
 
 const meta = {
   title: "Actions/Button",
+  // Shares the "Actions/Button" node with Button.stories.tsx. The sidebar dot
+  // is the intersection of all the node's story tags, so this secondary CSF
+  // must also carry the lifecycle tag or it strips Button's dot (enforced by
+  // check:story-lifecycle-tags). No autodocs here — docs stay disabled.
+  tags: ["stable"],
   parameters: {
     layout: "fullscreen",
     docs: { disable: true },
