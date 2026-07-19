@@ -1,19 +1,25 @@
 .stage {
+  /* Decorative dot grid: half-strength border-light, resolved per theme.
+     HCW overrides this below to 25% — it pairs a deliberately bold dark
+     border-light (#444) with a white canvas, so a 50% mix still reads
+     near-solid; 25% lets the grid recede like the other themes. */
+  --stage-dot: color-mix(in srgb, var(--color-border-light) 50%, transparent);
+
   margin-block: var(--space-internal-24);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg, 12px);
   background:
-    radial-gradient(
-      circle at 1px 1px,
-      var(--color-border-light) 1px,
-      transparent 0
-    );
+    radial-gradient(circle at 1px 1px, var(--stage-dot) 1px, transparent 0);
   background-size: 24px 24px;
   background-color: var(--main-body-background-color);
   padding: var(--space-layout-32) var(--space-internal-24);
   min-block-size: 160px;
   display: grid;
   align-items: center;
+}
+
+:global(.themeHCW) .stage {
+  --stage-dot: color-mix(in srgb, var(--color-border-light) 25%, transparent);
 }
 
 @media (width >= 768px) {
