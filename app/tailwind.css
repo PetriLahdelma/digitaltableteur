@@ -135,12 +135,17 @@
   --color-dt-gray-medium: var(--color-gray-medium);
   --color-dt-header-bg: var(--color-header-bg);
   --color-dt-info: var(--color-info);
+  --color-dt-info-bg: var(--color-info-bg);
+  --color-dt-info-text: var(--color-info-text);
   --color-dt-light-bg: var(--color-light-bg);
   --color-dt-muted: var(--color-muted);
   --color-dt-muted-light: var(--color-muted-light);
   --color-dt-neutral-bg: var(--color-neutral-bg);
   --color-dt-neutral-text: var(--color-neutral-text);
+  --color-dt-placeholder-dark: var(--color-placeholder-dark);
+  --color-dt-placeholder-dark-fg: var(--color-placeholder-dark-fg);
   --color-dt-primary: var(--color-primary);
+  --color-dt-primary-dark: var(--color-primary-dark);
   --color-dt-primary-disabled: var(--color-primary-disabled);
   --color-dt-react: var(--color-react);
   --color-dt-success: var(--color-success);

@@ -158,6 +158,19 @@
   --color-primary-disabled: #041b2350;
   --color-success: #068338;
   --color-info: #0c7a8b;
+
+  /* Info surface + on-info text (e.g. native CookieConsent "required" badge).
+     Previously phantom vars whose #hex fallbacks left the badge illegible in
+     HCB. --color-primary-dark is the Hero gradient end; --color-placeholder-dark
+     (+ -fg) is ImagePlaceholder's genuinely-dark variant surface (dark in every
+     theme so its light text stays legible). --switch-handle-ring-color is a
+     hairline ring shown only where the on-track matches the handle colour. */
+  --color-info-bg: #e6f4ff;
+  --color-info-text: #0c5460;
+  --color-primary-dark: #0046b8;
+  --color-placeholder-dark: #222;
+  --color-placeholder-dark-fg: #fff;
+  --switch-handle-ring-color: transparent;
   --color-error: #dc3545;
   --color-warning: #ffc107;
   --color-warning-contrast: #8d5a00;
@@ -374,6 +387,12 @@
   --color-primary-disabled: #6fa8ff50;
   --color-success: #4fd18b;
   --color-info: #71efff;
+  --color-info-bg: #0e2a33;
+  --color-info-text: #71efff;
+  --color-primary-dark: #0046b8;
+  --color-placeholder-dark: #2a2c2d;
+  --color-placeholder-dark-fg: #fff;
+  --switch-handle-ring-color: transparent;
   --color-error: #ff6b6b;
   --color-warning: #ffb366;
   --color-warning-contrast: #ffb366;
@@ -449,6 +468,12 @@
   --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
   --color-success: #fff;
   --color-info: #fff;
+  --color-info-bg: #000;
+  --color-info-text: #fff;
+  --color-primary-dark: #fff;
+  --color-placeholder-dark: #2a2a2a;
+  --color-placeholder-dark-fg: #fff;
+  --switch-handle-ring-color: var(--color-border);
   --color-error: #fff;
   --color-warning: #fff;
   --color-warning-contrast: #fff;
@@ -560,6 +585,12 @@
   --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
   --color-success: #000;
   --color-info: #000;
+  --color-info-bg: #fff;
+  --color-info-text: #000;
+  --color-primary-dark: #000;
+  --color-placeholder-dark: #1a1a1a;
+  --color-placeholder-dark-fg: #fff;
+  --switch-handle-ring-color: transparent;
   --color-error: #000;
   --color-warning: #000;
   --color-warning-contrast: #000;
@@ -660,6 +691,12 @@
     --color-warning: CanvasText;
     --color-warning-contrast: CanvasText;
     --color-info: CanvasText;
+    --color-info-bg: Canvas;
+    --color-info-text: CanvasText;
+    --color-primary-dark: Canvas;
+    --color-placeholder-dark: Canvas;
+    --color-placeholder-dark-fg: CanvasText;
+    --switch-handle-ring-color: transparent;
   }
 }
 

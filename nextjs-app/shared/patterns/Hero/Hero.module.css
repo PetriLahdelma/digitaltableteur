@@ -18,14 +18,14 @@
 
 .background-dark {
   background: var(--color-primary);
-  color: var(--color-text-inverse, #fff);
+  color: var(--inverted-text-color);
 }
 
 .background-gradient {
   background: linear-gradient(
     135deg,
     var(--color-primary) 0%,
-    var(--color-primary-dark, #0046b8) 100%
+    var(--color-primary-dark) 100%
   );
   color: var(--color-white);
 }
