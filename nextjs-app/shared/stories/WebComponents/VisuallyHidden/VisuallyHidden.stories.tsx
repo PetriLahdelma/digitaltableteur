@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   NativeElement,
-  TriggerButton,
   assertNative,
   exampleStory,
   forcedColorsStory,
@@ -30,13 +29,23 @@ export const Playground: Story = {};
 export const Default: Story = { play: assertNative("dt-visually-hidden") };
 export const Example: Story = {
   ...exampleStory,
+  // Mirror the React VisuallyHidden Example byte-for-byte: the same bare
+  // <button> (identical inline style) wrapping the component under test. The
+  // rendered-parity gate compares this pair; TriggerButton's own chrome
+  // (padding/border/radius) diverged from React's plain button.
   render: () => (
-    <TriggerButton>
+    <button
+      type="button"
+      style={{
+        fontFamily: "var(--font-text)",
+        padding: "var(--space-internal-12)",
+      }}
+    >
       Save
       <NativeElement tagName="dt-visually-hidden">
-        Saves your profile changes
+        {" — saves your profile changes"}
       </NativeElement>
-    </TriggerButton>
+    </button>
   ),
 };
 export const ForcedColors: Story = { ...forcedColorsStory };

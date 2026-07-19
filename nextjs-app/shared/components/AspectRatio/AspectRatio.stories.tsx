@@ -2,6 +2,14 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { AspectRatio } from "./AspectRatio";
 import contract from "./AspectRatio.contract.json";
 
+// Deterministic hero fixture, byte-identical to the native dt-aspect-ratio
+// Example story (shared/stories/WebComponents/AspectRatio). A network image
+// (picsum) is non-deterministic and can never pixel-match a twin; the
+// rendered-parity gate compares this fixture on both sides, so it must be an
+// inline data URI shared verbatim.
+const dataUriHero =
+  "data:image/svg+xml;utf8,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20640%20360%27%3E%3Cdefs%3E%3ClinearGradient%20id=%27g%27%20x1=%270%27%20x2=%271%27%20y1=%270%27%20y2=%271%27%3E%3Cstop%20offset=%270%25%27%20stop-color=%27%23dbeafe%27/%3E%3Cstop%20offset=%27100%25%27%20stop-color=%27%23bfdbfe%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width=%27640%27%20height=%27360%27%20fill=%27url(%23g)%27/%3E%3Crect%20x=%2740%27%20y=%2740%27%20width=%27560%27%20height=%27280%27%20rx=%2728%27%20fill=%27%23eff6ff%27/%3E%3Ccircle%20cx=%27184%27%20cy=%27146%27%20r=%2750%27%20fill=%27%2393c5fd%27/%3E%3Cpath%20d=%27M132%20240c34-46%2092-46%20126%200%27%20fill=%27none%27%20stroke=%27%233b82f6%27%20stroke-width=%2718%27%20stroke-linecap=%27round%27/%3E%3Crect%20x=%27296%27%20y=%27118%27%20width=%27220%27%20height=%2718%27%20rx=%279%27%20fill=%27%233b82f6%27/%3E%3Crect%20x=%27296%27%20y=%27154%27%20width=%27176%27%20height=%2718%27%20rx=%279%27%20fill=%27%2360a5fa%27/%3E%3Crect%20x=%27296%27%20y=%27190%27%20width=%22136%22%20height=%2218%22%20rx=%229%22%20fill=%22%2393c5fd%22/%3E%3C/svg%3E";
+
 const defaultArgs = {
   ratio: "16:9" as const,
   children: (
@@ -67,7 +75,7 @@ export const Example: Story = {
     <div style={{ width: 320 }}>
       <AspectRatio ratio="16:9">
         <img
-          src="https://picsum.photos/640/360"
+          src={dataUriHero}
           alt="Case study hero frame"
           className="h-full w-full object-cover"
         />

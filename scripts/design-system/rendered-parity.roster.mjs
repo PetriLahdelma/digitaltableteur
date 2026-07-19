@@ -15,11 +15,13 @@
  * ratio.
  */
 export const enforced = [
+  "AspectRatio",
   "Avatar",
   "Badge",
   "BlogMediaImage",
   "Container",
   "CookieConsent",
+  "Divider",
   "GroupLabel",
   "IconButton",
   "List",
@@ -29,7 +31,9 @@ export const enforced = [
   "SelectOption",
   "SkipLink",
   "SplitButton",
-  "Testimonial"
+  "Testimonial",
+  "Text",
+  "VisuallyHidden"
 ];
 
 export const exceptions = [];

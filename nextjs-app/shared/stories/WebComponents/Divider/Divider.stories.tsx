@@ -44,7 +44,14 @@ const meta = {
 } satisfies Meta<typeof NativeDivider>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-divider") };
+// Mirror the React Divider Default: a full-width horizontal rule under the
+// `padded` layout. The meta's centered Stage (24rem) made the native rule
+// shorter than React's, which was the entire Default pixel/geometry gap.
+export const Default: Story = {
+  parameters: { layout: "padded" },
+  render: () => <NativeElement tagName="dt-divider" />,
+  play: assertNative("dt-divider"),
+};
 export const Playground: Story = {};
 export const Vertical: Story = {
   ...exampleStory,
@@ -84,5 +91,20 @@ export const VerticalInRow: Story = {
     </div>
   ),
 };
-export const Example: Story = { ...exampleStory };
+// Mirror the React Divider Example byte-for-byte (same wrapper width, font,
+// and the two paragraphs around the rule). The old `...exampleStory` rendered
+// the meta's single 24rem Stage divider — nothing like the React pair.
+export const Example: Story = {
+  ...exampleStory,
+  parameters: { layout: "padded", controls: { disable: true } },
+  render: () => (
+    <div
+      style={{ inlineSize: "min(24rem, 100%)", fontFamily: "var(--font-text)" }}
+    >
+      <p>Section one</p>
+      <NativeElement tagName="dt-divider" />
+      <p>Section two</p>
+    </div>
+  ),
+};
 export const ForcedColors: Story = { ...forcedColorsStory };
