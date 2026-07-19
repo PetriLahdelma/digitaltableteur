@@ -132,6 +132,22 @@
       }
     }
   },
+  "code": {
+    "toolbar": {
+      "text": {
+        "$value": "#2b3a45",
+        "$description": "Production token --code-toolbar-text",
+        "$type": "color",
+        "$extensions": {
+          "digitaltableteur": {
+            "cssVar": "--code-toolbar-text",
+            "category": "other",
+            "subgroup": "General"
+          }
+        }
+      }
+    }
+  },
   "shortcut": {
     "hint": {
       "color": {

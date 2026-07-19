@@ -1,7 +1,7 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-19T11:18:13.166Z",
-  "tokenCount": 185,
+  "generatedAt": "2026-07-19T13:28:08.351Z",
+  "tokenCount": 186,
   "usageCoverage": 151,
   "themes": [
     {
@@ -1522,6 +1522,13 @@
         {
           "name": "--inverted-text-color",
           "value": "#fff",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--code-toolbar-text",
+          "value": "#2b3a45",
           "usage": "",
           "category": "other",
           "subgroup": "General"
