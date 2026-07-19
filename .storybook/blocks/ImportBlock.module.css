@@ -13,6 +13,7 @@
   margin: 0;
   flex: 1;
   overflow-x: auto;
+  overflow-inline: auto;
   font-size: var(--font-size-text-s);
   line-height: 1.6;
 }

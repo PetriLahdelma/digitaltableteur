@@ -8,7 +8,7 @@
 .versioningInner {
   display: grid;
   margin-inline: auto;
-  max-width: min(100%, 42rem);
+  max-inline-size: min(100%, 42rem);
   justify-items: center;
   gap: var(--space-layout-16);
   text-align: center;
@@ -18,8 +18,8 @@
   position: absolute;
   margin: 0;
   padding: 0;
-  width: 1px;
-  height: 1px;
+  inline-size: 1px;
+  block-size: 1px;
   border: 0;
   white-space: nowrap;
   clip-path: inset(50%);
@@ -38,16 +38,16 @@
 
 .stackLogo {
   display: inline-grid;
-  width: 1.5rem;
-  height: 1.5rem;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
   place-items: center;
   color: color-mix(in srgb, var(--color-text) 32%, transparent);
   opacity: 0.8;
 }
 
 .stackLogo svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
 }
 
 .packageList {
@@ -65,7 +65,7 @@
 .packageItem {
   display: inline-flex;
   padding-inline: var(--space-layout-4);
-  min-width: 0;
+  min-inline-size: 0;
   align-items: center;
   gap: var(--space-layout-4);
   line-height: 1.2;

@@ -5,8 +5,8 @@
 .wipBadgeContainer {
   display: flex;
   position: fixed;
-  right: var(--space-internal-12);
-  bottom: var(--space-internal-12);
+  inset-inline-end: var(--space-internal-12);
+  inset-block-end: var(--space-internal-12);
   z-index: 9999; /* Ensure always on top */
   pointer-events: none; /* Prevent interfering with component interactions */
 }
@@ -23,8 +23,8 @@
 .wipBadgeDocs {
   display: flex;
   position: fixed;
-  right: var(--space-internal-12);
-  bottom: var(--space-internal-12);
+  inset-inline-end: var(--space-internal-12);
+  inset-block-end: var(--space-internal-12);
   z-index: 9999; /* Ensure always on top, never overlaps docs content */
   pointer-events: none;
 }

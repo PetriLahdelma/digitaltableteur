@@ -12,8 +12,8 @@
 
 .portrait {
   margin-block: auto;
-  block-size: clamp(96px, 18vw, 96px);
-  inline-size: clamp(96px, 18vw, 96px);
+  block-size: clamp(96px, 18vi, 96px);
+  inline-size: clamp(96px, 18vi, 96px);
   border-radius: 100rem;
   aspect-ratio: 1;
   clip-path: inset(2px round 50%);
@@ -23,12 +23,12 @@
 .personDetails {
   display: grid;
   justify-items: start;
-  text-align: left;
+  text-align: start;
 }
 
 .portraitSkeleton {
-  block-size: clamp(96px, 18vw, 96px);
-  inline-size: clamp(96px, 18vw, 96px);
+  block-size: clamp(96px, 18vi, 96px);
+  inline-size: clamp(96px, 18vi, 96px);
 }
 
 .nameSkeleton,

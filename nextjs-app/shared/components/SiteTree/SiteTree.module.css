@@ -109,7 +109,7 @@
 /* Sitemap links use a plain underline on hover, not the global wavy decoration */
 
 .root :global(.wavyUnderline) {
-  padding-bottom: 0;
+  padding-block-end: 0;
 }
 
 .root :global(.wavyUnderline::after) {

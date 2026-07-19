@@ -26,7 +26,7 @@
   display: flex;
   padding-block: var(--space-layout-48);
   padding-inline: var(--space-layout-24);
-  min-height: 100vh;
+  min-block-size: 100vb;
   justify-content: center;
   align-items: center;
   background-color: var(--esg-page-bg);
@@ -46,8 +46,8 @@
 }
 
 .content {
-  width: 100%;
-  max-width: 720px;
+  inline-size: 100%;
+  max-inline-size: 720px;
 }
 
 /* Header */
@@ -197,8 +197,8 @@
 .themeToggleButton {
   display: flex;
   padding: 0;
-  width: 32px;
-  height: 32px;
+  inline-size: 32px;
+  block-size: 32px;
   justify-content: center;
   align-items: center;
   border: none;

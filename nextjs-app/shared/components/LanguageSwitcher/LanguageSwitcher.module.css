@@ -8,7 +8,8 @@
 /* Position only — never animate transform on this node. */
 .optionsTrayAnchor {
   position: absolute;
-  inset-block-start: 50%;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateY(). */
+  top: 50%;
   inset-inline-end: 100%;
   z-index: 50;
   padding-inline-end: var(--space-internal-4);
@@ -26,7 +27,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: var(--space-internal-4);
-  width: max-content;
+  inline-size: max-content;
   transform-origin: 100% 50%;
 }
 

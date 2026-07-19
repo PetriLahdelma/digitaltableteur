@@ -47,6 +47,7 @@
 .single .pre {
   white-space: nowrap;
   overflow-x: auto;
+  overflow-inline: auto;
 }
 
 .multi .pre {
@@ -58,7 +59,7 @@
   display: flex;
   padding-block: var(--space-layout-8);
   padding-inline: var(--space-layout-16);
-  min-height: 44px;
+  min-block-size: 44px;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-internal-12);
@@ -87,7 +88,7 @@
 }
 
 .copyStatus {
-  min-width: 5ch;
+  min-inline-size: 5ch;
   font-size: var(--font-size-text-xxs, 0.75rem);
   color: var(--code-toolbar-text, #2b3a45);
 }
@@ -171,8 +172,8 @@
 }
 
 .pre::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  inline-size: 8px;
+  block-size: 8px;
 }
 
 .pre::-webkit-scrollbar-thumb {
@@ -186,7 +187,7 @@
 
 .code {
   display: block;
-  min-width: 100%;
+  min-inline-size: 100%;
 }
 
 .line {
@@ -199,8 +200,8 @@
 }
 
 .lineNumber {
-  min-width: 2ch;
-  text-align: right;
+  min-inline-size: 2ch;
+  text-align: end;
   color: var(--code-line-number);
   font-variant-numeric: tabular-nums;
   user-select: none;
@@ -317,7 +318,7 @@
 }
 
 .expandControl button {
-  width: 100%;
+  inline-size: 100%;
 }
 
 @media (width >= 768px) {

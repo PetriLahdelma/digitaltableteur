@@ -3,8 +3,9 @@
 .container {
   display: flex;
   position: fixed;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateY(). */
   top: 50%;
-  right: var(--space-layout-24, 1.5rem);
+  inset-inline-end: var(--space-layout-24, 1.5rem);
   z-index: 30;
   padding: var(--space-internal-16, 1rem);
   flex-direction: column;
@@ -45,7 +46,7 @@
 
 .splitButtonLabel {
   padding: var(--space-internal-6, 0.375rem) var(--space-internal-12, 0.75rem);
-  min-width: 5rem;
+  min-inline-size: 5rem;
   background: var(--color-primary);
   font-family: var(--font-body);
   font-size: var(--font-size-text-s);
@@ -87,12 +88,12 @@
 
 .dropdown {
   position: absolute;
-  top: 100%;
-  right: 0;
+  inset-block-start: 100%;
+  inset-inline-end: 0;
   z-index: 10;
   margin-block-start: var(--space-internal-4, 0.25rem);
   padding: var(--space-internal-4, 0.25rem);
-  min-width: 100%;
+  min-inline-size: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md, 8px);
   background: var(--main-body-background-color);
@@ -104,7 +105,7 @@
 .dropdownItem {
   display: block;
   padding: var(--space-internal-8, 0.5rem) var(--space-internal-12, 0.75rem);
-  width: 100%;
+  inline-size: 100%;
   border: none;
   border-radius: var(--radius-sm, 4px);
   background: transparent;
@@ -150,7 +151,7 @@
   /* Fill the grid column so the 2x2 tiles align flush with the split
      button above (Figma node 310:899 sidebar) — fixed widths left the
      right column ragged. Mobile override keeps fixed 2.75rem tiles. */
-  width: 100%;
+  inline-size: 100%;
   aspect-ratio: 1;
   justify-content: center;
   align-items: center;
@@ -177,16 +178,17 @@
 }
 
 .icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
 }
 
 /* Tooltip */
 
 .tooltip {
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateY(). */
   top: 50%;
-  right: 100%;
+  inset-inline-end: 100%;
   margin-inline-end: var(--space-internal-8, 0.5rem);
   padding: var(--space-internal-6) var(--space-internal-12);
   border-radius: var(--radius-sm, 4px);
@@ -229,15 +231,15 @@
 /* Gemini icon needs to be slightly smaller to match visual weight */
 
 .iconGemini {
-  width: 1.275rem;
-  height: 1.275rem;
+  inline-size: 1.275rem;
+  block-size: 1.275rem;
 }
 
 /* Perplexity mark reads ~2px smaller than the others at the same box;
    nudge it up to match optical weight (24px -> 26px). */
 .iconPerplexity {
-  width: 1.625rem;
-  height: 1.625rem;
+  inline-size: 1.625rem;
+  block-size: 1.625rem;
 }
 
 /* Personalize toggle — wraps the @dt Checkbox (label sizing and checkbox
@@ -253,18 +255,17 @@
 @media (width < 768px) {
   .container {
     position: fixed;
-    top: auto;
-    right: var(--space-layout-16, 1rem);
-    bottom: var(--space-layout-24, 1.5rem);
+    inset-block: auto var(--space-layout-24, 1.5rem);
+    inset-inline-end: var(--space-layout-16, 1rem);
     padding: var(--space-internal-12, 0.75rem);
-    max-width: calc(100vw - var(--space-layout-32, 2rem));
+    max-inline-size: calc(100vi - var(--space-layout-32, 2rem));
     transform: none;
     flex-flow: row wrap;
   }
 
   .header {
     padding-block-end: var(--space-internal-8, 0.5rem);
-    width: 100%;
+    inline-size: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -280,19 +281,19 @@
   }
 
   .iconList {
-    width: 100%;
+    inline-size: 100%;
     grid-template-columns: repeat(4, auto);
     justify-content: center;
   }
 
   .iconLink {
-    width: 2.75rem;
-    height: 2.75rem;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
   }
 
   .icon {
-    width: 1.25rem;
-    height: 1.25rem;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
   }
 
   .tooltip {
@@ -300,12 +301,12 @@
   }
 
   .iconGemini {
-    width: 1.0625rem;
-    height: 1.0625rem;
+    inline-size: 1.0625rem;
+    block-size: 1.0625rem;
   }
 
   .personalizeToggle {
-    width: 100%;
+    inline-size: 100%;
     justify-content: center;
   }
 }

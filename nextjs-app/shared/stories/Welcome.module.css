@@ -1,8 +1,8 @@
 .wrapper {
   display: flex;
   margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 3rem);
-  max-width: 960px;
+  padding: clamp(1.5rem, 4vi, 3rem);
+  max-inline-size: 960px;
   flex-direction: column;
   gap: 2rem;
   font-family: var(--primary-body-font, sans-serif);
@@ -21,7 +21,7 @@
 }
 
 .subtitle {
-  max-width: 48rem;
+  max-inline-size: 48rem;
   font-size: 1.05rem;
   opacity: 0.85;
 }

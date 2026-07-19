@@ -33,7 +33,7 @@
 .metaGrid {
   display: grid;
   margin-inline: auto;
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
   grid-template-columns: 1fr 1.5fr;
   gap: var(--space-layout-64);
 }
@@ -84,15 +84,15 @@
 .specimenFigure {
   display: flex;
   margin: 0;
-  width: 100%;
+  inline-size: 100%;
   flex-direction: column;
   gap: var(--space-layout-16);
 }
 
 .specimenSvg {
   display: block;
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   overflow: visible;
 }
 

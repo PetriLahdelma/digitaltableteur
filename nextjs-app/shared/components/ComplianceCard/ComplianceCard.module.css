@@ -23,8 +23,8 @@
 
 .headerIcon svg {
   display: block;
-  width: 1.75rem;
-  height: 1.75rem;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
 }
 
 .headerTitle {
@@ -50,18 +50,18 @@
   }
 
   .headerIcon svg {
-    width: 2rem;
-    height: 2rem;
+    inline-size: 2rem;
+    block-size: 2rem;
   }
 }
 
 .tableWrapper {
   position: relative;
   margin-block-start: 0;
-  min-width: 400px;
-  max-width: 1200px;
-  min-height: 200px;
-  max-height: 800px;
+  min-inline-size: 400px;
+  max-inline-size: 1200px;
+  min-block-size: 200px;
+  max-block-size: 800px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   resize: both;
@@ -71,8 +71,8 @@
   display: grid;
   padding-block-end: 16px;
   padding-inline-end: 16px;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   grid-template-rows: repeat(auto-fill, minmax(120px, 1fr));
   grid-auto-flow: column;
   gap: var(--space-internal-12);
@@ -115,10 +115,10 @@
 
 .resizeHandle {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 16px;
-  height: 16px;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  inline-size: 16px;
+  block-size: 16px;
   cursor: nwse-resize;
 }
 
@@ -132,14 +132,14 @@
 }
 
 .fitContent {
-  width: fit-content !important;
-  max-width: fit-content !important;
+  inline-size: fit-content !important;
+  max-inline-size: fit-content !important;
 }
 
 /* stylelint-disable selector-pseudo-class-no-unknown -- Intentional :global escape for Card integration */
 
 .fitContent :global(.actions),
 .fitContent :global(.footer) {
-  border-top: none !important;
+  border-block-start: none !important;
 }
 /* stylelint-enable selector-pseudo-class-no-unknown */

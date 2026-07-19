@@ -5,8 +5,8 @@
   padding-block: var(--space-layout-64);
   padding-inline: var(--page-margin-mobile);
   box-sizing: border-box;
-  min-width: 0;
-  max-width: var(--container-md);
+  min-inline-size: 0;
+  max-inline-size: var(--container-md);
 }
 
 @media (width >= 768px) {
@@ -27,7 +27,7 @@
 
 .intro {
   margin-block-start: var(--space-layout-16);
-  max-width: 640px;
+  max-inline-size: 640px;
   font-size: var(--font-size-lg);
   line-height: 1.6;
   color: var(--secondary-text-color);

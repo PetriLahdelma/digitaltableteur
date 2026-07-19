@@ -228,7 +228,7 @@ const styles = `
     border-radius: var(--radius-md);
     outline: none;
     background: none;
-    text-align: left;
+    text-align: start;
     text-decoration: none;
     color: inherit;
     cursor: pointer;

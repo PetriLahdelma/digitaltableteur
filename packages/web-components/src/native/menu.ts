@@ -94,7 +94,7 @@ const styles = `
     border-radius: var(--radius-md);
     outline: none;
     background: none;
-    text-align: left;
+    text-align: start;
     text-decoration: none;
     color: inherit;
     cursor: pointer;
@@ -144,7 +144,7 @@ const styles = `
     font: inherit;
     font-size: var(--font-size-text-s) !important;
     line-height: var(--line-height-normal) !important;
-    text-align: left;
+    text-align: start;
     text-decoration: none !important;
     cursor: pointer;
     user-select: none;

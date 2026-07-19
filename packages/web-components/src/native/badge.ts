@@ -26,10 +26,10 @@ const styles = `
      line box whose leading adds a half pixel around icon content. */
   :host { display: inline-flex; vertical-align: middle; }
   :host([hidden]) { display: none; }
-  .badge { box-sizing: border-box; display: inline-flex; width: fit-content; height: 40px; padding: 0 var(--space-internal-16); align-items: center; gap: 0.25em; border: 2px solid transparent; border-radius: 999px; font-family: var(--primary-body-font); font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; }
-  .xs { height: 24px; padding-inline: var(--space-internal-8); font-size: 0.75rem; }
-  .sm { height: 32px; padding-inline: var(--space-internal-12); font-size: 0.75rem; }
-  .lg { height: 56px; font-size: 1.25rem; }
+  .badge { box-sizing: border-box; display: inline-flex; inline-size: fit-content; block-size: 40px; padding: 0 var(--space-internal-16); align-items: center; gap: 0.25em; border: 2px solid transparent; border-radius: 999px; font-family: var(--primary-body-font); font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; }
+  .xs { block-size: 24px; padding-inline: var(--space-internal-8); font-size: 0.75rem; }
+  .sm { block-size: 32px; padding-inline: var(--space-internal-12); font-size: 0.75rem; }
+  .lg { block-size: 56px; font-size: 1.25rem; }
   .square { border-radius: 0; }
   .primary { background: var(--color-primary); color: var(--color-white); }
   .secondary { border-color: var(--color-primary); background: transparent; color: var(--color-primary); }

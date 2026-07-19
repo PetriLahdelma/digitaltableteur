@@ -1,10 +1,24 @@
 {
   "audit": {
     "ignore": [
-      "**/pages/Work/**",
-      "**/stories/**",
-      "**/*.stories.module.css",
-      "**/foundations/doc/**"
+      ".claude/**",
+      ".history/**",
+      "api-legacy-vercel-functions/**",
+      "coverage/**",
+      "digitaltableteur-blog/**",
+      "dist/**",
+      "e2e/**",
+      "nextjs-app/shared/foundations/dist/**",
+      "nextjs-app/src/**",
+      "packages/*/dist/**",
+      "playwright-report/**",
+      "scripts/**",
+      "src-legacy-vite-DO-NOT-USE/**",
+      "storybook-static/**",
+      "test-stubs/**",
+      "test-utils/**",
+      "tests/**",
+      "vite-app/**"
     ],
     "tokenSources": [
       { "path": "./nextjs-app/shared/styles/variables.css", "format": "css" }

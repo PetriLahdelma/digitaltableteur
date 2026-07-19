@@ -28,7 +28,7 @@ const styles = `
   }
   .trayAnchor {
     position: absolute;
-    inset-block-start: 50%;
+    top: 50%;
     inset-inline-end: 100%;
     z-index: 50;
     padding-inline-end: var(--space-internal-4, 0.25rem);

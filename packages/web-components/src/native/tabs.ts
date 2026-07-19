@@ -64,10 +64,10 @@ const styles = `
   }
   .tabs.underline {
     gap: var(--space-internal-4, 0.25rem);
-    border-bottom: 1px solid var(--color-border, currentcolor);
+    border-block-end: 1px solid var(--color-border, currentcolor);
   }
   .tabs.vertical.underline {
-    border-bottom: 0;
+    border-block-end: 0;
     border-inline-start: 1px solid var(--color-border, currentcolor);
     padding-inline-start: var(--space-internal-4, 0.25rem);
   }
@@ -144,12 +144,12 @@ const styles = `
       block-size var(--duration-fast, 0.15s) var(--ease-out-cubic, ease);
   }
   .tabs.horizontal .indicator {
-    left: 0;
+    inset-inline-start: 0;
     inline-size: var(--tab-ind-size, 0px);
     transform: translateX(var(--tab-ind-offset, 0px));
   }
   .tabs.vertical .indicator {
-    top: 0;
+    inset-block-start: 0;
     block-size: var(--tab-ind-size, 0px);
     transform: translateY(var(--tab-ind-offset, 0px));
   }

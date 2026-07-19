@@ -2,34 +2,34 @@
 
 .pageLayout {
   box-sizing: border-box;
-  width: 100%;
-  min-width: 0;
+  inline-size: 100%;
+  min-inline-size: 0;
 }
 
 /* Maximum width constraints */
 
 .maxWidthSm {
   margin-inline: auto;
-  max-width: var(--container-sm); /* 640px */
+  max-inline-size: var(--container-sm); /* 640px */
 }
 
 .maxWidthMd {
   margin-inline: auto;
-  max-width: var(--container-md); /* 960px */
+  max-inline-size: var(--container-md); /* 960px */
 }
 
 .maxWidthLg {
   margin-inline: auto;
-  max-width: var(--container-lg); /* 1200px */
+  max-inline-size: var(--container-lg); /* 1200px */
 }
 
 .maxWidthXl {
   margin-inline: auto;
-  max-width: var(--container-xl); /* 1440px */
+  max-inline-size: var(--container-xl); /* 1440px */
 }
 
 .maxWidthFull {
-  max-width: 100%;
+  max-inline-size: 100%;
 }
 
 /* Grid system - responsive 12-column layout */

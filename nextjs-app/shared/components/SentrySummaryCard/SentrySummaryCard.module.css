@@ -65,7 +65,7 @@
   display: inline-flex;
   padding-block: 0.2em;
   padding-inline: 0.6em;
-  min-width: 2.25ch;
+  min-inline-size: 2.25ch;
   justify-content: center;
   align-items: center;
   border-radius: var(--radius-md);
@@ -160,7 +160,7 @@
   .issuesList::before {
     position: absolute;
     inset-inline: 0;
-    height: 6px;
+    block-size: 6px;
     background: linear-gradient(var(--color-light-bg), transparent);
     pointer-events: none;
     content: "";
@@ -170,7 +170,7 @@
   .issuesList::after {
     position: absolute;
     inset-inline: 0;
-    height: 6px;
+    block-size: 6px;
     background: linear-gradient(transparent, var(--color-light-bg));
     pointer-events: none;
     content: "";

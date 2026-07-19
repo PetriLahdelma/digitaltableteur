@@ -15,7 +15,7 @@
   justify-content: space-between;
   align-items: center;
   color: var(--color-white);
-  margin-bottom: var(--space-internal-8);
+  margin-block-end: var(--space-internal-8);
 }
 
 .badge {
@@ -25,12 +25,12 @@
 
 .statusIcon {
   display: inline-block;
-  width: 0.85rem;
-  height: 0.85rem;
+  inline-size: 0.85rem;
+  block-size: 0.85rem;
 }
 
 .table {
-  width: 100%;
+  inline-size: 100%;
   font-family: var(--font-text);
 
   /* Default text colour assumes primary background from parent (.root) */
@@ -47,7 +47,7 @@
 .table td {
   padding: var(--space-internal-4) var(--space-internal-8);
   font-weight: 400;
-  text-align: left;
+  text-align: start;
 }
 
 /* Zebra striping: even rows invert background to white; switch text back to primary for contrast */

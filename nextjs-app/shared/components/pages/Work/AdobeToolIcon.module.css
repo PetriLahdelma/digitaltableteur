@@ -1,7 +1,7 @@
 .icon {
   display: inline-grid;
-  width: 1.5rem;
-  height: 1.5rem;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
   place-items: center;
   border: 1px solid currentcolor;
   border-radius: var(--radius-sm, 0.25rem);

@@ -4,6 +4,7 @@
 .page {
   background-color: var(--main-body-background-color);
   overflow-x: clip;
+  overflow-inline: clip;
 }
 
 /* Hero — tighter mobile type, image spacing */
@@ -20,10 +21,10 @@
 
 @media (width < 768px) {
   .hero :global(h1) {
-    font-size: clamp(1.75rem, 8vw, 2.25rem);
+    font-size: clamp(1.75rem, 8vi, 2.25rem);
     line-height: 1.12;
     letter-spacing: -0.02em;
-    max-width: 100%;
+    max-inline-size: 100%;
     overflow-wrap: anywhere;
   }
 
@@ -55,7 +56,7 @@
 .metaGrid {
   display: grid;
   margin-inline: auto;
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
   grid-template-columns: 1fr 1.5fr;
   gap: var(--space-layout-64);
 }
@@ -152,10 +153,11 @@
 /* Problem mindmap styling */
 
 .problemMindmap {
-  margin-block-start: var(--space-400);
-  width: 100%;
-  max-width: 100%;
+  margin-block-start: var(--space-internal-16);
+  inline-size: 100%;
+  max-inline-size: 100%;
   overflow-x: auto;
+  overflow-inline: auto;
 }
 
 /* Combined Approach + How It Works section with continuous gray background */
@@ -186,12 +188,12 @@
   margin-block-end: var(--space-layout-64);
   margin-inline: auto;
   padding-inline: var(--cs-page-inset);
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
 }
 
 .logoGrid {
   display: grid;
-  min-width: 0;
+  min-inline-size: 0;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-layout-32) var(--space-layout-24);
 }
@@ -219,7 +221,7 @@
 .logoCard {
   display: flex;
   margin: 0;
-  min-width: 0;
+  min-inline-size: 0;
   flex-direction: column;
   gap: var(--space-internal-12);
 }
@@ -228,24 +230,24 @@
 .logoCardLight,
 .logoCardGradient {
   display: flex;
-  min-width: 0;
+  min-inline-size: 0;
   overflow: hidden;
   justify-content: center;
   align-items: center;
   border-radius: 0.75rem;
-  padding: clamp(1rem, 4vw, var(--space-layout-48));
+  padding: clamp(1rem, 4vi, var(--space-layout-48));
 }
 
 /* Square mark variants (icon-only logos) */
 .logoCardMark {
   aspect-ratio: 1;
-  max-height: min(280px, 72vw);
+  max-block-size: min(280px, 72vi);
 }
 
 /* Wide wordmark variants — match SVG viewBox (~1346×416) */
 .logoCardWordmark {
   aspect-ratio: 1346 / 416;
-  width: 100%;
+  inline-size: 100%;
 }
 
 .logoCardDark {
@@ -259,7 +261,7 @@
 
 @media (width < 768px) {
   .logoCardMark {
-    max-height: min(240px, 65vw);
+    max-block-size: min(240px, 65vi);
   }
 
   .logoCardWordmark {
@@ -274,24 +276,24 @@
 .logoImageMark {
   display: block;
   flex: 0 1 auto;
-  width: clamp(4rem, 42vw, 10rem);
-  max-width: 100%;
-  height: auto;
+  inline-size: clamp(4rem, 42vi, 10rem);
+  max-inline-size: 100%;
+  block-size: auto;
   object-fit: contain;
 }
 
 .logoImageWordmark {
   display: block;
-  width: 100%;
-  height: auto;
-  max-height: 100%;
+  inline-size: 100%;
+  block-size: auto;
+  max-block-size: 100%;
   object-fit: contain;
 }
 
 .logoImageRound {
-  max-width: 50%;
-  height: auto;
-  max-height: 90%;
+  max-inline-size: 50%;
+  block-size: auto;
+  max-block-size: 90%;
   object-fit: contain;
 }
 
@@ -316,7 +318,7 @@
   margin-block-end: var(--space-layout-48);
   margin-inline: auto;
   padding-inline: var(--cs-page-inset);
-  max-width: var(--container-lg);
+  max-inline-size: var(--container-lg);
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-layout-24);
 }
@@ -446,7 +448,7 @@
   margin-block-end: var(--space-layout-48);
   margin-inline: auto;
   padding-inline: var(--cs-page-inset);
-  max-width: var(--container-lg);
+  max-inline-size: var(--container-lg);
 }
 
 .paletteSectionTitle {
@@ -484,8 +486,8 @@
   margin-block-end: var(--space-layout-64);
   margin-inline: auto;
   padding-inline: var(--cs-page-inset);
-  min-width: 0;
-  max-width: var(--container-lg);
+  min-inline-size: 0;
+  max-inline-size: var(--container-lg);
   grid-template-columns: 1fr 1fr;
   gap: var(--space-layout-48);
 }
@@ -499,7 +501,7 @@
 
 .waterfallColumn {
   display: flex;
-  min-width: 0;
+  min-inline-size: 0;
   flex-direction: column;
   gap: 0;
   overflow: hidden;
@@ -535,27 +537,27 @@
 }
 
 .waterfallSize4xl {
-  font-size: clamp(2rem, 12vw, 4rem);
+  font-size: clamp(2rem, 12vi, 4rem);
 }
 
 .waterfallSize2xl {
-  font-size: clamp(1.375rem, 7vw, 2.5rem);
+  font-size: clamp(1.375rem, 7vi, 2.5rem);
 }
 
 .waterfallSizeXl {
-  font-size: clamp(1.125rem, 5vw, 1.75rem);
+  font-size: clamp(1.125rem, 5vi, 1.75rem);
 }
 
 .waterfallSizeLg {
-  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-size: clamp(1rem, 4vi, 1.25rem);
 }
 
 .waterfallSizeMd {
-  font-size: clamp(0.875rem, 3.5vw, 1rem);
+  font-size: clamp(0.875rem, 3.5vi, 1rem);
 }
 
 .waterfallSizeSpecimen {
-  font-size: clamp(0.875rem, 3vw, 1.625rem);
+  font-size: clamp(0.875rem, 3vi, 1.625rem);
 }
 
 @media (width >= 640px) {
@@ -572,7 +574,7 @@
   margin-block-end: var(--space-layout-48);
   margin-inline: auto;
   padding-inline: var(--cs-page-inset);
-  max-width: var(--container-lg);
+  max-inline-size: var(--container-lg);
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-layout-24);
 }
@@ -585,8 +587,8 @@
 }
 
 .brandImage {
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
 }
@@ -625,7 +627,7 @@
 
 .metricsContent {
   margin-inline: auto;
-  max-width: var(--container-lg);
+  max-inline-size: var(--container-lg);
 }
 
 .metricsContent h3 {

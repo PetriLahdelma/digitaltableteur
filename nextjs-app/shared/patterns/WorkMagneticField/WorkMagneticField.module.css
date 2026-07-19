@@ -7,7 +7,7 @@
 
 @media (width >= 1024px) {
   .section {
-    padding-block: var(--space-layout-112, 7rem);
+    padding-block: calc(var(--space-layout-96) + var(--space-layout-16));
   }
 }
 

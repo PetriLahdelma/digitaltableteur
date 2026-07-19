@@ -1,17 +1,17 @@
 .wrapper {
   margin: 0 auto;
-  padding: var(--space-xl);
-  max-width: 90rem;
+  padding: var(--space-internal-32);
+  max-inline-size: 90rem;
 }
 
 .header {
-  border-bottom: 1px solid rgb(var(--color-grey-300) / 30%);
-  margin-bottom: var(--space-xxl);
-  padding-bottom: var(--space-xl);
+  border-block-end: 1px solid rgb(var(--color-grey-300) / 30%);
+  margin-block-end: var(--space-layout-64);
+  padding-block-end: var(--space-internal-32);
 }
 
 .header h1 {
-  margin: 0 0 var(--space-md) 0;
+  margin: 0 0 var(--space-internal-16) 0;
   font-family: var(--font-title);
   font-size: var(--font-size-title-xxl);
   color: var(--color-text-primary);
@@ -19,32 +19,32 @@
 
 .lead {
   margin: 0;
-  max-width: 60rem;
+  max-inline-size: 60rem;
   font-size: var(--font-size-text-xl);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-primary);
 }
 
 .section {
-  margin-bottom: var(--space-xxl);
+  margin-block-end: var(--space-layout-64);
 }
 
 .section h2 {
-  margin: 0 0 var(--space-lg) 0;
+  margin: 0 0 var(--space-internal-24) 0;
   font-family: var(--font-title);
   font-size: var(--font-size-title-lg);
   color: var(--color-text-primary);
 }
 
 .section h3 {
-  margin: var(--space-xl) 0 var(--space-md) 0;
+  margin: var(--space-internal-32) 0 var(--space-internal-16) 0;
   font-family: var(--font-title);
   font-size: var(--font-size-title-sm);
   color: var(--color-text-primary);
 }
 
 .section p {
-  margin: var(--space-md) 0;
+  margin: var(--space-internal-16) 0;
   line-height: var(--line-height-relaxed);
   color: var(--color-text-primary);
 }
@@ -59,8 +59,8 @@
 }
 
 .code {
-  margin: var(--space-md) 0;
-  padding: var(--space-lg);
+  margin: var(--space-internal-16) 0;
+  padding: var(--space-internal-24);
   border: 1px solid rgb(var(--color-grey-300) / 30%);
   border-radius: var(--radius-md);
   background: rgb(var(--color-grey-100) / 50%);
@@ -71,6 +71,7 @@
   white-space: pre;
   color: var(--color-text-primary);
   overflow-x: auto;
+  overflow-inline: auto;
 }
 
 .section code {
@@ -84,17 +85,17 @@
 }
 
 .table {
-  margin: var(--space-lg) 0;
-  width: 100%;
+  margin: var(--space-internal-24) 0;
+  inline-size: 100%;
   font-size: var(--font-size-text-md);
   border-collapse: collapse;
 }
 
 .table th,
 .table td {
-  padding: var(--space-sm) var(--space-md);
-  text-align: left;
-  border-bottom: 1px solid rgb(var(--color-grey-300) / 30%);
+  padding: var(--space-internal-8) var(--space-internal-16);
+  text-align: start;
+  border-block-end: 1px solid rgb(var(--color-grey-300) / 30%);
 }
 
 .table th {
@@ -115,11 +116,11 @@
 
 .sizeDemo {
   display: flex;
-  margin: var(--space-lg) 0;
-  padding: var(--space-xl);
+  margin: var(--space-internal-24) 0;
+  padding: var(--space-internal-32);
   flex-wrap: wrap;
   align-items: flex-end;
-  gap: var(--space-xl);
+  gap: var(--space-internal-32);
   border-radius: var(--radius-lg);
   background: rgb(var(--color-grey-100) / 30%);
 }
@@ -128,7 +129,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-internal-8);
 }
 
 .sizeItem span {
@@ -141,10 +142,10 @@
 
 .weightDemo {
   display: flex;
-  margin: var(--space-lg) 0;
-  padding: var(--space-xl);
+  margin: var(--space-internal-24) 0;
+  padding: var(--space-internal-32);
   flex-wrap: wrap;
-  gap: var(--space-xl);
+  gap: var(--space-internal-32);
   border-radius: var(--radius-lg);
   background: rgb(var(--color-grey-100) / 30%);
 }
@@ -153,7 +154,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-internal-8);
 }
 
 .weightItem span {
@@ -166,31 +167,32 @@
 
 .searchContainer {
   position: sticky;
-  top: 0;
+  inset-block-start: 0;
   z-index: 10;
-  margin: var(--space-xl) 0 var(--space-lg) 0;
-  padding: var(--space-md) 0;
+  margin: var(--space-internal-32) 0 var(--space-internal-24) 0;
+  padding: var(--space-internal-16) 0;
   background: var(--color-background);
 }
 
 .searchWrapper {
   position: relative;
   margin: 0 auto;
-  max-width: 40rem;
+  max-inline-size: 40rem;
 }
 
 .searchIcon {
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateY(). */
   top: 50%;
-  left: var(--space-md);
+  inset-inline-start: var(--space-internal-16);
   color: rgb(var(--color-grey-500));
   pointer-events: none;
   transform: translateY(-50%);
 }
 
 .searchInput {
-  padding: var(--space-md) var(--space-md) var(--space-md) 2.75rem;
-  width: 100%;
+  padding: var(--space-internal-16) var(--space-internal-16) var(--space-internal-16) 2.75rem;
+  inline-size: 100%;
   border: 2px solid rgb(var(--color-grey-300) / 50%);
   border-radius: var(--radius-md);
   background: var(--color-background);
@@ -208,9 +210,10 @@
 .clearButton {
   display: flex;
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateY(). */
   top: 50%;
-  right: var(--space-sm);
-  padding: var(--space-xs);
+  inset-inline-end: var(--space-internal-8);
+  padding: var(--space-internal-4);
   justify-content: center;
   align-items: center;
   border: none;
@@ -236,21 +239,21 @@
   font-size: var(--font-size-text-sm);
   text-align: center;
   color: rgb(var(--color-grey-600));
-  margin-top: var(--space-md);
+  margin-block-start: var(--space-internal-16);
 }
 
 /* Icon Grid */
 
 .iconGrid {
   display: grid;
-  margin: var(--space-lg) 0;
+  margin: var(--space-internal-24) 0;
   grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
-  gap: var(--space-md);
+  gap: var(--space-internal-16);
 }
 
-@supports not (gap: var(--space-md)) {
+@supports not (gap: var(--space-internal-16)) {
   .iconGrid > * + * {
-    margin-top: var(--space-md);
+    margin-block-start: var(--space-internal-16);
   }
 }
 
@@ -259,8 +262,8 @@
 .iconCard {
   display: flex;
   position: relative;
-  padding: var(--space-lg);
-  min-height: 8rem;
+  padding: var(--space-internal-24);
+  min-block-size: 8rem;
   flex-direction: column;
   align-items: center;
   border: 2px solid rgb(var(--color-grey-300) / 20%);
@@ -288,12 +291,12 @@
 
 .iconDisplay {
   display: flex;
-  width: 100%;
-  height: 3rem;
+  inline-size: 100%;
+  block-size: 3rem;
   justify-content: center;
   align-items: center;
   color: rgb(var(--color-grey-700));
-  margin-bottom: var(--space-sm);
+  margin-block-end: var(--space-internal-8);
 }
 
 .iconCard:hover .iconDisplay {
@@ -311,11 +314,12 @@
 .copyHint {
   display: flex;
   position: absolute;
-  bottom: var(--space-xs);
+  inset-block-end: var(--space-internal-4);
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
   left: 50%;
-  padding: var(--space-xs) var(--space-sm);
+  padding: var(--space-internal-4) var(--space-internal-8);
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-internal-4);
   border-radius: var(--radius-sm);
   background: rgb(var(--color-primary));
   font-size: var(--font-size-text-xs);
@@ -329,7 +333,7 @@
 
 .emptyState {
   display: flex;
-  padding: var(--space-xxl);
+  padding: var(--space-layout-64);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -338,12 +342,12 @@
 }
 
 .emptyState p {
-  margin: var(--space-md) 0;
+  margin: var(--space-internal-16) 0;
   font-size: var(--font-size-text-lg);
 }
 
 .resetButton {
-  padding: var(--space-sm) var(--space-lg);
+  padding: var(--space-internal-8) var(--space-internal-24);
   border: none;
   border-radius: var(--radius-md);
   background: rgb(var(--color-primary));
@@ -351,7 +355,7 @@
   color: white;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  margin-top: var(--space-md);
+  margin-block-start: var(--space-internal-16);
 }
 
 .resetButton:hover {
@@ -429,7 +433,7 @@
 /* Responsive */
 @media (width < 48rem) {
   .wrapper {
-    padding: var(--space-lg);
+    padding: var(--space-internal-24);
   }
 
   .header h1 {
@@ -442,13 +446,13 @@
 
   .iconGrid {
     grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
-    gap: var(--space-sm);
+    gap: var(--space-internal-8);
   }
 
   .sizeDemo,
   .weightDemo {
     justify-content: center;
-    gap: var(--space-md);
+    gap: var(--space-internal-16);
   }
 }
 

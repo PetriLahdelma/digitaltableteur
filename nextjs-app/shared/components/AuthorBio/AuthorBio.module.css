@@ -43,15 +43,14 @@
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
-  padding-bottom: 2rem;
+  padding-block-end: 2rem;
 }
 
 .tagline::after {
   position: absolute;
-  right: calc(-1 * var(--author-bio-padding));
-  bottom: 0;
-  left: calc(-1 * var(--author-bio-padding));
-  border-bottom: 2px solid
+  inset-inline: calc(-1 * var(--author-bio-padding));
+  inset-block-end: 0;
+  border-block-end: 2px solid
     color-mix(in srgb, var(--color-primary) 20%, transparent);
   content: "";
 }

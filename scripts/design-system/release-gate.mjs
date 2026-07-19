@@ -23,6 +23,11 @@ const steps = [
   { name: "typecheck", cmd: "npm", args: ["run", "typecheck"] },
   { name: "lint", cmd: "npm", args: ["run", "lint"] },
   { name: "lint:css", cmd: "npm", args: ["run", "lint:css"] },
+  {
+    name: "audit:rhythm:check",
+    cmd: "npm",
+    args: ["run", "audit:rhythm:check"],
+  },
   { name: "validate:translations", cmd: "npm", args: ["run", "validate:translations"] },
   { name: "check:generated", cmd: "npm", args: ["run", "check:generated"] },
   { name: "agent:eval (MCP + golden sets)", cmd: "npm", args: ["run", "agent:eval"] },

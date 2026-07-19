@@ -243,8 +243,8 @@
 
 @layer components {
   .button .icon svg {
-    width: var(--btn-icon-size, 1.25rem);
-    height: var(--btn-icon-size, 1.25rem);
+    inline-size: var(--btn-icon-size, 1.25rem);
+    block-size: var(--btn-icon-size, 1.25rem);
   }
 }
 

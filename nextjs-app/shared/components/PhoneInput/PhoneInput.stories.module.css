@@ -1,10 +1,10 @@
 .storyContainer {
-  max-width: 28rem;
+  max-inline-size: 28rem;
 }
 
 .stackContainer {
   display: flex;
-  max-width: 28rem;
+  max-inline-size: 28rem;
   flex-direction: column;
   gap: 2rem;
 }

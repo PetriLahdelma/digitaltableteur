@@ -18,7 +18,7 @@
 .metaGrid {
   display: grid;
   margin-inline: auto;
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
   grid-template-columns: 1fr 1.5fr;
   gap: var(--space-layout-64);
 }
@@ -75,7 +75,7 @@
   display: grid;
   margin-inline: auto;
   padding-block: var(--space-layout-32);
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-layout-24);
 }
@@ -87,7 +87,7 @@
 }
 
 .outputCard h4 {
-  margin: 0 0 var(--space-8) 0;
+  margin: 0 0 var(--space-internal-8) 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-text);
   font-weight: 600;

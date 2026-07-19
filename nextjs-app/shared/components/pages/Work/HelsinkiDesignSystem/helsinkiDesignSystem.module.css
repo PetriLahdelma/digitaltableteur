@@ -2,8 +2,8 @@
   box-sizing: border-box;
   padding-block: 2.5rem 1.5rem;
   padding-inline: var(--page-margin-mobile);
-  min-height: 100vh;
-  min-width: 0;
+  min-block-size: 100vb;
+  min-inline-size: 0;
   background: var(--main-body-background-color);
 }
 
@@ -23,20 +23,20 @@
 
 .heroContainer {
   margin: 0 auto;
-  width: 100%;
-  max-width: 100%;
+  inline-size: 100%;
+  max-inline-size: 100%;
   overflow: hidden;
 }
 
 .heroImage {
   display: block;
-  width: 100%;
-  height: 800px;
+  inline-size: 100%;
+  block-size: 800px;
   object-fit: cover;
 }
 
 .metricsBand {
-  padding-block: clamp(2.5rem, 5vw, 4rem);
+  padding-block: clamp(2.5rem, 5vi, 4rem);
   background: linear-gradient(
       135deg,
       rgb(129 46 255 / 10%),
@@ -64,7 +64,7 @@
 
 .metricsCaption {
   margin: 0;
-  max-width: 36rem;
+  max-inline-size: 36rem;
   color: var(--color-primary);
 }
 
@@ -80,7 +80,7 @@
 
 .metricCard {
   display: grid;
-  padding: clamp(1.25rem, 2vw, 1.75rem);
+  padding: clamp(1.25rem, 2vi, 1.75rem);
   gap: var(--space-layout-8);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
@@ -160,7 +160,7 @@
 
 @media (width < 1024px) {
   .heroImage {
-    height: 600px;
+    block-size: 600px;
   }
 
   .grid4Col {
@@ -178,7 +178,7 @@
 
 @media (width < 768px) {
   .heroImage {
-    height: 400px;
+    block-size: 400px;
   }
 
   .grid2Col,

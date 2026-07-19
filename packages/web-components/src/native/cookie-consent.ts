@@ -103,10 +103,10 @@ const styles = `
   .policy { display: inline-flex; position: relative; align-items: center; color: var(--link-color, LinkText); text-decoration: none; }
   .policy::after {
     position: absolute;
-    right: 0;
-    bottom: calc(-1 * var(--underline-depth));
-    left: 0;
-    height: var(--underline-depth);
+    inset-inline-end: 0;
+    inset-block-end: calc(-1 * var(--underline-depth));
+    inset-inline-start: 0;
+    block-size: var(--underline-depth);
     background-color: var(--underline-accent-color, currentcolor);
     opacity: 0.9;
     content: "";
@@ -135,7 +135,7 @@ const styles = `
   .secondary { border: 0.125rem solid var(--color-primary, ButtonText); background: transparent; color: var(--color-primary, ButtonText); }
   .tertiary { background: transparent; color: var(--color-primary, ButtonText); }
   .overlay { position: fixed; z-index: 9100; inset: 0; display: grid; padding: var(--space-layout-16, 1rem); place-items: center; background: rgb(0 0 0 / 55%); }
-  .dialog { box-sizing: border-box; inline-size: min(51.25rem, 100%); max-block-size: min(46rem, calc(100dvh - 2rem)); overflow: auto; border: 1px solid var(--color-border, #767676); border-radius: var(--radius-lg, 0.5rem); background: var(--main-body-background-color, Canvas); color: var(--color-text, CanvasText); box-shadow: 0 24px 80px rgb(0 0 0 / 30%); }
+  .dialog { box-sizing: border-box; inline-size: min(51.25rem, 100%); max-block-size: min(46rem, calc(100dvb - 2rem)); overflow: auto; border: 1px solid var(--color-border, #767676); border-radius: var(--radius-lg, 0.5rem); background: var(--main-body-background-color, Canvas); color: var(--color-text, CanvasText); box-shadow: 0 24px 80px rgb(0 0 0 / 30%); }
   .header { display: flex; padding: var(--space-layout-24, 1.5rem); align-items: flex-start; justify-content: space-between; gap: var(--space-internal-16, 1rem); border-block-end: 1px solid var(--color-border, #767676); }
   .title { margin: 0; font-size: var(--font-size-title-s, 1.5rem); line-height: 1.25; }
   .close { min-inline-size: 2.5rem; padding: 0; border: 0; background: transparent; color: inherit; font-size: 1.5rem; }

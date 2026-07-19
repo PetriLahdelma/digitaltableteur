@@ -1,6 +1,6 @@
 .content {
   z-index: 6000;
-  max-width: 20rem;
+  max-inline-size: 20rem;
   padding: var(--space-internal-8) var(--space-internal-12);
   border-radius: var(--radius-md);
   background-color: var(--color-primary);

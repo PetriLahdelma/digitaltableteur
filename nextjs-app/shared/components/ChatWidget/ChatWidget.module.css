@@ -3,7 +3,7 @@
   position: fixed;
   inset: auto 1.5rem 1.5rem auto;
   z-index: 1000;
-  min-height: 24rem;
+  min-block-size: 24rem;
   place-items: end;
   pointer-events: none;
   transition:
@@ -18,10 +18,10 @@
 
 .panel {
   display: flex;
-  width: min(32.5rem, 90vw);
-  max-width: 32.5rem;
-  min-height: 24rem;
-  max-height: min(70vh, 640px);
+  inline-size: min(32.5rem, 90vi);
+  max-inline-size: 32.5rem;
+  min-block-size: 24rem;
+  max-block-size: min(70vb, 640px);
   flex-direction: column;
   border: 1px solid var(--color-border);
   border-radius: 1.25rem;
@@ -61,7 +61,7 @@
 
 .headerCopy {
   display: flex;
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1;
   flex-direction: column;
   gap: 0.25rem;
@@ -71,10 +71,10 @@
 
 .availabilityDot {
   display: inline-block;
-  width: 9px;
-  height: 9px;
+  inline-size: 9px;
+  block-size: 9px;
   border-radius: 50%;
-  margin-top: 0.22rem;
+  margin-block-start: 0.22rem;
 }
 
 .availabilityDotOpen {
@@ -94,8 +94,8 @@
 }
 
 .availabilityIcon {
-  width: 1.05rem;
-  height: 1.05rem;
+  inline-size: 1.05rem;
+  block-size: 1.05rem;
   flex-shrink: 0;
 }
 
@@ -190,6 +190,7 @@
   flex-direction: column;
   gap: 0.75rem;
   overflow-y: auto;
+  overflow-block: auto;
   overscroll-behavior: contain;
 }
 
@@ -209,7 +210,7 @@
 
 .message {
   padding: 0.5rem 1rem;
-  max-width: 100%;
+  max-inline-size: 100%;
   border-radius: 0.85rem;
   background: rgb(0 0 0 / 6%);
   font-family: var(--font-body, sans-serif);
@@ -276,19 +277,19 @@
 .fullWidthComponent {
   display: block;
   margin-block-start: 0.5rem;
-  width: 100%;
+  inline-size: 100%;
   border-radius: var(--radius-md, 8px);
 }
 
 .fullWidthComponent > * {
-  width: 100%;
+  inline-size: 100%;
 }
 
 /* Full-span container for components that should stretch across panel width (e.g. OpenHours) */
 
 .fullSpan {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   flex-direction: column;
   align-self: stretch;
   gap: 0.5rem;
@@ -334,7 +335,7 @@
 
 .inputColumn {
   display: flex;
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1 1 auto;
   flex-direction: column;
   gap: 0.45rem;
@@ -353,7 +354,7 @@
   /* Keep typed text clear of the in-field icon+label send button; sized for
      the widest locale label (FI "Lähetä" / SV "Skicka"). */
   padding-inline-end: 6.5rem;
-  min-height: 3rem;
+  min-block-size: 3rem;
   flex: 1;
   border: 1px solid var(--color-border-light);
   background: transparent;
@@ -385,12 +386,15 @@
      keeps the target well above the 24px WCAG 2.5.8 minimum while fitting
      the single-row input. */
   position: absolute;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translate. */
+  top: 50%;
+  inset-inline-end: 0.375rem;
 
   /* Colors and icon-text spacing come from the Button tertiary variant;
      this class only handles in-field layout. */
   padding-inline: 0.65rem;
-  width: auto;
-  height: 2.25rem;
+  inline-size: auto;
+  block-size: 2.25rem;
   justify-content: center;
   align-items: center;
   border: none;
@@ -402,8 +406,6 @@
     opacity 0.2s ease,
     background-color 0.2s ease;
   appearance: none;
-  inset-block-start: 50%;
-  inset-inline-end: 0.375rem;
   translate: 0 -50%;
 }
 
@@ -488,8 +490,8 @@
 
 .toggle .icon svg {
   display: block;
-  width: 1em;
-  height: 1em;
+  inline-size: 1em;
+  block-size: 1em;
 }
 
 /* DonnyAvatar in toggle button */
@@ -498,8 +500,8 @@
   margin: -4px;
 
   /* Override size to match icon size in button */
-  width: 28px !important;
-  height: 28px !important;
+  inline-size: 28px !important;
+  block-size: 28px !important;
   transition: transform 0.2s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
@@ -582,16 +584,16 @@
 @media (width <= 768px) {
   .container {
     inset: auto 0 0;
-    width: 100%;
+    inline-size: 100%;
     place-items: center;
   }
 
   .panel {
-    width: 100%;
-    max-height: 85vh;
+    inline-size: 100%;
+    max-block-size: 85vb;
     border-inline: none;
     border-radius: 1rem 1rem 0 0;
-    border-bottom: none;
+    border-block-end: none;
   }
 
   .messages {
@@ -915,8 +917,8 @@
 }
 
 .projectCardThumb {
-  width: 2.5rem;
-  height: 2.5rem;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
   flex-shrink: 0;
   border-radius: var(--radius-md);
   background: var(--color-light-bg);
@@ -925,7 +927,7 @@
 
 .projectCardBody {
   display: flex;
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1;
   flex-direction: column;
   gap: 0.25rem;
@@ -998,6 +1000,7 @@
   line-height: 1.5;
   white-space: pre-wrap;
   overflow-x: auto;
+  overflow-inline: auto;
 }
 
 .followUpDraftDisclaimer {
@@ -1030,8 +1033,8 @@
 
 .chatTextArea {
   padding: 0.76rem 0.85rem;
-  width: 100%;
-  min-height: 3rem;
+  inline-size: 100%;
+  min-block-size: 3rem;
   border: 1px solid var(--color-border-light);
   border-radius: 0.75rem;
   background: transparent;
@@ -1042,7 +1045,9 @@
   transition:
     border 0.2s ease,
     box-shadow 0.2s ease;
+  /* stylelint-disable-next-line declaration-block-no-duplicate-properties -- progressive logical fallback */
   resize: vertical;
+  resize: block;
 }
 
 .chatTextArea::placeholder {

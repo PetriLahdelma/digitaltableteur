@@ -18,7 +18,7 @@
 .metaGrid {
   display: grid;
   margin-inline: auto;
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
   grid-template-columns: 1fr 1.5fr;
   gap: var(--space-layout-64);
 }
@@ -74,7 +74,7 @@
 .codeBlock {
   margin-inline: auto;
   padding-block: var(--space-layout-48);
-  max-width: var(--container-md);
+  max-inline-size: var(--container-md);
 }
 
 .codeBlock pre {
@@ -84,6 +84,7 @@
   font-size: var(--font-size-text-s);
   line-height: 1.6;
   overflow-x: auto;
+  overflow-inline: auto;
 }
 
 .codeBlock code {

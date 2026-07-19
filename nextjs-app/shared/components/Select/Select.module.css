@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   flex-direction: column;
   gap: 0.5rem;
 }
@@ -8,14 +8,14 @@
 .wrapper {
   display: flex;
   position: relative;
-  width: 100%;
+  inline-size: 100%;
   align-items: center;
 }
 
 .select {
   composes: field from "../../styles/field.module.css";
   padding: 0.5rem 2.5rem 0.5rem 0.75rem;
-  width: 100%;
+  inline-size: 100%;
   font-family: var(--font-text);
   font-size: 1rem;
   line-height: 1.5;
@@ -76,7 +76,7 @@
 
 .chevronIcon {
   position: absolute;
-  right: 1rem;
+  inset-inline-end: 1rem;
   color: var(--color-primary);
   pointer-events: none;
 }

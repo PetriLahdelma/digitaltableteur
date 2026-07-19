@@ -1,12 +1,12 @@
 .inquiryPanel {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   flex-direction: column;
   gap: var(--space-layout-24);
 }
 
 .contactFormAnchor {
-  scroll-margin-top: 6rem;
+  scroll-margin-block-start: 6rem;
 }
 
 .modeSwitch {
@@ -14,7 +14,7 @@
 }
 
 .modeTabs {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .modeTabs > button {
@@ -36,8 +36,8 @@
 }
 
 .panelBody {
-  width: 100%;
-  min-width: 0;
+  inline-size: 100%;
+  min-inline-size: 0;
 }
 
 .bookingLoading {
@@ -64,13 +64,13 @@
 
 .unconfiguredActions {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   flex-direction: column;
   gap: var(--space-layout-16);
 }
 
 .actionButton {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   justify-content: center;
 }

@@ -4,7 +4,7 @@
   margin: 0 auto;
   margin-block-start: 0;
   padding: 2rem;
-  max-width: 100%;
+  max-inline-size: 100%;
   font-family: var(--secondary-body-font, serif);
   font-size: 1rem;
   line-height: 1.6;
@@ -21,7 +21,7 @@
   overflow-wrap: normal;
   word-break: normal;
   hyphens: none;
-  margin-bottom: 0.5rem;
+  margin-block-end: 0.5rem;
 }
 
 .article h2 {
@@ -30,7 +30,7 @@
   overflow-wrap: normal;
   word-break: normal;
   hyphens: none;
-  margin-top: 2rem;
+  margin-block-start: 2rem;
 }
 
 .article h3 {
@@ -135,7 +135,7 @@
 .article hr {
   margin: 0;
   border: none;
-  border-top: 2px solid var(--color-primary);
+  border-block-start: 2px solid var(--color-primary);
 }
 
 .article img:not([class*="avatar"]) {
@@ -144,7 +144,7 @@
 
 .article img + figcaption {
   display: block;
-  margin-top: 0.5rem;
+  margin-block-start: 0.5rem;
   font-size: 0.95rem;
   color: var(--color-gray-medium);
   text-align: center;
@@ -156,7 +156,7 @@
 }
 
 .article figcaption {
-  margin-top: 0.5rem;
+  margin-block-start: 0.5rem;
   font-size: 0.95rem;
   color: var(--color-gray-medium);
 }
@@ -178,13 +178,13 @@
 }
 
 .similarCard {
-  height: 100%;
+  block-size: 100%;
 }
 
 /* Similar Reads are card links; remove global wavy underline styling */
 
 .similarList :global(.wavyUnderline) {
-  padding-bottom: 0;
+  padding-block-end: 0;
 }
 
 .similarList :global(.wavyUnderline::after) {
@@ -194,17 +194,17 @@
 
 .embedWrapper {
   position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
+  padding-block-end: 56.25%;
+  block-size: 0;
   overflow: hidden;
 }
 
 .embedWrapper iframe {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 .embedLink a {

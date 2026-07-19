@@ -1,12 +1,12 @@
 /* stylelint-disable media-feature-range-notation, selector-pseudo-class-no-unknown, declaration-no-important, rule-empty-line-before, order/properties-order */
 
 .home {
-  text-align: left;
+  text-align: start;
 }
 
 .hero {
   position: relative;
-  min-height: 75vh;
+  min-block-size: 75vb;
   background-color: var(--main-body-background-color);
   overflow: hidden;
 }
@@ -32,7 +32,7 @@
   position: relative;
   margin: 0 auto;
   padding-block-end: 1rem;
-  width: min(960px, 90vw);
+  inline-size: min(960px, 90vi);
   flex-direction: column;
   align-items: center;
 }
@@ -42,7 +42,7 @@
   position: relative;
   z-index: 1;
   margin: 0 auto;
-  height: 100%;
+  block-size: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -56,7 +56,7 @@
   z-index: 1;
   margin: 1.5rem auto 0;
   padding-inline: var(--space-layout-24);
-  max-width: 800px;
+  max-inline-size: 800px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -65,7 +65,7 @@
 }
 
 .sectionTitle {
-  margin-bottom: var(--space-layout-32);
+  margin-block-end: var(--space-layout-32);
   text-align: center;
 }
 
@@ -87,7 +87,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-block-start: 2rem;
 }
 
 .heroCtaLink {
@@ -150,7 +150,7 @@
 
 .heroHighlights {
   margin-inline: auto;
-  max-width: 1200px;
+  max-inline-size: 1200px;
 }
 
 .heroHighlightsGrid {
@@ -182,8 +182,8 @@
 }
 
 .workImage {
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   display: block;
   border-radius: 8px;
   object-fit: cover;
@@ -252,7 +252,7 @@
 }
 
 .selectedClientsDivider {
-  border-top-color: var(--selected-clients-divider-color);
+  border-block-start-color: var(--selected-clients-divider-color);
 }
 
 :global(.themeHCW) .selectedClientsLabel {
@@ -260,7 +260,7 @@
 }
 
 :global(.themeHCW) .selectedClientsDivider {
-  border-top-color: rgb(0 0 0 / 18%);
+  border-block-start-color: rgb(0 0 0 / 18%);
 }
 
 @keyframes gradient-move {

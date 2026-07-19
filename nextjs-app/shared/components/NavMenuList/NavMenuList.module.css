@@ -17,7 +17,7 @@
   display: block;
   position: relative;
   padding: var(--space-internal-12, 0.75rem) var(--space-internal-16, 1rem);
-  width: 100%;
+  inline-size: 100%;
   font-family: var(--font-text);
   font-size: var(--font-size-text-m, 1rem);
   font-weight: 600;

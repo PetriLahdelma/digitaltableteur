@@ -2,7 +2,7 @@
 
 .figure {
   margin-block: var(--space-layout-32, 2rem);
-  width: 100%;
+  inline-size: 100%;
   padding: 0;
   border: 0;
 }
@@ -10,27 +10,27 @@
 /* Wrapper around figure image(s) */
 .media {
   display: block;
-  width: 100%;
+  inline-size: 100%;
 }
 
 /* Span the full article content column */
 .figureFull .media {
   display: block;
-  width: 100%;
+  inline-size: 100%;
   margin-inline: 0;
 }
 
 .figureFull .media img {
   display: block;
-  width: 100%;
-  max-width: none;
-  height: auto;
+  inline-size: 100%;
+  max-inline-size: none;
+  block-size: auto;
   border-radius: var(--radius-lg, 0.5rem);
 }
 
 .figureFull .caption {
-  width: 100%;
-  max-width: none;
+  inline-size: 100%;
+  max-inline-size: none;
   padding-inline: 0;
 }
 
@@ -43,24 +43,24 @@
 
 .figureCenter .media {
   display: block;
-  width: 100%;
-  max-width: 32rem;
+  inline-size: 100%;
+  max-inline-size: 32rem;
   margin-inline: auto;
 }
 
 .figureCenter .media img {
   display: block;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  block-size: auto;
   margin-inline: auto;
   border-radius: var(--radius-lg, 0.5rem);
 }
 
 .caption {
-  margin-block-start: var(--space-layout-12, 0.75rem);
-  width: 100%;
-  max-width: 32rem;
+  margin-block-start: var(--space-internal-12, 0.75rem);
+  inline-size: 100%;
+  max-inline-size: 32rem;
   margin-inline: auto;
   padding-inline: var(--space-layout-8, 0.5rem);
   text-align: center;

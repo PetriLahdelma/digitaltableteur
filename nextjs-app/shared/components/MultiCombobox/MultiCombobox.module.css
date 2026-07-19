@@ -2,7 +2,7 @@
   display: flex;
   padding-block: var(--space-internal-8);
   padding-inline: var(--space-internal-16) 0;
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1;
   flex-wrap: wrap;
   align-items: center;
@@ -20,8 +20,8 @@
 .input {
   padding-block: var(--space-internal-4);
   padding-inline: 0 var(--space-internal-8);
-  min-width: min(10rem, 100%);
-  max-width: 100%;
+  min-inline-size: min(10rem, 100%);
+  max-inline-size: 100%;
   flex: 1 1 10rem;
   border: none;
   outline: none;
@@ -46,7 +46,7 @@
   inset: auto;
   padding: 0;
   padding-inline-end: calc(var(--space-internal-12) + var(--space-internal-8));
-  width: calc(var(--space-internal-32) + var(--space-internal-8));
+  inline-size: calc(var(--space-internal-32) + var(--space-internal-8));
   justify-content: flex-end;
   align-items: center;
 }
@@ -63,11 +63,11 @@
 
 .badgeWrap {
   display: inline-flex;
-  max-width: 100%;
+  max-inline-size: 100%;
 }
 
 .badge {
-  max-width: 100%;
+  max-inline-size: 100%;
 }
 
 .badgeLabel {

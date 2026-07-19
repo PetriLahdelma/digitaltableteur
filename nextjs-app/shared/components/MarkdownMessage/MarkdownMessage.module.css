@@ -25,11 +25,11 @@
 }
 
 .root p:first-child {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .root p:last-child {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 .root code {
@@ -44,6 +44,7 @@
   display: block;
   padding: var(--space-internal-8);
   overflow-x: auto;
+  overflow-inline: auto;
 }
 
 .root pre {
@@ -74,7 +75,7 @@
 }
 
 .root li + li {
-  margin-top: var(--space-internal-4);
+  margin-block-start: var(--space-internal-4);
 }
 
 .root blockquote {
@@ -123,7 +124,7 @@
 
 .root table {
   margin: var(--space-internal-12) 0;
-  width: 100%;
+  inline-size: 100%;
   border-collapse: collapse;
 }
 
@@ -131,7 +132,7 @@
 .root td {
   padding: var(--space-internal-4) var(--space-internal-8);
   border: 1px solid var(--color-border);
-  text-align: left;
+  text-align: start;
   vertical-align: top;
 }
 
@@ -141,8 +142,8 @@
 }
 
 .root img {
-  max-width: 100%;
-  height: auto;
+  max-inline-size: 100%;
+  block-size: auto;
   border-radius: var(--radius-md);
 }
 

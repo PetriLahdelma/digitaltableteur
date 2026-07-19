@@ -1,11 +1,11 @@
 .overlay {
   display: flex;
   position: fixed;
-  top: 0;
-  left: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   z-index: 5000;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   justify-content: center;
   align-items: center;
   background-color: var(--modal-overlay-bg);
@@ -13,9 +13,9 @@
 
 .modal {
   display: flex;
-  width: 90%;
-  max-width: var(--size-width-lg);
-  max-height: 90vh;
+  inline-size: 90%;
+  max-inline-size: var(--size-width-lg);
+  max-block-size: 90vb;
   flex-direction: column;
   border-radius: var(--radius-lg);
   background-color: var(--main-body-background-color, var(--color-white));
@@ -44,7 +44,7 @@
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  min-width: 0;
+  min-inline-size: 0;
 }
 
 .icon {
@@ -74,8 +74,8 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  inline-size: 2rem;
+  block-size: 2rem;
   padding: 0;
   border: none;
   border-radius: var(--radius-sm);
@@ -118,33 +118,33 @@
 }
 
 .success {
-  max-width: 30vw;
-  border-top: 4px solid var(--color-success);
+  max-inline-size: 30vi;
+  border-block-start: 4px solid var(--color-success);
 }
 
 .error {
-  max-width: 30vw;
-  border-top: 4px solid var(--color-error);
+  max-inline-size: 30vi;
+  border-block-start: 4px solid var(--color-error);
 }
 
 .warning {
-  max-width: 30vw;
-  border-top: 4px solid var(--color-warning);
+  max-inline-size: 30vi;
+  border-block-start: 4px solid var(--color-warning);
 }
 
 .info {
-  max-width: 30vw;
-  border-top: 4px solid var(--color-info);
+  max-inline-size: 30vi;
+  border-block-start: 4px solid var(--color-info);
 }
 
 .loading {
-  max-width: 30vw;
-  border-top: none;
+  max-inline-size: 30vi;
+  border-block-start: none;
 }
 
 .loading .content {
   display: flex;
-  min-height: 180px;
+  min-block-size: 180px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -160,14 +160,14 @@
   .warning,
   .info,
   .loading {
-    width: 90vw;
-    max-width: 90vw;
+    inline-size: 90vi;
+    max-inline-size: 90vi;
   }
 
   .modal {
     margin: 1rem;
-    width: 95%;
-    max-height: 90vh;
+    inline-size: 95%;
+    max-block-size: 90vb;
   }
 
   .header {
@@ -199,7 +199,7 @@
   .success,
   .warning,
   .info {
-    border-top: 4px solid Highlight;
+    border-block-start: 4px solid Highlight;
   }
 
   .closeButton:focus-visible {
@@ -223,5 +223,5 @@
 :global(html.sb-forced-colors-active) .success,
 :global(html.sb-forced-colors-active) .warning,
 :global(html.sb-forced-colors-active) .info {
-  border-top: 4px solid Highlight;
+  border-block-start: 4px solid Highlight;
 }

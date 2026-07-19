@@ -1,7 +1,7 @@
 .page {
   padding-block: var(--space-layout-32) var(--space-layout-120);
   padding-inline: var(--page-margin-mobile);
-  max-width: 100%;
+  max-inline-size: 100%;
   background-color: var(--main-body-background-color);
 }
 
@@ -20,7 +20,7 @@
 .header {
   margin-block-end: var(--space-layout-64);
   margin-inline: auto;
-  max-width: var(--container-lg);
+  max-inline-size: var(--container-lg);
   text-align: center;
 }
 
@@ -40,7 +40,7 @@
 .gallery {
   display: flex;
   margin-inline: auto;
-  max-width: 500px;
+  max-inline-size: 500px;
   flex-direction: column;
   gap: var(--space-internal-16);
 }
@@ -49,9 +49,9 @@
 
 .galleryItem {
   position: relative;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
   border-radius: var(--radius-lg);
   background-color: var(--color-muted-background);
   box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
@@ -64,9 +64,9 @@
 
 .galleryItemSharp {
   position: relative;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
   border-radius: 0;
   background-color: var(--color-muted-background);
   box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
@@ -75,8 +75,8 @@
 
 .galleryImage {
   display: block;
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   transition: transform 0.4s ease;
 }
 
@@ -116,8 +116,8 @@
 .handleSW,
 .handleSE {
   display: flex;
-  width: 24px;
-  height: 24px;
+  inline-size: 24px;
+  block-size: 24px;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
@@ -169,8 +169,8 @@
 .handleRotateS,
 .handleRotateW {
   display: flex;
-  width: 28px;
-  height: 28px;
+  inline-size: 28px;
+  block-size: 28px;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
@@ -194,19 +194,19 @@
 /* Edge positions set via inline style for counter-scaling */
 
 .handleRotateN {
-  left: 50%;
+  inset-inline-start: 50%;
 }
 
 .handleRotateE {
-  top: 50%;
+  inset-block-start: 50%;
 }
 
 .handleRotateS {
-  left: 50%;
+  inset-inline-start: 50%;
 }
 
 .handleRotateW {
-  top: 50%;
+  inset-block-start: 50%;
 }
 
 /* Hover effects - only change background, counter-scale is handled via inline styles */
@@ -229,7 +229,7 @@
   font-size: 0.875rem;
   color: var(--color-gray);
   opacity: 1;
-  margin-top: var(--space-internal-8);
+  margin-block-start: var(--space-internal-8);
 }
 
 @media (width < 900px) {
@@ -244,17 +244,17 @@
   }
 
   .gallery {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    min-inline-size: 0;
   }
 
   .galleryItem,
   .galleryItemSharp {
     position: static !important;
-    width: 100% !important;
-    max-width: 100%;
-    min-width: 0;
+    inline-size: 100% !important;
+    max-inline-size: 100%;
+    min-inline-size: 0;
     transform: none !important;
   }
 }
@@ -264,8 +264,8 @@
   .gallery {
     position: relative;
     margin-inline: auto;
-    max-width: 1400px;
-    height: 3500px;
+    max-inline-size: 1400px;
+    block-size: 3500px;
   }
 
   .galleryItem,
@@ -284,172 +284,173 @@
   /* A: Hero top-left */
 
   .areaA {
-    top: 0;
-    left: 0;
-    width: 580px;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 580px;
   }
 
   /* B: Tiny, tucked top-right corner */
 
   .areaB {
-    top: 20px;
-    right: 180px;
-    width: 220px;
+    inset-block-start: 20px;
+    inset-inline-end: 180px;
+    inline-size: 220px;
   }
 
   /* C: Medium, overlapping A bottom-right */
 
   .areaC {
-    top: 280px;
-    left: 480px;
+    inset-block-start: 280px;
+    inset-inline-start: 480px;
     z-index: 2;
-    width: 340px;
+    inline-size: 340px;
   }
 
   /* D: Small, floating right - rotated */
 
   .areaD {
-    top: 120px;
-    right: 40px;
-    width: 200px;
+    inset-block-start: 120px;
+    inset-inline-end: 40px;
+    inline-size: 200px;
     transform: rotate(5deg);
   }
 
   /* E: Large landscape, row 2 left */
 
   .areaE {
-    top: 520px;
-    left: 60px;
-    width: 520px;
+    inset-block-start: 520px;
+    inset-inline-start: 60px;
+    inline-size: 520px;
   }
 
   /* F: Small, nestled between */
 
   .areaF {
-    top: 480px;
-    left: 620px;
+    inset-block-start: 480px;
+    inset-inline-start: 620px;
     z-index: 3;
-    width: 180px;
+    inline-size: 180px;
   }
 
   /* G: Large, right side row 2 */
 
   .areaG {
-    top: 620px;
-    right: 20px;
-    width: 480px;
+    inset-block-start: 620px;
+    inset-inline-end: 20px;
+    inline-size: 480px;
   }
 
   /* H: Tiny accent - rotated */
 
   .areaH {
-    top: 820px;
-    left: 320px;
+    inset-block-start: 820px;
+    inset-inline-start: 320px;
     z-index: 4;
-    width: 200px;
+    inline-size: 200px;
     transform: rotate(10deg);
   }
 
   /* I: Hero center */
 
   .areaI {
-    top: 980px;
+    inset-block-start: 980px;
+    /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
     left: 50%;
-    width: 600px;
+    inline-size: 600px;
     transform: translateX(-50%);
   }
 
   /* J: Medium left */
 
   .areaJ {
-    top: 1050px;
-    left: 40px;
-    width: 300px;
+    inset-block-start: 1050px;
+    inset-inline-start: 40px;
+    inline-size: 300px;
   }
 
   /* K: Large right, overlapping */
 
   .areaK {
-    top: 1380px;
-    right: 80px;
-    width: 500px;
+    inset-block-start: 1380px;
+    inset-inline-end: 80px;
+    inline-size: 500px;
   }
 
   /* L: Tiny floating - rotated */
 
   .areaL {
-    top: 1320px;
-    left: 180px;
+    inset-block-start: 1320px;
+    inset-inline-start: 180px;
     z-index: 5;
-    width: 200px;
+    inline-size: 200px;
     transform: rotate(15deg);
   }
 
   /* M: Large left */
 
   .areaM {
-    top: 1680px;
-    left: 20px;
-    width: 460px;
+    inset-block-start: 1680px;
+    inset-inline-start: 20px;
+    inline-size: 460px;
   }
 
   /* N: Medium center-right */
 
   .areaN {
-    top: 1780px;
-    left: 520px;
+    inset-block-start: 1780px;
+    inset-inline-start: 520px;
     z-index: 2;
-    width: 320px;
+    inline-size: 320px;
   }
 
   /* O: Large right */
 
   .areaO {
-    top: 1900px;
-    right: 60px;
-    width: 440px;
+    inset-block-start: 1900px;
+    inset-inline-end: 60px;
+    inline-size: 440px;
   }
 
   /* P: Small scattered */
 
   .areaP {
-    top: 2200px;
-    left: 100px;
-    width: 190px;
+    inset-block-start: 2200px;
+    inset-inline-start: 100px;
+    inline-size: 190px;
   }
 
   /* Q: Hero bottom */
 
   .areaQ {
-    top: 2400px;
-    left: 280px;
-    width: 580px;
+    inset-block-start: 2400px;
+    inset-inline-start: 280px;
+    inline-size: 580px;
   }
 
   /* R: Tiny - rotated */
 
   .areaR {
-    top: 2350px;
-    right: 200px;
+    inset-block-start: 2350px;
+    inset-inline-end: 200px;
     z-index: 6;
-    width: 200px;
+    inline-size: 200px;
     transform: rotate(20deg);
   }
 
   /* S: Large bottom-right */
 
   .areaS {
-    top: 2650px;
-    right: 40px;
-    width: 420px;
+    inset-block-start: 2650px;
+    inset-inline-end: 40px;
+    inline-size: 420px;
   }
 
   /* T: Medium bottom-left */
 
   .areaT {
-    top: 2850px;
-    left: 60px;
-    width: 350px;
+    inset-block-start: 2850px;
+    inset-inline-start: 60px;
+    inline-size: 350px;
   }
 }
 
@@ -458,7 +459,7 @@
 .caseStudy {
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;
-  max-width: 100%;
+  max-inline-size: 100%;
   font-family: var(--secondary-body-font), sans-serif;
   font-size: 1rem;
   color: var(--main-body-copy-color);
@@ -468,25 +469,25 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  margin-bottom: 2rem;
+  margin-block-end: 2rem;
 }
 
 .heroText {
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1 1 320px;
 }
 
 .heroText h1 {
   font-family: var(--primary-body-font), sans-serif;
   font-size: 2.8rem;
-  margin-bottom: 1rem;
+  margin-block-end: 1rem;
 }
 
 .heroText h2 {
   font-size: 1.3rem;
   font-weight: 400;
   color: var(--color-primary);
-  margin-bottom: 2rem;
+  margin-block-end: 2rem;
 }
 
 .caseBadges {
@@ -504,7 +505,7 @@
 
 .heroImage {
   display: flex;
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1 1 320px;
   justify-content: flex-end;
   align-items: flex-end;
@@ -512,25 +513,25 @@
 
 .heroVideo {
   margin-block-end: 2rem;
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   border-radius: 16px;
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
 }
 
 .section {
-  margin-bottom: 3rem;
+  margin-block-end: 3rem;
 }
 
 .gallerySection {
   position: relative;
-  right: 50%;
+  /* stylelint-disable-next-line logical-css/require-logical-properties -- Physical midpoint must match translateX(). */
   left: 50%;
-  margin-inline: -50vw;
+  margin-inline: -50vi;
   padding-inline: 32px;
   box-sizing: border-box;
-  width: 100vw;
-  max-width: 100vw;
+  inline-size: 100vi;
+  max-inline-size: 100vi;
   background: var(--gallery-bg, #fff);
   transform: translateX(-50%);
 }
@@ -538,14 +539,14 @@
 .galleryGridWrapper {
   margin: 0 auto;
   box-sizing: border-box;
-  width: 100%;
-  max-width: 1920px;
+  inline-size: 100%;
+  max-inline-size: 1920px;
 }
 
 /* stylelint-disable-next-line no-duplicate-selectors -- intentional override of mobile .gallery in line 40 for desktop layout. TODO: refactor into one .gallery with proper @media. */
 .gallery {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 32px;
@@ -565,7 +566,7 @@
 }
 
 .twoCol > div {
-  min-width: 0;
+  min-inline-size: 0;
   flex: 1 1 320px;
 }
 
@@ -578,7 +579,7 @@
 }
 
 .projectMeta li {
-  margin-bottom: 0.5rem;
+  margin-block-end: 0.5rem;
 }
 
 .processSteps {
@@ -589,7 +590,7 @@
 
 .processStep {
   padding: 1.2rem 1rem 1.2rem 1.2rem;
-  min-width: 160px;
+  min-inline-size: 160px;
   border-radius: 12px;
   background: color-mix(in srgb, var(--color-gray-dark) 5%, transparent);
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
@@ -599,8 +600,7 @@
   font-family: var(--primary-body-font), sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  margin-top: 0;
+  margin-block: 0 0.5rem;
 }
 
 .resultsList {

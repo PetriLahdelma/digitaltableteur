@@ -34,7 +34,7 @@ const styles = `
     display: flex;
     inline-size: 100%;
     block-size: 100%;
-    padding-block-start: 12vh;
+    padding-block-start: 12vb;
     padding-inline: var(--space-internal-16, 1rem);
     justify-content: center;
     align-items: flex-start;
@@ -43,8 +43,8 @@ const styles = `
   .dialog {
     box-sizing: border-box;
     display: flex;
-    inline-size: min(92vw, 34rem);
-    max-block-size: 70vh;
+    inline-size: min(92vi, 34rem);
+    max-block-size: 70vb;
     flex-direction: column;
     overflow: hidden;
     border: 1px solid var(--color-border, #d5d5d5);
@@ -70,6 +70,7 @@ const styles = `
     margin: 0;
     padding: var(--space-internal-2, 0.125rem);
     overflow-y: auto;
+    overflow-block: auto;
     list-style: none;
   }
   .option {

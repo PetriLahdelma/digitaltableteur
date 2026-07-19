@@ -1,6 +1,6 @@
 .container {
   box-sizing: border-box;
-  width: 100%;
+  inline-size: 100%;
   padding-inline: var(--page-margin-mobile);
 }
 

@@ -1,6 +1,6 @@
 .metricsBand {
   display: block;
-  padding-block: clamp(2.5rem, 5vw, 4rem);
+  padding-block: clamp(2.5rem, 5vi, 4rem);
 }
 
 .metricsHeader {
@@ -43,7 +43,7 @@
 
 .metricCard {
   display: grid;
-  padding: clamp(1.25rem, 2vw, 1.75rem);
+  padding: clamp(1.25rem, 2vi, 1.75rem);
   gap: var(--space-layout-8, 0.5rem);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
@@ -54,7 +54,7 @@
 .metricValue {
   margin: 0;
   font-family: var(--primary-bold-font, var(--font-body));
-  font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+  font-size: clamp(1.5rem, 2vi + 1rem, 2rem);
   font-weight: 700;
   line-height: var(--line-height-tight);
   letter-spacing: -0.01em;

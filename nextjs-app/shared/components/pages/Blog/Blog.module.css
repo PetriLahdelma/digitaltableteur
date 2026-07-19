@@ -6,8 +6,8 @@
   font-family: "var(--primary-heading-font, serif)";
   font-size: 5rem;
   font-weight: var(--primary-heading-weight, 300);
-  text-align: left;
-  margin-bottom: 4rem;
+  text-align: start;
+  margin-block-end: 4rem;
 }
 
 .list {
@@ -19,7 +19,7 @@
 @media (width <= 768px) {
   .blog h1 {
     font-size: 4rem;
-    margin-bottom: 3rem;
+    margin-block-end: 3rem;
   }
 
   .list {
@@ -31,7 +31,7 @@
 @media (width <= 480px) {
   .blog h1 {
     font-size: 3rem;
-    margin-bottom: 2rem;
+    margin-block-end: 2rem;
   }
 
   .list {
