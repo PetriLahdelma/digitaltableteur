@@ -20,6 +20,7 @@ import { WipBadge } from "@dt/WipBadge";
 import { CookieConsentProvider } from "../nextjs-app/shared/lib/cookieConsent/CookieConsentContext";
 import { resolveDesignParameters } from "./lib/resolve-figma-from-contract";
 import { autogenArgTypes, autogenArgs } from "./lib/controls-autogen";
+import { DtDocsContainer } from "./blocks/DtDocsContainer";
 import { DtDocsPage } from "./blocks/DtDocsPage";
 import { dtSourceTransform } from "./blocks/sourceTransform";
 
@@ -492,6 +493,10 @@ const preview: Preview = {
     // the 11-block DT template; others fall back to classic autodocs inside
     // DtDocsPage. Source transform strips story scaffolding from code panels.
     docs: {
+      // Theme-following docs container: paints the docs canvas from the DT
+      // theme global so docs-frame blocks styled with theme tokens stay
+      // legible in dark/HCB/HCW (see DtDocsContainer for the regression note).
+      container: DtDocsContainer,
       page: DtDocsPage,
       source: { transform: dtSourceTransform },
     },
