@@ -56,6 +56,62 @@ function Cards(args: Args) {
     </Stack>
   );
 }
+
+/* Single standalone card — mirrors the React SelectableCard Default (one
+   checkbox-style card in a 360px column) so the rendered-parity pair matches. */
+function SingleCard() {
+  return (
+    <div style={{ maxWidth: 360 }}>
+      <NativeElement
+        tagName="dt-selectable-card"
+        attributes={{ value: "starter" }}
+      >
+        <strong>Starter</strong>
+        <p>For solo work — 1 seat, community support.</p>
+      </NativeElement>
+    </div>
+  );
+}
+
+/* Single-select group — mirrors the React SelectableCard Example (three cards,
+   420px column, no helper line) so the rendered-parity pair matches. */
+function ExampleGroup() {
+  return (
+    <div style={{ maxWidth: 420 }}>
+      <NativeElement
+        tagName="dt-selectable-card-group"
+        attributes={{
+          type: "single",
+          legend: "Choose a plan",
+          name: "plan",
+          "default-value": "team",
+        }}
+      >
+        <NativeElement
+          tagName="dt-selectable-card"
+          attributes={{ value: "starter" }}
+        >
+          <strong>Starter</strong>
+          <p>1 seat, community support.</p>
+        </NativeElement>
+        <NativeElement
+          tagName="dt-selectable-card"
+          attributes={{ value: "team" }}
+        >
+          <strong>Team</strong>
+          <p>Up to 10 seats, priority support.</p>
+        </NativeElement>
+        <NativeElement
+          tagName="dt-selectable-card"
+          attributes={{ value: "scale" }}
+        >
+          <strong>Scale</strong>
+          <p>Unlimited seats, SLA.</p>
+        </NativeElement>
+      </NativeElement>
+    </div>
+  );
+}
 const meta = {
   title: "Web Components/Layout/SelectableCard",
   component: Cards,
@@ -82,10 +138,16 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {
-  play: assertNative("dt-selectable-card-group"),
+  parameters: { layout: "padded" },
+  render: SingleCard,
+  play: assertNative("dt-selectable-card"),
 };
 export const Playground: Story = {};
-export const Example: Story = { ...exampleStory };
+export const Example: Story = {
+  ...exampleStory,
+  parameters: { layout: "padded" },
+  render: ExampleGroup,
+};
 export const MultiSelect: Story = { args: { type: "multiple" } };
 export const Horizontal: Story = { args: { orientation: "horizontal" } };
 export const Disabled: Story = { args: { disabled: true } };

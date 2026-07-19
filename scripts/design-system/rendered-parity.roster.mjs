@@ -29,6 +29,7 @@ export const enforced = [
   "Menu",
   "NavMenuList",
   "SelectOption",
+  "SelectableCard",
   "SkipLink",
   "SplitButton",
   "Testimonial",

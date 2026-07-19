@@ -11,6 +11,11 @@ const ORIENTATIONS = ["vertical", "horizontal"] as const;
 export type DtSelectableCardSelectionType = (typeof TYPES)[number];
 export type DtSelectableCardOrientation = (typeof ORIENTATIONS)[number];
 
+// The app ships global document typography (p margin/line-height, strong
+// weight) that outranks plain ::slotted in the cascade. The slotted-content
+// rules use !important on exactly those colliding properties — the designed
+// escape hatch — so the surface matches React's Card, which neutralises the
+// same globals with component classes.
 const cardStyles = `
   :host { display: flex; position: relative; flex-direction: column; }
   /* The whole card is the control (no radio/checkbox glyph); the label is a
@@ -19,7 +24,12 @@ const cardStyles = `
   label { display: flex; position: relative; flex: 1 1 auto; flex-direction: column; cursor: pointer; }
   label.disabled { cursor: not-allowed; opacity: .55; }
   input { position: absolute; margin: -1px; inline-size: 1px; block-size: 1px; border: 0; clip-path: inset(50%); overflow: hidden; }
-  .surface { display: flex; position: relative; box-sizing: border-box; flex: 1 1 auto; flex-direction: column; justify-content: center; min-block-size: 4rem; padding: var(--space-internal-16); border: 1px solid var(--color-border-light); border-radius: var(--radius-lg, 8px); background: var(--color-surface); color: var(--color-text); }
+  .surface { display: flex; position: relative; box-sizing: border-box; flex: 1 1 auto; flex-direction: column; justify-content: center; gap: var(--space-internal-8); padding: var(--space-internal-16); border: 1px solid var(--color-border-light); border-radius: 12px; background: var(--color-surface); color: var(--color-text); }
+  /* Slotted title/description mirror @dt/Card Title(xxs)/Text(s); !important
+     defends the colliding props against the app's global p/strong typography,
+     which outranks plain ::slotted (see note above cardStyles). */
+  ::slotted(strong) { margin: 0; font-family: var(--font-title); font-size: var(--font-size-title-xxs); font-weight: 600 !important; line-height: var(--line-height-snug); color: var(--color-title); }
+  ::slotted(p) { margin: 0 !important; font-family: var(--font-text); font-size: var(--font-size-text-s); font-weight: var(--font-weight-text); line-height: 1.6 !important; color: var(--color-text-muted, var(--color-primary)); }
   /* Hover only affects unselected cards; a selected card keeps its look. */
   label:hover:not(.disabled):not(.selected) .surface { border-color: var(--color-border); }
   label.selected .surface { border-color: var(--color-primary); box-shadow: inset 0 0 0 1px var(--color-primary); }

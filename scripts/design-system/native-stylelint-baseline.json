@@ -1,7 +1,7 @@
 {
   "generatedBy": "npm run lint:css:update",
   "templateCount": 84,
-  "warningCount": 574,
+  "warningCount": 575,
   "warnings": [
     {
       "column": 21,
@@ -3955,9 +3955,18 @@
       "id": "packages/web-components/src/native/selectable-card.ts::rhythmguard/prefer-token::Unexpected raw scale value \"-1px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
+      "column": 263,
+      "file": "packages/web-components/src/native/selectable-card.ts",
+      "line": 22,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"12px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/selectable-card.ts::rhythmguard/prefer-token::Unexpected raw scale value \"12px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
       "column": 118,
       "file": "packages/web-components/src/native/selectable-card.ts",
-      "line": 26,
+      "line": 35,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
