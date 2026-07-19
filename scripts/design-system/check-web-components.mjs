@@ -161,7 +161,11 @@ const maxPackedFiles = 40 + tags.length * 2;
 // +1 kB for the DT-1245 round (dt-badge xs size, dt-selectable-card redesign
 // port, 0.8.0 changelog entries): measured 1,851,032 bytes unpacked, ~0.4 kB
 // over the prior ceiling.
-const sharedBundleAndManifestCeiling = 1_314_000;
+// +1.5 kB for the dt-selectable-card rendered-parity pass (::slotted title/
+// description typography matching @dt/Card, !important escape hatch over the
+// app's global p/strong rules, surface radius/gap alignment): measured
+// 1,852,714 bytes unpacked, ~1.1 kB over the prior ceiling.
+const sharedBundleAndManifestCeiling = 1_315_500;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.
