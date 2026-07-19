@@ -224,7 +224,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
           <div className={styles.actions}>
             {variant === "single" ? (
               <Button
-                size="md"
+                size="sm"
                 variant="secondary"
                 onClick={() => void copyToClipboard("raw")}
                 aria-label="Copy code to clipboard"
@@ -233,7 +233,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
               </Button>
             ) : (
               <SplitButton
-                size="md"
+                size="sm"
                 variant="secondary"
                 label="Copy"
                 onPrimaryClick={() => void copyToClipboard("raw")}
