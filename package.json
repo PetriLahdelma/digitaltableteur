@@ -191,6 +191,7 @@
     "sync:contract-props": "node scripts/design-system/sync-contract-props.mjs",
     "check:contract-drift": "node scripts/design-system/check-contract-drift.mjs",
     "check:contract-props": "node scripts/design-system/check-contract-props.mjs",
+    "check:story-lifecycle-tags": "node scripts/design-system/check-story-lifecycle-tags.mjs",
     "lint:composition": "node scripts/design-system/lint-composition.mjs --strict",
     "capture:a11y-snapshots": "node scripts/design-system/capture-story-a11y-snapshots.mjs",
     "promote:stable-atoms": "node scripts/design-system/promote-stable-atoms.mjs",
