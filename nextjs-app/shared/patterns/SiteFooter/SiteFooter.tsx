@@ -146,11 +146,11 @@ export function SiteFooter({ className }: SiteFooterProps) {
               <DtLink underline="hover" href="/about" size="sm">
                 {t("navAbout")}
               </DtLink>
-              <DtLink underline="hover" href="/blog" size="sm">
-                {t("navBlog")}
-              </DtLink>
               <DtLink underline="hover" href="/pricing" size="sm">
                 {t("navPricing")}
+              </DtLink>
+              <DtLink underline="hover" href="/blog" size="sm">
+                {t("navBlog")}
               </DtLink>
               <DtLink underline="hover" href="/contact" size="sm">
                 {t("navContact")}
