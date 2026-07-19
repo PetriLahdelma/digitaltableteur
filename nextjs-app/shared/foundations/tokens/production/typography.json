@@ -40,7 +40,7 @@
     "size": {
       "text": {
         "DEFAULT": {
-          "$value": "clamp(1rem, 0.6vw + 0.9rem, 1.25rem)",
+          "$value": "clamp(1rem, 0.6vi + 0.9rem, 1.25rem)",
           "$description": "Fluid type size token (text); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -52,7 +52,7 @@
           }
         },
         "xxs": {
-          "$value": "clamp(0.875rem, 0.1vw + 0.85rem, 0.9375rem)",
+          "$value": "clamp(0.875rem, 0.1vi + 0.85rem, 0.9375rem)",
           "$description": "Fluid type size token (text-xxs); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -64,7 +64,7 @@
           }
         },
         "xs": {
-          "$value": "clamp(0.875rem, 0.2vw + 0.83rem, 1rem)",
+          "$value": "clamp(0.875rem, 0.2vi + 0.83rem, 1rem)",
           "$description": "Fluid type size token (text-xs); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -76,7 +76,7 @@
           }
         },
         "s": {
-          "$value": "clamp(0.875rem, 0.35vw + 0.8rem, 1.05rem)",
+          "$value": "clamp(0.875rem, 0.35vi + 0.8rem, 1.05rem)",
           "$description": "Fluid type size token (text-s); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -88,7 +88,7 @@
           }
         },
         "m": {
-          "$value": "clamp(1rem, 0.6vw + 0.9rem, 1.25rem)",
+          "$value": "clamp(1rem, 0.6vi + 0.9rem, 1.25rem)",
           "$description": "Fluid type size token (text-m); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -100,7 +100,7 @@
           }
         },
         "l": {
-          "$value": "clamp(1.125rem, 0.8vw + 1rem, 1.5rem)",
+          "$value": "clamp(1.125rem, 0.8vi + 1rem, 1.5rem)",
           "$description": "Fluid type size token (text-l); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -112,7 +112,7 @@
           }
         },
         "xl": {
-          "$value": "clamp(1.375rem, 1vw + 1.15rem, 1.875rem)",
+          "$value": "clamp(1.375rem, 1vi + 1.15rem, 1.875rem)",
           "$description": "Fluid type size token (text-xl); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -124,7 +124,7 @@
           }
         },
         "xxl": {
-          "$value": "clamp(1.625rem, 1.4vw + 1.35rem, 2.25rem)",
+          "$value": "clamp(1.625rem, 1.4vi + 1.35rem, 2.25rem)",
           "$description": "Fluid type size token (text-xxl); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -138,7 +138,7 @@
       },
       "title": {
         "DEFAULT": {
-          "$value": "clamp(2.25rem, 3.5vw + 1.5rem, 3.75rem)",
+          "$value": "clamp(2.25rem, 3.5vi + 1.5rem, 3.75rem)",
           "$description": "Fluid type size token (title); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -150,7 +150,7 @@
           }
         },
         "xxs": {
-          "$value": "clamp(1.125rem, 0.4vw + 1.05rem, 1.375rem)",
+          "$value": "clamp(1.125rem, 0.4vi + 1.05rem, 1.375rem)",
           "$description": "Fluid type size token (title-xxs); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -162,7 +162,7 @@
           }
         },
         "xs": {
-          "$value": "clamp(1.25rem, 0.9vw + 1.1rem, 1.75rem)",
+          "$value": "clamp(1.25rem, 0.9vi + 1.1rem, 1.75rem)",
           "$description": "Fluid type size token (title-xs); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -174,7 +174,7 @@
           }
         },
         "s": {
-          "$value": "clamp(1.5rem, 2vw + 1.1rem, 2.25rem)",
+          "$value": "clamp(1.5rem, 2vi + 1.1rem, 2.25rem)",
           "$description": "Fluid type size token (title-s); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -186,7 +186,7 @@
           }
         },
         "m": {
-          "$value": "clamp(2rem, 2.8vw + 1.3rem, 3rem)",
+          "$value": "clamp(2rem, 2.8vi + 1.3rem, 3rem)",
           "$description": "Fluid type size token (title-m); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -198,7 +198,7 @@
           }
         },
         "l": {
-          "$value": "clamp(2.75rem, 4vw + 1.75rem, 4.25rem)",
+          "$value": "clamp(2.75rem, 4vi + 1.75rem, 4.25rem)",
           "$description": "Fluid type size token (title-l); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -210,7 +210,7 @@
           }
         },
         "xl": {
-          "$value": "clamp(3.5rem, 6vw + 2.5rem, 5.5rem)",
+          "$value": "clamp(3.5rem, 6vi + 2.5rem, 5.5rem)",
           "$description": "Fluid type size token (title-xl); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -222,7 +222,7 @@
           }
         },
         "xxl": {
-          "$value": "clamp(4.5rem, 8vw + 3rem, 7rem)",
+          "$value": "clamp(4.5rem, 8vi + 3rem, 7rem)",
           "$description": "Fluid type size token (title-xxl); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -236,7 +236,7 @@
       },
       "display": {
         "DEFAULT": {
-          "$value": "clamp(\n    5rem,\n    10vw + 3rem,\n    8rem\n  )",
+          "$value": "clamp(\n    5rem,\n    10vi + 3rem,\n    8rem\n  )",
           "$description": "Fluid type size token (display); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -248,7 +248,7 @@
           }
         },
         "xl": {
-          "$value": "clamp(\n    6rem,\n    14vw + 3rem,\n    12rem\n  )",
+          "$value": "clamp(\n    6rem,\n    14vi + 3rem,\n    12rem\n  )",
           "$description": "Fluid type size token (display-xl); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -262,7 +262,7 @@
       },
       "button": {
         "s": {
-          "$value": "clamp(0.875rem, 0.3vw + 0.8rem, 1rem)",
+          "$value": "clamp(0.875rem, 0.3vi + 0.8rem, 1rem)",
           "$description": "Fluid type size token (button-s); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -274,7 +274,7 @@
           }
         },
         "m": {
-          "$value": "clamp(1rem, 0.35vw + 0.9rem, 1.125rem)",
+          "$value": "clamp(1rem, 0.35vi + 0.9rem, 1.125rem)",
           "$description": "Fluid type size token (button-m); uses clamp().",
           "$type": "dimension",
           "$extensions": {
@@ -286,7 +286,7 @@
           }
         },
         "l": {
-          "$value": "clamp(1.125rem, 0.45vw + 1rem, 1.25rem)",
+          "$value": "clamp(1.125rem, 0.45vi + 1rem, 1.25rem)",
           "$description": "Fluid type size token (button-l); uses clamp().",
           "$type": "dimension",
           "$extensions": {
