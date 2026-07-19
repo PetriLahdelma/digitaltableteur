@@ -99,13 +99,13 @@
   margin: 0;
 }
 
-.content :is(p, span, div) {
+.content > :is(p, span, div) {
   background-color: transparent;
   color: inherit;
 }
 
 .loading .content,
-.loading .content :is(p, span, div) {
+.loading .content > :is(p, span, div) {
   background-color: var(--main-body-background-color, var(--color-white));
   color: var(--color-primary);
 }
