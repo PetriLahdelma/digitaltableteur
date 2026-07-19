@@ -98,6 +98,14 @@
   --link-color: #041b23;
   --logo-text-color: var(--color-text); /* Logo wordmark text - theme-aware */
 
+  /* Code-window chrome text (CodeBlockWindow/CodeSnippet toolbar labels,
+     line-number gutter, status, caption). Was only a hardcoded fallback in
+     component CSS with a manual .themeDark override, so the HC themes
+     rendered dark slate on black. Defined here so React modules AND the
+     native shadow-DOM twins (custom props inherit through shadow roots)
+     resolve it per theme. */
+  --code-toolbar-text: #2b3a45; /* 10.9:1 on #fff */
+
   /* Chat composer keyboard hint. Was an undefined token whose #4b5563
      fallback applied in every theme (2.31:1 on the dark background). */
   --shortcut-hint-color: #4b5563;
@@ -359,6 +367,7 @@
   --main-body-copy-color: #e0e0e0; /* Body copy, was #6fa8ff; accent blue now reserved for interactive */
   --secondary-text-color: #aaa;
   --inverted-text-color: #181a1b;
+  --code-toolbar-text: #cbd5e0; /* matches the old .themeDark component override; 11.4:1 on #181a1b */
   --shortcut-hint-color: #9ca3af; /* 6.7:1 on #181a1b */
   --link-color: var(--color-primary); /* links use the interactive accent, not info-cyan; matches light theme where link == primary */
   --color-primary: #6fa8ff;
@@ -433,6 +442,7 @@
   --main-body-copy-color: #fff;
   --secondary-text-color: #fff;
   --inverted-text-color: #000;
+  --code-toolbar-text: #fff; /* max contrast on #000 chrome */
   --shortcut-hint-color: #fff;
   --link-color: #fff;
   --color-primary: #fff;
@@ -543,6 +553,7 @@
   --main-body-copy-color: #000;
   --secondary-text-color: #000;
   --inverted-text-color: #fff;
+  --code-toolbar-text: #000; /* max contrast on #fff chrome */
   --shortcut-hint-color: #000;
   --link-color: #000;
   --color-primary: #000;
@@ -634,6 +645,7 @@
     --color-border: CanvasText;
     --color-border-light: GrayText;
     --color-muted: CanvasText;
+    --code-toolbar-text: CanvasText;
     --color-disabled-placeholder: GrayText;
     --color-disabled-bg: Canvas;
     --color-disabled-bg-light: Canvas;

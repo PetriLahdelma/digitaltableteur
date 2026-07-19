@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "source": "nextjs-app/shared/styles/variables.css",
-  "tokenCount": 185,
+  "tokenCount": 186,
   "usageCoverage": 151,
   "dtcgFiles": [
     "tokens/production/color.json",
@@ -131,6 +131,7 @@
     "--secondary-heading-font",
     "--secondary-text-color",
     "--inverted-text-color",
+    "--code-toolbar-text",
     "--shortcut-hint-color",
     "--wavy-underline-mask",
     "--storybook-blue",
@@ -214,5 +215,5 @@
     "--line-height-relaxed",
     "--line-height-loose"
   ],
-  "generatedAt": "2026-07-14T16:39:51.727Z"
+  "generatedAt": "2026-07-19T13:28:08.424Z"
 }
