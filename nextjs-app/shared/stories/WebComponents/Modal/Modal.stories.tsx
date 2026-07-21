@@ -195,6 +195,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: (args, context) => (
     <OpenableModal {...args} initialOpen={context.viewMode !== "docs"} />
   ),
@@ -202,6 +203,7 @@ export const Default: Story = {
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: (args, context) => (
     <OpenableModal {...args} initialOpen={context.viewMode !== "docs"} />
   ),
@@ -470,6 +472,7 @@ export const AnimatedEntrance: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: (args, context) => (
     <OpenableModal {...args} initialOpen={context.viewMode !== "docs"} />
@@ -477,6 +480,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   ...forcedColorsStory,
   render: (args, context) => (
     <OpenableModal

@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- group "View options":
+  - button "Grid"
+  - button "List"

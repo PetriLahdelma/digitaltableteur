@@ -1,0 +1,17 @@
+- status: Work in progress (beta)
+- region "Share":
+  - group "Share":
+    - link "Share on LinkedIn":
+      - /url: https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdigitaltableteur.com
+    - link "Share on Twitter":
+      - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fdigitaltableteur.com&text=Digitaltableteur%20-%20Portfolio
+    - link "Share on Facebook":
+      - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdigitaltableteur.com
+    - link "Share on Reddit":
+      - /url: https://reddit.com/submit?url=https%3A%2F%2Fdigitaltableteur.com&title=Digitaltableteur%20-%20Portfolio
+    - link "Share on WhatsApp":
+      - /url: https://wa.me/?text=Digitaltableteur%20-%20Portfolio%20https%3A%2F%2Fdigitaltableteur.com
+    - link "Share on Instagram":
+      - /url: https://www.instagram.com/digitaltableteur/
+    - button "Copy to clipboard"
+  - status

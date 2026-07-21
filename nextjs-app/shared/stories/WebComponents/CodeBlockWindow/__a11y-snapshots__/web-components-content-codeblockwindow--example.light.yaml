@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- figure "Filename plus language orients the reader before they scan the code.":
+  - text: tokens.config.ts
+  - button "Copy code to clipboard": Copy
+  - status
+  - 'group "Code block: TSX"':
+    - code: "type Props = { label: string; }; export function DemoButton({ label }: Props) { return ( <button type=\"button\" aria-label={label}> {label} </button> ); }"
+  - text: Filename plus language orients the reader before they scan the code.

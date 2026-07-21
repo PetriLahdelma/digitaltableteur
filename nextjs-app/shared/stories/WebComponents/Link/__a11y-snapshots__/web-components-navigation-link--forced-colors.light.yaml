@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- link "Read the documentation External link":
+  - /url: https://example.com
+  - text: Read the documentation
+  - img "External link"

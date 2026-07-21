@@ -30,6 +30,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: async (context) => {
     await assertNative("dt-skip-link")(context);
     const host = context.canvasElement.querySelector("dt-skip-link");
@@ -39,7 +40,7 @@ export const Default: Story = {
     expect(host?.shadowRoot?.activeElement).toBe(link);
   },
 };
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const FocusReveal: Story = { ...exampleStory, play: Default.play };
 export const InLayout: Story = {
   ...exampleStory,
@@ -57,5 +58,7 @@ export const CustomTarget: Story = {
   ...exampleStory,
   args: { label: "Skip to project list", href: "#projects" },
 };
-export const Example: Story = { ...exampleStory };
-export const ForcedColors: Story = { ...forcedColorsStory, play: Default.play };
+export const Example: Story = {
+  tags: ["beta-matrix"], ...exampleStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory, play: Default.play };

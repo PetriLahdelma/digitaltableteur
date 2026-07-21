@@ -120,12 +120,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: assertNative("dt-combobox"),
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: {
     value: "1-2-months",
@@ -193,4 +195,5 @@ export const Filtering: Story = {
   },
 };
 
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

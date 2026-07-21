@@ -52,9 +52,11 @@ const meta = {
 } satisfies Meta<typeof ValueCard>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-value-card") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-value-card") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: () => (
     <Row>
@@ -71,4 +73,5 @@ export const Example: Story = {
     </Row>
   ),
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

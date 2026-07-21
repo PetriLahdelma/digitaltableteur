@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- radiogroup "Layout mode":
+  - radio "List"
+  - radio "Grid" [checked]
+  - radio "Board"

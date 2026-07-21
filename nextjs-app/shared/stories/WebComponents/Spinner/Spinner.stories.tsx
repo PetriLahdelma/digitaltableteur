@@ -25,8 +25,9 @@ const meta = {
 } satisfies Meta<typeof NativeSpinner>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-spinner") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-spinner") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Sizes: Story = {
   ...exampleStory,
   render: () => (
@@ -73,7 +74,9 @@ export const RegionLoading: Story = {
   ),
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: { label: "Publishing changes", size: "lg" },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

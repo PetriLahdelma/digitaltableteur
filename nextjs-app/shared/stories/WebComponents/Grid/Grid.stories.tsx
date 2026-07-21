@@ -68,15 +68,19 @@ const meta = {
 } satisfies Meta<typeof NativeGrid>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-grid") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-grid") };
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   args: { rows: "2", rowGap: "1rem", colGap: "1rem" },
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: { columns: "3", gap: "1.5rem" },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };
 export const EqualTracks: Story = {
   ...exampleStory,
   render: () => <NativeGrid columns="3" gap="1rem" />,

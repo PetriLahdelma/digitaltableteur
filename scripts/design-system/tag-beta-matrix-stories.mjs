@@ -95,4 +95,48 @@ for (const root of roots) {
   }
 }
 
+/**
+ * Native-element stories.
+ *
+ * These are documented by `packages/web-components/web-components.config.mjs` rather than
+ * by a contract, so the contract walk above cannot reach them and all 85 elements sat
+ * outside the enforced matrix with zero accessibility-tree evidence.
+ *
+ * Driven by the story tree rather than by the config, deliberately: `element.contract` is
+ * not a unique key (`dt-selectable-card` and `dt-selectable-card-group` both claim
+ * `SelectableCard`), so mapping element -> story file would either miss a story or tag one
+ * twice. Every element is currently `beta`, and every story directory here backs native
+ * elements, so the tree is the honest unit. If a native element is ever promoted past
+ * beta this stays correct, since eligibility here is "is a native element story", not a
+ * status read.
+ */
+const WC_STORIES_ROOT = "nextjs-app/shared/stories/WebComponents";
+let wcUpdated = 0;
+
+function* walkStoryFiles(dir) {
+  if (!existsSync(dir)) return;
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) yield* walkStoryFiles(full);
+    else if (entry.name.endsWith(".stories.tsx")) yield full;
+  }
+}
+
+for (const storyPath of walkStoryFiles(WC_STORIES_ROOT)) {
+  let text = readFileSync(storyPath, "utf8");
+  let fileUpdated = false;
+
+  for (const storyName of REQUIRED) {
+    const result = tagStoryFile(text, storyName);
+    text = result.text;
+    if (result.mutated) fileUpdated = true;
+  }
+
+  if (fileUpdated) {
+    writeFileSync(storyPath, text);
+    wcUpdated += 1;
+  }
+}
+
 console.log(`tag-beta-matrix-stories: updated ${updated} story files`);
+console.log(`tag-beta-matrix-stories: updated ${wcUpdated} native-element story files`);

@@ -214,6 +214,9 @@ const THEME = (process.env.DT_THEME ?? "").toLowerCase();
 const FORCED_COLORS = (process.env.DT_FORCED_COLORS ?? "").toLowerCase();
 const VIEWPORT = Number.parseInt(process.env.DT_VIEWPORT ?? "", 10);
 
+/** Native-element stories: documented by web-components.config.mjs, not by a contract. */
+const WC_STORIES_ROOT = path.join(ROOT_DIR, "nextjs-app/shared/stories/WebComponents");
+
 let storyDirMap: Promise<Map<string, string>> | null = null;
 
 /**
@@ -241,9 +244,13 @@ let storyDirMap: Promise<Map<string, string>> | null = null;
  *      directory under a prefix no story id can ever have.
  *
  * The index carries `importPath` per story, so the directory is a fact rather
- * than an inference and all four classes disappear at once. The contract check
- * is kept so scope is unchanged: `shared/stories/WebComponents/**` holds no
- * contracts and stays excluded, exactly as it was under the old roots list.
+ * than an inference and all four classes disappear at once.
+ *
+ * Eligibility is "this directory documents a design-system surface". That is a
+ * contract for React components, and membership of the web-components story tree
+ * for native elements: those are documented by
+ * `packages/web-components/web-components.config.mjs` rather than by a contract,
+ * so a contract-only test excluded all 85 of them from AT capture entirely.
  */
 async function loadStoryDirMap(): Promise<Map<string, string>> {
   if (storyDirMap) return storyDirMap;
@@ -257,19 +264,20 @@ async function loadStoryDirMap(): Promise<Map<string, string>> {
       entries?: Record<string, { importPath?: string }>;
     };
     const map = new Map<string, string>();
-    const dirHasContract = new Map<string, boolean>();
+    const eligible = new Map<string, boolean>();
 
     for (const [id, entry] of Object.entries(index.entries ?? {})) {
       if (!entry.importPath) continue;
       const dir = path.dirname(path.resolve(ROOT_DIR, entry.importPath));
-      let hasContract = dirHasContract.get(dir);
-      if (hasContract === undefined) {
-        hasContract =
-          fs.existsSync(dir) &&
-          fs.readdirSync(dir).some((f) => f.endsWith(".contract.json"));
-        dirHasContract.set(dir, hasContract);
+      let ok = eligible.get(dir);
+      if (ok === undefined) {
+        ok =
+          (fs.existsSync(dir) &&
+            fs.readdirSync(dir).some((f) => f.endsWith(".contract.json"))) ||
+          dir.startsWith(WC_STORIES_ROOT + path.sep);
+        eligible.set(dir, ok);
       }
-      if (hasContract) map.set(id, dir);
+      if (ok) map.set(id, dir);
     }
     return map;
   })();

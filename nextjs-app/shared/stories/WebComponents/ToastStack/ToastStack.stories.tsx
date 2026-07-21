@@ -143,17 +143,19 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: assertNative("dt-toast-stack"),
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: (args) => (
     <PlaygroundHarness max={args.max} position={args.position} />
   ),
 };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   args: {
     toasts: seedToasts,
     position: "bottom-center",
@@ -161,7 +163,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "active" },
   args: { toasts: seedToasts },
 };

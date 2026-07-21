@@ -63,8 +63,9 @@ const meta = {
 } satisfies Meta<typeof NativeRadioGroup>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Playground: Story = {};
-export const Default: Story = { play: assertNative("dt-radio-group") };
+export const Playground: Story = { tags: ["beta-matrix"] };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-radio-group") };
 export const Basic: Story = {
   ...exampleStory,
   args: { defaultValue: "design" },
@@ -87,7 +88,9 @@ export const DisabledOption: Story = {
   },
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: { helperText: "Used to tailor the project team." },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

@@ -101,7 +101,8 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-person-card") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-person-card") };
 export const WithoutSocialMedia: Story = {
   args: {
     linkedinUrl: "",
@@ -143,6 +144,7 @@ export const LongTitle: Story = {
   },
 };
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   args: {
     facebookUrl: "https://facebook.com/petrilahdelma",
     dribbbleUrl: "https://dribbble.com/petrilahdelma",
@@ -150,5 +152,7 @@ export const Playground: Story = {
     substackUrl: "https://petrilahdelma.substack.com",
   },
 };
-export const Example: Story = { ...exampleStory };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const Example: Story = {
+  tags: ["beta-matrix"], ...exampleStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

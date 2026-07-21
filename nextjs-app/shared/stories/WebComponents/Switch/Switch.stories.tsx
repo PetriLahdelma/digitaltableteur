@@ -67,7 +67,8 @@ const meta = {
 } satisfies Meta<typeof NativeSwitch>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-switch") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-switch") };
 export const Loading: Story = {
   ...exampleStory,
   args: { checked: true, loading: true },
@@ -120,14 +121,16 @@ export const WithError: Story = {
   ...exampleStory,
   args: { error: "Could not update this preference." },
 };
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 // Mirror the React Switch Example: an unchecked switch with the same label and
 // helper text (React renders a ControlledTemplate starting unchecked).
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: {
     label: "Enable email notifications",
     helperText: "You'll receive updates about your account activity",
   },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

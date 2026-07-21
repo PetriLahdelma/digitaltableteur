@@ -6,11 +6,13 @@
 import { chromium } from "@playwright/test";
 import { captureStoryAccessibilityTree } from "./a11y-snapshot-capture-lib.mjs";
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { join, dirname, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const STORYBOOK_URL = process.env.STORYBOOK_URL ?? "http://127.0.0.1:6010";
+/** Native-element stories: documented by web-components.config.mjs, not by a contract. */
+const WC_STORIES_ROOT = join(ROOT, "nextjs-app/shared/stories/WebComponents");
 const THEME = process.env.DT_THEME ?? "";
 const FORCED_COLORS = (process.env.DT_FORCED_COLORS ?? "").toLowerCase();
 const NAVIGATION_WAIT_UNTIL = resolveNavigationWaitUntil(
@@ -61,18 +63,19 @@ async function loadStoryDirMap() {
   }
   const index = await res.json();
   const map = new Map();
-  const dirHasContract = new Map();
+  const eligible = new Map();
 
   for (const [id, entry] of Object.entries(index.entries ?? {})) {
     if (!entry.importPath) continue;
     const dir = dirname(join(ROOT, entry.importPath));
-    let hasContract = dirHasContract.get(dir);
-    if (hasContract === undefined) {
-      hasContract =
-        existsSync(dir) && readdirSync(dir).some((f) => f.endsWith(".contract.json"));
-      dirHasContract.set(dir, hasContract);
+    let ok = eligible.get(dir);
+    if (ok === undefined) {
+      ok =
+        (existsSync(dir) && readdirSync(dir).some((f) => f.endsWith(".contract.json"))) ||
+        dir.startsWith(WC_STORIES_ROOT + sep);
+      eligible.set(dir, ok);
     }
-    if (hasContract) map.set(id, dir);
+    if (ok) map.set(id, dir);
   }
   storyPrefixToDir = map;
   return storyPrefixToDir;

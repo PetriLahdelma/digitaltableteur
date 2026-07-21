@@ -1,0 +1,12 @@
+- status: Work in progress (beta)
+- group "Choose a plan":
+  - text: Choose a plan
+  - radio "Starter 1 seat, community support."
+  - strong: Starter
+  - paragraph: 1 seat, community support.
+  - radio "Team Up to 10 seats, priority support." [checked]
+  - strong: Team
+  - paragraph: Up to 10 seats, priority support.
+  - radio "Scale Unlimited seats, SLA."
+  - strong: Scale
+  - paragraph: Unlimited seats, SLA.

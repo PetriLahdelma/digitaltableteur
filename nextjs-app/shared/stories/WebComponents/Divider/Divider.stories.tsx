@@ -48,11 +48,12 @@ type Story = StoryObj<typeof meta>;
 // `padded` layout. The meta's centered Stage (24rem) made the native rule
 // shorter than React's, which was the entire Default pixel/geometry gap.
 export const Default: Story = {
+  tags: ["beta-matrix"],
   parameters: { layout: "padded" },
   render: () => <NativeElement tagName="dt-divider" />,
   play: assertNative("dt-divider"),
 };
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Vertical: Story = {
   ...exampleStory,
   args: { orientation: "vertical" },
@@ -95,6 +96,7 @@ export const VerticalInRow: Story = {
 // and the two paragraphs around the rule). The old `...exampleStory` rendered
 // the meta's single 24rem Stage divider — nothing like the React pair.
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   parameters: { layout: "padded", controls: { disable: true } },
   render: () => (
@@ -107,4 +109,5 @@ export const Example: Story = {
     </div>
   ),
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

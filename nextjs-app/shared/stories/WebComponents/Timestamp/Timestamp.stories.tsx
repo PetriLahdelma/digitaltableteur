@@ -113,9 +113,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-timestamp") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-timestamp") };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Sizes: Story = {
   ...exampleStory,
@@ -233,6 +234,7 @@ export const Formats: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: () => (
     <p>
@@ -252,4 +254,5 @@ export const Example: Story = {
   ),
 };
 
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

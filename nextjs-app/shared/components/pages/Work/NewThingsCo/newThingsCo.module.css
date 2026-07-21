@@ -210,11 +210,21 @@
 /* Results section with NTC brand blue */
 
 .resultsSection {
-  margin-block: var(--space-layout-80);
   padding-block: var(--space-layout-64);
   padding-inline: var(--cs-page-inset);
   background: linear-gradient(135deg, #7f96B2 0%, #6a829e 100%);
   color: white;
+}
+
+/* Sit flush: zero only the edge touching the band, so each neighbour keeps
+   its own rhythm on its far side. */
+
+.resultsSection + * {
+  margin-block-start: 0;
+}
+
+:has(+ .resultsSection) {
+  margin-block-end: 0;
 }
 
 .resultsContent {

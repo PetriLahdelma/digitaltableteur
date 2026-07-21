@@ -96,14 +96,14 @@ export function ProjectDetailLayout({
 
         {/* CTA - render WorkCTA by default, or custom cta prop */}
         {cta !== null && (
-          <div className="mt-16">
+          <div>
             {cta || <WorkCTA />}
           </div>
         )}
 
         {/* Related projects */}
         {relatedProjects && (
-          <aside className="border-t border-border mt-16">
+          <aside className="border-t border-border">
             {relatedProjects}
           </aside>
         )}

@@ -45,9 +45,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-logo") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-logo") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: () => (
     <Row>
@@ -74,4 +76,5 @@ export const Badge: Story = {
     </Row>
   ),
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

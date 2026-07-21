@@ -66,8 +66,9 @@ const meta = {
 } satisfies Meta<typeof NativeEmptyState>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-empty-state") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-empty-state") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const WithAction: Story = { ...exampleStory };
 export const Sizes: Story = {
   ...exampleStory,
@@ -120,6 +121,7 @@ export const ClearedFilters: Story = {
   },
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: {
     titleText: "No saved items",
@@ -128,4 +130,5 @@ export const Example: Story = {
     withAction: false,
   },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

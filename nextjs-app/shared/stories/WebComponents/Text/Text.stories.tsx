@@ -82,8 +82,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-text") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-text") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const AsSpan: Story = { args: { as: "span", content: "Inline text" } };
 export const CustomClass: Story = {
   render: () => (
@@ -167,6 +168,7 @@ export const LineHeights: Story = {
 // (storyTitlePlayground / storyTextDefault). The old single dt-text with
 // unrelated copy diffed on both content and composition height.
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   parameters: { a11y: { disable: true }, controls: { disable: true } },
   render: () => (
@@ -186,4 +188,5 @@ export const Example: Story = {
     </>
   ),
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

@@ -1,0 +1,17 @@
+- status: Work in progress (beta)
+- list:
+  - listitem:
+    - link "Home":
+      - /url: /
+  - listitem:
+    - link "Work":
+      - /url: /work
+  - listitem:
+    - link "About":
+      - /url: /about
+  - listitem:
+    - link "Blog":
+      - /url: /blog
+  - listitem:
+    - link "Contact":
+      - /url: /contact

@@ -56,6 +56,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: assertNative("dt-blog-media-image"),
 };
 export const Fluid: Story = { args: { fluid: true } };
@@ -71,6 +72,8 @@ export const FillContain: Story = {
     ),
   ],
 };
-export const Playground: Story = {};
-export const Example: Story = { ...exampleStory };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const Playground: Story = { tags: ["beta-matrix"] };
+export const Example: Story = {
+  tags: ["beta-matrix"], ...exampleStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

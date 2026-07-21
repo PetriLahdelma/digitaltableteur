@@ -52,7 +52,8 @@ const meta = {
 } satisfies Meta<typeof NativeCheckbox>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-checkbox") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-checkbox") };
 export const Checked: Story = { ...exampleStory, args: { checked: true } };
 export const Indeterminate: Story = {
   ...exampleStory,
@@ -130,9 +131,11 @@ export const SelectAllParent: Story = {
     </Stack>
   ),
 };
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: { label: "I agree to the terms", required: true },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

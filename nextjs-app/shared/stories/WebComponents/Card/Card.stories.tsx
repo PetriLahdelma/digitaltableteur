@@ -348,11 +348,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <NativeCardStory {...args} />,
   play: assertNative("dt-card"),
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <NativeCardStory {...args} />,
   args: {
     body: "Body content flows in the card rhythm.",
@@ -569,6 +571,7 @@ export const CardGrid: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   render: () => (
     <NativeCard
@@ -599,7 +602,7 @@ export const ForcedColors: Story = {
   parameters: {
     a11y: { disable: true, test: "off" },
   },
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "active" },
   render: (args) => <NativeCard args={args} width="20rem" />,
 };

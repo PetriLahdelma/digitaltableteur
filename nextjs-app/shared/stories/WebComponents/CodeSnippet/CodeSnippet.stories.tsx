@@ -148,8 +148,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-code-snippet") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-code-snippet") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Inline: Story = {
   tags: ["example"],
   args: {
@@ -221,7 +222,7 @@ export const Minimal: Story = {
   },
 };
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   args: {
     variant: "multi",
     language: "typescript",
@@ -229,7 +230,7 @@ export const Example: Story = {
   },
 };
 export const ForcedColors: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "active" },
   args: {
     variant: "multi",

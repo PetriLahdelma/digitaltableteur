@@ -135,14 +135,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: () => <ControlledDemo />,
   play: assertNative("dt-language-switcher"),
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   render: () => (
     <Stage width="20rem">
       <ControlledDemo />
@@ -174,7 +175,7 @@ export const KeyboardToggle: Story = {
 };
 
 export const ForcedColors: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "active" },
   render: () => <ControlledDemo />,
 };

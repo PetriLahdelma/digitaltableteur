@@ -66,8 +66,9 @@ const meta = {
 } satisfies Meta<typeof NativeIcon>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-icon") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-icon") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Sizes: Story = {
   ...exampleStory,
   render: () => (
@@ -172,6 +173,7 @@ export const DecorativeVsInformative: Story = {
   ),
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: {
     name: "check-circle",
@@ -180,4 +182,5 @@ export const Example: Story = {
     ariaLabel: "Complete",
   },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

@@ -1,0 +1,49 @@
+- status: Work in progress (beta)
+- dialog "Cookie consent":
+  - banner:
+    - heading "Cookie consent" [level=2]
+    - button "Close": ×
+  - paragraph: Choose which optional cookies you allow. Essential cookies are always enabled.
+  - heading "Essential cookies" [level=3]
+  - paragraph: Required for security, language, and consent preferences.
+  - text: Required
+  - checkbox "Essential cookies (always enabled)" [checked] [disabled]
+  - heading "Analytics cookies" [level=3]
+  - paragraph: Help us understand anonymous site usage.
+  - checkbox "Allow analytics cookies"
+  - heading "Marketing cookies" [level=3]
+  - paragraph: Allow measurement of relevant campaigns.
+  - checkbox "Allow marketing cookies"
+  - heading "Functional cookies" [level=3]
+  - paragraph: Remember optional interface preferences.
+  - checkbox "Allow functional cookies"
+  - contentinfo:
+    - link "cookie policy":
+      - /url: /privacy-policy
+    - button "Only essential"
+    - button "Save choices"
+    - button "Accept all"
+- dialog "Cookie consent":
+  - banner:
+    - heading "Cookie consent" [level=2]
+    - button "Close": ×
+  - paragraph: Choose which optional cookies you allow. Essential cookies are always enabled.
+  - heading "Essential cookies" [level=3]
+  - paragraph: Required for security, language, and consent preferences.
+  - text: Required
+  - checkbox "Essential cookies (always enabled)" [checked] [disabled]
+  - heading "Analytics cookies" [level=3]
+  - paragraph: Help us understand anonymous site usage.
+  - checkbox "Allow analytics cookies"
+  - heading "Marketing cookies" [level=3]
+  - paragraph: Allow measurement of relevant campaigns.
+  - checkbox "Allow marketing cookies"
+  - heading "Functional cookies" [level=3]
+  - paragraph: Remember optional interface preferences.
+  - checkbox "Allow functional cookies"
+  - contentinfo:
+    - link "cookie policy":
+      - /url: /privacy-policy
+    - button "Only essential"
+    - button "Save choices"
+    - button "Accept all"

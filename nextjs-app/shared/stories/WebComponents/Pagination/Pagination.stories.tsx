@@ -84,16 +84,17 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-pagination") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-pagination") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   render: () => <ControlledPagination currentPage={3} totalPages={12} siblingCount={1} />,
 };
 
 export const ForcedColors: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "active" },
 };
 

@@ -1,0 +1,10 @@
+- status: Work in progress (beta)
+- button "Open command palette"
+- dialog "Command palette":
+  - combobox "Search commands…" [expanded]: articles
+  - listbox "Command palette":
+    - option "Go to Blog" [selected]
+- dialog "Command palette":
+  - combobox "Search commands…" [expanded]: articles
+  - listbox "Command palette":
+    - option "Go to Blog" [selected]

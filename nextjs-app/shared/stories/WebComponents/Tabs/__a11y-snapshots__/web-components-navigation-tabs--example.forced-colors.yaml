@@ -1,0 +1,6 @@
+- status: Work in progress (beta)
+- tablist "Portfolio sections":
+  - tab "Overview" [selected]
+  - tab "Case details"
+  - tab "Delivery notes"
+- tabpanel "Overview": Overview panel

@@ -70,9 +70,10 @@ const column: React.CSSProperties = {
   inlineSize: "16rem",
 };
 
-export const Default: Story = { play: assertNative("dt-list-item") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-list-item") };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Slots: Story = {
   ...exampleStory,
@@ -193,6 +194,7 @@ export const States: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   parameters: { controls: { disable: true } },
   render: () => (
@@ -242,6 +244,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   ...forcedColorsStory,
   ...Example,
 };

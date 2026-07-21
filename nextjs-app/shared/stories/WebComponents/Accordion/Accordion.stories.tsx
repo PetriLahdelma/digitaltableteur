@@ -152,6 +152,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: async ({ canvasElement }) => {
     await assertNative("dt-accordion")({ canvasElement });
     const first = canvasElement
@@ -165,10 +166,10 @@ export const Default: Story = {
   },
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   render: () => (
     <Stage width="min(40rem, 90vw)">
       <NativeAccordion items={faqItems} type="single" variant="contained" />
@@ -177,7 +178,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "active" },
 };
 

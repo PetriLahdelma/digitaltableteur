@@ -108,15 +108,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <NativeAspectRatio {...args} />,
   play: assertNative("dt-aspect-ratio"),
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <NativeAspectRatio {...args} />,
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <NativeAspectRatio
@@ -135,7 +138,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "active" },
   render: (args) => <NativeAspectRatio {...args} />,
 };

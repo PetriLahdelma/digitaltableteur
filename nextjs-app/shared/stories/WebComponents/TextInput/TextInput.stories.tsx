@@ -108,9 +108,11 @@ export const Clearable: Story = {
     clearable: true,
   },
 };
-export const Default: Story = { play: assertNative("dt-text-input") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-text-input") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: () => (
     <Stack>
@@ -130,4 +132,5 @@ export const Example: Story = {
     </Stack>
   ),
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

@@ -54,13 +54,16 @@ const meta = {
 } satisfies Meta<typeof ReadingProgress>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: assertNative("dt-reading-progress", "document"),
 };
 export const WithPercentage: Story = { args: { showPercentage: true } };
-export const Example: Story = { ...exampleStory };
+export const Example: Story = {
+  tags: ["beta-matrix"], ...exampleStory };
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   ...forcedColorsStory,
   args: { showPercentage: true },
 };

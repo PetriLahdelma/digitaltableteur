@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- status:
+  - img "warning"
+  - strong: Review required
+  - text: Check the deployment settings.

@@ -610,17 +610,37 @@
 
 /* Key metrics section — VertaaUX dark brand with teal accent */
 
+/*
+ * Full-bleed band. Its own padding-block is the separation, so it carries no
+ * outer margin. Removing that margin alone changed nothing visually: it was
+ * collapsing with the neighbouring .storyBlock rhythm margins (64px/80px), so
+ * the neighbour simply won the collapse and the gap stayed identical. The
+ * adjacent edges have to be zeroed too, or the slab floats in a stripe of page
+ * background. Only the touching edge is zeroed; each neighbour keeps its own
+ * rhythm on its far side.
+ */
+
 .metricsSection {
-  margin-block: var(--space-layout-80);
   padding-block: var(--space-layout-64);
   padding-inline: var(--cs-page-inset);
   background-color: #0D0D0D;
   color: #F2F2F2;
 }
 
+/* Sit flush: zero only the edge touching the band, so each neighbour keeps
+   its own rhythm on its far side. */
+
+.metricsSection + * {
+  margin-block-start: 0;
+}
+
+:has(+ .metricsSection) {
+  margin-block-end: 0;
+}
+
 @media (width < 768px) {
   .metricsSection {
-    margin-block: var(--space-layout-48);
+    /* No margin-block here either: the band stays flush at every width. */
     padding-block: var(--space-layout-48);
   }
 }

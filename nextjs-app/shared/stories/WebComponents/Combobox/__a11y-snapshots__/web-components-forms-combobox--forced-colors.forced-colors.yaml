@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- text: Timeline
+- combobox "Timeline"
+- button "Toggle options"

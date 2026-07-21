@@ -82,6 +82,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: async ({ canvasElement }) => {
     await assertNative("dt-phone-input")({ canvasElement });
     const element = canvasElement.querySelector(
@@ -143,9 +144,10 @@ export const InternationalNumbers: Story = {
   ),
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: {
     helperText: "We use this only to arrange the project call.",
@@ -153,4 +155,5 @@ export const Example: Story = {
   },
 };
 
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

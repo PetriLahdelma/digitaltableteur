@@ -59,8 +59,9 @@ const meta = {
 } satisfies Meta<typeof NativeStatusDot>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-status-dot") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-status-dot") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Tones: Story = {
   ...exampleStory,
   render: () => (
@@ -105,7 +106,9 @@ export const SrOnlyLabel: Story = {
   ),
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: { children: "Deployment healthy", tone: "success" },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

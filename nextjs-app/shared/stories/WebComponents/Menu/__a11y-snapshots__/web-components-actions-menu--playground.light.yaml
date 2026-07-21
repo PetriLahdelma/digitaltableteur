@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- button "Actions" [expanded]
+- menu:
+  - menuitem "Edit ⌘E"
+  - menuitem "Duplicate"
+  - separator
+  - menuitem "Delete"

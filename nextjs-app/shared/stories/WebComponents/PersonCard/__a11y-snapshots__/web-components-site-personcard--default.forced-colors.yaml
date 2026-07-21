@@ -1,0 +1,14 @@
+- status: Work in progress (beta)
+- img "Portrait of Petri Lahdelma"
+- heading "Petri Lahdelma" [level=3]
+- paragraph: Digital Designer & Developer
+- link "petri@digitaltableteur.com":
+  - /url: mailto:petri@digitaltableteur.com
+- link "Connect on LinkedIn":
+  - /url: https://linkedin.com/in/petrilahdelma
+- link "View GitHub profile":
+  - /url: https://github.com/petrilahdelma
+- link "Twitter profile":
+  - /url: https://twitter.com/petrilahdelma
+- link "Medium profile":
+  - /url: https://medium.com/digitaltableteur

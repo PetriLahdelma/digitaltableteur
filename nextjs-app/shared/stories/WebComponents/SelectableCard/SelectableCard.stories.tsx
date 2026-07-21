@@ -138,12 +138,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {
+  tags: ["beta-matrix"],
   parameters: { layout: "padded" },
   render: SingleCard,
   play: assertNative("dt-selectable-card"),
 };
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   parameters: { layout: "padded" },
   render: ExampleGroup,
@@ -154,4 +156,5 @@ export const Disabled: Story = { args: { disabled: true } };
 export const WithError: Story = {
   args: { error: "Choose at least one plan." },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

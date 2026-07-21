@@ -99,6 +99,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: async ({ canvasElement }) => {
     const host = canvasElement.querySelector("dt-expandable-section");
     expect(customElements.get("dt-expandable-section")).toBeDefined();
@@ -112,10 +113,10 @@ export const Default: Story = {
   },
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   render: () => (
     <Stage width="min(30rem, 90vw)">
       <NativeExpandableSection
@@ -129,7 +130,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "active" },
 };
 

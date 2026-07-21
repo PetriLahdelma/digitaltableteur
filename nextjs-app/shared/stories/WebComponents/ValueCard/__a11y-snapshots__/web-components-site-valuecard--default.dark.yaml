@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- article:
+  - heading "Accessible by default" [level=3]
+  - paragraph: Semantics, keyboard support, and forced-colors behavior are built in.
