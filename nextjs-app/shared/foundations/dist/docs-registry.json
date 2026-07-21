@@ -1346,7 +1346,7 @@
         },
         {
           "name": "size",
-          "type": "sm | md | lg",
+          "type": "sm | md | lg | xs",
           "required": false
         },
         {
@@ -1392,7 +1392,8 @@
           "values": [
             "sm",
             "md",
-            "lg"
+            "lg",
+            "xs"
           ],
           "description": "Size."
         },
@@ -7518,7 +7519,7 @@
         },
         {
           "name": "size",
-          "type": "sm | md | lg | xl | 2xs | xs | 2xl",
+          "type": "sm | md | lg | xs | xl | 2xs | 2xl",
           "required": false
         },
         {
@@ -7571,9 +7572,9 @@
             "sm",
             "md",
             "lg",
+            "xs",
             "xl",
             "2xs",
-            "xs",
             "2xl"
           ],
           "description": "Tokenized or explicit pixel size."
@@ -8678,7 +8679,7 @@
         },
         {
           "name": "size",
-          "type": "s | xl | xs | xxs | m | l | xxl",
+          "type": "xs | s | xl | xxs | m | l | xxl",
           "required": false
         },
         {
@@ -8721,9 +8722,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xs",
             "s",
             "xl",
-            "xs",
             "xxs",
             "m",
             "l",
@@ -9775,7 +9776,7 @@
         },
         {
           "name": "titleSize",
-          "type": "sm | md | lg | xl | xs | xxs | xxl | XXS | XS | S | M | L | XL | XXL",
+          "type": "sm | md | lg | xs | xl | xxs | xxl | XXS | XS | S | M | L | XL | XXL",
           "required": false
         },
         {
@@ -9818,8 +9819,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
             "xs",
+            "xl",
             "xxs",
             "xxl",
             "XXS",
@@ -13690,7 +13691,7 @@
       "keyProps": [
         {
           "name": "size",
-          "type": "sm | md | lg | xl | xs | 2xl",
+          "type": "sm | md | lg | xs | xl | 2xl",
           "required": false
         },
         {
@@ -13712,8 +13713,8 @@
             "sm",
             "md",
             "lg",
-            "xl",
             "xs",
+            "xl",
             "2xl"
           ],
           "description": "Tokenized gap size."
@@ -14161,7 +14162,7 @@
         },
         {
           "name": "gap",
-          "type": "sm | md | lg | none | xl | xs",
+          "type": "sm | md | lg | xs | none | xl",
           "required": false
         },
         {
@@ -14202,9 +14203,9 @@
             "sm",
             "md",
             "lg",
+            "xs",
             "none",
-            "xl",
-            "xs"
+            "xl"
           ],
           "description": "Gap token between items."
         },
@@ -15278,7 +15279,7 @@
         },
         {
           "name": "size",
-          "type": "s | xl | xs | xxs | m | l | xxl",
+          "type": "xs | s | xl | xxs | m | l | xxl",
           "required": false
         },
         {
@@ -15319,9 +15320,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xs",
             "s",
             "xl",
-            "xs",
             "xxs",
             "m",
             "l",
@@ -15883,7 +15884,7 @@
         },
         {
           "name": "size",
-          "type": "s | xs | xxs | m",
+          "type": "xs | s | xxs | m",
           "required": false
         },
         {
@@ -15932,8 +15933,8 @@
           "optional": true,
           "type": "union",
           "values": [
-            "s",
             "xs",
+            "s",
             "xxs",
             "m"
           ],
@@ -16064,7 +16065,7 @@
         },
         {
           "name": "size",
-          "type": "s | xl | xs | xxs | m | l | xxl",
+          "type": "xs | s | xl | xxs | m | l | xxl",
           "required": false
         },
         {
@@ -16121,9 +16122,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xs",
             "s",
             "xl",
-            "xs",
             "xxs",
             "m",
             "l",
@@ -20888,9 +20889,9 @@
       "composesWith": [],
       "prefersOver": [],
       "forbiddenUse": [
-        "mount more than one SiteFooter. AT users encounter two",
-        "hand-author a `<footer>` instead of using SiteFooter on a",
-        "change the Divider's margin via `className=\"my-X\"` without"
+        "mount more than one SiteFooter. AT users encounter two contentinfo landmarks and the page's IA breaks.",
+        "hand-author a `<footer>` instead of using SiteFooter on a new route. Any new route inherits the SiteFooter from `app/layout.tsx`; rolling your own bypasses the i18n, theme, and legal-link maintenance work.",
+        "change the Divider's margin via `className=\"my-X\"` without checking the cascade-layer fix in Divider.module.css. The `@layer components` wrapper is what lets `my-8` win; pre-fix this was a regression source."
       ],
       "usage": null,
       "tokens": {
@@ -20937,9 +20938,9 @@
       "composesWith": [],
       "prefersOver": [],
       "forbiddenUse": [
-        "tamper with the IconButton variants. The header's theme",
-        "nest a `<header>` inside SiteHeader. Multiple banner",
-        "hard-code the language list. The `languages` array is the"
+        "tamper with the IconButton variants. The header's theme cycle uses `variant=\"ghost\"` to stay transparent at scroll-top; a filled variant would defeat the layered surface treatment.",
+        "nest a `<header>` inside SiteHeader. Multiple banner landmarks confuse AT users.",
+        "hard-code the language list. The `languages` array is the single source of truth — adding Finnish swedish (lol) means editing the array and adding the `langXX` / `langXX_ariaLabel` i18n keys."
       ],
       "usage": null,
       "tokens": {
