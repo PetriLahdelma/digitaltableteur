@@ -5,7 +5,7 @@
  */
 import { chromium } from "@playwright/test";
 import { captureStoryAccessibilityTree } from "./a11y-snapshot-capture-lib.mjs";
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -41,43 +41,40 @@ function resolveNavigationWaitUntil(value) {
   return "load";
 }
 
-function loadStoryPrefixMap() {
+/**
+ * Map story id -> component directory, from Storybook's own index.
+ *
+ * Kept deliberately identical to the resolver in `.storybook/test-runner.ts`;
+ * see the long comment there for the four silent-failure classes that scraping
+ * `title:` out of story sources produced (nested dirs, the missing `templates/`
+ * root, a second component sharing a directory, and an arg `title:` containing
+ * a slash hijacking the meta title). `importPath` makes the directory a fact.
+ *
+ * A capture tool that resolves the wrong directory is worse than one that
+ * fails, so an unresolvable story id still throws at the call site below.
+ */
+async function loadStoryDirMap() {
   if (storyPrefixToDir) return storyPrefixToDir;
-  storyPrefixToDir = new Map();
-  const roots = [
-    join(ROOT, "nextjs-app/shared/components"),
-    join(ROOT, "nextjs-app/shared/patterns"),
-  ];
-  const titleRe = /title:\s*["']([^"']+)["']/g;
-
-  for (const base of roots) {
-    if (!existsSync(base)) continue;
-    for (const name of readdirSync(base)) {
-      const dir = join(base, name);
-      const contractPath = join(dir, `${name}.contract.json`);
-      const storyPath = join(dir, `${name}.stories.tsx`);
-      if (!existsSync(contractPath) || !existsSync(storyPath)) continue;
-      const text = readFileSync(storyPath, "utf8");
-      // The meta title is the story-path one ("Category/Name"). A component whose
-      // stories seed a `title:` ARG (e.g. ValueCard's defaultArgs.title "Clarity
-      // first") would otherwise hijack the first match and the snapshot dir would
-      // never resolve. Pick the first title: value shaped like a story path.
-      const metaTitle = [...text.matchAll(titleRe)]
-        .map((mt) => mt[1])
-        .find((t) => t.includes("/"));
-      if (!metaTitle) continue;
-      // Match Storybook's own @storybook/csf `sanitize`: lowercase, collapse
-      // every non-alphanumeric run to a single "-", trim. No camelCase splitting,
-      // so `Forms/TextArea` → `forms-textarea` (the real story-id prefix).
-      const prefix = metaTitle
-        .toLowerCase()
-        .replace(/[ ’–—―′¿'`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/]/g, "-")
-        .replace(/-+/g, "-")
-        .replace(/^-+/, "")
-        .replace(/-+$/, "");
-      storyPrefixToDir.set(prefix, dir);
-    }
+  const res = await fetch(new URL("index.json", STORYBOOK_URL).toString());
+  if (!res.ok) {
+    throw new Error(`Storybook index fetch failed: ${res.status} ${res.statusText}`);
   }
+  const index = await res.json();
+  const map = new Map();
+  const dirHasContract = new Map();
+
+  for (const [id, entry] of Object.entries(index.entries ?? {})) {
+    if (!entry.importPath) continue;
+    const dir = dirname(join(ROOT, entry.importPath));
+    let hasContract = dirHasContract.get(dir);
+    if (hasContract === undefined) {
+      hasContract =
+        existsSync(dir) && readdirSync(dir).some((f) => f.endsWith(".contract.json"));
+      dirHasContract.set(dir, hasContract);
+    }
+    if (hasContract) map.set(id, dir);
+  }
+  storyPrefixToDir = map;
   return storyPrefixToDir;
 }
 
@@ -88,10 +85,9 @@ function snapshotVariantSuffix() {
   return parts.length > 0 ? `.${parts.join(".")}` : "";
 }
 
-function componentSnapshotDir(storyId) {
-  const prefix = storyId.split("--")[0];
-  const componentDir = loadStoryPrefixMap().get(prefix);
-  if (!componentDir) throw new Error(`No component dir for story prefix ${prefix}`);
+async function componentSnapshotDir(storyId) {
+  const componentDir = (await loadStoryDirMap()).get(storyId);
+  if (!componentDir) throw new Error(`No component dir for story ${storyId}`);
   return join(componentDir, "__a11y-snapshots__");
 }
 
@@ -124,7 +120,7 @@ for (const storyId of storyIds) {
   });
   await page.waitForTimeout(800);
 
-  const dir = componentSnapshotDir(storyId);
+  const dir = await componentSnapshotDir(storyId);
   mkdirSync(dir, { recursive: true });
   const file = join(dir, `${storyId}${snapshotVariantSuffix()}.yaml`);
   const content = await captureStoryAccessibilityTree(page);

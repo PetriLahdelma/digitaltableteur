@@ -12,13 +12,31 @@
   "radixPrimitive": null,
   "element": "fieldset",
   "variants": {
-    "type": ["single", "multiple"],
-    "orientation": ["vertical", "horizontal"]
+    "type": [
+      "single",
+      "multiple"
+    ],
+    "orientation": [
+      "vertical",
+      "horizontal"
+    ]
   },
-  "slots": ["children"],
+  "slots": [
+    "children"
+  ],
   "asChild": false,
-  "subParts": ["legend", "options", "helperText", "error"],
-  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "subParts": [
+    "legend",
+    "options",
+    "helperText",
+    "error"
+  ],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
   "a11y": {
     "keyboard": [
       "Tab moves focus into the option set",
@@ -33,10 +51,15 @@
     "reducedMotion": true,
     "reviewed": true,
     "reviewedNote": "2026-07-16: reviewed the fieldset/legend structure, native radio and checkbox keyboard behavior, disabled propagation, helper/error relationships, and forced-colors story while adding independent React and web-component documentation.",
-    "forcedColorsVerified": true
+    "forcedColorsVerified": true,
+    "accessibilityTreeVerified": true
   },
   "tokens": {
-    "colors": ["--color-primary", "--color-border", "--color-surface"],
+    "colors": [
+      "--color-primary",
+      "--color-border",
+      "--color-surface"
+    ],
     "spacing": [
       "--space-internal-8",
       "--space-internal-12",
@@ -48,7 +71,10 @@
     "type": {
       "optional": true,
       "type": "union",
-      "values": ["single", "multiple"],
+      "values": [
+        "single",
+        "multiple"
+      ],
       "description": "Selection model: one exclusive value or several independent values."
     },
     "legend": {
@@ -79,7 +105,10 @@
     "orientation": {
       "optional": true,
       "type": "union",
-      "values": ["vertical", "horizontal"],
+      "values": [
+        "vertical",
+        "horizontal"
+      ],
       "description": "Visual stack direction for the options."
     },
     "disabled": {
@@ -108,7 +137,10 @@
       "description": "SelectableCard options owned by this group."
     }
   },
-  "composesWith": ["SelectableCard", "HelperText"],
+  "composesWith": [
+    "SelectableCard",
+    "HelperText"
+  ],
   "forbiddenUse": [
     "mix SelectableCard with unrelated interactive children inside the group",
     "pass value without updating it from onValueChange; use defaultValue for uncontrolled state"

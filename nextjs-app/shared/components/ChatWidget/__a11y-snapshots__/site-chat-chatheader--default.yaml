@@ -1,0 +1,10 @@
+- status: Work in progress (alpha)
+- banner:
+  - img "Donny is idle":
+    - img
+  - paragraph:
+    - text: DT Donny
+    - status "Available now"
+  - heading "Chat with Donny" [level=2]
+  - button "Minimize chat":
+    - img "Minimize chat"

@@ -1,0 +1,10 @@
+- status: Work in progress (beta)
+- group "Choose a plan":
+  - text: Choose a plan
+  - radio "Starter"
+  - text: Starter
+  - radio "Team" [checked]
+  - text: Team
+  - radio "Scale"
+  - text: Scale
+  - paragraph: You can change this later.
