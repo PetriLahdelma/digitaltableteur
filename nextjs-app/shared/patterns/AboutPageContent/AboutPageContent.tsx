@@ -16,6 +16,7 @@ import {
   SiReact,
   SiStorybook,
   SiTypescript,
+  SiWebcomponentsdotorg,
 } from "react-icons/si";
 
 import { DESIGN_SYSTEM_PACKAGE_VERSIONS } from "@/nextjs-app/shared/data/designSystemPackageVersions";
@@ -28,6 +29,7 @@ import styles from "./AboutPageContent.module.css";
 
 const TECH_STACK = [
   { label: "React 19", Icon: SiReact },
+  { label: "Web Components", Icon: SiWebcomponentsdotorg },
   { label: "TypeScript", Icon: SiTypescript },
   { label: "Next.js 16", Icon: SiNextdotjs },
   { label: "Storybook 10", Icon: SiStorybook },
@@ -39,6 +41,11 @@ const DESIGN_SYSTEM_PACKAGES = [
     name: "@digitaltableteur/react",
     shortName: "react",
     version: DESIGN_SYSTEM_PACKAGE_VERSIONS.react,
+  },
+  {
+    name: "@digitaltableteur/web-components",
+    shortName: "web-components",
+    version: DESIGN_SYSTEM_PACKAGE_VERSIONS["web-components"],
   },
   {
     name: "@digitaltableteur/tokens",
