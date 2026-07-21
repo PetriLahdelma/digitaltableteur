@@ -55,7 +55,17 @@
         "forcedColorsVerified": true,
         "playFunctionExempt": "Page assembly; interactive CTAs inherit Button and Link primitives.",
         "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
+        "realBrowserForcedColorsVerified": true,
+        "keyboardDelegation": [
+            {
+                "keys": [
+                    "Tab",
+                    "Enter"
+                ],
+                "to": "native",
+                "note": "A page assembly whose only interactive elements are Button and Link primitives, each already covered by its own tests. This component adds no key handling."
+            }
+        ]
     },
     "tokens": {
         "colors": [

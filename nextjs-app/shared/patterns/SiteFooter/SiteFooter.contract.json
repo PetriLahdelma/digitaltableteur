@@ -32,7 +32,16 @@
         "forcedColorsVerified": true,
         "playFunctionExempt": "Footer is mostly links; interaction is standard Tab navigation.",
         "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
+        "realBrowserForcedColorsVerified": true,
+        "keyboardDelegation": [
+            {
+                "keys": [
+                    "Tab"
+                ],
+                "to": "native",
+                "note": "A list of links. Tab traversal is user-agent behaviour; the component adds no key handling."
+            }
+        ]
     },
     "tokens": {
         "colors": [

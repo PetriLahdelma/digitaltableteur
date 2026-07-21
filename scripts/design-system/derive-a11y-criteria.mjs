@@ -66,13 +66,42 @@ const RULES = [
     id: "keyboard-contract",
     statement: "Every documented keyboard interaction works as specified.",
     when: (a11y) => Array.isArray(a11y.keyboard) && a11y.keyboard.length > 0,
-    mode: (a11y, contract) =>
-      // A play function exercises the keyboard path in CI. An exemption means nobody does.
-      a11y.playFunctionExempt
-        ? { verificationMode: "unverified", note: `Play-function exempt: ${a11y.playFunctionExempt}` }
-        : contract.status === "alpha"
+    mode: (a11y, contract) => {
+      // A play function exercises the keyboard path in CI.
+      if (!a11y.playFunctionExempt) {
+        return contract.status === "alpha"
           ? { verificationMode: "manual" }
-          : { verificationMode: "automated", check: "npm run test:stories" },
+          : { verificationMode: "automated", check: "npm run test:stories" };
+      }
+
+      // Exempt, but that alone does not mean unproven. A composition that renders
+      // @dt/Tabs does not re-implement roving arrow focus, and a footer of links does
+      // not implement Tab. When every documented key is accounted for by a delegation
+      // that check:keyboard-delegation has verified, the contract IS covered, just not
+      // here. Anything left over is a real gap.
+      const delegation = Array.isArray(a11y.keyboardDelegation) ? a11y.keyboardDelegation : [];
+      const covered = new Set(delegation.flatMap((d) => d.keys ?? []));
+      const uncovered = (a11y.keyboard ?? []).filter((k) => !covered.has(k));
+
+      if (delegation.length === 0 || uncovered.length > 0) {
+        return {
+          verificationMode: "unverified",
+          note: uncovered.length
+            ? `Play-function exempt and no delegation covers: ${uncovered.join(", ")}.`
+            : `Play-function exempt: ${a11y.playFunctionExempt}`,
+        };
+      }
+
+      const targets = delegation.map((d) => d.to);
+      const evidence = delegation.filter((d) => d.evidence).map((d) => d.evidence);
+      return {
+        verificationMode: "automated",
+        // The check is the delegation gate: it re-proves, on every run, that the named
+        // evidence still exercises the delegated keys.
+        check: "npm run check:keyboard-delegation",
+        note: `Delegated to ${targets.join(", ")}${evidence.length ? ` (${evidence.join(", ")})` : ""}.`,
+      };
+    },
   },
   {
     id: "aria-requirements",

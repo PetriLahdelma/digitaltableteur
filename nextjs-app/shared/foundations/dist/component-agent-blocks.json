@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T10:02:21.419Z",
+  "generatedAt": "2026-07-21T10:20:25.165Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -3422,8 +3422,9 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "unverified",
-          "note": "Play-function exempt: Static navigation landmark; Tab order only."
+          "verificationMode": "automated",
+          "check": "npm run check:keyboard-delegation",
+          "note": "Delegated to native."
         },
         {
           "id": "aria-requirements",
@@ -22479,8 +22480,9 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "unverified",
-          "note": "Play-function exempt: Static navigation tree; expand/collapse follows native details/summary keyboard behavior, no custom handlers to drive."
+          "verificationMode": "automated",
+          "check": "npm run check:keyboard-delegation",
+          "note": "Delegated to native."
         },
         {
           "id": "aria-requirements",
@@ -31277,8 +31279,9 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "unverified",
-          "note": "Play-function exempt: Tab switching defers to native button focus; booking embed is third-party when configured."
+          "verificationMode": "automated",
+          "check": "npm run check:keyboard-delegation",
+          "note": "Delegated to native, Tabs (nextjs-app/shared/components/Tabs/Tabs.test.tsx)."
         },
         {
           "id": "aria-requirements",
@@ -33782,8 +33785,9 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "unverified",
-          "note": "Play-function exempt: Marquee animation defers to CSS; keyboard order follows DOM link sequence."
+          "verificationMode": "automated",
+          "check": "npm run check:keyboard-delegation",
+          "note": "Delegated to native."
         },
         {
           "id": "aria-requirements",
@@ -34415,8 +34419,9 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "unverified",
-          "note": "Play-function exempt: Page assembly; interactive CTAs inherit Button and Link primitives."
+          "verificationMode": "automated",
+          "check": "npm run check:keyboard-delegation",
+          "note": "Delegated to native."
         },
         {
           "id": "aria-requirements",
@@ -36762,8 +36767,9 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "unverified",
-          "note": "Play-function exempt: Footer is mostly links; interaction is standard Tab navigation."
+          "verificationMode": "automated",
+          "check": "npm run check:keyboard-delegation",
+          "note": "Delegated to native."
         },
         {
           "id": "aria-requirements",
@@ -36977,8 +36983,9 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "unverified",
-          "note": "Play-function exempt: Header composition; keyboard flows are covered in MobileDrawer and nav link Tab order — add story play when drawer story is split out."
+          "verificationMode": "automated",
+          "check": "npm run check:keyboard-delegation",
+          "note": "Delegated to native, MobileDrawer (nextjs-app/shared/patterns/SiteHeader/MobileDrawer.test.tsx)."
         },
         {
           "id": "aria-requirements",

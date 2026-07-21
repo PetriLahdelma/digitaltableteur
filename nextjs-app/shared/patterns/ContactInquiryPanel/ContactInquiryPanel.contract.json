@@ -67,7 +67,25 @@
         "forcedColorsVerified": true,
         "playFunctionExempt": "Tab switching defers to native button focus; booking embed is third-party when configured.",
         "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
+        "realBrowserForcedColorsVerified": true,
+        "keyboardDelegation": [
+            {
+                "keys": [
+                    "Tab",
+                    "Enter"
+                ],
+                "to": "native",
+                "note": "Tab reaches the tab list and the panel; Enter activates buttons. Both user-agent behaviour."
+            },
+            {
+                "keys": [
+                    "ArrowLeft",
+                    "ArrowRight"
+                ],
+                "to": "Tabs",
+                "evidence": "nextjs-app/shared/components/Tabs/Tabs.test.tsx"
+            }
+        ]
     },
     "tokens": {
         "colors": [],

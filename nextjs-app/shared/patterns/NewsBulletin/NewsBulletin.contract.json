@@ -59,7 +59,17 @@
         "forcedColorsVerified": true,
         "playFunctionExempt": "Marquee animation defers to CSS; keyboard order follows DOM link sequence.",
         "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
+        "realBrowserForcedColorsVerified": true,
+        "keyboardDelegation": [
+            {
+                "keys": [
+                    "Tab",
+                    "Enter"
+                ],
+                "to": "native",
+                "note": "Links only. Tab reaches them in DOM order and Enter activates them, both user-agent behaviour. The marquee is CSS and carries no interaction."
+            }
+        ]
     },
     "tokens": {
         "colors": [],
