@@ -49,6 +49,9 @@ describe("AboutPageContent", () => {
       screen.getByLabelText(/@digitaltableteur\/react \d/),
     ).toBeInTheDocument();
     expect(
+      screen.getByLabelText(/@digitaltableteur\/web-components \d/),
+    ).toBeInTheDocument();
+    expect(
       screen.getByLabelText(/@digitaltableteur\/tokens \d/),
     ).toBeInTheDocument();
     expect(
