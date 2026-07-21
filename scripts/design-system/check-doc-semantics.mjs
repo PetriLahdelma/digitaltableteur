@@ -22,9 +22,10 @@
 import { readFileSync, existsSync, writeFileSync, globSync } from "node:fs";
 import { resolve, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { parseSpecGuidelines } from "./parse-spec-agent-hints.mjs";
+import { deriveA11yCriteria } from "./derive-a11y-criteria.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-const BLOCKS = join(ROOT, "nextjs-app/shared/foundations/dist/component-agent-blocks.json");
 const RATCHET = join(ROOT, "scripts/design-system/doc-semantics-ratchet.json");
 
 const STRICT = process.argv.includes("--strict");
@@ -34,29 +35,49 @@ const UPDATE_RATCHET = process.argv.includes("--update-ratchet");
 /** Days after which a lastReviewed date is considered stale. */
 const STALE_DAYS = 180;
 
-/** Contract status per component, so the gate can tell a claim from a known gap. */
-function contractStatus() {
-  const map = new Map();
+/**
+ * Every component contract, keyed by name.
+ *
+ * This used to iterate `component-agent-blocks.json`, which coupled two unrelated
+ * questions: "is this documented for agents" and "is this accessibility claim proven".
+ * A block is only emitted for a contract that has its own `<Name>.tsx`, because that is
+ * where props are extracted from — so a contract-only surface (NextLayoutShell) and a
+ * component exported from a sibling file (SelectableCardGroup) were invisible to this
+ * gate, and a beta component could carry an unproven a11y claim that nothing counted.
+ *
+ * The thing being gated is a property of the contract, so read contracts. Everything
+ * needed is available without the block: criteria are derived from `contract.a11y`,
+ * governance and content are copied verbatim from the contract, and guidelines are
+ * parsed from the sibling `.spec.md`.
+ */
+function loadContracts() {
+  const entries = [];
   for (const f of globSync(join(ROOT, "nextjs-app/shared/**/*.contract.json"))) {
     try {
-      const c = JSON.parse(readFileSync(f, "utf8"));
-      if (c.name) map.set(c.name, c.status ?? null);
+      const contract = JSON.parse(readFileSync(f, "utf8"));
+      if (!contract.name) continue;
+      const specPath = join(dirname(f), `${contract.name}.spec.md`);
+      entries.push({
+        name: contract.name,
+        status: contract.status ?? null,
+        contract,
+        spec: existsSync(specPath) ? readFileSync(specPath, "utf8") : null,
+      });
     } catch {}
   }
-  return map;
+  entries.sort((a, b) => a.name.localeCompare(b.name));
+  return entries;
 }
 
 function main() {
-  if (!existsSync(BLOCKS)) {
-    console.error("FAIL: component-agent-blocks.json missing. Run: npm run build:agent-blocks");
+  const contracts = loadContracts();
+  if (contracts.length === 0) {
+    console.error("FAIL: no component contracts found under nextjs-app/shared.");
     process.exit(1);
   }
-  const { components } = JSON.parse(readFileSync(BLOCKS, "utf8"));
-  const names = Object.keys(components);
-  const status = contractStatus();
 
   const report = {
-    components: names.length,
+    components: contracts.length,
     guidelines: { total: 0, explicitLevel: 0, defaulted: 0, withRationale: 0, hardRules: 0, hardRulesMissingRationale: [] },
     a11yCriteria: {
       total: 0,
@@ -79,9 +100,9 @@ function main() {
   const today = new Date();
   const unverifiedByComponent = [];
 
-  for (const [name, block] of Object.entries(components)) {
+  for (const { name, status, contract, spec } of contracts) {
     // --- Guidelines (RFC 2119) ---
-    for (const g of block.guidelines ?? []) {
+    for (const g of parseSpecGuidelines(spec)) {
       report.guidelines.total += 1;
       // A defaulted level is the parser's fallback, not an author's decision.
       if (g.level === "should" || g.level === "should-not") report.guidelines.defaulted += 1;
@@ -97,7 +118,7 @@ function main() {
     }
 
     // --- Accessibility criteria ---
-    const criteria = block.a11yCriteria ?? [];
+    const criteria = deriveA11yCriteria(contract);
     let unverified = 0;
     for (const c of criteria) {
       report.a11yCriteria.total += 1;
@@ -106,16 +127,15 @@ function main() {
       else {
         report.a11yCriteria.unverified += 1;
         unverified += 1;
-        const st = status.get(name);
-        if (st === "beta" || st === "stable") report.a11yCriteria.unverifiedOnReady += 1;
-        if (st === "stable") report.a11yCriteria.unverifiedOnStable += 1;
-        if (st === "alpha") report.a11yCriteria.unverifiedOnAlpha += 1;
+        if (status === "beta" || status === "stable") report.a11yCriteria.unverifiedOnReady += 1;
+        if (status === "stable") report.a11yCriteria.unverifiedOnStable += 1;
+        if (status === "alpha") report.a11yCriteria.unverifiedOnAlpha += 1;
       }
     }
     if (unverified > 0) unverifiedByComponent.push({ name, unverified, total: criteria.length });
 
     // --- Governance ---
-    const gov = block.governance;
+    const gov = contract.governance;
     if (gov?.owner) report.governance.withOwner += 1;
     if (gov?.lastReviewed) {
       report.governance.withLastReviewed += 1;
@@ -125,7 +145,7 @@ function main() {
       report.governance.missing.push(name);
     }
 
-    if (block.content) report.content.withContent += 1;
+    if (contract.content) report.content.withContent += 1;
   }
 
   unverifiedByComponent.sort((a, b) => b.unverified - a.unverified);

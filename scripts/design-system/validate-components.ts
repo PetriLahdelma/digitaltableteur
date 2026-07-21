@@ -104,10 +104,16 @@ function extractCvaConfig(call: CallExpression): VariantMap {
 export function extractComponentFromSourceFile(
     sf: SourceFile,
     tsxPath?: string,
+    /**
+     * Component to extract, when it is not the one the filename implies. A file may
+     * export more than one component (SelectableCard.tsx also exports
+     * SelectableCardGroup); without this the basename wins and the caller silently gets
+     * the sibling's CVA variants and declared-prop count under the wrong name.
+     */
+    componentNameOverride?: string,
 ): ExtractedComponent {
-    const componentName = tsxPath
-        ? basename(tsxPath, '.tsx')
-        : basename(sf.getFilePath(), '.tsx')
+    const componentName = componentNameOverride
+        ?? basename(tsxPath ?? sf.getFilePath(), '.tsx')
     return extractComponentInner(sf, componentName)
 }
 

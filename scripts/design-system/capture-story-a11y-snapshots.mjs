@@ -78,6 +78,39 @@ async function loadStoryDirMap() {
   return storyPrefixToDir;
 }
 
+/**
+ * Honour `parameters.atSnapshot.waitForSelector`, exactly as `.storybook/test-runner.ts`
+ * does in postVisit.
+ *
+ * Without this the two capture paths disagree: the test-runner waits for the declared
+ * late element, this script waited a flat 800ms, so capturing a component with a
+ * `React.lazy` chunk here could write a snapshot the test-runner then rejects. That is
+ * not hypothetical — it is what happened to NextLayoutShell, whose chat toggle is lazy.
+ *
+ * Parameters come from the running preview's story store rather than the story source,
+ * for the same reason the snapshot directory does: the store is the fact, parsing the
+ * source is a guess. `__getContext` is injected by the test-runner and does not exist
+ * here, so call the store directly the way that helper does.
+ *
+ * A missing selector is not fatal: capture proceeds and a genuinely absent element then
+ * surfaces as a visible snapshot mismatch instead of a silent skip.
+ */
+async function waitForAtSnapshotSelector(storyId) {
+  let selector = null;
+  try {
+    selector = await page.evaluate(async (id) => {
+      const store = globalThis.__STORYBOOK_PREVIEW__?.storyStore;
+      if (!store?.loadStory) return null;
+      const story = await store.loadStory({ storyId: id });
+      return story?.parameters?.atSnapshot?.waitForSelector ?? null;
+    }, storyId);
+  } catch {
+    return;
+  }
+  if (!selector) return;
+  await page.waitForSelector(selector, { state: "visible", timeout: 5_000 }).catch(() => {});
+}
+
 function snapshotVariantSuffix() {
   const parts = [];
   if (THEME) parts.push(THEME);
@@ -119,6 +152,7 @@ for (const storyId of storyIds) {
       : 120000,
   });
   await page.waitForTimeout(800);
+  await waitForAtSnapshotSelector(storyId);
 
   const dir = await componentSnapshotDir(storyId);
   mkdirSync(dir, { recursive: true });
