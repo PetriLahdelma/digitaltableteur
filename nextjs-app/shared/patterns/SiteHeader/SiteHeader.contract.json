@@ -34,7 +34,24 @@
         "forcedColorsVerified": true,
         "playFunctionExempt": "Header composition; keyboard flows are covered in MobileDrawer and nav link Tab order — add story play when drawer story is split out.",
         "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
+        "realBrowserForcedColorsVerified": true,
+        "keyboardDelegation": [
+            {
+                "keys": [
+                    "Tab",
+                    "Enter"
+                ],
+                "to": "native",
+                "note": "Header navigation is anchors and buttons; Tab and Enter are user-agent behaviour."
+            },
+            {
+                "keys": [
+                    "Escape"
+                ],
+                "to": "MobileDrawer",
+                "evidence": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.test.tsx"
+            }
+        ]
     },
     "tokens": {
         "colors": [

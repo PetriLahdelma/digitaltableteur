@@ -35,7 +35,18 @@
         "reviewedNote": "Verified 2026-06-02: nav landmark + aria-label; native details/summary disclosure (keyboard/SR-native). Fixed two real axe findings surfaced by enabling axe on the stories — nested-interactive (link inside summary; branch index now a separate leaf) and listitem (removed role=group from ul). Default/Playground/Example pass axe with test:error; dark theme verified in Storybook. Forced colors: links/icons inherit currentColor via Icon/Link primitives → CanvasText; ForcedColors story present. 2026-07-09 — Promoted beta→stable: 4-mode AT snapshots captured for all required stories, forced-colors re-verified in a real browser, consumers audited.",
         "playFunctionExempt": "Static navigation tree; expand/collapse follows native details/summary keyboard behavior, no custom handlers to drive.",
         "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
+        "realBrowserForcedColorsVerified": true,
+        "keyboardDelegation": [
+            {
+                "keys": [
+                    "Tab",
+                    "Enter",
+                    "Space"
+                ],
+                "to": "native",
+                "note": "Expand and collapse is a native details/summary disclosure. Enter and Space on a summary are user-agent behaviour, not DS code."
+            }
+        ]
     },
     "tokens": {
         "colors": [],

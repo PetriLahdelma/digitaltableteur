@@ -33,7 +33,16 @@
         "forcedColorsVerified": true,
         "realBrowserForcedColorsVerified": true,
         "accessibilityTreeVerified": true,
-        "playFunctionExempt": "Static navigation landmark; Tab order only."
+        "playFunctionExempt": "Static navigation landmark; Tab order only.",
+        "keyboardDelegation": [
+            {
+                "keys": [
+                    "Tab"
+                ],
+                "to": "native",
+                "note": "A nav landmark of anchors. Tab order is the DOM order; no key handler exists to test. Focusability and roles are covered by the committed accessibility-tree snapshot."
+            }
+        ]
     },
     "tokens": {
         "colors": [],

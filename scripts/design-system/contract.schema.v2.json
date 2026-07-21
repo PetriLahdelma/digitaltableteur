@@ -302,6 +302,48 @@
                         }
                     ]
                 },
+                "keyboardDelegation": {
+                    "type": "array",
+                    "description": "Where this component's keyboard contract is actually proven, when it is not proven by the component's own play function. A composition that renders @dt/Tabs does not re-implement roving arrow focus, and a footer of links does not implement Tab; in both cases the behaviour is real and covered, just not here. Without this, `playFunctionExempt` reads as 'nothing verifies the keyboard contract', which understates the coverage. Entries are checked by check:keyboard-delegation: the evidence file must exist and must actually exercise each declared key.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["keys", "to"],
+                        "properties": {
+                            "keys": {
+                                "type": "array",
+                                "minItems": 1,
+                                "description": "Keys from a11y.keyboard covered by this delegation.",
+                                "items": { "type": "string", "minLength": 1 }
+                            },
+                            "to": {
+                                "type": "string",
+                                "minLength": 1,
+                                "description": "The component that owns the behaviour, or \"native\" when the browser implements it (a link activating on Enter, a summary toggling on Space)."
+                            },
+                            "evidence": {
+                                "type": "string",
+                                "minLength": 1,
+                                "description": "Repo-relative path to the test that exercises these keys. Required unless `to` is \"native\", because there is no DS code to test when the user agent owns the behaviour."
+                            },
+                            "note": {
+                                "type": "string",
+                                "minLength": 1,
+                                "description": "Why the behaviour is native. Required when `to` is \"native\"."
+                            }
+                        },
+                        "allOf": [
+                            {
+                                "if": {
+                                    "properties": { "to": { "const": "native" } },
+                                    "required": ["to"]
+                                },
+                                "then": { "required": ["note"] },
+                                "else": { "required": ["evidence"] }
+                            }
+                        ]
+                    }
+                },
                 "criteria": {
                     "type": "array",
                     "description": "Testable accessibility criteria, each declaring HOW it is verified. Modelled on the DSDS `criterion` type. The sibling booleans (reviewed, forcedColorsVerified, accessibilityTreeVerified, realBrowserForcedColorsVerified, screenReaderVerified) each assert that something was checked but not by what, so a machine-verified claim and a human claim are indistinguishable once written. A criterion names its verification mode and, when automated, the npm script that proves it. Derived automatically from the sibling booleans by derive-a11y-criteria.mjs; hand-authored entries may be added for component-specific requirements.",

@@ -34,6 +34,16 @@ npm run check:token-packages
 npm run check:published-tokens-freshness -- --max-age-days 7
 npm run check:contract-props
 npm run check:consumers
+# Keyboard delegation: a component whose keyboard contract is proven by another
+# component's test (ContactInquiryPanel -> Tabs, SiteHeader -> MobileDrawer) records
+# that as a11y.keyboardDelegation. The derived a11y criterion is marked `automated`
+# against THIS check, so it has to run or the claim is unfalsifiable: it re-proves the
+# named evidence still exercises the delegated keys.
+npm run check:keyboard-delegation
+# Relationship graph + doc semantics: artifacts fail outright; catalog-gap and
+# unverified-on-beta/stable are ratchets.
+npm run check:relationship-graph
+npm run check:doc-semantics
 # Sidebar lifecycle dot is drawn only from a meta lifecycle tag; keep it in
 # sync with each component's contract status (see check-story-lifecycle-tags).
 npm run check:story-lifecycle-tags

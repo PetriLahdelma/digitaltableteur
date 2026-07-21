@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-21T10:05:59.044Z",
+  "generatedAt": "2026-07-21T10:20:33.484Z",
   "summary": {
     "componentCount": 166,
     "statusCounts": {
@@ -6224,7 +6224,16 @@
           "forcedColorsVerified": true,
           "realBrowserForcedColorsVerified": true,
           "accessibilityTreeVerified": true,
-          "playFunctionExempt": "Static navigation landmark; Tab order only."
+          "playFunctionExempt": "Static navigation landmark; Tab order only.",
+          "keyboardDelegation": [
+            {
+              "keys": [
+                "Tab"
+              ],
+              "to": "native",
+              "note": "A nav landmark of anchors. Tab order is the DOM order; no key handler exists to test. Focusability and roles are covered by the committed accessibility-tree snapshot."
+            }
+          ]
         },
         "tokens": {
           "colors": [],
@@ -6521,8 +6530,9 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "unverified",
-            "note": "Play-function exempt: Static navigation landmark; Tab order only."
+            "verificationMode": "automated",
+            "check": "npm run check:keyboard-delegation",
+            "note": "Delegated to native."
           },
           {
             "id": "aria-requirements",
@@ -41298,7 +41308,18 @@
           "reviewedNote": "Verified 2026-06-02: nav landmark + aria-label; native details/summary disclosure (keyboard/SR-native). Fixed two real axe findings surfaced by enabling axe on the stories — nested-interactive (link inside summary; branch index now a separate leaf) and listitem (removed role=group from ul). Default/Playground/Example pass axe with test:error; dark theme verified in Storybook. Forced colors: links/icons inherit currentColor via Icon/Link primitives → CanvasText; ForcedColors story present. 2026-07-09 — Promoted beta→stable: 4-mode AT snapshots captured for all required stories, forced-colors re-verified in a real browser, consumers audited.",
           "playFunctionExempt": "Static navigation tree; expand/collapse follows native details/summary keyboard behavior, no custom handlers to drive.",
           "accessibilityTreeVerified": true,
-          "realBrowserForcedColorsVerified": true
+          "realBrowserForcedColorsVerified": true,
+          "keyboardDelegation": [
+            {
+              "keys": [
+                "Tab",
+                "Enter",
+                "Space"
+              ],
+              "to": "native",
+              "note": "Expand and collapse is a native details/summary disclosure. Enter and Space on a summary are user-agent behaviour, not DS code."
+            }
+          ]
         },
         "tokens": {
           "colors": [],
@@ -41502,8 +41523,9 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "unverified",
-            "note": "Play-function exempt: Static navigation tree; expand/collapse follows native details/summary keyboard behavior, no custom handlers to drive."
+            "verificationMode": "automated",
+            "check": "npm run check:keyboard-delegation",
+            "note": "Delegated to native."
           },
           {
             "id": "aria-requirements",
@@ -57272,7 +57294,25 @@
           "forcedColorsVerified": true,
           "playFunctionExempt": "Tab switching defers to native button focus; booking embed is third-party when configured.",
           "accessibilityTreeVerified": true,
-          "realBrowserForcedColorsVerified": true
+          "realBrowserForcedColorsVerified": true,
+          "keyboardDelegation": [
+            {
+              "keys": [
+                "Tab",
+                "Enter"
+              ],
+              "to": "native",
+              "note": "Tab reaches the tab list and the panel; Enter activates buttons. Both user-agent behaviour."
+            },
+            {
+              "keys": [
+                "ArrowLeft",
+                "ArrowRight"
+              ],
+              "to": "Tabs",
+              "evidence": "nextjs-app/shared/components/Tabs/Tabs.test.tsx"
+            }
+          ]
         },
         "tokens": {
           "colors": [],
@@ -57482,8 +57522,9 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "unverified",
-            "note": "Play-function exempt: Tab switching defers to native button focus; booking embed is third-party when configured."
+            "verificationMode": "automated",
+            "check": "npm run check:keyboard-delegation",
+            "note": "Delegated to native, Tabs (nextjs-app/shared/components/Tabs/Tabs.test.tsx)."
           },
           {
             "id": "aria-requirements",
@@ -61595,7 +61636,17 @@
           "forcedColorsVerified": true,
           "playFunctionExempt": "Marquee animation defers to CSS; keyboard order follows DOM link sequence.",
           "accessibilityTreeVerified": true,
-          "realBrowserForcedColorsVerified": true
+          "realBrowserForcedColorsVerified": true,
+          "keyboardDelegation": [
+            {
+              "keys": [
+                "Tab",
+                "Enter"
+              ],
+              "to": "native",
+              "note": "Links only. Tab reaches them in DOM order and Enter activates them, both user-agent behaviour. The marquee is CSS and carries no interaction."
+            }
+          ]
         },
         "tokens": {
           "colors": [],
@@ -61767,8 +61818,9 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "unverified",
-            "note": "Play-function exempt: Marquee animation defers to CSS; keyboard order follows DOM link sequence."
+            "verificationMode": "automated",
+            "check": "npm run check:keyboard-delegation",
+            "note": "Delegated to native."
           },
           {
             "id": "aria-requirements",
@@ -62796,7 +62848,17 @@
           "forcedColorsVerified": true,
           "playFunctionExempt": "Page assembly; interactive CTAs inherit Button and Link primitives.",
           "accessibilityTreeVerified": true,
-          "realBrowserForcedColorsVerified": true
+          "realBrowserForcedColorsVerified": true,
+          "keyboardDelegation": [
+            {
+              "keys": [
+                "Tab",
+                "Enter"
+              ],
+              "to": "native",
+              "note": "A page assembly whose only interactive elements are Button and Link primitives, each already covered by its own tests. This component adds no key handling."
+            }
+          ]
         },
         "tokens": {
           "colors": [
@@ -62950,8 +63012,9 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "unverified",
-            "note": "Play-function exempt: Page assembly; interactive CTAs inherit Button and Link primitives."
+            "verificationMode": "automated",
+            "check": "npm run check:keyboard-delegation",
+            "note": "Delegated to native."
           },
           {
             "id": "aria-requirements",
@@ -66770,7 +66833,16 @@
           "forcedColorsVerified": true,
           "playFunctionExempt": "Footer is mostly links; interaction is standard Tab navigation.",
           "accessibilityTreeVerified": true,
-          "realBrowserForcedColorsVerified": true
+          "realBrowserForcedColorsVerified": true,
+          "keyboardDelegation": [
+            {
+              "keys": [
+                "Tab"
+              ],
+              "to": "native",
+              "note": "A list of links. Tab traversal is user-agent behaviour; the component adds no key handling."
+            }
+          ]
         },
         "tokens": {
           "colors": [
@@ -66953,8 +67025,9 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "unverified",
-            "note": "Play-function exempt: Footer is mostly links; interaction is standard Tab navigation."
+            "verificationMode": "automated",
+            "check": "npm run check:keyboard-delegation",
+            "note": "Delegated to native."
           },
           {
             "id": "aria-requirements",
@@ -67093,7 +67166,24 @@
           "forcedColorsVerified": true,
           "playFunctionExempt": "Header composition; keyboard flows are covered in MobileDrawer and nav link Tab order — add story play when drawer story is split out.",
           "accessibilityTreeVerified": true,
-          "realBrowserForcedColorsVerified": true
+          "realBrowserForcedColorsVerified": true,
+          "keyboardDelegation": [
+            {
+              "keys": [
+                "Tab",
+                "Enter"
+              ],
+              "to": "native",
+              "note": "Header navigation is anchors and buttons; Tab and Enter are user-agent behaviour."
+            },
+            {
+              "keys": [
+                "Escape"
+              ],
+              "to": "MobileDrawer",
+              "evidence": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.test.tsx"
+            }
+          ]
         },
         "tokens": {
           "colors": [
@@ -67302,8 +67392,9 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "unverified",
-            "note": "Play-function exempt: Header composition; keyboard flows are covered in MobileDrawer and nav link Tab order — add story play when drawer story is split out."
+            "verificationMode": "automated",
+            "check": "npm run check:keyboard-delegation",
+            "note": "Delegated to native, MobileDrawer (nextjs-app/shared/patterns/SiteHeader/MobileDrawer.test.tsx)."
           },
           {
             "id": "aria-requirements",
