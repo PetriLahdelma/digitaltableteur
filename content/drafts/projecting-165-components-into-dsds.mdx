@@ -92,16 +92,23 @@ I was also wrong in the other direction. I had written in my own notes that DSDS
 
 DSDS's conformance model says a conforming consumer "MUST treat unresolvable references as defects, not silently drop them." Schema validity is explicitly not enough; there is a semantic layer covering identifier uniqueness and reference resolution.
 
-So I checked. Our 165 components produce 440 relationship edges from the `composesWith`, `prefersOver`, and `replacementFor` fields. **58 of them point at nothing**, across 35 distinct targets. And the targets explain why:
+So I checked. Our 165 components produced 440 relationship edges, and 58 of them pointed at nothing. My first reaction was that we had 58 broken edges. That reaction was wrong, and the way it was wrong is the more useful finding.
 
-```
-raw-<button>
-@/components/ui/button
-toast-for-persistent-page-level-status
-custom-div-alert
+The 58 were three unrelated problems wearing the same shape.
+
+Twenty-six were entries like `raw <button>`, `window.alert`, and `shadcn Button` sitting in `replacementFor`. Those are not broken references. They are the whole point of the field: Button exists to replace a raw `<button>`, and telling an agent so is valuable. They fail reference resolution because DSDS models a relationship target as a documented entity, and an anti-pattern will never be one. Correct data, wrong container.
+
+Two were genuine defects. Our co-import scanner infers composition from shared imports using this regex:
+
+```js
+/(?:components|patterns)\/([A-Za-z][A-Za-z0-9]*)/g
 ```
 
-Those are prose fragments and an import path sitting in fields meant to hold component names. Nothing in our repo checks that the graph resolves, so they had been accumulating quietly. That is a real bug, found by taking someone else's conformance requirement seriously for an afternoon.
+An import of `components/animations/FadeIn` captures `animations`, which is a grouping directory, not a component. So `animations` and `ui` had become graph nodes. The allowlist needed to reject them was already loaded in that file, three lines away, and simply never applied.
+
+The remaining thirty pointed at eight components that are entirely real. `DashLeadList`, `MdxImage`, `StudioMap`, and five others exist on disk, are imported by documented components, and have neither a contract nor a spec.md. Chasing that gave the number that actually matters: **186 components on disk, 165 documented, 22 with no documentation of any kind**. Twelve percent of the system is invisible to every gate we run, and the only reason it surfaced is that documented components kept pointing at it.
+
+The fix that mattered was not repairing edges. It was learning to tell the three cases apart, which is now a gate: artifacts fail the build, anti-patterns are classified as guidance rather than graph edges, and the undocumented count is ratcheted at 22 so it can go down and not up.
 
 ### Deprecation needs a forwarding address
 
@@ -148,6 +155,6 @@ Not as a source of truth, not at 0.15.2, not with one author. Pinned schema URLs
 
 Steal from it instead. The RFC 2119 levels, the provenance model, and the verification modes are all ideas that improved our own schema without coupling us to theirs. Then run the projection once, throw it away, and read the residue.
 
-The exercise is worth an afternoon even if you delete the output. A foreign schema will not tell you what your documentation says. It will tell you what your documentation is *shaped* like, and where that shape is an accident. We found 58 broken graph edges, 115 unverifiable accessibility claims, and one parser that had been truncating guidance mid-sentence into committed files.
+The exercise is worth an afternoon even if you delete the output. A foreign schema will not tell you what your documentation says. It will tell you what your documentation is *shaped* like, and where that shape is an accident. We found 22 undocumented components, 115 unverifiable accessibility claims, two scanner artifacts posing as components, and one parser that had been truncating guidance mid-sentence into committed files.
 
-None of those were in the residue table. They were in the process of building it.
+None of those were in the residue table. They were in the process of building it. The residue told me where the two models disagreed; the disagreements were what sent me looking at data I had stopped reading years ago.

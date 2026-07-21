@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T09:17:45.736Z",
+  "generatedAt": "2026-07-21T09:37:11.324Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -1261,7 +1261,7 @@
         "Link",
         "TextInput",
         "TextArea",
-        "ui"
+        "Container"
       ],
       "prefersOver": [],
       "declaredPropCount": 3,
@@ -2682,7 +2682,6 @@
         "Container",
         "Section",
         "Pagination",
-        "animations",
         "EnhancedArticleCard"
       ],
       "prefersOver": [],
@@ -2931,8 +2930,7 @@
       ],
       "composesWith": [
         "Container",
-        "Section",
-        "animations"
+        "Section"
       ],
       "prefersOver": [],
       "declaredPropCount": 12,
@@ -4996,7 +4994,7 @@
         "Link",
         "TextInput",
         "TextArea",
-        "ui"
+        "Container"
       ],
       "prefersOver": [],
       "declaredPropCount": 3,
@@ -7758,12 +7756,12 @@
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
       "composesWith": [
-        "animations",
         "Section",
         "Stack",
         "Link",
         "ScrollIndicator",
-        "Badge"
+        "Badge",
+        "Checkbox"
       ],
       "prefersOver": [],
       "declaredPropCount": 5,
@@ -9443,8 +9441,7 @@
       ],
       "composesWith": [
         "Container",
-        "Section",
-        "animations"
+        "Section"
       ],
       "prefersOver": [],
       "declaredPropCount": 12,
@@ -17458,7 +17455,6 @@
         "Container",
         "Section",
         "BlogCategoryFilter",
-        "animations",
         "EnhancedArticleCard"
       ],
       "prefersOver": [],
@@ -20043,11 +20039,11 @@
       ],
       "composesWith": [
         "Container",
-        "animations",
         "Title",
         "EnhancedProjectCard",
         "BlogCategoryFilter",
-        "Pagination"
+        "Pagination",
+        "EnhancedArticleCard"
       ],
       "prefersOver": [],
       "declaredPropCount": 6,
@@ -20229,8 +20225,7 @@
       ],
       "composesWith": [
         "Section",
-        "Container",
-        "animations"
+        "Container"
       ],
       "prefersOver": [],
       "declaredPropCount": 3,
@@ -23889,10 +23884,10 @@
       "composesWith": [
         "Container",
         "Link",
-        "animations",
         "Badge",
         "Checkbox",
-        "TextInput"
+        "TextInput",
+        "TextArea"
       ],
       "prefersOver": [],
       "declaredPropCount": 8,
@@ -25560,10 +25555,10 @@
       "composesWith": [
         "TextInput",
         "Badge",
-        "ui",
         "Button",
         "Text",
-        "CheckboxGroup"
+        "CheckboxGroup",
+        "Modal"
       ],
       "prefersOver": [],
       "declaredPropCount": 8,

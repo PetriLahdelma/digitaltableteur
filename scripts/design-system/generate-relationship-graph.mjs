@@ -19,9 +19,40 @@ const OUT = join(ROOT, "nextjs-app/shared/foundations/dist/relationship-graph.js
 const CO_IMPORT_MIN = 3;
 
 /**
- * @param {Map<string, { evidence: Array<{ path: string }> }>} byComponent
+ * Every real component directory, whether or not it has a contract.
+ *
+ * A directory counts as a component when it contains `<Name>.tsx`. That test is what
+ * separates a component from a grouping directory: `components/animations/` holds
+ * FadeIn and KineticTitle but has no `animations.tsx`, and `components/ui/` holds only
+ * an index barrel.
+ *
+ * @param {string} root
+ * @returns {Set<string>}
  */
-function inferCoImports(byComponent) {
+function loadComponentDirNames(root) {
+  const names = new Set();
+  for (const sub of [
+    "nextjs-app/shared/components",
+    "nextjs-app/shared/patterns",
+    "nextjs-app/shared/templates",
+  ]) {
+    const base = join(root, sub);
+    if (!existsSync(base)) continue;
+    for (const entry of readdirSync(base, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      if (existsSync(join(base, entry.name, `${entry.name}.tsx`))) names.add(entry.name);
+    }
+  }
+  return names;
+}
+
+/**
+ * @param {Map<string, { evidence: Array<{ path: string }> }>} byComponent
+ * @param {Set<string>} knownComponents Names that are real components. The path regex
+ *   below cannot tell a component directory from a grouping directory, so every captured
+ *   name is checked against this set before it becomes a graph node.
+ */
+function inferCoImports(byComponent, knownComponents) {
   /** @type {Map<string, Map<string, number>>} */
   const pairCounts = new Map();
 
@@ -32,7 +63,7 @@ function inferCoImports(byComponent) {
       const source = readFileSync(join(ROOT, filePath), "utf8");
       const imported = new Set();
       for (const match of source.matchAll(/@dt\/([A-Za-z][A-Za-z0-9]*)/g)) {
-        imported.add(match[1]);
+        if (knownComponents.has(match[1])) imported.add(match[1]);
       }
       const relatives = source.match(
         /(?:components|patterns)\/([A-Za-z][A-Za-z0-9]*)/g,
@@ -40,7 +71,10 @@ function inferCoImports(byComponent) {
       if (relatives) {
         for (const seg of relatives) {
           const leaf = seg.split("/").pop();
-          if (leaf) imported.add(leaf);
+          // `components/animations/FadeIn` captures "animations", a grouping directory
+          // rather than a component. Without this guard those became graph nodes that
+          // resolve to nothing.
+          if (leaf && knownComponents.has(leaf)) imported.add(leaf);
         }
       }
       const list = [...imported];
@@ -101,7 +135,12 @@ function resolveGeneratedAt(nextPayload) {
 function main() {
   const catalogNames = loadCatalogNames(ROOT);
   const { byComponent } = scanComponentUsage({ root: ROOT, catalogNames });
-  const coImport = inferCoImports(byComponent);
+  // Deliberately NOT catalogNames: that set means "has a contract", so filtering by it
+  // would silently delete real edges to the components that are missing one. The graph
+  // should still record that Container composes with ScrollIndicator; that ScrollIndicator
+  // is undocumented is a separate defect, reported by check:relationship-graph.
+  const componentDirs = loadComponentDirNames(ROOT);
+  const coImport = inferCoImports(byComponent, componentDirs);
 
   /** @type {Record<string, { composesWith: string[], prefersOver: string[], replacementFor: string[] }>} */
   const components = {};

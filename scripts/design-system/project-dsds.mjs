@@ -19,6 +19,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, globSync } from "node:fs";
 import { resolve, dirname, join, basename } from "node:path";
 import { fileURLToPath } from "node:url";
+import { partitionRelationEntries } from "./relation-entry-lib.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const BLOCKS = join(ROOT, "nextjs-app/shared/foundations/dist/component-agent-blocks.json");
@@ -31,6 +32,9 @@ const OUT_DIR = argOut > -1 ? resolve(process.argv[argOut + 1]) : join(ROOT, "ne
 const REPORT_ONLY = process.argv.includes("--report-only");
 
 /** Fields we carry that DSDS core has no home for. Recorded, then namespaced. */
+/** Real component names, set in main(). Used to tell entity refs from anti-patterns. */
+let KNOWN_COMPONENTS = new Set();
+
 const RESIDUE = new Map();
 function residue(field, componentName, note) {
   if (!RESIDUE.has(field)) RESIDUE.set(field, { field, count: 0, components: [], note });
@@ -211,16 +215,39 @@ function projectComponent(name, block) {
     if (b) documentBlocks.push(b);
   }
 
-  // Agent-only rules: hard constraints and look-alike disambiguation.
+  // replacementFor / prefersOver each hold two kinds of thing. Only the entity references
+  // are graph edges; the anti-patterns ("raw <button>") are guidance and were never
+  // entities. Emitting both as relationships is what made the edges look unresolvable.
+  const relationships = [];
+  for (const c of block.composesWith ?? []) relationships.push({ relation: "composes", target: kebab(c) });
+
+  const replaceParts = partitionRelationEntries(block.replacementFor ?? [], KNOWN_COMPONENTS);
+  const prefersParts = partitionRelationEntries(block.prefersOver ?? [], KNOWN_COMPONENTS);
+  for (const r of replaceParts.entities) {
+    relationships.push({ relation: "replaces", target: kebab(r.target) });
+  }
+  for (const p of prefersParts.entities) {
+    relationships.push({ relation: "alternative-to", target: kebab(p.target) });
+  }
+
+  // Agent-only rules: hard constraints, look-alike disambiguation, and the anti-patterns
+  // that have no entity to point at.
   const agentItems = [];
   for (const f of block.forbiddenUse ?? []) agentItems.push({ level: "must-not", guidance: f });
   for (const r of block.compositionRules ?? []) agentItems.push({ level: "must-not", guidance: r });
-  for (const p of block.prefersOver ?? []) agentItems.push({ level: "should", guidance: `Prefer ${name} over ${p}.` });
+  for (const a of replaceParts.antiPatterns) {
+    agentItems.push({ level: "should-not", guidance: `Use ${name} instead of ${a.description}.` });
+  }
+  for (const a of prefersParts.antiPatterns) {
+    agentItems.push({ level: "should", guidance: `Prefer ${name} over ${a.description}.` });
+  }
+  for (const p of prefersParts.entities) {
+    agentItems.push({
+      level: "should",
+      guidance: `Prefer ${name} over ${p.target}${p.context ? ` ${p.context}` : ""}.`,
+    });
+  }
   if (agentItems.length) agentDocumentBlocks.push({ kind: "guidelines", items: agentItems });
-
-  const relationships = [];
-  for (const c of block.composesWith ?? []) relationships.push({ relation: "composes", target: kebab(c) });
-  for (const r of block.replacementFor ?? []) relationships.push({ relation: "replaces", target: kebab(r) });
 
   const metadata = { summary: (block.intent || "").slice(0, 300) };
   if (block.governance) {
@@ -293,6 +320,8 @@ function main() {
       if (c.name) contracts.set(c.name, c);
     } catch {}
   }
+
+  KNOWN_COMPONENTS = new Set(Object.keys(components));
 
   const entities = [];
   for (const [name, block] of Object.entries(components)) {
