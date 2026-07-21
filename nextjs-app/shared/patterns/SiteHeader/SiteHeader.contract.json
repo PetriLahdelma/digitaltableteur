@@ -96,8 +96,8 @@
         }
     },
     "forbiddenUse": [
-        "tamper with the IconButton variants. The header's theme",
-        "nest a `<header>` inside SiteHeader. Multiple banner",
-        "hard-code the language list. The `languages` array is the"
+        "tamper with the IconButton variants. The header's theme cycle uses `variant=\"ghost\"` to stay transparent at scroll-top; a filled variant would defeat the layered surface treatment.",
+        "nest a `<header>` inside SiteHeader. Multiple banner landmarks confuse AT users.",
+        "hard-code the language list. The `languages` array is the single source of truth — adding Finnish swedish (lol) means editing the array and adding the `langXX` / `langXX_ariaLabel` i18n keys."
     ]
 }

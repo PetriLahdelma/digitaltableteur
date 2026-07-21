@@ -159,9 +159,9 @@
                 "sm",
                 "md",
                 "lg",
+                "xs",
                 "xl",
                 "2xs",
-                "xs",
                 "2xl"
             ],
             "description": "Tokenized or explicit pixel size."

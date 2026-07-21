@@ -167,7 +167,8 @@
             "values": [
                 "sm",
                 "md",
-                "lg"
+                "lg",
+                "xs"
             ],
             "description": "Size."
         },

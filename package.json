@@ -199,7 +199,10 @@
     "check:dogfood-ratchet": "node scripts/design-system/check-dogfood-ratchet.mjs",
     "check:figma-links": "node scripts/design-system/check-figma-links.mjs",
     "check:rendered-parity": "node scripts/design-system/check-rendered-parity.mjs",
-    "check:rendered-parity:ci": "concurrently -k -s first -n SB,PARITY \"npm run storybook -- --ci --no-open --quiet\" \"npm run storybook:wait && npm run check:rendered-parity\""
+    "check:rendered-parity:ci": "concurrently -k -s first -n SB,PARITY \"npm run storybook -- --ci --no-open --quiet\" \"npm run storybook:wait && npm run check:rendered-parity\"",
+    "check:doc-semantics": "node scripts/design-system/check-doc-semantics.mjs",
+    "check:doc-semantics:json": "node scripts/design-system/check-doc-semantics.mjs --json",
+    "project:dsds": "node scripts/design-system/project-dsds.mjs"
   },
   "dependencies": {
     "@ai-sdk/mcp": "^2.0.10",

@@ -112,8 +112,8 @@
                 "sm",
                 "md",
                 "lg",
-                "xl",
                 "xs",
+                "xl",
                 "xxs",
                 "xxl",
                 "XXS",
@@ -310,5 +310,28 @@
             "children": "Your edits will be applied immediately.",
             "showCloseIcon": true
         }
+    },
+    "governance": {
+        "owner": "design-system",
+        "lastReviewed": "2026-07-21",
+        "note": "Re-read after the #1280 content-reset fix. Nesting and aria-live rules promoted to must-not."
+    },
+    "content": {
+        "voice": "Direct and calm. State what will happen, then let the actions carry the verbs.",
+        "capitalization": "sentence",
+        "terminology": [
+            {
+                "prefer": "Cancel",
+                "over": [
+                    "Nevermind",
+                    "Back"
+                ],
+                "rationale": "Cancel is the conventional dismissal label and is already translated in all three locales."
+            }
+        ],
+        "maxLength": {
+            "title": 48
+        },
+        "notes": "Title is the AT announcement. Keep it a noun phrase naming what opened, never a full sentence."
     }
 }

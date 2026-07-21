@@ -12,10 +12,12 @@ import {
 } from "./validate-components.ts";
 import {
   parseSpecAgentHints,
+  parseSpecGuidelines,
   extractSpecIntent,
   pickAgentIntent,
   sanitizeAgentProseLine,
 } from "./parse-spec-agent-hints.mjs";
+import { deriveA11yCriteria } from "./derive-a11y-criteria.mjs";
 import {
   getReplacementFor,
   getPrefersOver,
@@ -459,6 +461,41 @@ function main() {
       forbiddenUse: getForbiddenUse(entry.name, avoidWhen),
       ...getGraphRelations(entry.name),
       declaredPropCount: extracted.declaredPropNames.length,
+      /**
+       * RFC 2119 guidance. useWhen/avoidWhen stay above as flat prose for existing
+       * consumers; this carries the same rules with a level and, where the author gave
+       * one, a rationale. A `must-not` here is a hard gate for an agent writing code.
+       */
+      guidelines: parseSpecGuidelines(spec),
+      /** Accessibility criteria that declare how each one is verified. */
+      a11yCriteria: deriveA11yCriteria(contract),
+      /**
+       * Provenance per block. Agents must not "correct" human-authored intent toward
+       * what the code appears to do, and a regen silently overwrites anything marked
+       * generated. Without this the two are indistinguishable in the output.
+       */
+      docOrigin: {
+        props: { origin: "generated", authorship: "machine-generated", from: "TypeScript AST" },
+        variants: { origin: "generated", authorship: "machine-generated", from: "TypeScript AST" },
+        cvaVariants: { origin: "generated", authorship: "machine-generated", from: "TypeScript AST" },
+        propRelationships: { origin: "generated", authorship: "machine-generated", from: "TypeScript AST" },
+        canonicalExamples: { origin: "generated", authorship: "machine-generated", from: "stories.tsx" },
+        declaredPropCount: { origin: "generated", authorship: "machine-generated", from: "TypeScript AST" },
+        intent: { origin: "authored", authorship: "human-authored", from: `${entry.name}.spec.md` },
+        useWhen: { origin: "authored", authorship: "human-authored", from: `${entry.name}.spec.md` },
+        avoidWhen: { origin: "authored", authorship: "human-authored", from: `${entry.name}.spec.md` },
+        guidelines: { origin: "authored", authorship: "human-authored", from: `${entry.name}.spec.md` },
+        requiredA11y: { origin: "authored", authorship: "human-authored", from: "contract.json" },
+        keyboard: { origin: "authored", authorship: "human-authored", from: "contract.json" },
+        // Derived: a rule set applied to authored contract fields. Neither purely
+        // machine-read nor hand-written, and mislabelling it either way would be a lie.
+        a11yCriteria: { origin: "derived", authorship: "mixed", from: "contract.a11y + derive-a11y-criteria.mjs" },
+        compositionRules: { origin: "derived", authorship: "mixed", from: "avoidWhen filter" },
+        forbiddenUse: { origin: "derived", authorship: "mixed", from: "avoidWhen + replacement policy" },
+        replacementFor: { origin: "derived", authorship: "mixed", from: "replacement policy" },
+      },
+      governance: contract.governance ?? null,
+      content: contract.content ?? null,
     };
   }
 

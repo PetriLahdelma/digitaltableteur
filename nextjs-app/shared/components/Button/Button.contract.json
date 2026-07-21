@@ -389,5 +389,39 @@
         "TextInput",
         "CheckboxGroup",
         "Modal"
-    ]
+    ],
+    "governance": {
+        "owner": "design-system",
+        "lastReviewed": "2026-07-21",
+        "note": "Contract, spec.md and props re-read against implementation during the DSDS doc-semantics pass. Hard rules promoted to must/must-not with rationale."
+    },
+    "content": {
+        "voice": "Imperative and specific. A button label names the action it performs, not the object it acts on.",
+        "capitalization": "sentence",
+        "terminology": [
+            {
+                "prefer": "Save",
+                "over": [
+                    "Submit",
+                    "OK"
+                ],
+                "rationale": "Names the outcome rather than the mechanism."
+            },
+            {
+                "prefer": "Delete",
+                "over": [
+                    "Remove",
+                    "Trash"
+                ],
+                "rationale": "Reserved for irreversible destruction; Remove implies a reversible detach."
+            }
+        ],
+        "doNotTranslate": [
+            "Digitaltableteur"
+        ],
+        "maxLength": {
+            "children": 24
+        },
+        "notes": "FI and SV labels run 20-30% longer than EN. The 24-char ceiling is measured on the longest locale, not on EN."
+    }
 }
