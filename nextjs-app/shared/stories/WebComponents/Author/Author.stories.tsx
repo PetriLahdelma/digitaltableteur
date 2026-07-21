@@ -50,7 +50,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-author") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-author") };
 export const WithProfileLink: Story = {
   args: { profileUrl: "/authors/petri-lahdelma" },
 };
@@ -98,6 +99,9 @@ export const InArticleContext: Story = {
     </article>
   ),
 };
-export const Playground: Story = { args: { size: "3rem" } };
-export const Example: Story = { ...exampleStory };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const Playground: Story = {
+  tags: ["beta-matrix"], args: { size: "3rem" } };
+export const Example: Story = {
+  tags: ["beta-matrix"], ...exampleStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

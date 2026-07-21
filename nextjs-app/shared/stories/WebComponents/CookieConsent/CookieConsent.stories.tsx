@@ -106,10 +106,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: assertNative("dt-cookie-consent"),
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   play: async ({ canvasElement }) => {
     const element =
       canvasElement.querySelector<DtCookieConsentElement>("dt-cookie-consent");
@@ -122,11 +124,13 @@ export const Playground: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: () => <NativeCookieConsent {...meta.args} />,
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   ...forcedColorsStory,
   render: () => <NativeCookieConsent {...meta.args} />,
 };

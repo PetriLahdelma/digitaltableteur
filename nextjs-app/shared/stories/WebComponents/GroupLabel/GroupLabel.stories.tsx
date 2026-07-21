@@ -54,9 +54,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-group-label") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-group-label") };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Basic: Story = {
   ...exampleStory,
@@ -96,6 +97,7 @@ export const AboveCompoundWidget: Story = {
 // Replica of the React Example (same markup, classes, and padded canvas);
 // the rendered-parity gate compares them 1:1.
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   parameters: { layout: "padded" },
   render: () => (
@@ -120,4 +122,5 @@ export const Example: Story = {
   ),
 };
 
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

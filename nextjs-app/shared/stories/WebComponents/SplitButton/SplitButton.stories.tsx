@@ -138,8 +138,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-split-button") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-split-button") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Variants: Story = {
   ...exampleStory,
@@ -264,6 +265,7 @@ export const Surfaces: Story = {
 // Replica of the React Example (document toolbar): Save primary + Export
 // secondary in a flex row; the rendered-parity gate compares them 1:1.
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   // Same canvas layout as the React Example: centered canvases start the
   // content on fractional x, changing glyph rasterization vs the pair.
@@ -305,4 +307,5 @@ export const Example: Story = {
   ),
 };
 
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

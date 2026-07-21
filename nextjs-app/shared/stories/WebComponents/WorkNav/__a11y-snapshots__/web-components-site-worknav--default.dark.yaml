@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- navigation "Work project navigation":
+  - link "Work":
+    - /url: /work
+  - link "Prev":
+    - /url: /work/helsinki-design-system
+  - link "Next":
+    - /url: /work/illustrations

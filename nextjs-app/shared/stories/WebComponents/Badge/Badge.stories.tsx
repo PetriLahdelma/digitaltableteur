@@ -53,8 +53,9 @@ const meta = {
 } satisfies Meta<typeof NativeBadge>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-badge") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-badge") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Tones: Story = {
   ...exampleStory,
   render: () => (
@@ -142,6 +143,7 @@ export const AsCount: Story = {
 // Replica of the React Example (TonesContent): all variants and tones in a
 // wrapping flex row; the rendered-parity gate compares them 1:1.
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: () => (
     <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
@@ -173,4 +175,5 @@ export const Example: Story = {
     </div>
   ),
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

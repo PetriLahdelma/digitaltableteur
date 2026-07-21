@@ -19,9 +19,9 @@
  *   node scripts/design-system/check-doc-semantics.mjs --json     # machine-readable
  *   node scripts/design-system/check-doc-semantics.mjs --strict   # fail on ratchet breach
  */
-import { readFileSync, existsSync, writeFileSync, globSync } from "node:fs";
+import { readFileSync, existsSync, writeFileSync, globSync, readdirSync } from "node:fs";
 import { resolve, dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseSpecGuidelines } from "./parse-spec-agent-hints.mjs";
 import { deriveA11yCriteria } from "./derive-a11y-criteria.mjs";
 
@@ -69,7 +69,74 @@ function loadContracts() {
   return entries;
 }
 
-function main() {
+/**
+ * Native elements, reported alongside the React surfaces but counted separately.
+ *
+ * Web components carry no contract; they are declared in
+ * `packages/web-components/web-components.config.mjs` with their own
+ * `implementationStatus` and `implementationA11y` evidence fields. They were therefore
+ * absent from every number this gate produced, which made "unverified on beta/stable 0"
+ * read as a statement about the whole design system when it only ever described React.
+ *
+ * Reported, not ratcheted. `web-component-lifecycle.mjs` enforces the evidence fields
+ * only at `implementationStatus: stable`, and nothing is stable yet, so a ratchet here
+ * would be a new policy rather than a measurement. Making the gap countable comes first.
+ */
+async function loadWebComponents() {
+  const configPath = join(ROOT, "packages/web-components/web-components.config.mjs");
+  if (!existsSync(configPath)) return null;
+  let elements;
+  try {
+    const mod = await import(pathToFileURL(configPath).href);
+    const raw = mod.default?.elements ?? mod.elements ?? mod.default;
+    elements = Array.isArray(raw) ? raw : Object.values(raw ?? {});
+  } catch {
+    return null;
+  }
+  if (!elements.length) return null;
+
+  const byStatus = {};
+  let treeVerified = 0;
+  let forcedColorsVerified = 0;
+  for (const el of elements) {
+    byStatus[el.implementationStatus] = (byStatus[el.implementationStatus] ?? 0) + 1;
+    if (el.implementationA11y?.accessibilityTreeVerified === true) treeVerified += 1;
+    if (el.implementationA11y?.realBrowserForcedColorsVerified === true) forcedColorsVerified += 1;
+  }
+
+  // Snapshot coverage is measured over the story tree, not per element: `element.contract`
+  // is not unique (dt-selectable-card and dt-selectable-card-group both claim
+  // SelectableCard), so a per-element figure would double-count or drop one.
+  const storyRoot = join(ROOT, "nextjs-app/shared/stories/WebComponents");
+  let storyDirs = 0;
+  let dirsWithSnapshots = 0;
+  let snapshotFiles = 0;
+  if (existsSync(storyRoot)) {
+    for (const entry of readdirSync(storyRoot, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      storyDirs += 1;
+      const snapDir = join(storyRoot, entry.name, "__a11y-snapshots__");
+      if (!existsSync(snapDir)) continue;
+      const files = readdirSync(snapDir).filter((f) => f.endsWith(".yaml"));
+      if (files.length) {
+        dirsWithSnapshots += 1;
+        snapshotFiles += files.length;
+      }
+    }
+  }
+
+  return {
+    elements: elements.length,
+    byStatus,
+    treeVerified,
+    forcedColorsVerified,
+    storyDirs,
+    dirsWithSnapshots,
+    snapshotFiles,
+  };
+}
+
+async function main() {
   const contracts = loadContracts();
   if (contracts.length === 0) {
     console.error("FAIL: no component contracts found under nextjs-app/shared.");
@@ -95,6 +162,8 @@ function main() {
     },
     governance: { withOwner: 0, withLastReviewed: 0, stale: [], missing: [] },
     content: { withContent: 0 },
+    // Reported, never ratcheted. See loadWebComponents().
+    webComponents: await loadWebComponents(),
   };
 
   const today = new Date();
@@ -196,6 +265,24 @@ function main() {
 
   console.log(`\nContent guidance          ${report.content.withContent}/${report.components}\n`);
 
+  const wc = report.webComponents;
+  if (wc) {
+    const statuses = Object.entries(wc.byStatus)
+      .map(([s, n]) => `${n} ${s}`)
+      .join(", ");
+    console.log("Native elements (reported, not ratcheted)");
+    console.log(`  elements                         ${wc.elements}  (${statuses})`);
+    console.log(`  AT snapshots on disk             ${wc.dirsWithSnapshots}/${wc.storyDirs} story dirs, ${wc.snapshotFiles} files`);
+    console.log(`  accessibilityTreeVerified        ${wc.treeVerified}/${wc.elements}`);
+    console.log(`  realBrowserForcedColorsVerified  ${wc.forcedColorsVerified}/${wc.elements}`);
+    // The evidence fields are enforced only at implementationStatus: stable
+    // (web-component-lifecycle.mjs). With nothing stable, nothing enforces them today.
+    if (!wc.byStatus.stable) {
+      console.log("  note: evidence fields are gated at 'stable' only, and no element is");
+      console.log("        stable, so the two counts above are currently unenforced.\n");
+    }
+  }
+
   return finish(report);
 }
 
@@ -232,4 +319,4 @@ function finish(report) {
   console.log(`✓ unverified a11y criteria on beta/stable ${current} <= ceiling ${ceiling}`);
 }
 
-main();
+await main();

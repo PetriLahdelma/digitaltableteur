@@ -93,8 +93,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-code-block-window") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-code-block-window") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const NoTitle: Story = {
   tags: ["example"],
   args: { title: "", language: "bash", fixture: "bash" },
@@ -153,7 +154,7 @@ export const ComposedSnippet: Story = {
   ),
 };
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   args: {
     title: "tokens.config.ts",
     language: "tsx",
@@ -162,7 +163,7 @@ export const Example: Story = {
   },
 };
 export const ForcedColors: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "active" },
   args: {
     title: "components/DemoButton.tsx",

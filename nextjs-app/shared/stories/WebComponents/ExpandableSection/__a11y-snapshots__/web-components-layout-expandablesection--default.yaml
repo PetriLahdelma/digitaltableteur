@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- button "Hide project details" [expanded]
+- region "Hide project details":
+  - paragraph: Optional fields appear here when expanded.

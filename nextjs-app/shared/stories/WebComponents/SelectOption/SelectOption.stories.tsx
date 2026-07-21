@@ -38,8 +38,11 @@ const meta = {
 } satisfies Meta<typeof NativeSelectOption>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-select-option") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-select-option") };
 export const Disabled: Story = { ...exampleStory, args: { disabled: true } };
-export const Playground: Story = {};
-export const Example: Story = { ...exampleStory };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const Playground: Story = { tags: ["beta-matrix"] };
+export const Example: Story = {
+  tags: ["beta-matrix"], ...exampleStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

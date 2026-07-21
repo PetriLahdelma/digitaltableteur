@@ -87,8 +87,9 @@ const meta = {
 } satisfies Meta<typeof NativeAlertBanner>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-alert-banner") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-alert-banner") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Info: Story = {
   ...exampleStory,
   args: {
@@ -136,6 +137,7 @@ export const TextOnly: Story = {
   args: { showIcon: false, titleText: "Scheduled maintenance", tone: "info" },
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: {
     titleText: "Changes saved",
@@ -143,4 +145,5 @@ export const Example: Story = {
     tone: "success",
   },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

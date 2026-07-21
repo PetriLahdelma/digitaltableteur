@@ -72,7 +72,8 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-social-share") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-social-share") };
 export const BlogPost: Story = {
   args: {
     url: "https://digitaltableteur.com/blog/workflow-tips",
@@ -102,7 +103,10 @@ export const WithNativeShare: Story = {
   },
 };
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   args: { channels: ["linkedin", "twitter"] },
 };
-export const Example: Story = { ...exampleStory };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const Example: Story = {
+  tags: ["beta-matrix"], ...exampleStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

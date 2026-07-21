@@ -76,9 +76,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { play: assertNative("dt-tooltip") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-tooltip") };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Placements: Story = {
   ...exampleStory,
@@ -177,6 +178,7 @@ export const Delay: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: () => (
     <NativeElement
@@ -191,4 +193,5 @@ export const Example: Story = {
   ),
 };
 
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

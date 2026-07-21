@@ -145,13 +145,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: () => <ControlledMultiCombobox />,
   play: assertNative("dt-multi-combobox"),
 };
 
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: () => (
     <ControlledMultiCombobox initialValue={["design", "accessibility"]} />
@@ -199,6 +201,7 @@ export const KeyboardMultiSelect: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   ...forcedColorsStory,
   render: () => <ControlledMultiCombobox initialValue={["design"]} />,
 };

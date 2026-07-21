@@ -142,12 +142,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: (args, { viewMode }) => (
     <NativeMenu {...args} defaultOpen={viewMode !== "docs"} />
   ),
   play: assertNative("dt-menu"),
 };
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: (args, { viewMode }) => (
     <NativeMenu {...args} defaultOpen={viewMode !== "docs"} />
   ),
@@ -276,6 +278,7 @@ export const Alignments: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: () => (
     <Stage height="17rem">
@@ -299,4 +302,5 @@ export const Example: Story = {
   ),
 };
 
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

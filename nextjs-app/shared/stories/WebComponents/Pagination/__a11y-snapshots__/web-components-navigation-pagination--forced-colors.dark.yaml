@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- navigation "Page navigation":
+  - button "Previous page"
+  - button "Page 1": "1"
+  - button "Page 2": "2"
+  - button "Page 3": "3"
+  - button "Page 8": "8"
+  - button "Next page"

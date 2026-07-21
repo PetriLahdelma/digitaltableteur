@@ -51,8 +51,9 @@ const meta = {
 } satisfies Meta<typeof NativeProgress>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-progress") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-progress") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Determinate: Story = { ...exampleStory, args: { value: 42 } };
 export const Indeterminate: Story = {
   ...exampleStory,
@@ -93,7 +94,9 @@ export const Sizes: Story = {
   ),
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: { label: "Profile completeness", value: 80, state: "success" },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

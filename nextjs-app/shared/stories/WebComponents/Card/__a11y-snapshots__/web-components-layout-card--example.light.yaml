@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- heading "Design tokens" [level=3]
+- text: Stable
+- paragraph: "Layer 0 of the system: DTCG JSON, transformed per platform."
+- paragraph: Colors, spacing, and type ship as platform-agnostic JSON before any component exists.

@@ -1,0 +1,15 @@
+- status: Work in progress (beta)
+- group "Group Label":
+  - text: Group Label
+  - checkbox "Select All"
+  - text: Select All
+  - checkbox "Option 1"
+  - text: Option 1
+  - checkbox "Option 2"
+  - text: Option 2
+  - checkbox "Option 3"
+  - text: Option 3
+  - checkbox "Option 4"
+  - text: Option 4
+  - checkbox "Option 5"
+  - text: Option 5

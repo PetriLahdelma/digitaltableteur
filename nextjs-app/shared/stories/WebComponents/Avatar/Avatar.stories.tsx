@@ -71,9 +71,11 @@ export const WithInitials: Story = {
   ...exampleStory,
   args: { imageUrl: undefined, variant: "initials" },
 };
-export const Default: Story = { play: assertNative("dt-avatar") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-avatar") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   render: () => (
     <NativeElement
@@ -93,4 +95,5 @@ export const Example: Story = {
     />
   ),
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

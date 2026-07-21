@@ -51,8 +51,9 @@ const meta = {
 } satisfies Meta<typeof NativeNavLink>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-nav-link") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-nav-link") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const PrimaryNav: Story = {
   ...exampleStory,
   render: () => (
@@ -94,7 +95,9 @@ export const CustomStyling: Story = {
   },
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: { label: "Blog", href: "/blog", currentPath: "/blog/design-systems" },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

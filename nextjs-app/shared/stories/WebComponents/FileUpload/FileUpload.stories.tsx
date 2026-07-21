@@ -177,6 +177,7 @@ function summaryField(canvasElement: HTMLElement): HTMLInputElement | HTMLButton
 }
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: assertNative("dt-file-upload"),
 };
 

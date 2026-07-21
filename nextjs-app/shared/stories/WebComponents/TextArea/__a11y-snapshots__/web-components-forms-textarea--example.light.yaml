@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- text: Project brief *
+- textbox "Project brief *":
+  - /placeholder: Goals, constraints, and timing

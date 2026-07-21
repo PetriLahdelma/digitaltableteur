@@ -44,8 +44,9 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-button-group") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-button-group") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Spaced: Story = { ...exampleStory, args: { attached: false } };
 export const WithIconButtons: Story = {
   ...exampleStory,
@@ -82,7 +83,9 @@ export const Pager: Story = {
   ),
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: { label: "Layout density" },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

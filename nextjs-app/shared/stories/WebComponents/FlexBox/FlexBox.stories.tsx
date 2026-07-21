@@ -61,15 +61,19 @@ const meta = {
 } satisfies Meta<typeof NativeFlexBox>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-flex-box") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-flex-box") };
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   args: { gap: "1rem", rowGap: "1rem", columnGap: "1rem" },
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: { direction: "column", align: "stretch", gap: "0.75rem" },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };
 export const InlineCluster: Story = {
   ...exampleStory,
   args: { align: "center", gap: "var(--space-internal-8, 0.5rem)" },

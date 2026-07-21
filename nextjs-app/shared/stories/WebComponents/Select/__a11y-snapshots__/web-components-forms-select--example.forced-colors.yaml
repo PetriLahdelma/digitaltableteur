@@ -1,0 +1,11 @@
+- status: Work in progress (beta)
+- text: Select an option
+- combobox "Select an option":
+  - option "Option 1"
+  - option "Option 2"
+  - option "Option 3"
+- text: Office
+- combobox "Office":
+  - option "Choose an office" [disabled] [selected]
+  - option "Helsinki"
+  - option "Remote"

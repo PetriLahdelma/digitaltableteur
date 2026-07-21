@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- navigation "Blog article navigation":
+  - link "Articles":
+    - /url: /blog
+  - link "Prev":
+    - /url: /blog/petri-lahdelma-bio
+  - link "Next":
+    - /url: /blog/future-design-systems

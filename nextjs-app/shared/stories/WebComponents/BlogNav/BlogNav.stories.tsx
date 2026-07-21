@@ -44,9 +44,12 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-blog-nav") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-blog-nav") };
 export const FirstArticle: Story = { args: { currentPath: pages[0].path } };
 export const LastArticle: Story = { args: { currentPath: pages[2].path } };
-export const Playground: Story = {};
-export const Example: Story = { ...exampleStory };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const Playground: Story = { tags: ["beta-matrix"] };
+export const Example: Story = {
+  tags: ["beta-matrix"], ...exampleStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

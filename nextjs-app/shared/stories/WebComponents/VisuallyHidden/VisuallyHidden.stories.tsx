@@ -25,9 +25,11 @@ const meta = {
 } satisfies Meta<typeof NativeVisuallyHidden>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Playground: Story = {};
-export const Default: Story = { play: assertNative("dt-visually-hidden") };
+export const Playground: Story = { tags: ["beta-matrix"] };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-visually-hidden") };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   // Mirror the React VisuallyHidden Example byte-for-byte: the same bare
   // <button> (identical inline style) wrapping the component under test. The
@@ -48,4 +50,5 @@ export const Example: Story = {
     </button>
   ),
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

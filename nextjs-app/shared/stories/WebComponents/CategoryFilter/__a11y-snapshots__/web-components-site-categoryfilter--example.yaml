@@ -1,0 +1,6 @@
+- status: Work in progress (beta)
+- group "Filter projects by category":
+  - button "All"
+  - button "Design" [pressed]
+  - button "Accessibility"
+  - button "Engineering"

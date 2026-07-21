@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- text: Name *
+- textbox "Name *":
+  - /placeholder: ""
+- text: Email
+- textbox "Email":
+  - /placeholder: ""
+- paragraph: Used for project updates.

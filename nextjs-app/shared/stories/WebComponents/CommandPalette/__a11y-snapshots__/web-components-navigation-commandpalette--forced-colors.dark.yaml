@@ -1,0 +1,18 @@
+- status: Work in progress (beta)
+- button "Open command palette"
+- dialog "Command palette":
+  - combobox "Search commands…" [expanded]
+  - listbox "Command palette":
+    - option "Go to Home" [selected]
+    - option "Go to Blog"
+    - option "Go to Work"
+    - option "Go to Contact"
+    - option "New blog post"
+- dialog "Command palette":
+  - combobox "Search commands…" [expanded]
+  - listbox "Command palette":
+    - option "Go to Home" [selected]
+    - option "Go to Blog"
+    - option "Go to Work"
+    - option "Go to Contact"
+    - option "New blog post"

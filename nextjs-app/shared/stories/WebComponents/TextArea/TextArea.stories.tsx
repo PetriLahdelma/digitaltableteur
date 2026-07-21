@@ -66,7 +66,8 @@ const meta = {
 } satisfies Meta<typeof NativeTextArea>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-text-area") };
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-text-area") };
 export const WithHelperCopy: Story = {
   ...exampleStory,
   args: { helperText: "Maximum 500 characters." },
@@ -83,8 +84,9 @@ export const KeyboardEntry: Story = {
   ...exampleStory,
   args: { value: "Use Tab and Shift+Tab to move between fields." },
 };
-export const Playground: Story = {};
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: {
     label: "Project brief",
@@ -92,4 +94,5 @@ export const Example: Story = {
     placeholder: "Goals, constraints, and timing",
   },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };

@@ -134,6 +134,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: () => <DefaultDemo />,
   play: async ({ canvasElement }) => {
     await assertNative("dt-toast")({ canvasElement });
@@ -279,16 +280,17 @@ export const Stacked: Story = {
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   args: { duration: 60_000 },
 };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   args: { duration: 60_000 },
 };
 
 export const ForcedColors: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "active" },
   args: { duration: 60_000 },
 };

@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- group:
+  - text: What can we help with?
+  - group "What can we help with?":
+    - paragraph: Checkbox group slots here

@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- text: Attachment (optional)
+- textbox "Attachment (optional)":
+  - /placeholder: No file selected
+  - text: project-brief.pdf (48 KB)
+- button "Choose file"
+- button "Remove file"
+- paragraph: "Optional. Max 5 MB. Accepted formats: PDF, PNG, JPG."

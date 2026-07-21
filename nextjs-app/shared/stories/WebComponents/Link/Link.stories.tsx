@@ -71,8 +71,9 @@ const meta = {
 } satisfies Meta<typeof NativeLink>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Default: Story = { play: assertNative("dt-link") };
-export const Playground: Story = {};
+export const Default: Story = {
+  tags: ["beta-matrix"], play: assertNative("dt-link") };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Sizes: Story = {
   ...exampleStory,
   render: () => (
@@ -117,7 +118,9 @@ export const External: Story = {
   },
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   ...exampleStory,
   args: { label: "View all case studies", href: "/work", underline: "hover" },
 };
-export const ForcedColors: Story = { ...forcedColorsStory };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], ...forcedColorsStory };
