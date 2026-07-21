@@ -1,19 +1,19 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-21T09:38:21.060Z",
+  "generatedAt": "2026-07-21T10:05:59.044Z",
   "summary": {
-    "componentCount": 164,
+    "componentCount": 166,
     "statusCounts": {
       "beta": 44,
       "stable": 98,
-      "alpha": 21,
+      "alpha": 23,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 88.2,
-    "codebaseComponentCount": 186,
-    "usageCoveragePercent": 94.5,
-    "componentsWithProductionUsage": 35,
+    "catalogCompletenessPercent": 90.2,
+    "codebaseComponentCount": 184,
+    "usageCoveragePercent": 94.6,
+    "componentsWithProductionUsage": 42,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -57,41 +57,41 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 186,
-    "inCatalog": 164,
-    "outOfCatalog": 22,
-    "catalogCompletenessPercent": 88.2,
+    "totalComponentsInCodebase": 184,
+    "inCatalog": 166,
+    "outOfCatalog": 18,
+    "catalogCompletenessPercent": 90.2,
     "artifactCoverage": {
-      "stories": 148,
-      "tests": 150,
+      "stories": 150,
+      "tests": 151,
       "mdx": 3,
-      "spec": 164
+      "spec": 166
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
       "page-pattern": 0,
       "enhanced-fork": 4,
-      "exempt": 18
+      "exempt": 14
     },
     "regenerate": "node scripts/design-system/audit-catalog-coverage.mjs (run with --json for machine-readable output)"
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 164,
-    "withAnyUsage": 155,
-    "withProductionUsage": 35,
-    "uniqueImportedComponents": 155,
-    "totalEvidenceRows": 768,
+    "catalogedComponents": 166,
+    "withAnyUsage": 157,
+    "withProductionUsage": 42,
+    "uniqueImportedComponents": 157,
+    "totalEvidenceRows": 775,
     "aliasImportFiles": 395,
-    "relativeImportFiles": 406,
+    "relativeImportFiles": 413,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-17T07:53:52.073Z",
+    "generatedAt": "2026-07-21T09:57:27.970Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 83,
+    "nodesWithComposesWith": 85,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 164,
+      "digitaltableteur": 166,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 44,
         "stable": 98,
-        "alpha": 21,
+        "alpha": 23,
         "deprecated": 1
       },
       "dsharp": {
@@ -2399,15 +2399,15 @@
       "usage": {
         "publicImport": "@dt/AspectRatio",
         "importCount": 1,
-        "productionImportCount": 0,
+        "productionImportCount": 1,
         "patternImportCount": 0,
-        "componentImportCount": 1,
+        "componentImportCount": 0,
         "evidence": [
           {
-            "path": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/AspectRatio",
-            "context": "component"
+            "context": "production"
           }
         ]
       },
@@ -4319,6 +4319,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -4365,11 +4370,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -4534,10 +4534,16 @@
       "usage": {
         "publicImport": "@dt/Badge",
         "importCount": 12,
-        "productionImportCount": 0,
+        "productionImportCount": 1,
         "patternImportCount": 0,
-        "componentImportCount": 5,
+        "componentImportCount": 4,
         "evidence": [
+          {
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Badge",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
             "importKind": "alias",
@@ -4558,12 +4564,6 @@
           },
           {
             "path": "nextjs-app/shared/components/OpenHours/OpenHours.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Badge",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
             "importKind": "alias",
             "importPath": "@dt/Badge",
             "context": "component"
@@ -6777,17 +6777,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/error.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -8736,6 +8736,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/WorkIndex/index.ts",
             "since": "2026-06-04"
           },
@@ -9374,15 +9379,15 @@
       "usage": {
         "publicImport": "@dt/Center",
         "importCount": 1,
-        "productionImportCount": 0,
+        "productionImportCount": 1,
         "patternImportCount": 0,
-        "componentImportCount": 1,
+        "componentImportCount": 0,
         "evidence": [
           {
-            "path": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/Center",
-            "context": "component"
+            "context": "production"
           }
         ]
       },
@@ -10160,6 +10165,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -10319,10 +10329,16 @@
       "usage": {
         "publicImport": "@dt/Checkbox",
         "importCount": 8,
-        "productionImportCount": 0,
+        "productionImportCount": 1,
         "patternImportCount": 0,
-        "componentImportCount": 4,
+        "componentImportCount": 3,
         "evidence": [
+          {
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Checkbox",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/AskAI/AskAI.tsx",
             "importKind": "alias",
@@ -10339,12 +10355,6 @@
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
             "importPath": "./Checkbox/Checkbox",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Checkbox",
             "context": "component"
           },
           {
@@ -14196,17 +14206,17 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -14485,9 +14495,9 @@
       "usage": {
         "publicImport": "@dt/Container",
         "importCount": 30,
-        "productionImportCount": 2,
+        "productionImportCount": 3,
         "patternImportCount": 23,
-        "componentImportCount": 4,
+        "componentImportCount": 3,
         "evidence": [
           {
             "path": "app/blog/[slug]/ServerArticleHero.tsx",
@@ -14497,6 +14507,12 @@
           },
           {
             "path": "app/blog/[slug]/ServerRelatedPosts.tsx",
+            "importKind": "relative",
+            "importPath": "@/nextjs-app/shared/components/Container",
+            "context": "production"
+          },
+          {
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/Container",
             "context": "production"
@@ -14551,12 +14567,6 @@
           },
           {
             "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../components/Container",
-            "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
             "importKind": "relative",
             "importPath": "../../components/Container",
             "context": "pattern"
@@ -15883,6 +15893,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "since": "2026-06-04"
           },
           {
@@ -17598,6 +17613,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
             "since": "2026-06-04"
           },
@@ -17644,11 +17664,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -19115,6 +19130,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Blog/BlogPage.tsx",
             "since": "2026-06-04"
           },
@@ -20062,6 +20082,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -22226,6 +22251,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -22272,11 +22302,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -22776,12 +22801,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/error.tsx",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/error.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -23433,6 +23458,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "since": "2026-06-04"
           },
           {
@@ -24675,6 +24705,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -24721,11 +24756,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -25159,6 +25189,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -25561,6 +25596,402 @@
       }
     },
     {
+      "name": "Lightbox",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "Lightbox",
+        "tier": "organism",
+        "group": "content",
+        "status": "alpha",
+        "description": "Modal image viewer with keyboard navigation across a gallery of images.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "div",
+        "variants": {},
+        "slots": [],
+        "asChild": false,
+        "subParts": [
+          {
+            "name": "Backdrop",
+            "element": "div"
+          },
+          {
+            "name": "Panel",
+            "element": "div"
+          },
+          {
+            "name": "Image",
+            "element": "img"
+          },
+          {
+            "name": "Caption",
+            "element": "figcaption"
+          },
+          {
+            "name": "Counter",
+            "element": "p"
+          },
+          {
+            "name": "Close",
+            "element": "button"
+          }
+        ],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Escape: closes the lightbox",
+            "ArrowRight: advances to the next image",
+            "ArrowLeft: returns to the previous image",
+            "Tab: cycles focus within the panel while open"
+          ],
+          "ariaRequirements": [
+            "role=dialog with aria-modal=true on the panel",
+            "aria-label names the viewer and reports position in the set",
+            "Focus moves into the panel on open and returns to the trigger on close"
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false,
+          "motion": true
+        },
+        "tokens": {
+          "colors": [],
+          "spacing": []
+        },
+        "lightDarkVerified": false,
+        "governance": {
+          "owner": "design-system",
+          "lastReviewed": "2026-07-21",
+          "note": "Promoted out of the bespoke/infrastructure exemption: a generic image viewer consumed by ProjectGallery and others, not app infrastructure. Already DS-shaped (CSS module, @dt/Icon, portal, focus restore). Alpha because forced-colors and light/dark are unverified."
+        },
+        "content": {
+          "voice": "Captions describe the image, they do not narrate the interface.",
+          "capitalization": "sentence",
+          "terminology": [
+            {
+              "prefer": "Close",
+              "over": [
+                "Dismiss",
+                "Exit"
+              ],
+              "rationale": "Close is the conventional dialog dismissal label and is already translated in all three locales."
+            }
+          ],
+          "maxLength": {
+            "caption": 120
+          },
+          "notes": "Every image needs a real alt. A caption does not substitute for one: captions are visible to everyone, alt text carries the description for AT."
+        }
+      },
+      "spec": "# Lightbox\n\n## Intent\n\nA modal image viewer for a set of images. It portals a dialog above the page, traps focus\ninside it, moves between images with the arrow keys, and restores focus to the trigger on\nclose. Consumed by `ProjectGallery` and case-study pages so each gallery does not\nreimplement focus handling and keyboard navigation.\n\n## Interaction contract\n\n| Input | Result |\n|-------|--------|\n| `open` becomes true | Panel portals in, page content gets `inert`, focus moves to the first control |\n| Escape | Calls `onOpenChange(false)`; the parent owns the state change |\n| ArrowRight | Advances one image, wrapping from the last back to the first |\n| ArrowLeft | Steps back one image, wrapping from the first to the last |\n| Backdrop click | Calls `onOpenChange(false)` |\n| `open` becomes false | Panel unmounts, `inert` is removed, focus returns to the previously focused element |\n| `initialIndex` changes while open | Resets to that index |\n\nKey handling is bound at the `window` level while open, so the shortcuts work regardless\nof which control inside the panel currently holds focus.\n\n## Do / don't\n\n- Do (must): give every image a real `alt` -- a caption is visible to everyone and is not\n  a substitute, so without alt an AT user gets an unlabelled graphic.\n- Do (must): keep the component mounted and drive it with `open` -- unmounting on close\n  destroys the panel before focus can return, stranding the user at the top of the page.\n- Do: pass `onOpenChange` and treat it as the single source of truth for open state, so\n  Escape and backdrop clicks stay in sync with the parent.\n- Do: pass `initialIndex` when opening from a specific thumbnail, so the viewer opens on\n  the image the user clicked rather than the first.\n- Don't (must): nest a Lightbox inside a Modal -- both trap focus and apply `inert`, and\n  the inner trap wins, leaving the outer dialog unreachable but still visible.\n- Don't: use it for non-image content. It is sized and captioned for images; use `Modal`\n  for arbitrary content.\n- Don't: put interactive controls in a caption. The caption is announced as part of the\n  image's description, and controls inside it are unreachable in that reading order.\n- Don't: rely on the counter as the only position cue. It is visual; the accessible name\n  carries position for AT.\n\n## Design notes\n\nThe panel renders through `createPortal` so it escapes any ancestor `overflow: hidden` or\ntransform, which is what breaks naive gallery overlays inside cards.\n\nFocus is captured on open into the panel and restored to `previousActiveElement` on close.\nThat restore is why the component must not be conditionally mounted: React unmounts before\nthe effect can run.\n\n## Status\n\nAlpha. Beta needs `forcedColorsVerified` and `lightDarkVerified`; a backdrop-heavy overlay\nis exactly the shape that fails forced-colors, so this should be verified before promotion\nrather than assumed.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/Lightbox",
+        "importCount": 3,
+        "productionImportCount": 1,
+        "patternImportCount": 0,
+        "componentImportCount": 2,
+        "evidence": [
+          {
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "importKind": "relative",
+            "importPath": "@/nextjs-app/shared/components/Lightbox",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/interactive/index.ts",
+            "importKind": "relative",
+            "importPath": "../Lightbox",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/ProjectGallery/ProjectGallery.tsx",
+            "importKind": "relative",
+            "importPath": "../Lightbox",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/Lightbox",
+        "intent": "A modal image viewer for a set of images. It portals a dialog above the page, traps focus inside it, moves between images with the arrow keys, and restores focus to the trigger on close. Consumed by `ProjectGallery` and…",
+        "props": {
+          "images": {
+            "optional": false,
+            "type": "LightboxImage[]"
+          },
+          "initialIndex": {
+            "optional": true,
+            "type": "number"
+          },
+          "open": {
+            "optional": true,
+            "type": "boolean"
+          },
+          "onOpenChange": {
+            "optional": true,
+            "type": "(open: boolean) => void"
+          }
+        },
+        "propRelationships": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "(must): give every image a real `alt` -- a caption is visible to everyone and is not a substitute, so without alt an AT user gets an unlabelled graphic.",
+          "(must): keep the component mounted and drive it with `open` -- unmounting on close destroys the panel before focus can return, stranding the user at the top of the page.",
+          "pass `onOpenChange` and treat it as the single source of truth for open state, so Escape and backdrop clicks stay in sync with the parent.",
+          "pass `initialIndex` when opening from a specific thumbnail, so the viewer opens on the image the user clicked rather than the first."
+        ],
+        "avoidWhen": [
+          "(must): nest a Lightbox inside a Modal -- both trap focus and apply `inert`, and the inner trap wins, leaving the outer dialog unreachable but still visible.",
+          "use it for non-image content. It is sized and captioned for images; use `Modal` for arbitrary content.",
+          "put interactive controls in a caption. The caption is announced as part of the image's description, and controls inside it are unreachable in that reading order.",
+          "rely on the counter as the only position cue. It is visual; the accessible name carries position for AT."
+        ],
+        "requiredA11y": [
+          "role=dialog with aria-modal=true on the panel",
+          "aria-label names the viewer and reports position in the set",
+          "Focus moves into the panel on open and returns to the trigger on close"
+        ],
+        "keyboard": [
+          "Escape: closes the lightbox",
+          "ArrowRight: advances to the next image",
+          "ArrowLeft: returns to the previous image",
+          "Tab: cycles focus within the panel while open"
+        ],
+        "compositionRules": [
+          "(must): nest a Lightbox inside a Modal -- both trap focus and apply `inert`, and the inner trap wins, leaving the outer dialog unreachable but still visible.",
+          "put interactive controls in a caption. The caption is announced as part of the image's description, and controls inside it are unreachable in that reading order."
+        ],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "(must): nest a Lightbox inside a Modal -- both trap focus and apply `inert`, and the inner trap wins, leaving the outer dialog unreachable but still visible.",
+          "use it for non-image content. It is sized and captioned for images; use `Modal` for arbitrary content.",
+          "put interactive controls in a caption. The caption is announced as part of the image's description, and controls inside it are unreachable in that reading order.",
+          "rely on the counter as the only position cue. It is visual; the accessible name carries position for AT."
+        ],
+        "composesWith": [
+          "Badge",
+          "Checkbox",
+          "Link",
+          "TextInput",
+          "TextArea",
+          "Container"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 4,
+        "guidelines": [
+          {
+            "level": "must",
+            "guidance": "give every image a real `alt`",
+            "rationale": "a caption is visible to everyone and is not a substitute, so without alt an AT user gets an unlabelled graphic.",
+            "rationaleSource": "explicit",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "must",
+            "guidance": "keep the component mounted and drive it with `open`",
+            "rationale": "unmounting on close destroys the panel before focus can return, stranding the user at the top of the page.",
+            "rationaleSource": "explicit",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "pass `onOpenChange` and treat it as the single source of truth for open state, so Escape and backdrop clicks stay in sync with the parent.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "pass `initialIndex` when opening from a specific thumbnail, so the viewer opens on the image the user clicked rather than the first.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "must-not",
+            "guidance": "nest a Lightbox inside a Modal",
+            "rationale": "both trap focus and apply `inert`, and the inner trap wins, leaving the outer dialog unreachable but still visible.",
+            "rationaleSource": "explicit",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it for non-image content",
+            "rationale": "It is sized and captioned for images; use `Modal` for arbitrary content.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "put interactive controls in a caption",
+            "rationale": "The caption is announced as part of the image's description, and controls inside it are unreachable in that reading order.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "rely on the counter as the only position cue",
+            "rationale": "It is visual; the accessible name carries position for AT.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "reduced-motion",
+            "statement": "Positional, scale, and opacity motion is suppressed under prefers-reduced-motion.",
+            "verificationMode": "manual"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified"
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Lightbox.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Lightbox.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Lightbox.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Lightbox.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": {
+          "owner": "design-system",
+          "lastReviewed": "2026-07-21",
+          "note": "Promoted out of the bespoke/infrastructure exemption: a generic image viewer consumed by ProjectGallery and others, not app infrastructure. Already DS-shaped (CSS module, @dt/Icon, portal, focus restore). Alpha because forced-colors and light/dark are unverified."
+        },
+        "content": {
+          "voice": "Captions describe the image, they do not narrate the interface.",
+          "capitalization": "sentence",
+          "terminology": [
+            {
+              "prefer": "Close",
+              "over": [
+                "Dismiss",
+                "Exit"
+              ],
+              "rationale": "Close is the conventional dialog dismissal label and is already translated in all three locales."
+            }
+          ],
+          "maxLength": {
+            "caption": 120
+          },
+          "notes": "Every image needs a real alt. A caption does not substitute for one: captions are visible to everyone, alt text carries the description for AT."
+        }
+      }
+    },
+    {
       "name": "Link",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -25650,6 +26081,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -25676,11 +26112,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/AiUsagePage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -25774,10 +26205,16 @@
       "usage": {
         "publicImport": "@dt/Link",
         "importCount": 13,
-        "productionImportCount": 0,
+        "productionImportCount": 1,
         "patternImportCount": 1,
-        "componentImportCount": 11,
+        "componentImportCount": 10,
         "evidence": [
+          {
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Link",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx",
             "importKind": "relative",
@@ -25834,12 +26271,6 @@
           },
           {
             "path": "nextjs-app/shared/components/SiteTree/SiteTree.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "component"
-          },
-          {
-            "path": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
             "importKind": "alias",
             "importPath": "@dt/Link",
             "context": "component"
@@ -25923,9 +26354,9 @@
         ],
         "composesWith": [
           "Badge",
-          "Text",
           "Checkbox",
           "TextInput",
+          "Text",
           "Button",
           "Title"
         ],
@@ -27866,6 +28297,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "since": "2026-06-04"
           },
           {
@@ -31136,6 +31572,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "since": "2026-06-04"
           },
           {
@@ -35523,6 +35964,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/index.ts",
             "since": "2026-06-04"
           },
@@ -35884,6 +36330,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
             "since": "2026-06-04"
           },
@@ -35930,11 +36381,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -37445,6 +37891,419 @@
       }
     },
     {
+      "name": "ScrollIndicator",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "ScrollIndicator",
+        "tier": "atom",
+        "group": "navigation",
+        "status": "alpha",
+        "description": "Animated affordance at the base of a hero that scrolls to the next section.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "button",
+        "variants": {
+          "variant": {
+            "values": [
+              "arrow",
+              "mouse",
+              "chevron"
+            ],
+            "default": "chevron"
+          },
+          "position": {
+            "values": [
+              "center",
+              "left",
+              "right"
+            ],
+            "default": "center"
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Enter: scrolls to the target section",
+            "Space: scrolls to the target section"
+          ],
+          "ariaRequirements": [
+            "Renders a real <button>, so it is focusable and activates on Enter and Space",
+            "aria-label or a visible label names the destination when no text is shown"
+          ],
+          "reducedMotion": true,
+          "reviewed": false,
+          "forcedColorsVerified": false,
+          "motion": true
+        },
+        "tokens": {
+          "colors": [],
+          "spacing": []
+        },
+        "lightDarkVerified": false,
+        "governance": {
+          "owner": "design-system",
+          "lastReviewed": "2026-07-21",
+          "note": "Promoted out of the bespoke/infrastructure exemption: consumed by ProjectHero, BlogHero and AboutHero, which is reusable-primitive usage rather than app infrastructure. Alpha because forced-colors and light/dark have not been verified; beta needs both plus a11y review."
+        },
+        "content": {
+          "voice": "A short imperative naming the destination, not the gesture.",
+          "capitalization": "sentence",
+          "terminology": [
+            {
+              "prefer": "See our work",
+              "over": [
+                "Scroll down",
+                "Scroll"
+              ],
+              "rationale": "Names where the user lands. The gesture is already implied by the affordance and is wrong for keyboard and AT users."
+            }
+          ],
+          "maxLength": {
+            "label": 24
+          },
+          "notes": "The label is optional. When omitted the control still needs an accessible name naming the destination."
+        }
+      },
+      "spec": "# ScrollIndicator\n\n## Intent\n\nA hero-footer affordance that tells the reader there is more page below and takes them\nthere when activated. It renders a real `<button>` that scrolls a named target into view,\nwith a looping motion hint that stops under `prefers-reduced-motion`. Used by\n`ProjectHero`, `BlogHero`, and `AboutHero`; it exists so those three do not each grow\ntheir own scroll cue.\n\n## Interaction contract\n\n| Input | Result |\n|-------|--------|\n| Click | Scrolls `targetId` into view with `behavior: \"smooth\"`, aligned to `block: \"start\"` |\n| Enter | Same as click (native `<button>` activation) |\n| Space | Same as click (native `<button>` activation) |\n| Tab | Receives focus in DOM order; the focus ring must remain visible over the hero |\n| No `targetId` | Renders and focuses normally, but activation is a no-op |\n| `prefers-reduced-motion: reduce` | The looping hint stops; hit area, label, and scroll behaviour are unchanged |\n\nThe scroll itself is delegated to `Element.scrollIntoView`, so it inherits the platform's\nsmooth-scroll behaviour and any `scroll-behavior` set by the page.\n\n## Do / don't\n\n- Do (must): give the control an accessible name that names the destination -- an\n  unlabelled icon-only button is announced as \"button\" with no purpose, failing WCAG 4.1.2.\n- Do: pass `targetId` matching a real element id on the page. Without it the control\n  renders but does nothing on activation.\n- Do: place it once per hero, at the bottom of the first viewport, where the reader\n  looks for the fold.\n- Do: prefer `position=\"center\"` unless the hero's copy already occupies the centre.\n- Don't (must): render it as a `<div>` with a click handler -- it must stay a real button\n  so it is reachable by Tab and activates on both Enter and Space.\n- Don't: use it as general in-page navigation. It communicates \"there is more below\",\n  not \"jump to section\". Use a link or `Breadcrumb` for navigation.\n- Don't: stack more than one on a page. Two scroll cues in one viewport contradict each\n  other about where the reader should go next.\n- Don't: rely on the animation to carry meaning. It is suppressed under reduced motion,\n  so the label and accessible name must stand alone.\n\n## Design notes\n\nThe motion is a short vertical loop driven by GSAP and gated on the animation context's\n`motionPreference`. When motion is suppressed the control keeps its full hit area and\nlabel, losing only the loop.\n\nPosition is applied with utility classes rather than a CSS module because the component\nis absolutely positioned against whatever hero contains it, and the hero owns the\nstacking context.\n\n## Status\n\nAlpha. Beta needs `forcedColorsVerified` (the ForcedColors story verified in a real\nbrowser) and `lightDarkVerified`. Neither has been run; the contract records both as\nfalse rather than asserting them.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/ScrollIndicator",
+        "importCount": 4,
+        "productionImportCount": 0,
+        "patternImportCount": 4,
+        "componentImportCount": 0,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/patterns/AboutHero/AboutHero.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/ScrollIndicator",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/BlogHero/BlogHero.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/ScrollIndicator",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/ScrollIndicator",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/ProjectHero/ProjectHero.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/ScrollIndicator",
+            "context": "pattern"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/ScrollIndicator",
+        "intent": "A hero-footer affordance that tells the reader there is more page below and takes them there when activated. It renders a real `<button>` that scrolls a named target into view, with a looping motion hint that stops unde…",
+        "props": {
+          "targetId": {
+            "optional": true,
+            "type": "string",
+            "description": "ID of the target element to scroll to"
+          },
+          "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional text label"
+          },
+          "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "arrow",
+              "mouse",
+              "chevron"
+            ],
+            "description": "Icon variant"
+          },
+          "position": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "center",
+              "left",
+              "right"
+            ],
+            "description": "Horizontal position"
+          },
+          "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Custom className for styling"
+          }
+        },
+        "propRelationships": [],
+        "variants": {
+          "variant": {
+            "values": [
+              "arrow",
+              "mouse",
+              "chevron"
+            ],
+            "default": "arrow"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "(must): give the control an accessible name that names the destination -- an unlabelled icon-only button is announced as \"button\" with no purpose, failing WCAG 4.1.2.",
+          "pass `targetId` matching a real element id on the page. Without it the control renders but does nothing on activation.",
+          "place it once per hero, at the bottom of the first viewport, where the reader looks for the fold.",
+          "prefer `position=\"center\"` unless the hero's copy already occupies the centre."
+        ],
+        "avoidWhen": [
+          "(must): render it as a `<div>` with a click handler -- it must stay a real button so it is reachable by Tab and activates on both Enter and Space.",
+          "use it as general in-page navigation. It communicates \"there is more below\", not \"jump to section\". Use a link or `Breadcrumb` for navigation.",
+          "stack more than one on a page. Two scroll cues in one viewport contradict each other about where the reader should go next.",
+          "rely on the animation to carry meaning. It is suppressed under reduced motion, so the label and accessible name must stand alone."
+        ],
+        "requiredA11y": [
+          "Renders a real <button>, so it is focusable and activates on Enter and Space",
+          "aria-label or a visible label names the destination when no text is shown"
+        ],
+        "keyboard": [
+          "Enter: scrolls to the target section",
+          "Space: scrolls to the target section"
+        ],
+        "compositionRules": [
+          "stack more than one on a page. Two scroll cues in one viewport contradict each other about where the reader should go next."
+        ],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "(must): render it as a `<div>` with a click handler -- it must stay a real button so it is reachable by Tab and activates on both Enter and Space.",
+          "use it as general in-page navigation. It communicates \"there is more below\", not \"jump to section\". Use a link or `Breadcrumb` for navigation.",
+          "stack more than one on a page. Two scroll cues in one viewport contradict each other about where the reader should go next.",
+          "rely on the animation to carry meaning. It is suppressed under reduced motion, so the label and accessible name must stand alone."
+        ],
+        "composesWith": [
+          "Container",
+          "Section",
+          "HeroBackground",
+          "Stack"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 5,
+        "guidelines": [
+          {
+            "level": "must",
+            "guidance": "give the control an accessible name that names the destination",
+            "rationale": "an unlabelled icon-only button is announced as \"button\" with no purpose, failing WCAG 4.1.2.",
+            "rationaleSource": "explicit",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "pass `targetId` matching a real element id on the page",
+            "rationale": "Without it the control renders but does nothing on activation.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "place it once per hero, at the bottom of the first viewport, where the reader looks for the fold.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "prefer `position=\"center\"` unless the hero's copy already occupies the centre.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "must-not",
+            "guidance": "render it as a `<div>` with a click handler",
+            "rationale": "it must stay a real button so it is reachable by Tab and activates on both Enter and Space.",
+            "rationaleSource": "explicit",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it as general in-page navigation",
+            "rationale": "It communicates \"there is more below\", not \"jump to section\". Use a link or `Breadcrumb` for navigation.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "stack more than one on a page",
+            "rationale": "Two scroll cues in one viewport contradict each other about where the reader should go next.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "rely on the animation to carry meaning",
+            "rationale": "It is suppressed under reduced motion, so the label and accessible name must stand alone.",
+            "rationaleSource": "inferred",
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "reduced-motion",
+            "statement": "Positional, scale, and opacity motion is suppressed under prefers-reduced-motion.",
+            "verificationMode": "manual"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified"
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ScrollIndicator.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ScrollIndicator.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ScrollIndicator.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ScrollIndicator.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": {
+          "owner": "design-system",
+          "lastReviewed": "2026-07-21",
+          "note": "Promoted out of the bespoke/infrastructure exemption: consumed by ProjectHero, BlogHero and AboutHero, which is reusable-primitive usage rather than app infrastructure. Alpha because forced-colors and light/dark have not been verified; beta needs both plus a11y review."
+        },
+        "content": {
+          "voice": "A short imperative naming the destination, not the gesture.",
+          "capitalization": "sentence",
+          "terminology": [
+            {
+              "prefer": "See our work",
+              "over": [
+                "Scroll down",
+                "Scroll"
+              ],
+              "rationale": "Names where the user lands. The gesture is already implied by the affordance and is wrong for keyboard and AT users."
+            }
+          ],
+          "maxLength": {
+            "label": 24
+          },
+          "notes": "The label is optional. When omitted the control still needs an accessible name naming the destination."
+        }
+      }
+    },
+    {
       "name": "Section",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -37829,11 +38688,11 @@
         ],
         "composesWith": [
           "Container",
+          "ScrollIndicator",
           "Title",
           "EnhancedProjectCard",
           "BlogCategoryFilter",
-          "Pagination",
-          "EnhancedArticleCard"
+          "Pagination"
         ],
         "prefersOver": [],
         "declaredPropCount": 6,
@@ -41275,6 +42134,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -43717,6 +44581,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -44065,10 +44934,16 @@
       "usage": {
         "publicImport": "@dt/Stack",
         "importCount": 3,
-        "productionImportCount": 0,
+        "productionImportCount": 1,
         "patternImportCount": 2,
-        "componentImportCount": 1,
+        "componentImportCount": 0,
         "evidence": [
+          {
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "importKind": "relative",
+            "importPath": "@/nextjs-app/shared/components/Stack",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
             "importKind": "relative",
@@ -44080,12 +44955,6 @@
             "importKind": "relative",
             "importPath": "../../components/Stack",
             "context": "pattern"
-          },
-          {
-            "path": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
-            "importKind": "relative",
-            "importPath": "@/nextjs-app/shared/components/Stack",
-            "context": "component"
           }
         ]
       },
@@ -44710,6 +45579,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -44756,11 +45630,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -47352,6 +48221,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           }
@@ -47568,7 +48442,7 @@
           "Button",
           "Text",
           "CheckboxGroup",
-          "Modal"
+          "Checkbox"
         ],
         "prefersOver": [],
         "declaredPropCount": 8,
@@ -47796,6 +48670,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "since": "2026-06-04"
           },
           {
@@ -48241,8 +49120,8 @@
           "Button",
           "Badge",
           "TextArea",
-          "CheckboxGroup",
-          "Checkbox"
+          "Checkbox",
+          "CheckboxGroup"
         ],
         "prefersOver": [],
         "declaredPropCount": 13,
@@ -65908,6 +66787,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -66224,6 +67108,11 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "since": "2026-06-04"
           },
           {

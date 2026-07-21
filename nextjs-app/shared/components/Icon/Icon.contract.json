@@ -109,12 +109,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/error.tsx",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
+            "path": "app/error.tsx",
             "since": "2026-06-04"
         }
     ],

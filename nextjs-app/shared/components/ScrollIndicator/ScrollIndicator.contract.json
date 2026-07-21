@@ -1,0 +1,65 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "ScrollIndicator",
+    "tier": "atom",
+    "group": "navigation",
+    "status": "alpha",
+    "description": "Animated affordance at the base of a hero that scrolls to the next section.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "button",
+    "variants": {
+        "variant": {
+            "values": ["arrow", "mouse", "chevron"],
+            "default": "chevron"
+        },
+        "position": {
+            "values": ["center", "left", "right"],
+            "default": "center"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "a11y": {
+        "keyboard": [
+            "Enter: scrolls to the target section",
+            "Space: scrolls to the target section"
+        ],
+        "ariaRequirements": [
+            "Renders a real <button>, so it is focusable and activates on Enter and Space",
+            "aria-label or a visible label names the destination when no text is shown"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false,
+        "motion": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "governance": {
+        "owner": "design-system",
+        "lastReviewed": "2026-07-21",
+        "note": "Promoted out of the bespoke/infrastructure exemption: consumed by ProjectHero, BlogHero and AboutHero, which is reusable-primitive usage rather than app infrastructure. Alpha because forced-colors and light/dark have not been verified; beta needs both plus a11y review."
+    },
+    "content": {
+        "voice": "A short imperative naming the destination, not the gesture.",
+        "capitalization": "sentence",
+        "terminology": [
+            {
+                "prefer": "See our work",
+                "over": ["Scroll down", "Scroll"],
+                "rationale": "Names where the user lands. The gesture is already implied by the affordance and is wrong for keyboard and AT users."
+            }
+        ],
+        "maxLength": {
+            "label": 24
+        },
+        "notes": "The label is optional. When omitted the control still needs an accessible name naming the destination."
+    }
+}

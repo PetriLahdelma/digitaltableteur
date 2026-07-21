@@ -1,0 +1,66 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "Lightbox",
+    "tier": "organism",
+    "group": "content",
+    "status": "alpha",
+    "description": "Modal image viewer with keyboard navigation across a gallery of images.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [
+        { "name": "Backdrop", "element": "div" },
+        { "name": "Panel", "element": "div" },
+        { "name": "Image", "element": "img" },
+        { "name": "Caption", "element": "figcaption" },
+        { "name": "Counter", "element": "p" },
+        { "name": "Close", "element": "button" }
+    ],
+    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "a11y": {
+        "keyboard": [
+            "Escape: closes the lightbox",
+            "ArrowRight: advances to the next image",
+            "ArrowLeft: returns to the previous image",
+            "Tab: cycles focus within the panel while open"
+        ],
+        "ariaRequirements": [
+            "role=dialog with aria-modal=true on the panel",
+            "aria-label names the viewer and reports position in the set",
+            "Focus moves into the panel on open and returns to the trigger on close"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false,
+        "motion": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "governance": {
+        "owner": "design-system",
+        "lastReviewed": "2026-07-21",
+        "note": "Promoted out of the bespoke/infrastructure exemption: a generic image viewer consumed by ProjectGallery and others, not app infrastructure. Already DS-shaped (CSS module, @dt/Icon, portal, focus restore). Alpha because forced-colors and light/dark are unverified."
+    },
+    "content": {
+        "voice": "Captions describe the image, they do not narrate the interface.",
+        "capitalization": "sentence",
+        "terminology": [
+            {
+                "prefer": "Close",
+                "over": ["Dismiss", "Exit"],
+                "rationale": "Close is the conventional dialog dismissal label and is already translated in all three locales."
+            }
+        ],
+        "maxLength": {
+            "caption": 120
+        },
+        "notes": "Every image needs a real alt. A caption does not substitute for one: captions are visible to everyone, alt text carries the description for AT."
+    }
+}

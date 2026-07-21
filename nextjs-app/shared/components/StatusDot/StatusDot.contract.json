@@ -184,6 +184,11 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
         },
@@ -230,11 +235,6 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
             "since": "2026-06-04"
         }
     ]

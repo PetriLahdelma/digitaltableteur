@@ -8415,6 +8415,27 @@
         }
       ]
     },
+    "Lightbox": {
+      "name": "Lightbox",
+      "group": "content",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Modal image viewer with keyboard navigation across a gallery of images.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { Lightbox } from \"@dt/Lightbox\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [],
+        "spacing": []
+      },
+      "examples": []
+    },
     "Link": {
       "name": "Link",
       "group": "navigation",
@@ -12280,6 +12301,27 @@
           "--color-primary",
           "--color-border"
         ],
+        "spacing": []
+      },
+      "examples": []
+    },
+    "ScrollIndicator": {
+      "name": "ScrollIndicator",
+      "group": "navigation",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Animated affordance at the base of a hero that scrolls to the next section.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { ScrollIndicator } from \"@dt/ScrollIndicator\";",
+      "keyProps": [],
+      "props": {},
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [],
+      "usage": null,
+      "tokens": {
+        "colors": [],
         "spacing": []
       },
       "examples": []

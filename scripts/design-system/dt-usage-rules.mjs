@@ -25,7 +25,7 @@ export const DT_USAGE_SKIP_SEGMENTS = [
 export const DT_USAGE_SHADCN_ALLOWLIST_REL = new Set([
   "nextjs-app/shared/components/ui/index.ts",
   "nextjs-app/shared/components/interactive/index.ts",
-  "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+  "app/dev/tailwind-test/TailwindTest.tsx",
 ]);
 
 /** Root layout failure UI — no providers / theme CSS. */
@@ -64,4 +64,8 @@ export const DT_USAGE_ESLINT_IGNORES = [
   "**/*.test.*",
   "**/__tests__/**",
   "app/global-error.tsx",
+  // Dev-only harnesses. These exist to exercise shadcn/Tailwind surfaces directly, so
+  // the "prefer @dt/*" rule would be backwards here. Already exempt from the
+  // beta-promotion and dogfood-ratchet gates on the same grounds.
+  "app/dev/**",
 ];
