@@ -1,0 +1,7 @@
+- status: Work in progress (alpha)
+- text: Ask Donny a question
+- textbox "Ask Donny a question":
+  - /placeholder: Ask about open hours, service, or approach…
+  - text: Hello, how can I help?
+- button "Send message": Send
+- paragraph: Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.

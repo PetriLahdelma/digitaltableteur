@@ -66,6 +66,7 @@ export const Interactive: Story = {
 
 /** In-context composition: the section as it sits on the pricing page. */
 export const Example: Story = {
+  tags: ["beta-matrix"],
   render: () => (
     <div style={{ maxWidth: 1120, marginInline: "auto" }}>
       <PricingCalculator />

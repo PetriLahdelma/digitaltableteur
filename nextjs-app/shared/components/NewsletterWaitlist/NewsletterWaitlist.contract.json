@@ -30,7 +30,8 @@
         "reducedMotion": true,
         "reviewed": true,
         "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-        "forcedColorsVerified": true
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [],

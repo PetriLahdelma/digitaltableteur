@@ -32,7 +32,8 @@
         "reducedMotion": true,
         "reviewed": true,
         "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. SelectableCardGroup renders a fieldset with a legend for the accessible name; each SelectableCard is a label wrapping a visually-hidden native radio (single) or checkbox (multiple) input, so keyboard, focus and form submission come from the platform. Error announces via role=alert and sets aria-invalid on the group. Selected/disabled states mirror to data-attributes for CSS + tests. Motion respects prefers-reduced-motion. Axe asserted in the colocated a11y test; forced-colors + light/dark verified on a non-6010 Storybook.",
-        "forcedColorsVerified": true
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [

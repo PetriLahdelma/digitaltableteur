@@ -4,7 +4,7 @@
  * Writes nextjs-app/shared/foundations/dist/component-agent-blocks.json
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { join, resolve, dirname } from "node:path";
+import { join, resolve, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Project, SyntaxKind } from "ts-morph";
 import {
@@ -383,11 +383,27 @@ function main() {
     specPath: string;
   }> = [];
 
+  // Walk nested directories: grouping folders like `components/animations/<Name>`
+  // sit one level deeper than the rest, and a flat readdir silently skipped them,
+  // so those components had no agent block and were invisible to every gate that
+  // iterates this file (check:doc-semantics among them). Recursing adds exactly
+  // one component today (FadeIn) and keeps the layout free to nest later.
+  //
+  // A contract still needs its own `<Name>.tsx` to qualify: props are extracted
+  // from that source. Contracts without one (SelectableCardGroup, exported from
+  // SelectableCard.tsx; NextLayoutShell, stories-only) stay out by design, not by
+  // accident.
+  function* walkComponentDirs(dir: string): Generator<string> {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (entry.isDirectory()) yield* walkComponentDirs(join(dir, entry.name));
+    }
+    yield dir;
+  }
+
   for (const base of roots) {
-    for (const directory of readdirSync(base, { withFileTypes: true })) {
-      if (!directory.isDirectory()) continue;
-      const importName = directory.name;
-      const dir = join(base, importName);
+    for (const dir of walkComponentDirs(base)) {
+      if (dir === base) continue;
+      const importName = basename(dir);
       for (const file of readdirSync(dir)) {
         if (!file.endsWith(".contract.json")) continue;
         const name = file.slice(0, -".contract.json".length);

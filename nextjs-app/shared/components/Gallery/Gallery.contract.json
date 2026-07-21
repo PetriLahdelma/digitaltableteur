@@ -32,7 +32,8 @@
         "reviewed": true,
         "forcedColorsVerified": true,
         "motion": true,
-        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [

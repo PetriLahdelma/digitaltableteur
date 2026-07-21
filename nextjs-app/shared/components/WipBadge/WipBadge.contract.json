@@ -35,7 +35,8 @@
         "reviewed": true,
         "reviewedNote": "2026-05-28 — Beta promotion: Storybook-only chrome (carries data-axe-ignore + axeTestExempt so it never gates host component contrast). role=status announcement is non-disruptive and stable lifecycle hides it entirely. Forced-colors + light/dark verified via dedicated stories.",
         "forcedColorsVerified": true,
-        "axeTestExempt": "Storybook chrome only"
+        "axeTestExempt": "Storybook chrome only",
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [

@@ -1,0 +1,3 @@
+- status: Work in progress (beta)
+- heading "Sentry Issues" [level=3]
+- alert: Failed to load Sentry data

@@ -214,60 +214,70 @@ const THEME = (process.env.DT_THEME ?? "").toLowerCase();
 const FORCED_COLORS = (process.env.DT_FORCED_COLORS ?? "").toLowerCase();
 const VIEWPORT = Number.parseInt(process.env.DT_VIEWPORT ?? "", 10);
 
-let storyPrefixToDir: Map<string, string> | null = null;
+let storyDirMap: Promise<Map<string, string>> | null = null;
 
 /**
- * Replicate Storybook's own id derivation (@storybook/csf `sanitize`). The
- * story id's kind segment is `sanitize(title)`: lowercase, every non-alphanumeric
- * run collapsed to a single "-", trimmed. It does NOT insert hyphens at camelCase
- * boundaries — so `Forms/TextArea` → `forms-textarea`, not `forms-text-area`.
- * The previous derivation split camelCase, so the prefix map never matched the
- * real story id for any camelCase-titled component and their snapshot dirs were
- * silently unresolved (dead snapshots, skipped enforcement).
+ * Map story id -> component directory, from Storybook's own index.
+ *
+ * This used to be derived by scraping `title:` out of every `*.stories.tsx`
+ * under a hard-coded root list, then re-implementing @storybook/csf's `sanitize`
+ * to turn that title back into a story-id prefix. Re-deriving what Storybook
+ * already knows was wrong in four independent ways, and every one of them failed
+ * *silently* — an unresolved dir means `captureAccessibilityTree` returns early,
+ * so the component simply had no snapshots and no enforcement, with no error:
+ *
+ *   1. `readdirSync(base)` was flat, so nested components (`components/
+ *      animations/FadeIn`) were never seen.
+ *   2. The root list omitted `templates/`, so `NextLayoutShell` was never seen —
+ *      even though tag-beta-matrix-stories.mjs *does* walk templates, so its
+ *      stories were tagged and run but never captured.
+ *   3. The contract was assumed to be `<DirName>.contract.json`, so a second
+ *      component sharing a directory (`SelectableCard/SelectableCardGroup`) was
+ *      never seen.
+ *   4. The "first `title:` containing a slash is the meta title" heuristic was
+ *      itself a fix for arg-title hijacking, and it was incomplete: NavMenuList
+ *      and SentrySummaryCard seed a checklist arg `title: "Design tokens for
+ *      spacing/colors"`, which contains a slash and wins the match, mapping the
+ *      directory under a prefix no story id can ever have.
+ *
+ * The index carries `importPath` per story, so the directory is a fact rather
+ * than an inference and all four classes disappear at once. The contract check
+ * is kept so scope is unchanged: `shared/stories/WebComponents/**` holds no
+ * contracts and stays excluded, exactly as it was under the old roots list.
  */
-function sanitizeStorybookTitle(title: string): string {
-  return title
-    .toLowerCase()
-    .replace(/[ ’–—―′¿'`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/]/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-+/, "")
-    .replace(/-+$/, "");
-}
-
-function loadStoryPrefixMap(): Map<string, string> {
-  if (storyPrefixToDir) return storyPrefixToDir;
-  storyPrefixToDir = new Map();
-  const roots = [
-    path.join(ROOT_DIR, "nextjs-app/shared/components"),
-    path.join(ROOT_DIR, "nextjs-app/shared/patterns"),
-  ];
-  const titleRe = /title:\s*["']([^"']+)["']/g;
-
-  for (const base of roots) {
-    if (!fs.existsSync(base)) continue;
-    for (const name of fs.readdirSync(base)) {
-      const dir = path.join(base, name);
-      const contractPath = path.join(dir, `${name}.contract.json`);
-      const storyPath = path.join(dir, `${name}.stories.tsx`);
-      if (!fs.existsSync(contractPath) || !fs.existsSync(storyPath)) continue;
-      const text = fs.readFileSync(storyPath, "utf8");
-      // The meta title is the story-path one ("Category/Name"). A component whose
-      // stories seed a `title:` ARG (e.g. ValueCard's defaultArgs.title "Clarity
-      // first") would otherwise hijack the first match and the snapshot dir would
-      // never resolve. Pick the first title: value shaped like a story path.
-      const metaTitle = [...text.matchAll(titleRe)]
-        .map((mt) => mt[1])
-        .find((t) => t.includes("/"));
-      if (!metaTitle) continue;
-      storyPrefixToDir.set(sanitizeStorybookTitle(metaTitle), dir);
+async function loadStoryDirMap(): Promise<Map<string, string>> {
+  if (storyDirMap) return storyDirMap;
+  storyDirMap = (async () => {
+    const target = process.env.TARGET_URL ?? "";
+    const res = await fetch(new URL("index.json", target).toString());
+    if (!res.ok) {
+      throw new Error(`Storybook index fetch failed: ${res.status} ${res.statusText}`);
     }
-  }
-  return storyPrefixToDir;
+    const index = (await res.json()) as {
+      entries?: Record<string, { importPath?: string }>;
+    };
+    const map = new Map<string, string>();
+    const dirHasContract = new Map<string, boolean>();
+
+    for (const [id, entry] of Object.entries(index.entries ?? {})) {
+      if (!entry.importPath) continue;
+      const dir = path.dirname(path.resolve(ROOT_DIR, entry.importPath));
+      let hasContract = dirHasContract.get(dir);
+      if (hasContract === undefined) {
+        hasContract =
+          fs.existsSync(dir) &&
+          fs.readdirSync(dir).some((f) => f.endsWith(".contract.json"));
+        dirHasContract.set(dir, hasContract);
+      }
+      if (hasContract) map.set(id, dir);
+    }
+    return map;
+  })();
+  return storyDirMap;
 }
 
-function componentSnapshotDir(storyId: string): string | null {
-  const prefix = storyId.split("--")[0];
-  const componentDir = loadStoryPrefixMap().get(prefix);
+async function componentSnapshotDir(storyId: string): Promise<string | null> {
+  const componentDir = (await loadStoryDirMap()).get(storyId);
   if (!componentDir) return null;
   return path.join(componentDir, "__a11y-snapshots__");
 }
@@ -308,7 +318,7 @@ async function captureAccessibilityTree(
   storyId: string,
   { betaMatrix = false }: { betaMatrix?: boolean } = {},
 ) {
-  const dir = componentSnapshotDir(storyId);
+  const dir = await componentSnapshotDir(storyId);
   if (!dir) return;
   fs.mkdirSync(dir, { recursive: true });
   const suffix = snapshotVariantSuffix();

@@ -16,6 +16,13 @@ const meta: Meta = {
     contractStatus: contract.status,
     a11y: { test: "error" },
     layout: "fullscreen",
+    // This shell renders <NextLayout>, so it inherits NextLayout's React.lazy
+    // chat toggle and the same capture race: cold page = no button, warmed page
+    // = button, so the AT snapshot flips with worker cache warmth. NextLayout
+    // already declares this wait; the shell needs it for the same reason. The
+    // race only surfaced once the snapshot-dir resolver started resolving
+    // templates/ at all — before that this component was never captured.
+    atSnapshot: { waitForSelector: "button[aria-label^=\"Chat\"]" },
     docs: {
       description: {
         component:

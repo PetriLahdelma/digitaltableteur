@@ -31,7 +31,8 @@
         "reducedMotion": true,
         "reviewed": true,
         "reviewedNote": "2026-07-14 — streaming display reviewed: only the active assistant reply uses grapheme-safe adaptive smoothing; reduced motion bypasses it and the polite message log remains aria-busy until the complete response is available.",
-        "forcedColorsVerified": true
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [],

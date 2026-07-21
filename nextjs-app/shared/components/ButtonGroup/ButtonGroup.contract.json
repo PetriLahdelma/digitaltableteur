@@ -28,7 +28,8 @@
         "reducedMotion": true,
         "reviewed": true,
         "reviewedNote": "2026-07-03 — group semantics + labelled-group asserted in unit tests; axe clean; focus ring lift verified in Storybook.",
-        "forcedColorsVerified": true
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [],

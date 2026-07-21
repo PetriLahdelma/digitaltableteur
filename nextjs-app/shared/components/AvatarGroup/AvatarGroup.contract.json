@@ -39,7 +39,8 @@
         "reducedMotion": true,
         "reviewed": true,
         "reviewedNote": "2026-07-03 — group semantics, overflow sr text asserted in unit tests; axe clean.",
-        "forcedColorsVerified": true
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true
     },
     "tokens": {
         "colors": [
