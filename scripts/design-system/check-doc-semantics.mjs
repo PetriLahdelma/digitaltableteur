@@ -19,7 +19,7 @@
  *   node scripts/design-system/check-doc-semantics.mjs --json     # machine-readable
  *   node scripts/design-system/check-doc-semantics.mjs --strict   # fail on ratchet breach
  */
-import { readFileSync, existsSync, writeFileSync } from "node:fs";
+import { readFileSync, existsSync, writeFileSync, globSync } from "node:fs";
 import { resolve, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -34,6 +34,18 @@ const UPDATE_RATCHET = process.argv.includes("--update-ratchet");
 /** Days after which a lastReviewed date is considered stale. */
 const STALE_DAYS = 180;
 
+/** Contract status per component, so the gate can tell a claim from a known gap. */
+function contractStatus() {
+  const map = new Map();
+  for (const f of globSync(join(ROOT, "nextjs-app/shared/**/*.contract.json"))) {
+    try {
+      const c = JSON.parse(readFileSync(f, "utf8"));
+      if (c.name) map.set(c.name, c.status ?? null);
+    } catch {}
+  }
+  return map;
+}
+
 function main() {
   if (!existsSync(BLOCKS)) {
     console.error("FAIL: component-agent-blocks.json missing. Run: npm run build:agent-blocks");
@@ -41,11 +53,25 @@ function main() {
   }
   const { components } = JSON.parse(readFileSync(BLOCKS, "utf8"));
   const names = Object.keys(components);
+  const status = contractStatus();
 
   const report = {
     components: names.length,
     guidelines: { total: 0, explicitLevel: 0, defaulted: 0, withRationale: 0, hardRules: 0, hardRulesMissingRationale: [] },
-    a11yCriteria: { total: 0, automated: 0, manual: 0, unverified: 0, worstOffenders: [] },
+    a11yCriteria: {
+      total: 0,
+      automated: 0,
+      manual: 0,
+      unverified: 0,
+      // The number that represents a false claim: a component asserting beta/stable
+      // readiness while carrying an accessibility requirement nothing proves. Alpha is
+      // excluded because `status: alpha` already says "not verified"; counting it twice
+      // made the gate punish the act of cataloguing a component, which is backwards.
+      unverifiedOnReady: 0,
+      unverifiedOnStable: 0,
+      unverifiedOnAlpha: 0,
+      worstOffenders: [],
+    },
     governance: { withOwner: 0, withLastReviewed: 0, stale: [], missing: [] },
     content: { withContent: 0 },
   };
@@ -80,6 +106,10 @@ function main() {
       else {
         report.a11yCriteria.unverified += 1;
         unverified += 1;
+        const st = status.get(name);
+        if (st === "beta" || st === "stable") report.a11yCriteria.unverifiedOnReady += 1;
+        if (st === "stable") report.a11yCriteria.unverifiedOnStable += 1;
+        if (st === "alpha") report.a11yCriteria.unverifiedOnAlpha += 1;
       }
     }
     if (unverified > 0) unverifiedByComponent.push({ name, unverified, total: criteria.length });
@@ -128,6 +158,9 @@ function main() {
   console.log(`  automated (named check)  ${a.automated}`);
   console.log(`  manual (human claim)     ${a.manual}`);
   console.log(`  unverified (nothing)     ${a.unverified}`);
+  console.log(`    on beta/stable         ${a.unverifiedOnReady}  <- ratcheted: claims readiness it cannot prove`);
+  console.log(`    of which stable        ${a.unverifiedOnStable}`);
+  console.log(`    on alpha               ${a.unverifiedOnAlpha}  (status already says unverified)`);
   if (a.worstOffenders.length) {
     console.log("  most unverified:");
     for (const o of a.worstOffenders.slice(0, 5)) {
@@ -151,32 +184,32 @@ function main() {
  * represents real accessibility risk, so it is the one that is allowed to fail a build.
  */
 function finish(report) {
-  const current = report.a11yCriteria.unverified;
+  const current = report.a11yCriteria.unverifiedOnReady;
 
   if (UPDATE_RATCHET) {
-    writeFileSync(RATCHET, `${JSON.stringify({ maxUnverifiedA11yCriteria: current }, null, 2)}\n`);
-    console.log(`✓ ratchet updated: maxUnverifiedA11yCriteria = ${current}`);
+    writeFileSync(RATCHET, `${JSON.stringify({ maxUnverifiedA11yCriteriaOnReady: current }, null, 2)}\n`);
+    console.log(`✓ ratchet updated: maxUnverifiedA11yCriteriaOnReady = ${current}`);
     return;
   }
 
   if (!existsSync(RATCHET)) return;
-  const { maxUnverifiedA11yCriteria: ceiling } = JSON.parse(readFileSync(RATCHET, "utf8"));
+  const { maxUnverifiedA11yCriteriaOnReady: ceiling } = JSON.parse(readFileSync(RATCHET, "utf8"));
 
   if (current > ceiling) {
     console.error(
-      `FAIL: unverified a11y criteria ${current} > ceiling ${ceiling}. ` +
-        `Verify the new requirement or record why it cannot be.`,
+      `FAIL: unverified a11y criteria on beta/stable ${current} > ceiling ${ceiling}. ` +
+        `A component claiming readiness gained a requirement nothing proves.`,
     );
     process.exit(1);
   }
   if (current < ceiling && STRICT) {
     console.error(
-      `FAIL: unverified a11y criteria dropped to ${current} (ceiling ${ceiling}). ` +
+      `FAIL: unverified a11y criteria on beta/stable dropped to ${current} (ceiling ${ceiling}). ` +
         `Lower the ceiling: node scripts/design-system/check-doc-semantics.mjs --update-ratchet`,
     );
     process.exit(1);
   }
-  console.log(`✓ unverified a11y criteria ${current} <= ceiling ${ceiling}`);
+  console.log(`✓ unverified a11y criteria on beta/stable ${current} <= ceiling ${ceiling}`);
 }
 
 main();

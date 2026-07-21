@@ -88,7 +88,6 @@ function productionConsumers(componentName) {
       const rel = relative(ROOT, file);
       if (rel.startsWith("app/dev/")) continue;
       if (rel.startsWith(ownDir)) continue;
-      if (rel.endsWith("/TailwindTest.tsx")) continue;
       const source = readFileSync(file, "utf8");
       if (importRe.test(source)) rows.push(rel);
     }

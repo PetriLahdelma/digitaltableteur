@@ -1,4 +1,4 @@
-import TailwindTest from "@/nextjs-app/shared/components/TailwindTest";
+import TailwindTest from "./TailwindTest";
 
 export default function TailwindTestPage() {
   return <TailwindTest />;

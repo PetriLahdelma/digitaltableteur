@@ -9,25 +9,27 @@
  *   1. ARTIFACTS   - graph nodes that are not components at all. The co-import scanner
  *                    captured any path segment after `components/`, so grouping
  *                    directories ("animations", "ui") became targets. Always a defect.
- *   2. UNDOCUMENTED - edges pointing at real components that have no contract and no
- *                    spec.md. The edge is true; the target is invisible to every gate.
- *                    Ratcheted, because closing it means writing documentation.
+ *   2. OUT-OF-CATALOG - edges pointing at real components that carry no contract. Most
+ *                    are deliberately exempt under docs/CATALOG-POLICY.md (app
+ *                    infrastructure, embeds, editorial forks). This gate does NOT
+ *                    re-litigate that: it reads the buckets from
+ *                    dist/non-agent-surfaces.json and only treats `catalog-gap`, the
+ *                    bucket the policy itself defines as debt, as a failure.
  *   3. ANTI-PATTERNS - `replacementFor` / `prefersOver` entries like "raw <button>".
  *                    Never entities, correct as written, and not graph edges at all.
  *
  * Usage:
  *   node scripts/design-system/check-relationship-graph.mjs
  *   node scripts/design-system/check-relationship-graph.mjs --json
- *   node scripts/design-system/check-relationship-graph.mjs --update-ratchet
  */
-import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { resolve, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { partitionRelationEntries } from "./relation-entry-lib.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const BLOCKS = join(ROOT, "nextjs-app/shared/foundations/dist/component-agent-blocks.json");
-const RATCHET = join(ROOT, "scripts/design-system/relationship-graph-ratchet.json");
+const SURFACES = join(ROOT, "nextjs-app/shared/foundations/dist/non-agent-surfaces.json");
 const BASES = [
   "nextjs-app/shared/components",
   "nextjs-app/shared/patterns",
@@ -35,7 +37,6 @@ const BASES = [
 ];
 
 const JSON_OUT = process.argv.includes("--json");
-const UPDATE = process.argv.includes("--update-ratchet");
 
 /** Real component directories, with and without contracts. */
 function componentDirs() {
@@ -94,15 +95,27 @@ function main() {
     }
   }
 
-  const undocumented = [...dirs.entries()]
-    .filter(([n, m]) => !m.hasContract && !m.hasSpec)
-    .map(([n, m]) => ({ name: n, path: m.path }));
+  // Buckets come from the catalog policy, not from a definition invented here. An
+  // earlier version of this gate counted every contract-less folder as debt, which
+  // double-counted 22 deliberately exempt surfaces as if they were oversights.
+  let buckets = new Map();
+  let catalogGap = [];
+  if (existsSync(SURFACES)) {
+    const { surfaces } = JSON.parse(readFileSync(SURFACES, "utf8"));
+    for (const s of surfaces) buckets.set(s.name, s.bucket);
+    catalogGap = surfaces.filter((s) => s.bucket === "catalog-gap").map((s) => s.name);
+  }
+  const outOfCatalog = [...dirs.entries()]
+    .filter(([n, m]) => !m.hasContract)
+    .map(([n, m]) => ({ name: n, path: m.path, bucket: buckets.get(n) ?? "unclassified" }));
 
   const report = {
     componentsOnDisk: dirs.size,
     documented: documented.size,
-    undocumented: undocumented.length,
-    undocumentedComponents: undocumented.map((u) => u.name).sort(),
+    outOfCatalog: outOfCatalog.length,
+    catalogGap: catalogGap.length,
+    catalogGapComponents: catalogGap.sort(),
+    byBucket: outOfCatalog.reduce((a, s) => ({ ...a, [s.bucket]: (a[s.bucket] ?? 0) + 1 }), {}),
     composesWithEdges: edges,
     entityReferences: entityRefCount,
     antiPatternEntries: antiPatternCount,
@@ -115,8 +128,11 @@ function main() {
   } else {
     console.log(`\nRelationship graph\n`);
     console.log(`  components on disk       ${report.componentsOnDisk}`);
-    console.log(`  documented (contract)    ${report.documented}`);
-    console.log(`  undocumented             ${report.undocumented}`);
+    console.log(`  in catalog (contract)    ${report.documented}`);
+    console.log(`  out of catalog           ${report.outOfCatalog}`);
+    for (const [b, n] of Object.entries(report.byBucket).sort((a, b2) => b2[1] - a[1])) {
+      console.log(`      ${b.padEnd(18)} ${n}${b === "catalog-gap" ? "  <- real debt" : ""}`);
+    }
     console.log(`  composesWith edges       ${report.composesWithEdges}`);
     console.log(`  entity references        ${report.entityReferences}  (replacementFor/prefersOver)`);
     console.log(`  anti-pattern entries     ${report.antiPatternEntries}  (not graph edges, correct as written)`);
@@ -124,24 +140,20 @@ function main() {
     if (artifacts.size) {
       for (const [t, n] of artifacts) console.log(`      ${t} (x${n})`);
     }
-    console.log(`  edges to undocumented    ${[...undocumentedTargets.values()].reduce((a, b) => a + b, 0)} across ${undocumentedTargets.size}`);
+    console.log(`  edges to out-of-catalog  ${[...undocumentedTargets.values()].reduce((a, b) => a + b, 0)} across ${undocumentedTargets.size}`);
     for (const [t, n] of [...undocumentedTargets.entries()].sort((a, b) => b[1] - a[1])) {
-      console.log(`      ${t} (x${n})`);
+      console.log(`      ${t} (x${n}) [${buckets.get(t) ?? "unclassified"}]`);
     }
-    if (undocumented.length) {
-      console.log(`\n  undocumented components (no contract, no spec.md):`);
-      for (const u of undocumented) console.log(`      ${u.name}`);
+    if (catalogGap.length) {
+      console.log(`\n  catalog-gap (should be cataloged, per docs/CATALOG-POLICY.md):`);
+      for (const u of catalogGap) console.log(`      ${u}`);
+    }
+    const unclassified = outOfCatalog.filter((s) => s.bucket === "unclassified");
+    if (unclassified.length) {
+      console.log(`\n  unclassified (not in non-agent-surfaces.json):`);
+      for (const u of unclassified) console.log(`      ${u.name}`);
     }
     console.log("");
-  }
-
-  if (UPDATE) {
-    writeFileSync(
-      RATCHET,
-      `${JSON.stringify({ maxUndocumentedComponents: report.undocumented }, null, 2)}\n`,
-    );
-    console.log(`✓ ratchet updated: maxUndocumentedComponents = ${report.undocumented}`);
-    return;
   }
 
   let failed = false;
@@ -155,17 +167,17 @@ function main() {
     failed = true;
   }
 
-  if (existsSync(RATCHET)) {
-    const { maxUndocumentedComponents: ceiling } = JSON.parse(readFileSync(RATCHET, "utf8"));
-    if (report.undocumented > ceiling) {
-      console.error(
-        `FAIL: ${report.undocumented} undocumented components > ceiling ${ceiling}. ` +
-          `A new component landed without a contract or spec.md.`,
-      );
-      failed = true;
-    } else if (!JSON_OUT) {
-      console.log(`✓ undocumented components ${report.undocumented} <= ceiling ${ceiling}`);
-    }
+  // catalog-gap is the policy's own debt bucket and check:catalog-coverage already
+  // holds it at zero. Repeating the assertion here keeps the graph honest without
+  // inventing a second, competing definition of "documented".
+  if (report.catalogGap > 0) {
+    console.error(
+      `FAIL: ${report.catalogGap} component(s) in the catalog-gap bucket: ` +
+        `${report.catalogGapComponents.join(", ")}. File a contract (docs/CATALOG-POLICY.md).`,
+    );
+    failed = true;
+  } else if (!JSON_OUT) {
+    console.log(`✓ catalog-gap 0 (${report.outOfCatalog} out-of-catalog surfaces, all classified)`);
   }
 
   if (failed) process.exit(1);

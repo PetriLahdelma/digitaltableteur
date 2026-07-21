@@ -54,19 +54,15 @@ const BESPOKE_OR_INFRA = new Set([
   "DashLeadList",
   "DonnyActionProvider",
   "DonnyBookingEmbed",
-  "GradientDots",
   "HelsinkiClock",
   "HeroBackground",
-  "Lightbox",
   "LogoConstruction",
   "LogoReveal",
   "MdxImage",
   "Mermaid",
   "Prose",
-  "ScrollIndicator",
   "StudioMap",
   "TableOfContents",
-  "TailwindTest",
 ]);
 
 const PAGE_LEVEL_PREFIX =
