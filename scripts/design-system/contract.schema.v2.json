@@ -301,6 +301,65 @@
                             }
                         }
                     ]
+                },
+                "criteria": {
+                    "type": "array",
+                    "description": "Testable accessibility criteria, each declaring HOW it is verified. Modelled on the DSDS `criterion` type. The sibling booleans (reviewed, forcedColorsVerified, accessibilityTreeVerified, realBrowserForcedColorsVerified, screenReaderVerified) each assert that something was checked but not by what, so a machine-verified claim and a human claim are indistinguishable once written. A criterion names its verification mode and, when automated, the npm script that proves it. Derived automatically from the sibling booleans by derive-a11y-criteria.mjs; hand-authored entries may be added for component-specific requirements.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "id",
+                            "statement",
+                            "verificationMode"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+                                "description": "Stable kebab-case identifier, unique within the component."
+                            },
+                            "statement": {
+                                "type": "string",
+                                "minLength": 10,
+                                "description": "What must hold, phrased as a testable assertion."
+                            },
+                            "verificationMode": {
+                                "enum": [
+                                    "automated",
+                                    "manual",
+                                    "unverified"
+                                ],
+                                "description": "automated: a named check proves it on every run. manual: a human asserted it once, on a date. unverified: the requirement is documented but nothing confirms it. 'unverified' is deliberately expressible so gaps are visible rather than absent."
+                            },
+                            "check": {
+                                "type": "string",
+                                "minLength": 1,
+                                "description": "The npm script or CI job that proves this criterion. Required when verificationMode is 'automated'."
+                            },
+                            "lastVerified": {
+                                "type": "string",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                                "description": "ISO date of the manual pass. Meaningful only when verificationMode is 'manual'; automated criteria are proven on every run and need no date."
+                            },
+                            "note": {
+                                "type": "string",
+                                "minLength": 1,
+                                "description": "Evidence, tooling used, or known limitation."
+                            }
+                        },
+                        "allOf": [
+                            {
+                                "if": {
+                                    "properties": {
+                                        "verificationMode": { "const": "automated" }
+                                    },
+                                    "required": ["verificationMode"]
+                                },
+                                "then": { "required": ["check"] }
+                            }
+                        ]
+                    }
                 }
             }
         },
@@ -586,6 +645,85 @@
             "type": "string",
             "minLength": 10,
             "maxLength": 200
+        },
+        "governance": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Accountability metadata. Modelled on the DSDS `governance` field: records who owns the documentation and when a human last read it end-to-end. Distinct from a11y.reviewed, which records an accessibility pass only. Staleness is surfaced (non-blocking) by check:doc-semantics.",
+            "properties": {
+                "owner": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Who is accountable for this component's documentation staying true. A person or a team handle."
+                },
+                "lastReviewed": {
+                    "type": "string",
+                    "format": "date",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "description": "ISO date (YYYY-MM-DD) a human last read the full contract + spec.md and confirmed it matches the implementation. Not set by codegen: a regenerated props block does not mean anyone re-read the intent."
+                },
+                "note": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "What the review actually covered, and anything knowingly left stale."
+                }
+            }
+        },
+        "content": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "UX-writing guidance for copy rendered by or passed into this component. Modelled on the DSDS `content` block. Exists because EN/FI/SV copy is authored per locale and the constraints (sentence case, length ceilings, terms that must not be translated) are otherwise carried only in reviewers' heads.",
+            "properties": {
+                "voice": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "How copy in this component should sound, in one or two sentences."
+                },
+                "capitalization": {
+                    "enum": [
+                        "sentence",
+                        "title",
+                        "upper",
+                        "as-authored"
+                    ],
+                    "description": "Required capitalization for labels and headings this component renders."
+                },
+                "terminology": {
+                    "type": "array",
+                    "description": "Preferred term over rejected alternatives, with the reason.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "prefer",
+                            "over"
+                        ],
+                        "properties": {
+                            "prefer": { "type": "string", "minLength": 1 },
+                            "over": {
+                                "type": "array",
+                                "minItems": 1,
+                                "items": { "type": "string", "minLength": 1 }
+                            },
+                            "rationale": { "type": "string", "minLength": 1 }
+                        }
+                    }
+                },
+                "doNotTranslate": {
+                    "type": "array",
+                    "description": "Strings that must stay in English across FI and SV (product names, code identifiers, legal terms).",
+                    "items": { "type": "string", "minLength": 1 }
+                },
+                "maxLength": {
+                    "type": "object",
+                    "additionalProperties": { "type": "integer", "minimum": 1 },
+                    "description": "Per-slot character ceilings, keyed by prop or slot name. FI and SV routinely run 20-30% longer than EN, so a ceiling that passes in EN can still overflow."
+                },
+                "notes": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
         }
     },
     "allOf": [

@@ -24,11 +24,12 @@ visual weight (primary / secondary / tertiary) and `tone` sets semantic colour
   is a URL, not a handler.
 - Do: compose destructive actions as `variant` + `tone="error"` rather than a
   bespoke variant.
-- Do: provide `accessibleName` on icon-only buttons. The dev-mode warning
-  catches missing names locally; production must not ship without one.
-- Don't: pair an icon-only button with a tooltip as the *only* accessible name
-  on mobile; tooltips don't fire on touch. Use `accessibleName` too.
-- Don't: nest a Button inside another interactive control. Buttons are terminal.
+- Do (must): provide `accessibleName` on icon-only buttons -- a control with no
+  accessible name is announced as "button" with no purpose, which fails WCAG 4.1.2.
+- Don't (must): pair an icon-only button with a tooltip as the *only* accessible
+  name -- tooltips don't fire on touch, so the name does not exist on mobile at all.
+- Don't (must): nest a Button inside another interactive control -- nested
+  interactive elements produce an ambiguous accessibility tree and swallow clicks.
 - Don't: use a Button for inline navigation in body copy. Use **Link**.
 
 ## Design notes

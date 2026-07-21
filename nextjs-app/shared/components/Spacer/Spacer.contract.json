@@ -63,8 +63,8 @@
                 "sm",
                 "md",
                 "lg",
-                "xl",
                 "xs",
+                "xl",
                 "2xl"
             ],
             "description": "Tokenized gap size."

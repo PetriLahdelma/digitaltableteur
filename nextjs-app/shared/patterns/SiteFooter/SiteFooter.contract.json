@@ -77,8 +77,8 @@
         }
     },
     "forbiddenUse": [
-        "mount more than one SiteFooter. AT users encounter two",
-        "hand-author a `<footer>` instead of using SiteFooter on a",
-        "change the Divider's margin via `className=\"my-X\"` without"
+        "mount more than one SiteFooter. AT users encounter two contentinfo landmarks and the page's IA breaks.",
+        "hand-author a `<footer>` instead of using SiteFooter on a new route. Any new route inherits the SiteFooter from `app/layout.tsx`; rolling your own bypasses the i18n, theme, and legal-link maintenance work.",
+        "change the Divider's margin via `className=\"my-X\"` without checking the cascade-layer fix in Divider.module.css. The `@layer components` wrapper is what lets `my-8` win; pre-fix this was a regression source."
     ]
 }

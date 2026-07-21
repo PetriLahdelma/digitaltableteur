@@ -19,8 +19,8 @@ route.
   role implies announcement — no extra `aria-live` is wired.
 
 ## Do / don't
-- Do: always pass a `title`. Title-less modals are a bad AT experience;
-  the user lands on "Dialog" with no context.
+- Do (must): always pass a `title` -- a title-less dialog is announced as
+  "Dialog" with no context, leaving the user no way to know what opened.
 - Do: pass `description` for supporting copy (maps to `aria-describedby`,
   shadcn `DialogDescription` parity). Prefer `description` over a lone
   `<p>` child when the body is a single sentence.
@@ -30,16 +30,16 @@ route.
 - Do: use `severity="error"` for destructive confirmations, render the
   destructive action with `tone="error"`, and pair it with a secondary
   Cancel. The dialog chrome and action must communicate the same risk.
-- Don't: nest a Modal inside another Modal. AT focus order becomes
-  ambiguous and the `inert` attribute applies once. If you need a
-  second confirmation step, swap content in place inside the existing
-  modal.
+- Don't (must): nest a Modal inside another Modal -- AT focus order becomes
+  ambiguous and the `inert` attribute applies once, so the outer dialog stays
+  reachable. If you need a second confirmation step, swap content in place
+  inside the existing modal.
 - Don't: render a Modal lazily (e.g. only mount it when `isOpen`).
   Mount it always; control via `isOpen`. Lazy mounting breaks focus
   restoration because the unmount happens before the focus restore.
-- Don't: add `aria-live` to the dialog root. The role implies
-  announcement; doubling it causes "dialog dialog" or double message
-  reads.
+- Don't (must): add `aria-live` to the dialog root -- the role already implies
+  announcement, and doubling it makes AT read "dialog dialog" or repeat the
+  message.
 
 ## Design notes
 - Tokens: surface uses `--color-surface`; overlay uses
