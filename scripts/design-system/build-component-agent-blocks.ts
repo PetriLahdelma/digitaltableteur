@@ -381,7 +381,36 @@ function main() {
     importName: string;
     contractPath: string;
     specPath: string;
+    sourcePath: string;
   }> = [];
+
+  /**
+   * Where this component's implementation actually lives.
+   *
+   * Usually `<Name>.tsx`. But a component may be exported from a sibling that carries
+   * the family (`SelectableCardGroup` lives in `SelectableCard.tsx`), and requiring
+   * `<Name>.tsx` dropped it from the output entirely. That was not a cosmetic gap: every
+   * consumer falls back to `@dt/${name}` when a block is missing, so agents were being
+   * handed `@dt/SelectableCardGroup`, a path that does not resolve. Emitting the block
+   * gives them `@dt/SelectableCard`, which does.
+   *
+   * Prop extraction is already name-keyed (`extractPropSchemasFromFile(sf, name)`,
+   * `<Name>Props`), so a sibling source needs no special handling downstream.
+   */
+  function resolveSourcePath(dir: string, name: string): string | null {
+    const own = join(dir, `${name}.tsx`);
+    if (existsSync(own)) return own;
+    const exportRe = new RegExp(`export\\s+(?:const|function|class)\\s+${name}\\b`);
+    for (const file of readdirSync(dir)) {
+      if (!file.endsWith(".tsx")) continue;
+      if (file.endsWith(".stories.tsx") || file.endsWith(".test.tsx")) continue;
+      if (exportRe.test(readFileSync(join(dir, file), "utf8"))) return join(dir, file);
+    }
+    // No implementation at all (a stories-only surface such as NextLayoutShell). It is
+    // not importable, so it does not belong in a file about what agents can import.
+    // check:doc-semantics reads contracts directly and still gates its a11y claims.
+    return null;
+  }
 
   // Walk nested directories: grouping folders like `components/animations/<Name>`
   // sit one level deeper than the rest, and a flat readdir silently skipped them,
@@ -408,15 +437,16 @@ function main() {
         if (!file.endsWith(".contract.json")) continue;
         const name = file.slice(0, -".contract.json".length);
         const contractPath = join(dir, file);
-        const tsxPath = join(dir, `${name}.tsx`);
-        if (!existsSync(tsxPath)) continue;
-        tsxPaths.push(tsxPath);
+        const sourcePath = resolveSourcePath(dir, name);
+        if (!sourcePath) continue;
+        tsxPaths.push(sourcePath);
         meta.push({
           name,
           dir,
           importName,
           contractPath,
           specPath: join(dir, `${name}.spec.md`),
+          sourcePath,
         });
       }
     }
@@ -431,13 +461,13 @@ function main() {
   const blocks: Record<string, object> = {};
 
   for (const entry of meta) {
-    const tsxPath = join(entry.dir, `${entry.name}.tsx`);
+    const tsxPath = entry.sourcePath;
     const sf = project.getSourceFile(tsxPath);
     if (!sf) continue;
 
     const contract = JSON.parse(readFileSync(entry.contractPath, "utf8"));
     const spec = existsSync(entry.specPath) ? readFileSync(entry.specPath, "utf8") : null;
-    const extracted = extractComponentFromSourceFile(sf, tsxPath);
+    const extracted = extractComponentFromSourceFile(sf, tsxPath, entry.name);
     const props = extractPropSchemasFromFile(sf, entry.name);
     const propsName = `${entry.name}Props`;
     const propsDecl =
@@ -455,6 +485,12 @@ function main() {
       ariaRequirements?: string[];
       keyboard?: string[];
     };
+    // Name the file when props came from a sibling rather than `<Name>.tsx`, so the
+    // provenance does not imply a source file that does not exist.
+    const astFrom =
+      basename(tsxPath) === `${entry.name}.tsx`
+        ? "TypeScript AST"
+        : `TypeScript AST (${basename(tsxPath)})`;
 
     blocks[entry.name] = {
       preferredImport: `@dt/${entry.importName}`,
@@ -491,12 +527,12 @@ function main() {
        * generated. Without this the two are indistinguishable in the output.
        */
       docOrigin: {
-        props: { origin: "generated", authorship: "machine-generated", from: "TypeScript AST" },
-        variants: { origin: "generated", authorship: "machine-generated", from: "TypeScript AST" },
-        cvaVariants: { origin: "generated", authorship: "machine-generated", from: "TypeScript AST" },
-        propRelationships: { origin: "generated", authorship: "machine-generated", from: "TypeScript AST" },
+        props: { origin: "generated", authorship: "machine-generated", from: astFrom },
+        variants: { origin: "generated", authorship: "machine-generated", from: astFrom },
+        cvaVariants: { origin: "generated", authorship: "machine-generated", from: astFrom },
+        propRelationships: { origin: "generated", authorship: "machine-generated", from: astFrom },
         canonicalExamples: { origin: "generated", authorship: "machine-generated", from: "stories.tsx" },
-        declaredPropCount: { origin: "generated", authorship: "machine-generated", from: "TypeScript AST" },
+        declaredPropCount: { origin: "generated", authorship: "machine-generated", from: astFrom },
         intent: { origin: "authored", authorship: "human-authored", from: `${entry.name}.spec.md` },
         useWhen: { origin: "authored", authorship: "human-authored", from: `${entry.name}.spec.md` },
         avoidWhen: { origin: "authored", authorship: "human-authored", from: `${entry.name}.spec.md` },

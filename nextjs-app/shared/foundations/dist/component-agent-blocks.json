@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T12:27:27.995Z",
+  "generatedAt": "2026-07-21T13:05:23.064Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -21837,6 +21837,246 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "SelectableCard.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
+    "SelectableCardGroup": {
+      "preferredImport": "@dt/SelectableCard",
+      "intent": "Selection owner for a set of SelectableCard options, with native fieldset semantics, controlled or uncontrolled state, and single or multiple selection.",
+      "props": {
+        "type": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "single",
+            "multiple"
+          ],
+          "description": "Selection model — single is an exclusive set (radio), multiple toggles independently (checkbox)."
+        },
+        "legend": {
+          "optional": false,
+          "type": "string",
+          "description": "Group label rendered as the fieldset legend (required for an accessible name)."
+        },
+        "name": {
+          "optional": true,
+          "type": "string",
+          "description": "Native radio group name shared by the set (single); auto-generated when omitted."
+        },
+        "value": {
+          "optional": true,
+          "type": "string | string[]",
+          "description": "Controlled selection: `string` for single, `string[]` for multiple. `\"\"` / `[]` treated as absent (uncontrolled)."
+        },
+        "defaultValue": {
+          "optional": true,
+          "type": "string | string[]",
+          "description": "Initial selection when uncontrolled."
+        },
+        "onValueChange": {
+          "optional": true,
+          "type": "(value: string | string[]) => void",
+          "description": "Fired with the next selection — a `string` for single, a `string[]` for multiple."
+        },
+        "orientation": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "description": "Stack direction."
+        },
+        "disabled": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Disables the whole set; per-card disabled still keeps individual choices visible."
+        },
+        "error": {
+          "optional": true,
+          "type": "string",
+          "description": "Error message; announces via role=alert and sets aria-invalid."
+        },
+        "helperText": {
+          "optional": true,
+          "type": "string",
+          "description": "Helper copy below the group; suppressed while error is set."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Merged onto the fieldset."
+        },
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode",
+          "description": "SelectableCard children."
+        }
+      },
+      "propRelationships": [],
+      "variants": {
+        "type": {
+          "values": [
+            "single",
+            "multiple"
+          ],
+          "default": "single"
+        },
+        "orientation": {
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [],
+      "avoidWhen": [],
+      "requiredA11y": [
+        "The fieldset has a visible legend",
+        "Helper and error messages are referenced by aria-describedby",
+        "An error sets aria-invalid and is announced through HelperText"
+      ],
+      "keyboard": [
+        "Tab moves focus into the option set",
+        "Arrow keys move between native radios in a single-select set",
+        "Space selects or toggles the focused option"
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 12,
+      "guidelines": [],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-16: reviewed the fieldset/legend structure, native radio and checkbox keyboard behavior, disabled propagation, helper/error relationships, and forced-colors story while adding independent React and web-component documentation."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST (SelectableCard.tsx)"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST (SelectableCard.tsx)"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST (SelectableCard.tsx)"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST (SelectableCard.tsx)"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST (SelectableCard.tsx)"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "SelectableCardGroup.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "SelectableCardGroup.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "SelectableCardGroup.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "SelectableCardGroup.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",
