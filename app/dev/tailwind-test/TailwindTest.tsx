@@ -34,23 +34,23 @@ import {
   TextReveal,
   Parallax,
 } from "@/nextjs-app/shared/components/animations";
-import { Container } from "@/nextjs-app/shared/components/Container";
-import { Stack } from "@/nextjs-app/shared/components/Stack";
-import { Center } from "@/nextjs-app/shared/components/Center";
-import { AspectRatio } from "@/nextjs-app/shared/components/AspectRatio";
 import {
+  AspectRatio,
+  Badge,
+  Center,
+  Checkbox,
+  Container,
   Divider,
-  IconButton,
-  Prose,
   FormField,
-} from "@/nextjs-app/shared/components/ui";
-import Badge from "@dt/Badge";
-import Checkbox from "@dt/Checkbox";
-import Link from "@dt/Link";
-import { useToast } from "@/nextjs-app/shared/lib/toast";
+  IconButton,
+  Link,
+  NavLink,
+  Stack,
+  useToast,
+} from "@digitaltableteur/react";
+import { Prose } from "@/nextjs-app/shared/components/ui";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
 import { ArrowRight, Heart, Share, Star, Image as ImageIcon } from "@phosphor-icons/react";
-import { NavLink } from "@/nextjs-app/shared/patterns/navigation";
 
 /**
  * Temporary test component to verify Tailwind CSS + shadcn/ui integration.
