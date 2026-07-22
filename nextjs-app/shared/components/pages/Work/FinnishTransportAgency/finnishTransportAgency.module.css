@@ -177,7 +177,7 @@
 .teamAvatar {
   inline-size: 80px;
   block-size: 80px;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   object-fit: cover;
 }
 
@@ -187,7 +187,7 @@
   block-size: 80px;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background-color: var(--color-light-bg);
   font-family: var(--font-sans);
   font-size: var(--font-size-xl);

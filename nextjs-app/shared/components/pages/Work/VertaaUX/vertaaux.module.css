@@ -42,7 +42,7 @@
 /* Rounded image corners for specific sections */
 
 .roundedImage img {
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
 }
 
 /* Custom Meta Section - 2 column layout */
@@ -234,7 +234,7 @@
   overflow: hidden;
   justify-content: center;
   align-items: center;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-xl);
   padding: clamp(1rem, 4vi, var(--space-layout-48));
 }
 
@@ -335,7 +335,7 @@
   min-block-size: 140px;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-xl);
   aspect-ratio: 4 / 3;
 }
 
@@ -590,7 +590,7 @@
   inline-size: 100%;
   block-size: auto;
   border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-xl);
 }
 
 .brandCaption {

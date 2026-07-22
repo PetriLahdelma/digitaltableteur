@@ -515,7 +515,7 @@
   inline-size: 100%;
   block-size: auto;
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 24px rgb(0 0 0 / 10%);
+  box-shadow: var(--shadow-lg);
 }
 
 .ogImageCaption {

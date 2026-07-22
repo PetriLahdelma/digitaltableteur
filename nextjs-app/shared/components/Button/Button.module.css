@@ -320,7 +320,7 @@
 }
 
 .button.rounded {
-  border-radius: 9999px;
+  border-radius: var(--radius-full);
 }
 
 /* Touch targets: ensure >= 44px on coarse pointers. */

@@ -154,7 +154,7 @@
 
 .underline .indicator {
   block-size: 2px;
-  border-radius: 1px;
+  border-radius: var(--radius-sm);
   background: var(--color-primary);
   inset-block-end: -1px; /* sit on the 1px rail */
 }
@@ -188,7 +188,7 @@
   min-inline-size: 1.5em;
   justify-content: center;
   align-items: center;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: color-mix(in srgb, var(--color-muted) 18%, transparent);
   font-size: 0.78em;
   font-weight: 600;

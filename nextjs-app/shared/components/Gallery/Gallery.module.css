@@ -19,7 +19,7 @@
   border-radius: 0;
   outline: none;
   background: var(--color-light-bg);
-  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
+  box-shadow: var(--shadow-sm);
   transition: box-shadow 0.2s;
   overflow: hidden;
 }
@@ -61,8 +61,8 @@
   pointer-events: none;
   transition: opacity 0.2s;
   opacity: 0;
-  border-end-end-radius: 16px;
-  border-end-start-radius: 16px;
+  border-end-end-radius: var(--radius-xl);
+  border-end-start-radius: var(--radius-xl);
   inset-block-end: 0;
 }
 
@@ -92,16 +92,16 @@
   }
 
   .item {
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
   }
 
   .image {
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
   }
 
   .caption {
     font-size: 0.95rem;
-    border-end-end-radius: 8px;
-    border-end-start-radius: 8px;
+    border-end-end-radius: var(--radius-lg);
+    border-end-start-radius: var(--radius-lg);
   }
 }

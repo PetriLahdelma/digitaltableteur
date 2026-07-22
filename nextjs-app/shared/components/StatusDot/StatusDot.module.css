@@ -10,7 +10,7 @@
   block-size: 0.5em;
   inline-size: 0.5em;
   flex: none;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background-color: currentcolor;
 }
 

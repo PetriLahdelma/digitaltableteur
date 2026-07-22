@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-22T15:51:05.967Z",
+  "generatedAt": "2026-07-22T18:05:01.761Z",
   "summary": {
     "componentCount": 166,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 90.2,
     "codebaseComponentCount": 184,
     "usageCoveragePercent": 93.4,
-    "componentsWithProductionUsage": 36,
+    "componentsWithProductionUsage": 35,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -25,8 +25,8 @@
   },
   "tokens": {
     "source": "nextjs-app/shared/styles/variables.css",
-    "tokenCount": 192,
-    "usageCoverage": 156,
+    "tokenCount": 198,
+    "usageCoverage": 158,
     "catalogPath": "nextjs-app/shared/foundations/token-catalog.json",
     "dtcgExport": "nextjs-app/shared/foundations/tokens/production/",
     "tailwindBridge": "app/tailwind.css (DT-THEME block)",
@@ -79,11 +79,11 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 166,
     "withAnyUsage": 155,
-    "withProductionUsage": 36,
+    "withProductionUsage": 35,
     "uniqueImportedComponents": 155,
-    "totalEvidenceRows": 768,
+    "totalEvidenceRows": 767,
     "aliasImportFiles": 392,
-    "relativeImportFiles": 409,
+    "relativeImportFiles": 408,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -2727,17 +2727,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Author",
-        "importCount": 2,
-        "productionImportCount": 1,
+        "importCount": 1,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "app/blog/[slug]/ServerArticleHero.tsx",
-            "importKind": "relative",
-            "importPath": "@/nextjs-app/shared/components/Author/Author",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",

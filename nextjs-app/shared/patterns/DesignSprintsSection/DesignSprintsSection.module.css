@@ -68,7 +68,7 @@
   block-size: 2rem;
   justify-content: center;
   align-items: center;
-  border-radius: 9999px;
+  border-radius: var(--radius-full);
   background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
   color: var(--color-primary);
 }

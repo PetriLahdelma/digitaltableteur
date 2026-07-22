@@ -10,7 +10,7 @@
       color-mix(in srgb, var(--color-primary) 8%, transparent)
     ),
     var(--main-body-background-color);
-  box-shadow: 0 20px 60px rgb(0 0 0 / 12%);
+  box-shadow: var(--shadow-xl);
   overflow: hidden;
 }
 
@@ -49,7 +49,7 @@
   display: inline-flex;
   inline-size: 12px;
   block-size: 12px;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   box-shadow: inset 0 0 0 1px var(--mac-bezel);
 }
 

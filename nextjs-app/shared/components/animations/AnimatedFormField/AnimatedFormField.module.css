@@ -9,7 +9,7 @@
   inset-inline: 0;
   inset-block-end: 0;
   block-size: 2px;
-  border-radius: 1px;
+  border-radius: var(--radius-sm);
   background: var(--color-primary);
   pointer-events: none;
   transform-origin: center center;

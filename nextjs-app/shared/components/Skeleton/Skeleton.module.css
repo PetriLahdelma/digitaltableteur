@@ -1,7 +1,7 @@
 .root {
   display: block;
   position: relative;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
 
   --skeleton-base: var(--color-muted);
   --skeleton-highlight: var(--skeleton-base);
@@ -77,7 +77,7 @@
 
 .text .line {
   block-size: 0.75rem;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   background: linear-gradient(
     90deg,
     var(--skeleton-base) 25%,
@@ -110,13 +110,13 @@
 .circle {
   inline-size: 48px;
   block-size: 48px;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
 }
 
 .avatar {
   inline-size: 64px;
   block-size: 64px;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
 }
 
 .rect {
@@ -127,5 +127,5 @@
 .card {
   inline-size: 100%;
   block-size: 180px;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
 }

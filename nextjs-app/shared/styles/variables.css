@@ -214,18 +214,31 @@
 
   /* Component overlay tokens */
   --modal-overlay-bg: rgb(0 0 0 / 50%);
-  --modal-shadow: 0 4px 8px rgb(0 0 0 / 20%);
   --gallery-caption-bg: rgb(0 0 0 / 55%);
 
-  /* Border radius */
+  /* Elevation ramp — the single source of truth for drop shadows.
+     Focus rings and inset hairlines are NOT elevation and are excluded.
+     Dark-theme + forced-colors overrides live in their respective blocks. */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 6%); /* resting: inputs, subtle cards */
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 10%); /* raised: cards, hover states */
+  --shadow-lg: 0 12px 32px rgb(0 0 0 / 12%); /* overlay: menus, popovers */
+  --shadow-xl: 0 24px 60px rgb(0 0 0 / 16%); /* modal: dialogs, sheets */
+  --modal-shadow: var(--shadow-xl); /* back-compat alias -> highest elevation */
 
+  /* Border radius — tight 4-step scale + full (pill) + circle.
+     Corners are in px so they do not scale with root font-size. */
   --radius-sm: 2px;
-  --radius-md: 0.25rem;
+  --radius-md: 4px;
   --radius-lg: 8px;
+  --radius-xl: 16px;
 
   /* Pill / full radius: clamps to half the smaller dimension, so ends stay
      fully rounded at any height (progress tracks, pills, toggles). */
   --radius-full: 9999px;
+
+  /* Circle: for square elements only (avatars, dots). Distinct from full:
+     50% is a true circle on a square; 9999px is a stadium on a rectangle. */
+  --radius-circle: 50%;
 
   /* Sizing */
 
@@ -371,6 +384,11 @@
 .themeDark :root {
   color-scheme: dark;
 
+  /* Elevation on dark surfaces needs heavier alpha to remain perceptible. */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 24%);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 32%);
+  --shadow-lg: 0 12px 32px rgb(0 0 0 / 40%);
+  --shadow-xl: 0 24px 60px rgb(0 0 0 / 48%);
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
   --main-body-background-color: #181a1b;
@@ -685,6 +703,10 @@
     --logo-text-color: CanvasText;
     --focus-ring-color: Highlight;
     --modal-overlay-bg: Canvas;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --shadow-xl: none;
     --modal-shadow: none;
     --color-success: CanvasText;
     --color-error: CanvasText;

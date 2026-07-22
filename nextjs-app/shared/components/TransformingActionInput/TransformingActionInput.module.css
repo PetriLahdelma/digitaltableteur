@@ -6,7 +6,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--main-body-background-color);
-  box-shadow: 0 10px 30px rgb(0 0 0 / 8%);
+  box-shadow: var(--shadow-lg);
 }
 
 .metaRow {

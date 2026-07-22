@@ -139,7 +139,7 @@
 }
 
 .article img:not([class*="avatar"]) {
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
 }
 
 .article img + figcaption {

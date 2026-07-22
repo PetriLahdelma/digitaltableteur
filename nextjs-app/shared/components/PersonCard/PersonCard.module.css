@@ -14,7 +14,7 @@
   margin-block: auto;
   block-size: clamp(96px, 18vi, 96px);
   inline-size: clamp(96px, 18vi, 96px);
-  border-radius: 100rem;
+  border-radius: var(--radius-full);
   aspect-ratio: 1;
   clip-path: inset(2px round 50%);
   object-fit: cover;

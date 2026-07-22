@@ -16,7 +16,7 @@
       }
     },
     "shadow": {
-      "$value": "0 4px 8px rgb(0 0 0 / 20%)",
+      "$value": "var(--shadow-xl)",
       "$description": "Overlay or elevation token.",
       "$type": "shadow",
       "$extensions": {

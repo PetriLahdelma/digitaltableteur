@@ -95,9 +95,9 @@
 .previewCard {
   position: relative;
   padding: var(--space-internal-24);
-  border-radius: 16px;
+  border-radius: var(--radius-xl);
   background-color: var(--esg-surface);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
+  box-shadow: var(--shadow-sm);
 }
 
 /*
@@ -114,7 +114,7 @@
   --esg-preview-bullet: #d1d5db;
 
   padding: var(--space-internal-16);
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   transition:
     background-color var(--duration-normal) ease,
     color var(--duration-normal) ease;
@@ -138,7 +138,7 @@
 
 .logo {
   display: block;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
 }
 
 .signatureName {
@@ -188,7 +188,7 @@
   position: absolute;
   padding: 4px;
   gap: 2px;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   background-color: var(--esg-surface-dim);
   inset-block-start: var(--space-internal-16);
   inset-inline-end: var(--space-internal-16);
@@ -202,7 +202,7 @@
   justify-content: center;
   align-items: center;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-lg);
   background: transparent;
   color: var(--esg-text-faint);
   cursor: pointer;
@@ -217,7 +217,7 @@
 
 .themeToggleButton.active {
   background-color: var(--esg-toggle-active-bg);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+  box-shadow: var(--shadow-sm);
   color: var(--esg-ink);
 }
 
@@ -242,7 +242,7 @@
 
 .copyButton {
   padding-block: var(--space-internal-16) !important;
-  border-radius: 100px !important;
+  border-radius: var(--radius-full) !important;
   background-color: var(--esg-button-bg) !important;
   font-weight: 500 !important;
   color: var(--esg-button-fg) !important;
@@ -255,7 +255,7 @@
 .importButton {
   padding-block: var(--space-internal-16) !important;
   border: 1px solid var(--esg-import-border) !important;
-  border-radius: 100px !important;
+  border-radius: var(--radius-full) !important;
   background-color: transparent !important;
   font-weight: 500 !important;
   color: var(--esg-ink) !important;
@@ -290,7 +290,7 @@
 }
 
 .backLinkAnchor:focus-visible {
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   outline: 2px solid var(--esg-ink);
   outline-offset: 2px;
 }

@@ -85,7 +85,7 @@
 .phone-input :global(.PhoneInputCountryIcon) {
   inline-size: 24px;
   block-size: 18px;
-  box-shadow: 0 0 2px rgb(0 0 0 / 10%);
+  box-shadow: var(--shadow-sm);
   margin-inline-end: 0.5rem;
 }
 

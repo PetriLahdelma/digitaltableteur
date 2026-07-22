@@ -44,7 +44,7 @@
   gap: 0.75rem;
   border: 1px solid
     color-mix(in srgb, var(--color-warning) 45%, transparent);
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   background: color-mix(
     in srgb,
     var(--color-warning) 12%,
@@ -76,7 +76,7 @@
   flex-direction: column;
   gap: 0.75rem;
   border: 1px solid rgb(148 163 184 / 20%);
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   background: var(--color-white);
   box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
 }
@@ -127,7 +127,7 @@
   position: relative;
   block-size: 0.55rem;
   inline-size: 100%;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: color-mix(
     in srgb,
     var(--color-primary) 12%,
@@ -154,7 +154,7 @@
   position: absolute;
   inset-block: -0.35rem;
   inline-size: 2px;
-  border-radius: 1px;
+  border-radius: var(--radius-sm);
   background: color-mix(in srgb, var(--color-warning) 70%, #fff 0%);
   transform: translateX(-1px);
 }
@@ -193,7 +193,7 @@
   flex-direction: column;
   gap: 1rem;
   border: 1px solid rgb(148 163 184 / 20%);
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   background: var(--color-white);
   box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
 }
@@ -219,7 +219,7 @@
   flex-direction: column;
   gap: 1.5rem;
   border: 1px solid rgb(148 163 184 / 20%);
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   background: var(--color-white);
   box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
 }
@@ -260,7 +260,7 @@
   flex-direction: column;
   gap: 1rem;
   border: 1px solid rgb(148 163 184 / 20%);
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   background: var(--color-light-bg-alt, #f8fafc);
 }
 
@@ -283,7 +283,7 @@
 .diffFigure img {
   inline-size: 100%;
   border: 1px solid rgb(148 163 184 / 25%);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   box-shadow: 0 6px 16px rgb(15 23 42 / 8%);
 }
 
@@ -301,7 +301,7 @@
   align-items: center;
   gap: 0.5rem;
   border: 2px dashed var(--color-primary);
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   background: transparent;
   text-align: center;
 }

@@ -173,7 +173,7 @@
   justify-content: center;
   inline-size: 1.75rem;
   block-size: 1.75rem;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
 }
 
 .comparisonIconUs {

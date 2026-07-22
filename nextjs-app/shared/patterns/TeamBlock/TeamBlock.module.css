@@ -181,7 +181,7 @@
 /* Round image variant */
 
 .roundImage {
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
 }
 
 /* Member name */
