@@ -15,7 +15,6 @@ import { AnimationProvider } from "../providers/AnimationProvider";
 import { NextLinkProvider } from "../providers/NextLinkProvider";
 import { NextImageProvider } from "../providers/NextImageProvider";
 import { NextNavigationProvider } from "../providers/NextNavigationProvider";
-import { SmoothScrollProvider } from "../providers/SmoothScrollProvider";
 import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent";
 import { NextLayout } from "@dt/NextLayout";
 import { WebMcpProvider } from "../providers/WebMcpProvider";
@@ -162,7 +161,6 @@ export default function RootLayout({
                   <I18nProvider>
                     <HtmlLangSync />
                     <AnimationProvider>
-                      <SmoothScrollProvider>
                         <ToastProvider>
                           <CookieConsentProvider autoShow={true}>
                             <DeferredAnalytics
@@ -171,7 +169,6 @@ export default function RootLayout({
                             <NextLayout>{children}</NextLayout>
                           </CookieConsentProvider>
                         </ToastProvider>
-                      </SmoothScrollProvider>
                     </AnimationProvider>
                   </I18nProvider>
                 </NextNavigationProvider>
