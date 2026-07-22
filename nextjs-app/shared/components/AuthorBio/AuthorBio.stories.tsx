@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import AuthorBio from "@dt/AuthorBio";
 import { getAuthors } from "../../data/authors";
+import peteVaultBoy from "../../assets/images/pete-vault-boy.jpg";
 
 const meta: Meta<typeof AuthorBio> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
@@ -53,7 +54,7 @@ export const WithContact: Story = {
 export const CustomAuthor: Story = {
   args: {
     name: "Jane Doe",
-    imageUrl: "https://via.placeholder.com/150",
+    imageUrl: peteVaultBoy,
     role: "Design Lead",
     bio: "Jane leads design systems work at Example Co.\n\nShe writes about **component APIs** and accessibility.",
     email: "jane@example.com",

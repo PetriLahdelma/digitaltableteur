@@ -54,7 +54,7 @@ export const Fallback: Story = {
 export const LinkAndImage: Story = {
   args: {
     content:
-      "Here is a [link](https://example.com) and an image placeholder!\n\n![Alt text](https://via.placeholder.com/100)",
+      "Here is a [link](https://example.com) and an image placeholder!\n\n![Alt text](/images/authors/petri-lahdelma.jpg)",
   },
 };
 

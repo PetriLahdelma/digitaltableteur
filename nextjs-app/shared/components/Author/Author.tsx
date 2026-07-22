@@ -7,11 +7,14 @@ import Avatar, { type AvatarSize } from "@dt/Avatar";
 import styles from "./Author.module.css";
 
 export interface AuthorProps {
-  /** Author name shown after the byline prefix. */
+  /** Author name shown after the byline prefix; also names the avatar and
+   * feeds its initials fallback. */
   name: string;
-  /** Avatar image source: a URL, an imported asset path, or static image data. */
-  imageUrl: string | { default: string } | StaticImageData;
-  /** Avatar size. @default "2.5rem" */
+  /** Avatar image source: a URL, an imported asset path, or static image data.
+   * When absent the avatar falls back to initials from `name`. */
+  imageUrl?: string | { default: string } | StaticImageData;
+  /** Avatar size, exposed from the Avatar atom: token sizes `sm`/`md`/`lg`/`xl`
+   * are canonical; any CSS length is accepted. @default "md" */
   size?: AvatarSize;
   /** Optional author profile URL; makes the byline text a link. */
   profileUrl?: string;
@@ -28,7 +31,7 @@ export interface AuthorProps {
 export const Author: React.FC<AuthorProps> = ({
   name,
   imageUrl,
-  size = "2.5rem",
+  size = "md",
   profileUrl,
   bylinePrefix,
 }) => {
@@ -40,7 +43,7 @@ export const Author: React.FC<AuthorProps> = ({
 
   return (
     <div className={styles.authorContainer}>
-      <Avatar imageUrl={imageUrl} size={size} />
+      <Avatar imageUrl={imageUrl} name={name} size={size} />
       <p className={styles.author}>
         {profileUrl ? (
           <a className={styles.authorLink} href={profileUrl}>

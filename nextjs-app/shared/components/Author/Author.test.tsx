@@ -9,17 +9,32 @@ describe("Author", () => {
     expect(screen.getByText("By John Doe")).toBeInTheDocument();
   });
 
-  it("renders with default size", () => {
+  it("names the avatar after the author", () => {
     render(<Author name="John Doe" imageUrl="/test-image.jpg" />);
-    // Check if Avatar component is rendered (by checking for img element)
-    const avatarImg = screen.getByRole("img");
+    const avatarImg = screen.getByRole("img", { name: "John Doe" });
     expect(avatarImg).toBeInTheDocument();
   });
 
-  it("renders with custom size", () => {
-    render(<Author name="John Doe" imageUrl="/test-image.jpg" size="32px" />);
-    const avatarImg = screen.getByRole("img");
-    expect(avatarImg).toBeInTheDocument();
+  it("falls back to avatar initials when imageUrl is absent", () => {
+    const { container } = render(<Author name="John Doe" />);
+    expect(container.querySelector("img")).toBeNull();
+    expect(screen.getByText("JD")).toBeInTheDocument();
+  });
+
+  it("passes Avatar token sizes through", () => {
+    const { container } = render(
+      <Author name="John Doe" imageUrl="/test-image.jpg" size="sm" />,
+    );
+    const avatarImg = container.querySelector("img");
+    expect(avatarImg?.getAttribute("style")).toContain("--avatar-size: 2rem");
+  });
+
+  it("renders with custom CSS-length size", () => {
+    const { container } = render(
+      <Author name="John Doe" imageUrl="/test-image.jpg" size="32px" />,
+    );
+    const avatarImg = container.querySelector("img");
+    expect(avatarImg?.getAttribute("style")).toContain("--avatar-size: 32px");
   });
 
   it("handles imageUrl as object", () => {

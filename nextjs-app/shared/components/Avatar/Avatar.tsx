@@ -13,6 +13,10 @@ export interface AvatarMenuItem {
 }
 
 export type AvatarSize =
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
   | "2rem"
   | "2.5rem"
   | "3rem"
@@ -22,6 +26,16 @@ export type AvatarSize =
   | "7rem"
   | "8rem"
   | string;
+
+/** Canonical token sizes (platinum sizing convention); aligned with
+ * AvatarGroup: sm=2rem, md=2.5rem, lg=3rem, plus xl=4rem for bio/hero use.
+ * Raw CSS lengths remain accepted — the rem union is published package API. */
+const AVATAR_SIZE_TOKENS: Record<string, string> = {
+  sm: "2rem",
+  md: "2.5rem",
+  lg: "3rem",
+  xl: "4rem",
+};
 
 /**
  * Avatar component displays user profile images or initials with optional dropdown menu.
@@ -38,6 +52,8 @@ export interface AvatarProps {
   imageUrl?: string | { default: string } | StaticImageData;
   clickable?: boolean;
   destinationUrl?: string;
+  /** Avatar size: token sizes `sm`/`md`/`lg`/`xl` (2/2.5/3/4rem) are
+   * canonical; any CSS length is accepted as an escape hatch. Default `md`. */
   size?: AvatarSize;
   srcSet?: string;
   sizes?: string;
@@ -93,7 +109,10 @@ const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>(
     const resolvedSrcSet =
       srcSet || (resolvedImageUrl ? `${resolvedImageUrl} 1x` : undefined);
     const defaultSizes = "(max-width: 600px) 56px, 40px";
-    const resolvedSizes = sizes || (size ? `${size}` : defaultSizes);
+    // Token sizes resolve to CSS lengths before touching the DOM — the img
+    // `sizes` attribute and --avatar-size both need a real length, not "sm".
+    const sizeLength = size ? (AVATAR_SIZE_TOKENS[size] ?? size) : undefined;
+    const resolvedSizes = sizes || (sizeLength ? `${sizeLength}` : defaultSizes);
 
     const handleClick = () => {
       if (clickable && destinationUrl) {
@@ -101,7 +120,7 @@ const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>(
       }
     };
 
-    const resolvedSize = size ?? "2.5rem";
+    const resolvedSize = sizeLength ?? "2.5rem";
     const avatarStyle = {
       "--avatar-size": resolvedSize,
     } as React.CSSProperties;

@@ -56,7 +56,7 @@ export const CustomBranding: Story = {
   args: {
     companyName: "Acme Corp",
     companyUrl: "https://acme.example.com",
-    logoUrl: "https://via.placeholder.com/48x48/3b82f6/ffffff?text=AC",
+    logoUrl: "/logo192.png",
   },
 };
 
