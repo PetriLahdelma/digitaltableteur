@@ -45,7 +45,7 @@ export function ColophonPage() {
             <span className={styles.statLabel}>Published blog posts</span>
           </div>
           <div className={styles.stat}>
-            <span className={styles.statNumber}>350+</span>
+            <span className={styles.statNumber}>198</span>
             <span className={styles.statLabel}>Design tokens</span>
           </div>
           <div className={styles.stat}>
@@ -158,9 +158,12 @@ export function ColophonPage() {
           <div className={styles.card}>
             <p className={styles.cardLabel}>Tokens</p>
             <p className={styles.cardValue}>
-              350+ CSS custom properties for typography, color, spacing, grid,
-              motion, and radius. Defined in CSS and consumed by CSS Modules.
-              Enforced by Stylelint and Rhythmguard.
+              198 design tokens for typography, color, spacing, grid, motion,
+              radius, and a four-step elevation ramp — 469 declarations once
+              redefined across all four themes. Exported to DTCG JSON. Enforced
+              by Stylelint, Rhythmguard, and codemod gates (
+              <code className={styles.inlineCode}>check:tokens</code>,{" "}
+              <code className={styles.inlineCode}>check:radius-shadow</code>).
             </p>
           </div>
           <div className={styles.card}>
