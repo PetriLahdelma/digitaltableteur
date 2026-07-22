@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-22T15:01:38.206Z",
+  "generatedAt": "2026-07-22T15:19:49.730Z",
   "summary": {
     "componentCount": 166,
     "statusCounts": {
@@ -2673,17 +2673,17 @@
           "name": {
             "optional": false,
             "type": "string",
-            "description": "Author name shown after the byline prefix."
+            "description": "Author name shown after the byline prefix; also names the avatar and\nfeeds its initials fallback."
           },
           "imageUrl": {
-            "optional": false,
+            "optional": true,
             "type": "string | { default: string } | StaticImageData",
-            "description": "Avatar image source: a URL, an imported asset path, or static image data."
+            "description": "Avatar image source: a URL, an imported asset path, or static image data.\nWhen absent the avatar falls back to initials from `name`."
           },
           "size": {
             "optional": true,
             "type": "AvatarSize",
-            "description": "Avatar size."
+            "description": "Avatar size, exposed from the Avatar atom: token sizes `sm`/`md`/`lg`/`xl`\nare canonical; any CSS length is accepted. @default \"md\""
           },
           "profileUrl": {
             "optional": true,
@@ -2737,7 +2737,7 @@
           ]
         }
       },
-      "spec": "# Author\n\n## Intent\nDocuments how **Author** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on Author pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
+      "spec": "# Author\n\n## Intent\nDocuments how **Author** is used in production layouts and Storybook examples.\n\nReusable byline atom: every detail is an input. `name` plus optional\n`imageUrl` (a URL, an imported asset path, or static image data) render the\navatar byline; `profileUrl` turns it into a link. The byline prefix defaults\nto the localized \"By\" (fi \"Kirjoittanut\", sv \"Av\") — parity with the native\n`dt-author` element — and `bylinePrefix` overrides it for custom attributions\n(e.g. \"Reviewed by\") or a fixed language.\n\nAuthor composes the Avatar atom and exposes its behavior rather than\nre-implementing it: `size` is Avatar's `AvatarSize` (token sizes `sm`/`md`/\n`lg`/`xl` canonical, CSS lengths accepted), `name` is passed through as the\navatar's accessible name, and omitting `imageUrl` yields Avatar's initials\nfallback.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on Author pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Author",
@@ -2762,22 +2762,22 @@
       },
       "agent": {
         "preferredImport": "@dt/Author",
-        "intent": "Documents how **Author** is used in production layouts and Storybook examples.",
+        "intent": "Documents how **Author** is used in production layouts and Storybook examples. Reusable byline atom: every detail is an input. `name` plus optional `imageUrl` (a URL, an imported asset path, or static image data) render…",
         "props": {
           "name": {
             "optional": false,
             "type": "string",
-            "description": "Author name shown after the byline prefix."
+            "description": "Author name shown after the byline prefix; also names the avatar and\nfeeds its initials fallback."
           },
           "imageUrl": {
-            "optional": false,
+            "optional": true,
             "type": "string | { default: string } | StaticImageData",
-            "description": "Avatar image source: a URL, an imported asset path, or static image data."
+            "description": "Avatar image source: a URL, an imported asset path, or static image data.\nWhen absent the avatar falls back to initials from `name`."
           },
           "size": {
             "optional": true,
             "type": "AvatarSize",
-            "description": "Avatar size."
+            "description": "Avatar size, exposed from the Avatar atom: token sizes `sm`/`md`/`lg`/`xl`\nare canonical; any CSS length is accepted."
           },
           "profileUrl": {
             "optional": true,
@@ -3106,7 +3106,7 @@
           "description": "About-the-author block with avatar, name, and short biography — the end-of-article companion to the Author byline."
         }
       },
-      "spec": "# AuthorBio\n\n## Intent\nDocuments how **AuthorBio** is used in production layouts and Storybook examples.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on AuthorBio pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
+      "spec": "# AuthorBio\n\n## Intent\nDocuments how **AuthorBio** is used in production layouts and Storybook examples.\n\nReusable biography molecule with two input paths:\n\n- **Direct input** (reusable path): pass `name`, `imageUrl` (URL, imported\n  asset path, or static image data), `role`, `bio` (markdown after the first\n  paragraph; the first paragraph renders as the lead), and `email`.\n- **Registry lookup** (site convenience): pass `slug` to resolve the same\n  fields from the site's authors registry. Direct props override registry\n  fields per field; empty strings fall back to the registry value.\n\nWith no resolvable `name` the component renders nothing — unknown slug and\nempty direct input behave identically.\n\n## Interaction contract\n- Keyboard: See **Playground** / **Example** stories and component tests.\n- Pointer: Standard click/tap on interactive affordances.\n- Screen readers: Verify labels, roles, and live regions in stories.\n\n## Do / don't\n- Do: Match the **Example** story composition on AuthorBio pages.\n- Don't: Bypass design tokens or skip forced-colors verification at beta.\n\n## Design notes\n- Tokens: Uses semantic colors/spacing from `variables.css`.\n- Figma: Linked from the component contract `figma` URL.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/AuthorBio",
@@ -3137,7 +3137,7 @@
       },
       "agent": {
         "preferredImport": "@dt/AuthorBio",
-        "intent": "Documents how **AuthorBio** is used in production layouts and Storybook examples.",
+        "intent": "Documents how **AuthorBio** is used in production layouts and Storybook examples. Reusable biography molecule with two input paths: asset path, or static image data), `role`, `bio` (markdown after the first paragraph; t…",
         "props": {
           "slug": {
             "optional": true,
@@ -3375,6 +3375,10 @@
           },
           "size": {
             "values": [
+              "sm",
+              "md",
+              "lg",
+              "xl",
               "2rem",
               "2.5rem",
               "3rem",
@@ -3384,7 +3388,7 @@
               "7rem",
               "8rem"
             ],
-            "default": "2.5rem",
+            "default": "md",
             "propSourced": true
           }
         },
@@ -3492,7 +3496,8 @@
           },
           "size": {
             "optional": true,
-            "type": "AvatarSize"
+            "type": "AvatarSize",
+            "description": "Avatar size: token sizes `sm`/`md`/`lg`/`xl` (2/2.5/3/4rem) are\ncanonical; any CSS length is accepted as an escape hatch. Default `md`."
           },
           "srcSet": {
             "optional": true,
@@ -3595,7 +3600,7 @@
           }
         }
       },
-      "spec": "# Avatar\n\n## Intent\nRepresent a person on the site with three resilient surfaces: image,\ninitials fallback, and an optional menu or link. Avatar's contract is\n\"never break, always render *something* identifying\" — initials when the\nimage is missing, name-alt when present, and a graceful link or menu\ntrigger when interactive.\n\n## Interaction contract\n- Keyboard: in menu mode, Enter / Space toggles the menu; arrow keys\n  move between items; Escape closes and returns focus to the trigger.\n- Pointer: click opens / closes the menu; outside click closes; the\n  menu repositions automatically on viewport change.\n- Screen readers: in static mode, the visible name or image alt is the\n  accessible name. In menu mode, the trigger announces `menuLabel` and\n  the expanded state; items are announced as a `menu` with `menuitem`\n  children.\n\n## Do / don't\n- Do: pass `name` even when an image is set — the initials fallback and\n  alt text both flow from it.\n- Do: pass `menuLabel` whenever you set `menuItems`. The trigger has no\n  visible text in menu mode.\n- Don't: render two interactive children inside Avatar (link plus menu);\n  the contract is exactly one interaction mode per instance.\n- Don't: nest an Avatar inside a Button. Pick one — Avatar already owns\n  the click affordance when clickable, and Button owns it when not.\n\n## Design notes\n- Tokens: initials use the body text family at the size-derived weight;\n  the surface is `--color-surface-2` with `--color-border` border.\n- Figma: https://www.figma.com/design/digitaltableteur/avatar — keep the\n  menu placement and size ramp aligned with the Figma component variants.\n- Menu repositioning uses a `placementRefreshKey` prop so consumers\n  triggering layout changes (sidebar collapse, modal open) can request a\n  fresh measurement without remounting.\n",
+      "spec": "# Avatar\n\n## Intent\nRepresent a person on the site with three resilient surfaces: image,\ninitials fallback, and an optional menu or link. Avatar's contract is\n\"never break, always render *something* identifying\" — initials when the\nimage is missing, name-alt when present, and a graceful link or menu\ntrigger when interactive.\n\n## Sizing\nToken sizes are canonical and follow the platinum sizing convention:\n`sm` = 2rem, `md` = 2.5rem (default), `lg` = 3rem, `xl` = 4rem — aligned\nwith AvatarGroup's scale. Any CSS length is still accepted as an escape\nhatch (the raw-rem union is published package API and stays valid). Tokens\nresolve to real lengths before reaching the DOM; both `--avatar-size` and\nthe img `sizes` attribute always receive a CSS length. Consumers that\ncompose Avatar (Author, AuthorBio) expose this same `AvatarSize` type\nrather than inventing their own scale.\n\n## Interaction contract\n- Keyboard: in menu mode, Enter / Space toggles the menu; arrow keys\n  move between items; Escape closes and returns focus to the trigger.\n- Pointer: click opens / closes the menu; outside click closes; the\n  menu repositions automatically on viewport change.\n- Screen readers: in static mode, the visible name or image alt is the\n  accessible name. In menu mode, the trigger announces `menuLabel` and\n  the expanded state; items are announced as a `menu` with `menuitem`\n  children.\n\n## Do / don't\n- Do: pass `name` even when an image is set — the initials fallback and\n  alt text both flow from it.\n- Do: pass `menuLabel` whenever you set `menuItems`. The trigger has no\n  visible text in menu mode.\n- Don't: render two interactive children inside Avatar (link plus menu);\n  the contract is exactly one interaction mode per instance.\n- Don't: nest an Avatar inside a Button. Pick one — Avatar already owns\n  the click affordance when clickable, and Button owns it when not.\n\n## Design notes\n- Tokens: initials use the body text family at the size-derived weight;\n  the surface is `--color-surface-2` with `--color-border` border.\n- Figma: https://www.figma.com/design/digitaltableteur/avatar — keep the\n  menu placement and size ramp aligned with the Figma component variants.\n- Menu repositioning uses a `placementRefreshKey` prop so consumers\n  triggering layout changes (sidebar collapse, modal open) can request a\n  fresh measurement without remounting.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Avatar",
@@ -3664,7 +3669,8 @@
           },
           "size": {
             "optional": true,
-            "type": "AvatarSize"
+            "type": "AvatarSize",
+            "description": "Avatar size: token sizes `sm`/`md`/`lg`/`xl` (2/2.5/3/4rem) are\ncanonical; any CSS length is accepted as an escape hatch. Default `md`."
           },
           "srcSet": {
             "optional": true,
@@ -23209,8 +23215,8 @@
               "sm",
               "md",
               "lg",
-              "xs",
               "xl",
+              "xs",
               "2xs",
               "2xl"
             ],
@@ -27317,9 +27323,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "xl",
               "xs",
               "s",
-              "xl",
               "xxs",
               "m",
               "l",
@@ -27382,15 +27388,15 @@
         "variants": {
           "size": {
             "values": [
+              "xl",
               "xs",
               "s",
-              "xl",
               "xxs",
               "m",
               "l",
               "xxl"
             ],
-            "default": "xs"
+            "default": "xl"
           }
         },
         "cvaVariants": {},
@@ -30791,8 +30797,8 @@
               "sm",
               "md",
               "lg",
-              "xs",
               "xl",
+              "xs",
               "xxs",
               "xxl",
               "XXS",
@@ -38806,8 +38812,8 @@
               "sm",
               "md",
               "lg",
-              "none",
               "xl",
+              "none",
               "hero",
               "follow"
             ],
@@ -43569,8 +43575,8 @@
               "sm",
               "md",
               "lg",
-              "xs",
               "xl",
+              "xs",
               "2xl"
             ],
             "description": "Tokenized gap size."
@@ -43597,8 +43603,8 @@
               "sm",
               "md",
               "lg",
-              "xs",
               "xl",
+              "xs",
               "2xl"
             ],
             "default": "sm"
@@ -45185,9 +45191,9 @@
               "sm",
               "md",
               "lg",
+              "xl",
               "xs",
-              "none",
-              "xl"
+              "none"
             ],
             "description": "Gap token between items."
           },
@@ -48144,9 +48150,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "xl",
               "xs",
               "s",
-              "xl",
               "xxs",
               "m",
               "l",
@@ -48169,15 +48175,15 @@
         "variants": {
           "size": {
             "values": [
+              "xl",
               "xs",
               "s",
-              "xl",
               "xxs",
               "m",
               "l",
               "xxl"
             ],
-            "default": "xs"
+            "default": "xl"
           }
         },
         "cvaVariants": {},
@@ -50762,9 +50768,9 @@
             "optional": true,
             "type": "union",
             "values": [
+              "xl",
               "xs",
               "s",
-              "xl",
               "xxs",
               "m",
               "l",
@@ -50794,15 +50800,15 @@
         "variants": {
           "size": {
             "values": [
+              "xl",
               "xs",
               "s",
-              "xl",
               "xxs",
               "m",
               "l",
               "xxl"
             ],
-            "default": "xs"
+            "default": "xl"
           }
         },
         "cvaVariants": {},

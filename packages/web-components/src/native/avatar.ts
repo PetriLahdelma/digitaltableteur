@@ -464,7 +464,20 @@ export class DtAvatarElement extends DigitaltableteurElement {
   };
 
   private avatarStyle(): string {
-    return `--avatar-size: ${this.size};`;
+    return `--avatar-size: ${this.resolvedSize()};`;
+  }
+
+  // Token sizes (sm/md/lg/xl, aligned with the React Avatar and AvatarGroup)
+  // resolve to CSS lengths before touching the DOM — --avatar-size and the img
+  // sizes attribute both need a real length, not "sm".
+  private resolvedSize(): string {
+    const tokens: Record<string, string> = {
+      sm: "2rem",
+      md: "2.5rem",
+      lg: "3rem",
+      xl: "4rem",
+    };
+    return tokens[this.size] ?? this.size;
   }
 
   private renderVisual(): HTMLElement {
@@ -485,7 +498,8 @@ export class DtAvatarElement extends DigitaltableteurElement {
       image.style.cssText = this.avatarStyle();
       image.srcset = this.srcSet || `${this.imageUrl} 1x`;
       image.sizes =
-        this.sizes || (this.hasAttribute("size") ? this.size : DEFAULT_SIZES);
+        this.sizes ||
+        (this.hasAttribute("size") ? this.resolvedSize() : DEFAULT_SIZES);
       return image;
     }
 

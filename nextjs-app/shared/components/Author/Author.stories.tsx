@@ -45,7 +45,7 @@ export const Default: Story = {
   tags: ["beta-matrix"],
   args: {
     name: defaultAuthor?.name ?? "Petri Lahdelma",
-    imageUrl: defaultAuthor?.imageUrl ?? "https://via.placeholder.com/150",
+    imageUrl: defaultAuthor?.imageUrl ?? "/images/authors/petri-lahdelma.jpg",
   },
 };
 
@@ -56,7 +56,7 @@ export const Default: Story = {
 export const WithProfileLink: Story = {
   args: {
     name: defaultAuthor?.name ?? "Petri Lahdelma",
-    imageUrl: defaultAuthor?.imageUrl ?? "https://via.placeholder.com/150",
+    imageUrl: defaultAuthor?.imageUrl ?? "/images/authors/petri-lahdelma.jpg",
     profileUrl: "/authors/petri-lahdelma",
   },
 };
@@ -68,8 +68,7 @@ export const WithProfileLink: Story = {
 export const SmallSize: Story = {
   args: {
     name: "Anna Virtanen",
-    imageUrl: "https://via.placeholder.com/150",
-    size: "1.5rem",
+    size: "sm",
     profileUrl: "/authors/anna-virtanen",
   },
 };
@@ -81,8 +80,7 @@ export const SmallSize: Story = {
 export const LargeSize: Story = {
   args: {
     name: "Mika Korhonen",
-    imageUrl: "https://via.placeholder.com/150",
-    size: "4rem",
+    size: "xl",
     profileUrl: "/authors/mika-korhonen",
   },
 };
@@ -96,19 +94,11 @@ export const MultipleAuthors: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <Author
         name="Petri Lahdelma"
-        imageUrl="https://via.placeholder.com/150"
+        imageUrl="/images/authors/petri-lahdelma.jpg"
         profileUrl="/authors/petri-lahdelma"
       />
-      <Author
-        name="Anna Virtanen"
-        imageUrl="https://via.placeholder.com/150"
-        profileUrl="/authors/anna-virtanen"
-      />
-      <Author
-        name="Mika Korhonen"
-        imageUrl="https://via.placeholder.com/150"
-        profileUrl="/authors/mika-korhonen"
-      />
+      <Author name="Anna Virtanen" profileUrl="/authors/anna-virtanen" />
+      <Author name="Mika Korhonen" profileUrl="/authors/mika-korhonen" />
     </div>
   ),
 };
@@ -120,8 +110,7 @@ export const MultipleAuthors: Story = {
 export const NoProfileLink: Story = {
   args: {
     name: "Guest Author",
-    imageUrl: "https://via.placeholder.com/150",
-    size: "2.5rem",
+    size: "md",
   },
 };
 
@@ -132,7 +121,6 @@ export const NoProfileLink: Story = {
 export const LongName: Story = {
   args: {
     name: "Dr. Alexander Wellington-Worthington III",
-    imageUrl: "https://via.placeholder.com/150",
     profileUrl: "/authors/alexander-wellington-worthington",
   },
   parameters: {
@@ -152,7 +140,6 @@ export const LongName: Story = {
 export const CustomSize: Story = {
   args: {
     name: "Sarah Chen",
-    imageUrl: "https://via.placeholder.com/150",
     size: "3.5rem",
     profileUrl: "/authors/sarah-chen",
   },
@@ -165,8 +152,8 @@ export const CustomSize: Story = {
 export const BlogPostByline: Story = {
   args: {
     name: defaultAuthor?.name ?? "Petri Lahdelma",
-    imageUrl: defaultAuthor?.imageUrl ?? "https://via.placeholder.com/150",
-    size: "2.5rem",
+    imageUrl: defaultAuthor?.imageUrl ?? "/images/authors/petri-lahdelma.jpg",
+    size: "md",
     profileUrl: "/authors/petri-lahdelma",
   },
   parameters: {
@@ -186,8 +173,7 @@ export const BlogPostByline: Story = {
 export const CardFooter: Story = {
   args: {
     name: "Emma Lindström",
-    imageUrl: "https://via.placeholder.com/150",
-    size: "2rem",
+    size: "sm",
     profileUrl: "/authors/emma-lindstrom",
   },
   parameters: {
@@ -227,7 +213,7 @@ export const InArticleContext: Story = {
         <Author
           name={defaultAuthor?.name ?? "Petri Lahdelma"}
           imageUrl={
-            defaultAuthor?.imageUrl ?? "https://via.placeholder.com/150"
+            defaultAuthor?.imageUrl ?? "/images/authors/petri-lahdelma.jpg"
           }
           profileUrl="/authors/petri-lahdelma"
         />
@@ -255,7 +241,6 @@ export const InArticleContext: Story = {
 export const CustomBylinePrefix: Story = {
   args: {
     name: "Anna Virtanen",
-    imageUrl: "https://via.placeholder.com/150",
     bylinePrefix: "Reviewed by",
   },
 };
@@ -265,14 +250,15 @@ export const Playground: Story = {
   argTypes: {
     size: {
       control: { type: "select" },
-      options: ["2rem", "2.5rem", "3rem", "4rem", "5rem"],
-      description: "Avatar size token (any CSS length works in code)",
+      options: ["sm", "md", "lg", "xl", "3.5rem"],
+      description:
+        "Avatar size, exposed from the Avatar atom: sm/md/lg/xl tokens are canonical (any CSS length works in code)",
       table: { category: "Appearance", type: { summary: "AvatarSize" } },
     },
   },
   args: {
     ...Default.args,
-    size: "3rem",
+    size: "lg",
   },
 };
 export const Example = {

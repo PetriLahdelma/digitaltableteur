@@ -7,6 +7,16 @@ initials fallback, and an optional menu or link. Avatar's contract is
 image is missing, name-alt when present, and a graceful link or menu
 trigger when interactive.
 
+## Sizing
+Token sizes are canonical and follow the platinum sizing convention:
+`sm` = 2rem, `md` = 2.5rem (default), `lg` = 3rem, `xl` = 4rem — aligned
+with AvatarGroup's scale. Any CSS length is still accepted as an escape
+hatch (the raw-rem union is published package API and stays valid). Tokens
+resolve to real lengths before reaching the DOM; both `--avatar-size` and
+the img `sizes` attribute always receive a CSS length. Consumers that
+compose Avatar (Author, AuthorBio) expose this same `AvatarSize` type
+rather than inventing their own scale.
+
 ## Interaction contract
 - Keyboard: in menu mode, Enter / Space toggles the menu; arrow keys
   move between items; Escape closes and returns focus to the trigger.

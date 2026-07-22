@@ -144,6 +144,26 @@ describe("Avatar Component", () => {
     expect(sized?.getAttribute("style")).toContain("4rem");
   });
 
+  it.each([
+    ["sm", "2rem"],
+    ["md", "2.5rem"],
+    ["lg", "3rem"],
+    ["xl", "4rem"],
+  ])("resolves the %s token to %s", (token, length) => {
+    const { container } = render(
+      <Avatar name="Petri Lahdelma" size={token} />,
+    );
+    const sized = container.querySelector('[style*="--avatar-size"]');
+    expect(sized?.getAttribute("style")).toContain(`--avatar-size: ${length}`);
+  });
+
+  it("resolves token sizes in the img sizes attribute", () => {
+    const { container } = render(
+      <Avatar name="Petri Lahdelma" imageUrl="/test.jpg" size="sm" />,
+    );
+    expect(container.querySelector("img")?.getAttribute("sizes")).toBe("2rem");
+  });
+
   it("navigates when clickable with destinationUrl", async () => {
     const hrefSetter = vi.fn();
     const locationMock = {

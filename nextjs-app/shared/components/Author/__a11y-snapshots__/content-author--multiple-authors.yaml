@@ -1,13 +1,13 @@
 - status: Work in progress (beta)
-- img "Avatar"
+- img "Petri Lahdelma"
 - paragraph:
   - link "By Petri Lahdelma":
     - /url: /authors/petri-lahdelma
-- img "Avatar"
+- text: AV
 - paragraph:
   - link "By Anna Virtanen":
     - /url: /authors/anna-virtanen
-- img "Avatar"
+- text: MK
 - paragraph:
   - link "By Mika Korhonen":
     - /url: /authors/mika-korhonen

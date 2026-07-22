@@ -825,7 +825,7 @@
         {
           "name": "imageUrl",
           "type": "string | { default: string } | StaticImageData",
-          "required": true
+          "required": false
         },
         {
           "name": "size",
@@ -847,17 +847,17 @@
         "name": {
           "optional": false,
           "type": "string",
-          "description": "Author name shown after the byline prefix."
+          "description": "Author name shown after the byline prefix; also names the avatar and\nfeeds its initials fallback."
         },
         "imageUrl": {
-          "optional": false,
+          "optional": true,
           "type": "string | { default: string } | StaticImageData",
-          "description": "Avatar image source: a URL, an imported asset path, or static image data."
+          "description": "Avatar image source: a URL, an imported asset path, or static image data.\nWhen absent the avatar falls back to initials from `name`."
         },
         "size": {
           "optional": true,
           "type": "AvatarSize",
-          "description": "Avatar size."
+          "description": "Avatar size, exposed from the Avatar atom: token sizes `sm`/`md`/`lg`/`xl`\nare canonical; any CSS length is accepted. @default \"md\""
         },
         "profileUrl": {
           "optional": true,
@@ -1091,7 +1091,8 @@
         },
         "size": {
           "optional": true,
-          "type": "AvatarSize"
+          "type": "AvatarSize",
+          "description": "Avatar size: token sizes `sm`/`md`/`lg`/`xl` (2/2.5/3/4rem) are\ncanonical; any CSS length is accepted as an escape hatch. Default `md`."
         },
         "srcSet": {
           "optional": true,

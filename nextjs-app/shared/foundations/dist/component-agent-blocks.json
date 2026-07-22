@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T15:01:37.874Z",
+  "generatedAt": "2026-07-22T15:19:49.445Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -1417,22 +1417,22 @@
     },
     "Author": {
       "preferredImport": "@dt/Author",
-      "intent": "Documents how **Author** is used in production layouts and Storybook examples.",
+      "intent": "Documents how **Author** is used in production layouts and Storybook examples. Reusable byline atom: every detail is an input. `name` plus optional `imageUrl` (a URL, an imported asset path, or static image data) render…",
       "props": {
         "name": {
           "optional": false,
           "type": "string",
-          "description": "Author name shown after the byline prefix."
+          "description": "Author name shown after the byline prefix; also names the avatar and\nfeeds its initials fallback."
         },
         "imageUrl": {
-          "optional": false,
+          "optional": true,
           "type": "string | { default: string } | StaticImageData",
-          "description": "Avatar image source: a URL, an imported asset path, or static image data."
+          "description": "Avatar image source: a URL, an imported asset path, or static image data.\nWhen absent the avatar falls back to initials from `name`."
         },
         "size": {
           "optional": true,
           "type": "AvatarSize",
-          "description": "Avatar size."
+          "description": "Avatar size, exposed from the Avatar atom: token sizes `sm`/`md`/`lg`/`xl`\nare canonical; any CSS length is accepted."
         },
         "profileUrl": {
           "optional": true,
@@ -1598,7 +1598,7 @@
     },
     "AuthorBio": {
       "preferredImport": "@dt/AuthorBio",
-      "intent": "Documents how **AuthorBio** is used in production layouts and Storybook examples.",
+      "intent": "Documents how **AuthorBio** is used in production layouts and Storybook examples. Reusable biography molecule with two input paths: asset path, or static image data), `role`, `bio` (markdown after the first paragraph; t…",
       "props": {
         "slug": {
           "optional": true,
@@ -1834,7 +1834,8 @@
         },
         "size": {
           "optional": true,
-          "type": "AvatarSize"
+          "type": "AvatarSize",
+          "description": "Avatar size: token sizes `sm`/`md`/`lg`/`xl` (2/2.5/3/4rem) are\ncanonical; any CSS length is accepted as an escape hatch. Default `md`."
         },
         "srcSet": {
           "optional": true,
@@ -12155,8 +12156,8 @@
             "sm",
             "md",
             "lg",
-            "xs",
             "xl",
+            "xs",
             "2xs",
             "2xl"
           ],
@@ -14317,9 +14318,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xl",
             "xs",
             "s",
-            "xl",
             "xxs",
             "m",
             "l",
@@ -14382,15 +14383,15 @@
       "variants": {
         "size": {
           "values": [
+            "xl",
             "xs",
             "s",
-            "xl",
             "xxs",
             "m",
             "l",
             "xxl"
           ],
-          "default": "xs"
+          "default": "xl"
         }
       },
       "cvaVariants": {},
@@ -16169,8 +16170,8 @@
             "sm",
             "md",
             "lg",
-            "xs",
             "xl",
+            "xs",
             "xxs",
             "xxl",
             "XXS",
@@ -20645,8 +20646,8 @@
             "sm",
             "md",
             "lg",
-            "none",
             "xl",
+            "none",
             "hero",
             "follow"
           ],
@@ -23831,8 +23832,8 @@
             "sm",
             "md",
             "lg",
-            "xs",
             "xl",
+            "xs",
             "2xl"
           ],
           "description": "Tokenized gap size."
@@ -23859,8 +23860,8 @@
             "sm",
             "md",
             "lg",
-            "xs",
             "xl",
+            "xs",
             "2xl"
           ],
           "default": "sm"
@@ -24531,9 +24532,9 @@
             "sm",
             "md",
             "lg",
+            "xl",
             "xs",
-            "none",
-            "xl"
+            "none"
           ],
           "description": "Gap token between items."
         },
@@ -26171,9 +26172,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xl",
             "xs",
             "s",
-            "xl",
             "xxs",
             "m",
             "l",
@@ -26196,15 +26197,15 @@
       "variants": {
         "size": {
           "values": [
+            "xl",
             "xs",
             "s",
-            "xl",
             "xxs",
             "m",
             "l",
             "xxl"
           ],
-          "default": "xs"
+          "default": "xl"
         }
       },
       "cvaVariants": {},
@@ -27468,9 +27469,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xl",
             "xs",
             "s",
-            "xl",
             "xxs",
             "m",
             "l",
@@ -27500,15 +27501,15 @@
       "variants": {
         "size": {
           "values": [
+            "xl",
             "xs",
             "s",
-            "xl",
             "xxs",
             "m",
             "l",
             "xxl"
           ],
-          "default": "xs"
+          "default": "xl"
         }
       },
       "cvaVariants": {},
