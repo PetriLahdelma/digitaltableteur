@@ -5,6 +5,10 @@ export type {
   AccordionItem,
   AccordionProps,
 } from "../../../nextjs-app/shared/components/Accordion";
+export { default as Author } from "../../../nextjs-app/shared/components/Author/Author";
+export type { AuthorProps } from "../../../nextjs-app/shared/components/Author/Author";
+export { default as AuthorBio } from "../../../nextjs-app/shared/components/AuthorBio/AuthorBio";
+export type { AuthorBioProps } from "../../../nextjs-app/shared/components/AuthorBio/AuthorBio";
 export { default as Avatar } from "../../../nextjs-app/shared/components/Avatar/Avatar";
 export type {
   AvatarMenuItem,
@@ -179,6 +183,8 @@ export { default as List } from "../../../nextjs-app/shared/components/List/List
 export type { ListProps } from "../../../nextjs-app/shared/components/List/List";
 export { default as ListItem } from "../../../nextjs-app/shared/components/ListItem/ListItem";
 export type { ListItemProps } from "../../../nextjs-app/shared/components/ListItem/ListItem";
+export { Logo } from "../../../nextjs-app/shared/components/Logo/Logo";
+export type { LogoProps } from "../../../nextjs-app/shared/components/Logo/Logo";
 export { default as MacWindowFrame } from "../../../nextjs-app/shared/components/MacWindowFrame/MacWindowFrame";
 export type { MacWindowFrameProps } from "../../../nextjs-app/shared/components/MacWindowFrame";
 export {

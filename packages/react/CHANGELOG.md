@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.1.18 - 2026-07-22
+
+- Exposes the `Logo` content atom from the root and content-family
+  entrypoints: renders the built-in Digitaltableteur mark by default, or any
+  custom PNG/JPEG/SVG logo via the new `src` prop (letterboxed in the square
+  `size` box; `title` becomes the alt text, `decorative` maps to `alt=""` +
+  `aria-hidden`, empty `src` falls back to the mark). The lime-circle option
+  is named `background` (renamed from the never-published `badge` before this
+  first release of the export, so no consumer API breaks).
+- Exposes the `Author` byline from the root and identity-family entrypoints:
+  fully input-driven (name, avatar URL/path, optional profile link) with a new
+  `bylinePrefix` prop whose default localizes to "By" / "Kirjoittanut" / "Av",
+  matching the native `dt-author`. The avatar now carries the author's name as
+  its accessible name and falls back to initials when `imageUrl` is omitted
+  (now optional).
+- Exposes the `AuthorBio` biography card from the root and content-family
+  entrypoints: pass `name`, `imageUrl`, `role`, `bio` (markdown after the lead
+  paragraph), and `email` directly; the site-registry `slug` lookup remains as
+  a convenience and direct props override it per field.
+- Adds canonical token sizes `sm`/`md`/`lg`/`xl` (2/2.5/3/4rem, aligned with
+  AvatarGroup) to `AvatarSize`; tokens resolve to real CSS lengths before
+  reaching `--avatar-size` and the img `sizes` attribute. Raw CSS lengths
+  remain accepted.
+- Fixes server-side imports of the content entrypoint: the bundled
+  react-markdown chain now pins the universal Node build of
+  `decode-named-character-reference` instead of its DOM build, which called
+  `document.createElement` at module scope and crashed Node/SSR consumers.
+- Runtime public API grows additively from 129 to 132 exports; the only
+  pre-existing API change is the additive `AvatarSize` token union.
+
 ## 0.1.17 - 2026-07-16
 
 - Redesigns SelectableCard: the whole card is the control — the radio/checkbox

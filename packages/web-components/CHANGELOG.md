@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.9.0 - 2026-07-22
+
+- BREAKING: renames the `dt-logo` `badge` attribute/property to `background`
+  (same lime-circle rendering; the name now says what it does). The shadow
+  part follows: `part="badge"` is now `part="background"`. Update any
+  `dt-logo[badge]` usage and `::part(badge)` selectors.
+- Adds the `src` attribute to `dt-logo`: renders any custom PNG/JPEG/SVG logo
+  as an `<img>` letterboxed in the square `size` box (`accessible-title`
+  becomes the alt text, `decorative` maps to `alt=""` + `aria-hidden`, empty
+  `src` falls back to the built-in Digitaltableteur mark). `animated` and
+  `background` remain built-in-mark-only.
+- Adds canonical token sizes `sm`/`md`/`lg`/`xl` (2/2.5/3/4rem) to
+  `dt-avatar`, matching the React Avatar and AvatarGroup scale; tokens resolve
+  to real CSS lengths before reaching `--avatar-size` and the img `sizes`
+  attribute. `dt-author` inherits the tokens through its `size` passthrough.
+  Raw CSS lengths remain accepted.
+
 ## 0.8.0 - 2026-07-16
 
 - Ports the SelectableCard redesign to `dt-selectable-card`: the indicator
