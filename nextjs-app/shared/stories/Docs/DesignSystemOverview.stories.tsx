@@ -351,8 +351,9 @@ const DesignSystemOverviewContent = () => {
                 <code>--radius-*</code>
               </td>
               <td>
-                <code>--radius-s</code>, <code>--radius-m</code>,{" "}
-                <code>--radius-l</code>
+                <code>--radius-sm</code>, <code>--radius-md</code>,{" "}
+                <code>--radius-lg</code>, <code>--radius-xl</code>,{" "}
+                <code>--radius-full</code>, <code>--radius-circle</code>
               </td>
             </tr>
             <tr>
@@ -361,18 +362,8 @@ const DesignSystemOverviewContent = () => {
                 <code>--shadow-*</code>
               </td>
               <td>
-                <code>--shadow-s</code>, <code>--shadow-m</code>,{" "}
-                <code>--shadow-l</code>
-              </td>
-            </tr>
-            <tr>
-              <td>Z-index</td>
-              <td>
-                <code>--z-*</code>
-              </td>
-              <td>
-                <code>--z-modal</code>, <code>--z-tooltip</code>,{" "}
-                <code>--z-toast</code>
+                <code>--shadow-sm</code>, <code>--shadow-md</code>,{" "}
+                <code>--shadow-lg</code>, <code>--shadow-xl</code>
               </td>
             </tr>
           </tbody>
@@ -382,36 +373,61 @@ const DesignSystemOverviewContent = () => {
       <section className={styles.section}>
         <h2>API Integration</h2>
         <p>
-          The design system includes serverless API functions for backend
-          integration. All APIs follow CORS best practices and use environment
-          variables for secrets.
+          The app ships Next.js App Router route handlers under{" "}
+          <code>app/api/*/route.ts</code>. They use environment variables for
+          secrets, Zod for validation, and rate limiting on write endpoints.
         </p>
 
         <div className={styles.apiGrid}>
           <div className={styles.apiItem}>
-            <h3>/api/chat (Node & Edge)</h3>
+            <h3>/api/chat</h3>
             <p>
-              AI chat endpoint using Vercel AI SDK with streaming responses.
+              AI chat endpoint using the Vercel AI SDK with streaming responses.
               Supports tool calling via MCP (Model Context Protocol) for
               structured data retrieval.
             </p>
             <pre className={styles.code}>
               {`POST /api/chat
 Body: { messages: UIMessage[] }
-Returns: ReadableStream`}
+Returns: streamed Response`}
             </pre>
           </div>
 
           <div className={styles.apiItem}>
-            <h3>/api/save-contact</h3>
+            <h3>/api/contact & /api/save-contact</h3>
             <p>
-              Contact form submission handler with MongoDB persistence.
-              Integrates with Email.js for notification delivery.
+              Contact form handlers. Email delivery is via Resend; submissions
+              persist to MongoDB. Validated with Zod and rate-limited.
             </p>
             <pre className={styles.code}>
-              {`POST /api/save-contact
+              {`POST /api/contact | /api/save-contact
 Body: { name, email, phone?, message }
 Returns: { success: boolean }`}
+            </pre>
+          </div>
+
+          <div className={styles.apiItem}>
+            <h3>/api/gdpr/delete-data</h3>
+            <p>
+              GDPR data-deletion endpoint. Removes stored contact submissions on
+              verified request.
+            </p>
+            <pre className={styles.code}>
+              {`POST /api/gdpr/delete-data
+Body: { email, token }
+Returns: { deleted: boolean }`}
+            </pre>
+          </div>
+
+          <div className={styles.apiItem}>
+            <h3>/api/[transport]</h3>
+            <p>
+              MCP server endpoint exposing the site&apos;s tools to Model Context
+              Protocol clients over the configured transport.
+            </p>
+            <pre className={styles.code}>
+              {`GET|POST /api/[transport]
+MCP handshake + tool calls`}
             </pre>
           </div>
 
@@ -446,9 +462,9 @@ Returns: JSON test metrics`}
       <section className={styles.section}>
         <h2>Getting Started</h2>
         <p>
-          The design system supports both Next.js and Vite applications. All
-          components are exported from <code>@dt/ComponentName</code> for clean
-          imports.
+          The app is Next.js 16 (App Router). Components import from{" "}
+          <code>@dt/&lt;Name&gt;</code> in-repo, and from{" "}
+          <code>@digitaltableteur/react</code> when consumed from the registry.
         </p>
 
         <pre className={styles.code}>
@@ -472,7 +488,10 @@ vercel --prod`}
 
         <h3>Component Usage</h3>
         <pre className={styles.code}>
-          {`import { Button, Title, Text, Card } from "@dt/ComponentName";
+          {`import Button from "@dt/Button";
+import Title from "@dt/Title";
+import Text from "@dt/Text";
+import Card from "@dt/Card";
 import { useTheme } from "@dt/ThemeProvider";
 import { useTranslation } from "react-i18next";
 
@@ -512,15 +531,16 @@ function MyComponent() { const { t } = useTranslation();
             workflows
           </li>
           <li>
-            <strong>Docs/Accessibility</strong> - WCAG compliance, testing
-            practices
+            <strong>Foundations/*</strong> - Color, Typography, Space, Radius,
+            Elevation, Motion, Contrast tokens
           </li>
           <li>
-            <strong>Docs/API Integration</strong> - Serverless functions, MCP
-            tools
+            <strong>Docs/API Integration</strong> - App Router route handlers,
+            MCP tools
           </li>
           <li>
-            <strong>Docs/Testing</strong> - Unit, integration, visual regression
+            <strong>Overview/Test Health</strong> - test, a11y, and
+            visual-regression metrics
           </li>
           <li>
             <strong>Components/*</strong> - Individual component documentation

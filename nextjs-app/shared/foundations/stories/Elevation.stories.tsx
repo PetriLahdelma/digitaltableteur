@@ -19,10 +19,47 @@ export const Overview: Story = {
     return (
       <FoundationPage
         title="Elevation"
-        lead="Overlays and shadows for modals and media captions."
+        lead="A four-step shadow ramp — resting, raised, overlay, modal — plus overlay tokens for media captions. Shadows deepen in dark mode and flatten to none under forced-colors."
       >
         <DocSection title="Overlay & shadow tokens">
           <TokenTable tokens={tokens} />
+          <div
+            style={{
+              display: "flex",
+              gap: "var(--space-layout-32)",
+              flexWrap: "wrap",
+              marginBlockStart: "var(--space-layout-24)",
+            }}
+          >
+            {[
+              { token: "--shadow-sm", label: "sm · resting" },
+              { token: "--shadow-md", label: "md · raised" },
+              { token: "--shadow-lg", label: "lg · overlay" },
+              { token: "--shadow-xl", label: "xl · modal" },
+            ].map(({ token, label }) => (
+              <div key={token} style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    inlineSize: "7rem",
+                    blockSize: "7rem",
+                    background: "var(--color-surface, var(--main-body-background-color))",
+                    borderRadius: "var(--radius-lg)",
+                    boxShadow: `var(${token})`,
+                  }}
+                  aria-hidden
+                />
+                <code
+                  style={{
+                    fontSize: "0.75rem",
+                    display: "block",
+                    marginBlockStart: "var(--space-internal-8)",
+                  }}
+                >
+                  {label}
+                </code>
+              </div>
+            ))}
+          </div>
           <div
             style={{
               marginBlockStart: "var(--space-layout-24)",
@@ -34,7 +71,8 @@ export const Overview: Story = {
               maxInlineSize: "20rem",
             }}
           >
-            Modal surface using <code>--modal-shadow</code>
+            Modal surface using <code>--modal-shadow</code> (aliases{" "}
+            <code>--shadow-xl</code>)
           </div>
           <div
             style={{

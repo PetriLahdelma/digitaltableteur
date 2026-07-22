@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-22T18:04:58.540Z",
+  "generatedAt": "2026-07-22T20:59:50.578Z",
   "tokenCount": 198,
-  "usageCoverage": 158,
+  "usageCoverage": 162,
   "themes": [
     {
       "id": "light",
@@ -1163,6 +1163,34 @@
           "subgroup": "General"
         },
         {
+          "name": "--shadow-sm",
+          "value": "0 1px 2px rgb(0 0 0 / 6%)",
+          "usage": "Elevation shadow (sm) — resting through modal.",
+          "category": "elevation",
+          "subgroup": "General"
+        },
+        {
+          "name": "--shadow-md",
+          "value": "0 4px 12px rgb(0 0 0 / 10%)",
+          "usage": "Elevation shadow (md) — resting through modal.",
+          "category": "elevation",
+          "subgroup": "General"
+        },
+        {
+          "name": "--shadow-lg",
+          "value": "0 12px 32px rgb(0 0 0 / 12%)",
+          "usage": "Elevation shadow (lg) — resting through modal.",
+          "category": "elevation",
+          "subgroup": "General"
+        },
+        {
+          "name": "--shadow-xl",
+          "value": "0 24px 60px rgb(0 0 0 / 16%)",
+          "usage": "Elevation shadow (xl) — resting through modal.",
+          "category": "elevation",
+          "subgroup": "General"
+        },
+        {
           "name": "--modal-shadow",
           "value": "var(--shadow-xl)",
           "usage": "Overlay or elevation token.",
@@ -1669,34 +1697,6 @@
         {
           "name": "--checkbox-background-color",
           "value": "#fff",
-          "usage": "",
-          "category": "other",
-          "subgroup": "General"
-        },
-        {
-          "name": "--shadow-sm",
-          "value": "0 1px 2px rgb(0 0 0 / 6%)",
-          "usage": "",
-          "category": "other",
-          "subgroup": "General"
-        },
-        {
-          "name": "--shadow-md",
-          "value": "0 4px 12px rgb(0 0 0 / 10%)",
-          "usage": "",
-          "category": "other",
-          "subgroup": "General"
-        },
-        {
-          "name": "--shadow-lg",
-          "value": "0 12px 32px rgb(0 0 0 / 12%)",
-          "usage": "",
-          "category": "other",
-          "subgroup": "General"
-        },
-        {
-          "name": "--shadow-xl",
-          "value": "0 24px 60px rgb(0 0 0 / 16%)",
           "usage": "",
           "category": "other",
           "subgroup": "General"

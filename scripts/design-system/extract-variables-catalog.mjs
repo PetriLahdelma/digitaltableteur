@@ -60,6 +60,7 @@ function inferUsage(name) {
   if (name.startsWith("--page-margin-")) return "Horizontal page margin at a viewport tier.";
   if (name.startsWith("--radius-")) return `Border radius (${name.replace("--radius-", "")}).`;
   if (name.startsWith("--focus-ring-")) return "Focus ring token for keyboard accessibility.";
+  if (name.startsWith("--shadow-")) return `Elevation shadow (${name.replace("--shadow-", "")}) — resting through modal.`;
   if (name.startsWith("--modal-") || name.startsWith("--gallery-")) return "Overlay or elevation token.";
   if (name.startsWith("--color-")) return `Color token (${name.replace("--color-", "")}).`;
   if (name === "--home-gradient") return "Brand gradient used for expressive homepage and marketing treatments.";
@@ -190,7 +191,7 @@ function categorize(name) {
   if (name.startsWith("--breakpoint-") || name.startsWith("--container-") || name.startsWith("--grid-") || name.startsWith("--page-margin") || name.startsWith("--rhythm-"))
     return "layout";
   if (name.startsWith("--radius-")) return "radius";
-  if (name.startsWith("--modal-") || name.startsWith("--gallery-")) return "elevation";
+  if (name.startsWith("--shadow-") || name.startsWith("--modal-") || name.startsWith("--gallery-")) return "elevation";
   if (name.startsWith("--focus-")) return "focus";
   if (name.startsWith("--size-")) return "size";
   return "other";

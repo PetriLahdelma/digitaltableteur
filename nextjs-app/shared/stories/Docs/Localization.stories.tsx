@@ -225,7 +225,7 @@ function LanguageSwitcher() { const { i18n } = useTranslation();
 
         <h3>Coverage Test</h3>
         <pre className={styles.code}>
-          {`// src/__tests__/translation-coverage.test.tsx
+          {`// nextjs-app/shared/__tests__/translation-coverage.test.tsx
 describe("Translation Coverage", () => { it("has complete FI translations", () => { const enKeys = Object.keys(flattenObject(enTranslation));
     const fiKeys = Object.keys(flattenObject(fiTranslation));
     

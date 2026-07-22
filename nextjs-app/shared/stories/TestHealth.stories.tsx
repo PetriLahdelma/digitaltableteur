@@ -36,14 +36,6 @@ type VisualDiffReport = {
 
 type AdoptionHistoryEntry = { period: string; rate: number };
 
-const defaultAdoptionHistory: AdoptionHistoryEntry[] = [
-  { period: "Jan", rate: 0.52 },
-  { period: "Feb", rate: 0.58 },
-  { period: "Mar", rate: 0.61 },
-  { period: "Apr", rate: 0.68 },
-  { period: "May", rate: 0.72 },
-  { period: "Jun", rate: 0.77 },
-];
 
 const toPercent = (value: number) => Math.round(value * 1000) / 10;
 
@@ -194,13 +186,16 @@ const TestHealthOverview = () => {
     };
   }, []);
 
-  // metrics.componentAdoption in test-metrics.json currently has shape { currentRate, targetRate } (no history array)
-  // Use defaultAdoptionHistory when history absent.
+  // componentAdoption in test-metrics.json is { currentRate, targetRate } with
+  // no history series. When no real history is present, show the current rate
+  // as a single point rather than fabricating a trend.
   const adoptionHistory = useMemo<AdoptionHistoryEntry[]>(() => {
-    const raw = (remoteMetrics ?? (metrics as any))?.componentAdoption?.history;
-    return Array.isArray(raw)
-      ? (raw as AdoptionHistoryEntry[])
-      : defaultAdoptionHistory;
+    const adoption = (remoteMetrics ?? (metrics as any))?.componentAdoption;
+    const raw = adoption?.history;
+    if (Array.isArray(raw) && raw.length > 0)
+      return raw as AdoptionHistoryEntry[];
+    const rate = typeof adoption?.currentRate === "number" ? adoption.currentRate : 0;
+    return [{ period: "Current", rate }];
   }, [remoteMetrics]);
 
   const metricsData = remoteMetrics ?? metrics;
@@ -217,7 +212,7 @@ const TestHealthOverview = () => {
           data: [
             (metricsData as any).vitest?.numTotalTests ?? 442,
             (metricsData as any).vitest?.numPassedTests ?? 440,
-            (metricsData as any).vitest?.numFailedTests ?? 2,
+            (metricsData as any).vitest?.numFailedTests ?? 0,
             (metricsData as any).vitest?.numPendingTests ?? 0,
           ],
           backgroundColor: [
@@ -489,7 +484,7 @@ const TestHealthOverview = () => {
               {t("dashboardPassed")}
             </Badge>
             <Badge variant="primary" tone="error">
-              {(metricsData as any).vitest?.failedTests ?? 2}{" "}
+              {(metricsData as any).vitest?.failedTests ?? 0}{" "}
               {t("dashboardFailed")}
             </Badge>
           </div>

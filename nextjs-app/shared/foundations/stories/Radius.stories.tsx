@@ -19,7 +19,7 @@ export const Overview: Story = {
     return (
       <FoundationPage
         title="Radius"
-        lead="Corner radii for controls, cards, and modals."
+        lead="A tight corner scale — sm through xl — plus full (pill) and circle for controls, cards, modals, and avatars."
       >
         <DocSection title="Tokens">
           <TokenTable tokens={tokens} />
@@ -35,6 +35,9 @@ export const Overview: Story = {
               { token: "--radius-sm", label: "sm" },
               { token: "--radius-md", label: "md" },
               { token: "--radius-lg", label: "lg" },
+              { token: "--radius-xl", label: "xl" },
+              { token: "--radius-full", label: "full" },
+              { token: "--radius-circle", label: "circle" },
             ].map(({ token, label }) => (
               <div key={token} style={{ textAlign: "center" }}>
                 <div
