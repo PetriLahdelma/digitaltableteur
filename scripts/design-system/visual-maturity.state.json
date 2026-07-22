@@ -1,0 +1,83 @@
+{
+  "$comment": "Visual-maturity scores are human-authored design-lead judgments (0-5), not machine-measured. docs/design-system/visual-maturity-rubric.md is the human source of truth; this file is the machine state. check:visual-maturity ratchets DT's own floor so scores cannot silently regress. Competitor rows are reference reads (homepage-based, not full audits) — update when re-scored.",
+  "target": 4,
+  "axes": [
+    "typographicVoice",
+    "compositionalTension",
+    "shapeLanguage",
+    "elevationDepth",
+    "colorConviction",
+    "motionVocabulary",
+    "detailFinish"
+  ],
+  "subjects": {
+    "digitaltableteur": {
+      "self": true,
+      "scoredAt": "2026-07-23",
+      "basis": "repo (tokens, components, gates, a11y) + live site",
+      "scores": {
+        "typographicVoice": 2.5,
+        "compositionalTension": 2.5,
+        "shapeLanguage": 4,
+        "elevationDepth": 3.5,
+        "colorConviction": 3,
+        "motionVocabulary": 3,
+        "detailFinish": 4.5
+      }
+    },
+    "pentagram": {
+      "url": "https://www.pentagram.com",
+      "scoredAt": "2026-07-23",
+      "basis": "homepage",
+      "scores": {
+        "typographicVoice": 5,
+        "compositionalTension": 5,
+        "shapeLanguage": 4,
+        "elevationDepth": 3.5,
+        "colorConviction": 4,
+        "motionVocabulary": 4.5,
+        "detailFinish": 4.5
+      }
+    },
+    "collins": {
+      "url": "https://www.wearecollins.com",
+      "scoredAt": "2026-07-23",
+      "basis": "homepage",
+      "scores": {
+        "typographicVoice": 5,
+        "compositionalTension": 4,
+        "shapeLanguage": 3.5,
+        "elevationDepth": 3,
+        "colorConviction": 4.5,
+        "motionVocabulary": 4,
+        "detailFinish": 4.5
+      }
+    },
+    "koto": {
+      "url": "https://koto.studio",
+      "scoredAt": "2026-07-23",
+      "basis": "homepage",
+      "scores": {
+        "typographicVoice": 4.5,
+        "compositionalTension": 4.5,
+        "shapeLanguage": 4,
+        "elevationDepth": 3.5,
+        "colorConviction": 5,
+        "motionVocabulary": 4.5,
+        "detailFinish": 4
+      }
+    }
+  },
+  "floor": {
+    "composite": 3.29,
+    "perAxis": {
+      "typographicVoice": 2.5,
+      "compositionalTension": 2.5,
+      "shapeLanguage": 4,
+      "elevationDepth": 3.5,
+      "colorConviction": 3,
+      "motionVocabulary": 3,
+      "detailFinish": 4.5
+    }
+  }
+}
