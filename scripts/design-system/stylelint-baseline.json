@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2279,
+  "warningCount": 2315,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -19615,7 +19615,7 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 159,
+      "line": 157,
       "column": 25,
       "rule": "rhythmguard/no-offscale-transform",
       "severity": "warning",
@@ -19624,16 +19624,16 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 155,
+      "line": 153,
       "column": 16,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
-      "text": "Unexpected raw scale value \"-0.35rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-0.35rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+      "text": "Unexpected raw scale value \"-0.28rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"-0.28rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 159,
+      "line": 157,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19642,8 +19642,35 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 68,
+      "line": 96,
       "column": 8,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 309,
+      "column": 15,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 86,
+      "column": 15,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 275,
+      "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"0.35rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -19651,16 +19678,34 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 96,
-      "column": 19,
+      "line": 46,
+      "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
-      "text": "Unexpected raw scale value \"0.35rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.35rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+      "text": "Unexpected raw scale value \"0.3rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.3rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 280,
+      "line": 199,
+      "column": 8,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.3rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.3rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 48,
+      "column": 8,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.45rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.45rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 16,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19669,43 +19714,34 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 14,
+      "line": 249,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+      "text": "Unexpected raw scale value \"0.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 363,
+      "column": 8,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 385,
+      "column": 8,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
       "line": 117,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 302,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 177,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.6rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.6rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 44,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19714,7 +19750,7 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 77,
+      "line": 324,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19723,7 +19759,7 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 243,
+      "line": 356,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19732,17 +19768,71 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 274,
+      "line": 172,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
-      "text": "Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
+      "text": "Unexpected raw scale value \"0.7rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.7rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 42,
-      "column": 12,
+      "line": 46,
+      "column": 19,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.8rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.8rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 78,
+      "column": 8,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.9rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.9rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 106,
+      "column": 8,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.9rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.9rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 199,
+      "column": 15,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.9rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.9rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 242,
+      "column": 8,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.9rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.9rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 94,
+      "column": 25,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 76,
+      "column": 17,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -19750,8 +19840,8 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 66,
-      "column": 25,
+      "line": 165,
+      "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -19759,7 +19849,7 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 85,
+      "line": 229,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19768,8 +19858,44 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 37,
+      "line": 234,
       "column": 8,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 104,
+      "column": 12,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 170,
+      "column": 12,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 294,
+      "column": 8,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.4rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 292,
+      "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -19777,8 +19903,8 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 42,
-      "column": 20,
+      "line": 335,
+      "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -19786,52 +19912,16 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 75,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 192,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 218,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::5"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 220,
+      "line": 5,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::6"
+      "text": "Unexpected raw scale value \"1.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 254,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::7"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 92,
+      "line": 23,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19840,8 +19930,8 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 110,
-      "column": 8,
+      "line": 76,
+      "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -19849,7 +19939,7 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 194,
+      "line": 305,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -19858,8 +19948,8 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 230,
-      "column": 8,
+      "line": 340,
+      "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -19867,8 +19957,8 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 259,
-      "column": 12,
+      "line": 342,
+      "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -19876,17 +19966,8 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 261,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::6"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 5,
-      "column": 8,
+      "line": 380,
+      "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
       "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
@@ -19894,34 +19975,16 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 187,
-      "column": 8,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 297,
-      "column": 12,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 155,
+      "line": 153,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"-0.35rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.35rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"-0.28rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"-0.28rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 159,
+      "line": 157,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19930,8 +19993,35 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 68,
-      "column": 8,
+      "line": 52,
+      "column": 19,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.01em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 183,
+      "column": 19,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.04em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 86,
+      "column": 15,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.2rem\". Use scale values (nearest: 2px or 4px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.2rem\". Use scale values (nearest: 2px or 4px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 275,
+      "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.35rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
@@ -19939,16 +20029,34 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 96,
-      "column": 19,
+      "line": 46,
+      "column": 12,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.35rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.35rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.3rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.3rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 280,
+      "line": 199,
+      "column": 8,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.3rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.3rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 48,
+      "column": 8,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.45rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.45rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 16,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19957,7 +20065,34 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 128,
+      "line": 249,
+      "column": 8,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.4rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.4rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 363,
+      "column": 8,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.4rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.4rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 385,
+      "column": 8,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.4rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.4rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 56,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19966,16 +20101,61 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 177,
-      "column": 8,
+      "line": 57,
+      "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.6rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.6rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.55rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.55rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 166,
+      "line": 261,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.78rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.78rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 172,
+      "column": 8,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.7rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.7rem\". Use scale values (nearest: 8px or 12px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 50,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 200,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 374,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.82rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 40,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19984,7 +20164,7 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 291,
+      "line": 328,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -19993,25 +20173,43 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 30,
-      "column": 14,
+      "line": 46,
+      "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 247,
+      "line": 181,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 69,
+      "line": 283,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.8rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 400,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.92rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.92rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 88,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -20020,7 +20218,7 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 101,
+      "line": 316,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -20029,26 +20227,89 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 181,
-      "column": 14,
+      "line": 78,
+      "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 316,
+      "line": 97,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.95rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::4"
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 311,
+      "line": 106,
+      "column": 8,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 199,
+      "column": 15,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 242,
+      "column": 8,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::5"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 255,
       "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::6"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 276,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.9rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::7"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 123,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 394,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.05rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 94,
+      "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.1rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
@@ -20056,8 +20317,8 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 42,
-      "column": 12,
+      "line": 76,
+      "column": 17,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
@@ -20065,8 +20326,8 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 66,
-      "column": 25,
+      "line": 165,
+      "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
@@ -20074,7 +20335,7 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 85,
+      "line": 229,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -20083,16 +20344,79 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 298,
-      "column": 19,
+      "line": 234,
+      "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"160px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"160px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::4"
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 315,
+      "line": 104,
+      "column": 12,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.4rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.4rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 170,
+      "column": 12,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.4rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.4rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 294,
+      "column": 8,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.4rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.4rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 5,
+      "column": 8,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.75rem\". Use scale values (nearest: 24px or 32px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.75rem\". Use scale values (nearest: 24px or 32px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 381,
+      "column": 19,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"150px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"150px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 268,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.2rem\". Use scale values (nearest: 32px or 4px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.2rem\". Use scale values (nearest: 32px or 4px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 191,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.4rem\". Use scale values (nearest: 32px or 4px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.4rem\". Use scale values (nearest: 32px or 4px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/stories/TestHealth.module.css",
+      "line": 399,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -20101,7 +20425,7 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 24,
+      "line": 315,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -20110,12 +20434,12 @@
     },
     {
       "file": "nextjs-app/shared/stories/TestHealth.module.css",
-      "line": 234,
+      "line": 33,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Unexpected off-scale value \"48rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"48rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::2"
+      "text": "Unexpected off-scale value \"52rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/stories/TestHealth.module.css::rhythmguard/use-scale::Unexpected off-scale value \"52rem\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/stories/Welcome.module.css",
