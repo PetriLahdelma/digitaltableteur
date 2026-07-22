@@ -126,6 +126,10 @@ const reactDomTypesVersion =
 // legacy-peer-deps so the scratch consumer must install it explicitly.
 const framerMotionVersion =
   rootPackage.dependencies?.["framer-motion"] ?? rootPackage.devDependencies?.["framer-motion"];
+// react-markdown became a peer alongside AuthorBio (0.1.18); same explicit
+// install requirement as framer-motion.
+const reactMarkdownVersion =
+  rootPackage.dependencies?.["react-markdown"] ?? rootPackage.devDependencies?.["react-markdown"];
 const forbiddenReactExports = roadmapState.reactPublicSurface?.forbiddenExports ?? [];
 
 if (
@@ -496,6 +500,7 @@ void tree;
       `react@${reactDependencyVersion}`,
       `react-dom@${reactDomDependencyVersion}`,
       `framer-motion@${framerMotionVersion}`,
+      `react-markdown@${reactMarkdownVersion}`,
       `typescript@${typescriptVersion}`,
       `@types/react@${reactTypesVersion}`,
       `@types/react-dom@${reactDomTypesVersion}`,
