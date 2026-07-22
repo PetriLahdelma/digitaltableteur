@@ -165,7 +165,10 @@ const maxPackedFiles = 40 + tags.length * 2;
 // description typography matching @dt/Card, !important escape hatch over the
 // app's global p/strong rules, surface radius/gap alignment): measured
 // 1,852,714 bytes unpacked, ~1.1 kB over the prior ceiling.
-const sharedBundleAndManifestCeiling = 1_315_500;
+// +1 kB for the dt-logo content-atom elevation (src attribute: custom-image
+// render path + manifest metadata): measured 1,854,106 bytes unpacked, ~1 kB
+// over the prior ceiling.
+const sharedBundleAndManifestCeiling = 1_316_500;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.

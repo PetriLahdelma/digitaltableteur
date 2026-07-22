@@ -799,6 +799,7 @@ export type DtSelectableCardGroupElementContract = HTMLElement & {
 };
 
 export type DtLogoElementContract = HTMLElement & {
+  src?: string;
   size?: number;
   animated?: boolean;
   badge?: boolean;

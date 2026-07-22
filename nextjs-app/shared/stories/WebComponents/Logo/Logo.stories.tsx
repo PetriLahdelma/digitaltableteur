@@ -9,6 +9,7 @@ import {
 } from "../NativeStory";
 
 type Args = {
+  src: string;
   size: number;
   animated: boolean;
   badge: boolean;
@@ -26,14 +27,20 @@ function Logo({ title, ...rest }: Args) {
 }
 
 const meta = {
-  title: "Web Components/Site/Logo",
+  title: "Web Components/Content/Logo",
   component: Logo,
   tags: ["autodocs", "beta", "web-components"],
   parameters: {
     ...nativeStoryParameters,
-    docs: { description: { component: "Native dt-logo brand mark." } },
+    docs: {
+      description: {
+        component:
+          "Native dt-logo atom: the Digitaltableteur brand mark by default, or any custom PNG/JPEG/SVG logo via src.",
+      },
+    },
   },
   args: {
+    src: "",
     size: 24,
     animated: false,
     badge: false,
@@ -73,6 +80,14 @@ export const Badge: Story = {
     <Row>
       <Logo {...meta.args} badge size={40} />
       <Logo {...meta.args} badge animated size={40} />
+    </Row>
+  ),
+};
+export const CustomImage: Story = {
+  render: () => (
+    <Row>
+      <Logo {...meta.args} src="/logos/clients/dsharp.svg" title="DSharp" size={64} />
+      <Logo {...meta.args} src="/logos/clients/finnair.svg" title="Finnair" size={64} />
     </Row>
   ),
 };

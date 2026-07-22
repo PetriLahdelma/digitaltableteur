@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import contract from "./Logo.contract.json";
 
 const meta = {
-  title: "Site/Logo",
+  title: "Content/Logo",
   component: Logo,
   tags: ["stable", "autodocs"],
   parameters: {
@@ -16,7 +16,7 @@ const meta = {
     a11y: { test: "error" },
   },
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
-  args: { size: 24, animated: false, badge: false, decorative: false },
+  args: { src: "", size: 24, animated: false, badge: false, decorative: false },
 } satisfies Meta<typeof Logo>;
 
 export default meta;
@@ -87,6 +87,31 @@ export const Badge: Story = {
     >
       <Logo size={40} badge />
       <Logo size={40} badge animated />
+    </div>
+  ),
+};
+
+export const CustomImage: Story = {
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Any PNG, JPEG, or SVG logo via `src` — the image letterboxes inside the square `size` box and renders with its own colors (no `currentColor` inheritance). `title` is the alt text.",
+      },
+    },
+  },
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        gap: "var(--space-layout-16)",
+        alignItems: "center",
+      }}
+    >
+      <Logo src="/logos/clients/dsharp.svg" title="DSharp" size={64} />
+      <Logo src="/logos/clients/finnair.svg" title="Finnair" size={64} />
+      <Logo src="/logos/clients/aalto.svg" title="Aalto University" size={64} />
     </div>
   ),
 };

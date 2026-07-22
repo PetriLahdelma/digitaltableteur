@@ -9158,16 +9158,23 @@
       "group": "display",
       "tier": 2,
       "status": "stable",
-      "description": "Digitaltableteur brand mark — monochrome (currentColor), square footprint, optional controlled pulse.",
-      "dense": "Digitaltableteur brand mark: monochrome currentColor, square footprint, optional link wrapper",
+      "description": "Logo atom — the Digitaltableteur mark by default (monochrome currentColor, square footprint, optional controlled pulse), or any custom PNG/JPEG/SVG logo via src.",
+      "dense": "Logo atom: built-in DT mark (monochrome currentColor, square footprint) or custom image via src; optional link wrapper",
       "keywords": [
         "logo",
         "brand",
         "mark",
-        "monochrome"
+        "monochrome",
+        "image",
+        "custom"
       ],
       "importLine": "import { Logo } from \"@dt/Logo\";",
       "keyProps": [
+        {
+          "name": "src",
+          "type": "string",
+          "required": false
+        },
         {
           "name": "size",
           "type": "number",
@@ -9192,14 +9199,14 @@
           "name": "decorative",
           "type": "boolean",
           "required": false
-        },
-        {
-          "name": "className",
-          "type": "string",
-          "required": false
         }
       ],
       "props": {
+        "src": {
+          "optional": true,
+          "type": "string",
+          "description": "Optional image URL (PNG, JPEG, or SVG) rendered instead of the built-in\nDigitaltableteur mark. `title` becomes the alt text; `animated` and `badge`\napply to the built-in mark only and are ignored when `src` is set."
+        },
         "size": {
           "optional": true,
           "type": "number",
@@ -9235,7 +9242,7 @@
       "prefersOver": [],
       "forbiddenUse": [],
       "usage": {
-        "description": "The brand mark. Monochrome via currentColor so it inherits the surface's ink; square footprint; optionally wraps itself in a home link."
+        "description": "The logo atom. Renders the Digitaltableteur mark by default — monochrome via currentColor so it inherits the surface's ink, square footprint, optionally wraps itself in a home link. Pass src to render any custom logo image (PNG, JPEG, or SVG) inside the same square box."
       },
       "tokens": {
         "colors": [],

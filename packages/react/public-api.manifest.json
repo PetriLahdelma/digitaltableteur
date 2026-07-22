@@ -393,6 +393,8 @@
       "ListItem",
       "ListItemProps",
       "ListProps",
+      "Logo",
+      "LogoProps",
       "ReadingProgress",
       "ReadingProgressProps",
       "SupportedLanguage",

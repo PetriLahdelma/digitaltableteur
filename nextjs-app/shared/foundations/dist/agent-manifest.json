@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-21T10:20:33.484Z",
+  "generatedAt": "2026-07-22T14:40:34.862Z",
   "summary": {
     "componentCount": 166,
     "statusCounts": {
@@ -188,7 +188,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -521,7 +522,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -538,7 +540,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -1187,7 +1190,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -1360,7 +1364,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -2306,7 +2311,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -2517,7 +2523,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -2528,7 +2535,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -2651,7 +2659,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -2821,7 +2830,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -3879,7 +3889,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-07-03 — group semantics, overflow sr text asserted in unit tests; axe clean.",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -4124,7 +4135,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -4141,7 +4153,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -7624,7 +7637,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-07-03 — group semantics + labelled-group asserted in unit tests; axe clean; focus ring lift verified in Storybook.",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -7825,7 +7839,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -7842,7 +7857,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -9125,7 +9141,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -9681,7 +9698,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -9692,7 +9710,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -9822,7 +9841,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-07-14 — streaming display reviewed: only the active assistant reply uses grapheme-safe adaptive smoothing; reduced motion bypasses it and the polite message log remains aria-busy until the complete response is available.",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -9994,7 +10014,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -10011,7 +10032,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -11162,7 +11184,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -11277,7 +11300,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -12839,7 +12863,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. Overlay dialog is role=dialog aria-modal with an accessible label; the search input is role=combobox with aria-expanded, aria-controls and aria-activedescendant onto the role=listbox; each command is role=option with aria-selected reflecting the active item. Focus is trapped (useFocusTrap) and background scroll locked (useScrollLock) while open; Arrow Up/Down wrap the active option, Enter runs it and closes, Escape closes, overlay mousedown closes. User-facing strings are props so the component carries no i18n dependency. Axe asserted in unit test; forced-colors + light/dark verified on a non-6010 Storybook. Known limitation: virtualization is not implemented, so very long command lists render in full.",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -13056,7 +13081,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -13073,7 +13099,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -13198,7 +13225,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -13419,7 +13447,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -13555,7 +13584,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -13710,7 +13740,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -13727,7 +13758,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -15001,7 +15033,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -15120,7 +15153,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -15249,7 +15283,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -15410,7 +15445,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -15541,7 +15577,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -15744,7 +15781,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -15755,7 +15793,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -16836,7 +16875,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -16981,7 +17021,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -20858,7 +20899,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "motion": true,
-          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -21025,7 +21067,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -21047,7 +21090,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -23996,7 +24040,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -24215,7 +24260,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -24356,7 +24402,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-07-06 — alpha→beta: created the Figma component (size variant keycap set, border/bg/text bound to DT/Color, radius from radius/sm) at node 1005-1638, the only remaining beta blocker. Static inline element; axe asserted in unit test and story gate; forced-colors border verified.",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -24561,7 +24608,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -24572,7 +24620,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -26566,7 +26615,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -26775,7 +26825,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -27487,7 +27538,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-07-17 — axe asserted in ListItem.test.tsx and the Storybook a11y gate (parameters.a11y.test: error); consumer-owned semantics reviewed (role/focus/events belong to the interactive wrapper, ListItem itself carries no interactive ARIA); ForcedColors story verifies the forced-colors treatment (CanvasText/GrayText/Highlight/HighlightText mapping).",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -27775,7 +27827,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -27786,7 +27839,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -27924,7 +27978,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -28140,7 +28195,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -28157,7 +28213,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -28260,7 +28317,7 @@
         "tier": "atom",
         "group": "display",
         "status": "stable",
-        "description": "Digitaltableteur brand mark — monochrome (currentColor), square footprint, optional controlled pulse.",
+        "description": "Logo atom — the Digitaltableteur mark by default (monochrome currentColor, square footprint, optional controlled pulse), or any custom PNG/JPEG/SVG logo via src.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=480-1588",
         "radixPrimitive": null,
         "element": "svg",
@@ -28296,7 +28353,7 @@
           "forcedColorsVerified": true,
           "realBrowserForcedColorsVerified": true,
           "accessibilityTreeVerified": true,
-          "reviewedNote": "Verified 2026-06-02: role=img/aria-label vs aria-hidden when decorative, focusable=false, non-interactive (no keyboard contract — wrap in link/button to activate). Every mark uses fill=currentColor → maps to system CanvasText in forced colors; the ForcedColors story passes axe. Pulse is disabled under prefers-reduced-motion. All Logo tests pass. Re-verified 2026-07-13 for stable promotion: AT snapshots committed for all required stories; `animated` is now a controlled signal (pulses while true) rather than self-hover, driven by SiteHeader's link-hover state. Swapped into SiteHeader (production consumer on every page) with byte-for-byte parity vs the prior inline mark — identical viewBox 0 0 395 323, geometry, dt-logo-pulse keyframes, badge scale, currentColor tokens; verified live in the running app (rest/hover/both themes)."
+          "reviewedNote": "Verified 2026-06-02: role=img/aria-label vs aria-hidden when decorative, focusable=false, non-interactive (no keyboard contract — wrap in link/button to activate). Every mark uses fill=currentColor → maps to system CanvasText in forced colors; the ForcedColors story passes axe. Pulse is disabled under prefers-reduced-motion. All Logo tests pass. Re-verified 2026-07-13 for stable promotion: AT snapshots committed for all required stories; `animated` is now a controlled signal (pulses while true) rather than self-hover, driven by SiteHeader's link-hover state. Swapped into SiteHeader (production consumer on every page) with byte-for-byte parity vs the prior inline mark — identical viewBox 0 0 395 323, geometry, dt-logo-pulse keyframes, badge scale, currentColor tokens; verified live in the running app (rest/hover/both themes). Extended 2026-07-22 (content-atom elevation): custom-image path (`src`) renders a native <img> — accessible name from `title` via alt, decorative maps to alt=\"\" + aria-hidden; animated/badge stay built-in-mark-only so no motion applies to custom images."
         },
         "tokens": {
           "colors": [],
@@ -28347,6 +28404,11 @@
         ],
         "schemaVersion": 2,
         "props": {
+          "src": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional image URL (PNG, JPEG, or SVG) rendered instead of the built-in\nDigitaltableteur mark. `title` becomes the alt text; `animated` and `badge`\napply to the built-in mark only and are ignored when `src` is set."
+          },
           "size": {
             "optional": true,
             "type": "number",
@@ -28383,14 +28445,16 @@
           "logo",
           "brand",
           "mark",
-          "monochrome"
+          "monochrome",
+          "image",
+          "custom"
         ],
-        "dense": "Digitaltableteur brand mark: monochrome currentColor, square footprint, optional link wrapper",
+        "dense": "Logo atom: built-in DT mark (monochrome currentColor, square footprint) or custom image via src; optional link wrapper",
         "usage": {
-          "description": "The brand mark. Monochrome via currentColor so it inherits the surface's ink; square footprint; optionally wraps itself in a home link."
+          "description": "The logo atom. Renders the Digitaltableteur mark by default — monochrome via currentColor so it inherits the surface's ink, square footprint, optionally wraps itself in a home link. Pass src to render any custom logo image (PNG, JPEG, or SVG) inside the same square box."
         }
       },
-      "spec": "# Logo — spec\n\nBrand mark for Digitaltableteur. Atom, display group.\n\n## Intent\n\nProvide one canonical, theme-safe Digitaltableteur mark for use across the\nsite (header, footer, loading states, favicons-as-component). It exists so no\nsurface hand-rolls an inline SVG or hardcodes brand color: the mark inherits\n`currentColor` and scales cleanly inside a square box.\n\n## Purpose\n\nSingle source of truth for the DT mark. Renders the canonical vector inline so\nit inherits `currentColor` and scales cleanly. Replaces ad-hoc inline SVGs\n(e.g. the placeholder square previously used in `SiteHeader` / `SiteFooter`).\n\n## API\n\n| Prop         | Type      | Default              | Notes                                                  |\n| ------------ | --------- | -------------------- | ------------------------------------------------------ |\n| `size`       | `number`  | `24`                 | Square render box in px; mark fits inside (no distort) |\n| `animated`   | `boolean` | `false`              | Three-bar hover pulse; disabled under reduced motion   |\n| `badge`      | `boolean` | `false`              | Wrap the mark in the brand lime circle (contrast mark) |\n| `title`      | `string`  | `\"Digitaltableteur\"` | Accessible name; ignored when `decorative`             |\n| `decorative` | `boolean` | `false`              | `aria-hidden`, no title — for redundant placements     |\n| `className`  | `string`  | —                    | Utility/spacing classes                                |\n\n## Behavior\n\n- Monochrome via `currentColor`; color comes from the consumer's text color, so\n  it is theme- and forced-colors-safe (no hardcoded values).\n- `animated` adds the `pulse-1/2/3` keyframes on hover only.\n- `badge` swaps to a filled lime circle (`--logo-background`) behind a contrast\n  mark (`--logo-color`).\n\n## Interaction contract\n\n- **Not interactive.** The mark renders a non-focusable `<svg>`\n  (`focusable=\"false\"`) with no pointer or keyboard handlers. When it needs to\n  act as a link (e.g. header home link), the consumer wraps it in an `<a>` /\n  `Button` and owns focus and the accessible name.\n- `animated` is hover-only decoration and is fully suppressed under\n  `prefers-reduced-motion: reduce`.\n\n## Do / don't\n\n- Do: let the mark inherit text color; set `color` on the parent to recolor.\n- Do: pass `decorative` when an adjacent wordmark already names the brand.\n- Don't: hardcode a fill or wrap the mark in a fixed-color box; that breaks\n  dark theme and forced-colors.\n- Don't: translate `title`; the brand name is a proper noun.\n- Don't: add click handlers to `Logo` itself; wrap it in a real link or button.\n\n## Accessibility\n\n- Default: `role=\"img\"` + `<title>`/`aria-label` from `title`.\n- `decorative`: removed from the a11y tree (`aria-hidden`), for cases where an\n  adjacent wordmark already names the brand.\n- The accessible name is a brand proper noun and is not translated.\n- Reduced motion: the hover pulse is disabled via `@media (prefers-reduced-motion: reduce)`.\n\n## Design notes\n\n- The mark is the three-bar \"DI–\" device; the `badge` variant is the lime\n  brand lockup. Both share one viewBox so sizing stays consistent.\n- Forced-colors safety comes from `fill=\"currentColor\"` on every path, which\n  maps to the system `CanvasText` keyword automatically.\n\n## Out of scope\n\n- Wordmark lockup beyond the badge circle remains composition.\n",
+      "spec": "# Logo — spec\n\nReusable logo atom. Atom, display group, Content taxonomy.\n\n## Intent\n\nProvide one canonical, theme-safe logo slot for use across the site and in\nconsumer products (header, footer, loading states, favicons-as-component).\nBy default it renders the Digitaltableteur mark so no surface hand-rolls an\ninline SVG or hardcodes brand color: the mark inherits `currentColor` and\nscales cleanly inside a square box. With `src`, the same atom renders any\ncustom logo image (PNG, JPEG, or SVG) inside the same square footprint.\n\n## Purpose\n\nSingle source of truth for logo rendering. Without `src` it renders the\ncanonical DT vector inline so it inherits `currentColor` and scales cleanly,\nreplacing ad-hoc inline SVGs (e.g. the placeholder square previously used in\n`SiteHeader` / `SiteFooter`). With `src` it is the reusable content atom for\nany brand's logo — the image letterboxes inside the square `size` box.\n\n## API\n\n| Prop         | Type      | Default              | Notes                                                  |\n| ------------ | --------- | -------------------- | ------------------------------------------------------ |\n| `src`        | `string`  | —                    | Custom logo URL (PNG/JPEG/SVG); renders an `<img>`     |\n| `size`       | `number`  | `24`                 | Square render box in px; logo fits inside (no distort) |\n| `animated`   | `boolean` | `false`              | Three-bar pulse (built-in mark only); reduced-motion safe |\n| `badge`      | `boolean` | `false`              | Brand lime circle (built-in mark only)                 |\n| `title`      | `string`  | `\"Digitaltableteur\"` | Accessible name / alt text; ignored when `decorative`  |\n| `decorative` | `boolean` | `false`              | `aria-hidden`, no title — for redundant placements     |\n| `className`  | `string`  | —                    | Utility/spacing classes                                |\n\n## Behavior\n\n- Built-in mark: monochrome via `currentColor`; color comes from the consumer's\n  text color, so it is theme- and forced-colors-safe (no hardcoded values).\n- `animated` adds the `pulse-1/2/3` keyframes on hover only.\n- `badge` swaps to a filled lime circle (`--logo-background`) behind a contrast\n  mark (`--logo-color`).\n- `src`: renders a native `<img>` in the same square `size` box with\n  `object-fit: contain`, so any aspect ratio letterboxes without distortion.\n  `animated` and `badge` are built-in-mark-only and are ignored; a custom image\n  renders with its own colors (no `currentColor` inheritance, no forced-colors\n  remap).\n- An empty `src` (`\"\"`) falls back to the built-in mark — a cleared Controls\n  text field must never render a broken image.\n\n## Interaction contract\n\n- **Not interactive.** The mark renders a non-focusable `<svg>`\n  (`focusable=\"false\"`) with no pointer or keyboard handlers. When it needs to\n  act as a link (e.g. header home link), the consumer wraps it in an `<a>` /\n  `Button` and owns focus and the accessible name.\n- `animated` is hover-only decoration and is fully suppressed under\n  `prefers-reduced-motion: reduce`.\n\n## Do / don't\n\n- Do: let the mark inherit text color; set `color` on the parent to recolor.\n- Do: pass `decorative` when an adjacent wordmark already names the brand.\n- Do: pass `src` + `title` for third-party or client logos; `title` is the alt\n  text and should name that brand.\n- Don't: hardcode a fill or wrap the mark in a fixed-color box; that breaks\n  dark theme and forced-colors.\n- Don't: translate `title`; brand names are proper nouns.\n- Don't: add click handlers to `Logo` itself; wrap it in a real link or button.\n- Don't: combine `src` with `animated`/`badge`; those are built-in-mark-only\n  and are ignored.\n\n## Accessibility\n\n- Default: `role=\"img\"` + `<title>`/`aria-label` from `title`.\n- `src`: a native `<img>` whose alt text comes from `title`; `decorative` maps\n  to `alt=\"\"` + `aria-hidden`.\n- `decorative`: removed from the a11y tree (`aria-hidden`), for cases where an\n  adjacent wordmark already names the brand.\n- The accessible name is a brand proper noun and is not translated.\n- Reduced motion: the hover pulse is disabled via `@media (prefers-reduced-motion: reduce)`.\n\n## Design notes\n\n- The mark is the three-bar \"DI–\" device; the `badge` variant is the lime\n  brand lockup. Both share one viewBox so sizing stays consistent.\n- Forced-colors safety comes from `fill=\"currentColor\"` on every path, which\n  maps to the system `CanvasText` keyword automatically.\n\n## Out of scope\n\n- Wordmark lockup beyond the badge circle remains composition.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Logo",
@@ -28415,8 +28479,13 @@
       },
       "agent": {
         "preferredImport": "@dt/Logo",
-        "intent": "Provide one canonical, theme-safe Digitaltableteur mark for use across the site (header, footer, loading states, favicons-as-component). It exists so no surface hand-rolls an inline SVG or hardcodes brand color: the mar…",
+        "intent": "Provide one canonical, theme-safe logo slot for use across the site and in consumer products (header, footer, loading states, favicons-as-component). By default it renders the Digitaltableteur mark so no surface hand-ro…",
         "props": {
+          "src": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional image URL (PNG, JPEG, or SVG) rendered instead of the built-in\nDigitaltableteur mark. `title` becomes the alt text; `animated` and `badge`\napply to the built-in mark only and are ignored when `src` is set."
+          },
           "size": {
             "optional": true,
             "type": "number",
@@ -28454,12 +28523,14 @@
         "variantsFnName": null,
         "useWhen": [
           "let the mark inherit text color; set `color` on the parent to recolor.",
-          "pass `decorative` when an adjacent wordmark already names the brand."
+          "pass `decorative` when an adjacent wordmark already names the brand.",
+          "pass `src` + `title` for third-party or client logos; `title` is the alt text and should name that brand."
         ],
         "avoidWhen": [
           "hardcode a fill or wrap the mark in a fixed-color box; that breaks dark theme and forced-colors.",
-          "translate `title`; the brand name is a proper noun.",
-          "add click handlers to `Logo` itself; wrap it in a real link or button."
+          "translate `title`; brand names are proper nouns.",
+          "add click handlers to `Logo` itself; wrap it in a real link or button.",
+          "combine `src` with `animated`/`badge`; those are built-in-mark-only and are ignored."
         ],
         "requiredA11y": [
           "accessible name via title unless decorative",
@@ -28476,8 +28547,9 @@
         "replacementFor": [],
         "forbiddenUse": [
           "hardcode a fill or wrap the mark in a fixed-color box; that breaks dark theme and forced-colors.",
-          "translate `title`; the brand name is a proper noun.",
-          "add click handlers to `Logo` itself; wrap it in a real link or button."
+          "translate `title`; brand names are proper nouns.",
+          "add click handlers to `Logo` itself; wrap it in a real link or button.",
+          "combine `src` with `animated`/`badge`; those are built-in-mark-only and are ignored."
         ],
         "composesWith": [
           "NavLink",
@@ -28487,7 +28559,7 @@
           "ThemeProvider"
         ],
         "prefersOver": [],
-        "declaredPropCount": 6,
+        "declaredPropCount": 7,
         "guidelines": [
           {
             "level": "should",
@@ -28504,6 +28576,13 @@
             "source": "spec.md#do-dont"
           },
           {
+            "level": "should",
+            "guidance": "pass `src` + `title` for third-party or client logos; `title` is the alt text and should name that brand.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
             "level": "should-not",
             "guidance": "hardcode a fill or wrap the mark in a fixed-color box; that breaks dark theme and forced-colors.",
             "rationale": null,
@@ -28512,7 +28591,7 @@
           },
           {
             "level": "should-not",
-            "guidance": "translate `title`; the brand name is a proper noun.",
+            "guidance": "translate `title`; brand names are proper nouns.",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"
@@ -28520,6 +28599,13 @@
           {
             "level": "should-not",
             "guidance": "add click handlers to `Logo` itself; wrap it in a real link or button.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "combine `src` with `animated`/`badge`; those are built-in-mark-only and are ignored.",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"
@@ -28554,7 +28640,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "Verified 2026-06-02: role=img/aria-label vs aria-hidden when decorative, focusable=false, non-interactive (no keyboard contract — wrap in link/button to activate). Every mark uses fill=currentColor → maps to system CanvasText in forced colors; the ForcedColors story passes axe. Pulse is disabled under prefers-reduced-motion. All Logo tests pass. Re-verified 2026-07-13 for stable promotion: AT snapshots committed for all required stories; `animated` is now a controlled signal (pulses while true) rather than self-hover, driven by SiteHeader's link-hover state. Swapped into SiteHeader (production consumer on every page) with byte-for-byte parity vs the prior inline mark — identical viewBox 0 0 395 323, geometry, dt-logo-pulse keyframes, badge scale, currentColor tokens; verified live in the running app (rest/hover/both themes)."
+            "note": "Verified 2026-06-02: role=img/aria-label vs aria-hidden when decorative, focusable=false, non-interactive (no keyboard contract — wrap in link/button to activate). Every mark uses fill=currentColor → maps to system CanvasText in forced colors; the ForcedColors story passes axe. Pulse is disabled under prefers-reduced-motion. All Logo tests pass. Re-verified 2026-07-13 for stable promotion: AT snapshots committed for all required stories; `animated` is now a controlled signal (pulses while true) rather than self-hover, driven by SiteHeader's link-hover state. Swapped into SiteHeader (production consumer on every page) with byte-for-byte parity vs the prior inline mark — identical viewBox 0 0 395 323, geometry, dt-logo-pulse keyframes, badge scale, currentColor tokens; verified live in the running app (rest/hover/both themes). Extended 2026-07-22 (content-atom elevation): custom-image path (`src`) renders a native <img> — accessible name from `title` via alt, decorative maps to alt=\"\" + aria-hidden; animated/badge stay built-in-mark-only so no motion applies to custom images."
           }
         ],
         "docOrigin": {
@@ -28671,7 +28757,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -28830,7 +28917,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -28968,7 +29056,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -29181,7 +29270,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -29319,7 +29409,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -29516,7 +29607,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -31998,7 +32090,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -32136,7 +32229,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -32271,7 +32365,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -32438,7 +32533,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -32455,7 +32551,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -32578,7 +32675,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -32709,7 +32807,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -32838,7 +32937,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -32985,7 +33085,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -33528,7 +33629,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -33862,7 +33964,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -36720,7 +36823,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -36989,7 +37093,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -37140,7 +37245,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -37459,7 +37565,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -39185,7 +39292,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. Container is role=radiogroup with a required aria-label; each segment is role=radio with aria-checked reflecting selection. Roving tabindex keeps exactly one segment tabbable (the selection, else the first enabled); Arrow keys move selection wrapping and skip disabled segments; Home/End jump to first/last enabled. Selection shown by a raised neutral surface (not brand fill) so it reads across light/dark; forced-colors maps the selected segment to a Highlight outline. Motion respects prefers-reduced-motion. Axe asserted in unit test; forced-colors + light/dark verified on a non-6010 Storybook.",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -39423,7 +39531,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -39440,7 +39549,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -40095,7 +40205,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-07-12 — alpha→beta: code-level a11y review. SelectableCardGroup renders a fieldset with a legend for the accessible name; each SelectableCard is a label wrapping a visually-hidden native radio (single) or checkbox (multiple) input, so keyboard, focus and form submission come from the platform. Error announces via role=alert and sets aria-invalid on the group. Selected/disabled states mirror to data-attributes for CSS + tests. Motion respects prefers-reduced-motion. Axe asserted in the colocated a11y test; forced-colors + light/dark verified on a non-6010 Storybook.",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -40288,7 +40399,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -40305,7 +40417,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -40428,7 +40541,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -40537,7 +40651,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -41043,7 +41158,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -41168,7 +41284,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -43272,7 +43389,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -43497,7 +43615,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -43508,7 +43627,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -47350,7 +47470,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -47517,7 +47638,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -49349,7 +49471,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+          "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -49561,7 +49684,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -51881,7 +52005,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "reviewedNote": "2026-07-03 (batch 4) — hover+focus trigger, Escape dismiss, and aria-describedby wiring asserted in the play function and unit tests; axe clean on Default/Placements/WithIconButton. 2026-07-05 (alpha→beta) — the pending light/dark + forced-colors verification is now done: axe-clean on Default/Example/ForcedColors via test-storybook; light + dark eyeballed (bubble uses --color-primary and inverts correctly, arrow tracks the bubble); emulated forced-colors shows a CanvasText-bordered Canvas bubble with readable CanvasText, no reliance on a background that disappears; enter/exit animation drops under reduced-motion (CSS @media).",
-          "forcedColorsVerified": true
+          "forcedColorsVerified": true,
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -52136,7 +52261,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -52153,7 +52279,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -52276,7 +52403,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -52502,7 +52630,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -53037,7 +53166,8 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -53184,7 +53314,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -53324,7 +53455,8 @@
           "reviewed": true,
           "reviewedNote": "2026-05-28 — Beta promotion: Storybook-only chrome (carries data-axe-ignore + axeTestExempt so it never gates host component contrast). role=status announcement is non-disruptive and stable lifecycle hides it entirely. Forced-colors + light/dark verified via dedicated stories.",
           "forcedColorsVerified": true,
-          "axeTestExempt": "Storybook chrome only"
+          "axeTestExempt": "Storybook chrome only",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [
@@ -53471,7 +53603,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
@@ -53482,7 +53615,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "human-a11y-review",
@@ -58591,7 +58725,8 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "ariaRequirements": [],
-          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+          "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled.",
+          "accessibilityTreeVerified": true
         },
         "tokens": {
           "colors": [],
@@ -58681,7 +58816,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified"
+            "verificationMode": "automated",
+            "check": "npm run test:stories"
           },
           {
             "id": "forced-colors-real-browser",
