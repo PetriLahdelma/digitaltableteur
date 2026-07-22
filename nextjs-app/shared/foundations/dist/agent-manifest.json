@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-22T18:05:01.761Z",
+  "generatedAt": "2026-07-22T21:17:10.311Z",
   "summary": {
     "componentCount": 166,
     "statusCounts": {
@@ -26,7 +26,7 @@
   "tokens": {
     "source": "nextjs-app/shared/styles/variables.css",
     "tokenCount": 198,
-    "usageCoverage": 158,
+    "usageCoverage": 162,
     "catalogPath": "nextjs-app/shared/foundations/token-catalog.json",
     "dtcgExport": "nextjs-app/shared/foundations/tokens/production/",
     "tailwindBridge": "app/tailwind.css (DT-THEME block)",
@@ -81,8 +81,8 @@
     "withAnyUsage": 155,
     "withProductionUsage": 35,
     "uniqueImportedComponents": 155,
-    "totalEvidenceRows": 767,
-    "aliasImportFiles": 392,
+    "totalEvidenceRows": 771,
+    "aliasImportFiles": 396,
     "relativeImportFiles": 408,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -7119,7 +7119,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Button",
-        "importCount": 56,
+        "importCount": 57,
         "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 32,
@@ -8338,7 +8338,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Card",
-        "importCount": 7,
+        "importCount": 8,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 4,
@@ -8375,6 +8375,12 @@
           },
           {
             "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Card",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/stories/Docs/DesignSystemOverview.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Card",
             "context": "story"
@@ -47982,7 +47988,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 54,
+        "importCount": 55,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 27,
@@ -50594,7 +50600,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 29,
+        "importCount": 30,
         "productionImportCount": 0,
         "patternImportCount": 4,
         "componentImportCount": 15,

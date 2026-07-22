@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "source": "nextjs-app/shared/styles/variables.css",
   "tokenCount": 198,
-  "usageCoverage": 158,
+  "usageCoverage": 162,
   "dtcgFiles": [
     "tokens/production/color.json",
     "tokens/production/elevation.json",
@@ -84,6 +84,10 @@
     "--modal-overlay-bg",
     "--modal-shadow",
     "--gallery-caption-bg",
+    "--shadow-sm",
+    "--shadow-md",
+    "--shadow-lg",
+    "--shadow-xl",
     "--focus-ring-color",
     "--focus-ring-width",
     "--focus-ring-offset",
@@ -152,10 +156,6 @@
     "--storybook-gray",
     "--checkbox-checkmark-color",
     "--checkbox-background-color",
-    "--shadow-sm",
-    "--shadow-md",
-    "--shadow-lg",
-    "--shadow-xl",
     "--radius-sm",
     "--radius-md",
     "--radius-lg",
@@ -227,5 +227,5 @@
     "--line-height-relaxed",
     "--line-height-loose"
   ],
-  "generatedAt": "2026-07-22T18:04:58.602Z"
+  "generatedAt": "2026-07-22T20:59:50.659Z"
 }

@@ -15,7 +15,7 @@ const COMMON_ICONS = [
   "list",
   "magnifying-glass",
   "user",
-  "envelope",
+  "paper-plane-tilt",
   "github",
   "linkedin-logo",
   "sun",

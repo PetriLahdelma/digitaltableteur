@@ -262,7 +262,7 @@ export function ContactPageContentEditorial({
                       >
                         {t(
                           "contactNewBusinessRole",
-                          "Founder, Head of Design"
+                          "Founder, Designer"
                         )}
                       </Text>
                     </div>

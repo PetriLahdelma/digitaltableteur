@@ -43,5 +43,55 @@
         }
       }
     }
+  },
+  "shadow": {
+    "sm": {
+      "$value": "0 1px 2px rgb(0 0 0 / 6%)",
+      "$description": "Elevation shadow (sm) — resting through modal.",
+      "$type": "string",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--shadow-sm",
+          "category": "elevation",
+          "subgroup": "General"
+        }
+      }
+    },
+    "md": {
+      "$value": "0 4px 12px rgb(0 0 0 / 10%)",
+      "$description": "Elevation shadow (md) — resting through modal.",
+      "$type": "string",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--shadow-md",
+          "category": "elevation",
+          "subgroup": "General"
+        }
+      }
+    },
+    "lg": {
+      "$value": "0 12px 32px rgb(0 0 0 / 12%)",
+      "$description": "Elevation shadow (lg) — resting through modal.",
+      "$type": "string",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--shadow-lg",
+          "category": "elevation",
+          "subgroup": "General"
+        }
+      }
+    },
+    "xl": {
+      "$value": "0 24px 60px rgb(0 0 0 / 16%)",
+      "$description": "Elevation shadow (xl) — resting through modal.",
+      "$type": "string",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--shadow-xl",
+          "category": "elevation",
+          "subgroup": "General"
+        }
+      }
+    }
   }
 }

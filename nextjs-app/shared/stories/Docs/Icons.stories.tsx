@@ -8,7 +8,7 @@ import {
   resolveBrowserPhosphorIcon,
 } from "./iconBrowserPhosphor";
 
-// Comprehensive list of all Phosphor icons (1512 icons)
+// Comprehensive list of all Phosphor icons (1515 icons)
 const ALL_ICON_NAMES = [
   "Acorn",
   "AddressBook",
@@ -1950,7 +1950,7 @@ const meta: Meta = {
   parameters: {
     layout: "fullscreen",
     vitest: {
-      skip: true, // Skip Vitest tests for this large documentation showcase (1952 lines, 1512 icons)
+      skip: true, // Skip Vitest tests for this large documentation showcase (1952 lines, 1515 icons)
     },
   },
 };

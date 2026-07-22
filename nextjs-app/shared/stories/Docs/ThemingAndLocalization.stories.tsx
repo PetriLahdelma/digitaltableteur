@@ -64,19 +64,19 @@ const DocsContent = () => {
             <tr>
               <td>{t("docsFilesThemeTokens")}</td>
               <td>
-                <code>src/styles/variables.css</code>
+                <code>nextjs-app/shared/styles/variables.css</code>
               </td>
             </tr>
             <tr>
               <td>{t("docsFilesThemeProvider")}</td>
               <td>
-                <code>src/components/ThemeProvider/ThemeProvider.tsx</code>
+                <code>nextjs-app/shared/components/ThemeProvider/ThemeProvider.tsx</code>
               </td>
             </tr>
             <tr>
               <td>{t("docsFilesI18n")}</td>
               <td>
-                <code>src/i18n.ts</code>
+                <code>nextjs-app/shared/i18n.ts</code>
               </td>
             </tr>
             <tr>
@@ -88,7 +88,7 @@ const DocsContent = () => {
             <tr>
               <td>{t("docsFilesCoverage")}</td>
               <td>
-                <code>src/__tests__/translation-coverage.test.tsx</code>
+                <code>nextjs-app/shared/__tests__/translation-coverage.test.tsx</code>
               </td>
             </tr>
           </tbody>

@@ -16,16 +16,17 @@ const APIIntegrationDocsContent = () => {
       <section className={styles.section}>
         <h2>Overview</h2>
         <p>
-          The application uses Vercel serverless functions for backend logic,
-          eliminating the need for a traditional Node.js server. All API routes
-          are deployed automatically and scale on-demand.
+          Backend logic runs as Next.js App Router route handlers (
+          <code>app/api/*/route.ts</code>), deployed on Vercel and scaling
+          on-demand. Handlers use Web-standard <code>Request</code>/
+          <code>Response</code>, Zod validation, and rate limiting on writes.
         </p>
 
         <table className={styles.table}>
           <thead>
             <tr>
               <th>Endpoint</th>
-              <th>Runtime</th>
+              <th>Method</th>
               <th>Purpose</th>
             </tr>
           </thead>
@@ -34,35 +35,49 @@ const APIIntegrationDocsContent = () => {
               <td>
                 <code>/api/chat</code>
               </td>
-              <td>Node.js</td>
+              <td>POST</td>
               <td>AI chat with streaming, MCP tools</td>
             </tr>
             <tr>
               <td>
-                <code>/app/api/chat/route</code>
+                <code>/api/contact</code>
               </td>
-              <td>Edge</td>
-              <td>Edge function version of chat (faster cold starts)</td>
+              <td>POST</td>
+              <td>Contact form email via Resend</td>
             </tr>
             <tr>
               <td>
                 <code>/api/save-contact</code>
               </td>
-              <td>Node.js</td>
-              <td>Contact form EmailJS integration</td>
+              <td>POST</td>
+              <td>Contact submission persistence (MongoDB)</td>
             </tr>
             <tr>
               <td>
                 <code>/api/download-cv</code>
               </td>
-              <td>Node.js</td>
+              <td>POST</td>
               <td>Password-protected resume download</td>
+            </tr>
+            <tr>
+              <td>
+                <code>/api/gdpr/delete-data</code>
+              </td>
+              <td>POST</td>
+              <td>GDPR data deletion</td>
+            </tr>
+            <tr>
+              <td>
+                <code>/api/[transport]</code>
+              </td>
+              <td>GET/POST</td>
+              <td>MCP server endpoint</td>
             </tr>
             <tr>
               <td>
                 <code>/api/test-health/*</code>
               </td>
-              <td>Node.js</td>
+              <td>GET</td>
               <td>CI/CD observability metrics</td>
             </tr>
           </tbody>
@@ -78,35 +93,32 @@ const APIIntegrationDocsContent = () => {
 
         <h3>Implementation</h3>
         <pre className={styles.code}>
-          {`// api/chat.ts
-import { streamText } from 'ai';
-import { createCorsHeaders } from './chat-shared';
-import { donnyTools } from './donny-tools';
+          {`// app/api/chat/route.ts — Next.js App Router handler
+import { NextRequest, NextResponse } from 'next/server';
+import { convertToModelMessages, streamText, stepCountIs } from 'ai';
+import { createCorsHeaders } from '../chat-shared';
+import { donnyTools } from '../donny-tools';
 
-export default async function handler(req, res) {
-  // CORS handling
-  const corsHeaders = createCorsHeaders();
-  Object.entries(corsHeaders).forEach(([key, value]) => { res.setHeader(key, value);
+export async function OPTIONS(request: NextRequest) {
+  return new NextResponse(null, {
+    status: 200,
+    headers: createCorsHeaders(request.headers.get('origin')),
+  });
+}
+
+export async function POST(request: NextRequest) {
+  const { messages } = await request.json();
+
+  const result = streamText({
+    model: aiGatewayProvider,
+    messages: convertToModelMessages(messages),
+    tools: donnyTools,
+    stopWhen: stepCountIs(5),
+    system: systemPrompt,
   });
 
-  if (req.method === 'OPTIONS') { return res.status(200).end();
-  }
-
-  // Extract messages from request
-  const { messages } = req.body;
-
-  try { const result = await streamText({ model: aiGatewayProvider,
-      messages,
-      tools: donnyTools,
-      system: systemPrompt,
-    });
-
-    // Stream response
-    result.toDataStream().pipe(res);
-  } catch (error) {
-    // Normalized error handling
-    res.status(500).json({ error: 'Internal server error' });
-  }
+  // Web-standard streamed Response (App Router), not res.pipe()
+  return createChatStreamResponse(result, request);
 }`}
         </pre>
 
@@ -137,7 +149,7 @@ data: [DONE]`}
         <h3>Client Integration</h3>
         <pre className={styles.code}>
           {`// ChatWidget.tsx
-import { useChat } from 'ai/react';
+import { useChat } from '@ai-sdk/react';
 
 function ChatWidget() { const { messages, input, handleInputChange, handleSubmit } = useChat({ api: '/api/chat',
     onError: (error) => { console.error('Chat error:', error);
@@ -222,36 +234,47 @@ export const donnyTools = { getOpenHours: { description: 'Get business opening h
       <section className={styles.section}>
         <h2>Contact Form API (/api/save-contact)</h2>
         <p>
-          Handles contact form submissions with EmailJS integration and MongoDB
+          Handles contact form submissions with Resend email delivery and MongoDB
           persistence.
         </p>
 
         <h3>Implementation</h3>
         <pre className={styles.code}>
-          {`// api/save-contact.js
-import emailjs from '@emailjs/nodejs';
+          {`// app/api/contact/route.ts — Next.js App Router handler
+import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 
-export default async function handler(req, res) { if (req.method !== 'POST') { return res.status(405).json({ error: 'Method not allowed' });
-  }
+const ContactSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  phone: z.string().optional(),
+  message: z.string().min(1),
+});
 
-  const { name, email, message } = req.body;
-
-  // Validation
-  if (!name || !email || !message) { return res.status(400).json({ error: 'Missing required fields' });
+export async function POST(request: NextRequest) {
+  const parsed = ContactSchema.safeParse(await request.json());
+  if (!parsed.success) {
+    return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
   }
 
   try {
-    // Send via EmailJS
-    await emailjs.send(
-      process.env.EMAILJS_SERVICE_ID,
-      process.env.EMAILJS_TEMPLATE_ID,
-      { name, email, message },
-      { publicKey: process.env.EMAILJS_PUBLIC_KEY }
-    );
-
-    res.status(200).json({ success: true });
-  } catch (error) { console.error('EmailJS error:', error);
-    res.status(500).json({ error: 'Failed to send message' });
+    // Email delivery via Resend (save-contact also persists to MongoDB)
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: \`Bearer \${process.env.RESEND_API_KEY}\`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: process.env.CONTACT_EMAIL_FROM,
+        to: process.env.CONTACT_EMAIL_TO,
+        subject: \`New inquiry from \${parsed.data.name}\`,
+        text: parsed.data.message,
+      }),
+    });
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to send message' }, { status: 500 });
   }
 }`}
         </pre>
@@ -464,20 +487,22 @@ export default async function handler(req, res) { const corsHeaders = createCors
 
         <h3>Development (.env.local)</h3>
         <pre className={styles.code}>
-          {`# AI Chat
-OPENAI_API_KEY=sk-...
-AI_GATEWAY_URL=https://gateway.ai.cloudflare.com/...
+          {`# AI Chat (Vercel AI Gateway)
+AI_GATEWAY_API_KEY=...
 
-# EmailJS
-VITE_EMAILJS_SERVICE_ID=service_...
-VITE_EMAILJS_TEMPLATE_ID=template_...
-VITE_EMAILJS_PUBLIC_KEY=...
+# Email delivery (Resend)
+RESEND_API_KEY=re_...
+CONTACT_EMAIL_TO=mail@digitaltableteur.com
+CONTACT_EMAIL_FROM="Digitaltableteur <onboarding@resend.dev>"
+
+# Contact persistence
+MONGODB_URI=mongodb+srv://...
 
 # Secure CV
 CV_PASSWORD=your-secure-password
 
-# Analytics
-VITE_GA_ID=G-...`}
+# Monitoring / analytics (NEXT_PUBLIC_ = exposed to the browser)
+NEXT_PUBLIC_SENTRY_DSN=https://...`}
         </pre>
 
         <h3>Production (Vercel)</h3>
@@ -579,7 +604,7 @@ describe('Chat API', () => { it('should handle user messages', async () => { con
           <li>Implement CORS properly to prevent unauthorized origins</li>
           <li>Use HTTPS only in production (enforced by Vercel)</li>
           <li>Sanitize user input before processing or storing</li>
-          <li>Rotate credentials regularly (CV password, EmailJS keys)</li>
+          <li>Rotate credentials regularly (CV password, Resend key)</li>
           <li>Monitor API usage for anomalies</li>
         </ul>
       </section>
@@ -596,45 +621,57 @@ describe('Chat API', () => { it('should handle user messages', async () => { con
           <tbody>
             <tr>
               <td>
-                <code>api/chat.ts</code>
-              </td>
-              <td>Node.js chat API handler</td>
-            </tr>
-            <tr>
-              <td>
                 <code>app/api/chat/route.ts</code>
               </td>
-              <td>Edge function chat handler</td>
+              <td>Chat API handler (streaming)</td>
             </tr>
             <tr>
               <td>
-                <code>api/chat-shared.ts</code>
+                <code>app/api/chat-shared.ts</code>
               </td>
               <td>Shared CORS and utilities</td>
             </tr>
             <tr>
               <td>
-                <code>api/donny-tools.ts</code>
+                <code>app/api/donny-tools.ts</code>
               </td>
               <td>MCP tool definitions</td>
             </tr>
             <tr>
               <td>
-                <code>api/donny-context.js</code>
+                <code>app/api/donny-context.js</code>
               </td>
               <td>System prompt and context</td>
             </tr>
             <tr>
               <td>
-                <code>api/save-contact.js</code>
+                <code>app/api/contact/route.ts</code>
               </td>
-              <td>Contact form handler</td>
+              <td>Contact email via Resend</td>
             </tr>
             <tr>
               <td>
-                <code>api/download-cv.js</code>
+                <code>app/api/save-contact/route.ts</code>
+              </td>
+              <td>Contact persistence (MongoDB)</td>
+            </tr>
+            <tr>
+              <td>
+                <code>app/api/download-cv/route.ts</code>
               </td>
               <td>Secure CV download</td>
+            </tr>
+            <tr>
+              <td>
+                <code>app/api/gdpr/delete-data/route.ts</code>
+              </td>
+              <td>GDPR data deletion</td>
+            </tr>
+            <tr>
+              <td>
+                <code>app/api/[transport]/route.ts</code>
+              </td>
+              <td>MCP server endpoint</td>
             </tr>
             <tr>
               <td>

@@ -74,7 +74,7 @@
 .code {
   padding: var(--space-layout-16, 1rem);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-sm);
   background: var(--color-light-bg);
   font-family: "SF Mono", Monaco, Inconsolata, "Fira Code", monospace;
   font-size: 0.875rem;
@@ -88,7 +88,7 @@
 .mermaidBlock {
   padding: var(--space-layout-16, 1rem);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-sm);
   background: var(--color-light-bg);
   margin-block-end: var(--space-layout-16, 1rem);
 }
@@ -157,7 +157,7 @@
 .principle {
   padding: calc(var(--space-internal-16) + var(--space-internal-4));
   border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-md);
   background: var(--color-light-bg);
 }
 
@@ -178,7 +178,7 @@
 .apiItem {
   padding: var(--space-layout-16, 1rem);
   border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-sm);
   background: var(--color-light-bg);
 }
 
@@ -211,7 +211,7 @@
 
 .category {
   padding: var(--space-layout-16, 1rem);
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-sm);
   background: var(--color-light-bg);
   border-inline-start: 3px solid var(--color-primary);
 }
@@ -329,7 +329,7 @@
     var(--space-internal-12, 0.75rem) 2.75rem;
   inline-size: 100%;
   border: 2px solid var(--color-border);
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-md);
   background: var(--main-body-background-color);
   font-family: var(--font-text);
   font-size: var(--font-size-text-m);
@@ -353,7 +353,7 @@
   justify-content: center;
   align-items: center;
   border: none;
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-sm);
   background: var(--color-disabled-bg-light);
   color: var(--color-muted);
   cursor: pointer;
@@ -450,7 +450,7 @@
   flex-direction: column;
   align-items: center;
   border: 2px solid var(--color-border);
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-md);
   background: var(--color-light-bg);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -508,7 +508,7 @@
   padding: var(--space-layout-4, 0.25rem) var(--space-layout-8, 0.5rem);
   align-items: center;
   gap: var(--space-layout-4, 0.25rem);
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-sm);
   background: var(--color-primary);
   font-size: var(--font-size-text-xs);
   white-space: nowrap;
@@ -535,7 +535,7 @@
 .resetButton {
   padding: var(--space-internal-12, 0.75rem) var(--space-layout-24, 1.5rem);
   border: none;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-md);
   background: var(--color-primary);
   font-family: var(--font-text);
   font-size: var(--font-size-text-m);
@@ -565,7 +565,7 @@
 .feature {
   padding: var(--space-layout-24, 1.5rem);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-md);
   background: var(--color-light-bg);
   transition: all 0.2s ease-in-out;
 }
@@ -602,7 +602,7 @@
 
 .docsList li {
   padding: var(--space-internal-12, 0.75rem);
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-sm);
   background: var(--color-light-bg);
   font-size: var(--font-size-text-m);
   border-inline-start: 3px solid var(--color-primary);

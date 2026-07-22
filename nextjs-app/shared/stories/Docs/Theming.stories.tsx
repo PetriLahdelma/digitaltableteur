@@ -39,7 +39,8 @@ const ThemingDocsContent = () => {
                 <code>"light"</code>
               </td>
               <td>
-                Default theme with blue primary color (#00f) on white background
+                Default theme with deep-teal primary color (#041b23) on white
+                background
               </td>
             </tr>
             <tr>
@@ -151,10 +152,10 @@ function ThemeToggle() { const { theme, setTheme, toggleTheme, cycleTheme } = us
         <h3>Color Tokens</h3>
         <pre className={styles.code}>
           {`/* Base colors */
---color-primary        /* Brand blue: #00f */
+--color-primary        /* Brand deep teal: #041b23 */
 --color-success        /* Green: #068338 */
---color-warning        /* Yellow: #f2e274 */
---color-danger         /* Red: #e11d48 */
+--color-warning        /* Amber: #ffc107 */
+--color-error          /* Red: #dc3545 */
 --color-info           /* Cyan: #0c7a8b */
 
 /* Text colors */
@@ -225,8 +226,8 @@ function ThemeToggle() { const { theme, setTheme, toggleTheme, cycleTheme } = us
 .container { background: var(--main-body-background-color);
   color: var(--color-text);
   padding: var(--space-layout-24);
-  border-radius: var(--radius-m);
-  box-shadow: var(--shadow-m);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
 }
 
 .heading { font-family: var(--font-title);
@@ -410,7 +411,7 @@ test("renders correctly in dark theme", () => { render(
         <pre className={styles.code}>
           {`/* Base styles */
 .panel { background: var(--color-white);
-  box-shadow: var(--shadow-m);
+  box-shadow: var(--shadow-md);
 }
 
 /* Enhanced for modern browsers */
