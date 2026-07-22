@@ -40,7 +40,7 @@
         "forcedColorsVerified": true,
         "realBrowserForcedColorsVerified": true,
         "accessibilityTreeVerified": true,
-        "reviewedNote": "Verified 2026-06-02: role=img/aria-label vs aria-hidden when decorative, focusable=false, non-interactive (no keyboard contract — wrap in link/button to activate). Every mark uses fill=currentColor → maps to system CanvasText in forced colors; the ForcedColors story passes axe. Pulse is disabled under prefers-reduced-motion. All Logo tests pass. Re-verified 2026-07-13 for stable promotion: AT snapshots committed for all required stories; `animated` is now a controlled signal (pulses while true) rather than self-hover, driven by SiteHeader's link-hover state. Swapped into SiteHeader (production consumer on every page) with byte-for-byte parity vs the prior inline mark — identical viewBox 0 0 395 323, geometry, dt-logo-pulse keyframes, badge scale, currentColor tokens; verified live in the running app (rest/hover/both themes). Extended 2026-07-22 (content-atom elevation): custom-image path (`src`) renders a native <img> — accessible name from `title` via alt, decorative maps to alt=\"\" + aria-hidden; animated/badge stay built-in-mark-only so no motion applies to custom images."
+        "reviewedNote": "Verified 2026-06-02: role=img/aria-label vs aria-hidden when decorative, focusable=false, non-interactive (no keyboard contract — wrap in link/button to activate). Every mark uses fill=currentColor → maps to system CanvasText in forced colors; the ForcedColors story passes axe. Pulse is disabled under prefers-reduced-motion. All Logo tests pass. Re-verified 2026-07-13 for stable promotion: AT snapshots committed for all required stories; `animated` is now a controlled signal (pulses while true) rather than self-hover, driven by SiteHeader's link-hover state. Swapped into SiteHeader (production consumer on every page) with byte-for-byte parity vs the prior inline mark — identical viewBox 0 0 395 323, geometry, dt-logo-pulse keyframes, badge scale, currentColor tokens; verified live in the running app (rest/hover/both themes). Extended 2026-07-22 (content-atom elevation): custom-image path (`src`) renders a native <img> — accessible name from `title` via alt, decorative maps to alt=\"\" + aria-hidden; animated/badge stay built-in-mark-only so no motion applies to custom images. 2026-07-22: `badge` renamed to `background` (same lime-circle rendering; prop name now says what it does) before the first npm publish of the Logo export, so no published React API breaks."
     },
     "tokens": {
         "colors": [],
@@ -94,7 +94,7 @@
         "src": {
             "optional": true,
             "type": "string",
-            "description": "Optional image URL (PNG, JPEG, or SVG) rendered instead of the built-in\nDigitaltableteur mark. `title` becomes the alt text; `animated` and `badge`\napply to the built-in mark only and are ignored when `src` is set."
+            "description": "Optional image URL (PNG, JPEG, or SVG) rendered instead of the built-in\nDigitaltableteur mark. `title` becomes the alt text; `animated` and\n`background` apply to the built-in mark only and are ignored when `src` is\nset."
         },
         "size": {
             "optional": true,
@@ -106,10 +106,10 @@
             "type": "boolean",
             "description": "Pulse the three leading bars while true; a controlled signal driven from the\nconsumer's hover/focus state (respects prefers-reduced-motion). Default false."
         },
-        "badge": {
+        "background": {
             "optional": true,
             "type": "boolean",
-            "description": "Wrap the mark in the brand lime circle (`--logo-background` / `--logo-color`). Default false."
+            "description": "Render the brand lime circle background behind a contrast mark\n(`--logo-background` / `--logo-color`). Default false."
         },
         "title": {
             "optional": true,

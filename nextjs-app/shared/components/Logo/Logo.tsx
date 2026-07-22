@@ -3,16 +3,18 @@ import styles from "./Logo.module.css";
 
 export interface LogoProps {
   /** Optional image URL (PNG, JPEG, or SVG) rendered instead of the built-in
-   * Digitaltableteur mark. `title` becomes the alt text; `animated` and `badge`
-   * apply to the built-in mark only and are ignored when `src` is set. */
+   * Digitaltableteur mark. `title` becomes the alt text; `animated` and
+   * `background` apply to the built-in mark only and are ignored when `src` is
+   * set. */
   src?: string;
   /** Square render box in pixels. Default 24. */
   size?: number;
   /** Pulse the three leading bars while true; a controlled signal driven from the
    * consumer's hover/focus state (respects prefers-reduced-motion). Default false. */
   animated?: boolean;
-  /** Wrap the mark in the brand lime circle (`--logo-background` / `--logo-color`). Default false. */
-  badge?: boolean;
+  /** Render the brand lime circle background behind a contrast mark
+   * (`--logo-background` / `--logo-color`). Default false. */
+  background?: boolean;
   /** Accessible name for the mark. Ignored when `decorative`. Default "Digitaltableteur". */
   title?: string;
   /** When true the mark is purely decorative and removed from the accessibility tree. Default false. */
@@ -24,7 +26,7 @@ export interface LogoProps {
 /**
  * Logo atom. By default renders the built-in Digitaltableteur mark — monochrome
  * (inherits `currentColor`) inside a square `size`×`size` box, with the three-bar
- * pulse (`animated`) and lime brand badge (`badge`) options. Pass `src` to render
+ * pulse (`animated`) and lime circle background (`background`) options. Pass `src` to render
  * any custom logo image (PNG, JPEG, or SVG) inside the same square box instead;
  * the image letterboxes via `object-fit: contain` and `title` names it.
  */
@@ -36,7 +38,7 @@ export const Logo = React.forwardRef<
     src,
     size = 24,
     animated = false,
-    badge = false,
+    background = false,
     title = "Digitaltableteur",
     decorative = false,
     className,
@@ -63,7 +65,7 @@ export const Logo = React.forwardRef<
 
   const classNames = [
     styles.logo,
-    badge ? styles.badged : "",
+    background ? styles.withBackground : "",
     animated ? styles.animated : "",
     className,
   ]
@@ -76,9 +78,10 @@ export const Logo = React.forwardRef<
       // field passes "" and must fall back, never render an empty aria-label.
       ({ role: "img", "aria-label": title || "Digitaltableteur" } as const);
 
-  // Badge mode pads the mark inside a square viewBox so a full-bleed circle can
-  // sit behind it; mark color flips to the contrast token via `.badged`.
-  const viewBox = badge ? "-121 -157 637 637" : "0 0 395 323";
+  // Background mode pads the mark inside a square viewBox so a full-bleed
+  // circle can sit behind it; mark color flips to the contrast token via
+  // `.withBackground`.
+  const viewBox = background ? "-121 -157 637 637" : "0 0 395 323";
 
   return (
     <svg
@@ -93,8 +96,13 @@ export const Logo = React.forwardRef<
       {...a11yProps}
     >
       {decorative ? null : <title>{title}</title>}
-      {badge ? (
-        <circle className={styles.badgeBg} cx="197.5" cy="161.5" r="318.5" />
+      {background ? (
+        <circle
+          className={styles.backgroundCircle}
+          cx="197.5"
+          cy="161.5"
+          r="318.5"
+        />
       ) : null}
       <rect
         className={styles.bar1}

@@ -10107,7 +10107,7 @@
         {
           "kind": "class",
           "name": "DtLogoElement",
-          "description": "Native logo atom: Digitaltableteur brand mark with badge and motion modes, or a custom image via src.",
+          "description": "Native logo atom: Digitaltableteur brand mark with background and motion modes, or a custom image via src.",
           "customElement": true,
           "tagName": "dt-logo",
           "members": [
@@ -10135,7 +10135,8 @@
             },
             {
               "kind": "field",
-              "name": "badge",
+              "name": "background",
+              "description": "Brand lime circle background behind a contrast mark",
               "type": {
                 "text": "boolean"
               }
@@ -10179,8 +10180,9 @@
               }
             },
             {
-              "name": "badge",
-              "fieldName": "badge",
+              "name": "background",
+              "fieldName": "background",
+              "description": "Brand lime circle background behind a contrast mark",
               "type": {
                 "text": "boolean"
               }

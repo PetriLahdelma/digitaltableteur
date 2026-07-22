@@ -168,7 +168,10 @@ const maxPackedFiles = 40 + tags.length * 2;
 // +1 kB for the dt-logo content-atom elevation (src attribute: custom-image
 // render path + manifest metadata): measured 1,854,106 bytes unpacked, ~1 kB
 // over the prior ceiling.
-const sharedBundleAndManifestCeiling = 1_316_500;
+// +0.5 kB for the dt-logo badge → background rename (longer attribute/part/
+// class identifiers in bundle + manifest): measured 1,854,408 bytes unpacked,
+// ~0.3 kB over the prior ceiling.
+const sharedBundleAndManifestCeiling = 1_317_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.

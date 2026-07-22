@@ -802,7 +802,7 @@ export type DtLogoElementContract = HTMLElement & {
   src?: string;
   size?: number;
   animated?: boolean;
-  badge?: boolean;
+  background?: boolean;
   accessibleTitle?: string;
   decorative?: boolean;
 };

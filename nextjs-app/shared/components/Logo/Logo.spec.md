@@ -26,7 +26,7 @@ any brand's logo — the image letterboxes inside the square `size` box.
 | `src`        | `string`  | —                    | Custom logo URL (PNG/JPEG/SVG); renders an `<img>`     |
 | `size`       | `number`  | `24`                 | Square render box in px; logo fits inside (no distort) |
 | `animated`   | `boolean` | `false`              | Three-bar pulse (built-in mark only); reduced-motion safe |
-| `badge`      | `boolean` | `false`              | Brand lime circle (built-in mark only)                 |
+| `background` | `boolean` | `false`              | Brand lime circle behind the mark (built-in mark only) |
 | `title`      | `string`  | `"Digitaltableteur"` | Accessible name / alt text; ignored when `decorative`  |
 | `decorative` | `boolean` | `false`              | `aria-hidden`, no title — for redundant placements     |
 | `className`  | `string`  | —                    | Utility/spacing classes                                |
@@ -36,11 +36,11 @@ any brand's logo — the image letterboxes inside the square `size` box.
 - Built-in mark: monochrome via `currentColor`; color comes from the consumer's
   text color, so it is theme- and forced-colors-safe (no hardcoded values).
 - `animated` adds the `pulse-1/2/3` keyframes on hover only.
-- `badge` swaps to a filled lime circle (`--logo-background`) behind a contrast
-  mark (`--logo-color`).
+- `background` renders a filled lime circle (`--logo-background`) behind a
+  contrast mark (`--logo-color`).
 - `src`: renders a native `<img>` in the same square `size` box with
   `object-fit: contain`, so any aspect ratio letterboxes without distortion.
-  `animated` and `badge` are built-in-mark-only and are ignored; a custom image
+  `animated` and `background` are built-in-mark-only and are ignored; a custom image
   renders with its own colors (no `currentColor` inheritance, no forced-colors
   remap).
 - An empty `src` (`""`) falls back to the built-in mark — a cleared Controls
@@ -65,7 +65,7 @@ any brand's logo — the image letterboxes inside the square `size` box.
   dark theme and forced-colors.
 - Don't: translate `title`; brand names are proper nouns.
 - Don't: add click handlers to `Logo` itself; wrap it in a real link or button.
-- Don't: combine `src` with `animated`/`badge`; those are built-in-mark-only
+- Don't: combine `src` with `animated`/`background`; those are built-in-mark-only
   and are ignored.
 
 ## Accessibility
@@ -80,11 +80,11 @@ any brand's logo — the image letterboxes inside the square `size` box.
 
 ## Design notes
 
-- The mark is the three-bar "DI–" device; the `badge` variant is the lime
+- The mark is the three-bar "DI–" device; the `background` variant is the lime
   brand lockup. Both share one viewBox so sizing stays consistent.
 - Forced-colors safety comes from `fill="currentColor"` on every path, which
   maps to the system `CanvasText` keyword automatically.
 
 ## Out of scope
 
-- Wordmark lockup beyond the badge circle remains composition.
+- Wordmark lockup beyond the background circle remains composition.
