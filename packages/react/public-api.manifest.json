@@ -1,6 +1,6 @@
 {
   "packageName": "@digitaltableteur/react",
-  "packageVersion": "0.1.17",
+  "packageVersion": "0.1.18",
   "packageExports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -73,6 +73,8 @@
     "AlertBanner",
     "AnimationRuntimeProvider",
     "AspectRatio",
+    "Author",
+    "AuthorBio",
     "Avatar",
     "AvatarGroup",
     "Badge",
@@ -123,6 +125,7 @@
     "List",
     "ListItem",
     "loadConsentState",
+    "Logo",
     "MacWindowFrame",
     "Menu",
     "MenuContent",
