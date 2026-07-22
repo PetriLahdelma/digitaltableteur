@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-22T15:19:49.730Z",
+  "generatedAt": "2026-07-22T15:51:05.967Z",
   "summary": {
     "componentCount": 166,
     "statusCounts": {
@@ -12,8 +12,8 @@
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 90.2,
     "codebaseComponentCount": 184,
-    "usageCoveragePercent": 94.6,
-    "componentsWithProductionUsage": 42,
+    "usageCoveragePercent": 93.4,
+    "componentsWithProductionUsage": 36,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -78,20 +78,20 @@
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 166,
-    "withAnyUsage": 157,
-    "withProductionUsage": 42,
-    "uniqueImportedComponents": 157,
-    "totalEvidenceRows": 775,
-    "aliasImportFiles": 395,
-    "relativeImportFiles": 413,
+    "withAnyUsage": 155,
+    "withProductionUsage": 36,
+    "uniqueImportedComponents": 155,
+    "totalEvidenceRows": 768,
+    "aliasImportFiles": 392,
+    "relativeImportFiles": 409,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-21T09:57:27.970Z",
+    "generatedAt": "2026-07-22T15:51:02.980Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 85,
+    "nodesWithComposesWith": 82,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -2404,18 +2404,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/AspectRatio",
-        "importCount": 1,
-        "productionImportCount": 1,
+        "importCount": 0,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 0,
-        "evidence": [
-          {
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "importKind": "relative",
-            "importPath": "@/nextjs-app/shared/components/AspectRatio",
-            "context": "production"
-          }
-        ]
+        "evidence": []
       },
       "agent": {
         "preferredImport": "@dt/AspectRatio",
@@ -2473,14 +2466,7 @@
           "Use this as a generic flex/grid item — pick a layout primitive instead.",
           "Add padding or margin via className — children will overlap their own padding because the wrapper is `position: relative`."
         ],
-        "composesWith": [
-          "Badge",
-          "Checkbox",
-          "Link",
-          "TextInput",
-          "TextArea",
-          "Container"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 3,
         "guidelines": [
@@ -4612,17 +4598,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Badge",
-        "importCount": 12,
-        "productionImportCount": 1,
+        "importCount": 11,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 4,
         "evidence": [
-          {
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Badge",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
             "importKind": "alias",
@@ -4837,11 +4817,11 @@
         ],
         "composesWith": [
           "TextInput",
-          "Link",
           "Text",
-          "Icon",
           "Button",
-          "Checkbox"
+          "Icon",
+          "Grid",
+          "FlexBox"
         ],
         "prefersOver": [],
         "declaredPropCount": 11,
@@ -9471,18 +9451,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Center",
-        "importCount": 1,
-        "productionImportCount": 1,
+        "importCount": 0,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 0,
-        "evidence": [
-          {
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "importKind": "relative",
-            "importPath": "@/nextjs-app/shared/components/Center",
-            "context": "production"
-          }
-        ]
+        "evidence": []
       },
       "agent": {
         "preferredImport": "@dt/Center",
@@ -9714,14 +9687,7 @@
           "Center large layout sections — use `Section` + `Container` instead.",
           "Rely on this to vertically center text inside a button or input — those already center via their own padding."
         ],
-        "composesWith": [
-          "Badge",
-          "Checkbox",
-          "Link",
-          "TextInput",
-          "TextArea",
-          "Container"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 3,
         "guidelines": [
@@ -10426,17 +10392,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Checkbox",
-        "importCount": 8,
-        "productionImportCount": 1,
+        "importCount": 7,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 3,
         "evidence": [
-          {
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Checkbox",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/AskAI/AskAI.tsx",
             "importKind": "alias",
@@ -10585,11 +10545,11 @@
         ],
         "composesWith": [
           "TextInput",
-          "Link",
-          "Badge",
           "Label",
           "Text",
-          "Button"
+          "Button",
+          "Grid",
+          "ArticleCard"
         ],
         "prefersOver": [],
         "declaredPropCount": 11,
@@ -14602,8 +14562,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Container",
-        "importCount": 30,
-        "productionImportCount": 3,
+        "importCount": 29,
+        "productionImportCount": 2,
         "patternImportCount": 23,
         "componentImportCount": 3,
         "evidence": [
@@ -14615,12 +14575,6 @@
           },
           {
             "path": "app/blog/[slug]/ServerRelatedPosts.tsx",
-            "importKind": "relative",
-            "importPath": "@/nextjs-app/shared/components/Container",
-            "context": "production"
-          },
-          {
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
             "importKind": "relative",
             "importPath": "@/nextjs-app/shared/components/Container",
             "context": "production"
@@ -14675,6 +14629,12 @@
           },
           {
             "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
+            "importKind": "relative",
+            "importPath": "../../components/Container",
+            "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
             "importKind": "relative",
             "importPath": "../../components/Container",
             "context": "pattern"
@@ -14936,11 +14896,11 @@
         ],
         "composesWith": [
           "Section",
-          "Stack",
-          "Link",
           "ScrollIndicator",
-          "Badge",
-          "Checkbox"
+          "Stack",
+          "Title",
+          "EnhancedProjectCard",
+          "BlogCategoryFilter"
         ],
         "prefersOver": [],
         "declaredPropCount": 5,
@@ -25107,7 +25067,7 @@
           "Text",
           "Checkbox",
           "TextInput",
-          "Icon"
+          "Grid"
         ],
         "prefersOver": [],
         "declaredPropCount": 4,
@@ -25908,14 +25868,7 @@
           "put interactive controls in a caption. The caption is announced as part of the image's description, and controls inside it are unreachable in that reading order.",
           "rely on the counter as the only position cue. It is visual; the accessible name carries position for AT."
         ],
-        "composesWith": [
-          "Badge",
-          "Checkbox",
-          "Link",
-          "TextInput",
-          "TextArea",
-          "Container"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 4,
         "guidelines": [
@@ -26329,17 +26282,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Link",
-        "importCount": 13,
-        "productionImportCount": 1,
+        "importCount": 12,
+        "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 10,
         "evidence": [
-          {
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Link",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/patterns/SiteFooter/SiteFooter.tsx",
             "importKind": "relative",
@@ -26405,6 +26352,12 @@
             "importKind": "alias",
             "importPath": "@dt/Link",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/stories/KitchenSink.stories.tsx",
+            "importKind": "relative",
+            "importPath": "../components/Link/Link.stories",
+            "context": "story"
           }
         ]
       },
@@ -26478,12 +26431,12 @@
           "override the underline via inline styles; the token-driven treatment owns it."
         ],
         "composesWith": [
-          "Badge",
-          "Checkbox",
-          "TextInput",
           "Text",
           "Button",
-          "Title"
+          "Title",
+          "Avatar",
+          "Badge",
+          "Grid"
         ],
         "prefersOver": [
           "Button with href for body-copy links"
@@ -45141,17 +45094,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Stack",
-        "importCount": 3,
-        "productionImportCount": 1,
+        "importCount": 2,
+        "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
-          {
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "importKind": "relative",
-            "importPath": "@/nextjs-app/shared/components/Stack",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/patterns/HomeHero/HomeHero.tsx",
             "importKind": "relative",
@@ -45457,11 +45404,11 @@
         ],
         "composesWith": [
           "Container",
+          "HeroBackground",
+          "ScrollIndicator",
           "Link",
-          "Badge",
-          "Checkbox",
-          "TextInput",
-          "TextArea"
+          "SocialIconLink",
+          "Divider"
         ],
         "prefersOver": [],
         "declaredPropCount": 8,
@@ -48648,11 +48595,11 @@
         ],
         "composesWith": [
           "TextInput",
-          "Badge",
           "Button",
           "Text",
           "CheckboxGroup",
-          "Checkbox"
+          "Badge",
+          "Modal"
         ],
         "prefersOver": [],
         "declaredPropCount": 8,
@@ -49328,10 +49275,10 @@
         "composesWith": [
           "Text",
           "Button",
+          "CheckboxGroup",
           "Badge",
           "TextArea",
-          "Checkbox",
-          "CheckboxGroup"
+          "Title"
         ],
         "prefersOver": [],
         "declaredPropCount": 13,

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.4 - 2026-07-22
+
+- Adds the seven high-contrast legibility custom properties
+  (`--code-toolbar-text`, `--color-info-bg`, `--color-info-text`,
+  `--color-placeholder-dark`, `--color-placeholder-dark-fg`,
+  `--color-primary-dark`, `--switch-handle-ring-color`) across the light,
+  dark, high-contrast black, and high-contrast white themes.
+- Keeps the CSS package synchronized with
+  `@digitaltableteur/tokens@0.1.3` and its 192-token catalog.
+- Verified by `check:token-packages`, `check:package-release-notes`, and
+  `check:npm-consumer-install`.
+
 ## 0.1.3 - 2026-07-15
 
 - Adds `--color-switch-track-off` to the light, dark, high-contrast black, and

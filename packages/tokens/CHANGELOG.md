@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.3 - 2026-07-22
+
+- Adds seven semantic tokens from the high-contrast legibility round:
+  `code.toolbar.text`, the `color.info.bg`/`color.info.text` pair,
+  `color.placeholder.dark` and `color.placeholder.dark.fg`,
+  `color.primary.dark`, and `switch.handle.ring.color` — phantom CSS
+  variables promoted to real per-theme tokens.
+- Increases the generated token catalog from 185 to 192 entries and updates
+  the ESM, DTCG, Tailwind, type, and manifest exports together.
+- Verified by `check:token-packages`, `check:package-release-notes`, and
+  `check:npm-consumer-install`.
+
 ## 0.1.2 - 2026-07-15
 
 - Adds the theme-aware `color.switch.track.off` semantic token introduced for
