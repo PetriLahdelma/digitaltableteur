@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getPostMetaBySlug } from "@/app/blog/postMetadata";
 import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
 import { Container } from "@/nextjs-app/shared/components/Container";
-import Author from "@/nextjs-app/shared/components/Author/Author";
+import { Author } from "@digitaltableteur/react";
 
 function formatPublishedDate(iso?: string): string {
   if (!iso) return "";
