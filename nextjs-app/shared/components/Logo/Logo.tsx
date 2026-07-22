@@ -2,6 +2,10 @@ import React from "react";
 import styles from "./Logo.module.css";
 
 export interface LogoProps {
+  /** Optional image URL (PNG, JPEG, or SVG) rendered instead of the built-in
+   * Digitaltableteur mark. `title` becomes the alt text; `animated` and `badge`
+   * apply to the built-in mark only and are ignored when `src` is set. */
+  src?: string;
   /** Square render box in pixels. Default 24. */
   size?: number;
   /** Pulse the three leading bars while true; a controlled signal driven from the
@@ -18,13 +22,18 @@ export interface LogoProps {
 }
 
 /**
- * Digitaltableteur brand mark. Monochrome (inherits `currentColor`) and renders
- * inside a square `size`×`size` box. Drive the three-bar pulse with `animated`
- * (controlled from the consumer's hover/focus state), or the lime brand badge
- * with `badge` (a filled circle behind a contrast mark).
+ * Logo atom. By default renders the built-in Digitaltableteur mark — monochrome
+ * (inherits `currentColor`) inside a square `size`×`size` box, with the three-bar
+ * pulse (`animated`) and lime brand badge (`badge`) options. Pass `src` to render
+ * any custom logo image (PNG, JPEG, or SVG) inside the same square box instead;
+ * the image letterboxes via `object-fit: contain` and `title` names it.
  */
-export const Logo = React.forwardRef<SVGSVGElement, LogoProps>(function Logo(
+export const Logo = React.forwardRef<
+  SVGSVGElement | HTMLImageElement,
+  LogoProps
+>(function Logo(
   {
+    src,
     size = 24,
     animated = false,
     badge = false,
@@ -34,6 +43,24 @@ export const Logo = React.forwardRef<SVGSVGElement, LogoProps>(function Logo(
   },
   ref,
 ) {
+  // || not the destructure default alone: a cleared/seeded Controls text field
+  // passes "" and must fall back to the built-in mark / brand name.
+  if (src) {
+    return (
+      <img
+        ref={ref as React.ForwardedRef<HTMLImageElement>}
+        className={[styles.logo, styles.image, className]
+          .filter(Boolean)
+          .join(" ")}
+        src={src}
+        alt={decorative ? "" : title || "Digitaltableteur"}
+        width={size}
+        height={size}
+        {...(decorative ? { "aria-hidden": true } : null)}
+      />
+    );
+  }
+
   const classNames = [
     styles.logo,
     badge ? styles.badged : "",
@@ -55,7 +82,7 @@ export const Logo = React.forwardRef<SVGSVGElement, LogoProps>(function Logo(
 
   return (
     <svg
-      ref={ref}
+      ref={ref as React.ForwardedRef<SVGSVGElement>}
       className={classNames}
       width={size}
       height={size}

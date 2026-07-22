@@ -13,6 +13,13 @@
     vertical-align: middle;
   }
 
+  /* Custom logo image (`src`): letterbox any aspect ratio inside the square
+     `size` box without distortion. */
+
+  .image {
+    object-fit: contain;
+  }
+
   /* Brand badge: flip the mark to the contrast token; lime fill on the circle. */
 
   .badged {

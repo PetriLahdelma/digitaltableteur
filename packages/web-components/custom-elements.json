@@ -10107,10 +10107,18 @@
         {
           "kind": "class",
           "name": "DtLogoElement",
-          "description": "Native Digitaltableteur brand mark with badge and motion modes.",
+          "description": "Native logo atom: Digitaltableteur brand mark with badge and motion modes, or a custom image via src.",
           "customElement": true,
           "tagName": "dt-logo",
           "members": [
+            {
+              "kind": "field",
+              "name": "src",
+              "description": "Custom logo image URL (PNG/JPEG/SVG); replaces the built-in mark",
+              "type": {
+                "text": "string"
+              }
+            },
             {
               "kind": "field",
               "name": "size",
@@ -10148,6 +10156,14 @@
             }
           ],
           "attributes": [
+            {
+              "name": "src",
+              "fieldName": "src",
+              "description": "Custom logo image URL (PNG/JPEG/SVG); replaces the built-in mark",
+              "type": {
+                "text": "string"
+              }
+            },
             {
               "name": "size",
               "fieldName": "size",

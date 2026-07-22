@@ -10,6 +10,7 @@ const styles = `
   :host { display: inline-flex; flex: none; color: inherit; vertical-align: middle; }
   :host([hidden]) { display: none; }
   svg { display: block; inline-size: var(--dt-logo-size); block-size: var(--dt-logo-size); color: inherit; }
+  img { display: block; inline-size: var(--dt-logo-size); block-size: var(--dt-logo-size); object-fit: contain; }
   .badged { color: var(--logo-color); }
   .badge { fill: var(--logo-background); }
   .bar { transition: opacity .3s ease; }
@@ -25,6 +26,7 @@ const styles = `
 
 export class DtLogoElement extends DigitaltableteurElement {
   static observedAttributes = [
+    "src",
     "size",
     "animated",
     "badge",
@@ -39,6 +41,12 @@ export class DtLogoElement extends DigitaltableteurElement {
     if (this.isConnected) this.render();
   }
 
+  get src(): string {
+    return stringAttribute(this, "src", "");
+  }
+  set src(value: string) {
+    reflectAttribute(this, "src", value || null);
+  }
   get size(): number {
     return this.hasAttribute("size")
       ? Math.max(1, numberAttribute(this, "size", 24))
@@ -73,6 +81,26 @@ export class DtLogoElement extends DigitaltableteurElement {
   }
 
   private render(): void {
+    // Custom image path: same square box, letterboxed via object-fit. The
+    // empty string falls back to the built-in mark (a cleared attribute must
+    // never render a broken image). animated/badge are built-in-mark-only.
+    if (this.src) {
+      const img = this.ownerDocument.createElement("img");
+      img.setAttribute("part", "logo image");
+      img.src = this.src;
+      img.width = this.size;
+      img.height = this.size;
+      img.style.setProperty("--dt-logo-size", `${this.size}px`);
+      if (this.decorative) {
+        img.alt = "";
+        img.setAttribute("aria-hidden", "true");
+      } else {
+        img.alt = this.accessibleTitle || "Digitaltableteur";
+      }
+      this.replaceShadow(styles, img);
+      return;
+    }
+
     const svg = this.ownerDocument.createElementNS(
       "http://www.w3.org/2000/svg",
       "svg",

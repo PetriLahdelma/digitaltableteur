@@ -2512,9 +2512,14 @@ const elementDefinitions = [
     defaultBackend: "native",
     nativeClassName: "DtLogoElement",
     description:
-      "Native Digitaltableteur brand mark with badge and motion modes.",
+      "Native logo atom: Digitaltableteur brand mark with badge and motion modes, or a custom image via src.",
     storyParity: storyParity(),
     props: [
+      stringProp(
+        "src",
+        "src",
+        "Custom logo image URL (PNG/JPEG/SVG); replaces the built-in mark",
+      ),
       numberProp("size"),
       booleanProp("animated"),
       booleanProp("badge"),

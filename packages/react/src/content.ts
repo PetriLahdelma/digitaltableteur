@@ -25,6 +25,8 @@ export { default as List } from "../../../nextjs-app/shared/components/List/List
 export type { ListProps } from "../../../nextjs-app/shared/components/List/List";
 export { default as ListItem } from "../../../nextjs-app/shared/components/ListItem/ListItem";
 export type { ListItemProps } from "../../../nextjs-app/shared/components/ListItem/ListItem";
+export { Logo } from "../../../nextjs-app/shared/components/Logo/Logo";
+export type { LogoProps } from "../../../nextjs-app/shared/components/Logo/Logo";
 export {
   ReadingProgress,
   type ReadingProgressProps,
