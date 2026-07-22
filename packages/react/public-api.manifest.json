@@ -211,6 +211,7 @@
       "CookieConsent"
     ],
     "content": [
+      "AuthorBio",
       "CodeBlockWindow",
       "CodeSnippet",
       "ExpandableSection",
@@ -218,6 +219,7 @@
       "Gallery",
       "List",
       "ListItem",
+      "Logo",
       "ReadingProgress",
       "Timestamp",
       "ValueCard"
@@ -267,6 +269,7 @@
       "useStreamingText"
     ],
     "identity": [
+      "Author",
       "Avatar",
       "AvatarGroup",
       "Badge",
@@ -379,6 +382,8 @@
       "CookieConsentProps"
     ],
     "content": [
+      "AuthorBio",
+      "AuthorBioProps",
       "CodeBlockWindow",
       "CodeBlockWindowProps",
       "CodeSnippet",
@@ -491,6 +496,8 @@
       "UseStreamingTextOptions"
     ],
     "identity": [
+      "Author",
+      "AuthorProps",
       "Avatar",
       "AvatarGroup",
       "AvatarGroupProps",

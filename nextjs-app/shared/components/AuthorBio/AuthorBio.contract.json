@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "structure",
     "status": "stable",
-    "description": "Author byline card for blog articles: avatar, name, and markdown bio, resolved from the authors data by slug.",
+    "description": "Author biography card: avatar, name, role, and markdown bio. Fully input-driven — pass the details directly, or pass slug to resolve them from the site's author registry (direct props override registry fields).",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1432-2568",
     "radixPrimitive": null,
     "element": "div",
@@ -91,9 +91,34 @@
     "schemaVersion": 2,
     "props": {
         "slug": {
-            "optional": false,
+            "optional": true,
             "type": "string",
-            "description": "Author slug to fetch data from authors.ts"
+            "description": "Optional author slug resolved from the site's authors registry; direct\nprops below override the registry fields."
+        },
+        "name": {
+            "optional": true,
+            "type": "string",
+            "description": "Author name. Required unless `slug` resolves it."
+        },
+        "imageUrl": {
+            "optional": true,
+            "type": "string | { default: string } | StaticImageData",
+            "description": "Avatar image source: a URL, an imported asset path, or static image data."
+        },
+        "role": {
+            "optional": true,
+            "type": "string",
+            "description": "Role/title shown under the name (e.g. \"Founder, CEO\")."
+        },
+        "bio": {
+            "optional": true,
+            "type": "string",
+            "description": "Biography text; markdown after the first paragraph. The first paragraph\nrenders as the lead/tagline."
+        },
+        "email": {
+            "optional": true,
+            "type": "string",
+            "description": "Contact email rendered as a mailto link when `showContact` is set."
         },
         "className": {
             "optional": true,

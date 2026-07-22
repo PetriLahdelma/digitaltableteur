@@ -46,4 +46,20 @@ describe("Author", () => {
     // Check for CSS module class that contains "authorContainer"
     expect(container?.className).toContain("authorContainer");
   });
+
+  it("honors a custom byline prefix", () => {
+    render(
+      <Author
+        name="John Doe"
+        imageUrl="/test-image.jpg"
+        bylinePrefix="Reviewed by"
+      />,
+    );
+    expect(screen.getByText("Reviewed by John Doe")).toBeInTheDocument();
+  });
+
+  it("falls back to the localized prefix when bylinePrefix is empty", () => {
+    render(<Author name="John Doe" imageUrl="/test-image.jpg" bylinePrefix="" />);
+    expect(screen.getByText("By John Doe")).toBeInTheDocument();
+  });
 });

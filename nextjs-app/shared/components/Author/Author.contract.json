@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "structure",
     "status": "beta",
-    "description": "Compact byline that attributes a blog post to its author with name and avatar; the fuller end-of-article treatment is AuthorBio.",
+    "description": "Compact byline that attributes content to any author: name, avatar (URL or path), optional profile link, and a localized or custom byline prefix; the fuller biography treatment is AuthorBio.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1440-2603",
     "radixPrimitive": null,
     "element": "div",
@@ -43,7 +43,7 @@
         "imageUrl": {
             "optional": false,
             "type": "string | { default: string } | StaticImageData",
-            "description": "Avatar image source."
+            "description": "Avatar image source: a URL, an imported asset path, or static image data."
         },
         "size": {
             "optional": true,
@@ -54,6 +54,11 @@
             "optional": true,
             "type": "string",
             "description": "Optional author profile URL; makes the byline text a link."
+        },
+        "bylinePrefix": {
+            "optional": true,
+            "type": "string",
+            "description": "Byline prefix before the name. Defaults to the localized \"By\"\n(fi \"Kirjoittanut\", sv \"Av\"), matching the native dt-author element."
         }
     },
     "forbiddenUse": [

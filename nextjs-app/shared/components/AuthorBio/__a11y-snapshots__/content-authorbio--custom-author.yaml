@@ -1,0 +1,13 @@
+- region "About Jane Doe":
+  - img "Jane Doe"
+  - heading "Jane Doe" [level=3]
+  - paragraph: Design Lead
+  - paragraph: Jane leads design systems work at Example Co.
+  - paragraph:
+    - text: She writes about
+    - strong: component APIs
+    - text: and accessibility.
+  - paragraph:
+    - text: "Get in touch:"
+    - link "jane@example.com":
+      - /url: mailto:jane@example.com
