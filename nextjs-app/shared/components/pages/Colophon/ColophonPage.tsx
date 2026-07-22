@@ -258,9 +258,9 @@ export function ColophonPage() {
           <div className={styles.card}>
             <p className={styles.cardLabel}>Lenis</p>
             <p className={styles.cardValue}>
-              Smooth scrolling with momentum. Respects{" "}
+              Retained for programmatic scroll-to in assistant actions. Page
+              scrolling is native; motion respects{" "}
               <code className={styles.inlineCode}>prefers-reduced-motion</code>.
-              Integrated via SmoothScrollProvider in the layout chain.
             </p>
           </div>
         </div>

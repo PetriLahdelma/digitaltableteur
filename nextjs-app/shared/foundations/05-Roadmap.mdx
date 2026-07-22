@@ -5,133 +5,89 @@ import { Meta } from '@storybook/addon-docs/blocks';
 # Roadmap
 
 Design system foundations and maturity — **Storybook is the catalog of record**.
+Numbers below are read from `agent-manifest.json` and `token-catalog.json`; the
+gates that keep them honest are named next to each claim.
 
-## Completed (DTCG + foundations)
+## Foundations & tokens (done)
 
 | Area | Status | Notes |
 |------|--------|-------|
-| **Production tokens** | Done | `variables.css` is runtime source; 184 tokens in `token-catalog.json` |
+| **Production tokens** | Done | `variables.css` is the runtime source; **198 tokens** in `token-catalog.json` |
 | **DTCG export** | Done | `npm run build:tokens` → `tokens/production/*.json` |
+| **Radius + elevation scale** | Done | Tight radius scale (`sm/md/lg/xl` + `full`/`circle`) and a four-step shadow ramp (`--shadow-sm/md/lg/xl`), gated by `check:radius-shadow` (#1308) |
 | **Foundations stories** | Done | Color, Typography, Space, Motion, Layout, Radius, Elevation, Focus, Themes, Contrast, Token catalog |
 | **Tailwind bridge** | Done | `app/tailwind.css` `@theme` DT-THEME block (`bg-dt-success`, `text-dt-title-m`, …) |
-| **CI gates** | Done | `build:tokens`, `check:contrast`, `check:token-descriptions` in PR validation |
-| **Agent manifest** | Done | `foundations/dist/agent-manifest.json` includes token summary + contracts + honest-beta debt list |
+| **Themes** | Done | Light, Dark, High-Contrast Black, High-Contrast White |
+| **CI gates** | Done | `build:tokens`, `check:contrast`, `check:token-descriptions`, `check:radius-shadow`, `check:generated` in PR validation |
+| **Agent manifest** | Done | `foundations/dist/agent-manifest.json` — token summary, contracts, doc-semantics, catalog completeness |
 
-## Honest Beta (Phase 1 — closed)
+## Catalog & maturity (current)
 
-The previous "27/27 beta" claim was cosmetic: contracts were tagged `status: "beta"`
-but their MDX was scaffolder boilerplate and their `spec.md` was a `TODO:` template.
-The validator passed because the gates checked for *presence* of headings, not real
-prose. This milestone made "beta" mean what the contract says it means.
+The headline number is the **catalog** count, not every component-shaped folder
+in the tree. `npm run audit:catalog` reports **204 catalog entries** and
+**166 governed** (contract-bearing) components, for **90.2% catalog
+completeness** — declared under `summary.catalogCompletenessPercent` so AI
+consumers don't read the contract list as the whole front-end.
 
-### Hygiene (landed)
+| Dimension | Today |
+|-----------|-------|
+| Governed components | 166 (204 catalog entries) |
+| Catalog completeness | 90.2% |
+| Status mix | **98 stable · 44 beta · 23 alpha · 1 deprecated** |
+| Tests | 2732 passing / 333 files, 0 failing |
+| A11y-tree snapshots | 122 components carry committed `__a11y-snapshots__/` |
 
-| # | Track | Outcome |
-|---|-------|---------|
-| A1 | Demote out-of-scope auto-betas to alpha | 66 contracts moved back to alpha |
-| A3 | Strip auto-generated `'X control.'` description noise | 133 story files cleaned |
-| A4 | Add missing `storybook/test` imports | 36 story files fixed |
-| A5 | Stub-detection in validator + `agent-manifest.honestBeta.documentationDebt[]` | 26 components named, auto-clears when content lands |
-| A6 | parity, typecheck, validate, manifest all green | `HONEST_BETA_DOC_DEBT=0` |
-
-### Content authoring (complete)
-
-Every beta-tier component carries a real `Component.mdx` (`In use` / `How to use`
-/ `When to use` / `When not to use` / `Accessibility` / `Promotion notes`) and a
-real `Component.spec.md` (`Intent` / `Interaction contract` / `Do/don't` /
-`Design notes`). The validator runs a stub detector on every pass; every entry
-in the documentation-debt list has been cleared.
-
-**Vertical-slice template:** `Button.mdx` and `Button.spec.md` — the canonical
-example future authors should clone when adding a new beta component.
-
-| Bucket | Components authored |
-|--------|---------------------|
-| Atoms (display) | Title, Text, Icon, Badge, Avatar |
-| Atoms (form) | Label, HelperText, Checkbox, Switch, Inputs |
-| Atoms (navigation) | Link |
-| Molecules (structure) | Card, Accordion |
-| Molecules (navigation) | Tabs, Breadcrumb |
-| Molecules (feedback) | Toast, AlertBanner, Modal |
-| Molecules (form) | Select, CheckboxGroup, FileUpload |
-| Organisms | ContactForm, NewsletterWaitlist, ChatWidget |
-| Patterns | SiteHeader, SiteFooter |
-
-## Honest catalog coverage (the breadth overclaim, walked back)
-
-The headline "100 components" number is the **catalog** count, not the
-**codebase** count. `npm run audit:catalog` walks
-`nextjs-app/shared/{components,patterns}` and finds **179** component-shaped
-folders — meaning a folder owning a same-named `.tsx` file. Of those:
-
-| Bucket | Count | Decision |
-|--------|------:|----------|
-| **In catalog** (`contract.json` present) | 100 | The number we report everywhere else |
-| **Catalog gap** (atoms/molecules that *should* be in the catalog) | 25 | Phase-2 work — being scaffolded now |
-| **Page pattern** (page-level assembly, judgement call whether to catalog) | 31 | Phase-3 work — pattern policy first |
-| **Enhanced / editorial fork** (uncataloged variant of a cataloged component) | 6 | Reconcile with parent or document as a deliberate fork |
-| **Bespoke / infrastructure** (utilities like `Mermaid`, error boundaries) | 17 | Exempt from the catalog by design |
-
-So the **honest catalog completeness is 55.9% (100/179)**. The agent manifest
-declares this under `summary.catalogCompletenessPercent` so AI consumers don't
-read the contract list as if it were the whole front-end.
-
-Audit reproducible: `npm run audit:catalog` (CLI) or
+Reproduce: `npm run audit:catalog` (CLI) or
 `node scripts/design-system/audit-catalog-coverage.mjs --json` (manifest).
 
-## Honest comparison to DSharp (the parity overclaim, walked back)
+## Quality gates (mechanised)
 
-Earlier roadmap drafts implied near-parity with DSharp. That was overstated.
-A breadth-only comparison reads close, but maturity gates and tooling do not.
+The stable tier is real: promotion to `status: "stable"` is gated on committed
+evidence, not template presence.
 
-| Dimension | Digitaltableteur (today) | DSharp (reference) |
-|-----------|--------------------------|--------------------|
-| Contract count | 100 in catalog out of 179 component-shaped folders in the codebase (55.9% catalog completeness) | 112 |
-| Status mix | 27 beta / 73 alpha / **0 stable** | 110 beta / **2 stable** |
-| Parity scoring | Phase-1 story presence only (per `parity-audit.mjs` line 1) | zod catalog, agent evals, beta/SR debt checks, size budgets, dark/HC/viewport/story/visual/a11y snapshot CI (`package.json` line 34) |
-| Public import path | `@dt/<Component>` aliased at the workspace root; no documented subpath/export policy | Versioned package surface with semver guarantees |
-| Figma references | Placeholder `figma.nodeId` strings | Real node IDs verified by `figma-mcp` |
-| AI manifest | Generated; no zod schema validation, no eval suite, no a11y/visual gates | zod-validated; agent eval suite; gates fail CI on regressions |
+| Gate | State |
+|------|-------|
+| A11y-tree snapshots | Committed per stable component under `__a11y-snapshots__/`; captured via `DT_UPDATE_A11Y_SNAPSHOTS=1 npm run test:stories:ci` |
+| Real-browser forced-colors | `npm run test:stories:hc` per required story |
+| Light/dark visual baselines | `npm run test:visual` baselines per theme |
+| Doc semantics | RFC 2119 guideline levels, `docOrigin`, a11y `verificationMode`, `governance.lastReviewed` — gated by `check:doc-semantics` |
+| Contract ↔ props parity | `check:contract-props` — beta/stable props match agent blocks |
+| Token discipline | `check:tokens` (color), `check:radius-shadow` (radius + elevation), stylelint baseline |
 
-Breadth is close, **maturity is not**, and even breadth is overstated unless
-the catalog-gap bucket lands. The next phase below is the work that closes
-the gap, not the celebration that it's already closed.
+## npm consumption
 
-## Stable-tier prerequisites (Phase 2 — not yet started)
+Four packages publish to the registry and are consumed back into this repo
+(the dogfooding mandate): `@digitaltableteur/react`,
+`@digitaltableteur/web-components`, `@digitaltableteur/tokens`, and
+`@digitaltableteur/tokens-css`. Strict runtime dogfooding is partial by design:
+`npm run report:component-usage` currently reports 33/166 imported directly from
+`@digitaltableteur/react` and 68/166 rendered in production transitively.
 
-The maturity gates below have to be **mechanised** before promoting anything
-to `status: "stable"`. Each one is a content-or-CI gap, not a contract
-template gap.
+## Open work (honest)
 
-| Gate | Current | Required at stable | Owner |
-|------|---------|--------------------|-------|
-| A11y-tree snapshots | 0 committed | `DT_UPDATE_A11Y_SNAPSHOTS=1 npm run test:stories:ci` per beta component, snapshots committed under `__a11y-snapshots__/` | Design system |
-| Real-browser forced-colors | 28 hand-asserted | `npm run test:stories:hc` per required story, PNG diffs committed | Design system |
-| Production consumers | 0 documented | Auto-detect script populates `<Component>.contract.json#consumers[]` from `app/**` grep | Design system |
-| Light/dark visual baselines | 0 committed | `npm run test:visual` baselines per beta component, per theme | Design system |
-| Manual SR walkthrough (optional) | Mostly empty | `a11y.screenReaderNote` filled per beta component for the promotion ceremony | Design system |
-| Catalog-gap migration | 25 atoms/molecules outside the catalog (per `npm run audit:catalog`) | Each one has a `contract.json`, `stories.tsx`, `mdx`, `spec.md` | Design system |
-| Page-pattern policy | 31 page-level assemblies undeclared | A written policy on whether page-level patterns enter the catalog, with the 31 folders triaged against it | Design system |
-| `npm run test:ci` | 53 files / 197 tests failing (2026-05-26) | 0 failing — real test rot triaged + legacy Vite trees deleted | Engineering |
-| Bundle-size budgets | None | `size-limit` configured per public entrypoint, enforced in CI | Engineering |
-| Agent-manifest schema | Hand-written | `zod` schema in `scripts/design-system/agent-manifest.schema.ts` validates every build | Design system + AI |
-| Agent eval suite | None | A small set of prompt-rendered-task evals (e.g. "build a contact form using only `@dt` components") with golden snapshots | Design system + AI |
-| Real Figma node refs | Placeholder strings | `npm run figma:link` resolves every `figma.nodeId` against the team library | Design |
+Not everything is closed. The live gaps:
 
-The validator already gates the first four at `status: "stable"` — the
-gap is the *content* and the *new gates*, not the existing infrastructure.
+- **`app/**` site CSS** still has naked `border-radius` outside the design-system
+  scope covered by `check:radius-shadow`.
+- **Runtime dogfooding** — 33/166 direct registry imports; raising this is the
+  standing consumption mandate, one component per PR.
+- **Native web-component `implementationA11y`** is captured but not yet enforced
+  as a gate.
+- **Consumers manifest drift** — a handful of shell components (SiteHeader,
+  Logo, SiteFooter, …) report `consumers-drift`; run `npm run audit:consumers`.
 
 ## Not planned (by design)
 
 - Importing `foundations/dist/tokens.css` at runtime (see ADR-0004)
-- Copying DSharp palette or spacing literals into this repo (see ADR-0005)
+- Copying external palette or spacing literals into this repo (see ADR-0005)
 
 ## Commands
 
 ```bash
 npm run build:tokens         # catalog + DTCG + dist + Tailwind bridge + agent manifest
 npm run check:contrast       # WCAG AA semantic pairs
-npm run validate:components  # all gates + HONEST_BETA_DOC_DEBT report
-npm run audit:catalog        # codebase vs catalog completeness report (179 vs 100 today)
-node scripts/design-system/honest-beta-hygiene.mjs   # idempotent hygiene sweep
+npm run check:radius-shadow  # radius + elevation token discipline
+npm run validate:components  # all component gates
+npm run audit:catalog        # codebase vs catalog completeness (90.2% today)
+npm run report:component-usage  # runtime dogfooding coverage
 ```
