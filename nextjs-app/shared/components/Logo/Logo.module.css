@@ -20,13 +20,14 @@
     object-fit: contain;
   }
 
-  /* Brand badge: flip the mark to the contrast token; lime fill on the circle. */
+  /* Brand background circle: flip the mark to the contrast token; lime fill
+     on the circle. */
 
-  .badged {
+  .withBackground {
     color: var(--logo-color);
   }
 
-  .badgeBg {
+  .backgroundCircle {
     fill: var(--logo-background);
   }
 

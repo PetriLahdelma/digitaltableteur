@@ -2512,7 +2512,7 @@ const elementDefinitions = [
     defaultBackend: "native",
     nativeClassName: "DtLogoElement",
     description:
-      "Native logo atom: Digitaltableteur brand mark with badge and motion modes, or a custom image via src.",
+      "Native logo atom: Digitaltableteur brand mark with background and motion modes, or a custom image via src.",
     storyParity: storyParity(),
     props: [
       stringProp(
@@ -2522,7 +2522,11 @@ const elementDefinitions = [
       ),
       numberProp("size"),
       booleanProp("animated"),
-      booleanProp("badge"),
+      booleanProp(
+        "background",
+        "background",
+        "Brand lime circle background behind a contrast mark",
+      ),
       {
         ...stringProp("accessibleTitle", "title"),
         attributeName: "accessible-title",

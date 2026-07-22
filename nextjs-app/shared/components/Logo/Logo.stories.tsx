@@ -16,7 +16,13 @@ const meta = {
     a11y: { test: "error" },
   },
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
-  args: { src: "", size: 24, animated: false, badge: false, decorative: false },
+  args: {
+    src: "",
+    size: 24,
+    animated: false,
+    background: false,
+    decorative: false,
+  },
 } satisfies Meta<typeof Logo>;
 
 export default meta;
@@ -75,7 +81,7 @@ export const Animated: Story = {
   render: () => <Logo size={64} animated />,
 };
 
-export const Badge: Story = {
+export const Background: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div
@@ -85,8 +91,8 @@ export const Badge: Story = {
         alignItems: "center",
       }}
     >
-      <Logo size={40} badge />
-      <Logo size={40} badge animated />
+      <Logo size={40} background />
+      <Logo size={40} background animated />
     </div>
   ),
 };

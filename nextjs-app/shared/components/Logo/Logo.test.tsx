@@ -34,12 +34,12 @@ describe("Logo", () => {
     expect(tokens(animatedSvg).length).toBeGreaterThan(tokens(staticSvg).length);
   });
 
-  it("renders a badge circle only when badge is set", () => {
+  it("renders a background circle only when background is set", () => {
     expect(
       render(<Logo />).container.querySelector("circle"),
     ).toBeNull();
     expect(
-      render(<Logo badge />).container.querySelector("circle"),
+      render(<Logo background />).container.querySelector("circle"),
     ).not.toBeNull();
   });
 
@@ -83,9 +83,9 @@ describe("Logo", () => {
     expect(container.querySelector("img")).toBeNull();
   });
 
-  it("ignores animated and badge when rendering a custom image", () => {
+  it("ignores animated and background when rendering a custom image", () => {
     const { container } = render(
-      <Logo src="/logos/clients/dsharp.svg" animated badge />,
+      <Logo src="/logos/clients/dsharp.svg" animated background />,
     );
     expect(container.querySelector("circle")).toBeNull();
     expect(container.querySelector("img")?.getAttribute("class")).not.toContain(

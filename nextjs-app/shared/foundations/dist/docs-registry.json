@@ -9186,7 +9186,7 @@
           "required": false
         },
         {
-          "name": "badge",
+          "name": "background",
           "type": "boolean",
           "required": false
         },
@@ -9205,7 +9205,7 @@
         "src": {
           "optional": true,
           "type": "string",
-          "description": "Optional image URL (PNG, JPEG, or SVG) rendered instead of the built-in\nDigitaltableteur mark. `title` becomes the alt text; `animated` and `badge`\napply to the built-in mark only and are ignored when `src` is set."
+          "description": "Optional image URL (PNG, JPEG, or SVG) rendered instead of the built-in\nDigitaltableteur mark. `title` becomes the alt text; `animated` and\n`background` apply to the built-in mark only and are ignored when `src` is\nset."
         },
         "size": {
           "optional": true,
@@ -9217,10 +9217,10 @@
           "type": "boolean",
           "description": "Pulse the three leading bars while true; a controlled signal driven from the\nconsumer's hover/focus state (respects prefers-reduced-motion). Default false."
         },
-        "badge": {
+        "background": {
           "optional": true,
           "type": "boolean",
-          "description": "Wrap the mark in the brand lime circle (`--logo-background` / `--logo-color`). Default false."
+          "description": "Render the brand lime circle background behind a contrast mark\n(`--logo-background` / `--logo-color`). Default false."
         },
         "title": {
           "optional": true,

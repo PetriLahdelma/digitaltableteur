@@ -12,7 +12,7 @@ type Args = {
   src: string;
   size: number;
   animated: boolean;
-  badge: boolean;
+  background: boolean;
   title: string;
   decorative: boolean;
 };
@@ -43,7 +43,7 @@ const meta = {
     src: "",
     size: 24,
     animated: false,
-    badge: false,
+    background: false,
     title: "Digitaltableteur",
     decorative: false,
   },
@@ -75,11 +75,11 @@ export const Sizes: Story = {
   ),
 };
 export const Animated: Story = { args: { animated: true, size: 64 } };
-export const Badge: Story = {
+export const Background: Story = {
   render: () => (
     <Row>
-      <Logo {...meta.args} badge size={40} />
-      <Logo {...meta.args} badge animated size={40} />
+      <Logo {...meta.args} background size={40} />
+      <Logo {...meta.args} background animated size={40} />
     </Row>
   ),
 };

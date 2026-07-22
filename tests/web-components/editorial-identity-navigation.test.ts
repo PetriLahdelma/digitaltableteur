@@ -30,7 +30,7 @@ describe("native editorial, identity, and section-navigation batch", () => {
     expect(logo).toHaveAttribute("width", "24");
     expect(logo).toHaveAttribute("height", "24");
 
-    element.badge = true;
+    element.background = true;
     element.animated = true;
     expect(element.shadowRoot?.querySelector("circle")).toBeTruthy();
     expect(element.shadowRoot?.querySelector("svg")).toHaveClass("animated");
@@ -41,6 +41,28 @@ describe("native editorial, identity, and section-navigation batch", () => {
       "true",
     );
     expect(element.shadowRoot?.querySelector("title")).toBeNull();
+  });
+
+  it("renders a custom logo image with alt semantics when src is set", () => {
+    const element = document.createElement("dt-logo") as DtLogoElement;
+    element.setAttribute("src", "/logos/clients/dsharp.svg");
+    element.setAttribute("accessible-title", "DSharp");
+    document.body.append(element);
+
+    const img = element.shadowRoot?.querySelector("img");
+    expect(img).toHaveAttribute("src", "/logos/clients/dsharp.svg");
+    expect(img).toHaveAttribute("alt", "DSharp");
+    expect(img).toHaveAttribute("width", "24");
+    expect(element.shadowRoot?.querySelector("svg")).toBeNull();
+
+    element.decorative = true;
+    const decorativeImg = element.shadowRoot?.querySelector("img");
+    expect(decorativeImg).toHaveAttribute("alt", "");
+    expect(decorativeImg).toHaveAttribute("aria-hidden", "true");
+
+    element.src = "";
+    expect(element.shadowRoot?.querySelector("img")).toBeNull();
+    expect(element.shadowRoot?.querySelector("svg")).toBeTruthy();
   });
 
   it("preserves native article-image sizing, priority, and lifecycle events", () => {
