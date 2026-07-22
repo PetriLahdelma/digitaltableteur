@@ -23,10 +23,14 @@
   AvatarGroup) to `AvatarSize`; tokens resolve to real CSS lengths before
   reaching `--avatar-size` and the img `sizes` attribute. Raw CSS lengths
   remain accepted.
-- Fixes server-side imports of the content entrypoint: the bundled
-  react-markdown chain now pins the universal Node build of
-  `decode-named-character-reference` instead of its DOM build, which called
-  `document.createElement` at module scope and crashed Node/SSR consumers.
+- NEW PEER DEPENDENCY: `react-markdown` (>=10) is externalized as a
+  peerDependency alongside AuthorBio's markdown bio rendering — the same
+  treatment as `framer-motion`. Consumers must install it; in exchange the
+  content-family graph stays ~50 kB (gzip) leaner and markdown resolves
+  through the host's own (Node-correct) module resolution instead of a
+  bundled copy. The package vite config also pins
+  `decode-named-character-reference` to its universal Node build as a
+  tripwire should a markdown dependency ever be bundled again.
 - Runtime public API grows additively from 129 to 132 exports; the only
   pre-existing API change is the additive `AvatarSize` token union.
 

@@ -145,6 +145,11 @@ const reactDomTypesVersion =
 const framerMotionVersion =
   rootPackage.dependencies?.["framer-motion"] ??
   rootPackage.devDependencies?.["framer-motion"];
+// react-markdown became a peer alongside AuthorBio (0.1.18); same explicit
+// install requirement as framer-motion.
+const reactMarkdownVersion =
+  rootPackage.dependencies?.["react-markdown"] ??
+  rootPackage.devDependencies?.["react-markdown"];
 
 if (
   !reactVersion ||
@@ -674,6 +679,7 @@ void tree;
       `react@${reactVersion}`,
       `react-dom@${reactDomVersion}`,
       `framer-motion@${framerMotionVersion}`,
+      `react-markdown@${reactMarkdownVersion}`,
       `typescript@${typescriptVersion}`,
       `@types/react@${reactTypesVersion}`,
       `@types/react-dom@${reactDomTypesVersion}`,

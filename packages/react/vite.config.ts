@@ -44,6 +44,7 @@ const externalPackages = [
   "class-variance-authority",
   "clsx",
   "react-phone-number-input",
+  "react-markdown",
 ];
 
 function isExternal(id: string): boolean {
