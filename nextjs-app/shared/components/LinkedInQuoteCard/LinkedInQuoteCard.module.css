@@ -29,7 +29,7 @@
   padding: var(--space-layout-24) var(--space-layout-24, 1.5rem);
   inline-size: 100%;
   max-inline-size: 480px;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-lg);
   background: var(--color-white);
   box-shadow:
     0 4px 6px rgb(0 0 0 / 10%),
@@ -47,7 +47,7 @@
   block-size: 48px;
   inline-size: 48px;
   flex-shrink: 0;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   object-fit: cover;
 }
 
@@ -58,7 +58,7 @@
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: var(--color-neutral-bg);
   color: var(--color-gray-medium);
 }

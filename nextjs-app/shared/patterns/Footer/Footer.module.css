@@ -65,7 +65,7 @@
 }
 
 .footer a:focus-visible {
-  border-radius: 0.375rem;
+  border-radius: var(--radius-lg);
   outline: 2px solid currentcolor;
   outline-offset: 4px;
   outline-color: color-mix(in srgb, currentcolor 70%, black);

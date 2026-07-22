@@ -276,7 +276,7 @@
 .iconCard:hover {
   border-color: rgb(var(--color-primary) / 50%);
   background: rgb(var(--color-grey-100) / 50%);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 

@@ -1,7 +1,7 @@
 .avatarImage {
   block-size: var(--avatar-size, 2.5rem);
   inline-size: var(--avatar-size, 2.5rem);
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   object-fit: cover;
 }
 
@@ -11,7 +11,7 @@
   inline-size: var(--avatar-size, 2.5rem);
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background-color: var(--color-primary);
   font-family: var(--font-body, sans-serif);
   font-size: clamp(0.875rem, 0.4vi + 0.8rem, 1.125rem);
@@ -27,7 +27,7 @@
   display: inline-flex;
   padding: 0;
   border: none;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: transparent;
   cursor: pointer;
 }

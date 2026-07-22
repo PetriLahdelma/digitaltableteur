@@ -33,7 +33,7 @@
 }
 
 .link:focus-visible {
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
   outline: var(--focus-ring-width, 2px) solid
     var(--focus-ring-color, var(--color-primary));
   outline-offset: 2px;

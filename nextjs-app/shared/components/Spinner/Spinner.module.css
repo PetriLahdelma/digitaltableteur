@@ -1,7 +1,7 @@
 .root {
   display: inline-block;
   border: 2px solid var(--color-border);
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   animation: spinner-rotate var(--duration-slow) linear infinite;
   border-block-start-color: var(--color-primary);
 }

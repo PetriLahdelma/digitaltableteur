@@ -6,7 +6,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
-  box-shadow: 0 12px 32px rgb(0 0 0 / 15%);
+  box-shadow: var(--shadow-lg);
   transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 }
 

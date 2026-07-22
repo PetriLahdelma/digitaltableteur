@@ -14,7 +14,7 @@
       }
     },
     "md": {
-      "$value": "0.25rem",
+      "$value": "4px",
       "$description": "Border radius (md).",
       "$type": "dimension",
       "$extensions": {
@@ -37,6 +37,18 @@
         }
       }
     },
+    "xl": {
+      "$value": "16px",
+      "$description": "Border radius (xl).",
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--radius-xl",
+          "category": "radius",
+          "subgroup": "General"
+        }
+      }
+    },
     "full": {
       "$value": "9999px",
       "$description": "Border radius (full).",
@@ -44,6 +56,18 @@
       "$extensions": {
         "digitaltableteur": {
           "cssVar": "--radius-full",
+          "category": "radius",
+          "subgroup": "General"
+        }
+      }
+    },
+    "circle": {
+      "$value": "50%",
+      "$description": "Border radius (circle).",
+      "$type": "dimension",
+      "$extensions": {
+        "digitaltableteur": {
+          "cssVar": "--radius-circle",
           "category": "radius",
           "subgroup": "General"
         }

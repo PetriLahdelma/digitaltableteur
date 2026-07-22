@@ -114,7 +114,7 @@
 
 .portrait {
   inline-size: 128px;
-  border-radius: 100rem;
+  border-radius: var(--radius-full);
   clip-path: inset(2px round 50%);
   object-fit: cover;
 }

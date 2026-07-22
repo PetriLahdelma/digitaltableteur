@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-07-19T15:36:32.450Z",
-  "tokenCount": 192,
-  "usageCoverage": 156,
+  "generatedAt": "2026-07-22T18:04:58.540Z",
+  "tokenCount": 198,
+  "usageCoverage": 158,
   "themes": [
     {
       "id": "light",
@@ -1156,15 +1156,15 @@
           "subgroup": "General"
         },
         {
-          "name": "--modal-shadow",
-          "value": "0 4px 8px rgb(0 0 0 / 20%)",
+          "name": "--gallery-caption-bg",
+          "value": "rgb(0 0 0 / 55%)",
           "usage": "Overlay or elevation token.",
           "category": "elevation",
           "subgroup": "General"
         },
         {
-          "name": "--gallery-caption-bg",
-          "value": "rgb(0 0 0 / 55%)",
+          "name": "--modal-shadow",
+          "value": "var(--shadow-xl)",
           "usage": "Overlay or elevation token.",
           "category": "elevation",
           "subgroup": "General"
@@ -1672,6 +1672,34 @@
           "usage": "",
           "category": "other",
           "subgroup": "General"
+        },
+        {
+          "name": "--shadow-sm",
+          "value": "0 1px 2px rgb(0 0 0 / 6%)",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--shadow-md",
+          "value": "0 4px 12px rgb(0 0 0 / 10%)",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--shadow-lg",
+          "value": "0 12px 32px rgb(0 0 0 / 12%)",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--shadow-xl",
+          "value": "0 24px 60px rgb(0 0 0 / 16%)",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
         }
       ]
     },
@@ -1689,7 +1717,7 @@
         },
         {
           "name": "--radius-md",
-          "value": "0.25rem",
+          "value": "4px",
           "usage": "Border radius (md).",
           "category": "radius",
           "subgroup": "General"
@@ -1702,9 +1730,23 @@
           "subgroup": "General"
         },
         {
+          "name": "--radius-xl",
+          "value": "16px",
+          "usage": "Border radius (xl).",
+          "category": "radius",
+          "subgroup": "General"
+        },
+        {
           "name": "--radius-full",
           "value": "9999px",
           "usage": "Border radius (full).",
+          "category": "radius",
+          "subgroup": "General"
+        },
+        {
+          "name": "--radius-circle",
+          "value": "50%",
+          "usage": "Border radius (circle).",
           "category": "radius",
           "subgroup": "General"
         }

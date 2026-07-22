@@ -135,7 +135,7 @@
 }
 
 .cta a {
-  border-radius: 0.5rem;
+  border-radius: var(--radius-lg);
   font-size: 1.5rem;
   text-decoration: none;
   color: var(--color-white);
@@ -173,7 +173,7 @@
   color: inherit;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
@@ -185,7 +185,7 @@
   inline-size: 100%;
   block-size: auto;
   display: block;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   object-fit: cover;
 }
 

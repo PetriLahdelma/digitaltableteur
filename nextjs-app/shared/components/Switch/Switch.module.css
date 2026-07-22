@@ -30,7 +30,7 @@
   justify-content: flex-start;
   align-items: center;
   border: none;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background-color: var(--switch-track-off, var(--color-border-light));
   cursor: pointer;
   transition:
@@ -115,7 +115,7 @@
   block-size: var(--switch-handle-size);
   justify-content: center;
   align-items: center;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background-color: var(--switch-handle-bg, #fff);
 
   /* Soft drop shadow + a hairline ring. The ring is transparent in most themes
@@ -147,7 +147,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .switch:hover:not([data-disabled="true"]) .handle {
-    box-shadow: 0 2px 9px rgb(15 23 42 / 28%);
+    box-shadow: var(--shadow-md);
   }
 }
 
@@ -169,7 +169,7 @@
   inline-size: 0.8rem;
   block-size: 0.8rem;
   border: 2px solid rgb(15 23 42 / 15%);
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   animation: spin 0.8s linear infinite;
   border-block-start-color: var(--color-primary);
 }

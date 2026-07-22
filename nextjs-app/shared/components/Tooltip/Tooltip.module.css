@@ -8,7 +8,7 @@
   font-family: var(--font-text);
   font-size: var(--font-size-text-s);
   line-height: var(--line-height-normal);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+  box-shadow: var(--shadow-md);
   transform-origin: var(--radix-tooltip-content-transform-origin);
 }
 

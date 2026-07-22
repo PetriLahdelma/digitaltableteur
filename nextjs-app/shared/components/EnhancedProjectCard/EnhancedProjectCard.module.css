@@ -124,7 +124,7 @@
   min-block-size: 24px;
   align-items: center;
   border: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: color-mix(in srgb, var(--color-primary) 8%, transparent);
   font-family: var(--font-body);
   font-size: 0.75rem;

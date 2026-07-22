@@ -5,7 +5,7 @@
 
 .page code {
   padding-inline: 0.25em;
-  border-radius: 3px;
+  border-radius: var(--radius-md);
   background-color: rgb(87 113 100 / 8%);
   font-family: "DM Mono", var(--font-mono, monospace);
   font-size: 0.88em;

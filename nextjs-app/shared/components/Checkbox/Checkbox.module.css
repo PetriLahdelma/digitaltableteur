@@ -136,7 +136,7 @@ input.checkbox:checked::after {
   border-inline-start: 3px solid var(--checkbox-checkmark-color);
   border-block-end: 3px solid var(--checkbox-checkmark-color);
   transform: translate(-50%, -60%) rotate(-45deg);
-  border-radius: 1px;
+  border-radius: var(--radius-sm);
 }
 
 /* Higher specificity selectors for checkbox styling */
@@ -158,7 +158,7 @@ input.checkbox:checked::after {
   border-inline-start: 3px solid var(--checkbox-checkmark-color);
   border-block-end: 3px solid var(--checkbox-checkmark-color);
   transform: translate(-50%, -60%) rotate(-45deg);
-  border-radius: 1px;
+  border-radius: var(--radius-sm);
 }
 
 /* Class-based checked state - more reliable than :checked pseudo-class */
@@ -181,7 +181,7 @@ input.checkbox:checked::after {
   border-inline-start: 3px solid var(--checkbox-checkmark-color);
   border-block-end: 3px solid var(--checkbox-checkmark-color);
   transform: translate(-50%, -60%) rotate(-45deg);
-  border-radius: 1px;
+  border-radius: var(--radius-sm);
   z-index: 1;
 
   /* don't animate transform to avoid morphing from indeterminate bar */
@@ -207,7 +207,7 @@ input.checkbox:checked::after {
   border-inline-start: 3px solid var(--checkbox-checkmark-color);
   border-block-end: 3px solid var(--checkbox-checkmark-color);
   transform: translate(-50%, -60%) rotate(-45deg);
-  border-radius: 1px;
+  border-radius: var(--radius-sm);
   z-index: 1;
 }
 

@@ -19,7 +19,7 @@
   flex-direction: column;
   border-radius: var(--radius-lg);
   background-color: var(--main-body-background-color, var(--color-white));
-  box-shadow: var(--modal-shadow, 0 4px 8px rgb(0 0 0 / 20%));
+  box-shadow: var(--shadow-xl);
   overflow: hidden auto;
 }
 

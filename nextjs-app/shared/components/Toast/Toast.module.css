@@ -10,7 +10,7 @@
   gap: var(--space-internal-8);
   border-radius: var(--radius-md);
   background-color: var(--color-primary);
-  box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
+  box-shadow: var(--shadow-sm);
   font-family: var(--font-text);
   color: var(--color-white);
   transition:

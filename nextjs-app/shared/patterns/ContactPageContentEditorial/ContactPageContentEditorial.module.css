@@ -267,7 +267,7 @@
   justify-content: center;
   inline-size: 2rem;
   block-size: 2rem;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background-color: var(--color-primary);
   color: var(--color-white);
   transition: transform var(--duration-fast) var(--ease-out-cubic);

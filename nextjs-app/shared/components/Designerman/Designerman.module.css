@@ -89,9 +89,9 @@
   justify-content: center;
   align-items: center;
   border: 1px solid rgb(0 0 0 / 20%);
-  border-radius: 6px;
+  border-radius: var(--radius-lg);
   background: rgb(255 255 255 / 80%);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 12%);
+  box-shadow: var(--shadow-sm);
 }
 
 .controlButton {
@@ -100,9 +100,9 @@
   align-items: center;
   gap: 4px;
   border: 1px solid rgb(0 0 0 / 18%);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   background: rgb(255 255 255 / 85%);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+  box-shadow: var(--shadow-sm);
   font-family: inherit;
   cursor: pointer;
 }

@@ -7,7 +7,7 @@
   justify-content: flex-start;
   border: 2px solid var(--color-primary);
   background: var(--color-light-bg);
-  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  box-shadow: var(--shadow-md);
   text-decoration: none;
   color: inherit;
   transition:
@@ -17,7 +17,7 @@
 
 .card:hover {
   background: var(--color-white);
-  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+  box-shadow: var(--shadow-md);
   filter: brightness(120%);
 }
 

@@ -24,9 +24,9 @@
   max-block-size: min(70vb, 640px);
   flex-direction: column;
   border: 1px solid var(--color-border);
-  border-radius: 1.25rem;
+  border-radius: var(--radius-xl);
   background-color: var(--main-body-background-color);
-  box-shadow: 0 25px 60px rgb(0 0 0 / 15%);
+  box-shadow: var(--shadow-xl);
   pointer-events: auto;
   overflow: hidden;
 }
@@ -73,7 +73,7 @@
   display: inline-block;
   inline-size: 9px;
   block-size: 9px;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   margin-block-start: 0.22rem;
 }
 
@@ -211,7 +211,7 @@
 .message {
   padding: 0.5rem 1rem;
   max-inline-size: 100%;
-  border-radius: 0.85rem;
+  border-radius: var(--radius-xl);
   background: rgb(0 0 0 / 6%);
   font-family: var(--font-body, sans-serif);
   font-size: 0.9rem;
@@ -263,13 +263,13 @@
 
 .message[data-role="assistant"] {
   align-self: stretch;
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   background: rgb(0 0 0 / 4%);
 }
 
 .message[data-role="user"] {
   align-self: flex-end;
-  border-radius: 1rem 1rem 0;
+  border-radius: var(--radius-xl) var(--radius-xl) 0;
   background: var(--color-primary);
   color: var(--inverted-text-color);
 }
@@ -299,7 +299,7 @@
   margin: 0 1.25rem 0.75rem;
   padding: 0.75rem 1rem;
   border: 1px solid rgb(255 86 86 / 24%);
-  border-radius: 0.85rem;
+  border-radius: var(--radius-xl);
   background: rgb(255 86 86 / 12%);
   font-family: var(--font-body, sans-serif);
   font-size: 0.85rem;
@@ -399,7 +399,7 @@
   align-items: center;
   border: none;
   /* stylelint-disable-next-line declaration-no-important -- Override Button component styles */
-  border-radius: 0.5rem !important;
+  border-radius: var(--radius-lg) !important;
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -433,7 +433,7 @@
   border: none;
   /* stylelint-disable-next-line declaration-no-important -- Override Button variant styles */
   background: var(--logo-background) !important;
-  box-shadow: 0 18px 40px rgb(0 0 0 / 20%);
+  box-shadow: var(--shadow-xl);
   font-family: inherit;
   font-size: 0.95rem;
   /* stylelint-disable-next-line declaration-no-important -- Override Button variant styles */
@@ -446,7 +446,7 @@
 }
 
 .toggle:focus-visible {
-  border-radius: 9999px;
+  border-radius: var(--radius-full);
   outline: 2px solid currentcolor;
   outline-offset: 4px;
   outline-color: color-mix(in srgb, currentcolor 65%, black);
@@ -559,7 +559,7 @@
 }
 
 .resetInline:focus-visible {
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
   outline: 2px solid currentcolor;
   outline-offset: 2px;
 }
@@ -592,7 +592,7 @@
     inline-size: 100%;
     max-block-size: 85vb;
     border-inline: none;
-    border-radius: 1rem 1rem 0 0;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     border-block-end: none;
   }
 
@@ -935,7 +935,7 @@
 
 .projectCard:hover {
   border-color: var(--color-primary);
-  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  box-shadow: var(--shadow-md);
 }
 
 .projectCardTitle {
@@ -1036,7 +1036,7 @@
   inline-size: 100%;
   min-block-size: 3rem;
   border: 1px solid var(--color-border-light);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-xl);
   background: transparent;
   font-family: var(--font-text);
   font-size: 1rem;
