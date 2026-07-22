@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T14:50:03.221Z",
+  "generatedAt": "2026-07-22T15:01:37.874Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -1427,7 +1427,7 @@
         "imageUrl": {
           "optional": false,
           "type": "string | { default: string } | StaticImageData",
-          "description": "Avatar image source."
+          "description": "Avatar image source: a URL, an imported asset path, or static image data."
         },
         "size": {
           "optional": true,
@@ -1438,6 +1438,11 @@
           "optional": true,
           "type": "string",
           "description": "Optional author profile URL; makes the byline text a link."
+        },
+        "bylinePrefix": {
+          "optional": true,
+          "type": "string",
+          "description": "Byline prefix before the name. Defaults to the localized \"By\"\n(fi \"Kirjoittanut\", sv \"Av\"), matching the native dt-author element."
         }
       },
       "propRelationships": [],
@@ -1463,7 +1468,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 4,
+      "declaredPropCount": 5,
       "guidelines": [
         {
           "level": "should",
@@ -1596,9 +1601,34 @@
       "intent": "Documents how **AuthorBio** is used in production layouts and Storybook examples.",
       "props": {
         "slug": {
-          "optional": false,
+          "optional": true,
           "type": "string",
-          "description": "Author slug to fetch data from authors.ts"
+          "description": "Optional author slug resolved from the site's authors registry; direct\nprops below override the registry fields."
+        },
+        "name": {
+          "optional": true,
+          "type": "string",
+          "description": "Author name. Required unless `slug` resolves it."
+        },
+        "imageUrl": {
+          "optional": true,
+          "type": "string | { default: string } | StaticImageData",
+          "description": "Avatar image source: a URL, an imported asset path, or static image data."
+        },
+        "role": {
+          "optional": true,
+          "type": "string",
+          "description": "Role/title shown under the name (e.g. \"Founder, CEO\")."
+        },
+        "bio": {
+          "optional": true,
+          "type": "string",
+          "description": "Biography text; markdown after the first paragraph. The first paragraph\nrenders as the lead/tagline."
+        },
+        "email": {
+          "optional": true,
+          "type": "string",
+          "description": "Contact email rendered as a mailto link when `showContact` is set."
         },
         "className": {
           "optional": true,
@@ -1608,7 +1638,7 @@
         "heading": {
           "optional": true,
           "type": "string",
-          "description": "Optional custom heading text (defaults to author.name)"
+          "description": "Optional custom heading text (defaults to the author name)"
         },
         "showContact": {
           "optional": true,
@@ -1648,7 +1678,7 @@
         "MdxImage"
       ],
       "prefersOver": [],
-      "declaredPropCount": 4,
+      "declaredPropCount": 9,
       "guidelines": [
         {
           "level": "should",

@@ -330,6 +330,72 @@ describe("AuthorBio", () => {
     });
   });
 
+  describe("Direct input (no slug)", () => {
+    test("renders from direct props without a slug", () => {
+      const getAuthorBySlugSpy = vi.mocked(authorsData.getAuthorBySlug);
+      render(
+        <AuthorBio
+          name="Jane Doe"
+          imageUrl="https://example.com/jane.jpg"
+          role="Design Lead"
+          bio="Writes about design systems."
+        />,
+      );
+      expect(getAuthorBySlugSpy).not.toHaveBeenCalled();
+      expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
+        "Jane Doe",
+      );
+      expect(screen.getByText("Design Lead")).toBeInTheDocument();
+      expect(
+        screen.getByText("Writes about design systems."),
+      ).toBeInTheDocument();
+      expect(screen.getByAltText("Jane Doe")).toHaveAttribute(
+        "src",
+        "https://example.com/jane.jpg",
+      );
+    });
+
+    test("renders contact email from direct props", () => {
+      render(
+        <AuthorBio name="Jane Doe" email="jane@example.com" showContact />,
+      );
+      expect(
+        screen.getByRole("link", { name: "jane@example.com" }),
+      ).toHaveAttribute("href", "mailto:jane@example.com");
+    });
+
+    test("direct props override slug-derived fields", () => {
+      vi.mocked(authorsData.getAuthorBySlug).mockReturnValue(mockAuthor);
+      render(<AuthorBio slug="john-doe" name="Override Name" />);
+      expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
+        "Override Name",
+      );
+      // Non-overridden fields still come from the registry entry.
+      expect(screen.getByAltText("Override Name")).toHaveAttribute(
+        "src",
+        mockAuthor.imageUrl,
+      );
+    });
+
+    test("returns null with no slug and no name", () => {
+      const { container } = render(<AuthorBio bio="Orphan bio" />);
+      expect(container.firstChild).toBeNull();
+    });
+
+    test("has no accessibility violations with direct props", async () => {
+      const { container } = render(
+        <AuthorBio
+          name="Jane Doe"
+          imageUrl="https://example.com/jane.jpg"
+          role="Design Lead"
+          bio="Lead paragraph.\n\nMore detail."
+        />,
+      );
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+  });
+
   describe("Edge Cases", () => {
     test("handles very long bio text", () => {
       const longBio = Array(10)

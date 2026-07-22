@@ -6,7 +6,7 @@ import { getAuthors } from "../../data/authors";
 
 const meta: Meta<typeof AuthorBio> = {
   // Controls are contract-derived at runtime (.storybook/lib/controls-autogen.ts).
-  title: "Site/AuthorBio",
+  title: "Content/AuthorBio",
   component: AuthorBio,
   tags: ["stable", "!autodocs"],
   parameters: {
@@ -42,6 +42,21 @@ export const CustomHeading: Story = {
 export const WithContact: Story = {
   args: {
     slug: defaultAuthor?.slug ?? "petri-lahdelma",
+    showContact: true,
+  },
+};
+
+/**
+ * Fully input-driven: no registry slug, every detail passed directly. This is
+ * the reusable-component path for authors outside the site's registry.
+ */
+export const CustomAuthor: Story = {
+  args: {
+    name: "Jane Doe",
+    imageUrl: "https://via.placeholder.com/150",
+    role: "Design Lead",
+    bio: "Jane leads design systems work at Example Co.\n\nShe writes about **component APIs** and accessibility.",
+    email: "jane@example.com",
     showContact: true,
   },
 };

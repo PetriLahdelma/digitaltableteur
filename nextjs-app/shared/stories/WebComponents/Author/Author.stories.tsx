@@ -37,7 +37,7 @@ const defaults: Args = {
 };
 
 const meta = {
-  title: "Web Components/Site/Author",
+  title: "Web Components/Content/Author",
   component: Author,
   tags: ["autodocs", "beta", "web-components"],
   parameters: {

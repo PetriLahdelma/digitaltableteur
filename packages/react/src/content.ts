@@ -1,3 +1,5 @@
+export { default as AuthorBio } from "../../../nextjs-app/shared/components/AuthorBio/AuthorBio";
+export type { AuthorBioProps } from "../../../nextjs-app/shared/components/AuthorBio/AuthorBio";
 export { default as CodeBlockWindow } from "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow";
 export type { CodeBlockWindowProps } from "../../../nextjs-app/shared/components/CodeBlockWindow/CodeBlockWindow";
 export { default as CodeSnippet } from "../../../nextjs-app/shared/components/CodeSnippet/CodeSnippet";

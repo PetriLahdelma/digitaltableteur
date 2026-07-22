@@ -15,7 +15,7 @@ import { getAuthors } from "../../data/authors";
  * - Design system compliant (Avatar component reuse)
  */
 const meta: Meta<typeof Author> = {
-  title: "Site/Author",
+  title: "Content/Author",
   component: Author,
   tags: ["beta", "autodocs"],
   parameters: {
@@ -245,6 +245,18 @@ export const InArticleContext: Story = {
           "Shows how the Author component integrates into a typical article layout with heading and content.",
       },
     },
+  },
+};
+
+/**
+ * Custom byline prefix for non-authorship attributions or a fixed language.
+ * The default prefix is localized ("By" / "Kirjoittanut" / "Av").
+ */
+export const CustomBylinePrefix: Story = {
+  args: {
+    name: "Anna Virtanen",
+    imageUrl: "https://via.placeholder.com/150",
+    bylinePrefix: "Reviewed by",
   },
 };
 

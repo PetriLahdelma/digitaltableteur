@@ -3,6 +3,13 @@
 ## Intent
 Documents how **Author** is used in production layouts and Storybook examples.
 
+Reusable byline atom: every detail is an input. `name` plus `imageUrl` (a URL,
+an imported asset path, or static image data) render the avatar byline;
+`profileUrl` turns it into a link. The byline prefix defaults to the localized
+"By" (fi "Kirjoittanut", sv "Av") — parity with the native `dt-author`
+element — and `bylinePrefix` overrides it for custom attributions
+(e.g. "Reviewed by") or a fixed language.
+
 ## Interaction contract
 - Keyboard: See **Playground** / **Example** stories and component tests.
 - Pointer: Standard click/tap on interactive affordances.

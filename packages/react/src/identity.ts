@@ -1,3 +1,5 @@
+export { default as Author } from "../../../nextjs-app/shared/components/Author/Author";
+export type { AuthorProps } from "../../../nextjs-app/shared/components/Author/Author";
 export { default as Avatar } from "../../../nextjs-app/shared/components/Avatar/Avatar";
 export type {
   AvatarMenuItem,

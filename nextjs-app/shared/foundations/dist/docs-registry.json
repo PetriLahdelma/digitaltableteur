@@ -807,7 +807,7 @@
       "group": "structure",
       "tier": 2,
       "status": "beta",
-      "description": "Compact byline that attributes a blog post to its author with name and avatar; the fuller end-of-article treatment is AuthorBio.",
+      "description": "Compact byline that attributes content to any author: name, avatar (URL or path), optional profile link, and a localized or custom byline prefix; the fuller biography treatment is AuthorBio.",
       "dense": "Article byline: author name/avatar attribution line for blog posts",
       "keywords": [
         "author",
@@ -836,6 +836,11 @@
           "name": "profileUrl",
           "type": "string",
           "required": false
+        },
+        {
+          "name": "bylinePrefix",
+          "type": "string",
+          "required": false
         }
       ],
       "props": {
@@ -847,7 +852,7 @@
         "imageUrl": {
           "optional": false,
           "type": "string | { default: string } | StaticImageData",
-          "description": "Avatar image source."
+          "description": "Avatar image source: a URL, an imported asset path, or static image data."
         },
         "size": {
           "optional": true,
@@ -858,6 +863,11 @@
           "optional": true,
           "type": "string",
           "description": "Optional author profile URL; makes the byline text a link."
+        },
+        "bylinePrefix": {
+          "optional": true,
+          "type": "string",
+          "description": "Byline prefix before the name. Defaults to the localized \"By\"\n(fi \"Kirjoittanut\", sv \"Av\"), matching the native dt-author element."
         }
       },
       "composesWith": [
@@ -904,7 +914,7 @@
       "group": "structure",
       "tier": 2,
       "status": "stable",
-      "description": "Author byline card for blog articles: avatar, name, and markdown bio, resolved from the authors data by slug.",
+      "description": "Author biography card: avatar, name, role, and markdown bio. Fully input-driven — pass the details directly, or pass slug to resolve them from the site's author registry (direct props override registry fields).",
       "dense": "About-the-author block: Avatar + name + biography paragraph; end-of-article slot",
       "keywords": [
         "author",
@@ -918,29 +928,64 @@
         {
           "name": "slug",
           "type": "string",
-          "required": true
+          "required": false
         },
         {
-          "name": "className",
+          "name": "name",
           "type": "string",
           "required": false
         },
         {
-          "name": "heading",
+          "name": "imageUrl",
+          "type": "string | { default: string } | StaticImageData",
+          "required": false
+        },
+        {
+          "name": "role",
           "type": "string",
           "required": false
         },
         {
-          "name": "showContact",
-          "type": "boolean",
+          "name": "bio",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "email",
+          "type": "string",
           "required": false
         }
       ],
       "props": {
         "slug": {
-          "optional": false,
+          "optional": true,
           "type": "string",
-          "description": "Author slug to fetch data from authors.ts"
+          "description": "Optional author slug resolved from the site's authors registry; direct\nprops below override the registry fields."
+        },
+        "name": {
+          "optional": true,
+          "type": "string",
+          "description": "Author name. Required unless `slug` resolves it."
+        },
+        "imageUrl": {
+          "optional": true,
+          "type": "string | { default: string } | StaticImageData",
+          "description": "Avatar image source: a URL, an imported asset path, or static image data."
+        },
+        "role": {
+          "optional": true,
+          "type": "string",
+          "description": "Role/title shown under the name (e.g. \"Founder, CEO\")."
+        },
+        "bio": {
+          "optional": true,
+          "type": "string",
+          "description": "Biography text; markdown after the first paragraph. The first paragraph\nrenders as the lead/tagline."
+        },
+        "email": {
+          "optional": true,
+          "type": "string",
+          "description": "Contact email rendered as a mailto link when `showContact` is set."
         },
         "className": {
           "optional": true,

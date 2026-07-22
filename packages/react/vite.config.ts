@@ -68,6 +68,17 @@ export default defineConfig({
         find: "@dt",
         replacement: componentsRoot,
       },
+      {
+        // react-markdown → micromark pulls this dual package; vite's browser
+        // condition picks index.dom.js, which calls document.createElement at
+        // module scope and crashes any Node/SSR import of the built dist.
+        // Pin the universal Node build (works in browsers too).
+        find: "decode-named-character-reference",
+        replacement: resolve(
+          repoRoot,
+          "node_modules/decode-named-character-reference/index.js",
+        ),
+      },
     ],
   },
   build: {
