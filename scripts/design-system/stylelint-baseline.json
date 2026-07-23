@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2315,
+  "warningCount": 2301,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -148,133 +148,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 95,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"-webkit-box-orient\" to come before \"-webkit-line-clamp\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"-webkit-box-orient\" to come before \"-webkit-line-clamp\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 55,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"background-color\" to come before \"background-size\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"background-color\" to come before \"background-size\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 27,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"background\" to come before \"color\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"background\" to come before \"color\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 48,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"background\" to come before \"pointer-events\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"background\" to come before \"pointer-events\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 45,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"place-items\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"block-size\" to come before \"place-items\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 56,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border-block-end\" to come before \"background-color\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"border-block-end\" to come before \"background-color\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 93,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"display\" to come before \"color\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"display\" to come before \"color\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 83,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"justify-content\" to come before \"align-items\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"justify-content\" to come before \"align-items\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 70,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"letter-spacing\" to come before \"color\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"letter-spacing\" to come before \"color\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 63,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"max-inline-size\" to come before \"place-items\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"max-inline-size\" to come before \"place-items\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 57,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"border-block-end\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"padding\" to come before \"border-block-end\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 77,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"gap\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"padding\" to come before \"gap\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 47,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"pointer-events\" to come before \"overflow\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"pointer-events\" to come before \"overflow\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 25,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"text-decoration\" to come before \"overflow\" (order/properties-order)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::order/properties-order::Expected \"text-decoration\" to come before \"overflow\" (order/properties-order)::1"
-    },
-    {
-      "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 39,
+      "line": 52,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -283,7 +157,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 70,
+      "line": 153,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -292,7 +166,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 67,
+      "line": 151,
       "column": 38,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -301,7 +175,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 45,
+      "line": 58,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -310,12 +184,12 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 19,
-      "column": 1,
-      "rule": "rule-empty-line-before",
+      "line": 145,
+      "column": 15,
+      "rule": "rhythmguard/use-scale",
       "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)",
-      "id": ".storybook/blocks/ComponentsGallery.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
+      "text": "Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
+      "id": ".storybook/blocks/ComponentsGallery.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1px\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
     },
     {
       "file": ".storybook/blocks/DocHeader.module.css",
