@@ -16,5 +16,5 @@ One toggle-chip implementation for single-select filters. CategoryFilter and Blo
 
 ## Design notes
 - Tokens: --color-muted/-text/-border ink+chrome, --focus-ring-color, --space-internal-{6,8,12,16,24} paddings, --font-size-text-{xs,s,m}.
-- Pressed pill inverts (text bg / canvas ink); underline variant sits on the group border (-1px margin); forced colors use Highlight/HighlightText.
+- Pressed pill inverts (text bg / canvas ink); rectangle matches pill with 8px (--radius-lg) corners; underline variant sits on the group border (-1px margin); forced colors use Highlight/HighlightText.
 - Figma: pending (alpha); create in DT-Site-stuff Atoms before beta.

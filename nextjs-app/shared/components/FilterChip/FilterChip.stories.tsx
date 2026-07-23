@@ -26,7 +26,7 @@ const meta = {
     },
     variant: {
       control: "radio",
-      options: ["pill", "underline", "minimal"],
+      options: ["pill", "rectangle", "underline", "minimal"],
       description: "Visual treatment.",
       table: { defaultValue: { summary: "pill" }, category: "Appearance" },
     },

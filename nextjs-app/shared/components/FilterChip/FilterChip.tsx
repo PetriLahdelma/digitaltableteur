@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import styles from "./FilterChip.module.css";
 import { cn } from "../../lib/cn";
 
-type FilterChipVariant = "pill" | "underline" | "minimal";
+type FilterChipVariant = "pill" | "rectangle" | "underline" | "minimal";
 type FilterChipSize = "sm" | "md" | "lg";
 
 export interface FilterChipProps
@@ -26,6 +26,7 @@ export const filterChipVariants = cva(styles.chip, {
   variants: {
     variant: {
       pill: styles.pill,
+      rectangle: styles.rectangle,
       underline: styles.underline,
       minimal: styles.minimal,
     },
@@ -40,7 +41,7 @@ export const filterChipVariants = cva(styles.chip, {
 
 /**
  * Single-select filter toggle chip: a `button[aria-pressed]` with pill,
- * underline, and minimal treatments. The shared implementation behind
+ * rectangle, underline, and minimal treatments. The shared implementation behind
  * CategoryFilter and BlogCategoryFilter — a filter is a UI control, not a
  * tablist, so chips are toggle buttons inside a labelled `role="group"`.
  */

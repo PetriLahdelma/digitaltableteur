@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T15:51:05.652Z",
+  "generatedAt": "2026-07-23T14:18:06.989Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -10167,7 +10167,8 @@
           "values": [
             "underline",
             "minimal",
-            "pill"
+            "pill",
+            "rectangle"
           ],
           "description": "Visual treatment."
         },
@@ -10197,6 +10198,7 @@
         "variant": {
           "values": [
             "pill",
+            "rectangle",
             "underline",
             "minimal"
           ],
@@ -10215,6 +10217,7 @@
         "variant": {
           "values": [
             "pill",
+            "rectangle",
             "underline",
             "minimal"
           ],
@@ -22173,11 +22176,7 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [
-        "ThemeProvider",
-        "Badge",
-        "Icon"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 1,
       "guidelines": [
@@ -26996,8 +26995,7 @@
         "IconButton",
         "Container",
         "Logo",
-        "LanguageSwitcher",
-        "Badge"
+        "LanguageSwitcher"
       ],
       "prefersOver": [],
       "declaredPropCount": 2,
@@ -31335,8 +31333,7 @@
         "ServicesSection",
         "WorkMagneticField",
         "NewsBulletin",
-        "DesignSprintsSection",
-        "HighlightSection"
+        "DesignSprintsSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 9,
@@ -32521,8 +32518,7 @@
         "ServicesSection",
         "WorkMagneticField",
         "CTASection",
-        "NewsBulletin",
-        "HighlightSection"
+        "NewsBulletin"
       ],
       "prefersOver": [],
       "declaredPropCount": 3,
@@ -33853,14 +33849,7 @@
       "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
       ],
-      "composesWith": [
-        "HomeHero",
-        "ServicesSection",
-        "WorkMagneticField",
-        "CTASection",
-        "NewsBulletin",
-        "DesignSprintsSection"
-      ],
+      "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 10,
       "guidelines": [
@@ -34033,8 +34022,7 @@
         "WorkMagneticField",
         "CTASection",
         "NewsBulletin",
-        "DesignSprintsSection",
-        "HighlightSection"
+        "DesignSprintsSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 2,
@@ -34419,8 +34407,7 @@
         "ServicesSection",
         "WorkMagneticField",
         "CTASection",
-        "DesignSprintsSection",
-        "HighlightSection"
+        "DesignSprintsSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 2,
@@ -37221,8 +37208,7 @@
         "WorkMagneticField",
         "CTASection",
         "NewsBulletin",
-        "DesignSprintsSection",
-        "HighlightSection"
+        "DesignSprintsSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 8,
@@ -39090,8 +39076,7 @@
         "ServicesSection",
         "CTASection",
         "NewsBulletin",
-        "DesignSprintsSection",
-        "HighlightSection"
+        "DesignSprintsSection"
       ],
       "prefersOver": [],
       "declaredPropCount": 6,

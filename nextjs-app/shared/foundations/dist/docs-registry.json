@@ -6311,8 +6311,8 @@
       "group": "controls",
       "tier": 2,
       "status": "stable",
-      "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
-      "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
+      "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, rectangle, underline, and minimal treatments.",
+      "dense": "Filter toggle chip (aria-pressed): pill/rectangle/underline/minimal, sm/md/lg, optional count.",
       "keywords": [
         "filter",
         "chip",
@@ -6335,7 +6335,7 @@
         },
         {
           "name": "variant",
-          "type": "underline | minimal | pill",
+          "type": "rectangle | underline | minimal | pill",
           "required": false
         },
         {
@@ -6369,6 +6369,7 @@
           "optional": true,
           "type": "union",
           "values": [
+            "rectangle",
             "underline",
             "minimal",
             "pill"

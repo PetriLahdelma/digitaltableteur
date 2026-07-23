@@ -60,6 +60,23 @@
   color: var(--main-body-background-color, var(--color-white));
 }
 
+/* Rectangle: bordered toggle like pill, with softer 8px corners; pressed inverts. */
+
+.rectangle {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 8px);
+}
+
+.rectangle:hover {
+  border-color: var(--color-text);
+}
+
+.rectangle[aria-pressed="true"] {
+  border-color: var(--color-text);
+  background-color: var(--color-text);
+  color: var(--main-body-background-color, var(--color-white));
+}
+
 /* Underline: bottom-edge indicator, sits on the group's border. */
 
 .underline {
@@ -95,7 +112,8 @@
     color: ButtonText;
   }
 
-  .pill {
+  .pill,
+  .rectangle {
     border-color: ButtonText;
   }
 
