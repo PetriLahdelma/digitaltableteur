@@ -4,7 +4,7 @@
     "tier": "atom",
     "group": "controls",
     "status": "stable",
-    "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
+    "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, rectangle, underline, and minimal treatments.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1249-1954",
     "radixPrimitive": null,
     "element": "button",
@@ -12,6 +12,7 @@
         "variant": {
             "values": [
                 "pill",
+                "rectangle",
                 "underline",
                 "minimal"
             ],
@@ -70,7 +71,7 @@
     "lightDarkVerified": true,
     "schemaVersion": 2,
     "displayName": "FilterChip",
-    "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
+    "dense": "Filter toggle chip (aria-pressed): pill/rectangle/underline/minimal, sm/md/lg, optional count.",
     "keywords": [
         "filter",
         "chip",
@@ -141,6 +142,7 @@
             "optional": true,
             "type": "union",
             "values": [
+                "rectangle",
                 "underline",
                 "minimal",
                 "pill"

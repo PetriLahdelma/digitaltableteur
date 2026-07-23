@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-22T21:17:10.311Z",
+  "generatedAt": "2026-07-23T14:20:59.362Z",
   "summary": {
     "componentCount": 166,
     "statusCounts": {
@@ -81,17 +81,17 @@
     "withAnyUsage": 155,
     "withProductionUsage": 35,
     "uniqueImportedComponents": 155,
-    "totalEvidenceRows": 771,
-    "aliasImportFiles": 396,
+    "totalEvidenceRows": 770,
+    "aliasImportFiles": 395,
     "relativeImportFiles": 408,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-22T15:51:02.980Z",
+    "generatedAt": "2026-07-23T14:18:03.942Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 82,
+    "nodesWithComposesWith": 80,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -19124,7 +19124,7 @@
         "tier": "atom",
         "group": "controls",
         "status": "stable",
-        "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, underline, and minimal treatments.",
+        "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, rectangle, underline, and minimal treatments.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1249-1954",
         "radixPrimitive": null,
         "element": "button",
@@ -19132,6 +19132,7 @@
           "variant": {
             "values": [
               "pill",
+              "rectangle",
               "underline",
               "minimal"
             ],
@@ -19190,7 +19191,7 @@
         "lightDarkVerified": true,
         "schemaVersion": 2,
         "displayName": "FilterChip",
-        "dense": "Filter toggle chip (aria-pressed): pill/underline/minimal, sm/md/lg, optional count.",
+        "dense": "Filter toggle chip (aria-pressed): pill/rectangle/underline/minimal, sm/md/lg, optional count.",
         "keywords": [
           "filter",
           "chip",
@@ -19261,6 +19262,7 @@
             "optional": true,
             "type": "union",
             "values": [
+              "rectangle",
               "underline",
               "minimal",
               "pill"
@@ -19314,7 +19316,7 @@
           ]
         }
       },
-      "spec": "# FilterChip\n\n## Intent\nOne toggle-chip implementation for single-select filters. CategoryFilter and BlogCategoryFilter each hand-rolled the same aria-pressed button in three visual treatments; FilterChip collapses the six copies into one control.\n\n## Interaction contract\n- Keyboard: Tab focuses each chip; Enter/Space toggles (native button).\n- Pointer: click toggles; hover shifts muted → text ink.\n- Screen readers: announced as a toggle button with pressed state; a filter is a UI control, not a tablist, so parents wrap chips in a labelled role=\"group\".\n\n## Do / don't\n- Do: keep exactly one chip pressed per group (single-select filters).\n- Do: pass counts via the count prop so the \"(n)\" suffix stays in the accessible name.\n- Don't: use for navigation between panels (that is Tabs).\n- Don't: nest interactive content inside the label.\n\n## Design notes\n- Tokens: --color-muted/-text/-border ink+chrome, --focus-ring-color, --space-internal-{6,8,12,16,24} paddings, --font-size-text-{xs,s,m}.\n- Pressed pill inverts (text bg / canvas ink); underline variant sits on the group border (-1px margin); forced colors use Highlight/HighlightText.\n- Figma: pending (alpha); create in DT-Site-stuff Atoms before beta.\n",
+      "spec": "# FilterChip\n\n## Intent\nOne toggle-chip implementation for single-select filters. CategoryFilter and BlogCategoryFilter each hand-rolled the same aria-pressed button in three visual treatments; FilterChip collapses the six copies into one control.\n\n## Interaction contract\n- Keyboard: Tab focuses each chip; Enter/Space toggles (native button).\n- Pointer: click toggles; hover shifts muted → text ink.\n- Screen readers: announced as a toggle button with pressed state; a filter is a UI control, not a tablist, so parents wrap chips in a labelled role=\"group\".\n\n## Do / don't\n- Do: keep exactly one chip pressed per group (single-select filters).\n- Do: pass counts via the count prop so the \"(n)\" suffix stays in the accessible name.\n- Don't: use for navigation between panels (that is Tabs).\n- Don't: nest interactive content inside the label.\n\n## Design notes\n- Tokens: --color-muted/-text/-border ink+chrome, --focus-ring-color, --space-internal-{6,8,12,16,24} paddings, --font-size-text-{xs,s,m}.\n- Pressed pill inverts (text bg / canvas ink); rectangle matches pill with 8px (--radius-lg) corners; underline variant sits on the group border (-1px margin); forced colors use Highlight/HighlightText.\n- Figma: pending (alpha); create in DT-Site-stuff Atoms before beta.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/FilterChip",
@@ -19357,7 +19359,8 @@
             "values": [
               "underline",
               "minimal",
-              "pill"
+              "pill",
+              "rectangle"
             ],
             "description": "Visual treatment."
           },
@@ -19387,6 +19390,7 @@
           "variant": {
             "values": [
               "pill",
+              "rectangle",
               "underline",
               "minimal"
             ],
@@ -19405,6 +19409,7 @@
           "variant": {
             "values": [
               "pill",
+              "rectangle",
               "underline",
               "minimal"
             ],
@@ -25269,16 +25274,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
             "since": "2026-06-04"
           },
@@ -28380,16 +28375,6 @@
         },
         "lightDarkVerified": true,
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -40637,11 +40622,7 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [
-          "ThemeProvider",
-          "Badge",
-          "Icon"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 1,
         "guidelines": [
@@ -42285,16 +42266,6 @@
         },
         "lightDarkVerified": true,
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -49538,7 +49509,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ThemeProvider",
-        "importCount": 13,
+        "importCount": 12,
         "productionImportCount": 1,
         "patternImportCount": 2,
         "componentImportCount": 2,
@@ -49598,12 +49569,6 @@
             "context": "story"
           },
           {
-            "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/ThemeProvider",
-            "context": "story"
-          },
-          {
             "path": "nextjs-app/shared/stories/Welcome.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/ThemeProvider",
@@ -49614,6 +49579,12 @@
             "importKind": "relative",
             "importPath": "../components/ThemeProvider",
             "context": "test"
+          },
+          {
+            "path": "nextjs-app/shared/hooks/usePersistentTheme.ts",
+            "importKind": "relative",
+            "importPath": "../components/ThemeProvider",
+            "context": "other"
           }
         ]
       },
@@ -49666,8 +49637,7 @@
           "IconButton",
           "Container",
           "Logo",
-          "LanguageSwitcher",
-          "Badge"
+          "LanguageSwitcher"
         ],
         "prefersOver": [],
         "declaredPropCount": 2,
@@ -56656,8 +56626,7 @@
           "ServicesSection",
           "WorkMagneticField",
           "NewsBulletin",
-          "DesignSprintsSection",
-          "HighlightSection"
+          "DesignSprintsSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 9,
@@ -58567,8 +58536,7 @@
           "ServicesSection",
           "WorkMagneticField",
           "CTASection",
-          "NewsBulletin",
-          "HighlightSection"
+          "NewsBulletin"
         ],
         "prefersOver": [],
         "declaredPropCount": 3,
@@ -60783,11 +60751,6 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/HighlightSection/index.ts",
             "since": "2026-06-04"
           },
@@ -60998,14 +60961,7 @@
         "forbiddenUse": [
           "Bypass design tokens or skip forced-colors verification at beta."
         ],
-        "composesWith": [
-          "HomeHero",
-          "ServicesSection",
-          "WorkMagneticField",
-          "CTASection",
-          "NewsBulletin",
-          "DesignSprintsSection"
-        ],
+        "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 10,
         "guidelines": [
@@ -61292,8 +61248,7 @@
           "WorkMagneticField",
           "CTASection",
           "NewsBulletin",
-          "DesignSprintsSection",
-          "HighlightSection"
+          "DesignSprintsSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 2,
@@ -61910,8 +61865,7 @@
           "ServicesSection",
           "WorkMagneticField",
           "CTASection",
-          "DesignSprintsSection",
-          "HighlightSection"
+          "DesignSprintsSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 2,
@@ -66813,8 +66767,7 @@
           "WorkMagneticField",
           "CTASection",
           "NewsBulletin",
-          "DesignSprintsSection",
-          "HighlightSection"
+          "DesignSprintsSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 8,
@@ -67001,16 +66954,6 @@
         },
         "lightDarkVerified": true,
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -67344,16 +67287,6 @@
         },
         "lightDarkVerified": true,
         "consumers": [
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
@@ -69925,8 +69858,7 @@
           "ServicesSection",
           "CTASection",
           "NewsBulletin",
-          "DesignSprintsSection",
-          "HighlightSection"
+          "DesignSprintsSection"
         ],
         "prefersOver": [],
         "declaredPropCount": 6,

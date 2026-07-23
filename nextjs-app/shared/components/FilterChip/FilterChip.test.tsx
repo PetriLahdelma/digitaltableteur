@@ -40,12 +40,12 @@ describe("FilterChip", () => {
 
   it("applies variant and size classes", () => {
     const { container } = render(
-      <FilterChip pressed={false} variant="underline" size="lg">
+      <FilterChip pressed={false} variant="rectangle" size="lg">
         Tag
       </FilterChip>,
     );
     const cls = (container.firstElementChild as HTMLElement).className;
-    expect(cls).toMatch(/underline/);
+    expect(cls).toMatch(/rectangle/);
     expect(cls).toMatch(/lg/);
   });
 

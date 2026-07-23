@@ -39,9 +39,6 @@ const ClientLogoMarquee = dynamic(() =>
     default: m.ClientLogoMarquee,
   })),
 );
-const HighlightSection = dynamic(
-  () => import("../../../patterns/HighlightSection"),
-);
 
 // Service icons
 import {
@@ -161,38 +158,6 @@ export function HomePage() {
 
       {/* Design Sprints Section */}
       <DesignSprintsSection id="design-sprints" />
-
-      {/* Highlight Section (GenAI Schema) */}
-      <HighlightSection
-        cta={[
-          {
-            label: t("homeHighlightCtaDownload", "Download Schema"),
-            onClick: () => {
-              window.open(
-                "https://petrilahdelma.gumroad.com/l/mcqoq",
-                "_blank",
-                "noopener,noreferrer",
-              );
-            },
-          },
-          {
-            label: t("homeHighlightCtaArticle", "Read Article"),
-            href: "https://medium.com/digitaltableteur/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work-46a51931e8e0",
-            target: "_blank",
-            rel: "noopener noreferrer",
-          },
-        ]}
-        description={t(
-          "homeHighlightDescription",
-          "Keep your AI-generated components consistent, predictable, and on-brand. This schema enforces shared prop structures, naming conventions, and design standards across your entire system.",
-        )}
-        size="comfortable"
-        title={t(
-          "homeHighlightTitle",
-          "Component Schema Template for GenAI Design Systems",
-        )}
-        variant="dots"
-      />
 
       {/* Contact CTA Section */}
       <CTASection
