@@ -15,7 +15,8 @@
       "Bash(SKIP_STORYBOOK_TESTS=1 npm test:*)",
       "Bash(ls:*)",
       "Bash(npx tsc:*)",
-      "Bash(npx eslint:*)"
+      "Bash(npx eslint:*)",
+      "Bash(awk -F/ '{print $1}')"
     ]
   }
 }
