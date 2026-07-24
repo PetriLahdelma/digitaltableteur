@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within } from "storybook/test";
 import { ScrollIndicator } from "./ScrollIndicator";
 import contract from "./ScrollIndicator.contract.json";
 
@@ -15,9 +16,7 @@ const meta = {
       },
     },
   },
-  // Custom MDX docs pages exist for all catalog entries; do not also enable autodocs
-  // or Storybook will treat it as conflicting sources of truth for the docs page.
-  tags: ["alpha", "!autodocs"],
+  tags: ["stable", "autodocs"],
   argTypes: {
     variant: {
       control: "radio",
@@ -62,6 +61,8 @@ const meta = {
     },
     className: { table: { disable: true } },
   },
+  // Seeded so the text controls render operable widgets instead of "Set string" buttons.
+  args: { label: "", targetId: "" },
 } satisfies Meta<typeof ScrollIndicator>;
 
 export default meta;
@@ -95,9 +96,19 @@ export const Default: Story = {
       <ScrollIndicator {...args} />
     </HeroFrame>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button", { name: "See our work" });
+    // Keyboard reachability: the control takes focus on Tab and activates on click.
+    await userEvent.tab();
+    expect(button).toHaveFocus();
+    await userEvent.click(button);
+    expect(button).toBeInTheDocument();
+  },
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   args: {
     targetId: "next-section",
     label: "See our work",
@@ -116,6 +127,7 @@ export const Playground: Story = {
 
 /** The real usage: a hero followed by the section the control scrolls to. */
 export const Example: Story = {
+  tags: ["beta-matrix"],
   args: { targetId: "work", label: "See our work" },
   render: (args) => (
     <div>
@@ -143,6 +155,7 @@ export const Example: Story = {
  * when the author's colours are replaced by the system palette.
  */
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   args: { targetId: "next-section", label: "See our work" },
   parameters: {
     docs: {

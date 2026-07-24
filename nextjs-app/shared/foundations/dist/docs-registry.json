@@ -12483,10 +12483,19 @@
       "name": "ScrollIndicator",
       "group": "navigation",
       "tier": 2,
-      "status": "alpha",
+      "status": "stable",
       "description": "Animated affordance at the base of a hero that scrolls to the next section.",
-      "dense": "",
-      "keywords": [],
+      "dense": "hero-footer scroll cue; animated icon (chevron/arrow/mouse) with optional label; motion bounce/pulse/fade/none gated by prefers-reduced-motion; real <button> that scrolls targetId into view",
+      "keywords": [
+        "scroll",
+        "indicator",
+        "hero",
+        "chevron",
+        "caret",
+        "cue",
+        "affordance",
+        "down"
+      ],
       "importLine": "import { ScrollIndicator } from \"@dt/ScrollIndicator\";",
       "keyProps": [
         {
@@ -12591,9 +12600,52 @@
         "stack more than one on a page. Two scroll cues in one viewport contradict each other about where the reader should go next.",
         "rely on the animation to carry meaning. It is suppressed under reduced motion, so the label and accessible name must stand alone."
       ],
-      "usage": null,
+      "usage": {
+        "description": "ScrollIndicator is a hero-footer affordance that signals there is more page below and scrolls to it when activated. It renders a real button that scrolls a named target into view, with a looping motion hint on the icon that is suppressed under prefers-reduced-motion.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Give it a targetId matching a real element on the page so activation scrolls somewhere; without it the control renders but does nothing."
+          },
+          {
+            "guidance": true,
+            "description": "Prefer a label that names the destination (See our work), not the gesture (Scroll down); the label is also the accessible name."
+          },
+          {
+            "guidance": true,
+            "description": "Place it once, at the bottom of the first viewport, using position=center unless the hero copy already occupies the centre."
+          },
+          {
+            "guidance": false,
+            "description": "Do not rely on the motion to carry meaning; it is dropped under reduced motion, so the label and accessible name must stand alone."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use it as general in-page navigation; it communicates there is more below, not jump to section. Use a link or Breadcrumb for that."
+          },
+          {
+            "guidance": false,
+            "description": "Do not stack more than one per viewport; two scroll cues contradict each other about where the reader should go next."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Icon",
+            "required": true,
+            "description": "The scroll cue glyph (chevron, arrow, or mouse) that carries the looping motion hint."
+          },
+          {
+            "name": "Label",
+            "required": false,
+            "description": "Optional visible text above the icon; when present it is also the accessible name and should name the destination."
+          }
+        ]
+      },
       "tokens": {
-        "colors": [],
+        "colors": [
+          "--color-foreground",
+          "--color-primary"
+        ],
         "spacing": []
       },
       "examples": []

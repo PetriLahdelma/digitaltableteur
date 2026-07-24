@@ -252,6 +252,8 @@ export {
   Spacer,
   type SpacerProps,
 } from "../../../nextjs-app/shared/components/Spacer";
+export { ScrollIndicator } from "../../../nextjs-app/shared/components/ScrollIndicator/ScrollIndicator";
+export type { ScrollIndicatorProps } from "../../../nextjs-app/shared/components/ScrollIndicator/ScrollIndicator";
 export { default as SegmentedControl } from "../../../nextjs-app/shared/components/SegmentedControl/SegmentedControl";
 export type {
   SegmentedControlItem,
