@@ -89,9 +89,9 @@
   ],
   "peerDependencies": {
     "framer-motion": ">=12.0.0",
-    "react-markdown": ">=10.0.0",
     "react": ">=19.0.0",
-    "react-dom": ">=19.0.0"
+    "react-dom": ">=19.0.0",
+    "react-markdown": ">=10.0.0"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -101,5 +101,6 @@
   },
   "scripts": {
     "build": "vite build --config vite.config.ts && node ../../scripts/design-system/build-react-package-css.mjs && tsc -p tsconfig.types.json && node ../../scripts/design-system/assemble-react-package-types.mjs"
-  }
+  },
+  "types": "./dist/index.d.ts"
 }
