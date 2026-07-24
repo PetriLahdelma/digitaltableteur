@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.19 - 2026-07-24
+
+- Exposes the `SlideButton` call-to-action from the root and actions-family
+  entrypoints: a pill link whose icon disc slides across the button on hover
+  while the label shifts and the disc rolls a full turn, all suppressed under
+  `prefers-reduced-motion`. Renders a real `<a href>`, with configurable
+  `label`, `href`, `icon` (Phosphor name) and `iconSide` (`left` | `right`).
+  Type-only export: `SlideButtonProps`.
+
 ## 0.1.18 - 2026-07-22
 
 - Exposes the `Logo` content atom from the root and content-family

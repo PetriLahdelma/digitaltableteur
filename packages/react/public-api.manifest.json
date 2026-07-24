@@ -1,6 +1,6 @@
 {
   "packageName": "@digitaltableteur/react",
-  "packageVersion": "0.1.18",
+  "packageVersion": "0.1.19",
   "packageExports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -159,6 +159,7 @@
     "SelectOption",
     "Skeleton",
     "SkipLink",
+    "SlideButton",
     "Spacer",
     "Spinner",
     "SplitButton",
@@ -208,6 +209,7 @@
       "ButtonGroup",
       "FilterChip",
       "IconButton",
+      "SlideButton",
       "SplitButton"
     ],
     "consent": [
@@ -376,6 +378,8 @@
       "FilterChipProps",
       "IconButton",
       "IconButtonProps",
+      "SlideButton",
+      "SlideButtonProps",
       "SplitButton",
       "SplitButtonOption",
       "SplitButtonProps"
