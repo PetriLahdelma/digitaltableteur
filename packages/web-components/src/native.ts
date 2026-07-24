@@ -50,7 +50,9 @@ import { DtPaginationElement } from "./native/pagination";
 import { DtPersonCardElement } from "./native/person-card";
 import { DtProgressElement } from "./native/progress";
 import { DtReadingProgressElement } from "./native/reading-progress";
+import { DtScrollIndicatorElement } from "./native/scroll-indicator";
 import { DtSkipLinkElement } from "./native/skip-link";
+import { DtSlideButtonElement } from "./native/slide-button";
 import { DtSpinnerElement } from "./native/spinner";
 import { DtSpacerElement } from "./native/spacer";
 import { DtStatusDotElement } from "./native/status-dot";
@@ -387,6 +389,7 @@ export type { DtValueCardVariant } from "./native/value-card";
 export const nativeElementDefinitions = [
   ["dt-icon", DtIconElement],
   ["dt-button", DtButtonElement],
+  ["dt-slide-button", DtSlideButtonElement],
   ["dt-icon-button", DtIconButtonElement],
   ["dt-button-group", DtButtonGroupElement],
   ["dt-filter-chip", DtFilterChipElement],
@@ -398,6 +401,7 @@ export const nativeElementDefinitions = [
   ["dt-nav-link", DtNavLinkElement],
   ["dt-nav-menu-list", DtNavMenuListElement],
   ["dt-language-switcher", DtLanguageSwitcherElement],
+  ["dt-scroll-indicator", DtScrollIndicatorElement],
   ["dt-skip-link", DtSkipLinkElement],
   ["dt-badge", DtBadgeElement],
   ["dt-avatar", DtAvatarElement],

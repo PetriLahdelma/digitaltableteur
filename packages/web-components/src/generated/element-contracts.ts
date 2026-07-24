@@ -91,6 +91,23 @@ export type DtSkipLinkElementContract = HTMLElement & {
   label?: string;
 };
 
+export type DtSlideButtonElementContract = HTMLElement & {
+  label?: string;
+  href?: string;
+  icon?: string;
+  iconSide?: string;
+};
+
+export type DtScrollIndicatorElementContract = HTMLElement & {
+  label?: string;
+  targetId?: string;
+  variant?: string;
+  position?: string;
+  motion?: string;
+  speed?: string;
+  distance?: string;
+};
+
 export type DtSpinnerElementContract = HTMLElement & {
   label?: string;
   size?: string;
@@ -902,6 +919,8 @@ export const elementMigrationManifest = [
   { tagName: "dt-link", sourceComponent: "Link", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-nav-link", sourceComponent: "NavLink", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-skip-link", sourceComponent: "SkipLink", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-slide-button", sourceComponent: "SlideButton", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-scroll-indicator", sourceComponent: "ScrollIndicator", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-spinner", sourceComponent: "Spinner", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-progress", sourceComponent: "Progress", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-status-dot", sourceComponent: "StatusDot", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
@@ -991,6 +1010,8 @@ declare global {
     "dt-link": DtLinkElementContract;
     "dt-nav-link": DtNavLinkElementContract;
     "dt-skip-link": DtSkipLinkElementContract;
+    "dt-slide-button": DtSlideButtonElementContract;
+    "dt-scroll-indicator": DtScrollIndicatorElementContract;
     "dt-spinner": DtSpinnerElementContract;
     "dt-progress": DtProgressElementContract;
     "dt-status-dot": DtStatusDotElementContract;

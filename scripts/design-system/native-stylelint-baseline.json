@@ -1,7 +1,7 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "templateCount": 84,
-  "warningCount": 575,
+  "templateCount": 86,
+  "warningCount": 626,
   "warnings": [
     {
       "column": 21,
@@ -3433,6 +3433,69 @@
       "id": "packages/web-components/src/native/reading-progress.ts::rhythmguard/prefer-token::Unexpected raw scale value \"100%\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
     },
     {
+      "column": 140,
+      "file": "packages/web-components/src/native/scroll-indicator.ts",
+      "line": 51,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 10,
+      "file": "packages/web-components/src/native/scroll-indicator.ts",
+      "line": 40,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 22,
+      "file": "packages/web-components/src/native/scroll-indicator.ts",
+      "line": 36,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 31,
+      "file": "packages/web-components/src/native/scroll-indicator.ts",
+      "line": 48,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "column": 30,
+      "file": "packages/web-components/src/native/scroll-indicator.ts",
+      "line": 49,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
+    },
+    {
+      "column": 113,
+      "file": "packages/web-components/src/native/scroll-indicator.ts",
+      "line": 59,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"8px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/prefer-token::Unexpected raw scale value \"8px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 87,
+      "file": "packages/web-components/src/native/scroll-indicator.ts",
+      "line": 52,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/scroll-indicator.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
+    },
+    {
       "column": 60,
       "file": "packages/web-components/src/native/section-nav.ts",
       "line": 48,
@@ -4106,6 +4169,402 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
       "id": "packages/web-components/src/native/skip-link.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "column": 20,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 30,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 21,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 31,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "column": 43,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 33,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
+    },
+    {
+      "column": 25,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 50,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
+    },
+    {
+      "column": 59,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 72,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::5"
+    },
+    {
+      "column": 51,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 82,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::6"
+    },
+    {
+      "column": 30,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 31,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 35,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 33,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "column": 29,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 42,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
+    },
+    {
+      "column": 42,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 45,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
+    },
+    {
+      "column": 42,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 69,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::5"
+    },
+    {
+      "column": 58,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 70,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::6"
+    },
+    {
+      "column": 50,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 80,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::7"
+    },
+    {
+      "column": 50,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 81,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::8"
+    },
+    {
+      "column": 21,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 42,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "column": 50,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 45,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "column": 50,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 69,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
+    },
+    {
+      "column": 50,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 70,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
+    },
+    {
+      "column": 42,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 80,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::5"
+    },
+    {
+      "column": 58,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 81,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::6"
+    },
+    {
+      "column": 20,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 30,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "column": 21,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 31,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "column": 43,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 33,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "column": 25,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 50,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "column": 59,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 72,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::5"
+    },
+    {
+      "column": 51,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 82,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::6"
+    },
+    {
+      "column": 30,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 31,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "column": 35,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 33,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "column": 29,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 42,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "column": 42,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 45,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "column": 64,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 67,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::5"
+    },
+    {
+      "column": 85,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 67,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::6"
+    },
+    {
+      "column": 42,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 69,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::7"
+    },
+    {
+      "column": 58,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 70,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::8"
+    },
+    {
+      "column": 50,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 80,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::9"
+    },
+    {
+      "column": 50,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 81,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::10"
+    },
+    {
+      "column": 17,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 21,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "column": 21,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 42,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "column": 50,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 45,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "column": 50,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 69,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "column": 50,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 70,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::5"
+    },
+    {
+      "column": 42,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 80,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::6"
+    },
+    {
+      "column": 58,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 81,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::7"
+    },
+    {
+      "column": 39,
+      "file": "packages/web-components/src/native/slide-button.ts",
+      "line": 22,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/slide-button.ts::rhythmguard/use-scale::Unexpected off-scale value \"9999px\". Use scale values (nearest: 64px or 64px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 85,

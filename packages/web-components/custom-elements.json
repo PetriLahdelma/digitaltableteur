@@ -1128,6 +1128,216 @@
         },
         {
           "kind": "class",
+          "name": "DtSlideButtonElement",
+          "description": "Pill call-to-action whose icon disc slides across on hover while the label shifts and the disc rolls.",
+          "customElement": true,
+          "tagName": "dt-slide-button",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "description": "Visible label; also the accessible name.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "description": "Destination the anchor points to.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "description": "Phosphor icon name for the sliding disc.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "iconSide",
+              "description": "Side the disc rests on before it slides.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Visible label; also the accessible name.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "href",
+              "fieldName": "href",
+              "description": "Destination the anchor points to.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "description": "Phosphor icon name for the sliding disc.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "icon-side",
+              "fieldName": "iconSide",
+              "description": "Side the disc rests on before it slides.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "SlideButton",
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
+          "name": "DtScrollIndicatorElement",
+          "description": "Animated hero-footer affordance that scrolls to a named target; motion is CSS-driven and reduced-motion gated.",
+          "customElement": true,
+          "tagName": "dt-scroll-indicator",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "description": "Optional visible label; names the destination.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "targetId",
+              "description": "Element id scrolled into view on activation.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "description": "Icon treatment: chevron, arrow or mouse.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "description": "Horizontal placement: center, left or right.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "motion",
+              "description": "Motion hint: bounce, pulse, fade or none.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "speed",
+              "description": "Duration of one motion half-cycle, in seconds.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "distance",
+              "description": "Vertical travel of the bounce motion, in pixels.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "description": "Optional visible label; names the destination.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "target-id",
+              "fieldName": "targetId",
+              "description": "Element id scrolled into view on activation.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "description": "Icon treatment: chevron, arrow or mouse.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "position",
+              "fieldName": "position",
+              "description": "Horizontal placement: center, left or right.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "motion",
+              "fieldName": "motion",
+              "description": "Motion hint: bounce, pulse, fade or none.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "speed",
+              "fieldName": "speed",
+              "description": "Duration of one motion half-cycle, in seconds.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "distance",
+              "fieldName": "distance",
+              "description": "Vertical travel of the bounce motion, in pixels.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "events": [],
+          "dtSourceComponent": "ScrollIndicator",
+          "dtBackend": "native",
+          "dtContractStatus": "stable",
+          "dtImplementationStatus": "beta",
+          "dtImplementationConsumers": []
+        },
+        {
+          "kind": "class",
           "name": "DtSpinnerElement",
           "description": "Indeterminate loading indicator.",
           "customElement": true,

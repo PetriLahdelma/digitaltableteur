@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.10.0 - 2026-07-24
+
+- Adds two native custom elements (fleet 85 -> 87):
+  - `dt-slide-button` — pill call-to-action whose icon disc slides across on
+    hover while the label shifts and the disc rolls a full turn (all motion
+    reduced-motion gated). Attributes: `label`, `href`, `icon`, `icon-side`.
+  - `dt-scroll-indicator` — animated hero-footer affordance that scrolls a
+    named target into view, with `chevron` / `arrow` / `mouse` icons and CSS
+    motion presets (`bounce` / `pulse` / `fade` / `none`) suppressed under
+    `prefers-reduced-motion`. Attributes: `label`, `target-id`, `variant`,
+    `position`, `motion`, `speed`, `distance`.
+
 ## 0.9.0 - 2026-07-22
 
 - BREAKING: renames the `dt-logo` `badge` attribute/property to `background`
