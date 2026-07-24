@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "schemaVersion": 2,
+  "name": "PixelLoop",
+  "tier": "atom",
+  "group": "display",
+  "status": "alpha",
+  "description": "Decorative constellation loop with rounded-dot and 45-degree vector-stroke variants.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1490-2401&m=dev",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md",
+      "propSourced": true
+    },
+    "variant": {
+      "values": ["dots", "strokes"],
+      "default": "dots",
+      "propSourced": true
+    },
+    "rows": {
+      "values": ["1", "2", "3"],
+      "default": "2",
+      "propSourced": true
+    }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [
+      "The decorative container and all six glyphs are hidden from assistive technology.",
+      "The component never enters the tab order."
+    ],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "motion": true
+  },
+  "tokens": {
+    "colors": ["--color-text"],
+    "spacing": ["--space-layout-4", "--space-layout-16", "--space-layout-32"]
+  },
+  "lightDarkVerified": false,
+  "governance": {
+    "owner": "design-system",
+    "lastReviewed": "2026-07-23",
+    "note": "The Primary Studio reference informed the compact modular format, while original 5x5 bitmap artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
+  }
+}
