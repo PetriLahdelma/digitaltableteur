@@ -1,0 +1,25 @@
+# Rhythmguard ignore file (auto-discovered by `rhythmguard audit .`, used by
+# scripts/design-system/check-rhythmguard.mjs → npm run audit:rhythm:check).
+#
+# Generated / build / scratch design-sync artifacts. These are gitignored and
+# present only in local working trees; left unignored, rhythmguard walks
+# thousands of generated CSS/template files and the pre-commit hook never
+# finishes (observed 51 min CPU). Mirrors .stylelintignore and the ESLint
+# flat-config ignores. Rhythmguard already skips node_modules/dist/build/
+# coverage/out/.vercel by default, so only the repo-specific dirs are listed.
+#
+# NOTE: .design-sync also holds authored root files (ds-i18n-entry.tsx,
+# satoshi-fonts.css) that MUST stay audited, so only its generated subdirs are
+# listed here — never the whole directory.
+
+storybook-static
+.ds-sync
+ds-bundle
+.design-sync/sb-reference
+.design-sync/.cache
+
+# Generated design-sync globals bundle (gitignored; emitted into packages/react
+# by the DS sync). Present locally but absent from the clean-tree baseline, so
+# it must be excluded to keep the missing-token contract matching. Also listed
+# in .stylelintignore.
+packages/react/_ds-sync-globals.css
