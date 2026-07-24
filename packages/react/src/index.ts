@@ -279,6 +279,8 @@ export {
 } from "../../../nextjs-app/shared/components/SkipLink";
 export { default as Skeleton } from "../../../nextjs-app/shared/components/Skeleton/Skeleton";
 export type { SkeletonProps } from "../../../nextjs-app/shared/components/Skeleton";
+export { SlideButton } from "../../../nextjs-app/shared/components/SlideButton/SlideButton";
+export type { SlideButtonProps } from "../../../nextjs-app/shared/components/SlideButton/SlideButton";
 export {
   Spinner,
   type SpinnerProps,

@@ -16,6 +16,8 @@ export {
   IconButton,
   type IconButtonProps,
 } from "../../../nextjs-app/shared/components/IconButton";
+export { SlideButton } from "../../../nextjs-app/shared/components/SlideButton/SlideButton";
+export type { SlideButtonProps } from "../../../nextjs-app/shared/components/SlideButton/SlideButton";
 export { default as SplitButton } from "../../../nextjs-app/shared/components/SplitButton/SplitButton";
 export type {
   SplitButtonOption,
