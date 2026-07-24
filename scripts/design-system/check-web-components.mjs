@@ -171,7 +171,10 @@ const maxPackedFiles = 40 + tags.length * 2;
 // +0.5 kB for the dt-logo badge → background rename (longer attribute/part/
 // class identifiers in bundle + manifest): measured 1,854,408 bytes unpacked,
 // ~0.3 kB over the prior ceiling.
-const sharedBundleAndManifestCeiling = 1_317_000;
+// +1 kB for accumulated shared-chunk + custom-elements manifest drift since the
+// 0.9.0 round: measured 1,854,659 bytes unpacked, ~34 bytes over the prior
+// ceiling.
+const sharedBundleAndManifestCeiling = 1_318_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.
