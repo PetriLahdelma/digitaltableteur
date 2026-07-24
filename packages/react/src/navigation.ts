@@ -46,6 +46,8 @@ export {
   Pagination,
   type PaginationProps,
 } from "../../../nextjs-app/shared/components/Pagination";
+export { ScrollIndicator } from "../../../nextjs-app/shared/components/ScrollIndicator/ScrollIndicator";
+export type { ScrollIndicatorProps } from "../../../nextjs-app/shared/components/ScrollIndicator/ScrollIndicator";
 export { default as SegmentedControl } from "../../../nextjs-app/shared/components/SegmentedControl/SegmentedControl";
 export type {
   SegmentedControlItem,

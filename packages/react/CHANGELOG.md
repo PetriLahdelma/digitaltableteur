@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.20 - 2026-07-24
+
+- Exposes the `ScrollIndicator` hero-footer affordance from the root and
+  navigation-family entrypoints: a real `<button>` that scrolls a named target
+  into view, with an animated icon (`chevron` / `arrow` / `mouse`), an optional
+  `label`, and a looping motion hint (`bounce` / `pulse` / `fade` / `none`)
+  suppressed under `prefers-reduced-motion`. Promoted to stable. Type-only
+  export: `ScrollIndicatorProps`.
+
 ## 0.1.19 - 2026-07-24
 
 - Exposes the `SlideButton` call-to-action from the root and actions-family

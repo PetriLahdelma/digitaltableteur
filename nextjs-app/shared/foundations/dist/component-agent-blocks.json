@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T14:07:17.698Z",
+  "generatedAt": "2026-07-24T17:20:53.851Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -20655,8 +20655,8 @@
         "aria-label or a visible label names the destination when no text is shown"
       ],
       "keyboard": [
-        "Enter: scrolls to the target section",
-        "Space: scrolls to the target section"
+        "Enter",
+        "Space"
       ],
       "compositionRules": [
         "stack more than one on a page. Two scroll cues in one viewport contradict each other about where the reader should go next."
@@ -20750,12 +20750,14 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified"
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
         },
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "unverified"
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "reduced-motion",
@@ -20765,12 +20767,20 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "manual"
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
         },
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified"
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-24 — promotion pass: real <button> with Enter/Space activation and a focus-visible ring; every motion preset (bounce/pulse/fade) is gated behind prefers-reduced-motion (falls back to a static, fully-opaque icon); forced-colors keeps the icon and focus ring visible; light and dark legibility confirmed in a real browser. AT snapshots captured across base/light/dark/forced-colors."
         }
       ],
       "docOrigin": {
@@ -20857,8 +20867,8 @@
       },
       "governance": {
         "owner": "design-system",
-        "lastReviewed": "2026-07-21",
-        "note": "Promoted out of the bespoke/infrastructure exemption: consumed by ProjectHero, BlogHero and AboutHero, which is reusable-primitive usage rather than app infrastructure. Alpha because forced-colors and light/dark have not been verified; beta needs both plus a11y review."
+        "lastReviewed": "2026-07-24",
+        "note": "Promoted to stable: consumed by HomeHero, ProjectHero, BlogHero and AboutHero. The variant/position/motion axes are prop-sourced (Tailwind conditional classes + a GSAP motion preset), not root CVA."
       },
       "content": {
         "voice": "A short imperative naming the destination, not the gesture.",

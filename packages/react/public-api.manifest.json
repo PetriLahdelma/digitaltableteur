@@ -1,6 +1,6 @@
 {
   "packageName": "@digitaltableteur/react",
-  "packageVersion": "0.1.19",
+  "packageVersion": "0.1.20",
   "packageExports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -151,6 +151,7 @@
     "ReadingProgress",
     "resolveMotionPlan",
     "saveConsentState",
+    "ScrollIndicator",
     "Section",
     "SegmentedControl",
     "Select",
@@ -312,6 +313,7 @@
       "NavLink",
       "NavMenuList",
       "Pagination",
+      "ScrollIndicator",
       "SegmentedControl",
       "SkipLink",
       "Tabs"
@@ -590,6 +592,8 @@
       "NavMenuListProps",
       "Pagination",
       "PaginationProps",
+      "ScrollIndicator",
+      "ScrollIndicatorProps",
       "SegmentedControl",
       "SegmentedControlItem",
       "SegmentedControlProps",
