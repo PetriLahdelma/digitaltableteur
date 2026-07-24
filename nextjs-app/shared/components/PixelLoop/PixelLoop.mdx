@@ -1,0 +1,63 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "./PixelLoop.stories";
+
+<Meta of={Stories} />
+
+# PixelLoop
+
+**Status:** alpha · **Tier:** atom · **Group:** display
+
+A six-frame decorative constellation loop for expressive hero and editorial
+compositions. Each drawing is locked to a strict 5 × 5 bitmap; rounded-dot and
+vector-stroke variants travel around it without a client-side animation runtime.
+
+## In use
+
+<Canvas of={Stories.Example} />
+
+## How to use
+
+```tsx
+import { PixelLoop } from "@dt/PixelLoop";
+
+<PixelLoop />;
+```
+
+Use `size="sm" | "md" | "lg"` to scale the complete composition and
+`variant="dots" | "strokes"` to choose fully rounded points or short 45° vector
+marks. The loop inherits its color from the surrounding text color.
+
+Use `rows={1}`, `rows={2}`, or `rows={3}` to render three, six, or nine strict
+5 × 5 glyph grids. Two rows is the default.
+
+<Canvas of={Stories.OneRow} />
+
+<Canvas of={Stories.ThreeRows} />
+
+## Static use
+
+```tsx
+<PixelLoop animate={false} />
+```
+
+The static option and reduced-motion media query both hold the first frame.
+
+## When to use
+
+- As a decorative signature in a hero, interstitial, or editorial layout.
+- When a compact, high-energy pixel motif supports the composition.
+
+## When not to use
+
+- As loading, progress, status, or instructional feedback.
+- When the surrounding composition already contains prominent continuous motion.
+
+## Accessibility
+
+PixelLoop is decorative, has no interaction, never enters the tab order, and is
+hidden from assistive technology. Reduced-motion preferences stop the animation.
+
+## Promotion notes
+
+Promote to beta after forced-colors, light/dark, and visual parity checks are
+recorded.
