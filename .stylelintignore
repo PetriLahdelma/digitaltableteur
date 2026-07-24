@@ -1,0 +1,22 @@
+# Generated / build / scratch artifacts. These contain minified single-line CSS
+# that (a) is not source we author and (b) floods Stylelint's JSON output past
+# spawnSync's 1MB maxBuffer in check-stylelint-baseline.mjs, breaking the gate.
+# Stylelint uses this file, NOT .gitignore, so gitignored build dirs must be
+# listed here explicitly.
+
+node_modules/**
+**/node_modules/**
+.next/**
+dist/**
+**/dist/**
+coverage/**
+
+# Storybook + design-system build/sync output
+storybook-static/**
+.design-sync/**
+.ds-sync/**
+ds-bundle/**
+packages/react/_ds-sync-globals.css
+
+# Any minified stylesheet
+**/*.min.css
