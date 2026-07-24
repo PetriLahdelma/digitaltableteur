@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.4 - 2026-07-24
+
+- Adds the radius scale extension and elevation ramp shipped in the token
+  sweep: `radius.xl`, `radius.circle`, and the `shadow.sm` / `shadow.md` /
+  `shadow.lg` / `shadow.xl` elevation tokens (token count 192 → 198). Additive;
+  the existing `radius.sm` / `radius.md` / `radius.lg` numbering is unchanged.
+
 ## 0.1.3 - 2026-07-22
 
 - Adds seven semantic tokens from the high-contrast legibility round:

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.5 - 2026-07-24
+
+- Adds the radius and elevation custom properties from the token sweep:
+  `--radius-xl`, `--radius-circle`, and the `--shadow-sm` / `--shadow-md` /
+  `--shadow-lg` / `--shadow-xl` elevation ramp. Additive; existing radius
+  custom properties are unchanged.
+
 ## 0.1.4 - 2026-07-22
 
 - Adds the seven high-contrast legibility custom properties
