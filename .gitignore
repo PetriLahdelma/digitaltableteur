@@ -106,3 +106,10 @@ public/visual-diff/report.json
 # Project-local npm userconfig (.npmrc redirects userconfig here) — may hold a
 # live read token for private @digitaltableteur installs; never track it.
 .npm-userconfig
+.design-sync/sb-reference/
+.design-sync/learnings/
+.design-sync/.cache/
+.design-sync/node_modules
+.ds-sync/
+ds-bundle/
+packages/react/_ds-sync-globals.css

@@ -1,0 +1,186 @@
+{
+  "projectId": "476ee254-9446-4ba7-8d50-65721fe6b2f9",
+  "shape": "storybook",
+  "storybookConfigDir": ".storybook",
+  "pkg": "@digitaltableteur/react",
+  "storybookStatic": ".design-sync/sb-reference",
+  "buildCmd": "cd packages/react && npm run build",
+  "entry": "packages/react/dist/index.js",
+  "tokensPkg": "@digitaltableteur/tokens-css",
+  "provider": {
+    "component": "DsI18nProvider",
+    "props": {
+      "i18n": {
+        "$ref": "dsI18n"
+      }
+    },
+    "inner": {
+      "component": "TranslationProvider"
+    }
+  },
+  "extraEntries": [
+    "../../.design-sync/ds-i18n-entry.tsx"
+  ],
+  "cssEntry": "_ds-sync-globals.css",
+  "overrides": {
+    "Modal": {
+      "cardMode": "single"
+    },
+    "Menu": {
+      "cardMode": "single"
+    },
+    "Toast": {
+      "cardMode": "single"
+    },
+    "ToastStack": {
+      "cardMode": "single"
+    },
+    "Tooltip": {
+      "cardMode": "single"
+    },
+    "CommandPalette": {
+      "cardMode": "single"
+    },
+    "CookieConsent": {
+      "cardMode": "single"
+    },
+    "Accordion": {
+      "cardMode": "column"
+    },
+    "AlertBanner": {
+      "cardMode": "column"
+    },
+    "AspectRatio": {
+      "cardMode": "column"
+    },
+    "Author": {
+      "cardMode": "column"
+    },
+    "AuthorBio": {
+      "cardMode": "column"
+    },
+    "AvatarGroup": {
+      "cardMode": "column"
+    },
+    "Breadcrumb": {
+      "cardMode": "column"
+    },
+    "Card": {
+      "cardMode": "column"
+    },
+    "Center": {
+      "cardMode": "column"
+    },
+    "Checkbox": {
+      "cardMode": "column"
+    },
+    "CheckboxGroup": {
+      "cardMode": "column"
+    },
+    "CodeBlockWindow": {
+      "cardMode": "column"
+    },
+    "Combobox": {
+      "cardMode": "column"
+    },
+    "Container": {
+      "cardMode": "column"
+    },
+    "Display": {
+      "cardMode": "column"
+    },
+    "Divider": {
+      "cardMode": "column"
+    },
+    "EmptyState": {
+      "cardMode": "column"
+    },
+    "ExpandableSection": {
+      "cardMode": "column"
+    },
+    "Gallery": {
+      "cardMode": "column"
+    },
+    "GroupLabel": {
+      "cardMode": "column"
+    },
+    "HelperText": {
+      "cardMode": "column"
+    },
+    "Icon": {
+      "cardMode": "column"
+    },
+    "Label": {
+      "cardMode": "column"
+    },
+    "List": {
+      "cardMode": "column"
+    },
+    "MacWindowFrame": {
+      "cardMode": "column"
+    },
+    "MultiCombobox": {
+      "cardMode": "column"
+    },
+    "NavMenuList": {
+      "cardMode": "column"
+    },
+    "PageLayout": {
+      "cardMode": "column"
+    },
+    "Pagination": {
+      "cardMode": "column"
+    },
+    "PhoneInput": {
+      "cardMode": "column"
+    },
+    "ProcessBlock": {
+      "cardMode": "column"
+    },
+    "Progress": {
+      "cardMode": "column"
+    },
+    "Radio": {
+      "cardMode": "column"
+    },
+    "Select": {
+      "cardMode": "column"
+    },
+    "SelectableCard": {
+      "cardMode": "column"
+    },
+    "Skeleton": {
+      "cardMode": "column",
+      "skip": [
+        "feedback-skeleton--card",
+        "feedback-skeleton--avatar"
+      ]
+    },
+    "SkipLink": {
+      "cardMode": "column"
+    },
+    "SplitButton": {
+      "cardMode": "column"
+    },
+    "Switch": {
+      "cardMode": "column"
+    },
+    "Tabs": {
+      "cardMode": "column"
+    },
+    "Text": {
+      "cardMode": "column"
+    },
+    "TextInput": {
+      "cardMode": "column"
+    },
+    "Timestamp": {
+      "cardMode": "column"
+    },
+    "Title": {
+      "cardMode": "column"
+    }
+  },
+  "readmeHeader": ".design-sync/conventions.md",
+  "extraFonts": ".design-sync/satoshi-fonts.css"
+}
