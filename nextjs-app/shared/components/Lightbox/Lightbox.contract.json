@@ -13,14 +13,37 @@
     "slots": [],
     "asChild": false,
     "subParts": [
-        { "name": "Backdrop", "element": "div" },
-        { "name": "Panel", "element": "div" },
-        { "name": "Image", "element": "img" },
-        { "name": "Caption", "element": "figcaption" },
-        { "name": "Counter", "element": "p" },
-        { "name": "Close", "element": "button" }
+        {
+            "name": "Backdrop",
+            "element": "div"
+        },
+        {
+            "name": "Panel",
+            "element": "div"
+        },
+        {
+            "name": "Image",
+            "element": "img"
+        },
+        {
+            "name": "Caption",
+            "element": "figcaption"
+        },
+        {
+            "name": "Counter",
+            "element": "p"
+        },
+        {
+            "name": "Close",
+            "element": "button"
+        }
     ],
-    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
     "a11y": {
         "keyboard": [
             "Escape: closes the lightbox",
@@ -54,7 +77,10 @@
         "terminology": [
             {
                 "prefer": "Close",
-                "over": ["Dismiss", "Exit"],
+                "over": [
+                    "Dismiss",
+                    "Exit"
+                ],
                 "rationale": "Close is the conventional dialog dismissal label and is already translated in all three locales."
             }
         ],
@@ -62,5 +88,29 @@
             "caption": 120
         },
         "notes": "Every image needs a real alt. A caption does not substitute for one: captions are visible to everyone, alt text carries the description for AT."
-    }
+    },
+    "props": {
+        "images": {
+            "optional": false,
+            "type": "LightboxImage[]"
+        },
+        "initialIndex": {
+            "optional": true,
+            "type": "number"
+        },
+        "open": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onOpenChange": {
+            "optional": true,
+            "type": "(open: boolean) => void"
+        }
+    },
+    "forbiddenUse": [
+        "(must): nest a Lightbox inside a Modal -- both trap focus and apply `inert`, and the inner trap wins, leaving the outer dialog unreachable but still visible.",
+        "use it for non-image content. It is sized and captioned for images; use `Modal` for arbitrary content.",
+        "put interactive controls in a caption. The caption is announced as part of the image's description, and controls inside it are unreachable in that reading order.",
+        "rely on the counter as the only position cue. It is visual; the accessible name carries position for AT."
+    ]
 }

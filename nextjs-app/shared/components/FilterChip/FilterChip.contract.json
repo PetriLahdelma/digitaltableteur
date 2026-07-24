@@ -142,10 +142,10 @@
             "optional": true,
             "type": "union",
             "values": [
-                "rectangle",
                 "underline",
                 "minimal",
-                "pill"
+                "pill",
+                "rectangle"
             ],
             "description": "Visual treatment."
         },

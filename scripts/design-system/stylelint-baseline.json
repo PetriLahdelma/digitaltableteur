@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2301,
+  "warningCount": 2350,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -157,7 +157,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 153,
+      "line": 159,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -166,7 +166,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 151,
+      "line": 157,
       "column": 38,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -184,7 +184,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 145,
+      "line": 151,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -6331,7 +6331,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
-      "line": 66,
+      "line": 83,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6349,7 +6349,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FilterChip/FilterChip.module.css",
-      "line": 66,
+      "line": 83,
       "column": 21,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -14502,6 +14502,438 @@
       "id": "nextjs-app/shared/components/SkipLink/SkipLink.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
     },
     {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 83,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".reverse .iconTrack\" to come before selector \".root:hover .iconTrack\", at line 70 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::no-descending-specificity::Expected selector \".reverse .iconTrack\" to come before selector \".root:hover .iconTrack\" (no-descending-specificity)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 148,
+      "column": 3,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".reverse .iconTrack\" to come before selector \".root:hover .iconTrack\", at line 133 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::no-descending-specificity::Expected selector \".reverse .iconTrack\" to come before selector \".root:hover .iconTrack\" (no-descending-specificity)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 79,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".reverse .label\" to come before selector \".root:hover .label\", at line 66 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::no-descending-specificity::Expected selector \".reverse .label\" to come before selector \".root:hover .label\" (no-descending-specificity)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 143,
+      "column": 3,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \".reverse .label\" to come before selector \".root:hover .label\", at line 133 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::no-descending-specificity::Expected selector \".reverse .label\" to come before selector \".root:hover .label\" (no-descending-specificity)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 14,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"block-size\" to come before \"align-items\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::order/properties-order::Expected \"block-size\" to come before \"align-items\" (order/properties-order)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 46,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 55,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 12,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"display\" to come before \"position\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::order/properties-order::Expected \"display\" to come before \"position\" (order/properties-order)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 18,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"font-size\" to come before \"color\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::order/properties-order::Expected \"font-size\" to come before \"color\" (order/properties-order)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 54,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"inline-size\" to come before \"justify-content\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::order/properties-order::Expected \"inline-size\" to come before \"justify-content\" (order/properties-order)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 53,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"justify-content\" to come before \"align-items\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::order/properties-order::Expected \"justify-content\" to come before \"align-items\" (order/properties-order)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 33,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"padding-inline\" to come before \"white-space\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::order/properties-order::Expected \"padding-inline\" to come before \"white-space\" (order/properties-order)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 44,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"z-index\" to come before \"margin-block\" (order/properties-order)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::order/properties-order::Expected \"z-index\" to come before \"margin-block\" (order/properties-order)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 43,
+      "column": 23,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 92,
+      "column": 23,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 149,
+      "column": 25,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 33,
+      "column": 27,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 67,
+      "column": 19,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 80,
+      "column": 19,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 88,
+      "column": 27,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 144,
+      "column": 29,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::5"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 153,
+      "column": 29,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::6"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 33,
+      "column": 19,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 67,
+      "column": 27,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 80,
+      "column": 27,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 88,
+      "column": 19,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::4"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 144,
+      "column": 21,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::5"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 153,
+      "column": 21,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2.75rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::6"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 26,
+      "column": 19,
+      "rule": "rhythmguard/prefer-token",
+      "severity": "warning",
+      "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 43,
+      "column": 23,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 92,
+      "column": 23,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 149,
+      "column": 25,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 33,
+      "column": 27,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 67,
+      "column": 19,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 80,
+      "column": 19,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 88,
+      "column": 27,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 144,
+      "column": 29,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::5"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 153,
+      "column": 29,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::6"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 14,
+      "column": 15,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 33,
+      "column": 19,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 67,
+      "column": 27,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::3"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 80,
+      "column": 27,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::4"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 88,
+      "column": 19,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::5"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 144,
+      "column": 21,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::6"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 153,
+      "column": 21,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"2.75rem\". Use scale values (nearest: 4px or 48px). (rhythmguard/use-scale)::7"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 39,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 66,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
+      "line": 79,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)",
+      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::3"
+    },
+    {
       "file": "nextjs-app/shared/components/SocialIconLink/SocialIconLink.module.css",
       "line": 18,
       "column": 19,
@@ -15979,7 +16411,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 22,
+      "line": 35,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -15988,7 +16420,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 42,
+      "line": 55,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -15997,7 +16429,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 50,
+      "line": 63,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -16006,7 +16438,34 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 21,
+      "line": 20,
+      "column": 3,
+      "rule": "order/properties-order",
+      "severity": "warning",
+      "text": "Expected \"padding-block\" to come before \"justify-content\" (order/properties-order)",
+      "id": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css::order/properties-order::Expected \"padding-block\" to come before \"justify-content\" (order/properties-order)::1"
+    },
+    {
+      "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
+      "line": 26,
+      "column": 19,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.02em\". Use scale values (nearest: 0px or 2px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
+      "line": 25,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
+    },
+    {
+      "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
+      "line": 34,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16015,7 +16474,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.module.css",
-      "line": 22,
+      "line": 35,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -16822,24 +17281,6 @@
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)",
       "id": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css",
-      "line": 97,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Expected variable, function or keyword for \"#000\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
-      "id": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#000\" of \"background-color\" (scale-unlimited/declaration-strict-value)::1"
-    },
-    {
-      "file": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css",
-      "line": 101,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Expected variable, function or keyword for \"#fff\" of \"background-color\" (scale-unlimited/declaration-strict-value)",
-      "id": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.module.css::scale-unlimited/declaration-strict-value::Expected variable, function or keyword for \"#fff\" of \"background-color\" (scale-unlimited/declaration-strict-value)::1"
     },
     {
       "file": "nextjs-app/shared/patterns/Footer/Footer.module.css",

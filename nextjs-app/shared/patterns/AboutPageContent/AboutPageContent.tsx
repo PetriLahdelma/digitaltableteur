@@ -25,6 +25,7 @@ import { ValuesSection, type ValueItem } from "../ValuesSection";
 import { StatsSection } from "../../patterns/StatsSection/StatsSection";
 import { ManifestoSection, type ManifestoToken } from "../ManifestoSection";
 import { CTASection } from "../CTASection";
+import { SlideButton } from "../../components/SlideButton";
 import styles from "./AboutPageContent.module.css";
 
 const TECH_STACK = [
@@ -375,6 +376,15 @@ export function AboutPageContent({
         background="transparent"
       />
 
+      {/* See the work CTA */}
+      <div className={styles.seeWorkCta}>
+        <SlideButton
+          label={t("aboutSeeWorkCta", "See the work")}
+          href="/work"
+          icon="ArrowRight"
+        />
+      </div>
+
       <section
         className={styles.versioningSection}
         aria-labelledby="about-versioning-title"
@@ -383,6 +393,8 @@ export function AboutPageContent({
           <h2 id="about-versioning-title" className={styles.visuallyHidden}>
             {t("aboutVersioningTitle")}
           </h2>
+
+          <p className={styles.madeWith}>{t("aboutMadeWith", "This site is made with")}</p>
 
           <ul
             className={styles.stackLogos}

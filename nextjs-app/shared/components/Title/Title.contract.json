@@ -147,9 +147,9 @@
             "optional": true,
             "type": "union",
             "values": [
+                "xl",
                 "xs",
                 "s",
-                "xl",
                 "xxs",
                 "m",
                 "l",

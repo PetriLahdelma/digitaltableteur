@@ -857,7 +857,7 @@
         "size": {
           "optional": true,
           "type": "AvatarSize",
-          "description": "Avatar size, exposed from the Avatar atom: token sizes `sm`/`md`/`lg`/`xl`\nare canonical; any CSS length is accepted. @default \"md\""
+          "description": "Avatar size, exposed from the Avatar atom: token sizes `sm`/`md`/`lg`/`xl`\nare canonical; any CSS length is accepted."
         },
         "profileUrl": {
           "optional": true,
@@ -995,7 +995,7 @@
         "heading": {
           "optional": true,
           "type": "string",
-          "description": "Optional custom heading text (defaults to author.name)"
+          "description": "Optional custom heading text (defaults to the author name)"
         },
         "showContact": {
           "optional": true,
@@ -6335,7 +6335,7 @@
         },
         {
           "name": "variant",
-          "type": "rectangle | underline | minimal | pill",
+          "type": "underline | minimal | pill | rectangle",
           "required": false
         },
         {
@@ -6369,10 +6369,10 @@
           "optional": true,
           "type": "union",
           "values": [
-            "rectangle",
             "underline",
             "minimal",
-            "pill"
+            "pill",
+            "rectangle"
           ],
           "description": "Visual treatment."
         },
@@ -7566,7 +7566,7 @@
         },
         {
           "name": "size",
-          "type": "sm | md | lg | xs | xl | 2xs | 2xl",
+          "type": "sm | md | lg | xl | xs | 2xs | 2xl",
           "required": false
         },
         {
@@ -7619,8 +7619,8 @@
             "sm",
             "md",
             "lg",
-            "xs",
             "xl",
+            "xs",
             "2xs",
             "2xl"
           ],
@@ -8471,11 +8471,49 @@
       "dense": "",
       "keywords": [],
       "importLine": "import { Lightbox } from \"@dt/Lightbox\";",
-      "keyProps": [],
-      "props": {},
+      "keyProps": [
+        {
+          "name": "images",
+          "type": "LightboxImage[]",
+          "required": true
+        },
+        {
+          "name": "initialIndex",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "props": {
+        "images": {
+          "optional": false,
+          "type": "LightboxImage[]"
+        },
+        "initialIndex": {
+          "optional": true,
+          "type": "number"
+        },
+        "open": {
+          "optional": true,
+          "type": "boolean"
+        },
+        "onOpenChange": {
+          "optional": true,
+          "type": "(open: boolean) => void"
+        }
+      },
       "composesWith": [],
       "prefersOver": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "(must): nest a Lightbox inside a Modal -- both trap focus and apply `inert`, and the inner trap wins, leaving the outer dialog unreachable but still visible.",
+        "use it for non-image content. It is sized and captioned for images; use `Modal` for arbitrary content.",
+        "put interactive controls in a caption. The caption is announced as part of the image's description, and controls inside it are unreachable in that reading order.",
+        "rely on the counter as the only position cue. It is visual; the accessible name carries position for AT."
+      ],
       "usage": null,
       "tokens": {
         "colors": [],
@@ -8747,7 +8785,7 @@
         },
         {
           "name": "size",
-          "type": "xs | s | xl | xxs | m | l | xxl",
+          "type": "xl | xs | s | xxs | m | l | xxl",
           "required": false
         },
         {
@@ -8790,9 +8828,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xl",
             "xs",
             "s",
-            "xl",
             "xxs",
             "m",
             "l",
@@ -9851,7 +9889,7 @@
         },
         {
           "name": "titleSize",
-          "type": "sm | md | lg | xs | xl | xxs | xxl | XXS | XS | S | M | L | XL | XXL",
+          "type": "sm | md | lg | xl | xs | xxs | xxl | XXS | XS | S | M | L | XL | XXL",
           "required": false
         },
         {
@@ -9894,8 +9932,8 @@
             "sm",
             "md",
             "lg",
-            "xs",
             "xl",
+            "xs",
             "xxs",
             "xxl",
             "XXS",
@@ -11494,6 +11532,88 @@
         }
       ]
     },
+    "PixelLoop": {
+      "name": "PixelLoop",
+      "group": "display",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Decorative constellation loop with rounded-dot and 45-degree vector-stroke variants.",
+      "dense": "",
+      "keywords": [],
+      "importLine": "import { PixelLoop } from \"@dt/PixelLoop\";",
+      "keyProps": [
+        {
+          "name": "size",
+          "type": "sm | md | lg",
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "dots | strokes",
+          "required": false
+        },
+        {
+          "name": "rows",
+          "type": "PixelLoopRows",
+          "required": false
+        },
+        {
+          "name": "animate",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "props": {
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Scales the glyphs and the equal space between them."
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "dots",
+            "strokes"
+          ],
+          "description": "Rounded dots or short, round-capped 45-degree strokes."
+        },
+        "rows": {
+          "optional": true,
+          "type": "PixelLoopRows",
+          "description": "Number of three-glyph rows in the animated field."
+        },
+        "animate": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Runs the six-frame loop. Disable for a deliberate static composition."
+        }
+      },
+      "composesWith": [],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "use it to communicate loading, progress, status, or instructions.",
+        "add labels or interaction to the glyphs.",
+        "replace the stepped rotation with smooth motion."
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-text"
+        ],
+        "spacing": [
+          "--space-layout-4",
+          "--space-layout-16",
+          "--space-layout-32"
+        ]
+      },
+      "examples": []
+    },
     "Progress": {
       "name": "Progress",
       "group": "feedback",
@@ -12368,11 +12488,109 @@
       "dense": "",
       "keywords": [],
       "importLine": "import { ScrollIndicator } from \"@dt/ScrollIndicator\";",
-      "keyProps": [],
-      "props": {},
-      "composesWith": [],
+      "keyProps": [
+        {
+          "name": "variant",
+          "type": "arrow | mouse | chevron",
+          "required": false
+        },
+        {
+          "name": "position",
+          "type": "center | left | right",
+          "required": false
+        },
+        {
+          "name": "motion",
+          "type": "none | fade | bounce | pulse",
+          "required": false
+        },
+        {
+          "name": "targetId",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "props": {
+        "targetId": {
+          "optional": true,
+          "type": "string",
+          "description": "ID of the target element to scroll to"
+        },
+        "label": {
+          "optional": true,
+          "type": "string",
+          "description": "Optional text label"
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "arrow",
+            "mouse",
+            "chevron"
+          ],
+          "description": "Icon variant"
+        },
+        "position": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "center",
+            "left",
+            "right"
+          ],
+          "description": "Horizontal position"
+        },
+        "motion": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "none",
+            "fade",
+            "bounce",
+            "pulse"
+          ],
+          "description": "Looping motion applied to the icon as a hint to scroll."
+        },
+        "speed": {
+          "optional": true,
+          "type": "number",
+          "description": "Duration of one motion half-cycle, in seconds."
+        },
+        "distance": {
+          "optional": true,
+          "type": "number",
+          "description": "Vertical travel of the bounce motion, in pixels (bounce only)."
+        },
+        "className": {
+          "optional": true,
+          "type": "string",
+          "description": "Custom className for styling"
+        }
+      },
+      "composesWith": [
+        "Container",
+        "Section",
+        "HeroBackground",
+        "Stack"
+      ],
       "prefersOver": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "(must): render it as a `<div>` with a click handler -- it must stay a real button so it is reachable by Tab and activates on both Enter and Space.",
+        "use it as general in-page navigation. It communicates \"there is more below\", not \"jump to section\". Use a link or `Breadcrumb` for navigation.",
+        "stack more than one on a page. Two scroll cues in one viewport contradict each other about where the reader should go next.",
+        "rely on the animation to carry meaning. It is suppressed under reduced motion, so the label and accessible name must stand alone."
+      ],
       "usage": null,
       "tokens": {
         "colors": [],
@@ -12404,7 +12622,7 @@
         },
         {
           "name": "spacing",
-          "type": "sm | md | lg | none | xl | hero | follow",
+          "type": "sm | md | lg | xl | none | hero | follow",
           "required": false
         },
         {
@@ -12441,8 +12659,8 @@
             "sm",
             "md",
             "lg",
-            "none",
             "xl",
+            "none",
             "hero",
             "follow"
           ],
@@ -13555,6 +13773,161 @@
         }
       ]
     },
+    "SlideButton": {
+      "name": "SlideButton",
+      "group": "actions",
+      "tier": 2,
+      "status": "stable",
+      "description": "Pill call-to-action whose icon disc slides across the button on hover while the label shifts and the disc rolls a full turn.",
+      "dense": "focal pill CTA link; decorative icon disc slides across the pill and rolls on hover; iconSide left/right; motion gated by prefers-reduced-motion; renders a real <a href>",
+      "keywords": [
+        "cta",
+        "pill",
+        "slide",
+        "link",
+        "sprint",
+        "hover",
+        "icon",
+        "anchor"
+      ],
+      "importLine": "import { SlideButton } from \"@dt/SlideButton\";",
+      "keyProps": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "href",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "iconSide",
+          "type": "left | right",
+          "required": false
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "label": {
+          "optional": false,
+          "type": "string",
+          "description": "Visible, i18n-resolved label. Names the destination, not the gesture."
+        },
+        "href": {
+          "optional": false,
+          "type": "string",
+          "description": "Destination. Rendered as a real `<a>`, so it is focusable and keyboard-activated."
+        },
+        "icon": {
+          "optional": true,
+          "type": "string",
+          "description": "Phosphor icon name for the sliding disc."
+        },
+        "iconSide": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "left",
+            "right"
+          ],
+          "description": "Side the icon rests on before it slides across on hover. \"left\" starts at the\nleading edge and travels to the trailing edge; \"right\" is the mirror."
+        }
+      },
+      "composesWith": [
+        "StatsSection",
+        "Section",
+        "Container"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "(must): rely on the slide or roll to communicate anything -- both are suppressed under reduced motion, so the label must stand alone.",
+        "use it for form submission or in-page actions; reach for `Button` there.",
+        "place more than one per view. It is a focal CTA, not a repeated control."
+      ],
+      "usage": {
+        "description": "SlideButton is a focal pill call-to-action for a single, high-value destination. On hover its icon disc slides across the pill, the label shifts to make room, and the disc rolls a full turn. It renders a real anchor, so it is keyboard-reachable and activates like any link; all motion is suppressed under prefers-reduced-motion.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Use it for one focal call-to-action per view, such as the primary next step at the end of a landing section."
+          },
+          {
+            "guidance": true,
+            "description": "Write a label that names the destination, like See the work or Start your sprint, never Click here."
+          },
+          {
+            "guidance": true,
+            "description": "Pick an icon that reinforces the destination; it is decorative and aria-hidden, so it must not be the only thing carrying meaning."
+          },
+          {
+            "guidance": true,
+            "description": "Forward data-* hooks (for example data-donny-interest) through the spread anchor props when a surface needs them."
+          },
+          {
+            "guidance": false,
+            "description": "Do not rely on the slide or roll to communicate anything; both are dropped under reduced motion, so the label must stand alone."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use it for form submission or in-page actions; use Button, which renders a real button."
+          },
+          {
+            "guidance": false,
+            "description": "Do not place more than one per view; it is a focal control, not a repeated action."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Label",
+            "required": true,
+            "description": "Visible text passed as the label prop; it is also the accessible name and names the destination."
+          },
+          {
+            "name": "Icon disc",
+            "required": false,
+            "description": "A coloured disc holding a decorative Phosphor icon; it slides across the pill and rolls on hover."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--color-primary",
+          "--color-primary-foreground",
+          "--color-foreground",
+          "--color-ring",
+          "--logo-background"
+        ],
+        "spacing": []
+      },
+      "examples": [
+        {
+          "story": "IconRight",
+          "description": "iconSide=right mirrors the resting and hover positions.",
+          "source": "export const IconRight: Story = {\n  tags: [\"example\"],\n  args: { iconSide: \"right\" },\n  parameters: {\n    docs: {\n      description: {\n        story: \"iconSide=right mirrors the resting and hover positions.\",\n      },\n    },\n  },\n};\n\n/** Any Phosphor icon can ride the disc; pick one that reinforces the destination. */"
+        },
+        {
+          "story": "Icons",
+          "description": null,
+          "source": "export const Icons: Story = {\n  tags: [\"example\"],\n  parameters: { controls: { disable: true } },\n  render: () => (\n    <div style={{ display: \"grid\", gap: \"1rem\", justifyItems: \"start\" }}>\n      <SlideButton label=\"Start your sprint\" href=\"#sprint\" icon=\"Lightning\" />\n      <SlideButton label=\"See the work\" href=\"#work\" icon=\"ArrowRight\" />\n      <SlideButton label=\"Read the story\" href=\"#story\" icon=\"Bookmark\" />\n    </div>\n  ),\n};\n\n/** Long labels and long fi/sv locale strings must not break the pill. */"
+        },
+        {
+          "story": "LongLabel",
+          "description": null,
+          "source": "export const LongLabel: Story = {\n  tags: [\"example\"],\n  parameters: { controls: { disable: true } },\n  render: () => (\n    <div style={{ display: \"grid\", gap: \"1rem\", justifyItems: \"start\", maxWidth: 420 }}>\n      <SlideButton label=\"Book a discovery call with the team\" href=\"#call\" />\n      <SlideButton label=\"Aloita suunnittelusprintti tänään\" href=\"#fi\" icon=\"ArrowRight\" />\n    </div>\n  ),\n};\n\n/** In context: a focal CTA sitting on a muted band, as on the home and about pages. */"
+        },
+        {
+          "story": "InContext",
+          "description": null,
+          "source": "export const InContext: Story = {\n  tags: [\"example\"],\n  parameters: { layout: \"fullscreen\", controls: { disable: true } },\n  render: () => (\n    <div\n      style={{\n        display: \"grid\",\n        placeItems: \"center\",\n        minBlockSize: \"40vh\",\n        padding: \"2rem\",\n        background: \"var(--color-surface)\",\n      }}\n    >\n      <SlideButton label=\"Start your sprint\" href=\"#sprint\" icon=\"Lightning\" />\n    </div>\n  ),\n};"
+        }
+      ]
+    },
     "SocialIconLink": {
       "name": "SocialIconLink",
       "group": "navigation",
@@ -13787,7 +14160,7 @@
       "keyProps": [
         {
           "name": "size",
-          "type": "sm | md | lg | xs | xl | 2xl",
+          "type": "sm | md | lg | xl | xs | 2xl",
           "required": false
         },
         {
@@ -13809,8 +14182,8 @@
             "sm",
             "md",
             "lg",
-            "xs",
             "xl",
+            "xs",
             "2xl"
           ],
           "description": "Tokenized gap size."
@@ -14258,7 +14631,7 @@
         },
         {
           "name": "gap",
-          "type": "sm | md | lg | xs | none | xl",
+          "type": "sm | md | lg | xl | xs | none",
           "required": false
         },
         {
@@ -14299,9 +14672,9 @@
             "sm",
             "md",
             "lg",
+            "xl",
             "xs",
-            "none",
-            "xl"
+            "none"
           ],
           "description": "Gap token between items."
         },
@@ -15375,7 +15748,7 @@
         },
         {
           "name": "size",
-          "type": "xs | s | xl | xxs | m | l | xxl",
+          "type": "xl | xs | s | xxs | m | l | xxl",
           "required": false
         },
         {
@@ -15416,9 +15789,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xl",
             "xs",
             "s",
-            "xl",
             "xxs",
             "m",
             "l",
@@ -16161,7 +16534,7 @@
         },
         {
           "name": "size",
-          "type": "xs | s | xl | xxs | m | l | xxl",
+          "type": "xl | xs | s | xxs | m | l | xxl",
           "required": false
         },
         {
@@ -16218,9 +16591,9 @@
           "optional": true,
           "type": "union",
           "values": [
+            "xl",
             "xs",
             "s",
-            "xl",
             "xxs",
             "m",
             "l",
@@ -21104,7 +21477,9 @@
           "type": "string"
         }
       },
-      "composesWith": [],
+      "composesWith": [
+        "SlideButton"
+      ],
       "prefersOver": [],
       "forbiddenUse": [
         "invent parallel primitives inside this folder",

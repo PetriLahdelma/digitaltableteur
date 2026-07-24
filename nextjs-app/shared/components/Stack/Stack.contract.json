@@ -121,9 +121,9 @@
                 "sm",
                 "md",
                 "lg",
+                "xl",
                 "xs",
-                "none",
-                "xl"
+                "none"
             ],
             "description": "Gap token between items."
         },
