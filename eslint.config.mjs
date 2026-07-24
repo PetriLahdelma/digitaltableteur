@@ -37,6 +37,16 @@ export default [
       "dist/",
       "packages/*/dist/",
       "storybook-static/",
+      // Generated / build / scratch design-sync artifacts (gitignored, present
+      // only in local working trees). Left unignored, ESLint crawls thousands
+      // of generated CSS/TS files here and never finishes the pre-commit hook.
+      // Mirrors .stylelintignore + .rhythmguardignore. NOTE: .design-sync also
+      // holds authored root files (ds-i18n-entry.tsx, satoshi-fonts.css) that
+      // MUST stay linted, so only its generated subdirs are ignored here.
+      ".ds-sync/",
+      "ds-bundle/",
+      ".design-sync/sb-reference/",
+      ".design-sync/.cache/",
       "coverage/",
       ".vercel/",
       "*.min.js",
