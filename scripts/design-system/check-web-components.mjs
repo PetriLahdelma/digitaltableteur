@@ -174,7 +174,11 @@ const maxPackedFiles = 40 + tags.length * 2;
 // +1 kB for accumulated shared-chunk + custom-elements manifest drift since the
 // 0.9.0 round: measured 1,854,659 bytes unpacked, ~34 bytes over the prior
 // ceiling.
-const sharedBundleAndManifestCeiling = 1_318_000;
+// +10 kB for dt-slide-button + dt-scroll-indicator (86th/87th tags): the pill
+// slide/roll animation and the scroll-indicator motion presets carry more
+// shadow-DOM CSS than the flat per-tag allowance; measured 1,875,138 bytes
+// unpacked, ~6.9 kB over the per-tag-scaled ceiling.
+const sharedBundleAndManifestCeiling = 1_328_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.

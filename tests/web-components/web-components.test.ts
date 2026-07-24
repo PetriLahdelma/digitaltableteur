@@ -97,6 +97,7 @@ import { defineElementSet } from "../../packages/web-components/src/registry";
 const NATIVE_TAGS = [
   "dt-icon",
   "dt-button",
+  "dt-slide-button",
   "dt-icon-button",
   "dt-button-group",
   "dt-filter-chip",
@@ -108,6 +109,7 @@ const NATIVE_TAGS = [
   "dt-nav-link",
   "dt-nav-menu-list",
   "dt-language-switcher",
+  "dt-scroll-indicator",
   "dt-skip-link",
   "dt-badge",
   "dt-avatar",
@@ -356,6 +358,52 @@ describe("native action and content elements", () => {
     element.disabled = false;
     element.click();
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it("renders SlideButton as a pill anchor with a label and icon disc", () => {
+    const element = document.createElement("dt-slide-button");
+    element.setAttribute("label", "Start your sprint");
+    element.setAttribute("href", "/contact");
+    element.setAttribute("icon", "lightning");
+    document.body.append(element);
+
+    const anchor = element.shadowRoot?.querySelector("a.root");
+    expect(anchor).toHaveAttribute("href", "/contact");
+    expect(anchor).toHaveAttribute("aria-label", "Start your sprint");
+    expect(element.shadowRoot?.querySelector(".label")?.textContent).toBe(
+      "Start your sprint",
+    );
+    expect(element.shadowRoot?.querySelector(".disc dt-icon")).toBeTruthy();
+
+    element.setAttribute("icon-side", "right");
+    expect(element.shadowRoot?.querySelector("a.root")).toHaveClass("reverse");
+  });
+
+  it("renders ScrollIndicator and scrolls its target into view on click", () => {
+    const target = document.createElement("div");
+    target.id = "next-scroll-target";
+    target.scrollIntoView = vi.fn();
+    document.body.append(target);
+
+    const element = document.createElement("dt-scroll-indicator");
+    element.setAttribute("label", "See our work");
+    element.setAttribute("target-id", "next-scroll-target");
+    element.setAttribute("variant", "arrow");
+    document.body.append(element);
+
+    const button = element.shadowRoot?.querySelector("button.root");
+    expect(button).toHaveAttribute("aria-label", "See our work");
+    expect(element.shadowRoot?.querySelector(".label")?.textContent).toBe(
+      "See our work",
+    );
+    expect(element.shadowRoot?.querySelector(".icon svg")).toBeTruthy();
+
+    (button as HTMLButtonElement).click();
+    expect(target.scrollIntoView).toHaveBeenCalledWith({
+      behavior: "smooth",
+      block: "start",
+    });
+    target.remove();
   });
 
   it("reacts when Button slot content is added after connection", async () => {

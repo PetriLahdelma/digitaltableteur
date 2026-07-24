@@ -273,6 +273,81 @@ const elementDefinitions = [
     events: [],
   },
   {
+    tagName: "dt-slide-button",
+    sourceComponent: "SlideButton",
+    contract: "SlideButton",
+    defaultBackend: "native",
+    nativeClassName: "DtSlideButtonElement",
+    description:
+      "Pill call-to-action whose icon disc slides across on hover while the label shifts and the disc rolls.",
+    storyParity: storyParity(),
+    props: [
+      nativeProp("label", "string", "Visible label; also the accessible name."),
+      nativeProp("href", "string", "Destination the anchor points to."),
+      nativeProp("icon", "string", "Phosphor icon name for the sliding disc."),
+      nativeProp(
+        "iconSide",
+        "string",
+        "Side the disc rests on before it slides.",
+        {
+          attributeName: "icon-side",
+        },
+      ),
+    ],
+    events: [],
+  },
+  {
+    tagName: "dt-scroll-indicator",
+    sourceComponent: "ScrollIndicator",
+    contract: "ScrollIndicator",
+    defaultBackend: "native",
+    nativeClassName: "DtScrollIndicatorElement",
+    description:
+      "Animated hero-footer affordance that scrolls to a named target; motion is CSS-driven and reduced-motion gated.",
+    storyParity: storyParity(),
+    props: [
+      nativeProp(
+        "label",
+        "string",
+        "Optional visible label; names the destination.",
+      ),
+      nativeProp(
+        "targetId",
+        "string",
+        "Element id scrolled into view on activation.",
+        {
+          attributeName: "target-id",
+        },
+      ),
+      nativeProp(
+        "variant",
+        "string",
+        "Icon treatment: chevron, arrow or mouse.",
+      ),
+      nativeProp(
+        "position",
+        "string",
+        "Horizontal placement: center, left or right.",
+      ),
+      nativeProp(
+        "motion",
+        "string",
+        "Motion hint: bounce, pulse, fade or none.",
+      ),
+      nativeProp(
+        "speed",
+        "string",
+        "Duration of one motion half-cycle, in seconds.",
+      ),
+      nativeProp(
+        "distance",
+        "string",
+        "Vertical travel of the bounce motion, in pixels.",
+      ),
+    ],
+    events: [],
+  },
+  {
     tagName: "dt-spinner",
     adapterClassName: "DtSpinnerReactElement",
     sourceComponent: "Spinner",
