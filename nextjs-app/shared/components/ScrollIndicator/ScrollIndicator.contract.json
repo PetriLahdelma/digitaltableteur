@@ -11,18 +11,40 @@
     "element": "button",
     "variants": {
         "variant": {
-            "values": ["arrow", "mouse", "chevron"],
+            "values": [
+                "arrow",
+                "mouse",
+                "chevron"
+            ],
             "default": "chevron"
         },
         "position": {
-            "values": ["center", "left", "right"],
+            "values": [
+                "center",
+                "left",
+                "right"
+            ],
             "default": "center"
+        },
+        "motion": {
+            "values": [
+                "bounce",
+                "pulse",
+                "fade",
+                "none"
+            ],
+            "default": "bounce"
         }
     },
     "slots": [],
     "asChild": false,
     "subParts": [],
-    "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
     "a11y": {
         "keyboard": [
             "Enter: scrolls to the target section",
@@ -53,7 +75,10 @@
         "terminology": [
             {
                 "prefer": "See our work",
-                "over": ["Scroll down", "Scroll"],
+                "over": [
+                    "Scroll down",
+                    "Scroll"
+                ],
                 "rationale": "Names where the user lands. The gesture is already implied by the affordance and is wrong for keyboard and AT users."
             }
         ],
@@ -61,5 +86,75 @@
             "label": 24
         },
         "notes": "The label is optional. When omitted the control still needs an accessible name naming the destination."
-    }
+    },
+    "props": {
+        "targetId": {
+            "optional": true,
+            "type": "string",
+            "description": "ID of the target element to scroll to"
+        },
+        "label": {
+            "optional": true,
+            "type": "string",
+            "description": "Optional text label"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "arrow",
+                "mouse",
+                "chevron"
+            ],
+            "description": "Icon variant"
+        },
+        "position": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "center",
+                "left",
+                "right"
+            ],
+            "description": "Horizontal position"
+        },
+        "motion": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "none",
+                "fade",
+                "bounce",
+                "pulse"
+            ],
+            "description": "Looping motion applied to the icon as a hint to scroll."
+        },
+        "speed": {
+            "optional": true,
+            "type": "number",
+            "description": "Duration of one motion half-cycle, in seconds."
+        },
+        "distance": {
+            "optional": true,
+            "type": "number",
+            "description": "Vertical travel of the bounce motion, in pixels (bounce only)."
+        },
+        "className": {
+            "optional": true,
+            "type": "string",
+            "description": "Custom className for styling"
+        }
+    },
+    "composesWith": [
+        "Container",
+        "Section",
+        "HeroBackground",
+        "Stack"
+    ],
+    "forbiddenUse": [
+        "(must): render it as a `<div>` with a click handler -- it must stay a real button so it is reachable by Tab and activates on both Enter and Space.",
+        "use it as general in-page navigation. It communicates \"there is more below\", not \"jump to section\". Use a link or `Breadcrumb` for navigation.",
+        "stack more than one on a page. Two scroll cues in one viewport contradict each other about where the reader should go next.",
+        "rely on the animation to carry meaning. It is suppressed under reduced motion, so the label and accessible name must stand alone."
+    ]
 }

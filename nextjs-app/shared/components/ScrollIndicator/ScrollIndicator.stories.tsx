@@ -31,6 +31,23 @@ const meta = {
       description: "Horizontal placement within the containing hero.",
       table: { defaultValue: { summary: "center" }, category: "Layout" },
     },
+    motion: {
+      control: "radio",
+      options: ["bounce", "pulse", "fade", "none"],
+      description:
+        "Looping motion hint on the icon. Suppressed under prefers-reduced-motion.",
+      table: { defaultValue: { summary: "bounce" }, category: "Motion" },
+    },
+    speed: {
+      control: { type: "range", min: 0.2, max: 2, step: 0.1 },
+      description: "Duration of one motion half-cycle, in seconds.",
+      table: { defaultValue: { summary: "0.6" }, category: "Motion" },
+    },
+    distance: {
+      control: { type: "range", min: 2, max: 20, step: 1 },
+      description: "Vertical travel of the bounce motion, in pixels (bounce only).",
+      table: { defaultValue: { summary: "8" }, category: "Motion" },
+    },
     label: {
       control: "text",
       description:
@@ -86,6 +103,9 @@ export const Playground: Story = {
     label: "See our work",
     variant: "chevron",
     position: "center",
+    motion: "bounce",
+    speed: 0.6,
+    distance: 8,
   },
   render: (args) => (
     <HeroFrame>

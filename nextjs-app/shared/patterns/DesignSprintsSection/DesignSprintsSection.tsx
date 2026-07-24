@@ -1,11 +1,10 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
 import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
-import Icon from "../../components/Icon";
+import { SlideButton } from "../../components/SlideButton";
 import { Check } from "lucide-react";
 import styles from "./DesignSprintsSection.module.css";
 
@@ -16,55 +15,6 @@ export interface DesignSprintsSectionProps {
   donnyTarget?: string;
   /** Custom className */
   className?: string;
-}
-
-/**
- * SprintButton - Animated pill button with icon that slides from left to right on hover
- */
-function SprintButton({ label }: { label: string }) {
-  return (
-    <a
-      href="/contact?service=design-sprint"
-      data-donny-interest="design-sprint"
-      className={cn(
-        "group relative inline-flex items-center",
-        "h-11 rounded-full",
-        "bg-primary text-primary-foreground",
-        "font-medium text-base",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-        "cursor-pointer"
-      )}
-    >
-      <span
-        className={cn(
-          "relative z-10 whitespace-nowrap",
-          "pl-11 pr-5 group-hover:pl-5 group-hover:pr-11",
-          "transition-all duration-300 ease-out"
-        )}
-      >
-        {label}
-      </span>
-
-      <span
-        className={cn(
-          "absolute top-1/2 -translate-y-1/2 z-20",
-          "w-8 h-8",
-          "left-1.5 group-hover:left-[calc(100%-2.375rem)]",
-          "transition-[left] duration-[600ms] ease-out"
-        )}
-      >
-        <span
-          className={cn(
-            "flex items-center justify-center",
-            "w-8 h-8 rounded-full",
-            styles.iconCircle
-          )}
-        >
-          <Icon name="Lightning" size="sm" weight="fill" className="text-foreground" />
-        </span>
-      </span>
-    </a>
-  );
 }
 
 /**
@@ -129,7 +79,12 @@ export function DesignSprintsSection({
 
           <FadeIn direction="up" delay={0.4} distance={20}>
             <div className={styles.ctaRow}>
-              <SprintButton label={t("homeDesignSprintsCta", "Start your sprint")} />
+              <SlideButton
+                label={t("homeDesignSprintsCta", "Start your sprint")}
+                href="/contact?service=design-sprint"
+                icon="Lightning"
+                data-donny-interest="design-sprint"
+              />
             </div>
           </FadeIn>
         </div>

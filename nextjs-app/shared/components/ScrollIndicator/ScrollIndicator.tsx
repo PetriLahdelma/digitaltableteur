@@ -15,6 +15,12 @@ export interface ScrollIndicatorProps {
   variant?: "arrow" | "mouse" | "chevron";
   /** Horizontal position */
   position?: "center" | "left" | "right";
+  /** Looping motion applied to the icon as a hint to scroll. */
+  motion?: "bounce" | "pulse" | "fade" | "none";
+  /** Duration of one motion half-cycle, in seconds. */
+  speed?: number;
+  /** Vertical travel of the bounce motion, in pixels (bounce only). */
+  distance?: number;
   /** Custom className for styling */
   className?: string;
 }
@@ -30,6 +36,9 @@ export function ScrollIndicator({
   label,
   variant = "chevron",
   position = "center",
+  motion = "bounce",
+  speed = 0.6,
+  distance = 8,
   className,
 }: ScrollIndicatorProps) {
   const ref = useRef<HTMLButtonElement>(null);
@@ -46,60 +55,78 @@ export function ScrollIndicator({
     }
   }, [targetId]);
 
-  // Bouncing animation
   useGSAP(
     () => {
-      if (!iconRef.current) return;
+      const el = iconRef.current;
+      if (!el) return;
 
-      // Skip animation for reduced motion
+      // Skip the motion hint for reduced motion; keep the icon at rest.
       if (motionPreference === "reduced") {
-        gsap.set(iconRef.current, { opacity: 1 });
+        gsap.set(el, { opacity: 1, y: 0, scale: 1 });
         return;
       }
 
-      // Bouncing animation
-      gsap.to(iconRef.current, {
-        y: 8,
-        duration: 0.6,
+      // Mount reveal. Use fromTo with an explicit opacity:1 end rather than
+      // gsap.from: from() is not idempotent, so when useGSAP re-runs (React
+      // StrictMode double-mount, or a motionPreference change) the second pass
+      // would read the already-0 opacity as its end value and animate 0 -> 0,
+      // leaving the icon permanently invisible. The fade preset animates
+      // opacity itself, so it only needs the resting value set.
+      if (motion === "fade") {
+        gsap.set(el, { opacity: 1 });
+      } else {
+        gsap.fromTo(
+          el,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5, delay: 1.5, ease: "power2.out" }
+        );
+      }
+
+      // Looping motion hint for the current preset.
+      const loop = {
+        duration: speed,
         ease: "power2.inOut",
         repeat: -1,
         yoyo: true,
-      });
-
-      // Fade in on mount
-      gsap.from(iconRef.current, {
-        opacity: 0,
-        y: -10,
-        duration: 0.5,
-        delay: 1.5,
-        ease: "power2.out",
-      });
+      } as const;
+      if (motion === "pulse") gsap.to(el, { ...loop, scale: 1.12 });
+      else if (motion === "fade") gsap.to(el, { ...loop, opacity: 0.35 });
+      else if (motion === "bounce") gsap.to(el, { ...loop, y: distance });
+      // motion === "none": reveal only, no loop.
     },
     // revertOnUpdate matters: the provider resolves prefers-reduced-motion in
-    // a post-mount effect, so the reduced gate flips AFTER the bounce starts —
+    // a post-mount effect, so the reduced gate flips AFTER the loop starts —
     // without revert, the infinite yoyo keeps running for reduced-motion users.
-    { scope: ref, dependencies: [motionPreference], revertOnUpdate: true }
+    // The motion props are dependencies so Storybook controls re-run the effect.
+    {
+      scope: ref,
+      dependencies: [motionPreference, motion, speed, distance],
+      revertOnUpdate: true,
+    }
   );
 
-  // Pause animation on hover
+  // Pause the loop on hover, settling the icon to its resting transform.
   const handleMouseEnter = useCallback(() => {
-    if (iconRef.current && motionPreference !== "reduced") {
-      gsap.killTweensOf(iconRef.current);
-      gsap.to(iconRef.current, { y: 0, duration: 0.2 });
-    }
+    const el = iconRef.current;
+    if (!el || motionPreference === "reduced") return;
+    gsap.killTweensOf(el);
+    gsap.to(el, { y: 0, scale: 1, opacity: 1, duration: 0.2 });
   }, [motionPreference]);
 
+  // Restart the loop for the current preset when the pointer leaves.
   const handleMouseLeave = useCallback(() => {
-    if (iconRef.current && motionPreference !== "reduced") {
-      gsap.to(iconRef.current, {
-        y: 8,
-        duration: 0.6,
-        ease: "power2.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-    }
-  }, [motionPreference]);
+    const el = iconRef.current;
+    if (!el || motionPreference === "reduced" || motion === "none") return;
+    const loop = {
+      duration: speed,
+      ease: "power2.inOut",
+      repeat: -1,
+      yoyo: true,
+    } as const;
+    if (motion === "pulse") gsap.to(el, { ...loop, scale: 1.12 });
+    else if (motion === "fade") gsap.to(el, { ...loop, opacity: 0.35 });
+    else gsap.to(el, { ...loop, y: distance });
+  }, [motion, speed, distance, motionPreference]);
 
   const renderIcon = () => {
     const iconProps = {
@@ -146,9 +173,7 @@ export function ScrollIndicator({
       aria-label={label || "Scroll to content"}
     >
       {label && (
-        <span className="text-xs font-body uppercase tracking-widest">
-          {label}
-        </span>
+        <span className="text-sm font-body tracking-wide">{label}</span>
       )}
       <span ref={iconRef} className="block">
         {renderIcon()}

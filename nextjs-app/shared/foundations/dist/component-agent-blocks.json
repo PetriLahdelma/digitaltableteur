@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T14:18:06.989Z",
+  "generatedAt": "2026-07-24T14:07:17.698Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -12264,7 +12264,7 @@
         "Badge",
         "Title",
         "ComplianceCard",
-        "Card"
+        "HelperText"
       ],
       "prefersOver": [],
       "declaredPropCount": 12,
@@ -18739,6 +18739,252 @@
       "governance": null,
       "content": null
     },
+    "PixelLoop": {
+      "preferredImport": "@dt/PixelLoop",
+      "intent": "PixelLoop is a compact decorative motion signature for hero and editorial compositions. It uses six original 20 × 20 constellations in a three-column, two-row field. The Primary Studio reference informed the modular for…",
+      "props": {
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Scales the glyphs and the equal space between them."
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "dots",
+            "strokes"
+          ],
+          "description": "Rounded dots or short, round-capped 45-degree strokes."
+        },
+        "rows": {
+          "optional": true,
+          "type": "PixelLoopRows",
+          "description": "Number of three-glyph rows in the animated field."
+        },
+        "animate": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Runs the six-frame loop. Disable for a deliberate static composition."
+        }
+      },
+      "propRelationships": [],
+      "variants": {
+        "size": {
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "sm"
+        },
+        "variant": {
+          "values": [
+            "dots",
+            "strokes"
+          ],
+          "default": "dots"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "use it as a visual accent alongside real page content.",
+        "choose the row count to suit the available composition width and height.",
+        "let the inherited text color adapt it to its surrounding composition."
+      ],
+      "avoidWhen": [
+        "use it to communicate loading, progress, status, or instructions.",
+        "add labels or interaction to the glyphs.",
+        "replace the stepped rotation with smooth motion."
+      ],
+      "requiredA11y": [
+        "The decorative container and all six glyphs are hidden from assistive technology.",
+        "The component never enters the tab order."
+      ],
+      "keyboard": [],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "use it to communicate loading, progress, status, or instructions.",
+        "add labels or interaction to the glyphs.",
+        "replace the stepped rotation with smooth motion."
+      ],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 4,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "use it as a visual accent alongside real page content.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "choose the row count to suit the available composition width and height.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "let the inherited text color adapt it to its surrounding composition.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use it to communicate loading, progress, status, or instructions.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "add labels or interaction to the glyphs.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "replace the stepped rotation with smooth motion.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "reduced-motion",
+          "statement": "Positional, scale, and opacity motion is suppressed under prefers-reduced-motion.",
+          "verificationMode": "manual"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified"
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "PixelLoop.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "PixelLoop.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "PixelLoop.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "PixelLoop.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": {
+        "owner": "design-system",
+        "lastReviewed": "2026-07-23",
+        "note": "The Primary Studio reference informed the compact modular format, while original 5x5 bitmap artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
+      },
+      "content": null
+    },
     "Progress": {
       "preferredImport": "@dt/Progress",
       "intent": "Linear bar for work with visible movement: determinate when completion is measurable (`value` / `max`), indeterminate sweep when duration is unknown but a bar-shaped affordance fits (page or panel loads). Family rule: S…",
@@ -20352,6 +20598,27 @@
           ],
           "description": "Horizontal position"
         },
+        "motion": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "none",
+            "fade",
+            "bounce",
+            "pulse"
+          ],
+          "description": "Looping motion applied to the icon as a hint to scroll."
+        },
+        "speed": {
+          "optional": true,
+          "type": "number",
+          "description": "Duration of one motion half-cycle, in seconds."
+        },
+        "distance": {
+          "optional": true,
+          "type": "number",
+          "description": "Vertical travel of the bounce motion, in pixels (bounce only)."
+        },
         "className": {
           "optional": true,
           "type": "string",
@@ -20414,7 +20681,7 @@
         "Stack"
       ],
       "prefersOver": [],
-      "declaredPropCount": 5,
+      "declaredPropCount": 8,
       "guidelines": [
         {
           "level": "must",
@@ -23335,6 +23602,278 @@
       },
       "governance": null,
       "content": null
+    },
+    "SlideButton": {
+      "preferredImport": "@dt/SlideButton",
+      "intent": "A prominent pill call-to-action for a single, high-value destination. On hover the icon disc slides across the pill while the label shifts to make room and the disc rolls a full turn -- a playful affordance that draws t…",
+      "props": {
+        "label": {
+          "optional": false,
+          "type": "string",
+          "description": "Visible, i18n-resolved label. Names the destination, not the gesture."
+        },
+        "href": {
+          "optional": false,
+          "type": "string",
+          "description": "Destination. Rendered as a real `<a>`, so it is focusable and keyboard-activated."
+        },
+        "icon": {
+          "optional": true,
+          "type": "string",
+          "description": "Phosphor icon name for the sliding disc."
+        },
+        "iconSide": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "left",
+            "right"
+          ],
+          "description": "Side the icon rests on before it slides across on hover. \"left\" starts at the\nleading edge and travels to the trailing edge; \"right\" is the mirror."
+        }
+      },
+      "propRelationships": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "(must): give a `label` that names the destination -- it is the control's accessible name. The disc is `aria-hidden` and carries no meaning.",
+        "pass a real `href`. This is a link, not a button; use it to navigate, not to submit.",
+        "forward `data-*` hooks (e.g. `data-donny-interest`) via the spread anchor props when a surface needs them.",
+        "keep the label short (<= 24 chars) so the pill stays compact and the slide reads."
+      ],
+      "avoidWhen": [
+        "(must): rely on the slide or roll to communicate anything -- both are suppressed under reduced motion, so the label must stand alone.",
+        "use it for form submission or in-page actions; reach for `Button` there.",
+        "place more than one per view. It is a focal CTA, not a repeated control."
+      ],
+      "requiredA11y": [
+        "Renders a real <a href>, so it is focusable and keyboard-activated",
+        "The visible label is the accessible name; the icon disc is aria-hidden and decorative"
+      ],
+      "keyboard": [
+        "Enter",
+        "Tab"
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "(must): rely on the slide or roll to communicate anything -- both are suppressed under reduced motion, so the label must stand alone.",
+        "use it for form submission or in-page actions; reach for `Button` there.",
+        "place more than one per view. It is a focal CTA, not a repeated control."
+      ],
+      "composesWith": [
+        "StatsSection",
+        "Section",
+        "Container"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 4,
+      "guidelines": [
+        {
+          "level": "must",
+          "guidance": "give a `label` that names the destination",
+          "rationale": "it is the control's accessible name. The disc is `aria-hidden` and carries no meaning.",
+          "rationaleSource": "explicit",
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "pass a real `href`",
+          "rationale": "This is a link, not a button; use it to navigate, not to submit.",
+          "rationaleSource": "inferred",
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "forward `data-*` hooks (e.g. `data-donny-interest`) via the spread anchor props when a surface needs them.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "keep the label short (<= 24 chars) so the pill stays compact and the slide reads.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "must-not",
+          "guidance": "rely on the slide or roll to communicate anything",
+          "rationale": "both are suppressed under reduced motion, so the label must stand alone.",
+          "rationaleSource": "explicit",
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use it for form submission or in-page actions; reach for `Button` there.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "place more than one per view",
+          "rationale": "It is a focal CTA, not a repeated control.",
+          "rationaleSource": "inferred",
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
+        },
+        {
+          "id": "reduced-motion",
+          "statement": "Positional, scale, and opacity motion is suppressed under prefers-reduced-motion.",
+          "verificationMode": "manual"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "automated",
+          "check": "npm run test:stories"
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-24 — promotion pass: real <a href> semantics, hover slide/roll gated behind prefers-reduced-motion, forced-colors border/disc/icon fallback, light and dark legibility confirmed in a real browser. AT snapshots captured across base/light/dark/forced-colors."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "SlideButton.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "SlideButton.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "SlideButton.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "SlideButton.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": {
+        "owner": "design-system",
+        "lastReviewed": "2026-07-24",
+        "note": "Extracted from DesignSprintsSection's bespoke SprintButton and promoted to stable on first shared use (home DesignSprintsSection + about AboutPageContent). The iconSide axis is geometry-only (mirrored rest/hover positions), modelled as a variant."
+      },
+      "content": {
+        "voice": "A short imperative naming the destination, not the gesture.",
+        "capitalization": "sentence",
+        "terminology": [
+          {
+            "prefer": "Start your sprint",
+            "over": [
+              "Click here",
+              "Submit"
+            ],
+            "rationale": "Names where the user lands. The slide is decoration, not meaning."
+          }
+        ],
+        "maxLength": {
+          "label": 24
+        },
+        "notes": "The label is required and is the control's accessible name. The icon disc is decorative."
+      }
     },
     "SocialIconLink": {
       "preferredImport": "@dt/SocialIconLink",
@@ -37812,7 +38351,9 @@
         "invent parallel primitives inside this folder",
         "promote to stable without production consumer evidence"
       ],
-      "composesWith": [],
+      "composesWith": [
+        "SlideButton"
+      ],
       "prefersOver": [],
       "declaredPropCount": 4,
       "guidelines": [

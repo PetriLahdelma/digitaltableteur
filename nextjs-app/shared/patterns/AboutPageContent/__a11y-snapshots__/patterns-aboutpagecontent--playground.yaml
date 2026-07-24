@@ -60,8 +60,11 @@
   - paragraph: "Leave governance behind: tokens, Storybook, adoption notes, release habits and backlog logic your team can run."
 - heading "Manifesto" [level=2]
 - paragraph: Digitaltableteur is No-Fluff Thinking AI-Powered Craft Design Systems Done Right Standards So High They Hurt Creativity With Structure Structure With Freedom Technology With Taste Human Insight Over Hype Pushing Boundaries Staying Curious Making Products Feel Effortless.
+- link "See the work":
+  - /url: /work
 - region "Design system packages":
   - heading "Design system packages" [level=2]
+  - paragraph: This site is made with
   - list "Current Digitaltableteur technology stack":
     - listitem "React 19"
     - listitem "Web Components"

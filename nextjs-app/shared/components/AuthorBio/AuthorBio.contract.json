@@ -128,7 +128,7 @@
         "heading": {
             "optional": true,
             "type": "string",
-            "description": "Optional custom heading text (defaults to author.name)"
+            "description": "Optional custom heading text (defaults to the author name)"
         },
         "showContact": {
             "optional": true,

@@ -1,0 +1,159 @@
+/*
+ * SlideButton — pill CTA with an icon disc that slides across on hover.
+ *
+ * Geometry: a 44px pill holding a 32px disc. At rest the disc sits 6px inside the
+ * leading edge; on hover it travels to calc(100% - 38px) (disc + 6px trailing gap)
+ * while the label's padding flips to keep the text clear of the disc. The .reverse
+ * modifier mirrors the resting/hover positions so the disc starts on the trailing edge.
+ */
+
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  block-size: 2.75rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+  padding-inline: 2.75rem 1.25rem;
+  transition: padding var(--duration-normal) var(--ease-out-cubic);
+}
+
+/* iconTrack is centred on the block axis with logical insets + auto margins
+   rather than a physical translate (which trips the logical-CSS contract). */
+.iconTrack {
+  position: absolute;
+  inset-block: 0;
+  margin-block: auto;
+  inset-inline-start: 0.375rem;
+  z-index: 2;
+  inline-size: 2rem;
+  block-size: 2rem;
+  transition: inset-inline-start 600ms var(--ease-out-cubic);
+}
+
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border-radius: var(--radius-circle);
+  background-color: var(--logo-background);
+  animation: slideButtonRollBack 600ms var(--ease-out-cubic);
+}
+
+.icon {
+  color: var(--color-foreground);
+}
+
+/* Hover: disc slides to the trailing edge, label makes room, disc rolls forward. */
+.root:hover .label {
+  padding-inline: 1.25rem 2.75rem;
+}
+
+.root:hover .iconTrack {
+  inset-inline-start: calc(100% - 2.375rem);
+}
+
+.root:hover .iconCircle {
+  animation: slideButtonRoll 600ms var(--ease-out-cubic);
+}
+
+/* Reverse: mirror the resting and hover positions. */
+.reverse .label {
+  padding-inline: 1.25rem 2.75rem;
+}
+
+.reverse .iconTrack {
+  inset-inline-start: calc(100% - 2.375rem);
+}
+
+.reverse:hover .label {
+  padding-inline: 2.75rem 1.25rem;
+}
+
+.reverse:hover .iconTrack {
+  inset-inline-start: 0.375rem;
+}
+
+@keyframes slideButtonRoll {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideButtonRollBack {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Forced colors: keep the disc and label legible against the system palette. */
+@media (forced-colors: active) {
+  .root {
+    border: 1px solid ButtonText;
+  }
+
+  .iconCircle {
+    background-color: ButtonText;
+  }
+
+  .icon {
+    color: ButtonFace;
+  }
+}
+
+/* Motion hint is suppressed for reduced motion: the disc stays put on hover and
+   nothing animates. Layout, label, and activation are unchanged. */
+@media (prefers-reduced-motion: reduce) {
+  .label,
+  .iconTrack,
+  .iconCircle,
+  .root:hover .label,
+  .root:hover .iconTrack {
+    transition: none;
+    animation: none;
+  }
+
+  .root:hover .label,
+  .reverse .label {
+    padding-inline: 2.75rem 1.25rem;
+  }
+
+  .root:hover .iconTrack,
+  .reverse .iconTrack {
+    inset-inline-start: 0.375rem;
+  }
+
+  .reverse:hover .label {
+    padding-inline: 2.75rem 1.25rem;
+  }
+
+  .root:hover .iconCircle {
+    animation: none;
+  }
+}

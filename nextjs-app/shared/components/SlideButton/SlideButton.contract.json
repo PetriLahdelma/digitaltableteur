@@ -1,0 +1,207 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "SlideButton",
+    "tier": "atom",
+    "group": "actions",
+    "status": "stable",
+    "description": "Pill call-to-action whose icon disc slides across the button on hover while the label shifts and the disc rolls a full turn.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1543-2371",
+    "radixPrimitive": null,
+    "element": "a",
+    "variants": {
+        "iconSide": {
+            "values": [
+                "left",
+                "right"
+            ],
+            "default": "left",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Enter",
+            "Tab"
+        ],
+        "ariaRequirements": [
+            "Renders a real <a href>, so it is focusable and keyboard-activated",
+            "The visible label is the accessible name; the icon disc is aria-hidden and decorative"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-24 — promotion pass: real <a href> semantics, hover slide/roll gated behind prefers-reduced-motion, forced-colors border/disc/icon fallback, light and dark legibility confirmed in a real browser. AT snapshots captured across base/light/dark/forced-colors.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "motion": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-primary",
+            "--color-primary-foreground",
+            "--color-foreground",
+            "--color-ring",
+            "--logo-background"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "governance": {
+        "owner": "design-system",
+        "lastReviewed": "2026-07-24",
+        "note": "Extracted from DesignSprintsSection's bespoke SprintButton and promoted to stable on first shared use (home DesignSprintsSection + about AboutPageContent). The iconSide axis is geometry-only (mirrored rest/hover positions), modelled as a variant."
+    },
+    "content": {
+        "voice": "A short imperative naming the destination, not the gesture.",
+        "capitalization": "sentence",
+        "terminology": [
+            {
+                "prefer": "Start your sprint",
+                "over": [
+                    "Click here",
+                    "Submit"
+                ],
+                "rationale": "Names where the user lands. The slide is decoration, not meaning."
+            }
+        ],
+        "maxLength": {
+            "label": 24
+        },
+        "notes": "The label is required and is the control's accessible name. The icon disc is decorative."
+    },
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AboutPage/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/AboutPageContent/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/DesignSprintsSection/index.ts",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/index.ts",
+            "since": "2026-06-04"
+        }
+    ],
+    "props": {
+        "label": {
+            "optional": false,
+            "type": "string",
+            "description": "Visible, i18n-resolved label. Names the destination, not the gesture."
+        },
+        "href": {
+            "optional": false,
+            "type": "string",
+            "description": "Destination. Rendered as a real `<a>`, so it is focusable and keyboard-activated."
+        },
+        "icon": {
+            "optional": true,
+            "type": "string",
+            "description": "Phosphor icon name for the sliding disc."
+        },
+        "iconSide": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "left",
+                "right"
+            ],
+            "description": "Side the icon rests on before it slides across on hover. \"left\" starts at the\nleading edge and travels to the trailing edge; \"right\" is the mirror."
+        }
+    },
+    "composesWith": [
+        "StatsSection",
+        "Section",
+        "Container"
+    ],
+    "forbiddenUse": [
+        "(must): rely on the slide or roll to communicate anything -- both are suppressed under reduced motion, so the label must stand alone.",
+        "use it for form submission or in-page actions; reach for `Button` there.",
+        "place more than one per view. It is a focal CTA, not a repeated control."
+    ],
+    "keywords": ["cta", "pill", "slide", "link", "sprint", "hover", "icon", "anchor"],
+    "dense": "focal pill CTA link; decorative icon disc slides across the pill and rolls on hover; iconSide left/right; motion gated by prefers-reduced-motion; renders a real <a href>",
+    "usage": {
+        "description": "SlideButton is a focal pill call-to-action for a single, high-value destination. On hover its icon disc slides across the pill, the label shifts to make room, and the disc rolls a full turn. It renders a real anchor, so it is keyboard-reachable and activates like any link; all motion is suppressed under prefers-reduced-motion.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use it for one focal call-to-action per view, such as the primary next step at the end of a landing section."
+            },
+            {
+                "guidance": true,
+                "description": "Write a label that names the destination, like See the work or Start your sprint, never Click here."
+            },
+            {
+                "guidance": true,
+                "description": "Pick an icon that reinforces the destination; it is decorative and aria-hidden, so it must not be the only thing carrying meaning."
+            },
+            {
+                "guidance": true,
+                "description": "Forward data-* hooks (for example data-donny-interest) through the spread anchor props when a surface needs them."
+            },
+            {
+                "guidance": false,
+                "description": "Do not rely on the slide or roll to communicate anything; both are dropped under reduced motion, so the label must stand alone."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it for form submission or in-page actions; use Button, which renders a real button."
+            },
+            {
+                "guidance": false,
+                "description": "Do not place more than one per view; it is a focal control, not a repeated action."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Label",
+                "required": true,
+                "description": "Visible text passed as the label prop; it is also the accessible name and names the destination."
+            },
+            {
+                "name": "Icon disc",
+                "required": false,
+                "description": "A coloured disc holding a decorative Phosphor icon; it slides across the pill and rolls on hover."
+            }
+        ]
+    }
+}

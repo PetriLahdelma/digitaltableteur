@@ -48,7 +48,7 @@
         "size": {
             "optional": true,
             "type": "AvatarSize",
-            "description": "Avatar size, exposed from the Avatar atom: token sizes `sm`/`md`/`lg`/`xl`\nare canonical; any CSS length is accepted. @default \"md\""
+            "description": "Avatar size, exposed from the Avatar atom: token sizes `sm`/`md`/`lg`/`xl`\nare canonical; any CSS length is accepted."
         },
         "profileUrl": {
             "optional": true,
