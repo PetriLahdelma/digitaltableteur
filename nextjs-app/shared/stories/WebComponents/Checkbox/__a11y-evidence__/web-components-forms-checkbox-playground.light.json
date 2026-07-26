@@ -1,16 +1,16 @@
 {
   "storyId": "web-components-forms-checkbox-playground",
   "mode": "light",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:30:52.335Z",
-  "runner": "backfill",
+  "sourceSHA": "c380345d06d3d3a681e1cee3fa6264f6c5491c5d",
+  "capturedAt": "2026-07-26T21:53:54.699Z",
+  "runner": "fix-hcb-checkbox",
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }
