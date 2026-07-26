@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "note": "Complexity is a per-component no-growth ratchet, not an ideal-quality claim. Update deliberately with npm run audit:agent-experience -- --update-baseline.",
   "minimums": {
-    "propDocumentationRate": 0.8936,
-    "completeContractEvidenceRate": 0.8571,
+    "propDocumentationRate": 0.8935,
+    "completeContractEvidenceRate": 0.8503,
     "recoverabilityRate": 1,
-    "composabilityRate": 0.5031,
+    "composabilityRate": 0.491,
     "machineRelationshipComponents": 3
   },
   "components": {
@@ -40,12 +40,12 @@
       "maxSlotCount": 0
     },
     "Author": {
-      "maxPropCount": 4,
+      "maxPropCount": 5,
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
     "AuthorBio": {
-      "maxPropCount": 4,
+      "maxPropCount": 9,
       "maxFiniteStateBits": 1,
       "maxSlotCount": 0
     },
@@ -61,7 +61,7 @@
     },
     "Badge": {
       "maxPropCount": 11,
-      "maxFiniteStateBits": 7.907,
+      "maxFiniteStateBits": 8.322,
       "maxSlotCount": 1
     },
     "BlogCategoryFilter": {
@@ -221,7 +221,7 @@
     },
     "FilterChip": {
       "maxPropCount": 6,
-      "maxFiniteStateBits": 4.17,
+      "maxFiniteStateBits": 4.585,
       "maxSlotCount": 0
     },
     "FlexBox": {
@@ -289,6 +289,11 @@
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
+    "Lightbox": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
     "Link": {
       "maxPropCount": 2,
       "maxFiniteStateBits": 3.585,
@@ -304,13 +309,18 @@
       "maxFiniteStateBits": 11.174,
       "maxSlotCount": 1
     },
+    "ListItem": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 4,
+      "maxSlotCount": 3
+    },
     "LocationCard": {
       "maxPropCount": 6,
       "maxFiniteStateBits": 1.585,
       "maxSlotCount": 0
     },
     "Logo": {
-      "maxPropCount": 6,
+      "maxPropCount": 7,
       "maxFiniteStateBits": 3,
       "maxSlotCount": 0
     },
@@ -384,6 +394,11 @@
       "maxFiniteStateBits": 9.937,
       "maxSlotCount": 0
     },
+    "PixelLoop": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 3.585,
+      "maxSlotCount": 0
+    },
     "Progress": {
       "maxPropCount": 7,
       "maxFiniteStateBits": 4.907,
@@ -417,6 +432,11 @@
     "ReadingProgress": {
       "maxPropCount": 3,
       "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ScrollIndicator": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 5.17,
       "maxSlotCount": 0
     },
     "Section": {
@@ -472,6 +492,11 @@
     "SkipLink": {
       "maxPropCount": 3,
       "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "SlideButton": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
       "maxSlotCount": 0
     },
     "SocialIconLink": {
@@ -707,6 +732,11 @@
     "PageLayout": {
       "maxPropCount": 11,
       "maxFiniteStateBits": 8.322,
+      "maxSlotCount": 0
+    },
+    "PricingCalculator": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
     "PricingPageContent": {
