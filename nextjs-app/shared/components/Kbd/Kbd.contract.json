@@ -3,7 +3,7 @@
     "name": "Kbd",
     "tier": "atom",
     "group": "display",
-    "status": "beta",
+    "status": "stable",
     "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1005-1638",
     "radixPrimitive": null,
@@ -43,9 +43,10 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-07-06 — alpha→beta: created the Figma component (size variant keycap set, border/bg/text bound to DT/Color, radius from radius/sm) at node 1005-1638, the only remaining beta blocker. Static inline element; axe asserted in unit test and story gate; forced-colors border verified.",
+        "reviewedNote": "2026-07-06 — alpha→beta: created the Figma component (size variant keycap set, border/bg/text bound to DT/Color, radius from radius/sm) at node 1005-1638, the only remaining beta blocker. Static inline element; axe asserted in unit test and story gate; forced-colors border verified. 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; primary/secondary variant axis and sm/md/lg size ladder verified distinct; keycap remains static inline text with no interactive semantics.",
         "forcedColorsVerified": true,
-        "accessibilityTreeVerified": true
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -140,5 +141,17 @@
         "Text",
         "Tooltip",
         "CodeSnippet"
+    ],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+        }
     ]
 }

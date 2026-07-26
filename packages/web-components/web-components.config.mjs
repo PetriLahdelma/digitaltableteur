@@ -1268,6 +1268,7 @@ const elementDefinitions = [
     storyParity: storyParity(),
     props: [
       stringProp("size"),
+      stringProp("variant"),
       nativeProp("content", "string", "Text fallback for the default slot."),
     ],
     slots: [slot("", "Key label or symbol.")],

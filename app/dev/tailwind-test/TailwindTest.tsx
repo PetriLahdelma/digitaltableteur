@@ -48,6 +48,7 @@ import {
   Stack,
   useToast,
 } from "@digitaltableteur/react";
+import { Kbd } from "@dt/Kbd";
 import { Prose } from "@/nextjs-app/shared/components/ui";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
 import { ArrowRight, Heart, Share, Star, Image as ImageIcon } from "@phosphor-icons/react";
@@ -617,7 +618,7 @@ export default function TailwindTest() {
           <div className="bg-muted/30 p-4 rounded-sm">
             <p className="font-body text-dt-text-s text-muted-foreground mb-3">SkipLink (accessibility):</p>
             <p className="font-body text-dt-text-m">
-              Press <kbd className="px-2 py-0.5 bg-muted border border-border rounded text-dt-text-s font-mono">Tab</kbd> at the top of the page to see the skip link.
+              Press <Kbd size="sm">Tab</Kbd> at the top of the page to see the skip link.
             </p>
             <p className="font-body text-dt-text-s text-muted-foreground mt-2">
               The SkipLink is hidden by default and becomes visible when focused, allowing keyboard users to bypass navigation.

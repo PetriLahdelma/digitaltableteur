@@ -436,6 +436,7 @@ export type DtGridElementContract = HTMLElement & {
 
 export type DtKbdElementContract = HTMLElement & {
   size?: string;
+  variant?: string;
   content?: string;
 };
 
@@ -954,7 +955,7 @@ export const elementMigrationManifest = [
   { tagName: "dt-display", sourceComponent: "Display", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-flex-box", sourceComponent: "FlexBox", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-grid", sourceComponent: "Grid", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
-  { tagName: "dt-kbd", sourceComponent: "Kbd", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-kbd", sourceComponent: "Kbd", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-list-item", sourceComponent: "ListItem", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-skeleton", sourceComponent: "Skeleton", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-visually-hidden", sourceComponent: "VisuallyHidden", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },

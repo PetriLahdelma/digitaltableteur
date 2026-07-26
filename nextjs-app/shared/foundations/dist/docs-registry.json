@@ -8082,7 +8082,7 @@
       "name": "Kbd",
       "group": "display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
       "dense": "semantic <kbd> keycap; sm/md/lg mono sizes; compose combos as sibling Kbds with literal separators",
       "keywords": [

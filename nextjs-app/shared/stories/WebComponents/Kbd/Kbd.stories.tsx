@@ -8,7 +8,11 @@ import {
   nativeStoryParameters,
 } from "../NativeStory";
 
-type Args = { content: string; size: "sm" | "md" | "lg" };
+type Args = {
+  content: string;
+  size: "sm" | "md" | "lg";
+  variant?: "primary" | "secondary";
+};
 function NativeKbd(args: Args) {
   return <NativeElement tagName="dt-kbd" attributes={args} />;
 }
@@ -22,7 +26,15 @@ const meta = {
     docs: { description: { component: "Native semantic keyboard keycap." } },
   },
   args: { content: "Esc", size: "md" },
-  argTypes: { size: { control: "radio", options: ["sm", "md", "lg"] } },
+  argTypes: {
+    size: { control: "radio", options: ["sm", "md", "lg"] },
+    variant: {
+      control: "radio",
+      options: ["primary", "secondary"],
+      description: "Filled keycap (primary) or flat outlined chip (secondary)",
+      table: { defaultValue: { summary: "primary" } },
+    },
+  },
 } satisfies Meta<typeof NativeKbd>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -46,6 +58,15 @@ export const Sizes: Story = {
       {(["sm", "md", "lg"] as const).map((size) => (
         <NativeKbd key={size} content="Shift" size={size} />
       ))}
+    </Row>
+  ),
+};
+export const Variants: Story = {
+  ...exampleStory,
+  render: () => (
+    <Row>
+      <NativeKbd content="Esc" size="md" variant="primary" />
+      <NativeKbd content="Esc" size="md" variant="secondary" />
     </Row>
   ),
 };

@@ -5369,6 +5369,13 @@
             },
             {
               "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
               "name": "content",
               "description": "Text fallback for the default slot.",
               "type": {
@@ -5391,6 +5398,13 @@
               }
             },
             {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
               "name": "content",
               "fieldName": "content",
               "description": "Text fallback for the default slot.",
@@ -5402,7 +5416,7 @@
           "events": [],
           "dtSourceComponent": "Kbd",
           "dtBackend": "native",
-          "dtContractStatus": "beta",
+          "dtContractStatus": "stable",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },
