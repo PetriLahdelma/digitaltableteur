@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "scoringModel": "Evidence scorecard only. No weighted aggregate or model-authored quality score is produced.",
-  "componentCount": 161,
+  "componentCount": 167,
   "dimensions": {
     "apiEntropy": {
       "description": "Raw API surface and finite-choice state-space indicators; lower is not automatically better.",
-      "totalProps": 1071,
+      "totalProps": 1108,
       "maximumPropCount": 27,
       "maximumFiniteStateBits": 16.383,
       "largestSurfaces": [
@@ -157,16 +157,16 @@
     },
     "promptability": {
       "description": "Golden intent queries resolved by the production ranker.",
-      "passed": 20,
+      "passed": 19,
       "total": 20,
-      "rate": 1,
+      "rate": 0.95,
       "minimumRate": 0.9
     },
     "recoverability": {
       "description": "Components with negative guidance, replacement guidance, or executable prop relationships.",
       "coverage": {
-        "numerator": 161,
-        "denominator": 161,
+        "numerator": 167,
+        "denominator": 167,
         "rate": 1
       },
       "machineRelationshipComponents": 3
@@ -174,9 +174,9 @@
     "composability": {
       "description": "Components connected to the relationship graph plus golden pattern retrieval evidence.",
       "componentCoverage": {
-        "numerator": 81,
-        "denominator": 161,
-        "rate": 0.5031
+        "numerator": 82,
+        "denominator": 167,
+        "rate": 0.491
       },
       "patternRetrieval": {
         "passed": 11,
@@ -188,14 +188,14 @@
     "contractClarity": {
       "description": "Source-backed prop documentation and complete intent/guidance/a11y/example/rationale evidence.",
       "propDocumentation": {
-        "numerator": 957,
-        "denominator": 1071,
-        "rate": 0.8936
+        "numerator": 990,
+        "denominator": 1108,
+        "rate": 0.8935
       },
       "completeContractEvidence": {
-        "numerator": 138,
-        "denominator": 161,
-        "rate": 0.8571
+        "numerator": 142,
+        "denominator": 167,
+        "rate": 0.8503
       }
     }
   },
@@ -365,7 +365,7 @@
         "designRationale": true
       },
       "recoverability": true,
-      "composable": true,
+      "composable": false,
       "machineRelationships": []
     },
     {
@@ -373,9 +373,9 @@
       "status": "beta",
       "tier": "molecule",
       "api": {
-        "propCount": 4,
-        "requiredPropCount": 2,
-        "documentedPropCount": 4,
+        "propCount": 5,
+        "requiredPropCount": 1,
+        "documentedPropCount": 5,
         "booleanAxisCount": 0,
         "finiteChoiceAxisCount": 0,
         "finiteStateBits": 0,
@@ -401,9 +401,9 @@
       "status": "stable",
       "tier": "molecule",
       "api": {
-        "propCount": 4,
-        "requiredPropCount": 1,
-        "documentedPropCount": 4,
+        "propCount": 9,
+        "requiredPropCount": 0,
+        "documentedPropCount": 9,
         "booleanAxisCount": 1,
         "finiteChoiceAxisCount": 0,
         "finiteStateBits": 1,
@@ -431,7 +431,7 @@
       "api": {
         "propCount": 12,
         "requiredPropCount": 0,
-        "documentedPropCount": 3,
+        "documentedPropCount": 4,
         "booleanAxisCount": 1,
         "finiteChoiceAxisCount": 3,
         "finiteStateBits": 4.585,
@@ -490,7 +490,7 @@
         "documentedPropCount": 9,
         "booleanAxisCount": 3,
         "finiteChoiceAxisCount": 3,
-        "finiteStateBits": 7.907,
+        "finiteStateBits": 8.322,
         "slotCount": 1,
         "relationshipCount": 0
       },
@@ -790,7 +790,7 @@
         "designRationale": true
       },
       "recoverability": true,
-      "composable": true,
+      "composable": false,
       "machineRelationships": []
     },
     {
@@ -1419,7 +1419,7 @@
         "documentedPropCount": 6,
         "booleanAxisCount": 1,
         "finiteChoiceAxisCount": 2,
-        "finiteStateBits": 4.17,
+        "finiteStateBits": 4.585,
         "slotCount": 0,
         "relationshipCount": 0
       },
@@ -1751,7 +1751,7 @@
         "designRationale": true
       },
       "recoverability": true,
-      "composable": false,
+      "composable": true,
       "machineRelationships": []
     },
     {
@@ -1808,6 +1808,34 @@
       },
       "recoverability": true,
       "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "Lightbox",
+      "status": "alpha",
+      "tier": "organism",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 1,
+        "documentedPropCount": 0,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": true,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
       "machineRelationships": []
     },
     {
@@ -1895,6 +1923,34 @@
       "machineRelationships": []
     },
     {
+      "name": "ListItem",
+      "status": "beta",
+      "tier": "atom",
+      "api": {
+        "propCount": 9,
+        "requiredPropCount": 1,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 3,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 4,
+        "slotCount": 3,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
       "name": "LocationCard",
       "status": "beta",
       "tier": "molecule",
@@ -1927,9 +1983,9 @@
       "status": "stable",
       "tier": "atom",
       "api": {
-        "propCount": 6,
+        "propCount": 7,
         "requiredPropCount": 0,
-        "documentedPropCount": 6,
+        "documentedPropCount": 7,
         "booleanAxisCount": 3,
         "finiteChoiceAxisCount": 0,
         "finiteStateBits": 3,
@@ -2343,6 +2399,34 @@
       "machineRelationships": []
     },
     {
+      "name": "PixelLoop",
+      "status": "alpha",
+      "tier": "atom",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 0,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 3.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": false,
+        "canonicalExamples": true,
+        "discoverability": false,
+        "usageRationale": false,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
       "name": "Progress",
       "status": "stable",
       "tier": "atom",
@@ -2539,6 +2623,34 @@
       "machineRelationships": []
     },
     {
+      "name": "ScrollIndicator",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 8,
+        "requiredPropCount": 0,
+        "documentedPropCount": 8,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 5.17,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
       "name": "Section",
       "status": "stable",
       "tier": "atom",
@@ -2703,7 +2815,7 @@
         "designRationale": true
       },
       "recoverability": true,
-      "composable": true,
+      "composable": false,
       "machineRelationships": []
     },
     {
@@ -2829,6 +2941,34 @@
         "booleanAxisCount": 0,
         "finiteChoiceAxisCount": 0,
         "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "SlideButton",
+      "status": "stable",
+      "tier": "atom",
+      "api": {
+        "propCount": 4,
+        "requiredPropCount": 2,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1,
         "slotCount": 0,
         "relationshipCount": 0
       },
@@ -3039,7 +3179,7 @@
         "designRationale": true
       },
       "recoverability": true,
-      "composable": false,
+      "composable": true,
       "machineRelationships": []
     },
     {
@@ -4056,7 +4196,7 @@
         "designRationale": true
       },
       "recoverability": true,
-      "composable": true,
+      "composable": false,
       "machineRelationships": []
     },
     {
@@ -4154,6 +4294,34 @@
         "booleanAxisCount": 2,
         "finiteChoiceAxisCount": 3,
         "finiteStateBits": 8.322,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "PricingCalculator",
+      "status": "stable",
+      "tier": "pattern",
+      "api": {
+        "propCount": 1,
+        "requiredPropCount": 0,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
         "slotCount": 0,
         "relationshipCount": 0
       },
@@ -4560,7 +4728,7 @@
         "designRationale": true
       },
       "recoverability": true,
-      "composable": false,
+      "composable": true,
       "machineRelationships": []
     },
     {
@@ -4762,5 +4930,5 @@
   ],
   "ok": true,
   "violations": [],
-  "generatedAt": "2026-07-16T17:36:46.373Z"
+  "generatedAt": "2026-07-26T14:31:53.582Z"
 }
