@@ -1,14 +1,10 @@
 {
   "storyId": "forms-selectoption-playground",
   "mode": "light",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:31:45.725Z",
-  "runner": "backfill",
+  "sourceSHA": "37bdd341fd19fdb24cab8b6479b3e837a32eb9bb",
+  "capturedAt": "2026-07-26T14:20:03.267Z",
+  "runner": "recapture",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
       "passed": true
     }

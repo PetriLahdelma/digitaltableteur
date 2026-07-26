@@ -375,10 +375,18 @@ async function captureAccessibilityTree(
 // enforce runs stay read-only and this changes nothing downstream yet.
 const EMIT_A11Y_EVIDENCE = UPDATE_AT || BOOTSTRAP_AT;
 
+type StoryA11yParams = {
+  disable?: boolean;
+  test?: string;
+  context?: { exclude?: string[] };
+  options?: { rules?: Array<{ id?: string; enabled?: boolean }> };
+};
+
 async function captureA11yEvidence(
   page: import("playwright").Page,
   rawStoryId: string,
   storyId: string,
+  a11yParams: StoryA11yParams | undefined,
 ) {
   if (!EMIT_A11Y_EVIDENCE) return;
   const componentDir = (await loadStoryDirMap()).get(rawStoryId);
@@ -388,32 +396,51 @@ async function captureA11yEvidence(
   const mode = suffix ? suffix.slice(1) : "light";
   const forced = FORCED_COLORS === "active";
 
-  try {
-    let axe = new AxeBuilder({ page })
-      .include("#storybook-root")
-      .exclude("[data-axe-ignore]");
-    // Mirror .storybook/preview.tsx: under forced-colors the UA overrides author
-    // colors, so color-contrast is not a meaningful author-side check.
-    if (forced) axe = axe.disableRules(["color-contrast"]);
-    const results = await axe.analyze();
-    const axeViolations = results.violations.length;
+  // The AT tree was already captured (captureAccessibilityTree threw otherwise).
+  const checks: Record<string, { passed: boolean; axeViolations?: number }> = {
+    "accessibility-tree": { passed: true },
+  };
 
+  // Honor the story's a11y opt-out exactly as the Storybook a11y addon does: a
+  // story with `parameters.a11y.disable` or `test: "off"` is not axe-checked, so
+  // recording an axe result for it would be a false failure the enforced gate
+  // never produces. Evidence must match the gate, not a stricter parallel run.
+  const axeDisabled = a11yParams?.disable === true || a11yParams?.test === "off";
+  if (!axeDisabled) {
+    try {
+      // Mirror the merged (global preview + story) axe config: the same context
+      // excludes and disabled rules axe actually ran with. Under forced-colors the
+      // UA overrides author colors, so color-contrast is not author-meaningful.
+      const excludes = ["[data-axe-ignore]", ...(a11yParams?.context?.exclude ?? [])];
+      const disabledRules = [
+        ...(forced ? ["color-contrast"] : []),
+        ...(a11yParams?.options?.rules ?? [])
+          .filter((r) => r?.enabled === false && r.id)
+          .map((r) => r.id as string),
+      ];
+      let axe = new AxeBuilder({ page }).include("#storybook-root");
+      for (const sel of excludes) axe = axe.exclude(sel);
+      if (disabledRules.length) axe = axe.disableRules(disabledRules);
+      const results = await axe.analyze();
+      const axeViolations = results.violations.length;
+      checks["axe-no-violations"] = { passed: axeViolations === 0, axeViolations };
+      if (forced) checks["forced-colors-real-browser"] = { passed: axeViolations === 0 };
+    } catch (err) {
+      console.warn(
+        `[a11y-evidence] axe skipped ${storyId}${suffix}: ${(err as Error).message}`,
+      );
+    }
+  }
+
+  try {
     writeEvidenceRecord(componentDir, storyId, suffix, {
       mode,
       runner: process.env.DT_A11Y_RUNNER ?? null,
-      checks: {
-        "axe-no-violations": { passed: axeViolations === 0, axeViolations },
-        // captureAccessibilityTree threw if the committed tree drifted or a
-        // required snapshot was missing, so reaching here means the tree holds.
-        "accessibility-tree": { passed: true },
-        ...(forced
-          ? { "forced-colors-real-browser": { passed: axeViolations === 0 } }
-          : {}),
-      },
+      checks,
     });
   } catch (err) {
-    // Emission must never break a capture run (non-breaking PR). Surface it and
-    // move on; the absence of a record is itself the honest signal downstream.
+    // Emission must never break a capture run. Surface it and move on; the
+    // absence of a record is itself the honest signal downstream.
     console.warn(
       `[a11y-evidence] skipped ${storyId}${suffix}: ${(err as Error).message}`,
     );
@@ -513,8 +540,14 @@ const config: TestRunnerConfig = {
     // AT-tree snapshots are the DSharp-style gate for Phase 2.
     await captureAccessibilityTree(page, context.id, { betaMatrix });
 
-    // Phase 1 (prove-a11y): record the real axe pass/fail + provenance beside it.
-    await captureA11yEvidence(page, context.id, storyId);
+    // Phase 1 (prove-a11y): record the real axe pass/fail + provenance beside it,
+    // honoring the same story a11y params the addon ran axe under.
+    await captureA11yEvidence(
+      page,
+      context.id,
+      storyId,
+      storyContext?.parameters?.a11y as StoryA11yParams | undefined,
+    );
 
     // Visual pixel diffs are opt-in (Phase 4). Running them on every story makes
     // the matrix flaky while Vite is still optimizing dependencies.
