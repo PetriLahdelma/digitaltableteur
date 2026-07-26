@@ -13,7 +13,13 @@ jobs:
     # clean run takes ~10 min; anything past 30 is wedged.
     timeout-minutes: 30
     steps:
+      # Full history so the a11y-evidence freshness path-guard (a11y-evidence-lib.mjs
+      # `isEvidenceFresh`) can run `git log <evidenceSHA>..HEAD` per component. A shallow
+      # clone can't reach the evidence SHA, so freshness silently degrades to the
+      # STALE_DAYS time window and never detects a source change on CI.
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
           node-version: 22.12.0
