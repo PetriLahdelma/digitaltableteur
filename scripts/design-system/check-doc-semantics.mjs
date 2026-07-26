@@ -61,6 +61,7 @@ function loadContracts() {
         name: contract.name,
         status: contract.status ?? null,
         contract,
+        dir: dirname(f),
         spec: existsSync(specPath) ? readFileSync(specPath, "utf8") : null,
       });
     } catch {}
@@ -169,7 +170,7 @@ async function main() {
   const today = new Date();
   const unverifiedByComponent = [];
 
-  for (const { name, status, contract, spec } of contracts) {
+  for (const { name, status, contract, spec, dir } of contracts) {
     // --- Guidelines (RFC 2119) ---
     for (const g of parseSpecGuidelines(spec)) {
       report.guidelines.total += 1;
@@ -187,7 +188,7 @@ async function main() {
     }
 
     // --- Accessibility criteria ---
-    const criteria = deriveA11yCriteria(contract);
+    const criteria = deriveA11yCriteria(contract, { componentDir: dir });
     let unverified = 0;
     for (const c of criteria) {
       report.a11yCriteria.total += 1;

@@ -5,6 +5,7 @@ import * as path from "node:path";
 import {
   EVIDENCE_DIRNAME,
   STALE_DAYS,
+  evidenceCheckVerdicts,
   evidenceFile,
   isEvidenceFresh,
   readEvidenceRecords,
@@ -89,5 +90,42 @@ describe("isEvidenceFresh — time-window fallback", () => {
 
   it("is not fresh without a parseable capturedAt", () => {
     expect(isEvidenceFresh(tmp, { sourceSHA: "unknown" }, { now })).toBe(false);
+  });
+});
+
+describe("evidenceCheckVerdicts", () => {
+  const fresh = { gitChangedSince: () => false }; // force git path-guard fresh
+
+  it("tallies pass/fail per check across fresh records", () => {
+    writeEvidenceRecord(tmp, "s--a", "", {
+      mode: "light",
+      capturedAt: "2026-07-26T00:00:00Z",
+      checks: { "axe-no-violations": { passed: true }, "accessibility-tree": { passed: true } },
+    });
+    writeEvidenceRecord(tmp, "s--b", ".forced-colors", {
+      mode: "forced-colors",
+      capturedAt: "2026-07-26T00:00:00Z",
+      checks: { "axe-no-violations": { passed: false }, "forced-colors-real-browser": { passed: false } },
+    });
+
+    const v = evidenceCheckVerdicts(tmp, fresh);
+    expect(v["axe-no-violations"]).toEqual({ pass: 1, fail: 1 });
+    expect(v["accessibility-tree"]).toEqual({ pass: 1, fail: 0 });
+    expect(v["forced-colors-real-browser"]).toEqual({ pass: 0, fail: 1 });
+  });
+
+  it("ignores stale records", () => {
+    writeEvidenceRecord(tmp, "s--old", "", {
+      mode: "light",
+      capturedAt: "2026-07-26T00:00:00Z",
+      checks: { "axe-no-violations": { passed: true } },
+    });
+    // git says the source moved since this evidence -> stale -> excluded.
+    const v = evidenceCheckVerdicts(tmp, { gitChangedSince: () => true });
+    expect(v["axe-no-violations"]).toBeUndefined();
+  });
+
+  it("returns {} for a component with no evidence", () => {
+    expect(evidenceCheckVerdicts(path.join(tmp, "none"), fresh)).toEqual({});
   });
 });
