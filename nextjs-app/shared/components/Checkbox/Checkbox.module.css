@@ -300,3 +300,10 @@ input.checkbox:checked::after {
 .checkboxContainer .checkbox:disabled.indeterminateState::before {
   background-color: var(--color-disabled-placeholder);
 }
+
+/* HCB: the checked box is white (--color-primary #fff), so the default white checkmark is invisible. Draw it in the page's canvas colour (black). */
+:global(.themeHCB) input.checkbox:checked::after {
+  content: "";
+  border-inline-start-color: var(--main-body-background-color);
+  border-block-end-color: var(--main-body-background-color);
+}

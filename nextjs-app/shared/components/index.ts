@@ -216,6 +216,19 @@ export {
   type ArticleProseProps,
 } from "./ArticleContent";
 export {
+  Table,
+  TableRow,
+  TableHeaderCell,
+  TableCell,
+  type TableProps,
+  type TableRowProps,
+  type TableHeaderCellProps,
+  type TableCellProps,
+  type TableSize,
+  type TableAlign,
+  type TableSortDirection,
+} from "./Table";
+export {
   TableOfContents,
   type TableOfContentsProps,
   type TOCItem,

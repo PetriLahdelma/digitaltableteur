@@ -1,140 +1,35 @@
-.wrapper {
+.container {
+  display: flex;
   max-inline-size: 100%;
-  border: var(--space-internal-2) solid var(--color-border-light);
-  border-radius: var(--radius-md);
-  overflow-x: auto;
-
-  /* Physical fallback must precede its logical counterpart. */
-  /* stylelint-disable-next-line order/properties-order */
-  overflow-inline: auto;
-}
-
-.table {
-  inline-size: 100%;
-  background: var(--main-body-background-color);
-  color: var(--color-text);
-  border-collapse: collapse;
-}
-
-.caption {
-  padding: var(--space-internal-12) var(--space-internal-16);
-  border-block-end: var(--space-internal-2) solid var(--color-border-light);
-  font-weight: 600;
-  text-align: start;
-}
-
-.visuallyHidden {
-  position: absolute;
-  padding: 0;
-  block-size: var(--space-internal-2);
-  inline-size: var(--space-internal-2);
-  white-space: nowrap;
-  clip-path: inset(50%);
-  overflow: hidden;
-}
-
-.table th,
-.table td {
-  padding: var(--space-internal-12) var(--space-internal-16);
-  border-block-end: var(--space-internal-2) solid var(--color-border-light);
-  text-align: start;
-  vertical-align: middle;
-}
-
-.table th {
-  background: var(--color-light-bg);
-  font-weight: 600;
-}
-
-.table [data-align="center"] {
-  text-align: center;
-}
-
-.table [data-align="end"] {
-  text-align: end;
-}
-
-.sortButton {
-  display: inline-flex;
-  padding: var(--space-internal-4);
-  align-items: center;
-  gap: var(--space-internal-4);
-  border: 0;
-  border-radius: var(--radius-sm);
-  background: transparent;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-}
-
-.sortButton:hover {
-  background: var(--color-neutral-bg);
-}
-
-.sortIndicator {
-  color: var(--color-muted);
+  flex-direction: column;
+  gap: var(--space-internal-8);
 }
 
 .selectionCell {
   inline-size: 3rem;
-  text-align: center;
-}
-
-.checkbox {
-  block-size: 1rem;
-  inline-size: 1rem;
-  accent-color: var(--color-primary);
-}
-
-.sortButton:focus-visible,
-.checkbox:focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
-}
-
-.striped tbody tr:nth-child(even) {
-  background: var(--color-light-bg);
-}
-
-.table tr[data-selected] {
-  background: color-mix(
-    in srgb,
-    var(--color-primary) 12%,
-    var(--main-body-background-color)
-  );
 }
 
 .empty {
   padding-block: var(--space-layout-32);
-  text-align: center;
   color: var(--color-muted);
 }
 
-.sm .table th,
-.sm .table td {
-  padding: var(--space-internal-8) var(--space-internal-12);
-  font-size: var(--font-size-text-s);
+.pagination {
+  display: flex;
+  padding-inline: var(--space-internal-4);
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-internal-16);
+  font-size: var(--font-size-text-xs);
+  color: var(--color-muted);
 }
 
-.lg .table th,
-.lg .table td {
-  padding: var(--space-internal-16) var(--space-layout-24);
-  font-size: var(--font-size-text-l);
+.paginationStatus {
+  font-variant-numeric: tabular-nums;
 }
 
-.table tr:last-child td {
-  border-block-end: 0;
-}
-
-@media (forced-colors: active) {
-  .wrapper,
-  .table th,
-  .table td {
-    border-color: CanvasText;
-  }
-
-  .sortButton:focus-visible,
-  .checkbox:focus-visible {
-    outline-color: Highlight;
-  }
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-internal-2);
 }

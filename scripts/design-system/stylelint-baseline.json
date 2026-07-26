@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2345,
+  "warningCount": 2348,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -148,7 +148,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 52,
+      "line": 107,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -157,7 +157,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 159,
+      "line": 213,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -166,7 +166,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 157,
+      "line": 211,
       "column": 38,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -175,7 +175,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 58,
+      "line": 113,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -184,7 +184,7 @@
     },
     {
       "file": ".storybook/blocks/ComponentsGallery.module.css",
-      "line": 151,
+      "line": 205,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -3361,6 +3361,15 @@
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
+      "line": 305,
+      "column": 1,
+      "rule": "no-descending-specificity",
+      "severity": "warning",
+      "text": "Expected selector \":global(.themeHCB) input.checkbox:checked::after\" to come before selector \".checkboxContainer input.checkbox:disabled:checked::after\", at line 294 (no-descending-specificity)",
+      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::no-descending-specificity::Expected selector \":global(.themeHCB) input.checkbox:checked::after\" to come before selector \".checkboxContainer input.checkbox:disabled:checked::after\" (no-descending-specificity)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
       "line": 138,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
@@ -3610,6 +3619,15 @@
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)",
       "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
+      "line": 305,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)",
+      "id": "nextjs-app/shared/components/Checkbox/Checkbox.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::3"
     },
     {
       "file": "nextjs-app/shared/components/Checkbox/Checkbox.module.css",
@@ -6997,7 +7015,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Kbd/Kbd.module.css",
-      "line": 28,
+      "line": 57,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -15373,6 +15391,15 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/Switch/Switch.stories.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
+    },
+    {
+      "file": "nextjs-app/shared/components/Table/Table.module.css",
+      "line": 98,
+      "column": 1,
+      "rule": "rule-empty-line-before",
+      "severity": "warning",
+      "text": "Expected empty line before rule (rule-empty-line-before)",
+      "id": "nextjs-app/shared/components/Table/Table.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
     },
     {
       "file": "nextjs-app/shared/components/Tabs/Tabs.module.css",
