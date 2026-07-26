@@ -8099,6 +8099,11 @@
           "name": "size",
           "type": "sm | md | lg",
           "required": false
+        },
+        {
+          "name": "variant",
+          "type": "primary | secondary",
+          "required": false
         }
       ],
       "props": {
@@ -8111,6 +8116,15 @@
             "lg"
           ],
           "description": "Size token."
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "primary",
+            "secondary"
+          ],
+          "description": "Visual style. `primary` is a filled light-gray keycap with a bottom edge\nthat reads like a physical key; `secondary` is the flatter outlined chip."
         }
       },
       "composesWith": [
@@ -8153,11 +8167,18 @@
         "colors": [
           "--color-border",
           "--color-surface",
-          "--color-text"
+          "--color-text",
+          "--color-neutral-bg",
+          "--color-neutral-text"
         ],
         "spacing": [
           "--space-internal-2",
-          "--space-internal-6"
+          "--space-internal-6",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-layout-24",
+          "--space-layout-32",
+          "--space-layout-40"
         ],
         "typography": [
           "--font-mono"
@@ -8178,6 +8199,11 @@
           "story": "Sizes",
           "description": "sm/md/lg track the text ladder so keycaps sit well in prose of any size.",
           "source": "export const Sizes: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: { story: \"sm/md/lg track the text ladder so keycaps sit well in prose of any size.\" },\n    },\n  },\n  render: () => (\n    <span>\n      <Kbd size=\"sm\">Shift</Kbd> <Kbd size=\"md\">Shift</Kbd> <Kbd size=\"lg\">Shift</Kbd>\n    </span>\n  ),\n};"
+        },
+        {
+          "story": "Variants",
+          "description": "primary is a filled keycap with a bottom edge that reads like a physical key; secondary is the flatter outlined chip.",
+          "source": "export const Variants: Story = {\n  tags: [\"example\"],\n  parameters: {\n    controls: { disable: true },\n    docs: {\n      description: {\n        story:\n          \"primary is a filled keycap with a bottom edge that reads like a physical key; secondary is the flatter outlined chip.\",\n      },\n    },\n  },\n  render: () => (\n    <span>\n      <Kbd variant=\"primary\">Esc</Kbd> <Kbd variant=\"secondary\">Esc</Kbd>\n    </span>\n  ),\n};"
         },
         {
           "story": "KeyNames",

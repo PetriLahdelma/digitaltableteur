@@ -26,10 +26,18 @@ describe("Kbd", () => {
     expect(el).toHaveClass("extra");
   });
 
-  it("has no axe violations", async () => {
+  it("defaults to the primary variant and applies the requested variant", () => {
+    const { rerender } = render(<Kbd>A</Kbd>);
+    expect(screen.getByText("A")).toHaveClass(styles.primary);
+    rerender(<Kbd variant="secondary">A</Kbd>);
+    expect(screen.getByText("A")).toHaveClass(styles.secondary);
+  });
+
+  it("has no axe violations in either variant", async () => {
     const { container } = render(
       <p>
-        Press <Kbd>⌘</Kbd> + <Kbd>K</Kbd> to open search.
+        Press <Kbd variant="primary">⌘</Kbd> + <Kbd variant="secondary">K</Kbd>{" "}
+        to open search.
       </p>,
     );
     expect(await axe(container)).toHaveNoViolations();
