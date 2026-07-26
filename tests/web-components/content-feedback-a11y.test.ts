@@ -31,11 +31,14 @@ describe("native content feedback and a11y primitives", () => {
       element.shadowRoot?.querySelector("style")?.textContent ?? "";
     expect(kbd?.classList.contains("kbd")).toBe(true);
     expect(kbd?.classList.contains("lg")).toBe(true);
+    // Defaults to the primary (filled keycap) variant, mirroring the React Kbd.
+    expect(kbd?.classList.contains("primary")).toBe(true);
     expect(kbd?.getAttribute("part")).toBe("root kbd");
     expect(kbd?.textContent).toBe("Esc");
     expect(kbd?.querySelector("slot")).toBeTruthy();
     expect(styles).toContain("@media (forced-colors: active)");
-    expect(styles).toContain("border-color: ButtonText");
+    // Both variants gain a full outline so the keycap survives forced-colors.
+    expect(styles).toContain("border: 1px solid ButtonText");
   });
 
   it("renders dt-skeleton text lines with polite status semantics and motion/contrast fallbacks", () => {
