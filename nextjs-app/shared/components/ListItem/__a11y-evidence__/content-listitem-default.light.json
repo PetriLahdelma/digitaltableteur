@@ -1,0 +1,16 @@
+{
+  "storyId": "content-listitem-default",
+  "mode": "light",
+  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+  "capturedAt": "2026-07-26T13:30:11.192Z",
+  "runner": "backfill",
+  "checks": {
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    },
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}
