@@ -9357,7 +9357,7 @@
       "name": "LocationCard",
       "group": "display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Card variant for displaying a single office or service location (address, hours, map link). Visual sibling of `Card` with the location-specific slot order baked in.",
       "dense": "Office/location card: address, hours (OpenHours), contact links; contact-page module",
       "keywords": [

@@ -12,7 +12,7 @@ const defaultArgs = {
 const meta = {
   title: "Site/LocationCard",
   component: LocationCard,
-  tags: ["beta", "!autodocs"],
+  tags: ["stable", "!autodocs"],
   parameters: {
     design: {
       type: "figma",

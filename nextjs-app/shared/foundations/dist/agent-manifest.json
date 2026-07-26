@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-26T19:50:45.713Z",
+  "generatedAt": "2026-07-26T19:56:53.494Z",
   "summary": {
     "componentCount": 172,
     "statusCounts": {
-      "beta": 41,
-      "stable": 103,
+      "beta": 40,
+      "stable": 104,
       "alpha": 27,
       "deprecated": 1
     },
@@ -20,7 +20,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 103,
+    "stableCount": 104,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -107,8 +107,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 41,
-        "stable": 103,
+        "beta": 40,
+        "stable": 104,
         "alpha": 27,
         "deprecated": 1
       },
@@ -21480,7 +21480,18 @@
           ]
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/NewThingsCo/NewThingsCoPage.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "images": {
@@ -21637,8 +21648,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "reduced-motion",
@@ -28636,7 +28647,7 @@
         "name": "LocationCard",
         "tier": "molecule",
         "group": "display",
-        "status": "beta",
+        "status": "stable",
         "description": "Card variant for displaying a single office or service location (address, hours, map link). Visual sibling of `Card` with the location-specific slot order baked in.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1441-2250",
         "radixPrimitive": null,
@@ -28672,8 +28683,9 @@
           "reducedMotion": true,
           "reviewed": true,
           "forcedColorsVerified": true,
-          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
-          "accessibilityTreeVerified": true
+          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; consumed in the tailwind-test dev harness.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -28914,7 +28926,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+            "note": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; consumed in the tailwind-test dev harness."
           }
         ],
         "docOrigin": {
@@ -37308,8 +37320,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "reduced-motion",

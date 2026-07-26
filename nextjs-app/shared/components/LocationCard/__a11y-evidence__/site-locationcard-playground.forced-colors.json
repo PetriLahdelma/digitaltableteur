@@ -1,18 +1,11 @@
 {
   "storyId": "site-locationcard-playground",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:44:11.323Z",
-  "runner": "backfill",
+  "sourceSHA": "63c2fd02ac4617d4e01650175b1e3da8f88dd0d4",
+  "capturedAt": "2026-07-26T19:57:33.172Z",
+  "runner": "promote-locationcard-stable",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
-      "passed": true
-    },
-    "forced-colors-real-browser": {
       "passed": true
     }
   }
