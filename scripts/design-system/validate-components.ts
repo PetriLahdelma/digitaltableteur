@@ -596,7 +596,7 @@ export function validateComponentsDir(root: string): ValidationResult {
         // additional manual / paid SR walkthroughs — it is NOT a gate.
         if (manifest.status === 'stable') {
             if ((manifest.a11y as any).accessibilityTreeVerified !== true) {
-                errors.push(`${name}.contract.json: stable requires a11y.accessibilityTreeVerified to be true (capture AT snapshots for every required story via DSHARP_UPDATE_A11Y_SNAPSHOTS=1 pnpm test:stories, then commit the __a11y-snapshots__/<id>.yaml files)`)
+                errors.push(`${name}.contract.json: stable requires a11y.accessibilityTreeVerified to be true (capture AT snapshots for every required story via DT_UPDATE_A11Y_SNAPSHOTS=1 npm run test:stories:ci, then commit the __a11y-snapshots__/<id>.yaml files)`)
             }
             // Verify at least one snapshot file exists for this component.
             // Snapshot ids look like 'atoms-button--primary' (kebab-cased
@@ -621,7 +621,7 @@ export function validateComponentsDir(root: string): ValidationResult {
             // run under that flag IS real-browser HC verification (modulo
             // Windows-specific system-color values, which Chromium emulates).
             if ((manifest.a11y as any).realBrowserForcedColorsVerified !== true) {
-                errors.push(`${name}.contract.json: stable requires a11y.realBrowserForcedColorsVerified to be true (run pnpm test:stories:hc; flip to true after that pass succeeds for every required story)`)
+                errors.push(`${name}.contract.json: stable requires a11y.realBrowserForcedColorsVerified to be true (run npm run test:stories:hc; flip to true after that pass succeeds for every required story)`)
             }
 
             // Production-consumer evidence. "Used in shipping product" is

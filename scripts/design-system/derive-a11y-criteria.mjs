@@ -22,13 +22,20 @@
  * `when` decides whether the criterion is emitted at all.
  * `mode` decides automated / manual / unverified for the emitted criterion.
  */
+// The command that actually proves the browser-run a11y criteria on CI (axe, the
+// accessibility tree, keyboard play functions) is the theme matrix run the farm executes
+// in .github/workflows/pr-validation.yml. There is no bare `test:stories` script; naming a
+// command an agent cannot run is exactly the cold-start dead end this criterion is meant to
+// close, so point every derived check at the real script.
+const A11Y_MATRIX_CHECK = "npm run test:stories:matrix:ci";
+
 const RULES = [
   {
     id: "axe-no-violations",
     statement: "Required stories produce no axe violations at the configured severity.",
     // Every component is in scope unless it carries a written exemption.
     when: (a11y) => !a11y.axeTestExempt,
-    mode: () => ({ verificationMode: "automated", check: "npm run test:stories" }),
+    mode: () => ({ verificationMode: "automated", check: A11Y_MATRIX_CHECK }),
   },
   {
     id: "accessibility-tree",
@@ -37,7 +44,7 @@ const RULES = [
     when: () => true,
     mode: (a11y) =>
       a11y.accessibilityTreeVerified
-        ? { verificationMode: "automated", check: "npm run test:stories" }
+        ? { verificationMode: "automated", check: A11Y_MATRIX_CHECK }
         : { verificationMode: "unverified" },
   },
   {
@@ -71,7 +78,7 @@ const RULES = [
       if (!a11y.playFunctionExempt) {
         return contract.status === "alpha"
           ? { verificationMode: "manual" }
-          : { verificationMode: "automated", check: "npm run test:stories" };
+          : { verificationMode: "automated", check: A11Y_MATRIX_CHECK };
       }
 
       // Exempt, but that alone does not mean unproven. A composition that renders
@@ -109,7 +116,7 @@ const RULES = [
     when: (a11y) => Array.isArray(a11y.ariaRequirements) && a11y.ariaRequirements.length > 0,
     mode: (a11y) =>
       a11y.accessibilityTreeVerified
-        ? { verificationMode: "automated", check: "npm run test:stories" }
+        ? { verificationMode: "automated", check: A11Y_MATRIX_CHECK }
         : { verificationMode: "unverified" },
   },
   {
@@ -128,7 +135,7 @@ const RULES = [
     when: (a11y) => a11y.announces != null,
     mode: (a11y) =>
       a11y.accessibilityTreeVerified
-        ? { verificationMode: "automated", check: "npm run test:stories" }
+        ? { verificationMode: "automated", check: A11Y_MATRIX_CHECK }
         : { verificationMode: "unverified" },
   },
   {

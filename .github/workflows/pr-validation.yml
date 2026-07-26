@@ -49,6 +49,11 @@ jobs:
       - run: npm run check:contrast
       - run: npm run check:token-descriptions
       - run: npm run validate:components
+      # Doc-semantics ratchet: fails the PR if a beta/stable component gains an a11y claim
+      # proven by nothing (unverifiedOnReady over the ceiling in doc-semantics-ratchet.json).
+      # Previously enforced only in .husky/pre-push, so the authoritative honesty gate never
+      # ran on the farm. No browser needed — it reads the committed contracts.
+      - run: npm run check:doc-semantics
       - run: npm run check:package-registry-resolution
       - run: npm run check:dogfood-ratchet
       - run: npm run check:consumers
