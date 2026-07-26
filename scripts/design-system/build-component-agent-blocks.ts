@@ -520,7 +520,7 @@ function main() {
        */
       guidelines: parseSpecGuidelines(spec),
       /** Accessibility criteria that declare how each one is verified. */
-      a11yCriteria: deriveA11yCriteria(contract),
+      a11yCriteria: deriveA11yCriteria(contract, { componentDir: entry.dir }),
       /**
        * Provenance per block. Agents must not "correct" human-authored intent toward
        * what the code appears to do, and a regen silently overwrites anything marked

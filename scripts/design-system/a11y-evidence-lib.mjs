@@ -135,19 +135,60 @@ export function isEvidenceFresh(componentDir, record, opts = {}) {
   return now - capturedAt <= staleDays * 24 * 60 * 60 * 1000;
 }
 
+const gitGuardCache = new Map();
+
 /**
- * @returns {boolean | null} true if any tracked file under `componentDir`
- * changed in `sha..HEAD`, false if none did, null if git couldn't answer.
+ * @returns {boolean | null} true if a SOURCE file under `componentDir` changed
+ * in `sha..HEAD`, false if none did, null if git couldn't answer (e.g. a
+ * shallow CI clone where `sha` is unreachable — callers then use the time
+ * window). The component's own `__a11y-evidence__` / `__a11y-snapshots__`
+ * artifacts are excluded: committing the evidence must not invalidate it, and a
+ * snapshot re-capture is not a source change.
  */
 function defaultGitChangedSince(sha, componentDir) {
+  const key = `${sha}::${componentDir}`;
+  if (gitGuardCache.has(key)) return gitGuardCache.get(key);
+  let result;
   try {
     const out = execFileSync(
       "git",
-      ["log", "--oneline", `${sha}..HEAD`, "--", componentDir],
+      [
+        "log",
+        "--oneline",
+        `${sha}..HEAD`,
+        "--",
+        componentDir,
+        `:(exclude)${componentDir}/${EVIDENCE_DIRNAME}`,
+        `:(exclude)${componentDir}/__a11y-snapshots__`,
+      ],
       { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
     );
-    return out.trim().length > 0;
+    result = out.trim().length > 0;
   } catch {
-    return null;
+    result = null;
   }
+  gitGuardCache.set(key, result);
+  return result;
+}
+
+/**
+ * Collapse a component's fresh evidence into a per-check tally, so a consumer
+ * can decide `automated` vs `unverified` per accessibility criterion. One call
+ * reads every record once and runs at most one git path-guard (memoized).
+ *
+ * @param {string} componentDir absolute component directory
+ * @param {Parameters<typeof isEvidenceFresh>[2]} [opts]
+ * @returns {Record<string, { pass: number, fail: number }>} keyed by check id
+ */
+export function evidenceCheckVerdicts(componentDir, opts = {}) {
+  const verdicts = {};
+  for (const record of readEvidenceRecords(componentDir)) {
+    if (!isEvidenceFresh(componentDir, record, opts)) continue;
+    for (const [checkId, res] of Object.entries(record?.checks ?? {})) {
+      const tally = (verdicts[checkId] ??= { pass: 0, fail: 0 });
+      if (res?.passed === true) tally.pass += 1;
+      else if (res?.passed === false) tally.fail += 1;
+    }
+  }
+  return verdicts;
 }
