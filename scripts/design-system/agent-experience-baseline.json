@@ -174,6 +174,11 @@
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
+    "DataTable": {
+      "maxPropCount": 16,
+      "maxFiniteStateBits": 3.585,
+      "maxSlotCount": 4
+    },
     "Designerman": {
       "maxPropCount": 7,
       "maxFiniteStateBits": 0,
@@ -275,8 +280,8 @@
       "maxSlotCount": 0
     },
     "Kbd": {
-      "maxPropCount": 1,
-      "maxFiniteStateBits": 1.585,
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 2.585,
       "maxSlotCount": 0
     },
     "Label": {
@@ -434,6 +439,11 @@
       "maxFiniteStateBits": 1,
       "maxSlotCount": 0
     },
+    "ResizablePanelGroup": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 2
+    },
     "ScrollIndicator": {
       "maxPropCount": 8,
       "maxFiniteStateBits": 5.17,
@@ -566,7 +576,7 @@
     },
     "TextInput": {
       "maxPropCount": 13,
-      "maxFiniteStateBits": 8.17,
+      "maxFiniteStateBits": 9.044,
       "maxSlotCount": 0
     },
     "ThemeProvider": {
@@ -604,6 +614,11 @@
       "maxFiniteStateBits": 3,
       "maxSlotCount": 0
     },
+    "TreeView": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 2
+    },
     "ValueCard": {
       "maxPropCount": 6,
       "maxFiniteStateBits": 1.585,
@@ -613,6 +628,11 @@
       "maxPropCount": 3,
       "maxFiniteStateBits": 2,
       "maxSlotCount": 0
+    },
+    "VirtualList": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 1
     },
     "WipBadge": {
       "maxPropCount": 2,

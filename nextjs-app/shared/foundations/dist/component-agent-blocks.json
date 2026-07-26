@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T17:56:46.270Z",
+  "generatedAt": "2026-07-26T19:18:50.908Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -8061,6 +8061,296 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "CookieConsent.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
+    "DataTable": {
+      "preferredImport": "@dt/DataTable",
+      "intent": "Present structured records when users need to compare values across columns, sort the result, or select rows for a follow-up action.",
+      "props": {
+        "data": {
+          "optional": false,
+          "type": "Row[]",
+          "description": "Table rows."
+        },
+        "columns": {
+          "optional": false,
+          "type": "DataTableColumn<Row>[]",
+          "description": "Ordered column definitions."
+        },
+        "getRowId": {
+          "optional": false,
+          "type": "(row: Row) => string",
+          "description": "Stable row identifier."
+        },
+        "caption": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible table name rendered as a caption."
+        },
+        "hideCaption": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Visually hides the caption while retaining the accessible name."
+        },
+        "sort": {
+          "optional": true,
+          "type": "DataTableSort | null",
+          "description": "Controlled sort state."
+        },
+        "defaultSort": {
+          "optional": true,
+          "type": "DataTableSort | null",
+          "description": "Initial uncontrolled sort state."
+        },
+        "onSortChange": {
+          "optional": true,
+          "type": "(sort: DataTableSort | null) => void",
+          "description": "Receives sort changes."
+        },
+        "selectedRowIds": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Controlled selected row identifiers; enables selection."
+        },
+        "defaultSelectedRowIds": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Initial uncontrolled selection; also enables selection."
+        },
+        "onSelectionChange": {
+          "optional": true,
+          "type": "(rowIds: string[]) => void",
+          "description": "Receives selected row identifiers; also enables selection."
+        },
+        "getRowLabel": {
+          "optional": true,
+          "type": "(row: Row) => string",
+          "description": "Accessible row label used by selection checkboxes."
+        },
+        "emptyState": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "Empty-state cell content."
+        },
+        "striped": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Alternating row surfaces."
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Density scale."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "propRelationships": [],
+      "variants": {
+        "size": {
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "sm"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "provide a meaningful caption, even when it is visually hidden.",
+        "use identifiers that remain stable when rows reorder."
+      ],
+      "avoidWhen": [
+        "use DataTable for page layout or highly visual card collections.",
+        "add row actions that are available only on pointer hover."
+      ],
+      "requiredA11y": [
+        "native table, thead, tbody, th and td semantics",
+        "caption supplies the accessible table name",
+        "sortable headings expose aria-sort",
+        "selection uses labelled native checkboxes"
+      ],
+      "keyboard": [
+        "Tab",
+        "Space"
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "use DataTable for page layout or highly visual card collections.",
+        "add row actions that are available only on pointer hover."
+      ],
+      "composesWith": [
+        "Pagination",
+        "Checkbox",
+        "EmptyState"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 16,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "provide a meaningful caption, even when it is visually hidden.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "use identifiers that remain stable when rows reorder.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use DataTable for page layout or highly visual card collections.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "add row actions that are available only on pointer hover.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "manual"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-26 — native table, caption, sorting, selection labels, keyboard behavior, and axe result reviewed in unit tests."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "DataTable.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "DataTable.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "DataTable.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "DataTable.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",
@@ -20584,6 +20874,242 @@
       "governance": null,
       "content": null
     },
+    "ResizablePanelGroup": {
+      "preferredImport": "@dt/ResizablePanelGroup",
+      "intent": "Let users allocate space between two or more adjacent work areas without losing keyboard access or exceeding each panel's usable size.",
+      "props": {
+        "panels": {
+          "optional": false,
+          "type": "ResizablePanel[]",
+          "description": "Two or more ordered panels."
+        },
+        "orientation": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "description": "Resize axis."
+        },
+        "keyboardStep": {
+          "optional": true,
+          "type": "number",
+          "description": "Keyboard resize increment in percentage points."
+        },
+        "onSizesChange": {
+          "optional": true,
+          "type": "(sizes: Record<string, number>) => void",
+          "description": "Receives the current percentage per panel id."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "propRelationships": [],
+      "variants": {
+        "orientation": {
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "set realistic minimum sizes for every panel.",
+        "label panels so their purpose remains clear to assistive technology."
+      ],
+      "avoidWhen": [
+        "allow essential controls to collapse below their usable size.",
+        "use resizable panels for a decorative split that does not need user control."
+      ],
+      "requiredA11y": [
+        "each panel is a named region",
+        "handles use role=separator",
+        "separator exposes aria-orientation, aria-valuemin, aria-valuemax and aria-valuenow"
+      ],
+      "keyboard": [
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Home",
+        "End"
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "allow essential controls to collapse below their usable size.",
+        "use resizable panels for a decorative split that does not need user control."
+      ],
+      "composesWith": [
+        "TreeView",
+        "DataTable",
+        "CodeBlockWindow"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 5,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "set realistic minimum sizes for every panel.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "label panels so their purpose remains clear to assistive technology.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "allow essential controls to collapse below their usable size.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use resizable panels for a decorative split that does not need user control.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "manual"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-26 — named regions, separator value semantics, keyboard resize behavior, and axe result reviewed in unit tests."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ResizablePanelGroup.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ResizablePanelGroup.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ResizablePanelGroup.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "ResizablePanelGroup.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
     "ScrollIndicator": {
       "preferredImport": "@dt/ScrollIndicator",
       "intent": "A hero-footer affordance that tells the reader there is more page below and takes them there when activated. It renders a real `<button>` that scrolls a named target into view, with a looping motion hint that stops unde…",
@@ -27201,9 +27727,14 @@
             "text",
             "tel",
             "email",
-            "password"
+            "date",
+            "time",
+            "password",
+            "datetime-local",
+            "month",
+            "week"
           ],
-          "description": "HTML input type; tel formats and email validates as you type"
+          "description": "Native HTML input type. Telephone values format and email values validate\nas the user types; date/time variants retain the browser's localized\npicker and ISO-compatible submitted value."
         },
         "size": {
           "optional": true,
@@ -27278,7 +27809,12 @@
             "text",
             "tel",
             "email",
-            "password"
+            "date",
+            "time",
+            "password",
+            "datetime-local",
+            "month",
+            "week"
           ],
           "default": "number"
         },
@@ -29233,6 +29769,273 @@
       "governance": null,
       "content": null
     },
+    "TreeView": {
+      "preferredImport": "@dt/TreeView",
+      "intent": "Present hierarchical data when users need to inspect branches, expand and collapse groups, and select one node while preserving their place in the structure.",
+      "props": {
+        "nodes": {
+          "optional": false,
+          "type": "TreeViewNode[]",
+          "description": "Hierarchical nodes."
+        },
+        "aria-label": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible name for the tree."
+        },
+        "selectedId": {
+          "optional": true,
+          "type": "string | null",
+          "description": "Controlled selected node identifier."
+        },
+        "defaultSelectedId": {
+          "optional": true,
+          "type": "string | null",
+          "description": "Initial uncontrolled selected node identifier."
+        },
+        "onSelectedIdChange": {
+          "optional": true,
+          "type": "(id: string) => void",
+          "description": "Receives selection changes."
+        },
+        "expandedIds": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Controlled expanded node identifiers."
+        },
+        "defaultExpandedIds": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Initial uncontrolled expanded node identifiers."
+        },
+        "onExpandedIdsChange": {
+          "optional": true,
+          "type": "(ids: string[]) => void",
+          "description": "Receives expansion changes."
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Density scale."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "propRelationships": [],
+      "variants": {
+        "size": {
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "sm"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "use stable node identifiers and concise labels.",
+        "preserve expansion state when the surrounding view updates."
+      ],
+      "avoidWhen": [
+        "use TreeView for a flat list of navigation links.",
+        "place unrelated buttons or menus inside a tree item."
+      ],
+      "requiredA11y": [
+        "root has role=tree and an accessible name",
+        "nodes expose role=treeitem, aria-level and aria-selected",
+        "branch nodes expose aria-expanded",
+        "only the focused treeitem has tabIndex=0"
+      ],
+      "keyboard": [
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "Home",
+        "End",
+        "Enter",
+        "Space"
+      ],
+      "compositionRules": [
+        "place unrelated buttons or menus inside a tree item."
+      ],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "use TreeView for a flat list of navigation links.",
+        "place unrelated buttons or menus inside a tree item."
+      ],
+      "composesWith": [
+        "ResizablePanelGroup",
+        "CommandPalette"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 10,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "use stable node identifiers and concise labels.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "preserve expansion state when the surrounding view updates.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use TreeView for a flat list of navigation links.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "place unrelated buttons or menus inside a tree item.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "manual"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-26 — tree semantics, roving focus, expansion and selection keyboard behavior, and axe result reviewed in unit tests."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TreeView.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TreeView.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TreeView.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TreeView.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
     "ValueCard": {
       "preferredImport": "@dt/ValueCard",
       "intent": "Stable visual for the 'values', 'principles', and 'what we believe' grid layouts. Slot order is icon → title → description so the grid scans visually before reading.",
@@ -29426,6 +30229,253 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "ValueCard.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
+    "VirtualList": {
+      "preferredImport": "@dt/VirtualList",
+      "intent": "Keep long, fixed-row collections responsive by rendering only the visible range plus a small overscan buffer.",
+      "props": {
+        "items": {
+          "optional": false,
+          "type": "Item[]",
+          "description": "Complete item collection."
+        },
+        "itemHeight": {
+          "optional": false,
+          "type": "number",
+          "description": "Fixed item height in pixels."
+        },
+        "height": {
+          "optional": false,
+          "type": "number",
+          "description": "Visible viewport height in pixels."
+        },
+        "getItemKey": {
+          "optional": false,
+          "type": "(item: Item, index: number) => React.Key",
+          "description": "Stable item key."
+        },
+        "renderItem": {
+          "optional": false,
+          "type": "(item: Item, index: number) => React.ReactNode",
+          "description": "Renders one visible item."
+        },
+        "aria-label": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible list name."
+        },
+        "overscan": {
+          "optional": true,
+          "type": "number",
+          "description": "Extra rows rendered before and after the viewport."
+        },
+        "initialScrollOffset": {
+          "optional": true,
+          "type": "number",
+          "description": "Initial scroll offset in pixels."
+        },
+        "onRangeChange": {
+          "optional": true,
+          "type": "(range: VirtualListRange) => void",
+          "description": "Receives the rendered index range."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
+        }
+      },
+      "propRelationships": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [
+        "provide an accurate fixed `itemHeight`.",
+        "keep item keys stable across filtering and updates."
+      ],
+      "avoidWhen": [
+        "use VirtualList for short collections where normal rendering is simpler.",
+        "use it when row heights are unknown or highly variable."
+      ],
+      "requiredA11y": [
+        "viewport uses role=list and an accessible name",
+        "rendered rows use role=listitem",
+        "rows expose aria-posinset and aria-setsize"
+      ],
+      "keyboard": [
+        "PageUp",
+        "PageDown",
+        "Home",
+        "End"
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [
+        "use VirtualList for short collections where normal rendering is simpler.",
+        "use it when row heights are unknown or highly variable."
+      ],
+      "composesWith": [
+        "DataTable",
+        "CommandPalette",
+        "TreeView"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 10,
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "provide an accurate fixed `itemHeight`.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "keep item keys stable across filtering and updates.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use VirtualList for short collections where normal rendering is simpler.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "use it when row heights are unknown or highly variable.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "manual"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-26 — list semantics, item position metadata, rendered range behavior, and axe result reviewed in unit tests."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "VirtualList.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "VirtualList.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "VirtualList.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "VirtualList.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",

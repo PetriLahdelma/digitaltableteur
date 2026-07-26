@@ -1,6 +1,7 @@
 import contract from "./TextInput.contract.json";
 import React from "react";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
+import { Stack } from "@dt/Stack";
 import TextInput from "@dt/TextInput";
 import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
@@ -49,7 +50,11 @@ TextInputStory.args = {
   type: "text",
   placeholder: "storyInputTextPlaceholder",
 };
-TextInputStory.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+TextInputStory.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
   const canvas = within(canvasElement);
   const input = await canvas.findByLabelText(/text input/i);
   await userEvent.type(input, "Hello");
@@ -66,7 +71,8 @@ TextInputStory.tags = ["example"];
 TextInputStory.parameters = {
   docs: {
     description: {
-      story: "The base field: label, control, and helper text in one component.",
+      story:
+        "The base field: label, control, and helper text in one component.",
     },
   },
 };
@@ -100,6 +106,29 @@ SearchInput.args = {
   label: "storyInputSearchLabel",
   type: "search",
   placeholder: "storyInputSearchPlaceholder",
+};
+
+export const NativeDateAndTime: Story = {
+  tags: ["example"],
+  render: () => (
+    <Stack gap="md">
+      <TextInput label="Start date" type="date" defaultValue="2026-07-26" />
+      <TextInput label="Start time" type="time" defaultValue="09:30" />
+      <TextInput
+        label="Local date and time"
+        type="datetime-local"
+        defaultValue="2026-07-26T09:30"
+      />
+    </Stack>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Date and time types preserve the browser's localized native picker while exposing ISO-compatible values to forms and onValueChange.",
+      },
+    },
+  },
 };
 
 export const InputWithError = Template.bind({});

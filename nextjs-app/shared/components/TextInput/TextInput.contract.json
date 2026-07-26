@@ -1,277 +1,254 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-    "name": "TextInput",
-    "tier": "atom",
-    "group": "form",
-    "status": "stable",
-    "description": "Labeled text input with validation, helper text, and size tokens.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-10",
-    "radixPrimitive": null,
-    "element": "input",
-    "variants": {
-        "size": {
-            "values": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "md",
-            "forwarded": true,
-            "forwardedTo": "CSS module size classes"
-        }
-    },
-    "slots": [],
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors",
-        "Clearable"
-    ],
-    "a11y": {
-        "keyboard": [
-            "Tab"
-        ],
-        "ariaRequirements": [
-            "label association",
-            "aria-describedby for error/helper",
-            "clear button carries a per-field accessible name and returns focus to the input"
-        ],
-        "reducedMotion": true,
-        "reviewed": true,
-        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-        "forcedColorsVerified": true,
-        "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
-    },
-    "tokens": {
-        "colors": [
-            "--color-disabled-bg-light",
-            "--color-error",
-            "--color-error-bg",
-            "--color-error-text",
-            "--color-primary",
-            "--color-white",
-            "--focus-ring-color"
-        ],
-        "spacing": [],
-        "typography": [
-            "--font-text"
-        ]
-    },
-    "lightDarkVerified": true,
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/EmailSignatureContent.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/tools/email-signature/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
-            "since": "2026-06-04"
-        }
-    ],
-    "schemaVersion": 2,
-    "props": {
-        "label": {
-            "optional": false,
-            "type": "string",
-            "description": "Visible field label; also feeds the input name"
-        },
-        "type": {
-            "optional": false,
-            "type": "union",
-            "values": [
-                "number",
-                "search",
-                "text",
-                "tel",
-                "email",
-                "password"
-            ],
-            "description": "HTML input type; tel formats and email validates as you type"
-        },
-        "size": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "S",
-                "M",
-                "L"
-            ],
-            "description": "Size variant for input"
-        },
-        "onValueChange": {
-            "optional": true,
-            "type": "(value: string | number) => void",
-            "description": "Value change handler (recommended)"
-        },
-        "defaultValue": {
-            "optional": true,
-            "type": "string | number",
-            "description": "Initial value for uncontrolled component"
-        },
-        "value": {
-            "optional": true,
-            "type": "string | number",
-            "description": "Controlled value; an initial \"\" is treated as absent (uncontrolled), later changes always sync in"
-        },
-        "error": {
-            "optional": true,
-            "type": "string",
-            "description": "Validation error message; renders above the helper line and sets aria-invalid"
-        },
-        "helperText": {
-            "optional": true,
-            "type": "string",
-            "description": "Helper copy below the field"
-        },
-        "disabled": {
-            "optional": true,
-            "type": "boolean",
-            "description": "Disables the input. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it."
-        },
-        "clearable": {
-            "optional": true,
-            "type": "boolean",
-            "description": "Shows a labelled ×-button inside the field chrome while the field has a value; clearing returns focus to the input"
-        },
-        "onClear": {
-            "optional": true,
-            "type": "() => void",
-            "description": "Called after the clear button empties the field (onValueChange also fires with \"\")"
-        },
-        "hideLabel": {
-            "optional": true,
-            "type": "boolean",
-            "description": "Visually hides the label (kept in the accessibility tree); use where surrounding design carries the affordance"
-        },
-        "onChange": {
-            "optional": true,
-            "type": "(value: string | number) => void",
-            "deprecated": true
-        }
-    },
-    "forbiddenUse": [
-        "ship a form that relies on the email validator as the only",
-        "pass a `value` plus a `defaultValue`. The component treats",
-        "use TextInput for multi-line text. Use **TextArea**, which"
-    ],
-    "composesWith": [
-        "Button",
-        "Text",
-        "TextArea",
-        "CheckboxGroup",
-        "Checkbox"
-    ],
-    "displayName": "TextInput",
-    "keywords": [
-        "text input",
-        "input",
-        "field",
-        "email",
-        "phone",
-        "validation"
-    ],
-    "dense": "labelled single-line field: text/number/email/tel/password/search, built-in email+phone validation, error/helperText, sm/md/lg; onValueChange(value); clearable ×-button (onClear); hideLabel",
-    "usage": {
-        "description": "TextInput is the standard single-line field: label, control, helper and error text in one component. The email and tel types add built-in validation (typo suggestions for common email domains, libphonenumber formatting for phone numbers); error renders above the helper line and wires aria-invalid.",
-        "bestPractices": [
-            {
-                "guidance": true,
-                "description": "Always pass a real label; placeholders vanish on focus and are not accessible names."
-            },
-            {
-                "guidance": true,
-                "description": "Read values through onValueChange; it hands you the typed value directly (onChange is deprecated)."
-            },
-            {
-                "guidance": true,
-                "description": "Pick the semantic type; email and tel get validation and the right mobile keyboard for free."
-            },
-            {
-                "guidance": true,
-                "description": "Use helperText for format hints before errors happen (We never share this address)."
-            },
-            {
-                "guidance": true,
-                "description": "Use clearable for fields users iterate on (search boxes, filters, generators); the ×-button appears only while there is a value and hands focus back to the input."
-            },
-            {
-                "guidance": true,
-                "description": "Reserve hideLabel for dense compositions where surrounding design carries the affordance; the label stays in the accessibility tree, so still write a real one."
-            },
-            {
-                "guidance": false,
-                "description": "Do not build multi-line entry with TextInput; use TextArea."
-            },
-            {
-                "guidance": false,
-                "description": "Do not layer your own live email/tel validation on top of the built-in one; two messages can disagree. Server-side truth belongs in error after submit."
-            }
-        ]
-    },
-    "playground": {
-        "defaults": {
-            "label": "Email address",
-            "type": "email",
-            "helperText": "We never share this address."
-        }
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "TextInput",
+  "tier": "atom",
+  "group": "form",
+  "status": "stable",
+  "description": "Labeled text input with validation, helper text, and size tokens.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-10",
+  "radixPrimitive": null,
+  "element": "input",
+  "variants": {
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md",
+      "forwarded": true,
+      "forwardedTo": "CSS module size classes"
     }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors",
+    "Clearable"
+  ],
+  "a11y": {
+    "keyboard": ["Tab"],
+    "ariaRequirements": [
+      "label association",
+      "aria-describedby for error/helper",
+      "clear button carries a per-field accessible name and returns focus to the input"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+    "forcedColorsVerified": true,
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [
+      "--color-disabled-bg-light",
+      "--color-error",
+      "--color-error-bg",
+      "--color-error-text",
+      "--color-primary",
+      "--color-white",
+      "--focus-ring-color"
+    ],
+    "spacing": [],
+    "typography": ["--font-text"]
+  },
+  "lightDarkVerified": true,
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/dev/tailwind-test/page.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/dev/tailwind-test/TailwindTest.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/layout.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/tools/email-signature/EmailSignatureContent.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/tools/email-signature/page.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/index.ts",
+      "since": "2026-06-04"
+    }
+  ],
+  "schemaVersion": 2,
+  "props": {
+    "label": {
+      "optional": false,
+      "type": "string",
+      "description": "Visible field label; also feeds the input name"
+    },
+    "type": {
+      "optional": false,
+      "type": "union",
+      "values": [
+        "number",
+        "search",
+        "text",
+        "tel",
+        "email",
+        "password",
+        "date",
+        "datetime-local",
+        "time",
+        "month",
+        "week"
+      ],
+      "description": "Native HTML input type; tel formats, email validates, and date/time variants retain the browser's localized picker and ISO-compatible value"
+    },
+    "size": {
+      "optional": true,
+      "type": "union",
+      "values": ["sm", "md", "lg", "S", "M", "L"],
+      "description": "Size variant for input"
+    },
+    "onValueChange": {
+      "optional": true,
+      "type": "(value: string | number) => void",
+      "description": "Value change handler (recommended)"
+    },
+    "defaultValue": {
+      "optional": true,
+      "type": "string | number",
+      "description": "Initial value for uncontrolled component"
+    },
+    "value": {
+      "optional": true,
+      "type": "string | number",
+      "description": "Controlled value; an initial \"\" is treated as absent (uncontrolled), later changes always sync in"
+    },
+    "error": {
+      "optional": true,
+      "type": "string",
+      "description": "Validation error message; renders above the helper line and sets aria-invalid"
+    },
+    "helperText": {
+      "optional": true,
+      "type": "string",
+      "description": "Helper copy below the field"
+    },
+    "disabled": {
+      "optional": true,
+      "type": "boolean",
+      "description": "Disables the input. Declared explicitly (not just via the native attribute extension) so the agent-blocks prop extraction sees it."
+    },
+    "clearable": {
+      "optional": true,
+      "type": "boolean",
+      "description": "Shows a labelled ×-button inside the field chrome while the field has a value; clearing returns focus to the input"
+    },
+    "onClear": {
+      "optional": true,
+      "type": "() => void",
+      "description": "Called after the clear button empties the field (onValueChange also fires with \"\")"
+    },
+    "hideLabel": {
+      "optional": true,
+      "type": "boolean",
+      "description": "Visually hides the label (kept in the accessibility tree); use where surrounding design carries the affordance"
+    },
+    "onChange": {
+      "optional": true,
+      "type": "(value: string | number) => void",
+      "deprecated": true
+    }
+  },
+  "forbiddenUse": [
+    "ship a form that relies on the email validator as the only",
+    "pass a `value` plus a `defaultValue`. The component treats",
+    "use TextInput for multi-line text. Use **TextArea**, which"
+  ],
+  "composesWith": ["Button", "Text", "TextArea", "CheckboxGroup", "Checkbox"],
+  "displayName": "TextInput",
+  "keywords": ["text input", "input", "field", "email", "phone", "validation"],
+  "dense": "labelled single-line field: text/number/email/tel/password/search, built-in email+phone validation, error/helperText, sm/md/lg; onValueChange(value); clearable ×-button (onClear); hideLabel",
+  "usage": {
+    "description": "TextInput is the standard single-line field: label, control, helper and error text in one component. The email and tel types add built-in validation (typo suggestions for common email domains, libphonenumber formatting for phone numbers); error renders above the helper line and wires aria-invalid.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Always pass a real label; placeholders vanish on focus and are not accessible names."
+      },
+      {
+        "guidance": true,
+        "description": "Read values through onValueChange; it hands you the typed value directly (onChange is deprecated)."
+      },
+      {
+        "guidance": true,
+        "description": "Pick the semantic type; email and tel get validation and the right mobile keyboard for free."
+      },
+      {
+        "guidance": true,
+        "description": "Use helperText for format hints before errors happen (We never share this address)."
+      },
+      {
+        "guidance": true,
+        "description": "Use clearable for fields users iterate on (search boxes, filters, generators); the ×-button appears only while there is a value and hands focus back to the input."
+      },
+      {
+        "guidance": true,
+        "description": "Reserve hideLabel for dense compositions where surrounding design carries the affordance; the label stays in the accessibility tree, so still write a real one."
+      },
+      {
+        "guidance": false,
+        "description": "Do not build multi-line entry with TextInput; use TextArea."
+      },
+      {
+        "guidance": false,
+        "description": "Do not layer your own live email/tel validation on top of the built-in one; two messages can disagree. Server-side truth belongs in error after submit."
+      }
+    ]
+  },
+  "playground": {
+    "defaults": {
+      "label": "Email address",
+      "type": "email",
+      "helperText": "We never share this address."
+    }
+  }
 }

@@ -4972,6 +4972,205 @@
       },
       "examples": []
     },
+    "DataTable": {
+      "name": "DataTable",
+      "group": "data-display",
+      "tier": 1,
+      "status": "alpha",
+      "description": "Accessible data table with typed columns, sortable headings, optional row selection, and density variants.",
+      "dense": "typed native data table; sortable columns, optional row selection, accessible caption, empty state, sm/md/lg density",
+      "keywords": [
+        "table",
+        "data",
+        "rows",
+        "columns",
+        "sort",
+        "selection",
+        "grid"
+      ],
+      "importLine": "import { DataTable } from \"@dt/DataTable\";",
+      "keyProps": [
+        {
+          "name": "data",
+          "type": "Row[]",
+          "required": true
+        },
+        {
+          "name": "columns",
+          "type": "DataTableColumn<Row>[]",
+          "required": true
+        },
+        {
+          "name": "getRowId",
+          "type": "(row: Row) => string",
+          "required": true
+        },
+        {
+          "name": "caption",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "size",
+          "type": "sm | md | lg",
+          "required": false
+        },
+        {
+          "name": "hideCaption",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "props": {
+        "data": {
+          "optional": false,
+          "type": "Row[]",
+          "description": "Table rows."
+        },
+        "columns": {
+          "optional": false,
+          "type": "DataTableColumn<Row>[]",
+          "description": "Ordered typed column definitions."
+        },
+        "getRowId": {
+          "optional": false,
+          "type": "(row: Row) => string",
+          "description": "Stable row identifier."
+        },
+        "caption": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible table name."
+        },
+        "hideCaption": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Visually hides the caption."
+        },
+        "sort": {
+          "optional": true,
+          "type": "DataTableSort | null",
+          "description": "Controlled sort state."
+        },
+        "onSortChange": {
+          "optional": true,
+          "type": "(sort: DataTableSort | null) => void",
+          "description": "Receives sort changes."
+        },
+        "selectedRowIds": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Controlled selected row identifiers."
+        },
+        "onSelectionChange": {
+          "optional": true,
+          "type": "(rowIds: string[]) => void",
+          "description": "Receives selection changes."
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Density scale."
+        },
+        "striped": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Alternates row surfaces."
+        }
+      },
+      "composesWith": [
+        "Pagination",
+        "Checkbox",
+        "EmptyState"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "use it for page layout",
+        "omit a meaningful caption",
+        "use unstable row indexes as identifiers"
+      ],
+      "usage": {
+        "description": "Use DataTable for structured records that users need to compare, sort, or select. Provide stable row identifiers and a meaningful caption.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Give every table a concise caption that explains what its rows represent."
+          },
+          {
+            "guidance": true,
+            "description": "Use stable domain identifiers so selection survives sorting and data refreshes."
+          },
+          {
+            "guidance": true,
+            "description": "Make a column sortable only when its values have an understandable order."
+          },
+          {
+            "guidance": true,
+            "description": "Keep cell content concise and move detailed content into a dedicated view."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use DataTable as a page-layout grid or a visual card collection."
+          },
+          {
+            "guidance": false,
+            "description": "Do not hide row actions until pointer hover; keyboard users must find them too."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Caption",
+            "required": true,
+            "description": "Accessible name that explains the table's record set."
+          },
+          {
+            "name": "Header",
+            "required": true,
+            "description": "Column labels and optional sort controls."
+          },
+          {
+            "name": "Rows",
+            "required": true,
+            "description": "Typed records rendered as native table rows and cells."
+          },
+          {
+            "name": "Selection",
+            "required": false,
+            "description": "Native checkboxes for selecting individual or all visible rows."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-muted",
+          "--color-primary",
+          "--color-border-light",
+          "--color-light-bg",
+          "--color-neutral-bg"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-layout-24",
+          "--space-layout-32"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Example",
+          "description": null,
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: { striped: true },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    await userEvent.click(canvas.getByRole(\"button\", { name: \"Name\" }));\n    await expect(\n      canvas.getByRole(\"columnheader\", { name: /Name/ }),\n    ).toHaveAttribute(\"aria-sort\", \"ascending\");\n  },\n};"
+        }
+      ]
+    },
     "Designerman": {
       "name": "Designerman",
       "group": "marketing",
@@ -12505,6 +12704,141 @@
       },
       "examples": []
     },
+    "ResizablePanelGroup": {
+      "name": "ResizablePanelGroup",
+      "group": "layout",
+      "tier": 1,
+      "status": "alpha",
+      "description": "Two-or-more-panel layout with pointer and keyboard-accessible resize separators.",
+      "dense": "horizontal or vertical resizable panel layout; pointer drag, arrow/Home/End keyboard resize, separator value semantics",
+      "keywords": [
+        "resizable",
+        "panels",
+        "split",
+        "layout",
+        "workbench",
+        "sidebar"
+      ],
+      "importLine": "import { ResizablePanelGroup } from \"@dt/ResizablePanelGroup\";",
+      "keyProps": [
+        {
+          "name": "panels",
+          "type": "ResizablePanel[]",
+          "required": true
+        },
+        {
+          "name": "orientation",
+          "type": "horizontal | vertical",
+          "required": false
+        },
+        {
+          "name": "keyboardStep",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "props": {
+        "panels": {
+          "optional": false,
+          "type": "ResizablePanel[]",
+          "description": "Two or more ordered panels."
+        },
+        "orientation": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "description": "Resize axis."
+        },
+        "keyboardStep": {
+          "optional": true,
+          "type": "number",
+          "description": "Keyboard resize increment in percentage points."
+        },
+        "onSizesChange": {
+          "optional": true,
+          "type": "(sizes: Record<string, number>) => void",
+          "description": "Receives current panel percentages."
+        }
+      },
+      "composesWith": [
+        "TreeView",
+        "DataTable",
+        "CodeBlockWindow"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "replace a fixed responsive page grid",
+        "allow panels to shrink below usable content minimums"
+      ],
+      "usage": {
+        "description": "Use ResizablePanelGroup for adjacent work areas whose relative space users need to control. Set realistic minimum sizes for every panel.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Name every panel region so assistive technology communicates its purpose."
+          },
+          {
+            "guidance": true,
+            "description": "Choose minimum sizes that keep each panel's essential controls usable."
+          },
+          {
+            "guidance": true,
+            "description": "Persist sizes only when restoring the user's workspace is genuinely valuable."
+          },
+          {
+            "guidance": true,
+            "description": "Use a keyboard step that changes layout perceptibly without large jumps."
+          },
+          {
+            "guidance": false,
+            "description": "Do not replace an ordinary responsive page grid with draggable panels."
+          },
+          {
+            "guidance": false,
+            "description": "Do not allow a panel to collapse past the minimum needed by its content."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Panel",
+            "required": true,
+            "description": "Named region containing one adjacent workspace."
+          },
+          {
+            "name": "Separator",
+            "required": true,
+            "description": "Focusable resize control between a pair of panels."
+          },
+          {
+            "name": "Handle",
+            "required": true,
+            "description": "Visible affordance that communicates the separator's drag axis."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--color-border-light",
+          "--color-neutral-bg",
+          "--color-primary",
+          "--color-muted"
+        ],
+        "spacing": [
+          "--space-internal-8",
+          "--space-layout-24"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Example",
+          "description": null,
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const separator = canvas.getByRole(\"separator\");\n    separator.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"37\");\n  },\n};"
+        }
+      ]
+    },
     "ScrollIndicator": {
       "name": "ScrollIndicator",
       "group": "navigation",
@@ -16142,7 +16476,7 @@
       "keyProps": [
         {
           "name": "type",
-          "type": "number | search | text | tel | email | password",
+          "type": "number | search | text | tel | email | password | date | datetime-local | time | month | week",
           "required": true
         },
         {
@@ -16186,9 +16520,14 @@
             "text",
             "tel",
             "email",
-            "password"
+            "password",
+            "date",
+            "datetime-local",
+            "time",
+            "month",
+            "week"
           ],
-          "description": "HTML input type; tel formats and email validates as you type"
+          "description": "Native HTML input type; tel formats, email validates, and date/time variants retain the browser's localized picker and ISO-compatible value"
         },
         "size": {
           "optional": true,
@@ -16323,12 +16662,17 @@
         {
           "story": "TextInputStory",
           "description": null,
-          "source": "export const TextInputStory = Template.bind({});\nTextInputStory.args = {\n  label: \"storyInputTextLabel\",\n  type: \"text\",\n  placeholder: \"storyInputTextPlaceholder\",\n};\nTextInputStory.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {\n  const canvas = within(canvasElement);\n  const input = await canvas.findByLabelText(/text input/i);\n  await userEvent.type(input, \"Hello\");\n};"
+          "source": "export const TextInputStory = Template.bind({});\nTextInputStory.args = {\n  label: \"storyInputTextLabel\",\n  type: \"text\",\n  placeholder: \"storyInputTextPlaceholder\",\n};\nTextInputStory.play = async ({\n  canvasElement,\n}: {\n  canvasElement: HTMLElement;\n}) => {\n  const canvas = within(canvasElement);\n  const input = await canvas.findByLabelText(/text input/i);\n  await userEvent.type(input, \"Hello\");\n};"
         },
         {
           "story": "EmailInput",
           "description": "type=email validates as you type and suggests fixes for common domain typos (gamil.com and friends).",
           "source": "export const EmailInput = Template.bind({});\nEmailInput.args = {\n  label: \"storyInputEmailLabel\",\n  type: \"email\",\n  placeholder: \"storyInputEmailPlaceholder\",\n};\n\nEmailInput.tags = [\"example\"];\nEmailInput.parameters = {\n  docs: {\n    description: {\n      story:\n        \"type=email validates as you type and suggests fixes for common domain typos (gamil.com and friends).\",\n    },\n  },\n};"
+        },
+        {
+          "story": "NativeDateAndTime",
+          "description": "Date and time types preserve the browser's localized native picker while exposing ISO-compatible values to forms and onValueChange.",
+          "source": "export const NativeDateAndTime: Story = {\n  tags: [\"example\"],\n  render: () => (\n    <Stack gap=\"md\">\n      <TextInput label=\"Start date\" type=\"date\" defaultValue=\"2026-07-26\" />\n      <TextInput label=\"Start time\" type=\"time\" defaultValue=\"09:30\" />\n      <TextInput\n        label=\"Local date and time\"\n        type=\"datetime-local\"\n        defaultValue=\"2026-07-26T09:30\"\n      />\n    </Stack>\n  ),\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Date and time types preserve the browser's localized native picker while exposing ISO-compatible values to forms and onValueChange.\",\n      },\n    },\n  },\n};"
         },
         {
           "story": "InputWithError",
@@ -17353,6 +17697,171 @@
       },
       "examples": []
     },
+    "TreeView": {
+      "name": "TreeView",
+      "group": "navigation",
+      "tier": 1,
+      "status": "alpha",
+      "description": "Application tree with hierarchical selection, expansion, roving focus, and arrow-key navigation.",
+      "dense": "application tree; controlled selection and expansion, roving focus, full arrow/Home/End/Enter/Space keyboard model",
+      "keywords": [
+        "tree",
+        "hierarchy",
+        "folders",
+        "navigation",
+        "outline",
+        "nested"
+      ],
+      "importLine": "import { TreeView } from \"@dt/TreeView\";",
+      "keyProps": [
+        {
+          "name": "nodes",
+          "type": "TreeViewNode[]",
+          "required": true
+        },
+        {
+          "name": "aria-label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "size",
+          "type": "sm | md | lg",
+          "required": false
+        },
+        {
+          "name": "selectedId",
+          "type": "string | null",
+          "required": false
+        },
+        {
+          "name": "expandedIds",
+          "type": "string[]",
+          "required": false
+        }
+      ],
+      "props": {
+        "nodes": {
+          "optional": false,
+          "type": "TreeViewNode[]",
+          "description": "Hierarchical nodes."
+        },
+        "aria-label": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible name for the tree."
+        },
+        "selectedId": {
+          "optional": true,
+          "type": "string | null",
+          "description": "Controlled selected node identifier."
+        },
+        "onSelectedIdChange": {
+          "optional": true,
+          "type": "(id: string) => void",
+          "description": "Receives selection changes."
+        },
+        "expandedIds": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Controlled expanded node identifiers."
+        },
+        "onExpandedIdsChange": {
+          "optional": true,
+          "type": "(ids: string[]) => void",
+          "description": "Receives expansion changes."
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Density scale."
+        }
+      },
+      "composesWith": [
+        "ResizablePanelGroup",
+        "CommandPalette"
+      ],
+      "prefersOver": [
+        "SiteTree for application selection hierarchies"
+      ],
+      "forbiddenUse": [
+        "replace a sitemap or ordinary nested navigation list",
+        "nest independently focusable controls inside node labels"
+      ],
+      "usage": {
+        "description": "Use TreeView for application hierarchies that users expand, collapse, navigate, and select. Use stable identifiers and concise node labels.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Give the tree an accessible label that identifies the hierarchy."
+          },
+          {
+            "guidance": true,
+            "description": "Use stable node identifiers across filtering, refreshes, and reordering."
+          },
+          {
+            "guidance": true,
+            "description": "Keep labels concise and place secondary status in the description."
+          },
+          {
+            "guidance": true,
+            "description": "Preserve expansion state when nearby application content changes."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use TreeView for a flat set of links or ordinary site navigation."
+          },
+          {
+            "guidance": false,
+            "description": "Do not embed buttons, inputs, or menus inside a tree item's label."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Tree",
+            "required": true,
+            "description": "Accessible root that owns the visible hierarchy."
+          },
+          {
+            "name": "Tree item",
+            "required": true,
+            "description": "Selectable node with its hierarchy level and expansion state."
+          },
+          {
+            "name": "Disclosure icon",
+            "required": false,
+            "description": "Visual expansion indicator shown only for branch nodes."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-muted",
+          "--color-primary",
+          "--color-neutral-bg",
+          "--color-border-light"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Example",
+          "description": null,
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const components = canvas.getByRole(\"treeitem\", { name: \"Components\" });\n    components.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(\n      canvas.getByRole(\"treeitem\", { name: /Button/ }),\n    ).toHaveFocus();\n  },\n};"
+        }
+      ]
+    },
     "ValueCard": {
       "name": "ValueCard",
       "group": "display",
@@ -17461,6 +17970,169 @@
         ]
       },
       "examples": []
+    },
+    "VirtualList": {
+      "name": "VirtualList",
+      "group": "data-display",
+      "tier": 1,
+      "status": "alpha",
+      "description": "Fixed-height windowed list with overscan and explicit assistive-technology position metadata.",
+      "dense": "fixed-height windowed collection; overscan, stable keys, rendered-range callback, aria position and set-size metadata",
+      "keywords": [
+        "virtual",
+        "virtualized",
+        "windowed",
+        "large list",
+        "performance",
+        "collection"
+      ],
+      "importLine": "import { VirtualList } from \"@dt/VirtualList\";",
+      "keyProps": [
+        {
+          "name": "items",
+          "type": "Item[]",
+          "required": true
+        },
+        {
+          "name": "itemHeight",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "getItemKey",
+          "type": "(item: Item, index: number) => React.Key",
+          "required": true
+        },
+        {
+          "name": "renderItem",
+          "type": "(item: Item, index: number) => React.ReactNode",
+          "required": true
+        },
+        {
+          "name": "aria-label",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "props": {
+        "items": {
+          "optional": false,
+          "type": "Item[]",
+          "description": "Complete item collection."
+        },
+        "itemHeight": {
+          "optional": false,
+          "type": "number",
+          "description": "Fixed item height in pixels."
+        },
+        "height": {
+          "optional": false,
+          "type": "number",
+          "description": "Visible viewport height in pixels."
+        },
+        "getItemKey": {
+          "optional": false,
+          "type": "(item: Item, index: number) => React.Key",
+          "description": "Stable item key."
+        },
+        "renderItem": {
+          "optional": false,
+          "type": "(item: Item, index: number) => React.ReactNode",
+          "description": "Renders one visible item."
+        },
+        "aria-label": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible list name."
+        },
+        "overscan": {
+          "optional": true,
+          "type": "number",
+          "description": "Extra rows before and after the viewport."
+        },
+        "onRangeChange": {
+          "optional": true,
+          "type": "(range: VirtualListRange) => void",
+          "description": "Receives the rendered index range."
+        }
+      },
+      "composesWith": [
+        "DataTable",
+        "CommandPalette",
+        "TreeView"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "use it for short collections",
+        "use it for variable-height rows",
+        "use it when browser find-in-page must search every item"
+      ],
+      "usage": {
+        "description": "Use VirtualList for long, fixed-height collections when rendering every item would be wasteful. Keep item keys stable and row height accurate.",
+        "bestPractices": [
+          {
+            "guidance": true,
+            "description": "Measure and provide the exact fixed row height used by rendered items."
+          },
+          {
+            "guidance": true,
+            "description": "Use stable item keys that survive filtering, sorting, and refreshes."
+          },
+          {
+            "guidance": true,
+            "description": "Keep overscan small while preventing blank edges during normal scrolling."
+          },
+          {
+            "guidance": true,
+            "description": "Use range changes for prefetching without coupling them to visual state."
+          },
+          {
+            "guidance": false,
+            "description": "Do not virtualize a short collection that renders cheaply without it."
+          },
+          {
+            "guidance": false,
+            "description": "Do not use VirtualList for variable-height rows or full-page text search."
+          }
+        ],
+        "anatomy": [
+          {
+            "name": "Viewport",
+            "required": true,
+            "description": "Scrollable list region with the collection's accessible name."
+          },
+          {
+            "name": "Spacer",
+            "required": true,
+            "description": "Full-height internal surface that preserves the native scroll range."
+          },
+          {
+            "name": "Rendered item",
+            "required": true,
+            "description": "Visible fixed-height row with position and set-size metadata."
+          }
+        ]
+      },
+      "tokens": {
+        "colors": [
+          "--color-border-light"
+        ],
+        "spacing": [
+          "--space-internal-16"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Example",
+          "description": null,
+          "source": "export const Example: Story = { tags: [\"example\"] };"
+        }
+      ]
     },
     "VisuallyHidden": {
       "name": "VisuallyHidden",

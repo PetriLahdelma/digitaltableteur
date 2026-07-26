@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "schemaVersion": 2,
+  "name": "VirtualList",
+  "tier": "organism",
+  "group": "data-display",
+  "status": "alpha",
+  "description": "Fixed-height windowed list with overscan and explicit assistive-technology position metadata.",
+  "figma": null,
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": ["item"],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": ["PageUp", "PageDown", "Home", "End"],
+    "ariaRequirements": [
+      "viewport uses role=list and an accessible name",
+      "rendered rows use role=listitem",
+      "rows expose aria-posinset and aria-setsize"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-07-26 — list semantics, item position metadata, rendered range behavior, and axe result reviewed in unit tests.",
+    "forcedColorsVerified": false,
+    "accessibilityTreeVerified": false
+  },
+  "tokens": {
+    "colors": ["--color-border-light"],
+    "spacing": ["--space-internal-16"]
+  },
+  "lightDarkVerified": false,
+  "dense": "fixed-height windowed collection; overscan, stable keys, rendered-range callback, aria position and set-size metadata",
+  "keywords": [
+    "virtual",
+    "virtualized",
+    "windowed",
+    "large list",
+    "performance",
+    "collection"
+  ],
+  "props": {
+    "items": {
+      "optional": false,
+      "type": "Item[]",
+      "description": "Complete item collection."
+    },
+    "itemHeight": {
+      "optional": false,
+      "type": "number",
+      "description": "Fixed item height in pixels."
+    },
+    "height": {
+      "optional": false,
+      "type": "number",
+      "description": "Visible viewport height in pixels."
+    },
+    "getItemKey": {
+      "optional": false,
+      "type": "(item: Item, index: number) => React.Key",
+      "description": "Stable item key."
+    },
+    "renderItem": {
+      "optional": false,
+      "type": "(item: Item, index: number) => React.ReactNode",
+      "description": "Renders one visible item."
+    },
+    "aria-label": {
+      "optional": false,
+      "type": "string",
+      "description": "Accessible list name."
+    },
+    "overscan": {
+      "optional": true,
+      "type": "number",
+      "description": "Extra rows before and after the viewport."
+    },
+    "onRangeChange": {
+      "optional": true,
+      "type": "(range: VirtualListRange) => void",
+      "description": "Receives the rendered index range."
+    }
+  },
+  "forbiddenUse": [
+    "use it for short collections",
+    "use it for variable-height rows",
+    "use it when browser find-in-page must search every item"
+  ],
+  "usage": {
+    "description": "Use VirtualList for long, fixed-height collections when rendering every item would be wasteful. Keep item keys stable and row height accurate.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Measure and provide the exact fixed row height used by rendered items."
+      },
+      {
+        "guidance": true,
+        "description": "Use stable item keys that survive filtering, sorting, and refreshes."
+      },
+      {
+        "guidance": true,
+        "description": "Keep overscan small while preventing blank edges during normal scrolling."
+      },
+      {
+        "guidance": true,
+        "description": "Use range changes for prefetching without coupling them to visual state."
+      },
+      {
+        "guidance": false,
+        "description": "Do not virtualize a short collection that renders cheaply without it."
+      },
+      {
+        "guidance": false,
+        "description": "Do not use VirtualList for variable-height rows or full-page text search."
+      }
+    ],
+    "anatomy": [
+      {
+        "name": "Viewport",
+        "required": true,
+        "description": "Scrollable list region with the collection's accessible name."
+      },
+      {
+        "name": "Spacer",
+        "required": true,
+        "description": "Full-height internal surface that preserves the native scroll range."
+      },
+      {
+        "name": "Rendered item",
+        "required": true,
+        "description": "Visible fixed-height row with position and set-size metadata."
+      }
+    ]
+  },
+  "playground": {
+    "defaults": {
+      "aria-label": "Component results",
+      "height": 320,
+      "itemHeight": 48,
+      "overscan": 3
+    }
+  },
+  "composesWith": ["DataTable", "CommandPalette", "TreeView"]
+}

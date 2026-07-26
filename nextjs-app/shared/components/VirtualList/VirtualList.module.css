@@ -1,0 +1,41 @@
+.viewport {
+  position: relative;
+  max-inline-size: 100%;
+  border: var(--space-internal-2) solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  background: var(--main-body-background-color);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.viewport:focus-within {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.spacer {
+  position: relative;
+  inline-size: 100%;
+}
+
+.item {
+  display: flex;
+  position: absolute;
+  inset-inline: 0;
+  padding-inline: var(--space-internal-16);
+  align-items: center;
+  border-block-end: var(--space-internal-2) solid var(--color-border-light);
+  contain: content;
+  inset-block-start: 0;
+}
+
+@media (forced-colors: active) {
+  .viewport,
+  .item {
+    border-color: CanvasText;
+  }
+
+  .viewport:focus-within {
+    outline-color: Highlight;
+  }
+}
