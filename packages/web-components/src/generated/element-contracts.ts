@@ -986,7 +986,7 @@ export const elementMigrationManifest = [
   { tagName: "dt-mac-window-frame", sourceComponent: "MacWindowFrame", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-file-upload", sourceComponent: "FileUpload", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-category-filter", sourceComponent: "CategoryFilter", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
-  { tagName: "dt-gallery", sourceComponent: "Gallery", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
+  { tagName: "dt-gallery", sourceComponent: "Gallery", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-reading-progress", sourceComponent: "ReadingProgress", backend: "native", contractStatus: "stable", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-selectable-card", sourceComponent: "SelectableCard", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },
   { tagName: "dt-selectable-card-group", sourceComponent: "SelectableCardGroup", backend: "native", contractStatus: "beta", implementationStatus: "beta", implementationConsumers: [] },

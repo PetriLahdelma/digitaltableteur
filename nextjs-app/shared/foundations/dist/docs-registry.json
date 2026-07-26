@@ -7125,7 +7125,7 @@
       "name": "Gallery",
       "group": "display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Image gallery grid with a click-to-expand lightbox and motion on hover. Used on work-detail and editorial pages where the imagery is the primary content.",
       "dense": "Image gallery grid with click-to-expand lightbox and hover motion; used on work/case-study pages",
       "keywords": [

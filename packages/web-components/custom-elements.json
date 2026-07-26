@@ -9991,7 +9991,7 @@
           "events": [],
           "dtSourceComponent": "Gallery",
           "dtBackend": "native",
-          "dtContractStatus": "beta",
+          "dtContractStatus": "stable",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },

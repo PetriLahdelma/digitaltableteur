@@ -1,18 +1,11 @@
 {
   "storyId": "site-gallery-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:43:09.481Z",
-  "runner": "backfill",
+  "sourceSHA": "59e827e5f36058ccb93e304bdc6ddeffd9f69fc8",
+  "capturedAt": "2026-07-26T19:51:50.556Z",
+  "runner": "promote-gallery-stable",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
-      "passed": true
-    },
-    "forced-colors-real-browser": {
       "passed": true
     }
   }

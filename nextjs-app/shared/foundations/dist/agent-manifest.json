@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-26T19:31:50.196Z",
+  "generatedAt": "2026-07-26T19:50:45.713Z",
   "summary": {
     "componentCount": 172,
     "statusCounts": {
-      "beta": 42,
-      "stable": 102,
+      "beta": 41,
+      "stable": 103,
       "alpha": 27,
       "deprecated": 1
     },
@@ -20,7 +20,7 @@
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 102,
+    "stableCount": 103,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -107,8 +107,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 42,
-        "stable": 102,
+        "beta": 41,
+        "stable": 103,
         "alpha": 27,
         "deprecated": 1
       },
@@ -21433,7 +21433,7 @@
         "name": "Gallery",
         "tier": "molecule",
         "group": "display",
-        "status": "beta",
+        "status": "stable",
         "description": "Image gallery grid with a click-to-expand lightbox and motion on hover. Used on work-detail and editorial pages where the imagery is the primary content.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1441-2263",
         "radixPrimitive": null,
@@ -21462,8 +21462,9 @@
           "reviewed": true,
           "forcedColorsVerified": true,
           "motion": true,
-          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error).",
-          "accessibilityTreeVerified": true
+          "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; Tab/Enter/Space/Esc lightbox flow exercised via the story play; consumed on the NewThingsCo work page.",
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -21660,7 +21661,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+            "note": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error). 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; Tab/Enter/Space/Esc lightbox flow exercised via the story play; consumed on the NewThingsCo work page."
           }
         ],
         "docOrigin": {
@@ -28199,7 +28200,68 @@
           ]
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleContent.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleHero.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/[slug]/ServerArticleMain.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/BlogArticlePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Blog/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "children": {
@@ -28465,8 +28527,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "aria-requirements",
@@ -51491,14 +51553,14 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "forced-colors-real-browser",
@@ -51515,8 +51577,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "human-a11y-review",

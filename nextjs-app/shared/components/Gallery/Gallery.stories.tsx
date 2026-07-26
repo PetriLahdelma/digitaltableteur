@@ -27,7 +27,7 @@ const defaultArgs = {
 const meta = {
   title: "Site/Gallery",
   component: Gallery,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     design: {
       type: "figma",
