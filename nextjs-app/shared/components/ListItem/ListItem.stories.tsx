@@ -10,7 +10,7 @@ import contract from "./ListItem.contract.json";
 const meta = {
   title: "Content/ListItem",
   component: ListItem,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,

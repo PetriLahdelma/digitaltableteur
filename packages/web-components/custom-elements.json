@@ -5563,7 +5563,7 @@
           "events": [],
           "dtSourceComponent": "ListItem",
           "dtBackend": "native",
-          "dtContractStatus": "beta",
+          "dtContractStatus": "stable",
           "dtImplementationStatus": "beta",
           "dtImplementationConsumers": []
         },

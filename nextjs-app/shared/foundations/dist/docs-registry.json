@@ -9200,7 +9200,7 @@
       "name": "ListItem",
       "group": "display",
       "tier": 2,
-      "status": "beta",
+      "status": "stable",
       "description": "Presentational row for menus, selects, palettes, and lists: leading icon, truncating label, end-aligned meta (text, Badge, Kbd, StatusDot, value), trailing icon, selection check, and a destructive tone. Consumers own semantics.",
       "dense": "Presentational span row: icon + truncating label + end-aligned meta (text/Badge/Kbd/StatusDot) + trailingIcon + selected check; tone neutral|destructive; the interactive wrapper owns role/focus/events",
       "keywords": [
