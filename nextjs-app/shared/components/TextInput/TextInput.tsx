@@ -16,15 +16,35 @@ import {
   formatIncompletePhoneNumber,
 } from "libphonenumber-js";
 import { warnPropRename } from "../../utils/deprecationWarning";
-import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
+import {
+  normalizeSizeProp,
+  type SizeUnified,
+} from "../../utils/sizeNormalization";
 import { suggestEmailCorrection } from "../../utils/emailSuggestion";
 
-export interface TextInputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "size"> {
+export interface TextInputProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "onChange" | "size"
+> {
   /** Visible field label; also feeds the input name */
   label: string;
-  /** HTML input type; tel formats and email validates as you type */
-  type: "text" | "number" | "email" | "password" | "search" | "tel";
+  /**
+   * Native HTML input type. Telephone values format and email values validate
+   * as the user types; date/time variants retain the browser's localized
+   * picker and ISO-compatible submitted value.
+   */
+  type:
+    | "text"
+    | "number"
+    | "email"
+    | "password"
+    | "search"
+    | "tel"
+    | "date"
+    | "datetime-local"
+    | "time"
+    | "month"
+    | "week";
 
   // NEW PROPS (v1.1.0)
   /** Size variant for input */
@@ -99,7 +119,7 @@ const TextInput: React.FC<TextInputProps> = ({
   // working. Later value changes (including back to "") still sync in, so
   // consumers that clear a field by setting value="" keep that behavior.
   const [inputValue, setInputValue] = useState<string | number>(
-    (value === "" ? undefined : value) ?? defaultValue ?? ""
+    (value === "" ? undefined : value) ?? defaultValue ?? "",
   );
   const syncedOnce = useRef(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -111,10 +131,9 @@ const TextInput: React.FC<TextInputProps> = ({
   const errorMessage = error || phoneError || emailError;
 
   // Compute aria-describedby - link to error and helper text
-  const describedBy = [
-    hasError && errorId,
-    helperText && helperId,
-  ].filter(Boolean).join(' ') || undefined;
+  const describedBy =
+    [hasError && errorId, helperText && helperId].filter(Boolean).join(" ") ||
+    undefined;
 
   useEffect(() => {
     // Skip the mount run so an initial "" doesn't clobber defaultValue.
@@ -166,7 +185,9 @@ const TextInput: React.FC<TextInputProps> = ({
           // Check for typo suggestion first (WCAG 3.3.3: Error Suggestion)
           const suggestion = suggestEmailCorrection(e.target.value);
           if (suggestion) {
-            setEmailError(t("contactValidationEmailSuggestion", { suggestion }));
+            setEmailError(
+              t("contactValidationEmailSuggestion", { suggestion }),
+            );
           } else {
             setEmailError(t("inputValidationEmailInvalid"));
           }
@@ -241,9 +262,7 @@ const TextInput: React.FC<TextInputProps> = ({
           {errorMessage}
         </HelperText>
       )}
-      {helperText && (
-        <HelperText id={helperId}>{helperText}</HelperText>
-      )}
+      {helperText && <HelperText id={helperId}>{helperText}</HelperText>}
     </div>
   );
 };

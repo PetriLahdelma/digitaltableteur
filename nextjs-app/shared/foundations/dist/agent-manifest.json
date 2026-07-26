@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-26T17:56:46.527Z",
+  "generatedAt": "2026-07-26T19:18:51.171Z",
   "summary": {
-    "componentCount": 168,
+    "componentCount": 172,
     "statusCounts": {
       "beta": 43,
       "stable": 101,
-      "alpha": 23,
+      "alpha": 27,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 90.3,
-    "codebaseComponentCount": 186,
-    "usageCoveragePercent": 92.9,
+    "catalogCompletenessPercent": 90.5,
+    "codebaseComponentCount": 190,
+    "usageCoveragePercent": 93,
     "componentsWithProductionUsage": 36,
     "notReadyForStablePromotion": false
   },
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 186,
-    "inCatalog": 168,
+    "totalComponentsInCodebase": 190,
+    "inCatalog": 172,
     "outOfCatalog": 18,
-    "catalogCompletenessPercent": 90.3,
+    "catalogCompletenessPercent": 90.5,
     "artifactCoverage": {
-      "stories": 152,
-      "tests": 153,
+      "stories": 156,
+      "tests": 157,
       "mdx": 4,
-      "spec": 168
+      "spec": 172
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 168,
-    "withAnyUsage": 156,
+    "catalogedComponents": 172,
+    "withAnyUsage": 160,
     "withProductionUsage": 36,
-    "uniqueImportedComponents": 156,
-    "totalEvidenceRows": 773,
-    "aliasImportFiles": 396,
-    "relativeImportFiles": 410,
+    "uniqueImportedComponents": 160,
+    "totalEvidenceRows": 782,
+    "aliasImportFiles": 401,
+    "relativeImportFiles": 414,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-24T13:41:10.033Z",
+    "generatedAt": "2026-07-26T19:18:42.552Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 82,
+    "nodesWithComposesWith": 86,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 168,
+      "digitaltableteur": 172,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 43,
         "stable": 101,
-        "alpha": 23,
+        "alpha": 27,
         "deprecated": 1
       },
       "dsharp": {
@@ -15282,6 +15282,538 @@
       }
     },
     {
+      "name": "DataTable",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "DataTable",
+        "tier": "organism",
+        "group": "data-display",
+        "status": "alpha",
+        "description": "Accessible data table with typed columns, sortable headings, optional row selection, and density variants.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "table",
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+          },
+          "striped": {
+            "values": [
+              "true",
+              "false"
+            ],
+            "default": "false",
+            "propSourced": true
+          }
+        },
+        "slots": [
+          "caption",
+          "header",
+          "cell",
+          "emptyState"
+        ],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab",
+            "Space"
+          ],
+          "ariaRequirements": [
+            "native table, thead, tbody, th and td semantics",
+            "caption supplies the accessible table name",
+            "sortable headings expose aria-sort",
+            "selection uses labelled native checkboxes"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-26 — native table, caption, sorting, selection labels, keyboard behavior, and axe result reviewed in unit tests.",
+          "forcedColorsVerified": false,
+          "accessibilityTreeVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-primary",
+            "--color-border-light",
+            "--color-light-bg",
+            "--color-neutral-bg"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-24",
+            "--space-layout-32"
+          ]
+        },
+        "lightDarkVerified": false,
+        "dense": "typed native data table; sortable columns, optional row selection, accessible caption, empty state, sm/md/lg density",
+        "keywords": [
+          "table",
+          "data",
+          "rows",
+          "columns",
+          "sort",
+          "selection",
+          "grid"
+        ],
+        "props": {
+          "data": {
+            "optional": false,
+            "type": "Row[]",
+            "description": "Table rows."
+          },
+          "columns": {
+            "optional": false,
+            "type": "DataTableColumn<Row>[]",
+            "description": "Ordered typed column definitions."
+          },
+          "getRowId": {
+            "optional": false,
+            "type": "(row: Row) => string",
+            "description": "Stable row identifier."
+          },
+          "caption": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible table name."
+          },
+          "hideCaption": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visually hides the caption."
+          },
+          "sort": {
+            "optional": true,
+            "type": "DataTableSort | null",
+            "description": "Controlled sort state."
+          },
+          "onSortChange": {
+            "optional": true,
+            "type": "(sort: DataTableSort | null) => void",
+            "description": "Receives sort changes."
+          },
+          "selectedRowIds": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Controlled selected row identifiers."
+          },
+          "onSelectionChange": {
+            "optional": true,
+            "type": "(rowIds: string[]) => void",
+            "description": "Receives selection changes."
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Density scale."
+          },
+          "striped": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Alternates row surfaces."
+          }
+        },
+        "forbiddenUse": [
+          "use it for page layout",
+          "omit a meaningful caption",
+          "use unstable row indexes as identifiers"
+        ],
+        "usage": {
+          "description": "Use DataTable for structured records that users need to compare, sort, or select. Provide stable row identifiers and a meaningful caption.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Give every table a concise caption that explains what its rows represent."
+            },
+            {
+              "guidance": true,
+              "description": "Use stable domain identifiers so selection survives sorting and data refreshes."
+            },
+            {
+              "guidance": true,
+              "description": "Make a column sortable only when its values have an understandable order."
+            },
+            {
+              "guidance": true,
+              "description": "Keep cell content concise and move detailed content into a dedicated view."
+            },
+            {
+              "guidance": false,
+              "description": "Do not use DataTable as a page-layout grid or a visual card collection."
+            },
+            {
+              "guidance": false,
+              "description": "Do not hide row actions until pointer hover; keyboard users must find them too."
+            }
+          ],
+          "anatomy": [
+            {
+              "name": "Caption",
+              "required": true,
+              "description": "Accessible name that explains the table's record set."
+            },
+            {
+              "name": "Header",
+              "required": true,
+              "description": "Column labels and optional sort controls."
+            },
+            {
+              "name": "Rows",
+              "required": true,
+              "description": "Typed records rendered as native table rows and cells."
+            },
+            {
+              "name": "Selection",
+              "required": false,
+              "description": "Native checkboxes for selecting individual or all visible rows."
+            }
+          ]
+        },
+        "playground": {
+          "defaults": {
+            "caption": "Project contributors",
+            "hideCaption": false,
+            "size": "md",
+            "striped": false
+          }
+        },
+        "composesWith": [
+          "Pagination",
+          "Checkbox",
+          "EmptyState"
+        ]
+      },
+      "spec": "# DataTable\n\n## Intent\n\nPresent structured records when users need to compare values across columns,\nsort the result, or select rows for a follow-up action.\n\n## Interaction contract\n\n- Renders native table semantics with an accessible caption.\n- Sortable columns cycle ascending, descending, and unsorted.\n- Optional selection uses native checkboxes and stable row identifiers.\n- Controlled sort and selection state remain owned by the consumer.\n\n## Do / don't\n\n- Do provide a meaningful caption, even when it is visually hidden.\n- Do use identifiers that remain stable when rows reorder.\n- Don't use DataTable for page layout or highly visual card collections.\n- Don't add row actions that are available only on pointer hover.\n\n## Design notes\n\n- Horizontal overflow is contained by the table wrapper at narrow widths.\n- Density, stripes, and selection styling use semantic design tokens.\n- Native table elements remain intact so assistive technology receives the\n  expected row and column relationships.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/DataTable",
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./DataTable",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/DataTable",
+        "intent": "Present structured records when users need to compare values across columns, sort the result, or select rows for a follow-up action.",
+        "props": {
+          "data": {
+            "optional": false,
+            "type": "Row[]",
+            "description": "Table rows."
+          },
+          "columns": {
+            "optional": false,
+            "type": "DataTableColumn<Row>[]",
+            "description": "Ordered column definitions."
+          },
+          "getRowId": {
+            "optional": false,
+            "type": "(row: Row) => string",
+            "description": "Stable row identifier."
+          },
+          "caption": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible table name rendered as a caption."
+          },
+          "hideCaption": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visually hides the caption while retaining the accessible name."
+          },
+          "sort": {
+            "optional": true,
+            "type": "DataTableSort | null",
+            "description": "Controlled sort state."
+          },
+          "defaultSort": {
+            "optional": true,
+            "type": "DataTableSort | null",
+            "description": "Initial uncontrolled sort state."
+          },
+          "onSortChange": {
+            "optional": true,
+            "type": "(sort: DataTableSort | null) => void",
+            "description": "Receives sort changes."
+          },
+          "selectedRowIds": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Controlled selected row identifiers; enables selection."
+          },
+          "defaultSelectedRowIds": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Initial uncontrolled selection; also enables selection."
+          },
+          "onSelectionChange": {
+            "optional": true,
+            "type": "(rowIds: string[]) => void",
+            "description": "Receives selected row identifiers; also enables selection."
+          },
+          "getRowLabel": {
+            "optional": true,
+            "type": "(row: Row) => string",
+            "description": "Accessible row label used by selection checkboxes."
+          },
+          "emptyState": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Empty-state cell content."
+          },
+          "striped": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Alternating row surfaces."
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Density scale."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "propRelationships": [],
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "sm"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "provide a meaningful caption, even when it is visually hidden.",
+          "use identifiers that remain stable when rows reorder."
+        ],
+        "avoidWhen": [
+          "use DataTable for page layout or highly visual card collections.",
+          "add row actions that are available only on pointer hover."
+        ],
+        "requiredA11y": [
+          "native table, thead, tbody, th and td semantics",
+          "caption supplies the accessible table name",
+          "sortable headings expose aria-sort",
+          "selection uses labelled native checkboxes"
+        ],
+        "keyboard": [
+          "Tab",
+          "Space"
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "use DataTable for page layout or highly visual card collections.",
+          "add row actions that are available only on pointer hover."
+        ],
+        "composesWith": [
+          "Pagination",
+          "Checkbox",
+          "EmptyState"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 16,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "provide a meaningful caption, even when it is visually hidden.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "use identifiers that remain stable when rows reorder.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use DataTable for page layout or highly visual card collections.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "add row actions that are available only on pointer hover.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-07-26 — native table, caption, sorting, selection labels, keyboard behavior, and axe result reviewed in unit tests."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "DataTable.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "DataTable.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "DataTable.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "DataTable.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
       "name": "Designerman",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -23059,10 +23591,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 69,
+        "importCount": 70,
         "productionImportCount": 0,
         "patternImportCount": 1,
-        "componentImportCount": 35,
+        "componentImportCount": 36,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx",
@@ -38470,6 +39002,425 @@
       }
     },
     {
+      "name": "ResizablePanelGroup",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "ResizablePanelGroup",
+        "tier": "organism",
+        "group": "layout",
+        "status": "alpha",
+        "description": "Two-or-more-panel layout with pointer and keyboard-accessible resize separators.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "div",
+        "variants": {
+          "orientation": {
+            "values": [
+              "horizontal",
+              "vertical"
+            ],
+            "default": "horizontal",
+            "propSourced": true
+          }
+        },
+        "slots": [
+          "panel",
+          "separator"
+        ],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "ArrowLeft",
+            "ArrowRight",
+            "ArrowUp",
+            "ArrowDown",
+            "Home",
+            "End"
+          ],
+          "ariaRequirements": [
+            "each panel is a named region",
+            "handles use role=separator",
+            "separator exposes aria-orientation, aria-valuemin, aria-valuemax and aria-valuenow"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-26 — named regions, separator value semantics, keyboard resize behavior, and axe result reviewed in unit tests.",
+          "forcedColorsVerified": false,
+          "accessibilityTreeVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-border-light",
+            "--color-neutral-bg",
+            "--color-primary",
+            "--color-muted"
+          ],
+          "spacing": [
+            "--space-internal-8",
+            "--space-layout-24"
+          ]
+        },
+        "lightDarkVerified": false,
+        "dense": "horizontal or vertical resizable panel layout; pointer drag, arrow/Home/End keyboard resize, separator value semantics",
+        "keywords": [
+          "resizable",
+          "panels",
+          "split",
+          "layout",
+          "workbench",
+          "sidebar"
+        ],
+        "props": {
+          "panels": {
+            "optional": false,
+            "type": "ResizablePanel[]",
+            "description": "Two or more ordered panels."
+          },
+          "orientation": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "horizontal",
+              "vertical"
+            ],
+            "description": "Resize axis."
+          },
+          "keyboardStep": {
+            "optional": true,
+            "type": "number",
+            "description": "Keyboard resize increment in percentage points."
+          },
+          "onSizesChange": {
+            "optional": true,
+            "type": "(sizes: Record<string, number>) => void",
+            "description": "Receives current panel percentages."
+          }
+        },
+        "forbiddenUse": [
+          "replace a fixed responsive page grid",
+          "allow panels to shrink below usable content minimums"
+        ],
+        "usage": {
+          "description": "Use ResizablePanelGroup for adjacent work areas whose relative space users need to control. Set realistic minimum sizes for every panel.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Name every panel region so assistive technology communicates its purpose."
+            },
+            {
+              "guidance": true,
+              "description": "Choose minimum sizes that keep each panel's essential controls usable."
+            },
+            {
+              "guidance": true,
+              "description": "Persist sizes only when restoring the user's workspace is genuinely valuable."
+            },
+            {
+              "guidance": true,
+              "description": "Use a keyboard step that changes layout perceptibly without large jumps."
+            },
+            {
+              "guidance": false,
+              "description": "Do not replace an ordinary responsive page grid with draggable panels."
+            },
+            {
+              "guidance": false,
+              "description": "Do not allow a panel to collapse past the minimum needed by its content."
+            }
+          ],
+          "anatomy": [
+            {
+              "name": "Panel",
+              "required": true,
+              "description": "Named region containing one adjacent workspace."
+            },
+            {
+              "name": "Separator",
+              "required": true,
+              "description": "Focusable resize control between a pair of panels."
+            },
+            {
+              "name": "Handle",
+              "required": true,
+              "description": "Visible affordance that communicates the separator's drag axis."
+            }
+          ]
+        },
+        "playground": {
+          "defaults": {
+            "orientation": "horizontal",
+            "keyboardStep": 5
+          }
+        },
+        "composesWith": [
+          "TreeView",
+          "DataTable",
+          "CodeBlockWindow"
+        ]
+      },
+      "spec": "# ResizablePanelGroup\n\n## Intent\n\nLet users allocate space between two or more adjacent work areas without\nlosing keyboard access or exceeding each panel's usable size.\n\n## Interaction contract\n\n- Separators support pointer dragging and arrow-key resizing.\n- Home and End move a separator to the minimum and maximum permitted split.\n- `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` describe the current\n  separator position.\n- Horizontal and vertical orientations share the same sizing model.\n\n## Do / don't\n\n- Do set realistic minimum sizes for every panel.\n- Do label panels so their purpose remains clear to assistive technology.\n- Don't allow essential controls to collapse below their usable size.\n- Don't use resizable panels for a decorative split that does not need user\n  control.\n\n## Design notes\n\n- Runtime flex-basis values are intentionally inline because they are\n  interaction state, not static styling.\n- The visible separator and focus treatment use semantic border and focus\n  tokens.\n- Panel content owns its own overflow behavior.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/ResizablePanelGroup",
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./ResizablePanelGroup",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/ResizablePanelGroup",
+        "intent": "Let users allocate space between two or more adjacent work areas without losing keyboard access or exceeding each panel's usable size.",
+        "props": {
+          "panels": {
+            "optional": false,
+            "type": "ResizablePanel[]",
+            "description": "Two or more ordered panels."
+          },
+          "orientation": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "horizontal",
+              "vertical"
+            ],
+            "description": "Resize axis."
+          },
+          "keyboardStep": {
+            "optional": true,
+            "type": "number",
+            "description": "Keyboard resize increment in percentage points."
+          },
+          "onSizesChange": {
+            "optional": true,
+            "type": "(sizes: Record<string, number>) => void",
+            "description": "Receives the current percentage per panel id."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "propRelationships": [],
+        "variants": {
+          "orientation": {
+            "values": [
+              "horizontal",
+              "vertical"
+            ],
+            "default": "horizontal"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "set realistic minimum sizes for every panel.",
+          "label panels so their purpose remains clear to assistive technology."
+        ],
+        "avoidWhen": [
+          "allow essential controls to collapse below their usable size.",
+          "use resizable panels for a decorative split that does not need user control."
+        ],
+        "requiredA11y": [
+          "each panel is a named region",
+          "handles use role=separator",
+          "separator exposes aria-orientation, aria-valuemin, aria-valuemax and aria-valuenow"
+        ],
+        "keyboard": [
+          "ArrowLeft",
+          "ArrowRight",
+          "ArrowUp",
+          "ArrowDown",
+          "Home",
+          "End"
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "allow essential controls to collapse below their usable size.",
+          "use resizable panels for a decorative split that does not need user control."
+        ],
+        "composesWith": [
+          "TreeView",
+          "DataTable",
+          "CodeBlockWindow"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 5,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "set realistic minimum sizes for every panel.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "label panels so their purpose remains clear to assistive technology.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "allow essential controls to collapse below their usable size.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use resizable panels for a decorative split that does not need user control.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-07-26 — named regions, separator value semantics, keyboard resize behavior, and axe result reviewed in unit tests."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ResizablePanelGroup.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ResizablePanelGroup.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ResizablePanelGroup.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "ResizablePanelGroup.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
       "name": "ScrollIndicator",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -46273,7 +47224,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Stack",
-        "importCount": 2,
+        "importCount": 3,
         "productionImportCount": 0,
         "patternImportCount": 2,
         "componentImportCount": 0,
@@ -46289,6 +47240,12 @@
             "importKind": "relative",
             "importPath": "../../components/Stack",
             "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/components/TextInput/TextInput.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Stack",
+            "context": "story"
           }
         ]
       },
@@ -49169,7 +50126,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 55,
+        "importCount": 57,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 27,
@@ -50082,9 +51039,14 @@
               "text",
               "tel",
               "email",
-              "password"
+              "password",
+              "date",
+              "datetime-local",
+              "time",
+              "month",
+              "week"
             ],
-            "description": "HTML input type; tel formats and email validates as you type"
+            "description": "Native HTML input type; tel formats, email validates, and date/time variants retain the browser's localized picker and ISO-compatible value"
           },
           "size": {
             "optional": true,
@@ -50318,9 +51280,14 @@
               "text",
               "tel",
               "email",
-              "password"
+              "date",
+              "time",
+              "password",
+              "datetime-local",
+              "month",
+              "week"
             ],
-            "description": "HTML input type; tel formats and email validates as you type"
+            "description": "Native HTML input type. Telephone values format and email values validate\nas the user types; date/time variants retain the browser's localized\npicker and ISO-compatible submitted value."
           },
           "size": {
             "optional": true,
@@ -50395,7 +51362,12 @@
               "text",
               "tel",
               "email",
-              "password"
+              "date",
+              "time",
+              "password",
+              "datetime-local",
+              "month",
+              "week"
             ],
             "default": "number"
           },
@@ -51780,7 +52752,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Title",
-        "importCount": 30,
+        "importCount": 31,
         "productionImportCount": 0,
         "patternImportCount": 4,
         "componentImportCount": 15,
@@ -53926,6 +54898,485 @@
       }
     },
     {
+      "name": "TreeView",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "TreeView",
+        "tier": "organism",
+        "group": "navigation",
+        "status": "alpha",
+        "description": "Application tree with hierarchical selection, expansion, roving focus, and arrow-key navigation.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "div",
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+          }
+        },
+        "slots": [
+          "label",
+          "description"
+        ],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "ArrowUp",
+            "ArrowDown",
+            "ArrowLeft",
+            "ArrowRight",
+            "Home",
+            "End",
+            "Enter",
+            "Space"
+          ],
+          "ariaRequirements": [
+            "root has role=tree and an accessible name",
+            "nodes expose role=treeitem, aria-level and aria-selected",
+            "branch nodes expose aria-expanded",
+            "only the focused treeitem has tabIndex=0"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-26 — tree semantics, roving focus, expansion and selection keyboard behavior, and axe result reviewed in unit tests.",
+          "forcedColorsVerified": false,
+          "accessibilityTreeVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-primary",
+            "--color-neutral-bg",
+            "--color-border-light"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16"
+          ]
+        },
+        "lightDarkVerified": false,
+        "dense": "application tree; controlled selection and expansion, roving focus, full arrow/Home/End/Enter/Space keyboard model",
+        "keywords": [
+          "tree",
+          "hierarchy",
+          "folders",
+          "navigation",
+          "outline",
+          "nested"
+        ],
+        "props": {
+          "nodes": {
+            "optional": false,
+            "type": "TreeViewNode[]",
+            "description": "Hierarchical nodes."
+          },
+          "aria-label": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible name for the tree."
+          },
+          "selectedId": {
+            "optional": true,
+            "type": "string | null",
+            "description": "Controlled selected node identifier."
+          },
+          "onSelectedIdChange": {
+            "optional": true,
+            "type": "(id: string) => void",
+            "description": "Receives selection changes."
+          },
+          "expandedIds": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Controlled expanded node identifiers."
+          },
+          "onExpandedIdsChange": {
+            "optional": true,
+            "type": "(ids: string[]) => void",
+            "description": "Receives expansion changes."
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Density scale."
+          }
+        },
+        "forbiddenUse": [
+          "replace a sitemap or ordinary nested navigation list",
+          "nest independently focusable controls inside node labels"
+        ],
+        "usage": {
+          "description": "Use TreeView for application hierarchies that users expand, collapse, navigate, and select. Use stable identifiers and concise node labels.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Give the tree an accessible label that identifies the hierarchy."
+            },
+            {
+              "guidance": true,
+              "description": "Use stable node identifiers across filtering, refreshes, and reordering."
+            },
+            {
+              "guidance": true,
+              "description": "Keep labels concise and place secondary status in the description."
+            },
+            {
+              "guidance": true,
+              "description": "Preserve expansion state when nearby application content changes."
+            },
+            {
+              "guidance": false,
+              "description": "Do not use TreeView for a flat set of links or ordinary site navigation."
+            },
+            {
+              "guidance": false,
+              "description": "Do not embed buttons, inputs, or menus inside a tree item's label."
+            }
+          ],
+          "anatomy": [
+            {
+              "name": "Tree",
+              "required": true,
+              "description": "Accessible root that owns the visible hierarchy."
+            },
+            {
+              "name": "Tree item",
+              "required": true,
+              "description": "Selectable node with its hierarchy level and expansion state."
+            },
+            {
+              "name": "Disclosure icon",
+              "required": false,
+              "description": "Visual expansion indicator shown only for branch nodes."
+            }
+          ]
+        },
+        "playground": {
+          "defaults": {
+            "aria-label": "Design system",
+            "defaultExpandedIds": [
+              "components"
+            ],
+            "defaultSelectedId": "button",
+            "size": "md"
+          }
+        },
+        "prefersOver": [
+          "SiteTree for application selection hierarchies"
+        ],
+        "composesWith": [
+          "ResizablePanelGroup",
+          "CommandPalette"
+        ]
+      },
+      "spec": "# TreeView\n\n## Intent\n\nPresent hierarchical data when users need to inspect branches, expand and\ncollapse groups, and select one node while preserving their place in the\nstructure.\n\n## Interaction contract\n\n- Uses ARIA tree and treeitem semantics with level, expanded, and selected\n  state.\n- Up and Down move through visible nodes using roving focus.\n- Right expands a branch or moves to its first child; Left collapses a branch\n  or moves to its parent.\n- Home, End, Enter, and Space follow the conventional tree keyboard model.\n- Expansion and selection can each be controlled or uncontrolled.\n\n## Do / don't\n\n- Do use stable node identifiers and concise labels.\n- Do preserve expansion state when the surrounding view updates.\n- Don't use TreeView for a flat list of navigation links.\n- Don't place unrelated buttons or menus inside a tree item.\n\n## Design notes\n\n- Indentation is derived from the ARIA level and a single spacing step.\n- Disclosure icons rotate without changing the item's hit area.\n- Focus, hover, and selected states use semantic interaction tokens.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/TreeView",
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./TreeView",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/TreeView",
+        "intent": "Present hierarchical data when users need to inspect branches, expand and collapse groups, and select one node while preserving their place in the structure.",
+        "props": {
+          "nodes": {
+            "optional": false,
+            "type": "TreeViewNode[]",
+            "description": "Hierarchical nodes."
+          },
+          "aria-label": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible name for the tree."
+          },
+          "selectedId": {
+            "optional": true,
+            "type": "string | null",
+            "description": "Controlled selected node identifier."
+          },
+          "defaultSelectedId": {
+            "optional": true,
+            "type": "string | null",
+            "description": "Initial uncontrolled selected node identifier."
+          },
+          "onSelectedIdChange": {
+            "optional": true,
+            "type": "(id: string) => void",
+            "description": "Receives selection changes."
+          },
+          "expandedIds": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Controlled expanded node identifiers."
+          },
+          "defaultExpandedIds": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Initial uncontrolled expanded node identifiers."
+          },
+          "onExpandedIdsChange": {
+            "optional": true,
+            "type": "(ids: string[]) => void",
+            "description": "Receives expansion changes."
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Density scale."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "propRelationships": [],
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "sm"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "use stable node identifiers and concise labels.",
+          "preserve expansion state when the surrounding view updates."
+        ],
+        "avoidWhen": [
+          "use TreeView for a flat list of navigation links.",
+          "place unrelated buttons or menus inside a tree item."
+        ],
+        "requiredA11y": [
+          "root has role=tree and an accessible name",
+          "nodes expose role=treeitem, aria-level and aria-selected",
+          "branch nodes expose aria-expanded",
+          "only the focused treeitem has tabIndex=0"
+        ],
+        "keyboard": [
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "Home",
+          "End",
+          "Enter",
+          "Space"
+        ],
+        "compositionRules": [
+          "place unrelated buttons or menus inside a tree item."
+        ],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "use TreeView for a flat list of navigation links.",
+          "place unrelated buttons or menus inside a tree item."
+        ],
+        "composesWith": [
+          "ResizablePanelGroup",
+          "CommandPalette"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 10,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "use stable node identifiers and concise labels.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "preserve expansion state when the surrounding view updates.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use TreeView for a flat list of navigation links.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "place unrelated buttons or menus inside a tree item.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-07-26 — tree semantics, roving focus, expansion and selection keyboard behavior, and axe result reviewed in unit tests."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TreeView.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TreeView.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TreeView.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TreeView.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
       "name": "ValueCard",
       "contract": {
         "$schema": "../../../scripts/design-system/contract.schema.v2.json",
@@ -54295,6 +55746,439 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "ValueCard.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
+      "name": "VirtualList",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "VirtualList",
+        "tier": "organism",
+        "group": "data-display",
+        "status": "alpha",
+        "description": "Fixed-height windowed list with overscan and explicit assistive-technology position metadata.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "div",
+        "variants": {},
+        "slots": [
+          "item"
+        ],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "PageUp",
+            "PageDown",
+            "Home",
+            "End"
+          ],
+          "ariaRequirements": [
+            "viewport uses role=list and an accessible name",
+            "rendered rows use role=listitem",
+            "rows expose aria-posinset and aria-setsize"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-26 — list semantics, item position metadata, rendered range behavior, and axe result reviewed in unit tests.",
+          "forcedColorsVerified": false,
+          "accessibilityTreeVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-border-light"
+          ],
+          "spacing": [
+            "--space-internal-16"
+          ]
+        },
+        "lightDarkVerified": false,
+        "dense": "fixed-height windowed collection; overscan, stable keys, rendered-range callback, aria position and set-size metadata",
+        "keywords": [
+          "virtual",
+          "virtualized",
+          "windowed",
+          "large list",
+          "performance",
+          "collection"
+        ],
+        "props": {
+          "items": {
+            "optional": false,
+            "type": "Item[]",
+            "description": "Complete item collection."
+          },
+          "itemHeight": {
+            "optional": false,
+            "type": "number",
+            "description": "Fixed item height in pixels."
+          },
+          "height": {
+            "optional": false,
+            "type": "number",
+            "description": "Visible viewport height in pixels."
+          },
+          "getItemKey": {
+            "optional": false,
+            "type": "(item: Item, index: number) => React.Key",
+            "description": "Stable item key."
+          },
+          "renderItem": {
+            "optional": false,
+            "type": "(item: Item, index: number) => React.ReactNode",
+            "description": "Renders one visible item."
+          },
+          "aria-label": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible list name."
+          },
+          "overscan": {
+            "optional": true,
+            "type": "number",
+            "description": "Extra rows before and after the viewport."
+          },
+          "onRangeChange": {
+            "optional": true,
+            "type": "(range: VirtualListRange) => void",
+            "description": "Receives the rendered index range."
+          }
+        },
+        "forbiddenUse": [
+          "use it for short collections",
+          "use it for variable-height rows",
+          "use it when browser find-in-page must search every item"
+        ],
+        "usage": {
+          "description": "Use VirtualList for long, fixed-height collections when rendering every item would be wasteful. Keep item keys stable and row height accurate.",
+          "bestPractices": [
+            {
+              "guidance": true,
+              "description": "Measure and provide the exact fixed row height used by rendered items."
+            },
+            {
+              "guidance": true,
+              "description": "Use stable item keys that survive filtering, sorting, and refreshes."
+            },
+            {
+              "guidance": true,
+              "description": "Keep overscan small while preventing blank edges during normal scrolling."
+            },
+            {
+              "guidance": true,
+              "description": "Use range changes for prefetching without coupling them to visual state."
+            },
+            {
+              "guidance": false,
+              "description": "Do not virtualize a short collection that renders cheaply without it."
+            },
+            {
+              "guidance": false,
+              "description": "Do not use VirtualList for variable-height rows or full-page text search."
+            }
+          ],
+          "anatomy": [
+            {
+              "name": "Viewport",
+              "required": true,
+              "description": "Scrollable list region with the collection's accessible name."
+            },
+            {
+              "name": "Spacer",
+              "required": true,
+              "description": "Full-height internal surface that preserves the native scroll range."
+            },
+            {
+              "name": "Rendered item",
+              "required": true,
+              "description": "Visible fixed-height row with position and set-size metadata."
+            }
+          ]
+        },
+        "playground": {
+          "defaults": {
+            "aria-label": "Component results",
+            "height": 320,
+            "itemHeight": 48,
+            "overscan": 3
+          }
+        },
+        "composesWith": [
+          "DataTable",
+          "CommandPalette",
+          "TreeView"
+        ]
+      },
+      "spec": "# VirtualList\n\n## Intent\n\nKeep long, fixed-row collections responsive by rendering only the visible\nrange plus a small overscan buffer.\n\n## Interaction contract\n\n- Scroll position determines the rendered range.\n- The viewport keeps list semantics and each rendered item reports its\n  position and total set size.\n- `onRangeChange` reports both the visible and overscanned boundaries.\n- `initialScrollOffset` restores a known position without making scroll state\n  controlled.\n\n## Do / don't\n\n- Do provide an accurate fixed `itemHeight`.\n- Do keep item keys stable across filtering and updates.\n- Don't use VirtualList for short collections where normal rendering is\n  simpler.\n- Don't use it when row heights are unknown or highly variable.\n\n## Design notes\n\n- A full-height spacer preserves the browser's native scroll range.\n- Rendered items are translated to their calculated vertical offset.\n- Viewport height and item offsets are intentionally runtime inline values.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/VirtualList",
+        "importCount": 1,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 1,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./VirtualList",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/VirtualList",
+        "intent": "Keep long, fixed-row collections responsive by rendering only the visible range plus a small overscan buffer.",
+        "props": {
+          "items": {
+            "optional": false,
+            "type": "Item[]",
+            "description": "Complete item collection."
+          },
+          "itemHeight": {
+            "optional": false,
+            "type": "number",
+            "description": "Fixed item height in pixels."
+          },
+          "height": {
+            "optional": false,
+            "type": "number",
+            "description": "Visible viewport height in pixels."
+          },
+          "getItemKey": {
+            "optional": false,
+            "type": "(item: Item, index: number) => React.Key",
+            "description": "Stable item key."
+          },
+          "renderItem": {
+            "optional": false,
+            "type": "(item: Item, index: number) => React.ReactNode",
+            "description": "Renders one visible item."
+          },
+          "aria-label": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible list name."
+          },
+          "overscan": {
+            "optional": true,
+            "type": "number",
+            "description": "Extra rows rendered before and after the viewport."
+          },
+          "initialScrollOffset": {
+            "optional": true,
+            "type": "number",
+            "description": "Initial scroll offset in pixels."
+          },
+          "onRangeChange": {
+            "optional": true,
+            "type": "(range: VirtualListRange) => void",
+            "description": "Receives the rendered index range."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
+          }
+        },
+        "propRelationships": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [
+          "provide an accurate fixed `itemHeight`.",
+          "keep item keys stable across filtering and updates."
+        ],
+        "avoidWhen": [
+          "use VirtualList for short collections where normal rendering is simpler.",
+          "use it when row heights are unknown or highly variable."
+        ],
+        "requiredA11y": [
+          "viewport uses role=list and an accessible name",
+          "rendered rows use role=listitem",
+          "rows expose aria-posinset and aria-setsize"
+        ],
+        "keyboard": [
+          "PageUp",
+          "PageDown",
+          "Home",
+          "End"
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [
+          "use VirtualList for short collections where normal rendering is simpler.",
+          "use it when row heights are unknown or highly variable."
+        ],
+        "composesWith": [
+          "DataTable",
+          "CommandPalette",
+          "TreeView"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 10,
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "provide an accurate fixed `itemHeight`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "keep item keys stable across filtering and updates.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use VirtualList for short collections where normal rendering is simpler.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "use it when row heights are unknown or highly variable.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-07-26 — list semantics, item position metadata, rendered range behavior, and axe result reviewed in unit tests."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "VirtualList.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "VirtualList.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "VirtualList.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "VirtualList.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",

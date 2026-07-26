@@ -17,7 +17,7 @@ vi.mock("react-i18next", () => ({
       };
       const template = translations[key] || key;
       return template.replace(/\{\{(\w+)\}\}/g, (_, name) =>
-        String(options?.[name] ?? "")
+        String(options?.[name] ?? ""),
       );
     },
   }),
@@ -34,13 +34,19 @@ vi.mock("@dt/Icon", () => ({
 // Mock Phosphor icons to avoid React context issues in tests
 vi.mock("@phosphor-icons/react", () => ({
   WarningCircle: ({ size }: { size?: number }) => (
-    <span data-testid="warning-circle-icon" style={{ width: size, height: size }} />
+    <span
+      data-testid="warning-circle-icon"
+      style={{ width: size, height: size }}
+    />
   ),
   Warning: ({ size }: { size?: number }) => (
     <span data-testid="warning-icon" style={{ width: size, height: size }} />
   ),
   CheckCircle: ({ size }: { size?: number }) => (
-    <span data-testid="check-circle-icon" style={{ width: size, height: size }} />
+    <span
+      data-testid="check-circle-icon"
+      style={{ width: size, height: size }}
+    />
   ),
   Info: ({ size }: { size?: number }) => (
     <span data-testid="info-icon" style={{ width: size, height: size }} />
@@ -89,6 +95,21 @@ describe("Input", () => {
     fireEvent.change(input, { target: { value: "123" } });
 
     expect(onChange).toHaveBeenCalledWith(123);
+  });
+
+  it("preserves native date values and reports them through onValueChange", () => {
+    const onValueChange = vi.fn();
+    renderInput({
+      label: "Start date",
+      type: "date",
+      defaultValue: "2026-07-26",
+      onValueChange,
+    });
+
+    const input = screen.getByLabelText("Start date");
+    expect(input).toHaveAttribute("type", "date");
+    fireEvent.change(input, { target: { value: "2026-08-01" } });
+    expect(onValueChange).toHaveBeenCalledWith("2026-08-01");
   });
 
   it("displays error message when provided", () => {
@@ -206,7 +227,7 @@ describe("Input", () => {
         target: { value: "Ada" },
       });
       expect(
-        screen.getByRole("button", { name: "Clear Name" })
+        screen.getByRole("button", { name: "Clear Name" }),
       ).toBeInTheDocument();
     });
 
@@ -265,7 +286,12 @@ describe("Input", () => {
     });
 
     it("uses a non-submitting button", () => {
-      renderInput({ label: "Name", type: "text", clearable: true, value: "Ada" });
+      renderInput({
+        label: "Name",
+        type: "text",
+        clearable: true,
+        value: "Ada",
+      });
       expect(screen.getByRole("button")).toHaveAttribute("type", "button");
     });
   });
@@ -293,14 +319,20 @@ describe("Input", () => {
           hideLabel
           value="Ada"
           helperText="As it should appear in the signature"
-        />
+        />,
       );
       expect(await axe(container)).toHaveNoViolations();
     });
 
     it("has no violations in the error state", async () => {
       const { container } = render(
-        <Input label="Email" type="email" clearable value="x" error="Invalid email" />
+        <Input
+          label="Email"
+          type="email"
+          clearable
+          value="x"
+          error="Invalid email"
+        />,
       );
       expect(await axe(container)).toHaveNoViolations();
     });

@@ -42,6 +42,11 @@ export type {
   NavMenuItem,
   NavMenuListProps,
 } from "../../../nextjs-app/shared/components/NavMenuList";
+export { TreeView } from "../../../nextjs-app/shared/components/TreeView";
+export type {
+  TreeViewNode,
+  TreeViewProps,
+} from "../../../nextjs-app/shared/components/TreeView";
 export {
   Pagination,
   type PaginationProps,
@@ -57,6 +62,11 @@ export {
   SkipLink,
   type SkipLinkProps,
 } from "../../../nextjs-app/shared/components/SkipLink";
-export { default as Tabs, getTabPanelProps } from "../../../nextjs-app/shared/components/Tabs";
-export type { TabItem, TabsProps } from "../../../nextjs-app/shared/components/Tabs";
-
+export {
+  default as Tabs,
+  getTabPanelProps,
+} from "../../../nextjs-app/shared/components/Tabs";
+export type {
+  TabItem,
+  TabsProps,
+} from "../../../nextjs-app/shared/components/Tabs";

@@ -25,7 +25,10 @@ export const REPLACEMENT_FOR = {
   ],
   Text: ["raw <p>", "raw <span> for body copy"],
   Link: ["raw <a> for styled navigation"],
-  Icon: ["inline SVG without Icon wrapper", "react-icons used directly in product UI"],
+  Icon: [
+    "inline SVG without Icon wrapper",
+    "react-icons used directly in product UI",
+  ],
   AlertBanner: ["custom div alert", "Toast for persistent page-level status"],
   Toast: ["AlertBanner for transient feedback", "window.alert"],
   Card: ["unstyled div wrapper for grouped content"],
@@ -49,6 +52,10 @@ export const COMPOSES_WITH = {
   Card: ["Title", "Text", "Button"],
   Modal: ["Button", "Title", "Text"],
   CookieConsent: ["Button", "Text"],
+  DataTable: ["Pagination", "Checkbox", "EmptyState"],
+  ResizablePanelGroup: ["TreeView", "DataTable", "CodeBlockWindow"],
+  TreeView: ["ResizablePanelGroup", "CommandPalette"],
+  VirtualList: ["DataTable", "CommandPalette", "TreeView"],
   ProjectHero: ["Title", "Text", "Button"],
   StoryBlock: ["Title", "Text"],
 };

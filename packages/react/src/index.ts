@@ -126,6 +126,13 @@ export {
   Display,
   type DisplayProps,
 } from "../../../nextjs-app/shared/components/Display";
+export { DataTable } from "../../../nextjs-app/shared/components/DataTable";
+export type {
+  DataTableColumn,
+  DataTableProps,
+  DataTableSort,
+  DataTableSortDirection,
+} from "../../../nextjs-app/shared/components/DataTable";
 export { default as EmptyState } from "../../../nextjs-app/shared/components/EmptyState/EmptyState";
 export type {
   EmptyStateProps,
@@ -187,6 +194,11 @@ export { Logo } from "../../../nextjs-app/shared/components/Logo/Logo";
 export type { LogoProps } from "../../../nextjs-app/shared/components/Logo/Logo";
 export { default as MacWindowFrame } from "../../../nextjs-app/shared/components/MacWindowFrame/MacWindowFrame";
 export type { MacWindowFrameProps } from "../../../nextjs-app/shared/components/MacWindowFrame";
+export { ResizablePanelGroup } from "../../../nextjs-app/shared/components/ResizablePanelGroup";
+export type {
+  ResizablePanel,
+  ResizablePanelGroupProps,
+} from "../../../nextjs-app/shared/components/ResizablePanelGroup";
 export {
   Menu,
   MenuTrigger,
@@ -225,6 +237,11 @@ export type {
   NavMenuItem,
   NavMenuListProps,
 } from "../../../nextjs-app/shared/components/NavMenuList";
+export { TreeView } from "../../../nextjs-app/shared/components/TreeView";
+export type {
+  TreeViewNode,
+  TreeViewProps,
+} from "../../../nextjs-app/shared/components/TreeView";
 export {
   Pagination,
   type PaginationProps,
@@ -352,6 +369,11 @@ export {
   ValueCard,
   type ValueCardProps,
 } from "../../../nextjs-app/shared/components/ValueCard";
+export { VirtualList } from "../../../nextjs-app/shared/components/VirtualList";
+export type {
+  VirtualListProps,
+  VirtualListRange,
+} from "../../../nextjs-app/shared/components/VirtualList";
 export {
   VisuallyHidden,
   type VisuallyHiddenProps,

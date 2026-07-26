@@ -1,0 +1,41 @@
+{
+  "name": "@digitaltableteur/cli",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Typed CLI and programmatic API for the Digitaltableteur design system registry.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetriLahdelma/digitaltableteur.git",
+    "directory": "packages/cli"
+  },
+  "bin": {
+    "dt": "./src/cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./src/api.mjs"
+    },
+    "./manifest": "./src/manifest.mjs"
+  },
+  "files": [
+    "data",
+    "src",
+    "index.d.ts",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepack": "npm run build",
+    "test": "vitest run ../../scripts/design-system/dt-cli.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

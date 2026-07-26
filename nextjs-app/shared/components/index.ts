@@ -14,10 +14,7 @@ export type { AlertBannerProps } from "./AlertBanner/AlertBanner";
 export { default as Badge } from "./Badge/Badge";
 export type { BadgeProps, BadgeSize, BadgeTone, BadgeVariant } from "./Badge";
 export { default as Breadcrumb } from "./Breadcrumb/Breadcrumb";
-export type {
-  BreadcrumbItem,
-  BreadcrumbProps,
-} from "./Breadcrumb/Breadcrumb";
+export type { BreadcrumbItem, BreadcrumbProps } from "./Breadcrumb/Breadcrumb";
 export { default as Button } from "./Button/Button";
 export type {
   ButtonAsButton,
@@ -55,6 +52,13 @@ export type {
   ComplianceStatus,
 } from "./ComplianceCard";
 export { default as ContactForm } from "./ContactForm/ContactForm";
+export { DataTable } from "./DataTable";
+export type {
+  DataTableColumn,
+  DataTableProps,
+  DataTableSort,
+  DataTableSortDirection,
+} from "./DataTable";
 export { default as ChatWidget } from "./ChatWidget/ChatWidget";
 export type {
   ChatErrorMessages,
@@ -100,11 +104,7 @@ export { default as HelsinkiClock } from "./HelsinkiClock/HelsinkiClock";
 export { default as Kbd } from "./Kbd/Kbd";
 export type { KbdProps, KbdSize } from "./Kbd";
 export { default as StatusDot } from "./StatusDot/StatusDot";
-export type {
-  StatusDotProps,
-  StatusDotSize,
-  StatusDotTone,
-} from "./StatusDot";
+export type { StatusDotProps, StatusDotSize, StatusDotTone } from "./StatusDot";
 export { default as TextInput } from "./TextInput/TextInput";
 export type { TextInputProps } from "./TextInput/TextInput";
 export { default as Label } from "./Label/Label";
@@ -115,6 +115,11 @@ export { default as List } from "./List/List";
 export type { ListProps } from "./List/List";
 export { default as MacWindowFrame } from "./MacWindowFrame/MacWindowFrame";
 export type { MacWindowFrameProps } from "./MacWindowFrame";
+export { ResizablePanelGroup } from "./ResizablePanelGroup";
+export type {
+  ResizablePanel,
+  ResizablePanelGroupProps,
+} from "./ResizablePanelGroup";
 export {
   Menu,
   MenuTrigger,
@@ -160,6 +165,8 @@ export type { SelectOptionProps } from "./Select/SelectOption";
 export { default as ServicesGrid } from "./ServicesGrid/ServicesGrid";
 export { default as SiteTree } from "./SiteTree";
 export type { SiteTreeNode, SiteTreeProps } from "./SiteTree";
+export { TreeView } from "./TreeView";
+export type { TreeViewNode, TreeViewProps } from "./TreeView";
 export { default as Skeleton } from "./Skeleton/Skeleton";
 export type { SkeletonProps } from "./Skeleton";
 export { default as StudioMap } from "./StudioMap/StudioMap";
@@ -185,6 +192,8 @@ export type { ToastPosition, ToastProps, ToastTone } from "./Toast/Toast";
 export { default as TransformingActionInput } from "./TransformingActionInput/TransformingActionInput";
 export type { TransformingActionInputProps } from "./TransformingActionInput";
 export { ValueCard, type ValueCardProps } from "./ValueCard";
+export { VirtualList } from "./VirtualList";
+export type { VirtualListProps, VirtualListRange } from "./VirtualList";
 export { default as WorkNav } from "./WorkNav/WorkNav";
 export type { WorkNavPage, WorkNavProps } from "./WorkNav";
 

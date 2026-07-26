@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "scoringModel": "Evidence scorecard only. No weighted aggregate or model-authored quality score is produced.",
-  "componentCount": 167,
+  "componentCount": 171,
   "dimensions": {
     "apiEntropy": {
       "description": "Raw API surface and finite-choice state-space indicators; lower is not automatically better.",
-      "totalProps": 1108,
+      "totalProps": 1150,
       "maximumPropCount": 27,
       "maximumFiniteStateBits": 16.383,
       "largestSurfaces": [
@@ -165,8 +165,8 @@
     "recoverability": {
       "description": "Components with negative guidance, replacement guidance, or executable prop relationships.",
       "coverage": {
-        "numerator": 167,
-        "denominator": 167,
+        "numerator": 171,
+        "denominator": 171,
         "rate": 1
       },
       "machineRelationshipComponents": 3
@@ -174,9 +174,9 @@
     "composability": {
       "description": "Components connected to the relationship graph plus golden pattern retrieval evidence.",
       "componentCoverage": {
-        "numerator": 82,
-        "denominator": 167,
-        "rate": 0.491
+        "numerator": 86,
+        "denominator": 171,
+        "rate": 0.5029
       },
       "patternRetrieval": {
         "passed": 11,
@@ -188,14 +188,14 @@
     "contractClarity": {
       "description": "Source-backed prop documentation and complete intent/guidance/a11y/example/rationale evidence.",
       "propDocumentation": {
-        "numerator": 990,
-        "denominator": 1108,
-        "rate": 0.8935
+        "numerator": 1028,
+        "denominator": 1150,
+        "rate": 0.8939
       },
       "completeContractEvidence": {
-        "numerator": 142,
-        "denominator": 167,
-        "rate": 0.8503
+        "numerator": 146,
+        "denominator": 171,
+        "rate": 0.8538
       }
     }
   },
@@ -1158,6 +1158,34 @@
       "machineRelationships": []
     },
     {
+      "name": "DataTable",
+      "status": "alpha",
+      "tier": "organism",
+      "api": {
+        "propCount": 16,
+        "requiredPropCount": 4,
+        "documentedPropCount": 15,
+        "booleanAxisCount": 2,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 3.585,
+        "slotCount": 4,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
       "name": "Designerman",
       "status": "beta",
       "tier": "molecule",
@@ -1728,15 +1756,15 @@
     },
     {
       "name": "Kbd",
-      "status": "beta",
+      "status": "stable",
       "tier": "atom",
       "api": {
-        "propCount": 1,
+        "propCount": 2,
         "requiredPropCount": 0,
-        "documentedPropCount": 1,
+        "documentedPropCount": 2,
         "booleanAxisCount": 0,
-        "finiteChoiceAxisCount": 1,
-        "finiteStateBits": 1.585,
+        "finiteChoiceAxisCount": 2,
+        "finiteStateBits": 2.585,
         "slotCount": 0,
         "relationshipCount": 0
       },
@@ -2623,6 +2651,34 @@
       "machineRelationships": []
     },
     {
+      "name": "ResizablePanelGroup",
+      "status": "alpha",
+      "tier": "organism",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 1,
+        "documentedPropCount": 4,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1,
+        "slotCount": 2,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
       "name": "ScrollIndicator",
       "status": "stable",
       "tier": "atom",
@@ -3369,7 +3425,7 @@
         "documentedPropCount": 12,
         "booleanAxisCount": 3,
         "finiteChoiceAxisCount": 2,
-        "finiteStateBits": 8.17,
+        "finiteStateBits": 9.044,
         "slotCount": 0,
         "relationshipCount": 0
       },
@@ -3584,6 +3640,34 @@
       "machineRelationships": []
     },
     {
+      "name": "TreeView",
+      "status": "alpha",
+      "tier": "organism",
+      "api": {
+        "propCount": 10,
+        "requiredPropCount": 2,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 1.585,
+        "slotCount": 2,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
       "name": "ValueCard",
       "status": "stable",
       "tier": "molecule",
@@ -3609,6 +3693,34 @@
       },
       "recoverability": true,
       "composable": false,
+      "machineRelationships": []
+    },
+    {
+      "name": "VirtualList",
+      "status": "alpha",
+      "tier": "organism",
+      "api": {
+        "propCount": 10,
+        "requiredPropCount": 6,
+        "documentedPropCount": 9,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 1,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
       "machineRelationships": []
     },
     {
@@ -4930,5 +5042,5 @@
   ],
   "ok": true,
   "violations": [],
-  "generatedAt": "2026-07-26T14:31:53.582Z"
+  "generatedAt": "2026-07-26T18:37:27.011Z"
 }

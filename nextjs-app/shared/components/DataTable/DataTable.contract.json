@@ -1,0 +1,186 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "schemaVersion": 2,
+  "name": "DataTable",
+  "tier": "organism",
+  "group": "data-display",
+  "status": "alpha",
+  "description": "Accessible data table with typed columns, sortable headings, optional row selection, and density variants.",
+  "figma": null,
+  "radixPrimitive": null,
+  "element": "table",
+  "variants": {
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md",
+      "propSourced": true
+    },
+    "striped": {
+      "values": ["true", "false"],
+      "default": "false",
+      "propSourced": true
+    }
+  },
+  "slots": ["caption", "header", "cell", "emptyState"],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": ["Tab", "Space"],
+    "ariaRequirements": [
+      "native table, thead, tbody, th and td semantics",
+      "caption supplies the accessible table name",
+      "sortable headings expose aria-sort",
+      "selection uses labelled native checkboxes"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-07-26 — native table, caption, sorting, selection labels, keyboard behavior, and axe result reviewed in unit tests.",
+    "forcedColorsVerified": false,
+    "accessibilityTreeVerified": false
+  },
+  "tokens": {
+    "colors": [
+      "--color-text",
+      "--color-muted",
+      "--color-primary",
+      "--color-border-light",
+      "--color-light-bg",
+      "--color-neutral-bg"
+    ],
+    "spacing": [
+      "--space-internal-4",
+      "--space-internal-8",
+      "--space-internal-12",
+      "--space-internal-16",
+      "--space-layout-24",
+      "--space-layout-32"
+    ]
+  },
+  "lightDarkVerified": false,
+  "dense": "typed native data table; sortable columns, optional row selection, accessible caption, empty state, sm/md/lg density",
+  "keywords": ["table", "data", "rows", "columns", "sort", "selection", "grid"],
+  "props": {
+    "data": {
+      "optional": false,
+      "type": "Row[]",
+      "description": "Table rows."
+    },
+    "columns": {
+      "optional": false,
+      "type": "DataTableColumn<Row>[]",
+      "description": "Ordered typed column definitions."
+    },
+    "getRowId": {
+      "optional": false,
+      "type": "(row: Row) => string",
+      "description": "Stable row identifier."
+    },
+    "caption": {
+      "optional": false,
+      "type": "string",
+      "description": "Accessible table name."
+    },
+    "hideCaption": {
+      "optional": true,
+      "type": "boolean",
+      "description": "Visually hides the caption."
+    },
+    "sort": {
+      "optional": true,
+      "type": "DataTableSort | null",
+      "description": "Controlled sort state."
+    },
+    "onSortChange": {
+      "optional": true,
+      "type": "(sort: DataTableSort | null) => void",
+      "description": "Receives sort changes."
+    },
+    "selectedRowIds": {
+      "optional": true,
+      "type": "string[]",
+      "description": "Controlled selected row identifiers."
+    },
+    "onSelectionChange": {
+      "optional": true,
+      "type": "(rowIds: string[]) => void",
+      "description": "Receives selection changes."
+    },
+    "size": {
+      "optional": true,
+      "type": "union",
+      "values": ["sm", "md", "lg"],
+      "description": "Density scale."
+    },
+    "striped": {
+      "optional": true,
+      "type": "boolean",
+      "description": "Alternates row surfaces."
+    }
+  },
+  "forbiddenUse": [
+    "use it for page layout",
+    "omit a meaningful caption",
+    "use unstable row indexes as identifiers"
+  ],
+  "usage": {
+    "description": "Use DataTable for structured records that users need to compare, sort, or select. Provide stable row identifiers and a meaningful caption.",
+    "bestPractices": [
+      {
+        "guidance": true,
+        "description": "Give every table a concise caption that explains what its rows represent."
+      },
+      {
+        "guidance": true,
+        "description": "Use stable domain identifiers so selection survives sorting and data refreshes."
+      },
+      {
+        "guidance": true,
+        "description": "Make a column sortable only when its values have an understandable order."
+      },
+      {
+        "guidance": true,
+        "description": "Keep cell content concise and move detailed content into a dedicated view."
+      },
+      {
+        "guidance": false,
+        "description": "Do not use DataTable as a page-layout grid or a visual card collection."
+      },
+      {
+        "guidance": false,
+        "description": "Do not hide row actions until pointer hover; keyboard users must find them too."
+      }
+    ],
+    "anatomy": [
+      {
+        "name": "Caption",
+        "required": true,
+        "description": "Accessible name that explains the table's record set."
+      },
+      {
+        "name": "Header",
+        "required": true,
+        "description": "Column labels and optional sort controls."
+      },
+      {
+        "name": "Rows",
+        "required": true,
+        "description": "Typed records rendered as native table rows and cells."
+      },
+      {
+        "name": "Selection",
+        "required": false,
+        "description": "Native checkboxes for selecting individual or all visible rows."
+      }
+    ]
+  },
+  "playground": {
+    "defaults": {
+      "caption": "Project contributors",
+      "hideCaption": false,
+      "size": "md",
+      "striped": false
+    }
+  },
+  "composesWith": ["Pagination", "Checkbox", "EmptyState"]
+}

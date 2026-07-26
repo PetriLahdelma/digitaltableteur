@@ -1,3 +1,44 @@
+.discovery {
+  display: grid;
+  margin-block-end: var(--space-internal-12);
+  padding: var(--space-internal-16);
+  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(11rem, 1fr));
+  gap: var(--space-internal-16);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  background: var(--main-body-background-color);
+}
+
+.resultsHeader {
+  display: flex;
+  margin-block-end: var(--space-layout-24);
+  min-block-size: 2.5rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-internal-12);
+}
+
+.resultsHeader p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.empty {
+  display: grid;
+  margin-block-end: var(--space-layout-32);
+  padding: var(--space-layout-32);
+  justify-items: start;
+  gap: var(--space-internal-12);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  background: var(--main-body-background-color);
+}
+
+.empty h2,
+.empty p {
+  margin: 0;
+}
+
 .section {
   margin-block-end: var(--space-layout-32);
 }
@@ -15,12 +56,28 @@
 }
 
 @media (width <= 900px) {
+  .discovery {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .discovery > :first-child {
+    grid-column: 1 / -1;
+  }
+
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (width <= 600px) {
+  .discovery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .discovery > :first-child {
+    grid-column: auto;
+  }
+
   .grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -29,25 +86,23 @@
 /* .gallery prefix outguns the docs container's `.sbdocs a` link styling,
    which otherwise paints its underline and link color into the cards. */
 
-.gallery .card {
+.card {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-md, 8px);
   background: var(--main-body-background-color);
-  text-decoration: none;
   color: var(--color-text);
   transition: border-color 120ms ease;
   overflow: hidden;
 }
 
-.gallery .card:hover,
-.gallery .card:focus-visible {
+.card:hover,
+.card:focus-within {
   border-color: var(--color-primary);
-  text-decoration: none;
 }
 
-.gallery .card:focus-visible {
+.card:focus-within {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
@@ -58,12 +113,11 @@
   block-size: 120px;
   place-items: center;
   border-block-end: 1px solid var(--color-border-light);
-  background:
-    radial-gradient(
-      circle at 1px 1px,
-      var(--color-border-light) 1px,
-      transparent 0
-    );
+  background: radial-gradient(
+    circle at 1px 1px,
+    var(--color-border-light) 1px,
+    transparent 0
+  );
   background-color: var(--main-body-background-color);
   background-size: 16px 16px;
   pointer-events: none;
@@ -176,6 +230,13 @@
 
 .name {
   font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.name:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .dense {
@@ -184,4 +245,28 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+}
+
+.links {
+  display: flex;
+  margin-block-start: var(--space-internal-4);
+  gap: var(--space-internal-12);
+  font-size: var(--font-size-text-xs);
+}
+
+.gallery .links a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.gallery .links a:hover,
+.gallery .links a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
 }

@@ -36,6 +36,11 @@ export type {
 } from "../../../nextjs-app/shared/components/Grid/Grid";
 export { default as MacWindowFrame } from "../../../nextjs-app/shared/components/MacWindowFrame/MacWindowFrame";
 export type { MacWindowFrameProps } from "../../../nextjs-app/shared/components/MacWindowFrame";
+export { ResizablePanelGroup } from "../../../nextjs-app/shared/components/ResizablePanelGroup";
+export type {
+  ResizablePanel,
+  ResizablePanelGroupProps,
+} from "../../../nextjs-app/shared/components/ResizablePanelGroup";
 export {
   Section,
   type SectionProps,
