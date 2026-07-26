@@ -16,15 +16,23 @@
 }
 
 .sm {
-  font-size: calc(var(--font-size-text-xxs) * 0.85);
+  padding-inline: var(--space-internal-6);
+  block-size: var(--space-layout-24);
+  font-size: 0.75rem; /* 12px */
 }
 
 .md {
-  font-size: calc(var(--font-size-text-xxs) * 0.95);
+  padding-inline: var(--space-internal-8);
+  block-size: var(--space-layout-32);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem; /* 14px */
 }
 
 .lg {
-  font-size: var(--font-size-text-s);
+  padding-inline: var(--space-internal-12);
+  block-size: var(--space-layout-40);
+  border-radius: var(--radius-lg);
+  font-size: 1rem; /* 16px */
 }
 
 @media (forced-colors: active) {
