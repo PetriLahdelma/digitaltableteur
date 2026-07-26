@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T14:20:45.220Z",
+  "generatedAt": "2026-07-26T15:52:06.017Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -12999,8 +12999,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "aria-requirements",
