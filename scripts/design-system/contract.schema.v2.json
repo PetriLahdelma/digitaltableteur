@@ -261,7 +261,7 @@
                 },
                 "accessibilityTreeVerified": {
                     "type": "boolean",
-                    "description": "True when an accessibility-tree snapshot has been captured + committed for every required story. The snapshot is the role/name/state/property tree that drives every screen reader's narration; future structural ARIA regressions break CI on diff. Captured via test-runner postVisit + Playwright locator.ariaSnapshot() and stored under packages/react/__a11y-snapshots__/<story-id>.yaml. Required at status: stable (validator enforces). Replaces the manual screenReaderVerified gate as the practical, automatable stable bar \u2014 real SR audio nuance (announcement timing, voice quality) remains optional via screenReaderVerified for consumers who invest in paid SR SaaS or do manual passes."
+                    "description": "True when an accessibility-tree snapshot has been captured + committed for every required story. The snapshot is the role/name/state/property tree that drives every screen reader's narration; future structural ARIA regressions break CI on diff. Captured via test-runner postVisit + Playwright locator.ariaSnapshot() and stored under the component's own __a11y-snapshots__/<story-id>.yaml (nextjs-app/shared/**/<Component>/__a11y-snapshots__/). Required at status: stable (validator enforces). Replaces the manual screenReaderVerified gate as the practical, automatable stable bar \u2014 real SR audio nuance (announcement timing, voice quality) remains optional via screenReaderVerified for consumers who invest in paid SR SaaS or do manual passes."
                 },
                 "realBrowserForcedColorsVerified": {
                     "type": "boolean",
