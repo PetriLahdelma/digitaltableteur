@@ -6,7 +6,7 @@ import contract from "./Kbd.contract.json";
 const meta = {
   title: "Content/Kbd",
   component: Kbd,
-  tags: ["beta", "autodocs"],
+  tags: ["stable", "autodocs"],
   parameters: {
     layout: "centered",
     a11y: { test: "error" },

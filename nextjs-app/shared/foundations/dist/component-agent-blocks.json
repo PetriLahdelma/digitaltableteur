@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T16:55:21.545Z",
+  "generatedAt": "2026-07-26T17:56:46.270Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -13028,7 +13028,7 @@
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-07-06 — alpha→beta: created the Figma component (size variant keycap set, border/bg/text bound to DT/Color, radius from radius/sm) at node 1005-1638, the only remaining beta blocker. Static inline element; axe asserted in unit test and story gate; forced-colors border verified."
+          "note": "2026-07-06 — alpha→beta: created the Figma component (size variant keycap set, border/bg/text bound to DT/Color, radius from radius/sm) at node 1005-1638, the only remaining beta blocker. Static inline element; axe asserted in unit test and story gate; forced-colors border verified. 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; primary/secondary variant axis and sm/md/lg size ladder verified distinct; keycap remains static inline text with no interactive semantics."
         }
       ],
       "docOrigin": {
@@ -27340,8 +27340,8 @@
         "Text",
         "Button",
         "CheckboxGroup",
-        "Badge",
         "TextArea",
+        "Badge",
         "Title"
       ],
       "prefersOver": [],

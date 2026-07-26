@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-26T16:55:21.838Z",
+  "generatedAt": "2026-07-26T17:56:46.527Z",
   "summary": {
     "componentCount": 168,
     "statusCounts": {
-      "beta": 44,
-      "stable": 100,
+      "beta": 43,
+      "stable": 101,
       "alpha": 23,
       "deprecated": 1
     },
@@ -13,14 +13,14 @@
     "catalogCompletenessPercent": 90.3,
     "codebaseComponentCount": 186,
     "usageCoveragePercent": 92.9,
-    "componentsWithProductionUsage": 35,
+    "componentsWithProductionUsage": 36,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
     "importSurface": "@dt/<ComponentName>",
     "npmPackage": null,
     "semverDoc": "docs/PUBLIC_API.md",
-    "stableCount": 100,
+    "stableCount": 101,
     "releaseGate": "npm run release:gate"
   },
   "tokens": {
@@ -79,10 +79,10 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 168,
     "withAnyUsage": 156,
-    "withProductionUsage": 35,
+    "withProductionUsage": 36,
     "uniqueImportedComponents": 156,
-    "totalEvidenceRows": 772,
-    "aliasImportFiles": 395,
+    "totalEvidenceRows": 773,
+    "aliasImportFiles": 396,
     "relativeImportFiles": 410,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -107,8 +107,8 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 44,
-        "stable": 100,
+        "beta": 43,
+        "stable": 101,
         "alpha": 23,
         "deprecated": 1
       },
@@ -24400,7 +24400,7 @@
         "name": "Kbd",
         "tier": "atom",
         "group": "display",
-        "status": "beta",
+        "status": "stable",
         "description": "Inline keyboard-key indicator rendered as a semantic kbd keycap.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1005-1638",
         "radixPrimitive": null,
@@ -24440,9 +24440,10 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-06 — alpha→beta: created the Figma component (size variant keycap set, border/bg/text bound to DT/Color, radius from radius/sm) at node 1005-1638, the only remaining beta blocker. Static inline element; axe asserted in unit test and story gate; forced-colors border verified.",
+          "reviewedNote": "2026-07-06 — alpha→beta: created the Figma component (size variant keycap set, border/bg/text bound to DT/Color, radius from radius/sm) at node 1005-1638, the only remaining beta blocker. Static inline element; axe asserted in unit test and story gate; forced-colors border verified. 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; primary/secondary variant axis and sm/md/lg size ladder verified distinct; keycap remains static inline text with no interactive semantics.",
           "forcedColorsVerified": true,
-          "accessibilityTreeVerified": true
+          "accessibilityTreeVerified": true,
+          "realBrowserForcedColorsVerified": true
         },
         "tokens": {
           "colors": [
@@ -24537,17 +24538,35 @@
           "Text",
           "Tooltip",
           "CodeSnippet"
+        ],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          }
         ]
       },
       "spec": "# Kbd\n\n## Intent\nInline keyboard-key indicator for docs, tooltips, and command hints. Renders\na semantic `<kbd>` styled as a keycap with the mono font token.\n\n## Interaction contract\n- Static, non-interactive; no keyboard or pointer behavior of its own.\n- Screen readers: announced as regular text; `<kbd>` conveys the semantic.\n\n## Do / don't\n- Do: compose combos as sibling Kbds with a literal separator (`⌘ + K`).\n- Do: match `size` to the surrounding text scale.\n- Don't: use Kbd as a button; it never receives focus or handles clicks.\n- Don't: put whole phrases inside one Kbd; one key (or chord symbol) per cap.\n\n## Design notes\n- Tokens: `--font-mono`, `--color-border`, `--color-surface`, `--color-text`,\n  `--radius-sm`, `--space-internal-2/6`.\n- The thicker bottom border gives the keycap depth without shadows.\n- Forced colors: border maps to `ButtonText`.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Kbd",
-        "importCount": 2,
-        "productionImportCount": 0,
+        "importCount": 3,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Kbd",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -24698,7 +24717,7 @@
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-06 — alpha→beta: created the Figma component (size variant keycap set, border/bg/text bound to DT/Color, radius from radius/sm) at node 1005-1638, the only remaining beta blocker. Static inline element; axe asserted in unit test and story gate; forced-colors border verified."
+            "note": "2026-07-06 — alpha→beta: created the Figma component (size variant keycap set, border/bg/text bound to DT/Color, radius from radius/sm) at node 1005-1638, the only remaining beta blocker. Static inline element; axe asserted in unit test and story gate; forced-colors border verified. 2026-07-26 — beta→stable: 4-mode AT (base/light/dark/forced-colors) recaptured on a non-6010 Storybook; accessibility tree and real-browser forced-colors confirmed; primary/secondary variant axis and sm/md/lg size ladder verified distinct; keycap remains static inline text with no interactive semantics."
           }
         ],
         "docOrigin": {
@@ -50438,8 +50457,8 @@
           "Text",
           "Button",
           "CheckboxGroup",
-          "Badge",
           "TextArea",
+          "Badge",
           "Title"
         ],
         "prefersOver": [],

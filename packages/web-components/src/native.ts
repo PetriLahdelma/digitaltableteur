@@ -219,7 +219,7 @@ export type {
   DtIconButtonVariant,
 } from "./native/icon-button";
 export { DtKbdElement } from "./native/kbd";
-export type { DtKbdSize } from "./native/kbd";
+export type { DtKbdSize, DtKbdVariant } from "./native/kbd";
 export { DtLanguageSwitcherElement } from "./native/language-switcher";
 export type { DtLanguageSwitcherOption } from "./native/language-switcher";
 export { DtLinkElement } from "./native/link";
