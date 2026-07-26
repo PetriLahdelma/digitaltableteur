@@ -1,16 +1,16 @@
 {
   "storyId": "web-components-forms-textinput-example",
   "mode": "light",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:26:30.780Z",
-  "runner": "backfill",
+  "sourceSHA": "b7ca85a33df1343202006569dc6680dee1c20a8b",
+  "capturedAt": "2026-07-26T19:41:14.665Z",
+  "runner": "fix-textinput-evidence",
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }

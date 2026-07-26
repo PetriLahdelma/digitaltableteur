@@ -1,18 +1,11 @@
 {
   "storyId": "forms-textinput-example",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:43:52.519Z",
-  "runner": "backfill",
+  "sourceSHA": "b7ca85a33df1343202006569dc6680dee1c20a8b",
+  "capturedAt": "2026-07-26T19:41:37.598Z",
+  "runner": "fix-textinput-evidence",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
-      "passed": true
-    },
-    "forced-colors-real-browser": {
       "passed": true
     }
   }
