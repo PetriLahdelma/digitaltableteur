@@ -9,6 +9,14 @@
     "radixPrimitive": null,
     "element": "kbd",
     "variants": {
+        "variant": {
+            "values": [
+                "primary",
+                "secondary"
+            ],
+            "default": "primary",
+            "propSourced": true
+        },
         "size": {
             "values": [
                 "sm",
@@ -43,11 +51,18 @@
         "colors": [
             "--color-border",
             "--color-surface",
-            "--color-text"
+            "--color-text",
+            "--color-neutral-bg",
+            "--color-neutral-text"
         ],
         "spacing": [
             "--space-internal-2",
-            "--space-internal-6"
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-layout-24",
+            "--space-layout-32",
+            "--space-layout-40"
         ],
         "typography": [
             "--font-mono"
@@ -65,6 +80,15 @@
                 "lg"
             ],
             "description": "Size token."
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "primary",
+                "secondary"
+            ],
+            "description": "Visual style. `primary` is a filled light-gray keycap with a bottom edge\nthat reads like a physical key; `secondary` is the flatter outlined chip."
         }
     },
     "displayName": "Kbd",

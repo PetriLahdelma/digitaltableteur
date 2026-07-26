@@ -13,6 +13,12 @@ const meta = {
     contractStatus: contract.status,
   },
   argTypes: {
+    variant: {
+      control: "radio",
+      options: ["primary", "secondary"],
+      description: "Filled keycap (primary) or flat outlined chip (secondary)",
+      table: { defaultValue: { summary: "primary" } },
+    },
     size: {
       control: "radio",
       options: ["sm", "md", "lg"],
@@ -70,6 +76,24 @@ export const Sizes: Story = {
   render: () => (
     <span>
       <Kbd size="sm">Shift</Kbd> <Kbd size="md">Shift</Kbd> <Kbd size="lg">Shift</Kbd>
+    </span>
+  ),
+};
+
+export const Variants: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "primary is a filled keycap with a bottom edge that reads like a physical key; secondary is the flatter outlined chip.",
+      },
+    },
+  },
+  render: () => (
+    <span>
+      <Kbd variant="primary">Esc</Kbd> <Kbd variant="secondary">Esc</Kbd>
     </span>
   ),
 };

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T15:52:06.017Z",
+  "generatedAt": "2026-07-26T16:55:21.545Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -12905,6 +12905,15 @@
             "lg"
           ],
           "description": "Size token."
+        },
+        "variant": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "primary",
+            "secondary"
+          ],
+          "description": "Visual style. `primary` is a filled light-gray keycap with a bottom edge\nthat reads like a physical key; `secondary` is the flatter outlined chip."
         }
       },
       "propRelationships": [],
@@ -12916,6 +12925,13 @@
             "lg"
           ],
           "default": "sm"
+        },
+        "variant": {
+          "values": [
+            "primary",
+            "secondary"
+          ],
+          "default": "primary"
         }
       },
       "cvaVariants": {},
@@ -12952,7 +12968,7 @@
         "Icon"
       ],
       "prefersOver": [],
-      "declaredPropCount": 1,
+      "declaredPropCount": 2,
       "guidelines": [
         {
           "level": "should",
