@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2344,
+  "warningCount": 2345,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -6994,6 +6994,15 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
       "id": "nextjs-app/shared/components/ImagePlaceholder/ImagePlaceholder.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "file": "nextjs-app/shared/components/Kbd/Kbd.module.css",
+      "line": 28,
+      "column": 14,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "nextjs-app/shared/components/Kbd/Kbd.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "file": "nextjs-app/shared/components/Label/Label.module.css",
