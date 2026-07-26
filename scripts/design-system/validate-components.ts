@@ -14,6 +14,7 @@ import { VARIANT_PROP_NAMES } from './cva-sync-lib.mjs'
 import { validateContractSchema } from './contract-schema-lib.mjs'
 import { docFieldErrors } from './doc-fields-rules.mjs'
 import { docTierFor } from './doc-tiers.mjs'
+import { deriveA11yCriteria } from './derive-a11y-criteria.mjs'
 
 type VariantMap = Record<string, { values: string[]; default: string | null }>
 
@@ -622,6 +623,31 @@ export function validateComponentsDir(root: string): ValidationResult {
             // Windows-specific system-color values, which Chromium emulates).
             if ((manifest.a11y as any).realBrowserForcedColorsVerified !== true) {
                 errors.push(`${name}.contract.json: stable requires a11y.realBrowserForcedColorsVerified to be true (run npm run test:stories:hc; flip to true after that pass succeeds for every required story)`)
+            }
+
+            // Per-component evidence hard-gate (Phase 1 prove-a11y). The booleans
+            // above assert; this proves. A stable component's axe + accessibility-
+            // tree criteria must resolve to `automated` — i.e. a FRESH, PASSING
+            // evidence record backs each one (derive-a11y-criteria + the
+            // __a11y-evidence__ records), not a hand-set boolean. This is the
+            // per-component promotion barrier; check:doc-semantics enforces the
+            // same globally as a ratchet, but a component must not reach stable on
+            // trust alone. forced-colors is checked more leniently below: real-
+            // browser forced-colors axe is not cleanly separable from the AT-tree
+            // gate (axe is disabled under forced-colors), so the boolean-backed
+            // `manual` fallback is tolerated there; only a true gap is blocked.
+            const a11yCriteria = deriveA11yCriteria(manifest, { componentDir: dir })
+            for (const id of ['axe-no-violations', 'accessibility-tree']) {
+                const criterion = a11yCriteria.find((c) => c.id === id)
+                // A criterion the contract exempts (e.g. axeTestExempt) is not emitted;
+                // only gate the ones that apply to this component.
+                if (criterion && criterion.verificationMode !== 'automated') {
+                    errors.push(`${name}.contract.json: stable requires fresh passing a11y evidence for '${id}' (currently ${criterion.verificationMode}${criterion.note ? `: ${criterion.note}` : ''}). Re-capture via DT_UPDATE_A11Y_SNAPSHOTS=1 npm run test:stories:matrix:ci, then commit the ${name}/__a11y-evidence__ records.`)
+                }
+            }
+            const forcedColorsCriterion = a11yCriteria.find((c) => c.id === 'forced-colors-real-browser')
+            if (forcedColorsCriterion && forcedColorsCriterion.verificationMode === 'unverified') {
+                errors.push(`${name}.contract.json: stable requires forced-colors verification for 'forced-colors-real-browser' (currently unverified${forcedColorsCriterion.note ? `: ${forcedColorsCriterion.note}` : ''}) — a passing forced-colors evidence record, or a11y.realBrowserForcedColorsVerified/forcedColorsVerified set after a real HC pass.`)
             }
 
             // Production-consumer evidence. "Used in shipping product" is

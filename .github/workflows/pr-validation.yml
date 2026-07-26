@@ -10,8 +10,9 @@ jobs:
     runs-on: [self-hosted, digitaltableteur]
     # Backstop: the farm's dashboard collector is completion-only, so a hung job is INVISIBLE
     # on the fleet board while it zombies a runner slot (GitHub's default timeout is 6h). A
-    # clean run takes ~10 min; anything past 30 is wedged.
-    timeout-minutes: 30
+    # a clean run takes ~20 min (two real-Chromium passes: theme matrix + forced-colors);
+    # anything past 45 is wedged.
+    timeout-minutes: 45
     steps:
       # Full history so the a11y-evidence freshness path-guard (a11y-evidence-lib.mjs
       # `isEvidenceFresh`) can run `git log <evidenceSHA>..HEAD` per component. A shallow
@@ -77,6 +78,11 @@ jobs:
       # container each run — the same proven pattern as petritapanilahdelma's ci.yml on this farm.
       - run: npx playwright install chromium --with-deps
       - run: npm run test:stories:matrix:ci
+      # Forced-colors real-browser pass (was weekly-only). Now that forced-colors
+      # AT evidence is load-bearing for the a11y evidence gate, enforce the
+      # forced-colors snapshot diff per PR too. Boots its own Storybook, so it is
+      # a second ~10-min Chromium pass — hence timeout-minutes 45 above.
+      - run: npm run test:stories:hc:ci
       # Controls-operability ratchet: drives the real Controls panel per component
       # (Human-Simulated audit) against its own Storybook boot. Raise --min in
       # audit:controls:ci as remediation batches land; end state is --min 100.
