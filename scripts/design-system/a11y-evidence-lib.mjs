@@ -138,32 +138,91 @@ export function isEvidenceFresh(componentDir, record, opts = {}) {
 const gitGuardCache = new Map();
 
 /**
- * @returns {boolean | null} true if a SOURCE file under `componentDir` changed
- * in `sha..HEAD`, false if none did, null if git couldn't answer (e.g. a
- * shallow CI clone where `sha` is unreachable — callers then use the time
- * window). The component's own `__a11y-evidence__` / `__a11y-snapshots__`
- * artifacts are excluded: committing the evidence must not invalidate it, and a
- * snapshot re-capture is not a source change.
+ * CSS properties that can change what axe or a screen reader perceives: anything
+ * affecting color/contrast, or the accessibility tree / reading order. Geometry
+ * and type-size (border-radius, block-size, padding, margin, font-size, gap,
+ * inset, transform, …) are deliberately absent — they cannot change contrast or
+ * the a11y tree, so a diff touching only those is a11y-NEUTRAL and must not
+ * invalidate committed evidence. (Regressions in the relevant set are also
+ * caught live by the CI axe + AT-snapshot runs; this guard governs provenance.)
+ */
+const A11Y_RELEVANT_CSS_PROP =
+  /(?:^|[\s;{])[a-z-]*color\s*:|(?:^|[\s;{])(?:background|box-shadow|text-shadow|outline|fill|stroke|opacity|filter|backdrop-filter|text-decoration|mix-blend-mode|display|visibility|content|order|direction|writing-mode|float|clip[a-z-]*)\s*:/i;
+
+/**
+ * Does a unified git diff of one CSS file add or remove an a11y-relevant
+ * declaration? Only +/- content lines are inspected (not the +++/--- headers).
+ * @param {string} diff
+ * @returns {boolean}
+ */
+export function cssDiffIsA11yRelevant(diff) {
+  return diff.split("\n").some(
+    (line) =>
+      /^[+-]/.test(line) &&
+      !/^[+-]{3}/.test(line) &&
+      A11Y_RELEVANT_CSS_PROP.test(line),
+  );
+}
+
+/**
+ * Given the source files that changed under a component (already excluding
+ * artifacts, contracts, specs, tests, and index barrels), decide whether the
+ * change could affect the component's accessibility.
+ *
+ * - A non-CSS source file (.tsx/.ts, incl. stories) can change structure, roles,
+ *   or props → a11y-relevant.
+ * - A CSS file is a11y-relevant only if its diff touches a contrast- or
+ *   tree-affecting property. A geometry/type-size-only change is a11y-neutral.
+ *
+ * @param {string[]} changedFiles
+ * @param {(file: string) => string} getCssDiff unified diff for a CSS file
+ * @returns {boolean}
+ */
+export function isA11yRelevantChange(changedFiles, getCssDiff) {
+  if (changedFiles.length === 0) return false;
+  if (changedFiles.some((f) => !f.endsWith(".css"))) return true;
+  return changedFiles.some((f) => cssDiffIsA11yRelevant(getCssDiff(f)));
+}
+
+/**
+ * @returns {boolean | null} true if an a11y-RELEVANT source change happened under
+ * `componentDir` in `sha..HEAD`, false if nothing relevant changed (incl. only
+ * geometry/type-size CSS or only non-rendered files), null if git couldn't
+ * answer (shallow clone — callers then use the time window).
+ *
+ * Excluded outright (never invalidate): the component's own evidence/snapshot/
+ * visual artifacts, and files that cannot affect the rendered a11y — contract
+ * JSON, spec markdown, tests, and the index barrel.
  */
 function defaultGitChangedSince(sha, componentDir) {
   const key = `${sha}::${componentDir}`;
   if (gitGuardCache.has(key)) return gitGuardCache.get(key);
   let result;
   try {
-    const out = execFileSync(
+    const excludes = [
+      `:(exclude)${componentDir}/${EVIDENCE_DIRNAME}`,
+      `:(exclude)${componentDir}/__a11y-snapshots__`,
+      `:(exclude)${componentDir}/__visual__`,
+      `:(exclude)${componentDir}/*.contract.json`,
+      `:(exclude)${componentDir}/*.spec.md`,
+      `:(exclude)${componentDir}/*.test.tsx`,
+      `:(exclude)${componentDir}/*.test.ts`,
+      `:(exclude)${componentDir}/index.ts`,
+    ];
+    const changed = execFileSync(
       "git",
-      [
-        "log",
-        "--oneline",
-        `${sha}..HEAD`,
-        "--",
-        componentDir,
-        `:(exclude)${componentDir}/${EVIDENCE_DIRNAME}`,
-        `:(exclude)${componentDir}/__a11y-snapshots__`,
-      ],
+      ["diff", "--name-only", sha, "HEAD", "--", componentDir, ...excludes],
       { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
+    )
+      .trim()
+      .split("\n")
+      .filter(Boolean);
+    result = isA11yRelevantChange(changed, (file) =>
+      execFileSync("git", ["diff", sha, "HEAD", "--", file], {
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "ignore"],
+      }),
     );
-    result = out.trim().length > 0;
   } catch {
     result = null;
   }
