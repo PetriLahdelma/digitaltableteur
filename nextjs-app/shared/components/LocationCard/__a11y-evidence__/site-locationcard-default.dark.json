@@ -1,16 +1,16 @@
 {
   "storyId": "site-locationcard-default",
   "mode": "dark",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:34:08.371Z",
-  "runner": "backfill",
+  "sourceSHA": "63c2fd02ac4617d4e01650175b1e3da8f88dd0d4",
+  "capturedAt": "2026-07-26T19:57:28.832Z",
+  "runner": "promote-locationcard-stable",
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }
