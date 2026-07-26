@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2350,
+  "warningCount": 2344,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -14620,33 +14620,6 @@
     },
     {
       "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
-      "line": 43,
-      "column": 23,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
-      "line": 92,
-      "column": 23,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
-      "line": 149,
-      "column": 25,
-      "rule": "rhythmguard/prefer-token",
-      "severity": "warning",
-      "text": "Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"0.375rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
       "line": 33,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
@@ -14761,33 +14734,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"2px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
-      "line": 43,
-      "column": 23,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
-      "line": 92,
-      "column": 23,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::2"
-    },
-    {
-      "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
-      "line": 149,
-      "column": 25,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/SlideButton/SlideButton.module.css::rhythmguard/use-scale::Unexpected off-scale value \"0.375rem\". Use scale values (nearest: 4px or 8px). (rhythmguard/use-scale)::3"
     },
     {
       "file": "nextjs-app/shared/components/SlideButton/SlideButton.module.css",
