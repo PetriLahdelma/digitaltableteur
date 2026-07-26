@@ -6,7 +6,9 @@ import * as fs from "fs";
 import * as path from "path";
 import { PNG } from "pngjs";
 import pixelmatch from "pixelmatch";
+import AxeBuilder from "@axe-core/playwright";
 import { captureStoryAccessibilityTree } from "../scripts/design-system/a11y-snapshot-capture-lib.mjs";
+import { writeEvidenceRecord } from "../scripts/design-system/a11y-evidence-lib.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -366,6 +368,58 @@ async function captureAccessibilityTree(
   }
 }
 
+// Phase 1 (prove-a11y) PR 1 — EMIT. Write an evidence record next to each
+// snapshot recording the real axe pass/fail + provenance, so a later phase can
+// generate `verificationMode: automated` from a proven run instead of a
+// hand-set contract boolean. Gated on the same write flags as snapshots, so CI
+// enforce runs stay read-only and this changes nothing downstream yet.
+const EMIT_A11Y_EVIDENCE = UPDATE_AT || BOOTSTRAP_AT;
+
+async function captureA11yEvidence(
+  page: import("playwright").Page,
+  rawStoryId: string,
+  storyId: string,
+) {
+  if (!EMIT_A11Y_EVIDENCE) return;
+  const componentDir = (await loadStoryDirMap()).get(rawStoryId);
+  if (!componentDir) return;
+
+  const suffix = snapshotVariantSuffix();
+  const mode = suffix ? suffix.slice(1) : "light";
+  const forced = FORCED_COLORS === "active";
+
+  try {
+    let axe = new AxeBuilder({ page })
+      .include("#storybook-root")
+      .exclude("[data-axe-ignore]");
+    // Mirror .storybook/preview.tsx: under forced-colors the UA overrides author
+    // colors, so color-contrast is not a meaningful author-side check.
+    if (forced) axe = axe.disableRules(["color-contrast"]);
+    const results = await axe.analyze();
+    const axeViolations = results.violations.length;
+
+    writeEvidenceRecord(componentDir, storyId, suffix, {
+      mode,
+      runner: process.env.DT_A11Y_RUNNER ?? null,
+      checks: {
+        "axe-no-violations": { passed: axeViolations === 0, axeViolations },
+        // captureAccessibilityTree threw if the committed tree drifted or a
+        // required snapshot was missing, so reaching here means the tree holds.
+        "accessibility-tree": { passed: true },
+        ...(forced
+          ? { "forced-colors-real-browser": { passed: axeViolations === 0 } }
+          : {}),
+      },
+    });
+  } catch (err) {
+    // Emission must never break a capture run (non-breaking PR). Surface it and
+    // move on; the absence of a record is itself the honest signal downstream.
+    console.warn(
+      `[a11y-evidence] skipped ${storyId}${suffix}: ${(err as Error).message}`,
+    );
+  }
+}
+
 const config: TestRunnerConfig = {
   // The iframe page is loaded once per worker by `defaultPrepare`, so the preview
   // module's `parameters.a11y` IIFE only sees `matchMedia('(forced-colors: active)')`
@@ -458,6 +512,9 @@ const config: TestRunnerConfig = {
 
     // AT-tree snapshots are the DSharp-style gate for Phase 2.
     await captureAccessibilityTree(page, context.id, { betaMatrix });
+
+    // Phase 1 (prove-a11y): record the real axe pass/fail + provenance beside it.
+    await captureA11yEvidence(page, context.id, storyId);
 
     // Visual pixel diffs are opt-in (Phase 4). Running them on every story makes
     // the matrix flaky while Vite is still optimizing dependencies.
