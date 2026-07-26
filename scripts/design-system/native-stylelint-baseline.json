@@ -1,7 +1,7 @@
 {
   "generatedBy": "npm run lint:css:update",
   "templateCount": 86,
-  "warningCount": 626,
+  "warningCount": 627,
   "warnings": [
     {
       "column": 21,
@@ -2045,6 +2045,15 @@
       "severity": "warning",
       "text": "Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)",
       "id": "packages/web-components/src/native/icon.ts::rhythmguard/use-scale::Unexpected off-scale value \"1.25rem\". Use scale values (nearest: 16px or 24px). (rhythmguard/use-scale)::2"
+    },
+    {
+      "column": 16,
+      "file": "packages/web-components/src/native/kbd.ts",
+      "line": 76,
+      "rule": "rhythmguard/use-scale",
+      "severity": "warning",
+      "text": "Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
+      "id": "packages/web-components/src/native/kbd.ts::rhythmguard/use-scale::Unexpected off-scale value \"0.875rem\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
     },
     {
       "column": 13,
