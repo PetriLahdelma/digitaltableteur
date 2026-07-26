@@ -1,0 +1,16 @@
+{
+  "storyId": "site-sentrysummarycard-playground",
+  "mode": "dark",
+  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
+  "capturedAt": "2026-07-26T13:39:36.322Z",
+  "runner": "backfill",
+  "checks": {
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    },
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}
