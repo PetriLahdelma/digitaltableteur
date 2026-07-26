@@ -5,12 +5,17 @@ import * as path from "node:path";
 import {
   EVIDENCE_DIRNAME,
   STALE_DAYS,
+  cssDiffIsA11yRelevant,
   evidenceCheckVerdicts,
   evidenceFile,
+  isA11yRelevantChange,
   isEvidenceFresh,
   readEvidenceRecords,
   writeEvidenceRecord,
 } from "./a11y-evidence-lib.mjs";
+
+const diff = (...addedLines) =>
+  ["--- a/x.module.css", "+++ b/x.module.css", "@@ -1,2 +1,2 @@", ...addedLines].join("\n");
 
 let tmp;
 
@@ -127,5 +132,56 @@ describe("evidenceCheckVerdicts", () => {
 
   it("returns {} for a component with no evidence", () => {
     expect(evidenceCheckVerdicts(path.join(tmp, "none"), fresh)).toEqual({});
+  });
+});
+
+describe("cssDiffIsA11yRelevant", () => {
+  it("is NEUTRAL for geometry / type-size only diffs (the Kbd case)", () => {
+    expect(cssDiffIsA11yRelevant(diff("+  border-radius: var(--radius-md);"))).toBe(false);
+    expect(cssDiffIsA11yRelevant(diff("+  block-size: var(--space-layout-32);"))).toBe(false);
+    expect(cssDiffIsA11yRelevant(diff("+  padding-inline: var(--space-internal-8);"))).toBe(false);
+    expect(cssDiffIsA11yRelevant(diff("-  font-size: 0.85rem;", "+  font-size: 0.875rem;"))).toBe(false);
+    expect(cssDiffIsA11yRelevant(diff("+  gap: var(--space-internal-4);", "+  transform: translateY(2px);"))).toBe(false);
+  });
+
+  it("is RELEVANT when contrast/color properties change", () => {
+    expect(cssDiffIsA11yRelevant(diff("+  color: var(--color-text);"))).toBe(true);
+    expect(cssDiffIsA11yRelevant(diff("-  background-color: #fff;", "+  background-color: #eee;"))).toBe(true);
+    expect(cssDiffIsA11yRelevant(diff("+  border-color: var(--color-border);"))).toBe(true);
+    expect(cssDiffIsA11yRelevant(diff("+  box-shadow: 0 0 0 2px blue;"))).toBe(true);
+    expect(cssDiffIsA11yRelevant(diff("+  opacity: 0.4;"))).toBe(true);
+  });
+
+  it("is RELEVANT when tree / reading-order properties change", () => {
+    expect(cssDiffIsA11yRelevant(diff("+  display: none;"))).toBe(true);
+    expect(cssDiffIsA11yRelevant(diff("+  visibility: hidden;"))).toBe(true);
+    expect(cssDiffIsA11yRelevant(diff("+  order: 2;"))).toBe(true);
+    expect(cssDiffIsA11yRelevant(diff('+  content: "→";'))).toBe(true);
+  });
+
+  it("ignores +++/--- headers and unchanged context lines", () => {
+    // headers mention the file, not a declaration; a context (space-prefixed)
+    // color line that did not change must not count.
+    expect(cssDiffIsA11yRelevant("+++ b/color.module.css\n--- a/color.module.css")).toBe(false);
+    expect(cssDiffIsA11yRelevant("@@ -1 +1 @@\n   color: red;")).toBe(false);
+  });
+});
+
+describe("isA11yRelevantChange", () => {
+  const noCss = () => "";
+  it("false when nothing changed", () => {
+    expect(isA11yRelevantChange([], noCss)).toBe(false);
+  });
+  it("true for any non-CSS source file (tsx/ts/stories)", () => {
+    expect(isA11yRelevantChange(["c/Kbd.tsx"], noCss)).toBe(true);
+    expect(isA11yRelevantChange(["c/Kbd.stories.tsx"], noCss)).toBe(true);
+  });
+  it("delegates CSS-only changes to the diff classifier", () => {
+    expect(isA11yRelevantChange(["c/Kbd.module.css"], () => diff("+  border-radius: 4px;"))).toBe(false);
+    expect(isA11yRelevantChange(["c/Kbd.module.css"], () => diff("+  color: red;"))).toBe(true);
+  });
+  it("true if ANY changed file is relevant (mixed css)", () => {
+    const getDiff = (f) => (f.includes("bad") ? diff("+  color: red;") : diff("+  padding: 4px;"));
+    expect(isA11yRelevantChange(["c/ok.module.css", "c/bad.module.css"], getDiff)).toBe(true);
   });
 });
