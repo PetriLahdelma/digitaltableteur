@@ -1,8 +1,8 @@
 {
   "storyId": "content-kbd-playground",
   "mode": "dark",
-  "sourceSHA": "b0365b012055115ee08ef5fc533942ff6e8aa62d",
-  "capturedAt": "2026-07-26T15:48:23.107Z",
+  "sourceSHA": "3d39becbbd8b7b5839cd2b2faa1832dd39619c08",
+  "capturedAt": "2026-07-26T16:54:49.193Z",
   "runner": "recapture",
   "checks": {
     "accessibility-tree": {
