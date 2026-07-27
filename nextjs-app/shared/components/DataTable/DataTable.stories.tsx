@@ -92,6 +92,26 @@ export const Example: Story = {
     ).toHaveAttribute("aria-sort", "ascending");
   },
 };
+export const Paginated: Story = {
+  tags: ["example"],
+  args: {
+    pageSize: 3,
+    data: Array.from({ length: 8 }, (_, i) => ({
+      id: `p${i}`,
+      name: `Contributor ${i + 1}`,
+      role: i % 2 ? "Designer" : "Engineer",
+      projects: (i * 3) % 13,
+    })),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Set `pageSize` to page the table; the pager reads via IconButtons.",
+      },
+    },
+  },
+};
+
 export const Empty: Story = {
   args: { data: [], emptyState: "No contributors" },
 };

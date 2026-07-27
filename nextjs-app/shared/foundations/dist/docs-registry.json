@@ -4977,7 +4977,7 @@
       "group": "data-display",
       "tier": 1,
       "status": "alpha",
-      "description": "Accessible data table with typed columns, sortable headings, optional row selection, and density variants.",
+      "description": "Accessible data table with typed columns, three-state sortable headings, optional row selection and pagination, and density variants. Composes the Table primitives and the useTable* hooks.",
       "dense": "typed native data table; sortable columns, optional row selection, accessible caption, empty state, sm/md/lg density",
       "keywords": [
         "table",
@@ -5067,6 +5067,11 @@
           "type": "(rowIds: string[]) => void",
           "description": "Receives selection changes."
         },
+        "pageSize": {
+          "optional": true,
+          "type": "number",
+          "description": "Rows per page; enables pagination when set."
+        },
         "size": {
           "optional": true,
           "type": "union",
@@ -5081,11 +5086,17 @@
           "optional": true,
           "type": "boolean",
           "description": "Alternates row surfaces."
+        },
+        "stickyHeader": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Pin the header row while the body scrolls."
         }
       },
       "composesWith": [
-        "Pagination",
+        "Table",
         "Checkbox",
+        "IconButton",
         "EmptyState"
       ],
       "prefersOver": [],
@@ -5168,6 +5179,11 @@
           "story": "Example",
           "description": null,
           "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: { striped: true },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    await userEvent.click(canvas.getByRole(\"button\", { name: \"Name\" }));\n    await expect(\n      canvas.getByRole(\"columnheader\", { name: /Name/ }),\n    ).toHaveAttribute(\"aria-sort\", \"ascending\");\n  },\n};"
+        },
+        {
+          "story": "Paginated",
+          "description": "Set `pageSize` to page the table; the pager reads via IconButtons.",
+          "source": "export const Paginated: Story = {\n  tags: [\"example\"],\n  args: {\n    pageSize: 3,\n    data: Array.from({ length: 8 }, (_, i) => ({\n      id: `p${i}`,\n      name: `Contributor ${i + 1}`,\n      role: i % 2 ? \"Designer\" : \"Engineer\",\n      projects: (i * 3) % 13,\n    })),\n  },\n  parameters: {\n    docs: {\n      description: {\n        story: \"Set `pageSize` to page the table; the pager reads via IconButtons.\",\n      },\n    },\n  },\n};"
         }
       ]
     },
@@ -15750,6 +15766,147 @@
           "story": "WithError",
           "description": "The control owns its error: it renders above the helper line, sets aria-invalid, and announces via role=alert. Useful when an immediate toggle fails server-side.",
           "source": "export const WithError: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The control owns its error: it renders above the helper line, sets aria-invalid, and announces via role=alert. Useful when an immediate toggle fails server-side.\",\n      },\n    },\n  },\n  args: {\n    label: \"Email notifications\",\n    error: \"Could not update the setting. Try again.\",\n  },\n  render: (args) => <ControlledTemplate {...args} />,\n};"
+        }
+      ]
+    },
+    "Table": {
+      "name": "Table",
+      "group": "data-display",
+      "tier": 2,
+      "status": "alpha",
+      "description": "Composable table primitives (Table, TableRow, TableHeaderCell, TableCell) with density, striping, a sticky header, and a three-state sort control. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+      "dense": "composable native table primitives; density, striping, sticky header, three-state DS-Icon sort caret; pairs with useTable* hooks",
+      "keywords": [
+        "table",
+        "grid",
+        "rows",
+        "columns",
+        "cell",
+        "sort",
+        "header"
+      ],
+      "importLine": "import Table from \"@dt/Table\";",
+      "keyProps": [
+        {
+          "name": "caption",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "size",
+          "type": "sm | md | lg",
+          "required": false
+        },
+        {
+          "name": "hideCaption",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "striped",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "stickyHeader",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "wrapperClassName",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "props": {
+        "caption": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible table name rendered as a caption."
+        },
+        "hideCaption": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Visually hide the caption while keeping the accessible name."
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Density scale."
+        },
+        "striped": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Alternating row surfaces."
+        },
+        "stickyHeader": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Pin the header row while the body scrolls."
+        },
+        "wrapperClassName": {
+          "optional": true,
+          "type": "string",
+          "description": "Class applied to the scroll wrapper."
+        }
+      },
+      "composesWith": [
+        "DataTable",
+        "Checkbox",
+        "Icon",
+        "IconButton"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "use it for page layout",
+        "omit a meaningful caption",
+        "put interactive sort logic in the cell instead of the useTable* hooks"
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-text",
+          "--color-muted",
+          "--color-primary",
+          "--color-surface",
+          "--color-border",
+          "--color-border-light",
+          "--color-light-bg",
+          "--color-neutral-bg"
+        ],
+        "spacing": [
+          "--space-internal-4",
+          "--space-internal-6",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-layout-24"
+        ],
+        "radii": [
+          "--radius-sm",
+          "--radius-md"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Sortable",
+          "description": "TableHeaderCell renders the three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).",
+          "source": "export const Sortable: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"TableHeaderCell renders the three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).\",\n      },\n    },\n  },\n  render: (args) => {\n    const states: TableSortDirection[] = [\"ascending\", \"none\", \"descending\"];\n    return (\n      <Table {...args} caption=\"Sortable columns\">\n        <thead>\n          <TableRow>\n            {[\"Name\", \"Role\", \"Projects\"].map((label, index) => (\n              <TableHeaderCell\n                key={label}\n                sortable\n                sortDirection={states[index]}\n                align={label === \"Projects\" ? \"end\" : \"start\"}\n              >\n                {label}\n              </TableHeaderCell>\n            ))}\n          </TableRow>\n        </thead>\n        <tbody>\n          {people.map((person) => (\n            <TableRow key={person.id}>\n              <TableCell>{person.name}</TableCell>\n              <TableCell>{person.role}</TableCell>\n              <TableCell numeric>{person.projects}</TableCell>\n            </TableRow>\n          ))}\n        </tbody>\n      </Table>\n    );\n  },\n};"
+        },
+        {
+          "story": "Selectable",
+          "description": null,
+          "source": "export const Selectable: Story = {\n  tags: [\"example\"],\n  render: (args) => (\n    <Table {...args} caption=\"Selectable rows\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell align=\"center\">\n            <Checkbox\n              label=\"Select all rows\"\n              aria-label=\"Select all rows\"\n              showLabel={false}\n            />\n          </TableHeaderCell>\n          <TableHeaderCell>Name</TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person, index) => (\n          <TableRow key={person.id} selected={index === 1}>\n            <TableCell align=\"center\">\n              <Checkbox\n                label={`Select ${person.name}`}\n                aria-label={`Select ${person.name}`}\n                showLabel={false}\n                defaultChecked={index === 1}\n              />\n            </TableCell>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  ),\n};"
+        },
+        {
+          "story": "Example",
+          "description": null,
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};"
         }
       ]
     },

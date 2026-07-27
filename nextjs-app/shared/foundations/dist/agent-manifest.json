@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-26T19:56:53.494Z",
+  "generatedAt": "2026-07-26T21:11:36.435Z",
   "summary": {
-    "componentCount": 172,
+    "componentCount": 173,
     "statusCounts": {
       "beta": 40,
       "stable": 104,
-      "alpha": 27,
+      "alpha": 28,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 90.5,
-    "codebaseComponentCount": 190,
-    "usageCoveragePercent": 93,
+    "catalogCompletenessPercent": 90.6,
+    "codebaseComponentCount": 191,
+    "usageCoveragePercent": 93.1,
     "componentsWithProductionUsage": 36,
     "notReadyForStablePromotion": false
   },
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 190,
-    "inCatalog": 172,
+    "totalComponentsInCodebase": 191,
+    "inCatalog": 173,
     "outOfCatalog": 18,
-    "catalogCompletenessPercent": 90.5,
+    "catalogCompletenessPercent": 90.6,
     "artifactCoverage": {
-      "stories": 156,
-      "tests": 157,
+      "stories": 157,
+      "tests": 158,
       "mdx": 4,
-      "spec": 172
+      "spec": 173
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 172,
-    "withAnyUsage": 160,
+    "catalogedComponents": 173,
+    "withAnyUsage": 161,
     "withProductionUsage": 36,
-    "uniqueImportedComponents": 160,
-    "totalEvidenceRows": 782,
-    "aliasImportFiles": 401,
-    "relativeImportFiles": 414,
+    "uniqueImportedComponents": 161,
+    "totalEvidenceRows": 789,
+    "aliasImportFiles": 404,
+    "relativeImportFiles": 418,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-26T19:18:42.552Z",
+    "generatedAt": "2026-07-26T21:11:27.134Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 86,
+    "nodesWithComposesWith": 87,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 172,
+      "digitaltableteur": 173,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 40,
         "stable": 104,
-        "alpha": 27,
+        "alpha": 28,
         "deprecated": 1
       },
       "dsharp": {
@@ -10392,10 +10392,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Checkbox",
-        "importCount": 7,
+        "importCount": 9,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 3,
+        "componentImportCount": 4,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/AskAI/AskAI.tsx",
@@ -10410,6 +10410,12 @@
             "context": "component"
           },
           {
+            "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Checkbox",
+            "context": "component"
+          },
+          {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
             "importPath": "./Checkbox/Checkbox",
@@ -10419,6 +10425,12 @@
             "path": "nextjs-app/shared/components/FormField/FormField.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Checkbox",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/Table/Table.stories.tsx",
+            "importKind": "relative",
+            "importPath": "../Checkbox/Checkbox",
             "context": "story"
           },
           {
@@ -15290,7 +15302,7 @@
         "tier": "organism",
         "group": "data-display",
         "status": "alpha",
-        "description": "Accessible data table with typed columns, sortable headings, optional row selection, and density variants.",
+        "description": "Accessible data table with typed columns, three-state sortable headings, optional row selection and pagination, and density variants. Composes the Table primitives and the useTable* hooks.",
         "figma": null,
         "radixPrimitive": null,
         "element": "table",
@@ -15419,6 +15431,11 @@
             "type": "(rowIds: string[]) => void",
             "description": "Receives selection changes."
           },
+          "pageSize": {
+            "optional": true,
+            "type": "number",
+            "description": "Rows per page; enables pagination when set."
+          },
           "size": {
             "optional": true,
             "type": "union",
@@ -15433,6 +15450,11 @@
             "optional": true,
             "type": "boolean",
             "description": "Alternates row surfaces."
+          },
+          "stickyHeader": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Pin the header row while the body scrolls."
           }
         },
         "forbiddenUse": [
@@ -15500,8 +15522,9 @@
           }
         },
         "composesWith": [
-          "Pagination",
+          "Table",
           "Checkbox",
+          "IconButton",
           "EmptyState"
         ]
       },
@@ -15586,6 +15609,11 @@
             "type": "(row: Row) => string",
             "description": "Accessible row label used by selection checkboxes."
           },
+          "pageSize": {
+            "optional": true,
+            "type": "number",
+            "description": "Rows per page; enables pagination when set."
+          },
           "emptyState": {
             "optional": true,
             "type": "React.ReactNode",
@@ -15595,6 +15623,11 @@
             "optional": true,
             "type": "boolean",
             "description": "Alternating row surfaces."
+          },
+          "stickyHeader": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Pin the header row while the body scrolls."
           },
           "size": {
             "optional": true,
@@ -15660,7 +15693,7 @@
           "EmptyState"
         ],
         "prefersOver": [],
-        "declaredPropCount": 16,
+        "declaredPropCount": 18,
         "guidelines": [
           {
             "level": "should",
@@ -23603,10 +23636,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 70,
+        "importCount": 71,
         "productionImportCount": 0,
         "patternImportCount": 1,
-        "componentImportCount": 36,
+        "componentImportCount": 37,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx",
@@ -24264,10 +24297,10 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/IconButton",
-        "importCount": 7,
+        "importCount": 8,
         "productionImportCount": 0,
         "patternImportCount": 2,
-        "componentImportCount": 1,
+        "componentImportCount": 2,
         "evidence": [
           {
             "path": "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
@@ -24280,6 +24313,12 @@
             "importKind": "relative",
             "importPath": "../../components/IconButton",
             "context": "pattern"
+          },
+          {
+            "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/IconButton",
+            "context": "component"
           },
           {
             "path": "nextjs-app/shared/components/ui/index.ts",
@@ -28703,7 +28742,18 @@
           ]
         },
         "lightDarkVerified": true,
-        "consumers": [],
+        "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/dev/tailwind-test/TailwindTest.tsx",
+            "since": "2026-06-04"
+          }
+        ],
         "schemaVersion": 2,
         "props": {
           "officeName": {
@@ -28907,8 +28957,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -37320,8 +37370,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "manual",
-            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:hc"
           },
           {
             "id": "reduced-motion",
@@ -48747,6 +48797,407 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "Switch.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
+      "name": "Table",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "Table",
+        "tier": "molecule",
+        "group": "data-display",
+        "status": "alpha",
+        "description": "Composable table primitives (Table, TableRow, TableHeaderCell, TableCell) with density, striping, a sticky header, and a three-state sort control. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "table",
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+          },
+          "striped": {
+            "values": [
+              "true",
+              "false"
+            ],
+            "default": "false",
+            "propSourced": true
+          },
+          "stickyHeader": {
+            "values": [
+              "true",
+              "false"
+            ],
+            "default": "false",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [
+          {
+            "name": "Table",
+            "element": "table"
+          },
+          {
+            "name": "TableRow",
+            "element": "tr"
+          },
+          {
+            "name": "TableHeaderCell",
+            "element": "th"
+          },
+          {
+            "name": "TableCell",
+            "element": "td"
+          }
+        ],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [
+            "Tab",
+            "Space",
+            "Enter"
+          ],
+          "ariaRequirements": [
+            "native table, thead, tbody, th and td semantics",
+            "caption supplies the accessible table name",
+            "sortable headers expose aria-sort and toggle via an inner button",
+            "sort caret is decorative (aria-hidden); state is carried by aria-sort"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests.",
+          "forcedColorsVerified": false,
+          "accessibilityTreeVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-primary",
+            "--color-surface",
+            "--color-border",
+            "--color-border-light",
+            "--color-light-bg",
+            "--color-neutral-bg"
+          ],
+          "spacing": [
+            "--space-internal-4",
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-24"
+          ],
+          "radii": [
+            "--radius-sm",
+            "--radius-md"
+          ]
+        },
+        "lightDarkVerified": false,
+        "dense": "composable native table primitives; density, striping, sticky header, three-state DS-Icon sort caret; pairs with useTable* hooks",
+        "keywords": [
+          "table",
+          "grid",
+          "rows",
+          "columns",
+          "cell",
+          "sort",
+          "header"
+        ],
+        "props": {
+          "caption": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible table name rendered as a caption."
+          },
+          "hideCaption": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visually hide the caption while keeping the accessible name."
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Density scale."
+          },
+          "striped": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Alternating row surfaces."
+          },
+          "stickyHeader": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Pin the header row while the body scrolls."
+          },
+          "wrapperClassName": {
+            "optional": true,
+            "type": "string",
+            "description": "Class applied to the scroll wrapper."
+          }
+        },
+        "forbiddenUse": [
+          "use it for page layout",
+          "omit a meaningful caption",
+          "put interactive sort logic in the cell instead of the useTable* hooks"
+        ],
+        "composesWith": [
+          "DataTable",
+          "Checkbox",
+          "Icon",
+          "IconButton"
+        ]
+      },
+      "spec": "# Table\n\nComposable table primitives — `Table`, `TableRow`, `TableHeaderCell`, and\n`TableCell` — that render semantic `<table>` markup with design-system chrome.\nThey are the presentational layer beneath `DataTable`; behavior (sorting,\nselection, pagination) lives in the `useTable*` hooks.\n\n## Anatomy\n\n- **Table** — scroll wrapper + `<table>` with the `<caption>`; owns density\n  (`sm`/`md`/`lg`), `striped`, and `stickyHeader`.\n- **TableRow** — `<tr>`; `selected` renders the selected surface and sets\n  `data-selected`.\n- **TableHeaderCell** — `<th scope=\"col\">`; `sortable` + `sortDirection` render\n  a sort button whose caret is a DS `Icon` (`caret-up-down` unsorted,\n  `caret-up` ascending, `caret-down` descending). `aria-sort` reflects state.\n- **TableCell** — `<td>`; `align` and `numeric` (tabular figures, end-aligned).\n\n## Accessibility\n\n- Native table semantics; `caption` is the accessible name.\n- Sortable headers toggle via an inner `<button>` and expose `aria-sort` only\n  while actively sorted.\n- The sort caret is decorative (`aria-hidden`); the sort state is carried by\n  `aria-sort`, never by the icon alone.\n- Forced-colors: borders map to `CanvasText`, focus ring to `Highlight`.\n\n## Do / don't\n\nDo:\n\n- Give every table a concise `caption`.\n- Drive sorting/selection with the `useTable*` hooks rather than local state.\n- Use `numeric` for figures so columns align on the decimal.\n\nDon't:\n\n- Use Table for page layout.\n- Put sort logic inside a cell instead of the hooks.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/Table",
+        "importCount": 3,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 2,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Table",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./Table",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/hooks/useTableSortable.ts",
+            "importKind": "relative",
+            "importPath": "../components/Table",
+            "context": "other"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/Table",
+        "intent": "Composable table primitives (Table, TableRow, TableHeaderCell, TableCell) with density, striping, a sticky header, and a three-state sort control. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+        "props": {
+          "caption": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible table name, rendered as a `<caption>`."
+          },
+          "hideCaption": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visually hide the caption while keeping the accessible name."
+          },
+          "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "description": "Density scale."
+          },
+          "striped": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Alternating row surfaces."
+          },
+          "stickyHeader": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Pin the header row while the table body scrolls."
+          },
+          "wrapperClassName": {
+            "optional": true,
+            "type": "string",
+            "description": "Class applied to the scroll wrapper."
+          }
+        },
+        "propRelationships": [],
+        "variants": {
+          "size": {
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "sm"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [],
+        "avoidWhen": [],
+        "requiredA11y": [
+          "native table, thead, tbody, th and td semantics",
+          "caption supplies the accessible table name",
+          "sortable headers expose aria-sort and toggle via an inner button",
+          "sort caret is decorative (aria-hidden); state is carried by aria-sort"
+        ],
+        "keyboard": [
+          "Tab",
+          "Space",
+          "Enter"
+        ],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [],
+        "composesWith": [
+          "Checkbox",
+          "IconButton"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 6,
+        "guidelines": [],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "keyboard-contract",
+            "statement": "Every documented keyboard interaction works as specified.",
+            "verificationMode": "manual"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Table.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Table.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Table.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "Table.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",

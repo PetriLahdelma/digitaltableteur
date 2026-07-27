@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T19:56:53.082Z",
+  "generatedAt": "2026-07-26T21:11:36.173Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -8160,6 +8160,11 @@
           "type": "(row: Row) => string",
           "description": "Accessible row label used by selection checkboxes."
         },
+        "pageSize": {
+          "optional": true,
+          "type": "number",
+          "description": "Rows per page; enables pagination when set."
+        },
         "emptyState": {
           "optional": true,
           "type": "React.ReactNode",
@@ -8169,6 +8174,11 @@
           "optional": true,
           "type": "boolean",
           "description": "Alternating row surfaces."
+        },
+        "stickyHeader": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Pin the header row while the body scrolls."
         },
         "size": {
           "optional": true,
@@ -8234,7 +8244,7 @@
         "EmptyState"
       ],
       "prefersOver": [],
-      "declaredPropCount": 16,
+      "declaredPropCount": 18,
       "guidelines": [
         {
           "level": "should",
@@ -15225,8 +15235,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -19907,8 +19917,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "manual",
-          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:hc"
         },
         {
           "id": "reduced-motion",
@@ -26502,6 +26512,209 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "Switch.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
+    "Table": {
+      "preferredImport": "@dt/Table",
+      "intent": "Composable table primitives (Table, TableRow, TableHeaderCell, TableCell) with density, striping, a sticky header, and a three-state sort control. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+      "props": {
+        "caption": {
+          "optional": false,
+          "type": "string",
+          "description": "Accessible table name, rendered as a `<caption>`."
+        },
+        "hideCaption": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Visually hide the caption while keeping the accessible name."
+        },
+        "size": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "description": "Density scale."
+        },
+        "striped": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Alternating row surfaces."
+        },
+        "stickyHeader": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Pin the header row while the table body scrolls."
+        },
+        "wrapperClassName": {
+          "optional": true,
+          "type": "string",
+          "description": "Class applied to the scroll wrapper."
+        }
+      },
+      "propRelationships": [],
+      "variants": {
+        "size": {
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "sm"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [],
+      "avoidWhen": [],
+      "requiredA11y": [
+        "native table, thead, tbody, th and td semantics",
+        "caption supplies the accessible table name",
+        "sortable headers expose aria-sort and toggle via an inner button",
+        "sort caret is decorative (aria-hidden); state is carried by aria-sort"
+      ],
+      "keyboard": [
+        "Tab",
+        "Space",
+        "Enter"
+      ],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [],
+      "composesWith": [
+        "Checkbox",
+        "IconButton"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 6,
+      "guidelines": [],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "keyboard-contract",
+          "statement": "Every documented keyboard interaction works as specified.",
+          "verificationMode": "manual"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Table.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Table.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Table.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "Table.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",

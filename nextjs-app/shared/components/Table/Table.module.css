@@ -1,0 +1,181 @@
+.wrapper {
+  max-inline-size: 100%;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+
+  /* Physical fallback must precede its logical counterpart. */
+  /* stylelint-disable-next-line order/properties-order */
+  overflow-inline: auto;
+}
+
+.table {
+  inline-size: 100%;
+  background: var(--color-surface);
+  font-size: var(--font-size-text-s);
+  color: var(--color-text);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.caption {
+  padding: var(--space-internal-12) var(--space-internal-16);
+  border-block-end: 1px solid var(--color-border-light);
+  font-weight: 600;
+  text-align: start;
+  color: var(--color-text);
+}
+
+.visuallyHidden {
+  position: absolute;
+  padding: 0;
+  block-size: var(--space-internal-2);
+  inline-size: var(--space-internal-2);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+/* Header row: quiet surface, small uppercase labels for scannability. */
+
+.headerCell {
+  padding: var(--space-internal-8) var(--space-internal-16);
+  border-block-end: 1px solid var(--color-border);
+  background: var(--color-light-bg);
+  font-size: var(--font-size-text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-align: start;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-muted);
+  vertical-align: middle;
+}
+
+.cell {
+  padding: var(--space-internal-12) var(--space-internal-16);
+  border-block-end: 1px solid var(--color-border-light);
+  text-align: start;
+  vertical-align: middle;
+}
+
+[data-align="center"] {
+  text-align: center;
+}
+
+[data-align="end"] {
+  text-align: end;
+}
+
+.numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sort control: the label + a caret that only reads "active" when sorted. */
+
+.sortButton {
+  display: inline-flex;
+  margin: calc(var(--space-internal-4) * -1) calc(var(--space-internal-6) * -1);
+  padding: var(--space-internal-4) var(--space-internal-6);
+  align-items: center;
+  gap: var(--space-internal-6);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sortButton:hover {
+  background: var(--color-neutral-bg);
+  color: var(--color-text);
+}
+
+/* --color-muted (not --color-border) keeps the unsorted caret at ≥3:1 in every theme, including HCB. */
+.sortIcon {
+  flex: none;
+  color: var(--color-muted);
+  transition: color var(--duration-fast, 0.15s) ease;
+}
+
+.sortIconActive {
+  color: var(--color-primary);
+}
+
+/* Body rows: hover feedback, optional zebra, selection tint. `:where(tbody)`
+   scopes to the body without adding specificity so overrides stay predictable. */
+
+:where(tbody) .row {
+  transition: background-color var(--duration-fast, 0.15s) ease;
+}
+
+:where(tbody) .row:hover {
+  background: var(--color-light-bg);
+}
+
+.striped :where(tbody) .row:nth-child(even) {
+  background: color-mix(in srgb, var(--color-light-bg) 55%, transparent);
+}
+
+:where(tbody) .row[data-selected] {
+  background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+}
+
+:where(tbody) .row[data-selected]:hover {
+  background: color-mix(in srgb, var(--color-primary) 16%, var(--color-surface));
+}
+
+.stickyHeader :where(thead) .headerCell {
+  position: sticky;
+  z-index: 1;
+  inset-block-start: 0;
+}
+
+.sortButton:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Density scale. */
+
+.sm .headerCell {
+  padding: var(--space-internal-6) var(--space-internal-12);
+}
+
+.sm .cell {
+  padding: var(--space-internal-8) var(--space-internal-12);
+  font-size: var(--font-size-text-xs);
+}
+
+.lg .headerCell {
+  padding: var(--space-internal-12) var(--space-layout-24);
+}
+
+.lg .cell {
+  padding: var(--space-internal-16) var(--space-layout-24);
+  font-size: var(--font-size-text-m);
+}
+
+.row:last-child .cell {
+  border-block-end: 0;
+}
+
+@media (forced-colors: active) {
+  .wrapper,
+  .headerCell,
+  .cell {
+    border-color: CanvasText;
+  }
+
+  .sortIcon,
+  .sortIconActive {
+    color: CanvasText;
+  }
+
+  .sortButton:focus-visible {
+    outline-color: Highlight;
+  }
+}

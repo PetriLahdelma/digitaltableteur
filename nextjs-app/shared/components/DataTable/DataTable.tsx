@@ -1,21 +1,26 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo } from "react";
+import { Table, TableCell, TableHeaderCell, TableRow } from "@dt/Table";
+import Checkbox from "@dt/Checkbox";
+import { IconButton } from "@dt/IconButton";
+import {
+  useTableSortable,
+  type TableSort,
+} from "../../hooks/useTableSortable";
+import { useTableSelection } from "../../hooks/useTableSelection";
+import { useTablePagination } from "../../hooks/useTablePagination";
 import styles from "./DataTable.module.css";
 
 export type DataTableSortDirection = "ascending" | "descending";
-
-export type DataTableSort = {
-  columnId: string;
-  direction: DataTableSortDirection;
-};
+export type DataTableSort = TableSort;
 
 export type DataTableColumn<Row> = {
   /** Stable column identifier used by sorting and React keys. */
   id: string;
   /** Visible column heading. */
   header: React.ReactNode;
-  /** Reads the comparable/display value when cell is not supplied. */
+  /** Reads the comparable/display value when `cell` is not supplied. */
   accessor?: (row: Row) => React.ReactNode;
   /** Custom cell renderer. */
   cell?: (row: Row) => React.ReactNode;
@@ -23,6 +28,8 @@ export type DataTableColumn<Row> = {
   sortable?: boolean;
   /** Cell alignment. @default "start" */
   align?: "start" | "center" | "end";
+  /** Right-align with tabular figures for numeric columns. */
+  numeric?: boolean;
 };
 
 export interface DataTableProps<Row> {
@@ -50,234 +57,198 @@ export interface DataTableProps<Row> {
   onSelectionChange?: (rowIds: string[]) => void;
   /** Accessible row label used by selection checkboxes. */
   getRowLabel?: (row: Row) => string;
+  /** Rows per page; enables pagination when set. */
+  pageSize?: number;
   /** Empty-state cell content. */
   emptyState?: React.ReactNode;
   /** Alternating row surfaces. */
   striped?: boolean;
+  /** Pin the header row while the body scrolls. */
+  stickyHeader?: boolean;
   /** Density scale. @default "md" */
   size?: "sm" | "md" | "lg";
   className?: string;
 }
 
-const comparableValue = (value: React.ReactNode): string | number => {
-  if (typeof value === "number") return value;
-  if (typeof value === "string") return value.toLocaleLowerCase();
-  return String(value ?? "").toLocaleLowerCase();
-};
-
-function nextSort(
-  current: DataTableSort | null,
-  columnId: string,
-): DataTableSort | null {
-  if (current?.columnId !== columnId) {
-    return { columnId, direction: "ascending" };
-  }
-  if (current.direction === "ascending") {
-    return { columnId, direction: "descending" };
-  }
-  return null;
-}
-
-/** Accessible data table with optional sorting and row selection. */
+/**
+ * Accessible data table: typed columns with three-state sorting, optional row
+ * selection and pagination, and density variants. Composes the `Table`
+ * primitives and the `useTable*` hooks.
+ */
 export function DataTable<Row>({
   data,
   columns,
   getRowId,
   caption,
   hideCaption = false,
-  sort: controlledSort,
+  sort,
   defaultSort = null,
   onSortChange,
   selectedRowIds,
-  defaultSelectedRowIds = [],
+  defaultSelectedRowIds,
   onSelectionChange,
   getRowLabel = (row) => getRowId(row),
+  pageSize,
   emptyState = "No data",
   striped = false,
+  stickyHeader = false,
   size = "md",
   className,
 }: DataTableProps<Row>) {
-  const [internalSort, setInternalSort] = useState<DataTableSort | null>(
+  const columnsById = useMemo(() => {
+    const map = new Map<string, DataTableColumn<Row>>();
+    for (const column of columns) map.set(column.id, column);
+    return map;
+  }, [columns]);
+
+  const getSortValue = useCallback(
+    (row: Row, columnId: string) => columnsById.get(columnId)?.accessor?.(row),
+    [columnsById],
+  );
+
+  const { sortedRows, toggleSort, getColumnSort } = useTableSortable({
+    rows: data,
+    getSortValue,
+    sort,
     defaultSort,
-  );
-  const [internalSelection, setInternalSelection] = useState<string[]>(
-    defaultSelectedRowIds,
-  );
-  const currentSort =
-    controlledSort === undefined ? internalSort : controlledSort;
+    onSortChange,
+  });
+
   const selectionEnabled =
     selectedRowIds !== undefined ||
-    defaultSelectedRowIds.length > 0 ||
+    defaultSelectedRowIds !== undefined ||
     onSelectionChange !== undefined;
-  const currentSelection =
-    selectedRowIds === undefined ? internalSelection : selectedRowIds;
 
-  const sortedRows = useMemo(() => {
-    if (!currentSort) return data;
-    const column = columns.find(
-      (candidate) => candidate.id === currentSort.columnId,
-    );
-    if (!column?.accessor) return data;
-    const direction = currentSort.direction === "ascending" ? 1 : -1;
-    return [...data].sort((left, right) => {
-      const leftValue = comparableValue(column.accessor?.(left));
-      const rightValue = comparableValue(column.accessor?.(right));
-      if (leftValue === rightValue) return 0;
-      return leftValue > rightValue ? direction : -direction;
-    });
-  }, [columns, currentSort, data]);
+  const selection = useTableSelection({
+    rowIds: data.map(getRowId),
+    selectedIds: selectedRowIds,
+    defaultSelectedIds: defaultSelectedRowIds,
+    onSelectionChange,
+  });
 
-  const updateSort = (columnId: string) => {
-    const value = nextSort(currentSort, columnId);
-    if (controlledSort === undefined) setInternalSort(value);
-    onSortChange?.(value);
-  };
+  const pagination = useTablePagination({
+    rows: sortedRows,
+    pageSize: pageSize ?? (sortedRows.length || 1),
+  });
 
-  const updateSelection = (rowIds: string[]) => {
-    if (selectedRowIds === undefined) setInternalSelection(rowIds);
-    onSelectionChange?.(rowIds);
-  };
-
-  const allRowIds = data.map(getRowId);
-  const allSelected =
-    allRowIds.length > 0 &&
-    allRowIds.every((rowId) => currentSelection.includes(rowId));
-  const partiallySelected =
-    !allSelected && allRowIds.some((rowId) => currentSelection.includes(rowId));
-
-  const rootClassName = [
-    styles.wrapper,
-    styles[size],
-    striped ? styles.striped : "",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const displayedRows = pageSize ? pagination.pageRows : sortedRows;
+  const columnCount = columns.length + (selectionEnabled ? 1 : 0);
 
   return (
-    <div className={rootClassName}>
-      <table className={styles.table}>
-        <caption
-          className={hideCaption ? styles.visuallyHidden : styles.caption}
-        >
-          {caption}
-        </caption>
+    <div className={className ? `${styles.container} ${className}` : styles.container}>
+      <Table
+        caption={caption}
+        hideCaption={hideCaption}
+        size={size}
+        striped={striped}
+        stickyHeader={stickyHeader}
+      >
         <thead>
-          <tr>
+          <TableRow>
             {selectionEnabled ? (
-              <th className={styles.selectionCell} scope="col">
-                <SelectionCheckbox
-                  checked={allSelected}
-                  indeterminate={partiallySelected}
+              <TableHeaderCell className={styles.selectionCell} align="center">
+                <Checkbox
                   label="Select all rows"
-                  onChange={() => updateSelection(allSelected ? [] : allRowIds)}
+                  aria-label="Select all rows"
+                  showLabel={false}
+                  checked={selection.allSelected}
+                  indeterminate={selection.someSelected}
+                  onCheckedChange={selection.toggleAll}
                 />
-              </th>
+              </TableHeaderCell>
             ) : null}
-            {columns.map((column) => {
-              const active = currentSort?.columnId === column.id;
-              return (
-                <th
-                  key={column.id}
-                  scope="col"
-                  aria-sort={active ? currentSort.direction : undefined}
-                  data-align={column.align ?? "start"}
-                >
-                  {column.sortable ? (
-                    <button
-                      className={styles.sortButton}
-                      type="button"
-                      onClick={() => updateSort(column.id)}
-                    >
-                      {column.header}
-                      <span className={styles.sortIndicator} aria-hidden="true">
-                        {active
-                          ? currentSort.direction === "ascending"
-                            ? "↑"
-                            : "↓"
-                          : "↕"}
-                      </span>
-                    </button>
-                  ) : (
-                    column.header
-                  )}
-                </th>
-              );
-            })}
-          </tr>
+            {columns.map((column) => (
+              <TableHeaderCell
+                key={column.id}
+                align={column.align ?? (column.numeric ? "end" : "start")}
+                sortable={column.sortable}
+                sortDirection={getColumnSort(column.id)}
+                onSort={() => toggleSort(column.id)}
+              >
+                {column.header}
+              </TableHeaderCell>
+            ))}
+          </TableRow>
         </thead>
         <tbody>
-          {sortedRows.length === 0 ? (
-            <tr>
-              <td
-                className={styles.empty}
-                colSpan={columns.length + (selectionEnabled ? 1 : 0)}
-              >
+          {displayedRows.length === 0 ? (
+            <TableRow>
+              <TableCell className={styles.empty} align="center" colSpan={columnCount}>
                 {emptyState}
-              </td>
-            </tr>
+              </TableCell>
+            </TableRow>
           ) : (
-            sortedRows.map((row) => {
+            displayedRows.map((row) => {
               const rowId = getRowId(row);
-              const selected = currentSelection.includes(rowId);
+              const selected = selection.isSelected(rowId);
               return (
-                <tr key={rowId} data-selected={selected || undefined}>
+                <TableRow key={rowId} selected={selected}>
                   {selectionEnabled ? (
-                    <td className={styles.selectionCell}>
-                      <SelectionCheckbox
-                        checked={selected}
+                    <TableCell className={styles.selectionCell} align="center">
+                      <Checkbox
                         label={`Select ${getRowLabel(row)}`}
-                        onChange={() =>
-                          updateSelection(
-                            selected
-                              ? currentSelection.filter(
-                                  (candidate) => candidate !== rowId,
-                                )
-                              : [...currentSelection, rowId],
-                          )
-                        }
+                        aria-label={`Select ${getRowLabel(row)}`}
+                        showLabel={false}
+                        checked={selected}
+                        onCheckedChange={() => selection.toggleRow(rowId)}
                       />
-                    </td>
+                    </TableCell>
                   ) : null}
                   {columns.map((column) => (
-                    <td key={column.id} data-align={column.align ?? "start"}>
+                    <TableCell
+                      key={column.id}
+                      align={column.align}
+                      numeric={column.numeric}
+                    >
                       {column.cell?.(row) ?? column.accessor?.(row) ?? null}
-                    </td>
+                    </TableCell>
                   ))}
-                </tr>
+                </TableRow>
               );
             })
           )}
         </tbody>
-      </table>
+      </Table>
+      {pageSize ? (
+        <div className={styles.pagination}>
+          <span className={styles.paginationStatus}>
+            {pagination.totalRows === 0
+              ? "No rows"
+              : `${pagination.fromRow}–${pagination.toRow} of ${pagination.totalRows}`}
+          </span>
+          <div className={styles.paginationControls}>
+            <IconButton
+              icon="caret-double-left"
+              label="First page"
+              size="sm"
+              disabled={!pagination.canPreviousPage}
+              onClick={pagination.firstPage}
+            />
+            <IconButton
+              icon="caret-left"
+              label="Previous page"
+              size="sm"
+              disabled={!pagination.canPreviousPage}
+              onClick={pagination.previousPage}
+            />
+            <IconButton
+              icon="caret-right"
+              label="Next page"
+              size="sm"
+              disabled={!pagination.canNextPage}
+              onClick={pagination.nextPage}
+            />
+            <IconButton
+              icon="caret-double-right"
+              label="Last page"
+              size="sm"
+              disabled={!pagination.canNextPage}
+              onClick={pagination.lastPage}
+            />
+          </div>
+        </div>
+      ) : null}
     </div>
-  );
-}
-
-function SelectionCheckbox({
-  checked,
-  indeterminate = false,
-  label,
-  onChange,
-}: {
-  checked: boolean;
-  indeterminate?: boolean;
-  label: string;
-  onChange: () => void;
-}) {
-  const ref = React.useRef<HTMLInputElement>(null);
-  React.useEffect(() => {
-    if (ref.current) ref.current.indeterminate = indeterminate;
-  }, [indeterminate]);
-  return (
-    <input
-      ref={ref}
-      className={styles.checkbox}
-      type="checkbox"
-      checked={checked}
-      aria-label={label}
-      onChange={onChange}
-    />
   );
 }
 

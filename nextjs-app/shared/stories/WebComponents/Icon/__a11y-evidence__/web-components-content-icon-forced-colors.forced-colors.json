@@ -1,18 +1,11 @@
 {
   "storyId": "web-components-content-icon-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:44:11.750Z",
-  "runner": "backfill",
+  "sourceSHA": "d14b56331362c888c62bab010b88217a3b7ab6ce",
+  "capturedAt": "2026-07-26T22:00:39.869Z",
+  "runner": "table-icons",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
-      "passed": true
-    },
-    "forced-colors-real-browser": {
       "passed": true
     }
   }
