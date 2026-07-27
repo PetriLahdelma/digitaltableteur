@@ -18,10 +18,10 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/code-input": "^7.2.10",
+    "@sanity/code-input": "^7.3.3",
     "@sanity/vision": "^6.5.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "sanity": "^6.5.0",
     "styled-components": "^6.4.4"
   },
@@ -29,7 +29,7 @@
     "@sanity/eslint-config-studio": "^6.0.0",
     "@types/react": "^19.2.17",
     "eslint": "^9.39",
-    "prettier": "^3.9.5",
+    "prettier": "^3.9.6",
     "typescript": "^6.0.3"
   },
   "prettier": {
