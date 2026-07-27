@@ -11,8 +11,9 @@ the artwork and choreography are deliberately distinct.
 
 - The default `md` size is 100 × 60 CSS pixels: 20-pixel glyphs separated by
   20-pixel gaps.
-- Every constellation is authored as a literal 5 × 5 bitmap. Marks may only
-  occupy the 25 cell centers at 2, 6, 10, 14, and 18 SVG units.
+- Every constellation is authored as a literal 5 × 5 on/off cell grid and
+  rendered as vector SVG marks (never raster). Marks may only occupy the 25 cell
+  centers at 2, 6, 10, 14, and 18 SVG units.
 - `dots` uses 2.5-unit fully rounded circles, leaving 1.5 units of breathing
   room inside every 4-unit cell.
 - `strokes` replaces each circle with a short, 1.5-unit round-capped 45° vector
@@ -23,7 +24,14 @@ the artwork and choreography are deliberately distinct.
   1.2-second loop.
 - `rows={3}` renders nine grids in three rows. Each row uses the
   600-millisecond horizontal cycle with a one-beat phase offset.
+- `cycle` renders a single glyph cell (one row, one column) that steps through
+  the entire glyph pool one formation at a time on a discrete step-end loop.
+  Reduced motion and `animate={false}` hold the first glyph.
 - Frame changes are discrete. Glyphs do not fade, slide, scale, or interpolate.
+- The glyph pool leads with the studio **D** and **T** initials, authored as
+  full 5 × 5 cell grids exactly like every other constellation (same 4-unit cells,
+  same 2.5-unit dots or 45° strokes). They therefore appear as the first glyphs
+  of the animated field and share its dot scale and spacing.
 - The graphic inherits `--color-text`; consumers do not need a color prop.
 - `sm`, `md`, and `lg` scale both glyphs and gaps together.
 

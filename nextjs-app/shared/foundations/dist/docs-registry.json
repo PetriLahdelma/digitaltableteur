@@ -11778,7 +11778,7 @@
       "group": "display",
       "tier": 2,
       "status": "alpha",
-      "description": "Decorative constellation loop with rounded-dot and 45-degree vector-stroke variants.",
+      "description": "Decorative constellation loop with rounded-dot and 45-degree vector-stroke variants; the glyph pool includes the studio D and T initials.",
       "dense": "",
       "keywords": [],
       "importLine": "import { PixelLoop } from \"@dt/PixelLoop\";",
@@ -11800,6 +11800,11 @@
         },
         {
           "name": "animate",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "cycle",
           "type": "boolean",
           "required": false
         }
@@ -11833,6 +11838,11 @@
           "optional": true,
           "type": "boolean",
           "description": "Runs the six-frame loop. Disable for a deliberate static composition."
+        },
+        "cycle": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Renders a single glyph cell (one row, one column) that steps through the whole glyph pool one formation at a time. Ignores rows."
         }
       },
       "composesWith": [],

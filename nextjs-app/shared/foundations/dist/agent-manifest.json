@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-27T05:58:08.331Z",
+  "generatedAt": "2026-07-27T09:29:24.520Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -23920,8 +23920,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "forced-colors-real-browser",
@@ -23932,8 +23932,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "human-a11y-review",
@@ -35823,7 +35823,7 @@
         "tier": "atom",
         "group": "display",
         "status": "alpha",
-        "description": "Decorative constellation loop with rounded-dot and 45-degree vector-stroke variants.",
+        "description": "Decorative constellation loop with rounded-dot and 45-degree vector-stroke variants; the glyph pool includes the studio D and T initials.",
         "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1490-2401&m=dev",
         "radixPrimitive": null,
         "element": "div",
@@ -35889,7 +35889,7 @@
         "governance": {
           "owner": "design-system",
           "lastReviewed": "2026-07-23",
-          "note": "The Primary Studio reference informed the compact modular format, while original 5x5 bitmap artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
+          "note": "The Primary Studio reference informed the compact modular format, while original 5x5 vector cell-grid artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
         },
         "props": {
           "size": {
@@ -35920,6 +35920,11 @@
             "optional": true,
             "type": "boolean",
             "description": "Runs the six-frame loop. Disable for a deliberate static composition."
+          },
+          "cycle": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders a single glyph cell (one row, one column) that steps through the whole glyph pool one formation at a time. Ignores rows."
           }
         },
         "forbiddenUse": [
@@ -35928,7 +35933,7 @@
           "replace the stepped rotation with smooth motion."
         ]
       },
-      "spec": "# PixelLoop\n\n## Intent\n\nPixelLoop is a compact decorative motion signature for hero and editorial\ncompositions. It uses six original 20 × 20 constellations in a three-column,\ntwo-row field. The Primary Studio reference informed the modular format, but\nthe artwork and choreography are deliberately distinct.\n\n## Visual and motion contract\n\n- The default `md` size is 100 × 60 CSS pixels: 20-pixel glyphs separated by\n  20-pixel gaps.\n- Every constellation is authored as a literal 5 × 5 bitmap. Marks may only\n  occupy the 25 cell centers at 2, 6, 10, 14, and 18 SVG units.\n- `dots` uses 2.5-unit fully rounded circles, leaving 1.5 units of breathing\n  room inside every 4-unit cell.\n- `strokes` replaces each circle with a short, 1.5-unit round-capped 45° vector\n  mark that also stays within its cell boundary.\n- `rows={1}` renders three grids in one row and cycles them every 200\n  milliseconds on a 600-millisecond loop.\n- `rows={2}` preserves the six-grid clockwise perimeter choreography on a\n  1.2-second loop.\n- `rows={3}` renders nine grids in three rows. Each row uses the\n  600-millisecond horizontal cycle with a one-beat phase offset.\n- Frame changes are discrete. Glyphs do not fade, slide, scale, or interpolate.\n- The graphic inherits `--color-text`; consumers do not need a color prop.\n- `sm`, `md`, and `lg` scale both glyphs and gaps together.\n\n## Interaction contract\n\n- Keyboard: none; the component is never focusable.\n- Pointer: none; the component has no hover or click behavior.\n- Screen readers: the root is `aria-hidden` because the loop is ornamental.\n- Reduced motion: `prefers-reduced-motion: reduce` freezes the first frame.\n- `animate={false}` also freezes the first frame for intentional static use.\n\n## Do / don't\n\n- Do use it as a visual accent alongside real page content.\n- Do choose the row count to suit the available composition width and height.\n- Do let the inherited text color adapt it to its surrounding composition.\n- Don't use it to communicate loading, progress, status, or instructions.\n- Don't add labels or interaction to the glyphs.\n- Don't replace the stepped rotation with smooth motion.\n\n## Design notes\n\n- Tokens: `--color-text`, `--space-layout-4`, `--space-layout-16`,\n  `--space-layout-32`, and `--duration-fast`.\n- Figma:\n  [DT Site stuff, node 1490:2401](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1490-2401&m=dev)\n- Reference:\n  [Primary Studio](https://www.primary.studio/)\n",
+      "spec": "# PixelLoop\n\n## Intent\n\nPixelLoop is a compact decorative motion signature for hero and editorial\ncompositions. It uses six original 20 × 20 constellations in a three-column,\ntwo-row field. The Primary Studio reference informed the modular format, but\nthe artwork and choreography are deliberately distinct.\n\n## Visual and motion contract\n\n- The default `md` size is 100 × 60 CSS pixels: 20-pixel glyphs separated by\n  20-pixel gaps.\n- Every constellation is authored as a literal 5 × 5 on/off cell grid and\n  rendered as vector SVG marks (never raster). Marks may only occupy the 25 cell\n  centers at 2, 6, 10, 14, and 18 SVG units.\n- `dots` uses 2.5-unit fully rounded circles, leaving 1.5 units of breathing\n  room inside every 4-unit cell.\n- `strokes` replaces each circle with a short, 1.5-unit round-capped 45° vector\n  mark that also stays within its cell boundary.\n- `rows={1}` renders three grids in one row and cycles them every 200\n  milliseconds on a 600-millisecond loop.\n- `rows={2}` preserves the six-grid clockwise perimeter choreography on a\n  1.2-second loop.\n- `rows={3}` renders nine grids in three rows. Each row uses the\n  600-millisecond horizontal cycle with a one-beat phase offset.\n- `cycle` renders a single glyph cell (one row, one column) that steps through\n  the entire glyph pool one formation at a time on a discrete step-end loop.\n  Reduced motion and `animate={false}` hold the first glyph.\n- Frame changes are discrete. Glyphs do not fade, slide, scale, or interpolate.\n- The glyph pool leads with the studio **D** and **T** initials, authored as\n  full 5 × 5 cell grids exactly like every other constellation (same 4-unit cells,\n  same 2.5-unit dots or 45° strokes). They therefore appear as the first glyphs\n  of the animated field and share its dot scale and spacing.\n- The graphic inherits `--color-text`; consumers do not need a color prop.\n- `sm`, `md`, and `lg` scale both glyphs and gaps together.\n\n## Interaction contract\n\n- Keyboard: none; the component is never focusable.\n- Pointer: none; the component has no hover or click behavior.\n- Screen readers: the root is `aria-hidden` because the loop is ornamental.\n- Reduced motion: `prefers-reduced-motion: reduce` freezes the first frame.\n- `animate={false}` also freezes the first frame for intentional static use.\n\n## Do / don't\n\n- Do use it as a visual accent alongside real page content.\n- Do choose the row count to suit the available composition width and height.\n- Do let the inherited text color adapt it to its surrounding composition.\n- Don't use it to communicate loading, progress, status, or instructions.\n- Don't add labels or interaction to the glyphs.\n- Don't replace the stepped rotation with smooth motion.\n\n## Design notes\n\n- Tokens: `--color-text`, `--space-layout-4`, `--space-layout-16`,\n  `--space-layout-32`, and `--duration-fast`.\n- Figma:\n  [DT Site stuff, node 1490:2401](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1490-2401&m=dev)\n- Reference:\n  [Primary Studio](https://www.primary.studio/)\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PixelLoop",
@@ -35970,6 +35975,11 @@
             "optional": true,
             "type": "boolean",
             "description": "Runs the six-frame loop. Disable for a deliberate static composition."
+          },
+          "cycle": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders a single glyph cell (one row, one column) that steps through the\nwhole glyph pool one formation at a time. Ignores `rows`."
           }
         },
         "propRelationships": [],
@@ -36022,7 +36032,7 @@
         ],
         "composesWith": [],
         "prefersOver": [],
-        "declaredPropCount": 4,
+        "declaredPropCount": 5,
         "guidelines": [
           {
             "level": "should",
@@ -36182,7 +36192,7 @@
         "governance": {
           "owner": "design-system",
           "lastReviewed": "2026-07-23",
-          "note": "The Primary Studio reference informed the compact modular format, while original 5x5 bitmap artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
+          "note": "The Primary Studio reference informed the compact modular format, while original 5x5 vector cell-grid artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
         },
         "content": null
       }

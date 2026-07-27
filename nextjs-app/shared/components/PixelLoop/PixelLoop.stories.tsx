@@ -56,10 +56,20 @@ const meta = {
         category: "Layout",
       },
     },
+    cycle: {
+      control: "boolean",
+      description:
+        "One row, one column: a single cell that steps through the whole glyph pool one formation at a time. Ignores rows.",
+      table: {
+        defaultValue: { summary: "false" },
+        category: "Layout",
+      },
+    },
     className: { table: { disable: true } },
   },
   args: {
     animate: true,
+    cycle: false,
     rows: 2,
     size: "md",
     variant: "dots",
@@ -134,6 +144,18 @@ export const VectorStrokes: Story = {
       description: {
         story:
           "An alternate drawing language made from short, round-capped vector strokes set at 45 degrees.",
+      },
+    },
+  },
+};
+
+export const SingleColumn: Story = {
+  args: { cycle: true, size: "lg" },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "One row, one column. A single glyph cell steps through the whole pool one formation at a time, starting with the D and T initials.",
       },
     },
   },

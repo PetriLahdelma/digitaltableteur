@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T05:58:08.059Z",
+  "generatedAt": "2026-07-27T09:29:24.220Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -12602,8 +12602,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "forced-colors-real-browser",
@@ -12614,8 +12614,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "human-a11y-review",
@@ -19089,6 +19089,11 @@
           "optional": true,
           "type": "boolean",
           "description": "Runs the six-frame loop. Disable for a deliberate static composition."
+        },
+        "cycle": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Renders a single glyph cell (one row, one column) that steps through the\nwhole glyph pool one formation at a time. Ignores `rows`."
         }
       },
       "propRelationships": [],
@@ -19141,7 +19146,7 @@
       ],
       "composesWith": [],
       "prefersOver": [],
-      "declaredPropCount": 4,
+      "declaredPropCount": 5,
       "guidelines": [
         {
           "level": "should",
@@ -19301,7 +19306,7 @@
       "governance": {
         "owner": "design-system",
         "lastReviewed": "2026-07-23",
-        "note": "The Primary Studio reference informed the compact modular format, while original 5x5 bitmap artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
+        "note": "The Primary Studio reference informed the compact modular format, while original 5x5 vector cell-grid artwork, round marks, row-aware choreography, and timing establish a distinct implementation. Supports one, two, or three rows of three glyph grids. Alpha while forced-colors and light/dark verification remain pending outside the supplied Storybook contexts."
       },
       "content": null
     },
