@@ -1,0 +1,97 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "schemaVersion": 2,
+  "name": "VirtualListItem",
+  "tier": "molecule",
+  "group": "data-display",
+  "status": "alpha",
+  "description": "A single windowed list row: owns the role=listitem semantics with aria-posinset/aria-setsize position metadata, and composes ListItem for its chrome (leading icon, truncating label, end meta, trailing icon, selected check, destructive tone). Rendered by VirtualList.",
+  "figma": null,
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {
+    "tone": {
+      "values": ["neutral", "destructive"],
+      "default": "neutral",
+      "propSourced": true
+    }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [
+      "role=listitem — must be rendered inside a role=list container (VirtualList's viewport)",
+      "aria-posinset/aria-setsize announce the true position within the full collection even though only the windowed rows are in the DOM",
+      "chrome is delegated to ListItem: icon/trailingIcon/check are decorative (aria-hidden), meta is exposed"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test.",
+    "forcedColorsVerified": false,
+    "accessibilityTreeVerified": false
+  },
+  "tokens": {
+    "colors": ["--color-border-light"],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "dense": "windowed list row; role=listitem + aria-posinset/aria-setsize, composes ListItem chrome; positioning arrives from VirtualList via style",
+  "keywords": ["virtual", "list", "row", "item", "windowed", "posinset"],
+  "props": {
+    "posInSet": {
+      "optional": false,
+      "type": "number",
+      "description": "1-based position within the full collection (aria-posinset)."
+    },
+    "setSize": {
+      "optional": false,
+      "type": "number",
+      "description": "Total item count in the full collection (aria-setsize)."
+    },
+    "children": {
+      "optional": false,
+      "type": "React.ReactNode",
+      "description": "Primary label (delegated to ListItem; truncates)."
+    },
+    "icon": {
+      "optional": true,
+      "type": "React.ReactNode",
+      "description": "Leading icon node."
+    },
+    "meta": {
+      "optional": true,
+      "type": "React.ReactNode",
+      "description": "End-aligned secondary content (Badge, Kbd, StatusDot, value)."
+    },
+    "trailingIcon": {
+      "optional": true,
+      "type": "React.ReactNode",
+      "description": "Trailing icon after meta."
+    },
+    "selected": {
+      "optional": true,
+      "type": "boolean",
+      "description": "Renders the trailing check. Visual only."
+    },
+    "tone": {
+      "optional": true,
+      "type": "union",
+      "values": ["neutral", "destructive"],
+      "description": "Destructive rows use the error treatment."
+    },
+    "style": {
+      "optional": true,
+      "type": "React.CSSProperties",
+      "description": "Windowing position style injected by VirtualList (absolute + transform + block-size)."
+    }
+  },
+  "forbiddenUse": [
+    "render it outside a role=list container",
+    "duplicate ListItem chrome instead of composing it",
+    "put interactive semantics on the row — selection is visual only"
+  ],
+  "composesWith": ["VirtualList", "ListItem", "Icon", "Badge", "StatusDot"]
+}

@@ -194,6 +194,11 @@ export type { TransformingActionInputProps } from "./TransformingActionInput";
 export { ValueCard, type ValueCardProps } from "./ValueCard";
 export { VirtualList } from "./VirtualList";
 export type { VirtualListProps, VirtualListRange } from "./VirtualList";
+export { VirtualListItem } from "./VirtualListItem";
+export type {
+  VirtualListItemProps,
+  VirtualListItemContent,
+} from "./VirtualListItem";
 export { default as WorkNav } from "./WorkNav/WorkNav";
 export type { WorkNavPage, WorkNavProps } from "./WorkNav";
 

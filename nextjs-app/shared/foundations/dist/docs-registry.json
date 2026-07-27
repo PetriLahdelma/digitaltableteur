@@ -15896,12 +15896,12 @@
         {
           "story": "Sortable",
           "description": "TableHeaderCell renders the three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).",
-          "source": "export const Sortable: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"TableHeaderCell renders the three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).\",\n      },\n    },\n  },\n  render: (args) => {\n    const states: TableSortDirection[] = [\"ascending\", \"none\", \"descending\"];\n    return (\n      <Table {...args} caption=\"Sortable columns\">\n        <thead>\n          <TableRow>\n            {[\"Name\", \"Role\", \"Projects\"].map((label, index) => (\n              <TableHeaderCell\n                key={label}\n                sortable\n                sortDirection={states[index]}\n                align={label === \"Projects\" ? \"end\" : \"start\"}\n              >\n                {label}\n              </TableHeaderCell>\n            ))}\n          </TableRow>\n        </thead>\n        <tbody>\n          {people.map((person) => (\n            <TableRow key={person.id}>\n              <TableCell>{person.name}</TableCell>\n              <TableCell>{person.role}</TableCell>\n              <TableCell numeric>{person.projects}</TableCell>\n            </TableRow>\n          ))}\n        </tbody>\n      </Table>\n    );\n  },\n};"
+          "source": "export const Sortable: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"TableHeaderCell renders the three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).\",\n      },\n    },\n  },\n  render: (args) => {\n    const states: TableSortDirection[] = [\"ascending\", \"none\", \"descending\"];\n    return (\n      <Table {...args} caption=\"Sortable columns\">\n        <thead>\n          <TableRow>\n            {[\"Name\", \"Role\", \"Projects\"].map((label, index) => (\n              <TableHeaderCell\n                key={label}\n                sortable\n                sortDirection={states[index]}\n                align={label === \"Projects\" ? \"end\" : \"start\"}\n              >\n                {label}\n              </TableHeaderCell>\n            ))}\n          </TableRow>\n        </thead>\n        <tbody>\n          {people.map((person) => (\n            <TableRow key={person.id}>\n              <TableCell>{person.name}</TableCell>\n              <TableCell>{person.role}</TableCell>\n              <TableCell numeric>{person.projects}</TableCell>\n            </TableRow>\n          ))}\n        </tbody>\n      </Table>\n    );\n  },\n};\n\nfunction SelectableTable(args: React.ComponentProps<typeof Table>) {\n  // The header checkbox is the master control: useTableSelection derives the\n  // all/indeterminate state and select-all toggle from the row selection.\n  const selection = useTableSelection({ rowIds: people.map((p) => p.id) });\n  return (\n    <Table {...args} caption=\"Selectable rows\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell align=\"center\">\n            <Checkbox\n              label=\"Select all rows\"\n              aria-label=\"Select all rows\"\n              showLabel={false}\n              checked={selection.allSelected}\n              indeterminate={selection.someSelected}\n              onCheckedChange={selection.toggleAll}\n            />\n          </TableHeaderCell>\n          <TableHeaderCell>Name</TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person) => {\n          const selected = selection.isSelected(person.id);\n          return (\n            <TableRow key={person.id} selected={selected}>\n              <TableCell align=\"center\">\n                <Checkbox\n                  label={`Select ${person.name}`}\n                  aria-label={`Select ${person.name}`}\n                  showLabel={false}\n                  checked={selected}\n                  onCheckedChange={() => selection.toggleRow(person.id)}\n                />\n              </TableCell>\n              <TableCell>{person.name}</TableCell>\n              <TableCell>{person.role}</TableCell>\n            </TableRow>\n          );\n        })}\n      </tbody>\n    </Table>\n  );\n}"
         },
         {
           "story": "Selectable",
-          "description": null,
-          "source": "export const Selectable: Story = {\n  tags: [\"example\"],\n  render: (args) => (\n    <Table {...args} caption=\"Selectable rows\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell align=\"center\">\n            <Checkbox\n              label=\"Select all rows\"\n              aria-label=\"Select all rows\"\n              showLabel={false}\n            />\n          </TableHeaderCell>\n          <TableHeaderCell>Name</TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person, index) => (\n          <TableRow key={person.id} selected={index === 1}>\n            <TableCell align=\"center\">\n              <Checkbox\n                label={`Select ${person.name}`}\n                aria-label={`Select ${person.name}`}\n                showLabel={false}\n                defaultChecked={index === 1}\n              />\n            </TableCell>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  ),\n};"
+          "description": "The header checkbox is the master control: it selects/clears all rows and shows the indeterminate state on a partial selection, driven by useTableSelection.",
+          "source": "export const Selectable: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The header checkbox is the master control: it selects/clears all rows and shows the indeterminate state on a partial selection, driven by useTableSelection.\",\n      },\n    },\n  },\n  render: (args) => <SelectableTable {...args} />,\n};"
         },
         {
           "story": "Example",
@@ -18166,8 +18166,8 @@
           "required": true
         },
         {
-          "name": "renderItem",
-          "type": "(item: Item, index: number) => React.ReactNode",
+          "name": "getItemProps",
+          "type": "(item: Item, index: number) => VirtualListItemContent",
           "required": true
         },
         {
@@ -18197,10 +18197,10 @@
           "type": "(item: Item, index: number) => React.Key",
           "description": "Stable item key."
         },
-        "renderItem": {
+        "getItemProps": {
           "optional": false,
-          "type": "(item: Item, index: number) => React.ReactNode",
-          "description": "Renders one visible item."
+          "type": "(item: Item, index: number) => VirtualListItemContent",
+          "description": "Maps an item to its VirtualListItem chrome (label, icon, meta, selected, tone); VirtualList injects position + windowing style."
         },
         "aria-label": {
           "optional": false,
@@ -18219,7 +18219,8 @@
         }
       },
       "composesWith": [
-        "DataTable",
+        "VirtualListItem",
+        "ListItem",
         "CommandPalette",
         "TreeView"
       ],
@@ -18286,8 +18287,134 @@
       "examples": [
         {
           "story": "Example",
+          "description": "Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.",
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.\",\n      },\n    },\n  },\n  args: {\n    getItemProps: (item) => ({\n      children: item.label,\n      icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n      meta: item.isNew ? (\n        <Badge size=\"sm\" tone=\"info\">\n          New\n        </Badge>\n      ) : (\n        <StatusDot tone={item.online ? \"success\" : \"neutral\"} label={item.online ? \"Online\" : \"Offline\"} />\n      ),\n    }),\n  },\n};"
+        }
+      ]
+    },
+    "VirtualListItem": {
+      "name": "VirtualListItem",
+      "group": "data-display",
+      "tier": 2,
+      "status": "alpha",
+      "description": "A single windowed list row: owns the role=listitem semantics with aria-posinset/aria-setsize position metadata, and composes ListItem for its chrome (leading icon, truncating label, end meta, trailing icon, selected check, destructive tone). Rendered by VirtualList.",
+      "dense": "windowed list row; role=listitem + aria-posinset/aria-setsize, composes ListItem chrome; positioning arrives from VirtualList via style",
+      "keywords": [
+        "virtual",
+        "list",
+        "row",
+        "item",
+        "windowed",
+        "posinset"
+      ],
+      "importLine": "import VirtualListItem from \"@dt/VirtualListItem\";",
+      "keyProps": [
+        {
+          "name": "posInSet",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "setSize",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true
+        },
+        {
+          "name": "tone",
+          "type": "neutral | destructive",
+          "required": false
+        },
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": false
+        },
+        {
+          "name": "meta",
+          "type": "React.ReactNode",
+          "required": false
+        }
+      ],
+      "props": {
+        "posInSet": {
+          "optional": false,
+          "type": "number",
+          "description": "1-based position within the full collection (aria-posinset)."
+        },
+        "setSize": {
+          "optional": false,
+          "type": "number",
+          "description": "Total item count in the full collection (aria-setsize)."
+        },
+        "children": {
+          "optional": false,
+          "type": "React.ReactNode",
+          "description": "Primary label (delegated to ListItem; truncates)."
+        },
+        "icon": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "Leading icon node."
+        },
+        "meta": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "End-aligned secondary content (Badge, Kbd, StatusDot, value)."
+        },
+        "trailingIcon": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "Trailing icon after meta."
+        },
+        "selected": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Renders the trailing check. Visual only."
+        },
+        "tone": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "neutral",
+            "destructive"
+          ],
+          "description": "Destructive rows use the error treatment."
+        },
+        "style": {
+          "optional": true,
+          "type": "React.CSSProperties",
+          "description": "Windowing position style injected by VirtualList (absolute + transform + block-size)."
+        }
+      },
+      "composesWith": [
+        "VirtualList",
+        "ListItem",
+        "Icon",
+        "Badge",
+        "StatusDot"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "render it outside a role=list container",
+        "duplicate ListItem chrome instead of composing it",
+        "put interactive semantics on the row — selection is visual only"
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-border-light"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Example",
           "description": null,
-          "source": "export const Example: Story = { tags: [\"example\"] };"
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: {\n    icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n    meta: (\n      <Badge size=\"sm\" tone=\"info\">\n        New\n      </Badge>\n    ),\n  },\n};"
         }
       ]
     },

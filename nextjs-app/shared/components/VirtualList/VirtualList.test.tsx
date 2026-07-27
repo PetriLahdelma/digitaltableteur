@@ -23,7 +23,7 @@ const renderList = (
       itemHeight={20}
       items={items}
       overscan={1}
-      renderItem={(item) => item.label}
+      getItemProps={(item) => ({ children: item.label })}
       {...props}
     />,
   );

@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-26T21:11:36.435Z",
+  "generatedAt": "2026-07-27T05:19:22.232Z",
   "summary": {
-    "componentCount": 173,
+    "componentCount": 174,
     "statusCounts": {
       "beta": 40,
       "stable": 104,
-      "alpha": 28,
+      "alpha": 29,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
     "catalogCompletenessPercent": 90.6,
-    "codebaseComponentCount": 191,
+    "codebaseComponentCount": 192,
     "usageCoveragePercent": 93.1,
     "componentsWithProductionUsage": 36,
     "notReadyForStablePromotion": false
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 191,
-    "inCatalog": 173,
+    "totalComponentsInCodebase": 192,
+    "inCatalog": 174,
     "outOfCatalog": 18,
     "catalogCompletenessPercent": 90.6,
     "artifactCoverage": {
-      "stories": 157,
-      "tests": 158,
+      "stories": 158,
+      "tests": 159,
       "mdx": 4,
-      "spec": 173
+      "spec": 174
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,13 +77,13 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 173,
-    "withAnyUsage": 161,
+    "catalogedComponents": 174,
+    "withAnyUsage": 162,
     "withProductionUsage": 36,
-    "uniqueImportedComponents": 161,
-    "totalEvidenceRows": 789,
-    "aliasImportFiles": 404,
-    "relativeImportFiles": 418,
+    "uniqueImportedComponents": 162,
+    "totalEvidenceRows": 797,
+    "aliasImportFiles": 411,
+    "relativeImportFiles": 419,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 173,
+      "digitaltableteur": 174,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 40,
         "stable": 104,
-        "alpha": 28,
+        "alpha": 29,
         "deprecated": 1
       },
       "dsharp": {
@@ -4592,7 +4592,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Badge",
-        "importCount": 11,
+        "importCount": 13,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 4,
@@ -4646,6 +4646,18 @@
             "context": "story"
           },
           {
+            "path": "nextjs-app/shared/components/VirtualList/VirtualList.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Badge",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/VirtualListItem/VirtualListItem.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Badge",
+            "context": "story"
+          },
+          {
             "path": "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/Badge",
@@ -4655,12 +4667,6 @@
             "path": "nextjs-app/shared/stories/KitchenSink.stories.tsx",
             "importKind": "relative",
             "importPath": "../components/Badge/Badge.stories",
-            "context": "story"
-          },
-          {
-            "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Badge",
             "context": "story"
           }
         ]
@@ -4811,9 +4817,9 @@
         ],
         "composesWith": [
           "TextInput",
+          "Icon",
           "Text",
           "Button",
-          "Icon",
           "Grid",
           "FlexBox"
         ],
@@ -10611,8 +10617,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -23636,7 +23642,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Icon",
-        "importCount": 71,
+        "importCount": 73,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 37,
@@ -23920,8 +23926,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "aria-requirements",
@@ -28415,13 +28421,19 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ListItem",
-        "importCount": 1,
+        "importCount": 2,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 1,
+        "componentImportCount": 2,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/Menu/Menu.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/ListItem",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/VirtualListItem/VirtualListItem.tsx",
             "importKind": "alias",
             "importPath": "@dt/ListItem",
             "context": "component"
@@ -48054,7 +48066,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/StatusDot",
-        "importCount": 3,
+        "importCount": 5,
         "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 2,
@@ -48073,6 +48085,18 @@
           },
           {
             "path": "nextjs-app/shared/components/ListItem/ListItem.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/StatusDot",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/VirtualList/VirtualList.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/StatusDot",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/VirtualListItem/VirtualListItem.stories.tsx",
             "importKind": "alias",
             "importPath": "@dt/StatusDot",
             "context": "story"
@@ -49001,7 +49025,7 @@
           "IconButton"
         ]
       },
-      "spec": "# Table\n\nComposable table primitives — `Table`, `TableRow`, `TableHeaderCell`, and\n`TableCell` — that render semantic `<table>` markup with design-system chrome.\nThey are the presentational layer beneath `DataTable`; behavior (sorting,\nselection, pagination) lives in the `useTable*` hooks.\n\n## Anatomy\n\n- **Table** — scroll wrapper + `<table>` with the `<caption>`; owns density\n  (`sm`/`md`/`lg`), `striped`, and `stickyHeader`.\n- **TableRow** — `<tr>`; `selected` renders the selected surface and sets\n  `data-selected`.\n- **TableHeaderCell** — `<th scope=\"col\">`; `sortable` + `sortDirection` render\n  a sort button whose caret is a DS `Icon` (`caret-up-down` unsorted,\n  `caret-up` ascending, `caret-down` descending). `aria-sort` reflects state.\n- **TableCell** — `<td>`; `align` and `numeric` (tabular figures, end-aligned).\n\n## Accessibility\n\n- Native table semantics; `caption` is the accessible name.\n- Sortable headers toggle via an inner `<button>` and expose `aria-sort` only\n  while actively sorted.\n- The sort caret is decorative (`aria-hidden`); the sort state is carried by\n  `aria-sort`, never by the icon alone.\n- Forced-colors: borders map to `CanvasText`, focus ring to `Highlight`.\n\n## Do / don't\n\nDo:\n\n- Give every table a concise `caption`.\n- Drive sorting/selection with the `useTable*` hooks rather than local state.\n- Use `numeric` for figures so columns align on the decimal.\n\nDon't:\n\n- Use Table for page layout.\n- Put sort logic inside a cell instead of the hooks.\n",
+      "spec": "# Table\n\nComposable table primitives — `Table`, `TableRow`, `TableHeaderCell`, and\n`TableCell` — that render semantic `<table>` markup with design-system chrome.\nThey are the presentational layer beneath `DataTable`; behavior (sorting,\nselection, pagination) lives in the `useTable*` hooks.\n\n## Intent\n\nGive the design system a low-level, composable table so product surfaces can\nassemble bespoke tables from DS-styled parts, while `DataTable` provides the\nbatteries-included configuration on top. Compose with native `<thead>` and\n`<tbody>`:\n\n- **Table** — scroll wrapper + `<table>` with the `<caption>`; owns density\n  (`sm`/`md`/`lg`), `striped`, and `stickyHeader`.\n- **TableRow** — `<tr>`; `selected` renders the selected surface and sets\n  `data-selected`.\n- **TableHeaderCell** — `<th scope=\"col\">`; `sortable` + `sortDirection` render\n  a sort button whose caret is a DS `Icon` (`caret-up-down` unsorted,\n  `caret-up` ascending, `caret-down` descending).\n- **TableCell** — `<td>`; `align` and `numeric` (tabular figures, end-aligned).\n\n## Interaction contract\n\n- Sortable headers toggle via an inner `<button>`; drive the actual sort with\n  `useTableSortable` and pass the resulting `sortDirection`/`onSort`.\n- `aria-sort` is exposed only while a column is actively sorted; the caret is\n  decorative (`aria-hidden`) and never the sole carrier of state.\n- Row selection is presentational here (`selected`) — the state lives in\n  `useTableSelection`; render a DS `Checkbox` in the leading cell.\n\n## Do / don't\n\nDo:\n\n- Give every table a concise `caption`.\n- Drive sorting/selection with the `useTable*` hooks rather than local state.\n- Use `numeric` for figures so columns align on the decimal.\n\nDon't:\n\n- Use Table for page layout.\n- Put sort logic inside a cell instead of the hooks.\n- Rely on the caret color alone to convey sort state.\n\n## Design notes\n\n- Quiet header: small uppercase `--font-size-text-xs` labels in `--color-muted`\n  on a `--color-light-bg` surface, with hairline (`1px`) row dividers.\n- The active sort caret uses `--color-primary`; the unsorted caret sits at\n  `--color-muted` so a sorted column reads at a glance while the unsorted\n  affordance still clears ≥3:1 non-text contrast in every theme (including\n  HCB, where `--color-border` would fail).\n- Density scales header/cell padding across `sm`/`md`/`lg`.\n- Forced-colors: borders map to `CanvasText`, the focus ring to `Highlight`.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Table",
@@ -49032,7 +49056,7 @@
       },
       "agent": {
         "preferredImport": "@dt/Table",
-        "intent": "Composable table primitives (Table, TableRow, TableHeaderCell, TableCell) with density, striping, a sticky header, and a three-state sort control. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+        "intent": "Give the design system a low-level, composable table so product surfaces can assemble bespoke tables from DS-styled parts, while `DataTable` provides the batteries-included configuration on top. Compose with native `<th…",
         "props": {
           "caption": {
             "optional": false,
@@ -50652,7 +50676,7 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Text",
-        "importCount": 57,
+        "importCount": 56,
         "productionImportCount": 0,
         "patternImportCount": 1,
         "componentImportCount": 27,
@@ -56390,10 +56414,10 @@
             "type": "(item: Item, index: number) => React.Key",
             "description": "Stable item key."
           },
-          "renderItem": {
+          "getItemProps": {
             "optional": false,
-            "type": "(item: Item, index: number) => React.ReactNode",
-            "description": "Renders one visible item."
+            "type": "(item: Item, index: number) => VirtualListItemContent",
+            "description": "Maps an item to its VirtualListItem chrome (label, icon, meta, selected, tone); VirtualList injects position + windowing style."
           },
           "aria-label": {
             "optional": false,
@@ -56471,7 +56495,8 @@
           }
         },
         "composesWith": [
-          "DataTable",
+          "VirtualListItem",
+          "ListItem",
           "CommandPalette",
           "TreeView"
         ]
@@ -56517,10 +56542,10 @@
             "type": "(item: Item, index: number) => React.Key",
             "description": "Stable item key."
           },
-          "renderItem": {
+          "getItemProps": {
             "optional": false,
-            "type": "(item: Item, index: number) => React.ReactNode",
-            "description": "Renders one visible item."
+            "type": "(item: Item, index: number) => VirtualListItemContent",
+            "description": "Maps an item to its VirtualListItem chrome (label via `children`, plus\noptional `icon`, `meta`, `trailingIcon`, `selected`, `tone`). VirtualList\ninjects the position (`posInSet`/`setSize`) and windowing style."
           },
           "aria-label": {
             "optional": false,
@@ -56705,6 +56730,315 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "VirtualList.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
+      "name": "VirtualListItem",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "VirtualListItem",
+        "tier": "molecule",
+        "group": "data-display",
+        "status": "alpha",
+        "description": "A single windowed list row: owns the role=listitem semantics with aria-posinset/aria-setsize position metadata, and composes ListItem for its chrome (leading icon, truncating label, end meta, trailing icon, selected check, destructive tone). Rendered by VirtualList.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "div",
+        "variants": {
+          "tone": {
+            "values": [
+              "neutral",
+              "destructive"
+            ],
+            "default": "neutral",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [],
+          "ariaRequirements": [
+            "role=listitem — must be rendered inside a role=list container (VirtualList's viewport)",
+            "aria-posinset/aria-setsize announce the true position within the full collection even though only the windowed rows are in the DOM",
+            "chrome is delegated to ListItem: icon/trailingIcon/check are decorative (aria-hidden), meta is exposed"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test.",
+          "forcedColorsVerified": false,
+          "accessibilityTreeVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-border-light"
+          ]
+        },
+        "lightDarkVerified": false,
+        "dense": "windowed list row; role=listitem + aria-posinset/aria-setsize, composes ListItem chrome; positioning arrives from VirtualList via style",
+        "keywords": [
+          "virtual",
+          "list",
+          "row",
+          "item",
+          "windowed",
+          "posinset"
+        ],
+        "props": {
+          "posInSet": {
+            "optional": false,
+            "type": "number",
+            "description": "1-based position within the full collection (aria-posinset)."
+          },
+          "setSize": {
+            "optional": false,
+            "type": "number",
+            "description": "Total item count in the full collection (aria-setsize)."
+          },
+          "children": {
+            "optional": false,
+            "type": "React.ReactNode",
+            "description": "Primary label (delegated to ListItem; truncates)."
+          },
+          "icon": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Leading icon node."
+          },
+          "meta": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "End-aligned secondary content (Badge, Kbd, StatusDot, value)."
+          },
+          "trailingIcon": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Trailing icon after meta."
+          },
+          "selected": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders the trailing check. Visual only."
+          },
+          "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "neutral",
+              "destructive"
+            ],
+            "description": "Destructive rows use the error treatment."
+          },
+          "style": {
+            "optional": true,
+            "type": "React.CSSProperties",
+            "description": "Windowing position style injected by VirtualList (absolute + transform + block-size)."
+          }
+        },
+        "forbiddenUse": [
+          "render it outside a role=list container",
+          "duplicate ListItem chrome instead of composing it",
+          "put interactive semantics on the row — selection is visual only"
+        ],
+        "composesWith": [
+          "VirtualList",
+          "ListItem",
+          "Icon",
+          "Badge",
+          "StatusDot"
+        ]
+      },
+      "spec": "# VirtualListItem\n\nA single windowed list row. It is the item `VirtualList` renders for each\nvisible index, and the reason a virtualized list stays announceable.\n\n## Intent\n\nGive `VirtualList` a real item component instead of ad-hoc row markup, sharing\nthe same chrome as menus and other lists. It **composes the stable `ListItem`**\n(leading `icon`, truncating label, end `meta` such as Badge / Kbd / StatusDot,\n`trailingIcon`, `selected` check, `destructive` tone) rather than duplicating\nit — exactly how `MenuItem` reuses `ListItem`. On top of that chrome it owns the\nwindowed-row semantics: `role=\"listitem\"` plus `aria-posinset` / `aria-setsize`\nso a screen reader can announce \"item 500 of 1000\" even though only the ~10\nvisible rows are mounted.\n\n## Interaction contract\n\n- `VirtualList` injects `posInSet`, `setSize`, and the positioning `style`\n  (absolute + `translateY` + `block-size`); consumers supply the chrome via\n  `getItemProps`.\n- Selection is **visual only** (`selected` renders a check); the semantic\n  selection model, if any, belongs to the surrounding application.\n- Must live inside a `role=\"list\"` container — `VirtualList`'s viewport\n  provides it. Rendering it standalone without a list ancestor is invalid.\n\n## Do / don't\n\nDo:\n\n- Compose it from `VirtualList` via `getItemProps`, or use it directly inside\n  your own `role=\"list\"`.\n- Use `meta` for end-aligned status (Badge / StatusDot / Kbd / a value).\n\nDon't:\n\n- Render it outside a `role=\"list\"` container.\n- Reimplement the ListItem chrome — compose it.\n- Attach interactive semantics to the row; selection is presentational.\n\n## Design notes\n\n- The row is a bordered container (`--color-border-light` divider); the composed\n  `ListItem` fills it and supplies padding, the icon gutter, and truncation.\n- Positioning is not baked into the item — it arrives via `style` so the item\n  stays reusable outside a virtualized context.\n- Forced-colors: the divider maps to `CanvasText`.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/VirtualListItem",
+        "importCount": 2,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 2,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./VirtualListItem",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/VirtualList/VirtualList.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/VirtualListItem",
+            "context": "component"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/VirtualListItem",
+        "intent": "Give `VirtualList` a real item component instead of ad-hoc row markup, sharing the same chrome as menus and other lists. It **composes the stable `ListItem`** (leading `icon`, truncating label, end `meta` such as Badge …",
+        "props": {
+          "posInSet": {
+            "optional": false,
+            "type": "number",
+            "description": "1-based position within the full collection (`aria-posinset`)."
+          },
+          "setSize": {
+            "optional": false,
+            "type": "number",
+            "description": "Total item count in the full collection (`aria-setsize`)."
+          },
+          "style": {
+            "optional": true,
+            "type": "React.CSSProperties",
+            "description": "Positioning style supplied by VirtualList (transform + block-size)."
+          }
+        },
+        "propRelationships": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [],
+        "avoidWhen": [],
+        "requiredA11y": [
+          "role=listitem — must be rendered inside a role=list container (VirtualList's viewport)",
+          "aria-posinset/aria-setsize announce the true position within the full collection even though only the windowed rows are in the DOM",
+          "chrome is delegated to ListItem: icon/trailingIcon/check are decorative (aria-hidden), meta is exposed"
+        ],
+        "keyboard": [],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [],
+        "composesWith": [],
+        "prefersOver": [],
+        "declaredPropCount": 3,
+        "guidelines": [],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "VirtualListItem.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "VirtualListItem.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "VirtualListItem.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "VirtualListItem.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",
