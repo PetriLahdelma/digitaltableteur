@@ -1,6 +1,10 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import {
+  VirtualListItem,
+  type VirtualListItemContent,
+} from "@dt/VirtualListItem";
 import styles from "./VirtualList.module.css";
 
 export type VirtualListRange = {
@@ -17,8 +21,12 @@ export interface VirtualListProps<Item> {
   height: number;
   /** Stable item key. */
   getItemKey: (item: Item, index: number) => React.Key;
-  /** Renders one visible item. */
-  renderItem: (item: Item, index: number) => React.ReactNode;
+  /**
+   * Maps an item to its VirtualListItem chrome (label via `children`, plus
+   * optional `icon`, `meta`, `trailingIcon`, `selected`, `tone`). VirtualList
+   * injects the position (`posInSet`/`setSize`) and windowing style.
+   */
+  getItemProps: (item: Item, index: number) => VirtualListItemContent;
   /** Accessible list name. */
   "aria-label": string;
   /** Extra rows rendered before and after the viewport. @default 3 */
@@ -55,7 +63,7 @@ export function VirtualList<Item>({
   itemHeight,
   height,
   getItemKey,
-  renderItem,
+  getItemProps,
   "aria-label": ariaLabel,
   overscan = 3,
   initialScrollOffset = 0,
@@ -89,6 +97,9 @@ export function VirtualList<Item>({
       className={[styles.viewport, className].filter(Boolean).join(" ")}
       role="list"
       aria-label={ariaLabel}
+      // The viewport scrolls, so it must be keyboard-focusable — keyboard users
+      // scroll the window with the arrow keys / Page Up-Down.
+      tabIndex={0}
       style={{ blockSize: height }}
       onScroll={(event) => setScrollOffset(event.currentTarget.scrollTop)}
     >
@@ -99,19 +110,19 @@ export function VirtualList<Item>({
         {visibleItems.map((item, visibleIndex) => {
           const index = range.startIndex + visibleIndex;
           return (
-            <div
+            <VirtualListItem
               key={getItemKey(item, index)}
-              className={styles.item}
-              role="listitem"
-              aria-posinset={index + 1}
-              aria-setsize={items.length}
+              posInSet={index + 1}
+              setSize={items.length}
               style={{
+                position: "absolute",
+                insetInlineStart: 0,
+                insetInlineEnd: 0,
                 blockSize: itemHeight,
                 transform: `translateY(${index * itemHeight}px)`,
               }}
-            >
-              {renderItem(item, index)}
-            </div>
+              {...getItemProps(item, index)}
+            />
           );
         })}
       </div>

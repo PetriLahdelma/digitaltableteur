@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T21:11:36.173Z",
+  "generatedAt": "2026-07-27T05:19:21.943Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -2442,9 +2442,9 @@
       ],
       "composesWith": [
         "TextInput",
+        "Icon",
         "Text",
         "Button",
-        "Icon",
         "Grid",
         "FlexBox"
       ],
@@ -5551,8 +5551,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -12608,8 +12608,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "aria-requirements",
@@ -26549,7 +26549,7 @@
     },
     "Table": {
       "preferredImport": "@dt/Table",
-      "intent": "Composable table primitives (Table, TableRow, TableHeaderCell, TableCell) with density, striping, a sticky header, and a three-state sort control. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+      "intent": "Give the design system a low-level, composable table so product surfaces can assemble bespoke tables from DS-styled parts, while `DataTable` provides the batteries-included configuration on top. Compose with native `<th…",
       "props": {
         "caption": {
           "optional": false,
@@ -30501,10 +30501,10 @@
           "type": "(item: Item, index: number) => React.Key",
           "description": "Stable item key."
         },
-        "renderItem": {
+        "getItemProps": {
           "optional": false,
-          "type": "(item: Item, index: number) => React.ReactNode",
-          "description": "Renders one visible item."
+          "type": "(item: Item, index: number) => VirtualListItemContent",
+          "description": "Maps an item to its VirtualListItem chrome (label via `children`, plus\noptional `icon`, `meta`, `trailingIcon`, `selected`, `tone`). VirtualList\ninjects the position (`posInSet`/`setSize`) and windowing style."
         },
         "aria-label": {
           "optional": false,
@@ -30689,6 +30689,167 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "VirtualList.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
+    "VirtualListItem": {
+      "preferredImport": "@dt/VirtualListItem",
+      "intent": "Give `VirtualList` a real item component instead of ad-hoc row markup, sharing the same chrome as menus and other lists. It **composes the stable `ListItem`** (leading `icon`, truncating label, end `meta` such as Badge …",
+      "props": {
+        "posInSet": {
+          "optional": false,
+          "type": "number",
+          "description": "1-based position within the full collection (`aria-posinset`)."
+        },
+        "setSize": {
+          "optional": false,
+          "type": "number",
+          "description": "Total item count in the full collection (`aria-setsize`)."
+        },
+        "style": {
+          "optional": true,
+          "type": "React.CSSProperties",
+          "description": "Positioning style supplied by VirtualList (transform + block-size)."
+        }
+      },
+      "propRelationships": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [],
+      "avoidWhen": [],
+      "requiredA11y": [
+        "role=listitem — must be rendered inside a role=list container (VirtualList's viewport)",
+        "aria-posinset/aria-setsize announce the true position within the full collection even though only the windowed rows are in the DOM",
+        "chrome is delegated to ListItem: icon/trailingIcon/check are decorative (aria-hidden), meta is exposed"
+      ],
+      "keyboard": [],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [],
+      "composesWith": [],
+      "prefersOver": [],
+      "declaredPropCount": 3,
+      "guidelines": [],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "VirtualListItem.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "VirtualListItem.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "VirtualListItem.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "VirtualListItem.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",

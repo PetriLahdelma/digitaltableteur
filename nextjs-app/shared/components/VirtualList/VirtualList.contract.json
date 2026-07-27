@@ -62,10 +62,10 @@
       "type": "(item: Item, index: number) => React.Key",
       "description": "Stable item key."
     },
-    "renderItem": {
+    "getItemProps": {
       "optional": false,
-      "type": "(item: Item, index: number) => React.ReactNode",
-      "description": "Renders one visible item."
+      "type": "(item: Item, index: number) => VirtualListItemContent",
+      "description": "Maps an item to its VirtualListItem chrome (label, icon, meta, selected, tone); VirtualList injects position + windowing style."
     },
     "aria-label": {
       "optional": false,
@@ -142,5 +142,5 @@
       "overscan": 3
     }
   },
-  "composesWith": ["DataTable", "CommandPalette", "TreeView"]
+  "composesWith": ["VirtualListItem", "ListItem", "CommandPalette", "TreeView"]
 }
