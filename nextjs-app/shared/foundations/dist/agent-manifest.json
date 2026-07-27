@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-27T05:19:22.232Z",
+  "generatedAt": "2026-07-27T05:58:08.331Z",
   "summary": {
-    "componentCount": 174,
+    "componentCount": 177,
     "statusCounts": {
       "beta": 40,
       "stable": 104,
-      "alpha": 29,
+      "alpha": 32,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
-    "catalogCompletenessPercent": 90.6,
-    "codebaseComponentCount": 192,
-    "usageCoveragePercent": 93.1,
+    "catalogCompletenessPercent": 90.8,
+    "codebaseComponentCount": 195,
+    "usageCoveragePercent": 93.2,
     "componentsWithProductionUsage": 36,
     "notReadyForStablePromotion": false
   },
@@ -57,15 +57,15 @@
   },
   "catalogCoverage": {
     "description": "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
-    "totalComponentsInCodebase": 192,
-    "inCatalog": 174,
+    "totalComponentsInCodebase": 195,
+    "inCatalog": 177,
     "outOfCatalog": 18,
-    "catalogCompletenessPercent": 90.6,
+    "catalogCompletenessPercent": 90.8,
     "artifactCoverage": {
-      "stories": 158,
-      "tests": 159,
+      "stories": 161,
+      "tests": 162,
       "mdx": 4,
-      "spec": 174
+      "spec": 177
     },
     "outOfCatalogByBucket": {
       "catalog-gap": 0,
@@ -77,21 +77,21 @@
   },
   "usageCoverage": {
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
-    "catalogedComponents": 174,
-    "withAnyUsage": 162,
+    "catalogedComponents": 177,
+    "withAnyUsage": 165,
     "withProductionUsage": 36,
-    "uniqueImportedComponents": 162,
-    "totalEvidenceRows": 797,
-    "aliasImportFiles": 411,
-    "relativeImportFiles": 419,
+    "uniqueImportedComponents": 165,
+    "totalEvidenceRows": 820,
+    "aliasImportFiles": 429,
+    "relativeImportFiles": 424,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
   "relationshipGraph": {
     "description": "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
-    "generatedAt": "2026-07-26T21:11:27.134Z",
+    "generatedAt": "2026-07-27T05:57:59.042Z",
     "coImportMinFiles": 3,
-    "nodesWithComposesWith": 87,
+    "nodesWithComposesWith": 90,
     "regenerate": "npm run build:relationship-graph or npm run build:tokens",
     "path": "nextjs-app/shared/foundations/dist/relationship-graph.json"
   },
@@ -102,14 +102,14 @@
   "dsharpParity": {
     "description": "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
     "contractCount": {
-      "digitaltableteur": 174,
+      "digitaltableteur": 177,
       "dsharp": 112
     },
     "statusMix": {
       "digitaltableteur": {
         "beta": 40,
         "stable": 104,
-        "alpha": 29,
+        "alpha": 32,
         "deprecated": 1
       },
       "dsharp": {
@@ -23920,8 +23920,8 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
@@ -23932,8 +23932,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "human-a11y-review",
@@ -24460,10 +24460,10 @@
         "composesWith": [
           "NavLink",
           "ThemeProvider",
-          "Card",
-          "Select",
-          "TextInput",
-          "Title"
+          "Table",
+          "TableRow",
+          "TableHeaderCell",
+          "TableCell"
         ],
         "prefersOver": [],
         "declaredPropCount": 7,
@@ -48866,7 +48866,7 @@
         "tier": "molecule",
         "group": "data-display",
         "status": "alpha",
-        "description": "Composable table primitives (Table, TableRow, TableHeaderCell, TableCell) with density, striping, a sticky header, and a three-state sort control. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+        "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
         "figma": null,
         "radixPrimitive": null,
         "element": "table",
@@ -48899,24 +48899,7 @@
         },
         "slots": [],
         "asChild": false,
-        "subParts": [
-          {
-            "name": "Table",
-            "element": "table"
-          },
-          {
-            "name": "TableRow",
-            "element": "tr"
-          },
-          {
-            "name": "TableHeaderCell",
-            "element": "th"
-          },
-          {
-            "name": "TableCell",
-            "element": "td"
-          }
-        ],
+        "subParts": [],
         "requiredStories": [
           "Default",
           "Playground",
@@ -49019,20 +49002,20 @@
           "put interactive sort logic in the cell instead of the useTable* hooks"
         ],
         "composesWith": [
-          "DataTable",
-          "Checkbox",
-          "Icon",
-          "IconButton"
+          "TableRow",
+          "TableHeaderCell",
+          "TableCell",
+          "DataTable"
         ]
       },
       "spec": "# Table\n\nComposable table primitives — `Table`, `TableRow`, `TableHeaderCell`, and\n`TableCell` — that render semantic `<table>` markup with design-system chrome.\nThey are the presentational layer beneath `DataTable`; behavior (sorting,\nselection, pagination) lives in the `useTable*` hooks.\n\n## Intent\n\nGive the design system a low-level, composable table so product surfaces can\nassemble bespoke tables from DS-styled parts, while `DataTable` provides the\nbatteries-included configuration on top. Compose with native `<thead>` and\n`<tbody>`:\n\n- **Table** — scroll wrapper + `<table>` with the `<caption>`; owns density\n  (`sm`/`md`/`lg`), `striped`, and `stickyHeader`.\n- **TableRow** — `<tr>`; `selected` renders the selected surface and sets\n  `data-selected`.\n- **TableHeaderCell** — `<th scope=\"col\">`; `sortable` + `sortDirection` render\n  a sort button whose caret is a DS `Icon` (`caret-up-down` unsorted,\n  `caret-up` ascending, `caret-down` descending).\n- **TableCell** — `<td>`; `align` and `numeric` (tabular figures, end-aligned).\n\n## Interaction contract\n\n- Sortable headers toggle via an inner `<button>`; drive the actual sort with\n  `useTableSortable` and pass the resulting `sortDirection`/`onSort`.\n- `aria-sort` is exposed only while a column is actively sorted; the caret is\n  decorative (`aria-hidden`) and never the sole carrier of state.\n- Row selection is presentational here (`selected`) — the state lives in\n  `useTableSelection`; render a DS `Checkbox` in the leading cell.\n\n## Do / don't\n\nDo:\n\n- Give every table a concise `caption`.\n- Drive sorting/selection with the `useTable*` hooks rather than local state.\n- Use `numeric` for figures so columns align on the decimal.\n\nDon't:\n\n- Use Table for page layout.\n- Put sort logic inside a cell instead of the hooks.\n- Rely on the caret color alone to convey sort state.\n\n## Design notes\n\n- Quiet header: small uppercase `--font-size-text-xs` labels in `--color-muted`\n  on a `--color-light-bg` surface, with hairline (`1px`) row dividers.\n- The active sort caret uses `--color-primary`; the unsorted caret sits at\n  `--color-muted` so a sorted column reads at a glance while the unsorted\n  affordance still clears ≥3:1 non-text contrast in every theme (including\n  HCB, where `--color-border` would fail).\n- Density scales header/cell padding across `sm`/`md`/`lg`.\n- Forced-colors: borders map to `CanvasText`, the focus ring to `Highlight`.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Table",
-        "importCount": 3,
+        "importCount": 8,
         "productionImportCount": 0,
         "patternImportCount": 0,
-        "componentImportCount": 2,
+        "componentImportCount": 4,
         "evidence": [
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
@@ -49045,6 +49028,36 @@
             "importKind": "relative",
             "importPath": "./Table",
             "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableCell/TableCell.tsx",
+            "importKind": "relative",
+            "importPath": "../Table/Table",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableHeaderCell/TableHeaderCell.tsx",
+            "importKind": "relative",
+            "importPath": "../Table/Table",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableCell/TableCell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Table",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableHeaderCell/TableHeaderCell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Table",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableRow/TableRow.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/Table",
+            "context": "story"
           },
           {
             "path": "nextjs-app/shared/hooks/useTableSortable.ts",
@@ -49130,6 +49143,9 @@
         "replacementFor": [],
         "forbiddenUse": [],
         "composesWith": [
+          "TableRow",
+          "TableHeaderCell",
+          "TableCell",
           "Checkbox",
           "IconButton"
         ],
@@ -49222,6 +49238,713 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "Table.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
+      "name": "TableCell",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "TableCell",
+        "tier": "atom",
+        "group": "data-display",
+        "status": "alpha",
+        "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "td",
+        "variants": {
+          "align": {
+            "values": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default": "start",
+            "propSourced": true
+          },
+          "numeric": {
+            "values": [
+              "true",
+              "false"
+            ],
+            "default": "false",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [],
+          "ariaRequirements": [
+            "native <td> semantics; no ARIA of its own",
+            "pairs with TableHeaderCell scope=col/row so cells inherit column and row context"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test.",
+          "forcedColorsVerified": false,
+          "accessibilityTreeVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-border-light"
+          ],
+          "spacing": [
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-24"
+          ]
+        },
+        "lightDarkVerified": false,
+        "dense": "table td; align start/center/end, numeric = tabular figures right-aligned",
+        "keywords": [
+          "table",
+          "cell",
+          "td",
+          "numeric"
+        ],
+        "props": {
+          "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "start",
+              "center",
+              "end"
+            ],
+            "description": "Cell content alignment."
+          },
+          "numeric": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Right-align with tabular figures for numeric values."
+          }
+        },
+        "forbiddenUse": [
+          "render it outside a table row",
+          "use it for a header — use TableHeaderCell so column/row context is announced"
+        ],
+        "composesWith": [
+          "Table",
+          "TableRow",
+          "TableHeaderCell"
+        ]
+      },
+      "spec": "# TableCell\n\nA table data cell (`<td>`) for the Table family.\n\n## Intent\n\nThe body cell of the composable `Table`. `align` sets text alignment; `numeric`\nright-aligns with tabular figures so numbers line up on the decimal. It pairs\nwith `TableHeaderCell` (`scope=\"col\"`/`\"row\"`) so cells inherit their column and\nrow context for assistive tech.\n\n## Interaction contract\n\n- Presentational: native `<td>`, no ARIA of its own.\n- `numeric` defaults the alignment to `end`; an explicit `align` overrides it.\n- Native attributes pass through, so `colSpan` (e.g. an empty-state cell that\n  spans the table) works as usual.\n\n## Do / don't\n\nDo:\n\n- Use `numeric` for figures so columns align.\n- Let `TableHeaderCell scope=\"row\"` name the row; keep other cells as\n  `TableCell`.\n\nDon't:\n\n- Use `TableCell` for a header — use `TableHeaderCell` so context is announced.\n- Render it outside a table row.\n\n## Design notes\n\n- Padding scales with the `Table` root's density (`sm`/`md`/`lg`); the row\n  divider and last-row border come from the shared `Table.module.css`.\n- `numeric` applies `font-variant-numeric: tabular-nums`.\n- Forced-colors: borders map to `CanvasText`.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/TableCell",
+        "importCount": 6,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 2,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableCell",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./TableCell",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Table/Table.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableCell",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableHeaderCell/TableHeaderCell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableCell",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableRow/TableRow.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableCell",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/Table/Table.test.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableCell",
+            "context": "test"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/TableCell",
+        "intent": "The body cell of the composable `Table`. `align` sets text alignment; `numeric` right-aligns with tabular figures so numbers line up on the decimal. It pairs with `TableHeaderCell` (`scope=\"col\"`/`\"row\"`) so cells inher…",
+        "props": {
+          "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "center",
+              "end",
+              "start"
+            ],
+            "description": "Cell content alignment."
+          },
+          "numeric": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Right-align and tabular-figure numeric values."
+          }
+        },
+        "propRelationships": [],
+        "variants": {
+          "align": {
+            "values": [
+              "center",
+              "end",
+              "start"
+            ],
+            "default": "center"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [],
+        "avoidWhen": [],
+        "requiredA11y": [
+          "native <td> semantics; no ARIA of its own",
+          "pairs with TableHeaderCell scope=col/row so cells inherit column and row context"
+        ],
+        "keyboard": [],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [],
+        "composesWith": [
+          "TableRow",
+          "TableHeaderCell",
+          "Table",
+          "Checkbox",
+          "IconButton"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 2,
+        "guidelines": [],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableCell.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableCell.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableCell.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableCell.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
+      "name": "TableHeaderCell",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "TableHeaderCell",
+        "tier": "atom",
+        "group": "data-display",
+        "status": "alpha",
+        "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "th",
+        "variants": {
+          "align": {
+            "values": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default": "start",
+            "propSourced": true
+          },
+          "scope": {
+            "values": [
+              "col",
+              "row"
+            ],
+            "default": "col",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [],
+          "ariaRequirements": [
+            "native <th> with an explicit scope (col or row)",
+            "sortable column headers expose aria-sort and toggle via an inner button",
+            "the sort caret is decorative (aria-hidden); state is carried by aria-sort, never the icon alone"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test.",
+          "forcedColorsVerified": false,
+          "accessibilityTreeVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-muted",
+            "--color-primary",
+            "--color-border",
+            "--color-light-bg",
+            "--color-neutral-bg"
+          ],
+          "spacing": [
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-24"
+          ],
+          "radii": [
+            "--radius-sm"
+          ]
+        },
+        "lightDarkVerified": false,
+        "dense": "th with scope col/row; col carries the three-state sort caret + aria-sort, row names its data row",
+        "keywords": [
+          "table",
+          "header",
+          "th",
+          "sort",
+          "scope",
+          "column",
+          "row"
+        ],
+        "props": {
+          "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "start",
+              "center",
+              "end"
+            ],
+            "description": "Cell content alignment."
+          },
+          "scope": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "col",
+              "row"
+            ],
+            "description": "Header scope; row names the identifying cell of a body row."
+          },
+          "sortable": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders the sort control (column headers only)."
+          },
+          "sortDirection": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "ascending",
+              "descending",
+              "none"
+            ],
+            "description": "Current sort state; drives aria-sort and the caret."
+          },
+          "onSort": {
+            "optional": true,
+            "type": "() => void",
+            "description": "Called when a sortable header is activated."
+          }
+        },
+        "forbiddenUse": [
+          "render it outside a table",
+          "make a scope=row header sortable — row headers are not sort controls",
+          "convey sort state with the caret colour alone"
+        ],
+        "composesWith": [
+          "Table",
+          "TableRow",
+          "TableCell",
+          "Icon"
+        ]
+      },
+      "spec": "# TableHeaderCell\n\nA table header cell (`<th>`) for the Table family.\n\n## Intent\n\nHeader cell with an explicit `scope`. `scope=\"col\"` (default) labels a column\nand can carry a three-state sort control; `scope=\"row\"` marks the identifying\ncell of a body row so a screen reader announces the row context (\"Ada\nLovelace\") along with every other cell in that row — the accessibility feature a\nplain `<td>` grid can't provide.\n\n## Interaction contract\n\n- Column headers (`scope=\"col\"`) with `sortable` render an inner `<button>` and\n  expose `aria-sort` only while actively sorted. Wire `sortDirection`/`onSort`\n  from `useTableSortable`.\n- The sort caret is a DS `Icon` (`caret-up-down` unsorted / `caret-up` asc /\n  `caret-down` desc), decorative (`aria-hidden`); state is carried by\n  `aria-sort`, never the icon alone.\n- Row headers (`scope=\"row\"`) never render a sort control — they name a row,\n  they are not interactive.\n\n## Do / don't\n\nDo:\n\n- Use `scope=\"row\"` on the identifying cell of each body row for accessible\n  data tables.\n- Drive sorting with `useTableSortable`.\n\nDon't:\n\n- Make a `scope=\"row\"` header sortable.\n- Convey sort state with the caret colour alone.\n- Render it outside a table.\n\n## Design notes\n\n- Quiet column headers: small uppercase `--font-size-text-xs` labels in\n  `--color-muted`; the active sort caret uses `--color-primary`, the unsorted\n  one `--color-muted` so a sorted column reads at a glance and clears ≥3:1\n  contrast in every theme.\n- Padding/borders/sticky behaviour come from the shared `Table.module.css`.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/TableHeaderCell",
+        "importCount": 6,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 2,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableHeaderCell",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./TableHeaderCell",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Table/Table.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableHeaderCell",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableCell/TableCell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableHeaderCell",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableRow/TableRow.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableHeaderCell",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/Table/Table.test.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableHeaderCell",
+            "context": "test"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/TableHeaderCell",
+        "intent": "Header cell with an explicit `scope`. `scope=\"col\"` (default) labels a column and can carry a three-state sort control; `scope=\"row\"` marks the identifying cell of a body row so a screen reader announces the row context…",
+        "props": {
+          "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "center",
+              "end",
+              "start"
+            ],
+            "description": "Cell content alignment."
+          },
+          "scope": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "row",
+              "col"
+            ],
+            "description": "Header scope. `col` (default) labels a column; `row` makes the cell the\naccessible name for its row — use it on the identifying cell of each body\nrow so screen readers announce the row context with every other cell."
+          },
+          "sortable": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders the sort affordance and toggles on click. Only for column headers."
+          },
+          "sortDirection": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              "none",
+              "ascending",
+              "descending"
+            ],
+            "description": "Current sort state; drives `aria-sort` and the caret icon."
+          },
+          "onSort": {
+            "optional": true,
+            "type": "() => void",
+            "description": "Called when a sortable header is activated."
+          }
+        },
+        "propRelationships": [],
+        "variants": {
+          "align": {
+            "values": [
+              "center",
+              "end",
+              "start"
+            ],
+            "default": "center"
+          }
+        },
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [],
+        "avoidWhen": [],
+        "requiredA11y": [
+          "native <th> with an explicit scope (col or row)",
+          "sortable column headers expose aria-sort and toggle via an inner button",
+          "the sort caret is decorative (aria-hidden); state is carried by aria-sort, never the icon alone"
+        ],
+        "keyboard": [],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [],
+        "composesWith": [
+          "TableRow",
+          "TableCell",
+          "Table",
+          "Checkbox",
+          "IconButton"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 5,
+        "guidelines": [],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableHeaderCell.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableHeaderCell.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableHeaderCell.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableHeaderCell.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",
@@ -49563,6 +50286,286 @@
             "origin": "authored",
             "authorship": "human-authored",
             "from": "TableOfContents.spec.md"
+          },
+          "requiredA11y": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "keyboard": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "contract.json"
+          },
+          "a11yCriteria": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "contract.a11y + derive-a11y-criteria.mjs"
+          },
+          "compositionRules": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen filter"
+          },
+          "forbiddenUse": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "avoidWhen + replacement policy"
+          },
+          "replacementFor": {
+            "origin": "derived",
+            "authorship": "mixed",
+            "from": "replacement policy"
+          }
+        },
+        "governance": null,
+        "content": null
+      }
+    },
+    {
+      "name": "TableRow",
+      "contract": {
+        "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+        "schemaVersion": 2,
+        "name": "TableRow",
+        "tier": "atom",
+        "group": "data-display",
+        "status": "alpha",
+        "description": "A table row (<tr>) for the Table family. Works in <thead> and <tbody>; selected renders the selection surface. Presentational — semantics belong to the surrounding table.",
+        "figma": null,
+        "radixPrimitive": null,
+        "element": "tr",
+        "variants": {
+          "selected": {
+            "values": [
+              "true",
+              "false"
+            ],
+            "default": "false",
+            "propSourced": true
+          }
+        },
+        "slots": [],
+        "asChild": false,
+        "subParts": [],
+        "requiredStories": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "a11y": {
+          "keyboard": [],
+          "ariaRequirements": [
+            "native <tr> semantics; no ARIA of its own",
+            "selection is visual only (data-selected); the row's selection state belongs to a checkbox or the consuming app"
+          ],
+          "reducedMotion": true,
+          "reviewed": true,
+          "reviewedNote": "2026-07-27 — native tr; hover/zebra/selection tint are presentational; axe asserted inside a table in the unit test.",
+          "forcedColorsVerified": false,
+          "accessibilityTreeVerified": false
+        },
+        "tokens": {
+          "colors": [
+            "--color-border-light",
+            "--color-primary",
+            "--color-light-bg"
+          ],
+          "spacing": []
+        },
+        "lightDarkVerified": false,
+        "dense": "table row; works in thead/tbody, selected surface, hover + zebra via the Table root",
+        "keywords": [
+          "table",
+          "row",
+          "tr"
+        ],
+        "props": {
+          "selected": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders the selected surface and sets data-selected. Visual only."
+          }
+        },
+        "forbiddenUse": [
+          "render it outside a table",
+          "rely on selected for semantics — pair it with a checkbox or aria-selected on the consuming structure"
+        ],
+        "composesWith": [
+          "Table",
+          "TableCell",
+          "TableHeaderCell"
+        ]
+      },
+      "spec": "# TableRow\n\nA table row (`<tr>`) for the Table family.\n\n## Intent\n\nOne of the composable `Table` parts (`Table` root, `TableRow`,\n`TableHeaderCell`, `TableCell`). Works in both `<thead>` and `<tbody>`. Its only\nprop, `selected`, renders the selection surface and sets `data-selected` — the\nhover, zebra-stripe, and selection-tint treatments are cross-cutting styles\nsupplied by the `Table` root, so a row only looks striped/selected inside one.\n\n## Interaction contract\n\n- Presentational: no ARIA, no events of its own.\n- `selected` is **visual only**. The semantic selection state belongs to a\n  checkbox in the row or to the consuming application (`aria-selected` on a grid,\n  etc.) — never to the row's appearance alone.\n\n## Do / don't\n\nDo:\n\n- Compose it inside a `Table` root, in `<thead>` or `<tbody>`.\n- Pair `selected` with a real selection control (a `Checkbox`).\n\nDon't:\n\n- Render it outside a table.\n- Treat `selected` as the source of truth for selection.\n\n## Design notes\n\n- The row itself is unstyled; the border, hover, zebra, and selection tint come\n  from `Table.module.css` (shared across the family) so the whole table reads as\n  one system.\n- Forced-colors: borders map to `CanvasText` via the shared stylesheet.\n",
+      "documentationDebt": false,
+      "usage": {
+        "publicImport": "@dt/TableRow",
+        "importCount": 6,
+        "productionImportCount": 0,
+        "patternImportCount": 0,
+        "componentImportCount": 2,
+        "evidence": [
+          {
+            "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableRow",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/index.ts",
+            "importKind": "relative",
+            "importPath": "./TableRow",
+            "context": "component"
+          },
+          {
+            "path": "nextjs-app/shared/components/Table/Table.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableRow",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableCell/TableCell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableRow",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/TableHeaderCell/TableHeaderCell.stories.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableRow",
+            "context": "story"
+          },
+          {
+            "path": "nextjs-app/shared/components/Table/Table.test.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/TableRow",
+            "context": "test"
+          }
+        ]
+      },
+      "agent": {
+        "preferredImport": "@dt/TableRow",
+        "intent": "One of the composable `Table` parts (`Table` root, `TableRow`, `TableHeaderCell`, `TableCell`). Works in both `<thead>` and `<tbody>`. Its only prop, `selected`, renders the selection surface and sets `data-selected` — …",
+        "props": {
+          "selected": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders the selected surface and sets `data-selected`. Visual only."
+          }
+        },
+        "propRelationships": [],
+        "variants": {},
+        "cvaVariants": {},
+        "variantsFnName": null,
+        "useWhen": [],
+        "avoidWhen": [],
+        "requiredA11y": [
+          "native <tr> semantics; no ARIA of its own",
+          "selection is visual only (data-selected); the row's selection state belongs to a checkbox or the consuming app"
+        ],
+        "keyboard": [],
+        "compositionRules": [],
+        "canonicalExamples": [
+          "Default",
+          "Playground",
+          "Example",
+          "ForcedColors"
+        ],
+        "replacementFor": [],
+        "forbiddenUse": [],
+        "composesWith": [
+          "TableHeaderCell",
+          "TableCell",
+          "Table",
+          "Checkbox",
+          "IconButton"
+        ],
+        "prefersOver": [],
+        "declaredPropCount": 1,
+        "guidelines": [],
+        "a11yCriteria": [
+          {
+            "id": "axe-no-violations",
+            "statement": "Required stories produce no axe violations at the configured severity.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "accessibility-tree",
+            "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "forced-colors-real-browser",
+            "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+            "verificationMode": "unverified"
+          },
+          {
+            "id": "aria-requirements",
+            "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          },
+          {
+            "id": "human-a11y-review",
+            "statement": "A human completed an end-to-end accessibility review of this component.",
+            "verificationMode": "manual",
+            "note": "2026-07-27 — native tr; hover/zebra/selection tint are presentational; axe asserted inside a table in the unit test."
+          }
+        ],
+        "docOrigin": {
+          "props": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "variants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "cvaVariants": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "propRelationships": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "canonicalExamples": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "stories.tsx"
+          },
+          "declaredPropCount": {
+            "origin": "generated",
+            "authorship": "machine-generated",
+            "from": "TypeScript AST"
+          },
+          "intent": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableRow.spec.md"
+          },
+          "useWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableRow.spec.md"
+          },
+          "avoidWhen": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableRow.spec.md"
+          },
+          "guidelines": {
+            "origin": "authored",
+            "authorship": "human-authored",
+            "from": "TableRow.spec.md"
           },
           "requiredA11y": {
             "origin": "authored",
@@ -56501,7 +57504,7 @@
           "TreeView"
         ]
       },
-      "spec": "# VirtualList\n\n## Intent\n\nKeep long, fixed-row collections responsive by rendering only the visible\nrange plus a small overscan buffer.\n\n## Interaction contract\n\n- Scroll position determines the rendered range.\n- The viewport keeps list semantics and each rendered item reports its\n  position and total set size.\n- `onRangeChange` reports both the visible and overscanned boundaries.\n- `initialScrollOffset` restores a known position without making scroll state\n  controlled.\n\n## Do / don't\n\n- Do provide an accurate fixed `itemHeight`.\n- Do keep item keys stable across filtering and updates.\n- Don't use VirtualList for short collections where normal rendering is\n  simpler.\n- Don't use it when row heights are unknown or highly variable.\n\n## Design notes\n\n- A full-height spacer preserves the browser's native scroll range.\n- Rendered items are translated to their calculated vertical offset.\n- Viewport height and item offsets are intentionally runtime inline values.\n",
+      "spec": "# VirtualList\n\n## Intent\n\nKeep long, fixed-row collections responsive by rendering only the visible\nrange plus a small overscan buffer.\n\n## Interaction contract\n\n- Scroll position determines the rendered range.\n- The viewport keeps list semantics and each rendered item reports its\n  position and total set size.\n- `onRangeChange` reports both the visible and overscanned boundaries.\n- `initialScrollOffset` restores a known position without making scroll state\n  controlled.\n\n## Do / don't\n\n- Do provide an accurate fixed `itemHeight`.\n- Do keep item keys stable across filtering and updates.\n- Don't use VirtualList for short collections where normal rendering is\n  simpler.\n- Don't use it when row heights are unknown or highly variable.\n\n## Design notes\n\n- A full-height spacer preserves the browser's native scroll range.\n- Rendered items are translated to their calculated vertical offset.\n- Viewport height and item offsets are intentionally runtime inline values.\n- Rows render as `VirtualListItem` (which composes `ListItem`), supplied via\n  `getItemProps`; the viewport is `role=\"list\"`, each row `role=\"listitem\"`.\n\n## Accessibility limitations\n\nWindowing has inherent accessibility trade-offs; know them before reaching for\nit:\n\n- **Off-screen rows are not in the DOM.** Only the visible window (+ overscan)\n  is mounted, so a screen-reader virtual cursor cannot navigate to item 500\n  until it scrolls into view. `aria-posinset`/`aria-setsize` announce each\n  row's true position, but do not make unmounted rows reachable. If a surface\n  needs full screen-reader traversal of the whole set, prefer a plain\n  (non-virtualized) list or provide search/filter to shrink the set.\n- **Keep items non-interactive.** Rows are presentational. Don't place focusable\n  content (links, buttons, inputs) inside `getItemProps` chrome — a focused row\n  can unmount on scroll and drop focus. Interactive virtualization needs a\n  focus-management layer this component does not yet provide.\n- **The viewport is the keyboard target.** It is `tabIndex={0}` so keyboard\n  users can scroll it with the arrow / Page keys; the rows themselves are not\n  in the tab order.\n\n## Layout requirement\n\nThe rows are absolutely positioned, so the viewport takes its width from its\ncontainer. Render VirtualList inside a block/flex context that gives it a width;\nin a shrink-to-fit container (a centered flex item, inline-block) it collapses\nto zero width and only its border shows.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/VirtualList",
@@ -56814,7 +57817,8 @@
         "tokens": {
           "colors": [
             "--color-border-light"
-          ]
+          ],
+          "spacing": []
         },
         "lightDarkVerified": false,
         "dense": "windowed list row; role=listitem + aria-posinset/aria-setsize, composes ListItem chrome; positioning arrives from VirtualList via style",

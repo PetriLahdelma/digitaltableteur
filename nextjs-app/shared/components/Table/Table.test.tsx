@@ -2,7 +2,10 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
-import { Table, TableCell, TableHeaderCell, TableRow } from "./Table";
+import { Table } from "./Table";
+import { TableRow } from "@dt/TableRow";
+import { TableHeaderCell } from "@dt/TableHeaderCell";
+import { TableCell } from "@dt/TableCell";
 
 expect.extend(toHaveNoViolations);
 

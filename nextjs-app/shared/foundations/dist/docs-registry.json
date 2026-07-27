@@ -15774,7 +15774,7 @@
       "group": "data-display",
       "tier": 2,
       "status": "alpha",
-      "description": "Composable table primitives (Table, TableRow, TableHeaderCell, TableCell) with density, striping, a sticky header, and a three-state sort control. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+      "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
       "dense": "composable native table primitives; density, striping, sticky header, three-state DS-Icon sort caret; pairs with useTable* hooks",
       "keywords": [
         "table",
@@ -15856,10 +15856,10 @@
         }
       },
       "composesWith": [
-        "DataTable",
-        "Checkbox",
-        "Icon",
-        "IconButton"
+        "TableRow",
+        "TableHeaderCell",
+        "TableCell",
+        "DataTable"
       ],
       "prefersOver": [],
       "forbiddenUse": [
@@ -15907,6 +15907,199 @@
           "story": "Example",
           "description": null,
           "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};"
+        }
+      ]
+    },
+    "TableCell": {
+      "name": "TableCell",
+      "group": "data-display",
+      "tier": 2,
+      "status": "alpha",
+      "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
+      "dense": "table td; align start/center/end, numeric = tabular figures right-aligned",
+      "keywords": [
+        "table",
+        "cell",
+        "td",
+        "numeric"
+      ],
+      "importLine": "import TableCell from \"@dt/TableCell\";",
+      "keyProps": [
+        {
+          "name": "align",
+          "type": "start | center | end",
+          "required": false
+        },
+        {
+          "name": "numeric",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "props": {
+        "align": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "start",
+            "center",
+            "end"
+          ],
+          "description": "Cell content alignment."
+        },
+        "numeric": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Right-align with tabular figures for numeric values."
+        }
+      },
+      "composesWith": [
+        "Table",
+        "TableRow",
+        "TableHeaderCell"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "render it outside a table row",
+        "use it for a header — use TableHeaderCell so column/row context is announced"
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-border-light"
+        ],
+        "spacing": [
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-layout-24"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Example",
+          "description": "numeric cells right-align with tabular figures so columns line up on the decimal.",
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story: \"numeric cells right-align with tabular figures so columns line up on the decimal.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Numbers\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Metric</TableHeaderCell>\n          <TableHeaderCell align=\"end\">Value</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Requests</TableCell>\n          <TableCell numeric>1,204</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Errors</TableCell>\n          <TableCell numeric>12</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Latency</TableCell>\n          <TableCell numeric>98</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
+        }
+      ]
+    },
+    "TableHeaderCell": {
+      "name": "TableHeaderCell",
+      "group": "data-display",
+      "tier": 2,
+      "status": "alpha",
+      "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
+      "dense": "th with scope col/row; col carries the three-state sort caret + aria-sort, row names its data row",
+      "keywords": [
+        "table",
+        "header",
+        "th",
+        "sort",
+        "scope",
+        "column",
+        "row"
+      ],
+      "importLine": "import TableHeaderCell from \"@dt/TableHeaderCell\";",
+      "keyProps": [
+        {
+          "name": "align",
+          "type": "start | center | end",
+          "required": false
+        },
+        {
+          "name": "scope",
+          "type": "col | row",
+          "required": false
+        },
+        {
+          "name": "sortDirection",
+          "type": "ascending | descending | none",
+          "required": false
+        },
+        {
+          "name": "sortable",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "props": {
+        "align": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "start",
+            "center",
+            "end"
+          ],
+          "description": "Cell content alignment."
+        },
+        "scope": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "col",
+            "row"
+          ],
+          "description": "Header scope; row names the identifying cell of a body row."
+        },
+        "sortable": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Renders the sort control (column headers only)."
+        },
+        "sortDirection": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "ascending",
+            "descending",
+            "none"
+          ],
+          "description": "Current sort state; drives aria-sort and the caret."
+        },
+        "onSort": {
+          "optional": true,
+          "type": "() => void",
+          "description": "Called when a sortable header is activated."
+        }
+      },
+      "composesWith": [
+        "Table",
+        "TableRow",
+        "TableCell",
+        "Icon"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "render it outside a table",
+        "make a scope=row header sortable — row headers are not sort controls",
+        "convey sort state with the caret colour alone"
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-muted",
+          "--color-primary",
+          "--color-border",
+          "--color-light-bg",
+          "--color-neutral-bg"
+        ],
+        "spacing": [
+          "--space-internal-6",
+          "--space-internal-8",
+          "--space-internal-12",
+          "--space-internal-16",
+          "--space-layout-24"
+        ],
+        "radii": [
+          "--radius-sm"
+        ]
+      },
+      "examples": [
+        {
+          "story": "Example",
+          "description": "The three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).",
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Sort states\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection=\"ascending\">\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"none\">\n            Role\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"descending\" align=\"end\">\n            Projects\n          </TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Ada</TableCell>\n          <TableCell>Engineer</TableCell>\n          <TableCell numeric>8</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
         }
       ]
     },
@@ -15992,6 +16185,60 @@
         "spacing": []
       },
       "examples": []
+    },
+    "TableRow": {
+      "name": "TableRow",
+      "group": "data-display",
+      "tier": 2,
+      "status": "alpha",
+      "description": "A table row (<tr>) for the Table family. Works in <thead> and <tbody>; selected renders the selection surface. Presentational — semantics belong to the surrounding table.",
+      "dense": "table row; works in thead/tbody, selected surface, hover + zebra via the Table root",
+      "keywords": [
+        "table",
+        "row",
+        "tr"
+      ],
+      "importLine": "import TableRow from \"@dt/TableRow\";",
+      "keyProps": [
+        {
+          "name": "selected",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "props": {
+        "selected": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Renders the selected surface and sets data-selected. Visual only."
+        }
+      },
+      "composesWith": [
+        "Table",
+        "TableCell",
+        "TableHeaderCell"
+      ],
+      "prefersOver": [],
+      "forbiddenUse": [
+        "render it outside a table",
+        "rely on selected for semantics — pair it with a checkbox or aria-selected on the consuming structure"
+      ],
+      "usage": null,
+      "tokens": {
+        "colors": [
+          "--color-border-light",
+          "--color-primary",
+          "--color-light-bg"
+        ],
+        "spacing": []
+      },
+      "examples": [
+        {
+          "story": "Example",
+          "description": "Rows in context: the middle row is selected; the hover, zebra, and selection surfaces come from the Table root.",
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows in context: the middle row is selected; the hover, zebra, and selection surfaces come from the Table root.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Contributors\" striped>\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Name</TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person, index) => (\n          <TableRow key={person.name} selected={index === 1}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  ),\n};"
+        }
+      ]
     },
     "Tabs": {
       "name": "Tabs",
@@ -18408,7 +18655,8 @@
       "tokens": {
         "colors": [
           "--color-border-light"
-        ]
+        ],
+        "spacing": []
       },
       "examples": [
         {

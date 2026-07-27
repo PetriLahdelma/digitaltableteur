@@ -191,8 +191,10 @@ export function isA11yRelevantChange(changedFiles, getCssDiff) {
  * answer (shallow clone — callers then use the time window).
  *
  * Excluded outright (never invalidate): the component's own evidence/snapshot/
- * visual artifacts, and files that cannot affect the rendered a11y — contract
- * JSON, spec markdown, tests, and the index barrel.
+ * visual artifacts, files that cannot affect the rendered a11y — contract JSON,
+ * spec markdown, tests, and the index barrel — and auto-generated code
+ * (`*.discovered.*`, e.g. Icon's icon registry, which is regenerated whenever
+ * any component adds an icon usage and never changes the component's own a11y).
  */
 function defaultGitChangedSince(sha, componentDir) {
   const key = `${sha}::${componentDir}`;
@@ -208,6 +210,7 @@ function defaultGitChangedSince(sha, componentDir) {
       `:(exclude)${componentDir}/*.test.tsx`,
       `:(exclude)${componentDir}/*.test.ts`,
       `:(exclude)${componentDir}/index.ts`,
+      `:(exclude)${componentDir}/*.discovered.*`,
     ];
     const changed = execFileSync(
       "git",

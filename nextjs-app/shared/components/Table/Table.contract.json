@@ -5,7 +5,7 @@
   "tier": "molecule",
   "group": "data-display",
   "status": "alpha",
-  "description": "Composable table primitives (Table, TableRow, TableHeaderCell, TableCell) with density, striping, a sticky header, and a three-state sort control. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+  "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
   "figma": null,
   "radixPrimitive": null,
   "element": "table",
@@ -28,12 +28,7 @@
   },
   "slots": [],
   "asChild": false,
-  "subParts": [
-    { "name": "Table", "element": "table" },
-    { "name": "TableRow", "element": "tr" },
-    { "name": "TableHeaderCell", "element": "th" },
-    { "name": "TableCell", "element": "td" }
-  ],
+  "subParts": [],
   "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
   "a11y": {
     "keyboard": ["Tab", "Space", "Enter"],
@@ -111,5 +106,5 @@
     "omit a meaningful caption",
     "put interactive sort logic in the cell instead of the useTable* hooks"
   ],
-  "composesWith": ["DataTable", "Checkbox", "Icon", "IconButton"]
+  "composesWith": ["TableRow", "TableHeaderCell", "TableCell", "DataTable"]
 }

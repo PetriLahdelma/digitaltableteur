@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T05:19:21.943Z",
+  "generatedAt": "2026-07-27T05:58:08.059Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -12602,8 +12602,8 @@
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "forced-colors-real-browser",
@@ -12614,8 +12614,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:matrix:ci"
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
         },
         {
           "id": "human-a11y-review",
@@ -12811,10 +12811,10 @@
       "composesWith": [
         "NavLink",
         "ThemeProvider",
-        "Card",
-        "Select",
-        "TextInput",
-        "Title"
+        "Table",
+        "TableRow",
+        "TableHeaderCell",
+        "TableCell"
       ],
       "prefersOver": [],
       "declaredPropCount": 7,
@@ -26623,6 +26623,9 @@
       "replacementFor": [],
       "forbiddenUse": [],
       "composesWith": [
+        "TableRow",
+        "TableHeaderCell",
+        "TableCell",
         "Checkbox",
         "IconButton"
       ],
@@ -26715,6 +26718,381 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "Table.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
+    "TableCell": {
+      "preferredImport": "@dt/TableCell",
+      "intent": "The body cell of the composable `Table`. `align` sets text alignment; `numeric` right-aligns with tabular figures so numbers line up on the decimal. It pairs with `TableHeaderCell` (`scope=\"col\"`/`\"row\"`) so cells inher…",
+      "props": {
+        "align": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "center",
+            "end",
+            "start"
+          ],
+          "description": "Cell content alignment."
+        },
+        "numeric": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Right-align and tabular-figure numeric values."
+        }
+      },
+      "propRelationships": [],
+      "variants": {
+        "align": {
+          "values": [
+            "center",
+            "end",
+            "start"
+          ],
+          "default": "center"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [],
+      "avoidWhen": [],
+      "requiredA11y": [
+        "native <td> semantics; no ARIA of its own",
+        "pairs with TableHeaderCell scope=col/row so cells inherit column and row context"
+      ],
+      "keyboard": [],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [],
+      "composesWith": [
+        "TableRow",
+        "TableHeaderCell",
+        "Table",
+        "Checkbox",
+        "IconButton"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 2,
+      "guidelines": [],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableCell.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableCell.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableCell.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableCell.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
+    "TableHeaderCell": {
+      "preferredImport": "@dt/TableHeaderCell",
+      "intent": "Header cell with an explicit `scope`. `scope=\"col\"` (default) labels a column and can carry a three-state sort control; `scope=\"row\"` marks the identifying cell of a body row so a screen reader announces the row context…",
+      "props": {
+        "align": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "center",
+            "end",
+            "start"
+          ],
+          "description": "Cell content alignment."
+        },
+        "scope": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "row",
+            "col"
+          ],
+          "description": "Header scope. `col` (default) labels a column; `row` makes the cell the\naccessible name for its row — use it on the identifying cell of each body\nrow so screen readers announce the row context with every other cell."
+        },
+        "sortable": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Renders the sort affordance and toggles on click. Only for column headers."
+        },
+        "sortDirection": {
+          "optional": true,
+          "type": "union",
+          "values": [
+            "none",
+            "ascending",
+            "descending"
+          ],
+          "description": "Current sort state; drives `aria-sort` and the caret icon."
+        },
+        "onSort": {
+          "optional": true,
+          "type": "() => void",
+          "description": "Called when a sortable header is activated."
+        }
+      },
+      "propRelationships": [],
+      "variants": {
+        "align": {
+          "values": [
+            "center",
+            "end",
+            "start"
+          ],
+          "default": "center"
+        }
+      },
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [],
+      "avoidWhen": [],
+      "requiredA11y": [
+        "native <th> with an explicit scope (col or row)",
+        "sortable column headers expose aria-sort and toggle via an inner button",
+        "the sort caret is decorative (aria-hidden); state is carried by aria-sort, never the icon alone"
+      ],
+      "keyboard": [],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [],
+      "composesWith": [
+        "TableRow",
+        "TableCell",
+        "Table",
+        "Checkbox",
+        "IconButton"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 5,
+      "guidelines": [],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableHeaderCell.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableHeaderCell.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableHeaderCell.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableHeaderCell.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",
@@ -26935,6 +27313,162 @@
           "origin": "authored",
           "authorship": "human-authored",
           "from": "TableOfContents.spec.md"
+        },
+        "requiredA11y": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "keyboard": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "contract.json"
+        },
+        "a11yCriteria": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "contract.a11y + derive-a11y-criteria.mjs"
+        },
+        "compositionRules": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen filter"
+        },
+        "forbiddenUse": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "avoidWhen + replacement policy"
+        },
+        "replacementFor": {
+          "origin": "derived",
+          "authorship": "mixed",
+          "from": "replacement policy"
+        }
+      },
+      "governance": null,
+      "content": null
+    },
+    "TableRow": {
+      "preferredImport": "@dt/TableRow",
+      "intent": "One of the composable `Table` parts (`Table` root, `TableRow`, `TableHeaderCell`, `TableCell`). Works in both `<thead>` and `<tbody>`. Its only prop, `selected`, renders the selection surface and sets `data-selected` — …",
+      "props": {
+        "selected": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Renders the selected surface and sets `data-selected`. Visual only."
+        }
+      },
+      "propRelationships": [],
+      "variants": {},
+      "cvaVariants": {},
+      "variantsFnName": null,
+      "useWhen": [],
+      "avoidWhen": [],
+      "requiredA11y": [
+        "native <tr> semantics; no ARIA of its own",
+        "selection is visual only (data-selected); the row's selection state belongs to a checkbox or the consuming app"
+      ],
+      "keyboard": [],
+      "compositionRules": [],
+      "canonicalExamples": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+      ],
+      "replacementFor": [],
+      "forbiddenUse": [],
+      "composesWith": [
+        "TableHeaderCell",
+        "TableCell",
+        "Table",
+        "Checkbox",
+        "IconButton"
+      ],
+      "prefersOver": [],
+      "declaredPropCount": 1,
+      "guidelines": [],
+      "a11yCriteria": [
+        {
+          "id": "axe-no-violations",
+          "statement": "Required stories produce no axe violations at the configured severity.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "accessibility-tree",
+          "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "forced-colors-real-browser",
+          "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
+          "verificationMode": "unverified"
+        },
+        {
+          "id": "aria-requirements",
+          "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
+          "verificationMode": "unverified",
+          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+        },
+        {
+          "id": "human-a11y-review",
+          "statement": "A human completed an end-to-end accessibility review of this component.",
+          "verificationMode": "manual",
+          "note": "2026-07-27 — native tr; hover/zebra/selection tint are presentational; axe asserted inside a table in the unit test."
+        }
+      ],
+      "docOrigin": {
+        "props": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "variants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "cvaVariants": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "propRelationships": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "canonicalExamples": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "stories.tsx"
+        },
+        "declaredPropCount": {
+          "origin": "generated",
+          "authorship": "machine-generated",
+          "from": "TypeScript AST"
+        },
+        "intent": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableRow.spec.md"
+        },
+        "useWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableRow.spec.md"
+        },
+        "avoidWhen": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableRow.spec.md"
+        },
+        "guidelines": {
+          "origin": "authored",
+          "authorship": "human-authored",
+          "from": "TableRow.spec.md"
         },
         "requiredA11y": {
           "origin": "authored",

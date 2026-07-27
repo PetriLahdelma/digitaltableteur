@@ -52,6 +52,19 @@
   vertical-align: middle;
 }
 
+/* scope="row" headers name a row (data, not a column label): render like a body cell with slight emphasis. */
+.headerCell[scope="row"] {
+  padding-block: var(--space-internal-12);
+  border-block-end: 1px solid var(--color-border-light);
+  background: transparent;
+  font-size: var(--font-size-text-s);
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: normal;
+  color: var(--color-text);
+}
+
 .cell {
   padding: var(--space-internal-12) var(--space-internal-16);
   border-block-end: 1px solid var(--color-border-light);
@@ -159,7 +172,8 @@
   font-size: var(--font-size-text-m);
 }
 
-.row:last-child .cell {
+.row:last-child .cell,
+.row:last-child .headerCell[scope="row"] {
   border-block-end: 0;
 }
 

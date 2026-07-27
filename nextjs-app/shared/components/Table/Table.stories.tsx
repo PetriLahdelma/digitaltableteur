@@ -1,12 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
-import {
-  Table,
-  TableCell,
-  TableHeaderCell,
-  TableRow,
-  type TableSortDirection,
-} from "./Table";
+import { Table, type TableSortDirection } from "./Table";
+import { TableRow } from "@dt/TableRow";
+import { TableHeaderCell } from "@dt/TableHeaderCell";
+import { TableCell } from "@dt/TableCell";
 import Checkbox from "../Checkbox/Checkbox";
 import { useTableSelection } from "../../hooks/useTableSelection";
 import contract from "./Table.contract.json";

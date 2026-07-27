@@ -1,15 +1,6 @@
-export {
-  default,
-  Table,
-  TableRow,
-  TableHeaderCell,
-  TableCell,
-} from "./Table";
+export { default, Table } from "./Table";
 export type {
   TableProps,
-  TableRowProps,
-  TableHeaderCellProps,
-  TableCellProps,
   TableSize,
   TableAlign,
   TableSortDirection,
