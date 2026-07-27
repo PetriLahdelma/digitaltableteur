@@ -8,6 +8,7 @@ import {
   type TableSortDirection,
 } from "./Table";
 import Checkbox from "../Checkbox/Checkbox";
+import { useTableSelection } from "../../hooks/useTableSelection";
 import contract from "./Table.contract.json";
 
 const people = [
@@ -129,9 +130,11 @@ export const Sortable: Story = {
   },
 };
 
-export const Selectable: Story = {
-  tags: ["example"],
-  render: (args) => (
+function SelectableTable(args: React.ComponentProps<typeof Table>) {
+  // The header checkbox is the master control: useTableSelection derives the
+  // all/indeterminate state and select-all toggle from the row selection.
+  const selection = useTableSelection({ rowIds: people.map((p) => p.id) });
+  return (
     <Table {...args} caption="Selectable rows">
       <thead>
         <TableRow>
@@ -140,6 +143,9 @@ export const Selectable: Story = {
               label="Select all rows"
               aria-label="Select all rows"
               showLabel={false}
+              checked={selection.allSelected}
+              indeterminate={selection.someSelected}
+              onCheckedChange={selection.toggleAll}
             />
           </TableHeaderCell>
           <TableHeaderCell>Name</TableHeaderCell>
@@ -147,23 +153,40 @@ export const Selectable: Story = {
         </TableRow>
       </thead>
       <tbody>
-        {people.map((person, index) => (
-          <TableRow key={person.id} selected={index === 1}>
-            <TableCell align="center">
-              <Checkbox
-                label={`Select ${person.name}`}
-                aria-label={`Select ${person.name}`}
-                showLabel={false}
-                defaultChecked={index === 1}
-              />
-            </TableCell>
-            <TableCell>{person.name}</TableCell>
-            <TableCell>{person.role}</TableCell>
-          </TableRow>
-        ))}
+        {people.map((person) => {
+          const selected = selection.isSelected(person.id);
+          return (
+            <TableRow key={person.id} selected={selected}>
+              <TableCell align="center">
+                <Checkbox
+                  label={`Select ${person.name}`}
+                  aria-label={`Select ${person.name}`}
+                  showLabel={false}
+                  checked={selected}
+                  onCheckedChange={() => selection.toggleRow(person.id)}
+                />
+              </TableCell>
+              <TableCell>{person.name}</TableCell>
+              <TableCell>{person.role}</TableCell>
+            </TableRow>
+          );
+        })}
       </tbody>
     </Table>
-  ),
+  );
+}
+
+export const Selectable: Story = {
+  tags: ["example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The header checkbox is the master control: it selects/clears all rows and shows the indeterminate state on a partial selection, driven by useTableSelection.",
+      },
+    },
+  },
+  render: (args) => <SelectableTable {...args} />,
 };
 
 export const Example: Story = {
