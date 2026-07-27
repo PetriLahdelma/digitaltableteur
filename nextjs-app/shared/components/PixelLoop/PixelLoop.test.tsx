@@ -7,7 +7,7 @@ import styles from "./PixelLoop.module.css";
 expect.extend(toHaveNoViolations);
 
 describe("PixelLoop", () => {
-  it("renders six original dot constellations as a decorative graphic", () => {
+  it("renders six dot constellations led by the studio initials", () => {
     const { container } = render(<PixelLoop />);
     const root = container.firstElementChild;
     const glyphs = container.querySelectorAll("svg");
@@ -20,7 +20,8 @@ describe("PixelLoop", () => {
     expect(glyphs).toHaveLength(6);
     const dots = container.querySelectorAll("circle");
 
-    expect(dots).toHaveLength(44);
+    // Field leads with D (6 dots) and T (5 dots) followed by four constellations.
+    expect(dots).toHaveLength(39);
     expect(container.querySelectorAll("line")).toHaveLength(0);
     dots.forEach((dot) => {
       expect([2, 6, 10, 14, 18]).toContain(Number(dot.getAttribute("cx")));
@@ -42,7 +43,8 @@ describe("PixelLoop", () => {
     expect(root).toHaveClass(styles.rows1);
     expect(container.querySelectorAll(`.${styles.row}`)).toHaveLength(1);
     expect(container.querySelectorAll("svg")).toHaveLength(3);
-    expect(container.querySelectorAll("circle")).toHaveLength(19);
+    // D (6) + T (5) + first constellation (5).
+    expect(container.querySelectorAll("circle")).toHaveLength(16);
   });
 
   it("renders the three-row animation with nine 5x5 glyph grids", () => {
@@ -67,7 +69,7 @@ describe("PixelLoop", () => {
 
     expect(root).toHaveAttribute("data-variant", "strokes");
     expect(container.querySelectorAll("circle")).toHaveLength(0);
-    expect(strokes).toHaveLength(44);
+    expect(strokes).toHaveLength(39);
     strokes.forEach((stroke) => {
       const x1 = Number(stroke.getAttribute("x1"));
       const x2 = Number(stroke.getAttribute("x2"));
@@ -82,6 +84,52 @@ describe("PixelLoop", () => {
       expect(stroke).toHaveAttribute("stroke-width", "1.5");
       expect(stroke).toHaveAttribute("stroke-linecap", "round");
     });
+  });
+
+  it("includes the D and T initials as the first two glyphs in the pool", () => {
+    const { container } = render(<PixelLoop rows={1} />);
+    const glyphs = container.querySelectorAll("svg");
+
+    const positions = (glyph: Element) =>
+      new Set(
+        [...glyph.querySelectorAll("circle")].map(
+          (dot) => `${dot.getAttribute("cx")},${dot.getAttribute("cy")}`,
+        ),
+      );
+
+    // D: left stem plus a top, bottom, and right-middle dot, spanning the grid.
+    const dCells = positions(glyphs[0]);
+    ["2,2", "10,2", "2,10", "18,10", "2,18", "10,18"].forEach((cell) =>
+      expect(dCells.has(cell)).toBe(true),
+    );
+
+    // T: full top bar plus a centered stem, spanning the grid.
+    const tCells = positions(glyphs[1]);
+    ["2,2", "10,2", "18,2", "10,10", "10,18"].forEach((cell) =>
+      expect(tCells.has(cell)).toBe(true),
+    );
+  });
+
+  it("cycles the whole pool through one stacked cell in cycle mode", () => {
+    const { container } = render(<PixelLoop cycle />);
+    const root = container.firstElementChild;
+    const glyphs = container.querySelectorAll("svg");
+
+    expect(root).toHaveAttribute("data-cycle", "true");
+    expect(root).not.toHaveAttribute("data-rows");
+    expect(root).toHaveClass(styles.cycleRoot);
+    // Every pool glyph is stacked in the single cell so it can step through them.
+    expect(glyphs).toHaveLength(11);
+    glyphs.forEach((glyph) => {
+      expect(glyph).toHaveClass(styles.cycleGlyph);
+      expect(glyph).toHaveAttribute("viewBox", "0 0 20 20");
+    });
+  });
+
+  it("keeps the cycle cell out of the accessibility tree", async () => {
+    const { container } = render(<PixelLoop cycle />);
+
+    expect(await axe(container)).toHaveNoViolations();
   });
 
   it("can hold the first frame without removing the artwork", () => {

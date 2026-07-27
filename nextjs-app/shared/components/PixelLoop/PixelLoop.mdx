@@ -8,8 +8,9 @@ import * as Stories from "./PixelLoop.stories";
 **Status:** alpha · **Tier:** atom · **Group:** display
 
 A six-frame decorative constellation loop for expressive hero and editorial
-compositions. Each drawing is locked to a strict 5 × 5 bitmap; rounded-dot and
-vector-stroke variants travel around it without a client-side animation runtime.
+compositions. Each drawing is locked to a strict 5 × 5 cell grid and rendered as
+vector SVG (never raster); rounded-dot and vector-stroke variants travel around
+it without a client-side animation runtime.
 
 ## In use
 
@@ -33,6 +34,15 @@ Use `rows={1}`, `rows={2}`, or `rows={3}` to render three, six, or nine strict
 <Canvas of={Stories.OneRow} />
 
 <Canvas of={Stories.ThreeRows} />
+
+The glyph pool includes the studio **D** and **T** initials alongside the
+abstract constellations, so they appear as the leading glyphs of the animated
+field with the identical grid, dot scale, and drawing language.
+
+Use `cycle` for a single cell (one row, one column) that steps through the whole
+pool one formation at a time.
+
+<Canvas of={Stories.SingleColumn} />
 
 ## Static use
 

@@ -27,6 +27,83 @@
   block-size: calc(var(--pixel-loop-unit) * 5);
 }
 
+.cycleRoot {
+  /* Step time per formation; total cycle covers all 11 pool glyphs. */
+  --pixel-loop-cycle-step: calc(var(--duration-fast) * 3);
+
+  display: block;
+  position: relative;
+  block-size: var(--pixel-loop-unit);
+  inline-size: var(--pixel-loop-unit);
+}
+
+.cycleGlyph {
+  position: absolute;
+  inset: 0;
+  animation: pixel-loop-cycle calc(var(--pixel-loop-cycle-step) * 11) step-end
+    infinite;
+  opacity: 0;
+  fill: currentcolor;
+}
+
+.cycleGlyph:first-child {
+  opacity: 1;
+}
+
+.paused .cycleGlyph {
+  animation-play-state: paused;
+}
+
+.cycleGlyph:nth-child(2) {
+  animation-delay: calc(var(--pixel-loop-cycle-step) * 1);
+}
+
+.cycleGlyph:nth-child(3) {
+  animation-delay: calc(var(--pixel-loop-cycle-step) * 2);
+}
+
+.cycleGlyph:nth-child(4) {
+  animation-delay: calc(var(--pixel-loop-cycle-step) * 3);
+}
+
+.cycleGlyph:nth-child(5) {
+  animation-delay: calc(var(--pixel-loop-cycle-step) * 4);
+}
+
+.cycleGlyph:nth-child(6) {
+  animation-delay: calc(var(--pixel-loop-cycle-step) * 5);
+}
+
+.cycleGlyph:nth-child(7) {
+  animation-delay: calc(var(--pixel-loop-cycle-step) * 6);
+}
+
+.cycleGlyph:nth-child(8) {
+  animation-delay: calc(var(--pixel-loop-cycle-step) * 7);
+}
+
+.cycleGlyph:nth-child(9) {
+  animation-delay: calc(var(--pixel-loop-cycle-step) * 8);
+}
+
+.cycleGlyph:nth-child(10) {
+  animation-delay: calc(var(--pixel-loop-cycle-step) * 9);
+}
+
+.cycleGlyph:nth-child(11) {
+  animation-delay: calc(var(--pixel-loop-cycle-step) * 10);
+}
+
+@keyframes pixel-loop-cycle {
+  0% {
+    opacity: 1;
+  }
+
+  9.0909% {
+    opacity: 0;
+  }
+}
+
 .row {
   inline-size: 100%;
 }
@@ -325,7 +402,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glyph {
+  .glyph,
+  .cycleGlyph {
     animation: none;
   }
 }
