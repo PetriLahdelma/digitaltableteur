@@ -1,7 +1,10 @@
 "use client";
 
 import React, { useCallback, useMemo } from "react";
-import { Table, TableCell, TableHeaderCell, TableRow } from "@dt/Table";
+import { Table } from "@dt/Table";
+import { TableRow } from "@dt/TableRow";
+import { TableHeaderCell } from "@dt/TableHeaderCell";
+import { TableCell } from "@dt/TableCell";
 import Checkbox from "@dt/Checkbox";
 import { IconButton } from "@dt/IconButton";
 import {
@@ -24,8 +27,14 @@ export type DataTableColumn<Row> = {
   accessor?: (row: Row) => React.ReactNode;
   /** Custom cell renderer. */
   cell?: (row: Row) => React.ReactNode;
+  /** Comparable sort value; falls back to `accessor`. Use when `cell` renders
+   * custom markup but the column still needs a sortable value. */
+  sortValue?: (row: Row) => string | number | null | undefined;
   /** Enables the three-state ascending/descending/unsorted cycle. */
   sortable?: boolean;
+  /** Marks this column as the row header (`<th scope="row">`) so screen readers
+   * announce it as the row's context with every other cell. Use one per table. */
+  rowHeader?: boolean;
   /** Cell alignment. @default "start" */
   align?: "start" | "center" | "end";
   /** Right-align with tabular figures for numeric columns. */
@@ -102,29 +111,15 @@ export function DataTable<Row>({
   }, [columns]);
 
   const getSortValue = useCallback(
-    (row: Row, columnId: string) => columnsById.get(columnId)?.accessor?.(row),
+    (row: Row, columnId: string) => {
+      const column = columnsById.get(columnId);
+      return column?.sortValue?.(row) ?? column?.accessor?.(row);
+    },
     [columnsById],
   );
 
-  const { sortedRows, toggleSort, getColumnSort } = useTableSortable({
-    rows: data,
-    getSortValue,
-    sort,
-    defaultSort,
-    onSortChange,
-  });
-
-  const selectionEnabled =
-    selectedRowIds !== undefined ||
-    defaultSelectedRowIds !== undefined ||
-    onSelectionChange !== undefined;
-
-  const selection = useTableSelection({
-    rowIds: data.map(getRowId),
-    selectedIds: selectedRowIds,
-    defaultSelectedIds: defaultSelectedRowIds,
-    onSelectionChange,
-  });
+  const { sort: currentSort, sortedRows, toggleSort, getColumnSort } =
+    useTableSortable({ rows: data, getSortValue, sort, defaultSort, onSortChange });
 
   const pagination = useTablePagination({
     rows: sortedRows,
@@ -132,6 +127,30 @@ export function DataTable<Row>({
   });
 
   const displayedRows = pageSize ? pagination.pageRows : sortedRows;
+
+  const selectionEnabled =
+    selectedRowIds !== undefined ||
+    defaultSelectedRowIds !== undefined ||
+    onSelectionChange !== undefined;
+
+  // Select-all / indeterminate are scoped to the displayed page, so paginated
+  // tables don't silently toggle rows the user can't see.
+  const selection = useTableSelection({
+    rowIds: displayedRows.map(getRowId),
+    selectedIds: selectedRowIds,
+    defaultSelectedIds: defaultSelectedRowIds,
+    onSelectionChange,
+  });
+
+  // A sort re-orders the whole set, so return to the first page.
+  const { setPage } = pagination;
+  const handleSort = useCallback(
+    (columnId: string) => {
+      toggleSort(columnId);
+      setPage(0);
+    },
+    [toggleSort, setPage],
+  );
   const columnCount = columns.length + (selectionEnabled ? 1 : 0);
 
   return (
@@ -148,7 +167,6 @@ export function DataTable<Row>({
             {selectionEnabled ? (
               <TableHeaderCell className={styles.selectionCell} align="center">
                 <Checkbox
-                  label="Select all rows"
                   aria-label="Select all rows"
                   showLabel={false}
                   checked={selection.allSelected}
@@ -163,7 +181,7 @@ export function DataTable<Row>({
                 align={column.align ?? (column.numeric ? "end" : "start")}
                 sortable={column.sortable}
                 sortDirection={getColumnSort(column.id)}
-                onSort={() => toggleSort(column.id)}
+                onSort={() => handleSort(column.id)}
               >
                 {column.header}
               </TableHeaderCell>
@@ -186,7 +204,6 @@ export function DataTable<Row>({
                   {selectionEnabled ? (
                     <TableCell className={styles.selectionCell} align="center">
                       <Checkbox
-                        label={`Select ${getRowLabel(row)}`}
                         aria-label={`Select ${getRowLabel(row)}`}
                         showLabel={false}
                         checked={selected}
@@ -194,15 +211,27 @@ export function DataTable<Row>({
                       />
                     </TableCell>
                   ) : null}
-                  {columns.map((column) => (
-                    <TableCell
-                      key={column.id}
-                      align={column.align}
-                      numeric={column.numeric}
-                    >
-                      {column.cell?.(row) ?? column.accessor?.(row) ?? null}
-                    </TableCell>
-                  ))}
+                  {columns.map((column) => {
+                    const content =
+                      column.cell?.(row) ?? column.accessor?.(row) ?? null;
+                    return column.rowHeader ? (
+                      <TableHeaderCell
+                        key={column.id}
+                        scope="row"
+                        align={column.align}
+                      >
+                        {content}
+                      </TableHeaderCell>
+                    ) : (
+                      <TableCell
+                        key={column.id}
+                        align={column.align}
+                        numeric={column.numeric}
+                      >
+                        {content}
+                      </TableCell>
+                    );
+                  })}
                 </TableRow>
               );
             })

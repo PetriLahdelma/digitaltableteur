@@ -22,6 +22,8 @@ const columns: DataTableColumn<Person>[] = [
     header: "Name",
     accessor: (row) => row.name,
     sortable: true,
+    // The identifying column: each row's Name cell is a <th scope="row">.
+    rowHeader: true,
   },
   {
     id: "role",

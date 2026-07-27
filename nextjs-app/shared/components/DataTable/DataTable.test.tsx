@@ -81,6 +81,34 @@ describe("DataTable", () => {
     expect(screen.getByText("Nothing to review")).toBeInTheDocument();
   });
 
+  it("renders a rowHeader column as a scoped row header", () => {
+    renderTable({
+      columns: [
+        { id: "name", header: "Name", accessor: (row) => row.name, rowHeader: true },
+        { id: "score", header: "Score", accessor: (row) => row.score },
+      ],
+    });
+    const rowHeaders = screen.getAllByRole("rowheader");
+    expect(rowHeaders).toHaveLength(2);
+    expect(rowHeaders[0]).toHaveAttribute("scope", "row");
+  });
+
+  it("returns to the first page when the sort changes", async () => {
+    const user = userEvent.setup();
+    const many = Array.from({ length: 6 }, (_, i) => ({
+      id: `r${i}`,
+      name: `Name ${i}`,
+      score: i,
+    }));
+    renderTable({ data: many, pageSize: 2 });
+    // Page to the end.
+    await user.click(screen.getByRole("button", { name: "Last page" }));
+    expect(screen.getByText(/of 6/)).toHaveTextContent("5–6 of 6");
+    // Sorting re-orders the set and resets to page 1.
+    await user.click(screen.getByRole("button", { name: "Name" }));
+    expect(screen.getByText(/of 6/)).toHaveTextContent("1–2 of 6");
+  });
+
   it("has no automated accessibility violations", async () => {
     const { container } = renderTable({ onSelectionChange: () => undefined });
     expect(await axe(container)).toHaveNoViolations();

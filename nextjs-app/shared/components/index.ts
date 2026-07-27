@@ -222,17 +222,17 @@ export {
 } from "./ArticleContent";
 export {
   Table,
-  TableRow,
-  TableHeaderCell,
-  TableCell,
   type TableProps,
-  type TableRowProps,
-  type TableHeaderCellProps,
-  type TableCellProps,
   type TableSize,
   type TableAlign,
   type TableSortDirection,
 } from "./Table";
+export { TableRow, type TableRowProps } from "./TableRow";
+export {
+  TableHeaderCell,
+  type TableHeaderCellProps,
+} from "./TableHeaderCell";
+export { TableCell, type TableCellProps } from "./TableCell";
 export {
   TableOfContents,
   type TableOfContentsProps,

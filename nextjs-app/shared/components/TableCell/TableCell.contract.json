@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "schemaVersion": 2,
+  "name": "TableCell",
+  "tier": "atom",
+  "group": "data-display",
+  "status": "alpha",
+  "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
+  "figma": null,
+  "radixPrimitive": null,
+  "element": "td",
+  "variants": {
+    "align": {
+      "values": ["start", "center", "end"],
+      "default": "start",
+      "propSourced": true
+    },
+    "numeric": {
+      "values": ["true", "false"],
+      "default": "false",
+      "propSourced": true
+    }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [
+      "native <td> semantics; no ARIA of its own",
+      "pairs with TableHeaderCell scope=col/row so cells inherit column and row context"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test.",
+    "forcedColorsVerified": false,
+    "accessibilityTreeVerified": false
+  },
+  "tokens": {
+    "colors": ["--color-border-light"],
+    "spacing": ["--space-internal-8", "--space-internal-12", "--space-internal-16", "--space-layout-24"]
+  },
+  "lightDarkVerified": false,
+  "dense": "table td; align start/center/end, numeric = tabular figures right-aligned",
+  "keywords": ["table", "cell", "td", "numeric"],
+  "props": {
+    "align": {
+      "optional": true,
+      "type": "union",
+      "values": ["start", "center", "end"],
+      "description": "Cell content alignment."
+    },
+    "numeric": {
+      "optional": true,
+      "type": "boolean",
+      "description": "Right-align with tabular figures for numeric values."
+    }
+  },
+  "forbiddenUse": [
+    "render it outside a table row",
+    "use it for a header — use TableHeaderCell so column/row context is announced"
+  ],
+  "composesWith": ["Table", "TableRow", "TableHeaderCell"]
+}
