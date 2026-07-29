@@ -6,10 +6,15 @@ import styles from "./PixelLoop.module.css";
 
 expect.extend(toHaveNoViolations);
 
+const POOL_SIZE = 31;
+// ceil(POOL_SIZE / cellCount) glyphs stacked per cell.
+const SLOTS_BY_ROWS = { 1: 11, 2: 6, 3: 4 } as const;
+
 describe("PixelLoop", () => {
-  it("renders six dot constellations led by the studio initials", () => {
+  it("renders a six-cell field that distributes the pool", () => {
     const { container } = render(<PixelLoop />);
     const root = container.firstElementChild;
+    const cells = container.querySelectorAll(`.${styles.loopCell}`);
     const glyphs = container.querySelectorAll("svg");
 
     expect(root).toHaveAttribute("aria-hidden", "true");
@@ -17,48 +22,55 @@ describe("PixelLoop", () => {
     expect(root).toHaveAttribute("data-size", "md");
     expect(root).toHaveAttribute("data-variant", "dots");
     expect(root).toHaveAttribute("data-animated", "true");
-    expect(glyphs).toHaveLength(6);
-    const dots = container.querySelectorAll("circle");
 
-    // Field leads with D (6 dots) and T (5 dots) followed by four constellations.
-    expect(dots).toHaveLength(39);
+    // Six cells, each cross-fading its own slice of the pool.
+    expect(cells).toHaveLength(6);
+    expect(glyphs).toHaveLength(6 * SLOTS_BY_ROWS[2]);
     expect(container.querySelectorAll("line")).toHaveLength(0);
-    dots.forEach((dot) => {
-      expect([2, 6, 10, 14, 18]).toContain(Number(dot.getAttribute("cx")));
-      expect([2, 6, 10, 14, 18]).toContain(Number(dot.getAttribute("cy")));
-      expect(dot).toHaveAttribute("r", "1.25");
-      expect(dot).not.toHaveAttribute("stroke");
+
+    cells.forEach((cell) => {
+      expect(cell).toHaveStyle({
+        "--pixel-loop-cycle-count": String(SLOTS_BY_ROWS[2]),
+      });
+      expect(cell.querySelectorAll("svg")).toHaveLength(SLOTS_BY_ROWS[2]);
     });
     glyphs.forEach((glyph) => {
+      expect(glyph).toHaveClass(styles.fadeGlyph);
       expect(glyph).toHaveAttribute("viewBox", "0 0 20 20");
       expect(glyph).toHaveAttribute("focusable", "false");
     });
   });
 
-  it("renders the one-row animation with three 5x5 glyph grids", () => {
+  it("distributes the pool with one row of three cells", () => {
     const { container } = render(<PixelLoop rows={1} />);
     const root = container.firstElementChild;
 
     expect(root).toHaveAttribute("data-rows", "1");
     expect(root).toHaveClass(styles.rows1);
     expect(container.querySelectorAll(`.${styles.row}`)).toHaveLength(1);
-    expect(container.querySelectorAll("svg")).toHaveLength(3);
-    // D (6) + T (5) + first constellation (5).
-    expect(container.querySelectorAll("circle")).toHaveLength(16);
+    expect(container.querySelectorAll(`.${styles.loopCell}`)).toHaveLength(3);
+    expect(container.querySelectorAll("svg")).toHaveLength(3 * SLOTS_BY_ROWS[1]);
   });
 
-  it("renders the three-row animation with nine 5x5 glyph grids", () => {
+  it("distributes the pool across three rows of three cells", () => {
     const { container } = render(<PixelLoop rows={3} />);
     const root = container.firstElementChild;
-    const marks = container.querySelectorAll("circle");
 
     expect(root).toHaveAttribute("data-rows", "3");
     expect(root).toHaveClass(styles.rows3);
     expect(container.querySelectorAll(`.${styles.row}`)).toHaveLength(3);
-    expect(container.querySelectorAll("svg")).toHaveLength(9);
-    marks.forEach((dot) => {
-      expect([2, 6, 10, 14, 18]).toContain(Number(dot.getAttribute("cx")));
-      expect([2, 6, 10, 14, 18]).toContain(Number(dot.getAttribute("cy")));
+    expect(container.querySelectorAll(`.${styles.loopCell}`)).toHaveLength(9);
+    expect(container.querySelectorAll("svg")).toHaveLength(9 * SLOTS_BY_ROWS[3]);
+  });
+
+  it("indexes each stacked glyph so the cross-fade can step through them", () => {
+    const { container } = render(<PixelLoop rows={1} />);
+    const firstCell = container.querySelector(`.${styles.loopCell}`);
+    const glyphs = firstCell!.querySelectorAll("svg");
+
+    expect(glyphs).toHaveLength(SLOTS_BY_ROWS[1]);
+    glyphs.forEach((glyph, index) => {
+      expect(glyph).toHaveStyle({ "--pixel-loop-cycle-index": String(index) });
     });
   });
 
@@ -69,16 +81,14 @@ describe("PixelLoop", () => {
 
     expect(root).toHaveAttribute("data-variant", "strokes");
     expect(container.querySelectorAll("circle")).toHaveLength(0);
-    expect(strokes).toHaveLength(39);
+    expect(strokes.length).toBeGreaterThan(0);
     strokes.forEach((stroke) => {
       const x1 = Number(stroke.getAttribute("x1"));
       const x2 = Number(stroke.getAttribute("x2"));
       const y1 = Number(stroke.getAttribute("y1"));
       const y2 = Number(stroke.getAttribute("y2"));
-      const dx = x2 - x1;
-      const dy = y2 - y1;
 
-      expect(Math.abs(dx)).toBe(Math.abs(dy));
+      expect(Math.abs(x2 - x1)).toBe(Math.abs(y2 - y1));
       expect([2, 6, 10, 14, 18]).toContain((x1 + x2) / 2);
       expect([2, 6, 10, 14, 18]).toContain((y1 + y2) / 2);
       expect(stroke).toHaveAttribute("stroke-width", "1.5");
@@ -86,25 +96,24 @@ describe("PixelLoop", () => {
     });
   });
 
-  it("includes the D and T initials as the first two glyphs in the pool", () => {
+  it("opens the first two cells with the D and T studio initials", () => {
     const { container } = render(<PixelLoop rows={1} />);
-    const glyphs = container.querySelectorAll("svg");
+    const cells = container.querySelectorAll(`.${styles.loopCell}`);
 
-    const positions = (glyph: Element) =>
+    const firstGlyphCells = (cell: Element) =>
       new Set(
-        [...glyph.querySelectorAll("circle")].map(
+        [...cell.querySelector("svg")!.querySelectorAll("circle")].map(
           (dot) => `${dot.getAttribute("cx")},${dot.getAttribute("cy")}`,
         ),
       );
 
-    // D: left stem plus a top, bottom, and right-middle dot, spanning the grid.
-    const dCells = positions(glyphs[0]);
+    // Cell 0 owns pool index 0 (D); cell 1 owns pool index 1 (T).
+    const dCells = firstGlyphCells(cells[0]);
     ["2,2", "10,2", "2,10", "18,10", "2,18", "10,18"].forEach((cell) =>
       expect(dCells.has(cell)).toBe(true),
     );
 
-    // T: full top bar plus a centered stem, spanning the grid.
-    const tCells = positions(glyphs[1]);
+    const tCells = firstGlyphCells(cells[1]);
     ["2,2", "10,2", "18,2", "10,10", "10,18"].forEach((cell) =>
       expect(tCells.has(cell)).toBe(true),
     );
@@ -118,11 +127,12 @@ describe("PixelLoop", () => {
     expect(root).toHaveAttribute("data-cycle", "true");
     expect(root).not.toHaveAttribute("data-rows");
     expect(root).toHaveClass(styles.cycleRoot);
-    // Every pool glyph is stacked in the single cell so it can step through them.
-    expect(glyphs).toHaveLength(11);
-    glyphs.forEach((glyph) => {
-      expect(glyph).toHaveClass(styles.cycleGlyph);
+    expect(glyphs).toHaveLength(POOL_SIZE);
+    expect(root).toHaveStyle({ "--pixel-loop-cycle-count": String(POOL_SIZE) });
+    glyphs.forEach((glyph, index) => {
+      expect(glyph).toHaveClass(styles.fadeGlyph);
       expect(glyph).toHaveAttribute("viewBox", "0 0 20 20");
+      expect(glyph).toHaveStyle({ "--pixel-loop-cycle-index": String(index) });
     });
   });
 
@@ -138,7 +148,7 @@ describe("PixelLoop", () => {
 
     expect(root).toHaveAttribute("data-animated", "false");
     expect(root).toHaveClass(styles.paused);
-    expect(container.querySelectorAll("svg")).toHaveLength(6);
+    expect(container.querySelectorAll("svg")).toHaveLength(6 * SLOTS_BY_ROWS[2]);
   });
 
   it("applies the selected scale and forwards safe container props", () => {

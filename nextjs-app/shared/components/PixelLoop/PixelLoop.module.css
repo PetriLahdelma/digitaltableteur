@@ -1,6 +1,9 @@
 .root {
   --pixel-loop-unit: calc(var(--space-layout-16) + var(--space-layout-4));
 
+  /* Step time per formation; cell cycle = step x that cell's glyph count. */
+  --pixel-loop-cycle-step: calc(var(--duration-fast) * 3);
+
   inline-size: calc(var(--pixel-loop-unit) * 5);
   color: var(--color-text);
 }
@@ -13,10 +16,14 @@
 }
 
 .rows1 {
+  --pixel-loop-fade-name: pixel-loop-fade-11;
+
   block-size: var(--pixel-loop-unit);
 }
 
 .rows2 {
+  --pixel-loop-fade-name: pixel-loop-fade-6;
+
   display: flex;
   block-size: calc(var(--pixel-loop-unit) * 3);
   flex-wrap: wrap;
@@ -24,84 +31,9 @@
 }
 
 .rows3 {
+  --pixel-loop-fade-name: pixel-loop-fade-4;
+
   block-size: calc(var(--pixel-loop-unit) * 5);
-}
-
-.cycleRoot {
-  /* Step time per formation; total cycle covers all 11 pool glyphs. */
-  --pixel-loop-cycle-step: calc(var(--duration-fast) * 3);
-
-  display: block;
-  position: relative;
-  block-size: var(--pixel-loop-unit);
-  inline-size: var(--pixel-loop-unit);
-}
-
-.cycleGlyph {
-  position: absolute;
-  inset: 0;
-  animation: pixel-loop-cycle calc(var(--pixel-loop-cycle-step) * 11) step-end
-    infinite;
-  opacity: 0;
-  fill: currentcolor;
-}
-
-.cycleGlyph:first-child {
-  opacity: 1;
-}
-
-.paused .cycleGlyph {
-  animation-play-state: paused;
-}
-
-.cycleGlyph:nth-child(2) {
-  animation-delay: calc(var(--pixel-loop-cycle-step) * 1);
-}
-
-.cycleGlyph:nth-child(3) {
-  animation-delay: calc(var(--pixel-loop-cycle-step) * 2);
-}
-
-.cycleGlyph:nth-child(4) {
-  animation-delay: calc(var(--pixel-loop-cycle-step) * 3);
-}
-
-.cycleGlyph:nth-child(5) {
-  animation-delay: calc(var(--pixel-loop-cycle-step) * 4);
-}
-
-.cycleGlyph:nth-child(6) {
-  animation-delay: calc(var(--pixel-loop-cycle-step) * 5);
-}
-
-.cycleGlyph:nth-child(7) {
-  animation-delay: calc(var(--pixel-loop-cycle-step) * 6);
-}
-
-.cycleGlyph:nth-child(8) {
-  animation-delay: calc(var(--pixel-loop-cycle-step) * 7);
-}
-
-.cycleGlyph:nth-child(9) {
-  animation-delay: calc(var(--pixel-loop-cycle-step) * 8);
-}
-
-.cycleGlyph:nth-child(10) {
-  animation-delay: calc(var(--pixel-loop-cycle-step) * 9);
-}
-
-.cycleGlyph:nth-child(11) {
-  animation-delay: calc(var(--pixel-loop-cycle-step) * 10);
-}
-
-@keyframes pixel-loop-cycle {
-  0% {
-    opacity: 1;
-  }
-
-  9.0909% {
-    opacity: 0;
-  }
 }
 
 .row {
@@ -131,279 +63,105 @@
   --pixel-loop-unit: var(--space-layout-32);
 }
 
-.glyph {
+/*
+ * A fade cell stacks a set of glyphs and cross-fades one at a time. The cycle
+ * mode is one cell holding the whole pool; the loop is a rows x 3 grid of cells,
+ * each owning a distinct slice so the field covers the pool across its cells.
+ */
+
+.cycleRoot,
+.loopCell {
+  display: block;
+  position: relative;
   block-size: var(--pixel-loop-unit);
   inline-size: var(--pixel-loop-unit);
+}
+
+.cycleRoot {
+  --pixel-loop-fade-name: pixel-loop-fade-31;
+}
+
+.loopCell {
   flex: 0 0 var(--pixel-loop-unit);
-  animation-duration: calc(var(--duration-fast) * 6);
+}
+
+.fadeGlyph {
+  position: absolute;
+  inset: 0;
+
+  /*
+   * One keyframe per cell size lights each glyph for 1 / count of the cycle,
+   * selected by --pixel-loop-fade-name (keyframe stops cannot read variables).
+   * Count comes from the inline --*-count; per-glyph phase from --*-index.
+   */
+  animation-name: var(--pixel-loop-fade-name);
+  animation-duration: calc(
+    var(--pixel-loop-cycle-step) * var(--pixel-loop-cycle-count)
+  );
   animation-timing-function: step-end;
+  opacity: 0;
+  animation-delay: calc(
+    var(--pixel-loop-cycle-step) * var(--pixel-loop-cycle-index)
+  );
   animation-iteration-count: infinite;
   fill: currentcolor;
 }
 
-.glyph1 {
-  animation-name: pixel-loop-1;
+.fadeGlyph:first-child {
+  opacity: 1;
 }
 
-.glyph2 {
-  animation-name: pixel-loop-2;
-}
-
-.glyph3 {
-  animation-name: pixel-loop-3;
-}
-
-.glyph4 {
-  animation-name: pixel-loop-4;
-}
-
-.glyph5 {
-  animation-name: pixel-loop-5;
-}
-
-.glyph6 {
-  animation-name: pixel-loop-6;
-}
-
-.rowGlyph1 {
-  animation-name: pixel-loop-row-1;
-}
-
-.rowGlyph2 {
-  animation-name: pixel-loop-row-2;
-}
-
-.rowGlyph3 {
-  animation-name: pixel-loop-row-3;
-}
-
-.rows1 .glyph,
-.rows3 .glyph {
-  animation-duration: calc(var(--duration-fast) * 3);
-}
-
-.paused .glyph {
+.paused .fadeGlyph {
   animation-play-state: paused;
 }
 
-.rows3 .row2 .glyph {
-  animation-delay: calc(var(--duration-fast) * -1);
-}
-
-.rows3 .row3 .glyph {
-  animation-delay: calc(var(--duration-fast) * -2);
-}
-
-@keyframes pixel-loop-row-1 {
-  0%,
-  100% {
-    order: 1;
+/*
+ * Visible window = 100 / glyphs-in-cell. cycle mode holds the whole pool (31);
+ * loop cells hold ceil(31 / cells) = 11 (1 row), 6 (2 rows), or 4 (3 rows).
+ * Update these percentages if the pool size or those slice lengths change.
+ */
+@keyframes pixel-loop-fade-31 {
+  0% {
+    opacity: 1;
   }
 
-  33.333% {
-    order: 2;
-  }
-
-  66.666% {
-    order: 3;
+  3.2258% {
+    opacity: 0;
   }
 }
 
-@keyframes pixel-loop-row-2 {
-  0%,
-  100% {
-    order: 2;
+@keyframes pixel-loop-fade-11 {
+  0% {
+    opacity: 1;
   }
 
-  33.333% {
-    order: 3;
-  }
-
-  66.666% {
-    order: 1;
+  9.0909% {
+    opacity: 0;
   }
 }
 
-@keyframes pixel-loop-row-3 {
-  0%,
-  100% {
-    order: 3;
+@keyframes pixel-loop-fade-6 {
+  0% {
+    opacity: 1;
   }
 
-  33.333% {
-    order: 1;
-  }
-
-  66.666% {
-    order: 2;
+  16.6667% {
+    opacity: 0;
   }
 }
 
-@keyframes pixel-loop-1 {
-  0%,
-  100% {
-    order: 1;
+@keyframes pixel-loop-fade-4 {
+  0% {
+    opacity: 1;
   }
 
-  16.666% {
-    order: 2;
-  }
-
-  33.333% {
-    order: 3;
-  }
-
-  50% {
-    order: 6;
-  }
-
-  66.666% {
-    order: 5;
-  }
-
-  83.333% {
-    order: 4;
-  }
-}
-
-@keyframes pixel-loop-2 {
-  0%,
-  100% {
-    order: 2;
-  }
-
-  16.666% {
-    order: 3;
-  }
-
-  33.333% {
-    order: 6;
-  }
-
-  50% {
-    order: 5;
-  }
-
-  66.666% {
-    order: 4;
-  }
-
-  83.333% {
-    order: 1;
-  }
-}
-
-@keyframes pixel-loop-3 {
-  0%,
-  100% {
-    order: 3;
-  }
-
-  16.666% {
-    order: 6;
-  }
-
-  33.333% {
-    order: 5;
-  }
-
-  50% {
-    order: 4;
-  }
-
-  66.666% {
-    order: 1;
-  }
-
-  83.333% {
-    order: 2;
-  }
-}
-
-@keyframes pixel-loop-4 {
-  0%,
-  100% {
-    order: 4;
-  }
-
-  16.666% {
-    order: 1;
-  }
-
-  33.333% {
-    order: 2;
-  }
-
-  50% {
-    order: 3;
-  }
-
-  66.666% {
-    order: 6;
-  }
-
-  83.333% {
-    order: 5;
-  }
-}
-
-@keyframes pixel-loop-5 {
-  0%,
-  100% {
-    order: 5;
-  }
-
-  16.666% {
-    order: 4;
-  }
-
-  33.333% {
-    order: 1;
-  }
-
-  50% {
-    order: 2;
-  }
-
-  66.666% {
-    order: 3;
-  }
-
-  83.333% {
-    order: 6;
-  }
-}
-
-@keyframes pixel-loop-6 {
-  0%,
-  100% {
-    order: 6;
-  }
-
-  16.666% {
-    order: 5;
-  }
-
-  33.333% {
-    order: 4;
-  }
-
-  50% {
-    order: 1;
-  }
-
-  66.666% {
-    order: 2;
-  }
-
-  83.333% {
-    order: 3;
+  25% {
+    opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glyph,
-  .cycleGlyph {
+  .fadeGlyph {
     animation: none;
   }
 }

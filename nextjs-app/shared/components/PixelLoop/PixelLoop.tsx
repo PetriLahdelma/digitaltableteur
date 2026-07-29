@@ -23,6 +23,27 @@ const GLYPH_GRIDS = [
   [".###.", "#...#", "#...#", "#...#", ".###."],
   ["#.#.#", ".....", ".#.#.", ".....", "#.#.#"],
   ["#.#.#", ".#.#.", "#.#.#", ".#.#.", "#.#.#"],
+  // Additional decorative constellations to widen the pool.
+  ["..#..", ".###.", "##.##", "##.##", "....."],
+  [".#...", "##.#.", "..##.", "##.#.", ".#..."],
+  ["#...#", "..#..", ".#.#.", "..#..", "#####"],
+  [".#.#.", "#.#.#", "#.#.#", "..#..", ".###."],
+  ["..#..", "#...#", "#...#", "#...#", "##.##"],
+  [".##..", "#.#.#", "#...#", "#.#.#", "..##."],
+  [".####", "#..#.", ".....", ".#..#", "####."],
+  [".#.#.", ".#.#.", "##.##", ".#.#.", ".#.#."],
+  [".###.", "..#..", "#...#", "..#..", ".###."],
+  ["..#..", ".####", "#...#", "####.", "..#.."],
+  ["#...#", "#...#", ".#.#.", "#...#", "#...#"],
+  [".#..#", "...#.", ".#...", "...#.", ".#..#"],
+  ["#.#.#", "#...#", ".#.#.", "#...#", "#.#.#"],
+  ["..##.", "....#", "#..##", "....#", "..##."],
+  [".###.", "#.###", ".....", "###.#", ".###."],
+  ["#..##", "..##.", "#.#.#", ".##..", "##..#"],
+  ["....#", "##.#.", "#.#..", "##.#.", "....#"],
+  ["..#..", "..##.", "##.##", ".##..", "..#.."],
+  ["#....", ".#..#", "##..#", ".#..#", "#...."],
+  ["###..", "...##", "#.#.#", "...##", "###.."],
 ] as const;
 
 function getActiveCells(grid: readonly string[]) {
@@ -57,6 +78,31 @@ function renderMark(x: number, y: number, variant: PixelLoopVariant) {
   );
 }
 
+/**
+ * Stacks a list of grids in one cell and cross-fades one at a time. `phase` is a
+ * sub-step time offset (0..1) so sibling cells swap in a wave rather than at
+ * once. The number of grids sets the cell's `--pixel-loop-cycle-count`.
+ */
+function renderFadeGlyphs(
+  grids: readonly (readonly string[])[],
+  variant: PixelLoopVariant,
+  phase = 0,
+) {
+  return grids.map((grid, position) => (
+    <svg
+      key={position}
+      className={styles.fadeGlyph}
+      viewBox="0 0 20 20"
+      focusable="false"
+      style={
+        { "--pixel-loop-cycle-index": position + phase } as React.CSSProperties
+      }
+    >
+      {getActiveCells(grid).map(({ x, y }) => renderMark(x, y, variant))}
+    </svg>
+  ));
+}
+
 export type PixelLoopSize = "sm" | "md" | "lg";
 export type PixelLoopVariant = "dots" | "strokes";
 export type PixelLoopRows = 1 | 2 | 3;
@@ -69,9 +115,9 @@ export interface PixelLoopProps extends Omit<
   size?: PixelLoopSize;
   /** Rounded dots or short, round-capped 45-degree strokes. @default "dots" */
   variant?: PixelLoopVariant;
-  /** Number of three-glyph rows in the animated field. @default 2 */
+  /** Number of three-cell rows in the field. @default 2 */
   rows?: PixelLoopRows;
-  /** Runs the six-frame loop. Disable for a deliberate static composition. @default true */
+  /** Runs the cross-fade cycle. Disable for a deliberate static composition. @default true */
   animate?: boolean;
   /**
    * Renders a single glyph cell (one row, one column) that steps through the
@@ -81,7 +127,9 @@ export interface PixelLoopProps extends Omit<
 }
 
 /**
- * Decorative six-frame constellation loop for expressive editorial compositions.
+ * Decorative constellation loop for expressive editorial compositions. Every
+ * cell continuously cross-fades through the whole glyph pool, so all variants
+ * appear over time.
  *
  * The graphic inherits its foreground color and becomes static when the user
  * requests reduced motion.
@@ -99,6 +147,8 @@ export const PixelLoop = React.forwardRef<HTMLDivElement, PixelLoopProps>(
     },
     ref,
   ) => {
+    const poolCount = GLYPH_GRIDS.length;
+
     if (cycle) {
       return (
         <div
@@ -116,26 +166,28 @@ export const PixelLoop = React.forwardRef<HTMLDivElement, PixelLoopProps>(
           data-cycle="true"
           data-size={size}
           data-variant={variant}
+          style={{ "--pixel-loop-cycle-count": poolCount } as React.CSSProperties}
         >
-          {GLYPH_GRIDS.map((grid, index) => (
-            <svg
-              key={index}
-              className={styles.cycleGlyph}
-              viewBox="0 0 20 20"
-              focusable="false"
-            >
-              {getActiveCells(grid).map(({ x, y }) =>
-                renderMark(x, y, variant),
-              )}
-            </svg>
-          ))}
+          {renderFadeGlyphs(GLYPH_GRIDS, variant)}
         </div>
       );
     }
 
-    const visibleGrids = GLYPH_GRIDS.slice(0, rows * 3);
+    const cellCount = rows * 3;
+    // Each cell owns a distinct slice of the pool (indices i where i % cellCount
+    // === cellIndex), padded to a common length so every cell shares one
+    // cross-fade cadence. The whole pool is covered across the cells.
+    const slotCount = Math.ceil(poolCount / cellCount);
+    const cells = Array.from({ length: cellCount }, (_, cellIndex) => {
+      const slice = GLYPH_GRIDS.filter((_, i) => i % cellCount === cellIndex);
+      const grids = Array.from(
+        { length: slotCount },
+        (_, slot) => slice[slot % slice.length],
+      );
+      return { cellIndex, grids };
+    });
     const rowGroups = Array.from({ length: rows }, (_, rowIndex) =>
-      visibleGrids.slice(rowIndex * 3, rowIndex * 3 + 3),
+      cells.slice(rowIndex * 3, rowIndex * 3 + 3),
     );
 
     return (
@@ -155,31 +207,26 @@ export const PixelLoop = React.forwardRef<HTMLDivElement, PixelLoopProps>(
         data-size={size}
         data-variant={variant}
       >
-        {rowGroups.map((grids, rowIndex) => (
+        {rowGroups.map((groupCells, rowIndex) => (
           <div
             key={rowIndex}
             className={cn(styles.row, styles[`row${rowIndex + 1}`])}
           >
-            {grids.map((grid, columnIndex) => {
-              const glyphIndex = rowIndex * 3 + columnIndex;
-              const animationClass =
-                rows === 2
-                  ? styles[`glyph${glyphIndex + 1}`]
-                  : styles[`rowGlyph${columnIndex + 1}`];
-
-              return (
-                <svg
-                  key={glyphIndex}
-                  className={cn(styles.glyph, animationClass)}
-                  viewBox="0 0 20 20"
-                  focusable="false"
-                >
-                  {getActiveCells(grid).map(({ x, y }) =>
-                    renderMark(x, y, variant),
-                  )}
-                </svg>
-              );
-            })}
+            {groupCells.map((cell) => (
+              <div
+                key={cell.cellIndex}
+                className={styles.loopCell}
+                style={
+                  { "--pixel-loop-cycle-count": slotCount } as React.CSSProperties
+                }
+              >
+                {renderFadeGlyphs(
+                  cell.grids,
+                  variant,
+                  cell.cellIndex / cellCount,
+                )}
+              </div>
+            ))}
           </div>
         ))}
       </div>

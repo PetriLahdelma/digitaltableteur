@@ -32,7 +32,7 @@ const meta = {
     },
     animate: {
       control: "boolean",
-      description: "Runs the discrete six-frame perimeter orbit.",
+      description: "Runs the discrete cross-fade through the glyph pool.",
       table: {
         defaultValue: { summary: "true" },
         category: "Motion",
@@ -119,7 +119,7 @@ export const OneRow: Story = {
     docs: {
       description: {
         story:
-          "Three 5x5 glyph grids in one row, cycling horizontally on a 600ms loop.",
+          "One row of three cells; each cross-fades through its own slice of the pool, so the three show different glyphs at once.",
       },
     },
   },
@@ -131,7 +131,7 @@ export const ThreeRows: Story = {
     docs: {
       description: {
         story:
-          "Nine 5x5 glyph grids across three rows, with each row offset by one animation beat.",
+          "Nine cells across three rows, each cross-fading through its own slice of the pool on a staggered wave.",
       },
     },
   },
