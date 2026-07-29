@@ -3,9 +3,10 @@
 ## Intent
 
 PixelLoop is a compact decorative motion signature for hero and editorial
-compositions. It uses six original 20 × 20 constellations in a three-column,
-two-row field. The Primary Studio reference informed the modular format, but
-the artwork and choreography are deliberately distinct.
+compositions. It lays out a three-column field of cells; each cell continuously
+cross-fades through its own slice of the pool of 20 × 20 constellations, and the
+cells together cover every variant. The Primary Studio reference informed the
+modular format, but the artwork and choreography are deliberately distinct.
 
 ## Visual and motion contract
 
@@ -18,20 +19,21 @@ the artwork and choreography are deliberately distinct.
   room inside every 4-unit cell.
 - `strokes` replaces each circle with a short, 1.5-unit round-capped 45° vector
   mark that also stays within its cell boundary.
-- `rows={1}` renders three grids in one row and cycles them every 200
-  milliseconds on a 600-millisecond loop.
-- `rows={2}` preserves the six-grid clockwise perimeter choreography on a
-  1.2-second loop.
-- `rows={3}` renders nine grids in three rows. Each row uses the
-  600-millisecond horizontal cycle with a one-beat phase offset.
-- `cycle` renders a single glyph cell (one row, one column) that steps through
-  the entire glyph pool one formation at a time on a discrete step-end loop.
-  Reduced motion and `animate={false}` hold the first glyph.
-- Frame changes are discrete. Glyphs do not fade, slide, scale, or interpolate.
-- The glyph pool leads with the studio **D** and **T** initials, authored as
-  full 5 × 5 cell grids exactly like every other constellation (same 4-unit cells,
-  same 2.5-unit dots or 45° strokes). They therefore appear as the first glyphs
-  of the animated field and share its dot scale and spacing.
+- `rows={1}`, `rows={2}`, and `rows={3}` render three, six, or nine cells. Each
+  cell owns a distinct slice of the pool (pool indices `i` where
+  `i % cellCount === cellIndex`) and cross-fades through it one glyph at a time
+  (600 ms per glyph, discrete step-end). Because the slices partition the pool,
+  the cells collectively show every variant. Cells are time-offset so they change
+  in a wave rather than in unison.
+- `cycle` renders a single cell (one row, one column) that holds the whole pool
+  and steps through it the same way. Reduced motion and `animate={false}` hold
+  the first glyph.
+- Every cell shows exactly one glyph at any instant; over a full cycle it steps
+  through all of them. Changes are discrete: glyphs do not slide, scale, or
+  interpolate.
+- The glyph pool includes the studio **D** and **T** initials, authored as full
+  5 × 5 cell grids exactly like every other constellation (same 4-unit cells,
+  same 2.5-unit dots or 45° strokes), so they share its dot scale and spacing.
 - The graphic inherits `--color-text`; consumers do not need a color prop.
 - `sm`, `md`, and `lg` scale both glyphs and gaps together.
 
@@ -50,7 +52,7 @@ the artwork and choreography are deliberately distinct.
 - Do let the inherited text color adapt it to its surrounding composition.
 - Don't use it to communicate loading, progress, status, or instructions.
 - Don't add labels or interaction to the glyphs.
-- Don't replace the stepped rotation with smooth motion.
+- Don't replace the stepped cross-fade with smooth motion.
 
 ## Design notes
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T09:29:24.220Z",
+  "generatedAt": "2026-07-29T21:18:26.409Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -19059,7 +19059,7 @@
     },
     "PixelLoop": {
       "preferredImport": "@dt/PixelLoop",
-      "intent": "PixelLoop is a compact decorative motion signature for hero and editorial compositions. It uses six original 20 × 20 constellations in a three-column, two-row field. The Primary Studio reference informed the modular for…",
+      "intent": "PixelLoop is a compact decorative motion signature for hero and editorial compositions. It lays out a three-column field of cells; each cell continuously cross-fades through its own slice of the pool of 20 × 20 constell…",
       "props": {
         "size": {
           "optional": true,
@@ -19083,12 +19083,12 @@
         "rows": {
           "optional": true,
           "type": "PixelLoopRows",
-          "description": "Number of three-glyph rows in the animated field."
+          "description": "Number of three-cell rows in the field."
         },
         "animate": {
           "optional": true,
           "type": "boolean",
-          "description": "Runs the six-frame loop. Disable for a deliberate static composition."
+          "description": "Runs the cross-fade cycle. Disable for a deliberate static composition."
         },
         "cycle": {
           "optional": true,
@@ -19124,7 +19124,7 @@
       "avoidWhen": [
         "use it to communicate loading, progress, status, or instructions.",
         "add labels or interaction to the glyphs.",
-        "replace the stepped rotation with smooth motion."
+        "replace the stepped cross-fade with smooth motion."
       ],
       "requiredA11y": [
         "The decorative container and all six glyphs are hidden from assistive technology.",
@@ -19142,7 +19142,7 @@
       "forbiddenUse": [
         "use it to communicate loading, progress, status, or instructions.",
         "add labels or interaction to the glyphs.",
-        "replace the stepped rotation with smooth motion."
+        "replace the stepped cross-fade with smooth motion."
       ],
       "composesWith": [],
       "prefersOver": [],
@@ -19185,7 +19185,7 @@
         },
         {
           "level": "should-not",
-          "guidance": "replace the stepped rotation with smooth motion.",
+          "guidance": "replace the stepped cross-fade with smooth motion.",
           "rationale": null,
           "rationaleSource": null,
           "source": "spec.md#do-dont"

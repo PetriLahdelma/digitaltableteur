@@ -7,10 +7,11 @@ import * as Stories from "./PixelLoop.stories";
 
 **Status:** alpha · **Tier:** atom · **Group:** display
 
-A six-frame decorative constellation loop for expressive hero and editorial
-compositions. Each drawing is locked to a strict 5 × 5 cell grid and rendered as
-vector SVG (never raster); rounded-dot and vector-stroke variants travel around
-it without a client-side animation runtime.
+A decorative constellation loop for expressive hero and editorial compositions.
+The field's cells each cross-fade through their own slice of the glyph pool, and
+together they cover every variant over time. Each drawing is locked to a strict
+5 × 5 cell grid and rendered as vector SVG (never raster); rounded-dot and
+vector-stroke variants render without a client-side animation runtime.
 
 ## In use
 
@@ -28,16 +29,17 @@ Use `size="sm" | "md" | "lg"` to scale the complete composition and
 `variant="dots" | "strokes"` to choose fully rounded points or short 45° vector
 marks. The loop inherits its color from the surrounding text color.
 
-Use `rows={1}`, `rows={2}`, or `rows={3}` to render three, six, or nine strict
-5 × 5 glyph grids. Two rows is the default.
+Use `rows={1}`, `rows={2}`, or `rows={3}` to render three, six, or nine cells.
+Each cell cross-fades through its own slice of the pool, so the field shows
+different glyphs at once and covers them all over time. Two rows is the default.
 
 <Canvas of={Stories.OneRow} />
 
 <Canvas of={Stories.ThreeRows} />
 
 The glyph pool includes the studio **D** and **T** initials alongside the
-abstract constellations, so they appear as the leading glyphs of the animated
-field with the identical grid, dot scale, and drawing language.
+abstract constellations, with the identical grid, dot scale, and drawing
+language, so they appear in the field like any other variant.
 
 Use `cycle` for a single cell (one row, one column) that steps through the whole
 pool one formation at a time.

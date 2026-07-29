@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-27T09:29:24.520Z",
+  "generatedAt": "2026-07-29T21:18:26.803Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -35933,7 +35933,7 @@
           "replace the stepped rotation with smooth motion."
         ]
       },
-      "spec": "# PixelLoop\n\n## Intent\n\nPixelLoop is a compact decorative motion signature for hero and editorial\ncompositions. It uses six original 20 × 20 constellations in a three-column,\ntwo-row field. The Primary Studio reference informed the modular format, but\nthe artwork and choreography are deliberately distinct.\n\n## Visual and motion contract\n\n- The default `md` size is 100 × 60 CSS pixels: 20-pixel glyphs separated by\n  20-pixel gaps.\n- Every constellation is authored as a literal 5 × 5 on/off cell grid and\n  rendered as vector SVG marks (never raster). Marks may only occupy the 25 cell\n  centers at 2, 6, 10, 14, and 18 SVG units.\n- `dots` uses 2.5-unit fully rounded circles, leaving 1.5 units of breathing\n  room inside every 4-unit cell.\n- `strokes` replaces each circle with a short, 1.5-unit round-capped 45° vector\n  mark that also stays within its cell boundary.\n- `rows={1}` renders three grids in one row and cycles them every 200\n  milliseconds on a 600-millisecond loop.\n- `rows={2}` preserves the six-grid clockwise perimeter choreography on a\n  1.2-second loop.\n- `rows={3}` renders nine grids in three rows. Each row uses the\n  600-millisecond horizontal cycle with a one-beat phase offset.\n- `cycle` renders a single glyph cell (one row, one column) that steps through\n  the entire glyph pool one formation at a time on a discrete step-end loop.\n  Reduced motion and `animate={false}` hold the first glyph.\n- Frame changes are discrete. Glyphs do not fade, slide, scale, or interpolate.\n- The glyph pool leads with the studio **D** and **T** initials, authored as\n  full 5 × 5 cell grids exactly like every other constellation (same 4-unit cells,\n  same 2.5-unit dots or 45° strokes). They therefore appear as the first glyphs\n  of the animated field and share its dot scale and spacing.\n- The graphic inherits `--color-text`; consumers do not need a color prop.\n- `sm`, `md`, and `lg` scale both glyphs and gaps together.\n\n## Interaction contract\n\n- Keyboard: none; the component is never focusable.\n- Pointer: none; the component has no hover or click behavior.\n- Screen readers: the root is `aria-hidden` because the loop is ornamental.\n- Reduced motion: `prefers-reduced-motion: reduce` freezes the first frame.\n- `animate={false}` also freezes the first frame for intentional static use.\n\n## Do / don't\n\n- Do use it as a visual accent alongside real page content.\n- Do choose the row count to suit the available composition width and height.\n- Do let the inherited text color adapt it to its surrounding composition.\n- Don't use it to communicate loading, progress, status, or instructions.\n- Don't add labels or interaction to the glyphs.\n- Don't replace the stepped rotation with smooth motion.\n\n## Design notes\n\n- Tokens: `--color-text`, `--space-layout-4`, `--space-layout-16`,\n  `--space-layout-32`, and `--duration-fast`.\n- Figma:\n  [DT Site stuff, node 1490:2401](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1490-2401&m=dev)\n- Reference:\n  [Primary Studio](https://www.primary.studio/)\n",
+      "spec": "# PixelLoop\n\n## Intent\n\nPixelLoop is a compact decorative motion signature for hero and editorial\ncompositions. It lays out a three-column field of cells; each cell continuously\ncross-fades through its own slice of the pool of 20 × 20 constellations, and the\ncells together cover every variant. The Primary Studio reference informed the\nmodular format, but the artwork and choreography are deliberately distinct.\n\n## Visual and motion contract\n\n- The default `md` size is 100 × 60 CSS pixels: 20-pixel glyphs separated by\n  20-pixel gaps.\n- Every constellation is authored as a literal 5 × 5 on/off cell grid and\n  rendered as vector SVG marks (never raster). Marks may only occupy the 25 cell\n  centers at 2, 6, 10, 14, and 18 SVG units.\n- `dots` uses 2.5-unit fully rounded circles, leaving 1.5 units of breathing\n  room inside every 4-unit cell.\n- `strokes` replaces each circle with a short, 1.5-unit round-capped 45° vector\n  mark that also stays within its cell boundary.\n- `rows={1}`, `rows={2}`, and `rows={3}` render three, six, or nine cells. Each\n  cell owns a distinct slice of the pool (pool indices `i` where\n  `i % cellCount === cellIndex`) and cross-fades through it one glyph at a time\n  (600 ms per glyph, discrete step-end). Because the slices partition the pool,\n  the cells collectively show every variant. Cells are time-offset so they change\n  in a wave rather than in unison.\n- `cycle` renders a single cell (one row, one column) that holds the whole pool\n  and steps through it the same way. Reduced motion and `animate={false}` hold\n  the first glyph.\n- Every cell shows exactly one glyph at any instant; over a full cycle it steps\n  through all of them. Changes are discrete: glyphs do not slide, scale, or\n  interpolate.\n- The glyph pool includes the studio **D** and **T** initials, authored as full\n  5 × 5 cell grids exactly like every other constellation (same 4-unit cells,\n  same 2.5-unit dots or 45° strokes), so they share its dot scale and spacing.\n- The graphic inherits `--color-text`; consumers do not need a color prop.\n- `sm`, `md`, and `lg` scale both glyphs and gaps together.\n\n## Interaction contract\n\n- Keyboard: none; the component is never focusable.\n- Pointer: none; the component has no hover or click behavior.\n- Screen readers: the root is `aria-hidden` because the loop is ornamental.\n- Reduced motion: `prefers-reduced-motion: reduce` freezes the first frame.\n- `animate={false}` also freezes the first frame for intentional static use.\n\n## Do / don't\n\n- Do use it as a visual accent alongside real page content.\n- Do choose the row count to suit the available composition width and height.\n- Do let the inherited text color adapt it to its surrounding composition.\n- Don't use it to communicate loading, progress, status, or instructions.\n- Don't add labels or interaction to the glyphs.\n- Don't replace the stepped cross-fade with smooth motion.\n\n## Design notes\n\n- Tokens: `--color-text`, `--space-layout-4`, `--space-layout-16`,\n  `--space-layout-32`, and `--duration-fast`.\n- Figma:\n  [DT Site stuff, node 1490:2401](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1490-2401&m=dev)\n- Reference:\n  [Primary Studio](https://www.primary.studio/)\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/PixelLoop",
@@ -35945,7 +35945,7 @@
       },
       "agent": {
         "preferredImport": "@dt/PixelLoop",
-        "intent": "PixelLoop is a compact decorative motion signature for hero and editorial compositions. It uses six original 20 × 20 constellations in a three-column, two-row field. The Primary Studio reference informed the modular for…",
+        "intent": "PixelLoop is a compact decorative motion signature for hero and editorial compositions. It lays out a three-column field of cells; each cell continuously cross-fades through its own slice of the pool of 20 × 20 constell…",
         "props": {
           "size": {
             "optional": true,
@@ -35969,12 +35969,12 @@
           "rows": {
             "optional": true,
             "type": "PixelLoopRows",
-            "description": "Number of three-glyph rows in the animated field."
+            "description": "Number of three-cell rows in the field."
           },
           "animate": {
             "optional": true,
             "type": "boolean",
-            "description": "Runs the six-frame loop. Disable for a deliberate static composition."
+            "description": "Runs the cross-fade cycle. Disable for a deliberate static composition."
           },
           "cycle": {
             "optional": true,
@@ -36010,7 +36010,7 @@
         "avoidWhen": [
           "use it to communicate loading, progress, status, or instructions.",
           "add labels or interaction to the glyphs.",
-          "replace the stepped rotation with smooth motion."
+          "replace the stepped cross-fade with smooth motion."
         ],
         "requiredA11y": [
           "The decorative container and all six glyphs are hidden from assistive technology.",
@@ -36028,7 +36028,7 @@
         "forbiddenUse": [
           "use it to communicate loading, progress, status, or instructions.",
           "add labels or interaction to the glyphs.",
-          "replace the stepped rotation with smooth motion."
+          "replace the stepped cross-fade with smooth motion."
         ],
         "composesWith": [],
         "prefersOver": [],
@@ -36071,7 +36071,7 @@
           },
           {
             "level": "should-not",
-            "guidance": "replace the stepped rotation with smooth motion.",
+            "guidance": "replace the stepped cross-fade with smooth motion.",
             "rationale": null,
             "rationaleSource": null,
             "source": "spec.md#do-dont"
