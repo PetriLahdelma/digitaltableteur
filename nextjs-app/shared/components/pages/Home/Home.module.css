@@ -248,10 +248,15 @@
 }
 
 .selectedClientsLabel {
+  /* Hook consumed here and by Tailwind arbitrary values in HomePage.tsx; themeHCW overrides below. */
+  --selected-clients-label-color: var(--color-gray);
+
   color: var(--selected-clients-label-color);
 }
 
 .selectedClientsDivider {
+  --selected-clients-divider-color: var(--color-border-light);
+
   border-block-start-color: var(--selected-clients-divider-color);
 }
 

@@ -67,5 +67,5 @@
   font-family: var(--font-body, system-ui, sans-serif);
   font-size: var(--font-size-text-s, 0.875rem);
   line-height: var(--line-height-normal, 1.5);
-  color: var(--color-text-muted, color-mix(in srgb, var(--color-text) 65%, transparent));
+  color: var(--color-gray, color-mix(in srgb, var(--color-text) 65%, transparent));
 }

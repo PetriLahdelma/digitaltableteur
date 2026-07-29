@@ -19,7 +19,7 @@
   gap: var(--space-layout-24);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background-color: var(--color-surface-elevated);
+  background-color: var(--color-surface);
   animation: expand-form 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform-origin: top left;
 }

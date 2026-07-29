@@ -6,7 +6,7 @@
   font-size: var(--font-size-text);
   line-height: 1.5;
   overflow-wrap: break-word;
-  color: var(--color-text-primary);
+  color: var(--color-text);
 }
 
 .root :global(::marker) {
@@ -35,7 +35,7 @@
 .root code {
   padding: 0 var(--space-internal-4);
   border-radius: var(--radius-md);
-  background: var(--color-surface-alt);
+  background: var(--color-light-bg);
   font-family: var(--font-family-mono, monospace);
   font-size: 1rem;
 }
@@ -52,16 +52,16 @@
   padding: var(--space-internal-8);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: var(--color-surface-alt);
+  background: var(--color-light-bg);
 }
 
 .root a {
   text-decoration: underline;
-  color: var(--color-link);
+  color: var(--link-color);
 }
 
 .root a:focus-visible {
-  outline: 2px solid var(--color-focus);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
@@ -81,9 +81,9 @@
 .root blockquote {
   margin: var(--space-internal-8) 0;
   padding: var(--space-internal-8) var(--space-internal-12);
-  border-inline-start: 3px solid var(--color-border-strong);
+  border-inline-start: 3px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: var(--color-surface-alt);
+  background: var(--color-light-bg);
 }
 
 .root h1,
@@ -137,7 +137,7 @@
 }
 
 .root th {
-  background: var(--color-surface-alt);
+  background: var(--color-light-bg);
   font-weight: 600;
 }
 

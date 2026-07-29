@@ -7,6 +7,6 @@
   border-radius: var(--radius-sm, 0.25rem);
   font-family: var(--font-mono);
   font-size: 0.625rem;
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-title);
   line-height: 1;
 }

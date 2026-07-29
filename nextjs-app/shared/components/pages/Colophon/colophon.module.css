@@ -28,7 +28,7 @@
 .intro {
   margin-block-start: var(--space-layout-16);
   max-inline-size: 640px;
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-text-l);
   line-height: 1.6;
   color: var(--secondary-text-color);
 }
@@ -131,7 +131,7 @@
 .statNumber {
   display: block;
   font-family: var(--font-heading);
-  font-size: var(--font-size-title-3);
+  font-size: var(--font-size-title-s);
   font-weight: 700;
   color: var(--color-text);
 }

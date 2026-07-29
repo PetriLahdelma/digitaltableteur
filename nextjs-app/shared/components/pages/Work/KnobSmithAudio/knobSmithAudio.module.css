@@ -111,7 +111,7 @@
 .meterSection {
   margin-block-start: var(--space-layout-32);
   padding-block: var(--space-layout-64);
-  background-color: var(--color-muted-background, var(--color-light-bg));
+  background-color: var(--color-light-bg, var(--color-light-bg));
 }
 
 .vuMeterSection {
