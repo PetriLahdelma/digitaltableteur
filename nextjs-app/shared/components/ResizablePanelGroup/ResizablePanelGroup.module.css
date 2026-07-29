@@ -50,7 +50,7 @@
 .handle {
   block-size: var(--space-layout-24);
   inline-size: var(--space-internal-2);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-full);
   background: var(--color-muted);
 }
 

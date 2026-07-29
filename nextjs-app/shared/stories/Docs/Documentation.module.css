@@ -139,7 +139,7 @@
 
 .table code {
   padding: 0.125rem 0.375rem;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-md);
   background: var(--color-light-bg);
   font-family: "SF Mono", Monaco, monospace;
   font-size: 0.875em;
@@ -236,7 +236,7 @@
 .category code {
   padding: 0.125rem 0.375rem;
   border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-md);
   background: var(--color-white);
   font-family: "SF Mono", Monaco, monospace;
   font-size: 0.875em;

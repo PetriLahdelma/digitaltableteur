@@ -14,15 +14,15 @@
 .title {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-body-md);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-text-m);
+  font-weight: var(--font-weight-medium);
   color: var(--color-text);
 }
 
 .subtitle {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-body-sm);
+  font-size: var(--font-size-text-s);
   color: var(--color-gray);
 }
 
@@ -85,14 +85,14 @@
 .externalLink {
   align-self: flex-start;
   font-family: var(--font-sans);
-  font-size: var(--font-size-body-xs);
+  font-size: var(--font-size-text-xs);
   text-decoration: none;
   color: var(--color-gray);
 }
 
 .externalLink:hover {
   text-decoration: underline;
-  color: var(--color-link);
+  color: var(--link-color);
 }
 
 .externalLink:focus-visible {

@@ -19,7 +19,7 @@
 }
 
 .title {
-  font-family: var(--font-display);
+  font-family: var(--font-title);
   font-weight: 700;
   color: hsl(var(--foreground));
 }

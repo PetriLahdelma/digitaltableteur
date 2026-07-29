@@ -6,7 +6,7 @@
 }
 
 .value {
-  font-family: var(--font-display, sans-serif);
+  font-family: var(--font-title, sans-serif);
   font-size: var(--font-size-display, 3.5rem);
   font-weight: 700;
   line-height: 1;

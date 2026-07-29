@@ -27,7 +27,7 @@
   align-items: center;
   gap: 1rem; /* 1rem gap between icon and title */
   border-radius: var(--radius-sm);
-  background: var(--color-elevation-1);
+  background: var(--color-surface);
   text-align: center;
 }
 
@@ -65,7 +65,7 @@
 
 .item:focus-within,
 .item:focus {
-  outline: 2px solid var(--color-focus);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 

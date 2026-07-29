@@ -74,7 +74,7 @@
 
 .description {
   margin: 0;
-  color: var(--color-text-muted, var(--color-primary));
+  color: var(--color-gray, var(--color-primary));
 }
 
 /* Link mode: one stretched anchor, no site squiggle, ring on the frame */

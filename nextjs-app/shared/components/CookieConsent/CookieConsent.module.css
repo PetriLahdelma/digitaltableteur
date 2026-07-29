@@ -15,15 +15,15 @@
   margin: 0;
   margin-block-end: 1rem;
   margin-inline-end: var(--space-layout-32);
-  font-size: var(--font-size-body-m);
-  line-height: var(--line-height-m);
+  font-size: var(--font-size-text-m);
+  line-height: var(--line-height-normal);
   color: var(--color-text);
 }
 
 .policyLink {
   margin: 0;
   margin-block-start: 1rem;
-  font-size: var(--font-size-body-s);
+  font-size: var(--font-size-text-s);
   color: var(--secondary-text-color);
 }
 
@@ -64,16 +64,16 @@
   margin: 0 0 var(--space-internal-4) 0;
   align-items: center;
   gap: var(--space-internal-4);
-  font-size: var(--font-size-body-l);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-m);
+  font-size: var(--font-size-text-l);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
   color: var(--color-text);
 }
 
 .categoryDescription {
   margin: 0;
-  font-size: var(--font-size-body-s);
-  line-height: var(--line-height-m);
+  font-size: var(--font-size-text-s);
+  line-height: var(--line-height-normal);
   color: var(--secondary-text-color);
 }
 

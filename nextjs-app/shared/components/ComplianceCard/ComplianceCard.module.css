@@ -86,7 +86,7 @@
   gap: var(--space-internal-8);
   border: 1px solid
     color-mix(in srgb, var(--color-neutral-bg) 80%, var(--color-text));
-  border-radius: var(--radius-8);
+  border-radius: var(--radius-lg);
   background: var(--color-neutral-bg);
   transition: background 0.2s;
 }

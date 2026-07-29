@@ -1,7 +1,7 @@
 .testimonial {
   margin: 0;
   padding: 1.5rem;
-  border: 1px solid var(--color-gray-light);
+  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   background: var(--color-white);
   box-shadow: var(--shadow-sm);
