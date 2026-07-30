@@ -1,0 +1,1 @@
+export { HomeRemotePage } from "./HomeRemotePage";

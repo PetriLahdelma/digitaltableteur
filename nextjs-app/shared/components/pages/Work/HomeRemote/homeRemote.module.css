@@ -1,0 +1,148 @@
+.page {
+  background-color: var(--main-body-background-color);
+}
+
+/* Custom Meta Section - 2 column layout (matches KnobSmith/VertaaUX) */
+
+.metaSection {
+  padding-block: var(--space-layout-48);
+  padding-inline: var(--cs-page-inset);
+  background-color: var(--color-surface);
+}
+
+.metaGrid {
+  display: grid;
+  margin-inline: auto;
+  max-inline-size: var(--container-md);
+  grid-template-columns: 1fr;
+  gap: var(--space-layout-32);
+}
+
+@media (width >= 768px) {
+  .metaGrid {
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-layout-64);
+  }
+}
+
+.metaLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-32);
+}
+
+.metaRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+}
+
+.metaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-8);
+}
+
+.metaLabel {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.metaText {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+}
+
+.metaTools {
+  display: flex;
+  gap: var(--space-layout-16);
+  color: var(--secondary-text-color);
+}
+
+.metaOverview {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+}
+
+.metaOverview strong {
+  color: var(--color-text);
+}
+
+.storySection {
+  margin-block-start: var(--space-layout-64);
+}
+
+.architectureDiagram {
+  margin-block-start: var(--space-internal-16);
+  inline-size: 100%;
+}
+
+.imageGrid {
+  margin-block-start: var(--space-layout-32);
+}
+
+/* App tab screenshots: always one row. GridBlock renders 2-col + mobile
+   stacking; the portrait shots are narrow enough to sit 3-across at every
+   width. The doubled class outweighs .grid2Col (and its media overrides)
+   without needing !important; figure + figure clears the stacked margins. */
+
+.tabsGrid.tabsGrid {
+  margin-block-start: var(--space-layout-32);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.tabsGrid.tabsGrid.tabsGrid figure + figure {
+  margin-block-start: 0;
+  margin-inline-start: 0;
+}
+
+.gridCaption {
+  display: block;
+  padding-inline: var(--cs-page-inset);
+  text-align: center;
+  color: var(--secondary-text-color);
+}
+
+/* Force captions to always show in image grids; the extra element selector
+   outweighs GridBlock's .caption display:none without !important. */
+
+.imageGrid :global(figcaption) {
+  display: block;
+}
+
+.installerSection {
+  display: flex;
+  margin-block: var(--space-layout-64);
+  padding-inline: var(--cs-page-inset);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-layout-16);
+}
+
+.installerWrapper {
+  margin-inline: auto;
+  max-inline-size: var(--container-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.installerImage {
+  display: block;
+  block-size: auto;
+  inline-size: 100%;
+}
+
+.installerCaption {
+  text-align: center;
+  color: var(--secondary-text-color);
+}

@@ -151,6 +151,20 @@ export const projects: Project[] = [
     duration: "2021–2024",
   },
   {
+    id: "home-remote",
+    slug: "home-remote",
+    title: "Home Remote",
+    description:
+      "A native macOS remote for TVs and AV displays: local-first control with a tactile clay interface that reports what it observes, not what it hopes.",
+    thumbnail: "/images/portfolio/home-remote/thumbnail.webp",
+    category: "ux-design",
+    secondaryCategories: ["tools"],
+    tags: ["Product Design", "macOS App", "Brand Identity", "3D Illustration"],
+    featured: false,
+    order: 12,
+    duration: "2026–Present",
+  },
+  {
     id: "knobsmith-audio",
     slug: "knobsmith-audio",
     title: "KnobSmith Audio",

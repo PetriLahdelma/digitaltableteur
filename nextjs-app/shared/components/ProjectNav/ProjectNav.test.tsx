@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { ProjectNav } from "./ProjectNav";
+import { sortedProjects } from "../../data/projects";
 
 expect.extend(toHaveNoViolations);
 
@@ -43,7 +44,7 @@ describe("ProjectNav", () => {
   });
 
   it("disables the previous control on the first project", () => {
-    render(<ProjectNav currentSlug="dsharp-design-system" />);
+    render(<ProjectNav currentSlug={sortedProjects[0].slug} />);
 
     expect(
       screen.queryByRole("link", { name: /previous project/i }),
@@ -55,7 +56,9 @@ describe("ProjectNav", () => {
   });
 
   it("disables the next control on the last project", () => {
-    render(<ProjectNav currentSlug="finnish-transport-agency" />);
+    render(
+      <ProjectNav currentSlug={sortedProjects[sortedProjects.length - 1].slug} />,
+    );
 
     expect(
       screen.queryByRole("link", { name: /next project/i }),
