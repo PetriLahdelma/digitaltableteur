@@ -1,8 +1,8 @@
 {
   "storyId": "patterns-storyblock-full-width",
   "mode": "light",
-  "sourceSHA": "ebe8a0af82395aaa66b2e973785555913e50dd50",
-  "capturedAt": "2026-07-30T09:59:33.193Z",
+  "sourceSHA": "391961976ecb60a638899c1b4ecfd804b7c2342e",
+  "capturedAt": "2026-07-30T10:05:00.125Z",
   "runner": null,
   "checks": {
     "accessibility-tree": {
