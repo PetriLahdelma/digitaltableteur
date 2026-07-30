@@ -1,0 +1,4 @@
+- region "Project Summary":
+  - paragraph: Quick Overview
+  - heading "Project Summary" [level=4]
+  - paragraph: A brief introduction to the project with compact spacing for dense content layouts.

@@ -1,0 +1,16 @@
+{
+  "storyId": "patterns-storyblock-text-only",
+  "mode": "light",
+  "sourceSHA": "ebe8a0af82395aaa66b2e973785555913e50dd50",
+  "capturedAt": "2026-07-30T09:59:32.309Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
