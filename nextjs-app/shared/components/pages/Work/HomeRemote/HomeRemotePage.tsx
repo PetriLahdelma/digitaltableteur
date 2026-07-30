@@ -278,7 +278,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             alt: "Five-way navigation wheel component sheet",
             width: 692,
             height: 692,
-            caption: "The five-way wheel, the Samsung layout's dominant control.",
+            caption: "The five-way wheel, the layout's dominant control.",
           },
           {
             type: "image",
@@ -338,8 +338,8 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="p2" size="s">
             The thin client never touches credentials. The app invokes the CLI
-            with a captured device ID and structured arguments; the LG client
-            key lives in the macOS Keychain, readable only by the daemon.
+            with a captured device ID and structured arguments; pairing keys
+            live in the macOS Keychain, readable only by the daemon.
           </Text>,
         ]}
         imageLayout="none"
@@ -490,7 +490,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
 
       <StoryBlock
         subtitle="Shipping"
-        title="Signed, Notarized, and Honest About It"
+        title="Signed, Notarized, and DMG'd"
         content={[
           <Text key="p1" size="s">
             Home Remote 0.2.0 shipped as a Developer ID-signed, notarized,
