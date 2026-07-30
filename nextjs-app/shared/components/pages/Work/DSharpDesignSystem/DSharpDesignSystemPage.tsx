@@ -2122,7 +2122,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
 
       {/* Outcome */}
       <GridBlock
-        columns={4}
+        columns={2}
         gap="none"
         maxWidth="lg"
         spacing="comfortable"
