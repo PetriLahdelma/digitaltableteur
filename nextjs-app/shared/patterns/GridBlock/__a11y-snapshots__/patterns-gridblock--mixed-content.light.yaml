@@ -1,0 +1,5 @@
+- figure "System architecture overview":
+  - img "Component structure diagram"
+- paragraph: Component Architecture
+- paragraph: A well-structured component library ensures consistency and maintainability across the entire design system.
+- paragraph: Each component is built with accessibility, performance, and reusability in mind.

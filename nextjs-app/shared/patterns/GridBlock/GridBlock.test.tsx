@@ -45,6 +45,23 @@ describe("GridBlock", () => {
     expect(container.querySelector(`.${styles.grid1Col}`)).toBeInTheDocument();
   });
 
+  it("applies 3 columns when specified", () => {
+    const { container } = render(
+      <GridBlock cells={[textCell, textCell, textCell]} columns={3} />,
+    );
+    expect(container.querySelector(`.${styles.grid3Col}`)).toBeInTheDocument();
+  });
+
+  it("applies 4 columns when specified", () => {
+    const { container } = render(
+      <GridBlock
+        cells={[textCell, textCell, textCell, textCell]}
+        columns={4}
+      />,
+    );
+    expect(container.querySelector(`.${styles.grid4Col}`)).toBeInTheDocument();
+  });
+
   it("applies light background color", () => {
     const { container } = render(
       <GridBlock cells={[textCell]} backgroundColor="light" />,
@@ -102,7 +119,9 @@ describe("GridBlock", () => {
       innerPadding: true,
     };
     const { container } = render(<GridBlock cells={[cellWithPadding]} />);
-    expect(container.querySelector(`.${styles.innerPadding}`)).toBeInTheDocument();
+    expect(
+      container.querySelector(`.${styles.innerPadding}`),
+    ).toBeInTheDocument();
   });
 
   it("applies mixBlendMode to images when specified", () => {

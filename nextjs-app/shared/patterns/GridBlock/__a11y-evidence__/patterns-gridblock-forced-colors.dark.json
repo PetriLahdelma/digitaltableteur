@@ -1,16 +1,16 @@
 {
   "storyId": "patterns-gridblock-forced-colors",
   "mode": "dark",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:37:50.195Z",
-  "runner": "backfill",
+  "sourceSHA": "fe73fe1bd95b40f985c28db4bd3c72d2675de414",
+  "capturedAt": "2026-07-30T09:05:24.575Z",
+  "runner": null,
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }

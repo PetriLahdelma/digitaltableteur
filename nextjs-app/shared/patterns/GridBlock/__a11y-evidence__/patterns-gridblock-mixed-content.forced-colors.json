@@ -1,8 +1,8 @@
 {
-  "storyId": "patterns-gridblock-forced-colors",
+  "storyId": "patterns-gridblock-mixed-content",
   "mode": "forced-colors",
   "sourceSHA": "fe73fe1bd95b40f985c28db4bd3c72d2675de414",
-  "capturedAt": "2026-07-30T09:05:28.313Z",
+  "capturedAt": "2026-07-30T09:05:28.252Z",
   "runner": null,
   "checks": {
     "accessibility-tree": {

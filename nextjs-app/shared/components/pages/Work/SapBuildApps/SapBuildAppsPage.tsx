@@ -383,7 +383,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
       />
 
       <GridBlock
-        columns={4}
+        columns={2}
         gap="none"
         maxWidth="lg"
         spacing="comfortable"

@@ -10,6 +10,18 @@
   gap: var(--space-layout-32, 2rem);
 }
 
+.grid3Col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-layout-32, 2rem);
+}
+
+.grid4Col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-layout-32, 2rem);
+}
+
 .noGap {
   gap: 0;
 }
@@ -46,7 +58,9 @@
     margin-block-start: var(--space-layout-32, 2rem);
   }
 
-  .grid2Col > .col + .col {
+  .grid2Col > .col + .col,
+  .grid3Col > .col + .col,
+  .grid4Col > .col + .col {
     margin-inline-start: var(--space-layout-32, 2rem);
   }
 
@@ -66,6 +80,19 @@
   .grid2Col {
     grid-template-columns: 1fr;
     row-gap: 2rem;
+  }
+
+  /* 3- and 4-column grids drop to two columns on tablet */
+
+  .grid3Col,
+  .grid4Col {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--space-layout-32, 2rem);
+  }
+
+  .grid3Col.responsiveGap,
+  .grid4Col.responsiveGap {
+    gap: var(--space-layout-32, 2rem);
   }
 
   .grid2Col.responsiveGap {
@@ -92,5 +119,13 @@
 
   .caption {
     display: block;
+  }
+}
+
+/* Mobile: 3- and 4-column grids stack to a single column */
+@media (width < 768px) {
+  .grid3Col,
+  .grid4Col {
+    grid-template-columns: 1fr;
   }
 }

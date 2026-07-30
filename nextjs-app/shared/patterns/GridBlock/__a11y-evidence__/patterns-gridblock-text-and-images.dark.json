@@ -1,8 +1,8 @@
 {
-  "storyId": "patterns-gridblock-example",
+  "storyId": "patterns-gridblock-text-and-images",
   "mode": "dark",
   "sourceSHA": "fe73fe1bd95b40f985c28db4bd3c72d2675de414",
-  "capturedAt": "2026-07-30T09:05:24.384Z",
+  "capturedAt": "2026-07-30T09:05:22.735Z",
   "runner": null,
   "checks": {
     "accessibility-tree": {
