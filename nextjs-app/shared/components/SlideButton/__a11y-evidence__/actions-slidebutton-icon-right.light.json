@@ -1,0 +1,16 @@
+{
+  "storyId": "actions-slidebutton-icon-right",
+  "mode": "light",
+  "sourceSHA": "603bb8cb8dc731534156897e8607a5851e99b148",
+  "capturedAt": "2026-07-30T09:01:53.312Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

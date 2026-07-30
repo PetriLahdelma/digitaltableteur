@@ -25,7 +25,7 @@
 - img "Portrait of Petri Lahdelma"
 - heading "New Business Inquiries" [level=2]
 - paragraph: Petri Lahdelma
-- paragraph: Founder, Head of Design
+- paragraph: Founder, Designer
 - link "Book a call":
   - /url: "#contact-form"
 - blockquote:

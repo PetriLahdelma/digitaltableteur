@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- heading "Dunno when there's something stellar to send newsletters about, but you'll be among the first to know if and when that happens." [level=2]
+- paragraph: We promise not to spam you with annoying and useless content 🤞 So you get our product launches, design systems, and AI updates first.
+- text: Email address
+- textbox "Email address":
+  - /placeholder: name@email.com
+- button "Cancel"
+- button "Notify me" [disabled]

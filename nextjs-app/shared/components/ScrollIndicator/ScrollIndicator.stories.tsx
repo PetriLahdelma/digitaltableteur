@@ -90,6 +90,7 @@ function HeroFrame({ children }: { children: React.ReactNode }) {
 }
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: { targetId: "next-section", label: "See our work" },
   render: (args) => (
     <HeroFrame>

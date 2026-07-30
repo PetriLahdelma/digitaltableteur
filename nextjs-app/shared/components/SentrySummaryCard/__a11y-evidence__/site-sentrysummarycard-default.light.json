@@ -1,16 +1,16 @@
 {
   "storyId": "site-sentrysummarycard-default",
   "mode": "light",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:30:20.095Z",
-  "runner": "backfill",
+  "sourceSHA": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+  "capturedAt": "2026-07-30T08:20:24.227Z",
+  "runner": null,
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }

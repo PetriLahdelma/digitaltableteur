@@ -1,0 +1,12 @@
+{
+  "storyId": "site-newsletterwaitlist-disabled",
+  "mode": "forced-colors",
+  "sourceSHA": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+  "capturedAt": "2026-07-30T08:56:02.413Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

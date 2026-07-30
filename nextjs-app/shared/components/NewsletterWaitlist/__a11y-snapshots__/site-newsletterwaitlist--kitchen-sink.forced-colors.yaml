@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- heading "Default State" [level=3]
+- button "Join the waitlist"
+- heading "Disabled" [level=3]
+- button "Join the waitlist" [disabled]
