@@ -1,14 +1,10 @@
 {
   "storyId": "layout-card-forced-colors",
   "mode": "dark",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:36:52.460Z",
-  "runner": "backfill",
+  "sourceSHA": "f1c1c5dec11fa297d838eb79e225188978d9e1fb",
+  "capturedAt": "2026-07-30T08:34:09.439Z",
+  "runner": null,
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
       "passed": true
     }

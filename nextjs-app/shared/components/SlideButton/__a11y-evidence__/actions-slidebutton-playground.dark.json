@@ -1,14 +1,10 @@
 {
   "storyId": "actions-slidebutton-playground",
   "mode": "dark",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:37:43.318Z",
-  "runner": "backfill",
+  "sourceSHA": "603bb8cb8dc731534156897e8607a5851e99b148",
+  "capturedAt": "2026-07-30T09:02:13.444Z",
+  "runner": null,
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
       "passed": true
     }
