@@ -308,7 +308,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             type: "image",
             src: "/images/portfolio/home-remote/sheet-toasts.webp",
             alt: "Status toasts in available, warning and error tints",
-            width: 668,
+            width: 710,
             height: 612,
             caption: "Status is tinted and worded, never color alone.",
           },
