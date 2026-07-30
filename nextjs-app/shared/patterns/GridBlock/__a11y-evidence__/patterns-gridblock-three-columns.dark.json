@@ -1,0 +1,16 @@
+{
+  "storyId": "patterns-gridblock-three-columns",
+  "mode": "dark",
+  "sourceSHA": "fe73fe1bd95b40f985c28db4bd3c72d2675de414",
+  "capturedAt": "2026-07-30T09:05:23.351Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

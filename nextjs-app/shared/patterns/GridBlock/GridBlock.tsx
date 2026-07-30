@@ -85,7 +85,14 @@ function GridBlock({
   className = "",
   as = "section",
 }: GridBlockProps) {
-  const gridClassName = columns === 1 ? styles.grid1Col : styles.grid2Col;
+  const gridClassName =
+    columns === 1
+      ? styles.grid1Col
+      : columns === 3
+        ? styles.grid3Col
+        : columns === 4
+          ? styles.grid4Col
+          : styles.grid2Col;
   const gapClassName =
     gap === "none" ? styles.noGap : gap === "small" ? styles.smallGap : "";
 
@@ -104,7 +111,12 @@ function GridBlock({
     >
       <PageLayout maxWidth={maxWidth} spacing={spacing} as={as}>
         <div
-          className={[gridClassName, gapClassName, responsiveGapClass, className]
+          className={[
+            gridClassName,
+            gapClassName,
+            responsiveGapClass,
+            className,
+          ]
             .filter(Boolean)
             .join(" ")}
         >

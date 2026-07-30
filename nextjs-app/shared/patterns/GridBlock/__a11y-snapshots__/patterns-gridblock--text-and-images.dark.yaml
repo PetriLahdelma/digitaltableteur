@@ -1,0 +1,8 @@
+- paragraph: Mobile-First Design
+- paragraph: Every interface is crafted with mobile users in mind, ensuring seamless experiences across all device sizes and contexts.
+- figure "Mobile interface example":
+  - img "Mobile interface example"
+- figure "Desktop interface example":
+  - img "Desktop interface example"
+- paragraph: Responsive Excellence
+- paragraph: Interfaces adapt intelligently to different screen sizes, maintaining usability and aesthetic quality across platforms.

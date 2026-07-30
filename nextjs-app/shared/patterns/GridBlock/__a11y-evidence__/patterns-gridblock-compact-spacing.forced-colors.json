@@ -1,0 +1,12 @@
+{
+  "storyId": "patterns-gridblock-compact-spacing",
+  "mode": "forced-colors",
+  "sourceSHA": "fe73fe1bd95b40f985c28db4bd3c72d2675de414",
+  "capturedAt": "2026-07-30T09:05:28.233Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

@@ -1,18 +1,11 @@
 {
   "storyId": "patterns-gridblock-playground",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:45:06.429Z",
-  "runner": "backfill",
+  "sourceSHA": "fe73fe1bd95b40f985c28db4bd3c72d2675de414",
+  "capturedAt": "2026-07-30T09:05:28.271Z",
+  "runner": null,
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
-      "passed": true
-    },
-    "forced-colors-real-browser": {
       "passed": true
     }
   }

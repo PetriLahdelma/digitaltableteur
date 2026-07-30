@@ -291,7 +291,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
 
       {/* Metrics */}
       <GridBlock
-        columns={4}
+        columns={2}
         gap="none"
         maxWidth="lg"
         spacing="comfortable"

@@ -1,0 +1,12 @@
+{
+  "storyId": "actions-slidebutton-icon-right",
+  "mode": "forced-colors",
+  "sourceSHA": "603bb8cb8dc731534156897e8607a5851e99b148",
+  "capturedAt": "2026-07-30T09:02:19.890Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

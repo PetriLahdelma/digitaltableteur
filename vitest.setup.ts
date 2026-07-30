@@ -1,4 +1,4 @@
-import { expect, afterEach, vi } from "vitest";
+import { expect, afterEach, afterAll, vi } from "vitest";
 import React from "react";
 import "@testing-library/jest-dom";
 import { cleanup } from "@testing-library/react";
@@ -96,6 +96,85 @@ vi.mock("next/navigation", () => ({
 afterEach(() => {
   cleanup();
 });
+
+// ---------------------------------------------------------------------------
+// Leaked-timer sweep + requestAnimationFrame safety net.
+//
+// Page tests render components from the installed @digitaltableteur/react
+// dist, which bundles real GSAP (the vi.mock of shared/lib/gsap above only
+// intercepts source-path imports). GSAP keeps module-global timers alive —
+// ScrollTrigger's sync interval, Observer's tap-reset timeout — that no
+// component unmount can clear. Vitest tears the jsdom environment down per
+// test file inside a long-lived worker, so a straggler timer can fire after
+// teardown, hit a bare `requestAnimationFrame` on a globalThis that no longer
+// has one, and fail the whole run with an unhandled ReferenceError while all
+// tests pass. Two defenses:
+//   1. Track every setTimeout/setInterval scheduled while a file runs and
+//      clear the survivors in afterAll, before the environment is torn down.
+//   2. Keep a requestAnimationFrame fallback reachable on the prototype of
+//      globalThis: env teardown only deletes own properties, so the fallback
+//      becomes visible exactly in the between-files gap where jsdom's rAF is
+//      gone, and is shadowed again once the next environment installs.
+// ---------------------------------------------------------------------------
+type TimerId = ReturnType<typeof setTimeout>;
+type ScheduleFn = (...args: unknown[]) => TimerId;
+type ClearFn = (id: TimerId | undefined) => void;
+
+const nativeSetTimeout = globalThis.setTimeout as unknown as ScheduleFn;
+const nativeSetInterval = globalThis.setInterval as unknown as ScheduleFn;
+const nativeClearTimeout = globalThis.clearTimeout as unknown as ClearFn;
+const nativeClearInterval = globalThis.clearInterval as unknown as ClearFn;
+
+const pendingTimeouts = new Set<TimerId>();
+const pendingIntervals = new Set<TimerId>();
+
+globalThis.setTimeout = ((...args: unknown[]) => {
+  const id = nativeSetTimeout(...args);
+  pendingTimeouts.add(id);
+  return id;
+}) as unknown as typeof globalThis.setTimeout;
+
+globalThis.setInterval = ((...args: unknown[]) => {
+  const id = nativeSetInterval(...args);
+  pendingIntervals.add(id);
+  return id;
+}) as unknown as typeof globalThis.setInterval;
+
+globalThis.clearTimeout = ((id?: TimerId) => {
+  if (id !== undefined) pendingTimeouts.delete(id);
+  nativeClearTimeout(id);
+}) as unknown as typeof globalThis.clearTimeout;
+
+globalThis.clearInterval = ((id?: TimerId) => {
+  if (id !== undefined) pendingIntervals.delete(id);
+  nativeClearInterval(id);
+}) as unknown as typeof globalThis.clearInterval;
+
+afterAll(() => {
+  for (const id of pendingTimeouts) nativeClearTimeout(id);
+  for (const id of pendingIntervals) nativeClearInterval(id);
+  pendingTimeouts.clear();
+  pendingIntervals.clear();
+});
+
+// The fallback resolves setTimeout at call time (bare identifier), so in the
+// between-files gap it uses Node's own timer, not a closed jsdom window's.
+const globalProto = Object.getPrototypeOf(globalThis) as object | null;
+if (globalProto && !Object.prototype.hasOwnProperty.call(globalProto, "requestAnimationFrame")) {
+  Object.defineProperty(globalProto, "requestAnimationFrame", {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: (cb: FrameRequestCallback) =>
+      setTimeout(() => cb(Date.now()), 16) as unknown as number,
+  });
+  Object.defineProperty(globalProto, "cancelAnimationFrame", {
+    configurable: true,
+    enumerable: false,
+    writable: true,
+    value: (id: number) => clearTimeout(id as unknown as TimerId),
+  });
+}
 
 // Mock ResizeObserver
 class ResizeObserverMock {

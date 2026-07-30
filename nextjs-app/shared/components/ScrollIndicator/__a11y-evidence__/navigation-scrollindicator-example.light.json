@@ -1,16 +1,16 @@
 {
   "storyId": "navigation-scrollindicator-example",
   "mode": "light",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:30:02.025Z",
-  "runner": "backfill",
+  "sourceSHA": "603bb8cb8dc731534156897e8607a5851e99b148",
+  "capturedAt": "2026-07-30T09:01:56.664Z",
+  "runner": null,
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }
