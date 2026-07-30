@@ -1,0 +1,8 @@
+- region "Comprehensive Project Documentation":
+  - paragraph: Case Study
+  - heading "Comprehensive Project Documentation" [level=4]
+  - paragraph: Full-width layouts provide maximum space for content and images, ideal for detailed case studies and portfolio pieces.
+  - paragraph: This format works particularly well for projects that require extensive visual documentation and detailed narrative explanations.
+  - figure "The Helsinki Design System components page":
+    - img "Components page overview"
+    - paragraph: The Helsinki Design System components page

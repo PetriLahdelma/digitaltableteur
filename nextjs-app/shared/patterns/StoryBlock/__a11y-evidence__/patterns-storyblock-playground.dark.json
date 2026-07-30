@@ -1,16 +1,16 @@
 {
   "storyId": "patterns-storyblock-playground",
   "mode": "dark",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:35:10.182Z",
-  "runner": "backfill",
+  "sourceSHA": "ebe8a0af82395aaa66b2e973785555913e50dd50",
+  "capturedAt": "2026-07-30T09:59:40.607Z",
+  "runner": null,
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }

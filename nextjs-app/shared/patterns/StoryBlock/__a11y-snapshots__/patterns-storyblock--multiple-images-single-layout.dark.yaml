@@ -1,0 +1,10 @@
+- region "Design Evolution":
+  - paragraph: Visual Documentation
+  - heading "Design Evolution" [level=4]
+  - paragraph: Even with multiple images in a single-column layout, content remains clear and easy to follow.
+  - figure "Initial research findings":
+    - img "Research phase"
+    - paragraph: Initial research findings
+  - figure "Low-fidelity wireframes":
+    - img "Wireframe stage"
+    - paragraph: Low-fidelity wireframes

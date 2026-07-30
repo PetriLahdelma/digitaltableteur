@@ -1,0 +1,11 @@
+- region "Ideation and Prototyping":
+  - paragraph: Design Process
+  - heading "Ideation and Prototyping" [level=4]
+  - paragraph: Collaborative workshops brought together designers, developers, and stakeholders to explore different approaches and validate assumptions early in the process.
+  - paragraph: Multiple concepts were prototyped and tested with real users to identify the most effective solutions before committing to full development.
+  - figure "Post-it findings from research sessions":
+    - img "Research findings and insights"
+    - paragraph: Post-it findings from research sessions
+  - figure "Benchmarking and goal-setting workshop":
+    - img "Goal setting workshop"
+    - paragraph: Benchmarking and goal-setting workshop
