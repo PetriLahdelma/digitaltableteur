@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-30T01:39:35.694Z",
+  "generatedAt": "2026-07-30T01:41:20.526Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -696,6 +696,16 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
@@ -18311,7 +18321,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -37629,12 +37639,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -58745,6 +58755,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/home-remote/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/work/illustrations/page.tsx",
             "since": "2026-06-04"
           },
@@ -58776,11 +58791,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/work/project-spine/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/work/raw-view/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -61392,7 +61402,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -63959,6 +63969,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
             "since": "2026-06-04"
           },
@@ -63975,16 +63995,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -72928,22 +72938,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
             "since": "2026-06-04"
           }
         ],
