@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-29T21:18:26.803Z",
+  "generatedAt": "2026-07-30T01:39:35.694Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 165,
     "withProductionUsage": 36,
     "uniqueImportedComponents": 165,
-    "totalEvidenceRows": 820,
+    "totalEvidenceRows": 826,
     "aliasImportFiles": 429,
-    "relativeImportFiles": 424,
+    "relativeImportFiles": 430,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -8619,14 +8619,14 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -8637,8 +8637,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "human-a11y-review",
@@ -30359,20 +30359,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -33285,20 +33285,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -33309,8 +33309,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "human-a11y-review",
@@ -37643,8 +37643,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectNav",
-        "importCount": 16,
-        "productionImportCount": 14,
+        "importCount": 17,
+        "productionImportCount": 15,
         "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
@@ -37668,6 +37668,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../ProjectNav",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../ProjectNav",
             "context": "production"
@@ -37710,12 +37716,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../ProjectNav",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../ProjectNav",
             "context": "production"
@@ -42434,20 +42434,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -43067,20 +43067,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -56352,20 +56352,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -58554,20 +58554,20 @@
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "human-a11y-review",
@@ -62595,20 +62595,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -62620,8 +62620,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:matrix:ci"
+            "verificationMode": "unverified",
+            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
           },
           {
             "id": "human-a11y-review",
@@ -64076,8 +64076,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/GridBlock",
-        "importCount": 12,
-        "productionImportCount": 11,
+        "importCount": 13,
+        "productionImportCount": 12,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
@@ -64095,6 +64095,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/GridBlock",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/GridBlock",
             "context": "production"
@@ -64146,12 +64152,6 @@
             "importKind": "relative",
             "importPath": "../../../../patterns/GridBlock",
             "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/index.ts",
-            "importKind": "relative",
-            "importPath": "./GridBlock",
-            "context": "pattern"
           }
         ]
       },
@@ -68737,8 +68737,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectDetailLayout",
-        "importCount": 17,
-        "productionImportCount": 15,
+        "importCount": 18,
+        "productionImportCount": 16,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -68762,6 +68762,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/ProjectDetailLayout",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/ProjectDetailLayout",
             "context": "production"
@@ -68804,12 +68810,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/RawView/RawViewPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProjectDetailLayout",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/ProjectDetailLayout",
             "context": "production"
@@ -69455,8 +69455,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectHero",
-        "importCount": 16,
-        "productionImportCount": 14,
+        "importCount": 17,
+        "productionImportCount": 15,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -69480,6 +69480,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/ProjectHero",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/ProjectHero",
             "context": "production"
@@ -69522,12 +69528,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProjectHero",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/ProjectHero",
             "context": "production"
@@ -70842,8 +70842,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/RelatedProjects",
-        "importCount": 16,
-        "productionImportCount": 14,
+        "importCount": 17,
+        "productionImportCount": 15,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -70867,6 +70867,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/RelatedProjects",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/RelatedProjects",
             "context": "production"
@@ -70909,12 +70915,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/RelatedProjects",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/RelatedProjects",
             "context": "production"
@@ -73050,8 +73050,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/StoryBlock",
-        "importCount": 15,
-        "productionImportCount": 14,
+        "importCount": 16,
+        "productionImportCount": 15,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
@@ -73075,6 +73075,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/StoryBlock",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/StoryBlock",
             "context": "production"
@@ -73117,12 +73123,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/StoryBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/StoryBlock",
             "context": "production"

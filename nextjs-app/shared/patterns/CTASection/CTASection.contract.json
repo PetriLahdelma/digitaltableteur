@@ -112,7 +112,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "since": "2026-06-04"
         }
     ],
