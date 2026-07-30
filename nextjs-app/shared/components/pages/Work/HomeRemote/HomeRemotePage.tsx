@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Text, Title } from "@digitaltableteur/react";
 import { Mermaid } from "../../../Mermaid";
 import StoryBlock from "../../../../patterns/StoryBlock";
@@ -513,9 +514,11 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
 
       <div className={styles.installerSection}>
         <div className={styles.installerWrapper}>
-          <img
+          <Image
             src="/images/portfolio/home-remote/dmg-installer.webp"
             alt="Home Remote disk image window with clay wordmark and drag-to-Applications arrow"
+            width={1504}
+            height={1120}
             className={styles.installerImage}
           />
         </div>
