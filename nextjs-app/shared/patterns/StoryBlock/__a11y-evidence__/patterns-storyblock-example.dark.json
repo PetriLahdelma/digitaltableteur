@@ -1,16 +1,16 @@
 {
   "storyId": "patterns-storyblock-example",
   "mode": "dark",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:35:10.443Z",
-  "runner": "backfill",
+  "sourceSHA": "391961976ecb60a638899c1b4ecfd804b7c2342e",
+  "capturedAt": "2026-07-30T10:05:07.688Z",
+  "runner": null,
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }

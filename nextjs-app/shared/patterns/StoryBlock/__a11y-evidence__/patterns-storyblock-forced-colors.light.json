@@ -1,16 +1,16 @@
 {
   "storyId": "patterns-storyblock-forced-colors",
   "mode": "light",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:24:54.009Z",
-  "runner": "backfill",
+  "sourceSHA": "391961976ecb60a638899c1b4ecfd804b7c2342e",
+  "capturedAt": "2026-07-30T10:05:01.222Z",
+  "runner": null,
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }

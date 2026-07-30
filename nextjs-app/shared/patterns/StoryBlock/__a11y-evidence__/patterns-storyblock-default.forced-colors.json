@@ -1,18 +1,11 @@
 {
   "storyId": "patterns-storyblock-default",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:42:09.658Z",
-  "runner": "backfill",
+  "sourceSHA": "391961976ecb60a638899c1b4ecfd804b7c2342e",
+  "capturedAt": "2026-07-30T10:05:11.467Z",
+  "runner": null,
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
-      "passed": true
-    },
-    "forced-colors-real-browser": {
       "passed": true
     }
   }

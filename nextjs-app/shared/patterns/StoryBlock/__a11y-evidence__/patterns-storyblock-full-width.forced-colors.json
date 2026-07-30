@@ -1,0 +1,12 @@
+{
+  "storyId": "patterns-storyblock-full-width",
+  "mode": "forced-colors",
+  "sourceSHA": "391961976ecb60a638899c1b4ecfd804b7c2342e",
+  "capturedAt": "2026-07-30T10:05:11.660Z",
+  "runner": null,
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

@@ -123,13 +123,11 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
         <div className={styles.grid1Col}>
           <div className={styles.col}>
             {subtitle && (
-              <Title
-                level={4}
-                size="xs"
-                className={styles.subtitle}
-              >
+              // Kicker, not a heading: it must not outrank or precede the real
+              // section title in the outline AT users navigate by.
+              <Text size="s" className={styles.subtitle}>
                 {subtitle}
-              </Title>
+              </Text>
             )}
             <Title level={4} size="s" className={styles.title}>
               {title}
