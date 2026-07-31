@@ -370,7 +370,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             alt: "Pair This TV call to action in primary and quiet variants",
             width: 996,
             height: 520,
-            caption: "Pairing surfaces only when authorization actually fails.",
+            caption: "One-click pairing.",
           },
           {
             type: "image",
