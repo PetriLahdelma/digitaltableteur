@@ -31,10 +31,10 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description={project.description}
           image={{
-            src: "/images/portfolio/home-remote/hero-lockup.webp",
+            src: "/images/portfolio/home-remote/hero-v2.webp",
             alt: "Home Remote clay app icon next to the hand-modelled Home Remote wordmark",
-            width: 2874,
-            height: 1254,
+            width: 1596,
+            height: 731,
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
@@ -515,7 +515,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
       <div className={styles.installerSection}>
         <div className={styles.installerWrapper}>
           <Image
-            src="/images/portfolio/home-remote/dmg-installer.webp"
+            src="/images/portfolio/home-remote/dmg-installer-v2.webp"
             alt="Home Remote disk image window with clay wordmark and drag-to-Applications arrow"
             width={1504}
             height={1120}

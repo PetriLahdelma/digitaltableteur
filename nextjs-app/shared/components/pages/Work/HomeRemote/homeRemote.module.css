@@ -126,9 +126,6 @@
 .installerWrapper {
   margin-inline: auto;
   max-inline-size: var(--container-md);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
 }
 
 .installerImage {
