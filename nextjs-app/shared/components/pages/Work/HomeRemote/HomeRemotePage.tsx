@@ -91,10 +91,9 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             </p>
             <p className={styles.metaOverview}>
               <strong>The design challenge:</strong> make a remote control feel
-              trustworthy and tactile at couch distance. The interface reports
-              observed state rather than equating a transport acknowledgement
-              with success, and every control is modelled in a warm clay
-              material where raised means pressable and recessed means state.
+              trustworthy and tactile at couch distance. Every control is
+              modelled in a warm clay material where raised means pressable
+              and recessed means state.
             </p>
           </div>
         </div>
@@ -418,10 +417,10 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/home-remote/icon-clay.webp",
+            src: "/images/portfolio/home-remote/icon-clay-v2.webp",
             alt: "Final Home Remote clay app icon render",
-            width: 1254,
-            height: 1254,
+            width: 731,
+            height: 731,
             caption: "The finished icon: the whole product in one object.",
           },
           {

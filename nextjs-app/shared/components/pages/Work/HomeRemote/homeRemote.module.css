@@ -90,6 +90,13 @@
   margin-block-start: var(--space-layout-32);
 }
 
+/* Mixed-ratio rows: push each cell's content to the bottom so captions
+   land on one baseline regardless of image height. */
+
+.imageGrid > figure {
+  justify-content: flex-end;
+}
+
 /* App tab screenshots: always one row. GridBlock's grid3Col collapses to
    2-col below 1024px and 1-col below 768px; the portrait shots are narrow
    enough to sit 3-across at every width, so the doubled class pins the
