@@ -367,7 +367,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
           },
           {
             type: "image",
-            src: "/images/portfolio/home-remote/sheet-pair-cta.webp",
+            src: "/images/portfolio/home-remote/sheet-pair-cta-v2.webp",
             alt: "Pair This TV call to action in primary and quiet variants",
             width: 996,
             height: 520,
