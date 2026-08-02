@@ -1777,7 +1777,6 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
-          date="Apr 2026 – Present"
           liveUrl={project.liveUrl}
           variant="contained"
           showScrollIndicator={true}
@@ -1804,6 +1803,10 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
                 AI-native product design system. Three layered packages,
                 contract-per-component, enforced spacing.
               </p>
+            </div>
+            <div className={styles.metaBlock}>
+              <Title as="h3" unstyled className={styles.metaLabel}>Duration</Title>
+              <p className={styles.metaText}>Apr 2026 – Present</p>
             </div>
             <div className={styles.metaBlock}>
               <Title as="h3" unstyled className={styles.metaLabel}>Stack</Title>

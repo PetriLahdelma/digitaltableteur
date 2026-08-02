@@ -38,7 +38,6 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
-          date="Aug 2026"
           variant="contained"
           showScrollIndicator={true}
         />
