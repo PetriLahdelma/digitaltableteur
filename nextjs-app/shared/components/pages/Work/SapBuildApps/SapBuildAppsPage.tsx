@@ -49,7 +49,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           "Documentation",
           "Design-to-Code Translation",
         ]}
-        duration="March 2022 – February 2026"
+        duration="Mar 2022 – Feb 2026"
         tools={[
           { key: "figma", icon: <SiFigma size={24} />, name: "Figma" },
           { key: "react", icon: <SiReact size={24} />, name: "ReactTS" },

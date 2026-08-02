@@ -60,7 +60,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           "Frontend Development",
           "Documentation",
         ]}
-        duration="January 2020–March 2022"
+        duration="Jan 2020 – Mar 2022"
         tools={[
           {
             key: "slack",

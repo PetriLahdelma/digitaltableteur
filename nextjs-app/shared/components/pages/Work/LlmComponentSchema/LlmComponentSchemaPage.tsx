@@ -171,7 +171,6 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
-          date="December 2025–Present"
           liveUrl={project.liveUrl}
           variant="contained"
           showScrollIndicator={true}
@@ -187,6 +186,10 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
             <div className={styles.metaBlock}>
               <Title as="h3" unstyled className={styles.metaLabel}>Type</Title>
               <p className={styles.metaText}>npm schema + CLI + governance toolkit (MIT)</p>
+            </div>
+            <div className={styles.metaBlock}>
+              <Title as="h3" unstyled className={styles.metaLabel}>Duration</Title>
+              <p className={styles.metaText}>Dec 2025 – Present</p>
             </div>
             <div className={styles.metaBlock}>
               <Title as="h3" unstyled className={styles.metaLabel}>Version</Title>

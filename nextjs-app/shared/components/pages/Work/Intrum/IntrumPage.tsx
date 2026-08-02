@@ -36,7 +36,6 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
-          date="2017"
           variant="contained"
           showScrollIndicator={true}
         />

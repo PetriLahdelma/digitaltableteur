@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-29T21:18:26.803Z",
+  "generatedAt": "2026-07-30T10:06:25.232Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -81,9 +81,9 @@
     "withAnyUsage": 165,
     "withProductionUsage": 36,
     "uniqueImportedComponents": 165,
-    "totalEvidenceRows": 820,
+    "totalEvidenceRows": 826,
     "aliasImportFiles": 429,
-    "relativeImportFiles": 424,
+    "relativeImportFiles": 430,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -696,6 +696,16 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
@@ -8625,8 +8635,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -18311,7 +18321,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -30371,8 +30381,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -33297,8 +33307,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -37629,12 +37639,12 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
             "since": "2026-06-04"
           }
         ]
@@ -37643,8 +37653,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectNav",
-        "importCount": 16,
-        "productionImportCount": 14,
+        "importCount": 17,
+        "productionImportCount": 15,
         "patternImportCount": 1,
         "componentImportCount": 1,
         "evidence": [
@@ -37668,6 +37678,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../ProjectNav",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../ProjectNav",
             "context": "production"
@@ -37710,12 +37726,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../ProjectNav",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../ProjectNav",
             "context": "production"
@@ -40079,8 +40089,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "reduced-motion",
@@ -42446,8 +42456,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -43079,8 +43089,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -44734,8 +44744,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "reduced-motion",
@@ -56364,8 +56374,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -58560,8 +58570,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "aria-requirements",
@@ -58745,6 +58755,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/home-remote/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/work/illustrations/page.tsx",
             "since": "2026-06-04"
           },
@@ -58776,11 +58791,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/work/project-spine/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/work/raw-view/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -61392,7 +61402,7 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -62607,8 +62617,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -63959,6 +63969,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
             "since": "2026-06-04"
           },
@@ -63975,16 +63995,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -64076,8 +64086,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/GridBlock",
-        "importCount": 12,
-        "productionImportCount": 11,
+        "importCount": 13,
+        "productionImportCount": 12,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
@@ -64095,6 +64105,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/GridBlock",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/GridBlock",
             "context": "production"
@@ -64146,12 +64162,6 @@
             "importKind": "relative",
             "importPath": "../../../../patterns/GridBlock",
             "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/patterns/index.ts",
-            "importKind": "relative",
-            "importPath": "./GridBlock",
-            "context": "pattern"
           }
         ]
       },
@@ -64292,8 +64302,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -68737,8 +68747,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectDetailLayout",
-        "importCount": 17,
-        "productionImportCount": 15,
+        "importCount": 18,
+        "productionImportCount": 16,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -68762,6 +68772,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/ProjectDetailLayout",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/ProjectDetailLayout",
             "context": "production"
@@ -68804,12 +68820,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/RawView/RawViewPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProjectDetailLayout",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/ProjectDetailLayout",
             "context": "production"
@@ -69455,8 +69465,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ProjectHero",
-        "importCount": 16,
-        "productionImportCount": 14,
+        "importCount": 17,
+        "productionImportCount": 15,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -69480,6 +69490,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/ProjectHero",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/ProjectHero",
             "context": "production"
@@ -69522,12 +69538,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/ProjectHero",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/ProjectHero",
             "context": "production"
@@ -70842,8 +70852,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/RelatedProjects",
-        "importCount": 16,
-        "productionImportCount": 14,
+        "importCount": 17,
+        "productionImportCount": 15,
         "patternImportCount": 2,
         "componentImportCount": 0,
         "evidence": [
@@ -70867,6 +70877,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/RelatedProjects",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/RelatedProjects",
             "context": "production"
@@ -70909,12 +70925,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/RelatedProjects",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/RelatedProjects",
             "context": "production"
@@ -72928,22 +72938,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -73050,8 +73060,8 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/StoryBlock",
-        "importCount": 15,
-        "productionImportCount": 14,
+        "importCount": 16,
+        "productionImportCount": 15,
         "patternImportCount": 1,
         "componentImportCount": 0,
         "evidence": [
@@ -73075,6 +73085,12 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+            "importKind": "relative",
+            "importPath": "../../../../patterns/StoryBlock",
+            "context": "production"
+          },
+          {
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/StoryBlock",
             "context": "production"
@@ -73117,12 +73133,6 @@
           },
           {
             "path": "nextjs-app/shared/components/pages/Work/Rhythmguard/RhythmguardPage.tsx",
-            "importKind": "relative",
-            "importPath": "../../../../patterns/StoryBlock",
-            "context": "production"
-          },
-          {
-            "path": "nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx",
             "importKind": "relative",
             "importPath": "../../../../patterns/StoryBlock",
             "context": "production"
@@ -73282,8 +73292,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",

@@ -79,6 +79,11 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/home-remote/page.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/work/illustrations/page.tsx",
             "since": "2026-06-04"
         },
@@ -110,11 +115,6 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/work/project-spine/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/work/raw-view/page.tsx",
             "since": "2026-06-04"
         }
     ],

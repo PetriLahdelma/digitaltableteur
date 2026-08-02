@@ -120,12 +120,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
+            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
             "since": "2026-06-04"
         }
     ]

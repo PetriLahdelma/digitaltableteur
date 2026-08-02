@@ -395,7 +395,7 @@ export function IllustrationsPage({ nav }: { nav?: React.ReactNode }) {
           <Title level={1} className={styles.title}>
             Illustrations
           </Title>
-          <FlexBox className={styles.badges} gap={8}>
+          <FlexBox className={styles.badges} gap={8} justify="center" wrap="wrap">
             <Badge size="sm" variant="secondary">
               Pencil & Paper
             </Badge>

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T21:18:26.409Z",
+  "generatedAt": "2026-07-30T10:06:24.855Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -4434,8 +4434,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -16084,8 +16084,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -17605,8 +17605,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -21317,8 +21317,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "reduced-motion",
@@ -23049,8 +23049,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -23432,8 +23432,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -24313,8 +24313,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "reduced-motion",
@@ -30426,8 +30426,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -31685,8 +31685,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "aria-requirements",
@@ -34504,8 +34504,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -35492,8 +35492,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",
@@ -40657,8 +40657,8 @@
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "automated",
-          "check": "npm run test:stories:hc"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "human-a11y-review",

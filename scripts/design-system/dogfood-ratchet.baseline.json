@@ -249,6 +249,10 @@
       "rawElements": 3,
       "utilityLines": 16
     },
+    "nextjs-app/shared/components/Logo/Logo.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
     "nextjs-app/shared/components/MarkdownMessage/MarkdownMessage.tsx": {
       "rawElements": 5,
       "utilityLines": 0
@@ -349,6 +353,10 @@
       "rawElements": 1,
       "utilityLines": 2
     },
+    "nextjs-app/shared/components/SlideButton/SlideButton.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
     "nextjs-app/shared/components/SocialIconLink/SocialIconLink.tsx": {
       "rawElements": 2,
       "utilityLines": 0
@@ -362,6 +370,14 @@
       "utilityLines": 10
     },
     "nextjs-app/shared/components/Switch/Switch.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/Table/Table.tsx": {
+      "rawElements": 2,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/TableHeaderCell/TableHeaderCell.tsx": {
       "rawElements": 1,
       "utilityLines": 0
     },
@@ -386,6 +402,10 @@
       "utilityLines": 0
     },
     "nextjs-app/shared/components/TransformingActionInput/TransformingActionInput.tsx": {
+      "rawElements": 1,
+      "utilityLines": 0
+    },
+    "nextjs-app/shared/components/TreeView/TreeView.tsx": {
       "rawElements": 1,
       "utilityLines": 0
     },
@@ -522,8 +542,8 @@
       "utilityLines": 14
     },
     "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx": {
-      "rawElements": 2,
-      "utilityLines": 13
+      "rawElements": 1,
+      "utilityLines": 1
     },
     "nextjs-app/shared/patterns/Footer/Footer.tsx": {
       "rawElements": 16,

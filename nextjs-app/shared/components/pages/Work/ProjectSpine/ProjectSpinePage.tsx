@@ -35,7 +35,6 @@ export function ProjectSpinePage({ nav }: { nav?: React.ReactNode }) {
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
-          date="April 2026"
           liveUrl={project.liveUrl}
           variant="contained"
           showScrollIndicator={true}
@@ -52,6 +51,10 @@ export function ProjectSpinePage({ nav }: { nav?: React.ReactNode }) {
             <div className={styles.metaBlock}>
               <Title as="h3" unstyled className={styles.metaLabel}>Type</Title>
               <p className={styles.metaText}>Open-source CLI tool (MIT)</p>
+            </div>
+            <div className={styles.metaBlock}>
+              <Title as="h3" unstyled className={styles.metaLabel}>Duration</Title>
+              <p className={styles.metaText}>Apr 2026</p>
             </div>
             <div className={styles.metaBlock}>
               <Title as="h3" unstyled className={styles.metaLabel}>Version</Title>

@@ -41,7 +41,7 @@ export interface Project {
   liveUrl?: string;
   /** Client or organization name */
   client?: string;
-  /** Project duration (e.g. "2022-2024") */
+  /** Project duration (e.g. "2022–2024") */
   duration?: string;
 }
 
@@ -73,7 +73,7 @@ export const projects: Project[] = [
       "React",
     ],
     featured: true,
-    order: 0,
+    order: 1,
     duration: "2026–Present",
   },
   {
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     category: "design-systems",
     tags: ["Design System", "UX Design", "Accessibility", "React"],
     featured: true,
-    order: 7,
+    order: 8,
     liveUrl: "https://hds.hel.fi/",
     client: "City of Helsinki",
     duration: "2020–2022",
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     category: "branding",
     tags: ["Branding", "Web Design", "Identity"],
     featured: true,
-    order: 9,
+    order: 10,
     client: "New Things Co",
     duration: "2019",
   },
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     secondaryCategories: ["branding"],
     tags: ["Web Design", "Animation", "Branding"],
     featured: false,
-    order: 8,
+    order: 9,
     duration: "2023",
   },
   {
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     category: "illustration",
     tags: ["Illustration", "Character Design", "Editorial"],
     featured: false,
-    order: 10,
+    order: 11,
     duration: "2016–Present",
   },
   {
@@ -144,11 +144,25 @@ export const projects: Project[] = [
     category: "design-systems",
     tags: ["Design Systems", "Enterprise", "Low-Code Platform", "SAP BTP"],
     featured: true,
-    order: 6,
+    order: 7,
     liveUrl:
       "https://www.sap.com/products/technology-platform/low-code-app-builder.html",
     client: "SAP",
     duration: "2021–2024",
+  },
+  {
+    id: "home-remote",
+    slug: "home-remote",
+    title: "Home Remote",
+    description:
+      "A native macOS remote for TVs, home AV, and audio equipment: local-first control with a design system for a fun clay interface.",
+    thumbnail: "/images/portfolio/home-remote/thumbnail.webp",
+    category: "ux-design",
+    secondaryCategories: ["tools"],
+    tags: ["Product Design", "macOS App", "Brand Identity", "3D Illustration"],
+    featured: false,
+    order: 0,
+    duration: "Aug 2026",
   },
   {
     id: "knobsmith-audio",
@@ -165,7 +179,7 @@ export const projects: Project[] = [
       "Brand Identity",
     ],
     featured: true,
-    order: 2,
+    order: 3,
     liveUrl: "https://knobsmithaudio.com",
     duration: "2025–Present",
   },
@@ -179,9 +193,9 @@ export const projects: Project[] = [
     category: "ux-design",
     tags: ["AI Product", "UX Intelligence", "Accessibility", "Startup"],
     featured: false,
-    order: 3,
+    order: 4,
     liveUrl: "https://vertaaux.ai",
-    duration: "December 2025–Present",
+    duration: "Dec 2025 – Present",
   },
   {
     id: "finnish-transport-agency",
@@ -193,7 +207,7 @@ export const projects: Project[] = [
     category: "branding",
     tags: ["Brand Identity", "Public Sector", "Accessibility", "Multilingual"],
     featured: false,
-    order: 11,
+    order: 12,
     client: "Finnish Transport Agency",
     duration: "2018",
   },
@@ -207,9 +221,9 @@ export const projects: Project[] = [
     category: "tools",
     tags: ["Open Source", "Stylelint", "Design Tokens", "DX", "npm"],
     featured: true,
-    order: 4,
+    order: 5,
     liveUrl: "https://www.npmjs.com/package/stylelint-plugin-rhythmguard",
-    duration: "December 2025–Present",
+    duration: "Dec 2025 – Present",
   },
   {
     id: "project-spine",
@@ -221,9 +235,9 @@ export const projects: Project[] = [
     category: "tools",
     tags: ["Open Source", "CLI", "AI Agents", "Design Tokens", "Context"],
     featured: true,
-    order: 1,
+    order: 2,
     liveUrl: "https://projectspine.dev",
-    duration: "April 2026",
+    duration: "Apr 2026",
   },
   {
     id: "llm-component-schema",
@@ -235,9 +249,9 @@ export const projects: Project[] = [
     category: "tools",
     tags: ["Open Source", "npm", "AI", "Component Contracts", "Schema"],
     featured: false,
-    order: 5,
+    order: 6,
     liveUrl: "https://petrilahdelma.gumroad.com/l/mcqoq",
-    duration: "December 2025–Present",
+    duration: "Dec 2025 – Present",
   },
 ];
 
