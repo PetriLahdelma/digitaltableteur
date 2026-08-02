@@ -448,7 +448,7 @@ flowchart LR
             alt: "Final Home Remote clay app icon render",
             width: 731,
             height: 731,
-            caption: "The finished icon: the whole product in one object.",
+            caption: "Icon: the whole product in one object.",
           },
           {
             type: "image",
@@ -503,7 +503,7 @@ flowchart LR
             alt: "X-ray styled clay illustration of a skeleton in an armchair holding a remote",
             width: 922,
             height: 897,
-            caption: "The X-ray loading state.",
+            caption: "The X-ray loading state for dark mode.",
           },
           {
             type: "image",
