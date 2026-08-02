@@ -162,7 +162,7 @@ export const projects: Project[] = [
     tags: ["Product Design", "macOS App", "Brand Identity", "3D Illustration"],
     featured: false,
     order: 12,
-    duration: "2026–Present",
+    duration: "Aug 2026",
   },
   {
     id: "knobsmith-audio",

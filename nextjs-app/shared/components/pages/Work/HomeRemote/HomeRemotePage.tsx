@@ -38,7 +38,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
-          date="Jul 2026 – Present"
+          date="Aug 2026"
           variant="contained"
           showScrollIndicator={true}
         />
@@ -63,7 +63,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
               <Title as="h3" unstyled className={styles.metaLabel}>
                 Duration
               </Title>
-              <p className={styles.metaText}>Jul 2026 – Present</p>
+              <p className={styles.metaText}>Aug 2026</p>
             </div>
             <div className={styles.metaBlock}>
               <Title as="h3" unstyled className={styles.metaLabel}>
