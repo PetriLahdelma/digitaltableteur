@@ -113,10 +113,9 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="p2" size="s">
             The user is whoever is across the room from the screen. The jobs
-            are short and impatient: pause or resume right now, nudge or mute
-            volume, launch a streaming app, switch inputs, wake or power off,
-            and confirm what is actually playing. Those observed jobs, not a
-            feature list, set the control hierarchy.
+            are short and impatient: pause or resume, nudge or mute volume,
+            launch a streaming app, switch inputs, wake or power off, and
+            confirm what is actually playing.
           </Text>,
         ]}
         imageLayout="none"
