@@ -43,12 +43,12 @@ import {
   Divider,
   FormField,
   IconButton,
+  Kbd,
   Link,
   NavLink,
   Stack,
   useToast,
 } from "@digitaltableteur/react";
-import { Kbd } from "@dt/Kbd";
 import { Prose } from "@/nextjs-app/shared/components/ui";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
 import { ArrowRight, Heart, Share, Star, Image as ImageIcon } from "@phosphor-icons/react";
