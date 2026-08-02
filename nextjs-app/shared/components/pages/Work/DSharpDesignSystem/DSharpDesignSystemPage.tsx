@@ -1777,7 +1777,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
-          date="April 2026–Present"
+          date="Apr 2026 – Present"
           liveUrl={project.liveUrl}
           variant="contained"
           showScrollIndicator={true}

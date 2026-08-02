@@ -41,7 +41,7 @@ export interface Project {
   liveUrl?: string;
   /** Client or organization name */
   client?: string;
-  /** Project duration (e.g. "2022-2024") */
+  /** Project duration (e.g. "2022–2024") */
   duration?: string;
 }
 
@@ -195,7 +195,7 @@ export const projects: Project[] = [
     featured: false,
     order: 3,
     liveUrl: "https://vertaaux.ai",
-    duration: "December 2025–Present",
+    duration: "Dec 2025 – Present",
   },
   {
     id: "finnish-transport-agency",
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     featured: true,
     order: 4,
     liveUrl: "https://www.npmjs.com/package/stylelint-plugin-rhythmguard",
-    duration: "December 2025–Present",
+    duration: "Dec 2025 – Present",
   },
   {
     id: "project-spine",
@@ -237,7 +237,7 @@ export const projects: Project[] = [
     featured: true,
     order: 1,
     liveUrl: "https://projectspine.dev",
-    duration: "April 2026",
+    duration: "Apr 2026",
   },
   {
     id: "llm-component-schema",
@@ -251,7 +251,7 @@ export const projects: Project[] = [
     featured: false,
     order: 5,
     liveUrl: "https://petrilahdelma.gumroad.com/l/mcqoq",
-    duration: "December 2025–Present",
+    duration: "Dec 2025 – Present",
   },
 ];
 

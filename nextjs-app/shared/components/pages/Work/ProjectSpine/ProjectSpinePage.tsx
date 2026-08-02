@@ -35,7 +35,7 @@ export function ProjectSpinePage({ nav }: { nav?: React.ReactNode }) {
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
-          date="April 2026"
+          date="Apr 2026"
           liveUrl={project.liveUrl}
           variant="contained"
           showScrollIndicator={true}
