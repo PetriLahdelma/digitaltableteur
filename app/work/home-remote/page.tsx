@@ -6,11 +6,11 @@ import { NextWorkNav } from "../NextWorkNav";
 export const metadata: Metadata = {
   title: "Home Remote Case Study | Digitaltableteur",
   description:
-    "A native macOS remote for TVs and AV displays: local-first control with a tactile clay interface that reports what it observes, not what it hopes.",
+    "A native macOS remote for TVs, home AV, and audio equipment: local-first control with a design system for a fun clay interface.",
   openGraph: {
     title: "Home Remote Case Study | Digitaltableteur",
     description:
-      "A native macOS remote for TVs and AV displays: local-first control with a tactile clay interface that reports what it observes, not what it hopes.",
+      "A native macOS remote for TVs, home AV, and audio equipment: local-first control with a design system for a fun clay interface.",
     type: "article",
     siteName: "Digitaltableteur",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Home Remote Case Study | Digitaltableteur",
     description:
-      "A native macOS remote for TVs and AV displays: local-first control with a tactile clay interface that reports what it observes, not what it hopes.",
+      "A native macOS remote for TVs, home AV, and audio equipment: local-first control with a design system for a fun clay interface.",
   },
   alternates: {
     canonical: "/work/home-remote",
