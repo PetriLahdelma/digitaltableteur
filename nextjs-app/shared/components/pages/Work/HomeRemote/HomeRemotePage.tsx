@@ -11,7 +11,7 @@ import { ProjectHero } from "../../../../patterns/ProjectHero";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
-import { SiFigma, SiSwift } from "react-icons/si";
+import { SiFigma, SiOpenai, SiSwift } from "react-icons/si";
 import { ClaudeIcon } from "../../../AskAI/ai-icons";
 
 import styles from "./homeRemote.module.css";
@@ -73,6 +73,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
                 <SiFigma size={24} title="Figma" />
                 <SiSwift size={24} title="Swift / SwiftUI" />
                 <ClaudeIcon width={24} height={24} aria-label="Claude AI" />
+                <SiOpenai size={24} title="ImageGen — AI-assisted visuals" />
               </div>
             </div>
           </div>
@@ -82,12 +83,11 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             </Title>
             <p className={styles.metaOverview}>
               <strong>Home Remote</strong> is a native macOS menu-bar remote
-              for TVs, monitors, and other audio/video displays. Underneath
-              sits a local-first daemon that owns independently paired
-              connections per device, whatever the vendor, and controls
-              whichever displays on the network complete pairing; the app, a
-              CLI, and an MCP server all talk to the same
-              permission-restricted API. Nothing leaves the local network.
+              for TVs, monitors, and other audio/video displays. A local
+              daemon manages independently paired connections for each
+              supported device. The macOS app, CLI, and MCP server use the
+              same restricted local API, while device-control traffic remains
+              on the trusted network.
             </p>
             <p className={styles.metaOverview}>
               <strong>The design challenge:</strong> make a remote control feel
@@ -100,22 +100,46 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
       </section>
 
       <StoryBlock
+        subtitle="Context"
+        title="One Person, Every Role"
+        content={[
+          <Text key="p1" size="s">
+            A solo project end to end: product design, brand, SwiftUI
+            development, and release engineering by one person. The
+            constraints were self-imposed and strict: local-first privacy
+            with no cloud account, vendor protocol quirks handled without
+            vendor apps, and a visual system that survives both a Dock window
+            and a menu-bar popover.
+          </Text>,
+          <Text key="p2" size="s">
+            The user is whoever is across the room from the screen. The jobs
+            are short and impatient: pause or resume right now, nudge or mute
+            volume, launch a streaming app, switch inputs, wake or power off,
+            and confirm what is actually playing. Those observed jobs, not a
+            feature list, set the control hierarchy.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="md"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      <StoryBlock
         subtitle="The Problem"
         title="Many Screens, Many Protocols, One Terminal"
         content={[
           <Text key="p1" size="s">
-            Controlling TVs and displays from a Mac usually means a terminal.
-            Every vendor speaks its own protocol, pairing is a ritual, and
-            pausing a film should not require finding a shell. Speed and
+            Existing desktop controls were fragmented across vendor apps,
+            command-line tools, and inconsistent pairing flows. Speed and
             legibility matter more than exhaustive diagnostics when you are
             sitting across the room from the screen.
           </Text>,
           <Text key="p2" size="s">
-            The remote had to preserve the daemon&apos;s honesty guarantees:
-            show whether the screen is actually active rather than whether a
-            standby network service happens to answer, distinguish command
-            progress from acknowledgement from failure, and never imply success
-            after an error.
+            The remote also had to be precise about state: show whether the
+            screen is actually active rather than whether a standby service
+            happens to answer, and never imply success after an error.
           </Text>,
           <Mermaid
             key="architecture"
@@ -149,16 +173,17 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
 
       <StoryBlock
         subtitle="The Product"
-        title="One Popover, Three Honest Tabs"
+        title="One Popover, Three Focused Tabs"
         content={[
           <Text key="p1" size="s">
-            The app is a single 330-point popover with three tabs. Remote puts
-            availability first, then a vendor-specific control hierarchy: the
-            five-way wheel, playback, volume, and verified streaming
-            destinations, all one click deep. Devices handles selection and
-            pairing as an inline maintenance state instead of a separate
-            settings maze. Settings keeps appearance, key clicks, and motion
-            preferences on plain rows.
+            The interface fits into a compact 330-point menu-bar popover
+            organized around three tasks: control, device maintenance, and
+            preferences. Remote puts availability first, then the control
+            hierarchy: the five-way wheel, playback, volume, and verified
+            streaming destinations, all one click deep. Devices handles
+            selection and pairing as an inline maintenance state instead of a
+            separate settings maze. Settings keeps appearance, key clicks, and
+            motion preferences on plain rows.
           </Text>,
           <Text key="p2" size="s">
             Capability honesty drives the layout: panels omit any state or
@@ -264,7 +289,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
       />
 
       <GridBlock
-        columns={3}
+        columns={2}
         gap="medium"
         backgroundColor="transparent"
         maxWidth="lg"
@@ -277,32 +302,8 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             alt: "Five-way navigation wheel component sheet",
             width: 692,
             height: 692,
-            caption: "The five-way wheel, the layout's dominant control.",
-          },
-          {
-            type: "image",
-            src: "/images/portfolio/home-remote/sheet-rockers.webp",
-            alt: "Volume, playback and channel rocker component sheets",
-            width: 636,
-            height: 760,
-            caption: "Rockers for volume, transport, and channel.",
-          },
-          {
-            type: "image",
-            src: "/images/portfolio/home-remote/sheet-power.webp",
-            alt: "Power key in destructive red and accent violet variants",
-            width: 608,
-            height: 432,
             caption:
-              "One Power control that follows observed availability, never a guess.",
-          },
-          {
-            type: "image",
-            src: "/images/portfolio/home-remote/sheet-tabs.webp",
-            alt: "Remote, Devices and Settings segmented tab states",
-            width: 1028,
-            height: 708,
-            caption: "The three-tab segmented control.",
+              "The five-way wheel: one dominant control, sized for hitting without looking. Every other key defers to it.",
           },
           {
             type: "image",
@@ -310,22 +311,47 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             alt: "Status toasts in available, warning and error tints",
             width: 710,
             height: 612,
-            caption: "Status is tinted and worded, never color alone.",
-          },
-          {
-            type: "image",
-            src: "/images/portfolio/home-remote/sheet-volume-steps.webp",
-            alt: "Volume step segmented control set to one, two and five steps",
-            width: 424,
-            height: 480,
-            caption: "Volume step size as a recessed segmented control.",
+            caption:
+              "Status is tinted and worded, never color alone; the same rule covers the LEDs and every toast.",
           },
         ]}
       />
 
       <StoryBlock
+        subtitle="Decisions"
+        title="Three Calls That Shaped It"
+        content={[
+          <Text key="p1" size="s">
+            <strong>Thin client over direct connections.</strong> The app
+            never touches credentials or sockets; it invokes the CLI against
+            the daemon&apos;s restricted API. The rejected alternative, an app
+            that owns its own pairings, would have duplicated trust in two
+            places and made every surface a security boundary.
+          </Text>,
+          <Text key="p2" size="s">
+            <strong>Capability-honest panels over a universal layout.</strong>{" "}
+            A control that cannot be proven for the selected device is not
+            rendered. The rejected alternative was the familiar universal
+            remote: one static layout where half the buttons are dead
+            depending on what you point it at.
+          </Text>,
+          <Text key="p3" size="s">
+            <strong>Clay relief over native flat controls.</strong> Standard
+            system controls read poorly from across a room. The relief
+            language makes pressable versus state legible at couch distance,
+            at the cost of maintaining a bespoke material system.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="md"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      <StoryBlock
         subtitle="State Before Action"
-        title="An Interface That Refuses to Lie"
+        title="Observed State, Not Assumed State"
         content={[
           <Text key="p1" size="s">
             The status LED next to each device name reports observed state:
@@ -388,15 +414,16 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
         title="A Remote You Would Leave on the Couch"
         content={[
           <Text key="p1" size="s">
-            The identity is modelled, not drawn. A little clay television and
-            its remote were built like physical objects, through measured
-            construction, form iterations from angular to soft, and material
-            studies that picked the violet accent now running through the
-            app, the icon, and the installer as one palette.
+            The identity was explored with AI image generation and refined by
+            hand: a little clay television and its remote, developed through
+            retrospective construction studies, form iterations from angular
+            to soft, and material studies that picked the violet accent now
+            running through the app, the icon, and the installer as one
+            palette.
           </Text>,
           <Text key="p2" size="s">
-            The wordmark got the same treatment: hand-modelled clay letters
-            with the softness of the interface material, so the brand and the
+            The wordmark got the same treatment: clay letters generated in the
+            same material language as the interface, so the brand and the
             buttons feel like they were fired in the same kiln.
           </Text>,
         ]}
@@ -441,8 +468,10 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="s">
             A small illustration series carries the clay world into empty
             states and the settings pane: someone sinking into an armchair,
-            remote in hand. The X-ray variant is the loading state; it shows
-            the same scene the way the daemon sees the TV, structure first.
+            remote in hand. The X-ray variant is the loading state, and it
+            earns its place functionally: it gives the pairing wait a face,
+            makes progress feel shorter than a bare spinner would, and keeps
+            the brand present in the app&apos;s least glamorous moment.
           </Text>,
         ]}
         imageLayout="none"
@@ -488,20 +517,29 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
       />
 
       <StoryBlock
-        subtitle="Shipping"
+        subtitle="Delivery"
         title="Signed, Notarized, and DMG'd"
         content={[
           <Text key="p1" size="s">
-            Home Remote 0.2.0 shipped as a Developer ID-signed, notarized,
-            stapled disk image with a live update feed. The installer carries
-            the same palette as the icon and the app: one violet, three
-            surfaces, no separate marketing skin.
+            Home Remote 0.2.0, a release-candidate build, is a Developer
+            ID-signed, notarized, stapled disk image with a live update feed.
+            The installer carries the same palette as the icon and the app:
+            one violet, three surfaces, no separate marketing skin.
           </Text>,
           <Text key="p2" size="s">
-            The release notes practice the same honesty as the interface. The
-            remote controls whichever devices complete pairing, from
-            televisions to desktop monitors, while the release checklist
-            claims only what has been observed working.
+            Acceptance is hardware-in-the-loop: a release matrix run in front
+            of both configured displays, covering pairing cycles, cold boots,
+            eight-hour standby checks, a ten-cycle endurance row, and
+            network-loss behaviour, retained as sanitized evidence. A
+            transport acknowledgement is never recorded as proof that a panel
+            changed.
+          </Text>,
+          <Text key="p3" size="s">
+            Verified so far: two device classes, a television and a desktop
+            monitor, controlled daily. Voice control and the generic remote
+            gateway remain experimental. Next: broaden the verified device
+            matrix, and move pairing for more vendors from the terminal into
+            the app.
           </Text>,
         ]}
         imageLayout="none"
