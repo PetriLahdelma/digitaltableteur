@@ -141,20 +141,22 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Mermaid
             key="architecture"
-            chart={`flowchart LR
+            chart={`%%{init: {"flowchart": {"subGraphTitleMargin": {"top": 12, "bottom": 12}}}}%%
+flowchart LR
     subgraph mac["Mac · trusted LAN"]
-      daemon["Local daemon\\nowns pairings + Keychain"]
-      app["macOS app\\nmenu bar + window"]
-      cli["hometv CLI"]
-      mcp["MCP server"]
+      daemon("Local daemon\\nowns pairings + Keychain")
+      app("macOS app\\nmenu bar + window")
+      cli("hometv CLI")
+      mcp("MCP server")
     end
-    lg["TVs"]
-    sam["Monitors + AV displays"]
+    lg("TVs")
+    sam("Monitors + AV displays")
     app --> daemon
     cli --> daemon
     mcp --> daemon
     daemon --> lg
-    daemon --> sam`}
+    daemon --> sam
+    style mac stroke-dasharray:6 4`}
             themeColors={{
               color: "#8c6bff",
               nodeBg: "#ffffff",
