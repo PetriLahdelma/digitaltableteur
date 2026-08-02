@@ -104,7 +104,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
         title="One Person, Every Role"
         content={[
           <Text key="p1" size="s">
-            A solo project end to end: product design, brand, SwiftUI
+            A weekend solo project end to end: product design, brand, SwiftUI
             development, and release engineering by one person. The
             constraints were self-imposed and strict: local-first privacy
             with no cloud account, vendor protocol quirks handled without
