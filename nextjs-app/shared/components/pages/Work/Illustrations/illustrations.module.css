@@ -28,10 +28,9 @@
   margin-block-end: var(--space-internal-16);
 }
 
+/* justify/wrap come from FlexBox props (inline styles beat any selector). */
+
 .badges {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: var(--space-internal-8);
 }
 
