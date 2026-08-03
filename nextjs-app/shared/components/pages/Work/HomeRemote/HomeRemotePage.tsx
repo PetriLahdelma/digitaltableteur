@@ -82,7 +82,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             </Title>
             <p className={styles.metaOverview}>
               <strong>Home Remote</strong> is a native macOS menu-bar remote
-              for TVs, monitors, and other audio/video displays. A local
+              for TVs, monitors, and other audio/video equipment. A local
               daemon manages independently paired connections for each
               supported device. The macOS app, CLI, and MCP server use the
               same restricted local API, while device-control traffic remains
@@ -560,8 +560,7 @@ flowchart LR
           />
         </div>
         <Text size="xs" className={styles.installerCaption}>
-          The disk image: installer, icon, and app share one palette rather
-          than three.
+          The disk image: installer, icon, and app share one palette.
         </Text>
       </div>
     </ProjectDetailLayout>
