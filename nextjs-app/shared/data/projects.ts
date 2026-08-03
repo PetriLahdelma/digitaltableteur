@@ -148,7 +148,7 @@ export const projects: Project[] = [
     liveUrl:
       "https://www.sap.com/products/technology-platform/low-code-app-builder.html",
     client: "SAP",
-    duration: "2021–2024",
+    duration: "Mar 2022 – Feb 2026",
   },
   {
     id: "home-remote",

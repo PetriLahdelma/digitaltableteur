@@ -81,7 +81,7 @@ export function DesignSprintsSection({
             <div className={styles.ctaRow}>
               <SlideButton
                 label={t("homeDesignSprintsCta", "Start your sprint")}
-                href="/contact?service=design-sprint"
+                href="/contact?mode=book&package=ux-sprint"
                 icon="Lightning"
                 data-donny-interest="design-sprint"
               />
