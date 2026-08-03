@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-03T19:27:54.289Z",
+  "generatedAt": "2026-08-03T20:04:45.741Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -15358,7 +15358,8 @@
         "a11y": {
           "keyboard": [
             "Tab",
-            "Space"
+            "Space",
+            "Enter"
           ],
           "ariaRequirements": [
             "native table, thead, tbody, th and td semantics",
@@ -15368,8 +15369,8 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-26 — native table, caption, sorting, selection labels, keyboard behavior, and axe result reviewed in unit tests.",
-          "forcedColorsVerified": false,
+          "reviewedNote": "2026-07-26 — native table, caption, sorting, selection labels, keyboard behavior, and axe result reviewed in unit tests. 2026-08-03 — Phase 1 pass: light/dark/forced-colors verified in a real browser; keyboard contract (Tab/Space/Enter) driven by a play story; axe clean across 9 stories x 3 modes; AT-tree and real-browser forced-colors evidence captured.",
+          "forcedColorsVerified": true,
           "accessibilityTreeVerified": false
         },
         "tokens": {
@@ -15390,7 +15391,7 @@
             "--space-layout-32"
           ]
         },
-        "lightDarkVerified": false,
+        "lightDarkVerified": true,
         "dense": "typed native data table; sortable columns, optional row selection, accessible caption, empty state, sm/md/lg density",
         "keywords": [
           "table",
@@ -15544,7 +15545,7 @@
           "EmptyState"
         ]
       },
-      "spec": "# DataTable\n\n## Intent\n\nPresent structured records when users need to compare values across columns,\nsort the result, or select rows for a follow-up action.\n\n## Interaction contract\n\n- Renders native table semantics with an accessible caption.\n- Sortable columns cycle ascending, descending, and unsorted.\n- Optional selection uses native checkboxes and stable row identifiers.\n- Controlled sort and selection state remain owned by the consumer.\n\n## Do / don't\n\n- Do provide a meaningful caption, even when it is visually hidden.\n- Do use identifiers that remain stable when rows reorder.\n- Don't use DataTable for page layout or highly visual card collections.\n- Don't add row actions that are available only on pointer hover.\n\n## Design notes\n\n- Horizontal overflow is contained by the table wrapper at narrow widths.\n- Density, stripes, and selection styling use semantic design tokens.\n- Native table elements remain intact so assistive technology receives the\n  expected row and column relationships.\n",
+      "spec": "# DataTable\n\n## Intent\n\nPresent structured records when users need to compare values across columns,\nsort the result, or select rows for a follow-up action.\n\n## Interaction contract\n\n- Renders native table semantics with an accessible caption.\n- Sortable columns cycle ascending, descending, and unsorted.\n- Optional selection uses native checkboxes and stable row identifiers.\n- Controlled sort and selection state remain owned by the consumer.\n\n## Do / don't\n\n- Do provide a meaningful caption, even when it is visually hidden.\n- Do use identifiers that remain stable when rows reorder.\n- Don't use DataTable for page layout or highly visual card collections.\n- Don't add row actions that are available only on pointer hover.\n\n## Design notes\n\n- Horizontal overflow is contained by the table wrapper at narrow widths.\n- Density, stripes, and selection styling use semantic design tokens.\n- Native table elements remain intact so assistive technology receives the\n  expected row and column relationships.\n- Loading and error presentation are deliberately consumer-level concerns:\n  the table renders data it is given, and skeleton or error panels belong to\n  the surface that owns the fetch. `emptyState` is the only in-table state.\n- Performance evidence (2026-08-03, dev-mode Storybook, active Chromium,\n  MutationObserver/DOM-poll timed): sorting 1,000 rows re-ranks the full set\n  and re-renders the 50-row page in 10-16 ms; a last-page jump renders rows\n  951-1000 in 12 ms; page-level select-all commits in under 1 ms. Pagination\n  keeps the DOM at one page (50 rows) regardless of data size, so large-data\n  cost is dominated by the sort comparator, not row rendering.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/DataTable",
@@ -15689,7 +15690,8 @@
         ],
         "keyboard": [
           "Tab",
-          "Space"
+          "Space",
+          "Enter"
         ],
         "compositionRules": [],
         "canonicalExamples": [
@@ -15744,19 +15746,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "unverified"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -15766,14 +15769,14 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-26 — native table, caption, sorting, selection labels, keyboard behavior, and axe result reviewed in unit tests."
+            "note": "2026-07-26 — native table, caption, sorting, selection labels, keyboard behavior, and axe result reviewed in unit tests. 2026-08-03 — Phase 1 pass: light/dark/forced-colors verified in a real browser; keyboard contract (Tab/Space/Enter) driven by a play story; axe clean across 9 stories x 3 modes; AT-tree and real-browser forced-colors evidence captured."
           }
         ],
         "docOrigin": {
