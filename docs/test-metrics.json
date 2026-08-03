@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-03T19:20:08.999Z",
+  "generatedAt": "2026-08-03T19:41:31.822Z",
   "provenance": {
-    "sourceCommit": "8133b44083b6df69db9f69ae8de357c1f0dff1c4",
-    "workingTreeClean": false,
+    "sourceCommit": "6760f615d4fb36458fb4876a04f8469fcaa5bd39",
+    "workingTreeClean": true,
     "generator": {
       "name": "build-test-metrics",
       "node": "v22.22.3"
