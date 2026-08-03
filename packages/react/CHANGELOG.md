@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.21 - 2026-08-03
+
+- Fixes `CodeSnippet` high-contrast-black comment contrast: the gruvbox
+  comment token moves from `#928374` (4.01:1 on the `#282828` code surface)
+  to gruvbox fg4 `#a89984` (5.30:1), so commented lines meet WCAG AA in the
+  HCB theme.
+- Exposes four data-display components from the root entrypoint: `DataTable`,
+  `ResizablePanelGroup`, `TreeView` and `VirtualList`, with their type-only
+  prop exports.
+- `Kbd` gains a `variant` prop (`primary` | `secondary`, type-only export
+  `KbdVariant`) plus uppercase single-character capping. The new default
+  `primary` renders the filled keycap with a bottom edge; pass `secondary`
+  for the previous flatter outlined chip.
+- Component stylesheet hygiene: hard-coded phantom custom properties across
+  bundled component CSS (Card, Checkbox, CookieConsent, SlideButton and
+  others) renamed to their canonical design tokens; rendered values are
+  unchanged.
+
 ## 0.1.20 - 2026-07-24
 
 - Exposes the `ScrollIndicator` hero-footer affordance from the root and

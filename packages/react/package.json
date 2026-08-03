@@ -1,6 +1,6 @@
 {
   "name": "@digitaltableteur/react",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "private": false,
   "description": "React components and host adapters for the Digitaltableteur design system.",
   "type": "module",
