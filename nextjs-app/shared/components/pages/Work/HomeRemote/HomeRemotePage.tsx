@@ -270,19 +270,19 @@ flowchart LR
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/home-remote/color-specimen.webp",
+            src: "/images/portfolio/home-remote/color-specimen-v2.webp",
             alt: "Color specimen with four clay swatches: violet, cream, charcoal and live green",
-            width: 644,
-            height: 244,
+            width: 680,
+            height: 280,
             caption:
               "Four example colors from the palette: violet for focus, cream for keys, charcoal for type and live green for online status.",
           },
           {
             type: "image",
-            src: "/images/portfolio/home-remote/relief-specimen.webp",
+            src: "/images/portfolio/home-remote/relief-specimen-v3.webp",
             alt: "Relief specimen showing embossed, pressed, inert and recessed clay surfaces",
-            width: 1288,
-            height: 456,
+            width: 680,
+            height: 264,
             caption: "The relief vocabulary: embossed, pressed, inert, recess.",
           },
           {
