@@ -5184,6 +5184,16 @@
           "story": "Paginated",
           "description": "Set `pageSize` to page the table; the pager reads via IconButtons.",
           "source": "export const Paginated: Story = {\n  tags: [\"example\"],\n  args: {\n    pageSize: 3,\n    data: Array.from({ length: 8 }, (_, i) => ({\n      id: `p${i}`,\n      name: `Contributor ${i + 1}`,\n      role: i % 2 ? \"Designer\" : \"Engineer\",\n      projects: (i * 3) % 13,\n    })),\n  },\n  parameters: {\n    docs: {\n      description: {\n        story: \"Set `pageSize` to page the table; the pager reads via IconButtons.\",\n      },\n    },\n  },\n};"
+        },
+        {
+          "story": "LargeDataset",
+          "description": null,
+          "source": "export const LargeDataset: Story = {\n  tags: [\"example\"],\n  args: {\n    caption: \"1,000 contributors\",\n    pageSize: 50,\n    stickyHeader: true,\n    data: Array.from({ length: 1000 }, (_, i) => ({\n      id: `row-${i}`,\n      name: `Contributor ${String(i + 1).padStart(4, \"0\")}`,\n      role: [\"Engineer\", \"Designer\", \"Writer\", \"Researcher\"][i % 4],\n      projects: (i * 7) % 97,\n    })),\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    // Sorting a paginated table must re-rank the WHOLE set, not the page.\n    await userEvent.click(canvas.getByRole(\"button\", { name: \"Projects\" }));\n    await expect(\n      canvas.getByRole(\"columnheader\", { name: /Projects/ }),\n    ).toHaveAttribute(\"aria-sort\", \"ascending\");\n    await expect(canvas.getByText(\"1–50 of 1000\")).toBeInTheDocument();\n  },\n};\n\n/**\n * Nine columns of unbroken content in a constrained container: the Table\n * primitive's scroll wrapper takes the horizontal overflow so the page never\n * widens.\n */"
+        },
+        {
+          "story": "KeyboardInteraction",
+          "description": null,
+          "source": "export const KeyboardInteraction: Story = {\n  tags: [\"example\"],\n  args: { defaultSelectedRowIds: [] },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    // Tab 1: select-all checkbox; Space selects every displayed row.\n    await userEvent.tab();\n    await expect(\n      canvas.getByRole(\"checkbox\", { name: \"Select all rows\" }),\n    ).toHaveFocus();\n    await userEvent.keyboard(\" \");\n    await expect(\n      canvas.getByRole(\"checkbox\", { name: \"Select Ada Lovelace\" }),\n    ).toBeChecked();\n    await userEvent.keyboard(\" \"); // deselect again\n    // Tab 2: first sortable header; Enter sorts ascending.\n    await userEvent.tab();\n    await expect(canvas.getByRole(\"button\", { name: \"Name\" })).toHaveFocus();\n    await userEvent.keyboard(\"{Enter}\");\n    await expect(\n      canvas.getByRole(\"columnheader\", { name: /Name/ }),\n    ).toHaveAttribute(\"aria-sort\", \"ascending\");\n  },\n};"
         }
       ]
     },

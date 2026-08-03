@@ -1,0 +1,16 @@
+{
+  "storyId": "data-display-datatable-keyboard-interaction",
+  "mode": "dark",
+  "sourceSHA": "767b28187b761a33d54329feed37e3e0081c1e00",
+  "capturedAt": "2026-08-03T20:13:11.276Z",
+  "runner": "datatable-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

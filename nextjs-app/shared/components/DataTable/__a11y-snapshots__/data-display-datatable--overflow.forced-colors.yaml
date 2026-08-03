@@ -1,0 +1,56 @@
+- status: Work in progress (alpha)
+- table "Wide result set":
+  - caption: Wide result set
+  - rowgroup:
+    - row "Select all rows Name Role Projects Quarterly metric 1 Quarterly metric 2 Quarterly metric 3 Quarterly metric 4 Quarterly metric 5 Quarterly metric 6":
+      - columnheader "Select all rows":
+        - checkbox "Select all rows"
+      - columnheader "Name":
+        - button "Name"
+      - columnheader "Role":
+        - button "Role"
+      - columnheader "Projects":
+        - button "Projects"
+      - columnheader "Quarterly metric 1"
+      - columnheader "Quarterly metric 2"
+      - columnheader "Quarterly metric 3"
+      - columnheader "Quarterly metric 4"
+      - columnheader "Quarterly metric 5"
+      - columnheader "Quarterly metric 6"
+  - rowgroup:
+    - row "Select Ada Lovelace Ada Lovelace Engineer 8 AdaLovelace-metric-1-00008 AdaLovelace-metric-2-00008 AdaLovelace-metric-3-00008 AdaLovelace-metric-4-00008 AdaLovelace-metric-5-00008 AdaLovelace-metric-6-00008":
+      - cell "Select Ada Lovelace":
+        - checkbox "Select Ada Lovelace"
+      - rowheader "Ada Lovelace"
+      - cell "Engineer"
+      - cell "8"
+      - cell "AdaLovelace-metric-1-00008"
+      - cell "AdaLovelace-metric-2-00008"
+      - cell "AdaLovelace-metric-3-00008"
+      - cell "AdaLovelace-metric-4-00008"
+      - cell "AdaLovelace-metric-5-00008"
+      - cell "AdaLovelace-metric-6-00008"
+    - row "Select Dieter Rams Dieter Rams Designer 5 DieterRams-metric-1-00005 DieterRams-metric-2-00005 DieterRams-metric-3-00005 DieterRams-metric-4-00005 DieterRams-metric-5-00005 DieterRams-metric-6-00005":
+      - cell "Select Dieter Rams":
+        - checkbox "Select Dieter Rams"
+      - rowheader "Dieter Rams"
+      - cell "Designer"
+      - cell "5"
+      - cell "DieterRams-metric-1-00005"
+      - cell "DieterRams-metric-2-00005"
+      - cell "DieterRams-metric-3-00005"
+      - cell "DieterRams-metric-4-00005"
+      - cell "DieterRams-metric-5-00005"
+      - cell "DieterRams-metric-6-00005"
+    - row "Select Grace Hopper Grace Hopper Engineer 12 GraceHopper-metric-1-000012 GraceHopper-metric-2-000012 GraceHopper-metric-3-000012 GraceHopper-metric-4-000012 GraceHopper-metric-5-000012 GraceHopper-metric-6-000012":
+      - cell "Select Grace Hopper":
+        - checkbox "Select Grace Hopper"
+      - rowheader "Grace Hopper"
+      - cell "Engineer"
+      - cell "12"
+      - cell "GraceHopper-metric-1-000012"
+      - cell "GraceHopper-metric-2-000012"
+      - cell "GraceHopper-metric-3-000012"
+      - cell "GraceHopper-metric-4-000012"
+      - cell "GraceHopper-metric-5-000012"
+      - cell "GraceHopper-metric-6-000012"

@@ -1,0 +1,12 @@
+{
+  "storyId": "data-display-datatable-example",
+  "mode": "forced-colors",
+  "sourceSHA": "767b28187b761a33d54329feed37e3e0081c1e00",
+  "capturedAt": "2026-08-03T20:13:15.360Z",
+  "runner": "datatable-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

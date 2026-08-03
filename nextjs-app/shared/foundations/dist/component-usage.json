@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-22T21:28:57.695Z",
+  "generatedAt": "2026-08-03T20:13:36.470Z",
   "summary": {
-    "catalogCount": 204,
-    "governedCount": 166,
-    "exportedCount": 81,
-    "strictConsumedCount": 33,
-    "transitiveConsumedCount": 68
+    "catalogCount": 215,
+    "governedCount": 177,
+    "exportedCount": 83,
+    "strictConsumedCount": 34,
+    "transitiveConsumedCount": 71
   },
   "components": [
     {
@@ -91,8 +91,10 @@
       ],
       "packageImportCount": 0,
       "packageImporters": [],
-      "prodPageCount": 4,
+      "prodPageCount": 6,
       "prodPages": [
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/VertaaUX/index.ts",
@@ -311,9 +313,10 @@
       "status": null,
       "governed": false,
       "exported": false,
-      "directImportCount": 3,
+      "directImportCount": 4,
       "directImporters": [
         "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx"
       ],
@@ -694,11 +697,11 @@
         "app/blog/[slug]/ServerArticleContent.tsx",
         "app/blog/[slug]/ServerArticleMain.tsx",
         "app/blog/NextBlogNav.tsx",
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx",
         "app/dev/code-window/page.tsx",
         "app/dev/tailwind-test/page.tsx",
-        "app/dev/tailwind-test/TailwindTest.tsx",
-        "app/error.tsx",
-        "app/layout.tsx"
+        "app/dev/tailwind-test/TailwindTest.tsx"
       ]
     },
     {
@@ -820,19 +823,22 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 4,
+      "directImportCount": 5,
       "directImporters": [
         "app/dev/tailwind-test/TailwindTest.tsx",
         "nextjs-app/shared/components/AskAI/AskAI.tsx",
         "nextjs-app/shared/components/CheckboxGroup/CheckboxGroup.tsx",
+        "nextjs-app/shared/components/DataTable/DataTable.tsx",
         "nextjs-app/shared/components/index.ts"
       ],
       "packageImportCount": 1,
       "packageImporters": [
         "app/dev/tailwind-test/TailwindTest.tsx"
       ],
-      "prodPageCount": 9,
+      "prodPageCount": 11,
       "prodPages": [
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx",
         "app/dev/tailwind-test/page.tsx",
         "app/dev/tailwind-test/TailwindTest.tsx",
         "app/layout.tsx",
@@ -1280,7 +1286,7 @@
         "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
-        "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx"
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx"
       ]
     },
     {
@@ -1324,6 +1330,25 @@
         "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
         "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
         "nextjs-app/shared/patterns/index.ts"
+      ]
+    },
+    {
+      "name": "DataTable",
+      "kind": "component",
+      "status": "alpha",
+      "governed": true,
+      "exported": false,
+      "directImportCount": 2,
+      "directImporters": [
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "nextjs-app/shared/components/index.ts"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 2,
+      "prodPages": [
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx"
       ]
     },
     {
@@ -1578,7 +1603,7 @@
         "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
-        "nextjs-app/shared/components/pages/Work/Intrum/index.ts"
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx"
       ]
     },
     {
@@ -1743,7 +1768,7 @@
     {
       "name": "Gallery",
       "kind": "component",
-      "status": "beta",
+      "status": "stable",
       "governed": true,
       "exported": true,
       "directImportCount": 2,
@@ -1816,11 +1841,12 @@
       "status": "stable",
       "governed": true,
       "exported": false,
-      "directImportCount": 12,
+      "directImportCount": 13,
       "directImporters": [
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
@@ -1841,12 +1867,12 @@
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
         "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
         "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
-        "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
-        "nextjs-app/shared/components/pages/Work/LlmComponentSchema/index.ts",
-        "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx"
+        "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx"
       ]
     },
     {
@@ -1896,6 +1922,8 @@
       "packageImporters": [],
       "prodPageCount": 12,
       "prodPages": [
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx",
         "app/dev/tailwind-test/page.tsx",
         "app/dev/tailwind-test/TailwindTest.tsx",
         "app/layout.tsx",
@@ -1905,9 +1933,7 @@
         "nextjs-app/shared/components/pages/AboutPage/index.ts",
         "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
         "nextjs-app/shared/components/pages/ContactPage/index.ts",
-        "nextjs-app/shared/components/pages/PricingPage/index.ts",
-        "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
-        "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx"
+        "nextjs-app/shared/components/pages/PricingPage/index.ts"
       ]
     },
     {
@@ -1986,16 +2012,14 @@
       "status": "stable",
       "governed": true,
       "exported": false,
-      "directImportCount": 2,
+      "directImportCount": 1,
       "directImporters": [
-        "nextjs-app/shared/components/pages/Home/HomePage.tsx",
         "nextjs-app/shared/patterns/index.ts"
       ],
       "packageImportCount": 0,
       "packageImporters": [],
-      "prodPageCount": 3,
+      "prodPageCount": 2,
       "prodPages": [
-        "nextjs-app/shared/components/pages/Home/HomePage.tsx",
         "nextjs-app/shared/patterns/HighlightSection/index.ts",
         "nextjs-app/shared/patterns/index.ts"
       ]
@@ -2026,7 +2050,7 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 45,
+      "directImportCount": 47,
       "directImporters": [
         "app/error.tsx",
         "app/not-found.tsx",
@@ -2057,18 +2081,20 @@
         "nextjs-app/shared/components/Select/Select.tsx",
         "nextjs-app/shared/components/ServicesGrid/ServicesGrid.tsx",
         "nextjs-app/shared/components/SiteTree/SiteTree.tsx",
+        "nextjs-app/shared/components/SlideButton/SlideButton.tsx",
         "nextjs-app/shared/components/SocialShare/SocialShare.tsx",
         "nextjs-app/shared/components/SplitButton/SplitButton.tsx",
+        "nextjs-app/shared/components/TableHeaderCell/TableHeaderCell.tsx",
         "nextjs-app/shared/components/Tabs/Tabs.tsx",
         "nextjs-app/shared/components/Testimonial/Testimonial.tsx",
         "nextjs-app/shared/components/TextInput/TextInput.tsx",
+        "nextjs-app/shared/components/TreeView/TreeView.tsx",
         "nextjs-app/shared/components/WorkNav/WorkNav.tsx",
         "nextjs-app/shared/components/index.ts",
         "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
         "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
         "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
         "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-        "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
         "nextjs-app/shared/patterns/Footer/Footer.tsx",
         "nextjs-app/shared/patterns/NewsBulletin/NewsBulletin.tsx",
         "nextjs-app/shared/patterns/PricingPageContent/PricingPageContent.tsx",
@@ -2095,10 +2121,10 @@
         "app/blog/[slug]/ServerArticleHero.tsx",
         "app/blog/[slug]/ServerArticleMain.tsx",
         "app/blog/NextBlogNav.tsx",
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx",
         "app/dev/code-window/page.tsx",
-        "app/dev/tailwind-test/page.tsx",
-        "app/dev/tailwind-test/TailwindTest.tsx",
-        "app/error.tsx"
+        "app/dev/tailwind-test/page.tsx"
       ]
     },
     {
@@ -2107,9 +2133,10 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 4,
+      "directImportCount": 5,
       "directImporters": [
         "app/dev/tailwind-test/TailwindTest.tsx",
+        "nextjs-app/shared/components/DataTable/DataTable.tsx",
         "nextjs-app/shared/components/ui/index.ts",
         "nextjs-app/shared/patterns/SiteHeader/MobileDrawer.tsx",
         "nextjs-app/shared/patterns/SiteHeader/SiteHeader.tsx"
@@ -2118,8 +2145,10 @@
       "packageImporters": [
         "app/dev/tailwind-test/TailwindTest.tsx"
       ],
-      "prodPageCount": 8,
+      "prodPageCount": 10,
       "prodPages": [
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx",
         "app/dev/tailwind-test/page.tsx",
         "app/dev/tailwind-test/TailwindTest.tsx",
         "app/layout.tsx",
@@ -2204,17 +2233,23 @@
     {
       "name": "Kbd",
       "kind": "component",
-      "status": "beta",
+      "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 1,
+      "directImportCount": 2,
       "directImporters": [
+        "app/dev/tailwind-test/TailwindTest.tsx",
         "nextjs-app/shared/components/index.ts"
       ],
-      "packageImportCount": 0,
-      "packageImporters": [],
-      "prodPageCount": 0,
-      "prodPages": []
+      "packageImportCount": 1,
+      "packageImporters": [
+        "app/dev/tailwind-test/TailwindTest.tsx"
+      ],
+      "prodPageCount": 2,
+      "prodPages": [
+        "app/dev/tailwind-test/page.tsx",
+        "app/dev/tailwind-test/TailwindTest.tsx"
+      ]
     },
     {
       "name": "KnobSmithAudio",
@@ -2254,6 +2289,8 @@
       "packageImporters": [],
       "prodPageCount": 12,
       "prodPages": [
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx",
         "app/dev/tailwind-test/page.tsx",
         "app/dev/tailwind-test/TailwindTest.tsx",
         "app/layout.tsx",
@@ -2263,9 +2300,7 @@
         "nextjs-app/shared/components/pages/AboutPage/index.ts",
         "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
         "nextjs-app/shared/components/pages/ContactPage/index.ts",
-        "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-        "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
-        "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx"
+        "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx"
       ]
     },
     {
@@ -2418,12 +2453,13 @@
     {
       "name": "ListItem",
       "kind": "component",
-      "status": "beta",
+      "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 1,
+      "directImportCount": 2,
       "directImporters": [
-        "nextjs-app/shared/components/Menu/Menu.tsx"
+        "nextjs-app/shared/components/Menu/Menu.tsx",
+        "nextjs-app/shared/components/VirtualListItem/VirtualListItem.tsx"
       ],
       "packageImportCount": 0,
       "packageImporters": [],
@@ -2446,7 +2482,7 @@
     {
       "name": "LocationCard",
       "kind": "component",
-      "status": "beta",
+      "status": "stable",
       "governed": true,
       "exported": false,
       "directImportCount": 1,
@@ -2638,8 +2674,9 @@
       "status": null,
       "governed": false,
       "exported": false,
-      "directImportCount": 2,
+      "directImportCount": 3,
       "directImporters": [
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/VertaaUX/VertaaUXPage.tsx"
       ],
@@ -3000,6 +3037,19 @@
       ]
     },
     {
+      "name": "PixelLoop",
+      "kind": "component",
+      "status": "alpha",
+      "governed": true,
+      "exported": false,
+      "directImportCount": 0,
+      "directImporters": [],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 0,
+      "prodPages": []
+    },
+    {
       "name": "PricingCalculator",
       "kind": "pattern",
       "status": "stable",
@@ -3145,12 +3195,13 @@
       "status": "alpha",
       "governed": true,
       "exported": false,
-      "directImportCount": 17,
+      "directImportCount": 18,
       "directImporters": [
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
         "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
@@ -3177,10 +3228,10 @@
         "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
         "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-        "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
-        "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
-        "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx"
+        "nextjs-app/shared/components/pages/Work/Illustrations/index.ts"
       ]
     },
     {
@@ -3229,12 +3280,13 @@
       "status": "alpha",
       "governed": true,
       "exported": false,
-      "directImportCount": 16,
+      "directImportCount": 17,
       "directImporters": [
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
@@ -3260,10 +3312,10 @@
         "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
         "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
-        "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
-        "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
-        "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx"
+        "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx"
       ]
     },
     {
@@ -3306,12 +3358,13 @@
       "status": "stable",
       "governed": true,
       "exported": false,
-      "directImportCount": 16,
+      "directImportCount": 17,
       "directImporters": [
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
@@ -3339,8 +3392,8 @@
         "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
-        "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
-        "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx"
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts"
       ]
     },
     {
@@ -3485,12 +3538,13 @@
       "status": "alpha",
       "governed": true,
       "exported": false,
-      "directImportCount": 16,
+      "directImportCount": 17,
       "directImporters": [
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
@@ -3516,18 +3570,33 @@
         "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
         "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
-        "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
-        "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
-        "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx"
+        "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx"
       ]
     },
     {
-      "name": "ScrollIndicator",
+      "name": "ResizablePanelGroup",
       "kind": "component",
       "status": "alpha",
       "governed": true,
       "exported": false,
+      "directImportCount": 1,
+      "directImporters": [
+        "nextjs-app/shared/components/index.ts"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 0,
+      "prodPages": []
+    },
+    {
+      "name": "ScrollIndicator",
+      "kind": "component",
+      "status": "stable",
+      "governed": true,
+      "exported": true,
       "directImportCount": 4,
       "directImporters": [
         "nextjs-app/shared/patterns/AboutHero/AboutHero.tsx",
@@ -3919,6 +3988,31 @@
       ]
     },
     {
+      "name": "SlideButton",
+      "kind": "component",
+      "status": "stable",
+      "governed": true,
+      "exported": true,
+      "directImportCount": 2,
+      "directImporters": [
+        "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx",
+        "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 8,
+      "prodPages": [
+        "nextjs-app/shared/components/pages/AboutPage/AboutPage.tsx",
+        "nextjs-app/shared/components/pages/AboutPage/index.ts",
+        "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+        "nextjs-app/shared/patterns/AboutPageContent/AboutPageContent.tsx",
+        "nextjs-app/shared/patterns/AboutPageContent/index.ts",
+        "nextjs-app/shared/patterns/DesignSprintsSection/DesignSprintsSection.tsx",
+        "nextjs-app/shared/patterns/DesignSprintsSection/index.ts",
+        "nextjs-app/shared/patterns/index.ts"
+      ]
+    },
+    {
       "name": "SocialIconLink",
       "kind": "component",
       "status": "alpha",
@@ -4110,12 +4204,13 @@
       "status": "stable",
       "governed": true,
       "exported": false,
-      "directImportCount": 15,
+      "directImportCount": 16,
       "directImporters": [
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
@@ -4140,10 +4235,10 @@
         "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
         "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
-        "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
-        "nextjs-app/shared/components/pages/Work/KnobSmithAudio/index.ts",
-        "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx"
+        "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx"
       ]
     },
     {
@@ -4183,6 +4278,67 @@
       ]
     },
     {
+      "name": "Table",
+      "kind": "component",
+      "status": "alpha",
+      "governed": true,
+      "exported": false,
+      "directImportCount": 6,
+      "directImporters": [
+        "nextjs-app/shared/components/DataTable/DataTable.tsx",
+        "nextjs-app/shared/components/TableCell/TableCell.tsx",
+        "nextjs-app/shared/components/TableHeaderCell/TableHeaderCell.tsx",
+        "nextjs-app/shared/components/TableRow/TableRow.tsx",
+        "nextjs-app/shared/components/index.ts",
+        "nextjs-app/shared/hooks/useTableSortable.ts"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 2,
+      "prodPages": [
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx"
+      ]
+    },
+    {
+      "name": "TableCell",
+      "kind": "component",
+      "status": "alpha",
+      "governed": true,
+      "exported": false,
+      "directImportCount": 2,
+      "directImporters": [
+        "nextjs-app/shared/components/DataTable/DataTable.tsx",
+        "nextjs-app/shared/components/index.ts"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 2,
+      "prodPages": [
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx"
+      ]
+    },
+    {
+      "name": "TableHeaderCell",
+      "kind": "component",
+      "status": "alpha",
+      "governed": true,
+      "exported": false,
+      "directImportCount": 2,
+      "directImporters": [
+        "nextjs-app/shared/components/DataTable/DataTable.tsx",
+        "nextjs-app/shared/components/index.ts"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 2,
+      "prodPages": [
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx"
+      ]
+    },
+    {
       "name": "TableOfContents",
       "kind": "component",
       "status": "alpha",
@@ -4207,6 +4363,25 @@
         "nextjs-app/shared/patterns/ArticlePageTemplate/ArticlePageTemplate.tsx",
         "nextjs-app/shared/patterns/ArticlePageTemplate/index.ts",
         "nextjs-app/shared/patterns/index.ts"
+      ]
+    },
+    {
+      "name": "TableRow",
+      "kind": "component",
+      "status": "alpha",
+      "governed": true,
+      "exported": false,
+      "directImportCount": 2,
+      "directImporters": [
+        "nextjs-app/shared/components/DataTable/DataTable.tsx",
+        "nextjs-app/shared/components/index.ts"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 2,
+      "prodPages": [
+        "app/design-system/agent/GoldenIntentsTable.tsx",
+        "app/design-system/agent/page.tsx"
       ]
     },
     {
@@ -4274,7 +4449,7 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 61,
+      "directImportCount": 62,
       "directImporters": [
         "app/dev/code-window/page.tsx",
         "nextjs-app/shared/components/AlertBanner/AlertBanner.tsx",
@@ -4316,6 +4491,7 @@
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
@@ -4338,7 +4514,7 @@
         "nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx",
         "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx"
       ],
-      "packageImportCount": 33,
+      "packageImportCount": 34,
       "packageImporters": [
         "app/dev/code-window/page.tsx",
         "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
@@ -4353,6 +4529,7 @@
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
@@ -4501,7 +4678,7 @@
       "status": "stable",
       "governed": true,
       "exported": true,
-      "directImportCount": 53,
+      "directImportCount": 54,
       "directImporters": [
         "app/dev/code-window/page.tsx",
         "nextjs-app/shared/components/ArticleCard/ArticleCard.tsx",
@@ -4536,6 +4713,7 @@
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
@@ -4557,7 +4735,7 @@
         "nextjs-app/shared/patterns/StoryBlock/StoryBlock.tsx",
         "nextjs-app/shared/patterns/TeamBlock/TeamBlock.tsx"
       ],
-      "packageImportCount": 34,
+      "packageImportCount": 35,
       "packageImporters": [
         "app/dev/code-window/page.tsx",
         "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
@@ -4577,6 +4755,7 @@
         "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
         "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
         "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
         "nextjs-app/shared/components/pages/Work/KnobSmithAudio/KnobSmithAudioPage.tsx",
         "nextjs-app/shared/components/pages/Work/LlmComponentSchema/LlmComponentSchemaPage.tsx",
@@ -4693,6 +4872,21 @@
       "prodPages": []
     },
     {
+      "name": "TreeView",
+      "kind": "component",
+      "status": "alpha",
+      "governed": true,
+      "exported": false,
+      "directImportCount": 1,
+      "directImporters": [
+        "nextjs-app/shared/components/index.ts"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 0,
+      "prodPages": []
+    },
+    {
       "name": "Tulli",
       "kind": "component",
       "status": null,
@@ -4786,6 +4980,37 @@
       "prodPages": []
     },
     {
+      "name": "VirtualList",
+      "kind": "component",
+      "status": "alpha",
+      "governed": true,
+      "exported": false,
+      "directImportCount": 1,
+      "directImporters": [
+        "nextjs-app/shared/components/index.ts"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 0,
+      "prodPages": []
+    },
+    {
+      "name": "VirtualListItem",
+      "kind": "component",
+      "status": "alpha",
+      "governed": true,
+      "exported": false,
+      "directImportCount": 2,
+      "directImporters": [
+        "nextjs-app/shared/components/VirtualList/VirtualList.tsx",
+        "nextjs-app/shared/components/index.ts"
+      ],
+      "packageImportCount": 0,
+      "packageImporters": [],
+      "prodPageCount": 0,
+      "prodPages": []
+    },
+    {
       "name": "VisuallyHidden",
       "kind": "component",
       "status": "beta",
@@ -4848,10 +5073,10 @@
         "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
         "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+        "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
         "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-        "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
-        "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
-        "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx"
+        "nextjs-app/shared/components/pages/Work/Illustrations/index.ts"
       ]
     },
     {
@@ -4928,14 +5153,14 @@
         "app/work/finnish-transport-agency/page.tsx",
         "app/work/garage-junction/page.tsx",
         "app/work/helsinki-design-system/page.tsx",
+        "app/work/home-remote/page.tsx",
         "app/work/illustrations/page.tsx",
         "app/work/intrum/page.tsx",
         "app/work/knobsmith-audio/page.tsx",
         "app/work/llm-component-schema/page.tsx",
         "app/work/new-things-co/page.tsx",
         "app/work/NextWorkNav.tsx",
-        "app/work/project-spine/page.tsx",
-        "app/work/raw-view/page.tsx"
+        "app/work/project-spine/page.tsx"
       ]
     },
     {

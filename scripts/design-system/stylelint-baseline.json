@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2346,
+  "warningCount": 2344,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -15364,24 +15364,6 @@
       "severity": "warning",
       "text": "Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "id": "nextjs-app/shared/components/Switch/Switch.stories.module.css::rhythmguard/prefer-token::Unexpected raw scale value \"1.5rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Table/Table.module.css",
-      "line": 56,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)",
-      "id": "nextjs-app/shared/components/Table/Table.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/Table/Table.module.css",
-      "line": 111,
-      "column": 1,
-      "rule": "rule-empty-line-before",
-      "severity": "warning",
-      "text": "Expected empty line before rule (rule-empty-line-before)",
-      "id": "nextjs-app/shared/components/Table/Table.module.css::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)::2"
     },
     {
       "file": "nextjs-app/shared/components/Tabs/Tabs.module.css",
