@@ -42,11 +42,6 @@ export type {
   NavMenuItem,
   NavMenuListProps,
 } from "../../../nextjs-app/shared/components/NavMenuList";
-export { TreeView } from "../../../nextjs-app/shared/components/TreeView";
-export type {
-  TreeViewNode,
-  TreeViewProps,
-} from "../../../nextjs-app/shared/components/TreeView";
 export {
   Pagination,
   type PaginationProps,
