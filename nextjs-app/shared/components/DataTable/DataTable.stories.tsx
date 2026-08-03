@@ -65,10 +65,30 @@ const meta = {
       control: "radio",
       options: ["sm", "md", "lg"],
       description: "Table density.",
+      table: { defaultValue: { summary: "md" } },
     },
     striped: {
       control: "boolean",
       description: "Alternating row surfaces.",
+      table: { defaultValue: { summary: "false" } },
+    },
+    stickyHeader: {
+      control: "boolean",
+      description: "Pin the header row while the body scrolls.",
+      table: { defaultValue: { summary: "false" } },
+    },
+    pageSize: {
+      control: "number",
+      description: "Rows per page; enables pagination when set.",
+    },
+    caption: {
+      control: "text",
+      description: "Accessible table name rendered as a caption.",
+    },
+    hideCaption: {
+      control: "boolean",
+      description: "Visually hides the caption while retaining the accessible name.",
+      table: { defaultValue: { summary: "false" } },
     },
     data: { table: { disable: true } },
     columns: { table: { disable: true } },
@@ -117,6 +137,92 @@ export const Paginated: Story = {
 export const Empty: Story = {
   args: { data: [], emptyState: "No contributors" },
 };
+
+/**
+ * 1,000 generated rows behind a 50-row page: the sort and selection hooks
+ * operate on the full set while the DOM stays at one page. Used as the
+ * representative large-data performance case (see spec Design notes).
+ */
+export const LargeDataset: Story = {
+  tags: ["example"],
+  args: {
+    caption: "1,000 contributors",
+    pageSize: 50,
+    stickyHeader: true,
+    data: Array.from({ length: 1000 }, (_, i) => ({
+      id: `row-${i}`,
+      name: `Contributor ${String(i + 1).padStart(4, "0")}`,
+      role: ["Engineer", "Designer", "Writer", "Researcher"][i % 4],
+      projects: (i * 7) % 97,
+    })),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // Sorting a paginated table must re-rank the WHOLE set, not the page.
+    await userEvent.click(canvas.getByRole("button", { name: "Projects" }));
+    await expect(
+      canvas.getByRole("columnheader", { name: /Projects/ }),
+    ).toHaveAttribute("aria-sort", "ascending");
+    await expect(canvas.getByText("1–50 of 1000")).toBeInTheDocument();
+  },
+};
+
+/**
+ * Nine columns of unbroken content in a constrained container: the Table
+ * primitive's scroll wrapper takes the horizontal overflow so the page never
+ * widens.
+ */
+export const Overflow: Story = {
+  args: {
+    caption: "Wide result set",
+    columns: [
+      ...columns,
+      ...Array.from({ length: 6 }, (_, i) => ({
+        id: `metric-${i}`,
+        header: `Quarterly metric ${i + 1}`,
+        accessor: (row: Person) => `${row.name.replaceAll(" ", "")}-metric-${i + 1}-0000${row.projects}`,
+      })),
+    ],
+  },
+  decorators: [
+    (StoryComponent) => (
+      <div style={{ maxInlineSize: "480px" }}>
+        <StoryComponent />
+      </div>
+    ),
+  ],
+};
+
+/**
+ * The full keyboard contract, driven by real key events: Tab reaches the
+ * select-all checkbox and the sort buttons in order, Enter cycles a sort,
+ * Space toggles selection.
+ */
+export const KeyboardInteraction: Story = {
+  tags: ["example"],
+  args: { defaultSelectedRowIds: [] },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // Tab 1: select-all checkbox; Space selects every displayed row.
+    await userEvent.tab();
+    await expect(
+      canvas.getByRole("checkbox", { name: "Select all rows" }),
+    ).toHaveFocus();
+    await userEvent.keyboard(" ");
+    await expect(
+      canvas.getByRole("checkbox", { name: "Select Ada Lovelace" }),
+    ).toBeChecked();
+    await userEvent.keyboard(" "); // deselect again
+    // Tab 2: first sortable header; Enter sorts ascending.
+    await userEvent.tab();
+    await expect(canvas.getByRole("button", { name: "Name" })).toHaveFocus();
+    await userEvent.keyboard("{Enter}");
+    await expect(
+      canvas.getByRole("columnheader", { name: /Name/ }),
+    ).toHaveAttribute("aria-sort", "ascending");
+  },
+};
+
 export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
 };

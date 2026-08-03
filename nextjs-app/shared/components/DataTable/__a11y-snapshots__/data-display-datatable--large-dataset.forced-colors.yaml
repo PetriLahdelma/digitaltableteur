@@ -1,0 +1,319 @@
+- status: Work in progress (alpha)
+- table "1,000 contributors":
+  - caption: 1,000 contributors
+  - rowgroup:
+    - row "Select all rows Name Role Projects":
+      - columnheader "Select all rows":
+        - checkbox "Select all rows"
+      - columnheader "Name":
+        - button "Name"
+      - columnheader "Role":
+        - button "Role"
+      - columnheader "Projects":
+        - button "Projects"
+  - rowgroup:
+    - row "Select Contributor 0001 Contributor 0001 Engineer 0":
+      - cell "Select Contributor 0001":
+        - checkbox "Select Contributor 0001"
+      - rowheader "Contributor 0001"
+      - cell "Engineer"
+      - cell "0"
+    - row "Select Contributor 0098 Contributor 0098 Designer 0":
+      - cell "Select Contributor 0098":
+        - checkbox "Select Contributor 0098"
+      - rowheader "Contributor 0098"
+      - cell "Designer"
+      - cell "0"
+    - row "Select Contributor 0195 Contributor 0195 Writer 0":
+      - cell "Select Contributor 0195":
+        - checkbox "Select Contributor 0195"
+      - rowheader "Contributor 0195"
+      - cell "Writer"
+      - cell "0"
+    - row "Select Contributor 0292 Contributor 0292 Researcher 0":
+      - cell "Select Contributor 0292":
+        - checkbox "Select Contributor 0292"
+      - rowheader "Contributor 0292"
+      - cell "Researcher"
+      - cell "0"
+    - row "Select Contributor 0389 Contributor 0389 Engineer 0":
+      - cell "Select Contributor 0389":
+        - checkbox "Select Contributor 0389"
+      - rowheader "Contributor 0389"
+      - cell "Engineer"
+      - cell "0"
+    - row "Select Contributor 0486 Contributor 0486 Designer 0":
+      - cell "Select Contributor 0486":
+        - checkbox "Select Contributor 0486"
+      - rowheader "Contributor 0486"
+      - cell "Designer"
+      - cell "0"
+    - row "Select Contributor 0583 Contributor 0583 Writer 0":
+      - cell "Select Contributor 0583":
+        - checkbox "Select Contributor 0583"
+      - rowheader "Contributor 0583"
+      - cell "Writer"
+      - cell "0"
+    - row "Select Contributor 0680 Contributor 0680 Researcher 0":
+      - cell "Select Contributor 0680":
+        - checkbox "Select Contributor 0680"
+      - rowheader "Contributor 0680"
+      - cell "Researcher"
+      - cell "0"
+    - row "Select Contributor 0777 Contributor 0777 Engineer 0":
+      - cell "Select Contributor 0777":
+        - checkbox "Select Contributor 0777"
+      - rowheader "Contributor 0777"
+      - cell "Engineer"
+      - cell "0"
+    - row "Select Contributor 0874 Contributor 0874 Designer 0":
+      - cell "Select Contributor 0874":
+        - checkbox "Select Contributor 0874"
+      - rowheader "Contributor 0874"
+      - cell "Designer"
+      - cell "0"
+    - row "Select Contributor 0971 Contributor 0971 Writer 0":
+      - cell "Select Contributor 0971":
+        - checkbox "Select Contributor 0971"
+      - rowheader "Contributor 0971"
+      - cell "Writer"
+      - cell "0"
+    - row "Select Contributor 0015 Contributor 0015 Writer 1":
+      - cell "Select Contributor 0015":
+        - checkbox "Select Contributor 0015"
+      - rowheader "Contributor 0015"
+      - cell "Writer"
+      - cell "1"
+    - row "Select Contributor 0112 Contributor 0112 Researcher 1":
+      - cell "Select Contributor 0112":
+        - checkbox "Select Contributor 0112"
+      - rowheader "Contributor 0112"
+      - cell "Researcher"
+      - cell "1"
+    - row "Select Contributor 0209 Contributor 0209 Engineer 1":
+      - cell "Select Contributor 0209":
+        - checkbox "Select Contributor 0209"
+      - rowheader "Contributor 0209"
+      - cell "Engineer"
+      - cell "1"
+    - row "Select Contributor 0306 Contributor 0306 Designer 1":
+      - cell "Select Contributor 0306":
+        - checkbox "Select Contributor 0306"
+      - rowheader "Contributor 0306"
+      - cell "Designer"
+      - cell "1"
+    - row "Select Contributor 0403 Contributor 0403 Writer 1":
+      - cell "Select Contributor 0403":
+        - checkbox "Select Contributor 0403"
+      - rowheader "Contributor 0403"
+      - cell "Writer"
+      - cell "1"
+    - row "Select Contributor 0500 Contributor 0500 Researcher 1":
+      - cell "Select Contributor 0500":
+        - checkbox "Select Contributor 0500"
+      - rowheader "Contributor 0500"
+      - cell "Researcher"
+      - cell "1"
+    - row "Select Contributor 0597 Contributor 0597 Engineer 1":
+      - cell "Select Contributor 0597":
+        - checkbox "Select Contributor 0597"
+      - rowheader "Contributor 0597"
+      - cell "Engineer"
+      - cell "1"
+    - row "Select Contributor 0694 Contributor 0694 Designer 1":
+      - cell "Select Contributor 0694":
+        - checkbox "Select Contributor 0694"
+      - rowheader "Contributor 0694"
+      - cell "Designer"
+      - cell "1"
+    - row "Select Contributor 0791 Contributor 0791 Writer 1":
+      - cell "Select Contributor 0791":
+        - checkbox "Select Contributor 0791"
+      - rowheader "Contributor 0791"
+      - cell "Writer"
+      - cell "1"
+    - row "Select Contributor 0888 Contributor 0888 Researcher 1":
+      - cell "Select Contributor 0888":
+        - checkbox "Select Contributor 0888"
+      - rowheader "Contributor 0888"
+      - cell "Researcher"
+      - cell "1"
+    - row "Select Contributor 0985 Contributor 0985 Engineer 1":
+      - cell "Select Contributor 0985":
+        - checkbox "Select Contributor 0985"
+      - rowheader "Contributor 0985"
+      - cell "Engineer"
+      - cell "1"
+    - row "Select Contributor 0029 Contributor 0029 Engineer 2":
+      - cell "Select Contributor 0029":
+        - checkbox "Select Contributor 0029"
+      - rowheader "Contributor 0029"
+      - cell "Engineer"
+      - cell "2"
+    - row "Select Contributor 0126 Contributor 0126 Designer 2":
+      - cell "Select Contributor 0126":
+        - checkbox "Select Contributor 0126"
+      - rowheader "Contributor 0126"
+      - cell "Designer"
+      - cell "2"
+    - row "Select Contributor 0223 Contributor 0223 Writer 2":
+      - cell "Select Contributor 0223":
+        - checkbox "Select Contributor 0223"
+      - rowheader "Contributor 0223"
+      - cell "Writer"
+      - cell "2"
+    - row "Select Contributor 0320 Contributor 0320 Researcher 2":
+      - cell "Select Contributor 0320":
+        - checkbox "Select Contributor 0320"
+      - rowheader "Contributor 0320"
+      - cell "Researcher"
+      - cell "2"
+    - row "Select Contributor 0417 Contributor 0417 Engineer 2":
+      - cell "Select Contributor 0417":
+        - checkbox "Select Contributor 0417"
+      - rowheader "Contributor 0417"
+      - cell "Engineer"
+      - cell "2"
+    - row "Select Contributor 0514 Contributor 0514 Designer 2":
+      - cell "Select Contributor 0514":
+        - checkbox "Select Contributor 0514"
+      - rowheader "Contributor 0514"
+      - cell "Designer"
+      - cell "2"
+    - row "Select Contributor 0611 Contributor 0611 Writer 2":
+      - cell "Select Contributor 0611":
+        - checkbox "Select Contributor 0611"
+      - rowheader "Contributor 0611"
+      - cell "Writer"
+      - cell "2"
+    - row "Select Contributor 0708 Contributor 0708 Researcher 2":
+      - cell "Select Contributor 0708":
+        - checkbox "Select Contributor 0708"
+      - rowheader "Contributor 0708"
+      - cell "Researcher"
+      - cell "2"
+    - row "Select Contributor 0805 Contributor 0805 Engineer 2":
+      - cell "Select Contributor 0805":
+        - checkbox "Select Contributor 0805"
+      - rowheader "Contributor 0805"
+      - cell "Engineer"
+      - cell "2"
+    - row "Select Contributor 0902 Contributor 0902 Designer 2":
+      - cell "Select Contributor 0902":
+        - checkbox "Select Contributor 0902"
+      - rowheader "Contributor 0902"
+      - cell "Designer"
+      - cell "2"
+    - row "Select Contributor 0999 Contributor 0999 Writer 2":
+      - cell "Select Contributor 0999":
+        - checkbox "Select Contributor 0999"
+      - rowheader "Contributor 0999"
+      - cell "Writer"
+      - cell "2"
+    - row "Select Contributor 0043 Contributor 0043 Writer 3":
+      - cell "Select Contributor 0043":
+        - checkbox "Select Contributor 0043"
+      - rowheader "Contributor 0043"
+      - cell "Writer"
+      - cell "3"
+    - row "Select Contributor 0140 Contributor 0140 Researcher 3":
+      - cell "Select Contributor 0140":
+        - checkbox "Select Contributor 0140"
+      - rowheader "Contributor 0140"
+      - cell "Researcher"
+      - cell "3"
+    - row "Select Contributor 0237 Contributor 0237 Engineer 3":
+      - cell "Select Contributor 0237":
+        - checkbox "Select Contributor 0237"
+      - rowheader "Contributor 0237"
+      - cell "Engineer"
+      - cell "3"
+    - row "Select Contributor 0334 Contributor 0334 Designer 3":
+      - cell "Select Contributor 0334":
+        - checkbox "Select Contributor 0334"
+      - rowheader "Contributor 0334"
+      - cell "Designer"
+      - cell "3"
+    - row "Select Contributor 0431 Contributor 0431 Writer 3":
+      - cell "Select Contributor 0431":
+        - checkbox "Select Contributor 0431"
+      - rowheader "Contributor 0431"
+      - cell "Writer"
+      - cell "3"
+    - row "Select Contributor 0528 Contributor 0528 Researcher 3":
+      - cell "Select Contributor 0528":
+        - checkbox "Select Contributor 0528"
+      - rowheader "Contributor 0528"
+      - cell "Researcher"
+      - cell "3"
+    - row "Select Contributor 0625 Contributor 0625 Engineer 3":
+      - cell "Select Contributor 0625":
+        - checkbox "Select Contributor 0625"
+      - rowheader "Contributor 0625"
+      - cell "Engineer"
+      - cell "3"
+    - row "Select Contributor 0722 Contributor 0722 Designer 3":
+      - cell "Select Contributor 0722":
+        - checkbox "Select Contributor 0722"
+      - rowheader "Contributor 0722"
+      - cell "Designer"
+      - cell "3"
+    - row "Select Contributor 0819 Contributor 0819 Writer 3":
+      - cell "Select Contributor 0819":
+        - checkbox "Select Contributor 0819"
+      - rowheader "Contributor 0819"
+      - cell "Writer"
+      - cell "3"
+    - row "Select Contributor 0916 Contributor 0916 Researcher 3":
+      - cell "Select Contributor 0916":
+        - checkbox "Select Contributor 0916"
+      - rowheader "Contributor 0916"
+      - cell "Researcher"
+      - cell "3"
+    - row "Select Contributor 0057 Contributor 0057 Engineer 4":
+      - cell "Select Contributor 0057":
+        - checkbox "Select Contributor 0057"
+      - rowheader "Contributor 0057"
+      - cell "Engineer"
+      - cell "4"
+    - row "Select Contributor 0154 Contributor 0154 Designer 4":
+      - cell "Select Contributor 0154":
+        - checkbox "Select Contributor 0154"
+      - rowheader "Contributor 0154"
+      - cell "Designer"
+      - cell "4"
+    - row "Select Contributor 0251 Contributor 0251 Writer 4":
+      - cell "Select Contributor 0251":
+        - checkbox "Select Contributor 0251"
+      - rowheader "Contributor 0251"
+      - cell "Writer"
+      - cell "4"
+    - row "Select Contributor 0348 Contributor 0348 Researcher 4":
+      - cell "Select Contributor 0348":
+        - checkbox "Select Contributor 0348"
+      - rowheader "Contributor 0348"
+      - cell "Researcher"
+      - cell "4"
+    - row "Select Contributor 0445 Contributor 0445 Engineer 4":
+      - cell "Select Contributor 0445":
+        - checkbox "Select Contributor 0445"
+      - rowheader "Contributor 0445"
+      - cell "Engineer"
+      - cell "4"
+    - row "Select Contributor 0542 Contributor 0542 Designer 4":
+      - cell "Select Contributor 0542":
+        - checkbox "Select Contributor 0542"
+      - rowheader "Contributor 0542"
+      - cell "Designer"
+      - cell "4"
+    - row "Select Contributor 0639 Contributor 0639 Writer 4":
+      - cell "Select Contributor 0639":
+        - checkbox "Select Contributor 0639"
+      - rowheader "Contributor 0639"
+      - cell "Writer"
+      - cell "4"
+- text: 1–50 of 1000
+- button "First page" [disabled]
+- button "Previous page" [disabled]
+- button "Next page"
+- button "Last page"

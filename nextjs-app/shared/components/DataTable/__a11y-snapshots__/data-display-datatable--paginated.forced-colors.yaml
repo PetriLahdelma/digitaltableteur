@@ -1,0 +1,37 @@
+- status: Work in progress (alpha)
+- table "Project contributors":
+  - caption: Project contributors
+  - rowgroup:
+    - row "Select all rows Name Role Projects":
+      - columnheader "Select all rows":
+        - checkbox "Select all rows"
+      - columnheader "Name":
+        - button "Name"
+      - columnheader "Role":
+        - button "Role"
+      - columnheader "Projects":
+        - button "Projects"
+  - rowgroup:
+    - row "Select Contributor 1 Contributor 1 Engineer 0":
+      - cell "Select Contributor 1":
+        - checkbox "Select Contributor 1"
+      - rowheader "Contributor 1"
+      - cell "Engineer"
+      - cell "0"
+    - row "Select Contributor 2 Contributor 2 Designer 3":
+      - cell "Select Contributor 2":
+        - checkbox "Select Contributor 2"
+      - rowheader "Contributor 2"
+      - cell "Designer"
+      - cell "3"
+    - row "Select Contributor 3 Contributor 3 Engineer 6":
+      - cell "Select Contributor 3":
+        - checkbox "Select Contributor 3"
+      - rowheader "Contributor 3"
+      - cell "Engineer"
+      - cell "6"
+- text: 1–3 of 8
+- button "First page" [disabled]
+- button "Previous page" [disabled]
+- button "Next page"
+- button "Last page"

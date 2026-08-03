@@ -1,0 +1,16 @@
+{
+  "storyId": "data-display-datatable-overflow",
+  "mode": "dark",
+  "sourceSHA": "39543b0532b28181b4b2fc85cd6af1c8897db9b9",
+  "capturedAt": "2026-08-03T20:02:47.423Z",
+  "runner": "datatable-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

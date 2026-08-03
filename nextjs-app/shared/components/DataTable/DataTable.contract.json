@@ -11,22 +11,43 @@
   "element": "table",
   "variants": {
     "size": {
-      "values": ["sm", "md", "lg"],
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
       "default": "md",
       "propSourced": true
     },
     "striped": {
-      "values": ["true", "false"],
+      "values": [
+        "true",
+        "false"
+      ],
       "default": "false",
       "propSourced": true
     }
   },
-  "slots": ["caption", "header", "cell", "emptyState"],
+  "slots": [
+    "caption",
+    "header",
+    "cell",
+    "emptyState"
+  ],
   "asChild": false,
   "subParts": [],
-  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
   "a11y": {
-    "keyboard": ["Tab", "Space"],
+    "keyboard": [
+      "Tab",
+      "Space",
+      "Enter"
+    ],
     "ariaRequirements": [
       "native table, thead, tbody, th and td semantics",
       "caption supplies the accessible table name",
@@ -35,8 +56,8 @@
     ],
     "reducedMotion": true,
     "reviewed": true,
-    "reviewedNote": "2026-07-26 — native table, caption, sorting, selection labels, keyboard behavior, and axe result reviewed in unit tests.",
-    "forcedColorsVerified": false,
+    "reviewedNote": "2026-07-26 — native table, caption, sorting, selection labels, keyboard behavior, and axe result reviewed in unit tests. 2026-08-03 — Phase 1 pass: light/dark/forced-colors verified in a real browser; keyboard contract (Tab/Space/Enter) driven by a play story; axe clean across 9 stories x 3 modes; AT-tree and real-browser forced-colors evidence captured.",
+    "forcedColorsVerified": true,
     "accessibilityTreeVerified": false
   },
   "tokens": {
@@ -57,9 +78,17 @@
       "--space-layout-32"
     ]
   },
-  "lightDarkVerified": false,
+  "lightDarkVerified": true,
   "dense": "typed native data table; sortable columns, optional row selection, accessible caption, empty state, sm/md/lg density",
-  "keywords": ["table", "data", "rows", "columns", "sort", "selection", "grid"],
+  "keywords": [
+    "table",
+    "data",
+    "rows",
+    "columns",
+    "sort",
+    "selection",
+    "grid"
+  ],
   "props": {
     "data": {
       "optional": false,
@@ -114,7 +143,11 @@
     "size": {
       "optional": true,
       "type": "union",
-      "values": ["sm", "md", "lg"],
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
       "description": "Density scale."
     },
     "striped": {
@@ -192,5 +225,10 @@
       "striped": false
     }
   },
-  "composesWith": ["Table", "Checkbox", "IconButton", "EmptyState"]
+  "composesWith": [
+    "Table",
+    "Checkbox",
+    "IconButton",
+    "EmptyState"
+  ]
 }

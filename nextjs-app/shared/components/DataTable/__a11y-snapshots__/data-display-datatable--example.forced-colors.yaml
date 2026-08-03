@@ -1,0 +1,32 @@
+- status: Work in progress (alpha)
+- table "Project contributors":
+  - caption: Project contributors
+  - rowgroup:
+    - row "Select all rows Name Role Projects":
+      - columnheader "Select all rows":
+        - checkbox "Select all rows"
+      - columnheader "Name":
+        - button "Name"
+      - columnheader "Role":
+        - button "Role"
+      - columnheader "Projects":
+        - button "Projects"
+  - rowgroup:
+    - row "Select Ada Lovelace Ada Lovelace Engineer 8":
+      - cell "Select Ada Lovelace":
+        - checkbox "Select Ada Lovelace"
+      - rowheader "Ada Lovelace"
+      - cell "Engineer"
+      - cell "8"
+    - row "Select Dieter Rams Dieter Rams Designer 5":
+      - cell "Select Dieter Rams":
+        - checkbox "Select Dieter Rams"
+      - rowheader "Dieter Rams"
+      - cell "Designer"
+      - cell "5"
+    - row "Select Grace Hopper Grace Hopper Engineer 12":
+      - cell "Select Grace Hopper":
+        - checkbox "Select Grace Hopper"
+      - rowheader "Grace Hopper"
+      - cell "Engineer"
+      - cell "12"

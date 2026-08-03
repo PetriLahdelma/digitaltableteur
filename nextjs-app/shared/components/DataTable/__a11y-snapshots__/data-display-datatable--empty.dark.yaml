@@ -1,0 +1,16 @@
+- status: Work in progress (alpha)
+- table "Project contributors":
+  - caption: Project contributors
+  - rowgroup:
+    - row "Select all rows Name Role Projects":
+      - columnheader "Select all rows":
+        - checkbox "Select all rows"
+      - columnheader "Name":
+        - button "Name"
+      - columnheader "Role":
+        - button "Role"
+      - columnheader "Projects":
+        - button "Projects"
+  - rowgroup:
+    - row "No contributors":
+      - cell "No contributors"
