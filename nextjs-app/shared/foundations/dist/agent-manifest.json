@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-07-30T10:06:25.232Z",
+  "generatedAt": "2026-08-03T16:56:46.914Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 90.8,
     "codebaseComponentCount": 195,
     "usageCoveragePercent": 93.2,
-    "componentsWithProductionUsage": 36,
+    "componentsWithProductionUsage": 35,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,10 +79,10 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 177,
     "withAnyUsage": 165,
-    "withProductionUsage": 36,
+    "withProductionUsage": 35,
     "uniqueImportedComponents": 165,
-    "totalEvidenceRows": 826,
-    "aliasImportFiles": 429,
+    "totalEvidenceRows": 825,
+    "aliasImportFiles": 428,
     "relativeImportFiles": 430,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -12262,8 +12262,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -14109,8 +14109,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -25155,17 +25155,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Kbd",
-        "importCount": 3,
-        "productionImportCount": 1,
+        "importCount": 2,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "importKind": "alias",
-            "importPath": "@dt/Kbd",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -53002,8 +52996,8 @@
           "Text",
           "Button",
           "CheckboxGroup",
-          "TextArea",
           "Badge",
+          "TextArea",
           "Title"
         ],
         "prefersOver": [],
@@ -63558,8 +63552,8 @@
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "automated",
-            "check": "npm run test:stories:hc"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "human-a11y-review",
@@ -73041,6 +73035,16 @@
             "optional": true,
             "type": "string",
             "description": "Accessible label for the section"
+          },
+          "headingLevel": {
+            "optional": true,
+            "type": "union",
+            "values": [
+              2,
+              3,
+              4
+            ],
+            "description": "Heading level for the section title; visual size is unchanged. Pages whose outline places StoryBlock sections directly under the h1 should pass 2."
           }
         },
         "forbiddenUse": [
@@ -73225,6 +73229,11 @@
             "optional": true,
             "type": "string",
             "description": "Accessible label for the section"
+          },
+          "headingLevel": {
+            "optional": true,
+            "type": "2 | 3 | 4",
+            "description": "Heading level for the section title; visual size is unchanged. Pages whose\noutline places StoryBlock sections directly under the h1 should pass 2."
           }
         },
         "propRelationships": [],
@@ -73259,7 +73268,7 @@
           "TeamBlock"
         ],
         "prefersOver": [],
-        "declaredPropCount": 11,
+        "declaredPropCount": 12,
         "guidelines": [
           {
             "level": "should",
