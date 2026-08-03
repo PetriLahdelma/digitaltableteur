@@ -9,6 +9,16 @@
     "machineRelationshipComponents": 3
   },
   "components": {
+    "AboutHero": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 2.585,
+      "maxSlotCount": 0
+    },
+    "AboutPageContent": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
     "Accordion": {
       "maxPropCount": 8,
       "maxFiniteStateBits": 2.585,
@@ -27,6 +37,21 @@
     "ArticleContent": {
       "maxPropCount": 3,
       "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "ArticleHero": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
+    "ArticleLayout": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ArticlePageTemplate": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 3,
       "maxSlotCount": 0
     },
     "ArticleShareSection": {
@@ -67,6 +92,16 @@
     "BlogCategoryFilter": {
       "maxPropCount": 8,
       "maxFiniteStateBits": 4.17,
+      "maxSlotCount": 0
+    },
+    "BlogHero": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "BlogIndexContent": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 7.585,
       "maxSlotCount": 0
     },
     "BlogMediaImage": {
@@ -164,9 +199,29 @@
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
+    "ContactHero": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "ContactInquiryPanel": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 1
+    },
+    "ContactPageContentEditorial": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
     "Container": {
       "maxPropCount": 5,
       "maxFiniteStateBits": 10.798,
+      "maxSlotCount": 0
+    },
+    "ContentSection": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 4.585,
       "maxSlotCount": 0
     },
     "CookieConsent": {
@@ -174,13 +229,29 @@
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
+    "CTASection": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 3.322,
+      "maxSlotCount": 0
+    },
+    "CVDownloadSection": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
     "DataTable": {
-      "maxPropCount": 16,
-      "maxFiniteStateBits": 3.585,
-      "maxSlotCount": 4
+      "maxPropCount": 18,
+      "maxFiniteStateBits": 4.585,
+      "maxSlotCount": 4,
+      "note": "Approved 2026-08-03: #1351 redesign (useTable* hooks, selection, density) grew the surface 16→18 props / 3.585→4.585 bits; accepted as the batteries-included wrapper over the Table primitives."
     },
     "Designerman": {
       "maxPropCount": 7,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "DesignSprintsSection": {
+      "maxPropCount": 3,
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
@@ -234,6 +305,11 @@
       "maxFiniteStateBits": 11.077,
       "maxSlotCount": 0
     },
+    "Footer": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
     "FormField": {
       "maxPropCount": 7,
       "maxFiniteStateBits": 2,
@@ -254,6 +330,11 @@
       "maxFiniteStateBits": 8.409,
       "maxSlotCount": 0
     },
+    "GridBlock": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 9.492,
+      "maxSlotCount": 0
+    },
     "GroupLabel": {
       "maxPropCount": 5,
       "maxFiniteStateBits": 2,
@@ -262,6 +343,21 @@
     "HelperText": {
       "maxPropCount": 4,
       "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "HeroSection": {
+      "maxPropCount": 9,
+      "maxFiniteStateBits": 14.646,
+      "maxSlotCount": 0
+    },
+    "HighlightSection": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 3.585,
+      "maxSlotCount": 0
+    },
+    "HomeHero": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
     "Icon": {
@@ -329,19 +425,24 @@
       "maxFiniteStateBits": 3,
       "maxSlotCount": 0
     },
-    "MCPActionButton": {
-      "maxPropCount": 6,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
     "MacWindowFrame": {
       "maxPropCount": 6,
       "maxFiniteStateBits": 1,
       "maxSlotCount": 0
     },
+    "ManifestoSection": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 1.585,
+      "maxSlotCount": 0
+    },
     "MarkdownMessage": {
       "maxPropCount": 6,
       "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "MCPActionButton": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
     "Menu": {
@@ -369,6 +470,11 @@
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
+    "NewsBulletin": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
     "NewsletterWaitlist": {
       "maxPropCount": 4,
       "maxFiniteStateBits": 1,
@@ -382,6 +488,11 @@
     "OpenHours": {
       "maxPropCount": 4,
       "maxFiniteStateBits": 3,
+      "maxSlotCount": 0
+    },
+    "PageLayout": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 8.322,
       "maxSlotCount": 0
     },
     "Pagination": {
@@ -400,9 +511,25 @@
       "maxSlotCount": 0
     },
     "PixelLoop": {
-      "maxPropCount": 4,
-      "maxFiniteStateBits": 3.585,
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 4.585,
+      "maxSlotCount": 0,
+      "note": "Approved 2026-08-03: variant/fps axes added since the original baseline; 4→5 props, 3.585→4.585 bits."
+    },
+    "PricingCalculator": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
       "maxSlotCount": 0
+    },
+    "PricingPageContent": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "ProcessBlock": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 7.492,
+      "maxSlotCount": 1
     },
     "Progress": {
       "maxPropCount": 7,
@@ -414,14 +541,39 @@
       "maxFiniteStateBits": 3,
       "maxSlotCount": 0
     },
+    "ProjectDetailLayout": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "ProjectDetailTemplate": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
     "ProjectGallery": {
       "maxPropCount": 6,
       "maxFiniteStateBits": 4.17,
       "maxSlotCount": 0
     },
+    "ProjectHero": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 2.585,
+      "maxSlotCount": 0
+    },
+    "ProjectMetaSection": {
+      "maxPropCount": 10,
+      "maxFiniteStateBits": 3.907,
+      "maxSlotCount": 0
+    },
     "ProjectNav": {
       "maxPropCount": 2,
       "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "ProofBlock": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 2,
       "maxSlotCount": 0
     },
     "Radio": {
@@ -437,6 +589,16 @@
     "ReadingProgress": {
       "maxPropCount": 3,
       "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "RelatedPosts": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "RelatedProjects": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
     "ResizablePanelGroup": {
@@ -484,8 +646,28 @@
       "maxFiniteStateBits": 3,
       "maxSlotCount": 1
     },
+    "ServicesBlock": {
+      "maxPropCount": 13,
+      "maxFiniteStateBits": 5.907,
+      "maxSlotCount": 1
+    },
     "ServicesGrid": {
       "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "ServicesSection": {
+      "maxPropCount": 8,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
+    "SiteFooter": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0
+    },
+    "SiteHeader": {
+      "maxPropCount": 2,
       "maxFiniteStateBits": 0,
       "maxSlotCount": 0
     },
@@ -539,25 +721,65 @@
       "maxFiniteStateBits": 16.383,
       "maxSlotCount": 0
     },
+    "StatsSection": {
+      "maxPropCount": 4,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
     "StatusDot": {
       "maxPropCount": 5,
       "maxFiniteStateBits": 4.907,
       "maxSlotCount": 0
+    },
+    "StoryBlock": {
+      "maxPropCount": 12,
+      "maxFiniteStateBits": 9.077,
+      "maxSlotCount": 1,
+      "note": "Approved 2026-08-03: headingLevel prop (#1382) fixes case-study heading outlines (h1→h2); 11→12 props."
     },
     "Switch": {
       "maxPropCount": 10,
       "maxFiniteStateBits": 7.17,
       "maxSlotCount": 1
     },
+    "Table": {
+      "maxPropCount": 6,
+      "maxFiniteStateBits": 4.585,
+      "maxSlotCount": 0,
+      "note": "Baselined 2026-08-03 at introduction values (#1351/#1352 Table/VirtualList primitives)."
+    },
+    "TableCell": {
+      "maxPropCount": 2,
+      "maxFiniteStateBits": 2.585,
+      "maxSlotCount": 0,
+      "note": "Baselined 2026-08-03 at introduction values (#1351/#1352 Table/VirtualList primitives)."
+    },
+    "TableHeaderCell": {
+      "maxPropCount": 5,
+      "maxFiniteStateBits": 5.17,
+      "maxSlotCount": 0,
+      "note": "Baselined 2026-08-03 at introduction values (#1351/#1352 Table/VirtualList primitives)."
+    },
     "TableOfContents": {
       "maxPropCount": 5,
       "maxFiniteStateBits": 1,
       "maxSlotCount": 0
     },
+    "TableRow": {
+      "maxPropCount": 1,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0,
+      "note": "Baselined 2026-08-03 at introduction values (#1351/#1352 Table/VirtualList primitives)."
+    },
     "Tabs": {
       "maxPropCount": 8,
       "maxFiniteStateBits": 3.17,
       "maxSlotCount": 0
+    },
+    "TeamBlock": {
+      "maxPropCount": 11,
+      "maxFiniteStateBits": 8.492,
+      "maxSlotCount": 1
     },
     "Testimonial": {
       "maxPropCount": 7,
@@ -624,9 +846,9 @@
       "maxFiniteStateBits": 1.585,
       "maxSlotCount": 1
     },
-    "VisuallyHidden": {
-      "maxPropCount": 3,
-      "maxFiniteStateBits": 2,
+    "ValuesSection": {
+      "maxPropCount": 7,
+      "maxFiniteStateBits": 4.17,
       "maxSlotCount": 0
     },
     "VirtualList": {
@@ -634,214 +856,20 @@
       "maxFiniteStateBits": 0,
       "maxSlotCount": 1
     },
+    "VirtualListItem": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 0,
+      "maxSlotCount": 0,
+      "note": "Baselined 2026-08-03 at introduction values (#1351/#1352 Table/VirtualList primitives)."
+    },
+    "VisuallyHidden": {
+      "maxPropCount": 3,
+      "maxFiniteStateBits": 2,
+      "maxSlotCount": 0
+    },
     "WipBadge": {
       "maxPropCount": 2,
       "maxFiniteStateBits": 3,
-      "maxSlotCount": 0
-    },
-    "WorkNav": {
-      "maxPropCount": 4,
-      "maxFiniteStateBits": 1,
-      "maxSlotCount": 0
-    },
-    "AboutHero": {
-      "maxPropCount": 6,
-      "maxFiniteStateBits": 2.585,
-      "maxSlotCount": 0
-    },
-    "AboutPageContent": {
-      "maxPropCount": 2,
-      "maxFiniteStateBits": 1,
-      "maxSlotCount": 0
-    },
-    "ArticleHero": {
-      "maxPropCount": 8,
-      "maxFiniteStateBits": 1.585,
-      "maxSlotCount": 0
-    },
-    "ArticleLayout": {
-      "maxPropCount": 9,
-      "maxFiniteStateBits": 1,
-      "maxSlotCount": 0
-    },
-    "ArticlePageTemplate": {
-      "maxPropCount": 7,
-      "maxFiniteStateBits": 3,
-      "maxSlotCount": 0
-    },
-    "BlogHero": {
-      "maxPropCount": 7,
-      "maxFiniteStateBits": 2,
-      "maxSlotCount": 0
-    },
-    "BlogIndexContent": {
-      "maxPropCount": 9,
-      "maxFiniteStateBits": 7.585,
-      "maxSlotCount": 0
-    },
-    "CTASection": {
-      "maxPropCount": 9,
-      "maxFiniteStateBits": 3.322,
-      "maxSlotCount": 0
-    },
-    "CVDownloadSection": {
-      "maxPropCount": 5,
-      "maxFiniteStateBits": 1.585,
-      "maxSlotCount": 0
-    },
-    "ContactHero": {
-      "maxPropCount": 5,
-      "maxFiniteStateBits": 2,
-      "maxSlotCount": 0
-    },
-    "ContactInquiryPanel": {
-      "maxPropCount": 4,
-      "maxFiniteStateBits": 1,
-      "maxSlotCount": 1
-    },
-    "ContactPageContentEditorial": {
-      "maxPropCount": 4,
-      "maxFiniteStateBits": 1,
-      "maxSlotCount": 0
-    },
-    "ContentSection": {
-      "maxPropCount": 9,
-      "maxFiniteStateBits": 4.585,
-      "maxSlotCount": 0
-    },
-    "DesignSprintsSection": {
-      "maxPropCount": 3,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
-    "Footer": {
-      "maxPropCount": 1,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
-    "GridBlock": {
-      "maxPropCount": 8,
-      "maxFiniteStateBits": 9.492,
-      "maxSlotCount": 0
-    },
-    "HeroSection": {
-      "maxPropCount": 9,
-      "maxFiniteStateBits": 14.646,
-      "maxSlotCount": 0
-    },
-    "HighlightSection": {
-      "maxPropCount": 10,
-      "maxFiniteStateBits": 3.585,
-      "maxSlotCount": 0
-    },
-    "HomeHero": {
-      "maxPropCount": 2,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
-    "ManifestoSection": {
-      "maxPropCount": 6,
-      "maxFiniteStateBits": 1.585,
-      "maxSlotCount": 0
-    },
-    "NewsBulletin": {
-      "maxPropCount": 2,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
-    "PageLayout": {
-      "maxPropCount": 11,
-      "maxFiniteStateBits": 8.322,
-      "maxSlotCount": 0
-    },
-    "PricingCalculator": {
-      "maxPropCount": 1,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
-    "PricingPageContent": {
-      "maxPropCount": 1,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
-    "ProcessBlock": {
-      "maxPropCount": 10,
-      "maxFiniteStateBits": 7.492,
-      "maxSlotCount": 1
-    },
-    "ProjectDetailLayout": {
-      "maxPropCount": 8,
-      "maxFiniteStateBits": 1,
-      "maxSlotCount": 0
-    },
-    "ProjectDetailTemplate": {
-      "maxPropCount": 8,
-      "maxFiniteStateBits": 1,
-      "maxSlotCount": 0
-    },
-    "ProjectHero": {
-      "maxPropCount": 11,
-      "maxFiniteStateBits": 2.585,
-      "maxSlotCount": 0
-    },
-    "ProjectMetaSection": {
-      "maxPropCount": 10,
-      "maxFiniteStateBits": 3.907,
-      "maxSlotCount": 0
-    },
-    "ProofBlock": {
-      "maxPropCount": 8,
-      "maxFiniteStateBits": 2,
-      "maxSlotCount": 0
-    },
-    "RelatedPosts": {
-      "maxPropCount": 4,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
-    "RelatedProjects": {
-      "maxPropCount": 4,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
-    "ServicesBlock": {
-      "maxPropCount": 13,
-      "maxFiniteStateBits": 5.907,
-      "maxSlotCount": 1
-    },
-    "ServicesSection": {
-      "maxPropCount": 8,
-      "maxFiniteStateBits": 2,
-      "maxSlotCount": 0
-    },
-    "SiteFooter": {
-      "maxPropCount": 1,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
-    "SiteHeader": {
-      "maxPropCount": 2,
-      "maxFiniteStateBits": 0,
-      "maxSlotCount": 0
-    },
-    "StatsSection": {
-      "maxPropCount": 4,
-      "maxFiniteStateBits": 2,
-      "maxSlotCount": 0
-    },
-    "StoryBlock": {
-      "maxPropCount": 11,
-      "maxFiniteStateBits": 9.077,
-      "maxSlotCount": 1
-    },
-    "TeamBlock": {
-      "maxPropCount": 11,
-      "maxFiniteStateBits": 8.492,
-      "maxSlotCount": 1
-    },
-    "ValuesSection": {
-      "maxPropCount": 7,
-      "maxFiniteStateBits": 4.17,
       "maxSlotCount": 0
     },
     "WorkCTA": {
@@ -856,6 +884,11 @@
     },
     "WorkMagneticField": {
       "maxPropCount": 6,
+      "maxFiniteStateBits": 1,
+      "maxSlotCount": 0
+    },
+    "WorkNav": {
+      "maxPropCount": 4,
       "maxFiniteStateBits": 1,
       "maxSlotCount": 0
     },

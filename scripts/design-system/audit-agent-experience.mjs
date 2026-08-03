@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { execFileSync } from "node:child_process";
 import {
   existsSync,
   mkdirSync,
@@ -41,26 +42,75 @@ function readJson(path) {
 }
 
 function withoutRuntimeFields(report) {
-  const { generatedAt: _generatedAt, ok: _ok, violations: _violations, ...rest } =
-    report;
+  const {
+    generatedAt: _generatedAt,
+    ok: _ok,
+    violations: _violations,
+    provenance: _provenance,
+    ...rest
+  } = report;
   return rest;
 }
 
-function generatedAtFor(nextReport) {
-  if (!existsSync(OUT)) return new Date().toISOString();
+/**
+ * Bump when the generator's behavior (not just its inputs) changes in a way
+ * that alters what the report means.
+ */
+const GENERATOR_VERSION = 2;
+
+function currentProvenance() {
+  const git = (args) =>
+    execFileSync("git", args, { cwd: ROOT, encoding: "utf8" }).trim();
+  let sourceCommit = null;
+  let dirtyPaths = null;
   try {
-    const previous = readJson(OUT);
-    if (
-      previous.generatedAt &&
-      JSON.stringify(withoutRuntimeFields(previous)) ===
-        JSON.stringify(withoutRuntimeFields(nextReport))
-    ) {
-      return previous.generatedAt;
-    }
+    sourceCommit = git(["rev-parse", "HEAD"]);
+    dirtyPaths = git(["status", "--porcelain", "--untracked-files=no"])
+      .split("\n")
+      .filter(Boolean).length;
   } catch {
-    // A malformed prior report should be replaced, not preserved.
+    // Outside a git checkout the stamp degrades gracefully.
   }
-  return new Date().toISOString();
+  return {
+    sourceCommit,
+    workingTreeClean: dirtyPaths === 0,
+    dirtyPathCount: dirtyPaths,
+    generator: {
+      name: "audit-agent-experience",
+      version: GENERATOR_VERSION,
+      node: process.version,
+    },
+  };
+}
+
+/**
+ * generatedAt and provenance describe the generation that last CHANGED the
+ * report's substance. When a rerun produces identical substance, both are
+ * preserved so the committed artifact stays byte-stable and its stamp remains
+ * truthful about when the content was actually produced.
+ */
+function runtimeStampFor(nextReport) {
+  if (existsSync(OUT)) {
+    try {
+      const previous = readJson(OUT);
+      if (
+        previous.generatedAt &&
+        // A dirty-tree stamp is provisional: keep re-stamping until a run at a
+        // clean tree records durable provenance.
+        previous.provenance?.workingTreeClean === true &&
+        JSON.stringify(withoutRuntimeFields(previous)) ===
+          JSON.stringify(withoutRuntimeFields(nextReport))
+      ) {
+        return {
+          generatedAt: previous.generatedAt,
+          provenance: previous.provenance,
+        };
+      }
+    } catch {
+      // A malformed prior report should be replaced, not preserved.
+    }
+  }
+  return { generatedAt: new Date().toISOString(), provenance: currentProvenance() };
 }
 
 if (!existsSync(MANIFEST)) {
@@ -100,7 +150,7 @@ const output = {
   ok: violations.length === 0,
   violations,
 };
-output.generatedAt = generatedAtFor(output);
+Object.assign(output, runtimeStampFor(output));
 
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, `${JSON.stringify(output, null, 2)}\n`);

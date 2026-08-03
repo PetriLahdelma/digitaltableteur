@@ -6,17 +6,27 @@
   "group": "data-display",
   "status": "alpha",
   "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
+  "usage": {
+    "description": "TableCell is the body cell of the Table family: plain tabular data with an optional numeric mode that aligns figures on the decimal. Header semantics belong to TableHeaderCell; TableCell never announces scope."
+  },
   "figma": null,
   "radixPrimitive": null,
   "element": "td",
   "variants": {
     "align": {
-      "values": ["start", "center", "end"],
+      "values": [
+        "start",
+        "center",
+        "end"
+      ],
       "default": "start",
       "propSourced": true
     },
     "numeric": {
-      "values": ["true", "false"],
+      "values": [
+        "true",
+        "false"
+      ],
       "default": "false",
       "propSourced": true
     }
@@ -24,7 +34,12 @@
   "slots": [],
   "asChild": false,
   "subParts": [],
-  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
   "a11y": {
     "keyboard": [],
     "ariaRequirements": [
@@ -38,17 +53,33 @@
     "accessibilityTreeVerified": false
   },
   "tokens": {
-    "colors": ["--color-border-light"],
-    "spacing": ["--space-internal-8", "--space-internal-12", "--space-internal-16", "--space-layout-24"]
+    "colors": [
+      "--color-border-light"
+    ],
+    "spacing": [
+      "--space-internal-8",
+      "--space-internal-12",
+      "--space-internal-16",
+      "--space-layout-24"
+    ]
   },
   "lightDarkVerified": false,
   "dense": "table td; align start/center/end, numeric = tabular figures right-aligned",
-  "keywords": ["table", "cell", "td", "numeric"],
+  "keywords": [
+    "table",
+    "cell",
+    "td",
+    "numeric"
+  ],
   "props": {
     "align": {
       "optional": true,
       "type": "union",
-      "values": ["start", "center", "end"],
+      "values": [
+        "start",
+        "center",
+        "end"
+      ],
       "description": "Cell content alignment."
     },
     "numeric": {
@@ -61,5 +92,9 @@
     "render it outside a table row",
     "use it for a header — use TableHeaderCell so column/row context is announced"
   ],
-  "composesWith": ["Table", "TableRow", "TableHeaderCell"]
+  "composesWith": [
+    "Table",
+    "TableRow",
+    "TableHeaderCell"
+  ]
 }

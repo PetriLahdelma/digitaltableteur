@@ -1,4 +1,4 @@
-import { spawn } from "child_process";
+import { spawn, execFileSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -36,6 +36,20 @@ const runCommand = (command, args, options = {}) =>
       }
     });
   });
+
+const buildProvenance = () => {
+  const git = (args) =>
+    execFileSync("git", args, { cwd: projectRoot, encoding: "utf8" }).trim();
+  try {
+    return {
+      sourceCommit: git(["rev-parse", "HEAD"]),
+      workingTreeClean: git(["status", "--porcelain", "--untracked-files=no"]).length === 0,
+      generator: { name: "build-test-metrics", node: process.version },
+    };
+  } catch {
+    return null;
+  }
+};
 
 const parseNumber = (value) => {
   if (typeof value === "number" && Number.isFinite(value)) {
@@ -78,6 +92,10 @@ const ensureCoverageArtifacts = async () => {
     "--config",
     "vitest.config.mts",
     "--coverage",
+    // Explicit coverage reporters: the config's list is not honored when the
+    // run is invoked this way, and coverage-summary.json is required below.
+    "--coverage.reporter=json-summary",
+    "--coverage.reporter=lcov",
     "--reporter=json",
     `--outputFile=${vitestReportPath}`,
   ]);
@@ -131,12 +149,20 @@ const validateCoverage = (summary, thresholds) => {
           `${metric}: ${actual.toFixed(2)}% < required ${required}%`,
       )
       .join("; ");
-    throw new Error(
-      `Coverage below required thresholds. Please add or update tests. Details: ${message}`,
-    );
+    // Truthfulness over gating: the metrics artifact must always record the
+    // real numbers, otherwise the checked-in fallback freezes at the last
+    // passing run (observed: a November 2025 fallback surviving into August
+    // 2026). Threshold failures are reported in the payload and only fail the
+    // process under --enforce, for callers using this script as a gate.
+    console.warn(`[metrics] Coverage below thresholds: ${message}`);
+    if (process.argv.includes("--enforce")) {
+      throw new Error(
+        `Coverage below required thresholds. Please add or update tests. Details: ${message}`,
+      );
+    }
   }
 
-  return coveragePercentages;
+  return { coveragePercentages, violations };
 };
 
 const generateMetrics = async () => {
@@ -151,10 +177,8 @@ const generateMetrics = async () => {
   const report = JSON.parse(fs.readFileSync(vitestReportPath, "utf8"));
   const coverageSummary = readCoverageSummary();
   const coverageThresholds = resolveCoverageThresholds();
-  const coveragePercentages = validateCoverage(
-    coverageSummary,
-    coverageThresholds,
-  );
+  const { coveragePercentages, violations: coverageViolations } =
+    validateCoverage(coverageSummary, coverageThresholds);
 
   const vitestSummary = {
     totalSuites: report.numTotalTestSuites ?? 0,
@@ -305,6 +329,7 @@ const generateMetrics = async () => {
 
   const metricsPayload = {
     generatedAt: new Date().toISOString(),
+    provenance: buildProvenance(),
     vitest: vitestSummary,
     accessibilityPages,
     accessibilityStories,
@@ -317,6 +342,10 @@ const generateMetrics = async () => {
         lines: coverageSummary.total?.lines ?? null,
       },
       thresholds: coverageThresholds,
+      thresholdStatus:
+        coverageViolations.length === 0
+          ? { ok: true, violations: [] }
+          : { ok: false, violations: coverageViolations },
     },
     componentAdoption: {
       currentRate: adoptionRate,

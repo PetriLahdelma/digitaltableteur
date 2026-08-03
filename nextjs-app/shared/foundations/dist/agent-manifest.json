@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-03T16:56:46.914Z",
+  "generatedAt": "2026-08-03T19:27:54.289Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -48881,6 +48881,9 @@
         "group": "data-display",
         "status": "alpha",
         "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+        "usage": {
+          "description": "Table renders semantic tabular data: a caption-led <table> whose rows and cells come from TableRow, TableHeaderCell and TableCell, with sorting and selection driven by the useTable* hooks rather than cell-local state. Use it when the content really is a data grid; DataTable wraps it for the batteries-included workflow."
+        },
         "figma": null,
         "radixPrimitive": null,
         "element": "table",
@@ -49022,7 +49025,7 @@
           "DataTable"
         ]
       },
-      "spec": "# Table\n\nComposable table primitives — `Table`, `TableRow`, `TableHeaderCell`, and\n`TableCell` — that render semantic `<table>` markup with design-system chrome.\nThey are the presentational layer beneath `DataTable`; behavior (sorting,\nselection, pagination) lives in the `useTable*` hooks.\n\n## Intent\n\nGive the design system a low-level, composable table so product surfaces can\nassemble bespoke tables from DS-styled parts, while `DataTable` provides the\nbatteries-included configuration on top. Compose with native `<thead>` and\n`<tbody>`:\n\n- **Table** — scroll wrapper + `<table>` with the `<caption>`; owns density\n  (`sm`/`md`/`lg`), `striped`, and `stickyHeader`.\n- **TableRow** — `<tr>`; `selected` renders the selected surface and sets\n  `data-selected`.\n- **TableHeaderCell** — `<th scope=\"col\">`; `sortable` + `sortDirection` render\n  a sort button whose caret is a DS `Icon` (`caret-up-down` unsorted,\n  `caret-up` ascending, `caret-down` descending).\n- **TableCell** — `<td>`; `align` and `numeric` (tabular figures, end-aligned).\n\n## Interaction contract\n\n- Sortable headers toggle via an inner `<button>`; drive the actual sort with\n  `useTableSortable` and pass the resulting `sortDirection`/`onSort`.\n- `aria-sort` is exposed only while a column is actively sorted; the caret is\n  decorative (`aria-hidden`) and never the sole carrier of state.\n- Row selection is presentational here (`selected`) — the state lives in\n  `useTableSelection`; render a DS `Checkbox` in the leading cell.\n\n## Do / don't\n\nDo:\n\n- Give every table a concise `caption`.\n- Drive sorting/selection with the `useTable*` hooks rather than local state.\n- Use `numeric` for figures so columns align on the decimal.\n\nDon't:\n\n- Use Table for page layout.\n- Put sort logic inside a cell instead of the hooks.\n- Rely on the caret color alone to convey sort state.\n\n## Design notes\n\n- Quiet header: small uppercase `--font-size-text-xs` labels in `--color-muted`\n  on a `--color-light-bg` surface, with hairline (`1px`) row dividers.\n- The active sort caret uses `--color-primary`; the unsorted caret sits at\n  `--color-muted` so a sorted column reads at a glance while the unsorted\n  affordance still clears ≥3:1 non-text contrast in every theme (including\n  HCB, where `--color-border` would fail).\n- Density scales header/cell padding across `sm`/`md`/`lg`.\n- Forced-colors: borders map to `CanvasText`, the focus ring to `Highlight`.\n",
+      "spec": "# Table\n\nComposable table primitives — `Table`, `TableRow`, `TableHeaderCell`, and\n`TableCell` — that render semantic `<table>` markup with design-system chrome.\nThey are the presentational layer beneath `DataTable`; behavior (sorting,\nselection, pagination) lives in the `useTable*` hooks.\n\n## Intent\n\nGive the design system a low-level, composable table so product surfaces can\nassemble bespoke tables from DS-styled parts, while `DataTable` provides the\nbatteries-included configuration on top. Compose with native `<thead>` and\n`<tbody>`:\n\n- **Table** — scroll wrapper + `<table>` with the `<caption>`; owns density\n  (`sm`/`md`/`lg`), `striped`, and `stickyHeader`.\n- **TableRow** — `<tr>`; `selected` renders the selected surface and sets\n  `data-selected`.\n- **TableHeaderCell** — `<th scope=\"col\">`; `sortable` + `sortDirection` render\n  a sort button whose caret is a DS `Icon` (`caret-up-down` unsorted,\n  `caret-up` ascending, `caret-down` descending).\n- **TableCell** — `<td>`; `align` and `numeric` (tabular figures, end-aligned).\n\n## Interaction contract\n\n- Sortable headers toggle via an inner `<button>`; drive the actual sort with\n  `useTableSortable` and pass the resulting `sortDirection`/`onSort`.\n- `aria-sort` is exposed only while a column is actively sorted; the caret is\n  decorative (`aria-hidden`) and never the sole carrier of state.\n- Row selection is presentational here (`selected`) — the state lives in\n  `useTableSelection`; render a DS `Checkbox` in the leading cell.\n\n## Do / don't\n\n- Do: Give every table a concise `caption`.\n- Do: Drive sorting/selection with the `useTable*` hooks rather than local state.\n- Do: Use `numeric` for figures so columns align on the decimal.\n- Don't: Use Table for page layout.\n- Don't: Put sort logic inside a cell instead of the hooks.\n- Don't: Rely on the caret color alone to convey sort state.\n\n## Design notes\n\n- Quiet header: small uppercase `--font-size-text-xs` labels in `--color-muted`\n  on a `--color-light-bg` surface, with hairline (`1px`) row dividers.\n- The active sort caret uses `--color-primary`; the unsorted caret sits at\n  `--color-muted` so a sorted column reads at a glance while the unsorted\n  affordance still clears ≥3:1 non-text contrast in every theme (including\n  HCB, where `--color-border` would fail).\n- Density scales header/cell padding across `sm`/`md`/`lg`.\n- Forced-colors: borders map to `CanvasText`, the focus ring to `Highlight`.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Table",
@@ -49134,8 +49137,16 @@
         },
         "cvaVariants": {},
         "variantsFnName": null,
-        "useWhen": [],
-        "avoidWhen": [],
+        "useWhen": [
+          "Give every table a concise `caption`.",
+          "Drive sorting/selection with the `useTable*` hooks rather than local state.",
+          "Use `numeric` for figures so columns align on the decimal."
+        ],
+        "avoidWhen": [
+          "Use Table for page layout.",
+          "Put sort logic inside a cell instead of the hooks.",
+          "Rely on the caret color alone to convey sort state."
+        ],
         "requiredA11y": [
           "native table, thead, tbody, th and td semantics",
           "caption supplies the accessible table name",
@@ -49147,7 +49158,9 @@
           "Space",
           "Enter"
         ],
-        "compositionRules": [],
+        "compositionRules": [
+          "Put sort logic inside a cell instead of the hooks."
+        ],
         "canonicalExamples": [
           "Default",
           "Playground",
@@ -49155,7 +49168,11 @@
           "ForcedColors"
         ],
         "replacementFor": [],
-        "forbiddenUse": [],
+        "forbiddenUse": [
+          "Use Table for page layout.",
+          "Put sort logic inside a cell instead of the hooks.",
+          "Rely on the caret color alone to convey sort state."
+        ],
         "composesWith": [
           "TableRow",
           "TableHeaderCell",
@@ -49165,7 +49182,50 @@
         ],
         "prefersOver": [],
         "declaredPropCount": 6,
-        "guidelines": [],
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "Give every table a concise `caption`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "Drive sorting/selection with the `useTable*` hooks rather than local state.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "Use `numeric` for figures so columns align on the decimal.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Use Table for page layout.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Put sort logic inside a cell instead of the hooks.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Rely on the caret color alone to convey sort state.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
         "a11yCriteria": [
           {
             "id": "axe-no-violations",
@@ -49298,6 +49358,9 @@
         "group": "data-display",
         "status": "alpha",
         "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
+        "usage": {
+          "description": "TableCell is the body cell of the Table family: plain tabular data with an optional numeric mode that aligns figures on the decimal. Header semantics belong to TableHeaderCell; TableCell never announces scope."
+        },
         "figma": null,
         "radixPrimitive": null,
         "element": "td",
@@ -49387,7 +49450,7 @@
           "TableHeaderCell"
         ]
       },
-      "spec": "# TableCell\n\nA table data cell (`<td>`) for the Table family.\n\n## Intent\n\nThe body cell of the composable `Table`. `align` sets text alignment; `numeric`\nright-aligns with tabular figures so numbers line up on the decimal. It pairs\nwith `TableHeaderCell` (`scope=\"col\"`/`\"row\"`) so cells inherit their column and\nrow context for assistive tech.\n\n## Interaction contract\n\n- Presentational: native `<td>`, no ARIA of its own.\n- `numeric` defaults the alignment to `end`; an explicit `align` overrides it.\n- Native attributes pass through, so `colSpan` (e.g. an empty-state cell that\n  spans the table) works as usual.\n\n## Do / don't\n\nDo:\n\n- Use `numeric` for figures so columns align.\n- Let `TableHeaderCell scope=\"row\"` name the row; keep other cells as\n  `TableCell`.\n\nDon't:\n\n- Use `TableCell` for a header — use `TableHeaderCell` so context is announced.\n- Render it outside a table row.\n\n## Design notes\n\n- Padding scales with the `Table` root's density (`sm`/`md`/`lg`); the row\n  divider and last-row border come from the shared `Table.module.css`.\n- `numeric` applies `font-variant-numeric: tabular-nums`.\n- Forced-colors: borders map to `CanvasText`.\n",
+      "spec": "# TableCell\n\nA table data cell (`<td>`) for the Table family.\n\n## Intent\n\nThe body cell of the composable `Table`. `align` sets text alignment; `numeric`\nright-aligns with tabular figures so numbers line up on the decimal. It pairs\nwith `TableHeaderCell` (`scope=\"col\"`/`\"row\"`) so cells inherit their column and\nrow context for assistive tech.\n\n## Interaction contract\n\n- Presentational: native `<td>`, no ARIA of its own.\n- `numeric` defaults the alignment to `end`; an explicit `align` overrides it.\n- Native attributes pass through, so `colSpan` (e.g. an empty-state cell that\n  spans the table) works as usual.\n\n## Do / don't\n\n- Do: Use `numeric` for figures so columns align.\n- Do: Let `TableHeaderCell scope=\"row\"` name the row; keep other cells as `TableCell`.\n- Don't: Use `TableCell` for a header — use `TableHeaderCell` so context is announced.\n- Don't: Render it outside a table row.\n\n## Design notes\n\n- Padding scales with the `Table` root's density (`sm`/`md`/`lg`); the row\n  divider and last-row border come from the shared `Table.module.css`.\n- `numeric` applies `font-variant-numeric: tabular-nums`.\n- Forced-colors: borders map to `CanvasText`.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableCell",
@@ -49467,8 +49530,14 @@
         },
         "cvaVariants": {},
         "variantsFnName": null,
-        "useWhen": [],
-        "avoidWhen": [],
+        "useWhen": [
+          "Use `numeric` for figures so columns align.",
+          "Let `TableHeaderCell scope=\"row\"` name the row; keep other cells as `TableCell`."
+        ],
+        "avoidWhen": [
+          "Use `TableCell` for a header — use `TableHeaderCell` so context is announced.",
+          "Render it outside a table row."
+        ],
         "requiredA11y": [
           "native <td> semantics; no ARIA of its own",
           "pairs with TableHeaderCell scope=col/row so cells inherit column and row context"
@@ -49482,7 +49551,10 @@
           "ForcedColors"
         ],
         "replacementFor": [],
-        "forbiddenUse": [],
+        "forbiddenUse": [
+          "Use `TableCell` for a header — use `TableHeaderCell` so context is announced.",
+          "Render it outside a table row."
+        ],
         "composesWith": [
           "TableRow",
           "TableHeaderCell",
@@ -49492,7 +49564,36 @@
         ],
         "prefersOver": [],
         "declaredPropCount": 2,
-        "guidelines": [],
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "Use `numeric` for figures so columns align.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "Let `TableHeaderCell scope=\"row\"` name the row; keep other cells as `TableCell`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Use `TableCell` for a header — use `TableHeaderCell` so context is announced.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Render it outside a table row.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
         "a11yCriteria": [
           {
             "id": "axe-no-violations",
@@ -49620,6 +49721,9 @@
         "group": "data-display",
         "status": "alpha",
         "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
+        "usage": {
+          "description": "TableHeaderCell names a column or row with correct scope semantics, and hosts sortable column headers driven by useTableSortable; sort state is announced via aria-sort, never by caret colour alone."
+        },
         "figma": null,
         "radixPrimitive": null,
         "element": "th",
@@ -49747,7 +49851,7 @@
           "Icon"
         ]
       },
-      "spec": "# TableHeaderCell\n\nA table header cell (`<th>`) for the Table family.\n\n## Intent\n\nHeader cell with an explicit `scope`. `scope=\"col\"` (default) labels a column\nand can carry a three-state sort control; `scope=\"row\"` marks the identifying\ncell of a body row so a screen reader announces the row context (\"Ada\nLovelace\") along with every other cell in that row — the accessibility feature a\nplain `<td>` grid can't provide.\n\n## Interaction contract\n\n- Column headers (`scope=\"col\"`) with `sortable` render an inner `<button>` and\n  expose `aria-sort` only while actively sorted. Wire `sortDirection`/`onSort`\n  from `useTableSortable`.\n- The sort caret is a DS `Icon` (`caret-up-down` unsorted / `caret-up` asc /\n  `caret-down` desc), decorative (`aria-hidden`); state is carried by\n  `aria-sort`, never the icon alone.\n- Row headers (`scope=\"row\"`) never render a sort control — they name a row,\n  they are not interactive.\n\n## Do / don't\n\nDo:\n\n- Use `scope=\"row\"` on the identifying cell of each body row for accessible\n  data tables.\n- Drive sorting with `useTableSortable`.\n\nDon't:\n\n- Make a `scope=\"row\"` header sortable.\n- Convey sort state with the caret colour alone.\n- Render it outside a table.\n\n## Design notes\n\n- Quiet column headers: small uppercase `--font-size-text-xs` labels in\n  `--color-muted`; the active sort caret uses `--color-primary`, the unsorted\n  one `--color-muted` so a sorted column reads at a glance and clears ≥3:1\n  contrast in every theme.\n- Padding/borders/sticky behaviour come from the shared `Table.module.css`.\n",
+      "spec": "# TableHeaderCell\n\nA table header cell (`<th>`) for the Table family.\n\n## Intent\n\nHeader cell with an explicit `scope`. `scope=\"col\"` (default) labels a column\nand can carry a three-state sort control; `scope=\"row\"` marks the identifying\ncell of a body row so a screen reader announces the row context (\"Ada\nLovelace\") along with every other cell in that row — the accessibility feature a\nplain `<td>` grid can't provide.\n\n## Interaction contract\n\n- Column headers (`scope=\"col\"`) with `sortable` render an inner `<button>` and\n  expose `aria-sort` only while actively sorted. Wire `sortDirection`/`onSort`\n  from `useTableSortable`.\n- The sort caret is a DS `Icon` (`caret-up-down` unsorted / `caret-up` asc /\n  `caret-down` desc), decorative (`aria-hidden`); state is carried by\n  `aria-sort`, never the icon alone.\n- Row headers (`scope=\"row\"`) never render a sort control — they name a row,\n  they are not interactive.\n\n## Do / don't\n\n- Do: Use `scope=\"row\"` on the identifying cell of each body row for accessible data tables.\n- Do: Drive sorting with `useTableSortable`.\n- Don't: Make a `scope=\"row\"` header sortable.\n- Don't: Convey sort state with the caret colour alone.\n- Don't: Render it outside a table.\n\n## Design notes\n\n- Quiet column headers: small uppercase `--font-size-text-xs` labels in\n  `--color-muted`; the active sort caret uses `--color-primary`, the unsorted\n  one `--color-muted` so a sorted column reads at a glance and clears ≥3:1\n  contrast in every theme.\n- Padding/borders/sticky behaviour come from the shared `Table.module.css`.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableHeaderCell",
@@ -49851,8 +49955,15 @@
         },
         "cvaVariants": {},
         "variantsFnName": null,
-        "useWhen": [],
-        "avoidWhen": [],
+        "useWhen": [
+          "Use `scope=\"row\"` on the identifying cell of each body row for accessible data tables.",
+          "Drive sorting with `useTableSortable`."
+        ],
+        "avoidWhen": [
+          "Make a `scope=\"row\"` header sortable.",
+          "Convey sort state with the caret colour alone.",
+          "Render it outside a table."
+        ],
         "requiredA11y": [
           "native <th> with an explicit scope (col or row)",
           "sortable column headers expose aria-sort and toggle via an inner button",
@@ -49867,7 +49978,11 @@
           "ForcedColors"
         ],
         "replacementFor": [],
-        "forbiddenUse": [],
+        "forbiddenUse": [
+          "Make a `scope=\"row\"` header sortable.",
+          "Convey sort state with the caret colour alone.",
+          "Render it outside a table."
+        ],
         "composesWith": [
           "TableRow",
           "TableCell",
@@ -49877,7 +49992,43 @@
         ],
         "prefersOver": [],
         "declaredPropCount": 5,
-        "guidelines": [],
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "Use `scope=\"row\"` on the identifying cell of each body row for accessible data tables.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "Drive sorting with `useTableSortable`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Make a `scope=\"row\"` header sortable.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Convey sort state with the caret colour alone.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Render it outside a table.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
         "a11yCriteria": [
           {
             "id": "axe-no-violations",
@@ -50346,6 +50497,9 @@
         "group": "data-display",
         "status": "alpha",
         "description": "A table row (<tr>) for the Table family. Works in <thead> and <tbody>; selected renders the selection surface. Presentational — semantics belong to the surrounding table.",
+        "usage": {
+          "description": "TableRow groups cells inside a Table's thead or tbody and carries the selected state visually while a real selection control (Checkbox) remains the source of truth."
+        },
         "figma": null,
         "radixPrimitive": null,
         "element": "tr",
@@ -50393,7 +50547,8 @@
         "keywords": [
           "table",
           "row",
-          "tr"
+          "tr",
+          "selection"
         ],
         "props": {
           "selected": {
@@ -50412,7 +50567,7 @@
           "TableHeaderCell"
         ]
       },
-      "spec": "# TableRow\n\nA table row (`<tr>`) for the Table family.\n\n## Intent\n\nOne of the composable `Table` parts (`Table` root, `TableRow`,\n`TableHeaderCell`, `TableCell`). Works in both `<thead>` and `<tbody>`. Its only\nprop, `selected`, renders the selection surface and sets `data-selected` — the\nhover, zebra-stripe, and selection-tint treatments are cross-cutting styles\nsupplied by the `Table` root, so a row only looks striped/selected inside one.\n\n## Interaction contract\n\n- Presentational: no ARIA, no events of its own.\n- `selected` is **visual only**. The semantic selection state belongs to a\n  checkbox in the row or to the consuming application (`aria-selected` on a grid,\n  etc.) — never to the row's appearance alone.\n\n## Do / don't\n\nDo:\n\n- Compose it inside a `Table` root, in `<thead>` or `<tbody>`.\n- Pair `selected` with a real selection control (a `Checkbox`).\n\nDon't:\n\n- Render it outside a table.\n- Treat `selected` as the source of truth for selection.\n\n## Design notes\n\n- The row itself is unstyled; the border, hover, zebra, and selection tint come\n  from `Table.module.css` (shared across the family) so the whole table reads as\n  one system.\n- Forced-colors: borders map to `CanvasText` via the shared stylesheet.\n",
+      "spec": "# TableRow\n\nA table row (`<tr>`) for the Table family.\n\n## Intent\n\nOne of the composable `Table` parts (`Table` root, `TableRow`,\n`TableHeaderCell`, `TableCell`). Works in both `<thead>` and `<tbody>`. Its only\nprop, `selected`, renders the selection surface and sets `data-selected` — the\nhover, zebra-stripe, and selection-tint treatments are cross-cutting styles\nsupplied by the `Table` root, so a row only looks striped/selected inside one.\n\n## Interaction contract\n\n- Presentational: no ARIA, no events of its own.\n- `selected` is **visual only**. The semantic selection state belongs to a\n  checkbox in the row or to the consuming application (`aria-selected` on a grid,\n  etc.) — never to the row's appearance alone.\n\n## Do / don't\n\n- Do: Compose it inside a `Table` root, in `<thead>` or `<tbody>`.\n- Do: Pair `selected` with a real selection control (a `Checkbox`).\n- Don't: Render it outside a table.\n- Don't: Treat `selected` as the source of truth for selection.\n\n## Design notes\n\n- The row itself is unstyled; the border, hover, zebra, and selection tint come\n  from `Table.module.css` (shared across the family) so the whole table reads as\n  one system.\n- Forced-colors: borders map to `CanvasText` via the shared stylesheet.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableRow",
@@ -50473,8 +50628,14 @@
         "variants": {},
         "cvaVariants": {},
         "variantsFnName": null,
-        "useWhen": [],
-        "avoidWhen": [],
+        "useWhen": [
+          "Compose it inside a `Table` root, in `<thead>` or `<tbody>`.",
+          "Pair `selected` with a real selection control (a `Checkbox`)."
+        ],
+        "avoidWhen": [
+          "Render it outside a table.",
+          "Treat `selected` as the source of truth for selection."
+        ],
         "requiredA11y": [
           "native <tr> semantics; no ARIA of its own",
           "selection is visual only (data-selected); the row's selection state belongs to a checkbox or the consuming app"
@@ -50488,7 +50649,10 @@
           "ForcedColors"
         ],
         "replacementFor": [],
-        "forbiddenUse": [],
+        "forbiddenUse": [
+          "Render it outside a table.",
+          "Treat `selected` as the source of truth for selection."
+        ],
         "composesWith": [
           "TableHeaderCell",
           "TableCell",
@@ -50498,7 +50662,36 @@
         ],
         "prefersOver": [],
         "declaredPropCount": 1,
-        "guidelines": [],
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "Compose it inside a `Table` root, in `<thead>` or `<tbody>`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "Pair `selected` with a real selection control (a `Checkbox`).",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Render it outside a table.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Treat `selected` as the source of truth for selection.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
         "a11yCriteria": [
           {
             "id": "axe-no-violations",
@@ -57793,6 +57986,9 @@
         "group": "data-display",
         "status": "alpha",
         "description": "A single windowed list row: owns the role=listitem semantics with aria-posinset/aria-setsize position metadata, and composes ListItem for its chrome (leading icon, truncating label, end meta, trailing icon, selected check, destructive tone). Rendered by VirtualList.",
+        "usage": {
+          "description": "VirtualListItem is the presentational row for VirtualList: ListItem chrome with an end-aligned meta slot, positioned by getItemProps inside a role=\"list\" container. It carries no interactive semantics of its own."
+        },
         "figma": null,
         "radixPrimitive": null,
         "element": "div",
@@ -57908,7 +58104,7 @@
           "StatusDot"
         ]
       },
-      "spec": "# VirtualListItem\n\nA single windowed list row. It is the item `VirtualList` renders for each\nvisible index, and the reason a virtualized list stays announceable.\n\n## Intent\n\nGive `VirtualList` a real item component instead of ad-hoc row markup, sharing\nthe same chrome as menus and other lists. It **composes the stable `ListItem`**\n(leading `icon`, truncating label, end `meta` such as Badge / Kbd / StatusDot,\n`trailingIcon`, `selected` check, `destructive` tone) rather than duplicating\nit — exactly how `MenuItem` reuses `ListItem`. On top of that chrome it owns the\nwindowed-row semantics: `role=\"listitem\"` plus `aria-posinset` / `aria-setsize`\nso a screen reader can announce \"item 500 of 1000\" even though only the ~10\nvisible rows are mounted.\n\n## Interaction contract\n\n- `VirtualList` injects `posInSet`, `setSize`, and the positioning `style`\n  (absolute + `translateY` + `block-size`); consumers supply the chrome via\n  `getItemProps`.\n- Selection is **visual only** (`selected` renders a check); the semantic\n  selection model, if any, belongs to the surrounding application.\n- Must live inside a `role=\"list\"` container — `VirtualList`'s viewport\n  provides it. Rendering it standalone without a list ancestor is invalid.\n\n## Do / don't\n\nDo:\n\n- Compose it from `VirtualList` via `getItemProps`, or use it directly inside\n  your own `role=\"list\"`.\n- Use `meta` for end-aligned status (Badge / StatusDot / Kbd / a value).\n\nDon't:\n\n- Render it outside a `role=\"list\"` container.\n- Reimplement the ListItem chrome — compose it.\n- Attach interactive semantics to the row; selection is presentational.\n\n## Design notes\n\n- The row is a bordered container (`--color-border-light` divider); the composed\n  `ListItem` fills it and supplies padding, the icon gutter, and truncation.\n- Positioning is not baked into the item — it arrives via `style` so the item\n  stays reusable outside a virtualized context.\n- Forced-colors: the divider maps to `CanvasText`.\n",
+      "spec": "# VirtualListItem\n\nA single windowed list row. It is the item `VirtualList` renders for each\nvisible index, and the reason a virtualized list stays announceable.\n\n## Intent\n\nGive `VirtualList` a real item component instead of ad-hoc row markup, sharing\nthe same chrome as menus and other lists. It **composes the stable `ListItem`**\n(leading `icon`, truncating label, end `meta` such as Badge / Kbd / StatusDot,\n`trailingIcon`, `selected` check, `destructive` tone) rather than duplicating\nit — exactly how `MenuItem` reuses `ListItem`. On top of that chrome it owns the\nwindowed-row semantics: `role=\"listitem\"` plus `aria-posinset` / `aria-setsize`\nso a screen reader can announce \"item 500 of 1000\" even though only the ~10\nvisible rows are mounted.\n\n## Interaction contract\n\n- `VirtualList` injects `posInSet`, `setSize`, and the positioning `style`\n  (absolute + `translateY` + `block-size`); consumers supply the chrome via\n  `getItemProps`.\n- Selection is **visual only** (`selected` renders a check); the semantic\n  selection model, if any, belongs to the surrounding application.\n- Must live inside a `role=\"list\"` container — `VirtualList`'s viewport\n  provides it. Rendering it standalone without a list ancestor is invalid.\n\n## Do / don't\n\n- Do: Compose it from `VirtualList` via `getItemProps`, or use it directly inside your own `role=\"list\"`.\n- Do: Use `meta` for end-aligned status (Badge / StatusDot / Kbd / a value).\n- Don't: Render it outside a `role=\"list\"` container.\n- Don't: Reimplement the ListItem chrome — compose it.\n- Don't: Attach interactive semantics to the row; selection is presentational.\n\n## Design notes\n\n- The row is a bordered container (`--color-border-light` divider); the composed\n  `ListItem` fills it and supplies padding, the icon gutter, and truncation.\n- Positioning is not baked into the item — it arrives via `style` so the item\n  stays reusable outside a virtualized context.\n- Forced-colors: the divider maps to `CanvasText`.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/VirtualListItem",
@@ -57955,8 +58151,15 @@
         "variants": {},
         "cvaVariants": {},
         "variantsFnName": null,
-        "useWhen": [],
-        "avoidWhen": [],
+        "useWhen": [
+          "Compose it from `VirtualList` via `getItemProps`, or use it directly inside your own `role=\"list\"`.",
+          "Use `meta` for end-aligned status (Badge / StatusDot / Kbd / a value)."
+        ],
+        "avoidWhen": [
+          "Render it outside a `role=\"list\"` container.",
+          "Reimplement the ListItem chrome — compose it.",
+          "Attach interactive semantics to the row; selection is presentational."
+        ],
         "requiredA11y": [
           "role=listitem — must be rendered inside a role=list container (VirtualList's viewport)",
           "aria-posinset/aria-setsize announce the true position within the full collection even though only the windowed rows are in the DOM",
@@ -57971,11 +58174,51 @@
           "ForcedColors"
         ],
         "replacementFor": [],
-        "forbiddenUse": [],
+        "forbiddenUse": [
+          "Render it outside a `role=\"list\"` container.",
+          "Reimplement the ListItem chrome — compose it.",
+          "Attach interactive semantics to the row; selection is presentational."
+        ],
         "composesWith": [],
         "prefersOver": [],
         "declaredPropCount": 3,
-        "guidelines": [],
+        "guidelines": [
+          {
+            "level": "should",
+            "guidance": "Compose it from `VirtualList` via `getItemProps`, or use it directly inside your own `role=\"list\"`.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should",
+            "guidance": "Use `meta` for end-aligned status (Badge / StatusDot / Kbd / a value).",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Render it outside a `role=\"list\"` container.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Reimplement the ListItem chrome — compose it.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          },
+          {
+            "level": "should-not",
+            "guidance": "Attach interactive semantics to the row; selection is presentational.",
+            "rationale": null,
+            "rationaleSource": null,
+            "source": "spec.md#do-dont"
+          }
+        ],
         "a11yCriteria": [
           {
             "id": "axe-no-violations",
@@ -73038,12 +73281,7 @@
           },
           "headingLevel": {
             "optional": true,
-            "type": "union",
-            "values": [
-              2,
-              3,
-              4
-            ],
+            "type": "2 | 3 | 4",
             "description": "Heading level for the section title; visual size is unchanged. Pages whose outline places StoryBlock sections directly under the h1 should pass 2."
           }
         },

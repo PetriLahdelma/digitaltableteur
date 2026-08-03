@@ -19,15 +19,10 @@ supplied by the `Table` root, so a row only looks striped/selected inside one.
 
 ## Do / don't
 
-Do:
-
-- Compose it inside a `Table` root, in `<thead>` or `<tbody>`.
-- Pair `selected` with a real selection control (a `Checkbox`).
-
-Don't:
-
-- Render it outside a table.
-- Treat `selected` as the source of truth for selection.
+- Do: Compose it inside a `Table` root, in `<thead>` or `<tbody>`.
+- Do: Pair `selected` with a real selection control (a `Checkbox`).
+- Don't: Render it outside a table.
+- Don't: Treat `selected` as the source of truth for selection.
 
 ## Design notes
 

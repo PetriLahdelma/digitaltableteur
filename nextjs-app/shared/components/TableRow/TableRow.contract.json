@@ -6,12 +6,18 @@
   "group": "data-display",
   "status": "alpha",
   "description": "A table row (<tr>) for the Table family. Works in <thead> and <tbody>; selected renders the selection surface. Presentational — semantics belong to the surrounding table.",
+  "usage": {
+    "description": "TableRow groups cells inside a Table's thead or tbody and carries the selected state visually while a real selection control (Checkbox) remains the source of truth."
+  },
   "figma": null,
   "radixPrimitive": null,
   "element": "tr",
   "variants": {
     "selected": {
-      "values": ["true", "false"],
+      "values": [
+        "true",
+        "false"
+      ],
       "default": "false",
       "propSourced": true
     }
@@ -19,7 +25,12 @@
   "slots": [],
   "asChild": false,
   "subParts": [],
-  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
   "a11y": {
     "keyboard": [],
     "ariaRequirements": [
@@ -33,12 +44,21 @@
     "accessibilityTreeVerified": false
   },
   "tokens": {
-    "colors": ["--color-border-light", "--color-primary", "--color-light-bg"],
+    "colors": [
+      "--color-border-light",
+      "--color-primary",
+      "--color-light-bg"
+    ],
     "spacing": []
   },
   "lightDarkVerified": false,
   "dense": "table row; works in thead/tbody, selected surface, hover + zebra via the Table root",
-  "keywords": ["table", "row", "tr"],
+  "keywords": [
+    "table",
+    "row",
+    "tr",
+    "selection"
+  ],
   "props": {
     "selected": {
       "optional": true,
@@ -50,5 +70,9 @@
     "render it outside a table",
     "rely on selected for semantics — pair it with a checkbox or aria-selected on the consuming structure"
   ],
-  "composesWith": ["Table", "TableCell", "TableHeaderCell"]
+  "composesWith": [
+    "Table",
+    "TableCell",
+    "TableHeaderCell"
+  ]
 }

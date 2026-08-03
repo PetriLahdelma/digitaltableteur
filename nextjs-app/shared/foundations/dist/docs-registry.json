@@ -15877,7 +15877,9 @@
         "omit a meaningful caption",
         "put interactive sort logic in the cell instead of the useTable* hooks"
       ],
-      "usage": null,
+      "usage": {
+        "description": "Table renders semantic tabular data: a caption-led <table> whose rows and cells come from TableRow, TableHeaderCell and TableCell, with sorting and selection driven by the useTable* hooks rather than cell-local state. Use it when the content really is a data grid; DataTable wraps it for the batteries-included workflow."
+      },
       "tokens": {
         "colors": [
           "--color-text",
@@ -15973,7 +15975,9 @@
         "render it outside a table row",
         "use it for a header — use TableHeaderCell so column/row context is announced"
       ],
-      "usage": null,
+      "usage": {
+        "description": "TableCell is the body cell of the Table family: plain tabular data with an optional numeric mode that aligns figures on the decimal. Header semantics belong to TableHeaderCell; TableCell never announces scope."
+      },
       "tokens": {
         "colors": [
           "--color-border-light"
@@ -16085,7 +16089,9 @@
         "make a scope=row header sortable — row headers are not sort controls",
         "convey sort state with the caret colour alone"
       ],
-      "usage": null,
+      "usage": {
+        "description": "TableHeaderCell names a column or row with correct scope semantics, and hosts sortable column headers driven by useTableSortable; sort state is announced via aria-sort, never by caret colour alone."
+      },
       "tokens": {
         "colors": [
           "--color-muted",
@@ -16206,7 +16212,8 @@
       "keywords": [
         "table",
         "row",
-        "tr"
+        "tr",
+        "selection"
       ],
       "importLine": "import TableRow from \"@dt/TableRow\";",
       "keyProps": [
@@ -16233,7 +16240,9 @@
         "render it outside a table",
         "rely on selected for semantics — pair it with a checkbox or aria-selected on the consuming structure"
       ],
-      "usage": null,
+      "usage": {
+        "description": "TableRow groups cells inside a Table's thead or tbody and carries the selected state visually while a real selection control (Checkbox) remains the source of truth."
+      },
       "tokens": {
         "colors": [
           "--color-border-light",
@@ -18661,7 +18670,9 @@
         "duplicate ListItem chrome instead of composing it",
         "put interactive semantics on the row — selection is visual only"
       ],
-      "usage": null,
+      "usage": {
+        "description": "VirtualListItem is the presentational row for VirtualList: ListItem chrome with an end-aligned meta slot, positioned by getItemProps inside a role=\"list\" container. It carries no interactive semantics of its own."
+      },
       "tokens": {
         "colors": [
           "--color-border-light"
@@ -22917,12 +22928,7 @@
         },
         "headingLevel": {
           "optional": true,
-          "type": "union",
-          "values": [
-            2,
-            3,
-            4
-          ],
+          "type": "2 | 3 | 4",
           "description": "Heading level for the section title; visual size is unchanged. Pages whose outline places StoryBlock sections directly under the h1 should pass 2."
         }
       },

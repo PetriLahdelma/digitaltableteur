@@ -23,17 +23,11 @@ plain `<td>` grid can't provide.
 
 ## Do / don't
 
-Do:
-
-- Use `scope="row"` on the identifying cell of each body row for accessible
-  data tables.
-- Drive sorting with `useTableSortable`.
-
-Don't:
-
-- Make a `scope="row"` header sortable.
-- Convey sort state with the caret colour alone.
-- Render it outside a table.
+- Do: Use `scope="row"` on the identifying cell of each body row for accessible data tables.
+- Do: Drive sorting with `useTableSortable`.
+- Don't: Make a `scope="row"` header sortable.
+- Don't: Convey sort state with the caret colour alone.
+- Don't: Render it outside a table.
 
 ## Design notes
 

@@ -26,17 +26,11 @@ visible rows are mounted.
 
 ## Do / don't
 
-Do:
-
-- Compose it from `VirtualList` via `getItemProps`, or use it directly inside
-  your own `role="list"`.
-- Use `meta` for end-aligned status (Badge / StatusDot / Kbd / a value).
-
-Don't:
-
-- Render it outside a `role="list"` container.
-- Reimplement the ListItem chrome — compose it.
-- Attach interactive semantics to the row; selection is presentational.
+- Do: Compose it from `VirtualList` via `getItemProps`, or use it directly inside your own `role="list"`.
+- Do: Use `meta` for end-aligned status (Badge / StatusDot / Kbd / a value).
+- Don't: Render it outside a `role="list"` container.
+- Don't: Reimplement the ListItem chrome — compose it.
+- Don't: Attach interactive semantics to the row; selection is presentational.
 
 ## Design notes
 

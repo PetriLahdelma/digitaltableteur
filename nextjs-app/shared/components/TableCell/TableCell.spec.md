@@ -18,16 +18,10 @@ row context for assistive tech.
 
 ## Do / don't
 
-Do:
-
-- Use `numeric` for figures so columns align.
-- Let `TableHeaderCell scope="row"` name the row; keep other cells as
-  `TableCell`.
-
-Don't:
-
-- Use `TableCell` for a header — use `TableHeaderCell` so context is announced.
-- Render it outside a table row.
+- Do: Use `numeric` for figures so columns align.
+- Do: Let `TableHeaderCell scope="row"` name the row; keep other cells as `TableCell`.
+- Don't: Use `TableCell` for a header — use `TableHeaderCell` so context is announced.
+- Don't: Render it outside a table row.
 
 ## Design notes
 
