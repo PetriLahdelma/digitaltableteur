@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T16:56:13.982Z",
+  "generatedAt": "2026-08-03T19:12:16.519Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -26605,8 +26605,16 @@
       },
       "cvaVariants": {},
       "variantsFnName": null,
-      "useWhen": [],
-      "avoidWhen": [],
+      "useWhen": [
+        "Give every table a concise `caption`.",
+        "Drive sorting/selection with the `useTable*` hooks rather than local state.",
+        "Use `numeric` for figures so columns align on the decimal."
+      ],
+      "avoidWhen": [
+        "Use Table for page layout.",
+        "Put sort logic inside a cell instead of the hooks.",
+        "Rely on the caret color alone to convey sort state."
+      ],
       "requiredA11y": [
         "native table, thead, tbody, th and td semantics",
         "caption supplies the accessible table name",
@@ -26618,7 +26626,9 @@
         "Space",
         "Enter"
       ],
-      "compositionRules": [],
+      "compositionRules": [
+        "Put sort logic inside a cell instead of the hooks."
+      ],
       "canonicalExamples": [
         "Default",
         "Playground",
@@ -26626,7 +26636,11 @@
         "ForcedColors"
       ],
       "replacementFor": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "Use Table for page layout.",
+        "Put sort logic inside a cell instead of the hooks.",
+        "Rely on the caret color alone to convey sort state."
+      ],
       "composesWith": [
         "TableRow",
         "TableHeaderCell",
@@ -26636,7 +26650,50 @@
       ],
       "prefersOver": [],
       "declaredPropCount": 6,
-      "guidelines": [],
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "Give every table a concise `caption`.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "Drive sorting/selection with the `useTable*` hooks rather than local state.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "Use `numeric` for figures so columns align on the decimal.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Use Table for page layout.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Put sort logic inside a cell instead of the hooks.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Rely on the caret color alone to convey sort state.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
       "a11yCriteria": [
         {
           "id": "axe-no-violations",
@@ -26791,8 +26848,14 @@
       },
       "cvaVariants": {},
       "variantsFnName": null,
-      "useWhen": [],
-      "avoidWhen": [],
+      "useWhen": [
+        "Use `numeric` for figures so columns align.",
+        "Let `TableHeaderCell scope=\"row\"` name the row; keep other cells as `TableCell`."
+      ],
+      "avoidWhen": [
+        "Use `TableCell` for a header — use `TableHeaderCell` so context is announced.",
+        "Render it outside a table row."
+      ],
       "requiredA11y": [
         "native <td> semantics; no ARIA of its own",
         "pairs with TableHeaderCell scope=col/row so cells inherit column and row context"
@@ -26806,7 +26869,10 @@
         "ForcedColors"
       ],
       "replacementFor": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "Use `TableCell` for a header — use `TableHeaderCell` so context is announced.",
+        "Render it outside a table row."
+      ],
       "composesWith": [
         "TableRow",
         "TableHeaderCell",
@@ -26816,7 +26882,36 @@
       ],
       "prefersOver": [],
       "declaredPropCount": 2,
-      "guidelines": [],
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "Use `numeric` for figures so columns align.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "Let `TableHeaderCell scope=\"row\"` name the row; keep other cells as `TableCell`.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Use `TableCell` for a header — use `TableHeaderCell` so context is announced.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Render it outside a table row.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
       "a11yCriteria": [
         {
           "id": "axe-no-violations",
@@ -26990,8 +27085,15 @@
       },
       "cvaVariants": {},
       "variantsFnName": null,
-      "useWhen": [],
-      "avoidWhen": [],
+      "useWhen": [
+        "Use `scope=\"row\"` on the identifying cell of each body row for accessible data tables.",
+        "Drive sorting with `useTableSortable`."
+      ],
+      "avoidWhen": [
+        "Make a `scope=\"row\"` header sortable.",
+        "Convey sort state with the caret colour alone.",
+        "Render it outside a table."
+      ],
       "requiredA11y": [
         "native <th> with an explicit scope (col or row)",
         "sortable column headers expose aria-sort and toggle via an inner button",
@@ -27006,7 +27108,11 @@
         "ForcedColors"
       ],
       "replacementFor": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "Make a `scope=\"row\"` header sortable.",
+        "Convey sort state with the caret colour alone.",
+        "Render it outside a table."
+      ],
       "composesWith": [
         "TableRow",
         "TableCell",
@@ -27016,7 +27122,43 @@
       ],
       "prefersOver": [],
       "declaredPropCount": 5,
-      "guidelines": [],
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "Use `scope=\"row\"` on the identifying cell of each body row for accessible data tables.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "Drive sorting with `useTableSortable`.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Make a `scope=\"row\"` header sortable.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Convey sort state with the caret colour alone.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Render it outside a table.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
       "a11yCriteria": [
         {
           "id": "axe-no-violations",
@@ -27367,8 +27509,14 @@
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
-      "useWhen": [],
-      "avoidWhen": [],
+      "useWhen": [
+        "Compose it inside a `Table` root, in `<thead>` or `<tbody>`.",
+        "Pair `selected` with a real selection control (a `Checkbox`)."
+      ],
+      "avoidWhen": [
+        "Render it outside a table.",
+        "Treat `selected` as the source of truth for selection."
+      ],
       "requiredA11y": [
         "native <tr> semantics; no ARIA of its own",
         "selection is visual only (data-selected); the row's selection state belongs to a checkbox or the consuming app"
@@ -27382,7 +27530,10 @@
         "ForcedColors"
       ],
       "replacementFor": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "Render it outside a table.",
+        "Treat `selected` as the source of truth for selection."
+      ],
       "composesWith": [
         "TableHeaderCell",
         "TableCell",
@@ -27392,7 +27543,36 @@
       ],
       "prefersOver": [],
       "declaredPropCount": 1,
-      "guidelines": [],
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "Compose it inside a `Table` root, in `<thead>` or `<tbody>`.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "Pair `selected` with a real selection control (a `Checkbox`).",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Render it outside a table.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Treat `selected` as the source of truth for selection.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
       "a11yCriteria": [
         {
           "id": "axe-no-violations",
@@ -31287,8 +31467,15 @@
       "variants": {},
       "cvaVariants": {},
       "variantsFnName": null,
-      "useWhen": [],
-      "avoidWhen": [],
+      "useWhen": [
+        "Compose it from `VirtualList` via `getItemProps`, or use it directly inside your own `role=\"list\"`.",
+        "Use `meta` for end-aligned status (Badge / StatusDot / Kbd / a value)."
+      ],
+      "avoidWhen": [
+        "Render it outside a `role=\"list\"` container.",
+        "Reimplement the ListItem chrome — compose it.",
+        "Attach interactive semantics to the row; selection is presentational."
+      ],
       "requiredA11y": [
         "role=listitem — must be rendered inside a role=list container (VirtualList's viewport)",
         "aria-posinset/aria-setsize announce the true position within the full collection even though only the windowed rows are in the DOM",
@@ -31303,11 +31490,51 @@
         "ForcedColors"
       ],
       "replacementFor": [],
-      "forbiddenUse": [],
+      "forbiddenUse": [
+        "Render it outside a `role=\"list\"` container.",
+        "Reimplement the ListItem chrome — compose it.",
+        "Attach interactive semantics to the row; selection is presentational."
+      ],
       "composesWith": [],
       "prefersOver": [],
       "declaredPropCount": 3,
-      "guidelines": [],
+      "guidelines": [
+        {
+          "level": "should",
+          "guidance": "Compose it from `VirtualList` via `getItemProps`, or use it directly inside your own `role=\"list\"`.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should",
+          "guidance": "Use `meta` for end-aligned status (Badge / StatusDot / Kbd / a value).",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Render it outside a `role=\"list\"` container.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Reimplement the ListItem chrome — compose it.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        },
+        {
+          "level": "should-not",
+          "guidance": "Attach interactive semantics to the row; selection is presentational.",
+          "rationale": null,
+          "rationaleSource": null,
+          "source": "spec.md#do-dont"
+        }
+      ],
       "a11yCriteria": [
         {
           "id": "axe-no-violations",

@@ -30,6 +30,16 @@ const steps = [
   },
   { name: "validate:translations", cmd: "npm", args: ["run", "validate:translations"] },
   { name: "check:generated", cmd: "npm", args: ["run", "check:generated"] },
+  {
+    name: "audit:agent-experience (ratchet)",
+    cmd: "npm",
+    args: ["run", "audit:agent-experience"],
+  },
+  {
+    name: "health-artifact freshness",
+    cmd: "node",
+    args: ["scripts/design-system/check-health-freshness.mjs"],
+  },
   { name: "agent:eval (MCP + golden sets)", cmd: "npm", args: ["run", "agent:eval"] },
   {
     name: "contract-drift",

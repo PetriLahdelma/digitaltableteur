@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "scoringModel": "Evidence scorecard only. No weighted aggregate or model-authored quality score is produced.",
-  "componentCount": 171,
+  "componentCount": 176,
   "dimensions": {
     "apiEntropy": {
       "description": "Raw API surface and finite-choice state-space indicators; lower is not automatically better.",
-      "totalProps": 1150,
+      "totalProps": 1171,
       "maximumPropCount": 27,
       "maximumFiniteStateBits": 16.383,
       "largestSurfaces": [
@@ -144,9 +144,9 @@
         {
           "name": "StoryBlock",
           "tier": "pattern",
-          "propCount": 11,
+          "propCount": 12,
           "requiredPropCount": 2,
-          "documentedPropCount": 11,
+          "documentedPropCount": 12,
           "booleanAxisCount": 0,
           "finiteChoiceAxisCount": 5,
           "finiteStateBits": 9.077,
@@ -165,8 +165,8 @@
     "recoverability": {
       "description": "Components with negative guidance, replacement guidance, or executable prop relationships.",
       "coverage": {
-        "numerator": 171,
-        "denominator": 171,
+        "numerator": 176,
+        "denominator": 176,
         "rate": 1
       },
       "machineRelationshipComponents": 3
@@ -174,9 +174,9 @@
     "composability": {
       "description": "Components connected to the relationship graph plus golden pattern retrieval evidence.",
       "componentCoverage": {
-        "numerator": 86,
-        "denominator": 171,
-        "rate": 0.5029
+        "numerator": 90,
+        "denominator": 176,
+        "rate": 0.5114
       },
       "patternRetrieval": {
         "passed": 11,
@@ -188,14 +188,14 @@
     "contractClarity": {
       "description": "Source-backed prop documentation and complete intent/guidance/a11y/example/rationale evidence.",
       "propDocumentation": {
-        "numerator": 1028,
-        "denominator": 1150,
-        "rate": 0.8939
+        "numerator": 1049,
+        "denominator": 1171,
+        "rate": 0.8958
       },
       "completeContractEvidence": {
-        "numerator": 146,
-        "denominator": 171,
-        "rate": 0.8538
+        "numerator": 151,
+        "denominator": 176,
+        "rate": 0.858
       }
     }
   },
@@ -1162,12 +1162,12 @@
       "status": "alpha",
       "tier": "organism",
       "api": {
-        "propCount": 16,
+        "propCount": 18,
         "requiredPropCount": 4,
-        "documentedPropCount": 15,
-        "booleanAxisCount": 2,
+        "documentedPropCount": 17,
+        "booleanAxisCount": 3,
         "finiteChoiceAxisCount": 1,
-        "finiteStateBits": 3.585,
+        "finiteStateBits": 4.585,
         "slotCount": 4,
         "relationshipCount": 0
       },
@@ -1560,7 +1560,7 @@
     },
     {
       "name": "Gallery",
-      "status": "beta",
+      "status": "stable",
       "tier": "molecule",
       "api": {
         "propCount": 3,
@@ -1952,7 +1952,7 @@
     },
     {
       "name": "ListItem",
-      "status": "beta",
+      "status": "stable",
       "tier": "atom",
       "api": {
         "propCount": 9,
@@ -1980,7 +1980,7 @@
     },
     {
       "name": "LocationCard",
-      "status": "beta",
+      "status": "stable",
       "tier": "molecule",
       "api": {
         "propCount": 6,
@@ -2431,12 +2431,12 @@
       "status": "alpha",
       "tier": "atom",
       "api": {
-        "propCount": 4,
+        "propCount": 5,
         "requiredPropCount": 0,
-        "documentedPropCount": 4,
-        "booleanAxisCount": 1,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 2,
         "finiteChoiceAxisCount": 2,
-        "finiteStateBits": 3.585,
+        "finiteStateBits": 4.585,
         "slotCount": 0,
         "relationshipCount": 0
       },
@@ -3276,6 +3276,90 @@
       ]
     },
     {
+      "name": "Table",
+      "status": "alpha",
+      "tier": "molecule",
+      "api": {
+        "propCount": 6,
+        "requiredPropCount": 1,
+        "documentedPropCount": 6,
+        "booleanAxisCount": 3,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 4.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "TableCell",
+      "status": "alpha",
+      "tier": "atom",
+      "api": {
+        "propCount": 2,
+        "requiredPropCount": 0,
+        "documentedPropCount": 2,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 1,
+        "finiteStateBits": 2.585,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "TableHeaderCell",
+      "status": "alpha",
+      "tier": "atom",
+      "api": {
+        "propCount": 5,
+        "requiredPropCount": 0,
+        "documentedPropCount": 5,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 3,
+        "finiteStateBits": 5.17,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
       "name": "TableOfContents",
       "status": "alpha",
       "tier": "molecule",
@@ -3294,6 +3378,34 @@
         "positiveGuidance": true,
         "negativeGuidance": true,
         "accessibilityReview": false,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "TableRow",
+      "status": "alpha",
+      "tier": "atom",
+      "api": {
+        "propCount": 1,
+        "requiredPropCount": 0,
+        "documentedPropCount": 1,
+        "booleanAxisCount": 1,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 1,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
         "canonicalExamples": true,
         "discoverability": true,
         "usageRationale": true,
@@ -3721,6 +3833,34 @@
       },
       "recoverability": true,
       "composable": true,
+      "machineRelationships": []
+    },
+    {
+      "name": "VirtualListItem",
+      "status": "alpha",
+      "tier": "molecule",
+      "api": {
+        "propCount": 3,
+        "requiredPropCount": 2,
+        "documentedPropCount": 3,
+        "booleanAxisCount": 0,
+        "finiteChoiceAxisCount": 0,
+        "finiteStateBits": 0,
+        "slotCount": 0,
+        "relationshipCount": 0
+      },
+      "evidence": {
+        "intent": true,
+        "positiveGuidance": true,
+        "negativeGuidance": true,
+        "accessibilityReview": true,
+        "canonicalExamples": true,
+        "discoverability": true,
+        "usageRationale": true,
+        "designRationale": true
+      },
+      "recoverability": true,
+      "composable": false,
       "machineRelationships": []
     },
     {
@@ -4848,9 +4988,9 @@
       "status": "stable",
       "tier": "pattern",
       "api": {
-        "propCount": 11,
+        "propCount": 12,
         "requiredPropCount": 2,
-        "documentedPropCount": 11,
+        "documentedPropCount": 12,
         "booleanAxisCount": 0,
         "finiteChoiceAxisCount": 5,
         "finiteStateBits": 9.077,
@@ -5042,5 +5182,15 @@
   ],
   "ok": true,
   "violations": [],
-  "generatedAt": "2026-07-26T18:37:27.011Z"
+  "generatedAt": "2026-08-03T19:20:41.532Z",
+  "provenance": {
+    "sourceCommit": "8133b44083b6df69db9f69ae8de357c1f0dff1c4",
+    "workingTreeClean": false,
+    "dirtyPathCount": 23,
+    "generator": {
+      "name": "audit-agent-experience",
+      "version": 2,
+      "node": "v22.22.3"
+    }
+  }
 }

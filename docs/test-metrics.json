@@ -1,55 +1,63 @@
 {
-  "generatedAt": "2025-11-23T14:03:25.229Z",
+  "generatedAt": "2026-08-03T19:20:08.999Z",
+  "provenance": {
+    "sourceCommit": "8133b44083b6df69db9f69ae8de357c1f0dff1c4",
+    "workingTreeClean": false,
+    "generator": {
+      "name": "build-test-metrics",
+      "node": "v22.22.3"
+    }
+  },
   "vitest": {
-    "totalSuites": 128,
-    "passedSuites": 128,
+    "totalSuites": 985,
+    "passedSuites": 985,
     "failedSuites": 0,
-    "totalTests": 534,
-    "passedTests": 534,
+    "totalTests": 2846,
+    "passedTests": 2846,
     "failedTests": 0,
-    "durationMs": 6691.787841796875
+    "durationMs": 200523.16650390625
   },
   "accessibilityPages": {
-    "total": 6,
-    "passed": 6,
+    "total": 33,
+    "passed": 33,
     "failed": 0
   },
   "accessibilityStories": {
-    "total": 190,
-    "passed": 190,
+    "total": 0,
+    "passed": 0,
     "failed": 0
   },
   "coverage": {
     "summary": {
-      "statements": 91.77,
-      "branches": 79.49,
-      "functions": 75.88,
-      "lines": 91.77
+      "statements": 83.61,
+      "branches": 65.67,
+      "functions": 77.95,
+      "lines": 85.99
     },
     "rawTotals": {
       "statements": {
-        "total": 4984,
-        "covered": 4574,
+        "total": 30469,
+        "covered": 25478,
         "skipped": 0,
-        "pct": 91.77
+        "pct": 83.61
       },
       "branches": {
-        "total": 1073,
-        "covered": 853,
+        "total": 16468,
+        "covered": 10816,
         "skipped": 0,
-        "pct": 79.49
+        "pct": 65.67
       },
       "functions": {
-        "total": 170,
-        "covered": 129,
+        "total": 5161,
+        "covered": 4023,
         "skipped": 0,
-        "pct": 75.88
+        "pct": 77.95
       },
       "lines": {
-        "total": 4984,
-        "covered": 4574,
+        "total": 28398,
+        "covered": 24422,
         "skipped": 0,
-        "pct": 91.77
+        "pct": 85.99
       }
     },
     "thresholds": {
@@ -57,6 +65,16 @@
       "branches": 75,
       "functions": 65,
       "lines": 65
+    },
+    "thresholdStatus": {
+      "ok": false,
+      "violations": [
+        {
+          "metric": "branches",
+          "required": 75,
+          "actual": 65.67
+        }
+      ]
     }
   },
   "componentAdoption": {

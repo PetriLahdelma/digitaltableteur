@@ -32,17 +32,12 @@ batteries-included configuration on top. Compose with native `<thead>` and
 
 ## Do / don't
 
-Do:
-
-- Give every table a concise `caption`.
-- Drive sorting/selection with the `useTable*` hooks rather than local state.
-- Use `numeric` for figures so columns align on the decimal.
-
-Don't:
-
-- Use Table for page layout.
-- Put sort logic inside a cell instead of the hooks.
-- Rely on the caret color alone to convey sort state.
+- Do: Give every table a concise `caption`.
+- Do: Drive sorting/selection with the `useTable*` hooks rather than local state.
+- Do: Use `numeric` for figures so columns align on the decimal.
+- Don't: Use Table for page layout.
+- Don't: Put sort logic inside a cell instead of the hooks.
+- Don't: Rely on the caret color alone to convey sort state.
 
 ## Design notes
 
