@@ -239,6 +239,20 @@ const TestHealthOverview = () => {
   const notices: string[] = [];
   if (isStale) notices.push(t("dashboardDataNoticeStale", { date: stalenessLabel }));
   if (dashboardError) notices.push(`Unable to refresh metrics: ${dashboardError}`);
+  // Surface the checked-in fallback's provenance so the dashboard and the
+  // generated JSON visibly report the same commit (health-freshness gate).
+  const fallbackProvenance = (
+    metrics as {
+      provenance?: { sourceCommit?: string | null; workingTreeClean?: boolean };
+    }
+  ).provenance;
+  if (fallbackProvenance?.sourceCommit) {
+    notices.push(
+      `Fallback metrics generated at commit ${fallbackProvenance.sourceCommit.slice(0, 9)}${
+        fallbackProvenance.workingTreeClean === false ? " (dirty tree)" : ""
+      }.`,
+    );
+  }
 
   const visualDiffCount = visualReport?.diffs.length ?? 0;
   const visualGeneratedAt =
