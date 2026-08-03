@@ -95,7 +95,6 @@
     "Container",
     "CookieConsent",
     "CookieConsentProvider",
-    "DataTable",
     "DEFAULT_CONSENTS",
     "Display",
     "Divider",
@@ -150,7 +149,6 @@
     "Radio",
     "RadioGroup",
     "ReadingProgress",
-    "ResizablePanelGroup",
     "resolveMotionPlan",
     "saveConsentState",
     "ScrollIndicator",
@@ -186,7 +184,6 @@
     "TooltipProvider",
     "TooltipTrigger",
     "TranslationProvider",
-    "TreeView",
     "useAnimationContext",
     "useCookieConsent",
     "useFocusTrap",
@@ -205,7 +202,6 @@
     "useToast",
     "useTranslate",
     "ValueCard",
-    "VirtualList",
     "VisuallyHidden"
   ],
   "runtimeExportsByEntry": {
@@ -224,7 +220,6 @@
       "AuthorBio",
       "CodeBlockWindow",
       "CodeSnippet",
-      "DataTable",
       "ExpandableSection",
       "formatTimestamp",
       "Gallery",
@@ -233,8 +228,7 @@
       "Logo",
       "ReadingProgress",
       "Timestamp",
-      "ValueCard",
-      "VirtualList"
+      "ValueCard"
     ],
     "feedback": [
       "AlertBanner",
@@ -298,7 +292,6 @@
       "FlexBox",
       "Grid",
       "MacWindowFrame",
-      "ResizablePanelGroup",
       "Section",
       "Spacer",
       "Stack"
@@ -323,8 +316,7 @@
       "ScrollIndicator",
       "SegmentedControl",
       "SkipLink",
-      "Tabs",
-      "TreeView"
+      "Tabs"
     ],
     "patterns": [
       "CategoryFilter",
@@ -406,11 +398,6 @@
       "CodeSnippet",
       "CodeSnippetProps",
       "CodeSnippetVariant",
-      "DataTable",
-      "DataTableColumn",
-      "DataTableProps",
-      "DataTableSort",
-      "DataTableSortDirection",
       "ExpandableSection",
       "ExpandableSectionProps",
       "formatTimestamp",
@@ -430,10 +417,7 @@
       "TimestampProps",
       "TimestampSize",
       "ValueCard",
-      "ValueCardProps",
-      "VirtualList",
-      "VirtualListProps",
-      "VirtualListRange"
+      "ValueCardProps"
     ],
     "feedback": [
       "AlertBanner",
@@ -567,9 +551,6 @@
       "GridProps",
       "MacWindowFrame",
       "MacWindowFrameProps",
-      "ResizablePanel",
-      "ResizablePanelGroup",
-      "ResizablePanelGroupProps",
       "Section",
       "SectionProps",
       "Spacer",
@@ -620,10 +601,7 @@
       "SkipLinkProps",
       "TabItem",
       "Tabs",
-      "TabsProps",
-      "TreeView",
-      "TreeViewNode",
-      "TreeViewProps"
+      "TabsProps"
     ],
     "patterns": [
       "CategoryFilter",

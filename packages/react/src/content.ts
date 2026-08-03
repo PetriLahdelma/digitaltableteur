@@ -37,15 +37,3 @@ export {
   ValueCard,
   type ValueCardProps,
 } from "../../../nextjs-app/shared/components/ValueCard";
-export { DataTable } from "../../../nextjs-app/shared/components/DataTable";
-export type {
-  DataTableColumn,
-  DataTableProps,
-  DataTableSort,
-  DataTableSortDirection,
-} from "../../../nextjs-app/shared/components/DataTable";
-export { VirtualList } from "../../../nextjs-app/shared/components/VirtualList";
-export type {
-  VirtualListProps,
-  VirtualListRange,
-} from "../../../nextjs-app/shared/components/VirtualList";
