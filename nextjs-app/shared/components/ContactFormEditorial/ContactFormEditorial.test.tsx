@@ -1,8 +1,11 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { describe, it, expect, vi } from "vitest";
 import { ContactFormEditorial } from "./ContactFormEditorial";
+
+const { showToastMock } = vi.hoisted(() => ({ showToastMock: vi.fn() }));
 
 expect.extend(toHaveNoViolations);
 
@@ -33,7 +36,7 @@ vi.mock("../../lib/toast", async () => {
   const actual = await vi.importActual<object>("../../lib/toast");
   return {
     ...actual,
-    useToast: () => ({ showToast: vi.fn() }),
+    useToast: () => ({ showToast: showToastMock }),
   };
 });
 
@@ -60,5 +63,36 @@ describe("ContactFormEditorial", () => {
   it("has no axe violations", async () => {
     const { container } = render(<ContactFormEditorial />);
     expect(await axe(container)).toHaveNoViolations();
+  }, 30_000);
+
+  it("shows an error toast and keeps input when submission fails", async () => {
+    showToastMock.mockClear();
+    const consoleError = vi
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
+    const fetchSpy = vi
+      .spyOn(globalThis, "fetch")
+      .mockResolvedValue(new Response(null, { status: 500 }));
+    const onError = vi.fn();
+    const user = userEvent.setup();
+
+    render(<ContactFormEditorial onError={onError} />);
+    await user.type(screen.getByLabelText(/contactFullName/), "Test Person");
+    await user.type(screen.getByLabelText(/^contactEmail/), "test@example.com");
+    await user.type(screen.getByLabelText(/^contactMessage/), "Hello there");
+    await user.click(screen.getByRole("button", { name: /send|submit/i }));
+
+    await waitFor(() => {
+      expect(showToastMock).toHaveBeenCalledWith(
+        "contactErrorMessage",
+        expect.objectContaining({ tone: "error" }),
+      );
+    });
+    expect(onError).toHaveBeenCalled();
+    // The visitor's draft must survive a failed submit.
+    expect(screen.getByLabelText(/^contactMessage/)).toHaveValue("Hello there");
+
+    fetchSpy.mockRestore();
+    consoleError.mockRestore();
   }, 30_000);
 });
