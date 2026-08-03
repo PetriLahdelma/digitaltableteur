@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-storyblock-multiple-images-single-layout",
   "mode": "forced-colors",
-  "sourceSHA": "391961976ecb60a638899c1b4ecfd804b7c2342e",
-  "capturedAt": "2026-07-30T10:05:11.684Z",
-  "runner": null,
+  "sourceSHA": "c6d3602b4bab47f02a05b2dfddd0969141459060",
+  "capturedAt": "2026-08-03T16:29:34.427Z",
+  "runner": "storyblock-heading-level",
   "checks": {
     "accessibility-tree": {
       "passed": true
