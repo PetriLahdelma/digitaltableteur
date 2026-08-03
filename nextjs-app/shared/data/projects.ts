@@ -155,7 +155,7 @@ export const projects: Project[] = [
     slug: "home-remote",
     title: "Home Remote",
     description:
-      "A native macOS remote for TVs, home AV, and audio equipment: local-first control with a design system for a fun clay interface.",
+      "A native macOS remote for TVs, home AV and audio equipment: local-first control with a design system for a fun clay interface.",
     thumbnail: "/images/portfolio/home-remote/thumbnail.webp",
     category: "ux-design",
     secondaryCategories: ["tools"],
