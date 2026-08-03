@@ -16212,7 +16212,8 @@
       "keywords": [
         "table",
         "row",
-        "tr"
+        "tr",
+        "selection"
       ],
       "importLine": "import TableRow from \"@dt/TableRow\";",
       "keyProps": [
@@ -22927,12 +22928,7 @@
         },
         "headingLevel": {
           "optional": true,
-          "type": "union",
-          "values": [
-            2,
-            3,
-            4
-          ],
+          "type": "2 | 3 | 4",
           "description": "Heading level for the section title; visual size is unchanged. Pages whose outline places StoryBlock sections directly under the h1 should pass 2."
         }
       },

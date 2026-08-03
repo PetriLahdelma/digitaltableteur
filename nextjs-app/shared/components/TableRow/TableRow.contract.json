@@ -56,7 +56,8 @@
   "keywords": [
     "table",
     "row",
-    "tr"
+    "tr",
+    "selection"
   ],
   "props": {
     "selected": {
