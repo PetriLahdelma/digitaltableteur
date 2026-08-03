@@ -97,3 +97,12 @@
     gap: var(--space-layout-32);
   }
 }
+
+/* Interim HCB contrast fix: the npm-published CodeSnippet still ships
+   --code-token-comment: #928374, which is 4.01:1 on the gruvbox #282828
+   background. The component source now uses #a89984 (5.30:1); drop this
+   override once @digitaltableteur/react is republished and bumped. */
+
+:global(.themeHCB) .page pre {
+  --code-token-comment: #a89984;
+}

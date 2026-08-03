@@ -1,0 +1,7 @@
+- figure:
+  - text: typescript
+  - button "Copy"
+  - button "More options"
+  - region "Code snippet in typescript":
+    - code: console.log('Hello');
+  - status

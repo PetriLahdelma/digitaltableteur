@@ -389,7 +389,9 @@
   padding-inline: var(--cs-page-inset);
   background-color: #0088CE;
 
-  --fta-result-card-text-color: var(--color-white);
+  --fta-result-card-text-color: #fff; /* literal white: the band background
+     is the fixed FTA brand blue (#00649b, 6.37:1), and --color-white flips
+     to near-black in dark/HCB which dropped contrast to 2.74:1 */
 
   color: var(--fta-result-card-text-color);
 }

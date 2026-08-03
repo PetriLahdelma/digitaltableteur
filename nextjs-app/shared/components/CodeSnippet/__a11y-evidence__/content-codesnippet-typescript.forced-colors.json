@@ -1,8 +1,8 @@
 {
-  "storyId": "content-codesnippet-playground",
+  "storyId": "content-codesnippet-typescript",
   "mode": "forced-colors",
   "sourceSHA": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
-  "capturedAt": "2026-08-03T16:53:51.408Z",
+  "capturedAt": "2026-08-03T16:53:51.234Z",
   "runner": "fix-hcb-code-comment",
   "checks": {
     "accessibility-tree": {

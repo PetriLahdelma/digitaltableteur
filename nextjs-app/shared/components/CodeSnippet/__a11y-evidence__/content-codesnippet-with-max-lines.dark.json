@@ -1,8 +1,8 @@
 {
-  "storyId": "content-codesnippet-forced-colors",
+  "storyId": "content-codesnippet-with-max-lines",
   "mode": "dark",
   "sourceSHA": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
-  "capturedAt": "2026-08-03T16:53:47.795Z",
+  "capturedAt": "2026-08-03T16:53:46.630Z",
   "runner": "fix-hcb-code-comment",
   "checks": {
     "accessibility-tree": {

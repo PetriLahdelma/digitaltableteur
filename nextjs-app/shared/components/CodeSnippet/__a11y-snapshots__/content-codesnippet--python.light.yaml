@@ -1,0 +1,7 @@
+- figure:
+  - text: python
+  - button "Copy"
+  - button "More options"
+  - region "Code snippet in python":
+    - code: "def greet(name: str) -> str: return f\"Hello, {name}\" print(greet(\"world\"))"
+  - status
