@@ -82,9 +82,9 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             </Title>
             <p className={styles.metaOverview}>
               <strong>Home Remote</strong> is a native macOS menu-bar remote
-              for TVs, monitors, and other audio/video equipment. A local
+              for TVs, monitors and other audio/video equipment. A local
               daemon manages independently paired connections for each
-              supported device. The macOS app, CLI, and MCP server use the
+              supported device. The macOS app, CLI and MCP server use the
               same restricted local API, while device-control traffic remains
               on the trusted network.
             </p>
@@ -104,16 +104,16 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             A weekend solo project end to end: product design, brand, SwiftUI
-            development, and release engineering by one person. The
+            development and release engineering by one person. The
             constraints were self-imposed and strict: local-first privacy
             with no cloud account, vendor protocol quirks handled without
-            vendor apps, and a visual system that survives both a Dock window
+            vendor apps and a visual system that survives both a Dock window
             and a menu-bar popover.
           </Text>,
           <Text key="p2" size="s">
             The user is whoever is across the room from the screen. The jobs
             are short and impatient: pause or resume, nudge or mute volume,
-            launch a streaming app, switch inputs, wake or power off, and
+            launch a streaming app, switch inputs, wake or power off and
             confirm what is actually playing.
           </Text>,
         ]}
@@ -130,14 +130,14 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="s">
             Existing desktop controls were fragmented across vendor apps,
-            command-line tools, and inconsistent pairing flows. Speed and
+            command-line tools and inconsistent pairing flows. Speed and
             legibility matter more than exhaustive diagnostics when you are
             sitting across the room from the screen.
           </Text>,
           <Text key="p2" size="s">
             The remote also had to be precise about state: show whether the
             screen is actually active rather than whether a standby service
-            happens to answer, and never imply success after an error.
+            happens to answer and never imply success after an error.
           </Text>,
           <Mermaid
             key="architecture"
@@ -177,18 +177,18 @@ flowchart LR
         content={[
           <Text key="p1" size="s">
             The interface fits into a compact 330-point menu-bar popover
-            organized around three tasks: control, device maintenance, and
+            organized around three tasks: control, device maintenance and
             preferences. Remote puts availability first, then the control
-            hierarchy: the five-way wheel, playback, volume, and verified
+            hierarchy: the five-way wheel, playback, volume and verified
             streaming destinations, all one click deep. Devices handles
             selection and pairing as an inline maintenance state instead of a
-            separate settings maze. Settings keeps appearance, key clicks, and
+            separate settings maze. Settings keeps appearance, key clicks and
             motion preferences on plain rows.
           </Text>,
           <Text key="p2" size="s">
             Capability honesty drives the layout: panels omit any state or
             action the selected device cannot prove. A desktop monitor
-            declares itself a monitor, reports no tuner, and refuses to
+            declares itself a monitor, reports no tuner and refuses to
             pretend to change channels.
           </Text>,
         ]}
@@ -243,12 +243,12 @@ flowchart LR
             The interface is built from a bespoke warm-clay material with named
             tokens, each carrying a light and a dark value. The relief language
             does the explaining: embossed surfaces are pressable, debossed
-            surfaces are state, and a single light source sits at the top-left
+            surfaces are state and a single light source sits at the top-left
             of every surface. Blocks sit on one 18-point rhythm.
           </Text>,
           <Text key="p2" size="s">
             Availability still reads as green, amber, or red, but never by
-            color alone. Motion is a defined system for press, release, hover,
+            color alone. Motion is a defined system for press, release, hover
             and state, and the panel ORs the system Reduce Motion setting with
             its own preference.
           </Text>,
@@ -283,7 +283,7 @@ flowchart LR
             alt: "Relief specimen showing embossed, pressed, inert and recessed clay surfaces",
             width: 680,
             height: 264,
-            caption: "The relief vocabulary: embossed, pressed, inert, recess.",
+            caption: "The relief vocabulary: embossed, pressed, inert and recess.",
           },
           {
             type: "image",
@@ -292,7 +292,7 @@ flowchart LR
             width: 648,
             height: 642,
             caption:
-              "Every key across idle, hover, pressed, focused, and disabled.",
+              "Every key across idle, hover, pressed, focused and disabled.",
           },
         ]}
       />
@@ -426,8 +426,8 @@ flowchart LR
             The identity was explored with AI image generation and refined by
             hand: a little clay television and its remote, developed through
             retrospective construction studies, form iterations from angular
-            to soft, and material studies that picked the violet accent now
-            running through the app, the icon, and the installer as one
+            to soft and material studies that picked the violet accent now
+            running through the app, the icon and the installer as one
             palette.
           </Text>,
           <Text key="p2" size="s">
@@ -477,9 +477,9 @@ flowchart LR
           <Text key="p1" size="s">
             A small illustration series carries the clay world into empty
             states and the settings pane: someone sinking into an armchair,
-            remote in hand. The X-ray variant is the loading state, and it
+            remote in hand. The X-ray variant is the loading state and it
             earns its place functionally: it gives the pairing wait a face,
-            makes progress feel shorter than a bare spinner would, and keeps
+            makes progress feel shorter than a bare spinner would and keeps
             the brand present in the app&apos;s least glamorous moment.
           </Text>,
         ]}
@@ -500,19 +500,19 @@ flowchart LR
         cells={[
           {
             type: "image",
-            src: "/images/portfolio/home-remote/making-render-2.webp",
-            alt: "Clay illustration of a person in an armchair pointing a remote, cat asleep by a floor lamp",
-            width: 1023,
-            height: 1537,
-            caption: "The settings-pane illustration.",
+            src: "/images/portfolio/home-remote/illustrations-light.webp",
+            alt: "Two clay illustrations: a man in a hoodie and a woman with a sleeping cat, each in an armchair pointing a remote",
+            width: 957,
+            height: 1925,
+            caption: "The app clay illustrations.",
           },
           {
             type: "image",
-            src: "/images/portfolio/home-remote/making-render-1.webp",
-            alt: "X-ray styled clay illustration of a skeleton in an armchair holding a remote",
-            width: 922,
-            height: 897,
-            caption: "The X-ray loading state for dark mode.",
+            src: "/images/portfolio/home-remote/illustrations-dark.webp",
+            alt: "The same two armchair scenes as X-ray styled skeleton illustrations in translucent blue",
+            width: 957,
+            height: 1925,
+            caption: "The app clay illustrations for dark mode.",
           },
           {
             type: "image",
@@ -527,7 +527,7 @@ flowchart LR
 
       <StoryBlock
         subtitle="Delivery"
-        title="Signed, Notarized, and DMG'd"
+        title="Signed, Notarized and DMG'd"
         content={[
           <Text key="p1" size="s">
             Home Remote 0.2.0, a release-candidate build, is a Developer
@@ -538,7 +538,7 @@ flowchart LR
           <Text key="p2" size="s">
             Acceptance is hardware-in-the-loop: a release matrix run in front
             of both configured displays, covering pairing cycles, cold boots,
-            eight-hour standby checks, a ten-cycle endurance row, and
+            eight-hour standby checks, a ten-cycle endurance row and
             network-loss behaviour, retained as sanitized evidence. A
             transport acknowledgement is never recorded as proof that a panel
             changed.
@@ -547,7 +547,7 @@ flowchart LR
             Verified so far: two device classes, a television and a desktop
             monitor, controlled daily. Voice control and the generic remote
             gateway remain experimental. Next: broaden the verified device
-            matrix, and move pairing for more vendors from the terminal into
+            matrix and move pairing for more vendors from the terminal into
             the app.
           </Text>,
         ]}
@@ -569,7 +569,7 @@ flowchart LR
           />
         </div>
         <Text size="xs" className={styles.installerCaption}>
-          The disk image: installer, icon, and app share one palette.
+          The disk image: installer, icon and app share one palette.
         </Text>
       </div>
     </ProjectDetailLayout>
