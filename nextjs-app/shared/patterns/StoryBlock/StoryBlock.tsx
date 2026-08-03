@@ -50,6 +50,9 @@ export interface StoryBlockProps {
   as?: "section" | "article" | "div";
   /** Accessible label for the section */
   ariaLabel?: string;
+  /** Heading level for the section title; visual size is unchanged. Pages whose
+   * outline places StoryBlock sections directly under the h1 should pass 2. */
+  headingLevel?: 2 | 3 | 4;
 }
 
 /**
@@ -89,6 +92,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
   className = "",
   as = "section",
   ariaLabel,
+  headingLevel = 4,
 }) => {
   const Wrapper = backgroundColor !== "transparent" ? "section" : as;
   const bgColors = {
@@ -129,7 +133,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
                 {subtitle}
               </Text>
             )}
-            <Title level={4} size="s" className={styles.title}>
+            <Title level={headingLevel} size="s" className={styles.title}>
               {title}
             </Title>
             {content.map((paragraph, index) => (

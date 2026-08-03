@@ -50,7 +50,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>
+              <Title as="h2" unstyled className={styles.metaLabel}>
                 Services
               </Title>
               <p className={styles.metaText}>
@@ -59,13 +59,13 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>
+              <Title as="h2" unstyled className={styles.metaLabel}>
                 Duration
               </Title>
               <p className={styles.metaText}>Aug 2026</p>
             </div>
             <div className={styles.metaBlock}>
-              <Title as="h3" unstyled className={styles.metaLabel}>
+              <Title as="h2" unstyled className={styles.metaLabel}>
                 Tools used
               </Title>
               <div className={styles.metaTools}>
@@ -77,7 +77,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <Title as="h3" unstyled className={styles.metaLabel}>
+            <Title as="h2" unstyled className={styles.metaLabel}>
               Overview
             </Title>
             <p className={styles.metaOverview}>
@@ -99,6 +99,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
       </section>
 
       <StoryBlock
+        headingLevel={2}
         subtitle="Context"
         title="One Person, Every Role"
         content={[
@@ -125,6 +126,7 @@ export function HomeRemotePage({ nav }: { nav?: React.ReactNode }) {
       />
 
       <StoryBlock
+        headingLevel={2}
         subtitle="The Problem"
         title="Many Screens, Many Protocols, One Terminal"
         content={[
@@ -172,6 +174,7 @@ flowchart LR
       />
 
       <StoryBlock
+        headingLevel={2}
         subtitle="The Product"
         title="One Popover, Three Focused Tabs"
         content={[
@@ -236,6 +239,7 @@ flowchart LR
       </Text>
 
       <StoryBlock
+        headingLevel={2}
         subtitle="Material System"
         title="Clay: Raised Means Pressable"
         content={[
@@ -327,6 +331,7 @@ flowchart LR
       />
 
       <StoryBlock
+        headingLevel={2}
         subtitle="Decisions"
         title="Three Calls That Shaped It"
         content={[
@@ -359,6 +364,7 @@ flowchart LR
       />
 
       <StoryBlock
+        headingLevel={2}
         subtitle="State Before Action"
         title="Observed State, Not Assumed State"
         content={[
@@ -419,6 +425,7 @@ flowchart LR
       />
 
       <StoryBlock
+        headingLevel={2}
         subtitle="Brand Identity"
         title="A Remote You Would Leave on the Couch"
         content={[
@@ -471,6 +478,7 @@ flowchart LR
       />
 
       <StoryBlock
+        headingLevel={2}
         subtitle="Illustration"
         title="Couch Companions"
         content={[
@@ -526,6 +534,7 @@ flowchart LR
       />
 
       <StoryBlock
+        headingLevel={2}
         subtitle="Delivery"
         title="Signed, Notarized and DMG'd"
         content={[

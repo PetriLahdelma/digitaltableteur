@@ -248,12 +248,12 @@ function generateWorkPagesReport(results: Map<string, AuditResult[]>): string {
 test.describe("Work Project Pages Verification", () => {
   test.describe.configure({ mode: "serial" });
 
-  // Extended timeout for 44 page/theme combinations (11 pages x 4 themes)
-  // Each audit takes ~3-5s, so we need at least 220s
+  // Extended timeout: workPages is derived from projects.ts plus extras
+  // (currently 16 pages x 4 themes = 64 combinations at ~3-5s each)
   test("should pass accessibility audit for all work projects across all themes", async ({
     page,
   }) => {
-    test.setTimeout(300000); // 5 minutes
+    test.setTimeout(600000); // 10 minutes
     // Clear previous results
     allResults.clear();
 
