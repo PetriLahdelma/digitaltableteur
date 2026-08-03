@@ -5182,11 +5182,11 @@
   ],
   "ok": true,
   "violations": [],
-  "generatedAt": "2026-08-03T19:21:17.515Z",
+  "generatedAt": "2026-08-03T19:21:56.391Z",
   "provenance": {
-    "sourceCommit": "951a66fae4f8b018f10d7bdf4211c652265624b8",
-    "workingTreeClean": false,
-    "dirtyPathCount": 3,
+    "sourceCommit": "b46ab902a1df8dbc571a6db98be326f016d8433d",
+    "workingTreeClean": true,
+    "dirtyPathCount": 0,
     "generator": {
       "name": "audit-agent-experience",
       "version": 2,
