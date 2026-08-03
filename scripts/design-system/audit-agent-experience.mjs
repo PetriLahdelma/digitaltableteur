@@ -65,7 +65,7 @@ function currentProvenance() {
   let dirtyPaths = null;
   try {
     sourceCommit = git(["rev-parse", "HEAD"]);
-    dirtyPaths = git(["status", "--porcelain"])
+    dirtyPaths = git(["status", "--porcelain", "--untracked-files=no"])
       .split("\n")
       .filter(Boolean).length;
   } catch {

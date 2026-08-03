@@ -43,7 +43,7 @@ const buildProvenance = () => {
   try {
     return {
       sourceCommit: git(["rev-parse", "HEAD"]),
-      workingTreeClean: git(["status", "--porcelain"]).length === 0,
+      workingTreeClean: git(["status", "--porcelain", "--untracked-files=no"]).length === 0,
       generator: { name: "build-test-metrics", node: process.version },
     };
   } catch {
