@@ -266,8 +266,17 @@ flowchart LR
         backgroundColor="transparent"
         maxWidth="lg"
         spacing="comfortable"
-        className={styles.imageGrid}
+        className={`${styles.imageGrid} ${styles.claySpecimenGrid}`}
         cells={[
+          {
+            type: "image",
+            src: "/images/portfolio/home-remote/color-specimen.webp",
+            alt: "Color specimen with four clay swatches: violet, cream, charcoal and live green",
+            width: 644,
+            height: 244,
+            caption:
+              "Four example colors from the palette: violet for focus, cream for keys, charcoal for type and live green for online status.",
+          },
           {
             type: "image",
             src: "/images/portfolio/home-remote/relief-specimen.webp",
@@ -278,10 +287,10 @@ flowchart LR
           },
           {
             type: "image",
-            src: "/images/portfolio/home-remote/clay-key-states.webp",
+            src: "/images/portfolio/home-remote/clay-key-states-v3.webp",
             alt: "Clay key, hub and dent components in idle, hover, pressed, focused and disabled states",
-            width: 1224,
-            height: 1212,
+            width: 648,
+            height: 642,
             caption:
               "Every key across idle, hover, pressed, focused, and disabled.",
           },
