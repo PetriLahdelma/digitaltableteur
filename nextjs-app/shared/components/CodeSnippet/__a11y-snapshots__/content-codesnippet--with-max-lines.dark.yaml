@@ -1,0 +1,8 @@
+- figure:
+  - text: typescript
+  - button "Copy"
+  - button "More options"
+  - region "Code snippet in typescript":
+    - code: "import React, { useState, useEffect } from \"react\"; import { Button } from \"@dt/Button\"; import { Card } from \"@dt/Card\"; // This is a longer example to demonstrate show more/less export function DemoComponent({ title, description }: DemoProps) { const [count, setCount] = useState(0); const [loading, setLoading] = useState(false); useEffect(() => { console.log(\"Component mounted\"); return () => console.log(\"Component unmounted\"); }, []); const handleClick = async () => { setLoading(true); await someAsyncOperation(); setCount(prev => prev + 1); setLoading(false); }; return ( <Card title={title}> <p>{description}</p> <Button onClick={handleClick} loading={loading}> Count: {count} </Button> </Card> ); }"
+  - button "Show less" [expanded]
+  - status

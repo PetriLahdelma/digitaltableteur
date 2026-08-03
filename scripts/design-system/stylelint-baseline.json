@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2349,
+  "warningCount": 2346,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -9670,7 +9670,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 288,
+      "line": 293,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -9742,7 +9742,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 288,
+      "line": 293,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9760,7 +9760,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 293,
+      "line": 298,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -9814,7 +9814,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Home/Home.module.css",
-      "line": 259,
+      "line": 264,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -10300,7 +10300,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
-      "line": 443,
+      "line": 445,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -10318,7 +10318,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/finnishTransportAgency.module.css",
-      "line": 452,
+      "line": 454,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -10633,7 +10633,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 88,
+      "line": 87,
       "column": 32,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -10642,7 +10642,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 89,
+      "line": 88,
       "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -10651,7 +10651,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 93,
+      "line": 92,
       "column": 19,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -10660,7 +10660,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 254,
+      "line": 253,
       "column": 22,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -10669,7 +10669,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 255,
+      "line": 254,
       "column": 23,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -10678,7 +10678,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 258,
+      "line": 257,
       "column": 21,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -10687,7 +10687,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 79,
+      "line": 78,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10696,7 +10696,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 120,
+      "line": 119,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10705,7 +10705,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 173,
+      "line": 172,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10714,7 +10714,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 517,
+      "line": 516,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10723,7 +10723,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 268,
+      "line": 267,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10732,7 +10732,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 297,
+      "line": 296,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10741,7 +10741,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 314,
+      "line": 313,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10750,7 +10750,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 340,
+      "line": 339,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10759,7 +10759,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 376,
+      "line": 375,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10768,7 +10768,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 411,
+      "line": 410,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10777,7 +10777,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 445,
+      "line": 444,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10786,7 +10786,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 289,
+      "line": 288,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10795,7 +10795,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 323,
+      "line": 322,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10804,7 +10804,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 368,
+      "line": 367,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10813,7 +10813,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 394,
+      "line": 393,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10822,7 +10822,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 419,
+      "line": 418,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10831,7 +10831,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 427,
+      "line": 426,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10840,7 +10840,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 453,
+      "line": 452,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10849,7 +10849,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 358,
+      "line": 357,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10858,7 +10858,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 472,
+      "line": 471,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10867,7 +10867,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 490,
+      "line": 489,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10876,7 +10876,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 483,
+      "line": 482,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10885,7 +10885,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 232,
+      "line": 231,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10894,7 +10894,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 603,
+      "line": 602,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10903,7 +10903,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 54,
+      "line": 53,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10912,7 +10912,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 69,
+      "line": 68,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10921,7 +10921,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 249,
+      "line": 248,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10930,7 +10930,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 257,
+      "line": 256,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10939,7 +10939,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 435,
+      "line": 434,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10948,7 +10948,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 305,
+      "line": 304,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10957,7 +10957,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 331,
+      "line": 330,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10966,7 +10966,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 348,
+      "line": 347,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10975,7 +10975,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 384,
+      "line": 383,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10984,7 +10984,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 402,
+      "line": 401,
       "column": 5,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -10993,7 +10993,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 616,
+      "line": 615,
       "column": 18,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11002,7 +11002,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 360,
+      "line": 359,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11011,7 +11011,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 536,
+      "line": 535,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11020,7 +11020,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 616,
+      "line": 615,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11029,7 +11029,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 582,
+      "line": 581,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11038,7 +11038,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 603,
+      "line": 602,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11047,7 +11047,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 497,
+      "line": 496,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11056,7 +11056,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 608,
+      "line": 607,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11065,7 +11065,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 592,
+      "line": 591,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11074,7 +11074,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 592,
+      "line": 591,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11083,7 +11083,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 592,
+      "line": 591,
       "column": 31,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11092,7 +11092,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 625,
+      "line": 624,
       "column": 10,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11101,7 +11101,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 630,
+      "line": 629,
       "column": 10,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11110,7 +11110,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 461,
+      "line": 460,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11119,7 +11119,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 495,
+      "line": 494,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11128,7 +11128,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 418,
+      "line": 417,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11137,7 +11137,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 366,
+      "line": 365,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11146,7 +11146,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 312,
+      "line": 311,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11155,7 +11155,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 382,
+      "line": 381,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11164,7 +11164,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 374,
+      "line": 373,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11173,7 +11173,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 392,
+      "line": 391,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11182,7 +11182,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 644,
+      "line": 643,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11191,7 +11191,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 400,
+      "line": 399,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11200,7 +11200,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 296,
+      "line": 295,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11209,7 +11209,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 383,
+      "line": 382,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11218,7 +11218,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 409,
+      "line": 408,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11227,7 +11227,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 483,
+      "line": 482,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11236,7 +11236,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 592,
+      "line": 591,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11245,7 +11245,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 461,
+      "line": 460,
       "column": 12,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11254,7 +11254,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 565,
+      "line": 564,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11263,7 +11263,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 434,
+      "line": 433,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11272,7 +11272,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 295,
+      "line": 294,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11281,7 +11281,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 339,
+      "line": 338,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11290,7 +11290,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 393,
+      "line": 392,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11299,7 +11299,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 417,
+      "line": 416,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11308,7 +11308,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 433,
+      "line": 432,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11317,7 +11317,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 425,
+      "line": 424,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11326,7 +11326,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 443,
+      "line": 442,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11335,7 +11335,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 303,
+      "line": 302,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11344,7 +11344,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 426,
+      "line": 425,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11353,7 +11353,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 451,
+      "line": 450,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11362,7 +11362,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 472,
+      "line": 471,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11371,7 +11371,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 490,
+      "line": 489,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11380,7 +11380,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 515,
+      "line": 514,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11389,7 +11389,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 588,
+      "line": 587,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11398,7 +11398,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 347,
+      "line": 346,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11407,7 +11407,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 531,
+      "line": 530,
       "column": 19,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11416,7 +11416,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 552,
+      "line": 551,
       "column": 8,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11425,7 +11425,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 523,
+      "line": 522,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11434,7 +11434,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 313,
+      "line": 312,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11443,7 +11443,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 367,
+      "line": 366,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11452,7 +11452,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 444,
+      "line": 443,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11461,7 +11461,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 304,
+      "line": 303,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11470,7 +11470,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 329,
+      "line": 328,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11479,7 +11479,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 461,
+      "line": 460,
       "column": 26,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11488,7 +11488,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 501,
+      "line": 500,
       "column": 17,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11497,7 +11497,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 197,
+      "line": 196,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11506,7 +11506,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 201,
+      "line": 200,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11515,7 +11515,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 205,
+      "line": 204,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11524,7 +11524,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 209,
+      "line": 208,
       "column": 22,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11533,7 +11533,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 321,
+      "line": 320,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11542,7 +11542,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 401,
+      "line": 400,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11551,7 +11551,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 322,
+      "line": 321,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11560,7 +11560,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 410,
+      "line": 409,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11569,7 +11569,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 452,
+      "line": 451,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11578,7 +11578,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 330,
+      "line": 329,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11587,7 +11587,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 338,
+      "line": 337,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11596,7 +11596,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 375,
+      "line": 374,
       "column": 23,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11605,7 +11605,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 346,
+      "line": 345,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11614,7 +11614,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 638,
+      "line": 637,
       "column": 21,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11623,7 +11623,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 356,
+      "line": 355,
       "column": 24,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -11632,7 +11632,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 616,
+      "line": 615,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11641,7 +11641,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 229,
+      "line": 228,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11650,7 +11650,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 497,
+      "line": 496,
       "column": 8,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11659,7 +11659,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 502,
+      "line": 501,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11668,7 +11668,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 601,
+      "line": 600,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11677,7 +11677,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 609,
+      "line": 608,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11686,7 +11686,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 608,
+      "line": 607,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11695,7 +11695,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 592,
+      "line": 591,
       "column": 12,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11704,7 +11704,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 592,
+      "line": 591,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11713,7 +11713,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 592,
+      "line": 591,
       "column": 31,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11722,7 +11722,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 625,
+      "line": 624,
       "column": 10,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11731,7 +11731,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 630,
+      "line": 629,
       "column": 10,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11740,7 +11740,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 487,
+      "line": 486,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11749,7 +11749,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 418,
+      "line": 417,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11758,7 +11758,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 366,
+      "line": 365,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11767,7 +11767,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 312,
+      "line": 311,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11776,7 +11776,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 382,
+      "line": 381,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11785,7 +11785,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 374,
+      "line": 373,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11794,7 +11794,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 267,
+      "line": 266,
       "column": 22,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11803,7 +11803,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 593,
+      "line": 592,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11812,7 +11812,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 392,
+      "line": 391,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11821,7 +11821,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 400,
+      "line": 399,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11830,7 +11830,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 296,
+      "line": 295,
       "column": 23,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11839,7 +11839,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 332,
+      "line": 331,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11848,7 +11848,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 383,
+      "line": 382,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11857,7 +11857,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 409,
+      "line": 408,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11866,7 +11866,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 419,
+      "line": 418,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11875,7 +11875,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 543,
+      "line": 542,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11884,7 +11884,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 482,
+      "line": 481,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11893,7 +11893,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 314,
+      "line": 313,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11902,7 +11902,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 349,
+      "line": 348,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11911,7 +11911,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 385,
+      "line": 384,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11920,7 +11920,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 434,
+      "line": 433,
       "column": 23,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11929,7 +11929,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 436,
+      "line": 435,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11938,7 +11938,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 295,
+      "line": 294,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11947,7 +11947,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 339,
+      "line": 338,
       "column": 23,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11956,7 +11956,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 393,
+      "line": 392,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11965,7 +11965,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 417,
+      "line": 416,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11974,7 +11974,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 297,
+      "line": 296,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11983,7 +11983,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 433,
+      "line": 432,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -11992,7 +11992,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 425,
+      "line": 424,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12001,7 +12001,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 443,
+      "line": 442,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12010,7 +12010,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 303,
+      "line": 302,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12019,7 +12019,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 426,
+      "line": 425,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12028,7 +12028,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 451,
+      "line": 450,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12037,7 +12037,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 172,
+      "line": 171,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12046,7 +12046,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 173,
+      "line": 172,
       "column": 15,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12055,7 +12055,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 368,
+      "line": 367,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12064,7 +12064,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 347,
+      "line": 346,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12073,7 +12073,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 403,
+      "line": 402,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12082,7 +12082,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 306,
+      "line": 305,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12091,7 +12091,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 268,
+      "line": 267,
       "column": 17,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12100,7 +12100,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 453,
+      "line": 452,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12109,7 +12109,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 445,
+      "line": 444,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12118,7 +12118,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 411,
+      "line": 410,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12127,7 +12127,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 394,
+      "line": 393,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12136,7 +12136,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 304,
+      "line": 303,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12145,7 +12145,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 329,
+      "line": 328,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12154,7 +12154,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 340,
+      "line": 339,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12163,7 +12163,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 43,
+      "line": 42,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12172,7 +12172,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 376,
+      "line": 375,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12181,7 +12181,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 321,
+      "line": 320,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12190,7 +12190,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 323,
+      "line": 322,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12199,7 +12199,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 401,
+      "line": 400,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12208,7 +12208,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 289,
+      "line": 288,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12217,7 +12217,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 427,
+      "line": 426,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12226,7 +12226,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 359,
+      "line": 358,
       "column": 18,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12235,7 +12235,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 322,
+      "line": 321,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12244,7 +12244,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 410,
+      "line": 409,
       "column": 23,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12253,7 +12253,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 452,
+      "line": 451,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12262,7 +12262,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 330,
+      "line": 329,
       "column": 25,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12271,7 +12271,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 338,
+      "line": 337,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12280,7 +12280,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 375,
+      "line": 374,
       "column": 23,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12289,7 +12289,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 346,
+      "line": 345,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12298,7 +12298,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 356,
+      "line": 355,
       "column": 24,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12307,7 +12307,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 547,
+      "line": 546,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -12316,7 +12316,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 134,
+      "line": 133,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -12325,7 +12325,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 143,
+      "line": 142,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -12334,7 +12334,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/Illustrations/illustrations.module.css",
-      "line": 190,
+      "line": 189,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -12343,7 +12343,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 103,
+      "line": 112,
       "column": 18,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -12352,7 +12352,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 108,
+      "line": 117,
       "column": 31,
       "rule": "declaration-no-important",
       "severity": "warning",
@@ -12361,7 +12361,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 159,
+      "line": 168,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12370,7 +12370,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 175,
+      "line": 184,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12379,7 +12379,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 516,
+      "line": 525,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12388,7 +12388,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 167,
+      "line": 176,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12397,7 +12397,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 220,
+      "line": 229,
       "column": 3,
       "rule": "order/properties-order",
       "severity": "warning",
@@ -12406,7 +12406,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 391,
+      "line": 400,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12415,7 +12415,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 379,
+      "line": 388,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12424,7 +12424,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 426,
+      "line": 435,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12433,7 +12433,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 446,
+      "line": 455,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12442,7 +12442,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 332,
+      "line": 341,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12451,7 +12451,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 424,
+      "line": 433,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12460,7 +12460,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 412,
+      "line": 421,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12469,7 +12469,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 480,
+      "line": 489,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12478,7 +12478,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 148,
+      "line": 157,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12487,7 +12487,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 221,
+      "line": 230,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12496,7 +12496,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 511,
+      "line": 520,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12505,7 +12505,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 389,
+      "line": 398,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12514,7 +12514,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 166,
+      "line": 175,
       "column": 20,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12523,7 +12523,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 377,
+      "line": 386,
       "column": 14,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
@@ -12532,7 +12532,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 215,
+      "line": 224,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -12541,7 +12541,7 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 236,
+      "line": 245,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
@@ -12550,39 +12550,12 @@
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 242,
+      "line": 251,
       "column": 3,
       "rule": "scale-unlimited/declaration-strict-value",
       "severity": "warning",
       "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
       "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)::3"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 335,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)::4"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 373,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)::5"
-    },
-    {
-      "file": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css",
-      "line": 454,
-      "column": 3,
-      "rule": "scale-unlimited/declaration-strict-value",
-      "severity": "warning",
-      "text": "Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)",
-      "id": "nextjs-app/shared/components/pages/Work/KnobSmithAudio/knobSmithAudio.module.css::scale-unlimited/declaration-strict-value::Work case studies may use deliberate per-project palettes; tokens still preferred. (scale-unlimited/declaration-strict-value)::6"
     },
     {
       "file": "nextjs-app/shared/components/pages/Work/LlmComponentSchema/llm-component-schema.module.css",
@@ -15403,7 +15376,7 @@
     },
     {
       "file": "nextjs-app/shared/components/Table/Table.module.css",
-      "line": 110,
+      "line": 111,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
@@ -17356,7 +17329,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/GridBlock/GridBlock.module.css",
-      "line": 81,
+      "line": 108,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -17365,7 +17338,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/GridBlock/GridBlock.module.css",
-      "line": 68,
+      "line": 82,
       "column": 14,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -17374,7 +17347,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/GridBlock/GridBlock.module.css",
-      "line": 72,
+      "line": 99,
       "column": 10,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -17383,7 +17356,7 @@
     },
     {
       "file": "nextjs-app/shared/patterns/GridBlock/GridBlock.module.css",
-      "line": 76,
+      "line": 103,
       "column": 25,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",

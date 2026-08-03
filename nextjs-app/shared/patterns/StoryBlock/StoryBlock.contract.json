@@ -1,212 +1,222 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-    "name": "StoryBlock",
-    "tier": "pattern",
-    "group": "structure",
-    "status": "stable",
-    "description": "Narrative section for Work case studies with a subtitle and title, rich text, and images arranged by a selectable layout.",
-    "dense": "Case-study narrative section: subtitle/title, rich content, and images with selectable image layout.",
-    "keywords": [
-        "story",
-        "narrative",
-        "case-study",
-        "images",
-        "work"
+  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+  "name": "StoryBlock",
+  "tier": "pattern",
+  "group": "structure",
+  "status": "stable",
+  "description": "Narrative section for Work case studies with a subtitle and title, rich text, and images arranged by a selectable layout.",
+  "dense": "Case-study narrative section: subtitle/title, rich content, and images with selectable image layout.",
+  "keywords": [
+    "story",
+    "narrative",
+    "case-study",
+    "images",
+    "work"
+  ],
+  "usage": {
+    "description": "StoryBlock is the workhorse narrative section of Work case studies: a subtitle/title pair, rich text content, and images arranged by imageLayout, over background and spacing knobs. Chain several StoryBlocks (with GridBlock mosaics and ProcessBlock) to build a project page's spine."
+  },
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1435-143",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [
+    "content"
+  ],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "ariaRequirements": [],
+    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [
+      "--color-light-bg",
+      "--color-white"
     ],
-    "usage": {
-        "description": "StoryBlock is the workhorse narrative section of Work case studies: a subtitle/title pair, rich text content, and images arranged by imageLayout, over background and spacing knobs. Chain several StoryBlocks (with GridBlock mosaics and ProcessBlock) to build a project page's spine."
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
+      "since": "2026-06-04"
     },
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1435-143",
-    "radixPrimitive": null,
-    "element": "div",
-    "variants": {},
-    "slots": [
-        "content"
-    ],
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-    ],
-    "a11y": {
-        "keyboard": [],
-        "reducedMotion": true,
-        "reviewed": true,
-        "forcedColorsVerified": true,
-        "ariaRequirements": [],
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-09 — Promoted beta→stable: AT snapshots captured for all required stories (base mode, sibling SiteFooter convention), forced-colors pass re-verified in real browser, consumers audited (12 production pages each).",
-        "accessibilityTreeVerified": true,
-        "realBrowserForcedColorsVerified": true
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
+      "since": "2026-06-04"
     },
-    "tokens": {
-        "colors": [
-            "--color-light-bg",
-            "--color-white"
-        ],
-        "spacing": []
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
+      "since": "2026-06-04"
     },
-    "lightDarkVerified": true,
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/DSharpDesignSystemPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/DSharpDesignSystem/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/FinnishTransportAgencyPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
-            "since": "2026-06-04"
-        }
-    ],
-    "schemaVersion": 2,
-    "props": {
-        "subtitle": {
-            "optional": true,
-            "type": "string",
-            "description": "Optional subtitle/category label"
-        },
-        "title": {
-            "optional": false,
-            "type": "string",
-            "description": "Main title of the story section"
-        },
-        "content": {
-            "optional": false,
-            "type": "React.ReactNode[]",
-            "description": "Body content as array of paragraphs or React nodes"
-        },
-        "images": {
-            "optional": true,
-            "type": "StoryImage | StoryImage[]",
-            "description": "Optional image or images to display"
-        },
-        "imageLayout": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "single",
-                "none",
-                "grid"
-            ],
-            "description": "Image layout: \"single\" (1 col), \"grid\" (2 col), or \"none\""
-        },
-        "backgroundColor": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "transparent",
-                "light",
-                "white"
-            ],
-            "description": "Background color variant"
-        },
-        "maxWidth": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "xl",
-                "full"
-            ],
-            "description": "Maximum width constraint"
-        },
-        "spacing": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "default",
-                "compact",
-                "comfortable",
-                "spacious"
-            ],
-            "description": "Spacing variant"
-        },
-        "className": {
-            "optional": true,
-            "type": "string",
-            "description": "Additional CSS class"
-        },
-        "as": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "article",
-                "div",
-                "section"
-            ],
-            "description": "Semantic HTML element to use"
-        },
-        "ariaLabel": {
-            "optional": true,
-            "type": "string",
-            "description": "Accessible label for the section"
-        }
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/FinnishTransportAgency/index.ts",
+      "since": "2026-06-04"
     },
-    "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
-    ],
-    "composesWith": [
-        "Title",
-        "Text",
-        "ProjectDetailLayout",
-        "ProjectHero",
-        "RelatedProjects",
-        "GridBlock",
-        "ProcessBlock"
-    ]
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/GarageJunction/GarageJunctionPage.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/GarageJunction/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/HelsinkiDesignSystemPage.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/HomeRemote/HomeRemotePage.tsx",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/HomeRemote/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/Intrum/index.ts",
+      "since": "2026-06-04"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Work/Intrum/IntrumPage.tsx",
+      "since": "2026-06-04"
+    }
+  ],
+  "schemaVersion": 2,
+  "props": {
+    "subtitle": {
+      "optional": true,
+      "type": "string",
+      "description": "Optional subtitle/category label"
+    },
+    "title": {
+      "optional": false,
+      "type": "string",
+      "description": "Main title of the story section"
+    },
+    "content": {
+      "optional": false,
+      "type": "React.ReactNode[]",
+      "description": "Body content as array of paragraphs or React nodes"
+    },
+    "images": {
+      "optional": true,
+      "type": "StoryImage | StoryImage[]",
+      "description": "Optional image or images to display"
+    },
+    "imageLayout": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "single",
+        "none",
+        "grid"
+      ],
+      "description": "Image layout: \"single\" (1 col), \"grid\" (2 col), or \"none\""
+    },
+    "backgroundColor": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "transparent",
+        "light",
+        "white"
+      ],
+      "description": "Background color variant"
+    },
+    "maxWidth": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "full"
+      ],
+      "description": "Maximum width constraint"
+    },
+    "spacing": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "default",
+        "compact",
+        "comfortable",
+        "spacious"
+      ],
+      "description": "Spacing variant"
+    },
+    "className": {
+      "optional": true,
+      "type": "string",
+      "description": "Additional CSS class"
+    },
+    "as": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        "article",
+        "div",
+        "section"
+      ],
+      "description": "Semantic HTML element to use"
+    },
+    "ariaLabel": {
+      "optional": true,
+      "type": "string",
+      "description": "Accessible label for the section"
+    },
+    "headingLevel": {
+      "optional": true,
+      "type": "union",
+      "values": [
+        2,
+        3,
+        4
+      ],
+      "description": "Heading level for the section title; visual size is unchanged. Pages whose outline places StoryBlock sections directly under the h1 should pass 2."
+    }
+  },
+  "forbiddenUse": [
+    "Bypass design tokens or skip forced-colors verification at beta."
+  ],
+  "composesWith": [
+    "Title",
+    "Text",
+    "ProjectDetailLayout",
+    "ProjectHero",
+    "RelatedProjects",
+    "GridBlock",
+    "ProcessBlock"
+  ]
 }

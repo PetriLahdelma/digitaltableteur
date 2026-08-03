@@ -12,6 +12,7 @@
 // esbuild, which does not honor tsconfig path aliases.
 import { allPosts } from "../../../../app/blog/postMetadata";
 import { isPostVisible } from "../../../../lib/blog/postVisibility";
+import { sortedProjects } from "../../../../nextjs-app/shared/data/projects";
 
 /**
  * Page information for accessibility verification.
@@ -38,65 +39,28 @@ export const corePages: PageInfo[] = [
 ];
 
 /**
- * Work project pages - Portfolio case studies (11 pages)
- * From /work/[slug] routes
+ * Work project pages — DERIVED from the portfolio data, never hand-listed.
+ *
+ * Every project in `projects.ts` gets an audited /work/<slug> page, so new
+ * case studies join the enforced audit the moment they ship. (Previously this
+ * was a hand-maintained array that fell 11 → 16 behind: home-remote,
+ * dsharp-design-system, project-spine, rhythmguard and llm-component-schema
+ * were published but never audited.) The extras below are published routes
+ * that intentionally do not appear in the /work index data.
  */
+const extraWorkPages: PageInfo[] = [
+  { name: "Intrum", url: "/work/intrum", category: "work" },
+  { name: "Raw View", url: "/work/raw-view", category: "work" },
+  { name: "Tulli", url: "/work/tulli", category: "work" },
+];
+
 export const workPages: PageInfo[] = [
-  {
-    name: "Finnish Transport Agency",
-    url: "/work/finnish-transport-agency",
-    category: "work",
-  },
-  {
-    name: "Garage Junction",
-    url: "/work/garage-junction",
-    category: "work",
-  },
-  {
-    name: "Helsinki Design System",
-    url: "/work/helsinki-design-system",
-    category: "work",
-  },
-  {
-    name: "Illustrations",
-    url: "/work/illustrations",
-    category: "work",
-  },
-  {
-    name: "Intrum",
-    url: "/work/intrum",
-    category: "work",
-  },
-  {
-    name: "Knobsmith Audio",
-    url: "/work/knobsmith-audio",
-    category: "work",
-  },
-  {
-    name: "New Things Co",
-    url: "/work/new-things-co",
-    category: "work",
-  },
-  {
-    name: "Raw View",
-    url: "/work/raw-view",
-    category: "work",
-  },
-  {
-    name: "SAP Build Apps",
-    url: "/work/sap-build-apps",
-    category: "work",
-  },
-  {
-    name: "Tulli",
-    url: "/work/tulli",
-    category: "work",
-  },
-  {
-    name: "Vertaaux",
-    url: "/work/vertaaux",
-    category: "work",
-  },
+  ...sortedProjects.map((project) => ({
+    name: project.title,
+    url: `/work/${project.slug}`,
+    category: "work" as const,
+  })),
+  ...extraWorkPages,
 ];
 
 /**
@@ -169,8 +133,9 @@ export const legalPages: PageInfo[] = [
 
 /**
  * All public pages combined.
- * Blog count is derived from visible post metadata, so the total is dynamic:
- * 6 core + 11 work + (all visible blog) + 3 legal + 1 utility + 4 pseo.
+ * Blog and work counts are derived from their data sources, so the total is
+ * dynamic: 6 core + (all portfolio projects + 3 extras) + (all visible blog)
+ * + 3 legal + 1 utility + 4 pseo.
  */
 export const allPages: PageInfo[] = [
   ...corePages,

@@ -1,16 +1,16 @@
 {
   "storyId": "content-codesnippet-playground",
   "mode": "dark",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:37:13.408Z",
-  "runner": "backfill",
+  "sourceSHA": "cb44376fdec8a03731cdda32c9a26c788a7cb769",
+  "capturedAt": "2026-08-03T16:53:47.315Z",
+  "runner": "fix-hcb-code-comment",
   "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
     "axe-no-violations": {
       "passed": true,
       "axeViolations": 0
-    },
-    "accessibility-tree": {
-      "passed": true
     }
   }
 }

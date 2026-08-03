@@ -156,7 +156,7 @@
   --code-token-keyword: #fe8019;
   --code-token-string: #b8bb26;
   --code-token-number: #d3869b;
-  --code-token-comment: #928374;
+  --code-token-comment: #a89984; /* gruvbox fg4; #928374 was 4.01:1 on #282828 */
 }
 
 :global(.themeHCW) .pre {

@@ -94,8 +94,11 @@ export async function applyTheme(
       );
     });
   }
-  // Wait for styles to apply
-  await page.waitForTimeout(300);
+  // Wait for styles to apply. The site transitions colors over 0.3s when the
+  // theme class changes; auditing before the transition settles makes axe
+  // compute contrast on mid-blend colors and fail flakily (observed as 8
+  // phantom color-contrast violations across 5 work pages, 2026-08-03).
+  await page.waitForTimeout(1000);
 }
 
 /**

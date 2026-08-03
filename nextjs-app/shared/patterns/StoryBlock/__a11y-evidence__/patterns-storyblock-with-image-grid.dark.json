@@ -1,9 +1,9 @@
 {
   "storyId": "patterns-storyblock-with-image-grid",
   "mode": "dark",
-  "sourceSHA": "391961976ecb60a638899c1b4ecfd804b7c2342e",
-  "capturedAt": "2026-07-30T10:05:05.667Z",
-  "runner": null,
+  "sourceSHA": "c6d3602b4bab47f02a05b2dfddd0969141459060",
+  "capturedAt": "2026-08-03T16:29:28.639Z",
+  "runner": "storyblock-heading-level",
   "checks": {
     "accessibility-tree": {
       "passed": true

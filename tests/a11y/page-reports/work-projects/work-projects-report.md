@@ -1,10 +1,10 @@
 # Work Project Pages Verification Report
 
-**Generated:** 2026-06-01T10:59:22.195Z
-**Overall Status:** FAIL
-**Pages Audited:** 11
-**Theme Combinations:** 44 (11 pages x 4 themes)
-**Total Violations:** 18
+**Generated:** 2026-08-03T16:53:12.147Z
+**Overall Status:** PASS
+**Pages Audited:** 16
+**Theme Combinations:** 64 (16 pages x 4 themes)
+**Total Violations:** 0
 
 ## Summary
 
@@ -15,94 +15,26 @@ Each page is tested across 4 themes: Light, Dark, High Contrast Black (HCB), and
 
 | Project | Light | Dark | HCB | HCW |
 |---------|-------|------|-----|-----|
-| Finnish Transport Agency | FAIL (2) | FAIL (2) | FAIL (2) | FAIL (2) |
-| Garage Junction | FAIL (1) | FAIL (1) | FAIL (1) | FAIL (1) |
-| Helsinki Design System | FAIL (1) | FAIL (2) | FAIL (1) | FAIL (1) |
-| Illustrations | PASS | FAIL (1) | PASS | PASS |
+| DSharp Design System | PASS | PASS | PASS | PASS |
+| Finnish Transport Agency | PASS | PASS | PASS | PASS |
+| Garage Junction | PASS | PASS | PASS | PASS |
+| Helsinki Design System | PASS | PASS | PASS | PASS |
+| Home Remote | PASS | PASS | PASS | PASS |
+| Illustrations | PASS | PASS | PASS | PASS |
 | Intrum | PASS | PASS | PASS | PASS |
-| Knobsmith Audio | PASS | PASS | PASS | PASS |
+| KnobSmith Audio | PASS | PASS | PASS | PASS |
+| LLM Component Schema | PASS | PASS | PASS | PASS |
 | New Things Co | PASS | PASS | PASS | PASS |
+| Project Spine | PASS | PASS | PASS | PASS |
 | Raw View | PASS | PASS | PASS | PASS |
-| SAP Build Apps | PASS | PASS | PASS | PASS |
+| Rhythmguard | PASS | PASS | PASS | PASS |
+| SAP Build Apps Design System | PASS | PASS | PASS | PASS |
 | Tulli | PASS | PASS | PASS | PASS |
-| Vertaaux | PASS | PASS | PASS | PASS |
+| VertaaUX | PASS | PASS | PASS | PASS |
 
 ## Violations Detail
 
-### aria-prohibited-attr
-
-**Impact:** serious
-**Description:** Ensure ARIA attributes are not prohibited for an element's role
-**Help:** Elements must only use permitted ARIA attributes
-**More Info:** [https://dequeuniversity.com/rules/axe/4.11/aria-prohibited-attr?application=playwright](https://dequeuniversity.com/rules/axe/4.11/aria-prohibited-attr?application=playwright)
-
-**Affected Pages:**
-- Finnish Transport Agency (Light)
-- Finnish Transport Agency (Dark)
-- Finnish Transport Agency (High Contrast Black)
-- Finnish Transport Agency (High Contrast White)
-
-**Sample Elements:**
-
-```
-div[aria-label="Process Blue color swatch"]
-div[aria-label="Teal color swatch"]
-div[aria-label="Navy color swatch"]
-div[aria-label="Cyan color swatch"]
-div[aria-label="Warm Gray 6 color swatch"]
-```
-
-### color-contrast
-
-**Impact:** serious
-**Description:** Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds
-**Help:** Elements must meet minimum color contrast ratio thresholds
-**More Info:** [https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright](https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright)
-
-**Affected Pages:**
-- Finnish Transport Agency (Light)
-- Finnish Transport Agency (Dark)
-- Finnish Transport Agency (High Contrast Black)
-- Finnish Transport Agency (High Contrast White)
-- Garage Junction (Light)
-- Garage Junction (Dark)
-- Garage Junction (High Contrast Black)
-- Garage Junction (High Contrast White)
-- Helsinki Design System (Dark)
-- Illustrations (Dark)
-
-**Sample Elements:**
-
-```
-.finnishTransportAgency-module__HvEt7a__resultItem:nth-child(1) > .finnishTransportAgency-module__HvEt7a__resultLabel
-.finnishTransportAgency-module__HvEt7a__resultItem:nth-child(1) > .finnishTransportAgency-module__HvEt7a__resultDetail
-.finnishTransportAgency-module__HvEt7a__resultItem:nth-child(2) > .finnishTransportAgency-module__HvEt7a__resultLabel
-.finnishTransportAgency-module__HvEt7a__resultItem:nth-child(2) > .finnishTransportAgency-module__HvEt7a__resultDetail
-.finnishTransportAgency-module__HvEt7a__resultItem:nth-child(3) > .finnishTransportAgency-module__HvEt7a__resultLabel
-```
-
-### svg-img-alt
-
-**Impact:** serious
-**Description:** Ensure <svg> elements with an img, graphics-document or graphics-symbol role have accessible text
-**Help:** <svg> elements with an img role must have alternative text
-**More Info:** [https://dequeuniversity.com/rules/axe/4.11/svg-img-alt?application=playwright](https://dequeuniversity.com/rules/axe/4.11/svg-img-alt?application=playwright)
-
-**Affected Pages:**
-- Helsinki Design System (Light)
-- Helsinki Design System (Dark)
-- Helsinki Design System (High Contrast Black)
-- Helsinki Design System (High Contrast White)
-
-**Sample Elements:**
-
-```
-div[title="Slack"] > svg[stroke-width="0"][stroke="currentColor"][viewBox="0 0 24 24"]
-div[title="Figma"] > svg[stroke-width="0"][stroke="currentColor"][viewBox="0 0 24 24"]
-div[title="Sketch"] > svg[stroke-width="0"][stroke="currentColor"][viewBox="0 0 24 24"]
-div[title="Illustrator"] > svg[stroke-width="0"][stroke="currentColor"][viewBox="0 0 24 24"]
-div[title="Photoshop"] > svg[stroke-width="0"][stroke="currentColor"][viewBox="0 0 24 24"]
-```
+None - all work project pages pass automated accessibility checks.
 
 ## Methodology
 
