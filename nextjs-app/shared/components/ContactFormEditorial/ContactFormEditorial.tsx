@@ -434,6 +434,10 @@ export function ContactFormEditorial({
       onSuccess?.();
     } catch (err) {
       console.error("Failed to submit contact form", err);
+      showToast(t("contactErrorMessage"), {
+        tone: "error",
+        duration: 8000,
+      });
       onError?.(err instanceof Error ? err : new Error("Unknown error"));
     } finally {
       setIsSubmitting(false);
