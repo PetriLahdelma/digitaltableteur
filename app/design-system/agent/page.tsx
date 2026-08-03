@@ -3,6 +3,10 @@ import Link from "next/link";
 
 import goldenIntentsJson from "../../../scripts/design-system/agent-eval/golden-intents.json";
 import patternRecipesJson from "../../../scripts/design-system/pattern-composition.recipes.json";
+import {
+  GoldenIntentsTable,
+  type GoldenIntentCase,
+} from "./GoldenIntentsTable";
 
 export const metadata: Metadata = {
   title: "Design System Agent Demo | Digitaltableteur",
@@ -13,7 +17,7 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-type GoldenCase = { id: string; query: string };
+type GoldenCase = GoldenIntentCase;
 type PatternRecipe = {
   name: string;
   publicImport: string;
@@ -82,14 +86,9 @@ export default function DesignSystemAgentPage() {
           {goldenIntents.cases.length} queries verified by{" "}
           <code className="text-xs">npm run agent:eval</code>.
         </p>
-        <ul className="mt-4 space-y-2 text-sm">
-          {goldenIntents.cases.slice(0, 8).map((c) => (
-            <li key={c.id} className="rounded-md border border-border bg-muted/30 px-3 py-2">
-              <span className="font-mono text-xs text-muted-foreground">{c.id}</span>
-              <span className="ml-2">&ldquo;{c.query}&rdquo;</span>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-4">
+          <GoldenIntentsTable cases={goldenIntents.cases} />
+        </div>
       </section>
 
       <section className="mt-12">

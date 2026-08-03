@@ -1,8 +1,8 @@
 {
   "storyId": "data-display-datatable-forced-colors",
   "mode": "forced-colors",
-  "sourceSHA": "b9959bc69316e2c9a9abe8d5cadccfe14c09c4c0",
-  "capturedAt": "2026-08-03T20:04:14.299Z",
+  "sourceSHA": "19b50f086e0d8c0d4c4b74e680db6fc0d470bc49",
+  "capturedAt": "2026-08-03T20:11:48.542Z",
   "runner": "datatable-phase1",
   "checks": {
     "accessibility-tree": {

@@ -53,6 +53,7 @@
 }
 
 /* scope="row" headers name a row (data, not a column label): render like a body cell with slight emphasis. */
+
 .headerCell[scope="row"] {
   padding-block: var(--space-internal-12);
   border-block-end: 1px solid var(--color-border-light);
@@ -72,11 +73,17 @@
   vertical-align: middle;
 }
 
-[data-align="center"] {
+/* Scoped to the local cell classes: bare [data-align] attribute selectors are
+   rejected as impure by Next's CSS-modules compiler (Vite tolerated them, so
+   this only surfaced when DataTable reached its first app consumer). */
+
+.cell[data-align="center"],
+.headerCell[data-align="center"] {
   text-align: center;
 }
 
-[data-align="end"] {
+.cell[data-align="end"],
+.headerCell[data-align="end"] {
   text-align: end;
 }
 
@@ -108,6 +115,7 @@
 }
 
 /* --color-muted (not --color-border) keeps the unsorted caret at ≥3:1 in every theme, including HCB. */
+
 .sortIcon {
   flex: none;
   color: var(--color-muted);
