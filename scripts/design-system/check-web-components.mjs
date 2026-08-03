@@ -178,7 +178,11 @@ const maxPackedFiles = 40 + tags.length * 2;
 // slide/roll animation and the scroll-indicator motion presets carry more
 // shadow-DOM CSS than the flat per-tag allowance; measured 1,875,138 bytes
 // unpacked, ~6.9 kB over the per-tag-scaled ceiling.
-const sharedBundleAndManifestCeiling = 1_328_000;
+// +11 kB for the four icons (CaretDoubleLeft, CaretDoubleRight, CaretLeft,
+// Cube) the Table/VirtualList round (#1351/#1352) added to the icon registry:
+// each ships six inline SVG weights in the shared native-icon-data chunk;
+// measured 1,888,230 bytes unpacked, ~9.9 kB over the prior ceiling.
+const sharedBundleAndManifestCeiling = 1_339_000;
 // Attribute metadata and complete property-member metadata both scale with
 // each public element. Keep the member allowance explicit so fieldName never
 // points at an undeclared Custom Elements Manifest member.
