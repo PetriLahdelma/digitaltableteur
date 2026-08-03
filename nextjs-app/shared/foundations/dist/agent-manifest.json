@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-03T20:04:45.741Z",
+  "generatedAt": "2026-08-03T20:19:24.941Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 90.8,
     "codebaseComponentCount": 195,
     "usageCoveragePercent": 93.2,
-    "componentsWithProductionUsage": 35,
+    "componentsWithProductionUsage": 36,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,10 +79,10 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 177,
     "withAnyUsage": 165,
-    "withProductionUsage": 35,
+    "withProductionUsage": 36,
     "uniqueImportedComponents": 165,
-    "totalEvidenceRows": 825,
-    "aliasImportFiles": 428,
+    "totalEvidenceRows": 826,
+    "aliasImportFiles": 429,
     "relativeImportFiles": 430,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
@@ -6846,6 +6846,16 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/code-window/page.tsx",
             "since": "2026-06-04"
           },
@@ -6857,16 +6867,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/error.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -10238,6 +10238,16 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
@@ -15549,11 +15559,17 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/DataTable",
-        "importCount": 1,
-        "productionImportCount": 0,
+        "importCount": 2,
+        "productionImportCount": 1,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
+          {
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "importKind": "alias",
+            "importPath": "@dt/DataTable",
+            "context": "production"
+          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -22927,6 +22943,16 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
             "since": "2026-06-04"
           },
@@ -22973,16 +22999,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/PricingPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -23472,22 +23488,22 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/code-window/page.tsx",
             "since": "2026-06-04"
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/TailwindTest.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/error.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -24136,6 +24152,16 @@
         },
         "lightDarkVerified": true,
         "consumers": [
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
@@ -25445,6 +25471,16 @@
         "consumers": [
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/page.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/tailwind-test/page.tsx",
             "since": "2026-06-04"
           },
@@ -25491,16 +25527,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
             "since": "2026-06-04"
           }
         ],
