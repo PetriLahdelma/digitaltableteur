@@ -1,0 +1,16 @@
+{
+  "storyId": "layout-resizablepanelgroup-vertical",
+  "mode": "dark",
+  "sourceSHA": "85f6b3e77978b8938a3861a07a1e50c1a7b836ae",
+  "capturedAt": "2026-08-04T07:20:47.780Z",
+  "runner": "rpg-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

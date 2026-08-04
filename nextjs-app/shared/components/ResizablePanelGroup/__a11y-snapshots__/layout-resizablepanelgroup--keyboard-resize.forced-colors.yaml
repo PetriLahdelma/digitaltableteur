@@ -1,0 +1,8 @@
+- status: Work in progress (alpha)
+- region "Navigation":
+  - heading "Navigation" [level=3]
+  - paragraph: Browse system foundations and components.
+- separator "Resize Navigation"
+- region "Content":
+  - heading "Content" [level=3]
+  - paragraph: Inspect the selected component documentation.

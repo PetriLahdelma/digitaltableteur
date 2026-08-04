@@ -11,15 +11,26 @@
   "element": "div",
   "variants": {
     "orientation": {
-      "values": ["horizontal", "vertical"],
+      "values": [
+        "horizontal",
+        "vertical"
+      ],
       "default": "horizontal",
       "propSourced": true
     }
   },
-  "slots": ["panel", "separator"],
+  "slots": [
+    "panel",
+    "separator"
+  ],
   "asChild": false,
   "subParts": [],
-  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
   "a11y": {
     "keyboard": [
       "ArrowLeft",
@@ -36,8 +47,8 @@
     ],
     "reducedMotion": true,
     "reviewed": true,
-    "reviewedNote": "2026-07-26 — named regions, separator value semantics, keyboard resize behavior, and axe result reviewed in unit tests.",
-    "forcedColorsVerified": false,
+    "reviewedNote": "2026-07-26 — named regions, separator value semantics, keyboard resize behavior, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; clamped keyboard model (arrows/Home/End, min-size limits, aria-valuenow) driven by a play story; drag-resize latency measured; AT-tree and real-browser forced-colors evidence captured.",
+    "forcedColorsVerified": true,
     "accessibilityTreeVerified": false
   },
   "tokens": {
@@ -47,9 +58,12 @@
       "--color-primary",
       "--color-muted"
     ],
-    "spacing": ["--space-internal-8", "--space-layout-24"]
+    "spacing": [
+      "--space-internal-8",
+      "--space-layout-24"
+    ]
   },
-  "lightDarkVerified": false,
+  "lightDarkVerified": true,
   "dense": "horizontal or vertical resizable panel layout; pointer drag, arrow/Home/End keyboard resize, separator value semantics",
   "keywords": [
     "resizable",
@@ -68,7 +82,10 @@
     "orientation": {
       "optional": true,
       "type": "union",
-      "values": ["horizontal", "vertical"],
+      "values": [
+        "horizontal",
+        "vertical"
+      ],
       "description": "Resize axis."
     },
     "keyboardStep": {
@@ -138,5 +155,9 @@
       "keyboardStep": 5
     }
   },
-  "composesWith": ["TreeView", "DataTable", "CodeBlockWindow"]
+  "composesWith": [
+    "TreeView",
+    "DataTable",
+    "CodeBlockWindow"
+  ]
 }
