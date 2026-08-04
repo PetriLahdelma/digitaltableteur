@@ -111,6 +111,15 @@ export function formatHuman(result, options = {}) {
       );
       return [head, ...editRows, ...manualRows].join("\n");
     }
+    case "verify.report": {
+      const { checks, verified, summary, skipped } = result.data;
+      const head = `${verified ? "Verified" : "Verification FAILED"}: ${summary.pass} pass / ${summary.fail} fail in ${Math.round(summary.durationMs / 1000)}s${skipped.length ? ` (skipped: ${skipped.join(", ")})` : ""}.`;
+      const rows = checks.map(
+        (check) =>
+          `- ${check.status.toUpperCase()} ${check.id}${check.component ? ` ${check.component}` : ""} (${Math.round(check.durationMs / 1000)}s)\n  ${check.detail}`,
+      );
+      return [head, ...rows].join("\n");
+    }
     case "manifest":
       return [
         `${result.data.name} ${result.data.version}`,

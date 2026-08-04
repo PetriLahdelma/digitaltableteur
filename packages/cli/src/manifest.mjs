@@ -1,6 +1,6 @@
 import { ERROR_CODES } from "./errors.mjs";
 
-export const CLI_VERSION = "0.4.0";
+export const CLI_VERSION = "0.5.0";
 export const API_VERSION = 1;
 
 export const CAPABILITY_MANIFEST = Object.freeze({
@@ -8,7 +8,7 @@ export const CAPABILITY_MANIFEST = Object.freeze({
   name: "dt",
   version: CLI_VERSION,
   description:
-    "Digitaltableteur design-system CLI — registry search, component docs, examples, composition, diagnostics, contract diffing, impact analysis, consumer usage validation, and diff-coupled upgrade codemods.",
+    "Digitaltableteur design-system CLI — registry search, component docs, examples, composition, diagnostics, contract diffing, impact analysis, consumer usage validation, diff-coupled upgrade codemods, and scoped verification.",
   globalOptions: [
     {
       flag: "--json",
@@ -135,6 +135,25 @@ export const CAPABILITY_MANIFEST = Object.freeze({
         },
       ],
       responseTypes: ["upgrade.report"],
+    },
+    {
+      name: "verify",
+      arguments: [{ name: "components", required: true, variadic: true }],
+      options: [
+        {
+          flag: "--path <directory>",
+          type: "string",
+          default: ".",
+          description: "Consumer source root for the usage check.",
+        },
+        {
+          flag: "--skip <checks>",
+          type: "string",
+          description:
+            "Comma-separated checks to skip: contract, usage, tests, types.",
+        },
+      ],
+      responseTypes: ["verify.report"],
     },
   ],
   errorCodes: Object.values(ERROR_CODES),

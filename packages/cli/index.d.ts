@@ -201,3 +201,25 @@ export function upgrade(
     }
   >
 >;
+export type VerifyCheck = {
+  id: "contract" | "usage" | "tests" | "types";
+  component?: string;
+  status: "pass" | "fail";
+  detail: string;
+  durationMs: number;
+};
+export function verify(
+  names: string[],
+  options?: CliOptions & { skip?: string },
+): Promise<
+  DtCliResponse<
+    "verify.report",
+    {
+      components: string[];
+      skipped: string[];
+      checks: VerifyCheck[];
+      verified: boolean;
+      summary: { pass: number; fail: number; durationMs: number };
+    }
+  >
+>;

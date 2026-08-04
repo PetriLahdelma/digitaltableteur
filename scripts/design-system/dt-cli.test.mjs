@@ -20,6 +20,7 @@ import {
   search,
   upgrade,
   validate,
+  verify,
 } from "../../packages/cli/src/api.mjs";
 
 const execFileAsync = promisify(execFile);
@@ -67,6 +68,7 @@ describe("@digitaltableteur/cli API", () => {
       "affected",
       "validate",
       "upgrade",
+      "verify",
     ]);
   });
 
@@ -360,6 +362,82 @@ describe("@digitaltableteur/cli API", () => {
       expect(result.data.dryRun).toBe(true);
       expect(result.data.summary.edits).toBe(0);
       expect(result.data.componentsPlanned).toEqual([]);
+    });
+  });
+
+  describe("verify", () => {
+    let cleanDir;
+    let brokenDir;
+
+    beforeAll(async () => {
+      cleanDir = await mkdtemp(join(tmpdir(), "dt-verify-clean-"));
+      brokenDir = await mkdtemp(join(tmpdir(), "dt-verify-broken-"));
+      await writeFile(
+        join(cleanDir, "Ok.tsx"),
+        `import Badge from "@dt/Badge";\nexport const Ok = () => <Badge variant="primary">ok</Badge>;\n`,
+      );
+      await writeFile(
+        join(brokenDir, "Broken.tsx"),
+        `import Badge from "@dt/Badge";\nexport const Broken = () => <Badge variant="nope">bad</Badge>;\n`,
+      );
+    });
+
+    afterAll(async () => {
+      await rm(cleanDir, { recursive: true, force: true });
+      await rm(brokenDir, { recursive: true, force: true });
+    });
+
+    it("passes contract and usage checks for a clean scope", async () => {
+      const result = await verify(["badge"], {
+        path: cleanDir,
+        skip: "tests,types",
+      });
+      expect(result.type).toBe("verify.report");
+      expect(result.data.components).toEqual(["Badge"]);
+      expect(result.data.skipped).toEqual(["tests", "types"]);
+      expect(result.data.verified).toBe(true);
+      const contract = result.data.checks.find(({ id }) => id === "contract");
+      expect(contract.status).toBe("pass");
+      expect(contract.detail).toContain("Badge");
+      const usage = result.data.checks.find(({ id }) => id === "usage");
+      expect(usage.status).toBe("pass");
+    });
+
+    it("fails verification when scoped usage has contract violations", async () => {
+      const result = await verify(["Badge"], {
+        path: brokenDir,
+        skip: "tests,types",
+      });
+      expect(result.data.verified).toBe(false);
+      const usage = result.data.checks.find(({ id }) => id === "usage");
+      expect(usage.status).toBe("fail");
+      expect(usage.detail).toContain("nope");
+    });
+
+    it("exits non-zero from the CLI when a check fails", async () => {
+      await expect(
+        execFileAsync(process.execPath, [
+          "packages/cli/src/cli.mjs",
+          "verify",
+          "Badge",
+          "--path",
+          brokenDir,
+          "--skip",
+          "tests,types",
+        ]),
+      ).rejects.toMatchObject({ code: 2 });
+    });
+
+    it("rejects unknown components, checks, and empty scope", async () => {
+      await expect(verify([], {})).rejects.toMatchObject({
+        code: "ERR_MISSING_ARGUMENT",
+      });
+      await expect(verify(["Buttn"], {})).rejects.toMatchObject({
+        code: "ERR_UNKNOWN_COMPONENT",
+      });
+      await expect(
+        verify(["Badge"], { skip: "tests,frobnicate" }),
+      ).rejects.toMatchObject({ code: "ERR_INVALID_ARGUMENT" });
     });
   });
 

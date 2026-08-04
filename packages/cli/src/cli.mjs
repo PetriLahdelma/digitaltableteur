@@ -10,6 +10,7 @@ import {
   search,
   upgrade,
   validate,
+  verify,
 } from "./api.mjs";
 import { DtCliError, ERROR_CODES, errorEnvelope } from "./errors.mjs";
 import { formatHuman } from "./format.mjs";
@@ -29,6 +30,7 @@ function parseArgs(argv) {
     else if (value === "--path") options.path = argv[++index];
     else if (value === "--write") options.write = true;
     else if (value === "--dry-run") options.write = false;
+    else if (value === "--skip") options.skip = argv[++index];
     else if (value.startsWith("--")) {
       throw new DtCliError(
         `Unknown option "${value}".`,
@@ -71,6 +73,8 @@ async function run(argv) {
       return validate(positional, options);
     case "upgrade":
       return upgrade(positional, options);
+    case "verify":
+      return verify(positional, options);
     case undefined:
       return manifest();
     default:
@@ -87,9 +91,12 @@ try {
   process.stdout.write(
     `${parsed.options.json ? JSON.stringify(result) : formatHuman(result, parsed.options)}\n`,
   );
-  // validate is a gate: contract violations exit non-zero even though the
-  // report itself renders normally.
-  if (result.type === "validate.report" && !result.data.clean) {
+  // validate and verify are gates: violations and failed checks exit
+  // non-zero even though the report itself renders normally.
+  if (
+    (result.type === "validate.report" && !result.data.clean) ||
+    (result.type === "verify.report" && !result.data.verified)
+  ) {
     process.exitCode = 2;
   }
 } catch (error) {

@@ -14,6 +14,7 @@ npx @digitaltableteur/cli diff DataTable --from HEAD~5
 npx @digitaltableteur/cli affected DataTable TreeView
 npx @digitaltableteur/cli validate --path src
 npx @digitaltableteur/cli upgrade --from v-prev-ref --path src --write
+npx @digitaltableteur/cli verify DataTable --path app
 npx @digitaltableteur/cli manifest --json
 npx @digitaltableteur/cli --help
 ```
@@ -65,4 +66,17 @@ default; `--write` applies. Re-running is a no-op (idempotent).
 ```bash
 npx @digitaltableteur/cli upgrade --from HEAD~1 --path src        # dry run
 npx @digitaltableteur/cli upgrade Badge --from HEAD~1 --path src --write
+```
+
+`verify` runs scoped checks for one or more components and exits 2 on any
+failure: `contract` (the contract file exists and parses), `usage` (a scoped
+`dt validate` over `--path`), `tests` (a scoped vitest run over the
+component directories — the rendered proof), and `types` (the repository
+typecheck — the compiled proof). Skip individual checks with
+`--skip tests,types`. Runs inside the repository
+(`ERR_GIT_CONTEXT_UNAVAILABLE` elsewhere).
+
+```bash
+npx @digitaltableteur/cli verify Badge --path app
+npx @digitaltableteur/cli verify DataTable TreeView --skip types --json
 ```
