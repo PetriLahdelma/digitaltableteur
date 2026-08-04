@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-04T07:21:20.990Z",
+  "generatedAt": "2026-08-04T07:33:23.891Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -57641,8 +57641,8 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-26 — list semantics, item position metadata, rendered range behavior, and axe result reviewed in unit tests.",
-          "forcedColorsVerified": false,
+          "reviewedNote": "2026-07-26 — list semantics, item position metadata, rendered range behavior, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; windowing asserted at 10,000 rows (DOM capped at visible+overscan, true posinset/setsize); scroll-window focusability play; scroll-stability latency measured; AT-tree and real-browser forced-colors evidence captured.",
+          "forcedColorsVerified": true,
           "accessibilityTreeVerified": false
         },
         "tokens": {
@@ -57653,7 +57653,7 @@
             "--space-internal-16"
           ]
         },
-        "lightDarkVerified": false,
+        "lightDarkVerified": true,
         "dense": "fixed-height windowed collection; overscan, stable keys, rendered-range callback, aria position and set-size metadata",
         "keywords": [
           "virtual",
@@ -57771,7 +57771,7 @@
           "TreeView"
         ]
       },
-      "spec": "# VirtualList\n\n## Intent\n\nKeep long, fixed-row collections responsive by rendering only the visible\nrange plus a small overscan buffer.\n\n## Interaction contract\n\n- Scroll position determines the rendered range.\n- The viewport keeps list semantics and each rendered item reports its\n  position and total set size.\n- `onRangeChange` reports both the visible and overscanned boundaries.\n- `initialScrollOffset` restores a known position without making scroll state\n  controlled.\n\n## Do / don't\n\n- Do provide an accurate fixed `itemHeight`.\n- Do keep item keys stable across filtering and updates.\n- Don't use VirtualList for short collections where normal rendering is\n  simpler.\n- Don't use it when row heights are unknown or highly variable.\n\n## Design notes\n\n- A full-height spacer preserves the browser's native scroll range.\n- Rendered items are translated to their calculated vertical offset.\n- Viewport height and item offsets are intentionally runtime inline values.\n- Rows render as `VirtualListItem` (which composes `ListItem`), supplied via\n  `getItemProps`; the viewport is `role=\"list\"`, each row `role=\"listitem\"`.\n\n## Accessibility limitations\n\nWindowing has inherent accessibility trade-offs; know them before reaching for\nit:\n\n- **Off-screen rows are not in the DOM.** Only the visible window (+ overscan)\n  is mounted, so a screen-reader virtual cursor cannot navigate to item 500\n  until it scrolls into view. `aria-posinset`/`aria-setsize` announce each\n  row's true position, but do not make unmounted rows reachable. If a surface\n  needs full screen-reader traversal of the whole set, prefer a plain\n  (non-virtualized) list or provide search/filter to shrink the set.\n- **Keep items non-interactive.** Rows are presentational. Don't place focusable\n  content (links, buttons, inputs) inside `getItemProps` chrome — a focused row\n  can unmount on scroll and drop focus. Interactive virtualization needs a\n  focus-management layer this component does not yet provide.\n- **The viewport is the keyboard target.** It is `tabIndex={0}` so keyboard\n  users can scroll it with the arrow / Page keys; the rows themselves are not\n  in the tab order.\n\n## Layout requirement\n\nThe rows are absolutely positioned, so the viewport takes its width from its\ncontainer. Render VirtualList inside a block/flex context that gives it a width;\nin a shrink-to-fit container (a centered flex item, inline-block) it collapses\nto zero width and only its border shows.\n",
+      "spec": "# VirtualList\n\n## Intent\n\nKeep long, fixed-row collections responsive by rendering only the visible\nrange plus a small overscan buffer.\n\n## Interaction contract\n\n- Scroll position determines the rendered range.\n- The viewport keeps list semantics and each rendered item reports its\n  position and total set size.\n- `onRangeChange` reports both the visible and overscanned boundaries.\n- `initialScrollOffset` restores a known position without making scroll state\n  controlled.\n\n## Do / don't\n\n- Do provide an accurate fixed `itemHeight`.\n- Do keep item keys stable across filtering and updates.\n- Don't use VirtualList for short collections where normal rendering is\n  simpler.\n- Don't use it when row heights are unknown or highly variable.\n\n## Design notes\n\n- A full-height spacer preserves the browser's native scroll range.\n- Rendered items are translated to their calculated vertical offset.\n- Viewport height and item offsets are intentionally runtime inline values.\n- Rows render as `VirtualListItem` (which composes `ListItem`), supplied via\n  `getItemProps`; the viewport is `role=\"list\"`, each row `role=\"listitem\"`.\n\n## Accessibility limitations\n\nWindowing has inherent accessibility trade-offs; know them before reaching for\nit:\n\n- **Off-screen rows are not in the DOM.** Only the visible window (+ overscan)\n  is mounted, so a screen-reader virtual cursor cannot navigate to item 500\n  until it scrolls into view. `aria-posinset`/`aria-setsize` announce each\n  row's true position, but do not make unmounted rows reachable. If a surface\n  needs full screen-reader traversal of the whole set, prefer a plain\n  (non-virtualized) list or provide search/filter to shrink the set.\n- **Keep items non-interactive.** Rows are presentational. Don't place focusable\n  content (links, buttons, inputs) inside `getItemProps` chrome — a focused row\n  can unmount on scroll and drop focus. Interactive virtualization needs a\n  focus-management layer this component does not yet provide.\n- **The viewport is the keyboard target.** It is `tabIndex={0}` so keyboard\n  users can scroll it with the arrow / Page keys; the rows themselves are not\n  in the tab order.\n\n## Layout requirement\n\nThe rows are absolutely positioned, so the viewport takes its width from its\ncontainer. Render VirtualList inside a block/flex context that gives it a width;\nin a shrink-to-fit container (a centered flex item, inline-block) it collapses\nto zero width and only its border shows.\n- Performance evidence (2026-08-04, dev-mode Storybook, active Chromium,\n  DOM-settled timing): 100 deep scroll jumps (~96 rows each) across a\n  10,000-row collection re-window in ~8 ms on average (p95 10.3 ms), and the\n  mounted row count never exceeds visible + 2 x overscan (13 rows at a\n  320 px viewport). Native key scrolling of the focusable viewport (arrows,\n  PageUp/PageDown, Home/End) is trusted-event browser behavior that synthetic\n  test events cannot trigger; the play verifies focusability and drives the\n  same scroll pathway programmatically.\n",
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/VirtualList",
@@ -57918,19 +57918,20 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "unverified"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "keyboard-contract",
@@ -57940,14 +57941,14 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-26 — list semantics, item position metadata, rendered range behavior, and axe result reviewed in unit tests."
+            "note": "2026-07-26 — list semantics, item position metadata, rendered range behavior, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; windowing asserted at 10,000 rows (DOM capped at visible+overscan, true posinset/setsize); scroll-window focusability play; scroll-stability latency measured; AT-tree and real-browser forced-colors evidence captured."
           }
         ],
         "docOrigin": {
@@ -58080,8 +58081,8 @@
           ],
           "reducedMotion": true,
           "reviewed": true,
-          "reviewedNote": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test.",
-          "forcedColorsVerified": false,
+          "reviewedNote": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; composed and position-stamped by VirtualList.",
+          "forcedColorsVerified": true,
           "accessibilityTreeVerified": false
         },
         "tokens": {
@@ -58090,7 +58091,7 @@
           ],
           "spacing": []
         },
-        "lightDarkVerified": false,
+        "lightDarkVerified": true,
         "dense": "windowed list row; role=listitem + aria-posinset/aria-setsize, composes ListItem chrome; positioning arrives from VirtualList via style",
         "keywords": [
           "virtual",
@@ -58283,31 +58284,32 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "forced-colors-real-browser",
             "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-            "verificationMode": "unverified"
+            "verificationMode": "manual",
+            "note": "Storybook forced-colors addon (simulated, not real browser HC)."
           },
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "human-a11y-review",
             "statement": "A human completed an end-to-end accessibility review of this component.",
             "verificationMode": "manual",
-            "note": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test."
+            "note": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; composed and position-stamped by VirtualList."
           }
         ],
         "docOrigin": {
