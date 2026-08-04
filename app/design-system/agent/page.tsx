@@ -12,6 +12,11 @@ import {
   ComponentTaxonomyTree,
   type TaxonomyEntry,
 } from "./ComponentTaxonomyTree";
+import agentBenchJson from "../../../public/ds-health/agent-bench.json";
+import {
+  AgentBenchSection,
+  type AgentBenchArtifact,
+} from "./AgentBenchSection";
 
 export const metadata: Metadata = {
   title: "Design System Agent Demo | Digitaltableteur",
@@ -124,6 +129,10 @@ export default function DesignSystemAgentPage() {
           <ComponentTaxonomyTree entries={taxonomy} />
         </div>
       </section>
+
+      <AgentBenchSection
+        artifact={agentBenchJson as unknown as AgentBenchArtifact}
+      />
 
       <section className="mt-12">
         <h2 className="font-display text-xl font-semibold">Pattern recipes</h2>
