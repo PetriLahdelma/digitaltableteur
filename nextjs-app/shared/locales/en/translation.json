@@ -61,6 +61,7 @@
   "donnyBookingOpenContact": "Open contact form",
   "donnyBookingOpenExternal": "Open in {{provider}}",
   "donnyBookingFrameTitle": "Schedule a call with Digitaltableteur",
+  "donnyBookingLoading": "Loading booking calendar",
   "donnyBookingProviderCalcom": "Cal.com",
   "donnyBookingProviderCalendly": "Calendly",
   "donnyBookingProviderNone": "Contact form",
@@ -127,6 +128,8 @@
   "contactMessage": "Your Message",
   "contactMessagePlaceholder": "Enter your message",
   "contactRequestPortfolioMaterials": "Request references or work samples",
+  "contactFollowUpPreferencesLabel": "Follow-up preferences",
+  "contactFollowUpCallPrep": "Include call preparation suggestions",
   "contactAttachmentLabel": "Attachment (optional)",
   "contactAttachmentPlaceholder": "No file selected",
   "contactAttachmentHelper": "Max {{size}}. Accepted formats: {{types}}.",
@@ -1355,6 +1358,7 @@
   "splitButton": {
     "moreOptions": "More options"
   },
+  "mermaidErrorTitle": "Diagram Error",
   "storyCheckboxGroupMasterLabel": "Select all",
   "pricingCalcTitle": "Adjust duration and workload to see your total investment.",
   "pricingCalcDurationLegend": "Duration",

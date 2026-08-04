@@ -111,24 +111,32 @@ if (missingSv.length > 0) {
   console.log();
 }
 
+// Extra keys are ERRORS, not information: a key that exists in FI/SV but
+// not in EN means either (a) a feature shipped with translations but no
+// English source string — the component renders the raw key in English
+// (2026-08-05 contact-form incident: contactFollowUpPreferencesLabel /
+// contactFollowUpCallPrep) — or (b) dead keys that drifted. Both need
+// fixing, so symmetry failures now gate.
 if (extraFi.length > 0) {
-  console.log(`Extra keys in Finnish (${extraFi.length}):`);
-  extraFi.slice(0, 10).forEach((k) => console.log(`  - ${k}`));
-  if (extraFi.length > 10) console.log(`  ... and ${extraFi.length - 10} more`);
+  hasErrors = true;
+  console.log(`Keys in Finnish but MISSING FROM ENGLISH (${extraFi.length}):`);
+  extraFi.forEach((k) => console.log(`  - ${k}`));
   console.log();
 }
 
 if (extraSv.length > 0) {
-  console.log(`Extra keys in Swedish (${extraSv.length}):`);
-  extraSv.slice(0, 10).forEach((k) => console.log(`  - ${k}`));
-  if (extraSv.length > 10) console.log(`  ... and ${extraSv.length - 10} more`);
+  hasErrors = true;
+  console.log(`Keys in Swedish but MISSING FROM ENGLISH (${extraSv.length}):`);
+  extraSv.forEach((k) => console.log(`  - ${k}`));
   console.log();
 }
 
 // Final status
 if (hasErrors) {
-  console.log("FAIL: Translation coverage incomplete");
-  console.log("Please add the missing keys to achieve 100% coverage.");
+  console.log("FAIL: Translation coverage incomplete or asymmetric");
+  console.log(
+    "Add missing keys (including to EN, the source language) or remove dead keys.",
+  );
   process.exit(1);
 } else {
   console.log("PASS: All translations complete!");
