@@ -46,17 +46,16 @@ export const TASKS = [
     brief: `The Badge component's \`variant\` prop has been renamed to \`emphasis\`.
 The component, its stories, and its contract are already updated.
 
-Migrate the remaining consumer usages so they match the new contract. The
-consumers in scope are:
+Migrate ALL remaining consumer usages of Badge across the repository
+(app/ and nextjs-app/shared/, including story files) so they match the new
+contract. Finding the consumers is part of the task — Badge is imported
+both as \`@dt/Badge\` and as a named import from
+\`@digitaltableteur/react\`.
 
-- app/dev/tailwind-test/TailwindTest.tsx
-- nextjs-app/shared/components/CookieConsent/CookieConsent.tsx
-- nextjs-app/shared/components/MultiCombobox/MultiCombobox.tsx
-- nextjs-app/shared/components/OpenHours/OpenHours.tsx
-
-Do not modify the Badge component itself. Preserve every existing prop
-value. Only the Badge usages in the files above are in scope; leave other
-components (for example Button) untouched.`,
+Do not modify the Badge component itself
+(nextjs-app/shared/components/Badge/). Preserve every existing prop value.
+Only Badge usages are in scope; leave other components (for example
+Button, which also has a variant prop) untouched.`,
     async prep(worktree) {
       await renameInFile(
         join(worktree, "nextjs-app/shared/components/Badge/Badge.tsx"),
@@ -93,18 +92,32 @@ components (for example Button) untouched.`,
         component: "Badge",
         forbidProp: "variant",
         requireProp: "emphasis",
+        // Every repo file with a formerly-variant Badge usage; acceptance
+        // scope now matches the brief's "all consumers" exactly.
         files: [
           "app/dev/tailwind-test/TailwindTest.tsx",
           "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
           "nextjs-app/shared/components/MultiCombobox/MultiCombobox.tsx",
           "nextjs-app/shared/components/OpenHours/OpenHours.tsx",
+          "nextjs-app/shared/components/pages/Pseo/PseoClusterBadges.tsx",
+          "nextjs-app/shared/components/pages/Pseo/PseoPillarMetaBadgeLinks.tsx",
+          "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+          "nextjs-app/shared/stories/Docs/ComponentUsage.stories.tsx",
+          "nextjs-app/shared/stories/TestHealth.stories.tsx",
         ],
       },
       {
-        id: "no-stale-variant-findings",
+        id: "no-stale-variant-findings-shared",
         kind: "validate-no-finding",
         components: ["Badge"],
-        path: "nextjs-app/shared/components",
+        path: "nextjs-app/shared",
+        prop: "variant",
+      },
+      {
+        id: "no-stale-variant-findings-app",
+        kind: "validate-no-finding",
+        components: ["Badge"],
+        path: "app",
         prop: "variant",
       },
       {
