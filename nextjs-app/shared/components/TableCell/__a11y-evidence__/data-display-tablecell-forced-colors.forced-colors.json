@@ -1,0 +1,12 @@
+{
+  "storyId": "data-display-tablecell-forced-colors",
+  "mode": "forced-colors",
+  "sourceSHA": "707d7917acb7fe832bfefa4c4314d79be17cd22a",
+  "capturedAt": "2026-08-04T06:58:25.178Z",
+  "runner": "table-family-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

@@ -1,0 +1,17 @@
+- status: Work in progress (alpha)
+- table "Numbers":
+  - caption: Numbers
+  - rowgroup:
+    - row "Metric Value":
+      - columnheader "Metric"
+      - columnheader "Value"
+  - rowgroup:
+    - row "Requests 1,204":
+      - cell "Requests"
+      - cell "1,204"
+    - row "Errors 12":
+      - cell "Errors"
+      - cell "12"
+    - row "Latency 98":
+      - cell "Latency"
+      - cell "98"

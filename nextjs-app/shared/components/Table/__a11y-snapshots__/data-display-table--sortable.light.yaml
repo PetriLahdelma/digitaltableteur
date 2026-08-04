@@ -1,0 +1,24 @@
+- status: Work in progress (alpha)
+- table "Sortable columns":
+  - caption: Sortable columns
+  - rowgroup:
+    - row "Name Role Projects":
+      - columnheader "Name":
+        - button "Name"
+      - columnheader "Role":
+        - button "Role"
+      - columnheader "Projects":
+        - button "Projects"
+  - rowgroup:
+    - row "Ada Lovelace Engineer 8":
+      - cell "Ada Lovelace"
+      - cell "Engineer"
+      - cell "8"
+    - row "Dieter Rams Designer 5":
+      - cell "Dieter Rams"
+      - cell "Designer"
+      - cell "5"
+    - row "Grace Hopper Engineer 12":
+      - cell "Grace Hopper"
+      - cell "Engineer"
+      - cell "12"

@@ -1,0 +1,16 @@
+{
+  "storyId": "data-display-table-default",
+  "mode": "dark",
+  "sourceSHA": "707d7917acb7fe832bfefa4c4314d79be17cd22a",
+  "capturedAt": "2026-08-04T06:57:41.600Z",
+  "runner": "table-family-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

@@ -1,0 +1,14 @@
+- status: Work in progress (alpha)
+- table "People":
+  - caption: People
+  - rowgroup:
+    - row "Name Role":
+      - columnheader "Name"
+      - columnheader "Role"
+  - rowgroup:
+    - row "Ada Lovelace Engineer":
+      - rowheader "Ada Lovelace"
+      - cell "Engineer"
+    - row "Dieter Rams Designer":
+      - rowheader "Dieter Rams"
+      - cell "Designer"
