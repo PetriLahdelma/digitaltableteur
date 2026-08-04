@@ -1,6 +1,6 @@
 {
   "name": "@digitaltableteur/cli",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": false,
   "description": "Typed CLI and programmatic API for the Digitaltableteur design system registry.",
   "type": "module",

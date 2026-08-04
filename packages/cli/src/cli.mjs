@@ -8,6 +8,7 @@ import {
   example,
   manifest,
   search,
+  validate,
 } from "./api.mjs";
 import { DtCliError, ERROR_CODES, errorEnvelope } from "./errors.mjs";
 import { formatHuman } from "./format.mjs";
@@ -24,6 +25,7 @@ function parseArgs(argv) {
     else if (value === "--story") options.story = argv[++index];
     else if (value === "--from") options.from = argv[++index];
     else if (value === "--to") options.to = argv[++index];
+    else if (value === "--path") options.path = argv[++index];
     else if (value.startsWith("--")) {
       throw new DtCliError(
         `Unknown option "${value}".`,
@@ -62,6 +64,8 @@ async function run(argv) {
       return diff(positional[0], options);
     case "affected":
       return affected(positional, options);
+    case "validate":
+      return validate(positional, options);
     case undefined:
       return manifest();
     default:
@@ -78,6 +82,11 @@ try {
   process.stdout.write(
     `${parsed.options.json ? JSON.stringify(result) : formatHuman(result, parsed.options)}\n`,
   );
+  // validate is a gate: contract violations exit non-zero even though the
+  // report itself renders normally.
+  if (result.type === "validate.report" && !result.data.clean) {
+    process.exitCode = 2;
+  }
 } catch (error) {
   const jsonRequested = process.argv.includes("--json");
   const payload = errorEnvelope(error);

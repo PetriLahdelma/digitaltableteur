@@ -12,6 +12,7 @@ npx @digitaltableteur/cli doctor
 npx @digitaltableteur/cli diff --from v-prev-ref --to HEAD
 npx @digitaltableteur/cli diff DataTable --from HEAD~5
 npx @digitaltableteur/cli affected DataTable TreeView
+npx @digitaltableteur/cli validate --path src
 npx @digitaltableteur/cli manifest --json
 npx @digitaltableteur/cli --help
 ```
@@ -32,3 +33,19 @@ the generated import graph marks as affected. Runs inside the repository
 `affected` maps one or more components to their direct importers, the
 design-system components that compose them (reverse `composesWith` edges),
 and the production pages reached through the import graph.
+
+`validate` scans a consumer codebase (`--path <dir>`, default the current
+directory; optionally narrowed to named components) for `.tsx`/`.jsx`
+design-system usage — `@dt/<Name>` imports, `@digitaltableteur/react` named
+imports, and relative component/pattern imports — and checks every JSX usage
+against the installed contract manifest. Errors: unknown `@dt` component,
+enum prop literal outside the contract values, missing required prop
+(skipped for elements carrying a JSX spread). Warnings: props the contract
+does not declare (native passthrough is legal but invisible to contracts),
+deprecated components, unmatched package named imports. Exit code 2 when any
+error is found, so it works as a CI gate:
+
+```bash
+npx @digitaltableteur/cli validate --path src
+npx @digitaltableteur/cli validate DataTable TreeView --path app --json
+```
