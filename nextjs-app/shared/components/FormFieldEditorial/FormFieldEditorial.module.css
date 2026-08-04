@@ -8,10 +8,14 @@
 
 .label {
   display: block;
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--primary-text-color);
+
+  /* Typography matches the Label primitive exactly — the editorial fields
+   * share the one unified label treatment (2026-08-05; was 13px/600, the
+   * same hand-rolled style ComboboxField retired in #1409). */
+  font-family: var(--font-text);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-primary);
 }
 
 .required {

@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2339,
+  "warningCount": 2338,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -6538,7 +6538,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 167,
+      "line": 171,
       "column": 27,
       "rule": "rhythmguard/prefer-token",
       "severity": "warning",
@@ -6547,16 +6547,7 @@
     },
     {
       "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 12,
-      "column": 14,
-      "rule": "rhythmguard/use-scale",
-      "severity": "warning",
-      "text": "Unexpected off-scale value \"13px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)",
-      "id": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css::rhythmguard/use-scale::Unexpected off-scale value \"13px\". Use scale values (nearest: 12px or 16px). (rhythmguard/use-scale)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 59,
+      "line": 63,
       "column": 19,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",
