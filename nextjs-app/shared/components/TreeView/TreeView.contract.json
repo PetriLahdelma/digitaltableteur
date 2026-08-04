@@ -11,15 +11,27 @@
   "element": "div",
   "variants": {
     "size": {
-      "values": ["sm", "md", "lg"],
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
       "default": "md",
       "propSourced": true
     }
   },
-  "slots": ["label", "description"],
+  "slots": [
+    "label",
+    "description"
+  ],
   "asChild": false,
   "subParts": [],
-  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
   "a11y": {
     "keyboard": [
       "ArrowUp",
@@ -39,8 +51,8 @@
     ],
     "reducedMotion": true,
     "reviewed": true,
-    "reviewedNote": "2026-07-26 — tree semantics, roving focus, expansion and selection keyboard behavior, and axe result reviewed in unit tests.",
-    "forcedColorsVerified": false,
+    "reviewedNote": "2026-07-26 — tree semantics, roving focus, expansion and selection keyboard behavior, and axe result reviewed in unit tests. 2026-08-03 — Phase 1 pass: light/dark/forced-colors verified in a real browser; full keyboard model (arrows, Home/End, Enter/Space) driven by a play story; axe caught and we fixed selected-row description contrast; AT-tree and real-browser forced-colors evidence captured.",
+    "forcedColorsVerified": true,
     "accessibilityTreeVerified": false
   },
   "tokens": {
@@ -58,7 +70,7 @@
       "--space-internal-16"
     ]
   },
-  "lightDarkVerified": false,
+  "lightDarkVerified": true,
   "dense": "application tree; controlled selection and expansion, roving focus, full arrow/Home/End/Enter/Space keyboard model",
   "keywords": [
     "tree",
@@ -102,7 +114,11 @@
     "size": {
       "optional": true,
       "type": "union",
-      "values": ["sm", "md", "lg"],
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
       "description": "Density scale."
     }
   },
@@ -159,11 +175,18 @@
   "playground": {
     "defaults": {
       "aria-label": "Design system",
-      "defaultExpandedIds": ["components"],
+      "defaultExpandedIds": [
+        "components"
+      ],
       "defaultSelectedId": "button",
       "size": "md"
     }
   },
-  "prefersOver": ["SiteTree for application selection hierarchies"],
-  "composesWith": ["ResizablePanelGroup", "CommandPalette"]
+  "prefersOver": [
+    "SiteTree for application selection hierarchies"
+  ],
+  "composesWith": [
+    "ResizablePanelGroup",
+    "CommandPalette"
+  ]
 }

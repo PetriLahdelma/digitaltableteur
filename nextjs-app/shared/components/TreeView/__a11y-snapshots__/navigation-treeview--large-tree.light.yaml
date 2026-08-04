@@ -1,0 +1,16 @@
+- status: Work in progress (alpha)
+- tree "Large hierarchy":
+  - treeitem "Section 1" [expanded] [level=1]
+  - treeitem "Folder 1.1" [level=2]
+  - treeitem "Folder 1.2" [level=2]
+  - treeitem "Folder 1.3" [level=2]
+  - treeitem "Folder 1.4" [level=2]
+  - treeitem "Folder 1.5" [level=2]
+  - treeitem "Folder 1.6" [level=2]
+  - treeitem "Section 2" [level=1]
+  - treeitem "Section 3" [level=1]
+  - treeitem "Section 4" [level=1]
+  - treeitem "Section 5" [level=1]
+  - treeitem "Section 6" [level=1]
+  - treeitem "Section 7" [level=1]
+  - treeitem "Section 8" [level=1]

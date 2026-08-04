@@ -1,0 +1,16 @@
+{
+  "storyId": "navigation-treeview-playground",
+  "mode": "dark",
+  "sourceSHA": "08b2aae3d139a1e42f1f6afd848b43f620cf1d84",
+  "capturedAt": "2026-08-04T06:40:21.193Z",
+  "runner": "treeview-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}
