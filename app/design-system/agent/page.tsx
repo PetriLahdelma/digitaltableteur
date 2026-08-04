@@ -7,6 +7,11 @@ import {
   GoldenIntentsTable,
   type GoldenIntentCase,
 } from "./GoldenIntentsTable";
+import docsRegistryJson from "../../../nextjs-app/shared/foundations/dist/docs-registry.json";
+import {
+  ComponentTaxonomyTree,
+  type TaxonomyEntry,
+} from "./ComponentTaxonomyTree";
 
 export const metadata: Metadata = {
   title: "Design System Agent Demo | Digitaltableteur",
@@ -29,6 +34,21 @@ type PatternRecipe = {
 export default function DesignSystemAgentPage() {
   const goldenIntents = goldenIntentsJson as { cases: GoldenCase[] };
   const patternRecipes = patternRecipesJson as { patterns: PatternRecipe[] };
+  // Slimmed server-side so the client island receives only what it renders.
+  const registry = docsRegistryJson as {
+    components: Record<
+      string,
+      { group?: string; status?: string; dense?: string }
+    >;
+  };
+  const taxonomy: TaxonomyEntry[] = Object.entries(registry.components).map(
+    ([name, entry]) => ({
+      name,
+      group: entry.group ?? "ungrouped",
+      status: entry.status ?? "unknown",
+      dense: entry.dense ?? "",
+    }),
+  );
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-16 font-body text-foreground">
@@ -88,6 +108,20 @@ export default function DesignSystemAgentPage() {
         </p>
         <div className="mt-4">
           <GoldenIntentsTable cases={goldenIntents.cases} />
+        </div>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="font-display text-xl font-semibold">
+          Component taxonomy
+        </h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          {taxonomy.length} components from the generated docs registry.
+          Expand a group and select a component to see the dense contract line
+          agents retrieve.
+        </p>
+        <div className="mt-4">
+          <ComponentTaxonomyTree entries={taxonomy} />
         </div>
       </section>
 
