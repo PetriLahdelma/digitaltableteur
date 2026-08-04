@@ -1,6 +1,6 @@
 import { ERROR_CODES } from "./errors.mjs";
 
-export const CLI_VERSION = "0.1.0";
+export const CLI_VERSION = "0.2.0";
 export const API_VERSION = 1;
 
 export const CAPABILITY_MANIFEST = Object.freeze({
@@ -8,7 +8,7 @@ export const CAPABILITY_MANIFEST = Object.freeze({
   name: "dt",
   version: CLI_VERSION,
   description:
-    "Digitaltableteur design-system CLI — registry search, component docs, examples, composition, and diagnostics.",
+    "Digitaltableteur design-system CLI — registry search, component docs, examples, composition, diagnostics, contract diffing, and impact analysis.",
   globalOptions: [
     {
       flag: "--json",
@@ -64,6 +64,31 @@ export const CAPABILITY_MANIFEST = Object.freeze({
       arguments: [],
       options: [],
       responseTypes: ["doctor"],
+    },
+    {
+      name: "diff",
+      arguments: [{ name: "component", required: false }],
+      options: [
+        {
+          flag: "--from <git-ref>",
+          type: "string",
+          default: "HEAD",
+          description: "Baseline ref for contract comparison.",
+        },
+        {
+          flag: "--to <git-ref|worktree>",
+          type: "string",
+          default: "worktree",
+          description: "Target ref, or the working tree.",
+        },
+      ],
+      responseTypes: ["diff.report"],
+    },
+    {
+      name: "affected",
+      arguments: [{ name: "components", required: true, variadic: true }],
+      options: [],
+      responseTypes: ["affected.report"],
     },
   ],
   errorCodes: Object.values(ERROR_CODES),

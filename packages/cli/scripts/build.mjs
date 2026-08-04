@@ -6,7 +6,11 @@ const PACKAGE_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const REPO_ROOT = resolve(PACKAGE_ROOT, "../..");
 const SOURCE = join(REPO_ROOT, "nextjs-app", "shared", "foundations", "dist");
 const TARGET = join(PACKAGE_ROOT, "data");
-const FILES = ["docs-registry.json", "agent-manifest.json"];
+const FILES = [
+  "docs-registry.json",
+  "agent-manifest.json",
+  "component-usage.json",
+];
 
 await mkdir(TARGET, { recursive: true });
 await Promise.all(

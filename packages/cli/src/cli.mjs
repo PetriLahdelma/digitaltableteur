@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 import {
+  affected,
   component,
   compose,
+  diff,
   doctor,
   example,
   manifest,
@@ -20,6 +22,8 @@ function parseArgs(argv) {
     else if (value === "--limit") options.limit = Number(argv[++index]);
     else if (value === "--section") options.section = argv[++index];
     else if (value === "--story") options.story = argv[++index];
+    else if (value === "--from") options.from = argv[++index];
+    else if (value === "--to") options.to = argv[++index];
     else if (value.startsWith("--")) {
       throw new DtCliError(
         `Unknown option "${value}".`,
@@ -54,6 +58,10 @@ async function run(argv) {
       return manifest();
     case "doctor":
       return doctor(options);
+    case "diff":
+      return diff(positional[0], options);
+    case "affected":
+      return affected(positional, options);
     case undefined:
       return manifest();
     default:

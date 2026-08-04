@@ -55,3 +55,12 @@ export async function loadRegistry(options = {}) {
     agentManifest,
   };
 }
+
+export async function loadUsage(options = {}) {
+  const directory =
+    options.dataDirectory ??
+    (await resolveDataDirectory(options.cwd ?? process.cwd()));
+  const report = await readJson(join(directory, "component-usage.json"));
+  const rows = Array.isArray(report) ? report : (report.components ?? []);
+  return new Map(rows.map((row) => [row.name, row]));
+}
