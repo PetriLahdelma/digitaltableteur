@@ -59,10 +59,12 @@ const meta = {
       control: "radio",
       options: ["horizontal", "vertical"],
       description: "Resize axis.",
+      table: { defaultValue: { summary: "horizontal" } },
     },
     keyboardStep: {
       control: "number",
       description: "Keyboard increment in percentage points.",
+      table: { defaultValue: { summary: "5" } },
     },
     panels: { table: { disable: true } },
   },
@@ -84,6 +86,73 @@ export const Example: Story = {
   },
 };
 export const Vertical: Story = { args: { orientation: "vertical" } };
+
+/**
+ * The full separator keyboard contract with real key events: arrows step by
+ * keyboardStep, Home collapses the leading panel to its minimum, End grows it
+ * to the pair maximum, and every position is clamped to the min sizes and
+ * announced through aria-valuenow.
+ */
+export const KeyboardResize: Story = {
+  tags: ["example"],
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const separator = canvas.getByRole("separator");
+    separator.focus();
+    // Home: leading panel collapses to its minSize (20).
+    await userEvent.keyboard("{Home}");
+    await expect(separator).toHaveAttribute("aria-valuenow", "20");
+    // Arrow steps by keyboardStep from the minimum.
+    await userEvent.keyboard("{ArrowRight}");
+    await expect(separator).toHaveAttribute("aria-valuenow", "25");
+    // End: leading panel takes everything the trailing minSize (30) allows.
+    await userEvent.keyboard("{End}");
+    await expect(separator).toHaveAttribute("aria-valuenow", "70");
+    // Clamped: another increase cannot pass the trailing panel's minimum.
+    await userEvent.keyboard("{ArrowRight}");
+    await expect(separator).toHaveAttribute("aria-valuenow", "70");
+    // ArrowLeft steps back down.
+    await userEvent.keyboard("{ArrowLeft}");
+    await expect(separator).toHaveAttribute("aria-valuenow", "65");
+  },
+};
+
+/**
+ * Three panels produce two independent separators; each pair clamps to its
+ * own minimums.
+ */
+export const ThreePanels: Story = {
+  args: {
+    panels: [
+      {
+        id: "tree",
+        ariaLabel: "Tree",
+        content: panel("Tree", "Hierarchy."),
+        initialSize: 25,
+        minSize: 15,
+      },
+      {
+        id: "editor",
+        ariaLabel: "Editor",
+        content: panel("Editor", "Working surface."),
+        initialSize: 50,
+        minSize: 30,
+      },
+      {
+        id: "inspector",
+        ariaLabel: "Inspector",
+        content: panel("Inspector", "Details."),
+        initialSize: 25,
+        minSize: 15,
+      },
+    ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getAllByRole("separator")).toHaveLength(2);
+    await expect(canvas.getAllByRole("region")).toHaveLength(3);
+  },
+};
 export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
 };

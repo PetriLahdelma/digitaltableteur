@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { TreeView, type TreeViewNode } from "@dt/TreeView";
+import { ResizablePanelGroup } from "@dt/ResizablePanelGroup";
 
 export type TaxonomyEntry = {
   name: string;
@@ -49,26 +50,54 @@ export function ComponentTaxonomyTree({ entries }: { entries: TaxonomyEntry[] })
 
   const selected = selectedId ? byId.get(selectedId) : undefined;
 
+  // The workbench split both contracts document: TreeView composesWith
+  // ResizablePanelGroup and vice versa. The separator is keyboard-resizable
+  // (arrows, Home/End) with min sizes keeping both panes usable.
   return (
-    <div>
-      <TreeView
-        aria-label="Component taxonomy"
-        nodes={nodes}
-        size="sm"
-        selectedId={selectedId}
-        onSelectedIdChange={setSelectedId}
-      />
-      <p aria-live="polite" className="mt-4 text-sm text-muted-foreground">
-        {selected ? (
-          <>
-            <span className="font-mono text-xs">{selected.name}</span>{" "}
-            <span className="font-mono text-xs">({selected.status})</span> —{" "}
-            {selected.dense}
-          </>
-        ) : (
-          "Select a component to see the dense contract line agents retrieve."
-        )}
-      </p>
-    </div>
+    <ResizablePanelGroup
+      panels={[
+        {
+          id: "taxonomy",
+          ariaLabel: "Component taxonomy",
+          minSize: 30,
+          initialSize: 55,
+          content: (
+            <div className="max-h-96 overflow-y-auto pr-2">
+              <TreeView
+                aria-label="Component taxonomy"
+                nodes={nodes}
+                size="sm"
+                selectedId={selectedId}
+                onSelectedIdChange={setSelectedId}
+              />
+            </div>
+          ),
+        },
+        {
+          id: "contract",
+          ariaLabel: "Contract details",
+          minSize: 25,
+          initialSize: 45,
+          content: (
+            <p
+              aria-live="polite"
+              className="pl-4 text-sm leading-relaxed text-muted-foreground"
+            >
+              {selected ? (
+                <>
+                  <span className="font-mono text-xs">{selected.name}</span>{" "}
+                  <span className="font-mono text-xs">
+                    ({selected.status})
+                  </span>{" "}
+                  — {selected.dense}
+                </>
+              ) : (
+                "Select a component to see the dense contract line agents retrieve."
+              )}
+            </p>
+          ),
+        },
+      ]}
+    />
   );
 }
