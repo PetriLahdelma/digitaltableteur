@@ -1,0 +1,12 @@
+- status: Work in progress (alpha)
+- region "Tree":
+  - heading "Tree" [level=3]
+  - paragraph: Hierarchy.
+- separator "Resize Tree"
+- region "Editor":
+  - heading "Editor" [level=3]
+  - paragraph: Working surface.
+- separator "Resize Editor"
+- region "Inspector":
+  - heading "Inspector" [level=3]
+  - paragraph: Details.
