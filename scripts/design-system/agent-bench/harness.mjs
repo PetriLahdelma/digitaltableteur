@@ -111,11 +111,20 @@ export async function runAgent(worktree, task, agent, options = {}) {
     "--dangerously-skip-permissions",
   ];
   const startedAt = Date.now();
-  const { stdout } = await execFileAsync("claude", args, {
-    cwd: worktree,
-    maxBuffer: 64 * 1024 * 1024,
-    timeout: options.timeoutMs ?? 20 * 60 * 1000,
-  });
+  // The runtime exits non-zero on outcomes that are still valid benchmark
+  // data (error_max_turns ships a full result envelope on stdout). Never
+  // crash the run: capture stdout either way and grade whatever state the
+  // agent left behind.
+  let stdout = "";
+  try {
+    ({ stdout } = await execFileAsync("claude", args, {
+      cwd: worktree,
+      maxBuffer: 64 * 1024 * 1024,
+      timeout: options.timeoutMs ?? 20 * 60 * 1000,
+    }));
+  } catch (error) {
+    stdout = error.stdout ?? "";
+  }
   let parsed = null;
   try {
     parsed = JSON.parse(stdout);
@@ -130,6 +139,7 @@ export async function runAgent(worktree, task, agent, options = {}) {
     usage: parsed?.usage ?? null,
     durationMs: Date.now() - startedAt,
     isError: parsed?.is_error ?? false,
+    terminalReason: parsed?.terminal_reason ?? null,
     resultTail:
       typeof parsed?.result === "string" ? parsed.result.slice(-400) : null,
   };
