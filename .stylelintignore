@@ -20,3 +20,7 @@ packages/react/_ds-sync-globals.css
 
 # Any minified stylesheet
 **/*.min.css
+
+# Agent-benchmark task fixtures: seeded with INTENTIONAL violations
+# (hardcoded hex, forced-colors bugs) that the benchmarked agent must fix.
+scripts/design-system/agent-bench/fixtures/**

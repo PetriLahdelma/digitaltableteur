@@ -210,7 +210,9 @@
     "check:doc-semantics:json": "node scripts/design-system/check-doc-semantics.mjs --json",
     "project:dsds": "node scripts/design-system/project-dsds.mjs",
     "check:relationship-graph": "node scripts/design-system/check-relationship-graph.mjs",
-    "check:keyboard-delegation": "node scripts/design-system/check-keyboard-delegation.mjs"
+    "check:keyboard-delegation": "node scripts/design-system/check-keyboard-delegation.mjs",
+    "agent:bench": "node scripts/design-system/agent-bench/run.mjs",
+    "agent:bench:selftest": "node --test scripts/design-system/agent-bench/selftest.mjs"
   },
   "dependencies": {
     "@ai-sdk/mcp": "^2.0.15",

@@ -109,6 +109,21 @@
 - Run: `npm run cache-bust`
 - Adds version metadata and `.nojekyll`
 
+### Agent Benchmark (design-system, Astryx-gap Phase 3)
+
+**`scripts/design-system/agent-bench/`**
+
+- A/B benchmark: does the DS affordance layer (dt CLI + contracts) change
+  what a coding agent builds? Five task categories (table, tree, migration,
+  repair, forced-colors) with affordance-neutral machine acceptance.
+- `npm run agent:bench:selftest` — null/oracle grader integrity, no model
+  spend. Run before any paid run.
+- `npm run agent:bench -- --task all --arm both --agent claude --reps 3`
+  — a real benchmark run (spends tokens; pinned model + turn budget).
+- Methodology and fairness design: `docs/AGENT_BENCH_METHODOLOGY.md`.
+- Results land in `scripts/design-system/agent-bench/results/` (gitignored);
+  publishing to `public/ds-health` is manual once multi-rep numbers exist.
+
 ---
 
 ## Key Patterns
