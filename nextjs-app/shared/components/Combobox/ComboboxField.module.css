@@ -6,10 +6,14 @@
 
 .label {
   display: block;
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--primary-text-color);
+
+  /* Typography matches the Label primitive exactly — Combobox,
+   * MultiCombobox and FileUpload labels read like every other field label
+   * (unified 2026-08-05; was 13px/600/--primary-text-color). */
+  font-family: var(--font-text);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-primary);
 }
 
 .required {

@@ -8,9 +8,9 @@
 
 .honeypot {
   position: absolute;
-  inset-inline-start: -10000px;
-  inline-size: 1px;
   block-size: 1px;
+  inline-size: 1px;
+  inset-inline-start: -10000px;
   overflow: hidden;
 }
 
@@ -20,6 +20,33 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-layout-24);
+}
+
+/*
+ * The editorial name/email/message fields set the form's resting control
+ * height (0.75rem block padding -> 56px at the 18px root). The embedded DS
+ * controls ship md metrics (0.5rem -> 47px), so these class+element
+ * selectors lift them to the editorial scale. Scoped to .fields only; the
+ * components' own md sizing is untouched elsewhere.
+ */
+
+.fields select {
+  padding-block: var(--space-internal-12);
+}
+
+/* PhoneInput pads its composite wrapper (0.5rem); the inner input makes up
+ * the remaining quarter rem so the wrapper rests at the same 56px. */
+
+.fields input[type="tel"] {
+  padding-block: var(--space-internal-4);
+}
+
+/* MultiCombobox rests 2px shy of the editorial height; pin its control
+ * (field > wrapper > control in the DS markup) to the same formula the
+ * editorial inputs resolve to: 2x0.75rem padding + 1.5rem line + borders. */
+
+.fields .alignedCombobox > div > div {
+  min-block-size: calc(2 * var(--space-internal-24) + 2px);
 }
 
 .checkboxField {
@@ -99,16 +126,16 @@
 }
 
 .submitButton:disabled {
-  cursor: not-allowed;
   background-color: var(--color-disabled-bg);
   color: color-mix(in srgb, var(--inverted-text-color) 60%, transparent);
+  cursor: not-allowed;
 }
 
 /* Loading spinner */
 
 .spinner {
-  inline-size: 16px;
   block-size: 16px;
+  inline-size: 16px;
   animation: spin 1s linear infinite;
 }
 

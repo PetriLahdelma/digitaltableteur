@@ -2,8 +2,11 @@
   display: flex;
   align-items: center;
   gap: 0.5rem; /* 8px */
-  font-family: var(--font-body, sans-serif);
+
+  /* Typography matches the Label primitive exactly — one label treatment
+   * across single fields and group legends (unified 2026-08-05). */
+  font-family: var(--font-text);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-primary);
 }
