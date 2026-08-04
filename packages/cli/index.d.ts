@@ -163,3 +163,41 @@ export function validate(
     }
   >
 >;
+export type UpgradeEdit = {
+  kind: "prop-renamed" | "prop-removed" | "default-pinned";
+  file: string;
+  line: number;
+  component: string;
+  prop: string;
+  detail: string;
+  applied: boolean;
+};
+export type UpgradeManualItem = {
+  kind: string;
+  file?: string;
+  line?: number;
+  component: string;
+  prop?: string;
+  message: string;
+};
+export function upgrade(
+  names?: string[],
+  options?: CliOptions & { write?: boolean },
+): Promise<
+  DtCliResponse<
+    "upgrade.report",
+    {
+      from: string;
+      to: string;
+      path: string;
+      dryRun: boolean;
+      componentsWithChanges: string[];
+      componentsPlanned: string[];
+      filesScanned: number;
+      changedFiles: number;
+      edits: UpgradeEdit[];
+      manual: UpgradeManualItem[];
+      summary: { edits: number; manual: number; applied: number };
+    }
+  >
+>;

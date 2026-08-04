@@ -43,7 +43,7 @@ function isGlobalAttribute(name) {
   );
 }
 
-async function collectSourceFiles(root) {
+export async function collectSourceFiles(root) {
   const files = [];
   async function walk(directory) {
     let entries;
@@ -180,6 +180,10 @@ export function extractUsages(source, localNames) {
       selfClosing,
       hasSpread: /\{\s*\.\.\./.test(attrRegion),
       attributes: parseAttributes(attrRegion),
+      // Offsets of the attribute region in the original source, so
+      // `dt upgrade` can apply textual codemods precisely.
+      regionStart: start,
+      regionEnd: index,
     });
   }
   return usages;

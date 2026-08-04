@@ -6,6 +6,8 @@ import { promisify } from "node:util";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import {
   affected,
+  applyUpgradeToSource,
+  attributeSpan,
   classifyContractDiff,
   component,
   compose,
@@ -14,7 +16,9 @@ import {
   DtCliError,
   example,
   manifest,
+  planComponentUpgrade,
   search,
+  upgrade,
   validate,
 } from "../../packages/cli/src/api.mjs";
 
@@ -62,6 +66,7 @@ describe("@digitaltableteur/cli API", () => {
       "diff",
       "affected",
       "validate",
+      "upgrade",
     ]);
   });
 
@@ -249,6 +254,112 @@ describe("@digitaltableteur/cli API", () => {
           fixtureDir,
         ]),
       ).rejects.toMatchObject({ code: 2 });
+    });
+  });
+
+  describe("upgrade", () => {
+    const beforeContract = {
+      status: "beta",
+      props: {
+        tone: { optional: true, type: '"info" | "error"' },
+        size: { optional: true, type: '"sm" | "md" | "lg"', default: "md" },
+        dense: { optional: true, type: "boolean" },
+      },
+    };
+    const afterContract = {
+      status: "beta",
+      props: {
+        intent: { optional: true, type: '"info" | "error"' },
+        size: { optional: true, type: '"sm" | "md" | "lg"', default: "sm" },
+        dense: { optional: true, type: "boolean" },
+      },
+    };
+
+    it("finds attribute spans at expression depth 0 only", () => {
+      const region = ` label={render({ size: "x" })} size="md" onClick={() => size()}`;
+      const span = attributeSpan(region, "size");
+      expect(region.slice(span.nameStart, span.nameEnd)).toBe("size");
+      expect(region.slice(span.start, span.end)).toBe(` size="md"`);
+      expect(attributeSpan(region, "missing")).toBeNull();
+    });
+
+    it("plans renames conservatively and pins changed defaults", () => {
+      const report = classifyContractDiff(
+        "Widget",
+        beforeContract,
+        afterContract,
+      );
+      const plan = planComponentUpgrade(report);
+      expect(plan.actions.renames).toEqual([{ from: "tone", to: "intent" }]);
+      expect(plan.actions.removals).toEqual([]);
+      expect(plan.actions.defaults).toEqual([
+        { prop: "size", attribute: `size="md"` },
+      ]);
+    });
+
+    it("rewrites usages idempotently", () => {
+      const report = classifyContractDiff(
+        "Widget",
+        beforeContract,
+        afterContract,
+      );
+      const plans = new Map([["Widget", planComponentUpgrade(report)]]);
+      const locals = new Map([["Widget", "Widget"]]);
+      const source = [
+        `const a = <Widget tone="error" size="lg" />;`,
+        `const b = <Widget dense />;`,
+        `const c = <Widget {...rest} />;`,
+      ].join("\n");
+      const first = applyUpgradeToSource(source, locals, plans);
+      expect(first.output).toContain(`<Widget intent="error" size="lg" />`);
+      // The omitted-size usage gets the previous default pinned; the
+      // spread usage is left alone.
+      expect(first.output).toContain(`<Widget size="md" dense />`);
+      expect(first.output).toContain(`<Widget {...rest} />`);
+      const second = applyUpgradeToSource(first.output, locals, plans);
+      expect(second.edits).toHaveLength(0);
+      expect(second.output).toBe(first.output);
+    });
+
+    it("routes judgment calls to manual items instead of guessing", () => {
+      const report = classifyContractDiff(
+        "Widget",
+        {
+          status: "beta",
+          props: {
+            size: { optional: true, type: '"sm" | "md" | "lg"' },
+            label: { optional: true, type: "string" },
+          },
+        },
+        {
+          status: "beta",
+          props: {
+            size: { optional: true, type: '"sm" | "md"' },
+            label: { optional: false, type: "string" },
+          },
+        },
+      );
+      const plan = planComponentUpgrade(report);
+      const plans = new Map([["Widget", plan]]);
+      const locals = new Map([["Widget", "Widget"]]);
+      const source = [
+        `const a = <Widget size="lg" label="ok" />;`,
+        `const b = <Widget size="sm" />;`,
+      ].join("\n");
+      const result = applyUpgradeToSource(source, locals, plans);
+      expect(result.edits).toHaveLength(0);
+      const kinds = result.manual.map((item) => item.kind);
+      expect(kinds).toContain("prop-values-removed"); // size="lg" in use
+      expect(kinds).toContain("prop-now-required"); // label missing on b
+      expect(result.manual).toHaveLength(2);
+    });
+
+    it("reports an empty upgrade for identical refs", { timeout: 30000 }, async () => {
+      const result = await upgrade([], { from: "HEAD", to: "HEAD" });
+      expect(result.type).toBe("upgrade.report");
+      expect(result.data.dryRun).toBe(true);
+      expect(result.data.summary.edits).toBe(0);
+      expect(result.data.componentsPlanned).toEqual([]);
     });
   });
 

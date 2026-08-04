@@ -97,6 +97,20 @@ export function formatHuman(result, options = {}) {
       );
       return [head, ...rows, result.data.note ?? ""].filter(Boolean).join("\n");
     }
+    case "upgrade.report": {
+      const { summary, edits, manual, dryRun, changedFiles, filesScanned } =
+        result.data;
+      const head = `Upgrade ${result.data.from} -> ${result.data.to} (${dryRun ? "dry run" : "applied"}): ${summary.edits} edit(s) in ${changedFiles} of ${filesScanned} file(s), ${summary.manual} manual item(s).`;
+      const editRows = edits.map(
+        (edit) =>
+          `- [edit] ${edit.kind} ${edit.file}:${edit.line} ${edit.component} — ${edit.detail}${edit.applied ? "" : " (dry run)"}`,
+      );
+      const manualRows = manual.map(
+        (item) =>
+          `- [manual] ${item.kind} ${item.file ? `${item.file}${item.line ? `:${item.line}` : ""} ` : ""}${item.component}\n  ${item.message}`,
+      );
+      return [head, ...editRows, ...manualRows].join("\n");
+    }
     case "manifest":
       return [
         `${result.data.name} ${result.data.version}`,

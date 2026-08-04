@@ -1,6 +1,6 @@
 import { ERROR_CODES } from "./errors.mjs";
 
-export const CLI_VERSION = "0.3.0";
+export const CLI_VERSION = "0.4.0";
 export const API_VERSION = 1;
 
 export const CAPABILITY_MANIFEST = Object.freeze({
@@ -8,7 +8,7 @@ export const CAPABILITY_MANIFEST = Object.freeze({
   name: "dt",
   version: CLI_VERSION,
   description:
-    "Digitaltableteur design-system CLI — registry search, component docs, examples, composition, diagnostics, contract diffing, impact analysis, and consumer usage validation.",
+    "Digitaltableteur design-system CLI — registry search, component docs, examples, composition, diagnostics, contract diffing, impact analysis, consumer usage validation, and diff-coupled upgrade codemods.",
   globalOptions: [
     {
       flag: "--json",
@@ -103,6 +103,38 @@ export const CAPABILITY_MANIFEST = Object.freeze({
         },
       ],
       responseTypes: ["validate.report"],
+    },
+    {
+      name: "upgrade",
+      arguments: [{ name: "components", required: false, variadic: true }],
+      options: [
+        {
+          flag: "--from <git-ref>",
+          type: "string",
+          default: "HEAD",
+          description: "Baseline ref for the contract diff driving codemods.",
+        },
+        {
+          flag: "--to <git-ref|worktree>",
+          type: "string",
+          default: "worktree",
+          description: "Target ref, or the working tree.",
+        },
+        {
+          flag: "--path <directory>",
+          type: "string",
+          default: ".",
+          description: "Consumer source root to rewrite.",
+        },
+        {
+          flag: "--write",
+          type: "boolean",
+          default: false,
+          description:
+            "Apply the codemods. Without it the report is a dry run.",
+        },
+      ],
+      responseTypes: ["upgrade.report"],
     },
   ],
   errorCodes: Object.values(ERROR_CODES),

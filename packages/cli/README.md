@@ -13,6 +13,7 @@ npx @digitaltableteur/cli diff --from v-prev-ref --to HEAD
 npx @digitaltableteur/cli diff DataTable --from HEAD~5
 npx @digitaltableteur/cli affected DataTable TreeView
 npx @digitaltableteur/cli validate --path src
+npx @digitaltableteur/cli upgrade --from v-prev-ref --path src --write
 npx @digitaltableteur/cli manifest --json
 npx @digitaltableteur/cli --help
 ```
@@ -48,4 +49,20 @@ error is found, so it works as a CI gate:
 ```bash
 npx @digitaltableteur/cli validate --path src
 npx @digitaltableteur/cli validate DataTable TreeView --path app --json
+```
+
+`upgrade` couples codemods to the contract diff: it classifies changes
+between `--from` and `--to` (default `HEAD` → the working tree) and rewrites
+consumer sources under `--path` for the mechanically safe cases — a prop
+rename (exactly one removed and one added prop with an identical declared
+type), a removed prop (the dead attribute is deleted), and a changed default
+(usages that omitted the prop get the previous default pinned explicitly so
+rendered behavior is preserved). Everything requiring judgment — a removed
+enum value in use, a newly required prop, a removed or deprecated
+component — is reported as a `manual` item instead of guessed. Dry-run by
+default; `--write` applies. Re-running is a no-op (idempotent).
+
+```bash
+npx @digitaltableteur/cli upgrade --from HEAD~1 --path src        # dry run
+npx @digitaltableteur/cli upgrade Badge --from HEAD~1 --path src --write
 ```

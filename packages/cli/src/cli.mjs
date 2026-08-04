@@ -8,6 +8,7 @@ import {
   example,
   manifest,
   search,
+  upgrade,
   validate,
 } from "./api.mjs";
 import { DtCliError, ERROR_CODES, errorEnvelope } from "./errors.mjs";
@@ -26,6 +27,8 @@ function parseArgs(argv) {
     else if (value === "--from") options.from = argv[++index];
     else if (value === "--to") options.to = argv[++index];
     else if (value === "--path") options.path = argv[++index];
+    else if (value === "--write") options.write = true;
+    else if (value === "--dry-run") options.write = false;
     else if (value.startsWith("--")) {
       throw new DtCliError(
         `Unknown option "${value}".`,
@@ -66,6 +69,8 @@ async function run(argv) {
       return affected(positional, options);
     case "validate":
       return validate(positional, options);
+    case "upgrade":
+      return upgrade(positional, options);
     case undefined:
       return manifest();
     default:
