@@ -1,0 +1,16 @@
+- status: Work in progress (alpha)
+- table "Sort states":
+  - caption: Sort states
+  - rowgroup:
+    - row "Name Role Projects":
+      - columnheader "Name":
+        - button "Name"
+      - columnheader "Role":
+        - button "Role"
+      - columnheader "Projects":
+        - button "Projects"
+  - rowgroup:
+    - row "Ada Engineer 8":
+      - cell "Ada"
+      - cell "Engineer"
+      - cell "8"

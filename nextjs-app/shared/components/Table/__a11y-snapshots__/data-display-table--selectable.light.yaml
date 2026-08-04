@@ -1,0 +1,25 @@
+- status: Work in progress (alpha)
+- table "Selectable rows":
+  - caption: Selectable rows
+  - rowgroup:
+    - row "Select all rows Name Role":
+      - columnheader "Select all rows":
+        - checkbox "Select all rows" [checked=mixed]
+      - columnheader "Name"
+      - columnheader "Role"
+  - rowgroup:
+    - row "Select Ada Lovelace Ada Lovelace Engineer":
+      - cell "Select Ada Lovelace":
+        - checkbox "Select Ada Lovelace" [checked]
+      - cell "Ada Lovelace"
+      - cell "Engineer"
+    - row "Select Dieter Rams Dieter Rams Designer":
+      - cell "Select Dieter Rams":
+        - checkbox "Select Dieter Rams"
+      - cell "Dieter Rams"
+      - cell "Designer"
+    - row "Select Grace Hopper Grace Hopper Engineer":
+      - cell "Select Grace Hopper":
+        - checkbox "Select Grace Hopper"
+      - cell "Grace Hopper"
+      - cell "Engineer"

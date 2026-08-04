@@ -1,0 +1,12 @@
+{
+  "storyId": "data-display-table-playground",
+  "mode": "forced-colors",
+  "sourceSHA": "707d7917acb7fe832bfefa4c4314d79be17cd22a",
+  "capturedAt": "2026-08-04T06:57:46.410Z",
+  "runner": "table-family-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

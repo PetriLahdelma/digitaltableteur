@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within } from "storybook/test";
+import React from "react";
 import { Table } from "@dt/Table";
 import { TableRow } from "@dt/TableRow";
 import { TableCell } from "@dt/TableCell";
@@ -120,6 +122,56 @@ export const RowHeader: Story = {
       </tbody>
     </Table>
   ),
+};
+
+function SortCycleHeader() {
+  const [direction, setDirection] = React.useState<
+    "ascending" | "descending" | "none"
+  >("none");
+  const cycle = () =>
+    setDirection((current) =>
+      current === "none"
+        ? "ascending"
+        : current === "ascending"
+          ? "descending"
+          : "none",
+    );
+  return (
+    <Table caption="Sort cycle">
+      <thead>
+        <TableRow>
+          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>
+            Name
+          </TableHeaderCell>
+        </TableRow>
+      </thead>
+      <tbody>
+        <TableRow>
+          <TableCell>Ada</TableCell>
+        </TableRow>
+      </tbody>
+    </Table>
+  );
+}
+
+/**
+ * The native sort button drives the three-state cycle from the keyboard:
+ * Enter and Space both activate it, and aria-sort tracks every transition.
+ */
+export const SortCycle: Story = {
+  tags: ["example"],
+  render: () => <SortCycleHeader />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const header = () => canvas.getByRole("columnheader", { name: /Name/ });
+    canvas.getByRole("button", { name: "Name" }).focus();
+    await userEvent.keyboard("{Enter}");
+    await expect(header()).toHaveAttribute("aria-sort", "ascending");
+    await userEvent.keyboard(" ");
+    await expect(header()).toHaveAttribute("aria-sort", "descending");
+    await userEvent.keyboard("{Enter}");
+    await expect(header()).not.toHaveAttribute("aria-sort");
+  },
 };
 
 export const ForcedColors: Story = { globals: { forcedColors: "active" } };
