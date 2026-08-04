@@ -22,6 +22,7 @@ export type CliOptions = {
   story?: string;
   from?: string;
   to?: string;
+  path?: string;
 };
 
 export type ContractChange = {
@@ -120,6 +121,45 @@ export function affected(
       }>;
       files: string[] | null;
       prodPages: string[] | null;
+    }
+  >
+>;
+export type ValidationFinding = {
+  severity: "error" | "warn";
+  kind:
+    | "unknown-component"
+    | "unknown-prop"
+    | "invalid-enum-value"
+    | "missing-required-prop"
+    | "deprecated-component";
+  file: string;
+  line?: number;
+  component: string;
+  prop?: string;
+  value?: string;
+  occurrences?: number;
+  message: string;
+};
+export function validate(
+  names?: string[],
+  options?: CliOptions,
+): Promise<
+  DtCliResponse<
+    "validate.report",
+    {
+      path: string;
+      filter: string[];
+      filesScanned: number;
+      usages: number;
+      components: string[];
+      findings: ValidationFinding[];
+      summary: {
+        errors: number;
+        warnings: number;
+        byKind: Record<string, number>;
+      };
+      clean: boolean;
+      note?: string;
     }
   >
 >;

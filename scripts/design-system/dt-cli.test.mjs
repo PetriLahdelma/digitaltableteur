@@ -1,6 +1,9 @@
 import { execFile } from "node:child_process";
+import { mkdtemp, rm, writeFile, mkdir } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { promisify } from "node:util";
-import { describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import {
   affected,
   classifyContractDiff,
@@ -12,6 +15,7 @@ import {
   example,
   manifest,
   search,
+  validate,
 } from "../../packages/cli/src/api.mjs";
 
 const execFileAsync = promisify(execFile);
@@ -57,6 +61,7 @@ describe("@digitaltableteur/cli API", () => {
       "doctor",
       "diff",
       "affected",
+      "validate",
     ]);
   });
 
@@ -143,6 +148,108 @@ describe("@digitaltableteur/cli API", () => {
     expect(
       result.data.files.some((file) => file.includes("GoldenIntentsTable")),
     ).toBe(true);
+  });
+
+  describe("validate", () => {
+    let fixtureDir;
+
+    beforeAll(async () => {
+      fixtureDir = await mkdtemp(join(tmpdir(), "dt-validate-"));
+      await mkdir(join(fixtureDir, "node_modules"), { recursive: true });
+      await writeFile(
+        join(fixtureDir, "node_modules", "Ignored.tsx"),
+        `import Badge from "@dt/Badge";\nexport const X = () => <Badge variant="nope" />;\n`,
+      );
+      await writeFile(
+        join(fixtureDir, "Fixture.tsx"),
+        [
+          `import Badge from "@dt/Badge";`,
+          `import DataTable from "@dt/DataTable";`,
+          `import Phantom from "@dt/Phantom";`,
+          `import Hero from "@dt/Hero";`,
+          `declare const rows: never[]; declare const cols: never[]; declare const rest: object;`,
+          `export function Fixture() {`,
+          `  return (`,
+          `    <div>`,
+          `      <Badge variant="primary">ok</Badge>`,
+          `      <Badge variant="tertiary">bad enum</Badge>`,
+          `      <Badge frobnicate="yes">unknown prop</Badge>`,
+          `      <DataTable data={rows} columns={cols} getRowId={(row) => row.id} />`,
+          `      <DataTable {...rest} />`,
+          `      <Hero title="legacy" />`,
+          `      <Phantom />`,
+          `    </div>`,
+          `  );`,
+          `}`,
+          ``,
+        ].join("\n"),
+      );
+    });
+
+    afterAll(async () => {
+      await rm(fixtureDir, { recursive: true, force: true });
+    });
+
+    it("checks consumer usage against the installed contract manifest", async () => {
+      const result = await validate([], { path: fixtureDir });
+      expect(result.type).toBe("validate.report");
+      expect(result.data.clean).toBe(false);
+      const kinds = result.data.findings.map((finding) => finding.kind);
+
+      expect(kinds).toContain("unknown-component"); // Phantom
+      expect(kinds).toContain("invalid-enum-value"); // Badge variant="tertiary"
+      expect(kinds).toContain("unknown-prop"); // Badge frobnicate
+      expect(kinds).toContain("missing-required-prop"); // DataTable caption
+      expect(kinds).toContain("deprecated-component"); // Hero
+
+      const enumFinding = result.data.findings.find(
+        (finding) => finding.kind === "invalid-enum-value",
+      );
+      expect(enumFinding.severity).toBe("error");
+      expect(enumFinding.value).toBe("tertiary");
+      const requiredFinding = result.data.findings.find(
+        (finding) => finding.kind === "missing-required-prop",
+      );
+      expect(requiredFinding.prop).toBe("caption");
+      // The spread DataTable bails out of presence checks and says so.
+      expect(result.data.note).toContain("spread");
+      // node_modules content is never scanned.
+      expect(
+        result.data.findings.every(
+          (finding) => !finding.file.includes("node_modules"),
+        ),
+      ).toBe(true);
+      // A valid literal produces no enum finding.
+      expect(
+        result.data.findings.filter(
+          (finding) => finding.kind === "invalid-enum-value",
+        ),
+      ).toHaveLength(1);
+    });
+
+    it("narrows to named components and validates the filter", async () => {
+      const result = await validate(["badge"], { path: fixtureDir });
+      expect(result.data.filter).toEqual(["Badge"]);
+      expect(
+        result.data.findings.every(
+          (finding) => finding.component === "Badge",
+        ),
+      ).toBe(true);
+      await expect(validate(["Buttn"], { path: fixtureDir })).rejects.toMatchObject(
+        { code: "ERR_UNKNOWN_COMPONENT" },
+      );
+    });
+
+    it("exits non-zero from the CLI when contract violations exist", async () => {
+      await expect(
+        execFileAsync(process.execPath, [
+          "packages/cli/src/cli.mjs",
+          "validate",
+          "--path",
+          fixtureDir,
+        ]),
+      ).rejects.toMatchObject({ code: 2 });
+    });
   });
 
   it("keeps the capability manifest in sync with the new commands", async () => {

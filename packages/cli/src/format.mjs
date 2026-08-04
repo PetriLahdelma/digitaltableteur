@@ -86,6 +86,17 @@ export function formatHuman(result, options = {}) {
       );
       return rows.join("\n\n");
     }
+    case "validate.report": {
+      const { summary, findings, filesScanned, usages, clean } = result.data;
+      const head = clean
+        ? `Validation clean: ${usages} usage(s) across ${filesScanned} file(s), ${summary.warnings} warning(s).`
+        : `Validation failed: ${summary.errors} error(s), ${summary.warnings} warning(s) across ${filesScanned} file(s).`;
+      const rows = findings.map(
+        (finding) =>
+          `- [${finding.severity}] ${finding.kind} ${finding.file}${finding.line ? `:${finding.line}` : ""} ${finding.component}${finding.prop ? ` (${finding.prop})` : ""}${finding.occurrences > 1 ? ` ×${finding.occurrences}` : ""}\n  ${finding.message}`,
+      );
+      return [head, ...rows, result.data.note ?? ""].filter(Boolean).join("\n");
+    }
     case "manifest":
       return [
         `${result.data.name} ${result.data.version}`,

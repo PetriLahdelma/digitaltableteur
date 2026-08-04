@@ -1,6 +1,6 @@
 import { ERROR_CODES } from "./errors.mjs";
 
-export const CLI_VERSION = "0.2.0";
+export const CLI_VERSION = "0.3.0";
 export const API_VERSION = 1;
 
 export const CAPABILITY_MANIFEST = Object.freeze({
@@ -8,7 +8,7 @@ export const CAPABILITY_MANIFEST = Object.freeze({
   name: "dt",
   version: CLI_VERSION,
   description:
-    "Digitaltableteur design-system CLI — registry search, component docs, examples, composition, diagnostics, contract diffing, and impact analysis.",
+    "Digitaltableteur design-system CLI — registry search, component docs, examples, composition, diagnostics, contract diffing, impact analysis, and consumer usage validation.",
   globalOptions: [
     {
       flag: "--json",
@@ -89,6 +89,20 @@ export const CAPABILITY_MANIFEST = Object.freeze({
       arguments: [{ name: "components", required: true, variadic: true }],
       options: [],
       responseTypes: ["affected.report"],
+    },
+    {
+      name: "validate",
+      arguments: [{ name: "components", required: false, variadic: true }],
+      options: [
+        {
+          flag: "--path <directory>",
+          type: "string",
+          default: ".",
+          description:
+            "Consumer source root to scan for .tsx/.jsx design-system usage.",
+        },
+      ],
+      responseTypes: ["validate.report"],
     },
   ],
   errorCodes: Object.values(ERROR_CODES),
