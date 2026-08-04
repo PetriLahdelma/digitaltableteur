@@ -1,0 +1,19 @@
+.chip {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.operational {
+  background-color: #1a7f37;
+}
+
+.degraded {
+  background-color: #b58a00;
+}
+
+.down {
+  background-color: #c0272d;
+}
