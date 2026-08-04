@@ -12872,6 +12872,11 @@
           "story": "Example",
           "description": null,
           "source": "export const Example: Story = {\n  tags: [\"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const separator = canvas.getByRole(\"separator\");\n    separator.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"37\");\n  },\n};"
+        },
+        {
+          "story": "KeyboardResize",
+          "description": null,
+          "source": "export const KeyboardResize: Story = {\n  tags: [\"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const separator = canvas.getByRole(\"separator\");\n    separator.focus();\n    // Home: leading panel collapses to its minSize (20).\n    await userEvent.keyboard(\"{Home}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"20\");\n    // Arrow steps by keyboardStep from the minimum.\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"25\");\n    // End: leading panel takes everything the trailing minSize (30) allows.\n    await userEvent.keyboard(\"{End}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"70\");\n    // Clamped: another increase cannot pass the trailing panel's minimum.\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"70\");\n    // ArrowLeft steps back down.\n    await userEvent.keyboard(\"{ArrowLeft}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"65\");\n  },\n};\n\n/**\n * Three panels produce two independent separators; each pair clamps to its\n * own minimums.\n */"
         }
       ]
     },

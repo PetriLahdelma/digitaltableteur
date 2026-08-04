@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T07:00:04.646Z",
+  "generatedAt": "2026-08-04T07:21:20.724Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -21010,19 +21010,20 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "unverified"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -21032,14 +21033,14 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-07-26 — named regions, separator value semantics, keyboard resize behavior, and axe result reviewed in unit tests."
+          "note": "2026-07-26 — named regions, separator value semantics, keyboard resize behavior, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; clamped keyboard model (arrows/Home/End, min-size limits, aria-valuenow) driven by a play story; drag-resize latency measured; AT-tree and real-browser forced-colors evidence captured."
         }
       ],
       "docOrigin": {
