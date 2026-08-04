@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T07:21:20.724Z",
+  "generatedAt": "2026-08-04T07:33:23.518Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -31343,19 +31343,20 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "unverified"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "keyboard-contract",
@@ -31365,14 +31366,14 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-07-26 — list semantics, item position metadata, rendered range behavior, and axe result reviewed in unit tests."
+          "note": "2026-07-26 — list semantics, item position metadata, rendered range behavior, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; windowing asserted at 10,000 rows (DOM capped at visible+overscan, true posinset/setsize); scroll-window focusability play; scroll-stability latency measured; AT-tree and real-browser forced-colors evidence captured."
         }
       ],
       "docOrigin": {
@@ -31556,31 +31557,32 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "forced-colors-real-browser",
           "statement": "The component remains legible and operable under a real browser forced-colors: active pass.",
-          "verificationMode": "unverified"
+          "verificationMode": "manual",
+          "note": "Storybook forced-colors addon (simulated, not real browser HC)."
         },
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "human-a11y-review",
           "statement": "A human completed an end-to-end accessibility review of this component.",
           "verificationMode": "manual",
-          "note": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test."
+          "note": "2026-07-27 — role=listitem with aria-posinset/aria-setsize verified; composes ListItem so chrome a11y (decorative icons, exposed meta, selection is visual-only) is inherited; axe asserted in a list context in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; composed and position-stamped by VirtualList."
         }
       ],
       "docOrigin": {

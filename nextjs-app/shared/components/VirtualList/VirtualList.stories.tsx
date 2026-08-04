@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within, waitFor } from "storybook/test";
 import Icon from "@dt/Icon";
 import Badge from "@dt/Badge";
 import StatusDot from "@dt/StatusDot";
@@ -46,7 +47,11 @@ const meta = {
   argTypes: {
     height: { control: "number", description: "Viewport height in pixels." },
     itemHeight: { control: "number", description: "Fixed row height in pixels." },
-    overscan: { control: "number", description: "Extra rows around the viewport." },
+    overscan: {
+      control: "number",
+      description: "Extra rows around the viewport.",
+      table: { defaultValue: { summary: "3" } },
+    },
     items: { table: { disable: true } },
     getItemKey: { table: { disable: true } },
     getItemProps: { table: { disable: true } },
@@ -81,6 +86,68 @@ export const Example: Story = {
         <StatusDot tone={item.online ? "success" : "neutral"} label={item.online ? "Online" : "Offline"} />
       ),
     }),
+  },
+};
+
+/**
+ * 10,000 rows behind a ~7-row window: the DOM stays at viewport + overscan
+ * regardless of collection size, and every mounted row carries its true
+ * aria-posinset/aria-setsize. Used as the scroll-stability performance case
+ * (see spec Design notes).
+ */
+export const TenThousandRows: Story = {
+  tags: ["example"],
+  args: {
+    "aria-label": "Ten thousand rows",
+    items: Array.from({ length: 10000 }, (_, index) => ({
+      id: `row-${index + 1}`,
+      label: `Row ${index + 1}`,
+      isNew: false,
+      online: false,
+    })),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const viewport = canvas.getByRole("list", { name: "Ten thousand rows" });
+    const mounted = () => canvas.getAllByRole("listitem").length;
+    // Jump deep into the collection; the window slides, the DOM does not
+    // grow beyond visible rows (ceil(320/48) = 7) plus overscan on each side.
+    viewport.scrollTop = 9000 * 48;
+    await waitFor(() => {
+      expect(
+        canvas.getByText("Row 9001").closest("[role=\"listitem\"]"),
+      ).toHaveAttribute("aria-posinset", "9001");
+    });
+    await expect(mounted()).toBeLessThanOrEqual(7 + 2 * 3);
+    await expect(
+      canvas.getByText("Row 9001").closest("[role=\"listitem\"]"),
+    ).toHaveAttribute("aria-setsize", "10000");
+  },
+};
+
+/**
+ * The scroll window is keyboard-reachable: Tab lands on the viewport itself,
+ * whose native scroll handling (arrows, PageUp/PageDown, Home/End) is browser
+ * behavior that synthetic key events cannot trigger — so the play asserts
+ * focusability and slides the window through the same scroll pathway the keys
+ * drive, verifying the rendered range follows.
+ */
+export const KeyboardScroll: Story = {
+  tags: ["example"],
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const viewport = canvas.getByRole("list", { name: "Component results" });
+    await userEvent.tab();
+    await expect(viewport).toHaveFocus();
+    // The End key scrolls a focused viewport to the bottom; drive the same
+    // scroll pathway programmatically (synthetic keys are untrusted and
+    // cannot invoke native scrolling).
+    viewport.scrollTop = viewport.scrollHeight;
+    await waitFor(() => {
+      expect(
+        canvas.getByText("Component result 1000").closest("[role=\"listitem\"]"),
+      ).toHaveAttribute("aria-posinset", "1000");
+    });
   },
 };
 

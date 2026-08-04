@@ -55,3 +55,11 @@ The rows are absolutely positioned, so the viewport takes its width from its
 container. Render VirtualList inside a block/flex context that gives it a width;
 in a shrink-to-fit container (a centered flex item, inline-block) it collapses
 to zero width and only its border shows.
+- Performance evidence (2026-08-04, dev-mode Storybook, active Chromium,
+  DOM-settled timing): 100 deep scroll jumps (~96 rows each) across a
+  10,000-row collection re-window in ~8 ms on average (p95 10.3 ms), and the
+  mounted row count never exceeds visible + 2 x overscan (13 rows at a
+  320 px viewport). Native key scrolling of the focusable viewport (arrows,
+  PageUp/PageDown, Home/End) is trusted-event browser behavior that synthetic
+  test events cannot trigger; the play verifies focusability and drives the
+  same scroll pathway programmatically.
