@@ -2,7 +2,7 @@
     "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "ThemeProvider",
     "tier": "atom",
-    "group": "foundation",
+    "group": "utility",
     "status": "beta",
     "description": "Theme context for light, dark, and high-contrast modes.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1445-2403",

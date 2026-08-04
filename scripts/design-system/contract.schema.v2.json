@@ -48,8 +48,22 @@
             ]
         },
         "group": {
-            "type": "string",
-            "minLength": 1
+            "description": "Use-based taxonomy group, normalized 2026-08-04. Boundaries: 'display' = presentational primitives (typography, avatars, badges); 'data-display' = structured-data surfaces (Table family, DataTable, VirtualList); 'media' = image/media surfaces (galleries, lightbox, media images); 'actions' = button-family triggers; 'overlay' = floating/blocking surfaces (modal, menu, tooltip, consent, chat widget); 'utility' = non-visual providers and wrappers (theme, visually-hidden, motion).",
+            "enum": [
+                "actions",
+                "content",
+                "data-display",
+                "display",
+                "feedback",
+                "form",
+                "layout",
+                "marketing",
+                "media",
+                "navigation",
+                "overlay",
+                "structure",
+                "utility"
+            ]
         },
         "status": {
             "enum": [

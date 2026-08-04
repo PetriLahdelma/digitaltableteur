@@ -291,7 +291,7 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
       "tokens",
       "usage",
     ],
-    "group": "interaction",
+    "group": "actions",
     "import": "import Button from "@dt/Button";",
   },
   "CTASection": {
@@ -554,7 +554,7 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
       "tokens",
       "usage",
     ],
-    "group": "forms",
+    "group": "form",
     "import": "import ContactInquiryPanel from "@dt/ContactInquiryPanel";",
   },
   "ContactPageContentEditorial": {
@@ -786,7 +786,7 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
       "tokens",
       "usage",
     ],
-    "group": "controls",
+    "group": "form",
     "import": "import { FilterChip } from "@dt/FilterChip";",
   },
   "FlexBox": {
@@ -879,7 +879,7 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
       "tokens",
       "usage",
     ],
-    "group": "display",
+    "group": "media",
     "import": "import Gallery from "@dt/Gallery";",
   },
   "Grid": {
@@ -2049,7 +2049,7 @@ exports[`get > snapshot: get() shape per stable component (fields + example stor
       "tokens",
       "usage",
     ],
-    "group": "interaction",
+    "group": "actions",
     "import": "import SplitButton from "@dt/SplitButton";",
   },
   "Stack": {

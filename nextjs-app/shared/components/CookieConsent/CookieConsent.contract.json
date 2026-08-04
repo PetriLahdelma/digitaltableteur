@@ -2,7 +2,7 @@
     "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "CookieConsent",
     "tier": "organism",
-    "group": "chrome",
+    "group": "overlay",
     "status": "beta",
     "description": "GDPR cookie consent modal and banner wired to site providers.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1442-2248",

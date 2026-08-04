@@ -2,7 +2,7 @@
     "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "FilterChip",
     "tier": "atom",
-    "group": "controls",
+    "group": "form",
     "status": "stable",
     "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, rectangle, underline, and minimal treatments.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1249-1954",

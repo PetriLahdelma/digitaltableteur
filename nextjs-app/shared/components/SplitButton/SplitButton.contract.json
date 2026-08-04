@@ -2,7 +2,7 @@
     "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "SplitButton",
     "tier": "molecule",
-    "group": "interaction",
+    "group": "actions",
     "status": "stable",
     "description": "Primary action button paired with a dropdown toggle for related secondary actions, with collision-aware menu placement and optional nested submenus.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1052-2084",

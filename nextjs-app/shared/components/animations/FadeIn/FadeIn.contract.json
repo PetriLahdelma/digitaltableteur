@@ -2,7 +2,7 @@
   "$schema": "../../../scripts/design-system/contract.schema.json",
   "name": "FadeIn",
   "tier": "atom",
-  "group": "motion",
+  "group": "utility",
   "status": "beta",
   "description": "Scroll-triggered fade-in animation wrapper (GSAP).",
   "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1445-2393",

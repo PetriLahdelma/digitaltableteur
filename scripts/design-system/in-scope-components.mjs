@@ -6,7 +6,7 @@
  * See docs/adr/0005-dsharp-parity-baseline.md.
  */
 export const IN_SCOPE_COMPONENTS = [
-  { name: "Button", tier: "atom", group: "interaction", root: "components", status: "beta" },
+  { name: "Button", tier: "atom", group: "actions", root: "components", status: "beta" },
   { name: "Title", tier: "atom", group: "display", root: "components", status: "beta" },
   { name: "Text", tier: "atom", group: "display", root: "components", status: "beta" },
   { name: "Icon", tier: "atom", group: "display", root: "components", status: "beta" },
@@ -30,11 +30,11 @@ export const IN_SCOPE_COMPONENTS = [
   { name: "FileUpload", tier: "molecule", group: "form", root: "components", status: "beta" },
   { name: "ContactForm", tier: "organism", group: "form", root: "components", status: "beta" },
   { name: "NewsletterWaitlist", tier: "organism", group: "form", root: "components", status: "beta" },
-  { name: "ChatWidget", tier: "organism", group: "interaction", root: "components", status: "beta" },
+  { name: "ChatWidget", tier: "organism", group: "overlay", root: "components", status: "beta" },
   { name: "SiteHeader", tier: "pattern", group: "navigation", root: "patterns", status: "beta" },
   { name: "SiteFooter", tier: "pattern", group: "navigation", root: "patterns", status: "beta" },
   { name: "Divider", tier: "atom", group: "structure", root: "components", status: "beta" },
-  { name: "VisuallyHidden", tier: "atom", group: "accessibility", root: "components", status: "beta" },
+  { name: "VisuallyHidden", tier: "atom", group: "utility", root: "components", status: "beta" },
   { name: "Progress", tier: "atom", group: "feedback", root: "components", status: "beta" },
   { name: "Spinner", tier: "atom", group: "feedback", root: "components", status: "beta" },
   { name: "Radio", tier: "atom", group: "form", root: "components", status: "beta" },

@@ -2,7 +2,7 @@
     "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Button",
     "tier": "molecule",
-    "group": "interaction",
+    "group": "actions",
     "status": "stable",
     "description": "Primary action control with an orthogonal variant (visual weight) and tone (semantic color) model, loading state, and polymorphic button/link rendering.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=406-1569",
