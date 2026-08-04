@@ -39,8 +39,8 @@
     ],
     "reducedMotion": true,
     "reviewed": true,
-    "reviewedNote": "2026-07-27 — native tr; hover/zebra/selection tint are presentational; axe asserted inside a table in the unit test.",
-    "forcedColorsVerified": false,
+    "reviewedNote": "2026-07-27 — native tr; hover/zebra/selection tint are presentational; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+    "forcedColorsVerified": true,
     "accessibilityTreeVerified": false
   },
   "tokens": {
@@ -51,7 +51,7 @@
     ],
     "spacing": []
   },
-  "lightDarkVerified": false,
+  "lightDarkVerified": true,
   "dense": "table row; works in thead/tbody, selected surface, hover + zebra via the Table root",
   "keywords": [
     "table",

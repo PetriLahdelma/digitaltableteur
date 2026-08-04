@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within } from "storybook/test";
 import React from "react";
 import { Table, type TableSortDirection } from "./Table";
 import { TableRow } from "@dt/TableRow";
@@ -184,6 +185,17 @@ export const Selectable: Story = {
     },
   },
   render: (args) => <SelectableTable {...args} />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const ada = canvas.getByRole("checkbox", { name: "Select Ada Lovelace" });
+    ada.focus();
+    await userEvent.keyboard(" ");
+    await expect(ada).toBeChecked();
+    // A partial selection drives the master checkbox to indeterminate.
+    await expect(
+      canvas.getByRole("checkbox", { name: "Select all rows" }),
+    ).toBePartiallyChecked();
+  },
 };
 
 export const Example: Story = {
@@ -194,6 +206,61 @@ export const Example: Story = {
       <Body />
     </Table>
   ),
+};
+
+function KeyboardSortTable(args: React.ComponentProps<typeof Table>) {
+  const [direction, setDirection] =
+    React.useState<TableSortDirection>("none");
+  const cycle = () =>
+    setDirection((current) =>
+      current === "none"
+        ? "ascending"
+        : current === "ascending"
+          ? "descending"
+          : "none",
+    );
+  return (
+    <Table {...args} caption="Keyboard sort">
+      <thead>
+        <TableRow>
+          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>
+            Name
+          </TableHeaderCell>
+          <TableHeaderCell>Role</TableHeaderCell>
+        </TableRow>
+      </thead>
+      <tbody>
+        {people.map((person) => (
+          <TableRow key={person.id}>
+            <TableCell>{person.name}</TableCell>
+            <TableCell>{person.role}</TableCell>
+          </TableRow>
+        ))}
+      </tbody>
+    </Table>
+  );
+}
+
+/**
+ * The family keyboard contract with real key events: Tab reaches the native
+ * sort button, Enter and Space cycle the three sort states, and aria-sort
+ * tracks each transition on the columnheader.
+ */
+export const KeyboardInteraction: Story = {
+  tags: ["example"],
+  render: (args) => <KeyboardSortTable {...args} />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const header = () => canvas.getByRole("columnheader", { name: /Name/ });
+    await userEvent.tab();
+    await expect(canvas.getByRole("button", { name: "Name" })).toHaveFocus();
+    await userEvent.keyboard("{Enter}");
+    await expect(header()).toHaveAttribute("aria-sort", "ascending");
+    await userEvent.keyboard("{Enter}");
+    await expect(header()).toHaveAttribute("aria-sort", "descending");
+    await userEvent.keyboard(" ");
+    await expect(header()).not.toHaveAttribute("aria-sort");
+  },
 };
 
 export const ForcedColors: Story = {

@@ -15923,12 +15923,17 @@
         {
           "story": "Selectable",
           "description": "The header checkbox is the master control: it selects/clears all rows and shows the indeterminate state on a partial selection, driven by useTableSelection.",
-          "source": "export const Selectable: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The header checkbox is the master control: it selects/clears all rows and shows the indeterminate state on a partial selection, driven by useTableSelection.\",\n      },\n    },\n  },\n  render: (args) => <SelectableTable {...args} />,\n};"
+          "source": "export const Selectable: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The header checkbox is the master control: it selects/clears all rows and shows the indeterminate state on a partial selection, driven by useTableSelection.\",\n      },\n    },\n  },\n  render: (args) => <SelectableTable {...args} />,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const ada = canvas.getByRole(\"checkbox\", { name: \"Select Ada Lovelace\" });\n    ada.focus();\n    await userEvent.keyboard(\" \");\n    await expect(ada).toBeChecked();\n    // A partial selection drives the master checkbox to indeterminate.\n    await expect(\n      canvas.getByRole(\"checkbox\", { name: \"Select all rows\" }),\n    ).toBePartiallyChecked();\n  },\n};"
         },
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};"
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};\n\nfunction KeyboardSortTable(args: React.ComponentProps<typeof Table>) {\n  const [direction, setDirection] =\n    React.useState<TableSortDirection>(\"none\");\n  const cycle = () =>\n    setDirection((current) =>\n      current === \"none\"\n        ? \"ascending\"\n        : current === \"ascending\"\n          ? \"descending\"\n          : \"none\",\n    );\n  return (\n    <Table {...args} caption=\"Keyboard sort\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person) => (\n          <TableRow key={person.id}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  );\n}\n\n/**\n * The family keyboard contract with real key events: Tab reaches the native\n * sort button, Enter and Space cycle the three sort states, and aria-sort\n * tracks each transition on the columnheader.\n */"
+        },
+        {
+          "story": "KeyboardInteraction",
+          "description": null,
+          "source": "export const KeyboardInteraction: Story = {\n  tags: [\"example\"],\n  render: (args) => <KeyboardSortTable {...args} />,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const header = () => canvas.getByRole(\"columnheader\", { name: /Name/ });\n    await userEvent.tab();\n    await expect(canvas.getByRole(\"button\", { name: \"Name\" })).toHaveFocus();\n    await userEvent.keyboard(\"{Enter}\");\n    await expect(header()).toHaveAttribute(\"aria-sort\", \"ascending\");\n    await userEvent.keyboard(\"{Enter}\");\n    await expect(header()).toHaveAttribute(\"aria-sort\", \"descending\");\n    await userEvent.keyboard(\" \");\n    await expect(header()).not.toHaveAttribute(\"aria-sort\");\n  },\n};"
         }
       ]
     },
@@ -16126,6 +16131,11 @@
           "story": "Example",
           "description": "The three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).",
           "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Sort states\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection=\"ascending\">\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"none\">\n            Role\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"descending\" align=\"end\">\n            Projects\n          </TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Ada</TableCell>\n          <TableCell>Engineer</TableCell>\n          <TableCell numeric>8</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
+        },
+        {
+          "story": "SortCycle",
+          "description": null,
+          "source": "export const SortCycle: Story = {\n  tags: [\"example\"],\n  render: () => <SortCycleHeader />,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const header = () => canvas.getByRole(\"columnheader\", { name: /Name/ });\n    canvas.getByRole(\"button\", { name: \"Name\" }).focus();\n    await userEvent.keyboard(\"{Enter}\");\n    await expect(header()).toHaveAttribute(\"aria-sort\", \"ascending\");\n    await userEvent.keyboard(\" \");\n    await expect(header()).toHaveAttribute(\"aria-sort\", \"descending\");\n    await userEvent.keyboard(\"{Enter}\");\n    await expect(header()).not.toHaveAttribute(\"aria-sort\");\n  },\n};"
         }
       ]
     },

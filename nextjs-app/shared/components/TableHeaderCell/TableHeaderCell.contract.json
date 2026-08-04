@@ -41,7 +41,11 @@
     "ForcedColors"
   ],
   "a11y": {
-    "keyboard": [],
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space"
+    ],
     "ariaRequirements": [
       "native <th> with an explicit scope (col or row)",
       "sortable column headers expose aria-sort and toggle via an inner button",
@@ -49,8 +53,8 @@
     ],
     "reducedMotion": true,
     "reviewed": true,
-    "reviewedNote": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test.",
-    "forcedColorsVerified": false,
+    "reviewedNote": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+    "forcedColorsVerified": true,
     "accessibilityTreeVerified": false
   },
   "tokens": {
@@ -72,7 +76,7 @@
       "--radius-sm"
     ]
   },
-  "lightDarkVerified": false,
+  "lightDarkVerified": true,
   "dense": "th with scope col/row; col carries the three-state sort caret + aria-sort, row names its data row",
   "keywords": [
     "table",
