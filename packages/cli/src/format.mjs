@@ -46,6 +46,46 @@ export function formatHuman(result, options = {}) {
             `- ${check.status.toUpperCase()} ${check.id}: ${check.detail}`,
         ),
       ].join("\n");
+    case "diff.report": {
+      const head = `Contract diff ${result.data.from} -> ${result.data.to}: ${result.data.componentCount} component(s) changed, semver recommendation: ${result.data.semverRecommendation}`;
+      const bodies = result.data.components.map((component) =>
+        [
+          `\n${component.name} [${component.semver}]`,
+          ...component.changes.map(
+            (change) => `- (${change.severity}) ${change.detail}`,
+          ),
+        ].join("\n"),
+      );
+      const files = result.data.affectedConsumerFiles;
+      return [
+        head,
+        ...bodies,
+        files && files.length
+          ? `\nAffected consumer files (${files.length}):\n${files.map((file) => `- ${file}`).join("\n")}`
+          : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    }
+    case "affected.report": {
+      const rows = result.data.targets.map((target) =>
+        [
+          `${target.name} [${target.status ?? "?"}]`,
+          target.directImporters.length
+            ? `  imported by: ${target.directImporters.join(", ")}`
+            : "  imported by: (none detected)",
+          target.composedBy.length
+            ? `  composed by: ${target.composedBy.join(", ")}`
+            : null,
+          target.prodPages.length
+            ? `  production pages: ${target.prodPages.join(", ")}`
+            : null,
+        ]
+          .filter(Boolean)
+          .join("\n"),
+      );
+      return rows.join("\n\n");
+    }
     case "manifest":
       return [
         `${result.data.name} ${result.data.version}`,

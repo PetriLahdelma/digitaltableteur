@@ -3,6 +3,8 @@ import { DtCliError, ERROR_CODES } from "./errors.mjs";
 import { CAPABILITY_MANIFEST } from "./manifest.mjs";
 
 export { DtCliError, ERROR_CODES } from "./errors.mjs";
+export { diff, classifyContractDiff } from "./diff.mjs";
+export { affected } from "./affected.mjs";
 
 const GET_SECTIONS = ["all", "usage", "props", "examples", "theming"];
 
