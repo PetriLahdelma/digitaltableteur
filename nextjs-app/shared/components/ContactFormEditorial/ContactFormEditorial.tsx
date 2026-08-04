@@ -549,6 +549,7 @@ export function ContactFormEditorial({
           </Select>
 
           <MultiCombobox
+            className={styles.alignedCombobox}
             label={t("contactProjectTypeLabel", "Project type")}
             options={PROJECT_TYPE_OPTIONS.map((opt) => ({
               value: opt.value,
