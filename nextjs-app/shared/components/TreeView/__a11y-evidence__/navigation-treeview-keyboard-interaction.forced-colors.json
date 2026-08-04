@@ -1,0 +1,12 @@
+{
+  "storyId": "navigation-treeview-keyboard-interaction",
+  "mode": "forced-colors",
+  "sourceSHA": "65f96d08b8f1caaabfced096ff1b2e68e744d88f",
+  "capturedAt": "2026-08-04T06:41:32.752Z",
+  "runner": "treeview-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}

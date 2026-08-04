@@ -18291,7 +18291,17 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const components = canvas.getByRole(\"treeitem\", { name: \"Components\" });\n    components.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(\n      canvas.getByRole(\"treeitem\", { name: /Button/ }),\n    ).toHaveFocus();\n  },\n};"
+          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const components = canvas.getByRole(\"treeitem\", { name: \"Components\" });\n    components.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(\n      canvas.getByRole(\"treeitem\", { name: /Button/ }),\n    ).toHaveFocus();\n  },\n};\n/**\n * A node with `disabled` stays discoverable (focusable via the roving\n * tabindex, announced with aria-disabled) but cannot be selected.\n */"
+        },
+        {
+          "story": "LargeTree",
+          "description": null,
+          "source": "export const LargeTree: Story = {\n  tags: [\"example\"],\n  args: {\n    \"aria-label\": \"Large hierarchy\",\n    nodes: Array.from({ length: 8 }, (_, s) => ({\n      id: `s${s}`,\n      label: `Section ${s + 1}`,\n      children: Array.from({ length: 6 }, (_, f) => ({\n        id: `s${s}-f${f}`,\n        label: `Folder ${s + 1}.${f + 1}`,\n        children: Array.from({ length: 5 }, (_, l) => ({\n          id: `s${s}-f${f}-l${l}`,\n          label: `Item ${s + 1}.${f + 1}.${l + 1}`,\n        })),\n      })),\n    })),\n    defaultExpandedIds: [\"s0\"],\n    defaultSelectedId: null,\n  },\n};\n\n/**\n * The full keyboard contract driven by real key events: ArrowDown/ArrowUp\n * rove, ArrowRight expands then enters, ArrowLeft collapses or climbs to the\n * parent, Home/End jump, Enter selects.\n */"
+        },
+        {
+          "story": "KeyboardInteraction",
+          "description": null,
+          "source": "export const KeyboardInteraction: Story = {\n  tags: [\"example\"],\n  args: { defaultExpandedIds: [], defaultSelectedId: null },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const foundations = canvas.getByRole(\"treeitem\", { name: \"Foundations\" });\n    foundations.focus();\n    // ArrowRight on a collapsed branch expands it without moving focus.\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(foundations).toHaveAttribute(\"aria-expanded\", \"true\");\n    await expect(foundations).toHaveFocus();\n    // Second ArrowRight enters the branch.\n    await userEvent.keyboard(\"{ArrowRight}\");\n    const color = canvas.getByRole(\"treeitem\", { name: \"Color\" });\n    await expect(color).toHaveFocus();\n    // Enter selects the focused leaf.\n    await userEvent.keyboard(\"{Enter}\");\n    await expect(color).toHaveAttribute(\"aria-selected\", \"true\");\n    // ArrowLeft on a leaf climbs back to the parent; a second one collapses.\n    await userEvent.keyboard(\"{ArrowLeft}\");\n    await expect(foundations).toHaveFocus();\n    await userEvent.keyboard(\"{ArrowLeft}\");\n    await expect(foundations).toHaveAttribute(\"aria-expanded\", \"false\");\n    // End jumps to the last visible node, Home returns to the first.\n    await userEvent.keyboard(\"{End}\");\n    await expect(\n      canvas.getByRole(\"treeitem\", { name: \"Components\" }),\n    ).toHaveFocus();\n    await userEvent.keyboard(\"{Home}\");\n    await expect(foundations).toHaveFocus();\n  },\n};"
         }
       ]
     },

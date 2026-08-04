@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T20:13:36.470Z",
+  "generatedAt": "2026-08-04T06:44:42.600Z",
   "summary": {
     "catalogCount": 215,
     "governedCount": 177,
@@ -2121,10 +2121,10 @@
         "app/blog/[slug]/ServerArticleHero.tsx",
         "app/blog/[slug]/ServerArticleMain.tsx",
         "app/blog/NextBlogNav.tsx",
+        "app/design-system/agent/ComponentTaxonomyTree.tsx",
         "app/design-system/agent/GoldenIntentsTable.tsx",
         "app/design-system/agent/page.tsx",
-        "app/dev/code-window/page.tsx",
-        "app/dev/tailwind-test/page.tsx"
+        "app/dev/code-window/page.tsx"
       ]
     },
     {
@@ -4877,14 +4877,18 @@
       "status": "alpha",
       "governed": true,
       "exported": false,
-      "directImportCount": 1,
+      "directImportCount": 2,
       "directImporters": [
+        "app/design-system/agent/ComponentTaxonomyTree.tsx",
         "nextjs-app/shared/components/index.ts"
       ],
       "packageImportCount": 0,
       "packageImporters": [],
-      "prodPageCount": 0,
-      "prodPages": []
+      "prodPageCount": 2,
+      "prodPages": [
+        "app/design-system/agent/ComponentTaxonomyTree.tsx",
+        "app/design-system/agent/page.tsx"
+      ]
     },
     {
       "name": "Tulli",
