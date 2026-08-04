@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T06:55:15.385Z",
+  "generatedAt": "2026-08-04T07:00:04.646Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -26700,14 +26700,14 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "forced-colors-real-browser",
@@ -26723,8 +26723,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "human-a11y-review",
@@ -26919,14 +26919,14 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "forced-colors-real-browser",
@@ -26937,8 +26937,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "human-a11y-review",
@@ -27171,14 +27171,14 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "forced-colors-real-browser",
@@ -27194,8 +27194,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "human-a11y-review",
@@ -27591,14 +27591,14 @@
         {
           "id": "axe-no-violations",
           "statement": "Required stories produce no axe violations at the configured severity.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "accessibility-tree",
           "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "forced-colors-real-browser",
@@ -27609,8 +27609,8 @@
         {
           "id": "aria-requirements",
           "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-          "verificationMode": "unverified",
-          "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "human-a11y-review",
