@@ -121,8 +121,11 @@
 - `npm run agent:bench -- --task all --arm both --agent claude --reps 3`
   — a real benchmark run (spends tokens; pinned model + turn budget).
 - Methodology and fairness design: `docs/AGENT_BENCH_METHODOLOGY.md`.
-- Results land in `scripts/design-system/agent-bench/results/` (gitignored);
-  publishing to `public/ds-health` is manual once multi-rep numbers exist.
+- Results land in `scripts/design-system/agent-bench/results/` (gitignored).
+  Publish with `aggregate.mjs --out public/ds-health/agent-bench.json
+  [--note ...] <result files>` — the agent page renders that artifact
+  verbatim (numbers are generated, never hand-written); commit the
+  regenerated artifact with the run's caveats as notes.
 
 ---
 

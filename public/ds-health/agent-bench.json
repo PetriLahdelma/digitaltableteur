@@ -1,0 +1,291 @@
+{
+  "generatedAt": "2026-08-04T21:26:12.416Z",
+  "generator": {
+    "name": "agent-bench/aggregate.mjs",
+    "sourceCommit": "d7637e715d01649ff3817e4dd40bfada61f52af8"
+  },
+  "methodology": "docs/AGENT_BENCH_METHODOLOGY.md",
+  "runtime": [
+    "claude-sonnet-5 maxTurns=30 repairLoop=true"
+  ],
+  "resultFiles": [
+    "2026-08-04T15-05-04-claude.json",
+    "2026-08-04T15-06-36-claude.json",
+    "2026-08-04T15-07-35-claude.json",
+    "2026-08-04T15-26-06-claude.json",
+    "2026-08-04T21-25-31-claude.json"
+  ],
+  "totalRuns": 30,
+  "totalCostUsd": 25.72,
+  "notes": [
+    "Arms are identical except the workspace guidance file: WITH documents the dt CLI affordances; WITHOUT is generic with the same repository access. The control can discover the affordances on its own, so measured lift under-claims.",
+    "Acceptance is affordance-neutral (semantics, not implementation); design-system reuse is reported separately and never gates a pass.",
+    "The migration category is from a re-run after a task-spec fix (#1406): the original brief enumerated 4 files while acceptance swept wider. The corrected brief demands all consumers and acceptance matches; the confounded original migration results are excluded.",
+    "On the corrected migration task both arms passed 3/3; the affordance effect there is efficiency (WITH mean ~$1.18 and ~25 turns vs WITHOUT ~$1.73 and ~34 turns), with one WITHOUT run needing the repair loop.",
+    "num_turns counts top-level turns only; runs that delegate to subagents can show few turns at normal cost."
+  ],
+  "arms": {
+    "with": {
+      "runs": 15,
+      "firstTryPass": 15,
+      "finalPass": 15,
+      "passViaRepairLoop": 0,
+      "costUsdPerRun": {
+        "mean": 0.7949,
+        "min": 0.5086,
+        "max": 1.3702
+      },
+      "initialTurns": {
+        "mean": 16.7333,
+        "min": 9,
+        "max": 31
+      },
+      "dsReuse": {
+        "hits": 5,
+        "eligible": 9
+      }
+    },
+    "without": {
+      "runs": 15,
+      "firstTryPass": 14,
+      "finalPass": 15,
+      "passViaRepairLoop": 1,
+      "costUsdPerRun": {
+        "mean": 0.9196,
+        "min": 0.4794,
+        "max": 2.0977
+      },
+      "initialTurns": {
+        "mean": 15.4667,
+        "min": 1,
+        "max": 41
+      },
+      "dsReuse": {
+        "hits": 1,
+        "eligible": 9
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "forced-colors-chip",
+      "category": "forced-colors",
+      "with": {
+        "runs": 3,
+        "firstTryPass": 3,
+        "finalPass": 3,
+        "passViaRepairLoop": 0,
+        "costUsdPerRun": {
+          "mean": 0.7464,
+          "min": 0.6926,
+          "max": 0.7838
+        },
+        "initialTurns": {
+          "mean": 15.3333,
+          "min": 13,
+          "max": 17
+        },
+        "dsReuse": {
+          "hits": 0,
+          "eligible": 3
+        }
+      },
+      "without": {
+        "runs": 3,
+        "firstTryPass": 3,
+        "finalPass": 3,
+        "passViaRepairLoop": 0,
+        "costUsdPerRun": {
+          "mean": 1.2011,
+          "min": 0.7265,
+          "max": 2.0977
+        },
+        "initialTurns": {
+          "mean": 12,
+          "min": 1,
+          "max": 19
+        },
+        "dsReuse": {
+          "hits": 1,
+          "eligible": 3
+        }
+      }
+    },
+    {
+      "id": "migration-badge-rename",
+      "category": "migration",
+      "with": {
+        "runs": 3,
+        "firstTryPass": 3,
+        "finalPass": 3,
+        "passViaRepairLoop": 0,
+        "costUsdPerRun": {
+          "mean": 1.1818,
+          "min": 0.9848,
+          "max": 1.3702
+        },
+        "initialTurns": {
+          "mean": 25.3333,
+          "min": 22,
+          "max": 31
+        },
+        "dsReuse": {
+          "hits": 0,
+          "eligible": 0
+        }
+      },
+      "without": {
+        "runs": 3,
+        "firstTryPass": 2,
+        "finalPass": 3,
+        "passViaRepairLoop": 1,
+        "costUsdPerRun": {
+          "mean": 1.7271,
+          "min": 1.3352,
+          "max": 1.9806
+        },
+        "initialTurns": {
+          "mean": 34.3333,
+          "min": 31,
+          "max": 41
+        },
+        "dsReuse": {
+          "hits": 0,
+          "eligible": 0
+        }
+      }
+    },
+    {
+      "id": "repair-status-panel",
+      "category": "repair",
+      "with": {
+        "runs": 3,
+        "firstTryPass": 3,
+        "finalPass": 3,
+        "passViaRepairLoop": 0,
+        "costUsdPerRun": {
+          "mean": 0.5712,
+          "min": 0.5086,
+          "max": 0.662
+        },
+        "initialTurns": {
+          "mean": 10.6667,
+          "min": 9,
+          "max": 12
+        },
+        "dsReuse": {
+          "hits": 0,
+          "eligible": 0
+        }
+      },
+      "without": {
+        "runs": 3,
+        "firstTryPass": 3,
+        "finalPass": 3,
+        "passViaRepairLoop": 0,
+        "costUsdPerRun": {
+          "mean": 0.6091,
+          "min": 0.4895,
+          "max": 0.712
+        },
+        "initialTurns": {
+          "mean": 11.3333,
+          "min": 8,
+          "max": 13
+        },
+        "dsReuse": {
+          "hits": 0,
+          "eligible": 0
+        }
+      }
+    },
+    {
+      "id": "table-species",
+      "category": "table",
+      "with": {
+        "runs": 3,
+        "firstTryPass": 3,
+        "finalPass": 3,
+        "passViaRepairLoop": 0,
+        "costUsdPerRun": {
+          "mean": 0.7389,
+          "min": 0.695,
+          "max": 0.7741
+        },
+        "initialTurns": {
+          "mean": 17,
+          "min": 16,
+          "max": 18
+        },
+        "dsReuse": {
+          "hits": 3,
+          "eligible": 3
+        }
+      },
+      "without": {
+        "runs": 3,
+        "firstTryPass": 3,
+        "finalPass": 3,
+        "passViaRepairLoop": 0,
+        "costUsdPerRun": {
+          "mean": 0.5058,
+          "min": 0.4817,
+          "max": 0.5278
+        },
+        "initialTurns": {
+          "mean": 9,
+          "min": 8,
+          "max": 10
+        },
+        "dsReuse": {
+          "hits": 0,
+          "eligible": 3
+        }
+      }
+    },
+    {
+      "id": "tree-taxonomy",
+      "category": "tree",
+      "with": {
+        "runs": 3,
+        "firstTryPass": 3,
+        "finalPass": 3,
+        "passViaRepairLoop": 0,
+        "costUsdPerRun": {
+          "mean": 0.7362,
+          "min": 0.6683,
+          "max": 0.791
+        },
+        "initialTurns": {
+          "mean": 15.3333,
+          "min": 11,
+          "max": 19
+        },
+        "dsReuse": {
+          "hits": 2,
+          "eligible": 3
+        }
+      },
+      "without": {
+        "runs": 3,
+        "firstTryPass": 3,
+        "finalPass": 3,
+        "passViaRepairLoop": 0,
+        "costUsdPerRun": {
+          "mean": 0.5551,
+          "min": 0.4794,
+          "max": 0.5974
+        },
+        "initialTurns": {
+          "mean": 10.6667,
+          "min": 9,
+          "max": 12
+        },
+        "dsReuse": {
+          "hits": 0,
+          "eligible": 3
+        }
+      }
+    }
+  ]
+}
