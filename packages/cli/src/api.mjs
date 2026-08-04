@@ -12,6 +12,7 @@ export {
   applyUpgradeToSource,
   attributeSpan,
 } from "./upgrade.mjs";
+export { verify, VERIFY_CHECKS } from "./verify.mjs";
 
 const GET_SECTIONS = ["all", "usage", "props", "examples", "theming"];
 

@@ -16,9 +16,13 @@ async function readable(path) {
 }
 
 export function candidateDataDirectories(cwd = process.cwd()) {
+  // Inside the repository the freshly generated dist wins over the snapshot
+  // packaged at publish time — otherwise stale packaged data shadows a
+  // just-rebuilt registry. Published consumers have no repo dist, so they
+  // still resolve the packaged data.
   return [
-    join(PACKAGE_ROOT, "data"),
     join(cwd, "nextjs-app", "shared", "foundations", "dist"),
+    join(PACKAGE_ROOT, "data"),
   ];
 }
 
