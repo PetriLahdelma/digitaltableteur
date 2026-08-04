@@ -6,6 +6,12 @@ export { DtCliError, ERROR_CODES } from "./errors.mjs";
 export { diff, classifyContractDiff } from "./diff.mjs";
 export { affected } from "./affected.mjs";
 export { validate } from "./validate.mjs";
+export {
+  upgrade,
+  planComponentUpgrade,
+  applyUpgradeToSource,
+  attributeSpan,
+} from "./upgrade.mjs";
 
 const GET_SECTIONS = ["all", "usage", "props", "examples", "theming"];
 

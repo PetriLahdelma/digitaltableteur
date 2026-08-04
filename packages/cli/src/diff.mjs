@@ -139,13 +139,16 @@ export function classifyContractDiff(name, before, after) {
           required ? "major" : "minor",
           "prop-added",
           `prop \`${prop}\` added${required ? " as required" : ""}.`,
-          { prop },
+          { prop, propType: afterProps[prop]?.type, required },
         );
       }
     }
     for (const prop of Object.keys(beforeProps)) {
       if (!(prop in afterProps)) {
-        change("major", "prop-removed", `prop \`${prop}\` removed.`, { prop });
+        change("major", "prop-removed", `prop \`${prop}\` removed.`, {
+          prop,
+          propType: beforeProps[prop]?.type,
+        });
         continue;
       }
       const beforeSchema = beforeProps[prop];
@@ -210,7 +213,7 @@ export function classifyContractDiff(name, before, after) {
           "minor",
           "prop-default-changed",
           `prop \`${prop}\` default changed: ${JSON.stringify(beforeSchema.default)} -> ${JSON.stringify(afterSchema.default)} (behavioral).`,
-          { prop },
+          { prop, from: beforeSchema.default, to: afterSchema.default },
         );
       }
     }
