@@ -2,7 +2,7 @@
     "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "ChatWidget",
     "tier": "organism",
-    "group": "interaction",
+    "group": "overlay",
     "status": "beta",
     "description": "Collapsible site assistant chat widget with streaming replies.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=473-25",

@@ -2,7 +2,7 @@
     "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "MCPActionButton",
     "tier": "molecule",
-    "group": "interaction",
+    "group": "actions",
     "status": "beta",
     "description": "Button that invokes an MCP tool from chat and docs surfaces and reflects its pending, success, and error state.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1446-2398",

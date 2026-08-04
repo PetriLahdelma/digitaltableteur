@@ -2121,7 +2121,7 @@
     },
     "Button": {
       "name": "Button",
-      "group": "interaction",
+      "group": "actions",
       "tier": 1,
       "status": "stable",
       "description": "Primary action control with an orthogonal variant (visual weight) and tone (semantic color) model, loading state, and polymorphic button/link rendering.",
@@ -3280,7 +3280,7 @@
     },
     "ChatWidget": {
       "name": "ChatWidget",
-      "group": "interaction",
+      "group": "overlay",
       "tier": 2,
       "status": "beta",
       "description": "Collapsible site assistant chat widget with streaming replies.",
@@ -4928,7 +4928,7 @@
     },
     "CookieConsent": {
       "name": "CookieConsent",
-      "group": "chrome",
+      "group": "overlay",
       "tier": 2,
       "status": "beta",
       "description": "GDPR cookie consent modal and banner wired to site providers.",
@@ -6533,7 +6533,7 @@
     },
     "FilterChip": {
       "name": "FilterChip",
-      "group": "controls",
+      "group": "form",
       "tier": 2,
       "status": "stable",
       "description": "Single-select filter toggle chip: a button[aria-pressed] with pill, rectangle, underline, and minimal treatments.",
@@ -7149,7 +7149,7 @@
     },
     "Gallery": {
       "name": "Gallery",
-      "group": "display",
+      "group": "media",
       "tier": 2,
       "status": "stable",
       "description": "Image gallery grid with a click-to-expand lightbox and motion on hover. Used on work-detail and editorial pages where the imagery is the primary content.",
@@ -8715,7 +8715,7 @@
     },
     "Lightbox": {
       "name": "Lightbox",
-      "group": "content",
+      "group": "media",
       "tier": 2,
       "status": "alpha",
       "description": "Modal image viewer with keyboard navigation across a gallery of images.",
@@ -9588,7 +9588,7 @@
     },
     "MCPActionButton": {
       "name": "MCPActionButton",
-      "group": "interaction",
+      "group": "actions",
       "tier": 2,
       "status": "beta",
       "description": "Button that invokes an MCP tool from chat and docs surfaces and reflects its pending, success, and error state.",
@@ -10901,7 +10901,7 @@
     },
     "NextLayout": {
       "name": "NextLayout",
-      "group": "chrome",
+      "group": "layout",
       "tier": 2,
       "status": "beta",
       "description": "Production app shell: header, main landmark, footer, chat, consent.",
@@ -14854,7 +14854,7 @@
     },
     "SplitButton": {
       "name": "SplitButton",
-      "group": "interaction",
+      "group": "actions",
       "tier": 1,
       "status": "stable",
       "description": "Primary action button paired with a dropdown toggle for related secondary actions, with collision-aware menu placement and optional nested submenus.",
@@ -17131,7 +17131,7 @@
     },
     "ThemeProvider": {
       "name": "ThemeProvider",
-      "group": "foundation",
+      "group": "utility",
       "tier": 2,
       "status": "beta",
       "description": "Theme context for light, dark, and high-contrast modes.",
@@ -18734,7 +18734,7 @@
     },
     "VisuallyHidden": {
       "name": "VisuallyHidden",
-      "group": "accessibility",
+      "group": "utility",
       "tier": 2,
       "status": "beta",
       "description": "Screen-reader-only text; not visible until focused in context.",
@@ -19917,7 +19917,7 @@
     },
     "ContactInquiryPanel": {
       "name": "ContactInquiryPanel",
-      "group": "forms",
+      "group": "form",
       "tier": 2,
       "status": "stable",
       "description": "Contact page inquiry panel with message and book-a-call tabs wrapping the editorial form.",

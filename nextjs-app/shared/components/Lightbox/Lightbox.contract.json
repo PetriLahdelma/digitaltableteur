@@ -3,7 +3,7 @@
     "schemaVersion": 2,
     "name": "Lightbox",
     "tier": "organism",
-    "group": "content",
+    "group": "media",
     "status": "alpha",
     "description": "Modal image viewer with keyboard navigation across a gallery of images.",
     "figma": null,

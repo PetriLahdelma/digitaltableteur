@@ -2,7 +2,7 @@
     "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "VisuallyHidden",
     "tier": "atom",
-    "group": "accessibility",
+    "group": "utility",
     "status": "beta",
     "description": "Screen-reader-only text; not visible until focused in context.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-31",

@@ -2,7 +2,7 @@
     "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "ContactInquiryPanel",
     "tier": "pattern",
-    "group": "forms",
+    "group": "form",
     "status": "stable",
     "description": "Contact page inquiry panel with message and book-a-call tabs wrapping the editorial form.",
     "dense": "Contact inquiry tabs (message vs book-a-call) wrapping the editorial contact form; parent owns submit state via the messagePanel slot.",
