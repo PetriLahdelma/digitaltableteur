@@ -1,0 +1,16 @@
+{
+  "storyId": "data-display-virtuallistitem-playground",
+  "mode": "light",
+  "sourceSHA": "251ba60d7fe146f367cff4683a8ee324f84ee59c",
+  "capturedAt": "2026-08-04T07:32:46.870Z",
+  "runner": "virtuallist-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    },
+    "axe-no-violations": {
+      "passed": true,
+      "axeViolations": 0
+    }
+  }
+}

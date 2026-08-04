@@ -1,0 +1,12 @@
+{
+  "storyId": "data-display-virtuallistitem-forced-colors",
+  "mode": "forced-colors",
+  "sourceSHA": "251ba60d7fe146f367cff4683a8ee324f84ee59c",
+  "capturedAt": "2026-08-04T07:32:54.919Z",
+  "runner": "virtuallist-phase1",
+  "checks": {
+    "accessibility-tree": {
+      "passed": true
+    }
+  }
+}
