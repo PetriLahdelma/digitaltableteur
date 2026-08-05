@@ -1,6 +1,6 @@
 "use client";
 
-import { DataTable, type DataTableColumn } from "../../../nextjs-app/shared/components/DataTable/DataTable";
+import { DataTable, type DataTableColumn } from "@digitaltableteur/react";
 
 export type GoldenIntentCase = {
   id: string;

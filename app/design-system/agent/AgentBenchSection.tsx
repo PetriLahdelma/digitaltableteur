@@ -1,7 +1,9 @@
-import { Table } from "../../../nextjs-app/shared/components/Table/Table";
-import { TableRow } from "../../../nextjs-app/shared/components/TableRow/TableRow";
-import { TableHeaderCell } from "../../../nextjs-app/shared/components/TableHeaderCell/TableHeaderCell";
-import { TableCell } from "../../../nextjs-app/shared/components/TableCell/TableCell";
+import {
+  Table,
+  TableCell,
+  TableHeaderCell,
+  TableRow,
+} from "@digitaltableteur/react";
 
 type ArmSummary = {
   runs: number;
