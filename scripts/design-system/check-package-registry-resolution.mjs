@@ -64,6 +64,34 @@ const ALLOWED_APP_LOCAL_IMPORTS = new Map([
 // unclassified). Keyed `file :: importPath`, both exact.
 const ALLOWED_LOCAL_SHARED_IMPORTS = new Map([
   [
+    "app/design-system/agent/AgentBenchSection.tsx :: ../../../nextjs-app/shared/components/Table/Table",
+    "pre-publish window for react 0.1.22: flip to the barrel + drop this entry in the consume PR",
+  ],
+  [
+    "app/design-system/agent/AgentBenchSection.tsx :: ../../../nextjs-app/shared/components/TableRow/TableRow",
+    "pre-publish window for react 0.1.22: flip to the barrel + drop this entry in the consume PR",
+  ],
+  [
+    "app/design-system/agent/AgentBenchSection.tsx :: ../../../nextjs-app/shared/components/TableHeaderCell/TableHeaderCell",
+    "pre-publish window for react 0.1.22: flip to the barrel + drop this entry in the consume PR",
+  ],
+  [
+    "app/design-system/agent/AgentBenchSection.tsx :: ../../../nextjs-app/shared/components/TableCell/TableCell",
+    "pre-publish window for react 0.1.22: flip to the barrel + drop this entry in the consume PR",
+  ],
+  [
+    "app/design-system/agent/GoldenIntentsTable.tsx :: ../../../nextjs-app/shared/components/DataTable/DataTable",
+    "pre-publish window for react 0.1.22: flip to the barrel + drop this entry in the consume PR",
+  ],
+  [
+    "app/design-system/agent/ComponentTaxonomyTree.tsx :: ../../../nextjs-app/shared/components/TreeView/TreeView",
+    "pre-publish window for react 0.1.22: flip to the barrel + drop this entry in the consume PR",
+  ],
+  [
+    "app/design-system/agent/ComponentTaxonomyTree.tsx :: ../../../nextjs-app/shared/components/ResizablePanelGroup/ResizablePanelGroup",
+    "pre-publish window for react 0.1.22: flip to the barrel + drop this entry in the consume PR",
+  ],
+  [
     "providers/NextLinkProvider.tsx :: @/nextjs-app/shared/lib/linkComponent",
     "dual-provides the LOCAL LinkProvider instance alongside the package one (#1019)",
   ],

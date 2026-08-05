@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { TreeView, type TreeViewNode } from "@dt/TreeView";
-import { ResizablePanelGroup } from "@dt/ResizablePanelGroup";
+import { TreeView, type TreeViewNode } from "../../../nextjs-app/shared/components/TreeView/TreeView";
+import { ResizablePanelGroup } from "../../../nextjs-app/shared/components/ResizablePanelGroup/ResizablePanelGroup";
 
 export type TaxonomyEntry = {
   name: string;
