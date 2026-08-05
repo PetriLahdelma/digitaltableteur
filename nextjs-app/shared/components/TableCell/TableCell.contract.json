@@ -1,100 +1,100 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "schemaVersion": 2,
-  "name": "TableCell",
-  "tier": "atom",
-  "group": "data-display",
-  "status": "beta",
-  "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
-  "usage": {
-    "description": "TableCell is the body cell of the Table family: plain tabular data with an optional numeric mode that aligns figures on the decimal. Header semantics belong to TableHeaderCell; TableCell never announces scope."
-  },
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1715-2814",
-  "radixPrimitive": null,
-  "element": "td",
-  "variants": {
-    "align": {
-      "values": [
-        "start",
-        "center",
-        "end"
-      ],
-      "default": "start",
-      "propSourced": true
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "TableCell",
+    "tier": "atom",
+    "group": "data-display",
+    "status": "beta",
+    "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
+    "usage": {
+        "description": "TableCell is the body cell of the Table family: plain tabular data with an optional numeric mode that aligns figures on the decimal. Header semantics belong to TableHeaderCell; TableCell never announces scope."
     },
-    "numeric": {
-      "values": [
-        "true",
-        "false"
-      ],
-      "default": "false",
-      "propSourced": true
-    }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "native <td> semantics; no ARIA of its own",
-      "pairs with TableHeaderCell scope=col/row so cells inherit column and row context"
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1715-2814",
+    "radixPrimitive": null,
+    "element": "td",
+    "variants": {
+        "align": {
+            "values": [
+                "start",
+                "center",
+                "end"
+            ],
+            "default": "start",
+            "propSourced": true
+        },
+        "numeric": {
+            "values": [
+                "true",
+                "false"
+            ],
+            "default": "false",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": false
-  },
-  "tokens": {
-    "colors": [
-      "--color-border-light"
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "native <td> semantics; no ARIA of its own",
+            "pairs with TableHeaderCell scope=col/row so cells inherit column and row context"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-27 — native td; alignment and numeric tabular figures verified; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-border-light"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-24"
+        ]
+    },
+    "lightDarkVerified": true,
+    "dense": "table td; align start/center/end, numeric = tabular figures right-aligned",
+    "keywords": [
+        "table",
+        "cell",
+        "td",
+        "numeric"
     ],
-    "spacing": [
-      "--space-internal-8",
-      "--space-internal-12",
-      "--space-internal-16",
-      "--space-layout-24"
+    "props": {
+        "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "center",
+                "end",
+                "start"
+            ],
+            "description": "Cell content alignment."
+        },
+        "numeric": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Right-align and tabular-figure numeric values."
+        }
+    },
+    "forbiddenUse": [
+        "render it outside a table row",
+        "use it for a header — use TableHeaderCell so column/row context is announced"
+    ],
+    "composesWith": [
+        "Table",
+        "TableRow",
+        "TableHeaderCell"
     ]
-  },
-  "lightDarkVerified": true,
-  "dense": "table td; align start/center/end, numeric = tabular figures right-aligned",
-  "keywords": [
-    "table",
-    "cell",
-    "td",
-    "numeric"
-  ],
-  "props": {
-    "align": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "start",
-        "center",
-        "end"
-      ],
-      "description": "Cell content alignment."
-    },
-    "numeric": {
-      "optional": true,
-      "type": "boolean",
-      "description": "Right-align with tabular figures for numeric values."
-    }
-  },
-  "forbiddenUse": [
-    "render it outside a table row",
-    "use it for a header — use TableHeaderCell so column/row context is announced"
-  ],
-  "composesWith": [
-    "Table",
-    "TableRow",
-    "TableHeaderCell"
-  ]
 }

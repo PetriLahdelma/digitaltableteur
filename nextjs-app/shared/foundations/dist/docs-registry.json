@@ -5030,7 +5030,7 @@
         "columns": {
           "optional": false,
           "type": "DataTableColumn<Row>[]",
-          "description": "Ordered typed column definitions."
+          "description": "Ordered column definitions."
         },
         "getRowId": {
           "optional": false,
@@ -5040,17 +5040,22 @@
         "caption": {
           "optional": false,
           "type": "string",
-          "description": "Accessible table name."
+          "description": "Accessible table name rendered as a caption."
         },
         "hideCaption": {
           "optional": true,
           "type": "boolean",
-          "description": "Visually hides the caption."
+          "description": "Visually hides the caption while retaining the accessible name."
         },
         "sort": {
           "optional": true,
           "type": "DataTableSort | null",
           "description": "Controlled sort state."
+        },
+        "defaultSort": {
+          "optional": true,
+          "type": "DataTableSort | null",
+          "description": "Initial uncontrolled sort state."
         },
         "onSortChange": {
           "optional": true,
@@ -5060,17 +5065,42 @@
         "selectedRowIds": {
           "optional": true,
           "type": "string[]",
-          "description": "Controlled selected row identifiers."
+          "description": "Controlled selected row identifiers; enables selection."
+        },
+        "defaultSelectedRowIds": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Initial uncontrolled selection; also enables selection."
         },
         "onSelectionChange": {
           "optional": true,
           "type": "(rowIds: string[]) => void",
-          "description": "Receives selection changes."
+          "description": "Receives selected row identifiers; also enables selection."
+        },
+        "getRowLabel": {
+          "optional": true,
+          "type": "(row: Row) => string",
+          "description": "Accessible row label used by selection checkboxes."
         },
         "pageSize": {
           "optional": true,
           "type": "number",
           "description": "Rows per page; enables pagination when set."
+        },
+        "emptyState": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "Empty-state cell content."
+        },
+        "striped": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Alternating row surfaces."
+        },
+        "stickyHeader": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Pin the header row while the body scrolls."
         },
         "size": {
           "optional": true,
@@ -5082,15 +5112,9 @@
           ],
           "description": "Density scale."
         },
-        "striped": {
+        "className": {
           "optional": true,
-          "type": "boolean",
-          "description": "Alternates row surfaces."
-        },
-        "stickyHeader": {
-          "optional": true,
-          "type": "boolean",
-          "description": "Pin the header row while the body scrolls."
+          "type": "string"
         }
       },
       "composesWith": [
@@ -12771,6 +12795,11 @@
           "name": "keyboardStep",
           "type": "number",
           "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
         }
       ],
       "props": {
@@ -12796,7 +12825,11 @@
         "onSizesChange": {
           "optional": true,
           "type": "(sizes: Record<string, number>) => void",
-          "description": "Receives current panel percentages."
+          "description": "Receives the current percentage per panel id."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
         }
       },
       "composesWith": [
@@ -15847,7 +15880,7 @@
         "caption": {
           "optional": false,
           "type": "string",
-          "description": "Accessible table name rendered as a caption."
+          "description": "Accessible table name, rendered as a `<caption>`."
         },
         "hideCaption": {
           "optional": true,
@@ -15872,7 +15905,7 @@
         "stickyHeader": {
           "optional": true,
           "type": "boolean",
-          "description": "Pin the header row while the body scrolls."
+          "description": "Pin the header row while the table body scrolls."
         },
         "wrapperClassName": {
           "optional": true,
@@ -15959,7 +15992,7 @@
       "keyProps": [
         {
           "name": "align",
-          "type": "start | center | end",
+          "type": "center | end | start",
           "required": false
         },
         {
@@ -15973,16 +16006,16 @@
           "optional": true,
           "type": "union",
           "values": [
-            "start",
             "center",
-            "end"
+            "end",
+            "start"
           ],
           "description": "Cell content alignment."
         },
         "numeric": {
           "optional": true,
           "type": "boolean",
-          "description": "Right-align with tabular figures for numeric values."
+          "description": "Right-align and tabular-figure numeric values."
         }
       },
       "composesWith": [
@@ -16037,17 +16070,17 @@
       "keyProps": [
         {
           "name": "align",
-          "type": "start | center | end",
+          "type": "center | end | start",
           "required": false
         },
         {
           "name": "scope",
-          "type": "col | row",
+          "type": "row | col",
           "required": false
         },
         {
           "name": "sortDirection",
-          "type": "ascending | descending | none",
+          "type": "none | ascending | descending",
           "required": false
         },
         {
@@ -16061,9 +16094,9 @@
           "optional": true,
           "type": "union",
           "values": [
-            "start",
             "center",
-            "end"
+            "end",
+            "start"
           ],
           "description": "Cell content alignment."
         },
@@ -16071,25 +16104,25 @@
           "optional": true,
           "type": "union",
           "values": [
-            "col",
-            "row"
+            "row",
+            "col"
           ],
-          "description": "Header scope; row names the identifying cell of a body row."
+          "description": "Header scope. `col` (default) labels a column; `row` makes the cell the\naccessible name for its row — use it on the identifying cell of each body\nrow so screen readers announce the row context with every other cell."
         },
         "sortable": {
           "optional": true,
           "type": "boolean",
-          "description": "Renders the sort control (column headers only)."
+          "description": "Renders the sort affordance and toggles on click. Only for column headers."
         },
         "sortDirection": {
           "optional": true,
           "type": "union",
           "values": [
+            "none",
             "ascending",
-            "descending",
-            "none"
+            "descending"
           ],
-          "description": "Current sort state; drives aria-sort and the caret."
+          "description": "Current sort state; drives `aria-sort` and the caret icon."
         },
         "onSort": {
           "optional": true,
@@ -16252,7 +16285,7 @@
         "selected": {
           "optional": true,
           "type": "boolean",
-          "description": "Renders the selected surface and sets data-selected. Visual only."
+          "description": "Renders the selected surface and sets `data-selected`. Visual only."
         }
       },
       "composesWith": [
@@ -18183,6 +18216,11 @@
           "required": false
         },
         {
+          "name": "defaultSelectedId",
+          "type": "string | null",
+          "required": false
+        },
+        {
           "name": "expandedIds",
           "type": "string[]",
           "required": false
@@ -18204,6 +18242,11 @@
           "type": "string | null",
           "description": "Controlled selected node identifier."
         },
+        "defaultSelectedId": {
+          "optional": true,
+          "type": "string | null",
+          "description": "Initial uncontrolled selected node identifier."
+        },
         "onSelectedIdChange": {
           "optional": true,
           "type": "(id: string) => void",
@@ -18213,6 +18256,11 @@
           "optional": true,
           "type": "string[]",
           "description": "Controlled expanded node identifiers."
+        },
+        "defaultExpandedIds": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Initial uncontrolled expanded node identifiers."
         },
         "onExpandedIdsChange": {
           "optional": true,
@@ -18228,6 +18276,10 @@
             "lg"
           ],
           "description": "Density scale."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
         }
       },
       "composesWith": [
@@ -18501,7 +18553,7 @@
         "getItemProps": {
           "optional": false,
           "type": "(item: Item, index: number) => VirtualListItemContent",
-          "description": "Maps an item to its VirtualListItem chrome (label, icon, meta, selected, tone); VirtualList injects position + windowing style."
+          "description": "Maps an item to its VirtualListItem chrome (label via `children`, plus\noptional `icon`, `meta`, `trailingIcon`, `selected`, `tone`). VirtualList\ninjects the position (`posInSet`/`setSize`) and windowing style."
         },
         "aria-label": {
           "optional": false,
@@ -18511,12 +18563,21 @@
         "overscan": {
           "optional": true,
           "type": "number",
-          "description": "Extra rows before and after the viewport."
+          "description": "Extra rows rendered before and after the viewport."
+        },
+        "initialScrollOffset": {
+          "optional": true,
+          "type": "number",
+          "description": "Initial scroll offset in pixels."
         },
         "onRangeChange": {
           "optional": true,
           "type": "(range: VirtualListRange) => void",
           "description": "Receives the rendered index range."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
         }
       },
       "composesWith": [
@@ -18631,23 +18692,8 @@
           "required": true
         },
         {
-          "name": "children",
-          "type": "React.ReactNode",
-          "required": true
-        },
-        {
-          "name": "tone",
-          "type": "neutral | destructive",
-          "required": false
-        },
-        {
-          "name": "icon",
-          "type": "React.ReactNode",
-          "required": false
-        },
-        {
-          "name": "meta",
-          "type": "React.ReactNode",
+          "name": "style",
+          "type": "React.CSSProperties",
           "required": false
         }
       ],
@@ -18655,51 +18701,17 @@
         "posInSet": {
           "optional": false,
           "type": "number",
-          "description": "1-based position within the full collection (aria-posinset)."
+          "description": "1-based position within the full collection (`aria-posinset`)."
         },
         "setSize": {
           "optional": false,
           "type": "number",
-          "description": "Total item count in the full collection (aria-setsize)."
-        },
-        "children": {
-          "optional": false,
-          "type": "React.ReactNode",
-          "description": "Primary label (delegated to ListItem; truncates)."
-        },
-        "icon": {
-          "optional": true,
-          "type": "React.ReactNode",
-          "description": "Leading icon node."
-        },
-        "meta": {
-          "optional": true,
-          "type": "React.ReactNode",
-          "description": "End-aligned secondary content (Badge, Kbd, StatusDot, value)."
-        },
-        "trailingIcon": {
-          "optional": true,
-          "type": "React.ReactNode",
-          "description": "Trailing icon after meta."
-        },
-        "selected": {
-          "optional": true,
-          "type": "boolean",
-          "description": "Renders the trailing check. Visual only."
-        },
-        "tone": {
-          "optional": true,
-          "type": "union",
-          "values": [
-            "neutral",
-            "destructive"
-          ],
-          "description": "Destructive rows use the error treatment."
+          "description": "Total item count in the full collection (`aria-setsize`)."
         },
         "style": {
           "optional": true,
           "type": "React.CSSProperties",
-          "description": "Windowing position style injected by VirtualList (absolute + transform + block-size)."
+          "description": "Positioning style supplied by VirtualList (transform + block-size)."
         }
       },
       "composesWith": [

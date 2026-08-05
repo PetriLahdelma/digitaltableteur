@@ -1,142 +1,142 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "schemaVersion": 2,
-  "name": "TableHeaderCell",
-  "tier": "atom",
-  "group": "data-display",
-  "status": "beta",
-  "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
-  "usage": {
-    "description": "TableHeaderCell names a column or row with correct scope semantics, and hosts sortable column headers driven by useTableSortable; sort state is announced via aria-sort, never by caret colour alone."
-  },
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1715-2794",
-  "radixPrimitive": null,
-  "element": "th",
-  "variants": {
-    "align": {
-      "values": [
-        "start",
-        "center",
-        "end"
-      ],
-      "default": "start",
-      "propSourced": true
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "TableHeaderCell",
+    "tier": "atom",
+    "group": "data-display",
+    "status": "beta",
+    "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
+    "usage": {
+        "description": "TableHeaderCell names a column or row with correct scope semantics, and hosts sortable column headers driven by useTableSortable; sort state is announced via aria-sort, never by caret colour alone."
     },
-    "scope": {
-      "values": [
-        "col",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1715-2794",
+    "radixPrimitive": null,
+    "element": "th",
+    "variants": {
+        "align": {
+            "values": [
+                "start",
+                "center",
+                "end"
+            ],
+            "default": "start",
+            "propSourced": true
+        },
+        "scope": {
+            "values": [
+                "col",
+                "row"
+            ],
+            "default": "col",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Enter",
+            "Space"
+        ],
+        "ariaRequirements": [
+            "native <th> with an explicit scope (col or row)",
+            "sortable column headers expose aria-sort and toggle via an inner button",
+            "the sort caret is decorative (aria-hidden); state is carried by aria-sort, never the icon alone"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-muted",
+            "--color-primary",
+            "--color-border",
+            "--color-light-bg",
+            "--color-neutral-bg"
+        ],
+        "spacing": [
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-24"
+        ],
+        "radii": [
+            "--radius-sm"
+        ]
+    },
+    "lightDarkVerified": true,
+    "dense": "th with scope col/row; col carries the three-state sort caret + aria-sort, row names its data row",
+    "keywords": [
+        "table",
+        "header",
+        "th",
+        "sort",
+        "scope",
+        "column",
         "row"
-      ],
-      "default": "col",
-      "propSourced": true
-    }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab",
-      "Enter",
-      "Space"
     ],
-    "ariaRequirements": [
-      "native <th> with an explicit scope (col or row)",
-      "sortable column headers expose aria-sort and toggle via an inner button",
-      "the sort caret is decorative (aria-hidden); state is carried by aria-sort, never the icon alone"
+    "props": {
+        "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "center",
+                "end",
+                "start"
+            ],
+            "description": "Cell content alignment."
+        },
+        "scope": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "row",
+                "col"
+            ],
+            "description": "Header scope. `col` (default) labels a column; `row` makes the cell the\naccessible name for its row — use it on the identifying cell of each body\nrow so screen readers announce the row context with every other cell."
+        },
+        "sortable": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Renders the sort affordance and toggles on click. Only for column headers."
+        },
+        "sortDirection": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "none",
+                "ascending",
+                "descending"
+            ],
+            "description": "Current sort state; drives `aria-sort` and the caret icon."
+        },
+        "onSort": {
+            "optional": true,
+            "type": "() => void",
+            "description": "Called when a sortable header is activated."
+        }
+    },
+    "forbiddenUse": [
+        "render it outside a table",
+        "make a scope=row header sortable — row headers are not sort controls",
+        "convey sort state with the caret colour alone"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-07-27 — th with explicit scope; aria-sort on active column headers; decorative caret; row-header (scope=row) verified to name its row; axe asserted inside a table in the unit test. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": false
-  },
-  "tokens": {
-    "colors": [
-      "--color-muted",
-      "--color-primary",
-      "--color-border",
-      "--color-light-bg",
-      "--color-neutral-bg"
-    ],
-    "spacing": [
-      "--space-internal-6",
-      "--space-internal-8",
-      "--space-internal-12",
-      "--space-internal-16",
-      "--space-layout-24"
-    ],
-    "radii": [
-      "--radius-sm"
+    "composesWith": [
+        "Table",
+        "TableRow",
+        "TableCell",
+        "Icon"
     ]
-  },
-  "lightDarkVerified": true,
-  "dense": "th with scope col/row; col carries the three-state sort caret + aria-sort, row names its data row",
-  "keywords": [
-    "table",
-    "header",
-    "th",
-    "sort",
-    "scope",
-    "column",
-    "row"
-  ],
-  "props": {
-    "align": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "start",
-        "center",
-        "end"
-      ],
-      "description": "Cell content alignment."
-    },
-    "scope": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "col",
-        "row"
-      ],
-      "description": "Header scope; row names the identifying cell of a body row."
-    },
-    "sortable": {
-      "optional": true,
-      "type": "boolean",
-      "description": "Renders the sort control (column headers only)."
-    },
-    "sortDirection": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "ascending",
-        "descending",
-        "none"
-      ],
-      "description": "Current sort state; drives aria-sort and the caret."
-    },
-    "onSort": {
-      "optional": true,
-      "type": "() => void",
-      "description": "Called when a sortable header is activated."
-    }
-  },
-  "forbiddenUse": [
-    "render it outside a table",
-    "make a scope=row header sortable — row headers are not sort controls",
-    "convey sort state with the caret colour alone"
-  ],
-  "composesWith": [
-    "Table",
-    "TableRow",
-    "TableCell",
-    "Icon"
-  ]
 }

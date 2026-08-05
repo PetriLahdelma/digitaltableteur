@@ -1,160 +1,164 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "schemaVersion": 2,
-  "name": "ResizablePanelGroup",
-  "tier": "organism",
-  "group": "layout",
-  "status": "beta",
-  "description": "Two-or-more-panel layout with pointer and keyboard-accessible resize separators.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1722-2833",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {
-    "orientation": {
-      "values": [
-        "horizontal",
-        "vertical"
-      ],
-      "default": "horizontal",
-      "propSourced": true
-    }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "ArrowLeft",
-      "ArrowRight",
-      "ArrowUp",
-      "ArrowDown",
-      "Home",
-      "End"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "ResizablePanelGroup",
+    "tier": "organism",
+    "group": "layout",
+    "status": "beta",
+    "description": "Two-or-more-panel layout with pointer and keyboard-accessible resize separators.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1722-2833",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "orientation": {
+            "values": [
+                "horizontal",
+                "vertical"
+            ],
+            "default": "horizontal",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "each panel is a named region",
-      "handles use role=separator",
-      "separator exposes aria-orientation, aria-valuemin, aria-valuemax and aria-valuenow"
+    "a11y": {
+        "keyboard": [
+            "ArrowLeft",
+            "ArrowRight",
+            "ArrowUp",
+            "ArrowDown",
+            "Home",
+            "End"
+        ],
+        "ariaRequirements": [
+            "each panel is a named region",
+            "handles use role=separator",
+            "separator exposes aria-orientation, aria-valuemin, aria-valuemax and aria-valuenow"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-26 — named regions, separator value semantics, keyboard resize behavior, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; clamped keyboard model (arrows/Home/End, min-size limits, aria-valuenow) driven by a play story; drag-resize latency measured; AT-tree and real-browser forced-colors evidence captured.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-border-light",
+            "--color-neutral-bg",
+            "--color-primary",
+            "--color-muted"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-layout-24"
+        ]
+    },
+    "lightDarkVerified": true,
+    "dense": "horizontal or vertical resizable panel layout; pointer drag, arrow/Home/End keyboard resize, separator value semantics",
+    "keywords": [
+        "resizable",
+        "panels",
+        "split",
+        "layout",
+        "workbench",
+        "sidebar"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-07-26 — named regions, separator value semantics, keyboard resize behavior, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; clamped keyboard model (arrows/Home/End, min-size limits, aria-valuenow) driven by a play story; drag-resize latency measured; AT-tree and real-browser forced-colors evidence captured.",
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": false
-  },
-  "tokens": {
-    "colors": [
-      "--color-border-light",
-      "--color-neutral-bg",
-      "--color-primary",
-      "--color-muted"
+    "props": {
+        "panels": {
+            "optional": false,
+            "type": "ResizablePanel[]",
+            "description": "Two or more ordered panels."
+        },
+        "orientation": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "horizontal",
+                "vertical"
+            ],
+            "description": "Resize axis."
+        },
+        "keyboardStep": {
+            "optional": true,
+            "type": "number",
+            "description": "Keyboard resize increment in percentage points."
+        },
+        "onSizesChange": {
+            "optional": true,
+            "type": "(sizes: Record<string, number>) => void",
+            "description": "Receives the current percentage per panel id."
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "replace a fixed responsive page grid",
+        "allow panels to shrink below usable content minimums"
     ],
-    "spacing": [
-      "--space-internal-8",
-      "--space-layout-24"
+    "usage": {
+        "description": "Use ResizablePanelGroup for adjacent work areas whose relative space users need to control. Set realistic minimum sizes for every panel.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Name every panel region so assistive technology communicates its purpose."
+            },
+            {
+                "guidance": true,
+                "description": "Choose minimum sizes that keep each panel's essential controls usable."
+            },
+            {
+                "guidance": true,
+                "description": "Persist sizes only when restoring the user's workspace is genuinely valuable."
+            },
+            {
+                "guidance": true,
+                "description": "Use a keyboard step that changes layout perceptibly without large jumps."
+            },
+            {
+                "guidance": false,
+                "description": "Do not replace an ordinary responsive page grid with draggable panels."
+            },
+            {
+                "guidance": false,
+                "description": "Do not allow a panel to collapse past the minimum needed by its content."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Panel",
+                "required": true,
+                "description": "Named region containing one adjacent workspace."
+            },
+            {
+                "name": "Separator",
+                "required": true,
+                "description": "Focusable resize control between a pair of panels."
+            },
+            {
+                "name": "Handle",
+                "required": true,
+                "description": "Visible affordance that communicates the separator's drag axis."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "orientation": "horizontal",
+            "keyboardStep": 5
+        }
+    },
+    "composesWith": [
+        "TreeView",
+        "DataTable",
+        "CodeBlockWindow"
     ]
-  },
-  "lightDarkVerified": true,
-  "dense": "horizontal or vertical resizable panel layout; pointer drag, arrow/Home/End keyboard resize, separator value semantics",
-  "keywords": [
-    "resizable",
-    "panels",
-    "split",
-    "layout",
-    "workbench",
-    "sidebar"
-  ],
-  "props": {
-    "panels": {
-      "optional": false,
-      "type": "ResizablePanel[]",
-      "description": "Two or more ordered panels."
-    },
-    "orientation": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "horizontal",
-        "vertical"
-      ],
-      "description": "Resize axis."
-    },
-    "keyboardStep": {
-      "optional": true,
-      "type": "number",
-      "description": "Keyboard resize increment in percentage points."
-    },
-    "onSizesChange": {
-      "optional": true,
-      "type": "(sizes: Record<string, number>) => void",
-      "description": "Receives current panel percentages."
-    }
-  },
-  "forbiddenUse": [
-    "replace a fixed responsive page grid",
-    "allow panels to shrink below usable content minimums"
-  ],
-  "usage": {
-    "description": "Use ResizablePanelGroup for adjacent work areas whose relative space users need to control. Set realistic minimum sizes for every panel.",
-    "bestPractices": [
-      {
-        "guidance": true,
-        "description": "Name every panel region so assistive technology communicates its purpose."
-      },
-      {
-        "guidance": true,
-        "description": "Choose minimum sizes that keep each panel's essential controls usable."
-      },
-      {
-        "guidance": true,
-        "description": "Persist sizes only when restoring the user's workspace is genuinely valuable."
-      },
-      {
-        "guidance": true,
-        "description": "Use a keyboard step that changes layout perceptibly without large jumps."
-      },
-      {
-        "guidance": false,
-        "description": "Do not replace an ordinary responsive page grid with draggable panels."
-      },
-      {
-        "guidance": false,
-        "description": "Do not allow a panel to collapse past the minimum needed by its content."
-      }
-    ],
-    "anatomy": [
-      {
-        "name": "Panel",
-        "required": true,
-        "description": "Named region containing one adjacent workspace."
-      },
-      {
-        "name": "Separator",
-        "required": true,
-        "description": "Focusable resize control between a pair of panels."
-      },
-      {
-        "name": "Handle",
-        "required": true,
-        "description": "Visible affordance that communicates the separator's drag axis."
-      }
-    ]
-  },
-  "playground": {
-    "defaults": {
-      "orientation": "horizontal",
-      "keyboardStep": 5
-    }
-  },
-  "composesWith": [
-    "TreeView",
-    "DataTable",
-    "CodeBlockWindow"
-  ]
 }
