@@ -440,3 +440,43 @@ export type {
   ProcessBlockProps,
   ProcessPhase,
 } from "../../../nextjs-app/shared/patterns/ProcessBlock/ProcessBlock";
+export { DataTable } from "../../../nextjs-app/shared/components/DataTable/DataTable";
+export type {
+  DataTableColumn,
+  DataTableProps,
+  DataTableSort,
+  DataTableSortDirection,
+} from "../../../nextjs-app/shared/components/DataTable/DataTable";
+export { ResizablePanelGroup } from "../../../nextjs-app/shared/components/ResizablePanelGroup/ResizablePanelGroup";
+export type {
+  ResizablePanel,
+  ResizablePanelGroupProps,
+} from "../../../nextjs-app/shared/components/ResizablePanelGroup/ResizablePanelGroup";
+export { Table } from "../../../nextjs-app/shared/components/Table/Table";
+export type {
+  TableAlign,
+  TableProps,
+  TableSize,
+  TableSortDirection,
+} from "../../../nextjs-app/shared/components/Table/Table";
+export { TableCell } from "../../../nextjs-app/shared/components/TableCell/TableCell";
+export type { TableCellProps } from "../../../nextjs-app/shared/components/TableCell/TableCell";
+export { TableHeaderCell } from "../../../nextjs-app/shared/components/TableHeaderCell/TableHeaderCell";
+export type { TableHeaderCellProps } from "../../../nextjs-app/shared/components/TableHeaderCell/TableHeaderCell";
+export { TableRow } from "../../../nextjs-app/shared/components/TableRow/TableRow";
+export type { TableRowProps } from "../../../nextjs-app/shared/components/TableRow/TableRow";
+export { TreeView } from "../../../nextjs-app/shared/components/TreeView/TreeView";
+export type {
+  TreeViewNode,
+  TreeViewProps,
+} from "../../../nextjs-app/shared/components/TreeView/TreeView";
+export { VirtualList } from "../../../nextjs-app/shared/components/VirtualList/VirtualList";
+export type {
+  VirtualListProps,
+  VirtualListRange,
+} from "../../../nextjs-app/shared/components/VirtualList/VirtualList";
+export { VirtualListItem } from "../../../nextjs-app/shared/components/VirtualListItem/VirtualListItem";
+export type {
+  VirtualListItemContent,
+  VirtualListItemProps,
+} from "../../../nextjs-app/shared/components/VirtualListItem/VirtualListItem";

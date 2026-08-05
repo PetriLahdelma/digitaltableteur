@@ -65,3 +65,8 @@ export type {
   TabItem,
   TabsProps,
 } from "../../../nextjs-app/shared/components/Tabs";
+export {
+  TreeView,
+  type TreeViewNode,
+  type TreeViewProps,
+} from "../../../nextjs-app/shared/components/TreeView/TreeView";
