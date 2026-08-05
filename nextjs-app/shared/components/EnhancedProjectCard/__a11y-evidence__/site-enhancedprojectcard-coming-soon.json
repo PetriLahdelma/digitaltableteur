@@ -1,8 +1,8 @@
 {
-  "storyId": "site-enhancedprojectcard-playground",
+  "storyId": "site-enhancedprojectcard-coming-soon",
   "mode": "light",
   "sourceSHA": "72ed5b59cffe0596bc887b5d1c9cdcad400c2fd6",
-  "capturedAt": "2026-08-05T11:22:36.669Z",
+  "capturedAt": "2026-08-05T11:22:32.393Z",
   "runner": "precedent-teaser",
   "checks": {
     "accessibility-tree": {

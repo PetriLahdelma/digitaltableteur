@@ -1,18 +1,11 @@
 {
   "storyId": "site-enhancedprojectcard-example",
   "mode": "forced-colors",
-  "sourceSHA": "82c942f0040bb4aa516328e3fff356d4aa75b3ae",
-  "capturedAt": "2026-07-26T13:43:09.278Z",
-  "runner": "backfill",
+  "sourceSHA": "72ed5b59cffe0596bc887b5d1c9cdcad400c2fd6",
+  "capturedAt": "2026-08-05T11:22:46.127Z",
+  "runner": "precedent-teaser",
   "checks": {
-    "axe-no-violations": {
-      "passed": true,
-      "axeViolations": 0
-    },
     "accessibility-tree": {
-      "passed": true
-    },
-    "forced-colors-real-browser": {
       "passed": true
     }
   }
