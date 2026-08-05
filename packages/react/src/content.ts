@@ -37,3 +37,39 @@ export {
   ValueCard,
   type ValueCardProps,
 } from "../../../nextjs-app/shared/components/ValueCard";
+export {
+  DataTable,
+  type DataTableColumn,
+  type DataTableProps,
+  type DataTableSort,
+  type DataTableSortDirection,
+} from "../../../nextjs-app/shared/components/DataTable/DataTable";
+export {
+  Table,
+  type TableAlign,
+  type TableProps,
+  type TableSize,
+  type TableSortDirection,
+} from "../../../nextjs-app/shared/components/Table/Table";
+export {
+  TableCell,
+  type TableCellProps,
+} from "../../../nextjs-app/shared/components/TableCell/TableCell";
+export {
+  TableHeaderCell,
+  type TableHeaderCellProps,
+} from "../../../nextjs-app/shared/components/TableHeaderCell/TableHeaderCell";
+export {
+  TableRow,
+  type TableRowProps,
+} from "../../../nextjs-app/shared/components/TableRow/TableRow";
+export {
+  VirtualList,
+  type VirtualListProps,
+  type VirtualListRange,
+} from "../../../nextjs-app/shared/components/VirtualList/VirtualList";
+export {
+  VirtualListItem,
+  type VirtualListItemContent,
+  type VirtualListItemProps,
+} from "../../../nextjs-app/shared/components/VirtualListItem/VirtualListItem";

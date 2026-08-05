@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.22 - 2026-08-05
+
+- Ships the matured data primitives at beta: `DataTable` (managed sortable/
+  selectable/paginated grid), the semantic `Table` family (`Table`,
+  `TableRow`, `TableHeaderCell`, `TableCell`), `VirtualList` +
+  `VirtualListItem` (windowed listbox), `TreeView` (keyboard tree), and
+  `ResizablePanelGroup` (keyboard-resizable split view). Value exports from
+  the root barrel plus their family entries (content, layout, navigation),
+  with full type surfaces (props, column/sort/node/panel/range types).
+- These four were briefly exported as alpha in the 0.1.21 prep and withdrawn;
+  they return at beta with real Figma nodes, AT + forced-colors evidence, and
+  keyboard interaction stories (Astryx-gap Phase 1 exit).
+
 ## 0.1.21 - 2026-08-03
 
 - Fixes `CodeSnippet` high-contrast-black comment contrast: the gruvbox

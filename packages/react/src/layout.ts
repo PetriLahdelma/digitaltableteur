@@ -48,3 +48,8 @@ export {
   Stack,
   type StackProps,
 } from "../../../nextjs-app/shared/components/Stack";
+export {
+  ResizablePanelGroup,
+  type ResizablePanel,
+  type ResizablePanelGroupProps,
+} from "../../../nextjs-app/shared/components/ResizablePanelGroup/ResizablePanelGroup";
