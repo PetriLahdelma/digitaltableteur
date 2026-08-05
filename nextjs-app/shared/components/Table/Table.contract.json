@@ -4,12 +4,12 @@
   "name": "Table",
   "tier": "molecule",
   "group": "data-display",
-  "status": "alpha",
+  "status": "beta",
   "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
   "usage": {
     "description": "Table renders semantic tabular data: a caption-led <table> whose rows and cells come from TableRow, TableHeaderCell and TableCell, with sorting and selection driven by the useTable* hooks rather than cell-local state. Use it when the content really is a data grid; DataTable wraps it for the batteries-included workflow."
   },
-  "figma": null,
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1716-2986",
   "radixPrimitive": null,
   "element": "table",
   "variants": {

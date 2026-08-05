@@ -4,12 +4,12 @@
   "name": "TableCell",
   "tier": "atom",
   "group": "data-display",
-  "status": "alpha",
+  "status": "beta",
   "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
   "usage": {
     "description": "TableCell is the body cell of the Table family: plain tabular data with an optional numeric mode that aligns figures on the decimal. Header semantics belong to TableHeaderCell; TableCell never announces scope."
   },
-  "figma": null,
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1715-2814",
   "radixPrimitive": null,
   "element": "td",
   "variants": {

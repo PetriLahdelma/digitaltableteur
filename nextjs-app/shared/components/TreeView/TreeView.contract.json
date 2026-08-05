@@ -4,9 +4,9 @@
   "name": "TreeView",
   "tier": "organism",
   "group": "navigation",
-  "status": "alpha",
+  "status": "beta",
   "description": "Application tree with hierarchical selection, expansion, roving focus, and arrow-key navigation.",
-  "figma": null,
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1721-5507",
   "radixPrimitive": null,
   "element": "div",
   "variants": {
@@ -20,10 +20,7 @@
       "propSourced": true
     }
   },
-  "slots": [
-    "label",
-    "description"
-  ],
+  "slots": [],
   "asChild": false,
   "subParts": [],
   "requiredStories": [

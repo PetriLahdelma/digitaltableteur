@@ -4,12 +4,12 @@
   "name": "VirtualListItem",
   "tier": "molecule",
   "group": "data-display",
-  "status": "alpha",
+  "status": "beta",
   "description": "A single windowed list row: owns the role=listitem semantics with aria-posinset/aria-setsize position metadata, and composes ListItem for its chrome (leading icon, truncating label, end meta, trailing icon, selected check, destructive tone). Rendered by VirtualList.",
   "usage": {
     "description": "VirtualListItem is the presentational row for VirtualList: ListItem chrome with an end-aligned meta slot, positioned by getItemProps inside a role=\"list\" container. It carries no interactive semantics of its own."
   },
-  "figma": null,
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1719-3278",
   "radixPrimitive": null,
   "element": "div",
   "variants": {

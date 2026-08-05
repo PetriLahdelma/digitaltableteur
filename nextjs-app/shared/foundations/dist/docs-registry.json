@@ -4976,7 +4976,7 @@
       "name": "DataTable",
       "group": "data-display",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Accessible data table with typed columns, three-state sortable headings, optional row selection and pagination, and density variants. Composes the Table primitives and the useTable* hooks.",
       "dense": "typed native data table; sortable columns, optional row selection, accessible caption, empty state, sm/md/lg density",
       "keywords": [
@@ -5178,7 +5178,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: { striped: true },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    await userEvent.click(canvas.getByRole(\"button\", { name: \"Name\" }));\n    await expect(\n      canvas.getByRole(\"columnheader\", { name: /Name/ }),\n    ).toHaveAttribute(\"aria-sort\", \"ascending\");\n  },\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  args: { striped: true },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    await userEvent.click(canvas.getByRole(\"button\", { name: \"Name\" }));\n    await expect(\n      canvas.getByRole(\"columnheader\", { name: /Name/ }),\n    ).toHaveAttribute(\"aria-sort\", \"ascending\");\n  },\n};"
         },
         {
           "story": "Paginated",
@@ -12744,7 +12744,7 @@
       "name": "ResizablePanelGroup",
       "group": "layout",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Two-or-more-panel layout with pointer and keyboard-accessible resize separators.",
       "dense": "horizontal or vertical resizable panel layout; pointer drag, arrow/Home/End keyboard resize, separator value semantics",
       "keywords": [
@@ -12871,7 +12871,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const separator = canvas.getByRole(\"separator\");\n    separator.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"37\");\n  },\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const separator = canvas.getByRole(\"separator\");\n    separator.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"37\");\n  },\n};"
         },
         {
           "story": "KeyboardResize",
@@ -15798,7 +15798,7 @@
       "name": "Table",
       "group": "data-display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
       "dense": "composable native table primitives; density, striping, sticky header, three-state DS-Icon sort caret; pairs with useTable* hooks",
       "keywords": [
@@ -15933,7 +15933,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};\n\nfunction KeyboardSortTable(args: React.ComponentProps<typeof Table>) {\n  const [direction, setDirection] =\n    React.useState<TableSortDirection>(\"none\");\n  const cycle = () =>\n    setDirection((current) =>\n      current === \"none\"\n        ? \"ascending\"\n        : current === \"ascending\"\n          ? \"descending\"\n          : \"none\",\n    );\n  return (\n    <Table {...args} caption=\"Keyboard sort\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person) => (\n          <TableRow key={person.id}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  );\n}\n\n/**\n * The family keyboard contract with real key events: Tab reaches the native\n * sort button, Enter and Space cycle the three sort states, and aria-sort\n * tracks each transition on the columnheader.\n */"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};\n\nfunction KeyboardSortTable(args: React.ComponentProps<typeof Table>) {\n  const [direction, setDirection] =\n    React.useState<TableSortDirection>(\"none\");\n  const cycle = () =>\n    setDirection((current) =>\n      current === \"none\"\n        ? \"ascending\"\n        : current === \"ascending\"\n          ? \"descending\"\n          : \"none\",\n    );\n  return (\n    <Table {...args} caption=\"Keyboard sort\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person) => (\n          <TableRow key={person.id}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  );\n}\n\n/**\n * The family keyboard contract with real key events: Tab reaches the native\n * sort button, Enter and Space cycle the three sort states, and aria-sort\n * tracks each transition on the columnheader.\n */"
         },
         {
           "story": "KeyboardInteraction",
@@ -15946,7 +15946,7 @@
       "name": "TableCell",
       "group": "data-display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
       "dense": "table td; align start/center/end, numeric = tabular figures right-aligned",
       "keywords": [
@@ -16013,7 +16013,7 @@
         {
           "story": "Example",
           "description": "numeric cells right-align with tabular figures so columns line up on the decimal.",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story: \"numeric cells right-align with tabular figures so columns line up on the decimal.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Numbers\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Metric</TableHeaderCell>\n          <TableHeaderCell align=\"end\">Value</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Requests</TableCell>\n          <TableCell numeric>1,204</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Errors</TableCell>\n          <TableCell numeric>12</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Latency</TableCell>\n          <TableCell numeric>98</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story: \"numeric cells right-align with tabular figures so columns line up on the decimal.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Numbers\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Metric</TableHeaderCell>\n          <TableHeaderCell align=\"end\">Value</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Requests</TableCell>\n          <TableCell numeric>1,204</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Errors</TableCell>\n          <TableCell numeric>12</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Latency</TableCell>\n          <TableCell numeric>98</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
         }
       ]
     },
@@ -16021,7 +16021,7 @@
       "name": "TableHeaderCell",
       "group": "data-display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
       "dense": "th with scope col/row; col carries the three-state sort caret + aria-sort, row names its data row",
       "keywords": [
@@ -16135,7 +16135,7 @@
         {
           "story": "Example",
           "description": "The three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Sort states\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection=\"ascending\">\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"none\">\n            Role\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"descending\" align=\"end\">\n            Projects\n          </TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Ada</TableCell>\n          <TableCell>Engineer</TableCell>\n          <TableCell numeric>8</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Sort states\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection=\"ascending\">\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"none\">\n            Role\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"descending\" align=\"end\">\n            Projects\n          </TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Ada</TableCell>\n          <TableCell>Engineer</TableCell>\n          <TableCell numeric>8</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
         },
         {
           "story": "SortCycle",
@@ -16231,7 +16231,7 @@
       "name": "TableRow",
       "group": "data-display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "A table row (<tr>) for the Table family. Works in <thead> and <tbody>; selected renders the selection surface. Presentational — semantics belong to the surrounding table.",
       "dense": "table row; works in thead/tbody, selected surface, hover + zebra via the Table root",
       "keywords": [
@@ -16280,7 +16280,7 @@
         {
           "story": "Example",
           "description": "Rows in context: the middle row is selected; the hover, zebra, and selection surfaces come from the Table root.",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows in context: the middle row is selected; the hover, zebra, and selection surfaces come from the Table root.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Contributors\" striped>\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Name</TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person, index) => (\n          <TableRow key={person.name} selected={index === 1}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  ),\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows in context: the middle row is selected; the hover, zebra, and selection surfaces come from the Table root.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Contributors\" striped>\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Name</TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person, index) => (\n          <TableRow key={person.name} selected={index === 1}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  ),\n};"
         }
       ]
     },
@@ -18149,7 +18149,7 @@
       "name": "TreeView",
       "group": "navigation",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Application tree with hierarchical selection, expansion, roving focus, and arrow-key navigation.",
       "dense": "application tree; controlled selection and expansion, roving focus, full arrow/Home/End/Enter/Space keyboard model",
       "keywords": [
@@ -18306,7 +18306,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const components = canvas.getByRole(\"treeitem\", { name: \"Components\" });\n    components.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(\n      canvas.getByRole(\"treeitem\", { name: /Button/ }),\n    ).toHaveFocus();\n  },\n};\n/**\n * A node with `disabled` stays discoverable (focusable via the roving\n * tabindex, announced with aria-disabled) but cannot be selected.\n */"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const components = canvas.getByRole(\"treeitem\", { name: \"Components\" });\n    components.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(\n      canvas.getByRole(\"treeitem\", { name: /Button/ }),\n    ).toHaveFocus();\n  },\n};\n/**\n * A node with `disabled` stays discoverable (focusable via the roving\n * tabindex, announced with aria-disabled) but cannot be selected.\n */"
         },
         {
           "story": "LargeTree",
@@ -18433,7 +18433,7 @@
       "name": "VirtualList",
       "group": "data-display",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Fixed-height windowed list with overscan and explicit assistive-technology position metadata.",
       "dense": "fixed-height windowed collection; overscan, stable keys, rendered-range callback, aria position and set-size metadata",
       "keywords": [
@@ -18589,7 +18589,7 @@
         {
           "story": "Example",
           "description": "Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.\",\n      },\n    },\n  },\n  args: {\n    getItemProps: (item) => ({\n      children: item.label,\n      icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n      meta: item.isNew ? (\n        <Badge size=\"sm\" tone=\"info\">\n          New\n        </Badge>\n      ) : (\n        <StatusDot tone={item.online ? \"success\" : \"neutral\"} label={item.online ? \"Online\" : \"Offline\"} />\n      ),\n    }),\n  },\n};\n\n/**\n * 10,000 rows behind a ~7-row window: the DOM stays at viewport + overscan\n * regardless of collection size, and every mounted row carries its true\n * aria-posinset/aria-setsize. Used as the scroll-stability performance case\n * (see spec Design notes).\n */"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.\",\n      },\n    },\n  },\n  args: {\n    getItemProps: (item) => ({\n      children: item.label,\n      icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n      meta: item.isNew ? (\n        <Badge size=\"sm\" tone=\"info\">\n          New\n        </Badge>\n      ) : (\n        <StatusDot tone={item.online ? \"success\" : \"neutral\"} label={item.online ? \"Online\" : \"Offline\"} />\n      ),\n    }),\n  },\n};\n\n/**\n * 10,000 rows behind a ~7-row window: the DOM stays at viewport + overscan\n * regardless of collection size, and every mounted row carries its true\n * aria-posinset/aria-setsize. Used as the scroll-stability performance case\n * (see spec Design notes).\n */"
         },
         {
           "story": "TenThousandRows",
@@ -18607,7 +18607,7 @@
       "name": "VirtualListItem",
       "group": "data-display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "A single windowed list row: owns the role=listitem semantics with aria-posinset/aria-setsize position metadata, and composes ListItem for its chrome (leading icon, truncating label, end meta, trailing icon, selected check, destructive tone). Rendered by VirtualList.",
       "dense": "windowed list row; role=listitem + aria-posinset/aria-setsize, composes ListItem chrome; positioning arrives from VirtualList via style",
       "keywords": [
@@ -18728,7 +18728,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: {\n    icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n    meta: (\n      <Badge size=\"sm\" tone=\"info\">\n        New\n      </Badge>\n    ),\n  },\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  args: {\n    icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n    meta: (\n      <Badge size=\"sm\" tone=\"info\">\n        New\n      </Badge>\n    ),\n  },\n};"
         }
       ]
     },

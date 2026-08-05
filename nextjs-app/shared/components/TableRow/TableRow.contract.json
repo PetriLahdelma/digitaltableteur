@@ -4,12 +4,12 @@
   "name": "TableRow",
   "tier": "atom",
   "group": "data-display",
-  "status": "alpha",
+  "status": "beta",
   "description": "A table row (<tr>) for the Table family. Works in <thead> and <tbody>; selected renders the selection surface. Presentational — semantics belong to the surrounding table.",
   "usage": {
     "description": "TableRow groups cells inside a Table's thead or tbody and carries the selected state visually while a real selection control (Checkbox) remains the source of truth."
   },
-  "figma": null,
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1715-2833",
   "radixPrimitive": null,
   "element": "tr",
   "variants": {

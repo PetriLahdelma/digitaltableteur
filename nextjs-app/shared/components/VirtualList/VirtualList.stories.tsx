@@ -32,7 +32,7 @@ const meta = {
       </div>
     ),
   ],
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   args: {
     "aria-label": "Component results",
     getItemKey: (item) => item.id,
@@ -55,17 +55,25 @@ const meta = {
     items: { table: { disable: true } },
     getItemKey: { table: { disable: true } },
     getItemProps: { table: { disable: true } },
+    initialScrollOffset: {
+      control: "number",
+      description: "Scroll position in pixels applied on mount.",
+    },
+    "aria-label": {
+      control: "text",
+      description: "Accessible name for the listbox viewport.",
+    },
   },
 } satisfies Meta<typeof VirtualList<(typeof items)[number]>>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = { tags: ["beta-matrix"] };
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     docs: {
       description: {
@@ -152,5 +160,6 @@ export const KeyboardScroll: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
 };

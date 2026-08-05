@@ -4,9 +4,9 @@
   "name": "DataTable",
   "tier": "organism",
   "group": "data-display",
-  "status": "alpha",
+  "status": "beta",
   "description": "Accessible data table with typed columns, three-state sortable headings, optional row selection and pagination, and density variants. Composes the Table primitives and the useTable* hooks.",
-  "figma": null,
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1719-3254",
   "radixPrimitive": null,
   "element": "table",
   "variants": {
@@ -29,9 +29,6 @@
     }
   },
   "slots": [
-    "caption",
-    "header",
-    "cell",
     "emptyState"
   ],
   "asChild": false,

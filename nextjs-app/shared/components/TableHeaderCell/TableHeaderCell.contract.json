@@ -4,12 +4,12 @@
   "name": "TableHeaderCell",
   "tier": "atom",
   "group": "data-display",
-  "status": "alpha",
+  "status": "beta",
   "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
   "usage": {
     "description": "TableHeaderCell names a column or row with correct scope semantics, and hosts sortable column headers driven by useTableSortable; sort state is announced via aria-sort, never by caret colour alone."
   },
-  "figma": null,
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1715-2794",
   "radixPrimitive": null,
   "element": "th",
   "variants": {

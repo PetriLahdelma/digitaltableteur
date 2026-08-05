@@ -20,10 +20,14 @@ const meta = {
     contractStatus: contract.status,
     docs: { description: { component: contract.description } },
   },
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   args: { selected: false },
   argTypes: {
-    selected: { control: "boolean", description: "Selected surface (visual only)." },
+    selected: {
+      control: "boolean",
+      description: "Selected surface (visual only).",
+      table: { defaultValue: { summary: "false" } },
+    },
   },
   render: (args) => (
     <Table caption="Contributors">
@@ -46,11 +50,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = { tags: ["beta-matrix"] };
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     docs: {
       description: {
@@ -79,4 +83,5 @@ export const Example: Story = {
   ),
 };
 
-export const ForcedColors: Story = { globals: { forcedColors: "active" } };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], globals: { forcedColors: "active" } };

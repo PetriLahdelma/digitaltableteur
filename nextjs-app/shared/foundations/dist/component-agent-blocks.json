@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T08:09:32.025Z",
+  "generatedAt": "2026-08-05T09:28:52.913Z",
   "components": {
     "Accordion": {
       "preferredImport": "@dt/Accordion",
@@ -8304,7 +8304,8 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "manual"
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "aria-requirements",
@@ -21034,7 +21035,8 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "manual"
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "aria-requirements",
@@ -26725,7 +26727,8 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "manual"
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "aria-requirements",
@@ -27196,7 +27199,8 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "manual"
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "aria-requirements",
@@ -30891,7 +30895,8 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "manual"
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "aria-requirements",
@@ -31367,7 +31372,8 @@
         {
           "id": "keyboard-contract",
           "statement": "Every documented keyboard interaction works as specified.",
-          "verificationMode": "manual"
+          "verificationMode": "automated",
+          "check": "npm run test:stories:matrix:ci"
         },
         {
           "id": "aria-requirements",

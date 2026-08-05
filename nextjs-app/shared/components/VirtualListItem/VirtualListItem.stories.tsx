@@ -14,7 +14,7 @@ const meta = {
     contractStatus: contract.status,
     docs: { description: { component: contract.description } },
   },
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   // role="listitem" is only valid inside a list; wrap and give it width.
   decorators: [
     (Story) => (
@@ -36,6 +36,7 @@ const meta = {
       control: "inline-radio",
       options: ["neutral", "destructive"],
       description: "Destructive rows use the error treatment.",
+      table: { defaultValue: { summary: "neutral" } },
     },
     icon: { table: { disable: true } },
     meta: { table: { disable: true } },
@@ -47,11 +48,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = { tags: ["beta-matrix"] };
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   args: {
     icon: <Icon name="cube" ariaLabel="" />,
     meta: (
@@ -71,5 +72,6 @@ export const WithStatus: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
 };
