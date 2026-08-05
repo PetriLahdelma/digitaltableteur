@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-05T08:09:32.289Z",
+  "generatedAt": "2026-08-05T09:43:13.196Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
-      "beta": 40,
+      "beta": 49,
       "stable": 104,
-      "alpha": 32,
+      "alpha": 23,
       "deprecated": 1
     },
     "honestBetaDocDebt": 0,
@@ -107,9 +107,9 @@
     },
     "statusMix": {
       "digitaltableteur": {
-        "beta": 40,
+        "beta": 49,
         "stable": 104,
-        "alpha": 32,
+        "alpha": 23,
         "deprecated": 1
       },
       "dsharp": {
@@ -12782,14 +12782,14 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "forced-colors-real-browser",
@@ -12806,8 +12806,8 @@
           {
             "id": "aria-requirements",
             "statement": "Documented ARIA roles, states, and properties are present on the rendered output.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "human-a11y-review",
@@ -14119,14 +14119,14 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "forced-colors-real-browser",
@@ -15339,9 +15339,9 @@
         "name": "DataTable",
         "tier": "organism",
         "group": "data-display",
-        "status": "alpha",
+        "status": "beta",
         "description": "Accessible data table with typed columns, three-state sortable headings, optional row selection and pagination, and density variants. Composes the Table primitives and the useTable* hooks.",
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1719-3254",
         "radixPrimitive": null,
         "element": "table",
         "variants": {
@@ -15364,9 +15364,6 @@
           }
         },
         "slots": [
-          "caption",
-          "header",
-          "cell",
           "emptyState"
         ],
         "asChild": false,
@@ -15433,7 +15430,7 @@
           "columns": {
             "optional": false,
             "type": "DataTableColumn<Row>[]",
-            "description": "Ordered typed column definitions."
+            "description": "Ordered column definitions."
           },
           "getRowId": {
             "optional": false,
@@ -15443,17 +15440,22 @@
           "caption": {
             "optional": false,
             "type": "string",
-            "description": "Accessible table name."
+            "description": "Accessible table name rendered as a caption."
           },
           "hideCaption": {
             "optional": true,
             "type": "boolean",
-            "description": "Visually hides the caption."
+            "description": "Visually hides the caption while retaining the accessible name."
           },
           "sort": {
             "optional": true,
             "type": "DataTableSort | null",
             "description": "Controlled sort state."
+          },
+          "defaultSort": {
+            "optional": true,
+            "type": "DataTableSort | null",
+            "description": "Initial uncontrolled sort state."
           },
           "onSortChange": {
             "optional": true,
@@ -15463,17 +15465,42 @@
           "selectedRowIds": {
             "optional": true,
             "type": "string[]",
-            "description": "Controlled selected row identifiers."
+            "description": "Controlled selected row identifiers; enables selection."
+          },
+          "defaultSelectedRowIds": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Initial uncontrolled selection; also enables selection."
           },
           "onSelectionChange": {
             "optional": true,
             "type": "(rowIds: string[]) => void",
-            "description": "Receives selection changes."
+            "description": "Receives selected row identifiers; also enables selection."
+          },
+          "getRowLabel": {
+            "optional": true,
+            "type": "(row: Row) => string",
+            "description": "Accessible row label used by selection checkboxes."
           },
           "pageSize": {
             "optional": true,
             "type": "number",
             "description": "Rows per page; enables pagination when set."
+          },
+          "emptyState": {
+            "optional": true,
+            "type": "React.ReactNode",
+            "description": "Empty-state cell content."
+          },
+          "striped": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Alternating row surfaces."
+          },
+          "stickyHeader": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Pin the header row while the body scrolls."
           },
           "size": {
             "optional": true,
@@ -15485,15 +15512,9 @@
             ],
             "description": "Density scale."
           },
-          "striped": {
+          "className": {
             "optional": true,
-            "type": "boolean",
-            "description": "Alternates row surfaces."
-          },
-          "stickyHeader": {
-            "optional": true,
-            "type": "boolean",
-            "description": "Pin the header row while the body scrolls."
+            "type": "string"
           }
         },
         "forbiddenUse": [
@@ -15792,7 +15813,8 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "manual"
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "aria-requirements",
@@ -21398,14 +21420,14 @@
           {
             "id": "axe-no-violations",
             "statement": "Required stories produce no axe violations at the configured severity.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'axe-no-violations'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "accessibility-tree",
             "statement": "The accessibility tree (role, name, state) matches the committed snapshot for every required story.",
-            "verificationMode": "unverified",
-            "note": "No fresh a11y evidence for 'accessibility-tree'; run npm run test:stories:matrix:ci to capture."
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "forced-colors-real-browser",
@@ -23500,6 +23522,11 @@
           },
           {
             "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/design-system/agent/AgentBenchSection.tsx",
+            "since": "2026-06-04"
+          },
+          {
+            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/ComponentTaxonomyTree.tsx",
             "since": "2026-06-04"
           },
@@ -23511,11 +23538,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/design-system/agent/page.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/code-window/page.tsx",
             "since": "2026-06-04"
           }
         ],
@@ -39201,9 +39223,9 @@
         "name": "ResizablePanelGroup",
         "tier": "organism",
         "group": "layout",
-        "status": "alpha",
+        "status": "beta",
         "description": "Two-or-more-panel layout with pointer and keyboard-accessible resize separators.",
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1722-2833",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -39216,10 +39238,7 @@
             "propSourced": true
           }
         },
-        "slots": [
-          "panel",
-          "separator"
-        ],
+        "slots": [],
         "asChild": false,
         "subParts": [],
         "requiredStories": [
@@ -39293,7 +39312,11 @@
           "onSizesChange": {
             "optional": true,
             "type": "(sizes: Record<string, number>) => void",
-            "description": "Receives current panel percentages."
+            "description": "Receives the current percentage per panel id."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
           }
         },
         "forbiddenUse": [
@@ -39518,7 +39541,8 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "manual"
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "aria-requirements",
@@ -41562,26 +41586,6 @@
           {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "since": "2026-06-04"
-          },
-          {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/index.ts",
             "since": "2026-06-04"
           }
         ],
@@ -48921,12 +48925,12 @@
         "name": "Table",
         "tier": "molecule",
         "group": "data-display",
-        "status": "alpha",
+        "status": "beta",
         "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
         "usage": {
           "description": "Table renders semantic tabular data: a caption-led <table> whose rows and cells come from TableRow, TableHeaderCell and TableCell, with sorting and selection driven by the useTable* hooks rather than cell-local state. Use it when the content really is a data grid; DataTable wraps it for the batteries-included workflow."
         },
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1716-2986",
         "radixPrimitive": null,
         "element": "table",
         "variants": {
@@ -49022,7 +49026,7 @@
           "caption": {
             "optional": false,
             "type": "string",
-            "description": "Accessible table name rendered as a caption."
+            "description": "Accessible table name, rendered as a `<caption>`."
           },
           "hideCaption": {
             "optional": true,
@@ -49047,7 +49051,7 @@
           "stickyHeader": {
             "optional": true,
             "type": "boolean",
-            "description": "Pin the header row while the body scrolls."
+            "description": "Pin the header row while the table body scrolls."
           },
           "wrapperClassName": {
             "optional": true,
@@ -49296,7 +49300,8 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "manual"
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "aria-requirements",
@@ -49405,12 +49410,12 @@
         "name": "TableCell",
         "tier": "atom",
         "group": "data-display",
-        "status": "alpha",
+        "status": "beta",
         "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
         "usage": {
           "description": "TableCell is the body cell of the Table family: plain tabular data with an optional numeric mode that aligns figures on the decimal. Header semantics belong to TableHeaderCell; TableCell never announces scope."
         },
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1715-2814",
         "radixPrimitive": null,
         "element": "td",
         "variants": {
@@ -49477,16 +49482,16 @@
             "optional": true,
             "type": "union",
             "values": [
-              "start",
               "center",
-              "end"
+              "end",
+              "start"
             ],
             "description": "Cell content alignment."
           },
           "numeric": {
             "optional": true,
             "type": "boolean",
-            "description": "Right-align with tabular figures for numeric values."
+            "description": "Right-align and tabular-figure numeric values."
           }
         },
         "forbiddenUse": [
@@ -49775,12 +49780,12 @@
         "name": "TableHeaderCell",
         "tier": "atom",
         "group": "data-display",
-        "status": "alpha",
+        "status": "beta",
         "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
         "usage": {
           "description": "TableHeaderCell names a column or row with correct scope semantics, and hosts sortable column headers driven by useTableSortable; sort state is announced via aria-sort, never by caret colour alone."
         },
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1715-2794",
         "radixPrimitive": null,
         "element": "th",
         "variants": {
@@ -49863,9 +49868,9 @@
             "optional": true,
             "type": "union",
             "values": [
-              "start",
               "center",
-              "end"
+              "end",
+              "start"
             ],
             "description": "Cell content alignment."
           },
@@ -49873,25 +49878,25 @@
             "optional": true,
             "type": "union",
             "values": [
-              "col",
-              "row"
+              "row",
+              "col"
             ],
-            "description": "Header scope; row names the identifying cell of a body row."
+            "description": "Header scope. `col` (default) labels a column; `row` makes the cell the\naccessible name for its row — use it on the identifying cell of each body\nrow so screen readers announce the row context with every other cell."
           },
           "sortable": {
             "optional": true,
             "type": "boolean",
-            "description": "Renders the sort control (column headers only)."
+            "description": "Renders the sort affordance and toggles on click. Only for column headers."
           },
           "sortDirection": {
             "optional": true,
             "type": "union",
             "values": [
+              "none",
               "ascending",
-              "descending",
-              "none"
+              "descending"
             ],
-            "description": "Current sort state; drives aria-sort and the caret."
+            "description": "Current sort state; drives `aria-sort` and the caret icon."
           },
           "onSort": {
             "optional": true,
@@ -50121,7 +50126,8 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "manual"
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "aria-requirements",
@@ -50571,12 +50577,12 @@
         "name": "TableRow",
         "tier": "atom",
         "group": "data-display",
-        "status": "alpha",
+        "status": "beta",
         "description": "A table row (<tr>) for the Table family. Works in <thead> and <tbody>; selected renders the selection surface. Presentational — semantics belong to the surrounding table.",
         "usage": {
           "description": "TableRow groups cells inside a Table's thead or tbody and carries the selected state visually while a real selection control (Checkbox) remains the source of truth."
         },
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1715-2833",
         "radixPrimitive": null,
         "element": "tr",
         "variants": {
@@ -50630,7 +50636,7 @@
           "selected": {
             "optional": true,
             "type": "boolean",
-            "description": "Renders the selected surface and sets data-selected. Visual only."
+            "description": "Renders the selected surface and sets `data-selected`. Visual only."
           }
         },
         "forbiddenUse": [
@@ -56748,9 +56754,9 @@
         "name": "TreeView",
         "tier": "organism",
         "group": "navigation",
-        "status": "alpha",
+        "status": "beta",
         "description": "Application tree with hierarchical selection, expansion, roving focus, and arrow-key navigation.",
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1721-5507",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -56764,10 +56770,7 @@
             "propSourced": true
           }
         },
-        "slots": [
-          "label",
-          "description"
-        ],
+        "slots": [],
         "asChild": false,
         "subParts": [],
         "requiredStories": [
@@ -56840,6 +56843,11 @@
             "type": "string | null",
             "description": "Controlled selected node identifier."
           },
+          "defaultSelectedId": {
+            "optional": true,
+            "type": "string | null",
+            "description": "Initial uncontrolled selected node identifier."
+          },
           "onSelectedIdChange": {
             "optional": true,
             "type": "(id: string) => void",
@@ -56849,6 +56857,11 @@
             "optional": true,
             "type": "string[]",
             "description": "Controlled expanded node identifiers."
+          },
+          "defaultExpandedIds": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Initial uncontrolled expanded node identifiers."
           },
           "onExpandedIdsChange": {
             "optional": true,
@@ -56864,6 +56877,10 @@
               "lg"
             ],
             "description": "Density scale."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
           }
         },
         "forbiddenUse": [
@@ -57125,7 +57142,8 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "manual"
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "aria-requirements",
@@ -57640,15 +57658,13 @@
         "name": "VirtualList",
         "tier": "organism",
         "group": "data-display",
-        "status": "alpha",
+        "status": "beta",
         "description": "Fixed-height windowed list with overscan and explicit assistive-technology position metadata.",
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1719-3321",
         "radixPrimitive": null,
         "element": "div",
         "variants": {},
-        "slots": [
-          "item"
-        ],
+        "slots": [],
         "asChild": false,
         "subParts": [],
         "requiredStories": [
@@ -57717,7 +57733,7 @@
           "getItemProps": {
             "optional": false,
             "type": "(item: Item, index: number) => VirtualListItemContent",
-            "description": "Maps an item to its VirtualListItem chrome (label, icon, meta, selected, tone); VirtualList injects position + windowing style."
+            "description": "Maps an item to its VirtualListItem chrome (label via `children`, plus\noptional `icon`, `meta`, `trailingIcon`, `selected`, `tone`). VirtualList\ninjects the position (`posInSet`/`setSize`) and windowing style."
           },
           "aria-label": {
             "optional": false,
@@ -57727,12 +57743,21 @@
           "overscan": {
             "optional": true,
             "type": "number",
-            "description": "Extra rows before and after the viewport."
+            "description": "Extra rows rendered before and after the viewport."
+          },
+          "initialScrollOffset": {
+            "optional": true,
+            "type": "number",
+            "description": "Initial scroll offset in pixels."
           },
           "onRangeChange": {
             "optional": true,
             "type": "(range: VirtualListRange) => void",
             "description": "Receives the rendered index range."
+          },
+          "className": {
+            "optional": true,
+            "type": "string"
           }
         },
         "forbiddenUse": [
@@ -57966,7 +57991,8 @@
           {
             "id": "keyboard-contract",
             "statement": "Every documented keyboard interaction works as specified.",
-            "verificationMode": "manual"
+            "verificationMode": "automated",
+            "check": "npm run test:stories:matrix:ci"
           },
           {
             "id": "aria-requirements",
@@ -58075,12 +58101,12 @@
         "name": "VirtualListItem",
         "tier": "molecule",
         "group": "data-display",
-        "status": "alpha",
+        "status": "beta",
         "description": "A single windowed list row: owns the role=listitem semantics with aria-posinset/aria-setsize position metadata, and composes ListItem for its chrome (leading icon, truncating label, end meta, trailing icon, selected check, destructive tone). Rendered by VirtualList.",
         "usage": {
           "description": "VirtualListItem is the presentational row for VirtualList: ListItem chrome with an end-aligned meta slot, positioned by getItemProps inside a role=\"list\" container. It carries no interactive semantics of its own."
         },
-        "figma": null,
+        "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1719-3278",
         "radixPrimitive": null,
         "element": "div",
         "variants": {
@@ -58135,51 +58161,17 @@
           "posInSet": {
             "optional": false,
             "type": "number",
-            "description": "1-based position within the full collection (aria-posinset)."
+            "description": "1-based position within the full collection (`aria-posinset`)."
           },
           "setSize": {
             "optional": false,
             "type": "number",
-            "description": "Total item count in the full collection (aria-setsize)."
-          },
-          "children": {
-            "optional": false,
-            "type": "React.ReactNode",
-            "description": "Primary label (delegated to ListItem; truncates)."
-          },
-          "icon": {
-            "optional": true,
-            "type": "React.ReactNode",
-            "description": "Leading icon node."
-          },
-          "meta": {
-            "optional": true,
-            "type": "React.ReactNode",
-            "description": "End-aligned secondary content (Badge, Kbd, StatusDot, value)."
-          },
-          "trailingIcon": {
-            "optional": true,
-            "type": "React.ReactNode",
-            "description": "Trailing icon after meta."
-          },
-          "selected": {
-            "optional": true,
-            "type": "boolean",
-            "description": "Renders the trailing check. Visual only."
-          },
-          "tone": {
-            "optional": true,
-            "type": "union",
-            "values": [
-              "neutral",
-              "destructive"
-            ],
-            "description": "Destructive rows use the error treatment."
+            "description": "Total item count in the full collection (`aria-setsize`)."
           },
           "style": {
             "optional": true,
             "type": "React.CSSProperties",
-            "description": "Windowing position style injected by VirtualList (absolute + transform + block-size)."
+            "description": "Positioning style supplied by VirtualList (transform + block-size)."
           }
         },
         "forbiddenUse": [

@@ -49,7 +49,7 @@ const meta = {
     contractStatus: contract.status,
     docs: { description: { component: contract.description } },
   },
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   args: {
     caption: "Project contributors",
     columns,
@@ -95,16 +95,21 @@ const meta = {
     getRowId: { table: { disable: true } },
     getRowLabel: { table: { disable: true } },
     onSelectionChange: { table: { disable: true } },
+    sort: { table: { disable: true } },
+    defaultSort: { table: { disable: true } },
+    selectedRowIds: { table: { disable: true } },
+    defaultSelectedRowIds: { table: { disable: true } },
+    emptyState: { table: { disable: true } },
   },
 } satisfies Meta<typeof DataTable<Person>>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = { tags: ["beta-matrix"] };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   args: { striped: true },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -224,5 +229,6 @@ export const KeyboardInteraction: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
 };

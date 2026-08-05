@@ -1,4 +1,4 @@
-- status: Work in progress (alpha)
+- status: Work in progress (beta)
 - table "Selectable rows":
   - caption: Selectable rows
   - rowgroup:

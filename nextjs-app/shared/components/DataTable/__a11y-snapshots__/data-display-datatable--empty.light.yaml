@@ -1,4 +1,4 @@
-- status: Work in progress (alpha)
+- status: Work in progress (beta)
 - table "Project contributors":
   - caption: Project contributors
   - rowgroup:

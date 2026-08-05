@@ -48,7 +48,7 @@ const meta = {
     contractStatus: contract.status,
     docs: { description: { component: contract.description } },
   },
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   args: {
     orientation: "horizontal",
     keyboardStep: 5,
@@ -73,10 +73,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = { tags: ["beta-matrix"] };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const separator = canvas.getByRole("separator");
@@ -154,5 +154,6 @@ export const ThreePanels: Story = {
   },
 };
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
 };

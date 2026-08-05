@@ -1,152 +1,152 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "schemaVersion": 2,
-  "name": "Table",
-  "tier": "molecule",
-  "group": "data-display",
-  "status": "alpha",
-  "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
-  "usage": {
-    "description": "Table renders semantic tabular data: a caption-led <table> whose rows and cells come from TableRow, TableHeaderCell and TableCell, with sorting and selection driven by the useTable* hooks rather than cell-local state. Use it when the content really is a data grid; DataTable wraps it for the batteries-included workflow."
-  },
-  "figma": null,
-  "radixPrimitive": null,
-  "element": "table",
-  "variants": {
-    "size": {
-      "values": [
-        "sm",
-        "md",
-        "lg"
-      ],
-      "default": "md",
-      "propSourced": true
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "Table",
+    "tier": "molecule",
+    "group": "data-display",
+    "status": "beta",
+    "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
+    "usage": {
+        "description": "Table renders semantic tabular data: a caption-led <table> whose rows and cells come from TableRow, TableHeaderCell and TableCell, with sorting and selection driven by the useTable* hooks rather than cell-local state. Use it when the content really is a data grid; DataTable wraps it for the batteries-included workflow."
     },
-    "striped": {
-      "values": [
-        "true",
-        "false"
-      ],
-      "default": "false",
-      "propSourced": true
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1716-2986",
+    "radixPrimitive": null,
+    "element": "table",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+        },
+        "striped": {
+            "values": [
+                "true",
+                "false"
+            ],
+            "default": "false",
+            "propSourced": true
+        },
+        "stickyHeader": {
+            "values": [
+                "true",
+                "false"
+            ],
+            "default": "false",
+            "propSourced": true
+        }
     },
-    "stickyHeader": {
-      "values": [
-        "true",
-        "false"
-      ],
-      "default": "false",
-      "propSourced": true
-    }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab",
-      "Space",
-      "Enter"
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "native table, thead, tbody, th and td semantics",
-      "caption supplies the accessible table name",
-      "sortable headers expose aria-sort and toggle via an inner button",
-      "sort caret is decorative (aria-hidden); state is carried by aria-sort"
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Space",
+            "Enter"
+        ],
+        "ariaRequirements": [
+            "native table, thead, tbody, th and td semantics",
+            "caption supplies the accessible table name",
+            "sortable headers expose aria-sort and toggle via an inner button",
+            "sort caret is decorative (aria-hidden); state is carried by aria-sort"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-primary",
+            "--color-surface",
+            "--color-border",
+            "--color-border-light",
+            "--color-light-bg",
+            "--color-neutral-bg"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-6",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-layout-24"
+        ],
+        "radii": [
+            "--radius-sm",
+            "--radius-md"
+        ]
+    },
+    "lightDarkVerified": true,
+    "dense": "composable native table primitives; density, striping, sticky header, three-state DS-Icon sort caret; pairs with useTable* hooks",
+    "keywords": [
+        "table",
+        "grid",
+        "rows",
+        "columns",
+        "cell",
+        "sort",
+        "header"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-07-27 — native table semantics, caption naming, aria-sort on sortable headers, decorative sort caret, and axe result reviewed in unit tests. 2026-08-04 — Phase 1 pass: light/dark/forced-colors verified in a real browser; axe clean across all stories x 3 modes; AT-tree and real-browser forced-colors evidence captured; keyboard sort cycle and selection driven by play stories at the Table composition level.",
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": false
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-muted",
-      "--color-primary",
-      "--color-surface",
-      "--color-border",
-      "--color-border-light",
-      "--color-light-bg",
-      "--color-neutral-bg"
+    "props": {
+        "caption": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible table name, rendered as a `<caption>`."
+        },
+        "hideCaption": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Visually hide the caption while keeping the accessible name."
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "description": "Density scale."
+        },
+        "striped": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Alternating row surfaces."
+        },
+        "stickyHeader": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Pin the header row while the table body scrolls."
+        },
+        "wrapperClassName": {
+            "optional": true,
+            "type": "string",
+            "description": "Class applied to the scroll wrapper."
+        }
+    },
+    "forbiddenUse": [
+        "use it for page layout",
+        "omit a meaningful caption",
+        "put interactive sort logic in the cell instead of the useTable* hooks"
     ],
-    "spacing": [
-      "--space-internal-4",
-      "--space-internal-6",
-      "--space-internal-8",
-      "--space-internal-12",
-      "--space-internal-16",
-      "--space-layout-24"
-    ],
-    "radii": [
-      "--radius-sm",
-      "--radius-md"
+    "composesWith": [
+        "TableRow",
+        "TableHeaderCell",
+        "TableCell",
+        "DataTable"
     ]
-  },
-  "lightDarkVerified": true,
-  "dense": "composable native table primitives; density, striping, sticky header, three-state DS-Icon sort caret; pairs with useTable* hooks",
-  "keywords": [
-    "table",
-    "grid",
-    "rows",
-    "columns",
-    "cell",
-    "sort",
-    "header"
-  ],
-  "props": {
-    "caption": {
-      "optional": false,
-      "type": "string",
-      "description": "Accessible table name rendered as a caption."
-    },
-    "hideCaption": {
-      "optional": true,
-      "type": "boolean",
-      "description": "Visually hide the caption while keeping the accessible name."
-    },
-    "size": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "sm",
-        "md",
-        "lg"
-      ],
-      "description": "Density scale."
-    },
-    "striped": {
-      "optional": true,
-      "type": "boolean",
-      "description": "Alternating row surfaces."
-    },
-    "stickyHeader": {
-      "optional": true,
-      "type": "boolean",
-      "description": "Pin the header row while the body scrolls."
-    },
-    "wrapperClassName": {
-      "optional": true,
-      "type": "string",
-      "description": "Class applied to the scroll wrapper."
-    }
-  },
-  "forbiddenUse": [
-    "use it for page layout",
-    "omit a meaningful caption",
-    "put interactive sort logic in the cell instead of the useTable* hooks"
-  ],
-  "composesWith": [
-    "TableRow",
-    "TableHeaderCell",
-    "TableCell",
-    "DataTable"
-  ]
 }

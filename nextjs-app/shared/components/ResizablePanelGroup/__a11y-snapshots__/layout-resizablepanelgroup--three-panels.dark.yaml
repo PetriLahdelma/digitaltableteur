@@ -1,4 +1,4 @@
-- status: Work in progress (alpha)
+- status: Work in progress (beta)
 - region "Tree":
   - heading "Tree" [level=3]
   - paragraph: Hierarchy.

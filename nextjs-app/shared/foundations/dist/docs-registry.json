@@ -4976,7 +4976,7 @@
       "name": "DataTable",
       "group": "data-display",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Accessible data table with typed columns, three-state sortable headings, optional row selection and pagination, and density variants. Composes the Table primitives and the useTable* hooks.",
       "dense": "typed native data table; sortable columns, optional row selection, accessible caption, empty state, sm/md/lg density",
       "keywords": [
@@ -5030,7 +5030,7 @@
         "columns": {
           "optional": false,
           "type": "DataTableColumn<Row>[]",
-          "description": "Ordered typed column definitions."
+          "description": "Ordered column definitions."
         },
         "getRowId": {
           "optional": false,
@@ -5040,17 +5040,22 @@
         "caption": {
           "optional": false,
           "type": "string",
-          "description": "Accessible table name."
+          "description": "Accessible table name rendered as a caption."
         },
         "hideCaption": {
           "optional": true,
           "type": "boolean",
-          "description": "Visually hides the caption."
+          "description": "Visually hides the caption while retaining the accessible name."
         },
         "sort": {
           "optional": true,
           "type": "DataTableSort | null",
           "description": "Controlled sort state."
+        },
+        "defaultSort": {
+          "optional": true,
+          "type": "DataTableSort | null",
+          "description": "Initial uncontrolled sort state."
         },
         "onSortChange": {
           "optional": true,
@@ -5060,17 +5065,42 @@
         "selectedRowIds": {
           "optional": true,
           "type": "string[]",
-          "description": "Controlled selected row identifiers."
+          "description": "Controlled selected row identifiers; enables selection."
+        },
+        "defaultSelectedRowIds": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Initial uncontrolled selection; also enables selection."
         },
         "onSelectionChange": {
           "optional": true,
           "type": "(rowIds: string[]) => void",
-          "description": "Receives selection changes."
+          "description": "Receives selected row identifiers; also enables selection."
+        },
+        "getRowLabel": {
+          "optional": true,
+          "type": "(row: Row) => string",
+          "description": "Accessible row label used by selection checkboxes."
         },
         "pageSize": {
           "optional": true,
           "type": "number",
           "description": "Rows per page; enables pagination when set."
+        },
+        "emptyState": {
+          "optional": true,
+          "type": "React.ReactNode",
+          "description": "Empty-state cell content."
+        },
+        "striped": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Alternating row surfaces."
+        },
+        "stickyHeader": {
+          "optional": true,
+          "type": "boolean",
+          "description": "Pin the header row while the body scrolls."
         },
         "size": {
           "optional": true,
@@ -5082,15 +5112,9 @@
           ],
           "description": "Density scale."
         },
-        "striped": {
+        "className": {
           "optional": true,
-          "type": "boolean",
-          "description": "Alternates row surfaces."
-        },
-        "stickyHeader": {
-          "optional": true,
-          "type": "boolean",
-          "description": "Pin the header row while the body scrolls."
+          "type": "string"
         }
       },
       "composesWith": [
@@ -5178,7 +5202,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: { striped: true },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    await userEvent.click(canvas.getByRole(\"button\", { name: \"Name\" }));\n    await expect(\n      canvas.getByRole(\"columnheader\", { name: /Name/ }),\n    ).toHaveAttribute(\"aria-sort\", \"ascending\");\n  },\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  args: { striped: true },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    await userEvent.click(canvas.getByRole(\"button\", { name: \"Name\" }));\n    await expect(\n      canvas.getByRole(\"columnheader\", { name: /Name/ }),\n    ).toHaveAttribute(\"aria-sort\", \"ascending\");\n  },\n};"
         },
         {
           "story": "Paginated",
@@ -12744,7 +12768,7 @@
       "name": "ResizablePanelGroup",
       "group": "layout",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Two-or-more-panel layout with pointer and keyboard-accessible resize separators.",
       "dense": "horizontal or vertical resizable panel layout; pointer drag, arrow/Home/End keyboard resize, separator value semantics",
       "keywords": [
@@ -12771,6 +12795,11 @@
           "name": "keyboardStep",
           "type": "number",
           "required": false
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false
         }
       ],
       "props": {
@@ -12796,7 +12825,11 @@
         "onSizesChange": {
           "optional": true,
           "type": "(sizes: Record<string, number>) => void",
-          "description": "Receives current panel percentages."
+          "description": "Receives the current percentage per panel id."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
         }
       },
       "composesWith": [
@@ -12871,7 +12904,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const separator = canvas.getByRole(\"separator\");\n    separator.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"37\");\n  },\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const separator = canvas.getByRole(\"separator\");\n    separator.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(separator).toHaveAttribute(\"aria-valuenow\", \"37\");\n  },\n};"
         },
         {
           "story": "KeyboardResize",
@@ -15798,7 +15831,7 @@
       "name": "Table",
       "group": "data-display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "The composable table root: a scroll wrapper around a semantic table with density, striping, and a sticky header. Compose with the sibling TableRow, TableHeaderCell, and TableCell components. The presentational layer beneath DataTable; pair with the useTable* hooks for behavior.",
       "dense": "composable native table primitives; density, striping, sticky header, three-state DS-Icon sort caret; pairs with useTable* hooks",
       "keywords": [
@@ -15847,7 +15880,7 @@
         "caption": {
           "optional": false,
           "type": "string",
-          "description": "Accessible table name rendered as a caption."
+          "description": "Accessible table name, rendered as a `<caption>`."
         },
         "hideCaption": {
           "optional": true,
@@ -15872,7 +15905,7 @@
         "stickyHeader": {
           "optional": true,
           "type": "boolean",
-          "description": "Pin the header row while the body scrolls."
+          "description": "Pin the header row while the table body scrolls."
         },
         "wrapperClassName": {
           "optional": true,
@@ -15933,7 +15966,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};\n\nfunction KeyboardSortTable(args: React.ComponentProps<typeof Table>) {\n  const [direction, setDirection] =\n    React.useState<TableSortDirection>(\"none\");\n  const cycle = () =>\n    setDirection((current) =>\n      current === \"none\"\n        ? \"ascending\"\n        : current === \"ascending\"\n          ? \"descending\"\n          : \"none\",\n    );\n  return (\n    <Table {...args} caption=\"Keyboard sort\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person) => (\n          <TableRow key={person.id}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  );\n}\n\n/**\n * The family keyboard contract with real key events: Tab reaches the native\n * sort button, Enter and Space cycle the three sort states, and aria-sort\n * tracks each transition on the columnheader.\n */"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  args: { striped: true },\n  render: (args) => (\n    <Table {...args} caption=\"Contributors (striped)\">\n      <Body />\n    </Table>\n  ),\n};\n\nfunction KeyboardSortTable(args: React.ComponentProps<typeof Table>) {\n  const [direction, setDirection] =\n    React.useState<TableSortDirection>(\"none\");\n  const cycle = () =>\n    setDirection((current) =>\n      current === \"none\"\n        ? \"ascending\"\n        : current === \"ascending\"\n          ? \"descending\"\n          : \"none\",\n    );\n  return (\n    <Table {...args} caption=\"Keyboard sort\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection={direction} onSort={cycle}>\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person) => (\n          <TableRow key={person.id}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  );\n}\n\n/**\n * The family keyboard contract with real key events: Tab reaches the native\n * sort button, Enter and Space cycle the three sort states, and aria-sort\n * tracks each transition on the columnheader.\n */"
         },
         {
           "story": "KeyboardInteraction",
@@ -15946,7 +15979,7 @@
       "name": "TableCell",
       "group": "data-display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "A table data cell (<td>) for the Table family. align controls text alignment; numeric right-aligns with tabular figures so columns line up on the decimal.",
       "dense": "table td; align start/center/end, numeric = tabular figures right-aligned",
       "keywords": [
@@ -15959,7 +15992,7 @@
       "keyProps": [
         {
           "name": "align",
-          "type": "start | center | end",
+          "type": "center | end | start",
           "required": false
         },
         {
@@ -15973,16 +16006,16 @@
           "optional": true,
           "type": "union",
           "values": [
-            "start",
             "center",
-            "end"
+            "end",
+            "start"
           ],
           "description": "Cell content alignment."
         },
         "numeric": {
           "optional": true,
           "type": "boolean",
-          "description": "Right-align with tabular figures for numeric values."
+          "description": "Right-align and tabular-figure numeric values."
         }
       },
       "composesWith": [
@@ -16013,7 +16046,7 @@
         {
           "story": "Example",
           "description": "numeric cells right-align with tabular figures so columns line up on the decimal.",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story: \"numeric cells right-align with tabular figures so columns line up on the decimal.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Numbers\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Metric</TableHeaderCell>\n          <TableHeaderCell align=\"end\">Value</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Requests</TableCell>\n          <TableCell numeric>1,204</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Errors</TableCell>\n          <TableCell numeric>12</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Latency</TableCell>\n          <TableCell numeric>98</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story: \"numeric cells right-align with tabular figures so columns line up on the decimal.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Numbers\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Metric</TableHeaderCell>\n          <TableHeaderCell align=\"end\">Value</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Requests</TableCell>\n          <TableCell numeric>1,204</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Errors</TableCell>\n          <TableCell numeric>12</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>Latency</TableCell>\n          <TableCell numeric>98</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
         }
       ]
     },
@@ -16021,7 +16054,7 @@
       "name": "TableHeaderCell",
       "group": "data-display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "A table header cell (<th>). scope=col (default) carries an optional three-state DS-Icon sort control and aria-sort; scope=row marks the identifying cell of a body row so screen readers announce the row context with every other cell.",
       "dense": "th with scope col/row; col carries the three-state sort caret + aria-sort, row names its data row",
       "keywords": [
@@ -16037,17 +16070,17 @@
       "keyProps": [
         {
           "name": "align",
-          "type": "start | center | end",
+          "type": "center | end | start",
           "required": false
         },
         {
           "name": "scope",
-          "type": "col | row",
+          "type": "row | col",
           "required": false
         },
         {
           "name": "sortDirection",
-          "type": "ascending | descending | none",
+          "type": "none | ascending | descending",
           "required": false
         },
         {
@@ -16061,9 +16094,9 @@
           "optional": true,
           "type": "union",
           "values": [
-            "start",
             "center",
-            "end"
+            "end",
+            "start"
           ],
           "description": "Cell content alignment."
         },
@@ -16071,25 +16104,25 @@
           "optional": true,
           "type": "union",
           "values": [
-            "col",
-            "row"
+            "row",
+            "col"
           ],
-          "description": "Header scope; row names the identifying cell of a body row."
+          "description": "Header scope. `col` (default) labels a column; `row` makes the cell the\naccessible name for its row — use it on the identifying cell of each body\nrow so screen readers announce the row context with every other cell."
         },
         "sortable": {
           "optional": true,
           "type": "boolean",
-          "description": "Renders the sort control (column headers only)."
+          "description": "Renders the sort affordance and toggles on click. Only for column headers."
         },
         "sortDirection": {
           "optional": true,
           "type": "union",
           "values": [
+            "none",
             "ascending",
-            "descending",
-            "none"
+            "descending"
           ],
-          "description": "Current sort state; drives aria-sort and the caret."
+          "description": "Current sort state; drives `aria-sort` and the caret icon."
         },
         "onSort": {
           "optional": true,
@@ -16135,7 +16168,7 @@
         {
           "story": "Example",
           "description": "The three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Sort states\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection=\"ascending\">\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"none\">\n            Role\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"descending\" align=\"end\">\n            Projects\n          </TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Ada</TableCell>\n          <TableCell>Engineer</TableCell>\n          <TableCell numeric>8</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"The three-state sort control: caret-up-down (unsorted, muted), caret-up (ascending), caret-down (descending).\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Sort states\">\n      <thead>\n        <TableRow>\n          <TableHeaderCell sortable sortDirection=\"ascending\">\n            Name\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"none\">\n            Role\n          </TableHeaderCell>\n          <TableHeaderCell sortable sortDirection=\"descending\" align=\"end\">\n            Projects\n          </TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        <TableRow>\n          <TableCell>Ada</TableCell>\n          <TableCell>Engineer</TableCell>\n          <TableCell numeric>8</TableCell>\n        </TableRow>\n      </tbody>\n    </Table>\n  ),\n};"
         },
         {
           "story": "SortCycle",
@@ -16231,7 +16264,7 @@
       "name": "TableRow",
       "group": "data-display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "A table row (<tr>) for the Table family. Works in <thead> and <tbody>; selected renders the selection surface. Presentational — semantics belong to the surrounding table.",
       "dense": "table row; works in thead/tbody, selected surface, hover + zebra via the Table root",
       "keywords": [
@@ -16252,7 +16285,7 @@
         "selected": {
           "optional": true,
           "type": "boolean",
-          "description": "Renders the selected surface and sets data-selected. Visual only."
+          "description": "Renders the selected surface and sets `data-selected`. Visual only."
         }
       },
       "composesWith": [
@@ -16280,7 +16313,7 @@
         {
           "story": "Example",
           "description": "Rows in context: the middle row is selected; the hover, zebra, and selection surfaces come from the Table root.",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows in context: the middle row is selected; the hover, zebra, and selection surfaces come from the Table root.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Contributors\" striped>\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Name</TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person, index) => (\n          <TableRow key={person.name} selected={index === 1}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  ),\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows in context: the middle row is selected; the hover, zebra, and selection surfaces come from the Table root.\",\n      },\n    },\n  },\n  render: () => (\n    <Table caption=\"Contributors\" striped>\n      <thead>\n        <TableRow>\n          <TableHeaderCell>Name</TableHeaderCell>\n          <TableHeaderCell>Role</TableHeaderCell>\n        </TableRow>\n      </thead>\n      <tbody>\n        {people.map((person, index) => (\n          <TableRow key={person.name} selected={index === 1}>\n            <TableCell>{person.name}</TableCell>\n            <TableCell>{person.role}</TableCell>\n          </TableRow>\n        ))}\n      </tbody>\n    </Table>\n  ),\n};"
         }
       ]
     },
@@ -18149,7 +18182,7 @@
       "name": "TreeView",
       "group": "navigation",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Application tree with hierarchical selection, expansion, roving focus, and arrow-key navigation.",
       "dense": "application tree; controlled selection and expansion, roving focus, full arrow/Home/End/Enter/Space keyboard model",
       "keywords": [
@@ -18183,6 +18216,11 @@
           "required": false
         },
         {
+          "name": "defaultSelectedId",
+          "type": "string | null",
+          "required": false
+        },
+        {
           "name": "expandedIds",
           "type": "string[]",
           "required": false
@@ -18204,6 +18242,11 @@
           "type": "string | null",
           "description": "Controlled selected node identifier."
         },
+        "defaultSelectedId": {
+          "optional": true,
+          "type": "string | null",
+          "description": "Initial uncontrolled selected node identifier."
+        },
         "onSelectedIdChange": {
           "optional": true,
           "type": "(id: string) => void",
@@ -18213,6 +18256,11 @@
           "optional": true,
           "type": "string[]",
           "description": "Controlled expanded node identifiers."
+        },
+        "defaultExpandedIds": {
+          "optional": true,
+          "type": "string[]",
+          "description": "Initial uncontrolled expanded node identifiers."
         },
         "onExpandedIdsChange": {
           "optional": true,
@@ -18228,6 +18276,10 @@
             "lg"
           ],
           "description": "Density scale."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
         }
       },
       "composesWith": [
@@ -18306,7 +18358,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const components = canvas.getByRole(\"treeitem\", { name: \"Components\" });\n    components.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(\n      canvas.getByRole(\"treeitem\", { name: /Button/ }),\n    ).toHaveFocus();\n  },\n};\n/**\n * A node with `disabled` stays discoverable (focusable via the roving\n * tabindex, announced with aria-disabled) but cannot be selected.\n */"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    const components = canvas.getByRole(\"treeitem\", { name: \"Components\" });\n    components.focus();\n    await userEvent.keyboard(\"{ArrowRight}\");\n    await expect(\n      canvas.getByRole(\"treeitem\", { name: /Button/ }),\n    ).toHaveFocus();\n  },\n};\n/**\n * A node with `disabled` stays discoverable (focusable via the roving\n * tabindex, announced with aria-disabled) but cannot be selected.\n */"
         },
         {
           "story": "LargeTree",
@@ -18433,7 +18485,7 @@
       "name": "VirtualList",
       "group": "data-display",
       "tier": 1,
-      "status": "alpha",
+      "status": "beta",
       "description": "Fixed-height windowed list with overscan and explicit assistive-technology position metadata.",
       "dense": "fixed-height windowed collection; overscan, stable keys, rendered-range callback, aria position and set-size metadata",
       "keywords": [
@@ -18501,7 +18553,7 @@
         "getItemProps": {
           "optional": false,
           "type": "(item: Item, index: number) => VirtualListItemContent",
-          "description": "Maps an item to its VirtualListItem chrome (label, icon, meta, selected, tone); VirtualList injects position + windowing style."
+          "description": "Maps an item to its VirtualListItem chrome (label via `children`, plus\noptional `icon`, `meta`, `trailingIcon`, `selected`, `tone`). VirtualList\ninjects the position (`posInSet`/`setSize`) and windowing style."
         },
         "aria-label": {
           "optional": false,
@@ -18511,12 +18563,21 @@
         "overscan": {
           "optional": true,
           "type": "number",
-          "description": "Extra rows before and after the viewport."
+          "description": "Extra rows rendered before and after the viewport."
+        },
+        "initialScrollOffset": {
+          "optional": true,
+          "type": "number",
+          "description": "Initial scroll offset in pixels."
         },
         "onRangeChange": {
           "optional": true,
           "type": "(range: VirtualListRange) => void",
           "description": "Receives the rendered index range."
+        },
+        "className": {
+          "optional": true,
+          "type": "string"
         }
       },
       "composesWith": [
@@ -18589,7 +18650,7 @@
         {
           "story": "Example",
           "description": "Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.",
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.\",\n      },\n    },\n  },\n  args: {\n    getItemProps: (item) => ({\n      children: item.label,\n      icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n      meta: item.isNew ? (\n        <Badge size=\"sm\" tone=\"info\">\n          New\n        </Badge>\n      ) : (\n        <StatusDot tone={item.online ? \"success\" : \"neutral\"} label={item.online ? \"Online\" : \"Offline\"} />\n      ),\n    }),\n  },\n};\n\n/**\n * 10,000 rows behind a ~7-row window: the DOM stays at viewport + overscan\n * regardless of collection size, and every mounted row carries its true\n * aria-posinset/aria-setsize. Used as the scroll-stability performance case\n * (see spec Design notes).\n */"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  parameters: {\n    docs: {\n      description: {\n        story:\n          \"Rows use the full VirtualListItem chrome — leading icon, label, and end meta (Badge / StatusDot) — the same extras as menus and other lists, while staying virtualized.\",\n      },\n    },\n  },\n  args: {\n    getItemProps: (item) => ({\n      children: item.label,\n      icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n      meta: item.isNew ? (\n        <Badge size=\"sm\" tone=\"info\">\n          New\n        </Badge>\n      ) : (\n        <StatusDot tone={item.online ? \"success\" : \"neutral\"} label={item.online ? \"Online\" : \"Offline\"} />\n      ),\n    }),\n  },\n};\n\n/**\n * 10,000 rows behind a ~7-row window: the DOM stays at viewport + overscan\n * regardless of collection size, and every mounted row carries its true\n * aria-posinset/aria-setsize. Used as the scroll-stability performance case\n * (see spec Design notes).\n */"
         },
         {
           "story": "TenThousandRows",
@@ -18607,7 +18668,7 @@
       "name": "VirtualListItem",
       "group": "data-display",
       "tier": 2,
-      "status": "alpha",
+      "status": "beta",
       "description": "A single windowed list row: owns the role=listitem semantics with aria-posinset/aria-setsize position metadata, and composes ListItem for its chrome (leading icon, truncating label, end meta, trailing icon, selected check, destructive tone). Rendered by VirtualList.",
       "dense": "windowed list row; role=listitem + aria-posinset/aria-setsize, composes ListItem chrome; positioning arrives from VirtualList via style",
       "keywords": [
@@ -18631,23 +18692,8 @@
           "required": true
         },
         {
-          "name": "children",
-          "type": "React.ReactNode",
-          "required": true
-        },
-        {
-          "name": "tone",
-          "type": "neutral | destructive",
-          "required": false
-        },
-        {
-          "name": "icon",
-          "type": "React.ReactNode",
-          "required": false
-        },
-        {
-          "name": "meta",
-          "type": "React.ReactNode",
+          "name": "style",
+          "type": "React.CSSProperties",
           "required": false
         }
       ],
@@ -18655,51 +18701,17 @@
         "posInSet": {
           "optional": false,
           "type": "number",
-          "description": "1-based position within the full collection (aria-posinset)."
+          "description": "1-based position within the full collection (`aria-posinset`)."
         },
         "setSize": {
           "optional": false,
           "type": "number",
-          "description": "Total item count in the full collection (aria-setsize)."
-        },
-        "children": {
-          "optional": false,
-          "type": "React.ReactNode",
-          "description": "Primary label (delegated to ListItem; truncates)."
-        },
-        "icon": {
-          "optional": true,
-          "type": "React.ReactNode",
-          "description": "Leading icon node."
-        },
-        "meta": {
-          "optional": true,
-          "type": "React.ReactNode",
-          "description": "End-aligned secondary content (Badge, Kbd, StatusDot, value)."
-        },
-        "trailingIcon": {
-          "optional": true,
-          "type": "React.ReactNode",
-          "description": "Trailing icon after meta."
-        },
-        "selected": {
-          "optional": true,
-          "type": "boolean",
-          "description": "Renders the trailing check. Visual only."
-        },
-        "tone": {
-          "optional": true,
-          "type": "union",
-          "values": [
-            "neutral",
-            "destructive"
-          ],
-          "description": "Destructive rows use the error treatment."
+          "description": "Total item count in the full collection (`aria-setsize`)."
         },
         "style": {
           "optional": true,
           "type": "React.CSSProperties",
-          "description": "Windowing position style injected by VirtualList (absolute + transform + block-size)."
+          "description": "Positioning style supplied by VirtualList (transform + block-size)."
         }
       },
       "composesWith": [
@@ -18728,7 +18740,7 @@
         {
           "story": "Example",
           "description": null,
-          "source": "export const Example: Story = {\n  tags: [\"example\"],\n  args: {\n    icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n    meta: (\n      <Badge size=\"sm\" tone=\"info\">\n        New\n      </Badge>\n    ),\n  },\n};"
+          "source": "export const Example: Story = {\n  tags: [\"beta-matrix\", \"example\"],\n  args: {\n    icon: <Icon name=\"cube\" ariaLabel=\"\" />,\n    meta: (\n      <Badge size=\"sm\" tone=\"info\">\n        New\n      </Badge>\n    ),\n  },\n};"
         }
       ]
     },

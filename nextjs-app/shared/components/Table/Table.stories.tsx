@@ -24,7 +24,7 @@ const meta = {
     contractStatus: contract.status,
     docs: { description: { component: contract.description } },
   },
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   args: {
     caption: "Project contributors",
     size: "md",
@@ -36,12 +36,19 @@ const meta = {
       control: "radio",
       options: ["sm", "md", "lg"],
       description: "Density scale.",
+      table: { defaultValue: { summary: "md" } },
     },
-    striped: { control: "boolean", description: "Alternating row surfaces." },
+    striped: {
+      control: "boolean",
+      description: "Alternating row surfaces.",
+      table: { defaultValue: { summary: "false" } },
+    },
     stickyHeader: {
       control: "boolean",
       description: "Pin the header row while the body scrolls.",
+      table: { defaultValue: { summary: "false" } },
     },
+    wrapperClassName: { table: { disable: true } },
     hideCaption: {
       control: "boolean",
       description: "Visually hide the caption (kept for assistive tech).",
@@ -77,6 +84,7 @@ function Body() {
 }
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: (args) => (
     <Table {...args}>
       <Body />
@@ -84,7 +92,8 @@ export const Default: Story = {
   ),
 };
 
-export const Playground: Story = { ...Default };
+export const Playground: Story = {
+  tags: ["beta-matrix"], ...Default };
 
 export const Sortable: Story = {
   tags: ["example"],
@@ -199,7 +208,7 @@ export const Selectable: Story = {
 };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   args: { striped: true },
   render: (args) => (
     <Table {...args} caption="Contributors (striped)">
@@ -264,6 +273,7 @@ export const KeyboardInteraction: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   render: (args) => (
     <Table {...args}>

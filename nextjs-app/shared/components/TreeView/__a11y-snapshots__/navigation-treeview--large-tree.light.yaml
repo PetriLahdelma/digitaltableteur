@@ -1,4 +1,4 @@
-- status: Work in progress (alpha)
+- status: Work in progress (beta)
 - tree "Large hierarchy":
   - treeitem "Section 1" [expanded] [level=1]
   - treeitem "Folder 1.1" [level=2]

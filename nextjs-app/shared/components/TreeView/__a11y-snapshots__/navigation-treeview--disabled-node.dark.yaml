@@ -1,4 +1,4 @@
-- status: Work in progress (alpha)
+- status: Work in progress (beta)
 - tree "Design system":
   - treeitem "Components" [expanded] [level=1]
   - treeitem "Button" [level=2]

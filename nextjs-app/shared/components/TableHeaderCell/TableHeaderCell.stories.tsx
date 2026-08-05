@@ -16,7 +16,7 @@ const meta = {
     contractStatus: contract.status,
     docs: { description: { component: contract.description } },
   },
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   args: {
     children: "Name",
     align: "start",
@@ -25,12 +25,27 @@ const meta = {
     sortDirection: "ascending",
   },
   argTypes: {
-    align: { control: "inline-radio", options: ["start", "center", "end"] },
-    scope: { control: "inline-radio", options: ["col", "row"] },
-    sortable: { control: "boolean" },
+    align: {
+      control: "inline-radio",
+      options: ["start", "center", "end"],
+      description: "Text alignment inside the header cell.",
+      table: { defaultValue: { summary: "start" } },
+    },
+    scope: {
+      control: "inline-radio",
+      options: ["col", "row"],
+      description:
+        "col names a column (quiet uppercase header); row names a row and renders like an emphasised body cell.",
+      table: { defaultValue: { summary: "col" } },
+    },
+    sortable: {
+      control: "boolean",
+      description: "Wraps the label in a sort button with a caret.",
+    },
     sortDirection: {
       control: "radio",
       options: ["ascending", "descending", "none"],
+      description: "Current sort state; drives aria-sort and the caret icon.",
     },
   },
   render: (args) => (
@@ -54,11 +69,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = { tags: ["beta-matrix"] };
+export const Playground: Story = { tags: ["beta-matrix"] };
 
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   parameters: {
     docs: {
       description: {
@@ -174,4 +189,5 @@ export const SortCycle: Story = {
   },
 };
 
-export const ForcedColors: Story = { globals: { forcedColors: "active" } };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"], globals: { forcedColors: "active" } };

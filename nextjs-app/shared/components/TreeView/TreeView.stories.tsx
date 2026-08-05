@@ -31,7 +31,7 @@ const meta = {
     contractStatus: contract.status,
     docs: { description: { component: contract.description } },
   },
-  tags: ["alpha", "autodocs"],
+  tags: ["beta", "autodocs"],
   args: {
     "aria-label": "Design system",
     defaultExpandedIds: ["components"],
@@ -49,16 +49,22 @@ const meta = {
     nodes: { table: { disable: true } },
     defaultExpandedIds: { table: { disable: true } },
     defaultSelectedId: { table: { disable: true } },
+    selectedId: { table: { disable: true } },
+    expandedIds: { table: { disable: true } },
+    "aria-label": {
+      control: "text",
+      description: "Accessible name for the tree.",
+    },
   },
 } satisfies Meta<typeof TreeView>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = { tags: ["beta-matrix"] };
+export const Playground: Story = { tags: ["beta-matrix"] };
 export const Example: Story = {
-  tags: ["example"],
+  tags: ["beta-matrix", "example"],
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const components = canvas.getByRole("treeitem", { name: "Components" });
@@ -163,5 +169,6 @@ export const KeyboardInteraction: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
 };

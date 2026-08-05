@@ -1,192 +1,203 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.v2.json",
-  "schemaVersion": 2,
-  "name": "TreeView",
-  "tier": "organism",
-  "group": "navigation",
-  "status": "alpha",
-  "description": "Application tree with hierarchical selection, expansion, roving focus, and arrow-key navigation.",
-  "figma": null,
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {
-    "size": {
-      "values": [
-        "sm",
-        "md",
-        "lg"
-      ],
-      "default": "md",
-      "propSourced": true
-    }
-  },
-  "slots": [
-    "label",
-    "description"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "ArrowUp",
-      "ArrowDown",
-      "ArrowLeft",
-      "ArrowRight",
-      "Home",
-      "End",
-      "Enter",
-      "Space"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "schemaVersion": 2,
+    "name": "TreeView",
+    "tier": "organism",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Application tree with hierarchical selection, expansion, roving focus, and arrow-key navigation.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=1721-5507",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "root has role=tree and an accessible name",
-      "nodes expose role=treeitem, aria-level and aria-selected",
-      "branch nodes expose aria-expanded",
-      "only the focused treeitem has tabIndex=0"
+    "a11y": {
+        "keyboard": [
+            "ArrowUp",
+            "ArrowDown",
+            "ArrowLeft",
+            "ArrowRight",
+            "Home",
+            "End",
+            "Enter",
+            "Space"
+        ],
+        "ariaRequirements": [
+            "root has role=tree and an accessible name",
+            "nodes expose role=treeitem, aria-level and aria-selected",
+            "branch nodes expose aria-expanded",
+            "only the focused treeitem has tabIndex=0"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-07-26 — tree semantics, roving focus, expansion and selection keyboard behavior, and axe result reviewed in unit tests. 2026-08-03 — Phase 1 pass: light/dark/forced-colors verified in a real browser; full keyboard model (arrows, Home/End, Enter/Space) driven by a play story; axe caught and we fixed selected-row description contrast; AT-tree and real-browser forced-colors evidence captured.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-muted",
+            "--color-primary",
+            "--color-neutral-bg",
+            "--color-border-light"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16"
+        ]
+    },
+    "lightDarkVerified": true,
+    "dense": "application tree; controlled selection and expansion, roving focus, full arrow/Home/End/Enter/Space keyboard model",
+    "keywords": [
+        "tree",
+        "hierarchy",
+        "folders",
+        "navigation",
+        "outline",
+        "nested"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-07-26 — tree semantics, roving focus, expansion and selection keyboard behavior, and axe result reviewed in unit tests. 2026-08-03 — Phase 1 pass: light/dark/forced-colors verified in a real browser; full keyboard model (arrows, Home/End, Enter/Space) driven by a play story; axe caught and we fixed selected-row description contrast; AT-tree and real-browser forced-colors evidence captured.",
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": false
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-muted",
-      "--color-primary",
-      "--color-neutral-bg",
-      "--color-border-light"
+    "props": {
+        "nodes": {
+            "optional": false,
+            "type": "TreeViewNode[]",
+            "description": "Hierarchical nodes."
+        },
+        "aria-label": {
+            "optional": false,
+            "type": "string",
+            "description": "Accessible name for the tree."
+        },
+        "selectedId": {
+            "optional": true,
+            "type": "string | null",
+            "description": "Controlled selected node identifier."
+        },
+        "defaultSelectedId": {
+            "optional": true,
+            "type": "string | null",
+            "description": "Initial uncontrolled selected node identifier."
+        },
+        "onSelectedIdChange": {
+            "optional": true,
+            "type": "(id: string) => void",
+            "description": "Receives selection changes."
+        },
+        "expandedIds": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Controlled expanded node identifiers."
+        },
+        "defaultExpandedIds": {
+            "optional": true,
+            "type": "string[]",
+            "description": "Initial uncontrolled expanded node identifiers."
+        },
+        "onExpandedIdsChange": {
+            "optional": true,
+            "type": "(ids: string[]) => void",
+            "description": "Receives expansion changes."
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "description": "Density scale."
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "replace a sitemap or ordinary nested navigation list",
+        "nest independently focusable controls inside node labels"
     ],
-    "spacing": [
-      "--space-internal-4",
-      "--space-internal-8",
-      "--space-internal-12",
-      "--space-internal-16"
+    "usage": {
+        "description": "Use TreeView for application hierarchies that users expand, collapse, navigate, and select. Use stable identifiers and concise node labels.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Give the tree an accessible label that identifies the hierarchy."
+            },
+            {
+                "guidance": true,
+                "description": "Use stable node identifiers across filtering, refreshes, and reordering."
+            },
+            {
+                "guidance": true,
+                "description": "Keep labels concise and place secondary status in the description."
+            },
+            {
+                "guidance": true,
+                "description": "Preserve expansion state when nearby application content changes."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use TreeView for a flat set of links or ordinary site navigation."
+            },
+            {
+                "guidance": false,
+                "description": "Do not embed buttons, inputs, or menus inside a tree item's label."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Tree",
+                "required": true,
+                "description": "Accessible root that owns the visible hierarchy."
+            },
+            {
+                "name": "Tree item",
+                "required": true,
+                "description": "Selectable node with its hierarchy level and expansion state."
+            },
+            {
+                "name": "Disclosure icon",
+                "required": false,
+                "description": "Visual expansion indicator shown only for branch nodes."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "aria-label": "Design system",
+            "defaultExpandedIds": [
+                "components"
+            ],
+            "defaultSelectedId": "button",
+            "size": "md"
+        }
+    },
+    "prefersOver": [
+        "SiteTree for application selection hierarchies"
+    ],
+    "composesWith": [
+        "ResizablePanelGroup",
+        "CommandPalette"
     ]
-  },
-  "lightDarkVerified": true,
-  "dense": "application tree; controlled selection and expansion, roving focus, full arrow/Home/End/Enter/Space keyboard model",
-  "keywords": [
-    "tree",
-    "hierarchy",
-    "folders",
-    "navigation",
-    "outline",
-    "nested"
-  ],
-  "props": {
-    "nodes": {
-      "optional": false,
-      "type": "TreeViewNode[]",
-      "description": "Hierarchical nodes."
-    },
-    "aria-label": {
-      "optional": false,
-      "type": "string",
-      "description": "Accessible name for the tree."
-    },
-    "selectedId": {
-      "optional": true,
-      "type": "string | null",
-      "description": "Controlled selected node identifier."
-    },
-    "onSelectedIdChange": {
-      "optional": true,
-      "type": "(id: string) => void",
-      "description": "Receives selection changes."
-    },
-    "expandedIds": {
-      "optional": true,
-      "type": "string[]",
-      "description": "Controlled expanded node identifiers."
-    },
-    "onExpandedIdsChange": {
-      "optional": true,
-      "type": "(ids: string[]) => void",
-      "description": "Receives expansion changes."
-    },
-    "size": {
-      "optional": true,
-      "type": "union",
-      "values": [
-        "sm",
-        "md",
-        "lg"
-      ],
-      "description": "Density scale."
-    }
-  },
-  "forbiddenUse": [
-    "replace a sitemap or ordinary nested navigation list",
-    "nest independently focusable controls inside node labels"
-  ],
-  "usage": {
-    "description": "Use TreeView for application hierarchies that users expand, collapse, navigate, and select. Use stable identifiers and concise node labels.",
-    "bestPractices": [
-      {
-        "guidance": true,
-        "description": "Give the tree an accessible label that identifies the hierarchy."
-      },
-      {
-        "guidance": true,
-        "description": "Use stable node identifiers across filtering, refreshes, and reordering."
-      },
-      {
-        "guidance": true,
-        "description": "Keep labels concise and place secondary status in the description."
-      },
-      {
-        "guidance": true,
-        "description": "Preserve expansion state when nearby application content changes."
-      },
-      {
-        "guidance": false,
-        "description": "Do not use TreeView for a flat set of links or ordinary site navigation."
-      },
-      {
-        "guidance": false,
-        "description": "Do not embed buttons, inputs, or menus inside a tree item's label."
-      }
-    ],
-    "anatomy": [
-      {
-        "name": "Tree",
-        "required": true,
-        "description": "Accessible root that owns the visible hierarchy."
-      },
-      {
-        "name": "Tree item",
-        "required": true,
-        "description": "Selectable node with its hierarchy level and expansion state."
-      },
-      {
-        "name": "Disclosure icon",
-        "required": false,
-        "description": "Visual expansion indicator shown only for branch nodes."
-      }
-    ]
-  },
-  "playground": {
-    "defaults": {
-      "aria-label": "Design system",
-      "defaultExpandedIds": [
-        "components"
-      ],
-      "defaultSelectedId": "button",
-      "size": "md"
-    }
-  },
-  "prefersOver": [
-    "SiteTree for application selection hierarchies"
-  ],
-  "composesWith": [
-    "ResizablePanelGroup",
-    "CommandPalette"
-  ]
 }

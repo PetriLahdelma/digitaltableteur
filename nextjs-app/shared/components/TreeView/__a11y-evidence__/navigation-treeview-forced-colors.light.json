@@ -1,9 +1,9 @@
 {
   "storyId": "navigation-treeview-forced-colors",
   "mode": "light",
-  "sourceSHA": "65f96d08b8f1caaabfced096ff1b2e68e744d88f",
-  "capturedAt": "2026-08-04T06:41:24.466Z",
-  "runner": "treeview-phase1",
+  "sourceSHA": "fe396819e62c487b08704d773ddf396d6ef737da",
+  "capturedAt": "2026-08-05T09:37:26.237Z",
+  "runner": "beta-flip-dt1412",
   "checks": {
     "accessibility-tree": {
       "passed": true
