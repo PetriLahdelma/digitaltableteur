@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.5",
-  "generatedAt": "2026-08-05T10:13:02.334Z",
+  "generatedAt": "2026-08-05T11:17:38.066Z",
   "summary": {
     "componentCount": 177,
     "statusCounts": {
@@ -13,7 +13,7 @@
     "catalogCompletenessPercent": 90.8,
     "codebaseComponentCount": 195,
     "usageCoveragePercent": 93.2,
-    "componentsWithProductionUsage": 42,
+    "componentsWithProductionUsage": 35,
     "notReadyForStablePromotion": false
   },
   "exportPolicy": {
@@ -79,11 +79,11 @@
     "description": "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
     "catalogedComponents": 177,
     "withAnyUsage": 165,
-    "withProductionUsage": 42,
+    "withProductionUsage": 35,
     "uniqueImportedComponents": 165,
-    "totalEvidenceRows": 832,
+    "totalEvidenceRows": 825,
     "aliasImportFiles": 428,
-    "relativeImportFiles": 437,
+    "relativeImportFiles": 430,
     "regenerate": "npm run audit:usage (--json) or npm run build:tokens",
     "findComponent": "npm run find-component -- \"your intent\""
   },
@@ -15592,17 +15592,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/DataTable",
-        "importCount": 2,
-        "productionImportCount": 1,
+        "importCount": 1,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "app/design-system/agent/GoldenIntentsTable.tsx",
-            "importKind": "relative",
-            "importPath": "../../../nextjs-app/shared/components/DataTable/DataTable",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -18442,6 +18436,16 @@
             "type": "boolean",
             "description": "Autoplay video thumbnail continuously (not just on hover)"
           },
+          "comingSoon": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Render as a non-interactive teaser with a \"coming soon\" badge over the media"
+          },
+          "comingSoonLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -18575,6 +18579,16 @@
             "type": "boolean",
             "description": "Autoplay video thumbnail continuously (not just on hover)"
           },
+          "comingSoon": {
+            "optional": true,
+            "type": "boolean",
+            "description": "Render as a non-interactive teaser with a \"coming soon\" badge over the media"
+          },
+          "comingSoonLabel": {
+            "optional": true,
+            "type": "string",
+            "description": "Visible badge label for the coming-soon overlay (pass a translated string)"
+          },
           "className": {
             "optional": true,
             "type": "string",
@@ -18615,7 +18629,7 @@
           "Section"
         ],
         "prefersOver": [],
-        "declaredPropCount": 12,
+        "declaredPropCount": 14,
         "guidelines": [
           {
             "level": "should",
@@ -39385,17 +39399,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/ResizablePanelGroup",
-        "importCount": 2,
-        "productionImportCount": 1,
+        "importCount": 1,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "app/design-system/agent/ComponentTaxonomyTree.tsx",
-            "importKind": "relative",
-            "importPath": "../../../nextjs-app/shared/components/ResizablePanelGroup/ResizablePanelGroup",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",
@@ -49075,17 +49083,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/Table",
-        "importCount": 9,
-        "productionImportCount": 1,
+        "importCount": 8,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 4,
         "evidence": [
-          {
-            "path": "app/design-system/agent/AgentBenchSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../../nextjs-app/shared/components/Table/Table",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -49508,17 +49510,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableCell",
-        "importCount": 7,
-        "productionImportCount": 1,
+        "importCount": 6,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 2,
         "evidence": [
-          {
-            "path": "app/design-system/agent/AgentBenchSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../../nextjs-app/shared/components/TableCell/TableCell",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -49920,17 +49916,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableHeaderCell",
-        "importCount": 7,
-        "productionImportCount": 1,
+        "importCount": 6,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 2,
         "evidence": [
-          {
-            "path": "app/design-system/agent/AgentBenchSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../../nextjs-app/shared/components/TableHeaderCell/TableHeaderCell",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -50653,17 +50643,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TableRow",
-        "importCount": 7,
-        "productionImportCount": 1,
+        "importCount": 6,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 2,
         "evidence": [
-          {
-            "path": "app/design-system/agent/AgentBenchSection.tsx",
-            "importKind": "relative",
-            "importPath": "../../../nextjs-app/shared/components/TableRow/TableRow",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/DataTable/DataTable.tsx",
             "importKind": "alias",
@@ -56955,17 +56939,11 @@
       "documentationDebt": false,
       "usage": {
         "publicImport": "@dt/TreeView",
-        "importCount": 2,
-        "productionImportCount": 1,
+        "importCount": 1,
+        "productionImportCount": 0,
         "patternImportCount": 0,
         "componentImportCount": 1,
         "evidence": [
-          {
-            "path": "app/design-system/agent/ComponentTaxonomyTree.tsx",
-            "importKind": "relative",
-            "importPath": "../../../nextjs-app/shared/components/TreeView/TreeView",
-            "context": "production"
-          },
           {
             "path": "nextjs-app/shared/components/index.ts",
             "importKind": "relative",

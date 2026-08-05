@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 2338,
+  "warningCount": 2337,
   "warnings": [
     {
       "file": ".storybook/blocks/A11ySection.module.css",
@@ -6115,15 +6115,6 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css",
-      "line": 50,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"inline-size\" (order/properties-order)",
-      "id": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css::order/properties-order::Expected \"block-size\" to come before \"inline-size\" (order/properties-order)::1"
-    },
-    {
-      "file": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css",
       "line": 68,
       "column": 19,
       "rule": "rhythmguard/use-scale",
@@ -6142,7 +6133,7 @@
     },
     {
       "file": "nextjs-app/shared/components/EnhancedProjectCard/EnhancedProjectCard.module.css",
-      "line": 191,
+      "line": 242,
       "column": 16,
       "rule": "rhythmguard/use-scale",
       "severity": "warning",

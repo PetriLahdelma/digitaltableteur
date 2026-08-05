@@ -175,6 +175,8 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
                         tags={project.tags}
                         aspectRatio="square"
                         showCategory={true}
+                        comingSoon={project.comingSoon}
+                        comingSoonLabel={t("workComingSoon", "Coming soon")}
                       />
                     </div>
                   );

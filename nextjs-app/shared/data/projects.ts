@@ -43,6 +43,8 @@ export interface Project {
   client?: string;
   /** Project duration (e.g. "2022–2024") */
   duration?: string;
+  /** Teaser entry: renders a non-clickable card with a coming-soon badge (no detail route) */
+  comingSoon?: boolean;
 }
 
 export interface CategoryOption {
@@ -163,6 +165,20 @@ export const projects: Project[] = [
     featured: false,
     order: 0,
     duration: "Aug 2026",
+  },
+  {
+    id: "precedent",
+    slug: "precedent",
+    title: "Precedent",
+    description:
+      "A local-first desktop workspace that turns saved interface references into traceable design decisions.",
+    thumbnail: "/images/portfolio/precedent/thumbnail.webp",
+    category: "tools",
+    secondaryCategories: ["ux-design"],
+    tags: ["Product Design", "macOS App", "Local-first"],
+    featured: false,
+    order: 2,
+    comingSoon: true,
   },
   {
     id: "knobsmith-audio",

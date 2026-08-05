@@ -16,8 +16,22 @@ describe("Work pages", () => {
       <WorkIndexPage nav={<div data-testid="work-nav">NAV</div>} />,
     );
     expect(screen.getByTestId("work-nav")).toBeInTheDocument();
+    const linkedProjects = projects.filter((p) => !p.comingSoon);
     const links = screen.getAllByRole("link");
-    expect(links.length).toBeGreaterThanOrEqual(projects.length);
+    expect(links.length).toBeGreaterThanOrEqual(linkedProjects.length);
+    // Coming-soon teasers render as non-interactive cards with the badge.
+    const teasers = projects.filter((p) => p.comingSoon);
+    for (const teaser of teasers) {
+      expect(
+        screen.getByRole("heading", { name: teaser.title, level: 3 }),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByRole("link", { name: new RegExp(teaser.title, "i") }),
+      ).not.toBeInTheDocument();
+    }
+    expect(screen.getAllByText("Coming soon").length).toBeGreaterThanOrEqual(
+      teasers.length,
+    );
   });
 
   it("renders New Things Co case study content", () => {

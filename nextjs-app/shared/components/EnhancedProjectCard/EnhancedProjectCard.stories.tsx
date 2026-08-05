@@ -73,3 +73,19 @@ export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
   args: defaultArgs,
 };
+
+// Non-interactive teaser: no link wrapper, badge overlaid on the media.
+export const ComingSoon: Story = {
+  args: {
+    title: "Precedent",
+    slug: "precedent",
+    thumbnail: "/images/portfolio/precedent/thumbnail.webp",
+    category: "Tools",
+    tags: ["Product Design", "macOS App", "Local-first"],
+    description:
+      "A local-first desktop workspace that turns saved interface references into traceable design decisions.",
+    aspectRatio: "square" as const,
+    comingSoon: true,
+    comingSoonLabel: "Coming soon",
+  },
+};
